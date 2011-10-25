@@ -38,14 +38,14 @@
 		E53A7B001456FE4A00B74F84 /* MenuHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuHeader.h; sourceTree = "<group>"; };
 		E53A7B011456FE4A00B74F84 /* MenuHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuHeader.m; sourceTree = "<group>"; };
 		E53A7B0314571D1800B74F84 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = SOURCE_ROOT; };
-		E5A9A3A91454DC0500EA374C /* UIScrollViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIScrollViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5A9A3A91454DC0500EA374C /* Yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yasound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A9A3AD1454DC0500EA374C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5A9A3AF1454DC0500EA374C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E5A9A3B51454DC0500EA374C /* UIScrollViewTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIScrollViewTest-Info.plist"; sourceTree = "<group>"; };
+		E5A9A3B51454DC0500EA374C /* Yasound-Info.plist */ = {isa = PBXFileReference; path = "Yasound-Info.plist"; sourceTree = "<group>"; };
 		E5A9A3B71454DC0500EA374C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E5A9A3B91454DC0500EA374C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E5A9A3BB1454DC0500EA374C /* UIScrollViewTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollViewTest-Prefix.pch"; sourceTree = "<group>"; };
+		E5A9A3BB1454DC0500EA374C /* Yasound-Prefix.pch */ = {isa = PBXFileReference; path = "Yasound-Prefix.pch"; sourceTree = "<group>"; };
 		E5A9A3BC1454DC0500EA374C /* UIScrollViewTestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIScrollViewTestAppDelegate.h; sourceTree = "<group>"; };
 		E5A9A3BD1454DC0500EA374C /* UIScrollViewTestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIScrollViewTestAppDelegate.m; sourceTree = "<group>"; };
 		E5A9A3C01454DC0500EA374C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		E5A9A3AA1454DC0500EA374C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E5A9A3A91454DC0500EA374C /* UIScrollViewTest.app */,
+				E5A9A3A91454DC0500EA374C /* Yasound.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,10 +126,10 @@
 		E5A9A3B41454DC0500EA374C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E5A9A3B51454DC0500EA374C /* UIScrollViewTest-Info.plist */,
+				E5A9A3B51454DC0500EA374C /* Yasound-Info.plist */,
 				E5A9A3B61454DC0500EA374C /* InfoPlist.strings */,
 				E5A9A3B91454DC0500EA374C /* main.m */,
-				E5A9A3BB1454DC0500EA374C /* UIScrollViewTest-Prefix.pch */,
+				E5A9A3BB1454DC0500EA374C /* Yasound-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -137,9 +137,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E5A9A3A81454DC0500EA374C /* UIScrollViewTest */ = {
+		E5A9A3A81454DC0500EA374C /* Yasound */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E5A9A3C41454DC0500EA374C /* Build configuration list for PBXNativeTarget "UIScrollViewTest" */;
+			buildConfigurationList = E5A9A3C41454DC0500EA374C /* Build configuration list for PBXNativeTarget "Yasound" */;
 			buildPhases = (
 				E5A9A3A51454DC0500EA374C /* Sources */,
 				E5A9A3A61454DC0500EA374C /* Frameworks */,
@@ -149,9 +149,9 @@
 			);
 			dependencies = (
 			);
-			name = UIScrollViewTest;
+			name = Yasound;
 			productName = UIScrollViewTest;
-			productReference = E5A9A3A91454DC0500EA374C /* UIScrollViewTest.app */;
+			productReference = E5A9A3A91454DC0500EA374C /* Yasound.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -162,7 +162,7 @@
 			attributes = {
 				ORGANIZATIONNAME = Yasound;
 			};
-			buildConfigurationList = E5A9A3A31454DC0500EA374C /* Build configuration list for PBXProject "UIScrollViewTest" */;
+			buildConfigurationList = E5A9A3A31454DC0500EA374C /* Build configuration list for PBXProject "Yasound" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -174,7 +174,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E5A9A3A81454DC0500EA374C /* UIScrollViewTest */,
+				E5A9A3A81454DC0500EA374C /* Yasound */,
 			);
 		};
 /* End PBXProject section */
@@ -275,9 +275,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UIScrollViewTest/UIScrollViewTest-Prefix.pch";
-				INFOPLIST_FILE = "UIScrollViewTest/UIScrollViewTest-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "UIScrollViewTest/Yasound-Prefix.pch";
+				INFOPLIST_FILE = "UIScrollViewTest/Yasound-Info.plist";
+				PRODUCT_NAME = Yasound;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -286,9 +286,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "UIScrollViewTest/UIScrollViewTest-Prefix.pch";
-				INFOPLIST_FILE = "UIScrollViewTest/UIScrollViewTest-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "UIScrollViewTest/Yasound-Prefix.pch";
+				INFOPLIST_FILE = "UIScrollViewTest/Yasound-Info.plist";
+				PRODUCT_NAME = Yasound;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -296,7 +296,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E5A9A3A31454DC0500EA374C /* Build configuration list for PBXProject "UIScrollViewTest" */ = {
+		E5A9A3A31454DC0500EA374C /* Build configuration list for PBXProject "Yasound" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E5A9A3C21454DC0500EA374C /* Debug */,
@@ -305,7 +305,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E5A9A3C41454DC0500EA374C /* Build configuration list for PBXNativeTarget "UIScrollViewTest" */ = {
+		E5A9A3C41454DC0500EA374C /* Build configuration list for PBXNativeTarget "Yasound" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E5A9A3C51454DC0500EA374C /* Debug */,
