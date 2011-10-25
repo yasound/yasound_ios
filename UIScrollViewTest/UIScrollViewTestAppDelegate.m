@@ -7,6 +7,9 @@
 //
 
 #import "UIScrollViewTestAppDelegate.h"
+#import "Tile.h"
+#import "MenuHeader.h"
+#import "AudioStreamer.h"
 
 @implementation UIScrollViewTestAppDelegate
 
@@ -16,7 +19,56 @@
 {
   // Override point for customization after application launch.
   [self.window makeKeyAndVisible];
-    return YES;
+
+  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/ubik.mp3"];
+  mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
+  [mpStreamer retain];
+  [mpStreamer start];
+  
+  
+  const int K = 10;
+  const int W = 128;
+  const int H = 128;
+  const int N = 10;
+  const int WW = W * N;
+  const int interline = 22;
+  const int HH = H + interline;
+  
+  mpScrollView = [[UIScrollView alloc] initWithFrame:self.window.frame];
+  [self.window addSubview:mpScrollView];
+  [mpScrollView setScrollEnabled:TRUE];
+  [mpScrollView setContentSize:CGSizeMake(320, H * K)];
+
+
+  int img_index = 1;
+  
+  for (int i = 0; i < K; i ++)
+  {
+    // Title:
+    MenuHeader* pLabel = [[MenuHeader alloc] initWithFrame:CGRectMake(0, i * HH, 320, interline) andText:@"WHAT'S NEW"];
+    [mpScrollView addSubview:pLabel];
+    
+    // Scroll view with images as buttons:
+    UIScrollView* pScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, interline + i * HH, mpScrollView.frame.size.width, H)];
+    [mpScrollView addSubview:pScroll];
+    [pScroll setScrollEnabled:TRUE];
+    [pScroll setContentSize:CGSizeMake(WW, H)];
+    [pScroll setZoomScale:.5];
+    
+    for (int k = 0; k < N; k++)
+    {
+      NSString* str = [[NSString alloc] initWithFormat:@"http://meeloo.net/~meeloo/squares/img_%03d.jpg", img_index++];
+      NSURL* url = [NSURL URLWithString:str];
+
+      //Tile* pButton = [[[NSBundle mainBundle] loadNibNamed:@"TileView" owner:self options:nil] objectAtIndex:0];
+      Tile* pButton = [[Tile alloc] initWithFrame:CGRectMake((k * (4 + W)), 0, W, H) andImageURL: url];
+      [pScroll addSubview:pButton];
+    }
+  }
+
+  self.window.frame = [UIScreen mainScreen].applicationFrame;
+
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class AudioStreamer;
+
 @interface UIScrollViewTestAppDelegate : NSObject <UIApplicationDelegate>
+{
+  UIScrollView* mpScrollView;
+  UIScrollView* mpInnerScrollView;
+  AudioStreamer* mpStreamer;
+}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 

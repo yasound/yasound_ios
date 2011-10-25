@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E53A7AEA1456ECDE00B74F84 /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E53A7AE91456ECDE00B74F84 /* WebImageView.m */; };
+		E53A7AED1456F91900B74F84 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = E53A7AEC1456F91900B74F84 /* AudioStreamer.m */; };
+		E53A7AFC1456FA9900B74F84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AEE1456FA3600B74F84 /* AudioToolbox.framework */; };
+		E53A7AFD1456FA9900B74F84 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */; };
+		E53A7AFF1456FAB800B74F84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */; };
+		E53A7B021456FE4A00B74F84 /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E53A7B011456FE4A00B74F84 /* MenuHeader.m */; };
+		E53A7B0414571D1800B74F84 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E53A7B0314571D1800B74F84 /* logo.png */; };
 		E5A9A3AE1454DC0500EA374C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AD1454DC0500EA374C /* UIKit.framework */; };
 		E5A9A3B01454DC0500EA374C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
@@ -14,20 +21,36 @@
 		E5A9A3BA1454DC0500EA374C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		E5A9A3BE1454DC0500EA374C /* UIScrollViewTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3BD1454DC0500EA374C /* UIScrollViewTestAppDelegate.m */; };
 		E5A9A3C11454DC0500EA374C /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3BF1454DC0500EA374C /* MainWindow.xib */; };
+		E5C4E04A1455BC96007A8EA3 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C4E0491455BC96007A8EA3 /* Tile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E53A7AE81456ECDE00B74F84 /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageView.h; sourceTree = "<group>"; };
+		E53A7AE91456ECDE00B74F84 /* WebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebImageView.m; sourceTree = "<group>"; };
+		E53A7AEB1456F91900B74F84 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		E53A7AEC1456F91900B74F84 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		E53A7AEE1456FA3600B74F84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E53A7AF01456FA4000B74F84 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E53A7AF21456FA4700B74F84 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		E53A7AF41456FA5400B74F84 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E53A7B001456FE4A00B74F84 /* MenuHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuHeader.h; sourceTree = "<group>"; };
+		E53A7B011456FE4A00B74F84 /* MenuHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuHeader.m; sourceTree = "<group>"; };
+		E53A7B0314571D1800B74F84 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = SOURCE_ROOT; };
 		E5A9A3A91454DC0500EA374C /* UIScrollViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIScrollViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A9A3AD1454DC0500EA374C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5A9A3AF1454DC0500EA374C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E5A9A3B51454DC0500EA374C /* UIScrollViewTest-Info.plist */ = {isa = PBXFileReference; path = "UIScrollViewTest-Info.plist"; sourceTree = "<group>"; };
+		E5A9A3B51454DC0500EA374C /* UIScrollViewTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIScrollViewTest-Info.plist"; sourceTree = "<group>"; };
 		E5A9A3B71454DC0500EA374C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E5A9A3B91454DC0500EA374C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E5A9A3BB1454DC0500EA374C /* UIScrollViewTest-Prefix.pch */ = {isa = PBXFileReference; path = "UIScrollViewTest-Prefix.pch"; sourceTree = "<group>"; };
-		E5A9A3BC1454DC0500EA374C /* UIScrollViewTestAppDelegate.h */ = {isa = PBXFileReference; path = UIScrollViewTestAppDelegate.h; sourceTree = "<group>"; };
+		E5A9A3BB1454DC0500EA374C /* UIScrollViewTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollViewTest-Prefix.pch"; sourceTree = "<group>"; };
+		E5A9A3BC1454DC0500EA374C /* UIScrollViewTestAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIScrollViewTestAppDelegate.h; sourceTree = "<group>"; };
 		E5A9A3BD1454DC0500EA374C /* UIScrollViewTestAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIScrollViewTestAppDelegate.m; sourceTree = "<group>"; };
 		E5A9A3C01454DC0500EA374C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		E5C4E0481455BC96007A8EA3 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
+		E5C4E0491455BC96007A8EA3 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E53A7AFF1456FAB800B74F84 /* CFNetwork.framework in Frameworks */,
+				E53A7AFC1456FA9900B74F84 /* AudioToolbox.framework in Frameworks */,
+				E53A7AFD1456FA9900B74F84 /* MediaPlayer.framework in Frameworks */,
 				E5A9A3AE1454DC0500EA374C /* UIKit.framework in Frameworks */,
 				E5A9A3B01454DC0500EA374C /* Foundation.framework in Frameworks */,
 				E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */,
@@ -47,6 +73,12 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
+				E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */,
+				E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */,
+				E53A7AF41456FA5400B74F84 /* CoreMedia.framework */,
+				E53A7AF21456FA4700B74F84 /* CoreAudio.framework */,
+				E53A7AF01456FA4000B74F84 /* AVFoundation.framework */,
+				E53A7AEE1456FA3600B74F84 /* AudioToolbox.framework */,
 				E5A9A3B31454DC0500EA374C /* UIScrollViewTest */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				E5A9A3AA1454DC0500EA374C /* Products */,
@@ -74,9 +106,18 @@
 		E5A9A3B31454DC0500EA374C /* UIScrollViewTest */ = {
 			isa = PBXGroup;
 			children = (
+				E53A7B0314571D1800B74F84 /* logo.png */,
 				E5A9A3BC1454DC0500EA374C /* UIScrollViewTestAppDelegate.h */,
 				E5A9A3BD1454DC0500EA374C /* UIScrollViewTestAppDelegate.m */,
+				E53A7AEB1456F91900B74F84 /* AudioStreamer.h */,
+				E53A7AEC1456F91900B74F84 /* AudioStreamer.m */,
 				E5A9A3BF1454DC0500EA374C /* MainWindow.xib */,
+				E5C4E0481455BC96007A8EA3 /* Tile.h */,
+				E5C4E0491455BC96007A8EA3 /* Tile.m */,
+				E53A7AE81456ECDE00B74F84 /* WebImageView.h */,
+				E53A7AE91456ECDE00B74F84 /* WebImageView.m */,
+				E53A7B001456FE4A00B74F84 /* MenuHeader.h */,
+				E53A7B011456FE4A00B74F84 /* MenuHeader.m */,
 				E5A9A3B41454DC0500EA374C /* Supporting Files */,
 			);
 			path = UIScrollViewTest;
@@ -145,6 +186,7 @@
 			files = (
 				E5A9A3B81454DC0500EA374C /* InfoPlist.strings in Resources */,
 				E5A9A3C11454DC0500EA374C /* MainWindow.xib in Resources */,
+				E53A7B0414571D1800B74F84 /* logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +199,10 @@
 			files = (
 				E5A9A3BA1454DC0500EA374C /* main.m in Sources */,
 				E5A9A3BE1454DC0500EA374C /* UIScrollViewTestAppDelegate.m in Sources */,
+				E5C4E04A1455BC96007A8EA3 /* Tile.m in Sources */,
+				E53A7AEA1456ECDE00B74F84 /* WebImageView.m in Sources */,
+				E53A7AED1456F91900B74F84 /* AudioStreamer.m in Sources */,
+				E53A7B021456FE4A00B74F84 /* MenuHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +312,7 @@
 				E5A9A3C61454DC0500EA374C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
