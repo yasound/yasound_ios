@@ -43,9 +43,9 @@ static const int INSET_X = 16;
   
   CGContextSetFillColorWithColor(context, red);
   CGSize size = [label sizeThatFits:self.frame.size];
-  CGRect r1 = CGRectMake(0, self.frame.size.height - size.height, INSET_X, size.height - 4);
+  CGRect r1 = CGRectMake(0, self.frame.size.height - size.height, INSET_X - 2, size.height - 4);
   CGContextFillRect(context, r1);
-  CGRect r2 = CGRectMake(INSET_X + size.width, self.frame.size.height - size.height, self.frame.size.width - INSET_X + size.width, size.height - 4);
+  CGRect r2 = CGRectMake(INSET_X + 2 + size.width, self.frame.size.height - size.height, self.frame.size.width - INSET_X + size.width - 2, size.height - 4);
   CGContextFillRect(context, r2);
   
   [super drawRect:rect];

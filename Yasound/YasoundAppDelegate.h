@@ -10,7 +10,7 @@
 
 @class AudioStreamer;
 
-@interface UIScrollViewTestAppDelegate : NSObject <UIApplicationDelegate>
+@interface YasoundAppDelegate : NSObject <UIApplicationDelegate>
 {
   UIScrollView* mpScrollView;
   UIScrollView* mpInnerScrollView;

@@ -9,9 +9,10 @@
 #import "YasoundAppDelegate.h"
 #import "Tile.h"
 #import "MenuHeader.h"
+#import "SlidingMenu.h"
 #import "AudioStreamer.h"
 
-@implementation UIScrollViewTestAppDelegate
+@implementation YasoundAppDelegate
 
 @synthesize window = _window;
 
@@ -27,10 +28,7 @@
   
   
   const int K = 10;
-  const int W = 128;
   const int H = 128;
-  const int N = 10;
-  const int WW = W * N;
   const int interline = 22;
   const int HH = H + interline;
   
@@ -39,31 +37,21 @@
   [mpScrollView setScrollEnabled:TRUE];
   [mpScrollView setContentSize:CGSizeMake(320, H * K)];
 
-
-  int img_index = 1;
+  srand(time(NULL));
   
   for (int i = 0; i < K; i ++)
   {
-    // Title:
-    MenuHeader* pLabel = [[MenuHeader alloc] initWithFrame:CGRectMake(0, i * HH, 320, interline) andText:@"WHAT'S NEW"];
-    [mpScrollView addSubview:pLabel];
+    NSMutableArray* array = [[NSMutableArray alloc] init];
+    int count = 5 + rand() % 5;
     
-    // Scroll view with images as buttons:
-    UIScrollView* pScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, interline + i * HH, mpScrollView.frame.size.width, H)];
-    [mpScrollView addSubview:pScroll];
-    [pScroll setScrollEnabled:TRUE];
-    [pScroll setContentSize:CGSizeMake(WW, H)];
-    [pScroll setZoomScale:.5];
-    
-    for (int k = 0; k < N; k++)
+    for (int img = 0; img < count; img++)
     {
-      NSString* str = [[NSString alloc] initWithFormat:@"http://meeloo.net/~meeloo/squares/img_%03d.jpg", img_index++];
-      NSURL* url = [NSURL URLWithString:str];
-
-      //Tile* pButton = [[[NSBundle mainBundle] loadNibNamed:@"TileView" owner:self options:nil] objectAtIndex:0];
-      Tile* pButton = [[Tile alloc] initWithFrame:CGRectMake((k * (4 + W)), 0, W, H) andImageURL: url];
-      [pScroll addSubview:pButton];
+      NSString* url = [[NSString alloc] initWithFormat:@"http://meeloo.net/~meeloo/squares/img_%03d.jpg", rand() % 500];
+      [array addObject:url];
     }
+    
+    SlidingMenu* menu = [[SlidingMenu alloc] initWithFrame:CGRectMake(0, i * HH, mpScrollView.frame.size.width, HH) name:@"MENU NAME" andDestinations:array];
+    [mpScrollView addSubview:menu];
   }
 
   self.window.frame = [UIScreen mainScreen].applicationFrame;
