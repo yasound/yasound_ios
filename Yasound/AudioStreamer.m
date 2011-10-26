@@ -469,6 +469,14 @@ void ASReadStreamCallBack
 		postNotification:notification];
 }
 
+- (AudioStreamerState)state
+{
+  @synchronized (self)
+  {
+    return state;
+  }
+}
+
 //
 // setState:
 //

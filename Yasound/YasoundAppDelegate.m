@@ -6,7 +6,7 @@
 //  Copyright 2011 Yasound. All rights reserved.
 //
 
-#import "UIScrollViewTestAppDelegate.h"
+#import "YasoundAppDelegate.h"
 #import "Tile.h"
 #import "MenuHeader.h"
 #import "AudioStreamer.h"
