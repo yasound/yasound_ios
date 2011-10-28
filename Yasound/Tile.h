@@ -15,13 +15,15 @@
   //WebImageView* image;
   UILabel* title;
   UILabel* caption;
+  
+  NSString* identifier;
 
   NSURLConnection *connection;
   NSMutableData* data;
   UIActivityIndicatorView *ai;
 }
 
-- (id)initWithFrame:(CGRect)frame andImageURL:(NSURL*)imageUrl;
+- (id)initWithFrame:(CGRect)frame identifier:(NSString*)ident andImageURL:(NSURL*)imageUrl;
 @property (nonatomic, retain) NSURLConnection *connection;
 @property (nonatomic, retain) NSMutableData* data;
 @property (nonatomic, retain) UIActivityIndicatorView *ai;

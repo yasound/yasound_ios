@@ -51,6 +51,7 @@
     }
     
     SlidingMenu* menu = [[SlidingMenu alloc] initWithFrame:CGRectMake(0, i * HH, mpScrollView.frame.size.width, HH) name:@"MENU NAME" andDestinations:array];
+    [menu addTarget:self action:@selector(TileActivated:) forControlEvents:UIControlEventTouchUpInside];
     [mpScrollView addSubview:menu];
   }
 
@@ -58,6 +59,13 @@
 
   return YES;
 }
+
+- (IBAction)TileActivated:(id)sender
+{
+  Tile* pTile = (Tile*)sender;
+  NSLog(@"Button pressed: %@", [pTile description]);
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

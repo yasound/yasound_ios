@@ -13,11 +13,12 @@
 
 @synthesize ai,connection, data;
 
-- (id)initWithFrame:(CGRect)frame andImageURL:(NSURL*)imageUrl
+- (id)initWithFrame:(CGRect)frame identifier:(NSString*)ident andImageURL:(NSURL*)imageUrl
 {
     self = [super initWithFrame:frame];
     if (self)
     {
+      identifier = [NSString stringWithString:ident];
       [self setContentMode:UIViewContentModeScaleAspectFit];
       if (!ai)
       {
@@ -34,16 +35,6 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
-
 - (void)connection:(NSURLConnection *)theConnection	didReceiveData:(NSData *)incrementalData {
   if (data==nil) data = [[NSMutableData alloc] initWithCapacity:2048];
   [data appendData:incrementalData];
@@ -51,8 +42,6 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)theConnection 
 {
-  //const char* pChars = (char*)[data mutableBytes];
-  //printf("cnx done:\n%s\n", pChars);
   [self setImage:[UIImage imageWithData: data] forState:UIControlStateNormal]; 
   [ai removeFromSuperview];
 }
@@ -62,6 +51,11 @@
   [connection release];
   [ai release];
   [super dealloc];
+}
+
+- (NSString *)description
+{
+  return identifier;
 }
 
 @end

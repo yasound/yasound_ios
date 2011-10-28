@@ -18,6 +18,8 @@
   const int H = frame.size.height - interline;
   const int W = H;
 
+  tiles = [[NSMutableArray alloc] initWithCapacity:[destinations count]];
+  
   self = [super initWithFrame:frame];
   if (self)
   {
@@ -38,11 +40,25 @@
       NSURL* url = [NSURL URLWithString:str];
       
       //Tile* pButton = [[[NSBundle mainBundle] loadNibNamed:@"TileView" owner:self options:nil] objectAtIndex:0];
-      Tile* pButton = [[Tile alloc] initWithFrame:CGRectMake(4 + (k * (4 + W)), 0, W, H) andImageURL: url];
+      Tile* pButton = [[Tile alloc] initWithFrame:CGRectMake(4 + (k * (4 + W)), 0, W, H) identifier:str andImageURL: url];
+      [tiles addObject: pButton];
       [pScroll addSubview:pButton];
     }
   }
   return self;
+}
+
+- (void)dealloc
+{
+  [tiles release];
+}
+
+- (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
+{
+  for (Tile* tile in tiles)
+  {
+    [tile addTarget:target action:action forControlEvents:controlEvents];
+  }
 }
 
 /*
