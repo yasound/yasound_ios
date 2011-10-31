@@ -11,6 +11,7 @@
 #import "MenuHeader.h"
 #import "SlidingMenu.h"
 #import "AudioStreamer.h"
+#import "ASIFormDataRequest.h"
 
 @implementation YasoundAppDelegate
 
@@ -64,6 +65,16 @@
 {
   Tile* pTile = (Tile*)sender;
   NSLog(@"Button pressed: %@", [pTile description]);
+  
+  NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpost/"];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+	[request addPostValue:@"meeloo" forKey:@"username"];
+	[request addPostValue:@"pipo" forKey:@"password"];
+  [request addPostValue:@"Some shit I want to say" forKey:@"posttext"];
+	[request setDelegate:self];
+	[request startSynchronous];
+
+  NSLog(@"Request sent: %@\n\n", request.responseString);
 }
 
 
