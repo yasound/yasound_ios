@@ -65,6 +65,14 @@
 {
   Tile* pTile = (Tile*)sender;
   NSLog(@"Button pressed: %@", [pTile description]);
+
+  {
+    // Needed to init cookies
+    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/all/"];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDelegate:self];
+    [request startSynchronous];
+  }
   
   NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpost/"];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
@@ -74,7 +82,10 @@
 	[request setDelegate:self];
 	[request startSynchronous];
 
-  NSLog(@"Request sent: %@\n\n", request.responseString);
+  NSLog(@"Request sent, response we got: %@\n\n", request.responseString);
+  NSLog(@"status message: %@\n\n", request.responseStatusMessage);
+  NSLog(@"cookies: %@\n\n", request.responseCookies);
+  //[request release];
 }
 
 
