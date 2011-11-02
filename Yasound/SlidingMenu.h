@@ -13,6 +13,6 @@
   NSMutableArray* tiles;
 }
 
-- (id)initWithFrame:(CGRect)frame name:(NSString*)name names:(NSArray*)names andDestinations:(NSArray*)destinations;
+- (id)initWithFrame:(CGRect)frame menuName:(NSString*)name names:(NSArray*)names captions:(NSArray*)captions andDestinations:(NSArray*)destinations;
 - (void)addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
 @end

@@ -99,7 +99,7 @@
     "_0019_jay-z1.png"
   };
   
-  const char* names[] =
+  const char* styleNames[] =
   {
     "Lounge",
     "Techno",
@@ -122,11 +122,60 @@
     "Ibiza",
     "Francofolies"
   };
-
+  
+  const char* songNames[] =
+  {
+    "Islands",
+    "Still Sound",
+    "Plique (Original Mix)",
+    "Love Is All",
+    "Casimir Pulaski Day",
+    "Drying Oasis (Matt Star Remix)",
+    "Dutchie Courage",
+    "Where I belong",
+    "Me and You",
+    "Tempo de amor",
+    "Fyah Fyah",
+    "Lacrimosa",
+    "Over You",
+    "Fattie Boom Boom",
+    "15 Step",
+    "Till There Was You",
+    "Slippin",
+    "What Yo Gonna Do",
+    "Wonton",
+    "No Other Way"
+  };
+  
+  const char* artistsNames[] =
+  {
+    "The xx",
+    "Toro Y Moi",
+    "TDR",
+    "Tallest Man on Earth, the",
+    "Sufjan Stevens",
+    "Stella",
+    "Star Slinger",
+    "Sia",
+    "She & Him",
+    "Seu Jorge & Almaz",
+    "Selah Sue",
+    "Regina Spektor",
+    "Raphael Saadiq",
+    "Rankin Dread",
+    "Radiohead",
+    "Rachael Starr",
+    "Quadron",
+    "Plan B",
+    "The Phoenix Foundation",
+    "Paolo Nutini"
+  };
+  
   for (int i = 0; menuName[i]; i ++)
   {
     NSMutableArray* array = [[NSMutableArray alloc] init];
     NSMutableArray* radioNames = [[NSMutableArray alloc] init];
+    NSMutableArray* captions = [[NSMutableArray alloc] init];
     int count = 5 + rand() % 5;
     
     for (int img = 0; img < count; img++)
@@ -134,12 +183,13 @@
 
       NSString* url = [[NSString alloc] initWithFormat:@"http://meeloo.net/~meeloo/squares/%s", imgs[ndx] ];
       [array addObject:url];
-      [radioNames addObject:[NSString stringWithCString:names[ndx] encoding:NSUTF8StringEncoding]];
+      [radioNames addObject:[NSString stringWithCString:styleNames[ndx] encoding:NSUTF8StringEncoding]];
+      [captions addObject:[NSString stringWithCString:songNames[ndx] encoding:NSUTF8StringEncoding]];
       ndx++;
       ndx %= 20;
     }
     
-    SlidingMenu* menu = [[SlidingMenu alloc] initWithFrame:CGRectMake(0, y, mpScrollView.frame.size.width, HH) name:[NSString stringWithCString:menuName[i] encoding:NSUTF8StringEncoding] names:radioNames andDestinations:array];
+    SlidingMenu* menu = [[SlidingMenu alloc] initWithFrame:CGRectMake(0, y, mpScrollView.frame.size.width, HH) menuName:[NSString stringWithCString:menuName[i] encoding:NSUTF8StringEncoding] names:radioNames captions:captions andDestinations:array];
     y += HH;
     [menu addTarget:self action:@selector(TileActivated:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -147,6 +197,8 @@
   }
 
   [mpScrollView setContentSize:CGSizeMake(320, y)];
+
+  self.window.frame = [UIScreen mainScreen].applicationFrame;
 
 }
 

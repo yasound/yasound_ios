@@ -13,7 +13,7 @@
 
 @synthesize ai,connection, data;
 
-- (id)initWithFrame:(CGRect)frame identifier:(NSString*)ident andImageURL:(NSURL*)imageUrl
+- (id)initWithFrame:(CGRect)frame identifier:(NSString*)ident caption:(NSString*)captionStr andImageURL:(NSURL*)imageUrl
 {
     self = [super initWithFrame:frame];
     if (self)
@@ -37,7 +37,7 @@
       caption = [[UILabel alloc] initWithFrame:CGRectMake(0, r.size.height - 20, r.size.width, 20)];
       caption.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.5];
       caption.textColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:.9];
-      caption.text = @"Caption!";
+      caption.text = captionStr;
       [imageView addSubview:caption];
       
       if (!ai)

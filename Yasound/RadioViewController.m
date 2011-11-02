@@ -13,6 +13,8 @@
 #define LOCAL 1 // use localhost as the server
 
 @implementation Message
+@synthesize identifier;
+@synthesize kind;
 @synthesize date;
 @synthesize user;
 @synthesize message;
@@ -37,6 +39,8 @@
     [avatarImages setObject:img forKey:@"jmp"];
     img = [UIImage imageNamed:@"avatar3"];
     [avatarImages setObject:img forKey:@"bruno"];
+
+    currentMessage = nil;
   }
   return self;
 }
@@ -99,6 +103,7 @@
 {
   if (messageInput.text.length != 0)
     [self sendMessage:messageInput.text];
+  messageInput.text = @"";
 }
 
 - (IBAction)onLike:(id)sender
@@ -157,25 +162,117 @@
 {
   
 #if LOCAL
-  NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8080/wall/sendpost/"];
+  NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpostAPI/"];
 #else
-  NSURL *url = [NSURL URLWithString:@"http://94.100.167.5:8080/wall/sendpost/"];
+  NSURL *url = [NSURL URLWithString:@"http://94.100.167.5:8080/wall/sendpostAPI/"];
 #endif
 
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-	[request addPostValue:@"meeloo" forKey:@"username"];
+	[request addPostValue:@"meeloo" forKey:@"author"];
 	[request addPostValue:@"pipo" forKey:@"password"];
+	[request addPostValue:@"text" forKey:@"kind"];
   [request addPostValue:message forKey:@"posttext"];
 	[request setDelegate:self];
 	[request startSynchronous];
   
-  //NSLog(@"Request sent, response we got: %@\n\n", request.responseString);
+  NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
   NSLog(@"status message: %@\n\n", request.responseStatusMessage);
   //NSLog(@"cookies: %@\n\n", request.responseCookies);
   //[request release];
   
-  [self addMessage:message fromUser:@"meeloo" withDate:@"now" interactive:YES];
+  NSXMLParser* parser = [[NSXMLParser alloc] initWithData:request.responseData];
+  [parser setDelegate:self];
+  [parser parse];
+  
+  //[self addMessage:message fromUser:@"meeloo" withDate:@"now" interactive:YES];
+  [self layoutMessages];
 }
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict 
+{
+  NSLog(@"XML start element: %@", elementName);
+  
+  if ( [elementName isEqualToString:@"post"]) 
+  {
+    currentMessage = [[Message alloc] init];
+  }
+  
+
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string 
+{
+  if (!currentXMLString)
+  {
+    // currentXMLString is an NSMutableString instance variable
+    currentXMLString = [[NSMutableString alloc] initWithCapacity:50];
+  }
+  [currentXMLString appendString:string];
+}
+
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+  NSString* str = [currentXMLString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+  NSLog(@"XML end element: %@", elementName);
+  if ( [elementName isEqualToString:@"post"]) 
+  {
+    if ([messagesArray count] == 0 || currentMessage.identifier > ((Message*)[messagesArray objectAtIndex:0]).identifier)
+    {
+      NSLog(@"New post: %d\n", currentMessage.identifier);
+ 
+      WallMessage* wm = [[WallMessage alloc] initWithNibName:@"WallMessage" bundle:nil];
+      UIImage* img = (UIImage*)[avatarImages objectForKey:currentMessage.user];
+      
+      Message* m = [[Message alloc] init];
+      m.user = currentMessage.user;
+      m.date = currentMessage.date;
+      m.message = currentMessage.message;
+      m.wallMessage = wm;
+      
+      [wall addSubview:wm.view];
+      wm.image.image = img;
+      wm.message.text = currentMessage.message;
+      wm.title.text = [NSString stringWithFormat:@"%@ - %@", currentMessage.date, currentMessage.user];
+      
+      if (backgroundShade)
+        wm.view.backgroundColor = [UIColor colorWithWhite:.97 alpha:1];
+      else
+        wm.view.backgroundColor = [UIColor colorWithWhite:1 alpha:1];
+      
+      backgroundShade = !backgroundShade;
+      [messagesArray insertObject:m atIndex:0];
+    }
+    else
+      [currentMessage release];
+    currentMessage = nil;
+  }
+  else if ( [elementName isEqualToString:@"id"]) 
+  {
+    currentMessage.identifier = str.intValue;
+  }
+  else if ( [elementName isEqualToString:@"kind"]) 
+  {
+    currentMessage.kind = str;
+  }
+  else if ( [elementName isEqualToString:@"author"]) 
+  {
+    currentMessage.user = str;
+  }
+  else if ( [elementName isEqualToString:@"date"]) 
+  {
+    currentMessage.date = str;
+  }
+  else if ( [elementName isEqualToString:@"message"]) 
+  {
+    currentMessage.message = str;
+  }
+  
+  [currentXMLString release];
+  //[str release];
+  currentXMLString = nil;
+}
+
 
 -(void) layoutMessages
 {
@@ -221,5 +318,14 @@
   if (interactive)
     [wall scrollRectToVisible:CGRectMake(0, 0, 320, 50) animated:YES];
 }
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+  [textField endEditing:TRUE];
+  return FALSE;
+}
+
+
 
 @end

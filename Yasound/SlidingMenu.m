@@ -12,7 +12,7 @@
 
 @implementation SlidingMenu
 
-- (id)initWithFrame:(CGRect)frame name:(NSString*)name names:(NSArray*)names andDestinations:(NSArray*)destinations
+- (id)initWithFrame:(CGRect)frame menuName:(NSString*)name names:(NSArray*)names captions:(NSArray*)captions andDestinations:(NSArray*)destinations
 {
   const int interline = 22;
   const int H = frame.size.height - interline;
@@ -47,10 +47,11 @@
     {
       NSString* str = (NSString*)[destinations objectAtIndex:k];
       NSURL* url = [NSURL URLWithString:str];
-      NSString* tilename = (NSString*)[names objectAtIndex:k];
+      NSString* tileName = (NSString*)[names objectAtIndex:k];
+      NSString* captionName = (NSString*)[captions objectAtIndex:k];
       
       //Tile* pButton = [[[NSBundle mainBundle] loadNibNamed:@"TileView" owner:self options:nil] objectAtIndex:0];
-      Tile* pButton = [[Tile alloc] initWithFrame:CGRectMake(4 + (k * (4 + W)), 0, W, H) identifier:tilename andImageURL: url];
+      Tile* pButton = [[Tile alloc] initWithFrame:CGRectMake(4 + (k * (4 + W)), 0, W, H) identifier:tileName caption:captionName andImageURL: url];
       [tiles addObject: pButton];
       [pScroll addSubview:pButton];
     }
