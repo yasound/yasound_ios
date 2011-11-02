@@ -16,7 +16,7 @@
 {
   const int interline = 22;
   const int H = frame.size.height - interline;
-  const int W = H;
+  const int W = H * .85;
 
   tiles = [[NSMutableArray alloc] initWithCapacity:[destinations count]];
   
@@ -26,9 +26,18 @@
     // Title:
     MenuHeader* pLabel = [[MenuHeader alloc] initWithFrame:CGRectMake(0, 0, 320, interline) andText:name];
     [self addSubview:pLabel];
+
+    // Background image:
+    CGRect menurect = CGRectMake(0, interline, frame.size.width, H);
+
+    UIImage* bgimg = [UIImage imageNamed:@"MenuBg@2x.png"];
+    UIImageView* bg = [[UIImageView alloc] initWithImage:bgimg];
+    bg.frame = menurect;
+    bg.contentMode = UIViewContentModeScaleToFill;
+    [self addSubview:bg];
     
     // Scroll view with images as buttons:
-    UIScrollView* pScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, interline, frame.size.width, H)];
+    UIScrollView* pScroll = [[UIScrollView alloc] initWithFrame:menurect];
     [self addSubview:pScroll];
     [pScroll setScrollEnabled:TRUE];
     [pScroll setContentSize:CGSizeMake(4 + (W + 4) * destinations.count, H)];

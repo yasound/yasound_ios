@@ -15,7 +15,7 @@
   //WebImageView* image;
   UILabel* title;
   UILabel* caption;
-  
+  UIImageView* imageView;
   NSString* identifier;
 
   NSURLConnection *connection;

@@ -23,6 +23,7 @@
 		E5280A601460412D00A88910 /* RadioCreator.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5280A5E1460412D00A88910 /* RadioCreator.xib */; };
 		E5280A631460AFB400A88910 /* CreateMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5280A611460AFB400A88910 /* CreateMyRadio@2x.png */; };
 		E5280A641460AFB400A88910 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5280A621460AFB400A88910 /* logo@2x.png */; };
+		E5280A661460D88B00A88910 /* MenuBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5280A651460D88B00A88910 /* MenuBg@2x.png */; };
 		E53A7AFC1456FA9900B74F84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AEE1456FA3600B74F84 /* AudioToolbox.framework */; };
 		E53A7AFD1456FA9900B74F84 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */; };
 		E53A7AFF1456FAB800B74F84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */; };
@@ -71,6 +72,7 @@
 		E5280A5E1460412D00A88910 /* RadioCreator.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioCreator.xib; sourceTree = "<group>"; };
 		E5280A611460AFB400A88910 /* CreateMyRadio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadio@2x.png"; sourceTree = SOURCE_ROOT; };
 		E5280A621460AFB400A88910 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = SOURCE_ROOT; };
+		E5280A651460D88B00A88910 /* MenuBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBg@2x.png"; sourceTree = SOURCE_ROOT; };
 		E53A7AEE1456FA3600B74F84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E53A7AF01456FA4000B74F84 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E53A7AF21456FA4700B74F84 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -181,6 +183,7 @@
 				E5280A621460AFB400A88910 /* logo@2x.png */,
 				E53A7B48145856D900B74F84 /* MainWindow.xib */,
 				E5280A5E1460412D00A88910 /* RadioCreator.xib */,
+				E5280A651460D88B00A88910 /* MenuBg@2x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				E5280A601460412D00A88910 /* RadioCreator.xib in Resources */,
 				E5280A631460AFB400A88910 /* CreateMyRadio@2x.png in Resources */,
 				E5280A641460AFB400A88910 /* logo@2x.png in Resources */,
+				E5280A661460D88B00A88910 /* MenuBg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
