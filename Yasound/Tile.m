@@ -24,7 +24,7 @@
       // Title:
       title = [[UILabel alloc] initWithFrame:CGRectMake(3, 3, frame.size.width - 6, 20)];
       title.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-      title.text = @"Title!";
+      title.text = ident;
       [self addSubview:title];
       
       // Image View:

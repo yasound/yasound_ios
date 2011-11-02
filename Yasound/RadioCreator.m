@@ -35,6 +35,11 @@
     return self;
 }
 
+- (IBAction)onRadioCreated:(id)sender
+{
+  [[UIApplication sharedApplication].delegate onAccessRadio:sender];
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -65,11 +70,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)CreateRadio:(id)sender
-{
-  NSLog(@"Create Radio!\n");
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
   return 1;
@@ -91,7 +91,7 @@
   static NSString *MyIdentifier = @"MyIdentifier";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
   if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier] autorelease];
+    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:MyIdentifier] autorelease];
   }
  
   MPMediaPlaylist* item = [lists objectAtIndex: indexPath.row];
@@ -100,6 +100,8 @@
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
   else
     cell.accessoryType = UITableViewCellAccessoryNone;
+  
+  cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", item.count];
   return cell;
 }
 
@@ -122,6 +124,12 @@
   }
   
   cell.selected = FALSE;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+  [textField endEditing:TRUE];
+  return FALSE;
 }
 
 @end

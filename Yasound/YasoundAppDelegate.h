@@ -10,12 +10,16 @@
 
 @class AudioStreamer;
 @class RadioCreator;
+@class RadioViewController;
 
 @interface YasoundAppDelegate : NSObject <UIApplicationDelegate>
 {
   UIScrollView* mpScrollView;
   RadioCreator* mpCreator;
   AudioStreamer* mpStreamer;
+  RadioViewController* mpRadio;
+  
+  BOOL radioCreated;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -23,5 +27,6 @@
 - (void) createRadioList;
 - (IBAction)onCreateRadio:(id)sender;
 - (IBAction)onAccessRadio:(id)sender;
+- (IBAction)onQuitRadio:(id)sender;
 
 @end

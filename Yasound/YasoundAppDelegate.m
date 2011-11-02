@@ -13,6 +13,7 @@
 #import "AudioStreamer.h"
 #import "ASIFormDataRequest.h"
 #import "RadioCreator.h"
+#import "RadioViewController.h"
 
 @implementation YasoundAppDelegate
 
@@ -25,23 +26,19 @@
 
   mpCreator = nil;
   mpScrollView = nil;
+  mpRadio = nil;
   
   [self createRadioList];
   
   self.window.frame = [UIScreen mainScreen].applicationFrame;
 
+  radioCreated = FALSE;
+  
   return YES;
 }
 
 - (void) createRadioList
 {
-  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/ubik.mp3"];
-  mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
-  [mpStreamer retain];
-  [mpStreamer start];
-  
-  
-  const int K = 10;
   const int H = 128;
   const int interline = 22;
   const int HH = H + interline;
@@ -69,42 +66,80 @@
   
   int ndx = 0;
   
-  for (int i = 0; i < K; i ++)
+  const char* menuName[] = 
+  {
+    "Selection",
+    "Favoris",
+    "Amis",
+    "Top",
+    NULL
+  };
+
+  const char* imgs[] =
+  {
+    "_0000_!cid_9B60C937-509D-43B7-BB48-1DC93D7A775C@Home.png",
+    "_0001_oeuf.png",
+    "_0002_bars.png",
+    "_0003_DJ-Emir-Santana-03med.png",
+    "_0004_dj_tiesto-club-life-054.png",
+    "_0005_david-guetta-4.png",
+    "_0006_black-eyed-peas-2.png",
+    "_0007_beatbox-felix-zenger_imagenGrande.png",
+    "_0008_iStock_000011183454Small.png",
+    "_0009_iStock_000010132117Medium.png",
+    "_0010_iStock_000002712770XSmall.png",
+    "_0011_iStock_000002129524Small.png",
+    "_0012_EVE201008181316578569.png",
+    "_0013_PachaIbiza.png",
+    "_0014_NewsRadio.png",
+    "_0015_LibreAntenne.png",
+    "_0016_Kurt.png",
+    "_0017_lionel-messi.png",
+    "_0018_Lady-Gaga.png|",
+    "_0019_jay-z1.png"
+  };
+  
+  const char* names[] =
+  {
+    "Lounge",
+    "Techno",
+    "Rock",
+    "Folk",
+    "House",
+    "Trance",
+    "Dynam'hit",
+    "Nouvelle scène",
+    "Pop",
+    "Hard",
+    "Reggae",
+    "Films",
+    "Pubs",
+    "Soul",
+    "Funk",
+    "Classique",
+    "Années 80",
+    "Nouveautés",
+    "Ibiza",
+    "Francofolies"
+  };
+
+  for (int i = 0; menuName[i]; i ++)
   {
     NSMutableArray* array = [[NSMutableArray alloc] init];
+    NSMutableArray* radioNames = [[NSMutableArray alloc] init];
     int count = 5 + rand() % 5;
     
     for (int img = 0; img < count; img++)
     {
-      char* imgs[] =
-      {
-        "_0000_!cid_9B60C937-509D-43B7-BB48-1DC93D7A775C@Home.png",
-        "_0001_oeuf.png",
-        "_0002_bars.png",
-        "_0003_DJ-Emir-Santana-03med.png",
-        "_0004_dj_tiesto-club-life-054.png",
-        "_0005_david-guetta-4.png",
-        "_0006_black-eyed-peas-2.png",
-        "_0007_beatbox-felix-zenger_imagenGrande.png",
-        "_0008_iStock_000011183454Small.png",
-        "_0009_iStock_000010132117Medium.png",
-        "_0010_iStock_000002712770XSmall.png",
-        "_0011_iStock_000002129524Small.png",
-        "_0012_EVE201008181316578569.png",
-        "_0013_PachaIbiza.png",
-        "_0014_NewsRadio.png",
-        "_0015_LibreAntenne.png",
-        "_0016_Kurt.png",
-        "_0017_lionel-messi.png",
-        "_0018_Lady-Gaga.png|",
-        "_0019_jay-z1.png"
-      };
-      
-      NSString* url = [[NSString alloc] initWithFormat:@"http://meeloo.net/~meeloo/squares/%s", imgs[ndx++ % 20] ];
+
+      NSString* url = [[NSString alloc] initWithFormat:@"http://meeloo.net/~meeloo/squares/%s", imgs[ndx] ];
       [array addObject:url];
+      [radioNames addObject:[NSString stringWithCString:names[ndx] encoding:NSUTF8StringEncoding]];
+      ndx++;
+      ndx %= 20;
     }
     
-    SlidingMenu* menu = [[SlidingMenu alloc] initWithFrame:CGRectMake(0, y, mpScrollView.frame.size.width, HH) name:@"MENU NAME" andDestinations:array];
+    SlidingMenu* menu = [[SlidingMenu alloc] initWithFrame:CGRectMake(0, y, mpScrollView.frame.size.width, HH) name:[NSString stringWithCString:menuName[i] encoding:NSUTF8StringEncoding] names:radioNames andDestinations:array];
     y += HH;
     [menu addTarget:self action:@selector(TileActivated:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -119,33 +154,17 @@
 {
   Tile* pTile = (Tile*)sender;
   NSLog(@"Button pressed: %@", [pTile description]);
-  
-  {
-    // Needed to init cookies
-    NSURL *url = [NSURL URLWithString:@"http://94.100.167.5:8080/wall/all/"];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDelegate:self];
-    [request startSynchronous];
-  }
-  
-  NSURL *url = [NSURL URLWithString:@"http://94.100.167.5:8080/wall/sendpost/"];
-	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-	[request addPostValue:@"meeloo" forKey:@"username"];
-	[request addPostValue:@"pipo" forKey:@"password"];
-  [request addPostValue:@"Some shit I want to say" forKey:@"posttext"];
-	[request setDelegate:self];
-	[request startSynchronous];
-  
-  NSLog(@"Request sent, response we got: %@\n\n", request.responseString);
-  NSLog(@"status message: %@\n\n", request.responseStatusMessage);
-  NSLog(@"cookies: %@\n\n", request.responseCookies);
-  //[request release];
-  
+
   [mpScrollView removeFromSuperview];
   mpScrollView = nil;
   
-//  mpCreator = [[RadioCreator alloc] initWithNibName:@"RadioCreator" bundle:nil];
-//  [self.window addSubview: mpCreator.view];
+  mpRadio = [[RadioViewController alloc] initWithNibName:@"RadioViewController" bundle:nil];
+  [self.window addSubview: mpRadio.view];
+
+  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/cedric.mp3"];
+  mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
+  [mpStreamer retain];
+  [mpStreamer start];
 }
 
 - (IBAction)onCreateRadio:(id)sender
@@ -155,15 +174,38 @@
   
   mpCreator = [[RadioCreator alloc] initWithNibName:@"RadioCreator" bundle:nil];
   [self.window addSubview: mpCreator.view];
+  
+  radioCreated = TRUE;
 }
 
 - (IBAction)onAccessRadio:(id)sender
 {
   [mpScrollView removeFromSuperview];
+  [mpScrollView release];
   mpScrollView = nil;
+  [mpCreator.view removeFromSuperview];
+  [mpCreator release];
+  mpCreator = nil;
   
-  mpCreator = [[RadioCreator alloc] initWithNibName:@"RadioCreator" bundle:nil];
-  [self.window addSubview: mpCreator.view];
+  mpRadio = [[RadioViewController alloc] initWithNibName:@"RadioViewController" bundle:nil];
+  [self.window addSubview: mpRadio.view];
+  
+  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/cedric.mp3"];
+  mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
+  [mpStreamer retain];
+  [mpStreamer start];
+}
+
+- (IBAction)onQuitRadio:(id)sender
+{
+  [mpStreamer stop];
+  [mpStreamer release];
+  mpStreamer = nil;
+  [mpRadio.view removeFromSuperview];
+  [mpRadio release];
+  mpRadio = nil;
+  
+  [self createRadioList];
 }
 
 

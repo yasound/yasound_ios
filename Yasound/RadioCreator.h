@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RadioCreator : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@interface RadioCreator : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
   IBOutlet UITextField* radioName;
   IBOutlet UITableView* playlists;
@@ -19,5 +19,6 @@
 }
 
 - (IBAction)CreateRadio:(id)sender;
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
 @end
