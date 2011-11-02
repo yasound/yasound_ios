@@ -19,6 +19,10 @@
 		E5280A56145EFFD900A88910 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A55145EFFD900A88910 /* libz.dylib */; };
 		E5280A58145F005B00A88910 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A57145F005B00A88910 /* MobileCoreServices.framework */; };
 		E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
+		E5280A5F1460412D00A88910 /* RadioCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = E5280A5D1460412D00A88910 /* RadioCreator.m */; };
+		E5280A601460412D00A88910 /* RadioCreator.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5280A5E1460412D00A88910 /* RadioCreator.xib */; };
+		E5280A631460AFB400A88910 /* CreateMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5280A611460AFB400A88910 /* CreateMyRadio@2x.png */; };
+		E5280A641460AFB400A88910 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5280A621460AFB400A88910 /* logo@2x.png */; };
 		E53A7AFC1456FA9900B74F84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AEE1456FA3600B74F84 /* AudioToolbox.framework */; };
 		E53A7AFD1456FA9900B74F84 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */; };
 		E53A7AFF1456FAB800B74F84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */; };
@@ -62,6 +66,11 @@
 		E5280A55145EFFD900A88910 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E5280A57145F005B00A88910 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E5280A59145F006C00A88910 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E5280A5C1460412D00A88910 /* RadioCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioCreator.h; sourceTree = "<group>"; };
+		E5280A5D1460412D00A88910 /* RadioCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioCreator.m; sourceTree = "<group>"; };
+		E5280A5E1460412D00A88910 /* RadioCreator.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioCreator.xib; sourceTree = "<group>"; };
+		E5280A611460AFB400A88910 /* CreateMyRadio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadio@2x.png"; sourceTree = SOURCE_ROOT; };
+		E5280A621460AFB400A88910 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = SOURCE_ROOT; };
 		E53A7AEE1456FA3600B74F84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E53A7AF01456FA4000B74F84 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E53A7AF21456FA4700B74F84 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -165,12 +174,20 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		E5280A5B146040E900A88910 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E5280A611460AFB400A88910 /* CreateMyRadio@2x.png */,
+				E5280A621460AFB400A88910 /* logo@2x.png */,
+				E53A7B48145856D900B74F84 /* MainWindow.xib */,
+				E5280A5E1460412D00A88910 /* RadioCreator.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
-				E5280A59145F006C00A88910 /* SystemConfiguration.framework */,
-				E5280A57145F005B00A88910 /* MobileCoreServices.framework */,
-				E5280A55145EFFD900A88910 /* libz.dylib */,
 				E5A9A3B31454DC0500EA374C /* Yasound */,
 				E5A9A3B41454DC0500EA374C /* Supporting Files */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
@@ -189,6 +206,9 @@
 		E5A9A3AC1454DC0500EA374C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5280A59145F006C00A88910 /* SystemConfiguration.framework */,
+				E5280A57145F005B00A88910 /* MobileCoreServices.framework */,
+				E5280A55145EFFD900A88910 /* libz.dylib */,
 				E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */,
 				E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */,
 				E53A7AF41456FA5400B74F84 /* CoreMedia.framework */,
@@ -205,6 +225,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
+				E5280A5B146040E900A88910 /* Resources */,
 				E5280A04145EFE6B00A88910 /* ASIHTTPRequest */,
 				E53A7B211457714700B74F84 /* AudioStreamer.h */,
 				E53A7B221457714700B74F84 /* AudioStreamer.m */,
@@ -219,7 +240,8 @@
 				E53A7B2B1457714700B74F84 /* WebImageView.m */,
 				E53A7B281457714700B74F84 /* YasoundAppDelegate.h */,
 				E53A7B291457714700B74F84 /* YasoundAppDelegate.m */,
-				E53A7B48145856D900B74F84 /* MainWindow.xib */,
+				E5280A5C1460412D00A88910 /* RadioCreator.h */,
+				E5280A5D1460412D00A88910 /* RadioCreator.m */,
 			);
 			path = Yasound;
 			sourceTree = "<group>";
@@ -289,6 +311,9 @@
 			files = (
 				E5A9A3B81454DC0500EA374C /* InfoPlist.strings in Resources */,
 				E53A7B49145856D900B74F84 /* MainWindow.xib in Resources */,
+				E5280A601460412D00A88910 /* RadioCreator.xib in Resources */,
+				E5280A631460AFB400A88910 /* CreateMyRadio@2x.png in Resources */,
+				E5280A641460AFB400A88910 /* logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +340,7 @@
 				E5280A44145EFE6B00A88910 /* ASIInputStream.m in Sources */,
 				E5280A45145EFE6B00A88910 /* ASINetworkQueue.m in Sources */,
 				E5280A54145EFE6B00A88910 /* Reachability.m in Sources */,
+				E5280A5F1460412D00A88910 /* RadioCreator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

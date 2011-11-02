@@ -12,6 +12,7 @@
 #import "SlidingMenu.h"
 #import "AudioStreamer.h"
 #import "ASIFormDataRequest.h"
+#import "RadioCreator.h"
 
 @implementation YasoundAppDelegate
 
@@ -22,6 +23,18 @@
   // Override point for customization after application launch.
   [self.window makeKeyAndVisible];
 
+  mpCreator = nil;
+  mpScrollView = nil;
+  
+  [self createRadioList];
+  
+  self.window.frame = [UIScreen mainScreen].applicationFrame;
+
+  return YES;
+}
+
+- (void) createRadioList
+{
   NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/ubik.mp3"];
   mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
   [mpStreamer retain];
@@ -36,9 +49,25 @@
   mpScrollView = [[UIScrollView alloc] initWithFrame:self.window.frame];
   [self.window addSubview:mpScrollView];
   [mpScrollView setScrollEnabled:TRUE];
-  [mpScrollView setContentSize:CGSizeMake(320, H * K)];
 
-  srand(time(NULL));
+  int y = 0;
+
+  UIImage* logo = [UIImage imageNamed:@"logo.png"];
+  UIImageView* logoview = [[UIImageView alloc] initWithImage: logo];
+  [mpScrollView addSubview:logoview];
+  logoview.frame = CGRectMake(160 - logo.size.width / 2, 20, logo.size.width, logo.size.height);
+  
+  y += 40 + logo.size.height;
+
+  UIButton* myradio = [UIButton buttonWithType:UIButtonTypeCustom];
+  UIImage* myradioimg = [UIImage imageNamed:@"CreateMyRadio.png"];
+  myradio.frame = CGRectMake(0, y, myradioimg.size.width, myradioimg.size.height);
+  y += myradioimg.size.height;
+  [myradio setImage:myradioimg forState:UIControlStateNormal];
+  [myradio addTarget:self action:@selector(onCreateRadio:) forControlEvents:UIControlEventTouchUpInside];
+  [mpScrollView addSubview:myradio];
+  
+  int ndx = 0;
   
   for (int i = 0; i < K; i ++)
   {
@@ -47,25 +76,50 @@
     
     for (int img = 0; img < count; img++)
     {
-      NSString* url = [[NSString alloc] initWithFormat:@"http://meeloo.net/~meeloo/squares/img_%03d.jpg", rand() % 500];
+      char* imgs[] =
+      {
+        "_0000_!cid_9B60C937-509D-43B7-BB48-1DC93D7A775C@Home.png",
+        "_0001_oeuf.png",
+        "_0002_bars.png",
+        "_0003_DJ-Emir-Santana-03med.png",
+        "_0004_dj_tiesto-club-life-054.png",
+        "_0005_david-guetta-4.png",
+        "_0006_black-eyed-peas-2.png",
+        "_0007_beatbox-felix-zenger_imagenGrande.png",
+        "_0008_iStock_000011183454Small.png",
+        "_0009_iStock_000010132117Medium.png",
+        "_0010_iStock_000002712770XSmall.png",
+        "_0011_iStock_000002129524Small.png",
+        "_0012_EVE201008181316578569.png",
+        "_0013_PachaIbiza.png",
+        "_0014_NewsRadio.png",
+        "_0015_LibreAntenne.png",
+        "_0016_Kurt.png",
+        "_0017_lionel-messi.png",
+        "_0018_Lady-Gaga.png|",
+        "_0019_jay-z1.png"
+      };
+      
+      NSString* url = [[NSString alloc] initWithFormat:@"http://meeloo.net/~meeloo/squares/%s", imgs[ndx++ % 20] ];
       [array addObject:url];
     }
     
-    SlidingMenu* menu = [[SlidingMenu alloc] initWithFrame:CGRectMake(0, i * HH, mpScrollView.frame.size.width, HH) name:@"MENU NAME" andDestinations:array];
+    SlidingMenu* menu = [[SlidingMenu alloc] initWithFrame:CGRectMake(0, y, mpScrollView.frame.size.width, HH) name:@"MENU NAME" andDestinations:array];
+    y += HH;
     [menu addTarget:self action:@selector(TileActivated:) forControlEvents:UIControlEventTouchUpInside];
+
     [mpScrollView addSubview:menu];
   }
 
-  self.window.frame = [UIScreen mainScreen].applicationFrame;
+  [mpScrollView setContentSize:CGSizeMake(320, y)];
 
-  return YES;
 }
 
 - (IBAction)TileActivated:(id)sender
 {
   Tile* pTile = (Tile*)sender;
   NSLog(@"Button pressed: %@", [pTile description]);
-
+  
   {
     // Needed to init cookies
     NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/all/"];
@@ -81,11 +135,35 @@
   [request addPostValue:@"Some shit I want to say" forKey:@"posttext"];
 	[request setDelegate:self];
 	[request startSynchronous];
-
+  
   NSLog(@"Request sent, response we got: %@\n\n", request.responseString);
   NSLog(@"status message: %@\n\n", request.responseStatusMessage);
   NSLog(@"cookies: %@\n\n", request.responseCookies);
   //[request release];
+  
+  [mpScrollView removeFromSuperview];
+  mpScrollView = nil;
+  
+//  mpCreator = [[RadioCreator alloc] initWithNibName:@"RadioCreator" bundle:nil];
+//  [self.window addSubview: mpCreator.view];
+}
+
+- (IBAction)onCreateRadio:(id)sender
+{
+  [mpScrollView removeFromSuperview];
+  mpScrollView = nil;
+  
+  mpCreator = [[RadioCreator alloc] initWithNibName:@"RadioCreator" bundle:nil];
+  [self.window addSubview: mpCreator.view];
+}
+
+- (IBAction)onAccessRadio:(id)sender
+{
+  [mpScrollView removeFromSuperview];
+  mpScrollView = nil;
+  
+  mpCreator = [[RadioCreator alloc] initWithNibName:@"RadioCreator" bundle:nil];
+  [self.window addSubview: mpCreator.view];
 }
 
 
