@@ -122,13 +122,13 @@
   
   {
     // Needed to init cookies
-    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/all/"];
+    NSURL *url = [NSURL URLWithString:@"http://94.100.167.5:8080/wall/all/"];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setDelegate:self];
     [request startSynchronous];
   }
   
-  NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpost/"];
+  NSURL *url = [NSURL URLWithString:@"http://94.100.167.5:8080/wall/sendpost/"];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request addPostValue:@"meeloo" forKey:@"username"];
 	[request addPostValue:@"pipo" forKey:@"password"];
