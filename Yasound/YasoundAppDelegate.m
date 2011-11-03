@@ -57,11 +57,19 @@
   y += 40 + logo.size.height;
 
   UIButton* myradio = [UIButton buttonWithType:UIButtonTypeCustom];
-  UIImage* myradioimg = [UIImage imageNamed:@"CreateMyRadio.png"];
+  UIImage* myradioimg = nil;
+  if (radioCreated)
+    myradioimg = [UIImage imageNamed:@"radiocree.png"];
+  else 
+    myradioimg = [UIImage imageNamed:@"CreateMyRadio.png"];
+  
   myradio.frame = CGRectMake(0, y, myradioimg.size.width, myradioimg.size.height);
   y += myradioimg.size.height;
   [myradio setImage:myradioimg forState:UIControlStateNormal];
-  [myradio addTarget:self action:@selector(onCreateRadio:) forControlEvents:UIControlEventTouchUpInside];
+  if (radioCreated)
+    [myradio addTarget:self action:@selector(onAccessRadio:) forControlEvents:UIControlEventTouchUpInside];
+  else
+    [myradio addTarget:self action:@selector(onCreateRadio:) forControlEvents:UIControlEventTouchUpInside];
   [mpScrollView addSubview:myradio];
   
   int ndx = 0;

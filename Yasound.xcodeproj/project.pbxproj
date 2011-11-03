@@ -44,6 +44,7 @@
 		E5D1B3541461A32F00C395FA /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D1B3511461A32E00C395FA /* avatar1.png */; };
 		E5D1B3551461A32F00C395FA /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D1B3521461A32E00C395FA /* avatar2.png */; };
 		E5D1B3561461A32F00C395FA /* avatar3.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D1B3531461A32F00C395FA /* avatar3.png */; };
+		E5D1B35914622CFF00C395FA /* radiocree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D1B35814622CFF00C395FA /* radiocree@2x.png */; };
 		E5DC602C1461806300A937EE /* bouton-retour.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC602B1461806300A937EE /* bouton-retour.png */; };
 		E5DC603C1461813400A937EE /* bouton-envoyer.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC602F1461813400A937EE /* bouton-envoyer.png */; };
 		E5DC603D1461813400A937EE /* bt-achat.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60301461813400A937EE /* bt-achat.png */; };
@@ -128,6 +129,7 @@
 		E5D1B3511461A32E00C395FA /* avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar1.png; path = "../../../Library/Mail Downloads/Page radio/avatar1.png"; sourceTree = "<group>"; };
 		E5D1B3521461A32E00C395FA /* avatar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar2.png; path = "../../../Library/Mail Downloads/Page radio/avatar2.png"; sourceTree = "<group>"; };
 		E5D1B3531461A32F00C395FA /* avatar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar3.png; path = "../../../Library/Mail Downloads/Page radio/avatar3.png"; sourceTree = "<group>"; };
+		E5D1B35814622CFF00C395FA /* radiocree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radiocree@2x.png"; sourceTree = SOURCE_ROOT; };
 		E5DC602B1461806300A937EE /* bouton-retour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bouton-retour.png"; path = "../../../Library/Mail Downloads/Page radio/bouton-retour.png"; sourceTree = "<group>"; };
 		E5DC602F1461813400A937EE /* bouton-envoyer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bouton-envoyer.png"; path = "../../../Library/Mail Downloads/Page radio/bouton-envoyer.png"; sourceTree = "<group>"; };
 		E5DC60301461813400A937EE /* bt-achat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bt-achat.png"; path = "../../../Library/Mail Downloads/Page radio/bt-achat.png"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				E5DC602E1461810000A937EE /* Radio */,
 				E5280A611460AFB400A88910 /* CreateMyRadio@2x.png */,
+				E5D1B35814622CFF00C395FA /* radiocree@2x.png */,
 				E5280A621460AFB400A88910 /* logo@2x.png */,
 				E53A7B48145856D900B74F84 /* MainWindow.xib */,
 				E5280A5E1460412D00A88910 /* RadioCreator.xib */,
@@ -412,6 +415,7 @@
 				E5D1B3541461A32F00C395FA /* avatar1.png in Resources */,
 				E5D1B3551461A32F00C395FA /* avatar2.png in Resources */,
 				E5D1B3561461A32F00C395FA /* avatar3.png in Resources */,
+				E5D1B35914622CFF00C395FA /* radiocree@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

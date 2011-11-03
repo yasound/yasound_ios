@@ -10,7 +10,7 @@
 #import "ASIFormDataRequest.h"
 #import "WallMessage.h"
 
-#define LOCAL 1 // use localhost as the server
+#define LOCAL 0 // use localhost as the server
 
 @implementation Message
 @synthesize identifier;
@@ -66,10 +66,14 @@
   
 	ASIHTTPRequest *request = [ASIFormDataRequest requestWithURL:url];
 	[request setDelegate:self];
-	[request startSynchronous];
+	[request startAsynchronous];
   
-  NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
-  NSLog(@"status message: %@\n\n", request.responseStatusMessage);
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+  //NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
+  //NSLog(@"status message: %@\n\n", request.responseStatusMessage);
   //NSLog(@"cookies: %@\n\n", request.responseCookies);
   //[request release];
   
@@ -77,7 +81,6 @@
   [parser setDelegate:self];
   [parser parse];
   
-  //[self addMessage:message fromUser:@"meeloo" withDate:@"now" interactive:YES];
   [self layoutMessages];
 }
 
@@ -85,7 +88,7 @@
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
-  
+  [self updateWall];
   timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                    target:self
                                  selector:@selector(updateWall)
@@ -189,7 +192,7 @@
   [request setDelegate:self];
   [request startSynchronous];
 
-  NSLog(@"Request sent, response we got: %@\n\n", request.responseString);
+  //NSLog(@"Request sent, response we got: %@\n\n", request.responseString);
   return request.responseString;
 }
 
@@ -203,29 +206,20 @@
 #endif
 
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-	[request addPostValue:@"meeloo" forKey:@"author"];
+	//[request addPostValue:@"jmp" forKey:@"author"];
+	//[request addPostValue:@"meeloo" forKey:@"author"];
+  [request addPostValue:[[UIDevice currentDevice] name] forKey:@"author"];
+  
 	[request addPostValue:@"pipo" forKey:@"password"];
 	[request addPostValue:@"text" forKey:@"kind"];
   [request addPostValue:message forKey:@"posttext"];
 	[request setDelegate:self];
-	[request startSynchronous];
-  
-  NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
-  NSLog(@"status message: %@\n\n", request.responseStatusMessage);
-  //NSLog(@"cookies: %@\n\n", request.responseCookies);
-  //[request release];
-  
-  NSXMLParser* parser = [[NSXMLParser alloc] initWithData:request.responseData];
-  [parser setDelegate:self];
-  [parser parse];
-  
-  //[self addMessage:message fromUser:@"meeloo" withDate:@"now" interactive:YES];
-  [self layoutMessages];
+	[request startAsynchronous];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict 
 {
-  NSLog(@"XML start element: %@", elementName);
+  //NSLog(@"XML start element: %@", elementName);
   
   if ( [elementName isEqualToString:@"post"]) 
   {
@@ -249,10 +243,10 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
   NSString* str = [currentXMLString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-  NSLog(@"XML end element: %@", elementName);
+  //NSLog(@"XML end element: %@", elementName);
   if ( [elementName isEqualToString:@"post"]) 
   {
-    if ([messagesArray count] == 0 || currentMessage.identifier > ((Message*)[messagesArray objectAtIndex:0]).identifier)
+    if ([messagesArray count] < currentMessage.identifier - 1)
     {
       NSLog(@"New post: %d\n", currentMessage.identifier);
  
@@ -323,37 +317,6 @@
   
   wall.contentSize = CGSizeMake(320, y);
 }
-
-- (void) addMessage:(NSString*)msg fromUser:(NSString*)user withDate:(NSString*)date interactive:(BOOL)interactive
-{
-  WallMessage* wm = [[WallMessage alloc] initWithNibName:@"WallMessage" bundle:nil];
-  UIImage* img = (UIImage*)[avatarImages objectForKey:user];
-  
-  Message* m = [[Message alloc] init];
-  m.user = user;
-  m.date = date;
-  m.message = msg;
-  m.wallMessage = wm;
-
-  [wall addSubview:wm.view];
-  wm.image.image = img;
-  wm.message.text = msg;
-  wm.title.text = [NSString stringWithFormat:@"%@ - %@", date, user];
-
-  if (backgroundShade)
-    wm.view.backgroundColor = [UIColor colorWithWhite:.97 alpha:1];
-  else
-    wm.view.backgroundColor = [UIColor colorWithWhite:1 alpha:1];
-  
-  backgroundShade = !backgroundShade;
-  
-  [messagesArray insertObject:m atIndex:0];
-  
-  [self layoutMessages];
-  if (interactive)
-    [wall scrollRectToVisible:CGRectMake(0, 0, 320, 50) animated:YES];
-}
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
