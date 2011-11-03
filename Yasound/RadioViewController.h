@@ -41,6 +41,8 @@
   
   Message* currentMessage;
   NSMutableString* currentXMLString;
+  
+  NSTimer* timer;
 }
 
 - (IBAction)onBack:(id)sender;
@@ -58,5 +60,7 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
+
+- (void)updateWall;
 
 @end

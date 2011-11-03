@@ -55,14 +55,49 @@
 
 #pragma mark - View lifecycle
 
+
+- (void)updateWall
+{
+#if LOCAL
+  NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/allAPI/"];
+#else
+  NSURL *url = [NSURL URLWithString:@"http://94.100.167.5:8080/wall/allAPI/"];
+#endif
+  
+	ASIHTTPRequest *request = [ASIFormDataRequest requestWithURL:url];
+	[request setDelegate:self];
+	[request startSynchronous];
+  
+  NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
+  NSLog(@"status message: %@\n\n", request.responseStatusMessage);
+  //NSLog(@"cookies: %@\n\n", request.responseCookies);
+  //[request release];
+  
+  NSXMLParser* parser = [[NSXMLParser alloc] initWithData:request.responseData];
+  [parser setDelegate:self];
+  [parser parse];
+  
+  //[self addMessage:message fromUser:@"meeloo" withDate:@"now" interactive:YES];
+  [self layoutMessages];
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
+  
+  timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                   target:self
+                                 selector:@selector(updateWall)
+                                 userInfo:nil
+                                  repeats:YES];
 }
 
 - (void)viewDidUnload
 {
+  [timer release];
+  timer = nil;
+
   [radioName release];
   radioName = nil;
   [wall release];
