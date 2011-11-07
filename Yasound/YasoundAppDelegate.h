@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainViewController.h"
 
 
-@class MainViewController;
-
+//@interface YasoundAppDelegate : NSObject <UIApplicationDelegate, MainViewDelegate>
 @interface YasoundAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, retain)  IBOutlet UIWindow *window;

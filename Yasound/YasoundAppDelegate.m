@@ -7,7 +7,7 @@
 //
 
 #import "YasoundAppDelegate.h"
-#import "MainViewController.h"
+
 
 @implementation YasoundAppDelegate
 
@@ -20,20 +20,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   // create a mavigationControler without navigation bar
-  navigationController = [[[UINavigationController alloc] init] autorelease];
+  navigationController = [[UINavigationController alloc] init];
   navigationController.navigationBarHidden = YES;
-  
+
+  [self.window makeKeyAndVisible];
+
   // add it as the window's root widget
   self.window.rootViewController = navigationController;
-  [self.window makeKeyAndVisible];
   
   // push the main view controller into the mavigationControler
-  mainViewController = [[[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil] autorelease];
-  [self.navigationController pushViewController:mainViewController animated:YES];
-  
+  mainViewController = [[MainViewController alloc] init];
+  [self.navigationController pushViewController:self.mainViewController animated:YES];
+
   return YES;
 }
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

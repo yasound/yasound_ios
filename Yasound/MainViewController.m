@@ -18,6 +18,22 @@
 
 @implementation MainViewController
 
+
+
+- (id)init
+{
+  self = [super init];
+
+  mpCreator = nil;
+  mpScrollView = nil;
+  mpRadio = nil;
+  
+  radioCreated = FALSE;  
+  
+  return self;
+}
+
+
 - (void)didReceiveMemoryWarning
 {
   // Releases the view if it doesn't have a superview.
@@ -32,13 +48,7 @@
 {
   [super viewDidLoad];
 
-  mpCreator = nil;
-  mpScrollView = nil;
-  mpRadio = nil;
-  
-  radioCreated = FALSE;  
-
-    [self createRadioList];  
+  [self createRadioList];
 }
 
 - (void)viewDidUnload
@@ -233,7 +243,7 @@
   
   [mpScrollView setContentSize:CGSizeMake(320, y)];
   
-  self.view.frame = [UIScreen mainScreen].applicationFrame;
+//  self.view.frame = [UIScreen mainScreen].applicationFrame;
   
 }
 

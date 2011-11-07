@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BC648F1014684EFB005A6D8A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC648F0E14684EFB005A6D8A /* MainViewController.m */; };
-		BC648F1114684EFB005A6D8A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC648F0F14684EFB005A6D8A /* MainViewController.xib */; };
 		BC943A4F1468874D0031CE17 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC943A4D1468874D0031CE17 /* MainWindow.xib */; };
+		BC943A5314688AE70031CE17 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
+		BC943A5414688AE70031CE17 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
+		BC943A5514688AE70031CE17 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5214688AE70031CE17 /* icon.png */; };
 		BCFECFCF146841A800BA20D9 /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFB9146841A800BA20D9 /* avatar1.png */; };
 		BCFECFD0146841A800BA20D9 /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBA146841A800BA20D9 /* avatar2.png */; };
 		BCFECFD1146841A800BA20D9 /* avatar3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBB146841A800BA20D9 /* avatar3.png */; };
@@ -67,8 +69,10 @@
 /* Begin PBXFileReference section */
 		BC648F0D14684EFB005A6D8A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		BC648F0E14684EFB005A6D8A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		BC648F0F14684EFB005A6D8A /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		BC943A4E1468874D0031CE17 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		BC943A5014688AE70031CE17 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BC943A5114688AE70031CE17 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BC943A5214688AE70031CE17 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		BCFECFB9146841A800BA20D9 /* avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar1.png; sourceTree = "<group>"; };
 		BCFECFBA146841A800BA20D9 /* avatar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar2.png; sourceTree = "<group>"; };
 		BCFECFBB146841A800BA20D9 /* avatar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar3.png; sourceTree = "<group>"; };
@@ -178,6 +182,9 @@
 				BCFECFBC146841A800BA20D9 /* gui */,
 				BCFECFC3146841A800BA20D9 /* icons */,
 				BCFECFCE146841A800BA20D9 /* logo@2x.png */,
+				BC943A5014688AE70031CE17 /* Default.png */,
+				BC943A5114688AE70031CE17 /* Default@2x.png */,
+				BC943A5214688AE70031CE17 /* icon.png */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -301,7 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				BC943A4D1468874D0031CE17 /* MainWindow.xib */,
-				BC648F0F14684EFB005A6D8A /* MainViewController.xib */,
 				BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */,
 				BCFECFF51468439900BA20D9 /* RadioViewController.xib */,
 				BCFECFF81468439900BA20D9 /* WallMessageViewController.xib */,
@@ -458,8 +464,10 @@
 				BCFED0021468439900BA20D9 /* RadioCreatorViewController.xib in Resources */,
 				BCFED0041468439900BA20D9 /* RadioViewController.xib in Resources */,
 				BCFED0061468439900BA20D9 /* WallMessageViewController.xib in Resources */,
-				BC648F1114684EFB005A6D8A /* MainViewController.xib in Resources */,
 				BC943A4F1468874D0031CE17 /* MainWindow.xib in Resources */,
+				BC943A5314688AE70031CE17 /* Default.png in Resources */,
+				BC943A5414688AE70031CE17 /* Default@2x.png in Resources */,
+				BC943A5514688AE70031CE17 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
