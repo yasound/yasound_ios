@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class AudioStreamer;
-@class RadioCreator;
+@class RadioCreatorViewController;
 @class RadioViewController;
 
 @interface YasoundAppDelegate : NSObject <UIApplicationDelegate>
 {
   UIScrollView* mpScrollView;
-  RadioCreator* mpCreator;
+  RadioCreatorViewController* mpCreator;
   AudioStreamer* mpStreamer;
   RadioViewController* mpRadio;
   

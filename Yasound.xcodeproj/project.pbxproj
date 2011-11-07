@@ -7,6 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BCFECFCF146841A800BA20D9 /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFB9146841A800BA20D9 /* avatar1.png */; };
+		BCFECFD0146841A800BA20D9 /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBA146841A800BA20D9 /* avatar2.png */; };
+		BCFECFD1146841A800BA20D9 /* avatar3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBB146841A800BA20D9 /* avatar3.png */; };
+		BCFECFD2146841A800BA20D9 /* bouton-envoyer.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBD146841A800BA20D9 /* bouton-envoyer.png */; };
+		BCFECFD3146841A800BA20D9 /* bouton-retour.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBE146841A800BA20D9 /* bouton-retour.png */; };
+		BCFECFD4146841A800BA20D9 /* CreateMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBF146841A800BA20D9 /* CreateMyRadio@2x.png */; };
+		BCFECFD5146841A800BA20D9 /* fond-auditeurs.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC0146841A800BA20D9 /* fond-auditeurs.png */; };
+		BCFECFD6146841A800BA20D9 /* MenuBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC1146841A800BA20D9 /* MenuBg@2x.png */; };
+		BCFECFD7146841A800BA20D9 /* radiocree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC2146841A800BA20D9 /* radiocree@2x.png */; };
+		BCFECFD8146841A800BA20D9 /* bt-achat.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC4146841A800BA20D9 /* bt-achat.png */; };
+		BCFECFD9146841A800BA20D9 /* bt-aime.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC5146841A800BA20D9 /* bt-aime.png */; };
+		BCFECFDA146841A800BA20D9 /* bt-aimepas.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC6146841A800BA20D9 /* bt-aimepas.png */; };
+		BCFECFDB146841A800BA20D9 /* bt-ajouter.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC7146841A800BA20D9 /* bt-ajouter.png */; };
+		BCFECFDC146841A800BA20D9 /* bt-Skip.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC8146841A800BA20D9 /* bt-Skip.png */; };
+		BCFECFDD146841A800BA20D9 /* BT-top1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC9146841A800BA20D9 /* BT-top1.png */; };
+		BCFECFDE146841A800BA20D9 /* BT-top2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCA146841A800BA20D9 /* BT-top2.png */; };
+		BCFECFDF146841A800BA20D9 /* BT-top3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCB146841A800BA20D9 /* BT-top3.png */; };
+		BCFECFE0146841A800BA20D9 /* BT-top4.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCC146841A800BA20D9 /* BT-top4.png */; };
+		BCFECFE1146841A800BA20D9 /* BT-top5.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCD146841A800BA20D9 /* BT-top5.png */; };
+		BCFECFE2146841A800BA20D9 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCE146841A800BA20D9 /* logo@2x.png */; };
+		BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
+		BCFECFFC1468439900BA20D9 /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE81468439900BA20D9 /* MenuHeader.m */; };
+		BCFECFFD1468439900BA20D9 /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
+		BCFECFFE1468439900BA20D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
+		BCFECFFF1468439900BA20D9 /* InteractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEE1468439900BA20D9 /* InteractionViewController.m */; };
+		BCFED0011468439900BA20D9 /* RadioCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFF11468439900BA20D9 /* RadioCreatorViewController.m */; };
+		BCFED0021468439900BA20D9 /* RadioCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */; };
+		BCFED0031468439900BA20D9 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFF41468439900BA20D9 /* RadioViewController.m */; };
+		BCFED0041468439900BA20D9 /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF51468439900BA20D9 /* RadioViewController.xib */; };
+		BCFED0051468439900BA20D9 /* WallMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFF71468439900BA20D9 /* WallMessageViewController.m */; };
+		BCFED0061468439900BA20D9 /* WallMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF81468439900BA20D9 /* WallMessageViewController.xib */; };
+		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		E5280A3E145EFE6B00A88910 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = E5280A07145EFE6B00A88910 /* ASIAuthenticationDialog.m */; };
 		E5280A3F145EFE6B00A88910 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = E5280A0A145EFE6B00A88910 /* ASIDataCompressor.m */; };
 		E5280A40145EFE6B00A88910 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = E5280A0C145EFE6B00A88910 /* ASIDataDecompressor.m */; };
@@ -19,51 +51,58 @@
 		E5280A56145EFFD900A88910 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A55145EFFD900A88910 /* libz.dylib */; };
 		E5280A58145F005B00A88910 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A57145F005B00A88910 /* MobileCoreServices.framework */; };
 		E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
-		E5280A5F1460412D00A88910 /* RadioCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = E5280A5D1460412D00A88910 /* RadioCreator.m */; };
-		E5280A601460412D00A88910 /* RadioCreator.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5280A5E1460412D00A88910 /* RadioCreator.xib */; };
-		E5280A631460AFB400A88910 /* CreateMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5280A611460AFB400A88910 /* CreateMyRadio@2x.png */; };
-		E5280A641460AFB400A88910 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5280A621460AFB400A88910 /* logo@2x.png */; };
-		E5280A661460D88B00A88910 /* MenuBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5280A651460D88B00A88910 /* MenuBg@2x.png */; };
-		E5280A6A14615EED00A88910 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5280A6814615EED00A88910 /* RadioViewController.m */; };
-		E5280A6B14615EED00A88910 /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5280A6914615EED00A88910 /* RadioViewController.xib */; };
 		E53A7AFC1456FA9900B74F84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AEE1456FA3600B74F84 /* AudioToolbox.framework */; };
 		E53A7AFD1456FA9900B74F84 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */; };
 		E53A7AFF1456FAB800B74F84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */; };
-		E53A7B2C1457714700B74F84 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = E53A7B221457714700B74F84 /* AudioStreamer.m */; };
-		E53A7B2E1457714700B74F84 /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E53A7B251457714700B74F84 /* MenuHeader.m */; };
-		E53A7B2F1457714700B74F84 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = E53A7B271457714700B74F84 /* Tile.m */; };
-		E53A7B301457714700B74F84 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E53A7B291457714700B74F84 /* YasoundAppDelegate.m */; };
-		E53A7B311457714700B74F84 /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E53A7B2B1457714700B74F84 /* WebImageView.m */; };
-		E53A7B47145814F900B74F84 /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E53A7B46145814F900B74F84 /* SlidingMenu.m */; };
-		E53A7B49145856D900B74F84 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E53A7B48145856D900B74F84 /* MainWindow.xib */; };
 		E5A9A3AE1454DC0500EA374C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AD1454DC0500EA374C /* UIKit.framework */; };
 		E5A9A3B01454DC0500EA374C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		E5A9A3B81454DC0500EA374C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		E5A9A3BA1454DC0500EA374C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
-		E5D1B3541461A32F00C395FA /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D1B3511461A32E00C395FA /* avatar1.png */; };
-		E5D1B3551461A32F00C395FA /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D1B3521461A32E00C395FA /* avatar2.png */; };
-		E5D1B3561461A32F00C395FA /* avatar3.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D1B3531461A32F00C395FA /* avatar3.png */; };
-		E5D1B35914622CFF00C395FA /* radiocree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5D1B35814622CFF00C395FA /* radiocree@2x.png */; };
-		E5DC602C1461806300A937EE /* bouton-retour.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC602B1461806300A937EE /* bouton-retour.png */; };
-		E5DC603C1461813400A937EE /* bouton-envoyer.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC602F1461813400A937EE /* bouton-envoyer.png */; };
-		E5DC603D1461813400A937EE /* bt-achat.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60301461813400A937EE /* bt-achat.png */; };
-		E5DC603E1461813400A937EE /* bt-aime.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60311461813400A937EE /* bt-aime.png */; };
-		E5DC603F1461813400A937EE /* bt-aimepas.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60321461813400A937EE /* bt-aimepas.png */; };
-		E5DC60401461813400A937EE /* bt-ajouter.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60331461813400A937EE /* bt-ajouter.png */; };
-		E5DC60411461813400A937EE /* bt-Skip.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60341461813400A937EE /* bt-Skip.png */; };
-		E5DC60421461813400A937EE /* BT-top1.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60351461813400A937EE /* BT-top1.png */; };
-		E5DC60431461813400A937EE /* BT-top2.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60361461813400A937EE /* BT-top2.png */; };
-		E5DC60441461813400A937EE /* BT-top3.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60371461813400A937EE /* BT-top3.png */; };
-		E5DC60451461813400A937EE /* BT-top4.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60381461813400A937EE /* BT-top4.png */; };
-		E5DC60461461813400A937EE /* BT-top5.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60391461813400A937EE /* BT-top5.png */; };
-		E5DC60471461813400A937EE /* fond-auditeurs.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC603A1461813400A937EE /* fond-auditeurs.png */; };
-		E5DC60481461813400A937EE /* fond-en-cours.png in Resources */ = {isa = PBXBuildFile; fileRef = E5DC603B1461813400A937EE /* fond-en-cours.png */; };
-		E5DC60511461A06300A937EE /* WallMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC604F1461A06300A937EE /* WallMessage.m */; };
-		E5DC60521461A06300A937EE /* WallMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5DC60501461A06300A937EE /* WallMessage.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BCFECFB9146841A800BA20D9 /* avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar1.png; sourceTree = "<group>"; };
+		BCFECFBA146841A800BA20D9 /* avatar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar2.png; sourceTree = "<group>"; };
+		BCFECFBB146841A800BA20D9 /* avatar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar3.png; sourceTree = "<group>"; };
+		BCFECFBD146841A800BA20D9 /* bouton-envoyer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bouton-envoyer.png"; sourceTree = "<group>"; };
+		BCFECFBE146841A800BA20D9 /* bouton-retour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bouton-retour.png"; sourceTree = "<group>"; };
+		BCFECFBF146841A800BA20D9 /* CreateMyRadio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadio@2x.png"; sourceTree = "<group>"; };
+		BCFECFC0146841A800BA20D9 /* fond-auditeurs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fond-auditeurs.png"; sourceTree = "<group>"; };
+		BCFECFC1146841A800BA20D9 /* MenuBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBg@2x.png"; sourceTree = "<group>"; };
+		BCFECFC2146841A800BA20D9 /* radiocree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radiocree@2x.png"; sourceTree = "<group>"; };
+		BCFECFC4146841A800BA20D9 /* bt-achat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-achat.png"; sourceTree = "<group>"; };
+		BCFECFC5146841A800BA20D9 /* bt-aime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-aime.png"; sourceTree = "<group>"; };
+		BCFECFC6146841A800BA20D9 /* bt-aimepas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-aimepas.png"; sourceTree = "<group>"; };
+		BCFECFC7146841A800BA20D9 /* bt-ajouter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-ajouter.png"; sourceTree = "<group>"; };
+		BCFECFC8146841A800BA20D9 /* bt-Skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-Skip.png"; sourceTree = "<group>"; };
+		BCFECFC9146841A800BA20D9 /* BT-top1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BT-top1.png"; sourceTree = "<group>"; };
+		BCFECFCA146841A800BA20D9 /* BT-top2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BT-top2.png"; sourceTree = "<group>"; };
+		BCFECFCB146841A800BA20D9 /* BT-top3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BT-top3.png"; sourceTree = "<group>"; };
+		BCFECFCC146841A800BA20D9 /* BT-top4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BT-top4.png"; sourceTree = "<group>"; };
+		BCFECFCD146841A800BA20D9 /* BT-top5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BT-top5.png"; sourceTree = "<group>"; };
+		BCFECFCE146841A800BA20D9 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		BCFECFE41468439900BA20D9 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		BCFECFE51468439900BA20D9 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		BCFECFE71468439900BA20D9 /* MenuHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuHeader.h; sourceTree = "<group>"; };
+		BCFECFE81468439900BA20D9 /* MenuHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuHeader.m; sourceTree = "<group>"; };
+		BCFECFE91468439900BA20D9 /* SlidingMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingMenu.h; sourceTree = "<group>"; };
+		BCFECFEA1468439900BA20D9 /* SlidingMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingMenu.m; sourceTree = "<group>"; };
+		BCFECFEB1468439900BA20D9 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
+		BCFECFEC1468439900BA20D9 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
+		BCFECFED1468439900BA20D9 /* InteractionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractionViewController.h; sourceTree = "<group>"; };
+		BCFECFEE1468439900BA20D9 /* InteractionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractionViewController.m; sourceTree = "<group>"; };
+		BCFECFF01468439900BA20D9 /* RadioCreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioCreatorViewController.h; sourceTree = "<group>"; };
+		BCFECFF11468439900BA20D9 /* RadioCreatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioCreatorViewController.m; sourceTree = "<group>"; };
+		BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioCreatorViewController.xib; sourceTree = "<group>"; };
+		BCFECFF31468439900BA20D9 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
+		BCFECFF41468439900BA20D9 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
+		BCFECFF51468439900BA20D9 /* RadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioViewController.xib; sourceTree = "<group>"; };
+		BCFECFF61468439900BA20D9 /* WallMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallMessageViewController.h; sourceTree = "<group>"; };
+		BCFECFF71468439900BA20D9 /* WallMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallMessageViewController.m; sourceTree = "<group>"; };
+		BCFECFF81468439900BA20D9 /* WallMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WallMessageViewController.xib; sourceTree = "<group>"; };
+		BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundAppDelegate.h; sourceTree = "<group>"; };
+		BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundAppDelegate.m; sourceTree = "<group>"; };
 		E5280A06145EFE6B00A88910 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		E5280A07145EFE6B00A88910 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		E5280A08145EFE6B00A88910 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -89,35 +128,12 @@
 		E5280A55145EFFD900A88910 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E5280A57145F005B00A88910 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E5280A59145F006C00A88910 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		E5280A5C1460412D00A88910 /* RadioCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioCreator.h; sourceTree = "<group>"; };
-		E5280A5D1460412D00A88910 /* RadioCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioCreator.m; sourceTree = "<group>"; };
-		E5280A5E1460412D00A88910 /* RadioCreator.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioCreator.xib; sourceTree = "<group>"; };
-		E5280A611460AFB400A88910 /* CreateMyRadio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadio@2x.png"; sourceTree = SOURCE_ROOT; };
-		E5280A621460AFB400A88910 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = SOURCE_ROOT; };
-		E5280A651460D88B00A88910 /* MenuBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBg@2x.png"; sourceTree = SOURCE_ROOT; };
-		E5280A6714615EED00A88910 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
-		E5280A6814615EED00A88910 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
-		E5280A6914615EED00A88910 /* RadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioViewController.xib; sourceTree = "<group>"; };
 		E53A7AEE1456FA3600B74F84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E53A7AF01456FA4000B74F84 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E53A7AF21456FA4700B74F84 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		E53A7AF41456FA5400B74F84 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		E53A7B211457714700B74F84 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioStreamer.h; path = Yasound/AudioStreamer.h; sourceTree = SOURCE_ROOT; };
-		E53A7B221457714700B74F84 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioStreamer.m; path = Yasound/AudioStreamer.m; sourceTree = SOURCE_ROOT; };
-		E53A7B231457714700B74F84 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Yasound/main.m; sourceTree = SOURCE_ROOT; };
-		E53A7B241457714700B74F84 /* MenuHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuHeader.h; path = Yasound/MenuHeader.h; sourceTree = SOURCE_ROOT; };
-		E53A7B251457714700B74F84 /* MenuHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuHeader.m; path = Yasound/MenuHeader.m; sourceTree = SOURCE_ROOT; };
-		E53A7B261457714700B74F84 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tile.h; path = Yasound/Tile.h; sourceTree = SOURCE_ROOT; };
-		E53A7B271457714700B74F84 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tile.m; path = Yasound/Tile.m; sourceTree = SOURCE_ROOT; };
-		E53A7B281457714700B74F84 /* YasoundAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YasoundAppDelegate.h; path = Yasound/YasoundAppDelegate.h; sourceTree = SOURCE_ROOT; };
-		E53A7B291457714700B74F84 /* YasoundAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YasoundAppDelegate.m; path = Yasound/YasoundAppDelegate.m; sourceTree = SOURCE_ROOT; };
-		E53A7B2A1457714700B74F84 /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebImageView.h; path = Yasound/WebImageView.h; sourceTree = SOURCE_ROOT; };
-		E53A7B2B1457714700B74F84 /* WebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebImageView.m; path = Yasound/WebImageView.m; sourceTree = SOURCE_ROOT; };
-		E53A7B45145814F900B74F84 /* SlidingMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingMenu.h; sourceTree = "<group>"; };
-		E53A7B46145814F900B74F84 /* SlidingMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingMenu.m; sourceTree = "<group>"; };
-		E53A7B48145856D900B74F84 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		E5A9A3A91454DC0500EA374C /* Yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yasound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5A9A3AD1454DC0500EA374C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5A9A3AF1454DC0500EA374C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -126,27 +142,6 @@
 		E5A9A3B71454DC0500EA374C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E5A9A3B91454DC0500EA374C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5A9A3BB1454DC0500EA374C /* Yasound-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yasound-Prefix.pch"; sourceTree = "<group>"; };
-		E5D1B3511461A32E00C395FA /* avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar1.png; path = "../../../Library/Mail Downloads/Page radio/avatar1.png"; sourceTree = "<group>"; };
-		E5D1B3521461A32E00C395FA /* avatar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar2.png; path = "../../../Library/Mail Downloads/Page radio/avatar2.png"; sourceTree = "<group>"; };
-		E5D1B3531461A32F00C395FA /* avatar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatar3.png; path = "../../../Library/Mail Downloads/Page radio/avatar3.png"; sourceTree = "<group>"; };
-		E5D1B35814622CFF00C395FA /* radiocree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radiocree@2x.png"; sourceTree = SOURCE_ROOT; };
-		E5DC602B1461806300A937EE /* bouton-retour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bouton-retour.png"; path = "../../../Library/Mail Downloads/Page radio/bouton-retour.png"; sourceTree = "<group>"; };
-		E5DC602F1461813400A937EE /* bouton-envoyer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bouton-envoyer.png"; path = "../../../Library/Mail Downloads/Page radio/bouton-envoyer.png"; sourceTree = "<group>"; };
-		E5DC60301461813400A937EE /* bt-achat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bt-achat.png"; path = "../../../Library/Mail Downloads/Page radio/bt-achat.png"; sourceTree = "<group>"; };
-		E5DC60311461813400A937EE /* bt-aime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bt-aime.png"; path = "../../../Library/Mail Downloads/Page radio/bt-aime.png"; sourceTree = "<group>"; };
-		E5DC60321461813400A937EE /* bt-aimepas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bt-aimepas.png"; path = "../../../Library/Mail Downloads/Page radio/bt-aimepas.png"; sourceTree = "<group>"; };
-		E5DC60331461813400A937EE /* bt-ajouter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bt-ajouter.png"; path = "../../../Library/Mail Downloads/Page radio/bt-ajouter.png"; sourceTree = "<group>"; };
-		E5DC60341461813400A937EE /* bt-Skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bt-Skip.png"; path = "../../../Library/Mail Downloads/Page radio/bt-Skip.png"; sourceTree = "<group>"; };
-		E5DC60351461813400A937EE /* BT-top1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BT-top1.png"; path = "../../../Library/Mail Downloads/Page radio/BT-top1.png"; sourceTree = "<group>"; };
-		E5DC60361461813400A937EE /* BT-top2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BT-top2.png"; path = "../../../Library/Mail Downloads/Page radio/BT-top2.png"; sourceTree = "<group>"; };
-		E5DC60371461813400A937EE /* BT-top3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BT-top3.png"; path = "../../../Library/Mail Downloads/Page radio/BT-top3.png"; sourceTree = "<group>"; };
-		E5DC60381461813400A937EE /* BT-top4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BT-top4.png"; path = "../../../Library/Mail Downloads/Page radio/BT-top4.png"; sourceTree = "<group>"; };
-		E5DC60391461813400A937EE /* BT-top5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BT-top5.png"; path = "../../../Library/Mail Downloads/Page radio/BT-top5.png"; sourceTree = "<group>"; };
-		E5DC603A1461813400A937EE /* fond-auditeurs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fond-auditeurs.png"; path = "../../../Library/Mail Downloads/Page radio/fond-auditeurs.png"; sourceTree = "<group>"; };
-		E5DC603B1461813400A937EE /* fond-en-cours.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fond-en-cours.png"; path = "../../../Library/Mail Downloads/Page radio/fond-en-cours.png"; sourceTree = "<group>"; };
-		E5DC604E1461A06300A937EE /* WallMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallMessage.h; sourceTree = "<group>"; };
-		E5DC604F1461A06300A937EE /* WallMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallMessage.m; sourceTree = "<group>"; };
-		E5DC60501461A06300A937EE /* WallMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WallMessage.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +164,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BCFECF8F146840B300BA20D9 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				BCFECFB8146841A800BA20D9 /* avatars */,
+				BCFECFBC146841A800BA20D9 /* gui */,
+				BCFECFC3146841A800BA20D9 /* icons */,
+				BCFECFCE146841A800BA20D9 /* logo@2x.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		BCFECFB8146841A800BA20D9 /* avatars */ = {
+			isa = PBXGroup;
+			children = (
+				BCFECFB9146841A800BA20D9 /* avatar1.png */,
+				BCFECFBA146841A800BA20D9 /* avatar2.png */,
+				BCFECFBB146841A800BA20D9 /* avatar3.png */,
+			);
+			path = avatars;
+			sourceTree = "<group>";
+		};
+		BCFECFBC146841A800BA20D9 /* gui */ = {
+			isa = PBXGroup;
+			children = (
+				BCFECFBD146841A800BA20D9 /* bouton-envoyer.png */,
+				BCFECFBE146841A800BA20D9 /* bouton-retour.png */,
+				BCFECFBF146841A800BA20D9 /* CreateMyRadio@2x.png */,
+				BCFECFC0146841A800BA20D9 /* fond-auditeurs.png */,
+				BCFECFC1146841A800BA20D9 /* MenuBg@2x.png */,
+				BCFECFC2146841A800BA20D9 /* radiocree@2x.png */,
+			);
+			path = gui;
+			sourceTree = "<group>";
+		};
+		BCFECFC3146841A800BA20D9 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				BCFECFC4146841A800BA20D9 /* bt-achat.png */,
+				BCFECFC5146841A800BA20D9 /* bt-aime.png */,
+				BCFECFC6146841A800BA20D9 /* bt-aimepas.png */,
+				BCFECFC7146841A800BA20D9 /* bt-ajouter.png */,
+				BCFECFC8146841A800BA20D9 /* bt-Skip.png */,
+				BCFECFC9146841A800BA20D9 /* BT-top1.png */,
+				BCFECFCA146841A800BA20D9 /* BT-top2.png */,
+				BCFECFCB146841A800BA20D9 /* BT-top3.png */,
+				BCFECFCC146841A800BA20D9 /* BT-top4.png */,
+				BCFECFCD146841A800BA20D9 /* BT-top5.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
+		BCFECFE31468439900BA20D9 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				BCFECFE41468439900BA20D9 /* AudioStreamer.h */,
+				BCFECFE51468439900BA20D9 /* AudioStreamer.m */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		BCFECFE61468439900BA20D9 /* Gui */ = {
+			isa = PBXGroup;
+			children = (
+				BCFECFE71468439900BA20D9 /* MenuHeader.h */,
+				BCFECFE81468439900BA20D9 /* MenuHeader.m */,
+				BCFECFE91468439900BA20D9 /* SlidingMenu.h */,
+				BCFECFEA1468439900BA20D9 /* SlidingMenu.m */,
+				BCFECFEB1468439900BA20D9 /* Tile.h */,
+				BCFECFEC1468439900BA20D9 /* Tile.m */,
+			);
+			path = Gui;
+			sourceTree = "<group>";
+		};
 		E5280A04145EFE6B00A88910 /* ASIHTTPRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,17 +290,15 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
-		E5280A5B146040E900A88910 /* Resources */ = {
+		E5280A5B146040E900A88910 /* xib */ = {
 			isa = PBXGroup;
 			children = (
-				E5DC602E1461810000A937EE /* Radio */,
-				E5280A611460AFB400A88910 /* CreateMyRadio@2x.png */,
-				E5D1B35814622CFF00C395FA /* radiocree@2x.png */,
-				E5280A621460AFB400A88910 /* logo@2x.png */,
-				E53A7B48145856D900B74F84 /* MainWindow.xib */,
-				E5280A5E1460412D00A88910 /* RadioCreator.xib */,
+				BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */,
+				BCFECFF51468439900BA20D9 /* RadioViewController.xib */,
+				BCFECFF81468439900BA20D9 /* WallMessageViewController.xib */,
 			);
-			name = Resources;
+			name = xib;
+			path = Yasound;
 			sourceTree = "<group>";
 		};
 		E5A9A39E1454DC0500EA374C = {
@@ -240,6 +306,8 @@
 			children = (
 				E5A9A3B31454DC0500EA374C /* Yasound */,
 				E5A9A3B41454DC0500EA374C /* Supporting Files */,
+				BCFECF8F146840B300BA20D9 /* resources */,
+				E5280A5B146040E900A88910 /* xib */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				E5A9A3AA1454DC0500EA374C /* Products */,
 			);
@@ -275,27 +343,19 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
-				E5280A5B146040E900A88910 /* Resources */,
 				E5280A04145EFE6B00A88910 /* ASIHTTPRequest */,
-				E53A7B211457714700B74F84 /* AudioStreamer.h */,
-				E53A7B221457714700B74F84 /* AudioStreamer.m */,
-				E53A7B231457714700B74F84 /* main.m */,
-				E53A7B241457714700B74F84 /* MenuHeader.h */,
-				E53A7B251457714700B74F84 /* MenuHeader.m */,
-				E53A7B45145814F900B74F84 /* SlidingMenu.h */,
-				E53A7B46145814F900B74F84 /* SlidingMenu.m */,
-				E53A7B261457714700B74F84 /* Tile.h */,
-				E53A7B271457714700B74F84 /* Tile.m */,
-				E53A7B2A1457714700B74F84 /* WebImageView.h */,
-				E53A7B2B1457714700B74F84 /* WebImageView.m */,
-				E53A7B281457714700B74F84 /* YasoundAppDelegate.h */,
-				E53A7B291457714700B74F84 /* YasoundAppDelegate.m */,
-				E5280A5C1460412D00A88910 /* RadioCreator.h */,
-				E5280A5D1460412D00A88910 /* RadioCreator.m */,
-				E5280A6714615EED00A88910 /* RadioViewController.h */,
-				E5280A6814615EED00A88910 /* RadioViewController.m */,
-				E5DC604E1461A06300A937EE /* WallMessage.h */,
-				E5DC604F1461A06300A937EE /* WallMessage.m */,
+				BCFECFE31468439900BA20D9 /* Audio */,
+				BCFECFE61468439900BA20D9 /* Gui */,
+				BCFECFED1468439900BA20D9 /* InteractionViewController.h */,
+				BCFECFEE1468439900BA20D9 /* InteractionViewController.m */,
+				BCFECFF01468439900BA20D9 /* RadioCreatorViewController.h */,
+				BCFECFF11468439900BA20D9 /* RadioCreatorViewController.m */,
+				BCFECFF31468439900BA20D9 /* RadioViewController.h */,
+				BCFECFF41468439900BA20D9 /* RadioViewController.m */,
+				BCFECFF61468439900BA20D9 /* WallMessageViewController.h */,
+				BCFECFF71468439900BA20D9 /* WallMessageViewController.m */,
+				BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */,
+				BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */,
 			);
 			path = Yasound;
 			sourceTree = "<group>";
@@ -310,33 +370,6 @@
 			);
 			name = "Supporting Files";
 			path = Yasound;
-			sourceTree = "<group>";
-		};
-		E5DC602E1461810000A937EE /* Radio */ = {
-			isa = PBXGroup;
-			children = (
-				E5280A6914615EED00A88910 /* RadioViewController.xib */,
-				E5D1B3511461A32E00C395FA /* avatar1.png */,
-				E5D1B3521461A32E00C395FA /* avatar2.png */,
-				E5D1B3531461A32F00C395FA /* avatar3.png */,
-				E5DC602B1461806300A937EE /* bouton-retour.png */,
-				E5280A651460D88B00A88910 /* MenuBg@2x.png */,
-				E5DC602F1461813400A937EE /* bouton-envoyer.png */,
-				E5DC60301461813400A937EE /* bt-achat.png */,
-				E5DC60311461813400A937EE /* bt-aime.png */,
-				E5DC60321461813400A937EE /* bt-aimepas.png */,
-				E5DC60331461813400A937EE /* bt-ajouter.png */,
-				E5DC60341461813400A937EE /* bt-Skip.png */,
-				E5DC60351461813400A937EE /* BT-top1.png */,
-				E5DC60361461813400A937EE /* BT-top2.png */,
-				E5DC60371461813400A937EE /* BT-top3.png */,
-				E5DC60381461813400A937EE /* BT-top4.png */,
-				E5DC60391461813400A937EE /* BT-top5.png */,
-				E5DC603A1461813400A937EE /* fond-auditeurs.png */,
-				E5DC603B1461813400A937EE /* fond-en-cours.png */,
-				E5DC60501461A06300A937EE /* WallMessage.xib */,
-			);
-			name = Radio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,31 +424,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5A9A3B81454DC0500EA374C /* InfoPlist.strings in Resources */,
-				E53A7B49145856D900B74F84 /* MainWindow.xib in Resources */,
-				E5280A601460412D00A88910 /* RadioCreator.xib in Resources */,
-				E5280A631460AFB400A88910 /* CreateMyRadio@2x.png in Resources */,
-				E5280A641460AFB400A88910 /* logo@2x.png in Resources */,
-				E5280A661460D88B00A88910 /* MenuBg@2x.png in Resources */,
-				E5280A6B14615EED00A88910 /* RadioViewController.xib in Resources */,
-				E5DC602C1461806300A937EE /* bouton-retour.png in Resources */,
-				E5DC603C1461813400A937EE /* bouton-envoyer.png in Resources */,
-				E5DC603D1461813400A937EE /* bt-achat.png in Resources */,
-				E5DC603E1461813400A937EE /* bt-aime.png in Resources */,
-				E5DC603F1461813400A937EE /* bt-aimepas.png in Resources */,
-				E5DC60401461813400A937EE /* bt-ajouter.png in Resources */,
-				E5DC60411461813400A937EE /* bt-Skip.png in Resources */,
-				E5DC60421461813400A937EE /* BT-top1.png in Resources */,
-				E5DC60431461813400A937EE /* BT-top2.png in Resources */,
-				E5DC60441461813400A937EE /* BT-top3.png in Resources */,
-				E5DC60451461813400A937EE /* BT-top4.png in Resources */,
-				E5DC60461461813400A937EE /* BT-top5.png in Resources */,
-				E5DC60471461813400A937EE /* fond-auditeurs.png in Resources */,
-				E5DC60481461813400A937EE /* fond-en-cours.png in Resources */,
-				E5DC60521461A06300A937EE /* WallMessage.xib in Resources */,
-				E5D1B3541461A32F00C395FA /* avatar1.png in Resources */,
-				E5D1B3551461A32F00C395FA /* avatar2.png in Resources */,
-				E5D1B3561461A32F00C395FA /* avatar3.png in Resources */,
-				E5D1B35914622CFF00C395FA /* radiocree@2x.png in Resources */,
+				BCFECFCF146841A800BA20D9 /* avatar1.png in Resources */,
+				BCFECFD0146841A800BA20D9 /* avatar2.png in Resources */,
+				BCFECFD1146841A800BA20D9 /* avatar3.png in Resources */,
+				BCFECFD2146841A800BA20D9 /* bouton-envoyer.png in Resources */,
+				BCFECFD3146841A800BA20D9 /* bouton-retour.png in Resources */,
+				BCFECFD4146841A800BA20D9 /* CreateMyRadio@2x.png in Resources */,
+				BCFECFD5146841A800BA20D9 /* fond-auditeurs.png in Resources */,
+				BCFECFD6146841A800BA20D9 /* MenuBg@2x.png in Resources */,
+				BCFECFD7146841A800BA20D9 /* radiocree@2x.png in Resources */,
+				BCFECFD8146841A800BA20D9 /* bt-achat.png in Resources */,
+				BCFECFD9146841A800BA20D9 /* bt-aime.png in Resources */,
+				BCFECFDA146841A800BA20D9 /* bt-aimepas.png in Resources */,
+				BCFECFDB146841A800BA20D9 /* bt-ajouter.png in Resources */,
+				BCFECFDC146841A800BA20D9 /* bt-Skip.png in Resources */,
+				BCFECFDD146841A800BA20D9 /* BT-top1.png in Resources */,
+				BCFECFDE146841A800BA20D9 /* BT-top2.png in Resources */,
+				BCFECFDF146841A800BA20D9 /* BT-top3.png in Resources */,
+				BCFECFE0146841A800BA20D9 /* BT-top4.png in Resources */,
+				BCFECFE1146841A800BA20D9 /* BT-top5.png in Resources */,
+				BCFECFE2146841A800BA20D9 /* logo@2x.png in Resources */,
+				BCFED0021468439900BA20D9 /* RadioCreatorViewController.xib in Resources */,
+				BCFED0041468439900BA20D9 /* RadioViewController.xib in Resources */,
+				BCFED0061468439900BA20D9 /* WallMessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,12 +458,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5A9A3BA1454DC0500EA374C /* main.m in Sources */,
-				E53A7B2C1457714700B74F84 /* AudioStreamer.m in Sources */,
-				E53A7B2E1457714700B74F84 /* MenuHeader.m in Sources */,
-				E53A7B2F1457714700B74F84 /* Tile.m in Sources */,
-				E53A7B301457714700B74F84 /* YasoundAppDelegate.m in Sources */,
-				E53A7B311457714700B74F84 /* WebImageView.m in Sources */,
-				E53A7B47145814F900B74F84 /* SlidingMenu.m in Sources */,
 				E5280A3E145EFE6B00A88910 /* ASIAuthenticationDialog.m in Sources */,
 				E5280A3F145EFE6B00A88910 /* ASIDataCompressor.m in Sources */,
 				E5280A40145EFE6B00A88910 /* ASIDataDecompressor.m in Sources */,
@@ -442,9 +467,15 @@
 				E5280A44145EFE6B00A88910 /* ASIInputStream.m in Sources */,
 				E5280A45145EFE6B00A88910 /* ASINetworkQueue.m in Sources */,
 				E5280A54145EFE6B00A88910 /* Reachability.m in Sources */,
-				E5280A5F1460412D00A88910 /* RadioCreator.m in Sources */,
-				E5280A6A14615EED00A88910 /* RadioViewController.m in Sources */,
-				E5DC60511461A06300A937EE /* WallMessage.m in Sources */,
+				BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */,
+				BCFECFFC1468439900BA20D9 /* MenuHeader.m in Sources */,
+				BCFECFFD1468439900BA20D9 /* SlidingMenu.m in Sources */,
+				BCFECFFE1468439900BA20D9 /* Tile.m in Sources */,
+				BCFECFFF1468439900BA20D9 /* InteractionViewController.m in Sources */,
+				BCFED0011468439900BA20D9 /* RadioCreatorViewController.m in Sources */,
+				BCFED0031468439900BA20D9 /* RadioViewController.m in Sources */,
+				BCFED0051468439900BA20D9 /* WallMessageViewController.m in Sources */,
+				BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

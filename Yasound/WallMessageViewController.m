@@ -1,14 +1,14 @@
 //
-//  WallMessage.m
+//  WallMessageViewController.m
 //  Yasound
 //
 //  Created by Sébastien Métrot on 11/2/11.
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
-#import "WallMessage.h"
+#import "WallMessageViewController.h"
 
-@implementation WallMessage
+@implementation WallMessageViewController
 @synthesize image;
 @synthesize title;
 @synthesize message;

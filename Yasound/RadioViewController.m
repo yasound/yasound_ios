@@ -8,7 +8,7 @@
 
 #import "RadioViewController.h"
 #import "ASIFormDataRequest.h"
-#import "WallMessage.h"
+#import "WallMessageViewController.h"
 
 #define LOCAL 0 // use localhost as the server
 
@@ -250,7 +250,7 @@
     {
       NSLog(@"New post: %d\n", currentMessage.identifier);
  
-      WallMessage* wm = [[WallMessage alloc] initWithNibName:@"WallMessage" bundle:nil];
+      WallMessageViewController* wm = [[WallMessageViewController alloc] initWithNibName:@"WallMessageViewController" bundle:nil];
       UIImage* img = (UIImage*)[avatarImages objectForKey:currentMessage.user];
       
       Message* m = [[Message alloc] init];
@@ -308,7 +308,7 @@
   int y = 0;
   for (Message* m in messagesArray)
   {
-    WallMessage* wm = m.wallMessage;
+    WallMessageViewController* wm = m.wallMessage;
     CGRect r = wm.view.frame;
     r.origin.y = y;
     wm.view.frame = r;

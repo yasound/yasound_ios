@@ -12,7 +12,7 @@
 #import "SlidingMenu.h"
 #import "AudioStreamer.h"
 #import "ASIFormDataRequest.h"
-#import "RadioCreator.h"
+#import "RadioCreatorViewController.h"
 #import "RadioViewController.h"
 
 @implementation YasoundAppDelegate
@@ -232,7 +232,7 @@
   [mpScrollView removeFromSuperview];
   mpScrollView = nil;
   
-  mpCreator = [[RadioCreator alloc] initWithNibName:@"RadioCreator" bundle:nil];
+  mpCreator = [[RadioCreatorViewController alloc] initWithNibName:@"RadioCreatorViewController" bundle:nil];
   [self.window addSubview: mpCreator.view];
   
   radioCreated = TRUE;

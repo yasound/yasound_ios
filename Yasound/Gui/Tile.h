@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class WebImageView;
+//LBDEBUG
+//@class WebImageView;
 
 @interface Tile : UIButton
 {
+  //LBDEBUG  
   //WebImageView* image;
   UILabel* title;
   UILabel* caption;

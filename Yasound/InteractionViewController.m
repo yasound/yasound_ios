@@ -1,14 +1,14 @@
 //
-//  InteractionView.m
+//  InteractionViewController.m
 //  Yasound
 //
 //  Created by Sébastien Métrot on 11/2/11.
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
-#import "InteractionView.h"
+#import "InteractionViewController.h"
 
-@implementation InteractionView
+@implementation InteractionViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

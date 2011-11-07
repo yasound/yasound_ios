@@ -1,5 +1,5 @@
 //
-//  RadioCreator.h
+//  RadioCreatorViewController.h
 //  Yasound
 //
 //  Created by Sébastien Métrot on 11/1/11.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RadioCreator : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface RadioCreatorViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
   IBOutlet UITextField* radioName;
   IBOutlet UITableView* playlists;

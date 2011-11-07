@@ -1,15 +1,15 @@
 //
-//  RadioCreator.m
+//  RadioCreatorViewController.m
 //  Yasound
 //
 //  Created by Sébastien Métrot on 11/1/11.
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
-#import "RadioCreator.h"
+#import "RadioCreatorViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
-@implementation RadioCreator
+@implementation RadioCreatorViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
