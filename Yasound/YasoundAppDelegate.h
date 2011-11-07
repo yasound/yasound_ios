@@ -8,25 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class AudioStreamer;
-@class RadioCreatorViewController;
-@class RadioViewController;
+
+@class MainViewController;
 
 @interface YasoundAppDelegate : NSObject <UIApplicationDelegate>
-{
-  UIScrollView* mpScrollView;
-  RadioCreatorViewController* mpCreator;
-  AudioStreamer* mpStreamer;
-  RadioViewController* mpRadio;
-  
-  BOOL radioCreated;
-}
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-
-- (void) createRadioList;
-- (IBAction)onCreateRadio:(id)sender;
-- (IBAction)onAccessRadio:(id)sender;
-- (IBAction)onQuitRadio:(id)sender;
+@property (nonatomic, retain)  IBOutlet UIWindow *window;
+@property (nonatomic, retain)  UINavigationController *navigationController;
+@property (nonatomic, retain) MainViewController* mainViewController;
 
 @end

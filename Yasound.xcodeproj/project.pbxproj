@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC648F1014684EFB005A6D8A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC648F0E14684EFB005A6D8A /* MainViewController.m */; };
+		BC648F1114684EFB005A6D8A /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC648F0F14684EFB005A6D8A /* MainViewController.xib */; };
+		BC943A4F1468874D0031CE17 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC943A4D1468874D0031CE17 /* MainWindow.xib */; };
 		BCFECFCF146841A800BA20D9 /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFB9146841A800BA20D9 /* avatar1.png */; };
 		BCFECFD0146841A800BA20D9 /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBA146841A800BA20D9 /* avatar2.png */; };
 		BCFECFD1146841A800BA20D9 /* avatar3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBB146841A800BA20D9 /* avatar3.png */; };
@@ -62,6 +65,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC648F0D14684EFB005A6D8A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		BC648F0E14684EFB005A6D8A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		BC648F0F14684EFB005A6D8A /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		BC943A4E1468874D0031CE17 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		BCFECFB9146841A800BA20D9 /* avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar1.png; sourceTree = "<group>"; };
 		BCFECFBA146841A800BA20D9 /* avatar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar2.png; sourceTree = "<group>"; };
 		BCFECFBB146841A800BA20D9 /* avatar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar3.png; sourceTree = "<group>"; };
@@ -293,6 +300,8 @@
 		E5280A5B146040E900A88910 /* xib */ = {
 			isa = PBXGroup;
 			children = (
+				BC943A4D1468874D0031CE17 /* MainWindow.xib */,
+				BC648F0F14684EFB005A6D8A /* MainViewController.xib */,
 				BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */,
 				BCFECFF51468439900BA20D9 /* RadioViewController.xib */,
 				BCFECFF81468439900BA20D9 /* WallMessageViewController.xib */,
@@ -354,6 +363,8 @@
 				BCFECFF41468439900BA20D9 /* RadioViewController.m */,
 				BCFECFF61468439900BA20D9 /* WallMessageViewController.h */,
 				BCFECFF71468439900BA20D9 /* WallMessageViewController.m */,
+				BC648F0D14684EFB005A6D8A /* MainViewController.h */,
+				BC648F0E14684EFB005A6D8A /* MainViewController.m */,
 				BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */,
 				BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */,
 			);
@@ -447,6 +458,8 @@
 				BCFED0021468439900BA20D9 /* RadioCreatorViewController.xib in Resources */,
 				BCFED0041468439900BA20D9 /* RadioViewController.xib in Resources */,
 				BCFED0061468439900BA20D9 /* WallMessageViewController.xib in Resources */,
+				BC648F1114684EFB005A6D8A /* MainViewController.xib in Resources */,
+				BC943A4F1468874D0031CE17 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,12 +489,21 @@
 				BCFED0031468439900BA20D9 /* RadioViewController.m in Sources */,
 				BCFED0051468439900BA20D9 /* WallMessageViewController.m in Sources */,
 				BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */,
+				BC648F1014684EFB005A6D8A /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		BC943A4D1468874D0031CE17 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC943A4E1468874D0031CE17 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
 		E5A9A3B61454DC0500EA374C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

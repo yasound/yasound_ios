@@ -7,8 +7,6 @@
 //
 
 #import "Tile.h"
-//LBDEBUG
-//#import "WebImageView.h"
 
 @implementation Tile
 
