@@ -144,8 +144,8 @@
   const char* menuName[] = 
   {
     "Selection",
-    "Favoris",
-    "Amis",
+    "Favorites",
+    "Friends",
     "Top",
     NULL
   };
