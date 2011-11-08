@@ -72,7 +72,7 @@
 #if LOCAL
   NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/allAPI/"];
 #else
-  NSURL *url = [NSURL URLWithString:@"http://94.100.167.5:8080/wall/allAPI/"];
+  NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/allAPI/"];
 #endif
   
 	ASIHTTPRequest *request = [ASIFormDataRequest requestWithURL:url];
@@ -256,7 +256,7 @@
 #if LOCAL
   NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/all/"];  
 #else
-  NSURL *url = [NSURL URLWithString:@"http://94.100.167.5:8080/wall/all/"];
+  NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/all/"];
 #endif
   
   ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
@@ -273,7 +273,7 @@
 #if LOCAL
   NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpostAPI/"];
 #else
-  NSURL *url = [NSURL URLWithString:@"http://94.100.167.5:8080/wall/sendpostAPI/"];
+  NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/sendpostAPI/"];
 #endif
 
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
