@@ -11,9 +11,8 @@
 #import "Tile.h"
 #import "MenuHeader.h"
 #import "SlidingMenu.h"
-#import "AudioStreamer.h"
+//#import "AudioStreamer.h"
 #import "ASIFormDataRequest.h"
-#import "RadioCreatorViewController.h"
 #import "RadioViewController.h"
 
 @implementation MainViewController
@@ -24,11 +23,9 @@
 {
   self = [super init];
 
-  mpCreator = nil;
-  mpScrollView = nil;
-  mpRadio = nil;
-  
-  radioCreated = FALSE;  
+  _radioCreated = FALSE;  
+  _myRadioButton = nil;
+  _headerView = nil;
   
   return self;
 }
@@ -49,6 +46,11 @@
   [super viewDidLoad];
 
   [self createRadioList];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [self updateHeader];
 }
 
 - (void)viewDidUnload
@@ -72,42 +74,67 @@
 
 
 
+- (void)updateHeader
+{
+  if (_myRadioButton)
+  {
+    [_myRadioButton removeFromSuperview];
+    _myRadioButton = nil;
+  }
+  
+  _myRadioButton = [UIButton buttonWithType:UIButtonTypeCustom];
+
+  UIImage* myradioimg = nil;
+  if (_radioCreated)
+  {
+    myradioimg = [UIImage imageNamed:@"radiocree.png"];
+    [_myRadioButton addTarget:self action:@selector(onAccessRadio:) forControlEvents:UIControlEventTouchUpInside];
+  }
+  else 
+  {
+    myradioimg = [UIImage imageNamed:@"CreateMyRadio.png"];
+    [_myRadioButton addTarget:self action:@selector(onCreateRadio:) forControlEvents:UIControlEventTouchUpInside];
+  }
+
+  [_myRadioButton setImage:myradioimg forState:UIControlStateNormal];
+  
+  [_headerView addSubview:_myRadioButton];
+  
+  CGSize size = myradioimg.size;
+  CGRect frame = CGRectMake(0, 0, size.width, size.height);
+  _myRadioButton.frame = frame;
+}
 
 
-- (void) createRadioList
+
+
+#define HEADER_HEIGHT 88
+
+
+- (void)createRadioList
 {
   const int H = 128;
   const int interline = 22;
   const int HH = H + interline;
   
-  mpScrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-  [self.view addSubview:mpScrollView];
-  [mpScrollView setScrollEnabled:TRUE];
+  UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+  [self.view addSubview:scrollView];
+  [scrollView setScrollEnabled:TRUE];
   
   int y = 0;
   
   UIImage* logo = [UIImage imageNamed:@"logo.png"];
   UIImageView* logoview = [[UIImageView alloc] initWithImage: logo];
-  [mpScrollView addSubview:logoview];
+  [scrollView addSubview:logoview];
   logoview.frame = CGRectMake(160 - logo.size.width / 2, 20, logo.size.width, logo.size.height);
   
   y += 40 + logo.size.height;
   
-  UIButton* myradio = [UIButton buttonWithType:UIButtonTypeCustom];
-  UIImage* myradioimg = nil;
-  if (radioCreated)
-    myradioimg = [UIImage imageNamed:@"radiocree.png"];
-  else 
-    myradioimg = [UIImage imageNamed:@"CreateMyRadio.png"];
+  CGRect headerFrame = CGRectMake(0, y, self.view.frame.size.width, HEADER_HEIGHT);
+  _headerView = [[UIView alloc] initWithFrame:headerFrame];
+  y += HEADER_HEIGHT;
   
-  myradio.frame = CGRectMake(0, y, myradioimg.size.width, myradioimg.size.height);
-  y += myradioimg.size.height;
-  [myradio setImage:myradioimg forState:UIControlStateNormal];
-  if (radioCreated)
-    [myradio addTarget:self action:@selector(onAccessRadio:) forControlEvents:UIControlEventTouchUpInside];
-  else
-    [myradio addTarget:self action:@selector(onCreateRadio:) forControlEvents:UIControlEventTouchUpInside];
-  [mpScrollView addSubview:myradio];
+  [scrollView addSubview:_headerView];
   
   int ndx = 0;
   
@@ -234,76 +261,59 @@
       ndx %= 20;
     }
     
-    SlidingMenu* menu = [[SlidingMenu alloc] initWithFrame:CGRectMake(0, y, mpScrollView.frame.size.width, HH) menuName:[NSString stringWithCString:menuName[i] encoding:NSUTF8StringEncoding] names:radioNames captions:captions andDestinations:array];
+    SlidingMenu* menu = [[SlidingMenu alloc] initWithFrame:CGRectMake(0, y, scrollView.frame.size.width, HH) menuName:[NSString stringWithCString:menuName[i] encoding:NSUTF8StringEncoding] names:radioNames captions:captions andDestinations:array];
     y += HH;
     [menu addTarget:self action:@selector(TileActivated:) forControlEvents:UIControlEventTouchUpInside];
     
-    [mpScrollView addSubview:menu];
+    [scrollView addSubview:menu];
   }
   
-  [mpScrollView setContentSize:CGSizeMake(320, y)];
-  
-//  self.view.frame = [UIScreen mainScreen].applicationFrame;
-  
+  [scrollView setContentSize:CGSizeMake(320, y)];
 }
 
 - (IBAction)TileActivated:(id)sender
 {
   Tile* pTile = (Tile*)sender;
   NSLog(@"Button pressed: %@", [pTile description]);
-  
-  [mpScrollView removeFromSuperview];
-  mpScrollView = nil;
-  
-  mpRadio = [[RadioViewController alloc] initWithNibName:@"RadioViewController" bundle:nil];
-  [self.view addSubview: mpRadio.view];
-  
-  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/cedric.mp3"];
-  mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
-  [mpStreamer retain];
-  [mpStreamer start];
+
+  [self onAccessRadio:sender];
 }
 
-- (IBAction)onCreateRadio:(id)sender
+
+ - (IBAction)onCreateRadio:(id)sender
 {
-  [mpScrollView removeFromSuperview];
-  mpScrollView = nil;
+  RadioCreatorViewController* view = [[RadioCreatorViewController alloc] initWithNibName:@"RadioCreatorViewController" bundle:nil];
+  view.delegate = self;
   
-  mpCreator = [[RadioCreatorViewController alloc] initWithNibName:@"RadioCreatorViewController" bundle:nil];
-  [self.view addSubview: mpCreator.view];
+  _radioCreated = TRUE;
   
-  radioCreated = TRUE;
+  [self.navigationController presentModalViewController:view animated:YES];
+  [view release];
+}
+ 
+ 
+ - (IBAction)onAccessRadio:(id)sender
+{
+  RadioViewController* view = [[RadioViewController alloc] initWithNibName:@"RadioViewController" bundle:nil];
+  [self.navigationController pushViewController:view animated:NO];
+  [view release];
 }
 
-- (IBAction)onAccessRadio:(id)sender
+
+
+#pragma mark - RadioCreatorDelegate
+
+- (void)radioDidCreate:(UIViewController*)modalViewController
 {
-  [mpScrollView removeFromSuperview];
-  [mpScrollView release];
-  mpScrollView = nil;
-  [mpCreator.view removeFromSuperview];
-  [mpCreator release];
-  mpCreator = nil;
-  
-  mpRadio = [[RadioViewController alloc] initWithNibName:@"RadioViewController" bundle:nil];
-  [self.view addSubview: mpRadio.view];
-  
-  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/cedric.mp3"];
-  mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
-  [mpStreamer retain];
-  [mpStreamer start];
+  [modalViewController dismissModalViewControllerAnimated:YES];
+
+  RadioViewController* view = [[RadioViewController alloc] initWithNibName:@"RadioViewController" bundle:nil];
+  [self.navigationController pushViewController:view animated:NO];
+  [view release];
 }
 
-- (IBAction)onQuitRadio:(id)sender
-{
-  [mpStreamer stop];
-  [mpStreamer release];
-  mpStreamer = nil;
-  [mpRadio.view removeFromSuperview];
-  [mpRadio release];
-  mpRadio = nil;
-  
-  [self createRadioList];
-}
+
+
 
 
 

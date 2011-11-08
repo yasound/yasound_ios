@@ -8,8 +8,17 @@
 
 #import "RadioCreatorViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "RadioViewController.h"
+
+
 
 @implementation RadioCreatorViewController
+
+
+@synthesize delegate = _delegate;
+
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +46,8 @@
 
 - (IBAction)onRadioCreated:(id)sender
 {
-  [[UIApplication sharedApplication].delegate onAccessRadio:sender];
+  // parent is in charge of dismissing this modal view controller
+  [self.delegate radioDidCreate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,6 +135,13 @@
   
   cell.selected = FALSE;
 }
+
+
+
+
+
+
+#pragma mark - TextField Delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

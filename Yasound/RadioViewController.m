@@ -9,6 +9,8 @@
 #import "RadioViewController.h"
 #import "ASIFormDataRequest.h"
 #import "WallMessageViewController.h"
+#import "AudioStreamer.h"
+
 
 #define LOCAL 0 // use localhost as the server
 
@@ -96,6 +98,21 @@
                                   repeats:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/cedric.mp3"];
+  mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
+  [mpStreamer retain];
+  [mpStreamer start];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+  [mpStreamer stop];
+  [mpStreamer release];
+}
+
+
 - (void)viewDidUnload
 {
   [timer release];
@@ -134,7 +151,7 @@
 
 - (IBAction)onBack:(id)sender
 {
-  [[UIApplication sharedApplication].delegate onQuitRadio:sender];
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)onSendMessage:(id)sender

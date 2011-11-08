@@ -7,24 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RadioCreatorViewController.h"
 
-@class AudioStreamer;
-@class RadioCreatorViewController;
-@class RadioViewController;
-
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController<RadioCreatorDelegate>
 {
-  UIScrollView* mpScrollView;
-  RadioCreatorViewController* mpCreator;
-  AudioStreamer* mpStreamer;
-  RadioViewController* mpRadio;
-  
-  BOOL radioCreated;
+  UIView* _headerView;
+  UIButton* _myRadioButton;
+  BOOL _radioCreated;
 }
-
-- (void) createRadioList;
-- (IBAction)onCreateRadio:(id)sender;
-- (IBAction)onAccessRadio:(id)sender;
-- (IBAction)onQuitRadio:(id)sender;
 
 @end

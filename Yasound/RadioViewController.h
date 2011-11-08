@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @class WallMessageViewController;
+@class AudioStreamer;
+
 
 @interface Message : NSObject
 {
@@ -41,6 +43,8 @@
   
   Message* currentMessage;
   NSMutableString* currentXMLString;
+  
+  AudioStreamer* mpStreamer;
   
   NSTimer* timer;
 }
