@@ -14,12 +14,15 @@
 		BC943A5514688AE70031CE17 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5214688AE70031CE17 /* icon.png */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BCD4C2C9146962B1000A236A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2C8146962B1000A236A /* logo.png */; };
+		BCD4C2CE14696E6E000A236A /* CreateMyRadio_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CA14696E6E000A236A /* CreateMyRadio_Down.png */; };
+		BCD4C2CF14696E6E000A236A /* CreateMyRadio_Down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CB14696E6E000A236A /* CreateMyRadio_Down@2x.png */; };
+		BCD4C2D014696E6E000A236A /* CreateMyRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CC14696E6E000A236A /* CreateMyRadio.png */; };
+		BCD4C2D114696E6E000A236A /* CreateMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CD14696E6E000A236A /* CreateMyRadio@2x.png */; };
 		BCFECFCF146841A800BA20D9 /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFB9146841A800BA20D9 /* avatar1.png */; };
 		BCFECFD0146841A800BA20D9 /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBA146841A800BA20D9 /* avatar2.png */; };
 		BCFECFD1146841A800BA20D9 /* avatar3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBB146841A800BA20D9 /* avatar3.png */; };
 		BCFECFD2146841A800BA20D9 /* bouton-envoyer.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBD146841A800BA20D9 /* bouton-envoyer.png */; };
 		BCFECFD3146841A800BA20D9 /* bouton-retour.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBE146841A800BA20D9 /* bouton-retour.png */; };
-		BCFECFD4146841A800BA20D9 /* CreateMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBF146841A800BA20D9 /* CreateMyRadio@2x.png */; };
 		BCFECFD5146841A800BA20D9 /* fond-auditeurs.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC0146841A800BA20D9 /* fond-auditeurs.png */; };
 		BCFECFD6146841A800BA20D9 /* MenuBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC1146841A800BA20D9 /* MenuBg@2x.png */; };
 		BCFECFD7146841A800BA20D9 /* radiocree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC2146841A800BA20D9 /* radiocree@2x.png */; };
@@ -78,12 +81,15 @@
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
 		BCD4C2C8146962B1000A236A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		BCD4C2CA14696E6E000A236A /* CreateMyRadio_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateMyRadio_Down.png; sourceTree = "<group>"; };
+		BCD4C2CB14696E6E000A236A /* CreateMyRadio_Down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadio_Down@2x.png"; sourceTree = "<group>"; };
+		BCD4C2CC14696E6E000A236A /* CreateMyRadio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateMyRadio.png; sourceTree = "<group>"; };
+		BCD4C2CD14696E6E000A236A /* CreateMyRadio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadio@2x.png"; sourceTree = "<group>"; };
 		BCFECFB9146841A800BA20D9 /* avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar1.png; sourceTree = "<group>"; };
 		BCFECFBA146841A800BA20D9 /* avatar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar2.png; sourceTree = "<group>"; };
 		BCFECFBB146841A800BA20D9 /* avatar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar3.png; sourceTree = "<group>"; };
 		BCFECFBD146841A800BA20D9 /* bouton-envoyer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bouton-envoyer.png"; sourceTree = "<group>"; };
 		BCFECFBE146841A800BA20D9 /* bouton-retour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bouton-retour.png"; sourceTree = "<group>"; };
-		BCFECFBF146841A800BA20D9 /* CreateMyRadio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadio@2x.png"; sourceTree = "<group>"; };
 		BCFECFC0146841A800BA20D9 /* fond-auditeurs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fond-auditeurs.png"; sourceTree = "<group>"; };
 		BCFECFC1146841A800BA20D9 /* MenuBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBg@2x.png"; sourceTree = "<group>"; };
 		BCFECFC2146841A800BA20D9 /* radiocree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radiocree@2x.png"; sourceTree = "<group>"; };
@@ -208,9 +214,12 @@
 		BCFECFBC146841A800BA20D9 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				BCD4C2CA14696E6E000A236A /* CreateMyRadio_Down.png */,
+				BCD4C2CB14696E6E000A236A /* CreateMyRadio_Down@2x.png */,
+				BCD4C2CC14696E6E000A236A /* CreateMyRadio.png */,
+				BCD4C2CD14696E6E000A236A /* CreateMyRadio@2x.png */,
 				BCFECFBD146841A800BA20D9 /* bouton-envoyer.png */,
 				BCFECFBE146841A800BA20D9 /* bouton-retour.png */,
-				BCFECFBF146841A800BA20D9 /* CreateMyRadio@2x.png */,
 				BCFECFC0146841A800BA20D9 /* fond-auditeurs.png */,
 				BCFECFC1146841A800BA20D9 /* MenuBg@2x.png */,
 				BCFECFC2146841A800BA20D9 /* radiocree@2x.png */,
@@ -454,7 +463,6 @@
 				BCFECFD1146841A800BA20D9 /* avatar3.png in Resources */,
 				BCFECFD2146841A800BA20D9 /* bouton-envoyer.png in Resources */,
 				BCFECFD3146841A800BA20D9 /* bouton-retour.png in Resources */,
-				BCFECFD4146841A800BA20D9 /* CreateMyRadio@2x.png in Resources */,
 				BCFECFD5146841A800BA20D9 /* fond-auditeurs.png in Resources */,
 				BCFECFD6146841A800BA20D9 /* MenuBg@2x.png in Resources */,
 				BCFECFD7146841A800BA20D9 /* radiocree@2x.png in Resources */,
@@ -477,6 +485,10 @@
 				BC943A5414688AE70031CE17 /* Default@2x.png in Resources */,
 				BC943A5514688AE70031CE17 /* icon.png in Resources */,
 				BCD4C2C9146962B1000A236A /* logo.png in Resources */,
+				BCD4C2CE14696E6E000A236A /* CreateMyRadio_Down.png in Resources */,
+				BCD4C2CF14696E6E000A236A /* CreateMyRadio_Down@2x.png in Resources */,
+				BCD4C2D014696E6E000A236A /* CreateMyRadio.png in Resources */,
+				BCD4C2D114696E6E000A236A /* CreateMyRadio@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -89,14 +89,17 @@
   {
     myradioimg = [UIImage imageNamed:@"radiocree.png"];
     [_myRadioButton addTarget:self action:@selector(onAccessRadio:) forControlEvents:UIControlEventTouchUpInside];
+    [_myRadioButton setImage:myradioimg forState:UIControlStateNormal];
   }
   else 
   {
     myradioimg = [UIImage imageNamed:@"CreateMyRadio.png"];
+    [_myRadioButton setImage:myradioimg forState:UIControlStateNormal];
+    myradioimg = [UIImage imageNamed:@"CreateMyRadio_Down.png"];
+    [_myRadioButton setImage:myradioimg forState:UIControlStateHighlighted];
     [_myRadioButton addTarget:self action:@selector(onCreateRadio:) forControlEvents:UIControlEventTouchUpInside];
   }
 
-  [_myRadioButton setImage:myradioimg forState:UIControlStateNormal];
   
   [_headerView addSubview:_myRadioButton];
   
