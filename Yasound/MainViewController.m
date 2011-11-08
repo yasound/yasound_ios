@@ -117,7 +117,7 @@
   const int interline = 22;
   const int HH = H + interline;
   
-  UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
+  UIScrollView* scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
   [self.view addSubview:scrollView];
   [scrollView setScrollEnabled:TRUE];
   
@@ -126,9 +126,9 @@
   UIImage* logo = [UIImage imageNamed:@"logo.png"];
   UIImageView* logoview = [[UIImageView alloc] initWithImage: logo];
   [scrollView addSubview:logoview];
-  logoview.frame = CGRectMake(160 - logo.size.width / 2, 20, logo.size.width, logo.size.height);
+  logoview.frame = CGRectMake(160 - logo.size.width / 2, 0, logo.size.width, logo.size.height);
   
-  y += 40 + logo.size.height;
+  y += logo.size.height;
   
   CGRect headerFrame = CGRectMake(0, y, self.view.frame.size.width, HEADER_HEIGHT);
   _headerView = [[UIView alloc] initWithFrame:headerFrame];
