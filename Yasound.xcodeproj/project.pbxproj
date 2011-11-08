@@ -635,12 +635,14 @@
 		E5A9A3C51454DC0500EA374C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: matthieu campion (A79Q464628)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2EE425CC-6FD4-4FE9-823A-4952F4E809A0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -648,12 +650,14 @@
 		E5A9A3C61454DC0500EA374C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: matthieu campion (A79Q464628)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2EE425CC-6FD4-4FE9-823A-4952F4E809A0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
