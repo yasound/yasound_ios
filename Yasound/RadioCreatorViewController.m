@@ -59,7 +59,7 @@
 {
   ActivityAlertView* activityAlert = [[[ActivityAlertView alloc] 
                      initWithTitle:@"Yasound"
-                     message:@"Please wait while\ncreating the radio."
+                     message:@"Please wait while\ncreating the yasound."
                      delegate:self cancelButtonTitle:nil 
                      otherButtonTitles:nil] autorelease];
   
