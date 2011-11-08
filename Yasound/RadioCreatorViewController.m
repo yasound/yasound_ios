@@ -9,6 +9,7 @@
 #import "RadioCreatorViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "RadioViewController.h"
+#import "ActivityAlertView.h"
 
 
 
@@ -44,21 +45,58 @@
     return self;
 }
 
-- (IBAction)onRadioCreated:(id)sender
+
+- (void)didReceiveMemoryWarning
+{
+  // Releases the view if it doesn't have a superview.
+  [super didReceiveMemoryWarning];
+  
+  // Release any cached data, images, etc that aren't in use.
+}
+
+
+- (IBAction)createRadio:(id)sender
+{
+  ActivityAlertView* activityAlert = [[[ActivityAlertView alloc] 
+                     initWithTitle:@"Yasound"
+                     message:@"Please wait while\ncreating the radio."
+                     delegate:self cancelButtonTitle:nil 
+                     otherButtonTitles:nil] autorelease];
+  
+  [activityAlert show];
+  
+  // timer for faking radio creation
+  [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(onRadioCreated:) userInfo:activityAlert repeats:NO];
+}
+
+- (void)onRadioCreated:(NSTimer*)timer
+{
+  // close activity alert
+  ActivityAlertView* activityAlert = timer.userInfo;
+  [activityAlert close];  
+
+  // status message to user
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"ready to broadcast!" delegate:self
+                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [av show];
+  [av release];  
+
+}
+
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
   // parent is in charge of dismissing this modal view controller
   [self.delegate radioDidCreate:self];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
+
+
+
 
 #pragma mark - View lifecycle
+
 
 - (void)viewDidLoad
 {

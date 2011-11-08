@@ -306,10 +306,6 @@
 - (void)radioDidCreate:(UIViewController*)modalViewController
 {
   [modalViewController dismissModalViewControllerAnimated:YES];
-
-  RadioViewController* view = [[RadioViewController alloc] initWithNibName:@"RadioViewController" bundle:nil];
-  [self.navigationController pushViewController:view animated:NO];
-  [view release];
 }
 
 
