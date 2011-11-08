@@ -298,7 +298,7 @@
  - (IBAction)onAccessRadio:(id)sender
 {
   RadioViewController* view = [[RadioViewController alloc] initWithNibName:@"RadioViewController" bundle:nil];
-  [self.navigationController pushViewController:view animated:NO];
+  [self.navigationController pushViewController:view animated:YES];
   [view release];
 }
 
