@@ -7,7 +7,6 @@
 //
 
 #import "Tile.h"
-#import "WebImageView.h"
 
 @implementation Tile
 

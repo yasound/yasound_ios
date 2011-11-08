@@ -1,15 +1,25 @@
 //
-//  RadioCreator.m
+//  RadioCreatorViewController.m
 //  Yasound
 //
 //  Created by Sébastien Métrot on 11/1/11.
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
-#import "RadioCreator.h"
+#import "RadioCreatorViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "RadioViewController.h"
+#import "ActivityAlertView.h"
 
-@implementation RadioCreator
+
+
+@implementation RadioCreatorViewController
+
+
+@synthesize delegate = _delegate;
+
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,20 +45,58 @@
     return self;
 }
 
-- (IBAction)onRadioCreated:(id)sender
-{
-  [[UIApplication sharedApplication].delegate onAccessRadio:sender];
-}
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+  // Releases the view if it doesn't have a superview.
+  [super didReceiveMemoryWarning];
+  
+  // Release any cached data, images, etc that aren't in use.
 }
 
+
+- (IBAction)createRadio:(id)sender
+{
+  ActivityAlertView* activityAlert = [[[ActivityAlertView alloc] 
+                     initWithTitle:@"Yasound"
+                     message:@"Please wait while\ncreating the yasound."
+                     delegate:self cancelButtonTitle:nil 
+                     otherButtonTitles:nil] autorelease];
+  
+  [activityAlert show];
+  
+  // timer for faking radio creation
+  [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(onRadioCreated:) userInfo:activityAlert repeats:NO];
+}
+
+- (void)onRadioCreated:(NSTimer*)timer
+{
+  // close activity alert
+  ActivityAlertView* activityAlert = timer.userInfo;
+  [activityAlert close];  
+
+  // status message to user
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"ready to broadcast!" delegate:self
+                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [av show];
+  [av release];  
+
+}
+
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+  // parent is in charge of dismissing this modal view controller
+  [self.delegate radioDidCreate:self];
+}
+
+
+
+
+
 #pragma mark - View lifecycle
+
 
 - (void)viewDidLoad
 {
@@ -125,6 +173,13 @@
   
   cell.selected = FALSE;
 }
+
+
+
+
+
+
+#pragma mark - TextField Delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

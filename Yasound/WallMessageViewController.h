@@ -1,5 +1,5 @@
 //
-//  WallMessage.h
+//  WallMessageViewController.h
 //  Yasound
 //
 //  Created by Sébastien Métrot on 11/2/11.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WallMessage : UIViewController
+@interface WallMessageViewController : UIViewController
 {
 }
 

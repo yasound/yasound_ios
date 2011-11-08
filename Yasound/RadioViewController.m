@@ -8,7 +8,9 @@
 
 #import "RadioViewController.h"
 #import "ASIFormDataRequest.h"
-#import "WallMessage.h"
+#import "WallMessageViewController.h"
+#import "AudioStreamer.h"
+
 
 #define LOCAL 0 // use localhost as the server
 
@@ -32,13 +34,22 @@
     
     messagesArray = [[NSMutableArray alloc] init];
     avatarImages = [[NSMutableDictionary alloc] init];
-
-    UIImage* img = [UIImage imageNamed:@"avatar1"];
-    [avatarImages setObject:img forKey:@"meeloo"];
-    img = [UIImage imageNamed:@"avatar2"];
-    [avatarImages setObject:img forKey:@"jmp"];
-    img = [UIImage imageNamed:@"avatar3"];
-    [avatarImages setObject:img forKey:@"bruno"];
+    
+    [avatarImages setObject:[UIImage imageNamed:@"avatar1"]  forKey:@"meeloo"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar2"]  forKey:@"jmp"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar3"]  forKey:@"bruno"];
+    
+    [avatarImages setObject:[UIImage imageNamed:@"avatar4"]  forKey:@"james"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar5"]  forKey:@"john"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar6"]  forKey:@"mark"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar7"]  forKey:@"michael"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar8"]  forKey:@"carol"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar9"]  forKey:@"david"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar10"] forKey:@"paul"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar11"] forKey:@"lisa"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar12"] forKey:@"neywen"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar13"] forKey:@"sandra"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar14"] forKey:@"charles"];
 
     currentMessage = nil;
   }
@@ -88,6 +99,51 @@
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
+  
+  // add avatar icons
+  float x = 0;
+  float tileW = 40;
+  float tileH = 50;
+  
+  CGRect r = avatars.frame;
+  CGSize avatarsContentSize;
+  avatarsContentSize.height = tileH;
+  
+  for (NSString* name in avatarImages) 
+  {
+    UIImage* img = [avatarImages objectForKey:name];
+    
+    float border = 6;
+    float interspace = 3;
+    float imgW = 24;
+    float imgH = 24;
+    float imgLeft = (tileW - imgW) / 2.f;
+    
+    float labelW = tileW - 2 * border;
+    float labelH = tileH - imgH - 2 * border - interspace;
+    
+    CGRect imgRect = CGRectMake(x + imgLeft, border, imgW, imgH);
+    CGRect labelRect = CGRectMake(x + border, border + imgH + interspace, labelW, labelH);
+    
+    UIImageView* imgView = [[UIImageView alloc] initWithImage:img];
+    imgView.frame = imgRect;
+    UILabel* label = [[UILabel alloc] initWithFrame:labelRect];
+    label.text = name;
+    label.textAlignment = UITextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:7];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor colorWithWhite:0.8 alpha:1];
+    
+    [avatars addSubview:imgView];
+    [avatars addSubview:label];
+    
+    x += tileW;
+    avatarsContentSize.width += tileW;
+  }
+  avatars.contentSize = avatarsContentSize;
+  
+  r = avatars.frame;
+  
   [self updateWall];
   timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                    target:self
@@ -95,6 +151,21 @@
                                  userInfo:nil
                                   repeats:YES];
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/cedric.mp3"];
+  mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
+  [mpStreamer retain];
+  [mpStreamer start];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+  [mpStreamer stop];
+  [mpStreamer release];
+}
+
 
 - (void)viewDidUnload
 {
@@ -134,7 +205,7 @@
 
 - (IBAction)onBack:(id)sender
 {
-  [[UIApplication sharedApplication].delegate onQuitRadio:sender];
+  [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)onSendMessage:(id)sender
@@ -250,7 +321,7 @@
     {
       NSLog(@"New post: %d\n", currentMessage.identifier);
  
-      WallMessage* wm = [[WallMessage alloc] initWithNibName:@"WallMessage" bundle:nil];
+      WallMessageViewController* wm = [[WallMessageViewController alloc] initWithNibName:@"WallMessageViewController" bundle:nil];
       UIImage* img = (UIImage*)[avatarImages objectForKey:currentMessage.user];
       
       Message* m = [[Message alloc] init];
@@ -308,7 +379,7 @@
   int y = 0;
   for (Message* m in messagesArray)
   {
-    WallMessage* wm = m.wallMessage;
+    WallMessageViewController* wm = m.wallMessage;
     CGRect r = wm.view.frame;
     r.origin.y = y;
     wm.view.frame = r;

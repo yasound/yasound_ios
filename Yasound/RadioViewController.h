@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class WallMessage;
+@class WallMessageViewController;
+@class AudioStreamer;
+
 
 @interface Message : NSObject
 {
@@ -17,14 +19,14 @@
   NSString* date;
   NSString* user;
   NSString* message;
-  WallMessage* wallMessage;
+  WallMessageViewController* wallMessage;
 }
 @property (nonatomic) int identifier;
 @property (retain, nonatomic) NSString *kind;
 @property (retain, nonatomic) NSString *date;
 @property (retain, nonatomic) NSString *user;
 @property (retain, nonatomic) NSString *message;
-@property (retain, nonatomic) WallMessage *wallMessage;
+@property (retain, nonatomic) WallMessageViewController *wallMessage;
 @end
 
 @interface RadioViewController : UIViewController<UITextInputDelegate, NSXMLParserDelegate>
@@ -32,7 +34,7 @@
   IBOutlet UILabel *radioName;
   IBOutlet UIScrollView *wall;
   IBOutlet UITextField *messageInput;
-  IBOutlet UIView *avatars;
+  IBOutlet UIScrollView *avatars;
   
   NSMutableArray* messagesArray;
   NSMutableDictionary* avatarImages;
@@ -41,6 +43,8 @@
   
   Message* currentMessage;
   NSMutableString* currentXMLString;
+  
+  AudioStreamer* mpStreamer;
   
   NSTimer* timer;
 }

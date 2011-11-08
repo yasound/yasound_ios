@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class WebImageView;
 
 @interface Tile : UIButton
 {
-  //WebImageView* image;
   UILabel* title;
   UILabel* caption;
   UIImageView* imageView;

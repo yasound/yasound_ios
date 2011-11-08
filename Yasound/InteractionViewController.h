@@ -1,5 +1,5 @@
 //
-//  InteractionView.h
+//  InteractionViewController.h
 //  Yasound
 //
 //  Created by Sébastien Métrot on 11/2/11.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InteractionView : UIViewController
+@interface InteractionViewController : UIViewController
 
 @end
