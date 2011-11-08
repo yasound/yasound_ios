@@ -202,7 +202,7 @@
 #if LOCAL
   NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpostAPI/"];
 #else
-  NSURL *url = [NSURL URLWithString:@"http://94.100.167.5:8080/wall/sendpostAPI/"];
+  NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/sendpostAPI/"];
 #endif
 
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
