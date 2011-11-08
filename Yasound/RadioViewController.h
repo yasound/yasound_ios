@@ -34,7 +34,7 @@
   IBOutlet UILabel *radioName;
   IBOutlet UIScrollView *wall;
   IBOutlet UITextField *messageInput;
-  IBOutlet UIView *avatars;
+  IBOutlet UIScrollView *avatars;
   
   NSMutableArray* messagesArray;
   NSMutableDictionary* avatarImages;

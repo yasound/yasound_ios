@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		401B010E146978B400A4B047 /* avatar4.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0103146978B300A4B047 /* avatar4.png */; };
+		401B010F146978B400A4B047 /* avatar5.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0104146978B300A4B047 /* avatar5.png */; };
+		401B0110146978B400A4B047 /* avatar6.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0105146978B300A4B047 /* avatar6.png */; };
+		401B0111146978B400A4B047 /* avatar7.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0106146978B300A4B047 /* avatar7.png */; };
+		401B0112146978B400A4B047 /* avatar8.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0107146978B300A4B047 /* avatar8.png */; };
+		401B0113146978B400A4B047 /* avatar9.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0108146978B300A4B047 /* avatar9.png */; };
+		401B0114146978B400A4B047 /* avatar10.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0109146978B400A4B047 /* avatar10.png */; };
+		401B0115146978B400A4B047 /* avatar11.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010A146978B400A4B047 /* avatar11.png */; };
+		401B0116146978B400A4B047 /* avatar12.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010B146978B400A4B047 /* avatar12.png */; };
+		401B0117146978B400A4B047 /* avatar13.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010C146978B400A4B047 /* avatar13.png */; };
+		401B0118146978B400A4B047 /* avatar14.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010D146978B400A4B047 /* avatar14.png */; };
 		BC648F1014684EFB005A6D8A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC648F0E14684EFB005A6D8A /* MainViewController.m */; };
 		BC943A4F1468874D0031CE17 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC943A4D1468874D0031CE17 /* MainWindow.xib */; };
 		BC943A5314688AE70031CE17 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
@@ -72,6 +83,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		401B0103146978B300A4B047 /* avatar4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar4.png; sourceTree = "<group>"; };
+		401B0104146978B300A4B047 /* avatar5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar5.png; sourceTree = "<group>"; };
+		401B0105146978B300A4B047 /* avatar6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar6.png; sourceTree = "<group>"; };
+		401B0106146978B300A4B047 /* avatar7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar7.png; sourceTree = "<group>"; };
+		401B0107146978B300A4B047 /* avatar8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar8.png; sourceTree = "<group>"; };
+		401B0108146978B300A4B047 /* avatar9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar9.png; sourceTree = "<group>"; };
+		401B0109146978B400A4B047 /* avatar10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar10.png; sourceTree = "<group>"; };
+		401B010A146978B400A4B047 /* avatar11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar11.png; sourceTree = "<group>"; };
+		401B010B146978B400A4B047 /* avatar12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar12.png; sourceTree = "<group>"; };
+		401B010C146978B400A4B047 /* avatar13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar13.png; sourceTree = "<group>"; };
+		401B010D146978B400A4B047 /* avatar14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar14.png; sourceTree = "<group>"; };
 		BC648F0D14684EFB005A6D8A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		BC648F0E14684EFB005A6D8A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		BC943A4E1468874D0031CE17 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -207,6 +229,17 @@
 				BCFECFB9146841A800BA20D9 /* avatar1.png */,
 				BCFECFBA146841A800BA20D9 /* avatar2.png */,
 				BCFECFBB146841A800BA20D9 /* avatar3.png */,
+				401B0103146978B300A4B047 /* avatar4.png */,
+				401B0104146978B300A4B047 /* avatar5.png */,
+				401B0105146978B300A4B047 /* avatar6.png */,
+				401B0106146978B300A4B047 /* avatar7.png */,
+				401B0107146978B300A4B047 /* avatar8.png */,
+				401B0108146978B300A4B047 /* avatar9.png */,
+				401B0109146978B400A4B047 /* avatar10.png */,
+				401B010A146978B400A4B047 /* avatar11.png */,
+				401B010B146978B400A4B047 /* avatar12.png */,
+				401B010C146978B400A4B047 /* avatar13.png */,
+				401B010D146978B400A4B047 /* avatar14.png */,
 			);
 			path = avatars;
 			sourceTree = "<group>";
@@ -489,6 +522,17 @@
 				BCD4C2CF14696E6E000A236A /* CreateMyRadio_Down@2x.png in Resources */,
 				BCD4C2D014696E6E000A236A /* CreateMyRadio.png in Resources */,
 				BCD4C2D114696E6E000A236A /* CreateMyRadio@2x.png in Resources */,
+				401B010E146978B400A4B047 /* avatar4.png in Resources */,
+				401B010F146978B400A4B047 /* avatar5.png in Resources */,
+				401B0110146978B400A4B047 /* avatar6.png in Resources */,
+				401B0111146978B400A4B047 /* avatar7.png in Resources */,
+				401B0112146978B400A4B047 /* avatar8.png in Resources */,
+				401B0113146978B400A4B047 /* avatar9.png in Resources */,
+				401B0114146978B400A4B047 /* avatar10.png in Resources */,
+				401B0115146978B400A4B047 /* avatar11.png in Resources */,
+				401B0116146978B400A4B047 /* avatar12.png in Resources */,
+				401B0117146978B400A4B047 /* avatar13.png in Resources */,
+				401B0118146978B400A4B047 /* avatar14.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

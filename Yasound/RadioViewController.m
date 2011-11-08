@@ -34,13 +34,22 @@
     
     messagesArray = [[NSMutableArray alloc] init];
     avatarImages = [[NSMutableDictionary alloc] init];
-
-    UIImage* img = [UIImage imageNamed:@"avatar1"];
-    [avatarImages setObject:img forKey:@"meeloo"];
-    img = [UIImage imageNamed:@"avatar2"];
-    [avatarImages setObject:img forKey:@"jmp"];
-    img = [UIImage imageNamed:@"avatar3"];
-    [avatarImages setObject:img forKey:@"bruno"];
+    
+    [avatarImages setObject:[UIImage imageNamed:@"avatar1"]  forKey:@"meeloo"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar2"]  forKey:@"jmp"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar3"]  forKey:@"bruno"];
+    
+    [avatarImages setObject:[UIImage imageNamed:@"avatar4"]  forKey:@"james"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar5"]  forKey:@"john"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar6"]  forKey:@"mark"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar7"]  forKey:@"michael"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar8"]  forKey:@"carol"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar9"]  forKey:@"david"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar10"] forKey:@"paul"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar11"] forKey:@"lisa"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar12"] forKey:@"neywen"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar13"] forKey:@"sandra"];
+    [avatarImages setObject:[UIImage imageNamed:@"avatar14"] forKey:@"charles"];
 
     currentMessage = nil;
   }
@@ -90,6 +99,51 @@
 {
   [super viewDidLoad];
   // Do any additional setup after loading the view from its nib.
+  
+  // add avatar icons
+  float x = 0;
+  float tileW = 40;
+  float tileH = 50;
+  
+  CGRect r = avatars.frame;
+  CGSize avatarsContentSize;
+  avatarsContentSize.height = tileH;
+  
+  for (NSString* name in avatarImages) 
+  {
+    UIImage* img = [avatarImages objectForKey:name];
+    
+    float border = 6;
+    float interspace = 3;
+    float imgW = 24;
+    float imgH = 24;
+    float imgLeft = (tileW - imgW) / 2.f;
+    
+    float labelW = tileW - 2 * border;
+    float labelH = tileH - imgH - 2 * border - interspace;
+    
+    CGRect imgRect = CGRectMake(x + imgLeft, border, imgW, imgH);
+    CGRect labelRect = CGRectMake(x + border, border + imgH + interspace, labelW, labelH);
+    
+    UIImageView* imgView = [[UIImageView alloc] initWithImage:img];
+    imgView.frame = imgRect;
+    UILabel* label = [[UILabel alloc] initWithFrame:labelRect];
+    label.text = name;
+    label.textAlignment = UITextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:7];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor colorWithWhite:0.8 alpha:1];
+    
+    [avatars addSubview:imgView];
+    [avatars addSubview:label];
+    
+    x += tileW;
+    avatarsContentSize.width += tileW;
+  }
+  avatars.contentSize = avatarsContentSize;
+  
+  r = avatars.frame;
+  
   [self updateWall];
   timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                    target:self
