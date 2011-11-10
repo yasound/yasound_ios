@@ -10,6 +10,11 @@
 
 @implementation ViewController
 
+@synthesize facebookConnected;
+@synthesize twitterConnected;
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -20,8 +25,11 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+  [super viewDidLoad];
+  
+  [_facebookBtn addTarget:self action:@selector(onFacebookConnect:) forControlEvents:UIControlEventTouchUpInside];
+  [_twitterBtn addTarget:self action:@selector(onTwitterConnect:) forControlEvents:UIControlEventTouchUpInside];
+  
 }
 
 - (void)viewDidUnload
@@ -56,5 +64,52 @@
     // Return YES for supported orientations
   return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
+
+
+
+#pragma mark - IBActions
+
+
+//.....................................
+//
+// connect using facebook account
+//
+- (IBAction)onFacebookConnect:(id)sender
+{
+  if ((_login.text == nil) || (_password.text == nil))
+  {
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"login and password are requested!" delegate:self
+                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];  
+    return;
+  }
+}
+
+
+//.....................................
+//
+// connect using twitter account
+//
+- (IBAction)onTwitterConnect:(id)sender
+{
+  if ((_login.text == nil) || (_password.text == nil))
+  {
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"login and password are requested!" delegate:self
+                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];  
+    return;
+  }
+  
+}
+
+
+
+
+
+
+
+
 
 @end

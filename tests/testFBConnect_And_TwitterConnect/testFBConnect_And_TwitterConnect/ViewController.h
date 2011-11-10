@@ -16,4 +16,7 @@
   IBOutlet UITextField* _password;
 }
 
+@property BOOL facebookConnected;
+@property BOOL twitterConnected;
+
 @end
