@@ -15,6 +15,15 @@
 		BC53B8FB146C409200B14231 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC53B8FA146C409200B14231 /* AppDelegate.m */; };
 		BC53B8FE146C409200B14231 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC53B8FD146C409200B14231 /* ViewController.m */; };
 		BC53B901146C409200B14231 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC53B8FF146C409200B14231 /* ViewController.xib */; };
+		BC53B908146C43FF00B14231 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B907146C43FF00B14231 /* libxml2.dylib */; };
+		BC53B90C146C442A00B14231 /* libfacebook_ios_sdk.ub.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B90A146C442A00B14231 /* libfacebook_ios_sdk.ub.a */; };
+		BC53B90D146C442A00B14231 /* libOAuthConsumer_iPhone.ub.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B90B146C442A00B14231 /* libOAuthConsumer_iPhone.ub.a */; };
+		BC53B91B146C4E8200B14231 /* signin_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BC53B919146C4E8200B14231 /* signin_facebook.png */; };
+		BC53B91C146C4E8200B14231 /* signin_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = BC53B91A146C4E8200B14231 /* signin_twitter.png */; };
+		BC53B921146C501800B14231 /* signin_facebook_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = BC53B91D146C501800B14231 /* signin_facebook_Down.png */; };
+		BC53B922146C501800B14231 /* signin_facebook_Up.png in Resources */ = {isa = PBXBuildFile; fileRef = BC53B91E146C501800B14231 /* signin_facebook_Up.png */; };
+		BC53B923146C501800B14231 /* signin_twitter_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = BC53B91F146C501800B14231 /* signin_twitter_Down.png */; };
+		BC53B924146C501800B14231 /* signin_twitter_Up.png in Resources */ = {isa = PBXBuildFile; fileRef = BC53B920146C501800B14231 /* signin_twitter_Up.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +40,15 @@
 		BC53B8FC146C409200B14231 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BC53B8FD146C409200B14231 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BC53B900146C409200B14231 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		BC53B907146C43FF00B14231 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		BC53B90A146C442A00B14231 /* libfacebook_ios_sdk.ub.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfacebook_ios_sdk.ub.a; path = deps/libfacebook_ios_sdk.ub.a; sourceTree = "<group>"; };
+		BC53B90B146C442A00B14231 /* libOAuthConsumer_iPhone.ub.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuthConsumer_iPhone.ub.a; path = deps/libOAuthConsumer_iPhone.ub.a; sourceTree = "<group>"; };
+		BC53B919146C4E8200B14231 /* signin_facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_facebook.png; sourceTree = "<group>"; };
+		BC53B91A146C4E8200B14231 /* signin_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_twitter.png; sourceTree = "<group>"; };
+		BC53B91D146C501800B14231 /* signin_facebook_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_facebook_Down.png; sourceTree = "<group>"; };
+		BC53B91E146C501800B14231 /* signin_facebook_Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_facebook_Up.png; sourceTree = "<group>"; };
+		BC53B91F146C501800B14231 /* signin_twitter_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_twitter_Down.png; sourceTree = "<group>"; };
+		BC53B920146C501800B14231 /* signin_twitter_Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_twitter_Up.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,9 +56,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC53B908146C43FF00B14231 /* libxml2.dylib in Frameworks */,
 				BC53B8EB146C409200B14231 /* UIKit.framework in Frameworks */,
 				BC53B8ED146C409200B14231 /* Foundation.framework in Frameworks */,
 				BC53B8EF146C409200B14231 /* CoreGraphics.framework in Frameworks */,
+				BC53B90C146C442A00B14231 /* libfacebook_ios_sdk.ub.a in Frameworks */,
+				BC53B90D146C442A00B14231 /* libOAuthConsumer_iPhone.ub.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +71,8 @@
 		BC53B8DB146C409100B14231 = {
 			isa = PBXGroup;
 			children = (
+				BC53B918146C4E8200B14231 /* resources */,
+				BC53B909146C440C00B14231 /* deps */,
 				BC53B8F0146C409200B14231 /* testFBConnect_And_TwitterConnect */,
 				BC53B8E9146C409200B14231 /* Frameworks */,
 				BC53B8E7146C409200B14231 /* Products */,
@@ -67,6 +90,7 @@
 		BC53B8E9146C409200B14231 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC53B907146C43FF00B14231 /* libxml2.dylib */,
 				BC53B8EA146C409200B14231 /* UIKit.framework */,
 				BC53B8EC146C409200B14231 /* Foundation.framework */,
 				BC53B8EE146C409200B14231 /* CoreGraphics.framework */,
@@ -96,6 +120,28 @@
 				BC53B8F8146C409200B14231 /* testFBConnect_And_TwitterConnect-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BC53B909146C440C00B14231 /* deps */ = {
+			isa = PBXGroup;
+			children = (
+				BC53B90A146C442A00B14231 /* libfacebook_ios_sdk.ub.a */,
+				BC53B90B146C442A00B14231 /* libOAuthConsumer_iPhone.ub.a */,
+			);
+			name = deps;
+			sourceTree = "<group>";
+		};
+		BC53B918146C4E8200B14231 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				BC53B91D146C501800B14231 /* signin_facebook_Down.png */,
+				BC53B91E146C501800B14231 /* signin_facebook_Up.png */,
+				BC53B91F146C501800B14231 /* signin_twitter_Down.png */,
+				BC53B920146C501800B14231 /* signin_twitter_Up.png */,
+				BC53B919146C4E8200B14231 /* signin_facebook.png */,
+				BC53B91A146C4E8200B14231 /* signin_twitter.png */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +196,12 @@
 			files = (
 				BC53B8F5146C409200B14231 /* InfoPlist.strings in Resources */,
 				BC53B901146C409200B14231 /* ViewController.xib in Resources */,
+				BC53B91B146C4E8200B14231 /* signin_facebook.png in Resources */,
+				BC53B91C146C4E8200B14231 /* signin_twitter.png in Resources */,
+				BC53B921146C501800B14231 /* signin_facebook_Down.png in Resources */,
+				BC53B922146C501800B14231 /* signin_facebook_Up.png in Resources */,
+				BC53B923146C501800B14231 /* signin_twitter_Down.png in Resources */,
+				BC53B924146C501800B14231 /* signin_twitter_Up.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +288,17 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"../../../facebook-ios-sdk/src",
+					"../../../Twitter-OAuth-iPhoneTwitter+OAuth/Libraries",
+					"&",
+					Headers,
+				);
 				INFOPLIST_FILE = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/deps\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -247,7 +309,17 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"../../../facebook-ios-sdk/src",
+					"../../../Twitter-OAuth-iPhoneTwitter+OAuth/Libraries",
+					"&",
+					Headers,
+				);
 				INFOPLIST_FILE = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/deps\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
