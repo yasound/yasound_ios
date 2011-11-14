@@ -15,6 +15,10 @@
 
 
 
+#define kOAuthConsumerKey        @"Your consumer key here"         //REPLACE With Twitter App OAuth Key  
+#define kOAuthConsumerSecret    @"Your consumer secret here"     //REPLACE With Twitter App OAuth Secret  
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -37,6 +41,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+  
+    [_engine release]; 
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -93,6 +99,24 @@
 //
 - (IBAction)onTwitterConnect:(id)sender
 {
+  
+  if(!_engine){  
+    _engine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];  
+    _engine.consumerKey    = kOAuthConsumerKey;  
+    _engine.consumerSecret = kOAuthConsumerSecret;  
+  }  
+  
+  if(![_engine isAuthorized])
+  {  
+    UIViewController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_engine delegate:self];  
+    
+    if (controller){  
+      [self presentModalViewController: controller animated: YES];  
+    }  
+  }  
+  
+  return;
+  
   if ((_login.text == nil) || (_password.text == nil))
   {
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"login and password are requested!" delegate:self
@@ -101,6 +125,8 @@
     [av release];  
     return;
   }
+  
+  
   
   
   

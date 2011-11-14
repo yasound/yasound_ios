@@ -290,7 +290,7 @@
 				GCC_PREFIX_HEADER = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"../../../facebook-ios-sdk/src",
-					"../../../Twitter-OAuth-iPhoneTwitter+OAuth/Libraries",
+					"h../../../Twitter-OAuth-iPhoneTwitter+OAuth/Libraries",
 					"&",
 					Headers,
 				);
@@ -311,7 +311,7 @@
 				GCC_PREFIX_HEADER = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"../../../facebook-ios-sdk/src",
-					"../../../Twitter-OAuth-iPhoneTwitter+OAuth/Libraries",
+					"h../../../Twitter-OAuth-iPhoneTwitter+OAuth/Libraries",
 					"&",
 					Headers,
 				);
@@ -344,6 +344,7 @@
 				BC53B906146C409200B14231 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

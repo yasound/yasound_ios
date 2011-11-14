@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SA_OAuthTwitterController.h" 
 
 @interface ViewController : UIViewController
 {
@@ -14,6 +15,8 @@
   IBOutlet UIButton* _twitterBtn;
   IBOutlet UITextField* _login;
   IBOutlet UITextField* _password;
+  
+  SA_OAuthTwitterEngine    *_engine; 
 }
 
 @property BOOL facebookConnected;
