@@ -27,6 +27,7 @@
 {
   [super viewDidLoad];
   
+  [SessionManager manager].delegate = self;
 }
 
 - (void)viewDidUnload
@@ -82,6 +83,11 @@
 #pragma mark - IBActions
 
 
+- (IBAction)onLogoutClicked:(id)sender
+{
+  [[SessionManager manager] logout];
+}
+
 
 - (IBAction)onTestClicked:(id)sender
 {
@@ -98,13 +104,40 @@
 
 }
 
+
+
+
+
+- (IBAction)textFieldDoneEditing:(id)sender
+{
+  [sender resignFirstResponder];
+
+}
+
+//-(IBAction) backgroundTap:(id) sender
+//{
+//  [self.tfUsername resignFirstResponder];
+//}
+
+
+//- (void)textFieldDone:(UITextField*)textField
+//{
+//
+//}
+
+
+
+
+
 //.....................................
 //
 // connect using facebook account
 //
 - (IBAction)onFacebookConnect:(id)sender
 {
-  if ((_login.text == nil) || (_password.text == nil))
+  NSLog(@"click '%@' '%@' ", _login.text, _password.text);
+  
+  if ((_login.text.length == 0) || (_password.text.length == 0))
   {
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"login and password are requested!" delegate:self
                                        cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -113,18 +146,7 @@
     return;
   }
   
-  
-//  _facebook = [[Facebook alloc] initWithAppId:FB_App_Id andDelegate:self];
-//  
-//  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//  if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]) 
-//  {
-//    _facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
-//    _facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
-//  }
-//  
-//  if (![_facebook isSessionValid]) 
-//    [_facebook authorize:nil];
+  [[SessionManager manager] loginUsingFacebook:_login.text password:_password.text];
 }
 
 
@@ -143,7 +165,6 @@
 {
   
   UIViewController* controller = [[SessionManager manager] twitterLoginDialog];
-  [SessionManager manager].delegate = self;
   [self presentModalViewController:controller animated: YES];  
 
 //  if ((_login.text == nil) || (_password.text == nil))
@@ -166,14 +187,31 @@
 
 #pragma mark - SessionDelegate
 
-- (void)loginDidFinish:(BOOL)authorized
+- (void)sessionDidLogin:(BOOL)authorized
 {
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"authorized!" delegate:self
+  NSString* message;
+  if (![SessionManager manager].authorized)
+    message = @"NOT authorized!";
+  else
+    message = @"authorized!";
+  
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
                                      cancelButtonTitle:@"OK" otherButtonTitles:nil];
   [av show];
   [av release];  
-  return;  
 }
+
+
+- (void)sessionDidLogout
+{
+  NSString* message = @"logout done.";
+  
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
+                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [av show];
+  [av release];  
+}
+
 
 
 

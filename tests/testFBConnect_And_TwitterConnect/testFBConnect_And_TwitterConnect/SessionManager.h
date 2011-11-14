@@ -14,7 +14,8 @@
 
 @protocol SessionDelegate <NSObject>
 @required
-- (void)loginDidFinish:(BOOL)authorized;
+- (void)sessionDidLogin:(BOOL)authorized;
+- (void)sessionDidLogout;
 @end
 
 
@@ -35,6 +36,7 @@
 - (UIViewController*)twitterLoginDialog;
 - (BOOL)loginUsingTwitter:(NSString*)username password:(NSString*)password;
 - (void)loginUsingFacebook:(NSString*)username password:(NSString*)password;
+- (void)logout;
 
 - (BOOL)handleOpenURL:(NSURL *)url;
 

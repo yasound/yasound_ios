@@ -15,6 +15,8 @@
 @synthesize authorized;
 
 
+// consumer key, consumer secre, fb app id and secret, are based on app "neywenTest"
+
 #define kOAuthConsumerKey @"lm6cEvevtSlX1IwFL3ZM4w"         //REPLACE With Twitter App OAuth Key  
 #define kOAuthConsumerSecret @"bEDK1Un5srTcDeuX6crBkihu4pmb96aaMgJnOzD3VRY"     //REPLACE With Twitter App OAuth Secret  
 
@@ -64,13 +66,32 @@ static SessionManager* _manager = nil;
   if (_twitterEngine)
     return [_twitterEngine isAuthorized];
   
-  // TODO
   if (_facebook)
-    return NO;
+    return [_facebook isSessionValid];
   
   return NO;
 }
 
+
+- (void)logout
+{
+  if (_twitterEngine)
+  {
+    return;
+  }
+  
+  if (_facebook)
+  {
+    [_facebook logout:self];
+  }
+}
+
+
+
+
+
+
+#pragma mark - Twitter
 
 
 //.......................................................................
@@ -106,18 +127,21 @@ static SessionManager* _manager = nil;
 
 
 
+
+
+
 #pragma mark - SA_OAuthTwitterControllerDelegate
 
 - (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller authenticatedWithUsername: (NSString *) username
 {
   NSLog(@"OAuthTwitterController::authenticatedWithUsername '%@'", username);
-  [self.delegate loginDidFinish:YES];
+  [self.delegate sessionDidLogin:YES];
 }
 
 - (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller
 {
   NSLog(@"OAuthTwitterControllerFailed");
-  [self.delegate loginDidFinish:NO];
+  [self.delegate sessionDidLogin:NO];
 }
 
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller
@@ -126,6 +150,16 @@ static SessionManager* _manager = nil;
 }
 
 
+
+
+
+
+
+
+
+
+
+#pragma mark - Facebook
 
 
 
@@ -147,6 +181,38 @@ static SessionManager* _manager = nil;
   if (![_facebook isSessionValid]) 
     [_facebook authorize:nil];
 }
+
+
+#pragma mark - FBSessionDelegate
+
+- (void)fbDidLogin 
+{
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setObject:[_facebook accessToken] forKey:@"FBAccessTokenKey"];
+  [defaults setObject:[_facebook expirationDate] forKey:@"FBExpirationDateKey"];
+  [defaults synchronize];  
+  
+  [self.delegate sessionDidLogin:YES];
+}
+
+- (void)fbDidLogout
+{
+  // Remove saved authorization information if it exists
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  if ([defaults objectForKey:@"FBAccessTokenKey"]) {
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+  }
+  
+  [self.delegate sessionDidLogout];  
+}
+
+
+
+
+
+
 
 
 
