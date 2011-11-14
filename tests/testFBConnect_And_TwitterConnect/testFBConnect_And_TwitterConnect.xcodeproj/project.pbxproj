@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC31B9AE147159900039831F /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31B9AD147159900039831F /* SessionManager.m */; };
 		BC53B8EB146C409200B14231 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B8EA146C409200B14231 /* UIKit.framework */; };
 		BC53B8ED146C409200B14231 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B8EC146C409200B14231 /* Foundation.framework */; };
 		BC53B8EF146C409200B14231 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B8EE146C409200B14231 /* CoreGraphics.framework */; };
@@ -46,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC31B9AC147159900039831F /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
+		BC31B9AD147159900039831F /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
 		BC53B8E6146C409200B14231 /* testFBConnect_And_TwitterConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testFBConnect_And_TwitterConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC53B8EA146C409200B14231 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BC53B8EC146C409200B14231 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -179,6 +182,8 @@
 				BC53B8FA146C409200B14231 /* AppDelegate.m */,
 				BC53B8FC146C409200B14231 /* ViewController.h */,
 				BC53B8FD146C409200B14231 /* ViewController.m */,
+				BC31B9AC147159900039831F /* SessionManager.h */,
+				BC31B9AD147159900039831F /* SessionManager.m */,
 				BC53B8FF146C409200B14231 /* ViewController.xib */,
 				BC53B8F1146C409200B14231 /* Supporting Files */,
 			);
@@ -404,6 +409,7 @@
 				BCF9724A1471327D0094EC3B /* NSString+UUID.m in Sources */,
 				BCF9724B1471327D0094EC3B /* SA_OAuthTwitterController.m in Sources */,
 				BCF9724C1471327D0094EC3B /* SA_OAuthTwitterEngine.m in Sources */,
+				BC31B9AE147159900039831F /* SessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +488,7 @@
 					"\"../../LibTools/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"../../LibTools/Twitter-OAuth-iPhone/Twitter+OAuth/SAOAuthTwitterEngine",
 					"$(SDKROOT)/usr/include/libxml2",
+					"../../LibTools/facebook-ios-sdk/src/JSON/",
 				);
 				INFOPLIST_FILE = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -504,6 +511,7 @@
 					"\"../../LibTools/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"../../LibTools/Twitter-OAuth-iPhone/Twitter+OAuth/SAOAuthTwitterEngine",
 					"$(SDKROOT)/usr/include/libxml2",
+					"../../LibTools/facebook-ios-sdk/src/JSON/",
 				);
 				INFOPLIST_FILE = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

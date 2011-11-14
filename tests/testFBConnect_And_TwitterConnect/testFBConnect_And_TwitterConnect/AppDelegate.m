@@ -3,12 +3,14 @@
 //  testFBConnect_And_TwitterConnect
 //
 //  Created by LOIC BERTHELOT on 10/11/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
 #import "AppDelegate.h"
-
 #import "ViewController.h"
+#import "SessionManager.h"
+
+
 
 @implementation AppDelegate
 
@@ -70,5 +72,26 @@
    See also applicationDidEnterBackground:.
    */
 }
+
+
+
+#pragma mark - FBConnect
+
+// Pre 4.2 support
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url 
+{
+  return [[SessionManager manager] handleOpenURL:url]; 
+}
+
+// For 4.2+ support
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation 
+{
+  return [[SessionManager manager]  handleOpenURL:url]; 
+}
+
+
+
+
+
 
 @end

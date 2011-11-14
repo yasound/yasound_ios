@@ -3,20 +3,16 @@
 //  testFBConnect_And_TwitterConnect
 //
 //  Created by LOIC BERTHELOT on 10/11/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
 #import "ViewController.h"
+#import "SessionManager.h"
 
 @implementation ViewController
 
-@synthesize facebookConnected;
-@synthesize twitterConnected;
 
 
-
-#define kOAuthConsumerKey        @"Your consumer key here"         //REPLACE With Twitter App OAuth Key  
-#define kOAuthConsumerSecret    @"Your consumer secret here"     //REPLACE With Twitter App OAuth Secret  
 
 
 - (void)didReceiveMemoryWarning
@@ -31,9 +27,6 @@
 {
   [super viewDidLoad];
   
-  [_facebookBtn addTarget:self action:@selector(onFacebookConnect:) forControlEvents:UIControlEventTouchUpInside];
-  [_twitterBtn addTarget:self action:@selector(onTwitterConnect:) forControlEvents:UIControlEventTouchUpInside];
-  
 }
 
 - (void)viewDidUnload
@@ -41,8 +34,6 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-  
-    [_engine release]; 
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -52,7 +43,22 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+  [super viewDidAppear:animated];
+  
+//   if (_twitterEngine)
+//   {
+//     NSString* message;
+//     
+//     if (![_twitterEngine isAuthorized])
+//       message = @"you're not logged to twitter anymore!";
+//     else
+//       message = @"you're logged to twitter!";
+//       
+//     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
+//                                        cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//     [av show];
+//     [av release];     
+//   }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -76,6 +82,22 @@
 #pragma mark - IBActions
 
 
+
+- (IBAction)onTestClicked:(id)sender
+{
+  NSString* message;
+  if (![SessionManager manager].authorized)
+    message = @"NOT authorized!";
+  else
+    message = @"authorized!";
+  
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
+                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [av show];
+  [av release];  
+
+}
+
 //.....................................
 //
 // connect using facebook account
@@ -90,7 +112,27 @@
     [av release];  
     return;
   }
+  
+  
+//  _facebook = [[Facebook alloc] initWithAppId:FB_App_Id andDelegate:self];
+//  
+//  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//  if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]) 
+//  {
+//    _facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
+//    _facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+//  }
+//  
+//  if (![_facebook isSessionValid]) 
+//    [_facebook authorize:nil];
 }
+
+
+
+
+
+
+
 
 
 //.....................................
@@ -100,40 +142,38 @@
 - (IBAction)onTwitterConnect:(id)sender
 {
   
-  if(!_engine){  
-    _engine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];  
-    _engine.consumerKey    = kOAuthConsumerKey;  
-    _engine.consumerSecret = kOAuthConsumerSecret;  
-  }  
-  
-  if(![_engine isAuthorized])
-  {  
-    UIViewController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_engine delegate:self];  
-    
-    if (controller){  
-      [self presentModalViewController: controller animated: YES];  
-    }  
-  }  
-  
-  return;
-  
-  if ((_login.text == nil) || (_password.text == nil))
-  {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"login and password are requested!" delegate:self
-                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [av show];
-    [av release];  
-    return;
-  }
-  
-  
-  
+  UIViewController* controller = [[SessionManager manager] twitterLoginDialog];
+  [SessionManager manager].delegate = self;
+  [self presentModalViewController:controller animated: YES];  
+
+//  if ((_login.text == nil) || (_password.text == nil))
+//  {
+//    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"login and password are requested!" delegate:self
+//                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [av show];
+//    [av release];  
+//    return;
+//  }
+
   
   
   
 }
 
 
+
+
+
+#pragma mark - SessionDelegate
+
+- (void)loginDidFinish:(BOOL)authorized
+{
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"authorized!" delegate:self
+                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [av show];
+  [av release];  
+  return;  
+}
 
 
 
