@@ -12,9 +12,6 @@
 @implementation ViewController
 
 
-
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -45,21 +42,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
-  
-//   if (_twitterEngine)
-//   {
-//     NSString* message;
-//     
-//     if (![_twitterEngine isAuthorized])
-//       message = @"you're not logged to twitter anymore!";
-//     else
-//       message = @"you're logged to twitter!";
-//       
-//     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
-//                                        cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//     [av show];
-//     [av release];     
-//   }
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -114,18 +97,6 @@
 
 }
 
-//-(IBAction) backgroundTap:(id) sender
-//{
-//  [self.tfUsername resignFirstResponder];
-//}
-
-
-//- (void)textFieldDone:(UITextField*)textField
-//{
-//
-//}
-
-
 
 
 
@@ -135,18 +106,7 @@
 //
 - (IBAction)onFacebookConnect:(id)sender
 {
-  NSLog(@"click '%@' '%@' ", _login.text, _password.text);
-  
-  if ((_login.text.length == 0) || (_password.text.length == 0))
-  {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"login and password are requested!" delegate:self
-                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [av show];
-    [av release];  
-    return;
-  }
-  
-  [[SessionManager manager] loginUsingFacebook:_login.text password:_password.text];
+  [[SessionManager manager] loginUsingFacebook];
 }
 
 
@@ -163,22 +123,8 @@
 //
 - (IBAction)onTwitterConnect:(id)sender
 {
-  
-  UIViewController* controller = [[SessionManager manager] twitterLoginDialog];
+  UIViewController* controller = [[SessionManager manager] loginUsingTwitter];
   [self presentModalViewController:controller animated: YES];  
-
-//  if ((_login.text == nil) || (_password.text == nil))
-//  {
-//    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:@"login and password are requested!" delegate:self
-//                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//    [av show];
-//    [av release];  
-//    return;
-//  }
-
-  
-  
-  
 }
 
 

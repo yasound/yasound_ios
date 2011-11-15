@@ -16,8 +16,6 @@
   
   IBOutlet UIButton* _facebookBtn;
   IBOutlet UIButton* _twitterBtn;
-  IBOutlet UITextField* _login;
-  IBOutlet UITextField* _password;  
 }
 
 @end

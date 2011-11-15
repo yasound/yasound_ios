@@ -33,9 +33,8 @@
 
 + (SessionManager*)manager;
 
-- (UIViewController*)twitterLoginDialog;
-- (BOOL)loginUsingTwitter:(NSString*)username password:(NSString*)password;
-- (void)loginUsingFacebook:(NSString*)username password:(NSString*)password;
+- (BOOL)loginUsingTwitter;
+- (void)loginUsingFacebook;
 - (void)logout;
 
 - (BOOL)handleOpenURL:(NSURL *)url;

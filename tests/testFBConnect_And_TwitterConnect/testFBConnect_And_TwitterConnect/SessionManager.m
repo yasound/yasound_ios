@@ -83,6 +83,7 @@ static SessionManager* _manager = nil;
   if (_facebook)
   {
     [_facebook logout:self];
+    return;
   }
 }
 
@@ -98,7 +99,7 @@ static SessionManager* _manager = nil;
 //
 // login using twitter
 //
-- (UIViewController*)twitterLoginDialog
+- (UIViewController*)loginUsingTwitter
 {
   if (!_twitterEngine)
   {  
@@ -118,11 +119,6 @@ static SessionManager* _manager = nil;
   }  
 }
 
-
-- (BOOL)loginUsingTwitter:(NSString*)username password:(NSString*)password
-{
-
-}
 
 
 
@@ -167,7 +163,7 @@ static SessionManager* _manager = nil;
 //
 // login using facebook
 //
-- (void)loginUsingFacebook:(NSString*)username password:(NSString*)password
+- (void)loginUsingFacebook
 {
   _facebook = [[Facebook alloc] initWithAppId:FB_App_Id andDelegate:self];
   
