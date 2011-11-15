@@ -60,6 +60,7 @@
 }
 
 
+//LBDEBUG
 - (SA_OAuthTwitterEngine *) initOAuthWithDelegate: (NSObject *) delegate {
     if (self = (id) [super initWithDelegate: delegate]) {
 		self.requestTokenURL = [NSURL URLWithString: @"http://twitter.com/oauth/request_token"];

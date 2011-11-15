@@ -24,7 +24,6 @@
 {
   [super viewDidLoad];
   
-  [SessionManager manager].delegate = self;
 }
 
 - (void)viewDidUnload
@@ -106,7 +105,7 @@
 //
 - (IBAction)onFacebookConnect:(id)sender
 {
-  [[SessionManager manager] loginUsingFacebook];
+  [[SessionManager manager] loginUsingFacebook:self];
 }
 
 
@@ -123,8 +122,7 @@
 //
 - (IBAction)onTwitterConnect:(id)sender
 {
-  UIViewController* controller = [[SessionManager manager] loginUsingTwitter];
-  [self presentModalViewController:controller animated: YES];  
+  [[SessionManager manager] loginUsingTwitter:self];
 }
 
 

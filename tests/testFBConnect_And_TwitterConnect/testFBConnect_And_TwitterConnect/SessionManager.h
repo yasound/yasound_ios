@@ -25,16 +25,16 @@
   SA_OAuthTwitterEngine* _twitterEngine; 
   Facebook* _facebook;
   
-  id<SessionDelegate> delegate;
+  id<SessionDelegate> _delegate;
 }
 
-@property (retain) id<SessionDelegate> delegate;
+//@property (retain) id<SessionDelegate> delegate;
 @property (readonly) BOOL authorized;
 
 + (SessionManager*)manager;
 
-- (UIViewController*)loginUsingTwitter;
-- (void)loginUsingFacebook;
+- (void)loginUsingTwitter:(UIViewController*)target;
+- (void)loginUsingFacebook:(UIViewController*)target;
 - (void)logout;
 
 - (BOOL)handleOpenURL:(NSURL *)url;

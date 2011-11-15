@@ -7,11 +7,13 @@
 //
 
 #import "SessionManager.h"
+#import "TwitterAccountsViewController.h"
+
 
 
 @implementation SessionManager
 
-@synthesize delegate;
+//@synthesize delegate;
 @synthesize authorized;
 
 
@@ -22,6 +24,20 @@
 
 #define FB_App_Id @"136849886422778"
 #define DB_APP_Secret @"bcaadff05c7c07d36d38155d6b35088c"
+
+
+
+
+
+
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+
+
 
 
 
@@ -47,6 +63,7 @@ static SessionManager* _manager = nil;
   {
     _twitterEngine = nil;
     _facebook = nil;
+    _delegate = nil;
   }
   return self;
 }
@@ -88,7 +105,7 @@ static SessionManager* _manager = nil;
     [_twitterEngine release];
     _twitterEngine=nil;  
     
-    [self.delegate sessionDidLogout];  
+    [_delegate sessionDidLogout];  
     
     return;
   }
@@ -112,7 +129,26 @@ static SessionManager* _manager = nil;
 //
 // login using twitter
 //
-- (UIViewController*)loginUsingTwitter
+- (void)loginUsingTwitter:(UIViewController*)target
+{
+  _delegate = target;
+  
+  if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) 
+    [self loginUsingTwitteriOS];
+  else
+    [self loginUsingTwitterOAuth];
+}
+
+- (void)loginUsingTwitteriOS
+{
+  TwitterAccountsViewController* controller = [[TwitterAccountsViewController alloc] initWithNibName:@"TwitterAccountsViewController" bundle:nil];
+  controller.navigationController.navigationBarHidden = NO;
+  [_delegate presentModalViewController:controller animated: YES];  
+  [controller release];
+}
+
+
+- (void)loginUsingTwitterOAuth
 {
   if (!_twitterEngine)
   {  
@@ -125,10 +161,10 @@ static SessionManager* _manager = nil;
   {  
     SA_OAuthTwitterController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_twitterEngine delegate:self];  
     if (!controller)
-      return nil;
+      return;
     
     controller.delegate = self;
-    return controller;
+    [_delegate presentModalViewController:controller animated: YES];  
   }  
 }
 
@@ -144,13 +180,13 @@ static SessionManager* _manager = nil;
 - (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller authenticatedWithUsername: (NSString *) username
 {
   NSLog(@"OAuthTwitterController::authenticatedWithUsername '%@'", username);
-  [self.delegate sessionDidLogin:YES];
+  [_delegate sessionDidLogin:YES];
 }
 
 - (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller
 {
   NSLog(@"OAuthTwitterControllerFailed");
-  [self.delegate sessionDidLogin:NO];
+  [_delegate sessionDidLogin:NO];
 }
 
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller
@@ -176,8 +212,10 @@ static SessionManager* _manager = nil;
 //
 // login using facebook
 //
-- (void)loginUsingFacebook
+- (void)loginUsingFacebook:(UIViewController*)target
 {
+  _delegate = target;
+  
   _facebook = [[Facebook alloc] initWithAppId:FB_App_Id andDelegate:self];
   
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -201,7 +239,7 @@ static SessionManager* _manager = nil;
   [defaults setObject:[_facebook expirationDate] forKey:@"FBExpirationDateKey"];
   [defaults synchronize];  
   
-  [self.delegate sessionDidLogin:YES];
+  [_delegate sessionDidLogin:YES];
 }
 
 - (void)fbDidLogout
@@ -214,7 +252,7 @@ static SessionManager* _manager = nil;
     [defaults synchronize];
   }
   
-  [self.delegate sessionDidLogout];  
+  [_delegate sessionDidLogout];  
 }
 
 

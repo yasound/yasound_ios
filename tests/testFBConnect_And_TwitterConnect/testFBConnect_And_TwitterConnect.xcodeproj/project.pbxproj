@@ -24,6 +24,10 @@
 		BC53B922146C501800B14231 /* signin_facebook_Up.png in Resources */ = {isa = PBXBuildFile; fileRef = BC53B91E146C501800B14231 /* signin_facebook_Up.png */; };
 		BC53B923146C501800B14231 /* signin_twitter_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = BC53B91F146C501800B14231 /* signin_twitter_Down.png */; };
 		BC53B924146C501800B14231 /* signin_twitter_Up.png in Resources */ = {isa = PBXBuildFile; fileRef = BC53B920146C501800B14231 /* signin_twitter_Up.png */; };
+		BCE3F12B14729F6D00641D82 /* TwitterAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3F12914729F6D00641D82 /* TwitterAccountsViewController.m */; };
+		BCE3F12C14729F6D00641D82 /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE3F12A14729F6D00641D82 /* TwitterAccountsViewController.xib */; };
+		BCE3F12E1472A7A500641D82 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE3F12D1472A7A500641D82 /* Accounts.framework */; };
+		BCE3F1301472A7AB00641D82 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE3F12F1472A7AB00641D82 /* Twitter.framework */; };
 		BCF9723A1471327D0094EC3B /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCF972001471327D0094EC3B /* jQueryInject.txt */; };
 		BCF9723B1471327D0094EC3B /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCF972011471327D0094EC3B /* jQueryInjectLandscape.txt */; };
 		BCF9723C1471327D0094EC3B /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF972021471327D0094EC3B /* libOAuth.a */; };
@@ -64,13 +68,17 @@
 		BC53B900146C409200B14231 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		BC53B907146C43FF00B14231 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BC53B90A146C442A00B14231 /* libfacebook_ios_sdk.ub.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfacebook_ios_sdk.ub.a; path = deps/libfacebook_ios_sdk.ub.a; sourceTree = "<group>"; };
-		BC53B90B146C442A00B14231 /* libOAuthConsumer_iPhone.ub.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuthConsumer_iPhone.ub.a; path = deps/libOAuthConsumer_iPhone.ub.a; sourceTree = "<group>"; };
 		BC53B919146C4E8200B14231 /* signin_facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_facebook.png; sourceTree = "<group>"; };
 		BC53B91A146C4E8200B14231 /* signin_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_twitter.png; sourceTree = "<group>"; };
 		BC53B91D146C501800B14231 /* signin_facebook_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_facebook_Down.png; sourceTree = "<group>"; };
 		BC53B91E146C501800B14231 /* signin_facebook_Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_facebook_Up.png; sourceTree = "<group>"; };
 		BC53B91F146C501800B14231 /* signin_twitter_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_twitter_Down.png; sourceTree = "<group>"; };
 		BC53B920146C501800B14231 /* signin_twitter_Up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signin_twitter_Up.png; sourceTree = "<group>"; };
+		BCE3F12814729F6D00641D82 /* TwitterAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAccountsViewController.h; sourceTree = "<group>"; };
+		BCE3F12914729F6D00641D82 /* TwitterAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAccountsViewController.m; sourceTree = "<group>"; };
+		BCE3F12A14729F6D00641D82 /* TwitterAccountsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterAccountsViewController.xib; sourceTree = "<group>"; };
+		BCE3F12D1472A7A500641D82 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		BCE3F12F1472A7AB00641D82 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BCF972001471327D0094EC3B /* jQueryInject.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jQueryInject.txt; sourceTree = "<group>"; };
 		BCF972011471327D0094EC3B /* jQueryInjectLandscape.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jQueryInjectLandscape.txt; sourceTree = "<group>"; };
 		BCF972021471327D0094EC3B /* libOAuth.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOAuth.a; sourceTree = "<group>"; };
@@ -133,6 +141,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE3F1301472A7AB00641D82 /* Twitter.framework in Frameworks */,
+				BCE3F12E1472A7A500641D82 /* Accounts.framework in Frameworks */,
 				BC53B908146C43FF00B14231 /* libxml2.dylib in Frameworks */,
 				BC53B8EB146C409200B14231 /* UIKit.framework in Frameworks */,
 				BC53B8ED146C409200B14231 /* Foundation.framework in Frameworks */,
@@ -148,6 +158,8 @@
 		BC53B8DB146C409100B14231 = {
 			isa = PBXGroup;
 			children = (
+				BCE3F12F1472A7AB00641D82 /* Twitter.framework */,
+				BCE3F12D1472A7A500641D82 /* Accounts.framework */,
 				BC53B918146C4E8200B14231 /* resources */,
 				BC53B909146C440C00B14231 /* deps */,
 				BC53B8F0146C409200B14231 /* testFBConnect_And_TwitterConnect */,
@@ -184,6 +196,9 @@
 				BC53B8FD146C409200B14231 /* ViewController.m */,
 				BC31B9AC147159900039831F /* SessionManager.h */,
 				BC31B9AD147159900039831F /* SessionManager.m */,
+				BCE3F12814729F6D00641D82 /* TwitterAccountsViewController.h */,
+				BCE3F12914729F6D00641D82 /* TwitterAccountsViewController.m */,
+				BCE3F12A14729F6D00641D82 /* TwitterAccountsViewController.xib */,
 				BC53B8FF146C409200B14231 /* ViewController.xib */,
 				BC53B8F1146C409200B14231 /* Supporting Files */,
 			);
@@ -206,7 +221,6 @@
 			children = (
 				BCF971FE1471327D0094EC3B /* Twitter+OAuth */,
 				BC53B90A146C442A00B14231 /* libfacebook_ios_sdk.ub.a */,
-				BC53B90B146C442A00B14231 /* libOAuthConsumer_iPhone.ub.a */,
 			);
 			name = deps;
 			sourceTree = "<group>";
@@ -380,6 +394,7 @@
 				BCF9723A1471327D0094EC3B /* jQueryInject.txt in Resources */,
 				BCF9723B1471327D0094EC3B /* jQueryInjectLandscape.txt in Resources */,
 				BCF9724D1471327D0094EC3B /* twitter_load.png in Resources */,
+				BCE3F12C14729F6D00641D82 /* TwitterAccountsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +425,7 @@
 				BCF9724B1471327D0094EC3B /* SA_OAuthTwitterController.m in Sources */,
 				BCF9724C1471327D0094EC3B /* SA_OAuthTwitterEngine.m in Sources */,
 				BC31B9AE147159900039831F /* SessionManager.m in Sources */,
+				BCE3F12B14729F6D00641D82 /* TwitterAccountsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
