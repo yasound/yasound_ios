@@ -33,7 +33,7 @@
 
 + (SessionManager*)manager;
 
-- (BOOL)loginUsingTwitter;
+- (UIViewController*)loginUsingTwitter;
 - (void)loginUsingFacebook;
 - (void)logout;
 

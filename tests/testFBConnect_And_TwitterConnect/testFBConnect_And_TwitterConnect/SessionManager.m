@@ -77,6 +77,19 @@ static SessionManager* _manager = nil;
 {
   if (_twitterEngine)
   {
+    [_twitterEngine clearAccessToken];
+    [_twitterEngine clearsCookies];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"authData"];
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
+    
+//    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"authName"]);
+//    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"authData"]);
+    
+    [_twitterEngine release];
+    _twitterEngine=nil;  
+    
+    [self.delegate sessionDidLogout];  
+    
     return;
   }
   
