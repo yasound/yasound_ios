@@ -16,6 +16,8 @@
 		BC2B0AB7147403440074B97F /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2B0AAE147403440074B97F /* TwitterSigninViewController.xib */; };
 		BC2B0ABC14740D050074B97F /* TwitteriOSSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2B0AB914740D050074B97F /* TwitteriOSSessionManager.m */; };
 		BC2B0ABD14740D050074B97F /* TwitterOAuthSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2B0ABB14740D050074B97F /* TwitterOAuthSessionManager.m */; };
+		BC2B0AC614743B790074B97F /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2B0AC514743B790074B97F /* SFHFKeychainUtils.m */; };
+		BC2B0AC8147440E10074B97F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2B0AC7147440E10074B97F /* Security.framework */; };
 		BC53B8EB146C409200B14231 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B8EA146C409200B14231 /* UIKit.framework */; };
 		BC53B8ED146C409200B14231 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B8EC146C409200B14231 /* Foundation.framework */; };
 		BC53B8EF146C409200B14231 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B8EE146C409200B14231 /* CoreGraphics.framework */; };
@@ -73,6 +75,9 @@
 		BC2B0AB914740D050074B97F /* TwitteriOSSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitteriOSSessionManager.m; sourceTree = "<group>"; };
 		BC2B0ABA14740D050074B97F /* TwitterOAuthSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterOAuthSessionManager.h; sourceTree = "<group>"; };
 		BC2B0ABB14740D050074B97F /* TwitterOAuthSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterOAuthSessionManager.m; sourceTree = "<group>"; };
+		BC2B0AC414743B790074B97F /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		BC2B0AC514743B790074B97F /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		BC2B0AC7147440E10074B97F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BC53B8E6146C409200B14231 /* testFBConnect_And_TwitterConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testFBConnect_And_TwitterConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC53B8EA146C409200B14231 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BC53B8EC146C409200B14231 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -158,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC2B0AC8147440E10074B97F /* Security.framework in Frameworks */,
 				BCE3F1301472A7AB00641D82 /* Twitter.framework in Frameworks */,
 				BCE3F12E1472A7A500641D82 /* Accounts.framework in Frameworks */,
 				BC53B908146C43FF00B14231 /* libxml2.dylib in Frameworks */,
@@ -202,6 +208,16 @@
 			path = Twitter;
 			sourceTree = "<group>";
 		};
+		BC2B0AC314743B790074B97F /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				BC2B0AC414743B790074B97F /* SFHFKeychainUtils.h */,
+				BC2B0AC514743B790074B97F /* SFHFKeychainUtils.m */,
+			);
+			name = Security;
+			path = ../../LibTools/Security;
+			sourceTree = "<group>";
+		};
 		BC53B8DB146C409100B14231 = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +240,7 @@
 		BC53B8E9146C409200B14231 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC2B0AC7147440E10074B97F /* Security.framework */,
 				BCE3F12F1472A7AB00641D82 /* Twitter.framework */,
 				BCE3F12D1472A7A500641D82 /* Accounts.framework */,
 				BC53B907146C43FF00B14231 /* libxml2.dylib */,
@@ -263,6 +280,7 @@
 		BC53B909146C440C00B14231 /* deps */ = {
 			isa = PBXGroup;
 			children = (
+				BC2B0AC314743B790074B97F /* Security */,
 				BCF971FE1471327D0094EC3B /* Twitter+OAuth */,
 				BC53B90A146C442A00B14231 /* libfacebook_ios_sdk.ub.a */,
 			);
@@ -476,6 +494,7 @@
 				BC2B0AB6147403440074B97F /* TwitterSigninViewController.m in Sources */,
 				BC2B0ABC14740D050074B97F /* TwitteriOSSessionManager.m in Sources */,
 				BC2B0ABD14740D050074B97F /* TwitterOAuthSessionManager.m in Sources */,
+				BC2B0AC614743B790074B97F /* SFHFKeychainUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +574,7 @@
 					"../../LibTools/Twitter-OAuth-iPhone/Twitter+OAuth/SAOAuthTwitterEngine",
 					"$(SDKROOT)/usr/include/libxml2",
 					"../../LibTools/facebook-ios-sdk/src/JSON/",
+					../../LibTools/Security,
 				);
 				INFOPLIST_FILE = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -578,6 +598,7 @@
 					"../../LibTools/Twitter-OAuth-iPhone/Twitter+OAuth/SAOAuthTwitterEngine",
 					"$(SDKROOT)/usr/include/libxml2",
 					"../../LibTools/facebook-ios-sdk/src/JSON/",
+					../../LibTools/Security,
 				);
 				INFOPLIST_FILE = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

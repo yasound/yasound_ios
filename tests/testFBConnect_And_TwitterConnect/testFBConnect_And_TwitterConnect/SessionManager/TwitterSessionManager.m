@@ -58,11 +58,13 @@ static TwitterSessionManager* _twitter = nil;
   {
     _iosManager = nil;
     _oauthManager = nil;
-    
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) 
-      _iosManager = [[TwitteriOSSessionManager alloc] init];
-    else
-      _oauthManager = [[TwitterOAuthSessionManager alloc] init];
+
+    _oauthManager = [[TwitterOAuthSessionManager alloc] init];
+
+//    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) 
+//      _iosManager = [[TwitteriOSSessionManager alloc] init];
+//    else
+//      _oauthManager = [[TwitterOAuthSessionManager alloc] init];
     
   }
   return self;

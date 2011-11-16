@@ -8,12 +8,13 @@
 
 
 #import "TwitterOAuthSessionManager.h"
+#import "SFHFKeychainUtils.h"
 
 
 #define kOAuthConsumerKey @"lm6cEvevtSlX1IwFL3ZM4w"         //REPLACE With Twitter App OAuth Key  
 #define kOAuthConsumerSecret @"bEDK1Un5srTcDeuX6crBkihu4pmb96aaMgJnOzD3VRY"     //REPLACE With Twitter App OAuth Secret  
 
-
+#define AUTH_NAME @"authName"
 
 
 @implementation TwitterOAuthSessionManager
@@ -52,12 +53,18 @@
   {
     [_engine clearAccessToken];
     [_engine clearsCookies];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"authData"];
-    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
+
+    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
+
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:AUTH_NAME];
     
-    //    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"authName"]);
-    //    NSLog(@"%@",[[NSUserDefaults standardUserDefaults]valueForKey:@"authData"]);
+    // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
+    //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
     
+    NSError* error;
+    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+    [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
+
     [_engine release];
     _engine=nil;  
     
@@ -77,6 +84,47 @@
   
   return [_engine isAuthorized];
 }
+
+
+
+#pragma mark - SA_OAuthTwitterEngineDelegate
+
+
+//implement these methods to store off the creds returned by Twitter
+- (void) storeCachedTwitterOAuthData: (NSString *)data forUsername: (NSString *) username
+{
+  // NSLog(@"storeCachedTwitterOAuthData   data '%@'   username '%@'", data, username);
+  
+  // store the credentials for later access
+  [[NSUserDefaults standardUserDefaults] setValue:username forKey:AUTH_NAME];
+  NSError* error;
+  NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+  // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
+  [SFHFKeychainUtils storeUsername:username andPassword:data  forServiceName:BundleName updateExisting:YES error:&error];
+}
+
+
+
+
+
+	//if you don't do this, the user will have to re-authenticate every time they run
+- (NSString *) cachedTwitterOAuthDataForUsername: (NSString *) username
+{
+  NSError* error;
+  NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+
+  // credentials have been stored in KeyChain, for security reason
+  return [SFHFKeychainUtils getPasswordForUsername:username andServiceName:BundleName error:&error];
+}
+
+
+
+
+- (void) twitterOAuthConnectionFailedWithData: (NSData *) data
+{
+  NSLog(@"twitterOAuthConnectionFailedWithData");
+}
+
 
 
 
