@@ -72,7 +72,8 @@
 
 - (IBAction)onLogoutClicked:(id)sender
 {
-  [[SessionManager manager] logout];
+  [[FacebookSessionManager facebook] logout];
+  [[TwitterSessionManager twitter] logout];
 }
 
 
@@ -131,7 +132,7 @@
 - (IBAction)onFacebookConnect:(id)sender
 {
   _facebookBtnClicked = YES;
-  [[FacebookSessionManager manager] login:self];
+  [[FacebookSessionManager facebook] login:self];
 }
 
 
@@ -149,7 +150,7 @@
 - (IBAction)onTwitterConnect:(id)sender
 {
   _twitterBtnClicked = YES;
-  [[TwitterSessionManager manager] login:self];
+  [[TwitterSessionManager twitter] login:self];
 }
 
 

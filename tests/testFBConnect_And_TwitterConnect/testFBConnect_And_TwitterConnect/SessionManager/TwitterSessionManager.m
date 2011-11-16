@@ -122,17 +122,5 @@ static TwitterSessionManager* _twitter = nil;
 
 
 
-- (BOOL)handleOpenURL:(NSURL *)url
-{
-  return YES;
-}
-
-  
-
-
-
-
-
-
 
 @end

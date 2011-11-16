@@ -24,7 +24,6 @@
 - (void)login:(id)target;
 - (void)logout;
 
-- (BOOL)handleOpenURL:(NSURL *)url;
 
 
 @end

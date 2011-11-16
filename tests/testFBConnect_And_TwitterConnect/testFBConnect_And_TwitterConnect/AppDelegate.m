@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "SessionManager.h"
+#import "FacebookSessionManager.h"
 
 
 
@@ -80,13 +80,13 @@
 // Pre 4.2 support
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url 
 {
-  return [[SessionManager manager] handleOpenURL:url]; 
+  return [[FacebookSessionManager facebook] handleOpenURL:url]; 
 }
 
 // For 4.2+ support
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation 
 {
-  return [[SessionManager manager]  handleOpenURL:url]; 
+  return [[FacebookSessionManager facebook]  handleOpenURL:url]; 
 }
 
 
