@@ -9,7 +9,7 @@
 
 
 #import "TwitteriOSSessionManager.h"
-
+#import "SFHFKeychainUtils.h"
 
 
 @implementation TwitteriOSSessionManager
@@ -19,12 +19,15 @@
 @synthesize accounts = _accounts;
 
 
-#define kAccessToken @"409372338-sdDFNhWpVjomGbsAhbIBjAYnBLDeThvajQEKe9I6"
-#define kAccessTokenSecret @"HjCLrPG60q9FlmPXIwPNx2iAm7EA3KOrGmzu4z08"      
+// LBDEBUG
+//#define kAccessToken @"409372338-sdDFNhWpVjomGbsAhbIBjAYnBLDeThvajQEKe9I6"
+//#define kAccessTokenSecret @"HjCLrPG60q9FlmPXIwPNx2iAm7EA3KOrGmzu4z08"      
 
 
 - (void)login:(UIViewController*)target
 {
+  _granted = NO;
+  
   self.delegate = target;
   self.store = [[ACAccountStore alloc] init];
 
@@ -75,37 +78,16 @@
 
 - (void)onAccountsLoaded
 {
-  // no twitter account register.
-  // display sign in dialog , save the account and register the app
+  // no twitter account registered yet.
   if ([self.accounts count] == 0)
   {
-    // An existing credential may be provided when creating an account.
-    // For example, to create a system Twitter account using an existing OAuth token/secret pair:
-    //
-    // 1. Create the new account instance.
-    // 2. Set the account type.
-    // 3. Create an ACAccountCredential using your existing OAuth token/secret and set the account's credential property.
-    // 4. Save the account.
-    //
-    // The account will be validated and saved as a system account.
-    
-    ACAccountType* accountTypeTwitter = [self.store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-
-    ACAccount* newAccount = [[ACAccount alloc] initWithAccountType:accountTypeTwitter];
-    ACAccountCredential* credential = [[ACAccountCredential alloc] initWithOAuthToken:kAccessToken tokenSecret:kAccessTokenSecret];
-    newAccount.credential = credential;
-    
-    [self.store saveAccount:newAccount withCompletionHandler:^(BOOL granted, NSError *error) 
-     {
-        if (granted)
-        {
-          self.account = newAccount;
-          [self.delegate sessionDidLogin:YES];
-        }
-     }];
-
-      
-    
+    // here's the trick : 
+    // 1. use the TwitterOAuthSessionManager dialog to let the user enter its username and password
+    // 2. let [self] be the delegate of the TwitterOAuthSessionManager
+    // 3. when TwitterOAuthSessionManager returns (through delegate), get the credentials to create and register a twitter account for the user
+    _oauthManager = [[TwitterOAuthSessionManager alloc] init];
+    [_oauthManager retain];
+    [_oauthManager login:self withParentViewController:self.delegate];
   }
   // choose an account and register the app
   else
@@ -120,10 +102,132 @@
 
 
 
+#pragma mark - SessionDelegate
+
+// TwitterOAuthSessionManager has been in charge of the user dialog, 
+// to let the user enter its username and password, and connect to the twitter server.
+// we are now able to get the user credentials and create a twitter account for the user 
+- (void)sessionDidLogin:(BOOL)authorized
+{
+  [_oauthManager release];
+  
+  [self createAccount];  
+}
+
+
+
+- (void)createAccount
+{
+  //.................................................................................
+  // get registered username 
+  //
+  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
+
+
+  //.................................................................................
+  // get secured credentials (that have been store in the KeyChain by TwitterOAuthSessionManager
+  //
+  NSError* error;
+  NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+  NSString* data = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:BundleName error:&error];
+
+  
+
+  //.................................................................................
+  // and now, parse the secured data string, to extract the user token and its associated secret
+  //
+  NSInteger length = [data length];
+  NSRange range = NSMakeRange(0, length);
+  
+  NSRange begin = [data rangeOfString:@"oauth_token=" options:NSLiteralSearch range:range];
+  if (begin.location == NSNotFound)
+  {
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+  
+  range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
+  NSRange end = [data rangeOfString:@"&oauth_token_secret=" options:NSLiteralSearch range:range];
+  if (end.location == NSNotFound)
+  {
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+  
+  // extract oauth_token
+  NSString* oauth_token = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
+  
+  begin = end;
+  range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
+  end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
+  if (end.location == NSNotFound)
+  {
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+  
+  // extract oauth_token_secret
+  NSString* oauth_token_secret = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
+  
+  //  NSLog(@"oauth_token %@", oauth_token);
+  //  NSLog(@"oauth_token_secret %@", oauth_token_secret);
+  
+  
+  
+  
+  //.................................................................................
+  //
+  // now create the twitter account
+  
+  ACAccountType* accountTypeTwitter = [self.store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+  
+  ACAccount* newAccount = [[ACAccount alloc] initWithAccountType:accountTypeTwitter];
+  ACAccountCredential* credential = [[ACAccountCredential alloc] initWithOAuthToken:oauth_token tokenSecret:oauth_token_secret];
+  newAccount.credential = credential;
+  
+  [self.store saveAccount:newAccount withCompletionHandler:^(BOOL granted, NSError *error) 
+   {
+     if (granted)
+       self.account = newAccount;
+
+     _granted = granted;
+     [self performSelectorOnMainThread:@selector(onAccountCreated:) withObject:[NSNumber numberWithBool:granted] waitUntilDone:NO];
+   }];
+}
+
+
+
+
+
+- (void)onAccountCreated:(BOOL)granted
+{
+  NSString* message;
+  if (_granted)
+    message = @"Your Twitter account has been registered. Check your device's Settings.";
+  else
+    message = @"Your Twitter account could not be registered!";
+    
+    
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
+                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [av show];
+  [av release];  
+}
+
+
+
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+  if (_granted)
+    [self.delegate sessionDidLogin:YES];
+}
+
+
 #pragma mark - TwitterAccountsDelegate
-
-
-
 
 - (void)twitterDidSelectAccount:(ACAccount*)account
 {

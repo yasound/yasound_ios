@@ -10,18 +10,24 @@
 #import "SessionManager.h"
 #import <Accounts/Accounts.h>
 #import "TwitterAccountsViewController.h"
+#import "TwitterOAuthSessionManager.h"
 
 
+// note : TwitteriOSSessionManager is using SessionDelegate in a special case : no twitter account has been registered in the system yet, 
+// and we use  TwitterOAuthSessionManager to get the user credentiels and to create the twitter system account automatically
 
-@interface TwitteriOSSessionManager : SessionManager <TwitterAccountsDelegate>
+@interface TwitteriOSSessionManager : SessionManager <TwitterAccountsDelegate, SessionDelegate>
 {
   ACAccount* _account;
   NSArray* _accounts;
+  TwitterOAuthSessionManager* _oauthManager;
+  BOOL _granted;
 }
 
 @property (retain) ACAccountStore* store;
 @property (retain) ACAccount* account;
 @property (retain) NSArray* accounts;
+//@property (retain) TwitterOAuthSessionManager* oauthManager;
 
 
 - (void)login:(UIViewController*)target;

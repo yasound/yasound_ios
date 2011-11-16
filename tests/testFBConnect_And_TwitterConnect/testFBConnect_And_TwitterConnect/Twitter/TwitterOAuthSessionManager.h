@@ -13,15 +13,17 @@
 
 
 
+#define AUTH_NAME @"authName"
 
 
 
 @interface TwitterOAuthSessionManager : SessionManager <SA_OAuthTwitterControllerDelegate>
 {
   SA_OAuthTwitterEngine* _engine;
+  UIViewController* _parent;
 }
 
-- (void)login:(UIViewController*)target;
+- (void)login:(UIViewController*)target withParentViewController:(UIViewController*)parent;
 - (void)logout;
 
 

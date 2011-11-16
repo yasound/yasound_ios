@@ -14,7 +14,6 @@
 #define kOAuthConsumerKey @"lm6cEvevtSlX1IwFL3ZM4w"         //REPLACE With Twitter App OAuth Key  
 #define kOAuthConsumerSecret @"bEDK1Un5srTcDeuX6crBkihu4pmb96aaMgJnOzD3VRY"     //REPLACE With Twitter App OAuth Secret  
 
-#define AUTH_NAME @"authName"
 
 
 @implementation TwitterOAuthSessionManager
@@ -23,9 +22,10 @@
 
 
 
-- (void)login:(UIViewController*)target
+- (void)login:(UIViewController*)target withParentViewController:(UIViewController*)parent
 {
   self.delegate = target;
+  _parent = parent;
   
   if (!_engine)
   {  
@@ -41,7 +41,7 @@
       return;
     
     controller.delegate = self;
-    [self.delegate presentModalViewController:controller animated: YES];  
+    [_parent presentModalViewController:controller animated: YES];  
   }  
 }
 
