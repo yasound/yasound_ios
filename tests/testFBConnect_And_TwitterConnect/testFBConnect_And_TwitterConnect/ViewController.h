@@ -16,6 +16,10 @@
   
   IBOutlet UIButton* _facebookBtn;
   IBOutlet UIButton* _twitterBtn;
+  
+  BOOL _facebookBtnClicked;
+  BOOL _twitterBtnClicked;
+  
 }
 
 @end

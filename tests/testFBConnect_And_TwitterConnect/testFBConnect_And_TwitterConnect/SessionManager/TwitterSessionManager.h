@@ -1,51 +1,27 @@
 //
-//  SessionManager.h
-//  online login management
+//  TwitterSessionManager.h
+//  inherited from SessionManager
 //
 //  Created by LOIC BERTHELOT on 10/11/11.
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "SA_OAuthTwitterController.h" 
-#import "SA_OAuthTwitterEngine.h"
-#import "FBConnect.h"
-#import <Accounts/Accounts.h>
-#import "TwitterAccountsViewController.h"
+#import "TwitteriOSSessionManager.h"
+#import "TwitterOAuthSessionManager.h"
 
 
-
-
-
-@protocol SessionDelegate <NSObject>
-@required
-- (void)sessionDidLogin:(BOOL)authorized;
-- (void)sessionDidLogout;
-@end
-
-
-
-@interface SessionManager : NSObject <SA_OAuthTwitterControllerDelegate, FBSessionDelegate, TwitterAccountsDelegate>
+@interface TwitterSessionManager : SessionManager
 {
-  SA_OAuthTwitterEngine* _twitterEngine; 
-  ACAccount* _twitterAccount;
-  Facebook* _facebook;
-  
-  id<SessionDelegate> _delegate;
 }
 
-//@property (retain) id<SessionDelegate> delegate;
-@property (readonly) BOOL authorized;
-
-@property (retain) SA_OAuthTwitterEngine* twitterEngine;
-@property (retain) ACAccount* twitterAccount;
-@property (retain) Facebook* facebook;
+@property (retain) TwitteriOSSessionManager* iosManager;
+@property (retain) TwitterOAuthSessionManager* oauthManager; 
 
 
-+ (SessionManager*)manager;
++ (TwitterSessionManager*)twitter;
 
-- (void)loginUsingTwitter:(UIViewController*)target;
-- (void)loginUsingFacebook:(UIViewController*)target;
+- (void)login:(id)target;
 - (void)logout;
 
 - (BOOL)handleOpenURL:(NSURL *)url;

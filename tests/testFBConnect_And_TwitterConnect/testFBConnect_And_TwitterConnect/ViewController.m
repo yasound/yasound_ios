@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "SessionManager.h"
+#import "FacebookSessionManager.h"
+#import "TwitterSessionManager.h"
 
 @implementation ViewController
 
@@ -23,6 +24,10 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  _facebookBtnClicked = NO;
+  _twitterBtnClicked = NO;
+  
   
 }
 
@@ -73,20 +78,40 @@
 
 - (IBAction)onTestClicked:(id)sender
 {
-  NSString* message;
-  if (![SessionManager manager].authorized)
-    message = @"NOT authorized!";
-  else
-    message = @"authorized!";
-  
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
-                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
-  [av show];
-  [av release];  
-
+  [self testAuthorizations];
 }
 
 
+- (void)testAuthorizations
+{
+  NSString* message;
+  
+  if (_facebookBtnClicked)
+  {
+    if (![FacebookSessionManager facebook].authorized)
+      message = @"facebook NOT authorized!";
+    else
+      message = @"facebook authorized!";
+    
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
+                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];  
+  }
+  
+  if (_twitterBtnClicked)
+  {
+    if (![TwitterSessionManager twitter].authorized)
+      message = @"twitter NOT authorized!";
+    else
+      message = @"twitter authorized!";
+    
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
+                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];  
+  }
+}
 
 
 
@@ -105,7 +130,8 @@
 //
 - (IBAction)onFacebookConnect:(id)sender
 {
-  [[SessionManager manager] loginUsingFacebook:self];
+  _facebookBtnClicked = YES;
+  [[FacebookSessionManager manager] login:self];
 }
 
 
@@ -122,7 +148,8 @@
 //
 - (IBAction)onTwitterConnect:(id)sender
 {
-  [[SessionManager manager] loginUsingTwitter:self];
+  _twitterBtnClicked = YES;
+  [[TwitterSessionManager manager] login:self];
 }
 
 
@@ -133,16 +160,7 @@
 
 - (void)sessionDidLogin:(BOOL)authorized
 {
-  NSString* message;
-  if (![SessionManager manager].authorized)
-    message = @"NOT authorized!";
-  else
-    message = @"authorized!";
-  
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
-                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
-  [av show];
-  [av release];  
+  [self testAuthorizations];
 }
 
 
