@@ -38,6 +38,17 @@
 
 
 
+#pragma mark - IBActions
+
+- (IBAction)onCloseClicked:(id)sender
+{
+  [self dismissModalViewControllerAnimated:YES];
+}
+
+
+
+
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
