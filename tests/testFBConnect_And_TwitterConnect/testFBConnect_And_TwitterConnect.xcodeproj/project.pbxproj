@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BC31B9AE147159900039831F /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31B9AD147159900039831F /* SessionManager.m */; };
+		BC40DA0B1473FAEE00ABB8CD /* TwitteriOSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40DA081473FAEE00ABB8CD /* TwitteriOSManager.m */; };
+		BC40DA0C1473FAEE00ABB8CD /* TwitterOAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40DA0A1473FAEE00ABB8CD /* TwitterOAuthManager.m */; };
+		BC40DA101473FB7C00ABB8CD /* TwitterSigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40DA0E1473FB7C00ABB8CD /* TwitterSigninViewController.m */; };
+		BC40DA111473FB7C00ABB8CD /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC40DA0F1473FB7C00ABB8CD /* TwitterSigninViewController.xib */; };
 		BC53B8EB146C409200B14231 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B8EA146C409200B14231 /* UIKit.framework */; };
 		BC53B8ED146C409200B14231 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B8EC146C409200B14231 /* Foundation.framework */; };
 		BC53B8EF146C409200B14231 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC53B8EE146C409200B14231 /* CoreGraphics.framework */; };
@@ -53,6 +57,13 @@
 /* Begin PBXFileReference section */
 		BC31B9AC147159900039831F /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
 		BC31B9AD147159900039831F /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
+		BC40DA071473FAEE00ABB8CD /* TwitteriOSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitteriOSManager.h; sourceTree = "<group>"; };
+		BC40DA081473FAEE00ABB8CD /* TwitteriOSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitteriOSManager.m; sourceTree = "<group>"; };
+		BC40DA091473FAEE00ABB8CD /* TwitterOAuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterOAuthManager.h; sourceTree = "<group>"; };
+		BC40DA0A1473FAEE00ABB8CD /* TwitterOAuthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterOAuthManager.m; sourceTree = "<group>"; };
+		BC40DA0D1473FB7C00ABB8CD /* TwitterSigninViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterSigninViewController.h; sourceTree = "<group>"; };
+		BC40DA0E1473FB7C00ABB8CD /* TwitterSigninViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterSigninViewController.m; sourceTree = "<group>"; };
+		BC40DA0F1473FB7C00ABB8CD /* TwitterSigninViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwitterSigninViewController.xib; sourceTree = "<group>"; };
 		BC53B8E6146C409200B14231 /* testFBConnect_And_TwitterConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testFBConnect_And_TwitterConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC53B8EA146C409200B14231 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BC53B8EC146C409200B14231 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -158,8 +169,6 @@
 		BC53B8DB146C409100B14231 = {
 			isa = PBXGroup;
 			children = (
-				BCE3F12F1472A7AB00641D82 /* Twitter.framework */,
-				BCE3F12D1472A7A500641D82 /* Accounts.framework */,
 				BC53B918146C4E8200B14231 /* resources */,
 				BC53B909146C440C00B14231 /* deps */,
 				BC53B8F0146C409200B14231 /* testFBConnect_And_TwitterConnect */,
@@ -179,6 +188,8 @@
 		BC53B8E9146C409200B14231 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCE3F12F1472A7AB00641D82 /* Twitter.framework */,
+				BCE3F12D1472A7A500641D82 /* Accounts.framework */,
 				BC53B907146C43FF00B14231 /* libxml2.dylib */,
 				BC53B8EA146C409200B14231 /* UIKit.framework */,
 				BC53B8EC146C409200B14231 /* Foundation.framework */,
@@ -196,9 +207,16 @@
 				BC53B8FD146C409200B14231 /* ViewController.m */,
 				BC31B9AC147159900039831F /* SessionManager.h */,
 				BC31B9AD147159900039831F /* SessionManager.m */,
+				BC40DA071473FAEE00ABB8CD /* TwitteriOSManager.h */,
+				BC40DA081473FAEE00ABB8CD /* TwitteriOSManager.m */,
+				BC40DA091473FAEE00ABB8CD /* TwitterOAuthManager.h */,
+				BC40DA0A1473FAEE00ABB8CD /* TwitterOAuthManager.m */,
 				BCE3F12814729F6D00641D82 /* TwitterAccountsViewController.h */,
 				BCE3F12914729F6D00641D82 /* TwitterAccountsViewController.m */,
 				BCE3F12A14729F6D00641D82 /* TwitterAccountsViewController.xib */,
+				BC40DA0D1473FB7C00ABB8CD /* TwitterSigninViewController.h */,
+				BC40DA0E1473FB7C00ABB8CD /* TwitterSigninViewController.m */,
+				BC40DA0F1473FB7C00ABB8CD /* TwitterSigninViewController.xib */,
 				BC53B8FF146C409200B14231 /* ViewController.xib */,
 				BC53B8F1146C409200B14231 /* Supporting Files */,
 			);
@@ -395,6 +413,7 @@
 				BCF9723B1471327D0094EC3B /* jQueryInjectLandscape.txt in Resources */,
 				BCF9724D1471327D0094EC3B /* twitter_load.png in Resources */,
 				BCE3F12C14729F6D00641D82 /* TwitterAccountsViewController.xib in Resources */,
+				BC40DA111473FB7C00ABB8CD /* TwitterSigninViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +445,9 @@
 				BCF9724C1471327D0094EC3B /* SA_OAuthTwitterEngine.m in Sources */,
 				BC31B9AE147159900039831F /* SessionManager.m in Sources */,
 				BCE3F12B14729F6D00641D82 /* TwitterAccountsViewController.m in Sources */,
+				BC40DA0B1473FAEE00ABB8CD /* TwitteriOSManager.m in Sources */,
+				BC40DA0C1473FAEE00ABB8CD /* TwitterOAuthManager.m in Sources */,
+				BC40DA101473FB7C00ABB8CD /* TwitterSigninViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

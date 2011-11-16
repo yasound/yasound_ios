@@ -13,17 +13,20 @@
 
 @implementation TwitterAccountsViewController
 
+
+@synthesize delegate = _delegate;
 @synthesize accountStore = _accountStore; 
 @synthesize accounts = _accounts; 
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil target:(id)target
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) 
   {
     self.title = @"login using Twitter";
+    self.delegate = target;
     [self loadAccounts];
   }
   return self;
@@ -104,12 +107,15 @@
     
     [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter withCompletionHandler:^(BOOL granted, NSError *error) 
     {
-      if(granted) 
+      if (granted) 
       {
         dispatch_sync(dispatch_get_main_queue(), ^
         {
           self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
-          [_tableView reloadData]; 
+          [self.delegate twitterDidLoadAccounts:self nbAccounts:[self.accounts count]];
+
+          if (_tableView)
+            [_tableView reloadData]; 
         });
       }
     }];
@@ -149,9 +155,13 @@
                                             initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/users/show.json"] 
                                             parameters:[NSDictionary dictionaryWithObjectsAndKeys:account.username, @"screen_name", nil]
                                             requestMethod:TWRequestMethodGET];
-  [fetchAdvancedUserProperties performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-    if ([urlResponse statusCode] == 200) {
-      dispatch_sync(dispatch_get_main_queue(), ^{
+  
+  [fetchAdvancedUserProperties performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) 
+  {
+    if ([urlResponse statusCode] == 200) 
+    {
+      dispatch_sync(dispatch_get_main_queue(), ^
+      {
         NSError *error;
         id userInfo = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
         cell.textLabel.text = [userInfo valueForKey:@"name"];
@@ -159,14 +169,18 @@
       });
     }
   }];
+  
   TWRequest *fetchUserImageRequest = [[TWRequest alloc] 
                                       initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.twitter.com/1/users/profile_image/%@", account.username]] 
                                       parameters:nil
                                       requestMethod:TWRequestMethodGET];
-  [fetchUserImageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-    if ([urlResponse statusCode] == 200) {
+  [fetchUserImageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) 
+  {
+    if ([urlResponse statusCode] == 200) 
+    {
       UIImage *image = [UIImage imageWithData:responseData];
-      dispatch_sync(dispatch_get_main_queue(), ^{
+      dispatch_sync(dispatch_get_main_queue(), ^
+      {
         cell.imageView.image = image;
         [cell setNeedsLayout];
       });
@@ -179,6 +193,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  ACAccount* account = [self.accounts objectAtIndex:[indexPath row]];
+  
+  [self.delegate twitterDidSelectAccount:account];
+
+  [self dismissModalViewControllerAnimated:YES];
+
 //  TweetsListViewController *tweetsListViewController = [[TweetsListViewController alloc] init];
 //  tweetsListViewController.account = [self.accounts objectAtIndex:[indexPath row]];
 //  [self.navigationController pushViewController:tweetsListViewController animated:TRUE];

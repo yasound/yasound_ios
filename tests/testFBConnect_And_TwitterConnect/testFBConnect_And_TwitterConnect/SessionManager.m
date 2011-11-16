@@ -7,7 +7,6 @@
 //
 
 #import "SessionManager.h"
-#import "TwitterAccountsViewController.h"
 
 
 
@@ -15,6 +14,10 @@
 
 //@synthesize delegate;
 @synthesize authorized;
+@synthesize twitterEngine = _twitterEngine;
+@synthesize twitterAccount = _twitterAccount;
+@synthesize facebook = _facebook;
+
 
 
 // consumer key, consumer secre, fb app id and secret, are based on app "neywenTest"
@@ -141,10 +144,7 @@ static SessionManager* _manager = nil;
 
 - (void)loginUsingTwitteriOS
 {
-  TwitterAccountsViewController* controller = [[TwitterAccountsViewController alloc] initWithNibName:@"TwitterAccountsViewController" bundle:nil];
-  controller.navigationController.navigationBarHidden = NO;
-  [_delegate presentModalViewController:controller animated: YES];  
-  [controller release];
+  TwitterAccountsViewController* controller = [[TwitterAccountsViewController alloc] initWithNibName:@"TwitterAccountsViewController" bundle:nil target:self];
 }
 
 
@@ -166,6 +166,58 @@ static SessionManager* _manager = nil;
     controller.delegate = self;
     [_delegate presentModalViewController:controller animated: YES];  
   }  
+}
+
+
+
+#pragma mark - TwitterAccountsDelegate
+
+- (void)twitterDidLoadAccounts:(TwitterAccountsViewController*)sender nbAccounts:(NSInteger)nbAccounts
+{
+  if (nbAccounts == 0)
+  {
+    NSString* message = @"Please go to the system Settings\nand add a Twitter account.";
+    
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Twitter Account" message:message delegate:self
+                                       cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];  
+    return;
+  }
+
+  [_delegate presentModalViewController:sender animated: YES];  
+  [sender release];
+}
+
+
+//// This identifier can be used to look up the account using [ACAccountStore accountWithIdentifier:].
+//@property (nonatomic, readonly) NSString            *identifier;
+//
+//// Accounts are stored with a particular account type. All available accounts of a particular type 
+//// can be looked up using [ACAccountStore accountsWithAccountType:]. When creating new accounts
+//// this property is required.
+//@property (nonatomic, retain)   ACAccountType       *accountType;
+//
+//// A human readable description of the account.
+//// This property is only available to applications that have been granted access to the account by the user.
+//@property (nonatomic, copy)     NSString            *accountDescription;
+//
+//// The username for the account. This property can be set and saved during account creation. The username is
+//// only available to applications that have been granted access to the account by the user.
+//@property (nonatomic, copy)     NSString            *username;
+//
+//// The credential for the account. This property can be set and saved during account creation. It is 
+//// inaccessible once the account has been saved.
+//@property (nonatomic, retain)   ACAccountCredential *credential;
+
+- (void)twitterDidSelectAccount:(ACAccount*)account
+{
+  self.twitterAccount = account;
+  
+  NSLog(@"accountDescription %@", account.accountDescription);
+  NSLog(@"username %@", account.username);
+  NSLog(@"accountDescription %@", account.accountDescription);
+  
 }
 
 

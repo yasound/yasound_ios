@@ -9,16 +9,28 @@
 #import <UIKit/UIKit.h>
 #import <Accounts/Accounts.h>
 
+@class TwitterAccountsViewController;
+
+@protocol TwitterAccountsDelegate <NSObject>
+@required
+- (void)twitterDidLoadAccounts:(TwitterAccountsViewController*)sender nbAccounts:(NSInteger)nbAccounts;
+- (void)twitterDidSelectAccount:(ACAccount*)account;
+@end
+
+
+
 @interface TwitterAccountsViewController : UIViewController
 {
   IBOutlet UITableView* _tableView;
-  
-  ACAccountStore* _accountStore; 
-  NSArray* _accounts;
-  
 }
 
 @property (strong, nonatomic) ACAccountStore* accountStore; 
 @property (strong, nonatomic) NSArray* accounts;
+@property (retain) id<TwitterAccountsDelegate> delegate;
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil target:(id)target;
+
+
 
 @end
