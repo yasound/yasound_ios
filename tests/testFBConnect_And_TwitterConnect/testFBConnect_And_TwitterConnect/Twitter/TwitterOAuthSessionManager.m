@@ -93,7 +93,7 @@
 //implement these methods to store off the creds returned by Twitter
 - (void) storeCachedTwitterOAuthData: (NSString *)data forUsername: (NSString *) username
 {
-  // NSLog(@"storeCachedTwitterOAuthData   data '%@'   username '%@'", data, username);
+   NSLog(@"storeCachedTwitterOAuthData   data '%@'   username '%@'", data, username);
   
   // store the credentials for later access
   [[NSUserDefaults standardUserDefaults] setValue:username forKey:AUTH_NAME];
@@ -110,11 +110,25 @@
 	//if you don't do this, the user will have to re-authenticate every time they run
 - (NSString *) cachedTwitterOAuthDataForUsername: (NSString *) username
 {
+  // username parameter is broken (<=> nil) with iOS 5.
+  // this issue is known on Twitter-OAuth-iPhone github.
+  // => get the username from the UserDefaults, instead
+  NSString* __username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
+
   NSError* error;
   NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
 
   // credentials have been stored in KeyChain, for security reason
-  return [SFHFKeychainUtils getPasswordForUsername:username andServiceName:BundleName error:&error];
+  NSString* data = [SFHFKeychainUtils getPasswordForUsername:__username andServiceName:BundleName error:&error];
+  
+//  NSLog(@"username %@", __username);
+//  NSLog(@"data %@", data);
+  
+  // warn the calling process that we have the credentials and that it can be considered itself as logged.
+  if (data != nil)
+    [self performSelectorOnMainThread:@selector(onTwitterCredentialsRetrieved) withObject:nil waitUntilDone:nil];
+  
+  return data;
 }
 
 
@@ -123,6 +137,13 @@
 - (void) twitterOAuthConnectionFailedWithData: (NSData *) data
 {
   NSLog(@"twitterOAuthConnectionFailedWithData");
+}
+
+
+
+- (void)onTwitterCredentialsRetrieved
+{
+  [self.delegate sessionDidLogin:YES];
 }
 
 
