@@ -80,7 +80,7 @@ static FacebookSessionManager* _facebook = nil;
 //
 // login using facebook
 //
-- (void)login:(id)target
+- (void)login:(UIViewController*)target
 {
   
   self.delegate = target;

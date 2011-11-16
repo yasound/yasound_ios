@@ -15,19 +15,20 @@
 
 
 @synthesize delegate = _delegate;
-@synthesize accountStore = _accountStore; 
+//@synthesize accountStore = _accountStore; 
 @synthesize accounts = _accounts; 
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil target:(id)target
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil accounts:(NSArray*)accounts target:(id)target
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) 
   {
     self.title = @"login using Twitter";
     self.delegate = target;
-    [self loadAccounts];
+    
+    self.accounts = accounts;
   }
   return self;
 }
@@ -90,36 +91,6 @@
 {
   // Return YES for supported orientations
   return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-
-
-#pragma mark - Load Data
-
-- (void)loadAccounts
-{
-  if (_accounts == nil) 
-  {
-    if (_accountStore == nil) 
-      self.accountStore = [[ACAccountStore alloc] init];
-    
-    ACAccountType* accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
-    [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter withCompletionHandler:^(BOOL granted, NSError *error) 
-    {
-      if (granted) 
-      {
-        dispatch_sync(dispatch_get_main_queue(), ^
-        {
-          self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
-          [self.delegate twitterDidLoadAccounts:self nbAccounts:[self.accounts count]];
-
-          if (_tableView)
-            [_tableView reloadData]; 
-        });
-      }
-    }];
-  }
 }
 
 

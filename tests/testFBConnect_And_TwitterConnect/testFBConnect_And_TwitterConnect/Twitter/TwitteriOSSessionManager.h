@@ -16,12 +16,15 @@
 @interface TwitteriOSSessionManager : SessionManager <TwitterAccountsDelegate>
 {
   ACAccount* _account;
+  NSArray* _accounts;
 }
 
+@property (retain) ACAccountStore* store;
 @property (retain) ACAccount* account;
+@property (retain) NSArray* accounts;
 
 
-- (void)login:(id)target;
+- (void)login:(UIViewController*)target;
 - (void)logout;
 
 

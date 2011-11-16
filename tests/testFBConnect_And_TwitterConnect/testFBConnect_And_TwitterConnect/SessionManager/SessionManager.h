@@ -22,10 +22,10 @@
 }
 
 @property (readonly) BOOL authorized;
-@property id<SessionDelegate> delegate;
+@property (retain) id<SessionDelegate> delegate;
 
 
-- (void)login:(id)target;
+- (void)login:(UIViewController*)target;
 - (void)logout;
 
 

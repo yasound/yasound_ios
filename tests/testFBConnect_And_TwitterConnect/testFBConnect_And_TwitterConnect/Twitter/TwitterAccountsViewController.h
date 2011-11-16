@@ -13,7 +13,6 @@
 
 @protocol TwitterAccountsDelegate <NSObject>
 @required
-- (void)twitterDidLoadAccounts:(TwitterAccountsViewController*)sender nbAccounts:(NSInteger)nbAccounts;
 - (void)twitterDidSelectAccount:(ACAccount*)account;
 @end
 
@@ -22,14 +21,15 @@
 @interface TwitterAccountsViewController : UIViewController
 {
   IBOutlet UITableView* _tableView;
+//  NSArray* _accounts;
 }
 
-@property (strong, nonatomic) ACAccountStore* accountStore; 
+//@property (strong, nonatomic) ACAccountStore* accountStore; 
 @property (strong, nonatomic) NSArray* accounts;
 @property (retain) id<TwitterAccountsDelegate> delegate;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil target:(id)target;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil accounts:(NSArray*)accounts target:(id)target;
 
 
 

@@ -104,7 +104,7 @@ static TwitterSessionManager* _twitter = nil;
 
 
 
-- (void)login:(id)target;
+- (void)login:(UIViewController*)target;
 {
   if (_iosManager)
     [_iosManager login:target];

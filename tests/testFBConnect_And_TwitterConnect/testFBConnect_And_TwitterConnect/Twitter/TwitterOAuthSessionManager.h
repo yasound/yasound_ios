@@ -18,7 +18,12 @@
 
 @interface TwitterOAuthSessionManager : SessionManager <SA_OAuthTwitterControllerDelegate>
 {
+  SA_OAuthTwitterEngine* _engine;
 }
+
+- (void)login:(UIViewController*)target;
+- (void)logout;
+
 
 
 

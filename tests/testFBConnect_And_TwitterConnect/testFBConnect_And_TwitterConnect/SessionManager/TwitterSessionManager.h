@@ -21,7 +21,7 @@
 
 + (TwitterSessionManager*)twitter;
 
-- (void)login:(id)target;
+- (void)login:(UIViewController*)target;
 - (void)logout;
 
 

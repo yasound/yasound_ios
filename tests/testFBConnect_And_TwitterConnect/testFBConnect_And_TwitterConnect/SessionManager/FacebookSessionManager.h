@@ -22,7 +22,7 @@
 
 + (FacebookSessionManager*)facebook;
 
-- (void)login:(id)target;
+- (void)login:(UIViewController*)target;
 - (void)logout;
 
 - (BOOL)handleOpenURL:(NSURL *)url;
