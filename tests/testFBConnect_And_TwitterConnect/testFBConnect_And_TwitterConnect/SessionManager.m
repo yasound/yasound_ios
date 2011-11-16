@@ -223,10 +223,19 @@ static SessionManager* _manager = nil;
   {
     _facebook.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
     _facebook.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
+    NSLog(@"UserDefault FB token : expiration date %@", _facebook.expirationDate);
   }
   
   if (![_facebook isSessionValid]) 
+  {
+    NSLog(@"FB authorize dialog.");
     [_facebook authorize:nil];
+  }
+  else
+  {
+    NSLog(@"FB Session is still valid.");  
+    [_delegate sessionDidLogin:YES];    
+  }
 }
 
 
