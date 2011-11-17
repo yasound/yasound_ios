@@ -178,9 +178,14 @@
 //
 - (IBAction)onFriendsClicked:(id)sender
 {
-  
+  if ([FacebookSessionManager facebook].authorized)
+    [[FacebookSessionManager facebook] requestGetInfo:REQUEST_TAG_FRIENDLIST];  
 }
 
+- (IBAction)onClearClicked:(id)sender
+{
+  [self logClear];
+}
 
 
 
@@ -221,7 +226,23 @@
   {
     [self log:[NSString stringWithFormat:@"username: %@", [data valueForKey:@"username"]]];
     [self log:[NSString stringWithFormat:@"name: %@", [data valueForKey:@"name"]]];
+    return;
   }
+
+  
+  if ([requestTag isEqualToString:REQUEST_TAG_FRIENDLIST])
+  {
+    NSArray* friends = [data objectForKey:@"data"];
+    
+    for (NSDictionary* friend in friends)
+    {
+      [self log:[NSString stringWithFormat:@"%@ : %@", [friend valueForKey:@"id"], [friend valueForKey:@"name"]]];
+    }
+    
+    return;
+  }
+
+  
   
   
 }
@@ -238,6 +259,7 @@
 
 - (void)log:(NSString*)str
 {
+  NSLog(str);
   _textView.text = [NSString stringWithFormat:@"%@\n%@", _textView.text, str];
 }
 

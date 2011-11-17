@@ -129,16 +129,21 @@ static FacebookSessionManager* _facebook = nil;
     return NO;
   
   if ([requestTag isEqualToString:REQUEST_TAG_USERNAME])
+  {
     _requestMe = [_facebookConnect requestWithGraphPath:@"me" andDelegate:self];
+    return;
+  }
+  
+  if ([requestTag isEqualToString:REQUEST_TAG_FRIENDLIST])
+  {
+    _requestFriends = [_facebookConnect requestWithGraphPath:@"me/friends" andDelegate:self];
+    return;
+  }
   
   return YES;
 }
 
 
-- (BOOL)requestFriendList
-{
-
-}
 
 
 - (BOOL)requestPostMessage:(NSString*)message
@@ -198,12 +203,20 @@ static FacebookSessionManager* _facebook = nil;
 
 }
 
+
 - (void)request:(FBRequest *)request didLoad:(id)result
 {
   if (request == _requestMe)
   {
     NSDictionary* dico = result;
     [self.delegate requestDidLoad:REQUEST_TAG_USERNAME data:dico];
+    return;
+  }
+  
+  if (request == _requestFriends)
+  {
+    NSDictionary* dico = result;
+    [self.delegate requestDidLoad:REQUEST_TAG_FRIENDLIST data:dico];
     return;
   }
   

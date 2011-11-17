@@ -15,14 +15,19 @@
   IBOutlet UIBarButtonItem* _testBtn;
   IBOutlet UITextView* _textView;
   
-  IBOutlet UIButton* _facebookBtn;
-  IBOutlet UIButton* _twitterBtn;
-  IBOutlet UIButton* _usernameBtn;
-  IBOutlet UIButton* _friendsBtn;
-  
   BOOL _facebookBtnClicked;
   BOOL _twitterBtnClicked;
-  
 }
+
+
+- (IBAction)onLogoutClicked:(id)sender;
+- (IBAction)onTestClicked:(id)sender;
+- (IBAction)onFacebookConnect:(id)sender;
+- (IBAction)onTwitterConnect:(id)sender;
+- (IBAction)onUsernameClicked:(id)sender;
+- (IBAction)onFriendsClicked:(id)sender;
+- (IBAction)onClearClicked:(id)sender;
+
+
 
 @end
