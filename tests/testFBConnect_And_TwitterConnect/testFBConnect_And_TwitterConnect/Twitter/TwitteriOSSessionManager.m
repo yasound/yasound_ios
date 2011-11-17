@@ -9,8 +9,10 @@
 
 
 #import "TwitteriOSSessionManager.h"
-#import "SFHFKeychainUtils.h"
+#import "Security/SFHFKeychainUtils.h"
 
+
+#define ACCOUNT_IDENTIFIER @"twitterAccountIdentifier"
 
 @implementation TwitteriOSSessionManager
 
@@ -30,9 +32,24 @@
   
   self.delegate = target;
   self.store = [[ACAccountStore alloc] init];
+  self.account = nil;
 
-  
-  [self loadTwitterAccounts];
+  // check if a twitter account has already been selected as default
+  NSString* identifier = [[NSUserDefaults standardUserDefaults] valueForKey:ACCOUNT_IDENTIFIER];
+  if (identifier != nil)
+    self.account = [self.store accountWithIdentifier:identifier];
+
+  // if no account has been selected as default, or if it has been deleted,
+  // load the available accounts to select a new one.
+  if (self.account == nil)
+  {
+    [self loadTwitterAccounts];
+  }
+  else
+  {
+    // consider everything's fine
+    [self.delegate sessionDidLogin:YES];
+  }
 }
 
 
@@ -188,7 +205,13 @@
   [self.store saveAccount:newAccount withCompletionHandler:^(BOOL granted, NSError *error) 
    {
      if (granted)
+     {
        self.account = newAccount;
+       
+       // store this new account identifier in order to load it automatically the next times
+       NSString* identifier = self.account.identifier;
+       [[NSUserDefaults standardUserDefaults] setValue:identifier forKey:ACCOUNT_IDENTIFIER];
+     }
 
      _granted = granted;
      [self performSelectorOnMainThread:@selector(onAccountCreated:) withObject:[NSNumber numberWithBool:granted] waitUntilDone:NO];
@@ -224,6 +247,8 @@
 {
   if (_granted)
     [self.delegate sessionDidLogin:YES];
+  else
+    [self.delegate sessionDidLogin:NO];
 }
 
 
@@ -233,8 +258,13 @@
 {
   self.account = account;
   
-  NSLog(@"accountDescription %@", account.accountDescription);
-  NSLog(@"username %@", account.username);
+//  NSLog(@"accountDescription %@", account.accountDescription);
+//  NSLog(@"username %@", account.username);
+
+  // store this account identifier in order to load it automatically the next times
+  NSString* identifier = self.account.identifier;
+  [[NSUserDefaults standardUserDefaults] setValue:identifier forKey:ACCOUNT_IDENTIFIER];
+  
   
   [self.delegate sessionDidLogin:YES];
 }

@@ -8,7 +8,7 @@
 
 
 #import "TwitterOAuthSessionManager.h"
-#import "SFHFKeychainUtils.h"
+#import "Security/SFHFKeychainUtils.h"
 
 
 #define kOAuthConsumerKey @"lm6cEvevtSlX1IwFL3ZM4w"         //REPLACE With Twitter App OAuth Key  
@@ -137,6 +137,7 @@
 - (void) twitterOAuthConnectionFailedWithData: (NSData *) data
 {
   NSLog(@"twitterOAuthConnectionFailedWithData");
+  [self.delegate sessionLoginFailed];
 }
 
 
@@ -161,7 +162,7 @@
 - (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller
 {
   NSLog(@"OAuthTwitterControllerFailed");
-  [self.delegate sessionDidLogin:NO];
+  [self.delegate sessionLoginFailed];
 }
 
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller

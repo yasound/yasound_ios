@@ -59,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC299B0A1475114D00EA161D /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
 		BC2B0A9E147403440074B97F /* FacebookSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookSessionManager.h; sourceTree = "<group>"; };
 		BC2B0A9F147403440074B97F /* FacebookSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookSessionManager.m; sourceTree = "<group>"; };
 		BC2B0AA0147403440074B97F /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
@@ -178,6 +179,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC299B091475114D00EA161D /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				BC299B0A1475114D00EA161D /* Version.h */,
+			);
+			name = Version;
+			path = ../../LibTools/Version;
+			sourceTree = "<group>";
+		};
 		BC2B0A9D147403440074B97F /* SessionManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +290,7 @@
 		BC53B909146C440C00B14231 /* deps */ = {
 			isa = PBXGroup;
 			children = (
+				BC299B091475114D00EA161D /* Version */,
 				BC2B0AC314743B790074B97F /* Security */,
 				BCF971FE1471327D0094EC3B /* Twitter+OAuth */,
 				BC53B90A146C442A00B14231 /* libfacebook_ios_sdk.ub.a */,
@@ -574,7 +585,7 @@
 					"../../LibTools/Twitter-OAuth-iPhone/Twitter+OAuth/SAOAuthTwitterEngine",
 					"$(SDKROOT)/usr/include/libxml2",
 					"../../LibTools/facebook-ios-sdk/src/JSON/",
-					../../LibTools/Security,
+					../../LibTools,
 				);
 				INFOPLIST_FILE = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -598,7 +609,7 @@
 					"../../LibTools/Twitter-OAuth-iPhone/Twitter+OAuth/SAOAuthTwitterEngine",
 					"$(SDKROOT)/usr/include/libxml2",
 					"../../LibTools/facebook-ios-sdk/src/JSON/",
-					../../LibTools/Security,
+					../../LibTools,
 				);
 				INFOPLIST_FILE = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

@@ -12,6 +12,7 @@
 @protocol SessionDelegate <NSObject>
 @required
 - (void)sessionDidLogin:(BOOL)authorized;
+- (void)sessionLoginFailed;
 - (void)sessionDidLogout;
 @end
 

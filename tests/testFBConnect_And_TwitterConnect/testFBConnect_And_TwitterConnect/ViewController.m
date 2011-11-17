@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "FacebookSessionManager.h"
 #import "TwitterSessionManager.h"
+#import "Version/Version.h"
+
 
 @implementation ViewController
 
@@ -90,9 +92,9 @@
   if (_facebookBtnClicked)
   {
     if (![FacebookSessionManager facebook].authorized)
-      message = @"facebook NOT authorized!";
+      message = @"facebook account NOT authorized!";
     else
-      message = @"facebook authorized!";
+      message = @"facebook account authorized!";
     
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
                                        cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -103,9 +105,14 @@
   if (_twitterBtnClicked)
   {
     if (![TwitterSessionManager twitter].authorized)
-      message = @"twitter NOT authorized!";
+    {
+      if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) 
+        message = @"Twitter account NOT authorized!\nCheck the Twitter configuration in your device's Settings.";
+      else
+        message = @"Twitter account NOT authorized!";
+    }
     else
-      message = @"twitter authorized!";
+      message = @"Twitter account authorized!";
     
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
                                        cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -162,6 +169,17 @@
 - (void)sessionDidLogin:(BOOL)authorized
 {
   [self testAuthorizations];
+}
+
+
+- (void)sessionLoginFailed
+{
+  NSString* message = @"login failed!";
+  
+  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
+                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  [av show];
+  [av release];    
 }
 
 
