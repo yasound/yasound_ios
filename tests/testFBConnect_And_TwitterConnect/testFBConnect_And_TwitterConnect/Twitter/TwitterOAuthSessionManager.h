@@ -23,7 +23,8 @@
   UIViewController* _parent;
 }
 
-- (void)login:(UIViewController*)target withParentViewController:(UIViewController*)parent;
+- (void)setTarget:(id<SessionDelegate>)delegate;
+- (void)login:(UIViewController*)parent;
 - (void)logout;
 
 

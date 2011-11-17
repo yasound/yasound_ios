@@ -26,7 +26,8 @@
 @property (retain) id<SessionDelegate> delegate;
 
 
-- (void)login:(UIViewController*)target;
+- (void)setTarget:(id<SessionDelegate>)delegate;
+- (void)login;
 - (void)logout;
 
 

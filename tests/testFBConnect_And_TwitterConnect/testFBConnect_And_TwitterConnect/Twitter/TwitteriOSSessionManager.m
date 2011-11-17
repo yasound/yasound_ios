@@ -26,11 +26,15 @@
 //#define kAccessTokenSecret @"HjCLrPG60q9FlmPXIwPNx2iAm7EA3KOrGmzu4z08"      
 
 
-- (void)login:(UIViewController*)target
+- (void)setTarget:(id<SessionDelegate>)delegate
+{
+  self.delegate = delegate;
+}
+
+- (void)login
 {
   _granted = NO;
   
-  self.delegate = target;
   self.store = [[ACAccountStore alloc] init];
   self.account = nil;
 
@@ -113,7 +117,8 @@
     // 3. when TwitterOAuthSessionManager returns (through delegate), get the credentials to create and register a twitter account for the user
     _oauthManager = [[TwitterOAuthSessionManager alloc] init];
     [_oauthManager retain];
-    [_oauthManager login:self withParentViewController:self.delegate];
+    [_oauthManager setTarget:self];
+    [_oauthManager login:self.delegate];
   }
   // choose an account and register the app
   else

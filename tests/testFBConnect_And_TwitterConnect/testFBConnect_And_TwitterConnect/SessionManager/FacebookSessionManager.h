@@ -22,7 +22,8 @@
 
 + (FacebookSessionManager*)facebook;
 
-- (void)login:(UIViewController*)target;
+- (void)setTarget:(id<SessionDelegate>)delegate;
+- (void)login;
 - (void)logout;
 
 - (BOOL)handleOpenURL:(NSURL *)url;

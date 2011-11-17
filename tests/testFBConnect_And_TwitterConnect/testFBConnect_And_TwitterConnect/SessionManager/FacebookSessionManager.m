@@ -75,16 +75,18 @@ static FacebookSessionManager* _facebook = nil;
 #pragma mark - Facebook
 
 
+- (void)setTarget:(id<SessionDelegate>)delegate
+{
+  self.delegate = delegate;
+}
+
 
 //.......................................................................
 //
 // login using facebook
 //
-- (void)login:(UIViewController*)target
+- (void)login
 {
-  
-  self.delegate = target;
-  
   _facebookConnect = [[Facebook alloc] initWithAppId:FB_App_Id andDelegate:self];
   
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

@@ -20,11 +20,14 @@
 
 
 
-
-
-- (void)login:(UIViewController*)target withParentViewController:(UIViewController*)parent
+- (void)setTarget:(id<SessionDelegate>)delegate
 {
-  self.delegate = target;
+  self.delegate = delegate;
+}
+
+
+- (void)login:(UIViewController*)parent
+{
   _parent = parent;
   
   if (!_engine)

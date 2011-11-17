@@ -30,7 +30,8 @@
 //@property (retain) TwitterOAuthSessionManager* oauthManager;
 
 
-- (void)login:(UIViewController*)target;
+- (void)setTarget:(id<SessionDelegate>)delegate;
+- (void)login;
 - (void)logout;
 
 

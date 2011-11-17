@@ -79,6 +79,17 @@ static TwitterSessionManager* _twitter = nil;
 
 
 
+- (void)setTarget:(id<SessionDelegate>)delegate
+{
+  if (_iosManager)
+    [_iosManager setTarget:delegate];
+  else
+    [_oauthManager setTarget:delegate];
+}
+
+
+
+
 - (void)logout
 {
   if (_iosManager)
@@ -91,13 +102,15 @@ static TwitterSessionManager* _twitter = nil;
 
 
 
-- (void)login:(UIViewController*)target;
+- (void)login;
 {
   if (_iosManager)
-    [_iosManager login:target];
+    [_iosManager login];
   else
-    [_oauthManager login:target withParentViewController:target];
+    [_oauthManager login:self.delegate];
 }
+
+
 
 
 
