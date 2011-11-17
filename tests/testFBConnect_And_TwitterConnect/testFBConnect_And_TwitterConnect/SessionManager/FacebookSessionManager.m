@@ -48,6 +48,7 @@ static FacebookSessionManager* _facebook = nil;
   if (self)
   {
     _facebookConnect = nil;
+    _facebookPermissions = [[NSArray arrayWithObjects:@"read_stream", @"user_about_me", @"publish_stream", nil] retain];    
   }
   return self;
 }
@@ -60,15 +61,25 @@ static FacebookSessionManager* _facebook = nil;
 }
 
 
+
+
+
+
 - (BOOL)authorized
 {
   return [_facebookConnect isSessionValid];
 }
 
+- (NSString*)username
+{
+//  return [_facebookConnect isSessionValid];
+  return nil;
+}
 
 
 
 
+ICI
 
 
 
@@ -100,7 +111,7 @@ static FacebookSessionManager* _facebook = nil;
   if (![_facebookConnect isSessionValid]) 
   {
 //    NSLog(@"FB authorize dialog.");
-    [_facebookConnect authorize:nil];
+    [_facebookConnect authorize:_facebookPermissions];
   }
   else
   {

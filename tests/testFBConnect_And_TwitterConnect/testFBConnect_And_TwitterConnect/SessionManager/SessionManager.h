@@ -22,8 +22,10 @@
 {
 }
 
-@property (readonly) BOOL authorized;
 @property (retain) id<SessionDelegate> delegate;
+
+@property (readonly) BOOL authorized;
+@property (readonly) NSString* username;
 
 
 - (void)setTarget:(id<SessionDelegate>)delegate;

@@ -15,6 +15,7 @@
 @interface FacebookSessionManager : SessionManager <FBSessionDelegate>
 {
   Facebook* _facebookConnect;
+  NSArray* _facebookPermissions;
 }
 
 @property (retain) Facebook* facebookConnect;
@@ -25,6 +26,11 @@
 - (void)setTarget:(id<SessionDelegate>)delegate;
 - (void)login;
 - (void)logout;
+
+- (void)getUserInfo:(id)sender;
+- (void)getUserFriendList:(id)sender;
+- (void)postToFriendsWall;
+
 
 - (BOOL)handleOpenURL:(NSURL *)url;
 
