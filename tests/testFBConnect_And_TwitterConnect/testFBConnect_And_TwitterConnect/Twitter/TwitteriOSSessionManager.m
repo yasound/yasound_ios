@@ -56,7 +56,16 @@
 
 - (void)logout
 {
+  [[NSUserDefaults standardUserDefaults] removeObjectForKey:ACCOUNT_IDENTIFIER];
 
+  // also clean oauth credentials
+  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
+  [[NSUserDefaults standardUserDefaults] removeObjectForKey:AUTH_NAME];
+  NSError* error;
+  NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+  [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
+  
+  [self.delegate sessionDidLogout];    
 }
 
 

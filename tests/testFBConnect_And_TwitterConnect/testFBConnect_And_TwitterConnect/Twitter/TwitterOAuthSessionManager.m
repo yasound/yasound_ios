@@ -49,29 +49,29 @@
 
 - (void)logout
 {
+  // clean credentials
+  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
+  
+  [[NSUserDefaults standardUserDefaults] removeObjectForKey:AUTH_NAME];
+  
+  // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
+  //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
+  
+  NSError* error;
+  NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+  [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
+
+  // clean twitter engine
   if (_engine)
   {
     [_engine clearAccessToken];
     [_engine clearsCookies];
 
-    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
-
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:AUTH_NAME];
-    
-    // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
-    //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
-    
-    NSError* error;
-    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
-    [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
-
     [_engine release];
     _engine=nil;  
-    
-    [self.delegate sessionDidLogout];  
-    
-    return;
   }
+  
+  [self.delegate sessionDidLogout];  
 }
 
 
