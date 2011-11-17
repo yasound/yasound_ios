@@ -10,6 +10,7 @@
 
 #define REQUEST_TAG_USERNAME @"username"
 #define REQUEST_TAG_FRIENDLIST @"friendlist"
+#define REQUEST_TAG_POSTMESSAGE @"postmessage"
 
 
 
@@ -20,6 +21,7 @@
 - (void)sessionLoginFailed;
 - (void)sessionDidLogout;
 - (void)requestDidLoad:(NSString*)requestTag data:(NSDictionary*)data;
+- (void)requestDidFailed:(NSString*)requestTag error:(NSError*)error;
 @end
 
 
@@ -37,8 +39,7 @@
 - (void)logout;
 
 - (BOOL)requestGetInfo:(NSString*)requestTag;
-- (BOOL)requestPostMessage:(NSString*)message;
-
+- (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
 
 
 @end

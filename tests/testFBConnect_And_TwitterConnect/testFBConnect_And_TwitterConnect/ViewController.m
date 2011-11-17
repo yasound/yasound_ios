@@ -188,6 +188,22 @@
 }
 
 
+- (IBAction)onPostMessageClicked:(id)sender
+{
+  if ([FacebookSessionManager facebook].authorized)
+  {
+    NSString* message = [NSString stringWithFormat:@"%@ : test message from iPhone", [NSDate date]];
+    
+    [[FacebookSessionManager facebook] requestPostMessage:message title:@"MyTitle" picture:[[NSURL alloc] initWithString:@"http://www.ephotozine.com/articles/Elinchrom-DLite-4-kit-4453/images/DLite4.jpg"]];  
+  }
+    
+}
+
+- (IBAction)onShareEventClicked:(id)sender
+{
+
+}
+
 
 
 
@@ -220,6 +236,18 @@
   [av release];  
 }
 
+
+- (void)requestDidFailed:(NSString*)requestTag error:(NSError*)error
+{
+  if ([requestTag isEqualToString:REQUEST_TAG_POSTMESSAGE])
+  {
+    [self log:@"could not post the message to your wall."];
+    [self log:[error localizedDescription]];
+    [self log:[error description]];
+  }  
+}
+
+
 - (void)requestDidLoad:(NSString*)requestTag data:(NSDictionary*)data;
 {
   if ([requestTag isEqualToString:REQUEST_TAG_USERNAME])
@@ -241,7 +269,11 @@
     
     return;
   }
-
+  
+  if ([requestTag isEqualToString:REQUEST_TAG_POSTMESSAGE])
+  {
+    [self log:@"the message has been post to your wall."];
+  }
   
   
   

@@ -84,7 +84,7 @@
   
 }
 
-- (BOOL)requestPostMessage:(NSString*)message
+- (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
 {
 
 }

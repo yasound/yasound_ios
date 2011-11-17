@@ -122,12 +122,12 @@ static TwitterSessionManager* _twitter = nil;
 
 
 
-- (BOOL)requestPostMessage:(NSString*)message
+- (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl
 {
   if (_iosManager)
-    return [_iosManager requestPostMessage:message];
+    return [_iosManager requestPostMessage:message title:title picture:pictureUrl];
   else
-    return [_oauthManager requestPostMessage:message];  
+    return [_oauthManager requestPostMessage:message title:title picture:pictureUrl];  
 }
 
 

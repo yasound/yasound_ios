@@ -19,6 +19,7 @@
   
   FBRequest* _requestMe;
   FBRequest* _requestFriends;
+  FBRequest* _requestFeed;
 }
 
 @property (retain) Facebook* facebookConnect;
@@ -31,7 +32,7 @@
 - (void)logout;
 
 - (BOOL)requestGetInfo:(NSString*)requestTag;
-- (BOOL)requestPostMessage:(NSString*)message;
+- (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
 
 
 

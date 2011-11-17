@@ -128,6 +128,8 @@ static FacebookSessionManager* _facebook = nil;
   if (!_facebookConnect)
     return NO;
   
+  [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+  
   if ([requestTag isEqualToString:REQUEST_TAG_USERNAME])
   {
     _requestMe = [_facebookConnect requestWithGraphPath:@"me" andDelegate:self];
@@ -146,9 +148,36 @@ static FacebookSessionManager* _facebook = nil;
 
 
 
-- (BOOL)requestPostMessage:(NSString*)message
+- (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl
 {
+  if (!_facebookConnect)
+    return NO;
 
+//  NSLog(@"POST MESSAGE : %@", message);
+  
+  [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+  
+  NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
+  
+  if (pictureUrl == nil)
+  {
+    [params setObject:@"status" forKey:@"type"];
+    if (title)
+      [params setObject:title forKey:@"name"];
+    [params setObject:message forKey:@"message"];
+  }
+  else
+  {
+    [params setObject:@"status" forKey:@"type"];
+    if (title)
+      [params setObject:title forKey:@"name"];
+    [params setObject:[pictureUrl absoluteString] forKey:@"picture"];
+    [params setObject:message forKey:@"description"];
+  }
+  
+  _requestFeed = [_facebookConnect requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST"  andDelegate:self];  
+  
+  return YES;
 }
 
 
@@ -192,20 +221,43 @@ static FacebookSessionManager* _facebook = nil;
 
 #pragma mark - FBRequestDelegate
 
+//- (void)requestLoading:(FBRequest *)request
+//{
+//  NSLog(@"requestLoading");
+//}
+//
 //- (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response
 //{
-//  
+//  NSLog(@"didReceiveResponse");
 //}
 
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error
 {
+  [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
+  NSLog(@"didFailWithError : %@", [error localizedDescription]);
+  NSLog(@"Err details: %@", [error description]);
+
+  NSString* requestTag;
+  if (request == _requestMe)
+    requestTag = REQUEST_TAG_USERNAME;
+  else if (request == _requestFriends)
+    requestTag = REQUEST_TAG_FRIENDLIST;
+  else if (request == _requestFeed)
+    requestTag = REQUEST_TAG_POSTMESSAGE;
+  
+  [self.delegate requestDidFailed:requestTag error:error];
 }
+
+
 
 
 - (void)request:(FBRequest *)request didLoad:(id)result
 {
+  [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+  NSLog(@"Parsed Response: %@", result);
+  
   if (request == _requestMe)
   {
     NSDictionary* dico = result;
@@ -220,11 +272,15 @@ static FacebookSessionManager* _facebook = nil;
     return;
   }
   
+  if (request == _requestFeed)
+  {
+    [self.delegate requestDidLoad:REQUEST_TAG_POSTMESSAGE data:nil];
+    return;
+  }
+}
 
 
   
-}
-
 
 
 - (BOOL)handleOpenURL:(NSURL *)url
