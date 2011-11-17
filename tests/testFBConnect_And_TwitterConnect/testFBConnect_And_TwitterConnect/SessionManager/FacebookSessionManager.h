@@ -12,10 +12,13 @@
 
 
 
-@interface FacebookSessionManager : SessionManager <FBSessionDelegate>
+@interface FacebookSessionManager : SessionManager <FBSessionDelegate, FBRequestDelegate>
 {
   Facebook* _facebookConnect;
   NSArray* _facebookPermissions;
+  
+  FBRequest* _requestMe;
+  FBRequest* _requestFriends;
 }
 
 @property (retain) Facebook* facebookConnect;
@@ -27,9 +30,9 @@
 - (void)login;
 - (void)logout;
 
-- (void)getUserInfo:(id)sender;
-- (void)getUserFriendList:(id)sender;
-- (void)postToFriendsWall;
+- (BOOL)requestGetInfo:(NSString*)requestTag;
+- (BOOL)requestPostMessage:(NSString*)message;
+
 
 
 - (BOOL)handleOpenURL:(NSURL *)url;

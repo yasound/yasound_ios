@@ -90,6 +90,31 @@
 
 
 
+
+- (BOOL)requestGetInfo:(NSString*)requestTag
+{
+
+}
+
+- (BOOL)requestPostMessage:(NSString*)message
+{
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #pragma mark - SA_OAuthTwitterEngineDelegate
 
 

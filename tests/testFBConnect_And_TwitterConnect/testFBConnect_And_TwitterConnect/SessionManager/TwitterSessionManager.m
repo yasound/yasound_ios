@@ -112,6 +112,24 @@ static TwitterSessionManager* _twitter = nil;
 
 
 
+- (BOOL)requestGetInfo:(NSString*)requestTag;
+{
+  if (_iosManager)
+    return [_iosManager requestGetInfo:requestTag];
+  else
+    return [_oauthManager requestGetInfo:requestTag];  
+}
+
+
+
+- (BOOL)requestPostMessage:(NSString*)message
+{
+  if (_iosManager)
+    return [_iosManager requestPostMessage:message];
+  else
+    return [_oauthManager requestPostMessage:message];  
+}
+
 
 
 

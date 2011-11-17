@@ -13,9 +13,12 @@
 @interface ViewController : UIViewController <SessionDelegate>
 {
   IBOutlet UIBarButtonItem* _testBtn;
+  IBOutlet UITextView* _textView;
   
   IBOutlet UIButton* _facebookBtn;
   IBOutlet UIButton* _twitterBtn;
+  IBOutlet UIButton* _usernameBtn;
+  IBOutlet UIButton* _friendsBtn;
   
   BOOL _facebookBtnClicked;
   BOOL _twitterBtnClicked;

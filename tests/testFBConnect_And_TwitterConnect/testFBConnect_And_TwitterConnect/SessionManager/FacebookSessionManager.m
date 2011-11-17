@@ -48,7 +48,7 @@ static FacebookSessionManager* _facebook = nil;
   if (self)
   {
     _facebookConnect = nil;
-    _facebookPermissions = [[NSArray arrayWithObjects:@"read_stream", @"user_about_me", @"publish_stream", nil] retain];    
+    _facebookPermissions = [[NSArray arrayWithObjects:@"user_about_me", @"publish_stream", nil] retain];    
   }
   return self;
 }
@@ -70,16 +70,8 @@ static FacebookSessionManager* _facebook = nil;
   return [_facebookConnect isSessionValid];
 }
 
-- (NSString*)username
-{
-//  return [_facebookConnect isSessionValid];
-  return nil;
-}
 
 
-
-
-ICI
 
 
 
@@ -131,6 +123,35 @@ ICI
 
 
 
+- (BOOL)requestGetInfo:(NSString*)requestTag
+{
+  if (!_facebookConnect)
+    return NO;
+  
+  if ([requestTag isEqualToString:REQUEST_TAG_USERNAME])
+    _requestMe = [_facebookConnect requestWithGraphPath:@"me" andDelegate:self];
+  
+  return YES;
+}
+
+
+- (BOOL)requestFriendList
+{
+
+}
+
+
+- (BOOL)requestPostMessage:(NSString*)message
+{
+
+}
+
+
+
+
+
+
+
 
 
 
@@ -164,7 +185,32 @@ ICI
 
 
 
+#pragma mark - FBRequestDelegate
 
+//- (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response
+//{
+//  
+//}
+
+
+- (void)request:(FBRequest *)request didFailWithError:(NSError *)error
+{
+
+}
+
+- (void)request:(FBRequest *)request didLoad:(id)result
+{
+  if (request == _requestMe)
+  {
+    NSDictionary* dico = result;
+    [self.delegate requestDidLoad:REQUEST_TAG_USERNAME data:dico];
+    return;
+  }
+  
+
+
+  
+}
 
 
 

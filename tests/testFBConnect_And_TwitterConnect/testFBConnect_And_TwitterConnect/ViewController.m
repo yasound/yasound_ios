@@ -149,11 +149,6 @@
 
 
 
-
-
-
-
-
 //.....................................
 //
 // connect using twitter account
@@ -164,6 +159,28 @@
   [[TwitterSessionManager twitter] setTarget:self];
   [[TwitterSessionManager twitter] login];
 }
+
+
+//.....................................
+//
+// get username
+//
+- (IBAction)onUsernameClicked:(id)sender
+{
+  if ([FacebookSessionManager facebook].authorized)
+    [[FacebookSessionManager facebook] requestGetInfo:REQUEST_TAG_USERNAME];
+}
+
+
+//.....................................
+//
+// get friends list
+//
+- (IBAction)onFriendsClicked:(id)sender
+{
+  
+}
+
 
 
 
@@ -198,9 +215,36 @@
   [av release];  
 }
 
+- (void)requestDidLoad:(NSString*)requestTag data:(NSDictionary*)data;
+{
+  if ([requestTag isEqualToString:REQUEST_TAG_USERNAME])
+  {
+    [self log:[NSString stringWithFormat:@"username: %@", [data valueForKey:@"username"]]];
+    [self log:[NSString stringWithFormat:@"name: %@", [data valueForKey:@"name"]]];
+  }
+  
+  
+}
 
 
 
+
+
+
+
+
+
+#pragma mark - UITextView
+
+- (void)log:(NSString*)str
+{
+  _textView.text = [NSString stringWithFormat:@"%@\n%@", _textView.text, str];
+}
+
+- (void)logClear
+{
+  _textView.text = nil;
+}
 
 
 

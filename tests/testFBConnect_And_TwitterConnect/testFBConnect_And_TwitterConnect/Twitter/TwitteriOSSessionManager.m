@@ -79,6 +79,23 @@
 }
 
 
+- (BOOL)requestGetInfo:(NSString*)requestTag
+{
+  
+}
+
+- (BOOL)requestPostMessage:(NSString*)message
+{
+
+}
+
+
+
+
+
+
+
+
 
 #pragma mark - Data Management
 

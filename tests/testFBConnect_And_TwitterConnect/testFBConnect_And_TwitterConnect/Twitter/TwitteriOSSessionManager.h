@@ -34,6 +34,7 @@
 - (void)login;
 - (void)logout;
 
-
+- (BOOL)requestGetInfo:(NSString*)requestTag;
+- (BOOL)requestPostMessage:(NSString*)message;
 
 @end

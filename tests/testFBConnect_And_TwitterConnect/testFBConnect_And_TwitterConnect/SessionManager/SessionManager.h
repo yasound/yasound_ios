@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+#define REQUEST_TAG_USERNAME @"username"
+#define REQUEST_TAG_FRIENDLIST @"friendlist"
+
+
+
 
 @protocol SessionDelegate <NSObject>
 @required
 - (void)sessionDidLogin:(BOOL)authorized;
 - (void)sessionLoginFailed;
 - (void)sessionDidLogout;
+- (void)requestDidLoad:(NSString*)requestTag data:(NSDictionary*)data;
 @end
 
 
@@ -25,12 +31,13 @@
 @property (retain) id<SessionDelegate> delegate;
 
 @property (readonly) BOOL authorized;
-@property (readonly) NSString* username;
-
 
 - (void)setTarget:(id<SessionDelegate>)delegate;
 - (void)login;
 - (void)logout;
+
+- (BOOL)requestGetInfo:(NSString*)requestTag;
+- (BOOL)requestPostMessage:(NSString*)message;
 
 
 
