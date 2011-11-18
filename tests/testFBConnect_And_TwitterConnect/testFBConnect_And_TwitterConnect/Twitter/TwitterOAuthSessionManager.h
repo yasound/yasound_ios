@@ -13,7 +13,9 @@
 
 
 
-#define AUTH_NAME @"authName"
+#define OAUTH_USERNAME @"oauth_username"
+#define OAUTH_USERID @"oauth_userid"
+#define OAUTH_SCREENNAME @"oauth_name"
 
 
 

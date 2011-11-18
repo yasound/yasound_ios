@@ -303,8 +303,6 @@
     [self log:@"the message has been post to your wall."];
   }
   
-  
-  
 }
 
 

@@ -53,9 +53,9 @@
 - (void)logout
 {
   // clean credentials
-  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
+  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
   
-  [[NSUserDefaults standardUserDefaults] removeObjectForKey:AUTH_NAME];
+  [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
   
   // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
   //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
@@ -98,16 +98,26 @@
   
   if (requestType == SRequestInfoUsername)
   {
-    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
-    NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
-    [dico setValue:username forKey:@"username"];
-    [self.delegate requestDidLoad:SRequestInfoUsername data:dico];
+    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+    NSString* userid = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERID];
+    NSString* userscreenname = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_SCREENNAME];
+    
+    NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
+    [user setValue:userid forKey:DATA_FIELD_ID];
+    [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
+    [user setValue:username forKey:DATA_FIELD_USERNAME];
+    [user setValue:userscreenname forKey:DATA_FIELD_NAME];
+    
+    NSArray* data = [NSArray arrayWithObjects:user, nil];
+
+    [self.delegate requestDidLoad:SRequestInfoUsername data:data];
     return YES;
   }
   
   if (requestType == SRequestInfoFriends)
   {
     _requestFriends = [_engine getFollowersIncludingCurrentStatus:YES];
+    // get the response in userInfoReceived delegate, below
     return YES;
   }
   
@@ -140,15 +150,90 @@
 //implement these methods to store off the creds returned by Twitter
 - (void) storeCachedTwitterOAuthData: (NSString *)data forUsername: (NSString *) username
 {
-//   NSLog(@"storeCachedTwitterOAuthData   data '%@'   username '%@'", data, username);
+   NSLog(@"storeCachedTwitterOAuthData   data '%@'   username '%@'", data, username);
   
   // store the credentials for later access
-  [[NSUserDefaults standardUserDefaults] setValue:username forKey:AUTH_NAME];
+  [[NSUserDefaults standardUserDefaults] setValue:username forKey:OAUTH_USERNAME];
+  
+  
+  
   NSError* error;
   NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
   // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
   [SFHFKeychainUtils storeUsername:username andPassword:data  forServiceName:BundleName updateExisting:YES error:&error];
+  
+  // parse the credentials, to store the user info
+  [self parseUserInfo:data];
 }
+
+
+
+- (void)parseUserInfo:(NSString*)data
+{
+  NSInteger length = [data length];
+  NSRange range = NSMakeRange(0, length);
+
+  //.....................................................................
+  //
+  // parse userid
+  //
+  
+  NSRange begin = [data rangeOfString:@"user_id=" options:NSLiteralSearch range:range];
+  if (begin.location == NSNotFound)
+  {
+    NSLog(@"TwitterOAuthSession warning : no userid has been parsed. May be normal.");
+    return;
+  }
+
+  range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
+  NSRange end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
+  if (end.location == NSNotFound)
+  {
+    assert(0);
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+
+  // extract user id
+  NSString* userid = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
+  
+  // store it
+  [[NSUserDefaults standardUserDefaults] setValue:userid forKey:OAUTH_USERID];
+
+
+  
+  //.....................................................................
+  //
+  // parse user screen name
+  //
+
+  range = NSMakeRange(end.location + end.length, length - (end.location + end.length));
+
+  begin = [data rangeOfString:@"screen_name=" options:NSLiteralSearch range:range];
+  if (begin.location == NSNotFound)
+  {
+    assert(0);
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+
+  range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
+  end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
+  if (end.location == NSNotFound)
+  {
+    assert(0);
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+
+  // extract user screen name
+  NSString* screenname = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
+
+  // store it
+  [[NSUserDefaults standardUserDefaults] setValue:screenname forKey:OAUTH_SCREENNAME];
+  
+}
+
 
 
 
@@ -160,7 +245,7 @@
   // username parameter is broken (<=> nil) with iOS 5.
   // this issue is known on Twitter-OAuth-iPhone github.
   // => get the username from the UserDefaults, instead
-  NSString* __username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
+  NSString* __username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
 
   NSError* error;
   NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
@@ -227,8 +312,23 @@
 {
   if ([connectionIdentifier isEqualToString:_requestFriends])
   {
-    NSLog(@"\n---------------------\n");
-    NSLog(@"%@", userInfo);
+//    NSLog(@"\n---------------------\n");
+//    NSLog(@"%@", userInfo);
+    
+    NSMutableArray* data = [[NSMutableArray alloc] init];
+    for (NSDictionary* friend in userInfo)
+    {
+      NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
+      [user setValue:[friend valueForKey:@"id"] forKey:DATA_FIELD_ID];
+      [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
+      [user setValue:[friend valueForKey:@"screen_name"] forKey:DATA_FIELD_USERNAME]; // no username directly available from this list
+      [user setValue:[friend valueForKey:@"name"] forKey:DATA_FIELD_NAME];
+      
+      [data addObject:user];
+    }
+    
+    [self.delegate requestDidLoad:SRequestInfoFriends data:data];
+
     
     return;
   }

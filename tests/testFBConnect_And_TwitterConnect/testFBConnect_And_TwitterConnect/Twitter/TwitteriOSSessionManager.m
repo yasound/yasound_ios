@@ -63,8 +63,8 @@
   [[NSUserDefaults standardUserDefaults] removeObjectForKey:ACCOUNT_IDENTIFIER];
 
   // also clean oauth credentials
-  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
-  [[NSUserDefaults standardUserDefaults] removeObjectForKey:AUTH_NAME];
+  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+  [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
   NSError* error;
   NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
   [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
@@ -187,7 +187,7 @@
   //.................................................................................
   // get registered username 
   //
-  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
+  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
 
 
   //.................................................................................
