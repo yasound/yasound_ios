@@ -202,13 +202,17 @@
     
     [[FacebookSessionManager facebook] requestPostMessage:message title:@"MyTitle" picture:[[NSURL alloc] initWithString:@"http://www.ephotozine.com/articles/Elinchrom-DLite-4-kit-4453/images/DLite4.jpg"]];  
   }
+
+  
+  else if ([TwitterSessionManager twitter].authorized)
+  {
+    NSString* message = [NSString stringWithFormat:@"%@ : test message from iPhone", [NSDate date]];
     
-}
-
-- (IBAction)onShareEventClicked:(id)sender
-{
+    [[TwitterSessionManager twitter] requestPostMessage:message title:nil picture:nil];  
+  }
 
 }
+
 
 
 

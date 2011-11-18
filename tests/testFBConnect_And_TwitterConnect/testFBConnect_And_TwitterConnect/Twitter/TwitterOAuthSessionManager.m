@@ -29,6 +29,7 @@
 - (void)login:(UIViewController*)parent
 {
   _parent = parent;
+  _isLoging = YES;
   
   if (!_engine)
   {  
@@ -52,6 +53,8 @@
 
 - (void)logout
 {
+  _isLoging = NO;
+  
   // clean credentials
   NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
   
@@ -127,7 +130,7 @@
 
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl
 {
-//   -(void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)connectionIdentifier { mFollowerArray	=	nil; mFollowerArray	=	[userInfo retain]; }
+  _requestPost = [_engine sendUpdate:message];
 }
 
 
@@ -152,6 +155,9 @@
 {
    NSLog(@"storeCachedTwitterOAuthData   data '%@'   username '%@'", data, username);
   
+  if (!_isLoging)
+    return;
+
   // store the credentials for later access
   [[NSUserDefaults standardUserDefaults] setValue:username forKey:OAUTH_USERNAME];
   
@@ -257,7 +263,7 @@
 //  NSLog(@"data %@", data);
   
   // warn the calling process that we have the credentials and that it can be considered itself as logged.
-  if (data != nil)
+  if (_isLoging && (data != nil))
     [self performSelectorOnMainThread:@selector(onTwitterCredentialsRetrieved) withObject:nil waitUntilDone:nil];
   
   return data;
@@ -288,17 +294,20 @@
 - (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller authenticatedWithUsername: (NSString *) username
 {
   NSLog(@"OAuthTwitterController::authenticatedWithUsername '%@'", username);
+  _isLoging = NO;
   [self.delegate sessionDidLogin:YES];
 }
 
 - (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller
 {
   NSLog(@"OAuthTwitterControllerFailed");
+  _isLoging = NO;
   [self.delegate sessionLoginFailed];
 }
 
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller
 {
+  _isLoging = NO;
   NSLog(@"OAuthTwitterControllerCanceled");
 }
 
@@ -332,7 +341,27 @@
     
     return;
   }
+  
+
+  if ([connectionIdentifier isEqualToString:_requestPost])
+  {
+    NSLog(@"post message request acknowledged");
+    NSLog(@"%@", userInfo);
+    return;
+  }
+
 }
+
+
+- (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)connectionIdentifier
+{
+  if ([connectionIdentifier isEqualToString:_requestPost])
+  {
+    NSLog(@"statusesReceived");
+    [self.delegate requestDidLoad:SRequestPostMessage data:nil];
+  }
+}
+
 
 
 

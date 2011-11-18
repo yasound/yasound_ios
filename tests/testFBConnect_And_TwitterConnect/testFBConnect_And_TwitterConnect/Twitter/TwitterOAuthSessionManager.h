@@ -25,6 +25,8 @@
   UIViewController* _parent;
   
   NSString* _requestFriends;
+  NSString* _requestPost;
+  BOOL _isLoging;
 }
 
 - (void)setTarget:(id<SessionDelegate>)delegate;

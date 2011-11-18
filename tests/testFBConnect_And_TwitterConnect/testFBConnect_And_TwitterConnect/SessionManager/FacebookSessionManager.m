@@ -176,6 +176,7 @@ static FacebookSessionManager* _facebook = nil;
   }
   
   _requestFeed = [_facebookConnect requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST"  andDelegate:self];  
+  // get feedback in didLoad delegate
   
   return YES;
 }
