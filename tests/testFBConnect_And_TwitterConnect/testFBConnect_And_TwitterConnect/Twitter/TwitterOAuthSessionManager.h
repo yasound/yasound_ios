@@ -25,6 +25,7 @@
   UIViewController* _parent;
   
   NSString* _requestFriends;
+  NSString* _requestFollowers;
   NSString* _requestPost;
   BOOL _isLoging;
 }

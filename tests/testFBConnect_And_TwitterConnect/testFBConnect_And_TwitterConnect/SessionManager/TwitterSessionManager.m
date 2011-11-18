@@ -14,10 +14,15 @@
 #import "Version/Version.h"
 
 
+
+#define FORCE_OAUTH_LIB 1
+
+
 @implementation TwitterSessionManager
 
 @synthesize iosManager = _iosManager;
 @synthesize  oauthManager = _oauthManager;
+
 
 
 
@@ -46,13 +51,18 @@ static TwitterSessionManager* _twitter = nil;
     _iosManager = nil;
     _oauthManager = nil;
 
-    //LBDEBUG
-    //_oauthManager = [[TwitterOAuthSessionManager alloc] init];
-
+#ifdef FORCE_OAUTH_LIB
+    
+    _oauthManager = [[TwitterOAuthSessionManager alloc] init];
+    
+#else
+    
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) 
       _iosManager = [[TwitteriOSSessionManager alloc] init];
     else
       _oauthManager = [[TwitterOAuthSessionManager alloc] init];
+    
+#endif
     
   }
   return self;

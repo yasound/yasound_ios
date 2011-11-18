@@ -119,7 +119,15 @@
   
   if (requestType == SRequestInfoFriends)
   {
-    _requestFriends = [_engine getFollowersIncludingCurrentStatus:YES];
+    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+    _requestFriends = [_engine getRecentlyUpdatedFriendsFor:username startingAtPage:0];
+    // get the response in userInfoReceived delegate, below
+    return YES;
+  }
+
+  if (requestType == SRequestInfoFollowers)
+  {
+    _requestFollowers = [_engine getFollowersIncludingCurrentStatus:YES];
     // get the response in userInfoReceived delegate, below
     return YES;
   }
@@ -127,6 +135,7 @@
   return NO;
 
 }
+
 
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl
 {
@@ -319,37 +328,35 @@
 
 - (void)userInfoReceived:(NSArray*)userInfo forRequest:(NSString *)connectionIdentifier
 {
-  if ([connectionIdentifier isEqualToString:_requestFriends])
+  //    NSLog(@"\nuserInfoReceived\n---------------------\n");
+  //    NSLog(@"%@", userInfo);
+
+  bool isRequestFriends = [connectionIdentifier isEqualToString:_requestFriends];
+  bool isRequestFollowers = [connectionIdentifier isEqualToString:_requestFollowers];
+  
+  if (isRequestFriends || isRequestFollowers)
   {
-//    NSLog(@"\n---------------------\n");
-//    NSLog(@"%@", userInfo);
+    _requestFriends = nil;
+    _requestFollowers = nil;
     
     NSMutableArray* data = [[NSMutableArray alloc] init];
-    for (NSDictionary* friend in userInfo)
+    for (NSDictionary* user in userInfo)
     {
-      NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
-      [user setValue:[friend valueForKey:@"id_str"] forKey:DATA_FIELD_ID];
-      [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
-      [user setValue:[friend valueForKey:@"screen_name"] forKey:DATA_FIELD_USERNAME]; // no username directly available from this list
-      [user setValue:[friend valueForKey:@"name"] forKey:DATA_FIELD_NAME];
+      NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+      [userInfo setValue:[user valueForKey:@"id"] forKey:DATA_FIELD_ID];
+      [userInfo setValue:@"twitter" forKey:DATA_FIELD_TYPE];
+      [userInfo setValue:[user valueForKey:@"screen_name"] forKey:DATA_FIELD_USERNAME]; // no username directly available from this list
+      [userInfo setValue:[user valueForKey:@"name"] forKey:DATA_FIELD_NAME];
       
-      [data addObject:user];
+      [data addObject:userInfo];
     }
     
-    [self.delegate requestDidLoad:SRequestInfoFriends data:data];
+    SessionRequestType requestType = (isRequestFriends)? SRequestInfoFriends : SRequestInfoFollowers;
+    [self.delegate requestDidLoad:requestType data:data];
 
-    
     return;
   }
   
-
-  if ([connectionIdentifier isEqualToString:_requestPost])
-  {
-    NSLog(@"post message request acknowledged");
-    NSLog(@"%@", userInfo);
-    return;
-  }
-
 }
 
 
@@ -357,6 +364,8 @@
 {
   if ([connectionIdentifier isEqualToString:_requestPost])
   {
+    _requestPost = nil;
+
     NSLog(@"statusesReceived");
     [self.delegate requestDidLoad:SRequestPostMessage data:nil];
   }
