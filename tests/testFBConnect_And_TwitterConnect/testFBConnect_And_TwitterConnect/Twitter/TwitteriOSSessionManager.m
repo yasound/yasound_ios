@@ -89,36 +89,112 @@
   
   if (requestType == SRequestInfoUsername)
   {
-    //LBDEBUG TODO
-//    NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
-//    [dico setValue:self.account.username forKey:@"username"];
-//    [self.delegate requestDidLoad:SRequestInfoUsername data:dico];
-//
-//    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
-//    NSString* userid = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERID];
-//    NSString* userscreenname = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_SCREENNAME];
-//    
-//    NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
-//    [user setValue:userid forKey:DATA_FIELD_ID];
-//    [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
-//    [user setValue:username forKey:DATA_FIELD_USERNAME];
-//    [user setValue:userscreenname forKey:DATA_FIELD_NAME];
-//    
-//    NSArray* data = [NSArray arrayWithObjects:user, nil];
-//    
-//    [self.delegate requestDidLoad:SRequestInfoUsername data:data];
-//    
+    TWRequest* request = [[TWRequest alloc]
+                              initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/users/show.json"] 
+                              parameters:[NSDictionary dictionaryWithObject:self.account.username forKey:@"screen_name"] 
+                              requestMethod:TWRequestMethodGET];
+    
+    [request setAccount:self.account];
+    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) 
+     {
+       [self performSelectorOnMainThread:@selector(onUserInfoReceived:) withObject:[NSArray arrayWithObjects:responseData,urlResponse,nil] waitUntilDone:NO];
+     }];
+    
     return YES;
   }
 
+  
   if (requestType == SRequestInfoFriends)
   {
-    //TODO
+    TWRequest* request = [[TWRequest alloc] 
+                          initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/friends/ids.json"] 
+                          parameters:[NSDictionary dictionaryWithObject:self.account.username forKey:@"screen_name"] 
+                          requestMethod:TWRequestMethodGET];
+    
+    [request setAccount:self.account];
+    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) 
+     {
+       [self performSelectorOnMainThread:@selector(onUserFriendsReceived:) withObject:[NSArray arrayWithObjects:responseData,urlResponse,nil] waitUntilDone:NO];
+     }];
+
     return YES;
   }
   
   return NO;
 }
+
+
+
+
+
+- (void)onUserInfoReceived:(NSArray*)args
+{
+  NSData* responseData = [args objectAtIndex:0];
+  NSHTTPURLResponse* urlResponse = [args objectAtIndex:1];
+  
+  if ([urlResponse statusCode] != 200)
+  {
+    [self.delegate requestDidFailed:SRequestInfoUsername error:nil errorMessage:[NSHTTPURLResponse localizedStringForStatusCode:[urlResponse statusCode]]];
+    return;
+  }
+  
+  NSError* jsonParsingError = nil;
+  NSDictionary* info = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonParsingError];
+  //NSLog(@"%@", info);
+  
+  NSString* userid = [info valueForKey:@"id_str"];
+  NSString* userscreenname = [info valueForKey:@"screen_name"];
+  
+  NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
+  [user setValue:userid forKey:DATA_FIELD_ID];
+  [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
+  [user setValue:self.account.username forKey:DATA_FIELD_USERNAME];
+  [user setValue:userscreenname forKey:DATA_FIELD_NAME];
+  
+  NSArray* data = [NSArray arrayWithObjects:user, nil];
+  
+  [self.delegate requestDidLoad:SRequestInfoUsername data:data];
+}
+
+
+
+
+- (void)onUserFriendsReceived:(NSArray*)args
+{
+  NSData* responseData = [args objectAtIndex:0];
+  NSHTTPURLResponse* urlResponse = [args objectAtIndex:1];
+  
+  if ([urlResponse statusCode] != 200)
+  {
+    [self.delegate requestDidFailed:SRequestInfoFriends error:nil  errorMessage:[NSHTTPURLResponse localizedStringForStatusCode:[urlResponse statusCode]]];
+    return;
+  }
+  
+  NSError* jsonParsingError = nil;
+  NSDictionary* info = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonParsingError];
+  //NSLog(@"%@", info);
+  
+  NSArray* friends = [info objectForKey:@"ids"];
+  NSMutableArray* data = [[NSMutableArray alloc] init];
+  for (NSNumber* friend in friends)
+  {
+    NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
+    [user setValue:[NSString stringWithFormat:@"%d", [friend integerValue]] forKey:DATA_FIELD_ID];
+    [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
+    [user setValue:@"" forKey:DATA_FIELD_USERNAME]; // no username directly available from this list
+    [user setValue:@"" forKey:DATA_FIELD_NAME]; // no screenname directly available
+    
+    [data addObject:user];
+  }
+  
+  [self.delegate requestDidLoad:SRequestInfoFriends data:data];
+}
+
+
+
+
+
+
 
 
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
@@ -156,7 +232,7 @@
   if ([urlResponse statusCode] == 200)
     [self.delegate requestDidLoad:SRequestPostMessage data:nil];
   else
-    [self.delegate requestDidFailed:SRequestPostMessage data:nil];
+    [self.delegate requestDidFailed:SRequestPostMessage error:nil   errorMessage:[NSHTTPURLResponse localizedStringForStatusCode:[urlResponse statusCode]]];
 }
 
 

@@ -248,7 +248,7 @@ static FacebookSessionManager* _facebook = nil;
   else if (request == _requestFeed)
     requestType = SRequestPostMessage;
   
-  [self.delegate requestDidFailed:requestType error:error];
+  [self.delegate requestDidFailed:requestType error:error errorMessage:nil];
 }
 
 

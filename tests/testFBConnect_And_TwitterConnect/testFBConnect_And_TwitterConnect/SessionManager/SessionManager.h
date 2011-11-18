@@ -13,6 +13,7 @@ typedef enum
 {
   SRequestInfoUsername = 0,
   SRequestInfoFriends,
+  SRequestInfoFollowers,
   SRequestPostMessage
   
 } SessionRequestType;
@@ -34,7 +35,7 @@ typedef enum
 - (void)sessionDidLogout;
 
 - (void)requestDidLoad:(SessionRequestType)requestType data:(NSArray*)data;
-- (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error;
+- (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error errorMessage:(NSString*)errorMessage;
 
 @end
 

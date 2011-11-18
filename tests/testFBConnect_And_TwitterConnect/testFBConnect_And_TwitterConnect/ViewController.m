@@ -247,14 +247,20 @@
 }
 
 
-- (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error
+- (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error errorMessage:(NSString*)errorMessage
 {
-  if (requestType == SRequestPostMessage)
-  {
+  if (requestType == SRequestInfoUsername)
+    [self log:@"could not get user info."];
+
+  else if (requestType == SRequestInfoFriends)
+    [self log:@"could not get friends list."];
+
+  else if (requestType == SRequestPostMessage)
     [self log:@"could not post the message to your wall."];
-    [self log:[error localizedDescription]];
-    [self log:[error description]];
-  }  
+
+  [self log:[error localizedDescription]];
+  [self log:[error description]];
+  [self log:errorMessage];
 }
 
 

@@ -328,7 +328,7 @@
     for (NSDictionary* friend in userInfo)
     {
       NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
-      [user setValue:[friend valueForKey:@"id"] forKey:DATA_FIELD_ID];
+      [user setValue:[friend valueForKey:@"id_str"] forKey:DATA_FIELD_ID];
       [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
       [user setValue:[friend valueForKey:@"screen_name"] forKey:DATA_FIELD_USERNAME]; // no username directly available from this list
       [user setValue:[friend valueForKey:@"name"] forKey:DATA_FIELD_NAME];
