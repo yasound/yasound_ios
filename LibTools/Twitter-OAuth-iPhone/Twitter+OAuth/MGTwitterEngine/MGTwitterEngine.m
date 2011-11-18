@@ -37,7 +37,9 @@
 	#endif
 #endif
 
-#define TWITTER_DOMAIN          @"twitter.com"
+//LBDEBUG
+//#define TWITTER_DOMAIN          @"twitter.com"
+#define TWITTER_DOMAIN          @"api.twitter.com/1"
 #if YAJL_AVAILABLE
 	#define TWITTER_SEARCH_DOMAIN	@"search.twitter.com"
 #endif

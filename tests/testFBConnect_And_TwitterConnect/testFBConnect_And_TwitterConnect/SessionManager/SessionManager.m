@@ -14,7 +14,6 @@
 
 @synthesize delegate = _delegate;
 @synthesize authorized;
-@synthesize username;
 
 
 - (id)init

@@ -13,13 +13,25 @@
 @interface ViewController : UIViewController <SessionDelegate>
 {
   IBOutlet UIBarButtonItem* _testBtn;
-  
-  IBOutlet UIButton* _facebookBtn;
-  IBOutlet UIButton* _twitterBtn;
+  IBOutlet UITextView* _textView;
   
   BOOL _facebookBtnClicked;
   BOOL _twitterBtnClicked;
-  
 }
+
+- (void)log:(NSString*)str;
+- (void)logClear;
+
+
+- (IBAction)onLogoutClicked:(id)sender;
+- (IBAction)onTestClicked:(id)sender;
+- (IBAction)onFacebookConnect:(id)sender;
+- (IBAction)onTwitterConnect:(id)sender;
+- (IBAction)onUsernameClicked:(id)sender;
+- (IBAction)onFriendsClicked:(id)sender;
+- (IBAction)onPostMessageClicked:(id)sender;
+- (IBAction)onClearClicked:(id)sender;
+
+
 
 @end

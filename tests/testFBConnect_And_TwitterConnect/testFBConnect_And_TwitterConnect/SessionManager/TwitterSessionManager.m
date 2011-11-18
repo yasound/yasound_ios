@@ -46,10 +46,12 @@ static TwitterSessionManager* _twitter = nil;
     _iosManager = nil;
     _oauthManager = nil;
 
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) 
-      _iosManager = [[TwitteriOSSessionManager alloc] init];
-    else
-      _oauthManager = [[TwitterOAuthSessionManager alloc] init];
+    _oauthManager = [[TwitterOAuthSessionManager alloc] init];
+
+//    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0")) 
+//      _iosManager = [[TwitteriOSSessionManager alloc] init];
+//    else
+//      _oauthManager = [[TwitterOAuthSessionManager alloc] init];
     
   }
   return self;
@@ -81,6 +83,8 @@ static TwitterSessionManager* _twitter = nil;
 
 - (void)setTarget:(id<SessionDelegate>)delegate
 {
+  self.delegate = delegate;
+
   if (_iosManager)
     [_iosManager setTarget:delegate];
   else
@@ -107,10 +111,31 @@ static TwitterSessionManager* _twitter = nil;
   if (_iosManager)
     [_iosManager login];
   else
-    [_oauthManager login:self.delegate];
+  {
+    UIViewController* parent = self.delegate;
+    [_oauthManager login:parent];
+  }
 }
 
 
+
+- (BOOL)requestGetInfo:(SessionRequestType)requestType;
+{
+  if (_iosManager)
+    return [_iosManager requestGetInfo:requestType];
+  else
+    return [_oauthManager requestGetInfo:requestType];  
+}
+
+
+
+- (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl
+{
+  if (_iosManager)
+    return [_iosManager requestPostMessage:message title:title picture:pictureUrl];
+  else
+    return [_oauthManager requestPostMessage:message title:title picture:pictureUrl];  
+}
 
 
 

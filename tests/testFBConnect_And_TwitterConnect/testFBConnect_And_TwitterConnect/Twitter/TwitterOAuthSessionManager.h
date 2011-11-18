@@ -13,7 +13,9 @@
 
 
 
-#define AUTH_NAME @"authName"
+#define OAUTH_USERNAME @"oauth_username"
+#define OAUTH_USERID @"oauth_userid"
+#define OAUTH_SCREENNAME @"oauth_name"
 
 
 
@@ -21,13 +23,18 @@
 {
   SA_OAuthTwitterEngine* _engine;
   UIViewController* _parent;
+  
+  NSString* _requestFriends;
+  NSString* _requestPost;
+  BOOL _isLoging;
 }
 
 - (void)setTarget:(id<SessionDelegate>)delegate;
 - (void)login:(UIViewController*)parent;
 - (void)logout;
 
-
+- (BOOL)requestGetInfo:(SessionRequestType)requestType;
+- (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
 
 
 @end

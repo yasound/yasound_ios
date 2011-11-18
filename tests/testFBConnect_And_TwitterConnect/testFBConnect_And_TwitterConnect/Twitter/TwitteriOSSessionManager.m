@@ -63,8 +63,8 @@
   [[NSUserDefaults standardUserDefaults] removeObjectForKey:ACCOUNT_IDENTIFIER];
 
   // also clean oauth credentials
-  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
-  [[NSUserDefaults standardUserDefaults] removeObjectForKey:AUTH_NAME];
+  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+  [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
   NSError* error;
   NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
   [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
@@ -77,6 +77,41 @@
 {
   return (self.account != nil);
 }
+
+
+- (BOOL)requestGetInfo:(SessionRequestType)requestType
+{
+  if (!self.account)
+    return NO;
+  
+  if (requestType == SRequestInfoUsername)
+  {
+    NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+    [dico setValue:self.account.username forKey:@"username"];
+    [self.delegate requestDidLoad:SRequestInfoUsername data:dico];
+    return YES;
+  }
+
+  if (requestType == SRequestInfoFriends)
+  {
+    //TODO
+    return YES;
+  }
+  
+  return NO;
+}
+
+
+- (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
+{
+  // TODO
+}
+
+
+
+
+
+
 
 
 
@@ -152,7 +187,7 @@
   //.................................................................................
   // get registered username 
   //
-  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
+  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
 
 
   //.................................................................................
