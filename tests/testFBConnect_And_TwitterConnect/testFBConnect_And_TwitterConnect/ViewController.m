@@ -168,7 +168,10 @@
 - (IBAction)onUsernameClicked:(id)sender
 {
   if ([FacebookSessionManager facebook].authorized)
-    [[FacebookSessionManager facebook] requestGetInfo:REQUEST_TAG_USERNAME];
+    [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUsername];
+
+  else if ([TwitterSessionManager twitter].authorized)
+    [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUsername];
 }
 
 
@@ -179,7 +182,10 @@
 - (IBAction)onFriendsClicked:(id)sender
 {
   if ([FacebookSessionManager facebook].authorized)
-    [[FacebookSessionManager facebook] requestGetInfo:REQUEST_TAG_FRIENDLIST];  
+    [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoFriends];  
+  
+  else if ([TwitterSessionManager twitter].authorized)
+    [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoFriends];  
 }
 
 - (IBAction)onClearClicked:(id)sender
@@ -237,9 +243,9 @@
 }
 
 
-- (void)requestDidFailed:(NSString*)requestTag error:(NSError*)error
+- (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error
 {
-  if ([requestTag isEqualToString:REQUEST_TAG_POSTMESSAGE])
+  if (requestType == SRequestPostMessage)
   {
     [self log:@"could not post the message to your wall."];
     [self log:[error localizedDescription]];
@@ -248,30 +254,52 @@
 }
 
 
-- (void)requestDidLoad:(NSString*)requestTag data:(NSDictionary*)data;
+- (void)requestDidLoad:(SessionRequestType)requestType data:(NSArray*)data;
 {
-  if ([requestTag isEqualToString:REQUEST_TAG_USERNAME])
+  if (requestType == SRequestInfoUsername)
   {
-    [self log:[NSString stringWithFormat:@"username: %@", [data valueForKey:@"username"]]];
-    [self log:[NSString stringWithFormat:@"name: %@", [data valueForKey:@"name"]]];
+    if ([data count] == 0)
+    {
+      assert(0);
+      NSLog(@"requestDidLoad SRequestInfoUsername error.");
+      return;
+    }
+    
+    [self log:@"\nSRequestInfoUsername"];
+
+    NSDictionary* dico = [data objectAtIndex:0];
+    [self log:[NSString stringWithFormat:@"id: %@", [dico valueForKey:DATA_FIELD_ID]]];
+    [self log:[NSString stringWithFormat:@"type: %@", [dico valueForKey:DATA_FIELD_TYPE]]];
+    [self log:[NSString stringWithFormat:@"username: %@", [dico valueForKey:DATA_FIELD_USERNAME]]];
+    [self log:[NSString stringWithFormat:@"name: %@", [dico valueForKey:DATA_FIELD_NAME]]];
     return;
   }
 
   
-  if ([requestTag isEqualToString:REQUEST_TAG_FRIENDLIST])
+  
+  if (requestType == SRequestInfoFriends)
   {
-    NSArray* friends = [data objectForKey:@"data"];
-    
-    for (NSDictionary* friend in friends)
+    if ([data count] == 0)
     {
-      [self log:[NSString stringWithFormat:@"%@ : %@", [friend valueForKey:@"id"], [friend valueForKey:@"name"]]];
+      NSLog(@"requestDidLoad SRequestInfoFriends : no friends.");
+      return;
+    }
+
+    for (NSDictionary* friend in data)
+    {
+      [self log:@"\nSRequestInfoFriends"];
+      [self log:[NSString stringWithFormat:@"id: %@", [friend valueForKey:DATA_FIELD_ID]]];
+      [self log:[NSString stringWithFormat:@"type: %@", [friend valueForKey:DATA_FIELD_TYPE]]];
+      [self log:[NSString stringWithFormat:@"username: %@", [friend valueForKey:DATA_FIELD_USERNAME]]];
+      [self log:[NSString stringWithFormat:@"name: %@", [friend valueForKey:DATA_FIELD_NAME]]];
     }
     
     return;
   }
   
-  if ([requestTag isEqualToString:REQUEST_TAG_POSTMESSAGE])
+  if (requestType == SRequestPostMessage)
   {
+    [self log:@"\nSRequestInfoFriends"];
     [self log:@"the message has been post to your wall."];
   }
   
@@ -291,8 +319,9 @@
 
 - (void)log:(NSString*)str
 {
-  NSLog(str);
+  NSLog(@"%@", str);
   _textView.text = [NSString stringWithFormat:@"%@\n%@", _textView.text, str];
+  [_textView scrollRangeToVisible:NSMakeRange([_textView.text length], 0)];
 }
 
 - (void)logClear

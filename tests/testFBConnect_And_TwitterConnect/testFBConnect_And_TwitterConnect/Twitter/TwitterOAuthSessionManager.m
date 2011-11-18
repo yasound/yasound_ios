@@ -91,14 +91,33 @@
 
 
 
-- (BOOL)requestGetInfo:(NSString*)requestTag
+- (BOOL)requestGetInfo:(SessionRequestType)requestType
 {
+  if (!_engine || ![_engine isAuthorized])
+    return NO;
+  
+  if (requestType == SRequestInfoUsername)
+  {
+    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:AUTH_NAME];
+    NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+    [dico setValue:username forKey:@"username"];
+    [self.delegate requestDidLoad:SRequestInfoUsername data:dico];
+    return YES;
+  }
+  
+  if (requestType == SRequestInfoFriends)
+  {
+    _requestFriends = [_engine getFollowersIncludingCurrentStatus:YES];
+    return YES;
+  }
+  
+  return NO;
 
 }
 
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl
 {
-  
+//   -(void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)connectionIdentifier { mFollowerArray	=	nil; mFollowerArray	=	[userInfo retain]; }
 }
 
 
@@ -121,7 +140,7 @@
 //implement these methods to store off the creds returned by Twitter
 - (void) storeCachedTwitterOAuthData: (NSString *)data forUsername: (NSString *) username
 {
-   NSLog(@"storeCachedTwitterOAuthData   data '%@'   username '%@'", data, username);
+//   NSLog(@"storeCachedTwitterOAuthData   data '%@'   username '%@'", data, username);
   
   // store the credentials for later access
   [[NSUserDefaults standardUserDefaults] setValue:username forKey:AUTH_NAME];
@@ -196,6 +215,23 @@
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller
 {
   NSLog(@"OAuthTwitterControllerCanceled");
+}
+
+
+
+
+
+#pragma mark - XAuthTwitterEngineDelegate
+
+- (void)userInfoReceived:(NSArray*)userInfo forRequest:(NSString *)connectionIdentifier
+{
+  if ([connectionIdentifier isEqualToString:_requestFriends])
+  {
+    NSLog(@"\n---------------------\n");
+    NSLog(@"%@", userInfo);
+    
+    return;
+  }
 }
 
 

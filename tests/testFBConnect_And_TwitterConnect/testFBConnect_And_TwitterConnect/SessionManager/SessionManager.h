@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-#define REQUEST_TAG_USERNAME @"username"
-#define REQUEST_TAG_FRIENDLIST @"friendlist"
-#define REQUEST_TAG_POSTMESSAGE @"postmessage"
+
+typedef enum 
+{
+  SRequestInfoUsername = 0,
+  SRequestInfoFriends,
+  SRequestPostMessage
+  
+} SessionRequestType;
+
+#define DATA_FIELD_ID @"id"
+#define DATA_FIELD_TYPE @"type"
+#define DATA_FIELD_USERNAME @"username"
+#define DATA_FIELD_NAME @"name"
+
+
 
 
 
@@ -20,8 +32,10 @@
 - (void)sessionDidLogin:(BOOL)authorized;
 - (void)sessionLoginFailed;
 - (void)sessionDidLogout;
-- (void)requestDidLoad:(NSString*)requestTag data:(NSDictionary*)data;
-- (void)requestDidFailed:(NSString*)requestTag error:(NSError*)error;
+
+- (void)requestDidLoad:(SessionRequestType)requestType data:(NSArray*)data;
+- (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error;
+
 @end
 
 
@@ -38,7 +52,7 @@
 - (void)login;
 - (void)logout;
 
-- (BOOL)requestGetInfo:(NSString*)requestTag;
+- (BOOL)requestGetInfo:(SessionRequestType)requestType;
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
 
 

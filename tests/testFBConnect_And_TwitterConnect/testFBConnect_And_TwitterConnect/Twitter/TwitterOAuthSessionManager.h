@@ -21,13 +21,15 @@
 {
   SA_OAuthTwitterEngine* _engine;
   UIViewController* _parent;
+  
+  NSString* _requestFriends;
 }
 
 - (void)setTarget:(id<SessionDelegate>)delegate;
 - (void)login:(UIViewController*)parent;
 - (void)logout;
 
-- (BOOL)requestGetInfo:(NSString*)requestTag;
+- (BOOL)requestGetInfo:(SessionRequestType)requestType;
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
 
 

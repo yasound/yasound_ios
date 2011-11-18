@@ -34,7 +34,7 @@
 - (void)login;
 - (void)logout;
 
-- (BOOL)requestGetInfo:(NSString*)requestTag;
+- (BOOL)requestGetInfo:(SessionRequestType)requestType;
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
 
 @end

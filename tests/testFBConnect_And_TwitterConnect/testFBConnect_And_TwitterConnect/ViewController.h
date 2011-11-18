@@ -19,6 +19,9 @@
   BOOL _twitterBtnClicked;
 }
 
+- (void)log:(NSString*)str;
+- (void)logClear;
+
 
 - (IBAction)onLogoutClicked:(id)sender;
 - (IBAction)onTestClicked:(id)sender;

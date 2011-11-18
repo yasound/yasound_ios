@@ -123,20 +123,20 @@ static FacebookSessionManager* _facebook = nil;
 
 
 
-- (BOOL)requestGetInfo:(NSString*)requestTag
+- (BOOL)requestGetInfo:(SessionRequestType)requestType
 {
   if (!_facebookConnect)
     return NO;
   
   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
   
-  if ([requestTag isEqualToString:REQUEST_TAG_USERNAME])
+  if (requestType == SRequestInfoUsername)
   {
     _requestMe = [_facebookConnect requestWithGraphPath:@"me" andDelegate:self];
     return;
   }
   
-  if ([requestTag isEqualToString:REQUEST_TAG_FRIENDLIST])
+  if (requestType == SRequestInfoFriends)
   {
     _requestFriends = [_facebookConnect requestWithGraphPath:@"me/friends" andDelegate:self];
     return;
@@ -238,16 +238,16 @@ static FacebookSessionManager* _facebook = nil;
 
   NSLog(@"didFailWithError : %@", [error localizedDescription]);
   NSLog(@"Err details: %@", [error description]);
-
-  NSString* requestTag;
-  if (request == _requestMe)
-    requestTag = REQUEST_TAG_USERNAME;
-  else if (request == _requestFriends)
-    requestTag = REQUEST_TAG_FRIENDLIST;
-  else if (request == _requestFeed)
-    requestTag = REQUEST_TAG_POSTMESSAGE;
   
-  [self.delegate requestDidFailed:requestTag error:error];
+  SessionRequestType requestType;
+  if (request == _requestMe)
+    requestType = SRequestInfoUsername;
+  else if (request == _requestFriends)
+    requestType = SRequestInfoFriends;
+  else if (request == _requestFeed)
+    requestType = SRequestPostMessage;
+  
+  [self.delegate requestDidFailed:requestType error:error];
 }
 
 
@@ -256,25 +256,47 @@ static FacebookSessionManager* _facebook = nil;
 - (void)request:(FBRequest *)request didLoad:(id)result
 {
   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-  NSLog(@"Parsed Response: %@", result);
+  //NSLog(@"Parsed Response: %@", result);
   
   if (request == _requestMe)
   {
     NSDictionary* dico = result;
-    [self.delegate requestDidLoad:REQUEST_TAG_USERNAME data:dico];
+    
+    NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
+    [user setValue:[dico valueForKey:@"id"] forKey:DATA_FIELD_ID];
+    [user setValue:@"facebook" forKey:DATA_FIELD_TYPE];
+    [user setValue:[dico valueForKey:@"username"] forKey:DATA_FIELD_USERNAME];
+    [user setValue:[dico valueForKey:@"name"] forKey:DATA_FIELD_NAME];
+    
+    NSArray* data = [NSArray arrayWithObjects:user, nil];
+    
+    [self.delegate requestDidLoad:SRequestInfoUsername data:data];
     return;
   }
   
   if (request == _requestFriends)
   {
-    NSDictionary* dico = result;
-    [self.delegate requestDidLoad:REQUEST_TAG_FRIENDLIST data:dico];
+    NSArray* friends = [result objectForKey:@"data"];
+    
+    NSMutableArray* data = [[NSMutableArray alloc] init];
+    for (NSDictionary* friend in friends)
+    {
+      NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
+      [user setValue:[friend valueForKey:@"id"] forKey:DATA_FIELD_ID];
+      [user setValue:@"facebook" forKey:DATA_FIELD_TYPE];
+      [user setValue:@"" forKey:DATA_FIELD_USERNAME]; // no username directly available from this list
+      [user setValue:[friend valueForKey:@"name"] forKey:DATA_FIELD_NAME];
+
+      [data addObject:user];
+    }
+    
+    [self.delegate requestDidLoad:SRequestInfoFriends data:data];
     return;
   }
   
   if (request == _requestFeed)
   {
-    [self.delegate requestDidLoad:REQUEST_TAG_POSTMESSAGE data:nil];
+    [self.delegate requestDidLoad:SRequestPostMessage data:nil];
     return;
   }
 }

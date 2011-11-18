@@ -79,14 +79,32 @@
 }
 
 
-- (BOOL)requestGetInfo:(NSString*)requestTag
+- (BOOL)requestGetInfo:(SessionRequestType)requestType
 {
+  if (!self.account)
+    return NO;
   
+  if (requestType == SRequestInfoUsername)
+  {
+    NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+    [dico setValue:self.account.username forKey:@"username"];
+    [self.delegate requestDidLoad:SRequestInfoUsername data:dico];
+    return YES;
+  }
+
+  if (requestType == SRequestInfoFriends)
+  {
+    //TODO
+    return YES;
+  }
+  
+  return NO;
 }
+
 
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
 {
-
+  // TODO
 }
 
 
