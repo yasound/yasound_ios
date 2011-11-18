@@ -188,6 +188,18 @@
     [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoFriends];  
 }
 
+
+//.....................................
+//
+// get followers list
+//
+- (IBAction)onFollowersClicked:(id)sender;
+{
+  if ([TwitterSessionManager twitter].authorized)
+    [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoFollowers];  
+}
+
+
 - (IBAction)onClearClicked:(id)sender
 {
   [self logClear];
@@ -252,8 +264,8 @@
   if (requestType == SRequestInfoUsername)
     [self log:@"could not get user info."];
 
-  else if (requestType == SRequestInfoFriends)
-    [self log:@"could not get friends list."];
+  else if ((requestType == SRequestInfoFriends) || (requestType == SRequestInfoFollowers))
+    [self log:@"could not get users list."];
 
   else if (requestType == SRequestPostMessage)
     [self log:@"could not post the message to your wall."];
@@ -287,21 +299,25 @@
 
   
   
-  if (requestType == SRequestInfoFriends)
+  if ((requestType == SRequestInfoFriends) ||  (requestType == SRequestInfoFollowers))
   {
     if ([data count] == 0)
     {
-      NSLog(@"requestDidLoad SRequestInfoFriends : no friends.");
+      NSLog(@"requestDidLoad SRequestInfoFriends||SRequestInfoFollowers : no users in the list.");
       return;
     }
 
-    for (NSDictionary* friend in data)
+    for (NSDictionary* user in data)
     {
-      [self log:@"\nSRequestInfoFriends"];
-      [self log:[NSString stringWithFormat:@"id: %@", [friend valueForKey:DATA_FIELD_ID]]];
-      [self log:[NSString stringWithFormat:@"type: %@", [friend valueForKey:DATA_FIELD_TYPE]]];
-      [self log:[NSString stringWithFormat:@"username: %@", [friend valueForKey:DATA_FIELD_USERNAME]]];
-      [self log:[NSString stringWithFormat:@"name: %@", [friend valueForKey:DATA_FIELD_NAME]]];
+      if (requestType == SRequestInfoFriends)
+        [self log:@"\nSRequestInfoFriends"];
+      else
+        [self log:@"\nSRequestInfoFollowers"];
+
+      [self log:[NSString stringWithFormat:@"id: %@", [user valueForKey:DATA_FIELD_ID]]];
+      [self log:[NSString stringWithFormat:@"type: %@", [user valueForKey:DATA_FIELD_TYPE]]];
+      [self log:[NSString stringWithFormat:@"username: %@", [user valueForKey:DATA_FIELD_USERNAME]]];
+      [self log:[NSString stringWithFormat:@"name: %@", [user valueForKey:DATA_FIELD_NAME]]];
     }
     
     return;

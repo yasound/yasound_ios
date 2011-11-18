@@ -29,6 +29,7 @@
 - (IBAction)onTwitterConnect:(id)sender;
 - (IBAction)onUsernameClicked:(id)sender;
 - (IBAction)onFriendsClicked:(id)sender;
+- (IBAction)onFollowersClicked:(id)sender;
 - (IBAction)onPostMessageClicked:(id)sender;
 - (IBAction)onClearClicked:(id)sender;
 
