@@ -10,6 +10,9 @@
 
 #import "TwitteriOSSessionManager.h"
 #import "Security/SFHFKeychainUtils.h"
+#import <Twitter/Twitter.h>
+
+
 
 
 #define ACCOUNT_IDENTIFIER @"twitterAccountIdentifier"
@@ -86,9 +89,25 @@
   
   if (requestType == SRequestInfoUsername)
   {
-    NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
-    [dico setValue:self.account.username forKey:@"username"];
-    [self.delegate requestDidLoad:SRequestInfoUsername data:dico];
+    //LBDEBUG TODO
+//    NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+//    [dico setValue:self.account.username forKey:@"username"];
+//    [self.delegate requestDidLoad:SRequestInfoUsername data:dico];
+//
+//    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+//    NSString* userid = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERID];
+//    NSString* userscreenname = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_SCREENNAME];
+//    
+//    NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
+//    [user setValue:userid forKey:DATA_FIELD_ID];
+//    [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
+//    [user setValue:username forKey:DATA_FIELD_USERNAME];
+//    [user setValue:userscreenname forKey:DATA_FIELD_NAME];
+//    
+//    NSArray* data = [NSArray arrayWithObjects:user, nil];
+//    
+//    [self.delegate requestDidLoad:SRequestInfoUsername data:data];
+//    
     return YES;
   }
 
@@ -104,9 +123,41 @@
 
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
 {
-  // TODO
+  TWRequest* request;
+  
+  if (pictureUrl == nil)
+  {
+    request = [[TWRequest alloc] initWithURL: [NSURL URLWithString:@"http://api.twitter.com/1/statuses/update.json"]
+                                               parameters:[NSDictionary dictionaryWithObject:message 
+                                               forKey:@"status"] requestMethod:TWRequestMethodPOST];             
+  }
+  else
+  {
+    request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://upload.twitter.com/1/statuses/update_with_media.json"] parameters:nil requestMethod:TWRequestMethodPOST];
+  
+    NSData* imgData = [NSData dataWithContentsOfURL:pictureUrl];
+    UIImage* img = [[UIImage alloc] initWithData:imgData cache:NO];
+    
+    NSData* data = UIImagePNGRepresentation(img);
+    [request addMultiPartData:data withName:@"media" type:@"image/png"];
+    data = [[NSString stringWithFormat:message] dataUsingEncoding:NSUTF8StringEncoding];
+    [request addMultiPartData:data withName:@"status" type:@"text/plain"];
+  }
+  
+  [request setAccount:self.account];
+  [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) 
+   {
+     [self performSelectorOnMainThread:@selector(onMessagePosted:) withObject:urlResponse waitUntilDone:NO];
+   }];
 }
 
+- (void)onMessagePosted:(NSHTTPURLResponse*)urlResponse
+{
+  if ([urlResponse statusCode] == 200)
+    [self.delegate requestDidLoad:SRequestPostMessage data:nil];
+  else
+    [self.delegate requestDidFailed:SRequestPostMessage data:nil];
+}
 
 
 

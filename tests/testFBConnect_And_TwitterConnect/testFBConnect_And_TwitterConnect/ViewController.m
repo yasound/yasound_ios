@@ -208,7 +208,7 @@
   {
     NSString* message = [NSString stringWithFormat:@"%@ : test message from iPhone", [NSDate date]];
     
-    [[TwitterSessionManager twitter] requestPostMessage:message title:nil picture:nil];  
+    [[TwitterSessionManager twitter] requestPostMessage:message title:nil  picture:[[NSURL alloc] initWithString:@"http://www.ephotozine.com/articles/Elinchrom-DLite-4-kit-4453/images/DLite4.jpg"]]; 
   }
 
 }
