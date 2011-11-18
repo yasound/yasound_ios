@@ -46,7 +46,7 @@
 		40562A44147552B80085518C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40562A43147552B80085518C /* SystemConfiguration.framework */; };
 		40562A46147552C30085518C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40562A45147552C30085518C /* MobileCoreServices.framework */; };
 		40562A48147552E30085518C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 40562A47147552E30085518C /* libz.dylib */; };
-		40562A4B147577890085518C /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40562A4A147577890085518C /* Model.m */; };
+		40E819C41476C6D000FB289D /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E819C31476C6D000FB289D /* Model.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,8 +124,8 @@
 		40562A43147552B80085518C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		40562A45147552C30085518C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		40562A47147552E30085518C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		40562A49147577890085518C /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Model.h; path = Model/Model.h; sourceTree = "<group>"; };
-		40562A4A147577890085518C /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Model.m; path = Model/Model.m; sourceTree = "<group>"; };
+		40E819C21476C6D000FB289D /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Model.h; path = ../../../LibTools/Communicator/Model.h; sourceTree = "<group>"; };
+		40E819C31476C6D000FB289D /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Model.m; path = ../../../LibTools/Communicator/Model.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,8 +214,6 @@
 				405629E5147548920085518C /* User.m */,
 				405629E7147548A80085518C /* Entry.h */,
 				405629E8147548A80085518C /* Entry.m */,
-				40562A49147577890085518C /* Model.h */,
-				40562A4A147577890085518C /* Model.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -225,6 +223,8 @@
 			children = (
 				405629EB14754C800085518C /* Communicator.h */,
 				405629EC14754C800085518C /* Communicator.m */,
+				40E819C21476C6D000FB289D /* Model.h */,
+				40E819C31476C6D000FB289D /* Model.m */,
 			);
 			name = Communicator;
 			sourceTree = "<group>";
@@ -420,7 +420,7 @@
 				40562A3E1475502C0085518C /* SBJsonWriter.m in Sources */,
 				40562A3F1475502C0085518C /* NSObject+JsonProxy.m in Sources */,
 				40562A401475502C0085518C /* NSObject+PropertyDictionary.m in Sources */,
-				40562A4B147577890085518C /* Model.m in Sources */,
+				40E819C41476C6D000FB289D /* Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +540,7 @@
 				405629E2147548570085518C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
