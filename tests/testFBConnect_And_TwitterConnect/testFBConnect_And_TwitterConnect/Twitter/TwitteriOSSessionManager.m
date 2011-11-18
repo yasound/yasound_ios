@@ -164,41 +164,6 @@
 
 
 
-//- (void)onUserListReceived:(NSArray*)args
-//{
-//  NSData* responseData = [args objectAtIndex:0];
-//  NSHTTPURLResponse* urlResponse = [args objectAtIndex:1];
-//  NSInteger requestCode = [[args objectAtIndex:2] integerValue];
-//  SessionRequestType requestType = requestCode;
-//  
-//  if ([urlResponse statusCode] != 200)
-//  {
-//    [self.delegate requestDidFailed:requestType error:nil  errorMessage:[NSHTTPURLResponse localizedStringForStatusCode:[urlResponse statusCode]]];
-//    return;
-//  }
-//  
-//  NSError* jsonParsingError = nil;
-//  NSDictionary* info = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonParsingError];
-//  //NSLog(@"%@", info);
-//  
-//  NSArray* users = [info objectForKey:@"ids"];
-//  NSMutableArray* data = [[NSMutableArray alloc] init];
-//  for (NSNumber* user in users)
-//  {
-//    NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
-//    [userInfo setValue:[NSString stringWithFormat:@"%d", [user integerValue]] forKey:DATA_FIELD_ID];
-//    [userInfo setValue:@"twitter" forKey:DATA_FIELD_TYPE];
-//    [userInfo setValue:@"" forKey:DATA_FIELD_USERNAME]; // no username directly available from this list
-//    [userInfo setValue:@"" forKey:DATA_FIELD_NAME]; // no screenname directly available
-//    
-//    [data addObject:userInfo];
-//  }
-//  
-//  [self.delegate requestDidLoad:requestType data:data];
-//}
-
-
-
 - (void)onUserListReceived:(NSArray*)args
 {
   NSData* responseData = [args objectAtIndex:0];
