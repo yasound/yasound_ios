@@ -15,7 +15,7 @@
 
 
 
-#define FORCE_OAUTH_LIB 1
+//#define FORCE_OAUTH_LIB 1
 
 
 @implementation TwitterSessionManager
