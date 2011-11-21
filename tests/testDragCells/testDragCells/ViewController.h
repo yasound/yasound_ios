@@ -10,10 +10,7 @@
 
 @interface ViewController : UIViewController
 {
-  IBOutlet UITableView* _tableView;
   NSIndexPath* _selectedRow;
-//  BOOL _gestureBegan;
-//  BOOL _gestureEnded;
 }
 
 - (IBAction)onButtonClicked:(id)sender;

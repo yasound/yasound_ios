@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "DraggableTableView.h"
 
 @implementation ViewController
 
@@ -20,24 +21,17 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-  
-  
-//  _gestureBegan = NO;
-//  _gestureEnded = NO;
+  [super viewDidLoad];
+  // Do any additional setup after loading the view, typically from a nib.
 
+  NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"DraggableTableView" owner:self options:nil];
+  DraggableTableView* tableView = (DraggableTableView*)[nibViews objectAtIndex:0];
+
+  [self.view addSubview:tableView];
   
-//  UIPanGestureRecognizer* panGesture = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureMoveAround:)] autorelease];
-//  [panGesture setMaximumNumberOfTouches:1];
-////  [panGesture setDelegate:self];
-//  [self.view addGestureRecognizer:panGesture];
-  
-  
-  [_tableView setEditing:YES];
-  _tableView.dataSource = _tableView;
-  _tableView.delegate = _tableView;
 }
+
+
 
 - (void)viewDidUnload
 {
@@ -257,9 +251,9 @@
 
 - (IBAction)onButtonClicked:(id)sender
 {
-  NSIndexPath* src = [NSIndexPath indexPathForRow:4 inSection:0];
-  NSIndexPath* dst = [NSIndexPath indexPathForRow:2 inSection:0];
-  [_tableView moveRowAtIndexPath:src  toIndexPath:dst];
+//  NSIndexPath* src = [NSIndexPath indexPathForRow:4 inSection:0];
+//  NSIndexPath* dst = [NSIndexPath indexPathForRow:2 inSection:0];
+//  [_tableView moveRowAtIndexPath:src  toIndexPath:dst];
 }
 
 
