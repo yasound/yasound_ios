@@ -15,7 +15,8 @@
 		BC857553147A965900727BCC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC857552147A965900727BCC /* AppDelegate.m */; };
 		BC857561147A96B500727BCC /* PullViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC85755F147A96B500727BCC /* PullViewController.xib */; };
 		BC857564147A96BA00727BCC /* PullViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC857563147A96BA00727BCC /* PullViewController.m */; };
-		BC857567147A990500727BCC /* PanTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC857566147A990500727BCC /* PanTableView.m */; };
+		BC857571147AA18C00727BCC /* DraggableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC85756F147AA18C00727BCC /* DraggableTableView.m */; };
+		BC857572147AA18C00727BCC /* DraggableTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC857570147AA18C00727BCC /* DraggableTableView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +33,9 @@
 		BC857560147A96B500727BCC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PullViewController.xib; sourceTree = "<group>"; };
 		BC857562147A96BA00727BCC /* PullViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullViewController.h; sourceTree = "<group>"; };
 		BC857563147A96BA00727BCC /* PullViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullViewController.m; sourceTree = "<group>"; };
-		BC857565147A990500727BCC /* PanTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PanTableView.h; path = ../../testDragCells/testDragCells/PanTableView.h; sourceTree = "<group>"; };
-		BC857566147A990500727BCC /* PanTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PanTableView.m; path = ../../testDragCells/testDragCells/PanTableView.m; sourceTree = "<group>"; };
+		BC85756E147AA18C00727BCC /* DraggableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraggableTableView.h; path = ../../testDragCells/testDragCells/DraggableTableView.h; sourceTree = "<group>"; };
+		BC85756F147AA18C00727BCC /* DraggableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraggableTableView.m; path = ../../testDragCells/testDragCells/DraggableTableView.m; sourceTree = "<group>"; };
+		BC857570147AA18C00727BCC /* DraggableTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DraggableTableView.xib; path = ../../testDragCells/testDragCells/DraggableTableView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,11 +84,12 @@
 			children = (
 				BC857551147A965900727BCC /* AppDelegate.h */,
 				BC857552147A965900727BCC /* AppDelegate.m */,
-				BC857565147A990500727BCC /* PanTableView.h */,
-				BC857566147A990500727BCC /* PanTableView.m */,
 				BC857562147A96BA00727BCC /* PullViewController.h */,
 				BC857563147A96BA00727BCC /* PullViewController.m */,
 				BC85755F147A96B500727BCC /* PullViewController.xib */,
+				BC85756E147AA18C00727BCC /* DraggableTableView.h */,
+				BC85756F147AA18C00727BCC /* DraggableTableView.m */,
+				BC857570147AA18C00727BCC /* DraggableTableView.xib */,
 				BC857549147A965900727BCC /* Supporting Files */,
 			);
 			path = testPullViewController;
@@ -155,6 +158,7 @@
 			files = (
 				BC85754D147A965900727BCC /* InfoPlist.strings in Resources */,
 				BC857561147A96B500727BCC /* PullViewController.xib in Resources */,
+				BC857572147AA18C00727BCC /* DraggableTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +172,7 @@
 				BC85754F147A965900727BCC /* main.m in Sources */,
 				BC857553147A965900727BCC /* AppDelegate.m in Sources */,
 				BC857564147A96BA00727BCC /* PullViewController.m in Sources */,
-				BC857567147A990500727BCC /* PanTableView.m in Sources */,
+				BC857571147AA18C00727BCC /* DraggableTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
