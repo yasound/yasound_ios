@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40056CF6147A5C280040C630 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40056CF5147A5C280040C630 /* Container.m */; };
 		405629C4147548570085518C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405629C3147548570085518C /* UIKit.framework */; };
 		405629C6147548570085518C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405629C5147548570085518C /* Foundation.framework */; };
 		405629C8147548570085518C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405629C7147548570085518C /* CoreGraphics.framework */; };
@@ -50,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40056CF4147A5C280040C630 /* Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Container.h; path = ../../../LibTools/Communicator/Container.h; sourceTree = "<group>"; };
+		40056CF5147A5C280040C630 /* Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Container.m; path = ../../../LibTools/Communicator/Container.m; sourceTree = "<group>"; };
 		405629BF147548570085518C /* testCommunication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testCommunication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		405629C3147548570085518C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		405629C5147548570085518C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -225,6 +228,8 @@
 				405629EC14754C800085518C /* Communicator.m */,
 				40E819C21476C6D000FB289D /* Model.h */,
 				40E819C31476C6D000FB289D /* Model.m */,
+				40056CF4147A5C280040C630 /* Container.h */,
+				40056CF5147A5C280040C630 /* Container.m */,
 			);
 			name = Communicator;
 			sourceTree = "<group>";
@@ -421,6 +426,7 @@
 				40562A3F1475502C0085518C /* NSObject+JsonProxy.m in Sources */,
 				40562A401475502C0085518C /* NSObject+PropertyDictionary.m in Sources */,
 				40E819C41476C6D000FB289D /* Model.m in Sources */,
+				40056CF6147A5C280040C630 /* Container.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

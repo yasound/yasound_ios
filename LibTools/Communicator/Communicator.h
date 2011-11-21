@@ -23,6 +23,7 @@
 
 
 #pragma mark - synchronous requests
+- (NSArray*)getObjectsWithClass:(Class)objectClass;
 - (id)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID;
 - (void)postNewObject:(Model*)obj;
 - (void)updateObject:(Model*)obj;
@@ -30,6 +31,7 @@
 
 
 #pragma mark - asynchronous requests
+- (void)getObjectsWithClass:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector;
 - (void)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID notifyTarget:(id)target byCalling:(SEL)selector;
 - (void)postNewObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector;
 - (void)updateObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector;

@@ -9,8 +9,10 @@
 #import "Communicator.h"
 #import "NSObject+PropertyDictionary.h"
 #import "NSObject+SBJson.h"
+#import "Container.h"
 
 @interface Communicator (Communicator_internal)
+- (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass;
 - (ASIHTTPRequest*)getRequestForObjectWithClass:(Class)objectClass andID:(NSNumber*)ID;
 - (ASIHTTPRequest*)postRequestForObject:(Model*)obj;
 - (ASIHTTPRequest*)putRequestForObject:(Model*)obj;
@@ -44,6 +46,25 @@
 
 
 #pragma mark -  synchronous requests
+
+- (NSArray*)getObjectsWithClass:(Class)objectClass
+{
+  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass];
+  if (!req)
+    return nil;
+  
+  [req startSynchronous];
+  NSString* response = req.responseString;
+  if (!response)
+    return nil;
+  
+  Container* container = [[Container alloc] initWithObjectClass:objectClass];
+  [container loadPropertiesFromJsonString:response];
+  NSArray* objects = container.objects;
+  [objects retain];
+  [container release];
+  return objects;
+}
 
 - (id)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID
 {
@@ -87,7 +108,7 @@
 
 #pragma mark - asynchronous requests
 
-- (void)notifytarget:(id)target byCalling:(SEL)selector withObject:(Model*)obj andSuccess:(BOOL)succeeded
+- (void)notifytarget:(id)target byCalling:(SEL)selector withObject:(id)obj andSuccess:(BOOL)succeeded
 {
   NSError* err = nil;
   if (!succeeded)
@@ -96,6 +117,22 @@
   [target performSelector:selector withObject:obj withObject:err];
 }
 
+
+// GET_ALL
+- (void)getObjectsWithClass:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector
+{
+  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass];
+  if (!req)
+    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+  
+  NSDictionary* userinfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"GET_ALL", @"method", objectClass, @"objectClass", nil];
+  req.userInfo = userinfo;
+  
+  req.delegate = self;
+  [req startAsynchronous];
+}
+
+// GET
 - (void)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID notifyTarget:(id)target byCalling:(SEL)selector
 {
   ASIHTTPRequest* req = [self getRequestForObjectWithClass:objectClass andID:ID];
@@ -109,6 +146,7 @@
   [req startAsynchronous];
 }
 
+// POST
 - (void)postNewObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
 {
   ASIHTTPRequest* req = [self postRequestForObject:obj];
@@ -122,6 +160,7 @@
   [req startAsynchronous];
 }
 
+// PUT
 - (void)updateObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
 {
   ASIHTTPRequest* req = [self putRequestForObject:obj];
@@ -135,6 +174,7 @@
   [req startAsynchronous];
 }
 
+// DELETE
 - (void)deleteObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
 {
   ASIHTTPRequest* req = [self deleteRequestForObject:obj];
@@ -151,8 +191,41 @@
 
 
 
+// GET_ALL handler
+- (void)handleGetAllResponse:(ASIHTTPRequest *)request success:(BOOL)succeeded
+{  
+  NSDictionary* userinfo = request.userInfo;
+  id target         = [userinfo valueForKey:@"target"];
+  SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
+  Class objectClass = [userinfo valueForKey:@"objectClass"];
+  
+  if (!succeeded)
+  {
+    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+    return;
+  }
+  
+  NSString* response = request.responseString;
+  if (!response)
+  {
+    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+    return;
+  }
+  
+  Container* container = [[Container alloc] initWithObjectClass:objectClass];
+  [container loadPropertiesFromJsonString:response];
+  
+  if (!container)
+  {
+    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+    return;
+  }
+  
+  NSArray* objects = container.objects;
+  [self notifytarget:target byCalling:selector withObject:objects andSuccess:YES];
+}
 
-
+// GET handler
 - (void)handleGetResponse:(ASIHTTPRequest *)request success:(BOOL)succeeded
 {  
   NSDictionary* userinfo = request.userInfo;
@@ -185,6 +258,7 @@
   [self notifytarget:target byCalling:selector withObject:obj andSuccess:YES];
 }
 
+// POST handler
 - (void)handlePostResponse:(ASIHTTPRequest *)request success:(BOOL)succeeded
 {
   NSDictionary* userinfo = request.userInfo;
@@ -195,6 +269,7 @@
   [self notifytarget:target byCalling:selector withObject:obj andSuccess:succeeded];
 }
 
+// PUT handler
 - (void)handlePutResponse:(ASIHTTPRequest *)request success:(BOOL)succeeded
 {
   NSDictionary* userinfo = request.userInfo;
@@ -205,6 +280,7 @@
   [self notifytarget:target byCalling:selector withObject:obj andSuccess:succeeded];
 }
 
+// DELETE handler
 - (void)handleDeleteResponse:(ASIHTTPRequest *)request success:(BOOL)succeeded
 {
   NSDictionary* userinfo = request.userInfo;
@@ -221,7 +297,11 @@
   NSDictionary* userinfo = request.userInfo;
   NSString* method  = [userinfo valueForKey:@"method"];
   
-  if ([method isEqualToString:@"GET"])
+  if ([method isEqualToString:@"GET_ALL"])
+  {
+    [self handleGetAllResponse:request success:succeeded];
+  }
+  else if ([method isEqualToString:@"GET"])
   {
     [self handleGetResponse:request success:succeeded];
   }
@@ -255,6 +335,22 @@
 
 
 @implementation Communicator (Communicator_internal)
+
+- (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass
+{
+  NSString* path = [_mapping objectForKey:objectClass];
+  if (!path)
+    return nil;
+  
+  NSURL* url = [NSURL URLWithString:_baseURL];
+  url = [url URLByAppendingPathComponent:path];
+  
+  ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
+  req.requestMethod = @"GET";
+  [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
+  
+  return req;
+}
 
 - (ASIHTTPRequest*)getRequestForObjectWithClass:(Class)objectClass andID:(NSNumber*)ID
 {
