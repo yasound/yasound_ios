@@ -32,7 +32,6 @@
   NSArray* nibViews =  [[NSBundle mainBundle] loadNibNamed:@"DraggableTableView" owner:self options:nil];
   self.draggableTableView = (DraggableTableView*)[nibViews objectAtIndex:0];
   
-//  self.draggableTableView.frame = CGRectMake(0.0f, 0.0f - _tableView.bounds.size.height, 320.0f, _tableView.bounds.size.height);
   self.draggableTableView.frame = CGRectMake(0.0f, 0.0f - DRAGGABLE_HEIGHT, 320.0f, DRAGGABLE_HEIGHT);
   
   [self.view addSubview:self.draggableTableView];
@@ -40,12 +39,8 @@
   
 }
 
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//  
-//  UITouch *touch = [touches anyObject];
-////  touchPoint1 = [touch locationInView:self];
-//}
+
+
 
 - (void)viewDidUnload
 {
@@ -149,21 +144,14 @@
 #pragma mark ScrollView Callbacks
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {	
-  NSLog(@"scrollViewDidScroll");
-  
 	if (scrollView.isDragging)
   {
-    NSLog(@"scrollViewDidScroll isDragging %.2f", scrollView.contentOffset.y);
-
     if (scrollView.contentOffset.y > -DRAGGABLE_HEIGHT && scrollView.contentOffset.y < 0.0f) 
     {
       self.draggableTableView.frame = CGRectMake(0,  -DRAGGABLE_HEIGHT - scrollView.contentOffset.y, self.draggableTableView.frame.size.width, self.draggableTableView.frame.size.height);
-      //[refreshHeaderView setState:EGOOPullRefreshNormal];
     } 
     else if (scrollView.contentOffset.y < -DRAGGABLE_HEIGHT) 
     {
-//      self.draggableTableView.frame = CGRectMake(0,  -DRAGGABLE_HEIGHT - scrollView.contentOffset.y, self.draggableTableView.frame.size.width, self.draggableTableView.frame.size.height);
-//      [refreshHeaderView setState:EGOOPullRefreshPulling];
     }
 	}
 }
@@ -173,28 +161,14 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-  NSLog(@"scrollViewDidEndDragging");
-
 	if (scrollView.contentOffset.y <= -DRAGGABLE_THRESHOLD) 
   {
-//		_reloading = YES;
-//		[self reloadTableViewDataSource];
-//		[refreshHeaderView setState:EGOOPullRefreshLoading];
-    
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.2];
-//		_tableView.contentInset = UIEdgeInsetsMake(DRAGGABLE_HEIGHT, 0.0f, 0.0f, 0.0f);
     self.draggableTableView.frame = CGRectMake(0, 0, self.draggableTableView.frame.size.width, self.draggableTableView.frame.size.height);
-//
 		[UIView commitAnimations];
 
 		_tableView.contentInset = UIEdgeInsetsMake(DRAGGABLE_HEIGHT, 0.0f, 0.0f, 0.0f);
-    //[_tableView setContentOffset:CGPointMake(0,DRAGGABLE_HEIGHT*2) animated:NO];
-    
-    
-//    _tableView.scrollIndicatorInsets  = UIEdgeInsetsMake(DRAGGABLE_HEIGHT, 0.0f, 0.0f, 0.0f);
-    
-//    [_tableView setContentOffset:CGPointMake(0,DRAGGABLE_HEIGHT) animated:YES];
 	}
   else
   {
