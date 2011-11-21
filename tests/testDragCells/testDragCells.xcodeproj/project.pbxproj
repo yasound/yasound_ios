@@ -15,6 +15,7 @@
 		BC1EBAD8147A584E00E9F394 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1EBAD7147A584E00E9F394 /* AppDelegate.m */; };
 		BC1EBADB147A584E00E9F394 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1EBADA147A584E00E9F394 /* ViewController.m */; };
 		BC1EBADE147A584E00E9F394 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1EBADC147A584E00E9F394 /* ViewController.xib */; };
+		BC1EBAEC147A636B00E9F394 /* PanTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1EBAEB147A636B00E9F394 /* PanTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		BC1EBAD9147A584E00E9F394 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BC1EBADA147A584E00E9F394 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BC1EBADD147A584E00E9F394 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		BC1EBAEA147A636B00E9F394 /* PanTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanTableView.h; sourceTree = "<group>"; };
+		BC1EBAEB147A636B00E9F394 /* PanTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 			children = (
 				BC1EBAD6147A584E00E9F394 /* AppDelegate.h */,
 				BC1EBAD7147A584E00E9F394 /* AppDelegate.m */,
+				BC1EBAEA147A636B00E9F394 /* PanTableView.h */,
+				BC1EBAEB147A636B00E9F394 /* PanTableView.m */,
 				BC1EBAD9147A584E00E9F394 /* ViewController.h */,
 				BC1EBADA147A584E00E9F394 /* ViewController.m */,
 				BC1EBADC147A584E00E9F394 /* ViewController.xib */,
@@ -163,6 +168,7 @@
 				BC1EBAD4147A584E00E9F394 /* main.m in Sources */,
 				BC1EBAD8147A584E00E9F394 /* AppDelegate.m in Sources */,
 				BC1EBADB147A584E00E9F394 /* ViewController.m in Sources */,
+				BC1EBAEC147A636B00E9F394 /* PanTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

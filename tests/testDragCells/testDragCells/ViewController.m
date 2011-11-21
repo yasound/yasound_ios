@@ -23,16 +23,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
   
-  //[_tableView setEditing:YES];
   
 //  _gestureBegan = NO;
 //  _gestureEnded = NO;
 
   
-  UIPanGestureRecognizer* panGesture = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureMoveAround:)] autorelease];
-  [panGesture setMaximumNumberOfTouches:1];
-//  [panGesture setDelegate:self];
-  [self.view addGestureRecognizer:panGesture];
+//  UIPanGestureRecognizer* panGesture = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureMoveAround:)] autorelease];
+//  [panGesture setMaximumNumberOfTouches:1];
+////  [panGesture setDelegate:self];
+//  [self.view addGestureRecognizer:panGesture];
+  
+  
+  [_tableView setEditing:YES];
+  _tableView.dataSource = _tableView;
+  _tableView.delegate = _tableView;
 }
 
 - (void)viewDidUnload
@@ -72,26 +76,26 @@
 
 
 
-//................................................................................................................................
+////................................................................................................................................
+////
+//// UITableViewDataSource 
+////
 //
-// UITableViewDataSource 
+//#pragma mark - UITableViewDataSource
 //
-
-#pragma mark - UITableViewDataSource
-
-
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
-{
-  return 1;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
-{
-  return 6;  
-}
+//
+//
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
+//{
+//  return 1;
+//}
+//
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+//{
+//  return 6;  
+//}
 
 
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -101,21 +105,21 @@
 
 
 
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-  static NSString *CellIdentifier = @"Cell";
-  
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) 
-  {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-  }
-  
-  cell.textLabel.text = [NSString stringWithFormat:@"cell %d", indexPath.row];
-  
-  return cell;
-}
+//// Customize the appearance of table view cells.
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//  static NSString *CellIdentifier = @"Cell";
+//  
+//  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//  if (cell == nil) 
+//  {
+//    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+//  }
+//  
+//  cell.textLabel.text = [NSString stringWithFormat:@"cell %d", indexPath.row];
+//  
+//  return cell;
+//}
 
 
 
@@ -134,16 +138,16 @@
 //
 
 
-#pragma mark - UITableViewDelegate
-
-
-// cell selection
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  NSLog(@"didSelectRowAtIndexPath %d", indexPath.row);
-  _selectedRow = indexPath;
-
-}
+//#pragma mark - UITableViewDelegate
+//
+//
+//// cell selection
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//  NSLog(@"didSelectRowAtIndexPath %d", indexPath.row);
+//  _selectedRow = indexPath;
+//
+//}
 
 
 
@@ -228,26 +232,26 @@
 
 
 
--(void)panGestureMoveAround:(UIPanGestureRecognizer *)gesture;
-{
-//  UIView *piece = [gesture view];
-  
-//  [self adjustAnchorPointForGestureRecognizer:gesture];
-  
-  if ([gesture state] == UIGestureRecognizerStateBegan || [gesture state] == UIGestureRecognizerStateChanged) 
-  {
-    
-    CGPoint translation = [gesture translationInView:[gesture view]];
-    CGPoint location  = [gesture locationInView:[gesture view]];
-    
-//    NSLog(@"translation : %.2f, %.2f", translation.x, translation.y);
-//    NSLog(@"location : %.2f, %.2f", location.x, location.y);
-//    [piece setCenter:CGPointMake([piece center].x + translation.x, [piece center].y+translation.y*0.1)];
-//    [gesture setTranslation:CGPointZero inView:[piece superview]];
-    
-    rectForRowAtIndexPath
-  }
-}
+//-(void)panGestureMoveAround:(UIPanGestureRecognizer *)gesture;
+//{
+////  UIView *piece = [gesture view];
+//  
+////  [self adjustAnchorPointForGestureRecognizer:gesture];
+//  
+//  if ([gesture state] == UIGestureRecognizerStateBegan || [gesture state] == UIGestureRecognizerStateChanged) 
+//  {
+//    
+//    CGPoint translation = [gesture translationInView:[gesture view]];
+//    CGPoint location  = [gesture locationInView:[gesture view]];
+//    
+////    NSLog(@"translation : %.2f, %.2f", translation.x, translation.y);
+////    NSLog(@"location : %.2f, %.2f", location.x, location.y);
+////    [piece setCenter:CGPointMake([piece center].x + translation.x, [piece center].y+translation.y*0.1)];
+////    [gesture setTranslation:CGPointZero inView:[piece superview]];
+//    
+////    rectForRowAtIndexPath
+//  }
+//}
 
 
 
