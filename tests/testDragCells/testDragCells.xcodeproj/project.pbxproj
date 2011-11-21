@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BC1EBAC8147A584E00E9F394 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1EBAC7147A584E00E9F394 /* UIKit.framework */; };
+		BC1EBACA147A584E00E9F394 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1EBAC9147A584E00E9F394 /* Foundation.framework */; };
+		BC1EBACC147A584E00E9F394 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1EBACB147A584E00E9F394 /* CoreGraphics.framework */; };
+		BC1EBAD2147A584E00E9F394 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC1EBAD0147A584E00E9F394 /* InfoPlist.strings */; };
+		BC1EBAD4147A584E00E9F394 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1EBAD3147A584E00E9F394 /* main.m */; };
+		BC1EBAD8147A584E00E9F394 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1EBAD7147A584E00E9F394 /* AppDelegate.m */; };
+		BC1EBADB147A584E00E9F394 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1EBADA147A584E00E9F394 /* ViewController.m */; };
+		BC1EBADE147A584E00E9F394 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC1EBADC147A584E00E9F394 /* ViewController.xib */; };
+		BC857569147A99E300727BCC /* DraggableTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC857568147A99E300727BCC /* DraggableTableView.xib */; };
+		BC85756D147A9A5C00727BCC /* DraggableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC85756C147A9A5C00727BCC /* DraggableTableView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BC1EBAC3147A584E00E9F394 /* testDragCells.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testDragCells.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC1EBAC7147A584E00E9F394 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BC1EBAC9147A584E00E9F394 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BC1EBACB147A584E00E9F394 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BC1EBACF147A584E00E9F394 /* testDragCells-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "testDragCells-Info.plist"; sourceTree = "<group>"; };
+		BC1EBAD1147A584E00E9F394 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BC1EBAD3147A584E00E9F394 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BC1EBAD5147A584E00E9F394 /* testDragCells-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testDragCells-Prefix.pch"; sourceTree = "<group>"; };
+		BC1EBAD6147A584E00E9F394 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BC1EBAD7147A584E00E9F394 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BC1EBAD9147A584E00E9F394 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BC1EBADA147A584E00E9F394 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BC1EBADD147A584E00E9F394 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		BC857568147A99E300727BCC /* DraggableTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DraggableTableView.xib; sourceTree = "<group>"; };
+		BC85756B147A9A5C00727BCC /* DraggableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableTableView.h; sourceTree = "<group>"; };
+		BC85756C147A9A5C00727BCC /* DraggableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableTableView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC1EBAC0147A584E00E9F394 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC1EBAC8147A584E00E9F394 /* UIKit.framework in Frameworks */,
+				BC1EBACA147A584E00E9F394 /* Foundation.framework in Frameworks */,
+				BC1EBACC147A584E00E9F394 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BC1EBAB8147A584E00E9F394 = {
+			isa = PBXGroup;
+			children = (
+				BC1EBACD147A584E00E9F394 /* testDragCells */,
+				BC1EBAC6147A584E00E9F394 /* Frameworks */,
+				BC1EBAC4147A584E00E9F394 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BC1EBAC4147A584E00E9F394 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC1EBAC3147A584E00E9F394 /* testDragCells.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC1EBAC6147A584E00E9F394 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC1EBAC7147A584E00E9F394 /* UIKit.framework */,
+				BC1EBAC9147A584E00E9F394 /* Foundation.framework */,
+				BC1EBACB147A584E00E9F394 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BC1EBACD147A584E00E9F394 /* testDragCells */ = {
+			isa = PBXGroup;
+			children = (
+				BC1EBAD6147A584E00E9F394 /* AppDelegate.h */,
+				BC1EBAD7147A584E00E9F394 /* AppDelegate.m */,
+				BC1EBAD9147A584E00E9F394 /* ViewController.h */,
+				BC1EBADA147A584E00E9F394 /* ViewController.m */,
+				BC85756B147A9A5C00727BCC /* DraggableTableView.h */,
+				BC85756C147A9A5C00727BCC /* DraggableTableView.m */,
+				BC857568147A99E300727BCC /* DraggableTableView.xib */,
+				BC1EBADC147A584E00E9F394 /* ViewController.xib */,
+				BC1EBACE147A584E00E9F394 /* Supporting Files */,
+			);
+			path = testDragCells;
+			sourceTree = "<group>";
+		};
+		BC1EBACE147A584E00E9F394 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC1EBACF147A584E00E9F394 /* testDragCells-Info.plist */,
+				BC1EBAD0147A584E00E9F394 /* InfoPlist.strings */,
+				BC1EBAD3147A584E00E9F394 /* main.m */,
+				BC1EBAD5147A584E00E9F394 /* testDragCells-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC1EBAC2147A584E00E9F394 /* testDragCells */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC1EBAE1147A584E00E9F394 /* Build configuration list for PBXNativeTarget "testDragCells" */;
+			buildPhases = (
+				BC1EBABF147A584E00E9F394 /* Sources */,
+				BC1EBAC0147A584E00E9F394 /* Frameworks */,
+				BC1EBAC1147A584E00E9F394 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = testDragCells;
+			productName = testDragCells;
+			productReference = BC1EBAC3147A584E00E9F394 /* testDragCells.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC1EBABA147A584E00E9F394 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = BC1EBABD147A584E00E9F394 /* Build configuration list for PBXProject "testDragCells" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BC1EBAB8147A584E00E9F394;
+			productRefGroup = BC1EBAC4147A584E00E9F394 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC1EBAC2147A584E00E9F394 /* testDragCells */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC1EBAC1147A584E00E9F394 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC1EBAD2147A584E00E9F394 /* InfoPlist.strings in Resources */,
+				BC1EBADE147A584E00E9F394 /* ViewController.xib in Resources */,
+				BC857569147A99E300727BCC /* DraggableTableView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC1EBABF147A584E00E9F394 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC1EBAD4147A584E00E9F394 /* main.m in Sources */,
+				BC1EBAD8147A584E00E9F394 /* AppDelegate.m in Sources */,
+				BC1EBADB147A584E00E9F394 /* ViewController.m in Sources */,
+				BC85756D147A9A5C00727BCC /* DraggableTableView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BC1EBAD0147A584E00E9F394 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC1EBAD1147A584E00E9F394 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BC1EBADC147A584E00E9F394 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC1EBADD147A584E00E9F394 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC1EBADF147A584E00E9F394 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BC1EBAE0147A584E00E9F394 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC1EBAE2147A584E00E9F394 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "testDragCells/testDragCells-Prefix.pch";
+				INFOPLIST_FILE = "testDragCells/testDragCells-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BC1EBAE3147A584E00E9F394 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "testDragCells/testDragCells-Prefix.pch";
+				INFOPLIST_FILE = "testDragCells/testDragCells-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC1EBABD147A584E00E9F394 /* Build configuration list for PBXProject "testDragCells" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC1EBADF147A584E00E9F394 /* Debug */,
+				BC1EBAE0147A584E00E9F394 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC1EBAE1147A584E00E9F394 /* Build configuration list for PBXNativeTarget "testDragCells" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC1EBAE2147A584E00E9F394 /* Debug */,
+				BC1EBAE3147A584E00E9F394 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC1EBABA147A584E00E9F394 /* Project object */;
+}
