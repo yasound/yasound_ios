@@ -10,8 +10,16 @@
 
 @interface ConstantCellTableViewController : UIViewController
 {
-  IBOutlet UITableViewCell* _cellNowPlaying;
-  IBOutlet UITableViewCell* _cellPlayed;
+  IBOutlet UITableView* _tableView;
+  UITableViewCell* _cellNowPlaying;
+  NSIndexPath* _indexPathNowPlaying;
+  BOOL _rectNowPlayingIsSet;
+  CGRect _rectNowPlaying;
+  
+  UIView* _viewNowPlaying;
+  BOOL _viewNowPlayingAnchored;
+  CGFloat _viewNowPlayingPosY;
+  
 }
 
 @end

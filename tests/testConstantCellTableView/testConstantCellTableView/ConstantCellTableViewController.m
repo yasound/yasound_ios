@@ -20,8 +20,12 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+  [super viewDidLoad];
+  _rectNowPlayingIsSet = NO;
+  _viewNowPlaying = nil;
+  _viewNowPlayingAnchored = NO;
+  _indexPathNowPlaying = nil;
+
 }
 
 - (void)viewDidUnload
@@ -84,24 +88,41 @@
 {
   static NSString* CellIdentifier = @"Cell";
 
-//  NSString* cellIdentifier;
-
-
+  if (indexPath.row == 11)
+  {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NowPlayingTableViewCell"];
+    if (cell == nil) 
+    {
+      cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"NowPlayingTableViewCell"];
+    }
+    
+    cell  = [self configureNowPlayingCell:@"now playing : Gerard Lenorman"];
+    _cellNowPlaying = cell;
+    if (_indexPathNowPlaying)
+      [_indexPathNowPlaying release];
+    
+    _indexPathNowPlaying = indexPath;
+    [_indexPathNowPlaying retain];
+    
+    //NSLog(@"cell 's tag : %d", cell.tag);
+    
+    return cell;
   
-//  if (indexPath.row == 4)
-//    cellIdentifier = [NSString stringWithString:@"NowPlaying"];
-//  else if (indexPath.row == 12)
-//    cellIdentifier = [NSString stringWithString:@"Played"];
-//  else
-//    cellIdentifier = CommonCellIdentifier;
-  
-  if ((indexPath.row == 4) || (indexPath.row == 8) || (indexPath.row == 14) || (indexPath.row == 19))
+  }
+  else if ((indexPath.row == 8) || (indexPath.row == 14) || (indexPath.row == 19))
   {
     NSString* cellIdentifier;
-    if (indexPath.row == 4)
-      cellIdentifier = @"NowPlayingTableViewCell";
-    else 
-      cellIdentifier = @"PlayedTableViewCell";
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    
+    cellIdentifier = @"PlayedTableViewCell";
+    if (indexPath.row == 8)
+      label.text = @"played at 12h30 : Bidule Machin";
+    else if (indexPath.row == 14)
+      label.text = @"played at 11h30 : Trouloulou";
+    else
+      label.text = @"played at 10h30 : Houpla houpla houp";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) 
@@ -111,6 +132,10 @@
 
     NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil];
     cell = [topLevelObjects objectAtIndex:0];
+    [cell addSubview:label];
+    
+    //NSLog(@"cell 's tag : %d", cell.tag);
+    
     return cell;
   }
   else
@@ -131,7 +156,21 @@
 
 
 
+- (UIView*)configureNowPlayingCell:(NSString*)title
+{
+  UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+  label.backgroundColor = [UIColor clearColor];
+  label.textColor = [UIColor whiteColor];
 
+  label.text = [NSString stringWithString:title];
+
+  NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"NowPlayingTableViewCell" owner:self options:nil];
+  UIView* view = [topLevelObjects objectAtIndex:0];
+  [view addSubview:label];
+  
+  return view;
+  //NSLog(@"cell 's tag : %d", cell.tag);
+}
 
 
 
@@ -143,6 +182,46 @@
 }
 
 
+
+
+
+#pragma mark -
+#pragma mark ScrollView Callbacks
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{	
+	if (scrollView.isDragging)
+  {
+    CGFloat posy = scrollView.contentOffset.y;
+    
+    if (!_rectNowPlayingIsSet && _indexPathNowPlaying)
+    {
+      _rectNowPlaying = [_tableView rectForRowAtIndexPath:_indexPathNowPlaying];
+      _rectNowPlayingIsSet = YES;
+    }
+    
+    if (_rectNowPlayingIsSet && !_viewNowPlaying && CGRectContainsPoint(_rectNowPlaying, CGPointMake(0, posy)))
+    {
+      _viewNowPlayingPosY = posy;
+      _viewNowPlaying = [self configureNowPlayingCell:@"now playing : Gerard Lenorman"];
+      _viewNowPlaying.frame = CGRectMake(0, 0, _viewNowPlaying.frame.size.width, _viewNowPlaying.frame.size.height);
+      [self.view addSubview:_viewNowPlaying];
+    }
+    else if (_rectNowPlayingIsSet && _viewNowPlaying && (posy < _viewNowPlayingPosY))
+    {
+      [_viewNowPlaying removeFromSuperview];
+      _viewNowPlaying = nil;
+    }
+
+        
+//    if (scrollView.contentOffset.y > -DRAGGABLE_HEIGHT && scrollView.contentOffset.y < 0.0f) 
+//    {
+//      self.draggableTableView.frame = CGRectMake(0,  -DRAGGABLE_HEIGHT - scrollView.contentOffset.y, self.draggableTableView.frame.size.width, self.draggableTableView.frame.size.height);
+//    } 
+//    else if (scrollView.contentOffset.y < -DRAGGABLE_HEIGHT) 
+//    {
+//    }
+	}
+}
 
 
 
