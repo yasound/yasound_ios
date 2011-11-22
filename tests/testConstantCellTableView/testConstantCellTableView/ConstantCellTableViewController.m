@@ -203,7 +203,6 @@
     _scrollviewLastPosY = scrollView.contentOffset.y;
     
     CGFloat posMin = scrollView.contentOffset.y;
-    //LBDEBUG
     CGFloat posMax = scrollView.contentOffset.y + scrollView.bounds.size.height;
     
     CGRect rectMin = CGRectMake(0, posMin, 320, 44);
@@ -214,10 +213,8 @@
       _rectNowPlayingIsSet = YES;
     }
     
-    //LBDEBUG
-    NSString* directionStr = (direction == CCPUp) ? @"UP" : @"DOWN";
-    NSLog(@"direction %@  _rectNowPlaying %.2f -> %.2f     posMax %.2f", directionStr, _rectNowPlaying.origin.y, _rectNowPlaying.origin.y + _rectNowPlaying.size.height, posMax);
-//    NSLog(@"s %.2f   v %.2f", );
+//    NSString* directionStr = (direction == CCPUp) ? @"UP" : @"DOWN";
+//    NSLog(@"direction %@  _rectNowPlaying %.2f -> %.2f     posMax %.2f", directionStr, _rectNowPlaying.origin.y, _rectNowPlaying.origin.y + _rectNowPlaying.size.height, posMax);
     
     if (_rectNowPlayingIsSet && !_viewNowPlaying && (direction == CCPUp) && CGRectContainsPoint(_rectNowPlaying, CGPointMake(0, posMin)))
     {
@@ -232,9 +229,6 @@
     {
       _viewNowPlayingPosition = CCPBottom;
 
-      //LBDEBUG
-      NSLog(@"FLAG 1");
-      
       _viewNowPlayingPosY = posMax;
       _viewNowPlaying = [self configureNowPlayingCell:@"now playing : Gerard Lenorman"];
       _viewNowPlaying.frame = CGRectMake(0, 480 - 64, _viewNowPlaying.frame.size.width, _viewNowPlaying.frame.size.height);
@@ -243,9 +237,6 @@
     
     else if ((_viewNowPlayingPosition == CCPTop) && (posMin < _viewNowPlayingPosY))
     {
-      //LBDEBUG
-      NSLog(@"FLAG 2");
-
       _viewNowPlayingPosition = CCPPositionNone;
       [_viewNowPlaying removeFromSuperview];
       _viewNowPlaying = nil;
@@ -253,22 +244,10 @@
 
     else if ((_viewNowPlayingPosition == CCPBottom) && (posMax > _viewNowPlayingPosY))
     {
-      //LBDEBUG
-      NSLog(@"FLAG 3");
-
       _viewNowPlayingPosition = CCPPositionNone;
       [_viewNowPlaying removeFromSuperview];
       _viewNowPlaying = nil;
     }
-
-        
-//    if (scrollView.contentOffset.y > -DRAGGABLE_HEIGHT && scrollView.contentOffset.y < 0.0f) 
-//    {
-//      self.draggableTableView.frame = CGRectMake(0,  -DRAGGABLE_HEIGHT - scrollView.contentOffset.y, self.draggableTableView.frame.size.width, self.draggableTableView.frame.size.height);
-//    } 
-//    else if (scrollView.contentOffset.y < -DRAGGABLE_HEIGHT) 
-//    {
-//    }
 	}
 }
 
