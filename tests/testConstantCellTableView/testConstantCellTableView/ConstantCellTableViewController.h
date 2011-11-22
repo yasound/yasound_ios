@@ -8,6 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef enum
+{
+  CCPTop,
+  CCPBottom,
+  CCPPositionNone
+} ConstantCellPosition;
+
+typedef enum 
+{
+  CCPUp,
+  CCPDown,
+  CCPDirectionNone
+} ConstantCellDirection;
+
+
 @interface ConstantCellTableViewController : UIViewController
 {
   IBOutlet UITableView* _tableView;
@@ -17,9 +33,12 @@
   CGRect _rectNowPlaying;
   
   UIView* _viewNowPlaying;
-  BOOL _viewNowPlayingAnchored;
   CGFloat _viewNowPlayingPosY;
   
+  ConstantCellPosition _viewNowPlayingPosition;
+  
+  CGFloat _scrollviewLastPosY;
 }
 
 @end
+

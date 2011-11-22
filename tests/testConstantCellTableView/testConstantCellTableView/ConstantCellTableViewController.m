@@ -23,8 +23,9 @@
   [super viewDidLoad];
   _rectNowPlayingIsSet = NO;
   _viewNowPlaying = nil;
-  _viewNowPlayingAnchored = NO;
   _indexPathNowPlaying = nil;
+  _viewNowPlayingPosition = CCPPositionNone;
+  _scrollviewLastPosY = 0;
 
 }
 
@@ -187,11 +188,25 @@
 
 #pragma mark -
 #pragma mark ScrollView Callbacks
+
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+  NSLog(@"scrollViewWillBeginDragging");
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {	
 	if (scrollView.isDragging)
   {
-    CGFloat posy = scrollView.contentOffset.y;
+    ConstantCellDirection direction = (scrollView.contentOffset.y < _scrollviewLastPosY)? CCPDown : CCPUp;
+    _scrollviewLastPosY = scrollView.contentOffset.y;
+    
+    CGFloat posMin = scrollView.contentOffset.y;
+    //LBDEBUG
+    CGFloat posMax = scrollView.contentOffset.y + scrollView.bounds.size.height;
+    
+    CGRect rectMin = CGRectMake(0, posMin, 320, 44);
     
     if (!_rectNowPlayingIsSet && _indexPathNowPlaying)
     {
@@ -199,15 +214,49 @@
       _rectNowPlayingIsSet = YES;
     }
     
-    if (_rectNowPlayingIsSet && !_viewNowPlaying && CGRectContainsPoint(_rectNowPlaying, CGPointMake(0, posy)))
+    //LBDEBUG
+    NSString* directionStr = (direction == CCPUp) ? @"UP" : @"DOWN";
+    NSLog(@"direction %@  _rectNowPlaying %.2f -> %.2f     posMax %.2f", directionStr, _rectNowPlaying.origin.y, _rectNowPlaying.origin.y + _rectNowPlaying.size.height, posMax);
+//    NSLog(@"s %.2f   v %.2f", );
+    
+    if (_rectNowPlayingIsSet && !_viewNowPlaying && (direction == CCPUp) && CGRectContainsPoint(_rectNowPlaying, CGPointMake(0, posMin)))
     {
-      _viewNowPlayingPosY = posy;
+      _viewNowPlayingPosition = CCPTop;
+      
+      _viewNowPlayingPosY = posMin;
       _viewNowPlaying = [self configureNowPlayingCell:@"now playing : Gerard Lenorman"];
       _viewNowPlaying.frame = CGRectMake(0, 0, _viewNowPlaying.frame.size.width, _viewNowPlaying.frame.size.height);
       [self.view addSubview:_viewNowPlaying];
     }
-    else if (_rectNowPlayingIsSet && _viewNowPlaying && (posy < _viewNowPlayingPosY))
+    else if (_rectNowPlayingIsSet && !_viewNowPlaying && (direction == CCPDown) && CGRectContainsPoint(_rectNowPlaying, CGPointMake(0, posMax)))
     {
+      _viewNowPlayingPosition = CCPBottom;
+
+      //LBDEBUG
+      NSLog(@"FLAG 1");
+      
+      _viewNowPlayingPosY = posMax;
+      _viewNowPlaying = [self configureNowPlayingCell:@"now playing : Gerard Lenorman"];
+      _viewNowPlaying.frame = CGRectMake(0, 480 - 64, _viewNowPlaying.frame.size.width, _viewNowPlaying.frame.size.height);
+      [self.view addSubview:_viewNowPlaying];
+    }
+    
+    else if ((_viewNowPlayingPosition == CCPTop) && (posMin < _viewNowPlayingPosY))
+    {
+      //LBDEBUG
+      NSLog(@"FLAG 2");
+
+      _viewNowPlayingPosition = CCPPositionNone;
+      [_viewNowPlaying removeFromSuperview];
+      _viewNowPlaying = nil;
+    }
+
+    else if ((_viewNowPlayingPosition == CCPBottom) && (posMax > _viewNowPlayingPosY))
+    {
+      //LBDEBUG
+      NSLog(@"FLAG 3");
+
+      _viewNowPlayingPosition = CCPPositionNone;
       [_viewNowPlaying removeFromSuperview];
       _viewNowPlaying = nil;
     }
