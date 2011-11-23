@@ -27,6 +27,18 @@
 		405629AD147547380085518C /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4056299F147547380085518C /* ASIInputStream.m */; };
 		405629AE147547380085518C /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 405629A1147547380085518C /* ASINetworkQueue.m */; };
 		405629AF147547380085518C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 405629A6147547380085518C /* Reachability.m */; };
+		BC5EE221147D5CFA00A282A5 /* YasoundHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE21F147D5CFA00A282A5 /* YasoundHeader.png */; };
+		BC5EE222147D5CFA00A282A5 /* YasoundHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE220147D5CFA00A282A5 /* YasoundHeader@2x.png */; };
+		BC5EE22E147D70C300A282A5 /* CellBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE228147D70C300A282A5 /* CellBackground.png */; };
+		BC5EE22F147D70C300A282A5 /* CellBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE229147D70C300A282A5 /* CellBackground@2x.png */; };
+		BC5EE230147D70C300A282A5 /* MaskGray.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22A147D70C300A282A5 /* MaskGray.png */; };
+		BC5EE231147D70C300A282A5 /* MaskGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22B147D70C300A282A5 /* MaskGray@2x.png */; };
+		BC5EE232147D70C300A282A5 /* MaskWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22C147D70C300A282A5 /* MaskWhite.png */; };
+		BC5EE233147D70C300A282A5 /* MaskWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22D147D70C300A282A5 /* MaskWhite@2x.png */; };
+		BC5EE240147D739600A282A5 /* RadioSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23A147D739600A282A5 /* RadioSelectionTableViewCell.xib */; };
+		BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
+		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
+		BC5EE243147D739600A282A5 /* RadioTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23F147D739600A282A5 /* RadioTabBarController.m */; };
 		BC648F1014684EFB005A6D8A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC648F0E14684EFB005A6D8A /* MainViewController.m */; };
 		BC943A4F1468874D0031CE17 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC943A4D1468874D0031CE17 /* MainWindow.xib */; };
 		BC943A5314688AE70031CE17 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
@@ -116,6 +128,20 @@
 		405629A2147547380085518C /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		405629A5147547380085518C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		405629A6147547380085518C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		BC5EE21F147D5CFA00A282A5 /* YasoundHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = YasoundHeader.png; path = RadioSelection/YasoundHeader.png; sourceTree = "<group>"; };
+		BC5EE220147D5CFA00A282A5 /* YasoundHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "YasoundHeader@2x.png"; path = "RadioSelection/YasoundHeader@2x.png"; sourceTree = "<group>"; };
+		BC5EE228147D70C300A282A5 /* CellBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackground.png; path = RadioSelection/CellBackground.png; sourceTree = "<group>"; };
+		BC5EE229147D70C300A282A5 /* CellBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellBackground@2x.png"; path = "RadioSelection/CellBackground@2x.png"; sourceTree = "<group>"; };
+		BC5EE22A147D70C300A282A5 /* MaskGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MaskGray.png; path = RadioSelection/MaskGray.png; sourceTree = "<group>"; };
+		BC5EE22B147D70C300A282A5 /* MaskGray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MaskGray@2x.png"; path = "RadioSelection/MaskGray@2x.png"; sourceTree = "<group>"; };
+		BC5EE22C147D70C300A282A5 /* MaskWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MaskWhite.png; path = RadioSelection/MaskWhite.png; sourceTree = "<group>"; };
+		BC5EE22D147D70C300A282A5 /* MaskWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MaskWhite@2x.png"; path = "RadioSelection/MaskWhite@2x.png"; sourceTree = "<group>"; };
+		BC5EE23A147D739600A282A5 /* RadioSelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionTableViewCell.xib; path = RadioSelection/RadioSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionViewController.h; path = RadioSelection/RadioSelectionViewController.h; sourceTree = "<group>"; };
+		BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionViewController.m; path = RadioSelection/RadioSelectionViewController.m; sourceTree = "<group>"; };
+		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
+		BC5EE23E147D739600A282A5 /* RadioTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioTabBarController.h; path = RadioSelection/RadioTabBarController.h; sourceTree = "<group>"; };
+		BC5EE23F147D739600A282A5 /* RadioTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioTabBarController.m; path = RadioSelection/RadioTabBarController.m; sourceTree = "<group>"; };
 		BC648F0D14684EFB005A6D8A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		BC648F0E14684EFB005A6D8A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		BC943A4E1468874D0031CE17 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
@@ -262,12 +288,41 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		BC5EE20E147D3EB300A282A5 /* Radio Selection */ = {
+			isa = PBXGroup;
+			children = (
+				BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */,
+				BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */,
+				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,
+				BC5EE23A147D739600A282A5 /* RadioSelectionTableViewCell.xib */,
+				BC5EE23E147D739600A282A5 /* RadioTabBarController.h */,
+				BC5EE23F147D739600A282A5 /* RadioTabBarController.m */,
+			);
+			name = "Radio Selection";
+			sourceTree = "<group>";
+		};
+		BC5EE217147D427100A282A5 /* RadioSelection */ = {
+			isa = PBXGroup;
+			children = (
+				BC5EE228147D70C300A282A5 /* CellBackground.png */,
+				BC5EE229147D70C300A282A5 /* CellBackground@2x.png */,
+				BC5EE22A147D70C300A282A5 /* MaskGray.png */,
+				BC5EE22B147D70C300A282A5 /* MaskGray@2x.png */,
+				BC5EE22C147D70C300A282A5 /* MaskWhite.png */,
+				BC5EE22D147D70C300A282A5 /* MaskWhite@2x.png */,
+				BC5EE21F147D5CFA00A282A5 /* YasoundHeader.png */,
+				BC5EE220147D5CFA00A282A5 /* YasoundHeader@2x.png */,
+			);
+			name = RadioSelection;
+			sourceTree = "<group>";
+		};
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
 				BCFECFB8146841A800BA20D9 /* avatars */,
 				BCFECFBC146841A800BA20D9 /* gui */,
 				BCFECFC3146841A800BA20D9 /* icons */,
+				BC5EE217147D427100A282A5 /* RadioSelection */,
 				BCFECFCE146841A800BA20D9 /* logo@2x.png */,
 				BCD4C2C8146962B1000A236A /* logo.png */,
 				BC943A5014688AE70031CE17 /* Default.png */,
@@ -412,6 +467,7 @@
 				4056298D147547380085518C /* ASIHTTPRequest */,
 				BCFECFE31468439900BA20D9 /* Audio */,
 				BCFECFE61468439900BA20D9 /* Gui */,
+				BC5EE20E147D3EB300A282A5 /* Radio Selection */,
 				BCFECFED1468439900BA20D9 /* InteractionViewController.h */,
 				BCFECFEE1468439900BA20D9 /* InteractionViewController.m */,
 				BCFECFF01468439900BA20D9 /* RadioCreatorViewController.h */,
@@ -534,6 +590,16 @@
 				401B0116146978B400A4B047 /* avatar12.png in Resources */,
 				401B0117146978B400A4B047 /* avatar13.png in Resources */,
 				401B0118146978B400A4B047 /* avatar14.png in Resources */,
+				BC5EE221147D5CFA00A282A5 /* YasoundHeader.png in Resources */,
+				BC5EE222147D5CFA00A282A5 /* YasoundHeader@2x.png in Resources */,
+				BC5EE22E147D70C300A282A5 /* CellBackground.png in Resources */,
+				BC5EE22F147D70C300A282A5 /* CellBackground@2x.png in Resources */,
+				BC5EE230147D70C300A282A5 /* MaskGray.png in Resources */,
+				BC5EE231147D70C300A282A5 /* MaskGray@2x.png in Resources */,
+				BC5EE232147D70C300A282A5 /* MaskWhite.png in Resources */,
+				BC5EE233147D70C300A282A5 /* MaskWhite@2x.png in Resources */,
+				BC5EE240147D739600A282A5 /* RadioSelectionTableViewCell.xib in Resources */,
+				BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +631,8 @@
 				405629AD147547380085518C /* ASIInputStream.m in Sources */,
 				405629AE147547380085518C /* ASINetworkQueue.m in Sources */,
 				405629AF147547380085518C /* Reachability.m in Sources */,
+				BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */,
+				BC5EE243147D739600A282A5 /* RadioTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,14 +704,14 @@
 		E5A9A3C51454DC0500EA374C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: matthieu campion (A79Q464628)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LOIC BERTHELOT (M4LM7N2G22)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2EE425CC-6FD4-4FE9-823A-4952F4E809A0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -651,14 +719,14 @@
 		E5A9A3C61454DC0500EA374C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: matthieu campion (A79Q464628)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LOIC BERTHELOT (M4LM7N2G22)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2EE425CC-6FD4-4FE9-823A-4952F4E809A0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

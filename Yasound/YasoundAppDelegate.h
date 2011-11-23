@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MainViewController.h"
 
+@class RadioTabBarController;
 
 //@interface YasoundAppDelegate : NSObject <UIApplicationDelegate, MainViewDelegate>
 @interface YasoundAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, retain)  IBOutlet UIWindow *window;
 @property (nonatomic, retain)  UINavigationController *navigationController;
-@property (nonatomic, retain) MainViewController* mainViewController;
+@property (nonatomic, retain) RadioTabBarController* tabBarController;
 
 @end
