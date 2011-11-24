@@ -40,6 +40,15 @@
 		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC5EE243147D739600A282A5 /* RadioTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23F147D739600A282A5 /* RadioTabBarController.m */; };
 		BC648F1014684EFB005A6D8A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC648F0E14684EFB005A6D8A /* MainViewController.m */; };
+		BC738AAD147E5C76000415AD /* casque.png in Resources */ = {isa = PBXBuildFile; fileRef = BC738AA7147E5C76000415AD /* casque.png */; };
+		BC738AAE147E5C76000415AD /* casque@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC738AA8147E5C76000415AD /* casque@2x.png */; };
+		BC738AAF147E5C76000415AD /* coeur.png in Resources */ = {isa = PBXBuildFile; fileRef = BC738AA9147E5C76000415AD /* coeur.png */; };
+		BC738AB0147E5C76000415AD /* coeur@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC738AAA147E5C76000415AD /* coeur@2x.png */; };
+		BC738AB1147E5C76000415AD /* fleche.png in Resources */ = {isa = PBXBuildFile; fileRef = BC738AAB147E5C76000415AD /* fleche.png */; };
+		BC738AB2147E5C76000415AD /* fleche@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC738AAC147E5C76000415AD /* fleche@2x.png */; };
+		BC738AB6147E5E3A000415AD /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC738AB5147E5E3A000415AD /* RadioSelectionTableViewCell.m */; };
+		BC738AB9147E6031000415AD /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC738AB7147E6031000415AD /* avatarDummy.png */; };
+		BC738ABA147E6031000415AD /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC738AB8147E6031000415AD /* avatarDummy@2x.png */; };
 		BC943A4F1468874D0031CE17 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC943A4D1468874D0031CE17 /* MainWindow.xib */; };
 		BC943A5314688AE70031CE17 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
 		BC943A5414688AE70031CE17 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
@@ -144,6 +153,16 @@
 		BC5EE23F147D739600A282A5 /* RadioTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioTabBarController.m; path = RadioSelection/RadioTabBarController.m; sourceTree = "<group>"; };
 		BC648F0D14684EFB005A6D8A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		BC648F0E14684EFB005A6D8A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		BC738AA7147E5C76000415AD /* casque.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = casque.png; path = RadioSelection/casque.png; sourceTree = "<group>"; };
+		BC738AA8147E5C76000415AD /* casque@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "casque@2x.png"; path = "RadioSelection/casque@2x.png"; sourceTree = "<group>"; };
+		BC738AA9147E5C76000415AD /* coeur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coeur.png; path = RadioSelection/coeur.png; sourceTree = "<group>"; };
+		BC738AAA147E5C76000415AD /* coeur@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "coeur@2x.png"; path = "RadioSelection/coeur@2x.png"; sourceTree = "<group>"; };
+		BC738AAB147E5C76000415AD /* fleche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fleche.png; path = RadioSelection/fleche.png; sourceTree = "<group>"; };
+		BC738AAC147E5C76000415AD /* fleche@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "fleche@2x.png"; path = "RadioSelection/fleche@2x.png"; sourceTree = "<group>"; };
+		BC738AB4147E5E3A000415AD /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
+		BC738AB5147E5E3A000415AD /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
+		BC738AB7147E6031000415AD /* avatarDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatarDummy.png; path = resources/RadioSelection/avatarDummy.png; sourceTree = SOURCE_ROOT; };
+		BC738AB8147E6031000415AD /* avatarDummy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatarDummy@2x.png"; path = "resources/RadioSelection/avatarDummy@2x.png"; sourceTree = SOURCE_ROOT; };
 		BC943A4E1468874D0031CE17 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		BC943A5014688AE70031CE17 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BC943A5114688AE70031CE17 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -291,9 +310,13 @@
 		BC5EE20E147D3EB300A282A5 /* Radio Selection */ = {
 			isa = PBXGroup;
 			children = (
+				BC738AB7147E6031000415AD /* avatarDummy.png */,
+				BC738AB8147E6031000415AD /* avatarDummy@2x.png */,
 				BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */,
 				BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */,
 				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,
+				BC738AB4147E5E3A000415AD /* RadioSelectionTableViewCell.h */,
+				BC738AB5147E5E3A000415AD /* RadioSelectionTableViewCell.m */,
 				BC5EE23A147D739600A282A5 /* RadioSelectionTableViewCell.xib */,
 				BC5EE23E147D739600A282A5 /* RadioTabBarController.h */,
 				BC5EE23F147D739600A282A5 /* RadioTabBarController.m */,
@@ -304,6 +327,12 @@
 		BC5EE217147D427100A282A5 /* RadioSelection */ = {
 			isa = PBXGroup;
 			children = (
+				BC738AA7147E5C76000415AD /* casque.png */,
+				BC738AA8147E5C76000415AD /* casque@2x.png */,
+				BC738AA9147E5C76000415AD /* coeur.png */,
+				BC738AAA147E5C76000415AD /* coeur@2x.png */,
+				BC738AAB147E5C76000415AD /* fleche.png */,
+				BC738AAC147E5C76000415AD /* fleche@2x.png */,
 				BC5EE228147D70C300A282A5 /* CellBackground.png */,
 				BC5EE229147D70C300A282A5 /* CellBackground@2x.png */,
 				BC5EE22A147D70C300A282A5 /* MaskGray.png */,
@@ -600,6 +629,14 @@
 				BC5EE233147D70C300A282A5 /* MaskWhite@2x.png in Resources */,
 				BC5EE240147D739600A282A5 /* RadioSelectionTableViewCell.xib in Resources */,
 				BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */,
+				BC738AAD147E5C76000415AD /* casque.png in Resources */,
+				BC738AAE147E5C76000415AD /* casque@2x.png in Resources */,
+				BC738AAF147E5C76000415AD /* coeur.png in Resources */,
+				BC738AB0147E5C76000415AD /* coeur@2x.png in Resources */,
+				BC738AB1147E5C76000415AD /* fleche.png in Resources */,
+				BC738AB2147E5C76000415AD /* fleche@2x.png in Resources */,
+				BC738AB9147E6031000415AD /* avatarDummy.png in Resources */,
+				BC738ABA147E6031000415AD /* avatarDummy@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +670,7 @@
 				405629AF147547380085518C /* Reachability.m in Sources */,
 				BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */,
 				BC5EE243147D739600A282A5 /* RadioTabBarController.m in Sources */,
+				BC738AB6147E5E3A000415AD /* RadioSelectionTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
