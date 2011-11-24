@@ -59,6 +59,14 @@ static UIImage* gGrayMask = nil;
     // subtitle 2
     self.radioSubtitle2 = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2" error:&error]];
     [self addSubview:self.radioSubtitle2];
+
+    // likes
+    self.radioLikes = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes" error:&error]];
+    [self addSubview:self.radioLikes];
+
+    // listeners
+    self.radioListeners = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners" error:&error]];
+    [self addSubview:self.radioListeners];
     
       
     //  if (gGrayMask == nil)
