@@ -95,7 +95,7 @@
 			<key>font</key>
 			<dict>
 				<key>name</key>
-				<string>HelveticaNeue-Bold</string>
+				<string>HelveticaNeue</string>
 				<key>size</key>
 				<integer>16</integer>
 				<key>textColor</key>
@@ -118,6 +118,10 @@
 			<integer>21</integer>
 			<key>font</key>
 			<dict>
+				<key>name</key>
+				<string>HelveticaNeue</string>
+				<key>size</key>
+				<integer>10</integer>
 				<key>textColor</key>
 				<string>rgb(90,90,90)</string>
 				<key>text</key>
@@ -136,6 +140,10 @@
 			<integer>21</integer>
 			<key>font</key>
 			<dict>
+				<key>name</key>
+				<string>HelveticaNeue</string>
+				<key>size</key>
+				<integer>10</integer>
 				<key>textColor</key>
 				<string>rgb(90,90,90)</string>
 				<key>text</key>

@@ -491,7 +491,8 @@ static NSMutableDictionary* gFonts = nil;
   // a specific font has been requested
   if (stylesheet.font.name != nil)
   {
-    font = [gFonts objectForKey:stylesheet.font.name];
+    NSString* fontName = [stylesheet.font.name stringByAppendingFormat:@"-%d", stylesheet.font.size];
+    font = [gFonts objectForKey:fontName];
     
     // add the font, if it's not been done already
     if (font == nil)
@@ -500,7 +501,7 @@ static NSMutableDictionary* gFonts = nil;
       if (font == nil)
         NSLog(@"BundleStylesheet error : could not get the font '%@'", stylesheet.font.name);
       else
-        [gFonts setObject:font forKey:stylesheet.font.name];
+        [gFonts setObject:font forKey:fontName];
     }
   }
   
