@@ -15,6 +15,7 @@
 
 @interface BundleFontsheet: NSObject
 {
+  NSString* _name;
   NSInteger _size;
   UITextAlignment _textAlignement;
   NSString* _text;
@@ -23,6 +24,7 @@
   NSString* _weight;
 }
 
+@property (nonatomic, retain, readonly) NSString* name;
 @property (nonatomic, readonly) NSInteger size;
 @property (nonatomic, readonly) UITextAlignment textAlignement;
 @property (nonatomic, retain, readonly) NSString* text;

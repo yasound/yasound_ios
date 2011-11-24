@@ -19,6 +19,7 @@
 
 @implementation BundleFontsheet
 
+@synthesize name = _name;
 @synthesize size = _size;
 @synthesize textAlignement = _textAlignement;
 @synthesize text = _text;
@@ -194,6 +195,9 @@
   _backgroundColor = [UIColor clearColor];
   _weight = [[NSString alloc] initWithString:@"normal"];
 
+  NSString* fontName = [sheet valueForKey:@"name"];
+  if (fontName != nil)
+    _name = [[NSString alloc] initWithString:fontName];
 
   NSNumber* fontSize = [sheet valueForKey:@"size"];
   if (fontSize != nil)
@@ -259,10 +263,16 @@
 
 
 
+static NSMutableDictionary* gFonts = nil;
+
+
 
 - (id)init
 {
   self = [super init];
+  
+  if (gFonts == nil)
+    gFonts = [[NSMutableDictionary alloc] init];
   
   _images = [[NSMutableDictionary alloc] init];
   _frame = CGRectMake(0, 0, 0, 0);
@@ -469,14 +479,36 @@
 // static shortcut to create a label
 //
 + (UILabel*)BSMakeLabel:(BundleStylesheet*)stylesheet
-{
+{  
   UILabel* label = [[UILabel alloc] initWithFrame:stylesheet.frame];
   label.backgroundColor = stylesheet.font.backgroundColor;
   label.textColor = stylesheet.font.textColor;
   label.text = stylesheet.font.text;
   label.textAlignment = stylesheet.font.textAlignement;
   
-  if ([stylesheet.font.weight isEqualToString:@"bold"])
+  UIFont* font = nil;
+  
+  // a specific font has been requested
+  if (stylesheet.font.name != nil)
+  {
+    font = [gFonts objectForKey:stylesheet.font.name];
+    
+    // add the font, if it's not been done already
+    if (font == nil)
+    {
+      font = [UIFont fontWithName:stylesheet.font.name size:stylesheet.font.size];
+      if (font == nil)
+        NSLog(@"BundleStylesheet error : could not get the font '%@'", stylesheet.font.name);
+      else
+        [gFonts setObject:font forKey:stylesheet.font.name];
+    }
+  }
+  
+  if (font != nil)
+    label.font = font;
+    
+  // otherwise, use the system font
+  else if ([stylesheet.font.weight isEqualToString:@"bold"])
     label.font = [UIFont boldSystemFontOfSize:stylesheet.font.size];
   else  if ([stylesheet.font.weight isEqualToString:@"italic"])
     label.font = [UIFont italicSystemFontOfSize:stylesheet.font.size];
