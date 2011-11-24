@@ -8,6 +8,8 @@
 
 #import "RadioSelectionViewController.h"
 #import "RadioSelectionTableViewCell.h"
+#import "StyleSelectorViewController.h"
+
 
 @implementation RadioSelectionViewController
 
@@ -24,6 +26,7 @@
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    
   }
 
   return self;
@@ -134,34 +137,6 @@
 
   RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row];
   
-//  if (gGrayMask == nil)
-//    gGrayMask = [UIImage imageNamed:@"MaskGray.png"];
-//  
-//  if (indexPath.row & 1)
-//  {
-//    [cell.radioAvatarMask setImage:[UIImage imageNamed:@"coeur.png"]];
-//    NSLog(@"log : %@", cell.radioTitle.text);
-//  }
-  
-  
-  
-//  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
-//  RadioSelectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//  if (cell == nil) 
-//  {
-//    cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier];
-//  }
-//
-//  if (gGrayMask == nil)
-//    gGrayMask = [UIImage imageNamed:@"MaskGray.png"];
-//
-//  if (indexPath.row & 1)
-//  {
-//    [cell.radioAvatarMask setImage:[UIImage imageNamed:@"coeur.png"]];
-////    NSLog(@"log : %@", cell.radioTitle.text);
-//  }
-
-
   
   return cell;
 }
@@ -172,6 +147,29 @@
 
 
 
+
+#pragma mark - IBActions
+
+- (IBAction)onStyleSelectorClicked:(id)sender
+{
+  StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil target:self];
+//  self.navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+   self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+  [self.navigationController presentModalViewController:view animated:YES];
+}
+
+
+#pragma mark - StyleSelectorDelegate
+
+- (void)didSelectStyle:(NSString*)style
+{
+  [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+- (void)cancelSelectStyle
+{
+  [self.navigationController dismissModalViewControllerAnimated:YES];
+}
 
 
 

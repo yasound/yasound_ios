@@ -68,28 +68,37 @@ static UIImage* gGrayMask = nil;
     self.radioListeners = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners" error:&error]];
     [self addSubview:self.radioListeners];
     
-      
-    //  if (gGrayMask == nil)
-    //    gGrayMask = [UIImage imageNamed:@"MaskGray.png"];
-    //  
-
-//    if (rowIndex & 1)
-//    {
-//      self.backgroundColor = [UIColor redColor];
-////      [cell.radioAvatarMask setImage:[UIImage imageNamed:@"coeur.png"]];
-////      NSLog(@"log : %@", cell.radioTitle.text);
-//    }
+    // configure selected view
+    UIView* myBackView = [[UIView alloc] initWithFrame:self.frame];
+    myBackView.backgroundColor = [UIColor colorWithRed:220.f/255.f green:227.f/255.f blue:239.f/255.f alpha:1];
+    self.selectedBackgroundView = myBackView;
+    [myBackView release];
+    
+    _maskBackup = self.radioAvatarMask.image;
+    [_maskBackup retain];
+    _maskSelected = [UIImage imageNamed:@"MaskSelected.png"];
+    [_maskSelected retain];
     
   }
   return self;
 }
 
 
+- (void)dealloc
+{
+  [_maskBackup release];
+  [_maskSelected release];
+  [super dealloc];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
   [super setSelected:selected animated:animated];
-  
-  // Configure the view for the selected state
+
+  if (selected)
+    self.radioAvatarMask.image = _maskSelected;
+  else
+    self.radioAvatarMask.image = _maskBackup;
 }
 
 @end

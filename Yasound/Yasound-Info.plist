@@ -195,5 +195,19 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>styles</key>
+	<array>
+		<string>AllStyles</string>
+		<string>Rock</string>
+		<string>HipHop</string>
+		<string>Classic</string>
+		<string>Country</string>
+		<string>Metal</string>
+		<string>Garage</string>
+		<string>HardRock</string>
+		<string>Pop</string>
+		<string>Club</string>
+		<string>Electro</string>
+	</array>
 </dict>
 </plist>

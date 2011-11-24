@@ -10,6 +10,9 @@
 
 @interface RadioSelectionTableViewCell : UITableViewCell
 {
+  UIImage* _maskBackup;
+  UIImage* _maskSelected;
+  
 }
 
 

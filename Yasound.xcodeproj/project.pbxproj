@@ -54,6 +54,12 @@
 		BC943A5514688AE70031CE17 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5214688AE70031CE17 /* icon.png */; };
 		BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
+		BC9F4153147EAD2B00D417EF /* MaskSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4151147EAD2B00D417EF /* MaskSelected.png */; };
+		BC9F4154147EAD2B00D417EF /* MaskSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4152147EAD2B00D417EF /* MaskSelected@2x.png */; };
+		BC9F4157147EAE3100D417EF /* flecheWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4155147EAE3100D417EF /* flecheWhite.png */; };
+		BC9F4158147EAE3100D417EF /* flecheWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4156147EAE3100D417EF /* flecheWhite@2x.png */; };
+		BC9F415C147EAEFD00D417EF /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F415A147EAEFC00D417EF /* StyleSelectorViewController.m */; };
+		BC9F415D147EAEFD00D417EF /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BCD4C2C9146962B1000A236A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2C8146962B1000A236A /* logo.png */; };
 		BCD4C2CE14696E6E000A236A /* CreateMyRadio_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CA14696E6E000A236A /* CreateMyRadio_Down.png */; };
@@ -171,6 +177,13 @@
 		BC9F4144147E8A5F00D417EF /* BundleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleFileManager.m; sourceTree = "<group>"; };
 		BC9F4145147E8A5F00D417EF /* BundleStylesheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleStylesheet.h; sourceTree = "<group>"; };
 		BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleStylesheet.m; sourceTree = "<group>"; };
+		BC9F4151147EAD2B00D417EF /* MaskSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MaskSelected.png; path = RadioSelection/MaskSelected.png; sourceTree = "<group>"; };
+		BC9F4152147EAD2B00D417EF /* MaskSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MaskSelected@2x.png"; path = "RadioSelection/MaskSelected@2x.png"; sourceTree = "<group>"; };
+		BC9F4155147EAE3100D417EF /* flecheWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flecheWhite.png; path = RadioSelection/flecheWhite.png; sourceTree = "<group>"; };
+		BC9F4156147EAE3100D417EF /* flecheWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "flecheWhite@2x.png"; path = "RadioSelection/flecheWhite@2x.png"; sourceTree = "<group>"; };
+		BC9F4159147EAEFC00D417EF /* StyleSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StyleSelectorViewController.h; path = RadioSelection/StyleSelectorViewController.h; sourceTree = "<group>"; };
+		BC9F415A147EAEFC00D417EF /* StyleSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StyleSelectorViewController.m; path = RadioSelection/StyleSelectorViewController.m; sourceTree = "<group>"; };
+		BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StyleSelectorViewController.xib; path = RadioSelection/StyleSelectorViewController.xib; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
 		BCD4C2C8146962B1000A236A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -321,6 +334,9 @@
 				BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */,
 				BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */,
 				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,
+				BC9F4159147EAEFC00D417EF /* StyleSelectorViewController.h */,
+				BC9F415A147EAEFC00D417EF /* StyleSelectorViewController.m */,
+				BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */,
 				BC5EE23E147D739600A282A5 /* RadioTabBarController.h */,
 				BC5EE23F147D739600A282A5 /* RadioTabBarController.m */,
 			);
@@ -336,12 +352,16 @@
 				BC738AAA147E5C76000415AD /* coeur@2x.png */,
 				BC738AAB147E5C76000415AD /* fleche.png */,
 				BC738AAC147E5C76000415AD /* fleche@2x.png */,
+				BC9F4155147EAE3100D417EF /* flecheWhite.png */,
+				BC9F4156147EAE3100D417EF /* flecheWhite@2x.png */,
 				BC5EE228147D70C300A282A5 /* CellBackground.png */,
 				BC5EE229147D70C300A282A5 /* CellBackground@2x.png */,
 				BC5EE22A147D70C300A282A5 /* MaskGray.png */,
 				BC5EE22B147D70C300A282A5 /* MaskGray@2x.png */,
 				BC5EE22C147D70C300A282A5 /* MaskWhite.png */,
 				BC5EE22D147D70C300A282A5 /* MaskWhite@2x.png */,
+				BC9F4151147EAD2B00D417EF /* MaskSelected.png */,
+				BC9F4152147EAD2B00D417EF /* MaskSelected@2x.png */,
 				BC5EE21F147D5CFA00A282A5 /* YasoundHeader.png */,
 				BC5EE220147D5CFA00A282A5 /* YasoundHeader@2x.png */,
 			);
@@ -652,6 +672,11 @@
 				BC738AB2147E5C76000415AD /* fleche@2x.png in Resources */,
 				BC738AB9147E6031000415AD /* avatarDummy.png in Resources */,
 				BC738ABA147E6031000415AD /* avatarDummy@2x.png in Resources */,
+				BC9F4153147EAD2B00D417EF /* MaskSelected.png in Resources */,
+				BC9F4154147EAD2B00D417EF /* MaskSelected@2x.png in Resources */,
+				BC9F4157147EAE3100D417EF /* flecheWhite.png in Resources */,
+				BC9F4158147EAE3100D417EF /* flecheWhite@2x.png in Resources */,
+				BC9F415D147EAEFD00D417EF /* StyleSelectorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +713,7 @@
 				BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */,
 				BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */,
 				BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */,
+				BC9F415C147EAEFD00D417EF /* StyleSelectorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

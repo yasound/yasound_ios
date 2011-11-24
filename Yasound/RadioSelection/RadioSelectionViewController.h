@@ -18,11 +18,12 @@
   IBOutlet UILabel* _topBarTitle;
   IBOutlet UILabel* _categoryTitle;
   
-  IBOutlet UITableView* _tableView;
+  IBOutlet UITableView* _tableView;  
 }
 
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem;
 
+- (IBAction)onStyleSelectorClicked:(id)sender;
 @end
