@@ -7,6 +7,7 @@
 //
 
 #import "RadioSelectionViewController.h"
+#import "RadioSelectionTableViewCell.h"
 
 @implementation RadioSelectionViewController
 
@@ -111,11 +112,15 @@
 
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(RadioSelectionTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
   float value = 235.f/255.f;
   if (indexPath.row & 1)
+  {
     cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
+  }
   else
     cell.backgroundColor = [UIColor whiteColor];
 }
@@ -124,15 +129,38 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-  if (cell == nil) 
-  {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
-  }
 
-  NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:cellIdentifier owner:self options:nil];
-  cell = [topLevelObjects objectAtIndex:0];
+  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
+
+  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row];
+  
+//  if (gGrayMask == nil)
+//    gGrayMask = [UIImage imageNamed:@"MaskGray.png"];
+//  
+//  if (indexPath.row & 1)
+//  {
+//    [cell.radioAvatarMask setImage:[UIImage imageNamed:@"coeur.png"]];
+//    NSLog(@"log : %@", cell.radioTitle.text);
+//  }
+  
+  
+  
+//  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
+//  RadioSelectionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//  if (cell == nil) 
+//  {
+//    cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier];
+//  }
+//
+//  if (gGrayMask == nil)
+//    gGrayMask = [UIImage imageNamed:@"MaskGray.png"];
+//
+//  if (indexPath.row & 1)
+//  {
+//    [cell.radioAvatarMask setImage:[UIImage imageNamed:@"coeur.png"]];
+////    NSLog(@"log : %@", cell.radioTitle.text);
+//  }
+
 
   
   return cell;

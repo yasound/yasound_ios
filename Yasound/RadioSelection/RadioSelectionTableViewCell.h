@@ -10,13 +10,18 @@
 
 @interface RadioSelectionTableViewCell : UITableViewCell
 {
-  IBOutlet UILabel* _radioTitle;
-  IBOutlet UILabel* _radioSubtitle1;
-  IBOutlet UILabel* _radioSubtitle2;
-  IBOutlet UILabel* _radioLikes;
-  IBOutlet UILabel* _radioListeners;
-  IBOutlet UIImageView* _radioAvatar;
-  IBOutlet UIImageView* _radioAvatarMask;
 }
+
+
+@property (nonatomic, retain) UILabel* radioTitle;
+@property (nonatomic, retain) UILabel* radioSubtitle1;
+@property (nonatomic, retain) UILabel* radioSubtitle2;
+@property (nonatomic, retain) UILabel* radioLikes;
+@property (nonatomic, retain) UILabel* radioListeners;
+@property (nonatomic, retain) UIImageView* radioAvatar;
+@property (nonatomic, retain) UIImageView* radioAvatarMask;
+
+
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex;
 
 @end
