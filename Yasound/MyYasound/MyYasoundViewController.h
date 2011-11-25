@@ -13,6 +13,8 @@
   UIView* _viewCurrent;
   IBOutlet UIBarButtonItem* _segmentBarButtonItem;
   IBOutlet UITableView* _tableView;
+  
+  UISegmentedControl* _segmentControl;
 }
 
 @property (nonatomic, retain) IBOutlet UIView* viewContainer;

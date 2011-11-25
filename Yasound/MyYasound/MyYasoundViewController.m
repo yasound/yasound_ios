@@ -19,6 +19,11 @@
 @synthesize viewSelection;
 
 
+//LBDEBUG
+static NSArray* gFakeUsersFriends = nil;
+static NSArray* gFakeUsersFavorites = nil;
+
+
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -27,7 +32,17 @@
       UIImage* tabImage = [UIImage imageNamed:tabIcon];
       UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
       self.tabBarItem = theItem;
-      [theItem release];     
+      [theItem release];   
+      
+      // LBDEBUG static init
+      if (gFakeUsersFriends == nil)
+      {
+        NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
+        gFakeUsersFriends = [resources objectForKey:@"fakeUsersFriends"];
+        gFakeUsersFavorites = [resources objectForKey:@"fakeUsersFavorites"];
+      }
+      ///////////////
+
     }
     return self;
 }
@@ -49,13 +64,13 @@
   _viewCurrent = self.viewMyYasound;
   [self.viewContainer addSubview:_viewCurrent];
   
-  UISegmentedControl* control = (UISegmentedControl *) [_segmentBarButtonItem customView];
+  _segmentControl = (UISegmentedControl *) [_segmentBarButtonItem customView];
   
-  [control setTitle:NSLocalizedString(@"myyaound_tab_myyasound", nil) forSegmentAtIndex:0];
-  [control setTitle:NSLocalizedString(@"myyaound_tab_friends", nil) forSegmentAtIndex:1];
-  [control setTitle:NSLocalizedString(@"myyaound_tab_favorites", nil) forSegmentAtIndex:2];
+  [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_myyasound", nil) forSegmentAtIndex:0];
+  [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_friends", nil) forSegmentAtIndex:1];
+  [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_favorites", nil) forSegmentAtIndex:2];
   
-  [control addTarget:self 
+  [_segmentControl addTarget:self 
                        action:@selector(onmSegmentClicked:)  
              forControlEvents:UIControlEventValueChanged];}
 
@@ -84,9 +99,7 @@
 
 - (IBAction)onmSegmentClicked:(id)sender
 {
-  int clickedSegment = [sender selectedSegment];
-  
-  switch (clickedSegment)
+  switch (_segmentControl.selectedSegmentIndex)
   {
     case 0:
       [_viewCurrent removeFromSuperview];
@@ -98,12 +111,14 @@
       [_viewCurrent removeFromSuperview];
       _viewCurrent = self.viewSelection;
       [self.viewContainer addSubview:_viewCurrent];
+      [_tableView reloadData];
       break;
       
     case 2:
       [_viewCurrent removeFromSuperview];
       _viewCurrent = self.viewSelection;
       [self.viewContainer addSubview:_viewCurrent];
+      [_tableView reloadData];
       break;
   }
   
@@ -125,10 +140,17 @@
   return 1;
 }
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
   // Number of rows is the number of time zones in the region for the specified section.
-  return 24;
+  if (_segmentControl.selectedSegmentIndex == 1)
+    return 24;
+  else if (_segmentControl.selectedSegmentIndex == 2)
+    return 16;
+  
+  return 0;
 }
 
 
@@ -153,7 +175,10 @@
   
   static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
   
-  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row];
+  //LBDEBUG
+  NSDictionary* data = (_segmentControl.selectedSegmentIndex == 1)? [gFakeUsersFriends objectAtIndex:(indexPath.row % 3)] : [gFakeUsersFavorites objectAtIndex:(indexPath.row % 3)];
+  
+  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row data:data];
   
   
   return cell;

@@ -20,33 +20,21 @@
 @synthesize radioAvatar;
 @synthesize radioAvatarMask;
 
-static UIImage* gGrayMask = nil;
-
-static NSArray* gFakeUsers = nil;
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex data:(NSDictionary*)data;
 {
   if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
   {
     BundleStylesheet* stylesheet;
     NSError* error;
     
-    // static init
-    if (gFakeUsers == nil)
-    {
-      NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
-      gFakeUsers = [resources objectForKey:@"fakeUsers"];
-      srand(time(NULL));
-    }
-    NSInteger fakeUserIndex = rand() % 3;
-    
     
     // cell background
     [self addSubview:[BundleStylesheet BSMakeImage:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackground" error:&error]]];
   
     // avatar
-    self.radioAvatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[[gFakeUsers objectAtIndex:fakeUserIndex] valueForKey:@"image"]]];
+    self.radioAvatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[data valueForKey:@"image"]]];
     stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionAvatar" error:&error];
     self.radioAvatar.frame = stylesheet.frame;
     [self addSubview:self.radioAvatar];
@@ -63,27 +51,27 @@ static NSArray* gFakeUsers = nil;
     
     // title
     self.radioTitle = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:&error]];
-    self.radioTitle.text = [[gFakeUsers objectAtIndex:fakeUserIndex] valueForKey:@"title"];
+    self.radioTitle.text = [data valueForKey:@"title"];
     [self addSubview:self.radioTitle];
 
     // subtitle 1
     self.radioSubtitle1 = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1" error:&error]];
-    self.radioSubtitle1.text = [[gFakeUsers objectAtIndex:fakeUserIndex] valueForKey:@"subtitle1"];
+    self.radioSubtitle1.text = [data valueForKey:@"subtitle1"];
     [self addSubview:self.radioSubtitle1];
 
     // subtitle 2
     self.radioSubtitle2 = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2" error:&error]];
-    self.radioSubtitle2.text = [[gFakeUsers objectAtIndex:fakeUserIndex] valueForKey:@"subtitle2"];
+    self.radioSubtitle2.text = [data valueForKey:@"subtitle2"];
     [self addSubview:self.radioSubtitle2];
 
     // likes
     self.radioLikes = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes" error:&error]];
-    self.radioLikes.text = [NSString stringWithFormat:@"%d", [[gFakeUsers objectAtIndex:fakeUserIndex] valueForKey:@"likes"]];
+    self.radioLikes.text = [NSString stringWithFormat:@"%d", [[data valueForKey:@"likes"] integerValue]];
     [self addSubview:self.radioLikes];
 
     // listeners
     self.radioListeners = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners" error:&error]];
-    self.radioListeners.text = [NSString stringWithFormat:@"%d", [[gFakeUsers objectAtIndex:fakeUserIndex] valueForKey:@"listeners"]];
+    self.radioListeners.text = [NSString stringWithFormat:@"%d", [[data valueForKey:@"listeners"] integerValue]];
     [self addSubview:self.radioListeners];
     
     // configure selected view
