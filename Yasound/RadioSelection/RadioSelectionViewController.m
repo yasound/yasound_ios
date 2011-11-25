@@ -13,26 +13,33 @@
 
 @implementation RadioSelectionViewController
 
-//
-//
-//@synthesize _topBarLabel;
-//@synthesize _topBarTitle;
-//@synthesize _categoryTitle;
-//
-//@synthesize _tableView;  
+
+//LBDEBUG
+static NSArray* gFakeUsers = nil;
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem
+
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) 
   {
+    _type = type;
+    
     UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
     self.tabBarItem = theItem;
     [theItem release];      
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    
+    // LBDEBUG static init
+    if (gFakeUsers == nil)
+    {
+      NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
+      gFakeUsers = [resources objectForKey:@"fakeUsers"];
+    }
+    ///////////////
     
     
   }
@@ -41,11 +48,13 @@
 }
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabIcon:(NSString*)tabIcon
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+      _type = type;
+      
       UIImage* tabImage = [UIImage imageNamed:tabIcon];
       UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
       self.tabBarItem = theItem;
@@ -146,10 +155,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-
   static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
 
-  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row];
+  //LBDEBUG
+  NSInteger fakeUserIndex = (_type == RSTSelection) ? ((indexPath.row) % 6) : (_type == RSTTop)? ((indexPath.row+3) % 6) : (_type == RSTNew) ? ((indexPath.row+1) % 6) : ((indexPath.row+4) % 6);
+  NSDictionary* data = [gFakeUsers objectAtIndex:fakeUserIndex];
+
+  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row data:data];
   
   
   return cell;

@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 
 
-
+typedef enum
+{
+  RSTSelection = 0,
+  RSTTop,
+  RSTNew,
+  RSTSearch
+} RadioSelectionType;
 
 
 @interface RadioSelectionViewController : UIViewController
@@ -21,19 +27,12 @@
   IBOutlet UITableView* _tableView;  
   
   NSString* _currentStyle;
+  RadioSelectionType _type;
 }
 
 
-//@property (nonatomic, retain) IBOutlet UILabel* _topBarLabel;
-//@property (nonatomic, retain) IBOutlet UILabel* _topBarTitle;
-//@property (nonatomic, retain) IBOutlet UILabel* _categoryTitle;
-//
-//@property (nonatomic, retain) IBOutlet UITableView* _tableView;  
-
-
-
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem;
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabIcon:(NSString*)tabIcon;
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem;
 
 - (IBAction)onStyleSelectorClicked:(id)sender;
 @end

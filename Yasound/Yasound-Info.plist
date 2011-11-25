@@ -253,6 +253,54 @@
 				<key>image</key>
 				<string>avatarDummy2.png</string>
 			</dict>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>title</key>
+				<string>Scene unseen</string>
+				<key>subtitle1</key>
+				<string>Mark Ronson</string>
+				<key>subtitle2</key>
+				<string>Bang Bang Bang</string>
+				<key>likes</key>
+				<integer>234</integer>
+				<key>listeners</key>
+				<integer>65</integer>
+				<key>image</key>
+				<string>avatarDummy3.png</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>2</integer>
+				<key>title</key>
+				<string>Electro Radio</string>
+				<key>subtitle1</key>
+				<string>Vive la fête</string>
+				<key>subtitle2</key>
+				<string>Petit Colibri</string>
+				<key>likes</key>
+				<integer>56</integer>
+				<key>listeners</key>
+				<integer>23</integer>
+				<key>image</key>
+				<string>avatarDummy4.png</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>title</key>
+				<string>Salsifis</string>
+				<key>subtitle1</key>
+				<string>Lorem Ipsum Dolore</string>
+				<key>subtitle2</key>
+				<string>Les oiseaux sifflent, le printemps siffle</string>
+				<key>likes</key>
+				<integer>456</integer>
+				<key>listeners</key>
+				<integer>2354</integer>
+				<key>image</key>
+				<string>avatarDummy5.png</string>
+			</dict>
 		</array>
 		<key>fakeUsersFriends</key>
 		<array>
