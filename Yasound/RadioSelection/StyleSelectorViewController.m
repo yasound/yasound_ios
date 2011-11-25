@@ -22,7 +22,8 @@
     {
       self.delegate = target;
       
-      self.styles = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"styles"];
+      NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
+      self.styles = [resources objectForKey:@"styles"];
       assert(self.styles != nil);
     }
     return self;

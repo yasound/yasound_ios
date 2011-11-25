@@ -13,6 +13,13 @@
 
 @implementation RadioSelectionViewController
 
+//
+//
+//@synthesize _topBarLabel;
+//@synthesize _topBarTitle;
+//@synthesize _categoryTitle;
+//
+//@synthesize _tableView;  
 
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem
@@ -26,6 +33,7 @@
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    
     
   }
 
@@ -45,7 +53,7 @@
 
       _tableView.delegate = self;
       _tableView.dataSource = self;
-    }
+}
     return self;
 }
 
@@ -64,6 +72,11 @@
   [super viewDidLoad];
 
   _topBarTitle.text = self.title;
+
+  NSString* str;
+  
+  _categoryTitle.text = [NSLocalizedString(@"all styles", nil) uppercaseString];
+
 
 }
 

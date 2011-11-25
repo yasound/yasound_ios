@@ -57,21 +57,24 @@ static BundleFileManager* _main = nil;
   if (_main == nil)
   {
     _main = [[BundleFileManager alloc] init];
+
+    NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
+
     
     // stylesheet
-    _main.stylesheet = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"stylesheet"];
+    _main.stylesheet = [resources objectForKey:@"stylesheet"];
     if (_main.stylesheet == nil)
       NSLog(@"BundleFileManager Warning : could not find any stylesheet");
     
 #ifdef OPENGL_SPRITE
 
     // animsheet
-    _main.animsheet = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"animsheet"];
+    _main.animsheet = [resources objectForKey:@"animsheet"];
     if (_main.animsheet == nil)
       NSLog(@"BundleFileManager Warning : could not find any animsheet");
     
     //audiosheet
-    _main.audiosheet = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"audiosheet"];
+    _main.audiosheet = [resources objectForKey:@"audiosheet"];
     if (_main.audiosheet == nil)
       NSLog(@"BundleFileManager Warning : could not find any audiosheet");
 #endif

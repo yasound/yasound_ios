@@ -22,6 +22,14 @@
 }
 
 
+//@property (nonatomic, retain) IBOutlet UILabel* _topBarLabel;
+//@property (nonatomic, retain) IBOutlet UILabel* _topBarTitle;
+//@property (nonatomic, retain) IBOutlet UILabel* _categoryTitle;
+//
+//@property (nonatomic, retain) IBOutlet UITableView* _tableView;  
+
+
+
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem;
 
