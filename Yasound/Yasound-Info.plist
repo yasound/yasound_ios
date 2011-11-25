@@ -203,6 +203,57 @@
 				<integer>1</integer>
 			</dict>
 		</dict>
+		<key>fakeUsers</key>
+		<array>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>title</key>
+				<string>Jenny&apos;s Radio</string>
+				<key>subtitle1</key>
+				<string>Fantastic Plastic Machine</string>
+				<key>subtitle2</key>
+				<string>Bossa for Jackie (Summer Review)</string>
+				<key>likes</key>
+				<integer>124</integer>
+				<key>listeners</key>
+				<integer>29</integer>
+				<key>image</key>
+				<string>avatarDummy.png</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>2</integer>
+				<key>title</key>
+				<string>Scene unseen</string>
+				<key>subtitle1</key>
+				<string>Lana del Rey</string>
+				<key>subtitle2</key>
+				<string>Blue Jeans</string>
+				<key>likes</key>
+				<integer>24</integer>
+				<key>listeners</key>
+				<integer>254</integer>
+				<key>image</key>
+				<string>avatarDummy1.png</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>title</key>
+				<string>Jazz, Samba et compagnie</string>
+				<key>subtitle1</key>
+				<string>Ymac Sumac</string>
+				<key>subtitle2</key>
+				<string>Chant Of The Chosen Maidens (Accla Taqui)</string>
+				<key>likes</key>
+				<integer>456</integer>
+				<key>listeners</key>
+				<integer>2354</integer>
+				<key>image</key>
+				<string>avatarDummy2.png</string>
+			</dict>
+		</array>
 	</dict>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>

@@ -50,6 +50,11 @@
   [self.viewContainer addSubview:_viewCurrent];
   
   UISegmentedControl* control = (UISegmentedControl *) [_segmentBarButtonItem customView];
+  
+  [control setTitle:NSLocalizedString(@"myyaound_tab_myyasound", nil) forSegmentAtIndex:0];
+  [control setTitle:NSLocalizedString(@"myyaound_tab_friends", nil) forSegmentAtIndex:1];
+  [control setTitle:NSLocalizedString(@"myyaound_tab_favorites", nil) forSegmentAtIndex:2];
+  
   [control addTarget:self 
                        action:@selector(onmSegmentClicked:)  
              forControlEvents:UIControlEventValueChanged];}
