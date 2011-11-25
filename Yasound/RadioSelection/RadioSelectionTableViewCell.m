@@ -31,7 +31,10 @@
     
     
     // cell background
-    [self addSubview:[BundleStylesheet BSMakeImage:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackground" error:&error]]];
+    if (rowIndex & 1)
+      [self addSubview:[BundleStylesheet BSMakeImage:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark" error:&error]]];
+    else
+      [self addSubview:[BundleStylesheet BSMakeImage:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight" error:&error]]];
   
     // avatar
     self.radioAvatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[data valueForKey:@"image"]]];
@@ -45,6 +48,7 @@
       avatarMask = @"RadioSelectionMaskGray";
     else
       avatarMask = @"RadioSelectionMaskWhite";
+    
     stylesheet = [[BundleFileManager main] stylesheetForKey:avatarMask error:&error];
     self.radioAvatarMask = [BundleStylesheet BSMakeImage:stylesheet];
     [self addSubview:self.radioAvatarMask];
@@ -75,10 +79,10 @@
     [self addSubview:self.radioListeners];
     
     // configure selected view
-    UIView* myBackView = [[UIView alloc] initWithFrame:self.frame];
-    myBackView.backgroundColor = [UIColor colorWithRed:220.f/255.f green:227.f/255.f blue:239.f/255.f alpha:1];
-    self.selectedBackgroundView = myBackView;
-    [myBackView release];
+//    UIView* myBackView = [[UIView alloc] initWithFrame:self.frame];
+//    myBackView.backgroundColor = [UIColor colorWithRed:220.f/255.f green:227.f/255.f blue:239.f/255.f alpha:1];
+//    self.selectedBackgroundView = myBackView;
+//    [myBackView release];
     
     _maskBackup = self.radioAvatarMask.image;
     [_maskBackup retain];

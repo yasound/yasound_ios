@@ -140,16 +140,16 @@ static NSArray* gFakeUsers = nil;
 
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(RadioSelectionTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-  float value = 235.f/255.f;
-  if (indexPath.row & 1)
-  {
-    cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-  }
-  else
-    cell.backgroundColor = [UIColor whiteColor];
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(RadioSelectionTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//  float value = 235.f/255.f;
+//  if (indexPath.row & 1)
+//  {
+//    cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
+//  }
+//  else
+//    cell.backgroundColor = [UIColor whiteColor];
+//}
 
 
 
@@ -160,8 +160,9 @@ static NSArray* gFakeUsers = nil;
   //LBDEBUG
   NSInteger fakeUserIndex = (_type == RSTSelection) ? ((indexPath.row) % 6) : (_type == RSTTop)? ((indexPath.row+3) % 6) : (_type == RSTNew) ? ((indexPath.row+1) % 6) : ((indexPath.row+4) % 6);
   NSDictionary* data = [gFakeUsers objectAtIndex:fakeUserIndex];
-
-  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row data:data];
+  NSInteger rowIndex = indexPath.row;
+  
+  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex data:data];
   
   
   return cell;

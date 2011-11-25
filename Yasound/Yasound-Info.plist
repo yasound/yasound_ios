@@ -68,6 +68,39 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
+			<key>RadioSelectionCategoryShadow</key>
+			<dict>
+				<key>name</key>
+				<string>categoryShadow</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
+			<key>RadioSelectionBackgroundLight</key>
+			<dict>
+				<key>name</key>
+				<string>CellBackgroundLight</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
+			<key>RadioSelectionBackgroundDark</key>
+			<dict>
+				<key>name</key>
+				<string>CellBackgroundDark</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
 			<key>RadioSelectionLikes</key>
 			<dict>
 				<key>font</key>
