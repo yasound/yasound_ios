@@ -19,6 +19,8 @@
   IBOutlet UILabel* _categoryTitle;
   
   IBOutlet UITableView* _tableView;  
+  
+  NSString* _currentStyle;
 }
 
 

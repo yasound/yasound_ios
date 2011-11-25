@@ -75,7 +75,8 @@
 
   NSString* str;
   
-  _categoryTitle.text = [NSLocalizedString(@"all styles", nil) uppercaseString];
+  _currentStyle = @"style_all";
+  _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
 
 
 }
@@ -177,6 +178,11 @@
 - (void)didSelectStyle:(NSString*)style
 {
   [self.navigationController dismissModalViewControllerAnimated:YES];
+  
+  _currentStyle = style;
+  _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
+  
+  [_tableView reloadData];
 }
 
 - (void)cancelSelectStyle

@@ -74,7 +74,7 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-  return [self.styles objectAtIndex:row];
+  return NSLocalizedString([self.styles objectAtIndex:row], nil);
 }
 
 

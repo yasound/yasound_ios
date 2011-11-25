@@ -32,17 +32,17 @@
 	<dict>
 		<key>styles</key>
 		<array>
-			<string>AllStyles</string>
-			<string>Rock</string>
-			<string>HipHop</string>
-			<string>Classic</string>
-			<string>Country</string>
-			<string>Metal</string>
-			<string>Garage</string>
-			<string>HardRock</string>
-			<string>Pop</string>
-			<string>Club</string>
-			<string>Electro</string>
+			<string>style_all</string>
+			<string>style_rock</string>
+			<string>style_hiphop</string>
+			<string>style_classic</string>
+			<string>style_country</string>
+			<string>style_metal</string>
+			<string>style_garage</string>
+			<string>style_hardrock</string>
+			<string>style_pop</string>
+			<string>style_club</string>
+			<string>style_electro</string>
 		</array>
 		<key>stylesheet</key>
 		<dict>
@@ -187,7 +187,7 @@
 					<key>size</key>
 					<integer>17</integer>
 					<key>text</key>
-					<string>Jenny's Radio</string>
+					<string>Jenny&apos;s Radio</string>
 					<key>textColor</key>
 					<string>rgb(90,90,90)</string>
 					<key>weight</key>
