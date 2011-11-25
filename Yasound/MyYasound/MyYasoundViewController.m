@@ -14,6 +14,7 @@
 
 @implementation MyYasoundViewController
 
+@synthesize viewContainer;
 @synthesize viewMyYasound;
 @synthesize viewSelection;
 
@@ -46,8 +47,12 @@
   [super viewDidLoad];
 
   _viewCurrent = self.viewMyYasound;
-  [self.view addSubview:_viewCurrent];
-}
+  [self.viewContainer addSubview:_viewCurrent];
+  
+  UISegmentedControl* control = (UISegmentedControl *) [_segmentBarButtonItem customView];
+  [control addTarget:self 
+                       action:@selector(onmSegmentClicked:)  
+             forControlEvents:UIControlEventValueChanged];}
 
 - (void)viewDidUnload
 {
@@ -70,6 +75,35 @@
 
 
 
+#pragma mark - IBActions
+
+- (IBAction)onmSegmentClicked:(id)sender
+{
+  int clickedSegment = [sender selectedSegment];
+  
+  switch (clickedSegment)
+  {
+    case 0:
+      [_viewCurrent removeFromSuperview];
+      _viewCurrent = self.viewMyYasound;
+      [self.viewContainer addSubview:_viewCurrent];
+      break;
+      
+    case 1:
+      [_viewCurrent removeFromSuperview];
+      _viewCurrent = self.viewSelection;
+      [self.viewContainer addSubview:_viewCurrent];
+      break;
+      
+    case 2:
+      [_viewCurrent removeFromSuperview];
+      _viewCurrent = self.viewSelection;
+      [self.viewContainer addSubview:_viewCurrent];
+      break;
+  }
+  
+
+}
 
 
 
