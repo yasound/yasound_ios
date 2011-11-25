@@ -42,6 +42,7 @@
 {
   NSMutableDictionary* _images;
   CGRect _frame;
+  UIColor* _color;
  
   BundleFontsheet* _font;
   NSDictionary* _customProperties;
@@ -50,6 +51,7 @@
 
 @property (nonatomic, retain, readonly) NSMutableDictionary* images;
 @property (nonatomic, readonly) CGRect frame;
+@property (nonatomic, readonly) UIColor* color;
 @property (nonatomic, retain, readonly) BundleFontsheet* font;
 @property (nonatomic, retain, readonly) NSDictionary* customProperties;
 

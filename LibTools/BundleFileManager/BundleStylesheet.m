@@ -28,140 +28,6 @@
 @synthesize weight = _weight;
 
 
-+ (UIColor*)colorFromRgbString:(NSString*)str
-{
-  NSInteger length = [str length];
-  
-  // find '('
-  NSRange range = NSMakeRange(0, length);
-  NSRange begin = [str rangeOfString:@"(" options:NSLiteralSearch range:range];
-  if (begin.location == NSNotFound)
-    return [UIColor blackColor];
-
-  // find ','
-  begin.location += begin.length;
-  range = NSMakeRange(begin.location, length - begin.location);
-  NSRange end = [str rangeOfString:@"," options:NSLiteralSearch range:range];
-  if (end.location == NSNotFound)
-    return [UIColor blackColor];
-
-  // extract r
-  NSString* rstr = [str substringWithRange:NSMakeRange(begin.location, end.location - begin.location)];
-
-  // find ','
-  begin.location = end.location + end.length;
-  range = NSMakeRange(begin.location, length - begin.location);
-  end = [str rangeOfString:@"," options:NSLiteralSearch range:range];
-  if (end.location == NSNotFound)
-    return [UIColor blackColor];
-  
-  // extract g
-  NSString* gstr = [str substringWithRange:NSMakeRange(begin.location, end.location - begin.location)];
-
-  BOOL isAlpha = YES;
-  NSString* astr = nil;
-  
-  // find ','
-  begin.location = end.location + end.length;
-  range = NSMakeRange(begin.location, length - begin.location);
-  end = [str rangeOfString:@"," options:NSLiteralSearch range:range];
-  if (end.location == NSNotFound)
-  {
-    isAlpha = NO;
-    
-    // find ')'
-    end = [str rangeOfString:@")" options:NSLiteralSearch range:range];
-    if (end.location == NSNotFound)
-      return [UIColor blackColor];
-  }
-  
-  // extract b
-  NSString* bstr = [str substringWithRange:NSMakeRange(begin.location, end.location - begin.location)];
-
-  if (isAlpha)
-  {
-    // find ')'
-    begin.location = end.location + end.length;
-    range = NSMakeRange(begin.location, length - begin.location);
-    end = [str rangeOfString:@")" options:NSLiteralSearch range:range];
-    if (end.location == NSNotFound)
-      return [UIColor blackColor];
-    
-    // extract a
-    astr = [str substringWithRange:NSMakeRange(begin.location, end.location - begin.location)];
-  }
-  
-  // compose color
-  CGFloat r = [rstr floatValue];
-  CGFloat g = [gstr floatValue];
-  CGFloat b = [bstr floatValue];
-  CGFloat a = 255.f;
-  if (astr != nil)
-    a = [astr floatValue];
-  
-  return [[UIColor alloc] initWithRed:r/255.f green:g/255.f blue:b/255.f alpha:a/255.f];
-}
-
-
-
-
-
-+ (UIColor*)colorFromString:(NSString*)str
-{
-  if ([[str substringWithRange:NSMakeRange(0, 3)] caseInsensitiveCompare:@"rgb"] == NSOrderedSame )
-    return [BundleFontsheet colorFromRgbString:str];
-    
-  if ([str isEqualToString:@"black"])
-    return [UIColor blackColor];
-
-  if ([str isEqualToString:@"white"])
-    return [UIColor whiteColor];
-
-  if ([str isEqualToString:@"clear"])
-    return [UIColor clearColor];
-
-  if ([str isEqualToString:@"red"])
-    return [UIColor redColor];
-
-  if ([str isEqualToString:@"blue"])
-    return [UIColor blueColor];
-
-  if ([str isEqualToString:@"green"])
-    return [UIColor greenColor];
-
-  if ([str isEqualToString:@"darkGray"])
-    return [UIColor darkGrayColor];
-
-  if ([str isEqualToString:@"lightGray"])
-    return [UIColor lightGrayColor];
-
-  if ([str isEqualToString:@"gray"])
-    return [UIColor grayColor];
-
-  if ([str isEqualToString:@"cyan"])
-    return [UIColor cyanColor];
-
-  if ([str isEqualToString:@"yellow"])
-    return [UIColor yellowColor];
-
-  if ([str isEqualToString:@"magenta"])
-    return [UIColor magentaColor];
-
-  if ([str isEqualToString:@"orange"])
-    return [UIColor orangeColor];
-
-  if ([str isEqualToString:@"purple"])
-    return [UIColor purpleColor];
-
-  if ([str isEqualToString:@"brown"])
-    return [UIColor brownColor];
-
-  // default color
-  return [UIColor blackColor];
-}
-
-
-
 
 + (UITextAlignment)alignementFromString:(NSString*)str
 {
@@ -209,11 +75,11 @@
   
   NSString* textColor = [sheet valueForKey:@"textColor"];
   if (textColor != nil)
-    _textColor = [BundleFontsheet colorFromString:[textColor stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+    _textColor = [BundleStylesheet colorFromString:[textColor stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
 
   NSString* backgroundColor = [sheet valueForKey:@"backgroundColor"];
   if (backgroundColor != nil)
-    _backgroundColor = [BundleFontsheet colorFromString:backgroundColor];
+    _backgroundColor = [BundleStylesheet colorFromString:backgroundColor];
   
   NSString* fontWeight = [sheet valueForKey:@"weight"];
   if (fontWeight != nil)
@@ -258,6 +124,7 @@
 
 @synthesize images = _images;
 @synthesize frame = _frame;
+@synthesize color = _color;
 @synthesize font = _font;
 @synthesize customProperties = _customProperties;
 
@@ -284,6 +151,150 @@ static NSMutableDictionary* gFonts = nil;
 }
 
 
+
+
+
+
++ (UIColor*)colorFromRgbString:(NSString*)str
+{
+  NSInteger length = [str length];
+  
+  // find '('
+  NSRange range = NSMakeRange(0, length);
+  NSRange begin = [str rangeOfString:@"(" options:NSLiteralSearch range:range];
+  if (begin.location == NSNotFound)
+    return [UIColor blackColor];
+  
+  // find ','
+  begin.location += begin.length;
+  range = NSMakeRange(begin.location, length - begin.location);
+  NSRange end = [str rangeOfString:@"," options:NSLiteralSearch range:range];
+  if (end.location == NSNotFound)
+    return [UIColor blackColor];
+  
+  // extract r
+  NSString* rstr = [str substringWithRange:NSMakeRange(begin.location, end.location - begin.location)];
+  
+  // find ','
+  begin.location = end.location + end.length;
+  range = NSMakeRange(begin.location, length - begin.location);
+  end = [str rangeOfString:@"," options:NSLiteralSearch range:range];
+  if (end.location == NSNotFound)
+    return [UIColor blackColor];
+  
+  // extract g
+  NSString* gstr = [str substringWithRange:NSMakeRange(begin.location, end.location - begin.location)];
+  
+  BOOL isAlpha = YES;
+  NSString* astr = nil;
+  
+  // find ','
+  begin.location = end.location + end.length;
+  range = NSMakeRange(begin.location, length - begin.location);
+  end = [str rangeOfString:@"," options:NSLiteralSearch range:range];
+  if (end.location == NSNotFound)
+  {
+    isAlpha = NO;
+    
+    // find ')'
+    end = [str rangeOfString:@")" options:NSLiteralSearch range:range];
+    if (end.location == NSNotFound)
+      return [UIColor blackColor];
+  }
+  
+  // extract b
+  NSString* bstr = [str substringWithRange:NSMakeRange(begin.location, end.location - begin.location)];
+  
+  if (isAlpha)
+  {
+    // find ')'
+    begin.location = end.location + end.length;
+    range = NSMakeRange(begin.location, length - begin.location);
+    end = [str rangeOfString:@")" options:NSLiteralSearch range:range];
+    if (end.location == NSNotFound)
+      return [UIColor blackColor];
+    
+    // extract a
+    astr = [str substringWithRange:NSMakeRange(begin.location, end.location - begin.location)];
+  }
+  
+  // compose color
+  CGFloat r = [rstr floatValue];
+  CGFloat g = [gstr floatValue];
+  CGFloat b = [bstr floatValue];
+  CGFloat a = 255.f;
+  if (astr != nil)
+    a = [astr floatValue];
+  
+  return [[UIColor alloc] initWithRed:r/255.f green:g/255.f blue:b/255.f alpha:a/255.f];
+}
+
+
+
+
+
++ (UIColor*)colorFromString:(NSString*)str
+{
+  if ([[str substringWithRange:NSMakeRange(0, 3)] caseInsensitiveCompare:@"rgb"] == NSOrderedSame )
+    return [BundleStylesheet colorFromRgbString:str];
+  
+  if ([str isEqualToString:@"black"])
+    return [UIColor blackColor];
+  
+  if ([str isEqualToString:@"white"])
+    return [UIColor whiteColor];
+  
+  if ([str isEqualToString:@"clear"])
+    return [UIColor clearColor];
+  
+  if ([str isEqualToString:@"red"])
+    return [UIColor redColor];
+  
+  if ([str isEqualToString:@"blue"])
+    return [UIColor blueColor];
+  
+  if ([str isEqualToString:@"green"])
+    return [UIColor greenColor];
+  
+  if ([str isEqualToString:@"darkGray"])
+    return [UIColor darkGrayColor];
+  
+  if ([str isEqualToString:@"lightGray"])
+    return [UIColor lightGrayColor];
+  
+  if ([str isEqualToString:@"gray"])
+    return [UIColor grayColor];
+  
+  if ([str isEqualToString:@"cyan"])
+    return [UIColor cyanColor];
+  
+  if ([str isEqualToString:@"yellow"])
+    return [UIColor yellowColor];
+  
+  if ([str isEqualToString:@"magenta"])
+    return [UIColor magentaColor];
+  
+  if ([str isEqualToString:@"orange"])
+    return [UIColor orangeColor];
+  
+  if ([str isEqualToString:@"purple"])
+    return [UIColor purpleColor];
+  
+  if ([str isEqualToString:@"brown"])
+    return [UIColor brownColor];
+  
+  // default color
+  return [UIColor blackColor];
+}
+
+
+
+
+
+
+
+
+
 - (UIImage*)image
 {
   return [self.images valueForKey:@"up"];
@@ -306,6 +317,10 @@ static NSMutableDictionary* gFonts = nil;
   NSInteger x = [[sheet valueForKey:@"x"] integerValue];
   NSInteger y = [[sheet valueForKey:@"y"] integerValue];
   _frame = CGRectMake(x, y, 0, 0);
+  
+  // optional color parameter
+  NSString* colorStr = [sheet valueForKey:@"color"];
+  _color = [BundleStylesheet colorFromString:colorStr];
   
   // multi-states or single state?
   NSArray* states = [sheet valueForKey:@"states"];

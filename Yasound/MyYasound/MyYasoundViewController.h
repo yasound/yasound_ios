@@ -11,8 +11,10 @@
 @interface MyYasoundViewController : UIViewController
 {
   UIView* _viewCurrent;
+  IBOutlet UIToolbar* _toolbar;
   IBOutlet UIBarButtonItem* _segmentBarButtonItem;
   IBOutlet UITableView* _tableView;
+  
   
   UISegmentedControl* _segmentControl;
 }

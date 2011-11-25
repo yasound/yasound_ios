@@ -8,7 +8,7 @@
 
 #import "MyYasoundViewController.h"
 #import "RadioSelectionTableViewCell.h"
-
+#import "BundleFileManager.h"
 
 
 
@@ -60,6 +60,10 @@ static NSArray* gFakeUsersFavorites = nil;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"GuiTintColor" error:nil];
+  _toolbar.tintColor = stylesheet.color;
+  
 
   _viewCurrent = self.viewMyYasound;
   [self.viewContainer addSubview:_viewCurrent];

@@ -9,7 +9,7 @@
 #import "RadioTabBarController.h"
 #import "RadioSelectionViewController.h"
 #import "MyYasoundViewController.h"
-
+#import "BundleFileManager.h"
 
 @implementation RadioTabBarController
 
@@ -29,7 +29,8 @@
 {
   [super viewDidLoad];
   
-  //self.tabBar.tintColor = [UIColor colorWithRed:51.f/255.f green:51.f/255.f blue:51.f/255.f alpha:1];
+  BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"GuiTintColor" error:nil];
+  self.tabBar.tintColor = stylesheet.color;
 
   // Mon Yasound
   RadioSelectionViewController* view1 = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil title:NSLocalizedString(@"selection_tab_myyasound", nil) tabIcon:@"tabIcon_MyYasound"];

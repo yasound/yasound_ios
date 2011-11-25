@@ -202,6 +202,11 @@
 				<key>y</key>
 				<integer>1</integer>
 			</dict>
+			<key>GuiTintColor</key>
+			<dict>
+				<key>color</key>
+				<string>rgb(24,24,24)</string>
+			</dict>
 		</dict>
 		<key>fakeUsers</key>
 		<array>
