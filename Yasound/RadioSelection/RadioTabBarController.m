@@ -8,6 +8,7 @@
 
 #import "RadioTabBarController.h"
 #import "RadioSelectionViewController.h"
+#import "MyYasoundViewController.h"
 
 
 @implementation RadioTabBarController
@@ -28,10 +29,10 @@
 {
   [super viewDidLoad];
   
-
+  //self.tabBar.tintColor = [UIColor colorWithRed:51.f/255.f green:51.f/255.f blue:51.f/255.f alpha:1];
 
   // Mon Yasound
-  RadioSelectionViewController* view1 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_myyasound", nil) tabIcon:@"tabIcon_MyYasound"];
+  RadioSelectionViewController* view1 = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil title:NSLocalizedString(@"selection_tab_myyasound", nil) tabIcon:@"tabIcon_MyYasound"];
   
   // Selection
   RadioSelectionViewController* view2 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIcon_Selection"];
@@ -70,19 +71,6 @@
 
 
 
-
-#pragma mark - TableView Source and Delegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-  return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
-{
-  // Number of rows is the number of time zones in the region for the specified section.
-  return 24;
-}
 
 
 @end

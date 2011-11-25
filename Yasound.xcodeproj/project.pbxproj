@@ -43,6 +43,8 @@
 		BC71F583147F979700DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC71F589147F9CD900DAE4BD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
+		BC71F58F147FBCEA00DAE4BD /* MyYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */; };
+		BC71F590147FBCEA00DAE4BD /* MyYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F58E147FBCEA00DAE4BD /* MyYasoundViewController.xib */; };
 		BC738AAD147E5C76000415AD /* casque.png in Resources */ = {isa = PBXBuildFile; fileRef = BC738AA7147E5C76000415AD /* casque.png */; };
 		BC738AAE147E5C76000415AD /* casque@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC738AA8147E5C76000415AD /* casque@2x.png */; };
 		BC738AAF147E5C76000415AD /* coeur.png in Resources */ = {isa = PBXBuildFile; fileRef = BC738AA9147E5C76000415AD /* coeur.png */; };
@@ -166,6 +168,9 @@
 		BC71F582147F979700DAE4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F586147F97DA00DAE4BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F588147F9CD900DAE4BD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		BC71F58C147FBCEA00DAE4BD /* MyYasoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyYasoundViewController.h; path = MyYasound/MyYasoundViewController.h; sourceTree = "<group>"; };
+		BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasoundViewController.m; path = MyYasound/MyYasoundViewController.m; sourceTree = "<group>"; };
+		BC71F58E147FBCEA00DAE4BD /* MyYasoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyYasoundViewController.xib; path = MyYasound/MyYasoundViewController.xib; sourceTree = "<group>"; };
 		BC738AA7147E5C76000415AD /* casque.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = casque.png; path = RadioSelection/casque.png; sourceTree = "<group>"; };
 		BC738AA8147E5C76000415AD /* casque@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "casque@2x.png"; path = "RadioSelection/casque@2x.png"; sourceTree = "<group>"; };
 		BC738AA9147E5C76000415AD /* coeur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = coeur.png; path = RadioSelection/coeur.png; sourceTree = "<group>"; };
@@ -388,6 +393,16 @@
 			name = fr;
 			sourceTree = "<group>";
 		};
+		BC71F595147FC10500DAE4BD /* My Yasound */ = {
+			isa = PBXGroup;
+			children = (
+				BC71F58C147FBCEA00DAE4BD /* MyYasoundViewController.h */,
+				BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */,
+				BC71F58E147FBCEA00DAE4BD /* MyYasoundViewController.xib */,
+			);
+			name = "My Yasound";
+			sourceTree = "<group>";
+		};
 		BC9F413E147E8A5F00D417EF /* BundleFileManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +567,7 @@
 				4056298D147547380085518C /* ASIHTTPRequest */,
 				BCFECFE31468439900BA20D9 /* Audio */,
 				BCFECFE61468439900BA20D9 /* Gui */,
+				BC71F595147FC10500DAE4BD /* My Yasound */,
 				BC5EE20E147D3EB300A282A5 /* Radio Selection */,
 				BCFECFED1468439900BA20D9 /* InteractionViewController.h */,
 				BCFECFEE1468439900BA20D9 /* InteractionViewController.m */,
@@ -702,6 +718,7 @@
 				BC71F583147F979700DAE4BD /* Localizable.strings in Resources */,
 				BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */,
 				BC71F589147F9CD900DAE4BD /* MainWindow.xib in Resources */,
+				BC71F590147FBCEA00DAE4BD /* MyYasoundViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +756,7 @@
 				BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */,
 				BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */,
 				BC9F415C147EAEFD00D417EF /* StyleSelectorViewController.m in Sources */,
+				BC71F58F147FBCEA00DAE4BD /* MyYasoundViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

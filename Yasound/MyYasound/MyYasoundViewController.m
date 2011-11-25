@@ -1,44 +1,21 @@
 //
-//  RadioSelectionViewController.m
+//  MyYasoundViewController.m
 //  Yasound
 //
-//  Created by LOIC BERTHELOT on 23/11/11.
+//  Created by LOIC BERTHELOT on 25/11/11.
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
-#import "RadioSelectionViewController.h"
+#import "MyYasoundViewController.h"
 #import "RadioSelectionTableViewCell.h"
-#import "StyleSelectorViewController.h"
 
 
-@implementation RadioSelectionViewController
-
-//
-//
-//@synthesize _topBarLabel;
-//@synthesize _topBarTitle;
-//@synthesize _categoryTitle;
-//
-//@synthesize _tableView;  
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem
-{
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) 
-  {
-    UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
-    self.tabBarItem = theItem;
-    [theItem release];      
-    
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    
-    
-  }
+@implementation MyYasoundViewController
 
-  return self;
-}
+@synthesize viewMyYasound;
+@synthesize viewSelection;
 
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
@@ -49,11 +26,8 @@
       UIImage* tabImage = [UIImage imageNamed:tabIcon];
       UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
       self.tabBarItem = theItem;
-      [theItem release];      
-
-      _tableView.delegate = self;
-      _tableView.dataSource = self;
-}
+      [theItem release];     
+    }
     return self;
 }
 
@@ -71,14 +45,8 @@
 {
   [super viewDidLoad];
 
-  _topBarTitle.text = self.title;
-
-  NSString* str;
-  
-  _currentStyle = @"style_all";
-  _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
-
-
+  _viewCurrent = self.viewMyYasound;
+  [self.view addSubview:_viewCurrent];
 }
 
 - (void)viewDidUnload
@@ -93,9 +61,6 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
-
 
 
 
@@ -146,9 +111,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-
+  
   static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
-
+  
   RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row];
   
   
@@ -157,37 +122,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-}
-
-
-
-
-#pragma mark - IBActions
-
-- (IBAction)onStyleSelectorClicked:(id)sender
-{
-  StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil target:self];
-//  self.navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-   self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-  [self.navigationController presentModalViewController:view animated:YES];
-}
-
-
-#pragma mark - StyleSelectorDelegate
-
-- (void)didSelectStyle:(NSString*)style
-{
-  [self.navigationController dismissModalViewControllerAnimated:YES];
-  
-  _currentStyle = style;
-  _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
-  
-  [_tableView reloadData];
-}
-
-- (void)cancelSelectStyle
-{
-  [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 
