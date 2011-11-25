@@ -28,34 +28,22 @@
 {
   [super viewDidLoad];
   
-  //      UITabBarSystemItemMore,
-  //      UITabBarSystemItemFavorites,
-  //      UITabBarSystemItemFeatured,
-  //      UITabBarSystemItemTopRated,
-  //      UITabBarSystemItemRecents,
-  //      UITabBarSystemItemContacts,
-  //      UITabBarSystemItemHistory,
-  //      UITabBarSystemItemBookmarks,
-  //      UITabBarSystemItemSearch,
-  //      UITabBarSystemItemDownloads,
-  //      UITabBarSystemItemMostRecent,
-  //      UITabBarSystemItemMostViewed,
 
 
   // Mon Yasound
-  RadioSelectionViewController* view1 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:@"Mon Yasound" tabIcon:@"tabIcon_MyYasound"];
+  RadioSelectionViewController* view1 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_myyasound", nil) tabIcon:@"tabIcon_MyYasound"];
   
   // Selection
-  RadioSelectionViewController* view2 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:@"Selection" tabIcon:@"tabIcon_Selection"];
+  RadioSelectionViewController* view2 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIcon_Selection"];
   
   // Top
-  RadioSelectionViewController* view3 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:@"Top" tabItem:UITabBarSystemItemTopRated];
+  RadioSelectionViewController* view3 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_top", nil) tabIcon:@"tabIcon_Top"];
   
   // Nouveautés
-  RadioSelectionViewController* view4 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:@"Nouveautés" tabItem:UITabBarSystemItemRecents];
+  RadioSelectionViewController* view4 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_new", nil) tabIcon:@"tabIcon_New"];
   
   // Rechercher
-  RadioSelectionViewController* view5 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:@"Rechercher" tabItem:UITabBarSystemItemSearch];
+  RadioSelectionViewController* view5 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_search", nil) tabItem:UITabBarSystemItemSearch];
 
   self.viewControllers = [NSArray arrayWithObjects:view1, view2, view3, view4, view5, nil];
   
