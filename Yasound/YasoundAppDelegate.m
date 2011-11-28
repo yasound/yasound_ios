@@ -7,14 +7,14 @@
 //
 
 #import "YasoundAppDelegate.h"
-
+#import "RadioTabBarController.h"
 
 @implementation YasoundAppDelegate
 
 
 @synthesize window;
 @synthesize navigationController;
-@synthesize mainViewController;
+@synthesize tabBarController;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -29,8 +29,8 @@
   self.window.rootViewController = navigationController;
   
   // push the main view controller into the mavigationControler
-  mainViewController = [[MainViewController alloc] init];
-  [self.navigationController pushViewController:self.mainViewController animated:YES];
+  tabBarController = [[RadioTabBarController alloc] init];
+  [self.navigationController pushViewController:self.tabBarController animated:YES];
 
   return YES;
 }
