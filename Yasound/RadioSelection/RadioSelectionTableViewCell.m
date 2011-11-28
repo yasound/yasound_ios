@@ -121,7 +121,7 @@
   {
     self.cellBackground.image = _bkgSelected;
     self.radioAvatarMask.image = _maskSelected;
-    
+   
     BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
     [sheet applyToLabel:self.radioTitle class:@"selected"];
 

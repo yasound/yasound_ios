@@ -28,7 +28,7 @@
 @property (nonatomic, readonly) BOOL textAlignmentIsSet;
 
 @property (nonatomic, retain, readonly) NSString* text;
-@property (nonatomic, readonly) BOOL textIsSet;
+// text property is only for initialization, not for dynamic "apply"
 
 @property (nonatomic, retain, readonly) UIColor* textColor;
 @property (nonatomic, readonly) BOOL textColorIsSet;

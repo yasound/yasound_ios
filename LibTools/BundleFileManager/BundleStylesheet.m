@@ -27,7 +27,6 @@
 @synthesize textAlignement = _textAlignement;
 @synthesize textAlignmentIsSet = _textAlignmentIsSet;
 @synthesize text = _text;
-@synthesize textIsSet = _textIsSet;
 @synthesize textColor = _textColor;
 @synthesize textColorIsSet = _textColorIsSet;
 @synthesize backgroundColor = _backgroundColor;
@@ -65,7 +64,6 @@
   _nameIsSet = NO;
   _sizeIsSet = NO;
   _textAlignmentIsSet = NO;
-  _textIsSet = NO;
   _textColorIsSet = NO;
   _backgroundColorIsSet = NO;
   _weightIsSet = NO;
@@ -108,7 +106,6 @@
   if (fontText != nil)
   {
     _text = [[NSString alloc] initWithString:fontText];
-    _textIsSet = YES;
   }
   
   NSString* textColor = [sheet valueForKey:@"textColor"];
@@ -636,9 +633,6 @@ static NSMutableDictionary* gFonts = nil;
   
   if (fontsheet.textColorIsSet == YES)
     label.textColor = fontsheet.textColor;
-  
-  if (fontsheet.textIsSet == YES)
-    label.text = fontsheet.text;
   
   if (fontsheet.textAlignmentIsSet == YES)
     label.textAlignment = fontsheet.textAlignement;
