@@ -122,7 +122,6 @@
     self.cellBackground.image = _bkgSelected;
     self.radioAvatarMask.image = _maskSelected;
     
-    
   }
   else
   {

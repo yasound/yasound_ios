@@ -14,15 +14,7 @@
 
 
 @interface BundleFontsheet: NSObject
-{
-//  NSString* _name;
-//  NSInteger _size;
-//  UITextAlignment _textAlignement;
-//  NSString* _text;
-//  UIColor* _textColor;
-//  UIColor* _backgroundColor;
-//  NSString* _weight;
-}
+
 
 @property (nonatomic, retain, readonly) NSString* class;
 

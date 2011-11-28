@@ -91,6 +91,11 @@
 // load the corresponding image and build associated frame.
 - (BundleStylesheet*) stylesheetForKey:(NSString*)key error:(NSError **)anError;
 
+// special version of the stylesheet getter.
+// - retainStylesheet : if YES, keeps the stylesheet in the static stylesheets dictionnary. useful when you have multiple access to the stylesheet, and you don't want to parse the stylesheet definition each time
+// - overwriteStylesheet : if YES, and if the stylesheet is in the static stylesheets dictionnary already, force the parsing and overwrite the existing stylesheet
+- (BundleStylesheet*) stylesheetForKey:(NSString*)key retainStylesheet:(BOOL)retainStylesheet overwriteStylesheet:(BOOL)overwriteStylesheet error:(NSError **)anError;
+
 
 
 

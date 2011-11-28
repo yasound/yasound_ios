@@ -249,13 +249,20 @@ static BundleFileManager* _main = nil;
 // stylesheet
 //
 
-
+static NSMutableDictionary* gStylesheets = nil;
 
 
 // read info from the stylesheet entry from the bundle info.plist,
 // load the corresponding image and build associated frame.
 - (BundleStylesheet*) stylesheetForKey:(NSString*)key error:(NSError **)anError 
 {
+  if (gStylesheets == nil)
+    gStylesheets = [[NSMutableDictionary alloc] init];
+
+  BundleStylesheet* stylesheet = [gStylesheets objectForKey:key];
+  if (stylesheet != nil)
+    return stylesheet;
+  
   // get stylesheet entry
   NSDictionary* styleItem = [self.stylesheet valueForKey:key];
   if (styleItem == nil)
@@ -264,9 +271,38 @@ static BundleFileManager* _main = nil;
     return nil;
   }
   
-  BundleStylesheet* stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem bundle:[NSBundle mainBundle] error:anError];
+  stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem bundle:[NSBundle mainBundle] error:anError];
 
   return stylesheet;
+}
+
+
+- (BundleStylesheet*) stylesheetForKey:(NSString*)key retainStylesheet:(BOOL)retainStylesheet overwriteStylesheet:(BOOL)overwriteStylesheet error:(NSError **)anError
+{
+  if (gStylesheets == nil)
+    gStylesheets = [[NSMutableDictionary alloc] init];
+  
+  BundleStylesheet* stylesheet = [gStylesheets objectForKey:key];
+  
+  if ((stylesheet != nil) && !overwriteStylesheet)
+    return stylesheet;
+  
+  // get stylesheet entry
+  NSDictionary* styleItem = [self.stylesheet valueForKey:key];
+  if (styleItem == nil)
+  {
+    NSLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
+    return nil;
+  }
+  
+  stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem bundle:[NSBundle mainBundle] error:anError];
+  
+  if (retainStylesheet)
+    [gStylesheets setObject:stylesheet forKey:key];
+  
+  return stylesheet;
+  
+
 }
 
 
