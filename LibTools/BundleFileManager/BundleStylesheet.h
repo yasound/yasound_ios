@@ -44,7 +44,8 @@
   CGRect _frame;
   UIColor* _color;
  
-  BundleFontsheet* _font;
+  NSMutableDictionary* _fontsheets; // dictionnary of  BundleFontsheet*
+
   NSDictionary* _customProperties;
 }
 
@@ -52,7 +53,7 @@
 @property (nonatomic, retain, readonly) NSMutableDictionary* images;
 @property (nonatomic, readonly) CGRect frame;
 @property (nonatomic, readonly) UIColor* color;
-@property (nonatomic, retain, readonly) BundleFontsheet* font;
+@property (nonatomic, retain, readonly) NSDictionary* fontsheets; //  dictionnary of  BundleFontsheet*
 @property (nonatomic, retain, readonly) NSDictionary* customProperties;
 
 
@@ -64,13 +65,13 @@
 - (UIImage*)image;
 
 
-
 // create a button, and assign the appropriate images to the button states
 // can be multi-states, if the parsed stylesheet is appropriate
 - (UIButton*)makeButton;
 
 // create a label using the parsed font styles
 - (UILabel*)makeLabel;
+- (void)applyToLabel:(UILabel*)label class:(NSString*)class;
 
 // create UIImageView using the parsed stylesheet
 - (UIImageView*)makeImage;

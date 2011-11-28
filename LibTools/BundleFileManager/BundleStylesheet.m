@@ -125,7 +125,7 @@
 @synthesize images = _images;
 @synthesize frame = _frame;
 @synthesize color = _color;
-@synthesize font = _font;
+@synthesize fontsheets = _fontsheets;
 @synthesize customProperties = _customProperties;
 
 
@@ -143,7 +143,7 @@ static NSMutableDictionary* gFonts = nil;
   
   _images = [[NSMutableDictionary alloc] init];
   _frame = CGRectMake(0, 0, 0, 0);
-  _font = nil;
+  _fontsheets = [[NSMutableDictionary alloc] init];
   _customProperties = nil;
 
   
@@ -334,9 +334,28 @@ static NSMutableDictionary* gFonts = nil;
     return nil;
   
   // font parsing
-  NSDictionary* fontSheet = [sheet valueForKey:@"font"];
-  if (fontSheet != nil)
-    _font = [[BundleFontsheet alloc] initWithSheet:fontSheet bundle:bundle error:anError];
+  // can define several font sheets. for instance, "font" (<=> considered as "font.default"), "font.selected", "font.otherclass", ...
+  NSArray* keys = [sheet allKeys];
+  for (NSString* key in keys)
+  {
+    NSInteger length = [key length];
+    if (length < 4)
+      continue;
+    
+    NSString* keyPrefix = [key substringWithRange:NSMakeRange(0, 4)];
+    if (![keyPrefix isEqualToString:@"font"])
+      continue;
+      
+    NSString* keySuffix = @"default";
+    if (length > 5)
+      keySuffix = [key substringWithRange:NSMakeRange(5, length-5)];
+    
+    NSDictionary* fontDico = [sheet valueForKey:key];
+    assert (fontDico != nil);
+    
+    BundleFontsheet* fontsheet = [[BundleFontsheet alloc] initWithSheet:fontDico bundle:bundle error:anError];
+    [_fontsheets setObject:fontsheet forKey:keySuffix];
+  }
   
   
   return self;
@@ -495,26 +514,28 @@ static NSMutableDictionary* gFonts = nil;
 //
 - (UILabel*)makeLabel
 {  
+  BundleFontsheet* fontsheet = [self.fontsheets objectForKey:@"default"];
+  
   UILabel* label = [[UILabel alloc] initWithFrame:self.frame];
-  label.backgroundColor = self.font.backgroundColor;
-  label.textColor = self.font.textColor;
-  label.text = self.font.text;
-  label.textAlignment = self.font.textAlignement;
+  label.backgroundColor = fontsheet.backgroundColor;
+  label.textColor = fontsheet.textColor;
+  label.text = fontsheet.text;
+  label.textAlignment = fontsheet.textAlignement;
   
   UIFont* font = nil;
   
   // a specific font has been requested
-  if (self.font.name != nil)
+  if (fontsheet.name != nil)
   {
-    NSString* fontName = [self.font.name stringByAppendingFormat:@"-%d", self.font.size];
+    NSString* fontName = [fontsheet.name stringByAppendingFormat:@"-%d", fontsheet.size];
     font = [gFonts objectForKey:fontName];
     
     // add the font, if it's not been done already
     if (font == nil)
     {
-      font = [UIFont fontWithName:self.font.name size:self.font.size];
+      font = [UIFont fontWithName:fontsheet.name size:fontsheet.size];
       if (font == nil)
-        NSLog(@"BundleStylesheet error : could not get the font '%@'", self.font.name);
+        NSLog(@"BundleStylesheet error : could not get the font '%@'", fontsheet.name);
       else
         [gFonts setObject:font forKey:fontName];
     }
@@ -524,15 +545,25 @@ static NSMutableDictionary* gFonts = nil;
     label.font = font;
     
   // otherwise, use the system font
-  else if ([self.font.weight isEqualToString:@"bold"])
-    label.font = [UIFont boldSystemFontOfSize:self.font.size];
-  else  if ([self.font.weight isEqualToString:@"italic"])
-    label.font = [UIFont italicSystemFontOfSize:self.font.size];
+  else if ([fontsheet.weight isEqualToString:@"bold"])
+    label.font = [UIFont boldSystemFontOfSize:fontsheet.size];
+  else  if ([fontsheet.weight isEqualToString:@"italic"])
+    label.font = [UIFont italicSystemFontOfSize:fontsheet.size];
   else
-    label.font = [UIFont systemFontOfSize:self.font.size];
+    label.font = [UIFont systemFontOfSize:fontsheet.size];
 
   return label;
 }
+
+
+- (void)applyToLabel:(UILabel*)label class:(NSString*)class
+{
+  
+}
+
+
+
+
 
 
 
