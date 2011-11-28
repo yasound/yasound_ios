@@ -462,25 +462,25 @@ static NSMutableDictionary* gFonts = nil;
 
 //....................................................................................
 //
-// static shortcut to create a button
+// create a button
 //
-+ (UIButton*)BSMakeButton:(BundleStylesheet*)stylesheet
+- (UIButton*)makeButton
 {
-  UIButton* button = [[UIButton alloc] initWithFrame:stylesheet.frame];
+  UIButton* button = [[UIButton alloc] initWithFrame:self.frame];
   
-  NSArray* allKeys = [stylesheet.images allKeys];
+  NSArray* allKeys = [self.images allKeys];
   for (NSString* key in allKeys)
   {
     if ([key isEqualToString:@"up"])
-      [button setImage:[stylesheet.images valueForKey:key] forState:UIControlStateNormal];
+      [button setImage:[self.images valueForKey:key] forState:UIControlStateNormal];
     else if ([key isEqualToString:@"down"])
-      [button setImage:[stylesheet.images valueForKey:key] forState:UIControlStateHighlighted];
+      [button setImage:[self.images valueForKey:key] forState:UIControlStateHighlighted];
     else if ([key isEqualToString:@"disabled"])
-      [button setImage:[stylesheet.images valueForKey:key] forState:UIControlStateDisabled];
+      [button setImage:[self.images valueForKey:key] forState:UIControlStateDisabled];
     else if ([key isEqualToString:@"selectedUp"])
-      [button setImage:[stylesheet.images valueForKey:key] forState:UIControlStateSelected];
+      [button setImage:[self.images valueForKey:key] forState:UIControlStateSelected];
     else if ([key isEqualToString:@"selectedDown"])
-      [button setImage:[stylesheet.images valueForKey:key] forState:(UIControlStateSelected|UIControlStateHighlighted)];
+      [button setImage:[self.images valueForKey:key] forState:(UIControlStateSelected|UIControlStateHighlighted)];
   }
   
   return button;
@@ -491,30 +491,30 @@ static NSMutableDictionary* gFonts = nil;
 
 //....................................................................................
 //
-// static shortcut to create a label
+// create a label
 //
-+ (UILabel*)BSMakeLabel:(BundleStylesheet*)stylesheet
+- (UILabel*)makeLabel
 {  
-  UILabel* label = [[UILabel alloc] initWithFrame:stylesheet.frame];
-  label.backgroundColor = stylesheet.font.backgroundColor;
-  label.textColor = stylesheet.font.textColor;
-  label.text = stylesheet.font.text;
-  label.textAlignment = stylesheet.font.textAlignement;
+  UILabel* label = [[UILabel alloc] initWithFrame:self.frame];
+  label.backgroundColor = self.font.backgroundColor;
+  label.textColor = self.font.textColor;
+  label.text = self.font.text;
+  label.textAlignment = self.font.textAlignement;
   
   UIFont* font = nil;
   
   // a specific font has been requested
-  if (stylesheet.font.name != nil)
+  if (self.font.name != nil)
   {
-    NSString* fontName = [stylesheet.font.name stringByAppendingFormat:@"-%d", stylesheet.font.size];
+    NSString* fontName = [self.font.name stringByAppendingFormat:@"-%d", self.font.size];
     font = [gFonts objectForKey:fontName];
     
     // add the font, if it's not been done already
     if (font == nil)
     {
-      font = [UIFont fontWithName:stylesheet.font.name size:stylesheet.font.size];
+      font = [UIFont fontWithName:self.font.name size:self.font.size];
       if (font == nil)
-        NSLog(@"BundleStylesheet error : could not get the font '%@'", stylesheet.font.name);
+        NSLog(@"BundleStylesheet error : could not get the font '%@'", self.font.name);
       else
         [gFonts setObject:font forKey:fontName];
     }
@@ -524,12 +524,12 @@ static NSMutableDictionary* gFonts = nil;
     label.font = font;
     
   // otherwise, use the system font
-  else if ([stylesheet.font.weight isEqualToString:@"bold"])
-    label.font = [UIFont boldSystemFontOfSize:stylesheet.font.size];
-  else  if ([stylesheet.font.weight isEqualToString:@"italic"])
-    label.font = [UIFont italicSystemFontOfSize:stylesheet.font.size];
+  else if ([self.font.weight isEqualToString:@"bold"])
+    label.font = [UIFont boldSystemFontOfSize:self.font.size];
+  else  if ([self.font.weight isEqualToString:@"italic"])
+    label.font = [UIFont italicSystemFontOfSize:self.font.size];
   else
-    label.font = [UIFont systemFontOfSize:stylesheet.font.size];
+    label.font = [UIFont systemFontOfSize:self.font.size];
 
   return label;
 }
@@ -537,10 +537,10 @@ static NSMutableDictionary* gFonts = nil;
 
 
 // create UIImageView using the parsed stylesheet
-+ (UIImageView*)BSMakeImage:(BundleStylesheet*)sheet
+- (UIImageView*)makeImage
 {
-  UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
-  view.frame = sheet.frame;
+  UIImageView* view = [[UIImageView alloc] initWithImage:[self image]];
+  view.frame = self.frame;
   return view;
 }
 

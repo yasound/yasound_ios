@@ -67,13 +67,13 @@
 
 // create a button, and assign the appropriate images to the button states
 // can be multi-states, if the parsed stylesheet is appropriate
-+ (UIButton*)BSMakeButton:(BundleStylesheet*)sheet;
+- (UIButton*)makeButton;
 
 // create a label using the parsed font styles
-+ (UILabel*)BSMakeLabel:(BundleStylesheet*)sheet;
+- (UILabel*)makeLabel;
 
 // create UIImageView using the parsed stylesheet
-+ (UIImageView*)BSMakeImage:(BundleStylesheet*)sheet;
+- (UIImageView*)makeImage;
 
 @end
 
