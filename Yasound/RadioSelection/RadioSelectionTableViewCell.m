@@ -19,7 +19,7 @@
 @synthesize radioListeners;
 @synthesize radioAvatar;
 @synthesize radioAvatarMask;
-
+@synthesize cellBackground;
 
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex data:(NSDictionary*)data;
@@ -32,10 +32,12 @@
     
     // cell background
     if (rowIndex & 1)
-      [self addSubview:[BundleStylesheet BSMakeImage:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark" error:&error]]];
+      self.cellBackground = [BundleStylesheet BSMakeImage:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark" error:&error]];
     else
-      [self addSubview:[BundleStylesheet BSMakeImage:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight" error:&error]]];
-  
+      self.cellBackground = [BundleStylesheet BSMakeImage:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight" error:&error]];
+
+    [self addSubview:self.cellBackground];
+    
     // avatar
     self.radioAvatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[data valueForKey:@"image"]]];
     stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionAvatar" error:&error];
@@ -89,6 +91,12 @@
     _maskSelected = [UIImage imageNamed:@"MaskSelected.png"];
     [_maskSelected retain];
     
+    _bkgBackup = self.cellBackground.image;
+    [_bkgBackup retain];
+    _bkgSelected = [UIImage imageNamed:@"CellBackgroundBlue.png"];
+    [_bkgSelected retain];
+
+    
   }
   return self;
 }
@@ -98,6 +106,8 @@
 {
   [_maskBackup release];
   [_maskSelected release];
+  [_bkgBackup release];
+  [_bkgSelected release];
   [super dealloc];
 }
 
@@ -106,9 +116,15 @@
   [super setSelected:selected animated:animated];
 
   if (selected)
+  {
+    self.cellBackground.image = _bkgSelected;
     self.radioAvatarMask.image = _maskSelected;
+  }
   else
+  {
+    self.cellBackground.image = _bkgBackup;
     self.radioAvatarMask.image = _maskBackup;
+  }
 }
 
 @end

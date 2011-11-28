@@ -12,6 +12,8 @@
 {
   UIImage* _maskBackup;
   UIImage* _maskSelected;
+  UIImage* _bkgBackup;
+  UIImage* _bkgSelected;
 
 }
 
@@ -21,6 +23,7 @@
 @property (nonatomic, retain) UILabel* radioSubtitle2;
 @property (nonatomic, retain) UILabel* radioLikes;
 @property (nonatomic, retain) UILabel* radioListeners;
+@property (nonatomic, retain) UIImageView* cellBackground;
 @property (nonatomic, retain) UIImageView* radioAvatar;
 @property (nonatomic, retain) UIImageView* radioAvatarMask;
 

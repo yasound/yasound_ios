@@ -28,24 +28,6 @@
 		405629AE147547380085518C /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 405629A1147547380085518C /* ASINetworkQueue.m */; };
 		405629AF147547380085518C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 405629A6147547380085518C /* Reachability.m */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
-		BC3589281480054B00DC7559 /* CellBackgroundDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3589201480054B00DC7559 /* CellBackgroundDark.png */; };
-		BC3589291480054B00DC7559 /* CellBackgroundDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3589201480054B00DC7559 /* CellBackgroundDark.png */; };
-		BC35892A1480054B00DC7559 /* CellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3589211480054B00DC7559 /* CellBackgroundDark@2x.png */; };
-		BC35892B1480054B00DC7559 /* CellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3589211480054B00DC7559 /* CellBackgroundDark@2x.png */; };
-		BC35892C1480054B00DC7559 /* CellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3589221480054B00DC7559 /* CellBackgroundLight.png */; };
-		BC35892D1480054B00DC7559 /* CellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3589221480054B00DC7559 /* CellBackgroundLight.png */; };
-		BC35892E1480054B00DC7559 /* CellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3589231480054B00DC7559 /* CellBackgroundLight@2x.png */; };
-		BC35892F1480054B00DC7559 /* CellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3589231480054B00DC7559 /* CellBackgroundLight@2x.png */; };
-		BC35893214800F6400DC7559 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC35893014800F6400DC7559 /* categoryShadow.png */; };
-		BC35893314800F6400DC7559 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC35893014800F6400DC7559 /* categoryShadow.png */; };
-		BC35893414800F6400DC7559 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC35893114800F6400DC7559 /* categoryShadow@2x.png */; };
-		BC35893514800F6400DC7559 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC35893114800F6400DC7559 /* categoryShadow@2x.png */; };
-		BC5EE221147D5CFA00A282A5 /* YasoundHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE21F147D5CFA00A282A5 /* YasoundHeader.png */; };
-		BC5EE222147D5CFA00A282A5 /* YasoundHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE220147D5CFA00A282A5 /* YasoundHeader@2x.png */; };
-		BC5EE230147D70C300A282A5 /* MaskGray.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22A147D70C300A282A5 /* MaskGray.png */; };
-		BC5EE231147D70C300A282A5 /* MaskGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22B147D70C300A282A5 /* MaskGray@2x.png */; };
-		BC5EE232147D70C300A282A5 /* MaskWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22C147D70C300A282A5 /* MaskWhite.png */; };
-		BC5EE233147D70C300A282A5 /* MaskWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22D147D70C300A282A5 /* MaskWhite@2x.png */; };
 		BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC5EE243147D739600A282A5 /* RadioTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23F147D739600A282A5 /* RadioTabBarController.m */; };
@@ -146,15 +128,7 @@
 		BC71F60B147FEC6F00DAE4BD /* avatar12.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010B146978B400A4B047 /* avatar12.png */; };
 		BC71F60C147FEC6F00DAE4BD /* avatar13.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010C146978B400A4B047 /* avatar13.png */; };
 		BC71F60D147FEC6F00DAE4BD /* avatar14.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010D146978B400A4B047 /* avatar14.png */; };
-		BC71F60E147FEC6F00DAE4BD /* YasoundHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE21F147D5CFA00A282A5 /* YasoundHeader.png */; };
-		BC71F60F147FEC6F00DAE4BD /* YasoundHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE220147D5CFA00A282A5 /* YasoundHeader@2x.png */; };
-		BC71F612147FEC6F00DAE4BD /* MaskGray.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22A147D70C300A282A5 /* MaskGray.png */; };
-		BC71F613147FEC6F00DAE4BD /* MaskGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22B147D70C300A282A5 /* MaskGray@2x.png */; };
-		BC71F614147FEC6F00DAE4BD /* MaskWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22C147D70C300A282A5 /* MaskWhite.png */; };
-		BC71F615147FEC6F00DAE4BD /* MaskWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE22D147D70C300A282A5 /* MaskWhite@2x.png */; };
 		BC71F616147FEC6F00DAE4BD /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
-		BC71F61D147FEC6F00DAE4BD /* MaskSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4151147EAD2B00D417EF /* MaskSelected.png */; };
-		BC71F61E147FEC6F00DAE4BD /* MaskSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4152147EAD2B00D417EF /* MaskSelected@2x.png */; };
 		BC71F621147FEC6F00DAE4BD /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */; };
 		BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
@@ -177,8 +151,6 @@
 		BC943A5514688AE70031CE17 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5214688AE70031CE17 /* icon.png */; };
 		BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		BC9F4153147EAD2B00D417EF /* MaskSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4151147EAD2B00D417EF /* MaskSelected.png */; };
-		BC9F4154147EAD2B00D417EF /* MaskSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4152147EAD2B00D417EF /* MaskSelected@2x.png */; };
 		BC9F415C147EAEFD00D417EF /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F415A147EAEFC00D417EF /* StyleSelectorViewController.m */; };
 		BC9F415D147EAEFD00D417EF /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -187,6 +159,38 @@
 		BCD4C2CF14696E6E000A236A /* CreateMyRadio_Down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CB14696E6E000A236A /* CreateMyRadio_Down@2x.png */; };
 		BCD4C2D014696E6E000A236A /* CreateMyRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CC14696E6E000A236A /* CreateMyRadio.png */; };
 		BCD4C2D114696E6E000A236A /* CreateMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CD14696E6E000A236A /* CreateMyRadio@2x.png */; };
+		BCF62DBF14839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
+		BCF62DC014839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
+		BCF62DC114839355001B1908 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB014839355001B1908 /* categoryShadow@2x.png */; };
+		BCF62DC214839355001B1908 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB014839355001B1908 /* categoryShadow@2x.png */; };
+		BCF62DC314839355001B1908 /* CellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB114839355001B1908 /* CellBackgroundBlue.png */; };
+		BCF62DC414839355001B1908 /* CellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB114839355001B1908 /* CellBackgroundBlue.png */; };
+		BCF62DC514839355001B1908 /* CellBackgroundBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB214839355001B1908 /* CellBackgroundBlue@2x.png */; };
+		BCF62DC614839355001B1908 /* CellBackgroundBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB214839355001B1908 /* CellBackgroundBlue@2x.png */; };
+		BCF62DC714839355001B1908 /* CellBackgroundDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB314839355001B1908 /* CellBackgroundDark.png */; };
+		BCF62DC814839355001B1908 /* CellBackgroundDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB314839355001B1908 /* CellBackgroundDark.png */; };
+		BCF62DC914839355001B1908 /* CellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB414839355001B1908 /* CellBackgroundDark@2x.png */; };
+		BCF62DCA14839355001B1908 /* CellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB414839355001B1908 /* CellBackgroundDark@2x.png */; };
+		BCF62DCB14839355001B1908 /* CellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB514839355001B1908 /* CellBackgroundLight.png */; };
+		BCF62DCC14839355001B1908 /* CellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB514839355001B1908 /* CellBackgroundLight.png */; };
+		BCF62DCD14839355001B1908 /* CellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB614839355001B1908 /* CellBackgroundLight@2x.png */; };
+		BCF62DCE14839355001B1908 /* CellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB614839355001B1908 /* CellBackgroundLight@2x.png */; };
+		BCF62DCF14839355001B1908 /* MaskGray.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB714839355001B1908 /* MaskGray.png */; };
+		BCF62DD014839355001B1908 /* MaskGray.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB714839355001B1908 /* MaskGray.png */; };
+		BCF62DD114839355001B1908 /* MaskGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB814839355001B1908 /* MaskGray@2x.png */; };
+		BCF62DD214839355001B1908 /* MaskGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB814839355001B1908 /* MaskGray@2x.png */; };
+		BCF62DD314839355001B1908 /* MaskSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB914839355001B1908 /* MaskSelected.png */; };
+		BCF62DD414839355001B1908 /* MaskSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB914839355001B1908 /* MaskSelected.png */; };
+		BCF62DD514839355001B1908 /* MaskSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBA14839355001B1908 /* MaskSelected@2x.png */; };
+		BCF62DD614839355001B1908 /* MaskSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBA14839355001B1908 /* MaskSelected@2x.png */; };
+		BCF62DD714839355001B1908 /* MaskWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBB14839355001B1908 /* MaskWhite.png */; };
+		BCF62DD814839355001B1908 /* MaskWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBB14839355001B1908 /* MaskWhite.png */; };
+		BCF62DD914839355001B1908 /* MaskWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBC14839355001B1908 /* MaskWhite@2x.png */; };
+		BCF62DDA14839355001B1908 /* MaskWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBC14839355001B1908 /* MaskWhite@2x.png */; };
+		BCF62DDB14839355001B1908 /* YasoundHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBD14839355001B1908 /* YasoundHeader.png */; };
+		BCF62DDC14839355001B1908 /* YasoundHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBD14839355001B1908 /* YasoundHeader.png */; };
+		BCF62DDD14839355001B1908 /* YasoundHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBE14839355001B1908 /* YasoundHeader@2x.png */; };
+		BCF62DDE14839355001B1908 /* YasoundHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBE14839355001B1908 /* YasoundHeader@2x.png */; };
 		BCFECFCF146841A800BA20D9 /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFB9146841A800BA20D9 /* avatar1.png */; };
 		BCFECFD0146841A800BA20D9 /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBA146841A800BA20D9 /* avatar2.png */; };
 		BCFECFD1146841A800BA20D9 /* avatar3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBB146841A800BA20D9 /* avatar3.png */; };
@@ -267,18 +271,6 @@
 		405629A6147547380085518C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
 		BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
-		BC3589201480054B00DC7559 /* CellBackgroundDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundDark.png; path = RadioSelection/CellBackgroundDark.png; sourceTree = "<group>"; };
-		BC3589211480054B00DC7559 /* CellBackgroundDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellBackgroundDark@2x.png"; path = "RadioSelection/CellBackgroundDark@2x.png"; sourceTree = "<group>"; };
-		BC3589221480054B00DC7559 /* CellBackgroundLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundLight.png; path = RadioSelection/CellBackgroundLight.png; sourceTree = "<group>"; };
-		BC3589231480054B00DC7559 /* CellBackgroundLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellBackgroundLight@2x.png"; path = "RadioSelection/CellBackgroundLight@2x.png"; sourceTree = "<group>"; };
-		BC35893014800F6400DC7559 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
-		BC35893114800F6400DC7559 /* categoryShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "categoryShadow@2x.png"; path = "RadioSelection/categoryShadow@2x.png"; sourceTree = "<group>"; };
-		BC5EE21F147D5CFA00A282A5 /* YasoundHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = YasoundHeader.png; path = RadioSelection/YasoundHeader.png; sourceTree = "<group>"; };
-		BC5EE220147D5CFA00A282A5 /* YasoundHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "YasoundHeader@2x.png"; path = "RadioSelection/YasoundHeader@2x.png"; sourceTree = "<group>"; };
-		BC5EE22A147D70C300A282A5 /* MaskGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MaskGray.png; path = RadioSelection/MaskGray.png; sourceTree = "<group>"; };
-		BC5EE22B147D70C300A282A5 /* MaskGray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MaskGray@2x.png"; path = "RadioSelection/MaskGray@2x.png"; sourceTree = "<group>"; };
-		BC5EE22C147D70C300A282A5 /* MaskWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MaskWhite.png; path = RadioSelection/MaskWhite.png; sourceTree = "<group>"; };
-		BC5EE22D147D70C300A282A5 /* MaskWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MaskWhite@2x.png"; path = "RadioSelection/MaskWhite@2x.png"; sourceTree = "<group>"; };
 		BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionViewController.h; path = RadioSelection/RadioSelectionViewController.h; sourceTree = "<group>"; };
 		BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionViewController.m; path = RadioSelection/RadioSelectionViewController.m; sourceTree = "<group>"; };
 		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
@@ -305,7 +297,6 @@
 		BC71F5AD147FE0A800DAE4BD /* avatarDummy5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatarDummy5.png; path = RadioSelection/avatarDummy/avatarDummy5.png; sourceTree = "<group>"; };
 		BC71F5AE147FE0A800DAE4BD /* avatarDummy5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatarDummy5@2x.png"; path = "RadioSelection/avatarDummy/avatarDummy5@2x.png"; sourceTree = "<group>"; };
 		BC71F635147FEC6F00DAE4BD /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC71F637147FEC6F00DAE4BD /* Yasound copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Yasound copy-Info.plist"; path = "/Users/neywen/devel/yasound_ios/Yasound copy-Info.plist"; sourceTree = "<absolute>"; };
 		BC943A5014688AE70031CE17 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BC943A5114688AE70031CE17 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BC943A5214688AE70031CE17 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -313,8 +304,6 @@
 		BC9F4144147E8A5F00D417EF /* BundleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleFileManager.m; sourceTree = "<group>"; };
 		BC9F4145147E8A5F00D417EF /* BundleStylesheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleStylesheet.h; sourceTree = "<group>"; };
 		BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleStylesheet.m; sourceTree = "<group>"; };
-		BC9F4151147EAD2B00D417EF /* MaskSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MaskSelected.png; path = RadioSelection/MaskSelected.png; sourceTree = "<group>"; };
-		BC9F4152147EAD2B00D417EF /* MaskSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MaskSelected@2x.png"; path = "RadioSelection/MaskSelected@2x.png"; sourceTree = "<group>"; };
 		BC9F4159147EAEFC00D417EF /* StyleSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StyleSelectorViewController.h; path = RadioSelection/StyleSelectorViewController.h; sourceTree = "<group>"; };
 		BC9F415A147EAEFC00D417EF /* StyleSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StyleSelectorViewController.m; path = RadioSelection/StyleSelectorViewController.m; sourceTree = "<group>"; };
 		BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StyleSelectorViewController.xib; path = RadioSelection/StyleSelectorViewController.xib; sourceTree = "<group>"; };
@@ -325,6 +314,22 @@
 		BCD4C2CB14696E6E000A236A /* CreateMyRadio_Down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadio_Down@2x.png"; sourceTree = "<group>"; };
 		BCD4C2CC14696E6E000A236A /* CreateMyRadio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateMyRadio.png; sourceTree = "<group>"; };
 		BCD4C2CD14696E6E000A236A /* CreateMyRadio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadio@2x.png"; sourceTree = "<group>"; };
+		BCF62DAF14839355001B1908 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
+		BCF62DB014839355001B1908 /* categoryShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "categoryShadow@2x.png"; path = "RadioSelection/categoryShadow@2x.png"; sourceTree = "<group>"; };
+		BCF62DB114839355001B1908 /* CellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundBlue.png; path = RadioSelection/CellBackgroundBlue.png; sourceTree = "<group>"; };
+		BCF62DB214839355001B1908 /* CellBackgroundBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellBackgroundBlue@2x.png"; path = "RadioSelection/CellBackgroundBlue@2x.png"; sourceTree = "<group>"; };
+		BCF62DB314839355001B1908 /* CellBackgroundDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundDark.png; path = RadioSelection/CellBackgroundDark.png; sourceTree = "<group>"; };
+		BCF62DB414839355001B1908 /* CellBackgroundDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellBackgroundDark@2x.png"; path = "RadioSelection/CellBackgroundDark@2x.png"; sourceTree = "<group>"; };
+		BCF62DB514839355001B1908 /* CellBackgroundLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundLight.png; path = RadioSelection/CellBackgroundLight.png; sourceTree = "<group>"; };
+		BCF62DB614839355001B1908 /* CellBackgroundLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellBackgroundLight@2x.png"; path = "RadioSelection/CellBackgroundLight@2x.png"; sourceTree = "<group>"; };
+		BCF62DB714839355001B1908 /* MaskGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MaskGray.png; path = RadioSelection/MaskGray.png; sourceTree = "<group>"; };
+		BCF62DB814839355001B1908 /* MaskGray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MaskGray@2x.png"; path = "RadioSelection/MaskGray@2x.png"; sourceTree = "<group>"; };
+		BCF62DB914839355001B1908 /* MaskSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MaskSelected.png; path = RadioSelection/MaskSelected.png; sourceTree = "<group>"; };
+		BCF62DBA14839355001B1908 /* MaskSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MaskSelected@2x.png"; path = "RadioSelection/MaskSelected@2x.png"; sourceTree = "<group>"; };
+		BCF62DBB14839355001B1908 /* MaskWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MaskWhite.png; path = RadioSelection/MaskWhite.png; sourceTree = "<group>"; };
+		BCF62DBC14839355001B1908 /* MaskWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MaskWhite@2x.png"; path = "RadioSelection/MaskWhite@2x.png"; sourceTree = "<group>"; };
+		BCF62DBD14839355001B1908 /* YasoundHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = YasoundHeader.png; path = RadioSelection/YasoundHeader.png; sourceTree = "<group>"; };
+		BCF62DBE14839355001B1908 /* YasoundHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "YasoundHeader@2x.png"; path = "RadioSelection/YasoundHeader@2x.png"; sourceTree = "<group>"; };
 		BCFECFB9146841A800BA20D9 /* avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar1.png; sourceTree = "<group>"; };
 		BCFECFBA146841A800BA20D9 /* avatar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar2.png; sourceTree = "<group>"; };
 		BCFECFBB146841A800BA20D9 /* avatar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar3.png; sourceTree = "<group>"; };
@@ -494,21 +499,23 @@
 		BC5EE217147D427100A282A5 /* RadioSelection */ = {
 			isa = PBXGroup;
 			children = (
+				BCF62DAF14839355001B1908 /* categoryShadow.png */,
+				BCF62DB014839355001B1908 /* categoryShadow@2x.png */,
+				BCF62DB114839355001B1908 /* CellBackgroundBlue.png */,
+				BCF62DB214839355001B1908 /* CellBackgroundBlue@2x.png */,
+				BCF62DB314839355001B1908 /* CellBackgroundDark.png */,
+				BCF62DB414839355001B1908 /* CellBackgroundDark@2x.png */,
+				BCF62DB514839355001B1908 /* CellBackgroundLight.png */,
+				BCF62DB614839355001B1908 /* CellBackgroundLight@2x.png */,
+				BCF62DB714839355001B1908 /* MaskGray.png */,
+				BCF62DB814839355001B1908 /* MaskGray@2x.png */,
+				BCF62DB914839355001B1908 /* MaskSelected.png */,
+				BCF62DBA14839355001B1908 /* MaskSelected@2x.png */,
+				BCF62DBB14839355001B1908 /* MaskWhite.png */,
+				BCF62DBC14839355001B1908 /* MaskWhite@2x.png */,
+				BCF62DBD14839355001B1908 /* YasoundHeader.png */,
+				BCF62DBE14839355001B1908 /* YasoundHeader@2x.png */,
 				BC71F5A2147FE07600DAE4BD /* avatarDummy */,
-				BC35893014800F6400DC7559 /* categoryShadow.png */,
-				BC35893114800F6400DC7559 /* categoryShadow@2x.png */,
-				BC3589201480054B00DC7559 /* CellBackgroundDark.png */,
-				BC3589211480054B00DC7559 /* CellBackgroundDark@2x.png */,
-				BC3589221480054B00DC7559 /* CellBackgroundLight.png */,
-				BC3589231480054B00DC7559 /* CellBackgroundLight@2x.png */,
-				BC5EE22A147D70C300A282A5 /* MaskGray.png */,
-				BC5EE22B147D70C300A282A5 /* MaskGray@2x.png */,
-				BC5EE22C147D70C300A282A5 /* MaskWhite.png */,
-				BC5EE22D147D70C300A282A5 /* MaskWhite@2x.png */,
-				BC9F4151147EAD2B00D417EF /* MaskSelected.png */,
-				BC9F4152147EAD2B00D417EF /* MaskSelected@2x.png */,
-				BC5EE21F147D5CFA00A282A5 /* YasoundHeader.png */,
-				BC5EE220147D5CFA00A282A5 /* YasoundHeader@2x.png */,
 			);
 			name = RadioSelection;
 			sourceTree = "<group>";
@@ -685,7 +692,6 @@
 				E5280A5B146040E900A88910 /* xib */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				E5A9A3AA1454DC0500EA374C /* Products */,
-				BC71F637147FEC6F00DAE4BD /* Yasound copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -868,15 +874,7 @@
 				BC71F60B147FEC6F00DAE4BD /* avatar12.png in Resources */,
 				BC71F60C147FEC6F00DAE4BD /* avatar13.png in Resources */,
 				BC71F60D147FEC6F00DAE4BD /* avatar14.png in Resources */,
-				BC71F60E147FEC6F00DAE4BD /* YasoundHeader.png in Resources */,
-				BC71F60F147FEC6F00DAE4BD /* YasoundHeader@2x.png in Resources */,
-				BC71F612147FEC6F00DAE4BD /* MaskGray.png in Resources */,
-				BC71F613147FEC6F00DAE4BD /* MaskGray@2x.png in Resources */,
-				BC71F614147FEC6F00DAE4BD /* MaskWhite.png in Resources */,
-				BC71F615147FEC6F00DAE4BD /* MaskWhite@2x.png in Resources */,
 				BC71F616147FEC6F00DAE4BD /* RadioSelectionViewController.xib in Resources */,
-				BC71F61D147FEC6F00DAE4BD /* MaskSelected.png in Resources */,
-				BC71F61E147FEC6F00DAE4BD /* MaskSelected@2x.png in Resources */,
 				BC71F621147FEC6F00DAE4BD /* StyleSelectorViewController.xib in Resources */,
 				BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */,
 				BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */,
@@ -894,12 +892,22 @@
 				BC71F62F147FEC6F00DAE4BD /* avatarDummy4@2x.png in Resources */,
 				BC71F630147FEC6F00DAE4BD /* avatarDummy5.png in Resources */,
 				BC71F631147FEC6F00DAE4BD /* avatarDummy5@2x.png in Resources */,
-				BC3589291480054B00DC7559 /* CellBackgroundDark.png in Resources */,
-				BC35892B1480054B00DC7559 /* CellBackgroundDark@2x.png in Resources */,
-				BC35892D1480054B00DC7559 /* CellBackgroundLight.png in Resources */,
-				BC35892F1480054B00DC7559 /* CellBackgroundLight@2x.png in Resources */,
-				BC35893314800F6400DC7559 /* categoryShadow.png in Resources */,
-				BC35893514800F6400DC7559 /* categoryShadow@2x.png in Resources */,
+				BCF62DC014839355001B1908 /* categoryShadow.png in Resources */,
+				BCF62DC214839355001B1908 /* categoryShadow@2x.png in Resources */,
+				BCF62DC414839355001B1908 /* CellBackgroundBlue.png in Resources */,
+				BCF62DC614839355001B1908 /* CellBackgroundBlue@2x.png in Resources */,
+				BCF62DC814839355001B1908 /* CellBackgroundDark.png in Resources */,
+				BCF62DCA14839355001B1908 /* CellBackgroundDark@2x.png in Resources */,
+				BCF62DCC14839355001B1908 /* CellBackgroundLight.png in Resources */,
+				BCF62DCE14839355001B1908 /* CellBackgroundLight@2x.png in Resources */,
+				BCF62DD014839355001B1908 /* MaskGray.png in Resources */,
+				BCF62DD214839355001B1908 /* MaskGray@2x.png in Resources */,
+				BCF62DD414839355001B1908 /* MaskSelected.png in Resources */,
+				BCF62DD614839355001B1908 /* MaskSelected@2x.png in Resources */,
+				BCF62DD814839355001B1908 /* MaskWhite.png in Resources */,
+				BCF62DDA14839355001B1908 /* MaskWhite@2x.png in Resources */,
+				BCF62DDC14839355001B1908 /* YasoundHeader.png in Resources */,
+				BCF62DDE14839355001B1908 /* YasoundHeader@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,15 +957,7 @@
 				401B0116146978B400A4B047 /* avatar12.png in Resources */,
 				401B0117146978B400A4B047 /* avatar13.png in Resources */,
 				401B0118146978B400A4B047 /* avatar14.png in Resources */,
-				BC5EE221147D5CFA00A282A5 /* YasoundHeader.png in Resources */,
-				BC5EE222147D5CFA00A282A5 /* YasoundHeader@2x.png in Resources */,
-				BC5EE230147D70C300A282A5 /* MaskGray.png in Resources */,
-				BC5EE231147D70C300A282A5 /* MaskGray@2x.png in Resources */,
-				BC5EE232147D70C300A282A5 /* MaskWhite.png in Resources */,
-				BC5EE233147D70C300A282A5 /* MaskWhite@2x.png in Resources */,
 				BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */,
-				BC9F4153147EAD2B00D417EF /* MaskSelected.png in Resources */,
-				BC9F4154147EAD2B00D417EF /* MaskSelected@2x.png in Resources */,
 				BC9F415D147EAEFD00D417EF /* StyleSelectorViewController.xib in Resources */,
 				BC71F583147F979700DAE4BD /* Localizable.strings in Resources */,
 				BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */,
@@ -975,12 +975,22 @@
 				BC71F5B8147FE0A800DAE4BD /* avatarDummy4@2x.png in Resources */,
 				BC71F5B9147FE0A800DAE4BD /* avatarDummy5.png in Resources */,
 				BC71F5BA147FE0A800DAE4BD /* avatarDummy5@2x.png in Resources */,
-				BC3589281480054B00DC7559 /* CellBackgroundDark.png in Resources */,
-				BC35892A1480054B00DC7559 /* CellBackgroundDark@2x.png in Resources */,
-				BC35892C1480054B00DC7559 /* CellBackgroundLight.png in Resources */,
-				BC35892E1480054B00DC7559 /* CellBackgroundLight@2x.png in Resources */,
-				BC35893214800F6400DC7559 /* categoryShadow.png in Resources */,
-				BC35893414800F6400DC7559 /* categoryShadow@2x.png in Resources */,
+				BCF62DBF14839355001B1908 /* categoryShadow.png in Resources */,
+				BCF62DC114839355001B1908 /* categoryShadow@2x.png in Resources */,
+				BCF62DC314839355001B1908 /* CellBackgroundBlue.png in Resources */,
+				BCF62DC514839355001B1908 /* CellBackgroundBlue@2x.png in Resources */,
+				BCF62DC714839355001B1908 /* CellBackgroundDark.png in Resources */,
+				BCF62DC914839355001B1908 /* CellBackgroundDark@2x.png in Resources */,
+				BCF62DCB14839355001B1908 /* CellBackgroundLight.png in Resources */,
+				BCF62DCD14839355001B1908 /* CellBackgroundLight@2x.png in Resources */,
+				BCF62DCF14839355001B1908 /* MaskGray.png in Resources */,
+				BCF62DD114839355001B1908 /* MaskGray@2x.png in Resources */,
+				BCF62DD314839355001B1908 /* MaskSelected.png in Resources */,
+				BCF62DD514839355001B1908 /* MaskSelected@2x.png in Resources */,
+				BCF62DD714839355001B1908 /* MaskWhite.png in Resources */,
+				BCF62DD914839355001B1908 /* MaskWhite@2x.png in Resources */,
+				BCF62DDB14839355001B1908 /* YasoundHeader.png in Resources */,
+				BCF62DDD14839355001B1908 /* YasoundHeader@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
