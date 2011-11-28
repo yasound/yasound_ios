@@ -191,6 +191,10 @@
 		BCF62DDC14839355001B1908 /* YasoundHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBD14839355001B1908 /* YasoundHeader.png */; };
 		BCF62DDD14839355001B1908 /* YasoundHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBE14839355001B1908 /* YasoundHeader@2x.png */; };
 		BCF62DDE14839355001B1908 /* YasoundHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DBE14839355001B1908 /* YasoundHeader@2x.png */; };
+		BCF62DE2148394F0001B1908 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
+		BCF62DE3148394F0001B1908 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
+		BCF62DE4148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
+		BCF62DE5148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		BCFECFCF146841A800BA20D9 /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFB9146841A800BA20D9 /* avatar1.png */; };
 		BCFECFD0146841A800BA20D9 /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBA146841A800BA20D9 /* avatar2.png */; };
 		BCFECFD1146841A800BA20D9 /* avatar3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBB146841A800BA20D9 /* avatar3.png */; };
@@ -330,6 +334,9 @@
 		BCF62DBC14839355001B1908 /* MaskWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MaskWhite@2x.png"; path = "RadioSelection/MaskWhite@2x.png"; sourceTree = "<group>"; };
 		BCF62DBD14839355001B1908 /* YasoundHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = YasoundHeader.png; path = RadioSelection/YasoundHeader.png; sourceTree = "<group>"; };
 		BCF62DBE14839355001B1908 /* YasoundHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "YasoundHeader@2x.png"; path = "RadioSelection/YasoundHeader@2x.png"; sourceTree = "<group>"; };
+		BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSearchViewController.h; path = RadioSelection/RadioSearchViewController.h; sourceTree = "<group>"; };
+		BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSearchViewController.m; path = RadioSelection/RadioSearchViewController.m; sourceTree = "<group>"; };
+		BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSearchViewController.xib; path = RadioSelection/RadioSearchViewController.xib; sourceTree = "<group>"; };
 		BCFECFB9146841A800BA20D9 /* avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar1.png; sourceTree = "<group>"; };
 		BCFECFBA146841A800BA20D9 /* avatar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar2.png; sourceTree = "<group>"; };
 		BCFECFBB146841A800BA20D9 /* avatar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar3.png; sourceTree = "<group>"; };
@@ -492,6 +499,9 @@
 				BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */,
 				BC5EE23E147D739600A282A5 /* RadioTabBarController.h */,
 				BC5EE23F147D739600A282A5 /* RadioTabBarController.m */,
+				BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */,
+				BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */,
+				BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */,
 			);
 			name = "Radio Selection";
 			sourceTree = "<group>";
@@ -908,6 +918,7 @@
 				BCF62DDA14839355001B1908 /* MaskWhite@2x.png in Resources */,
 				BCF62DDC14839355001B1908 /* YasoundHeader.png in Resources */,
 				BCF62DDE14839355001B1908 /* YasoundHeader@2x.png in Resources */,
+				BCF62DE5148394F0001B1908 /* RadioSearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -991,6 +1002,7 @@
 				BCF62DD914839355001B1908 /* MaskWhite@2x.png in Resources */,
 				BCF62DDB14839355001B1908 /* YasoundHeader.png in Resources */,
 				BCF62DDD14839355001B1908 /* YasoundHeader@2x.png in Resources */,
+				BCF62DE4148394F0001B1908 /* RadioSearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,6 +1041,7 @@
 				BC71F5D6147FEC6F00DAE4BD /* BundleStylesheet.m in Sources */,
 				BC71F5D7147FEC6F00DAE4BD /* StyleSelectorViewController.m in Sources */,
 				BC71F5D8147FEC6F00DAE4BD /* MyYasoundViewController.m in Sources */,
+				BCF62DE3148394F0001B1908 /* RadioSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1064,6 +1077,7 @@
 				BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */,
 				BC9F415C147EAEFD00D417EF /* StyleSelectorViewController.m in Sources */,
 				BC71F58F147FBCEA00DAE4BD /* MyYasoundViewController.m in Sources */,
+				BCF62DE2148394F0001B1908 /* RadioSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
