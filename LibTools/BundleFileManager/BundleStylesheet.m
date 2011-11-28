@@ -19,13 +19,21 @@
 
 @implementation BundleFontsheet
 
+@synthesize class = _class;
 @synthesize name = _name;
+@synthesize nameIsSet = _nameIsSet;
 @synthesize size = _size;
+@synthesize sizeIsSet = _sizeIsSet;
 @synthesize textAlignement = _textAlignement;
+@synthesize textAlignmentIsSet = _textAlignmentIsSet;
 @synthesize text = _text;
+@synthesize textIsSet = _textIsSet;
 @synthesize textColor = _textColor;
+@synthesize textColorIsSet = _textColorIsSet;
 @synthesize backgroundColor = _backgroundColor;
+@synthesize backgroundColorIsSet = _backgroundColorIsSet;
 @synthesize weight = _weight;
+@synthesize weightIsSet = _weightIsSet;
 
 
 
@@ -49,45 +57,87 @@
 
 
 
-- (id)initWithSheet:(NSDictionary*)sheet bundle:(NSBundle*)bundle error:(NSError **)anError
+- (id)initWithSheet:(NSDictionary*)sheet forClass:(NSString*)class defaultFontsheet:(BundleFontsheet*)defaultFontsheet bundle:(NSBundle*)bundle error:(NSError **)anError
 {
   self = [super init];
+  
+
+  _nameIsSet = NO;
+  _sizeIsSet = NO;
+  _textAlignmentIsSet = NO;
+  _textIsSet = NO;
+  _textColorIsSet = NO;
+  _backgroundColorIsSet = NO;
+  _weightIsSet = NO;
+
 
   // default init
-  _size = 12;
-  _textAlignement = UITextAlignmentLeft;
-  _text = [[NSString alloc] initWithString:@""];
-  _textColor = [UIColor blackColor];
-  _backgroundColor = [UIColor clearColor];
-  _weight = [[NSString alloc] initWithString:@"normal"];
+  if (([class isEqualToString:@"default"]) || (defaultFontsheet == nil))
+  {
+    _size = 12;
+    _textAlignement = UITextAlignmentLeft;
+    _text = [[NSString alloc] initWithString:@""];
+    _textColor = [UIColor blackColor];
+    _backgroundColor = [UIColor clearColor];
+    _weight = [[NSString alloc] initWithString:@"normal"];
+  }
+  else
+  {
+    _size = defaultFontsheet.size;
+    _textAlignement = defaultFontsheet.textAlignement;
+    _textColor = defaultFontsheet.textColor;
+    _backgroundColor = defaultFontsheet.backgroundColor;
+    _weight = [[NSString alloc] initWithString:defaultFontsheet.weight];
+  }
 
   NSString* fontName = [sheet valueForKey:@"name"];
   if (fontName != nil)
+  {
     _name = [[NSString alloc] initWithString:fontName];
+    _nameIsSet = YES;
+  }
 
   NSNumber* fontSize = [sheet valueForKey:@"size"];
   if (fontSize != nil)
+  {
     _size = [fontSize integerValue];
+    _sizeIsSet = YES;
+  }
     
   NSString* fontText = [sheet valueForKey:@"text"];
   if (fontText != nil)
+  {
     _text = [[NSString alloc] initWithString:fontText];
+    _textIsSet = YES;
+  }
   
   NSString* textColor = [sheet valueForKey:@"textColor"];
   if (textColor != nil)
+  {
     _textColor = [BundleStylesheet colorFromString:[textColor stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+    _textColorIsSet = YES;
+  }
 
   NSString* backgroundColor = [sheet valueForKey:@"backgroundColor"];
   if (backgroundColor != nil)
+  {
     _backgroundColor = [BundleStylesheet colorFromString:backgroundColor];
+    _backgroundColorIsSet = YES;
+  }
   
   NSString* fontWeight = [sheet valueForKey:@"weight"];
   if (fontWeight != nil)
+  {
     _weight = fontWeight;
+    _weightIsSet = YES;
+  }
   
   NSString* alignement = [sheet valueForKey:@"textAlignement"];
   if (alignement != nil)
+  {
     _textAlignement = [BundleFontsheet alignementFromString:alignement];
+    _textAlignmentIsSet = YES;
+  }
 
   return self;
 }
@@ -334,12 +384,26 @@ static NSMutableDictionary* gFonts = nil;
     return nil;
   
   // font parsing
+  
+  // default font sheet
+  BundleFontsheet* defaultFontsheet = nil;
+  NSDictionary* fontDico = [sheet valueForKey:@"font"];
+  if (fontDico)
+  {
+    defaultFontsheet = [[BundleFontsheet alloc] initWithSheet:fontDico forClass:@"default" defaultFontsheet:nil bundle:bundle error:anError];
+    [_fontsheets setObject:defaultFontsheet forKey:@"default"];
+  }
+
+  // other font sheets:
   // can define several font sheets. for instance, "font" (<=> considered as "font.default"), "font.selected", "font.otherclass", ...
   NSArray* keys = [sheet allKeys];
   for (NSString* key in keys)
   {
     NSInteger length = [key length];
     if (length < 4)
+      continue;
+    
+    if ([key isEqualToString:@"font"])
       continue;
     
     NSString* keyPrefix = [key substringWithRange:NSMakeRange(0, 4)];
@@ -353,7 +417,7 @@ static NSMutableDictionary* gFonts = nil;
     NSDictionary* fontDico = [sheet valueForKey:key];
     assert (fontDico != nil);
     
-    BundleFontsheet* fontsheet = [[BundleFontsheet alloc] initWithSheet:fontDico bundle:bundle error:anError];
+    BundleFontsheet* fontsheet = [[BundleFontsheet alloc] initWithSheet:fontDico forClass:keySuffix defaultFontsheet:defaultFontsheet bundle:bundle error:anError];
     [_fontsheets setObject:fontsheet forKey:keySuffix];
   }
   
@@ -556,9 +620,61 @@ static NSMutableDictionary* gFonts = nil;
 }
 
 
-- (void)applyToLabel:(UILabel*)label class:(NSString*)class
+
+
+- (BOOL)applyToLabel:(UILabel*)label class:(NSString*)class
 {
+  if (class == nil)
+    class = @"default";
   
+  BundleFontsheet* fontsheet = [self.fontsheets objectForKey:class];
+  if (fontsheet == nil)
+    return NO;
+  
+  if (fontsheet.backgroundColorIsSet == YES)
+    label.backgroundColor = fontsheet.backgroundColor;
+  
+  if (fontsheet.textColorIsSet == YES)
+    label.textColor = fontsheet.textColor;
+  
+  if (fontsheet.textIsSet == YES)
+    label.text = fontsheet.text;
+  
+  if (fontsheet.textAlignmentIsSet == YES)
+    label.textAlignment = fontsheet.textAlignement;
+  
+  UIFont* font = nil;
+  
+  // a specific font has been requested
+  if (fontsheet.nameIsSet)
+  {
+    NSString* fontName = [fontsheet.name stringByAppendingFormat:@"-%d", fontsheet.size];
+    font = [gFonts objectForKey:fontName];
+    
+    // add the font, if it's not been done already
+    if (font == nil)
+    {
+      font = [UIFont fontWithName:fontsheet.name size:fontsheet.size];
+      if (font == nil)
+        NSLog(@"BundleStylesheet error : could not get the font '%@'", fontsheet.name);
+      else
+        [gFonts setObject:font forKey:fontName];
+    }
+    
+  }
+  
+  if (font != nil)
+    label.font = font;
+  
+  // otherwise, use the system font
+  else if (fontsheet.weightIsSet && ([fontsheet.weight isEqualToString:@"bold"]))
+    label.font = [UIFont boldSystemFontOfSize:fontsheet.size];
+  else  if (fontsheet.weightIsSet &&  ([fontsheet.weight isEqualToString:@"italic"]))
+    label.font = [UIFont italicSystemFontOfSize:fontsheet.size];
+  else if (fontsheet.weightIsSet || fontsheet.sizeIsSet)
+    label.font = [UIFont systemFontOfSize:fontsheet.size];
+  
+  return YES;
 }
 
 
