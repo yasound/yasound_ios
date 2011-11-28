@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface RadioSearchViewController : UIViewController
+{
+  IBOutlet UITableView* _tableView;
+}
 
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem;

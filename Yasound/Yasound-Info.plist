@@ -105,14 +105,8 @@
 				</dict>
 				<key>font.selected</key>
 				<dict>
-					<key>name</key>
-					<string>HelveticaNeue</string>
-					<key>size</key>
-					<integer>10</integer>
-					<key>text</key>
-					<string>12345</string>
 					<key>textColor</key>
-					<string>rgb(90,90,90)</string>
+					<string>white</string>
 				</dict>
 				<key>height</key>
 				<integer>10</integer>
@@ -135,6 +129,11 @@
 					<string>234</string>
 					<key>textColor</key>
 					<string>rgb(90,90,90)</string>
+				</dict>
+				<key>font.selected</key>
+				<dict>
+					<key>textColor</key>
+					<string>white</string>
 				</dict>
 				<key>height</key>
 				<integer>10</integer>
@@ -180,6 +179,11 @@
 					<key>textColor</key>
 					<string>rgb(90,90,90)</string>
 				</dict>
+				<key>font.selected</key>
+				<dict>
+					<key>textColor</key>
+					<string>white</string>
+				</dict>
 				<key>height</key>
 				<integer>21</integer>
 				<key>width</key>
@@ -201,6 +205,11 @@
 					<string>Bossa for Jackie (Summer Review)</string>
 					<key>textColor</key>
 					<string>rgb(90,90,90)</string>
+				</dict>
+				<key>font.selected</key>
+				<dict>
+					<key>textColor</key>
+					<string>white</string>
 				</dict>
 				<key>height</key>
 				<integer>21</integer>

@@ -76,6 +76,13 @@ static NSArray* gFakeUsers = nil;
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+}
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
