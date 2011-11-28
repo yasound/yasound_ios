@@ -7,18 +7,41 @@
 //
 
 #import "RadioSearchViewController.h"
+#import "RadioSelectionTableViewCell.h"
+
+
 
 @implementation RadioSearchViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+//LBDEBUG
+static NSArray* gFakeSearchUsers = nil;
+
+
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) 
+  {
+    UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
+    self.tabBarItem = theItem;
+    [theItem release];      
+    
+    // LBDEBUG static init
+    if (gFakeSearchUsers == nil)
     {
-        // Custom initialization
+      NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
+      gFakeSearchUsers = [resources objectForKey:@"fakeUsers"];
     }
-    return self;
+    ///////////////
+    
+    
+  }
+  
+  return self;
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -48,5 +71,93 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - TableView Source and Delegate
+
+
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+{
+  // Number of rows is the number of time zones in the region for the specified section.
+  return 24;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  return 55;
+}
+
+
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(RadioSelectionTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//  float value = 235.f/255.f;
+//  if (indexPath.row & 1)
+//  {
+//    cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
+//  }
+//  else
+//    cell.backgroundColor = [UIColor whiteColor];
+//}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
+  
+  //LBDEBUG
+  NSInteger fakeUserIndex = indexPath.row % 6;
+  NSDictionary* data = [gFakeSearchUsers objectAtIndex:fakeUserIndex];
+  NSInteger rowIndex = indexPath.row;
+  
+  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex data:data];
+  
+  
+  return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+}
+
+
+
+
+
+
+
+#pragma mark - UISearchBarDelegate
+
+
+//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+//{
+//  NSLog(@"textDidChange %@", searchText);
+//}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+  NSLog(@"searchBarTextDidEndEditing %@", searchBar.text);
+ 
+}
+
+
 
 @end

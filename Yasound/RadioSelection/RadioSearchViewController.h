@@ -10,4 +10,7 @@
 
 @interface RadioSearchViewController : UIViewController
 
+
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem;
+
 @end

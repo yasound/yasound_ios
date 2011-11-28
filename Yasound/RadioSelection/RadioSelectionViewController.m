@@ -18,36 +18,6 @@
 static NSArray* gFakeUsers = nil;
 
 
-
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem
-{
-  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-  if (self) 
-  {
-    _type = type;
-    
-    UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
-    self.tabBarItem = theItem;
-    [theItem release];      
-    
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    
-    // LBDEBUG static init
-    if (gFakeUsers == nil)
-    {
-      NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
-      gFakeUsers = [resources objectForKey:@"fakeUsers"];
-    }
-    ///////////////
-    
-    
-  }
-
-  return self;
-}
-
-
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabIcon:(NSString*)tabIcon
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -62,6 +32,15 @@ static NSArray* gFakeUsers = nil;
 
       _tableView.delegate = self;
       _tableView.dataSource = self;
+      
+      // LBDEBUG static init
+      if (gFakeUsers == nil)
+      {
+        NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
+        gFakeUsers = [resources objectForKey:@"fakeUsers"];
+      }
+      ///////////////
+      
 }
     return self;
 }
