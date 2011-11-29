@@ -151,8 +151,8 @@
 		BC9F415D147EAEFD00D417EF /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */; };
 		BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
-		BCB5F2911485416B00C28B3D /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB5F28E1485416B00C28B3D /* RadioViewController.xib */; };
-		BCB5F2921485416B00C28B3D /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB5F28E1485416B00C28B3D /* RadioViewController.xib */; };
+		BCB5F29A14854DA600C28B3D /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCB5F29914854DA600C28B3D /* default.bundle */; };
+		BCB5F29B14854DA600C28B3D /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCB5F29914854DA600C28B3D /* default.bundle */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BCD4C2C9146962B1000A236A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2C8146962B1000A236A /* logo.png */; };
 		BCD4C2CE14696E6E000A236A /* CreateMyRadio_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CA14696E6E000A236A /* CreateMyRadio_Down.png */; };
@@ -309,7 +309,7 @@
 		BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StyleSelectorViewController.xib; path = RadioSelection/StyleSelectorViewController.xib; sourceTree = "<group>"; };
 		BCB5F28C1485416B00C28B3D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
 		BCB5F28D1485416B00C28B3D /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
-		BCB5F28E1485416B00C28B3D /* RadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioViewController.xib; sourceTree = "<group>"; };
+		BCB5F29914854DA600C28B3D /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = default.bundle; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
 		BCD4C2C8146962B1000A236A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -585,14 +585,22 @@
 			children = (
 				BCB5F28C1485416B00C28B3D /* RadioViewController.h */,
 				BCB5F28D1485416B00C28B3D /* RadioViewController.m */,
-				BCB5F28E1485416B00C28B3D /* RadioViewController.xib */,
 			);
 			path = RadioView;
+			sourceTree = "<group>";
+		};
+		BCB5F29814854DA600C28B3D /* themes */ = {
+			isa = PBXGroup;
+			children = (
+				BCB5F29914854DA600C28B3D /* default.bundle */,
+			);
+			path = themes;
 			sourceTree = "<group>";
 		};
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCB5F29814854DA600C28B3D /* themes */,
 				BCFECFB8146841A800BA20D9 /* avatars */,
 				BCFECFBC146841A800BA20D9 /* gui */,
 				BCFECFC3146841A800BA20D9 /* icons */,
@@ -915,7 +923,7 @@
 				BCF62DDC14839355001B1908 /* YasoundHeader.png in Resources */,
 				BCF62DDE14839355001B1908 /* YasoundHeader@2x.png in Resources */,
 				BCF62DE5148394F0001B1908 /* RadioSearchViewController.xib in Resources */,
-				BCB5F2921485416B00C28B3D /* RadioViewController.xib in Resources */,
+				BCB5F29B14854DA600C28B3D /* default.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -998,7 +1006,7 @@
 				BCF62DDB14839355001B1908 /* YasoundHeader.png in Resources */,
 				BCF62DDD14839355001B1908 /* YasoundHeader@2x.png in Resources */,
 				BCF62DE4148394F0001B1908 /* RadioSearchViewController.xib in Resources */,
-				BCB5F2911485416B00C28B3D /* RadioViewController.xib in Resources */,
+				BCB5F29A14854DA600C28B3D /* default.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
