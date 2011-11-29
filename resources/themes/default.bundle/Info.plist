@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>CFBundleName</key>
+	<string>yasound theme default</string>
+	<key>name</key>
+	<string>Default</string>
+	<key>stylesheet</key>
+	<dict>
+		<key>header</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>width</key>
+			<integer>320</integer>
+			<key>height</key>
+			<integer>132</integer>
+			<key>backgroundColor</key>
+			<string>rgb(51,51,51)</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
