@@ -33,7 +33,9 @@
 {
 //  IBOutlet UILabel *radioName;
 //  IBOutlet UIScrollView *wall;
+  IBOutlet UIView* _headerView;
   IBOutlet UITableView* _tableView;
+  
   
   IBOutlet UITextField *messageInput;
   IBOutlet UIScrollView *avatars;
