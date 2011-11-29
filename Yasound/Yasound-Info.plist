@@ -252,7 +252,7 @@
 			<key>GuiTintColor</key>
 			<dict>
 				<key>color</key>
-				<string>rgb(24,24,24)</string>
+				<string>black</string>
 			</dict>
 		</dict>
 		<key>fakeUsers</key>

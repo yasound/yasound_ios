@@ -172,10 +172,11 @@
   [timer release];
   timer = nil;
 
-  [radioName release];
-  radioName = nil;
-  [wall release];
-  wall = nil;
+//  [radioName release];
+//  radioName = nil;
+//  [wall release];
+//  wall = nil;
+  
   [messageInput release];
   messageInput = nil;
   [avatars release];
@@ -193,8 +194,9 @@
 
 - (void)dealloc
 {
-  [radioName release];
-  [wall release];
+//  [radioName release];
+//  [wall release];
+  
   [messageInput release];
   [avatars release];
   [messagesArray release];
@@ -203,10 +205,10 @@
   [super dealloc];
 }
 
-- (IBAction)onBack:(id)sender
-{
-  [self.navigationController popViewControllerAnimated:YES];
-}
+//- (IBAction)onBack:(id)sender
+//{
+//  [self.navigationController popViewControllerAnimated:YES];
+//}
 
 - (IBAction)onSendMessage:(id)sender
 {
@@ -330,7 +332,9 @@
       m.message = currentMessage.message;
       m.wallMessage = wm;
       
-      [wall addSubview:wm.view];
+//      [wall addSubview:wm.view];
+//LBDEBUG ICI
+      
       wm.image.image = img;
       wm.message.text = currentMessage.message;
       wm.title.text = [NSString stringWithFormat:@"%@ - %@", currentMessage.date, currentMessage.user];
@@ -386,7 +390,7 @@
     y += r.size.height;
   }
   
-  wall.contentSize = CGSizeMake(320, y);
+//  wall.contentSize = CGSizeMake(320, y);
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

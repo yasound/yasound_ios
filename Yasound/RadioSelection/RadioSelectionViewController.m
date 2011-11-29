@@ -9,6 +9,8 @@
 #import "RadioSelectionViewController.h"
 #import "RadioSelectionTableViewCell.h"
 #import "StyleSelectorViewController.h"
+#import "RadioViewController.h"
+
 
 
 @implementation RadioSelectionViewController
@@ -126,19 +128,6 @@ static NSArray* gFakeUsers = nil;
 
 
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(RadioSelectionTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//  float value = 235.f/255.f;
-//  if (indexPath.row & 1)
-//  {
-//    cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-//  }
-//  else
-//    cell.backgroundColor = [UIColor whiteColor];
-//}
-
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
   static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
@@ -156,6 +145,9 @@ static NSArray* gFakeUsers = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  RadioViewController* view = [[RadioViewController alloc] initWithNibName:@"RadioViewController" bundle:nil];
+  [self.navigationController pushViewController:view animated:YES];
+  [view release];  
 }
 
 

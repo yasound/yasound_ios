@@ -57,7 +57,6 @@
 		BC71F5C2147FEC6F00DAE4BD /* InteractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEE1468439900BA20D9 /* InteractionViewController.m */; };
 		BC71F5C3147FEC6F00DAE4BD /* RadioCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFF11468439900BA20D9 /* RadioCreatorViewController.m */; };
 		BC71F5C4147FEC6F00DAE4BD /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFF41468439900BA20D9 /* RadioViewController.m */; };
-		BC71F5C5147FEC6F00DAE4BD /* WallMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFF71468439900BA20D9 /* WallMessageViewController.m */; };
 		BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC71F5C7147FEC6F00DAE4BD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC648F0E14684EFB005A6D8A /* MainViewController.m */; };
 		BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -108,7 +107,6 @@
 		BC71F5F7147FEC6F00DAE4BD /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCE146841A800BA20D9 /* logo@2x.png */; };
 		BC71F5F8147FEC6F00DAE4BD /* RadioCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */; };
 		BC71F5F9147FEC6F00DAE4BD /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF51468439900BA20D9 /* RadioViewController.xib */; };
-		BC71F5FA147FEC6F00DAE4BD /* WallMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF81468439900BA20D9 /* WallMessageViewController.xib */; };
 		BC71F5FB147FEC6F00DAE4BD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
 		BC71F5FC147FEC6F00DAE4BD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
 		BC71F5FD147FEC6F00DAE4BD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5214688AE70031CE17 /* icon.png */; };
@@ -223,8 +221,6 @@
 		BCFED0021468439900BA20D9 /* RadioCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */; };
 		BCFED0031468439900BA20D9 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFF41468439900BA20D9 /* RadioViewController.m */; };
 		BCFED0041468439900BA20D9 /* RadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF51468439900BA20D9 /* RadioViewController.xib */; };
-		BCFED0051468439900BA20D9 /* WallMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFF71468439900BA20D9 /* WallMessageViewController.m */; };
-		BCFED0061468439900BA20D9 /* WallMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF81468439900BA20D9 /* WallMessageViewController.xib */; };
 		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		E5280A56145EFFD900A88910 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A55145EFFD900A88910 /* libz.dylib */; };
 		E5280A58145F005B00A88910 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A57145F005B00A88910 /* MobileCoreServices.framework */; };
@@ -372,9 +368,6 @@
 		BCFECFF31468439900BA20D9 /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
 		BCFECFF41468439900BA20D9 /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
 		BCFECFF51468439900BA20D9 /* RadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioViewController.xib; sourceTree = "<group>"; };
-		BCFECFF61468439900BA20D9 /* WallMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallMessageViewController.h; sourceTree = "<group>"; };
-		BCFECFF71468439900BA20D9 /* WallMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallMessageViewController.m; sourceTree = "<group>"; };
-		BCFECFF81468439900BA20D9 /* WallMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WallMessageViewController.xib; sourceTree = "<group>"; };
 		BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundAppDelegate.h; sourceTree = "<group>"; };
 		BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundAppDelegate.m; sourceTree = "<group>"; };
 		E5280A55145EFFD900A88910 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -686,8 +679,6 @@
 			children = (
 				BC71F588147F9CD900DAE4BD /* MainWindow.xib */,
 				BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */,
-				BCFECFF51468439900BA20D9 /* RadioViewController.xib */,
-				BCFECFF81468439900BA20D9 /* WallMessageViewController.xib */,
 			);
 			name = xib;
 			path = Yasound;
@@ -748,8 +739,7 @@
 				BCFECFF11468439900BA20D9 /* RadioCreatorViewController.m */,
 				BCFECFF31468439900BA20D9 /* RadioViewController.h */,
 				BCFECFF41468439900BA20D9 /* RadioViewController.m */,
-				BCFECFF61468439900BA20D9 /* WallMessageViewController.h */,
-				BCFECFF71468439900BA20D9 /* WallMessageViewController.m */,
+				BCFECFF51468439900BA20D9 /* RadioViewController.xib */,
 				BC648F0D14684EFB005A6D8A /* MainViewController.h */,
 				BC648F0E14684EFB005A6D8A /* MainViewController.m */,
 				BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */,
@@ -864,7 +854,6 @@
 				BC71F5F7147FEC6F00DAE4BD /* logo@2x.png in Resources */,
 				BC71F5F8147FEC6F00DAE4BD /* RadioCreatorViewController.xib in Resources */,
 				BC71F5F9147FEC6F00DAE4BD /* RadioViewController.xib in Resources */,
-				BC71F5FA147FEC6F00DAE4BD /* WallMessageViewController.xib in Resources */,
 				BC71F5FB147FEC6F00DAE4BD /* Default.png in Resources */,
 				BC71F5FC147FEC6F00DAE4BD /* Default@2x.png in Resources */,
 				BC71F5FD147FEC6F00DAE4BD /* icon.png in Resources */,
@@ -948,7 +937,6 @@
 				BCFECFE2146841A800BA20D9 /* logo@2x.png in Resources */,
 				BCFED0021468439900BA20D9 /* RadioCreatorViewController.xib in Resources */,
 				BCFED0041468439900BA20D9 /* RadioViewController.xib in Resources */,
-				BCFED0061468439900BA20D9 /* WallMessageViewController.xib in Resources */,
 				BC943A5314688AE70031CE17 /* Default.png in Resources */,
 				BC943A5414688AE70031CE17 /* Default@2x.png in Resources */,
 				BC943A5514688AE70031CE17 /* icon.png in Resources */,
@@ -1021,7 +1009,6 @@
 				BC71F5C2147FEC6F00DAE4BD /* InteractionViewController.m in Sources */,
 				BC71F5C3147FEC6F00DAE4BD /* RadioCreatorViewController.m in Sources */,
 				BC71F5C4147FEC6F00DAE4BD /* RadioViewController.m in Sources */,
-				BC71F5C5147FEC6F00DAE4BD /* WallMessageViewController.m in Sources */,
 				BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */,
 				BC71F5C7147FEC6F00DAE4BD /* MainViewController.m in Sources */,
 				BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */,
@@ -1057,7 +1044,6 @@
 				BCFECFFF1468439900BA20D9 /* InteractionViewController.m in Sources */,
 				BCFED0011468439900BA20D9 /* RadioCreatorViewController.m in Sources */,
 				BCFED0031468439900BA20D9 /* RadioViewController.m in Sources */,
-				BCFED0051468439900BA20D9 /* WallMessageViewController.m in Sources */,
 				BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */,
 				BC648F1014684EFB005A6D8A /* MainViewController.m in Sources */,
 				BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */,

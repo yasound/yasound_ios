@@ -31,8 +31,10 @@
 
 @interface RadioViewController : UIViewController<UITextInputDelegate, NSXMLParserDelegate>
 {
-  IBOutlet UILabel *radioName;
-  IBOutlet UIScrollView *wall;
+//  IBOutlet UILabel *radioName;
+//  IBOutlet UIScrollView *wall;
+  IBOutlet UITableView* _tableView;
+  
   IBOutlet UITextField *messageInput;
   IBOutlet UIScrollView *avatars;
   
@@ -49,7 +51,7 @@
   NSTimer* timer;
 }
 
-- (IBAction)onBack:(id)sender;
+//- (IBAction)onBack:(id)sender;
 - (IBAction)onSendMessage:(id)sender;
 - (IBAction)onLike:(id)sender;
 - (IBAction)onDislike:(id)sender;

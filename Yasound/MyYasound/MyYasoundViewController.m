@@ -167,19 +167,6 @@ static NSArray* gFakeUsersFavorites = nil;
 
 
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(RadioSelectionTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//  float value = 235.f/255.f;
-//  if (indexPath.row & 1)
-//  {
-//    cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-//  }
-//  else
-//    cell.backgroundColor = [UIColor whiteColor];
-//}
-
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
   
