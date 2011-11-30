@@ -36,11 +36,51 @@
 
 
 @synthesize stylesheetDictionnary = _stylesheetDictionnary;
+@synthesize stylesheets = _stylesheets;
+
 
 #ifdef OPENGL_SPRITE
 @synthesize animsheet = _animsheet;
 @synthesize audiosheet = _audiosheet;
 #endif
+
+
+
+- (id)initMain
+{
+    self = [super init];
+    if (self)
+    {
+        NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
+        
+        // stylesheet
+        _stylesheetDictionnary = [resources objectForKey:@"stylesheet"];
+        if (_stylesheetDictionnary == nil)
+            NSLog(@"BundleFileManager Warning : could not find any stylesheet");
+        
+        _stylesheets = [[NSMutableDictionary alloc] init];
+    
+    }
+    
+    return self;
+}
+
+
+- (id)initWithPath:(NSString *)path
+{
+    self = [super initWithPath:path];
+    if (self)
+    {
+        // stylesheet
+        _stylesheetDictionnary = [self objectForInfoDictionaryKey:@"stylesheet"];
+        if (_stylesheetDictionnary == nil)
+            NSLog(@"BundleFileManager initWithPath Warning : could not find any stylesheet");
+        
+        _stylesheets = [[NSMutableDictionary alloc] init];
+    }
+    
+    return self;
+}
 
 
 
@@ -50,21 +90,17 @@
 //}
 
 
+
+
+
 static BundleFileManager* _main = nil;
 
 + (BundleFileManager*) main
 {
   if (_main == nil)
   {
-    _main = [[BundleFileManager alloc] init];
+    _main = [[BundleFileManager alloc] initMain];
 
-    NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
-
-    
-    // stylesheet
-    _main.stylesheetDictionnary = [resources objectForKey:@"stylesheet"];
-    if (_main.stylesheetDictionnary == nil)
-      NSLog(@"BundleFileManager Warning : could not find any stylesheet");
     
 #ifdef OPENGL_SPRITE
 
@@ -270,12 +306,7 @@ static BundleFileManager* _main = nil;
 // load the corresponding image and build associated frame.
 - (BundleStylesheet*) stylesheetForKey:(NSString*)key error:(NSError **)anError 
 {
-  if (gStylesheets == nil)
-  {
-    gStylesheets = [[NSMutableDictionary alloc] init];
-  }
-
-  BundleStylesheet* stylesheet = [gStylesheets objectForKey:key];
+  BundleStylesheet* stylesheet = [self.stylesheets objectForKey:key];
   if (stylesheet != nil)
     return stylesheet;
   
@@ -295,26 +326,23 @@ static BundleFileManager* _main = nil;
 
 - (BundleStylesheet*) stylesheetForKey:(NSString*)key retainStylesheet:(BOOL)retainStylesheet overwriteStylesheet:(BOOL)overwriteStylesheet error:(NSError **)anError
 {
-  if (gStylesheets == nil)
-    gStylesheets = [[NSMutableDictionary alloc] init];
-  
-  BundleStylesheet* stylesheet = [gStylesheets objectForKey:key];
+  BundleStylesheet* stylesheet = [self.stylesheets objectForKey:key];
   
   if ((stylesheet != nil) && !overwriteStylesheet)
     return stylesheet;
   
   // get stylesheet entry
-  NSDictionary* styleItem = [self.stylesheet valueForKey:key];
+  NSDictionary* styleItem = [self.stylesheetDictionnary valueForKey:key];
   if (styleItem == nil)
   {
     NSLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
     return nil;
   }
   
-  stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem bundle:[NSBundle mainBundle] error:anError];
+  stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem bundle:self error:anError];
   
   if (retainStylesheet)
-    [gStylesheets setObject:stylesheet forKey:key];
+    [self.stylesheets setObject:stylesheet forKey:key];
   
   return stylesheet;
   

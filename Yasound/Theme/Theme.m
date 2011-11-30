@@ -18,32 +18,6 @@ static Theme* _theme = nil;
 {
     if (_theme == nil)
     {
-        _theme = [[Theme alloc] init];
-
-        NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
-        
-        // stylesheet
-        _theme.stylesheet = [resources objectForKey:@"stylesheet"];
-        if (_main.stylesheet == nil)
-            NSLog(@"BundleFileManager Warning : could not find any stylesheet");
-        
-        
-        NSString* bundlePath = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"GameBundlePath"]; 
-        gameBundlePath = [[NSBundle mainBundle] pathForResource:gameBundlePath ofType:@"bundle"];
-        
-        if (gameBundlePath == nil)
-        {
-            NSLog(@"BundleFileManager Error : could not find the key 'GameBundlePath' from the info plist file!");
-            assert(1);
-            return nil;
-        }
-        
-        _gameBundle = [[BundleFileManager alloc] initWithPath:gameBundlePath];
-        
-        // stylesheet
-        _gameBundle.stylesheet = [_gameBundle objectForInfoDictionaryKey:@"stylesheet"];
-        if (_gameBundle.stylesheet == nil)
-            NSLog(@"GFM gameBundle Warning : could not find any stylesheet");
         
         
     }
@@ -53,12 +27,24 @@ static Theme* _theme = nil;
 
 
 
-+ (void)setTheme:(NSString*)themeName
+
+
+
++ (BOOL)setTheme:(NSString*)themeName
 {
     if (_theme != nil)
+        [_theme release];
+
+    NSString* bundlePath = [[NSBundle mainBundle] pathForResource:themeName ofType:@"bundle"];
+
+    if (bundlePath == nil)
     {
-        
+        NSLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);
+        assert(0);
+        return nil;
     }
+
+    _theme = [[Theme alloc] initWithPath:bundlePath];
 }
 
 

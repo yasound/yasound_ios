@@ -38,8 +38,8 @@
 {
     [super viewDidLoad];
     
-    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
-    [sheet applyToLabel:self.radioTitle class:@"selected"];
+//    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
+//    [sheet applyToLabel:self.radioTitle class:@"selected"];
 
 }
 

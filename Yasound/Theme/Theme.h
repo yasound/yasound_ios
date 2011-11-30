@@ -12,9 +12,9 @@
 
 @interface Theme : BundleFileManager
 
++ (BOOL)setTheme:(NSString*)themeName;
 + (Theme*)theme;
 
-+ (void)setTheme:(NSString*)themeName;
 
 
 @end
