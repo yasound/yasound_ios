@@ -432,17 +432,21 @@ static NSMutableDictionary* gFonts = nil;
 - (id)parseSingleState:(NSDictionary*)sheet bundle:(NSBundle*)bundle error:(NSError **)anError
 {
   
-  NSString* name = [sheet valueForKey:@"name"];
-  
-  UIImage* image;
+    NSString* name = [sheet valueForKey:@"name"];
 
-  // load image file if requested
-  if (name != nil)
-  {
-    NSString* type = [sheet valueForKey:@"type"];
-    NSString* path = [sheet valueForKey:@"path"];
-    
-    image = [bundle imageNamed:name ofType:type inDirectory:path];
+    UIImage* image;
+
+    // load image file if requested
+    if (name != nil)
+    {
+        NSString* type = [sheet valueForKey:@"type"];
+        NSString* path = [sheet valueForKey:@"path"];
+
+        NSString* tmppath = [bundle pathForResource:name ofType:type inDirectory:path];
+        image = [UIImage imageWithContentsOfFile:tmppath];
+
+        //LBDEBUG
+    //image = [bundle imageNamed:name ofType:type inDirectory:path];
     
     if (image == nil)
       return [BundleFileManager errorHandling:@"image" forPath:name error:anError];
@@ -492,8 +496,13 @@ static NSMutableDictionary* gFonts = nil;
   NSString* type = [sheet valueForKey:@"type"];
   NSString* path = [sheet valueForKey:@"path"];
   
-  UIImage* src = [bundle imageNamed:name ofType:type inDirectory:path];
-  if (src == nil)
+    NSString* tmppath = [bundle pathForResource:name ofType:type inDirectory:path];
+    UIImage* src = [UIImage imageWithContentsOfFile:tmppath];
+
+    //LBDEBUG
+//    UIImage* src = [bundle imageNamed:name ofType:type inDirectory:path];
+
+    if (src == nil)
     return [BundleFileManager errorHandling:@"image" forPath:name error:anError];
   
   // look if width and height are provided

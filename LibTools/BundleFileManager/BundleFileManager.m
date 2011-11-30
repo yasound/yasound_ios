@@ -318,7 +318,7 @@ static BundleFileManager* _main = nil;
     return nil;
   }
   
-  stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem bundle:[NSBundle mainBundle] error:anError];
+  stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem bundle:self error:anError];
 
   return stylesheet;
 }
@@ -447,7 +447,7 @@ static BundleFileManager* _main = nil;
   NSDictionary* item = [objects objectAtIndex:index];
 
   // build bundle audio sheet
-  BundleAudiosheet* audiosheet = [[BundleAudiosheet alloc] initWithSheet:item bundle:[NSBundle mainBundle] error:anError];
+  BundleAudiosheet* audiosheet = [[BundleAudiosheet alloc] initWithSheet:item bundle:self error:anError];
 
   return audiosheet;
 }

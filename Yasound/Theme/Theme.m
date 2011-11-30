@@ -18,11 +18,10 @@ static Theme* _theme = nil;
 {
     if (_theme == nil)
     {
-        
-        
+        [Theme setTheme:@"default"];
     }
     
-    return nil;
+    return _theme;
 }
 
 

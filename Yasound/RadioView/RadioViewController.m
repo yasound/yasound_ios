@@ -8,6 +8,7 @@
 #import "RadioViewController.h"
 #import "ASIFormDataRequest.h"
 #import "AudioStreamer.h"
+#import "Theme.h"
 
 
 @implementation RadioViewController
@@ -38,8 +39,20 @@
 {
     [super viewDidLoad];
     
-//    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
-//    [sheet applyToLabel:self.radioTitle class:@"selected"];
+    //....................................................................................
+    //
+    // header
+    //
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeader" error:nil];
+    UIView* headerView = [[UIView alloc] initWithFrame:sheet.frame];
+    headerView.backgroundColor = sheet.color;
+    [self.view addSubview:headerView];
+    
+    // header back
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
+    UIButton* btn = [sheet makeButton];
+    [self.view addSubview:btn];
+    
 
 }
 

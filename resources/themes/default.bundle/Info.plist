@@ -10,7 +10,7 @@
 	<string>Default</string>
 	<key>stylesheet</key>
 	<dict>
-		<key>header</key>
+		<key>RadioViewHeader</key>
 		<dict>
 			<key>x</key>
 			<integer>0</integer>
@@ -20,8 +20,21 @@
 			<integer>320</integer>
 			<key>height</key>
 			<integer>132</integer>
-			<key>backgroundColor</key>
+			<key>color</key>
 			<string>rgb(51,51,51)</string>
+		</dict>
+		<key>RadioViewHeaderBack</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>ArrowLeft</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images</string>
 		</dict>
 	</dict>
 </dict>

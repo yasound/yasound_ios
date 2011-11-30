@@ -8,6 +8,9 @@
 
 #import "YasoundAppDelegate.h"
 #import "RadioTabBarController.h"
+#import "RadioViewController.h"
+
+
 
 @implementation YasoundAppDelegate
 
@@ -27,6 +30,12 @@
 
   // add it as the window's root widget
   self.window.rootViewController = navigationController;
+    
+    //LBDEBUG temporarly call /////////////////////////////
+    RadioViewController* view = [[RadioViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
+    return YES;
+    /////////////////////////////////////////////////////////////////////
   
   // push the main view controller into the mavigationControler
   tabBarController = [[RadioTabBarController alloc] init];
