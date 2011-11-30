@@ -132,7 +132,7 @@ static NSArray* gFakeSearchUsers = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  RadioViewController* view = [[RadioViewController alloc] initWithNibName:@"RadioViewController" bundle:nil];
+  RadioViewController* view = [[RadioViewController alloc] init];
   [self.navigationController pushViewController:view animated:YES];
   [view release];  
 }

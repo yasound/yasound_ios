@@ -24,7 +24,8 @@
 
 @interface BundleFileManager : NSObject
 {
-  NSDictionary* _stylesheet;
+    NSDictionary* _stylesheetDictionnary;
+    
 
 #ifdef OPENGL_SPRITE
   NSDictionary* _animsheet;
@@ -32,7 +33,7 @@
 #endif
 }
 
-@property (nonatomic, retain) NSDictionary* stylesheet;
+@property (nonatomic, retain) NSDictionary* stylesheetDictionnary;
 
 #ifdef OPENGL_SPRITE
 @property (nonatomic, retain) NSDictionary* animsheet;
@@ -43,6 +44,8 @@
 
 + (BundleFileManager*) main;
 
+//- (void)staticOptimInit;
+//- (void)staticOptimUninit;
 
 //+ (BundleFileManager*)bundleWithPath:(NSString*)path;
 

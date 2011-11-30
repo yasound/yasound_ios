@@ -36,8 +36,11 @@
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  // Do any additional setup after loading the view from its nib.
+    [super viewDidLoad];
+    
+    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
+    [sheet applyToLabel:self.radioTitle class:@"selected"];
+
 }
 
 

@@ -35,7 +35,7 @@
 @implementation BundleFileManager
 
 
-@synthesize stylesheet = _stylesheet;
+@synthesize stylesheetDictionnary = _stylesheetDictionnary;
 
 #ifdef OPENGL_SPRITE
 @synthesize animsheet = _animsheet;
@@ -62,8 +62,8 @@ static BundleFileManager* _main = nil;
 
     
     // stylesheet
-    _main.stylesheet = [resources objectForKey:@"stylesheet"];
-    if (_main.stylesheet == nil)
+    _main.stylesheetDictionnary = [resources objectForKey:@"stylesheet"];
+    if (_main.stylesheetDictionnary == nil)
       NSLog(@"BundleFileManager Warning : could not find any stylesheet");
     
 #ifdef OPENGL_SPRITE
@@ -249,7 +249,21 @@ static BundleFileManager* _main = nil;
 // stylesheet
 //
 
-static NSMutableDictionary* gStylesheets = nil;
+// NSMutableDictionary [BundleFileManager* -> NSMutableDictionary]
+//static NSMutableDictionary* gStylesheets = nil;
+//
+//
+//- (void)staticOptimInit
+//{
+//    if (gStylesheets == nil)
+//        gStylesheets = [[NSMutableDictionary alloc] init];
+//
+//    if ([gStylesheets
+//}
+//
+//
+//- (void)staticOptimUninit;
+
 
 
 // read info from the stylesheet entry from the bundle info.plist,
@@ -257,14 +271,16 @@ static NSMutableDictionary* gStylesheets = nil;
 - (BundleStylesheet*) stylesheetForKey:(NSString*)key error:(NSError **)anError 
 {
   if (gStylesheets == nil)
+  {
     gStylesheets = [[NSMutableDictionary alloc] init];
+  }
 
   BundleStylesheet* stylesheet = [gStylesheets objectForKey:key];
   if (stylesheet != nil)
     return stylesheet;
   
   // get stylesheet entry
-  NSDictionary* styleItem = [self.stylesheet valueForKey:key];
+  NSDictionary* styleItem = [self.stylesheetDictionnary valueForKey:key];
   if (styleItem == nil)
   {
     NSLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
