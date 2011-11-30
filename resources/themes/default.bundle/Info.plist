@@ -185,15 +185,13 @@
 			<key>font</key>
 			<dict>
 				<key>name</key>
-				<string>HelveticaNeue</string>
+				<string>HelveticaNeue-Bold</string>
 				<key>size</key>
-				<integer>10</integer>
+				<integer>8</integer>
 				<key>text</key>
 				<string>NOW PLAYING</string>
 				<key>textColor</key>
-				<string>rgb(140,140,140)</string>
-				<key>backgroundColor</key>
-				<string>red</string>
+				<string>rgb(237,222,189)</string>
 			</dict>
 			<key>height</key>
 			<integer>14</integer>
@@ -215,14 +213,12 @@
 				<key>text</key>
 				<string>Goldfrapp</string>
 				<key>textColor</key>
-				<string>rgb(140,140,140)</string>
-				<key>backgroundColor</key>
-				<string>blue</string>
+				<string>white</string>
 			</dict>
 			<key>height</key>
 			<integer>13</integer>
 			<key>width</key>
-			<integer>180</integer>
+			<integer>190</integer>
 			<key>x</key>
 			<integer>45</integer>
 			<key>y</key>
@@ -239,14 +235,12 @@
 				<key>text</key>
 				<string>Time Out From The World (remix version)</string>
 				<key>textColor</key>
-				<string>rgb(140,140,140)</string>
-				<key>backgroundColor</key>
-				<string>green</string>
+				<string>white</string>
 			</dict>
 			<key>height</key>
 			<integer>13</integer>
 			<key>width</key>
-			<integer>180</integer>
+			<integer>190</integer>
 			<key>x</key>
 			<integer>45</integer>
 			<key>y</key>
@@ -263,16 +257,14 @@
 				<key>text</key>
 				<string>12345</string>
 				<key>textColor</key>
-				<string>rgb(140,140,140)</string>
-				<key>backgroundColor</key>
-				<string>red</string>
+				<string>white</string>
 			</dict>
 			<key>height</key>
 			<integer>10</integer>
 			<key>width</key>
-			<integer>25</integer>
+			<integer>30</integer>
 			<key>x</key>
-			<integer>292</integer>
+			<integer>286</integer>
 			<key>y</key>
 			<integer>80</integer>
 		</dict>
@@ -287,18 +279,42 @@
 				<key>text</key>
 				<string>12345</string>
 				<key>textColor</key>
-				<string>rgb(140,140,140)</string>
-				<key>backgroundColor</key>
-				<string>blue</string>
+				<string>white</string>
 			</dict>
 			<key>height</key>
 			<integer>10</integer>
 			<key>width</key>
-			<integer>25</integer>
+			<integer>30</integer>
 			<key>x</key>
-			<integer>292</integer>
+			<integer>286</integer>
 			<key>y</key>
 			<integer>92</integer>
+		</dict>
+		<key>RadioViewHeaderNowPlayingBarLikesImage</key>
+		<dict>
+			<key>x</key>
+			<integer>273</integer>
+			<key>y</key>
+			<integer>79</integer>
+			<key>name</key>
+			<string>Likes</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images</string>
+		</dict>
+		<key>RadioViewHeaderNowPlayingBarDislikesImage</key>
+		<dict>
+			<key>x</key>
+			<integer>273</integer>
+			<key>y</key>
+			<integer>91</integer>
+			<key>name</key>
+			<string>Dislikes</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images</string>
 		</dict>
 	</dict>
 </dict>

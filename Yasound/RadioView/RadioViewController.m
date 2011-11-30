@@ -126,10 +126,22 @@
     label = [sheet makeLabel];
     [self.view addSubview:label];
 
+    // header now playing bar likes image
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikesImage" error:nil];
+    image = [[UIImageView alloc] initWithImage:[sheet image]];
+    image.frame = sheet.frame;
+    [self.view addSubview:image];
+
     // header now playing bar likes
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikes" error:nil];
     label = [sheet makeLabel];
     [self.view addSubview:label];
+
+    // header now playing bar dislikes image
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikesImage" error:nil];
+    image = [[UIImageView alloc] initWithImage:[sheet image]];
+    image.frame = sheet.frame;
+    [self.view addSubview:image];
 
     // header now playing bar dislikes
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikes" error:nil];
