@@ -48,10 +48,49 @@
     headerView.backgroundColor = sheet.color;
     [self.view addSubview:headerView];
     
-    // header back
+    // header back arrow
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
     UIButton* btn = [sheet makeButton];
     [self.view addSubview:btn];
+    
+    // header avatar
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
+    UIImageView* avatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy.png"]];
+    avatar.frame = sheet.frame;
+    [self.view addSubview:avatar];
+    
+    // header avatar mask
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
+    UIImageView* avatarMask = [[UIImageView alloc] initWithImage:[sheet image]];
+    avatarMask.frame = sheet.frame;
+    [self.view addSubview:avatarMask];
+    
+    // header title
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderTitle" error:nil];
+    UILabel* label = [sheet makeLabel];
+    [self.view addSubview:label];
+    
+    // header heart image
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderHeart" error:nil];
+    UIImageView* image = [[UIImageView alloc] initWithImage:[sheet image]];
+    image.frame = sheet.frame;
+    [self.view addSubview:image];
+
+    // header likes
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderLikes" error:nil];
+    label = [sheet makeLabel];
+    [self.view addSubview:label];
+    
+    // header headset image
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderHeadSet" error:nil];
+    image = [[UIImageView alloc] initWithImage:[sheet image]];
+    image.frame = sheet.frame;
+    [self.view addSubview:image];
+    
+    // header listeners
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderListeners" error:nil];
+    label = [sheet makeLabel];
+    [self.view addSubview:label];
     
 
 }
