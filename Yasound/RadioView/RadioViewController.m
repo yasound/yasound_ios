@@ -48,6 +48,14 @@
     headerView.backgroundColor = sheet.color;
     [self.view addSubview:headerView];
     
+    // header picto image
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderPicto" error:nil];
+    UIImageView* image = [[UIImageView alloc] initWithImage:[sheet image]];
+    CGFloat x = self.view.frame.origin.x + self.view.frame.size.width - sheet.frame.size.width;
+    image.frame = CGRectMake(x, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
+    [self.view addSubview:image];
+    
+    
     // header back arrow
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
     UIButton* btn = [sheet makeButton];
@@ -72,7 +80,7 @@
     
     // header heart image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderHeart" error:nil];
-    UIImageView* image = [[UIImageView alloc] initWithImage:[sheet image]];
+    image = [[UIImageView alloc] initWithImage:[sheet image]];
     image.frame = sheet.frame;
     [self.view addSubview:image];
 
@@ -92,6 +100,41 @@
     label = [sheet makeLabel];
     [self.view addSubview:label];
     
+    //....................................................................................
+    //
+    // header now playing bar
+    //
+    
+    // header now playing bar image
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
+    image = [[UIImageView alloc] initWithImage:[sheet image]];
+    image.frame = sheet.frame;
+    [self.view addSubview:image];
+
+    // header now playing bar label
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLabel" error:nil];
+    label = [sheet makeLabel];
+    [self.view addSubview:label];
+    
+    // header now playing bar artist
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarArtist" error:nil];
+    label = [sheet makeLabel];
+    [self.view addSubview:label];
+    
+    // header now playing bar title
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarTitle" error:nil];
+    label = [sheet makeLabel];
+    [self.view addSubview:label];
+
+    // header now playing bar likes
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikes" error:nil];
+    label = [sheet makeLabel];
+    [self.view addSubview:label];
+
+    // header now playing bar dislikes
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikes" error:nil];
+    label = [sheet makeLabel];
+    [self.view addSubview:label];
 
 }
 
