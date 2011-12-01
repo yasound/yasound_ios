@@ -387,6 +387,11 @@
 			<key>height</key>
 			<integer>293</integer>
 		</dict>
+		<key>RadioViewTableViewCellMinHeight</key>
+		<dict>
+			<key>minHeight</key>
+			<integer>36</integer>
+		</dict>
 		<key>RadioViewCellBackground1</key>
 		<dict>
 			<key>color</key>
@@ -464,7 +469,7 @@
 				<string>rgb(32,32,32)</string>
 			</dict>
 			<key>height</key>
-			<integer>10</integer>
+			<integer>12</integer>
 			<key>width</key>
 			<integer>280</integer>
 			<key>x</key>

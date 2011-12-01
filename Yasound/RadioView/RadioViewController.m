@@ -28,6 +28,15 @@
     if (self) 
     {
         self.messages = [[NSMutableArray alloc] init];
+        
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellMessage" error:nil];
+        _messageFont = [sheet makeFont];
+        [_messageFont retain];
+        
+        _messageWidth = sheet.frame.size.width;
+        
+        sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];
+        _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
 
     }
     return self;
@@ -199,6 +208,10 @@
     _tableView = [[UITableView alloc] initWithFrame:sheet.frame style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];    
+    _tableView.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
+
     [self.view addSubview:_tableView];
     
     
@@ -244,7 +257,8 @@
 
 - (void)dealloc
 {
-  [super dealloc];
+    [super dealloc];
+    [_messageFont release];
 }
 
 
@@ -265,6 +279,19 @@
 #pragma mark - TableView Source and Delegate
 
 
++(float) calculateHeightOfTextFromWidth:(NSString*)text withFont:(UIFont*)font width:(float)width lineBreakMode:(UILineBreakMode)lineBreakMode
+{
+    [text retain];
+    [font retain];
+    CGSize suggestedSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(width, FLT_MAX) lineBreakMode:lineBreakMode];
+    
+    [text release];
+    [font release];
+    
+    return suggestedSize.height;
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -272,9 +299,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    NSLog(@"number messages %d", [self.messages count]);
-
+//    NSLog(@"number messages %d", [self.messages count]);
     return [self.messages count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    CGSize constraint = CGSizeMake(_messageWidth, 20000.0f);
+
+    Message* m = [self.messages objectAtIndex:indexPath.row];
+    CGSize size = [m.message sizeWithFont:_messageFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    CGFloat height = MAX(size.height, _cellMinHeight);
+    
+    return height;
 }
 
 
@@ -372,7 +409,7 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict 
 {
-    NSLog(@"XML start element: %@", elementName);
+    //NSLog(@"XML start element: %@", elementName);
     
     if ( [elementName isEqualToString:@"post"]) 
         _currentMessage = [[Message alloc] init];
@@ -404,7 +441,7 @@
             Message* m = [[Message alloc] init];
             m.user = _currentMessage.user;
             m.date = _currentMessage.date;
-            m.message = _currentMessage.message;
+            m.message = [[[_currentMessage.message stringByAppendingString:_currentMessage.message] stringByAppendingString:_currentMessage.message] stringByAppendingString:_currentMessage.message];
             
             [self.messages insertObject:m atIndex:0];
         }

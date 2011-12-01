@@ -27,9 +27,10 @@
     if (self) 
     {
         BundleStylesheet* sheet = nil;
-        self.background = [[UIView alloc] initWithFrame:self.frame];
+//        self.background = [[UIView alloc] init];
+//        UIView* view = self.background;
+        self.background = self.contentView;
         UIView* view = self.background;
-        
         
         // background color
         if (indexPath.row & 1)
@@ -62,10 +63,13 @@
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellMessage" error:nil];
         self.message = [sheet makeLabel];
         self.message.text = m.message;
+        [self.message setLineBreakMode:UILineBreakModeWordWrap];
+        //[label setMinimumFontSize:FONT_SIZE];
+        [self.message setNumberOfLines:0];        
         [view addSubview:self.message];
         
 
-        [self.contentView addSubview:self.background];
+//        [self.contentView addSubview:self.background];
 
     }
     return self;

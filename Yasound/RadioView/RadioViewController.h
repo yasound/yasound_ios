@@ -15,6 +15,10 @@
 
     Message* _currentMessage;
     NSMutableString* _currentXMLString;
+    
+    UIFont* _messageFont;
+    CGFloat _messageWidth;
+    CGFloat _cellMinHeight;
 }
 
 @property (nonatomic, retain) NSMutableArray* messages;
