@@ -9,19 +9,28 @@
 #import "ASIFormDataRequest.h"
 #import "AudioStreamer.h"
 #import "Theme.h"
+#import "RadioViewCell.h"
 
+//#define LOCAL 1 // use localhost as the server
+
+#define SERVER_DATA_REQUEST_TIMER 5.0f
 
 @implementation RadioViewController
 
+
+@synthesize messages;
+
+
+
 - (id)init
 {
-  self = [super init];
-  if (self) 
-  {
-      // Custom initialization
-    
-  }
-  return self;
+    self = [super init];
+    if (self) 
+    {
+        self.messages = [[NSMutableArray alloc] init];
+
+    }
+    return self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -180,6 +189,26 @@
     [messageBar setFont:[sheet makeFont]];
 
     [messageBarView addSubview:messageBar];
+    
+    
+    //....................................................................................
+    //
+    // table view
+    //
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableView" error:nil];    
+    _tableView = [[UITableView alloc] initWithFrame:sheet.frame style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+    
+    
+    //....................................................................................
+    //
+    // data update timer
+    //
+    [self onUpdate:nil];
+    [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
+
 
     
 }
@@ -228,22 +257,190 @@
 }
 
 
-//- (NSString*) getWall
-//{
-//  // Needed to init cookies
+
+
+
+
+
+#pragma mark - TableView Source and Delegate
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+{
+    NSLog(@"number messages %d", [self.messages count]);
+
+    return [self.messages count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    static NSString* CellIdentifier = @"RadioViewCell";
+    
+    Message* m = [self.messages objectAtIndex:indexPath.row];
+
+    RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier message:m indexPath:indexPath] autorelease];
+    }
+    else
+        [cell update:m indexPath:indexPath];
+    
+    return cell;
+}
+
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    RadioViewController* view = [[RadioViewController alloc] init];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];  
+}
+
+
+
+
+
+
+#pragma mark - Data 
+
+
+- (void)onUpdate:(NSTimer*)timer
+{
 //#if LOCAL
-//  NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/all/"];  
+//    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/all/"];  
 //#else
-//  NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/all/"];
+//    NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/all/"];
 //#endif
-//  
-//  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-//  [request setDelegate:self];
-//  [request startSynchronous];
-//
-//  //NSLog(@"Request sent, response we got: %@\n\n", request.responseString);
-//  return request.responseString;
+    
+#if LOCAL
+    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/allAPI/"];
+#else
+    NSURL *url = [NSURL URLWithString:@"http://dev.yasound.com/yaapp/wall/allAPI/"];
+#endif
+
+
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setDelegate:self];
+    [request startSynchronous];
+
+    // asynchronous
+//	ASIHTTPRequest *request = [ASIFormDataRequest requestWithURL:url];
+//	[request setDelegate:self];
+//	[request startAsynchronous];
+}
+
+
+//- (void)requestStarted:(ASIHTTPRequest *)request
+//{
+//    NSLog(@"requestStarted");
 //}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSLog(@"RadioViewController update requestFailed");
+}
+
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+//    NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
+//    NSLog(@"status message: %@\n\n", request.responseStatusMessage);
+//    NSLog(@"cookies: %@\n\n", request.responseCookies);
+    
+    //clean message arrays
+    [self.messages removeAllObjects];
+    
+    NSXMLParser* parser = [[NSXMLParser alloc] initWithData:request.responseData];
+    [parser setDelegate:self];
+    [parser parse];
+    
+    [_tableView reloadData];    
+}
+
+
+
+#pragma mark - NSXLMParser Delegate
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict 
+{
+    NSLog(@"XML start element: %@", elementName);
+    
+    if ( [elementName isEqualToString:@"post"]) 
+        _currentMessage = [[Message alloc] init];
+}
+
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string 
+{
+    if (!_currentXMLString)
+        _currentXMLString = [[NSMutableString alloc] initWithCapacity:50];
+
+    [_currentXMLString appendString:string];
+}
+
+
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    NSString* str = [_currentXMLString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    //NSLog(@"XML end element: %@", elementName);
+    
+    if ([elementName isEqualToString:@"post"]) 
+    {
+        if ([self.messages count] < _currentMessage.identifier - 1)
+        {
+            //NSLog(@"New post: %d\n", _currentMessage.identifier);
+
+            Message* m = [[Message alloc] init];
+            m.user = _currentMessage.user;
+            m.date = _currentMessage.date;
+            m.message = _currentMessage.message;
+            
+            [self.messages insertObject:m atIndex:0];
+        }
+        else
+            [_currentMessage release];
+            _currentMessage = nil;
+    }
+    else if ([elementName isEqualToString:@"id"]) 
+    {
+        _currentMessage.identifier = str.intValue;
+    }
+    else if ([elementName isEqualToString:@"kind"]) 
+    {
+        _currentMessage.kind = str;
+    }
+    else if ([elementName isEqualToString:@"author"]) 
+    {
+        _currentMessage.user = str;
+    }
+    else if ([elementName isEqualToString:@"date"]) 
+    {
+        _currentMessage.date = str;
+    }
+    else if ([elementName isEqualToString:@"message"]) 
+    {
+        _currentMessage.message = str;
+    }
+
+    [_currentXMLString release];
+    _currentXMLString = nil;
+}
+
+
+
+
+
 
 //- (void) sendMessage:(NSString *)message
 //{
@@ -266,97 +463,35 @@
 //	[request startAsynchronous];
 //}
 
-//- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict 
-//{
-//  //NSLog(@"XML start element: %@", elementName);
-//  
-//  if ( [elementName isEqualToString:@"post"]) 
-//  {
-//    currentMessage = [[Message alloc] init];
-//  }
-//  
-//
-//}
-//
-//- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string 
-//{
-//  if (!currentXMLString)
-//  {
-//    // currentXMLString is an NSMutableString instance variable
-//    currentXMLString = [[NSMutableString alloc] initWithCapacity:50];
-//  }
-//  [currentXMLString appendString:string];
-//}
 //
 //
-//- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
-//{
-//  NSString* str = [currentXMLString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-//  //NSLog(@"XML end element: %@", elementName);
-//  if ( [elementName isEqualToString:@"post"]) 
-//  {
-//    if ([messagesArray count] < currentMessage.identifier - 1)
-//    {
-//      NSLog(@"New post: %d\n", currentMessage.identifier);
-//
-//      //LBDEBUG
-//
-////      WallMessageViewController* wm = [[WallMessageViewController alloc] initWithNibName:@"WallMessageViewController" bundle:nil];
-////      UIImage* img = (UIImage*)[avatarImages objectForKey:currentMessage.user];
-////      
-////      Message* m = [[Message alloc] init];
-////      m.user = currentMessage.user;
-////      m.date = currentMessage.date;
-////      m.message = currentMessage.message;
-////      m.wallMessage = wm;
-//      
-////      [wall addSubview:wm.view];
-////LBDEBUG ICI
-//      
-////      wm.image.image = img;
-////      wm.message.text = currentMessage.message;
-////      wm.title.text = [NSString stringWithFormat:@"%@ - %@", currentMessage.date, currentMessage.user];
-////      
-////      if (backgroundShade)
-////        wm.view.backgroundColor = [UIColor colorWithWhite:.97 alpha:1];
-////      else
-////        wm.view.backgroundColor = [UIColor colorWithWhite:1 alpha:1];
-//      
-////      backgroundShade = !backgroundShade;
-////      [messagesArray insertObject:m atIndex:0];
-//    }
-//    else
-//      [currentMessage release];
-//    currentMessage = nil;
-//  }
-//  else if ( [elementName isEqualToString:@"id"]) 
-//  {
-//    currentMessage.identifier = str.intValue;
-//  }
-//  else if ( [elementName isEqualToString:@"kind"]) 
-//  {
-//    currentMessage.kind = str;
-//  }
-//  else if ( [elementName isEqualToString:@"author"]) 
-//  {
-//    currentMessage.user = str;
-//  }
-//  else if ( [elementName isEqualToString:@"date"]) 
-//  {
-//    currentMessage.date = str;
-//  }
-//  else if ( [elementName isEqualToString:@"message"]) 
-//  {
-//    currentMessage.message = str;
-//  }
-//  
-//  [currentXMLString release];
-//  //[str release];
-//  currentXMLString = nil;
-//}
 
 
 
 
 
 @end
+
+
+
+
+
+
+
+//- (NSString*) getWall
+//{
+//    // Needed to init cookies
+//#if LOCAL
+//    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/all/"];  
+//#else
+//    NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/all/"];
+//#endif
+//    
+//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+//    [request setDelegate:self];
+//    [request startSynchronous];
+//    
+//    //NSLog(@"Request sent, response we got: %@\n\n", request.responseString);
+//    return request.responseString;
+//}
+

@@ -27,6 +27,10 @@
 		405629AD147547380085518C /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4056299F147547380085518C /* ASIInputStream.m */; };
 		405629AE147547380085518C /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 405629A1147547380085518C /* ASINetworkQueue.m */; };
 		405629AF147547380085518C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 405629A6147547380085518C /* Reachability.m */; };
+		BC0DD83B1487C73E00DCD550 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD83A1487C73E00DCD550 /* Message.m */; };
+		BC0DD83C1487C73E00DCD550 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD83A1487C73E00DCD550 /* Message.m */; };
+		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
+		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
@@ -271,6 +275,10 @@
 		405629A2147547380085518C /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		405629A5147547380085518C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		405629A6147547380085518C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		BC0DD8391487C73E00DCD550 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		BC0DD83A1487C73E00DCD550 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
+		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
 		BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
 		BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionViewController.h; path = RadioSelection/RadioSelectionViewController.h; sourceTree = "<group>"; };
@@ -483,6 +491,15 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		BC0DD8381487C73E00DCD550 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC0DD8391487C73E00DCD550 /* Message.h */,
+				BC0DD83A1487C73E00DCD550 /* Message.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		BC5EE20E147D3EB300A282A5 /* Radio Selection */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,6 +613,8 @@
 		BCB5F28B1485416B00C28B3D /* RadioView */ = {
 			isa = PBXGroup;
 			children = (
+				BC0DD8461487EAE900DCD550 /* RadioViewCell.h */,
+				BC0DD8471487EAE900DCD550 /* RadioViewCell.m */,
 				BCB5F28C1485416B00C28B3D /* RadioViewController.h */,
 				BCB5F28D1485416B00C28B3D /* RadioViewController.m */,
 			);
@@ -761,6 +780,7 @@
 				BC9F413E147E8A5F00D417EF /* BundleFileManager */,
 				4056298D147547380085518C /* ASIHTTPRequest */,
 				BCFECFE31468439900BA20D9 /* Audio */,
+				BC0DD8381487C73E00DCD550 /* Model */,
 				BCFECFE61468439900BA20D9 /* Gui */,
 				BC71F595147FC10500DAE4BD /* My Yasound */,
 				BC5EE20E147D3EB300A282A5 /* Radio Selection */,
@@ -1060,6 +1080,8 @@
 				BCF62DE3148394F0001B1908 /* RadioSearchViewController.m in Sources */,
 				BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4514863646008F3738 /* Theme.m in Sources */,
+				BC0DD83C1487C73E00DCD550 /* Message.m in Sources */,
+				BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1096,6 +1118,8 @@
 				BCF62DE2148394F0001B1908 /* RadioSearchViewController.m in Sources */,
 				BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4414863646008F3738 /* Theme.m in Sources */,
+				BC0DD83B1487C73E00DCD550 /* Message.m in Sources */,
+				BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
