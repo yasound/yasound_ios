@@ -53,52 +53,52 @@
     UIImageView* image = [[UIImageView alloc] initWithImage:[sheet image]];
     CGFloat x = self.view.frame.origin.x + self.view.frame.size.width - sheet.frame.size.width;
     image.frame = CGRectMake(x, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
-    [self.view addSubview:image];
+    [headerView addSubview:image];
     
     
     // header back arrow
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
     UIButton* btn = [sheet makeButton];
-    [self.view addSubview:btn];
+    [headerView addSubview:btn];
     
     // header avatar
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
     UIImageView* avatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy.png"]];
     avatar.frame = sheet.frame;
-    [self.view addSubview:avatar];
+    [headerView addSubview:avatar];
     
     // header avatar mask
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
     UIImageView* avatarMask = [[UIImageView alloc] initWithImage:[sheet image]];
     avatarMask.frame = sheet.frame;
-    [self.view addSubview:avatarMask];
+    [headerView addSubview:avatarMask];
     
     // header title
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderTitle" error:nil];
     UILabel* label = [sheet makeLabel];
-    [self.view addSubview:label];
+    [headerView addSubview:label];
     
     // header heart image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderHeart" error:nil];
     image = [[UIImageView alloc] initWithImage:[sheet image]];
     image.frame = sheet.frame;
-    [self.view addSubview:image];
+    [headerView addSubview:image];
 
     // header likes
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderLikes" error:nil];
     label = [sheet makeLabel];
-    [self.view addSubview:label];
+    [headerView addSubview:label];
     
     // header headset image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderHeadSet" error:nil];
     image = [[UIImageView alloc] initWithImage:[sheet image]];
     image.frame = sheet.frame;
-    [self.view addSubview:image];
+    [headerView addSubview:image];
     
     // header listeners
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderListeners" error:nil];
     label = [sheet makeLabel];
-    [self.view addSubview:label];
+    [headerView addSubview:label];
     
     //....................................................................................
     //
@@ -107,47 +107,81 @@
     
     // header now playing bar image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
+    UIImageView* nowPlayingBar = [[UIImageView alloc] initWithImage:[sheet image]];
+    nowPlayingBar.frame = sheet.frame;
+    [headerView addSubview:nowPlayingBar];
+    
+    // header now playing bar track image 
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarImage" error:nil];
+    image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy.png"]];
+    image.frame = sheet.frame;
+    [nowPlayingBar addSubview:image];
+
+    // header now playing bar track image mask
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarMask" error:nil];
     image = [[UIImageView alloc] initWithImage:[sheet image]];
     image.frame = sheet.frame;
-    [self.view addSubview:image];
+    [nowPlayingBar addSubview:image];
+    
 
     // header now playing bar label
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLabel" error:nil];
     label = [sheet makeLabel];
-    [self.view addSubview:label];
+    [nowPlayingBar addSubview:label];
     
     // header now playing bar artist
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarArtist" error:nil];
     label = [sheet makeLabel];
-    [self.view addSubview:label];
+    [nowPlayingBar addSubview:label];
     
     // header now playing bar title
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarTitle" error:nil];
     label = [sheet makeLabel];
-    [self.view addSubview:label];
+    [nowPlayingBar addSubview:label];
 
     // header now playing bar likes image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikesImage" error:nil];
     image = [[UIImageView alloc] initWithImage:[sheet image]];
     image.frame = sheet.frame;
-    [self.view addSubview:image];
+    [nowPlayingBar addSubview:image];
 
     // header now playing bar likes
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikes" error:nil];
     label = [sheet makeLabel];
-    [self.view addSubview:label];
+    [nowPlayingBar addSubview:label];
 
     // header now playing bar dislikes image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikesImage" error:nil];
     image = [[UIImageView alloc] initWithImage:[sheet image]];
     image.frame = sheet.frame;
-    [self.view addSubview:image];
+    [nowPlayingBar addSubview:image];
 
     // header now playing bar dislikes
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikes" error:nil];
     label = [sheet makeLabel];
-    [self.view addSubview:label];
+    [nowPlayingBar addSubview:label];
+    
+    
+    //....................................................................................
+    //
+    // message bar
+    //
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarBackground" error:nil];
+    UIView* messageBarView = [[UIView alloc] initWithFrame:sheet.frame];
+    messageBarView.backgroundColor = sheet.color;
+    [self.view addSubview:messageBarView];   
+    
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBar" error:nil];    
+    UITextField* messageBar = [[UITextField alloc] initWithFrame:sheet.frame];
+    [messageBar setBorderStyle:UITextBorderStyleRoundedRect];
+    [messageBar setPlaceholder:NSLocalizedString(@"radioview_message", nil)];
 
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarFont" error:nil];
+    [messageBar setFont:[sheet makeFont]];
+
+    [messageBarView addSubview:messageBar];
+
+    
 }
 
 

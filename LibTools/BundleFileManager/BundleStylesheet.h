@@ -79,6 +79,9 @@
 // can be multi-states, if the parsed stylesheet is appropriate
 - (UIButton*)makeButton;
 
+// create a fond, using the parsed font style
+- (UIFont*)makeFont;
+
 // create a label using the parsed font styles
 - (UILabel*)makeLabel;
 

@@ -580,49 +580,63 @@ static NSMutableDictionary* gFonts = nil;
 
 //....................................................................................
 //
+// create a font
+//
+- (UIFont*)makeFont
+{
+    BundleFontsheet* fontsheet = [self.fontsheets objectForKey:@"default"];
+    UIFont* font = nil;
+    
+    // a specific font has been requested
+    if (fontsheet.name != nil)
+    {
+        NSString* fontName = [fontsheet.name stringByAppendingFormat:@"-%d", fontsheet.size];
+        font = [gFonts objectForKey:fontName];
+        
+        // add the font, if it's not been done already
+        if (font == nil)
+        {
+            font = [UIFont fontWithName:fontsheet.name size:fontsheet.size];
+            if (font == nil)
+                NSLog(@"BundleStylesheet error : could not get the font '%@'", fontsheet.name);
+            else
+                [gFonts setObject:font forKey:fontName];
+        }
+    }
+    
+    if (font != nil)
+        return font;
+    
+    // otherwise, use the system font
+    else if ([fontsheet.weight isEqualToString:@"bold"])
+        font = [UIFont boldSystemFontOfSize:fontsheet.size];
+    else  if ([fontsheet.weight isEqualToString:@"italic"])
+        font = [UIFont italicSystemFontOfSize:fontsheet.size];
+    else
+        font = [UIFont systemFontOfSize:fontsheet.size];
+    
+    return font;
+}
+
+
+
+//....................................................................................
+//
 // create a label
 //
 - (UILabel*)makeLabel
 {  
-  BundleFontsheet* fontsheet = [self.fontsheets objectForKey:@"default"];
-  
-  UILabel* label = [[UILabel alloc] initWithFrame:self.frame];
-  label.backgroundColor = fontsheet.backgroundColor;
-  label.textColor = fontsheet.textColor;
-  label.text = fontsheet.text;
-  label.textAlignment = fontsheet.textAlignement;
-  
-  UIFont* font = nil;
-  
-  // a specific font has been requested
-  if (fontsheet.name != nil)
-  {
-    NSString* fontName = [fontsheet.name stringByAppendingFormat:@"-%d", fontsheet.size];
-    font = [gFonts objectForKey:fontName];
-    
-    // add the font, if it's not been done already
-    if (font == nil)
-    {
-      font = [UIFont fontWithName:fontsheet.name size:fontsheet.size];
-      if (font == nil)
-        NSLog(@"BundleStylesheet error : could not get the font '%@'", fontsheet.name);
-      else
-        [gFonts setObject:font forKey:fontName];
-    }
-  }
-  
-  if (font != nil)
-    label.font = font;
-    
-  // otherwise, use the system font
-  else if ([fontsheet.weight isEqualToString:@"bold"])
-    label.font = [UIFont boldSystemFontOfSize:fontsheet.size];
-  else  if ([fontsheet.weight isEqualToString:@"italic"])
-    label.font = [UIFont italicSystemFontOfSize:fontsheet.size];
-  else
-    label.font = [UIFont systemFontOfSize:fontsheet.size];
+    BundleFontsheet* fontsheet = [self.fontsheets objectForKey:@"default"];
 
-  return label;
+    UILabel* label = [[UILabel alloc] initWithFrame:self.frame];
+    label.backgroundColor = fontsheet.backgroundColor;
+    label.textColor = fontsheet.textColor;
+    label.text = fontsheet.text;
+    label.textAlignment = fontsheet.textAlignement;
+
+    label.font = [self makeFont];
+
+    return label;
 }
 
 
