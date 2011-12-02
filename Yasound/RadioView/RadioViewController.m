@@ -80,6 +80,7 @@
     // header back arrow
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
     UIButton* btn = [sheet makeButton];
+    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:btn];
     
     // header avatar
@@ -233,6 +234,10 @@
     _statusBarButton = [sheet makeButton];
     [_statusBarButton addTarget:self action:@selector(onStatusBarButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_statusBar addSubview:_statusBarButton];
+    
+    // status bar avatar
+    // build dynamically
+    _statusUsers = nil;
     
     
     
@@ -540,14 +545,11 @@ static NSArray* fakeMessages = nil;
 
 - (void)setStatusMessage:(NSString*)msg
 {
-    if ([self.statusMessages count] > 0)
-    {
-        for (UILabel* label in self.statusMessages)
-        {
-            [self onStatusMessageFadeOut:label withRelease:NO];
-        }
-    }
-        
+    if (_statusBarButtonToggled)
+        return;
+    
+    [self cleanStatusMessages];
+    
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* label = [sheet makeLabel];
     label.text = msg;
@@ -566,6 +568,17 @@ static NSArray* fakeMessages = nil;
     [NSTimer scheduledTimerWithTimeInterval:2.4f target:self selector:@selector(onStatusMessageFadeOutTick:) userInfo:label repeats:NO];
 }
 
+- (void)cleanStatusMessages
+{
+    if ([self.statusMessages count] > 0)
+    {
+        for (UILabel* label in self.statusMessages)
+        {
+            [self onStatusMessageFadeOut:label withRelease:NO];
+        }
+    }
+}
+
 
 - (void)onStatusMessageFadeOutTick:(NSTimer*)timer
 {
@@ -577,7 +590,7 @@ static NSArray* fakeMessages = nil;
 - (void)onStatusMessageFadeOut:(UILabel*)label withRelease:(BOOL)withRelease
 {
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration: 0.66];
+    [UIView setAnimationDuration: 0.33];
     label.alpha = 0;
     [UIView commitAnimations];          
 
@@ -597,10 +610,18 @@ static NSArray* fakeMessages = nil;
 
 #pragma mark - IBActions
 
+- (IBAction)onBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
 - (IBAction)onStatusBarButtonClicked:(id)sender
 {
     BundleStylesheet* sheet = nil;
     
+    // downsize status bar : hide users
     if (_statusBarButtonToggled)
     {
         _statusBarButtonToggled = !_statusBarButtonToggled;
@@ -610,23 +631,81 @@ static NSArray* fakeMessages = nil;
         
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration: 0.15];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(onStatusBarClosed:finished:context:)];
+        
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y + _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
+        _statusUsers.alpha = 0;
         [UIView commitAnimations];        
     }
+    
+    // upsize status bar : show users
     else
     {
+        [self cleanStatusMessages];
+        
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
+        
+        BundleStylesheet* imageSheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* nameSheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserName" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        CGRect imageRect = imageSheet.frame;
+        CGRect nameRect = nameSheet.frame;
+
+        // get list of users and create scrollview
+        NSArray* users = [NSArray arrayWithObjects:@"tom", @"bernard", @"Jean-Claude Machine", @"Alberte", @"Jackie42", @"Mouss4_3", @"Tchoupi2", @"LeSanglier", @"Coco A", @"Riquiqui", nil];
+        sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserScrollView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        _statusUsers = [[UIScrollView alloc] initWithFrame:sheet.frame];
+        
+        // fill scrollview with users
+        for (NSString* user in users)
+        {
+            NSInteger randIndex = (rand() %5)+1;
+            UIImage* avatar = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+            if (avatar == nil)
+            {
+                NSLog(@"error loading avatar %@", [NSString stringWithFormat:@"avatarDummy%d.png", randIndex]);
+            }
+            UIImageView* image = [[UIImageView alloc] initWithImage:avatar];
+            image.frame = imageRect;
+            [_statusUsers addSubview:image];
+            
+            UILabel* name = [nameSheet makeLabel];
+            name.frame = nameRect;
+            name.text = user;
+            [_statusUsers addSubview:name];
+            
+            imageRect = CGRectMake(imageRect.origin.x + nameRect.size.width +1, imageRect.origin.y, imageRect.size.width, imageRect.size.height);
+            nameRect = CGRectMake(nameRect.origin.x + nameRect.size.width +1, nameRect.origin.y, nameRect.size.width, nameRect.size.height);
+            
+        }
+        
+        // set scrollview content size
+//        [_statusUsers setContentSize:CGSizeMake(nameRect.origin.x + nameRect.size.width, _statusBar.frame.size.height)];
+        [_statusUsers setContentSize:CGSizeMake(nameRect.origin.x, _statusBar.frame.size.height)];
+        
+        _statusUsers.alpha = 0;
+        [_statusBar addSubview:_statusUsers];
+
 
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration: 0.15];
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y - _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
+        _statusUsers.alpha = 1;
         [UIView commitAnimations];        
     }
     
 }
+
+
+- (void)onStatusBarClosed:(NSString *)animationId finished:(BOOL)finished context:(void *)context 
+{
+    [_statusUsers removeFromSuperview];
+    [_statusUsers release];
+}
+
 
 
 

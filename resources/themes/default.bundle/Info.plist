@@ -543,6 +543,48 @@
 			<key>y</key>
 			<integer>8</integer>
 		</dict>
+		<key>RadioViewStatusBarUserScrollView</key>
+		<dict>
+			<key>height</key>
+			<integer>64</integer>
+			<key>width</key>
+			<integer>294</integer>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+		</dict>
+		<key>RadioViewStatusBarUserImage</key>
+		<dict>
+			<key>x</key>
+			<integer>23</integer>
+			<key>y</key>
+			<integer>4</integer>
+			<key>width</key>
+			<integer>42</integer>
+			<key>height</key>
+			<integer>42</integer>
+		</dict>
+		<key>RadioViewStatusBarUserName</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>center</string>
+				<key>size</key>
+				<integer>9</integer>
+				<key>textColor</key>
+				<string>white</string>
+			</dict>
+			<key>x</key>
+			<integer>4</integer>
+			<key>y</key>
+			<integer>50</integer>
+			<key>width</key>
+			<integer>80</integer>
+			<key>height</key>
+			<integer>10</integer>
+		</dict>
 	</dict>
 </dict>
 </plist>

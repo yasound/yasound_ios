@@ -15,6 +15,7 @@
     UIView* _statusBar;
     UIButton* _statusBarButton;
     BOOL _statusBarButtonToggled;
+    UIScrollView* _statusUsers;
 
     Message* _currentMessage;
     NSMutableString* _currentXMLString;
