@@ -442,8 +442,15 @@ static NSMutableDictionary* gFonts = nil;
         NSString* type = [sheet valueForKey:@"type"];
         NSString* path = [sheet valueForKey:@"path"];
 
-        NSString* tmppath = [bundle pathForResource:name ofType:type inDirectory:path];
-        image = [UIImage imageWithContentsOfFile:tmppath];
+        if (path == nil)
+        {
+            image = [UIImage imageNamed:[name stringByAppendingPathExtension:type]];
+        }
+        else
+        {
+            NSString* tmppath = [bundle pathForResource:name ofType:type inDirectory:path];
+            image = [UIImage imageWithContentsOfFile:tmppath];
+        }
 
         //LBDEBUG
     //image = [bundle imageNamed:name ofType:type inDirectory:path];
@@ -496,8 +503,17 @@ static NSMutableDictionary* gFonts = nil;
   NSString* type = [sheet valueForKey:@"type"];
   NSString* path = [sheet valueForKey:@"path"];
   
-    NSString* tmppath = [bundle pathForResource:name ofType:type inDirectory:path];
-    UIImage* src = [UIImage imageWithContentsOfFile:tmppath];
+    UIImage* src = nil;
+    
+    if (path == nil)
+    {
+        src = [UIImage imageNamed:[name stringByAppendingPathExtension:type]];
+    }
+    else
+    {
+        NSString* tmppath = [bundle pathForResource:name ofType:type inDirectory:path];
+        src = [UIImage imageWithContentsOfFile:tmppath];
+    }
 
     //LBDEBUG
 //    UIImage* src = [bundle imageNamed:name ofType:type inDirectory:path];

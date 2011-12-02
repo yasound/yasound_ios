@@ -32,9 +32,9 @@
   self.window.rootViewController = navigationController;
     
     //LBDEBUG temporarly call /////////////////////////////
-    RadioViewController* view = [[RadioViewController alloc] init];
-    [self.navigationController pushViewController:view animated:YES];
-    return YES;
+//    RadioViewController* view = [[RadioViewController alloc] init];
+//    [self.navigationController pushViewController:view animated:YES];
+//    return YES;
     /////////////////////////////////////////////////////////////////////
   
   // push the main view controller into the mavigationControler
