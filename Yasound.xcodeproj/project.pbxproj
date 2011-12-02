@@ -155,6 +155,8 @@
 		BC9F415D147EAEFD00D417EF /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
+		BCB41F6E14892350008F3738 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F6D14892350008F3738 /* Track.m */; };
+		BCB41F6F14892350008F3738 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F6D14892350008F3738 /* Track.m */; };
 		BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BCB5F29A14854DA600C28B3D /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCB5F29914854DA600C28B3D /* default.bundle */; };
@@ -319,6 +321,8 @@
 		BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StyleSelectorViewController.xib; path = RadioSelection/StyleSelectorViewController.xib; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
+		BCB41F6C14892350008F3738 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		BCB41F6D14892350008F3738 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		BCB5F28C1485416B00C28B3D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
 		BCB5F28D1485416B00C28B3D /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
 		BCB5F29914854DA600C28B3D /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = default.bundle; sourceTree = "<group>"; };
@@ -494,6 +498,8 @@
 		BC0DD8381487C73E00DCD550 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BCB41F6C14892350008F3738 /* Track.h */,
+				BCB41F6D14892350008F3738 /* Track.m */,
 				BC0DD8391487C73E00DCD550 /* Message.h */,
 				BC0DD83A1487C73E00DCD550 /* Message.m */,
 			);
@@ -1082,6 +1088,7 @@
 				BCB41F4514863646008F3738 /* Theme.m in Sources */,
 				BC0DD83C1487C73E00DCD550 /* Message.m in Sources */,
 				BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */,
+				BCB41F6F14892350008F3738 /* Track.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1120,6 +1127,7 @@
 				BCB41F4414863646008F3738 /* Theme.m in Sources */,
 				BC0DD83B1487C73E00DCD550 /* Message.m in Sources */,
 				BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */,
+				BCB41F6E14892350008F3738 /* Track.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

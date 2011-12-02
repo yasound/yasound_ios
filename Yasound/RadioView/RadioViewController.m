@@ -556,6 +556,12 @@ static NSArray* fakeMessages = nil;
 
 
 
+#pragma mark - Now Playing
+- (void)setNowPlaying:(Track*)track
+{
+
+}
+
 
 #pragma mark - Status Bar
 

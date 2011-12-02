@@ -598,7 +598,7 @@
 			<key>path</key>
 			<string>images</string>
 			<key>alpha</key>
-			<real>0.4</real>
+			<real>0.25</real>
 		</dict>
 	</dict>
 </dict>
