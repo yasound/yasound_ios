@@ -245,7 +245,7 @@
     [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
 
     // LBDEBUG fake timer for status messages
-    [self onFakeUpdateStatus];
+    [self onFakeUpdateStatus:nil];
     [NSTimer scheduledTimerWithTimeInterval:3.f target:self selector:@selector(onFakeUpdateStatus:) userInfo:nil repeats:YES];
 
 
