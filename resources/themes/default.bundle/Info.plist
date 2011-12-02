@@ -185,7 +185,7 @@
 			<key>x</key>
 			<integer>4</integer>
 			<key>y</key>
-			<integer>3</integer>
+			<integer>5</integer>
 			<key>width</key>
 			<integer>38</integer>
 			<key>height</key>
@@ -196,7 +196,7 @@
 			<key>x</key>
 			<integer>4</integer>
 			<key>y</key>
-			<integer>3</integer>
+			<integer>5</integer>
 			<key>name</key>
 			<string>NowPlayingBarMask</string>
 			<key>type</key>
@@ -234,8 +234,6 @@
 				<string>HelveticaNeue</string>
 				<key>size</key>
 				<integer>10</integer>
-				<key>text</key>
-				<string>Goldfrapp</string>
 				<key>textColor</key>
 				<string>white</string>
 			</dict>
@@ -256,8 +254,6 @@
 				<string>HelveticaNeue</string>
 				<key>size</key>
 				<integer>10</integer>
-				<key>text</key>
-				<string>Time Out From The World (remix version)</string>
 				<key>textColor</key>
 				<string>white</string>
 			</dict>
@@ -278,8 +274,6 @@
 				<string>HelveticaNeue</string>
 				<key>size</key>
 				<integer>10</integer>
-				<key>text</key>
-				<string>12345</string>
 				<key>textColor</key>
 				<string>white</string>
 			</dict>
@@ -300,8 +294,6 @@
 				<string>HelveticaNeue</string>
 				<key>size</key>
 				<integer>10</integer>
-				<key>text</key>
-				<string>12345</string>
 				<key>textColor</key>
 				<string>white</string>
 			</dict>

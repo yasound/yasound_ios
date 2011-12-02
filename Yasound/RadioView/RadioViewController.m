@@ -9,6 +9,7 @@
 #import "ASIFormDataRequest.h"
 #import "AudioStreamer.h"
 #import "Theme.h"
+#import "Track.h"
 #import "RadioViewCell.h"
 
 //#define LOCAL 1 // use localhost as the server
@@ -133,56 +134,12 @@
     nowPlayingBar.frame = sheet.frame;
     [headerView addSubview:nowPlayingBar];
     
-    // header now playing bar track image 
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarImage" error:nil];
-    image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy.png"]];
-    image.frame = sheet.frame;
-    [nowPlayingBar addSubview:image];
+    _playingNowContainer = [[UIView alloc] initWithFrame:sheet.frame];
+    [self.view addSubview:_playingNowContainer];
 
-    // header now playing bar track image mask
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarMask" error:nil];
-    image = [[UIImageView alloc] initWithImage:[sheet image]];
-    image.frame = sheet.frame;
-    [nowPlayingBar addSubview:image];
-    
+    _playingNowView = nil;
 
-    // header now playing bar label
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLabel" error:nil];
-    label = [sheet makeLabel];
-    [nowPlayingBar addSubview:label];
-    
-    // header now playing bar artist
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarArtist" error:nil];
-    label = [sheet makeLabel];
-    [nowPlayingBar addSubview:label];
-    
-    // header now playing bar title
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarTitle" error:nil];
-    label = [sheet makeLabel];
-    [nowPlayingBar addSubview:label];
-
-    // header now playing bar likes image
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikesImage" error:nil];
-    image = [[UIImageView alloc] initWithImage:[sheet image]];
-    image.frame = sheet.frame;
-    [nowPlayingBar addSubview:image];
-
-    // header now playing bar likes
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikes" error:nil];
-    label = [sheet makeLabel];
-    [nowPlayingBar addSubview:label];
-
-    // header now playing bar dislikes image
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikesImage" error:nil];
-    image = [[UIImageView alloc] initWithImage:[sheet image]];
-    image.frame = sheet.frame;
-    [nowPlayingBar addSubview:image];
-
-    // header now playing bar dislikes
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikes" error:nil];
-    label = [sheet makeLabel];
-    [nowPlayingBar addSubview:label];
-    
+    // now playing bar is set in setNowPlaying;
     
     //....................................................................................
     //
@@ -256,7 +213,6 @@
     //
     [self.view addSubview:messageBar];
 
-    
     
     //....................................................................................
     //
@@ -402,6 +358,8 @@
 
 //LBDEBUG fake messages in status bar
 static NSArray* fakeMessages = nil;
+static NSMutableArray* fakeTracks = nil;
+static NSInteger gFakeTrackIndex = -1;
 
 - (void)onFakeUpdateStatus:(NSTimer*)timer
 {
@@ -415,6 +373,43 @@ static NSArray* fakeMessages = nil;
     NSInteger fakeIndex = rand() % 4;
     NSString* fakeText = [NSString stringWithString:[fakeMessages objectAtIndex:fakeIndex]];
     [self setStatusMessage:fakeText];
+    
+    
+    if (fakeTracks == nil)
+    {
+        fakeTracks = [[NSMutableArray alloc] init];
+        [fakeTracks retain];
+        
+        Track* track = [[[Track alloc] init] autorelease];
+        track.artist = @"quis";
+        track.title = @"Vestibulum interdum magna sed quam";
+        track.likes = rand() % 99999;
+        track.dislikes = rand() % 99999;
+        [fakeTracks addObject:track];
+        
+        track = [[[Track alloc] init] autorelease];
+        track.artist = @"quisque";
+        track.title = @"Etiam eu ante non leo egestas nonummy";
+        track.likes = rand() % 99999;
+        track.dislikes = rand() % 99999;
+        [fakeTracks addObject:track];
+
+        track = [[[Track alloc] init] autorelease];
+        track.artist = @"vivamus";
+        track.title = @"Maecenas tempus dictum libero";
+        track.likes = rand() % 99999;
+        track.dislikes = rand() % 99999;
+        [fakeTracks addObject:track];
+    }
+    
+    //LBDEBUG
+    NSInteger fakeTrackIndex = rand() % 3;
+    while (fakeTrackIndex == gFakeTrackIndex)
+        fakeTrackIndex = rand() % 3;
+    Track* track = [fakeTracks objectAtIndex:fakeTrackIndex];
+    gFakeTrackIndex = fakeTrackIndex;
+    
+    [self setNowPlaying:track];
     
     /////////////////////////////
 }
@@ -559,7 +554,93 @@ static NSArray* fakeMessages = nil;
 #pragma mark - Now Playing
 - (void)setNowPlaying:(Track*)track
 {
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 
+    CGRect frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
+    UIView* view = [[UIView alloc] initWithFrame:frame];
+                    
+    //LBDEBUG
+    NSInteger randIndex = (rand() %5)+1;
+    UIImage* avatar = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+    
+    // header now playing bar track image 
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarImage" error:nil];
+    UIImageView* image = [[UIImageView alloc] initWithImage:avatar];
+    image.frame = sheet.frame;
+    [view addSubview:image];
+    
+    // header now playing bar track image mask
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarMask" error:nil];
+    image = [[UIImageView alloc] initWithImage:[sheet image]];
+    image.frame = sheet.frame;
+    [view addSubview:image];
+    
+    
+    // header now playing bar label
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLabel" error:nil];
+    UILabel* label = [sheet makeLabel];
+    [view addSubview:label];
+    
+    // header now playing bar artist
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarArtist" error:nil];
+    label = [sheet makeLabel];
+    label.text = track.artist;
+    [view addSubview:label];
+    
+    // header now playing bar title
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarTitle" error:nil];
+    label = [sheet makeLabel];
+    label.text = track.title;
+    [view addSubview:label];
+    
+    // header now playing bar likes image
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikesImage" error:nil];
+    image = [[UIImageView alloc] initWithImage:[sheet image]];
+    image.frame = sheet.frame;
+    [view addSubview:image];
+    
+    // header now playing bar likes
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikes" error:nil];
+    label = [sheet makeLabel];
+    label.text = [NSString stringWithFormat:@"%d", track.likes];
+    [view addSubview:label];
+    
+    // header now playing bar dislikes image
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikesImage" error:nil];
+    image = [[UIImageView alloc] initWithImage:[sheet image]];
+    image.frame = sheet.frame;
+    [view addSubview:image];
+    
+    // header now playing bar dislikes
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikes" error:nil];
+    label = [sheet makeLabel];
+    label.text = [NSString stringWithFormat:@"%d", track.dislikes];
+    [view addSubview:label];
+    
+//    [self.view addSubview:view];
+
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationDuration:1.0];
+//    [UIView setAnimationBeginsFromCurrentState:YES];
+//    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:view cache:YES];
+//    
+////    UIView *parent = self.view.superview;
+//    if (_playingNowView)
+//        [_playingNowView removeFromSuperview];
+//
+//    [self.view addSubview:view];
+//    
+//    [UIView commitAnimations];   
+
+    
+    [UIView transitionWithView:_playingNowContainer
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromRight
+                    animations:^{ [_playingNowView removeFromSuperview]; [_playingNowContainer addSubview:view]; }
+                    completion:NULL];
+    
+    _playingNowView = view;
+    
 }
 
 
