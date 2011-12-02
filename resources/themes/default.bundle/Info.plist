@@ -523,6 +523,26 @@
 			<key>path</key>
 			<string>images/StatusBar</string>
 		</dict>
+		<key>RadioViewStatusBarMessage</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>name</key>
+				<string>Arial</string>
+				<key>size</key>
+				<integer>13</integer>
+				<key>textColor</key>
+				<string>white</string>
+			</dict>
+			<key>height</key>
+			<integer>16</integer>
+			<key>width</key>
+			<integer>280</integer>
+			<key>x</key>
+			<integer>-280</integer>
+			<key>y</key>
+			<integer>8</integer>
+		</dict>
 	</dict>
 </dict>
 </plist>

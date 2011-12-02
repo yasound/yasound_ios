@@ -26,4 +26,6 @@
 
 @property (nonatomic, retain) NSMutableArray* messages;
 
+@property (atomic, retain) NSMutableArray* statusMessages;
+
 @end

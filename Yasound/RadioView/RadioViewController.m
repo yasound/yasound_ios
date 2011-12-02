@@ -19,7 +19,7 @@
 
 
 @synthesize messages;
-
+@synthesize statusMessages;
 
 
 - (id)init
@@ -28,6 +28,8 @@
     if (self) 
     {
         self.messages = [[NSMutableArray alloc] init];
+        self.statusMessages = [[NSMutableArray alloc] init];
+        
         _statusBarButtonToggled = NO;
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellMessage" error:nil];
@@ -231,7 +233,7 @@
     _statusBarButton = [sheet makeButton];
     [_statusBarButton addTarget:self action:@selector(onStatusBarButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_statusBar addSubview:_statusBarButton];
-
+    
     
     
     
@@ -241,6 +243,10 @@
     //
     [self onUpdate:nil];
     [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
+
+    // LBDEBUG fake timer for status messages
+    [self onFakeUpdateStatus];
+    [NSTimer scheduledTimerWithTimeInterval:3.f target:self selector:@selector(onFakeUpdateStatus:) userInfo:nil repeats:YES];
 
 
     
@@ -278,8 +284,8 @@
 
 - (void)dealloc
 {
-    [super dealloc];
     [_messageFont release];
+    [super dealloc];
 }
 
 
@@ -373,6 +379,27 @@
 #pragma mark - Data 
 
 
+//LBDEBUG fake messages in status bar
+static NSArray* fakeMessages = nil;
+
+- (void)onFakeUpdateStatus:(NSTimer*)timer
+{
+    //LBDEBUG fake messages in status bar
+    if (fakeMessages == nil)
+    {
+        fakeMessages = [NSArray arrayWithObjects:@"Vestibulum interdum magna sed quam", @"Pellentesque dapibus sodales enim", @"Nullam porttitor elementum ligula", @"Vivamus convallis urna id felis", nil];
+        [fakeMessages retain];
+        srand(time(NULL));
+    }
+    NSInteger fakeIndex = rand() % 4;
+    NSString* fakeText = [NSString stringWithString:[fakeMessages objectAtIndex:fakeIndex]];
+    [self setStatusMessage:fakeText];
+    
+    /////////////////////////////
+}
+
+//////////////////
+
 - (void)onUpdate:(NSTimer*)timer
 {
 //#if LOCAL
@@ -387,7 +414,7 @@
     NSURL *url = [NSURL URLWithString:@"http://dev.yasound.com/yaapp/wall/allAPI/"];
 #endif
 
-
+    
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     [request setDelegate:self];
     [request startSynchronous];
@@ -396,6 +423,10 @@
 //	ASIHTTPRequest *request = [ASIFormDataRequest requestWithURL:url];
 //	[request setDelegate:self];
 //	[request startAsynchronous];
+    
+    
+    
+    
 }
 
 
@@ -503,6 +534,65 @@
 
 
 
+
+
+#pragma mark - Status Bar
+
+- (void)setStatusMessage:(NSString*)msg
+{
+    if ([self.statusMessages count] > 0)
+    {
+        for (UILabel* label in self.statusMessages)
+        {
+            [self onStatusMessageFadeOut:label withRelease:NO];
+        }
+    }
+        
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = msg;
+    label.alpha = 1;
+    [_statusBar addSubview:label];
+
+    [self.statusMessages addObject:label];
+    
+    // make the text appear with animation
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration: 0.33];
+    label.frame = CGRectMake(8, label.frame.origin.y, label.frame.size.width, label.frame.size.height);
+    [UIView commitAnimations];        
+    
+    // programm a fade out with delay
+    [NSTimer scheduledTimerWithTimeInterval:2.4f target:self selector:@selector(onStatusMessageFadeOutTick:) userInfo:label repeats:NO];
+}
+
+
+- (void)onStatusMessageFadeOutTick:(NSTimer*)timer
+{
+    UILabel* label = timer.userInfo;
+    [self onStatusMessageFadeOut:label withRelease:YES];
+}
+
+
+- (void)onStatusMessageFadeOut:(UILabel*)label withRelease:(BOOL)withRelease
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration: 0.66];
+    label.alpha = 0;
+    [UIView commitAnimations];          
+
+    // programm a release
+    if (withRelease)
+        [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(onStatusMessageRelease:) userInfo:label repeats:NO];
+}
+
+- (void)onStatusMessageRelease:(NSTimer*)timer
+{
+    UILabel* label = timer.userInfo;
+    
+    [label release];
+    [self.statusMessages removeObject:label];
+}
 
 
 #pragma mark - IBActions
