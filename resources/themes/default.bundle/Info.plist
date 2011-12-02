@@ -356,11 +356,11 @@
 		<key>RadioViewMessageBar</key>
 		<dict>
 			<key>x</key>
-			<integer>2</integer>
-			<key>y</key>
 			<integer>4</integer>
+			<key>y</key>
+			<integer>111</integer>
 			<key>width</key>
-			<integer>316</integer>
+			<integer>312</integer>
 			<key>height</key>
 			<integer>21</integer>
 		</dict>
@@ -584,6 +584,21 @@
 			<integer>80</integer>
 			<key>height</key>
 			<integer>10</integer>
+		</dict>
+		<key>RadioViewExtraLayer</key>
+		<dict>
+			<key>x</key>
+			<integer>196</integer>
+			<key>y</key>
+			<integer>107</integer>
+			<key>name</key>
+			<string>ExtraLayer</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images</string>
+			<key>alpha</key>
+			<real>0.4</real>
 		</dict>
 	</dict>
 </dict>

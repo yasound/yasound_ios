@@ -201,8 +201,7 @@
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarFont" error:nil];
     [messageBar setFont:[sheet makeFont]];
 
-    [messageBarView addSubview:messageBar];
-    
+    // don't add messagebar now, do it after the extra layer
     
     //....................................................................................
     //
@@ -221,11 +220,20 @@
     
     //....................................................................................
     //
+    // extra layer
+    //
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewExtraLayer" error:nil];
+    image = [sheet makeImage];
+    [self.view addSubview:image];
+
+    
+    //....................................................................................
+    //
     // status bar
     //
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" error:nil];
     _statusBar = [[UIView alloc] initWithFrame:sheet.frame];
-    UIImageView* statusBarBackground = [[UIImageView alloc] initWithImage:[sheet image]];
+    UIImageView* statusBarBackground = [sheet makeImage];
     statusBarBackground.frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
     [self.view addSubview:_statusBar];
     [_statusBar addSubview:statusBarBackground];
@@ -240,6 +248,14 @@
     _statusUsers = nil;
     
     
+
+    
+    //....................................................................................
+    //
+    // add objects that must display ABOVE the extra layer
+    //
+    [self.view addSubview:messageBar];
+
     
     
     //....................................................................................

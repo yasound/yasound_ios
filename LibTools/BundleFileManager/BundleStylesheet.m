@@ -571,6 +571,13 @@ static NSMutableDictionary* gFonts = nil;
     else if ([key isEqualToString:@"selectedDown"])
       [button setImage:[self.images valueForKey:key] forState:(UIControlStateSelected|UIControlStateHighlighted)];
   }
+    
+    NSNumber* alphaNb = [self.customProperties objectForKey:@"alpha"];
+    if (alphaNb != nil)
+    {
+        CGFloat alpha = [alphaNb floatValue];
+        button.alpha = alpha;
+    }
   
   return button;
 }
@@ -635,7 +642,14 @@ static NSMutableDictionary* gFonts = nil;
     label.textAlignment = fontsheet.textAlignement;
 
     label.font = [self makeFont];
-
+    
+    NSNumber* alphaNb = [self.customProperties objectForKey:@"alpha"];
+    if (alphaNb != nil)
+    {
+        CGFloat alpha = [alphaNb floatValue];
+        label.alpha = alpha;
+    }
+    
     return label;
 }
 
@@ -690,6 +704,13 @@ static NSMutableDictionary* gFonts = nil;
     label.font = [UIFont italicSystemFontOfSize:fontsheet.size];
   else if (fontsheet.weightIsSet || fontsheet.sizeIsSet)
     label.font = [UIFont systemFontOfSize:fontsheet.size];
+    
+    NSNumber* alphaNb = [self.customProperties objectForKey:@"alpha"];
+    if (alphaNb != nil)
+    {
+        CGFloat alpha = [alphaNb floatValue];
+        label.alpha = alpha;
+    }
   
   return YES;
 }
@@ -705,6 +726,14 @@ static NSMutableDictionary* gFonts = nil;
 {
   UIImageView* view = [[UIImageView alloc] initWithImage:[self image]];
   view.frame = self.frame;
+    
+    NSNumber* alphaNb = [self.customProperties objectForKey:@"alpha"];
+    if (alphaNb != nil)
+    {
+        CGFloat alpha = [alphaNb floatValue];
+        view.alpha = alpha;
+    }
+    
   return view;
 }
 
