@@ -479,6 +479,50 @@
 			<key>y</key>
 			<integer>21</integer>
 		</dict>
+		<key>RadioViewStatusBar</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>428</integer>
+			<key>name</key>
+			<string>StatusBar</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/StatusBar</string>
+		</dict>
+		<key>RadioViewStatusBarButton</key>
+		<dict>
+			<key>x</key>
+			<integer>294</integer>
+			<key>y</key>
+			<integer>4</integer>
+			<key>name</key>
+			<string>StatusArrowUp</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/StatusBar</string>
+		</dict>
+		<key>RadioViewStatusBarButtonOff</key>
+		<dict>
+			<key>name</key>
+			<string>StatusArrowUp</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/StatusBar</string>
+		</dict>
+		<key>RadioViewStatusBarButtonOn</key>
+		<dict>
+			<key>name</key>
+			<string>StatusArrowDown</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/StatusBar</string>
+		</dict>
 	</dict>
 </dict>
 </plist>

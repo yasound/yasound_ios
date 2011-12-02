@@ -12,6 +12,9 @@
 @interface RadioViewController : UIViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource>
 {
     UITableView* _tableView;
+    UIView* _statusBar;
+    UIButton* _statusBarButton;
+    BOOL _statusBarButtonToggled;
 
     Message* _currentMessage;
     NSMutableString* _currentXMLString;

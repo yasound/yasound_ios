@@ -28,6 +28,7 @@
     if (self) 
     {
         self.messages = [[NSMutableArray alloc] init];
+        _statusBarButtonToggled = NO;
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellMessage" error:nil];
         _messageFont = [sheet makeFont];
@@ -213,6 +214,25 @@
     _tableView.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
 
     [self.view addSubview:_tableView];
+
+    
+    //....................................................................................
+    //
+    // status bar
+    //
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" error:nil];
+    _statusBar = [[UIView alloc] initWithFrame:sheet.frame];
+    UIImageView* statusBarBackground = [[UIImageView alloc] initWithImage:[sheet image]];
+    statusBarBackground.frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
+    [self.view addSubview:_statusBar];
+    [_statusBar addSubview:statusBarBackground];
+    
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButton" error:nil];
+    _statusBarButton = [sheet makeButton];
+    [_statusBarButton addTarget:self action:@selector(onStatusBarButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_statusBar addSubview:_statusBarButton];
+
+    
     
     
     //....................................................................................
@@ -229,6 +249,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    
 //  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/cedric.mp3"];
 //  mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
 //  [mpStreamer retain];
@@ -481,6 +502,41 @@
 }
 
 
+
+
+
+#pragma mark - IBActions
+
+- (IBAction)onStatusBarButtonClicked:(id)sender
+{
+    BundleStylesheet* sheet = nil;
+    
+    if (_statusBarButtonToggled)
+    {
+        _statusBarButtonToggled = !_statusBarButtonToggled;
+
+        sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButtonOff" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration: 0.15];
+        _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y + _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
+        [UIView commitAnimations];        
+    }
+    else
+    {
+        _statusBarButtonToggled = !_statusBarButtonToggled;
+
+        sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
+
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration: 0.15];
+        _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y - _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
+        [UIView commitAnimations];        
+    }
+    
+}
 
 
 
