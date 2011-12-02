@@ -13,6 +13,7 @@
 @synthesize kind;
 @synthesize date;
 @synthesize user;
-@synthesize message;
+@synthesize text;
+@synthesize textHeight;
 
 @end

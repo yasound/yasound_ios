@@ -13,7 +13,8 @@
 @property (retain, nonatomic) NSString* kind;
 @property (retain, nonatomic) NSString* date;
 @property (retain, nonatomic) NSString* user;
-@property (retain, nonatomic) NSString* message;
+@property (retain, nonatomic) NSString* text;
+@property (nonatomic) CGFloat textHeight;
 
 @end
 

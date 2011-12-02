@@ -279,17 +279,17 @@
 #pragma mark - TableView Source and Delegate
 
 
-+(float) calculateHeightOfTextFromWidth:(NSString*)text withFont:(UIFont*)font width:(float)width lineBreakMode:(UILineBreakMode)lineBreakMode
-{
-    [text retain];
-    [font retain];
-    CGSize suggestedSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(width, FLT_MAX) lineBreakMode:lineBreakMode];
-    
-    [text release];
-    [font release];
-    
-    return suggestedSize.height;
-}
+//+(float) calculateHeightOfTextFromWidth:(NSString*)text withFont:(UIFont*)font width:(float)width lineBreakMode:(UILineBreakMode)lineBreakMode
+//{
+////    [text retain];
+////    [font retain];
+//    CGSize suggestedSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(width, FLT_MAX) lineBreakMode:lineBreakMode];
+//    
+////    [text release];
+////    [font release];
+//    
+//    return suggestedSize.height;
+//}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -305,13 +305,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    CGSize constraint = CGSizeMake(_messageWidth, 20000.0f);
+//    CGSize constraint = CGSizeMake(_messageWidth, 20000.0f);
+//
+//    Message* m = [self.messages objectAtIndex:indexPath.row];
+//    CGSize size = [m.message sizeWithFont:_messageFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+//    CGFloat height = MAX(size.height, _cellMinHeight);
 
     Message* m = [self.messages objectAtIndex:indexPath.row];
-    CGSize size = [m.message sizeWithFont:_messageFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    CGFloat height = MAX(size.height, _cellMinHeight);
-    
-    return height;
+
+    return m.textHeight + _cellMinHeight;
 }
 
 
@@ -441,7 +443,11 @@
             Message* m = [[Message alloc] init];
             m.user = _currentMessage.user;
             m.date = _currentMessage.date;
-            m.message = [[[_currentMessage.message stringByAppendingString:_currentMessage.message] stringByAppendingString:_currentMessage.message] stringByAppendingString:_currentMessage.message];
+            m.text = [[[_currentMessage.text stringByAppendingString:_currentMessage.text] stringByAppendingString:_currentMessage.text] stringByAppendingString:_currentMessage.text];
+            
+            CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+            m.textHeight = suggestedSize.height;
+
             
             [self.messages insertObject:m atIndex:0];
         }
@@ -467,7 +473,7 @@
     }
     else if ([elementName isEqualToString:@"message"]) 
     {
-        _currentMessage.message = str;
+        _currentMessage.text = str;
     }
 
     [_currentXMLString release];

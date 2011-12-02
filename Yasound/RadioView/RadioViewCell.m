@@ -62,7 +62,8 @@
         // message
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellMessage" error:nil];
         self.message = [sheet makeLabel];
-        self.message.text = m.message;
+        self.message.text = m.text;
+        self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, m.textHeight);
         [self.message setLineBreakMode:UILineBreakModeWordWrap];
         //[label setMinimumFontSize:FONT_SIZE];
         [self.message setNumberOfLines:0];        
@@ -97,7 +98,8 @@
     self.user.text = m.user;
     
     // message
-    self.message.text = m.message;
+    self.message.text = m.text;
+    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, m.textHeight);
 }
 
 
