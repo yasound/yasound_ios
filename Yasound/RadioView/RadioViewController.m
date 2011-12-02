@@ -168,6 +168,7 @@
     _tableView = [[UITableView alloc] initWithFrame:sheet.frame style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    
 
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];    
     _tableView.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
@@ -283,18 +284,10 @@
 #pragma mark - TableView Source and Delegate
 
 
-//+(float) calculateHeightOfTextFromWidth:(NSString*)text withFont:(UIFont*)font width:(float)width lineBreakMode:(UILineBreakMode)lineBreakMode
-//{
-////    [text retain];
-////    [font retain];
-//    CGSize suggestedSize = [text sizeWithFont:font constrainedToSize:CGSizeMake(width, FLT_MAX) lineBreakMode:lineBreakMode];
-//    
-////    [text release];
-////    [font release];
-//    
-//    return suggestedSize.height;
-//}
-
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    return nil;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -309,12 +302,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-//    CGSize constraint = CGSizeMake(_messageWidth, 20000.0f);
-//
-//    Message* m = [self.messages objectAtIndex:indexPath.row];
-//    CGSize size = [m.message sizeWithFont:_messageFont constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-//    CGFloat height = MAX(size.height, _cellMinHeight);
-
     Message* m = [self.messages objectAtIndex:indexPath.row];
 
     return m.textHeight + _cellMinHeight;
@@ -341,13 +328,10 @@
 
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-//    RadioViewController* view = [[RadioViewController alloc] init];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];  
-}
-
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//}
+//
 
 
 
@@ -511,8 +495,9 @@ static NSInteger gFakeTrackIndex = -1;
             Message* m = [[Message alloc] init];
             m.user = _currentMessage.user;
             m.date = _currentMessage.date;
-            m.text = [[[_currentMessage.text stringByAppendingString:_currentMessage.text] stringByAppendingString:_currentMessage.text] stringByAppendingString:_currentMessage.text];
+            m.text = _currentMessage.text;
             
+            // compute the size of the text => will allow to update the cell's height dynamically
             CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
             m.textHeight = suggestedSize.height;
 
