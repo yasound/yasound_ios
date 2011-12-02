@@ -152,6 +152,7 @@
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBar" error:nil];    
     UITextField* messageBar = [[UITextField alloc] initWithFrame:sheet.frame];
+    messageBar.delegate = self;
     [messageBar setBorderStyle:UITextBorderStyleRoundedRect];
     [messageBar setPlaceholder:NSLocalizedString(@"radioview_message", nil)];
 
@@ -269,14 +270,52 @@
 
 
 
+
+#pragma mark - TextField Delegate
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-  [textField endEditing:TRUE];
-  return FALSE;
+    [textField endEditing:TRUE];
+    [self sendMessage:textField.text];
+    textField.text = nil;
+    return FALSE;
 }
 
 
+- (void)sendMessage:(NSString *)message
+{
+  
+#if LOCAL
+  NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpostAPI/"];
+#else
+  NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/sendpostAPI/"];
+#endif
 
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    //[request addPostValue:@"jmp" forKey:@"author"];
+    //[request addPostValue:@"meeloo" forKey:@"author"];
+    [request addPostValue:[[UIDevice currentDevice] name] forKey:@"author"];
+
+    [request addPostValue:@"pipo" forKey:@"password"];
+    [request addPostValue:@"text" forKey:@"kind"];
+    [request addPostValue:message forKey:@"posttext"];
+    [request setDelegate:self];
+    [request setDidFailSelector:@selector(sendMessageFailed:)];
+    [request setDidFinishSelector:@selector(sendMessageFinished:)];    
+//    [request startAsynchronous];
+    [request startSynchronous];
+}
+
+
+- (void)sendMessageFailed:(ASIHTTPRequest *)request
+{
+    NSLog(@"sendMessage failed.");
+}
+
+- (void)sendMessageFinished:(ASIHTTPRequest*)request
+{
+    NSLog(@"sendMessage finished with code %d", request.responseStatusCode);
+}
 
 
 
@@ -797,30 +836,6 @@ static NSInteger gFakeTrackIndex = -1;
 
 
 
-
-//- (void) sendMessage:(NSString *)message
-//{
-//  
-//#if LOCAL
-//  NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpostAPI/"];
-//#else
-//  NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/sendpostAPI/"];
-//#endif
-//
-//	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-//	//[request addPostValue:@"jmp" forKey:@"author"];
-//	//[request addPostValue:@"meeloo" forKey:@"author"];
-//  [request addPostValue:[[UIDevice currentDevice] name] forKey:@"author"];
-//  
-//	[request addPostValue:@"pipo" forKey:@"password"];
-//	[request addPostValue:@"text" forKey:@"kind"];
-//  [request addPostValue:message forKey:@"posttext"];
-//	[request setDelegate:self];
-//	[request startAsynchronous];
-//}
-
-//
-//
 
 
 
