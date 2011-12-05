@@ -61,24 +61,27 @@ NSArray* gFakeUsersFavorites = nil;
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  
-  BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"GuiTintColor" error:nil];
-  _toolbar.tintColor = stylesheet.color;
-  
+    [super viewDidLoad];
 
-  _viewCurrent = self.viewMyYasound;
-  [self.viewContainer addSubview:_viewCurrent];
-  
-  _segmentControl = (UISegmentedControl *) [_segmentBarButtonItem customView];
-  
-  [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_myyasound", nil) forSegmentAtIndex:0];
-  [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_friends", nil) forSegmentAtIndex:1];
-  [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_favorites", nil) forSegmentAtIndex:2];
-  
-  [_segmentControl addTarget:self 
-                       action:@selector(onmSegmentClicked:)  
-             forControlEvents:UIControlEventValueChanged];}
+    BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"GuiTintColor" error:nil];
+    _toolbar.tintColor = stylesheet.color;
+
+
+    _viewCurrent = self.viewMyYasound;
+    [self.viewContainer addSubview:_viewCurrent];
+
+    _segmentControl = (UISegmentedControl *) [_segmentBarButtonItem customView];
+
+    [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_myyasound", nil) forSegmentAtIndex:0];
+    [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_friends", nil) forSegmentAtIndex:1];
+    [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_favorites", nil) forSegmentAtIndex:2];
+
+    [_segmentControl addTarget:self action:@selector(onmSegmentClicked:) forControlEvents:UIControlEventValueChanged];
+    
+    [self viewDidLoadInSettingsTableView];
+}
+
+
 
 - (void)viewDidUnload
 {
@@ -89,9 +92,16 @@ NSArray* gFakeUsersFavorites = nil;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  [super viewWillAppear:animated];
-  [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+    [super viewWillAppear:animated];
+    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [_settingsTableView deselectRowAtIndexPath:[_settingsTableView indexPathForSelectedRow] animated:NO];    
+    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];    
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

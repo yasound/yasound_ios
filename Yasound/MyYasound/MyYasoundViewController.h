@@ -34,7 +34,6 @@
     IBOutlet UILabel* _settingsGenreTitle;
 
     IBOutlet UITableViewCell* _settingsThemeCell;
-    IBOutlet UILabel* _settingsThemeLabel;
     IBOutlet UILabel* _settingsThemeTitle;
     IBOutlet UIImageView* _settingsThemeImage;
     
@@ -63,6 +62,8 @@ extern NSArray* gFakeUsersFavorites;
 
 
 @interface MyYasoundViewController (Settings)
+
+- (void)viewDidLoadInSettingsTableView;
 
 - (NSString*)titleInSettingsTableViewForHeaderInSection:(NSInteger)section;
 - (NSInteger)numberOfSectionsInSettingsTableView;
