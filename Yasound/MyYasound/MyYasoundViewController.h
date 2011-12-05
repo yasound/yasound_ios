@@ -18,6 +18,20 @@
     // my yasound settings
     IBOutlet UITableView* _settingsTableView;
     
+    IBOutlet UITableViewCell* _settingsTitleCell;
+    IBOutlet UILabel* _settingsTitleLabel;
+    IBOutlet UITextField* _settingsTitleTextField;
+    
+    IBOutlet UITableViewCell* _settingsImageCell;
+    IBOutlet UILabel* _settingsImageLabel;
+    IBOutlet UIImageView* _settingsImageImage;
+
+    IBOutlet UITableViewCell* _settingsThemeCell;
+    IBOutlet UILabel* _settingsThemeLabel;
+    IBOutlet UILabel* _settingsThemeTitle;
+    IBOutlet UIImageView* _settingsThemeImage;
+    
+    
     // radio selection  
     IBOutlet UITableView* _tableView;  
 }
@@ -41,6 +55,7 @@ extern NSArray* gFakeUsersFavorites;
 
 @interface MyYasoundViewController (Settings)
 
+- (NSString*)titleInSettingsTableViewForHeaderInSection:(NSInteger)section;
 - (NSInteger)numberOfSectionsInSettingsTableView;
 - (NSInteger)numberOfRowsInSettingsTableViewSection:(NSInteger)section;
 - (UITableViewCell *)cellInSettingsTableViewForRowAtIndexPath:(NSIndexPath *)indexPath;

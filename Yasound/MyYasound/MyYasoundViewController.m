@@ -145,6 +145,13 @@ NSArray* gFakeUsersFavorites = nil;
 #pragma mark - TableView Source and Delegate
 
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
+{
+    if (tableView == _settingsTableView)
+        return [self titleInSettingsTableViewForHeaderInSection:section];
+    
+    return nil;
+}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

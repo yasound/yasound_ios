@@ -22,20 +22,34 @@
 
 - (NSInteger)numberOfSectionsInSettingsTableView
 {
-  return 1;
+    return 4;
+}
+
+
+- (NSString*)titleInSettingsTableViewForHeaderInSection:(NSInteger)section
+{
+    switch (section) 
+    {
+        case 0: return NSLocalizedString(@"myyasound_settings_configuration", nil);
+        case 1: return NSLocalizedString(@"myyasound_settings_playlists", nil);
+        case 2: return NSLocalizedString(@"myyasound_settings_theme", nil);
+        case 3: nil;
+    }
+    return nil;
 }
 
 
 
 - (NSInteger)numberOfRowsInSettingsTableViewSection:(NSInteger)section 
 {
-  // Number of rows is the number of time zones in the region for the specified section.
-  if (_segmentControl.selectedSegmentIndex == 1)
-    return 24;
-  else if (_segmentControl.selectedSegmentIndex == 2)
-    return 16;
-  
-  return 0;
+    switch (section) 
+    {
+        case 0: return 3;
+        case 1: return 4;
+        case 2: return 4;
+        case 3: 1;
+    }
+    return 0;
 }
 
 
@@ -46,17 +60,20 @@
 
 - (UITableViewCell *)cellInSettingsTableViewForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+    static NSString* CellIdentifier = @"MyIdentifier";
+    
+	UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) 
+    {
+        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    
   
-  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
-  
-  //LBDEBUG
-  NSDictionary* data = (_segmentControl.selectedSegmentIndex == 1)? [gFakeUsersFriends objectAtIndex:(indexPath.row % 3)] : [gFakeUsersFavorites objectAtIndex:(indexPath.row % 3)];
-  
-  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row data:data];
-  
-  
-  return cell;
+    return cell;
 }
+
 
 - (void)didSelectInSettingsTableViewRowAtIndexPath:(NSIndexPath *)indexPath
 {
