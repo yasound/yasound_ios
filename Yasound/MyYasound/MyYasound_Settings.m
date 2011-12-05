@@ -15,10 +15,11 @@
 @implementation MyYasoundViewController (Settings)
 
 
-#define SECTION_CONFIGURATION 0
-#define SECTION_THEME 1
-#define SECTION_PLAYLISTS 2
-#define SECTION_SUBMIT 3
+#define SECTION_GOTO 0
+#define SECTION_CONFIGURATION 1
+#define SECTION_THEME 2
+#define SECTION_PLAYLISTS 3
+#define SECTION_SUBMIT 4
 
 #define ROW_CONFIG_TITLE 0
 #define ROW_CONFIG_IMAGE 1
@@ -31,7 +32,7 @@
 
 - (NSInteger)numberOfSectionsInSettingsTableView
 {
-    return 4;
+    return 5;
 }
 
 
@@ -39,6 +40,7 @@
 {
     switch (section) 
     {
+        case SECTION_GOTO: return nil;
         case SECTION_CONFIGURATION: return NSLocalizedString(@"myyasound_settings_configuration", nil);
         case SECTION_THEME: return NSLocalizedString(@"myyasound_settings_theme", nil);
         case SECTION_PLAYLISTS: return NSLocalizedString(@"myyasound_settings_playlists", nil);
@@ -53,6 +55,7 @@
 {
     switch (section) 
     {
+        case SECTION_GOTO: return 1;
         case SECTION_CONFIGURATION: return 3;
         case SECTION_THEME: return 1;
         case SECTION_PLAYLISTS: return 4;
@@ -71,6 +74,9 @@
 {
     static NSString* CellIdentifier = @"Cell";
     
+    if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
+        return _settingsGotoCell;
+
     if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_TITLE))
         return _settingsTitleCell;
 

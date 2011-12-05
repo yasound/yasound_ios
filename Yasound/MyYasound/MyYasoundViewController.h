@@ -17,7 +17,10 @@
     
     // my yasound settings
     IBOutlet UITableView* _settingsTableView;
-    
+
+    IBOutlet UITableViewCell* _settingsGotoCell;
+    IBOutlet UILabel* _settingsGotoLabel;
+
     IBOutlet UITableViewCell* _settingsTitleCell;
     IBOutlet UILabel* _settingsTitleLabel;
     IBOutlet UITextField* _settingsTitleTextField;
