@@ -56,7 +56,7 @@
         case SECTION_CONFIGURATION: return 3;
         case SECTION_THEME: return 1;
         case SECTION_PLAYLISTS: return 4;
-        case SECTION_SUBMIT: 1;
+        case SECTION_SUBMIT: return 1;
     }
     return 0;
 }
@@ -84,7 +84,13 @@
         return _settingsThemeCell;
 
     if ((indexPath.section == SECTION_SUBMIT) && (indexPath.row == 0))
+    {
+        UIView *backView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+        _settingsSubmitCell.backgroundColor = [UIColor clearColor];
+        _settingsSubmitCell.backgroundView = backView;
+        
         return _settingsSubmitCell;
+    }
 
     
     // default case (playlists)
