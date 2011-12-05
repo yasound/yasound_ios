@@ -19,9 +19,11 @@
 @synthesize viewSelection;
 
 
+
 //LBDEBUG
-static NSArray* gFakeUsersFriends = nil;
-static NSArray* gFakeUsersFavorites = nil;
+NSArray* gFakeUsersFriends = nil;
+NSArray* gFakeUsersFavorites = nil;
+
 
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
@@ -147,45 +149,42 @@ static NSArray* gFakeUsersFavorites = nil;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-  return 1;
+    if (tableView == _settingsTableView)
+        return [self numberOfSectionsInSettingsTableView];
+    
+    return [self numberOfSectionsInSelectionTableView];
 }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-  // Number of rows is the number of time zones in the region for the specified section.
-  if (_segmentControl.selectedSegmentIndex == 1)
-    return 24;
-  else if (_segmentControl.selectedSegmentIndex == 2)
-    return 16;
-  
-  return 0;
+    if (tableView == _settingsTableView)
+        return [self numberOfRowsInSettingsTableViewSection:section];
+        
+    return [self numberOfRowsInSelectionTableViewSection:section];
 }
-
-
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  
-  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
-  
-  //LBDEBUG
-  NSDictionary* data = (_segmentControl.selectedSegmentIndex == 1)? [gFakeUsersFriends objectAtIndex:(indexPath.row % 3)] : [gFakeUsersFavorites objectAtIndex:(indexPath.row % 3)];
-  
-  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row data:data];
-  
-  
-  return cell;
+    if (tableView == _settingsTableView)
+        return [self cellInSettingsTableViewForRowAtIndexPath:indexPath];
+    
+    return [self cellInSelectionTableViewForRowAtIndexPath:indexPath];
 }
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  RadioViewController* view = [[RadioViewController alloc] init];
-  [self.navigationController pushViewController:view animated:YES];
-  [view release];
+    if (tableView == _settingsTableView)
+    {
+        [self didSelectInSettingsTableViewRowAtIndexPath:indexPath];
+        return;
+    }
+    
+    [self didSelectInSelectionTableViewRowAtIndexPath:indexPath];
 }
 
 

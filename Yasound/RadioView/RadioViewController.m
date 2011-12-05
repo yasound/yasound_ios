@@ -302,6 +302,9 @@
     [request setDelegate:self];
     [request setDidFailSelector:@selector(sendMessageFailed:)];
     [request setDidFinishSelector:@selector(sendMessageFinished:)];    
+    
+    NSLog(@"\nSENDMESSAGE '%@'\n", message);
+    
 //    [request startAsynchronous];
     [request startSynchronous];
 }
@@ -482,9 +485,9 @@ static NSInteger gFakeTrackIndex = -1;
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-//    NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
-//    NSLog(@"status message: %@\n\n", request.responseStatusMessage);
-//    NSLog(@"cookies: %@\n\n", request.responseCookies);
+    NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
+    NSLog(@"status message: %@\n\n", request.responseStatusMessage);
+    NSLog(@"cookies: %@\n\n", request.responseCookies);
     
     //clean message arrays
     [self.messages removeAllObjects];
