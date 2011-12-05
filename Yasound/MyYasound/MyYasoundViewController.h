@@ -26,11 +26,17 @@
     IBOutlet UILabel* _settingsImageLabel;
     IBOutlet UIImageView* _settingsImageImage;
 
+    IBOutlet UITableViewCell* _settingsGenreCell;
+    IBOutlet UILabel* _settingsGenreLabel;
+    IBOutlet UILabel* _settingsGenreTitle;
+
     IBOutlet UITableViewCell* _settingsThemeCell;
     IBOutlet UILabel* _settingsThemeLabel;
     IBOutlet UILabel* _settingsThemeTitle;
     IBOutlet UIImageView* _settingsThemeImage;
     
+    IBOutlet UITableViewCell* _settingsSubmitCell;
+    IBOutlet UILabel* _settingsSubmitTitle;
     
     // radio selection  
     IBOutlet UITableView* _tableView;  
