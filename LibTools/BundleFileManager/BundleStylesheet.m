@@ -506,6 +506,7 @@ static NSMutableDictionary* gFonts = nil;
     UIImage* src = nil;
     
     if (path == nil)
+        
     {
         src = [UIImage imageNamed:[name stringByAppendingPathExtension:type]];
     }

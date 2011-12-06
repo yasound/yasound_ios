@@ -12,6 +12,7 @@
 #import "RadioViewController.h"
 #import "StyleSelectorViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 
 @implementation MyYasoundViewController (Settings)
@@ -30,6 +31,9 @@
 
 - (void)viewDidLoadInSettingsTableView
 {
+    //..................................................................................
+    // init GUI
+    //
     _settingsGotoLabel.text = NSLocalizedString(@"myyasound_settings_goto_label", nil);
     
     _settingsTitleLabel.text = NSLocalizedString(@"myyasound_settings_config_title_label", nil);
@@ -50,11 +54,49 @@
     
 //    _settingsThemeTitle = @"";
 //    _settingsThemeImage;
+    
+    NSString* theme = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundTheme"];
+    if (theme == nil)
+    {
+        theme = @"theme_default";
+        [[NSUserDefaults standardUserDefaults] setObject:theme forKey:@"MyYasoundTheme"];
+    }
+    _settingsThemeTitle.text = NSLocalizedString(theme, nil);
+
+    
     [_settingsThemeImage.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
     [_settingsThemeImage.layer setBorderWidth: 1];    
     
     _settingsSubmitTitle.text = NSLocalizedString(@"myyasound_settings_submit_title", nil);
+    
+    
+    //......................................................................................
+    // init playlists
+    //
+    MPMediaQuery *playlistsquery = [MPMediaQuery playlistsQuery];
+    
+    _playlists = [playlistsquery collections];
+    [_playlists retain];
+    for (MPMediaPlaylist* list in _playlists)
+    {
+        NSString *listTitle = [list valueForProperty: MPMediaPlaylistPropertyName];
+        NSLog (@"playlist : %@", listTitle);
+    }
+    
+    _selectedPlaylists = [[NSArray alloc] init];
+    [_selectedPlaylists retain];
+    
+
 }
+
+
+
+- (void)deallocInSettingsTableView
+{
+    [_playlists release];
+    [_selectedPlaylists release];
+}
+
 
 
 
@@ -90,11 +132,13 @@
         case SECTION_GOTO: return 1;
         case SECTION_CONFIGURATION: return 3;
         case SECTION_THEME: return 1;
-        case SECTION_PLAYLISTS: return 4;
+        case SECTION_PLAYLISTS: return [_playlists count];
         case SECTION_SUBMIT: return 1;
     }
     return 0;
 }
+
+
 
 
 
@@ -129,23 +173,49 @@
         
         return _settingsSubmitCell;
     }
-
     
-    // default case (playlists)
-	UITableViewCell *cell = [_settingsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) 
+    if (indexPath.section == SECTION_PLAYLISTS)
     {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        // default case (playlists)
+        UITableViewCell *cell = [_settingsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) 
+        {
+            cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        }
+        
+        MPMediaPlaylist* item = [_playlists objectAtIndex: indexPath.row];
+        cell.textLabel.text = [item valueForProperty:MPMediaPlaylistPropertyName];
+        
+        if ([_selectedPlaylists containsObject:item])
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        else
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", item.count];
+
+        return cell;
     }
     
-    
   
-    return cell;
+    return nil;
 }
 
 
 - (void)didSelectInSettingsTableViewRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    
+//  RadioViewController* view = [[RadioViewController alloc] init];
+//  [self.navigationController pushViewController:view animated:YES];
+//  [view release];
+}
+
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
     {
@@ -158,12 +228,27 @@
         [self openStyleSelector];
         return;
     }
-    
-    
-    
-//  RadioViewController* view = [[RadioViewController alloc] init];
-//  [self.navigationController pushViewController:view animated:YES];
-//  [view release];
+
+    if (indexPath.section == SECTION_PLAYLISTS)
+    {
+        UITableViewCell *cell = [_settingsTableView cellForRowAtIndexPath:indexPath];
+        MPMediaPlaylist* item = [_playlists objectAtIndex:indexPath.row];
+        
+        if ([_selectedPlaylists containsObject:item] == YES)
+        {
+            NSLog(@"deselect\n");
+            [_selectedPlaylists removeObject:item];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        else
+        {
+            NSLog(@"select\n");
+            [_selectedPlaylists addObject:item];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark; 
+        }
+        
+        cell.selected = FALSE;
+    }
 }
 
 

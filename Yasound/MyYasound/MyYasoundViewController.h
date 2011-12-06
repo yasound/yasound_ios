@@ -15,6 +15,9 @@
     IBOutlet UIBarButtonItem* _segmentBarButtonItem;
     UISegmentedControl* _segmentControl;
     
+    NSArray* _playlists;
+    NSArray* _selectedPlaylists;
+    
     // my yasound settings
     IBOutlet UITableView* _settingsTableView;
 
@@ -40,6 +43,7 @@
     IBOutlet UITableViewCell* _settingsSubmitCell;
     IBOutlet UILabel* _settingsSubmitTitle;
     
+    
     // radio selection  
     IBOutlet UITableView* _tableView;  
 }
@@ -64,6 +68,7 @@ extern NSArray* gFakeUsersFavorites;
 @interface MyYasoundViewController (Settings)
 
 - (void)viewDidLoadInSettingsTableView;
+- (void)deallocInSettingsTableView;
 
 - (NSString*)titleInSettingsTableViewForHeaderInSection:(NSInteger)section;
 - (NSInteger)numberOfSectionsInSettingsTableView;
@@ -77,6 +82,7 @@ extern NSArray* gFakeUsersFavorites;
 
 @interface MyYasoundViewController (RadioSelection)
 
+- (void)deallocInRadioSelection;
 - (NSInteger)numberOfSectionsInSelectionTableView;
 - (NSInteger)numberOfRowsInSelectionTableViewSection:(NSInteger)section;
 - (UITableViewCell *)cellInSelectionTableViewForRowAtIndexPath:(NSIndexPath *)indexPath;

@@ -57,6 +57,13 @@ NSArray* gFakeUsersFavorites = nil;
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)dealloc
+{
+    [self deallocInSettingsTableView];
+    [self deallocInRadioSelection];
+    [super dealloc];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad

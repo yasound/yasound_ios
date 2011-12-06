@@ -1215,7 +1215,7 @@
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = YasoundD;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1230,7 +1230,7 @@
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = YasoundD;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1288,7 +1288,7 @@
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1303,7 +1303,7 @@
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
