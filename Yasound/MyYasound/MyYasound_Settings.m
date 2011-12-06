@@ -249,6 +249,8 @@
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(unselect:) userInfo:indexPath repeats:NO];
 }
 
+
+
 - (void)unselect:(NSTimer*)timer
 {
     NSIndexPath* indexPath = timer.userInfo;

@@ -146,6 +146,8 @@
 		BC71F62F147FEC6F00DAE4BD /* avatarDummy4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AC147FE0A800DAE4BD /* avatarDummy4@2x.png */; };
 		BC71F630147FEC6F00DAE4BD /* avatarDummy5.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AD147FE0A800DAE4BD /* avatarDummy5.png */; };
 		BC71F631147FEC6F00DAE4BD /* avatarDummy5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AE147FE0A800DAE4BD /* avatarDummy5@2x.png */; };
+		BC93B4A1148E4ACC00A87157 /* jazz.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A0148E4ACC00A87157 /* jazz.bundle */; };
+		BC93B4A2148E4ACC00A87157 /* jazz.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A0148E4ACC00A87157 /* jazz.bundle */; };
 		BC943A5314688AE70031CE17 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
 		BC943A5414688AE70031CE17 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
 		BC943A5514688AE70031CE17 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5214688AE70031CE17 /* icon.png */; };
@@ -321,6 +323,7 @@
 		BC71F5AD147FE0A800DAE4BD /* avatarDummy5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatarDummy5.png; path = RadioSelection/avatarDummy/avatarDummy5.png; sourceTree = "<group>"; };
 		BC71F5AE147FE0A800DAE4BD /* avatarDummy5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatarDummy5@2x.png"; path = "RadioSelection/avatarDummy/avatarDummy5@2x.png"; sourceTree = "<group>"; };
 		BC71F635147FEC6F00DAE4BD /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC93B4A0148E4ACC00A87157 /* jazz.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = jazz.bundle; sourceTree = "<group>"; };
 		BC943A5014688AE70031CE17 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BC943A5114688AE70031CE17 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BC943A5214688AE70031CE17 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -650,6 +653,7 @@
 		BCB5F29814854DA600C28B3D /* themes */ = {
 			isa = PBXGroup;
 			children = (
+				BC93B4A0148E4ACC00A87157 /* jazz.bundle */,
 				BCB5F29914854DA600C28B3D /* default.bundle */,
 			);
 			path = themes;
@@ -1000,6 +1004,7 @@
 				BCC408B1148D15F8001C02E4 /* bigRedButtonDown@2x.png in Resources */,
 				BCC408B3148D15F8001C02E4 /* bigRedButtonUp.png in Resources */,
 				BCC408B5148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */,
+				BC93B4A2148E4ACC00A87157 /* jazz.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,6 +1092,7 @@
 				BCC408B0148D15F8001C02E4 /* bigRedButtonDown@2x.png in Resources */,
 				BCC408B2148D15F8001C02E4 /* bigRedButtonUp.png in Resources */,
 				BCC408B4148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */,
+				BC93B4A1148E4ACC00A87157 /* jazz.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
