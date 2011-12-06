@@ -83,7 +83,7 @@
         NSLog (@"playlist : %@", listTitle);
     }
     
-    _selectedPlaylists = [[NSArray alloc] init];
+    _selectedPlaylists = [[NSMutableArray alloc] init];
     [_selectedPlaylists retain];
     
 
@@ -207,16 +207,25 @@
      if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
     {
         _settingsGotoLabel.textColor = [UIColor whiteColor];
-        return;
     }
     
-    if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_GENRE))
+    else if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_IMAGE))
     {
+        _settingsImageLabel.textColor = [UIColor whiteColor];
+    }
+    
+    else if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_GENRE))
+    {
+        _settingsGenreLabel.textColor = [UIColor whiteColor];
         [self openStyleSelector];
-        return;
+    }
+    
+    else if (indexPath.section == SECTION_THEME)
+    {
+        _settingsThemeTitle.textColor = [UIColor whiteColor];
     }
 
-    if (indexPath.section == SECTION_PLAYLISTS)
+    else if (indexPath.section == SECTION_PLAYLISTS)
     {
         UITableViewCell *cell = [_settingsTableView cellForRowAtIndexPath:indexPath];
         MPMediaPlaylist* item = [_playlists objectAtIndex:indexPath.row];
@@ -236,7 +245,38 @@
         
         cell.selected = FALSE;
     }
+
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(unselect:) userInfo:indexPath repeats:NO];
 }
+
+- (void)unselect:(NSTimer*)timer
+{
+    NSIndexPath* indexPath = timer.userInfo;
+    UITableViewCell* cell = [_settingsTableView cellForRowAtIndexPath:indexPath];
+    cell.selected = FALSE;
+    
+    if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
+    {
+        _settingsGotoLabel.textColor = [UIColor blackColor];
+    }
+    
+    else if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_IMAGE))
+    {
+        _settingsImageLabel.textColor = [UIColor blackColor];
+    }
+    
+    else if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_GENRE))
+    {
+        _settingsGenreLabel.textColor = [UIColor blackColor];
+    }
+    
+    else if (indexPath.section == SECTION_THEME)
+    {
+        _settingsThemeTitle.textColor = [UIColor blackColor];
+    }
+    
+}
+
 
 
 

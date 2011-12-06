@@ -16,7 +16,7 @@
     UISegmentedControl* _segmentControl;
     
     NSArray* _playlists;
-    NSArray* _selectedPlaylists;
+    NSMutableArray* _selectedPlaylists;
     
     // my yasound settings
     IBOutlet UITableView* _settingsTableView;
