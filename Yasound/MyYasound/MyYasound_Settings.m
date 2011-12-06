@@ -204,20 +204,7 @@
 
 - (void)didSelectInSettingsTableViewRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
-//  RadioViewController* view = [[RadioViewController alloc] init];
-//  [self.navigationController pushViewController:view animated:YES];
-//  [view release];
-}
-
-
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
+     if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
     {
         _settingsGotoLabel.textColor = [UIColor whiteColor];
         return;
