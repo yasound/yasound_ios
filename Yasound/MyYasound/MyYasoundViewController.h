@@ -73,6 +73,7 @@ extern NSArray* gFakeUsersFavorites;
 - (NSString*)titleInSettingsTableViewForHeaderInSection:(NSInteger)section;
 - (NSInteger)numberOfSectionsInSettingsTableView;
 - (NSInteger)numberOfRowsInSettingsTableViewSection:(NSInteger)section;
+- (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
 - (UITableViewCell *)cellInSettingsTableViewForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)didSelectInSettingsTableViewRowAtIndexPath:(NSIndexPath *)indexPath;
 

@@ -190,6 +190,12 @@ NSArray* gFakeUsersFavorites = nil;
 }
 
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    if (tableView == _settingsTableView)
+        [self willDisplayCellInSettingsTableView:cell forRowAtIndexPath:indexPath];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {

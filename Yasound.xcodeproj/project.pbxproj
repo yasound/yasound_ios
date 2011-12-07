@@ -134,6 +134,10 @@
 		BCE4631F148FD89100422448 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE4631C148FD89100422448 /* default.bundle */; };
 		BCE46320148FD89100422448 /* jazz.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE4631D148FD89100422448 /* jazz.bundle */; };
 		BCE46321148FD89100422448 /* jazz.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE4631D148FD89100422448 /* jazz.bundle */; };
+		BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
+		BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
+		BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
+		BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
 		BCF62DBF14839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC014839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC114839355001B1908 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB014839355001B1908 /* categoryShadow@2x.png */; };
@@ -275,6 +279,8 @@
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
 		BCE4631C148FD89100422448 /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = default.bundle; sourceTree = "<group>"; };
 		BCE4631D148FD89100422448 /* jazz.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = jazz.bundle; sourceTree = "<group>"; };
+		BCE46322148FD96300422448 /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
+		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
 		BCF62DAF14839355001B1908 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
 		BCF62DB014839355001B1908 /* categoryShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "categoryShadow@2x.png"; path = "RadioSelection/categoryShadow@2x.png"; sourceTree = "<group>"; };
 		BCF62DB114839355001B1908 /* CellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundBlue.png; path = RadioSelection/CellBackgroundBlue.png; sourceTree = "<group>"; };
@@ -552,6 +558,8 @@
 		BCC408A9148D15F8001C02E4 /* MyYasound */ = {
 			isa = PBXGroup;
 			children = (
+				BCE46322148FD96300422448 /* MyYasoundBackground.png */,
+				BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */,
 				BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */,
 				BCC408AB148D15F8001C02E4 /* bigRedButtonDown@2x.png */,
 				BCC408AC148D15F8001C02E4 /* bigRedButtonUp.png */,
@@ -817,6 +825,8 @@
 				BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE4631F148FD89100422448 /* default.bundle in Resources */,
 				BCE46321148FD89100422448 /* jazz.bundle in Resources */,
+				BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */,
+				BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,6 +881,8 @@
 				BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE4631E148FD89100422448 /* default.bundle in Resources */,
 				BCE46320148FD89100422448 /* jazz.bundle in Resources */,
+				BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */,
+				BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
