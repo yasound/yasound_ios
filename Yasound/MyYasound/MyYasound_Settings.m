@@ -11,6 +11,7 @@
 #import "BundleFileManager.h"
 #import "RadioViewController.h"
 #import "StyleSelectorViewController.h"
+#import "ThemeSelectorViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import <MediaPlayer/MediaPlayer.h>
 
@@ -223,6 +224,7 @@
     else if (indexPath.section == SECTION_THEME)
     {
         _settingsThemeTitle.textColor = [UIColor whiteColor];
+        [self openThemeSelector];
     }
 
     else if (indexPath.section == SECTION_PLAYLISTS)
@@ -319,6 +321,28 @@
 {
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }
+
+
+
+#pragma mark - ThemeSelectorDelegate
+
+- (void)openThemeSelector
+{
+    ThemeSelectorViewController* view = [[ThemeSelectorViewController alloc] initWithNibName:@"ThemeSelectorViewController" bundle:nil target:self];
+    [self.navigationController presentModalViewController:view animated:YES];
+}
+
+- (void)themeSelected:(NSString*)theme
+{
+    [[NSUserDefaults standardUserDefaults] setObject:theme forKey:@"MyYasoundTheme"];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+- (void)themeSelectionCanceled
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
 
 
 

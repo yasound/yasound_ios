@@ -77,7 +77,6 @@
 		BC71F5D4147FEC6F00DAE4BD /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC71F5D5147FEC6F00DAE4BD /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC71F5D6147FEC6F00DAE4BD /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		BC71F5D7147FEC6F00DAE4BD /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F415A147EAEFC00D417EF /* StyleSelectorViewController.m */; };
 		BC71F5D8147FEC6F00DAE4BD /* MyYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */; };
 		BC71F5DA147FEC6F00DAE4BD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
 		BC71F5DB147FEC6F00DAE4BD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A57145F005B00A88910 /* MobileCoreServices.framework */; };
@@ -129,7 +128,6 @@
 		BC71F60C147FEC6F00DAE4BD /* avatar13.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010C146978B400A4B047 /* avatar13.png */; };
 		BC71F60D147FEC6F00DAE4BD /* avatar14.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010D146978B400A4B047 /* avatar14.png */; };
 		BC71F616147FEC6F00DAE4BD /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
-		BC71F621147FEC6F00DAE4BD /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */; };
 		BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC71F624147FEC6F00DAE4BD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
@@ -148,13 +146,19 @@
 		BC71F631147FEC6F00DAE4BD /* avatarDummy5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AE147FE0A800DAE4BD /* avatarDummy5@2x.png */; };
 		BC93B4A1148E4ACC00A87157 /* jazz.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A0148E4ACC00A87157 /* jazz.bundle */; };
 		BC93B4A2148E4ACC00A87157 /* jazz.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A0148E4ACC00A87157 /* jazz.bundle */; };
+		BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
+		BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
+		BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
+		BC93B4A9148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
+		BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
+		BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
+		BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
+		BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		BC943A5314688AE70031CE17 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
 		BC943A5414688AE70031CE17 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
 		BC943A5514688AE70031CE17 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5214688AE70031CE17 /* icon.png */; };
 		BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		BC9F415C147EAEFD00D417EF /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F415A147EAEFC00D417EF /* StyleSelectorViewController.m */; };
-		BC9F415D147EAEFD00D417EF /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F6E14892350008F3738 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F6D14892350008F3738 /* Track.m */; };
@@ -324,6 +328,12 @@
 		BC71F5AE147FE0A800DAE4BD /* avatarDummy5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatarDummy5@2x.png"; path = "RadioSelection/avatarDummy/avatarDummy5@2x.png"; sourceTree = "<group>"; };
 		BC71F635147FEC6F00DAE4BD /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC93B4A0148E4ACC00A87157 /* jazz.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = jazz.bundle; sourceTree = "<group>"; };
+		BC93B4A3148E686C00A87157 /* ThemeSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSelectorViewController.h; sourceTree = "<group>"; };
+		BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSelectorViewController.m; sourceTree = "<group>"; };
+		BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeSelectorViewController.xib; sourceTree = "<group>"; };
+		BC93B4AA148E68DE00A87157 /* StyleSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleSelectorViewController.h; sourceTree = "<group>"; };
+		BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleSelectorViewController.m; sourceTree = "<group>"; };
+		BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StyleSelectorViewController.xib; sourceTree = "<group>"; };
 		BC943A5014688AE70031CE17 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BC943A5114688AE70031CE17 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BC943A5214688AE70031CE17 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -331,9 +341,6 @@
 		BC9F4144147E8A5F00D417EF /* BundleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleFileManager.m; sourceTree = "<group>"; };
 		BC9F4145147E8A5F00D417EF /* BundleStylesheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleStylesheet.h; sourceTree = "<group>"; };
 		BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleStylesheet.m; sourceTree = "<group>"; };
-		BC9F4159147EAEFC00D417EF /* StyleSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StyleSelectorViewController.h; path = RadioSelection/StyleSelectorViewController.h; sourceTree = "<group>"; };
-		BC9F415A147EAEFC00D417EF /* StyleSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StyleSelectorViewController.m; path = RadioSelection/StyleSelectorViewController.m; sourceTree = "<group>"; };
-		BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StyleSelectorViewController.xib; path = RadioSelection/StyleSelectorViewController.xib; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		BCB41F6C14892350008F3738 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
@@ -535,9 +542,6 @@
 				BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */,
 				BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */,
 				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,
-				BC9F4159147EAEFC00D417EF /* StyleSelectorViewController.h */,
-				BC9F415A147EAEFC00D417EF /* StyleSelectorViewController.m */,
-				BC9F415B147EAEFC00D417EF /* StyleSelectorViewController.xib */,
 				BC5EE23E147D739600A282A5 /* RadioTabBarController.h */,
 				BC5EE23F147D739600A282A5 /* RadioTabBarController.m */,
 				BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */,
@@ -762,6 +766,12 @@
 				BCFECFEA1468439900BA20D9 /* SlidingMenu.m */,
 				BCFECFEB1468439900BA20D9 /* Tile.h */,
 				BCFECFEC1468439900BA20D9 /* Tile.m */,
+				BC93B4AA148E68DE00A87157 /* StyleSelectorViewController.h */,
+				BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */,
+				BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */,
+				BC93B4A3148E686C00A87157 /* ThemeSelectorViewController.h */,
+				BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */,
+				BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */,
 			);
 			path = Gui;
 			sourceTree = "<group>";
@@ -965,7 +975,6 @@
 				BC71F60C147FEC6F00DAE4BD /* avatar13.png in Resources */,
 				BC71F60D147FEC6F00DAE4BD /* avatar14.png in Resources */,
 				BC71F616147FEC6F00DAE4BD /* RadioSelectionViewController.xib in Resources */,
-				BC71F621147FEC6F00DAE4BD /* StyleSelectorViewController.xib in Resources */,
 				BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */,
 				BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */,
 				BC71F624147FEC6F00DAE4BD /* MainWindow.xib in Resources */,
@@ -1005,6 +1014,8 @@
 				BCC408B3148D15F8001C02E4 /* bigRedButtonUp.png in Resources */,
 				BCC408B5148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */,
 				BC93B4A2148E4ACC00A87157 /* jazz.bundle in Resources */,
+				BC93B4A9148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */,
+				BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1053,7 +1064,6 @@
 				401B0117146978B400A4B047 /* avatar13.png in Resources */,
 				401B0118146978B400A4B047 /* avatar14.png in Resources */,
 				BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */,
-				BC9F415D147EAEFD00D417EF /* StyleSelectorViewController.xib in Resources */,
 				BC71F583147F979700DAE4BD /* Localizable.strings in Resources */,
 				BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */,
 				BC71F589147F9CD900DAE4BD /* MainWindow.xib in Resources */,
@@ -1093,6 +1103,8 @@
 				BCC408B2148D15F8001C02E4 /* bigRedButtonUp.png in Resources */,
 				BCC408B4148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */,
 				BC93B4A1148E4ACC00A87157 /* jazz.bundle in Resources */,
+				BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */,
+				BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1127,7 +1139,6 @@
 				BC71F5D4147FEC6F00DAE4BD /* RadioSelectionTableViewCell.m in Sources */,
 				BC71F5D5147FEC6F00DAE4BD /* BundleFileManager.m in Sources */,
 				BC71F5D6147FEC6F00DAE4BD /* BundleStylesheet.m in Sources */,
-				BC71F5D7147FEC6F00DAE4BD /* StyleSelectorViewController.m in Sources */,
 				BC71F5D8147FEC6F00DAE4BD /* MyYasoundViewController.m in Sources */,
 				BCF62DE3148394F0001B1908 /* RadioSearchViewController.m in Sources */,
 				BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */,
@@ -1137,6 +1148,8 @@
 				BCB41F6F14892350008F3738 /* Track.m in Sources */,
 				BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */,
 				BCC408A8148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
+				BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
+				BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1168,7 +1181,6 @@
 				BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */,
 				BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */,
 				BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */,
-				BC9F415C147EAEFD00D417EF /* StyleSelectorViewController.m in Sources */,
 				BC71F58F147FBCEA00DAE4BD /* MyYasoundViewController.m in Sources */,
 				BCF62DE2148394F0001B1908 /* RadioSearchViewController.m in Sources */,
 				BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */,
@@ -1178,6 +1190,8 @@
 				BCB41F6E14892350008F3738 /* Track.m in Sources */,
 				BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */,
 				BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
+				BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
+				BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

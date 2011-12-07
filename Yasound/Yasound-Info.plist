@@ -460,6 +460,25 @@
 				<integer>1</integer>
 			</dict>
 		</dict>
+		<key>themes</key>
+		<array>
+			<dict>
+				<key>bundle</key>
+				<string>default</string>
+				<key>description</key>
+				<string>theme_default_description</string>
+				<key>name</key>
+				<string>theme_default</string>
+			</dict>
+			<dict>
+				<key>bundle</key>
+				<string>jazz</string>
+				<key>description</key>
+				<string>theme_jazz_description</string>
+				<key>name</key>
+				<string>theme_jazz</string>
+			</dict>
+		</array>
 	</dict>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
