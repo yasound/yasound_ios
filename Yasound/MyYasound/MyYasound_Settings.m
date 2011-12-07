@@ -143,7 +143,6 @@
 
 
 
-
 - (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
 {
     float value = 246.f/255.f;
