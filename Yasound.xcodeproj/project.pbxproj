@@ -7,17 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		401B010E146978B400A4B047 /* avatar4.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0103146978B300A4B047 /* avatar4.png */; };
-		401B010F146978B400A4B047 /* avatar5.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0104146978B300A4B047 /* avatar5.png */; };
-		401B0110146978B400A4B047 /* avatar6.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0105146978B300A4B047 /* avatar6.png */; };
-		401B0111146978B400A4B047 /* avatar7.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0106146978B300A4B047 /* avatar7.png */; };
-		401B0112146978B400A4B047 /* avatar8.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0107146978B300A4B047 /* avatar8.png */; };
-		401B0113146978B400A4B047 /* avatar9.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0108146978B300A4B047 /* avatar9.png */; };
-		401B0114146978B400A4B047 /* avatar10.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0109146978B400A4B047 /* avatar10.png */; };
-		401B0115146978B400A4B047 /* avatar11.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010A146978B400A4B047 /* avatar11.png */; };
-		401B0116146978B400A4B047 /* avatar12.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010B146978B400A4B047 /* avatar12.png */; };
-		401B0117146978B400A4B047 /* avatar13.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010C146978B400A4B047 /* avatar13.png */; };
-		401B0118146978B400A4B047 /* avatar14.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010D146978B400A4B047 /* avatar14.png */; };
 		405629A7147547380085518C /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 40562990147547380085518C /* ASIAuthenticationDialog.m */; };
 		405629A8147547380085518C /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40562993147547380085518C /* ASIDataCompressor.m */; };
 		405629A9147547380085518C /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40562995147547380085518C /* ASIDataDecompressor.m */; };
@@ -88,45 +77,10 @@
 		BC71F5E1147FEC6F00DAE4BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BC71F5E2147FEC6F00DAE4BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		BC71F5E4147FEC6F00DAE4BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
-		BC71F5E5147FEC6F00DAE4BD /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFB9146841A800BA20D9 /* avatar1.png */; };
-		BC71F5E6147FEC6F00DAE4BD /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBA146841A800BA20D9 /* avatar2.png */; };
-		BC71F5E7147FEC6F00DAE4BD /* avatar3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBB146841A800BA20D9 /* avatar3.png */; };
-		BC71F5E8147FEC6F00DAE4BD /* bouton-envoyer.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBD146841A800BA20D9 /* bouton-envoyer.png */; };
-		BC71F5E9147FEC6F00DAE4BD /* bouton-retour.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBE146841A800BA20D9 /* bouton-retour.png */; };
-		BC71F5EA147FEC6F00DAE4BD /* fond-auditeurs.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC0146841A800BA20D9 /* fond-auditeurs.png */; };
-		BC71F5EB147FEC6F00DAE4BD /* MenuBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC1146841A800BA20D9 /* MenuBg@2x.png */; };
-		BC71F5EC147FEC6F00DAE4BD /* radiocree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC2146841A800BA20D9 /* radiocree@2x.png */; };
-		BC71F5ED147FEC6F00DAE4BD /* bt-achat.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC4146841A800BA20D9 /* bt-achat.png */; };
-		BC71F5EE147FEC6F00DAE4BD /* bt-aime.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC5146841A800BA20D9 /* bt-aime.png */; };
-		BC71F5EF147FEC6F00DAE4BD /* bt-aimepas.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC6146841A800BA20D9 /* bt-aimepas.png */; };
-		BC71F5F0147FEC6F00DAE4BD /* bt-ajouter.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC7146841A800BA20D9 /* bt-ajouter.png */; };
-		BC71F5F1147FEC6F00DAE4BD /* bt-Skip.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC8146841A800BA20D9 /* bt-Skip.png */; };
-		BC71F5F2147FEC6F00DAE4BD /* BT-top1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC9146841A800BA20D9 /* BT-top1.png */; };
-		BC71F5F3147FEC6F00DAE4BD /* BT-top2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCA146841A800BA20D9 /* BT-top2.png */; };
-		BC71F5F4147FEC6F00DAE4BD /* BT-top3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCB146841A800BA20D9 /* BT-top3.png */; };
-		BC71F5F5147FEC6F00DAE4BD /* BT-top4.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCC146841A800BA20D9 /* BT-top4.png */; };
-		BC71F5F6147FEC6F00DAE4BD /* BT-top5.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCD146841A800BA20D9 /* BT-top5.png */; };
-		BC71F5F7147FEC6F00DAE4BD /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCE146841A800BA20D9 /* logo@2x.png */; };
 		BC71F5F8147FEC6F00DAE4BD /* RadioCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */; };
 		BC71F5FB147FEC6F00DAE4BD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
 		BC71F5FC147FEC6F00DAE4BD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
 		BC71F5FD147FEC6F00DAE4BD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5214688AE70031CE17 /* icon.png */; };
-		BC71F5FE147FEC6F00DAE4BD /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2C8146962B1000A236A /* logo.png */; };
-		BC71F5FF147FEC6F00DAE4BD /* CreateMyRadio_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CA14696E6E000A236A /* CreateMyRadio_Down.png */; };
-		BC71F600147FEC6F00DAE4BD /* CreateMyRadio_Down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CB14696E6E000A236A /* CreateMyRadio_Down@2x.png */; };
-		BC71F601147FEC6F00DAE4BD /* CreateMyRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CC14696E6E000A236A /* CreateMyRadio.png */; };
-		BC71F602147FEC6F00DAE4BD /* CreateMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CD14696E6E000A236A /* CreateMyRadio@2x.png */; };
-		BC71F603147FEC6F00DAE4BD /* avatar4.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0103146978B300A4B047 /* avatar4.png */; };
-		BC71F604147FEC6F00DAE4BD /* avatar5.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0104146978B300A4B047 /* avatar5.png */; };
-		BC71F605147FEC6F00DAE4BD /* avatar6.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0105146978B300A4B047 /* avatar6.png */; };
-		BC71F606147FEC6F00DAE4BD /* avatar7.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0106146978B300A4B047 /* avatar7.png */; };
-		BC71F607147FEC6F00DAE4BD /* avatar8.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0107146978B300A4B047 /* avatar8.png */; };
-		BC71F608147FEC6F00DAE4BD /* avatar9.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0108146978B300A4B047 /* avatar9.png */; };
-		BC71F609147FEC6F00DAE4BD /* avatar10.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B0109146978B400A4B047 /* avatar10.png */; };
-		BC71F60A147FEC6F00DAE4BD /* avatar11.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010A146978B400A4B047 /* avatar11.png */; };
-		BC71F60B147FEC6F00DAE4BD /* avatar12.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010B146978B400A4B047 /* avatar12.png */; };
-		BC71F60C147FEC6F00DAE4BD /* avatar13.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010C146978B400A4B047 /* avatar13.png */; };
-		BC71F60D147FEC6F00DAE4BD /* avatar14.png in Resources */ = {isa = PBXBuildFile; fileRef = 401B010D146978B400A4B047 /* avatar14.png */; };
 		BC71F616147FEC6F00DAE4BD /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
@@ -144,8 +98,6 @@
 		BC71F62F147FEC6F00DAE4BD /* avatarDummy4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AC147FE0A800DAE4BD /* avatarDummy4@2x.png */; };
 		BC71F630147FEC6F00DAE4BD /* avatarDummy5.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AD147FE0A800DAE4BD /* avatarDummy5.png */; };
 		BC71F631147FEC6F00DAE4BD /* avatarDummy5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AE147FE0A800DAE4BD /* avatarDummy5@2x.png */; };
-		BC93B4A1148E4ACC00A87157 /* jazz.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A0148E4ACC00A87157 /* jazz.bundle */; };
-		BC93B4A2148E4ACC00A87157 /* jazz.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A0148E4ACC00A87157 /* jazz.bundle */; };
 		BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
@@ -165,8 +117,6 @@
 		BCB41F6F14892350008F3738 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F6D14892350008F3738 /* Track.m */; };
 		BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
-		BCB5F29A14854DA600C28B3D /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCB5F29914854DA600C28B3D /* default.bundle */; };
-		BCB5F29B14854DA600C28B3D /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCB5F29914854DA600C28B3D /* default.bundle */; };
 		BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
@@ -180,11 +130,10 @@
 		BCC408B4148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AD148D15F8001C02E4 /* bigRedButtonUp@2x.png */; };
 		BCC408B5148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AD148D15F8001C02E4 /* bigRedButtonUp@2x.png */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
-		BCD4C2C9146962B1000A236A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2C8146962B1000A236A /* logo.png */; };
-		BCD4C2CE14696E6E000A236A /* CreateMyRadio_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CA14696E6E000A236A /* CreateMyRadio_Down.png */; };
-		BCD4C2CF14696E6E000A236A /* CreateMyRadio_Down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CB14696E6E000A236A /* CreateMyRadio_Down@2x.png */; };
-		BCD4C2D014696E6E000A236A /* CreateMyRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CC14696E6E000A236A /* CreateMyRadio.png */; };
-		BCD4C2D114696E6E000A236A /* CreateMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD4C2CD14696E6E000A236A /* CreateMyRadio@2x.png */; };
+		BCE4631E148FD89100422448 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE4631C148FD89100422448 /* default.bundle */; };
+		BCE4631F148FD89100422448 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE4631C148FD89100422448 /* default.bundle */; };
+		BCE46320148FD89100422448 /* jazz.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE4631D148FD89100422448 /* jazz.bundle */; };
+		BCE46321148FD89100422448 /* jazz.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE4631D148FD89100422448 /* jazz.bundle */; };
 		BCF62DBF14839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC014839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC114839355001B1908 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB014839355001B1908 /* categoryShadow@2x.png */; };
@@ -221,25 +170,6 @@
 		BCF62DE3148394F0001B1908 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
 		BCF62DE4148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		BCF62DE5148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
-		BCFECFCF146841A800BA20D9 /* avatar1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFB9146841A800BA20D9 /* avatar1.png */; };
-		BCFECFD0146841A800BA20D9 /* avatar2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBA146841A800BA20D9 /* avatar2.png */; };
-		BCFECFD1146841A800BA20D9 /* avatar3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBB146841A800BA20D9 /* avatar3.png */; };
-		BCFECFD2146841A800BA20D9 /* bouton-envoyer.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBD146841A800BA20D9 /* bouton-envoyer.png */; };
-		BCFECFD3146841A800BA20D9 /* bouton-retour.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFBE146841A800BA20D9 /* bouton-retour.png */; };
-		BCFECFD5146841A800BA20D9 /* fond-auditeurs.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC0146841A800BA20D9 /* fond-auditeurs.png */; };
-		BCFECFD6146841A800BA20D9 /* MenuBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC1146841A800BA20D9 /* MenuBg@2x.png */; };
-		BCFECFD7146841A800BA20D9 /* radiocree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC2146841A800BA20D9 /* radiocree@2x.png */; };
-		BCFECFD8146841A800BA20D9 /* bt-achat.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC4146841A800BA20D9 /* bt-achat.png */; };
-		BCFECFD9146841A800BA20D9 /* bt-aime.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC5146841A800BA20D9 /* bt-aime.png */; };
-		BCFECFDA146841A800BA20D9 /* bt-aimepas.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC6146841A800BA20D9 /* bt-aimepas.png */; };
-		BCFECFDB146841A800BA20D9 /* bt-ajouter.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC7146841A800BA20D9 /* bt-ajouter.png */; };
-		BCFECFDC146841A800BA20D9 /* bt-Skip.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC8146841A800BA20D9 /* bt-Skip.png */; };
-		BCFECFDD146841A800BA20D9 /* BT-top1.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFC9146841A800BA20D9 /* BT-top1.png */; };
-		BCFECFDE146841A800BA20D9 /* BT-top2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCA146841A800BA20D9 /* BT-top2.png */; };
-		BCFECFDF146841A800BA20D9 /* BT-top3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCB146841A800BA20D9 /* BT-top3.png */; };
-		BCFECFE0146841A800BA20D9 /* BT-top4.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCC146841A800BA20D9 /* BT-top4.png */; };
-		BCFECFE1146841A800BA20D9 /* BT-top5.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCD146841A800BA20D9 /* BT-top5.png */; };
-		BCFECFE2146841A800BA20D9 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFCE146841A800BA20D9 /* logo@2x.png */; };
 		BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BCFECFFC1468439900BA20D9 /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE81468439900BA20D9 /* MenuHeader.m */; };
 		BCFECFFD1468439900BA20D9 /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
@@ -262,17 +192,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		401B0103146978B300A4B047 /* avatar4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar4.png; sourceTree = "<group>"; };
-		401B0104146978B300A4B047 /* avatar5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar5.png; sourceTree = "<group>"; };
-		401B0105146978B300A4B047 /* avatar6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar6.png; sourceTree = "<group>"; };
-		401B0106146978B300A4B047 /* avatar7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar7.png; sourceTree = "<group>"; };
-		401B0107146978B300A4B047 /* avatar8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar8.png; sourceTree = "<group>"; };
-		401B0108146978B300A4B047 /* avatar9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar9.png; sourceTree = "<group>"; };
-		401B0109146978B400A4B047 /* avatar10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar10.png; sourceTree = "<group>"; };
-		401B010A146978B400A4B047 /* avatar11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar11.png; sourceTree = "<group>"; };
-		401B010B146978B400A4B047 /* avatar12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar12.png; sourceTree = "<group>"; };
-		401B010C146978B400A4B047 /* avatar13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar13.png; sourceTree = "<group>"; };
-		401B010D146978B400A4B047 /* avatar14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar14.png; sourceTree = "<group>"; };
 		4056298F147547380085518C /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		40562990147547380085518C /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		40562991147547380085518C /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -327,7 +246,6 @@
 		BC71F5AD147FE0A800DAE4BD /* avatarDummy5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatarDummy5.png; path = RadioSelection/avatarDummy/avatarDummy5.png; sourceTree = "<group>"; };
 		BC71F5AE147FE0A800DAE4BD /* avatarDummy5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatarDummy5@2x.png"; path = "RadioSelection/avatarDummy/avatarDummy5@2x.png"; sourceTree = "<group>"; };
 		BC71F635147FEC6F00DAE4BD /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC93B4A0148E4ACC00A87157 /* jazz.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = jazz.bundle; sourceTree = "<group>"; };
 		BC93B4A3148E686C00A87157 /* ThemeSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSelectorViewController.h; sourceTree = "<group>"; };
 		BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSelectorViewController.m; sourceTree = "<group>"; };
 		BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeSelectorViewController.xib; sourceTree = "<group>"; };
@@ -347,7 +265,6 @@
 		BCB41F6D14892350008F3738 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		BCB5F28C1485416B00C28B3D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
 		BCB5F28D1485416B00C28B3D /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
-		BCB5F29914854DA600C28B3D /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = default.bundle; sourceTree = "<group>"; };
 		BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_RadioSelection.m; path = MyYasound/MyYasound_RadioSelection.m; sourceTree = "<group>"; };
 		BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_Settings.m; path = MyYasound/MyYasound_Settings.m; sourceTree = "<group>"; };
 		BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonDown.png; sourceTree = "<group>"; };
@@ -356,11 +273,8 @@
 		BCC408AD148D15F8001C02E4 /* bigRedButtonUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigRedButtonUp@2x.png"; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
-		BCD4C2C8146962B1000A236A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		BCD4C2CA14696E6E000A236A /* CreateMyRadio_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateMyRadio_Down.png; sourceTree = "<group>"; };
-		BCD4C2CB14696E6E000A236A /* CreateMyRadio_Down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadio_Down@2x.png"; sourceTree = "<group>"; };
-		BCD4C2CC14696E6E000A236A /* CreateMyRadio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateMyRadio.png; sourceTree = "<group>"; };
-		BCD4C2CD14696E6E000A236A /* CreateMyRadio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadio@2x.png"; sourceTree = "<group>"; };
+		BCE4631C148FD89100422448 /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = default.bundle; sourceTree = "<group>"; };
+		BCE4631D148FD89100422448 /* jazz.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = jazz.bundle; sourceTree = "<group>"; };
 		BCF62DAF14839355001B1908 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
 		BCF62DB014839355001B1908 /* categoryShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "categoryShadow@2x.png"; path = "RadioSelection/categoryShadow@2x.png"; sourceTree = "<group>"; };
 		BCF62DB114839355001B1908 /* CellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundBlue.png; path = RadioSelection/CellBackgroundBlue.png; sourceTree = "<group>"; };
@@ -380,25 +294,6 @@
 		BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSearchViewController.h; path = RadioSelection/RadioSearchViewController.h; sourceTree = "<group>"; };
 		BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSearchViewController.m; path = RadioSelection/RadioSearchViewController.m; sourceTree = "<group>"; };
 		BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSearchViewController.xib; path = RadioSelection/RadioSearchViewController.xib; sourceTree = "<group>"; };
-		BCFECFB9146841A800BA20D9 /* avatar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar1.png; sourceTree = "<group>"; };
-		BCFECFBA146841A800BA20D9 /* avatar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar2.png; sourceTree = "<group>"; };
-		BCFECFBB146841A800BA20D9 /* avatar3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar3.png; sourceTree = "<group>"; };
-		BCFECFBD146841A800BA20D9 /* bouton-envoyer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bouton-envoyer.png"; sourceTree = "<group>"; };
-		BCFECFBE146841A800BA20D9 /* bouton-retour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bouton-retour.png"; sourceTree = "<group>"; };
-		BCFECFC0146841A800BA20D9 /* fond-auditeurs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fond-auditeurs.png"; sourceTree = "<group>"; };
-		BCFECFC1146841A800BA20D9 /* MenuBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MenuBg@2x.png"; sourceTree = "<group>"; };
-		BCFECFC2146841A800BA20D9 /* radiocree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radiocree@2x.png"; sourceTree = "<group>"; };
-		BCFECFC4146841A800BA20D9 /* bt-achat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-achat.png"; sourceTree = "<group>"; };
-		BCFECFC5146841A800BA20D9 /* bt-aime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-aime.png"; sourceTree = "<group>"; };
-		BCFECFC6146841A800BA20D9 /* bt-aimepas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-aimepas.png"; sourceTree = "<group>"; };
-		BCFECFC7146841A800BA20D9 /* bt-ajouter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-ajouter.png"; sourceTree = "<group>"; };
-		BCFECFC8146841A800BA20D9 /* bt-Skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt-Skip.png"; sourceTree = "<group>"; };
-		BCFECFC9146841A800BA20D9 /* BT-top1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BT-top1.png"; sourceTree = "<group>"; };
-		BCFECFCA146841A800BA20D9 /* BT-top2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BT-top2.png"; sourceTree = "<group>"; };
-		BCFECFCB146841A800BA20D9 /* BT-top3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BT-top3.png"; sourceTree = "<group>"; };
-		BCFECFCC146841A800BA20D9 /* BT-top4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BT-top4.png"; sourceTree = "<group>"; };
-		BCFECFCD146841A800BA20D9 /* BT-top5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BT-top5.png"; sourceTree = "<group>"; };
-		BCFECFCE146841A800BA20D9 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		BCFECFE41468439900BA20D9 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		BCFECFE51468439900BA20D9 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		BCFECFE71468439900BA20D9 /* MenuHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuHeader.h; sourceTree = "<group>"; };
@@ -654,15 +549,6 @@
 			path = RadioView;
 			sourceTree = "<group>";
 		};
-		BCB5F29814854DA600C28B3D /* themes */ = {
-			isa = PBXGroup;
-			children = (
-				BC93B4A0148E4ACC00A87157 /* jazz.bundle */,
-				BCB5F29914854DA600C28B3D /* default.bundle */,
-			);
-			path = themes;
-			sourceTree = "<group>";
-		};
 		BCC408A9148D15F8001C02E4 /* MyYasound */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,76 +560,26 @@
 			path = MyYasound;
 			sourceTree = "<group>";
 		};
+		BCE4631B148FD89100422448 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				BCE4631C148FD89100422448 /* default.bundle */,
+				BCE4631D148FD89100422448 /* jazz.bundle */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCE4631B148FD89100422448 /* Themes */,
 				BCC408A9148D15F8001C02E4 /* MyYasound */,
-				BCB5F29814854DA600C28B3D /* themes */,
-				BCFECFB8146841A800BA20D9 /* avatars */,
-				BCFECFBC146841A800BA20D9 /* gui */,
-				BCFECFC3146841A800BA20D9 /* icons */,
 				BC5EE217147D427100A282A5 /* RadioSelection */,
-				BCFECFCE146841A800BA20D9 /* logo@2x.png */,
-				BCD4C2C8146962B1000A236A /* logo.png */,
 				BC943A5014688AE70031CE17 /* Default.png */,
 				BC943A5114688AE70031CE17 /* Default@2x.png */,
 				BC943A5214688AE70031CE17 /* icon.png */,
 			);
 			path = resources;
-			sourceTree = "<group>";
-		};
-		BCFECFB8146841A800BA20D9 /* avatars */ = {
-			isa = PBXGroup;
-			children = (
-				BCFECFB9146841A800BA20D9 /* avatar1.png */,
-				BCFECFBA146841A800BA20D9 /* avatar2.png */,
-				BCFECFBB146841A800BA20D9 /* avatar3.png */,
-				401B0103146978B300A4B047 /* avatar4.png */,
-				401B0104146978B300A4B047 /* avatar5.png */,
-				401B0105146978B300A4B047 /* avatar6.png */,
-				401B0106146978B300A4B047 /* avatar7.png */,
-				401B0107146978B300A4B047 /* avatar8.png */,
-				401B0108146978B300A4B047 /* avatar9.png */,
-				401B0109146978B400A4B047 /* avatar10.png */,
-				401B010A146978B400A4B047 /* avatar11.png */,
-				401B010B146978B400A4B047 /* avatar12.png */,
-				401B010C146978B400A4B047 /* avatar13.png */,
-				401B010D146978B400A4B047 /* avatar14.png */,
-			);
-			path = avatars;
-			sourceTree = "<group>";
-		};
-		BCFECFBC146841A800BA20D9 /* gui */ = {
-			isa = PBXGroup;
-			children = (
-				BCD4C2CA14696E6E000A236A /* CreateMyRadio_Down.png */,
-				BCD4C2CB14696E6E000A236A /* CreateMyRadio_Down@2x.png */,
-				BCD4C2CC14696E6E000A236A /* CreateMyRadio.png */,
-				BCD4C2CD14696E6E000A236A /* CreateMyRadio@2x.png */,
-				BCFECFBD146841A800BA20D9 /* bouton-envoyer.png */,
-				BCFECFBE146841A800BA20D9 /* bouton-retour.png */,
-				BCFECFC0146841A800BA20D9 /* fond-auditeurs.png */,
-				BCFECFC1146841A800BA20D9 /* MenuBg@2x.png */,
-				BCFECFC2146841A800BA20D9 /* radiocree@2x.png */,
-			);
-			path = gui;
-			sourceTree = "<group>";
-		};
-		BCFECFC3146841A800BA20D9 /* icons */ = {
-			isa = PBXGroup;
-			children = (
-				BCFECFC4146841A800BA20D9 /* bt-achat.png */,
-				BCFECFC5146841A800BA20D9 /* bt-aime.png */,
-				BCFECFC6146841A800BA20D9 /* bt-aimepas.png */,
-				BCFECFC7146841A800BA20D9 /* bt-ajouter.png */,
-				BCFECFC8146841A800BA20D9 /* bt-Skip.png */,
-				BCFECFC9146841A800BA20D9 /* BT-top1.png */,
-				BCFECFCA146841A800BA20D9 /* BT-top2.png */,
-				BCFECFCB146841A800BA20D9 /* BT-top3.png */,
-				BCFECFCC146841A800BA20D9 /* BT-top4.png */,
-				BCFECFCD146841A800BA20D9 /* BT-top5.png */,
-			);
-			path = icons;
 			sourceTree = "<group>";
 		};
 		BCFECFE31468439900BA20D9 /* Audio */ = {
@@ -935,45 +771,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC71F5E4147FEC6F00DAE4BD /* InfoPlist.strings in Resources */,
-				BC71F5E5147FEC6F00DAE4BD /* avatar1.png in Resources */,
-				BC71F5E6147FEC6F00DAE4BD /* avatar2.png in Resources */,
-				BC71F5E7147FEC6F00DAE4BD /* avatar3.png in Resources */,
-				BC71F5E8147FEC6F00DAE4BD /* bouton-envoyer.png in Resources */,
-				BC71F5E9147FEC6F00DAE4BD /* bouton-retour.png in Resources */,
-				BC71F5EA147FEC6F00DAE4BD /* fond-auditeurs.png in Resources */,
-				BC71F5EB147FEC6F00DAE4BD /* MenuBg@2x.png in Resources */,
-				BC71F5EC147FEC6F00DAE4BD /* radiocree@2x.png in Resources */,
-				BC71F5ED147FEC6F00DAE4BD /* bt-achat.png in Resources */,
-				BC71F5EE147FEC6F00DAE4BD /* bt-aime.png in Resources */,
-				BC71F5EF147FEC6F00DAE4BD /* bt-aimepas.png in Resources */,
-				BC71F5F0147FEC6F00DAE4BD /* bt-ajouter.png in Resources */,
-				BC71F5F1147FEC6F00DAE4BD /* bt-Skip.png in Resources */,
-				BC71F5F2147FEC6F00DAE4BD /* BT-top1.png in Resources */,
-				BC71F5F3147FEC6F00DAE4BD /* BT-top2.png in Resources */,
-				BC71F5F4147FEC6F00DAE4BD /* BT-top3.png in Resources */,
-				BC71F5F5147FEC6F00DAE4BD /* BT-top4.png in Resources */,
-				BC71F5F6147FEC6F00DAE4BD /* BT-top5.png in Resources */,
-				BC71F5F7147FEC6F00DAE4BD /* logo@2x.png in Resources */,
 				BC71F5F8147FEC6F00DAE4BD /* RadioCreatorViewController.xib in Resources */,
 				BC71F5FB147FEC6F00DAE4BD /* Default.png in Resources */,
 				BC71F5FC147FEC6F00DAE4BD /* Default@2x.png in Resources */,
 				BC71F5FD147FEC6F00DAE4BD /* icon.png in Resources */,
-				BC71F5FE147FEC6F00DAE4BD /* logo.png in Resources */,
-				BC71F5FF147FEC6F00DAE4BD /* CreateMyRadio_Down.png in Resources */,
-				BC71F600147FEC6F00DAE4BD /* CreateMyRadio_Down@2x.png in Resources */,
-				BC71F601147FEC6F00DAE4BD /* CreateMyRadio.png in Resources */,
-				BC71F602147FEC6F00DAE4BD /* CreateMyRadio@2x.png in Resources */,
-				BC71F603147FEC6F00DAE4BD /* avatar4.png in Resources */,
-				BC71F604147FEC6F00DAE4BD /* avatar5.png in Resources */,
-				BC71F605147FEC6F00DAE4BD /* avatar6.png in Resources */,
-				BC71F606147FEC6F00DAE4BD /* avatar7.png in Resources */,
-				BC71F607147FEC6F00DAE4BD /* avatar8.png in Resources */,
-				BC71F608147FEC6F00DAE4BD /* avatar9.png in Resources */,
-				BC71F609147FEC6F00DAE4BD /* avatar10.png in Resources */,
-				BC71F60A147FEC6F00DAE4BD /* avatar11.png in Resources */,
-				BC71F60B147FEC6F00DAE4BD /* avatar12.png in Resources */,
-				BC71F60C147FEC6F00DAE4BD /* avatar13.png in Resources */,
-				BC71F60D147FEC6F00DAE4BD /* avatar14.png in Resources */,
 				BC71F616147FEC6F00DAE4BD /* RadioSelectionViewController.xib in Resources */,
 				BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */,
 				BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */,
@@ -1008,14 +809,14 @@
 				BCF62DDC14839355001B1908 /* YasoundHeader.png in Resources */,
 				BCF62DDE14839355001B1908 /* YasoundHeader@2x.png in Resources */,
 				BCF62DE5148394F0001B1908 /* RadioSearchViewController.xib in Resources */,
-				BCB5F29B14854DA600C28B3D /* default.bundle in Resources */,
 				BCC408AF148D15F8001C02E4 /* bigRedButtonDown.png in Resources */,
 				BCC408B1148D15F8001C02E4 /* bigRedButtonDown@2x.png in Resources */,
 				BCC408B3148D15F8001C02E4 /* bigRedButtonUp.png in Resources */,
 				BCC408B5148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */,
-				BC93B4A2148E4ACC00A87157 /* jazz.bundle in Resources */,
 				BC93B4A9148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */,
 				BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
+				BCE4631F148FD89100422448 /* default.bundle in Resources */,
+				BCE46321148FD89100422448 /* jazz.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1024,45 +825,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5A9A3B81454DC0500EA374C /* InfoPlist.strings in Resources */,
-				BCFECFCF146841A800BA20D9 /* avatar1.png in Resources */,
-				BCFECFD0146841A800BA20D9 /* avatar2.png in Resources */,
-				BCFECFD1146841A800BA20D9 /* avatar3.png in Resources */,
-				BCFECFD2146841A800BA20D9 /* bouton-envoyer.png in Resources */,
-				BCFECFD3146841A800BA20D9 /* bouton-retour.png in Resources */,
-				BCFECFD5146841A800BA20D9 /* fond-auditeurs.png in Resources */,
-				BCFECFD6146841A800BA20D9 /* MenuBg@2x.png in Resources */,
-				BCFECFD7146841A800BA20D9 /* radiocree@2x.png in Resources */,
-				BCFECFD8146841A800BA20D9 /* bt-achat.png in Resources */,
-				BCFECFD9146841A800BA20D9 /* bt-aime.png in Resources */,
-				BCFECFDA146841A800BA20D9 /* bt-aimepas.png in Resources */,
-				BCFECFDB146841A800BA20D9 /* bt-ajouter.png in Resources */,
-				BCFECFDC146841A800BA20D9 /* bt-Skip.png in Resources */,
-				BCFECFDD146841A800BA20D9 /* BT-top1.png in Resources */,
-				BCFECFDE146841A800BA20D9 /* BT-top2.png in Resources */,
-				BCFECFDF146841A800BA20D9 /* BT-top3.png in Resources */,
-				BCFECFE0146841A800BA20D9 /* BT-top4.png in Resources */,
-				BCFECFE1146841A800BA20D9 /* BT-top5.png in Resources */,
-				BCFECFE2146841A800BA20D9 /* logo@2x.png in Resources */,
 				BCFED0021468439900BA20D9 /* RadioCreatorViewController.xib in Resources */,
 				BC943A5314688AE70031CE17 /* Default.png in Resources */,
 				BC943A5414688AE70031CE17 /* Default@2x.png in Resources */,
 				BC943A5514688AE70031CE17 /* icon.png in Resources */,
-				BCD4C2C9146962B1000A236A /* logo.png in Resources */,
-				BCD4C2CE14696E6E000A236A /* CreateMyRadio_Down.png in Resources */,
-				BCD4C2CF14696E6E000A236A /* CreateMyRadio_Down@2x.png in Resources */,
-				BCD4C2D014696E6E000A236A /* CreateMyRadio.png in Resources */,
-				BCD4C2D114696E6E000A236A /* CreateMyRadio@2x.png in Resources */,
-				401B010E146978B400A4B047 /* avatar4.png in Resources */,
-				401B010F146978B400A4B047 /* avatar5.png in Resources */,
-				401B0110146978B400A4B047 /* avatar6.png in Resources */,
-				401B0111146978B400A4B047 /* avatar7.png in Resources */,
-				401B0112146978B400A4B047 /* avatar8.png in Resources */,
-				401B0113146978B400A4B047 /* avatar9.png in Resources */,
-				401B0114146978B400A4B047 /* avatar10.png in Resources */,
-				401B0115146978B400A4B047 /* avatar11.png in Resources */,
-				401B0116146978B400A4B047 /* avatar12.png in Resources */,
-				401B0117146978B400A4B047 /* avatar13.png in Resources */,
-				401B0118146978B400A4B047 /* avatar14.png in Resources */,
 				BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */,
 				BC71F583147F979700DAE4BD /* Localizable.strings in Resources */,
 				BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */,
@@ -1097,14 +863,14 @@
 				BCF62DDB14839355001B1908 /* YasoundHeader.png in Resources */,
 				BCF62DDD14839355001B1908 /* YasoundHeader@2x.png in Resources */,
 				BCF62DE4148394F0001B1908 /* RadioSearchViewController.xib in Resources */,
-				BCB5F29A14854DA600C28B3D /* default.bundle in Resources */,
 				BCC408AE148D15F8001C02E4 /* bigRedButtonDown.png in Resources */,
 				BCC408B0148D15F8001C02E4 /* bigRedButtonDown@2x.png in Resources */,
 				BCC408B2148D15F8001C02E4 /* bigRedButtonUp.png in Resources */,
 				BCC408B4148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */,
-				BC93B4A1148E4ACC00A87157 /* jazz.bundle in Resources */,
 				BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */,
 				BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
+				BCE4631E148FD89100422448 /* default.bundle in Resources */,
+				BCE46320148FD89100422448 /* jazz.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
