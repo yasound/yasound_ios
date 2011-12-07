@@ -138,6 +138,10 @@
 		BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
 		BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
+		BCE46332148FDECB00422448 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE46330148FDECB00422448 /* LoginViewController.m */; };
+		BCE46333148FDECB00422448 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE46330148FDECB00422448 /* LoginViewController.m */; };
+		BCE46334148FDECB00422448 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE46331148FDECB00422448 /* LoginViewController.xib */; };
+		BCE46335148FDECB00422448 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE46331148FDECB00422448 /* LoginViewController.xib */; };
 		BCF62DBF14839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC014839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC114839355001B1908 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB014839355001B1908 /* categoryShadow@2x.png */; };
@@ -281,6 +285,9 @@
 		BCE4631D148FD89100422448 /* jazz.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = jazz.bundle; sourceTree = "<group>"; };
 		BCE46322148FD96300422448 /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
 		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
+		BCE4632F148FDECB00422448 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
+		BCE46330148FDECB00422448 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
+		BCE46331148FDECB00422448 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
 		BCF62DAF14839355001B1908 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
 		BCF62DB014839355001B1908 /* categoryShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "categoryShadow@2x.png"; path = "RadioSelection/categoryShadow@2x.png"; sourceTree = "<group>"; };
 		BCF62DB114839355001B1908 /* CellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundBlue.png; path = RadioSelection/CellBackgroundBlue.png; sourceTree = "<group>"; };
@@ -577,6 +584,16 @@
 			path = Themes;
 			sourceTree = "<group>";
 		};
+		BCE4632E148FDEA000422448 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BCE4632F148FDECB00422448 /* LoginViewController.h */,
+				BCE46330148FDECB00422448 /* LoginViewController.m */,
+				BCE46331148FDECB00422448 /* LoginViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +695,7 @@
 				BCFECFE31468439900BA20D9 /* Audio */,
 				BC0DD8381487C73E00DCD550 /* Model */,
 				BCFECFE61468439900BA20D9 /* Gui */,
+				BCE4632E148FDEA000422448 /* Login */,
 				BC71F595147FC10500DAE4BD /* My Yasound */,
 				BC5EE20E147D3EB300A282A5 /* Radio Selection */,
 				BCB41F4114863646008F3738 /* Theme */,
@@ -827,6 +845,7 @@
 				BCE46321148FD89100422448 /* jazz.bundle in Resources */,
 				BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
+				BCE46335148FDECB00422448 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +902,7 @@
 				BCE46320148FD89100422448 /* jazz.bundle in Resources */,
 				BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
+				BCE46334148FDECB00422448 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,6 +948,7 @@
 				BCC408A8148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
 				BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
 				BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
+				BCE46333148FDECB00422448 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -970,6 +991,7 @@
 				BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
 				BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
 				BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
+				BCE46332148FDECB00422448 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
