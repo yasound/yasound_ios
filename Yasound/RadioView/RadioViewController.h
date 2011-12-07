@@ -27,6 +27,9 @@
     UIFont* _messageFont;
     CGFloat _messageWidth;
     CGFloat _cellMinHeight;
+    
+    NSTimer* _timerUpdate;
+    NSTimer* _timerFake;
 }
 
 @property (nonatomic, retain) NSMutableArray* messages;

@@ -216,18 +216,7 @@
     [self.view addSubview:messageBar];
 
     
-    //....................................................................................
-    //
-    // data update timer
-    //
     [self onUpdate:nil];
-    [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
-
-    // LBDEBUG fake timer for status messages
-    [self onFakeUpdateStatus:nil];
-    [NSTimer scheduledTimerWithTimeInterval:3.f target:self selector:@selector(onFakeUpdateStatus:) userInfo:nil repeats:YES];
-
-
     
 }
 
@@ -239,12 +228,27 @@
 //  mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
 //  [mpStreamer retain];
 //  [mpStreamer start];
+    
+    //....................................................................................
+    //
+    // data update timer
+    //
+    _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];    
+
+    // LBDEBUG fake timer for status messages
+    [self onFakeUpdateStatus:nil];
+    _timerFake = [NSTimer scheduledTimerWithTimeInterval:3.f target:self selector:@selector(onFakeUpdateStatus:) userInfo:nil repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 //  [mpStreamer stop];
 //  [mpStreamer release];
+    
+    [_timerUpdate invalidate];
+    [_timerFake invalidate];
+    _timerUpdate = nil;
+    _timerFake = nil;
 }
 
 
