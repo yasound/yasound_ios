@@ -5,9 +5,9 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleName</key>
-	<string>yasound theme default</string>
+	<string>yasound theme blues</string>
 	<key>name</key>
-	<string>Default</string>
+	<string>Blues</string>
 	<key>stylesheet</key>
 	<dict>
 		<key>RadioViewHeader</key>

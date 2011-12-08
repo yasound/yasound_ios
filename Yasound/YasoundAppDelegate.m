@@ -7,8 +7,9 @@
 //
 
 #import "YasoundAppDelegate.h"
-#import "RadioTabBarController.h"
-#import "RadioViewController.h"
+//#import "RadioTabBarController.h"
+//#import "RadioViewController.h"
+#import "LoginViewController.h"
 
 
 
@@ -17,7 +18,8 @@
 
 @synthesize window;
 @synthesize navigationController;
-@synthesize tabBarController;
+//@synthesize tabBarController;
+@synthesize loginViewController;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -38,8 +40,11 @@
     /////////////////////////////////////////////////////////////////////
   
   // push the main view controller into the mavigationControler
-  tabBarController = [[RadioTabBarController alloc] init];
-  [self.navigationController pushViewController:self.tabBarController animated:YES];
+//  tabBarController = [[RadioTabBarController alloc] init];
+//  [self.navigationController pushViewController:self.tabBarController animated:YES];
+    
+    loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    [self.navigationController pushViewController:loginViewController animated:YES];
 
   return YES;
 }
