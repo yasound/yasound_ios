@@ -94,10 +94,20 @@
 		BC71F62F147FEC6F00DAE4BD /* avatarDummy4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AC147FE0A800DAE4BD /* avatarDummy4@2x.png */; };
 		BC71F630147FEC6F00DAE4BD /* avatarDummy5.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AD147FE0A800DAE4BD /* avatarDummy5.png */; };
 		BC71F631147FEC6F00DAE4BD /* avatarDummy5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AE147FE0A800DAE4BD /* avatarDummy5@2x.png */; };
-		BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
-		BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
-		BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
-		BC93B4A9148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
+		BC914AB51491818E00D5D7B4 /* blues.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AAF1491818E00D5D7B4 /* blues.icon.png */; };
+		BC914AB61491818E00D5D7B4 /* blues.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AAF1491818E00D5D7B4 /* blues.icon.png */; };
+		BC914AB71491818E00D5D7B4 /* blues.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AB01491818E00D5D7B4 /* blues.icon@2x.png */; };
+		BC914AB81491818E00D5D7B4 /* blues.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AB01491818E00D5D7B4 /* blues.icon@2x.png */; };
+		BC914ABD1491818E00D5D7B4 /* default.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AB31491818E00D5D7B4 /* default.icon.png */; };
+		BC914ABE1491818E00D5D7B4 /* default.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AB31491818E00D5D7B4 /* default.icon.png */; };
+		BC914ABF1491818E00D5D7B4 /* default.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AB41491818E00D5D7B4 /* default.icon@2x.png */; };
+		BC914AC01491818E00D5D7B4 /* default.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AB41491818E00D5D7B4 /* default.icon@2x.png */; };
+		BC914AC51491823D00D5D7B4 /* classic.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914AC21491823D00D5D7B4 /* classic.bundle */; };
+		BC914AC61491823D00D5D7B4 /* classic.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914AC21491823D00D5D7B4 /* classic.bundle */; };
+		BC914AC71491823D00D5D7B4 /* classic.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AC31491823D00D5D7B4 /* classic.icon.png */; };
+		BC914AC81491823D00D5D7B4 /* classic.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AC31491823D00D5D7B4 /* classic.icon.png */; };
+		BC914AC91491823D00D5D7B4 /* classic.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AC41491823D00D5D7B4 /* classic.icon@2x.png */; };
+		BC914ACA1491823D00D5D7B4 /* classic.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AC41491823D00D5D7B4 /* classic.icon@2x.png */; };
 		BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
@@ -170,6 +180,10 @@
 		BCE463681491250900422448 /* loginIconYasound.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463491491250900422448 /* loginIconYasound.png */; };
 		BCE463691491250900422448 /* loginIconYasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4634A1491250900422448 /* loginIconYasound@2x.png */; };
 		BCE4636A1491250900422448 /* loginIconYasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4634A1491250900422448 /* loginIconYasound@2x.png */; };
+		BCE463791491747F00422448 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE463771491747E00422448 /* ThemeSelectorViewController.m */; };
+		BCE4637A1491747F00422448 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE463771491747E00422448 /* ThemeSelectorViewController.m */; };
+		BCE4637B1491747F00422448 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE463781491747E00422448 /* ThemeSelectorViewController.xib */; };
+		BCE4637C1491747F00422448 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE463781491747E00422448 /* ThemeSelectorViewController.xib */; };
 		BCF62DBF14839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC014839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC114839355001B1908 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB014839355001B1908 /* categoryShadow@2x.png */; };
@@ -278,9 +292,13 @@
 		BC71F5AD147FE0A800DAE4BD /* avatarDummy5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatarDummy5.png; path = RadioSelection/avatarDummy/avatarDummy5.png; sourceTree = "<group>"; };
 		BC71F5AE147FE0A800DAE4BD /* avatarDummy5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatarDummy5@2x.png"; path = "RadioSelection/avatarDummy/avatarDummy5@2x.png"; sourceTree = "<group>"; };
 		BC71F635147FEC6F00DAE4BD /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC93B4A3148E686C00A87157 /* ThemeSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSelectorViewController.h; sourceTree = "<group>"; };
-		BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSelectorViewController.m; sourceTree = "<group>"; };
-		BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeSelectorViewController.xib; sourceTree = "<group>"; };
+		BC914AAF1491818E00D5D7B4 /* blues.icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blues.icon.png; sourceTree = "<group>"; };
+		BC914AB01491818E00D5D7B4 /* blues.icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blues.icon@2x.png"; sourceTree = "<group>"; };
+		BC914AB31491818E00D5D7B4 /* default.icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.icon.png; sourceTree = "<group>"; };
+		BC914AB41491818E00D5D7B4 /* default.icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default.icon@2x.png"; sourceTree = "<group>"; };
+		BC914AC21491823D00D5D7B4 /* classic.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = classic.bundle; sourceTree = "<group>"; };
+		BC914AC31491823D00D5D7B4 /* classic.icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classic.icon.png; sourceTree = "<group>"; };
+		BC914AC41491823D00D5D7B4 /* classic.icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "classic.icon@2x.png"; sourceTree = "<group>"; };
 		BC93B4AA148E68DE00A87157 /* StyleSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleSelectorViewController.h; sourceTree = "<group>"; };
 		BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleSelectorViewController.m; sourceTree = "<group>"; };
 		BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StyleSelectorViewController.xib; sourceTree = "<group>"; };
@@ -328,6 +346,9 @@
 		BCE463481491250900422448 /* loginIconTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIconTwitter@2x.png"; sourceTree = "<group>"; };
 		BCE463491491250900422448 /* loginIconYasound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIconYasound.png; sourceTree = "<group>"; };
 		BCE4634A1491250900422448 /* loginIconYasound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIconYasound@2x.png"; sourceTree = "<group>"; };
+		BCE463761491747E00422448 /* ThemeSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSelectorViewController.h; sourceTree = "<group>"; };
+		BCE463771491747E00422448 /* ThemeSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSelectorViewController.m; sourceTree = "<group>"; };
+		BCE463781491747E00422448 /* ThemeSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeSelectorViewController.xib; sourceTree = "<group>"; };
 		BCF62DAF14839355001B1908 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
 		BCF62DB014839355001B1908 /* categoryShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "categoryShadow@2x.png"; path = "RadioSelection/categoryShadow@2x.png"; sourceTree = "<group>"; };
 		BCF62DB114839355001B1908 /* CellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundBlue.png; path = RadioSelection/CellBackgroundBlue.png; sourceTree = "<group>"; };
@@ -615,6 +636,13 @@
 		BCE4631B148FD89100422448 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
+				BC914AC21491823D00D5D7B4 /* classic.bundle */,
+				BC914AC31491823D00D5D7B4 /* classic.icon.png */,
+				BC914AC41491823D00D5D7B4 /* classic.icon@2x.png */,
+				BC914AAF1491818E00D5D7B4 /* blues.icon.png */,
+				BC914AB01491818E00D5D7B4 /* blues.icon@2x.png */,
+				BC914AB31491818E00D5D7B4 /* default.icon.png */,
+				BC914AB41491818E00D5D7B4 /* default.icon@2x.png */,
 				BCE4631C148FD89100422448 /* default.bundle */,
 				BCE463361490F7F700422448 /* blues.bundle */,
 			);
@@ -696,12 +724,12 @@
 				BCFECFEA1468439900BA20D9 /* SlidingMenu.m */,
 				BCFECFEB1468439900BA20D9 /* Tile.h */,
 				BCFECFEC1468439900BA20D9 /* Tile.m */,
+				BCE463761491747E00422448 /* ThemeSelectorViewController.h */,
+				BCE463771491747E00422448 /* ThemeSelectorViewController.m */,
+				BCE463781491747E00422448 /* ThemeSelectorViewController.xib */,
 				BC93B4AA148E68DE00A87157 /* StyleSelectorViewController.h */,
 				BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */,
 				BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */,
-				BC93B4A3148E686C00A87157 /* ThemeSelectorViewController.h */,
-				BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */,
-				BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */,
 			);
 			path = Gui;
 			sourceTree = "<group>";
@@ -902,7 +930,6 @@
 				BCC408B1148D15F8001C02E4 /* bigRedButtonDown@2x.png in Resources */,
 				BCC408B3148D15F8001C02E4 /* bigRedButtonUp.png in Resources */,
 				BCC408B5148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */,
-				BC93B4A9148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */,
 				BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE4631F148FD89100422448 /* default.bundle in Resources */,
 				BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */,
@@ -925,6 +952,14 @@
 				BCE463661491250900422448 /* loginIconTwitter@2x.png in Resources */,
 				BCE463681491250900422448 /* loginIconYasound.png in Resources */,
 				BCE4636A1491250900422448 /* loginIconYasound@2x.png in Resources */,
+				BCE4637C1491747F00422448 /* ThemeSelectorViewController.xib in Resources */,
+				BC914AB61491818E00D5D7B4 /* blues.icon.png in Resources */,
+				BC914AB81491818E00D5D7B4 /* blues.icon@2x.png in Resources */,
+				BC914ABE1491818E00D5D7B4 /* default.icon.png in Resources */,
+				BC914AC01491818E00D5D7B4 /* default.icon@2x.png in Resources */,
+				BC914AC61491823D00D5D7B4 /* classic.bundle in Resources */,
+				BC914AC81491823D00D5D7B4 /* classic.icon.png in Resources */,
+				BC914ACA1491823D00D5D7B4 /* classic.icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -974,7 +1009,6 @@
 				BCC408B0148D15F8001C02E4 /* bigRedButtonDown@2x.png in Resources */,
 				BCC408B2148D15F8001C02E4 /* bigRedButtonUp.png in Resources */,
 				BCC408B4148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */,
-				BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */,
 				BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE4631E148FD89100422448 /* default.bundle in Resources */,
 				BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */,
@@ -997,6 +1031,14 @@
 				BCE463651491250900422448 /* loginIconTwitter@2x.png in Resources */,
 				BCE463671491250900422448 /* loginIconYasound.png in Resources */,
 				BCE463691491250900422448 /* loginIconYasound@2x.png in Resources */,
+				BCE4637B1491747F00422448 /* ThemeSelectorViewController.xib in Resources */,
+				BC914AB51491818E00D5D7B4 /* blues.icon.png in Resources */,
+				BC914AB71491818E00D5D7B4 /* blues.icon@2x.png in Resources */,
+				BC914ABD1491818E00D5D7B4 /* default.icon.png in Resources */,
+				BC914ABF1491818E00D5D7B4 /* default.icon@2x.png in Resources */,
+				BC914AC51491823D00D5D7B4 /* classic.bundle in Resources */,
+				BC914AC71491823D00D5D7B4 /* classic.icon.png in Resources */,
+				BC914AC91491823D00D5D7B4 /* classic.icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1038,9 +1080,9 @@
 				BCB41F6F14892350008F3738 /* Track.m in Sources */,
 				BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */,
 				BCC408A8148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
-				BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
 				BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
 				BCE46333148FDECB00422448 /* LoginViewController.m in Sources */,
+				BCE4637A1491747F00422448 /* ThemeSelectorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1079,9 +1121,9 @@
 				BCB41F6E14892350008F3738 /* Track.m in Sources */,
 				BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */,
 				BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
-				BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
 				BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
 				BCE46332148FDECB00422448 /* LoginViewController.m in Sources */,
+				BCE463791491747F00422448 /* ThemeSelectorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
