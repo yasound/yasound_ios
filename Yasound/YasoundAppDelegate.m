@@ -10,7 +10,10 @@
 #import "RadioTabBarController.h"
 #import "RadioViewController.h"
 
-
+//#FIXME: MatTest
+#import "Communicator.h"
+#import "Radio.h"
+#import "WallEvent.h"
 
 @implementation YasoundAppDelegate
 
@@ -40,6 +43,25 @@
   // push the main view controller into the mavigationControler
   tabBarController = [[RadioTabBarController alloc] init];
   [self.navigationController pushViewController:self.tabBarController animated:YES];
+  
+  
+  
+  //#FIXME: MatTest
+  Communicator* communicator = [[Communicator alloc] initWithBaseURL:@"http://127.0.0.1:8000/api/v1"];
+  
+  [communicator mapResourcePath:@"radio" toObject:[Radio class]];
+  
+//  Radio* r = [communicator getObjectWithClass:[Radio class] andID:[NSNumber numberWithInt:1]];
+
+//  Radio* r = [communicator getObjectWithClass:[Radio class] withURL:@"radio/1/" absolute:NO];
+//  NSLog(@"%@", [r toString]);
+  
+  NSArray* wallevents = [communicator getObjectsWithClass:[WallEvent class] withURL:@"radio/1/wall" absolute:NO];
+  if ([wallevents count] > 0)
+  {
+    WallEvent* w = [wallevents objectAtIndex:0];
+    NSLog(@"%@", [w toString]);
+  }
 
   return YES;
 }

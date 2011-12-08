@@ -29,6 +29,12 @@
 - (void)updateObject:(Model*)obj;
 - (void)deleteObject:(Model*)obj;
 
+- (NSArray*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
+- (id)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
+- (void)postNewObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
+- (void)updateObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
+- (void)deleteObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
+
 
 #pragma mark - asynchronous requests
 - (void)getObjectsWithClass:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector;
@@ -36,5 +42,11 @@
 - (void)postNewObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector;
 - (void)updateObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector;
 - (void)deleteObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector;
+
+- (void)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector;
+- (void)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector;
+- (void)postNewObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector;
+- (void)updateObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector;
+- (void)deleteObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector;
 
 @end

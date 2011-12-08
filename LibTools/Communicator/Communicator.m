@@ -12,6 +12,12 @@
 #import "Container.h"
 
 @interface Communicator (Communicator_internal)
+- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute;
+- (ASIHTTPRequest*)getRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute;
+- (ASIHTTPRequest*)postRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute;
+- (ASIHTTPRequest*)putRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute;
+- (ASIHTTPRequest*)deleteRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute;
+
 - (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass;
 - (ASIHTTPRequest*)getRequestForObjectWithClass:(Class)objectClass andID:(NSNumber*)ID;
 - (ASIHTTPRequest*)postRequestForObject:(Model*)obj;
@@ -45,11 +51,15 @@
 }
 
 
-#pragma mark -  synchronous requests
 
-- (NSArray*)getObjectsWithClass:(Class)objectClass
+
+
+
+
+#pragma mark - synchronous tools
+
+- (NSArray*)getObjectsWithRequest:(ASIHTTPRequest*)req andClass:(Class)objectClass
 {
-  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass];
   if (!req)
     return nil;
   
@@ -66,9 +76,8 @@
   return objects;
 }
 
-- (id)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID
+- (id)getObjectWithRequest:(ASIHTTPRequest*)req andClass:(Class)objectClass
 {
-  ASIHTTPRequest* req = [self getRequestForObjectWithClass:objectClass andID:ID];
   if (!req)
     return nil;
   
@@ -82,32 +91,98 @@
   return obj;
 }
 
+- (void)startPostRequest:(ASIHTTPRequest*)req
+{
+  if (!req)
+    return;
+  [req startSynchronous]; 
+}
+
+- (void)startPutRequest:(ASIHTTPRequest*)req
+{
+  if (!req)
+    return;
+  [req startSynchronous]; 
+}
+
+- (void)startDeleteRequest:(ASIHTTPRequest*)req
+{
+  if (!req)
+    return;
+  [req startSynchronous]; 
+}
+
+
+#pragma mark -  synchronous requests
+- (NSArray*)getObjectsWithClass:(Class)objectClass
+{
+  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass];
+  NSArray* objects = [self getObjectsWithRequest:req andClass:objectClass];
+  return objects;
+}
+
+- (id)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID
+{
+  ASIHTTPRequest* req = [self getRequestForObjectWithClass:objectClass andID:ID];
+  id obj = [self getObjectWithRequest:req andClass:objectClass];
+  return obj;
+}
+
 - (void)postNewObject:(Model*)obj
 {
   ASIHTTPRequest* req = [self postRequestForObject:obj];
-  if (!req)
-    return;
-  [req startSynchronous];  
+  [self startPostRequest:req];
 }
 
 - (void)updateObject:(Model*)obj
 {
   ASIHTTPRequest* req = [self putRequestForObject:obj];
-  if (!req)
-    return;
-  [req startSynchronous];
+  [self startPutRequest:req];
 }
 
 - (void)deleteObject:(Model*)obj
 {
   ASIHTTPRequest* req = [self deleteRequestForObject:obj];
-  if (!req)
-    return;
-  [req startSynchronous];
+  [self startDeleteRequest:req];
 }
 
-#pragma mark - asynchronous requests
 
+#pragma mark - synchronous requests with URL
+- (NSArray*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
+{
+  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute];
+  NSArray* objects = [self getObjectsWithRequest:req andClass:objectClass];
+  return objects;
+}
+
+- (id)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
+{
+  ASIHTTPRequest* req = [self getRequestForObjectWithURL:url absolute:absolute];
+  id obj = [self getObjectWithRequest:req andClass:objectClass];
+  return obj;
+}
+
+- (void)postNewObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
+{
+  ASIHTTPRequest* req = [self postRequestForObject:obj withURL:url absolute:absolute];
+  [self startPostRequest:req];  
+}
+
+- (void)updateObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
+{
+  ASIHTTPRequest* req = [self putRequestForObject:obj withURL:url absolute:absolute];
+  [self startPutRequest:req];
+}
+
+- (void)deleteObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
+{
+  ASIHTTPRequest* req = [self deleteRequestForObjectWithURL:url absolute:absolute];
+  [self startDeleteRequest:req];
+}
+
+
+
+#pragma mark - asynchronous tools
 - (void)notifytarget:(id)target byCalling:(SEL)selector withObject:(id)obj andSuccess:(BOOL)succeeded
 {
   NSError* err = nil;
@@ -118,10 +193,8 @@
 }
 
 
-// GET_ALL
-- (void)getObjectsWithClass:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector
+- (void)getObjectsWithRequest:(ASIHTTPRequest*)req class:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector
 {
-  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass];
   if (!req)
     [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
   
@@ -132,10 +205,8 @@
   [req startAsynchronous];
 }
 
-// GET
-- (void)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID notifyTarget:(id)target byCalling:(SEL)selector
+- (void)getObjectWithRequest:(ASIHTTPRequest*)req class:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector
 {
-  ASIHTTPRequest* req = [self getRequestForObjectWithClass:objectClass andID:ID];
   if (!req)
     [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
   
@@ -146,10 +217,8 @@
   [req startAsynchronous];
 }
 
-// POST
-- (void)postNewObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
+- (void)postNewObject:(Model*)obj withRequest:(ASIHTTPRequest*)req notifyTarget:(id)target byCalling:(SEL)selector
 {
-  ASIHTTPRequest* req = [self postRequestForObject:obj];
   if (!req)
     [self notifytarget:target byCalling:selector withObject:obj andSuccess:NO];
   
@@ -160,10 +229,8 @@
   [req startAsynchronous];
 }
 
-// PUT
-- (void)updateObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
+- (void)updateObject:(Model*)obj withRequest:(ASIHTTPRequest*)req notifyTarget:(id)target byCalling:(SEL)selector
 {
-  ASIHTTPRequest* req = [self putRequestForObject:obj];
   if (!req)
     [self notifytarget:target byCalling:selector withObject:obj andSuccess:NO];
   
@@ -174,10 +241,8 @@
   [req startAsynchronous];
 }
 
-// DELETE
-- (void)deleteObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
+- (void)deleteObject:(Model*)obj withRequest:(ASIHTTPRequest*)req notifyTarget:(id)target byCalling:(SEL)selector
 {
-  ASIHTTPRequest* req = [self deleteRequestForObject:obj];
   if (!req)
     [self notifytarget:target byCalling:selector withObject:obj andSuccess:NO];
   
@@ -186,6 +251,68 @@
   
   req.delegate = self;
   [req startAsynchronous];
+}
+
+#pragma mark - asynchronous requests
+- (void)getObjectsWithClass:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector
+{
+  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass];
+  [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector];
+}
+
+- (void)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID notifyTarget:(id)target byCalling:(SEL)selector
+{
+  ASIHTTPRequest* req = [self getRequestForObjectWithClass:objectClass andID:ID];
+  [self getObjectWithRequest:req class:objectClass notifyTarget:target byCalling:selector];
+}
+
+- (void)postNewObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
+{
+  ASIHTTPRequest* req = [self postRequestForObject:obj];
+  [self postNewObject:obj withRequest:req notifyTarget:target byCalling:selector];
+}
+
+- (void)updateObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
+{
+  ASIHTTPRequest* req = [self putRequestForObject:obj];
+  [self updateObject:obj withRequest:req notifyTarget:target byCalling:selector];
+}
+
+- (void)deleteObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
+{
+  ASIHTTPRequest* req = [self deleteRequestForObject:obj];
+  [self deleteObject:obj withRequest:req notifyTarget:target byCalling:selector];
+}
+
+#pragma mark - asynchronous requests with url
+- (void)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector
+{
+  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute];
+  [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector];
+}
+
+- (void)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector
+{
+  ASIHTTPRequest* req = [self getRequestForObjectWithURL:url absolute:absolute];
+  [self getObjectWithRequest:req class:objectClass notifyTarget:target byCalling:selector];
+}
+
+- (void)postNewObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector
+{
+  ASIHTTPRequest* req = [self postRequestForObject:obj withURL:url absolute:absolute];
+  [self postNewObject:obj withRequest:req notifyTarget:target byCalling:selector];
+}
+
+- (void)updateObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector
+{
+  ASIHTTPRequest* req = [self putRequestForObject:obj withURL:url absolute:absolute];
+  [self updateObject:obj withRequest:req notifyTarget:target byCalling:selector];
+}
+
+- (void)deleteObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector
+{
+  ASIHTTPRequest* req = [self deleteRequestForObjectWithURL:url absolute:absolute];
+  [self deleteObject:obj withRequest:req notifyTarget:target byCalling:selector];
 }
 
 
@@ -336,14 +463,16 @@
 
 @implementation Communicator (Communicator_internal)
 
-- (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass
+- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute
 {
-  NSString* path = [_mapping objectForKey:objectClass];
-  if (!path)
-    return nil;
-  
-  NSURL* url = [NSURL URLWithString:_baseURL];
-  url = [url URLByAppendingPathComponent:path];
+  NSURL* url;
+  if (isAbsolute)
+    url = [NSURL URLWithString:path];
+  else
+  {
+    url = [NSURL URLWithString:_baseURL];
+    url = [url URLByAppendingPathComponent:path];
+  }
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.requestMethod = @"GET";
@@ -352,16 +481,16 @@
   return req;
 }
 
-- (ASIHTTPRequest*)getRequestForObjectWithClass:(Class)objectClass andID:(NSNumber*)ID
+- (ASIHTTPRequest*)getRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute
 {
-  NSString* path = [_mapping objectForKey:objectClass];
-  if (!path)
-    return nil;
-  
-  NSURL* url = [NSURL URLWithString:_baseURL];
-  url = [url URLByAppendingPathComponent:path];
-  
-  url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@/", ID]];
+  NSURL* url;
+  if (isAbsolute)
+    url = [NSURL URLWithString:path];
+  else
+  {
+    url = [NSURL URLWithString:_baseURL];
+    url = [url URLByAppendingPathComponent:path];
+  }
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.requestMethod = @"GET";
@@ -370,23 +499,24 @@
   return req;
 }
 
-- (ASIHTTPRequest*)postRequestForObject:(Model*)obj
+
+- (ASIHTTPRequest*)postRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute
 {
   if (!obj)
-    return nil;
-  
-  NSString* path = [_mapping objectForKey:[obj class]];
-  if (!path)
     return nil;
   
   NSString* jsonDesc = [obj JSONRepresentation];
   if (!jsonDesc)
     return nil;
   
-  NSURL* url = [NSURL URLWithString:_baseURL];
-  
-  path = [path stringByAppendingString:@"/"];
-  url = [url URLByAppendingPathComponent:path];
+  NSURL* url;
+  if (isAbsolute)
+    url = [NSURL URLWithString:path];
+  else
+  {
+    url = [NSURL URLWithString:_baseURL];
+    url = [url URLByAppendingPathComponent:path];
+  }
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.requestMethod = @"POST";
@@ -398,22 +528,24 @@
   return req;
 }
 
-- (ASIHTTPRequest*)putRequestForObject:(Model*)obj
+
+- (ASIHTTPRequest*)putRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute
 {
   if (!obj)
-    return nil;
-  
-  NSString* path = [_mapping objectForKey:[obj class]];
-  if (!path)
     return nil;
   
   NSString* jsonDesc = [obj JSONRepresentation];
   if (!jsonDesc)
     return nil;
   
-  NSURL* url = [NSURL URLWithString:_baseURL];
-  url = [url URLByAppendingPathComponent:path];
-  url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@/", obj.id]];
+  NSURL* url;
+  if (isAbsolute)
+    url = [NSURL URLWithString:path];
+  else
+  {
+    url = [NSURL URLWithString:_baseURL];
+    url = [url URLByAppendingPathComponent:path];
+  }
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.requestMethod = @"PUT";
@@ -422,6 +554,91 @@
   
   [req appendPostData:[jsonDesc dataUsingEncoding:NSUTF8StringEncoding]];
   
+  return req;
+}
+
+- (ASIHTTPRequest*)deleteRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute
+{
+  NSURL* url;
+  if (isAbsolute)
+    url = [NSURL URLWithString:path];
+  else
+  {
+    url = [NSURL URLWithString:_baseURL];
+    url = [url URLByAppendingPathComponent:path];
+  }
+  
+  ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
+  req.requestMethod = @"DELETE";
+  [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
+  [req addRequestHeader:@"Content-Type" value:@"application/json"];
+  
+  return req;
+}
+
+
+//////////////////////////////
+
+
+
+
+
+
+
+
+
+- (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass
+{
+  NSString* path = [_mapping objectForKey:objectClass];
+  if (!path)
+    return nil;
+  
+  NSURL* url = [NSURL URLWithString:_baseURL];
+  url = [url URLByAppendingPathComponent:path];
+  
+  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:[url absoluteString] absolute:YES];  
+  return req;
+}
+
+- (ASIHTTPRequest*)getRequestForObjectWithClass:(Class)objectClass andID:(NSNumber*)ID
+{
+  NSString* path = [_mapping objectForKey:objectClass];
+  if (!path)
+    return nil;
+  
+  NSURL* url = [NSURL URLWithString:_baseURL];
+  url = [url URLByAppendingPathComponent:path];
+  url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@/", ID]];
+  
+  ASIHTTPRequest* req = [self getRequestForObjectWithURL:[url absoluteString] absolute:YES];
+  return req;
+}
+
+- (ASIHTTPRequest*)postRequestForObject:(Model*)obj
+{
+  NSString* path = [_mapping objectForKey:[obj class]];
+  if (!path)
+    return nil;
+  
+  NSURL* url = [NSURL URLWithString:_baseURL];
+  path = [path stringByAppendingString:@"/"];
+  url = [url URLByAppendingPathComponent:path];
+  
+  ASIHTTPRequest* req = [self postRequestForObject:obj withURL:[url absoluteString] absolute:YES];
+  return req;
+}
+
+- (ASIHTTPRequest*)putRequestForObject:(Model*)obj
+{
+  NSString* path = [_mapping objectForKey:[obj class]];
+  if (!path)
+    return nil;
+  
+  NSURL* url = [NSURL URLWithString:_baseURL];
+  url = [url URLByAppendingPathComponent:path];
+  url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@/", obj.id]];
+  
+  ASIHTTPRequest* req = [self putRequestForObject:obj withURL:[url absoluteString] absolute:YES];
   return req;
 }
 
@@ -438,11 +655,7 @@
   url = [url URLByAppendingPathComponent:path];
   url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@/", obj.id]];
   
-  ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
-  req.requestMethod = @"DELETE";
-  [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
-  [req addRequestHeader:@"Content-Type" value:@"application/json"];
-  
+  ASIHTTPRequest* req = [self deleteRequestForObjectWithURL:[url absoluteString] absolute:YES];
   return req;
 }
 
