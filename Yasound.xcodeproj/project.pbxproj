@@ -142,6 +142,38 @@
 		BCE46335148FDECB00422448 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE46331148FDECB00422448 /* LoginViewController.xib */; };
 		BCE463371490F7F700422448 /* blues.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE463361490F7F700422448 /* blues.bundle */; };
 		BCE463381490F7F700422448 /* blues.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE463361490F7F700422448 /* blues.bundle */; };
+		BCE4634B1491250900422448 /* btnAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633A1491250900422448 /* btnAdd.png */; };
+		BCE4634C1491250900422448 /* btnAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633A1491250900422448 /* btnAdd.png */; };
+		BCE4634D1491250900422448 /* btnAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633B1491250900422448 /* btnAdd@2x.png */; };
+		BCE4634E1491250900422448 /* btnAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633B1491250900422448 /* btnAdd@2x.png */; };
+		BCE4634F1491250900422448 /* btnBuy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633C1491250900422448 /* btnBuy.png */; };
+		BCE463501491250900422448 /* btnBuy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633C1491250900422448 /* btnBuy.png */; };
+		BCE463511491250900422448 /* btnBuy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633D1491250900422448 /* btnBuy@2x.png */; };
+		BCE463521491250900422448 /* btnBuy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633D1491250900422448 /* btnBuy@2x.png */; };
+		BCE463531491250900422448 /* btnDislike.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633E1491250900422448 /* btnDislike.png */; };
+		BCE463541491250900422448 /* btnDislike.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633E1491250900422448 /* btnDislike.png */; };
+		BCE463551491250900422448 /* btnDislike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633F1491250900422448 /* btnDislike@2x.png */; };
+		BCE463561491250900422448 /* btnDislike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4633F1491250900422448 /* btnDislike@2x.png */; };
+		BCE463571491250900422448 /* btnLike.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463401491250900422448 /* btnLike.png */; };
+		BCE463581491250900422448 /* btnLike.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463401491250900422448 /* btnLike.png */; };
+		BCE463591491250900422448 /* btnLike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463411491250900422448 /* btnLike@2x.png */; };
+		BCE4635A1491250900422448 /* btnLike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463411491250900422448 /* btnLike@2x.png */; };
+		BCE4635B1491250900422448 /* btnShare.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463421491250900422448 /* btnShare.png */; };
+		BCE4635C1491250900422448 /* btnShare.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463421491250900422448 /* btnShare.png */; };
+		BCE4635D1491250900422448 /* btnShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463431491250900422448 /* btnShare@2x.png */; };
+		BCE4635E1491250900422448 /* btnShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463431491250900422448 /* btnShare@2x.png */; };
+		BCE4635F1491250900422448 /* loginIconFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463451491250900422448 /* loginIconFacebook.png */; };
+		BCE463601491250900422448 /* loginIconFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463451491250900422448 /* loginIconFacebook.png */; };
+		BCE463611491250900422448 /* loginIconFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463461491250900422448 /* loginIconFacebook@2x.png */; };
+		BCE463621491250900422448 /* loginIconFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463461491250900422448 /* loginIconFacebook@2x.png */; };
+		BCE463631491250900422448 /* loginIconTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463471491250900422448 /* loginIconTwitter.png */; };
+		BCE463641491250900422448 /* loginIconTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463471491250900422448 /* loginIconTwitter.png */; };
+		BCE463651491250900422448 /* loginIconTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463481491250900422448 /* loginIconTwitter@2x.png */; };
+		BCE463661491250900422448 /* loginIconTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463481491250900422448 /* loginIconTwitter@2x.png */; };
+		BCE463671491250900422448 /* loginIconYasound.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463491491250900422448 /* loginIconYasound.png */; };
+		BCE463681491250900422448 /* loginIconYasound.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE463491491250900422448 /* loginIconYasound.png */; };
+		BCE463691491250900422448 /* loginIconYasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4634A1491250900422448 /* loginIconYasound@2x.png */; };
+		BCE4636A1491250900422448 /* loginIconYasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE4634A1491250900422448 /* loginIconYasound@2x.png */; };
 		BCF62DBF14839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC014839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC114839355001B1908 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB014839355001B1908 /* categoryShadow@2x.png */; };
@@ -288,6 +320,22 @@
 		BCE46330148FDECB00422448 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
 		BCE46331148FDECB00422448 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
 		BCE463361490F7F700422448 /* blues.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = blues.bundle; sourceTree = "<group>"; };
+		BCE4633A1491250900422448 /* btnAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnAdd.png; sourceTree = "<group>"; };
+		BCE4633B1491250900422448 /* btnAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnAdd@2x.png"; sourceTree = "<group>"; };
+		BCE4633C1491250900422448 /* btnBuy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnBuy.png; sourceTree = "<group>"; };
+		BCE4633D1491250900422448 /* btnBuy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnBuy@2x.png"; sourceTree = "<group>"; };
+		BCE4633E1491250900422448 /* btnDislike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnDislike.png; sourceTree = "<group>"; };
+		BCE4633F1491250900422448 /* btnDislike@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnDislike@2x.png"; sourceTree = "<group>"; };
+		BCE463401491250900422448 /* btnLike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnLike.png; sourceTree = "<group>"; };
+		BCE463411491250900422448 /* btnLike@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnLike@2x.png"; sourceTree = "<group>"; };
+		BCE463421491250900422448 /* btnShare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnShare.png; sourceTree = "<group>"; };
+		BCE463431491250900422448 /* btnShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnShare@2x.png"; sourceTree = "<group>"; };
+		BCE463451491250900422448 /* loginIconFacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIconFacebook.png; sourceTree = "<group>"; };
+		BCE463461491250900422448 /* loginIconFacebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIconFacebook@2x.png"; sourceTree = "<group>"; };
+		BCE463471491250900422448 /* loginIconTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIconTwitter.png; sourceTree = "<group>"; };
+		BCE463481491250900422448 /* loginIconTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIconTwitter@2x.png"; sourceTree = "<group>"; };
+		BCE463491491250900422448 /* loginIconYasound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIconYasound.png; sourceTree = "<group>"; };
+		BCE4634A1491250900422448 /* loginIconYasound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIconYasound@2x.png"; sourceTree = "<group>"; };
 		BCF62DAF14839355001B1908 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
 		BCF62DB014839355001B1908 /* categoryShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "categoryShadow@2x.png"; path = "RadioSelection/categoryShadow@2x.png"; sourceTree = "<group>"; };
 		BCF62DB114839355001B1908 /* CellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundBlue.png; path = RadioSelection/CellBackgroundBlue.png; sourceTree = "<group>"; };
@@ -594,9 +642,41 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		BCE463391491250900422448 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				BCE4633A1491250900422448 /* btnAdd.png */,
+				BCE4633B1491250900422448 /* btnAdd@2x.png */,
+				BCE4633C1491250900422448 /* btnBuy.png */,
+				BCE4633D1491250900422448 /* btnBuy@2x.png */,
+				BCE4633E1491250900422448 /* btnDislike.png */,
+				BCE4633F1491250900422448 /* btnDislike@2x.png */,
+				BCE463401491250900422448 /* btnLike.png */,
+				BCE463411491250900422448 /* btnLike@2x.png */,
+				BCE463421491250900422448 /* btnShare.png */,
+				BCE463431491250900422448 /* btnShare@2x.png */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		BCE463441491250900422448 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BCE463451491250900422448 /* loginIconFacebook.png */,
+				BCE463461491250900422448 /* loginIconFacebook@2x.png */,
+				BCE463471491250900422448 /* loginIconTwitter.png */,
+				BCE463481491250900422448 /* loginIconTwitter@2x.png */,
+				BCE463491491250900422448 /* loginIconYasound.png */,
+				BCE4634A1491250900422448 /* loginIconYasound@2x.png */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCE463391491250900422448 /* Buttons */,
+				BCE463441491250900422448 /* Login */,
 				BCE4631B148FD89100422448 /* Themes */,
 				BCC408A9148D15F8001C02E4 /* MyYasound */,
 				BC5EE217147D427100A282A5 /* RadioSelection */,
@@ -846,6 +926,22 @@
 				BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
 				BCE46335148FDECB00422448 /* LoginViewController.xib in Resources */,
 				BCE463381490F7F700422448 /* blues.bundle in Resources */,
+				BCE4634C1491250900422448 /* btnAdd.png in Resources */,
+				BCE4634E1491250900422448 /* btnAdd@2x.png in Resources */,
+				BCE463501491250900422448 /* btnBuy.png in Resources */,
+				BCE463521491250900422448 /* btnBuy@2x.png in Resources */,
+				BCE463541491250900422448 /* btnDislike.png in Resources */,
+				BCE463561491250900422448 /* btnDislike@2x.png in Resources */,
+				BCE463581491250900422448 /* btnLike.png in Resources */,
+				BCE4635A1491250900422448 /* btnLike@2x.png in Resources */,
+				BCE4635C1491250900422448 /* btnShare.png in Resources */,
+				BCE4635E1491250900422448 /* btnShare@2x.png in Resources */,
+				BCE463601491250900422448 /* loginIconFacebook.png in Resources */,
+				BCE463621491250900422448 /* loginIconFacebook@2x.png in Resources */,
+				BCE463641491250900422448 /* loginIconTwitter.png in Resources */,
+				BCE463661491250900422448 /* loginIconTwitter@2x.png in Resources */,
+				BCE463681491250900422448 /* loginIconYasound.png in Resources */,
+				BCE4636A1491250900422448 /* loginIconYasound@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,6 +999,22 @@
 				BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
 				BCE46334148FDECB00422448 /* LoginViewController.xib in Resources */,
 				BCE463371490F7F700422448 /* blues.bundle in Resources */,
+				BCE4634B1491250900422448 /* btnAdd.png in Resources */,
+				BCE4634D1491250900422448 /* btnAdd@2x.png in Resources */,
+				BCE4634F1491250900422448 /* btnBuy.png in Resources */,
+				BCE463511491250900422448 /* btnBuy@2x.png in Resources */,
+				BCE463531491250900422448 /* btnDislike.png in Resources */,
+				BCE463551491250900422448 /* btnDislike@2x.png in Resources */,
+				BCE463571491250900422448 /* btnLike.png in Resources */,
+				BCE463591491250900422448 /* btnLike@2x.png in Resources */,
+				BCE4635B1491250900422448 /* btnShare.png in Resources */,
+				BCE4635D1491250900422448 /* btnShare@2x.png in Resources */,
+				BCE4635F1491250900422448 /* loginIconFacebook.png in Resources */,
+				BCE463611491250900422448 /* loginIconFacebook@2x.png in Resources */,
+				BCE463631491250900422448 /* loginIconTwitter.png in Resources */,
+				BCE463651491250900422448 /* loginIconTwitter@2x.png in Resources */,
+				BCE463671491250900422448 /* loginIconYasound.png in Resources */,
+				BCE463691491250900422448 /* loginIconYasound@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1035,7 +1147,7 @@
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = YasoundD;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1050,7 +1162,7 @@
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = YasoundD;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1108,7 +1220,7 @@
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1123,7 +1235,7 @@
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
