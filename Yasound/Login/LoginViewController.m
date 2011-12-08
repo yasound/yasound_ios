@@ -7,6 +7,9 @@
 //
 
 #import "LoginViewController.h"
+#import "RadioTabBarController.h"
+
+
 
 @implementation LoginViewController
 
@@ -90,6 +93,7 @@
         case 0: 
         {
             cell.textLabel.text = NSLocalizedString(@"login_facebook", nil);
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             [cell.imageView setImage:[UIImage imageNamed:@"loginIconFacebook.png"]];
             break;
         }
@@ -97,6 +101,7 @@
         case 1: 
         {
             cell.textLabel.text = NSLocalizedString(@"login_twitter", nil);
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             [cell.imageView setImage:[UIImage imageNamed:@"loginIconTwitter.png"]];
             break;
         }
@@ -104,6 +109,7 @@
         case 2: 
         {
             cell.textLabel.text = NSLocalizedString(@"login_yasound", nil);
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             [cell.imageView setImage:[UIImage imageNamed:@"loginIconYasound.png"]];
             break;
         }
@@ -115,11 +121,10 @@
 
 
 
-- (void)didSelectInSelectionTableViewRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    RadioViewController* view = [[RadioViewController alloc] init];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
+    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
+    [self.navigationController pushViewController:tabBarController animated:YES];
 }
 
 
