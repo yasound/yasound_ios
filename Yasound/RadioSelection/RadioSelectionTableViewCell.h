@@ -28,6 +28,5 @@
 @property (nonatomic, retain) UIImageView* radioAvatarMask;
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex data:(NSDictionary*)data;
 
 @end

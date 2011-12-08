@@ -22,9 +22,12 @@
 
 
 
-@interface BundleFileManager : NSObject
+@interface BundleFileManager : NSBundle
 {
-  NSDictionary* _stylesheet;
+//    NSDictionary* _stylesheetDictionnary;
+//    NSMutableDictionary* _stylesheets;
+
+    
 
 #ifdef OPENGL_SPRITE
   NSDictionary* _animsheet;
@@ -32,7 +35,8 @@
 #endif
 }
 
-@property (nonatomic, retain) NSDictionary* stylesheet;
+@property (nonatomic, retain) NSDictionary* stylesheetDictionnary;
+@property (nonatomic, retain, readonly) NSMutableDictionary* stylesheets;
 
 #ifdef OPENGL_SPRITE
 @property (nonatomic, retain) NSDictionary* animsheet;
@@ -40,9 +44,13 @@
 #endif
 
 
-
 + (BundleFileManager*) main;
 
+- (id)initWithPath:(NSString *)path;
+
+
+//- (void)staticOptimInit;
+//- (void)staticOptimUninit;
 
 //+ (BundleFileManager*)bundleWithPath:(NSString*)path;
 
@@ -90,6 +98,11 @@
 // read info from the stylesheet entry from the bundle info.plist,
 // load the corresponding image and build associated frame.
 - (BundleStylesheet*) stylesheetForKey:(NSString*)key error:(NSError **)anError;
+
+// special version of the stylesheet getter.
+// - retainStylesheet : if YES, keeps the stylesheet in the static stylesheets dictionnary. useful when you have multiple access to the stylesheet, and you don't want to parse the stylesheet definition each time
+// - overwriteStylesheet : if YES, and if the stylesheet is in the static stylesheets dictionnary already, force the parsing and overwrite the existing stylesheet
+- (BundleStylesheet*) stylesheetForKey:(NSString*)key retainStylesheet:(BOOL)retainStylesheet overwriteStylesheet:(BOOL)overwriteStylesheet error:(NSError **)anError;
 
 
 

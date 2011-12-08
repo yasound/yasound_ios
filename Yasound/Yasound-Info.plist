@@ -30,22 +30,232 @@
 	<string>MainWindow</string>
 	<key>Resources</key>
 	<dict>
+		<key>fakeUsers</key>
+		<array>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>image</key>
+				<string>avatarDummy.png</string>
+				<key>likes</key>
+				<integer>124</integer>
+				<key>listeners</key>
+				<integer>29</integer>
+				<key>subtitle1</key>
+				<string>Fantastic Plastic Machine</string>
+				<key>subtitle2</key>
+				<string>Bossa for Jackie (Summer Review)</string>
+				<key>title</key>
+				<string>Jenny's Radio</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>2</integer>
+				<key>image</key>
+				<string>avatarDummy1.png</string>
+				<key>likes</key>
+				<integer>24</integer>
+				<key>listeners</key>
+				<integer>254</integer>
+				<key>subtitle1</key>
+				<string>Lana del Rey</string>
+				<key>subtitle2</key>
+				<string>Blue Jeans</string>
+				<key>title</key>
+				<string>Scene unseen</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>image</key>
+				<string>avatarDummy2.png</string>
+				<key>likes</key>
+				<integer>456</integer>
+				<key>listeners</key>
+				<integer>2354</integer>
+				<key>subtitle1</key>
+				<string>Ymac Sumac</string>
+				<key>subtitle2</key>
+				<string>Chant Of The Chosen Maidens (Accla Taqui)</string>
+				<key>title</key>
+				<string>Jazz, Samba et compagnie</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>image</key>
+				<string>avatarDummy3.png</string>
+				<key>likes</key>
+				<integer>234</integer>
+				<key>listeners</key>
+				<integer>65</integer>
+				<key>subtitle1</key>
+				<string>Mark Ronson</string>
+				<key>subtitle2</key>
+				<string>Bang Bang Bang</string>
+				<key>title</key>
+				<string>Scene unseen</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>2</integer>
+				<key>image</key>
+				<string>avatarDummy4.png</string>
+				<key>likes</key>
+				<integer>56</integer>
+				<key>listeners</key>
+				<integer>23</integer>
+				<key>subtitle1</key>
+				<string>Vive la fête</string>
+				<key>subtitle2</key>
+				<string>Petit Colibri</string>
+				<key>title</key>
+				<string>Electro Radio</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>image</key>
+				<string>avatarDummy5.png</string>
+				<key>likes</key>
+				<integer>456</integer>
+				<key>listeners</key>
+				<integer>2354</integer>
+				<key>subtitle1</key>
+				<string>Lorem Ipsum Dolore</string>
+				<key>subtitle2</key>
+				<string>Les oiseaux sifflent, le printemps siffle</string>
+				<key>title</key>
+				<string>Salsifis</string>
+			</dict>
+		</array>
+		<key>fakeUsersFavorites</key>
+		<array>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>image</key>
+				<string>avatarDummy3.png</string>
+				<key>likes</key>
+				<integer>234</integer>
+				<key>listeners</key>
+				<integer>65</integer>
+				<key>subtitle1</key>
+				<string>Mark Ronson</string>
+				<key>subtitle2</key>
+				<string>Bang Bang Bang</string>
+				<key>title</key>
+				<string>Scene unseen</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>2</integer>
+				<key>image</key>
+				<string>avatarDummy4.png</string>
+				<key>likes</key>
+				<integer>56</integer>
+				<key>listeners</key>
+				<integer>23</integer>
+				<key>subtitle1</key>
+				<string>Vive la fête</string>
+				<key>subtitle2</key>
+				<string>Petit Colibri</string>
+				<key>title</key>
+				<string>Electro Radio</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>image</key>
+				<string>avatarDummy5.png</string>
+				<key>likes</key>
+				<integer>456</integer>
+				<key>listeners</key>
+				<integer>2354</integer>
+				<key>subtitle1</key>
+				<string>Lorem Ipsum Dolore</string>
+				<key>subtitle2</key>
+				<string>Les oiseaux sifflent, le printemps siffle</string>
+				<key>title</key>
+				<string>Salsifis</string>
+			</dict>
+		</array>
+		<key>fakeUsersFriends</key>
+		<array>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>image</key>
+				<string>avatarDummy.png</string>
+				<key>likes</key>
+				<integer>124</integer>
+				<key>listeners</key>
+				<integer>29</integer>
+				<key>subtitle1</key>
+				<string>Fantastic Plastic Machine</string>
+				<key>subtitle2</key>
+				<string>Bossa for Jackie (Summer Review)</string>
+				<key>title</key>
+				<string>Jenny's Radio</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>2</integer>
+				<key>image</key>
+				<string>avatarDummy1.png</string>
+				<key>likes</key>
+				<integer>24</integer>
+				<key>listeners</key>
+				<integer>254</integer>
+				<key>subtitle1</key>
+				<string>L'homme face à l'absurde</string>
+				<key>subtitle2</key>
+				<string>Donc, la duchesse d'Acquitaine.</string>
+				<key>title</key>
+				<string>J'adore les fruits aux sirot</string>
+			</dict>
+			<dict>
+				<key>id</key>
+				<integer>1</integer>
+				<key>image</key>
+				<string>avatarDummy2.png</string>
+				<key>likes</key>
+				<integer>456</integer>
+				<key>listeners</key>
+				<integer>2354</integer>
+				<key>subtitle1</key>
+				<string>Ymac Sumac</string>
+				<key>subtitle2</key>
+				<string>Chant Of The Chosen Maidens (Accla Taqui)</string>
+				<key>title</key>
+				<string>Jazz, Samba et compagnie</string>
+			</dict>
+		</array>
 		<key>styles</key>
 		<array>
 			<string>style_all</string>
-			<string>style_rock</string>
-			<string>style_hiphop</string>
-			<string>style_classic</string>
-			<string>style_country</string>
-			<string>style_metal</string>
-			<string>style_garage</string>
-			<string>style_hardrock</string>
-			<string>style_pop</string>
-			<string>style_club</string>
+			<string>style_classique</string>
+			<string>style_blues</string>
+			<string>style_alternative</string>
 			<string>style_electro</string>
+			<string>style_chanson_francaise</string>
+			<string>style_jazz</string>
+			<string>style_pop</string>
+			<string>style_reggae</string>
+			<string>style_rock</string>
+			<string>style_metal</string>
+			<string>style_hiphop</string>
+			<string>style_rnbsoul</string>
+			<string>style_world</string>
+			<string>style_divers</string>
 		</array>
 		<key>stylesheet</key>
 		<dict>
+			<key>GuiTintColor</key>
+			<dict>
+				<key>color</key>
+				<string>black</string>
+			</dict>
 			<key>RadioSelectionAvatar</key>
 			<dict>
 				<key>height</key>
@@ -57,21 +267,10 @@
 				<key>y</key>
 				<integer>2</integer>
 			</dict>
-			<key>RadioSelectionBackground</key>
+			<key>RadioSelectionBackgroundDark</key>
 			<dict>
 				<key>name</key>
-				<string>CellBackground</string>
-				<key>type</key>
-				<string>png</string>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-			</dict>
-			<key>RadioSelectionCategoryShadow</key>
-			<dict>
-				<key>name</key>
-				<string>categoryShadow</string>
+				<string>CellBackgroundDark</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>
@@ -90,10 +289,10 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
-			<key>RadioSelectionBackgroundDark</key>
+			<key>RadioSelectionCategoryShadow</key>
 			<dict>
 				<key>name</key>
-				<string>CellBackgroundDark</string>
+				<string>categoryShadow</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>
@@ -113,6 +312,11 @@
 					<string>12345</string>
 					<key>textColor</key>
 					<string>rgb(90,90,90)</string>
+				</dict>
+				<key>font.selected</key>
+				<dict>
+					<key>textColor</key>
+					<string>white</string>
 				</dict>
 				<key>height</key>
 				<integer>10</integer>
@@ -135,6 +339,11 @@
 					<string>234</string>
 					<key>textColor</key>
 					<string>rgb(90,90,90)</string>
+				</dict>
+				<key>font.selected</key>
+				<dict>
+					<key>textColor</key>
+					<string>white</string>
 				</dict>
 				<key>height</key>
 				<integer>10</integer>
@@ -180,6 +389,11 @@
 					<key>textColor</key>
 					<string>rgb(90,90,90)</string>
 				</dict>
+				<key>font.selected</key>
+				<dict>
+					<key>textColor</key>
+					<string>white</string>
+				</dict>
 				<key>height</key>
 				<integer>21</integer>
 				<key>width</key>
@@ -202,6 +416,11 @@
 					<key>textColor</key>
 					<string>rgb(90,90,90)</string>
 				</dict>
+				<key>font.selected</key>
+				<dict>
+					<key>textColor</key>
+					<string>white</string>
+				</dict>
 				<key>height</key>
 				<integer>21</integer>
 				<key>width</key>
@@ -220,11 +439,16 @@
 					<key>size</key>
 					<integer>17</integer>
 					<key>text</key>
-					<string>Jenny&apos;s Radio</string>
+					<string>Jenny's Radio</string>
 					<key>textColor</key>
 					<string>rgb(90,90,90)</string>
 					<key>weight</key>
 					<string>bold</string>
+				</dict>
+				<key>font.selected</key>
+				<dict>
+					<key>textColor</key>
+					<string>white</string>
 				</dict>
 				<key>height</key>
 				<integer>21</integer>
@@ -235,211 +459,24 @@
 				<key>y</key>
 				<integer>1</integer>
 			</dict>
-			<key>GuiTintColor</key>
-			<dict>
-				<key>color</key>
-				<string>rgb(24,24,24)</string>
-			</dict>
 		</dict>
-		<key>fakeUsers</key>
+		<key>themes</key>
 		<array>
 			<dict>
-				<key>id</key>
-				<integer>1</integer>
-				<key>title</key>
-				<string>Jenny&apos;s Radio</string>
-				<key>subtitle1</key>
-				<string>Fantastic Plastic Machine</string>
-				<key>subtitle2</key>
-				<string>Bossa for Jackie (Summer Review)</string>
-				<key>likes</key>
-				<integer>124</integer>
-				<key>listeners</key>
-				<integer>29</integer>
-				<key>image</key>
-				<string>avatarDummy.png</string>
+				<key>bundle</key>
+				<string>default</string>
+				<key>description</key>
+				<string>theme_default_description</string>
+				<key>name</key>
+				<string>theme_default</string>
 			</dict>
 			<dict>
-				<key>id</key>
-				<integer>2</integer>
-				<key>title</key>
-				<string>Scene unseen</string>
-				<key>subtitle1</key>
-				<string>Lana del Rey</string>
-				<key>subtitle2</key>
-				<string>Blue Jeans</string>
-				<key>likes</key>
-				<integer>24</integer>
-				<key>listeners</key>
-				<integer>254</integer>
-				<key>image</key>
-				<string>avatarDummy1.png</string>
-			</dict>
-			<dict>
-				<key>id</key>
-				<integer>1</integer>
-				<key>title</key>
-				<string>Jazz, Samba et compagnie</string>
-				<key>subtitle1</key>
-				<string>Ymac Sumac</string>
-				<key>subtitle2</key>
-				<string>Chant Of The Chosen Maidens (Accla Taqui)</string>
-				<key>likes</key>
-				<integer>456</integer>
-				<key>listeners</key>
-				<integer>2354</integer>
-				<key>image</key>
-				<string>avatarDummy2.png</string>
-			</dict>
-			<dict>
-				<key>id</key>
-				<integer>1</integer>
-				<key>title</key>
-				<string>Scene unseen</string>
-				<key>subtitle1</key>
-				<string>Mark Ronson</string>
-				<key>subtitle2</key>
-				<string>Bang Bang Bang</string>
-				<key>likes</key>
-				<integer>234</integer>
-				<key>listeners</key>
-				<integer>65</integer>
-				<key>image</key>
-				<string>avatarDummy3.png</string>
-			</dict>
-			<dict>
-				<key>id</key>
-				<integer>2</integer>
-				<key>title</key>
-				<string>Electro Radio</string>
-				<key>subtitle1</key>
-				<string>Vive la fête</string>
-				<key>subtitle2</key>
-				<string>Petit Colibri</string>
-				<key>likes</key>
-				<integer>56</integer>
-				<key>listeners</key>
-				<integer>23</integer>
-				<key>image</key>
-				<string>avatarDummy4.png</string>
-			</dict>
-			<dict>
-				<key>id</key>
-				<integer>1</integer>
-				<key>title</key>
-				<string>Salsifis</string>
-				<key>subtitle1</key>
-				<string>Lorem Ipsum Dolore</string>
-				<key>subtitle2</key>
-				<string>Les oiseaux sifflent, le printemps siffle</string>
-				<key>likes</key>
-				<integer>456</integer>
-				<key>listeners</key>
-				<integer>2354</integer>
-				<key>image</key>
-				<string>avatarDummy5.png</string>
-			</dict>
-		</array>
-		<key>fakeUsersFriends</key>
-		<array>
-			<dict>
-				<key>id</key>
-				<integer>1</integer>
-				<key>title</key>
-				<string>Jenny&apos;s Radio</string>
-				<key>subtitle1</key>
-				<string>Fantastic Plastic Machine</string>
-				<key>subtitle2</key>
-				<string>Bossa for Jackie (Summer Review)</string>
-				<key>likes</key>
-				<integer>124</integer>
-				<key>listeners</key>
-				<integer>29</integer>
-				<key>image</key>
-				<string>avatarDummy.png</string>
-			</dict>
-			<dict>
-				<key>id</key>
-				<integer>2</integer>
-				<key>title</key>
-				<string>J&apos;adore les fruits aux sirot</string>
-				<key>subtitle1</key>
-				<string>L&apos;homme face à l&apos;absurde</string>
-				<key>subtitle2</key>
-				<string>Donc, la duchesse d&apos;Acquitaine.</string>
-				<key>likes</key>
-				<integer>24</integer>
-				<key>listeners</key>
-				<integer>254</integer>
-				<key>image</key>
-				<string>avatarDummy1.png</string>
-			</dict>
-			<dict>
-				<key>id</key>
-				<integer>1</integer>
-				<key>title</key>
-				<string>Jazz, Samba et compagnie</string>
-				<key>subtitle1</key>
-				<string>Ymac Sumac</string>
-				<key>subtitle2</key>
-				<string>Chant Of The Chosen Maidens (Accla Taqui)</string>
-				<key>likes</key>
-				<integer>456</integer>
-				<key>listeners</key>
-				<integer>2354</integer>
-				<key>image</key>
-				<string>avatarDummy2.png</string>
-			</dict>
-		</array>
-		<key>fakeUsersFavorites</key>
-		<array>
-			<dict>
-				<key>id</key>
-				<integer>1</integer>
-				<key>title</key>
-				<string>Scene unseen</string>
-				<key>subtitle1</key>
-				<string>Mark Ronson</string>
-				<key>subtitle2</key>
-				<string>Bang Bang Bang</string>
-				<key>likes</key>
-				<integer>234</integer>
-				<key>listeners</key>
-				<integer>65</integer>
-				<key>image</key>
-				<string>avatarDummy3.png</string>
-			</dict>
-			<dict>
-				<key>id</key>
-				<integer>2</integer>
-				<key>title</key>
-				<string>Electro Radio</string>
-				<key>subtitle1</key>
-				<string>Vive la fête</string>
-				<key>subtitle2</key>
-				<string>Petit Colibri</string>
-				<key>likes</key>
-				<integer>56</integer>
-				<key>listeners</key>
-				<integer>23</integer>
-				<key>image</key>
-				<string>avatarDummy4.png</string>
-			</dict>
-			<dict>
-				<key>id</key>
-				<integer>1</integer>
-				<key>title</key>
-				<string>Salsifis</string>
-				<key>subtitle1</key>
-				<string>Lorem Ipsum Dolore</string>
-				<key>subtitle2</key>
-				<string>Les oiseaux sifflent, le printemps siffle</string>
-				<key>likes</key>
-				<integer>456</integer>
-				<key>listeners</key>
-				<integer>2354</integer>
-				<key>image</key>
-				<string>avatarDummy5.png</string>
+				<key>bundle</key>
+				<string>blues</string>
+				<key>description</key>
+				<string>theme_blues_description</string>
+				<key>name</key>
+				<string>theme_blues</string>
 			</dict>
 		</array>
 	</dict>

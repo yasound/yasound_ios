@@ -32,15 +32,15 @@
     
     // cell background
     if (rowIndex & 1)
-      self.cellBackground = [BundleStylesheet BSMakeImage:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark" error:&error]];
+      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
     else
-      self.cellBackground = [BundleStylesheet BSMakeImage:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight" error:&error]];
+      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
 
     [self addSubview:self.cellBackground];
     
     // avatar
     self.radioAvatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[data valueForKey:@"image"]]];
-    stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionAvatar" error:&error];
+    stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionAvatar" retainStylesheet:YES overwriteStylesheet:NO error:&error];
     self.radioAvatar.frame = stylesheet.frame;
     [self addSubview:self.radioAvatar];
     
@@ -51,32 +51,32 @@
     else
       avatarMask = @"RadioSelectionMaskWhite";
     
-    stylesheet = [[BundleFileManager main] stylesheetForKey:avatarMask error:&error];
-    self.radioAvatarMask = [BundleStylesheet BSMakeImage:stylesheet];
+    stylesheet = [[BundleFileManager main] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:&error];
+    self.radioAvatarMask = [stylesheet makeImage];
     [self addSubview:self.radioAvatarMask];
     
     // title
-    self.radioTitle = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:&error]];
+    self.radioTitle = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
     self.radioTitle.text = [data valueForKey:@"title"];
     [self addSubview:self.radioTitle];
 
     // subtitle 1
-    self.radioSubtitle1 = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1" error:&error]];
+    self.radioSubtitle1 = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
     self.radioSubtitle1.text = [data valueForKey:@"subtitle1"];
     [self addSubview:self.radioSubtitle1];
 
     // subtitle 2
-    self.radioSubtitle2 = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2" error:&error]];
+    self.radioSubtitle2 = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
     self.radioSubtitle2.text = [data valueForKey:@"subtitle2"];
     [self addSubview:self.radioSubtitle2];
 
     // likes
-    self.radioLikes = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes" error:&error]];
+    self.radioLikes = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
     self.radioLikes.text = [NSString stringWithFormat:@"%d", [[data valueForKey:@"likes"] integerValue]];
     [self addSubview:self.radioLikes];
 
     // listeners
-    self.radioListeners = [BundleStylesheet BSMakeLabel:[[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners" error:&error]];
+    self.radioListeners = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
     self.radioListeners.text = [NSString stringWithFormat:@"%d", [[data valueForKey:@"listeners"] integerValue]];
     [self addSubview:self.radioListeners];
     
@@ -111,6 +111,8 @@
   [super dealloc];
 }
 
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
   [super setSelected:selected animated:animated];
@@ -119,11 +121,41 @@
   {
     self.cellBackground.image = _bkgSelected;
     self.radioAvatarMask.image = _maskSelected;
+   
+    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
+    [sheet applyToLabel:self.radioTitle class:@"selected"];
+
+    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1" error:nil];
+    [sheet applyToLabel:self.radioSubtitle1 class:@"selected"];
+
+    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2" error:nil];
+    [sheet applyToLabel:self.radioSubtitle2 class:@"selected"];
+
+    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes" error:nil];
+    [sheet applyToLabel:self.radioLikes class:@"selected"];
+
+    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners" error:nil];
+    [sheet applyToLabel:self.radioListeners class:@"selected"];
   }
   else
   {
     self.cellBackground.image = _bkgBackup;
     self.radioAvatarMask.image = _maskBackup;
+
+    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
+    [sheet applyToLabel:self.radioTitle class:nil];
+    
+    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1" error:nil];
+    [sheet applyToLabel:self.radioSubtitle1 class:nil];
+    
+    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2" error:nil];
+    [sheet applyToLabel:self.radioSubtitle2 class:nil];
+    
+    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes" error:nil];
+    [sheet applyToLabel:self.radioLikes class:nil];
+    
+    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners" error:nil];
+    [sheet applyToLabel:self.radioListeners class:nil];
   }
 }
 

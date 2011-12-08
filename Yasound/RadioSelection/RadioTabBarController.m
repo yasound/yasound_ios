@@ -16,6 +16,18 @@
 
 
 
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+    
+    }
+    
+    return self;
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.

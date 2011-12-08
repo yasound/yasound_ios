@@ -8,7 +8,7 @@
 
 #import "RadioSearchViewController.h"
 #import "RadioSelectionTableViewCell.h"
-
+#import "RadioViewController.h"
 
 
 @implementation RadioSearchViewController
@@ -66,6 +66,12 @@ static NSArray* gFakeSearchUsers = nil;
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -106,16 +112,6 @@ static NSArray* gFakeSearchUsers = nil;
 }
 
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(RadioSelectionTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//  float value = 235.f/255.f;
-//  if (indexPath.row & 1)
-//  {
-//    cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-//  }
-//  else
-//    cell.backgroundColor = [UIColor whiteColor];
-//}
 
 
 
@@ -136,6 +132,9 @@ static NSArray* gFakeSearchUsers = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  RadioViewController* view = [[RadioViewController alloc] init];
+  [self.navigationController pushViewController:view animated:YES];
+  [view release];  
 }
 
 
