@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Communicator.h"
 #import "Radio.h"
+#import "WallEvent.h"
 
 @interface YasoundDataProvider : NSObject
 {
@@ -17,7 +18,15 @@
 
 + (YasoundDataProvider*) main;
 
+- (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;
+- (void)radioWithURL:(NSString*)url target:(id)target action:(SEL)selector;
 
-- (void)getWallEventsForRadio:(Radio*)radio notifyTarget:(id)target byCalling:(SEL)selector;
+- (void)wallEventsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
+- (void)postNewWallMessage:(WallEvent*)message target:(id)target action:(SEL)selector;
+
+- (void)postNewSongMetadata:(SongMetadata*)metadata target:(id)target action:(SEL)selector;
 
 @end

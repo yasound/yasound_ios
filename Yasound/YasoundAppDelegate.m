@@ -13,8 +13,9 @@
 
 
 // #FIXME MatTest
-//#import "YasoundDataProvider.h"
-//#import "WallEvent.h"
+#import "YasoundDataProvider.h"
+#import "WallEvent.h"
+#import "User.h"
 // #FIXME MatTest end
 
 @implementation YasoundAppDelegate
@@ -22,11 +23,11 @@
 
 @synthesize window;
 @synthesize navigationController;
-//@synthesize tabBarController;
 @synthesize loginViewController;
 
 
 // #FIXME MatTest
+
 //- (void)receiveWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 //{
 //  Meta* meta = [info valueForKey:@"meta"];
@@ -45,6 +46,41 @@
 //    NSLog(@"ev: %@", [w toString]);
 //  }
 //}
+
+- (void)metadataPosted:(WallEvent*)event withInfo:(NSDictionary*)info
+{
+  NSError* error = [info valueForKey:@"error"];
+  if (error)
+    NSLog(@"%@", error.domain);
+}
+
+- (void)wallMessagePosted:(WallEvent*)event withInfo:(NSDictionary*)info
+{
+  NSError* error = [info valueForKey:@"error"];
+  if (error)
+    NSLog(@"%@", error.domain);
+}
+
+- (void)receiveRadio:(Radio*)radio withInfo:(NSDictionary*)info
+{
+  if (!radio)
+    return;
+  
+  User* user = [[User alloc] init];
+  user.id = [NSNumber numberWithInt:1];
+  user.username = @"mat";
+  
+  WallEvent* message = [[WallEvent alloc] init];
+  message.type = @"M";
+  message.text = @"message sent from iPhone app";
+//  message.radio = radio;
+  message.start_date = [NSDate date];
+  message.end_date = [NSDate date];
+//  message.user = user;
+  
+  [[YasoundDataProvider main] postNewWallMessage:message target:self action:@selector(wallMessagePosted:withInfo:)];
+}
+
 // #FIXME MatTest end
 
 
@@ -78,7 +114,17 @@
 //  Radio* radio = [[Radio alloc] init];
 //  radio.id = [NSNumber numberWithInt:1];
 //  [[YasoundDataProvider main] getWallEventsForRadio:radio notifyTarget:self byCalling:@selector(receiveWallEvents:withInfo:)];
-  // #FIXME MatTest end
+
+    [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
+  
+//  SongMetadata* metadata = [[SongMetadata alloc] init];
+//  metadata.name = @"my song";
+//  metadata.artist_name = @"me";
+//  metadata.album_name = @" my album";
+//  metadata.duration = [NSNumber numberWithFloat:60];
+//  [[YasoundDataProvider main] postNewSongMetadata:metadata target:self action:@selector(metadataPosted:withInfo:)];
+
+    // #FIXME MatTest end
 
   return YES;
 }
