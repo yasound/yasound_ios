@@ -35,7 +35,7 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
     NSString* className = [NSString stringWithCString:type encoding:NSUTF8StringEncoding];
     Class c = NSClassFromString(className);
     
-    BOOL isStandard = (c == [NSString class] || c == [NSNumber class] || c == [NSArray class] || c == [NSDictionary class]);
+    BOOL isStandard = (c == [NSString class] || c == [NSNumber class] || c == [NSDate class] || c == [NSArray class] || c == [NSDictionary class]);
     id val = nil;
     if (isStandard)
     {

@@ -42,24 +42,37 @@
     NSLog(@"%@", error.domain);
 }
 
+- (void)receiveWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
+{
+  NSError* error = [info valueForKey:@"error"];
+  if (error)
+    return;
+  NSLog(@"wall events received");
+  WallEvent* w = [events objectAtIndex:0];
+  NSDate* d = w.start_date;
+  NSLog(@"date: %@", d);
+}
+
 - (void)receiveRadio:(Radio*)radio withInfo:(NSDictionary*)info
 {
   if (!radio)
     return;
   
-  User* user = [[User alloc] init];
-  user.id = [NSNumber numberWithInt:1];
-  user.username = @"mat";
+//  User* user = [[User alloc] init];
+//  user.id = [NSNumber numberWithInt:1];
+//  user.username = @"mat";
   
   WallEvent* message = [[WallEvent alloc] init];
   message.type = @"M";
   message.text = @"message sent from iPhone app";
-//  message.radio = radio;
+  message.radio = radio;
   message.start_date = [NSDate date];
   message.end_date = [NSDate date];
+  
 //  message.user = user;
   
   [[YasoundDataProvider main] postNewWallMessage:message target:self action:@selector(wallMessagePosted:withInfo:)];
+//  [[YasoundDataProvider main] wallEventsForRadio:radio target:self action:@selector(receiveWallEvents:withInfo:)];
 }
 
 // #FIXME MatTest end
@@ -92,6 +105,7 @@
   
   
   // #FIXME MatTest
+  
   [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
   
 //  SongMetadata* metadata = [[SongMetadata alloc] init];
