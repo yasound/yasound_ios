@@ -331,8 +331,10 @@
 
 - (void)openThemeSelector
 {
-    ThemeSelectorViewController* view = [[ThemeSelectorViewController alloc] initWithNibName:@"ThemeSelectorViewController" bundle:nil target:self];
-    [self.navigationController presentModalViewController:view animated:YES];
+    ThemeSelectorViewController* view = [[ThemeSelectorViewController alloc] initWithNibName:@"ThemeSelectorViewController" bundle:nil];
+    view.delegate = self;
+//    [self.navigationController presentModalViewController:view animated:YES];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 - (void)themeSelected:(NSString*)theme
@@ -343,7 +345,8 @@
 
 - (void)themeSelectionCanceled
 {
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+//    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

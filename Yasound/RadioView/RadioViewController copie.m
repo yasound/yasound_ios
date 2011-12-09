@@ -84,8 +84,8 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-  //NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
-  //NSLog(@"status message: %@\n\n", request.responseStatusMessage);
+  NSLog(@"Request sent [%@], response we got: \n%@\n\n", request.url.absoluteString, request.responseString);
+  NSLog(@"status message: %@\n\n", request.responseStatusMessage);
   //NSLog(@"cookies: %@\n\n", request.responseCookies);
   //[request release];
   

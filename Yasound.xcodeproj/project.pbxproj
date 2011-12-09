@@ -48,7 +48,6 @@
 		BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC5EE243147D739600A282A5 /* RadioTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23F147D739600A282A5 /* RadioTabBarController.m */; };
-		BC648F1014684EFB005A6D8A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC648F0E14684EFB005A6D8A /* MainViewController.m */; };
 		BC71F583147F979700DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC71F589147F9CD900DAE4BD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
@@ -72,9 +71,7 @@
 		BC71F5C0147FEC6F00DAE4BD /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
 		BC71F5C1147FEC6F00DAE4BD /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BC71F5C2147FEC6F00DAE4BD /* InteractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEE1468439900BA20D9 /* InteractionViewController.m */; };
-		BC71F5C3147FEC6F00DAE4BD /* RadioCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFF11468439900BA20D9 /* RadioCreatorViewController.m */; };
 		BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
-		BC71F5C7147FEC6F00DAE4BD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC648F0E14684EFB005A6D8A /* MainViewController.m */; };
 		BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BC71F5C9147FEC6F00DAE4BD /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 40562990147547380085518C /* ASIAuthenticationDialog.m */; };
 		BC71F5CA147FEC6F00DAE4BD /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40562993147547380085518C /* ASIDataCompressor.m */; };
@@ -101,7 +98,6 @@
 		BC71F5E1147FEC6F00DAE4BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BC71F5E2147FEC6F00DAE4BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		BC71F5E4147FEC6F00DAE4BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
-		BC71F5F8147FEC6F00DAE4BD /* RadioCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */; };
 		BC71F5FB147FEC6F00DAE4BD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
 		BC71F5FC147FEC6F00DAE4BD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
 		BC71F5FD147FEC6F00DAE4BD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5214688AE70031CE17 /* icon.png */; };
@@ -122,6 +118,56 @@
 		BC71F62F147FEC6F00DAE4BD /* avatarDummy4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AC147FE0A800DAE4BD /* avatarDummy4@2x.png */; };
 		BC71F630147FEC6F00DAE4BD /* avatarDummy5.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AD147FE0A800DAE4BD /* avatarDummy5.png */; };
 		BC71F631147FEC6F00DAE4BD /* avatarDummy5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5AE147FE0A800DAE4BD /* avatarDummy5@2x.png */; };
+		BC914AE31491845D00D5D7B4 /* btnAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD21491845D00D5D7B4 /* btnAdd.png */; };
+		BC914AE41491845D00D5D7B4 /* btnAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD21491845D00D5D7B4 /* btnAdd.png */; };
+		BC914AE51491845D00D5D7B4 /* btnAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD31491845D00D5D7B4 /* btnAdd@2x.png */; };
+		BC914AE61491845D00D5D7B4 /* btnAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD31491845D00D5D7B4 /* btnAdd@2x.png */; };
+		BC914AE71491845D00D5D7B4 /* btnBuy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD41491845D00D5D7B4 /* btnBuy.png */; };
+		BC914AE81491845D00D5D7B4 /* btnBuy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD41491845D00D5D7B4 /* btnBuy.png */; };
+		BC914AE91491845D00D5D7B4 /* btnBuy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD51491845D00D5D7B4 /* btnBuy@2x.png */; };
+		BC914AEA1491845D00D5D7B4 /* btnBuy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD51491845D00D5D7B4 /* btnBuy@2x.png */; };
+		BC914AEB1491845D00D5D7B4 /* btnDislike.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD61491845D00D5D7B4 /* btnDislike.png */; };
+		BC914AEC1491845D00D5D7B4 /* btnDislike.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD61491845D00D5D7B4 /* btnDislike.png */; };
+		BC914AED1491845D00D5D7B4 /* btnDislike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD71491845D00D5D7B4 /* btnDislike@2x.png */; };
+		BC914AEE1491845D00D5D7B4 /* btnDislike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD71491845D00D5D7B4 /* btnDislike@2x.png */; };
+		BC914AEF1491845D00D5D7B4 /* btnLike.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD81491845D00D5D7B4 /* btnLike.png */; };
+		BC914AF01491845D00D5D7B4 /* btnLike.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD81491845D00D5D7B4 /* btnLike.png */; };
+		BC914AF11491845D00D5D7B4 /* btnLike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD91491845D00D5D7B4 /* btnLike@2x.png */; };
+		BC914AF21491845D00D5D7B4 /* btnLike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD91491845D00D5D7B4 /* btnLike@2x.png */; };
+		BC914AF31491845D00D5D7B4 /* btnShare.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914ADA1491845D00D5D7B4 /* btnShare.png */; };
+		BC914AF41491845D00D5D7B4 /* btnShare.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914ADA1491845D00D5D7B4 /* btnShare.png */; };
+		BC914AF51491845D00D5D7B4 /* btnShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914ADB1491845D00D5D7B4 /* btnShare@2x.png */; };
+		BC914AF61491845D00D5D7B4 /* btnShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914ADB1491845D00D5D7B4 /* btnShare@2x.png */; };
+		BC914AF71491845D00D5D7B4 /* loginIconFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914ADD1491845D00D5D7B4 /* loginIconFacebook.png */; };
+		BC914AF81491845D00D5D7B4 /* loginIconFacebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914ADD1491845D00D5D7B4 /* loginIconFacebook.png */; };
+		BC914AF91491845D00D5D7B4 /* loginIconFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914ADE1491845D00D5D7B4 /* loginIconFacebook@2x.png */; };
+		BC914AFA1491845D00D5D7B4 /* loginIconFacebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914ADE1491845D00D5D7B4 /* loginIconFacebook@2x.png */; };
+		BC914AFB1491845D00D5D7B4 /* loginIconTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914ADF1491845D00D5D7B4 /* loginIconTwitter.png */; };
+		BC914AFC1491845D00D5D7B4 /* loginIconTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914ADF1491845D00D5D7B4 /* loginIconTwitter.png */; };
+		BC914AFD1491845D00D5D7B4 /* loginIconTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AE01491845D00D5D7B4 /* loginIconTwitter@2x.png */; };
+		BC914AFE1491845D00D5D7B4 /* loginIconTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AE01491845D00D5D7B4 /* loginIconTwitter@2x.png */; };
+		BC914AFF1491845D00D5D7B4 /* loginIconYasound.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AE11491845D00D5D7B4 /* loginIconYasound.png */; };
+		BC914B001491845D00D5D7B4 /* loginIconYasound.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AE11491845D00D5D7B4 /* loginIconYasound.png */; };
+		BC914B011491845D00D5D7B4 /* loginIconYasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AE21491845D00D5D7B4 /* loginIconYasound@2x.png */; };
+		BC914B021491845D00D5D7B4 /* loginIconYasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AE21491845D00D5D7B4 /* loginIconYasound@2x.png */; };
+		BC914B0C1491846800D5D7B4 /* blues.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B031491846800D5D7B4 /* blues.bundle */; };
+		BC914B0D1491846800D5D7B4 /* blues.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B031491846800D5D7B4 /* blues.bundle */; };
+		BC914B0E1491846800D5D7B4 /* blues.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B041491846800D5D7B4 /* blues.icon.png */; };
+		BC914B0F1491846800D5D7B4 /* blues.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B041491846800D5D7B4 /* blues.icon.png */; };
+		BC914B101491846800D5D7B4 /* blues.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B051491846800D5D7B4 /* blues.icon@2x.png */; };
+		BC914B111491846800D5D7B4 /* blues.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B051491846800D5D7B4 /* blues.icon@2x.png */; };
+		BC914B121491846800D5D7B4 /* classic.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B061491846800D5D7B4 /* classic.bundle */; };
+		BC914B131491846800D5D7B4 /* classic.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B061491846800D5D7B4 /* classic.bundle */; };
+		BC914B141491846800D5D7B4 /* classic.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B071491846800D5D7B4 /* classic.icon.png */; };
+		BC914B151491846800D5D7B4 /* classic.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B071491846800D5D7B4 /* classic.icon.png */; };
+		BC914B161491846800D5D7B4 /* classic.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B081491846800D5D7B4 /* classic.icon@2x.png */; };
+		BC914B171491846800D5D7B4 /* classic.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B081491846800D5D7B4 /* classic.icon@2x.png */; };
+		BC914B181491846800D5D7B4 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B091491846800D5D7B4 /* default.bundle */; };
+		BC914B191491846800D5D7B4 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B091491846800D5D7B4 /* default.bundle */; };
+		BC914B1A1491846800D5D7B4 /* default.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B0A1491846800D5D7B4 /* default.icon.png */; };
+		BC914B1B1491846800D5D7B4 /* default.icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B0A1491846800D5D7B4 /* default.icon.png */; };
+		BC914B1C1491846800D5D7B4 /* default.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B0B1491846800D5D7B4 /* default.icon@2x.png */; };
+		BC914B1D1491846800D5D7B4 /* default.icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B0B1491846800D5D7B4 /* default.icon@2x.png */; };
 		BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
@@ -154,8 +200,6 @@
 		BCC408B4148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AD148D15F8001C02E4 /* bigRedButtonUp@2x.png */; };
 		BCC408B5148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AD148D15F8001C02E4 /* bigRedButtonUp@2x.png */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
-		BCE4631E148FD89100422448 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE4631C148FD89100422448 /* default.bundle */; };
-		BCE4631F148FD89100422448 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE4631C148FD89100422448 /* default.bundle */; };
 		BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -164,8 +208,6 @@
 		BCE46333148FDECB00422448 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE46330148FDECB00422448 /* LoginViewController.m */; };
 		BCE46334148FDECB00422448 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE46331148FDECB00422448 /* LoginViewController.xib */; };
 		BCE46335148FDECB00422448 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE46331148FDECB00422448 /* LoginViewController.xib */; };
-		BCE463371490F7F700422448 /* blues.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE463361490F7F700422448 /* blues.bundle */; };
-		BCE463381490F7F700422448 /* blues.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCE463361490F7F700422448 /* blues.bundle */; };
 		BCF62DBF14839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC014839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC114839355001B1908 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB014839355001B1908 /* categoryShadow@2x.png */; };
@@ -207,8 +249,6 @@
 		BCFECFFD1468439900BA20D9 /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
 		BCFECFFE1468439900BA20D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BCFECFFF1468439900BA20D9 /* InteractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEE1468439900BA20D9 /* InteractionViewController.m */; };
-		BCFED0011468439900BA20D9 /* RadioCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFF11468439900BA20D9 /* RadioCreatorViewController.m */; };
-		BCFED0021468439900BA20D9 /* RadioCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */; };
 		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		E5280A56145EFFD900A88910 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A55145EFFD900A88910 /* libz.dylib */; };
 		E5280A58145F005B00A88910 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A57145F005B00A88910 /* MobileCoreServices.framework */; };
@@ -295,8 +335,6 @@
 		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
 		BC5EE23E147D739600A282A5 /* RadioTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioTabBarController.h; path = RadioSelection/RadioTabBarController.h; sourceTree = "<group>"; };
 		BC5EE23F147D739600A282A5 /* RadioTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioTabBarController.m; path = RadioSelection/RadioTabBarController.m; sourceTree = "<group>"; };
-		BC648F0D14684EFB005A6D8A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		BC648F0E14684EFB005A6D8A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		BC71F582147F979700DAE4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F586147F97DA00DAE4BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F588147F9CD900DAE4BD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -316,6 +354,31 @@
 		BC71F5AD147FE0A800DAE4BD /* avatarDummy5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatarDummy5.png; path = RadioSelection/avatarDummy/avatarDummy5.png; sourceTree = "<group>"; };
 		BC71F5AE147FE0A800DAE4BD /* avatarDummy5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatarDummy5@2x.png"; path = "RadioSelection/avatarDummy/avatarDummy5@2x.png"; sourceTree = "<group>"; };
 		BC71F635147FEC6F00DAE4BD /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC914AD21491845D00D5D7B4 /* btnAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnAdd.png; sourceTree = "<group>"; };
+		BC914AD31491845D00D5D7B4 /* btnAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnAdd@2x.png"; sourceTree = "<group>"; };
+		BC914AD41491845D00D5D7B4 /* btnBuy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnBuy.png; sourceTree = "<group>"; };
+		BC914AD51491845D00D5D7B4 /* btnBuy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnBuy@2x.png"; sourceTree = "<group>"; };
+		BC914AD61491845D00D5D7B4 /* btnDislike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnDislike.png; sourceTree = "<group>"; };
+		BC914AD71491845D00D5D7B4 /* btnDislike@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnDislike@2x.png"; sourceTree = "<group>"; };
+		BC914AD81491845D00D5D7B4 /* btnLike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnLike.png; sourceTree = "<group>"; };
+		BC914AD91491845D00D5D7B4 /* btnLike@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnLike@2x.png"; sourceTree = "<group>"; };
+		BC914ADA1491845D00D5D7B4 /* btnShare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnShare.png; sourceTree = "<group>"; };
+		BC914ADB1491845D00D5D7B4 /* btnShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnShare@2x.png"; sourceTree = "<group>"; };
+		BC914ADD1491845D00D5D7B4 /* loginIconFacebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIconFacebook.png; sourceTree = "<group>"; };
+		BC914ADE1491845D00D5D7B4 /* loginIconFacebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIconFacebook@2x.png"; sourceTree = "<group>"; };
+		BC914ADF1491845D00D5D7B4 /* loginIconTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIconTwitter.png; sourceTree = "<group>"; };
+		BC914AE01491845D00D5D7B4 /* loginIconTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIconTwitter@2x.png"; sourceTree = "<group>"; };
+		BC914AE11491845D00D5D7B4 /* loginIconYasound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIconYasound.png; sourceTree = "<group>"; };
+		BC914AE21491845D00D5D7B4 /* loginIconYasound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIconYasound@2x.png"; sourceTree = "<group>"; };
+		BC914B031491846800D5D7B4 /* blues.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = blues.bundle; sourceTree = "<group>"; };
+		BC914B041491846800D5D7B4 /* blues.icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blues.icon.png; sourceTree = "<group>"; };
+		BC914B051491846800D5D7B4 /* blues.icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blues.icon@2x.png"; sourceTree = "<group>"; };
+		BC914B061491846800D5D7B4 /* classic.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = classic.bundle; sourceTree = "<group>"; };
+		BC914B071491846800D5D7B4 /* classic.icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = classic.icon.png; sourceTree = "<group>"; };
+		BC914B081491846800D5D7B4 /* classic.icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "classic.icon@2x.png"; sourceTree = "<group>"; };
+		BC914B091491846800D5D7B4 /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = default.bundle; sourceTree = "<group>"; };
+		BC914B0A1491846800D5D7B4 /* default.icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.icon.png; sourceTree = "<group>"; };
+		BC914B0B1491846800D5D7B4 /* default.icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default.icon@2x.png"; sourceTree = "<group>"; };
 		BC93B4A3148E686C00A87157 /* ThemeSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSelectorViewController.h; sourceTree = "<group>"; };
 		BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSelectorViewController.m; sourceTree = "<group>"; };
 		BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeSelectorViewController.xib; sourceTree = "<group>"; };
@@ -343,13 +406,11 @@
 		BCC408AD148D15F8001C02E4 /* bigRedButtonUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigRedButtonUp@2x.png"; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
-		BCE4631C148FD89100422448 /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = default.bundle; sourceTree = "<group>"; };
 		BCE46322148FD96300422448 /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
 		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
 		BCE4632F148FDECB00422448 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
 		BCE46330148FDECB00422448 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
 		BCE46331148FDECB00422448 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
-		BCE463361490F7F700422448 /* blues.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = blues.bundle; sourceTree = "<group>"; };
 		BCF62DAF14839355001B1908 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
 		BCF62DB014839355001B1908 /* categoryShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "categoryShadow@2x.png"; path = "RadioSelection/categoryShadow@2x.png"; sourceTree = "<group>"; };
 		BCF62DB114839355001B1908 /* CellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundBlue.png; path = RadioSelection/CellBackgroundBlue.png; sourceTree = "<group>"; };
@@ -379,9 +440,6 @@
 		BCFECFEC1468439900BA20D9 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
 		BCFECFED1468439900BA20D9 /* InteractionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractionViewController.h; sourceTree = "<group>"; };
 		BCFECFEE1468439900BA20D9 /* InteractionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractionViewController.m; sourceTree = "<group>"; };
-		BCFECFF01468439900BA20D9 /* RadioCreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioCreatorViewController.h; sourceTree = "<group>"; };
-		BCFECFF11468439900BA20D9 /* RadioCreatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioCreatorViewController.m; sourceTree = "<group>"; };
-		BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioCreatorViewController.xib; sourceTree = "<group>"; };
 		BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundAppDelegate.h; sourceTree = "<group>"; };
 		BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundAppDelegate.m; sourceTree = "<group>"; };
 		E5280A55145EFFD900A88910 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -654,6 +712,36 @@
 			name = avatarDummy;
 			sourceTree = "<group>";
 		};
+		BC914AD11491845D00D5D7B4 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				BC914AD21491845D00D5D7B4 /* btnAdd.png */,
+				BC914AD31491845D00D5D7B4 /* btnAdd@2x.png */,
+				BC914AD41491845D00D5D7B4 /* btnBuy.png */,
+				BC914AD51491845D00D5D7B4 /* btnBuy@2x.png */,
+				BC914AD61491845D00D5D7B4 /* btnDislike.png */,
+				BC914AD71491845D00D5D7B4 /* btnDislike@2x.png */,
+				BC914AD81491845D00D5D7B4 /* btnLike.png */,
+				BC914AD91491845D00D5D7B4 /* btnLike@2x.png */,
+				BC914ADA1491845D00D5D7B4 /* btnShare.png */,
+				BC914ADB1491845D00D5D7B4 /* btnShare@2x.png */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		BC914ADC1491845D00D5D7B4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BC914ADD1491845D00D5D7B4 /* loginIconFacebook.png */,
+				BC914ADE1491845D00D5D7B4 /* loginIconFacebook@2x.png */,
+				BC914ADF1491845D00D5D7B4 /* loginIconTwitter.png */,
+				BC914AE01491845D00D5D7B4 /* loginIconTwitter@2x.png */,
+				BC914AE11491845D00D5D7B4 /* loginIconYasound.png */,
+				BC914AE21491845D00D5D7B4 /* loginIconYasound@2x.png */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		BC9F413E147E8A5F00D417EF /* BundleFileManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -702,8 +790,15 @@
 		BCE4631B148FD89100422448 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
-				BCE4631C148FD89100422448 /* default.bundle */,
-				BCE463361490F7F700422448 /* blues.bundle */,
+				BC914B031491846800D5D7B4 /* blues.bundle */,
+				BC914B041491846800D5D7B4 /* blues.icon.png */,
+				BC914B051491846800D5D7B4 /* blues.icon@2x.png */,
+				BC914B061491846800D5D7B4 /* classic.bundle */,
+				BC914B071491846800D5D7B4 /* classic.icon.png */,
+				BC914B081491846800D5D7B4 /* classic.icon@2x.png */,
+				BC914B091491846800D5D7B4 /* default.bundle */,
+				BC914B0A1491846800D5D7B4 /* default.icon.png */,
+				BC914B0B1491846800D5D7B4 /* default.icon@2x.png */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -721,6 +816,8 @@
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BC914AD11491845D00D5D7B4 /* Buttons */,
+				BC914ADC1491845D00D5D7B4 /* Login */,
 				BCE4631B148FD89100422448 /* Themes */,
 				BCC408A9148D15F8001C02E4 /* MyYasound */,
 				BC5EE217147D427100A282A5 /* RadioSelection */,
@@ -765,7 +862,6 @@
 			isa = PBXGroup;
 			children = (
 				BC71F588147F9CD900DAE4BD /* MainWindow.xib */,
-				BCFECFF21468439900BA20D9 /* RadioCreatorViewController.xib */,
 			);
 			name = xib;
 			path = Yasound;
@@ -829,10 +925,6 @@
 				BCB5F28B1485416B00C28B3D /* RadioView */,
 				BCFECFED1468439900BA20D9 /* InteractionViewController.h */,
 				BCFECFEE1468439900BA20D9 /* InteractionViewController.m */,
-				BCFECFF01468439900BA20D9 /* RadioCreatorViewController.h */,
-				BCFECFF11468439900BA20D9 /* RadioCreatorViewController.m */,
-				BC648F0D14684EFB005A6D8A /* MainViewController.h */,
-				BC648F0E14684EFB005A6D8A /* MainViewController.m */,
 				BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */,
 				BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */,
 			);
@@ -924,7 +1016,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC71F5E4147FEC6F00DAE4BD /* InfoPlist.strings in Resources */,
-				BC71F5F8147FEC6F00DAE4BD /* RadioCreatorViewController.xib in Resources */,
 				BC71F5FB147FEC6F00DAE4BD /* Default.png in Resources */,
 				BC71F5FC147FEC6F00DAE4BD /* Default@2x.png in Resources */,
 				BC71F5FD147FEC6F00DAE4BD /* icon.png in Resources */,
@@ -968,11 +1059,34 @@
 				BCC408B5148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */,
 				BC93B4A9148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */,
 				BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
-				BCE4631F148FD89100422448 /* default.bundle in Resources */,
 				BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
 				BCE46335148FDECB00422448 /* LoginViewController.xib in Resources */,
-				BCE463381490F7F700422448 /* blues.bundle in Resources */,
+				BC914AE41491845D00D5D7B4 /* btnAdd.png in Resources */,
+				BC914AE61491845D00D5D7B4 /* btnAdd@2x.png in Resources */,
+				BC914AE81491845D00D5D7B4 /* btnBuy.png in Resources */,
+				BC914AEA1491845D00D5D7B4 /* btnBuy@2x.png in Resources */,
+				BC914AEC1491845D00D5D7B4 /* btnDislike.png in Resources */,
+				BC914AEE1491845D00D5D7B4 /* btnDislike@2x.png in Resources */,
+				BC914AF01491845D00D5D7B4 /* btnLike.png in Resources */,
+				BC914AF21491845D00D5D7B4 /* btnLike@2x.png in Resources */,
+				BC914AF41491845D00D5D7B4 /* btnShare.png in Resources */,
+				BC914AF61491845D00D5D7B4 /* btnShare@2x.png in Resources */,
+				BC914AF81491845D00D5D7B4 /* loginIconFacebook.png in Resources */,
+				BC914AFA1491845D00D5D7B4 /* loginIconFacebook@2x.png in Resources */,
+				BC914AFC1491845D00D5D7B4 /* loginIconTwitter.png in Resources */,
+				BC914AFE1491845D00D5D7B4 /* loginIconTwitter@2x.png in Resources */,
+				BC914B001491845D00D5D7B4 /* loginIconYasound.png in Resources */,
+				BC914B021491845D00D5D7B4 /* loginIconYasound@2x.png in Resources */,
+				BC914B0D1491846800D5D7B4 /* blues.bundle in Resources */,
+				BC914B0F1491846800D5D7B4 /* blues.icon.png in Resources */,
+				BC914B111491846800D5D7B4 /* blues.icon@2x.png in Resources */,
+				BC914B131491846800D5D7B4 /* classic.bundle in Resources */,
+				BC914B151491846800D5D7B4 /* classic.icon.png in Resources */,
+				BC914B171491846800D5D7B4 /* classic.icon@2x.png in Resources */,
+				BC914B191491846800D5D7B4 /* default.bundle in Resources */,
+				BC914B1B1491846800D5D7B4 /* default.icon.png in Resources */,
+				BC914B1D1491846800D5D7B4 /* default.icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -981,7 +1095,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5A9A3B81454DC0500EA374C /* InfoPlist.strings in Resources */,
-				BCFED0021468439900BA20D9 /* RadioCreatorViewController.xib in Resources */,
 				BC943A5314688AE70031CE17 /* Default.png in Resources */,
 				BC943A5414688AE70031CE17 /* Default@2x.png in Resources */,
 				BC943A5514688AE70031CE17 /* icon.png in Resources */,
@@ -1025,11 +1138,34 @@
 				BCC408B4148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */,
 				BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */,
 				BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
-				BCE4631E148FD89100422448 /* default.bundle in Resources */,
 				BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
 				BCE46334148FDECB00422448 /* LoginViewController.xib in Resources */,
-				BCE463371490F7F700422448 /* blues.bundle in Resources */,
+				BC914AE31491845D00D5D7B4 /* btnAdd.png in Resources */,
+				BC914AE51491845D00D5D7B4 /* btnAdd@2x.png in Resources */,
+				BC914AE71491845D00D5D7B4 /* btnBuy.png in Resources */,
+				BC914AE91491845D00D5D7B4 /* btnBuy@2x.png in Resources */,
+				BC914AEB1491845D00D5D7B4 /* btnDislike.png in Resources */,
+				BC914AED1491845D00D5D7B4 /* btnDislike@2x.png in Resources */,
+				BC914AEF1491845D00D5D7B4 /* btnLike.png in Resources */,
+				BC914AF11491845D00D5D7B4 /* btnLike@2x.png in Resources */,
+				BC914AF31491845D00D5D7B4 /* btnShare.png in Resources */,
+				BC914AF51491845D00D5D7B4 /* btnShare@2x.png in Resources */,
+				BC914AF71491845D00D5D7B4 /* loginIconFacebook.png in Resources */,
+				BC914AF91491845D00D5D7B4 /* loginIconFacebook@2x.png in Resources */,
+				BC914AFB1491845D00D5D7B4 /* loginIconTwitter.png in Resources */,
+				BC914AFD1491845D00D5D7B4 /* loginIconTwitter@2x.png in Resources */,
+				BC914AFF1491845D00D5D7B4 /* loginIconYasound.png in Resources */,
+				BC914B011491845D00D5D7B4 /* loginIconYasound@2x.png in Resources */,
+				BC914B0C1491846800D5D7B4 /* blues.bundle in Resources */,
+				BC914B0E1491846800D5D7B4 /* blues.icon.png in Resources */,
+				BC914B101491846800D5D7B4 /* blues.icon@2x.png in Resources */,
+				BC914B121491846800D5D7B4 /* classic.bundle in Resources */,
+				BC914B141491846800D5D7B4 /* classic.icon.png in Resources */,
+				BC914B161491846800D5D7B4 /* classic.icon@2x.png in Resources */,
+				BC914B181491846800D5D7B4 /* default.bundle in Resources */,
+				BC914B1A1491846800D5D7B4 /* default.icon.png in Resources */,
+				BC914B1C1491846800D5D7B4 /* default.icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,9 +1182,7 @@
 				BC71F5C0147FEC6F00DAE4BD /* SlidingMenu.m in Sources */,
 				BC71F5C1147FEC6F00DAE4BD /* Tile.m in Sources */,
 				BC71F5C2147FEC6F00DAE4BD /* InteractionViewController.m in Sources */,
-				BC71F5C3147FEC6F00DAE4BD /* RadioCreatorViewController.m in Sources */,
 				BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */,
-				BC71F5C7147FEC6F00DAE4BD /* MainViewController.m in Sources */,
 				BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */,
 				BC71F5C9147FEC6F00DAE4BD /* ASIAuthenticationDialog.m in Sources */,
 				BC71F5CA147FEC6F00DAE4BD /* ASIDataCompressor.m in Sources */,
@@ -1094,9 +1228,7 @@
 				BCFECFFD1468439900BA20D9 /* SlidingMenu.m in Sources */,
 				BCFECFFE1468439900BA20D9 /* Tile.m in Sources */,
 				BCFECFFF1468439900BA20D9 /* InteractionViewController.m in Sources */,
-				BCFED0011468439900BA20D9 /* RadioCreatorViewController.m in Sources */,
 				BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */,
-				BC648F1014684EFB005A6D8A /* MainViewController.m in Sources */,
 				BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */,
 				405629A7147547380085518C /* ASIAuthenticationDialog.m in Sources */,
 				405629A8147547380085518C /* ASIDataCompressor.m in Sources */,
@@ -1179,14 +1311,12 @@
 		BC71F633147FEC6F00DAE4BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LOIC BERTHELOT (M4LM7N2G22)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = YasoundD;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1194,14 +1324,12 @@
 		BC71F634147FEC6F00DAE4BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LOIC BERTHELOT (M4LM7N2G22)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = YasoundD;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1211,6 +1339,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1226,6 +1355,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1235,6 +1365,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1244,6 +1375,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1252,14 +1384,12 @@
 		E5A9A3C51454DC0500EA374C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LOIC BERTHELOT (M4LM7N2G22)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1267,14 +1397,12 @@
 		E5A9A3C61454DC0500EA374C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LOIC BERTHELOT (M4LM7N2G22)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EEAFCA1F-4860-4171-BFFA-804BFCC0F38D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

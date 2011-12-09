@@ -13,12 +13,11 @@
 @synthesize delegate;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil target:(id)target
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.delegate = target;
         _themeSelectorTitle.text = NSLocalizedString(@"themeselector_title", nil);
         
         NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
@@ -30,7 +29,7 @@
         }
         else
             [_themes retain];
-
+        
     }
     return self;
 }
@@ -107,8 +106,19 @@
     
     NSDictionary* dico = [_themes objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = NSLocalizedString([dico objectForKey:@"name"], nil);
-    cell.detailTextLabel.text = NSLocalizedString([dico objectForKey:@"description"], nil);
+    cell.textLabel.text = [NSString stringWithString:NSLocalizedString([dico objectForKey:@"name"], nil)];
+    cell.detailTextLabel.text = [NSString stringWithString:NSLocalizedString([dico objectForKey:@"description"], nil)];
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    NSString* iconPath = [NSString stringWithFormat:@"%@.icon.png", [dico objectForKey:@"bundle"]];
+    
+//    NSLog(iconPath);
+    
+//    [cell.imageView setImage:[UIImage imageWithContentsOfFile:iconPath]];
+    [cell.imageView setImage:[UIImage imageNamed:iconPath]];
+    
+    return cell;
 }
 
 
@@ -116,7 +126,7 @@
 {
     NSDictionary* dico = [_themes objectAtIndex:indexPath.row];
     
-    [self.delegate themeSelected:[dico objectForKey:@"name"]];
+    [self.delegate themeSelected:[dico objectForKey:@"bundle"]];
 }
 
 
