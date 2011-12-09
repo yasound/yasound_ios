@@ -23,6 +23,7 @@
 @implementation RadioViewController
 
 @synthesize radio;
+@synthesize audioStreamer;
 @synthesize messages;
 @synthesize statusMessages;
 
@@ -227,10 +228,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     
-//  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/cedric.mp3"];
-//  mpStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
-//  [mpStreamer retain];
-//  [mpStreamer start];
+  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/cedric.mp3"];
+  self.audioStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
+  [self.audioStreamer start];
     
     //....................................................................................
     //
@@ -245,8 +245,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-//  [mpStreamer stop];
-//  [mpStreamer release];
+  [audioStreamer stop];
     
     [_timerUpdate invalidate];
     [_timerFake invalidate];

@@ -9,6 +9,7 @@
 #import "Message.h"
 
 @class Radio;
+@class AudioStreamer;
 
 @interface RadioViewController : UIViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource>
 {
@@ -36,5 +37,7 @@
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, retain) NSMutableArray* messages;
 @property (atomic, retain) NSMutableArray* statusMessages;
+
+@property (nonatomic, retain) AudioStreamer* audioStreamer;
 
 @end
