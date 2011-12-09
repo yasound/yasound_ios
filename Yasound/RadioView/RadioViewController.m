@@ -221,6 +221,8 @@
     
     // get the actual data from the server to update the GUI
     [self onUpdate:nil];
+    
+    [self EXAMPLE];
 }
 
 
@@ -228,7 +230,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     
-  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/cedric.mp3"];
+  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/ubik.mp3"];
   self.audioStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
   [self.audioStreamer start];
     
@@ -277,175 +279,107 @@
 
 
 
-#pragma mark - TextField Delegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField endEditing:TRUE];
-    [self sendMessage:textField.text];
-    textField.text = nil;
-    return FALSE;
-}
-
-
-- (void)sendMessage:(NSString *)message
-{
-  
-#if LOCAL
-  NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpostAPI/"];
-#else
-  NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/sendpostAPI/"];
-#endif
-
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    //[request addPostValue:@"jmp" forKey:@"author"];
-    //[request addPostValue:@"meeloo" forKey:@"author"];
-    [request addPostValue:[[UIDevice currentDevice] name] forKey:@"author"];
-
-    [request addPostValue:@"pipo" forKey:@"password"];
-    [request addPostValue:@"text" forKey:@"kind"];
-    [request addPostValue:message forKey:@"posttext"];
-    [request setDelegate:self];
-    [request setDidFailSelector:@selector(sendMessageFailed:)];
-    [request setDidFinishSelector:@selector(sendMessageFinished:)];    
-    
-    NSLog(@"\nSENDMESSAGE '%@'\n", message);
-    
-//    [request startAsynchronous];
-    [request startSynchronous];
-}
-
-
-- (void)sendMessageFailed:(ASIHTTPRequest *)request
-{
-    NSLog(@"sendMessage failed.");
-}
-
-- (void)sendMessageFinished:(ASIHTTPRequest*)request
-{
-    NSLog(@"sendMessage finished with code %d", request.responseStatusCode);
-}
 
 
 
 
-#pragma mark - TableView Source and Delegate
-
-
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    return nil;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
-{
-//    NSLog(@"number messages %d", [self.messages count]);
-    return [self.messages count];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
-{
-    Message* m = [self.messages objectAtIndex:indexPath.row];
-
-    return m.textHeight + _cellMinHeight;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    static NSString* CellIdentifier = @"RadioViewCell";
-    
-    Message* m = [self.messages objectAtIndex:indexPath.row];
-
-    RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
-    {
-        cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier message:m indexPath:indexPath] autorelease];
-    }
-    else
-        [cell update:m indexPath:indexPath];
-    
-    return cell;
-}
 
 
 
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//}
+
+
+
+//.................................................................................................
+//
+// EXAMPLE
 //
 
+- (void)EXAMPLE
+{
+    //
+    // NOW PLAYING
+    //
+    NSInteger randIndex = (rand() %5)+1;
+    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+    [self setNowPlaying:@"Mon Titre à moi super remix de la mort" artist:@"Mon Artiste" image:image nbLikes:1234 nbDislikes:12345];
+    
+    
+    //
+    // MESSAGES
+    //
+    randIndex = (rand() %5)+1;
+    image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+    [self addMessage:@"Vivamus sodales adipiscing sapien." user:@"Tancrède" avatar:image date:@"2011-07-09 20h30" silent:YES];
+    
+    randIndex = (rand() %5)+1;
+    image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+    [self addMessage:@"Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor." user:@"Gertrude"  avatar:image date:@"2011-07-09 19h30" silent:YES];
+    
+    randIndex = (rand() %5)+1;
+    image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+    [self addMessage:@"Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare." user:@"Argeavielle"  avatar:image date:@"2011-07-09 18h30" silent:YES];
+    
+    randIndex = (rand() %5)+1;
+    image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+    [self addMessage:@"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat." user:@"Anthèlme"  avatar:image date:@"2011-07-09 20h30" silent:YES];
 
+    [_tableView reloadData];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onEXAMPLE_DELAYED:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(onEXAMPLE_DELAYED:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(onEXAMPLE_DELAYED:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(onEXAMPLE_DELAYED:) userInfo:nil repeats:NO];
+
+    
+    //
+    // STATUS BAR
+    //
+    [self setStatusMessage:@"Mon message de status..."];
+}
+
+
+- (void)onEXAMPLE_DELAYED:(NSTimer*)timer
+{
+    NSInteger randIndex = (rand() %5)+1;
+    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+    [self addMessage:@"Pellentesque sit amet sem et purus pretium consectetuer." user:@"Tancrède"  avatar:image date:@"2011-07-09 20h30" silent:NO];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//.................................................................................................
+//
+// DATA UPDATE
+//
 
 
 #pragma mark - Data 
 
 
-//LBDEBUG fake messages in status bar
-static NSArray* fakeMessages = nil;
-static NSMutableArray* fakeTracks = nil;
-static NSInteger gFakeTrackIndex = -1;
-
-- (void)onFakeUpdateStatus:(NSTimer*)timer
-{
-    //LBDEBUG fake messages in status bar
-    if (fakeMessages == nil)
-    {
-        fakeMessages = [NSArray arrayWithObjects:@"Vestibulum interdum magna sed quam", @"Pellentesque dapibus sodales enim", @"Nullam porttitor elementum ligula", @"Vivamus convallis urna id felis", nil];
-        [fakeMessages retain];
-        srand(time(NULL));
-    }
-    NSInteger fakeIndex = rand() % 4;
-    NSString* fakeText = [NSString stringWithString:[fakeMessages objectAtIndex:fakeIndex]];
-    [self setStatusMessage:fakeText];
-    
-    
-    if (fakeTracks == nil)
-    {
-        fakeTracks = [[NSMutableArray alloc] init];
-        [fakeTracks retain];
-        
-        Track* track = [[[Track alloc] init] autorelease];
-        track.artist = @"quis";
-        track.title = @"Vestibulum interdum magna sed quam";
-        track.likes = rand() % 99999;
-        track.dislikes = rand() % 99999;
-        [fakeTracks addObject:track];
-        
-        track = [[[Track alloc] init] autorelease];
-        track.artist = @"quisque";
-        track.title = @"Etiam eu ante non leo egestas nonummy";
-        track.likes = rand() % 99999;
-        track.dislikes = rand() % 99999;
-        [fakeTracks addObject:track];
-
-        track = [[[Track alloc] init] autorelease];
-        track.artist = @"vivamus";
-        track.title = @"Maecenas tempus dictum libero";
-        track.likes = rand() % 99999;
-        track.dislikes = rand() % 99999;
-        [fakeTracks addObject:track];
-    }
-    
-    //LBDEBUG
-    NSInteger fakeTrackIndex = rand() % 3;
-    while (fakeTrackIndex == gFakeTrackIndex)
-        fakeTrackIndex = rand() % 3;
-    Track* track = [fakeTracks objectAtIndex:fakeTrackIndex];
-    gFakeTrackIndex = fakeTrackIndex;
-    
-    [self setNowPlaying:track];
-    
-    /////////////////////////////
-}
-
-//////////////////
+//....................................................................
+//
+// onUpdate
+//
+// timer callback to call for updates from server
+//
 
 - (void)onUpdate:(NSTimer*)timer
 {
@@ -503,113 +437,26 @@ static NSInteger gFakeTrackIndex = -1;
 }
 
 
-//- (void)requestStarted:(ASIHTTPRequest *)request
-//{
-//    NSLog(@"requestStarted");
-//}
-
-//- (void)requestFailed:(ASIHTTPRequest *)request
-//{
-//    NSLog(@"RadioViewController update requestFailed");
-//}
-
-
-//- (void)requestFinished:(ASIHTTPRequest *)request
-//{
-//    NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
-//    NSLog(@"status message: %@\n\n", request.responseStatusMessage);
-//    NSLog(@"cookies: %@\n\n", request.responseCookies);
-//    
-//    //clean message arrays
-//    [self.messages removeAllObjects];
-//    
-//    NSXMLParser* parser = [[NSXMLParser alloc] initWithData:request.responseData];
-//    [parser setDelegate:self];
-//    [parser parse];
-//    
-//    [_tableView reloadData];    
-//}
 
 
 
-#pragma mark - NSXLMParser Delegate
-
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict 
-{
-    //NSLog(@"XML start element: %@", elementName);
-    
-    if ( [elementName isEqualToString:@"post"]) 
-        _currentMessage = [[Message alloc] init];
-}
-
-
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string 
-{
-    if (!_currentXMLString)
-        _currentXMLString = [[NSMutableString alloc] initWithCapacity:50];
-
-    [_currentXMLString appendString:string];
-}
 
 
 
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
-{
-    NSString* str = [_currentXMLString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-
-    //NSLog(@"XML end element: %@", elementName);
-    
-    if ([elementName isEqualToString:@"post"]) 
-    {
-        if ([self.messages count] < _currentMessage.identifier - 1)
-        {
-            //NSLog(@"New post: %d\n", _currentMessage.identifier);
-
-            Message* m = [[Message alloc] init];
-            m.user = _currentMessage.user;
-            m.date = _currentMessage.date;
-            m.text = _currentMessage.text;
-            
-            // compute the size of the text => will allow to update the cell's height dynamically
-            CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-            m.textHeight = suggestedSize.height;
-
-            
-            [self.messages insertObject:m atIndex:0];
-        }
-        else
-            [_currentMessage release];
-            _currentMessage = nil;
-    }
-    else if ([elementName isEqualToString:@"id"]) 
-    {
-        _currentMessage.identifier = str.intValue;
-    }
-    else if ([elementName isEqualToString:@"kind"]) 
-    {
-        _currentMessage.kind = str;
-    }
-    else if ([elementName isEqualToString:@"author"]) 
-    {
-        _currentMessage.user = str;
-    }
-    else if ([elementName isEqualToString:@"date"]) 
-    {
-        _currentMessage.date = str;
-    }
-    else if ([elementName isEqualToString:@"message"]) 
-    {
-        _currentMessage.text = str;
-    }
-
-    [_currentXMLString release];
-    _currentXMLString = nil;
-}
 
 
+
+
+
+
+//.................................................................................................
+//
+// NOW PLAYING
+//
 
 
 #pragma mark - Now Playing
+
 - (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes
 {
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -682,9 +529,116 @@ static NSInteger gFakeTrackIndex = -1;
 }
 
 
+
+
+
+//.................................................................................................
+//
+// MESSAGES
+//
+
+- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(UIImage*)avatar date:(NSString*)date silent:(BOOL)silent
+{
+    Message* m = [[Message alloc] init];
+    m.user = user;
+    m.avatar = avatar;
+    m.date = date;
+    m.text = text;
+
+    // compute the size of the text => will allow to update the cell's height dynamically
+    CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+    m.textHeight = suggestedSize.height;
+
+    [self.messages insertObject:m atIndex:0];
+    
+    if (!silent)
+    {
+        [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+    }
+}
+         
+
+
+
+//.................................................................................................
+//
+// TABLE VIEW DELEGATE
+//
+
+#pragma mark - TableView Source and Delegate
+
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    return nil;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+{
+    //    NSLog(@"number messages %d", [self.messages count]);
+    return [self.messages count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    Message* m = [self.messages objectAtIndex:indexPath.row];
+    
+    return m.textHeight + _cellMinHeight;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    static NSString* CellIdentifier = @"RadioViewCell";
+    
+    Message* m = [self.messages objectAtIndex:indexPath.row];
+    
+    RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier message:m indexPath:indexPath] autorelease];
+    }
+    else
+        [cell update:m indexPath:indexPath];
+    
+    return cell;
+}
+
+
+
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//}
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//..........................................................................................................
+//
+// STATUS BAR
+//
+//
+
 #pragma mark - Status Bar
 
-- (void)setStatusMessage:(NSString*)msg
+- (void)setStatusMessage:(NSString*)message
 {
     if (_statusBarButtonToggled)
         return;
@@ -693,7 +647,7 @@ static NSInteger gFakeTrackIndex = -1;
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* label = [sheet makeLabel];
-    label.text = msg;
+    label.text = message;
     label.alpha = 1;
     [_statusBar addSubview:label];
 
@@ -748,6 +702,93 @@ static NSInteger gFakeTrackIndex = -1;
     [self.statusMessages removeObject:label];
 }
 
+
+
+
+
+
+
+
+
+
+
+
+//..........................................................................................................
+//
+// TEXTFIELD DELEGATE
+//
+//
+
+#pragma mark - TextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField endEditing:TRUE];
+    [self sendMessage:textField.text];
+    textField.text = nil;
+    return FALSE;
+}
+
+
+- (void)sendMessage:(NSString *)message
+{
+    
+#if LOCAL
+    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpostAPI/"];
+#else
+    NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/sendpostAPI/"];
+#endif
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    //[request addPostValue:@"jmp" forKey:@"author"];
+    //[request addPostValue:@"meeloo" forKey:@"author"];
+    [request addPostValue:[[UIDevice currentDevice] name] forKey:@"author"];
+    
+    [request addPostValue:@"pipo" forKey:@"password"];
+    [request addPostValue:@"text" forKey:@"kind"];
+    [request addPostValue:message forKey:@"posttext"];
+    [request setDelegate:self];
+    [request setDidFailSelector:@selector(sendMessageFailed:)];
+    [request setDidFinishSelector:@selector(sendMessageFinished:)];    
+    
+    NSLog(@"\nSENDMESSAGE '%@'\n", message);
+    
+    //    [request startAsynchronous];
+    [request startSynchronous];
+}
+
+
+- (void)sendMessageFailed:(ASIHTTPRequest *)request
+{
+    NSLog(@"sendMessage failed.");
+}
+
+- (void)sendMessageFinished:(ASIHTTPRequest*)request
+{
+    NSLog(@"sendMessage finished with code %d", request.responseStatusCode);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//..........................................................................................................
+//
+// IBACTIONS
+//
+// [...], status bar button action
+//
 
 #pragma mark - IBActions
 
@@ -863,20 +904,131 @@ static NSInteger gFakeTrackIndex = -1;
 
 
 
-//- (NSString*) getWall
+//.................................................................................................
+//
+// DEPRECATED CODE
+//
+
+
+
+
+
+
+
+
+
+//- (void)requestStarted:(ASIHTTPRequest *)request
 //{
-//    // Needed to init cookies
-//#if LOCAL
-//    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/all/"];  
-//#else
-//    NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/all/"];
-//#endif
-//    
-//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-//    [request setDelegate:self];
-//    [request startSynchronous];
-//    
-//    //NSLog(@"Request sent, response we got: %@\n\n", request.responseString);
-//    return request.responseString;
+//    NSLog(@"requestStarted");
 //}
+
+//- (void)requestFailed:(ASIHTTPRequest *)request
+//{
+//    NSLog(@"RadioViewController update requestFailed");
+//}
+
+
+//- (void)requestFinished:(ASIHTTPRequest *)request
+//{
+//    NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
+//    NSLog(@"status message: %@\n\n", request.responseStatusMessage);
+//    NSLog(@"cookies: %@\n\n", request.responseCookies);
+//    
+//    //clean message arrays
+//    [self.messages removeAllObjects];
+//    
+//    NSXMLParser* parser = [[NSXMLParser alloc] initWithData:request.responseData];
+//    [parser setDelegate:self];
+//    [parser parse];
+//    
+//    [_tableView reloadData];    
+//}
+
+
+
+
+
+
+
+
+//
+//#pragma mark - NSXLMParser Delegate
+//
+//- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict 
+//{
+//    //NSLog(@"XML start element: %@", elementName);
+//    
+//    if ( [elementName isEqualToString:@"post"]) 
+//        _currentMessage = [[Message alloc] init];
+//        }
+//
+//
+//- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string 
+//{
+//    if (!_currentXMLString)
+//        _currentXMLString = [[NSMutableString alloc] initWithCapacity:50];
+//        
+//        [_currentXMLString appendString:string];
+//}
+//
+//
+//
+//- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+//{
+//    NSString* str = [_currentXMLString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//    
+//    //NSLog(@"XML end element: %@", elementName);
+//    
+//    if ([elementName isEqualToString:@"post"]) 
+//    {
+//        if ([self.messages count] < _currentMessage.identifier - 1)
+//        {
+//            //NSLog(@"New post: %d\n", _currentMessage.identifier);
+//            
+//            Message* m = [[Message alloc] init];
+//            m.user = _currentMessage.user;
+//            m.date = _currentMessage.date;
+//            m.text = _currentMessage.text;
+//            
+//            // compute the size of the text => will allow to update the cell's height dynamically
+//            CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+//            m.textHeight = suggestedSize.height;
+//            
+//            
+//            [self.messages insertObject:m atIndex:0];
+//        }
+//        else
+//            [_currentMessage release];
+//        _currentMessage = nil;
+//    }
+//    else if ([elementName isEqualToString:@"id"]) 
+//    {
+//        _currentMessage.identifier = str.intValue;
+//    }
+//    else if ([elementName isEqualToString:@"kind"]) 
+//    {
+//        _currentMessage.kind = str;
+//    }
+//    else if ([elementName isEqualToString:@"author"]) 
+//    {
+//        _currentMessage.user = str;
+//    }
+//    else if ([elementName isEqualToString:@"date"]) 
+//    {
+//        _currentMessage.date = str;
+//    }
+//    else if ([elementName isEqualToString:@"message"]) 
+//    {
+//        _currentMessage.text = str;
+//    }
+//    
+//    [_currentXMLString release];
+//    _currentXMLString = nil;
+//}
+
+
+
+
+
+
 

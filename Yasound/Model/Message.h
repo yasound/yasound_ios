@@ -13,6 +13,7 @@
 @property (retain, nonatomic) NSString* kind;
 @property (retain, nonatomic) NSString* date;
 @property (retain, nonatomic) NSString* user;
+@property (retain, nonatomic) UIImage* avatar;
 @property (retain, nonatomic) NSString* text;
 @property (nonatomic) CGFloat textHeight;
 

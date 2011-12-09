@@ -14,6 +14,7 @@
 @synthesize date;
 @synthesize user;
 @synthesize text;
+@synthesize avatar;
 @synthesize textHeight;
 
 @end

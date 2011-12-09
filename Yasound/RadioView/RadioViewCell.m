@@ -27,8 +27,6 @@
     if (self) 
     {
         BundleStylesheet* sheet = nil;
-//        self.background = [[UIView alloc] init];
-//        UIView* view = self.background;
         self.background = self.contentView;
         UIView* view = self.background;
         
@@ -41,7 +39,7 @@
         
         // avatar
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellAvatar" error:nil];
-        self.avatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy2.png"]];
+        self.avatar = [[UIImageView alloc] initWithImage:m.avatar];
         self.avatar.frame = sheet.frame;
         [self.avatar.layer setBorderColor: [sheet.color CGColor]];
         [self.avatar.layer setBorderWidth: [[sheet.customProperties objectForKey:@"borderSize"] integerValue]];    
