@@ -12,13 +12,17 @@
 #import "Track.h"
 #import "RadioViewCell.h"
 
+#import "YasoundDataProvider.h"
+#import "WallEvent.h"
+
+
 //#define LOCAL 1 // use localhost as the server
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
 
 @implementation RadioViewController
 
-
+@synthesize radio;
 @synthesize messages;
 @synthesize statusMessages;
 
@@ -28,6 +32,9 @@
     self = [super init];
     if (self) 
     {
+        self.radio = [[Radio alloc] init];
+        self.radio.id = [NSNumber numberWithInt:1];
+
         self.messages = [[NSMutableArray alloc] init];
         self.statusMessages = [[NSMutableArray alloc] init];
         
@@ -214,7 +221,6 @@
 
     
     [self onUpdate:nil];
-    
 }
 
 
@@ -233,8 +239,8 @@
     _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];    
 
     // LBDEBUG fake timer for status messages
-    [self onFakeUpdateStatus:nil];
-    _timerFake = [NSTimer scheduledTimerWithTimeInterval:3.f target:self selector:@selector(onFakeUpdateStatus:) userInfo:nil repeats:YES];
+//    [self onFakeUpdateStatus:nil];
+//    _timerFake = [NSTimer scheduledTimerWithTimeInterval:3.f target:self selector:@selector(onFakeUpdateStatus:) userInfo:nil repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -379,7 +385,6 @@
 
 
 
-
 #pragma mark - Data 
 
 
@@ -451,25 +456,51 @@ static NSInteger gFakeTrackIndex = -1;
 //    NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/all/"];
 //#endif
     
-#if LOCAL
-    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/allAPI/"];
-#else
-    NSURL *url = [NSURL URLWithString:@"http://dev.yasound.com/yaapp/wall/allAPI/"];
-#endif
-
-    
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setDelegate:self];
-    [request startSynchronous];
+//#if LOCAL
+//    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/allAPI/"];
+//#else
+//    NSURL *url = [NSURL URLWithString:@"http://dev.yasound.com/yaapp/wall/allAPI/"];
+//#endif
+//
+//    
+//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+//    [request setDelegate:self];
+//    [request startSynchronous];
 
     // asynchronous
 //	ASIHTTPRequest *request = [ASIFormDataRequest requestWithURL:url];
 //	[request setDelegate:self];
 //	[request startAsynchronous];
+
     
+    [[YasoundDataProvider main] getWallEventsForRadio:self.radio notifyTarget:self byCalling:@selector(receiveWallEvents:withInfo:)];
     
+}
+
+
+- (void)receiveWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
+{
+    Meta* meta = [info valueForKey:@"meta"];
+    NSError* err = [info valueForKey:@"error"];
     
+    if (err)
+    {
+        NSLog(@"receiveWallEvents error!");
+        return;
+    }
     
+    if (!meta)
+    {
+        NSLog(@"receiveWallEvents : no meta data!");
+        return;
+    }
+    
+    NSLog(@"receiveWallEvents meta: %@", [meta toString]);
+    
+    for (WallEvent* w in events) 
+    {
+        NSLog(@"ev: %@", [w toString]);
+    }
 }
 
 
@@ -478,27 +509,27 @@ static NSInteger gFakeTrackIndex = -1;
 //    NSLog(@"requestStarted");
 //}
 
-- (void)requestFailed:(ASIHTTPRequest *)request
-{
-    NSLog(@"RadioViewController update requestFailed");
-}
+//- (void)requestFailed:(ASIHTTPRequest *)request
+//{
+//    NSLog(@"RadioViewController update requestFailed");
+//}
 
 
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
-    NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
-    NSLog(@"status message: %@\n\n", request.responseStatusMessage);
-    NSLog(@"cookies: %@\n\n", request.responseCookies);
-    
-    //clean message arrays
-    [self.messages removeAllObjects];
-    
-    NSXMLParser* parser = [[NSXMLParser alloc] initWithData:request.responseData];
-    [parser setDelegate:self];
-    [parser parse];
-    
-    [_tableView reloadData];    
-}
+//- (void)requestFinished:(ASIHTTPRequest *)request
+//{
+//    NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
+//    NSLog(@"status message: %@\n\n", request.responseStatusMessage);
+//    NSLog(@"cookies: %@\n\n", request.responseCookies);
+//    
+//    //clean message arrays
+//    [self.messages removeAllObjects];
+//    
+//    NSXMLParser* parser = [[NSXMLParser alloc] initWithData:request.responseData];
+//    [parser setDelegate:self];
+//    [parser parse];
+//    
+//    [_tableView reloadData];    
+//}
 
 
 

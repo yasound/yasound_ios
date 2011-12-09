@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "Message.h"
 
+@class Radio;
 
 @interface RadioViewController : UIViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource>
 {
@@ -32,8 +33,8 @@
     NSTimer* _timerFake;
 }
 
+@property (nonatomic, retain) Radio* radio;
 @property (nonatomic, retain) NSMutableArray* messages;
-
 @property (atomic, retain) NSMutableArray* statusMessages;
 
 @end
