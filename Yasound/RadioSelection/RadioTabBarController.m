@@ -46,16 +46,16 @@
   self.tabBar.tintColor = stylesheet.color;
 
   // Mon Yasound
-  MyYasoundViewController* view1 = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil title:NSLocalizedString(@"selection_tab_myyasound", nil) tabIcon:@"tabIcon_MyYasound"];
+  MyYasoundViewController* view1 = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil title:NSLocalizedString(@"selection_tab_myyasound", nil) tabIcon:@"tabIconMyYasound.png"];
   
   // Selection
-  RadioSelectionViewController* view2 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTSelection title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIcon_Selection"];
+  RadioSelectionViewController* view2 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTSelection title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIconFavorites.png"];
   
   // Top
-  RadioSelectionViewController* view3 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTTop title:NSLocalizedString(@"selection_tab_top", nil) tabIcon:@"tabIcon_Top"];
+  RadioSelectionViewController* view3 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTTop title:NSLocalizedString(@"selection_tab_top", nil) tabIcon:@"tabIconTop.png"];
   
   // Nouveautés
-  RadioSelectionViewController* view4 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTNew title:NSLocalizedString(@"selection_tab_new", nil) tabIcon:@"tabIcon_New"];
+  RadioSelectionViewController* view4 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTNew title:NSLocalizedString(@"selection_tab_new", nil) tabIcon:@"tabIconNew.png"];
   
   // Rechercher
   RadioSearchViewController* view5 = [[RadioSearchViewController alloc] initWithNibName:@"RadioSearchViewController" bundle:nil title:NSLocalizedString(@"selection_tab_search", nil) tabItem:UITabBarSystemItemSearch];
