@@ -17,6 +17,12 @@
 @synthesize limit;
 @synthesize offset;
 
+- (NSString*)toString
+{
+  NSString* desc = [NSString stringWithFormat:@"total_count: '%@', previous: '%@', next: '%@', limit: '%@', offset: '%@'", self.total_count, self.previous, self.next, self.limit, self.offset];
+  return desc;
+}
+
 @end
 
 @implementation Container

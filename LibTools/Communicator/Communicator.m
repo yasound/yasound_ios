@@ -181,11 +181,29 @@
 #pragma mark - asynchronous tools
 - (void)notifytarget:(id)target byCalling:(SEL)selector withObject:(id)obj andSuccess:(BOOL)succeeded
 {
+  NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
+  
+  
   NSError* err = nil;
   if (!succeeded)
     err = [NSError errorWithDomain:@"CommunicatorRequestFail" code:1 userInfo:nil];
   
-  [target performSelector:selector withObject:obj withObject:err];
+  id result = obj;
+  if (obj != nil && [obj class] == [Container class])
+  {
+    Container* container = (Container*)obj;
+    Meta* meta = container.meta;
+    result = container.objects;
+    
+    [meta retain];
+    [result retain];
+    [container release];
+    
+    [info setValue:meta forKey:@"meta"];
+  }
+  
+  [info setValue:err forKey:@"error"];
+  [target performSelector:selector withObject:result withObject:info];
 }
 
 
