@@ -124,20 +124,8 @@
   
   
   // #FIXME MatTest
-//  Radio* radio = [[Radio alloc] init];
-//  radio.id = [NSNumber numberWithInt:1];
-//  [[YasoundDataProvider main] getWallEventsForRadio:radio notifyTarget:self byCalling:@selector(receiveWallEvents:withInfo:)];
-
-    [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
-  
-//  SongMetadata* metadata = [[SongMetadata alloc] init];
-//  metadata.name = @"my song";
-//  metadata.artist_name = @"me";
-//  metadata.album_name = @" my album";
-//  metadata.duration = [NSNumber numberWithFloat:60];
-//  [[YasoundDataProvider main] postNewSongMetadata:metadata target:self action:@selector(metadataPosted:withInfo:)];
-
-    // #FIXME MatTest end
+//  [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
+  // #FIXME MatTest end
 
   return YES;
 }
