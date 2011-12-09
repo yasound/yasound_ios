@@ -60,6 +60,7 @@ extern NSArray* gFakeUsersFavorites;
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;
 - (IBAction)onmSegmentClicked:(id)sender;
+- (IBAction)onSubmitClicked:(id)sender;
 
 @end
 

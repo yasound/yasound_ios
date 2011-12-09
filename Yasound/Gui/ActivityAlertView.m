@@ -11,6 +11,31 @@
 
 @synthesize activityView;
 
+static ActivityAlertView* _alertView = nil;
+
++ (void)showWithTitle:(NSString *)title message:(NSString *)message
+{
+    if (_alertView)
+    {
+        [_alertView close];
+        [_alertView release];
+    }
+    
+    _alertView = [[ActivityAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    [_alertView show];
+}
+
++ (void)close
+{
+    if (_alertView == nil)
+        return;
+    [_alertView close];
+    [_alertView release];
+    _alertView = nil;
+}
+
+
+
 - (id)initWithFrame:(CGRect)frame
 {
   if ((self = [super initWithFrame:frame]))

@@ -14,6 +14,11 @@
 
 @property (nonatomic, retain) UIActivityIndicatorView *activityView;
 
-- (void) close;
++ (void)showWithTitle:(NSString *)title message:(NSString *)message;
++ (void)close;
+
+
+// initWithTitle from UIAlertView
+- (void)close;
 
 @end

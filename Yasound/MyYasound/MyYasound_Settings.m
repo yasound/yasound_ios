@@ -13,6 +13,7 @@
 #import "StyleSelectorViewController.h"
 #import "ThemeSelectorViewController.h"
 #import "Theme.h"
+#import "ActivityAlertView.h"
 #import <QuartzCore/QuartzCore.h>
 #import <MediaPlayer/MediaPlayer.h>
 
@@ -379,6 +380,24 @@
 }
 
 
+
+#pragma mark - IBActions
+
+- (IBAction)onSubmitClicked:(id)sender
+{
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //fake commnunication
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"msg_submit_title", nil) message:NSLocalizedString(@"msg_submit_body", nil)];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
+}
+
+//LBDEBUG
+- (void)onFakeSubmitAction:(NSTimer*)timer
+{
+    [ActivityAlertView close];
+}
 
 
 @end
