@@ -10,4 +10,6 @@
 
 @interface RadioTabBarController : UITabBarController
 
+- (id)init;
+
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "LoginViewController.h"
+#import "RadioTabBarController.h"
+
+
 
 @implementation LoginViewController
 
@@ -47,5 +50,84 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+
+
+
+
+
+
+#pragma mark - TableView Source and Delegate
+
+
+
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+{
+    return 3;
+}
+
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    static NSString* CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) 
+    {
+        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    switch (indexPath.row)
+    {
+        case 0: 
+        {
+            cell.textLabel.text = NSLocalizedString(@"login_facebook", nil);
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            [cell.imageView setImage:[UIImage imageNamed:@"loginIconFacebook.png"]];
+            break;
+        }
+            
+        case 1: 
+        {
+            cell.textLabel.text = NSLocalizedString(@"login_twitter", nil);
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            [cell.imageView setImage:[UIImage imageNamed:@"loginIconTwitter.png"]];
+            break;
+        }
+
+        case 2: 
+        {
+            cell.textLabel.text = NSLocalizedString(@"login_yasound", nil);
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            [cell.imageView setImage:[UIImage imageNamed:@"loginIconYasound.png"]];
+            break;
+        }
+
+    }
+    
+    return cell;
+}
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
+    [self.navigationController pushViewController:tabBarController animated:YES];
+}
+
+
+
 
 @end

@@ -16,10 +16,11 @@
 @synthesize genre;
 @synthesize theme;
 @synthesize url;
+@synthesize playlists;
 
 -(NSString*)toString
 {
-  NSString* desc = [NSString stringWithFormat:@"name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', url: '%@'", self.name, self.creator, self.description, self.genre, self.theme, self.url];
+  NSString* desc = [NSString stringWithFormat:@"name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', url: '%@' playlist count: '%d", self.name, self.creator, self.description, self.genre, self.theme, self.url, [self.playlists count]];
   return desc;
 }
 

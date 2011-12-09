@@ -18,7 +18,7 @@
 
 - (NSString*)toString
 {
-  NSString* desc = [NSString stringWithFormat:@"type: '%@', text: '%@'", self.type, self.text];
+  NSString* desc = [NSString stringWithFormat:@"id: '%@' type: '%@', text: '%@'", self.id, self.type, self.text];
   return desc;
 }
 @end

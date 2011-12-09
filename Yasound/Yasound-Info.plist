@@ -472,11 +472,11 @@
 			</dict>
 			<dict>
 				<key>bundle</key>
-				<string>jazz</string>
+				<string>blues</string>
 				<key>description</key>
-				<string>theme_jazz_description</string>
+				<string>theme_blues_description</string>
 				<key>name</key>
-				<string>theme_jazz</string>
+				<string>theme_blues</string>
 			</dict>
 		</array>
 	</dict>

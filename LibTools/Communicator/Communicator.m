@@ -9,7 +9,6 @@
 #import "Communicator.h"
 #import "NSObject+PropertyDictionary.h"
 #import "NSObject+SBJson.h"
-#import "Container.h"
 
 @interface Communicator (Communicator_internal)
 - (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute;
@@ -58,7 +57,7 @@
 
 #pragma mark - synchronous tools
 
-- (NSArray*)getObjectsWithRequest:(ASIHTTPRequest*)req andClass:(Class)objectClass
+- (Container*)getObjectsWithRequest:(ASIHTTPRequest*)req andClass:(Class)objectClass
 {
   if (!req)
     return nil;
@@ -70,10 +69,7 @@
   
   Container* container = [[Container alloc] initWithObjectClass:objectClass];
   [container loadPropertiesFromJsonString:response];
-  NSArray* objects = container.objects;
-  [objects retain];
-  [container release];
-  return objects;
+  return container;
 }
 
 - (id)getObjectWithRequest:(ASIHTTPRequest*)req andClass:(Class)objectClass
@@ -114,11 +110,11 @@
 
 
 #pragma mark -  synchronous requests
-- (NSArray*)getObjectsWithClass:(Class)objectClass
+- (Container*)getObjectsWithClass:(Class)objectClass
 {
   ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass];
-  NSArray* objects = [self getObjectsWithRequest:req andClass:objectClass];
-  return objects;
+  Container* container = [self getObjectsWithRequest:req andClass:objectClass];
+  return container;
 }
 
 - (id)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID
@@ -148,11 +144,11 @@
 
 
 #pragma mark - synchronous requests with URL
-- (NSArray*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
+- (Container*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
 {
   ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute];
-  NSArray* objects = [self getObjectsWithRequest:req andClass:objectClass];
-  return objects;
+  Container* container = [self getObjectsWithRequest:req andClass:objectClass];
+  return container;
 }
 
 - (id)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
@@ -348,8 +344,7 @@
     return;
   }
   
-  NSArray* objects = container.objects;
-  [self notifytarget:target byCalling:selector withObject:objects andSuccess:YES];
+  [self notifytarget:target byCalling:selector withObject:container andSuccess:YES];
 }
 
 // GET handler

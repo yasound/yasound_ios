@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Model.h"
+#import "Container.h"
 #import "ASIHttpRequest.h"
 
 @interface Communicator : NSObject <ASIHTTPRequestDelegate>
@@ -23,13 +24,13 @@
 
 
 #pragma mark - synchronous requests
-- (NSArray*)getObjectsWithClass:(Class)objectClass;
+- (Container*)getObjectsWithClass:(Class)objectClass;
 - (id)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID;
 - (void)postNewObject:(Model*)obj;
 - (void)updateObject:(Model*)obj;
 - (void)deleteObject:(Model*)obj;
 
-- (NSArray*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
+- (Container*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
 - (id)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
 - (void)postNewObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
 - (void)updateObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
