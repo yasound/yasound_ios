@@ -212,8 +212,6 @@
     _statusUsers = nil;
     
     
-
-    
     //....................................................................................
     //
     // add objects that must display ABOVE the extra layer
@@ -221,8 +219,10 @@
     [self.view addSubview:messageBar];
 
     
+    // get the actual data from the server to update the GUI
     [self onUpdate:nil];
 }
+
 
 
 - (void)viewDidAppear:(BOOL)animated
@@ -610,28 +610,24 @@ static NSInteger gFakeTrackIndex = -1;
 
 
 #pragma mark - Now Playing
-- (void)setNowPlaying:(Track*)track
+- (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes
 {
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 
     CGRect frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
     UIView* view = [[UIView alloc] initWithFrame:frame];
                     
-    //LBDEBUG
-    NSInteger randIndex = (rand() %5)+1;
-    UIImage* avatar = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    
     // header now playing bar track image 
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarImage" error:nil];
-    UIImageView* image = [[UIImageView alloc] initWithImage:avatar];
-    image.frame = sheet.frame;
-    [view addSubview:image];
+    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = sheet.frame;
+    [view addSubview:imageView];
     
     // header now playing bar track image mask
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarMask" error:nil];
-    image = [[UIImageView alloc] initWithImage:[sheet image]];
-    image.frame = sheet.frame;
-    [view addSubview:image];
+    imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+    imageView.frame = sheet.frame;
+    [view addSubview:imageView];
     
     
     // header now playing bar label
@@ -642,54 +638,38 @@ static NSInteger gFakeTrackIndex = -1;
     // header now playing bar artist
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarArtist" error:nil];
     label = [sheet makeLabel];
-    label.text = track.artist;
+    label.text = artist;
     [view addSubview:label];
     
     // header now playing bar title
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarTitle" error:nil];
     label = [sheet makeLabel];
-    label.text = track.title;
+    label.text = title;
     [view addSubview:label];
     
     // header now playing bar likes image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikesImage" error:nil];
-    image = [[UIImageView alloc] initWithImage:[sheet image]];
-    image.frame = sheet.frame;
-    [view addSubview:image];
+    imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+    imageView.frame = sheet.frame;
+    [view addSubview:imageView];
     
     // header now playing bar likes
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikes" error:nil];
     label = [sheet makeLabel];
-    label.text = [NSString stringWithFormat:@"%d", track.likes];
+    label.text = [NSString stringWithFormat:@"%d", nbLikes];
     [view addSubview:label];
     
     // header now playing bar dislikes image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikesImage" error:nil];
-    image = [[UIImageView alloc] initWithImage:[sheet image]];
-    image.frame = sheet.frame;
-    [view addSubview:image];
+    imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+    imageView.frame = sheet.frame;
+    [view addSubview:imageView];
     
     // header now playing bar dislikes
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikes" error:nil];
     label = [sheet makeLabel];
-    label.text = [NSString stringWithFormat:@"%d", track.dislikes];
+    label.text = [NSString stringWithFormat:@"%d", nbDislikes];
     [view addSubview:label];
-    
-//    [self.view addSubview:view];
-
-//    [UIView beginAnimations:nil context:nil];
-//    [UIView setAnimationDuration:1.0];
-//    [UIView setAnimationBeginsFromCurrentState:YES];
-//    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:view cache:YES];
-//    
-////    UIView *parent = self.view.superview;
-//    if (_playingNowView)
-//        [_playingNowView removeFromSuperview];
-//
-//    [self.view addSubview:view];
-//    
-//    [UIView commitAnimations];   
-
     
     [UIView transitionWithView:_playingNowContainer
                       duration:0.5

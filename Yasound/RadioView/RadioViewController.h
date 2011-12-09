@@ -11,6 +11,7 @@
 @class Radio;
 @class AudioStreamer;
 
+
 @interface RadioViewController : UIViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource>
 {
     UITableView* _tableView;
@@ -39,5 +40,10 @@
 @property (atomic, retain) NSMutableArray* statusMessages;
 
 @property (nonatomic, retain) AudioStreamer* audioStreamer;
+
+
+
+- (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
+
 
 @end
