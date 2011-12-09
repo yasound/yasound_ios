@@ -38,14 +38,6 @@
   
 //  Entry* e = [communicator getObjectWithClass:[Entry class] andID:[NSNumber numberWithInt:5]];
 //  [communicator deleteObject:e notifyTarget:self byCalling:@selector(resultDELETE:withError:)];
-  
-  
-//  NSArray* entries = [communicator getObjectsWithClass:[Entry class]];
-//  NSLog(@"nb entries: %d", [entries count]);
-//  for (Entry* e in entries)
-//  {
-//    NSLog(@"entry id = '%@' title = '%@' slug = '%@' body = '%@' \n\tuser: first name = '%@' last name = '%@' username = '%@' user id = '%@'", e.id, e.title, e.slug, e.body, e.user.first_name, e.user.last_name, e.user.username, e.user.id);
-//  }
 
   
   [communicator getObjectsWithClass:[Entry class] notifyTarget:self byCalling:@selector(resultGETALL:withError:)];

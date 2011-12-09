@@ -11,6 +11,10 @@
 @interface Meta : NSObject 
 
 @property (assign) NSNumber* total_count;
+@property (retain, nonatomic) NSString* previous;
+@property (retain, nonatomic) NSString* next;
+@property (retain, nonatomic) NSNumber* limit;
+@property (retain, nonatomic) NSNumber* offset;
 
 @end
 

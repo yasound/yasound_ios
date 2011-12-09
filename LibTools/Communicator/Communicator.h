@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Model.h"
+#import "Container.h"
 #import "ASIHttpRequest.h"
 
 @interface Communicator : NSObject <ASIHTTPRequestDelegate>
@@ -23,11 +24,17 @@
 
 
 #pragma mark - synchronous requests
-- (NSArray*)getObjectsWithClass:(Class)objectClass;
+- (Container*)getObjectsWithClass:(Class)objectClass;
 - (id)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID;
 - (void)postNewObject:(Model*)obj;
 - (void)updateObject:(Model*)obj;
 - (void)deleteObject:(Model*)obj;
+
+- (Container*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
+- (id)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
+- (void)postNewObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
+- (void)updateObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
+- (void)deleteObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
 
 
 #pragma mark - asynchronous requests
@@ -36,5 +43,11 @@
 - (void)postNewObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector;
 - (void)updateObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector;
 - (void)deleteObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector;
+
+- (void)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector;
+- (void)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector;
+- (void)postNewObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector;
+- (void)updateObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector;
+- (void)deleteObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector;
 
 @end

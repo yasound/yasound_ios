@@ -12,6 +12,10 @@
 @implementation Meta
 
 @synthesize total_count;
+@synthesize previous;
+@synthesize next;
+@synthesize limit;
+@synthesize offset;
 
 @end
 
