@@ -406,6 +406,9 @@
   SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
   Model* obj            = [userinfo valueForKey:@"object"];
   
+  NSString* response = request.responseString;
+  NSLog(@"response: %@", response);
+  
   [self notifytarget:target byCalling:selector withObject:obj andSuccess:succeeded];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "YasoundDataProvider.h"
-#import "WallEvent.h"
+
 
 #define LOCAL_SERVER 1
 
@@ -41,6 +41,11 @@ static YasoundDataProvider* _main = nil;
     baseUrl = DEV_URL;
 #endif
     _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];
+    
+    [_communicator mapResourcePath:@"radio" toObject:[Radio class]];
+    [_communicator mapResourcePath:@"user" toObject:[User class]];
+    [_communicator mapResourcePath:@"wall_event" toObject:[WallEvent class]];
+    [_communicator mapResourcePath:@"metadata" toObject:[SongMetadata class]];
   }
   
   return self;
@@ -49,12 +54,57 @@ static YasoundDataProvider* _main = nil;
 
 
 
-// get wall events
-- (void)getWallEventsForRadio:(Radio*)radio notifyTarget:(id)target byCalling:(SEL)selector
+- (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;
 {
+  [_communicator getObjectWithClass:[Radio class] andID:[NSNumber numberWithInt:ID] notifyTarget:target byCalling:selector];
+}
+
+- (void)radioWithURL:(NSString*)url target:(id)target action:(SEL)selector
+{
+  [_communicator getObjectsWithClass:[WallEvent class] withURL:url absolute:YES notifyTarget:target byCalling:selector];
+}
+
+// get wall events
+- (void)wallEventsForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+  if (radio == nil)
+    return;
   NSNumber* radioID = radio.id;
   NSString* relativeUrl = [NSString stringWithFormat:@"radio/%@/wall", radioID];
   [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector];
+}
+
+- (void)postNewWallMessage:(WallEvent*)message target:(id)target action:(SEL)selector
+{
+  [_communicator postNewObject:message notifyTarget:target byCalling:selector];
+}
+
+
+
+
+
+
+- (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+  if (radio == nil)
+    return;
+  NSNumber* radioID = radio.id;
+  NSString* relativeUrl = [NSString stringWithFormat:@"radio/%@/likes", radioID];
+  [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector];
+}
+
+- (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+  if (radio == nil)
+    return;
+  NSNumber* radioID = radio.id;
+  NSString* relativeUrl = [NSString stringWithFormat:@"radio/%@/connected_users", radioID];
+  [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector];
+}
+
+- (void)postNewSongMetadata:(SongMetadata*)metadata target:(id)target action:(SEL)selector
+{
+  [_communicator postNewObject:metadata notifyTarget:target byCalling:selector];
 }
 
 @end
