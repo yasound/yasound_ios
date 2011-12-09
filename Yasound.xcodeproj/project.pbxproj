@@ -40,6 +40,14 @@
 		405629AD147547380085518C /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4056299F147547380085518C /* ASIInputStream.m */; };
 		405629AE147547380085518C /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 405629A1147547380085518C /* ASINetworkQueue.m */; };
 		405629AF147547380085518C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 405629A6147547380085518C /* Reachability.m */; };
+		40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
+		40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
+		40AAEC58149224050031B39D /* SongMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC57149224050031B39D /* SongMetadata.m */; };
+		40AAEC5C149225070031B39D /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC5B149225070031B39D /* Song.m */; };
+		40AAEC5F149225DC0031B39D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC5E149225DC0031B39D /* User.m */; };
+		40AAEC60149225E80031B39D /* SongMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC57149224050031B39D /* SongMetadata.m */; };
+		40AAEC61149225EB0031B39D /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC5B149225070031B39D /* Song.m */; };
+		40AAEC62149225EE0031B39D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC5E149225DC0031B39D /* User.m */; };
 		BC0DD83B1487C73E00DCD550 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD83A1487C73E00DCD550 /* Message.m */; };
 		BC0DD83C1487C73E00DCD550 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD83A1487C73E00DCD550 /* Message.m */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
@@ -316,6 +324,14 @@
 		405629A2147547380085518C /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		405629A5147547380085518C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		405629A6147547380085518C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
+		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
+		40AAEC56149224050031B39D /* SongMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongMetadata.h; sourceTree = "<group>"; };
+		40AAEC57149224050031B39D /* SongMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongMetadata.m; sourceTree = "<group>"; };
+		40AAEC5A149225070031B39D /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		40AAEC5B149225070031B39D /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		40AAEC5D149225DC0031B39D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		40AAEC5E149225DC0031B39D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		BC0DD8391487C73E00DCD550 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		BC0DD83A1487C73E00DCD550 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
@@ -597,6 +613,15 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
+		40AAEC4714921ACE0031B39D /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				40AAEC4914921AE70031B39D /* YasoundDataProvider.h */,
+				40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
 		BC0DD8381487C73E00DCD550 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -608,6 +633,12 @@
 				40274BB114911B6F00F26008 /* Radio.m */,
 				40274BB71491205F00F26008 /* WallEvent.h */,
 				40274BB81491205F00F26008 /* WallEvent.m */,
+				40AAEC56149224050031B39D /* SongMetadata.h */,
+				40AAEC57149224050031B39D /* SongMetadata.m */,
+				40AAEC5A149225070031B39D /* Song.h */,
+				40AAEC5B149225070031B39D /* Song.m */,
+				40AAEC5D149225DC0031B39D /* User.h */,
+				40AAEC5E149225DC0031B39D /* User.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -899,6 +930,7 @@
 				40274B791491048900F26008 /* Communicator */,
 				BC9F413E147E8A5F00D417EF /* BundleFileManager */,
 				4056298D147547380085518C /* ASIHTTPRequest */,
+				40AAEC4714921ACE0031B39D /* DataProvider */,
 				BCFECFE31468439900BA20D9 /* Audio */,
 				BC0DD8381487C73E00DCD550 /* Model */,
 				BCFECFE61468439900BA20D9 /* Gui */,
@@ -1191,6 +1223,10 @@
 				40274BC71491288100F26008 /* Model.m in Sources */,
 				40274BC81491288500F26008 /* Radio.m in Sources */,
 				40274BC91491288900F26008 /* WallEvent.m in Sources */,
+				40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */,
+				40AAEC60149225E80031B39D /* SongMetadata.m in Sources */,
+				40AAEC61149225EB0031B39D /* Song.m in Sources */,
+				40AAEC62149225EE0031B39D /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1251,6 +1287,10 @@
 				40274BAF14910F3800F26008 /* NSObject+PropertyDictionary.m in Sources */,
 				40274BB214911B6F00F26008 /* Radio.m in Sources */,
 				40274BB91491205F00F26008 /* WallEvent.m in Sources */,
+				40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */,
+				40AAEC58149224050031B39D /* SongMetadata.m in Sources */,
+				40AAEC5C149225070031B39D /* Song.m in Sources */,
+				40AAEC5F149225DC0031B39D /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

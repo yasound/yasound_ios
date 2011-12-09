@@ -11,6 +11,12 @@
 //#import "RadioViewController.h"
 #import "LoginViewController.h"
 
+
+// #FIXME MatTest
+#import "YasoundDataProvider.h"
+#import "WallEvent.h"
+// #FIXME MatTest end
+
 @implementation YasoundAppDelegate
 
 
@@ -18,6 +24,28 @@
 @synthesize navigationController;
 //@synthesize tabBarController;
 @synthesize loginViewController;
+
+
+// #FIXME MatTest
+- (void)receiveWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
+{
+  Meta* meta = [info valueForKey:@"meta"];
+  NSError* err = [info valueForKey:@"error"];
+  
+  if (err)
+    return;
+  
+  if (!meta)
+    return;
+  
+  NSLog(@"meta: %@", [meta toString]);
+  
+  for (WallEvent* w in events) 
+  {
+    NSLog(@"ev: %@", [w toString]);
+  }
+}
+// #FIXME MatTest end
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -44,6 +72,13 @@
     
     loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     [self.navigationController pushViewController:loginViewController animated:YES];
+  
+  
+  // #FIXME MatTest
+  Radio* radio = [[Radio alloc] init];
+  radio.id = [NSNumber numberWithInt:1];
+  [[YasoundDataProvider main] getWallEventsForRadio:radio notifyTarget:self byCalling:@selector(receiveWallEvents:withInfo:)];
+  // #FIXME MatTest end
 
   return YES;
 }

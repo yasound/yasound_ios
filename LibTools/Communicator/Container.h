@@ -16,6 +16,8 @@
 @property (retain, nonatomic) NSNumber* limit;
 @property (retain, nonatomic) NSNumber* offset;
 
+- (NSString*)toString;
+
 @end
 
 
