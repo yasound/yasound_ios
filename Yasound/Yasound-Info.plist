@@ -46,7 +46,7 @@
 				<key>subtitle2</key>
 				<string>Bossa for Jackie (Summer Review)</string>
 				<key>title</key>
-				<string>Jenny&apos;s Radio</string>
+				<string>Jenny's Radio</string>
 			</dict>
 			<dict>
 				<key>id</key>
@@ -196,7 +196,7 @@
 				<key>subtitle2</key>
 				<string>Bossa for Jackie (Summer Review)</string>
 				<key>title</key>
-				<string>Jenny&apos;s Radio</string>
+				<string>Jenny's Radio</string>
 			</dict>
 			<dict>
 				<key>id</key>
@@ -208,11 +208,11 @@
 				<key>listeners</key>
 				<integer>254</integer>
 				<key>subtitle1</key>
-				<string>L&apos;homme face à l&apos;absurde</string>
+				<string>L'homme face à l'absurde</string>
 				<key>subtitle2</key>
-				<string>Donc, la duchesse d&apos;Acquitaine.</string>
+				<string>Donc, la duchesse d'Acquitaine.</string>
 				<key>title</key>
-				<string>J&apos;adore les fruits aux sirot</string>
+				<string>J'adore les fruits aux sirot</string>
 			</dict>
 			<dict>
 				<key>id</key>
@@ -439,7 +439,7 @@
 					<key>size</key>
 					<integer>17</integer>
 					<key>text</key>
-					<string>Jenny&apos;s Radio</string>
+					<string>Jenny's Radio</string>
 					<key>textColor</key>
 					<string>rgb(90,90,90)</string>
 					<key>weight</key>
@@ -467,7 +467,7 @@
 				<string>default</string>
 				<key>description</key>
 				<string>theme_default_description</string>
-				<key>name</key>
+				<key>id</key>
 				<string>theme_default</string>
 			</dict>
 			<dict>
@@ -475,7 +475,7 @@
 				<string>blues</string>
 				<key>description</key>
 				<string>theme_blues_description</string>
-				<key>name</key>
+				<key>id</key>
 				<string>theme_blues</string>
 			</dict>
 			<dict>
@@ -483,7 +483,7 @@
 				<string>classic</string>
 				<key>description</key>
 				<string>theme_classic_description</string>
-				<key>name</key>
+				<key>id</key>
 				<string>theme_classic</string>
 			</dict>
 		</array>

@@ -6,8 +6,8 @@
 	<string>1.0</string>
 	<key>CFBundleName</key>
 	<string>yasound theme blues</string>
-	<key>name</key>
-	<string>Blues</string>
+	<key>id</key>
+	<string>theme_blues</string>
 	<key>stylesheet</key>
 	<dict>
 		<key>RadioViewHeader</key>

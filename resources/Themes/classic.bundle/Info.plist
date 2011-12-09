@@ -6,8 +6,8 @@
 	<string>1.0</string>
 	<key>CFBundleName</key>
 	<string>yasound theme classic</string>
-	<key>name</key>
-	<string>Classic</string>
+	<key>id</key>
+	<string>theme_classic</string>
 	<key>stylesheet</key>
 	<dict>
 		<key>RadioViewHeader</key>

@@ -5059,13 +5059,13 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="NSNextResponder" ref="33890207"/>
 						<int key="NSvFlags">256</int>
 						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUILabel" id="951554442">
+							<object class="IBUILabel" id="785955503">
 								<reference key="NSNextResponder" ref="933719504"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{12, 11}, {250, 21}}</string>
+								<string key="NSFrame">{{11, 10}, {250, 21}}</string>
 								<reference key="NSSuperview" ref="933719504"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="680937965"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<reference key="IBUIBackgroundColor" ref="717029664"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -5081,11 +5081,26 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<reference key="IBUIFontDescription" ref="453982116"/>
 								<reference key="IBUIFont" ref="617156299"/>
 							</object>
+							<object class="IBUIImageView" id="680937965">
+								<reference key="NSNextResponder" ref="933719504"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{247, 4}, {35, 35}}</string>
+								<reference key="NSSuperview" ref="933719504"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<string key="NSReuseIdentifierKey">_NS:567</string>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<object class="NSCustomResource" key="IBUIImage">
+									<string key="NSClassName">NSImage</string>
+									<string key="NSResourceName">btnArrowIndicator.png</string>
+								</object>
+							</object>
 						</array>
 						<string key="NSFrameSize">{302, 43}</string>
 						<reference key="NSSuperview" ref="33890207"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="951554442"/>
+						<reference key="NSNextKeyView" ref="785955503"/>
 						<string key="NSReuseIdentifierKey">_NS:395</string>
 						<reference key="IBUIBackgroundColor" ref="717029664"/>
 						<bool key="IBUIOpaque">NO</bool>
@@ -5101,8 +5116,8 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<reference key="NSNextKeyView" ref="933719504"/>
 				<string key="NSReuseIdentifierKey">_NS:384</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC45NjQ3MDU4ODI0IDAuOTcyNTQ5MDE5NiAwLjk4MDM5MjE1NjkgMAA</bytes>
+					<int key="NSColorSpace">3</int>
+					<bytes key="NSWhite">MC4zNTY4NjU4NzU5IDAAA</bytes>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<reference key="IBUIContentView" ref="933719504"/>
@@ -5298,9 +5313,9 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">_settingsGotoLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="951554442"/>
+						<reference key="destination" ref="785955503"/>
 					</object>
-					<int key="connectionID">77</int>
+					<int key="connectionID">92</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -5521,7 +5536,8 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<int key="objectID">73</int>
 						<reference key="object" ref="33890207"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="951554442"/>
+							<reference ref="785955503"/>
+							<reference ref="680937965"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -5536,8 +5552,13 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<reference key="parent" ref="12506799"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">75</int>
-						<reference key="object" ref="951554442"/>
+						<int key="objectID">90</int>
+						<reference key="object" ref="785955503"/>
+						<reference key="parent" ref="33890207"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">91</int>
+						<reference key="object" ref="680937965"/>
 						<reference key="parent" ref="33890207"/>
 					</object>
 				</array>
@@ -5572,16 +5593,17 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="69.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="73.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="75.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="79.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="80.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="90.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="91.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">87</int>
+			<int key="maxID">92</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5734,6 +5756,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<string key="avatarDummy.png">{50, 50}</string>
 			<string key="bigRedButtonDown.png">{301, 43}</string>
 			<string key="bigRedButtonUp.png">{301, 43}</string>
+			<string key="btnArrowIndicator.png">{25, 25}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

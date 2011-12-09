@@ -12,6 +12,7 @@
 #import "RadioViewController.h"
 #import "StyleSelectorViewController.h"
 #import "ThemeSelectorViewController.h"
+#import "Theme.h"
 #import <QuartzCore/QuartzCore.h>
 #import <MediaPlayer/MediaPlayer.h>
 
@@ -56,13 +57,19 @@
 //    _settingsThemeTitle = @"";
 //    _settingsThemeImage;
     
-    NSString* theme = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundTheme"];
-    if (theme == nil)
+    NSString* themeId = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundTheme"];
+    if (themeId == nil)
     {
-        theme = @"theme_default";
-        [[NSUserDefaults standardUserDefaults] setObject:theme forKey:@"MyYasoundTheme"];
+        themeId = @"theme_default";
+        [[NSUserDefaults standardUserDefaults] setObject:themeId forKey:@"MyYasoundTheme"];
     }
-    _settingsThemeTitle.text = NSLocalizedString(theme, nil);
+    
+    Theme* theme = [[Theme alloc] initWithThemeId:themeId];
+    _settingsThemeTitle.text = NSLocalizedString(themeId, nil);
+    [_settingsThemeImage setImage:theme.icon];
+    [theme release];
+    
+    
 
     
     [_settingsThemeImage.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
@@ -145,8 +152,16 @@
 
 - (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
 {
-    float value = 246.f/255.f;
-    cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
+    if (indexPath.section == SECTION_GOTO)
+    {
+        float value = 224.f/255.f;
+        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
+    }
+    else
+    {
+        float value = 246.f/255.f;
+        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
+    }
 }
 
 
@@ -337,21 +352,29 @@
 {
     ThemeSelectorViewController* view = [[ThemeSelectorViewController alloc] initWithNibName:@"ThemeSelectorViewController" bundle:nil];
     view.delegate = self;
-//    [self.navigationController presentModalViewController:view animated:YES];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
 
-- (void)themeSelected:(NSString*)theme
+- (void)themeSelected:(NSString*)themeId
 {
-    [[NSUserDefaults standardUserDefaults] setObject:theme forKey:@"MyYasoundTheme"];
-//    [self.navigationController dismissModalViewControllerAnimated:YES];
     [self.navigationController popViewControllerAnimated:YES];
+
+    // set user defaults
+    [[NSUserDefaults standardUserDefaults] setObject:themeId forKey:@"MyYasoundTheme"];
+    
+    // set GUI cell for selected theme
+    Theme* theme = [[Theme alloc] initWithThemeId:themeId];
+    _settingsThemeTitle.text = NSLocalizedString(themeId, nil);
+    [_settingsThemeImage setImage:theme.icon];
+    [theme release];
+    
+    // set the global theme object
+    [Theme setTheme:themeId];
 }
 
 - (void)themeSelectionCanceled
 {
-//    [self.navigationController dismissModalViewControllerAnimated:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

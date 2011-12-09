@@ -19,8 +19,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        _themeSelectorTitle.text = NSLocalizedString(@"themeselector_title", nil);
-        
         NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
         _themes = [resources objectForKey:@"themes"];
         if (_themes == nil)
@@ -54,6 +52,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _themeSelectorTitle.text = NSLocalizedString(@"themeselector_title", nil);    
 }
 
 - (void)viewDidUnload
@@ -102,26 +101,18 @@
     
     if (cell == nil) 
     {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     NSDictionary* dico = [_themes objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [NSString stringWithString:NSLocalizedString([dico objectForKey:@"name"], nil)];
-    cell.detailTextLabel.text = [NSString stringWithString:NSLocalizedString([dico objectForKey:@"description"], nil)];
-    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-//    NSString* iconPath = [NSString stringWithFormat:@"%@.icon.png", [dico objectForKey:@"bundle"]];
-//    
-////    NSLog(iconPath);
-//    
-////    [cell.imageView setImage:[UIImage imageWithContentsOfFile:iconPath]];
-//    [cell.imageView setImage:[UIImage imageNamed:iconPath]];
-
-    
-    Theme* theme = [[Theme alloc] initWithName:[dico objectForKey:@"bundle"]];
-    [cell.imageView setImage:[theme icon]];
+    Theme* theme = [[Theme alloc] initWithBundleName:[dico objectForKey:@"bundle"]];
+    cell.textLabel.text = theme.name;
+    NSString* description = theme.description;
+    cell.detailTextLabel.text = description;
+    [cell.imageView setImage:theme.icon];
     [theme release];
     
     return cell;
@@ -132,7 +123,7 @@
 {
     NSDictionary* dico = [_themes objectAtIndex:indexPath.row];
     
-    [self.delegate themeSelected:[dico objectForKey:@"bundle"]];
+    [self.delegate themeSelected:[dico objectForKey:@"id"]];
 }
 
 

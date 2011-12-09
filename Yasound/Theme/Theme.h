@@ -12,12 +12,18 @@
 
 @interface Theme : BundleFileManager
 
-+ (BOOL)setTheme:(NSString*)themeName;
+@property (nonatomic, readonly) NSString* name;
+@property (nonatomic, readonly) NSString* description;
+@property (nonatomic, readonly) UIImage* icon;
+
+
++ (BOOL)setTheme:(NSString*)themeId;
 + (Theme*)theme;
 
-- (id)initWithName:(NSString*)bundleName;
 
-- (UIImage*)icon;
+- (id)initWithThemeId:(NSString*)themeId;
+- (id)initWithBundleName:(NSString*)bundleName;
+
 
 
 @end
