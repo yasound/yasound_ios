@@ -9,6 +9,19 @@
 #import "SBJsonStreamWriter.h"
 #import <objc/runtime.h>
 
+@implementation NSDate (SBProxyForJson)
+
+- (id)proxyForJson
+{
+  NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+  [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+  NSString* s = [dateFormat stringFromDate:self];
+  [dateFormat release];
+  return s;
+}
+
+@end
+
 @implementation NSObject (SBProxyForJson)
 
 - (id)proxyForJson

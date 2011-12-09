@@ -356,6 +356,7 @@
   Container* container = [[Container alloc] initWithObjectClass:objectClass];
   [container loadPropertiesFromJsonString:response];
   
+  
   if (!container)
   {
     [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
@@ -525,6 +526,8 @@
   if (!jsonDesc)
     return nil;
   
+  NSLog(@"POST data: %@", jsonDesc);
+  
   NSURL* url;
   if (isAbsolute)
     url = [NSURL URLWithString:path];
@@ -533,6 +536,8 @@
     url = [NSURL URLWithString:_baseURL];
     url = [url URLByAppendingPathComponent:path];
   }
+  
+  NSLog(@"POST url: %@", url);
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.requestMethod = @"POST";
