@@ -97,6 +97,8 @@ static Theme* _theme = nil;
                 return nil;
             }
             
+            NSLog(@"setTheme from bundle %@", bundlePath);
+            
             _theme = [[Theme alloc] initWithPath:bundlePath];
             return YES;
         }

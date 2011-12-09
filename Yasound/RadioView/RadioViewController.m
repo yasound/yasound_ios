@@ -130,9 +130,6 @@
     
     // header now playing bar image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
-    UIImageView* nowPlayingBar = [[UIImageView alloc] initWithImage:[sheet image]];
-    nowPlayingBar.frame = sheet.frame;
-    [headerView addSubview:nowPlayingBar];
     
     _playingNowContainer = [[UIView alloc] initWithFrame:sheet.frame];
     [self.view addSubview:_playingNowContainer];

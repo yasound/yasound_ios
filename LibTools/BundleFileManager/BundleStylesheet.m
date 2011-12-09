@@ -444,19 +444,27 @@ static NSMutableDictionary* gFonts = nil;
 
         if (path == nil)
         {
-            image = [UIImage imageNamed:[name stringByAppendingPathExtension:type]];
+            NSString* tmppath = [name stringByAppendingPathExtension:type];
+            image = [UIImage imageNamed:tmppath];
+            if (image == nil)
+            {
+                NSLog(@"local image loading failed with tmppath '%@'  from name '%@' and type '%@'", tmppath, name, type);
+                assert(0);
+                return [BundleFileManager errorHandling:@"image" forPath:name error:anError];
+            }
         }
         else
         {
             NSString* tmppath = [bundle pathForResource:name ofType:type inDirectory:path];
             image = [UIImage imageWithContentsOfFile:tmppath];
+            if (image == nil)
+            {
+                NSLog(@"image loading failed with tmppath '%@'    from name '%@' and type '%@' and path '%@'", tmppath, name, type, path);
+                assert(0);
+                return [BundleFileManager errorHandling:@"image" forPath:name error:anError];
+            }
         }
 
-        //LBDEBUG
-    //image = [bundle imageNamed:name ofType:type inDirectory:path];
-    
-    if (image == nil)
-      return [BundleFileManager errorHandling:@"image" forPath:name error:anError];
     
     [_images setValue:image forKey:@"up"];
   }

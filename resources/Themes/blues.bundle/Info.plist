@@ -161,7 +161,7 @@
 			<key>y</key>
 			<integer>0</integer>
 			<key>name</key>
-			<string>Picto</string>
+			<string>Header</string>
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>
@@ -173,12 +173,10 @@
 			<integer>0</integer>
 			<key>y</key>
 			<integer>60</integer>
-			<key>name</key>
-			<string>NowPlayingBar</string>
-			<key>type</key>
-			<string>png</string>
-			<key>path</key>
-			<string>images/Header/NowPlaying</string>
+			<key>width</key>
+			<integer>320</integer>
+			<key>height</key>
+			<integer>48</integer>
 		</dict>
 		<key>RadioViewHeaderNowPlayingBarImage</key>
 		<dict>
