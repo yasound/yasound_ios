@@ -23,11 +23,30 @@
 
 @synthesize window;
 @synthesize navigationController;
-//@synthesize tabBarController;
 @synthesize loginViewController;
 
 
 // #FIXME MatTest
+
+//- (void)receiveWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
+//{
+//  Meta* meta = [info valueForKey:@"meta"];
+//  NSError* err = [info valueForKey:@"error"];
+//  
+//  if (err)
+//    return;
+//  
+//  if (!meta)
+//    return;
+//  
+//  NSLog(@"meta: %@", [meta toString]);
+//  
+//  for (WallEvent* w in events) 
+//  {
+//    NSLog(@"ev: %@", [w toString]);
+//  }
+//}
+
 - (void)metadataPosted:(WallEvent*)event withInfo:(NSDictionary*)info
 {
   NSError* error = [info valueForKey:@"error"];
@@ -105,8 +124,11 @@
   
   
   // #FIXME MatTest
-  
-  [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
+//  Radio* radio = [[Radio alloc] init];
+//  radio.id = [NSNumber numberWithInt:1];
+//  [[YasoundDataProvider main] getWallEventsForRadio:radio notifyTarget:self byCalling:@selector(receiveWallEvents:withInfo:)];
+
+    [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
   
 //  SongMetadata* metadata = [[SongMetadata alloc] init];
 //  metadata.name = @"my song";
@@ -114,7 +136,8 @@
 //  metadata.album_name = @" my album";
 //  metadata.duration = [NSNumber numberWithFloat:60];
 //  [[YasoundDataProvider main] postNewSongMetadata:metadata target:self action:@selector(metadataPosted:withInfo:)];
-  // #FIXME MatTest end
+
+    // #FIXME MatTest end
 
   return YES;
 }
