@@ -472,8 +472,8 @@ static NSInteger gFakeTrackIndex = -1;
 //	[request startAsynchronous];
 
     
-    [[YasoundDataProvider main] getWallEventsForRadio:self.radio notifyTarget:self byCalling:@selector(receiveWallEvents:withInfo:)];
-    
+//    [[YasoundDataProvider main] getWallEventsForRadio:self.radio notifyTarget:self byCalling:@selector(receiveWallEvents:withInfo:)];
+//    
 }
 
 
