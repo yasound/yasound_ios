@@ -7,6 +7,7 @@
 //
 
 #import "ThemeSelectorViewController.h"
+#import "Theme.h"
 
 @implementation ThemeSelectorViewController
 
@@ -111,12 +112,17 @@
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    NSString* iconPath = [NSString stringWithFormat:@"%@.icon.png", [dico objectForKey:@"bundle"]];
+//    NSString* iconPath = [NSString stringWithFormat:@"%@.icon.png", [dico objectForKey:@"bundle"]];
+//    
+////    NSLog(iconPath);
+//    
+////    [cell.imageView setImage:[UIImage imageWithContentsOfFile:iconPath]];
+//    [cell.imageView setImage:[UIImage imageNamed:iconPath]];
+
     
-//    NSLog(iconPath);
-    
-//    [cell.imageView setImage:[UIImage imageWithContentsOfFile:iconPath]];
-    [cell.imageView setImage:[UIImage imageNamed:iconPath]];
+    Theme* theme = [[Theme alloc] initWithName:[dico objectForKey:@"bundle"]];
+    [cell.imageView setImage:[theme icon]];
+    [theme release];
     
     return cell;
 }

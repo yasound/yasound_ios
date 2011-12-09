@@ -211,6 +211,10 @@
      if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
     {
         _settingsGotoLabel.textColor = [UIColor whiteColor];
+        
+        RadioViewController* view = [[RadioViewController alloc] init];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
     }
     
     else if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_IMAGE))
@@ -335,12 +339,14 @@
     view.delegate = self;
 //    [self.navigationController presentModalViewController:view animated:YES];
     [self.navigationController pushViewController:view animated:YES];
+    [view release];
 }
 
 - (void)themeSelected:(NSString*)theme
 {
     [[NSUserDefaults standardUserDefaults] setObject:theme forKey:@"MyYasoundTheme"];
-    [self.navigationController dismissModalViewControllerAnimated:YES];
+//    [self.navigationController dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)themeSelectionCanceled

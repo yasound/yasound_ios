@@ -26,6 +26,20 @@ static Theme* _theme = nil;
 
 
 
+- (id)initWithName:(NSString*)bundleName
+{
+    NSString* bundlePath = [[NSBundle mainBundle] pathForResource:bundleName ofType:@"bundle"];
+    
+    if (bundlePath == nil)
+    {
+        NSLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);
+        assert(0);
+        return nil;
+    }
+    
+    self = [super initWithPath:bundlePath];
+    return self;
+}
 
 
 
@@ -44,6 +58,14 @@ static Theme* _theme = nil;
     }
 
     _theme = [[Theme alloc] initWithPath:bundlePath];
+}
+
+
+- (UIImage*)icon
+{
+    NSString* tmppath = [self pathForResource:@"icon" ofType:@"png" inDirectory:nil];
+    UIImage* image = [UIImage imageWithContentsOfFile:tmppath];    
+    return image;
 }
 
 

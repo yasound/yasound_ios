@@ -15,6 +15,9 @@
 + (BOOL)setTheme:(NSString*)themeName;
 + (Theme*)theme;
 
+- (id)initWithName:(NSString*)bundleName;
+
+- (UIImage*)icon;
 
 
 @end
