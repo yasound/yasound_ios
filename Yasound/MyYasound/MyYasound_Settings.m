@@ -201,7 +201,7 @@
         
         if (cell == nil) 
         {
-            cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
         }
         
         MPMediaPlaylist* item = [_playlists objectAtIndex: indexPath.row];
