@@ -54,6 +54,10 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+- (void)radiosTarget:(id)target action:(SEL)selector
+{
+  [_communicator getObjectsWithClass:[Radio class] notifyTarget:target byCalling:selector];
+}
 
 
 - (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;

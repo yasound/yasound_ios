@@ -10,6 +10,7 @@
 #import "RadioSelectionTableViewCell.h"
 #import "StyleSelectorViewController.h"
 #import "RadioViewController.h"
+#import "YasoundDataProvider.h"
 
 
 
@@ -69,6 +70,7 @@ static NSArray* gFakeUsers = nil;
   _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
 
 
+  [[YasoundDataProvider main] radiosTarget:self action:@selector(receiveRadios:withInfo:)];
 }
 
 - (void)viewDidUnload
@@ -100,7 +102,18 @@ static NSArray* gFakeUsers = nil;
 
 
 
-
+- (void)receiveRadios:(NSArray*)radios withInfo:(NSDictionary*)info
+{
+  NSError* error = [info valueForKey:@"error"];
+  if (error)
+  {
+    NSLog(@"can't get radios: %@", error.domain);
+    return;
+  }
+  
+  _radios = radios;
+  [_tableView reloadData];
+}
 
 
 
@@ -120,8 +133,9 @@ static NSArray* gFakeUsers = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-  // Number of rows is the number of time zones in the region for the specified section.
-  return 24;
+  if (!_radios)
+    return 0;
+  return [_radios count];
 }
 
 
@@ -131,17 +145,48 @@ static NSArray* gFakeUsers = nil;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
   static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
-
-  //LBDEBUG
-  NSInteger fakeUserIndex = (_type == RSTSelection) ? ((indexPath.row) % 6) : (_type == RSTTop)? ((indexPath.row+3) % 6) : (_type == RSTNew) ? ((indexPath.row+1) % 6) : ((indexPath.row+4) % 6);
-  NSDictionary* data = [gFakeUsers objectAtIndex:fakeUserIndex];
+  
+  if (!_radios)
+    return nil;
+  
   NSInteger rowIndex = indexPath.row;
   
+  Radio* r = [_radios objectAtIndex:rowIndex];
+  NSMutableDictionary* data = [[NSMutableDictionary alloc] init];
+  [data setValue:r.name forKey:@"title"];
+  [data setValue:r.creator.username forKey:@"subtitle1"];
+  [data setValue:r.genre forKey:@"subtitle2"];
+  [data setValue:r.likes forKey:@"likes"];
+  [data setValue:r.listeners forKey:@"listeners"];
+  
   RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex data:data];
-  
-  
   return cell;
 }
+
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+//{
+//  // Number of rows is the number of time zones in the region for the specified section.
+//  return 24;
+//}
+//
+//
+//
+//
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
+//
+//  //LBDEBUG
+//  NSInteger fakeUserIndex = (_type == RSTSelection) ? ((indexPath.row) % 6) : (_type == RSTTop)? ((indexPath.row+3) % 6) : (_type == RSTNew) ? ((indexPath.row+1) % 6) : ((indexPath.row+4) % 6);
+//  NSDictionary* data = [gFakeUsers objectAtIndex:fakeUserIndex];
+//  NSInteger rowIndex = indexPath.row;
+//  
+//  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex data:data];
+//  
+//  
+//  return cell;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

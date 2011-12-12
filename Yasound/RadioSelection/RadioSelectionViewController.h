@@ -28,6 +28,8 @@ typedef enum
   
   NSString* _currentStyle;
   RadioSelectionType _type;
+  
+  NSArray* _radios;
 }
 
 

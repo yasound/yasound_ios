@@ -18,6 +18,8 @@
 
 + (YasoundDataProvider*) main;
 
+- (void)radiosTarget:(id)target action:(SEL)selector;
+
 - (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;
 - (void)radioWithURL:(NSString*)url target:(id)target action:(SEL)selector;
 

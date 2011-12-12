@@ -17,11 +17,13 @@
 @synthesize theme;
 @synthesize url;
 @synthesize playlists;
+@synthesize likes;
+@synthesize listeners;
 
 
 -(NSString*)toString
 {
-  NSString* desc = [NSString stringWithFormat:@"name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', url: '%@' playlist count: '%d", self.name, self.creator, self.description, self.genre, self.theme, self.url, [self.playlists count]];
+  NSString* desc = [NSString stringWithFormat:@"name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', url: '%@' playlist count: '%d", self.name, self.creator.username, self.description, self.genre, self.theme, self.url, [self.playlists count]];
   return desc;
 }
 
