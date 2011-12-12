@@ -14,6 +14,7 @@
 @synthesize metadata;
 //@synthesize playlist;
 
+
 - (NSString*)toString
 {
   NSString* desc = [NSString stringWithFormat:@"id: '%@' song: '%@', metadata: '%@'", self.id, self.song, [self.metadata toString]];

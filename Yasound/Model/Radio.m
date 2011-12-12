@@ -18,6 +18,7 @@
 @synthesize url;
 @synthesize playlists;
 
+
 -(NSString*)toString
 {
   NSString* desc = [NSString stringWithFormat:@"name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', url: '%@' playlist count: '%d", self.name, self.creator, self.description, self.genre, self.theme, self.url, [self.playlists count]];

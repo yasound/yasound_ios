@@ -15,5 +15,4 @@
 @property (retain, nonatomic) NSString* last_name;
 
 - (NSString*)toString;
-
 @end

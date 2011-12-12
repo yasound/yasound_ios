@@ -14,14 +14,9 @@
 @interface Communicator : NSObject <ASIHTTPRequestDelegate>
 {
   NSString* _baseURL;
-  
-  NSMutableDictionary* _mapping;
 }
 
 - (id)initWithBaseURL:(NSString*)base;
-
-- (void)mapResourcePath:(NSString*)path toObject:(Class)objectClass;
-
 
 #pragma mark - synchronous requests
 - (Container*)getObjectsWithClass:(Class)objectClass;

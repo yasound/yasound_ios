@@ -9,10 +9,10 @@
 #import "YasoundDataProvider.h"
 
 
-#define LOCAL_SERVER 1
+#define USE_LOCAL_SERVER 1
 
-#define LOCAL_URL @"http://127.0.0.1:8000/api/v1"
-#define DEV_URL @"http://127.0.0.1:8000/api/v1" // #FIXME: set real url
+#define LOCAL_URL @"http://127.0.0.1:8000"
+#define DEV_URL @"http://dev.yasound.com"
 
 @implementation YasoundDataProvider
 
@@ -35,17 +35,19 @@ static YasoundDataProvider* _main = nil;
   if (self)
   {
     NSString* baseUrl;
-#if LOCAL_SERVER
+#if USE_LOCAL_SERVER
     baseUrl = LOCAL_URL;
 #else
     baseUrl = DEV_URL;
 #endif
     _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];
     
-    [_communicator mapResourcePath:@"radio" toObject:[Radio class]];
-    [_communicator mapResourcePath:@"user" toObject:[User class]];
-    [_communicator mapResourcePath:@"wall_event" toObject:[WallEvent class]];
-    [_communicator mapResourcePath:@"metadata" toObject:[SongMetadata class]];
+    NSMutableDictionary* resourceNames = [Model resourceNames];
+    [resourceNames setObject:@"radio" forKey:[Radio class]];
+    [resourceNames setObject:@"user" forKey:[User class]];
+    [resourceNames setObject:@"wall_event" forKey:[WallEvent class]];
+    [resourceNames setObject:@"metadata" forKey:[SongMetadata class]];
+    [resourceNames setObject:@"song" forKey:[Song class]];
   }
   
   return self;
@@ -70,7 +72,7 @@ static YasoundDataProvider* _main = nil;
   if (radio == nil)
     return;
   NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"radio/%@/wall", radioID];
+  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
   [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector];
 }
 
@@ -89,7 +91,7 @@ static YasoundDataProvider* _main = nil;
   if (radio == nil)
     return;
   NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"radio/%@/likes", radioID];
+  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/likes", radioID];
   [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector];
 }
 
@@ -98,7 +100,7 @@ static YasoundDataProvider* _main = nil;
   if (radio == nil)
     return;
   NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"radio/%@/connected_users", radioID];
+  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/connected_users", radioID];
   [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector];
 }
 

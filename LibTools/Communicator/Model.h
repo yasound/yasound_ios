@@ -11,8 +11,16 @@
 @interface Model : NSObject
 {
   NSNumber* _id;
+  
 }
 
 @property (assign) NSNumber* id;
+
++ (NSString*)apiURI;
++ (NSString*)uriForObject:(Model*)obj;
++ (NSString*)uriForObjectClass:(Class)objectClass;
++ (NSString*)uriForObjectClass:(Class)objectClass andID:(NSNumber*)objID;
+
++ (NSMutableDictionary*)resourceNames;
 
 @end

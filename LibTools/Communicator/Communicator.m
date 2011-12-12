@@ -33,20 +33,9 @@
   if (self)
   {
     _baseURL = base;
-    _mapping = [[NSMutableDictionary alloc] init];
   }
   
   return self;
-}
-
-- (void)dealloc
-{
-  [_mapping release];
-}
-
-- (void)mapResourcePath:(NSString*)path toObject:(Class)objectClass
-{
-  [_mapping setObject:path forKey:objectClass];
 }
 
 
@@ -408,7 +397,6 @@
   Model* obj            = [userinfo valueForKey:@"object"];
   
   NSString* response = request.responseString;
-  NSLog(@"response: %@", response);
   
   [self notifytarget:target byCalling:selector withObject:obj andSuccess:succeeded];
 }
@@ -526,8 +514,6 @@
   if (!jsonDesc)
     return nil;
   
-  NSLog(@"POST data: %@", jsonDesc);
-  
   NSURL* url;
   if (isAbsolute)
     url = [NSURL URLWithString:path];
@@ -536,8 +522,6 @@
     url = [NSURL URLWithString:_baseURL];
     url = [url URLByAppendingPathComponent:path];
   }
-  
-  NSLog(@"POST url: %@", url);
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.requestMethod = @"POST";
@@ -610,7 +594,8 @@
 
 - (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass
 {
-  NSString* path = [_mapping objectForKey:objectClass];
+//  NSString* path = [_mapping objectForKey:objectClass];
+  NSString* path = [Model uriForObjectClass:objectClass];
   if (!path)
     return nil;
   
@@ -623,13 +608,12 @@
 
 - (ASIHTTPRequest*)getRequestForObjectWithClass:(Class)objectClass andID:(NSNumber*)ID
 {
-  NSString* path = [_mapping objectForKey:objectClass];
+  NSString* path = [Model uriForObjectClass:objectClass andID:ID];
   if (!path)
     return nil;
   
   NSURL* url = [NSURL URLWithString:_baseURL];
   url = [url URLByAppendingPathComponent:path];
-  url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@/", ID]];
   
   ASIHTTPRequest* req = [self getRequestForObjectWithURL:[url absoluteString] absolute:YES];
   return req;
@@ -637,7 +621,7 @@
 
 - (ASIHTTPRequest*)postRequestForObject:(Model*)obj
 {
-  NSString* path = [_mapping objectForKey:[obj class]];
+  NSString* path = [Model uriForObjectClass:[obj class]];
   if (!path)
     return nil;
   
@@ -651,13 +635,12 @@
 
 - (ASIHTTPRequest*)putRequestForObject:(Model*)obj
 {
-  NSString* path = [_mapping objectForKey:[obj class]];
+  NSString* path = [Model uriForObject:obj];
   if (!path)
     return nil;
   
   NSURL* url = [NSURL URLWithString:_baseURL];
   url = [url URLByAppendingPathComponent:path];
-  url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@/", obj.id]];
   
   ASIHTTPRequest* req = [self putRequestForObject:obj withURL:[url absoluteString] absolute:YES];
   return req;
@@ -668,13 +651,13 @@
   if (!obj)
     return nil;
   
-  NSString* path = [_mapping objectForKey:[obj class]];
+  NSString* path = [Model uriForObject:obj];
   if (!path)
     return nil;
   
   NSURL* url = [NSURL URLWithString:_baseURL];
   url = [url URLByAppendingPathComponent:path];
-  url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@/", obj.id]];
+//  url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@/", obj.id]];
   
   ASIHTTPRequest* req = [self deleteRequestForObjectWithURL:[url absoluteString] absolute:YES];
   return req;

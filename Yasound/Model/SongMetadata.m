@@ -23,6 +23,7 @@
 @synthesize duration;
 @synthesize genre;
 
+
 - (NSString*)toString
 {
   NSString* desc = [NSString stringWithFormat:@"id: '%@' name: '%@', artist: '%@', album: '%@'", self.id, self.name, self.artist_name, self.album_name];

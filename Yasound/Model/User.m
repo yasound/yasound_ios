@@ -14,6 +14,7 @@
 @synthesize first_name;
 @synthesize last_name;
 
+
 - (NSString*)toString
 {
   NSString* desc = [NSString stringWithFormat:@"id: '%@' username: '%@', first name: '%@', last name: '%@'", self.id, self.username, self.first_name, self.last_name];

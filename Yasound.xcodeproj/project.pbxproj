@@ -40,6 +40,20 @@
 		405629AD147547380085518C /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 4056299F147547380085518C /* ASIInputStream.m */; };
 		405629AE147547380085518C /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 405629A1147547380085518C /* ASINetworkQueue.m */; };
 		405629AF147547380085518C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 405629A6147547380085518C /* Reachability.m */; };
+		4082EE581492908000E7FFF6 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B8614910F3800F26008 /* NSObject+SBJson.m */; };
+		4082EE591492908000E7FFF6 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B8914910F3800F26008 /* SBJsonParser.m */; };
+		4082EE5A1492908000E7FFF6 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B8B14910F3800F26008 /* SBJsonStreamParser.m */; };
+		4082EE5B1492908000E7FFF6 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B8D14910F3800F26008 /* SBJsonStreamParserAccumulator.m */; };
+		4082EE5C1492908000E7FFF6 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B8F14910F3800F26008 /* SBJsonStreamParserAdapter.m */; };
+		4082EE5D1492908000E7FFF6 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9114910F3800F26008 /* SBJsonStreamParserState.m */; };
+		4082EE5E1492908000E7FFF6 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9314910F3800F26008 /* SBJsonStreamWriter.m */; };
+		4082EE5F1492908000E7FFF6 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9514910F3800F26008 /* SBJsonStreamWriterAccumulator.m */; };
+		4082EE601492908000E7FFF6 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9714910F3800F26008 /* SBJsonStreamWriterState.m */; };
+		4082EE611492908000E7FFF6 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9914910F3800F26008 /* SBJsonTokeniser.m */; };
+		4082EE621492908000E7FFF6 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9B14910F3800F26008 /* SBJsonUTF8Stream.m */; };
+		4082EE631492908000E7FFF6 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9D14910F3800F26008 /* SBJsonWriter.m */; };
+		4082EE641492908000E7FFF6 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9F14910F3800F26008 /* NSObject+JsonProxy.m */; };
+		4082EE651492908000E7FFF6 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274BA114910F3800F26008 /* NSObject+PropertyDictionary.m */; };
 		40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40AAEC58149224050031B39D /* SongMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC57149224050031B39D /* SongMetadata.m */; };
@@ -1326,6 +1340,20 @@
 				40AAEC60149225E80031B39D /* SongMetadata.m in Sources */,
 				40AAEC61149225EB0031B39D /* Song.m in Sources */,
 				40AAEC62149225EE0031B39D /* User.m in Sources */,
+				4082EE581492908000E7FFF6 /* NSObject+SBJson.m in Sources */,
+				4082EE591492908000E7FFF6 /* SBJsonParser.m in Sources */,
+				4082EE5A1492908000E7FFF6 /* SBJsonStreamParser.m in Sources */,
+				4082EE5B1492908000E7FFF6 /* SBJsonStreamParserAccumulator.m in Sources */,
+				4082EE5C1492908000E7FFF6 /* SBJsonStreamParserAdapter.m in Sources */,
+				4082EE5D1492908000E7FFF6 /* SBJsonStreamParserState.m in Sources */,
+				4082EE5E1492908000E7FFF6 /* SBJsonStreamWriter.m in Sources */,
+				4082EE5F1492908000E7FFF6 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				4082EE601492908000E7FFF6 /* SBJsonStreamWriterState.m in Sources */,
+				4082EE611492908000E7FFF6 /* SBJsonTokeniser.m in Sources */,
+				4082EE621492908000E7FFF6 /* SBJsonUTF8Stream.m in Sources */,
+				4082EE631492908000E7FFF6 /* SBJsonWriter.m in Sources */,
+				4082EE641492908000E7FFF6 /* NSObject+JsonProxy.m in Sources */,
+				4082EE651492908000E7FFF6 /* NSObject+PropertyDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
