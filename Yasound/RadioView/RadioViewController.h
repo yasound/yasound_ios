@@ -14,6 +14,8 @@
 
 @interface RadioViewController : UIViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource>
 {
+    UIView* _headerView;
+  
     UITableView* _tableView;
     
     UIView* _playingNowContainer;

@@ -79,62 +79,62 @@
     // header
     //
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeader" error:nil];
-    UIView* headerView = [[UIView alloc] initWithFrame:sheet.frame];
-    headerView.backgroundColor = sheet.color;
-    [self.view addSubview:headerView];
+    _headerView = [[UIView alloc] initWithFrame:sheet.frame];
+    _headerView.backgroundColor = sheet.color;
+    [self.view addSubview:_headerView];
     
     // header picto image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderPicto" error:nil];
     UIImageView* image = [[UIImageView alloc] initWithImage:[sheet image]];
     CGFloat x = self.view.frame.origin.x + self.view.frame.size.width - sheet.frame.size.width;
     image.frame = CGRectMake(x, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
-    [headerView addSubview:image];
+    [_headerView addSubview:image];
     
     
     // header back arrow
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
     UIButton* btn = [sheet makeButton];
     [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:btn];
+    [_headerView addSubview:btn];
     
-    // header avatar
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
-    UIImageView* avatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy.png"]];
-    avatar.frame = sheet.frame;
-    [headerView addSubview:avatar];
+//    // header avatar
+//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
+//    UIImageView* avatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy.png"]];
+//    avatar.frame = sheet.frame;
+//    [_headerView addSubview:avatar];
     
     // header avatar mask
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
     UIImageView* avatarMask = [[UIImageView alloc] initWithImage:[sheet image]];
     avatarMask.frame = sheet.frame;
-    [headerView addSubview:avatarMask];
+    [_headerView addSubview:avatarMask];
     
     // header title
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderTitle" error:nil];
     UILabel* label = [sheet makeLabel];
-    [headerView addSubview:label];
+    [_headerView addSubview:label];
     
     // header heart image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderHeart" error:nil];
     image = [[UIImageView alloc] initWithImage:[sheet image]];
     image.frame = sheet.frame;
-    [headerView addSubview:image];
+    [_headerView addSubview:image];
 
     // header likes
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderLikes" error:nil];
     label = [sheet makeLabel];
-    [headerView addSubview:label];
+    [_headerView addSubview:label];
     
     // header headset image
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderHeadSet" error:nil];
     image = [[UIImageView alloc] initWithImage:[sheet image]];
     image.frame = sheet.frame;
-    [headerView addSubview:image];
+    [_headerView addSubview:image];
     
     // header listeners
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderListeners" error:nil];
     label = [sheet makeLabel];
-    [headerView addSubview:label];
+    [_headerView addSubview:label];
     
     //....................................................................................
     //
@@ -485,6 +485,24 @@
   }
   
   self.radio = r;
+  
+  
+  // radio header picture
+  // header avatar
+  BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
+  
+  NSURL* imageURL = nil;
+  if (self.radio.picture)
+  {
+    NSString* s = @"http://dev.yasound.com";
+    s = [s stringByAppendingPathComponent:self.radio.picture];
+    imageURL = [NSURL URLWithString:s];
+  }
+  
+  WebImageView* avatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
+  avatar.frame = sheet.frame;
+  [_headerView addSubview:avatar];
+  
   [self onUpdate:nil];  
 }
 
@@ -624,8 +642,6 @@
     m.avatarURL = avatarURL;
     m.date = date;
     m.text = text;
-  
-  NSLog(@"image URL: %@", m.avatarURL);
 
     // compute the size of the text => will allow to update the cell's height dynamically
     CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
@@ -826,30 +842,6 @@
   msg.text = message;
   
   [[YasoundDataProvider main] postNewWallMessage:msg target:self action:@selector(wallMessagePosted:withInfo:)];
-  
-    
-//#if LOCAL
-//    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpostAPI/"];
-//#else
-//    NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/sendpostAPI/"];
-//#endif
-//    
-//    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-//    //[request addPostValue:@"jmp" forKey:@"author"];
-//    //[request addPostValue:@"meeloo" forKey:@"author"];
-//    [request addPostValue:[[UIDevice currentDevice] name] forKey:@"author"];
-//    
-//    [request addPostValue:@"pipo" forKey:@"password"];
-//    [request addPostValue:@"text" forKey:@"kind"];
-//    [request addPostValue:message forKey:@"posttext"];
-//    [request setDelegate:self];
-//    [request setDidFailSelector:@selector(sendMessageFailed:)];
-//    [request setDidFinishSelector:@selector(sendMessageFinished:)];    
-//    
-//    NSLog(@"\nSENDMESSAGE '%@'\n", message);
-//    
-//    //    [request startAsynchronous];
-//    [request startSynchronous];
 }
 
 - (void)wallMessagePosted:(WallEvent*)msg withInfo:(NSDictionary*)info
@@ -864,17 +856,6 @@
   NSLog(@"wall message posted.");
   [self onUpdate:nil];
 }
-
-
-//- (void)sendMessageFailed:(ASIHTTPRequest *)request
-//{
-//    NSLog(@"sendMessage failed.");
-//}
-//
-//- (void)sendMessageFinished:(ASIHTTPRequest*)request
-//{
-//    NSLog(@"sendMessage finished with code %d", request.responseStatusCode);
-//}
 
 
 

@@ -162,7 +162,6 @@ static NSArray* gFakeUsers = nil;
   NSURL* imageURL = nil;
   if (r.picture)
   {
-    NSLog(@"radio picture: %@", r.picture);
     NSString* s = @"http://dev.yasound.com";
     s = [s stringByAppendingPathComponent:r.picture];
     imageURL = [NSURL URLWithString:s];

@@ -40,7 +40,6 @@
     
     // avatar
     NSURL* imageURL = [data valueForKey:@"imageURL"];
-    NSLog(@"image url: %@", [imageURL absoluteString]);
     self.radioAvatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
     stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionAvatar" retainStylesheet:YES overwriteStylesheet:NO error:&error];
     self.radioAvatar.frame = stylesheet.frame;
