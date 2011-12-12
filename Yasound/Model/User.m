@@ -13,7 +13,7 @@
 @synthesize username;
 @synthesize first_name;
 @synthesize last_name;
-
+@synthesize picture;
 
 - (NSString*)toString
 {

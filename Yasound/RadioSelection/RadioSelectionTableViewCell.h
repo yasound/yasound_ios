@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebImageView.h"
 
 @interface RadioSelectionTableViewCell : UITableViewCell
 {
@@ -24,7 +25,7 @@
 @property (nonatomic, retain) UILabel* radioLikes;
 @property (nonatomic, retain) UILabel* radioListeners;
 @property (nonatomic, retain) UIImageView* cellBackground;
-@property (nonatomic, retain) UIImageView* radioAvatar;
+@property (nonatomic, retain) WebImageView* radioAvatar;
 @property (nonatomic, retain) UIImageView* radioAvatarMask;
 
 

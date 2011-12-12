@@ -159,34 +159,19 @@ static NSArray* gFakeUsers = nil;
   [data setValue:r.likes forKey:@"likes"];
   [data setValue:r.listeners forKey:@"listeners"];
   
+  NSURL* imageURL = nil;
+  if (r.picture)
+  {
+    NSLog(@"radio picture: %@", r.picture);
+    NSString* s = @"http://dev.yasound.com";
+    s = [s stringByAppendingPathComponent:r.picture];
+    imageURL = [NSURL URLWithString:s];
+  }
+  [data setValue:imageURL forKey:@"imageURL"];
+  
   RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex data:data];
   return cell;
 }
-
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
-//{
-//  // Number of rows is the number of time zones in the region for the specified section.
-//  return 24;
-//}
-//
-//
-//
-//
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
-//
-//  //LBDEBUG
-//  NSInteger fakeUserIndex = (_type == RSTSelection) ? ((indexPath.row) % 6) : (_type == RSTTop)? ((indexPath.row+3) % 6) : (_type == RSTNew) ? ((indexPath.row+1) % 6) : ((indexPath.row+4) % 6);
-//  NSDictionary* data = [gFakeUsers objectAtIndex:fakeUserIndex];
-//  NSInteger rowIndex = indexPath.row;
-//  
-//  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex data:data];
-//  
-//  
-//  return cell;
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -20,6 +20,7 @@
 @property (retain, nonatomic) NSArray* playlists;
 @property (retain, nonatomic) NSNumber* likes;
 @property (retain, nonatomic) NSNumber* listeners;
+@property (retain, nonatomic) NSString* picture;
 
 - (NSString*)toString;
 

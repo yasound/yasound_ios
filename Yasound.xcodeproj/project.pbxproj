@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4009010B14967AEE00C9E51A /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010A14967AEE00C9E51A /* WebImageView.m */; };
+		4009010C14967AEE00C9E51A /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010A14967AEE00C9E51A /* WebImageView.m */; };
 		40274B801491048900F26008 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40274B811491048900F26008 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40274B821491048900F26008 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
@@ -308,6 +310,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4009010914967AEE00C9E51A /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageView.h; sourceTree = "<group>"; };
+		4009010A14967AEE00C9E51A /* WebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebImageView.m; sourceTree = "<group>"; };
 		40274B7A1491048900F26008 /* Communicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communicator.h; sourceTree = "<group>"; };
 		40274B7B1491048900F26008 /* Communicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communicator.m; sourceTree = "<group>"; };
 		40274B7C1491048900F26008 /* Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Container.h; sourceTree = "<group>"; };
@@ -952,6 +956,8 @@
 				BC93B4A3148E686C00A87157 /* ThemeSelectorViewController.h */,
 				BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */,
 				BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */,
+				4009010914967AEE00C9E51A /* WebImageView.h */,
+				4009010A14967AEE00C9E51A /* WebImageView.m */,
 			);
 			path = Gui;
 			sourceTree = "<group>";
@@ -1354,6 +1360,7 @@
 				4082EE631492908000E7FFF6 /* SBJsonWriter.m in Sources */,
 				4082EE641492908000E7FFF6 /* NSObject+JsonProxy.m in Sources */,
 				4082EE651492908000E7FFF6 /* NSObject+PropertyDictionary.m in Sources */,
+				4009010C14967AEE00C9E51A /* WebImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1418,6 +1425,7 @@
 				40AAEC58149224050031B39D /* SongMetadata.m in Sources */,
 				40AAEC5C149225070031B39D /* Song.m in Sources */,
 				40AAEC5F149225DC0031B39D /* User.m in Sources */,
+				4009010B14967AEE00C9E51A /* WebImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

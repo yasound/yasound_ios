@@ -48,7 +48,8 @@
         
         // avatar
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellAvatar" error:nil];
-        self.avatar = [[UIImageView alloc] initWithImage:m.avatar];
+      NSURL* url = [NSURL URLWithString:m.avatarURL];
+        self.avatar = [[WebImageView alloc] initWithImageAtURL:url];
         self.avatar.frame = sheet.frame;
         [self.avatar.layer setBorderColor: [sheet.color CGColor]];
         [self.avatar.layer setBorderWidth: [[sheet.customProperties objectForKey:@"borderSize"] integerValue]];    

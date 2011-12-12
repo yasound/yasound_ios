@@ -39,7 +39,9 @@
     [self addSubview:self.cellBackground];
     
     // avatar
-    self.radioAvatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[data valueForKey:@"image"]]];
+    NSURL* imageURL = [data valueForKey:@"imageURL"];
+    NSLog(@"image url: %@", [imageURL absoluteString]);
+    self.radioAvatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
     stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionAvatar" retainStylesheet:YES overwriteStylesheet:NO error:&error];
     self.radioAvatar.frame = stylesheet.frame;
     [self addSubview:self.radioAvatar];

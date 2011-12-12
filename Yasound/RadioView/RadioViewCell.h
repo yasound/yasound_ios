@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebImageView.h"
 
 
 @class Message;
@@ -13,7 +14,7 @@
 @interface RadioViewCell : UITableViewCell
 
 @property (nonatomic, retain) UIView* background;
-@property (nonatomic, retain) UIImageView* avatar;
+@property (nonatomic, retain) WebImageView* avatar;
 @property (nonatomic, retain) UILabel* date;
 @property (nonatomic, retain) UILabel* user;
 @property (nonatomic, retain) UILabel* message;

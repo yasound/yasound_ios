@@ -19,6 +19,7 @@
 @synthesize playlists;
 @synthesize likes;
 @synthesize listeners;
+@synthesize picture;
 
 
 -(NSString*)toString

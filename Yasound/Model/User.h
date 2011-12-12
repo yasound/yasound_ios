@@ -13,6 +13,7 @@
 @property (retain, nonatomic) NSString* username;
 @property (retain, nonatomic) NSString* first_name;
 @property (retain, nonatomic) NSString* last_name;
+@property (retain, nonatomic) NSString* picture;
 
 - (NSString*)toString;
 @end

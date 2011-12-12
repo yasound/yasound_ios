@@ -48,7 +48,7 @@
 
 
 - (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
-- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(UIImage*)avatar date:(NSDate*)date silent:(BOOL)silent;
+- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSString*)avatarURL date:(NSDate*)date silent:(BOOL)silent;
 - (void)setStatusMessage:(NSString*)message;
 
 

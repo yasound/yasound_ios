@@ -316,19 +316,19 @@
     //
     randIndex = (rand() %5)+1;
     image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    [self addMessage:@"Vivamus sodales adipiscing sapien." user:@"Tancrède" avatar:image date:@"2011-07-09 20h30" silent:YES];
+//    [self addMessage:@"Vivamus sodales adipiscing sapien." user:@"Tancrède" avatar:image date:@"2011-07-09 20h30" silent:YES];
     
     randIndex = (rand() %5)+1;
     image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    [self addMessage:@"Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor." user:@"Gertrude"  avatar:image date:@"2011-07-09 19h30" silent:YES];
+//    [self addMessage:@"Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor." user:@"Gertrude"  avatar:image date:@"2011-07-09 19h30" silent:YES];
     
     randIndex = (rand() %5)+1;
     image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    [self addMessage:@"Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare." user:@"Argeavielle"  avatar:image date:@"2011-07-09 18h30" silent:YES];
+//    [self addMessage:@"Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare." user:@"Argeavielle"  avatar:image date:@"2011-07-09 18h30" silent:YES];
     
     randIndex = (rand() %5)+1;
     image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    [self addMessage:@"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat." user:@"Anthèlme"  avatar:image date:@"2011-07-09 20h30" silent:YES];
+//    [self addMessage:@"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat." user:@"Anthèlme"  avatar:image date:@"2011-07-09 20h30" silent:YES];
 
     [_tableView reloadData];
     
@@ -349,7 +349,7 @@
 {
     NSInteger randIndex = (rand() %5)+1;
     UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    [self addMessage:@"Pellentesque sit amet sem et purus pretium consectetuer." user:@"Tancrède"  avatar:image date:@"2011-07-09 20h30" silent:NO];
+//    [self addMessage:@"Pellentesque sit amet sem et purus pretium consectetuer." user:@"Tancrède"  avatar:image date:@"2011-07-09 20h30" silent:NO];
 }
 
 
@@ -443,7 +443,16 @@
     if ([ev.type isEqualToString:@"M"])
     {
       if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
-        [self addMessage:ev.text user:ev.user.username avatar:nil date:ev.start_date silent:YES];
+      {
+        NSString* picturePath = ev.user.picture;
+        NSString* url = nil;
+        if (picturePath)
+        {
+          url = @"http://dev.yasound.com";
+          url = [url stringByAppendingPathComponent:picturePath];
+        }
+        [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:YES];
+      }
     }
     else if ([ev.type isEqualToString:@"J"])
     {
@@ -608,13 +617,15 @@
 // MESSAGES
 //
 
-- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(UIImage*)avatar date:(NSDate*)date silent:(BOOL)silent
+- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSString*)avatarURL date:(NSDate*)date silent:(BOOL)silent
 {
     Message* m = [[Message alloc] init];
     m.user = user;
-    m.avatar = avatar;
+    m.avatarURL = avatarURL;
     m.date = date;
     m.text = text;
+  
+  NSLog(@"image URL: %@", m.avatarURL);
 
     // compute the size of the text => will allow to update the cell's height dynamically
     CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
