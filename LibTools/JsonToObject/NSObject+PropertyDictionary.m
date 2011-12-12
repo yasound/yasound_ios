@@ -35,12 +35,24 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
     NSString* className = [NSString stringWithCString:type encoding:NSUTF8StringEncoding];
     Class c = NSClassFromString(className);
     
-    BOOL isStandard = (c == [NSString class] || c == [NSNumber class] || c == [NSDate class] || c == [NSArray class] || c == [NSDictionary class]);
+    BOOL isStandard = (c == [NSString class] || c == [NSNumber class] || c == [NSArray class] || c == [NSDictionary class]);
     id val = nil;
     if (isStandard)
     {
       // standard objects are immediate
       val = [dict valueForKey:propName];
+    }
+    else if (c == [NSDate class])
+    {
+      NSString* str = [dict valueForKey:propName];
+      
+      if ([str isKindOfClass:[NSString class]])
+      {
+        NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+        val = [dateFormat dateFromString:str];
+        [dateFormat release];
+      }
     }
     else
     {

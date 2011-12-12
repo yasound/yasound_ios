@@ -24,6 +24,10 @@
     BOOL _statusBarButtonToggled;
     UIScrollView* _statusUsers;
 
+    NSDate* _lastWallEventDate;
+    NSDate* _lastConnectionUpdateDate;
+    NSDate* _lastSongUpdateDate;
+  
     Message* _currentMessage;
     NSMutableString* _currentXMLString;
     
@@ -44,7 +48,7 @@
 
 
 - (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
-- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(UIImage*)avatar date:(NSString*)date silent:(BOOL)silent;
+- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(UIImage*)avatar date:(NSDate*)date silent:(BOOL)silent;
 - (void)setStatusMessage:(NSString*)message;
 
 

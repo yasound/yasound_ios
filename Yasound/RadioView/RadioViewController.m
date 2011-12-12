@@ -33,8 +33,13 @@
     self = [super init];
     if (self) 
     {
-        self.radio = [[Radio alloc] init];
-        self.radio.id = [NSNumber numberWithInt:1];
+//        self.radio = [[Radio alloc] init];
+//        self.radio.id = [NSNumber numberWithInt:1];
+      
+      _lastWallEventDate = nil;
+      _lastConnectionUpdateDate = [NSDate date];
+      _lastSongUpdateDate = nil;
+      [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
 
         self.messages = [[NSMutableArray alloc] init];
         self.statusMessages = [[NSMutableArray alloc] init];
@@ -210,6 +215,7 @@
     // status bar avatar
     // build dynamically
     _statusUsers = nil;
+  
     
     
     //....................................................................................
@@ -222,7 +228,7 @@
     // get the actual data from the server to update the GUI
     [self onUpdate:nil];
     
-    [self EXAMPLE];
+//    [self EXAMPLE];
 }
 
 
@@ -406,37 +412,102 @@
 //	[request startAsynchronous];
 
     
-//    [[YasoundDataProvider main] getWallEventsForRadio:self.radio notifyTarget:self byCalling:@selector(receiveWallEvents:withInfo:)];
+  [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
+  [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
 //    
 }
 
 
 - (void)receiveWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
-    Meta* meta = [info valueForKey:@"meta"];
-    NSError* err = [info valueForKey:@"error"];
+  Meta* meta = [info valueForKey:@"meta"];
+  NSError* err = [info valueForKey:@"error"];
+  
+  if (err)
+  {
+      NSLog(@"receiveWallEvents error!");
+      return;
+  }
+  
+  if (!meta)
+  {
+      NSLog(@"receiveWallEvents : no meta data!");
+      return;
+  }
     
-    if (err)
+  WallEvent* ev = nil;
+  for (int i = [events count] - 1; i >= 0; i--)
+  {
+    ev  = [events objectAtIndex:i];
+    
+    if ([ev.type isEqualToString:@"M"])
     {
-        NSLog(@"receiveWallEvents error!");
-        return;
+      if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
+        [self addMessage:ev.text user:ev.user.username avatar:nil date:ev.start_date silent:YES];
     }
-    
-    if (!meta)
+    else if ([ev.type isEqualToString:@"J"])
     {
-        NSLog(@"receiveWallEvents : no meta data!");
-        return;
+      if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
+        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", ev.user.username]];
+        
     }
-    
-    NSLog(@"receiveWallEvents meta: %@", [meta toString]);
-    
-    for (WallEvent* w in events) 
+    else if ([ev.type isEqualToString:@"L"])
     {
-        NSLog(@"ev: %@", [w toString]);
+      if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
+        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", ev.user.username]];
     }
+  }
+  
+  _lastWallEventDate = (ev != nil) ? ev.start_date : nil;
+  _lastConnectionUpdateDate = [NSDate date];
+  
+  [_tableView reloadData];
 }
 
+- (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
+{
+  NSError* error = [info valueForKey:@"error"];
+  if (!r)
+    return;
+  if (error)
+  {
+    NSLog(@"can't receive radio: %@", error.domain);
+    return;
+  }
+  
+  self.radio = r;
+  [self onUpdate:nil];  
+}
 
+- (void)receiveRadioSongs:(NSArray*)events withInfo:(NSDictionary*)info
+{
+  Meta* meta = [info valueForKey:@"meta"];
+  NSError* err = [info valueForKey:@"error"];
+  
+  if (err)
+  {
+    NSLog(@"receiveRadioSongs error!");
+    return;
+  }
+  
+  if (!meta)
+  {
+    NSLog(@"receiveRadioSongs : no meta data!");
+    return;
+  }
+  
+  if ([events count] == 0)
+    return;
+  
+  WallEvent* ev = [events objectAtIndex:0];
+  if (_lastSongUpdateDate == nil || [ev.start_date compare:_lastSongUpdateDate] == NSOrderedDescending)
+  {
+    [self setNowPlaying:ev.song.metadata.name artist:ev.song.metadata.artist_name image:nil nbLikes:0 nbDislikes:0];
+    _lastSongUpdateDate = ev.start_date;
+  }
+  
+  
+}
 
 
 
@@ -537,7 +608,7 @@
 // MESSAGES
 //
 
-- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(UIImage*)avatar date:(NSString*)date silent:(BOOL)silent
+- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(UIImage*)avatar date:(NSDate*)date silent:(BOOL)silent
 {
     Message* m = [[Message alloc] init];
     m.user = user;
@@ -732,41 +803,67 @@
 
 - (void)sendMessage:(NSString *)message
 {
+  User* user = [[User alloc] init];
+  user.id = [NSNumber numberWithInt:1];
+  
+  WallEvent* msg = [[WallEvent alloc] init];
+  msg.user = user;
+  msg.radio = self.radio;
+  msg.start_date = [NSDate date];
+  msg.end_date = [NSDate date];
+  msg.type = @"M";
+  msg.text = message;
+  
+  [[YasoundDataProvider main] postNewWallMessage:msg target:self action:@selector(wallMessagePosted:withInfo:)];
+  
     
-#if LOCAL
-    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpostAPI/"];
-#else
-    NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/sendpostAPI/"];
-#endif
-    
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
-    //[request addPostValue:@"jmp" forKey:@"author"];
-    //[request addPostValue:@"meeloo" forKey:@"author"];
-    [request addPostValue:[[UIDevice currentDevice] name] forKey:@"author"];
-    
-    [request addPostValue:@"pipo" forKey:@"password"];
-    [request addPostValue:@"text" forKey:@"kind"];
-    [request addPostValue:message forKey:@"posttext"];
-    [request setDelegate:self];
-    [request setDidFailSelector:@selector(sendMessageFailed:)];
-    [request setDidFinishSelector:@selector(sendMessageFinished:)];    
-    
-    NSLog(@"\nSENDMESSAGE '%@'\n", message);
-    
-    //    [request startAsynchronous];
-    [request startSynchronous];
+//#if LOCAL
+//    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/sendpostAPI/"];
+//#else
+//    NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/sendpostAPI/"];
+//#endif
+//    
+//    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+//    //[request addPostValue:@"jmp" forKey:@"author"];
+//    //[request addPostValue:@"meeloo" forKey:@"author"];
+//    [request addPostValue:[[UIDevice currentDevice] name] forKey:@"author"];
+//    
+//    [request addPostValue:@"pipo" forKey:@"password"];
+//    [request addPostValue:@"text" forKey:@"kind"];
+//    [request addPostValue:message forKey:@"posttext"];
+//    [request setDelegate:self];
+//    [request setDidFailSelector:@selector(sendMessageFailed:)];
+//    [request setDidFinishSelector:@selector(sendMessageFinished:)];    
+//    
+//    NSLog(@"\nSENDMESSAGE '%@'\n", message);
+//    
+//    //    [request startAsynchronous];
+//    [request startSynchronous];
 }
 
-
-- (void)sendMessageFailed:(ASIHTTPRequest *)request
+- (void)wallMessagePosted:(WallEvent*)msg withInfo:(NSDictionary*)info
 {
-    NSLog(@"sendMessage failed.");
+  NSError* error = [info valueForKey:@"error"];
+  if (error)
+  {
+    NSLog(@"wall message can't be posted: %@", error.domain);
+    return;
+  }
+  
+  NSLog(@"wall message posted.");
+  [self onUpdate:nil];
 }
 
-- (void)sendMessageFinished:(ASIHTTPRequest*)request
-{
-    NSLog(@"sendMessage finished with code %d", request.responseStatusCode);
-}
+
+//- (void)sendMessageFailed:(ASIHTTPRequest *)request
+//{
+//    NSLog(@"sendMessage failed.");
+//}
+//
+//- (void)sendMessageFinished:(ASIHTTPRequest*)request
+//{
+//    NSLog(@"sendMessage finished with code %d", request.responseStatusCode);
+//}
 
 
 

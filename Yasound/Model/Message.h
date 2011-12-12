@@ -11,7 +11,7 @@
 
 @property (nonatomic) int identifier;
 @property (retain, nonatomic) NSString* kind;
-@property (retain, nonatomic) NSString* date;
+@property (retain, nonatomic) NSDate* date;
 @property (retain, nonatomic) NSString* user;
 @property (retain, nonatomic) UIImage* avatar;
 @property (retain, nonatomic) NSString* text;

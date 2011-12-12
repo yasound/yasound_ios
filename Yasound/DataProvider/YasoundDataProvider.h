@@ -25,6 +25,8 @@
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
+- (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
 - (void)postNewWallMessage:(WallEvent*)message target:(id)target action:(SEL)selector;
 
 - (void)postNewSongMetadata:(SongMetadata*)metadata target:(id)target action:(SEL)selector;

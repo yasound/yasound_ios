@@ -104,6 +104,15 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector];
 }
 
+- (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+  if (radio == nil)
+    return;
+  NSNumber* radioID = radio.id;
+  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/songs", radioID];
+  [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector];
+}
+
 - (void)postNewSongMetadata:(SongMetadata*)metadata target:(id)target action:(SEL)selector
 {
   [_communicator postNewObject:metadata notifyTarget:target byCalling:selector];

@@ -20,6 +20,15 @@
 @synthesize user;
 @synthesize message;
 
+- (NSString*) dateToString:(NSDate*)d
+{
+  NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+  [dateFormat setDateFormat:@"dd--MM--yyyy' 'HH:mm"];
+  NSString* s = [dateFormat stringFromDate:d];
+  [dateFormat release];
+  return s;
+}
+
 
 - initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier message:(Message*)m indexPath:(NSIndexPath*)indexPath
 {
@@ -48,7 +57,7 @@
         // date
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellDate" error:nil];
         self.date = [sheet makeLabel];
-        self.date.text = m.date;
+        self.date.text = [self dateToString:m.date];
         [view addSubview:self.date];
         
         // user
@@ -90,7 +99,7 @@
 //    [self.avatar setImage:image];
     
     // date
-    self.date.text = m.date;
+  self.date.text = [self dateToString:m.date];
     
     // user
     self.user.text = m.user;
@@ -107,7 +116,6 @@
     
 	// Configure the view for the selected state
 }
-
 
 @end
 
