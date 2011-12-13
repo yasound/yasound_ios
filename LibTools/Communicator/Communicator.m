@@ -480,6 +480,7 @@
   }
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
+  req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"GET";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   
@@ -498,6 +499,7 @@
   }
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
+  req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"GET";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   
@@ -524,6 +526,7 @@
   }
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
+  req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"POST";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [req addRequestHeader:@"Content-Type" value:@"application/json"];
@@ -553,6 +556,7 @@
   }
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
+  req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"PUT";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [req addRequestHeader:@"Content-Type" value:@"application/json"];
@@ -574,6 +578,7 @@
   }
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
+  req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"DELETE";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [req addRequestHeader:@"Content-Type" value:@"application/json"];
