@@ -449,7 +449,7 @@
         NSString* url = nil;
         if (picturePath)
         {
-          url = @"https://dev.yasound.com/media/";
+          url = @"https://dev.yasound.com/";
           url = [url stringByAppendingString:picturePath];
         }
         [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:YES];
