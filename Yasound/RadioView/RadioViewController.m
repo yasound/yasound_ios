@@ -450,7 +450,7 @@
         if (picturePath)
         {
           url = @"https://dev.yasound.com/media/";
-          url = [url stringByAppendingPathComponent:picturePath];
+          url = [url stringByAppendingString:picturePath];
         }
         [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:YES];
       }
@@ -496,7 +496,8 @@
   if (self.radio.picture)
   {
     NSString* s = @"https://dev.yasound.com";
-    s = [s stringByAppendingPathComponent:self.radio.picture];
+    NSString* r = self.radio.picture;
+    s = [s stringByAppendingString:r];
     imageURL = [NSURL URLWithString:s];
   }
   
