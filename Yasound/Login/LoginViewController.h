@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
+{
+    IBOutlet UIView* _container;
+    IBOutlet UIView* _defaultView;    
+    IBOutlet UIView* _loginView;
+    IBOutlet UITableView* _tableView;
+}
 
 @end

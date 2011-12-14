@@ -10,7 +10,7 @@
 
 @class Radio;
 @class AudioStreamer;
-
+@class WebImageView;
 
 @interface RadioViewController : UIViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource>
 {
@@ -20,6 +20,8 @@
     
     UIView* _playingNowContainer;
     UIView* _playingNowView;
+    
+    WebImageView* _radioImage;
     
     UIView* _statusBar;
     UIButton* _statusBarButton;
@@ -50,7 +52,7 @@
 
 
 - (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
-- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSString*)avatarURL date:(NSDate*)date silent:(BOOL)silent;
+- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent;
 - (void)setStatusMessage:(NSString*)message;
 
 
