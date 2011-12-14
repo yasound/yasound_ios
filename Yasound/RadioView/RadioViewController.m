@@ -492,16 +492,20 @@
   BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
   
   NSURL* imageURL = nil;
-  if (self.radio.picture)
+  if ([self.radio.picture isKindOfClass:[NSString class]])
   {
     NSString* s = @"http://dev.yasound.com";
     s = [s stringByAppendingPathComponent:self.radio.picture];
     imageURL = [NSURL URLWithString:s];
   }
   
-  WebImageView* avatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
-  avatar.frame = sheet.frame;
-  [_headerView addSubview:avatar];
+  if (imageURL)
+  {
+    WebImageView* avatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
+    avatar.frame = sheet.frame;
+    [_headerView addSubview:avatar];
+  }
+  
   
   [self onUpdate:nil];  
 }
