@@ -10,7 +10,7 @@
 
 @class Radio;
 @class AudioStreamer;
-
+@class WebImageView;
 
 @interface RadioViewController : UIViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource>
 {
@@ -20,6 +20,8 @@
     
     UIView* _playingNowContainer;
     UIView* _playingNowView;
+    
+    WebImageView* _radioImage;
     
     UIView* _statusBar;
     UIButton* _statusBarButton;

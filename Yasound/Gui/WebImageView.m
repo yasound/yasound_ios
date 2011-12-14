@@ -11,32 +11,54 @@
 
 
 @implementation WebImageView
-@synthesize ai;
+
+@synthesize url;
+
+
+-(id)initWithImageFrame:(CGRect)frame
+{
+    self = [super init];
+    if (self)
+    {
+        self.frame = frame;
+    }
+    
+    return self;
+}
+
 
 -(id)initWithImageAtURL:(NSURL*)url
 {
     self = [super init];
     if (self)
     {
-        [self setContentMode:UIViewContentModeScaleAspectFit];
-
-        BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" error:nil];
-
-        [self setAi:[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray]];	
-        [ai startAnimating];
-        [ai setFrame:stylesheet.frame];
-        [self addSubview:ai];
-
-        //url = [NSURL URLWithString:@"https://dev.yasound.com/media/pictures/DSC_9226_2.jpg"];
-        ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:url];
-        req.validatesSecureCertificate = FALSE;
-        req.requestMethod = @"GET";
-        [req setDelegate:self];
-        [req startAsynchronous];
+        [self setUrl:url];
     }
   
   return self;
 }
+
+
+- (void)setUrl:(NSURL *)url
+{
+    [self setContentMode:UIViewContentModeScaleAspectFit];
+
+    BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" error:nil];
+    
+    _ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];	
+    [_ai autorelease];
+    [_ai startAnimating];
+    [_ai setFrame:stylesheet.frame];
+    [self addSubview:_ai];
+    
+    //url = [NSURL URLWithString:@"https://dev.yasound.com/media/pictures/DSC_9226_2.jpg"];
+    ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:url];
+    req.validatesSecureCertificate = FALSE;
+    req.requestMethod = @"GET";
+    [req setDelegate:self];
+    [req startAsynchronous];
+}
+
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
@@ -46,8 +68,8 @@
     // Use when fetching binary data
     NSData* data = [request responseData];
     [self setImage:[UIImage imageWithData: data]]; 
-    [self.ai stopAnimating];
-    [self.ai removeFromSuperview];
+    [_ai stopAnimating];
+    [_ai removeFromSuperview];
 }
 
 

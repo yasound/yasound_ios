@@ -10,9 +10,14 @@
 #import "ASIHTTPRequest.h"
 
 @interface WebImageView : UIImageView <ASIHTTPRequestDelegate> 
+{
+    UIActivityIndicatorView* _ai;
+}
 
--(id)initWithImageAtURL:(NSURL*)url;	         
+@property (retain, nonatomic) NSURL* url;
 
-@property (nonatomic, retain) UIActivityIndicatorView* ai;
+-(id)initWithImageFrame:(CGRect)frame;
+-(id)initWithImageAtURL:(NSURL*)url;        
+
 
 @end
