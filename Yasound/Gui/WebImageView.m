@@ -51,7 +51,6 @@
     [_ai setFrame:stylesheet.frame];
     [self addSubview:_ai];
     
-    //url = [NSURL URLWithString:@"https://dev.yasound.com/media/pictures/DSC_9226_2.jpg"];
     ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:url];
     req.validatesSecureCertificate = FALSE;
     req.requestMethod = @"GET";

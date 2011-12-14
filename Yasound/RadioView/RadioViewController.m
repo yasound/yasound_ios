@@ -387,31 +387,7 @@
 //
 
 - (void)onUpdate:(NSTimer*)timer
-{
-//#if LOCAL
-//    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/all/"];  
-//#else
-//    NSURL *url = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net/yaapp/wall/all/"];
-//#endif
-    
-//#if LOCAL
-//    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/allAPI/"];
-//#else
-//    NSURL *url = [NSURL URLWithString:@"https://dev.yasound.com/yaapp/wall/allAPI/"];
-//#endif
-//
-//    
-//    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-//    request.validatesSecureCertificate = FALSE;
-//    [request setDelegate:self];
-//    [request startSynchronous];
-
-    // asynchronous
-//	ASIHTTPRequest *request = [ASIFormDataRequest requestWithURL:url];
-//	[request setDelegate:self];
-//	[request startAsynchronous];
-
-    
+{    
   [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
   [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
 //    
@@ -444,13 +420,7 @@
     {
       if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
       {
-        NSString* picturePath = ev.user.picture;
-        NSString* url = nil;
-        if (picturePath)
-        {
-          url = @"https://dev.yasound.com/media/";
-          url = [url stringByAppendingString:picturePath];
-        }
+        NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
         [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:YES];
       }
     }
@@ -475,32 +445,24 @@
 
 - (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
 {
-    NSError* error = [info valueForKey:@"error"];
-    if (!r)
-        return;
-    if (error)
-    {
-        NSLog(@"can't receive radio: %@", error.domain);
-        return;
-    }
-
-    self.radio = r;
-
-    // radio header picture
-    // header avatar
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
-
-    NSURL* imageURL = nil;
-    if (self.radio.picture)
-    {
-        NSString* s = @"https://dev.yasound.com";
-        NSString* r = self.radio.picture;
-        s = [s stringByAppendingString:r];
-        imageURL = [NSURL URLWithString:s];
-    }
-
-    [_radioImage setUrl:imageURL];
+  NSError* error = [info valueForKey:@"error"];
+  if (!r)
+    return;
+  if (error)
+  {
+    NSLog(@"can't receive radio: %@", error.domain);
+    return;
+  }
   
+  self.radio = r;
+  
+  
+  // radio header picture
+  // header avatar
+  
+  NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
+  [_radioImage setUrl:imageURL];
+
     [self onUpdate:nil];  
 }
 
@@ -633,7 +595,7 @@
 // MESSAGES
 //
 
-- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSString*)avatarURL date:(NSDate*)date silent:(BOOL)silent
+- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent
 {
     Message* m = [[Message alloc] init];
     m.user = user;

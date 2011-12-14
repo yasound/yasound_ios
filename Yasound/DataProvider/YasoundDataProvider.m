@@ -53,6 +53,14 @@ static YasoundDataProvider* _main = nil;
   return self;
 }
 
+- (NSURL*)urlForPicture:(NSString*)picturePath
+{
+  if (!_communicator || !picturePath)
+    return nil;
+
+  NSURL* url = [_communicator urlWithURL:picturePath absolute:NO addTrailingSlash:NO];
+  return url;
+}
 
 - (void)radiosTarget:(id)target action:(SEL)selector
 {
