@@ -12,7 +12,7 @@
 #define USE_LOCAL_SERVER 1
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
-#define DEV_URL @"http://dev.yasound.com"
+#define DEV_URL @"https://dev.yasound.com"
 
 @implementation YasoundDataProvider
 

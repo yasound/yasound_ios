@@ -35,7 +35,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+//    _tableView.delegate = self;
+//    _tableView.dataSource = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [UIView transitionWithView:_container
+                      duration:0.75
+                       options:UIViewAnimationOptionTransitionFlipFromRight
+                    animations:^{  [_container addSubview:_loginView]; }
+                    completion:NULL];
 }
 
 - (void)viewDidUnload

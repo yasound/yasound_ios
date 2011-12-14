@@ -9,7 +9,7 @@
 #import "WebImageView.h"
 
 @implementation WebImageView
-@synthesize ai,connection, data;
+@synthesize ai;
 
 -(id)initWithImageAtURL:(NSURL*)url
 {
@@ -24,29 +24,35 @@
       [self addSubview:ai];
     }
     
-    NSURLRequest* request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
-    connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];    
+    //url = [NSURL URLWithString:@"https://dev.yasound.com/media/pictures/DSC_9226_2.jpg"];
+    ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:url];
+    req.validatesSecureCertificate = FALSE;
+    req.requestMethod = @"GET";
+    [req setDelegate:self];
+    [req startAsynchronous];
   }
   
   return self;
 }
 
-- (void)connection:(NSURLConnection *)theConnection	didReceiveData:(NSData *)incrementalData {
-  if (data==nil) data = [[NSMutableData alloc] initWithCapacity:2048];
-  [data appendData:incrementalData];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection*)theConnection 
+- (void)requestFinished:(ASIHTTPRequest *)request
 {
-  //const char* pChars = (char*)[data mutableBytes];
-  //printf("cnx done:\n%s\n", pChars);
+  // Use when fetching text data
+  //NSString *responseString = [request responseString];
+  
+  // Use when fetching binary data
+  NSData* data = [request responseData];
   [self setImage:[UIImage imageWithData: data]]; 
   [ai removeFromSuperview];
 }
 
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+  NSError *error = [request error];
+  NSLog(@"HTTP Request error: %@", [error localizedDescription]);
+}
+
 -(void)dealloc{
-  [data release];
-  [connection release];
   [ai release];
   [super dealloc];
 }

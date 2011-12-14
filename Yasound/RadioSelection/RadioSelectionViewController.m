@@ -162,9 +162,13 @@ static NSArray* gFakeUsers = nil;
   NSURL* imageURL = nil;
   if (r.picture)
   {
-    NSString* s = @"http://dev.yasound.com";
-    s = [s stringByAppendingPathComponent:r.picture];
-    imageURL = [NSURL URLWithString:s];
+    NSString* s = @"https://dev.yasound.com";
+    NSString* pic = r.picture;
+    if ((NSNull*)pic != [NSNull null])
+    {
+      s = [s stringByAppendingPathComponent:pic];
+      imageURL = [NSURL URLWithString:s];
+    }
   }
   [data setValue:imageURL forKey:@"imageURL"];
   

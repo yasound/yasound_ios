@@ -41,7 +41,7 @@
     
     _settingsTitleLabel.text = NSLocalizedString(@"myyasound_settings_config_title_label", nil);
 
-    _settingsTitleTextField.text = @"User's Yasound";
+    _settingsTitleTextField.text = [NSString stringWithFormat:@"%@'s Yasound", [[UIDevice currentDevice] name]];
     
     _settingsImageLabel.text = NSLocalizedString(@"myyasound_settings_config_image_label", nil);
 //    _settingsImageImage;
@@ -201,7 +201,7 @@
         
         if (cell == nil) 
         {
-            cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
         }
         
         MPMediaPlaylist* item = [_playlists objectAtIndex: indexPath.row];
@@ -235,7 +235,21 @@
     
     else if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_IMAGE))
     {
-        _settingsImageLabel.textColor = [UIColor whiteColor];
+      _settingsImageLabel.textColor = [UIColor whiteColor];
+      UIImagePickerController* picker =  [[UIImagePickerController alloc] init];
+      
+      picker.delegate = self;
+      
+//      if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+//      {
+//        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//      }
+//      else
+      {
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+      }
+      
+      [self presentModalViewController:picker animated:YES];
     }
     
     else if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_GENRE))
@@ -274,6 +288,18 @@
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(unselect:) userInfo:indexPath repeats:NO];
 }
 
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *) Picker
+{
+  [self dismissModalViewControllerAnimated:YES];
+  [Picker release];
+}
+
+- (void)imagePickerController:(UIImagePickerController *) Picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+  _settingsImageImage.image = [info objectForKey:UIImagePickerControllerOriginalImage];
+  [self dismissModalViewControllerAnimated:YES];
+  [Picker release];
+}
 
 
 - (void)unselect:(NSTimer*)timer

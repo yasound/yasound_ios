@@ -398,11 +398,12 @@
 //#if LOCAL
 //    NSURL *url = [NSURL URLWithString:@"http://127.0.0.1:8000/wall/allAPI/"];
 //#else
-//    NSURL *url = [NSURL URLWithString:@"http://dev.yasound.com/yaapp/wall/allAPI/"];
+//    NSURL *url = [NSURL URLWithString:@"https://dev.yasound.com/yaapp/wall/allAPI/"];
 //#endif
 //
 //    
 //    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+//    request.validatesSecureCertificate = FALSE;
 //    [request setDelegate:self];
 //    [request startSynchronous];
 
@@ -448,8 +449,8 @@
         NSString* url = nil;
         if (picturePath)
         {
-          url = @"http://dev.yasound.com";
-          url = [url stringByAppendingPathComponent:picturePath];
+          url = @"https://dev.yasound.com/media/";
+          url = [url stringByAppendingString:picturePath];
         }
         [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:YES];
       }
@@ -494,8 +495,9 @@
   NSURL* imageURL = nil;
   if ([self.radio.picture isKindOfClass:[NSString class]])
   {
-    NSString* s = @"http://dev.yasound.com";
-    s = [s stringByAppendingPathComponent:self.radio.picture];
+    NSString* s = @"https://dev.yasound.com";
+    NSString* r = self.radio.picture;
+    s = [s stringByAppendingString:r];
     imageURL = [NSURL URLWithString:s];
   }
   

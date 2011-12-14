@@ -8,44 +8,45 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyYasoundViewController : UIViewController
+@interface MyYasoundViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
-    UIView* _viewCurrent;
-    IBOutlet UIToolbar* _toolbar;
-    IBOutlet UIBarButtonItem* _segmentBarButtonItem;
-    UISegmentedControl* _segmentControl;
-    
-    NSArray* _playlists;
-    NSMutableArray* _selectedPlaylists;
-    
-    // my yasound settings
-    IBOutlet UITableView* _settingsTableView;
+  UIView* _viewCurrent;
+  IBOutlet UIToolbar* _toolbar;
+  IBOutlet UIBarButtonItem* _segmentBarButtonItem;
+  UISegmentedControl* _segmentControl;
+  
+  NSArray* _playlists;
+  NSMutableArray* _selectedPlaylists;
+  
+  // my yasound settings
+  IBOutlet UITableView* _settingsTableView;
 
-    IBOutlet UITableViewCell* _settingsGotoCell;
-    IBOutlet UILabel* _settingsGotoLabel;
+  IBOutlet UITableViewCell* _settingsGotoCell;
+  IBOutlet UILabel* _settingsGotoLabel;
 
-    IBOutlet UITableViewCell* _settingsTitleCell;
-    IBOutlet UILabel* _settingsTitleLabel;
-    IBOutlet UITextField* _settingsTitleTextField;
-    
-    IBOutlet UITableViewCell* _settingsImageCell;
-    IBOutlet UILabel* _settingsImageLabel;
-    IBOutlet UIImageView* _settingsImageImage;
+  IBOutlet UITableViewCell* _settingsTitleCell;
+  IBOutlet UILabel* _settingsTitleLabel;
+  IBOutlet UITextField* _settingsTitleTextField;
+  
+  IBOutlet UITableViewCell* _settingsImageCell;
+  IBOutlet UILabel* _settingsImageLabel;
+  IBOutlet UIImageView* _settingsImageImage;
 
-    IBOutlet UITableViewCell* _settingsGenreCell;
-    IBOutlet UILabel* _settingsGenreLabel;
-    IBOutlet UILabel* _settingsGenreTitle;
+  IBOutlet UITableViewCell* _settingsGenreCell;
+  IBOutlet UILabel* _settingsGenreLabel;
+  IBOutlet UILabel* _settingsGenreTitle;
 
-    IBOutlet UITableViewCell* _settingsThemeCell;
-    IBOutlet UILabel* _settingsThemeTitle;
-    IBOutlet UIImageView* _settingsThemeImage;
+  IBOutlet UITableViewCell* _settingsThemeCell;
+  IBOutlet UILabel* _settingsThemeTitle;
+  IBOutlet UIImageView* _settingsThemeImage;
+  
+  IBOutlet UITableViewCell* _settingsSubmitCell;
+  IBOutlet UILabel* _settingsSubmitTitle;
+  
+  
+  // radio selection  
+  IBOutlet UITableView* _tableView;  
     
-    IBOutlet UITableViewCell* _settingsSubmitCell;
-    IBOutlet UILabel* _settingsSubmitTitle;
-    
-    
-    // radio selection  
-    IBOutlet UITableView* _tableView;  
 }
 
 //LBDEBUG

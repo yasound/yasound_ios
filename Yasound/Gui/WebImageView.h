@@ -7,18 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ASIHTTPRequest.h"
 
-@interface WebImageView : UIImageView {
+@interface WebImageView : UIImageView <ASIHTTPRequestDelegate> {
   
-  NSURLConnection *connection;
-  NSMutableData* data;
   UIActivityIndicatorView *ai;
 }
 
 -(id)initWithImageAtURL:(NSURL*)url;	         
 
-@property (nonatomic, retain) NSURLConnection *connection;
-@property (nonatomic, retain) NSMutableData* data;
 @property (nonatomic, retain) UIActivityIndicatorView *ai;
 
 @end
