@@ -7,43 +7,70 @@
 //
 
 #import "WebImageView.h"
+#import "BundleFileManager.h"
+
 
 @implementation WebImageView
-@synthesize ai;
+
+@synthesize url;
+
+
+-(id)initWithImageFrame:(CGRect)frame
+{
+    self = [super init];
+    if (self)
+    {
+        self.frame = frame;
+    }
+    
+    return self;
+}
+
 
 -(id)initWithImageAtURL:(NSURL*)url
 {
-  self = [super init];
-  if (self)
-  {
-    [self setContentMode:UIViewContentModeScaleAspectFit];
-    if (!ai){
-      [self setAi:[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge]];	
-      [ai startAnimating];
-      [ai setFrame:CGRectMake(27, 13, 20, 20)];
-      [self addSubview:ai];
+    self = [super init];
+    if (self)
+    {
+        [self setUrl:url];
     }
+  
+  return self;
+}
+
+
+- (void)setUrl:(NSURL *)url
+{
+    [self setContentMode:UIViewContentModeScaleAspectFit];
+
+    BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" error:nil];
+    
+    _ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];	
+    [_ai autorelease];
+    [_ai startAnimating];
+    [_ai setFrame:stylesheet.frame];
+    [self addSubview:_ai];
     
     ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:url];
     req.validatesSecureCertificate = FALSE;
     req.requestMethod = @"GET";
     [req setDelegate:self];
     [req startAsynchronous];
-  }
-  
-  return self;
 }
+
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-  // Use when fetching text data
-  //NSString *responseString = [request responseString];
-  
-  // Use when fetching binary data
-  NSData* data = [request responseData];
-  [self setImage:[UIImage imageWithData: data]]; 
-  [ai removeFromSuperview];
+    // Use when fetching text data
+    //NSString *responseString = [request responseString];
+
+    // Use when fetching binary data
+    NSData* data = [request responseData];
+    [self setImage:[UIImage imageWithData: data]]; 
+    [_ai stopAnimating];
+    [_ai removeFromSuperview];
 }
+
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
@@ -51,8 +78,5 @@
   NSLog(@"HTTP Request error: %@", [error localizedDescription]);
 }
 
--(void)dealloc{
-  [ai release];
-  [super dealloc];
-}
+
 @end

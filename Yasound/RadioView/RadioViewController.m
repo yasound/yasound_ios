@@ -97,11 +97,10 @@
     [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
     
-//    // header avatar
-//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
-//    UIImageView* avatar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy.png"]];
-//    avatar.frame = sheet.frame;
-//    [_headerView addSubview:avatar];
+    // header avatar
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
+    _radioImage = [[WebImageView alloc] initWithImageFrame:sheet.frame];
+    [_headerView addSubview:_radioImage];
     
     // header avatar mask
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
@@ -460,18 +459,11 @@
   
   // radio header picture
   // header avatar
-  BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
   
   NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
-  if (imageURL)
-  {
-    WebImageView* avatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
-    avatar.frame = sheet.frame;
-    [_headerView addSubview:avatar];
-  }
-  
-  
-  [self onUpdate:nil];  
+  [_radioImage setUrl:imageURL];
+
+    [self onUpdate:nil];  
 }
 
 - (void)receiveRadioSongs:(NSArray*)events withInfo:(NSDictionary*)info
