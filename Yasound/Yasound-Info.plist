@@ -53,7 +53,7 @@
 				<key>subtitle2</key>
 				<string>Bossa for Jackie (Summer Review)</string>
 				<key>title</key>
-				<string>Jenny's Radio</string>
+				<string>Jenny&apos;s Radio</string>
 			</dict>
 			<dict>
 				<key>id</key>
@@ -203,7 +203,7 @@
 				<key>subtitle2</key>
 				<string>Bossa for Jackie (Summer Review)</string>
 				<key>title</key>
-				<string>Jenny's Radio</string>
+				<string>Jenny&apos;s Radio</string>
 			</dict>
 			<dict>
 				<key>id</key>
@@ -215,11 +215,11 @@
 				<key>listeners</key>
 				<integer>254</integer>
 				<key>subtitle1</key>
-				<string>L'homme face à l'absurde</string>
+				<string>L&apos;homme face à l&apos;absurde</string>
 				<key>subtitle2</key>
-				<string>Donc, la duchesse d'Acquitaine.</string>
+				<string>Donc, la duchesse d&apos;Acquitaine.</string>
 				<key>title</key>
-				<string>J'adore les fruits aux sirot</string>
+				<string>J&apos;adore les fruits aux sirot</string>
 			</dict>
 			<dict>
 				<key>id</key>
@@ -446,7 +446,7 @@
 					<key>size</key>
 					<integer>17</integer>
 					<key>text</key>
-					<string>Jenny's Radio</string>
+					<string>Jenny&apos;s Radio</string>
 					<key>textColor</key>
 					<string>rgb(90,90,90)</string>
 					<key>weight</key>
@@ -465,6 +465,17 @@
 				<integer>62</integer>
 				<key>y</key>
 				<integer>1</integer>
+			</dict>
+			<key>WebImageActivityIndicator</key>
+			<dict>
+				<key>height</key>
+				<integer>20</integer>
+				<key>width</key>
+				<integer>20</integer>
+				<key>x</key>
+				<integer>18</integer>
+				<key>y</key>
+				<integer>16</integer>
 			</dict>
 		</dict>
 		<key>themes</key>

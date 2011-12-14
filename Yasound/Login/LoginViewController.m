@@ -35,15 +35,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    _tableView.delegate = self;
-//    _tableView.dataSource = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [UIView transitionWithView:_container
                       duration:0.75
-                       options:UIViewAnimationOptionTransitionFlipFromRight
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
                     animations:^{  [_container addSubview:_loginView]; }
                     completion:NULL];
 }
