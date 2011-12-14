@@ -33,4 +33,6 @@
 
 - (void)postNewSongMetadata:(SongMetadata*)metadata target:(id)target action:(SEL)selector;
 
+- (NSURL*)urlForPicture:(NSString*)picturePath;
+
 @end

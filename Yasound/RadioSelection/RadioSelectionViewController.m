@@ -159,17 +159,7 @@ static NSArray* gFakeUsers = nil;
   [data setValue:r.likes forKey:@"likes"];
   [data setValue:r.listeners forKey:@"listeners"];
   
-  NSURL* imageURL = nil;
-  if (r.picture)
-  {
-    NSString* s = @"https://dev.yasound.com";
-    NSString* pic = r.picture;
-    if ((NSNull*)pic != [NSNull null])
-    {
-      s = [s stringByAppendingPathComponent:pic];
-      imageURL = [NSURL URLWithString:s];
-    }
-  }
+  NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:r.picture];
   [data setValue:imageURL forKey:@"imageURL"];
   
   RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex data:data];

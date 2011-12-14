@@ -22,6 +22,7 @@
 - (ASIHTTPRequest*)postRequestForObject:(Model*)obj;
 - (ASIHTTPRequest*)putRequestForObject:(Model*)obj;
 - (ASIHTTPRequest*)deleteRequestForObject:(Model*)obj;
+
 @end
 
 
@@ -38,7 +39,25 @@
   return self;
 }
 
-
+-(NSURL*)urlWithURL:(NSString*)path absolute:(BOOL)absolute addTrailingSlash:(BOOL)slash
+{
+  if (!path || ![path isKindOfClass:[NSString class]])
+    return nil;
+  
+  if (slash && ![path hasSuffix:@"/"])
+    path = [path stringByAppendingString:@"/"];
+  
+  NSURL* url;
+  if (absolute)
+    url = [NSURL URLWithString:path];
+  else
+  {
+    url = [NSURL URLWithString:_baseURL];
+    url = [url URLByAppendingPathComponent:path];
+  }
+  
+  return url;
+}
 
 
 
@@ -470,14 +489,7 @@
 
 - (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute
 {
-  NSURL* url;
-  if (isAbsolute)
-    url = [NSURL URLWithString:path];
-  else
-  {
-    url = [NSURL URLWithString:_baseURL];
-    url = [url URLByAppendingPathComponent:path];
-  }
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
@@ -489,14 +501,7 @@
 
 - (ASIHTTPRequest*)getRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute
 {
-  NSURL* url;
-  if (isAbsolute)
-    url = [NSURL URLWithString:path];
-  else
-  {
-    url = [NSURL URLWithString:_baseURL];
-    url = [url URLByAppendingPathComponent:path];
-  }
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
@@ -516,14 +521,7 @@
   if (!jsonDesc)
     return nil;
   
-  NSURL* url;
-  if (isAbsolute)
-    url = [NSURL URLWithString:path];
-  else
-  {
-    url = [NSURL URLWithString:_baseURL];
-    url = [url URLByAppendingPathComponent:path];
-  }
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
@@ -546,14 +544,7 @@
   if (!jsonDesc)
     return nil;
   
-  NSURL* url;
-  if (isAbsolute)
-    url = [NSURL URLWithString:path];
-  else
-  {
-    url = [NSURL URLWithString:_baseURL];
-    url = [url URLByAppendingPathComponent:path];
-  }
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
@@ -568,14 +559,7 @@
 
 - (ASIHTTPRequest*)deleteRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute
 {
-  NSURL* url;
-  if (isAbsolute)
-    url = [NSURL URLWithString:path];
-  else
-  {
-    url = [NSURL URLWithString:_baseURL];
-    url = [url URLByAppendingPathComponent:path];
-  }
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;

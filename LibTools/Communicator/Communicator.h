@@ -18,6 +18,8 @@
 
 - (id)initWithBaseURL:(NSString*)base;
 
+-(NSURL*)urlWithURL:(NSString*)path absolute:(BOOL)absolute addTrailingSlash:(BOOL)slash;
+
 #pragma mark - synchronous requests
 - (Container*)getObjectsWithClass:(Class)objectClass;
 - (id)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID;

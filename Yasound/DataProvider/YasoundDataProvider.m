@@ -9,7 +9,7 @@
 #import "YasoundDataProvider.h"
 
 
-#define USE_LOCAL_SERVER 1
+#define USE_LOCAL_SERVER 0
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"
@@ -53,6 +53,14 @@ static YasoundDataProvider* _main = nil;
   return self;
 }
 
+- (NSURL*)urlForPicture:(NSString*)picturePath
+{
+  if (!_communicator || !picturePath)
+    return nil;
+
+  NSURL* url = [_communicator urlWithURL:picturePath absolute:NO addTrailingSlash:NO];
+  return url;
+}
 
 - (void)radiosTarget:(id)target action:(SEL)selector
 {
