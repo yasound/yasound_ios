@@ -812,7 +812,7 @@
   [[YasoundDataProvider main] postNewWallMessage:msg target:self action:@selector(wallMessagePosted:withInfo:)];
 }
 
-- (void)wallMessagePosted:(WallEvent*)msg withInfo:(NSDictionary*)info
+- (void)wallMessagePosted:(NSString*)eventURL withInfo:(NSDictionary*)info
 {
   NSError* error = [info valueForKey:@"error"];
   if (error)
@@ -821,7 +821,6 @@
     return;
   }
   
-  NSLog(@"wall message posted.");
   [self onUpdate:nil];
 }
 
