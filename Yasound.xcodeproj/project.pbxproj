@@ -233,6 +233,9 @@
 		BC943A5414688AE70031CE17 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
 		BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
+		BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
+		BCA2CCD4149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
+		BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F6E14892350008F3738 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F6D14892350008F3738 /* Track.m */; };
@@ -621,6 +624,8 @@
 		BC9F4144147E8A5F00D417EF /* BundleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleFileManager.m; sourceTree = "<group>"; };
 		BC9F4145147E8A5F00D417EF /* BundleStylesheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleStylesheet.h; sourceTree = "<group>"; };
 		BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleStylesheet.m; sourceTree = "<group>"; };
+		BCA2CCD1149A80270000637E /* PlaylistMoulinor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistMoulinor.h; sourceTree = "<group>"; };
+		BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistMoulinor.m; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		BCB41F6C14892350008F3738 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
@@ -688,9 +693,7 @@
 		E5A9A3B71454DC0500EA374C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E5A9A3B91454DC0500EA374C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5A9A3BB1454DC0500EA374C /* Yasound-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yasound-Prefix.pch"; sourceTree = "<group>"; };
-		E5F3B8521498B82D008DD607 /* Yasound copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Yasound copy-Info.plist"; path = "/Users/meeloo/work/yasound_ios/Yasound copy-Info.plist"; sourceTree = "<absolute>"; };
 		E5F3B8F01498B88D008DD607 /* yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yasound.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5F3B8F21498B88E008DD607 /* Yasound copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Yasound copy2-Info.plist"; path = "/Users/meeloo/work/yasound_ios/Yasound copy2-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -862,6 +865,8 @@
 		40AAEC4714921ACE0031B39D /* DataProvider */ = {
 			isa = PBXGroup;
 			children = (
+				BCA2CCD1149A80270000637E /* PlaylistMoulinor.h */,
+				BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */,
 				40AAEC4914921AE70031B39D /* YasoundDataProvider.h */,
 				40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */,
 			);
@@ -1167,8 +1172,6 @@
 				E5280A5B146040E900A88910 /* xib */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				E5A9A3AA1454DC0500EA374C /* Products */,
-				E5F3B8521498B82D008DD607 /* Yasound copy-Info.plist */,
-				E5F3B8F21498B88E008DD607 /* Yasound copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1662,6 +1665,7 @@
 				4009011114990EE200C9E51A /* Playlist.m in Sources */,
 				40090115149A682100C9E51A /* ApiKey.m in Sources */,
 				4009011D149A69F100C9E51A /* Auth.m in Sources */,
+				BCA2CCD4149A80270000637E /* PlaylistMoulinor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1730,6 +1734,7 @@
 				4009011014990EE200C9E51A /* Playlist.m in Sources */,
 				40090114149A682100C9E51A /* ApiKey.m in Sources */,
 				4009011C149A69F100C9E51A /* Auth.m in Sources */,
+				BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1795,6 +1800,7 @@
 				E5F3B88C1498B88D008DD607 /* Song.m in Sources */,
 				E5F3B88D1498B88D008DD607 /* User.m in Sources */,
 				E5F3B88E1498B88D008DD607 /* WebImageView.m in Sources */,
+				BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
