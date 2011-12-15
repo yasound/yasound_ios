@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Yasound adhoc.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>Yasound.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,16 @@
 			<true/>
 		</dict>
 		<key>E5A9A3A81454DC0500EA374C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5F3B7B21498B82C008DD607</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5F3B8531498B88D008DD607</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -18,7 +18,7 @@
 		<string>Icon-Small@2x.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.yasound.yasound</string>
+	<string>com.yasound.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -26,11 +26,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.2.2</string>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.2.2</string>
+	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMainNibFile</key>
@@ -465,17 +465,6 @@
 				<integer>62</integer>
 				<key>y</key>
 				<integer>1</integer>
-			</dict>
-			<key>WebImageActivityIndicator</key>
-			<dict>
-				<key>height</key>
-				<integer>20</integer>
-				<key>width</key>
-				<integer>20</integer>
-				<key>x</key>
-				<integer>18</integer>
-				<key>y</key>
-				<integer>16</integer>
 			</dict>
 		</dict>
 		<key>themes</key>
