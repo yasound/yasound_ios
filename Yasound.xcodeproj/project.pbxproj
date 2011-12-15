@@ -68,6 +68,9 @@
 		BC0DD83C1487C73E00DCD550 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD83A1487C73E00DCD550 /* Message.m */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
+		BC230DA9149A4AE6007C89A6 /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BC230DA8149A4AE6007C89A6 /* PlaylistMoulinor.m */; };
+		BC230DAA149A4AE6007C89A6 /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BC230DA8149A4AE6007C89A6 /* PlaylistMoulinor.m */; };
+		BC230DAB149A4AE6007C89A6 /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BC230DA8149A4AE6007C89A6 /* PlaylistMoulinor.m */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
@@ -534,6 +537,8 @@
 		BC0DD83A1487C73E00DCD550 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
+		BC230DA7149A4AE6007C89A6 /* PlaylistMoulinor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistMoulinor.h; sourceTree = "<group>"; };
+		BC230DA8149A4AE6007C89A6 /* PlaylistMoulinor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistMoulinor.m; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
 		BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
 		BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionViewController.h; path = RadioSelection/RadioSelectionViewController.h; sourceTree = "<group>"; };
@@ -848,6 +853,8 @@
 		40AAEC4714921ACE0031B39D /* DataProvider */ = {
 			isa = PBXGroup;
 			children = (
+				BC230DA7149A4AE6007C89A6 /* PlaylistMoulinor.h */,
+				BC230DA8149A4AE6007C89A6 /* PlaylistMoulinor.m */,
 				40AAEC4914921AE70031B39D /* YasoundDataProvider.h */,
 				40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */,
 			);
@@ -1641,6 +1648,7 @@
 				4082EE641492908000E7FFF6 /* NSObject+JsonProxy.m in Sources */,
 				4082EE651492908000E7FFF6 /* NSObject+PropertyDictionary.m in Sources */,
 				4009010C14967AEE00C9E51A /* WebImageView.m in Sources */,
+				BC230DAA149A4AE6007C89A6 /* PlaylistMoulinor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1706,6 +1714,7 @@
 				40AAEC5C149225070031B39D /* Song.m in Sources */,
 				40AAEC5F149225DC0031B39D /* User.m in Sources */,
 				4009010B14967AEE00C9E51A /* WebImageView.m in Sources */,
+				BC230DA9149A4AE6007C89A6 /* PlaylistMoulinor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1771,6 +1780,7 @@
 				E5F3B88C1498B88D008DD607 /* Song.m in Sources */,
 				E5F3B88D1498B88D008DD607 /* User.m in Sources */,
 				E5F3B88E1498B88D008DD607 /* WebImageView.m in Sources */,
+				BC230DAB149A4AE6007C89A6 /* PlaylistMoulinor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
