@@ -11,17 +11,17 @@
 #import "NSObject+SBJson.h"
 
 @interface Communicator (Communicator_internal)
-- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute;
-- (ASIHTTPRequest*)getRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute;
-- (ASIHTTPRequest*)postRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute;
-- (ASIHTTPRequest*)putRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute;
-- (ASIHTTPRequest*)deleteRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute;
+- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth;
+- (ASIHTTPRequest*)getRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth;
+- (ASIHTTPRequest*)postRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth;
+- (ASIHTTPRequest*)putRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth;
+- (ASIHTTPRequest*)deleteRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth;
 
-- (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass;
-- (ASIHTTPRequest*)getRequestForObjectWithClass:(Class)objectClass andID:(NSNumber*)ID;
-- (ASIHTTPRequest*)postRequestForObject:(Model*)obj;
-- (ASIHTTPRequest*)putRequestForObject:(Model*)obj;
-- (ASIHTTPRequest*)deleteRequestForObject:(Model*)obj;
+- (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass withAuth:(Auth*)auth;
+- (ASIHTTPRequest*)getRequestForObjectWithClass:(Class)objectClass andID:(NSNumber*)ID withAuth:(Auth*)auth;
+- (ASIHTTPRequest*)postRequestForObject:(Model*)obj withAuth:(Auth*)auth;
+- (ASIHTTPRequest*)putRequestForObject:(Model*)obj withAuth:(Auth*)auth;
+- (ASIHTTPRequest*)deleteRequestForObject:(Model*)obj withAuth:(Auth*)auth;
 
 @end
 
@@ -39,13 +39,31 @@
   return self;
 }
 
--(NSURL*)urlWithURL:(NSString*)path absolute:(BOOL)absolute addTrailingSlash:(BOOL)slash
+-(NSURL*)urlWithURL:(NSString*)path absolute:(BOOL)absolute addTrailingSlash:(BOOL)slash params:(NSArray*)params
 {
   if (!path || ![path isKindOfClass:[NSString class]])
     return nil;
   
   if (slash && ![path hasSuffix:@"/"])
     path = [path stringByAppendingString:@"/"];
+  
+  if (params && [params count] > 0)
+  {
+    if (![path hasSuffix:@"/"])
+      path = [path stringByAppendingString:@"/"];
+    
+    int i = 0;
+    for (NSString* s in params) 
+    {
+      if (i == 0)
+        path = [path stringByAppendingString:@"?"];
+      else
+        path = [path stringByAppendingString:@"&"];
+      
+      path = [path stringByAppendingString:s];
+      i++;
+    }
+  }
   
   NSURL* url;
   if (absolute)
@@ -118,76 +136,76 @@
 
 
 #pragma mark -  synchronous requests
-- (Container*)getObjectsWithClass:(Class)objectClass
+- (Container*)getObjectsWithClass:(Class)objectClass withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass];
+  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass withAuth:auth];
   Container* container = [self getObjectsWithRequest:req andClass:objectClass];
   return container;
 }
 
-- (id)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID
+- (id)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self getRequestForObjectWithClass:objectClass andID:ID];
+  ASIHTTPRequest* req = [self getRequestForObjectWithClass:objectClass andID:ID withAuth:auth];
   id obj = [self getObjectWithRequest:req andClass:objectClass];
   return obj;
 }
 
-- (void)postNewObject:(Model*)obj
+- (void)postNewObject:(Model*)obj withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self postRequestForObject:obj];
+  ASIHTTPRequest* req = [self postRequestForObject:obj withAuth:auth];
   [self startPostRequest:req];
 }
 
-- (void)updateObject:(Model*)obj
+- (void)updateObject:(Model*)obj withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self putRequestForObject:obj];
+  ASIHTTPRequest* req = [self putRequestForObject:obj withAuth:auth];
   [self startPutRequest:req];
 }
 
-- (void)deleteObject:(Model*)obj
+- (void)deleteObject:(Model*)obj withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self deleteRequestForObject:obj];
+  ASIHTTPRequest* req = [self deleteRequestForObject:obj withAuth:auth];
   [self startDeleteRequest:req];
 }
 
 
 #pragma mark - synchronous requests with URL
-- (Container*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
+- (Container*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth;
 {
-  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute];
+  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute withAuth:auth];
   Container* container = [self getObjectsWithRequest:req andClass:objectClass];
   return container;
 }
 
-- (id)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute;
+- (id)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth;
 {
-  ASIHTTPRequest* req = [self getRequestForObjectWithURL:url absolute:absolute];
+  ASIHTTPRequest* req = [self getRequestForObjectWithURL:url absolute:absolute withAuth:auth];
   id obj = [self getObjectWithRequest:req andClass:objectClass];
   return obj;
 }
 
-- (void)postNewObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
+- (void)postNewObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth;
 {
-  ASIHTTPRequest* req = [self postRequestForObject:obj withURL:url absolute:absolute];
+  ASIHTTPRequest* req = [self postRequestForObject:obj withURL:url absolute:absolute withAuth:auth];
   [self startPostRequest:req];  
 }
 
-- (void)updateObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
+- (void)updateObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth;
 {
-  ASIHTTPRequest* req = [self putRequestForObject:obj withURL:url absolute:absolute];
+  ASIHTTPRequest* req = [self putRequestForObject:obj withURL:url absolute:absolute withAuth:auth];
   [self startPutRequest:req];
 }
 
-- (void)deleteObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute;
+- (void)deleteObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth;
 {
-  ASIHTTPRequest* req = [self deleteRequestForObjectWithURL:url absolute:absolute];
+  ASIHTTPRequest* req = [self deleteRequestForObjectWithURL:url absolute:absolute withAuth:auth];
   [self startDeleteRequest:req];
 }
 
 
 
 #pragma mark - asynchronous tools
-- (void)notifytarget:(id)target byCalling:(SEL)selector withObject:(id)obj andSuccess:(BOOL)succeeded
+- (void)notifytarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withObject:(id)obj andSuccess:(BOOL)succeeded
 {
   NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
   
@@ -210,65 +228,68 @@
     [info setValue:meta forKey:@"meta"];
   }
   
+  if (userData)
+    [info setValue:userData forKey:@"userData"];
+  
   [info setValue:err forKey:@"error"];
   [target performSelector:selector withObject:result withObject:info];
 }
 
 
-- (void)getObjectsWithRequest:(ASIHTTPRequest*)req class:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector
+- (void)getObjectsWithRequest:(ASIHTTPRequest*)req class:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData
 {
   if (!req)
-    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+    [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
   
-  NSDictionary* userinfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"GET_ALL", @"method", objectClass, @"objectClass", nil];
+  NSDictionary* userinfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"GET_ALL", @"method", objectClass, @"objectClass", userData, @"userData", nil];
   req.userInfo = userinfo;
   
   req.delegate = self;
   [req startAsynchronous];
 }
 
-- (void)getObjectWithRequest:(ASIHTTPRequest*)req class:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector
+- (void)getObjectWithRequest:(ASIHTTPRequest*)req class:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData
 {
   if (!req)
-    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+    [self notifytarget:target byCalling:selector withUserData:userData  withObject:nil andSuccess:NO];
   
-  NSDictionary* userinfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"GET", @"method", objectClass, @"objectClass", nil];
+  NSDictionary* userinfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"GET", @"method", objectClass, @"objectClass", userData, @"userData", nil];
   req.userInfo = userinfo;
   
   req.delegate = self;
   [req startAsynchronous];
 }
 
-- (void)postNewObject:(Model*)obj withRequest:(ASIHTTPRequest*)req notifyTarget:(id)target byCalling:(SEL)selector
+- (void)postNewObject:(Model*)obj withRequest:(ASIHTTPRequest*)req notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData returnNewObject:(BOOL)returnNew withAuthForGET:(Auth*)getAuth
 {
   if (!req)
-    [self notifytarget:target byCalling:selector withObject:obj andSuccess:NO];
+    [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
   
-  NSDictionary* userinfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"POST", @"method", obj, @"object", nil];
+  NSDictionary* userinfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"POST", @"method", obj, @"object", userData, @"userData", [NSNumber numberWithBool:returnNew], @"returnNewObject", getAuth, @"authForGET", nil];
   req.userInfo = userinfo;
   
   req.delegate = self;
   [req startAsynchronous];
 }
 
-- (void)updateObject:(Model*)obj withRequest:(ASIHTTPRequest*)req notifyTarget:(id)target byCalling:(SEL)selector
+- (void)updateObject:(Model*)obj withRequest:(ASIHTTPRequest*)req notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData
 {
   if (!req)
-    [self notifytarget:target byCalling:selector withObject:obj andSuccess:NO];
+    [self notifytarget:target byCalling:selector withUserData:userData withObject:obj andSuccess:NO];
   
-  NSDictionary* userinfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"PUT", @"method", obj, @"object", nil];
+  NSDictionary* userinfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"PUT", @"method", obj, @"object", userData, @"userData", nil];
   req.userInfo = userinfo;
   
   req.delegate = self;
   [req startAsynchronous];
 }
 
-- (void)deleteObject:(Model*)obj withRequest:(ASIHTTPRequest*)req notifyTarget:(id)target byCalling:(SEL)selector
+- (void)deleteObject:(Model*)obj withRequest:(ASIHTTPRequest*)req notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData
 {
   if (!req)
-    [self notifytarget:target byCalling:selector withObject:obj andSuccess:NO];
+    [self notifytarget:target byCalling:selector withUserData:userData withObject:obj andSuccess:NO];
   
-  NSDictionary* userinfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"DELETE", @"method", obj, @"object", nil];
+  NSDictionary* userinfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"DELETE", @"method", obj, @"object", userData, @"userData", nil];
   req.userInfo = userinfo;
   
   req.delegate = self;
@@ -276,65 +297,65 @@
 }
 
 #pragma mark - asynchronous requests
-- (void)getObjectsWithClass:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector
+- (void)getObjectsWithClass:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass];
-  [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector];
+  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass withAuth:auth];
+  [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:userData];
 }
 
-- (void)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID notifyTarget:(id)target byCalling:(SEL)selector
+- (void)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self getRequestForObjectWithClass:objectClass andID:ID];
-  [self getObjectWithRequest:req class:objectClass notifyTarget:target byCalling:selector];
+  ASIHTTPRequest* req = [self getRequestForObjectWithClass:objectClass andID:ID withAuth:auth];
+  [self getObjectWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:userData];
 }
 
-- (void)postNewObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
+- (void)postNewObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth returnNewObject:(BOOL)returnNew withAuthForGET:(Auth*)getAuth
 {
-  ASIHTTPRequest* req = [self postRequestForObject:obj];
-  [self postNewObject:obj withRequest:req notifyTarget:target byCalling:selector];
+  ASIHTTPRequest* req = [self postRequestForObject:obj withAuth:auth];
+  [self postNewObject:obj withRequest:req notifyTarget:target byCalling:selector withUserData:userData returnNewObject:(BOOL)returnNew withAuthForGET:getAuth];
 }
 
-- (void)updateObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
+- (void)updateObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self putRequestForObject:obj];
-  [self updateObject:obj withRequest:req notifyTarget:target byCalling:selector];
+  ASIHTTPRequest* req = [self putRequestForObject:obj withAuth:auth];
+  [self updateObject:obj withRequest:req notifyTarget:target byCalling:selector withUserData:userData];
 }
 
-- (void)deleteObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector
+- (void)deleteObject:(Model*)obj notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self deleteRequestForObject:obj];
-  [self deleteObject:obj withRequest:req notifyTarget:target byCalling:selector];
+  ASIHTTPRequest* req = [self deleteRequestForObject:obj withAuth:auth];
+  [self deleteObject:obj withRequest:req notifyTarget:target byCalling:selector withUserData:userData];
 }
 
 #pragma mark - asynchronous requests with url
-- (void)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector
+- (void)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute];
-  [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector];
+  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute withAuth:auth];
+  [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:userData];
 }
 
-- (void)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector
+- (void)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self getRequestForObjectWithURL:url absolute:absolute];
-  [self getObjectWithRequest:req class:objectClass notifyTarget:target byCalling:selector];
+  ASIHTTPRequest* req = [self getRequestForObjectWithURL:url absolute:absolute withAuth:auth];
+  [self getObjectWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:userData];
 }
 
-- (void)postNewObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector
+- (void)postNewObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth returnNewObject:(BOOL)returnNew withAuthForGET:(Auth*)getAuth
 {
-  ASIHTTPRequest* req = [self postRequestForObject:obj withURL:url absolute:absolute];
-  [self postNewObject:obj withRequest:req notifyTarget:target byCalling:selector];
+  ASIHTTPRequest* req = [self postRequestForObject:obj withURL:url absolute:absolute withAuth:auth];
+  [self postNewObject:obj withRequest:req notifyTarget:target byCalling:selector withUserData:userData returnNewObject:returnNew withAuthForGET:getAuth];
 }
 
-- (void)updateObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector
+- (void)updateObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self putRequestForObject:obj withURL:url absolute:absolute];
-  [self updateObject:obj withRequest:req notifyTarget:target byCalling:selector];
+  ASIHTTPRequest* req = [self putRequestForObject:obj withURL:url absolute:absolute withAuth:auth];
+  [self updateObject:obj withRequest:req notifyTarget:target byCalling:selector withUserData:userData];
 }
 
-- (void)deleteObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector
+- (void)deleteObject:(Model*)obj withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self deleteRequestForObjectWithURL:url absolute:absolute];
-  [self deleteObject:obj withRequest:req notifyTarget:target byCalling:selector];
+  ASIHTTPRequest* req = [self deleteRequestForObjectWithURL:url absolute:absolute withAuth:auth];
+  [self deleteObject:obj withRequest:req notifyTarget:target byCalling:selector withUserData:userData];
 }
 
 
@@ -347,17 +368,18 @@
   id target         = [userinfo valueForKey:@"target"];
   SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
   Class objectClass = [userinfo valueForKey:@"objectClass"];
+  NSDictionary* userData = [userinfo valueForKey:@"userData"];
   
   if (!succeeded)
   {
-    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+    [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
     return;
   }
   
   NSString* response = request.responseString;
   if (!response)
   {
-    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+    [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
     return;
   }
   
@@ -367,11 +389,11 @@
   
   if (!container)
   {
-    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+    [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
     return;
   }
   
-  [self notifytarget:target byCalling:selector withObject:container andSuccess:YES];
+  [self notifytarget:target byCalling:selector withUserData:userData withObject:container andSuccess:YES];
 }
 
 // GET handler
@@ -381,17 +403,18 @@
   id target         = [userinfo valueForKey:@"target"];
   SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
   Class objectClass = [userinfo valueForKey:@"objectClass"];
- 
+  NSDictionary* userData = [userinfo valueForKey:@"userData"];
+  
   if (!succeeded)
   {
-    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+    [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
     return;
   }
   
   NSString* response = request.responseString;
   if (!response)
   {
-    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+    [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
     return;
   }
   
@@ -400,11 +423,11 @@
   
   if (!obj)
   {
-    [self notifytarget:target byCalling:selector withObject:nil andSuccess:NO];
+    [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
     return;
   }
 
-  [self notifytarget:target byCalling:selector withObject:obj andSuccess:YES];
+  [self notifytarget:target byCalling:selector withUserData:userData withObject:obj andSuccess:YES];
 }
 
 // POST handler
@@ -414,10 +437,19 @@
   id target         = [userinfo valueForKey:@"target"];
   SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
   Model* obj            = [userinfo valueForKey:@"object"];
+  BOOL returnNewObject = [[userinfo valueForKey:@"returnNewObject"] boolValue];
+  Auth* authForGET = [userinfo valueForKey:@"authForGET"];
+  NSDictionary* userData = [userinfo valueForKey:@"userData"];
   
-  NSString* response = request.responseString;
-  
-  [self notifytarget:target byCalling:selector withObject:obj andSuccess:succeeded];
+  NSString* location = [request.responseHeaders valueForKey:@"Location"];
+  if (returnNewObject)
+  {
+    [self getObjectWithClass:[obj class] withURL:location absolute:YES notifyTarget:target byCalling:selector withUserData:userData withAuth:authForGET];
+  }
+  else
+  {
+    [self notifytarget:target byCalling:selector withUserData:userData withObject:location andSuccess:succeeded];
+  }
 }
 
 // PUT handler
@@ -427,8 +459,9 @@
   id target         = [userinfo valueForKey:@"target"];
   SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
   Model* obj            = [userinfo valueForKey:@"object"];
+  NSDictionary* userData = [userinfo valueForKey:@"userData"];
   
-  [self notifytarget:target byCalling:selector withObject:obj andSuccess:succeeded];
+  [self notifytarget:target byCalling:selector withUserData:userData withObject:obj andSuccess:succeeded];
 }
 
 // DELETE handler
@@ -438,8 +471,9 @@
   id target         = [userinfo valueForKey:@"target"];
   SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
   Model* obj            = [userinfo valueForKey:@"object"];
+  NSDictionary* userData = [userinfo valueForKey:@"userData"];
   
-  [self notifytarget:target byCalling:selector withObject:obj andSuccess:succeeded];
+  [self notifytarget:target byCalling:selector withUserData:userData withObject:obj andSuccess:succeeded];
 }
 
 
@@ -487,32 +521,58 @@
 
 @implementation Communicator (Communicator_internal)
 
-- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute
+- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth
 {
-  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES];
+  NSArray* params = nil;
+  if (auth && [auth isKindOfClass:[AuthApiKey class]])
+  {
+    AuthApiKey* a = (AuthApiKey*)auth;
+    params = a.urlParams;
+  }
+  
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:params];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"GET";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
+  if (auth && [auth isKindOfClass:[AuthPassword class]])
+  {
+    AuthPassword* a = (AuthPassword*)auth;
+    req.username = a.username;
+    req.password = a.password;
+  }
   
   return req;
 }
 
-- (ASIHTTPRequest*)getRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute
+- (ASIHTTPRequest*)getRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth
 {
-  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES];
+  NSArray* params = nil;
+  if (auth && [auth isKindOfClass:[AuthApiKey class]])
+  {
+    AuthApiKey* a = (AuthApiKey*)auth;
+    params = a.urlParams;
+  }
+  
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:params];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"GET";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
+  if (auth && [auth isKindOfClass:[AuthPassword class]])
+  {
+    AuthPassword* a = (AuthPassword*)auth;
+    req.username = a.username;
+    req.password = a.password;
+  }
   
   return req;
 }
 
 
-- (ASIHTTPRequest*)postRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute
+- (ASIHTTPRequest*)postRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth
 {
   if (!obj)
     return nil;
@@ -521,7 +581,16 @@
   if (!jsonDesc)
     return nil;
   
-  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES];
+  NSArray* params = nil;
+  if (auth && [auth isKindOfClass:[AuthApiKey class]])
+  {
+    AuthApiKey* a = (AuthApiKey*)auth;
+    params = a.urlParams;
+  }
+  
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:params];
+  
+  // todo AUTH
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
@@ -531,11 +600,18 @@
   
   [req appendPostData:[jsonDesc dataUsingEncoding:NSUTF8StringEncoding]];
   
+  if (auth && [auth isKindOfClass:[AuthPassword class]])
+  {
+    AuthPassword* a = (AuthPassword*)auth;
+    req.username = a.username;
+    req.password = a.password;
+  }
+  
   return req;
 }
 
 
-- (ASIHTTPRequest*)putRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute
+- (ASIHTTPRequest*)putRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth
 {
   if (!obj)
     return nil;
@@ -544,7 +620,16 @@
   if (!jsonDesc)
     return nil;
   
-  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES];
+  NSArray* params = nil;
+  if (auth && [auth isKindOfClass:[AuthApiKey class]])
+  {
+    AuthApiKey* a = (AuthApiKey*)auth;
+    params = a.urlParams;
+  }
+  
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:params];
+  
+  // todo AUTH
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
@@ -554,18 +639,40 @@
   
   [req appendPostData:[jsonDesc dataUsingEncoding:NSUTF8StringEncoding]];
   
+  if (auth && [auth isKindOfClass:[AuthPassword class]])
+  {
+    AuthPassword* a = (AuthPassword*)auth;
+    req.username = a.username;
+    req.password = a.password;
+  }
+  
   return req;
 }
 
-- (ASIHTTPRequest*)deleteRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute
+- (ASIHTTPRequest*)deleteRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth
 {
-  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES];
+  NSArray* params = nil;
+  if (auth && [auth isKindOfClass:[AuthApiKey class]])
+  {
+    AuthApiKey* a = (AuthApiKey*)auth;
+    params = a.urlParams;
+  }
+  
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:params];
+  
+  // todo AUTH
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"DELETE";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [req addRequestHeader:@"Content-Type" value:@"application/json"];
+  if (auth && [auth isKindOfClass:[AuthPassword class]])
+  {
+    AuthPassword* a = (AuthPassword*)auth;
+    req.username = a.username;
+    req.password = a.password;
+  }
   
   return req;
 }
@@ -581,7 +688,7 @@
 
 
 
-- (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass
+- (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass withAuth:(Auth*)auth
 {
 //  NSString* path = [_mapping objectForKey:objectClass];
   NSString* path = [Model uriForObjectClass:objectClass];
@@ -591,11 +698,11 @@
   NSURL* url = [NSURL URLWithString:_baseURL];
   url = [url URLByAppendingPathComponent:path];
   
-  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:[url absoluteString] absolute:YES];  
+  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:[url absoluteString] absolute:YES withAuth:auth];  
   return req;
 }
 
-- (ASIHTTPRequest*)getRequestForObjectWithClass:(Class)objectClass andID:(NSNumber*)ID
+- (ASIHTTPRequest*)getRequestForObjectWithClass:(Class)objectClass andID:(NSNumber*)ID withAuth:(Auth*)auth
 {
   NSString* path = [Model uriForObjectClass:objectClass andID:ID];
   if (!path)
@@ -604,11 +711,11 @@
   NSURL* url = [NSURL URLWithString:_baseURL];
   url = [url URLByAppendingPathComponent:path];
   
-  ASIHTTPRequest* req = [self getRequestForObjectWithURL:[url absoluteString] absolute:YES];
+  ASIHTTPRequest* req = [self getRequestForObjectWithURL:[url absoluteString] absolute:YES withAuth:auth];
   return req;
 }
 
-- (ASIHTTPRequest*)postRequestForObject:(Model*)obj
+- (ASIHTTPRequest*)postRequestForObject:(Model*)obj withAuth:(Auth*)auth
 {
   NSString* path = [Model uriForObjectClass:[obj class]];
   if (!path)
@@ -618,11 +725,11 @@
   path = [path stringByAppendingString:@"/"];
   url = [url URLByAppendingPathComponent:path];
   
-  ASIHTTPRequest* req = [self postRequestForObject:obj withURL:[url absoluteString] absolute:YES];
+  ASIHTTPRequest* req = [self postRequestForObject:obj withURL:[url absoluteString] absolute:YES withAuth:auth];
   return req;
 }
 
-- (ASIHTTPRequest*)putRequestForObject:(Model*)obj
+- (ASIHTTPRequest*)putRequestForObject:(Model*)obj withAuth:(Auth*)auth
 {
   NSString* path = [Model uriForObject:obj];
   if (!path)
@@ -631,11 +738,11 @@
   NSURL* url = [NSURL URLWithString:_baseURL];
   url = [url URLByAppendingPathComponent:path];
   
-  ASIHTTPRequest* req = [self putRequestForObject:obj withURL:[url absoluteString] absolute:YES];
+  ASIHTTPRequest* req = [self putRequestForObject:obj withURL:[url absoluteString] absolute:YES withAuth:auth];
   return req;
 }
 
-- (ASIHTTPRequest*)deleteRequestForObject:(Model*)obj
+- (ASIHTTPRequest*)deleteRequestForObject:(Model*)obj withAuth:(Auth*)auth
 {
   if (!obj)
     return nil;
@@ -648,7 +755,7 @@
   url = [url URLByAppendingPathComponent:path];
 //  url = [url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@/", obj.id]];
   
-  ASIHTTPRequest* req = [self deleteRequestForObjectWithURL:[url absoluteString] absolute:YES];
+  ASIHTTPRequest* req = [self deleteRequestForObjectWithURL:[url absoluteString] absolute:YES withAuth:auth];
   return req;
 }
 

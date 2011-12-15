@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		4009010B14967AEE00C9E51A /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010A14967AEE00C9E51A /* WebImageView.m */; };
 		4009010C14967AEE00C9E51A /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010A14967AEE00C9E51A /* WebImageView.m */; };
+		4009011014990EE200C9E51A /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010F14990EE200C9E51A /* Playlist.m */; };
+		4009011114990EE200C9E51A /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010F14990EE200C9E51A /* Playlist.m */; };
+		40090114149A682100C9E51A /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 40090113149A682100C9E51A /* ApiKey.m */; };
+		40090115149A682100C9E51A /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 40090113149A682100C9E51A /* ApiKey.m */; };
+		4009011C149A69F100C9E51A /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009011B149A69F100C9E51A /* Auth.m */; };
+		4009011D149A69F100C9E51A /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009011B149A69F100C9E51A /* Auth.m */; };
 		40274B801491048900F26008 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40274B811491048900F26008 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40274B821491048900F26008 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
@@ -312,6 +318,12 @@
 /* Begin PBXFileReference section */
 		4009010914967AEE00C9E51A /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageView.h; sourceTree = "<group>"; };
 		4009010A14967AEE00C9E51A /* WebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebImageView.m; sourceTree = "<group>"; };
+		4009010E14990EE100C9E51A /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
+		4009010F14990EE200C9E51A /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
+		40090112149A682100C9E51A /* ApiKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
+		40090113149A682100C9E51A /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
+		4009011A149A69F100C9E51A /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Auth.h; path = Yasound/Model/Auth.h; sourceTree = SOURCE_ROOT; };
+		4009011B149A69F100C9E51A /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Auth.m; path = Yasound/Model/Auth.m; sourceTree = SOURCE_ROOT; };
 		40274B7A1491048900F26008 /* Communicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communicator.h; sourceTree = "<group>"; };
 		40274B7B1491048900F26008 /* Communicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communicator.m; sourceTree = "<group>"; };
 		40274B7C1491048900F26008 /* Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Container.h; sourceTree = "<group>"; };
@@ -573,6 +585,8 @@
 				40274B7D1491048900F26008 /* Container.m */,
 				40274B7E1491048900F26008 /* Model.h */,
 				40274B7F1491048900F26008 /* Model.m */,
+				4009011A149A69F100C9E51A /* Auth.h */,
+				4009011B149A69F100C9E51A /* Auth.m */,
 			);
 			name = Communicator;
 			path = LibTools/Communicator;
@@ -702,6 +716,10 @@
 				40AAEC5B149225070031B39D /* Song.m */,
 				40AAEC5D149225DC0031B39D /* User.h */,
 				40AAEC5E149225DC0031B39D /* User.m */,
+				4009010E14990EE100C9E51A /* Playlist.h */,
+				4009010F14990EE200C9E51A /* Playlist.m */,
+				40090112149A682100C9E51A /* ApiKey.h */,
+				40090113149A682100C9E51A /* ApiKey.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1361,6 +1379,9 @@
 				4082EE641492908000E7FFF6 /* NSObject+JsonProxy.m in Sources */,
 				4082EE651492908000E7FFF6 /* NSObject+PropertyDictionary.m in Sources */,
 				4009010C14967AEE00C9E51A /* WebImageView.m in Sources */,
+				4009011114990EE200C9E51A /* Playlist.m in Sources */,
+				40090115149A682100C9E51A /* ApiKey.m in Sources */,
+				4009011D149A69F100C9E51A /* Auth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1426,6 +1447,9 @@
 				40AAEC5C149225070031B39D /* Song.m in Sources */,
 				40AAEC5F149225DC0031B39D /* User.m in Sources */,
 				4009010B14967AEE00C9E51A /* WebImageView.m in Sources */,
+				4009011014990EE200C9E51A /* Playlist.m in Sources */,
+				40090114149A682100C9E51A /* ApiKey.m in Sources */,
+				4009011C149A69F100C9E51A /* Auth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

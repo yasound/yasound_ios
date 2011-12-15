@@ -23,6 +23,10 @@
 - (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;
 - (void)radioWithURL:(NSString*)url target:(id)target action:(SEL)selector;
 
+- (void)ApiKeyForUser:(User*)user target:(id)target action:(SEL)selector;
+
+- (void)createRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
 - (void)wallEventsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
@@ -30,8 +34,6 @@
 - (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)postNewWallMessage:(WallEvent*)message target:(id)target action:(SEL)selector;
-
-- (void)postNewSongMetadata:(SongMetadata*)metadata target:(id)target action:(SEL)selector;
 
 - (NSURL*)urlForPicture:(NSString*)picturePath;
 
