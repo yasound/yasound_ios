@@ -420,8 +420,16 @@
     {
       if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
       {
-        NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
-        [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:NO];
+        NSString* picturePath = ev.user.picture;
+        NSString* url = nil;
+        if (picturePath)
+        {
+          url = @"https://dev.yasound.com/";
+          url = [url stringByAppendingString:picturePath];
+        }
+        [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:YES];
+        //NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
+        //[self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:NO];
       }
     }
     else if ([ev.type isEqualToString:@"J"])
