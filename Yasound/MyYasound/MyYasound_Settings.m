@@ -267,20 +267,24 @@
     else if (indexPath.section == SECTION_PLAYLISTS)
     {
         UITableViewCell *cell = [_settingsTableView cellForRowAtIndexPath:indexPath];
-        MPMediaPlaylist* item = [_playlists objectAtIndex:indexPath.row];
+        MPMediaPlaylist* list = [_playlists objectAtIndex:indexPath.row];
         
-        if ([_selectedPlaylists containsObject:item] == YES)
+        if ([_selectedPlaylists containsObject:list] == YES)
         {
             NSLog(@"deselect\n");
-            [_selectedPlaylists removeObject:item];
+            [_selectedPlaylists removeObject:list];
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
         else
         {
             NSLog(@"select\n");
-            [_selectedPlaylists addObject:item];
+            [_selectedPlaylists addObject:list];
             cell.accessoryType = UITableViewCellAccessoryCheckmark; 
         }
+        
+        NSArray* items = [list items];
+        NSLog(@"%@", items);
+
         
         cell.selected = FALSE;
     }
