@@ -23,6 +23,6 @@
 
 + (PlaylistMoulinor*)main;
 
-- (NSData*)dataWithPlaylists:(NSArray*)mediaPlaylists compressed:(BOOL)compressed;
+- (NSData*)dataWithPlaylists:(NSArray*)mediaPlaylists binary:(BOOL)binary compressed:(BOOL)compressed;
 
 @end

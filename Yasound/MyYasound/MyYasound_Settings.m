@@ -415,7 +415,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     //LBDEBUG
-    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_playlists compressed:YES];
+    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_playlists binary:YES compressed:YES];
 //    NSString* aStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 //    NSLog(@"PLAYLIST DATA : \n");
 //    NSLog(aStr);

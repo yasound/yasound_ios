@@ -40,7 +40,7 @@ static PlaylistMoulinor* _main = nil;
 // build a "CSV-like" formated NSData, from the playlists contents
 //
 //
-- (NSData*)dataWithPlaylists:(NSArray*)mediaPlaylists compressed:(BOOL)compressed;
+- (NSData*)dataWithPlaylists:(NSArray*)mediaPlaylists binary:(BOOL)binary compressed:(BOOL)compressed
 {
     NSMutableData* data = [[NSMutableData alloc] init];
     
@@ -52,15 +52,26 @@ static PlaylistMoulinor* _main = nil;
     // SECTION 'ADD'
     //
     
-    NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_ADD];
-    NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
-    [data appendData:actionData];
+    if (!binary)
+    {
+        NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_ADD];
+        NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
+        [data appendData:actionData];
+    }
+    else
+    {
+        const char* str = (const char*) [PM_ACTION_ADD UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+
+        str = ";\n"; 
+        [data appendBytes:str length:strlen(str)];    
+    }
 
     
     // for all playlist
     for (MPMediaPlaylist* list in mediaPlaylists)
     {
-        NSData* playlistData = [self dataWithPlaylist:list];
+        NSData* playlistData = [self dataWithPlaylist:list binary:binary];
         [data appendData:playlistData];
     }
     
@@ -99,7 +110,7 @@ static PlaylistMoulinor* _main = nil;
 //
 //
 
-- (NSData*)dataWithPlaylist:(MPMediaPlaylist*)playlist
+- (NSData*)dataWithPlaylist:(MPMediaPlaylist*)playlist binary:(BOOL)binary
 {
     NSString* playlistTitle = [playlist valueForProperty:MPMediaPlaylistPropertyName];
 
@@ -109,9 +120,26 @@ static PlaylistMoulinor* _main = nil;
     //.............................................................................................
     // an entry for the playlist
     //
-    NSString* title = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_PLAYLIST, playlistTitle];
-    NSData* titleData = [title dataUsingEncoding:NSUTF8StringEncoding];
-    [data appendData:titleData];
+    if (!binary)
+    {
+        NSString* title = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_PLAYLIST, playlistTitle];
+        NSData* titleData = [title dataUsingEncoding:NSUTF8StringEncoding];
+        [data appendData:titleData];
+    }
+    else
+    {
+        const char* str = (const char*) [PM_TAG_PLAYLIST UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+
+        str = ";\""; 
+        [data appendBytes:str length:strlen(str)];    
+
+        str = (const char*) [playlistTitle UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+
+        str = "\";\n"; 
+        [data appendBytes:str length:strlen(str)];    
+    }
     
     
     // get sorted dictionary from the playlist contents
@@ -124,7 +152,7 @@ static PlaylistMoulinor* _main = nil;
     for (NSString* artist in artists)
     {
         NSDictionary* dicoArtist = [sortedDictionnary objectForKey:artist];
-        NSData* artistData = [self dataWithArtist:artist dictionary:dicoArtist];
+        NSData* artistData = [self dataWithArtist:artist dictionary:dicoArtist binary:binary];
         [data appendData:artistData];
     }
 
@@ -211,6 +239,7 @@ static PlaylistMoulinor* _main = nil;
 
 
 
+
 //**********************************************************************************************************
 //
 // dataWithArtist
@@ -219,7 +248,7 @@ static PlaylistMoulinor* _main = nil;
 //
 //
 
-- (NSData*) dataWithArtist:(NSString*)artist dictionary:(NSDictionary*)dicoArtist
+- (NSData*) dataWithArtist:(NSString*)artist dictionary:(NSDictionary*)dicoArtist binary:(BOOL)binary
 {
     NSMutableData* data = [[NSMutableData alloc] init];
 
@@ -227,16 +256,33 @@ static PlaylistMoulinor* _main = nil;
     //..................................................................................
     // an entry for the artist
     //
-    NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ARTIST, artist];
-    NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
-    [data appendData:outputData];
+    if (!binary)
+    {
+        NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ARTIST, artist];
+        NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
+        [data appendData:outputData];
+    }
+    else
+    {
+        const char* str = (const char*) [PM_TAG_ARTIST UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+
+        str = ";\""; 
+        [data appendBytes:str length:strlen(str)];    
+
+        str = (const char*) [artist UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+
+        str = "\";\n";
+        [data appendBytes:str length:strlen(str)];    
+    }
 
     // for each album
     NSArray* albums = [dicoArtist allKeys];
     for (NSString* album in albums)
     {
         NSArray* arrayAlbum = [dicoArtist objectForKey:album];
-        NSData* albumData = [self dataWithAlbum:album array:arrayAlbum];
+        NSData* albumData = [self dataWithAlbum:album array:arrayAlbum binary:binary];
         [data appendData:albumData];
     }
     
@@ -256,31 +302,82 @@ static PlaylistMoulinor* _main = nil;
 //
 //
 
-- (NSData*) dataWithAlbum:(NSString*)album array:(NSArray*)arrayAlbum
+- (NSData*) dataWithAlbum:(NSString*)album array:(NSArray*)arrayAlbum binary:(BOOL)binary
 {
     NSMutableData* data = [[NSMutableData alloc] init];
 
     
-    //..................................................................................
-    // an entry for the album
-    //
-    NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ALBUM, album];
-    NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
-    [data appendData:outputData];
-    
-    // for each song
-    for (NSDictionary* dicoSong in arrayAlbum)
+    if (!binary)
     {
-        NSInteger index = [[dicoSong objectForKey:@"index"] integerValue];
-        NSString* title = [dicoSong objectForKey:@"title"];
-        
         //..................................................................................
-        // an entry for the song
+        // an entry for the album
         //
-        NSString* output = [NSString stringWithFormat:@"%@;%d;\"%@\";\n", PM_TAG_SONG, index, title];
+        NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ALBUM, album];
         NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
         [data appendData:outputData];
+
+        // for each song
+        for (NSDictionary* dicoSong in arrayAlbum)
+        {
+            NSInteger index = [[dicoSong objectForKey:@"index"] integerValue];
+            NSString* title = [dicoSong objectForKey:@"title"];
+            
+            //..................................................................................
+            // an entry for the song
+            //
+            NSString* output = [NSString stringWithFormat:@"%@;%d;\"%@\";\n", PM_TAG_SONG, index, title];
+            NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
+            [data appendData:outputData];
+        }
     }
+    else
+    {
+        //..................................................................................
+        // an entry for the album
+        //
+        const char* str = (const char*) [PM_TAG_ALBUM UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+
+        str = ";\""; 
+        [data appendBytes:str length:strlen(str)];    
+
+        str = (const char*) [album UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+
+        str = "\";\n";
+        [data appendBytes:str length:strlen(str)];   
+        
+
+        // for each song
+        for (NSDictionary* dicoSong in arrayAlbum)
+        {
+            int index = [[dicoSong objectForKey:@"index"] intValue];
+            NSString* title = [dicoSong objectForKey:@"title"];
+            
+            //..................................................................................
+            // an entry for the song
+            //
+            const char* str = (const char*) [PM_TAG_SONG UTF8String];
+            [data appendBytes:str length:strlen(str)];    
+            
+            str = ";"; 
+            [data appendBytes:str length:strlen(str)];    
+            
+            str = &index;
+            int size = sizeof(int);
+            [data appendBytes:str length:size];    
+            
+            str = ";\""; 
+            [data appendBytes:str length:strlen(str)];    
+
+            str = (const char*) [title UTF8String];
+            [data appendBytes:str length:strlen(str)];    
+
+            str = "\";\n";
+            [data appendBytes:str length:strlen(str)];   
+        }
+    }
+    
     
     return data;
 }
