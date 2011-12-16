@@ -10,20 +10,29 @@
 #import "Communicator.h"
 #import "Radio.h"
 #import "WallEvent.h"
+#import "ApiKey.h"
 
 @interface YasoundDataProvider : NSObject
 {
   Communicator* _communicator;
+  User* _user;
+  ApiKey* _apiKey;
+  NSString* _password;
 }
+
+@property (readonly) Auth* apiKeyAuth;
+@property (readonly) Auth* passwordAuth;
 
 + (YasoundDataProvider*) main;
 
-- (void)radiosTarget:(id)target action:(SEL)selector;
+- (void)login:(NSString*)login password:(NSString*)pwd target:(id)target action:(SEL)selector;
 
+- (void)radiosTarget:(id)target action:(SEL)selector;
 - (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;
 - (void)radioWithURL:(NSString*)url target:(id)target action:(SEL)selector;
 
-- (void)ApiKeyForUser:(User*)user target:(id)target action:(SEL)selector;
+
+
 
 - (void)createRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 

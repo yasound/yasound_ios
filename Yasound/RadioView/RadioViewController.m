@@ -15,7 +15,6 @@
 #import "YasoundDataProvider.h"
 #import "WallEvent.h"
 
-
 //#define LOCAL 1 // use localhost as the server
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
@@ -40,6 +39,10 @@
       _lastConnectionUpdateDate = [NSDate date];
       _lastSongUpdateDate = nil;
       [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
+      
+      
+      // Mattest
+      [[YasoundDataProvider main] login:@"bob" password:@"pipo" target:self action:@selector(userLogged:withInfo:)];
 
         self.messages = [[NSMutableArray alloc] init];
         self.statusMessages = [[NSMutableArray alloc] init];
@@ -57,6 +60,12 @@
 
     }
     return self;
+}
+
+- (void)userLogged:(User*)u withInfo:(NSDictionary*)info
+{
+  NSError* error = [info valueForKey:@"error"];
+  NSLog(@"logged user '%@'", u.username);
 }
 
 - (void)didReceiveMemoryWarning
@@ -420,16 +429,16 @@
     {
       if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
       {
-        NSString* picturePath = ev.user.picture;
-        NSString* url = nil;
-        if (picturePath)
-        {
-          url = @"https://dev.yasound.com/";
-          url = [url stringByAppendingString:picturePath];
-        }
-        [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:YES];
-        //NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
-        //[self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:NO];
+//        NSString* picturePath = ev.user.picture;
+//        NSString* url = nil;
+//        if (picturePath)
+//        {
+//          url = @"https://dev.yasound.com/";
+//          url = [url stringByAppendingString:picturePath];
+//        }
+//        [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:YES];
+        NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
+        [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:NO];
       }
     }
     else if ([ev.type isEqualToString:@"J"])
