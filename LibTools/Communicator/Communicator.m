@@ -74,6 +74,7 @@
     url = [url URLByAppendingPathComponent:path];
   }
   
+  NSLog(@"url: %@", url.absoluteString);
   return url;
 }
 

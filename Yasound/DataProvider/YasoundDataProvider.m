@@ -7,6 +7,7 @@
 //
 
 #import "YasoundDataProvider.h"
+#import "ApiKey.h"
 
 
 #define USE_LOCAL_SERVER 1
@@ -50,9 +51,22 @@ static YasoundDataProvider* _main = nil;
     [resourceNames setObject:@"wall_event" forKey:[WallEvent class]];
     [resourceNames setObject:@"metadata" forKey:[SongMetadata class]];
     [resourceNames setObject:@"song" forKey:[Song class]];
+    [resourceNames setObject:@"api_key" forKey:[ApiKey class]];
   }
   
   return self;
+}
+
+- (Auth*)apiKeyAuth
+{
+  AuthApiKey* auth = [[AuthApiKey alloc] initWithUsername:_user.username andApiKey:_apiKey.key];
+  return auth;
+}
+
+- (Auth*)passwordAuth
+{
+  AuthPassword* auth = [[AuthPassword alloc] initWithUsername:_user.username andPassword:_password];
+  return auth;
 }
 
 - (NSURL*)urlForPicture:(NSString*)picturePath
@@ -63,6 +77,75 @@ static YasoundDataProvider* _main = nil;
   NSURL* url = [_communicator urlWithURL:picturePath absolute:NO addTrailingSlash:NO params:nil];
   return url;
 }
+
+
+- (void)apiKey
+{
+  _apiKey = nil;
+  Auth* a = [self passwordAuth];
+  [_communicator getObjectsWithClass:[ApiKey class] notifyTarget:self byCalling:@selector(receiveApiKeys:withInfo:) withUserData:nil withAuth:a];
+}
+
+- (void)receiveApiKeys:(NSArray*)keys withInfo:(NSDictionary*)info
+{
+  ApiKey* key = nil;
+  if (!keys || [keys count] == 0)
+    return;
+  
+  key = [keys objectAtIndex:0];
+  if (!key)
+    return;
+  
+  _apiKey = key;
+  NSLog(@"api key received '%@' for user '%@'", _apiKey.key, _user.username);
+}
+
+- (void)login:(NSString*)login password:(NSString*)pwd target:(id)target action:(SEL)selector
+{
+  _user = nil;
+  _password = pwd;
+  Auth* a = [[AuthPassword alloc] initWithUsername:login andPassword:_password];
+  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"finalTarget", NSStringFromSelector(selector), @"finalSelector", nil];
+  [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/login" absolute:NO notifyTarget:self byCalling:@selector(receiveLogin:withInfo:) withUserData:userData withAuth:a];
+}
+
+- (void)receiveLogin:(NSArray*)users withInfo:(NSDictionary*)info
+{
+  NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] init];
+  
+  User* u = nil;
+  if (!users || [users count] == 0)
+  {
+    NSError* err = [NSError errorWithDomain:@"no logged users" code:1 userInfo:nil];
+    [finalInfo setValue:err forKey:@"error"];
+  }
+  else
+  {
+    u = [users objectAtIndex:0];
+  }
+  
+  if (u)
+  {
+    _user = u;
+    [self apiKey];
+  }
+  
+  NSDictionary* userData = [info valueForKey:@"userData"];
+  id target = [userData valueForKey:@"finalTarget"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
+  
+  if (target && selector)
+  {
+    [target performSelector:selector withObject:_user withObject:finalInfo];
+  }
+}
+
+
+
+
+
+
+
 
 - (void)radiosTarget:(id)target action:(SEL)selector
 {
@@ -86,7 +169,6 @@ static YasoundDataProvider* _main = nil;
 {
   [_communicator postNewObject:radio notifyTarget:target byCalling:selector withUserData:nil withAuth:nil returnNewObject:YES withAuthForGET:nil];
 }
-
 
 
 // get wall events
