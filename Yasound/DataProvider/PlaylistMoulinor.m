@@ -8,7 +8,8 @@
 #import "PlaylistMoulinor.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "NSData+CocoaDevUsersAdditions.h"
-
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 
 
@@ -381,6 +382,53 @@ static PlaylistMoulinor* _main = nil;
     
     return data;
 }
+
+
+
+
+- (void)emailData:(NSData*)data to:(NSString*)email mimetype:(NSString*)mimetype filename:(NSString*)filename controller:(UIViewController*)controller
+{
+    _emailController = controller;
+    
+    MFMailComposeViewController* picker = [[MFMailComposeViewController alloc] init];
+    picker.mailComposeDelegate = self;
+    
+    // Set the subject of email
+    [picker setSubject:@"yasound playlist data file"];
+    
+    // Add email addresses
+    // Notice three sections: "to" "cc" and "bcc"	
+    [picker setToRecipients:[NSArray arrayWithObjects:email, nil]];
+//    [picker setCcRecipients:[NSArray arrayWithObject:@"emailaddress3@domainName.com"]];	
+//    [picker setBccRecipients:[NSArray arrayWithObject:@"emailaddress4@domainName.com"]];
+    
+    // Fill out the email body text
+    NSString *emailBody = @"yasound playlist data file attached.";
+    
+    // This is not an HTML formatted email
+    [picker setMessageBody:emailBody isHTML:NO];
+    
+    // Attach image data to the email
+    [picker addAttachmentData:data mimeType:mimetype fileName:filename];
+    
+    // Show email view	
+    [controller.navigationController presentModalViewController:picker animated:YES];
+    
+    // Release picker
+    [picker release];
+}
+
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
+{
+    // Called once the email is sent
+    // Remove the email view controller	
+    [_emailController.navigationController dismissModalViewControllerAnimated:YES];
+    _emailController = nil;
+}
+
+
+
 
 
 @end

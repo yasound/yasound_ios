@@ -9,6 +9,9 @@
 
 
 @interface PlaylistMoulinor : NSObject
+{
+    UIViewController* _emailController;
+}
 
 #define PM_ACTION_ADD @"ADD"
 #define PM_ACTION_DELETE @"DEL"
@@ -24,5 +27,7 @@
 + (PlaylistMoulinor*)main;
 
 - (NSData*)dataWithPlaylists:(NSArray*)mediaPlaylists binary:(BOOL)binary compressed:(BOOL)compressed;
+
+- (void)emailData:(NSData*)data to:(NSString*)email mimetype:(NSString*)mimetype filename:(NSString*)filename controller:(UIViewController*)controller;
 
 @end

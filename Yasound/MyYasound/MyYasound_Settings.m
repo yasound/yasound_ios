@@ -84,13 +84,23 @@
     // init playlists
     //
     MPMediaQuery *playlistsquery = [MPMediaQuery playlistsQuery];
-    
+
+    _playlistsDesc = [[NSMutableArray alloc] init];
+    [_playlistsDesc retain];
+
     _playlists = [playlistsquery collections];
     [_playlists retain];
+    
     for (MPMediaPlaylist* list in _playlists)
     {
-        NSString *listTitle = [list valueForProperty: MPMediaPlaylistPropertyName];
-        NSLog (@"playlist : %@", listTitle);
+        NSString* listname = [list valueForProperty: MPMediaPlaylistPropertyName];
+        
+        NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+        [dico setObject:listname forKey:@"name"];
+        [dico setObject:[NSNumber numberWithInteger:[list count]] forKey:@"count"];
+        [_playlistsDesc addObject:dico];
+        
+        NSLog (@"playlist : %@", listname);
     }
     
     _selectedPlaylists = [[NSMutableArray alloc] init];
@@ -104,6 +114,7 @@
 - (void)deallocInSettingsTableView
 {
     [_playlists release];
+    [_playlistsDesc release];
     [_selectedPlaylists release];
 }
 
@@ -142,7 +153,7 @@
         case SECTION_GOTO: return 1;
         case SECTION_CONFIGURATION: return 3;
         case SECTION_THEME: return 1;
-        case SECTION_PLAYLISTS: return [_playlists count];
+        case SECTION_PLAYLISTS: return [_playlistsDesc count];
         case SECTION_SUBMIT: return 1;
     }
     return 0;
@@ -205,15 +216,15 @@
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
         }
         
-        MPMediaPlaylist* list = [_playlists objectAtIndex: indexPath.row];
-        cell.textLabel.text = [list valueForProperty:MPMediaPlaylistPropertyName];
+        NSDictionary* dico = [_playlistsDesc objectAtIndex:indexPath.row];
+        cell.textLabel.text = [dico objectForKey:@"name"];
         
-        if ([_selectedPlaylists containsObject:list])
+        if ([_selectedPlaylists containsObject:[_playlists objectAtIndex:indexPath.row]])
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         else
             cell.accessoryType = UITableViewCellAccessoryNone;
         
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", list.count];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", [[dico objectForKey:@"count"] integerValue]];
         
         return cell;
     }
@@ -408,6 +419,7 @@
 
 
 
+
 #pragma mark - IBActions
 
 - (IBAction)onSubmitClicked:(id)sender
@@ -415,12 +427,15 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     //LBDEBUG
-    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_playlists binary:YES compressed:YES];
-//    NSString* aStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_selectedPlaylists binary:NO compressed:YES];
+    
+    //LBDEBUG email playlist file
+//    [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.z.bin" controller:self];
+    
+    //    NSString* aStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 //    NSLog(@"PLAYLIST DATA : \n");
 //    NSLog(aStr);
 //    NSLog(@"\n END \n");
-    
     
     
     //fake commnunication
