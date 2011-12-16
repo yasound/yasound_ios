@@ -9,6 +9,7 @@
 #import "Communicator.h"
 #import "NSObject+PropertyDictionary.h"
 #import "NSObject+SBJson.h"
+#import "ASIFormDataRequest.h"
 
 @interface Communicator (Communicator_internal)
 - (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth;
@@ -429,6 +430,26 @@
   }
 
   [self notifytarget:target byCalling:selector withUserData:userData withObject:obj andSuccess:YES];
+}
+
+
+// POST data
+// #FIXME must be asynchronous
+- (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth
+{
+  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:auth.urlParams];
+  NSLog(@"post data url '%@'", u.absoluteString);
+  if (!u)
+  {
+    NSLog(@"post data: invalid url");
+    return;
+  }
+  
+  ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
+  [req addData:data forKey:key];
+  [req startSynchronous];
+  NSString* response = req.responseString;
+  NSLog(@"post data response: %@", response);
 }
 
 // POST handler

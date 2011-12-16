@@ -31,9 +31,6 @@
 - (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;
 - (void)radioWithURL:(NSString*)url target:(id)target action:(SEL)selector;
 
-
-
-
 - (void)createRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)wallEventsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
@@ -45,5 +42,8 @@
 - (void)postNewWallMessage:(WallEvent*)message target:(id)target action:(SEL)selector;
 
 - (NSURL*)urlForPicture:(NSString*)picturePath;
+
+
+- (void)updatePlaylists:(NSData*)data ForRadio:(Radio*)radio;
 
 @end

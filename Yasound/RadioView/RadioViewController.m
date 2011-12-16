@@ -39,10 +39,6 @@
       _lastConnectionUpdateDate = [NSDate date];
       _lastSongUpdateDate = nil;
       [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
-      
-      
-      // Mattest
-      [[YasoundDataProvider main] login:@"bob" password:@"pipo" target:self action:@selector(userLogged:withInfo:)];
 
         self.messages = [[NSMutableArray alloc] init];
         self.statusMessages = [[NSMutableArray alloc] init];
@@ -480,7 +476,15 @@
   NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
   [_radioImage setUrl:imageURL];
 
-    [self onUpdate:nil];  
+  [self onUpdate:nil];  
+  
+  
+  
+  // Mattest
+//  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"yasound_playlist" ofType:@"zip"];  
+//  NSData* data = [NSData dataWithContentsOfFile:filePath];
+//  NSInteger length = data.length;
+//  [[YasoundDataProvider main] updatePlaylists:data ForRadio:self.radio];
 }
 
 - (void)receiveRadioSongs:(NSArray*)events withInfo:(NSDictionary*)info
