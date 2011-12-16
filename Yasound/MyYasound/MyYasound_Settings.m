@@ -14,6 +14,7 @@
 #import "ThemeSelectorViewController.h"
 #import "Theme.h"
 #import "ActivityAlertView.h"
+#import "PlaylistMoulinor.h"
 #import <QuartzCore/QuartzCore.h>
 #import <MediaPlayer/MediaPlayer.h>
 
@@ -204,16 +205,16 @@
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
         }
         
-        MPMediaPlaylist* item = [_playlists objectAtIndex: indexPath.row];
-        cell.textLabel.text = [item valueForProperty:MPMediaPlaylistPropertyName];
+        MPMediaPlaylist* list = [_playlists objectAtIndex: indexPath.row];
+        cell.textLabel.text = [list valueForProperty:MPMediaPlaylistPropertyName];
         
-        if ([_selectedPlaylists containsObject:item])
+        if ([_selectedPlaylists containsObject:list])
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         else
             cell.accessoryType = UITableViewCellAccessoryNone;
         
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", item.count];
-
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", list.count];
+        
         return cell;
     }
     
@@ -267,18 +268,18 @@
     else if (indexPath.section == SECTION_PLAYLISTS)
     {
         UITableViewCell *cell = [_settingsTableView cellForRowAtIndexPath:indexPath];
-        MPMediaPlaylist* item = [_playlists objectAtIndex:indexPath.row];
+        MPMediaPlaylist* list = [_playlists objectAtIndex:indexPath.row];
         
-        if ([_selectedPlaylists containsObject:item] == YES)
+        if ([_selectedPlaylists containsObject:list] == YES)
         {
             NSLog(@"deselect\n");
-            [_selectedPlaylists removeObject:item];
+            [_selectedPlaylists removeObject:list];
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
         else
         {
             NSLog(@"select\n");
-            [_selectedPlaylists addObject:item];
+            [_selectedPlaylists addObject:list];
             cell.accessoryType = UITableViewCellAccessoryCheckmark; 
         }
         
@@ -412,6 +413,15 @@
 - (IBAction)onSubmitClicked:(id)sender
 {
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //LBDEBUG
+    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_playlists compressed:YES];
+//    NSString* aStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+//    NSLog(@"PLAYLIST DATA : \n");
+//    NSLog(aStr);
+//    NSLog(@"\n END \n");
+    
+    
     
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"msg_submit_title", nil) message:NSLocalizedString(@"msg_submit_body", nil)];
