@@ -7,6 +7,7 @@
 
 #import "PlaylistMoulinor.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "NSData+CocoaDevUsersAdditions.h"
 
 
 
@@ -39,9 +40,12 @@ static PlaylistMoulinor* _main = nil;
 // build a "CSV-like" formated NSData, from the playlists contents
 //
 //
-- (NSData*)dataWithPlaylists:(NSArray*)mediaPlaylists
+- (NSData*)dataWithPlaylists:(NSArray*)mediaPlaylists compressed:(BOOL)compressed;
 {
     NSMutableData* data = [[NSMutableData alloc] init];
+    
+    // current time
+    NSDate* BEGIN = [NSDate date];
     
     //..............................................................
     //
@@ -60,9 +64,23 @@ static PlaylistMoulinor* _main = nil;
         [data appendData:playlistData];
     }
     
-    return data;
-}
+    // delay for building the data
+    double timePassedForBuilding_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
+    BEGIN = [NSDate date];
+    
+    if (!compressed)
+        return data;
+    
+    NSData* compressedData = [data zlibDeflate];
 
+    // delay for compressing the data
+    double timePassedForCompressing_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
+    
+    NSLog(@"PlaylistMoulinor  uncompressed data : %d bytes    compressed data : %d bytes", [data length], [compressedData length]);
+    NSLog(@"PlaylistMoulinor  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
+
+    return compressedData;
+}
 
 
 
@@ -144,8 +162,14 @@ static PlaylistMoulinor* _main = nil;
     for (MPMediaItem* item in [playlist items])
     {
         NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
+        if (song == nil)
+            song = [NSString stringWithString:PM_FIELD_UNKNOWN];
         NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
+        if (artist == nil)
+            artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
         NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];  
+        if (album == nil)
+            album = [NSString stringWithString:PM_FIELD_UNKNOWN];
         //NSLog(@"%d : %@  |  %@  |  %@", index, artist, album, song);
         
         // sort by artist

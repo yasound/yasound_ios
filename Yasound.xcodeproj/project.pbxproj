@@ -236,6 +236,9 @@
 		BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BCA2CCD4149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
+		BCA2CCDA149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD9149A95800000637E /* NSData+CocoaDevUsersAdditions.m */; };
+		BCA2CCDB149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD9149A95800000637E /* NSData+CocoaDevUsersAdditions.m */; };
+		BCA2CCDC149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD9149A95800000637E /* NSData+CocoaDevUsersAdditions.m */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F6E14892350008F3738 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F6D14892350008F3738 /* Track.m */; };
@@ -626,6 +629,8 @@
 		BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleStylesheet.m; sourceTree = "<group>"; };
 		BCA2CCD1149A80270000637E /* PlaylistMoulinor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistMoulinor.h; sourceTree = "<group>"; };
 		BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistMoulinor.m; sourceTree = "<group>"; };
+		BCA2CCD8149A95800000637E /* NSData+CocoaDevUsersAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CocoaDevUsersAdditions.h"; sourceTree = "<group>"; };
+		BCA2CCD9149A95800000637E /* NSData+CocoaDevUsersAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CocoaDevUsersAdditions.m"; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		BCB41F6C14892350008F3738 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
@@ -1048,6 +1053,29 @@
 			path = LibTools/BundleFileManager;
 			sourceTree = SOURCE_ROOT;
 		};
+		BCA2CCD6149A95460000637E /* LibTools */ = {
+			isa = PBXGroup;
+			children = (
+				BCA2CCD7149A95800000637E /* NSData+CocoaDevUsersAdditions */,
+				4056298D147547380085518C /* ASIHTTPRequest */,
+				BC9F413E147E8A5F00D417EF /* BundleFileManager */,
+				40274B791491048900F26008 /* Communicator */,
+				40274B9E14910F3800F26008 /* JsonToObject */,
+				40274B8414910F3800F26008 /* json-framework */,
+			);
+			name = LibTools;
+			sourceTree = "<group>";
+		};
+		BCA2CCD7149A95800000637E /* NSData+CocoaDevUsersAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				BCA2CCD8149A95800000637E /* NSData+CocoaDevUsersAdditions.h */,
+				BCA2CCD9149A95800000637E /* NSData+CocoaDevUsersAdditions.m */,
+			);
+			name = "NSData+CocoaDevUsersAdditions";
+			path = "LibTools/NSData+CocoaDevUsersAdditions";
+			sourceTree = SOURCE_ROOT;
+		};
 		BCB41F4114863646008F3738 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -1207,11 +1235,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
-				40274B8414910F3800F26008 /* json-framework */,
-				40274B9E14910F3800F26008 /* JsonToObject */,
-				40274B791491048900F26008 /* Communicator */,
-				BC9F413E147E8A5F00D417EF /* BundleFileManager */,
-				4056298D147547380085518C /* ASIHTTPRequest */,
+				BCA2CCD6149A95460000637E /* LibTools */,
 				40AAEC4714921ACE0031B39D /* DataProvider */,
 				BCFECFE31468439900BA20D9 /* Audio */,
 				BC0DD8381487C73E00DCD550 /* Model */,
@@ -1666,6 +1690,7 @@
 				40090115149A682100C9E51A /* ApiKey.m in Sources */,
 				4009011D149A69F100C9E51A /* Auth.m in Sources */,
 				BCA2CCD4149A80270000637E /* PlaylistMoulinor.m in Sources */,
+				BCA2CCDB149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1735,6 +1760,7 @@
 				40090114149A682100C9E51A /* ApiKey.m in Sources */,
 				4009011C149A69F100C9E51A /* Auth.m in Sources */,
 				BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */,
+				BCA2CCDA149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1801,6 +1827,7 @@
 				E5F3B88D1498B88D008DD607 /* User.m in Sources */,
 				E5F3B88E1498B88D008DD607 /* WebImageView.m in Sources */,
 				BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */,
+				BCA2CCDC149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1910,14 +1937,14 @@
 		E5A9A3C51454DC0500EA374C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "5A0F4B1A-580E-455A-93B1-374EA66E242C";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1925,14 +1952,14 @@
 		E5A9A3C61454DC0500EA374C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "5A0F4B1A-580E-455A-93B1-374EA66E242C";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -18,9 +18,11 @@
 #define PM_TAG_ALBUM @"ALB"
 #define PM_TAG_SONG @"SNG"
 
+#define PM_FIELD_UNKNOWN @""
+
 
 + (PlaylistMoulinor*)main;
 
-- (NSData*)dataWithPlaylists:(NSArray*)mediaPlaylists;
+- (NSData*)dataWithPlaylists:(NSArray*)mediaPlaylists compressed:(BOOL)compressed;
 
 @end
