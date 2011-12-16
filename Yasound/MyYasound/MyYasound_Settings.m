@@ -408,6 +408,7 @@
 
 
 
+
 #pragma mark - IBActions
 
 - (IBAction)onSubmitClicked:(id)sender
@@ -415,12 +416,15 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     //LBDEBUG
-    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_playlists binary:YES compressed:YES];
-//    NSString* aStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_playlists binary:NO compressed:YES];
+    
+    //LBDEBUG email playlist file
+//    [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.z.bin" controller:self];
+    
+    //    NSString* aStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
 //    NSLog(@"PLAYLIST DATA : \n");
 //    NSLog(aStr);
 //    NSLog(@"\n END \n");
-    
     
     
     //fake commnunication

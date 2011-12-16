@@ -78,6 +78,9 @@
 		BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC5EE243147D739600A282A5 /* RadioTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23F147D739600A282A5 /* RadioTabBarController.m */; };
+		BC6ADD18149B9EDF00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
+		BC6ADD1A149B9EEE00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
+		BC6ADD1B149B9EFF00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
 		BC71F583147F979700DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC71F589147F9CD900DAE4BD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
@@ -559,6 +562,7 @@
 		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
 		BC5EE23E147D739600A282A5 /* RadioTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioTabBarController.h; path = RadioSelection/RadioTabBarController.h; sourceTree = "<group>"; };
 		BC5EE23F147D739600A282A5 /* RadioTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioTabBarController.m; path = RadioSelection/RadioTabBarController.m; sourceTree = "<group>"; };
+		BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BC71F582147F979700DAE4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F586147F97DA00DAE4BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F588147F9CD900DAE4BD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -706,6 +710,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6ADD18149B9EDF00D00E5F /* MessageUI.framework in Frameworks */,
 				BC71F5DA147FEC6F00DAE4BD /* SystemConfiguration.framework in Frameworks */,
 				BC71F5DB147FEC6F00DAE4BD /* MobileCoreServices.framework in Frameworks */,
 				BC71F5DC147FEC6F00DAE4BD /* libz.dylib in Frameworks */,
@@ -722,6 +727,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6ADD1A149B9EEE00D00E5F /* MessageUI.framework in Frameworks */,
 				E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */,
 				E5280A58145F005B00A88910 /* MobileCoreServices.framework in Frameworks */,
 				E5280A56145EFFD900A88910 /* libz.dylib in Frameworks */,
@@ -738,6 +744,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6ADD1B149B9EFF00D00E5F /* MessageUI.framework in Frameworks */,
 				E5F3B8901498B88D008DD607 /* SystemConfiguration.framework in Frameworks */,
 				E5F3B8911498B88D008DD607 /* MobileCoreServices.framework in Frameworks */,
 				E5F3B8921498B88D008DD607 /* libz.dylib in Frameworks */,
@@ -1194,6 +1201,7 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
+				BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */,
 				E5A9A3B31454DC0500EA374C /* Yasound */,
 				E5A9A3B41454DC0500EA374C /* Supporting Files */,
 				BCFECF8F146840B300BA20D9 /* resources */,
