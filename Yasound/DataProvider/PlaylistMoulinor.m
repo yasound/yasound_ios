@@ -13,6 +13,24 @@
 
 
 
+//...................................................................................................
+//
+// PROCESS WALKTHROUGH:
+//
+// 1 - get the list of removed playlists => DEL [playlist]         (compared to the previously stored playlists)
+//
+// then, for each playlist:
+//
+// 2 - for build dictionary of removed elements (artists/albums/songs) (compared to the previously stored playlist)
+// 3 - build dictionary of added elements (artists/albums/songs)   (compared to the previously stored playlist)
+// 4 - write removed elements
+// 5 - write added elements
+// 6 - store the current playlist for the next transmission
+//
+//...................................................................................................
+
+
+
 @implementation PlaylistMoulinor
 
 
@@ -63,15 +81,6 @@ static PlaylistMoulinor* _main = nil;
 
 
 
-//...................................................................................................
-//
-// PROCESS, step by step : 
-//
-// 1 - get the list of removed playlists => DEL [playlist]
-// 2 - 
-//
-//...................................................................................................
-
 
 
 //**********************************************************************************************************
@@ -113,9 +122,7 @@ static PlaylistMoulinor* _main = nil;
         
     //...................................................................................................
     //
-    // OPERATION 1 / 4 : see what playlist has been removed, and write DEL actions to tell the server
-    //
-    //...................................................................................................
+    // OPERATION 1 / 6 : see what playlist has been removed, and write DEL actions to tell the server
     //
     for (NSString* storedPlaylist in storedPlaylists)
     {
@@ -176,10 +183,10 @@ static PlaylistMoulinor* _main = nil;
 {
     NSString* playlistName = [_playlists objectAtIndex:index];
 
-    NSMutableData* data = [[NSMutableData alloc] init];
+    NSMutableData* playlistData = [[NSMutableData alloc] init];
     
     // get sorted dictionary from the playlist contents
-    NSDictionary* sortedDictionary = [self sortedDictionaryWithPlaylist:playlist];
+    NSDictionary* sortedDictionary = [self sortPlaylist:playlist];
     
     // get previously recorded dictionnary for this playlist
     NSString* storepath = [_playlistDirectory stringByAppendingPathComponent:playlistName];
@@ -195,37 +202,61 @@ static PlaylistMoulinor* _main = nil;
     //.............................................................................................
     // an entry for the playlist name
     //
-    [self writeEntryPlaylist:playlistName inData:data binary:binary];
+    NSData* data = [dataForPlaylistName:playlistName binary:binary];
+    [playlistData appendData:data];
      
     
     //...................................................................................................
-    // OPERATION 2 / 4 : build dictionary of removed elements (artists/albums/songs)
+    // OPERATION 2 / 6 : build dictionary of removed elements (artists/albums/songs)
     //
-    NSDictionary* removedDictionary = [self removedItemsFromStored:STOREDdictionary compareToCurrent:sortedDictionary];
+    NSDictionary* removedDictionary = [self comparePlaylist:STOREDdictionary ToPlaylist:sortedDictionary];
 
     
     //...................................................................................................
-    // OPERATION 3 / 4 : build dictionary of added elements (artists/albums/songs)
+    // OPERATION 3 / 6 : build dictionary of added elements (artists/albums/songs)
     //
-    NSDictionary* addedDictionary = [self addedItemsFromCurrent:sortedDictionary compareToStored:STOREDdictionary];
+    NSDictionary* addedDictionary = [self comparePlaylist:sortedDictionary ToPlaylist:STOREDdictionary];
     
              
+    //.............................................................................................
+    // an entry for the DEL action
+    //
+    data = [dataForDelAction binary:binary];
+    [playlistData appendData:data];
     
     
-    
+    //...................................................................................................
+    // OPERATION 4 / 6 : write removed elements
+    //
+    data = [dataWithPlaylist:removedDictionary binary:binary];
+    [playlistData appendData:data];
 
-    // now, output the sorted list in the data buffer
-    NSArray* artists = [sortedDictionary allKeys];
-    // for each artist
-    for (NSString* artist in artists)
+
+    //.............................................................................................
+    // an entry for the ADD action
+    //
+    data = [dataForAddAction binary:binary];
+    [playlistData appendData:data];
+
+    //...................................................................................................
+    // OPERATION 5 / 6 : write added elements
+    //
+    data = [dataWithPlaylist:addedDictionary binary:binary];
+    [playlistData appendData:data];
+    
+    
+    //...................................................................................................
+    // OPERATION 6 / 6 : store the current playlist for the next transmission
+    //
+    BOOL res = [sortedDictionary writeToFile:storepath atomically:YES];
+    if (!res)
     {
-        NSDictionary* dicoArtist = [sortedDictionary objectForKey:artist];
-        NSData* artistData = [self dataWithArtist:artist dictionary:dicoArtist binary:binary];
-        [data appendData:artistData];
+        NSLog(@"error writing the playlist to the disk, using the path '%@'", storepath);
+        assert(0);
     }
 
     
-    return data;
+    return playlistData;
 }
 
 
@@ -233,71 +264,6 @@ static PlaylistMoulinor* _main = nil;
 
 
 
-
-
-
-
-//**********************************************************************************************************
-//
-// sortedDictionaryWithPlaylist
-//
-// build a dictionnary with the given playlist contents,
-// sorted by Artist / Album / (Song with index)
-//
-// (NSDictionary)Artist / (NSArray)Album / (NSDictionary)Song {index, title}
-//
-
-- (NSDictionary*)sortedDictionaryWithPlaylist:(MPMediaPlaylist*)playlist
-{
-
-    // dico to sort the playlist's items
-    NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
-
-    NSInteger index = 0;
-    // for each item
-    for (MPMediaItem* item in [playlist items])
-    {
-        NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
-        if (song == nil)
-            song = [NSString stringWithString:PM_FIELD_UNKNOWN];
-        NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
-        if (artist == nil)
-            artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
-        NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];  
-        if (album == nil)
-            album = [NSString stringWithString:PM_FIELD_UNKNOWN];
-        //NSLog(@"%d : %@  |  %@  |  %@", index, artist, album, song);
-        
-        // sort by artist
-        NSMutableDictionary* dicoArtist = [dico objectForKey:artist];
-        if (dicoArtist == nil)
-        {
-            dicoArtist = [[NSMutableDictionary alloc] init];
-            [dico setObject:dicoArtist forKey:artist];
-        }
-        
-        // sort by album
-        NSMutableArray* arrayAlbum = [dicoArtist objectForKey:album];
-        if (arrayAlbum == nil)
-        {
-            arrayAlbum = [[NSMutableArray alloc] init];
-            [dicoArtist setObject:arrayAlbum forKey:album];
-        }
-        
-        // add the item's song
-        NSMutableDictionary* dicoSong = [[NSMutableDictionary alloc] init];
-        [arrayAlbum addObject:dicoSong];
-        
-        // song's index in playlist
-        [dicoSong setObject:[NSNumber numberWithInteger:index] forKey:@"index"];
-        // song's title
-        [dicoSong setObject:song forKey:@"title"];
-        
-        index++;
-    }
-    
-    return dico;
-}
 
 
 
@@ -508,82 +474,153 @@ static PlaylistMoulinor* _main = nil;
 
 
 
+//**********************************************************************************************************
+//
+// sortPlaylist
+//
+// build a dictionnary with the given playlist contents,
+// sorted by Artist / Album / (Song with index)
+//
+// (NSDictionary)Artist / (NSArray)Album / (NSDictionary)Song {index, title}
+//
 
-
-
-
-- (NSDictionary*)removedItemsFromStored:(NSDictionary*)STOREDdictionary compareToCurrent:(NSDictionary*)currentDictionary
+- (NSDictionary*)sortPlaylist:(MPMediaPlaylist*)playlist
 {
-    NSMutableDictionary* removedDictionary = [[NSMutableDictionary alloc] init];
-
-    // for all artist
-    NSArray* STOREDartists = [STOREDdictionary allKeys];
-    for (NSString* artist in STOREDartists)
+    
+    // dico to sort the playlist's items
+    NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+    
+    NSInteger index = 0;
+    // for each item
+    for (MPMediaItem* item in [playlist items])
     {
-        NSDictionary* dicoArtist = [currentDictionary objectForKey:artist];
-        NSDictionary* STOREDdicoArtist = [STOREDdictionary objectForKey:artist];
+        NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
+        if (song == nil)
+            song = [NSString stringWithString:PM_FIELD_UNKNOWN];
+        NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
+        if (artist == nil)
+            artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
+        NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];  
+        if (album == nil)
+            album = [NSString stringWithString:PM_FIELD_UNKNOWN];
+        //NSLog(@"%d : %@  |  %@  |  %@", index, artist, album, song);
         
-        // the whole artist has been removed
+        // sort by artist
+        NSMutableDictionary* dicoArtist = [dico objectForKey:artist];
         if (dicoArtist == nil)
         {
-            NSDictionary* removedArtistDictionary = [NSDictionary dictionaryWithDictionary:STOREDdicoArtist];
-            [removedDictionary setObject:removedArtistDictionary forKey:artist];
+            dicoArtist = [[NSMutableDictionary alloc] init];
+            [dico setObject:dicoArtist forKey:artist];
+        }
+        
+        // sort by album
+        NSMutableArray* arrayAlbum = [dicoArtist objectForKey:album];
+        if (arrayAlbum == nil)
+        {
+            arrayAlbum = [[NSMutableArray alloc] init];
+            [dicoArtist setObject:arrayAlbum forKey:album];
+        }
+        
+        // add the item's song
+        NSMutableDictionary* dicoSong = [[NSMutableDictionary alloc] init];
+        [arrayAlbum addObject:dicoSong];
+        
+        // song's index in playlist
+        [dicoSong setObject:[NSNumber numberWithInteger:index] forKey:@"index"];
+        // song's title
+        [dicoSong setObject:song forKey:@"title"];
+        
+        index++;
+    }
+    
+    return dico;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- (NSDictionary*)comparePlaylist:(NSDictionary*)playlist1 ToPlaylist:(NSDictionary*)playlist2
+{
+    NSMutableDictionary* resultDictionary = [[NSMutableDictionary alloc] init];
+
+    // for all artist
+    NSArray* artists = [playlist1 allKeys];
+    for (NSString* artist in artists)
+    {
+        NSDictionary* dicoArtist2 = [playlist2 objectForKey:artist];
+        NSDictionary* dicoArtist1 = [playlist1 objectForKey:artist];
+        
+        // the whole artist has been removed
+        if (dicoArtist2 == nil)
+        {
+            NSDictionary* resultArtistDictionary = [NSDictionary dictionaryWithDictionary:dicoArtist1];
+            [resultDictionary setObject:resultArtistDictionary forKey:artist];
             continue;
         }
         
         // no, the artist is still referenced : 
         
         // for all album
-        NSArray* STOREDalbums = [STOREDdicoArtist allKeys];
-        for (NSString* album in STOREDalbums)
+        NSArray* albums = [dicoArtist1 allKeys];
+        for (NSString* album in albums)
         {
-            NSArray* arrayAlbum = [dicoArtist objectForKey:album];
-            NSArray* STOREDarrayAlbum = [dicoArtist objectForKey:album];
+            NSArray* arrayAlbum1 = [dicoArtist1 objectForKey:album];
+            NSArray* arrayAlbum2 = [dicoArtist2 objectForKey:album];
             
             // the whole album has been removed
-            if (arrayAlbum == nil)
+            if (arrayAlbum2 == nil)
             {
-                NSMutableDictionary* removedArtistDictionary = [removedDictionary objectForKey:artist];
-                if (removedArtistDictionary == nil)
+                NSMutableDictionary* resultArtistDictionary = [resultDictionary objectForKey:artist];
+                if (resultArtistDictionary == nil)
                 {
-                    removedArtistDictionary = [[NSMutableDictionary alloc] init];
-                    [removedDictionary setObject:removedArtistDictionary forKey:artist];
+                    resultArtistDictionary = [[NSMutableDictionary alloc] init];
+                    [resultDictionary setObject:resultArtistDictionary forKey:artist];
                 }
                 
-                NSArray* removedAlbumArray = [NSArray arrayWithArray:STOREDarrayAlbum];
-                [removedArtistDictionary setObject:removedAlbumArray forKey:album];
+                NSArray* resultAlbumArray = [NSArray arrayWithArray:arrayAlbum1];
+                [resultArtistDictionary setObject:resultAlbumArray forKey:album];
                 continue;
             }
             
             // no, the album is still referenced :
             
             // for all songs
-            for (NSString* song in STOREDarrayAlbum)
+            for (NSString* song in arrayAlbum1)
             {
-                if ([arrayAlbum containsObject:song])
+                if ([arrayAlbum2 containsObject:song])
                     continue;
 
                 // the song has been removed
-                NSMutableDictionary* removedArtistDictionary = [removedDictionary objectForKey:artist];
-                if (removedArtistDictionary == nil)
+                NSMutableDictionary* resultArtistDictionary = [resultDictionary objectForKey:artist];
+                if (resultArtistDictionary == nil)
                 {
-                    removedArtistDictionary = [[NSMutableDictionary alloc] init];
-                    [removedDictionary setObject:removedArtistDictionary forKey:artist];
+                    resultArtistDictionary = [[NSMutableDictionary alloc] init];
+                    [resultDictionary setObject:resultArtistDictionary forKey:artist];
                 }
                 
-                NSMutableArray* removedAlbumArray = [removedArtistDictionary objectForKey:album];
-                if (removedAlbumArray == nil)
+                NSMutableArray* resultAlbumArray = [resultArtistDictionary objectForKey:album];
+                if (resultAlbumArray == nil)
                 {
-                    removedAlbumArray = [[NSMutableArray alloc] init];
-                    [removedArtistDictionary setObject:removedAlbumArray forKey:album];
+                    resultAlbumArray = [[NSMutableArray alloc] init];
+                    [resultArtistDictionary setObject:resultAlbumArray forKey:album];
                 }
                 
-                [removedAlbumArray addObject:song];
+                [resultAlbumArray addObject:song];
             } // end for all songs
         } // end for all albums
     } // end for all artists
     
-    return removedDictionary;
+    return resultDictionary;
 }
 
 
