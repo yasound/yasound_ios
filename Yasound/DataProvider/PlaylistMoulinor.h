@@ -11,10 +11,13 @@
 @interface PlaylistMoulinor : NSObject
 {
     UIViewController* _emailController;
+    NSString* _documentDirectory;
+    NSString* _playlistDirectory;
+    NSMutableArray* _playlists;
 }
 
 #define PM_ACTION_ADD @"ADD"
-#define PM_ACTION_DELETE @"DEL"
+#define PM_ACTION_DEL @"DEL"
 
 #define PM_TAG_PLAYLIST @"LST"
 #define PM_TAG_ARTIST @"ART"
