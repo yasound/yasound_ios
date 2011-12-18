@@ -202,7 +202,7 @@ static PlaylistMoulinor* _main = nil;
     //.............................................................................................
     // an entry for the playlist name
     //
-    NSData* data = [dataForPlaylistName:playlistName binary:binary];
+    NSData* data = [self dataForPlaylistName:playlistName binary:binary];
     [playlistData appendData:data];
      
     
@@ -221,27 +221,27 @@ static PlaylistMoulinor* _main = nil;
     //.............................................................................................
     // an entry for the DEL action
     //
-    data = [dataForDelAction binary:binary];
+    data = [self dataForDelAction];
     [playlistData appendData:data];
     
     
     //...................................................................................................
     // OPERATION 4 / 6 : write removed elements
     //
-    data = [dataWithPlaylist:removedDictionary binary:binary];
+    data = [self dataForPlaylistDescription:removedDictionary binary:binary];
     [playlistData appendData:data];
 
 
     //.............................................................................................
     // an entry for the ADD action
     //
-    data = [dataForAddAction binary:binary];
+    data = [self dataForAddAction];
     [playlistData appendData:data];
 
     //...................................................................................................
     // OPERATION 5 / 6 : write added elements
     //
-    data = [dataWithPlaylist:addedDictionary binary:binary];
+    data = [self dataForPlaylistDescription:addedDictionary binary:binary];
     [playlistData appendData:data];
     
     
@@ -273,195 +273,6 @@ static PlaylistMoulinor* _main = nil;
 
 
 
-
-//**********************************************************************************************************
-//
-// dataWithArtist
-//
-// build a "CSV-like" formated NSData, from a given artist dictionary
-//
-//
-
-- (NSData*) dataWithArtist:(NSString*)artist dictionary:(NSDictionary*)dicoArtist binary:(BOOL)binary
-{
-    NSMutableData* data = [[NSMutableData alloc] init];
-
-    
-    //..................................................................................
-    // an entry for the artist
-    //
-    if (!binary)
-    {
-        NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ARTIST, artist];
-        NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
-        [data appendData:outputData];
-    }
-    else
-    {
-        const char* str = (const char*) [PM_TAG_ARTIST UTF8String];
-        [data appendBytes:str length:strlen(str)];    
-
-        str = ";\""; 
-        [data appendBytes:str length:strlen(str)];    
-
-        str = (const char*) [artist UTF8String];
-        [data appendBytes:str length:strlen(str)];    
-
-        str = "\";\n";
-        [data appendBytes:str length:strlen(str)];    
-    }
-
-    // for each album
-    NSArray* albums = [dicoArtist allKeys];
-    for (NSString* album in albums)
-    {
-        NSArray* arrayAlbum = [dicoArtist objectForKey:album];
-        NSData* albumData = [self dataWithAlbum:album array:arrayAlbum binary:binary];
-        [data appendData:albumData];
-    }
-    
-    return data;
-}
-
-
-
-
-
-
-//**********************************************************************************************************
-//
-// dataWithAlbum
-//
-// build a "CSV-like" formated NSData, from a given album array
-//
-//
-
-- (NSData*) dataWithAlbum:(NSString*)album array:(NSArray*)arrayAlbum binary:(BOOL)binary
-{
-    NSMutableData* data = [[NSMutableData alloc] init];
-
-    
-    if (!binary)
-    {
-        //..................................................................................
-        // an entry for the album
-        //
-        NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ALBUM, album];
-        NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
-        [data appendData:outputData];
-
-        // for each song
-        for (NSDictionary* dicoSong in arrayAlbum)
-        {
-            NSInteger index = [[dicoSong objectForKey:@"index"] integerValue];
-            NSString* title = [dicoSong objectForKey:@"title"];
-            
-            //..................................................................................
-            // an entry for the song
-            //
-            NSString* output = [NSString stringWithFormat:@"%@;%d;\"%@\";\n", PM_TAG_SONG, index, title];
-            NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
-            [data appendData:outputData];
-        }
-    }
-    else
-    {
-        //..................................................................................
-        // an entry for the album
-        //
-        const char* str = (const char*) [PM_TAG_ALBUM UTF8String];
-        [data appendBytes:str length:strlen(str)];    
-
-        str = ";\""; 
-        [data appendBytes:str length:strlen(str)];    
-
-        str = (const char*) [album UTF8String];
-        [data appendBytes:str length:strlen(str)];    
-
-        str = "\";\n";
-        [data appendBytes:str length:strlen(str)];   
-        
-
-        // for each song
-        for (NSDictionary* dicoSong in arrayAlbum)
-        {
-            int index = [[dicoSong objectForKey:@"index"] intValue];
-            NSString* title = [dicoSong objectForKey:@"title"];
-            
-            //..................................................................................
-            // an entry for the song
-            //
-            const char* str = (const char*) [PM_TAG_SONG UTF8String];
-            [data appendBytes:str length:strlen(str)];    
-            
-            str = ";"; 
-            [data appendBytes:str length:strlen(str)];    
-            
-            str = &index;
-            int size = sizeof(int);
-            [data appendBytes:str length:size];    
-            
-            str = ";\""; 
-            [data appendBytes:str length:strlen(str)];    
-
-            str = (const char*) [title UTF8String];
-            [data appendBytes:str length:strlen(str)];    
-
-            str = "\";\n";
-            [data appendBytes:str length:strlen(str)];   
-        }
-    }
-    
-    
-    return data;
-}
-
-
-
-
-- (void)emailData:(NSData*)data to:(NSString*)email mimetype:(NSString*)mimetype filename:(NSString*)filename controller:(UIViewController*)controller
-{
-    _emailController = controller;
-    
-    MFMailComposeViewController* picker = [[MFMailComposeViewController alloc] init];
-    picker.mailComposeDelegate = self;
-    
-    // Set the subject of email
-    [picker setSubject:@"yasound playlist data file"];
-    
-    // Add email addresses
-    // Notice three sections: "to" "cc" and "bcc"	
-    [picker setToRecipients:[NSArray arrayWithObjects:email, nil]];
-//    [picker setCcRecipients:[NSArray arrayWithObject:@"emailaddress3@domainName.com"]];	
-//    [picker setBccRecipients:[NSArray arrayWithObject:@"emailaddress4@domainName.com"]];
-    
-    // Fill out the email body text
-    NSString *emailBody = @"yasound playlist data file attached.";
-    
-    // This is not an HTML formatted email
-    [picker setMessageBody:emailBody isHTML:NO];
-    
-    // Attach image data to the email
-    [picker addAttachmentData:data mimeType:mimetype fileName:filename];
-    
-    // Show email view	
-    [controller.navigationController presentModalViewController:picker animated:YES];
-    
-    // Release picker
-    [picker release];
-}
-
-
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
-{
-    // Called once the email is sent
-    // Remove the email view controller	
-    [_emailController.navigationController dismissModalViewControllerAnimated:YES];
-    _emailController = nil;
-}
-
-             
-             
              
 
 
@@ -471,10 +282,18 @@ static PlaylistMoulinor* _main = nil;
 
 
 
-
-
-
 //**********************************************************************************************************
+//
+// playlist processing
+//
+
+#pragma mark - playlist processing
+
+
+
+
+
+//.........................................................................................
 //
 // sortPlaylist
 //
@@ -535,12 +354,6 @@ static PlaylistMoulinor* _main = nil;
     
     return dico;
 }
-
-
-
-
-
-
 
 
 
@@ -628,12 +441,26 @@ static PlaylistMoulinor* _main = nil;
 
 
 
-             
-             
-             
-             
- - (void)writeEntryPlaylist:(NSString*)playlistName inData:(NSMutableData*)data binary:(BOOL)binary
+
+
+
+
+
+
+//**********************************************************************************************************
+//
+// data writing
+//
+
+#pragma mark - data writing
+
+
+
+
+ - (NSData*) dataForPlaylistName:(NSString*)playlistName binary:(BOOL)binary
  {
+     NSMutableData* data = [[NSMutableData alloc] init];
+     
      if (!binary)
      {
          NSString* title = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_PLAYLIST, playlistName];
@@ -654,8 +481,245 @@ static PlaylistMoulinor* _main = nil;
          str = "\";\n"; 
          [data appendBytes:str length:strlen(str)];    
      }
+     
+     return data;
  }
-             
+          
+
+- (NSData*) dataForDelAction
+{
+    NSMutableData* data = [[NSMutableData alloc] init];
+    
+    NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_DEL];
+    NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
+    [data appendData:actionData];
+    
+    return data;
+}
+
+
+
+- (NSData*) dataForAddAction
+{
+    NSMutableData* data = [[NSMutableData alloc] init];
+    
+    NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_ADD];
+    NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
+    [data appendData:actionData];
+    
+    return data;
+}
+
+
+
+- (NSData*) dataForPlaylistDescription:(NSDictionary*)dictionary binary:binary
+{
+    NSMutableData* data = [[NSMutableData alloc] init];
+    
+    NSArray* artists = [dictionary allKeys];
+    for (NSString* artist in artists)
+    {
+        NSDictionary* artistDictionary = [dictionary objectForKey:artist];
+        NSData* artistData = [self dataForArtistDescription:artist dictionary:artistDictionary binary:binary];
+        [data appendData:artistData];
+    }
+    
+    return data;
+}
+
+
+
+- (NSData*) dataForArtistDescription:(NSString*)artist dictionary:(NSDictionary*)dicoArtist binary:(BOOL)binary
+{
+    NSMutableData* data = [[NSMutableData alloc] init];
+    
+    
+    //..................................................................................
+    // an entry for the artist
+    //
+    if (!binary)
+    {
+        NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ARTIST, artist];
+        NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
+        [data appendData:outputData];
+    }
+    else
+    {
+        const char* str = (const char*) [PM_TAG_ARTIST UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+        
+        str = ";\""; 
+        [data appendBytes:str length:strlen(str)];    
+        
+        str = (const char*) [artist UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+        
+        str = "\";\n";
+        [data appendBytes:str length:strlen(str)];    
+    }
+    
+    // for each album
+    NSArray* albums = [dicoArtist allKeys];
+    for (NSString* album in albums)
+    {
+        NSArray* arrayAlbum = [dicoArtist objectForKey:album];
+        NSData* albumData = [self dataForAlbumDescription:album array:arrayAlbum binary:binary];
+        [data appendData:albumData];
+    }
+    
+    return data;
+}
+
+
+
+
+- (NSData*) dataForArtistDescription:(NSString*)album array:(NSArray*)arrayAlbum binary:(BOOL)binary
+{
+    NSMutableData* data = [[NSMutableData alloc] init];
+    
+    
+    if (!binary)
+    {
+        //..................................................................................
+        // an entry for the album
+        //
+        NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ALBUM, album];
+        NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
+        [data appendData:outputData];
+        
+        // for each song
+        for (NSDictionary* dicoSong in arrayAlbum)
+        {
+            NSInteger index = [[dicoSong objectForKey:@"index"] integerValue];
+            NSString* title = [dicoSong objectForKey:@"title"];
+            
+            //..................................................................................
+            // an entry for the song
+            //
+            NSString* output = [NSString stringWithFormat:@"%@;%d;\"%@\";\n", PM_TAG_SONG, index, title];
+            NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
+            [data appendData:outputData];
+        }
+    }
+    else
+    {
+        //..................................................................................
+        // an entry for the album
+        //
+        const char* str = (const char*) [PM_TAG_ALBUM UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+        
+        str = ";\""; 
+        [data appendBytes:str length:strlen(str)];    
+        
+        str = (const char*) [album UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+        
+        str = "\";\n";
+        [data appendBytes:str length:strlen(str)];   
+        
+        
+        // for each song
+        for (NSDictionary* dicoSong in arrayAlbum)
+        {
+            int index = [[dicoSong objectForKey:@"index"] intValue];
+            NSString* title = [dicoSong objectForKey:@"title"];
+            
+            //..................................................................................
+            // an entry for the song
+            //
+            const char* str = (const char*) [PM_TAG_SONG UTF8String];
+            [data appendBytes:str length:strlen(str)];    
+            
+            str = ";"; 
+            [data appendBytes:str length:strlen(str)];    
+            
+            str = &index;
+            int size = sizeof(int);
+            [data appendBytes:str length:size];    
+            
+            str = ";\""; 
+            [data appendBytes:str length:strlen(str)];    
+            
+            str = (const char*) [title UTF8String];
+            [data appendBytes:str length:strlen(str)];    
+            
+            str = "\";\n";
+            [data appendBytes:str length:strlen(str)];   
+        }
+    }
+    
+    
+    return data;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//**********************************************************************************************************
+//
+// emailing 
+//
+
+#pragma mark - emailing
+
+
+- (void)emailData:(NSData*)data to:(NSString*)email mimetype:(NSString*)mimetype filename:(NSString*)filename controller:(UIViewController*)controller
+{
+    _emailController = controller;
+    
+    MFMailComposeViewController* picker = [[MFMailComposeViewController alloc] init];
+    picker.mailComposeDelegate = self;
+    
+    // Set the subject of email
+    [picker setSubject:@"yasound playlist data file"];
+    
+    // Add email addresses
+    // Notice three sections: "to" "cc" and "bcc"	
+    [picker setToRecipients:[NSArray arrayWithObjects:email, nil]];
+    //    [picker setCcRecipients:[NSArray arrayWithObject:@"emailaddress3@domainName.com"]];	
+    //    [picker setBccRecipients:[NSArray arrayWithObject:@"emailaddress4@domainName.com"]];
+    
+    // Fill out the email body text
+    NSString *emailBody = @"yasound playlist data file attached.";
+    
+    // This is not an HTML formatted email
+    [picker setMessageBody:emailBody isHTML:NO];
+    
+    // Attach image data to the email
+    [picker addAttachmentData:data mimeType:mimetype fileName:filename];
+    
+    // Show email view	
+    [controller.navigationController presentModalViewController:picker animated:YES];
+    
+    // Release picker
+    [picker release];
+}
+
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error 
+{
+    // Called once the email is sent
+    // Remove the email view controller	
+    [_emailController.navigationController dismissModalViewControllerAnimated:YES];
+    _emailController = nil;
+}
+
+
+
+
 
 
 
