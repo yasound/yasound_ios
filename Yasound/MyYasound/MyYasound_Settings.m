@@ -427,7 +427,8 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     //LBDEBUG
-    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_selectedPlaylists binary:NO compressed:NO];
+//    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_selectedPlaylists binary:NO compressed:NO];
+    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_playlists binary:NO compressed:NO];
     
     //LBDEBUG email playlist file
     [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];

@@ -146,10 +146,13 @@ static PlaylistMoulinor* _main = nil;
     
     // delay for building the data
     double timePassedForBuilding_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
-    BEGIN = [NSDate date];
+
+    NSLog(@"PlaylistMoulinor  building data in : %.2f ms", timePassedForBuilding_ms);
     
     if (!compressed)
         return data;
+    
+    BEGIN = [NSDate date];
     
     NSData* compressedData = [data zlibDeflate];
 
@@ -157,7 +160,7 @@ static PlaylistMoulinor* _main = nil;
     double timePassedForCompressing_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
     
     NSLog(@"PlaylistMoulinor  uncompressed data : %d bytes    compressed data : %d bytes", [data length], [compressedData length]);
-    NSLog(@"PlaylistMoulinor  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
+    NSLog(@"PlaylistMoulinor  compressing data in : %.2f ms", timePassedForCompressing_ms);
 
     return compressedData;
 }
@@ -218,31 +221,37 @@ static PlaylistMoulinor* _main = nil;
     NSDictionary* addedDictionary = [self comparePlaylist:sortedDictionary ToPlaylist:STOREDdictionary];
     
              
-    //.............................................................................................
-    // an entry for the DEL action
-    //
-    data = [self dataForDelAction];
-    [playlistData appendData:data];
-    
-    
-    //...................................................................................................
-    // OPERATION 4 / 6 : write removed elements
-    //
-    data = [self dataForPlaylistDescription:removedDictionary binary:binary];
-    [playlistData appendData:data];
+    if ([removedDictionary count] > 0)
+    {
+        //.............................................................................................
+        // an entry for the DEL action
+        //
+        data = [self dataForDelAction];
+        [playlistData appendData:data];
+        
+        
+        //...................................................................................................
+        // OPERATION 4 / 6 : write removed elements
+        //
+        data = [self dataForPlaylistDescription:removedDictionary binary:binary];
+        [playlistData appendData:data];
+    }
 
 
-    //.............................................................................................
-    // an entry for the ADD action
-    //
-    data = [self dataForAddAction];
-    [playlistData appendData:data];
+    if ([addedDictionary count] > 0)
+    {
+        //.............................................................................................
+        // an entry for the ADD action
+        //
+        data = [self dataForAddAction];
+        [playlistData appendData:data];
 
-    //...................................................................................................
-    // OPERATION 5 / 6 : write added elements
-    //
-    data = [self dataForPlaylistDescription:addedDictionary binary:binary];
-    [playlistData appendData:data];
+        //...................................................................................................
+        // OPERATION 5 / 6 : write added elements
+        //
+        data = [self dataForPlaylistDescription:addedDictionary binary:binary];
+        [playlistData appendData:data];
+    }
     
     
     //...................................................................................................
@@ -573,7 +582,7 @@ static PlaylistMoulinor* _main = nil;
 
 
 
-- (NSData*) dataForArtistDescription:(NSString*)album array:(NSArray*)arrayAlbum binary:(BOOL)binary
+- (NSData*) dataForAlbumDescription:(NSString*)album array:(NSArray*)arrayAlbum binary:(BOOL)binary
 {
     NSMutableData* data = [[NSMutableData alloc] init];
     
