@@ -481,10 +481,17 @@
   
   
   // Mattest
-//  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"yasound_playlist" ofType:@"zip"];  
-//  NSData* data = [NSData dataWithContentsOfFile:filePath];
-//  NSInteger length = data.length;
-//  [[YasoundDataProvider main] updatePlaylists:data ForRadio:self.radio];
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"yasound_playlist" ofType:@"zip"];  
+  NSData* data = [NSData dataWithContentsOfFile:filePath];
+  [[YasoundDataProvider main] updatePlaylists:data ForRadio:self.radio target:self action:@selector(playlistsUpdated:)];
+}
+
+- (void)playlistsUpdated:(NSError*)error
+{
+  if (error)
+    NSLog(@"playlists can't be updated '%d'", error.code);
+  else
+    NSLog(@"playlists OK");
 }
 
 - (void)receiveRadioSongs:(NSArray*)events withInfo:(NSDictionary*)info

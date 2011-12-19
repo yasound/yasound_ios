@@ -171,6 +171,27 @@
 }
 
 
+// POST data
+- (NSError*)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth
+{
+  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:auth.urlParams];
+  NSLog(@"post data url '%@'", u.absoluteString);
+  if (!u)
+  {
+    NSLog(@"post data: invalid url");
+    return;
+  }
+  
+  ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
+  [req addData:data forKey:key];
+  [req startSynchronous];
+  NSString* response = req.responseString;
+  NSLog(@"post data response: %@", response);
+  NSError* error = [NSError errorWithDomain:req.responseString code:req.responseStatusCode userInfo:nil];
+  return error;
+}
+
+
 #pragma mark - synchronous requests with URL
 - (Container*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth;
 {
@@ -361,6 +382,25 @@
 }
 
 
+- (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withAuth:(Auth*)auth
+{
+  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:auth.urlParams];
+  NSLog(@"post data url '%@'", u.absoluteString);
+  if (!u)
+  {
+    NSLog(@"post data: invalid url");
+    return;
+  }
+  
+  NSDictionary* userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"POST_DATA", @"method", nil];
+  
+  ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
+  [req addData:data forKey:key];
+  req.userInfo = userInfo;
+  req.delegate = self;
+  [req startAsynchronous];
+}
+
 
 
 // GET_ALL handler
@@ -433,24 +473,7 @@
 }
 
 
-// POST data
-// #FIXME must be asynchronous
-- (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth
-{
-  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:auth.urlParams];
-  NSLog(@"post data url '%@'", u.absoluteString);
-  if (!u)
-  {
-    NSLog(@"post data: invalid url");
-    return;
-  }
-  
-  ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
-  [req addData:data forKey:key];
-  [req startSynchronous];
-  NSString* response = req.responseString;
-  NSLog(@"post data response: %@", response);
-}
+
 
 // POST handler
 - (void)handlePostResponse:(ASIHTTPRequest *)request success:(BOOL)succeeded
@@ -498,6 +521,23 @@
   [self notifytarget:target byCalling:selector withUserData:userData withObject:obj andSuccess:succeeded];
 }
 
+// POST data handler
+- (void)handlePostDataResponse:(ASIHTTPRequest*)request success:(BOOL)succeeded
+{
+  NSDictionary* userinfo = request.userInfo;
+  id target         = [userinfo valueForKey:@"target"];
+  SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
+  
+  NSString* response = request.responseString;
+  NSLog(@"post data response: %@", response);
+  
+  NSError* error = nil;
+  if (!succeeded)
+    error = [NSError errorWithDomain:response code:request.responseStatusCode userInfo:nil];
+  
+  [target performSelector:selector withObject:error];
+}
+
 
 - (void)handleResponse:(ASIHTTPRequest *)request success:(BOOL)succeeded
 {
@@ -523,6 +563,10 @@
   else if ([method isEqualToString:@"DELETE"])
   {
     [self handleDeleteResponse:request success:succeeded];
+  }
+  else if ([method isEqualToString:@"POST_DATA"])
+  {
+    [self handlePostDataResponse:request success:succeeded];
   }
 }
 
