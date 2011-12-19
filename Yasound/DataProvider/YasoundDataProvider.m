@@ -219,7 +219,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)updatePlaylists:(NSData*)data ForRadio:(Radio*)radio
+- (void)updatePlaylists:(NSData*)data ForRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
   if (radio == nil)
     return;
@@ -227,7 +227,7 @@ static YasoundDataProvider* _main = nil;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/playlists", radioID];
   
   // #FIXME fix postData method to be asynchronous!!!
-  [_communicator postData:data withKey:@"playlists_data" toURL:relativeUrl absolute:NO withAuth:nil];
+  [_communicator postData:data withKey:@"playlists_data" toURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withAuth:nil];
 }
 
 @end

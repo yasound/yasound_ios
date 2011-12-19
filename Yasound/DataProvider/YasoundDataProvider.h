@@ -44,6 +44,6 @@
 - (NSURL*)urlForPicture:(NSString*)picturePath;
 
 
-- (void)updatePlaylists:(NSData*)data ForRadio:(Radio*)radio;
+- (void)updatePlaylists:(NSData*)data ForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 @end
