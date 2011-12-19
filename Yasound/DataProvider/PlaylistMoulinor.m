@@ -48,25 +48,25 @@ static PlaylistMoulinor* _main = nil;
     // current time
     NSDate* BEGIN = [NSDate date];
     
-    //..............................................................
-    //
-    // SECTION 'ADD'
-    //
-    
-    if (!binary)
-    {
-        NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_ADD];
-        NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
-        [data appendData:actionData];
-    }
-    else
-    {
-        const char* str = (const char*) [PM_ACTION_ADD UTF8String];
-        [data appendBytes:str length:strlen(str)];    
-
-        str = ";\n"; 
-        [data appendBytes:str length:strlen(str)];    
-    }
+//    //..............................................................
+//    //
+//    // SECTION 'ADD'
+//    //
+//    
+//    if (!binary)
+//    {
+//        NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_ADD];
+//        NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
+//        [data appendData:actionData];
+//    }
+//    else
+//    {
+//        const char* str = (const char*) [PM_ACTION_ADD UTF8String];
+//        [data appendBytes:str length:strlen(str)];    
+//
+//        str = ";\n"; 
+//        [data appendBytes:str length:strlen(str)];    
+//    }
 
     
     // for all playlist
