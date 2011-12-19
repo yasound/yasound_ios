@@ -427,17 +427,10 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     //LBDEBUG
-//    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_selectedPlaylists binary:NO compressed:NO];
-    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_selectedPlaylists binary:NO compressed:NO];
+    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_selectedPlaylists binary:NO compressed:YES];
     
     //LBDEBUG email playlist file
-    [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
-    
-    //    NSString* aStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-//    NSLog(@"PLAYLIST DATA : \n");
-//    NSLog(aStr);
-//    NSLog(@"\n END \n");
-    
+//    [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
     
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"msg_submit_title", nil) message:NSLocalizedString(@"msg_submit_body", nil)];

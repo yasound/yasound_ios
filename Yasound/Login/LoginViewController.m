@@ -11,6 +11,11 @@
 
 
 
+#define INDEX_FACEBOOK 0
+#define INDEX_TWITTER 1
+#define INDEX_YASOUND 2
+
+
 @implementation LoginViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,11 +44,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [UIView transitionWithView:_container
-                      duration:0.75
-                       options:UIViewAnimationOptionTransitionFlipFromLeft
-                    animations:^{  [_container addSubview:_loginView]; }
-                    completion:NULL];
+    [self flipToView:_loginView removeView:nil fromLeft:YES];
 }
 
 - (void)viewDidUnload
@@ -74,11 +75,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (tableView == _yasoundLoginTableView)
+        return [self yasoundLogin_numberOfSectionsInTableView];
+
+    if (tableView == _yasoundSignupTableView)
+        return [self yasoundSignup_numberOfSectionsInTableView];
+
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
+    if (tableView == _yasoundLoginTableView)
+        return [self yasoundLogin_numberOfRowsInSection:section];
+    
+    if (tableView == _yasoundSignupTableView)
+        return [self yasoundSignup_numberOfRowsInSection:section];
+    
     return 3;
 }
 
@@ -87,6 +100,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+    if (tableView == _yasoundLoginTableView)
+        return [self yasoundLogin_cellForRowAtIndexPath:indexPath];
+    
+    if (tableView == _yasoundSignupTableView)
+        return [self yasoundSignup_cellForRowAtIndexPath:indexPath];
+    
+    
     static NSString* CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -98,7 +118,7 @@
     
     switch (indexPath.row)
     {
-        case 0: 
+        case INDEX_FACEBOOK: 
         {
             cell.textLabel.text = NSLocalizedString(@"login_facebook", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -106,7 +126,7 @@
             break;
         }
             
-        case 1: 
+        case INDEX_TWITTER: 
         {
             cell.textLabel.text = NSLocalizedString(@"login_twitter", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -114,7 +134,7 @@
             break;
         }
 
-        case 2: 
+        case INDEX_YASOUND: 
         {
             cell.textLabel.text = NSLocalizedString(@"login_yasound", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -131,8 +151,49 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView == _yasoundLoginTableView)
+    {
+        [self yasoundLogin_didSelectRowAtIndexPath:indexPath];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES]; 
+        return;
+    }
+    
+    if (tableView == _yasoundSignupTableView)
+    {
+        [self yasoundSignup_didSelectRowAtIndexPath:indexPath];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES]; 
+        return;
+    }
+    
+    if (indexPath.row == INDEX_YASOUND)
+    {
+        [self flipToView:_yasoundLoginView removeView:_loginView fromLeft:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES]; 
+        return;
+    }
+    
     RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
     [self.navigationController pushViewController:tabBarController animated:YES];
+}
+
+
+
+
+
+#pragma mark - Flip View
+
+- (void) flipToView:(UIView*)view removeView:(UIView*)viewToRemove fromLeft:(BOOL)fromLeft
+{
+    UIViewAnimationOptions animOptions = UIViewAnimationOptionTransitionFlipFromLeft;
+    if (!fromLeft)
+        animOptions = UIViewAnimationOptionTransitionFlipFromRight;
+    
+    [UIView transitionWithView:_container
+                    duration:0.75
+                    options:animOptions
+                    animations:^{ if (viewToRemove != nil) [viewToRemove removeFromSuperview];  [_container addSubview:view]; }
+                    completion:NULL];
+    
 }
 
 

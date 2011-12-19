@@ -75,6 +75,12 @@
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
+		BC4988D7149F4FE900873381 /* LoginViewController_YasoundLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D5149F4FE800873381 /* LoginViewController_YasoundLogin.m */; };
+		BC4988D8149F4FE900873381 /* LoginViewController_YasoundLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D5149F4FE800873381 /* LoginViewController_YasoundLogin.m */; };
+		BC4988D9149F4FE900873381 /* LoginViewController_YasoundLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D5149F4FE800873381 /* LoginViewController_YasoundLogin.m */; };
+		BC4988DA149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */; };
+		BC4988DB149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */; };
+		BC4988DC149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */; };
 		BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC5EE243147D739600A282A5 /* RadioTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23F147D739600A282A5 /* RadioTabBarController.m */; };
@@ -557,6 +563,8 @@
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
 		BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
+		BC4988D5149F4FE800873381 /* LoginViewController_YasoundLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController_YasoundLogin.m; path = Login/LoginViewController_YasoundLogin.m; sourceTree = "<group>"; };
+		BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController_YasoundSignup.m; path = Login/LoginViewController_YasoundSignup.m; sourceTree = "<group>"; };
 		BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionViewController.h; path = RadioSelection/RadioSelectionViewController.h; sourceTree = "<group>"; };
 		BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionViewController.m; path = RadioSelection/RadioSelectionViewController.m; sourceTree = "<group>"; };
 		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
@@ -1131,6 +1139,8 @@
 			children = (
 				BCE4632F148FDECB00422448 /* LoginViewController.h */,
 				BCE46330148FDECB00422448 /* LoginViewController.m */,
+				BC4988D5149F4FE800873381 /* LoginViewController_YasoundLogin.m */,
+				BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */,
 				BCE46331148FDECB00422448 /* LoginViewController.xib */,
 			);
 			name = Login;
@@ -1699,6 +1709,8 @@
 				4009011D149A69F100C9E51A /* Auth.m in Sources */,
 				BCA2CCD4149A80270000637E /* PlaylistMoulinor.m in Sources */,
 				BCA2CCDB149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */,
+				BC4988D8149F4FE900873381 /* LoginViewController_YasoundLogin.m in Sources */,
+				BC4988DB149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1769,6 +1781,8 @@
 				4009011C149A69F100C9E51A /* Auth.m in Sources */,
 				BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */,
 				BCA2CCDA149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */,
+				BC4988D7149F4FE900873381 /* LoginViewController_YasoundLogin.m in Sources */,
+				BC4988DA149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1836,6 +1850,8 @@
 				E5F3B88E1498B88D008DD607 /* WebImageView.m in Sources */,
 				BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */,
 				BCA2CCDC149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */,
+				BC4988D9149F4FE900873381 /* LoginViewController_YasoundLogin.m in Sources */,
+				BC4988DC149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

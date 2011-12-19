@@ -13,24 +13,6 @@
 
 
 
-//...................................................................................................
-//
-// PROCESS WALKTHROUGH:
-//
-// 1 - get the list of removed playlists => DEL [playlist]         (compared to the previously stored playlists)
-//
-// then, for each playlist:
-//
-// 2 - for build dictionary of removed elements (artists/albums/songs) (compared to the previously stored playlist)
-// 3 - build dictionary of added elements (artists/albums/songs)   (compared to the previously stored playlist)
-// 4 - write removed elements
-// 5 - write added elements
-// 6 - store the current playlist for the next transmission
-//
-//...................................................................................................
-
-
-
 @implementation PlaylistMoulinor
 
 
@@ -49,37 +31,6 @@ static PlaylistMoulinor* _main = nil;
 
 
 
-- (id)init
-{
-    self = [super init];
-    if (self)
-    {
-        NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        assert([paths count] > 0);
-        _documentDirectory = [paths objectAtIndex:0];
-        [_documentDirectory retain];
-        
-        // create playlist folder
-        _playlistDirectory = [_documentDirectory stringByAppendingPathComponent:@"playlists"];
-        [_playlistDirectory retain];
-        
-        if (![[NSFileManager defaultManager] fileExistsAtPath:_playlistDirectory])
-            [[NSFileManager defaultManager] createDirectoryAtPath:_playlistDirectory withIntermediateDirectories:NO attributes:nil error:NULL];
-    }
-    
-    return self;
-}
-
-
-- (void)dealloc
-{
-    [_documentDirectory release];
-    [_playlistDirectory release];
-    
-    [super dealloc];
-}
-
-
 
 
 
@@ -96,68 +47,41 @@ static PlaylistMoulinor* _main = nil;
     
     // current time
     NSDate* BEGIN = [NSDate date];
+    
+//    //..............................................................
+//    //
+//    // SECTION 'ADD'
+//    //
+//    
+//    if (!binary)
+//    {
+//        NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_ADD];
+//        NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
+//        [data appendData:actionData];
+//    }
+//    else
+//    {
+//        const char* str = (const char*) [PM_ACTION_ADD UTF8String];
+//        [data appendBytes:str length:strlen(str)];    
+//
+//        str = ";\n"; 
+//        [data appendBytes:str length:strlen(str)];    
+//    }
 
     
-    // build an array with the playlists names
-    if (_playlists != nil)
+    // for all playlist
+    for (MPMediaPlaylist* list in mediaPlaylists)
     {
-        [_playlists release];
-        _playlists = nil;
-    }
-    _playlists = [[NSMutableArray alloc] init];
-    [_playlists retain];
-    
-    for (MPMediaPlaylist* playlist in mediaPlaylists)
-    {
-        NSString* playlistTitle = [playlist valueForProperty:MPMediaPlaylistPropertyName];
-        [_playlists addObject:playlistTitle];
-    }
-    
-    // get the playlist array that has been previously stored
-    NSString* playlistFilePath = [_documentDirectory stringByAppendingPathComponent:@"playlists.plist"];
-    NSLog(@"playlist list filepath : '%@'", playlistFilePath);
-    NSArray* storedPlaylists = [NSArray arrayWithContentsOfFile:playlistFilePath];
-    
-
-        
-    //...................................................................................................
-    //
-    // OPERATION 1 / 6 : see what playlist has been removed, and write DEL actions to tell the server
-    //
-    for (NSString* storedPlaylist in storedPlaylists)
-    {
-        if (![_playlists containsObject:storedPlaylist])
-        {
-            NSString* actionString = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_ACTION_DEL, storedPlaylist];
-            NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
-            [data appendData:actionData];
-        }
-    }
-    
-    
-    
-    // for all playlist, build the DATA
-    for (NSInteger index = 0; index < [mediaPlaylists count]; index++)
-    {
-        MPMediaPlaylist* playlist = [mediaPlaylists objectAtIndex:index];
-        NSData* playlistData = [self dataWithPlaylist:playlist atIndex:index binary:binary];
+        NSData* playlistData = [self dataWithPlaylist:list binary:binary];
         [data appendData:playlistData];
     }
-
-    // and store the current playlist for next transmission
-    [_playlists writeToFile:playlistFilePath atomically:YES];
-
-
     
     // delay for building the data
     double timePassedForBuilding_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
-
-    NSLog(@"PlaylistMoulinor  building data in : %.2f ms", timePassedForBuilding_ms);
+    BEGIN = [NSDate date];
     
     if (!compressed)
         return data;
-    
-    BEGIN = [NSDate date];
     
     NSData* compressedData = [data zlibDeflate];
 
@@ -165,7 +89,7 @@ static PlaylistMoulinor* _main = nil;
     double timePassedForCompressing_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
     
     NSLog(@"PlaylistMoulinor  uncompressed data : %d bytes    compressed data : %d bytes", [data length], [compressedData length]);
-    NSLog(@"PlaylistMoulinor  compressing data in : %.2f ms", timePassedForCompressing_ms);
+    NSLog(@"PlaylistMoulinor  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
 
     return compressedData;
 }
@@ -187,106 +111,54 @@ static PlaylistMoulinor* _main = nil;
 //
 //
 
-- (NSData*)dataWithPlaylist:(MPMediaPlaylist*)playlist atIndex:(NSInteger)index binary:(BOOL)binary
+- (NSData*)dataWithPlaylist:(MPMediaPlaylist*)playlist binary:(BOOL)binary
 {
-    NSString* playlistName = [_playlists objectAtIndex:index];
+    NSString* playlistTitle = [playlist valueForProperty:MPMediaPlaylistPropertyName];
 
-    NSMutableData* playlistData = [[NSMutableData alloc] init];
+
+    NSMutableData* data = [[NSMutableData alloc] init];
+
+    //.............................................................................................
+    // an entry for the playlist
+    //
+    if (!binary)
+    {
+        NSString* title = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_PLAYLIST, playlistTitle];
+        NSData* titleData = [title dataUsingEncoding:NSUTF8StringEncoding];
+        [data appendData:titleData];
+    }
+    else
+    {
+        const char* str = (const char*) [PM_TAG_PLAYLIST UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+
+        str = ";\""; 
+        [data appendBytes:str length:strlen(str)];    
+
+        str = (const char*) [playlistTitle UTF8String];
+        [data appendBytes:str length:strlen(str)];    
+
+        str = "\";\n"; 
+        [data appendBytes:str length:strlen(str)];    
+    }
+    
     
     // get sorted dictionary from the playlist contents
-    NSDictionary* sortedDictionary = [self sortPlaylist:playlist];
+    NSDictionary* sortedDictionnary = [self sortedDictionnaryWithPlaylist:playlist];
     
-    // get previously recorded dictionnary for this playlist
-    NSString* storepath = [_playlistDirectory stringByAppendingPathComponent:playlistName];
-    NSLog(@"playlist storepath : '%@'", storepath);
 
-    NSDictionary* STOREDdictionary = [[NSDictionary alloc] initWithContentsOfFile:storepath];
-    if (STOREDdictionary == nil)
-        NSLog(@"it's a new playlist.");
-    else
-        NSLog(@"playlist previously stored file has been retrieved.");
-
-
-    
-    //...................................................................................................
-    // OPERATION 2 / 6 : build dictionary of removed elements (artists/albums/songs)
-    //
-    NSDictionary* removedDictionary = [self comparePlaylist:STOREDdictionary ToPlaylist:sortedDictionary];
-
-    
-    //...................................................................................................
-    // OPERATION 3 / 6 : build dictionary of added elements (artists/albums/songs)
-    //
-    NSDictionary* addedDictionary = [self comparePlaylist:sortedDictionary ToPlaylist:STOREDdictionary];
-
-    NSInteger nbRemoved = [removedDictionary count];
-    NSInteger nbAdded = [addedDictionary count];
-
-    
-    
-    //.............................................................................................
-    // an entry for the playlist name
-    //
-    if ((nbRemoved > 0) || (nbAdded > 0))
+    // now, output the sorted list in the data buffer
+    NSArray* artists = [sortedDictionnary allKeys];
+    // for each artist
+    for (NSString* artist in artists)
     {
-        NSData* data = [self dataForPlaylistName:playlistName binary:binary];
-        [playlistData appendData:data];
+        NSDictionary* dicoArtist = [sortedDictionnary objectForKey:artist];
+        NSData* artistData = [self dataWithArtist:artist dictionary:dicoArtist binary:binary];
+        [data appendData:artistData];
     }
 
     
-    if (nbRemoved > 0)
-    {
-        //.............................................................................................
-        // an entry for the DEL action
-        //
-//LBDEBUG        data = [self dataForDelAction];
-//        [playlistData appendData:data];
-        NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_DEL];
-        NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
-        [playlistData appendData:actionData];
-
-        
-        
-        //...................................................................................................
-        // OPERATION 4 / 6 : write removed elements
-        //
-        NSData* data = [self dataForPlaylistDescription:removedDictionary binary:binary];
-        [playlistData appendData:data];
-    }
-
-
-    if (nbAdded > 0)
-    {
-        //.............................................................................................
-        // an entry for the ADD action
-        //
-//        data = [self dataForAddAction];
-//        [playlistData appendData:data];
-        NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_ADD];
-        NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
-        [playlistData appendData:actionData];
-
-        
-        //...................................................................................................
-        // OPERATION 5 / 6 : write added elements
-        //
-        NSData* data = [self dataForPlaylistDescription:addedDictionary binary:binary];
-        [playlistData appendData:data];
-    }
-    
-    
-    //...................................................................................................
-    // OPERATION 6 / 6 : store the current playlist for the next transmission
-    //
-    BOOL res = [sortedDictionary writeToFile:storepath atomically:YES];
-    if (!res)
-    {
-        NSLog(@"error writing the playlist to the disk, using the path '%@'", storepath);
-        assert(0);
-    }
-
-    
-    return playlistData;
+    return data;
 }
 
 
@@ -298,34 +170,9 @@ static PlaylistMoulinor* _main = nil;
 
 
 
-
-
-
-
-
-             
-
-
-
-
-
-
-
-
 //**********************************************************************************************************
 //
-// playlist processing
-//
-
-#pragma mark - playlist processing
-
-
-
-
-
-//.........................................................................................
-//
-// sortPlaylist
+// sortedDictionnaryWithPlaylist
 //
 // build a dictionnary with the given playlist contents,
 // sorted by Artist / Album / (Song with index)
@@ -333,12 +180,12 @@ static PlaylistMoulinor* _main = nil;
 // (NSDictionary)Artist / (NSArray)Album / (NSDictionary)Song {index, title}
 //
 
-- (NSDictionary*)sortPlaylist:(MPMediaPlaylist*)playlist
+- (NSDictionary*)sortedDictionnaryWithPlaylist:(MPMediaPlaylist*)playlist
 {
-    
+
     // dico to sort the playlist's items
     NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
-    
+
     NSInteger index = 0;
     // for each item
     for (MPMediaItem* item in [playlist items])
@@ -392,236 +239,20 @@ static PlaylistMoulinor* _main = nil;
 
 
 
-- (NSDictionary*)comparePlaylist:(NSDictionary*)playlist1 ToPlaylist:(NSDictionary*)playlist2
-{
-    NSMutableDictionary* resultDictionary = [[NSMutableDictionary alloc] init];
-
-    // for all artist
-    NSArray* artists = [playlist1 allKeys];
-    for (NSString* artist in artists)
-    {
-        NSDictionary* dicoArtist2 = [playlist2 objectForKey:artist];
-        NSDictionary* dicoArtist1 = [playlist1 objectForKey:artist];
-        
-        // the whole artist has been removed
-        if (dicoArtist2 == nil)
-        {
-            NSDictionary* resultArtistDictionary = [NSDictionary dictionaryWithDictionary:dicoArtist1];
-            [resultDictionary setObject:resultArtistDictionary forKey:artist];
-            continue;
-        }
-        
-        // no, the artist is still referenced : 
-        
-        // for all album
-        NSArray* albums = [dicoArtist1 allKeys];
-        for (NSString* album in albums)
-        {
-            NSArray* arrayAlbum1 = [dicoArtist1 objectForKey:album];
-            NSArray* arrayAlbum2 = [dicoArtist2 objectForKey:album];
-            
-            // the whole album has been removed
-            if (arrayAlbum2 == nil)
-            {
-                NSMutableDictionary* resultArtistDictionary = [resultDictionary objectForKey:artist];
-                if (resultArtistDictionary == nil)
-                {
-                    resultArtistDictionary = [[NSMutableDictionary alloc] init];
-                    [resultDictionary setObject:resultArtistDictionary forKey:artist];
-                }
-                
-                NSArray* resultAlbumArray = [NSArray arrayWithArray:arrayAlbum1];
-                [resultArtistDictionary setObject:resultAlbumArray forKey:album];
-                continue;
-            }
-            
-            // no, the album is still referenced :
-            
-            // for all songs
-            for (NSString* song in arrayAlbum1)
-            {
-                if ([arrayAlbum2 containsObject:song])
-                    continue;
-
-                // the song has been removed
-                NSMutableDictionary* resultArtistDictionary = [resultDictionary objectForKey:artist];
-                if (resultArtistDictionary == nil)
-                {
-                    resultArtistDictionary = [[NSMutableDictionary alloc] init];
-                    [resultDictionary setObject:resultArtistDictionary forKey:artist];
-                }
-                
-                NSMutableArray* resultAlbumArray = [resultArtistDictionary objectForKey:album];
-                if (resultAlbumArray == nil)
-                {
-                    resultAlbumArray = [[NSMutableArray alloc] init];
-                    [resultArtistDictionary setObject:resultAlbumArray forKey:album];
-                }
-                
-                [resultAlbumArray addObject:song];
-            } // end for all songs
-        } // end for all albums
-    } // end for all artists
-    
-    return resultDictionary;
-}
-
-
-
-
-
-
-
-
-
-
 
 
 //**********************************************************************************************************
 //
-// data writing
+// dataWithArtist
+//
+// build a "CSV-like" formated NSData, from a given artist dictionary
+//
 //
 
-#pragma mark - data writing
-
-
-
-
- - (NSData*) dataForPlaylistName:(NSString*)playlistName binary:(BOOL)binary
- {
-     NSMutableData* data = [[NSMutableData alloc] init];
-     
-     if (!binary)
-     {
-         NSString* title = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_PLAYLIST, playlistName];
-         NSData* titleData = [title dataUsingEncoding:NSUTF8StringEncoding];
-         [data appendData:titleData];
-     }
-     else
-     {
-         const char* str = (const char*) [PM_TAG_PLAYLIST UTF8String];
-         [data appendBytes:str length:strlen(str)];    
-         
-         str = ";\""; 
-         [data appendBytes:str length:strlen(str)];    
-         
-         str = (const char*) [playlistName UTF8String];
-         [data appendBytes:str length:strlen(str)];    
-         
-         str = "\";\n"; 
-         [data appendBytes:str length:strlen(str)];    
-     }
-     
-     return data;
- }
-          
-
-- (NSData*) dataForDelAction
+- (NSData*) dataWithArtist:(NSString*)artist dictionary:(NSDictionary*)dicoArtist binary:(BOOL)binary
 {
     NSMutableData* data = [[NSMutableData alloc] init];
-    
-    NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_DEL];
-    NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
-    [data appendData:actionData];
-    
-    return data;
-}
 
-
-
-- (NSData*) dataForAddAction
-{
-    NSMutableData* data = [[NSMutableData alloc] init];
-    
-    NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_ADD];
-    NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
-    [data appendData:actionData];
-    
-    return data;
-}
-
-
-
-- (NSData*) dataForPlaylistDescription:(NSDictionary*)dictionary binary:binary
-{
-    NSMutableData* data = [[NSMutableData alloc] init];
-    
-    NSArray* artists = [dictionary allKeys];
-    for (NSString* artist in artists)
-    {
-        NSDictionary* artistDictionary = [dictionary objectForKey:artist];
-        //LBDEBUG
-//        NSData* artistData = [self dataForArtistDescription:artist dictionary:artistDictionary binary:binary];
-//        [data appendData:artistData];
-        
-        //..................................................................................
-        // an entry for the artist
-        //
-        if (!binary)
-        {
-            NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ARTIST, artist];
-            NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
-            [data appendData:outputData];
-        }
-        else
-        {
-            const char* str = (const char*) [PM_TAG_ARTIST UTF8String];
-            [data appendBytes:str length:strlen(str)];    
-            
-            str = ";\""; 
-            [data appendBytes:str length:strlen(str)];    
-            
-            str = (const char*) [artist UTF8String];
-            [data appendBytes:str length:strlen(str)];    
-            
-            str = "\";\n";
-            [data appendBytes:str length:strlen(str)];    
-        }
-        
-        // for each album
-        NSArray* albums = [artistDictionary allKeys];
-        for (NSString* album in albums)
-        {
-            NSArray* arrayAlbum = [artistDictionary objectForKey:album];
-            //LBDEBUG
-//            NSData* albumData = [self dataForAlbumDescription:album array:arrayAlbum binary:binary];
-//            [data appendData:albumData];
-            
-            //..................................................................................
-            // an entry for the album
-            //
-            NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ALBUM, album];
-            NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
-            [data appendData:outputData];
-            
-            // for each song
-            for (NSDictionary* dicoSong in arrayAlbum)
-            {
-                NSInteger index = [[dicoSong objectForKey:@"index"] integerValue];
-                NSString* title = [dicoSong objectForKey:@"title"];
-                
-                //..................................................................................
-                // an entry for the song
-                //
-                NSString* output = [NSString stringWithFormat:@"%@;%d;\"%@\";\n", PM_TAG_SONG, index, title];
-                NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
-                [data appendData:outputData];
-            }
-            
-        }
-        
-        
-    }
-    
-    return data;
-}
-
-
-
-- (NSData*) dataForArtistDescription:(NSString*)artist dictionary:(NSDictionary*)dicoArtist binary:(BOOL)binary
-{
-    NSMutableData* data = [[NSMutableData alloc] init];
-    
     
     //..................................................................................
     // an entry for the artist
@@ -636,23 +267,23 @@ static PlaylistMoulinor* _main = nil;
     {
         const char* str = (const char*) [PM_TAG_ARTIST UTF8String];
         [data appendBytes:str length:strlen(str)];    
-        
+
         str = ";\""; 
         [data appendBytes:str length:strlen(str)];    
-        
+
         str = (const char*) [artist UTF8String];
         [data appendBytes:str length:strlen(str)];    
-        
+
         str = "\";\n";
         [data appendBytes:str length:strlen(str)];    
     }
-    
+
     // for each album
     NSArray* albums = [dicoArtist allKeys];
     for (NSString* album in albums)
     {
         NSArray* arrayAlbum = [dicoArtist objectForKey:album];
-        NSData* albumData = [self dataForAlbumDescription:album array:arrayAlbum binary:binary];
+        NSData* albumData = [self dataWithAlbum:album array:arrayAlbum binary:binary];
         [data appendData:albumData];
     }
     
@@ -662,10 +293,20 @@ static PlaylistMoulinor* _main = nil;
 
 
 
-- (NSData*) dataForAlbumDescription:(NSString*)album array:(NSArray*)arrayAlbum binary:(BOOL)binary
+
+
+//**********************************************************************************************************
+//
+// dataWithAlbum
+//
+// build a "CSV-like" formated NSData, from a given album array
+//
+//
+
+- (NSData*) dataWithAlbum:(NSString*)album array:(NSArray*)arrayAlbum binary:(BOOL)binary
 {
     NSMutableData* data = [[NSMutableData alloc] init];
-    
+
     
     if (!binary)
     {
@@ -675,7 +316,7 @@ static PlaylistMoulinor* _main = nil;
         NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ALBUM, album];
         NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
         [data appendData:outputData];
-        
+
         // for each song
         for (NSDictionary* dicoSong in arrayAlbum)
         {
@@ -697,17 +338,17 @@ static PlaylistMoulinor* _main = nil;
         //
         const char* str = (const char*) [PM_TAG_ALBUM UTF8String];
         [data appendBytes:str length:strlen(str)];    
-        
+
         str = ";\""; 
         [data appendBytes:str length:strlen(str)];    
-        
+
         str = (const char*) [album UTF8String];
         [data appendBytes:str length:strlen(str)];    
-        
+
         str = "\";\n";
         [data appendBytes:str length:strlen(str)];   
         
-        
+
         // for each song
         for (NSDictionary* dicoSong in arrayAlbum)
         {
@@ -729,10 +370,10 @@ static PlaylistMoulinor* _main = nil;
             
             str = ";\""; 
             [data appendBytes:str length:strlen(str)];    
-            
+
             str = (const char*) [title UTF8String];
             [data appendBytes:str length:strlen(str)];    
-            
+
             str = "\";\n";
             [data appendBytes:str length:strlen(str)];   
         }
@@ -743,26 +384,6 @@ static PlaylistMoulinor* _main = nil;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//**********************************************************************************************************
-//
-// emailing 
-//
-
-#pragma mark - emailing
 
 
 - (void)emailData:(NSData*)data to:(NSString*)email mimetype:(NSString*)mimetype filename:(NSString*)filename controller:(UIViewController*)controller
@@ -778,8 +399,8 @@ static PlaylistMoulinor* _main = nil;
     // Add email addresses
     // Notice three sections: "to" "cc" and "bcc"	
     [picker setToRecipients:[NSArray arrayWithObjects:email, nil]];
-    //    [picker setCcRecipients:[NSArray arrayWithObject:@"emailaddress3@domainName.com"]];	
-    //    [picker setBccRecipients:[NSArray arrayWithObject:@"emailaddress4@domainName.com"]];
+//    [picker setCcRecipients:[NSArray arrayWithObject:@"emailaddress3@domainName.com"]];	
+//    [picker setBccRecipients:[NSArray arrayWithObject:@"emailaddress4@domainName.com"]];
     
     // Fill out the email body text
     NSString *emailBody = @"yasound playlist data file attached.";
@@ -805,9 +426,6 @@ static PlaylistMoulinor* _main = nil;
     [_emailController.navigationController dismissModalViewControllerAnimated:YES];
     _emailController = nil;
 }
-
-
-
 
 
 
