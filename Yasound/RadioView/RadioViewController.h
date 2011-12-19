@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Message.h"
+#import "WallMessage.h"
 
 @class Radio;
 @class AudioStreamer;
@@ -32,7 +32,7 @@
     NSDate* _lastConnectionUpdateDate;
     NSDate* _lastSongUpdateDate;
   
-    Message* _currentMessage;
+    WallMessage* _currentMessage;
     NSMutableString* _currentXMLString;
     
     UIFont* _messageFont;

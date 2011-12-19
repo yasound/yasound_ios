@@ -9,7 +9,7 @@
 #import "WebImageView.h"
 
 
-@class Message;
+@class WallMessage;
 
 @interface RadioViewCell : UITableViewCell
 
@@ -19,8 +19,8 @@
 @property (nonatomic, retain) UILabel* user;
 @property (nonatomic, retain) UILabel* message;
 
-- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier message:(Message*)m indexPath:(NSIndexPath*)indexPath;
+- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier message:(WallMessage*)m indexPath:(NSIndexPath*)indexPath;
 
-- update:(Message*)m indexPath:(NSIndexPath*)indexPath;
+- update:(WallMessage*)m indexPath:(NSIndexPath*)indexPath;
 
 @end

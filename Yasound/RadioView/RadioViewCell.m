@@ -8,7 +8,7 @@
 #import "RadioViewCell.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "Message.h"
+#import "WallMessage.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -30,7 +30,7 @@
 }
 
 
-- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier message:(Message*)m indexPath:(NSIndexPath*)indexPath
+- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier message:(WallMessage*)m indexPath:(NSIndexPath*)indexPath
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
@@ -84,7 +84,7 @@
 }
 
 
-- update:(Message*)m indexPath:(NSIndexPath*)indexPath
+- update:(WallMessage*)m indexPath:(NSIndexPath*)indexPath
 {
     BundleStylesheet* sheet = nil;
 

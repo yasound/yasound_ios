@@ -1,5 +1,5 @@
 //
-//  Message.h
+//  WallMessage.h
 //  Yasound
 //
 //  Copyright (c) 2011 Yasound. All rights reserved.
@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Message : NSObject
+@interface WallMessage : NSObject
 
 @property (nonatomic) int identifier;
 @property (retain, nonatomic) NSString* kind;

@@ -1,13 +1,13 @@
 //
-//  Message.m
+//  WallMessage.m
 //  Yasound
 //
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
-#import "Message.h"
+#import "WallMessage.h"
 
-@implementation Message
+@implementation WallMessage
 
 @synthesize identifier;
 @synthesize kind;

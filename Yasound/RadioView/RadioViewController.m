@@ -625,7 +625,7 @@
 
 - (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent
 {
-    Message* m = [[Message alloc] init];
+    WallMessage* m = [[WallMessage alloc] init];
     m.user = user;
     m.avatarURL = avatarURL;
     m.date = date;
@@ -672,7 +672,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    Message* m = [self.messages objectAtIndex:indexPath.row];
+    WallMessage* m = [self.messages objectAtIndex:indexPath.row];
     
     return m.textHeight + _cellMinHeight;
 }
@@ -682,7 +682,7 @@
 {
     static NSString* CellIdentifier = @"RadioViewCell";
     
-    Message* m = [self.messages objectAtIndex:indexPath.row];
+    WallMessage* m = [self.messages objectAtIndex:indexPath.row];
     
     RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
@@ -1061,7 +1061,7 @@
 //        {
 //            //NSLog(@"New post: %d\n", _currentMessage.identifier);
 //            
-//            Message* m = [[Message alloc] init];
+//            WallMessage* m = [[Message alloc] init];
 //            m.user = _currentMessage.user;
 //            m.date = _currentMessage.date;
 //            m.text = _currentMessage.text;
