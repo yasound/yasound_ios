@@ -143,6 +143,11 @@ static PlaylistMoulinor* _main = nil;
         NSData* playlistData = [self dataWithPlaylist:playlist atIndex:index binary:binary];
         [data appendData:playlistData];
     }
+
+    // and store the current playlist for next transmission
+    [_playlists writeToFile:playlistFilePath atomically:YES];
+
+
     
     // delay for building the data
     double timePassedForBuilding_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
@@ -202,12 +207,6 @@ static PlaylistMoulinor* _main = nil;
         NSLog(@"playlist previously stored file has been retrieved.");
 
 
-    //.............................................................................................
-    // an entry for the playlist name
-    //
-    NSData* data = [self dataForPlaylistName:playlistName binary:binary];
-    [playlistData appendData:data];
-     
     
     //...................................................................................................
     // OPERATION 2 / 6 : build dictionary of removed elements (artists/albums/songs)
@@ -219,37 +218,59 @@ static PlaylistMoulinor* _main = nil;
     // OPERATION 3 / 6 : build dictionary of added elements (artists/albums/songs)
     //
     NSDictionary* addedDictionary = [self comparePlaylist:sortedDictionary ToPlaylist:STOREDdictionary];
+
+    NSInteger nbRemoved = [removedDictionary count];
+    NSInteger nbAdded = [addedDictionary count];
+
     
-             
-    if ([removedDictionary count] > 0)
+    
+    //.............................................................................................
+    // an entry for the playlist name
+    //
+    if ((nbRemoved > 0) || (nbAdded > 0))
+    {
+        NSData* data = [self dataForPlaylistName:playlistName binary:binary];
+        [playlistData appendData:data];
+    }
+
+    
+    if (nbRemoved > 0)
     {
         //.............................................................................................
         // an entry for the DEL action
         //
-        data = [self dataForDelAction];
-        [playlistData appendData:data];
+//LBDEBUG        data = [self dataForDelAction];
+//        [playlistData appendData:data];
+        NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_DEL];
+        NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
+        [playlistData appendData:actionData];
+
         
         
         //...................................................................................................
         // OPERATION 4 / 6 : write removed elements
         //
-        data = [self dataForPlaylistDescription:removedDictionary binary:binary];
+        NSData* data = [self dataForPlaylistDescription:removedDictionary binary:binary];
         [playlistData appendData:data];
     }
 
 
-    if ([addedDictionary count] > 0)
+    if (nbAdded > 0)
     {
         //.............................................................................................
         // an entry for the ADD action
         //
-        data = [self dataForAddAction];
-        [playlistData appendData:data];
+//        data = [self dataForAddAction];
+//        [playlistData appendData:data];
+        NSString* actionString = [NSString stringWithFormat:@"%@;\n", PM_ACTION_ADD];
+        NSData* actionData = [actionString dataUsingEncoding:NSUTF8StringEncoding];
+        [playlistData appendData:actionData];
 
+        
         //...................................................................................................
         // OPERATION 5 / 6 : write added elements
         //
-        data = [self dataForPlaylistDescription:addedDictionary binary:binary];
+        NSData* data = [self dataForPlaylistDescription:addedDictionary binary:binary];
         [playlistData appendData:data];
     }
     
@@ -529,8 +550,67 @@ static PlaylistMoulinor* _main = nil;
     for (NSString* artist in artists)
     {
         NSDictionary* artistDictionary = [dictionary objectForKey:artist];
-        NSData* artistData = [self dataForArtistDescription:artist dictionary:artistDictionary binary:binary];
-        [data appendData:artistData];
+        //LBDEBUG
+//        NSData* artistData = [self dataForArtistDescription:artist dictionary:artistDictionary binary:binary];
+//        [data appendData:artistData];
+        
+        //..................................................................................
+        // an entry for the artist
+        //
+        if (!binary)
+        {
+            NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ARTIST, artist];
+            NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
+            [data appendData:outputData];
+        }
+        else
+        {
+            const char* str = (const char*) [PM_TAG_ARTIST UTF8String];
+            [data appendBytes:str length:strlen(str)];    
+            
+            str = ";\""; 
+            [data appendBytes:str length:strlen(str)];    
+            
+            str = (const char*) [artist UTF8String];
+            [data appendBytes:str length:strlen(str)];    
+            
+            str = "\";\n";
+            [data appendBytes:str length:strlen(str)];    
+        }
+        
+        // for each album
+        NSArray* albums = [artistDictionary allKeys];
+        for (NSString* album in albums)
+        {
+            NSArray* arrayAlbum = [artistDictionary objectForKey:album];
+            //LBDEBUG
+//            NSData* albumData = [self dataForAlbumDescription:album array:arrayAlbum binary:binary];
+//            [data appendData:albumData];
+            
+            //..................................................................................
+            // an entry for the album
+            //
+            NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ALBUM, album];
+            NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
+            [data appendData:outputData];
+            
+            // for each song
+            for (NSDictionary* dicoSong in arrayAlbum)
+            {
+                NSInteger index = [[dicoSong objectForKey:@"index"] integerValue];
+                NSString* title = [dicoSong objectForKey:@"title"];
+                
+                //..................................................................................
+                // an entry for the song
+                //
+                NSString* output = [NSString stringWithFormat:@"%@;%d;\"%@\";\n", PM_TAG_SONG, index, title];
+                NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
+                [data appendData:outputData];
+            }
+            
+        }
+        
+        
     }
     
     return data;
