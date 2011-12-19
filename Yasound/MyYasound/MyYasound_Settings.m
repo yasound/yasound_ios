@@ -423,20 +423,25 @@
 #pragma mark - IBActions
 
 - (IBAction)onSubmitClicked:(id)sender
-{
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    //LBDEBUG
-    NSData* data = [[PlaylistMoulinor main] dataWithPlaylists:_selectedPlaylists binary:NO compressed:YES];
-    
-    //LBDEBUG email playlist file
-//    [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
-    
+{    
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"msg_submit_title", nil) message:NSLocalizedString(@"msg_submit_body", nil)];
+
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
+    [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists binary:NO compressed:YES target:self action:@selector(didBuildDataWithPlaylist:)];
+}
+
+
+
+- (void) didBuildDataWithPlaylist:(NSData*)data
+{
+    //LBDEBUG email playlist file
+      //  [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
+
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
 }
+
 
 //LBDEBUG
 - (void)onFakeSubmitAction:(NSTimer*)timer

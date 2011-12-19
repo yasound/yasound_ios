@@ -29,20 +29,66 @@ static PlaylistMoulinor* _main = nil;
     return _main;
 }
 
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        _queue = [NSOperationQueue new];
+    }
+    
+    return self;
+}
 
+- (void) dealloc
+{
+    [_queue release];
+    [super dealloc];
+}
 
 
 
 
 //**********************************************************************************************************
 //
-// dataWithPlaylists
+// buildDataWithPlaylists
 //
 // build a "CSV-like" formated NSData, from the playlists contents
 //
 //
-- (NSData*)dataWithPlaylists:(NSArray*)mediaPlaylists binary:(BOOL)binary compressed:(BOOL)compressed
+- (BOOL)buildDataWithPlaylists:(NSArray*)mediaPlaylists binary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action;
 {
+    if ((target == nil) || (action == nil))
+    {
+        NSLog(@"buidDataWithPlaylists  error : target|selector is nil!");
+        assert(0);
+        return NO;
+    }
+    
+    _binary = binary;
+    _compressed = compressed;
+    _target = target;
+    _action = action;
+    
+    // use an asynchronous operation
+    NSInvocationOperation* operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(thProcess:) object:mediaPlaylists];
+    [_queue addOperation:operation];
+    [operation release];
+    
+    return YES;
+}
+
+
+
+
+
+#pragma mark - Thread
+
+
+- (void)thProcess:(id)userInfo
+{
+    NSArray* mediaPlaylists = userInfo;
+    
     NSMutableData* data = [[NSMutableData alloc] init];
     
     // current time
@@ -68,11 +114,10 @@ static PlaylistMoulinor* _main = nil;
 //        [data appendBytes:str length:strlen(str)];    
 //    }
 
-    
     // for all playlist
     for (MPMediaPlaylist* list in mediaPlaylists)
     {
-        NSData* playlistData = [self dataWithPlaylist:list binary:binary];
+        NSData* playlistData = [self dataWithPlaylist:list];
         [data appendData:playlistData];
     }
     
@@ -80,8 +125,12 @@ static PlaylistMoulinor* _main = nil;
     double timePassedForBuilding_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
     BEGIN = [NSDate date];
     
-    if (!compressed)
-        return data;
+    if (!_compressed)
+    {
+        // send results
+        [_target performSelectorOnMainThread:_action withObject:data waitUntilDone:NO];
+        return;
+    }
     
     NSData* compressedData = [data zlibDeflate];
 
@@ -91,16 +140,27 @@ static PlaylistMoulinor* _main = nil;
     NSLog(@"PlaylistMoulinor  uncompressed data : %d bytes    compressed data : %d bytes", [data length], [compressedData length]);
     NSLog(@"PlaylistMoulinor  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
 
-    return compressedData;
+    // send results
+    [_target performSelectorOnMainThread:_action withObject:compressedData waitUntilDone:NO];
 }
 
 
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-
-
-
+#pragma mark - Internal Body
 
 
 //**********************************************************************************************************
@@ -111,7 +171,7 @@ static PlaylistMoulinor* _main = nil;
 //
 //
 
-- (NSData*)dataWithPlaylist:(MPMediaPlaylist*)playlist binary:(BOOL)binary
+- (NSData*)dataWithPlaylist:(MPMediaPlaylist*)playlist
 {
     NSString* playlistTitle = [playlist valueForProperty:MPMediaPlaylistPropertyName];
 
@@ -121,7 +181,7 @@ static PlaylistMoulinor* _main = nil;
     //.............................................................................................
     // an entry for the playlist
     //
-    if (!binary)
+    if (!_binary)
     {
         NSString* title = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_PLAYLIST, playlistTitle];
         NSData* titleData = [title dataUsingEncoding:NSUTF8StringEncoding];
@@ -153,7 +213,7 @@ static PlaylistMoulinor* _main = nil;
     for (NSString* artist in artists)
     {
         NSDictionary* dicoArtist = [sortedDictionnary objectForKey:artist];
-        NSData* artistData = [self dataWithArtist:artist dictionary:dicoArtist binary:binary];
+        NSData* artistData = [self dataWithArtist:artist dictionary:dicoArtist];
         [data appendData:artistData];
     }
 
@@ -249,7 +309,7 @@ static PlaylistMoulinor* _main = nil;
 //
 //
 
-- (NSData*) dataWithArtist:(NSString*)artist dictionary:(NSDictionary*)dicoArtist binary:(BOOL)binary
+- (NSData*) dataWithArtist:(NSString*)artist dictionary:(NSDictionary*)dicoArtist
 {
     NSMutableData* data = [[NSMutableData alloc] init];
 
@@ -257,7 +317,7 @@ static PlaylistMoulinor* _main = nil;
     //..................................................................................
     // an entry for the artist
     //
-    if (!binary)
+    if (!_binary)
     {
         NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_ARTIST, artist];
         NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
@@ -283,7 +343,7 @@ static PlaylistMoulinor* _main = nil;
     for (NSString* album in albums)
     {
         NSArray* arrayAlbum = [dicoArtist objectForKey:album];
-        NSData* albumData = [self dataWithAlbum:album array:arrayAlbum binary:binary];
+        NSData* albumData = [self dataWithAlbum:album array:arrayAlbum];
         [data appendData:albumData];
     }
     
@@ -303,12 +363,12 @@ static PlaylistMoulinor* _main = nil;
 //
 //
 
-- (NSData*) dataWithAlbum:(NSString*)album array:(NSArray*)arrayAlbum binary:(BOOL)binary
+- (NSData*) dataWithAlbum:(NSString*)album array:(NSArray*)arrayAlbum
 {
     NSMutableData* data = [[NSMutableData alloc] init];
 
     
-    if (!binary)
+    if (!_binary)
     {
         //..................................................................................
         // an entry for the album
@@ -383,7 +443,16 @@ static PlaylistMoulinor* _main = nil;
     return data;
 }
 
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+#pragma mark - Emailing Results    
 
 
 - (void)emailData:(NSData*)data to:(NSString*)email mimetype:(NSString*)mimetype filename:(NSString*)filename controller:(UIViewController*)controller

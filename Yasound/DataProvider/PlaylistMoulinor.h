@@ -8,10 +8,6 @@
 #import <UIKit/UIKit.h>
 
 
-@interface PlaylistMoulinor : NSObject
-{
-    UIViewController* _emailController;
-}
 
 #define PM_ACTION_ADD @"ADD"
 #define PM_ACTION_DELETE @"DEL"
@@ -24,9 +20,30 @@
 #define PM_FIELD_UNKNOWN @""
 
 
+//@protocol PlaylistMoulinorDelegate <NSObject>
+//@required 
+//- (void)didBuildDataWithPlaylist:(NSData*)data compressed:(BOOL)compressed;
+//@end
+
+
+
+@interface PlaylistMoulinor : NSObject
+{
+    NSOperationQueue* _queue;
+    
+    BOOL _binary;
+    BOOL _compressed;
+    id _target;
+    SEL _action;
+    
+    UIViewController* _emailController;
+}
+
+//@property (retain, nonatomic) id<PlaylistMoulinorDelegate> delegate;
+
 + (PlaylistMoulinor*)main;
 
-- (NSData*)dataWithPlaylists:(NSArray*)mediaPlaylists binary:(BOOL)binary compressed:(BOOL)compressed;
+- (BOOL)buildDataWithPlaylists:(NSArray*)mediaPlaylists binary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action;
 
 - (void)emailData:(NSData*)data to:(NSString*)email mimetype:(NSString*)mimetype filename:(NSString*)filename controller:(UIViewController*)controller;
 
