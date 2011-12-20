@@ -39,9 +39,10 @@
 }
 
 
-//- (void) yasoundLogin_ViewDidAppear
-//{
-//}
+- (void) yasoundLogin_ViewDidAppear
+{
+    [_yasoundLoginTableView reloadData];
+}
 
 
 

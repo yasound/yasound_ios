@@ -205,6 +205,8 @@
 
 - (void) flipToView:(UIView*)view removeView:(UIView*)viewToRemove fromLeft:(BOOL)fromLeft
 {
+    [self keyboardDidHide:nil];
+    
     UIViewAnimationOptions animOptions = UIViewAnimationOptionTransitionFlipFromLeft;
     if (!fromLeft)
         animOptions = UIViewAnimationOptionTransitionFlipFromRight;
@@ -222,9 +224,15 @@
     if (view == _loginView)
         _loginViewVisible = YES;
     else if (view == _yasoundLoginView)
+    {
         _yasoundLoginViewVisible = YES;
+        [self yasoundLogin_ViewDidAppear];
+    }
     else if (view == _yasoundSignupView)
+    {
         _yasoundSignupViewVisible = YES;
+        [self yasoundSignup_ViewDidAppear];
+    }
     
     
 }
@@ -264,9 +272,15 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.33];
     
-    if (_yasoundSignupViewVisible)
+    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"loginYasoundTableFrame2" retainStylesheet:NO overwriteStylesheet:NO error:nil];
+
+    if (_yasoundLoginViewVisible)
     {
-        BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"loginYasoundTableFrame2" retainStylesheet:NO overwriteStylesheet:NO error:nil];
+        _yasoundLoginTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
+        _yasoundLoginTableView.frame = sheet.frame;
+    }
+    else if (_yasoundSignupViewVisible)
+    {
         _yasoundSignupTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
         _yasoundSignupTableView.frame = sheet.frame;
     }
@@ -291,9 +305,15 @@
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.33];
     
-    if (_yasoundSignupViewVisible)
+    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"loginYasoundTableFrame1" retainStylesheet:NO overwriteStylesheet:NO error:nil];
+
+    if (_yasoundLoginViewVisible)
     {
-        BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"loginYasoundTableFrame1" retainStylesheet:NO overwriteStylesheet:NO error:nil];
+        _yasoundLoginTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
+        _yasoundLoginTableView.frame = sheet.frame;
+    }
+    else if (_yasoundSignupViewVisible)
+    {
         _yasoundSignupTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
         _yasoundSignupTableView.frame = sheet.frame;
     }

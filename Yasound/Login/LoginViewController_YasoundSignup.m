@@ -30,6 +30,12 @@
 }
 
 
+- (void) yasoundSignup_ViewDidAppear
+{
+    [_yasoundSignupTableView reloadData];
+}
+
+
 
 - (NSInteger)yasoundSignup_numberOfSectionsInTableView
 {
