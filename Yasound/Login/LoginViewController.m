@@ -7,7 +7,8 @@
 //
 
 #import "LoginViewController.h"
-#import "RadioTabBarController.h"
+//#import "RadioTabBarController.h"
+#import "RadioViewController.h"
 #import "BundleFileManager.h"
 
 
@@ -193,8 +194,13 @@
         return;
     }
     
-    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
-    [self.navigationController pushViewController:tabBarController animated:YES];
+//    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
+//    [self.navigationController pushViewController:tabBarController animated:YES];
+    
+    RadioViewController* view = [[RadioViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+
 }
 
 

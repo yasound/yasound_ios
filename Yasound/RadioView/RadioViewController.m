@@ -11,6 +11,8 @@
 #import "Theme.h"
 #import "Track.h"
 #import "RadioViewCell.h"
+#import "RadioTabBarController.h"
+
 
 #import "YasoundDataProvider.h"
 #import "WallEvent.h"
@@ -96,11 +98,12 @@
     [_headerView addSubview:image];
     
     
-    // header back arrow
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
-    UIButton* btn = [sheet makeButton];
-    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
-    [_headerView addSubview:btn];
+//    // header back arrow
+    //LBDEBUG
+//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
+//    UIButton* btn = [sheet makeButton];
+//    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+//    [_headerView addSubview:btn];
     
     // header avatar
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
@@ -139,6 +142,20 @@
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderListeners" error:nil];
     label = [sheet makeLabel];
     [_headerView addSubview:label];
+    
+    // header edit settings button
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderEditButton" error:nil];
+    UIButton* btn = [sheet makeButton];
+    [btn addTarget:self action:@selector(onEdit:) forControlEvents:UIControlEventTouchUpInside];
+    [_headerView addSubview:btn];
+
+    // header search settings button
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderSearchButton" error:nil];
+    btn = [sheet makeButton];
+    [btn addTarget:self action:@selector(onSearch:) forControlEvents:UIControlEventTouchUpInside];
+    [_headerView addSubview:btn];
+    
+    
     
     //....................................................................................
     //
@@ -853,11 +870,23 @@
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
+//LBDEBUG
+//- (IBAction)onBack:(id)sender
+//{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
+
+
+- (IBAction) onEdit:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
+- (IBAction) onSearch:(id)sender
+{
+    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
+    [self.navigationController pushViewController:tabBarController animated:YES];    
+}
 
 
 - (IBAction)onStatusBarButtonClicked:(id)sender
