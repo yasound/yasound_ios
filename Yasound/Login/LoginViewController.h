@@ -10,6 +10,12 @@
 
 @interface LoginViewController : UIViewController
 {
+    BOOL _keyboardVisible;
+    BOOL _loginViewVisible;
+    BOOL _yasoundLoginViewVisible;
+    BOOL _yasoundSignupViewVisible;
+    
+    //.............................................
     IBOutlet UIView* _container;
     IBOutlet UIView* _defaultView;    
     IBOutlet UIView* _loginView;
@@ -17,6 +23,7 @@
 
     //.............................................
     IBOutlet UIView* _yasoundLoginView;
+    IBOutlet UILabel* _yasoundLoginViewTitle;
     IBOutlet UITableView* _yasoundLoginTableView;
     
     IBOutlet UITableViewCell* _yasoundLoginCellUsername;
@@ -35,7 +42,12 @@
 
     //.............................................
     IBOutlet UIView* _yasoundSignupView;
+    IBOutlet UILabel* _yasoundSignupViewTitle;
     IBOutlet UITableView* _yasoundSignupTableView;
+
+    IBOutlet UITableViewCell* _yasoundSignupCellEmail;
+    IBOutlet UILabel* _yasoundSignupCellEmailLabel;
+    IBOutlet UITextField* _yasoundSignupCellEmailTextField;
 }
 
 @end
