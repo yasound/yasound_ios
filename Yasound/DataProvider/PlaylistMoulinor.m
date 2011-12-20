@@ -391,7 +391,7 @@ static PlaylistMoulinor* _main = nil;
             [data appendData:outputData];
         }
     }
-    else
+    else 
     {
         //..................................................................................
         // an entry for the album
