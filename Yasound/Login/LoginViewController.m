@@ -40,6 +40,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self yasoundLogin_ViewDidLoad];
+    [self yasoundSignup_ViewDidLoad];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -195,6 +197,19 @@
                     completion:NULL];
     
 }
+
+
+
+
+
+#pragma mark - TextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField endEditing:TRUE];
+    return FALSE;
+}
+
 
 
 

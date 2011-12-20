@@ -15,9 +15,25 @@
     IBOutlet UIView* _loginView;
     IBOutlet UITableView* _tableView;
 
+    //.............................................
     IBOutlet UIView* _yasoundLoginView;
     IBOutlet UITableView* _yasoundLoginTableView;
+    
+    IBOutlet UITableViewCell* _yasoundLoginCellUsername;
+    IBOutlet UILabel* _yasoundLoginCellUsernameLabel;
+    IBOutlet UITextField* _yasoundLoginCellUsernameTextField;
+    
+    IBOutlet UITableViewCell* _yasoundLoginCellPword;
+    IBOutlet UILabel* _yasoundLoginCellPwordLabel;
+    IBOutlet UITextField* _yasoundLoginCellPwordTextField;
 
+    IBOutlet UITableViewCell* _yasoundLoginCellSubmit;
+    IBOutlet UILabel* _yasoundLoginCellSubmitLabel;
+    
+    IBOutlet UITableViewCell* _yasoundLoginCellSignup;
+    IBOutlet UILabel* _yasoundLoginCellSignupLabel;
+
+    //.............................................
     IBOutlet UIView* _yasoundSignupView;
     IBOutlet UITableView* _yasoundSignupTableView;
 }
@@ -30,6 +46,8 @@
 @interface LoginViewController (YasoundLogin)
 
 - (IBAction)onLoginCanceled:(id)sender;
+
+- (void) yasoundLogin_ViewDidLoad;
 
 - (NSInteger)yasoundLogin_numberOfSectionsInTableView;
 - (NSInteger)yasoundLogin_numberOfRowsInSection:(NSInteger)section ;
@@ -44,6 +62,8 @@
 @interface LoginViewController (YasoundSignup)
 
 - (IBAction)onSignupCanceled:(id)sender;
+
+- (void) yasoundSignup_ViewDidLoad;
 
 - (NSInteger)yasoundSignup_numberOfSectionsInTableView;
 - (NSInteger)yasoundSignup_numberOfRowsInSection:(NSInteger)section ;

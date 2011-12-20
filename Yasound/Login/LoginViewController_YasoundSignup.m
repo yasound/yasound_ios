@@ -13,6 +13,10 @@
 @implementation LoginViewController (YasoundSignup)
 
 
+- (void) yasoundSignup_ViewDidLoad
+{
+
+}
 
 - (NSInteger)yasoundSignup_numberOfSectionsInTableView
 {
