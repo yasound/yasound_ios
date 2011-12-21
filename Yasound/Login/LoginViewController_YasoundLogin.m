@@ -24,6 +24,8 @@
 
 - (void) yasoundLogin_ViewDidLoad
 {
+    _yasoundLoginViewTitle.text = NSLocalizedString(@"yasoundLogin_View_title", nil);
+    
     _yasoundLoginCellUsernameLabel.text = NSLocalizedString(@"yasoundLogin_Username_label", nil);
     _yasoundLoginCellUsernameTextField.placeholder = NSLocalizedString(@"yasoundLogin_Username_placeholder", nil);
     
@@ -35,6 +37,14 @@
     _yasoundLoginCellSignupLabel.text = NSLocalizedString(@"yasoundLogin_Signup_label", nil);
     
 }
+
+
+- (void) yasoundLogin_ViewDidAppear
+{
+    [_yasoundLoginTableView reloadData];
+}
+
+
 
 
 
@@ -79,8 +89,13 @@
         _yasoundLoginCellSignupLabel.textColor = [UIColor whiteColor];
         
         [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(onLabelUnselected:) userInfo:data repeats:NO];
+
+        [self flipToView:_yasoundSignupView removeView:_yasoundLoginView fromLeft:YES];
+        
         return;
     }
+    
+
 }
 
 

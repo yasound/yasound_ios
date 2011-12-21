@@ -7,7 +7,9 @@
 //
 
 #import "LoginViewController.h"
-#import "RadioTabBarController.h"
+//#import "RadioTabBarController.h"
+#import "RadioViewController.h"
+#import "BundleFileManager.h"
 
 
 
@@ -21,8 +23,13 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self) 
+    {
+        _keyboardVisible = NO;
+        _loginViewVisible = NO;
+        _yasoundLoginViewVisible = NO;
+        _yasoundSignupViewVisible = NO;
+        
     }
     return self;
 }
@@ -46,7 +53,20 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector (keyboardDidShow:)
+                                                 name: UIKeyboardDidShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector (keyboardDidHide:)
+                                                 name: UIKeyboardDidHideNotification object:nil];
+    
     [self flipToView:_loginView removeView:nil fromLeft:YES];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidUnload
@@ -174,8 +194,13 @@
         return;
     }
     
-    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
-    [self.navigationController pushViewController:tabBarController animated:YES];
+//    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
+//    [self.navigationController pushViewController:tabBarController animated:YES];
+    
+    RadioViewController* view = [[RadioViewController alloc] init];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+
 }
 
 
@@ -186,6 +211,8 @@
 
 - (void) flipToView:(UIView*)view removeView:(UIView*)viewToRemove fromLeft:(BOOL)fromLeft
 {
+    [self keyboardDidHide:nil];
+    
     UIViewAnimationOptions animOptions = UIViewAnimationOptionTransitionFlipFromLeft;
     if (!fromLeft)
         animOptions = UIViewAnimationOptionTransitionFlipFromRight;
@@ -195,6 +222,24 @@
                     options:animOptions
                     animations:^{ if (viewToRemove != nil) [viewToRemove removeFromSuperview];  [_container addSubview:view]; }
                     completion:NULL];
+
+    _loginViewVisible = NO;
+    _yasoundLoginViewVisible = NO;
+    _yasoundSignupViewVisible = NO;
+
+    if (view == _loginView)
+        _loginViewVisible = YES;
+    else if (view == _yasoundLoginView)
+    {
+        _yasoundLoginViewVisible = YES;
+        [self yasoundLogin_ViewDidAppear];
+    }
+    else if (view == _yasoundSignupView)
+    {
+        _yasoundSignupViewVisible = YES;
+        [self yasoundSignup_ViewDidAppear];
+    }
+    
     
 }
 
@@ -213,5 +258,73 @@
 
 
 
+
+
+#pragma mark - Notifications
+
+
+
+-(void) keyboardDidShow: (NSNotification *)notif 
+{
+    // If keyboard is visible, return
+    if (_keyboardVisible) 
+    {
+        NSLog(@"Keyboard is already visible. Ignoring notification.");
+        return;
+    }
+    
+    _keyboardVisible = YES;
+    
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.33];
+    
+    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"loginYasoundTableFrame2" retainStylesheet:NO overwriteStylesheet:NO error:nil];
+
+    if (_yasoundLoginViewVisible)
+    {
+        _yasoundLoginTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
+        _yasoundLoginTableView.frame = sheet.frame;
+    }
+    else if (_yasoundSignupViewVisible)
+    {
+        _yasoundSignupTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
+        _yasoundSignupTableView.frame = sheet.frame;
+    }
+    
+    [UIView commitAnimations];
+}
+
+
+
+
+-(void) keyboardDidHide: (NSNotification *)notif 
+{
+    // Is the keyboard already shown
+    if (!_keyboardVisible) 
+    {
+        NSLog(@"Keyboard is already hidden. Ignoring notification.");
+        return;
+    }
+
+    _keyboardVisible = NO;
+    
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.33];
+    
+    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"loginYasoundTableFrame1" retainStylesheet:NO overwriteStylesheet:NO error:nil];
+
+    if (_yasoundLoginViewVisible)
+    {
+        _yasoundLoginTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
+        _yasoundLoginTableView.frame = sheet.frame;
+    }
+    else if (_yasoundSignupViewVisible)
+    {
+        _yasoundSignupTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
+        _yasoundSignupTableView.frame = sheet.frame;
+    }
+    
+    [UIView commitAnimations];    
+}
 
 @end

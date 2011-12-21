@@ -178,6 +178,7 @@
 
 
 static NSMutableDictionary* gFonts = nil;
+static NSNumber* _isRetina = nil;
 
 
 
@@ -187,6 +188,13 @@ static NSMutableDictionary* gFonts = nil;
   
   if (gFonts == nil)
     gFonts = [[NSMutableDictionary alloc] init];
+    
+    if (_isRetina == nil)
+    {
+        BOOL isRetina = ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2);
+        isRetina &= (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone);
+        _isRetina = [NSNumber numberWithBool:isRetina];
+    }
   
   _images = [[NSMutableDictionary alloc] init];
   _frame = CGRectMake(0, 0, 0, 0);
@@ -457,6 +465,7 @@ static NSMutableDictionary* gFonts = nil;
         {
             NSString* tmppath = [bundle pathForResource:name ofType:type inDirectory:path];
             image = [UIImage imageWithContentsOfFile:tmppath];
+            
             if (image == nil)
             {
                 NSLog(@"image loading failed with tmppath '%@'    from name '%@' and type '%@' and path '%@'", tmppath, name, type, path);
@@ -524,9 +533,6 @@ static NSMutableDictionary* gFonts = nil;
         src = [UIImage imageWithContentsOfFile:tmppath];
     }
 
-    //LBDEBUG
-//    UIImage* src = [bundle imageNamed:name ofType:type inDirectory:path];
-
     if (src == nil)
     return [BundleFileManager errorHandling:@"image" forPath:name error:anError];
   
@@ -570,7 +576,7 @@ static NSMutableDictionary* gFonts = nil;
 
 
 
-
+    
 
 
 

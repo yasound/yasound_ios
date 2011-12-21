@@ -8,6 +8,16 @@
 
 #import "LoginViewController.h"
 
+#define SECTION_LOGIN 0
+#define ROW_USERNAME 0
+#define ROW_PWORD 1
+
+#define SECTION_EMAIL 1
+#define ROW_EMAIL 0
+
+#define SECTION_SUBMIT 2
+#define ROW_SUBMIT 0
+
 
 
 @implementation LoginViewController (YasoundSignup)
@@ -15,68 +25,64 @@
 
 - (void) yasoundSignup_ViewDidLoad
 {
-
+    _yasoundSignupViewTitle.text = NSLocalizedString(@"yasoundSignup_View_title", nil);
+    
 }
+
+
+- (void) yasoundSignup_ViewDidAppear
+{
+    [_yasoundSignupTableView reloadData];
+}
+
+
 
 - (NSInteger)yasoundSignup_numberOfSectionsInTableView
 {
-    return 1;
+    return 3;
 }
 
 
 - (NSInteger)yasoundSignup_numberOfRowsInSection:(NSInteger)section
 {
-    return 1;    
+    if (section == 0)
+        return 2;
+    
+    return 1;
 }
 
 
 - (UITableViewCell *)yasoundSignup_cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* CellIdentifier = @"Cell";
+    if ((indexPath.section == SECTION_LOGIN) && (indexPath.row == ROW_USERNAME))
+        return _yasoundLoginCellUsername;
     
-    UITableViewCell *cell = [_yasoundSignupTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if ((indexPath.section == SECTION_LOGIN) && (indexPath.row == ROW_PWORD))
+        return _yasoundLoginCellPword;
     
-    if (cell == nil) 
-    {   
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    switch (indexPath.row)
+    if ((indexPath.section == SECTION_EMAIL) && (indexPath.row == ROW_EMAIL))
+        return _yasoundSignupCellEmail;
+
+    if ((indexPath.section == SECTION_SUBMIT) && (indexPath.row == ROW_SUBMIT))
     {
-        case 0: 
-        {
-            cell.textLabel.text = NSLocalizedString(@"login_facebook", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [cell.imageView setImage:[UIImage imageNamed:@"loginIconFacebook.png"]];
-            break;
-        }
-            
-        case 1: 
-        {
-            cell.textLabel.text = NSLocalizedString(@"login_twitter", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [cell.imageView setImage:[UIImage imageNamed:@"loginIconTwitter.png"]];
-            break;
-        }
-            
-        case 2: 
-        {
-            cell.textLabel.text = NSLocalizedString(@"login_yasound", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [cell.imageView setImage:[UIImage imageNamed:@"loginIconYasound.png"]];
-            break;
-        }
-            
+        _yasoundLoginCellSubmitLabel.text = NSLocalizedString(@"yasoundSignup_Submit_label", nil);
+        return _yasoundLoginCellSubmit;
     }
     
-    return cell;      
+    
+    return nil;
 }
 
 
 - (void)yasoundSignup_didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ((indexPath.section == SECTION_SUBMIT) && (indexPath.row == ROW_SUBMIT))
+    {
+    }    
     
 }
+
+
 
 
 
@@ -88,6 +94,7 @@
 {
     [self flipToView:_loginView removeView:_yasoundSignupView fromLeft:NO];
 }
+
 
 
 

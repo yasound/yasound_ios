@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		4009010B14967AEE00C9E51A /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010A14967AEE00C9E51A /* WebImageView.m */; };
 		4009010C14967AEE00C9E51A /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010A14967AEE00C9E51A /* WebImageView.m */; };
-		4009011014990EE200C9E51A /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010F14990EE200C9E51A /* Playlist.m */; };
-		4009011114990EE200C9E51A /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010F14990EE200C9E51A /* Playlist.m */; };
-		40090114149A682100C9E51A /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 40090113149A682100C9E51A /* ApiKey.m */; };
-		40090115149A682100C9E51A /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 40090113149A682100C9E51A /* ApiKey.m */; };
 		4009011C149A69F100C9E51A /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009011B149A69F100C9E51A /* Auth.m */; };
 		4009011D149A69F100C9E51A /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009011B149A69F100C9E51A /* Auth.m */; };
 		40274B801491048900F26008 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
@@ -32,13 +28,9 @@
 		40274BAD14910F3800F26008 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9D14910F3800F26008 /* SBJsonWriter.m */; };
 		40274BAE14910F3800F26008 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9F14910F3800F26008 /* NSObject+JsonProxy.m */; };
 		40274BAF14910F3800F26008 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274BA114910F3800F26008 /* NSObject+PropertyDictionary.m */; };
-		40274BB214911B6F00F26008 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274BB114911B6F00F26008 /* Radio.m */; };
-		40274BB91491205F00F26008 /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274BB81491205F00F26008 /* WallEvent.m */; };
 		40274BC41491287900F26008 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40274BC61491287D00F26008 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40274BC71491288100F26008 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
-		40274BC81491288500F26008 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274BB114911B6F00F26008 /* Radio.m */; };
-		40274BC91491288900F26008 /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274BB81491205F00F26008 /* WallEvent.m */; };
 		405629A7147547380085518C /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 40562990147547380085518C /* ASIAuthenticationDialog.m */; };
 		405629A8147547380085518C /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40562993147547380085518C /* ASIDataCompressor.m */; };
 		405629A9147547380085518C /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40562995147547380085518C /* ASIDataDecompressor.m */; };
@@ -64,12 +56,6 @@
 		4082EE651492908000E7FFF6 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274BA114910F3800F26008 /* NSObject+PropertyDictionary.m */; };
 		40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
-		40AAEC58149224050031B39D /* SongMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC57149224050031B39D /* SongMetadata.m */; };
-		40AAEC5C149225070031B39D /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC5B149225070031B39D /* Song.m */; };
-		40AAEC5F149225DC0031B39D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC5E149225DC0031B39D /* User.m */; };
-		40AAEC60149225E80031B39D /* SongMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC57149224050031B39D /* SongMetadata.m */; };
-		40AAEC61149225EB0031B39D /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC5B149225070031B39D /* Song.m */; };
-		40AAEC62149225EE0031B39D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC5E149225DC0031B39D /* User.m */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
@@ -79,9 +65,35 @@
 		BC4988DA149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */; };
 		BC4988DB149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */; };
 		BC4988DC149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */; };
-		BC4988DF149FCCBD00873381 /* WallMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988DE149FCCBD00873381 /* WallMessage.m */; };
-		BC4988E0149FCCBD00873381 /* WallMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988DE149FCCBD00873381 /* WallMessage.m */; };
-		BC4988E1149FCCBD00873381 /* WallMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988DE149FCCBD00873381 /* WallMessage.m */; };
+		BC49890414A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
+		BC49890514A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
+		BC49890614A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
+		BC49890714A107DF00873381 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F314A107DF00873381 /* Auth.m */; };
+		BC49890914A107DF00873381 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F314A107DF00873381 /* Auth.m */; };
+		BC49890A14A107DF00873381 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
+		BC49890B14A107DF00873381 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
+		BC49890C14A107DF00873381 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
+		BC49890D14A107DF00873381 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
+		BC49890E14A107DF00873381 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
+		BC49890F14A107DF00873381 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
+		BC49891014A107DF00873381 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F914A107DF00873381 /* Song.m */; };
+		BC49891114A107DF00873381 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F914A107DF00873381 /* Song.m */; };
+		BC49891214A107DF00873381 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F914A107DF00873381 /* Song.m */; };
+		BC49891314A107DF00873381 /* SongMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FB14A107DF00873381 /* SongMetadata.m */; };
+		BC49891414A107DF00873381 /* SongMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FB14A107DF00873381 /* SongMetadata.m */; };
+		BC49891514A107DF00873381 /* SongMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FB14A107DF00873381 /* SongMetadata.m */; };
+		BC49891614A107DF00873381 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
+		BC49891714A107DF00873381 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
+		BC49891814A107DF00873381 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
+		BC49891914A107DF00873381 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FF14A107DF00873381 /* User.m */; };
+		BC49891A14A107DF00873381 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FF14A107DF00873381 /* User.m */; };
+		BC49891B14A107DF00873381 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FF14A107DF00873381 /* User.m */; };
+		BC49891C14A107DF00873381 /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890114A107DF00873381 /* WallEvent.m */; };
+		BC49891D14A107DF00873381 /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890114A107DF00873381 /* WallEvent.m */; };
+		BC49891E14A107DF00873381 /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890114A107DF00873381 /* WallEvent.m */; };
+		BC49891F14A107DF00873381 /* WallMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890314A107DF00873381 /* WallMessage.m */; };
+		BC49892014A107DF00873381 /* WallMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890314A107DF00873381 /* WallMessage.m */; };
+		BC49892114A107DF00873381 /* WallMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890314A107DF00873381 /* WallMessage.m */; };
 		BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC5EE243147D739600A282A5 /* RadioTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23F147D739600A282A5 /* RadioTabBarController.m */; };
@@ -251,10 +263,20 @@
 		BCA2CCDC149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD9149A95800000637E /* NSData+CocoaDevUsersAdditions.m */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
-		BCB41F6E14892350008F3738 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F6D14892350008F3738 /* Track.m */; };
-		BCB41F6F14892350008F3738 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F6D14892350008F3738 /* Track.m */; };
 		BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
+		BCBAB47514A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */; };
+		BCBAB47614A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */; };
+		BCBAB47714A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */; };
+		BCBAB48214A21D7300CF922A /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB48114A21D7300CF922A /* EasyTracker.m */; };
+		BCBAB48314A21D7300CF922A /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB48114A21D7300CF922A /* EasyTracker.m */; };
+		BCBAB48414A21D7300CF922A /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB48114A21D7300CF922A /* EasyTracker.m */; };
+		BCBAB48614A21DAE00CF922A /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB48514A21DAE00CF922A /* EasyTracker.plist */; };
+		BCBAB48714A21DAE00CF922A /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB48514A21DAE00CF922A /* EasyTracker.plist */; };
+		BCBAB48814A21DAE00CF922A /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB48514A21DAE00CF922A /* EasyTracker.plist */; };
+		BCBAB48A14A22E3400CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
+		BCBAB48B14A22E4400CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
+		BCBAB48C14A22E5000CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
 		BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
@@ -356,7 +378,6 @@
 		E5F3B86D1498B88D008DD607 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		E5F3B86E1498B88D008DD607 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		E5F3B8701498B88D008DD607 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
-		E5F3B8711498B88D008DD607 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F6D14892350008F3738 /* Track.m */; };
 		E5F3B8721498B88D008DD607 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		E5F3B8731498B88D008DD607 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
 		E5F3B8741498B88D008DD607 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
@@ -379,12 +400,7 @@
 		E5F3B8851498B88D008DD607 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9D14910F3800F26008 /* SBJsonWriter.m */; };
 		E5F3B8861498B88D008DD607 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B9F14910F3800F26008 /* NSObject+JsonProxy.m */; };
 		E5F3B8871498B88D008DD607 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274BA114910F3800F26008 /* NSObject+PropertyDictionary.m */; };
-		E5F3B8881498B88D008DD607 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274BB114911B6F00F26008 /* Radio.m */; };
-		E5F3B8891498B88D008DD607 /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274BB81491205F00F26008 /* WallEvent.m */; };
 		E5F3B88A1498B88D008DD607 /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
-		E5F3B88B1498B88D008DD607 /* SongMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC57149224050031B39D /* SongMetadata.m */; };
-		E5F3B88C1498B88D008DD607 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC5B149225070031B39D /* Song.m */; };
-		E5F3B88D1498B88D008DD607 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC5E149225DC0031B39D /* User.m */; };
 		E5F3B88E1498B88D008DD607 /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010A14967AEE00C9E51A /* WebImageView.m */; };
 		E5F3B8901498B88D008DD607 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
 		E5F3B8911498B88D008DD607 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A57145F005B00A88910 /* MobileCoreServices.framework */; };
@@ -483,10 +499,6 @@
 /* Begin PBXFileReference section */
 		4009010914967AEE00C9E51A /* WebImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageView.h; sourceTree = "<group>"; };
 		4009010A14967AEE00C9E51A /* WebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebImageView.m; sourceTree = "<group>"; };
-		4009010E14990EE100C9E51A /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
-		4009010F14990EE200C9E51A /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
-		40090112149A682100C9E51A /* ApiKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
-		40090113149A682100C9E51A /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
 		4009011A149A69F100C9E51A /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Auth.h; path = Yasound/Model/Auth.h; sourceTree = SOURCE_ROOT; };
 		4009011B149A69F100C9E51A /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Auth.m; path = Yasound/Model/Auth.m; sourceTree = SOURCE_ROOT; };
 		40274B7A1491048900F26008 /* Communicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communicator.h; sourceTree = "<group>"; };
@@ -523,10 +535,6 @@
 		40274B9F14910F3800F26008 /* NSObject+JsonProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JsonProxy.m"; sourceTree = "<group>"; };
 		40274BA014910F3800F26008 /* NSObject+PropertyDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertyDictionary.h"; sourceTree = "<group>"; };
 		40274BA114910F3800F26008 /* NSObject+PropertyDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertyDictionary.m"; sourceTree = "<group>"; };
-		40274BB014911B6F00F26008 /* Radio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radio.h; sourceTree = "<group>"; };
-		40274BB114911B6F00F26008 /* Radio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Radio.m; sourceTree = "<group>"; };
-		40274BB71491205F00F26008 /* WallEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallEvent.h; sourceTree = "<group>"; };
-		40274BB81491205F00F26008 /* WallEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallEvent.m; sourceTree = "<group>"; };
 		4056298F147547380085518C /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		40562990147547380085518C /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		40562991147547380085518C /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -551,20 +559,32 @@
 		405629A6147547380085518C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
-		40AAEC56149224050031B39D /* SongMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongMetadata.h; sourceTree = "<group>"; };
-		40AAEC57149224050031B39D /* SongMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongMetadata.m; sourceTree = "<group>"; };
-		40AAEC5A149225070031B39D /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
-		40AAEC5B149225070031B39D /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
-		40AAEC5D149225DC0031B39D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		40AAEC5E149225DC0031B39D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
 		BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
 		BC4988D5149F4FE800873381 /* LoginViewController_YasoundLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController_YasoundLogin.m; path = Login/LoginViewController_YasoundLogin.m; sourceTree = "<group>"; };
 		BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController_YasoundSignup.m; path = Login/LoginViewController_YasoundSignup.m; sourceTree = "<group>"; };
-		BC4988DD149FCCBD00873381 /* WallMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallMessage.h; sourceTree = "<group>"; };
-		BC4988DE149FCCBD00873381 /* WallMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallMessage.m; sourceTree = "<group>"; };
+		BC4988F014A107DF00873381 /* ApiKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
+		BC4988F114A107DF00873381 /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
+		BC4988F214A107DF00873381 /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
+		BC4988F314A107DF00873381 /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
+		BC4988F414A107DF00873381 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
+		BC4988F514A107DF00873381 /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
+		BC4988F614A107DF00873381 /* Radio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radio.h; sourceTree = "<group>"; };
+		BC4988F714A107DF00873381 /* Radio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Radio.m; sourceTree = "<group>"; };
+		BC4988F814A107DF00873381 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		BC4988F914A107DF00873381 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		BC4988FA14A107DF00873381 /* SongMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongMetadata.h; sourceTree = "<group>"; };
+		BC4988FB14A107DF00873381 /* SongMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongMetadata.m; sourceTree = "<group>"; };
+		BC4988FC14A107DF00873381 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		BC4988FD14A107DF00873381 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
+		BC4988FE14A107DF00873381 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		BC4988FF14A107DF00873381 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		BC49890014A107DF00873381 /* WallEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallEvent.h; sourceTree = "<group>"; };
+		BC49890114A107DF00873381 /* WallEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallEvent.m; sourceTree = "<group>"; };
+		BC49890214A107DF00873381 /* WallMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallMessage.h; sourceTree = "<group>"; };
+		BC49890314A107DF00873381 /* WallMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallMessage.m; sourceTree = "<group>"; };
 		BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionViewController.h; path = RadioSelection/RadioSelectionViewController.h; sourceTree = "<group>"; };
 		BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionViewController.m; path = RadioSelection/RadioSelectionViewController.m; sourceTree = "<group>"; };
 		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
@@ -645,10 +665,14 @@
 		BCA2CCD9149A95800000637E /* NSData+CocoaDevUsersAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CocoaDevUsersAdditions.m"; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
-		BCB41F6C14892350008F3738 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
-		BCB41F6D14892350008F3738 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		BCB5F28C1485416B00C28B3D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
 		BCB5F28D1485416B00C28B3D /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
+		BCBAB47314A1DF1C00CF922A /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = "LibTools/Google Analytics SDK/Library/GANTracker.h"; sourceTree = SOURCE_ROOT; };
+		BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = "LibTools/Google Analytics SDK/Library/libGoogleAnalytics.a"; sourceTree = SOURCE_ROOT; };
+		BCBAB48014A21D7300CF922A /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyTracker.h; path = "LibTools/Google Analytics SDK/EasyTracker/Library/EasyTracker.h"; sourceTree = SOURCE_ROOT; };
+		BCBAB48114A21D7300CF922A /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyTracker.m; path = "LibTools/Google Analytics SDK/EasyTracker/Library/EasyTracker.m"; sourceTree = SOURCE_ROOT; };
+		BCBAB48514A21DAE00CF922A /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = EasyTracker.plist; path = resources/EasyTracker.plist; sourceTree = SOURCE_ROOT; };
+		BCBAB48914A22E3400CF922A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_RadioSelection.m; path = MyYasound/MyYasound_RadioSelection.m; sourceTree = "<group>"; };
 		BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_Settings.m; path = MyYasound/MyYasound_Settings.m; sourceTree = "<group>"; };
 		BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonDown.png; sourceTree = "<group>"; };
@@ -718,6 +742,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBAB48A14A22E3400CF922A /* libsqlite3.dylib in Frameworks */,
 				BC6ADD18149B9EDF00D00E5F /* MessageUI.framework in Frameworks */,
 				BC71F5DA147FEC6F00DAE4BD /* SystemConfiguration.framework in Frameworks */,
 				BC71F5DB147FEC6F00DAE4BD /* MobileCoreServices.framework in Frameworks */,
@@ -728,6 +753,7 @@
 				BC71F5E0147FEC6F00DAE4BD /* UIKit.framework in Frameworks */,
 				BC71F5E1147FEC6F00DAE4BD /* Foundation.framework in Frameworks */,
 				BC71F5E2147FEC6F00DAE4BD /* CoreGraphics.framework in Frameworks */,
+				BCBAB47614A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +761,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBAB48C14A22E5000CF922A /* libsqlite3.dylib in Frameworks */,
 				BC6ADD1A149B9EEE00D00E5F /* MessageUI.framework in Frameworks */,
 				E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */,
 				E5280A58145F005B00A88910 /* MobileCoreServices.framework in Frameworks */,
@@ -745,6 +772,7 @@
 				E5A9A3AE1454DC0500EA374C /* UIKit.framework in Frameworks */,
 				E5A9A3B01454DC0500EA374C /* Foundation.framework in Frameworks */,
 				E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */,
+				BCBAB47514A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,6 +780,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBAB48B14A22E4400CF922A /* libsqlite3.dylib in Frameworks */,
 				BC6ADD1B149B9EFF00D00E5F /* MessageUI.framework in Frameworks */,
 				E5F3B8901498B88D008DD607 /* SystemConfiguration.framework in Frameworks */,
 				E5F3B8911498B88D008DD607 /* MobileCoreServices.framework in Frameworks */,
@@ -762,6 +791,7 @@
 				E5F3B8961498B88D008DD607 /* UIKit.framework in Frameworks */,
 				E5F3B8971498B88D008DD607 /* Foundation.framework in Frameworks */,
 				E5F3B8981498B88D008DD607 /* CoreGraphics.framework in Frameworks */,
+				BCBAB47714A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -896,24 +926,26 @@
 		BC0DD8381487C73E00DCD550 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BCB41F6C14892350008F3738 /* Track.h */,
-				BCB41F6D14892350008F3738 /* Track.m */,
-				40274BB014911B6F00F26008 /* Radio.h */,
-				40274BB114911B6F00F26008 /* Radio.m */,
-				40274BB71491205F00F26008 /* WallEvent.h */,
-				40274BB81491205F00F26008 /* WallEvent.m */,
-				BC4988DD149FCCBD00873381 /* WallMessage.h */,
-				BC4988DE149FCCBD00873381 /* WallMessage.m */,
-				40AAEC56149224050031B39D /* SongMetadata.h */,
-				40AAEC57149224050031B39D /* SongMetadata.m */,
-				40AAEC5A149225070031B39D /* Song.h */,
-				40AAEC5B149225070031B39D /* Song.m */,
-				40AAEC5D149225DC0031B39D /* User.h */,
-				40AAEC5E149225DC0031B39D /* User.m */,
-				4009010E14990EE100C9E51A /* Playlist.h */,
-				4009010F14990EE200C9E51A /* Playlist.m */,
-				40090112149A682100C9E51A /* ApiKey.h */,
-				40090113149A682100C9E51A /* ApiKey.m */,
+				BC4988F014A107DF00873381 /* ApiKey.h */,
+				BC4988F114A107DF00873381 /* ApiKey.m */,
+				BC4988F214A107DF00873381 /* Auth.h */,
+				BC4988F314A107DF00873381 /* Auth.m */,
+				BC4988F414A107DF00873381 /* Playlist.h */,
+				BC4988F514A107DF00873381 /* Playlist.m */,
+				BC4988F614A107DF00873381 /* Radio.h */,
+				BC4988F714A107DF00873381 /* Radio.m */,
+				BC4988F814A107DF00873381 /* Song.h */,
+				BC4988F914A107DF00873381 /* Song.m */,
+				BC4988FA14A107DF00873381 /* SongMetadata.h */,
+				BC4988FB14A107DF00873381 /* SongMetadata.m */,
+				BC4988FC14A107DF00873381 /* Track.h */,
+				BC4988FD14A107DF00873381 /* Track.m */,
+				BC4988FE14A107DF00873381 /* User.h */,
+				BC4988FF14A107DF00873381 /* User.m */,
+				BC49890014A107DF00873381 /* WallEvent.h */,
+				BC49890114A107DF00873381 /* WallEvent.m */,
+				BC49890214A107DF00873381 /* WallMessage.h */,
+				BC49890314A107DF00873381 /* WallMessage.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1071,6 +1103,7 @@
 		BCA2CCD6149A95460000637E /* LibTools */ = {
 			isa = PBXGroup;
 			children = (
+				BCBAB47214A1DEFE00CF922A /* Google Analytics */,
 				BCA2CCD7149A95800000637E /* NSData+CocoaDevUsersAdditions */,
 				4056298D147547380085518C /* ASIHTTPRequest */,
 				BC9F413E147E8A5F00D417EF /* BundleFileManager */,
@@ -1109,6 +1142,18 @@
 				BCB5F28D1485416B00C28B3D /* RadioViewController.m */,
 			);
 			path = RadioView;
+			sourceTree = "<group>";
+		};
+		BCBAB47214A1DEFE00CF922A /* Google Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				BCBAB48514A21DAE00CF922A /* EasyTracker.plist */,
+				BCBAB48014A21D7300CF922A /* EasyTracker.h */,
+				BCBAB48114A21D7300CF922A /* EasyTracker.m */,
+				BCBAB47314A1DF1C00CF922A /* GANTracker.h */,
+				BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */,
+			);
+			name = "Google Analytics";
 			sourceTree = "<group>";
 		};
 		BCC408A9148D15F8001C02E4 /* MyYasound */ = {
@@ -1211,7 +1256,6 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
-				BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */,
 				E5A9A3B31454DC0500EA374C /* Yasound */,
 				E5A9A3B41454DC0500EA374C /* Supporting Files */,
 				BCFECF8F146840B300BA20D9 /* resources */,
@@ -1234,6 +1278,8 @@
 		E5A9A3AC1454DC0500EA374C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCBAB48914A22E3400CF922A /* libsqlite3.dylib */,
+				BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */,
 				E5280A59145F006C00A88910 /* SystemConfiguration.framework */,
 				E5280A57145F005B00A88910 /* MobileCoreServices.framework */,
 				E5280A55145EFFD900A88910 /* libz.dylib */,
@@ -1456,6 +1502,7 @@
 				BC8B083E14926F22007E1307 /* Icon-Small@2x.png in Resources */,
 				BC8B084014926F22007E1307 /* Icon@2x.png in Resources */,
 				BC8B084314927B7D007E1307 /* Icon.png in Resources */,
+				BCBAB48714A21DAE00CF922A /* EasyTracker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1546,6 +1593,7 @@
 				BC8B083D14926F22007E1307 /* Icon-Small@2x.png in Resources */,
 				BC8B083F14926F22007E1307 /* Icon@2x.png in Resources */,
 				BC8B084214927B7D007E1307 /* Icon.png in Resources */,
+				BCBAB48614A21DAE00CF922A /* EasyTracker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1636,6 +1684,7 @@
 				E5F3B8EA1498B88D008DD607 /* Icon-Small@2x.png in Resources */,
 				E5F3B8EB1498B88D008DD607 /* Icon@2x.png in Resources */,
 				E5F3B8EC1498B88D008DD607 /* Icon.png in Resources */,
+				BCBAB48814A21DAE00CF922A /* EasyTracker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1673,7 +1722,6 @@
 				BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4514863646008F3738 /* Theme.m in Sources */,
 				BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */,
-				BCB41F6F14892350008F3738 /* Track.m in Sources */,
 				BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */,
 				BCC408A8148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
 				BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
@@ -1682,12 +1730,7 @@
 				40274BC41491287900F26008 /* Communicator.m in Sources */,
 				40274BC61491287D00F26008 /* Container.m in Sources */,
 				40274BC71491288100F26008 /* Model.m in Sources */,
-				40274BC81491288500F26008 /* Radio.m in Sources */,
-				40274BC91491288900F26008 /* WallEvent.m in Sources */,
 				40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */,
-				40AAEC60149225E80031B39D /* SongMetadata.m in Sources */,
-				40AAEC61149225EB0031B39D /* Song.m in Sources */,
-				40AAEC62149225EE0031B39D /* User.m in Sources */,
 				4082EE581492908000E7FFF6 /* NSObject+SBJson.m in Sources */,
 				4082EE591492908000E7FFF6 /* SBJsonParser.m in Sources */,
 				4082EE5A1492908000E7FFF6 /* SBJsonStreamParser.m in Sources */,
@@ -1703,14 +1746,21 @@
 				4082EE641492908000E7FFF6 /* NSObject+JsonProxy.m in Sources */,
 				4082EE651492908000E7FFF6 /* NSObject+PropertyDictionary.m in Sources */,
 				4009010C14967AEE00C9E51A /* WebImageView.m in Sources */,
-				4009011114990EE200C9E51A /* Playlist.m in Sources */,
-				40090115149A682100C9E51A /* ApiKey.m in Sources */,
 				4009011D149A69F100C9E51A /* Auth.m in Sources */,
 				BCA2CCD4149A80270000637E /* PlaylistMoulinor.m in Sources */,
 				BCA2CCDB149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BC4988D8149F4FE900873381 /* LoginViewController_YasoundLogin.m in Sources */,
 				BC4988DB149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */,
-				BC4988E0149FCCBD00873381 /* WallMessage.m in Sources */,
+				BC49890514A107DF00873381 /* ApiKey.m in Sources */,
+				BC49890B14A107DF00873381 /* Playlist.m in Sources */,
+				BC49890E14A107DF00873381 /* Radio.m in Sources */,
+				BC49891114A107DF00873381 /* Song.m in Sources */,
+				BC49891414A107DF00873381 /* SongMetadata.m in Sources */,
+				BC49891714A107DF00873381 /* Track.m in Sources */,
+				BC49891A14A107DF00873381 /* User.m in Sources */,
+				BC49891D14A107DF00873381 /* WallEvent.m in Sources */,
+				BC49892014A107DF00873381 /* WallMessage.m in Sources */,
+				BCBAB48314A21D7300CF922A /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1745,7 +1795,6 @@
 				BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4414863646008F3738 /* Theme.m in Sources */,
 				BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */,
-				BCB41F6E14892350008F3738 /* Track.m in Sources */,
 				BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */,
 				BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
 				BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
@@ -1768,21 +1817,24 @@
 				40274BAD14910F3800F26008 /* SBJsonWriter.m in Sources */,
 				40274BAE14910F3800F26008 /* NSObject+JsonProxy.m in Sources */,
 				40274BAF14910F3800F26008 /* NSObject+PropertyDictionary.m in Sources */,
-				40274BB214911B6F00F26008 /* Radio.m in Sources */,
-				40274BB91491205F00F26008 /* WallEvent.m in Sources */,
 				40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */,
-				40AAEC58149224050031B39D /* SongMetadata.m in Sources */,
-				40AAEC5C149225070031B39D /* Song.m in Sources */,
-				40AAEC5F149225DC0031B39D /* User.m in Sources */,
 				4009010B14967AEE00C9E51A /* WebImageView.m in Sources */,
-				4009011014990EE200C9E51A /* Playlist.m in Sources */,
-				40090114149A682100C9E51A /* ApiKey.m in Sources */,
 				4009011C149A69F100C9E51A /* Auth.m in Sources */,
 				BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */,
 				BCA2CCDA149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BC4988D7149F4FE900873381 /* LoginViewController_YasoundLogin.m in Sources */,
 				BC4988DA149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */,
-				BC4988DF149FCCBD00873381 /* WallMessage.m in Sources */,
+				BC49890414A107DF00873381 /* ApiKey.m in Sources */,
+				BC49890714A107DF00873381 /* Auth.m in Sources */,
+				BC49890A14A107DF00873381 /* Playlist.m in Sources */,
+				BC49890D14A107DF00873381 /* Radio.m in Sources */,
+				BC49891014A107DF00873381 /* Song.m in Sources */,
+				BC49891314A107DF00873381 /* SongMetadata.m in Sources */,
+				BC49891614A107DF00873381 /* Track.m in Sources */,
+				BC49891914A107DF00873381 /* User.m in Sources */,
+				BC49891C14A107DF00873381 /* WallEvent.m in Sources */,
+				BC49891F14A107DF00873381 /* WallMessage.m in Sources */,
+				BCBAB48214A21D7300CF922A /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1817,7 +1869,6 @@
 				E5F3B86D1498B88D008DD607 /* RadioViewController.m in Sources */,
 				E5F3B86E1498B88D008DD607 /* Theme.m in Sources */,
 				E5F3B8701498B88D008DD607 /* RadioViewCell.m in Sources */,
-				E5F3B8711498B88D008DD607 /* Track.m in Sources */,
 				E5F3B8721498B88D008DD607 /* MyYasound_RadioSelection.m in Sources */,
 				E5F3B8731498B88D008DD607 /* MyYasound_Settings.m in Sources */,
 				E5F3B8741498B88D008DD607 /* ThemeSelectorViewController.m in Sources */,
@@ -1840,18 +1891,23 @@
 				E5F3B8851498B88D008DD607 /* SBJsonWriter.m in Sources */,
 				E5F3B8861498B88D008DD607 /* NSObject+JsonProxy.m in Sources */,
 				E5F3B8871498B88D008DD607 /* NSObject+PropertyDictionary.m in Sources */,
-				E5F3B8881498B88D008DD607 /* Radio.m in Sources */,
-				E5F3B8891498B88D008DD607 /* WallEvent.m in Sources */,
 				E5F3B88A1498B88D008DD607 /* YasoundDataProvider.m in Sources */,
-				E5F3B88B1498B88D008DD607 /* SongMetadata.m in Sources */,
-				E5F3B88C1498B88D008DD607 /* Song.m in Sources */,
-				E5F3B88D1498B88D008DD607 /* User.m in Sources */,
 				E5F3B88E1498B88D008DD607 /* WebImageView.m in Sources */,
 				BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */,
 				BCA2CCDC149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BC4988D9149F4FE900873381 /* LoginViewController_YasoundLogin.m in Sources */,
 				BC4988DC149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */,
-				BC4988E1149FCCBD00873381 /* WallMessage.m in Sources */,
+				BC49890614A107DF00873381 /* ApiKey.m in Sources */,
+				BC49890914A107DF00873381 /* Auth.m in Sources */,
+				BC49890C14A107DF00873381 /* Playlist.m in Sources */,
+				BC49890F14A107DF00873381 /* Radio.m in Sources */,
+				BC49891214A107DF00873381 /* Song.m in Sources */,
+				BC49891514A107DF00873381 /* SongMetadata.m in Sources */,
+				BC49891814A107DF00873381 /* Track.m in Sources */,
+				BC49891B14A107DF00873381 /* User.m in Sources */,
+				BC49891E14A107DF00873381 /* WallEvent.m in Sources */,
+				BC49892114A107DF00873381 /* WallMessage.m in Sources */,
+				BCBAB48414A21D7300CF922A /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1893,6 +1949,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1906,6 +1966,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1967,6 +2031,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1982,6 +2050,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1991,14 +2063,18 @@
 		E5F3B8EE1498B88D008DD607 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = yasound;
-				PROVISIONING_PROFILE = "C46099A0-A38D-40A3-B4B3-3D52B5D4FE5F";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2006,14 +2082,18 @@
 		E5F3B8EF1498B88D008DD607 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = yasound;
-				PROVISIONING_PROFILE = "C46099A0-A38D-40A3-B4B3-3D52B5D4FE5F";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -26,11 +26,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.2.2</string>
+	<string>0.2.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.2.2</string>
+	<string>0.2.3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMainNibFile</key>
@@ -476,6 +476,32 @@
 				<integer>18</integer>
 				<key>y</key>
 				<integer>16</integer>
+			</dict>
+			<key>loginYasoundTableFrame1</key>
+			<dict>
+				<key>height</key>
+				<integer>416</integer>
+				<key>inset</key>
+				<integer>160</integer>
+				<key>width</key>
+				<integer>320</integer>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>44</integer>
+			</dict>
+			<key>loginYasoundTableFrame2</key>
+			<dict>
+				<key>height</key>
+				<integer>416</integer>
+				<key>inset</key>
+				<integer>0</integer>
+				<key>width</key>
+				<integer>320</integer>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>44</integer>
 			</dict>
 		</dict>
 		<key>themes</key>
