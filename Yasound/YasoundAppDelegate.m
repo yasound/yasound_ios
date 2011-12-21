@@ -10,7 +10,7 @@
 //#import "RadioTabBarController.h"
 //#import "RadioViewController.h"
 #import "LoginViewController.h"
-
+#import "EasyTracker.h"
 
 @implementation YasoundAppDelegate
 
@@ -22,6 +22,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // google analytics launcher
+    [EasyTracker launchWithOptions:launchOptions
+                    withParameters:nil
+                         withError:nil];
+    
   // create a mavigationControler without navigation bar
   navigationController = [[UINavigationController alloc] init];
   navigationController.navigationBarHidden = YES;

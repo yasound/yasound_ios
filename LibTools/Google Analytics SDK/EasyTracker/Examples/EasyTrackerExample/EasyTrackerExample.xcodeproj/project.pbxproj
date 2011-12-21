@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1125E2FD147DBB150099E9CD /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1125E2FC147DBB150099E9CD /* libGoogleAnalytics.a */; };
 		116047EE147C67CF0037821A /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = 116047ED147C67CF0037821A /* EasyTracker.plist */; };
 		11604822147C6B160037821A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11604821147C6B160037821A /* libsqlite3.dylib */; };
 		11604827147C6B250037821A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11604826147C6B250037821A /* CFNetwork.framework */; };
@@ -22,12 +21,11 @@
 		2840D7CE1179279E00D7F93C /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2840D7CD1179279E00D7F93C /* FirstView.xib */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		BCBAB47F14A1DFB500CF922A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB47E14A1DFB500CF922A /* libGoogleAnalytics.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1125E2FC147DBB150099E9CD /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = "../../../../../../../../../perforce/fmela-googlemac/googlemac/iPhone/GoogleAnalytics/SDK/Library/libGoogleAnalytics.a"; sourceTree = SOURCE_ROOT; };
 		116047ED147C67CF0037821A /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
-		1160481B147C6AFA0037821A /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = "../../../../../../../../../perforce/fmela-googlemac/googlemac/iPhone/GoogleAnalytics/SDK/Library/GANTracker.h"; sourceTree = SOURCE_ROOT; };
 		11604821147C6B160037821A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		11604826147C6B250037821A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		1160482F147C6B870037821A /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
@@ -48,6 +46,8 @@
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* EasyTrackerExample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "EasyTrackerExample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		BCBAB47D14A1DFB500CF922A /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = ../../../Library/GANTracker.h; sourceTree = "<group>"; };
+		BCBAB47E14A1DFB500CF922A /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = ../../../Library/libGoogleAnalytics.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
 				11604822147C6B160037821A /* libsqlite3.dylib in Frameworks */,
 				11604827147C6B250037821A /* CFNetwork.framework in Frameworks */,
-				1125E2FD147DBB150099E9CD /* libGoogleAnalytics.a in Frameworks */,
+				BCBAB47F14A1DFB500CF922A /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,8 +83,8 @@
 		11604819147C6AD10037821A /* Google Analytics SDK */ = {
 			isa = PBXGroup;
 			children = (
-				1125E2FC147DBB150099E9CD /* libGoogleAnalytics.a */,
-				1160481B147C6AFA0037821A /* GANTracker.h */,
+				BCBAB47D14A1DFB500CF922A /* GANTracker.h */,
+				BCBAB47E14A1DFB500CF922A /* libGoogleAnalytics.a */,
 			);
 			name = "Google Analytics SDK";
 			sourceTree = "<group>";
@@ -240,6 +240,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../../../../../../perforce/fmela-googlemac/googlemac/iPhone/GoogleAnalytics/SDK/Library\"",
+					"\"$(SRCROOT)/../../../Library\"",
 				);
 				PRODUCT_NAME = EasyTrackerExample;
 			};
@@ -256,6 +257,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../../../../../../../perforce/fmela-googlemac/googlemac/iPhone/GoogleAnalytics/SDK/Library\"",
+					"\"$(SRCROOT)/../../../Library\"",
 				);
 				PRODUCT_NAME = EasyTrackerExample;
 				VALIDATE_PRODUCT = YES;

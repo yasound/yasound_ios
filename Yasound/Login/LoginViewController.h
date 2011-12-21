@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EasyTracker.h"
 
-@interface LoginViewController : UIViewController
+
+@interface LoginViewController : TrackedUIViewController
 {
     BOOL _keyboardVisible;
     BOOL _loginViewVisible;

@@ -268,6 +268,15 @@
 		BCBAB47514A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */; };
 		BCBAB47614A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */; };
 		BCBAB47714A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */; };
+		BCBAB48214A21D7300CF922A /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB48114A21D7300CF922A /* EasyTracker.m */; };
+		BCBAB48314A21D7300CF922A /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB48114A21D7300CF922A /* EasyTracker.m */; };
+		BCBAB48414A21D7300CF922A /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB48114A21D7300CF922A /* EasyTracker.m */; };
+		BCBAB48614A21DAE00CF922A /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB48514A21DAE00CF922A /* EasyTracker.plist */; };
+		BCBAB48714A21DAE00CF922A /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB48514A21DAE00CF922A /* EasyTracker.plist */; };
+		BCBAB48814A21DAE00CF922A /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB48514A21DAE00CF922A /* EasyTracker.plist */; };
+		BCBAB48A14A22E3400CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
+		BCBAB48B14A22E4400CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
+		BCBAB48C14A22E5000CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
 		BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
@@ -660,6 +669,10 @@
 		BCB5F28D1485416B00C28B3D /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
 		BCBAB47314A1DF1C00CF922A /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = "LibTools/Google Analytics SDK/Library/GANTracker.h"; sourceTree = SOURCE_ROOT; };
 		BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = "LibTools/Google Analytics SDK/Library/libGoogleAnalytics.a"; sourceTree = SOURCE_ROOT; };
+		BCBAB48014A21D7300CF922A /* EasyTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EasyTracker.h; path = "LibTools/Google Analytics SDK/EasyTracker/Library/EasyTracker.h"; sourceTree = SOURCE_ROOT; };
+		BCBAB48114A21D7300CF922A /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyTracker.m; path = "LibTools/Google Analytics SDK/EasyTracker/Library/EasyTracker.m"; sourceTree = SOURCE_ROOT; };
+		BCBAB48514A21DAE00CF922A /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = EasyTracker.plist; path = resources/EasyTracker.plist; sourceTree = SOURCE_ROOT; };
+		BCBAB48914A22E3400CF922A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_RadioSelection.m; path = MyYasound/MyYasound_RadioSelection.m; sourceTree = "<group>"; };
 		BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_Settings.m; path = MyYasound/MyYasound_Settings.m; sourceTree = "<group>"; };
 		BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonDown.png; sourceTree = "<group>"; };
@@ -729,6 +742,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBAB48A14A22E3400CF922A /* libsqlite3.dylib in Frameworks */,
 				BC6ADD18149B9EDF00D00E5F /* MessageUI.framework in Frameworks */,
 				BC71F5DA147FEC6F00DAE4BD /* SystemConfiguration.framework in Frameworks */,
 				BC71F5DB147FEC6F00DAE4BD /* MobileCoreServices.framework in Frameworks */,
@@ -747,6 +761,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBAB48C14A22E5000CF922A /* libsqlite3.dylib in Frameworks */,
 				BC6ADD1A149B9EEE00D00E5F /* MessageUI.framework in Frameworks */,
 				E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */,
 				E5280A58145F005B00A88910 /* MobileCoreServices.framework in Frameworks */,
@@ -765,6 +780,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBAB48B14A22E4400CF922A /* libsqlite3.dylib in Frameworks */,
 				BC6ADD1B149B9EFF00D00E5F /* MessageUI.framework in Frameworks */,
 				E5F3B8901498B88D008DD607 /* SystemConfiguration.framework in Frameworks */,
 				E5F3B8911498B88D008DD607 /* MobileCoreServices.framework in Frameworks */,
@@ -1131,6 +1147,9 @@
 		BCBAB47214A1DEFE00CF922A /* Google Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				BCBAB48514A21DAE00CF922A /* EasyTracker.plist */,
+				BCBAB48014A21D7300CF922A /* EasyTracker.h */,
+				BCBAB48114A21D7300CF922A /* EasyTracker.m */,
 				BCBAB47314A1DF1C00CF922A /* GANTracker.h */,
 				BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */,
 			);
@@ -1237,6 +1256,7 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
+				BCBAB48914A22E3400CF922A /* libsqlite3.dylib */,
 				BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */,
 				E5A9A3B31454DC0500EA374C /* Yasound */,
 				E5A9A3B41454DC0500EA374C /* Supporting Files */,
@@ -1482,6 +1502,7 @@
 				BC8B083E14926F22007E1307 /* Icon-Small@2x.png in Resources */,
 				BC8B084014926F22007E1307 /* Icon@2x.png in Resources */,
 				BC8B084314927B7D007E1307 /* Icon.png in Resources */,
+				BCBAB48714A21DAE00CF922A /* EasyTracker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1572,6 +1593,7 @@
 				BC8B083D14926F22007E1307 /* Icon-Small@2x.png in Resources */,
 				BC8B083F14926F22007E1307 /* Icon@2x.png in Resources */,
 				BC8B084214927B7D007E1307 /* Icon.png in Resources */,
+				BCBAB48614A21DAE00CF922A /* EasyTracker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1662,6 +1684,7 @@
 				E5F3B8EA1498B88D008DD607 /* Icon-Small@2x.png in Resources */,
 				E5F3B8EB1498B88D008DD607 /* Icon@2x.png in Resources */,
 				E5F3B8EC1498B88D008DD607 /* Icon.png in Resources */,
+				BCBAB48814A21DAE00CF922A /* EasyTracker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1737,6 +1760,7 @@
 				BC49891A14A107DF00873381 /* User.m in Sources */,
 				BC49891D14A107DF00873381 /* WallEvent.m in Sources */,
 				BC49892014A107DF00873381 /* WallMessage.m in Sources */,
+				BCBAB48314A21D7300CF922A /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1810,6 +1834,7 @@
 				BC49891914A107DF00873381 /* User.m in Sources */,
 				BC49891C14A107DF00873381 /* WallEvent.m in Sources */,
 				BC49891F14A107DF00873381 /* WallMessage.m in Sources */,
+				BCBAB48214A21D7300CF922A /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1882,6 +1907,7 @@
 				BC49891B14A107DF00873381 /* User.m in Sources */,
 				BC49891E14A107DF00873381 /* WallEvent.m in Sources */,
 				BC49892114A107DF00873381 /* WallMessage.m in Sources */,
+				BCBAB48414A21D7300CF922A /* EasyTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
