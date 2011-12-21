@@ -1256,8 +1256,6 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
-				BCBAB48914A22E3400CF922A /* libsqlite3.dylib */,
-				BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */,
 				E5A9A3B31454DC0500EA374C /* Yasound */,
 				E5A9A3B41454DC0500EA374C /* Supporting Files */,
 				BCFECF8F146840B300BA20D9 /* resources */,
@@ -1280,6 +1278,8 @@
 		E5A9A3AC1454DC0500EA374C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCBAB48914A22E3400CF922A /* libsqlite3.dylib */,
+				BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */,
 				E5280A59145F006C00A88910 /* SystemConfiguration.framework */,
 				E5280A57145F005B00A88910 /* MobileCoreServices.framework */,
 				E5280A55145EFFD900A88910 /* libz.dylib */,
