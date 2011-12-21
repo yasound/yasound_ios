@@ -277,6 +277,18 @@
 		BCBAB48A14A22E3400CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
 		BCBAB48B14A22E4400CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
 		BCBAB48C14A22E5000CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
+		BCBAB49A14A2322900CF922A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB49814A2322900CF922A /* SettingsViewController.m */; };
+		BCBAB49B14A2322900CF922A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB49814A2322900CF922A /* SettingsViewController.m */; };
+		BCBAB49C14A2322900CF922A /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB49814A2322900CF922A /* SettingsViewController.m */; };
+		BCBAB49D14A2322900CF922A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB49914A2322900CF922A /* SettingsViewController.xib */; };
+		BCBAB49E14A2322900CF922A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB49914A2322900CF922A /* SettingsViewController.xib */; };
+		BCBAB49F14A2322900CF922A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB49914A2322900CF922A /* SettingsViewController.xib */; };
+		BCBAB4A314A240B300CF922A /* PlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */; };
+		BCBAB4A414A240B300CF922A /* PlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */; };
+		BCBAB4A514A240B300CF922A /* PlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */; };
+		BCBAB4A614A240B300CF922A /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
+		BCBAB4A714A240B300CF922A /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
+		BCBAB4A814A240B300CF922A /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
 		BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
@@ -673,6 +685,12 @@
 		BCBAB48114A21D7300CF922A /* EasyTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EasyTracker.m; path = "LibTools/Google Analytics SDK/EasyTracker/Library/EasyTracker.m"; sourceTree = SOURCE_ROOT; };
 		BCBAB48514A21DAE00CF922A /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = EasyTracker.plist; path = resources/EasyTracker.plist; sourceTree = SOURCE_ROOT; };
 		BCBAB48914A22E3400CF922A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		BCBAB49714A2322900CF922A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Settings/SettingsViewController.h; sourceTree = "<group>"; };
+		BCBAB49814A2322900CF922A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Settings/SettingsViewController.m; sourceTree = "<group>"; };
+		BCBAB49914A2322900CF922A /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = Settings/SettingsViewController.xib; sourceTree = "<group>"; };
+		BCBAB4A014A240B300CF922A /* PlaylistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistsViewController.h; path = Settings/PlaylistsViewController.h; sourceTree = "<group>"; };
+		BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistsViewController.m; path = Settings/PlaylistsViewController.m; sourceTree = "<group>"; };
+		BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaylistsViewController.xib; path = Settings/PlaylistsViewController.xib; sourceTree = "<group>"; };
 		BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_RadioSelection.m; path = MyYasound/MyYasound_RadioSelection.m; sourceTree = "<group>"; };
 		BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_Settings.m; path = MyYasound/MyYasound_Settings.m; sourceTree = "<group>"; };
 		BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonDown.png; sourceTree = "<group>"; };
@@ -1156,6 +1174,19 @@
 			name = "Google Analytics";
 			sourceTree = "<group>";
 		};
+		BCBAB48D14A22FEC00CF922A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BCBAB49714A2322900CF922A /* SettingsViewController.h */,
+				BCBAB49814A2322900CF922A /* SettingsViewController.m */,
+				BCBAB49914A2322900CF922A /* SettingsViewController.xib */,
+				BCBAB4A014A240B300CF922A /* PlaylistsViewController.h */,
+				BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */,
+				BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		BCC408A9148D15F8001C02E4 /* MyYasound */ = {
 			isa = PBXGroup;
 			children = (
@@ -1299,6 +1330,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
+				BCBAB48D14A22FEC00CF922A /* Settings */,
 				BCA2CCD6149A95460000637E /* LibTools */,
 				40AAEC4714921ACE0031B39D /* DataProvider */,
 				BCFECFE31468439900BA20D9 /* Audio */,
@@ -1503,6 +1535,8 @@
 				BC8B084014926F22007E1307 /* Icon@2x.png in Resources */,
 				BC8B084314927B7D007E1307 /* Icon.png in Resources */,
 				BCBAB48714A21DAE00CF922A /* EasyTracker.plist in Resources */,
+				BCBAB49E14A2322900CF922A /* SettingsViewController.xib in Resources */,
+				BCBAB4A714A240B300CF922A /* PlaylistsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1594,6 +1628,8 @@
 				BC8B083F14926F22007E1307 /* Icon@2x.png in Resources */,
 				BC8B084214927B7D007E1307 /* Icon.png in Resources */,
 				BCBAB48614A21DAE00CF922A /* EasyTracker.plist in Resources */,
+				BCBAB49D14A2322900CF922A /* SettingsViewController.xib in Resources */,
+				BCBAB4A614A240B300CF922A /* PlaylistsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1685,6 +1721,8 @@
 				E5F3B8EB1498B88D008DD607 /* Icon@2x.png in Resources */,
 				E5F3B8EC1498B88D008DD607 /* Icon.png in Resources */,
 				BCBAB48814A21DAE00CF922A /* EasyTracker.plist in Resources */,
+				BCBAB49F14A2322900CF922A /* SettingsViewController.xib in Resources */,
+				BCBAB4A814A240B300CF922A /* PlaylistsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1761,6 +1799,8 @@
 				BC49891D14A107DF00873381 /* WallEvent.m in Sources */,
 				BC49892014A107DF00873381 /* WallMessage.m in Sources */,
 				BCBAB48314A21D7300CF922A /* EasyTracker.m in Sources */,
+				BCBAB49B14A2322900CF922A /* SettingsViewController.m in Sources */,
+				BCBAB4A414A240B300CF922A /* PlaylistsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1835,6 +1875,8 @@
 				BC49891C14A107DF00873381 /* WallEvent.m in Sources */,
 				BC49891F14A107DF00873381 /* WallMessage.m in Sources */,
 				BCBAB48214A21D7300CF922A /* EasyTracker.m in Sources */,
+				BCBAB49A14A2322900CF922A /* SettingsViewController.m in Sources */,
+				BCBAB4A314A240B300CF922A /* PlaylistsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1908,6 +1950,8 @@
 				BC49891E14A107DF00873381 /* WallEvent.m in Sources */,
 				BC49892114A107DF00873381 /* WallMessage.m in Sources */,
 				BCBAB48414A21D7300CF922A /* EasyTracker.m in Sources */,
+				BCBAB49C14A2322900CF922A /* SettingsViewController.m in Sources */,
+				BCBAB4A514A240B300CF922A /* PlaylistsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
