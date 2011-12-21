@@ -265,6 +265,9 @@
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
+		BCBAB47514A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */; };
+		BCBAB47614A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */; };
+		BCBAB47714A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */; };
 		BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
@@ -655,6 +658,8 @@
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		BCB5F28C1485416B00C28B3D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
 		BCB5F28D1485416B00C28B3D /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
+		BCBAB47314A1DF1C00CF922A /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = "LibTools/Google Analytics SDK/Library/GANTracker.h"; sourceTree = SOURCE_ROOT; };
+		BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = "LibTools/Google Analytics SDK/Library/libGoogleAnalytics.a"; sourceTree = SOURCE_ROOT; };
 		BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_RadioSelection.m; path = MyYasound/MyYasound_RadioSelection.m; sourceTree = "<group>"; };
 		BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_Settings.m; path = MyYasound/MyYasound_Settings.m; sourceTree = "<group>"; };
 		BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonDown.png; sourceTree = "<group>"; };
@@ -734,6 +739,7 @@
 				BC71F5E0147FEC6F00DAE4BD /* UIKit.framework in Frameworks */,
 				BC71F5E1147FEC6F00DAE4BD /* Foundation.framework in Frameworks */,
 				BC71F5E2147FEC6F00DAE4BD /* CoreGraphics.framework in Frameworks */,
+				BCBAB47614A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +757,7 @@
 				E5A9A3AE1454DC0500EA374C /* UIKit.framework in Frameworks */,
 				E5A9A3B01454DC0500EA374C /* Foundation.framework in Frameworks */,
 				E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */,
+				BCBAB47514A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -768,6 +775,7 @@
 				E5F3B8961498B88D008DD607 /* UIKit.framework in Frameworks */,
 				E5F3B8971498B88D008DD607 /* Foundation.framework in Frameworks */,
 				E5F3B8981498B88D008DD607 /* CoreGraphics.framework in Frameworks */,
+				BCBAB47714A1DF1C00CF922A /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1079,6 +1087,7 @@
 		BCA2CCD6149A95460000637E /* LibTools */ = {
 			isa = PBXGroup;
 			children = (
+				BCBAB47214A1DEFE00CF922A /* Google Analytics */,
 				BCA2CCD7149A95800000637E /* NSData+CocoaDevUsersAdditions */,
 				4056298D147547380085518C /* ASIHTTPRequest */,
 				BC9F413E147E8A5F00D417EF /* BundleFileManager */,
@@ -1117,6 +1126,15 @@
 				BCB5F28D1485416B00C28B3D /* RadioViewController.m */,
 			);
 			path = RadioView;
+			sourceTree = "<group>";
+		};
+		BCBAB47214A1DEFE00CF922A /* Google Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				BCBAB47314A1DF1C00CF922A /* GANTracker.h */,
+				BCBAB47414A1DF1C00CF922A /* libGoogleAnalytics.a */,
+			);
+			name = "Google Analytics";
 			sourceTree = "<group>";
 		};
 		BCC408A9148D15F8001C02E4 /* MyYasound */ = {
@@ -1905,6 +1923,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1918,6 +1940,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1979,6 +2005,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -1994,6 +2024,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -2009,6 +2043,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = yasound;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -2024,6 +2062,10 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = ASIHTTPRequest/Classes/;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/LibTools/Google Analytics SDK/Library\"",
+				);
 				PRODUCT_NAME = yasound;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
