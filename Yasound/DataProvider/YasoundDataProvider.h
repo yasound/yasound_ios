@@ -12,6 +12,20 @@
 #import "WallEvent.h"
 #import "ApiKey.h"
 
+typedef NSString* taskID;
+
+typedef enum  
+{
+  eTaskPending = 0,
+  eTaskStarted = 1,
+  eTaskRetry = 2,
+  eTaskFailure = 3,
+  eTaskSuccess = 4,
+  eTaskStatusNone = 5
+} taskStatus;
+
+taskStatus stringToStatus(NSString* str);
+
 @interface YasoundDataProvider : NSObject
 {
   Communicator* _communicator;
@@ -46,4 +60,5 @@
 
 - (void)updatePlaylists:(NSData*)data ForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
+- (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector;
 @end

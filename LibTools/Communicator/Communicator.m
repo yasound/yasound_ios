@@ -171,6 +171,20 @@
 }
 
 
+- (NSString*)getURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth
+{
+  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:auth.urlParams];
+  if (!u)
+  {
+    return nil;
+  }
+  
+  ASIHTTPRequest* req = [[ASIHTTPRequest alloc] initWithURL:u];
+  [req startSynchronous];
+  NSString* response = req.responseString;
+  return response;
+}
+
 // POST data
 - (NSError*)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth
 {
@@ -382,7 +396,23 @@
 }
 
 
-- (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withAuth:(Auth*)auth
+- (void)getURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
+{
+  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:auth.urlParams];
+  if (!u)
+  {
+    return;
+  }
+  
+  NSDictionary* userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"GET_URL", @"method", userData, @"userData", nil];
+  
+  ASIHTTPRequest* req = [[ASIHTTPRequest alloc] initWithURL:u];
+  req.delegate = self;
+  req.userInfo = userInfo;
+  [req startAsynchronous];
+}
+
+- (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
   NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:auth.urlParams];
   NSLog(@"post data url '%@'", u.absoluteString);
@@ -392,7 +422,7 @@
     return;
   }
   
-  NSDictionary* userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"POST_DATA", @"method", nil];
+  NSDictionary* userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"POST_DATA", @"method", userData, @"userData", nil];
   
   ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
   [req addData:data forKey:key];
@@ -527,17 +557,43 @@
   NSDictionary* userinfo = request.userInfo;
   id target         = [userinfo valueForKey:@"target"];
   SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
+  NSDictionary* userData = [userinfo valueForKey:@"userData"];
+  
+  NSMutableDictionary* data = [[NSMutableDictionary alloc] init];
+  [data setValue:userData forKey:@"userData"];
   
   NSString* response = request.responseString;
-  NSLog(@"post data response: %@", response);
   
   NSError* error = nil;
   if (!succeeded)
+  {
     error = [NSError errorWithDomain:response code:request.responseStatusCode userInfo:nil];
+    [data setValue:error forKey:@"error"];
+  }
   
-  [target performSelector:selector withObject:error];
+  [target performSelector:selector withObject:response withObject:data];
 }
 
+- (void)handleGetURLResponse:(ASIHTTPRequest*)request success:(BOOL)succeeded
+{
+  NSDictionary* userinfo = request.userInfo;
+  id target         = [userinfo valueForKey:@"target"];
+  SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
+  NSDictionary* userData = [userinfo valueForKey:@"userData"];
+  
+  NSMutableDictionary* data = [[NSMutableDictionary alloc] init];
+  [data setValue:userData forKey:@"userData"];
+  
+  NSString* response = request.responseString;
+  NSError* error = nil;
+  if (!succeeded)
+  {
+    error = [NSError errorWithDomain:response code:request.responseStatusCode userInfo:nil];
+    [data setValue:error forKey:@"error"];
+  }
+  
+  [target performSelector:selector withObject:response withObject:data];
+}
 
 - (void)handleResponse:(ASIHTTPRequest *)request success:(BOOL)succeeded
 {
@@ -563,6 +619,10 @@
   else if ([method isEqualToString:@"DELETE"])
   {
     [self handleDeleteResponse:request success:succeeded];
+  }
+  else if ([method isEqualToString:@"GET_URL"])
+  {
+    [self handleGetURLResponse:request success:succeeded];
   }
   else if ([method isEqualToString:@"POST_DATA"])
   {
