@@ -225,9 +225,73 @@ static YasoundDataProvider* _main = nil;
     return;
   NSNumber* radioID = radio.id;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/playlists", radioID];
+  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", nil];
+  [_communicator postData:data withKey:@"playlists_data" toURL:relativeUrl absolute:NO notifyTarget:self byCalling:@selector(receiveUpdatePlaylistsResponse:withInfo:) withUserData:userData withAuth:nil];
   
-  // #FIXME fix postData method to be asynchronous!!!
-  [_communicator postData:data withKey:@"playlists_data" toURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withAuth:nil];
+}
+
+- (void)receiveUpdatePlaylistsResponse:(NSString*)response withInfo:(NSDictionary*)info
+{
+  NSDictionary* userData = [info valueForKey:@"userData"];
+  id target = [userData valueForKey:@"target"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"selector"]);
+  NSError* error = [info valueForKey:@"error"];
+  
+  if (error)
+  {
+    [target performSelector:selector withObject:nil withObject:error];
+    return;
+  }
+  
+  taskID task_id = response;
+  if (!task_id)
+  {
+    error = [NSError errorWithDomain:@"can't retrieve task ID from request response" code:1 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:response, @"response", nil]];
+    [target performSelector:selector withObject:nil withObject:error];
+    return;
+  }
+   
+  [target performSelector:selector withObject:task_id withObject:nil];
+}
+
+- (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector
+{
+  if (task_id == nil)
+    return;
+  
+  NSString* url = [NSString stringWithFormat:@"api/v1/task/%@", task_id];
+  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", nil];
+  [_communicator getURL:url absolute:NO notifyTarget:self byCalling:@selector(receiveTaskStatus:withInfo:) withUserData:userData withAuth:nil];
+}
+
+- (void)receiveTaskStatus:(NSString*)response withInfo:(NSDictionary*)info
+{
+  NSDictionary* userData = [info valueForKey:@"userData"];
+  id target = [userData valueForKey:@"target"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"selector"]);
+  NSError* error = [info valueForKey:@"error"];
+  taskStatus status = stringToStatus(response);
+  
+  [target performSelector:selector withObject:status withObject:error];
 }
 
 @end
+
+
+
+taskStatus stringToStatus(NSString* str)
+{
+  taskStatus status = eTaskStatusNone;
+  if ([str isEqualToString:@"PENDING"])
+    status = eTaskPending;
+  else if ([str isEqualToString:@"STARTED"])
+    status = eTaskStarted;
+    else if ([str isEqualToString:@"RETRY"])
+      status = eTaskRetry;
+    else if ([str isEqualToString:@"FAILURE"])
+      status = eTaskFailure;
+    else if ([str isEqualToString:@"SUCCESS"])
+      status = eTaskSuccess;
+  
+  return status;
+}
