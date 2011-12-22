@@ -33,7 +33,7 @@
   // create a mavigationControler without navigation bar
   navigationController = [[UINavigationController alloc] init];
     [navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-//  navigationController.navigationBarHidden = YES;
+  navigationController.navigationBarHidden = YES;
 
   [self.window makeKeyAndVisible];
 
@@ -51,11 +51,11 @@
 //  tabBarController = [[RadioTabBarController alloc] init];
 //  [self.navigationController pushViewController:self.tabBarController animated:YES];
     
-//    loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-//    [self.navigationController pushViewController:loginViewController animated:YES];
+    loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    [self.navigationController pushViewController:loginViewController animated:YES];
     
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
+//    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+//    [self.navigationController pushViewController:view animated:YES];
     
   
   return YES;

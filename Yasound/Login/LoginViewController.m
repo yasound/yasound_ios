@@ -10,6 +10,7 @@
 //#import "RadioTabBarController.h"
 #import "RadioViewController.h"
 #import "BundleFileManager.h"
+#import "SettingsViewController.h"
 
 
 
@@ -197,9 +198,23 @@
 //    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
 //    [self.navigationController pushViewController:tabBarController animated:YES];
     
+    if (indexPath.row == INDEX_FACEBOOK)
+    {
     RadioViewController* view = [[RadioViewController alloc] init];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
+        return;
+    }
+    
+    if (indexPath.row == INDEX_TWITTER)
+    {
+
+        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+        self.navigationController.navigationBarHidden = NO;
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    
 
 }
 
