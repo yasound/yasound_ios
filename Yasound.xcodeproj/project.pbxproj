@@ -289,6 +289,12 @@
 		BCBAB4A614A240B300CF922A /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
 		BCBAB4A714A240B300CF922A /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
 		BCBAB4A814A240B300CF922A /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
+		BCBAB4B214A35FE700CF922A /* KeywordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB4B014A35FE700CF922A /* KeywordsViewController.m */; };
+		BCBAB4B314A35FE700CF922A /* KeywordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB4B014A35FE700CF922A /* KeywordsViewController.m */; };
+		BCBAB4B414A35FE700CF922A /* KeywordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB4B014A35FE700CF922A /* KeywordsViewController.m */; };
+		BCBAB4B514A35FE700CF922A /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
+		BCBAB4B614A35FE700CF922A /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
+		BCBAB4B714A35FE700CF922A /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
 		BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
@@ -691,6 +697,9 @@
 		BCBAB4A014A240B300CF922A /* PlaylistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistsViewController.h; path = Settings/PlaylistsViewController.h; sourceTree = "<group>"; };
 		BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistsViewController.m; path = Settings/PlaylistsViewController.m; sourceTree = "<group>"; };
 		BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PlaylistsViewController.xib; path = Settings/PlaylistsViewController.xib; sourceTree = "<group>"; };
+		BCBAB4AF14A35FE700CF922A /* KeywordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeywordsViewController.h; path = Settings/KeywordsViewController.h; sourceTree = "<group>"; };
+		BCBAB4B014A35FE700CF922A /* KeywordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeywordsViewController.m; path = Settings/KeywordsViewController.m; sourceTree = "<group>"; };
+		BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KeywordsViewController.xib; path = Settings/KeywordsViewController.xib; sourceTree = "<group>"; };
 		BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_RadioSelection.m; path = MyYasound/MyYasound_RadioSelection.m; sourceTree = "<group>"; };
 		BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_Settings.m; path = MyYasound/MyYasound_Settings.m; sourceTree = "<group>"; };
 		BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonDown.png; sourceTree = "<group>"; };
@@ -1180,6 +1189,9 @@
 				BCBAB49714A2322900CF922A /* SettingsViewController.h */,
 				BCBAB49814A2322900CF922A /* SettingsViewController.m */,
 				BCBAB49914A2322900CF922A /* SettingsViewController.xib */,
+				BCBAB4AF14A35FE700CF922A /* KeywordsViewController.h */,
+				BCBAB4B014A35FE700CF922A /* KeywordsViewController.m */,
+				BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */,
 				BCBAB4A014A240B300CF922A /* PlaylistsViewController.h */,
 				BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */,
 				BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */,
@@ -1537,6 +1549,7 @@
 				BCBAB48714A21DAE00CF922A /* EasyTracker.plist in Resources */,
 				BCBAB49E14A2322900CF922A /* SettingsViewController.xib in Resources */,
 				BCBAB4A714A240B300CF922A /* PlaylistsViewController.xib in Resources */,
+				BCBAB4B614A35FE700CF922A /* KeywordsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1630,6 +1643,7 @@
 				BCBAB48614A21DAE00CF922A /* EasyTracker.plist in Resources */,
 				BCBAB49D14A2322900CF922A /* SettingsViewController.xib in Resources */,
 				BCBAB4A614A240B300CF922A /* PlaylistsViewController.xib in Resources */,
+				BCBAB4B514A35FE700CF922A /* KeywordsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1723,6 +1737,7 @@
 				BCBAB48814A21DAE00CF922A /* EasyTracker.plist in Resources */,
 				BCBAB49F14A2322900CF922A /* SettingsViewController.xib in Resources */,
 				BCBAB4A814A240B300CF922A /* PlaylistsViewController.xib in Resources */,
+				BCBAB4B714A35FE700CF922A /* KeywordsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1801,6 +1816,7 @@
 				BCBAB48314A21D7300CF922A /* EasyTracker.m in Sources */,
 				BCBAB49B14A2322900CF922A /* SettingsViewController.m in Sources */,
 				BCBAB4A414A240B300CF922A /* PlaylistsViewController.m in Sources */,
+				BCBAB4B314A35FE700CF922A /* KeywordsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1877,6 +1893,7 @@
 				BCBAB48214A21D7300CF922A /* EasyTracker.m in Sources */,
 				BCBAB49A14A2322900CF922A /* SettingsViewController.m in Sources */,
 				BCBAB4A314A240B300CF922A /* PlaylistsViewController.m in Sources */,
+				BCBAB4B214A35FE700CF922A /* KeywordsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1952,6 +1969,7 @@
 				BCBAB48414A21D7300CF922A /* EasyTracker.m in Sources */,
 				BCBAB49C14A2322900CF922A /* SettingsViewController.m in Sources */,
 				BCBAB4A514A240B300CF922A /* PlaylistsViewController.m in Sources */,
+				BCBAB4B414A35FE700CF922A /* KeywordsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
