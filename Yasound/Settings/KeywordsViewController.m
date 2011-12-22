@@ -20,6 +20,10 @@
     if (self) 
     {
         self.title = NSLocalizedString(@"KeywordsView_title", nil);
+        
+        UIBarButtonItem* editBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(onEdit:)];
+        self.navigationItem.rightBarButtonItem = editBtn;
+        
         _firstRowIsNotValidated = NO;
         
         _keywords = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundKeywords"];
@@ -124,6 +128,13 @@
 //{
 //}
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ((indexPath.section == 0) || ((indexPath.section == 1) && (indexPath.row == 0) && _firstRowIsNotValidated))
+        return UITableViewCellEditingStyleNone;
+    
+    return UITableViewCellEditingStyleDelete;
+}
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -133,6 +144,7 @@
     if (index < 0)
       return;
     
+      [_keywords removeObjectAtIndex:index];
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationBottom];
   }
 }
@@ -222,7 +234,9 @@
 
 - (void)onEdit:(id)sender
 {
-  [_tableView setEditing:!(_tableView.editing)];
+    if ([_keywords count] == 0)
+        return;
+    [_tableView setEditing:!(_tableView.editing)];
 }
 
 
