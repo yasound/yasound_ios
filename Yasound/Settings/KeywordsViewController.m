@@ -20,7 +20,7 @@
     if (self) 
     {
         self.title = NSLocalizedString(@"KeywordsView_title", nil);
-        
+  
         UIBarButtonItem* editBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(onEdit:)];
         self.navigationItem.rightBarButtonItem = editBtn;
         
@@ -231,6 +231,11 @@
 
 
 #pragma mark - IBActions
+
+- (void)onBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)onEdit:(id)sender
 {
