@@ -15,9 +15,6 @@
   IBOutlet UIBarButtonItem* _segmentBarButtonItem;
   UISegmentedControl* _segmentControl;
   
-    NSArray* _playlists;                   // NSArray of MPMediaPlaylist*
-    NSMutableArray* _playlistsDesc;        // NSArray of NSDictionary {name, count}
-    NSMutableArray* _selectedPlaylists;    // NSMutableArray of MPMediaPlaylist*
   
   // my yasound settings
   IBOutlet UITableView* _settingsTableView;

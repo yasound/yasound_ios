@@ -295,6 +295,12 @@
 		BCBAB4B514A35FE700CF922A /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
 		BCBAB4B614A35FE700CF922A /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
 		BCBAB4B714A35FE700CF922A /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
+		BCBAB4BB14A3920600CF922A /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BA14A3920600CF922A /* iTunesConnect.png */; };
+		BCBAB4BC14A3920600CF922A /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BA14A3920600CF922A /* iTunesConnect.png */; };
+		BCBAB4BD14A3920600CF922A /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BA14A3920600CF922A /* iTunesConnect.png */; };
+		BCBAB4BF14A39B9800CF922A /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
+		BCBAB4C014A39B9800CF922A /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
+		BCBAB4C114A39B9800CF922A /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
 		BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
 		BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
@@ -700,6 +706,8 @@
 		BCBAB4AF14A35FE700CF922A /* KeywordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeywordsViewController.h; path = Settings/KeywordsViewController.h; sourceTree = "<group>"; };
 		BCBAB4B014A35FE700CF922A /* KeywordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeywordsViewController.m; path = Settings/KeywordsViewController.m; sourceTree = "<group>"; };
 		BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KeywordsViewController.xib; path = Settings/KeywordsViewController.xib; sourceTree = "<group>"; };
+		BCBAB4BA14A3920600CF922A /* iTunesConnect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesConnect.png; sourceTree = "<group>"; };
+		BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesConnect@2x.png"; sourceTree = "<group>"; };
 		BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_RadioSelection.m; path = MyYasound/MyYasound_RadioSelection.m; sourceTree = "<group>"; };
 		BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_Settings.m; path = MyYasound/MyYasound_Settings.m; sourceTree = "<group>"; };
 		BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonDown.png; sourceTree = "<group>"; };
@@ -1199,6 +1207,15 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		BCBAB4B914A3920600CF922A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */,
+				BCBAB4BA14A3920600CF922A /* iTunesConnect.png */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		BCC408A9148D15F8001C02E4 /* MyYasound */ = {
 			isa = PBXGroup;
 			children = (
@@ -1237,6 +1254,7 @@
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCBAB4B914A3920600CF922A /* Settings */,
 				BC8B080614924D75007E1307 /* Tabs */,
 				BC914AD11491845D00D5D7B4 /* Buttons */,
 				BC914ADC1491845D00D5D7B4 /* Login */,
@@ -1550,6 +1568,8 @@
 				BCBAB49E14A2322900CF922A /* SettingsViewController.xib in Resources */,
 				BCBAB4A714A240B300CF922A /* PlaylistsViewController.xib in Resources */,
 				BCBAB4B614A35FE700CF922A /* KeywordsViewController.xib in Resources */,
+				BCBAB4BC14A3920600CF922A /* iTunesConnect.png in Resources */,
+				BCBAB4C014A39B9800CF922A /* iTunesConnect@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1644,6 +1664,8 @@
 				BCBAB49D14A2322900CF922A /* SettingsViewController.xib in Resources */,
 				BCBAB4A614A240B300CF922A /* PlaylistsViewController.xib in Resources */,
 				BCBAB4B514A35FE700CF922A /* KeywordsViewController.xib in Resources */,
+				BCBAB4BB14A3920600CF922A /* iTunesConnect.png in Resources */,
+				BCBAB4BF14A39B9800CF922A /* iTunesConnect@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1738,6 +1760,8 @@
 				BCBAB49F14A2322900CF922A /* SettingsViewController.xib in Resources */,
 				BCBAB4A814A240B300CF922A /* PlaylistsViewController.xib in Resources */,
 				BCBAB4B714A35FE700CF922A /* KeywordsViewController.xib in Resources */,
+				BCBAB4BD14A3920600CF922A /* iTunesConnect.png in Resources */,
+				BCBAB4C114A39B9800CF922A /* iTunesConnect@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

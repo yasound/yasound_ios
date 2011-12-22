@@ -13,7 +13,6 @@
 #import "ActivityAlertView.h"
 #import "PlaylistMoulinor.h"
 #import <QuartzCore/QuartzCore.h>
-#import <MediaPlayer/MediaPlayer.h>
 
 
 @implementation MyYasoundViewController (Settings)
@@ -42,31 +41,6 @@
     _settingsSubmitTitle.text = NSLocalizedString(@"myyasound_settings_submit_title", nil);
     
     
-    //......................................................................................
-    // init playlists
-    //
-    MPMediaQuery *playlistsquery = [MPMediaQuery playlistsQuery];
-
-    _playlistsDesc = [[NSMutableArray alloc] init];
-    [_playlistsDesc retain];
-
-    _playlists = [playlistsquery collections];
-    [_playlists retain];
-    
-    for (MPMediaPlaylist* list in _playlists)
-    {
-        NSString* listname = [list valueForProperty: MPMediaPlaylistPropertyName];
-        
-        NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
-        [dico setObject:listname forKey:@"name"];
-        [dico setObject:[NSNumber numberWithInteger:[list count]] forKey:@"count"];
-        [_playlistsDesc addObject:dico];
-        
-        NSLog (@"playlist : %@", listname);
-    }
-    
-    _selectedPlaylists = [[NSMutableArray alloc] init];
-    [_selectedPlaylists retain];
      */
     
 
@@ -76,9 +50,6 @@
 
 - (void)deallocInSettingsTableView
 {
-    [_playlists release];
-    [_playlistsDesc release];
-    [_selectedPlaylists release];
 }
 
 
@@ -116,7 +87,7 @@
         case SECTION_GOTO: return 1;
         case SECTION_CONFIGURATION: return 3;
         case SECTION_THEME: return 1;
-        case SECTION_PLAYLISTS: return [_playlistsDesc count];
+//        case SECTION_PLAYLISTS: return [_playlistsDesc count];
         case SECTION_SUBMIT: return 1;
     }
     return 0;
@@ -159,28 +130,6 @@
         return _settingsSubmitCell;
     }
     
-    if (indexPath.section == SECTION_PLAYLISTS)
-    {
-        // default case (playlists)
-        UITableViewCell *cell = [_settingsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (cell == nil) 
-        {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
-        }
-        
-        NSDictionary* dico = [_playlistsDesc objectAtIndex:indexPath.row];
-        cell.textLabel.text = [dico objectForKey:@"name"];
-        
-        if ([_selectedPlaylists containsObject:[_playlists objectAtIndex:indexPath.row]])
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        else
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", [[dico objectForKey:@"count"] integerValue]];
-        
-        return cell;
-    }
      */
     
   
@@ -201,26 +150,6 @@
     }
     
 
-    else if (indexPath.section == SECTION_PLAYLISTS)
-    {
-        UITableViewCell *cell = [_settingsTableView cellForRowAtIndexPath:indexPath];
-        MPMediaPlaylist* list = [_playlists objectAtIndex:indexPath.row];
-        
-        if ([_selectedPlaylists containsObject:list] == YES)
-        {
-            NSLog(@"deselect\n");
-            [_selectedPlaylists removeObject:list];
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
-        else
-        {
-            NSLog(@"select\n");
-            [_selectedPlaylists addObject:list];
-            cell.accessoryType = UITableViewCellAccessoryCheckmark; 
-        }
-        
-        cell.selected = FALSE;
-    }
 
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(unselect:) userInfo:indexPath repeats:NO];
      */
@@ -280,12 +209,12 @@
 
 - (IBAction)onSubmitClicked:(id)sender
 {    
-    //fake commnunication
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"msg_submit_title", nil) message:NSLocalizedString(@"msg_submit_body", nil)];
-
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists binary:NO compressed:YES target:self action:@selector(didBuildDataWithPlaylist:)];
+//    //fake commnunication
+//    [ActivityAlertView showWithTitle:NSLocalizedString(@"msg_submit_title", nil) message:NSLocalizedString(@"msg_submit_body", nil)];
+//
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//    
+//    [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists binary:NO compressed:YES target:self action:@selector(didBuildDataWithPlaylist:)];
 }
 
 
