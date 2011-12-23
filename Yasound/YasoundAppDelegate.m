@@ -12,6 +12,9 @@
 #import "LoginViewController.h"
 #import "EasyTracker.h"
 
+#import "SettingsViewController.h"
+
+
 @implementation YasoundAppDelegate
 
 
@@ -29,6 +32,7 @@
     
   // create a mavigationControler without navigation bar
   navigationController = [[UINavigationController alloc] init];
+    [navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
   navigationController.navigationBarHidden = YES;
 
   [self.window makeKeyAndVisible];
@@ -49,6 +53,10 @@
     
     loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     [self.navigationController pushViewController:loginViewController animated:YES];
+    
+//    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+//    [self.navigationController pushViewController:view animated:YES];
+    
   
   return YES;
 }

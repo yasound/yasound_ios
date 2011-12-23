@@ -15,9 +15,6 @@
   IBOutlet UIBarButtonItem* _segmentBarButtonItem;
   UISegmentedControl* _segmentControl;
   
-    NSArray* _playlists;                   // NSArray of MPMediaPlaylist*
-    NSMutableArray* _playlistsDesc;        // NSArray of NSDictionary {name, count}
-    NSMutableArray* _selectedPlaylists;    // NSMutableArray of MPMediaPlaylist*
   
   // my yasound settings
   IBOutlet UITableView* _settingsTableView;
@@ -25,21 +22,6 @@
   IBOutlet UITableViewCell* _settingsGotoCell;
   IBOutlet UILabel* _settingsGotoLabel;
 
-  IBOutlet UITableViewCell* _settingsTitleCell;
-  IBOutlet UILabel* _settingsTitleLabel;
-  IBOutlet UITextField* _settingsTitleTextField;
-  
-  IBOutlet UITableViewCell* _settingsImageCell;
-  IBOutlet UILabel* _settingsImageLabel;
-  IBOutlet UIImageView* _settingsImageImage;
-
-  IBOutlet UITableViewCell* _settingsGenreCell;
-  IBOutlet UILabel* _settingsGenreLabel;
-  IBOutlet UILabel* _settingsGenreTitle;
-
-  IBOutlet UITableViewCell* _settingsThemeCell;
-  IBOutlet UILabel* _settingsThemeTitle;
-  IBOutlet UIImageView* _settingsThemeImage;
   
   IBOutlet UITableViewCell* _settingsSubmitCell;
   IBOutlet UILabel* _settingsSubmitTitle;
