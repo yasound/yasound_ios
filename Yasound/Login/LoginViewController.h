@@ -17,6 +17,8 @@
     BOOL _yasoundLoginViewVisible;
     BOOL _yasoundSignupViewVisible;
     
+    UIBarButtonItem* _backBtn;
+    
     //.............................................
     IBOutlet UIView* _container;
     IBOutlet UIView* _defaultView;    
@@ -25,7 +27,6 @@
 
     //.............................................
     IBOutlet UIView* _yasoundLoginView;
-    IBOutlet UILabel* _yasoundLoginViewTitle;
     IBOutlet UITableView* _yasoundLoginTableView;
     
     IBOutlet UITableViewCell* _yasoundLoginCellUsername;
@@ -44,7 +45,6 @@
 
     //.............................................
     IBOutlet UIView* _yasoundSignupView;
-    IBOutlet UILabel* _yasoundSignupViewTitle;
     IBOutlet UITableView* _yasoundSignupTableView;
 
     IBOutlet UITableViewCell* _yasoundSignupCellEmail;

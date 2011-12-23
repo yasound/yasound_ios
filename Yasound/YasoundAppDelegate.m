@@ -33,7 +33,7 @@
   // create a mavigationControler without navigation bar
   navigationController = [[UINavigationController alloc] init];
     [navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-  navigationController.navigationBarHidden = YES;
+//  navigationController.navigationBarHidden = YES;
 
   [self.window makeKeyAndVisible];
 

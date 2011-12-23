@@ -31,8 +31,17 @@
         _yasoundLoginViewVisible = NO;
         _yasoundSignupViewVisible = NO;
         
+        self.title = @"Yasound";
+        
+        _backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStylePlain target:self action:@selector(onBack:)];        
     }
     return self;
+}
+
+
+- (void) dealloc
+{
+    [_backBtn release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -222,6 +231,22 @@
 
 
 
+
+
+
+#pragma mark - IBActions
+
+- (void) onBack:(id)sender
+{
+    if (_yasoundLoginViewVisible)
+        [self flipToView:_loginView removeView:_yasoundLoginView fromLeft:NO];
+    else if (_yasoundSignupViewVisible)
+        [self flipToView:_loginView removeView:_yasoundSignupView fromLeft:NO];
+}
+
+
+
+
 #pragma mark - Flip View
 
 - (void) flipToView:(UIView*)view removeView:(UIView*)viewToRemove fromLeft:(BOOL)fromLeft
@@ -243,15 +268,21 @@
     _yasoundSignupViewVisible = NO;
 
     if (view == _loginView)
+    {
         _loginViewVisible = YES;
+        [[self navigationItem] setLeftBarButtonItem:nil];      
+        self.title = @"Yasound";
+    }
     else if (view == _yasoundLoginView)
     {
         _yasoundLoginViewVisible = YES;
+        [[self navigationItem] setLeftBarButtonItem:_backBtn];        
         [self yasoundLogin_ViewDidAppear];
     }
     else if (view == _yasoundSignupView)
     {
         _yasoundSignupViewVisible = YES;
+        [[self navigationItem] setLeftBarButtonItem:_backBtn];        
         [self yasoundSignup_ViewDidAppear];
     }
     

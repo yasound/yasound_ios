@@ -24,7 +24,7 @@
 
 - (void) yasoundLogin_ViewDidLoad
 {
-    _yasoundLoginViewTitle.text = NSLocalizedString(@"yasoundLogin_View_title", nil);
+//    _yasoundLoginViewTitle.text = NSLocalizedString(@"yasoundLogin_View_title", nil);
     
     _yasoundLoginCellUsernameLabel.text = NSLocalizedString(@"yasoundLogin_Username_label", nil);
     _yasoundLoginCellUsernameTextField.placeholder = NSLocalizedString(@"yasoundLogin_Username_placeholder", nil);
@@ -41,6 +41,7 @@
 
 - (void) yasoundLogin_ViewDidAppear
 {
+    self.title = NSLocalizedString(@"yasoundLogin_View_title", nil);
     [_yasoundLoginTableView reloadData];
 }
 
