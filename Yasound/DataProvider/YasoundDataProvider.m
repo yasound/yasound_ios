@@ -219,7 +219,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)updatePlaylists:(NSData*)data ForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
   if (radio == nil)
     return;

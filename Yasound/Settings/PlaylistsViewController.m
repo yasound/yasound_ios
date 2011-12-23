@@ -11,6 +11,7 @@
 #import "ActivityAlertView.h"
 #import "RadioViewController.h"
 #import "PlaylistMoulinor.h"
+#import "YasoundDataProvider.h"
 
 @implementation PlaylistsViewController
 
@@ -231,7 +232,7 @@
 
     [[NSUserDefaults standardUserDefaults] synchronize];
     //    
-       [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists binary:NO compressed:NO target:self action:@selector(didBuildDataWithPlaylist:)];
+       [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists binary:NO compressed:YES target:self action:@selector(didBuildDataWithPlaylist:)];
 
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
 }
@@ -241,9 +242,21 @@
 - (void) didBuildDataWithPlaylist:(NSData*)data
 {
     //LBDEBUG email playlist file
-      [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
+//      [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
+
+  Radio* radio = [[Radio alloc] init];
+  radio.id = [NSNumber numberWithInt:1];
+  [[YasoundDataProvider main] updatePlaylists:data forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
     
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
+}
+
+- (void)receiveUpdatePLaylistsResponse:(taskID)task_id error:(NSError*)error
+{
+  if (error)
+    NSLog(@"update playlists error %d", error.code);
+  else
+    NSLog(@"playlists updated  task: %@", task_id);
 }
 
 

@@ -494,21 +494,7 @@
   [_radioImage setUrl:imageURL];
 
   [self onUpdate:nil]; 
-  
-  // Mattest
-//  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"yasound_playlist" ofType:@"zip"];  
-//  NSData* data = [NSData dataWithContentsOfFile:filePath];
-//  [[YasoundDataProvider main] updatePlaylists:data ForRadio:self.radio target:self action:@selector(playlistsUpdated:error:)];
 }
-
-
-//- (void)playlistsUpdated:(taskID)task_id error:(NSError*)error
-//{
-//  if (error)
-//    NSLog(@"playlists can't be updated '%d'", error.code);
-//  else
-//    NSLog(@"playlists OK task id: %@", task_id);
-//}
 
 
 - (void)receiveRadioSongs:(NSArray*)events withInfo:(NSDictionary*)info

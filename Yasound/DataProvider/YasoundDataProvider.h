@@ -58,7 +58,7 @@ taskStatus stringToStatus(NSString* str);
 - (NSURL*)urlForPicture:(NSString*)picturePath;
 
 
-- (void)updatePlaylists:(NSData*)data ForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector;
 @end
