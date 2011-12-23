@@ -25,7 +25,6 @@
 
 - (void) yasoundSignup_ViewDidLoad
 {
-//    _yasoundSignupViewTitle.text = NSLocalizedString(@"yasoundSignup_View_title", nil);
     
 }
 
@@ -33,11 +32,6 @@
 - (void) yasoundSignup_ViewDidAppear
 {
     self.title = NSLocalizedString(@"yasoundSignup_View_title", nil);
-    
-//    UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStylePlain target:self action:@selector(onBack:)];
-//    [[self navigationItem] setLeftBarButtonItem:_backBtn];
-//    
-//    [_backBtn release];
     
     [_yasoundSignupTableView reloadData];
 }

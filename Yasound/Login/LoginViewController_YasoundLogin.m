@@ -32,7 +32,6 @@
     _yasoundLoginCellPwordLabel.text = NSLocalizedString(@"yasoundLogin_Pword_label", nil);
     _yasoundLoginCellPwordTextField.placeholder = NSLocalizedString(@"yasoundLogin_Pword_placeholder", nil);
     
-    _yasoundLoginCellSubmitLabel.text = NSLocalizedString(@"yasoundLogin_Submit_label", nil);
     
     _yasoundLoginCellSignupLabel.text = NSLocalizedString(@"yasoundLogin_Signup_label", nil);
     
@@ -73,7 +72,10 @@
         return _yasoundLoginCellPword;
 
     if ((indexPath.section == SECTION_SUBMIT) && (indexPath.row == ROW_SUBMIT))
+    {
+        _yasoundLoginCellSubmitLabel.text = NSLocalizedString(@"yasoundLogin_Submit_label", nil);
         return _yasoundLoginCellSubmit;
+    }
 
     if ((indexPath.section == SECTION_SIGNUP) && (indexPath.row == ROW_SIGNUP))
         return _yasoundLoginCellSignup;
