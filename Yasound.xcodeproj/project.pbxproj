@@ -68,7 +68,6 @@
 		BC49890414A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890514A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890614A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
-		BC49890714A107DF00873381 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F314A107DF00873381 /* Auth.m */; };
 		BC49890914A107DF00873381 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F314A107DF00873381 /* Auth.m */; };
 		BC49890A14A107DF00873381 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
 		BC49890B14A107DF00873381 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
@@ -1825,7 +1824,6 @@
 				BC4988D7149F4FE900873381 /* LoginViewController_YasoundLogin.m in Sources */,
 				BC4988DA149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */,
 				BC49890414A107DF00873381 /* ApiKey.m in Sources */,
-				BC49890714A107DF00873381 /* Auth.m in Sources */,
 				BC49890A14A107DF00873381 /* Playlist.m in Sources */,
 				BC49890D14A107DF00873381 /* Radio.m in Sources */,
 				BC49891014A107DF00873381 /* Song.m in Sources */,

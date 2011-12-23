@@ -180,6 +180,7 @@
   }
   
   ASIHTTPRequest* req = [[ASIHTTPRequest alloc] initWithURL:u];
+  req.validatesSecureCertificate = FALSE;
   [req startSynchronous];
   NSString* response = req.responseString;
   return response;
@@ -198,6 +199,7 @@
   
   ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
   [req addData:data forKey:key];
+  req.validatesSecureCertificate = FALSE;
   [req startSynchronous];
   NSString* response = req.responseString;
   NSLog(@"post data response: %@", response);
@@ -409,6 +411,7 @@
   ASIHTTPRequest* req = [[ASIHTTPRequest alloc] initWithURL:u];
   req.delegate = self;
   req.userInfo = userInfo;
+  req.validatesSecureCertificate = FALSE;
   [req startAsynchronous];
 }
 
@@ -428,6 +431,7 @@
   [req addData:data forKey:key];
   req.userInfo = userInfo;
   req.delegate = self;
+  req.validatesSecureCertificate = FALSE;
   [req startAsynchronous];
 }
 
@@ -567,7 +571,10 @@
   NSError* error = nil;
   if (!succeeded)
   {
-    error = [NSError errorWithDomain:response code:request.responseStatusCode userInfo:nil];
+    NSString* domain = response;
+    if (!domain)
+      domain = @"no response";
+    error = [NSError errorWithDomain:domain code:request.responseStatusCode userInfo:nil];
     [data setValue:error forKey:@"error"];
   }
   
