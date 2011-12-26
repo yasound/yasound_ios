@@ -145,6 +145,7 @@
         _settingsGotoLabel.textColor = [UIColor whiteColor];
         
         RadioViewController* view = [[RadioViewController alloc] init];
+        self.navigationController.navigationBarHidden = YES;
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

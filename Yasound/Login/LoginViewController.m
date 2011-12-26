@@ -14,9 +14,21 @@
 
 
 
-#define INDEX_FACEBOOK 0
-#define INDEX_TWITTER 1
-#define INDEX_YASOUND 2
+#define SECTION_LOGIN 0
+#define ROW_USERNAME 0
+#define ROW_PWORD 1
+
+#define SECTION_SUBMIT 1
+#define ROW_SUBMIT 0
+
+#define SECTION_SIGNUP 2
+#define ROW_SIGNUP 0
+
+#define SECTION_OTHERS 3
+#define ROW_FACEBOOK 0
+#define ROW_TWITTER 1
+
+
 
 
 @implementation LoginViewController
@@ -28,7 +40,6 @@
     {
         _keyboardVisible = NO;
         _loginViewVisible = NO;
-        _yasoundLoginViewVisible = NO;
         _yasoundSignupViewVisible = NO;
         
         self.title = @"Yasound";
@@ -57,9 +68,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self yasoundLogin_ViewDidLoad];
     [self yasoundSignup_ViewDidLoad];
+
+    _yasoundLoginCellUsernameLabel.text = NSLocalizedString(@"yasoundLogin_Username_label", nil);
+    _yasoundLoginCellUsernameTextField.placeholder = NSLocalizedString(@"yasoundLogin_Username_placeholder", nil);
+    
+    _yasoundLoginCellPwordLabel.text = NSLocalizedString(@"yasoundLogin_Pword_label", nil);
+    _yasoundLoginCellPwordTextField.placeholder = NSLocalizedString(@"yasoundLogin_Pword_placeholder", nil);
+    
+    
+    _yasoundLoginCellSignupLabel.text = NSLocalizedString(@"yasoundLogin_Signup_label", nil);
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -107,24 +127,51 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (tableView == _yasoundLoginTableView)
-        return [self yasoundLogin_numberOfSectionsInTableView];
-
     if (tableView == _yasoundSignupTableView)
         return [self yasoundSignup_numberOfSectionsInTableView];
 
-    return 1;
+    return 4;
 }
+
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    if (tableView == _yasoundLoginTableView)
-        return [self yasoundLogin_numberOfRowsInSection:section];
-    
     if (tableView == _yasoundSignupTableView)
         return [self yasoundSignup_numberOfRowsInSection:section];
     
-    return 3;
+    if (section == SECTION_LOGIN)
+        return 2;
+    
+    if (section == SECTION_OTHERS)
+        return 2;
+    
+    return 1;
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
+{	
+    if (section == SECTION_LOGIN)
+        return NSLocalizedString(@"yasoundLogin_section_title", nil);
+
+    if (section == SECTION_SIGNUP)
+        return NSLocalizedString(@"yasoundLogin_Signup_section_title", nil);
+
+    if (section == SECTION_OTHERS)
+        return NSLocalizedString(@"yasoundLogin_Others_section_title", nil);
+    
+    return @"";
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == SECTION_OTHERS)
+        return 38;
+    
+    return 38;
 }
 
 
@@ -132,13 +179,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if (tableView == _yasoundLoginTableView)
-        return [self yasoundLogin_cellForRowAtIndexPath:indexPath];
-    
     if (tableView == _yasoundSignupTableView)
         return [self yasoundSignup_cellForRowAtIndexPath:indexPath];
     
     
+    if ((indexPath.section == SECTION_LOGIN) && (indexPath.row == ROW_USERNAME))
+        return _yasoundLoginCellUsername;
+
+    if ((indexPath.section == SECTION_LOGIN) && (indexPath.row == ROW_PWORD))
+        return _yasoundLoginCellPword;
+
+    if ((indexPath.section == SECTION_SUBMIT) && (indexPath.row == ROW_SUBMIT))
+    {
+        _yasoundLoginCellSubmitLabel.text = NSLocalizedString(@"yasoundLogin_Submit_label", nil);
+        return _yasoundLoginCellSubmit;
+    }
+    
+    if ((indexPath.section == SECTION_SIGNUP) && (indexPath.row == ROW_SIGNUP))
+        return _yasoundLoginCellSignup;
+
+    
+    // SECTION_OTHERS
     static NSString* CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -150,27 +211,19 @@
     
     switch (indexPath.row)
     {
-        case INDEX_FACEBOOK: 
+        case ROW_FACEBOOK: 
         {
             cell.textLabel.text = NSLocalizedString(@"login_facebook", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [cell.imageView setImage:[UIImage imageNamed:@"loginIconFacebook.png"]];
+            [cell.imageView setImage:[UIImage imageNamed:@"loginIcon26Facebook.png"]];
             break;
         }
             
-        case INDEX_TWITTER: 
+        case ROW_TWITTER: 
         {
             cell.textLabel.text = NSLocalizedString(@"login_twitter", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [cell.imageView setImage:[UIImage imageNamed:@"loginIconTwitter.png"]];
-            break;
-        }
-
-        case INDEX_YASOUND: 
-        {
-            cell.textLabel.text = NSLocalizedString(@"login_yasound", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            [cell.imageView setImage:[UIImage imageNamed:@"loginIconYasound.png"]];
+            [cell.imageView setImage:[UIImage imageNamed:@"loginIcon26Twitter.png"]];
             break;
         }
 
@@ -183,13 +236,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == _yasoundLoginTableView)
-    {
-        [self yasoundLogin_didSelectRowAtIndexPath:indexPath];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES]; 
-        return;
-    }
-    
     if (tableView == _yasoundSignupTableView)
     {
         [self yasoundSignup_didSelectRowAtIndexPath:indexPath];
@@ -197,25 +243,32 @@
         return;
     }
     
-    if (indexPath.row == INDEX_YASOUND)
+    if ((indexPath.section == SECTION_SIGNUP) && (indexPath.row == ROW_SIGNUP))
     {
-        [self flipToView:_yasoundLoginView removeView:_loginView fromLeft:YES];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES]; 
+        NSArray* data = [NSArray arrayWithObjects:_yasoundLoginCellSignupLabel, _yasoundLoginCellSignupLabel.textColor, nil];
+        _yasoundLoginCellSignupLabel.textColor = [UIColor whiteColor];
+        
+        [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(onLabelUnselected:) userInfo:data repeats:NO];
+        
+        [self flipToView:_yasoundSignupView removeView:_loginView fromLeft:YES];
+        
         return;
     }
+
     
 //    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
 //    [self.navigationController pushViewController:tabBarController animated:YES];
     
-    if (indexPath.row == INDEX_FACEBOOK)
+    if ((indexPath.section == SECTION_OTHERS) && (indexPath.row == ROW_FACEBOOK))
     {
-    RadioViewController* view = [[RadioViewController alloc] init];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
+        RadioViewController* view = [[RadioViewController alloc] init];
+        self.navigationController.navigationBarHidden = YES;
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
         return;
     }
     
-    if (indexPath.row == INDEX_TWITTER)
+    if ((indexPath.section == SECTION_OTHERS) && (indexPath.row == ROW_TWITTER))
     {
 
         SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
@@ -229,6 +282,14 @@
 
 
 
+- (void)onLabelUnselected:(NSTimer*)timer
+{
+    NSArray* data = timer.userInfo;
+    UILabel* label = [data objectAtIndex:0];
+    UIColor* color = [data objectAtIndex:1];
+    label.textColor = color;
+}
+
 
 
 
@@ -238,9 +299,7 @@
 
 - (void) onBack:(id)sender
 {
-    if (_yasoundLoginViewVisible)
-        [self flipToView:_loginView removeView:_yasoundLoginView fromLeft:NO];
-    else if (_yasoundSignupViewVisible)
+    if (_yasoundSignupViewVisible)
         [self flipToView:_loginView removeView:_yasoundSignupView fromLeft:NO];
 }
 
@@ -264,7 +323,6 @@
                     completion:NULL];
 
     _loginViewVisible = NO;
-    _yasoundLoginViewVisible = NO;
     _yasoundSignupViewVisible = NO;
 
     if (view == _loginView)
@@ -272,12 +330,6 @@
         _loginViewVisible = YES;
         [[self navigationItem] setLeftBarButtonItem:nil];      
         self.title = @"Yasound";
-    }
-    else if (view == _yasoundLoginView)
-    {
-        _yasoundLoginViewVisible = YES;
-        [[self navigationItem] setLeftBarButtonItem:_backBtn];        
-        [self yasoundLogin_ViewDidAppear];
     }
     else if (view == _yasoundSignupView)
     {
@@ -326,12 +378,7 @@
     
     BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"loginYasoundTableFrame2" retainStylesheet:NO overwriteStylesheet:NO error:nil];
 
-    if (_yasoundLoginViewVisible)
-    {
-        _yasoundLoginTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
-        _yasoundLoginTableView.frame = sheet.frame;
-    }
-    else if (_yasoundSignupViewVisible)
+    if (_yasoundSignupViewVisible)
     {
         _yasoundSignupTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
         _yasoundSignupTableView.frame = sheet.frame;
@@ -359,12 +406,7 @@
     
     BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"loginYasoundTableFrame1" retainStylesheet:NO overwriteStylesheet:NO error:nil];
 
-    if (_yasoundLoginViewVisible)
-    {
-        _yasoundLoginTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
-        _yasoundLoginTableView.frame = sheet.frame;
-    }
-    else if (_yasoundSignupViewVisible)
+    if (_yasoundSignupViewVisible)
     {
         _yasoundSignupTableView.contentInset = UIEdgeInsetsMake([[sheet.customProperties objectForKey:@"inset"] integerValue], 0.0, 0, 0.0);
         _yasoundSignupTableView.frame = sheet.frame;

@@ -42,6 +42,7 @@
     
     //LBDEBUG temporarly call /////////////////////////////
 //    RadioViewController* view = [[RadioViewController alloc] init];
+//    self.navigationController.navigationBarHidden = YES;
 //    [self.navigationController pushViewController:view animated:YES];
 //    return YES;
     /////////////////////////////////////////////////////////////////////

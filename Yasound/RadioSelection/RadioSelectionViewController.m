@@ -168,9 +168,10 @@ static NSArray* gFakeUsers = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  RadioViewController* view = [[RadioViewController alloc] init];
-  [self.navigationController pushViewController:view animated:YES];
-  [view release];  
+    RadioViewController* view = [[RadioViewController alloc] init];
+    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];  
 }
 
 

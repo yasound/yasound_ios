@@ -14,7 +14,6 @@
 {
     BOOL _keyboardVisible;
     BOOL _loginViewVisible;
-    BOOL _yasoundLoginViewVisible;
     BOOL _yasoundSignupViewVisible;
     
     UIBarButtonItem* _backBtn;
@@ -26,9 +25,6 @@
     IBOutlet UITableView* _tableView;
 
     //.............................................
-    IBOutlet UIView* _yasoundLoginView;
-    IBOutlet UITableView* _yasoundLoginTableView;
-    
     IBOutlet UITableViewCell* _yasoundLoginCellUsername;
     IBOutlet UILabel* _yasoundLoginCellUsernameLabel;
     IBOutlet UITextField* _yasoundLoginCellUsernameTextField;
@@ -55,20 +51,6 @@
 @end
 
 
-
-
-@interface LoginViewController (YasoundLogin)
-
-- (IBAction)onLoginCanceled:(id)sender;
-
-- (void) yasoundLogin_ViewDidLoad;
-
-- (NSInteger)yasoundLogin_numberOfSectionsInTableView;
-- (NSInteger)yasoundLogin_numberOfRowsInSection:(NSInteger)section ;
-- (UITableViewCell *)yasoundLogin_cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (void)yasoundLogin_didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-
-@end
 
 
 
