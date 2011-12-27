@@ -334,6 +334,12 @@
 		BCDC950C14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94EA14A8CB3500D54631 /* loginIcon32Yasound@2x.png */; };
 		BCDC950D14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94EA14A8CB3500D54631 /* loginIcon32Yasound@2x.png */; };
 		BCDC950E14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94EA14A8CB3500D54631 /* loginIcon32Yasound@2x.png */; };
+		BCDC952114AA3B2300D54631 /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC951F14AA3B2300D54631 /* LoginBackground.png */; };
+		BCDC952214AA3B2300D54631 /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC951F14AA3B2300D54631 /* LoginBackground.png */; };
+		BCDC952314AA3B2300D54631 /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC951F14AA3B2300D54631 /* LoginBackground.png */; };
+		BCDC952414AA3B2300D54631 /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952014AA3B2300D54631 /* LoginBackground@2x.png */; };
+		BCDC952514AA3B2300D54631 /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952014AA3B2300D54631 /* LoginBackground@2x.png */; };
+		BCDC952614AA3B2300D54631 /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952014AA3B2300D54631 /* LoginBackground@2x.png */; };
 		BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -735,6 +741,8 @@
 		BCDC94E814A8CB3500D54631 /* loginIcon32Twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIcon32Twitter@2x.png"; sourceTree = "<group>"; };
 		BCDC94E914A8CB3500D54631 /* loginIcon32Yasound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIcon32Yasound.png; sourceTree = "<group>"; };
 		BCDC94EA14A8CB3500D54631 /* loginIcon32Yasound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIcon32Yasound@2x.png"; sourceTree = "<group>"; };
+		BCDC951F14AA3B2300D54631 /* LoginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBackground.png; sourceTree = "<group>"; };
+		BCDC952014AA3B2300D54631 /* LoginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginBackground@2x.png"; sourceTree = "<group>"; };
 		BCE46322148FD96300422448 /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
 		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
 		BCE4632F148FDECB00422448 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
@@ -1132,6 +1140,8 @@
 		BC914ADC1491845D00D5D7B4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				BCDC951F14AA3B2300D54631 /* LoginBackground.png */,
+				BCDC952014AA3B2300D54631 /* LoginBackground@2x.png */,
 				BCDC94DD14A8CB3500D54631 /* 26 */,
 				BCDC94E414A8CB3500D54631 /* 32 */,
 			);
@@ -1616,6 +1626,8 @@
 				BCDC950714A8CB3500D54631 /* loginIcon32Twitter@2x.png in Resources */,
 				BCDC950A14A8CB3500D54631 /* loginIcon32Yasound.png in Resources */,
 				BCDC950D14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */,
+				BCDC952214AA3B2300D54631 /* LoginBackground.png in Resources */,
+				BCDC952514AA3B2300D54631 /* LoginBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1718,6 +1730,8 @@
 				BCDC950614A8CB3500D54631 /* loginIcon32Twitter@2x.png in Resources */,
 				BCDC950914A8CB3500D54631 /* loginIcon32Yasound.png in Resources */,
 				BCDC950C14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */,
+				BCDC952114AA3B2300D54631 /* LoginBackground.png in Resources */,
+				BCDC952414AA3B2300D54631 /* LoginBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1820,6 +1834,8 @@
 				BCDC950814A8CB3500D54631 /* loginIcon32Twitter@2x.png in Resources */,
 				BCDC950B14A8CB3500D54631 /* loginIcon32Yasound.png in Resources */,
 				BCDC950E14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */,
+				BCDC952314AA3B2300D54631 /* LoginBackground.png in Resources */,
+				BCDC952614AA3B2300D54631 /* LoginBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
