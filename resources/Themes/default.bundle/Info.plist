@@ -23,10 +23,23 @@
 			<key>color</key>
 			<string>rgb(51,51,51)</string>
 		</dict>
-		<key>RadioViewHeaderAvatar</key>
+		<key>RadioViewHeaderBack</key>
 		<dict>
 			<key>x</key>
 			<integer>5</integer>
+			<key>y</key>
+			<integer>20</integer>
+			<key>name</key>
+			<string>ArrowLeft</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Header</string>
+		</dict>
+		<key>RadioViewHeaderAvatar</key>
+		<dict>
+			<key>x</key>
+			<integer>25</integer>
 			<key>y</key>
 			<integer>7</integer>
 			<key>width</key>
@@ -37,7 +50,7 @@
 		<key>RadioViewHeaderAvatarMask</key>
 		<dict>
 			<key>x</key>
-			<integer>3</integer>
+			<integer>23</integer>
 			<key>y</key>
 			<integer>3</integer>
 			<key>name</key>
@@ -63,7 +76,7 @@
 				<string>left</string>
 			</dict>
 			<key>x</key>
-			<integer>60</integer>
+			<integer>80</integer>
 			<key>y</key>
 			<integer>12</integer>
 			<key>width</key>
@@ -74,7 +87,7 @@
 		<key>RadioViewHeaderHeart</key>
 		<dict>
 			<key>x</key>
-			<integer>60</integer>
+			<integer>80</integer>
 			<key>y</key>
 			<integer>40</integer>
 			<key>name</key>
@@ -87,7 +100,7 @@
 		<key>RadioViewHeaderHeadSet</key>
 		<dict>
 			<key>x</key>
-			<integer>106</integer>
+			<integer>126</integer>
 			<key>y</key>
 			<integer>40</integer>
 			<key>name</key>
@@ -115,7 +128,7 @@
 			<key>width</key>
 			<integer>32</integer>
 			<key>x</key>
-			<integer>69</integer>
+			<integer>89</integer>
 			<key>y</key>
 			<integer>39</integer>
 		</dict>
@@ -137,7 +150,7 @@
 			<key>width</key>
 			<integer>32</integer>
 			<key>x</key>
-			<integer>115</integer>
+			<integer>135</integer>
 			<key>y</key>
 			<integer>39</integer>
 		</dict>
@@ -163,25 +176,7 @@
 			<key>path</key>
 			<string>images/Header/Buttons</string>
 			<key>x</key>
-			<integer>246</integer>
-			<key>y</key>
-			<integer>23</integer>
-			<key>states</key>
-			<array>
-				<string>up</string>
-				<string>down</string>
-			</array>
-		</dict>
-		<key>RadioViewHeaderSearchButton</key>
-		<dict>
-			<key>name</key>
-			<string>SearchButton</string>
-			<key>type</key>
-			<string>png</string>
-			<key>path</key>
-			<string>images/Header/Buttons</string>
-			<key>x</key>
-			<integer>283</integer>
+			<integer>282</integer>
 			<key>y</key>
 			<integer>23</integer>
 			<key>states</key>

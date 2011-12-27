@@ -176,25 +176,7 @@
 			<key>path</key>
 			<string>images/Header/Buttons</string>
 			<key>x</key>
-			<integer>246</integer>
-			<key>y</key>
-			<integer>23</integer>
-			<key>states</key>
-			<array>
-				<string>up</string>
-				<string>down</string>
-			</array>
-		</dict>
-		<key>RadioViewHeaderSearchButton</key>
-		<dict>
-			<key>name</key>
-			<string>SearchButton</string>
-			<key>type</key>
-			<string>png</string>
-			<key>path</key>
-			<string>images/Header/Buttons</string>
-			<key>x</key>
-			<integer>283</integer>
+			<integer>282</integer>
 			<key>y</key>
 			<integer>23</integer>
 			<key>states</key>

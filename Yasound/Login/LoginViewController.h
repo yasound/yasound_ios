@@ -12,6 +12,7 @@
 
 @interface LoginViewController : TrackedUIViewController
 {
+    BOOL _firstTime;
     BOOL _keyboardVisible;
     BOOL _loginViewVisible;
     BOOL _yasoundSignupViewVisible;

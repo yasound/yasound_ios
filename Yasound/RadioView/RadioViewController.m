@@ -98,12 +98,11 @@
     [_headerView addSubview:image];
     
     
-//    // header back arrow
-    //LBDEBUG
-//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
-//    UIButton* btn = [sheet makeButton];
-//    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
-//    [_headerView addSubview:btn];
+    // header back arrow
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
+    UIButton* btn = [sheet makeButton];
+    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+    [_headerView addSubview:btn];
     
     // header avatar
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
@@ -145,17 +144,10 @@
     
     // header edit settings button
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderEditButton" error:nil];
-    UIButton* btn = [sheet makeButton];
+    btn = [sheet makeButton];
     [btn addTarget:self action:@selector(onEdit:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
 
-    // header search settings button
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderSearchButton" error:nil];
-    btn = [sheet makeButton];
-    [btn addTarget:self action:@selector(onSearch:) forControlEvents:UIControlEventTouchUpInside];
-    [_headerView addSubview:btn];
-    
-    
     
     //....................................................................................
     //
@@ -871,11 +863,10 @@
 
 #pragma mark - IBActions
 
-//LBDEBUG
-//- (IBAction)onBack:(id)sender
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
+- (IBAction)onBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 - (IBAction) onEdit:(id)sender

@@ -38,6 +38,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+        _firstTime = NO;
         _keyboardVisible = NO;
         _loginViewVisible = NO;
         _yasoundSignupViewVisible = NO;
@@ -91,7 +92,11 @@
                                              selector:@selector (keyboardDidHide:)
                                                  name: UIKeyboardDidHideNotification object:nil];
     
-    [self flipToView:_loginView removeView:nil fromLeft:YES];
+    if (!_firstTime)
+    {
+        _firstTime = YES;
+        [self flipToView:_loginView removeView:nil fromLeft:YES];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
