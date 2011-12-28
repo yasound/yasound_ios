@@ -32,8 +32,6 @@
 - (void) yasoundSignup_ViewDidAppear
 {
     self.title = NSLocalizedString(@"yasoundSignup_View_title", nil);
-    
-    [_yasoundSignupTableView reloadData];
 }
 
 

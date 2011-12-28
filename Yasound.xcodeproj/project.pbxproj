@@ -22,9 +22,6 @@
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
-		BC4988DA149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */; };
-		BC4988DB149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */; };
-		BC4988DC149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */; };
 		BC49890414A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890514A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890614A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
@@ -81,7 +78,6 @@
 		BC71F5BF147FEC6F00DAE4BD /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE81468439900BA20D9 /* MenuHeader.m */; };
 		BC71F5C0147FEC6F00DAE4BD /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
 		BC71F5C1147FEC6F00DAE4BD /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
-		BC71F5C2147FEC6F00DAE4BD /* InteractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEE1468439900BA20D9 /* InteractionViewController.m */; };
 		BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BC71F5D2147FEC6F00DAE4BD /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
@@ -498,14 +494,22 @@
 		BCDC97DF14AB828B00D54631 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CC14AB818300D54631 /* libxml2.dylib */; };
 		BCDC97E014AB828B00D54631 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CE14AB81BF00D54631 /* Security.framework */; };
 		BCDC97E114AB828B00D54631 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CF14AB81BF00D54631 /* Twitter.framework */; };
+		BCDC97EE14AB9B2800D54631 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97EC14AB9B2800D54631 /* HomeViewController.m */; };
+		BCDC97EF14AB9B2800D54631 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97EC14AB9B2800D54631 /* HomeViewController.m */; };
+		BCDC97F014AB9B2800D54631 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97EC14AB9B2800D54631 /* HomeViewController.m */; };
+		BCDC97F114AB9B2800D54631 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97ED14AB9B2800D54631 /* HomeViewController.xib */; };
+		BCDC97F214AB9B2800D54631 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97ED14AB9B2800D54631 /* HomeViewController.xib */; };
+		BCDC97F314AB9B2800D54631 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97ED14AB9B2800D54631 /* HomeViewController.xib */; };
+		BCDC97F714AB9BF300D54631 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97F514AB9BF300D54631 /* LoginViewController.m */; };
+		BCDC97F814AB9BF300D54631 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97F514AB9BF300D54631 /* LoginViewController.m */; };
+		BCDC97F914AB9BF300D54631 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97F514AB9BF300D54631 /* LoginViewController.m */; };
+		BCDC97FA14AB9BF300D54631 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
+		BCDC97FB14AB9BF300D54631 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
+		BCDC97FC14AB9BF300D54631 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
 		BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
 		BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
-		BCE46332148FDECB00422448 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE46330148FDECB00422448 /* LoginViewController.m */; };
-		BCE46333148FDECB00422448 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE46330148FDECB00422448 /* LoginViewController.m */; };
-		BCE46334148FDECB00422448 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE46331148FDECB00422448 /* LoginViewController.xib */; };
-		BCE46335148FDECB00422448 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE46331148FDECB00422448 /* LoginViewController.xib */; };
 		BCF62DBF14839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC014839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC114839355001B1908 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB014839355001B1908 /* categoryShadow@2x.png */; };
@@ -546,7 +550,6 @@
 		BCFECFFC1468439900BA20D9 /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE81468439900BA20D9 /* MenuHeader.m */; };
 		BCFECFFD1468439900BA20D9 /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
 		BCFECFFE1468439900BA20D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
-		BCFECFFF1468439900BA20D9 /* InteractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEE1468439900BA20D9 /* InteractionViewController.m */; };
 		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		E5280A56145EFFD900A88910 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A55145EFFD900A88910 /* libz.dylib */; };
 		E5280A58145F005B00A88910 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A57145F005B00A88910 /* MobileCoreServices.framework */; };
@@ -564,7 +567,6 @@
 		E5F3B8571498B88D008DD607 /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE81468439900BA20D9 /* MenuHeader.m */; };
 		E5F3B8581498B88D008DD607 /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
 		E5F3B8591498B88D008DD607 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
-		E5F3B85A1498B88D008DD607 /* InteractionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEE1468439900BA20D9 /* InteractionViewController.m */; };
 		E5F3B85B1498B88D008DD607 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		E5F3B85C1498B88D008DD607 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		E5F3B8661498B88D008DD607 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
@@ -581,7 +583,6 @@
 		E5F3B8731498B88D008DD607 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
 		E5F3B8741498B88D008DD607 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		E5F3B8751498B88D008DD607 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
-		E5F3B8761498B88D008DD607 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE46330148FDECB00422448 /* LoginViewController.m */; };
 		E5F3B8771498B88D008DD607 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		E5F3B8781498B88D008DD607 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		E5F3B8791498B88D008DD607 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
@@ -641,7 +642,6 @@
 		E5F3B8C41498B88D008DD607 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		E5F3B8C51498B88D008DD607 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		E5F3B8C61498B88D008DD607 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
-		E5F3B8C71498B88D008DD607 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE46331148FDECB00422448 /* LoginViewController.xib */; };
 		E5F3B8C81498B88D008DD607 /* btnAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD21491845D00D5D7B4 /* btnAdd.png */; };
 		E5F3B8C91498B88D008DD607 /* btnAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD31491845D00D5D7B4 /* btnAdd@2x.png */; };
 		E5F3B8CA1498B88D008DD607 /* btnBuy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914AD41491845D00D5D7B4 /* btnBuy.png */; };
@@ -692,7 +692,6 @@
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
 		BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
-		BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController_YasoundSignup.m; path = Login/LoginViewController_YasoundSignup.m; sourceTree = "<group>"; };
 		BC4988F014A107DF00873381 /* ApiKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
 		BC4988F114A107DF00873381 /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
 		BC4988F214A107DF00873381 /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
@@ -952,11 +951,14 @@
 		BCDC97D214AB81EA00D54631 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		BCDC97D514AB820500D54631 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		BCDC97D614AB820500D54631 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		BCDC97EB14AB9B2800D54631 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Login/HomeViewController.h; sourceTree = "<group>"; };
+		BCDC97EC14AB9B2800D54631 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Login/HomeViewController.m; sourceTree = "<group>"; };
+		BCDC97ED14AB9B2800D54631 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Login/HomeViewController.xib; sourceTree = "<group>"; };
+		BCDC97F414AB9BF300D54631 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
+		BCDC97F514AB9BF300D54631 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
+		BCDC97F614AB9BF300D54631 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
 		BCE46322148FD96300422448 /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
 		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
-		BCE4632F148FDECB00422448 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
-		BCE46330148FDECB00422448 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
-		BCE46331148FDECB00422448 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
 		BCF62DAF14839355001B1908 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
 		BCF62DB014839355001B1908 /* categoryShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "categoryShadow@2x.png"; path = "RadioSelection/categoryShadow@2x.png"; sourceTree = "<group>"; };
 		BCF62DB114839355001B1908 /* CellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundBlue.png; path = RadioSelection/CellBackgroundBlue.png; sourceTree = "<group>"; };
@@ -984,8 +986,6 @@
 		BCFECFEA1468439900BA20D9 /* SlidingMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingMenu.m; sourceTree = "<group>"; };
 		BCFECFEB1468439900BA20D9 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		BCFECFEC1468439900BA20D9 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
-		BCFECFED1468439900BA20D9 /* InteractionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractionViewController.h; sourceTree = "<group>"; };
-		BCFECFEE1468439900BA20D9 /* InteractionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractionViewController.m; sourceTree = "<group>"; };
 		BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundAppDelegate.h; sourceTree = "<group>"; };
 		BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundAppDelegate.m; sourceTree = "<group>"; };
 		E5280A55145EFFD900A88910 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1703,10 +1703,12 @@
 		BCE4632E148FDEA000422448 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				BCE4632F148FDECB00422448 /* LoginViewController.h */,
-				BCE46330148FDECB00422448 /* LoginViewController.m */,
-				BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */,
-				BCE46331148FDECB00422448 /* LoginViewController.xib */,
+				BCDC97EB14AB9B2800D54631 /* HomeViewController.h */,
+				BCDC97EC14AB9B2800D54631 /* HomeViewController.m */,
+				BCDC97ED14AB9B2800D54631 /* HomeViewController.xib */,
+				BCDC97F414AB9BF300D54631 /* LoginViewController.h */,
+				BCDC97F514AB9BF300D54631 /* LoginViewController.m */,
+				BCDC97F614AB9BF300D54631 /* LoginViewController.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1836,8 +1838,6 @@
 				BC5EE20E147D3EB300A282A5 /* Radio Selection */,
 				BCB41F4114863646008F3738 /* Theme */,
 				BCB5F28B1485416B00C28B3D /* RadioView */,
-				BCFECFED1468439900BA20D9 /* InteractionViewController.h */,
-				BCFECFEE1468439900BA20D9 /* InteractionViewController.m */,
 				BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */,
 				BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */,
 			);
@@ -1991,7 +1991,6 @@
 				BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
-				BCE46335148FDECB00422448 /* LoginViewController.xib in Resources */,
 				BC914AE41491845D00D5D7B4 /* btnAdd.png in Resources */,
 				BC914AE61491845D00D5D7B4 /* btnAdd@2x.png in Resources */,
 				BC914AE81491845D00D5D7B4 /* btnBuy.png in Resources */,
@@ -2057,6 +2056,8 @@
 				BCDC978F14AB7DC500D54631 /* twitter_load.png in Resources */,
 				BCDC97BA14AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C614AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
+				BCDC97F214AB9B2800D54631 /* HomeViewController.xib in Resources */,
+				BCDC97FB14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2109,7 +2110,6 @@
 				BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
-				BCE46334148FDECB00422448 /* LoginViewController.xib in Resources */,
 				BC914AE31491845D00D5D7B4 /* btnAdd.png in Resources */,
 				BC914AE51491845D00D5D7B4 /* btnAdd@2x.png in Resources */,
 				BC914AE71491845D00D5D7B4 /* btnBuy.png in Resources */,
@@ -2175,6 +2175,8 @@
 				BCDC978E14AB7DC500D54631 /* twitter_load.png in Resources */,
 				BCDC97B914AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C514AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
+				BCDC97F114AB9B2800D54631 /* HomeViewController.xib in Resources */,
+				BCDC97FA14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2227,7 +2229,6 @@
 				E5F3B8C41498B88D008DD607 /* StyleSelectorViewController.xib in Resources */,
 				E5F3B8C51498B88D008DD607 /* MyYasoundBackground.png in Resources */,
 				E5F3B8C61498B88D008DD607 /* MyYasoundBackground@2x.png in Resources */,
-				E5F3B8C71498B88D008DD607 /* LoginViewController.xib in Resources */,
 				E5F3B8C81498B88D008DD607 /* btnAdd.png in Resources */,
 				E5F3B8C91498B88D008DD607 /* btnAdd@2x.png in Resources */,
 				E5F3B8CA1498B88D008DD607 /* btnBuy.png in Resources */,
@@ -2293,6 +2294,8 @@
 				BCDC979014AB7DC500D54631 /* twitter_load.png in Resources */,
 				BCDC97BB14AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C714AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
+				BCDC97F314AB9B2800D54631 /* HomeViewController.xib in Resources */,
+				BCDC97FC14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2308,7 +2311,6 @@
 				BC71F5BF147FEC6F00DAE4BD /* MenuHeader.m in Sources */,
 				BC71F5C0147FEC6F00DAE4BD /* SlidingMenu.m in Sources */,
 				BC71F5C1147FEC6F00DAE4BD /* Tile.m in Sources */,
-				BC71F5C2147FEC6F00DAE4BD /* InteractionViewController.m in Sources */,
 				BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */,
 				BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */,
 				BC71F5D2147FEC6F00DAE4BD /* RadioSelectionViewController.m in Sources */,
@@ -2325,7 +2327,6 @@
 				BCC408A8148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
 				BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
 				BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
-				BCE46333148FDECB00422448 /* LoginViewController.m in Sources */,
 				40274BC41491287900F26008 /* Communicator.m in Sources */,
 				40274BC61491287D00F26008 /* Container.m in Sources */,
 				40274BC71491288100F26008 /* Model.m in Sources */,
@@ -2333,7 +2334,6 @@
 				4009010C14967AEE00C9E51A /* WebImageView.m in Sources */,
 				4009011D149A69F100C9E51A /* Auth.m in Sources */,
 				BCA2CCD4149A80270000637E /* PlaylistMoulinor.m in Sources */,
-				BC4988DB149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */,
 				BC49890514A107DF00873381 /* ApiKey.m in Sources */,
 				BC49890B14A107DF00873381 /* Playlist.m in Sources */,
 				BC49890E14A107DF00873381 /* Radio.m in Sources */,
@@ -2395,6 +2395,8 @@
 				BCDC97C014AB7DD100D54631 /* TwitterOAuthSessionManager.m in Sources */,
 				BCDC97C314AB7DD100D54631 /* TwitterSigninViewController.m in Sources */,
 				BCDC97D814AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
+				BCDC97EF14AB9B2800D54631 /* HomeViewController.m in Sources */,
+				BCDC97F814AB9BF300D54631 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2407,7 +2409,6 @@
 				BCFECFFC1468439900BA20D9 /* MenuHeader.m in Sources */,
 				BCFECFFD1468439900BA20D9 /* SlidingMenu.m in Sources */,
 				BCFECFFE1468439900BA20D9 /* Tile.m in Sources */,
-				BCFECFFF1468439900BA20D9 /* InteractionViewController.m in Sources */,
 				BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */,
 				BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */,
 				BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */,
@@ -2424,7 +2425,6 @@
 				BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
 				BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
 				BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
-				BCE46332148FDECB00422448 /* LoginViewController.m in Sources */,
 				40274B801491048900F26008 /* Communicator.m in Sources */,
 				40274B811491048900F26008 /* Container.m in Sources */,
 				40274B821491048900F26008 /* Model.m in Sources */,
@@ -2432,7 +2432,6 @@
 				4009010B14967AEE00C9E51A /* WebImageView.m in Sources */,
 				4009011C149A69F100C9E51A /* Auth.m in Sources */,
 				BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */,
-				BC4988DA149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */,
 				BC49890414A107DF00873381 /* ApiKey.m in Sources */,
 				BC49890A14A107DF00873381 /* Playlist.m in Sources */,
 				BC49890D14A107DF00873381 /* Radio.m in Sources */,
@@ -2494,6 +2493,8 @@
 				BCDC97BF14AB7DD100D54631 /* TwitterOAuthSessionManager.m in Sources */,
 				BCDC97C214AB7DD100D54631 /* TwitterSigninViewController.m in Sources */,
 				BCDC97D714AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
+				BCDC97EE14AB9B2800D54631 /* HomeViewController.m in Sources */,
+				BCDC97F714AB9BF300D54631 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2506,7 +2507,6 @@
 				E5F3B8571498B88D008DD607 /* MenuHeader.m in Sources */,
 				E5F3B8581498B88D008DD607 /* SlidingMenu.m in Sources */,
 				E5F3B8591498B88D008DD607 /* Tile.m in Sources */,
-				E5F3B85A1498B88D008DD607 /* InteractionViewController.m in Sources */,
 				E5F3B85B1498B88D008DD607 /* YasoundAppDelegate.m in Sources */,
 				E5F3B85C1498B88D008DD607 /* ActivityAlertView.m in Sources */,
 				E5F3B8661498B88D008DD607 /* RadioSelectionViewController.m in Sources */,
@@ -2523,14 +2523,12 @@
 				E5F3B8731498B88D008DD607 /* MyYasound_Settings.m in Sources */,
 				E5F3B8741498B88D008DD607 /* ThemeSelectorViewController.m in Sources */,
 				E5F3B8751498B88D008DD607 /* StyleSelectorViewController.m in Sources */,
-				E5F3B8761498B88D008DD607 /* LoginViewController.m in Sources */,
 				E5F3B8771498B88D008DD607 /* Communicator.m in Sources */,
 				E5F3B8781498B88D008DD607 /* Container.m in Sources */,
 				E5F3B8791498B88D008DD607 /* Model.m in Sources */,
 				E5F3B88A1498B88D008DD607 /* YasoundDataProvider.m in Sources */,
 				E5F3B88E1498B88D008DD607 /* WebImageView.m in Sources */,
 				BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */,
-				BC4988DC149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */,
 				BC49890614A107DF00873381 /* ApiKey.m in Sources */,
 				BC49890914A107DF00873381 /* Auth.m in Sources */,
 				BC49890C14A107DF00873381 /* Playlist.m in Sources */,
@@ -2593,6 +2591,8 @@
 				BCDC97C114AB7DD100D54631 /* TwitterOAuthSessionManager.m in Sources */,
 				BCDC97C414AB7DD100D54631 /* TwitterSigninViewController.m in Sources */,
 				BCDC97D914AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
+				BCDC97F014AB9B2800D54631 /* HomeViewController.m in Sources */,
+				BCDC97F914AB9BF300D54631 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

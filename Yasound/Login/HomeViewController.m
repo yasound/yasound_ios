@@ -1,16 +1,13 @@
 //
-//  LoginViewController.m
+//  HomeViewController.m
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 07/12/11.
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
+#import "HomeViewController.h"
 #import "LoginViewController.h"
-#import "RadioViewController.h"
-#import "BundleFileManager.h"
-#import "SettingsViewController.h"
-
 
 
 #define ROW_LOGIN 0
@@ -18,16 +15,14 @@
 
 
 
-@implementation LoginViewController
+@implementation HomeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.title = @"Yasound";
-        
-        _backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStylePlain target:self action:@selector(onBack:)];        
+        self.title = @"Yasound";        
     }
     return self;
 }
@@ -35,7 +30,7 @@
 
 - (void) dealloc
 {
-    [_backBtn release];
+    [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,19 +46,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self yasoundSignup_ViewDidLoad];
     
-    _facebookLoginLabel.text = NSLocalizedString(@"yasoundLogin_Facebook_label", nil);
-    _twitterLoginLabel.text = NSLocalizedString(@"yasoundLogin_Twitter_label", nil);
-
-    _yasoundLoginCellUsernameLabel.text = NSLocalizedString(@"yasoundLogin_Username_label", nil);
-    _yasoundLoginCellUsernameTextField.placeholder = NSLocalizedString(@"yasoundLogin_Username_placeholder", nil);
-    
-    _yasoundLoginCellPwordLabel.text = NSLocalizedString(@"yasoundLogin_Pword_label", nil);
-    _yasoundLoginCellPwordTextField.placeholder = NSLocalizedString(@"yasoundLogin_Pword_placeholder", nil);
-    
-    
-    _yasoundLoginCellSignupLabel.text = NSLocalizedString(@"yasoundLogin_Signup_label", nil);
+    _facebookLoginLabel.text = NSLocalizedString(@"login_Facebook_label", nil);
+    _twitterLoginLabel.text = NSLocalizedString(@"login_Twitter_label", nil);
 }
 
 
@@ -76,7 +61,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector (keyboardDidHide:)
                                                  name: UIKeyboardDidHideNotification object:nil];
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -169,7 +153,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == ROW_LOGIN)
+    {
+        LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
+    }
 
+    if (indexPath.row == ROW_SIGNUP)
+    {
+        return;
+    }
 }
 
 

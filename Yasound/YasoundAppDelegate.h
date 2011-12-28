@@ -8,16 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-//@class RadioTabBarController;
-@class LoginViewController;
+//@class RootViewController;
+@class HomeViewController;
 
-//@interface YasoundAppDelegate : NSObject <UIApplicationDelegate, MainViewDelegate>
 @interface YasoundAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, retain)  IBOutlet UIWindow *window;
 @property (nonatomic, retain)  UINavigationController *navigationController;
-//@property (nonatomic, retain) RadioTabBarController* tabBarController;
-@property (nonatomic, retain) LoginViewController* loginViewController;
+
+//@property (nonatomic, retain) RootViewController* rootViewController;
+@property (nonatomic, retain) HomeViewController* rootViewController;
 
 
 @end

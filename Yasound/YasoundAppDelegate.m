@@ -7,11 +7,9 @@
 //
 
 #import "YasoundAppDelegate.h"
-//#import "RadioTabBarController.h"
-//#import "RadioViewController.h"
-#import "LoginViewController.h"
 #import "EasyTracker.h"
-
+//#import "RootViewController.h"
+#import "HomeViewController.h"
 #import "SettingsViewController.h"
 
 
@@ -20,7 +18,7 @@
 
 @synthesize window;
 @synthesize navigationController;
-@synthesize loginViewController;
+@synthesize rootViewController;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -30,35 +28,18 @@
                     withParameters:nil
                          withError:nil];
     
-  // create a mavigationControler without navigation bar
-  navigationController = [[UINavigationController alloc] init];
+    navigationController = [[UINavigationController alloc] init];
     [navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-//  navigationController.navigationBarHidden = YES;
 
   [self.window makeKeyAndVisible];
 
   // add it as the window's root widget
   self.window.rootViewController = navigationController;
     
-    //LBDEBUG temporarly call /////////////////////////////
-//    RadioViewController* view = [[RadioViewController alloc] init];
-//    self.navigationController.navigationBarHidden = YES;
-//    [self.navigationController pushViewController:view animated:YES];
-//    return YES;
-    /////////////////////////////////////////////////////////////////////
-  
-  // push the main view controller into the mavigationControler
-
-//  tabBarController = [[RadioTabBarController alloc] init];
-//  [self.navigationController pushViewController:self.tabBarController animated:YES];
+//    rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
+    rootViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    [self.navigationController pushViewController:rootViewController animated:NO];
     
-    loginViewController = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    [self.navigationController pushViewController:loginViewController animated:YES];
-    
-//    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
-//    [self.navigationController pushViewController:view animated:YES];
-    
-  
   return YES;
 }
 
