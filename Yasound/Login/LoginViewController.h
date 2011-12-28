@@ -60,6 +60,10 @@
 
 - (IBAction)onSignupCanceled:(id)sender;
 
+- (IBAction) onBack:(id)sender;
+- (IBAction) onFacebook:(id)sender;
+- (IBAction) onTwitter:(id)sender;
+
 - (void) yasoundSignup_ViewDidLoad;
 
 - (NSInteger)yasoundSignup_numberOfSectionsInTableView;

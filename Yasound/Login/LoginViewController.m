@@ -302,12 +302,22 @@
 
 #pragma mark - IBActions
 
-- (void) onBack:(id)sender
+- (IBAction) onBack:(id)sender
 {
     if (_yasoundSignupViewVisible)
         [self flipToView:_loginView removeView:_yasoundSignupView fromLeft:NO];
 }
 
+
+- (IBAction) onFacebook:(id)sender
+{
+
+}
+
+- (IBAction) onTwitter:(id)sender
+{
+    
+}
 
 
 
