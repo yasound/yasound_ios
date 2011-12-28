@@ -11,7 +11,7 @@
 #import "SA_OAuthTwitterEngine.h"
 #import <Accounts/Accounts.h>
 #import "TwitterAccountsViewController.h"
-#import "Version/Version.h"
+#import "Version.h"
 
 
 
