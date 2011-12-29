@@ -27,7 +27,7 @@
     IBOutlet UILabel* _cellEmailLabel;
     IBOutlet UITextField* _cellEmailTextfield;
 
-    IBOutlet UILabel* _submitLabel;    
+    IBOutlet UIButton* _submitBtn;
 }
 
 

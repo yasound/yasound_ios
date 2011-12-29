@@ -57,7 +57,7 @@
     _cellPwordLabel.text = NSLocalizedString(@"LoginView_pword_label", nil);
     _cellPwordTextfield.placeholder = NSLocalizedString(@"LoginView_pword_placeholder", nil);
     
-    _submitLabel.text = NSLocalizedString(@"LoginView_submit_label", nil);
+    _submitBtn.titleLabel.text = NSLocalizedString(@"LoginView_submit_label", nil);
     
     _submitBtn.enabled = NO;
 }
@@ -188,16 +188,16 @@
     NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
 
     // login request to server
-    [[YasoundDataProvider main] login:username password:pword target:self action:@selector(loginDidReturn:)];
+  [[YasoundDataProvider main] login:username password:pword target:self action:@selector(requestDidReturn:info:)];
 }
 
-- (void) loginDidReturn:(NSDictionary*)info
+- (void) requestDidReturn:(User*)user info:(NSDictionary*)info
 {
-    NSLog(@"loginDidReturn %@", info);
+    NSLog(@"requestDidReturn %@ - %@", user.name, info);
     
-    [ActivityAlertView showWithTitle:(NSString *)title message:(NSString *)message;
-    + (void)close;
-    UIAlertView* 
+//    [ActivityAlertView showWithTitle:(NSString *)title message:(NSString *)message;
+//    + (void)close;
+//    UIAlertView* 
 }
 
 

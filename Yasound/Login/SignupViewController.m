@@ -8,7 +8,7 @@
 
 #import "SignupViewController.h"
 #import "SettingsViewController.h"
-
+#import "YasoundDataProvider.h"
 
 
 #define ROW_USERNAME 0
@@ -57,7 +57,8 @@
     _cellEmailLabel.text = NSLocalizedString(@"SignupView_email_label", nil);
     _cellEmailTextfield.placeholder = NSLocalizedString(@"SignupView_email_placeholder", nil);
 
-    _submitLabel.text = NSLocalizedString(@"SignupView_submit_label", nil);
+    _submitBtn.titleLabel.text = NSLocalizedString(@"SignupView_submit_label", nil);
+    _submitBtn.enabled = NO;
 }
 
 
@@ -169,6 +170,16 @@
     else
     {
         [textField resignFirstResponder];    
+
+        // activate "submit" button
+        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
+        NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
+        NSString* email = [_cellEmailTextfield.text stringByTrimmingCharactersInSet:space];
+        if ((username.length != 0) && (pword.length != 0)  && (email.length != 0))
+            _submitBtn.enabled = YES;
+        else
+            _submitBtn.enabled = NO;
     }
     return YES;
 }
@@ -182,7 +193,23 @@
 
 - (IBAction) onSubmit:(id)sender
 {
+    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
+    NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
+    NSString* email = [_cellEmailTextfield.text stringByTrimmingCharactersInSet:space];
+    
+    // login request to server
+    [[YasoundDataProvider main] signup:username password:pword email:email target:self action:@selector(requestDidReturn:info:)];
+}
 
+
+- (void) requestDidReturn:(User*)user info:(NSDictionary*)info
+{
+    NSLog(@"requestDidReturn %@ - %@", user.name, info);
+    
+    //    [ActivityAlertView showWithTitle:(NSString *)title message:(NSString *)message;
+    //    + (void)close;
+    //    UIAlertView* 
 }
 
 

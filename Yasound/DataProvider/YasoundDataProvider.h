@@ -39,6 +39,8 @@ taskStatus stringToStatus(NSString* str);
 @property (readonly) Auth* passwordAuth;
 @property (readonly) NSHTTPCookie* appCookie;
 
+@property (readonly) User* user;
+
 + (YasoundDataProvider*) main;
 
 // Yasound
