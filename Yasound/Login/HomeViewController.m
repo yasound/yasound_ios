@@ -22,7 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.title = @"Yasound";        
+        self.title =  NSLocalizedString(@"HomeView_title", nil);        
     }
     return self;
 }
@@ -47,8 +47,8 @@
 {
     [super viewDidLoad];
     
-    _facebookLoginLabel.text = NSLocalizedString(@"login_Facebook_label", nil);
-    _twitterLoginLabel.text = NSLocalizedString(@"login_Twitter_label", nil);
+    _facebookLoginLabel.text = NSLocalizedString(@"HomeView_facebook_label", nil);
+    _twitterLoginLabel.text = NSLocalizedString(@"HomeView_twitter_label", nil);
 }
 
 
@@ -132,14 +132,14 @@
     {
         case ROW_LOGIN: 
         {
-            cell.textLabel.text = NSLocalizedString(@"login_Yasound_label", nil);
+            cell.textLabel.text = NSLocalizedString(@"HomeView_login_label", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         }
             
         case ROW_SIGNUP: 
         {
-            cell.textLabel.text = NSLocalizedString(@"signup_Yasound_label", nil);
+            cell.textLabel.text = NSLocalizedString(@"HomeView_signup_label", nil);
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         }

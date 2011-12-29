@@ -13,8 +13,8 @@
 
 
 
-#define ROW_LOGIN 0
-#define ROW_SIGNUP 1
+#define ROW_USERNAME 0
+#define ROW_PWORD 1
 
 
 
@@ -25,9 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.title = @"Yasound";
-        
-        _backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStylePlain target:self action:@selector(onBack:)];        
+        self.title =  NSLocalizedString(@"LoginView_title", nil);        
     }
     return self;
 }
@@ -35,7 +33,6 @@
 
 - (void) dealloc
 {
-    [_backBtn release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,37 +48,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self yasoundSignup_ViewDidLoad];
     
-    _facebookLoginLabel.text = NSLocalizedString(@"yasoundLogin_Facebook_label", nil);
-    _twitterLoginLabel.text = NSLocalizedString(@"yasoundLogin_Twitter_label", nil);
-
-    _yasoundLoginCellUsernameLabel.text = NSLocalizedString(@"yasoundLogin_Username_label", nil);
-    _yasoundLoginCellUsernameTextField.placeholder = NSLocalizedString(@"yasoundLogin_Username_placeholder", nil);
+    _cellUsernameLabel.text = NSLocalizedString(@"LoginView_username_label", nil);
+    _cellUsernameTextfield.placeholder = NSLocalizedString(@"LoginView_username_placeholder", nil);
     
-    _yasoundLoginCellPwordLabel.text = NSLocalizedString(@"yasoundLogin_Pword_label", nil);
-    _yasoundLoginCellPwordTextField.placeholder = NSLocalizedString(@"yasoundLogin_Pword_placeholder", nil);
+    _cellPwordLabel.text = NSLocalizedString(@"LoginView_pword_label", nil);
+    _cellPwordTextfield.placeholder = NSLocalizedString(@"LoginView_pword_placeholder", nil);
     
-    
-    _yasoundLoginCellSignupLabel.text = NSLocalizedString(@"yasoundLogin_Signup_label", nil);
+    _submitLabel.text = NSLocalizedString(@"LoginView_submit_label", nil);
 }
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector (keyboardDidShow:)
-                                                 name: UIKeyboardDidShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector (keyboardDidHide:)
-                                                 name: UIKeyboardDidHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector (keyboardDidShow:)
+//                                                 name: UIKeyboardDidShowNotification object:nil];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self 
+//                                             selector:@selector (keyboardDidHide:)
+//                                                 name: UIKeyboardDidHideNotification object:nil];
     
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidUnload
@@ -135,34 +127,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    static NSString* CellIdentifier = @"Cell";
+    if (indexPath.row == ROW_USERNAME)
+        return _cellUsername;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (indexPath.row == ROW_PWORD)
+        return _cellPword;
     
-    if (cell == nil) 
-    {   
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    switch (indexPath.row)
-    {
-        case ROW_LOGIN: 
-        {
-            cell.textLabel.text = NSLocalizedString(@"login_Yasound_label", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            break;
-        }
-            
-        case ROW_SIGNUP: 
-        {
-            cell.textLabel.text = NSLocalizedString(@"signup_Yasound_label", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            break;
-        }
-
-    }
-    
-    return cell;
+    return nil;
 }
 
 
@@ -175,19 +146,31 @@
 
 
 
+#pragma mark - TextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == _cellUsernameTextfield)
+    {
+        [_cellPwordTextfield becomeFirstResponder];
+    }
+    else
+    {
+        [textField resignFirstResponder];    
+    }
+    return YES;
+}
+
+
+
 
 
 #pragma mark - IBActions
 
 
-- (IBAction) onFacebook:(id)sender
+- (IBAction) onSubmit:(id)sender
 {
 
-}
-
-- (IBAction) onTwitter:(id)sender
-{
-    
 }
 
 

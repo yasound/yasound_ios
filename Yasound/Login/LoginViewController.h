@@ -12,60 +12,26 @@
 
 @interface LoginViewController : TrackedUIViewController
 {
-    IBOutlet UIView* _container;
-    IBOutlet UIView* _defaultView;    
-    IBOutlet UIView* _loginView;
     IBOutlet UITableView* _tableView;
     
-    //...............................................
-    IBOutlet UILabel* _facebookLoginLabel;
-    IBOutlet UILabel* _twitterLoginLabel;
-
     //.............................................
-    IBOutlet UITableViewCell* _yasoundLoginCellUsername;
-    IBOutlet UILabel* _yasoundLoginCellUsernameLabel;
-    IBOutlet UITextField* _yasoundLoginCellUsernameTextField;
+    IBOutlet UITableViewCell* _cellUsername;
+    IBOutlet UILabel* _cellUsernameLabel;
+    IBOutlet UITextField* _cellUsernameTextfield;
     
-    IBOutlet UITableViewCell* _yasoundLoginCellPword;
-    IBOutlet UILabel* _yasoundLoginCellPwordLabel;
-    IBOutlet UITextField* _yasoundLoginCellPwordTextField;
+    IBOutlet UITableViewCell* _cellPword;
+    IBOutlet UILabel* _cellPwordLabel;
+    IBOutlet UITextField* _cellPwordTextfield;
 
-    IBOutlet UITableViewCell* _yasoundLoginCellSubmit;
-    IBOutlet UILabel* _yasoundLoginCellSubmitLabel;
-    
-    IBOutlet UITableViewCell* _yasoundLoginCellSignup;
-    IBOutlet UILabel* _yasoundLoginCellSignupLabel;
-
-    //.............................................
-    IBOutlet UIView* _yasoundSignupView;
-    IBOutlet UITableView* _yasoundSignupTableView;
-
-    IBOutlet UITableViewCell* _yasoundSignupCellEmail;
-    IBOutlet UILabel* _yasoundSignupCellEmailLabel;
-    IBOutlet UITextField* _yasoundSignupCellEmailTextField;
+    IBOutlet UILabel* _submitLabel;    
 }
 
-@end
 
-
-
-
-
-
-@interface LoginViewController (YasoundSignup)
-
-- (IBAction)onSignupCanceled:(id)sender;
-
-- (IBAction) onBack:(id)sender;
-- (IBAction) onFacebook:(id)sender;
-- (IBAction) onTwitter:(id)sender;
-
-- (void) yasoundSignup_ViewDidLoad;
-
-- (NSInteger)yasoundSignup_numberOfSectionsInTableView;
-- (NSInteger)yasoundSignup_numberOfRowsInSection:(NSInteger)section ;
-- (UITableViewCell *)yasoundSignup_cellForRowAtIndexPath:(NSIndexPath *)indexPath;
-- (void)yasoundSignup_didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+- (IBAction) onSubmit:(id)sender;
 
 @end
+
+
+
+
 
