@@ -28,6 +28,8 @@
 
 @implementation YasoundDataProvider
 
+@synthesize user;
+
 static YasoundDataProvider* _main = nil;
 
 + (YasoundDataProvider*) main

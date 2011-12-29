@@ -187,12 +187,12 @@
     NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
 
     // login request to server
-    [[YasoundDataProvider main] login:username password:pword target:self action:@selector(loginDidReturn:)];
+  [[YasoundDataProvider main] login:username password:pword target:self action:@selector(loginDidReturn:info:)];
 }
 
-- (void) loginDidReturn:(NSDictionary*)info
+- (void) loginDidReturn:(User*)user info:(NSDictionary*)info
 {
-    NSLog(@"loginDidReturn %@", info);
+    NSLog(@"loginDidReturn %@ - %@", user.name, info);
 }
 
 
