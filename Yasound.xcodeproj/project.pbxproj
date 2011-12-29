@@ -505,6 +505,12 @@
 		BCDC97FA14AB9BF300D54631 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
 		BCDC97FB14AB9BF300D54631 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
 		BCDC97FC14AB9BF300D54631 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
+		BCDC981014ACB44300D54631 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
+		BCDC981114ACB44300D54631 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
+		BCDC981214ACB44300D54631 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
+		BCDC981314ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
+		BCDC981414ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
+		BCDC981514ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
 		BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -954,6 +960,9 @@
 		BCDC97F414AB9BF300D54631 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
 		BCDC97F514AB9BF300D54631 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
 		BCDC97F614AB9BF300D54631 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
+		BCDC980D14ACB44300D54631 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = Login/SignupViewController.h; sourceTree = "<group>"; };
+		BCDC980E14ACB44300D54631 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = Login/SignupViewController.m; sourceTree = "<group>"; };
+		BCDC980F14ACB44300D54631 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = Login/SignupViewController.xib; sourceTree = "<group>"; };
 		BCE46322148FD96300422448 /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
 		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
 		BCF62DAF14839355001B1908 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
@@ -1704,6 +1713,9 @@
 				BCDC97F414AB9BF300D54631 /* LoginViewController.h */,
 				BCDC97F514AB9BF300D54631 /* LoginViewController.m */,
 				BCDC97F614AB9BF300D54631 /* LoginViewController.xib */,
+				BCDC980D14ACB44300D54631 /* SignupViewController.h */,
+				BCDC980E14ACB44300D54631 /* SignupViewController.m */,
+				BCDC980F14ACB44300D54631 /* SignupViewController.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -2053,6 +2065,7 @@
 				BCDC97C614AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCDC97F214AB9B2800D54631 /* HomeViewController.xib in Resources */,
 				BCDC97FB14AB9BF300D54631 /* LoginViewController.xib in Resources */,
+				BCDC981414ACB44300D54631 /* SignupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2172,6 +2185,7 @@
 				BCDC97C514AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCDC97F114AB9B2800D54631 /* HomeViewController.xib in Resources */,
 				BCDC97FA14AB9BF300D54631 /* LoginViewController.xib in Resources */,
+				BCDC981314ACB44300D54631 /* SignupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2291,6 +2305,7 @@
 				BCDC97C714AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCDC97F314AB9B2800D54631 /* HomeViewController.xib in Resources */,
 				BCDC97FC14AB9BF300D54631 /* LoginViewController.xib in Resources */,
+				BCDC981514ACB44300D54631 /* SignupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2392,6 +2407,7 @@
 				BCDC97D814AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
 				BCDC97EF14AB9B2800D54631 /* HomeViewController.m in Sources */,
 				BCDC97F814AB9BF300D54631 /* LoginViewController.m in Sources */,
+				BCDC981114ACB44300D54631 /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2490,6 +2506,7 @@
 				BCDC97D714AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
 				BCDC97EE14AB9B2800D54631 /* HomeViewController.m in Sources */,
 				BCDC97F714AB9BF300D54631 /* LoginViewController.m in Sources */,
+				BCDC981014ACB44300D54631 /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2587,6 +2604,7 @@
 				BCDC97D914AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
 				BCDC97F014AB9B2800D54631 /* HomeViewController.m in Sources */,
 				BCDC97F914AB9BF300D54631 /* LoginViewController.m in Sources */,
+				BCDC981214ACB44300D54631 /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
