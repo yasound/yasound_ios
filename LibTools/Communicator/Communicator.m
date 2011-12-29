@@ -25,10 +25,13 @@
 - (ASIHTTPRequest*)deleteRequestForObject:(Model*)obj withAuth:(Auth*)auth;
 
 - (void)applyAuth:(Auth*)auth toRequest:(ASIHTTPRequest*)request;
+- (void)fillRequest:(ASIHTTPRequest*)request;
 @end
 
 
 @implementation Communicator
+
+@synthesize appCookie;
 
 - (id)initWithBaseURL:(NSString*)base
 {
@@ -183,6 +186,7 @@
   ASIHTTPRequest* req = [[ASIHTTPRequest alloc] initWithURL:u];
   req.validatesSecureCertificate = FALSE;
   [self applyAuth:auth toRequest:req];
+  [self fillRequest:req];
   [req startSynchronous];
   NSString* response = req.responseString;
   return response;
@@ -196,13 +200,13 @@
   if (!u)
   {
     NSLog(@"post data: invalid url");
-    return;
   }
   
   ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
   [req addData:data forKey:key];
   req.validatesSecureCertificate = FALSE;
   [self applyAuth:auth toRequest:req];
+  [self fillRequest:req];
   [req startSynchronous];
   NSString* response = req.responseString;
   NSLog(@"post data response: %@", response);
@@ -417,6 +421,7 @@
   req.userInfo = userInfo;
   req.validatesSecureCertificate = FALSE;
   [self applyAuth:auth toRequest:req];
+  [self fillRequest:req];
   [req startAsynchronous];
 }
 
@@ -438,6 +443,7 @@
   req.delegate = self;
   req.validatesSecureCertificate = FALSE;
   [self applyAuth:auth toRequest:req];
+  [self fillRequest:req];
   [req startAsynchronous];
 }
 
@@ -659,6 +665,38 @@
 
 @implementation Communicator (Communicator_internal)
 
+- (void)addUrlParams:(NSArray*)params toRequest:(ASIHTTPRequest*)request
+{
+  NSString* url = [request.url absoluteString];
+  
+  bool firstParam = false;
+  NSRange range = [url rangeOfString:@"?"];
+  if (NSEqualRanges(range, NSMakeRange(NSNotFound, 0)))
+  {
+    // '?' has not been found
+    // there is no param yet
+    firstParam = true;
+  }
+  
+  if (firstParam && ![url hasSuffix:@"/"])
+    url = [url stringByAppendingString:@"/"];
+  
+  for (NSString* p in params)
+  {
+    if (firstParam)
+    {
+      url = [url stringByAppendingString:@"?"];
+      firstParam = false;
+    }
+    else
+    {
+      url = [url stringByAppendingString:@"&"];
+    }
+    url = [url stringByAppendingString:p];
+  }
+  request.url = [NSURL URLWithString:url];
+}
+
 - (void)applyAuth:(Auth*)auth toRequest:(ASIHTTPRequest*)request
 {
   if (!auth)
@@ -675,41 +713,27 @@
   {
     // USERNAME / API KEY
     AuthApiKey* a = (AuthApiKey*)auth;
-    NSString* url = [request.url absoluteString];
-    
-    bool firstParam = false;
-    NSRange range = [url rangeOfString:@"?"];
-    if (NSEqualRanges(range, NSMakeRange(NSNotFound, 0)))
-    {
-      // '?' has not been found
-      // there is no param yet
-      firstParam = true;
-    }
-    
-    if (firstParam && ![url hasSuffix:@"/"])
-      url = [url stringByAppendingString:@"/"];
-    
     NSArray* params = a.urlParams;
-    for (NSString* p in params)
-    {
-      if (firstParam)
-      {
-        url = [url stringByAppendingString:@"?"];
-        firstParam = false;
-      }
-      else
-      {
-        url = [url stringByAppendingString:@"&"];
-      }
-      url = [url stringByAppendingString:p];
-    }
-    request.url = [NSURL URLWithString:url];
+    [self addUrlParams:params toRequest:request];
   }
-  else if ([auth isKindOfClass:[AuthCookie class]])
+  else if ([auth isKindOfClass:[AuthSocial class]])
   {
-    // COOKIE
-    AuthCookie* a = (AuthCookie*)auth;
-    [request.requestCookies addObject:[a cookie]];
+    //SOCIAL (facebook, twitter)
+    AuthSocial* a = (AuthSocial*)auth;
+    NSArray* params = a.urlParams;
+    [self addUrlParams:params toRequest:request];
+  }
+}
+
+
+- (void)fillRequest:(ASIHTTPRequest*)request
+{
+  // #FIXME todo: remove this setting when the https certificate is ok
+  request.validatesSecureCertificate = FALSE;
+  
+  if (self.appCookie)
+  {
+    [request.requestCookies addObject:self.appCookie];
   }
 }
 
@@ -722,6 +746,7 @@
   req.requestMethod = @"GET";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [self applyAuth:auth toRequest:req];
+  [self fillRequest:req];
   return req;
 }
 
@@ -734,6 +759,7 @@
   req.requestMethod = @"GET";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [self applyAuth:auth toRequest:req];
+  [self fillRequest:req];
   return req;
 }
 
@@ -760,6 +786,7 @@
   [req appendPostData:[jsonDesc dataUsingEncoding:NSUTF8StringEncoding]];
   
   [self applyAuth:auth toRequest:req];
+  [self fillRequest:req];
   return req;
 }
 
@@ -784,6 +811,7 @@
   [req appendPostData:[jsonDesc dataUsingEncoding:NSUTF8StringEncoding]];
   
   [self applyAuth:auth toRequest:req];
+  [self fillRequest:req];
   return req;
 }
 
@@ -797,6 +825,7 @@
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [req addRequestHeader:@"Content-Type" value:@"application/json"];
   [self applyAuth:auth toRequest:req];
+  [self fillRequest:req];
   return req;
 }
 

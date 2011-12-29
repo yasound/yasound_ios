@@ -60,12 +60,6 @@
     return self;
 }
 
-- (void)userLogged:(User*)u withInfo:(NSDictionary*)info
-{
-  NSError* error = [info valueForKey:@"error"];
-  NSLog(@"logged user '%@'", u.username);
-}
-
 - (void)didReceiveMemoryWarning
 {
   // Releases the view if it doesn't have a superview.
