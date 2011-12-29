@@ -10,7 +10,8 @@
 #import "LoginViewController.h"
 #import "SignupViewController.h"
 #import "SettingsViewController.h"
-
+#import "MyYasoundViewController.h"
+#import "RadioTabBarController.h"
 
 #define ROW_LOGIN 0
 #define ROW_SIGNUP 1
@@ -192,7 +193,13 @@
 
 - (IBAction) onTwitter:(id)sender
 {
-    
+//    MyYasoundViewController* view = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil];
+//    self.navigationController.navigationBarHidden = YES;
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
+    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
+    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController pushViewController:tabBarController animated:YES];    
 }
 
 

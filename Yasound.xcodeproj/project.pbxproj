@@ -511,6 +511,36 @@
 		BCDC981314ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
 		BCDC981414ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
 		BCDC981514ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
+		BCDC982214ACDEA200D54631 /* iconLegal.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981814ACDEA200D54631 /* iconLegal.png */; };
+		BCDC982314ACDEA200D54631 /* iconLegal.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981814ACDEA200D54631 /* iconLegal.png */; };
+		BCDC982414ACDEA200D54631 /* iconLegal.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981814ACDEA200D54631 /* iconLegal.png */; };
+		BCDC982514ACDEA200D54631 /* iconLegal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981914ACDEA200D54631 /* iconLegal@2x.png */; };
+		BCDC982614ACDEA200D54631 /* iconLegal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981914ACDEA200D54631 /* iconLegal@2x.png */; };
+		BCDC982714ACDEA200D54631 /* iconLegal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981914ACDEA200D54631 /* iconLegal@2x.png */; };
+		BCDC982814ACDEA200D54631 /* iconMyRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981A14ACDEA200D54631 /* iconMyRadio.png */; };
+		BCDC982914ACDEA200D54631 /* iconMyRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981A14ACDEA200D54631 /* iconMyRadio.png */; };
+		BCDC982A14ACDEA200D54631 /* iconMyRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981A14ACDEA200D54631 /* iconMyRadio.png */; };
+		BCDC982B14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981B14ACDEA200D54631 /* iconMyRadio@2x.png */; };
+		BCDC982C14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981B14ACDEA200D54631 /* iconMyRadio@2x.png */; };
+		BCDC982D14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981B14ACDEA200D54631 /* iconMyRadio@2x.png */; };
+		BCDC982E14ACDEA200D54631 /* iconPlaylists.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981C14ACDEA200D54631 /* iconPlaylists.png */; };
+		BCDC982F14ACDEA200D54631 /* iconPlaylists.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981C14ACDEA200D54631 /* iconPlaylists.png */; };
+		BCDC983014ACDEA200D54631 /* iconPlaylists.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981C14ACDEA200D54631 /* iconPlaylists.png */; };
+		BCDC983114ACDEA200D54631 /* iconPlaylists@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981D14ACDEA200D54631 /* iconPlaylists@2x.png */; };
+		BCDC983214ACDEA200D54631 /* iconPlaylists@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981D14ACDEA200D54631 /* iconPlaylists@2x.png */; };
+		BCDC983314ACDEA200D54631 /* iconPlaylists@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981D14ACDEA200D54631 /* iconPlaylists@2x.png */; };
+		BCDC983414ACDEA200D54631 /* iconSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981E14ACDEA200D54631 /* iconSettings.png */; };
+		BCDC983514ACDEA200D54631 /* iconSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981E14ACDEA200D54631 /* iconSettings.png */; };
+		BCDC983614ACDEA200D54631 /* iconSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981E14ACDEA200D54631 /* iconSettings.png */; };
+		BCDC983714ACDEA200D54631 /* iconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981F14ACDEA200D54631 /* iconSettings@2x.png */; };
+		BCDC983814ACDEA200D54631 /* iconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981F14ACDEA200D54631 /* iconSettings@2x.png */; };
+		BCDC983914ACDEA200D54631 /* iconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981F14ACDEA200D54631 /* iconSettings@2x.png */; };
+		BCDC983A14ACDEA200D54631 /* iconStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982014ACDEA200D54631 /* iconStats.png */; };
+		BCDC983B14ACDEA200D54631 /* iconStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982014ACDEA200D54631 /* iconStats.png */; };
+		BCDC983C14ACDEA200D54631 /* iconStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982014ACDEA200D54631 /* iconStats.png */; };
+		BCDC983D14ACDEA200D54631 /* iconStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982114ACDEA200D54631 /* iconStats@2x.png */; };
+		BCDC983E14ACDEA200D54631 /* iconStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982114ACDEA200D54631 /* iconStats@2x.png */; };
+		BCDC983F14ACDEA200D54631 /* iconStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982114ACDEA200D54631 /* iconStats@2x.png */; };
 		BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -963,6 +993,16 @@
 		BCDC980D14ACB44300D54631 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = Login/SignupViewController.h; sourceTree = "<group>"; };
 		BCDC980E14ACB44300D54631 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = Login/SignupViewController.m; sourceTree = "<group>"; };
 		BCDC980F14ACB44300D54631 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = Login/SignupViewController.xib; sourceTree = "<group>"; };
+		BCDC981814ACDEA200D54631 /* iconLegal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLegal.png; sourceTree = "<group>"; };
+		BCDC981914ACDEA200D54631 /* iconLegal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLegal@2x.png"; sourceTree = "<group>"; };
+		BCDC981A14ACDEA200D54631 /* iconMyRadio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconMyRadio.png; sourceTree = "<group>"; };
+		BCDC981B14ACDEA200D54631 /* iconMyRadio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconMyRadio@2x.png"; sourceTree = "<group>"; };
+		BCDC981C14ACDEA200D54631 /* iconPlaylists.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconPlaylists.png; sourceTree = "<group>"; };
+		BCDC981D14ACDEA200D54631 /* iconPlaylists@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconPlaylists@2x.png"; sourceTree = "<group>"; };
+		BCDC981E14ACDEA200D54631 /* iconSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconSettings.png; sourceTree = "<group>"; };
+		BCDC981F14ACDEA200D54631 /* iconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconSettings@2x.png"; sourceTree = "<group>"; };
+		BCDC982014ACDEA200D54631 /* iconStats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconStats.png; sourceTree = "<group>"; };
+		BCDC982114ACDEA200D54631 /* iconStats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconStats@2x.png"; sourceTree = "<group>"; };
 		BCE46322148FD96300422448 /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
 		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
 		BCF62DAF14839355001B1908 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
@@ -1365,6 +1405,7 @@
 		BCC408A9148D15F8001C02E4 /* MyYasound */ = {
 			isa = PBXGroup;
 			children = (
+				BCDC981714ACDEA200D54631 /* icons */,
 				BCE46322148FD96300422448 /* MyYasoundBackground.png */,
 				BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */,
 				BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */,
@@ -1693,6 +1734,23 @@
 			name = Security;
 			path = LibTools/Security;
 			sourceTree = SOURCE_ROOT;
+		};
+		BCDC981714ACDEA200D54631 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				BCDC981814ACDEA200D54631 /* iconLegal.png */,
+				BCDC981914ACDEA200D54631 /* iconLegal@2x.png */,
+				BCDC981A14ACDEA200D54631 /* iconMyRadio.png */,
+				BCDC981B14ACDEA200D54631 /* iconMyRadio@2x.png */,
+				BCDC981C14ACDEA200D54631 /* iconPlaylists.png */,
+				BCDC981D14ACDEA200D54631 /* iconPlaylists@2x.png */,
+				BCDC981E14ACDEA200D54631 /* iconSettings.png */,
+				BCDC981F14ACDEA200D54631 /* iconSettings@2x.png */,
+				BCDC982014ACDEA200D54631 /* iconStats.png */,
+				BCDC982114ACDEA200D54631 /* iconStats@2x.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
 		};
 		BCE4631B148FD89100422448 /* Themes */ = {
 			isa = PBXGroup;
@@ -2066,6 +2124,16 @@
 				BCDC97F214AB9B2800D54631 /* HomeViewController.xib in Resources */,
 				BCDC97FB14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 				BCDC981414ACB44300D54631 /* SignupViewController.xib in Resources */,
+				BCDC982314ACDEA200D54631 /* iconLegal.png in Resources */,
+				BCDC982614ACDEA200D54631 /* iconLegal@2x.png in Resources */,
+				BCDC982914ACDEA200D54631 /* iconMyRadio.png in Resources */,
+				BCDC982C14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */,
+				BCDC982F14ACDEA200D54631 /* iconPlaylists.png in Resources */,
+				BCDC983214ACDEA200D54631 /* iconPlaylists@2x.png in Resources */,
+				BCDC983514ACDEA200D54631 /* iconSettings.png in Resources */,
+				BCDC983814ACDEA200D54631 /* iconSettings@2x.png in Resources */,
+				BCDC983B14ACDEA200D54631 /* iconStats.png in Resources */,
+				BCDC983E14ACDEA200D54631 /* iconStats@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2186,6 +2254,16 @@
 				BCDC97F114AB9B2800D54631 /* HomeViewController.xib in Resources */,
 				BCDC97FA14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 				BCDC981314ACB44300D54631 /* SignupViewController.xib in Resources */,
+				BCDC982214ACDEA200D54631 /* iconLegal.png in Resources */,
+				BCDC982514ACDEA200D54631 /* iconLegal@2x.png in Resources */,
+				BCDC982814ACDEA200D54631 /* iconMyRadio.png in Resources */,
+				BCDC982B14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */,
+				BCDC982E14ACDEA200D54631 /* iconPlaylists.png in Resources */,
+				BCDC983114ACDEA200D54631 /* iconPlaylists@2x.png in Resources */,
+				BCDC983414ACDEA200D54631 /* iconSettings.png in Resources */,
+				BCDC983714ACDEA200D54631 /* iconSettings@2x.png in Resources */,
+				BCDC983A14ACDEA200D54631 /* iconStats.png in Resources */,
+				BCDC983D14ACDEA200D54631 /* iconStats@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2306,6 +2384,16 @@
 				BCDC97F314AB9B2800D54631 /* HomeViewController.xib in Resources */,
 				BCDC97FC14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 				BCDC981514ACB44300D54631 /* SignupViewController.xib in Resources */,
+				BCDC982414ACDEA200D54631 /* iconLegal.png in Resources */,
+				BCDC982714ACDEA200D54631 /* iconLegal@2x.png in Resources */,
+				BCDC982A14ACDEA200D54631 /* iconMyRadio.png in Resources */,
+				BCDC982D14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */,
+				BCDC983014ACDEA200D54631 /* iconPlaylists.png in Resources */,
+				BCDC983314ACDEA200D54631 /* iconPlaylists@2x.png in Resources */,
+				BCDC983614ACDEA200D54631 /* iconSettings.png in Resources */,
+				BCDC983914ACDEA200D54631 /* iconSettings@2x.png in Resources */,
+				BCDC983C14ACDEA200D54631 /* iconStats.png in Resources */,
+				BCDC983F14ACDEA200D54631 /* iconStats@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,6 +23,7 @@
     IBOutlet UILabel* _cellPwordLabel;
     IBOutlet UITextField* _cellPwordTextfield;
 
+    IBOutlet UIButton* _submitBtn;
     IBOutlet UILabel* _submitLabel;    
 }
 

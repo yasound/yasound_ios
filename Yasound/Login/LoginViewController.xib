@@ -406,6 +406,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_submitBtn</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="456960022"/>
+					</object>
+					<int key="connectionID">125</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="581741264"/>
 						<reference key="destination" ref="372490531"/>
@@ -558,7 +566,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">124</int>
+			<int key="maxID">125</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -583,6 +591,7 @@
 						<string key="_cellUsername">UITableViewCell</string>
 						<string key="_cellUsernameLabel">UILabel</string>
 						<string key="_cellUsernameTextfield">UITextField</string>
+						<string key="_submitBtn">UIButton</string>
 						<string key="_submitLabel">UILabel</string>
 						<string key="_tableView">UITableView</string>
 					</dictionary>
@@ -610,6 +619,10 @@
 						<object class="IBToOneOutletInfo" key="_cellUsernameTextfield">
 							<string key="name">_cellUsernameTextfield</string>
 							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_submitBtn">
+							<string key="name">_submitBtn</string>
+							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_submitLabel">
 							<string key="name">_submitLabel</string>

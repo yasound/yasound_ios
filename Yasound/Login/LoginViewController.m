@@ -11,6 +11,7 @@
 #import "BundleFileManager.h"
 #import "SettingsViewController.h"
 
+#import "YasoundDataProvider.h"
 
 
 #define ROW_USERNAME 0
@@ -56,8 +57,9 @@
     _cellPwordTextfield.placeholder = NSLocalizedString(@"LoginView_pword_placeholder", nil);
     
     _submitLabel.text = NSLocalizedString(@"LoginView_submit_label", nil);
+    
+    _submitBtn.enabled = NO;
 }
-
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -157,6 +159,16 @@
     else
     {
         [textField resignFirstResponder];    
+        
+        // activate "submit" button
+        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
+        NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
+        if ((username.length != 0) && (pword.length != 0))
+            _submitBtn.enabled = YES;
+        else
+            _submitBtn.enabled = NO;
+
     }
     return YES;
 }
@@ -170,7 +182,17 @@
 
 - (IBAction) onSubmit:(id)sender
 {
+    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
+    NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
 
+    // login request to server
+  [[YasoundDataProvider main] login:username password:pword target:self action:@selector(loginDidReturn:info:)];
+}
+
+- (void) loginDidReturn:(User*)user info:(NSDictionary*)info
+{
+    NSLog(@"loginDidReturn %@ - %@", user.name, info);
 }
 
 
