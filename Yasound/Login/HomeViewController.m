@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "LoginViewController.h"
 #import "SignupViewController.h"
+#import "SettingsViewController.h"
 
 
 #define ROW_LOGIN 0
@@ -184,7 +185,9 @@
 
 - (IBAction) onFacebook:(id)sender
 {
-
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
 }
 
 - (IBAction) onTwitter:(id)sender
