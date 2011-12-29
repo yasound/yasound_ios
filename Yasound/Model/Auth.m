@@ -22,13 +22,6 @@
   return self;
 }
 
-- (NSArray*)urlParams
-{
-  NSString* s = [NSString stringWithFormat:@"username=%@", username];
-  NSArray* params = [NSArray arrayWithObject:s];
-  return params;
-}
-
 @end
 
 @implementation AuthPassword
@@ -45,21 +38,9 @@
   return self;
 }
 
-- (NSArray*)urlParams
-{
-  NSArray* parentParams = [super urlParams];
-  NSMutableArray* params = [NSMutableArray arrayWithArray:parentParams];
- 
-  NSString* s = [NSString stringWithFormat:@"password=%@", password];
-  [params addObject:s];
-  return params;
-}
-
 @end
 
 @implementation AuthApiKey
-
-@synthesize apiKey;
 
 - (id)initWithUsername:(NSString *)name andApiKey:(NSString*)key
 {
@@ -73,12 +54,38 @@
 
 - (NSArray*)urlParams
 {
-  NSArray* parentParams = [super urlParams];
-  NSMutableArray* params = [NSMutableArray arrayWithArray:parentParams];
-  
-  NSString* s = [NSString stringWithFormat:@"api_key=%@", apiKey];
-  [params addObject:s];
+  NSString* u = [NSString stringWithFormat:@"username=%@", username];
+  NSString* a = [NSString stringWithFormat:@"api_key=%@", apiKey];
+  NSArray* params = [NSArray arrayWithObjects:u, a, nil];
   return params;
+}
+
+@end
+
+
+@implementation AuthCookie
+
+- (id)initWithUsername:(NSString *)name andCookieValue:(NSString*)val
+{
+  self = [super initWithUsername:name];
+  if (self)
+  {
+    _cookieValue = val;
+  }
+  return self;
+}
+
+- (NSHTTPCookie*)cookie
+{
+  NSDictionary* properties = [[[NSMutableDictionary alloc] init] autorelease];
+  [properties setValue:_cookieValue forKey:NSHTTPCookieValue];
+  [properties setValue:username forKey:NSHTTPCookieName];
+  [properties setValue:@"yasound.com" forKey:NSHTTPCookieDomain];
+  [properties setValue:[NSDate dateWithTimeIntervalSinceNow:60*60] forKey:NSHTTPCookieExpires];
+  [properties setValue:@"/yasound/app_auth" forKey:NSHTTPCookiePath];
+  NSHTTPCookie* cookie = [[NSHTTPCookie alloc] initWithProperties:properties];
+
+  return cookie;
 }
 
 @end

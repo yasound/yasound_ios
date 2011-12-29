@@ -11,8 +11,10 @@
 @interface User : Model
 
 @property (retain, nonatomic) NSString* username;
-@property (retain, nonatomic) NSString* first_name;
-@property (retain, nonatomic) NSString* last_name;
+@property (retain, nonatomic) NSString* password;
+@property (retain, nonatomic) NSString* name;
+@property (retain, nonatomic) NSString* api_key;
+@property (retain, nonatomic) NSString* email;
 @property (retain, nonatomic) NSString* picture;
 
 - (NSString*)toString;

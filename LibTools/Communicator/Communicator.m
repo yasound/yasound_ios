@@ -24,6 +24,7 @@
 - (ASIHTTPRequest*)putRequestForObject:(Model*)obj withAuth:(Auth*)auth;
 - (ASIHTTPRequest*)deleteRequestForObject:(Model*)obj withAuth:(Auth*)auth;
 
+- (void)applyAuth:(Auth*)auth toRequest:(ASIHTTPRequest*)request;
 @end
 
 
@@ -173,7 +174,7 @@
 
 - (NSString*)getURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth
 {
-  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:auth.urlParams];
+  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
   if (!u)
   {
     return nil;
@@ -181,6 +182,7 @@
   
   ASIHTTPRequest* req = [[ASIHTTPRequest alloc] initWithURL:u];
   req.validatesSecureCertificate = FALSE;
+  [self applyAuth:auth toRequest:req];
   [req startSynchronous];
   NSString* response = req.responseString;
   return response;
@@ -189,7 +191,7 @@
 // POST data
 - (NSError*)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth
 {
-  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:auth.urlParams];
+  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
   NSLog(@"post data url '%@'", u.absoluteString);
   if (!u)
   {
@@ -200,6 +202,7 @@
   ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
   [req addData:data forKey:key];
   req.validatesSecureCertificate = FALSE;
+  [self applyAuth:auth toRequest:req];
   [req startSynchronous];
   NSString* response = req.responseString;
   NSLog(@"post data response: %@", response);
@@ -323,6 +326,7 @@
   [req startAsynchronous];
 }
 
+
 - (void)deleteObject:(Model*)obj withRequest:(ASIHTTPRequest*)req notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData
 {
   if (!req)
@@ -400,7 +404,7 @@
 
 - (void)getURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
-  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:auth.urlParams];
+  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
   if (!u)
   {
     return;
@@ -412,12 +416,13 @@
   req.delegate = self;
   req.userInfo = userInfo;
   req.validatesSecureCertificate = FALSE;
+  [self applyAuth:auth toRequest:req];
   [req startAsynchronous];
 }
 
 - (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
-  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:auth.urlParams];
+  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
   NSLog(@"post data url '%@'", u.absoluteString);
   if (!u)
   {
@@ -432,10 +437,9 @@
   req.userInfo = userInfo;
   req.delegate = self;
   req.validatesSecureCertificate = FALSE;
+  [self applyAuth:auth toRequest:req];
   [req startAsynchronous];
 }
-
-
 
 // GET_ALL handler
 - (void)handleGetAllResponse:(ASIHTTPRequest *)request success:(BOOL)succeeded
@@ -581,6 +585,7 @@
   [target performSelector:selector withObject:response withObject:data];
 }
 
+
 - (void)handleGetURLResponse:(ASIHTTPRequest*)request success:(BOOL)succeeded
 {
   NSDictionary* userinfo = request.userInfo;
@@ -654,53 +659,81 @@
 
 @implementation Communicator (Communicator_internal)
 
-- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth
+- (void)applyAuth:(Auth*)auth toRequest:(ASIHTTPRequest*)request
 {
-  NSArray* params = nil;
-  if (auth && [auth isKindOfClass:[AuthApiKey class]])
-  {
-    AuthApiKey* a = (AuthApiKey*)auth;
-    params = a.urlParams;
-  }
+  if (!auth)
+    return;
   
-  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:params];
+  if ([auth isKindOfClass:[AuthPassword class]])
+  {
+    // USERNAME / PASSWORD
+    AuthPassword* a = (AuthPassword*)auth;
+    request.username = a.username;
+    request.password = a.password;
+  }
+  else if ([auth isKindOfClass:[AuthApiKey class]])
+  {
+    // USERNAME / API KEY
+    AuthApiKey* a = (AuthApiKey*)auth;
+    NSString* url = [request.url absoluteString];
+    
+    bool firstParam = false;
+    NSRange range = [url rangeOfString:@"?"];
+    if (NSEqualRanges(range, NSMakeRange(NSNotFound, 0)))
+    {
+      // '?' has not been found
+      // there is no param yet
+      firstParam = true;
+    }
+    
+    if (firstParam && ![url hasSuffix:@"/"])
+      url = [url stringByAppendingString:@"/"];
+    
+    NSArray* params = a.urlParams;
+    for (NSString* p in params)
+    {
+      if (firstParam)
+      {
+        url = [url stringByAppendingString:@"?"];
+        firstParam = false;
+      }
+      else
+      {
+        url = [url stringByAppendingString:@"&"];
+      }
+      url = [url stringByAppendingString:p];
+    }
+    request.url = [NSURL URLWithString:url];
+  }
+  else if ([auth isKindOfClass:[AuthCookie class]])
+  {
+    // COOKIE
+    AuthCookie* a = (AuthCookie*)auth;
+    [request.requestCookies addObject:[a cookie]];
+  }
+}
+
+- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth
+{  
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"GET";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
-  if (auth && [auth isKindOfClass:[AuthPassword class]])
-  {
-    AuthPassword* a = (AuthPassword*)auth;
-    req.username = a.username;
-    req.password = a.password;
-  }
-  
+  [self applyAuth:auth toRequest:req];
   return req;
 }
 
 - (ASIHTTPRequest*)getRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth
 {
-  NSArray* params = nil;
-  if (auth && [auth isKindOfClass:[AuthApiKey class]])
-  {
-    AuthApiKey* a = (AuthApiKey*)auth;
-    params = a.urlParams;
-  }
-  
-  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:params];
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"GET";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
-  if (auth && [auth isKindOfClass:[AuthPassword class]])
-  {
-    AuthPassword* a = (AuthPassword*)auth;
-    req.username = a.username;
-    req.password = a.password;
-  }
-  
+  [self applyAuth:auth toRequest:req];
   return req;
 }
 
@@ -713,17 +746,10 @@
   NSString* jsonDesc = [obj JSONRepresentation];
   if (!jsonDesc)
     return nil;
+
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
   
-  NSArray* params = nil;
-  if (auth && [auth isKindOfClass:[AuthApiKey class]])
-  {
-    AuthApiKey* a = (AuthApiKey*)auth;
-    params = a.urlParams;
-  }
-  
-  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:params];
-  
-  // todo AUTH
+  NSLog(@"post url %@", url.absoluteString);
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
@@ -733,13 +759,7 @@
   
   [req appendPostData:[jsonDesc dataUsingEncoding:NSUTF8StringEncoding]];
   
-  if (auth && [auth isKindOfClass:[AuthPassword class]])
-  {
-    AuthPassword* a = (AuthPassword*)auth;
-    req.username = a.username;
-    req.password = a.password;
-  }
-  
+  [self applyAuth:auth toRequest:req];
   return req;
 }
 
@@ -752,17 +772,8 @@
   NSString* jsonDesc = [obj JSONRepresentation];
   if (!jsonDesc)
     return nil;
-  
-  NSArray* params = nil;
-  if (auth && [auth isKindOfClass:[AuthApiKey class]])
-  {
-    AuthApiKey* a = (AuthApiKey*)auth;
-    params = a.urlParams;
-  }
-  
-  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:params];
-  
-  // todo AUTH
+
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
@@ -772,41 +783,20 @@
   
   [req appendPostData:[jsonDesc dataUsingEncoding:NSUTF8StringEncoding]];
   
-  if (auth && [auth isKindOfClass:[AuthPassword class]])
-  {
-    AuthPassword* a = (AuthPassword*)auth;
-    req.username = a.username;
-    req.password = a.password;
-  }
-  
+  [self applyAuth:auth toRequest:req];
   return req;
 }
 
 - (ASIHTTPRequest*)deleteRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth
 {
-  NSArray* params = nil;
-  if (auth && [auth isKindOfClass:[AuthApiKey class]])
-  {
-    AuthApiKey* a = (AuthApiKey*)auth;
-    params = a.urlParams;
-  }
-  
-  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:params];
-  
-  // todo AUTH
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"DELETE";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [req addRequestHeader:@"Content-Type" value:@"application/json"];
-  if (auth && [auth isKindOfClass:[AuthPassword class]])
-  {
-    AuthPassword* a = (AuthPassword*)auth;
-    req.username = a.username;
-    req.password = a.password;
-  }
-  
+  [self applyAuth:auth toRequest:req];
   return req;
 }
 
