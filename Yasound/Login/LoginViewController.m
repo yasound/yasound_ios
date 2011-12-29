@@ -12,6 +12,7 @@
 #import "SettingsViewController.h"
 
 #import "YasoundDataProvider.h"
+#import "ActivityAlertView.h"
 
 
 #define ROW_USERNAME 0
@@ -193,6 +194,10 @@
 - (void) loginDidReturn:(NSDictionary*)info
 {
     NSLog(@"loginDidReturn %@", info);
+    
+    [ActivityAlertView showWithTitle:(NSString *)title message:(NSString *)message;
+    + (void)close;
+    UIAlertView* 
 }
 
 
