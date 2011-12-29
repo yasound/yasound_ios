@@ -147,7 +147,7 @@
 					<object class="IBUIImageView" id="148301160">
 						<reference key="NSNextResponder" ref="12506799"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{320, 367}</string>
+						<string key="NSFrameSize">{320, 411}</string>
 						<reference key="NSSuperview" ref="12506799"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="701762439"/>
@@ -163,7 +163,7 @@
 					<object class="IBUITableView" id="701762439">
 						<reference key="NSNextResponder" ref="12506799"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{320, 367}</string>
+						<string key="NSFrameSize">{320, 411}</string>
 						<reference key="NSSuperview" ref="12506799"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:418</string>
@@ -183,7 +183,7 @@
 						<float key="IBUISectionFooterHeight">10</float>
 					</object>
 				</array>
-				<string key="NSFrame">{{0, 64}, {320, 367}}</string>
+				<string key="NSFrame">{{0, 20}, {320, 411}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="148301160"/>
@@ -4580,15 +4580,11 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<string key="IBUIColorCocoaTouchKeyPath">scrollViewTexturedBackgroundColor</string>
 				</object>
 				<reference key="IBUISimulatedStatusBarMetrics" ref="867772909"/>
-				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
-					<int key="IBUIBarStyle">1</int>
-					<bool key="IBUIPrompted">NO</bool>
-				</object>
 				<reference key="IBUISimulatedBottomBarMetrics" ref="624447508"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="232601624">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUITableView" id="407634800">
@@ -4596,7 +4592,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{320, 367}</string>
 						<reference key="NSSuperview" ref="232601624"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:418</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -4613,8 +4608,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 64}, {320, 367}}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="407634800"/>
 				<string key="NSReuseIdentifierKey">_NS:196</string>
 				<reference key="IBUIBackgroundColor" ref="182350469"/>
@@ -4629,7 +4622,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUITableViewCell" id="268147524">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="806506757">
@@ -4641,7 +4634,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrameSize">{301, 43}</string>
 								<reference key="NSSuperview" ref="806506757"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:225</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -4683,7 +4675,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{-1, 9}, {302, 21}}</string>
 								<reference key="NSSuperview" ref="806506757"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="115245191"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -4716,7 +4707,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</array>
 						<string key="NSFrameSize">{302, 43}</string>
 						<reference key="NSSuperview" ref="268147524"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="407962237"/>
 						<string key="NSReuseIdentifierKey">_NS:395</string>
 						<reference key="IBUIBackgroundColor" ref="717029664"/>
@@ -4728,8 +4718,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 				</array>
 				<string key="NSFrameSize">{302, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="806506757"/>
 				<string key="NSReuseIdentifierKey">_NS:384</string>
 				<reference key="IBUIBackgroundColor" ref="717029664"/>
@@ -4738,7 +4726,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<reference key="IBUIContentView" ref="806506757"/>
 			</object>
 			<object class="IBUITableViewCell" id="33890207">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="933719504">
@@ -4750,7 +4738,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{11, 10}, {250, 21}}</string>
 								<reference key="NSSuperview" ref="933719504"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="680937965"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<reference key="IBUIBackgroundColor" ref="717029664"/>
@@ -4775,7 +4762,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{247, 4}, {35, 35}}</string>
 								<reference key="NSSuperview" ref="933719504"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:567</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -4787,7 +4773,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</array>
 						<string key="NSFrameSize">{302, 43}</string>
 						<reference key="NSSuperview" ref="33890207"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="785955503"/>
 						<string key="NSReuseIdentifierKey">_NS:395</string>
 						<reference key="IBUIBackgroundColor" ref="717029664"/>
@@ -4799,8 +4784,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 				</array>
 				<string key="NSFrameSize">{302, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="933719504"/>
 				<string key="NSReuseIdentifierKey">_NS:384</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
@@ -5131,23 +5114,11 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_segmentBarButtonItem">UIBarButtonItem</string>
-						<string key="_settingsGenreCell">UITableViewCell</string>
-						<string key="_settingsGenreLabel">UILabel</string>
-						<string key="_settingsGenreTitle">UILabel</string>
 						<string key="_settingsGotoCell">UITableViewCell</string>
 						<string key="_settingsGotoLabel">UILabel</string>
-						<string key="_settingsImageCell">UITableViewCell</string>
-						<string key="_settingsImageImage">UIImageView</string>
-						<string key="_settingsImageLabel">UILabel</string>
 						<string key="_settingsSubmitCell">UITableViewCell</string>
 						<string key="_settingsSubmitTitle">UILabel</string>
 						<string key="_settingsTableView">UITableView</string>
-						<string key="_settingsThemeCell">UITableViewCell</string>
-						<string key="_settingsThemeImage">UIImageView</string>
-						<string key="_settingsThemeTitle">UILabel</string>
-						<string key="_settingsTitleCell">UITableViewCell</string>
-						<string key="_settingsTitleLabel">UILabel</string>
-						<string key="_settingsTitleTextField">UITextField</string>
 						<string key="_tableView">UITableView</string>
 						<string key="_toolbar">UIToolbar</string>
 						<string key="viewContainer">UIView</string>
@@ -5159,36 +5130,12 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<string key="name">_segmentBarButtonItem</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="_settingsGenreCell">
-							<string key="name">_settingsGenreCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsGenreLabel">
-							<string key="name">_settingsGenreLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsGenreTitle">
-							<string key="name">_settingsGenreTitle</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="_settingsGotoCell">
 							<string key="name">_settingsGotoCell</string>
 							<string key="candidateClassName">UITableViewCell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_settingsGotoLabel">
 							<string key="name">_settingsGotoLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsImageCell">
-							<string key="name">_settingsImageCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsImageImage">
-							<string key="name">_settingsImageImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsImageLabel">
-							<string key="name">_settingsImageLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_settingsSubmitCell">
@@ -5202,30 +5149,6 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<object class="IBToOneOutletInfo" key="_settingsTableView">
 							<string key="name">_settingsTableView</string>
 							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsThemeCell">
-							<string key="name">_settingsThemeCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsThemeImage">
-							<string key="name">_settingsThemeImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsThemeTitle">
-							<string key="name">_settingsThemeTitle</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsTitleCell">
-							<string key="name">_settingsTitleCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsTitleLabel">
-							<string key="name">_settingsTitleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsTitleTextField">
-							<string key="name">_settingsTitleTextField</string>
-							<string key="candidateClassName">UITextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_tableView">
 							<string key="name">_tableView</string>
@@ -5260,7 +5183,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="MyYasoundBackground.png">{320, 450}</string>
+			<string key="MyYasoundBackground.png">{320, 480}</string>
 			<string key="bigRedButtonDown.png">{301, 43}</string>
 			<string key="bigRedButtonUp.png">{301, 43}</string>
 			<string key="btnArrowIndicator.png">{25, 25}</string>

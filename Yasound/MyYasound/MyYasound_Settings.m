@@ -19,14 +19,16 @@
 
 
 #define SECTION_GOTO 0
-#define SECTION_CONFIGURATION 1
-#define SECTION_THEME 2
-#define SECTION_PLAYLISTS 3
-#define SECTION_SUBMIT 4
+#define SECTION_STATS 1
+#define SECTION_CONFIG 2
+#define SECTION_LEGAL 3
 
-#define ROW_CONFIG_TITLE 0
-#define ROW_CONFIG_IMAGE 1
-#define ROW_CONFIG_GENRE 2
+#define ROW_GOTO 0
+#define ROW_STATS_BRIEF 0
+#define ROW_STATS_ACCESS 1
+#define ROW_CONFIG_PLAYLISTS 0
+#define ROW_CONFIG_SETTINGS 1
+#define ROW_LEGAL 0
 
 
 - (void)viewDidLoadInSettingsTableView
@@ -61,22 +63,22 @@
 
 - (NSInteger)numberOfSectionsInSettingsTableView
 {
-    return 5;
+    return 4;
 }
 
 
-- (NSString*)titleInSettingsTableViewForHeaderInSection:(NSInteger)section
-{
-    switch (section) 
-    {
-        case SECTION_GOTO: return nil;
-        case SECTION_CONFIGURATION: return NSLocalizedString(@"myyasound_settings_configuration", nil);
-        case SECTION_THEME: return NSLocalizedString(@"myyasound_settings_theme", nil);
-        case SECTION_PLAYLISTS: return NSLocalizedString(@"myyasound_settings_playlists", nil);
-        case SECTION_SUBMIT: nil;
-    }
-    return nil;
-}
+//- (NSString*)titleInSettingsTableViewForHeaderInSection:(NSInteger)section
+//{
+//    switch (section) 
+//    {
+//        case SECTION_GOTO: return nil;
+//        case SECTION_CONFIGURATION: return NSLocalizedString(@"myyasound_settings_configuration", nil);
+//        case SECTION_THEME: return NSLocalizedString(@"myyasound_settings_theme", nil);
+//        case SECTION_PLAYLISTS: return NSLocalizedString(@"myyasound_settings_playlists", nil);
+//        case SECTION_SUBMIT: nil;
+//    }
+//    return nil;
+//}
 
 
 
@@ -85,10 +87,9 @@
     switch (section) 
     {
         case SECTION_GOTO: return 1;
-        case SECTION_CONFIGURATION: return 3;
-        case SECTION_THEME: return 1;
-//        case SECTION_PLAYLISTS: return [_playlistsDesc count];
-        case SECTION_SUBMIT: return 1;
+        case SECTION_STATS: return 2;
+        case SECTION_CONFIG: return 2;
+        case SECTION_LEGAL: return 1;
     }
     return 0;
 }
@@ -97,43 +98,86 @@
 
 
 
-- (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
-{
-    if (indexPath.section == SECTION_GOTO)
-    {
-        float value = 224.f/255.f;
-        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-    }
-    else
-    {
-        float value = 246.f/255.f;
-        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-    }
-}
+//- (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
+//{
+//    if (indexPath.section == SECTION_GOTO)
+//    {
+//        float value = 224.f/255.f;
+//        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
+//    }
+//    else
+//    {
+//        float value = 246.f/255.f;
+//        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
+//    }
+//}
 
 
 - (UITableViewCell *)cellInSettingsTableViewForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    /*
+    
+//    if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
+//        return _settingsGotoCell;
+//
+//
+//    if ((indexPath.section == SECTION_SUBMIT) && (indexPath.row == 0))
+//    {
+//        UIView *backView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
+//        _settingsSubmitCell.backgroundColor = [UIColor clearColor];
+//        _settingsSubmitCell.backgroundView = backView;
+//        
+//        return _settingsSubmitCell;
+//    }
+//    
+//     */
+
     static NSString* CellIdentifier = @"Cell";
+
+    UITableViewCell *cell = [_settingsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
-        return _settingsGotoCell;
-
-
-    if ((indexPath.section == SECTION_SUBMIT) && (indexPath.row == 0))
-    {
-        UIView *backView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-        _settingsSubmitCell.backgroundColor = [UIColor clearColor];
-        _settingsSubmitCell.backgroundView = backView;
-        
-        return _settingsSubmitCell;
+    if (cell == nil) 
+    {   
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-     */
+
+    if ((indexPath.section == SECTION_GOTO) && (indexPath.row == ROW_GOTO))
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [cell.imageView setImage:[UIImage imageNamed:@"iconMyRadio.png"]];
+        cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_goto_label", nil);
+    }
+    else if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_BRIEF))
+    {
+        //cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_goto_label", nil);
+    }
+    else if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_ACCESS))
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [cell.imageView setImage:[UIImage imageNamed:@"iconStats.png"]];
+        cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_stats_label", nil);
+    }
+    else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_PLAYLISTS))
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [cell.imageView setImage:[UIImage imageNamed:@"iconPlaylists.png"]];
+        cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_config_playlists_label", nil);
+    }
+    else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_SETTINGS))
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [cell.imageView setImage:[UIImage imageNamed:@"iconSettings.png"]];
+        cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_config_settings_label", nil);
+    }
+    else if ((indexPath.section == SECTION_LEGAL) && (indexPath.row == ROW_LEGAL))
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [cell.imageView setImage:[UIImage imageNamed:@"iconLegal.png"]];
+        cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_legal_label", nil);
+    }
+
     
   
-    return nil;
+    return cell;
 }
 
 
@@ -189,16 +233,6 @@
 }
 
 
-
-
-
-#pragma mark - TextField Delegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    [textField endEditing:TRUE];
-    return FALSE;
-}
 
 
 

@@ -162,13 +162,13 @@ NSArray* gFakeUsersFavorites = nil;
 #pragma mark - TableView Source and Delegate
 
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
-{
-    if (tableView == _settingsTableView)
-        return [self titleInSettingsTableViewForHeaderInSection:section];
-    
-    return nil;
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
+//{
+//    if (tableView == _settingsTableView)
+//        return [self titleInSettingsTableViewForHeaderInSection:section];
+//    
+//    return nil;
+//}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -190,11 +190,11 @@ NSArray* gFakeUsersFavorites = nil;
 }
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    if (tableView == _settingsTableView)
-        [self willDisplayCellInSettingsTableView:cell forRowAtIndexPath:indexPath];
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//    if (tableView == _settingsTableView)
+//        [self willDisplayCellInSettingsTableView:cell forRowAtIndexPath:indexPath];
+//}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
