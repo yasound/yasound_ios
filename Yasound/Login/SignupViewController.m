@@ -1,29 +1,30 @@
 //
-//  HomeViewController.m
+//  SignupViewController.m
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 07/12/11.
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
-#import "HomeViewController.h"
-#import "LoginViewController.h"
 #import "SignupViewController.h"
-
-
-#define ROW_LOGIN 0
-#define ROW_SIGNUP 1
+#import "SettingsViewController.h"
 
 
 
-@implementation HomeViewController
+#define ROW_USERNAME 0
+#define ROW_PWORD 1
+#define ROW_EMAIL 0
+
+
+
+@implementation SignupViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.title =  NSLocalizedString(@"HomeView_title", nil);        
+        self.title =  NSLocalizedString(@"SignupView_title", nil);        
     }
     return self;
 }
@@ -31,7 +32,6 @@
 
 - (void) dealloc
 {
-    [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,8 +48,16 @@
 {
     [super viewDidLoad];
     
-    _facebookLoginLabel.text = NSLocalizedString(@"HomeView_facebook_label", nil);
-    _twitterLoginLabel.text = NSLocalizedString(@"HomeView_twitter_label", nil);
+    _cellUsernameLabel.text = NSLocalizedString(@"SignupView_username_label", nil);
+    _cellUsernameTextfield.placeholder = NSLocalizedString(@"SignupView_username_placeholder", nil);
+    
+    _cellPwordLabel.text = NSLocalizedString(@"SignupView_pword_label", nil);
+    _cellPwordTextfield.placeholder = NSLocalizedString(@"SignupView_pword_placeholder", nil);
+    
+    _cellEmailLabel.text = NSLocalizedString(@"SignupView_email_label", nil);
+    _cellEmailTextfield.placeholder = NSLocalizedString(@"SignupView_email_placeholder", nil);
+
+    _submitLabel.text = NSLocalizedString(@"SignupView_submit_label", nil);
 }
 
 
@@ -62,8 +70,7 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self 
 //                                             selector:@selector (keyboardDidHide:)
 //                                                 name: UIKeyboardDidHideNotification object:nil];
-    
-    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
+    [_tableView reloadData];
     
 }
 
@@ -100,7 +107,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 
@@ -108,7 +115,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return 2;
+    if (section == 0)
+        return 2;
+    return 1;
 }
 
 
@@ -123,57 +132,46 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    static NSString* CellIdentifier = @"Cell";
+    if ((indexPath.section == 0) && (indexPath.row == ROW_USERNAME))
+        return _cellUsername;
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) 
-    {   
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    switch (indexPath.row)
-    {
-        case ROW_LOGIN: 
-        {
-            cell.textLabel.text = NSLocalizedString(@"HomeView_login_label", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            break;
-        }
-            
-        case ROW_SIGNUP: 
-        {
-            cell.textLabel.text = NSLocalizedString(@"HomeView_signup_label", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            break;
-        }
+    if ((indexPath.section == 0) && (indexPath.row == ROW_PWORD))
+        return _cellPword;
 
-    }
-    
-    return cell;
+    if ((indexPath.section == 1) && (indexPath.row == ROW_EMAIL))
+        return _cellEmail;
+
+    return nil;
 }
 
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == ROW_LOGIN)
-    {
-        LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-        return;
-    }
 
-    if (indexPath.row == ROW_SIGNUP)
-    {
-        SignupViewController* view = [[SignupViewController alloc] initWithNibName:@"SignupViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-        return;
-    }
 }
 
+
+
+
+#pragma mark - TextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == _cellUsernameTextfield)
+    {
+        [_cellPwordTextfield becomeFirstResponder];
+    }
+    else if (textField == _cellPwordTextfield)
+    {
+        [_cellEmailTextfield becomeFirstResponder];
+    }
+    else
+    {
+        [textField resignFirstResponder];    
+    }
+    return YES;
+}
 
 
 
@@ -182,14 +180,9 @@
 #pragma mark - IBActions
 
 
-- (IBAction) onFacebook:(id)sender
+- (IBAction) onSubmit:(id)sender
 {
 
-}
-
-- (IBAction) onTwitter:(id)sender
-{
-    
 }
 
 
