@@ -98,10 +98,13 @@
     [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
     
-    // header avatar
+    // header avatar, as a second back button
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
     _radioImage = [[WebImageView alloc] initWithImageFrame:sheet.frame];
-    [_headerView addSubview:_radioImage];
+    btn = [[UIButton alloc] initWithFrame:sheet.frame];
+    [btn.imageView addSubview:_radioImage];
+    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+    [_headerView addSubview:btn];
     
     // header avatar mask
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];

@@ -183,18 +183,14 @@
 
 - (void)didSelectInSettingsTableViewRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-     if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
+     if ((indexPath.section == SECTION_GOTO) && (indexPath.row == ROW_GOTO))
     {
-        _settingsGotoLabel.textColor = [UIColor whiteColor];
-        
         RadioViewController* view = [[RadioViewController alloc] init];
-        self.navigationController.navigationBarHidden = YES;
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
-
+/*
 
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(unselect:) userInfo:indexPath repeats:NO];
      */
