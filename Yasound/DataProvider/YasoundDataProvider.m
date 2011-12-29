@@ -55,6 +55,7 @@ static YasoundDataProvider* _main = nil;
     NSLog(@"use DEV SERVER '%@'", baseUrl);
 #endif
     _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];
+    _communicator.appCookie = self.appCookie;
     
     NSMutableDictionary* resourceNames = [Model resourceNames];
     [resourceNames setObject:@"radio" forKey:[Radio class]];
@@ -80,10 +81,17 @@ static YasoundDataProvider* _main = nil;
   return auth;
 }
 
-- (AuthCookie*)appAuth
+- (NSHTTPCookie*)appCookie
 {
-  AuthCookie* auth = [[AuthCookie alloc] initWithUsername:APP_KEY_COOKIE_NAME andCookieValue:APP_KEY_IPHONE];
-  return auth;
+  NSDictionary* properties = [[[NSMutableDictionary alloc] init] autorelease];
+  [properties setValue:APP_KEY_IPHONE forKey:NSHTTPCookieValue];
+  [properties setValue:APP_KEY_COOKIE_NAME forKey:NSHTTPCookieName];
+  [properties setValue:@"yasound.com" forKey:NSHTTPCookieDomain];
+  [properties setValue:[NSDate dateWithTimeIntervalSinceNow:60*60] forKey:NSHTTPCookieExpires];
+  [properties setValue:@"/yasound/app_auth" forKey:NSHTTPCookiePath];
+  NSHTTPCookie* cookie = [[NSHTTPCookie alloc] initWithProperties:properties];
+  
+  return cookie;
 }
 
 - (NSURL*)urlForPicture:(NSString*)picturePath
@@ -111,10 +119,9 @@ static YasoundDataProvider* _main = nil;
   user.name = username;
   user.password = pwd;
   
-  AuthCookie* auth = [self appAuth];
   NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", user.username, @"username", user.password, @"password", nil];
   
-  [_communicator postNewObject:user withURL:@"api/v1/signup" absolute:NO notifyTarget:self byCalling:@selector(didReceiveSignup:withInfo:) withUserData:userData withAuth:auth returnNewObject:NO withAuthForGET:NO];
+  [_communicator postNewObject:user withURL:@"api/v1/signup" absolute:NO notifyTarget:self byCalling:@selector(didReceiveSignup:withInfo:) withUserData:userData withAuth:nil returnNewObject:NO withAuthForGET:NO];
 }
 
 - (void)didReceiveSignup:(NSString*)location withInfo:(NSDictionary*)info
@@ -199,7 +206,7 @@ static YasoundDataProvider* _main = nil;
   User* u = nil;
   if (!users || [users count] == 0)
   {
-    NSError* err = [NSError errorWithDomain:@"no logged users" code:1 userInfo:nil];
+    NSError* err = [NSError errorWithDomain:@"no logged user" code:1 userInfo:nil];
     [finalInfo setValue:err forKey:@"error"];
   }
   else
@@ -226,6 +233,44 @@ static YasoundDataProvider* _main = nil;
   }
 }
 
+
+- (void)loginThirdParty:(NSString*)username uid:(NSString*)uid type:(NSString*)type token:(NSString*)token target:(id)target action:(SEL)selector
+{
+  AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid andToken:token];
+  NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+  [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/login_social/" absolute:NO notifyTarget:self byCalling:@selector(didReceiveLoginSocial:withInfo:) withUserData:data withAuth:auth];
+}
+
+- (void)didReceiveLoginSocial:(NSArray*)users withInfo:(NSDictionary*)info
+{
+  NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] init];
+  
+  User* u = nil;
+  if (!users || [users count] == 0)
+  {
+    NSError* err = [NSError errorWithDomain:@"no logged user" code:1 userInfo:nil];
+    [finalInfo setValue:err forKey:@"error"];
+  }
+  else
+  {
+    u = [users objectAtIndex:0];
+  }
+  
+  if (u && u.api_key)
+  {
+    _user = u;
+    _apiKey = u.api_key;
+  }
+  
+  NSDictionary* userData = [info valueForKey:@"userData"];
+  id target = [userData valueForKey:@"clientTarget"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+  
+  if (target && selector)
+  {
+    [target performSelector:selector withObject:_user withObject:finalInfo];
+  }
+}
 
 
 

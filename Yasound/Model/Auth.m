@@ -63,29 +63,31 @@
 @end
 
 
-@implementation AuthCookie
 
-- (id)initWithUsername:(NSString *)name andCookieValue:(NSString*)val
+
+@implementation AuthSocial
+
+- (id)initWithUsername:(NSString *)name  accountType:(NSString*)type uid:(NSString*)uid andToken:(NSString*)token
 {
   self = [super initWithUsername:name];
   if (self)
   {
-    _cookieValue = val;
+    _accountType = type;
+    _uid = uid;
+    _token = token;
   }
   return self;
 }
 
-- (NSHTTPCookie*)cookie
+- (NSArray*)urlParams
 {
-  NSDictionary* properties = [[[NSMutableDictionary alloc] init] autorelease];
-  [properties setValue:_cookieValue forKey:NSHTTPCookieValue];
-  [properties setValue:username forKey:NSHTTPCookieName];
-  [properties setValue:@"yasound.com" forKey:NSHTTPCookieDomain];
-  [properties setValue:[NSDate dateWithTimeIntervalSinceNow:60*60] forKey:NSHTTPCookieExpires];
-  [properties setValue:@"/yasound/app_auth" forKey:NSHTTPCookiePath];
-  NSHTTPCookie* cookie = [[NSHTTPCookie alloc] initWithProperties:properties];
-
-  return cookie;
+  NSMutableArray* params = [[NSMutableArray alloc] initWithCapacity:4];
+  
+  [params addObject:[NSString stringWithFormat:@"account_type=%@", _accountType]];
+  [params addObject:[NSString stringWithFormat:@"uid=%@", _uid]];
+  [params addObject:[NSString stringWithFormat:@"token=%@", _token]];
+  [params addObject:[NSString stringWithFormat:@"name=%@", username]];
+  return params;
 }
 
 @end

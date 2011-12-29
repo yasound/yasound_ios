@@ -11,6 +11,7 @@
 #import "BundleFileManager.h"
 #import "SettingsViewController.h"
 
+#import "YasoundDataProvider.h"
 
 
 #define ROW_USERNAME 0
@@ -57,7 +58,6 @@
     
     _submitLabel.text = NSLocalizedString(@"LoginView_submit_label", nil);
 }
-
 
 - (void)viewDidAppear:(BOOL)animated
 {

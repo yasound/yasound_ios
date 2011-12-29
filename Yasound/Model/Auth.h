@@ -40,14 +40,16 @@
 @end
 
 
-@interface AuthCookie : Auth 
+@interface AuthSocial : Auth 
 {
-  NSString* _cookieValue;
+  NSString* _accountType;
+  NSString* _uid;
+  NSString* _token;
 }
 
-- (NSHTTPCookie*)cookie;
+- (id)initWithUsername:(NSString *)name  accountType:(NSString*)type uid:(NSString*)uid andToken:(NSString*)token;
 
-
+- (NSArray*)urlParams;
 @end
 
 
