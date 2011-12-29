@@ -24,7 +24,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.title =  NSLocalizedString(@"SignupView_title", nil);        
+        self.title =  NSLocalizedString(@"SignupView_title", nil);   
     }
     return self;
 }
@@ -64,20 +64,12 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector (keyboardDidShow:)
-//                                                 name: UIKeyboardDidShowNotification object:nil];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self 
-//                                             selector:@selector (keyboardDidHide:)
-//                                                 name: UIKeyboardDidHideNotification object:nil];
     [_tableView reloadData];
     
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidUnload
@@ -157,6 +149,18 @@
 
 #pragma mark - TextField Delegate
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (textField == _cellEmailTextfield)
+    {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        _tableView.contentInset = UIEdgeInsetsMake(0, 0.0, 0, 0.0);
+        [UIView commitAnimations];
+    }
+}
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField == _cellUsernameTextfield)
@@ -169,6 +173,11 @@
     }
     else
     {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        _tableView.contentInset = UIEdgeInsetsMake(96, 0.0, 0, 0.0);
+        [UIView commitAnimations];
+        
         [textField resignFirstResponder];    
 
         // activate "submit" button
@@ -181,6 +190,8 @@
         else
             _submitBtn.enabled = NO;
     }
+    
+    
     return YES;
 }
 
@@ -211,6 +222,7 @@
     //    + (void)close;
     //    UIAlertView* 
 }
+
 
 
 
