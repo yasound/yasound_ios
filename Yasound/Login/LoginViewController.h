@@ -12,18 +12,14 @@
 
 @interface LoginViewController : TrackedUIViewController
 {
-    BOOL _firstTime;
-    BOOL _keyboardVisible;
-    BOOL _loginViewVisible;
-    BOOL _yasoundSignupViewVisible;
-    
-    UIBarButtonItem* _backBtn;
-    
-    //.............................................
     IBOutlet UIView* _container;
     IBOutlet UIView* _defaultView;    
     IBOutlet UIView* _loginView;
     IBOutlet UITableView* _tableView;
+    
+    //...............................................
+    IBOutlet UILabel* _facebookLoginLabel;
+    IBOutlet UILabel* _twitterLoginLabel;
 
     //.............................................
     IBOutlet UITableViewCell* _yasoundLoginCellUsername;
@@ -59,6 +55,10 @@
 @interface LoginViewController (YasoundSignup)
 
 - (IBAction)onSignupCanceled:(id)sender;
+
+- (IBAction) onBack:(id)sender;
+- (IBAction) onFacebook:(id)sender;
+- (IBAction) onTwitter:(id)sender;
 
 - (void) yasoundSignup_ViewDidLoad;
 
