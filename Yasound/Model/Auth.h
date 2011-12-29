@@ -17,8 +17,6 @@
 
 - (id)initWithUsername:(NSString*)name;
 
-- (NSArray*)urlParams;
-
 @end
 
 @interface AuthPassword : Auth 
@@ -36,7 +34,20 @@
   NSString* apiKey;
 }
 
-@property (retain, nonatomic) NSString* apiKey;
-
 - (id)initWithUsername:(NSString *)name andApiKey:(NSString*)key;
+
+- (NSArray*)urlParams;
 @end
+
+
+@interface AuthCookie : Auth 
+{
+  NSString* _cookieValue;
+}
+
+- (NSHTTPCookie*)cookie;
+
+
+@end
+
+

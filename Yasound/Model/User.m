@@ -11,13 +11,15 @@
 @implementation User
 
 @synthesize username;
-@synthesize first_name;
-@synthesize last_name;
+@synthesize password;
+@synthesize name;
+@synthesize api_key;
+@synthesize email;
 @synthesize picture;
 
 - (NSString*)toString
 {
-  NSString* desc = [NSString stringWithFormat:@"id: '%@' username: '%@', first name: '%@', last name: '%@'", self.id, self.username, self.first_name, self.last_name];
+  NSString* desc = [NSString stringWithFormat:@"id: '%@' username: '%@', name: '%@'", self.id, self.username, self.name];
   return desc;
 }
 

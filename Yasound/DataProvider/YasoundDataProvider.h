@@ -30,16 +30,26 @@ taskStatus stringToStatus(NSString* str);
 {
   Communicator* _communicator;
   User* _user;
-  ApiKey* _apiKey;
+//  ApiKey* _apiKey;
+  NSString* _apiKey;
   NSString* _password;
 }
 
 @property (readonly) Auth* apiKeyAuth;
 @property (readonly) Auth* passwordAuth;
+@property (readonly) AuthCookie* appAuth;
 
 + (YasoundDataProvider*) main;
 
-- (void)login:(NSString*)login password:(NSString*)pwd target:(id)target action:(SEL)selector;
+// Yasound
+- (void)signup:(NSString*)username password:(NSString*)pwd email:(NSString*)email target:(id)target action:(SEL)selector;
+- (void)login:(NSString*)username password:(NSString*)pwd target:(id)target action:(SEL)selector;
+
+- (void)loginThirdParty:(NSString*)username uid:(NSString*)uid type:(NSString*)type token:(NSString*)token target:(id)target action:(SEL)selector;
+
+
+
+
 
 - (void)radiosTarget:(id)target action:(SEL)selector;
 - (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;

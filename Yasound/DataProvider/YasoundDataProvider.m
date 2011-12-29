@@ -10,10 +10,21 @@
 #import "ApiKey.h"
 
 
-#define USE_LOCAL_SERVER 0
+#define USE_LOCAL_SERVER 1
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"
+
+#define APP_KEY_COOKIE_NAME @"app_key"
+#define APP_KEY_IPHONE @"yasound_iphone_app"
+
+@interface YasoundDataProvider (internal)
+
+- (void)login:(NSString*)username password:(NSString*)pwd target:(id)target action:(SEL)selector userData:(NSDictionary*)userData;
+
+@end
+
+
 
 @implementation YasoundDataProvider
 
@@ -59,13 +70,19 @@ static YasoundDataProvider* _main = nil;
 
 - (Auth*)apiKeyAuth
 {
-  AuthApiKey* auth = [[AuthApiKey alloc] initWithUsername:_user.username andApiKey:_apiKey.key];
+  AuthApiKey* auth = [[AuthApiKey alloc] initWithUsername:_user.username andApiKey:_apiKey];
   return auth;
 }
 
 - (Auth*)passwordAuth
 {
   AuthPassword* auth = [[AuthPassword alloc] initWithUsername:_user.username andPassword:_password];
+  return auth;
+}
+
+- (AuthCookie*)appAuth
+{
+  AuthCookie* auth = [[AuthCookie alloc] initWithUsername:APP_KEY_COOKIE_NAME andCookieValue:APP_KEY_IPHONE];
   return auth;
 }
 
@@ -79,34 +96,100 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)apiKey
+
+
+
+// SIGN UP
+- (void)signup:(NSString*)username password:(NSString*)pwd email:(NSString*)email target:(id)target action:(SEL)selector
 {
+  _user = nil;
   _apiKey = nil;
-  Auth* a = [self passwordAuth];
-  [_communicator getObjectsWithClass:[ApiKey class] notifyTarget:self byCalling:@selector(receiveApiKeys:withInfo:) withUserData:nil withAuth:a];
+  
+  User* user = [[User alloc] init];
+  user.username = email;
+  user.email = email;
+  user.name = username;
+  user.password = pwd;
+  
+  AuthCookie* auth = [self appAuth];
+  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", user.username, @"username", user.password, @"password", nil];
+  
+  [_communicator postNewObject:user withURL:@"api/v1/signup" absolute:NO notifyTarget:self byCalling:@selector(didReceiveSignup:withInfo:) withUserData:userData withAuth:auth returnNewObject:NO withAuthForGET:NO];
 }
 
-- (void)receiveApiKeys:(NSArray*)keys withInfo:(NSDictionary*)info
+- (void)didReceiveSignup:(NSString*)location withInfo:(NSDictionary*)info
 {
-  ApiKey* key = nil;
-  if (!keys || [keys count] == 0)
+  NSDictionary* userData = [info valueForKey:@"userData"];
+  if (!userData)
     return;
   
-  key = [keys objectAtIndex:0];
-  if (!key)
-    return;
+  id target = [userData valueForKey:@"clientTarget"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+  NSString* username = [userData valueForKey:@"username"];
+  NSString* pwd = [userData valueForKey:@"password"];
   
-  _apiKey = key;
-  NSLog(@"api key received '%@' for user '%@'", _apiKey.key, _user.username);
+  NSError* error = [info valueForKey:@"error"];
+  if (error)
+  {
+    NSLog(@"signup error: %@", error.domain);    
+    if (target && selector)
+    {
+      NSDictionary* finalInfo = [NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil];
+      [target performSelector:selector withObject:nil withObject:finalInfo];
+    }
+  }
+  NSDictionary* loginUserData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+  
+  [self login:username password:pwd target:self action:@selector(didReceiveNewUserLogin:withInfo:) userData:loginUserData];
 }
 
-- (void)login:(NSString*)login password:(NSString*)pwd target:(id)target action:(SEL)selector
+- (void)didReceiveNewUserLogin:(User*)user withInfo:(NSDictionary*)info
+{
+  NSDictionary* userData = [info valueForKey:@"userData"];
+  if (!userData)
+    return;
+  
+  NSDictionary* finalInfo = [[NSMutableDictionary alloc] init];
+  
+  id target = [userData valueForKey:@"clientTarget"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+  NSError* error = [info valueForKey:@"error"];
+  if (error)
+  {
+    NSLog(@"login error: %@", error.domain);    
+    [finalInfo setValue:error forKey:@"error"];
+  }
+  
+  if (user && user.api_key)
+  {
+    _user = user;
+    _apiKey = user.api_key;
+  }
+  else
+  {
+    error = [NSError errorWithDomain:@"user invalid" code:2 userInfo:nil];
+    [finalInfo setValue:error forKey:@"error"];
+  }
+
+  if (target && selector)
+  {
+    [target performSelector:selector withObject:user withObject:finalInfo];
+  }
+
+}
+
+- (void)login:(NSString*)username password:(NSString*)pwd target:(id)target action:(SEL)selector userData:(NSDictionary*)userData
 {
   _user = nil;
   _password = pwd;
-  Auth* a = [[AuthPassword alloc] initWithUsername:login andPassword:_password];
-  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"finalTarget", NSStringFromSelector(selector), @"finalSelector", nil];
-  [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/login" absolute:NO notifyTarget:self byCalling:@selector(receiveLogin:withInfo:) withUserData:userData withAuth:a];
+  Auth* a = [[AuthPassword alloc] initWithUsername:username andPassword:_password];
+  NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", userData, @"clientData", nil];
+  [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/login" absolute:NO notifyTarget:self byCalling:@selector(receiveLogin:withInfo:) withUserData:data withAuth:a];
+}
+
+- (void)login:(NSString*)username password:(NSString*)pwd target:(id)target action:(SEL)selector
+{
+  [self login:username password:pwd target:target action:selector userData:nil];
 }
 
 - (void)receiveLogin:(NSArray*)users withInfo:(NSDictionary*)info
@@ -124,25 +207,24 @@ static YasoundDataProvider* _main = nil;
     u = [users objectAtIndex:0];
   }
   
-  if (u)
+  if (u && u.api_key)
   {
     _user = u;
-    [self apiKey];
+    _apiKey = u.api_key;
   }
   
   NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"finalTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
+  id target = [userData valueForKey:@"clientTarget"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+  NSDictionary* clientData = [userData valueForKey:@"clientData"];
+  if (clientData)
+    [finalInfo setValue:clientData forKey:@"userData"];
   
   if (target && selector)
   {
     [target performSelector:selector withObject:_user withObject:finalInfo];
   }
 }
-
-
-
-
 
 
 

@@ -65,7 +65,6 @@
 		BC49890414A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890514A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890614A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
-		BC49890914A107DF00873381 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F314A107DF00873381 /* Auth.m */; };
 		BC49890A14A107DF00873381 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
 		BC49890B14A107DF00873381 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
 		BC49890C14A107DF00873381 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
@@ -610,8 +609,6 @@
 		BC4988D6149F4FE800873381 /* LoginViewController_YasoundSignup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController_YasoundSignup.m; path = Login/LoginViewController_YasoundSignup.m; sourceTree = "<group>"; };
 		BC4988F014A107DF00873381 /* ApiKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
 		BC4988F114A107DF00873381 /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
-		BC4988F214A107DF00873381 /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
-		BC4988F314A107DF00873381 /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
 		BC4988F414A107DF00873381 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
 		BC4988F514A107DF00873381 /* Playlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Playlist.m; sourceTree = "<group>"; };
 		BC4988F614A107DF00873381 /* Radio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radio.h; sourceTree = "<group>"; };
@@ -990,8 +987,6 @@
 			children = (
 				BC4988F014A107DF00873381 /* ApiKey.h */,
 				BC4988F114A107DF00873381 /* ApiKey.m */,
-				BC4988F214A107DF00873381 /* Auth.h */,
-				BC4988F314A107DF00873381 /* Auth.m */,
 				BC4988F414A107DF00873381 /* Playlist.h */,
 				BC4988F514A107DF00873381 /* Playlist.m */,
 				BC4988F614A107DF00873381 /* Radio.h */,
@@ -2051,7 +2046,6 @@
 				BCA2CCDC149A95800000637E /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BC4988DC149F4FE900873381 /* LoginViewController_YasoundSignup.m in Sources */,
 				BC49890614A107DF00873381 /* ApiKey.m in Sources */,
-				BC49890914A107DF00873381 /* Auth.m in Sources */,
 				BC49890C14A107DF00873381 /* Playlist.m in Sources */,
 				BC49890F14A107DF00873381 /* Radio.m in Sources */,
 				BC49891214A107DF00873381 /* Song.m in Sources */,
