@@ -12,6 +12,9 @@
 
 @interface LoginViewController : TrackedUIViewController
 {
+    IBOutlet UIBarButtonItem* _backBtn;
+    IBOutlet UILabel* _titleLabel;
+
     IBOutlet UITableView* _tableView;
     
     //.............................................
@@ -24,10 +27,10 @@
     IBOutlet UITextField* _cellPwordTextfield;
 
     IBOutlet UIButton* _submitBtn;
-    IBOutlet UILabel* _submitLabel;    
 }
 
 
+- (IBAction)onBack:(id)sender;
 - (IBAction) onSubmit:(id)sender;
 
 @end

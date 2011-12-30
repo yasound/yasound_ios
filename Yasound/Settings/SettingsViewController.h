@@ -12,6 +12,17 @@
 
 @interface SettingsViewController : TrackedUIViewController
 {
+    BOOL _wizard;
+    BOOL _changed;
+    
+    IBOutlet UIView* _container;
+    
+    IBOutlet UIToolbar* _toolbar;
+    IBOutlet UIBarButtonItem* _backBtn;
+    IBOutlet UILabel* _titleLabel;
+    UIBarButtonItem* _nextBtn;
+
+    
     IBOutlet UITableView* _tableView;  
 
     IBOutlet UITableViewCell* _settingsTitleCell;
@@ -29,6 +40,8 @@
     NSString* _keywords;
 
 }
+
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;
 
 
 @end
