@@ -29,7 +29,8 @@
                          withError:nil];
     
     navigationController = [[UINavigationController alloc] init];
-    [navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+//    [navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+    navigationController.navigationBarHidden = YES;
 
   [self.window makeKeyAndVisible];
 

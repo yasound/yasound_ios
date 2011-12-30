@@ -51,13 +51,16 @@
 {
     [super viewDidLoad];
     
+    _titleLabel.text = NSLocalizedString(@"LoginView_title", nil);
+    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+
     _cellUsernameLabel.text = NSLocalizedString(@"LoginView_username_label", nil);
     _cellUsernameTextfield.placeholder = NSLocalizedString(@"LoginView_username_placeholder", nil);
     
     _cellPwordLabel.text = NSLocalizedString(@"LoginView_pword_label", nil);
     _cellPwordTextfield.placeholder = NSLocalizedString(@"LoginView_pword_placeholder", nil);
     
-    _submitBtn.titleLabel.text = NSLocalizedString(@"LoginView_submit_label", nil);
+    [_submitBtn setTitle:NSLocalizedString(@"LoginView_submit_label", nil) forState:UIControlStateNormal];
     
     _submitBtn.enabled = NO;
 }
@@ -179,6 +182,12 @@
 
 
 #pragma mark - IBActions
+
+
+- (IBAction)onBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 - (IBAction) onSubmit:(id)sender

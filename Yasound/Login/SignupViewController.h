@@ -12,6 +12,9 @@
 
 @interface SignupViewController : TrackedUIViewController
 {
+    IBOutlet UIBarButtonItem* _backBtn;
+    IBOutlet UILabel* _titleLabel;
+
     //.............................................
     IBOutlet UITableView* _tableView;
     
@@ -32,6 +35,7 @@
 }
 
 
+- (IBAction)onBack:(id)sender;
 - (IBAction) onSubmit:(id)sender;
 
 @end

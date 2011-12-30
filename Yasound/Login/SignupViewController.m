@@ -48,6 +48,9 @@
 {
     [super viewDidLoad];
     
+    _titleLabel.text = NSLocalizedString(@"SignupView_title", nil);
+    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+
     _cellUsernameLabel.text = NSLocalizedString(@"SignupView_username_label", nil);
     _cellUsernameTextfield.placeholder = NSLocalizedString(@"SignupView_username_placeholder", nil);
     
@@ -57,7 +60,7 @@
     _cellEmailLabel.text = NSLocalizedString(@"SignupView_email_label", nil);
     _cellEmailTextfield.placeholder = NSLocalizedString(@"SignupView_email_placeholder", nil);
 
-    _submitBtn.titleLabel.text = NSLocalizedString(@"SignupView_submit_label", nil);
+    [_submitBtn setTitle:NSLocalizedString(@"SignupView_submit_label", nil) forState:UIControlStateNormal];
     _submitBtn.enabled = NO;
 }
 
@@ -200,6 +203,13 @@
 
 
 #pragma mark - IBActions
+
+
+- (IBAction)onBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 
 - (IBAction) onSubmit:(id)sender
