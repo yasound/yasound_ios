@@ -71,13 +71,14 @@
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     // next button in toolbar
-    if (_wizard)
-    {
+    //LBDEBUG
+//    if (_wizard)
+//    {
         _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
         NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
         [items addObject:_nextBtn];
         [_toolbar setItems:items animated:NO];
-    }
+//    }
 
     
     
