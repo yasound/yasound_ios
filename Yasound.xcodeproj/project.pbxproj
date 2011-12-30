@@ -234,6 +234,12 @@
 		BCC408B3148D15F8001C02E4 /* bigRedButtonUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AC148D15F8001C02E4 /* bigRedButtonUp.png */; };
 		BCC408B4148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AD148D15F8001C02E4 /* bigRedButtonUp@2x.png */; };
 		BCC408B5148D15F8001C02E4 /* bigRedButtonUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AD148D15F8001C02E4 /* bigRedButtonUp@2x.png */; };
+		BCCA790714AE14090011AADD /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
+		BCCA790814AE14090011AADD /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
+		BCCA790914AE14090011AADD /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
+		BCCA790A14AE14090011AADD /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
+		BCCA790B14AE14090011AADD /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
+		BCCA790C14AE14090011AADD /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BCDC94EB14A8CB3500D54631 /* loginIcon26Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94DE14A8CB3500D54631 /* loginIcon26Facebook.png */; };
 		BCDC94EC14A8CB3500D54631 /* loginIcon26Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94DE14A8CB3500D54631 /* loginIcon26Facebook.png */; };
@@ -837,6 +843,9 @@
 		BCC408AB148D15F8001C02E4 /* bigRedButtonDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigRedButtonDown@2x.png"; sourceTree = "<group>"; };
 		BCC408AC148D15F8001C02E4 /* bigRedButtonUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonUp.png; sourceTree = "<group>"; };
 		BCC408AD148D15F8001C02E4 /* bigRedButtonUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigRedButtonUp@2x.png"; sourceTree = "<group>"; };
+		BCCA790414AE14080011AADD /* LegalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LegalViewController.h; path = Settings/LegalViewController.h; sourceTree = "<group>"; };
+		BCCA790514AE14090011AADD /* LegalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LegalViewController.m; path = Settings/LegalViewController.m; sourceTree = "<group>"; };
+		BCCA790614AE14090011AADD /* LegalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LegalViewController.xib; path = Settings/LegalViewController.xib; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
 		BCDC94DE14A8CB3500D54631 /* loginIcon26Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIcon26Facebook.png; sourceTree = "<group>"; };
@@ -1389,6 +1398,9 @@
 				BCBAB4A014A240B300CF922A /* PlaylistsViewController.h */,
 				BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */,
 				BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */,
+				BCCA790414AE14080011AADD /* LegalViewController.h */,
+				BCCA790514AE14090011AADD /* LegalViewController.m */,
+				BCCA790614AE14090011AADD /* LegalViewController.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -2134,6 +2146,7 @@
 				BCDC983814ACDEA200D54631 /* iconSettings@2x.png in Resources */,
 				BCDC983B14ACDEA200D54631 /* iconStats.png in Resources */,
 				BCDC983E14ACDEA200D54631 /* iconStats@2x.png in Resources */,
+				BCCA790B14AE14090011AADD /* LegalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2264,6 +2277,7 @@
 				BCDC983714ACDEA200D54631 /* iconSettings@2x.png in Resources */,
 				BCDC983A14ACDEA200D54631 /* iconStats.png in Resources */,
 				BCDC983D14ACDEA200D54631 /* iconStats@2x.png in Resources */,
+				BCCA790A14AE14090011AADD /* LegalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2394,6 +2408,7 @@
 				BCDC983914ACDEA200D54631 /* iconSettings@2x.png in Resources */,
 				BCDC983C14ACDEA200D54631 /* iconStats.png in Resources */,
 				BCDC983F14ACDEA200D54631 /* iconStats@2x.png in Resources */,
+				BCCA790C14AE14090011AADD /* LegalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2496,6 +2511,7 @@
 				BCDC97EF14AB9B2800D54631 /* HomeViewController.m in Sources */,
 				BCDC97F814AB9BF300D54631 /* LoginViewController.m in Sources */,
 				BCDC981114ACB44300D54631 /* SignupViewController.m in Sources */,
+				BCCA790814AE14090011AADD /* LegalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2595,6 +2611,7 @@
 				BCDC97EE14AB9B2800D54631 /* HomeViewController.m in Sources */,
 				BCDC97F714AB9BF300D54631 /* LoginViewController.m in Sources */,
 				BCDC981014ACB44300D54631 /* SignupViewController.m in Sources */,
+				BCCA790714AE14090011AADD /* LegalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2693,6 +2710,7 @@
 				BCDC97F014AB9B2800D54631 /* HomeViewController.m in Sources */,
 				BCDC97F914AB9BF300D54631 /* LoginViewController.m in Sources */,
 				BCDC981214ACB44300D54631 /* SignupViewController.m in Sources */,
+				BCCA790914AE14090011AADD /* LegalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
