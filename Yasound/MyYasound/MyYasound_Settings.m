@@ -11,6 +11,8 @@
 #import "BundleFileManager.h"
 #import "RadioViewController.h"
 #import "ActivityAlertView.h"
+#import "PlaylistsViewController.h"
+#import "SettingsViewController.h"
 #import "PlaylistMoulinor.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -33,17 +35,6 @@
 
 - (void)viewDidLoadInSettingsTableView
 {
-    /*
-    //..................................................................................
-    // init GUI
-    //
-    _settingsGotoLabel.text = NSLocalizedString(@"myyasound_settings_goto_label", nil);
-    
-    
-    _settingsSubmitTitle.text = NSLocalizedString(@"myyasound_settings_submit_title", nil);
-    
-    
-     */
     
 
 }
@@ -115,21 +106,6 @@
 
 - (UITableViewCell *)cellInSettingsTableViewForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    
-//    if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
-//        return _settingsGotoCell;
-//
-//
-//    if ((indexPath.section == SECTION_SUBMIT) && (indexPath.row == 0))
-//    {
-//        UIView *backView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-//        _settingsSubmitCell.backgroundColor = [UIColor clearColor];
-//        _settingsSubmitCell.backgroundView = backView;
-//        
-//        return _settingsSubmitCell;
-//    }
-//    
-//     */
 
     static NSString* CellIdentifier = @"Cell";
 
@@ -188,45 +164,31 @@
         RadioViewController* view = [[RadioViewController alloc] init];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
+        return;
     }
     
-/*
+    
+    if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_PLAYLISTS))
+    {
+        PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:NO];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
+    }
+    
 
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(unselect:) userInfo:indexPath repeats:NO];
-     */
+    if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_SETTINGS))
+    {
+        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:NO];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
+    }
+
+
 }
 
 
-
-- (void)unselect:(NSTimer*)timer
-{
-    /*
-    NSIndexPath* indexPath = timer.userInfo;
-    UITableViewCell* cell = [_settingsTableView cellForRowAtIndexPath:indexPath];
-    cell.selected = FALSE;
-    
-    if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
-    {
-        _settingsGotoLabel.textColor = [UIColor blackColor];
-    }
-    
-    else if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_IMAGE))
-    {
-        _settingsImageLabel.textColor = [UIColor blackColor];
-    }
-    
-    else if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_GENRE))
-    {
-        _settingsGenreLabel.textColor = [UIColor blackColor];
-    }
-    
-    else if (indexPath.section == SECTION_THEME)
-    {
-        _settingsThemeTitle.textColor = [UIColor blackColor];
-    }
-     */
-    
-}
 
 
 
