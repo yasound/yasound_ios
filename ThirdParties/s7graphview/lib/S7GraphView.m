@@ -36,6 +36,20 @@
 
 #import "S7GraphView.h"
 
+#define FONT_SIZE_INFO 9.0f
+#define FONT_SIZE_VALUES 9.0f
+
+#define MARGIN_TOP 4.0f
+
+#define OFFSET_X_MIN 10.f
+#define OFFSET_X_STEP 8.f
+
+#define AXIS_Y_WIDTH_STEP 7.f
+
+#define OFFSET_Y_MIN 20.0f
+#define AXIS_X_OFFSET 16.f
+
+
 @interface S7GraphView (PrivateMethods)
 
 - (void)initializeComponent;
@@ -80,11 +94,24 @@
 @synthesize drawAxisX = _drawAxisX, drawAxisY = _drawAxisY, drawGridX = _drawGridX, drawGridY = _drawGridY;
 @synthesize xValuesColor = _xValuesColor, yValuesColor = _yValuesColor, gridXColor = _gridXColor, gridYColor = _gridYColor;
 @synthesize drawInfo = _drawInfo, info = _info, infoColor = _infoColor;
+@synthesize plotColor;
+@synthesize fillColor;
+@synthesize spotColor;
+@synthesize spotBorderColor;
 
-- (id)initWithFrame:(CGRect)frame {
-	
-    if (self = [super initWithFrame:frame]) {
+
+- (id)initWithFrame:(CGRect)frame 
+{
+    CGRect frameWithSpacing = CGRectMake(frame.origin.x, frame.origin.y + MARGIN_TOP, frame.size.width, frame.size.height - MARGIN_TOP);
+    
+    if (self = [super initWithFrame:frameWithSpacing]) 
+    {
 		[self initializeComponent];
+    
+        self.plotColor = RGB(5, 141, 191); 
+        self.fillColor = RGBA(5, 141, 191, 48); 
+        self.spotColor = RGB(5, 141, 191); 
+        self.spotBorderColor = RGB(5, 141, 191); 
     }
 	
     return self;
@@ -131,13 +158,15 @@
 	
 //	CGFloat offsetX = _drawAxisY ? 60.0f : 10.0f;
     //LBDEBUG offsetY : 30 -> 24
-	CGFloat offsetX = _drawAxisY ? 10.0f : 10.0f;
-	CGFloat offsetY = (_drawAxisX || _drawInfo) ? 24.0f : 10.0f;
+//	CGFloat offsetX = _drawAxisY ? 10.0f : 10.0f;
+	CGFloat offsetX = OFFSET_X_MIN;
+//	CGFloat offsetY = (_drawAxisX || _drawInfo) ? 24.0f : 10.0f;
+	CGFloat offsetY = OFFSET_Y_MIN;
 	
 	CGFloat minY = 0.0;
 	CGFloat maxY = 0.0;
 	
-	UIFont *font = [UIFont systemFontOfSize:10.0f];
+	UIFont *font = [UIFont systemFontOfSize:FONT_SIZE_VALUES];
 	
 	for (NSUInteger plotIndex = 0; plotIndex < numberOfPlots; plotIndex++) {
 		
@@ -165,7 +194,7 @@
     CGFloat tmp = maxY / 10;
     while (tmp > 1)
     {
-        offsetX += 10;
+        offsetX += OFFSET_X_STEP;
         tmp = tmp / 10;
     }
 
@@ -242,7 +271,7 @@
             CGFloat tmp = maxY / 10;
             while (tmp > 1)
             {
-                width += 8.0f;
+                width += AXIS_Y_WIDTH_STEP;
                 tmp = tmp / 10;
             }
             
@@ -328,7 +357,7 @@
 			}
 			
 			[self.xValuesColor set];
-			[valueString drawInRect:CGRectMake(x, self.frame.size.height - 20.0f, 120.0f, 20.0f) withFont:font
+			[valueString drawInRect:CGRectMake(x, self.frame.size.height - AXIS_X_OFFSET, 120.0f, 20.0f) withFont:font
 					  lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
 		}
 	}
@@ -346,7 +375,9 @@
 			shouldFill = [self.dataSource graphView:self shouldFillPlot:plotIndex];
 		}
 		
-		CGColorRef plotColor = [S7GraphView colorByIndex:plotIndex].CGColor;
+        //LBDEBUG
+		CGColorRef plotColor = self.plotColor.CGColor;
+		CGColorRef fillColor = self.fillColor.CGColor;
 		
 		for (NSUInteger valueIndex = 0; valueIndex < values.count - 1; valueIndex++) {
 			
@@ -377,15 +408,16 @@
 				CGContextAddLineToPoint(c, endPoint.x, self.frame.size.height - offsetY);
 				CGContextClosePath(c);
 				
-				CGContextSetFillColorWithColor(c, plotColor);
+				CGContextSetFillColorWithColor(c, fillColor);
 				CGContextFillPath(c);
 			}
 		}
 	}
 	
-	if (_drawInfo) {
+	if (_drawInfo) 
+    {
 		
-		font = [UIFont boldSystemFontOfSize:10.0f];
+		font = [UIFont boldSystemFontOfSize:FONT_SIZE_INFO];
 		[self.infoColor set];
 		[_info drawInRect:CGRectMake(0.0f, 5.0f, self.frame.size.width, 20.0f) withFont:font
 			lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];

@@ -135,6 +135,12 @@
 @property (nonatomic, retain) UIColor *gridXColor;
 @property (nonatomic, retain) UIColor *gridYColor;
 
+@property (nonatomic, retain) UIColor* plotColor;
+@property (nonatomic, retain) UIColor* fillColor;
+@property (nonatomic, retain) UIColor* spotColor;
+@property (nonatomic, retain) UIColor* spotBorderColor;
+
+
 @property (nonatomic, assign) BOOL drawInfo;
 @property (nonatomic, copy) NSString *info;
 @property (nonatomic, retain) UIColor *infoColor;
