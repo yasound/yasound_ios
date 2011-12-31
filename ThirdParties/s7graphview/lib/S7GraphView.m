@@ -47,7 +47,7 @@
 
 #define AXIS_Y_WIDTH_STEP 7.f
 
-#define OFFSET_Y_MIN 20.0f
+#define OFFSET_Y_MIN 22.0f
 #define AXIS_X_OFFSET 16.f
 #define AXIS_X_WIDTH 70.f
 
@@ -104,13 +104,15 @@
 @synthesize spotBorderColor;
 
 
-- (id)initWithFrame:(CGRect)frame 
+- (id)initWithFrame:(CGRect)frame minimalDisplay:(BOOL)minimalDisplay
 {
     CGRect frameWithSpacing = CGRectMake(frame.origin.x, frame.origin.y + MARGIN_TOP, frame.size.width, frame.size.height - MARGIN_TOP);
     
     if (self = [super initWithFrame:frameWithSpacing]) 
     {
-		[self initializeComponent];
+        _minimalDisplay = minimalDisplay;
+        
+        [self initializeComponent];
     
         self.plotColor = RGB(5, 141, 191); 
         self.fillColor = RGBA(5, 141, 191, 48); 
@@ -201,6 +203,15 @@
         offsetX += OFFSET_X_STEP;
         tmp = tmp / 10;
     }
+    
+    // update label width, depending on the values to write
+    CGFloat axisYLabelWidth = 8.0f;
+    tmp = maxY / 10;
+    while (tmp > 1)
+    {
+        axisYLabelWidth += AXIS_Y_WIDTH_STEP;
+        tmp = tmp / 10;
+    }
 
     //LBDEBUG
 //    if ((maxY > 10) && (maxY < 100)) {
@@ -223,6 +234,15 @@
     // LBDEBUG
 //	CGFloat stepY = (self.frame.size.height - (offsetY*2)) / maxY;
 	CGFloat stepY = (self.frame.size.height - (offsetY)) / maxY;
+    
+    NSMutableArray* values = [self.dataSource graphView:self yValuesForPlot:0];
+    NSArray *sortedValuesForAxisY;
+    sortedValuesForAxisY = [values sortedArrayUsingComparator:^(id a, id b) 
+    {
+        NSInteger first = [a integerValue];
+        NSInteger second = [b integerValue];
+        return (first > second);
+    }];
 	
 	for (NSUInteger i = 0; i < 6; i++) {
 
@@ -239,10 +259,12 @@
 			lineDash[1] = 6.0f;
 			
 			CGContextSetLineDash(c, 0.0f, lineDash, 2);
-			CGContextSetLineWidth(c, 0.1f);
+			CGContextSetLineWidth(c, 0.05f);
 			
 			CGPoint startPoint = CGPointMake(offsetX, self.frame.size.height - y - offsetY);
-			CGPoint endPoint = CGPointMake(self.frame.size.width - offsetX, self.frame.size.height - y - offsetY);
+            //LBDEBUG
+//			CGPoint endPoint = CGPointMake(self.frame.size.width - offsetX, self.frame.size.height - y - offsetY);
+			CGPoint endPoint = CGPointMake(self.frame.size.width - MARGIN_RIGHT, self.frame.size.height - y - offsetY);
 			
 			CGContextMoveToPoint(c, startPoint.x, startPoint.y);
 			CGContextAddLineToPoint(c, endPoint.x, endPoint.y);
@@ -254,10 +276,16 @@
 
 		//LBDEBUG
 //		if (i > 0 && _drawAxisY) 
-            if (i > 0 && (i & 1) && _drawAxisY) 
+        //ICI
+//        if (!(i & 1) && _drawAxisY) 
+        // draw axisY here, only if it's not in minimal display
+        if (_drawAxisY && !_minimalDisplay)
         {
-			
-			NSNumber *valueToFormat = [NSNumber numberWithInt:value];
+
+			//LBDEBUG
+//			NSNumber *valueToFormat = [NSNumber numberWithInt:value];
+            
+			NSNumber *valueToFormat = [NSNumber numberWithInt:[[sortedValuesForAxisY objectAtIndex:i] intValue]];
 			NSString *valueString;
 			
 			if (_yValuesFormatter) {
@@ -270,21 +298,47 @@
             //LBDEBUG
 //			CGRect valueStringRect = CGRectMake(0.0f, self.frame.size.height - y - offsetY, 50.0f, 20.0f);
             
-            // update label width, depending on the values to write
-            CGFloat width = 8.0f;
-            CGFloat tmp = maxY / 10;
-            while (tmp > 1)
-            {
-                width += AXIS_Y_WIDTH_STEP;
-                tmp = tmp / 10;
-            }
             
-			CGRect valueStringRect = CGRectMake(0.0f, self.frame.size.height - y - offsetY, width, 20.0f);
+			CGRect valueStringRect = CGRectMake(0.0f, self.frame.size.height - y - offsetY - (FONT_SIZE_INFO-2), axisYLabelWidth, FONT_SIZE_INFO+2);
 			
 			[valueString drawInRect:valueStringRect withFont:font
 					  lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentRight];
 		}
 	}
+    
+    
+    
+    // minidisplay : only display min and max values
+    if (_drawAxisY && _minimalDisplay)
+    {
+        int int_minY = (int)minY;
+        int int_maxY = (int)maxY;
+        NSNumber* num_minY = [NSNumber numberWithInt:int_minY];
+        NSNumber* num_maxY = [NSNumber numberWithInt:int_maxY];
+        NSString* str_minY;
+        NSString* str_maxY;
+            
+        if (_yValuesFormatter) 
+        {
+            str_minY = [_yValuesFormatter stringForObjectValue:num_minY];
+            str_maxY = [_yValuesFormatter stringForObjectValue:num_maxY];
+        }
+        else 
+        {
+            str_minY = [num_minY stringValue];
+            str_maxY = [num_maxY stringValue];
+        }
+            
+        [self.yValuesColor set];
+        
+        CGRect rect_minY = CGRectMake(0.0f, self.frame.size.height - offsetY - (FONT_SIZE_INFO-2), axisYLabelWidth, FONT_SIZE_INFO+2);
+        CGRect rect_maxY = CGRectMake(0.0f, 0, axisYLabelWidth, FONT_SIZE_INFO+2);
+        
+        [str_minY drawInRect:rect_minY withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentRight];
+        [str_maxY drawInRect:rect_maxY withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentRight];
+    }
+
+    
 	
 	NSUInteger maxStep;
 	

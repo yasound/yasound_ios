@@ -20,9 +20,9 @@
 
 @implementation ChartView
 
-- (id) initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame minimalDisplay:(BOOL)minimalDisplay
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:frame minimalDisplay:minimalDisplay];
     if (self)
     {
         self.dataSource = self;

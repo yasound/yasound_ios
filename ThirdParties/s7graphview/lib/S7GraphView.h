@@ -119,6 +119,8 @@
 	BOOL _drawInfo;
 	NSString *_info;
 	UIColor *_infoColor;
+    
+    BOOL _minimalDisplay;
 }
 
 /** Returns a different color for the first 10 plots. */
@@ -150,6 +152,7 @@
 @property (nonatomic, copy) NSString *info;
 @property (nonatomic, retain) UIColor *infoColor;
 
+- (id)initWithFrame:(CGRect)frame minimalDisplay:(BOOL)minimalDisplay;
 - (void)reloadData;
 
 @end

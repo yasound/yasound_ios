@@ -13,7 +13,7 @@
 {
 }
 
-- (id) initWithFrame:(CGRect)frame;
+- (id)initWithFrame:(CGRect)frame minimalDisplay:(BOOL)minimalDisplay;
 
 
 
