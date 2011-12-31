@@ -41,7 +41,7 @@
 //        NSString *format = [dateFormatter dateFormat];
 //        format = [format stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
 //        format = [format stringByReplacingOccurrencesOfString:@"y" withString:@""];
-        NSString* format = [NSString stringWithString:@"mm-dd"];
+        NSString* format = [NSString stringWithString:@"MM-dd"];
         [dateFormatter setDateFormat:format];
         
         self.xValuesFormatter = dateFormatter;

@@ -40,6 +40,7 @@
 #define FONT_SIZE_VALUES 9.0f
 
 #define MARGIN_TOP 4.0f
+#define MARGIN_RIGHT 12.0f
 
 #define OFFSET_X_MIN 10.f
 #define OFFSET_X_STEP 8.f
@@ -48,6 +49,7 @@
 
 #define OFFSET_Y_MIN 20.0f
 #define AXIS_X_OFFSET 16.f
+#define AXIS_X_WIDTH 70.f
 
 #define SPOT_RADIUS 2.0f
 
@@ -308,15 +310,22 @@
 		step = 1;
 		maxStep = xValuesCount;
 	}
-	
-	CGFloat stepX = (self.frame.size.width - (offsetX * 2)) / (xValuesCount - 1);
+
+	//LBDEBUG
+//	CGFloat stepX = (self.frame.size.width - (offsetX * 2)) / (xValuesCount - 1);
+	CGFloat stepX = (self.frame.size.width - (offsetX + MARGIN_RIGHT)) / (xValuesCount - 1);
+//	CGFloat stepX = (self.frame.size.width - (offsetX * 2)) / (xValuesCount );
 	
 	for (NSUInteger i = 0; i < maxStep; i++) {
 		
 		NSUInteger x = (i * step) * stepX;
 		
-		if (x > self.frame.size.width - (offsetX * 2)) {
-			x = self.frame.size.width - (offsetX * 2);
+        //LBDEBUG
+//		if (x > self.frame.size.width - (offsetX * 2)) {
+//			x = self.frame.size.width - (offsetX * 2);
+//		}
+		if (x > self.frame.size.width - (offsetX + MARGIN_RIGHT)) {
+			x = self.frame.size.width - (offsetX + MARGIN_RIGHT);
 		}
 		
 		NSUInteger index = i * step;
@@ -359,12 +368,14 @@
 			}
 			
 			[self.xValuesColor set];
-			[valueString drawInRect:CGRectMake(x, self.frame.size.height - AXIS_X_OFFSET, 120.0f, 20.0f) withFont:font
+			[valueString drawInRect:CGRectMake(x, self.frame.size.height - AXIS_X_OFFSET, AXIS_X_WIDTH, 20.0f) withFont:font
 					  lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
 		}
 	}
-	
-	stepX = (self.frame.size.width - (offsetX * 2)) / (xValuesCount - 1);
+
+	//LBDEBUG
+//	stepX = (self.frame.size.width - (offsetX * 2)) / (xValuesCount - 1);
+	stepX = (self.frame.size.width - (offsetX + MARGIN_RIGHT)) / (xValuesCount - 1);
 	
 	CGContextSetLineDash(c, 0, NULL, 0);
 	
