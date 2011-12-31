@@ -13,7 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
-		BCCA797514AE1CCF0011AADD /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA797314AE1CCF0011AADD /* S7GraphView.m */; };
+		BCCA798414AE230C0011AADD /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798214AE230C0011AADD /* S7GraphView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,9 +31,9 @@
 		9D8C268710DE1699003C461A /* S7GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = S7GraphView.h; path = ../../Shared/s7graphview/S7GraphView.h; sourceTree = SOURCE_ROOT; };
 		9D8C268810DE1699003C461A /* S7GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = S7GraphView.m; path = ../../Shared/s7graphview/S7GraphView.m; sourceTree = SOURCE_ROOT; };
 		9D8C268910DE1699003C461A /* S7Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = S7Macros.h; path = ../../Shared/s7graphview/S7Macros.h; sourceTree = SOURCE_ROOT; };
-		BCCA797214AE1CCF0011AADD /* S7GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7GraphView.h; sourceTree = "<group>"; };
-		BCCA797314AE1CCF0011AADD /* S7GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S7GraphView.m; sourceTree = "<group>"; };
-		BCCA797414AE1CCF0011AADD /* S7Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7Macros.h; sourceTree = "<group>"; };
+		BCCA798114AE230C0011AADD /* S7GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7GraphView.h; sourceTree = "<group>"; };
+		BCCA798214AE230C0011AADD /* S7GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S7GraphView.m; sourceTree = "<group>"; };
+		BCCA798314AE230C0011AADD /* S7Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7Macros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +53,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				BCCA797114AE1CCF0011AADD /* s7graphview */,
+				BCCA798014AE230C0011AADD /* lib */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* DemoS7GraphViewAppDelegate.h */,
@@ -120,15 +120,15 @@
 			name = Shared;
 			sourceTree = "<group>";
 		};
-		BCCA797114AE1CCF0011AADD /* s7graphview */ = {
+		BCCA798014AE230C0011AADD /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				BCCA797214AE1CCF0011AADD /* S7GraphView.h */,
-				BCCA797314AE1CCF0011AADD /* S7GraphView.m */,
-				BCCA797414AE1CCF0011AADD /* S7Macros.h */,
+				BCCA798114AE230C0011AADD /* S7GraphView.h */,
+				BCCA798214AE230C0011AADD /* S7GraphView.m */,
+				BCCA798314AE230C0011AADD /* S7Macros.h */,
 			);
-			name = s7graphview;
-			path = ../../s7graphview;
+			name = lib;
+			path = ../../lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,7 +194,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* DemoS7GraphViewAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
-				BCCA797514AE1CCF0011AADD /* S7GraphView.m in Sources */,
+				BCCA798414AE230C0011AADD /* S7GraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

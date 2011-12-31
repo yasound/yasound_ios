@@ -116,7 +116,8 @@
 	[super dealloc];
 }
 
-- (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect 
+{
 	
 	CGContextRef c = UIGraphicsGetCurrentContext();
 	CGContextSetFillColorWithColor(c, self.backgroundColor.CGColor);
@@ -128,47 +129,73 @@
 		return;
 	}
 	
-	CGFloat offsetX = _drawAxisY ? 60.0f : 10.0f;
-	CGFloat offsetY = (_drawAxisX || _drawInfo) ? 30.0f : 10.0f;
+//	CGFloat offsetX = _drawAxisY ? 60.0f : 10.0f;
+    //LBDEBUG offsetY : 30 -> 24
+	CGFloat offsetX = _drawAxisY ? 10.0f : 10.0f;
+	CGFloat offsetY = (_drawAxisX || _drawInfo) ? 24.0f : 10.0f;
 	
 	CGFloat minY = 0.0;
 	CGFloat maxY = 0.0;
 	
-	UIFont *font = [UIFont systemFontOfSize:11.0f];
+	UIFont *font = [UIFont systemFontOfSize:10.0f];
 	
 	for (NSUInteger plotIndex = 0; plotIndex < numberOfPlots; plotIndex++) {
 		
 		NSArray *values = [self.dataSource graphView:self yValuesForPlot:plotIndex];
 		
-		for (NSUInteger valueIndex = 0; valueIndex < values.count; valueIndex++) {
-			
-			if ([[values objectAtIndex:valueIndex] floatValue] > maxY) {
+		for (NSUInteger valueIndex = 0; valueIndex < values.count; valueIndex++) 
+        {
+            CGFloat yValue = [[values objectAtIndex:valueIndex] floatValue];
+            
+			if (yValue > maxY) 
+            {
 				maxY = [[values objectAtIndex:valueIndex] floatValue];
 			}
 		}
 	}
-	
-	if (maxY < 100) {
-		maxY = ceil(maxY / 10) * 10;
-	} 
-	
-	if (maxY > 100 && maxY < 1000) {
-		maxY = ceil(maxY / 100) * 100;
-	} 
-	
-	if (maxY > 1000 && maxY < 10000) {
-		maxY = ceil(maxY / 1000) * 1000;
-	}
-	
-	if (maxY > 10000 && maxY < 100000) {
-		maxY = ceil(maxY / 10000) * 10000;
-	}
+
+	//LBDEBUG
+//	if (maxY < 100) {
+    
+//    maxY = ceil(maxY + (maxY / 2.f));
+    maxY = ceil(maxY);
+    
+    //LBDEBUG
+    // update offsetX, depending on maxY (to have enough space to write the Y values)
+    CGFloat tmp = maxY / 10;
+    while (tmp > 1)
+    {
+        offsetX += 10;
+        tmp = tmp / 10;
+    }
+
+    //LBDEBUG
+//    if ((maxY > 10) && (maxY < 100)) {
+//		maxY = ceil(maxY / 10) * 10;
+//	} 
+//	
+//	if (maxY > 100 && maxY < 1000) {
+//		maxY = ceil(maxY / 100) * 100;
+//	} 
+//	
+//	if (maxY > 1000 && maxY < 10000) {
+//		maxY = ceil(maxY / 1000) * 1000;
+//	}
+//	
+//	if (maxY > 10000 && maxY < 100000) {
+//		maxY = ceil(maxY / 10000) * 10000;
+//	}
 	
 	CGFloat step = (maxY - minY) / 5;
-	CGFloat stepY = (self.frame.size.height - (offsetY * 2)) / maxY;
+    // LBDEBUG
+//	CGFloat stepY = (self.frame.size.height - (offsetY*2)) / maxY;
+	CGFloat stepY = (self.frame.size.height - (offsetY)) / maxY;
 	
 	for (NSUInteger i = 0; i < 6; i++) {
-		
+
+		//LBDEBUG
+//		NSUInteger y = (i * step) * stepY;
+//		NSUInteger value = i * step;
 		NSUInteger y = (i * step) * stepY;
 		NSUInteger value = i * step;
 		
@@ -191,8 +218,11 @@
 			CGContextSetStrokeColorWithColor(c, self.gridYColor.CGColor);
 			CGContextStrokePath(c);
 		}
-		
-		if (i > 0 && _drawAxisY) {
+
+		//LBDEBUG
+//		if (i > 0 && _drawAxisY) 
+            if (i > 0 && (i & 1) && _drawAxisY) 
+        {
 			
 			NSNumber *valueToFormat = [NSNumber numberWithInt:value];
 			NSString *valueString;
@@ -204,7 +234,19 @@
 			}
 			
 			[self.yValuesColor set];
-			CGRect valueStringRect = CGRectMake(0.0f, self.frame.size.height - y - offsetY, 50.0f, 20.0f);
+            //LBDEBUG
+//			CGRect valueStringRect = CGRectMake(0.0f, self.frame.size.height - y - offsetY, 50.0f, 20.0f);
+            
+            // update label width, depending on the values to write
+            CGFloat width = 8.0f;
+            CGFloat tmp = maxY / 10;
+            while (tmp > 1)
+            {
+                width += 8.0f;
+                tmp = tmp / 10;
+            }
+            
+			CGRect valueStringRect = CGRectMake(0.0f, self.frame.size.height - y - offsetY, width, 20.0f);
 			
 			[valueString drawInRect:valueStringRect withFont:font
 					  lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentRight];
@@ -343,7 +385,7 @@
 	
 	if (_drawInfo) {
 		
-		font = [UIFont boldSystemFontOfSize:13.0f];
+		font = [UIFont boldSystemFontOfSize:10.0f];
 		[self.infoColor set];
 		[_info drawInRect:CGRectMake(0.0f, 5.0f, self.frame.size.width, 20.0f) withFont:font
 			lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];

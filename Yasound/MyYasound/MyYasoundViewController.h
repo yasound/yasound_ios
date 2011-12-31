@@ -7,29 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChartView.h"
 
-@interface MyYasoundViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface MyYasoundViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, S7GraphViewDataSource>
 {
-  UIView* _viewCurrent;
-  IBOutlet UIToolbar* _toolbar;
-  IBOutlet UIBarButtonItem* _segmentBarButtonItem;
-  UISegmentedControl* _segmentControl;
-  
-  
-  // my yasound settings
-  IBOutlet UITableView* _settingsTableView;
+    UIView* _viewCurrent;
+    IBOutlet UIToolbar* _toolbar;
+    IBOutlet UIBarButtonItem* _segmentBarButtonItem;
+    UISegmentedControl* _segmentControl;
 
-  IBOutlet UITableViewCell* _settingsGotoCell;
-  IBOutlet UILabel* _settingsGotoLabel;
 
-  
-  IBOutlet UITableViewCell* _settingsSubmitCell;
-  IBOutlet UILabel* _settingsSubmitTitle;
-  
-  
-  // radio selection  
-  IBOutlet UITableView* _tableView;  
+    // my yasound settings
+    IBOutlet UITableView* _settingsTableView;
+
+    IBOutlet UITableViewCell* _settingsGotoCell;
+    IBOutlet UILabel* _settingsGotoLabel;
+
+
+    IBOutlet UITableViewCell* _settingsSubmitCell;
+    IBOutlet UILabel* _settingsSubmitTitle;
+
+
+    // radio selection  
+    IBOutlet UITableView* _tableView;  
     
+    UIView* _graphBoundingBox;
+    ChartView* _graphView;
 }
 
 //LBDEBUG
@@ -58,6 +61,7 @@ extern NSArray* gFakeUsersFavorites;
 - (NSString*)titleInSettingsTableViewForHeaderInSection:(NSInteger)section;
 - (NSInteger)numberOfSectionsInSettingsTableView;
 - (NSInteger)numberOfRowsInSettingsTableViewSection:(NSInteger)section;
+- (CGFloat)heightInSettingsForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
 - (UITableViewCell *)cellInSettingsTableViewForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (void)didSelectInSettingsTableViewRowAtIndexPath:(NSIndexPath *)indexPath;

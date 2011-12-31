@@ -189,6 +189,15 @@ NSArray* gFakeUsersFavorites = nil;
     return [self numberOfRowsInSelectionTableViewSection:section];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == _settingsTableView)
+        return [self heightInSettingsForRowAtIndexPath:indexPath];
+    
+    return 44;
+}
+
+
 
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 //{

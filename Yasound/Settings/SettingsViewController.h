@@ -15,6 +15,8 @@
     BOOL _wizard;
     BOOL _changed;
     
+
+    
     IBOutlet UIView* _container;
     
     IBOutlet UIToolbar* _toolbar;
