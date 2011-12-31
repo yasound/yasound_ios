@@ -33,10 +33,15 @@
 #define ROW_LEGAL 0
 
 
+#define GRAPH_X 5
+#define GRAPH_Y 5
+#define GRAPH_WIDTH 290
+#define GRAPH_HEIGHT 72
+
 - (void)viewDidLoadInSettingsTableView
 {
-    
-
+    _graphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+//    _graphView.dataSource = self;
 }
 
 
@@ -44,6 +49,13 @@
 - (void)deallocInSettingsTableView
 {
 }
+
+
+
+
+
+
+
 
 
 
@@ -86,6 +98,13 @@
 }
 
 
+- (CGFloat) heightInSettingsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_BRIEF))
+        return GRAPH_HEIGHT;
+    
+    return 44;
+}
 
 
 
@@ -124,7 +143,16 @@
     }
     else if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_BRIEF))
     {
-        //cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_goto_label", nil);
+        CGRect frame = CGRectMake(GRAPH_X, GRAPH_Y, GRAPH_WIDTH, GRAPH_HEIGHT - GRAPH_Y - 2);
+        _graphBoundingBox = [[UIView alloc] initWithFrame:frame];
+        [cell.contentView addSubview:_graphBoundingBox];
+
+        frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        _graphView.frame = frame;
+        [_graphBoundingBox addSubview:_graphView];
+        _graphView.clipsToBounds = YES;
+
+        
     }
     else if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_ACCESS))
     {
@@ -226,6 +254,14 @@
 {
     [ActivityAlertView close];
 }
+
+
+
+
+
+
+
+
 
 
 @end
