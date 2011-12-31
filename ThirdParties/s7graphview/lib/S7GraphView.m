@@ -49,6 +49,8 @@
 #define OFFSET_Y_MIN 20.0f
 #define AXIS_X_OFFSET 16.f
 
+#define SPOT_RADIUS 2.0f
+
 
 @interface S7GraphView (PrivateMethods)
 
@@ -370,6 +372,7 @@
 		
 		NSArray *values = [self.dataSource graphView:self yValuesForPlot:plotIndex];
 		BOOL shouldFill = NO;
+		BOOL shouldDrawSpot = YES;
 		
 		if ([self.dataSource respondsToSelector:@selector(graphView:shouldFillPlot:)]) {
 			shouldFill = [self.dataSource graphView:self shouldFillPlot:plotIndex];
@@ -378,8 +381,11 @@
         //LBDEBUG
 		CGColorRef plotColor = self.plotColor.CGColor;
 		CGColorRef fillColor = self.fillColor.CGColor;
+		CGColorRef spotColor = self.spotColor.CGColor;
+		CGColorRef spotBorderColor = self.spotBorderColor.CGColor;
 		
-		for (NSUInteger valueIndex = 0; valueIndex < values.count - 1; valueIndex++) {
+		for (NSUInteger valueIndex = 0; valueIndex < values.count; valueIndex++) 
+        {
 			
 			NSUInteger x = valueIndex * stepX;
 			NSUInteger y = [[values objectAtIndex:valueIndex] intValue] * stepY;
@@ -388,10 +394,24 @@
 			
 			CGPoint startPoint = CGPointMake(x + offsetX, self.frame.size.height - y - offsetY);
 			
-			x = (valueIndex + 1) * stepX;
-			y = [[values objectAtIndex:valueIndex + 1] intValue] * stepY;
+            if (valueIndex == values.count - 1)
+            {
+                x = (valueIndex) * stepX;
+                y = [[values objectAtIndex:valueIndex] intValue] * stepY;
+            }
+            else
+            {
+                x = (valueIndex + 1) * stepX;
+                y = [[values objectAtIndex:valueIndex + 1] intValue] * stepY;
+            }
 			
-			CGPoint endPoint = CGPointMake(x + offsetX, self.frame.size.height - y - offsetY);
+            
+			CGPoint endPoint;
+            
+            if (valueIndex == values.count - 1)
+                endPoint = CGPointMake(x + offsetX, self.frame.size.height - y - offsetY);
+            else
+                endPoint = CGPointMake(x + offsetX, self.frame.size.height - y - offsetY);
 			
 			CGContextMoveToPoint(c, startPoint.x, startPoint.y);
 			CGContextAddLineToPoint(c, endPoint.x, endPoint.y);
@@ -400,7 +420,8 @@
 			CGContextSetStrokeColorWithColor(c, plotColor);
 			CGContextStrokePath(c);
 			
-			if (shouldFill) {
+			if (shouldFill) 
+            {
 				
 				CGContextMoveToPoint(c, startPoint.x, self.frame.size.height - offsetY);
 				CGContextAddLineToPoint(c, startPoint.x, startPoint.y);
@@ -411,6 +432,20 @@
 				CGContextSetFillColorWithColor(c, fillColor);
 				CGContextFillPath(c);
 			}
+            
+            // draw spot
+            if (shouldDrawSpot)
+            {
+                CGContextSetLineWidth(c, 1.0f);
+                CGRect spotRect = CGRectMake(startPoint.x -SPOT_RADIUS, startPoint.y -SPOT_RADIUS, SPOT_RADIUS*2, SPOT_RADIUS*2);
+                
+                CGContextSetFillColorWithColor(c, spotColor);
+                CGContextFillEllipseInRect(c, spotRect);
+                CGContextSetStrokeColorWithColor(c, spotBorderColor);
+                CGContextStrokeEllipseInRect(c, spotRect);
+            }
+            
+            
 		}
 	}
 	

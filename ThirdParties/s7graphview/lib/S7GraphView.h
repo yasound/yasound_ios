@@ -89,6 +89,11 @@
   */
 - (BOOL)graphView:(S7GraphView *)graphView shouldFillPlot:(NSUInteger)plotIndex;
 
+
+//LBDEBUG
+- (BOOL)graphView:(S7GraphView *)graphView shouldDrawSpot:(NSUInteger)plotIndex;
+
+
 @end
 
 @interface S7GraphView : UIView {

@@ -12,6 +12,12 @@
 #define RGB(R,G,B) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:1.0f]
 #endif
 
+#ifndef RGBA
+#define RGBA(R,G,B,A) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:A/255.0f]
+#endif
+
+
+
 @implementation ChartView
 
 - (id) initWithFrame:(CGRect)frame
@@ -48,8 +54,10 @@
         
 //        self.plotColor = RGB(5, 141, 191); 
 //        self.fillColor = RGB(5, 141, 191); 
-//        self.spotColor = RGB(5, 141, 191); 
-//        self.spotBorderColor = RGB(5, 141, 191); 
+//        self.spotColor = RGBA(0,0,0,128);
+//        self.spotBorderColor = RGBA(255,255,255,128);
+        self.spotColor = RGBA(200,200,200,128);
+        self.spotBorderColor = RGBA(96,96,96,128);
 //        self.backgroundColor = [UIColor redColor];
         
         self.drawAxisX = YES;
@@ -112,7 +120,7 @@
 	 And this amount should be equal to the amount of elements you return from graphViewXValues: method. */
 	NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:101];
 
-    [array addObject:[NSNumber numberWithInt:0]];
+    [array addObject:[NSNumber numberWithInt:100]];
     [array addObject:[NSNumber numberWithInt:8]];
     [array addObject:[NSNumber numberWithInt:76]];
     [array addObject:[NSNumber numberWithInt:578]];
