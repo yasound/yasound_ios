@@ -40,7 +40,7 @@
 
 - (void)viewDidLoadInSettingsTableView
 {
-    _graphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    _graphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:YES];
 //    _graphView.dataSource = self;
 }
 

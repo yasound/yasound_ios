@@ -89,6 +89,11 @@
   */
 - (BOOL)graphView:(S7GraphView *)graphView shouldFillPlot:(NSUInteger)plotIndex;
 
+
+//LBDEBUG
+- (BOOL)graphView:(S7GraphView *)graphView shouldDrawSpot:(NSUInteger)plotIndex;
+
+
 @end
 
 @interface S7GraphView : UIView {
@@ -114,6 +119,8 @@
 	BOOL _drawInfo;
 	NSString *_info;
 	UIColor *_infoColor;
+    
+    BOOL _minimalDisplay;
 }
 
 /** Returns a different color for the first 10 plots. */
@@ -135,10 +142,17 @@
 @property (nonatomic, retain) UIColor *gridXColor;
 @property (nonatomic, retain) UIColor *gridYColor;
 
+@property (nonatomic, retain) UIColor* plotColor;
+@property (nonatomic, retain) UIColor* fillColor;
+@property (nonatomic, retain) UIColor* spotColor;
+@property (nonatomic, retain) UIColor* spotBorderColor;
+
+
 @property (nonatomic, assign) BOOL drawInfo;
 @property (nonatomic, copy) NSString *info;
 @property (nonatomic, retain) UIColor *infoColor;
 
+- (id)initWithFrame:(CGRect)frame minimalDisplay:(BOOL)minimalDisplay;
 - (void)reloadData;
 
 @end
