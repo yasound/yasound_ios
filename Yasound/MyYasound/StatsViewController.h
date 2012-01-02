@@ -29,11 +29,15 @@
     IBOutlet UITableView* _tableView;  
     
     UIView* _weekGraphBoundingBox;
-    ChartView* _weekGraphView;
 
     UIView* _monthGraphBoundingBox;
-    ChartView* _monthGraphView;
 }
+
+@property (nonatomic, retain) ChartView* weekGraphView;
+@property (nonatomic, retain) ChartView* monthGraphView;
+
+
+- (void)reloadData;
 
 - (IBAction)onBack:(id)sender;
 

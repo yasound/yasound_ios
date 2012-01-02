@@ -32,19 +32,23 @@
 
 @implementation StatsViewController
 
+
+@synthesize weekGraphView;
+@synthesize monthGraphView;
+
+
+
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        _weekGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
-        [_weekGraphView retain];
+        weekGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
 
-        _monthGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
-        [_monthGraphView retain];
+        monthGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
         
-        _monthGraphView.plotColor = RGB(235,200,50);
-        _monthGraphView.fillColor = RGBA(235,200,50,64);
+        monthGraphView.plotColor = RGB(235,200,50);
+        monthGraphView.fillColor = RGBA(235,200,50,64);
 
     }
     
@@ -68,8 +72,6 @@
 
 - (void)dealloc
 {
-    [_monthGraphView release];
-    [_weekGraphView release];
     [super dealloc];
 }
 
@@ -206,9 +208,9 @@
         [cell.contentView addSubview:_weekGraphBoundingBox];
         
         frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-        _weekGraphView.frame = frame;
-        [_weekGraphBoundingBox addSubview:_weekGraphView];
-        _weekGraphView.clipsToBounds = YES;    
+        weekGraphView.frame = frame;
+        [_weekGraphBoundingBox addSubview:weekGraphView];
+        weekGraphView.clipsToBounds = YES;    
     }
 
     else if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CHART))
@@ -218,9 +220,9 @@
         [cell.contentView addSubview:_monthGraphBoundingBox];
         
         frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-        _monthGraphView.frame = frame;
-        [_monthGraphBoundingBox addSubview:_monthGraphView];
-        _monthGraphView.clipsToBounds = YES;    
+        monthGraphView.frame = frame;
+        [_monthGraphBoundingBox addSubview:monthGraphView];
+        monthGraphView.clipsToBounds = YES;    
     }
     
     return cell;
@@ -271,5 +273,15 @@
 
 
 
+#pragma mark - Properties
+
+
+- (void)reloadData
+{
+    [weekGraphView reloadData];
+    [monthGraphView reloadData];
+}
 
 @end
+
+
