@@ -246,6 +246,12 @@
 		BCCA798F14AE74630011AADD /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798E14AE74630011AADD /* ChartView.m */; };
 		BCCA799014AE74630011AADD /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798E14AE74630011AADD /* ChartView.m */; };
 		BCCA799114AE74630011AADD /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798E14AE74630011AADD /* ChartView.m */; };
+		BCCA799514B1AE520011AADD /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA799314B1AE520011AADD /* StatsViewController.m */; };
+		BCCA799614B1AE520011AADD /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA799314B1AE520011AADD /* StatsViewController.m */; };
+		BCCA799714B1AE520011AADD /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA799314B1AE520011AADD /* StatsViewController.m */; };
+		BCCA799814B1AE520011AADD /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
+		BCCA799914B1AE520011AADD /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
+		BCCA799A14B1AE520011AADD /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BCDC94EB14A8CB3500D54631 /* loginIcon26Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94DE14A8CB3500D54631 /* loginIcon26Facebook.png */; };
 		BCDC94EC14A8CB3500D54631 /* loginIcon26Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94DE14A8CB3500D54631 /* loginIcon26Facebook.png */; };
@@ -857,6 +863,9 @@
 		BCCA798914AE24D80011AADD /* S7Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = S7Macros.h; path = ThirdParties/s7graphview/lib/S7Macros.h; sourceTree = "<group>"; };
 		BCCA798D14AE74630011AADD /* ChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartView.h; path = MyYasound/ChartView.h; sourceTree = "<group>"; };
 		BCCA798E14AE74630011AADD /* ChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartView.m; path = MyYasound/ChartView.m; sourceTree = "<group>"; };
+		BCCA799214B1AE520011AADD /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsViewController.h; path = MyYasound/StatsViewController.h; sourceTree = "<group>"; };
+		BCCA799314B1AE520011AADD /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsViewController.m; path = MyYasound/StatsViewController.m; sourceTree = "<group>"; };
+		BCCA799414B1AE520011AADD /* StatsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsViewController.xib; path = MyYasound/StatsViewController.xib; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
 		BCDC94DE14A8CB3500D54631 /* loginIcon26Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIcon26Facebook.png; sourceTree = "<group>"; };
@@ -1273,6 +1282,9 @@
 				BC71F58C147FBCEA00DAE4BD /* MyYasoundViewController.h */,
 				BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */,
 				BC71F58E147FBCEA00DAE4BD /* MyYasoundViewController.xib */,
+				BCCA799214B1AE520011AADD /* StatsViewController.h */,
+				BCCA799314B1AE520011AADD /* StatsViewController.m */,
+				BCCA799414B1AE520011AADD /* StatsViewController.xib */,
 				BCCA798D14AE74630011AADD /* ChartView.h */,
 				BCCA798E14AE74630011AADD /* ChartView.m */,
 			);
@@ -2171,6 +2183,7 @@
 				BCDC983B14ACDEA200D54631 /* iconStats.png in Resources */,
 				BCDC983E14ACDEA200D54631 /* iconStats@2x.png in Resources */,
 				BCCA790B14AE14090011AADD /* LegalViewController.xib in Resources */,
+				BCCA799914B1AE520011AADD /* StatsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2302,6 +2315,7 @@
 				BCDC983A14ACDEA200D54631 /* iconStats.png in Resources */,
 				BCDC983D14ACDEA200D54631 /* iconStats@2x.png in Resources */,
 				BCCA790A14AE14090011AADD /* LegalViewController.xib in Resources */,
+				BCCA799814B1AE520011AADD /* StatsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2433,6 +2447,7 @@
 				BCDC983C14ACDEA200D54631 /* iconStats.png in Resources */,
 				BCDC983F14ACDEA200D54631 /* iconStats@2x.png in Resources */,
 				BCCA790C14AE14090011AADD /* LegalViewController.xib in Resources */,
+				BCCA799A14B1AE520011AADD /* StatsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2538,6 +2553,7 @@
 				BCCA790814AE14090011AADD /* LegalViewController.m in Sources */,
 				BCCA798B14AE24D80011AADD /* S7GraphView.m in Sources */,
 				BCCA799014AE74630011AADD /* ChartView.m in Sources */,
+				BCCA799614B1AE520011AADD /* StatsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2640,6 +2656,7 @@
 				BCCA790714AE14090011AADD /* LegalViewController.m in Sources */,
 				BCCA798A14AE24D80011AADD /* S7GraphView.m in Sources */,
 				BCCA798F14AE74630011AADD /* ChartView.m in Sources */,
+				BCCA799514B1AE520011AADD /* StatsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2741,6 +2758,7 @@
 				BCCA790914AE14090011AADD /* LegalViewController.m in Sources */,
 				BCCA798C14AE24D80011AADD /* S7GraphView.m in Sources */,
 				BCCA799114AE74630011AADD /* ChartView.m in Sources */,
+				BCCA799714B1AE520011AADD /* StatsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

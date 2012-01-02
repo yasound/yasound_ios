@@ -38,9 +38,6 @@
         [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
         [dateFormatter setDateStyle:NSDateFormatterShortStyle];
         
-//        NSString *format = [dateFormatter dateFormat];
-//        format = [format stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
-//        format = [format stringByReplacingOccurrencesOfString:@"y" withString:@""];
         NSString* format = [NSString stringWithString:@"MM-dd"];
         [dateFormatter setDateFormat:format];
         
@@ -54,8 +51,6 @@
         
 //        self.plotColor = RGB(5, 141, 191); 
 //        self.fillColor = RGB(5, 141, 191); 
-//        self.spotColor = RGBA(0,0,0,128);
-//        self.spotBorderColor = RGBA(255,255,255,128);
         self.spotColor = RGBA(200,200,200,128);
         self.spotBorderColor = RGBA(96,96,96,128);
 //        self.backgroundColor = [UIColor redColor];
@@ -120,14 +115,25 @@
 	 And this amount should be equal to the amount of elements you return from graphViewXValues: method. */
 	NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:101];
 
+    //EXEMPLE 1
+//    [array addObject:[NSNumber numberWithInt:100]];
+//    [array addObject:[NSNumber numberWithInt:8]];
+//    [array addObject:[NSNumber numberWithInt:76]];
+//    [array addObject:[NSNumber numberWithInt:578]];
+//    [array addObject:[NSNumber numberWithInt:1087]];
+//    [array addObject:[NSNumber numberWithInt:720]];
+//    [array addObject:[NSNumber numberWithInt:486]];
+
+    //EXEMPLE 2
     [array addObject:[NSNumber numberWithInt:100]];
-    [array addObject:[NSNumber numberWithInt:8]];
+    [array addObject:[NSNumber numberWithInt:200]];
     [array addObject:[NSNumber numberWithInt:76]];
-    [array addObject:[NSNumber numberWithInt:578]];
-    [array addObject:[NSNumber numberWithInt:1087]];
-    [array addObject:[NSNumber numberWithInt:720]];
-    [array addObject:[NSNumber numberWithInt:486]];
+    [array addObject:[NSNumber numberWithInt:256]];
+    [array addObject:[NSNumber numberWithInt:23]];
+    [array addObject:[NSNumber numberWithInt:189]];
+    [array addObject:[NSNumber numberWithInt:56]];
 	
+    
 	return array;
 }
 

@@ -13,6 +13,7 @@
 #import "ActivityAlertView.h"
 #import "PlaylistsViewController.h"
 #import "SettingsViewController.h"
+#import "StatsViewController.h"
 #import "PlaylistMoulinor.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -143,6 +144,8 @@
     }
     else if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_BRIEF))
     {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         CGRect frame = CGRectMake(GRAPH_X, GRAPH_Y, GRAPH_WIDTH, GRAPH_HEIGHT - GRAPH_Y - 2);
         _graphBoundingBox = [[UIView alloc] initWithFrame:frame];
         [cell.contentView addSubview:_graphBoundingBox];
@@ -211,6 +214,14 @@
         [self.navigationController pushViewController:view animated:YES];
         [view release];
         return;
+    }
+    
+    if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_ACCESS))
+    {
+        StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;    
     }
 
 
