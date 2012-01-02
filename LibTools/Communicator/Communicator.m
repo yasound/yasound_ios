@@ -76,6 +76,8 @@
   else
   {
     url = [NSURL URLWithString:_baseURL];
+    if ([path hasPrefix:@"/"] && path.length > 1)
+      path = [path substringFromIndex:1];
     url = [url URLByAppendingPathComponent:path];
   }
   

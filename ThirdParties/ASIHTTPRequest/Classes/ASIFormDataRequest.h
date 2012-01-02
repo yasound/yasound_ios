@@ -59,7 +59,7 @@ typedef enum _ASIPostFormat {
 - (void)setFile:(NSString *)filePath withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key;
 
 // Add the contents of an NSData object to the request
-- (void)  forKey:(NSString *)key;
+- (void)addData:(NSData *)data forKey:(NSString *)key;
 
 // Same as above, but you can specify the content-type and file name
 - (void)addData:(id)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key;

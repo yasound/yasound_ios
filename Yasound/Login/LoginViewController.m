@@ -63,22 +63,6 @@
     [_submitBtn setTitle:NSLocalizedString(@"LoginView_submit_label", nil) forState:UIControlStateNormal];
     
     _submitBtn.enabled = NO;
-  
-  User* user = [[User alloc] init];
-  UIImage* img = [UIImage imageNamed:@"Icon.png"];
-  [[YasoundDataProvider main] setPicture:img forUser:user target:self action:@selector(didUploadUserPicture:withInfo:)];
-}
-
-- (void)didUploadUserPicture:(NSString*)response withInfo:(NSDictionary*)info
-{
-  NSError* error = [info valueForKey:@"error"];
-  if (error)
-  {
-    NSLog(@"error %d - %@", error.code, error.domain);
-    return;
-  }
-  
-  NSLog(response);
 }
 
 - (void)viewDidAppear:(BOOL)animated

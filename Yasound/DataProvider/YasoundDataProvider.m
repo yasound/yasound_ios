@@ -10,7 +10,7 @@
 #import "ApiKey.h"
 
 
-#define USE_LOCAL_SERVER 1
+#define USE_LOCAL_SERVER 0
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"
@@ -300,11 +300,17 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/picture", radio.id];
+  [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+}
 
 
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
 {
-  [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:@"api/v1/user/1/picture" absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+  NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
+  [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
 }
 
 
