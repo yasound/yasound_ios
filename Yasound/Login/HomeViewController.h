@@ -12,9 +12,8 @@
 
 @interface HomeViewController : TrackedUIViewController
 {
-    IBOutlet UIView* _container;
-    IBOutlet UIView* _defaultView;    
-    IBOutlet UIView* _loginView;
+    IBOutlet UILabel* _titleLabel;
+
     IBOutlet UITableView* _tableView;
     
     //...............................................

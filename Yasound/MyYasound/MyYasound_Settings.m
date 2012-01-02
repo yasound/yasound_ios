@@ -11,7 +11,11 @@
 #import "BundleFileManager.h"
 #import "RadioViewController.h"
 #import "ActivityAlertView.h"
+#import "PlaylistsViewController.h"
+#import "SettingsViewController.h"
+#import "StatsViewController.h"
 #import "PlaylistMoulinor.h"
+#import "S7Macros.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -31,28 +35,31 @@
 #define ROW_LEGAL 0
 
 
+#define GRAPH_X 5
+#define GRAPH_Y 5
+#define GRAPH_WIDTH 290
+#define GRAPH_HEIGHT 72
+
 - (void)viewDidLoadInSettingsTableView
 {
-    /*
-    //..................................................................................
-    // init GUI
-    //
-    _settingsGotoLabel.text = NSLocalizedString(@"myyasound_settings_goto_label", nil);
-    
-    
-    _settingsSubmitTitle.text = NSLocalizedString(@"myyasound_settings_submit_title", nil);
-    
-    
-     */
-    
-
+    _graphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:YES];
+    [_graphView retain];
+//    _graphView.dataSource = self;
 }
 
 
 
 - (void)deallocInSettingsTableView
 {
+    [_graphView release];
 }
+
+
+
+
+
+
+
 
 
 
@@ -95,41 +102,31 @@
 }
 
 
+- (CGFloat) heightInSettingsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_BRIEF))
+        return GRAPH_HEIGHT;
+    
+    return 44;
+}
 
 
 
-//- (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
-//{
-//    if (indexPath.section == SECTION_GOTO)
-//    {
-//        float value = 224.f/255.f;
-//        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-//    }
-//    else
-//    {
-//        float value = 246.f/255.f;
-//        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-//    }
-//}
+- (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
+{
+    if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_BRIEF))
+    {
+        cell.backgroundColor = COLOR_CHART_BACKGROUND;
+    }
+    else
+    {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+}
 
 
 - (UITableViewCell *)cellInSettingsTableViewForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    
-//    if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
-//        return _settingsGotoCell;
-//
-//
-//    if ((indexPath.section == SECTION_SUBMIT) && (indexPath.row == 0))
-//    {
-//        UIView *backView = [[[UIView alloc] initWithFrame:CGRectZero] autorelease];
-//        _settingsSubmitCell.backgroundColor = [UIColor clearColor];
-//        _settingsSubmitCell.backgroundView = backView;
-//        
-//        return _settingsSubmitCell;
-//    }
-//    
-//     */
 
     static NSString* CellIdentifier = @"Cell";
 
@@ -148,7 +145,20 @@
     }
     else if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_BRIEF))
     {
-        //cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_goto_label", nil);
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        CGRect frame = CGRectMake(GRAPH_X, GRAPH_Y, GRAPH_WIDTH, GRAPH_HEIGHT - GRAPH_Y - 2);
+        _graphBoundingBox = [[UIView alloc] initWithFrame:frame];
+        _graphBoundingBox.backgroundColor = [UIColor clearColor];
+        [cell.contentView addSubview:_graphBoundingBox];
+
+        frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        _graphView.frame = frame;
+        _graphView.backgroundColor = COLOR_CHART_BACKGROUND;
+        [_graphBoundingBox addSubview:_graphView];
+        _graphView.clipsToBounds = YES;
+
+        
     }
     else if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_ACCESS))
     {
@@ -183,54 +193,44 @@
 
 - (void)didSelectInSettingsTableViewRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /*
-     if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
+     if ((indexPath.section == SECTION_GOTO) && (indexPath.row == ROW_GOTO))
     {
-        _settingsGotoLabel.textColor = [UIColor whiteColor];
-        
         RadioViewController* view = [[RadioViewController alloc] init];
-        self.navigationController.navigationBarHidden = YES;
         [self.navigationController pushViewController:view animated:YES];
         [view release];
+        return;
+    }
+    
+    
+    if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_PLAYLISTS))
+    {
+        PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:NO];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
     }
     
 
+    if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_SETTINGS))
+    {
+        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:NO];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
+    }
+    
+    if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_ACCESS))
+    {
+        StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;    
+    }
 
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(unselect:) userInfo:indexPath repeats:NO];
-     */
+
 }
 
 
-
-- (void)unselect:(NSTimer*)timer
-{
-    /*
-    NSIndexPath* indexPath = timer.userInfo;
-    UITableViewCell* cell = [_settingsTableView cellForRowAtIndexPath:indexPath];
-    cell.selected = FALSE;
-    
-    if ((indexPath.section == SECTION_GOTO) && (indexPath.row == 0))
-    {
-        _settingsGotoLabel.textColor = [UIColor blackColor];
-    }
-    
-    else if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_IMAGE))
-    {
-        _settingsImageLabel.textColor = [UIColor blackColor];
-    }
-    
-    else if ((indexPath.section == SECTION_CONFIGURATION) && (indexPath.row == ROW_CONFIG_GENRE))
-    {
-        _settingsGenreLabel.textColor = [UIColor blackColor];
-    }
-    
-    else if (indexPath.section == SECTION_THEME)
-    {
-        _settingsThemeTitle.textColor = [UIColor blackColor];
-    }
-     */
-    
-}
 
 
 
@@ -268,6 +268,14 @@
 {
     [ActivityAlertView close];
 }
+
+
+
+
+
+
+
+
 
 
 @end

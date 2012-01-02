@@ -15,18 +15,13 @@
 
 @implementation PlaylistsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
+    if (self)
     {
-        self.title = NSLocalizedString(@"PlaylistsView_title", nil);
-        
-        // "next" button
-        _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SettingsView_navigation_next", nil) style:UIBarButtonItemStylePlain target:self action:@selector(onNext:)];
-        self.navigationItem.rightBarButtonItem = _nextBtn;
-        
-        [_nextBtn setEnabled:NO];
+        _wizard = wizard;
+        _changed = NO;
         
         
         //......................................................................................
@@ -54,10 +49,16 @@
         
         _selectedPlaylists = [[NSMutableArray alloc] init];
         [_selectedPlaylists retain];
-        
     }
+    
     return self;
 }
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -82,13 +83,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    _titleLabel.text = NSLocalizedString(@"PlaylistsView_title", nil);
+    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+
+    // next button in toolbar
+    //LBDEBUG
+//    if (_wizard)
+//    {
+        _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
+        NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
+        [items addObject:_nextBtn];
+        [_toolbar setItems:items animated:NO];
+//    }
+    
     
     _cellHowtoLabel.text = NSLocalizedString(@"PlaylistsView_howto", nil);
     
     if ([_playlistsDesc count] == 0)
     {
+        [_tableView removeFromSuperview];
         _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
-        [self.view addSubview:_itunesConnectView];
+        [_container addSubview:_itunesConnectView];
     }
 
 }
@@ -105,6 +121,8 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
 
 
 
@@ -207,9 +225,10 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark; 
 
         [_nextBtn setEnabled:YES];
-}
+    }
     
     cell.selected = FALSE;
+    _changed = YES;
 }
 
 
@@ -220,20 +239,56 @@
 
 #pragma mark - IBActions
 
-- (void)onBack:(id)sender
+- (IBAction)onBack:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    // save or cancel
+    if (!_wizard && _changed)
+    {
+        UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingsView_saveOrCancel_title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_saveOrCancel_save", nil), nil];
+        
+        popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [popupQuery showInView:self.view];
+        [popupQuery release];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
-- (void)onNext:(id)sender
+
+- (IBAction)onNext:(id)sender
+{
+    [self save];
+}
+
+
+
+
+
+
+#pragma mark - ActionSheet Delegate
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+    if (buttonIndex == 0)
+        [self save];
+    else
+        [self.navigationController popViewControllerAnimated:YES];        
+}
+
+
+
+- (void) save
 {
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"msg_submit_title", nil) message:NSLocalizedString(@"msg_submit_body", nil)];
-
+    
     [[NSUserDefaults standardUserDefaults] synchronize];
     //    
-       [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists binary:NO compressed:YES target:self action:@selector(didBuildDataWithPlaylist:)];
-
+    [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists binary:NO compressed:YES target:self action:@selector(didBuildDataWithPlaylist:)];
+    
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
 }
 
@@ -250,6 +305,7 @@
     
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
 }
+
 
 - (void)receiveUpdatePLaylistsResponse:(taskID)task_id error:(NSError*)error
 {

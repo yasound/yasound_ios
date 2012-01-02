@@ -50,6 +50,8 @@
 {
     [super viewDidLoad];
     
+    _titleLabel.text = NSLocalizedString(@"HomeView_title", nil);
+
     _facebookLoginLabel.text = NSLocalizedString(@"HomeView_facebook_label", nil);
     _twitterLoginLabel.text = NSLocalizedString(@"HomeView_twitter_label", nil);
 }

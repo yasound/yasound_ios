@@ -31,20 +31,20 @@
 
 @implementation SettingsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
+    if (self)
     {
-        self.title = NSLocalizedString(@"SettingsView_title", nil);
-        
-        // "next" button
-        UIBarButtonItem* nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SettingsView_navigation_next", nil) style:UIBarButtonItemStylePlain target:self action:@selector(onNext:)];
-        self.navigationItem.rightBarButtonItem = nextBtn;
-        
+        _wizard = wizard;
     }
+    
     return self;
 }
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -65,6 +65,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    _titleLabel.text = NSLocalizedString(@"SettingsView_title", nil);
+    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+    
+    // next button in toolbar
+    //LBDEBUG
+//    if (_wizard)
+//    {
+        _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
+        NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
+        [items addObject:_nextBtn];
+        [_toolbar setItems:items animated:NO];
+//    }
+
+    
+    
 
     _settingsTitleLabel.text = NSLocalizedString(@"SettingsView_row_title_label", nil);
     _settingsTitleTextField.text = [NSString stringWithFormat:@"%@'s Yasound", [[UIDevice currentDevice] name]];
@@ -120,6 +137,13 @@
     [_keywords retain];
     [_tableView reloadData];
 }
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    if (!_wizard)
+        self.navigationController.navigationBarHidden = YES;
+}
+
 
 
 - (void)viewDidUnload
@@ -231,6 +255,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    _changed = YES;
+    
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
 //        _settingsGenreLabel.textColor = [UIColor whiteColor];
@@ -385,15 +411,51 @@
 
 #pragma mark - IBActions
 
-- (IBAction) onNext:(id)sender
+- (IBAction)onBack:(id)sender
 {
-    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil];
-    UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStylePlain target:view action:@selector(onBack:)];
-    [[self navigationItem] setBackBarButtonItem: backBtn];
-    [backBtn release];
+    // save or cancel
+    if (!_wizard && _changed)
+    {
+        UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingsView_saveOrCancel_title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_saveOrCancel_save", nil), nil];
+        
+        popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [popupQuery showInView:self.view];
+        [popupQuery release];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+- (IBAction)onNext:(id)sender
+{
+    [self save];
     
+    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
     [self.navigationController pushViewController:view animated:YES];
-    [view release];
+    [view release];    
+}
+
+
+
+
+#pragma mark - ActionSheet Delegate
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+    if (buttonIndex == 0)
+        [self save];
+    else
+        [self.navigationController popViewControllerAnimated:YES];        
+}
+
+
+
+- (void) save
+{
 }
 
 

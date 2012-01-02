@@ -12,6 +12,10 @@
 
 @interface SignupViewController : TrackedUIViewController
 {
+    IBOutlet UIBarButtonItem* _backBtn;
+    IBOutlet UILabel* _titleLabel;
+
+    //.............................................
     IBOutlet UITableView* _tableView;
     
     //.............................................
@@ -27,10 +31,11 @@
     IBOutlet UILabel* _cellEmailLabel;
     IBOutlet UITextField* _cellEmailTextfield;
 
-    IBOutlet UILabel* _submitLabel;    
+    IBOutlet UIButton* _submitBtn;
 }
 
 
+- (IBAction)onBack:(id)sender;
 - (IBAction) onSubmit:(id)sender;
 
 @end

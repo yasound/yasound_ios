@@ -12,6 +12,16 @@
 
 @interface PlaylistsViewController : TrackedUIViewController
 {
+    BOOL _wizard;
+    BOOL _changed;
+    
+    IBOutlet UIView* _container;
+
+    IBOutlet UIToolbar* _toolbar;
+    IBOutlet UIBarButtonItem* _backBtn;
+    IBOutlet UILabel* _titleLabel;
+    UIBarButtonItem* _nextBtn;
+    
     IBOutlet UITableView* _tableView;  
     IBOutlet UITableViewCell* _cellHowto;
     IBOutlet UILabel* _cellHowtoLabel;
@@ -22,9 +32,12 @@
     NSArray* _playlists;                   // NSArray of MPMediaPlaylist*
     NSMutableArray* _playlistsDesc;        // NSArray of NSDictionary {name, count}
     NSMutableArray* _selectedPlaylists;    // NSMutableArray of MPMediaPlaylist*
-    
-    UIBarButtonItem* _nextBtn;
 }
 
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;
+
+
+- (IBAction)onBack:(id)sender;
+- (IBAction)onNext:(id)sender;
 
 @end

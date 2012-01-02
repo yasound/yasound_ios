@@ -12,6 +12,7 @@
 #import "SettingsViewController.h"
 
 #import "YasoundDataProvider.h"
+#import "ActivityAlertView.h"
 
 
 #define ROW_USERNAME 0
@@ -50,13 +51,16 @@
 {
     [super viewDidLoad];
     
+    _titleLabel.text = NSLocalizedString(@"LoginView_title", nil);
+    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+
     _cellUsernameLabel.text = NSLocalizedString(@"LoginView_username_label", nil);
     _cellUsernameTextfield.placeholder = NSLocalizedString(@"LoginView_username_placeholder", nil);
     
     _cellPwordLabel.text = NSLocalizedString(@"LoginView_pword_label", nil);
     _cellPwordTextfield.placeholder = NSLocalizedString(@"LoginView_pword_placeholder", nil);
     
-    _submitLabel.text = NSLocalizedString(@"LoginView_submit_label", nil);
+    [_submitBtn setTitle:NSLocalizedString(@"LoginView_submit_label", nil) forState:UIControlStateNormal];
     
     _submitBtn.enabled = NO;
   
@@ -196,6 +200,12 @@
 #pragma mark - IBActions
 
 
+- (IBAction)onBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 - (IBAction) onSubmit:(id)sender
 {
     NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
@@ -203,12 +213,16 @@
     NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
 
     // login request to server
-  [[YasoundDataProvider main] login:username password:pword target:self action:@selector(loginDidReturn:info:)];
+  [[YasoundDataProvider main] login:username password:pword target:self action:@selector(requestDidReturn:info:)];
 }
 
-- (void) loginDidReturn:(User*)user info:(NSDictionary*)info
+- (void) requestDidReturn:(User*)user info:(NSDictionary*)info
 {
-    NSLog(@"loginDidReturn %@ - %@", user.name, info);
+    NSLog(@"requestDidReturn %@ - %@", user.name, info);
+    
+//    [ActivityAlertView showWithTitle:(NSString *)title message:(NSString *)message;
+//    + (void)close;
+//    UIAlertView* 
 }
 
 
