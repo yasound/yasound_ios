@@ -59,6 +59,9 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)createRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
+
+- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
+
 - (void)wallEventsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;

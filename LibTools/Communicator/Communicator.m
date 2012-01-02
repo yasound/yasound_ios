@@ -184,7 +184,6 @@
   }
   
   ASIHTTPRequest* req = [[ASIHTTPRequest alloc] initWithURL:u];
-  req.validatesSecureCertificate = FALSE;
   [self applyAuth:auth toRequest:req];
   [self fillRequest:req];
   [req startSynchronous];
@@ -204,7 +203,6 @@
   
   ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
   [req addData:data forKey:key];
-  req.validatesSecureCertificate = FALSE;
   [self applyAuth:auth toRequest:req];
   [self fillRequest:req];
   [req startSynchronous];
@@ -419,7 +417,6 @@
   ASIHTTPRequest* req = [[ASIHTTPRequest alloc] initWithURL:u];
   req.delegate = self;
   req.userInfo = userInfo;
-  req.validatesSecureCertificate = FALSE;
   [self applyAuth:auth toRequest:req];
   [self fillRequest:req];
   [req startAsynchronous];
@@ -441,7 +438,6 @@
   [req addData:data forKey:key];
   req.userInfo = userInfo;
   req.delegate = self;
-  req.validatesSecureCertificate = FALSE;
   [self applyAuth:auth toRequest:req];
   [self fillRequest:req];
   [req startAsynchronous];
@@ -742,7 +738,6 @@
   NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
-  req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"GET";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [self applyAuth:auth toRequest:req];
@@ -755,7 +750,6 @@
   NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
-  req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"GET";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [self applyAuth:auth toRequest:req];
@@ -778,7 +772,6 @@
   NSLog(@"post url %@", url.absoluteString);
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
-  req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"POST";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [req addRequestHeader:@"Content-Type" value:@"application/json"];
@@ -803,7 +796,6 @@
   NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
-  req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"PUT";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [req addRequestHeader:@"Content-Type" value:@"application/json"];
@@ -820,7 +812,6 @@
   NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
-  req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"DELETE";
   [req.requestHeaders setValue:@"application/json" forKey:@"Accept"];
   [req addRequestHeader:@"Content-Type" value:@"application/json"];
