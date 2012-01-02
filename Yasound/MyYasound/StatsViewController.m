@@ -189,8 +189,14 @@
     
     if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_LISTENERS))
     {
+        NSInteger nbListeners = 0;
+        if (weekGraphView.values != nil)
+        {
+            nbListeners = [[weekGraphView.values objectAtIndex:([weekGraphView.values count]-1)] integerValue];
+        }
+        
         cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", 24];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", nbListeners];
         [cell.imageView setImage:[UIImage imageNamed:@"iconStatsListeners.png"]];
     }
 
@@ -278,6 +284,7 @@
 
 - (void)reloadData
 {
+    [_tableView reloadData];
     [weekGraphView reloadData];
     [monthGraphView reloadData];
 }

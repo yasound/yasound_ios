@@ -293,6 +293,7 @@
 				<reference key="NSNextKeyView" ref="19377944"/>
 				<string key="NSReuseIdentifierKey">_NS:384</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="19377944"/>
 			</object>
 			<object class="IBUITableViewCell" id="159664120">
@@ -394,6 +395,7 @@
 				<reference key="NSNextKeyView" ref="138518619"/>
 				<string key="NSReuseIdentifierKey">_NS:384</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="138518619"/>
 			</object>
 		</array>

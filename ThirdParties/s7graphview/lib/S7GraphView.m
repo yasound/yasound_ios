@@ -283,9 +283,9 @@
         {
 
 			//LBDEBUG
-//			NSNumber *valueToFormat = [NSNumber numberWithInt:value];
+			NSNumber *valueToFormat = [NSNumber numberWithInt:value];
             
-			NSNumber *valueToFormat = [NSNumber numberWithInt:[[sortedValuesForAxisY objectAtIndex:i] intValue]];
+			//NSNumber *valueToFormat = [NSNumber numberWithInt:[[values objectAtIndex:i] intValue]];
 			NSString *valueString;
 			
 			if (_yValuesFormatter) {
