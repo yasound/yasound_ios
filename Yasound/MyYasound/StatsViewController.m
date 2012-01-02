@@ -42,6 +42,9 @@
 
         _monthGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
         [_monthGraphView retain];
+        
+        _monthGraphView.plotColor = RGB(235,200,50);
+        _monthGraphView.fillColor = RGBA(235,200,50,64);
 
     }
     
@@ -81,6 +84,16 @@
     
     _btnNextWeek.enabled = NO;
     _btnNextMonth.enabled = NO;
+    
+    // simplify the process for now
+    [_btnNextWeek removeFromSuperview];
+    [_btnNextMonth removeFromSuperview];
+    [_btnPreviousWeek removeFromSuperview];
+    [_btnPreviousMonth removeFromSuperview];
+    
+    _cellWeekSelectorLabel.text = NSLocalizedString(@"StatsView_weekselector_label", nil);
+    _cellMonthSelectorLabel.text = NSLocalizedString(@"StatsView_monthselector_label", nil);
+
 
 }
 
