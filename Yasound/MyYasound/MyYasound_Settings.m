@@ -71,7 +71,7 @@
         NSDate* newDate = [calendar dateByAddingComponents:components toDate:today options:0];
         
         
-        NSInteger incr = rand() % 500;
+        NSInteger incr = (rand() % 500)+1;
         NSInteger delta = rand() % incr;
         if (rand() & 1) delta *= (-1);
         NSInteger value = previousValue + delta;
