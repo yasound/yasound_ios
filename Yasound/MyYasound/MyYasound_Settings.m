@@ -15,6 +15,7 @@
 #import "SettingsViewController.h"
 #import "StatsViewController.h"
 #import "PlaylistMoulinor.h"
+#import "LegalViewController.h"
 #import "S7Macros.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -25,7 +26,7 @@
 #define SECTION_GOTO 0
 #define SECTION_STATS 1
 #define SECTION_CONFIG 2
-#define SECTION_LEGAL 3
+#define SECTION_DIVERS 3
 
 #define ROW_GOTO 0
 #define ROW_STATS_BRIEF 0
@@ -33,6 +34,7 @@
 #define ROW_CONFIG_PLAYLISTS 0
 #define ROW_CONFIG_SETTINGS 1
 #define ROW_LEGAL 0
+#define ROW_LOGOUT 1
 
 
 #define GRAPH_X 5
@@ -154,7 +156,7 @@
         case SECTION_GOTO: return 1;
         case SECTION_STATS: return 2;
         case SECTION_CONFIG: return 2;
-        case SECTION_LEGAL: return 1;
+        case SECTION_DIVERS: return 2;
     }
     return 0;
 }
@@ -236,11 +238,17 @@
         [cell.imageView setImage:[UIImage imageNamed:@"iconSettings.png"]];
         cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_config_settings_label", nil);
     }
-    else if ((indexPath.section == SECTION_LEGAL) && (indexPath.row == ROW_LEGAL))
+    else if ((indexPath.section == SECTION_DIVERS) && (indexPath.row == ROW_LEGAL))
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [cell.imageView setImage:[UIImage imageNamed:@"iconLegal.png"]];
         cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_legal_label", nil);
+    }
+    else if ((indexPath.section == SECTION_DIVERS) && (indexPath.row == ROW_LOGOUT))
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [cell.imageView setImage:[UIImage imageNamed:@"iconLogout.png"]];
+        cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_logout_label", nil);
     }
 
     
@@ -290,6 +298,15 @@
         [view release];
         return;    
     }
+    
+    if ((indexPath.section == SECTION_DIVERS) && (indexPath.row == ROW_LEGAL))
+    {
+        LegalViewController* view = [[LegalViewController alloc] initWithNibName:@"LegalViewController" bundle:nil wizard:NO];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
+    }
+
 
 
 }
