@@ -47,7 +47,7 @@
         [numberFormatter release];
         
         CGFloat value = 247.f / 255.f;
-  self.backgroundColor = [UIColor colorWithRed:value green:value blue:value alpha:1];
+        self.backgroundColor = [UIColor colorWithRed:value green:value blue:value alpha:1];
         
 //        self.plotColor = RGB(5, 141, 191); 
 //        self.fillColor = RGB(5, 141, 191); 
@@ -60,11 +60,12 @@
         self.drawGridX = NO;
         self.drawGridY = YES;
         
-        self.xValuesColor = [UIColor grayColor];
-        self.yValuesColor = [UIColor grayColor];
+        self.xValuesColor = RGB(148, 148, 148);
+        self.yValuesColor = RGB(5, 141, 191);
+
         
-        self.gridXColor = [UIColor grayColor];
-        self.gridYColor = [UIColor grayColor];
+        self.gridXColor = RGB(64, 64, 64);
+        self.gridYColor = RGB(64, 64, 64);
         
         self.drawInfo = NO;
         self.info = @"Load";

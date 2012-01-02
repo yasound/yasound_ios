@@ -15,6 +15,7 @@
 #import "SettingsViewController.h"
 #import "StatsViewController.h"
 #import "PlaylistMoulinor.h"
+#import "S7Macros.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -42,6 +43,7 @@
 - (void)viewDidLoadInSettingsTableView
 {
     _graphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:YES];
+    [_graphView retain];
 //    _graphView.dataSource = self;
 }
 
@@ -49,6 +51,7 @@
 
 - (void)deallocInSettingsTableView
 {
+    [_graphView release];
 }
 
 
@@ -109,19 +112,17 @@
 
 
 
-//- (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
-//{
-//    if (indexPath.section == SECTION_GOTO)
-//    {
-//        float value = 224.f/255.f;
-//        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-//    }
-//    else
-//    {
-//        float value = 246.f/255.f;
-//        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-//    }
-//}
+- (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
+{
+    if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_BRIEF))
+    {
+        cell.backgroundColor = COLOR_CHART_BACKGROUND;
+    }
+    else
+    {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+}
 
 
 - (UITableViewCell *)cellInSettingsTableViewForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -148,10 +149,12 @@
         
         CGRect frame = CGRectMake(GRAPH_X, GRAPH_Y, GRAPH_WIDTH, GRAPH_HEIGHT - GRAPH_Y - 2);
         _graphBoundingBox = [[UIView alloc] initWithFrame:frame];
+        _graphBoundingBox.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:_graphBoundingBox];
 
         frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         _graphView.frame = frame;
+        _graphView.backgroundColor = COLOR_CHART_BACKGROUND;
         [_graphBoundingBox addSubview:_graphView];
         _graphView.clipsToBounds = YES;
 

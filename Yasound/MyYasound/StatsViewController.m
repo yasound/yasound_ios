@@ -10,13 +10,23 @@
 #import "YasoundDataProvider.h"
 
 #define SECTION_STATS 0
-#define ROW_LISTENERS 0
-#define ROW_LIKES 0
+#define ROW_STATS_LISTENERS 0
+#define ROW_STATS_LIKES 1
 
 
-#define SECTION_CHART 1
-#define ROW_CHART 0
+#define SECTION_WEEKCHART 1
+#define ROW_WEEKCHART_CONTROL 0
+#define ROW_WEEKCHART_CHART 1
 
+#define SECTION_MONTHCHART 2
+#define ROW_MONTHCHART_CONTROL 0
+#define ROW_MONTHCHART_CHART 1
+
+
+#define GRAPH_X 5
+#define GRAPH_Y 5
+#define GRAPH_WIDTH 290
+#define GRAPH_HEIGHT 180
 
 
 
@@ -27,6 +37,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
+        _weekGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
+        [_weekGraphView retain];
+
+        _monthGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
+        [_monthGraphView retain];
+
     }
     
     return self;
@@ -49,6 +65,8 @@
 
 - (void)dealloc
 {
+    [_monthGraphView release];
+    [_weekGraphView release];
     [super dealloc];
 }
 
@@ -60,6 +78,9 @@
 
     _titleLabel.text = NSLocalizedString(@"StatsView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+    
+    _btnNextWeek.enabled = NO;
+    _btnNextMonth.enabled = NO;
 
 }
 
@@ -99,18 +120,29 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    if (section == SECTION_STATS)
-        return 2;
-    
-    return 1;
+    return 2;
 }
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ((indexPath.section == SECTION_WEEKCHART) && (indexPath.row == ROW_WEEKCHART_CHART))
+        return GRAPH_HEIGHT;
+    
+    if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CHART))
+        return GRAPH_HEIGHT;
+
+    return 44;
+}
+
 
 
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -122,6 +154,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+    if ((indexPath.section == SECTION_WEEKCHART) && (indexPath.row == ROW_WEEKCHART_CONTROL))
+        return _cellWeekSelector;
+    if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CONTROL))
+        return _cellMonthSelector;
+
+    
+    
     static NSString* CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -132,6 +171,44 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_LISTENERS))
+    {
+        cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", 24];
+        [cell.imageView setImage:[UIImage imageNamed:@"iconStatsListeners.png"]];
+    }
+
+    else if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_LIKES))
+    {
+        cell.textLabel.text = NSLocalizedString(@"StatsView_likes_label", nil);
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", 254];
+        [cell.imageView setImage:[UIImage imageNamed:@"iconStatsLikes.png"]];
+    }
+
+    else if ((indexPath.section == SECTION_WEEKCHART) && (indexPath.row == ROW_WEEKCHART_CHART))
+    {
+        CGRect frame = CGRectMake(GRAPH_X, GRAPH_Y, GRAPH_WIDTH, GRAPH_HEIGHT - GRAPH_Y - 2);
+        _weekGraphBoundingBox = [[UIView alloc] initWithFrame:frame];
+        [cell.contentView addSubview:_weekGraphBoundingBox];
+        
+        frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        _weekGraphView.frame = frame;
+        [_weekGraphBoundingBox addSubview:_weekGraphView];
+        _weekGraphView.clipsToBounds = YES;    
+    }
+
+    else if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CHART))
+    {
+        CGRect frame = CGRectMake(GRAPH_X, GRAPH_Y, GRAPH_WIDTH, GRAPH_HEIGHT - GRAPH_Y - 2);
+        _monthGraphBoundingBox = [[UIView alloc] initWithFrame:frame];
+        [cell.contentView addSubview:_monthGraphBoundingBox];
+        
+        frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        _monthGraphView.frame = frame;
+        [_monthGraphBoundingBox addSubview:_monthGraphView];
+        _monthGraphView.clipsToBounds = YES;    
+    }
     
     return cell;
 }
@@ -155,9 +232,27 @@
 }
 
 
-- (IBAction)onNext:(id)sender
+
+- (IBAction)onPreviousWeek:(id)sender
 {
-    [self save];
+
+}
+
+- (IBAction)onNextWeek:(id)sender
+{
+    
+}
+
+
+- (IBAction)onPreviousMonth:(id)sender
+{
+    
+}
+
+
+- (IBAction)onNextMonth:(id)sender
+{
+    
 }
 
 

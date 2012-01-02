@@ -44,3 +44,12 @@
 #ifndef RGBA
 #define RGBA(R,G,B,A) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:A/255.0f]
 #endif
+
+#ifndef COLOR_CHART_BACKGROUND
+//#define COLOR_CHART_BACKGROUND [UIColor colorWithRed:32.f/255.0f green:33.f/255.0f blue:34.f/255.0f alpha:1.f]
+//#define COLOR_CHART_BACKGROUND [UIColor colorWithRed:48.f/255.0f green:49.f/255.0f blue:50.f/255.0f alpha:1.f]
+//#define COLOR_CHART_BACKGROUND [UIColor colorWithRed:240.f/255.0f green:240.f/255.0f blue:240.f/255.0f alpha:1.f]
+#define COLOR_CHART_BACKGROUND [UIColor whiteColor]
+//#define COLOR_CHART_BACKGROUND [UIColor colorWithRed:128.f/255.0f green:128.f/255.0f blue:128.f/255.0f alpha:1.f]
+#endif
+
