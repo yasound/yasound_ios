@@ -32,16 +32,23 @@
 
 @implementation StatsViewController
 
+
+@synthesize weekGraphView;
+@synthesize monthGraphView;
+
+
+
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        _weekGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
-        [_weekGraphView retain];
+        weekGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
 
-        _monthGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
-        [_monthGraphView retain];
+        monthGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
+        
+        monthGraphView.plotColor = RGB(235,200,50);
+        monthGraphView.fillColor = RGBA(235,200,50,64);
 
     }
     
@@ -65,8 +72,6 @@
 
 - (void)dealloc
 {
-    [_monthGraphView release];
-    [_weekGraphView release];
     [super dealloc];
 }
 
@@ -81,6 +86,16 @@
     
     _btnNextWeek.enabled = NO;
     _btnNextMonth.enabled = NO;
+    
+    // simplify the process for now
+    [_btnNextWeek removeFromSuperview];
+    [_btnNextMonth removeFromSuperview];
+    [_btnPreviousWeek removeFromSuperview];
+    [_btnPreviousMonth removeFromSuperview];
+    
+    _cellWeekSelectorLabel.text = NSLocalizedString(@"StatsView_weekselector_label", nil);
+    _cellMonthSelectorLabel.text = NSLocalizedString(@"StatsView_monthselector_label", nil);
+
 
 }
 
@@ -174,8 +189,14 @@
     
     if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_LISTENERS))
     {
+        NSInteger nbListeners = 0;
+        if (weekGraphView.values != nil)
+        {
+            nbListeners = [[weekGraphView.values objectAtIndex:([weekGraphView.values count]-1)] integerValue];
+        }
+        
         cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", 24];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", nbListeners];
         [cell.imageView setImage:[UIImage imageNamed:@"iconStatsListeners.png"]];
     }
 
@@ -193,9 +214,9 @@
         [cell.contentView addSubview:_weekGraphBoundingBox];
         
         frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-        _weekGraphView.frame = frame;
-        [_weekGraphBoundingBox addSubview:_weekGraphView];
-        _weekGraphView.clipsToBounds = YES;    
+        weekGraphView.frame = frame;
+        [_weekGraphBoundingBox addSubview:weekGraphView];
+        weekGraphView.clipsToBounds = YES;    
     }
 
     else if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CHART))
@@ -205,9 +226,9 @@
         [cell.contentView addSubview:_monthGraphBoundingBox];
         
         frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-        _monthGraphView.frame = frame;
-        [_monthGraphBoundingBox addSubview:_monthGraphView];
-        _monthGraphView.clipsToBounds = YES;    
+        monthGraphView.frame = frame;
+        [_monthGraphBoundingBox addSubview:monthGraphView];
+        monthGraphView.clipsToBounds = YES;    
     }
     
     return cell;
@@ -258,5 +279,16 @@
 
 
 
+#pragma mark - Properties
+
+
+- (void)reloadData
+{
+    [_tableView reloadData];
+    [weekGraphView reloadData];
+    [monthGraphView reloadData];
+}
 
 @end
+
+

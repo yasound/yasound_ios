@@ -13,6 +13,9 @@
 {
 }
 
+@property (nonatomic, retain) NSArray* dates;
+@property (nonatomic, retain) NSArray* values;
+
 - (id)initWithFrame:(CGRect)frame minimalDisplay:(BOOL)minimalDisplay;
 
 

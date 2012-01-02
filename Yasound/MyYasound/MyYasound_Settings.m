@@ -45,12 +45,70 @@
     _graphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:YES];
     [_graphView retain];
 //    _graphView.dataSource = self;
+    
+    
+
+    
+    // fake data for graph, waiting for the server request to be implemented
+    _thisMonthDates = [[NSMutableArray alloc] initWithCapacity:31];
+    _thisMonthValues = [[NSMutableArray alloc] initWithCapacity:31];
+    
+    [_thisMonthDates retain];
+    [_thisMonthValues retain];
+
+    NSCalendar*       calendar = [[[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar] autorelease];
+    NSDateComponents* components = [[[NSDateComponents alloc] init] autorelease];
+    components.day = 0;
+    NSDate* today = [NSDate date];
+    
+    srand(time(NULL));
+    NSInteger previousValue = 0;
+    for (int i = 0; i < 31; i++)
+    {
+        components.day = i - 31;
+        NSDate* newDate = [calendar dateByAddingComponents:components toDate:today options:0];
+        
+        
+        NSInteger incr = rand() % 500;
+        NSInteger delta = rand() % incr;
+        if (rand() & 1) delta *= (-1);
+        NSInteger value = previousValue + delta;
+        if (value < 0)
+            value = 0;
+        
+        [_thisMonthDates addObject:newDate];
+        [_thisMonthValues addObject:[NSNumber numberWithInteger:value]];
+        
+        previousValue = value;
+    }
+    
+    
+    // now, get "this week" data
+    _thisWeekDates = [[NSMutableArray alloc] initWithCapacity:7];
+    _thisWeekValues = [[NSMutableArray alloc] initWithCapacity:7];
+    [_thisWeekDates retain];
+    [_thisWeekValues retain];
+    for (int i = 0; i < 7; i++)
+    {
+        NSInteger index = 31 - 7 + i;
+        [_thisWeekDates insertObject:[_thisMonthDates objectAtIndex:index] atIndex:i];
+        [_thisWeekValues insertObject:[_thisMonthValues objectAtIndex:index] atIndex:i];
+    }
+    
+    _graphView.dates = _thisWeekDates;
+    _graphView.values = _thisWeekValues;
+    [_graphView reloadData];
+    
 }
 
 
 
 - (void)deallocInSettingsTableView
 {
+    [_thisWeekDates release];
+    [_thisWeekValues release];
+    [_thisMonthDates release];
+    [_thisMonthValues release];
     [_graphView release];
 }
 
@@ -222,6 +280,12 @@
     if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_ACCESS))
     {
         StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil];
+        view.weekGraphView.dates = _thisWeekDates;
+        view.weekGraphView.values = _thisWeekValues;
+        view.monthGraphView.dates = _thisMonthDates;
+        view.monthGraphView.values = _thisMonthValues;
+        [view reloadData];
+
         [self.navigationController pushViewController:view animated:YES];
         [view release];
         return;    
