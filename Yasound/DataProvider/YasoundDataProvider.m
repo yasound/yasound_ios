@@ -300,6 +300,22 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/picture", radio.id];
+  [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+}
+
+
+- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
+{
+  NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
+  [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+}
+
+
+
+
 // get wall events
 - (void)wallEventsForRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {

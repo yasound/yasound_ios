@@ -49,7 +49,7 @@
 
 #define OFFSET_Y_MIN 22.0f
 #define AXIS_X_OFFSET 16.f
-#define AXIS_X_WIDTH 70.f
+#define AXIS_X_WIDTH 54.f
 
 #define SPOT_RADIUS 2.0f
 
@@ -283,9 +283,9 @@
         {
 
 			//LBDEBUG
-//			NSNumber *valueToFormat = [NSNumber numberWithInt:value];
+			NSNumber *valueToFormat = [NSNumber numberWithInt:value];
             
-			NSNumber *valueToFormat = [NSNumber numberWithInt:[[sortedValuesForAxisY objectAtIndex:i] intValue]];
+			//NSNumber *valueToFormat = [NSNumber numberWithInt:[[values objectAtIndex:i] intValue]];
 			NSString *valueString;
 			
 			if (_yValuesFormatter) {
@@ -332,7 +332,7 @@
         [self.yValuesColor set];
         
         CGRect rect_minY = CGRectMake(0.0f, self.frame.size.height - offsetY - (FONT_SIZE_INFO-2), axisYLabelWidth, FONT_SIZE_INFO+2);
-        CGRect rect_maxY = CGRectMake(0.0f, 0, axisYLabelWidth, FONT_SIZE_INFO+2);
+        CGRect rect_maxY = CGRectMake(0.0f, 0 - (FONT_SIZE_INFO-2), axisYLabelWidth, FONT_SIZE_INFO+2);
         
         [str_minY drawInRect:rect_minY withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentRight];
         [str_maxY drawInRect:rect_maxY withFont:font lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentRight];

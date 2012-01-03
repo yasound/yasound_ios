@@ -13,7 +13,10 @@
 #import "ActivityAlertView.h"
 #import "PlaylistsViewController.h"
 #import "SettingsViewController.h"
+#import "StatsViewController.h"
 #import "PlaylistMoulinor.h"
+#import "LegalViewController.h"
+#import "S7Macros.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -23,7 +26,7 @@
 #define SECTION_GOTO 0
 #define SECTION_STATS 1
 #define SECTION_CONFIG 2
-#define SECTION_LEGAL 3
+#define SECTION_DIVERS 3
 
 #define ROW_GOTO 0
 #define ROW_STATS_BRIEF 0
@@ -31,6 +34,7 @@
 #define ROW_CONFIG_PLAYLISTS 0
 #define ROW_CONFIG_SETTINGS 1
 #define ROW_LEGAL 0
+#define ROW_LOGOUT 1
 
 
 #define GRAPH_X 5
@@ -41,13 +45,73 @@
 - (void)viewDidLoadInSettingsTableView
 {
     _graphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:YES];
+    [_graphView retain];
 //    _graphView.dataSource = self;
+    
+    
+
+    
+    // fake data for graph, waiting for the server request to be implemented
+    _thisMonthDates = [[NSMutableArray alloc] initWithCapacity:31];
+    _thisMonthValues = [[NSMutableArray alloc] initWithCapacity:31];
+    
+    [_thisMonthDates retain];
+    [_thisMonthValues retain];
+
+    NSCalendar*       calendar = [[[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar] autorelease];
+    NSDateComponents* components = [[[NSDateComponents alloc] init] autorelease];
+    components.day = 0;
+    NSDate* today = [NSDate date];
+    
+    srand(time(NULL));
+    NSInteger previousValue = 0;
+    for (int i = 0; i < 31; i++)
+    {
+        components.day = i - 31;
+        NSDate* newDate = [calendar dateByAddingComponents:components toDate:today options:0];
+        
+        
+        NSInteger incr = (rand() % 500)+1;
+        NSInteger delta = rand() % incr;
+        if (rand() & 1) delta *= (-1);
+        NSInteger value = previousValue + delta;
+        if (value < 0)
+            value = 0;
+        
+        [_thisMonthDates addObject:newDate];
+        [_thisMonthValues addObject:[NSNumber numberWithInteger:value]];
+        
+        previousValue = value;
+    }
+    
+    
+    // now, get "this week" data
+    _thisWeekDates = [[NSMutableArray alloc] initWithCapacity:7];
+    _thisWeekValues = [[NSMutableArray alloc] initWithCapacity:7];
+    [_thisWeekDates retain];
+    [_thisWeekValues retain];
+    for (int i = 0; i < 7; i++)
+    {
+        NSInteger index = 31 - 7 + i;
+        [_thisWeekDates insertObject:[_thisMonthDates objectAtIndex:index] atIndex:i];
+        [_thisWeekValues insertObject:[_thisMonthValues objectAtIndex:index] atIndex:i];
+    }
+    
+    _graphView.dates = _thisWeekDates;
+    _graphView.values = _thisWeekValues;
+    [_graphView reloadData];
+    
 }
 
 
 
 - (void)deallocInSettingsTableView
 {
+    [_thisWeekDates release];
+    [_thisWeekValues release];
+    [_thisMonthDates release];
+    [_thisMonthValues release];
+    [_graphView release];
 }
 
 
@@ -92,7 +156,7 @@
         case SECTION_GOTO: return 1;
         case SECTION_STATS: return 2;
         case SECTION_CONFIG: return 2;
-        case SECTION_LEGAL: return 1;
+        case SECTION_DIVERS: return 2;
     }
     return 0;
 }
@@ -108,19 +172,17 @@
 
 
 
-//- (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
-//{
-//    if (indexPath.section == SECTION_GOTO)
-//    {
-//        float value = 224.f/255.f;
-//        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-//    }
-//    else
-//    {
-//        float value = 246.f/255.f;
-//        cell.backgroundColor = [UIColor colorWithRed:value  green:value blue:value alpha:1];
-//    }
-//}
+- (void)willDisplayCellInSettingsTableView:(UITableViewCell*)cell forRowAtIndexPath:(NSIndexPath*)indexPath;
+{
+    if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_BRIEF))
+    {
+        cell.backgroundColor = COLOR_CHART_BACKGROUND;
+    }
+    else
+    {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
+}
 
 
 - (UITableViewCell *)cellInSettingsTableViewForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -143,12 +205,16 @@
     }
     else if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_BRIEF))
     {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         CGRect frame = CGRectMake(GRAPH_X, GRAPH_Y, GRAPH_WIDTH, GRAPH_HEIGHT - GRAPH_Y - 2);
         _graphBoundingBox = [[UIView alloc] initWithFrame:frame];
+        _graphBoundingBox.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:_graphBoundingBox];
 
         frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         _graphView.frame = frame;
+        _graphView.backgroundColor = COLOR_CHART_BACKGROUND;
         [_graphBoundingBox addSubview:_graphView];
         _graphView.clipsToBounds = YES;
 
@@ -172,11 +238,17 @@
         [cell.imageView setImage:[UIImage imageNamed:@"iconSettings.png"]];
         cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_config_settings_label", nil);
     }
-    else if ((indexPath.section == SECTION_LEGAL) && (indexPath.row == ROW_LEGAL))
+    else if ((indexPath.section == SECTION_DIVERS) && (indexPath.row == ROW_LEGAL))
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [cell.imageView setImage:[UIImage imageNamed:@"iconLegal.png"]];
         cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_legal_label", nil);
+    }
+    else if ((indexPath.section == SECTION_DIVERS) && (indexPath.row == ROW_LOGOUT))
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [cell.imageView setImage:[UIImage imageNamed:@"iconLogout.png"]];
+        cell.textLabel.text = NSLocalizedString(@"MyYasoundSettings_logout_label", nil);
     }
 
     
@@ -212,6 +284,29 @@
         [view release];
         return;
     }
+    
+    if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_ACCESS))
+    {
+        StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil];
+        view.weekGraphView.dates = _thisWeekDates;
+        view.weekGraphView.values = _thisWeekValues;
+        view.monthGraphView.dates = _thisMonthDates;
+        view.monthGraphView.values = _thisMonthValues;
+        [view reloadData];
+
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;    
+    }
+    
+    if ((indexPath.section == SECTION_DIVERS) && (indexPath.row == ROW_LEGAL))
+    {
+        LegalViewController* view = [[LegalViewController alloc] initWithNibName:@"LegalViewController" bundle:nil wizard:NO];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
+    }
+
 
 
 }

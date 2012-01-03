@@ -31,6 +31,10 @@
     // radio selection  
     IBOutlet UITableView* _tableView;  
     
+    NSMutableArray* _thisMonthDates;
+    NSMutableArray* _thisMonthValues;
+    NSMutableArray* _thisWeekDates;
+    NSMutableArray* _thisWeekValues;
     UIView* _graphBoundingBox;
     ChartView* _graphView;
 }

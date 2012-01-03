@@ -8,17 +8,21 @@
 
 #import "ChartView.h"
 
-#ifndef RGB
-#define RGB(R,G,B) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:1.0f]
-#endif
-
-#ifndef RGBA
-#define RGBA(R,G,B,A) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:A/255.0f]
-#endif
+//#ifndef RGB
+//#define RGB(R,G,B) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:1.0f]
+//#endif
+//
+//#ifndef RGBA
+//#define RGBA(R,G,B,A) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:A/255.0f]
+//#endif
 
 
 
 @implementation ChartView
+
+@synthesize dates = _dates;
+@synthesize values = _values;
+
 
 - (id)initWithFrame:(CGRect)frame minimalDisplay:(BOOL)minimalDisplay
 {
@@ -38,9 +42,6 @@
         [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
         [dateFormatter setDateStyle:NSDateFormatterShortStyle];
         
-//        NSString *format = [dateFormatter dateFormat];
-//        format = [format stringByReplacingOccurrencesOfString:@"/" withString:@"-"];
-//        format = [format stringByReplacingOccurrencesOfString:@"y" withString:@""];
         NSString* format = [NSString stringWithString:@"MM-dd"];
         [dateFormatter setDateFormat:format];
         
@@ -50,12 +51,10 @@
         [numberFormatter release];
         
         CGFloat value = 247.f / 255.f;
-  self.backgroundColor = [UIColor colorWithRed:value green:value blue:value alpha:1];
+        self.backgroundColor = [UIColor colorWithRed:value green:value blue:value alpha:1];
         
 //        self.plotColor = RGB(5, 141, 191); 
 //        self.fillColor = RGB(5, 141, 191); 
-//        self.spotColor = RGBA(0,0,0,128);
-//        self.spotBorderColor = RGBA(255,255,255,128);
         self.spotColor = RGBA(200,200,200,128);
         self.spotBorderColor = RGBA(96,96,96,128);
 //        self.backgroundColor = [UIColor redColor];
@@ -65,11 +64,12 @@
         self.drawGridX = NO;
         self.drawGridY = YES;
         
-        self.xValuesColor = [UIColor grayColor];
-        self.yValuesColor = [UIColor grayColor];
+        self.xValuesColor = RGB(148, 148, 148);
+        self.yValuesColor = RGB(5, 141, 191);
+
         
-        self.gridXColor = [UIColor grayColor];
-        self.gridYColor = [UIColor grayColor];
+        self.gridXColor = RGB(64, 64, 64);
+        self.gridYColor = RGB(64, 64, 64);
         
         self.drawInfo = NO;
         self.info = @"Load";
@@ -97,6 +97,8 @@
 
 - (NSArray *)graphViewXValues:(S7GraphView *)graphView 
 {
+    return _dates;
+    
 	/* An array of objects that will be further formatted to be displayed on the X-axis.
 	 The number of elements should be equal to the number of points you have for every plot. */
     //	NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:101];
@@ -105,30 +107,43 @@
     //	}
     //	return array;
     
-	NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:101];
-	for ( int i = 0 ; i < 7 ; i ++ ) 
-    {
-		[array addObject:[NSDate date]];	
-	}
-	return array;
+//	NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:101];
+//	for ( int i = 0 ; i < 7 ; i ++ ) 
+//    {
+//		[array addObject:[NSDate date]];	
+//	}
+//	return array;
     
 }
 
 - (NSArray *)graphView:(S7GraphView *)graphView yValuesForPlot:(NSUInteger)plotIndex 
 {
-	/* Return the values for a specific graph. Each plot is meant to have equal number of points.
-	 And this amount should be equal to the amount of elements you return from graphViewXValues: method. */
-	NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:101];
-
-    [array addObject:[NSNumber numberWithInt:100]];
-    [array addObject:[NSNumber numberWithInt:8]];
-    [array addObject:[NSNumber numberWithInt:76]];
-    [array addObject:[NSNumber numberWithInt:578]];
-    [array addObject:[NSNumber numberWithInt:1087]];
-    [array addObject:[NSNumber numberWithInt:720]];
-    [array addObject:[NSNumber numberWithInt:486]];
-	
-	return array;
+    return _values;
+    
+//	/* Return the values for a specific graph. Each plot is meant to have equal number of points.
+//	 And this amount should be equal to the amount of elements you return from graphViewXValues: method. */
+//	NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:101];
+//
+//    //EXEMPLE 1
+////    [array addObject:[NSNumber numberWithInt:100]];
+////    [array addObject:[NSNumber numberWithInt:8]];
+////    [array addObject:[NSNumber numberWithInt:76]];
+////    [array addObject:[NSNumber numberWithInt:578]];
+////    [array addObject:[NSNumber numberWithInt:1087]];
+////    [array addObject:[NSNumber numberWithInt:720]];
+////    [array addObject:[NSNumber numberWithInt:486]];
+//
+//    //EXEMPLE 2
+//    [array addObject:[NSNumber numberWithInt:100]];
+//    [array addObject:[NSNumber numberWithInt:200]];
+//    [array addObject:[NSNumber numberWithInt:76]];
+//    [array addObject:[NSNumber numberWithInt:256]];
+//    [array addObject:[NSNumber numberWithInt:23]];
+//    [array addObject:[NSNumber numberWithInt:189]];
+//    [array addObject:[NSNumber numberWithInt:56]];
+//	
+//    
+//	return array;
 }
 
 
