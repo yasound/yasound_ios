@@ -20,6 +20,7 @@ typedef enum
 
 #define DATA_FIELD_ID @"id"
 #define DATA_FIELD_TOKEN @"token"
+#define DATA_FIELD_TOKEN_SECRET @"token_secret"
 #define DATA_FIELD_TYPE @"type"
 #define DATA_FIELD_USERNAME @"username"
 #define DATA_FIELD_NAME @"name"

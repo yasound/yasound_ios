@@ -622,7 +622,8 @@
 		BC53B905146C409200B14231 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LOIC BERTHELOT (M4LM7N2G22)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -644,7 +645,8 @@
 					"\"$(SRCROOT)/../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -652,7 +654,8 @@
 		BC53B906146C409200B14231 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LOIC BERTHELOT (M4LM7N2G22)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "testFBConnect_And_TwitterConnect/testFBConnect_And_TwitterConnect-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -674,7 +677,8 @@
 					"\"$(SRCROOT)/../../ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DE6808-EE54-4310-B540-784E90B96D9A";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

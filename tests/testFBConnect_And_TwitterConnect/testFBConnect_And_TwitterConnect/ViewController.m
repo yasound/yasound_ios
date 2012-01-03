@@ -292,6 +292,7 @@
     NSDictionary* dico = [data objectAtIndex:0];
       [self log:[NSString stringWithFormat:@"id: %@", [dico valueForKey:DATA_FIELD_ID]]];
       [self log:[NSString stringWithFormat:@"token: %@", [dico valueForKey:DATA_FIELD_TOKEN]]];
+      [self log:[NSString stringWithFormat:@"token secret: %@", [dico valueForKey:DATA_FIELD_TOKEN_SECRET]]];
     [self log:[NSString stringWithFormat:@"type: %@", [dico valueForKey:DATA_FIELD_TYPE]]];
     [self log:[NSString stringWithFormat:@"username: %@", [dico valueForKey:DATA_FIELD_USERNAME]]];
     [self log:[NSString stringWithFormat:@"name: %@", [dico valueForKey:DATA_FIELD_NAME]]];

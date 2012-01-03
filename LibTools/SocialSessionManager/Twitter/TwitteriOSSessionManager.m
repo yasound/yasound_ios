@@ -152,6 +152,8 @@
   
   NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
   [user setValue:userid forKey:DATA_FIELD_ID];
+    [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN] forKey:DATA_FIELD_TOKEN];
+    [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN_SECRET] forKey:DATA_FIELD_TOKEN_SECRET];
   [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
   [user setValue:self.account.username forKey:DATA_FIELD_USERNAME];
   [user setValue:userscreenname forKey:DATA_FIELD_NAME];
@@ -369,7 +371,13 @@
   // extract oauth_token_secret
   NSString* oauth_token_secret = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
   
+    //LBDEBUG
+    [[NSUserDefaults standardUserDefaults] setValue:oauth_token forKey:DATA_FIELD_TOKEN];
+    [[NSUserDefaults standardUserDefaults] setValue:oauth_token_secret forKey:DATA_FIELD_TOKEN_SECRET];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
   //  NSLog(@"oauth_token %@", oauth_token);
+    
   //  NSLog(@"oauth_token_secret %@", oauth_token_secret);
   
   

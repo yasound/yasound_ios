@@ -91,6 +91,8 @@ static FacebookSessionManager* _facebook = nil;
 - (void)login
 {
   _facebookConnect = [[Facebook alloc] initWithAppId:FB_App_Id andDelegate:self];
+    
+ //   [_facebookConnect authorizeWithFBAppAuth:YES safariAuth:NO];
   
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]) 
@@ -104,6 +106,11 @@ static FacebookSessionManager* _facebook = nil;
   {
 //    NSLog(@"FB authorize dialog.");
     [_facebookConnect authorize:_facebookPermissions];
+     // _facebookConnect.permissions = _facebookPermissions;
+      
+      //LBDEBUG
+      //[self authorizeWithFBAppAuth:YES safariAuth:NO];
+
   }
   else
   {
