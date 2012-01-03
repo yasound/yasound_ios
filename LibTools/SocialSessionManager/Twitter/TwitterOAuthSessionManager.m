@@ -11,8 +11,14 @@
 #import "Security/SFHFKeychainUtils.h"
 
 
-#define kOAuthConsumerKey @"lm6cEvevtSlX1IwFL3ZM4w"         //REPLACE With Twitter App OAuth Key  
-#define kOAuthConsumerSecret @"bEDK1Un5srTcDeuX6crBkihu4pmb96aaMgJnOzD3VRY"     //REPLACE With Twitter App OAuth Secret  
+//neywen test
+//#define kOAuthConsumerKey @"lm6cEvevtSlX1IwFL3ZM4w"         //REPLACE With Twitter App OAuth Key  
+//#define kOAuthConsumerSecret @"bEDK1Un5srTcDeuX6crBkihu4pmb96aaMgJnOzD3VRY"     //REPLACE With Twitter App OAuth Secret  
+
+// yasound
+#define kOAuthConsumerKey @"bvpS9ZEO6REqL96Sjuklg"         //REPLACE With Twitter App OAuth Key  
+#define kOAuthConsumerSecret @"TMdhQbWXarXoxkjwSdUbTif5CyapHLfcAdYfTnTOmc"     //REPLACE With Twitter App OAuth Secret  
+
 
 
 
