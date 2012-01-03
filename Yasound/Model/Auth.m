@@ -67,7 +67,7 @@
 
 @implementation AuthSocial
 
-- (id)initWithUsername:(NSString *)name  accountType:(NSString*)type uid:(NSString*)uid andToken:(NSString*)token
+- (id)initWithUsername:(NSString *)name  accountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token andEmail:(NSString*)email
 {
   self = [super initWithUsername:name];
   if (self)
@@ -75,6 +75,7 @@
     _accountType = type;
     _uid = uid;
     _token = token;
+    _email = email;
   }
   return self;
 }
@@ -87,6 +88,7 @@
   [params addObject:[NSString stringWithFormat:@"uid=%@", _uid]];
   [params addObject:[NSString stringWithFormat:@"token=%@", _token]];
   [params addObject:[NSString stringWithFormat:@"name=%@", username]];
+  [params addObject:[NSString stringWithFormat:@"email=%@", _email]];
   return params;
 }
 
