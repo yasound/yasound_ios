@@ -275,7 +275,9 @@ static NSString* kSDKVersion = @"2";
 - (void)authorize:(NSArray *)permissions {
   self.permissions = permissions;
 
-  [self authorizeWithFBAppAuth:YES safariAuth:YES];
+    //LBDEBUG
+//    [self authorizeWithFBAppAuth:YES safariAuth:NO];
+    [self authorizeWithFBAppAuth:YES safariAuth:YES];
 }
 
 /**

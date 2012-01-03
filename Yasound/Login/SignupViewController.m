@@ -11,9 +11,10 @@
 #import "YasoundDataProvider.h"
 
 
-#define ROW_USERNAME 0
-#define ROW_PWORD 1
+
 #define ROW_EMAIL 0
+#define ROW_PWORD 1
+#define ROW_USERNAME 0
 
 
 
@@ -128,14 +129,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if ((indexPath.section == 0) && (indexPath.row == ROW_USERNAME))
-        return _cellUsername;
-    
+    if ((indexPath.section == 0) && (indexPath.row == ROW_EMAIL))
+        return _cellEmail;
+
     if ((indexPath.section == 0) && (indexPath.row == ROW_PWORD))
         return _cellPword;
 
-    if ((indexPath.section == 1) && (indexPath.row == ROW_EMAIL))
-        return _cellEmail;
+    if ((indexPath.section == 1) && (indexPath.row == ROW_USERNAME))
+        return _cellUsername;
+    
 
     return nil;
 }
@@ -154,7 +156,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if (textField == _cellEmailTextfield)
+    if (textField == _cellUsernameTextfield)
     {
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.33];
@@ -166,13 +168,13 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == _cellUsernameTextfield)
+    if (textField == _cellEmailTextfield)
     {
         [_cellPwordTextfield becomeFirstResponder];
     }
     else if (textField == _cellPwordTextfield)
     {
-        [_cellEmailTextfield becomeFirstResponder];
+        [_cellUsernameTextfield becomeFirstResponder];
     }
     else
     {
@@ -185,9 +187,9 @@
 
         // activate "submit" button
         NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-        NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
-        NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
         NSString* email = [_cellEmailTextfield.text stringByTrimmingCharactersInSet:space];
+        NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
+        NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
         if ((username.length != 0) && (pword.length != 0)  && (email.length != 0))
             _submitBtn.enabled = YES;
         else
@@ -215,9 +217,9 @@
 - (IBAction) onSubmit:(id)sender
 {
     NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-    NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
-    NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
     NSString* email = [_cellEmailTextfield.text stringByTrimmingCharactersInSet:space];
+    NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
+    NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
     
     // login request to server
     [[YasoundDataProvider main] signup:username password:pword email:email target:self action:@selector(requestDidReturn:info:)];
