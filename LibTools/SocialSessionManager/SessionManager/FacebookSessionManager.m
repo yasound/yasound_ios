@@ -262,9 +262,12 @@ static FacebookSessionManager* _facebook = nil;
   if (request == _requestMe)
   {
     NSDictionary* dico = result;
+      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
     
     NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
-    [user setValue:[dico valueForKey:@"id"] forKey:DATA_FIELD_ID];
+      [user setValue:[dico valueForKey:@"id"] forKey:DATA_FIELD_ID];
+      [user setValue:[defaults objectForKey:@"FBAccessTokenKey"] forKey:DATA_FIELD_TOKEN];
     [user setValue:@"facebook" forKey:DATA_FIELD_TYPE];
     [user setValue:[dico valueForKey:@"username"] forKey:DATA_FIELD_USERNAME];
     [user setValue:[dico valueForKey:@"name"] forKey:DATA_FIELD_NAME];

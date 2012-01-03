@@ -19,6 +19,7 @@ typedef enum
 } SessionRequestType;
 
 #define DATA_FIELD_ID @"id"
+#define DATA_FIELD_TOKEN @"token"
 #define DATA_FIELD_TYPE @"type"
 #define DATA_FIELD_USERNAME @"username"
 #define DATA_FIELD_NAME @"name"
