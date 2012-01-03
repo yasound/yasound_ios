@@ -110,7 +110,7 @@ static YasoundDataProvider* _main = nil;
 
 
 // SIGN UP
-- (void)signup:(NSString*)username password:(NSString*)pwd email:(NSString*)email target:(id)target action:(SEL)selector
+- (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username target:(id)target action:(SEL)selector
 {
   _user = nil;
   _apiKey = nil;
@@ -187,11 +187,11 @@ static YasoundDataProvider* _main = nil;
 
 }
 
-- (void)login:(NSString*)username password:(NSString*)pwd target:(id)target action:(SEL)selector userData:(NSDictionary*)userData
+- (void)login:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector userData:(NSDictionary*)userData
 {
   _user = nil;
   _password = pwd;
-  Auth* a = [[AuthPassword alloc] initWithUsername:username andPassword:_password];
+  Auth* a = [[AuthPassword alloc] initWithUsername:email andPassword:_password];
   NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", userData, @"clientData", nil];
   [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/login" absolute:NO notifyTarget:self byCalling:@selector(receiveLogin:withInfo:) withUserData:data withAuth:a];
 }
