@@ -45,9 +45,10 @@
   NSString* _accountType;
   NSString* _uid;
   NSString* _token;
+  NSString* _email;
 }
 
-- (id)initWithUsername:(NSString *)name  accountType:(NSString*)type uid:(NSString*)uid andToken:(NSString*)token;
+- (id)initWithUsername:(NSString *)name  accountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token andEmail:(NSString*)email;
 
 - (NSArray*)urlParams;
 @end

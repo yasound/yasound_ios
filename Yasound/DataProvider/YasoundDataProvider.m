@@ -110,7 +110,7 @@ static YasoundDataProvider* _main = nil;
 
 
 // SIGN UP
-- (void)signup:(NSString*)username password:(NSString*)pwd email:(NSString*)email target:(id)target action:(SEL)selector
+- (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username target:(id)target action:(SEL)selector
 {
   _user = nil;
   _apiKey = nil;
@@ -187,11 +187,11 @@ static YasoundDataProvider* _main = nil;
 
 }
 
-- (void)login:(NSString*)username password:(NSString*)pwd target:(id)target action:(SEL)selector userData:(NSDictionary*)userData
+- (void)login:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector userData:(NSDictionary*)userData
 {
   _user = nil;
   _password = pwd;
-  Auth* a = [[AuthPassword alloc] initWithUsername:username andPassword:_password];
+  Auth* a = [[AuthPassword alloc] initWithUsername:email andPassword:_password];
   NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", userData, @"clientData", nil];
   [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/login" absolute:NO notifyTarget:self byCalling:@selector(receiveLogin:withInfo:) withUserData:data withAuth:a];
 }
@@ -236,9 +236,9 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)loginThirdParty:(NSString*)username uid:(NSString*)uid type:(NSString*)type token:(NSString*)token target:(id)target action:(SEL)selector
+- (void)loginThirdParty:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector
 {
-  AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid andToken:token];
+  AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid token:token andEmail:email];
   NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
   [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/login_social/" absolute:NO notifyTarget:self byCalling:@selector(didReceiveLoginSocial:withInfo:) withUserData:data withAuth:auth];
 }
@@ -298,6 +298,22 @@ static YasoundDataProvider* _main = nil;
 {
   [_communicator postNewObject:radio notifyTarget:target byCalling:selector withUserData:nil withAuth:nil returnNewObject:YES withAuthForGET:nil];
 }
+
+
+- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/picture", radio.id];
+  [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+}
+
+
+- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
+{
+  NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
+  [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+}
+
+
 
 
 // get wall events

@@ -30,7 +30,6 @@ taskStatus stringToStatus(NSString* str);
 {
   Communicator* _communicator;
   User* _user;
-//  ApiKey* _apiKey;
   NSString* _apiKey;
   NSString* _password;
 }
@@ -44,10 +43,10 @@ taskStatus stringToStatus(NSString* str);
 + (YasoundDataProvider*) main;
 
 // Yasound
-- (void)signup:(NSString*)username password:(NSString*)pwd email:(NSString*)email target:(id)target action:(SEL)selector;
-- (void)login:(NSString*)username password:(NSString*)pwd target:(id)target action:(SEL)selector;
+- (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username target:(id)target action:(SEL)selector;
+- (void)login:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector;
 
-- (void)loginThirdParty:(NSString*)username uid:(NSString*)uid type:(NSString*)type token:(NSString*)token target:(id)target action:(SEL)selector;
+- (void)loginThirdParty:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector;
 
 
 
@@ -58,6 +57,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)radioWithURL:(NSString*)url target:(id)target action:(SEL)selector;
 
 - (void)createRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
+- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
 
 - (void)wallEventsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
