@@ -10,7 +10,7 @@
 #import "ApiKey.h"
 
 
-#define USE_LOCAL_SERVER 0
+#define USE_LOCAL_SERVER 1
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"
@@ -115,15 +115,15 @@ static YasoundDataProvider* _main = nil;
   _user = nil;
   _apiKey = nil;
   
-  User* user = [[User alloc] init];
-  user.username = email;
-  user.email = email;
-  user.name = username;
-  user.password = pwd;
+  User* u = [[User alloc] init];
+  u.username = email;
+  u.email = email;
+  u.name = username;
+  u.password = pwd;
   
-  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", user.username, @"username", user.password, @"password", nil];
+  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", u.username, @"username", u.password, @"password", nil];
   
-  [_communicator postNewObject:user withURL:@"api/v1/signup" absolute:NO notifyTarget:self byCalling:@selector(didReceiveSignup:withInfo:) withUserData:userData withAuth:nil returnNewObject:NO withAuthForGET:NO];
+  [_communicator postNewObject:u withURL:@"api/v1/signup" absolute:NO notifyTarget:self byCalling:@selector(didReceiveSignup:withInfo:) withUserData:userData withAuth:nil returnNewObject:NO withAuthForGET:NO];
 }
 
 - (void)didReceiveSignup:(NSString*)location withInfo:(NSDictionary*)info
@@ -138,6 +138,8 @@ static YasoundDataProvider* _main = nil;
   NSString* pwd = [userData valueForKey:@"password"];
   
   NSError* error = [info valueForKey:@"error"];
+  if (!location && !error)
+    error = [NSError errorWithDomain:@"can't create user" code:1 userInfo:nil];
   if (error)
   {
     NSLog(@"signup error: %@", error.domain);    
