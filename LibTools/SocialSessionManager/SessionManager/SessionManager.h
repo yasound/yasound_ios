@@ -11,7 +11,7 @@
 
 typedef enum 
 {
-  SRequestInfoUsername = 0,
+  SRequestInfoUser = 0,
   SRequestInfoFriends,
   SRequestInfoFollowers,
   SRequestPostMessage
@@ -24,6 +24,7 @@ typedef enum
 #define DATA_FIELD_TYPE @"type"
 #define DATA_FIELD_USERNAME @"username"
 #define DATA_FIELD_NAME @"name"
+#define DATA_FIELD_EMAIL @"email"
 
 
 

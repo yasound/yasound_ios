@@ -87,7 +87,7 @@
   if (!self.account)
     return NO;
   
-  if (requestType == SRequestInfoUsername)
+  if (requestType == SRequestInfoUser)
   {
     TWRequest* request = [[TWRequest alloc]
                               initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/users/show.json"] 
@@ -139,13 +139,14 @@
   
   if ([urlResponse statusCode] != 200)
   {
-    [self.delegate requestDidFailed:SRequestInfoUsername error:nil errorMessage:[NSHTTPURLResponse localizedStringForStatusCode:[urlResponse statusCode]]];
+    [self.delegate requestDidFailed:SRequestInfoUser error:nil errorMessage:[NSHTTPURLResponse localizedStringForStatusCode:[urlResponse statusCode]]];
     return;
   }
   
   NSError* jsonParsingError = nil;
   NSDictionary* info = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonParsingError];
-  //NSLog(@"%@", info);
+    //LBDEBUG
+  NSLog(@"%@", info);
   
   NSString* userid = [info valueForKey:@"id_str"];
   NSString* userscreenname = [info valueForKey:@"screen_name"];
@@ -156,11 +157,16 @@
     [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN_SECRET] forKey:DATA_FIELD_TOKEN_SECRET];
   [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
   [user setValue:self.account.username forKey:DATA_FIELD_USERNAME];
-  [user setValue:userscreenname forKey:DATA_FIELD_NAME];
+    [user setValue:userscreenname forKey:DATA_FIELD_NAME];
+    
+    //LBDEBUG EMAIL
+    NSString* email = @"email";
+    NSLog(@"twitter iOS email '%@'", email);
+    [user setValue:email forKey:DATA_FIELD_EMAIL];
   
   NSArray* data = [NSArray arrayWithObjects:user, nil];
   
-  [self.delegate requestDidLoad:SRequestInfoUsername data:data];
+  [self.delegate requestDidLoad:SRequestInfoUser data:data];
 }
 
 
