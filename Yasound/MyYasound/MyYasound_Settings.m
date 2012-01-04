@@ -18,6 +18,8 @@
 #import "LegalViewController.h"
 #import "S7Macros.h"
 #import <QuartzCore/QuartzCore.h>
+#import "YasoundSessionManager.h"
+
 
 
 @implementation MyYasoundViewController (Settings)
@@ -306,6 +308,13 @@
         [view release];
         return;
     }
+    
+    if ((indexPath.section == SECTION_DIVERS) && (indexPath.row == ROW_LOGOUT))
+    {
+        [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutDidReturned)];
+        return;
+    }
+
 
 
 
@@ -316,7 +325,10 @@
 
 
 
-
+- (void)logoutDidReturned
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_LoginScreen" object:nil];
+}
 
 
 

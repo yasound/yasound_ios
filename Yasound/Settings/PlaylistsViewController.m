@@ -337,7 +337,7 @@
     if (_wizard)
     {
         // call root to launch the Radio
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationPushRadio" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
     }
     else
         [self.navigationController popViewControllerAnimated:YES];

@@ -12,6 +12,9 @@
 #import "SettingsViewController.h"
 #import "MyYasoundViewController.h"
 #import "RadioTabBarController.h"
+#import "YasoundSessionManager.h"
+
+
 
 #define ROW_LOGIN 0
 #define ROW_SIGNUP 1
@@ -194,22 +197,40 @@
 
 - (IBAction) onFacebook:(id)sender
 {
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
+    [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(facebookLoginReturned:)];
+//    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
 }
 
 - (IBAction) onTwitter:(id)sender
 {
+    [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(twitterLoginReturned:)];
 //    MyYasoundViewController* view = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil];
 //    self.navigationController.navigationBarHidden = YES;
 //    [self.navigationController pushViewController:view animated:YES];
 //    [view release];
-    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
-    self.navigationController.navigationBarHidden = YES;
-    [self.navigationController pushViewController:tabBarController animated:YES];    
+//    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
+//    self.navigationController.navigationBarHidden = YES;
+//    [self.navigationController pushViewController:tabBarController animated:YES];    
 }
 
+
+- (void)facebookLoginReturned:(NSNumber*)successful
+{
+    BOOL res = [successful boolValue];
+    if (res)
+        // call root to launch the Radio
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
+}
+
+- (void)twitterLoginReturned:(NSNumber*)successful
+{
+    BOOL res = [successful boolValue];
+    if (res)
+        // call root to launch the Radio
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];        
+}
 
 
 
