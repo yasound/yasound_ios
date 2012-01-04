@@ -279,21 +279,7 @@
     
     if ((indexPath.section == SECTION_IMAGE) && (indexPath.row == ROW_IMAGE))
     {
-        _settingsImageLabel.textColor = [UIColor whiteColor];
-        UIImagePickerController* picker =  [[UIImagePickerController alloc] init];
-        
-        picker.delegate = self;
-        
-        //      if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-        //      {
-        //        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        //      }
-        //      else
-        {
-            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        }
-        
-        [self presentModalViewController:picker animated:YES];
+        [self pickImageDialog];
         return;
     }
     
@@ -305,6 +291,34 @@
         return;
     }
 }
+
+
+
+
+
+
+
+
+- (void)pickImageDialog
+{
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        _pickImageQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_pickImage_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_pickImage_image", nil), 
+                                     NSLocalizedString(@"SettingsView_pickImage_camera", nil), nil];
+        _pickImageQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [_pickImageQuery showInView:self.view];
+    }
+    else
+    {
+        UIImagePickerController* picker =  [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentModalViewController:picker animated:YES];
+    }
+
+}
+
 
 
 
@@ -398,11 +412,16 @@
 
 - (void)imagePickerController:(UIImagePickerController *) Picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    /*
-     _settingsImageImage.image = [info objectForKey:UIImagePickerControllerOriginalImage];
-     [self dismissModalViewControllerAnimated:YES];
-     [Picker release];
-     */
+    [self dismissModalViewControllerAnimated:YES];
+    [Picker release];
+    
+    UIImage* image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    if (image == nil)
+        return;
+    if (![image isKindOfClass:[UIImage class]])
+        return;
+    
+    [_settingsImageImage setImage:image];
 }
 
 
@@ -416,11 +435,10 @@
     // save or cancel
     if (!_wizard && _changed)
     {
-        UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingsView_saveOrCancel_title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_saveOrCancel_save", nil), nil];
+        _saveQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingsView_saveOrCancel_title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_saveOrCancel_save", nil), nil];
         
-        popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-        [popupQuery showInView:self.view];
-        [popupQuery release];
+        _saveQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [_saveQuery showInView:self.view];
     }
     else
     {
@@ -446,11 +464,42 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
 {
-    if (buttonIndex == 0)
-        [self save];
-    else
-        [self.navigationController popViewControllerAnimated:YES];        
+    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
+    
+    if (actionSheet == _saveQuery)
+    {
+        if (buttonIndex == 0)
+            [self save];
+        else
+            [self.navigationController popViewControllerAnimated:YES];        
+        
+        [_saveQuery release];
+        _saveQuery = nil;
+        return;
+    }
+    
+    
+    if (actionSheet == _pickImageQuery)
+    {
+        UIImagePickerController* picker =  [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        
+        if (buttonIndex == 0)
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        else if (buttonIndex == 1)
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            
+        [_pickImageQuery release];
+        _pickImageQuery = nil;
+
+        [self presentModalViewController:picker animated:YES];
+        
+        return;
+    }
 }
+
+
+
 
 
 
