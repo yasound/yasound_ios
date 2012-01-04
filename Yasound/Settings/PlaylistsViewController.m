@@ -314,9 +314,13 @@
 
   Radio* radio = [[Radio alloc] init];
   radio.id = [NSNumber numberWithInt:1];
-  [[YasoundDataProvider main] updatePlaylists:data forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
+    //LBDEBUG
+//  [[YasoundDataProvider main] updatePlaylists:data forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
+//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
+
+    //LBDEBUG
+    [self onFakeSubmitAction:nil];
     
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
 }
 
 

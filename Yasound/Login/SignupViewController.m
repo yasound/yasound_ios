@@ -12,6 +12,7 @@
 #import "LegalViewController.h"
 #import "ActivityAlertView.h"
 #import "RegExp.h"
+#import "YasoundSessionManager.h"
 
 #define SECTION_LOGIN 0
 #define ROW_LOGIN_EMAIL 0
@@ -47,7 +48,13 @@
 
 - (void) dealloc
 {
+    if (_email)
+        [_email release];
+    if (_pword)
+        [_pword release];
     [_cellLegalReadLabel release];
+    
+    [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -330,7 +337,12 @@
 
     [ActivityAlertView showWithTitle:NSLocalizedString(@"Alert_contact_server", nil)];
     
-    NSLog(@"Signup  email '%@'   pword '%@'    username '%@'", email, pword, username);
+    _email = [NSString stringWithString:email];
+    _pword = [NSString stringWithString:pword];
+    [_email retain];
+    [_pword retain];
+    
+    //NSLog(@"Signup  email '%@'   pword '%@'    username '%@'", email, pword, username);
     
     // login request to server
     [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];
@@ -349,6 +361,9 @@
         [av release];  
         return;
     }
+    
+    // store info for automatic login, for the next sessions
+    [[YasoundSessionManager main] registerForYasound:_email withPword:_pword];
 
     // go to next screen
     SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES];

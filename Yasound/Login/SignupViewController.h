@@ -41,6 +41,11 @@
     
     BOOL _userValidatedInfo;
     BOOL _userValidatedLegal;
+    
+    
+    NSString* _email;
+    NSString* _pword;
+    
 }
 
 
