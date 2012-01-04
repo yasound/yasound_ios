@@ -66,19 +66,17 @@
 {
     [super viewDidLoad];
     
-    
     _titleLabel.text = NSLocalizedString(@"SettingsView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
-    // next button in toolbar
-    //LBDEBUG
-//    if (_wizard)
-//    {
+    if (_wizard)
+    {
         _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
         NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
+        [items removeObjectAtIndex:0]; // remove back button
         [items addObject:_nextBtn];
         [_toolbar setItems:items animated:NO];
-//    }
+    }
 
     
     
@@ -172,7 +170,9 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    //LBDEBUG
+//    return 3;
+    return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
