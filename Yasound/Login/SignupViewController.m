@@ -13,9 +13,19 @@
 #import "ActivityAlertView.h"
 #import "RegExp.h"
 
-#define ROW_EMAIL 0
-#define ROW_PWORD 1
+#define SECTION_LOGIN 0
+#define ROW_LOGIN_EMAIL 0
+#define ROW_LOGIN_PWORD 1
+
+#define SECTION_USERNAME 1
 #define ROW_USERNAME 0
+
+#define SECTION_LEGAL 2
+#define ROW_LEGAL_READ 0
+#define ROW_LEGAL_VALID 1
+
+#define SECTION_SUBMIT 3
+#define ROW_SUBMIT 0
 
 
 
@@ -26,7 +36,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.title =  NSLocalizedString(@"SignupView_title", nil);   
+        self.title =  NSLocalizedString(@"SignupView_title", nil); 
+        _userValidatedInfo = NO;
+        _userValidatedLegal = NO;
+        
     }
     return self;
 }
@@ -34,6 +47,7 @@
 
 - (void) dealloc
 {
+    [_cellLegalReadLabel release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,6 +75,10 @@
     
     _cellEmailLabel.text = NSLocalizedString(@"SignupView_email_label", nil);
     _cellEmailTextfield.placeholder = NSLocalizedString(@"SignupView_email_placeholder", nil);
+
+    _cellLegalReadLabel = NSLocalizedString(@"SignupView_legal_read_label", nil);
+    [_cellLegalReadLabel retain];
+    _cellLegalValidLabel.text = NSLocalizedString(@"SignupView_legal_valid_label", nil);
 
     [_submitBtn setTitle:NSLocalizedString(@"SignupView_submit_label", nil) forState:UIControlStateNormal];
     _submitBtn.enabled = NO;
@@ -105,7 +123,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 4;
 }
 
 
@@ -113,11 +131,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    if (section == 0)
+    if (section == SECTION_LOGIN)
         return 2;
-    return 1;
+    if (section == SECTION_USERNAME)
+        return 1;
+    if (section == SECTION_LEGAL)
+        return 2;
+    if (section == SECTION_SUBMIT)
+        return 1;
+    
+    return 0;
 }
-
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -126,19 +150,50 @@
 }
 
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    if ((indexPath.section == SECTION_SUBMIT) && (indexPath.row == ROW_SUBMIT))
+    {
+        UIView* view = [[UIView alloc] initWithFrame:cell.frame];
+        view.backgroundColor = [UIColor clearColor];
+        cell.backgroundView = view;
+        [view release];
+    }
+
+}
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if ((indexPath.section == 0) && (indexPath.row == ROW_EMAIL))
+    if ((indexPath.section == SECTION_LOGIN) && (indexPath.row == ROW_LOGIN_EMAIL))
         return _cellEmail;
 
-    if ((indexPath.section == 0) && (indexPath.row == ROW_PWORD))
+    if ((indexPath.section == SECTION_LOGIN) && (indexPath.row == ROW_LOGIN_PWORD))
         return _cellPword;
 
-    if ((indexPath.section == 1) && (indexPath.row == ROW_USERNAME))
+    if ((indexPath.section == SECTION_USERNAME) && (indexPath.row == ROW_USERNAME))
         return _cellUsername;
     
+    if ((indexPath.section == SECTION_LEGAL) && (indexPath.row == ROW_LEGAL_READ))
+    {
+        static NSString* CellIdentifier = @"Cell";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) 
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        
+        cell.textLabel.text = _cellLegalReadLabel;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        return cell;
+    }
+
+    if ((indexPath.section == SECTION_LEGAL) && (indexPath.row == ROW_LEGAL_VALID))
+        return _cellLegal;
+    
+    if ((indexPath.section == SECTION_SUBMIT) && (indexPath.row == ROW_SUBMIT))
+        return _cellSubmit;
 
     return nil;
 }
@@ -147,6 +202,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ((indexPath.section == SECTION_LEGAL) && (indexPath.row == ROW_LEGAL_READ))
+    {
+        LegalViewController* view = [[LegalViewController alloc] initWithNibName:@"LegalViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];    
+    }
 
 }
 
@@ -192,6 +253,11 @@
         NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
         NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
         if ((username.length != 0) && (pword.length != 0)  && (email.length != 0))
+            _userValidatedInfo = YES;
+        else
+            _userValidatedInfo = NO;
+        
+        if (_userValidatedInfo && _userValidatedLegal)
             _submitBtn.enabled = YES;
         else
             _submitBtn.enabled = NO;
@@ -211,6 +277,28 @@
 - (IBAction)onBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
+-(IBAction)onSwitch:(id)sender 
+{
+    UISwitch* switchControl = sender;
+    
+    if(switchControl.on)
+    {
+        _userValidatedLegal = YES;
+    }
+    else
+    {
+        _userValidatedLegal = NO;
+    }
+    
+    if (_userValidatedInfo && _userValidatedLegal)
+        _submitBtn.enabled = YES;
+    else
+        _submitBtn.enabled = NO;
+    
 }
 
 
@@ -251,7 +339,7 @@
     }
 
     // go to next screen
-    LegalViewController* view = [[LegalViewController alloc] initWithNibName:@"LegalViewController" bundle:nil wizard:YES];
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
 }

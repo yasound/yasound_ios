@@ -31,11 +31,21 @@
     IBOutlet UILabel* _cellEmailLabel;
     IBOutlet UITextField* _cellEmailTextfield;
 
+    IBOutlet UITableViewCell* _cellLegal;
+    NSString* _cellLegalReadLabel;
+    IBOutlet UILabel* _cellLegalValidLabel;
+
+    
+    IBOutlet UITableViewCell* _cellSubmit;
     IBOutlet UIButton* _submitBtn;
+    
+    BOOL _userValidatedInfo;
+    BOOL _userValidatedLegal;
 }
 
 
 - (IBAction)onBack:(id)sender;
+- (IBAction)onSwitch:(id)sender;
 - (IBAction) onSubmit:(id)sender;
 
 @end
