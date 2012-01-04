@@ -334,7 +334,10 @@
 {
     [ActivityAlertView close];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationPushRadio" object:nil];
+    if (_wizard)
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationPushRadio" object:nil];
+    else
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 
