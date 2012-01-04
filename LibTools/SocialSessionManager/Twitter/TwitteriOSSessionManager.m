@@ -90,7 +90,7 @@
   if (requestType == SRequestInfoUsername)
   {
     TWRequest* request = [[TWRequest alloc]
-                              initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/users/show.json"] 
+                              initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/users/show.json"] 
                               parameters:[NSDictionary dictionaryWithObject:self.account.username forKey:@"screen_name"] 
                               requestMethod:TWRequestMethodGET];
     
@@ -106,10 +106,10 @@
   
   if ((requestType == SRequestInfoFriends) || (requestType == SRequestInfoFollowers))
   {
-    NSString* url = @"http://api.twitter.com/1/statuses/friends.json";
+    NSString* url = @"https://api.twitter.com/1/statuses/friends.json";
     
     if (requestType == SRequestInfoFollowers)
-      url = @"http://api.twitter.com/1/statuses/followers.json";
+      url = @"https://api.twitter.com/1/statuses/followers.json";
       
     TWRequest* request = [[TWRequest alloc] 
                           initWithURL:[NSURL URLWithString:url] 
@@ -212,7 +212,7 @@
   
   if (pictureUrl == nil)
   {
-    request = [[TWRequest alloc] initWithURL: [NSURL URLWithString:@"http://api.twitter.com/1/statuses/update.json"]
+    request = [[TWRequest alloc] initWithURL: [NSURL URLWithString:@"https://api.twitter.com/1/statuses/update.json"]
                                                parameters:[NSDictionary dictionaryWithObject:message 
                                                forKey:@"status"] requestMethod:TWRequestMethodPOST];             
   }
@@ -317,6 +317,11 @@
 }
 
 
+- (void)sessionLoginFailed
+{
+    [self.delegate sessionLoginFailed];
+}
+
 
 - (void)createAccount
 {
@@ -333,7 +338,12 @@
   NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
   NSString* data = [SFHFKeychainUtils getPasswordForUsername:username andServiceName:BundleName error:&error];
 
-  
+  if (data == nil)
+  {
+      NSLog(@"no credentials recorded. can not create account.");
+      return;
+  }
+    
 
   //.................................................................................
   // and now, parse the secured data string, to extract the user token and its associated secret
@@ -372,7 +382,9 @@
   NSString* oauth_token_secret = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
   
     //LBDEBUG
+    assert (oauth_token != nil);
     [[NSUserDefaults standardUserDefaults] setValue:oauth_token forKey:DATA_FIELD_TOKEN];
+    assert (oauth_token_secret != nil);
     [[NSUserDefaults standardUserDefaults] setValue:oauth_token_secret forKey:DATA_FIELD_TOKEN_SECRET];
     [[NSUserDefaults standardUserDefaults] synchronize];
     

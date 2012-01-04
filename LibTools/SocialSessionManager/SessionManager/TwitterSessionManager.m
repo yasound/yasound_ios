@@ -15,7 +15,7 @@
 
 
 
-//#define FORCE_OAUTH_LIB 1
+#define FORCE_OAUTH_LIB 1
 
 
 @implementation TwitterSessionManager
@@ -39,6 +39,13 @@ static TwitterSessionManager* _twitter = nil;
   }
   
   return _twitter;
+}
+
++ (void)close
+{
+    if (_twitter)
+        [_twitter release];
+    _twitter = nil;
 }
 
 
@@ -67,6 +74,7 @@ static TwitterSessionManager* _twitter = nil;
   }
   return self;
 }
+
 
 
 - (void)dealloc

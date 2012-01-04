@@ -20,6 +20,7 @@
 
 
 + (TwitterSessionManager*)twitter;
++ (void)close;
 
 - (void)setTarget:(id<SessionDelegate>)delegate;
 - (void)login;

@@ -12,12 +12,12 @@
 
 
 //neywen test
-//#define kOAuthConsumerKey @"lm6cEvevtSlX1IwFL3ZM4w"         //REPLACE With Twitter App OAuth Key  
-//#define kOAuthConsumerSecret @"bEDK1Un5srTcDeuX6crBkihu4pmb96aaMgJnOzD3VRY"     //REPLACE With Twitter App OAuth Secret  
+#define kOAuthConsumerKey @"TdpKTtfEsEfPFXrq9GlQ"         //REPLACE With Twitter App OAuth Key  
+#define kOAuthConsumerSecret @"JPPj1VXXTYQ6w81CrszFRYxfHkKvPi4BYD6pV9CnGQ"     //REPLACE With Twitter App OAuth Secret  
 
 // yasound
-#define kOAuthConsumerKey @"bvpS9ZEO6REqL96Sjuklg"         //REPLACE With Twitter App OAuth Key  
-#define kOAuthConsumerSecret @"TMdhQbWXarXoxkjwSdUbTif5CyapHLfcAdYfTnTOmc"     //REPLACE With Twitter App OAuth Secret  
+//#define kOAuthConsumerKey @"bvpS9ZEO6REqL96Sjuklg"         //REPLACE With Twitter App OAuth Key  
+//#define kOAuthConsumerSecret @"TMdhQbWXarXoxkjwSdUbTif5CyapHLfcAdYfTnTOmc"     //REPLACE With Twitter App OAuth Secret  
 
 
 
@@ -289,7 +289,9 @@
 
 - (void) twitterOAuthConnectionFailedWithData: (NSData *) data
 {
-  NSLog(@"twitterOAuthConnectionFailedWithData");
+    NSLog(@"twitterOAuthConnectionFailedWithData");
+    NSLog(@"data %@", data);
+    
   [self.delegate sessionLoginFailed];
 }
 
