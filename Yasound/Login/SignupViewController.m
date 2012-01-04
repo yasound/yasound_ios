@@ -228,7 +228,9 @@
 
 - (void) requestDidReturn:(User*)user info:(NSDictionary*)info
 {
-    NSLog(@"requestDidReturn %@ - %@", user.name, info);
+    NSLog(@"signup requestDidReturn %@ - %@", user.name, info);
+    
+    //if (
     
     //    [ActivityAlertView showWithTitle:(NSString *)title message:(NSString *)message;
     //    + (void)close;
