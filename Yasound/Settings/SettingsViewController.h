@@ -15,6 +15,8 @@
     BOOL _wizard;
     BOOL _changed;
     
+    UIActionSheet* _saveQuery;
+    UIActionSheet* _pickImageQuery;
 
     
     IBOutlet UIView* _container;

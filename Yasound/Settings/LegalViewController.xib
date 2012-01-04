@@ -16,9 +16,7 @@
 			<string>IBUILabel</string>
 			<string>IBUIToolbar</string>
 			<string>IBUIBarButtonItem</string>
-			<string>IBUISwitch</string>
 			<string>IBUITableView</string>
-			<string>IBUITableViewCell</string>
 			<string>IBUIView</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
@@ -62,9 +60,8 @@
 						<string key="NSFrame">{{0, 44}, {320, 416}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:418</string>
-						<object class="NSColor" key="IBUIBackgroundColor" id="738379237">
+						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
@@ -108,7 +105,7 @@
 					<object class="IBUILabel" id="102391739">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{67, 11}, {178, 21}}</string>
+						<string key="NSFrame">{{85, 11}, {160, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="685280129"/>
@@ -153,81 +150,6 @@
 					<int key="IBUIStatusBarStyle">2</int>
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-			</object>
-			<object class="IBUITableViewCell" id="139627341">
-				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">292</int>
-				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIView" id="944277772">
-						<reference key="NSNextResponder" ref="139627341"/>
-						<int key="NSvFlags">256</int>
-						<array class="NSMutableArray" key="NSSubviews">
-							<object class="IBUISwitch" id="568752638">
-								<reference key="NSNextResponder" ref="944277772"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{192, 8}, {94, 27}}</string>
-								<reference key="NSSuperview" ref="944277772"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
-								<string key="NSReuseIdentifierKey">_NS:606</string>
-								<bool key="IBUIOpaque">NO</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<int key="IBUIContentHorizontalAlignment">0</int>
-								<int key="IBUIContentVerticalAlignment">0</int>
-							</object>
-							<object class="IBUILabel" id="124643851">
-								<reference key="NSNextResponder" ref="944277772"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 11}, {179, 21}}</string>
-								<reference key="NSSuperview" ref="944277772"/>
-								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="568752638"/>
-								<string key="NSReuseIdentifierKey">_NS:328</string>
-								<bool key="IBUIOpaque">NO</bool>
-								<bool key="IBUIClipsSubviews">YES</bool>
-								<int key="IBUIContentMode">7</int>
-								<bool key="IBUIUserInteractionEnabled">NO</bool>
-								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Label</string>
-								<object class="NSColor" key="IBUITextColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
-								</object>
-								<nil key="IBUIHighlightedColor"/>
-								<int key="IBUIBaselineAdjustment">1</int>
-								<float key="IBUIMinimumFontSize">10</float>
-								<object class="IBUIFontDescription" key="IBUIFontDescription">
-									<int key="type">1</int>
-									<double key="pointSize">17</double>
-								</object>
-								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica</string>
-									<double key="NSSize">17</double>
-									<int key="NSfFlags">16</int>
-								</object>
-							</object>
-						</array>
-						<string key="NSFrameSize">{320, 43}</string>
-						<reference key="NSSuperview" ref="139627341"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="124643851"/>
-						<string key="NSReuseIdentifierKey">_NS:395</string>
-						<reference key="IBUIBackgroundColor" ref="738379237"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">4</int>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
-				</array>
-				<string key="NSFrameSize">{320, 44}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="944277772"/>
-				<string key="NSReuseIdentifierKey">_NS:384</string>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-				<int key="IBUISelectionStyle">0</int>
-				<reference key="IBUIContentView" ref="944277772"/>
 			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -274,22 +196,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">_cellAgreement</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="139627341"/>
-					</object>
-					<int key="connectionID">73</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">_cellAgreementLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="124643851"/>
-					</object>
-					<int key="connectionID">74</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dataSource</string>
 						<reference key="source" ref="43745243"/>
 						<reference key="destination" ref="372490531"/>
@@ -311,15 +217,6 @@
 						<reference key="destination" ref="975951072"/>
 					</object>
 					<int key="connectionID">69</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">onSwitch:</string>
-						<reference key="source" ref="568752638"/>
-						<reference key="destination" ref="975951072"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">76</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -386,25 +283,6 @@
 						<reference key="object" ref="401467404"/>
 						<reference key="parent" ref="913781492"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">70</int>
-						<reference key="object" ref="139627341"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="124643851"/>
-							<reference ref="568752638"/>
-						</array>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">71</int>
-						<reference key="object" ref="568752638"/>
-						<reference key="parent" ref="139627341"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">72</int>
-						<reference key="object" ref="124643851"/>
-						<reference key="parent" ref="139627341"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -419,9 +297,6 @@
 				<string key="58.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="59.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="61.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="70.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="71.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="72.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
@@ -437,7 +312,6 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="onBack:">id</string>
 						<string key="onNext:">id</string>
-						<string key="onSwitch:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="onBack:">
@@ -448,15 +322,9 @@
 							<string key="name">onNext:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="onSwitch:">
-							<string key="name">onSwitch:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_backBtn">UIBarButtonItem</string>
-						<string key="_cellAgreement">UITableViewCell</string>
-						<string key="_cellAgreementLabel">UILabel</string>
 						<string key="_tableView">UITableView</string>
 						<string key="_titleLabel">UILabel</string>
 						<string key="_toolbar">UIToolbar</string>
@@ -465,14 +333,6 @@
 						<object class="IBToOneOutletInfo" key="_backBtn">
 							<string key="name">_backBtn</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_cellAgreement">
-							<string key="name">_cellAgreement</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_cellAgreementLabel">
-							<string key="name">_cellAgreementLabel</string>
-							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_tableView">
 							<string key="name">_tableView</string>
@@ -640,101 +500,12 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">RadioViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/RadioViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SettingsViewController</string>
-					<string key="superclassName">TrackedUIViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_backBtn">UIBarButtonItem</string>
-						<string key="_container">UIView</string>
-						<string key="_settingsImageCell">UITableViewCell</string>
-						<string key="_settingsImageImage">UIImageView</string>
-						<string key="_settingsImageLabel">UILabel</string>
-						<string key="_settingsThemeCell">UITableViewCell</string>
-						<string key="_settingsThemeImage">UIImageView</string>
-						<string key="_settingsThemeTitle">UILabel</string>
-						<string key="_settingsTitleCell">UITableViewCell</string>
-						<string key="_settingsTitleLabel">UILabel</string>
-						<string key="_settingsTitleTextField">UITextField</string>
-						<string key="_tableView">UITableView</string>
-						<string key="_titleLabel">UILabel</string>
-						<string key="_toolbar">UIToolbar</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_backBtn">
-							<string key="name">_backBtn</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_container">
-							<string key="name">_container</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsImageCell">
-							<string key="name">_settingsImageCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsImageImage">
-							<string key="name">_settingsImageImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsImageLabel">
-							<string key="name">_settingsImageLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsThemeCell">
-							<string key="name">_settingsThemeCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsThemeImage">
-							<string key="name">_settingsThemeImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsThemeTitle">
-							<string key="name">_settingsThemeTitle</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsTitleCell">
-							<string key="name">_settingsTitleCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsTitleLabel">
-							<string key="name">_settingsTitleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsTitleTextField">
-							<string key="name">_settingsTitleTextField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_tableView">
-							<string key="name">_tableView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_titleLabel">
-							<string key="name">_titleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_toolbar">
-							<string key="name">_toolbar</string>
-							<string key="candidateClassName">UIToolbar</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SettingsViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">SignupViewController</string>
 					<string key="superclassName">TrackedUIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="onBack:">id</string>
 						<string key="onSubmit:">id</string>
+						<string key="onSwitch:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="onBack:">
@@ -745,15 +516,22 @@
 							<string key="name">onSubmit:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="onSwitch:">
+							<string key="name">onSwitch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_backBtn">UIBarButtonItem</string>
 						<string key="_cellEmail">UITableViewCell</string>
 						<string key="_cellEmailLabel">UILabel</string>
 						<string key="_cellEmailTextfield">UITextField</string>
+						<string key="_cellLegal">UITableViewCell</string>
+						<string key="_cellLegalValidLabel">UILabel</string>
 						<string key="_cellPword">UITableViewCell</string>
 						<string key="_cellPwordLabel">UILabel</string>
 						<string key="_cellPwordTextfield">UITextField</string>
+						<string key="_cellSubmit">UITableViewCell</string>
 						<string key="_cellUsername">UITableViewCell</string>
 						<string key="_cellUsernameLabel">UILabel</string>
 						<string key="_cellUsernameTextfield">UITextField</string>
@@ -778,6 +556,14 @@
 							<string key="name">_cellEmailTextfield</string>
 							<string key="candidateClassName">UITextField</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="_cellLegal">
+							<string key="name">_cellLegal</string>
+							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellLegalValidLabel">
+							<string key="name">_cellLegalValidLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="_cellPword">
 							<string key="name">_cellPword</string>
 							<string key="candidateClassName">UITableViewCell</string>
@@ -789,6 +575,10 @@
 						<object class="IBToOneOutletInfo" key="_cellPwordTextfield">
 							<string key="name">_cellPwordTextfield</string>
 							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellSubmit">
+							<string key="name">_cellSubmit</string>
+							<string key="candidateClassName">UITableViewCell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_cellUsername">
 							<string key="name">_cellUsername</string>

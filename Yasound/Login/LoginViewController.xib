@@ -209,7 +209,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">username</string>
+								<string key="IBUIText">email</string>
 								<object class="NSColor" key="IBUITextColor" id="190250624">
 									<int key="NSColorSpace">1</int>
 									<bytes key="NSRGB">MCAwIDAAA</bytes>
@@ -241,13 +241,10 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<string key="IBUIText"/>
-								<string key="IBUIPlaceholder">enter username here</string>
+								<string key="IBUIPlaceholder">enter email here</string>
 								<object class="NSColor" key="IBUITextColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MAA</bytes>
-									<object class="NSColorSpace" key="NSCustomColorSpace" id="966249349">
-										<int key="NSID">2</int>
-									</object>
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 								<float key="IBUIMinimumFontSize">17</float>
@@ -332,9 +329,8 @@
 								<string key="IBUIText"/>
 								<string key="IBUIPlaceholder">password required</string>
 								<object class="NSColor" key="IBUITextColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MAA</bytes>
-									<reference key="NSCustomColorSpace" ref="966249349"/>
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 								<float key="IBUIMinimumFontSize">17</float>
@@ -413,30 +409,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">_cellUsername</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="260204234"/>
-					</object>
-					<int key="connectionID">120</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">_cellUsernameLabel</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="293002895"/>
-					</object>
-					<int key="connectionID">121</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">_cellUsernameTextfield</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="77097584"/>
-					</object>
-					<int key="connectionID">122</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">_submitBtn</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="456960022"/>
@@ -458,6 +430,30 @@
 						<reference key="destination" ref="149937635"/>
 					</object>
 					<int key="connectionID">130</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_cellEmail</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="260204234"/>
+					</object>
+					<int key="connectionID">132</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_cellEmailLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="293002895"/>
+					</object>
+					<int key="connectionID">133</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_cellEmailTextfield</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="77097584"/>
+					</object>
+					<int key="connectionID">134</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -536,6 +532,7 @@
 							<reference ref="77097584"/>
 						</array>
 						<reference key="parent" ref="0"/>
+						<string key="objectName">email</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">60</int>
@@ -638,10 +635,56 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">131</int>
+			<int key="maxID">134</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">LegalViewController</string>
+					<string key="superclassName">TrackedUIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="onBack:">id</string>
+						<string key="onNext:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="onBack:">
+							<string key="name">onBack:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onNext:">
+							<string key="name">onNext:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="_backBtn">UIBarButtonItem</string>
+						<string key="_tableView">UITableView</string>
+						<string key="_titleLabel">UILabel</string>
+						<string key="_toolbar">UIToolbar</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="_backBtn">
+							<string key="name">_backBtn</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_tableView">
+							<string key="name">_tableView</string>
+							<string key="candidateClassName">UITableView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_titleLabel">
+							<string key="name">_titleLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_toolbar">
+							<string key="name">_toolbar</string>
+							<string key="candidateClassName">UIToolbar</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/LegalViewController.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">LoginViewController</string>
 					<string key="superclassName">TrackedUIViewController</string>
@@ -661,12 +704,12 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_backBtn">UIBarButtonItem</string>
+						<string key="_cellEmail">UITableViewCell</string>
+						<string key="_cellEmailLabel">UILabel</string>
+						<string key="_cellEmailTextfield">UITextField</string>
 						<string key="_cellPword">UITableViewCell</string>
 						<string key="_cellPwordLabel">UILabel</string>
 						<string key="_cellPwordTextfield">UITextField</string>
-						<string key="_cellUsername">UITableViewCell</string>
-						<string key="_cellUsernameLabel">UILabel</string>
-						<string key="_cellUsernameTextfield">UITextField</string>
 						<string key="_submitBtn">UIButton</string>
 						<string key="_tableView">UITableView</string>
 						<string key="_titleLabel">UILabel</string>
@@ -675,6 +718,18 @@
 						<object class="IBToOneOutletInfo" key="_backBtn">
 							<string key="name">_backBtn</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellEmail">
+							<string key="name">_cellEmail</string>
+							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellEmailLabel">
+							<string key="name">_cellEmailLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellEmailTextfield">
+							<string key="name">_cellEmailTextfield</string>
+							<string key="candidateClassName">UITextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_cellPword">
 							<string key="name">_cellPword</string>
@@ -686,18 +741,6 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="_cellPwordTextfield">
 							<string key="name">_cellPwordTextfield</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_cellUsername">
-							<string key="name">_cellUsername</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_cellUsernameLabel">
-							<string key="name">_cellUsernameLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_cellUsernameTextfield">
-							<string key="name">_cellUsernameTextfield</string>
 							<string key="candidateClassName">UITextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_submitBtn">
@@ -795,6 +838,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="onBack:">id</string>
 						<string key="onSubmit:">id</string>
+						<string key="onSwitch:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="onBack:">
@@ -805,15 +849,22 @@
 							<string key="name">onSubmit:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="onSwitch:">
+							<string key="name">onSwitch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_backBtn">UIBarButtonItem</string>
 						<string key="_cellEmail">UITableViewCell</string>
 						<string key="_cellEmailLabel">UILabel</string>
 						<string key="_cellEmailTextfield">UITextField</string>
+						<string key="_cellLegal">UITableViewCell</string>
+						<string key="_cellLegalValidLabel">UILabel</string>
 						<string key="_cellPword">UITableViewCell</string>
 						<string key="_cellPwordLabel">UILabel</string>
 						<string key="_cellPwordTextfield">UITextField</string>
+						<string key="_cellSubmit">UITableViewCell</string>
 						<string key="_cellUsername">UITableViewCell</string>
 						<string key="_cellUsernameLabel">UILabel</string>
 						<string key="_cellUsernameTextfield">UITextField</string>
@@ -838,6 +889,14 @@
 							<string key="name">_cellEmailTextfield</string>
 							<string key="candidateClassName">UITextField</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="_cellLegal">
+							<string key="name">_cellLegal</string>
+							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellLegalValidLabel">
+							<string key="name">_cellLegalValidLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="_cellPword">
 							<string key="name">_cellPword</string>
 							<string key="candidateClassName">UITableViewCell</string>
@@ -849,6 +908,10 @@
 						<object class="IBToOneOutletInfo" key="_cellPwordTextfield">
 							<string key="name">_cellPwordTextfield</string>
 							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellSubmit">
+							<string key="name">_cellSubmit</string>
+							<string key="candidateClassName">UITableViewCell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_cellUsername">
 							<string key="name">_cellUsername</string>
@@ -878,6 +941,102 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/SignupViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">StatsViewController</string>
+					<string key="superclassName">TrackedUIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="onBack:">id</string>
+						<string key="onNextMonth:">id</string>
+						<string key="onNextWeek:">id</string>
+						<string key="onPreviousMonth:">id</string>
+						<string key="onPreviousWeek:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="onBack:">
+							<string key="name">onBack:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onNextMonth:">
+							<string key="name">onNextMonth:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onNextWeek:">
+							<string key="name">onNextWeek:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onPreviousMonth:">
+							<string key="name">onPreviousMonth:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onPreviousWeek:">
+							<string key="name">onPreviousWeek:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="_backBtn">UIBarButtonItem</string>
+						<string key="_btnNextMonth">UIButton</string>
+						<string key="_btnNextWeek">UIButton</string>
+						<string key="_btnPreviousMonth">UIButton</string>
+						<string key="_btnPreviousWeek">UIButton</string>
+						<string key="_cellMonthSelector">UITableViewCell</string>
+						<string key="_cellMonthSelectorLabel">UILabel</string>
+						<string key="_cellWeekSelector">UITableViewCell</string>
+						<string key="_cellWeekSelectorLabel">UILabel</string>
+						<string key="_tableView">UITableView</string>
+						<string key="_titleLabel">UILabel</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="_backBtn">
+							<string key="name">_backBtn</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_btnNextMonth">
+							<string key="name">_btnNextMonth</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_btnNextWeek">
+							<string key="name">_btnNextWeek</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_btnPreviousMonth">
+							<string key="name">_btnPreviousMonth</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_btnPreviousWeek">
+							<string key="name">_btnPreviousWeek</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellMonthSelector">
+							<string key="name">_cellMonthSelector</string>
+							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellMonthSelectorLabel">
+							<string key="name">_cellMonthSelectorLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellWeekSelector">
+							<string key="name">_cellWeekSelector</string>
+							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellWeekSelectorLabel">
+							<string key="name">_cellWeekSelectorLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_tableView">
+							<string key="name">_tableView</string>
+							<string key="candidateClassName">UITableView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_titleLabel">
+							<string key="name">_titleLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/StatsViewController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

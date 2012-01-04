@@ -13,6 +13,8 @@
 #import "PlaylistMoulinor.h"
 #import "YasoundDataProvider.h"
 
+
+
 @implementation PlaylistsViewController
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard
@@ -87,15 +89,26 @@
     _titleLabel.text = NSLocalizedString(@"PlaylistsView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
 
+    BOOL forceEnableNextBtn = NO;
+    
+#if TARGET_IPHONE_SIMULATOR
+    forceEnableNextBtn = YES;
+#endif
+
+    
     // next button in toolbar
-    //LBDEBUG
-//    if (_wizard)
-//    {
+    if (_wizard)
+    {
         _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
         NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
         [items addObject:_nextBtn];
         [_toolbar setItems:items animated:NO];
-//    }
+        
+        if (([_playlists count] != 0) || forceEnableNextBtn)
+            _nextBtn.enabled = YES;
+        else
+            _nextBtn.enabled = NO;
+    }
     
     
     _cellHowtoLabel.text = NSLocalizedString(@"PlaylistsView_howto", nil);
@@ -283,7 +296,7 @@
 - (void) save
 {
     //fake commnunication
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"msg_submit_title", nil) message:NSLocalizedString(@"msg_submit_body", nil)];
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil)];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
     //    
@@ -321,10 +334,13 @@
 {
     [ActivityAlertView close];
     
-//    RadioViewController* view = [[RadioViewController alloc] init];
-//    self.navigationController.navigationBarHidden = YES;
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
+    if (_wizard)
+    {
+        // call root to launch the Radio
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationPushRadio" object:nil];
+    }
+    else
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 
