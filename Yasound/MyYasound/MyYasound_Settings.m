@@ -311,7 +311,12 @@
     
     if ((indexPath.section == SECTION_DIVERS) && (indexPath.row == ROW_LOGOUT))
     {
-        [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutDidReturned)];
+        UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_logout_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_logout_logout", nil), nil];
+
+        popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [popupQuery showInView:self.view];
+        [popupQuery release];
+        
         return;
     }
 
@@ -319,6 +324,20 @@
 
 
 }
+
+
+
+
+#pragma mark - ActionSheet Delegate
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
+    
+    if (buttonIndex == 0)
+        [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutDidReturned)];
+}
+
 
 
 
