@@ -8,16 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-//@class RootViewController;
-@class HomeViewController;
+@class RootViewController;
 
 @interface YasoundAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, retain)  IBOutlet UIWindow *window;
 @property (nonatomic, retain)  UINavigationController *navigationController;
 
-//@property (nonatomic, retain) RootViewController* rootViewController;
-@property (nonatomic, retain) HomeViewController* rootViewController;
+@property (nonatomic, retain) RootViewController* rootViewController;
 
 
 @end
