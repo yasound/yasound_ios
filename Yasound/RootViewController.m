@@ -11,7 +11,7 @@
 #import "RadioTabBarController.h"
 #import "RadioViewController.h"
 #import "YasoundSessionManager.h"
-
+#import "ActivityAlertView.h"
 
 
 @implementation RootViewController
@@ -72,7 +72,9 @@
 {
     if ([YasoundSessionManager main].registered)
     {
-        [[YasoundSessionManager main] loginWithTarget:self action:@selector(loginReturned:)];
+        // TAG ACTIVITY ALERT
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+        [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:)];
     }
     else
     {
@@ -108,6 +110,7 @@
     [self.navigationController popToRootViewControllerAnimated:NO];
     [self launchRadio];
 }
+
 
 - (void)onLoginScreen:(NSNotification *)notification
 {

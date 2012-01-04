@@ -27,6 +27,10 @@
     IBOutlet UITextField* _cellPwordTextfield;
 
     IBOutlet UIButton* _submitBtn;
+    
+    
+    NSString* _email;
+    NSString* _pword;
 }
 
 

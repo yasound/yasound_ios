@@ -14,6 +14,8 @@
 #import "YasoundDataProvider.h"
 #import "ActivityAlertView.h"
 #import "RegExp.h"
+#import "YasoundSessionManager.h"
+
 
 
 #define ROW_EMAIL 0
@@ -36,6 +38,10 @@
 
 - (void) dealloc
 {
+    if (_email)
+        [_email release];
+    if (_pword)
+        [_pword release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -205,6 +211,10 @@
         return;    
     }
 
+    _email = [NSString stringWithString:email];
+    _pword = [NSString stringWithString:pword];
+    [_email retain];
+    [_pword retain];
     
     
     // login request to server
@@ -222,6 +232,9 @@
         [av release];  
         return;
     }
+    
+    // store info for automatic login, for the next sessions
+    [[YasoundSessionManager main] registerForYasound:_email withPword:_pword];
 
     // call root to launch the Radio
     [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
