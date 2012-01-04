@@ -85,8 +85,10 @@ NSArray* gFakeUsersFavorites = nil;
 
     [_segmentControl addTarget:self action:@selector(onmSegmentClicked:) forControlEvents:UIControlEventValueChanged];
     
-    [self viewDidLoadInSettingsTableView];
+    [self viewDidLoadInSettingsTableView];    
 }
+
+
 
 
 
@@ -101,6 +103,22 @@ NSArray* gFakeUsersFavorites = nil;
 {
     [super viewWillAppear:animated];
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+    
+    // automatic launch
+    BOOL _automaticLaunch =  [[[NSUserDefaults standardUserDefaults] objectForKey:@"automaticLaunch"] boolValue];
+    
+    if (_automaticLaunch)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"automaticLaunch"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        // display radio automatically
+        RadioViewController* view = [[RadioViewController alloc] init];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -108,6 +126,7 @@ NSArray* gFakeUsersFavorites = nil;
     [_settingsTableView deselectRowAtIndexPath:[_settingsTableView indexPathForSelectedRow] animated:NO];    
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];    
 }
+
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

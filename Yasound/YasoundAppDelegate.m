@@ -8,9 +8,7 @@
 
 #import "YasoundAppDelegate.h"
 #import "EasyTracker.h"
-//#import "RootViewController.h"
-#import "HomeViewController.h"
-#import "SettingsViewController.h"
+#import "RootViewController.h"
 
 
 @implementation YasoundAppDelegate
@@ -37,8 +35,7 @@
   // add it as the window's root widget
   self.window.rootViewController = navigationController;
     
-//    rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
-    rootViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
     [self.navigationController pushViewController:rootViewController animated:NO];
     
   return YES;

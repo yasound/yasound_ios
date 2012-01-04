@@ -12,6 +12,8 @@
 #import "Theme.h"
 #import "KeywordsViewController.h"
 #import "PlaylistsViewController.h"
+#import "ActivityAlertView.h"
+
 
 
 #define SECTION_CONFIG 0
@@ -450,10 +452,6 @@
 - (IBAction)onNext:(id)sender
 {
     [self save];
-    
-    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];    
 }
 
 
@@ -505,6 +503,20 @@
 
 - (void) save
 {
+    //fake commnunication
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"SettingsView_submit_title", nil)];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
+
+}
+
+- (void)onFakeSubmitAction:(NSTimer*)timer
+{
+    [ActivityAlertView close];
+    
+    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];    
 }
 
 

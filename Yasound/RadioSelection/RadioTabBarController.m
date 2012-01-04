@@ -11,21 +11,14 @@
 #import "RadioSearchViewController.h"
 #import "MyYasoundViewController.h"
 #import "BundleFileManager.h"
+#import "RadioViewController.h"
+
+
 
 @implementation RadioTabBarController
 
 
 
-- (id)init
-{
-    self = [super init];
-    if (self)
-    {
-    
-    }
-    
-    return self;
-}
 
 
 - (void)didReceiveMemoryWarning
@@ -61,7 +54,7 @@
   RadioSearchViewController* view5 = [[RadioSearchViewController alloc] initWithNibName:@"RadioSearchViewController" bundle:nil title:NSLocalizedString(@"selection_tab_search", nil) tabItem:UITabBarSystemItemSearch];
 
   self.viewControllers = [NSArray arrayWithObjects:view1, view2, view3, view4, view5, nil];
-  
+
 }
 
 - (void)viewDidUnload
@@ -69,6 +62,11 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
