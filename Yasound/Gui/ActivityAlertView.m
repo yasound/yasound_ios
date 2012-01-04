@@ -13,7 +13,7 @@
 
 static ActivityAlertView* _alertView = nil;
 
-+ (void)showWithTitle:(NSString *)title message:(NSString *)message
++ (void)showWithTitle:(NSString *)title 
 {
     if (_alertView)
     {
@@ -21,9 +21,10 @@ static ActivityAlertView* _alertView = nil;
         [_alertView release];
     }
     
-    _alertView = [[ActivityAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    _alertView = [[ActivityAlertView alloc] initWithTitle:title message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
     [_alertView show];
 }
+
 
 + (void)close
 {
@@ -40,7 +41,7 @@ static ActivityAlertView* _alertView = nil;
 {
   if ((self = [super initWithFrame:frame]))
 	{
-    self.activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 100, 30, 30)];
+    self.activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 55, 30, 30)];
 		[self addSubview:activityView];
 		activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
 		[activityView startAnimating];

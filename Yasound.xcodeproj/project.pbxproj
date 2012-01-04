@@ -52,6 +52,9 @@
 		BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC5EE243147D739600A282A5 /* RadioTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23F147D739600A282A5 /* RadioTabBarController.m */; };
+		BC6314D214B4665200549EF6 /* RegExp.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6314D114B4665200549EF6 /* RegExp.m */; };
+		BC6314D314B4665200549EF6 /* RegExp.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6314D114B4665200549EF6 /* RegExp.m */; };
+		BC6314D414B4665200549EF6 /* RegExp.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6314D114B4665200549EF6 /* RegExp.m */; };
 		BC6ADD18149B9EDF00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
 		BC6ADD1A149B9EEE00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
 		BC6ADD1B149B9EFF00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
@@ -822,6 +825,8 @@
 		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
 		BC5EE23E147D739600A282A5 /* RadioTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioTabBarController.h; path = RadioSelection/RadioTabBarController.h; sourceTree = "<group>"; };
 		BC5EE23F147D739600A282A5 /* RadioTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioTabBarController.m; path = RadioSelection/RadioTabBarController.m; sourceTree = "<group>"; };
+		BC6314D014B4665200549EF6 /* RegExp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExp.h; sourceTree = "<group>"; };
+		BC6314D114B4665200549EF6 /* RegExp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExp.m; sourceTree = "<group>"; };
 		BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BC71F582147F979700DAE4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F586147F97DA00DAE4BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1328,6 +1333,15 @@
 				BC71F5A2147FE07600DAE4BD /* avatarDummy */,
 			);
 			name = RadioSelection;
+			sourceTree = "<group>";
+		};
+		BC6314CF14B4665200549EF6 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				BC6314D014B4665200549EF6 /* RegExp.h */,
+				BC6314D114B4665200549EF6 /* RegExp.m */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		BC71F57F147F978700DAE4BD /* en */ = {
@@ -2049,6 +2063,7 @@
 				BC5EE20E147D3EB300A282A5 /* Radio Selection */,
 				BCB41F4114863646008F3738 /* Theme */,
 				BCB5F28B1485416B00C28B3D /* RadioView */,
+				BC6314CF14B4665200549EF6 /* Tools */,
 				BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */,
 				BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */,
 			);
@@ -2706,6 +2721,7 @@
 				BCCA798B14AE24D80011AADD /* S7GraphView.m in Sources */,
 				BCCA799014AE74630011AADD /* ChartView.m in Sources */,
 				BCCA799614B1AE520011AADD /* StatsViewController.m in Sources */,
+				BC6314D314B4665200549EF6 /* RegExp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2809,6 +2825,7 @@
 				BCCA798A14AE24D80011AADD /* S7GraphView.m in Sources */,
 				BCCA798F14AE74630011AADD /* ChartView.m in Sources */,
 				BCCA799514B1AE520011AADD /* StatsViewController.m in Sources */,
+				BC6314D214B4665200549EF6 /* RegExp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2911,6 +2928,7 @@
 				BCCA798C14AE24D80011AADD /* S7GraphView.m in Sources */,
 				BCCA799114AE74630011AADD /* ChartView.m in Sources */,
 				BCCA799714B1AE520011AADD /* StatsViewController.m in Sources */,
+				BC6314D414B4665200549EF6 /* RegExp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

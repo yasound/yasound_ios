@@ -9,8 +9,9 @@
 #import "SignupViewController.h"
 #import "SettingsViewController.h"
 #import "YasoundDataProvider.h"
-
-
+#import "LegalViewController.h"
+#import "ActivityAlertView.h"
+#import "RegExp.h"
 
 #define ROW_EMAIL 0
 #define ROW_PWORD 1
@@ -220,22 +221,51 @@
     NSString* email = [_cellEmailTextfield.text stringByTrimmingCharactersInSet:space];
     NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
     NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
+
+    if (![RegExp emailIsValid:email])
+    {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SignupView_alert_title", nil) message:NSLocalizedString(@"SignupView_alert_email_not_valid", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;    
+    }
+
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"Alert_contact_server", nil)];
     
     // login request to server
-    [[YasoundDataProvider main] signup:username password:pword email:email target:self action:@selector(requestDidReturn:info:)];
+    [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];
 }
 
 
 - (void) requestDidReturn:(User*)user info:(NSDictionary*)info
 {
+    [ActivityAlertView close];
     NSLog(@"signup requestDidReturn %@ - %@", user.name, info);
     
-    //if (
-    
-    //    [ActivityAlertView showWithTitle:(NSString *)title message:(NSString *)message;
-    //    + (void)close;
-    //    UIAlertView* 
+    if (user == nil)
+    {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SignupView_alert_title", nil) message:NSLocalizedString(@"SignupView_alert_message_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;
+    }
+
+    // go to next screen
+    LegalViewController* view = [[LegalViewController alloc] initWithNibName:@"LegalViewController" bundle:nil wizard:YES];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];    
 }
+
+         
+         
+#pragma mark - UIAlertViewDelegate
+
+ // Called when a button is clicked. The view will be automatically dismissed after this call returns
+ - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+ {
+     
+ }
+         
 
 
 
