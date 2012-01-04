@@ -236,11 +236,22 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)loginThirdParty:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector
+- (void)loginSocialWithAuth:(AuthSocial*)auth target:(id)target action:(SEL)selector
 {
-  AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid token:token andEmail:email];
   NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
   [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/login_social/" absolute:NO notifyTarget:self byCalling:@selector(didReceiveLoginSocial:withInfo:) withUserData:data withAuth:auth];
+}
+
+- (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector
+{
+  AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid token:token andEmail:email];
+  [self loginSocialWithAuth:auth target:target action:selector];
+}
+
+- (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector
+{
+  AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid token:token tokenSecret:tokenSecret andEmail:email];
+  [self loginSocialWithAuth:auth target:target action:selector];
 }
 
 - (void)didReceiveLoginSocial:(NSArray*)users withInfo:(NSDictionary*)info
@@ -273,6 +284,8 @@ static YasoundDataProvider* _main = nil;
     [target performSelector:selector withObject:_user withObject:finalInfo];
   }
 }
+
+
 
 
 

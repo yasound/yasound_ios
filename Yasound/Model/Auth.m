@@ -72,12 +72,28 @@
   self = [super initWithUsername:name];
   if (self)
   {
-    _accountType = type;
-    _uid = uid;
-    _token = token;
-    _email = email;
+    [self fillAccountType:type uid:uid token:token tokenSecret:nil andEmail:email];
   }
   return self;
+}
+
+- (id)initWithUsername:(NSString *)name  accountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret andEmail:(NSString*)email
+{
+  self = [super initWithUsername:name];
+  if (self)
+  {
+    [self fillAccountType:type uid:uid token:token tokenSecret:tokenSecret andEmail:email];
+  }
+  return self;
+}
+
+- (void)fillAccountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret andEmail:(NSString*)email;
+{
+  _accountType = type;
+  _uid = uid;
+  _token = token;
+  _tokenSecret = tokenSecret;
+  _email = email;
 }
 
 - (NSArray*)urlParams
@@ -89,6 +105,8 @@
   [params addObject:[NSString stringWithFormat:@"token=%@", _token]];
   [params addObject:[NSString stringWithFormat:@"name=%@", username]];
   [params addObject:[NSString stringWithFormat:@"email=%@", _email]];
+  if (_tokenSecret)
+    [params addObject:[NSString stringWithFormat:@"token_secret=%@", _tokenSecret]];
   return params;
 }
 
