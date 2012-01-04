@@ -335,7 +335,10 @@
     [ActivityAlertView close];
     
     if (_wizard)
+    {
+        // call root to launch the Radio
         [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationPushRadio" object:nil];
+    }
     else
         [self.navigationController popViewControllerAnimated:YES];
 }

@@ -13,9 +13,10 @@
 
 #import "YasoundDataProvider.h"
 #import "ActivityAlertView.h"
+#import "RegExp.h"
 
 
-#define ROW_USERNAME 0
+#define ROW_EMAIL 0
 #define ROW_PWORD 1
 
 
@@ -54,8 +55,8 @@
     _titleLabel.text = NSLocalizedString(@"LoginView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
 
-    _cellUsernameLabel.text = NSLocalizedString(@"LoginView_username_label", nil);
-    _cellUsernameTextfield.placeholder = NSLocalizedString(@"LoginView_username_placeholder", nil);
+    _cellEmailLabel.text = NSLocalizedString(@"LoginView_email_label", nil);
+    _cellEmailTextfield.placeholder = NSLocalizedString(@"LoginView_email_placeholder", nil);
     
     _cellPwordLabel.text = NSLocalizedString(@"LoginView_pword_label", nil);
     _cellPwordTextfield.placeholder = NSLocalizedString(@"LoginView_pword_placeholder", nil);
@@ -133,8 +134,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if (indexPath.row == ROW_USERNAME)
-        return _cellUsername;
+    if (indexPath.row == ROW_EMAIL)
+        return _cellEmail;
     
     if (indexPath.row == ROW_PWORD)
         return _cellPword;
@@ -156,7 +157,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == _cellUsernameTextfield)
+    if (textField == _cellEmailTextfield)
     {
         [_cellPwordTextfield becomeFirstResponder];
     }
@@ -166,9 +167,9 @@
         
         // activate "submit" button
         NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-        NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
+        NSString* email = [_cellEmailTextfield.text stringByTrimmingCharactersInSet:space];
         NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
-        if ((username.length != 0) && (pword.length != 0))
+        if ((email.length != 0) && (pword.length != 0))
             _submitBtn.enabled = YES;
         else
             _submitBtn.enabled = NO;
@@ -193,20 +194,37 @@
 - (IBAction) onSubmit:(id)sender
 {
     NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-    NSString* username = [_cellUsernameTextfield.text stringByTrimmingCharactersInSet:space];
+    NSString* email = [_cellEmailTextfield.text stringByTrimmingCharactersInSet:space];
     NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
 
+    if (![RegExp emailIsValid:email])
+    {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_email_not_valid", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;    
+    }
+
+    
+    
     // login request to server
-  [[YasoundDataProvider main] login:username password:pword target:self action:@selector(requestDidReturn:info:)];
+  [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
 }
 
 - (void) requestDidReturn:(User*)user info:(NSDictionary*)info
 {
-    NSLog(@"requestDidReturn %@ - %@", user.name, info);
+    NSLog(@"login returned : %@ %@", user, info);
     
-//    [ActivityAlertView showWithTitle:(NSString *)title message:(NSString *)message;
-//    + (void)close;
-//    UIAlertView* 
+    if (user == nil)
+    {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;
+    }
+
+    // call root to launch the Radio
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationPushRadio" object:nil];
 }
 
 
