@@ -239,12 +239,15 @@
 
 - (void)sessionLoginFailed
 {
-  NSString* message = @"login failed!";
-  
-  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
+    NSString* message = @"login failed!";
+
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Yasound" message:message delegate:self
                                      cancelButtonTitle:@"OK" otherButtonTitles:nil];
-  [av show];
-  [av release];    
+    [av show];
+    [av release];    
+  
+    //LBDEBUG
+//    [TwitterSessionManager close];
 }
 
 

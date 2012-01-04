@@ -41,6 +41,13 @@ static TwitterSessionManager* _twitter = nil;
   return _twitter;
 }
 
++ (void)close
+{
+    if (_twitter)
+        [_twitter release];
+    _twitter = nil;
+}
+
 
 
 - (id)init
@@ -67,6 +74,7 @@ static TwitterSessionManager* _twitter = nil;
   }
   return self;
 }
+
 
 
 - (void)dealloc

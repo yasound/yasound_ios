@@ -123,7 +123,7 @@
   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
   
   TWRequest *fetchAdvancedUserProperties = [[TWRequest alloc] 
-                                            initWithURL:[NSURL URLWithString:@"http://api.twitter.com/1/users/show.json"] 
+                                            initWithURL:[NSURL URLWithString:@"https://api.twitter.com/1/users/show.json"] 
                                             parameters:[NSDictionary dictionaryWithObjectsAndKeys:account.username, @"screen_name", nil]
                                             requestMethod:TWRequestMethodGET];
   
@@ -142,7 +142,7 @@
   }];
   
   TWRequest *fetchUserImageRequest = [[TWRequest alloc] 
-                                      initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.twitter.com/1/users/profile_image/%@", account.username]] 
+                                      initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://api.twitter.com/1/users/profile_image/%@", account.username]] 
                                       parameters:nil
                                       requestMethod:TWRequestMethodGET];
   [fetchUserImageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) 
