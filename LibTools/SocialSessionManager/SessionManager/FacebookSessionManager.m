@@ -104,13 +104,7 @@ static FacebookSessionManager* _facebook = nil;
   
   if (![_facebookConnect isSessionValid]) 
   {
-//    NSLog(@"FB authorize dialog.");
     [_facebookConnect authorize:_facebookPermissions];
-     // _facebookConnect.permissions = _facebookPermissions;
-      
-      //LBDEBUG
-      //[self authorizeWithFBAppAuth:YES safariAuth:NO];
-
   }
   else
   {

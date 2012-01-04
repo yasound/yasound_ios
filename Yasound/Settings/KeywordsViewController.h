@@ -11,7 +11,16 @@
 
 @interface KeywordsViewController : UIViewController
 {
+    IBOutlet UIBarButtonItem* _backBtn;
+    IBOutlet UIBarButtonItem* _editBtn;
+    IBOutlet UIToolbar* _toolbar;
+    IBOutlet UILabel* _titleLabel;
+    
     IBOutlet UITableView* _tableView;
+    
+    IBOutlet UITableViewCell* _cellAdd;
+    IBOutlet UILabel* _cellAddLabel;
+    
     IBOutlet UITableViewCell* _cellTextField;
     IBOutlet UITextField* _textField;
     

@@ -171,6 +171,12 @@
 
     if (indexPath.row == ROW_SIGNUP)
     {
+        //LBDEBUG
+//        // go to next screen
+//        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES];
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release];    
+
         SignupViewController* view = [[SignupViewController alloc] initWithNibName:@"SignupViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
         [view release];

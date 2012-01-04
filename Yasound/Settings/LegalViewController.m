@@ -10,15 +10,14 @@
 
 @implementation LegalViewController
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        _wizard = wizard;
         _legalText = NSLocalizedString(@"LegalView_legal_text", nil);
         [_legalText retain];
-        _legalFont = [UIFont systemFontOfSize:10];
+        _legalFont = [UIFont systemFontOfSize:11];
         [_legalFont retain];
 
         // compute the size of the text => will allow to update the cell's height dynamically
@@ -65,21 +64,6 @@
 
     _titleLabel.text = NSLocalizedString(@"LegalView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-
-    // next button in toolbar
-    //LBDEBUG
-//    if (_wizard)
-//    {
-        _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
-        NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
-        [items addObject:_nextBtn];
-        [_toolbar setItems:items animated:NO];
-    
-        _nextBtn.enabled = NO;
-//    }
-    
-    
-    _cellAgreementLabel.text = NSLocalizedString(@"LegalView_agreement_label", nil);
 }
 
 - (void)viewDidUnload
@@ -118,7 +102,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 
@@ -130,31 +114,17 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((indexPath.section == 1) && (indexPath.row == 0))
-        return 44;
-    
     return _legalLabel.frame.size.height;
 }
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-//    if ((indexPath.section == 0) && (indexPath.row == 0))
-//    {
-//        cell.backgroundView.backgroundColor = [UIColor clearColor];
-//        cell.contentView.backgroundColor = [UIColor clearColor];
-//        cell.backgroundView.opaque = NO;
-//        cell.contentView.opaque = NO;
-//    }
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if ((indexPath.section == 1) && (indexPath.row == 0))
-        return _cellAgreement;
-    
-    
     static NSString* CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -209,20 +179,6 @@
 {
 }
 
-
--(IBAction)onSwitch:(id)sender 
-{
-    UISwitch* switchControl = sender;
-    
-    if(switchControl.on)
-    {
-        _nextBtn.enabled = YES;
-    }
-    else
-    {
-        _nextBtn.enabled = NO;
-    }
-}
 
 
 

@@ -19,16 +19,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.title = NSLocalizedString(@"KeywordsView_title", nil);
-  
-        UIBarButtonItem* editBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(onEdit:)];
-        self.navigationItem.rightBarButtonItem = editBtn;
-        
         _firstRowIsNotValidated = NO;
         
-        _keywords = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundKeywords"];
-        if (_keywords == nil)
+        NSArray* previousKeywords = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundKeywords"];
+        if (previousKeywords != nil)
+            _keywords = [NSMutableArray arrayWithArray:previousKeywords];
+        else
             _keywords = [[NSMutableArray alloc] init];
+        
+
         
         [_keywords retain];
     }
@@ -64,8 +63,12 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  
+    
+    _titleLabel.text = NSLocalizedString(@"KeywordsView_title", nil);
+    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);    
+    _cellAddLabel.text = NSLocalizedString(@"KeywordsView_add_label", nil);
 }
+
 
 
 
@@ -128,6 +131,14 @@
 //{
 //}
 
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ((indexPath.section == 0) || ((indexPath.section == 1) && (indexPath.row == 0) && _firstRowIsNotValidated))
+        return NO;
+
+    return YES;
+}
+
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ((indexPath.section == 0) || ((indexPath.section == 1) && (indexPath.row == 0) && _firstRowIsNotValidated))
@@ -147,6 +158,11 @@
       [_keywords removeObjectAtIndex:index];
     [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationBottom];
   }
+    
+    if ([_keywords count] == 0)
+        [_tableView setEditing:NO];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_keywords forKey:@"MyYasoundKeywords"];
 }
 
 
@@ -160,6 +176,9 @@
         _textField.placeholder = NSLocalizedString(@"KeywordsView_textfield_placeholder", nil);
         return _cellTextField;
     }
+    
+    if ((indexPath.section == 0) && (indexPath.row == 0))
+        return _cellAdd;
 
     static NSString *CellIdentifier = @"Cell";
 
@@ -167,13 +186,6 @@
     if (cell == nil) 
     {
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    if (indexPath.section == 0)
-    {
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-        cell.textLabel.text = NSLocalizedString(@"KeywordsView_add_label", nil);
-        return cell;
     }
     
     cell.textLabel.text = [_keywords objectAtIndex:indexPath.row];
@@ -240,7 +252,11 @@
 - (void)onEdit:(id)sender
 {
     if ([_keywords count] == 0)
-        return;
+    {
+     [_tableView setEditing:NO];
+     return;
+    }
+     
     [_tableView setEditing:!(_tableView.editing)];
 }
 
