@@ -114,6 +114,8 @@
     NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
     [user setValue:userid forKey:DATA_FIELD_ID];
     [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
+      [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN] forKey:DATA_FIELD_TOKEN];
+      [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN_SECRET] forKey:DATA_FIELD_TOKEN_SECRET];
     [user setValue:username forKey:DATA_FIELD_USERNAME];
     [user setValue:userscreenname forKey:DATA_FIELD_NAME];
     
@@ -193,13 +195,62 @@
 {
   NSInteger length = [data length];
   NSRange range = NSMakeRange(0, length);
+    
+    
+    //.....................................................................
+    //
+    // parse oauth_token and oauth_token_secret
+    //
+    NSRange begin = [data rangeOfString:@"oauth_token=" options:NSLiteralSearch range:range];
+    if (begin.location == NSNotFound)
+    {
+        NSLog(@"TwitterOAuthSession Manager data parsing error!");
+        return;
+    }
+    
+    range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
+    NSRange end = [data rangeOfString:@"&oauth_token_secret=" options:NSLiteralSearch range:range];
+    if (end.location == NSNotFound)
+    {
+        NSLog(@"TwitterOAuthSession Manager data parsing error!");
+        return;
+    }
+    
+    //.....................................................................
+    //
+    // extract and store
+    //
+    NSString* oauth_token = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
+    
+    begin = end;
+    range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
+    end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
+    if (end.location == NSNotFound)
+    {
+        NSLog(@"TwitterOAuthSession Manager data parsing error!");
+        return;
+    }
+    
+    NSString* oauth_token_secret = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
+    
+    //LBDEBUG
+    assert (oauth_token != nil);
+    [[NSUserDefaults standardUserDefaults] setValue:oauth_token forKey:DATA_FIELD_TOKEN];
+    assert (oauth_token_secret != nil);
+    [[NSUserDefaults standardUserDefaults] setValue:oauth_token_secret forKey:DATA_FIELD_TOKEN_SECRET];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //  NSLog(@"oauth_token %@", oauth_token);
+    
+    //  NSLog(@"oauth_token_secret %@", oauth_token_secret);
+
 
   //.....................................................................
   //
   // parse userid
   //
   
-  NSRange begin = [data rangeOfString:@"user_id=" options:NSLiteralSearch range:range];
+   begin = [data rangeOfString:@"user_id=" options:NSLiteralSearch range:range];
   if (begin.location == NSNotFound)
   {
     NSLog(@"TwitterOAuthSession warning : no userid has been parsed. May be normal.");
@@ -207,7 +258,7 @@
   }
 
   range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
-  NSRange end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
+   end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
   if (end.location == NSNotFound)
   {
     assert(0);
@@ -252,7 +303,11 @@
 
   // store it
   [[NSUserDefaults standardUserDefaults] setValue:screenname forKey:OAUTH_SCREENNAME];
-  
+ 
+    
+    
+    
+    
 }
 
 
