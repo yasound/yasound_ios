@@ -82,6 +82,16 @@
 
     [_submitBtn setTitle:NSLocalizedString(@"SignupView_submit_label", nil) forState:UIControlStateNormal];
     _submitBtn.enabled = NO;
+    
+    
+    //LBDEBUG pour accélerer
+    _cellEmailTextfield.text = @"neywen5@neywen.net";
+    _cellPwordTextfield.text = @"neywen";
+    _cellUsernameTextfield.text = @"neywen";
+    _userValidatedInfo = YES;
+    _userValidatedLegal = YES;
+
+    
 }
 
 
@@ -319,6 +329,8 @@
     }
 
     [ActivityAlertView showWithTitle:NSLocalizedString(@"Alert_contact_server", nil)];
+    
+    NSLog(@"Signup  email '%@'   pword '%@'    username '%@'", email, pword, username);
     
     // login request to server
     [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];

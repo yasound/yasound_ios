@@ -10,7 +10,7 @@
 #import "ApiKey.h"
 
 
-#define USE_LOCAL_SERVER 1
+#define USE_LOCAL_SERVER 0
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"

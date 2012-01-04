@@ -13,7 +13,7 @@
 #import "KeywordsViewController.h"
 #import "PlaylistsViewController.h"
 #import "ActivityAlertView.h"
-
+#import "YasoundDataProvider.h"
 
 
 #define SECTION_CONFIG 0
@@ -507,7 +507,8 @@
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SettingsView_submit_title", nil)];
     
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
-
+    
+//    [[YasoundDataProvider main] updateRadio:_radio target:self action:@selector(onRadioUpdated:)];
 }
 
 - (void)onFakeSubmitAction:(NSTimer*)timer
