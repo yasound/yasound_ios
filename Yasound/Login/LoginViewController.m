@@ -60,7 +60,7 @@
     
     _titleLabel.text = NSLocalizedString(@"LoginView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-
+    
     _cellEmailLabel.text = NSLocalizedString(@"LoginView_email_label", nil);
     _cellEmailTextfield.placeholder = NSLocalizedString(@"LoginView_email_placeholder", nil);
     
@@ -74,19 +74,19 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector (keyboardDidShow:)
-//                                                 name: UIKeyboardDidShowNotification object:nil];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self 
-//                                             selector:@selector (keyboardDidHide:)
-//                                                 name: UIKeyboardDidHideNotification object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self
+    //                                             selector:@selector (keyboardDidShow:)
+    //                                                 name: UIKeyboardDidShowNotification object:nil];
+    //    
+    //    [[NSNotificationCenter defaultCenter] addObserver:self 
+    //                                             selector:@selector (keyboardDidHide:)
+    //                                                 name: UIKeyboardDidHideNotification object:nil];
     
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidUnload
@@ -153,7 +153,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
 }
 
 
@@ -179,7 +179,7 @@
             _submitBtn.enabled = YES;
         else
             _submitBtn.enabled = NO;
-
+        
     }
     return YES;
 }
@@ -202,7 +202,7 @@
     NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
     NSString* email = [_cellEmailTextfield.text stringByTrimmingCharactersInSet:space];
     NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
-
+    
     if (![RegExp emailIsValid:email])
     {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_email_not_valid", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -210,7 +210,7 @@
         [av release];  
         return;    
     }
-
+    
     _email = [NSString stringWithString:email];
     _pword = [NSString stringWithString:pword];
     [_email retain];
@@ -218,7 +218,7 @@
     
     
     // login request to server
-  [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
+    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
 }
 
 - (void) requestDidReturn:(User*)user info:(NSDictionary*)info
@@ -235,7 +235,7 @@
     
     // store info for automatic login, for the next sessions
     [[YasoundSessionManager main] registerForYasound:_email withPword:_pword];
-
+    
     // call root to launch the Radio
     [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
 }

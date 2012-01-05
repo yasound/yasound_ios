@@ -10,7 +10,7 @@
 #import "ApiKey.h"
 
 
-#define USE_LOCAL_SERVER 0
+#define USE_LOCAL_SERVER 1
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"
@@ -105,15 +105,19 @@ static YasoundDataProvider* _main = nil;
   return url;
 }
 
-
+- (void)resetUser
+{
+  _user = nil;
+  _radio = nil;
+  _apiKey = nil;
+}
 
 
 
 // SIGN UP
 - (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username target:(id)target action:(SEL)selector
 {
-  _user = nil;
-  _apiKey = nil;
+  [self resetUser];
   
   User* u = [[User alloc] init];
   u.username = email;
@@ -191,7 +195,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)login:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector userData:(NSDictionary*)userData
 {
-  _user = nil;
+  [self resetUser];
   _password = pwd;
   Auth* a = [[AuthPassword alloc] initWithUsername:email andPassword:_password];
   NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", userData, @"clientData", nil];
@@ -287,7 +291,56 @@ static YasoundDataProvider* _main = nil;
   }
 }
 
+- (void)userRadioWithTarget:(id)target action:(SEL)selector
+{
+  if (_radio)
+  {
+    [target performSelector:selector withObject:_radio withObject:[NSDictionary dictionary]];
+     return;
+  }
+  
+  if (!_user)
+  {
+    NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no logged user" code:1 userInfo:nil] forKey:@"error"];
+    [target performSelector:selector withObject:nil withObject:info];
+    return;
+  }
+  
+  NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"creator=%@", _user.id]];
+  Auth* auth = nil;
+  NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveUserRadios:withInfo:) withUserData:data withAuth:auth];
+}
 
+- (void)didReceiveUserRadios:(NSArray*)radios withInfo:(NSDictionary*)info
+{
+  NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] init];
+  
+  Radio* r = nil;
+  if (!radios || [radios count] == 0)
+  {
+    NSError* err = [NSError errorWithDomain:[NSString stringWithFormat:@"no radio for user '%@'", _user.username] code:1 userInfo:nil];
+    [finalInfo setValue:err forKey:@"error"];
+  }
+  else
+  {
+    r = [radios objectAtIndex:0];
+  }
+  
+  if (r)
+  {
+    _radio = r;
+  }
+  
+  NSDictionary* userData = [info valueForKey:@"userData"];
+  id target = [userData valueForKey:@"clientTarget"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+  
+  if (target && selector)
+  {
+    [target performSelector:selector withObject:_radio withObject:finalInfo];
+  }
+}
 
 
 
@@ -308,10 +361,9 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-
-- (void)createRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
-  [_communicator postNewObject:radio notifyTarget:target byCalling:selector withUserData:nil withAuth:nil returnNewObject:YES withAuthForGET:nil];
+  [_communicator updateObject:radio notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
 }
 
 
