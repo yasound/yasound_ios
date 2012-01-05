@@ -95,6 +95,7 @@
     _settingsImageLabel.text = NSLocalizedString(@"SettingsView_row_image_label", nil);
     [_settingsImageImage.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
     [_settingsImageImage.layer setBorderWidth: 1];    
+    _settingsImageChanged = NO;
     
     // set radio image
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:_radio.picture];
@@ -253,10 +254,6 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"SettingsView_row_genre_label", nil);
         NSString* style = _radio.genre;
-
-        //LBDEBUG TODO CLEAN
-        // [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundGenre"];
-        
         cell.detailTextLabel.text = NSLocalizedString(style, nil);
     }
     else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
@@ -376,13 +373,11 @@
     NSLog(@"didSelectStyle : %@", style);
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
     
-    [[NSUserDefaults standardUserDefaults] setObject:style forKey:@"MyYasoundGenre"];
     UITableViewCell* cell = [_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ROW_CONFIG_GENRE inSection:SECTION_CONFIG]];
     cell.detailTextLabel.text = NSLocalizedString(style, nil);
     
     // set radio genre
     _radio.genre = style;
-    
     
     /*
      [self.navigationController dismissModalViewControllerAnimated:YES];
@@ -457,6 +452,9 @@
         return;
     
     [_settingsImageImage setImage:image];
+    
+    // wait for "save" action to upload the image to the server
+    _settingsImageChanged = YES;
 }
 
 
@@ -543,11 +541,24 @@
     //LBDEBUG TODO CLEAN
 //    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
     
-    [[YasoundDataProvider main] updateRadio:_radio target:self action:@selector(onRadioUpdated:)];
+    [[YasoundDataProvider main] updateRadio:_radio target:self action:@selector(onRadioUpdated:info:)];
 }
 
-- (void)onRadioUpdated:(id)obj
+- (void)onRadioUpdated:(Radio*)radio info:(NSDictionary*)info
 {
+    NSLog(@"onRadioUpdated info %@", info);
+    
+    if (_settingsImageChanged)
+        [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:_radio target:self action:@selector(onRadioImageUpdate:info:)];
+    else
+        [self onRadioImageUpdate:nil info:nil];
+
+}
+
+- (void)onRadioImageUpdate:(NSString*)msg info:(NSDictionary*)info
+{
+    NSLog(@"onRadioImageUpdate info %@", info);
+
     [ActivityAlertView close];
     
      if (_wizard)

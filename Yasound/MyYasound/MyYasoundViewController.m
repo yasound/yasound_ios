@@ -106,6 +106,17 @@ NSArray* gFakeUsersFavorites = nil;
     [super viewWillAppear:animated];
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
     
+    // update radio
+    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
+}
+
+
+#pragma mark - YasoundDataProvider
+
+- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+{
+    _radio = radio;
+
     // automatic launch
     BOOL _automaticLaunch =  [[[NSUserDefaults standardUserDefaults] objectForKey:@"automaticLaunch"] boolValue];
     
@@ -122,10 +133,10 @@ NSArray* gFakeUsersFavorites = nil;
         
         [self.navigationController pushViewController:view animated:NO];
         [view release];
+        return;
     }
-
-    
 }
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {

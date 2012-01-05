@@ -39,6 +39,7 @@
     IBOutlet UITableViewCell* _settingsImageCell;
     IBOutlet UILabel* _settingsImageLabel;
     IBOutlet WebImageView* _settingsImageImage;
+    BOOL _settingsImageChanged;
     
     IBOutlet UITableViewCell* _settingsThemeCell;
     IBOutlet UILabel* _settingsThemeTitle;

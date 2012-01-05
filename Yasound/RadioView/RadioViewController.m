@@ -474,11 +474,7 @@
   }
   
   self.radio = r;
-    
 
-    [self.radio setTagsWithArray:[NSArray arrayWithObjects:@"country", @"bluegrass", @"yeah", nil]];
-    [[YasoundDataProvider main] updateRadio:self.radio target:self action:@selector(didUpdateRadio:withInfo:)];
-  
   
   // radio header picture
   // header avatar
