@@ -216,6 +216,8 @@
     [_email retain];
     [_pword retain];
     
+    // TAG ACTIVITY ALERT
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     
     // login request to server
     [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
@@ -223,6 +225,8 @@
 
 - (void) requestDidReturn:(User*)user info:(NSDictionary*)info
 {
+    [ActivityAlertView close];
+    
     NSLog(@"login returned : %@ %@", user, info);
     
     if (user == nil)
