@@ -14,14 +14,15 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil radio:(Radio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+        _radio = radio;
         _firstRowIsNotValidated = NO;
         
-        NSArray* previousKeywords = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundKeywords"];
+        NSArray* previousKeywords = [_radio tagsArray];
         if (previousKeywords != nil)
             _keywords = [NSMutableArray arrayWithArray:previousKeywords];
         else
@@ -160,9 +161,7 @@
   }
     
     if ([_keywords count] == 0)
-        [_tableView setEditing:NO];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:_keywords forKey:@"MyYasoundKeywords"];
+        [_tableView setEditing:NO];    
 }
 
 
@@ -230,7 +229,6 @@
     _firstRowIsNotValidated = NO;
 
     [_keywords insertObject:[NSString stringWithString:textField.text] atIndex:0];
-    [[NSUserDefaults standardUserDefaults] setObject:_keywords forKey:@"MyYasoundKeywords"];
     
     textField.text = @"";
     textField.placeholder = NSLocalizedString(@"KeywordsView_textfield_placeholder", nil);
@@ -246,6 +244,9 @@
 
 - (void)onBack:(id)sender
 {
+    // set the radio tags
+    [_radio setTagsWithArray:_keywords];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

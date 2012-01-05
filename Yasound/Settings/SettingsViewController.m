@@ -127,12 +127,12 @@
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
     
     // update keywords
-    NSArray* keywords = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundKeywords"];
+    NSArray* keywords = [_radio tagsArray];
 
     if (_keywords)
         [_keywords release];
     
-    if ([keywords count] == 0)
+    if ((keywords == nil) || ([keywords count] == 0))
     {
         _keywords = [NSString stringWithString:NSLocalizedString(@"SettingsView_keywords_empty", nil)];
     }
@@ -142,7 +142,7 @@
         for (int i = 1; i < [keywords count]; i++)
         {
             NSString* aKeyword = [keywords objectAtIndex:i];
-            _keywords = [_keywords stringByAppendingFormat:@" - %@", aKeyword];
+            _keywords = [_keywords stringByAppendingFormat:@", %@", aKeyword];
         }
     }
     
@@ -281,10 +281,13 @@
 
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
     {
-        KeywordsViewController* view = [[KeywordsViewController alloc] init];
-        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStylePlain target:view action:@selector(onBack:)];
-        [[self navigationItem] setBackBarButtonItem: backBtn];
-        [backBtn release];
+//        KeywordsViewController* view = [[KeywordsViewController alloc] initWithTarget:self action:@selector(onKeywordsChanged:)];
+        KeywordsViewController* view = [[KeywordsViewController alloc] initWithNibName:@"KeywordsViewController" bundle:nil radio:_radio];
+        
+        //LBDEBUG
+//        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStylePlain target:view action:@selector(onBack:)];
+//        [[self navigationItem] setBackBarButtonItem: backBtn];
+//        [backBtn release];
 
         [self.navigationController pushViewController:view animated:YES];
         [view release];
@@ -309,6 +312,32 @@
 
 
 
+#pragma mark - KeywordsDelegate
+//
+//- (void)onKeywordsChanged:(NSArray*)keywords
+//{
+//    if (_keywords)
+//        [_keywords release];
+//    
+//    if ((keywords == nil) || ([keywords count] == 0))
+//    {
+//        _keywords = [NSString stringWithString:NSLocalizedString(@"SettingsView_keywords_empty", nil)];
+//    }
+//    else
+//    {
+//        _keywords = [NSString stringWithString:[keywords objectAtIndex:0]];
+//        for (int i = 1; i < [keywords count]; i++)
+//        {
+//            NSString* aKeyword = [keywords objectAtIndex:i];
+//            _keywords = [_keywords stringByAppendingFormat:@", %@", aKeyword];
+//        }
+//    }
+//    
+//    [_keywords retain];
+//    
+//    [_tableView reloadData];
+//
+//}
 
 
 
