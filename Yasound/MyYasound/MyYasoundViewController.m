@@ -10,7 +10,7 @@
 #import "RadioSelectionTableViewCell.h"
 #import "BundleFileManager.h"
 #import "RadioViewController.h"
-
+#import "ActivityAlertView.h"
 
 @implementation MyYasoundViewController
 
@@ -114,6 +114,10 @@ NSArray* gFakeUsersFavorites = nil;
         
         // display radio automatically
         RadioViewController* view = [[RadioViewController alloc] init];
+        
+        // TAG ACTIVITY ALERT
+        [ActivityAlertView close];
+        
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

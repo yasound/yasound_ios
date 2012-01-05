@@ -11,7 +11,7 @@
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
-
+#define SIZEOF_INT16 2
 
 @implementation PlaylistMoulinor
 
@@ -189,17 +189,18 @@ static PlaylistMoulinor* _main = nil;
     }
     else
     {
+        // write tag playlist
         const char* str = (const char*) [PM_TAG_PLAYLIST UTF8String];
-        [data appendBytes:str length:strlen(str)];    
-
-        str = ";\""; 
-        [data appendBytes:str length:strlen(str)];    
+        int16_t size = strlen(str);
+        [data appendBytes:str length:size];    
 
         str = (const char*) [playlistTitle UTF8String];
-        [data appendBytes:str length:strlen(str)];    
-
-        str = "\";\n"; 
-        [data appendBytes:str length:strlen(str)];    
+        size = strlen(str);
+        
+        // write playlist title size
+        [data appendBytes:&size length:SIZEOF_INT16];
+        // write playlist title 
+        [data appendBytes:str length:size];    
     }
     
     
@@ -326,16 +327,18 @@ static PlaylistMoulinor* _main = nil;
     else
     {
         const char* str = (const char*) [PM_TAG_ARTIST UTF8String];
-        [data appendBytes:str length:strlen(str)];    
-
-        str = ";\""; 
-        [data appendBytes:str length:strlen(str)];    
+        int16_t size = strlen(str);
+        [data appendBytes:str length:size];    
 
         str = (const char*) [artist UTF8String];
-        [data appendBytes:str length:strlen(str)];    
+        size = strlen(str);
+        
+        // write size
+        [data appendBytes:&size length:SIZEOF_INT16];
+        // write str
+        [data appendBytes:str length:size];    
 
-        str = "\";\n";
-        [data appendBytes:str length:strlen(str)];    
+
     }
 
     // for each album
@@ -397,45 +400,44 @@ static PlaylistMoulinor* _main = nil;
         // an entry for the album
         //
         const char* str = (const char*) [PM_TAG_ALBUM UTF8String];
-        [data appendBytes:str length:strlen(str)];    
-
-        str = ";\""; 
-        [data appendBytes:str length:strlen(str)];    
+        int16_t size = strlen(str);
+        [data appendBytes:str length:size];    
 
         str = (const char*) [album UTF8String];
-        [data appendBytes:str length:strlen(str)];    
+        size = strlen(str);
+        // write size
+        [data appendBytes:&size length:SIZEOF_INT16];
+        // write str
+        [data appendBytes:str length:size];    
+        
 
-        str = "\";\n";
-        [data appendBytes:str length:strlen(str)];   
         
 
         // for each song
         for (NSDictionary* dicoSong in arrayAlbum)
         {
-            int index = [[dicoSong objectForKey:@"index"] intValue];
+            int32_t index = [[dicoSong objectForKey:@"index"] intValue];
             NSString* title = [dicoSong objectForKey:@"title"];
             
             //..................................................................................
             // an entry for the song
             //
+            
+            // write song tag
             const char* str = (const char*) [PM_TAG_SONG UTF8String];
-            [data appendBytes:str length:strlen(str)];    
-            
-            str = ";"; 
-            [data appendBytes:str length:strlen(str)];    
-            
-            str = &index;
-            int size = sizeof(int);
+            int16_t size = strlen(str);
             [data appendBytes:str length:size];    
             
-            str = ";\""; 
-            [data appendBytes:str length:strlen(str)];    
-
+            // index of the song
+            [data appendBytes:&index length:sizeof(int32_t)];    
+            
             str = (const char*) [title UTF8String];
-            [data appendBytes:str length:strlen(str)];    
+            size = strlen(str);
 
-            str = "\";\n";
-            [data appendBytes:str length:strlen(str)];   
+            // song title size
+            [data appendBytes:&size length:SIZEOF_INT16];
+            // song title
+            [data appendBytes:str length:size];    
         }
     }
     

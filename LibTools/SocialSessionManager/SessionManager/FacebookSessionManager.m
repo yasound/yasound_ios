@@ -15,8 +15,8 @@
 @synthesize facebookConnect = _facebookConnect;
 
 
-#define FB_App_Id @"136849886422778"
-#define DB_APP_Secret @"bcaadff05c7c07d36d38155d6b35088c"
+#define FB_App_Id @"296167703762159"
+#define DB_APP_Secret @"af4d20f383ed42cabfb4bf4b960bb03f"
 
 
 
@@ -131,7 +131,7 @@ static FacebookSessionManager* _facebook = nil;
   
   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
   
-  if (requestType == SRequestInfoUsername)
+  if (requestType == SRequestInfoUser)
   {
     _requestMe = [_facebookConnect requestWithGraphPath:@"me" andDelegate:self];
     return;
@@ -243,7 +243,7 @@ static FacebookSessionManager* _facebook = nil;
   
   SessionRequestType requestType;
   if (request == _requestMe)
-    requestType = SRequestInfoUsername;
+    requestType = SRequestInfoUser;
   else if (request == _requestFriends)
     requestType = SRequestInfoFriends;
   else if (request == _requestFeed)
@@ -271,11 +271,16 @@ static FacebookSessionManager* _facebook = nil;
       [user setValue:[defaults objectForKey:@"FBAccessTokenKey"] forKey:DATA_FIELD_TOKEN];
     [user setValue:@"facebook" forKey:DATA_FIELD_TYPE];
     [user setValue:[dico valueForKey:@"username"] forKey:DATA_FIELD_USERNAME];
-    [user setValue:[dico valueForKey:@"name"] forKey:DATA_FIELD_NAME];
+      [user setValue:[dico valueForKey:@"name"] forKey:DATA_FIELD_NAME];
+      
+      NSString* email = [dico valueForKey:@"email"];
+      //LBDEBUG EMAIL
+      NSLog(@"facebook email '%@'", email);
+      [user setValue:email forKey:DATA_FIELD_EMAIL];
     
     NSArray* data = [NSArray arrayWithObjects:user, nil];
     
-    [self.delegate requestDidLoad:SRequestInfoUsername data:data];
+    [self.delegate requestDidLoad:SRequestInfoUser data:data];
     return;
   }
   

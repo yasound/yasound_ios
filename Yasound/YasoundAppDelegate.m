@@ -9,6 +9,7 @@
 #import "YasoundAppDelegate.h"
 #import "EasyTracker.h"
 #import "RootViewController.h"
+#import "FacebookSessionManager.h"
 
 
 @implementation YasoundAppDelegate
@@ -85,5 +86,25 @@
 {
   [super dealloc];
 }
+
+
+
+
+
+
+#pragma mark - FBConnect
+
+// Pre 4.2 support
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url 
+{
+    return [[FacebookSessionManager facebook] handleOpenURL:url]; 
+}
+
+// For 4.2+ support
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation 
+{
+    return [[FacebookSessionManager facebook]  handleOpenURL:url]; 
+}
+
 
 @end

@@ -322,6 +322,9 @@
 		BCCA79F214B1FF720011AADD /* iconLogout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */; };
 		BCCA79F314B1FF720011AADD /* iconLogout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
+		BCD8C7A214B4B59F009EAF61 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
+		BCD8C7A314B4B59F009EAF61 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
+		BCD8C7A414B4B59F009EAF61 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
 		BCDC94EB14A8CB3500D54631 /* loginIcon26Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94DE14A8CB3500D54631 /* loginIcon26Facebook.png */; };
 		BCDC94EC14A8CB3500D54631 /* loginIcon26Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94DE14A8CB3500D54631 /* loginIcon26Facebook.png */; };
 		BCDC94ED14A8CB3500D54631 /* loginIcon26Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94DE14A8CB3500D54631 /* loginIcon26Facebook.png */; };
@@ -962,6 +965,8 @@
 		BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLogout@2x.png"; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
+		BCD8C7A014B4B59F009EAF61 /* YasoundSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundSessionManager.h; sourceTree = "<group>"; };
+		BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundSessionManager.m; sourceTree = "<group>"; };
 		BCDC94DE14A8CB3500D54631 /* loginIcon26Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIcon26Facebook.png; sourceTree = "<group>"; };
 		BCDC94DF14A8CB3500D54631 /* loginIcon26Facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIcon26Facebook@2x.png"; sourceTree = "<group>"; };
 		BCDC94E014A8CB3500D54631 /* loginIcon26Twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIcon26Twitter.png; sourceTree = "<group>"; };
@@ -1588,6 +1593,15 @@
 			path = arrows;
 			sourceTree = "<group>";
 		};
+		BCD8C79F14B4B59F009EAF61 /* SessionManager */ = {
+			isa = PBXGroup;
+			children = (
+				BCD8C7A014B4B59F009EAF61 /* YasoundSessionManager.h */,
+				BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */,
+			);
+			path = SessionManager;
+			sourceTree = "<group>";
+		};
 		BCDC94DD14A8CB3500D54631 /* 26 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2082,6 +2096,7 @@
 				BC5EE20E147D3EB300A282A5 /* Radio Selection */,
 				BCB41F4114863646008F3738 /* Theme */,
 				BCB5F28B1485416B00C28B3D /* RadioView */,
+				BCD8C79F14B4B59F009EAF61 /* SessionManager */,
 				BC6314CF14B4665200549EF6 /* Tools */,
 				BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */,
 				BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */,
@@ -2754,6 +2769,7 @@
 				BCCA799614B1AE520011AADD /* StatsViewController.m in Sources */,
 				BC6314D314B4665200549EF6 /* RegExp.m in Sources */,
 				BC828AD714B49E9500763558 /* RootViewController.m in Sources */,
+				BCD8C7A314B4B59F009EAF61 /* YasoundSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2859,6 +2875,7 @@
 				BCCA799514B1AE520011AADD /* StatsViewController.m in Sources */,
 				BC6314D214B4665200549EF6 /* RegExp.m in Sources */,
 				BC828AD614B49E9500763558 /* RootViewController.m in Sources */,
+				BCD8C7A214B4B59F009EAF61 /* YasoundSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2963,6 +2980,7 @@
 				BCCA799714B1AE520011AADD /* StatsViewController.m in Sources */,
 				BC6314D414B4665200549EF6 /* RegExp.m in Sources */,
 				BC828AD814B49E9500763558 /* RootViewController.m in Sources */,
+				BCD8C7A414B4B59F009EAF61 /* YasoundSessionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
