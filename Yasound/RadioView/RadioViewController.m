@@ -475,7 +475,6 @@
   
   self.radio = r;
   
-  
   // radio header picture
   // header avatar
 

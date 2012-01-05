@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "EasyTracker.h"
+#import "YasoundDataProvider.h"
+#import "WebImageView.h"
 
 
 @interface SettingsViewController : TrackedUIViewController
 {
     BOOL _wizard;
     BOOL _changed;
+    Radio* _radio;
     
     UIActionSheet* _saveQuery;
     UIActionSheet* _pickImageQuery;
@@ -35,7 +38,8 @@
     
     IBOutlet UITableViewCell* _settingsImageCell;
     IBOutlet UILabel* _settingsImageLabel;
-    IBOutlet UIImageView* _settingsImageImage;
+    IBOutlet WebImageView* _settingsImageImage;
+    BOOL _settingsImageChanged;
     
     IBOutlet UITableViewCell* _settingsThemeCell;
     IBOutlet UILabel* _settingsThemeTitle;
@@ -45,7 +49,7 @@
 
 }
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard radio:(Radio*)radio;
 
 
 @end
