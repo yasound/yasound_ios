@@ -25,6 +25,8 @@
 - (NSArray*)tagsArray
 {
     NSString* tagsStr = self.tags;
+    if (!tagsStr || [tagsStr compare:@""] == NSOrderedSame)
+        return nil;
     NSArray* tagsArray = [tagsStr componentsSeparatedByString:@","];
     return tagsArray;
 }

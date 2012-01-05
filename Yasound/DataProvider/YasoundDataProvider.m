@@ -338,10 +338,39 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)radiosTarget:(id)target action:(SEL)selector
+- (void)radiosWithTarget:(id)target action:(SEL)selector
 {
   [_communicator getObjectsWithClass:[Radio class] notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
 }
+
+- (void)topRadiosWithTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithTarget:target action:selector];
+}
+
+- (void)selectionRadiosWithTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithTarget:target action:selector];
+}
+
+- (void)newRadiosWithTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithTarget:target action:selector];
+}
+
+
+
+- (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithTarget:target action:selector];
+}
+
+
+
 
 
 - (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;
