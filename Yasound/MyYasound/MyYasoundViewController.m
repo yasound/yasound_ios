@@ -26,11 +26,13 @@ NSArray* gFakeUsersFavorites = nil;
 
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon radio:(Radio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+        _radio = radio;
+        
       UIImage* tabImage = [UIImage imageNamed:tabIcon];
       UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
       self.tabBarItem = theItem;
@@ -118,7 +120,7 @@ NSArray* gFakeUsersFavorites = nil;
         // TAG ACTIVITY ALERT
         [ActivityAlertView close];
         
-        [self.navigationController pushViewController:view animated:YES];
+        [self.navigationController pushViewController:view animated:NO];
         [view release];
     }
 

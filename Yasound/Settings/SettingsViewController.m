@@ -13,7 +13,6 @@
 #import "KeywordsViewController.h"
 #import "PlaylistsViewController.h"
 #import "ActivityAlertView.h"
-#import "YasoundDataProvider.h"
 
 
 #define SECTION_CONFIG 0
@@ -34,12 +33,13 @@
 @implementation SettingsViewController
 
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard radio:(Radio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
         _wizard = wizard;
+        _radio = radio;
     }
     
     return self;
@@ -67,9 +67,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if ([ActivityAlertView isRunning])
-        [ActivityAlertView close];
     
     _titleLabel.text = NSLocalizedString(@"SettingsView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
@@ -139,6 +136,10 @@
     
     [_keywords retain];
     [_tableView reloadData];
+    
+    
+    if ([ActivityAlertView isRunning])
+        [ActivityAlertView close];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -161,9 +162,6 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
-
 
 
 
@@ -511,7 +509,7 @@
     
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
     
-//    [[YasoundDataProvider main] updateRadio:_radio target:self action:@selector(onRadioUpdated:)];
+    [[YasoundDataProvider main] updateRadio:_radio target:self action:@selector(onRadioUpdated:)];
 }
 
 - (void)onFakeSubmitAction:(NSTimer*)timer

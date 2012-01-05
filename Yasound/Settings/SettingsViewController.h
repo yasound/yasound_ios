@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "EasyTracker.h"
+#import "YasoundDataProvider.h"
 
 
 @interface SettingsViewController : TrackedUIViewController
 {
     BOOL _wizard;
     BOOL _changed;
+    Radio* _radio;
     
     UIActionSheet* _saveQuery;
     UIActionSheet* _pickImageQuery;
@@ -45,7 +47,7 @@
 
 }
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard radio:(Radio*)radio;
 
 
 @end
