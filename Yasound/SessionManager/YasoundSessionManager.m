@@ -1,0 +1,392 @@
+//
+//  YasoundSessionManager.m
+//  Yasound
+//
+//  Created by LOIC BERTHELOT on 04/01/12.
+//  Copyright (c) 2012 Yasound. All rights reserved.
+//
+
+#import "YasoundSessionManager.h"
+#import "Security/SFHFKeychainUtils.h"
+#import "YasoundDataProvider.h"
+#import "FacebookSessionManager.h"
+#import "TwitterSessionManager.h"
+
+
+@implementation YasoundSessionManager
+
+@synthesize registered;
+
+static YasoundSessionManager* _main = nil;
+
+
++ (YasoundSessionManager*)main
+{
+    if (_main == nil)
+    {
+        _main = [[YasoundSessionManager alloc] init];
+    }
+    
+    return _main;
+}
+
+
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"YasoundSessionManager"];
+        if (dico != nil)
+            _dico = [[NSMutableDictionary alloc] initWithDictionary:dico];
+        else
+            _dico = [[NSMutableDictionary alloc] init];
+        
+        [_dico retain];
+            
+    }
+    return self;
+}
+
+
+- (void)dealloc
+{
+    [_dico release];
+    [super dealloc];
+}
+
+
+
+- (void)setRegistered:(BOOL)registered
+{
+    [_dico setObject:[NSNumber numberWithBool:registered] forKey:@"registered"];
+}
+     
+
+- (BOOL)registered
+{
+    return [[_dico objectForKey:@"registered"] boolValue];
+}
+
+
+- (NSString*)loginType
+{
+    return [_dico objectForKey:@"loginType"];
+}
+
+- (void)setLoginType:(NSString *)loginType
+{
+    if (loginType == nil)
+    {
+        [_dico removeObjectForKey:@"loginType"];
+        return;
+    }
+    
+    [_dico setObject:loginType forKey:@"loginType"];
+}
+
+
+- (void)save
+{
+    [[NSUserDefaults standardUserDefaults] setObject:_dico forKey:@"YasoundSessionManager"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+
+
+
+
+- (BOOL)loginForYasoundWithTarget:(id)target action:(SEL)action
+{
+    if (!self.registered)
+        return NO;
+    if (![self.loginType isEqualToString:LOGIN_TYPE_YASOUND])
+        return NO;
+    
+    _target = target;
+    _action = action;
+    
+    NSString* email = [_dico objectForKey:@"email"];
+    NSString* pword = [SFHFKeychainUtils getPasswordForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
+
+    // login request to server
+    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(loginForYasoundRequestDidReturn:info:)];
+}
+
+- (BOOL)loginForFacebookWithTarget:(id)target action:(SEL)action
+{
+    _target = target;
+    _action = action;
+    
+    [self registerForFacebook];
+
+    [[FacebookSessionManager facebook] setTarget:self];
+    [[FacebookSessionManager facebook] login];    
+}
+
+
+
+- (BOOL)loginForTwitterWithTarget:(id)target action:(SEL)action
+{
+    _target = target;
+    _action = action;
+    
+    [self registerForTwitter];
+    
+    [[TwitterSessionManager twitter] setTarget:self];
+    [[TwitterSessionManager twitter] login];
+}
+
+
+
+
+
+- (void) loginForYasoundRequestDidReturn:(User*)user info:(NSDictionary*)info
+{
+    NSLog(@"YasoundSessionManager login returned : %@ %@", user, info);
+    
+    if (user == nil)
+    {
+        [self loginError];
+        return;
+    }
+    
+    NSLog(@"YasoundSessionManager yasound login successful!");
+    
+    // callback
+    assert(_target);
+    [_target performSelector:_action withObject:[NSNumber numberWithBool:YES]];
+    
+}
+
+
+
+
+
+
+
+#pragma mark - SessionDelegate
+
+- (void)sessionDidLogin:(BOOL)authorized
+{
+    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    {
+        [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
+    }
+    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    {
+        [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
+    }
+}
+
+
+- (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error errorMessage:(NSString*)errorMessage
+{
+    if (requestType != SRequestInfoUser)
+    {
+        NSLog(@"requestDidFailed error : unexpected requestType!");
+        return;
+    }
+        
+    NSLog(@"requestDidFailed : could not get user info.");
+    
+    NSLog(@"%@", [error localizedDescription]);
+    NSLog(@"%@", [error description]);
+    NSLog(@"%@", errorMessage);
+    
+    self.loginType = nil;
+    [self loginError];
+}
+
+
+- (void)requestDidLoad:(SessionRequestType)requestType data:(NSArray*)data;
+{
+    if (requestType != SRequestInfoUser)
+    {
+        NSLog(@"requestDidFailed error : unexpected requestType!");
+        return;
+    }
+
+    if ([data count] == 0)
+    {
+        NSLog(@"requestDidLoad SRequestInfoUser error : no info.");
+        self.loginType = nil;
+        [self loginError];
+        return;
+    }
+        
+    NSDictionary* dico = [data objectAtIndex:0];
+
+    NSString* username = [dico valueForKey:DATA_FIELD_USERNAME];
+    NSString* uid = [dico valueForKey:DATA_FIELD_ID];
+    NSString* token = [dico valueForKey:DATA_FIELD_TOKEN];
+    NSString* email = [dico valueForKey:DATA_FIELD_EMAIL];
+    
+    NSLog(@"ready to request social login to the server with : ");
+    NSLog(@"username '%@'", username);
+    NSLog(@"uid '%@'", uid);
+    NSLog(@"token '%@'", token);
+    NSLog(@"email '%@'", email);
+
+    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    {
+        NSLog(@"facebook social login request");
+        
+        [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token email:email target:self action:@selector(loginSocialValidated:info:)];
+    }
+    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    {
+        NSLog(@"twitter social login request");
+        
+        NSString* tokenSecret = [dico valueForKey:DATA_FIELD_TOKEN_SECRET];
+
+        [[YasoundDataProvider main] loginTwitter:username type:@"twitter" uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(loginSocialValidated:info:)];
+    }
+
+}
+
+
+- (void)sessionLoginFailed
+{
+    self.loginType = nil;
+    [self loginError];
+}
+
+
+- (void)sessionDidLogout
+{
+    // callback
+    assert(_target);
+    [_target performSelector:_action];
+}
+
+
+
+#pragma mark - YasoundDataProvider actions
+
+- (void) loginSocialValidated:(User*)user info:(NSDictionary*)info
+{
+    NSLog(@"loginSocialValidated returned : %@ %@", user, info);
+    
+    if (user == nil)
+    {
+        [self loginError];
+        // callback
+        assert(_target);
+        [_target performSelector:_action withObject:[NSNumber numberWithBool:NO]];        
+        return;
+    }
+    
+    // callback
+    assert(_target);
+    [_target performSelector:_action withObject:[NSNumber numberWithBool:YES]];
+
+//    // call root to launch the Radio
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
+}
+
+
+
+
+
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)loginError
+{
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];  
+}
+
+// Called when a button is clicked. The view will be automatically dismissed after this call returns
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // refers to (user == nil) in loginRequestDidReturn
+    
+    // callback
+    assert(_target);
+    [_target performSelector:_action withObject:[NSNumber numberWithBool:NO]];
+}
+
+
+
+
+
+
+
+- (void)logoutWithTarget:(id)target action:(SEL)action
+{
+    // do it for all, this way you're sure :)
+    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    {
+        [[FacebookSessionManager facebook] logout];
+    }
+    
+    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    {
+        [[TwitterSessionManager twitter] logout];
+    }
+    
+    else if ([self.loginType isEqualToString:LOGIN_TYPE_YASOUND])
+    {
+        NSString* email = [_dico objectForKey:@"email"];
+        [SFHFKeychainUtils deleteItemForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
+    }
+    
+    [_dico release];
+    _dico = nil;
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"YasoundSessionManager"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    // callback
+    [target performSelector:action];
+}
+
+- (void)registerForYasound:(NSString*)email withPword:(NSString*)pword
+{
+    self.loginType = LOGIN_TYPE_YASOUND;
+    self.registered = YES;
+    
+    // store email
+    [_dico setObject:email forKey:@"email"];
+    
+    // store pword with security
+    [SFHFKeychainUtils storeUsername:email andPassword:pword  forServiceName:@"YasoundSessionManager" updateExisting:YES error:nil];
+
+    [self save];
+}
+
+
+- (void)registerForFacebook
+{
+    self.loginType = LOGIN_TYPE_FACEBOOK;
+    self.registered = YES;
+    [self save];
+
+}
+
+- (void)registerForTwitter
+{
+    self.loginType = LOGIN_TYPE_TWITTER;
+    self.registered = YES;
+    [self save];
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@end
