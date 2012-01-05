@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YasoundDataProvider.h"
+
 
 #define LOGIN_TYPE_YASOUND @"yasound"
 #define LOGIN_TYPE_FACEBOOK @"facebook"
@@ -26,6 +28,14 @@
 + (YasoundSessionManager*)main;
 
 - (void)save;
+
+// return YES if an account has already been created.
+// ! LOCAL TEST ON THE DEVICE, NOT ON THE SERVER
+- (BOOL)getAccount:(User*)user;
+
+// register the user account LOCALLY, ON THE DEVICE
+- (void)addAccount:(User*)user;
+
 
 // return NO if no login information have been regitered yes => launch login dialog in this case
 // return YES if login information have been registered => use them to log in automatically, and callback the given action when login process ends.

@@ -68,6 +68,9 @@
 {
     [super viewDidLoad];
     
+    if ([ActivityAlertView isRunning])
+        [ActivityAlertView close];
+    
     _titleLabel.text = NSLocalizedString(@"SettingsView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     

@@ -8,7 +8,6 @@
 
 #import "YasoundSessionManager.h"
 #import "Security/SFHFKeychainUtils.h"
-#import "YasoundDataProvider.h"
 #import "FacebookSessionManager.h"
 #import "TwitterSessionManager.h"
 #import "ActivityAlertView.h"
@@ -54,6 +53,59 @@ static YasoundSessionManager* _main = nil;
     [_dico release];
     [super dealloc];
 }
+
+
+
+
+// return YES if an account has already been created.
+// ! LOCAL TEST ON THE DEVICE, NOT ON THE SERVER
+- (BOOL)getAccount:(User*)user
+{
+    int user_id_value = [user.id intValue];
+    NSNumber* user_id = [NSNumber numberWithInt:user_id_value];
+     
+    NSArray* array = [[NSUserDefaults standardUserDefaults] objectForKey:@"YasoundSessionManagerAccounts"];
+    for (int i = 0; i < array.count; i++)
+    {
+        NSNumber* userID = [array objectAtIndex:i];
+        if ([userID isEqualToNumber:user_id])
+            return YES;
+    }
+    
+    return NO;
+}
+//
+//- (BOOL)getAccount:(User*)user
+//{
+//    NSArray* array = [[NSUserDefaults standardUserDefaults] objectForKey:@"YasoundSessionManagerAccounts"];
+//    for (int i = 0; i < array.count; i++)
+//    {
+//        NSNumber* userID = [array objectAtIndex:i];
+//        if ([userID isEqualToNumber:user.id])
+//            return YES;
+//    }
+//    
+//    return NO;
+//}
+
+
+// register the user account LOCALLY, ON THE DEVICE
+- (void)addAccount:(User*)user
+{
+    NSArray* array = [[NSUserDefaults standardUserDefaults] objectForKey:@"YasoundSessionManagerAccounts"];
+    NSMutableArray* newArray = [NSMutableArray arrayWithArray:array];
+    
+    int userID = [user.id intValue];
+    [newArray addObject:[NSNumber numberWithInt:userID]];
+    [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:@"YasoundSessionManagerAccounts"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+
+
+
+
 
 
 
@@ -157,7 +209,7 @@ static YasoundSessionManager* _main = nil;
     
     // callback
     assert(_target);
-    [_target performSelector:_action withObject:[NSNumber numberWithBool:YES]];
+    [_target performSelector:_action withObject:user];
     
 }
 
@@ -282,7 +334,7 @@ static YasoundSessionManager* _main = nil;
         [self loginError];
         // callback
         assert(_target);
-        [_target performSelector:_action withObject:[NSNumber numberWithBool:NO]];        
+        [_target performSelector:_action withObject:nil];        
         return;
     }
     
@@ -298,7 +350,7 @@ static YasoundSessionManager* _main = nil;
     
     // callback
     assert(_target);
-    [_target performSelector:_action withObject:[NSNumber numberWithBool:YES]];
+    [_target performSelector:_action withObject:user];
 
 //    // call root to launch the Radio
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
@@ -326,7 +378,7 @@ static YasoundSessionManager* _main = nil;
     
     // callback
     assert(_target);
-    [_target performSelector:_action withObject:[NSNumber numberWithBool:NO]];
+    [_target performSelector:_action withObject:nil];
 }
 
 

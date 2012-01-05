@@ -12,7 +12,7 @@
 #import "RadioViewController.h"
 #import "YasoundSessionManager.h"
 #import "ActivityAlertView.h"
-
+#import "YasoundDataProvider.h"
 
 @implementation RootViewController
 
@@ -90,10 +90,9 @@
     }
 }
 
-- (void)loginReturned:(NSNumber*)successful
+- (void)loginReturned:(User*)user
 {
-    BOOL res = [successful boolValue];
-    if (res)
+    if (user != nil)
     {
         [self launchRadio];
     }

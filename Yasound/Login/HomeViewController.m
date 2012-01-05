@@ -13,6 +13,7 @@
 #import "MyYasoundViewController.h"
 #import "RadioTabBarController.h"
 #import "YasoundSessionManager.h"
+#import "YasoundDataProvider.h"
 #import "ActivityAlertView.h"
 
 
@@ -214,12 +215,23 @@
 }
 
 
-- (void)socialLoginReturned:(NSNumber*)successful
+- (void)socialLoginReturned:(User*)user
 {
-    BOOL res = [successful boolValue];
-    if (res)
-        // call root to launch the Radio
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
+    if (user != nil)
+    {
+        if ([[YasoundSessionManager main] getAccount:user])
+            // call root to launch the Radio
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
+        else
+        {
+            [[YasoundSessionManager main] addAccount:user];
+
+            // account just being create, go to configuration screen
+            SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];    
+        }
+    }
 }
 
 
