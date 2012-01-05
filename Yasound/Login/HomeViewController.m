@@ -197,7 +197,7 @@
 
 - (IBAction) onFacebook:(id)sender
 {
-    [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(facebookLoginReturned:)];
+    [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(socialLoginReturned:)];
 //    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
 //    [self.navigationController pushViewController:view animated:YES];
 //    [view release];
@@ -205,7 +205,7 @@
 
 - (IBAction) onTwitter:(id)sender
 {
-    [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(twitterLoginReturned:)];
+    [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(socialLoginReturned:)];
 //    MyYasoundViewController* view = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil];
 //    self.navigationController.navigationBarHidden = YES;
 //    [self.navigationController pushViewController:view animated:YES];
@@ -216,22 +216,13 @@
 }
 
 
-- (void)facebookLoginReturned:(NSNumber*)successful
+- (void)socialLoginReturned:(NSNumber*)successful
 {
     BOOL res = [successful boolValue];
     if (res)
         // call root to launch the Radio
         [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
 }
-
-- (void)twitterLoginReturned:(NSNumber*)successful
-{
-    BOOL res = [successful boolValue];
-    if (res)
-        // call root to launch the Radio
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];        
-}
-
 
 
 

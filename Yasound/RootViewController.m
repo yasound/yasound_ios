@@ -74,7 +74,13 @@
     {
         // TAG ACTIVITY ALERT
         [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
-        [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:)];
+        
+        if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+            [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:)];
+        else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+            [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:)];
+        else
+            [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:)];
     }
     else
     {
