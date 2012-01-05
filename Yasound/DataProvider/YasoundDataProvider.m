@@ -292,13 +292,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 - (void)userRadioWithTarget:(id)target action:(SEL)selector
-{
-  if (_radio)
-  {
-    [target performSelector:selector withObject:_radio withObject:[NSDictionary dictionary]];
-     return;
-  }
-  
+{  
   if (!_user)
   {
     NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no logged user" code:1 userInfo:nil] forKey:@"error"];
