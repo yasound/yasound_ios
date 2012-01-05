@@ -30,6 +30,7 @@ taskStatus stringToStatus(NSString* str);
 {
   Communicator* _communicator;
   User* _user;
+  Radio* _radio;
   NSString* _apiKey;
   NSString* _password;
 }
@@ -41,6 +42,8 @@ taskStatus stringToStatus(NSString* str);
 @property (readonly) User* user;
 
 + (YasoundDataProvider*) main;
+
+- (void)resetUser;
 
 // Yasound
 - (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username target:(id)target action:(SEL)selector;
@@ -57,7 +60,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;
 - (void)radioWithURL:(NSString*)url target:(id)target action:(SEL)selector;
 
-//- (void)userRadio target:(id)target action:(SEL)selector;
+- (void)userRadioWithTarget:(id)target action:(SEL)selector;
+
 - (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
