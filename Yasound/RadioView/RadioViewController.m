@@ -474,31 +474,17 @@
   }
   
   self.radio = r;
+    
+
+    [self.radio setTagsWithArray:[NSArray arrayWithObjects:@"country", @"bluegrass", @"yeah", nil]];
+    [[YasoundDataProvider main] updateRadio:self.radio target:self action:@selector(didUpdateRadio:withInfo:)];
   
   
   // radio header picture
   // header avatar
-  
-  NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
-  [_radioImage setUrl:imageURL];
 
   [self onUpdate:nil]; 
-  
-//  self.radio.description = @"such a great rock radio !";
-//  [[YasoundDataProvider main] updateRadio:self.radio target:self action:@selector(didUpdateRadio:withInfo:)];
 }
-
-//- (void)didUpdateRadio:(Radio*)r withInfo:(NSDictionary*)info
-//{
-//  NSError* error = [info valueForKey:@"error"];
-//  if (error)
-//  {
-//    NSLog(@"radio update error: %@ - %@", error.domain, error.code);
-//    return;
-//  }
-//  
-//  NSLog(@"radio updated: %@", [r toString]);
-//}
 
 - (void)receiveRadioSongs:(NSArray*)events withInfo:(NSDictionary*)info
 {
