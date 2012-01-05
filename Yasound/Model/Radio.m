@@ -20,12 +20,39 @@
 @synthesize likes;
 @synthesize listeners;
 @synthesize picture;
+@synthesize tags;
+
+- (NSArray*)tagsArray
+{
+    NSString* tagsStr = self.tags;
+    NSArray* tagsArray = [tagsStr componentsSeparatedByString:@","];
+    return tagsArray;
+}
+
+- (void)setTagsWithArray:(NSArray*)tagArray;
+{
+    NSMutableString* str = [NSMutableString string];
+    BOOL first = YES;
+    for (NSString* t in tagArray) 
+    {
+        if (first)
+        {
+            [str appendString:t];
+            first = NO;
+        }
+        else
+        {
+            [str appendFormat:@",%@", t];
+        }
+    }
+    self.tags = str;
+}
 
 
 -(NSString*)toString
 {
-  NSString* desc = [NSString stringWithFormat:@"name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', url: '%@' playlist count: '%d", self.name, self.creator.username, self.description, self.genre, self.theme, self.url, [self.playlists count]];
-  return desc;
+    NSString* desc = [NSString stringWithFormat:@"name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', url: '%@' playlist count: '%d", self.name, self.creator.username, self.description, self.genre, self.theme, self.url, [self.playlists count]];
+    return desc;
 }
 
 @end

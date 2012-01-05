@@ -21,6 +21,10 @@
 @property (retain, nonatomic) NSNumber* likes;
 @property (retain, nonatomic) NSNumber* listeners;
 @property (retain, nonatomic) NSString* picture;
+@property (retain, nonatomic) NSString* tags;
+
+- (NSArray*)tagsArray;
+- (void)setTagsWithArray:(NSArray*)tagArray;
 
 - (NSString*)toString;
 
