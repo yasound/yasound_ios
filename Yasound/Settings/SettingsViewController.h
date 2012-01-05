@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EasyTracker.h"
 #import "YasoundDataProvider.h"
+#import "WebImageView.h"
 
 
 @interface SettingsViewController : TrackedUIViewController
@@ -37,7 +38,7 @@
     
     IBOutlet UITableViewCell* _settingsImageCell;
     IBOutlet UILabel* _settingsImageLabel;
-    IBOutlet UIImageView* _settingsImageImage;
+    IBOutlet WebImageView* _settingsImageImage;
     
     IBOutlet UITableViewCell* _settingsThemeCell;
     IBOutlet UILabel* _settingsThemeTitle;

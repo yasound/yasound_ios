@@ -80,17 +80,28 @@
         [_toolbar setItems:items animated:NO];
     }
 
-    
-    
 
     _settingsTitleLabel.text = NSLocalizedString(@"SettingsView_row_title_label", nil);
-    _settingsTitleTextField.text = [NSString stringWithFormat:@"%@'s Yasound", [[UIDevice currentDevice] name]];
+    
+    // set radio title
+    NSString* radioTitle = _radio.name;
+    if ((radioTitle == nil) || (radioTitle.length == 0))
+        radioTitle = [NSString stringWithFormat:@"%@'s Yasound", [[UIDevice currentDevice] name]];
+    _settingsTitleTextField.text = radioTitle;
+    _settingsTitleTextField.delegate = self;
+    
 
+    // image gui
     _settingsImageLabel.text = NSLocalizedString(@"SettingsView_row_image_label", nil);
     [_settingsImageImage.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
     [_settingsImageImage.layer setBorderWidth: 1];    
     
+    // set radio image
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:_radio.picture];
+    if (imageURL != nil)
+        [_settingsImageImage setUrl:imageURL];
     
+    // theme 
     NSString* themeId = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundTheme"];
     if (themeId == nil)
     {
@@ -241,7 +252,11 @@
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"SettingsView_row_genre_label", nil);
-        NSString* style = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundGenre"];
+        NSString* style = _radio.genre;
+
+        //LBDEBUG TODO CLEAN
+        // [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundGenre"];
+        
         cell.detailTextLabel.text = NSLocalizedString(style, nil);
     }
     else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
@@ -300,6 +315,21 @@
 
 
 
+#pragma mark - TextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField endEditing:TRUE];
+    _changed = YES;
+    
+    // set radio title
+    _radio.name = textField.text;
+    
+    return FALSE;
+}
+
+
+
 
 
 - (void)pickImageDialog
@@ -350,10 +380,12 @@
     UITableViewCell* cell = [_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ROW_CONFIG_GENRE inSection:SECTION_CONFIG]];
     cell.detailTextLabel.text = NSLocalizedString(style, nil);
     
+    // set radio genre
+    _radio.genre = style;
+    
+    
     /*
      [self.navigationController dismissModalViewControllerAnimated:YES];
-     
-     
      _settingsGenreTitle.text = NSLocalizedString(style, nil);
      */
 }
@@ -438,7 +470,7 @@
     // save or cancel
     if (!_wizard && _changed)
     {
-        _saveQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingsView_saveOrCancel_title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_saveOrCancel_save", nil), nil];
+        _saveQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingsView_saveOrCancel_title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_saveOrCancel_save", nil), NSLocalizedString(@"SettingsView_saveOrCancel_dontsave", nil), nil];
         
         _saveQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [_saveQuery showInView:self.view];
@@ -469,7 +501,7 @@
     {
         if (buttonIndex == 0)
             [self save];
-        else
+        else if (buttonIndex == 1)
             [self.navigationController popViewControllerAnimated:YES];        
         
         [_saveQuery release];
@@ -506,20 +538,40 @@
 {
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SettingsView_submit_title", nil)];
+
     
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
+    //LBDEBUG TODO CLEAN
+//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
     
     [[YasoundDataProvider main] updateRadio:_radio target:self action:@selector(onRadioUpdated:)];
 }
 
-- (void)onFakeSubmitAction:(NSTimer*)timer
+- (void)onRadioUpdated:(id)obj
 {
     [ActivityAlertView close];
     
-    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];    
+     if (_wizard)
+     {
+        PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];    
+     }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
+
+
+//LBDEBUG TODO CLEAN
+//- (void)onFakeSubmitAction:(NSTimer*)timer
+//{
+//    [ActivityAlertView close];
+//    
+//    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];    
+//}
 
 
 
