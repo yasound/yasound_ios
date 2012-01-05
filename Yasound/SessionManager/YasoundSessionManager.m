@@ -11,7 +11,7 @@
 #import "YasoundDataProvider.h"
 #import "FacebookSessionManager.h"
 #import "TwitterSessionManager.h"
-
+#import "ActivityAlertView.h"
 
 @implementation YasoundSessionManager
 
@@ -231,6 +231,11 @@ static YasoundSessionManager* _main = nil;
     NSLog(@"uid '%@'", uid);
     NSLog(@"token '%@'", token);
     NSLog(@"email '%@'", email);
+    
+    // TAG ACTIVITY ALERT
+    if (![ActivityAlertView isRunning])
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    
 
     if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {

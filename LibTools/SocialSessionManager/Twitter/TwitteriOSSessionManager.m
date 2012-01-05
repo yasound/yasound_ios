@@ -11,7 +11,7 @@
 #import "TwitteriOSSessionManager.h"
 #import "Security/SFHFKeychainUtils.h"
 #import <Twitter/Twitter.h>
-
+#import "YasoundAppDelegate.h"
 
 
 
@@ -299,8 +299,14 @@
   else
   {
     TwitterAccountsViewController* controller = [[TwitterAccountsViewController alloc] initWithNibName:@"TwitterAccountsViewController" bundle:nil accounts:self.accounts target:self];
-      //ICI
-    [self.delegate presentModalViewController:controller animated: YES];  
+      //LBDEBUG ICI //parent
+//    [self.delegate presentModalViewController:controller animated: YES];  
+      YasoundAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+      NSArray* viewControllers = appDelegate.navigationController.childViewControllers;
+      UIViewController* viewController = [viewControllers objectAtIndex:(viewControllers.count-1)];
+
+      [viewController presentModalViewController:controller animated: YES];  
+
     [controller release];
   }
 

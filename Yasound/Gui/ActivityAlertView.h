@@ -13,9 +13,11 @@
 }
 
 @property (nonatomic, retain) UIActivityIndicatorView *activityView;
+@property (nonatomic) BOOL running;
 
 + (void)showWithTitle:(NSString *)title;
 + (void)close;
++ (BOOL)isRunning;
 
 
 // initWithTitle from UIAlertView
