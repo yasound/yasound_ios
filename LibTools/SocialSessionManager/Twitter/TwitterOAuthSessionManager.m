@@ -9,7 +9,7 @@
 
 #import "TwitterOAuthSessionManager.h"
 #import "Security/SFHFKeychainUtils.h"
-
+#import "YasoundAppDelegate.h"
 
 //neywen test
 #define kOAuthConsumerKey @"bvpS9ZEO6REqL96Sjuklg"         //REPLACE With Twitter App OAuth Key  
@@ -44,15 +44,21 @@
     _engine.consumerSecret = kOAuthConsumerSecret;  
   }  
   
-  if(![_engine isAuthorized])
-  {  
-    SA_OAuthTwitterController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_engine delegate:self];  
-    if (!controller)
-      return;
+    if(![_engine isAuthorized])
+    {  
+        SA_OAuthTwitterController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_engine delegate:self];  
+        if (!controller)
+          return;
+
+        controller.delegate = self;
     
-    controller.delegate = self;
-    [_parent presentModalViewController:controller animated: YES];  
-  }  
+        YasoundAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+        NSArray* viewControllers = appDelegate.navigationController.childViewControllers;
+        UIViewController* viewController = [viewControllers objectAtIndex:(viewControllers.count-1)];
+      
+        //LBDEBUG ICI //parent
+        [viewController presentModalViewController:controller animated: YES];  
+    }  
 }
 
 
@@ -119,10 +125,8 @@
     [user setValue:username forKey:DATA_FIELD_USERNAME];
     [user setValue:userscreenname forKey:DATA_FIELD_NAME];
       
-      //LBDEBUG EMAIL
-      NSString* email = @"email";
-      NSLog(@"twitter oauth email '%@'", email);
-      [user setValue:email forKey:DATA_FIELD_EMAIL];
+      //twitter doesn't provide the user's email, event if he's authenticated
+      [user setValue:@"" forKey:DATA_FIELD_EMAIL];
       
     
     NSArray* data = [NSArray arrayWithObjects:user, nil];

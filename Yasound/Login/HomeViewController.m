@@ -198,7 +198,8 @@
 - (IBAction) onFacebook:(id)sender
 {
     // TAG ACTIVITY ALERT
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     
     [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(socialLoginReturned:)];
 }
@@ -206,7 +207,8 @@
 - (IBAction) onTwitter:(id)sender
 {
     // TAG ACTIVITY ALERT
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
 
     [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(socialLoginReturned:)];
 }

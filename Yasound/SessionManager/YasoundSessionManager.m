@@ -72,16 +72,11 @@ static YasoundSessionManager* _main = nil;
 - (NSString*)loginType
 {
     NSString* str = [_dico objectForKey:@"loginType"];
-    //LBDEBUG
-    NSLog(@"getLoginType %@", str);
     return str;
 }
 
 - (void)setLoginType:(NSString *)loginType
 {
-    //LBDEBUG
-    NSLog(@"setLoginType %@", loginType);
-    
     if (loginType == nil)
     {
         [_dico removeObjectForKey:@"loginType"];
@@ -125,7 +120,7 @@ static YasoundSessionManager* _main = nil;
     _target = target;
     _action = action;
     
-    [self registerForFacebook];
+    self.loginType = LOGIN_TYPE_FACEBOOK;
 
     [[FacebookSessionManager facebook] setTarget:self];
     [[FacebookSessionManager facebook] login];    
@@ -138,8 +133,8 @@ static YasoundSessionManager* _main = nil;
     _target = target;
     _action = action;
     
-    [self registerForTwitter];
-    
+    self.loginType = LOGIN_TYPE_TWITTER;
+
     [[TwitterSessionManager twitter] setTarget:self];
     [[TwitterSessionManager twitter] login];
 }
@@ -177,7 +172,7 @@ static YasoundSessionManager* _main = nil;
 - (void)sessionDidLogin:(BOOL)authorized
 {
     NSLog(@"self.loginType %@", self.loginType);
-    
+
     if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
         [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
@@ -285,6 +280,16 @@ static YasoundSessionManager* _main = nil;
         [_target performSelector:_action withObject:[NSNumber numberWithBool:NO]];        
         return;
     }
+    
+    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    {
+        [self registerForFacebook];
+    }
+    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    {
+        [self registerForTwitter];
+    }
+
     
     // callback
     assert(_target);

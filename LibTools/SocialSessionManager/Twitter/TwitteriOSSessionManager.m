@@ -159,10 +159,8 @@
   [user setValue:self.account.username forKey:DATA_FIELD_USERNAME];
     [user setValue:userscreenname forKey:DATA_FIELD_NAME];
     
-    //LBDEBUG EMAIL
-    NSString* email = @"email";
-    NSLog(@"twitter iOS email '%@'", email);
-    [user setValue:email forKey:DATA_FIELD_EMAIL];
+    //twitter doesn't provide the user's email, event if he's authenticated
+    [user setValue:@"" forKey:DATA_FIELD_EMAIL];
   
   NSArray* data = [NSArray arrayWithObjects:user, nil];
   
@@ -301,6 +299,7 @@
   else
   {
     TwitterAccountsViewController* controller = [[TwitterAccountsViewController alloc] initWithNibName:@"TwitterAccountsViewController" bundle:nil accounts:self.accounts target:self];
+      //ICI
     [self.delegate presentModalViewController:controller animated: YES];  
     [controller release];
   }
