@@ -308,10 +308,9 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-
-- (void)createRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
-  [_communicator postNewObject:radio notifyTarget:target byCalling:selector withUserData:nil withAuth:nil returnNewObject:YES withAuthForGET:nil];
+  [_communicator updateObject:radio notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
 }
 
 
