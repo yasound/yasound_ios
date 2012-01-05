@@ -12,8 +12,8 @@
 
 
 //neywen test
-#define kOAuthConsumerKey @"TdpKTtfEsEfPFXrq9GlQ"         //REPLACE With Twitter App OAuth Key  
-#define kOAuthConsumerSecret @"JPPj1VXXTYQ6w81CrszFRYxfHkKvPi4BYD6pV9CnGQ"     //REPLACE With Twitter App OAuth Secret  
+#define kOAuthConsumerKey @"bvpS9ZEO6REqL96Sjuklg"         //REPLACE With Twitter App OAuth Key  
+#define kOAuthConsumerSecret @"TMdhQbWXarXoxkjwSdUbTif5CyapHLfcAdYfTnTOmc"     //REPLACE With Twitter App OAuth Secret  
 
 // yasound
 //#define kOAuthConsumerKey @"bvpS9ZEO6REqL96Sjuklg"         //REPLACE With Twitter App OAuth Key  
@@ -105,7 +105,7 @@
   if (!_engine || ![_engine isAuthorized])
     return NO;
   
-  if (requestType == SRequestInfoUsername)
+  if (requestType == SRequestInfoUser)
   {
     NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
     NSString* userid = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERID];
@@ -118,10 +118,16 @@
       [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN_SECRET] forKey:DATA_FIELD_TOKEN_SECRET];
     [user setValue:username forKey:DATA_FIELD_USERNAME];
     [user setValue:userscreenname forKey:DATA_FIELD_NAME];
+      
+      //LBDEBUG EMAIL
+      NSString* email = @"email";
+      NSLog(@"twitter oauth email '%@'", email);
+      [user setValue:email forKey:DATA_FIELD_EMAIL];
+      
     
     NSArray* data = [NSArray arrayWithObjects:user, nil];
 
-    [self.delegate requestDidLoad:SRequestInfoUsername data:data];
+    [self.delegate requestDidLoad:SRequestInfoUser data:data];
     return YES;
   }
   

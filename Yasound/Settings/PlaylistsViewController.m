@@ -302,7 +302,7 @@
     //    
     [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists binary:YES compressed:YES target:self action:@selector(didBuildDataWithPlaylist:)];
     
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
+//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
 }
 
 
@@ -310,13 +310,17 @@
 - (void) didBuildDataWithPlaylist:(NSData*)data
 {
     //LBDEBUG email playlist file
-//      [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
+    //  [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
 
   Radio* radio = [[Radio alloc] init];
   radio.id = [NSNumber numberWithInt:1];
+    //LBDEBUG
   [[YasoundDataProvider main] updatePlaylists:data forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
+    //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
+
+    //LBDEBUG
+    //[self onFakeSubmitAction:nil];
     
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
 }
 
 
@@ -326,6 +330,8 @@
     NSLog(@"update playlists error %d", error.code);
   else
     NSLog(@"playlists updated  task: %@", task_id);
+
+    [self onFakeSubmitAction:nil];
 }
 
 
@@ -335,7 +341,10 @@
     [ActivityAlertView close];
     
     if (_wizard)
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NotificationPushRadio" object:nil];
+    {
+        // call root to launch the Radio
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
+    }
     else
         [self.navigationController popViewControllerAnimated:YES];
 }

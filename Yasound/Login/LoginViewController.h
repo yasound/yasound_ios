@@ -18,15 +18,19 @@
     IBOutlet UITableView* _tableView;
     
     //.............................................
-    IBOutlet UITableViewCell* _cellUsername;
-    IBOutlet UILabel* _cellUsernameLabel;
-    IBOutlet UITextField* _cellUsernameTextfield;
+    IBOutlet UITableViewCell* _cellEmail;
+    IBOutlet UILabel* _cellEmailLabel;
+    IBOutlet UITextField* _cellEmailTextfield;
     
     IBOutlet UITableViewCell* _cellPword;
     IBOutlet UILabel* _cellPwordLabel;
     IBOutlet UITextField* _cellPwordTextfield;
 
     IBOutlet UIButton* _submitBtn;
+    
+    
+    NSString* _email;
+    NSString* _pword;
 }
 
 

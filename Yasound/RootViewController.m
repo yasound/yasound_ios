@@ -10,6 +10,9 @@
 #import "HomeViewController.h"
 #import "RadioTabBarController.h"
 #import "RadioViewController.h"
+#import "YasoundSessionManager.h"
+#import "ActivityAlertView.h"
+
 
 @implementation RootViewController
 
@@ -36,7 +39,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPushRadio:) name:@"NotificationPushRadio" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPushRadio:) name:@"NOTIF_PushRadio" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLoginScreen:) name:@"NOTIF_LoginScreen" object:nil];
+    
 }
 
 - (void)viewDidUnload
@@ -50,10 +55,8 @@
     if (_firstTime)
     {
         _firstTime = NO;
-        
-        HomeViewController* view = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:NO];
-        [view release];
+     
+        [self loginProcess];
     }
 
 }
@@ -65,11 +68,63 @@
 }
 
 
+- (void)loginProcess
+{
+    if ([YasoundSessionManager main].registered)
+    {
+        // TAG ACTIVITY ALERT
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+        [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:)];
+    }
+    else
+    {
+        HomeViewController* view = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:NO];
+        [view release];
+    }
+}
+
+- (void)loginReturned:(NSNumber*)successful
+{
+    BOOL res = [successful boolValue];
+    if (res)
+    {
+        [self launchRadio];
+    }
+    else
+    {
+        [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+    }
+}
+
+- (void)logoutReturned
+{
+
+}
+
+
+
 - (void)onPushRadio:(NSNotification *)notification
 {
     // go back to root, removing all viewcontroller
     [self.navigationController popToRootViewControllerAnimated:NO];
-    
+    [self launchRadio];
+}
+
+
+- (void)onLoginScreen:(NSNotification *)notification
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+
+    HomeViewController* view = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:NO];
+    [view release];
+}
+
+
+
+- (void)launchRadio
+{
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"automaticLaunch"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
