@@ -338,35 +338,47 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)radiosWithTarget:(id)target action:(SEL)selector
+- (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
   [_communicator getObjectsWithClass:[Radio class] notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
 }
 
-- (void)topRadiosWithTarget:(id)target action:(SEL)selector
+- (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
     //#FIXME: todo...
-    [self radiosWithTarget:target action:selector];
+    [self radiosWithGenre:genre withTarget:target action:selector];
 }
 
-- (void)selectionRadiosWithTarget:(id)target action:(SEL)selector
+- (void)selectionRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
     //#FIXME: todo...
-    [self radiosWithTarget:target action:selector];
+    [self radiosWithGenre:genre withTarget:target action:selector];
 }
 
-- (void)newRadiosWithTarget:(id)target action:(SEL)selector
+- (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
     //#FIXME: todo...
-    [self radiosWithTarget:target action:selector];
+    [self radiosWithGenre:genre withTarget:target action:selector];
+}
+
+- (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithGenre:genre withTarget:target action:selector];
+}
+
+- (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithGenre:genre withTarget:target action:selector];
 }
 
 
 
-- (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector
+- (void)searchRadios:(NSString*)search withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
     //#FIXME: todo...
-    [self radiosWithTarget:target action:selector];
+    [self radiosWithGenre:genre withTarget:target action:selector];
 }
 
 
