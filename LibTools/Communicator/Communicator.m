@@ -12,13 +12,14 @@
 #import "ASIFormDataRequest.h"
 
 @interface Communicator (Communicator_internal)
-- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth;
+- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withUrlParams:(NSArray*)params withAuth:(Auth*)auth;
 - (ASIHTTPRequest*)getRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth;
 - (ASIHTTPRequest*)postRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth;
 - (ASIHTTPRequest*)putRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth;
 - (ASIHTTPRequest*)deleteRequestForObjectWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth;
 
 - (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass withAuth:(Auth*)auth;
+- (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass withUrlParams:(NSArray*)urlParams withAuth:(Auth*)auth;
 - (ASIHTTPRequest*)getRequestForObjectWithClass:(Class)objectClass andID:(NSNumber*)ID withAuth:(Auth*)auth;
 - (ASIHTTPRequest*)postRequestForObject:(Model*)obj withAuth:(Auth*)auth;
 - (ASIHTTPRequest*)putRequestForObject:(Model*)obj withAuth:(Auth*)auth;
@@ -26,6 +27,7 @@
 
 - (void)applyAuth:(Auth*)auth toRequest:(ASIHTTPRequest*)request;
 - (void)fillRequest:(ASIHTTPRequest*)request;
+- (NSURL*)URLWithURL:(NSURL*)url andParams:(NSArray*)params;
 @end
 
 
@@ -52,24 +54,6 @@
   if (slash && ![path hasSuffix:@"/"])
     path = [path stringByAppendingString:@"/"];
   
-  if (params && [params count] > 0)
-  {
-    if (![path hasSuffix:@"/"])
-      path = [path stringByAppendingString:@"/"];
-    
-    int i = 0;
-    for (NSString* s in params) 
-    {
-      if (i == 0)
-        path = [path stringByAppendingString:@"?"];
-      else
-        path = [path stringByAppendingString:@"&"];
-      
-      path = [path stringByAppendingString:s];
-      i++;
-    }
-  }
-  
   NSURL* url;
   if (absolute)
     url = [NSURL URLWithString:path];
@@ -80,6 +64,8 @@
       path = [path substringFromIndex:1];
     url = [url URLByAppendingPathComponent:path];
   }
+  
+  url = [self URLWithURL:url andParams:params];
   
   NSLog(@"url: %@", url.absoluteString);
   return url;
@@ -218,7 +204,7 @@
 #pragma mark - synchronous requests with URL
 - (Container*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth;
 {
-  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute withAuth:auth];
+  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute withUrlParams:nil withAuth:auth];
   Container* container = [self getObjectsWithRequest:req andClass:objectClass];
   return container;
 }
@@ -350,6 +336,12 @@
   [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:userData];
 }
 
+- (void)getObjectsWithClass:(Class)objectClass withParams:(NSArray*)params notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
+{
+  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass withUrlParams:params withAuth:auth];
+  [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:userData];
+}
+
 - (void)getObjectWithClass:(Class)objectClass andID:(NSNumber*)ID notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
   ASIHTTPRequest* req = [self getRequestForObjectWithClass:objectClass andID:ID withAuth:auth];
@@ -377,7 +369,7 @@
 #pragma mark - asynchronous requests with url
 - (void)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
-  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute withAuth:auth];
+  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute withUrlParams:nil withAuth:auth];
   [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:userData];
 }
 
@@ -476,7 +468,6 @@
     [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
     return;
   }
-  
   [self notifytarget:target byCalling:selector withUserData:userData withObject:container andSuccess:YES];
 }
 
@@ -663,12 +654,15 @@
 
 @implementation Communicator (Communicator_internal)
 
-- (void)addUrlParams:(NSArray*)params toRequest:(ASIHTTPRequest*)request
+- (NSURL*)URLWithURL:(NSURL*)url andParams:(NSArray*)params
 {
-  NSString* url = [request.url absoluteString];
+  if (!params || [params count] == 0)
+    return url;
+  
+  NSString* urlStr = [url absoluteString];
   
   bool firstParam = false;
-  NSRange range = [url rangeOfString:@"?"];
+  NSRange range = [urlStr rangeOfString:@"?"];
   if (NSEqualRanges(range, NSMakeRange(NSNotFound, 0)))
   {
     // '?' has not been found
@@ -676,23 +670,58 @@
     firstParam = true;
   }
   
-  if (firstParam && ![url hasSuffix:@"/"])
-    url = [url stringByAppendingString:@"/"];
+  if (firstParam && ![urlStr hasSuffix:@"/"])
+    urlStr = [urlStr stringByAppendingString:@"/"];
   
   for (NSString* p in params)
   {
     if (firstParam)
     {
-      url = [url stringByAppendingString:@"?"];
+      urlStr = [urlStr stringByAppendingString:@"?"];
       firstParam = false;
     }
     else
     {
-      url = [url stringByAppendingString:@"&"];
+      urlStr = [urlStr stringByAppendingString:@"&"];
     }
-    url = [url stringByAppendingString:p];
+    urlStr = [urlStr stringByAppendingString:p];
   }
-  request.url = [NSURL URLWithString:url];
+  NSURL* new = [NSURL URLWithString:urlStr];
+  return new;
+}
+
+- (void)addUrlParams:(NSArray*)params toRequest:(ASIHTTPRequest*)request
+{
+  NSURL* url = [self URLWithURL:request.url andParams:params];
+  request.url = url;
+//  NSString* url = [request.url absoluteString];
+//  
+//  bool firstParam = false;
+//  NSRange range = [url rangeOfString:@"?"];
+//  if (NSEqualRanges(range, NSMakeRange(NSNotFound, 0)))
+//  {
+//    // '?' has not been found
+//    // there is no param yet
+//    firstParam = true;
+//  }
+//  
+//  if (firstParam && ![url hasSuffix:@"/"])
+//    url = [url stringByAppendingString:@"/"];
+//  
+//  for (NSString* p in params)
+//  {
+//    if (firstParam)
+//    {
+//      url = [url stringByAppendingString:@"?"];
+//      firstParam = false;
+//    }
+//    else
+//    {
+//      url = [url stringByAppendingString:@"&"];
+//    }
+//    url = [url stringByAppendingString:p];
+//  }
+//  request.url = [NSURL URLWithString:url];
 }
 
 - (void)applyAuth:(Auth*)auth toRequest:(ASIHTTPRequest*)request
@@ -735,9 +764,9 @@
   }
 }
 
-- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth
+- (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withUrlParams:(NSArray*)params withAuth:(Auth*)auth
 {  
-  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
+  NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:params];
   
   ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
   req.requestMethod = @"GET";
@@ -835,7 +864,21 @@
 
 - (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass withAuth:(Auth*)auth
 {
-//  NSString* path = [_mapping objectForKey:objectClass];
+//  NSString* path = [Model uriForObjectClass:objectClass];
+//  if (!path)
+//    return nil;
+//  
+//  NSURL* url = [NSURL URLWithString:_baseURL];
+//  url = [url URLByAppendingPathComponent:path];
+//  
+//  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:[url absoluteString] absolute:YES withUrlParams:nil withAuth:auth];  
+//  return req;
+  ASIHTTPRequest* req = [self getRequestForObjectsWithClass:objectClass withUrlParams:nil withAuth:auth];
+  return req;
+}
+
+- (ASIHTTPRequest*)getRequestForObjectsWithClass:(Class)objectClass withUrlParams:(NSArray*)urlParams withAuth:(Auth*)auth
+{
   NSString* path = [Model uriForObjectClass:objectClass];
   if (!path)
     return nil;
@@ -843,7 +886,7 @@
   NSURL* url = [NSURL URLWithString:_baseURL];
   url = [url URLByAppendingPathComponent:path];
   
-  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:[url absoluteString] absolute:YES withAuth:auth];  
+  ASIHTTPRequest* req = [self getRequestForObjectsWithURL:[url absoluteString] absolute:YES withUrlParams:urlParams withAuth:auth];  
   return req;
 }
 

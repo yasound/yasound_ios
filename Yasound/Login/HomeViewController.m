@@ -13,7 +13,7 @@
 #import "MyYasoundViewController.h"
 #import "RadioTabBarController.h"
 #import "YasoundSessionManager.h"
-
+#import "ActivityAlertView.h"
 
 
 #define ROW_LOGIN 0
@@ -197,41 +197,28 @@
 
 - (IBAction) onFacebook:(id)sender
 {
-    [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(facebookLoginReturned:)];
-//    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
+    // TAG ACTIVITY ALERT
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    
+    [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(socialLoginReturned:)];
 }
 
 - (IBAction) onTwitter:(id)sender
 {
-    [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(twitterLoginReturned:)];
-//    MyYasoundViewController* view = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil];
-//    self.navigationController.navigationBarHidden = YES;
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
-//    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
-//    self.navigationController.navigationBarHidden = YES;
-//    [self.navigationController pushViewController:tabBarController animated:YES];    
+    // TAG ACTIVITY ALERT
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+
+    [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(socialLoginReturned:)];
 }
 
 
-- (void)facebookLoginReturned:(NSNumber*)successful
+- (void)socialLoginReturned:(NSNumber*)successful
 {
     BOOL res = [successful boolValue];
     if (res)
         // call root to launch the Radio
         [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
 }
-
-- (void)twitterLoginReturned:(NSNumber*)successful
-{
-    BOOL res = [successful boolValue];
-    if (res)
-        // call root to launch the Radio
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];        
-}
-
 
 
 
