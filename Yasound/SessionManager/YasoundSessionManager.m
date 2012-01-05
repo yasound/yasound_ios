@@ -71,11 +71,17 @@ static YasoundSessionManager* _main = nil;
 
 - (NSString*)loginType
 {
-    return [_dico objectForKey:@"loginType"];
+    NSString* str = [_dico objectForKey:@"loginType"];
+    //LBDEBUG
+    NSLog(@"getLoginType %@", str);
+    return str;
 }
 
 - (void)setLoginType:(NSString *)loginType
 {
+    //LBDEBUG
+    NSLog(@"setLoginType %@", loginType);
+    
     if (loginType == nil)
     {
         [_dico removeObjectForKey:@"loginType"];
@@ -170,6 +176,8 @@ static YasoundSessionManager* _main = nil;
 
 - (void)sessionDidLogin:(BOOL)authorized
 {
+    NSLog(@"self.loginType %@", self.loginType);
+    
     if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
         [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
@@ -322,11 +330,17 @@ static YasoundSessionManager* _main = nil;
     // do it for all, this way you're sure :)
     if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
+        _target = target;
+        _action = action;
+        [FacebookSessionManager facebook].delegate = self;
         [[FacebookSessionManager facebook] logout];
     }
     
     else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
     {
+        _target = target;
+        _action = action;
+        [TwitterSessionManager twitter].delegate = self;
         [[TwitterSessionManager twitter] logout];
     }
     
@@ -338,6 +352,8 @@ static YasoundSessionManager* _main = nil;
     
     [_dico release];
     _dico = nil;
+    _dico = [[NSMutableDictionary alloc] init];
+    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"YasoundSessionManager"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
@@ -364,6 +380,12 @@ static YasoundSessionManager* _main = nil;
 {
     self.loginType = LOGIN_TYPE_FACEBOOK;
     self.registered = YES;
+    
+    //LBDEBUG
+    NSLog(@"dico %@", _dico);
+    
+    NSLog(@"registerForFacebook self.loginType %@", self.loginType);
+    
     [self save];
 
 }
