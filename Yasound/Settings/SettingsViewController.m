@@ -39,7 +39,7 @@
     if (self)
     {
         _wizard = wizard;
-        _radio = radio;
+        _myRadio = radio;
     }
     
     return self;
@@ -84,7 +84,7 @@
     _settingsTitleLabel.text = NSLocalizedString(@"SettingsView_row_title_label", nil);
     
     // set radio title
-    NSString* radioTitle = _radio.name;
+    NSString* radioTitle = _myRadio.name;
     if ((radioTitle == nil) || (radioTitle.length == 0))
         radioTitle = [NSString stringWithFormat:@"%@'s Yasound", [[UIDevice currentDevice] name]];
     _settingsTitleTextField.text = radioTitle;
@@ -98,7 +98,7 @@
     _settingsImageChanged = NO;
     
     // set radio image
-    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:_radio.picture];
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:_myRadio.picture];
     if (imageURL != nil)
         [_settingsImageImage setUrl:imageURL];
     
@@ -127,7 +127,7 @@
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
     
     // update keywords
-    NSArray* keywords = [_radio tagsArray];
+    NSArray* keywords = [_myRadio tagsArray];
 
     if (_keywords)
         [_keywords release];
@@ -156,8 +156,6 @@
 
 - (void) viewWillDisappear:(BOOL)animated
 {
-    if (!_wizard)
-        self.navigationController.navigationBarHidden = YES;
 }
 
 
@@ -253,7 +251,7 @@
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"SettingsView_row_genre_label", nil);
-        NSString* style = _radio.genre;
+        NSString* style = _myRadio.genre;
         cell.detailTextLabel.text = NSLocalizedString(style, nil);
     }
     else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
@@ -282,7 +280,7 @@
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
     {
 //        KeywordsViewController* view = [[KeywordsViewController alloc] initWithTarget:self action:@selector(onKeywordsChanged:)];
-        KeywordsViewController* view = [[KeywordsViewController alloc] initWithNibName:@"KeywordsViewController" bundle:nil radio:_radio];
+        KeywordsViewController* view = [[KeywordsViewController alloc] initWithNibName:@"KeywordsViewController" bundle:nil radio:_myRadio];
         
         //LBDEBUG
 //        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStylePlain target:view action:@selector(onBack:)];
@@ -349,7 +347,7 @@
     _changed = YES;
     
     // set radio title
-    _radio.name = textField.text;
+    _myRadio.name = textField.text;
     
     return FALSE;
 }
@@ -406,7 +404,7 @@
     cell.detailTextLabel.text = NSLocalizedString(style, nil);
     
     // set radio genre
-    _radio.genre = style;
+    _myRadio.genre = style;
     
     /*
      [self.navigationController dismissModalViewControllerAnimated:YES];
@@ -570,7 +568,7 @@
     //LBDEBUG TODO CLEAN
 //    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
     
-    [[YasoundDataProvider main] updateRadio:_radio target:self action:@selector(onRadioUpdated:info:)];
+    [[YasoundDataProvider main] updateRadio:_myRadio target:self action:@selector(onRadioUpdated:info:)];
 }
 
 - (void)onRadioUpdated:(Radio*)radio info:(NSDictionary*)info
@@ -578,7 +576,7 @@
     NSLog(@"onRadioUpdated info %@", info);
     
     if (_settingsImageChanged)
-        [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:_radio target:self action:@selector(onRadioImageUpdate:info:)];
+        [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:_myRadio target:self action:@selector(onRadioImageUpdate:info:)];
     else
         [self onRadioImageUpdate:nil info:nil];
 

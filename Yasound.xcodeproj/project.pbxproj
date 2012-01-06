@@ -201,6 +201,9 @@
 		BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		BC943A5314688AE70031CE17 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
 		BC943A5414688AE70031CE17 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
+		BC95229A14B6F787001E1ACE /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
+		BC95229B14B6F787001E1ACE /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
+		BC95229C14B6F787001E1ACE /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
 		BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
 		BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
@@ -906,6 +909,7 @@
 		BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StyleSelectorViewController.xib; sourceTree = "<group>"; };
 		BC943A5014688AE70031CE17 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BC943A5114688AE70031CE17 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BC95229914B6F787001E1ACE /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
 		BC9F4143147E8A5F00D417EF /* BundleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleFileManager.h; sourceTree = "<group>"; };
 		BC9F4144147E8A5F00D417EF /* BundleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleFileManager.m; sourceTree = "<group>"; };
 		BC9F4145147E8A5F00D417EF /* BundleStylesheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleStylesheet.h; sourceTree = "<group>"; };
@@ -1982,6 +1986,7 @@
 				BCC408A9148D15F8001C02E4 /* MyYasound */,
 				BC5EE217147D427100A282A5 /* RadioSelection */,
 				BC943A5014688AE70031CE17 /* Default.png */,
+				BC95229914B6F787001E1ACE /* EasyTracker.plist */,
 				BC943A5114688AE70031CE17 /* Default@2x.png */,
 				BC8B084114927B7D007E1307 /* Icon.png */,
 				BC8B083214926F22007E1307 /* Icon-72.png */,
@@ -2355,6 +2360,7 @@
 				BC6314D914B47CA900549EF6 /* btnSettingsAdd.png in Resources */,
 				BC6314DC14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828ADA14B49E9500763558 /* RootViewController.xib in Resources */,
+				BC95229B14B6F787001E1ACE /* EasyTracker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2508,6 +2514,7 @@
 				BC6314D814B47CA900549EF6 /* btnSettingsAdd.png in Resources */,
 				BC6314DB14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828AD914B49E9500763558 /* RootViewController.xib in Resources */,
+				BC95229A14B6F787001E1ACE /* EasyTracker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2661,6 +2668,7 @@
 				BC6314DA14B47CA900549EF6 /* btnSettingsAdd.png in Resources */,
 				BC6314DD14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828ADB14B49E9500763558 /* RootViewController.xib in Resources */,
+				BC95229C14B6F787001E1ACE /* EasyTracker.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

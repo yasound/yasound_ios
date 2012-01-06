@@ -17,7 +17,9 @@
     IBOutlet UIBarButtonItem* _segmentBarButtonItem;
     UISegmentedControl* _segmentControl;
     
-    Radio* _radio;
+    Radio* _myRadio;
+    NSArray* _radios;
+    
 
 
     // my yasound settings
@@ -52,7 +54,7 @@ extern NSArray* gFakeUsersFavorites;
 @property (nonatomic, retain) IBOutlet UIView* viewSelection;
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon radio:(Radio*)radio;
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;
 - (IBAction)onmSegmentClicked:(id)sender;
 - (IBAction)onSubmitClicked:(id)sender;
 

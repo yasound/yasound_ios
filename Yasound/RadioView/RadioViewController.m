@@ -29,18 +29,20 @@
 @synthesize statusMessages;
 
 
-- (id)init
+- (id)initWithRadio:(Radio *)radio
 {
     self = [super init];
     if (self) 
     {
-//        self.radio = [[Radio alloc] init];
-//        self.radio.id = [NSNumber numberWithInt:1];
-      
-      _lastWallEventDate = nil;
+        self.radio = radio;;
+
+        //LBDEBUG
+//        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
+
+        
+        _lastWallEventDate = nil;
       _lastConnectionUpdateDate = [NSDate date];
       _lastSongUpdateDate = nil;
-      [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
 
         self.messages = [[NSMutableArray alloc] init];
         self.statusMessages = [[NSMutableArray alloc] init];
@@ -100,21 +102,44 @@
     
     // header avatar, as a second back button
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
+//    _radioImage = [[WebImageView alloc] initWithImageFrame:CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height)];
     _radioImage = [[WebImageView alloc] initWithImageFrame:sheet.frame];
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
+    [_radioImage setUrl:imageURL];
+    [_headerView addSubview:_radioImage];
+    
+//    btn = [[UIButton alloc] initWithFrame:sheet.frame];
+//    [btn.imageView addSubview:_radioImage];
+//    [btn setImage:[UIImage imageNamed:myImage[0]] forState:UIControlStateNormal]; 
+
+//    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+//    [_headerView addSubview:btn];
+    
+
+//    // header avatar mask 
+//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
+//    UIImageView* avatarMask = [[UIImageView alloc] initWithImage:[sheet image]];
+//    avatarMask.frame = sheet.frame;
+//    [_headerView addSubview:avatarMask];
+    
+    // header avatar mask  as button
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
     btn = [[UIButton alloc] initWithFrame:sheet.frame];
-    [btn.imageView addSubview:_radioImage];
+    [btn setImage:[sheet image] forState:UIControlStateNormal]; 
     [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
     
-    // header avatar mask
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
-    UIImageView* avatarMask = [[UIImageView alloc] initWithImage:[sheet image]];
-    avatarMask.frame = sheet.frame;
-    [_headerView addSubview:avatarMask];
+    
+    //    [btn.imageView addSubview:_radioImage];
+    
+    //    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+    //    [_headerView addSubview:btn];
+
     
     // header title
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderTitle" error:nil];
     UILabel* label = [sheet makeLabel];
+    label.text = self.radio.name;
     [_headerView addSubview:label];
     
     // header heart image
@@ -126,6 +151,7 @@
     // header likes
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderLikes" error:nil];
     label = [sheet makeLabel];
+    label.text = [NSString stringWithFormat:@"%d", [self.radio.likes integerValue]];
     [_headerView addSubview:label];
     
     // header headset image
@@ -137,13 +163,15 @@
     // header listeners
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderListeners" error:nil];
     label = [sheet makeLabel];
+    label.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
     [_headerView addSubview:label];
     
     // header edit settings button
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderEditButton" error:nil];
-    btn = [sheet makeButton];
-    [btn addTarget:self action:@selector(onEdit:) forControlEvents:UIControlEventTouchUpInside];
-    [_headerView addSubview:btn];
+    //LBDEBUG
+//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderEditButton" error:nil];
+//    btn = [sheet makeButton];
+//    [btn addTarget:self action:@selector(onEdit:) forControlEvents:UIControlEventTouchUpInside];
+//    [_headerView addSubview:btn];
 
     
     //....................................................................................
@@ -250,6 +278,8 @@
   self.audioStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
   [self.audioStreamer start];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
+    
     //....................................................................................
     //
     // data update timer
@@ -264,6 +294,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
   [audioStreamer stop];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [_timerUpdate invalidate];
     [_timerFake invalidate];
@@ -462,24 +493,25 @@
 //  [_tableView reloadData];
 }
 
-- (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
-{
-  NSError* error = [info valueForKey:@"error"];
-  if (!r)
-    return;
-  if (error)
-  {
-    NSLog(@"can't receive radio: %@", error.domain);
-    return;
-  }
-  
-  self.radio = r;
-  
-  // radio header picture
-  // header avatar
-
-  [self onUpdate:nil]; 
-}
+//LBDEBUG
+//- (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
+//{
+//  NSError* error = [info valueForKey:@"error"];
+//  if (!r)
+//    return;
+//  if (error)
+//  {
+//    NSLog(@"can't receive radio: %@", error.domain);
+//    return;
+//  }
+//  
+//  self.radio = r;
+//  
+//  // radio header picture
+//  // header avatar
+//
+//  [self onUpdate:nil]; 
+//}
 
 - (void)receiveRadioSongs:(NSArray*)events withInfo:(NSDictionary*)info
 {
@@ -861,10 +893,11 @@
 }
 
 
-- (IBAction) onEdit:(id)sender
-{
-    
-}
+//LBDEBUG
+//- (IBAction) onEdit:(id)sender
+//{
+//    
+//}
 
 - (IBAction) onSearch:(id)sender
 {
@@ -964,6 +997,19 @@
 
 
 
+
+
+
+#pragma mark - Notifications
+
+- (void)onAudioStreamNotif:(NSNotification *)notification
+{
+    if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_ERROR])
+    {
+        [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
+        return;
+    }
+}
 
 
 

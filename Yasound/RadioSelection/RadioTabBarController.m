@@ -35,21 +35,11 @@
 {
     [super viewDidLoad];
     
-    // ask for radio contents to the provider
-    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
-}
-
-
-
-#pragma mark - YasoundDataProvider
-
-- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
-{
   BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"GuiTintColor" error:nil];
   self.tabBar.tintColor = stylesheet.color;
 
   // Mon Yasound
-    MyYasoundViewController* view1 = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil title:NSLocalizedString(@"selection_tab_myyasound", nil) tabIcon:@"tabIconMyYasound.png" radio:radio];
+    MyYasoundViewController* view1 = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil title:NSLocalizedString(@"selection_tab_myyasound", nil) tabIcon:@"tabIconMyYasound.png"];
   
   // Selection
   RadioSelectionViewController* view2 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTSelection title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIconFavorites.png"];

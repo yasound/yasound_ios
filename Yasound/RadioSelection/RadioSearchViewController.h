@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YasoundDataProvider.h"
 
 @interface RadioSearchViewController : UIViewController
 {
   IBOutlet UITableView* _tableView;
+    NSArray* _radios;
 }
 
 

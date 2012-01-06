@@ -28,6 +28,9 @@
 
 - (NSInteger)numberOfSectionsInSelectionTableView
 {
+    if (_radios == nil)
+        return 0;
+    
   return 1;
 }
 
@@ -35,13 +38,10 @@
 
 - (NSInteger)numberOfRowsInSelectionTableViewSection:(NSInteger)section 
 {
-  // Number of rows is the number of time zones in the region for the specified section.
-  if (_segmentControl.selectedSegmentIndex == 1)
-    return 24;
-  else if (_segmentControl.selectedSegmentIndex == 2)
-    return 16;
-  
-  return 0;
+    if (_radios == nil)
+        return 0;
+    
+    return _radios.count;
 }
 
 
@@ -53,20 +53,21 @@
   
   static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
   
-  //LBDEBUG
-  NSDictionary* data = (_segmentControl.selectedSegmentIndex == 1)? [gFakeUsersFriends objectAtIndex:(indexPath.row % 3)] : [gFakeUsersFavorites objectAtIndex:(indexPath.row % 3)];
-  
-  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row data:data];
-  
+    NSInteger rowIndex = indexPath.row;
+    
+    Radio* radio = [_radios objectAtIndex:rowIndex];
+    
+    RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
   
   return cell;
 }
 
 
 - (void)didSelectInSelectionTableViewRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    RadioViewController* view = [[RadioViewController alloc] init];
-    self.navigationController.navigationBarHidden = YES;
+{    
+    RadioSelectionTableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
+    
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:cell.radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

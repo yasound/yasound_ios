@@ -41,6 +41,12 @@
 
 - (void)setUrl:(NSURL *)url
 {
+    if (url == nil)
+    {
+        [self setImage:[UIImage imageNamed:@"avatarDummy.png"]]; 
+        return;
+    }
+    
     [self setContentMode:UIViewContentModeScaleAspectFit];
 
     BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" error:nil];
@@ -77,6 +83,17 @@
   NSError *error = [request error];
   NSLog(@"HTTP Request error: %@", [error localizedDescription]);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end

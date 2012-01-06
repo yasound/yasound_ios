@@ -11,7 +11,7 @@
 
 @implementation RadioSelectionTableViewCell
 
-
+@synthesize radio;
 @synthesize radioTitle;
 @synthesize radioSubtitle1;
 @synthesize radioSubtitle2;
@@ -22,13 +22,14 @@
 @synthesize cellBackground;
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex data:(NSDictionary*)data;
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex radio:(Radio*)radio;
 {
   if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
   {
     BundleStylesheet* stylesheet;
     NSError* error;
     
+      self.radio = radio;
     
     // cell background
     if (rowIndex & 1)
@@ -39,7 +40,7 @@
     [self addSubview:self.cellBackground];
     
     // avatar
-    NSURL* imageURL = [data valueForKey:@"imageURL"];
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
     self.radioAvatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
     stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionAvatar" retainStylesheet:YES overwriteStylesheet:NO error:&error];
     self.radioAvatar.frame = stylesheet.frame;
@@ -58,27 +59,27 @@
     
     // title
     self.radioTitle = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-    self.radioTitle.text = [data valueForKey:@"title"];
+    self.radioTitle.text = radio.name;
     [self addSubview:self.radioTitle];
 
     // subtitle 1
     self.radioSubtitle1 = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-    self.radioSubtitle1.text = [data valueForKey:@"subtitle1"];
+      self.radioSubtitle1.text = radio.creator.name;
     [self addSubview:self.radioSubtitle1];
 
     // subtitle 2
     self.radioSubtitle2 = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-    self.radioSubtitle2.text = [data valueForKey:@"subtitle2"];
+      self.radioSubtitle2.text = radio.genre;
     [self addSubview:self.radioSubtitle2];
 
     // likes
     self.radioLikes = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-    self.radioLikes.text = [NSString stringWithFormat:@"%d", [[data valueForKey:@"likes"] integerValue]];
+    self.radioLikes.text = [NSString stringWithFormat:@"%d", [radio.likes integerValue]];
     [self addSubview:self.radioLikes];
 
     // listeners
     self.radioListeners = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-    self.radioListeners.text = [NSString stringWithFormat:@"%d", [[data valueForKey:@"listeners"] integerValue]];
+    self.radioListeners.text = [NSString stringWithFormat:@"%d", [radio.listeners integerValue]];
     [self addSubview:self.radioListeners];
     
     // configure selected view

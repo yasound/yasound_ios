@@ -26,12 +26,12 @@ NSArray* gFakeUsersFavorites = nil;
 
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon radio:(Radio*)radio
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        _radio = radio;
+        _myRadio = nil;
         
       UIImage* tabImage = [UIImage imageNamed:tabIcon];
       UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
@@ -61,6 +61,9 @@ NSArray* gFakeUsersFavorites = nil;
 
 - (void)dealloc
 {
+    if (_radios != nil)
+        [_radios release];
+
     [self deallocInSettingsTableView];
     [self deallocInRadioSelection];
     [super dealloc];
@@ -115,7 +118,7 @@ NSArray* gFakeUsersFavorites = nil;
 
 - (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
 {
-    _radio = radio;
+    _myRadio = radio;
 
     // automatic launch
     BOOL _automaticLaunch =  [[[NSUserDefaults standardUserDefaults] objectForKey:@"automaticLaunch"] boolValue];
@@ -126,7 +129,7 @@ NSArray* gFakeUsersFavorites = nil;
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         // display radio automatically
-        RadioViewController* view = [[RadioViewController alloc] init];
+        RadioViewController* view = [[RadioViewController alloc] initWithRadio:_myRadio];
         
         // TAG ACTIVITY ALERT
         [ActivityAlertView close];
@@ -173,17 +176,19 @@ NSArray* gFakeUsersFavorites = nil;
       break;
       
     case 1:
-      [_viewCurrent removeFromSuperview];
-      _viewCurrent = self.viewSelection;
-      [self.viewContainer addSubview:_viewCurrent];
-      [_tableView reloadData];
-      break;
+          [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioSelection_update", nil)];
+        [_viewCurrent removeFromSuperview];
+        _viewCurrent = self.viewSelection;
+        [self.viewContainer addSubview:_viewCurrent];
+        [[YasoundDataProvider main] friendsRadiosWithGenre:nil withTarget:self action:@selector(onRadioSelectionReceived:)];
+        break;
       
     case 2:
+          [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioSelection_update", nil)];
       [_viewCurrent removeFromSuperview];
       _viewCurrent = self.viewSelection;
       [self.viewContainer addSubview:_viewCurrent];
-      [_tableView reloadData];
+      [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onRadioSelectionReceived:)];
       break;
   }
   
@@ -192,6 +197,17 @@ NSArray* gFakeUsersFavorites = nil;
 
 
 
+- (void)onRadioSelectionReceived:(NSArray*)radios
+{
+    if (_radios != nil)
+        [_radios release];
+    
+    _radios = radios;
+    [_radios retain];
+    
+    [_tableView reloadData];
+    [ActivityAlertView close];
+}
 
 
 
@@ -230,7 +246,7 @@ NSArray* gFakeUsersFavorites = nil;
     if (tableView == _settingsTableView)
         return [self heightInSettingsForRowAtIndexPath:indexPath];
     
-    return 44;
+    return 55;
 }
 
 

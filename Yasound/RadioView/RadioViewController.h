@@ -49,7 +49,7 @@
 
 @property (nonatomic, retain) AudioStreamer* audioStreamer;
 
-
+- (id)initWithRadio:(Radio*)radio;
 
 - (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
 - (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent;

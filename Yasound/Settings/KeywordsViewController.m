@@ -19,10 +19,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        _radio = radio;
+        _myRadio = radio;
         _firstRowIsNotValidated = NO;
         
-        NSArray* previousKeywords = [_radio tagsArray];
+        NSArray* previousKeywords = [_myRadio tagsArray];
         if (previousKeywords != nil)
             _keywords = [NSMutableArray arrayWithArray:previousKeywords];
         else
@@ -245,7 +245,7 @@
 - (void)onBack:(id)sender
 {
     // set the radio tags
-    [_radio setTagsWithArray:_keywords];
+    [_myRadio setTagsWithArray:_keywords];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

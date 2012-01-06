@@ -31,6 +31,8 @@
 #include <pthread.h>
 #include <AudioToolbox/AudioToolbox.h>
 
+#define NOTIF_AUDIOSTREAM_ERROR @"NOTIF_AudioStream_error"
+
 #define LOG_QUEUED_BUFFERS 0
 
 #define kNumAQBufs 16			// Number of audio queue buffers we allocate.
