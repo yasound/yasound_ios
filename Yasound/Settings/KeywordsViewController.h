@@ -8,9 +8,14 @@
 
 
 #import <UIKit/UIKit.h>
+#import "YasoundDataProvider.h"
+
+
 
 @interface KeywordsViewController : UIViewController
 {
+    Radio* _radio;
+    
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UIBarButtonItem* _editBtn;
     IBOutlet UIToolbar* _toolbar;
@@ -28,6 +33,7 @@
     BOOL _firstRowIsNotValidated;
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil radio:(Radio*)radio;
 
 
 @end

@@ -292,13 +292,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 - (void)userRadioWithTarget:(id)target action:(SEL)selector
-{
-  if (_radio)
-  {
-    [target performSelector:selector withObject:_radio withObject:[NSDictionary dictionary]];
-     return;
-  }
-  
+{  
   if (!_user)
   {
     NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no logged user" code:1 userInfo:nil] forKey:@"error"];
@@ -344,10 +338,51 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)radiosTarget:(id)target action:(SEL)selector
+- (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
   [_communicator getObjectsWithClass:[Radio class] notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
 }
+
+- (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithGenre:genre withTarget:target action:selector];
+}
+
+- (void)selectionRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithGenre:genre withTarget:target action:selector];
+}
+
+- (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithGenre:genre withTarget:target action:selector];
+}
+
+- (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithGenre:genre withTarget:target action:selector];
+}
+
+- (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithGenre:genre withTarget:target action:selector];
+}
+
+
+
+- (void)searchRadios:(NSString*)search withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    //#FIXME: todo...
+    [self radiosWithGenre:genre withTarget:target action:selector];
+}
+
+
+
 
 
 - (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;

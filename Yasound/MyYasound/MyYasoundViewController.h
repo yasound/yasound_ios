@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ChartView.h"
+#import "YasoundDataProvider.h"
 
 @interface MyYasoundViewController : UIViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, S7GraphViewDataSource>
 {
@@ -15,6 +16,8 @@
     IBOutlet UIToolbar* _toolbar;
     IBOutlet UIBarButtonItem* _segmentBarButtonItem;
     UISegmentedControl* _segmentControl;
+    
+    Radio* _radio;
 
 
     // my yasound settings
@@ -49,7 +52,7 @@ extern NSArray* gFakeUsersFavorites;
 @property (nonatomic, retain) IBOutlet UIView* viewSelection;
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon radio:(Radio*)radio;
 - (IBAction)onmSegmentClicked:(id)sender;
 - (IBAction)onSubmitClicked:(id)sender;
 

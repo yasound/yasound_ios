@@ -365,11 +365,24 @@
     // store info for automatic login, for the next sessions
     [[YasoundSessionManager main] registerForYasound:_email withPword:_pword];
 
-    // go to next screen
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES];
+    // ask for radio contents to the provider
+    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
+}
+
+
+#pragma mark - YasoundDataProvider
+
+- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+{
+    assert(radio);
+    
+    // account just being create, go to configuration screen
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
 }
+
+
 
          
          

@@ -11,7 +11,7 @@
 #import "TwitteriOSSessionManager.h"
 #import "Security/SFHFKeychainUtils.h"
 #import <Twitter/Twitter.h>
-
+#import "YasoundAppDelegate.h"
 
 
 
@@ -159,10 +159,8 @@
   [user setValue:self.account.username forKey:DATA_FIELD_USERNAME];
     [user setValue:userscreenname forKey:DATA_FIELD_NAME];
     
-    //LBDEBUG EMAIL
-    NSString* email = @"email";
-    NSLog(@"twitter iOS email '%@'", email);
-    [user setValue:email forKey:DATA_FIELD_EMAIL];
+    //twitter doesn't provide the user's email, event if he's authenticated
+    [user setValue:@"" forKey:DATA_FIELD_EMAIL];
   
   NSArray* data = [NSArray arrayWithObjects:user, nil];
   
@@ -301,7 +299,14 @@
   else
   {
     TwitterAccountsViewController* controller = [[TwitterAccountsViewController alloc] initWithNibName:@"TwitterAccountsViewController" bundle:nil accounts:self.accounts target:self];
-    [self.delegate presentModalViewController:controller animated: YES];  
+      //LBDEBUG ICI //parent
+//    [self.delegate presentModalViewController:controller animated: YES];  
+      YasoundAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+      NSArray* viewControllers = appDelegate.navigationController.childViewControllers;
+      UIViewController* viewController = [viewControllers objectAtIndex:(viewControllers.count-1)];
+
+      [viewController presentModalViewController:controller animated: YES];  
+
     [controller release];
   }
 

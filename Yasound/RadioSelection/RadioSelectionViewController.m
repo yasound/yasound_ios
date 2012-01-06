@@ -70,7 +70,7 @@ static NSArray* gFakeUsers = nil;
   _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
 
 
-  [[YasoundDataProvider main] radiosTarget:self action:@selector(receiveRadios:withInfo:)];
+    [[YasoundDataProvider main] radiosWithGenre:nil withTarget:self action:@selector(receiveRadios:withInfo:)];
 }
 
 - (void)viewDidUnload

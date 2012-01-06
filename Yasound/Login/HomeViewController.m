@@ -13,6 +13,7 @@
 #import "MyYasoundViewController.h"
 #import "RadioTabBarController.h"
 #import "YasoundSessionManager.h"
+#import "YasoundDataProvider.h"
 #import "ActivityAlertView.h"
 
 
@@ -174,12 +175,6 @@
 
     if (indexPath.row == ROW_SIGNUP)
     {
-        //LBDEBUG
-//        // go to next screen
-//        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];    
-
         SignupViewController* view = [[SignupViewController alloc] initWithNibName:@"SignupViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
@@ -198,7 +193,8 @@
 - (IBAction) onFacebook:(id)sender
 {
     // TAG ACTIVITY ALERT
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     
     [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(socialLoginReturned:)];
 }
@@ -206,18 +202,41 @@
 - (IBAction) onTwitter:(id)sender
 {
     // TAG ACTIVITY ALERT
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
 
     [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(socialLoginReturned:)];
 }
 
 
-- (void)socialLoginReturned:(NSNumber*)successful
+- (void)socialLoginReturned:(User*)user
 {
-    BOOL res = [successful boolValue];
-    if (res)
-        // call root to launch the Radio
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
+    if (user != nil)
+    {
+        if ([[YasoundSessionManager main] getAccount:user])
+            // call root to launch the Radio
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
+        else
+        {
+            [[YasoundSessionManager main] addAccount:user];
+            
+            // ask for radio contents to the provider
+            [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
+        }
+    }
+}
+            
+            
+#pragma mark - YasoundDataProvider
+            
+- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+{
+    assert(radio);
+    
+    // account just being create, go to configuration screen
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:radio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];    
 }
 
 

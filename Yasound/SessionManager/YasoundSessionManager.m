@@ -8,10 +8,9 @@
 
 #import "YasoundSessionManager.h"
 #import "Security/SFHFKeychainUtils.h"
-#import "YasoundDataProvider.h"
 #import "FacebookSessionManager.h"
 #import "TwitterSessionManager.h"
-
+#import "ActivityAlertView.h"
 
 @implementation YasoundSessionManager
 
@@ -57,6 +56,59 @@ static YasoundSessionManager* _main = nil;
 
 
 
+
+// return YES if an account has already been created.
+// ! LOCAL TEST ON THE DEVICE, NOT ON THE SERVER
+- (BOOL)getAccount:(User*)user
+{
+    int user_id_value = [user.id intValue];
+    NSNumber* user_id = [NSNumber numberWithInt:user_id_value];
+     
+    NSArray* array = [[NSUserDefaults standardUserDefaults] objectForKey:@"YasoundSessionManagerAccounts"];
+    for (int i = 0; i < array.count; i++)
+    {
+        NSNumber* userID = [array objectAtIndex:i];
+        if ([userID isEqualToNumber:user_id])
+            return YES;
+    }
+    
+    return NO;
+}
+//
+//- (BOOL)getAccount:(User*)user
+//{
+//    NSArray* array = [[NSUserDefaults standardUserDefaults] objectForKey:@"YasoundSessionManagerAccounts"];
+//    for (int i = 0; i < array.count; i++)
+//    {
+//        NSNumber* userID = [array objectAtIndex:i];
+//        if ([userID isEqualToNumber:user.id])
+//            return YES;
+//    }
+//    
+//    return NO;
+//}
+
+
+// register the user account LOCALLY, ON THE DEVICE
+- (void)addAccount:(User*)user
+{
+    NSArray* array = [[NSUserDefaults standardUserDefaults] objectForKey:@"YasoundSessionManagerAccounts"];
+    NSMutableArray* newArray = [NSMutableArray arrayWithArray:array];
+    
+    int userID = [user.id intValue];
+    [newArray addObject:[NSNumber numberWithInt:userID]];
+    [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:@"YasoundSessionManagerAccounts"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+
+
+
+
+
+
+
 - (void)setRegistered:(BOOL)registered
 {
     [_dico setObject:[NSNumber numberWithBool:registered] forKey:@"registered"];
@@ -71,7 +123,8 @@ static YasoundSessionManager* _main = nil;
 
 - (NSString*)loginType
 {
-    return [_dico objectForKey:@"loginType"];
+    NSString* str = [_dico objectForKey:@"loginType"];
+    return str;
 }
 
 - (void)setLoginType:(NSString *)loginType
@@ -119,7 +172,7 @@ static YasoundSessionManager* _main = nil;
     _target = target;
     _action = action;
     
-    [self registerForFacebook];
+    self.loginType = LOGIN_TYPE_FACEBOOK;
 
     [[FacebookSessionManager facebook] setTarget:self];
     [[FacebookSessionManager facebook] login];    
@@ -132,8 +185,8 @@ static YasoundSessionManager* _main = nil;
     _target = target;
     _action = action;
     
-    [self registerForTwitter];
-    
+    self.loginType = LOGIN_TYPE_TWITTER;
+
     [[TwitterSessionManager twitter] setTarget:self];
     [[TwitterSessionManager twitter] login];
 }
@@ -156,7 +209,7 @@ static YasoundSessionManager* _main = nil;
     
     // callback
     assert(_target);
-    [_target performSelector:_action withObject:[NSNumber numberWithBool:YES]];
+    [_target performSelector:_action withObject:user];
     
 }
 
@@ -170,6 +223,8 @@ static YasoundSessionManager* _main = nil;
 
 - (void)sessionDidLogin:(BOOL)authorized
 {
+    NSLog(@"self.loginType %@", self.loginType);
+
     if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
         [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
@@ -228,6 +283,11 @@ static YasoundSessionManager* _main = nil;
     NSLog(@"uid '%@'", uid);
     NSLog(@"token '%@'", token);
     NSLog(@"email '%@'", email);
+    
+    // TAG ACTIVITY ALERT
+    if (![ActivityAlertView isRunning])
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    
 
     if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
@@ -274,13 +334,23 @@ static YasoundSessionManager* _main = nil;
         [self loginError];
         // callback
         assert(_target);
-        [_target performSelector:_action withObject:[NSNumber numberWithBool:NO]];        
+        [_target performSelector:_action withObject:nil];        
         return;
     }
     
+    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    {
+        [self registerForFacebook];
+    }
+    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    {
+        [self registerForTwitter];
+    }
+
+    
     // callback
     assert(_target);
-    [_target performSelector:_action withObject:[NSNumber numberWithBool:YES]];
+    [_target performSelector:_action withObject:user];
 
 //    // call root to launch the Radio
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
@@ -308,7 +378,7 @@ static YasoundSessionManager* _main = nil;
     
     // callback
     assert(_target);
-    [_target performSelector:_action withObject:[NSNumber numberWithBool:NO]];
+    [_target performSelector:_action withObject:nil];
 }
 
 
@@ -322,11 +392,17 @@ static YasoundSessionManager* _main = nil;
     // do it for all, this way you're sure :)
     if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
+        _target = target;
+        _action = action;
+        [FacebookSessionManager facebook].delegate = self;
         [[FacebookSessionManager facebook] logout];
     }
     
     else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
     {
+        _target = target;
+        _action = action;
+        [TwitterSessionManager twitter].delegate = self;
         [[TwitterSessionManager twitter] logout];
     }
     
@@ -338,6 +414,8 @@ static YasoundSessionManager* _main = nil;
     
     [_dico release];
     _dico = nil;
+    _dico = [[NSMutableDictionary alloc] init];
+    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"YasoundSessionManager"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
@@ -364,6 +442,12 @@ static YasoundSessionManager* _main = nil;
 {
     self.loginType = LOGIN_TYPE_FACEBOOK;
     self.registered = YES;
+    
+    //LBDEBUG
+    NSLog(@"dico %@", _dico);
+    
+    NSLog(@"registerForFacebook self.loginType %@", self.loginType);
+    
     [self save];
 
 }

@@ -10,6 +10,7 @@
 @implementation ActivityAlertView
 
 @synthesize activityView;
+@synthesize running;
 
 static ActivityAlertView* _alertView = nil;
 
@@ -22,6 +23,8 @@ static ActivityAlertView* _alertView = nil;
     }
     
     _alertView = [[ActivityAlertView alloc] initWithTitle:title message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    
+    _alertView.running = YES;
     [_alertView show];
 }
 
@@ -31,10 +34,18 @@ static ActivityAlertView* _alertView = nil;
     if (_alertView == nil)
         return;
     [_alertView close];
+    _alertView.running = NO;
+    
     [_alertView release];
     _alertView = nil;
 }
 
++ (BOOL)isRunning
+{
+    if (_alertView == nil)
+        return NO;
+    return _alertView.running;
+}
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -45,6 +56,9 @@ static ActivityAlertView* _alertView = nil;
 		[self addSubview:activityView];
 		activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
 		[activityView startAnimating];
+        
+        self.running = NO;
+
   }
 	
   return self;
