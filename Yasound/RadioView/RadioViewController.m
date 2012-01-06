@@ -173,6 +173,14 @@
 //    [btn addTarget:self action:@selector(onEdit:) forControlEvents:UIControlEventTouchUpInside];
 //    [_headerView addSubview:btn];
 
+    //play pause button
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderPlayPauseFrame" error:nil];
+    CGRect frame = sheet.frame;
+    _playPauseButton = [[UIButton alloc] initWithFrame:sheet.frame];
+    [_playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
+    [_playPauseButton setImage:[UIImage imageNamed:@"btnPause.png"] forState:UIControlStateNormal];
+    [_playPauseButton setImage:[UIImage imageNamed:@"btnPlay.png"] forState:UIControlStateSelected];
+    [_headerView addSubview:_playPauseButton];
     
     //....................................................................................
     //
@@ -267,6 +275,11 @@
     [self onUpdate:nil];
     
 //    [self EXAMPLE];
+    
+    //Make sure the system follows our playback status
+    // <=> Background audio playing
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [[AVAudioSession sharedInstance] setActive: YES error: nil];    
 }
 
 
@@ -276,9 +289,16 @@
     
   NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/ubik.mp3"];
   self.audioStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
-  [self.audioStreamer start];
+    
+    [self.audioStreamer stop];
+    [self.audioStreamer start];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
+    
+    //Once the view has loaded then we can register to begin recieving controls and we can become the first responder
+    // <=> background audio playing
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];    
     
     //....................................................................................
     //
@@ -286,21 +306,25 @@
     //
     _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];    
 
-    // LBDEBUG fake timer for status messages
-//    [self onFakeUpdateStatus:nil];
-//    _timerFake = [NSTimer scheduledTimerWithTimeInterval:3.f target:self selector:@selector(onFakeUpdateStatus:) userInfo:nil repeats:YES];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-  [audioStreamer stop];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    //End recieving events
+    // <=> background audio playing
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
     
     [_timerUpdate invalidate];
     [_timerFake invalidate];
     _timerUpdate = nil;
     _timerFake = nil;
 }
+
+
 
 
 - (void)viewDidUnload
@@ -328,8 +352,31 @@
 
 
 
+#pragma mark - Background Audio Playing
 
 
+//Make sure we can recieve remote control events
+- (BOOL)canBecomeFirstResponder 
+{
+    return YES;
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event 
+{
+    //if it is a remote control event handle it correctly
+    if (event.type == UIEventTypeRemoteControl) 
+    {
+        if (event.subtype == UIEventSubtypeRemoteControlPlay) 
+            [self playAudio];
+
+        else if (event.subtype == UIEventSubtypeRemoteControlPause) 
+            [self pauseAudio];
+
+        else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) 
+            [self onPlayPause:nil];
+        
+    }
+}
 
 
 
@@ -898,6 +945,29 @@
 //{
 //    
 //}
+
+- (IBAction) onPlayPause:(id)sender
+{
+    if (!_playPauseButton.selected)
+        [self pauseAudio];
+    else
+        [self playAudio];
+}
+
+
+- (void)playAudio
+{
+    _playPauseButton.selected = NO;
+    [self.audioStreamer start];
+
+}
+
+- (void)pauseAudio
+{
+    _playPauseButton.selected = YES;
+    [self.audioStreamer stop];
+}
+
 
 - (IBAction) onSearch:(id)sender
 {

@@ -185,6 +185,17 @@
 				<string>down</string>
 			</array>
 		</dict>
+		<key>RadioViewHeaderPlayPauseFrame</key>
+		<dict>
+			<key>x</key>
+			<integer>282</integer>
+			<key>y</key>
+			<integer>23</integer>
+			<key>width</key>
+			<integer>26</integer>
+			<key>height</key>
+			<integer>26</integer>
+		</dict>
 		<key>RadioViewHeaderNowPlayingBar</key>
 		<dict>
 			<key>x</key>
