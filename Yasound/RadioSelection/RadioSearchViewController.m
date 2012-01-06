@@ -39,6 +39,15 @@ static NSArray* gFakeSearchUsers = nil;
   }
   
   return self;
+    
+}
+
+
+- (void)dealloc
+{
+    if (_radios != nil)
+        [_radios release];
+    [super dealloc];
 }
 
 
@@ -96,13 +105,19 @@ static NSArray* gFakeSearchUsers = nil;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (_radios == nil)
+        return 0;
   return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-  // Number of rows is the number of time zones in the region for the specified section.
-  return 24;
+    if (_radios == nil)
+        return 0;
+    
+    NSLog(@"RADIO COUNT %d", _radios.count);
+    
+    return _radios.count;
 }
 
 
@@ -121,10 +136,7 @@ static NSArray* gFakeSearchUsers = nil;
   
     NSInteger rowIndex = indexPath.row;
 
-    //LBDEBUG ICI
-    Radio* radio = nil;
-//    Radio* radio = [_radios objectAtIndex:rowIndex];
-    
+    Radio* radio = [_radios objectAtIndex:rowIndex];
     RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];  
   
   return cell;
@@ -156,9 +168,32 @@ static NSArray* gFakeSearchUsers = nil;
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
   NSLog(@"searchBarTextDidEndEditing %@", searchBar.text);
- 
+    
+    [[YasoundDataProvider main] searchRadios:searchBar.text withGenre:nil withTarget:self action:@selector(receiveRadios:withInfo:)];
 }
 
+
+
+
+- (void)receiveRadios:(NSArray*)radios withInfo:(NSDictionary*)info
+{
+    NSError* error = [info valueForKey:@"error"];
+    if (error)
+    {
+        NSLog(@"can't get radios: %@", error.domain);
+        return;
+    }
+    
+    if (_radios != nil)
+        [_radios release];
+    
+    _radios = radios;
+    [_radios retain];
+    [_tableView reloadData];
+}
+
+
+ 
 
 
 @end
