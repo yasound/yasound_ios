@@ -11,7 +11,7 @@
 
 @implementation RadioSelectionTableViewCell
 
-
+@synthesize radio;
 @synthesize radioTitle;
 @synthesize radioSubtitle1;
 @synthesize radioSubtitle2;
@@ -29,6 +29,7 @@
     BundleStylesheet* stylesheet;
     NSError* error;
     
+      self.radio = radio;
     
     // cell background
     if (rowIndex & 1)
@@ -63,7 +64,7 @@
 
     // subtitle 1
     self.radioSubtitle1 = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-      self.radioSubtitle1.text = radio.creator;
+      self.radioSubtitle1.text = radio.creator.name;
     [self addSubview:self.radioSubtitle1];
 
     // subtitle 2

@@ -19,7 +19,7 @@
 
 }
 
-
+@property (nonatomic, retain) Radio* radio;
 @property (nonatomic, retain) UILabel* radioTitle;
 @property (nonatomic, retain) UILabel* radioSubtitle1;
 @property (nonatomic, retain) UILabel* radioSubtitle2;

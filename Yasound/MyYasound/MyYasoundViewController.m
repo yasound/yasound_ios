@@ -61,6 +61,9 @@ NSArray* gFakeUsersFavorites = nil;
 
 - (void)dealloc
 {
+    if (_radios != nil)
+        [_radios release];
+
     [self deallocInSettingsTableView];
     [self deallocInRadioSelection];
     [super dealloc];
@@ -173,19 +176,19 @@ NSArray* gFakeUsersFavorites = nil;
       break;
       
     case 1:
-          
-          [YasoundDataProvider friendsRadiosWithTarget:action:
-           - (void)friendsRadiosWithTarget:(id)target action:(SEL)selector;
-
-           
-      [[YasoundDataProvider main] friendsRadiosWithTarget:self action:@selector(onRadioSelectionReceived:)];
-      break;
+          [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioSelection_update", nil)];
+        [_viewCurrent removeFromSuperview];
+        _viewCurrent = self.viewSelection;
+        [self.viewContainer addSubview:_viewCurrent];
+        [[YasoundDataProvider main] friendsRadiosWithGenre:nil withTarget:self action:@selector(onRadioSelectionReceived:)];
+        break;
       
     case 2:
+          [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioSelection_update", nil)];
       [_viewCurrent removeFromSuperview];
       _viewCurrent = self.viewSelection;
       [self.viewContainer addSubview:_viewCurrent];
-      [_tableView reloadData];
+      [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onRadioSelectionReceived:)];
       break;
   }
   
@@ -194,19 +197,16 @@ NSArray* gFakeUsersFavorites = nil;
 
 
 
-- (void)onRadioSelectionReceived:(id)obj
+- (void)onRadioSelectionReceived:(NSArray*)radios
 {
-//    if (_radios != nil)
-//        [_radios release];
-//    _radios = 
-//    - (void)favoriteRadiosWithTarget:(id)target action:(SEL)selector;
-//    
-//    [_viewCurrent removeFromSuperview];
-//    _viewCurrent = self.viewSelection;
-//    [self.viewContainer addSubview:_viewCurrent];
-//    [_tableView reloadData];
-//}
-
+    if (_radios != nil)
+        [_radios release];
+    
+    _radios = radios;
+    [_radios retain];
+    
+    [_tableView reloadData];
+    [ActivityAlertView close];
 }
 
 
@@ -246,7 +246,7 @@ NSArray* gFakeUsersFavorites = nil;
     if (tableView == _settingsTableView)
         return [self heightInSettingsForRowAtIndexPath:indexPath];
     
-    return 44;
+    return 55;
 }
 
 
