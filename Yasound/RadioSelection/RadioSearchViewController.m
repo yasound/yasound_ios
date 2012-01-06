@@ -119,13 +119,13 @@ static NSArray* gFakeSearchUsers = nil;
 {
   static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
   
-  //LBDEBUG
-  NSInteger fakeUserIndex = indexPath.row % 6;
-  NSDictionary* data = [gFakeSearchUsers objectAtIndex:fakeUserIndex];
-  NSInteger rowIndex = indexPath.row;
-  
-  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex data:data];
-  
+    NSInteger rowIndex = indexPath.row;
+
+    //LBDEBUG ICI
+    Radio* radio = nil;
+//    Radio* radio = [_radios objectAtIndex:rowIndex];
+    
+    RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];  
   
   return cell;
 }
@@ -133,7 +133,6 @@ static NSArray* gFakeSearchUsers = nil;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RadioViewController* view = [[RadioViewController alloc] init];
-    self.navigationController.navigationBarHidden = YES;
     [self.navigationController pushViewController:view animated:YES];
     [view release];  
 }

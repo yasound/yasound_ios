@@ -26,12 +26,12 @@ NSArray* gFakeUsersFavorites = nil;
 
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon radio:(Radio*)radio
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        _radio = radio;
+        _myRadio = nil;
         
       UIImage* tabImage = [UIImage imageNamed:tabIcon];
       UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
@@ -115,7 +115,7 @@ NSArray* gFakeUsersFavorites = nil;
 
 - (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
 {
-    _radio = radio;
+    _myRadio = radio;
 
     // automatic launch
     BOOL _automaticLaunch =  [[[NSUserDefaults standardUserDefaults] objectForKey:@"automaticLaunch"] boolValue];
@@ -173,10 +173,12 @@ NSArray* gFakeUsersFavorites = nil;
       break;
       
     case 1:
-      [_viewCurrent removeFromSuperview];
-      _viewCurrent = self.viewSelection;
-      [self.viewContainer addSubview:_viewCurrent];
-      [_tableView reloadData];
+          
+          [YasoundDataProvider friendsRadiosWithTarget:action:
+           - (void)friendsRadiosWithTarget:(id)target action:(SEL)selector;
+
+           
+      [[YasoundDataProvider main] friendsRadiosWithTarget:self action:@selector(onRadioSelectionReceived:)];
       break;
       
     case 2:
@@ -192,6 +194,20 @@ NSArray* gFakeUsersFavorites = nil;
 
 
 
+- (void)onRadioSelectionReceived:(id)obj
+{
+//    if (_radios != nil)
+//        [_radios release];
+//    _radios = 
+//    - (void)favoriteRadiosWithTarget:(id)target action:(SEL)selector;
+//    
+//    [_viewCurrent removeFromSuperview];
+//    _viewCurrent = self.viewSelection;
+//    [self.viewContainer addSubview:_viewCurrent];
+//    [_tableView reloadData];
+//}
+
+}
 
 
 

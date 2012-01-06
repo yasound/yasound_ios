@@ -16,7 +16,7 @@
 {
     BOOL _wizard;
     BOOL _changed;
-    Radio* _radio;
+    Radio* _myRadio;
     
     UIActionSheet* _saveQuery;
     UIActionSheet* _pickImageQuery;

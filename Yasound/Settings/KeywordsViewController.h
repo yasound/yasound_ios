@@ -14,7 +14,7 @@
 
 @interface KeywordsViewController : UIViewController
 {
-    Radio* _radio;
+    Radio* _myRadio;
     
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UIBarButtonItem* _editBtn;

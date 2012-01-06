@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WebImageView.h"
+#import "YasoundDataProvider.h"
 
 @interface RadioSelectionTableViewCell : UITableViewCell
 {
@@ -28,6 +29,8 @@
 @property (nonatomic, retain) WebImageView* radioAvatar;
 @property (nonatomic, retain) UIImageView* radioAvatarMask;
 
+
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex radio:(Radio*)radio;
 
 
 @end

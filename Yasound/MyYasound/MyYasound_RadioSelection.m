@@ -54,10 +54,13 @@
   static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
   
   //LBDEBUG
-  NSDictionary* data = (_segmentControl.selectedSegmentIndex == 1)? [gFakeUsersFriends objectAtIndex:(indexPath.row % 3)] : [gFakeUsersFavorites objectAtIndex:(indexPath.row % 3)];
-  
-  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:indexPath.row data:data];
-  
+//  NSDictionary* data = (_segmentControl.selectedSegmentIndex == 1)? [gFakeUsersFriends objectAtIndex:(indexPath.row % 3)] : [gFakeUsersFavorites objectAtIndex:(indexPath.row % 3)];
+
+    NSInteger rowIndex = indexPath.row;
+    
+    Radio* radio = [_radios objectAtIndex:rowIndex];
+    
+    RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
   
   return cell;
 }
@@ -66,7 +69,6 @@
 - (void)didSelectInSelectionTableViewRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RadioViewController* view = [[RadioViewController alloc] init];
-    self.navigationController.navigationBarHidden = YES;
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

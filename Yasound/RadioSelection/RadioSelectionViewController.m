@@ -151,25 +151,15 @@ static NSArray* gFakeUsers = nil;
   
   NSInteger rowIndex = indexPath.row;
   
-  Radio* r = [_radios objectAtIndex:rowIndex];
-  NSMutableDictionary* data = [[NSMutableDictionary alloc] init];
-  [data setValue:r.name forKey:@"title"];
-  [data setValue:r.creator.username forKey:@"subtitle1"];
-  [data setValue:r.genre forKey:@"subtitle2"];
-  [data setValue:r.likes forKey:@"likes"];
-  [data setValue:r.listeners forKey:@"listeners"];
+  Radio* radio = [_radios objectAtIndex:rowIndex];
   
-  NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:r.picture];
-  [data setValue:imageURL forKey:@"imageURL"];
-  
-  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex data:data];
+  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
   return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RadioViewController* view = [[RadioViewController alloc] init];
-    self.navigationController.navigationBarHidden = YES;
     [self.navigationController pushViewController:view animated:YES];
     [view release];  
 }
