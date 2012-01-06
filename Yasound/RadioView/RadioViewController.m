@@ -278,6 +278,8 @@
   self.audioStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
   [self.audioStreamer start];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
+    
     //....................................................................................
     //
     // data update timer
@@ -292,6 +294,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
   [audioStreamer stop];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [_timerUpdate invalidate];
     [_timerFake invalidate];
@@ -994,6 +997,19 @@
 
 
 
+
+
+
+#pragma mark - Notifications
+
+- (void)onAudioStreamNotif:(NSNotification *)notification
+{
+    if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_ERROR])
+    {
+        [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
+        return;
+    }
+}
 
 
 
