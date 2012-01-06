@@ -69,8 +69,7 @@ static NSArray* gFakeUsers = nil;
   _currentStyle = @"style_all";
   _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
 
-
-    [[YasoundDataProvider main] radiosWithGenre:nil withTarget:self action:@selector(receiveRadios:withInfo:)];
+    [self updateRadios:nil];
 }
 
 - (void)viewDidUnload
@@ -100,20 +99,6 @@ static NSArray* gFakeUsers = nil;
 
 
 
-
-
-- (void)receiveRadios:(NSArray*)radios withInfo:(NSDictionary*)info
-{
-  NSError* error = [info valueForKey:@"error"];
-  if (error)
-  {
-    NSLog(@"can't get radios: %@", error.domain);
-    return;
-  }
-  
-  _radios = radios;
-  [_tableView reloadData];
-}
 
 
 
@@ -169,6 +154,42 @@ static NSArray* gFakeUsers = nil;
 
 
 
+
+
+#pragma  mark - Update
+
+- (void)updateRadios:(NSString*)genre
+{
+    if (_type == RSTSelection)
+        [[YasoundDataProvider main] selectionRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
+    else if (_type == RSTTop)
+        [[YasoundDataProvider main] topRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
+    else if (_type == RSTNew)
+        [[YasoundDataProvider main] newRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
+}
+
+
+
+
+- (void)receiveRadios:(NSArray*)radios withInfo:(NSDictionary*)info
+{
+    NSError* error = [info valueForKey:@"error"];
+    if (error)
+    {
+        NSLog(@"can't get radios: %@", error.domain);
+        return;
+    }
+    
+    _radios = radios;
+    [_tableView reloadData];
+}
+
+
+
+
+
+
+
 #pragma mark - IBActions
 
 - (IBAction)onStyleSelectorClicked:(id)sender
@@ -184,12 +205,12 @@ static NSArray* gFakeUsers = nil;
 
 - (void)didSelectStyle:(NSString*)style
 {
-  [self.navigationController dismissModalViewControllerAnimated:YES];
+//  [self.navigationController dismissModalViewControllerAnimated:YES];
   
   _currentStyle = style;
   _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
   
-  [_tableView reloadData];
+    [self updateRadios:_currentStyle];
 }
 
 - (void)cancelSelectStyle
