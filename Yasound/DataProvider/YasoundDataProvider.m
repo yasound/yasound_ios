@@ -10,7 +10,7 @@
 #import "ApiKey.h"
 
 
-#define USE_LOCAL_SERVER 0
+#define USE_LOCAL_SERVER 1
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"
@@ -340,25 +340,41 @@ static YasoundDataProvider* _main = nil;
 
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-  [_communicator getObjectsWithClass:[Radio class] notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+    Auth* auth = [self apiKeyAuth];
+    NSMutableArray* params = [NSMutableArray array];
+    if (genre)
+        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+    [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    //#FIXME: todo...
-    [self radiosWithGenre:genre withTarget:target action:selector];
+    Auth* auth = [self apiKeyAuth];
+    NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-overall_listening_time"];
+    if (genre)
+        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+    
+    [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-- (void)selectionRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
+- (void)selectedRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    //#FIXME: todo...
-    [self radiosWithGenre:genre withTarget:target action:selector];
+    Auth* auth = [self apiKeyAuth];
+    NSMutableArray* params = [NSMutableArray array];
+    if (genre)
+        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+
+    [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/selected_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    //#FIXME: todo...
-    [self radiosWithGenre:genre withTarget:target action:selector];
+    Auth* auth = [self apiKeyAuth];
+    NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-created"];
+    if (genre)
+        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+    
+    [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
@@ -369,8 +385,12 @@ static YasoundDataProvider* _main = nil;
 
 - (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    //#FIXME: todo...
-    [self radiosWithGenre:genre withTarget:target action:selector];
+    Auth* auth = [self apiKeyAuth];
+    NSMutableArray* params = [NSMutableArray array];
+    if (genre)
+        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+    
+    [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/favorite_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 

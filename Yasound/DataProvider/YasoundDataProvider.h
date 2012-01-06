@@ -58,7 +58,7 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)selectionRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
+- (void)selectedRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
