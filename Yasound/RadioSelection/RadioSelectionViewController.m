@@ -161,7 +161,7 @@ static NSArray* gFakeUsers = nil;
 - (void)updateRadios:(NSString*)genre
 {
     if (_type == RSTSelection)
-        [[YasoundDataProvider main] selectionRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
+        [[YasoundDataProvider main] selectedRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
     else if (_type == RSTTop)
         [[YasoundDataProvider main] topRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
     else if (_type == RSTNew)

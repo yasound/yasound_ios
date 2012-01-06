@@ -397,8 +397,15 @@ static YasoundDataProvider* _main = nil;
 
 - (void)searchRadios:(NSString*)search withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    //#FIXME: todo...
-    [self radiosWithGenre:genre withTarget:target action:selector];
+    Auth* auth = [self apiKeyAuth];
+    NSMutableArray* params = [NSMutableArray array];
+    if (search)
+        [params addObject:[NSString stringWithFormat:@"name__contains=%@", search]];
+    if (genre)
+        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+    
+    
+    [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
