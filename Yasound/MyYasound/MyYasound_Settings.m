@@ -263,7 +263,7 @@
 {
      if ((indexPath.section == SECTION_GOTO) && (indexPath.row == ROW_GOTO))
     {
-        RadioViewController* view = [[RadioViewController alloc] init];
+        RadioViewController* view = [[RadioViewController alloc] initWithRadio:_myRadio];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
         return;

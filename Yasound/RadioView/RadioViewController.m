@@ -102,20 +102,39 @@
     
     // header avatar, as a second back button
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
+//    _radioImage = [[WebImageView alloc] initWithImageFrame:CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height)];
     _radioImage = [[WebImageView alloc] initWithImageFrame:sheet.frame];
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
-    if (imageURL != nil)
-        [_radioImage setUrl:imageURL];
+    [_radioImage setUrl:imageURL];
+    [_headerView addSubview:_radioImage];
+    
+//    btn = [[UIButton alloc] initWithFrame:sheet.frame];
+//    [btn.imageView addSubview:_radioImage];
+//    [btn setImage:[UIImage imageNamed:myImage[0]] forState:UIControlStateNormal]; 
+
+//    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+//    [_headerView addSubview:btn];
+    
+
+//    // header avatar mask 
+//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
+//    UIImageView* avatarMask = [[UIImageView alloc] initWithImage:[sheet image]];
+//    avatarMask.frame = sheet.frame;
+//    [_headerView addSubview:avatarMask];
+    
+    // header avatar mask  as button
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
     btn = [[UIButton alloc] initWithFrame:sheet.frame];
-    [btn.imageView addSubview:_radioImage];
+    [btn setImage:[sheet image] forState:UIControlStateNormal]; 
     [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
     
-    // header avatar mask
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
-    UIImageView* avatarMask = [[UIImageView alloc] initWithImage:[sheet image]];
-    avatarMask.frame = sheet.frame;
-    [_headerView addSubview:avatarMask];
+    
+    //    [btn.imageView addSubview:_radioImage];
+    
+    //    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+    //    [_headerView addSubview:btn];
+
     
     // header title
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderTitle" error:nil];

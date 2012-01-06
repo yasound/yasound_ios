@@ -129,7 +129,7 @@ NSArray* gFakeUsersFavorites = nil;
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         // display radio automatically
-        RadioViewController* view = [[RadioViewController alloc] init];
+        RadioViewController* view = [[RadioViewController alloc] initWithRadio:_myRadio];
         
         // TAG ACTIVITY ALERT
         [ActivityAlertView close];
