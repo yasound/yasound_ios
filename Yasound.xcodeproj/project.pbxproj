@@ -207,9 +207,6 @@
 		BC9522A414B70FE9001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A514B70FF2001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A614B70FF7001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
-		BC9522A814B7108B001E1ACE /* HeadspinLong.caf in Resources */ = {isa = PBXBuildFile; fileRef = BC9522A714B7108B001E1ACE /* HeadspinLong.caf */; };
-		BC9522A914B7108B001E1ACE /* HeadspinLong.caf in Resources */ = {isa = PBXBuildFile; fileRef = BC9522A714B7108B001E1ACE /* HeadspinLong.caf */; };
-		BC9522AA14B7108B001E1ACE /* HeadspinLong.caf in Resources */ = {isa = PBXBuildFile; fileRef = BC9522A714B7108B001E1ACE /* HeadspinLong.caf */; };
 		BC9522AF14B71352001E1ACE /* btnPause.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AB14B71352001E1ACE /* btnPause.png */; };
 		BC9522B014B71352001E1ACE /* btnPause.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AB14B71352001E1ACE /* btnPause.png */; };
 		BC9522B114B71352001E1ACE /* btnPause.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AB14B71352001E1ACE /* btnPause.png */; };
@@ -928,7 +925,6 @@
 		BC943A5014688AE70031CE17 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BC943A5114688AE70031CE17 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BC95229914B6F787001E1ACE /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
-		BC9522A714B7108B001E1ACE /* HeadspinLong.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HeadspinLong.caf; sourceTree = "<group>"; };
 		BC9522AB14B71352001E1ACE /* btnPause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnPause.png; sourceTree = "<group>"; };
 		BC9522AC14B71352001E1ACE /* btnPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnPause@2x.png"; sourceTree = "<group>"; };
 		BC9522AD14B71352001E1ACE /* btnPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnPlay.png; sourceTree = "<group>"; };
@@ -2017,7 +2013,6 @@
 				BC5EE217147D427100A282A5 /* RadioSelection */,
 				BC943A5014688AE70031CE17 /* Default.png */,
 				BC95229914B6F787001E1ACE /* EasyTracker.plist */,
-				BC9522A714B7108B001E1ACE /* HeadspinLong.caf */,
 				BC943A5114688AE70031CE17 /* Default@2x.png */,
 				BC8B084114927B7D007E1307 /* Icon.png */,
 				BC8B083214926F22007E1307 /* Icon-72.png */,
@@ -2392,7 +2387,6 @@
 				BC6314DC14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828ADA14B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229B14B6F787001E1ACE /* EasyTracker.plist in Resources */,
-				BC9522A914B7108B001E1ACE /* HeadspinLong.caf in Resources */,
 				BC9522B014B71352001E1ACE /* btnPause.png in Resources */,
 				BC9522B314B71352001E1ACE /* btnPause@2x.png in Resources */,
 				BC9522B614B71352001E1ACE /* btnPlay.png in Resources */,
@@ -2551,7 +2545,6 @@
 				BC6314DB14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828AD914B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229A14B6F787001E1ACE /* EasyTracker.plist in Resources */,
-				BC9522A814B7108B001E1ACE /* HeadspinLong.caf in Resources */,
 				BC9522AF14B71352001E1ACE /* btnPause.png in Resources */,
 				BC9522B214B71352001E1ACE /* btnPause@2x.png in Resources */,
 				BC9522B514B71352001E1ACE /* btnPlay.png in Resources */,
@@ -2710,7 +2703,6 @@
 				BC6314DD14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828ADB14B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229C14B6F787001E1ACE /* EasyTracker.plist in Resources */,
-				BC9522AA14B7108B001E1ACE /* HeadspinLong.caf in Resources */,
 				BC9522B114B71352001E1ACE /* btnPause.png in Resources */,
 				BC9522B414B71352001E1ACE /* btnPause@2x.png in Resources */,
 				BC9522B714B71352001E1ACE /* btnPlay.png in Resources */,
