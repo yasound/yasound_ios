@@ -18,6 +18,7 @@
 #import "WallEvent.h"
 
 //#define LOCAL 1 // use localhost as the server
+#define USE_FAKE_RADIO_URL 1
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
 
@@ -286,8 +287,14 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+#ifdef USE_FAKE_RADIO_URL
+    NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/ubik.mp3"];
+#else
+    NSURL* radiourl = self.radio.url;
+#endif
     
-  NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/ubik.mp3"];
+    
+    
   self.audioStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
     
     [self.audioStreamer stop];
