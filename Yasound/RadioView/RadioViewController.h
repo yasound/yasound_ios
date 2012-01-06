@@ -7,6 +7,9 @@
 
 #import <UIKit/UIKit.h>
 #import "WallMessage.h"
+#import <AVFoundation/AVFoundation.h>
+
+
 
 @class Radio;
 @class AudioStreamer;
@@ -41,6 +44,8 @@
     
     NSTimer* _timerUpdate;
     NSTimer* _timerFake;
+    
+    UIButton* _playPauseButton;
 }
 
 @property (nonatomic, retain) Radio* radio;
