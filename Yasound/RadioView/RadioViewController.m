@@ -312,8 +312,6 @@
     // data update timer
     //
     _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];    
-
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -525,19 +523,19 @@
 //        }
 //        [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:YES];
         NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
-        [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:NO];
+        [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
       }
     }
     else if ([ev.type isEqualToString:@"J"])
     {
       if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
-        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", ev.user.username]];
+        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", ev.user.name]];
         
     }
     else if ([ev.type isEqualToString:@"L"])
     {
       if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
-        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", ev.user.username]];
+        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", ev.user.name]];
     }
   }
   
@@ -891,18 +889,7 @@
 
 - (void)sendMessage:(NSString *)message
 {
-  User* user = [[User alloc] init];
-  user.id = [NSNumber numberWithInt:1];
-  
-  WallEvent* msg = [[WallEvent alloc] init];
-  msg.user = user;
-  msg.radio = self.radio;
-  msg.start_date = [NSDate date];
-  msg.end_date = [NSDate date];
-  msg.type = @"M";
-  msg.text = message;
-  
-  [[YasoundDataProvider main] postNewWallMessage:msg target:self action:@selector(wallMessagePosted:withInfo:)];
+    [[YasoundDataProvider main] postWallMessage:message toRadio:self.radio target:self action:@selector(wallMessagePosted:withInfo:)];
 }
 
 - (void)wallMessagePosted:(NSString*)eventURL withInfo:(NSDictionary*)info

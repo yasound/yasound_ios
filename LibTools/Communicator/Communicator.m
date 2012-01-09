@@ -264,7 +264,8 @@
     [info setValue:userData forKey:@"userData"];
   
   [info setValue:err forKey:@"error"];
-  [target performSelector:selector withObject:result withObject:info];
+    if (target && selector)
+        [target performSelector:selector withObject:result withObject:info];
 }
 
 
@@ -582,7 +583,8 @@
     [data setValue:error forKey:@"error"];
   }
   
-  [target performSelector:selector withObject:response withObject:data];
+    if (target && selector)
+        [target performSelector:selector withObject:response withObject:data];
 }
 
 
@@ -604,7 +606,8 @@
     [data setValue:error forKey:@"error"];
   }
   
-  [target performSelector:selector withObject:response withObject:data];
+    if (target && selector)
+        [target performSelector:selector withObject:response withObject:data];
 }
 
 - (void)handleResponse:(ASIHTTPRequest *)request success:(BOOL)succeeded

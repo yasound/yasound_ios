@@ -82,7 +82,10 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
-- (void)postNewWallMessage:(WallEvent*)message target:(id)target action:(SEL)selector;
+- (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
+- (void)enterRadio:(Radio*)radio;
+- (void)leaveRadio:(Radio*)radio;
 
 - (NSURL*)urlForPicture:(NSString*)picturePath;
 
