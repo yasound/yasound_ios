@@ -26,8 +26,11 @@
 
 @implementation RadioViewController
 
+static AudioStreamer* _gAudioStreamer = nil;
+
 @synthesize radio;
-@synthesize audioStreamer;
+//LBDEBUG
+//@synthesize audioStreamer;
 @synthesize messages;
 @synthesize statusMessages;
 
@@ -282,9 +285,25 @@
     //Make sure the system follows our playback status
     // <=> Background audio playing
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-    [[AVAudioSession sharedInstance] setActive: YES error: nil];    
+    [[AVAudioSession sharedInstance] setActive: YES error: nil];  
+    [[AVAudioSession sharedInstance] setDelegate: self];
 }
 
+
+#pragma mark - AVAudioSession Delegate
+
+- (void)beginInterruption
+{
+    [self pauseAudio];
+}
+
+- (void) endInterruptionWithFlags: (NSUInteger) flags
+{
+    if (flags & AVAudioSessionInterruptionFlags_ShouldResume)
+    {
+        [self playAudio];    
+    }
+}
 
 
 - (void)viewDidAppear:(BOOL)animated
@@ -294,13 +313,18 @@
 #else
     NSURL* radiourl = self.radio.url;
 #endif
+
+    //LBDEBUG
+    if (_gAudioStreamer != nil)
+    {
+        [_gAudioStreamer stop];
+        [_gAudioStreamer release];
+    }
     
-    
-    
-  self.audioStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
-    
-    [self.audioStreamer stop];
-    [self.audioStreamer start];
+    _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radiourl];
+    [_gAudioStreamer start];
+//  self.audioStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
+//    [self.audioStreamer start];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
     
@@ -954,14 +978,16 @@
 - (void)playAudio
 {
     _playPauseButton.selected = NO;
-    [self.audioStreamer start];
+//    [self.audioStreamer start];
+    [_gAudioStreamer start];
 
 }
 
 - (void)pauseAudio
 {
     _playPauseButton.selected = YES;
-    [self.audioStreamer stop];
+//    [self.audioStreamer stop];
+    [_gAudioStreamer stop];
 }
 
 
