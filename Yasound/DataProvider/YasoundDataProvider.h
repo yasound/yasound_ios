@@ -11,6 +11,7 @@
 #import "Radio.h"
 #import "WallEvent.h"
 #import "ApiKey.h"
+#import "RadioUser.h"
 
 typedef NSString* taskID;
 
@@ -52,9 +53,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector;
 - (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
 
-
-
-
+- (void)userRadioWithTarget:(id)target action:(SEL)selector;
 
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
@@ -65,11 +64,9 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)searchRadios:(NSString*)search withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 
-
-- (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;
-- (void)radioWithURL:(NSString*)url target:(id)target action:(SEL)selector;
-
-- (void)userRadioWithTarget:(id)target action:(SEL)selector;
+- (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)setMood:(RadioUserMood)mood forRadio:(Radio*)radio;
+- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite;
 
 - (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector;

@@ -17,6 +17,8 @@
 #import "YasoundDataProvider.h"
 #import "WallEvent.h"
 
+#import "RadioUser.h"
+
 //#define LOCAL 1 // use localhost as the server
 #define USE_FAKE_RADIO_URL 1
 
@@ -311,7 +313,7 @@
     //
     // data update timer
     //
-    _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];    
+    _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

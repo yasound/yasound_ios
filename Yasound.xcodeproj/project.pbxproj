@@ -19,6 +19,9 @@
 		40274BC71491288100F26008 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
 		40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
+		40F4C77414BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
+		40F4C77514BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
+		40F4C77614BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
@@ -831,6 +834,8 @@
 		40274B7F1491048900F26008 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
+		40F4C77214BB053100A163F9 /* RadioUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioUser.h; sourceTree = "<group>"; };
+		40F4C77314BB053100A163F9 /* RadioUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioUser.m; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
@@ -1338,6 +1343,8 @@
 				BC49890114A107DF00873381 /* WallEvent.m */,
 				BC49890214A107DF00873381 /* WallMessage.h */,
 				BC49890314A107DF00873381 /* WallMessage.m */,
+				40F4C77214BB053100A163F9 /* RadioUser.h */,
+				40F4C77314BB053100A163F9 /* RadioUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2816,6 +2823,7 @@
 				BC6314D314B4665200549EF6 /* RegExp.m in Sources */,
 				BC828AD714B49E9500763558 /* RootViewController.m in Sources */,
 				BCD8C7A314B4B59F009EAF61 /* YasoundSessionManager.m in Sources */,
+				40F4C77514BB053100A163F9 /* RadioUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2922,6 +2930,7 @@
 				BC6314D214B4665200549EF6 /* RegExp.m in Sources */,
 				BC828AD614B49E9500763558 /* RootViewController.m in Sources */,
 				BCD8C7A214B4B59F009EAF61 /* YasoundSessionManager.m in Sources */,
+				40F4C77414BB053100A163F9 /* RadioUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3027,6 +3036,7 @@
 				BC6314D414B4665200549EF6 /* RegExp.m in Sources */,
 				BC828AD814B49E9500763558 /* RootViewController.m in Sources */,
 				BCD8C7A414B4B59F009EAF61 /* YasoundSessionManager.m in Sources */,
+				40F4C77614BB053100A163F9 /* RadioUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
