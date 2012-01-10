@@ -52,7 +52,8 @@
 @property (nonatomic, retain) NSMutableArray* messages;
 @property (atomic, retain) NSMutableArray* statusMessages;
 
-@property (nonatomic, retain) AudioStreamer* audioStreamer;
+//LBDEBUG
+//@property (nonatomic, retain) AudioStreamer* audioStreamer;
 
 - (id)initWithRadio:(Radio*)radio;
 

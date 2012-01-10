@@ -14,6 +14,10 @@
 #import "ActivityAlertView.h"
 #import "YasoundDataProvider.h"
 
+
+//#define FORCE_ROOTVIEW_RADIOS
+
+
 @implementation RootViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -56,7 +60,15 @@
     {
         _firstTime = NO;
      
+#ifdef FORCE_ROOTVIEW_RADIOS
+        // add tabs
+        RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
+        [self.navigationController pushViewController:tabBarController animated:NO];    
+        [tabBarController release];
+#else
         [self loginProcess];
+#endif
+        
     }
 
 }
