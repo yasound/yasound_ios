@@ -95,10 +95,6 @@
     
     _cellWeekSelectorLabel.text = NSLocalizedString(@"StatsView_weekselector_label", nil);
     _cellMonthSelectorLabel.text = NSLocalizedString(@"StatsView_monthselector_label", nil);
-
-    Song* song = [[Song alloc] init];
-    song.id = [NSNumber numberWithInt:2];
-    [[YasoundDataProvider main] addSongToUserRadio:song];
 }
 
 - (void)viewDidUnload
