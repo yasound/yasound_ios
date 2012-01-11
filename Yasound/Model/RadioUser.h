@@ -10,15 +10,6 @@
 #import "Radio.h"
 #import "User.h"
 
-
-typedef enum  
-{
-    eMoodLike = 0,
-    eMoodNeutral = 1,
-    eMoodDislike = 2,
-    eMoodInvalid = 3,
-} RadioUserMood;
-
 @interface RadioUser : Model
 
 @property (retain) Radio* radio;
@@ -28,8 +19,8 @@ typedef enum
 @property (retain) NSNumber* connected;
 @property (retain) NSNumber* radio_selected;
 
-- (RadioUserMood)userMood;
-- (void)setUserMood:(RadioUserMood)m;
+- (UserMood)userMood;
+- (void)setUserMood:(UserMood)m;
 
 
 @end

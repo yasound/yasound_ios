@@ -17,7 +17,7 @@
 @synthesize connected;
 @synthesize radio_selected;
 
-- (RadioUserMood)userMood
+- (UserMood)userMood
 {
     if ([self.mood isEqualToString:@"L"])
         return eMoodLike;
@@ -29,7 +29,7 @@
     return eMoodInvalid;
 }
 
-- (void)setUserMood:(RadioUserMood)m
+- (void)setUserMood:(UserMood)m
 {
     switch (m) 
     {

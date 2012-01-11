@@ -74,7 +74,7 @@
 
     // likes
     self.radioLikes = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-    self.radioLikes.text = [NSString stringWithFormat:@"%d", [radio.likes integerValue]];
+    self.radioLikes.text = [NSString stringWithFormat:@"%d", [radio.favorites integerValue]];
     [self addSubview:self.radioLikes];
 
     // listeners
