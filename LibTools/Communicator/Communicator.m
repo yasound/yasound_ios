@@ -817,11 +817,9 @@
 
 - (ASIHTTPRequest*)postRequestForObject:(Model*)obj withURL:(NSString*)path absolute:(BOOL)isAbsolute withAuth:(Auth*)auth
 {
-    if (!obj)
-        return nil;
-    NSString* jsonDesc = [obj JSONRepresentation];
-    if (!jsonDesc)
-        return nil;
+    NSString* jsonDesc = nil;
+    if (obj)
+        jsonDesc = [obj JSONRepresentation];
     
     ASIHTTPRequest* req = [self postRequestForURL:path absolute:isAbsolute withStringData:jsonDesc withAuth:auth];
     return req;

@@ -1,21 +1,18 @@
 //
-//  RadioUser.m
+//  SongUser.m
 //  Yasound
 //
-//  Created by matthieu campion on 1/9/12.
+//  Created by matthieu campion on 1/11/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "RadioUser.h"
+#import "SongUser.h"
 
-@implementation RadioUser
+@implementation SongUser
 
-@synthesize radio;
+@synthesize song;
 @synthesize user;
 @synthesize mood;
-@synthesize favorite;
-@synthesize connected;
-@synthesize radio_selected;
 
 - (UserMood)userMood
 {

@@ -16,6 +16,9 @@ typedef enum
     eMoodInvalid = 3,
 } UserMood;
 
+NSString* usermoodToString(UserMood mood);
+UserMood stringToUsermood(NSString* str);
+
 @interface User : Model
 
 @property (retain, nonatomic) NSString* username;

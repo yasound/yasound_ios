@@ -9,7 +9,7 @@
 #import "YasoundDataProvider.h"
 
 
-#define USE_LOCAL_SERVER 0
+#define USE_LOCAL_SERVER 1
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"
@@ -643,6 +643,15 @@ static YasoundDataProvider* _main = nil;
     NSString* url = [NSString stringWithFormat:@"api/v1/song/%@/%@", song.id, moodStr];
     Auth* auth = self.apiKeyAuth;
     [_communicator postToURL:url absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];
+}
+
+- (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector
+{
+    if (!song || !song.id)
+        return;
+    NSString* url = [NSString stringWithFormat:@"api/v1/song/%@/song_user", song.id];
+    Auth* auth = self.apiKeyAuth;
+    [_communicator getObjectWithClass:[SongUser class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 

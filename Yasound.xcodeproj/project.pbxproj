@@ -22,6 +22,9 @@
 		40F4C77414BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
 		40F4C77514BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
 		40F4C77614BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
+		40F4C78B14BDF40F00A163F9 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
+		40F4C78C14BDF40F00A163F9 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
+		40F4C78D14BDF40F00A163F9 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
@@ -814,6 +817,8 @@
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
 		40F4C77214BB053100A163F9 /* RadioUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioUser.h; sourceTree = "<group>"; };
 		40F4C77314BB053100A163F9 /* RadioUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioUser.m; sourceTree = "<group>"; };
+		40F4C78914BDF40F00A163F9 /* SongUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongUser.h; sourceTree = "<group>"; };
+		40F4C78A14BDF40F00A163F9 /* SongUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUser.m; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
@@ -1321,6 +1326,8 @@
 				BC49890314A107DF00873381 /* WallMessage.m */,
 				40F4C77214BB053100A163F9 /* RadioUser.h */,
 				40F4C77314BB053100A163F9 /* RadioUser.m */,
+				40F4C78914BDF40F00A163F9 /* SongUser.h */,
+				40F4C78A14BDF40F00A163F9 /* SongUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2766,6 +2773,7 @@
 				40F4C77514BB053100A163F9 /* RadioUser.m in Sources */,
 				BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */,
 				BC27F36F14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
+				40F4C78C14BDF40F00A163F9 /* SongUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2875,6 +2883,7 @@
 				40F4C77414BB053100A163F9 /* RadioUser.m in Sources */,
 				BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */,
 				BC27F36E14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
+				40F4C78B14BDF40F00A163F9 /* SongUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2985,6 +2994,7 @@
 				40F4C77614BB053100A163F9 /* RadioUser.m in Sources */,
 				BC27F36314BDCAF800EF1C5F /* NowPlayingView.m in Sources */,
 				BC27F37014BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
+				40F4C78D14BDF40F00A163F9 /* SongUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

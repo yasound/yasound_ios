@@ -12,6 +12,7 @@
 #import "WallEvent.h"
 #import "ApiKey.h"
 #import "RadioUser.h"
+#import "SongUser.h"
 
 typedef NSString* taskID;
 
@@ -75,6 +76,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
 
 - (void)setMood:(UserMood)mood forSong:(Song*)song;
+- (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector;
 
 - (void)wallEventsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
