@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QualitySwitchLabel.h"
 
 typedef enum
 {
@@ -20,7 +20,7 @@ typedef enum
 
 @interface RadioSelectionViewController : UIViewController
 {
-  IBOutlet UILabel* _topBarLabel;
+  IBOutlet QualitySwitchLabel* _qualitySwitchLabel;
   IBOutlet UILabel* _topBarTitle;
   IBOutlet UILabel* _categoryTitle;
   

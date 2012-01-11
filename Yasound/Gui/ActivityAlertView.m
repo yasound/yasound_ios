@@ -16,6 +16,11 @@ static ActivityAlertView* _alertView = nil;
 
 + (void)showWithTitle:(NSString *)title 
 {
+    [ActivityAlertView showWithTitle:title closeAfterTimeInterval:0];
+}
+
++ (void)showWithTitle:(NSString *)title closeAfterTimeInterval:(NSTimeInterval)timeInterval
+{
     if (_alertView)
     {
         [_alertView close];
@@ -23,9 +28,16 @@ static ActivityAlertView* _alertView = nil;
     }
     
     _alertView = [[ActivityAlertView alloc] initWithTitle:title message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    if (title == nil)
+        _alertView.activityView.frame = CGRectMake(125, 20, 30, 30);
     
     _alertView.running = YES;
     [_alertView show];
+    
+    if (timeInterval > 0)
+    {
+        [NSTimer scheduledTimerWithTimeInterval:timeInterval target:_alertView selector:@selector(onStaticClose:) userInfo:nil repeats:NO];
+    }
 }
 
 
@@ -52,7 +64,9 @@ static ActivityAlertView* _alertView = nil;
 {
   if ((self = [super initWithFrame:frame]))
 	{
-    self.activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 55, 30, 30)];
+        CGRect activityFrame = CGRectMake(125, 55, 30, 30);
+        
+    self.activityView = [[UIActivityIndicatorView alloc] initWithFrame:activityFrame];
 		[self addSubview:activityView];
 		activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
 		[activityView startAnimating];
@@ -67,6 +81,11 @@ static ActivityAlertView* _alertView = nil;
 - (void) close
 {
 	[self dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+- (void)onStaticClose:(NSTimer*)timer
+{
+    [ActivityAlertView close];
 }
 
 - (void) dealloc

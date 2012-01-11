@@ -34,6 +34,9 @@
 		BC27F36E14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		BC27F36F14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		BC27F37014BDD87B00EF1C5F /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
+		BC27F37F14BE463600EF1C5F /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
+		BC27F38014BE463600EF1C5F /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
+		BC27F38114BE463600EF1C5F /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
 		BC49890414A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890514A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890614A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
@@ -827,6 +830,8 @@
 		BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingView.m; sourceTree = "<group>"; };
 		BC27F36C14BDD87B00EF1C5F /* TrackInteractionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInteractionView.h; sourceTree = "<group>"; };
 		BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInteractionView.m; sourceTree = "<group>"; };
+		BC27F37D14BE463600EF1C5F /* QualitySwitchLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QualitySwitchLabel.h; sourceTree = "<group>"; };
+		BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QualitySwitchLabel.m; sourceTree = "<group>"; };
 		BC4988F014A107DF00873381 /* ApiKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
 		BC4988F114A107DF00873381 /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
 		BC4988F414A107DF00873381 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
@@ -2020,6 +2025,8 @@
 		BCFECFE61468439900BA20D9 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
+				BC27F37D14BE463600EF1C5F /* QualitySwitchLabel.h */,
+				BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */,
 				BCD4C2C414695FCD000A236A /* ActivityAlertView.h */,
 				BCD4C2C514695FCD000A236A /* ActivityAlertView.m */,
 				BCFECFE71468439900BA20D9 /* MenuHeader.h */,
@@ -2774,6 +2781,7 @@
 				BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */,
 				BC27F36F14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78C14BDF40F00A163F9 /* SongUser.m in Sources */,
+				BC27F38014BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2884,6 +2892,7 @@
 				BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */,
 				BC27F36E14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78B14BDF40F00A163F9 /* SongUser.m in Sources */,
+				BC27F37F14BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2995,6 +3004,7 @@
 				BC27F36314BDCAF800EF1C5F /* NowPlayingView.m in Sources */,
 				BC27F37014BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78D14BDF40F00A163F9 /* SongUser.m in Sources */,
+				BC27F38114BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

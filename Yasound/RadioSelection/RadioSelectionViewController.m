@@ -63,7 +63,8 @@ static NSArray* gFakeUsers = nil;
   [super viewDidLoad];
 
   _topBarTitle.text = self.title;
-
+    [_qualitySwitchLabel loadView];
+    
   NSString* str;
   
   _currentStyle = @"style_all";

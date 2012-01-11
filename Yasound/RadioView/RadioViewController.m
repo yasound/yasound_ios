@@ -18,7 +18,7 @@
 #import "WallEvent.h"
 
 #import "RadioUser.h"
-
+#import "ActivityAlertView.h"
 
 //#define LOCAL 1 // use localhost as the server
 #define USE_FAKE_RADIO_URL 1
@@ -190,6 +190,13 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 //    [btn addTarget:self action:@selector(onEdit:) forControlEvents:UIControlEventTouchUpInside];
 //    [_headerView addSubview:btn];
 
+    //favorites button
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderFavoriteButton" error:nil];
+    UIButton* button = [sheet makeButton];
+    [button addTarget:self action:@selector(onFavorite:) forControlEvents:UIControlEventTouchUpInside];
+    [_headerView addSubview:button];
+    
+    
     //play pause button
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderPlayPauseFrame" error:nil];
     CGRect frame = sheet.frame;
@@ -290,8 +297,6 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     
     // get the actual data from the server to update the GUI
     [self onUpdate:nil];
-    
-    [self EXAMPLE_NOWPLAYING];
     
     //Make sure the system follows our playback status
     // <=> Background audio playing
@@ -1020,6 +1025,35 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 //{
 //    
 //}
+
+
+- (IBAction)onFavorite:(id)sender
+{
+    [ActivityAlertView showWithTitle:nil];
+    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoritesRadioReceived:)];
+}
+
+- (void)onFavoritesRadioReceived:(NSArray*)radios
+{
+    NSInteger currentRadioId = [self.radio.id integerValue];
+    
+    for (Radio* radio in radios)
+    {
+        if ([radio.id integerValue] == currentRadioId)
+        {
+            [ActivityAlertView close];
+            [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_alredy_added", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+            return;
+        }
+    }
+            
+    [ActivityAlertView close];
+    [[YasoundDataProvider main] setRadio:self.radio asFavorite:YES];
+
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_added", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+}
+
+
 
 - (IBAction) onPlayPause:(id)sender
 {
