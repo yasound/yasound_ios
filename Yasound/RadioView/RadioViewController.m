@@ -17,6 +17,9 @@
 #import "YasoundDataProvider.h"
 #import "WallEvent.h"
 
+#import "RadioUser.h"
+
+
 //#define LOCAL 1 // use localhost as the server
 #define USE_FAKE_RADIO_URL 1
 
@@ -24,8 +27,19 @@
 
 @implementation RadioViewController
 
+static AudioStreamer* _gAudioStreamer = nil;
+
+static Song* _gNowPlayingSong = nil;
+
+
+//LBDEBUG
+static int _fakeNowPlayingIndex = 0;
+static NSTimer* _fakeNowPlayingTimer = nil;
+
+
 @synthesize radio;
-@synthesize audioStreamer;
+//LBDEBUG
+//@synthesize audioStreamer;
 @synthesize messages;
 @synthesize statusMessages;
 
@@ -35,7 +49,9 @@
     self = [super init];
     if (self) 
     {
-        self.radio = radio;;
+        self.radio = radio;
+        
+        _trackInteractionViewDisplayed = NO;
 
         //LBDEBUG
 //        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
@@ -275,14 +291,30 @@
     // get the actual data from the server to update the GUI
     [self onUpdate:nil];
     
-//    [self EXAMPLE];
+    [self EXAMPLE_NOWPLAYING];
     
     //Make sure the system follows our playback status
     // <=> Background audio playing
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-    [[AVAudioSession sharedInstance] setActive: YES error: nil];    
+    [[AVAudioSession sharedInstance] setActive: YES error: nil];  
+    [[AVAudioSession sharedInstance] setDelegate: self];
 }
 
+
+#pragma mark - AVAudioSession Delegate
+
+- (void)beginInterruption
+{
+    [self pauseAudio];
+}
+
+- (void) endInterruptionWithFlags: (NSUInteger) flags
+{
+    if (flags & AVAudioSessionInterruptionFlags_ShouldResume)
+    {
+        [self playAudio];    
+    }
+}
 
 
 - (void)viewDidAppear:(BOOL)animated
@@ -292,13 +324,18 @@
 #else
     NSURL* radiourl = self.radio.url;
 #endif
+
+    //LBDEBUG
+    if (_gAudioStreamer != nil)
+    {
+        [_gAudioStreamer stop];
+        [_gAudioStreamer release];
+    }
     
-    
-    
-  self.audioStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
-    
-    [self.audioStreamer stop];
-    [self.audioStreamer start];
+    _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radiourl];
+    [_gAudioStreamer start];
+//  self.audioStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
+//    [self.audioStreamer start];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
     
@@ -311,7 +348,7 @@
     //
     // data update timer
     //
-    _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];    
+    _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -323,10 +360,24 @@
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [self resignFirstResponder];
     
-    [_timerUpdate invalidate];
-    [_timerFake invalidate];
-    _timerUpdate = nil;
-    _timerFake = nil;
+    if ((_timerUpdate != nil) && [_timerUpdate isValid])
+    {
+        [_timerUpdate invalidate];
+        _timerUpdate = nil;
+    }
+    
+    if ((_timerFake != nil) && [_timerFake isValid])
+    {
+        [_timerFake invalidate];
+        _timerFake = nil;
+    }
+
+    if ((_fakeNowPlayingTimer != nil) && [_fakeNowPlayingTimer isValid])
+    {
+        [_fakeNowPlayingTimer invalidate];
+        _fakeNowPlayingTimer = nil;
+    }
+
 }
 
 
@@ -394,21 +445,66 @@
 // EXAMPLE
 //
 
-- (void)EXAMPLE
+
+- (void)EXAMPLE_NOWPLAYING
 {
     //
     // NOW PLAYING
     //
     NSInteger randIndex = (rand() %5)+1;
     UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    [self setNowPlaying:@"Mon Titre à moi super remix de la mort" artist:@"Mon Artiste" image:image nbLikes:1234 nbDislikes:12345];
+    Song* song = [[Song alloc] init];
+    song.metadata = [[SongMetadata alloc] init];
+    song.metadata.name = @"Mon Titre à moi super remix de la mort";
+    song.metadata.artist_name = @"Mon Artiste";
     
+    NSLog(@"SONG '%@'  '%@'  ", song.metadata.name, song.metadata.artist_name);
+    
+//    song.metadata.image = image;
+    [self setNowPlaying:song];
+    
+    //fake LBDEBUG
+    _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
+}
+
+- (void)onFakeNowPlayingTick:(NSTimer*)timer
+{
+    NSInteger randIndex = (rand() %5)+1;
+    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+    
+    if (_fakeNowPlayingIndex)
+    {
+        _fakeNowPlayingIndex = 0;
+        Song* song = [[Song alloc] init];
+        song.metadata = [[SongMetadata alloc] init];
+        song.metadata.name = @"Mon Titre à moi super remix de la mort";
+        song.metadata.artist_name = @"Mon Artiste";
+        [self setNowPlaying:song];
+    }
+    else
+    {
+        _fakeNowPlayingIndex = 1;
+        Song* song = [[Song alloc] init];
+        song.metadata = [[SongMetadata alloc] init];
+        song.metadata.name = @"Shabada song (feat. Prince)";
+        song.metadata.artist_name = @"Macha Berger";
+        [self setNowPlaying:song];
+    }
+    
+    
+}
+
+
+
+- (void)EXAMPLE
+{
+
     
     //
     // MESSAGES
     //
-    randIndex = (rand() %5)+1;
-    image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+    NSInteger randIndex = (rand() %5)+1;
+    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
 //    [self addMessage:@"Vivamus sodales adipiscing sapien." user:@"Tancrède" avatar:image date:@"2011-07-09 20h30" silent:YES];
     
     randIndex = (rand() %5)+1;
@@ -588,7 +684,7 @@
   WallEvent* ev = [events objectAtIndex:0];
   if (_lastSongUpdateDate == nil || [ev.start_date compare:_lastSongUpdateDate] == NSOrderedDescending)
   {
-    [self setNowPlaying:ev.song.metadata.name artist:ev.song.metadata.artist_name image:nil nbLikes:0 nbDislikes:0];
+    [self setNowPlaying:ev.song];
     _lastSongUpdateDate = ev.start_date;
   }
   
@@ -614,75 +710,60 @@
 
 #pragma mark - Now Playing
 
-- (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes
+- (void)setNowPlaying:(Song*)song
 {
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-
-    CGRect frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
-    UIView* view = [[UIView alloc] initWithFrame:frame];
-                    
-    // header now playing bar track image 
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarImage" error:nil];
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = sheet.frame;
-    [view addSubview:imageView];
+    if (_gNowPlayingSong != nil)
+        [_gNowPlayingSong release];
     
-    // header now playing bar track image mask
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarMask" error:nil];
-    imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-    imageView.frame = sheet.frame;
-    [view addSubview:imageView];
+    _gNowPlayingSong = song;
+    [_gNowPlayingSong retain];
     
+    if (_trackInteractionViewDisplayed)
+        return;
     
-    // header now playing bar label
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLabel" error:nil];
-    UILabel* label = [sheet makeLabel];
-    [view addSubview:label];
-    
-    // header now playing bar artist
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarArtist" error:nil];
-    label = [sheet makeLabel];
-    label.text = artist;
-    [view addSubview:label];
-    
-    // header now playing bar title
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarTitle" error:nil];
-    label = [sheet makeLabel];
-    label.text = title;
-    [view addSubview:label];
-    
-    // header now playing bar likes image
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikesImage" error:nil];
-    imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-    imageView.frame = sheet.frame;
-    [view addSubview:imageView];
-    
-    // header now playing bar likes
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikes" error:nil];
-    label = [sheet makeLabel];
-    label.text = [NSString stringWithFormat:@"%d", nbLikes];
-    [view addSubview:label];
-    
-    // header now playing bar dislikes image
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikesImage" error:nil];
-    imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-    imageView.frame = sheet.frame;
-    [view addSubview:imageView];
-    
-    // header now playing bar dislikes
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikes" error:nil];
-    label = [sheet makeLabel];
-    label.text = [NSString stringWithFormat:@"%d", nbDislikes];
-    [view addSubview:label];
+    //LBDEBUG TODO : get image, likes dislikes from Song
+    NowPlayingView* view = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onNowPlayingTouched)];
     
     [UIView transitionWithView:_playingNowContainer
                       duration:0.5
                        options:UIViewAnimationOptionTransitionFlipFromRight
-                    animations:^{ [_playingNowView removeFromSuperview]; [_playingNowContainer addSubview:view]; }
-                    completion:NULL];
+                    animations:^{ [_playingNowView removeFromSuperview]; [_playingNowContainer addSubview:view]; _playingNowView = view; }
+                    completion:NULL];    
+}
+
+
+- (void)onNowPlayingTouched
+{
+    _trackInteractionViewDisplayed = YES;
     
-    _playingNowView = view;
+    //LBDEBUG
+    [_fakeNowPlayingTimer invalidate];
+    _fakeNowPlayingTimer = nil;
     
+    TrackInteractionView* view = [[TrackInteractionView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onTrackInteractionTouched)];
+
+    [UIView transitionWithView:_playingNowContainer
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{ [_playingNowView removeFromSuperview]; [_playingNowContainer addSubview:view]; _trackInteractionView = view; }
+                    completion:NULL];    
+}
+
+
+- (void)onTrackInteractionTouched
+{
+    _trackInteractionViewDisplayed = NO;
+    
+    NowPlayingView* view = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onNowPlayingTouched)];
+    
+    [UIView transitionWithView:_playingNowContainer
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{ [_trackInteractionView removeFromSuperview]; [_playingNowContainer addSubview:view]; _playingNowView = view; }
+                    completion:NULL];    
+  
+    //LBDEBUG
+     _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
 }
 
 
@@ -952,14 +1033,16 @@
 - (void)playAudio
 {
     _playPauseButton.selected = NO;
-    [self.audioStreamer start];
+//    [self.audioStreamer start];
+    [_gAudioStreamer start];
 
 }
 
 - (void)pauseAudio
 {
     _playPauseButton.selected = YES;
-    [self.audioStreamer stop];
+//    [self.audioStreamer stop];
+    [_gAudioStreamer stop];
 }
 
 

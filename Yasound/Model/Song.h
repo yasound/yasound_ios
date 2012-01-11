@@ -14,7 +14,6 @@
 
 @property (retain, nonatomic) NSNumber* song;
 @property (retain, nonatomic) SongMetadata* metadata;
-//@property (retain, nonatomic) Playlist* playlist;
 
 - (NSString*)toString;
 

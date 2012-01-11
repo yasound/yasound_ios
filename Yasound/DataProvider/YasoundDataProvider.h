@@ -11,6 +11,8 @@
 #import "Radio.h"
 #import "WallEvent.h"
 #import "ApiKey.h"
+#import "RadioUser.h"
+#import "SongUser.h"
 
 typedef NSString* taskID;
 
@@ -40,6 +42,7 @@ taskStatus stringToStatus(NSString* str);
 @property (readonly) NSHTTPCookie* appCookie;
 
 @property (readonly) User* user;
+@property (readonly) Radio* radio;
 
 + (YasoundDataProvider*) main;
 
@@ -52,9 +55,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector;
 - (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
 
-
-
-
+- (void)userRadioWithTarget:(id)target action:(SEL)selector;
 
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
@@ -65,24 +66,28 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)searchRadios:(NSString*)search withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 
-
-- (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;
-- (void)radioWithURL:(NSString*)url target:(id)target action:(SEL)selector;
-
-- (void)userRadioWithTarget:(id)target action:(SEL)selector;
+- (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)setMood:(UserMood)mood forRadio:(Radio*)radio;
+- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite;
 
 - (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
 
+- (void)setMood:(UserMood)mood forSong:(Song*)song;
+- (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector;
+
 - (void)wallEventsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
+- (void)addSongToUserRadio:(Song*)song;
 
 - (void)enterRadio:(Radio*)radio;
 - (void)leaveRadio:(Radio*)radio;

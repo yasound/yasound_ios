@@ -7,7 +7,6 @@
 //
 
 #import "YasoundDataProvider.h"
-#import "ApiKey.h"
 
 
 #define USE_LOCAL_SERVER 0
@@ -29,6 +28,7 @@
 @implementation YasoundDataProvider
 
 @synthesize user;
+@synthesize radio = _radio;
 
 static YasoundDataProvider* _main = nil;
 
@@ -63,9 +63,10 @@ static YasoundDataProvider* _main = nil;
         [resourceNames setObject:@"radio" forKey:[Radio class]];
         [resourceNames setObject:@"user" forKey:[User class]];
         [resourceNames setObject:@"wall_event" forKey:[WallEvent class]];
-        [resourceNames setObject:@"metadata" forKey:[SongMetadata class]];
-        [resourceNames setObject:@"song" forKey:[Song class]];
+//        [resourceNames setObject:@"metadata" forKey:[SongMetadata class]];
+//        [resourceNames setObject:@"song" forKey:[Song class]];
         [resourceNames setObject:@"api_key" forKey:[ApiKey class]];
+        [resourceNames setObject:@"radio_user" forKey:[RadioUser class]];
     }
     
     return self;
@@ -302,7 +303,7 @@ static YasoundDataProvider* _main = nil;
     }
     
     NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"creator=%@", _user.id]];
-    Auth* auth = nil;
+    Auth* auth = self.apiKeyAuth;
     NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
     [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveUserRadios:withInfo:) withUserData:data withAuth:auth];
 }
@@ -341,7 +342,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    Auth* auth = [self apiKeyAuth];
+    Auth* auth = self.apiKeyAuth;
     NSMutableArray* params = [NSMutableArray array];
     if (genre)
         [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
@@ -350,7 +351,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    Auth* auth = [self apiKeyAuth];
+    Auth* auth = self.apiKeyAuth;
     NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-overall_listening_time"];
     if (genre)
         [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
@@ -360,7 +361,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)selectedRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    Auth* auth = [self apiKeyAuth];
+    Auth* auth = self.apiKeyAuth;
     NSMutableArray* params = [NSMutableArray array];
     if (genre)
         [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
@@ -370,7 +371,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    Auth* auth = [self apiKeyAuth];
+    Auth* auth = self.apiKeyAuth;
     NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-created"];
     if (genre)
         [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
@@ -380,7 +381,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    Auth* auth = [self apiKeyAuth];
+    Auth* auth = self.apiKeyAuth;
     NSMutableArray* params = [NSMutableArray array];
     if (genre)
         [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
@@ -390,7 +391,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    Auth* auth = [self apiKeyAuth];
+    Auth* auth = self.apiKeyAuth;
     NSMutableArray* params = [NSMutableArray array];
     if (genre)
         [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
@@ -402,7 +403,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)searchRadios:(NSString*)search withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
-    Auth* auth = [self apiKeyAuth];
+    Auth* auth = self.apiKeyAuth;
     NSMutableArray* params = [NSMutableArray array];
     if (search)
         [params addObject:[NSString stringWithFormat:@"name__contains=%@", search]];
@@ -414,37 +415,26 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-
-
-
-- (void)radioWithID:(int)ID target:(id)target action:(SEL)selector;
-{
-    [_communicator getObjectWithClass:[Radio class] andID:[NSNumber numberWithInt:ID] notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
-}
-
-- (void)radioWithURL:(NSString*)url target:(id)target action:(SEL)selector
-{
-    [_communicator getObjectsWithClass:[WallEvent class] withURL:url absolute:YES notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
-}
-
-
 - (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
-    [_communicator updateObject:radio notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+    Auth* auth = self.apiKeyAuth;
+    [_communicator updateObject:radio notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
 - (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
+    Auth* auth = self.apiKeyAuth;
     NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/picture", radio.id];
-    [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+    [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
 {
+    Auth* auth = self.apiKeyAuth;
     NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
-    [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+    [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
@@ -455,15 +445,18 @@ static YasoundDataProvider* _main = nil;
 {
     if (radio == nil)
         return;
+    Auth* auth = self.apiKeyAuth;
     NSNumber* radioID = radio.id;
     NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
-    [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+    [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
     if (!message || !_user || !radio)
         return;
+    
+    Auth* auth = self.apiKeyAuth;
     
     WallEvent* msg = [[WallEvent alloc] init];
     msg.user = _user;
@@ -472,7 +465,7 @@ static YasoundDataProvider* _main = nil;
     msg.end_date = [NSDate date];
     msg.type = @"M";
     msg.text = message;
-    [_communicator postNewObject:msg notifyTarget:target byCalling:selector withUserData:nil withAuth:nil returnNewObject:NO withAuthForGET:nil];
+    [_communicator postNewObject:msg notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
 - (void)enterRadio:(Radio*)radio
@@ -480,59 +473,185 @@ static YasoundDataProvider* _main = nil;
     if (!_user || !radio)
         return;
     
-    NSLog(@"user '%@' joined radio '%@'", [_user toString], [radio toString]);
+    Auth* auth = self.apiKeyAuth;
+    
     WallEvent* e = [[WallEvent alloc] init];
     e.user = _user;
     e.radio = radio;
     e.type = @"J"; // joined
     e.start_date = [NSDate date];
     e.end_date = [NSDate date];
-    [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:nil returnNewObject:NO withAuthForGET:nil];
+    [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
 - (void)leaveRadio:(Radio*)radio
 {
     if (!_user || !radio)
         return;
-    NSLog(@"user '%@' left radio '%@'", [_user toString], [radio toString]);
+    
+    Auth* auth = self.apiKeyAuth;
+    
     WallEvent* e = [[WallEvent alloc] init];
     e.user = _user;
     e.radio = radio;
     e.type = @"L"; // left
     e.start_date = [NSDate date];
     e.end_date = [NSDate date];
-    [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:nil returnNewObject:NO withAuthForGET:nil];
+    [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
 
 
+- (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+    if (!radio || !radio.id)
+        return;
+    Auth* auth = self.apiKeyAuth;
+    NSNumber* radioID = radio.id;
+    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/favorite_user", radioID];
+    [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
 
 
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
-    if (radio == nil)
+    if (!radio || !radio.id)
         return;
+    Auth* auth = self.apiKeyAuth;
     NSNumber* radioID = radio.id;
-    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/likes", radioID];
-    [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/like_user", radioID];
+    [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
-    if (radio == nil)
+    if (radio == nil || !radio.id)
         return;
+    Auth* auth = self.apiKeyAuth;
     NSNumber* radioID = radio.id;
-    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/connected_users", radioID];
-    [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/connected_user", radioID];
+    [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
-    if (radio == nil)
+    if (radio == nil || !radio.id)
         return;
+    Auth* auth = self.apiKeyAuth;
     NSNumber* radioID = radio.id;
     NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/songs", radioID];
-    [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:nil];
+    [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+
+- (void)addSongToUserRadio:(Song*)song
+{
+    if (!song || !song.id || !self.radio || !self.radio.id)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    NSNumber* songID = song.id;
+    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/favorite_song", self.radio.id];
+    NSString* data = [NSString stringWithFormat:@"{\"id\":\"%@\"}", songID];
+
+    [_communicator postToURL:relativeUrl absolute:NO withStringData:data objectClass:[Song class] notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+}
+
+
+- (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+    if (!radio || !radio.id)
+        return;
+    NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/radio_user", radio.id];
+    Auth* auth = self.apiKeyAuth;
+    [_communicator getObjectWithClass:[RadioUser class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)setMood:(UserMood)mood forRadio:(Radio*)radio
+{
+    if (!radio || !radio.id)
+        return;
+    
+    NSString* moodStr;
+    switch (mood) 
+    {
+        case eMoodLike:
+            moodStr = @"liker";
+            break;
+            
+        case eMoodNeutral:
+            moodStr = @"neutral";
+            break;
+            
+        case eMoodDislike:
+            moodStr = @"disliker";
+            break;
+            
+        case eMoodInvalid:
+        default:
+            return;
+    }
+    
+    NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/%@", radio.id, moodStr];
+    Auth* auth = self.apiKeyAuth;
+    [_communicator postToURL:url absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];
+}
+
+- (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite
+{
+    if (!radio || !radio.id)
+        return;
+    
+    NSString* favoriteStr;
+    if (favorite)
+        favoriteStr = @"favorite";
+    else
+        favoriteStr = @"not_favorite";
+    
+    NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/%@", radio.id, favoriteStr];
+    Auth* auth = self.apiKeyAuth;
+    [_communicator postToURL:url absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];
+}
+
+
+
+- (void)setMood:(UserMood)mood forSong:(Song*)song
+{
+    if (!song || !song.id)
+        return;
+    
+    NSString* moodStr;
+    switch (mood) 
+    {
+        case eMoodLike:
+            moodStr = @"liker";
+            break;
+            
+        case eMoodNeutral:
+            moodStr = @"neutral";
+            break;
+            
+        case eMoodDislike:
+            moodStr = @"disliker";
+            break;
+            
+        case eMoodInvalid:
+        default:
+            return;
+    }
+    
+    NSString* url = [NSString stringWithFormat:@"api/v1/song/%@/%@", song.id, moodStr];
+    Auth* auth = self.apiKeyAuth;
+    [_communicator postToURL:url absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];
+}
+
+- (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector
+{
+    if (!song || !song.id)
+        return;
+    NSString* url = [NSString stringWithFormat:@"api/v1/song/%@/song_user", song.id];
+    Auth* auth = self.apiKeyAuth;
+    [_communicator getObjectWithClass:[SongUser class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
@@ -540,10 +659,11 @@ static YasoundDataProvider* _main = nil;
 {
     if (radio == nil)
         return;
+    Auth* auth = self.apiKeyAuth;
     NSNumber* radioID = radio.id;
     NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/playlists", radioID];
     NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", nil];
-    [_communicator postData:data withKey:@"playlists_data" toURL:relativeUrl absolute:NO notifyTarget:self byCalling:@selector(receiveUpdatePlaylistsResponse:withInfo:) withUserData:userData withAuth:nil];
+    [_communicator postData:data withKey:@"playlists_data" toURL:relativeUrl absolute:NO notifyTarget:self byCalling:@selector(receiveUpdatePlaylistsResponse:withInfo:) withUserData:userData withAuth:auth];
     
 }
 
@@ -579,9 +699,10 @@ static YasoundDataProvider* _main = nil;
     if (task_id == nil)
         return;
     
+    Auth* auth = self.apiKeyAuth;
     NSString* url = [NSString stringWithFormat:@"api/v1/task/%@", task_id];
     NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", nil];
-    [_communicator getURL:url absolute:NO notifyTarget:self byCalling:@selector(receiveTaskStatus:withInfo:) withUserData:userData withAuth:nil];
+    [_communicator getURL:url absolute:NO notifyTarget:self byCalling:@selector(receiveTaskStatus:withInfo:) withUserData:userData withAuth:auth];
 }
 
 - (void)receiveTaskStatus:(NSString*)response withInfo:(NSDictionary*)info

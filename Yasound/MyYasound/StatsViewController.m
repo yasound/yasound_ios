@@ -95,8 +95,6 @@
     
     _cellWeekSelectorLabel.text = NSLocalizedString(@"StatsView_weekselector_label", nil);
     _cellMonthSelectorLabel.text = NSLocalizedString(@"StatsView_monthselector_label", nil);
-
-
 }
 
 - (void)viewDidUnload

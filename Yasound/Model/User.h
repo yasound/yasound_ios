@@ -8,6 +8,17 @@
 
 #import "Model.h"
 
+typedef enum  
+{
+    eMoodLike = 0,
+    eMoodNeutral = 1,
+    eMoodDislike = 2,
+    eMoodInvalid = 3,
+} UserMood;
+
+NSString* usermoodToString(UserMood mood);
+UserMood stringToUsermood(NSString* str);
+
 @interface User : Model
 
 @property (retain, nonatomic) NSString* username;

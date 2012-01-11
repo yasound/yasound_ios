@@ -18,6 +18,7 @@
 @synthesize url;
 @synthesize playlists;
 @synthesize likes;
+@synthesize favorites;
 @synthesize listeners;
 @synthesize picture;
 @synthesize tags;

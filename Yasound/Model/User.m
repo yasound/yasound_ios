@@ -24,3 +24,38 @@
 }
 
 @end
+
+
+
+NSString* usermoodToString(UserMood mood)
+{
+    switch (mood) 
+    {
+        case eMoodLike:
+            return @"L";
+            
+        case eMoodNeutral:
+            return @"N";
+            
+        case eMoodDislike:
+            return @"D";
+            
+        case eMoodInvalid:
+        default:
+            break;
+    }
+    
+    return @"I";
+}
+
+UserMood stringToUsermood(NSString* str)
+{
+    if ([str isEqualToString:@"L"])
+        return eMoodLike;
+    if ([str isEqualToString:@"N"])
+        return eMoodNeutral;
+    else if ([str isEqualToString:@"D"])
+        return eMoodDislike;
+    
+    return eMoodInvalid;
+}

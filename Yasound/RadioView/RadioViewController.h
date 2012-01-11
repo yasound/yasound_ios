@@ -8,7 +8,8 @@
 #import <UIKit/UIKit.h>
 #import "WallMessage.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import "NowPlayingView.h"
+#import "TrackInteractionView.h"
 
 
 @class Radio;
@@ -22,7 +23,9 @@
     UITableView* _tableView;
     
     UIView* _playingNowContainer;
-    UIView* _playingNowView;
+    NowPlayingView* _playingNowView;
+    TrackInteractionView* _trackInteractionView;
+    BOOL _trackInteractionViewDisplayed;
     
     WebImageView* _radioImage;
     
@@ -52,7 +55,8 @@
 @property (nonatomic, retain) NSMutableArray* messages;
 @property (atomic, retain) NSMutableArray* statusMessages;
 
-@property (nonatomic, retain) AudioStreamer* audioStreamer;
+//LBDEBUG
+//@property (nonatomic, retain) AudioStreamer* audioStreamer;
 
 - (id)initWithRadio:(Radio*)radio;
 
