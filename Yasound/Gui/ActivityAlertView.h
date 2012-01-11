@@ -10,6 +10,7 @@
 @interface ActivityAlertView : UIAlertView
 {
 	UIActivityIndicatorView *activityView;
+    BOOL empty;
 }
 
 @property (nonatomic, retain) UIActivityIndicatorView *activityView;

@@ -18,7 +18,7 @@
 #import "WallEvent.h"
 
 #import "RadioUser.h"
-
+#import "ActivityAlertView.h"
 
 //#define LOCAL 1 // use localhost as the server
 #define USE_FAKE_RADIO_URL 1
@@ -190,6 +190,13 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 //    [btn addTarget:self action:@selector(onEdit:) forControlEvents:UIControlEventTouchUpInside];
 //    [_headerView addSubview:btn];
 
+    //favorites button
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderFavoriteButton" error:nil];
+    UIButton* button = [sheet makeButton];
+    [button addTarget:self action:@selector(onFavorite:) forControlEvents:UIControlEventTouchUpInside];
+    [_headerView addSubview:button];
+    
+    
     //play pause button
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderPlayPauseFrame" error:nil];
     CGRect frame = sheet.frame;
@@ -1020,6 +1027,38 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 //{
 //    
 //}
+
+
+- (IBAction)onFavorite:(id)sender
+{
+    [ActivityAlertView showWithTitle:nil];
+    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoritesRadioReceived:)];
+}
+
+- (void)onFavoritesRadioReceived:(NSArray*)radios
+{
+    NSInteger currentRadioId = [self.radio.id integerValue];
+    
+    for (Radio* radio in radios)
+    {
+        if ([radio.id integerValue] == currentRadioId)
+        {
+            [ActivityAlertView close];
+            UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"RadioView_favorite_alredy_added", nil) delegate:self
+                                                   cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil] autorelease];
+          [alert show];
+            return;
+        }
+    }
+            
+    [ActivityAlertView close];
+    [[YasoundDataProvider main] setRadio:self.radio asFavorite:YES];
+    UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"RadioView_favorite_added", nil) delegate:self
+                                           cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil] autorelease];
+    [alert show];
+}
+
+
 
 - (IBAction) onPlayPause:(id)sender
 {

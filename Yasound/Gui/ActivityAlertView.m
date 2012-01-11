@@ -23,6 +23,9 @@ static ActivityAlertView* _alertView = nil;
     }
     
     _alertView = [[ActivityAlertView alloc] initWithTitle:title message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    if (title == nil)
+        _alertView.activityView.frame = CGRectMake(125, 20, 30, 30);
+
     
     _alertView.running = YES;
     [_alertView show];
@@ -52,7 +55,9 @@ static ActivityAlertView* _alertView = nil;
 {
   if ((self = [super initWithFrame:frame]))
 	{
-    self.activityView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(125, 55, 30, 30)];
+        CGRect activityFrame = CGRectMake(125, 55, 30, 30);
+        
+    self.activityView = [[UIActivityIndicatorView alloc] initWithFrame:activityFrame];
 		[self addSubview:activityView];
 		activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
 		[activityView startAnimating];

@@ -84,11 +84,19 @@
     [[YasoundDataProvider main] addSongToUserRadio:_song];
 }
 
+- (NSString *)getUserCountry
+{
+    NSLocale *locale = [NSLocale currentLocale];
+    return [locale objectForKey: NSLocaleCountryCode];
+}
+
 - (void)onTrackBuy:(id)sender
 {
 //    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/com.apple.jingle.search.DirectAction/search?artist=Prince";
-//
-//    NSURL *url = [[NSURL alloc] initWithString:[buyString stringByAddingPercentEscapesUsingEncoding:NSASCIIS tringEncoding]];
+
+//    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?artistTerm
+//    
+//    NSURL* url = [[NSURL alloc] initWithString:[buyString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
 //    [[UIApplication sharedApplication] openURL:url];
 //    [url release];
 }

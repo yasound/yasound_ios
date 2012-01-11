@@ -185,6 +185,19 @@
 				<string>down</string>
 			</array>
 		</dict>
+		<key>RadioViewHeaderFavoriteButton</key>
+		<dict>
+			<key>x</key>
+			<integer>260</integer>
+			<key>y</key>
+			<integer>23</integer>
+			<key>name</key>
+			<string>FavoritesButton</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Header/Buttons</string>
+		</dict>
 		<key>RadioViewHeaderPlayPauseFrame</key>
 		<dict>
 			<key>x</key>
