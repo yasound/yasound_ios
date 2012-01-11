@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define ACTIVITYALERT_TIMEINTERVAL 2
+
 @interface ActivityAlertView : UIAlertView
 {
 	UIActivityIndicatorView *activityView;
@@ -17,6 +19,7 @@
 @property (nonatomic) BOOL running;
 
 + (void)showWithTitle:(NSString *)title;
++ (void)showWithTitle:(NSString *)title closeAfterTimeInterval:(NSTimeInterval)timeInterval;
 + (void)close;
 + (BOOL)isRunning;
 
@@ -25,3 +28,4 @@
 - (void)close;
 
 @end
+

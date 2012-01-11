@@ -298,8 +298,6 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     // get the actual data from the server to update the GUI
     [self onUpdate:nil];
     
-    [self EXAMPLE_NOWPLAYING];
-    
     //Make sure the system follows our playback status
     // <=> Background audio playing
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
@@ -1044,18 +1042,15 @@ static NSTimer* _fakeNowPlayingTimer = nil;
         if ([radio.id integerValue] == currentRadioId)
         {
             [ActivityAlertView close];
-            UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"RadioView_favorite_alredy_added", nil) delegate:self
-                                                   cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil] autorelease];
-          [alert show];
+            [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_alredy_added", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
             return;
         }
     }
             
     [ActivityAlertView close];
     [[YasoundDataProvider main] setRadio:self.radio asFavorite:YES];
-    UIAlertView* alert = [[[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"RadioView_favorite_added", nil) delegate:self
-                                           cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles: nil] autorelease];
-    [alert show];
+
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_added", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
 }
 
 
