@@ -152,13 +152,16 @@
     // update gui
     [self deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
     
-      // update tracks info display (order number...)
-      [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(onUpdateTrackAfterDelete:) userInfo:indexPath repeats:NO];
+//      // update tracks info display (order number...)
+//      [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(onUpdateTrackAfterDelete:) userInfo:indexPath repeats:NO];
+
+      [[YasoundDataProvider main] deleteNextSong:song target:self action:@selector(onUpdateTrack:info:)]; 
     
     return;
   }
   
 }
+
 
 
 
@@ -242,12 +245,15 @@
         // update gui
         [self moveRowAtIndexPath:_selectedIndexPath  toIndexPath:indexPath];
         
-        // update tracks info display (order number...)
-        [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(onUpdateTrack:) userInfo:_selectedIndexPath repeats:NO];
-        [NSTimer scheduledTimerWithTimeInterval:0.6 target:self selector:@selector(onUpdateTrack:) userInfo:indexPath repeats:NO];
-
-
+//        // update tracks info display (order number...)
+//        [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(onUpdateTrack:) userInfo:_selectedIndexPath repeats:NO];
+//        [NSTimer scheduledTimerWithTimeInterval:0.6 target:self selector:@selector(onUpdateTrack:) userInfo:indexPath repeats:NO];
         _selectedIndexPath = indexPath;
+        
+        [[YasoundDataProvider main] moveNextSong:song toPosition:indexPath.row target:self action:@selector(onUpdateTrack:info:)];   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
+        
+        // didDeleteNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
+
 
       done = YES;
     }
@@ -284,18 +290,19 @@
 
 
 
-- (void)onUpdateTrack:(NSTimer*)timer
+//- (void)onUpdateTrack:(NSTimer*)timer
+- (void)onUpdateTrack:(NSArray*)new_next_songs info:(NSDictionary*)info
 {
-    NSIndexPath* indexPath = timer.userInfo;
-    
-    NSLog(@"updateTrack %d", indexPath.row);
-    
-    UITableViewCell* cell = [self cellForRowAtIndexPath:indexPath];
-    NextSong* song = [_data objectAtIndex:indexPath.row];
-    
-    song.order = [NSNumber numberWithInteger:(indexPath.row +1)];
-    
-    [self reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    NSLog(@"onUpdateTrack");
+
+    [self onNextSongsReceived:new_next_songs]; 
+          
+//    UITableViewCell* cell = [self cellForRowAtIndexPath:indexPath];
+//    NextSong* song = [_data objectAtIndex:indexPath.row];
+//    
+//    song.order = [NSNumber numberWithInteger:(indexPath.row +1)];
+//    
+//    [self reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 
