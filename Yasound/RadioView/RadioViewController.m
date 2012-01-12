@@ -1271,6 +1271,8 @@ static Song* _gNowPlayingSong = nil;
     // downsize status bar : hide users
     if (_statusBarButtonToggled)
     {
+        _pageControl.hidden = NO;
+        
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButtonOff" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -1289,6 +1291,8 @@ static Song* _gNowPlayingSong = nil;
     // upsize status bar : show users
     else
     {
+        _pageControl.hidden = YES;
+        
         [self cleanStatusMessages];
         
         _statusBarButtonToggled = !_statusBarButtonToggled;
