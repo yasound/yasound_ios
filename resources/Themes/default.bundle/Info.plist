@@ -516,7 +516,7 @@
 			<key>x</key>
 			<integer>0</integer>
 			<key>y</key>
-			<integer>321</integer>
+			<integer>428</integer>
 			<key>name</key>
 			<string>StatusBar</string>
 			<key>type</key>
@@ -717,7 +717,7 @@
 			<key>width</key>
 			<integer>320</integer>
 			<key>height</key>
-			<integer>353</integer>
+			<integer>321</integer>
 		</dict>
 	</dict>
 </dict>

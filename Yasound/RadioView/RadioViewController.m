@@ -297,11 +297,11 @@ static Song* _gNowPlayingSong = nil;
     //
     // status bar
     //
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" error:nil];
-    _statusBar = [[UIView alloc] initWithFrame:sheet.frame];
-    UIImageView* statusBarBackground = [sheet makeImage];
-    statusBarBackground.frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
-    [_viewWall addSubview:_statusBar];
+    BundleStylesheet* sheetStatus = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" error:nil];
+    _statusBar = [[UIView alloc] initWithFrame:sheetStatus.frame];
+    UIImageView* statusBarBackground = [sheetStatus makeImage];
+    statusBarBackground.frame = CGRectMake(0, 0, sheetStatus.frame.size.width, sheetStatus.frame.size.height);
+    [self.view addSubview:_statusBar];
     [_statusBar addSubview:statusBarBackground];
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButton" error:nil];
@@ -313,6 +313,10 @@ static Song* _gNowPlayingSong = nil;
     // build dynamically
     _statusUsers = nil;
   
+    
+    
+    
+    
     
     
     //....................................................................................
@@ -343,18 +347,6 @@ static Song* _gNowPlayingSong = nil;
     
     
     
-    
-    
-    // -----------------------------
-    // page control
-    // -----------------------------
-    CGRect framePageControl = CGRectMake(0, frameChild.size.height - 36, frameChild.size.width, 36);
-    
-    _pageControl = [[UIPageControl alloc] initWithFrame:framePageControl];
-    _pageControl.numberOfPages = 2;
-    [_viewContainer addSubview:_pageControl];
-    
-    
     // -----------------------------
     // One finger, swipe left
     // -----------------------------
@@ -369,6 +361,18 @@ static Song* _gNowPlayingSong = nil;
     [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [_viewContainer addGestureRecognizer:swipeRight];
 
+    
+    
+    // -----------------------------
+    // page control
+    // -----------------------------
+    CGRect framePageControl = CGRectMake(0, sheetStatus.frame.origin.y, sheetStatus.frame.size.width, 36);
+    
+    _pageControl = [[UIPageControl alloc] initWithFrame:framePageControl];
+    _pageControl.numberOfPages = 2;
+    [self.view addSubview:_pageControl];
+    
+    
     
     // get the actual data from the server to update the GUI
     [self onUpdate:nil];
@@ -1158,6 +1162,7 @@ static Song* _gNowPlayingSong = nil;
     [UIView commitAnimations];   
     
     _viewTracksDisplayed = YES;
+    _pageControl = 1;
 }
 
 
@@ -1179,6 +1184,7 @@ static Song* _gNowPlayingSong = nil;
     [UIView commitAnimations];   
 
     _viewTracksDisplayed = NO;
+    _pageControl = 0;
 }
 
 
