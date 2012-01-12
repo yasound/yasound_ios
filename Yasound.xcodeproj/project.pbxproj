@@ -37,6 +37,9 @@
 		BC27F37F14BE463600EF1C5F /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
 		BC27F38014BE463600EF1C5F /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
 		BC27F38114BE463600EF1C5F /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
+		BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
+		BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
+		BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC49890414A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890514A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890614A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
@@ -832,6 +835,8 @@
 		BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInteractionView.m; sourceTree = "<group>"; };
 		BC27F37D14BE463600EF1C5F /* QualitySwitchLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QualitySwitchLabel.h; sourceTree = "<group>"; };
 		BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QualitySwitchLabel.m; sourceTree = "<group>"; };
+		BC27F39214BE598700EF1C5F /* YasoundReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundReachability.h; sourceTree = "<group>"; };
+		BC27F39314BE598700EF1C5F /* YasoundReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundReachability.m; sourceTree = "<group>"; };
 		BC4988F014A107DF00873381 /* ApiKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
 		BC4988F114A107DF00873381 /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
 		BC4988F414A107DF00873381 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
@@ -1199,6 +1204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC71F5DA147FEC6F00DAE4BD /* SystemConfiguration.framework in Frameworks */,
 				BC9522A414B70FE9001E1ACE /* AVFoundation.framework in Frameworks */,
 				BCDC97D314AB81EA00D54631 /* Accounts.framework in Frameworks */,
 				BCDC97D014AB81BF00D54631 /* Security.framework in Frameworks */,
@@ -1206,7 +1212,6 @@
 				BCDC97CD14AB818300D54631 /* libxml2.dylib in Frameworks */,
 				BCBAB48A14A22E3400CF922A /* libsqlite3.dylib in Frameworks */,
 				BC6ADD18149B9EDF00D00E5F /* MessageUI.framework in Frameworks */,
-				BC71F5DA147FEC6F00DAE4BD /* SystemConfiguration.framework in Frameworks */,
 				BC71F5DB147FEC6F00DAE4BD /* MobileCoreServices.framework in Frameworks */,
 				BC71F5DC147FEC6F00DAE4BD /* libz.dylib in Frameworks */,
 				BC71F5DD147FEC6F00DAE4BD /* CFNetwork.framework in Frameworks */,
@@ -1226,6 +1231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */,
 				BC9522A514B70FF2001E1ACE /* AVFoundation.framework in Frameworks */,
 				BCDC97DA14AB827200D54631 /* Accounts.framework in Frameworks */,
 				BCDC97DB14AB827200D54631 /* libxml2.dylib in Frameworks */,
@@ -1233,7 +1239,6 @@
 				BCDC97DD14AB827200D54631 /* Twitter.framework in Frameworks */,
 				BCBAB48C14A22E5000CF922A /* libsqlite3.dylib in Frameworks */,
 				BC6ADD1A149B9EEE00D00E5F /* MessageUI.framework in Frameworks */,
-				E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */,
 				E5280A58145F005B00A88910 /* MobileCoreServices.framework in Frameworks */,
 				E5280A56145EFFD900A88910 /* libz.dylib in Frameworks */,
 				E53A7AFF1456FAB800B74F84 /* CFNetwork.framework in Frameworks */,
@@ -1253,6 +1258,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5F3B8901498B88D008DD607 /* SystemConfiguration.framework in Frameworks */,
 				BC9522A614B70FF7001E1ACE /* AVFoundation.framework in Frameworks */,
 				BCDC97DE14AB828B00D54631 /* Accounts.framework in Frameworks */,
 				BCDC97DF14AB828B00D54631 /* libxml2.dylib in Frameworks */,
@@ -1260,7 +1266,6 @@
 				BCDC97E114AB828B00D54631 /* Twitter.framework in Frameworks */,
 				BCBAB48B14A22E4400CF922A /* libsqlite3.dylib in Frameworks */,
 				BC6ADD1B149B9EFF00D00E5F /* MessageUI.framework in Frameworks */,
-				E5F3B8901498B88D008DD607 /* SystemConfiguration.framework in Frameworks */,
 				E5F3B8911498B88D008DD607 /* MobileCoreServices.framework in Frameworks */,
 				E5F3B8921498B88D008DD607 /* libz.dylib in Frameworks */,
 				E5F3B8931498B88D008DD607 /* CFNetwork.framework in Frameworks */,
@@ -1336,6 +1341,16 @@
 			);
 			path = Model;
 			sourceTree = "<group>";
+		};
+		BC27F39114BE598700EF1C5F /* YasoundReachability */ = {
+			isa = PBXGroup;
+			children = (
+				BC27F39214BE598700EF1C5F /* YasoundReachability.h */,
+				BC27F39314BE598700EF1C5F /* YasoundReachability.m */,
+			);
+			name = YasoundReachability;
+			path = LibTools/YasoundReachability;
+			sourceTree = SOURCE_ROOT;
 		};
 		BC5EE20E147D3EB300A282A5 /* Radio Selection */ = {
 			isa = PBXGroup;
@@ -1504,6 +1519,7 @@
 		BCA2CCD6149A95460000637E /* LibTools */ = {
 			isa = PBXGroup;
 			children = (
+				BC27F39114BE598700EF1C5F /* YasoundReachability */,
 				BCDC97D414AB820500D54631 /* Security */,
 				BCDC979114AB7DD100D54631 /* SocialSessionManager */,
 				BCDC963B14AB7D5A00D54631 /* Version */,
@@ -2782,6 +2798,7 @@
 				BC27F36F14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78C14BDF40F00A163F9 /* SongUser.m in Sources */,
 				BC27F38014BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
+				BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2893,6 +2910,7 @@
 				BC27F36E14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78B14BDF40F00A163F9 /* SongUser.m in Sources */,
 				BC27F37F14BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
+				BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3005,6 +3023,7 @@
 				BC27F37014BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78D14BDF40F00A163F9 /* SongUser.m in Sources */,
 				BC27F38114BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
+				BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
