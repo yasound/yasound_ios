@@ -543,6 +543,17 @@ static YasoundDataProvider* _main = nil;
     [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
+- (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector
+{
+    if (!self.radio || !self.radio.id)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    NSNumber* radioID = self.radio.id;
+    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/next_songs", radioID];
+    [_communicator getObjectsWithClass:[NextSong class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
 
 - (void)addSongToUserRadio:(Song*)song
 {
