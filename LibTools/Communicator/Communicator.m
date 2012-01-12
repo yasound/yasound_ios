@@ -505,6 +505,7 @@
     }
     
     NSString* response = request.responseString;
+    NSLog(@"get all: response:\n%@", response);
     if (!response)
     {
         [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
@@ -781,8 +782,8 @@
 
 - (void)fillRequest:(ASIHTTPRequest*)request
 {
-    // #FIXME todo: remove this setting when the https certificate is ok
-    request.validatesSecureCertificate = FALSE;
+    // the https certificate seems to be ok but keep next line commented...
+//    request.validatesSecureCertificate = FALSE;
     
     if (self.appCookie)
     {

@@ -144,6 +144,8 @@
   {
       NextSong* song = [_data objectAtIndex:indexPath.row];
       
+      [[YasoundDataProvider main] moveNextSong:song toPosition:5 target:self action:@selector(didUpdateNextSong:withInfo:)];
+      
     NSLog(@"deleting '%@'", song.song.metadata.name);
 
     // update data
@@ -158,6 +160,17 @@
   
 }
 
+- (void)didUpdateNextSong:(NSArray*)nextSongs withInfo:(NSDictionary*)info
+{
+    NSError* error = [info valueForKey:@"error"];
+    if (error)
+    {
+        NSLog(@"next song update error %d - %@", error.code, error.domain);
+        return;
+    }
+    
+    NSLog(@"%d next songs", nextSongs.count);
+}
 
 
 

@@ -92,6 +92,11 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector;
 
+- (void)moveNextSong:(NextSong*)nextSong toPosition:(int)position target:(id)target action:(SEL)selector;
+- (void)deleteNextSong:(NextSong*)nextSong target:(id)target action:(SEL)selector;
+- (void)addSongToNextSongs:(Song*)song atPosition:(int)position target:(id)target action:(SEL)selector;
+
+
 - (void)enterRadio:(Radio*)radio;
 - (void)leaveRadio:(Radio*)radio;
 
