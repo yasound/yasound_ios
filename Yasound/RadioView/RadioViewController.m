@@ -373,6 +373,7 @@ static Song* _gNowPlayingSong = nil;
     
     _pageControl = [[UIPageControl alloc] initWithFrame:framePageControl];
     _pageControl.numberOfPages = 2;
+    _pageControl.userInteractionEnabled = NO;
     [self.view addSubview:_pageControl];
     
     
