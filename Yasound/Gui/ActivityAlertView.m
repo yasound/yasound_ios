@@ -36,7 +36,7 @@ static ActivityAlertView* _alertView = nil;
         CGSize suggestedSize = [title sizeWithFont:font constrainedToSize:CGSizeMake(200, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
 
         _alertView.activityView.frame = CGRectMake(125, suggestedSize.height + 30, 30, 30);
-}
+    }
     
     _alertView.running = YES;
     [_alertView show];

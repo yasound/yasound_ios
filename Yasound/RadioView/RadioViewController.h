@@ -67,7 +67,6 @@
 //@property (nonatomic, retain) AudioStreamer* audioStreamer;
 
 - (id)initWithRadio:(Radio*)radio;
-- (id)initWithRadio:(Radio*)radio ownRadio:(BOOL)ownRadio;
 - (void)initRadioView;
 
 - (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
