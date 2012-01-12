@@ -725,7 +725,7 @@ static Song* _gNowPlayingSong = nil;
         [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", ev.user.name]];
     }
   }
-  
+    
   _lastWallEventDate = (ev != nil) ? ev.start_date : nil;
   _lastConnectionUpdateDate = [NSDate date];
   
