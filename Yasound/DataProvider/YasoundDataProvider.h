@@ -13,6 +13,7 @@
 #import "ApiKey.h"
 #import "RadioUser.h"
 #import "SongUser.h"
+#import "NextSong.h"
 
 typedef NSString* taskID;
 
@@ -88,6 +89,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)addSongToUserRadio:(Song*)song;
+
+- (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector;
 
 - (void)enterRadio:(Radio*)radio;
 - (void)leaveRadio:(Radio*)radio;

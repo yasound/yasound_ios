@@ -9,7 +9,7 @@
 #import "YasoundDataProvider.h"
 
 
-#define USE_LOCAL_SERVER 1
+#define USE_LOCAL_SERVER 0
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"
@@ -541,6 +541,17 @@ static YasoundDataProvider* _main = nil;
     NSNumber* radioID = radio.id;
     NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/songs", radioID];
     [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector
+{
+    if (!self.radio || !self.radio.id)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    NSNumber* radioID = self.radio.id;
+    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/next_songs", radioID];
+    [_communicator getObjectsWithClass:[NextSong class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
