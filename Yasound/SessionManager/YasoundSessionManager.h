@@ -20,6 +20,9 @@
     NSMutableDictionary* _dico;
     id _target;
     SEL _action;
+
+    id _postTarget;
+    SEL _postAction;
 }
 
 @property (nonatomic) BOOL registered;
@@ -48,5 +51,8 @@
 - (void)registerForYasound:(NSString*)email withPword:(NSString*)pword;
 - (void)registerForFacebook; // login info are handle by SocialSessionManager
 - (void)registerForTwitter; // login info are handle by SocialSessionManager
+
+- (BOOL)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action;
+- (BOOL)postMessageForTwitter:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action;
 
 @end

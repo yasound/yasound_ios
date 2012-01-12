@@ -726,7 +726,14 @@ static Song* _gNowPlayingSong = nil;
     }
   }
   
-  _lastWallEventDate = (ev != nil) ? ev.start_date : nil;
+    if (ev != nil)
+    {
+        NSLog(@"ev.start_date %@", ev.start_date);
+        _lastWallEventDate = ev.start_date;
+    }
+    else
+        _lastWallEventDate = nil;
+    
   _lastConnectionUpdateDate = [NSDate date];
   
 //  [_tableView reloadData];
@@ -825,37 +832,62 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onNowPlayingTouched
 {
-    _trackInteractionViewDisplayed = YES;
-    
-    //LBDEBUG
-//    [_fakeNowPlayingTimer invalidate];
-//    _fakeNowPlayingTimer = nil;
-    
-    TrackInteractionView* view = [[TrackInteractionView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onTrackInteractionTouched)];
+    CGRect frame, playingNowFrame, viewContainerFrame;
+    BOOL callbackWhenStop = NO;
 
-    [UIView transitionWithView:_playingNowContainer
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^{ [_playingNowView removeFromSuperview]; [_playingNowContainer addSubview:view]; _trackInteractionView = view; }
-                    completion:NULL];    
+    // open the track interaction view
+    if (!_trackInteractionViewDisplayed)
+    {
+        _trackInteractionViewDisplayed = YES;
+
+        frame = _playingNowContainer.frame;
+        playingNowFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height *2);
+        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y + frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height - frame.size.height);
+        
+        _trackInteractionView = [[TrackInteractionView alloc] initWithSong:_gNowPlayingSong];
+        _trackInteractionView.frame = CGRectMake(0, frame.size.height, frame.size.width, frame.size.height);
+        _trackInteractionView.backgroundColor = [UIColor blackColor];
+        [_playingNowContainer addSubview:_trackInteractionView];
+
+    }
+
+    // close the track interaction view
+    else
+    {
+        _trackInteractionViewDisplayed = NO;
+        callbackWhenStop = YES;
+        
+        frame = _playingNowContainer.frame;
+        frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height /2);
+        playingNowFrame = frame;
+        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y - frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height + frame.size.height);
+    }
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration: 0.16];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    if (callbackWhenStop)
+    {
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(nowPlayingAnimationFinished:finished:context:)];
+    }
+
+    
+    _playingNowContainer.frame = playingNowFrame;
+    _viewContainer.frame = viewContainerFrame;
+    
+    [UIView commitAnimations];        
 }
 
 
-- (void)onTrackInteractionTouched
+
+- (void)nowPlayingAnimationFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-    _trackInteractionViewDisplayed = NO;
-    
-    NowPlayingView* view = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onNowPlayingTouched)];
-    
-    [UIView transitionWithView:_playingNowContainer
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^{ [_trackInteractionView removeFromSuperview]; [_playingNowContainer addSubview:view]; _playingNowView = view; }
-                    completion:NULL];    
-  
-    //LBDEBUG
-//     _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
+    [_trackInteractionView removeFromSuperview];
+    [_trackInteractionView release];
+    _trackInteractionView = nil;
 }
+
 
 
 
