@@ -33,8 +33,8 @@ static Song* _gNowPlayingSong = nil;
 
 
 //LBDEBUG
-static int _fakeNowPlayingIndex = 0;
-static NSTimer* _fakeNowPlayingTimer = nil;
+//static int _fakeNowPlayingIndex = 0;
+//static NSTimer* _fakeNowPlayingTimer = nil;
 
 
 @synthesize radio;
@@ -377,11 +377,11 @@ static NSTimer* _fakeNowPlayingTimer = nil;
         _timerFake = nil;
     }
 
-    if ((_fakeNowPlayingTimer != nil) && [_fakeNowPlayingTimer isValid])
-    {
-        [_fakeNowPlayingTimer invalidate];
-        _fakeNowPlayingTimer = nil;
-    }
+//    if ((_fakeNowPlayingTimer != nil) && [_fakeNowPlayingTimer isValid])
+//    {
+//        [_fakeNowPlayingTimer invalidate];
+//        _fakeNowPlayingTimer = nil;
+//    }
 
 }
 
@@ -451,53 +451,53 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 //
 
 
-- (void)EXAMPLE_NOWPLAYING
-{
-    //
-    // NOW PLAYING
-    //
-    NSInteger randIndex = (rand() %5)+1;
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    Song* song = [[Song alloc] init];
-    song.metadata = [[SongMetadata alloc] init];
-    song.metadata.name = @"Mon Titre à moi super remix de la mort";
-    song.metadata.artist_name = @"Mon Artiste";
-    
-    NSLog(@"SONG '%@'  '%@'  ", song.metadata.name, song.metadata.artist_name);
-    
-//    song.metadata.image = image;
-    [self setNowPlaying:song];
-    
-    //fake LBDEBUG
-    _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
-}
-
-- (void)onFakeNowPlayingTick:(NSTimer*)timer
-{
-    NSInteger randIndex = (rand() %5)+1;
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    
-    if (_fakeNowPlayingIndex)
-    {
-        _fakeNowPlayingIndex = 0;
-        Song* song = [[Song alloc] init];
-        song.metadata = [[SongMetadata alloc] init];
-        song.metadata.name = @"Mon Titre à moi super remix de la mort";
-        song.metadata.artist_name = @"Mon Artiste";
-        [self setNowPlaying:song];
-    }
-    else
-    {
-        _fakeNowPlayingIndex = 1;
-        Song* song = [[Song alloc] init];
-        song.metadata = [[SongMetadata alloc] init];
-        song.metadata.name = @"Shabada song (feat. Prince)";
-        song.metadata.artist_name = @"Macha Berger";
-        [self setNowPlaying:song];
-    }
-    
-    
-}
+//- (void)EXAMPLE_NOWPLAYING
+//{
+//    //
+//    // NOW PLAYING
+//    //
+//    NSInteger randIndex = (rand() %5)+1;
+//    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+//    Song* song = [[Song alloc] init];
+//    song.metadata = [[SongMetadata alloc] init];
+//    song.metadata.name = @"Mon Titre à moi super remix de la mort";
+//    song.metadata.artist_name = @"Mon Artiste";
+//    
+//    NSLog(@"SONG '%@'  '%@'  ", song.metadata.name, song.metadata.artist_name);
+//    
+////    song.metadata.image = image;
+//    [self setNowPlaying:song];
+//    
+//    //fake LBDEBUG
+//    _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
+//}
+//
+//- (void)onFakeNowPlayingTick:(NSTimer*)timer
+//{
+//    NSInteger randIndex = (rand() %5)+1;
+//    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+//    
+//    if (_fakeNowPlayingIndex)
+//    {
+//        _fakeNowPlayingIndex = 0;
+//        Song* song = [[Song alloc] init];
+//        song.metadata = [[SongMetadata alloc] init];
+//        song.metadata.name = @"Mon Titre à moi super remix de la mort";
+//        song.metadata.artist_name = @"Mon Artiste";
+//        [self setNowPlaying:song];
+//    }
+//    else
+//    {
+//        _fakeNowPlayingIndex = 1;
+//        Song* song = [[Song alloc] init];
+//        song.metadata = [[SongMetadata alloc] init];
+//        song.metadata.name = @"Shabada song (feat. Prince)";
+//        song.metadata.artist_name = @"Macha Berger";
+//        [self setNowPlaying:song];
+//    }
+//    
+//    
+//}
 
 
 
@@ -742,8 +742,8 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     _trackInteractionViewDisplayed = YES;
     
     //LBDEBUG
-    [_fakeNowPlayingTimer invalidate];
-    _fakeNowPlayingTimer = nil;
+//    [_fakeNowPlayingTimer invalidate];
+//    _fakeNowPlayingTimer = nil;
     
     TrackInteractionView* view = [[TrackInteractionView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onTrackInteractionTouched)];
 
@@ -768,7 +768,7 @@ static NSTimer* _fakeNowPlayingTimer = nil;
                     completion:NULL];    
   
     //LBDEBUG
-     _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
+//     _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
 }
 
 
