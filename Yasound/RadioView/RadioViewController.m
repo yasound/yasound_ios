@@ -335,7 +335,7 @@ static Song* _gNowPlayingSong = nil;
     frameChild = CGRectMake(frameChild.size.width, frameChild.origin.y, frameChild.size.width, frameChild.size.height);
     
     _viewTracks = [[TracksView alloc] initWithFrame:frameChild];
-    _viewTracks.backgroundColor = [UIColor blueColor];
+    _viewTracks.backgroundColor = [UIColor clearColor];
     [_viewContainer addSubview:_viewTracks];
     
     _viewTracksDisplayed = NO;
@@ -345,6 +345,14 @@ static Song* _gNowPlayingSong = nil;
     
     
     
+    // -----------------------------
+    // page control
+    // -----------------------------
+    CGRect framePageControl = CGRectMake(0, frameChild.size.height - 36, frameChild.size.width, 36);
+    
+    _pageControl = [[UIPageControl alloc] initWithFrame:framePageControl];
+    _pageControl.numberOfPages = 2;
+    [_viewContainer addSubview:_pageControl];
     
     
     // -----------------------------

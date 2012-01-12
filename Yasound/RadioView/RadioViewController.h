@@ -35,6 +35,8 @@
     UIScrollView* _statusUsers;
     
     UIView* _viewContainer;
+    UIPageControl* _pageControl;
+    
     UIView* _viewWall;
     TracksView* _viewTracks;
     BOOL _viewTracksDisplayed;
