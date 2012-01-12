@@ -64,9 +64,11 @@ static YasoundDataProvider* _main = nil;
         [resourceNames setObject:@"user" forKey:[User class]];
         [resourceNames setObject:@"wall_event" forKey:[WallEvent class]];
 //        [resourceNames setObject:@"metadata" forKey:[SongMetadata class]];
-//        [resourceNames setObject:@"song" forKey:[Song class]];
+        [resourceNames setObject:@"song" forKey:[Song class]];
         [resourceNames setObject:@"api_key" forKey:[ApiKey class]];
         [resourceNames setObject:@"radio_user" forKey:[RadioUser class]];
+        [resourceNames setObject:@"song_user" forKey:[SongUser class]];
+        [resourceNames setObject:@"next_song" forKey:[NextSong class]];
     }
     
     return self;
@@ -543,6 +545,111 @@ static YasoundDataProvider* _main = nil;
     [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
+- (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector
+{
+    if (!self.radio || !self.radio.id)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    NSNumber* radioID = self.radio.id;
+    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/next_songs", radioID];
+    [_communicator getObjectsWithClass:[NextSong class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)moveNextSong:(NextSong*)nextSong toPosition:(int)position target:(id)target action:(SEL)selector
+{
+    if (!nextSong || !nextSong.id)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    int order = position + 1;
+    nextSong.order = [NSNumber numberWithInt:order];
+    NSMutableDictionary* userData = [[NSMutableDictionary alloc] init];
+    [userData setValue:target forKey:@"clientTarget"];
+    [userData setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
+    [_communicator updateObject:nextSong notifyTarget:self byCalling:@selector(didUpdateNextSong:withInfo:) withUserData:userData withAuth:auth];
+}
+
+- (void)didUpdateNextSong:(NextSong*)nextSong withInfo:(NSDictionary*)info
+{
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"clientTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    
+    NSError* error = [info valueForKey:@"error"];
+    if (error)
+    {
+        if (target && selector)
+            [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
+        return;
+    }
+    
+    [self nextSongsForUserRadioWithTarget:target action:selector];
+}
+
+- (void)deleteNextSong:(NextSong*)nextSong target:(id)target action:(SEL)selector
+{
+    if (!nextSong || !nextSong.id)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    NSMutableDictionary* userData = [[NSMutableDictionary alloc] init];
+    [userData setValue:target forKey:@"clientTarget"];
+    [userData setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
+    [_communicator deleteObject:nextSong notifyTarget:self byCalling:@selector(didDeleteNextSong:withInfo:) withUserData:userData withAuth:auth];
+}
+
+- (void)didDeleteNextSong:(NextSong*)nextSong withInfo:(NSDictionary*)info
+{
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"clientTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    
+    NSError* error = [info valueForKey:@"error"];
+    if (error)
+    {
+        if (target && selector)
+            [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
+        return;
+    }
+    
+    [self nextSongsForUserRadioWithTarget:target action:selector];
+}
+
+
+- (void)addSongToNextSongs:(Song*)song atPosition:(int)position target:(id)target action:(SEL)selector
+{
+    if (!song || !song.id)
+        return;
+    
+    NextSong* nextSong = [[NextSong alloc] init];
+    nextSong.radio = self.radio;
+    nextSong.song = song;
+    nextSong.order = [NSNumber numberWithInt:position];
+    
+    Auth* auth = self.apiKeyAuth;
+    NSMutableDictionary* userData = [[NSMutableDictionary alloc] init];
+    [userData setValue:target forKey:@"clientTarget"];
+    [userData setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
+    [_communicator postNewObject:nextSong notifyTarget:self byCalling:@selector(didCreateNextSong:withInfo:) withUserData:userData withAuth:auth returnNewObject:NO withAuthForGET:nil];
+}
+
+- (void)didCreateNextSong:(NSString*)location withInfo:(NSDictionary*)info
+{
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"clientTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    
+    NSError* error = [info valueForKey:@"error"];
+    if (error)
+    {
+        if (target && selector)
+            [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
+        return;
+    }
+    
+    [self nextSongsForUserRadioWithTarget:target action:selector];
+}
 
 - (void)addSongToUserRadio:(Song*)song
 {
@@ -661,7 +768,7 @@ static YasoundDataProvider* _main = nil;
         return;
     Auth* auth = self.apiKeyAuth;
     NSNumber* radioID = radio.id;
-    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/playlists", radioID];
+    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/playlists_update", radioID];
     NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", nil];
     [_communicator postData:data withKey:@"playlists_data" toURL:relativeUrl absolute:NO notifyTarget:self byCalling:@selector(receiveUpdatePlaylistsResponse:withInfo:) withUserData:userData withAuth:auth];
     

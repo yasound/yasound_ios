@@ -30,6 +30,13 @@ static ActivityAlertView* _alertView = nil;
     _alertView = [[ActivityAlertView alloc] initWithTitle:title message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
     if (title == nil)
         _alertView.activityView.frame = CGRectMake(125, 20, 30, 30);
+    else
+    {
+        UIFont* font = [UIFont boldSystemFontOfSize:16];
+        CGSize suggestedSize = [title sizeWithFont:font constrainedToSize:CGSizeMake(200, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+
+        _alertView.activityView.frame = CGRectMake(125, suggestedSize.height + 30, 30, 30);
+}
     
     _alertView.running = YES;
     [_alertView show];

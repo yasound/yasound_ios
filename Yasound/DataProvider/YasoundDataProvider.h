@@ -13,6 +13,7 @@
 #import "ApiKey.h"
 #import "RadioUser.h"
 #import "SongUser.h"
+#import "NextSong.h"
 
 typedef NSString* taskID;
 
@@ -88,6 +89,20 @@ taskStatus stringToStatus(NSString* str);
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)addSongToUserRadio:(Song*)song;
+
+- (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector;
+
+
+//
+//  NextSong editing
+//
+//  all the callback functions for these actions give an array with the NextSong objects with the right 'order' values
+//  since an action on one object affects the 'order' values of all the others
+//
+- (void)moveNextSong:(NextSong*)nextSong toPosition:(int)position target:(id)target action:(SEL)selector;   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
+- (void)deleteNextSong:(NextSong*)nextSong target:(id)target action:(SEL)selector;                          // didDeleteNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
+- (void)addSongToNextSongs:(Song*)song atPosition:(int)position target:(id)target action:(SEL)selector;     // didAddNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
+
 
 - (void)enterRadio:(Radio*)radio;
 - (void)leaveRadio:(Radio*)radio;

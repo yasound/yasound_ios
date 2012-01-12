@@ -82,7 +82,7 @@
 						<string key="NSFrameSize">{320, 65}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="711188353"/>
+						<reference key="NSNextKeyView" ref="1038295178"/>
 						<string key="NSReuseIdentifierKey">_NS:567</string>
 						<int key="IBUIContentMode">5</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -208,7 +208,7 @@
 							<string key="NSResourceName">categoryShadow.png</string>
 						</object>
 					</object>
-					<object class="IBUIView" id="711188353">
+					<object class="IBUIView" id="1038295178">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{3, 0}, {140, 16}}</string>
@@ -4787,7 +4787,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">_qualitySwitchLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="711188353"/>
+						<reference key="destination" ref="1038295178"/>
 					</object>
 					<int key="connectionID">34</int>
 				</object>
@@ -4836,7 +4836,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<reference ref="213891644"/>
 							<reference ref="41292985"/>
 							<reference ref="891695402"/>
-							<reference ref="711188353"/>
+							<reference ref="1038295178"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -4914,7 +4914,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">33</int>
-						<reference key="object" ref="711188353"/>
+						<reference key="object" ref="1038295178"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>

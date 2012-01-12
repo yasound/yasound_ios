@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "NowPlayingView.h"
 #import "TrackInteractionView.h"
-
+#import "TracksView.h"
 
 @class Radio;
 @class AudioStreamer;
@@ -33,6 +33,13 @@
     UIButton* _statusBarButton;
     BOOL _statusBarButtonToggled;
     UIScrollView* _statusUsers;
+    
+    UIView* _viewContainer;
+    UIPageControl* _pageControl;
+    
+    UIView* _viewWall;
+    TracksView* _viewTracks;
+    BOOL _viewTracksDisplayed;
 
     NSDate* _lastWallEventDate;
     NSDate* _lastConnectionUpdateDate;
@@ -52,6 +59,7 @@
 }
 
 @property (nonatomic, retain) Radio* radio;
+@property (nonatomic) BOOL ownRadio;
 @property (nonatomic, retain) NSMutableArray* messages;
 @property (atomic, retain) NSMutableArray* statusMessages;
 
@@ -59,6 +67,8 @@
 //@property (nonatomic, retain) AudioStreamer* audioStreamer;
 
 - (id)initWithRadio:(Radio*)radio;
+- (id)initWithRadio:(Radio*)radio ownRadio:(BOOL)ownRadio;
+- (void)initRadioView;
 
 - (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
 - (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent;

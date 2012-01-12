@@ -10,32 +10,29 @@
 #import "Theme.h"
 #import "YasoundDataProvider.h"
 #import "ActivityAlertView.h"
+#import "SessionManager.h"
+#import "YasoundSessionManager.h"
+
 
 @implementation TrackInteractionView
 
 
-- (id)initWithSong:(Song*)song target:(id)target action:(SEL)action
+- (id)initWithSong:(Song*)song
 {
     if (self = [super init])
     {
-        _target = target;
-        _action = action;
         _song = song;
         [_song retain];
+        _sharing = NO;
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TrackInteraction" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        
-        CGRect frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
-        self.frame = frame;
+//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TrackInteraction" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        
+//        CGRect frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
+//        self.frame = frame;
         
         UIButton* btn  = nil;
         
-        sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonExit" error:nil];
-        btn = [sheet makeButton];
-        [btn addTarget:self action:@selector(onTrackExit:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:btn];
-
-        sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonLike" error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonLike" error:nil];
         btn = [sheet makeButton];
         [btn addTarget:self action:@selector(onTrackLike:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
@@ -53,6 +50,11 @@
         sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonBuy" error:nil];
         btn = [sheet makeButton];
         [btn addTarget:self action:@selector(onTrackBuy:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btn];
+
+        sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonShare" error:nil];
+        btn = [sheet makeButton];
+        [btn addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
 
         
@@ -105,15 +107,82 @@
 }
 
 
-- (void)onTrackExit:(id)sender
+#define TIMEOUT_FOR_SHARING 8
+
+- (void)onTrackShare:(id)sender
 {
-    [_target performSelector:_action];
+    NSString* message = @"message_test2";
+    NSString* title = @"title_test2";
+    NSURL* pictureURL = nil;
+    
+    
+    if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    {
+        _sharing = YES;
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_share_facebook", nil)];
+        [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_FOR_SHARING target:self selector:@selector(onSharingTimeout:) userInfo:nil repeats:NO];
+
+        [[YasoundSessionManager main] postMessageForFacebook:message title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
+    }
+
+    else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    {
+        _sharing = YES;
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_share_twitter", nil)];
+        [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_FOR_SHARING target:self selector:@selector(onSharingTimeout:) userInfo:nil repeats:NO];
+
+        [[YasoundSessionManager main] postMessageForTwitter:message title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
+    }
+    
+    //    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/com.apple.jingle.search.DirectAction/search?artist=Prince";
+    
+    //    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?artistTerm
+    //    
+    //    NSURL* url = [[NSURL alloc] initWithString:[buyString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    //    [[UIApplication sharedApplication] openURL:url];
+    //    [url release];
+}
+
+
+
+- (void)onSharingTimeout:(NSTimer*)timer
+{
+    if (_sharing)
+    {
+        _sharing = NO;
+        [ActivityAlertView close];
+        // don't say anything since we don't why the postMessage request did not callback
+    }
+}
+
+- (void)onPostMessageFinished:(NSNumber*)finished
+{
+    if (!_sharing)
+        return;
+    
+    _sharing = NO;
+    [ActivityAlertView close];
+    BOOL done = [finished boolValue];
+    
+    if (!done)
+    {
+        UIAlertView *av;
+        
+        if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+            av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"RadioView_track_share_error", nil) message:NSLocalizedString(@"RadioView_track_share_facebook_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+            av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"RadioView_track_share_error", nil) message:NSLocalizedString(@"RadioView_track_share_twitter_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            
+        [av show];
+        [av release];  
+        return;    
+    }
 }
 
 
 
 
-#pragma mark - touches actions
+//#pragma mark - touches actions
 
 
 
@@ -146,8 +215,4 @@
 
 
 @end
-
-
-
-
 

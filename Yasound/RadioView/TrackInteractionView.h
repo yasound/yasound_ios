@@ -11,12 +11,12 @@
 
 @interface TrackInteractionView : UIView
 {
-    id _target;
-    SEL _action;
     Song* _song;
+    
+    BOOL _sharing;
 }
 
-- (id)initWithSong:(Song*)song target:(id)target action:(SEL)action;
+- (id)initWithSong:(Song*)song;
 
 @end
 

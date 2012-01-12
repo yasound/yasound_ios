@@ -377,7 +377,7 @@
 			<key>x</key>
 			<integer>0</integer>
 			<key>y</key>
-			<integer>107</integer>
+			<integer>0</integer>
 			<key>width</key>
 			<integer>320</integer>
 			<key>height</key>
@@ -390,7 +390,7 @@
 			<key>x</key>
 			<integer>4</integer>
 			<key>y</key>
-			<integer>111</integer>
+			<integer>4</integer>
 			<key>width</key>
 			<integer>312</integer>
 			<key>height</key>
@@ -413,7 +413,7 @@
 			<key>x</key>
 			<integer>0</integer>
 			<key>y</key>
-			<integer>137</integer>
+			<integer>30</integer>
 			<key>width</key>
 			<integer>320</integer>
 			<key>height</key>
@@ -643,14 +643,14 @@
 			<key>height</key>
 			<integer>48</integer>
 		</dict>
-		<key>TrackInteractionButtonExit</key>
+		<key>TrackInteractionButtonShare</key>
 		<dict>
 			<key>x</key>
-			<integer>0</integer>
+			<integer>264</integer>
 			<key>y</key>
 			<integer>3</integer>
 			<key>name</key>
-			<string>btnExit</string>
+			<string>btnShare</string>
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>
@@ -659,7 +659,7 @@
 		<key>TrackInteractionButtonLike</key>
 		<dict>
 			<key>x</key>
-			<integer>66</integer>
+			<integer>0</integer>
 			<key>y</key>
 			<integer>3</integer>
 			<key>name</key>
@@ -672,7 +672,7 @@
 		<key>TrackInteractionButtonDislike</key>
 		<dict>
 			<key>x</key>
-			<integer>132</integer>
+			<integer>66</integer>
 			<key>y</key>
 			<integer>3</integer>
 			<key>name</key>
@@ -685,7 +685,7 @@
 		<key>TrackInteractionButtonAdd</key>
 		<dict>
 			<key>x</key>
-			<integer>198</integer>
+			<integer>132</integer>
 			<key>y</key>
 			<integer>3</integer>
 			<key>name</key>
@@ -698,7 +698,7 @@
 		<key>TrackInteractionButtonBuy</key>
 		<dict>
 			<key>x</key>
-			<integer>264</integer>
+			<integer>198</integer>
 			<key>y</key>
 			<integer>3</integer>
 			<key>name</key>
@@ -707,6 +707,17 @@
 			<string>png</string>
 			<key>path</key>
 			<string>images/Header/Buttons</string>
+		</dict>
+		<key>ViewContainer</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>107</integer>
+			<key>width</key>
+			<integer>320</integer>
+			<key>height</key>
+			<integer>321</integer>
 		</dict>
 	</dict>
 </dict>

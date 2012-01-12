@@ -219,107 +219,10 @@ static YasoundSessionManager* _main = nil;
 
 
 
-#pragma mark - SessionDelegate
-
-- (void)sessionDidLogin:(BOOL)authorized
-{
-    NSLog(@"self.loginType %@", self.loginType);
-
-    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
-    {
-        [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
-    }
-    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
-    {
-        [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
-    }
-}
 
 
-- (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error errorMessage:(NSString*)errorMessage
-{
-    if (requestType != SRequestInfoUser)
-    {
-        NSLog(@"requestDidFailed error : unexpected requestType!");
-        return;
-    }
-        
-    NSLog(@"requestDidFailed : could not get user info.");
-    
-    NSLog(@"%@", [error localizedDescription]);
-    NSLog(@"%@", [error description]);
-    NSLog(@"%@", errorMessage);
-    
-    self.loginType = nil;
-    [self loginError];
-}
 
 
-- (void)requestDidLoad:(SessionRequestType)requestType data:(NSArray*)data;
-{
-    if (requestType != SRequestInfoUser)
-    {
-        NSLog(@"requestDidFailed error : unexpected requestType!");
-        return;
-    }
-
-    if ([data count] == 0)
-    {
-        NSLog(@"requestDidLoad SRequestInfoUser error : no info.");
-        self.loginType = nil;
-        [self loginError];
-        return;
-    }
-        
-    NSDictionary* dico = [data objectAtIndex:0];
-
-    NSString* username = [dico valueForKey:DATA_FIELD_USERNAME];
-    NSString* uid = [dico valueForKey:DATA_FIELD_ID];
-    NSString* token = [dico valueForKey:DATA_FIELD_TOKEN];
-    NSString* email = [dico valueForKey:DATA_FIELD_EMAIL];
-    
-    NSLog(@"ready to request social login to the server with : ");
-    NSLog(@"username '%@'", username);
-    NSLog(@"uid '%@'", uid);
-    NSLog(@"token '%@'", token);
-    NSLog(@"email '%@'", email);
-    
-    // TAG ACTIVITY ALERT
-    if (![ActivityAlertView isRunning])
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
-    
-
-    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
-    {
-        NSLog(@"facebook social login request");
-        
-        [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token email:email target:self action:@selector(loginSocialValidated:info:)];
-    }
-    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
-    {
-        NSLog(@"twitter social login request");
-        
-        NSString* tokenSecret = [dico valueForKey:DATA_FIELD_TOKEN_SECRET];
-
-        [[YasoundDataProvider main] loginTwitter:username type:@"twitter" uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(loginSocialValidated:info:)];
-    }
-
-}
-
-
-- (void)sessionLoginFailed
-{
-    self.loginType = nil;
-    [self loginError];
-}
-
-
-- (void)sessionDidLogout
-{
-    // callback
-    assert(_target);
-    [_target performSelector:_action];
-}
 
 
 
@@ -366,6 +269,8 @@ static YasoundSessionManager* _main = nil;
 
 - (void)loginError
 {
+    [ActivityAlertView close];
+    
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [av show];
     [av release];  
@@ -463,10 +368,180 @@ static YasoundSessionManager* _main = nil;
 
 
 
+#pragma mark - post Messages
+
+
+- (BOOL)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action
+{
+    _postTarget = target;
+    _postAction = action;
+    [[FacebookSessionManager facebook] requestPostMessage:message title:title picture:pictureUrl];
+}
+
+
+
+- (BOOL)postMessageForTwitter:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action
+{
+    _postTarget = target;
+    _postAction = action;
+    [[TwitterSessionManager twitter] requestPostMessage:message title:title picture:pictureUrl];
+}
 
 
 
 
+
+
+
+
+
+
+
+
+#pragma mark - SessionDelegate
+
+- (void)sessionDidLogin:(BOOL)authorized
+{
+    NSLog(@"self.loginType %@", self.loginType);
+    
+    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    {
+        [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
+    }
+    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    {
+        [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
+    }
+}
+
+
+- (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error errorMessage:(NSString*)errorMessage
+{
+    if (requestType == SRequestInfoUser)
+    {
+        NSLog(@"requestDidFailed : could not get user info.");
+
+        NSLog(@"%@", [error localizedDescription]);
+        NSLog(@"%@", [error description]);
+        NSLog(@"%@", errorMessage);
+
+        self.loginType = nil;
+        [self loginError];
+        return;
+    }
+    
+    
+    if (requestType == SRequestPostMessage)
+    {
+        NSLog(@"requestDidFailed : could not post message.");
+        
+        NSLog(@"%@", [error localizedDescription]);
+        NSLog(@"%@", [error description]);
+        NSLog(@"%@", errorMessage);
+        
+        // duplicate message, let's act it's no error, just let the dialog spinner die himself
+        NSRange range = [errorMessage rangeOfString:@"#506"];
+        if (range.location != NSNotFound)
+            return;
+        
+        if ((_postTarget != nil) && (_postAction != nil))
+            [_postTarget performSelector:_postAction withObject:[NSNumber numberWithBool:NO]];
+        return;
+    }
+}
+
+
+- (void)requestDidLoad:(SessionRequestType)requestType data:(NSArray*)data;
+{
+    if (requestType == SRequestInfoUser)
+    {
+        [self requestInfoUserDidLoad:data];
+        return;
+    }
+
+
+    if (requestType == SRequestPostMessage)
+    {
+        [self requestPostMessageDidLoad:data];
+        return;
+    }
+}
+
+
+- (void)sessionLoginFailed
+{
+    self.loginType = nil;
+    [self loginError];
+}
+
+
+- (void)sessionDidLogout
+{
+    // callback
+    assert(_target);
+    [_target performSelector:_action];
+}
+
+
+
+
+
+
+
+
+
+- (void)requestInfoUserDidLoad:(NSArray*)data
+{
+    if ([data count] == 0)
+    {
+        NSLog(@"requestDidLoad SRequestInfoUser error : no info.");
+        self.loginType = nil;
+        [self loginError];
+        return;
+    }
+    
+    NSDictionary* dico = [data objectAtIndex:0];
+    
+    NSString* username = [dico valueForKey:DATA_FIELD_USERNAME];
+    NSString* uid = [dico valueForKey:DATA_FIELD_ID];
+    NSString* token = [dico valueForKey:DATA_FIELD_TOKEN];
+    NSString* email = [dico valueForKey:DATA_FIELD_EMAIL];
+    
+    NSLog(@"ready to request social login to the server with : ");
+    NSLog(@"username '%@'", username);
+    NSLog(@"uid '%@'", uid);
+    NSLog(@"token '%@'", token);
+    NSLog(@"email '%@'", email);
+    
+    // TAG ACTIVITY ALERT
+    if (![ActivityAlertView isRunning])
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    
+    
+    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    {
+        NSLog(@"facebook social login request");
+        
+        [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token email:email target:self action:@selector(loginSocialValidated:info:)];
+    }
+    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    {
+        NSLog(@"twitter social login request");
+        
+        NSString* tokenSecret = [dico valueForKey:DATA_FIELD_TOKEN_SECRET];
+        
+        [[YasoundDataProvider main] loginTwitter:username type:@"twitter" uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(loginSocialValidated:info:)];
+    }
+}
+
+
+- (void)requestPostMessageDidLoad:(NSArray*)data
+{
+    NSLog(@"the message has been post to your wall.");
+    
+    if ((_postTarget != nil) && (_postAction != nil))
+        [_postTarget performSelector:_postAction withObject:[NSNumber numberWithBool:YES]];
+}
 
 
 

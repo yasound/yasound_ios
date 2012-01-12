@@ -58,7 +58,8 @@
     [self addSubview:_ai];
     
     ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:url];
-    req.validatesSecureCertificate = FALSE;
+    // the https certificate seems to be ok but keep next line commented...
+//    req.validatesSecureCertificate = FALSE;
     req.requestMethod = @"GET";
     [req setDelegate:self];
     [req startAsynchronous];

@@ -19,6 +19,8 @@
 
 #import "RadioUser.h"
 #import "ActivityAlertView.h"
+#import "Tutorial.h"
+
 
 //#define LOCAL 1 // use localhost as the server
 #define USE_FAKE_RADIO_URL 1
@@ -33,8 +35,8 @@ static Song* _gNowPlayingSong = nil;
 
 
 //LBDEBUG
-static int _fakeNowPlayingIndex = 0;
-static NSTimer* _fakeNowPlayingTimer = nil;
+//static int _fakeNowPlayingIndex = 0;
+//static NSTimer* _fakeNowPlayingTimer = nil;
 
 
 @synthesize radio;
@@ -42,6 +44,7 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 //@synthesize audioStreamer;
 @synthesize messages;
 @synthesize statusMessages;
+@synthesize ownRadio;
 
 
 - (id)initWithRadio:(Radio *)radio
@@ -50,34 +53,53 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     if (self) 
     {
         self.radio = radio;
-        
-        _trackInteractionViewDisplayed = NO;
+        self.ownRadio = NO;
+        [self initRadioView];
+    }
+}
 
-        //LBDEBUG
-//        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
 
-        
-        _lastWallEventDate = nil;
-      _lastConnectionUpdateDate = [NSDate date];
-      _lastSongUpdateDate = nil;
-
-        self.messages = [[NSMutableArray alloc] init];
-        self.statusMessages = [[NSMutableArray alloc] init];
-        
-        _statusBarButtonToggled = NO;
-        
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellMessage" error:nil];
-        _messageFont = [sheet makeFont];
-        [_messageFont retain];
-        
-        _messageWidth = sheet.frame.size.width;
-        
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];
-        _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
-
+- (id)initWithRadio:(Radio*)radio ownRadio:(BOOL)ownRadio
+{
+    self = [super init];
+    if (self) 
+    {
+        self.radio = radio;
+        self.ownRadio = ownRadio;
+        [self initRadioView];
     }
     return self;
 }
+
+
+- (void)initRadioView
+{
+    _trackInteractionViewDisplayed = NO;
+    
+    //LBDEBUG
+    //        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
+    
+    
+    _lastWallEventDate = nil;
+    _lastConnectionUpdateDate = [NSDate date];
+    _lastSongUpdateDate = nil;
+    
+    self.messages = [[NSMutableArray alloc] init];
+    self.statusMessages = [[NSMutableArray alloc] init];
+    
+    _statusBarButtonToggled = NO;
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellMessage" error:nil];
+    _messageFont = [sheet makeFont];
+    [_messageFont retain];
+    
+    _messageWidth = sheet.frame.size.width;
+    
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];
+    _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -218,8 +240,35 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     [self.view addSubview:_playingNowContainer];
 
     _playingNowView = nil;
-
+    
     // now playing bar is set in setNowPlaying;
+    
+    
+    
+    
+    
+    //.......................................................................................................................................
+    //
+    // view container and view childs
+    //
+    sheet = [[Theme theme] stylesheetForKey:@"ViewContainer" error:nil];
+    _viewContainer = [[UIView alloc] initWithFrame:sheet.frame];
+    _viewContainer.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_viewContainer];
+
+    
+    CGRect frameChild = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
+    
+    
+    //.......................................................................................................................................
+    //
+    // child view Wall
+    //
+    _viewWall = [[UIView alloc] initWithFrame:frameChild];
+    _viewWall.backgroundColor = [UIColor clearColor];
+    [_viewContainer addSubview:_viewWall];
+    
+    
     
     //....................................................................................
     //
@@ -228,7 +277,7 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarBackground" error:nil];
     UIView* messageBarView = [[UIView alloc] initWithFrame:sheet.frame];
     messageBarView.backgroundColor = sheet.color;
-    [self.view addSubview:messageBarView];   
+    [_viewWall addSubview:messageBarView];   
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBar" error:nil];    
     UITextField* messageBar = [[UITextField alloc] initWithFrame:sheet.frame];
@@ -254,7 +303,7 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];    
     _tableView.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
 
-    [self.view addSubview:_tableView];
+    [_viewWall addSubview:_tableView];
 
     
     //....................................................................................
@@ -263,17 +312,17 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     //
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewExtraLayer" error:nil];
     image = [sheet makeImage];
-    [self.view addSubview:image];
+    [_viewWall addSubview:image];
 
     
     //....................................................................................
     //
     // status bar
     //
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" error:nil];
-    _statusBar = [[UIView alloc] initWithFrame:sheet.frame];
-    UIImageView* statusBarBackground = [sheet makeImage];
-    statusBarBackground.frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
+    BundleStylesheet* sheetStatus = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" error:nil];
+    _statusBar = [[UIView alloc] initWithFrame:sheetStatus.frame];
+    UIImageView* statusBarBackground = [sheetStatus makeImage];
+    statusBarBackground.frame = CGRectMake(0, 0, sheetStatus.frame.size.width, sheetStatus.frame.size.height);
     [self.view addSubview:_statusBar];
     [_statusBar addSubview:statusBarBackground];
     
@@ -288,12 +337,69 @@ static NSTimer* _fakeNowPlayingTimer = nil;
   
     
     
+    
+    
+    
+    
     //....................................................................................
     //
     // add objects that must display ABOVE the extra layer
     //
-    [self.view addSubview:messageBar];
+    [_viewWall addSubview:messageBar];
+    
+    
+    
+    
+    
+    
+    
+    //.......................................................................................................................................
+    //
+    // child view Tracks
+    //
+    
+    frameChild = CGRectMake(frameChild.size.width, frameChild.origin.y, frameChild.size.width, frameChild.size.height);
+    
+    _viewTracks = [[TracksView alloc] initWithFrame:frameChild];
+    [_viewTracks loadView];
+    _viewTracks.backgroundColor = [UIColor clearColor];
+    [_viewContainer addSubview:_viewTracks];
+    
+    _viewTracksDisplayed = NO;
+    
+    
+    
+    
+    if (self.ownRadio)
+    {
+        // -----------------------------
+        // One finger, swipe left
+        // -----------------------------
+        UISwipeGestureRecognizer* swipeLeft = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft:)] autorelease];
+        [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+        [_viewContainer addGestureRecognizer:swipeLeft];
 
+        // -----------------------------
+        // One finger, swipe right
+        // -----------------------------
+        UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight:)] autorelease];
+        [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+        [_viewContainer addGestureRecognizer:swipeRight];
+
+        
+        
+        // -----------------------------
+        // page control
+        // -----------------------------
+        CGRect framePageControl = CGRectMake(0, sheetStatus.frame.origin.y, sheetStatus.frame.size.width, 36);
+        
+        _pageControl = [[UIPageControl alloc] initWithFrame:framePageControl];
+        _pageControl.numberOfPages = 2;
+        _pageControl.userInteractionEnabled = NO;
+        [self.view addSubview:_pageControl];
+    }
+    
+    
     
     // get the actual data from the server to update the GUI
     [self onUpdate:nil];
@@ -354,6 +460,12 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     // data update timer
     //
     _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
+    
+    // check for tutorial
+    [[Tutorial main] show:TUTORIAL_KEY_RADIOVIEW everyTime:NO];
+    
+    if (self.ownRadio)
+        [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -377,11 +489,11 @@ static NSTimer* _fakeNowPlayingTimer = nil;
         _timerFake = nil;
     }
 
-    if ((_fakeNowPlayingTimer != nil) && [_fakeNowPlayingTimer isValid])
-    {
-        [_fakeNowPlayingTimer invalidate];
-        _fakeNowPlayingTimer = nil;
-    }
+//    if ((_fakeNowPlayingTimer != nil) && [_fakeNowPlayingTimer isValid])
+//    {
+//        [_fakeNowPlayingTimer invalidate];
+//        _fakeNowPlayingTimer = nil;
+//    }
 
 }
 
@@ -451,53 +563,53 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 //
 
 
-- (void)EXAMPLE_NOWPLAYING
-{
-    //
-    // NOW PLAYING
-    //
-    NSInteger randIndex = (rand() %5)+1;
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    Song* song = [[Song alloc] init];
-    song.metadata = [[SongMetadata alloc] init];
-    song.metadata.name = @"Mon Titre à moi super remix de la mort";
-    song.metadata.artist_name = @"Mon Artiste";
-    
-    NSLog(@"SONG '%@'  '%@'  ", song.metadata.name, song.metadata.artist_name);
-    
-//    song.metadata.image = image;
-    [self setNowPlaying:song];
-    
-    //fake LBDEBUG
-    _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
-}
-
-- (void)onFakeNowPlayingTick:(NSTimer*)timer
-{
-    NSInteger randIndex = (rand() %5)+1;
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    
-    if (_fakeNowPlayingIndex)
-    {
-        _fakeNowPlayingIndex = 0;
-        Song* song = [[Song alloc] init];
-        song.metadata = [[SongMetadata alloc] init];
-        song.metadata.name = @"Mon Titre à moi super remix de la mort";
-        song.metadata.artist_name = @"Mon Artiste";
-        [self setNowPlaying:song];
-    }
-    else
-    {
-        _fakeNowPlayingIndex = 1;
-        Song* song = [[Song alloc] init];
-        song.metadata = [[SongMetadata alloc] init];
-        song.metadata.name = @"Shabada song (feat. Prince)";
-        song.metadata.artist_name = @"Macha Berger";
-        [self setNowPlaying:song];
-    }
-    
-    
-}
+//- (void)EXAMPLE_NOWPLAYING
+//{
+//    //
+//    // NOW PLAYING
+//    //
+//    NSInteger randIndex = (rand() %5)+1;
+//    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+//    Song* song = [[Song alloc] init];
+//    song.metadata = [[SongMetadata alloc] init];
+//    song.metadata.name = @"Mon Titre à moi super remix de la mort";
+//    song.metadata.artist_name = @"Mon Artiste";
+//    
+//    NSLog(@"SONG '%@'  '%@'  ", song.metadata.name, song.metadata.artist_name);
+//    
+////    song.metadata.image = image;
+//    [self setNowPlaying:song];
+//    
+//    //fake LBDEBUG
+//    _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
+//}
+//
+//- (void)onFakeNowPlayingTick:(NSTimer*)timer
+//{
+//    NSInteger randIndex = (rand() %5)+1;
+//    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+//    
+//    if (_fakeNowPlayingIndex)
+//    {
+//        _fakeNowPlayingIndex = 0;
+//        Song* song = [[Song alloc] init];
+//        song.metadata = [[SongMetadata alloc] init];
+//        song.metadata.name = @"Mon Titre à moi super remix de la mort";
+//        song.metadata.artist_name = @"Mon Artiste";
+//        [self setNowPlaying:song];
+//    }
+//    else
+//    {
+//        _fakeNowPlayingIndex = 1;
+//        Song* song = [[Song alloc] init];
+//        song.metadata = [[SongMetadata alloc] init];
+//        song.metadata.name = @"Shabada song (feat. Prince)";
+//        song.metadata.artist_name = @"Macha Berger";
+//        [self setNowPlaying:song];
+//    }
+//    
+//    
+//}
 
 
 
@@ -640,7 +752,14 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     }
   }
   
-  _lastWallEventDate = (ev != nil) ? ev.start_date : nil;
+    if (ev != nil)
+    {
+        NSLog(@"ev.start_date %@", ev.start_date);
+        _lastWallEventDate = ev.start_date;
+    }
+    else
+        _lastWallEventDate = nil;
+    
   _lastConnectionUpdateDate = [NSDate date];
   
 //  [_tableView reloadData];
@@ -739,37 +858,62 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 
 - (void)onNowPlayingTouched
 {
-    _trackInteractionViewDisplayed = YES;
-    
-    //LBDEBUG
-    [_fakeNowPlayingTimer invalidate];
-    _fakeNowPlayingTimer = nil;
-    
-    TrackInteractionView* view = [[TrackInteractionView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onTrackInteractionTouched)];
+    CGRect frame, playingNowFrame, viewContainerFrame;
+    BOOL callbackWhenStop = NO;
 
-    [UIView transitionWithView:_playingNowContainer
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^{ [_playingNowView removeFromSuperview]; [_playingNowContainer addSubview:view]; _trackInteractionView = view; }
-                    completion:NULL];    
+    // open the track interaction view
+    if (!_trackInteractionViewDisplayed)
+    {
+        _trackInteractionViewDisplayed = YES;
+
+        frame = _playingNowContainer.frame;
+        playingNowFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height *2);
+        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y + frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height - frame.size.height);
+        
+        _trackInteractionView = [[TrackInteractionView alloc] initWithSong:_gNowPlayingSong];
+        _trackInteractionView.frame = CGRectMake(0, frame.size.height, frame.size.width, frame.size.height);
+        _trackInteractionView.backgroundColor = [UIColor blackColor];
+        [_playingNowContainer addSubview:_trackInteractionView];
+
+    }
+
+    // close the track interaction view
+    else
+    {
+        _trackInteractionViewDisplayed = NO;
+        callbackWhenStop = YES;
+        
+        frame = _playingNowContainer.frame;
+        frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height /2);
+        playingNowFrame = frame;
+        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y - frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height + frame.size.height);
+    }
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration: 0.16];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    if (callbackWhenStop)
+    {
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(nowPlayingAnimationFinished:finished:context:)];
+    }
+
+    
+    _playingNowContainer.frame = playingNowFrame;
+    _viewContainer.frame = viewContainerFrame;
+    
+    [UIView commitAnimations];        
 }
 
 
-- (void)onTrackInteractionTouched
+
+- (void)nowPlayingAnimationFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-    _trackInteractionViewDisplayed = NO;
-    
-    NowPlayingView* view = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onNowPlayingTouched)];
-    
-    [UIView transitionWithView:_playingNowContainer
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^{ [_trackInteractionView removeFromSuperview]; [_playingNowContainer addSubview:view]; _playingNowView = view; }
-                    completion:NULL];    
-  
-    //LBDEBUG
-     _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
+    [_trackInteractionView removeFromSuperview];
+    [_trackInteractionView release];
+    _trackInteractionView = nil;
 }
+
 
 
 
@@ -1064,6 +1208,64 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 }
 
 
+
+- (void)onSwipeLeft:(UISwipeGestureRecognizer *)recognizer 
+{ 
+    CGPoint point = [recognizer locationInView:[self view]];
+    NSLog(@"Swipe left - start location: %f,%f", point.x, point.y);
+    
+    if (_viewTracksDisplayed)
+        return;
+    
+    [_viewTracks updateView];
+
+    CGRect frame = _viewWall.frame;
+    
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
+    _viewWall.frame = CGRectMake(- frame.size.width, 0, frame.size.width, frame.size.height);
+    _viewTracks.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];   
+    
+    _viewTracksDisplayed = YES;
+    _pageControl.currentPage = 1;
+}
+
+
+- (void)onSwipeRight:(UISwipeGestureRecognizer *)recognizer 
+{ 
+    CGPoint point = [recognizer locationInView:[self view]];
+    NSLog(@"Swipe right - start location: %f,%f", point.x, point.y);
+
+    if (!_viewTracksDisplayed)
+        return;
+
+    CGRect frame = _viewWall.frame;
+    
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
+    _viewWall.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    _viewTracks.frame = CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];   
+
+    _viewTracksDisplayed = NO;
+    _pageControl.currentPage = 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 - (void)playAudio
 {
     _playPauseButton.selected = NO;
@@ -1094,6 +1296,8 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     // downsize status bar : hide users
     if (_statusBarButtonToggled)
     {
+        _pageControl.hidden = NO;
+        
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButtonOff" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -1112,6 +1316,8 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     // upsize status bar : show users
     else
     {
+        _pageControl.hidden = YES;
+        
         [self cleanStatusMessages];
         
         _statusBarButtonToggled = !_statusBarButtonToggled;

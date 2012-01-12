@@ -48,6 +48,7 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
       
       if ([str isKindOfClass:[NSString class]])
       {
+          str = [[str componentsSeparatedByString:@"."] objectAtIndex:0];
         NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
         val = [dateFormat dateFromString:str];
