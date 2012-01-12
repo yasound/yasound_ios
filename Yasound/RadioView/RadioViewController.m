@@ -339,6 +339,7 @@ static Song* _gNowPlayingSong = nil;
     frameChild = CGRectMake(frameChild.size.width, frameChild.origin.y, frameChild.size.width, frameChild.size.height);
     
     _viewTracks = [[TracksView alloc] initWithFrame:frameChild];
+    [_viewTracks loadView];
     _viewTracks.backgroundColor = [UIColor clearColor];
     [_viewContainer addSubview:_viewTracks];
     
@@ -1152,6 +1153,8 @@ static Song* _gNowPlayingSong = nil;
     if (_viewTracksDisplayed)
         return;
     
+    [_viewTracks updateView];
+
     CGRect frame = _viewWall.frame;
     
     [UIView beginAnimations:nil context:NULL];
@@ -1162,7 +1165,7 @@ static Song* _gNowPlayingSong = nil;
     [UIView commitAnimations];   
     
     _viewTracksDisplayed = YES;
-    _pageControl = 1;
+    _pageControl.currentPage = 1;
 }
 
 
@@ -1184,7 +1187,7 @@ static Song* _gNowPlayingSong = nil;
     [UIView commitAnimations];   
 
     _viewTracksDisplayed = NO;
-    _pageControl = 0;
+    _pageControl.currentPage = 0;
 }
 
 
