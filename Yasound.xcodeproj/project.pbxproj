@@ -28,6 +28,9 @@
 		40F4C79114BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79214BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79314BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
+		BC0304E814BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
+		BC0304E914BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
+		BC0304EA14BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
@@ -833,6 +836,8 @@
 		40F4C78A14BDF40F00A163F9 /* SongUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUser.m; sourceTree = "<group>"; };
 		40F4C78F14BEEF6F00A163F9 /* NextSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextSong.h; sourceTree = "<group>"; };
 		40F4C79014BEEF6F00A163F9 /* NextSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextSong.m; sourceTree = "<group>"; };
+		BC0304E614BF030200F39374 /* Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tutorial.h; sourceTree = "<group>"; };
+		BC0304E714BF030200F39374 /* Tutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tutorial.m; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
@@ -1408,6 +1413,8 @@
 		BC6314CF14B4665200549EF6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				BC0304E614BF030200F39374 /* Tutorial.h */,
+				BC0304E714BF030200F39374 /* Tutorial.m */,
 				BC6314D014B4665200549EF6 /* RegExp.h */,
 				BC6314D114B4665200549EF6 /* RegExp.m */,
 			);
@@ -2815,6 +2822,7 @@
 				BC27F38014BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 				BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */,
 				BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */,
+				BC0304E914BF030200F39374 /* Tutorial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2929,6 +2937,7 @@
 				BC27F37F14BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 				BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */,
 				BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */,
+				BC0304E814BF030200F39374 /* Tutorial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3044,6 +3053,7 @@
 				BC27F38114BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 				BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */,
 				BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */,
+				BC0304EA14BF030200F39374 /* Tutorial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

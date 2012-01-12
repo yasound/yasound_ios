@@ -19,6 +19,8 @@
 
 #import "RadioUser.h"
 #import "ActivityAlertView.h"
+#import "Tutorial.h"
+
 
 //#define LOCAL 1 // use localhost as the server
 #define USE_FAKE_RADIO_URL 1
@@ -434,6 +436,10 @@ static Song* _gNowPlayingSong = nil;
     // data update timer
     //
     _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
+    
+    // check for tutorial
+    [[Tutorial main] show:TUTORIAL_KEY_RADIOVIEW everyTime:NO];
+    [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
