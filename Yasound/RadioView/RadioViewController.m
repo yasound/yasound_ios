@@ -47,34 +47,15 @@ static Song* _gNowPlayingSong = nil;
 @synthesize ownRadio;
 
 
-- (id)initWithRadio:(Radio *)radio
+- (id)initWithRadio:(Radio*)radio
 {
     self = [super init];
     if (self) 
     {
         self.radio = radio;
-        self.ownRadio = NO;
-        [self initRadioView];
-    }
-}
+        self.ownRadio = YES;
 
-
-- (id)initWithRadio:(Radio*)radio ownRadio:(BOOL)ownRadio
-{
-    self = [super init];
-    if (self) 
-    {
-        self.radio = radio;
-        self.ownRadio = ownRadio;
-        [self initRadioView];
-    }
-    return self;
-}
-
-
-- (void)initRadioView
-{
-    _trackInteractionViewDisplayed = NO;
+        _trackInteractionViewDisplayed = NO;
     
     //LBDEBUG
     //        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
@@ -97,6 +78,9 @@ static Song* _gNowPlayingSong = nil;
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];
     _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
+    }
+    
+    return self;
 }
 
 
