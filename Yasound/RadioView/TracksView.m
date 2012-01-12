@@ -78,10 +78,10 @@
 }
 
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//  
-//}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    cell.backgroundColor = [UIColor whiteColor];
+}
 
 
 
@@ -152,6 +152,8 @@
     // update gui
     [self deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
     
+      // update tracks info display (order number...)
+      [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(onUpdateTrackAfterDelete:) userInfo:indexPath repeats:NO];
     
     return;
   }
@@ -298,7 +300,26 @@
 }
 
 
+- (void)onUpdateTrackAfterDelete:(NSTimer*)timer
+{
+    NSIndexPath* theIndexPath = timer.userInfo;
+    
+    NSLog(@"onUpdateTrackAfterDelete %d", theIndexPath.row);
 
+    for (int row = theIndexPath.row; row < _data.count; row++)
+    {
+        NSIndexPath* indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+        
+        UITableViewCell* cell = [self cellForRowAtIndexPath:indexPath];
+        NextSong* song = [_data objectAtIndex:indexPath.row];
+        
+        song.order = [NSNumber numberWithInteger:(row +1)];
+        
+        [self reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+
+}
 
 
 
