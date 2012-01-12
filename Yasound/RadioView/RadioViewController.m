@@ -218,8 +218,35 @@ static Song* _gNowPlayingSong = nil;
     [self.view addSubview:_playingNowContainer];
 
     _playingNowView = nil;
-
+    
     // now playing bar is set in setNowPlaying;
+    
+    
+    
+    
+    
+    //.......................................................................................................................................
+    //
+    // view container and view childs
+    //
+    sheet = [[Theme theme] stylesheetForKey:@"ViewContainer" error:nil];
+    _viewContainer = [[UIView alloc] initWithFrame:sheet.frame];
+    _viewContainer.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_viewContainer];
+
+    
+    CGRect frameChild = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
+    
+    
+    //.......................................................................................................................................
+    //
+    // child view Wall
+    //
+    _viewWall = [[UIView alloc] initWithFrame:frameChild];
+    _viewWall.backgroundColor = [UIColor clearColor];
+    [_viewContainer addSubview:_viewWall];
+    
+    
     
     //....................................................................................
     //
@@ -228,7 +255,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarBackground" error:nil];
     UIView* messageBarView = [[UIView alloc] initWithFrame:sheet.frame];
     messageBarView.backgroundColor = sheet.color;
-    [self.view addSubview:messageBarView];   
+    [_viewWall addSubview:messageBarView];   
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBar" error:nil];    
     UITextField* messageBar = [[UITextField alloc] initWithFrame:sheet.frame];
@@ -254,7 +281,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];    
     _tableView.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
 
-    [self.view addSubview:_tableView];
+    [_viewWall addSubview:_tableView];
 
     
     //....................................................................................
@@ -263,7 +290,7 @@ static Song* _gNowPlayingSong = nil;
     //
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewExtraLayer" error:nil];
     image = [sheet makeImage];
-    [self.view addSubview:image];
+    [_viewWall addSubview:image];
 
     
     //....................................................................................
@@ -274,7 +301,7 @@ static Song* _gNowPlayingSong = nil;
     _statusBar = [[UIView alloc] initWithFrame:sheet.frame];
     UIImageView* statusBarBackground = [sheet makeImage];
     statusBarBackground.frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
-    [self.view addSubview:_statusBar];
+    [_viewWall addSubview:_statusBar];
     [_statusBar addSubview:statusBarBackground];
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButton" error:nil];
@@ -292,7 +319,47 @@ static Song* _gNowPlayingSong = nil;
     //
     // add objects that must display ABOVE the extra layer
     //
-    [self.view addSubview:messageBar];
+    [_viewWall addSubview:messageBar];
+    
+    
+    
+    
+    
+    
+    
+    //.......................................................................................................................................
+    //
+    // child view Tracks
+    //
+    
+    frameChild = CGRectMake(frameChild.size.width, frameChild.origin.y, frameChild.size.width, frameChild.size.height);
+    
+    _viewTracks = [[TracksView alloc] initWithFrame:frameChild];
+    _viewTracks.backgroundColor = [UIColor blueColor];
+    [_viewContainer addSubview:_viewTracks];
+    
+    _viewTracksDisplayed = NO;
+    
+    
+    
+    
+    
+    
+    
+    
+    // -----------------------------
+    // One finger, swipe left
+    // -----------------------------
+    UISwipeGestureRecognizer* swipeLeft = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft:)] autorelease];
+    [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [_viewContainer addGestureRecognizer:swipeLeft];
+
+    // -----------------------------
+    // One finger, swipe right
+    // -----------------------------
+    UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight:)] autorelease];
+    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [_viewContainer addGestureRecognizer:swipeRight];
 
     
     // get the actual data from the server to update the GUI
@@ -1062,6 +1129,60 @@ static Song* _gNowPlayingSong = nil;
     else
         [self playAudio];
 }
+
+
+
+- (void)onSwipeLeft:(UISwipeGestureRecognizer *)recognizer 
+{ 
+    CGPoint point = [recognizer locationInView:[self view]];
+    NSLog(@"Swipe left - start location: %f,%f", point.x, point.y);
+    
+    if (_viewTracksDisplayed)
+        return;
+    
+    CGRect frame = _viewWall.frame;
+    
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
+    _viewWall.frame = CGRectMake(- frame.size.width, 0, frame.size.width, frame.size.height);
+    _viewTracks.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];   
+    
+    _viewTracksDisplayed = YES;
+}
+
+
+- (void)onSwipeRight:(UISwipeGestureRecognizer *)recognizer 
+{ 
+    CGPoint point = [recognizer locationInView:[self view]];
+    NSLog(@"Swipe right - start location: %f,%f", point.x, point.y);
+
+    if (!_viewTracksDisplayed)
+        return;
+
+    CGRect frame = _viewWall.frame;
+    
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
+    _viewWall.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    _viewTracks.frame = CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height);
+    [UIView commitAnimations];   
+
+    _viewTracksDisplayed = NO;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 - (void)playAudio

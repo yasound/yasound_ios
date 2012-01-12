@@ -224,6 +224,9 @@
 		BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BCA6554914BCA8590043B2DA /* Auth.h in Sources */ = {isa = PBXBuildFile; fileRef = BCA6554714BCA8590043B2DA /* Auth.h */; };
 		BCA6554A14BCA8590043B2DA /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6554814BCA8590043B2DA /* Auth.m */; };
+		BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
+		BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
+		BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
@@ -929,6 +932,8 @@
 		BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistMoulinor.m; sourceTree = "<group>"; };
 		BCA6554714BCA8590043B2DA /* Auth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
 		BCA6554814BCA8590043B2DA /* Auth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
+		BCB178B214BEE90100A3EDE3 /* TracksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksView.h; sourceTree = "<group>"; };
+		BCB178B314BEE90100A3EDE3 /* TracksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksView.m; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		BCB5F28C1485416B00C28B3D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
@@ -1542,6 +1547,8 @@
 		BCB5F28B1485416B00C28B3D /* RadioView */ = {
 			isa = PBXGroup;
 			children = (
+				BCB178B214BEE90100A3EDE3 /* TracksView.h */,
+				BCB178B314BEE90100A3EDE3 /* TracksView.m */,
 				BC27F36C14BDD87B00EF1C5F /* TrackInteractionView.h */,
 				BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */,
 				BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */,
@@ -2799,6 +2806,7 @@
 				40F4C78C14BDF40F00A163F9 /* SongUser.m in Sources */,
 				BC27F38014BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 				BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */,
+				BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2911,6 +2919,7 @@
 				40F4C78B14BDF40F00A163F9 /* SongUser.m in Sources */,
 				BC27F37F14BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 				BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */,
+				BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3024,6 +3033,7 @@
 				40F4C78D14BDF40F00A163F9 /* SongUser.m in Sources */,
 				BC27F38114BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 				BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */,
+				BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

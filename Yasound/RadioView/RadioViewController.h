@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "NowPlayingView.h"
 #import "TrackInteractionView.h"
-
+#import "TracksView.h"
 
 @class Radio;
 @class AudioStreamer;
@@ -33,6 +33,11 @@
     UIButton* _statusBarButton;
     BOOL _statusBarButtonToggled;
     UIScrollView* _statusUsers;
+    
+    UIView* _viewContainer;
+    UIView* _viewWall;
+    TracksView* _viewTracks;
+    BOOL _viewTracksDisplayed;
 
     NSDate* _lastWallEventDate;
     NSDate* _lastConnectionUpdateDate;
