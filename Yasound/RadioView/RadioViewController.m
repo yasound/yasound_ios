@@ -18,7 +18,7 @@
 #import "WallEvent.h"
 
 #import "RadioUser.h"
-
+#import "ActivityAlertView.h"
 
 //#define LOCAL 1 // use localhost as the server
 #define USE_FAKE_RADIO_URL 1
@@ -33,8 +33,8 @@ static Song* _gNowPlayingSong = nil;
 
 
 //LBDEBUG
-static int _fakeNowPlayingIndex = 0;
-static NSTimer* _fakeNowPlayingTimer = nil;
+//static int _fakeNowPlayingIndex = 0;
+//static NSTimer* _fakeNowPlayingTimer = nil;
 
 
 @synthesize radio;
@@ -190,6 +190,13 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 //    [btn addTarget:self action:@selector(onEdit:) forControlEvents:UIControlEventTouchUpInside];
 //    [_headerView addSubview:btn];
 
+    //favorites button
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderFavoriteButton" error:nil];
+    UIButton* button = [sheet makeButton];
+    [button addTarget:self action:@selector(onFavorite:) forControlEvents:UIControlEventTouchUpInside];
+    [_headerView addSubview:button];
+    
+    
     //play pause button
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderPlayPauseFrame" error:nil];
     CGRect frame = sheet.frame;
@@ -291,8 +298,6 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     // get the actual data from the server to update the GUI
     [self onUpdate:nil];
     
-    [self EXAMPLE_NOWPLAYING];
-    
     //Make sure the system follows our playback status
     // <=> Background audio playing
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
@@ -372,11 +377,11 @@ static NSTimer* _fakeNowPlayingTimer = nil;
         _timerFake = nil;
     }
 
-    if ((_fakeNowPlayingTimer != nil) && [_fakeNowPlayingTimer isValid])
-    {
-        [_fakeNowPlayingTimer invalidate];
-        _fakeNowPlayingTimer = nil;
-    }
+//    if ((_fakeNowPlayingTimer != nil) && [_fakeNowPlayingTimer isValid])
+//    {
+//        [_fakeNowPlayingTimer invalidate];
+//        _fakeNowPlayingTimer = nil;
+//    }
 
 }
 
@@ -446,53 +451,53 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 //
 
 
-- (void)EXAMPLE_NOWPLAYING
-{
-    //
-    // NOW PLAYING
-    //
-    NSInteger randIndex = (rand() %5)+1;
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    Song* song = [[Song alloc] init];
-    song.metadata = [[SongMetadata alloc] init];
-    song.metadata.name = @"Mon Titre à moi super remix de la mort";
-    song.metadata.artist_name = @"Mon Artiste";
-    
-    NSLog(@"SONG '%@'  '%@'  ", song.metadata.name, song.metadata.artist_name);
-    
-//    song.metadata.image = image;
-    [self setNowPlaying:song];
-    
-    //fake LBDEBUG
-    _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
-}
-
-- (void)onFakeNowPlayingTick:(NSTimer*)timer
-{
-    NSInteger randIndex = (rand() %5)+1;
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-    
-    if (_fakeNowPlayingIndex)
-    {
-        _fakeNowPlayingIndex = 0;
-        Song* song = [[Song alloc] init];
-        song.metadata = [[SongMetadata alloc] init];
-        song.metadata.name = @"Mon Titre à moi super remix de la mort";
-        song.metadata.artist_name = @"Mon Artiste";
-        [self setNowPlaying:song];
-    }
-    else
-    {
-        _fakeNowPlayingIndex = 1;
-        Song* song = [[Song alloc] init];
-        song.metadata = [[SongMetadata alloc] init];
-        song.metadata.name = @"Shabada song (feat. Prince)";
-        song.metadata.artist_name = @"Macha Berger";
-        [self setNowPlaying:song];
-    }
-    
-    
-}
+//- (void)EXAMPLE_NOWPLAYING
+//{
+//    //
+//    // NOW PLAYING
+//    //
+//    NSInteger randIndex = (rand() %5)+1;
+//    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+//    Song* song = [[Song alloc] init];
+//    song.metadata = [[SongMetadata alloc] init];
+//    song.metadata.name = @"Mon Titre à moi super remix de la mort";
+//    song.metadata.artist_name = @"Mon Artiste";
+//    
+//    NSLog(@"SONG '%@'  '%@'  ", song.metadata.name, song.metadata.artist_name);
+//    
+////    song.metadata.image = image;
+//    [self setNowPlaying:song];
+//    
+//    //fake LBDEBUG
+//    _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
+//}
+//
+//- (void)onFakeNowPlayingTick:(NSTimer*)timer
+//{
+//    NSInteger randIndex = (rand() %5)+1;
+//    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+//    
+//    if (_fakeNowPlayingIndex)
+//    {
+//        _fakeNowPlayingIndex = 0;
+//        Song* song = [[Song alloc] init];
+//        song.metadata = [[SongMetadata alloc] init];
+//        song.metadata.name = @"Mon Titre à moi super remix de la mort";
+//        song.metadata.artist_name = @"Mon Artiste";
+//        [self setNowPlaying:song];
+//    }
+//    else
+//    {
+//        _fakeNowPlayingIndex = 1;
+//        Song* song = [[Song alloc] init];
+//        song.metadata = [[SongMetadata alloc] init];
+//        song.metadata.name = @"Shabada song (feat. Prince)";
+//        song.metadata.artist_name = @"Macha Berger";
+//        [self setNowPlaying:song];
+//    }
+//    
+//    
+//}
 
 
 
@@ -737,8 +742,8 @@ static NSTimer* _fakeNowPlayingTimer = nil;
     _trackInteractionViewDisplayed = YES;
     
     //LBDEBUG
-    [_fakeNowPlayingTimer invalidate];
-    _fakeNowPlayingTimer = nil;
+//    [_fakeNowPlayingTimer invalidate];
+//    _fakeNowPlayingTimer = nil;
     
     TrackInteractionView* view = [[TrackInteractionView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onTrackInteractionTouched)];
 
@@ -763,7 +768,7 @@ static NSTimer* _fakeNowPlayingTimer = nil;
                     completion:NULL];    
   
     //LBDEBUG
-     _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
+//     _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
 }
 
 
@@ -1020,6 +1025,35 @@ static NSTimer* _fakeNowPlayingTimer = nil;
 //{
 //    
 //}
+
+
+- (IBAction)onFavorite:(id)sender
+{
+    [ActivityAlertView showWithTitle:nil];
+    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoritesRadioReceived:)];
+}
+
+- (void)onFavoritesRadioReceived:(NSArray*)radios
+{
+    NSInteger currentRadioId = [self.radio.id integerValue];
+    
+    for (Radio* radio in radios)
+    {
+        if ([radio.id integerValue] == currentRadioId)
+        {
+            [ActivityAlertView close];
+            [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_alredy_added", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+            return;
+        }
+    }
+            
+    [ActivityAlertView close];
+    [[YasoundDataProvider main] setRadio:self.radio asFavorite:YES];
+
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_added", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+}
+
+
 
 - (IBAction) onPlayPause:(id)sender
 {

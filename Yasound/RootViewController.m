@@ -13,6 +13,7 @@
 #import "YasoundSessionManager.h"
 #import "ActivityAlertView.h"
 #import "YasoundDataProvider.h"
+#import "YasoundReachability.h"
 
 
 //#define FORCE_ROOTVIEW_RADIOS
@@ -59,7 +60,19 @@
     if (_firstTime)
     {
         _firstTime = NO;
-     
+        
+        [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged)];
+    }
+
+}
+
+
+- (void)onReachabilityChanged
+{
+    if (([YasoundReachability main].hasNetwork == YR_YES) && ([YasoundReachability main].isReachable == YR_YES))
+    {
+        [[YasoundReachability main] removeTarget];
+        
 #ifdef FORCE_ROOTVIEW_RADIOS
         // add tabs
         RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
@@ -68,10 +81,11 @@
 #else
         [self loginProcess];
 #endif
-        
+    
     }
-
 }
+
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

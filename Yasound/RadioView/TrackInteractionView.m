@@ -9,7 +9,7 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "YasoundDataProvider.h"
-
+#import "ActivityAlertView.h"
 
 @implementation TrackInteractionView
 
@@ -72,23 +72,34 @@
 - (void)onTrackLike:(id)sender
 {
     [[YasoundDataProvider main] setMood:eMoodLike forSong:_song];
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_like", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
 }
 
 - (void)onTrackDislike:(id)sender
 {
     [[YasoundDataProvider main] setMood:eMoodDislike forSong:_song];
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_dislike", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
 }
 
 - (void)onTrackAdd:(id)sender
 {
     [[YasoundDataProvider main] addSongToUserRadio:_song];
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_add", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+}
+
+- (NSString *)getUserCountry
+{
+    NSLocale *locale = [NSLocale currentLocale];
+    return [locale objectForKey: NSLocaleCountryCode];
 }
 
 - (void)onTrackBuy:(id)sender
 {
 //    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/com.apple.jingle.search.DirectAction/search?artist=Prince";
-//
-//    NSURL *url = [[NSURL alloc] initWithString:[buyString stringByAddingPercentEscapesUsingEncoding:NSASCIIS tringEncoding]];
+
+//    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?artistTerm
+//    
+//    NSURL* url = [[NSURL alloc] initWithString:[buyString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
 //    [[UIApplication sharedApplication] openURL:url];
 //    [url release];
 }
