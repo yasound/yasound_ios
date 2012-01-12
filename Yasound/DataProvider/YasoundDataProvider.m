@@ -562,7 +562,8 @@ static YasoundDataProvider* _main = nil;
         return;
     
     Auth* auth = self.apiKeyAuth;
-    nextSong.order = [NSNumber numberWithInt:position];
+    int order = position + 1;
+    nextSong.order = [NSNumber numberWithInt:order];
     NSMutableDictionary* userData = [[NSMutableDictionary alloc] init];
     [userData setValue:target forKey:@"clientTarget"];
     [userData setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
