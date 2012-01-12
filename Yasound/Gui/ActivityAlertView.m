@@ -34,7 +34,6 @@ static ActivityAlertView* _alertView = nil;
     {
         UIFont* font = [UIFont boldSystemFontOfSize:16];
         CGSize suggestedSize = [title sizeWithFont:font constrainedToSize:CGSizeMake(200, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-        [font release];
 
         _alertView.activityView.frame = CGRectMake(125, suggestedSize.height + 30, 30, 30);
 }

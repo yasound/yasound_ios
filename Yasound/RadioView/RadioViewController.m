@@ -44,6 +44,7 @@ static Song* _gNowPlayingSong = nil;
 //@synthesize audioStreamer;
 @synthesize messages;
 @synthesize statusMessages;
+@synthesize ownRadio;
 
 
 - (id)initWithRadio:(Radio *)radio
@@ -52,34 +53,53 @@ static Song* _gNowPlayingSong = nil;
     if (self) 
     {
         self.radio = radio;
-        
-        _trackInteractionViewDisplayed = NO;
+        self.ownRadio = NO;
+        [self initRadioView];
+    }
+}
 
-        //LBDEBUG
-//        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
 
-        
-        _lastWallEventDate = nil;
-      _lastConnectionUpdateDate = [NSDate date];
-      _lastSongUpdateDate = nil;
-
-        self.messages = [[NSMutableArray alloc] init];
-        self.statusMessages = [[NSMutableArray alloc] init];
-        
-        _statusBarButtonToggled = NO;
-        
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellMessage" error:nil];
-        _messageFont = [sheet makeFont];
-        [_messageFont retain];
-        
-        _messageWidth = sheet.frame.size.width;
-        
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];
-        _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
-
+- (id)initWithRadio:(Radio*)radio ownRadio:(BOOL)ownRadio
+{
+    self = [super init];
+    if (self) 
+    {
+        self.radio = radio;
+        self.ownRadio = ownRadio;
+        [self initRadioView];
     }
     return self;
 }
+
+
+- (void)initRadioView
+{
+    _trackInteractionViewDisplayed = NO;
+    
+    //LBDEBUG
+    //        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
+    
+    
+    _lastWallEventDate = nil;
+    _lastConnectionUpdateDate = [NSDate date];
+    _lastSongUpdateDate = nil;
+    
+    self.messages = [[NSMutableArray alloc] init];
+    self.statusMessages = [[NSMutableArray alloc] init];
+    
+    _statusBarButtonToggled = NO;
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellMessage" error:nil];
+    _messageFont = [sheet makeFont];
+    [_messageFont retain];
+    
+    _messageWidth = sheet.frame.size.width;
+    
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];
+    _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -350,31 +370,34 @@ static Song* _gNowPlayingSong = nil;
     
     
     
-    // -----------------------------
-    // One finger, swipe left
-    // -----------------------------
-    UISwipeGestureRecognizer* swipeLeft = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft:)] autorelease];
-    [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
-    [_viewContainer addGestureRecognizer:swipeLeft];
+    if (self.ownRadio)
+    {
+        // -----------------------------
+        // One finger, swipe left
+        // -----------------------------
+        UISwipeGestureRecognizer* swipeLeft = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft:)] autorelease];
+        [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+        [_viewContainer addGestureRecognizer:swipeLeft];
 
-    // -----------------------------
-    // One finger, swipe right
-    // -----------------------------
-    UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight:)] autorelease];
-    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
-    [_viewContainer addGestureRecognizer:swipeRight];
+        // -----------------------------
+        // One finger, swipe right
+        // -----------------------------
+        UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight:)] autorelease];
+        [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+        [_viewContainer addGestureRecognizer:swipeRight];
 
-    
-    
-    // -----------------------------
-    // page control
-    // -----------------------------
-    CGRect framePageControl = CGRectMake(0, sheetStatus.frame.origin.y, sheetStatus.frame.size.width, 36);
-    
-    _pageControl = [[UIPageControl alloc] initWithFrame:framePageControl];
-    _pageControl.numberOfPages = 2;
-    _pageControl.userInteractionEnabled = NO;
-    [self.view addSubview:_pageControl];
+        
+        
+        // -----------------------------
+        // page control
+        // -----------------------------
+        CGRect framePageControl = CGRectMake(0, sheetStatus.frame.origin.y, sheetStatus.frame.size.width, 36);
+        
+        _pageControl = [[UIPageControl alloc] initWithFrame:framePageControl];
+        _pageControl.numberOfPages = 2;
+        _pageControl.userInteractionEnabled = NO;
+        [self.view addSubview:_pageControl];
+    }
     
     
     
@@ -440,7 +463,9 @@ static Song* _gNowPlayingSong = nil;
     
     // check for tutorial
     [[Tutorial main] show:TUTORIAL_KEY_RADIOVIEW everyTime:NO];
-    [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
+    
+    if (self.ownRadio)
+        [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
