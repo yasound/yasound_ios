@@ -505,7 +505,6 @@
     }
     
     NSString* response = request.responseString;
-    NSLog(@"get all: response:\n%@", response);
     if (!response)
     {
         [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
