@@ -1332,13 +1332,13 @@ static Song* _gNowPlayingSong = nil;
         if (user.picture == nil)
         {
             imageView = [[WebImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy.png"]];
-            imageView.frame = imageSheet.frame;
+            imageView.frame = imageRect;
         }
         else
         {
             NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:user.picture];
             imageView = [[WebImageView alloc] initWithImageAtURL:imageURL];
-            imageView.frame = imageSheet.frame;
+            imageView.frame = imageRect;
         }
         
         [_statusUsers addSubview:imageView];
