@@ -35,14 +35,8 @@ static AudioStreamer* _gAudioStreamer = nil;
 static Song* _gNowPlayingSong = nil;
 
 
-//LBDEBUG
-//static int _fakeNowPlayingIndex = 0;
-//static NSTimer* _fakeNowPlayingTimer = nil;
-
 
 @synthesize radio;
-//LBDEBUG
-//@synthesize audioStreamer;
 @synthesize messages;
 @synthesize statusMessages;
 @synthesize ownRadio;
@@ -482,19 +476,6 @@ static Song* _gNowPlayingSong = nil;
         [_timerUpdate invalidate];
         _timerUpdate = nil;
     }
-    
-    if ((_timerFake != nil) && [_timerFake isValid])
-    {
-        [_timerFake invalidate];
-        _timerFake = nil;
-    }
-
-//    if ((_fakeNowPlayingTimer != nil) && [_fakeNowPlayingTimer isValid])
-//    {
-//        [_fakeNowPlayingTimer invalidate];
-//        _fakeNowPlayingTimer = nil;
-//    }
-
 }
 
 
