@@ -1325,21 +1325,27 @@ static Song* _gNowPlayingSong = nil;
     CGRect nameRect = nameSheet.frame;
 
     // fill scrollview with users
-    for (NSString* user in users)
+    for (User* user in users)
     {
-        NSInteger randIndex = (rand() %5)+1;
-        UIImage* avatar = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-        if (avatar == nil)
+        WebImageView* imageView ;
+        
+        if (user.picture == nil)
         {
-            NSLog(@"error loading avatar %@", [NSString stringWithFormat:@"avatarDummy%d.png", randIndex]);
+            imageView = [[WebImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy.png"]];
+            imageView.frame = imageSheet.frame;
         }
-        UIImageView* image = [[UIImageView alloc] initWithImage:avatar];
-        image.frame = imageRect;
-        [_statusUsers addSubview:image];
+        else
+        {
+            NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:user.picture];
+            imageView = [[WebImageView alloc] initWithImageAtURL:imageURL];
+            imageView.frame = imageSheet.frame;
+        }
+        
+        [_statusUsers addSubview:imageView];
         
         UILabel* name = [nameSheet makeLabel];
         name.frame = nameRect;
-        name.text = user;
+        name.text = user.name;
         [_statusUsers addSubview:name];
         
         imageRect = CGRectMake(imageRect.origin.x + nameRect.size.width +1, imageRect.origin.y, imageRect.size.width, imageRect.size.height);
