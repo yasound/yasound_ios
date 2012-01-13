@@ -236,26 +236,12 @@
     
     if (CGRectContainsPoint(rect, touchPoint))
     {
-        NextSong* song = [_data objectAtIndex:indexPath.row];
-        NSLog(@"destination '%@'", song.song.metadata.name);
+        if (_destIndexPath != nil)
+            [_destIndexPath release];
 
-        // update data
-        [_data exchangeObjectAtIndex:_selectedIndexPath.row withObjectAtIndex:indexPath.row];
-
-        // update gui
-        [self moveRowAtIndexPath:_selectedIndexPath  toIndexPath:indexPath];
-        
-//        // update tracks info display (order number...)
-//        [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(onUpdateTrack:) userInfo:_selectedIndexPath repeats:NO];
-//        [NSTimer scheduledTimerWithTimeInterval:0.6 target:self selector:@selector(onUpdateTrack:) userInfo:indexPath repeats:NO];
-        _selectedIndexPath = indexPath;
-        
-        [[YasoundDataProvider main] moveNextSong:song toPosition:indexPath.row target:self action:@selector(onUpdateTrack:info:)];   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
-        
-        // didDeleteNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
-
-
-      done = YES;
+        _destIndexPath = indexPath;
+        [_destIndexPath retain];
+        done = YES;
     }
     
     row++;
@@ -272,9 +258,33 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
 {
   // NSLog(@"touchesEnded");
-  
-  [_selectedIndexPath release];
-  _selectedIndexPath = nil;
+    if (_destIndexPath != nil)
+    {
+        NextSong* song = [_data objectAtIndex:_destIndexPath.row];
+        NSLog(@"move to destination '%@'", song.song.metadata.name);
+
+        // update data
+        [_data exchangeObjectAtIndex:_selectedIndexPath.row withObjectAtIndex:_destIndexPath.row];
+
+        // update gui
+        [self moveRowAtIndexPath:_selectedIndexPath  toIndexPath:_destIndexPath];
+
+        //        // update tracks info display (order number...)
+        //        [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(onUpdateTrack:) userInfo:_selectedIndexPath repeats:NO];
+        //        [NSTimer scheduledTimerWithTimeInterval:0.6 target:self selector:@selector(onUpdateTrack:) userInfo:indexPath repeats:NO];
+
+        [[YasoundDataProvider main] moveNextSong:song toPosition:_destIndexPath.row target:self action:@selector(onUpdateTrack:info:)];   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
+
+//        _selectedIndexPath = _destIndexPath;
+
+        // didDeleteNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
+    }
+    
+    
+    [_selectedIndexPath release];
+    _selectedIndexPath = nil;
+    [_destIndexPath release];
+    _destIndexPath = nil;
   
   [super touchesEnded:touches withEvent:event];
 }

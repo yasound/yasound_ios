@@ -74,6 +74,7 @@
 - (void)onTrackLike:(id)sender
 {
     [[YasoundDataProvider main] setMood:eMoodLike forSong:_song];
+    // ICI
     [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_like", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
 }
 
