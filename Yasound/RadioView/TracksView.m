@@ -255,6 +255,7 @@
 //        [NSTimer scheduledTimerWithTimeInterval:0.6 target:self selector:@selector(onUpdateTrack:) userInfo:indexPath repeats:NO];
         _selectedIndexPath = indexPath;
         
+        NSLog(@"move nextSong (order=%@ song=%@) to position %d (<=> order=%d)", song.song.metadata.name, song.order, indexPath.row, indexPath.row+1);
         [[YasoundDataProvider main] moveNextSong:song toPosition:indexPath.row target:self action:@selector(onUpdateTrack:info:)];   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
         
         // didDeleteNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
