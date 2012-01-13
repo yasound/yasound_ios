@@ -246,6 +246,17 @@
 
         _destIndexPath = indexPath;
         [_destIndexPath retain];
+        
+        NextSong* song = [_data objectAtIndex:_destIndexPath.row];
+//        NSLog(@"update gui to '%@'", song.song.metadata.name);
+        
+        // update data
+        [_data exchangeObjectAtIndex:_selectedIndexPath.row withObjectAtIndex:_destIndexPath.row];
+        
+        // update gui
+        [self moveRowAtIndexPath:_selectedIndexPath  toIndexPath:_destIndexPath];
+
+        
         done = YES;
     }
     
@@ -265,18 +276,12 @@
   // NSLog(@"touchesEnded");
     if (_destIndexPath != nil)
     {
-        NextSong* song = [_data objectAtIndex:_destIndexPath.row];
-        NSLog(@"move to destination '%@'", song.song.metadata.name);
-
-        // update data
-        [_data exchangeObjectAtIndex:_selectedIndexPath.row withObjectAtIndex:_destIndexPath.row];
-
-        // update gui
-        [self moveRowAtIndexPath:_selectedIndexPath  toIndexPath:_destIndexPath];
-
         //        // update tracks info display (order number...)
         //        [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(onUpdateTrack:) userInfo:_selectedIndexPath repeats:NO];
         //        [NSTimer scheduledTimerWithTimeInterval:0.6 target:self selector:@selector(onUpdateTrack:) userInfo:indexPath repeats:NO];
+
+        NextSong* song = [_data objectAtIndex:_destIndexPath.row];
+        NSLog(@"move to destination '%@'", song.song.metadata.name);
 
         [[YasoundDataProvider main] moveNextSong:song toPosition:_destIndexPath.row target:self action:@selector(onUpdateTrack:info:)];   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
 
