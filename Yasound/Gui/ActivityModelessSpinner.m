@@ -51,9 +51,14 @@ static ActivityModelessSpinner* _main = nil;
 
 - (void)addRefForTimeInterval:(NSTimeInterval)timeInterval
 {
-//ICI
+    [self addRef];
+    [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(delayedRemoveRef:) userInfo:nil repeats:NO];
 }
 
+- (void)delayedRemoveRef:(NSTimer*)timer
+{
+    [self removeRef];
+}
 
 - (void)removeRef
 {
