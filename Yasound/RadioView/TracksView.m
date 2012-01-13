@@ -48,11 +48,11 @@
     }
     
     _data = [[NSMutableArray alloc] initWithArray:nextSongs];
-//    NSLog(@"%d next songs", nextSongs.count);
-//    for (NextSong* s in nextSongs) 
-//    {
-//        NSLog(@"%@   - %@ -", s.order, s.song.metadata.name);
-//    }
+    NSLog(@"%d next songs", nextSongs.count);
+    for (NextSong* s in nextSongs) 
+    {
+        NSLog(@"%@   - %@ -", s.order, s.song.metadata.name);
+    }
     [self reloadData];
 }
 
