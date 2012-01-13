@@ -27,7 +27,7 @@
 
 @implementation YasoundDataProvider
 
-@synthesize user;
+@synthesize user = _user;
 @synthesize radio = _radio;
 
 static YasoundDataProvider* _main = nil;
@@ -161,7 +161,7 @@ static YasoundDataProvider* _main = nil;
     [self login:username password:pwd target:self action:@selector(didReceiveNewUserLogin:withInfo:) userData:loginUserData];
 }
 
-- (void)didReceiveNewUserLogin:(User*)user withInfo:(NSDictionary*)info
+- (void)didReceiveNewUserLogin:(User*)u withInfo:(NSDictionary*)info
 {
     NSDictionary* userData = [info valueForKey:@"userData"];
     if (!userData)
@@ -178,10 +178,10 @@ static YasoundDataProvider* _main = nil;
         [finalInfo setValue:error forKey:@"error"];
     }
     
-    if (user && user.api_key)
+    if (u && u.api_key)
     {
-        _user = user;
-        _apiKey = user.api_key;
+        _user = u;
+        _apiKey = u.api_key;
     }
     else
     {
@@ -191,7 +191,7 @@ static YasoundDataProvider* _main = nil;
     
     if (target && selector)
     {
-        [target performSelector:selector withObject:user withObject:finalInfo];
+        [target performSelector:selector withObject:_user withObject:finalInfo];
     }
     
 }
