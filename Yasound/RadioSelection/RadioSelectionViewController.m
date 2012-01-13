@@ -11,14 +11,11 @@
 #import "StyleSelectorViewController.h"
 #import "RadioViewController.h"
 #import "YasoundDataProvider.h"
-
+#import "AudioStreamManager.h"
 
 
 @implementation RadioSelectionViewController
 
-
-//LBDEBUG
-static NSArray* gFakeUsers = nil;
 
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabIcon:(NSString*)tabIcon
@@ -35,15 +32,6 @@ static NSArray* gFakeUsers = nil;
 
       _tableView.delegate = self;
       _tableView.dataSource = self;
-      
-      // LBDEBUG static init
-      if (gFakeUsers == nil)
-      {
-        NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
-        gFakeUsers = [resources objectForKey:@"fakeUsers"];
-      }
-      ///////////////
-      
 }
     return self;
 }
@@ -65,6 +53,10 @@ static NSArray* gFakeUsers = nil;
   _topBarTitle.text = self.title;
     [_qualitySwitchLabel loadView];
     
+    // now playing button
+//    UIButton* btn = [[UIButton alloc] initWithFrame:frame];
+    
+    
   NSString* str;
   
   _currentStyle = @"style_all";
@@ -72,6 +64,14 @@ static NSArray* gFakeUsers = nil;
 
     [self updateRadios:nil];
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if ([AudioStreamManager main].currentRadio == nil)
+        [_nowPlayingButton setEnabled:NO];
+}
+
+
 
 - (void)viewDidUnload
 {
@@ -200,6 +200,18 @@ static NSArray* gFakeUsers = nil;
    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
   [self.navigationController presentModalViewController:view animated:YES];
 }
+
+
+- (IBAction)onNowPlayingClicked:(id)sender
+{
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
+
+
+
 
 
 #pragma mark - StyleSelectorDelegate

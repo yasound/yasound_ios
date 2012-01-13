@@ -7,7 +7,6 @@
 
 #import "RadioViewController.h"
 #import "ASIFormDataRequest.h"
-#import "AudioStreamer.h"
 #import "Theme.h"
 #import "Track.h"
 #import "RadioViewCell.h"
@@ -22,15 +21,17 @@
 #import "Tutorial.h"
 #import "InteractiveView.h"
 #import "ActivityModelessSpinner.h"
+#import "AudioStreamer.h"
+#import "AudioStreamManager.h"
+
+
 
 //#define LOCAL 1 // use localhost as the server
-#define USE_FAKE_RADIO_URL 1
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
 
 @implementation RadioViewController
 
-static AudioStreamer* _gAudioStreamer = nil;
 
 static Song* _gNowPlayingSong = nil;
 
@@ -425,23 +426,9 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)viewDidAppear:(BOOL)animated
 {
-#ifdef USE_FAKE_RADIO_URL
-    NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/ubik.mp3"];
-#else
-    NSURL* radiourl = self.radio.url;
-#endif
-
-    //LBDEBUG
-    if (_gAudioStreamer != nil)
-    {
-        [_gAudioStreamer stop];
-        [_gAudioStreamer release];
-    }
+    [[AudioStreamManager main] startRadio:self.radio];
+    [[YasoundDataProvider main] enterRadioWall:self.radio];
     
-    _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radiourl];
-    [_gAudioStreamer start];
-//  self.audioStreamer = [[AudioStreamer alloc] initWithURL: radiourl];
-//    [self.audioStreamer start];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
     
@@ -461,16 +448,14 @@ static Song* _gNowPlayingSong = nil;
     
     if (self.ownRadio)
         [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
-    
 }
-
-
-
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
+    [[YasoundDataProvider main] leaveRadioWall:self.radio];
+
     //End recieving events
     // <=> background audio playing
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
@@ -1255,16 +1240,15 @@ static Song* _gNowPlayingSong = nil;
 - (void)playAudio
 {
     _playPauseButton.selected = NO;
-//    [self.audioStreamer start];
-    [_gAudioStreamer start];
+    [[AudioStreamManager main] playRadio];
 
 }
 
 - (void)pauseAudio
 {
     _playPauseButton.selected = YES;
-//    [self.audioStreamer stop];
-    [_gAudioStreamer stop];
+    
+    [[AudioStreamManager main] pauseRadio];
 }
 
 
