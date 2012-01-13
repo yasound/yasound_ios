@@ -462,13 +462,12 @@ static Song* _gNowPlayingSong = nil;
     if (self.ownRadio)
         [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
     
+    [[YasoundDataProvider main] startListeningRadio:self.radio];
 }
-
-
-
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [[YasoundDataProvider main] stopListeningRadio:self.radio];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     //End recieving events
