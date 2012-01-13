@@ -37,6 +37,15 @@
 		BC03050414C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
 		BC03050514C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
 		BC03050614C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
+		BC03052114C06DD200F39374 /* btnNowPlaying.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03051F14C06DD200F39374 /* btnNowPlaying.png */; };
+		BC03052214C06DD200F39374 /* btnNowPlaying.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03051F14C06DD200F39374 /* btnNowPlaying.png */; };
+		BC03052314C06DD200F39374 /* btnNowPlaying.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03051F14C06DD200F39374 /* btnNowPlaying.png */; };
+		BC03052414C06DD200F39374 /* btnNowPlaying@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03052014C06DD200F39374 /* btnNowPlaying@2x.png */; };
+		BC03052514C06DD200F39374 /* btnNowPlaying@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03052014C06DD200F39374 /* btnNowPlaying@2x.png */; };
+		BC03052614C06DD200F39374 /* btnNowPlaying@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03052014C06DD200F39374 /* btnNowPlaying@2x.png */; };
+		BC03052F14C0724D00F39374 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
+		BC03053014C0724D00F39374 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
+		BC03053114C0724D00F39374 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
@@ -848,6 +857,10 @@
 		BC0304FD14C0248100F39374 /* InteractiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractiveView.m; sourceTree = "<group>"; };
 		BC03050214C02E9D00F39374 /* ActivityModelessSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModelessSpinner.h; sourceTree = "<group>"; };
 		BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModelessSpinner.m; sourceTree = "<group>"; };
+		BC03051F14C06DD200F39374 /* btnNowPlaying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btnNowPlaying.png; path = RadioSelection/btnNowPlaying.png; sourceTree = "<group>"; };
+		BC03052014C06DD200F39374 /* btnNowPlaying@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btnNowPlaying@2x.png"; path = "RadioSelection/btnNowPlaying@2x.png"; sourceTree = "<group>"; };
+		BC03052D14C0724D00F39374 /* AudioStreamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamManager.h; sourceTree = "<group>"; };
+		BC03052E14C0724D00F39374 /* AudioStreamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamManager.m; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
@@ -1399,6 +1412,8 @@
 		BC5EE217147D427100A282A5 /* RadioSelection */ = {
 			isa = PBXGroup;
 			children = (
+				BC03051F14C06DD200F39374 /* btnNowPlaying.png */,
+				BC03052014C06DD200F39374 /* btnNowPlaying@2x.png */,
 				BCF62DAF14839355001B1908 /* categoryShadow.png */,
 				BCF62DB014839355001B1908 /* categoryShadow@2x.png */,
 				BCF62DB114839355001B1908 /* CellBackgroundBlue.png */,
@@ -2065,6 +2080,8 @@
 		BCFECFE31468439900BA20D9 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				BC03052D14C0724D00F39374 /* AudioStreamManager.h */,
+				BC03052E14C0724D00F39374 /* AudioStreamManager.m */,
 				BCFECFE41468439900BA20D9 /* AudioStreamer.h */,
 				BCFECFE51468439900BA20D9 /* AudioStreamer.m */,
 			);
@@ -2423,6 +2440,8 @@
 				BC9522B314B71352001E1ACE /* btnPause@2x.png in Resources */,
 				BC9522B614B71352001E1ACE /* btnPlay.png in Resources */,
 				BC9522B914B71352001E1ACE /* btnPlay@2x.png in Resources */,
+				BC03052214C06DD200F39374 /* btnNowPlaying.png in Resources */,
+				BC03052514C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2571,6 +2590,8 @@
 				BC9522B214B71352001E1ACE /* btnPause@2x.png in Resources */,
 				BC9522B514B71352001E1ACE /* btnPlay.png in Resources */,
 				BC9522B814B71352001E1ACE /* btnPlay@2x.png in Resources */,
+				BC03052114C06DD200F39374 /* btnNowPlaying.png in Resources */,
+				BC03052414C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2719,6 +2740,8 @@
 				BC9522B414B71352001E1ACE /* btnPause@2x.png in Resources */,
 				BC9522B714B71352001E1ACE /* btnPlay.png in Resources */,
 				BC9522BA14B71352001E1ACE /* btnPlay@2x.png in Resources */,
+				BC03052314C06DD200F39374 /* btnNowPlaying.png in Resources */,
+				BC03052614C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2839,6 +2862,7 @@
 				BC0304E914BF030200F39374 /* Tutorial.m in Sources */,
 				BC0304FF14C0248100F39374 /* InteractiveView.m in Sources */,
 				BC03050514C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
+				BC03053014C0724D00F39374 /* AudioStreamManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2956,6 +2980,7 @@
 				BC0304E814BF030200F39374 /* Tutorial.m in Sources */,
 				BC0304FE14C0248100F39374 /* InteractiveView.m in Sources */,
 				BC03050414C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
+				BC03052F14C0724D00F39374 /* AudioStreamManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3074,6 +3099,7 @@
 				BC0304EA14BF030200F39374 /* Tutorial.m in Sources */,
 				BC03050014C0248100F39374 /* InteractiveView.m in Sources */,
 				BC03050614C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
+				BC03053114C0724D00F39374 /* AudioStreamManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

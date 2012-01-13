@@ -36,4 +36,6 @@ typedef enum
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabIcon:(NSString*)tabIcon;
 
 - (IBAction)onStyleSelectorClicked:(id)sender;
+- (IBAction)onNowPlayingClicked:(id)sender;
+
 @end
