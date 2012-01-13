@@ -31,6 +31,12 @@
 		BC0304E814BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		BC0304E914BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		BC0304EA14BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
+		BC0304FE14C0248100F39374 /* InteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304FD14C0248100F39374 /* InteractiveView.m */; };
+		BC0304FF14C0248100F39374 /* InteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304FD14C0248100F39374 /* InteractiveView.m */; };
+		BC03050014C0248100F39374 /* InteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304FD14C0248100F39374 /* InteractiveView.m */; };
+		BC03050414C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
+		BC03050514C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
+		BC03050614C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
@@ -838,6 +844,10 @@
 		40F4C79014BEEF6F00A163F9 /* NextSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextSong.m; sourceTree = "<group>"; };
 		BC0304E614BF030200F39374 /* Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tutorial.h; sourceTree = "<group>"; };
 		BC0304E714BF030200F39374 /* Tutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tutorial.m; sourceTree = "<group>"; };
+		BC0304FC14C0248100F39374 /* InteractiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractiveView.h; sourceTree = "<group>"; };
+		BC0304FD14C0248100F39374 /* InteractiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractiveView.m; sourceTree = "<group>"; };
+		BC03050214C02E9D00F39374 /* ActivityModelessSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityModelessSpinner.h; sourceTree = "<group>"; };
+		BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModelessSpinner.m; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
@@ -1567,6 +1577,8 @@
 				BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */,
 				BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */,
 				BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */,
+				BC0304FC14C0248100F39374 /* InteractiveView.h */,
+				BC0304FD14C0248100F39374 /* InteractiveView.m */,
 				BC0DD8461487EAE900DCD550 /* RadioViewCell.h */,
 				BC0DD8471487EAE900DCD550 /* RadioViewCell.m */,
 				BCB5F28C1485416B00C28B3D /* RadioViewController.h */,
@@ -2066,6 +2078,8 @@
 				BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */,
 				BCD4C2C414695FCD000A236A /* ActivityAlertView.h */,
 				BCD4C2C514695FCD000A236A /* ActivityAlertView.m */,
+				BC03050214C02E9D00F39374 /* ActivityModelessSpinner.h */,
+				BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */,
 				BCFECFE71468439900BA20D9 /* MenuHeader.h */,
 				BCFECFE81468439900BA20D9 /* MenuHeader.m */,
 				BCFECFE91468439900BA20D9 /* SlidingMenu.h */,
@@ -2823,6 +2837,8 @@
 				BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */,
 				BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */,
 				BC0304E914BF030200F39374 /* Tutorial.m in Sources */,
+				BC0304FF14C0248100F39374 /* InteractiveView.m in Sources */,
+				BC03050514C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2938,6 +2954,8 @@
 				BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */,
 				BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */,
 				BC0304E814BF030200F39374 /* Tutorial.m in Sources */,
+				BC0304FE14C0248100F39374 /* InteractiveView.m in Sources */,
+				BC03050414C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3054,6 +3072,8 @@
 				BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */,
 				BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */,
 				BC0304EA14BF030200F39374 /* Tutorial.m in Sources */,
+				BC03050014C0248100F39374 /* InteractiveView.m in Sources */,
+				BC03050614C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

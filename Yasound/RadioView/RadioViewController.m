@@ -20,7 +20,8 @@
 #import "RadioUser.h"
 #import "ActivityAlertView.h"
 #import "Tutorial.h"
-
+#import "InteractiveView.h"
+#import "ActivityModelessSpinner.h"
 
 //#define LOCAL 1 // use localhost as the server
 #define USE_FAKE_RADIO_URL 1
@@ -34,14 +35,8 @@ static AudioStreamer* _gAudioStreamer = nil;
 static Song* _gNowPlayingSong = nil;
 
 
-//LBDEBUG
-//static int _fakeNowPlayingIndex = 0;
-//static NSTimer* _fakeNowPlayingTimer = nil;
-
 
 @synthesize radio;
-//LBDEBUG
-//@synthesize audioStreamer;
 @synthesize messages;
 @synthesize statusMessages;
 @synthesize ownRadio;
@@ -121,7 +116,7 @@ static Song* _gNowPlayingSong = nil;
     // header back arrow
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
     UIButton* btn = [sheet makeButton];
-    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+//    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
     
     // header avatar, as a second back button
@@ -150,7 +145,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
     btn = [[UIButton alloc] initWithFrame:sheet.frame];
     [btn setImage:[sheet image] forState:UIControlStateNormal]; 
-    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+//    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
     
     
@@ -213,13 +208,28 @@ static Song* _gNowPlayingSong = nil;
     [_playPauseButton setImage:[UIImage imageNamed:@"btnPlay.png"] forState:UIControlStateSelected];
     [_headerView addSubview:_playPauseButton];
     
+    
+    //.................................................................................
+    // header interactive zone to overload button
+    BundleStylesheet* sheetAvatar = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
+    
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
+    
+    frame = CGRectMake(0, 0, sheetAvatar.frame.origin.x + sheetAvatar.frame.size.width, _headerView.frame.size.height - sheet.frame.size.height);
+    InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:frame target:self action:@selector(onBack:)];
+    [_headerView addSubview:interactiveView];
+    
+    
+    
+    
+    
     //....................................................................................
     //
     // header now playing bar
     //
     
     // header now playing bar image
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
+//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
     
     _playingNowContainer = [[UIView alloc] initWithFrame:sheet.frame];
     [self.view addSubview:_playingNowContainer];
@@ -451,7 +461,11 @@ static Song* _gNowPlayingSong = nil;
     
     if (self.ownRadio)
         [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
+    
 }
+
+
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -467,19 +481,6 @@ static Song* _gNowPlayingSong = nil;
         [_timerUpdate invalidate];
         _timerUpdate = nil;
     }
-    
-    if ((_timerFake != nil) && [_timerFake isValid])
-    {
-        [_timerFake invalidate];
-        _timerFake = nil;
-    }
-
-//    if ((_fakeNowPlayingTimer != nil) && [_fakeNowPlayingTimer isValid])
-//    {
-//        [_fakeNowPlayingTimer invalidate];
-//        _fakeNowPlayingTimer = nil;
-//    }
-
 }
 
 
@@ -1301,6 +1302,8 @@ static Song* _gNowPlayingSong = nil;
     // upsize status bar : show users
     else
     {
+        [[YasoundDataProvider main] connectedUsersForRadio:self.radio target:self action:@selector(onRadioUsersReceived:info:)];
+                                         
         _pageControl.hidden = YES;
         
         [self cleanStatusMessages];
@@ -1310,42 +1313,9 @@ static Song* _gNowPlayingSong = nil;
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
         
-        BundleStylesheet* imageSheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        BundleStylesheet* nameSheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserName" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        CGRect imageRect = imageSheet.frame;
-        CGRect nameRect = nameSheet.frame;
-
-        // get list of users and create scrollview
-        NSArray* users = [NSArray arrayWithObjects:@"tom", @"bernard", @"Jean-Claude Machine", @"Alberte", @"Jackie42", @"Mouss4_3", @"Tchoupi2", @"LeSanglier", @"Coco A", @"Riquiqui", nil];
+        // create scrollview
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserScrollView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         _statusUsers = [[UIScrollView alloc] initWithFrame:sheet.frame];
-        
-        // fill scrollview with users
-        for (NSString* user in users)
-        {
-            NSInteger randIndex = (rand() %5)+1;
-            UIImage* avatar = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-            if (avatar == nil)
-            {
-                NSLog(@"error loading avatar %@", [NSString stringWithFormat:@"avatarDummy%d.png", randIndex]);
-            }
-            UIImageView* image = [[UIImageView alloc] initWithImage:avatar];
-            image.frame = imageRect;
-            [_statusUsers addSubview:image];
-            
-            UILabel* name = [nameSheet makeLabel];
-            name.frame = nameRect;
-            name.text = user;
-            [_statusUsers addSubview:name];
-            
-            imageRect = CGRectMake(imageRect.origin.x + nameRect.size.width +1, imageRect.origin.y, imageRect.size.width, imageRect.size.height);
-            nameRect = CGRectMake(nameRect.origin.x + nameRect.size.width +1, nameRect.origin.y, nameRect.size.width, nameRect.size.height);
-            
-        }
-        
-        // set scrollview content size
-//        [_statusUsers setContentSize:CGSizeMake(nameRect.origin.x + nameRect.size.width, _statusBar.frame.size.height)];
-        [_statusUsers setContentSize:CGSizeMake(nameRect.origin.x, _statusBar.frame.size.height)];
         
         _statusUsers.alpha = 0;
         [_statusBar addSubview:_statusUsers];
@@ -1358,6 +1328,43 @@ static Song* _gNowPlayingSong = nil;
         [UIView commitAnimations];        
     }
     
+}
+
+
+
+- (void)onRadioUsersReceived:(NSArray*)users info:(NSDictionary*)info
+{
+    BundleStylesheet* imageSheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* nameSheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserName" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+
+    CGRect imageRect = imageSheet.frame;
+    CGRect nameRect = nameSheet.frame;
+
+    // fill scrollview with users
+    for (NSString* user in users)
+    {
+        NSInteger randIndex = (rand() %5)+1;
+        UIImage* avatar = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
+        if (avatar == nil)
+        {
+            NSLog(@"error loading avatar %@", [NSString stringWithFormat:@"avatarDummy%d.png", randIndex]);
+        }
+        UIImageView* image = [[UIImageView alloc] initWithImage:avatar];
+        image.frame = imageRect;
+        [_statusUsers addSubview:image];
+        
+        UILabel* name = [nameSheet makeLabel];
+        name.frame = nameRect;
+        name.text = user;
+        [_statusUsers addSubview:name];
+        
+        imageRect = CGRectMake(imageRect.origin.x + nameRect.size.width +1, imageRect.origin.y, imageRect.size.width, imageRect.size.height);
+        nameRect = CGRectMake(nameRect.origin.x + nameRect.size.width +1, nameRect.origin.y, nameRect.size.width, nameRect.size.height);
+        
+    }
+    // set scrollview content size
+    //        [_statusUsers setContentSize:CGSizeMake(nameRect.origin.x + nameRect.size.width, _statusBar.frame.size.height)];
+    [_statusUsers setContentSize:CGSizeMake(nameRect.origin.x, _statusBar.frame.size.height)];    
 }
 
 

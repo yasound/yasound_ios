@@ -53,8 +53,7 @@
     CGFloat _cellMinHeight;
     
     NSTimer* _timerUpdate;
-    NSTimer* _timerFake;
-    
+
     UIButton* _playPauseButton;
 }
 
@@ -62,9 +61,6 @@
 @property (nonatomic) BOOL ownRadio;
 @property (nonatomic, retain) NSMutableArray* messages;
 @property (atomic, retain) NSMutableArray* statusMessages;
-
-//LBDEBUG
-//@property (nonatomic, retain) AudioStreamer* audioStreamer;
 
 - (id)initWithRadio:(Radio*)radio;
 - (void)initRadioView;
