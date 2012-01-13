@@ -131,7 +131,7 @@
 						<string key="NSFrame">{{4, 9}, {163, 32}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="257163571"/>
+						<reference key="NSNextKeyView" ref="540159339"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -179,7 +179,7 @@
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzE0IDAuMzA5ODAzOTIxNiAwLjUyMTU2ODYyNzUAA</bytes>
 						</object>
-						<object class="NSColor" key="IBUINormalTitleShadowColor" id="832359167">
+						<object class="NSColor" key="IBUINormalTitleShadowColor" id="581153698">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
@@ -222,7 +222,7 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIButton" id="257163571">
+					<object class="IBUIButton" id="540159339">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{248, 2}, {66, 31}}</string>
@@ -243,7 +243,7 @@
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
-						<reference key="IBUINormalTitleShadowColor" ref="832359167"/>
+						<reference key="IBUINormalTitleShadowColor" ref="581153698"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">btnNowPlaying.png</string>
@@ -4826,6 +4826,14 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_nowPlayingButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="540159339"/>
+					</object>
+					<int key="connectionID">37</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dataSource</string>
 						<reference key="source" ref="14936048"/>
 						<reference key="destination" ref="372490531"/>
@@ -4852,7 +4860,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onNowPlayingClicked:</string>
-						<reference key="source" ref="257163571"/>
+						<reference key="source" ref="540159339"/>
 						<reference key="destination" ref="975951072"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -4879,7 +4887,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<reference ref="41292985"/>
 							<reference ref="891695402"/>
 							<reference ref="1038295178"/>
-							<reference ref="257163571"/>
+							<reference ref="540159339"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -4962,7 +4970,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">35</int>
-						<reference key="object" ref="257163571"/>
+						<reference key="object" ref="540159339"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -4993,7 +5001,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">36</int>
+			<int key="maxID">37</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5024,6 +5032,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_categoryTitle">UILabel</string>
+						<string key="_nowPlayingButton">UIButton</string>
 						<string key="_qualitySwitchLabel">QualitySwitchLabel</string>
 						<string key="_tableView">UITableView</string>
 						<string key="_topBarTitle">UILabel</string>
@@ -5032,6 +5041,10 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						<object class="IBToOneOutletInfo" key="_categoryTitle">
 							<string key="name">_categoryTitle</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_nowPlayingButton">
+							<string key="name">_nowPlayingButton</string>
+							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_qualitySwitchLabel">
 							<string key="name">_qualitySwitchLabel</string>

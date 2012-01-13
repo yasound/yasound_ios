@@ -427,6 +427,7 @@ static Song* _gNowPlayingSong = nil;
 - (void)viewDidAppear:(BOOL)animated
 {
     [[AudioStreamManager main] startRadio:self.radio];
+    [[YasoundDataProvider main] enterRadioWall:self.radio];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
@@ -447,19 +448,14 @@ static Song* _gNowPlayingSong = nil;
     
     if (self.ownRadio)
         [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
-    
-    // store the radio id as the "current playing"
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:[self.radio.id integerValue]] forKey:@"NowPlaying"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
-
-
-
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
+    [[YasoundDataProvider main] leaveRadioWall:self.radio];
+
     //End recieving events
     // <=> background audio playing
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];

@@ -11,7 +11,7 @@
 #import "StyleSelectorViewController.h"
 #import "RadioViewController.h"
 #import "YasoundDataProvider.h"
-
+#import "AudioStreamManager.h"
 
 
 @implementation RadioSelectionViewController
@@ -64,6 +64,14 @@
 
     [self updateRadios:nil];
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if ([AudioStreamManager main].currentRadio == nil)
+        [_nowPlayingButton setEnabled:NO];
+}
+
+
 
 - (void)viewDidUnload
 {
@@ -196,14 +204,7 @@
 
 - (IBAction)onNowPlayingClicked:(id)sender
 {
-    NSNumber* radioNb = [[NSUserDefaults standardUserDefaults] objectForKey:@"NowPlaying"];
-    assert(radioNb != nil);
-    NSInteger radioId = [radioNb integerValue];
-    
-    //LBDBEUG
-    Radio* radio = nil;
-    
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
