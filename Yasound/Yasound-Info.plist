@@ -271,6 +271,17 @@
 		</array>
 		<key>stylesheet</key>
 		<dict>
+			<key>ActivityModelessSpinner</key>
+			<dict>
+				<key>height</key>
+				<integer>28</integer>
+				<key>width</key>
+				<integer>38</integer>
+				<key>x</key>
+				<integer>293</integer>
+				<key>y</key>
+				<integer>80</integer>
+			</dict>
 			<key>GuiTintColor</key>
 			<dict>
 				<key>color</key>

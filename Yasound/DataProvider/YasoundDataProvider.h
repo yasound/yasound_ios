@@ -83,6 +83,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)listenersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
@@ -104,8 +105,11 @@ taskStatus stringToStatus(NSString* str);
 - (void)addSongToNextSongs:(Song*)song atPosition:(int)position target:(id)target action:(SEL)selector;     // didAddNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
 
 
-- (void)enterRadio:(Radio*)radio;
-- (void)leaveRadio:(Radio*)radio;
+- (void)enterRadioWall:(Radio*)radio;
+- (void)leaveRadioWall:(Radio*)radio;
+
+- (void)startListeningRadio:(Radio*)radio;
+- (void)stopListeningRadio:(Radio*)radio;
 
 - (NSURL*)urlForPicture:(NSString*)picturePath;
 

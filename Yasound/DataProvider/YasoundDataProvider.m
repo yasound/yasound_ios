@@ -27,7 +27,7 @@
 
 @implementation YasoundDataProvider
 
-@synthesize user;
+@synthesize user = _user;
 @synthesize radio = _radio;
 
 static YasoundDataProvider* _main = nil;
@@ -161,7 +161,7 @@ static YasoundDataProvider* _main = nil;
     [self login:username password:pwd target:self action:@selector(didReceiveNewUserLogin:withInfo:) userData:loginUserData];
 }
 
-- (void)didReceiveNewUserLogin:(User*)user withInfo:(NSDictionary*)info
+- (void)didReceiveNewUserLogin:(User*)u withInfo:(NSDictionary*)info
 {
     NSDictionary* userData = [info valueForKey:@"userData"];
     if (!userData)
@@ -178,10 +178,10 @@ static YasoundDataProvider* _main = nil;
         [finalInfo setValue:error forKey:@"error"];
     }
     
-    if (user && user.api_key)
+    if (u && u.api_key)
     {
-        _user = user;
-        _apiKey = user.api_key;
+        _user = u;
+        _apiKey = u.api_key;
     }
     else
     {
@@ -191,7 +191,7 @@ static YasoundDataProvider* _main = nil;
     
     if (target && selector)
     {
-        [target performSelector:selector withObject:user withObject:finalInfo];
+        [target performSelector:selector withObject:_user withObject:finalInfo];
     }
     
 }
@@ -470,7 +470,7 @@ static YasoundDataProvider* _main = nil;
     [_communicator postNewObject:msg notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
-- (void)enterRadio:(Radio*)radio
+- (void)enterRadioWall:(Radio*)radio
 {
     if (!_user || !radio)
         return;
@@ -486,7 +486,7 @@ static YasoundDataProvider* _main = nil;
     [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
-- (void)leaveRadio:(Radio*)radio
+- (void)leaveRadioWall:(Radio*)radio
 {
     if (!_user || !radio)
         return;
@@ -497,6 +497,38 @@ static YasoundDataProvider* _main = nil;
     e.user = _user;
     e.radio = radio;
     e.type = @"L"; // left
+    e.start_date = [NSDate date];
+    e.end_date = [NSDate date];
+    [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+}
+
+- (void)startListeningRadio:(Radio*)radio
+{
+    if (!_user || !radio)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    
+    WallEvent* e = [[WallEvent alloc] init];
+    e.user = _user;
+    e.radio = radio;
+    e.type = @"T"; // start listening
+    e.start_date = [NSDate date];
+    e.end_date = [NSDate date];
+    [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+}
+
+- (void)stopListeningRadio:(Radio*)radio
+{
+    if (!_user || !radio)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    
+    WallEvent* e = [[WallEvent alloc] init];
+    e.user = _user;
+    e.radio = radio;
+    e.type = @"P"; // stop listening
     e.start_date = [NSDate date];
     e.end_date = [NSDate date];
     [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
@@ -532,6 +564,16 @@ static YasoundDataProvider* _main = nil;
     Auth* auth = self.apiKeyAuth;
     NSNumber* radioID = radio.id;
     NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/connected_user", radioID];
+    [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)listenersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+    if (radio == nil || !radio.id)
+        return;
+    Auth* auth = self.apiKeyAuth;
+    NSNumber* radioID = radio.id;
+    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/listener", radioID];
     [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 

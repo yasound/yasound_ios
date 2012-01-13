@@ -12,7 +12,7 @@
 #import "ActivityAlertView.h"
 #import "SessionManager.h"
 #import "YasoundSessionManager.h"
-
+#import "ActivityModelessSpinner.h"
 
 @implementation TrackInteractionView
 
@@ -71,22 +71,27 @@
 }
 
 
+#define SPINNER_DELAY 1.5f
+
 - (void)onTrackLike:(id)sender
 {
     [[YasoundDataProvider main] setMood:eMoodLike forSong:_song];
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_like", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+    [[ActivityModelessSpinner main] addRefForTimeInterval:SPINNER_DELAY];
+    //[ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_like", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
 }
 
 - (void)onTrackDislike:(id)sender
 {
     [[YasoundDataProvider main] setMood:eMoodDislike forSong:_song];
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_dislike", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+//    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_dislike", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+    [[ActivityModelessSpinner main] addRefForTimeInterval:SPINNER_DELAY];
 }
 
 - (void)onTrackAdd:(id)sender
 {
     [[YasoundDataProvider main] addSongToUserRadio:_song];
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_add", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+//    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_add", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+    [[ActivityModelessSpinner main] addRefForTimeInterval:SPINNER_DELAY];
 }
 
 - (NSString *)getUserCountry

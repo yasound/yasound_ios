@@ -11,6 +11,7 @@
 @interface TracksView : UITableView <UITableViewDelegate, UITableViewDataSource>
 {
     NSIndexPath* _selectedIndexPath;
+    NSIndexPath* _destIndexPath;
     NSMutableArray* _data;
 }
 

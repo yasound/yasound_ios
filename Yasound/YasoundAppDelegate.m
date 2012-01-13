@@ -10,7 +10,7 @@
 #import "EasyTracker.h"
 #import "RootViewController.h"
 #import "FacebookSessionManager.h"
-
+#import "AudioStreamManager.h"
 
 @implementation YasoundAppDelegate
 
@@ -80,6 +80,9 @@
    Save data if appropriate.
    See also applicationDidEnterBackground:.
    */
+    
+    [[AudioStreamManager main] stopRadio];
+
 }
 
 - (void)dealloc
