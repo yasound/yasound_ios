@@ -256,6 +256,7 @@
         // update gui
         [self moveRowAtIndexPath:_selectedIndexPath  toIndexPath:_destIndexPath];
 
+        _selectedIndexPath = _destIndexPath;
         
         done = YES;
     }
@@ -285,7 +286,6 @@
 
         [[YasoundDataProvider main] moveNextSong:song toPosition:_destIndexPath.row target:self action:@selector(onUpdateTrack:info:)];   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
 
-//        _selectedIndexPath = _destIndexPath;
 
         // didDeleteNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
     }
