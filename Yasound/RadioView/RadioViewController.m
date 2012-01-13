@@ -20,6 +20,7 @@
 #import "RadioUser.h"
 #import "ActivityAlertView.h"
 #import "Tutorial.h"
+#import "InteractiveView.h"
 
 
 //#define LOCAL 1 // use localhost as the server
@@ -120,7 +121,7 @@ static Song* _gNowPlayingSong = nil;
     // header back arrow
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
     UIButton* btn = [sheet makeButton];
-    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+//    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
     
     // header avatar, as a second back button
@@ -149,7 +150,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
     btn = [[UIButton alloc] initWithFrame:sheet.frame];
     [btn setImage:[sheet image] forState:UIControlStateNormal]; 
-    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+//    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
     
     
@@ -212,13 +213,28 @@ static Song* _gNowPlayingSong = nil;
     [_playPauseButton setImage:[UIImage imageNamed:@"btnPlay.png"] forState:UIControlStateSelected];
     [_headerView addSubview:_playPauseButton];
     
+    
+    //.................................................................................
+    // header interactive zone to overload button
+    BundleStylesheet* sheetAvatar = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
+    
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
+    
+    frame = CGRectMake(0, 0, sheetAvatar.frame.origin.x + sheetAvatar.frame.size.width, _headerView.frame.size.height - sheet.frame.size.height);
+    InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:frame target:self action:@selector(onBack:)];
+    [_headerView addSubview:interactiveView];
+    
+    
+    
+    
+    
     //....................................................................................
     //
     // header now playing bar
     //
     
     // header now playing bar image
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
+//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
     
     _playingNowContainer = [[UIView alloc] initWithFrame:sheet.frame];
     [self.view addSubview:_playingNowContainer];
