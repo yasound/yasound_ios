@@ -48,7 +48,8 @@ static Song* _gNowPlayingSong = nil;
     if (self) 
     {
         self.radio = radio;
-        self.ownRadio = YES;
+        
+        self.ownRadio = [[YasoundDataProvider main].user.id intValue] == [self.radio.creator.id intValue];
 
         _trackInteractionViewDisplayed = NO;
     
