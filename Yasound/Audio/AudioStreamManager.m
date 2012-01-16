@@ -10,7 +10,7 @@
 #import "AudioStreamer.h"
 #import "YasoundDataProvider.h"
 
-#define USE_FAKE_RADIO_URL 1
+#define USE_FAKE_RADIO_URL 0
 
 
 @implementation AudioStreamManager
@@ -62,11 +62,15 @@ static AudioStreamer* _gAudioStreamer = nil;
 
     self.currentRadio = radio;
 
-#ifdef USE_FAKE_RADIO_URL
+#if (defined USE_FAKE_RADIO_URL) || (defined USE_YASOUND_LOCAL_SERVER)
     NSURL* radiourl = [NSURL URLWithString:@"http://dev.yasound.com:8001/fakeid"];
 #else
-    NSURL* radiourl = [NSURL URLWithString:self.currentRadio.url];
+    NSString* uuid = radio.uuid;
+    NSString* url = [NSString stringWithFormat:@"http://dev.yasound.com:8001/%@", uuid];
+    NSURL* radiourl = [NSURL URLWithString:url];
 #endif
+    
+    
     
     _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radiourl];
     [_gAudioStreamer start];
