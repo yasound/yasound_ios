@@ -58,6 +58,8 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)userRadioWithTarget:(id)target action:(SEL)selector;
 
+- (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
+
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)selectedRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
