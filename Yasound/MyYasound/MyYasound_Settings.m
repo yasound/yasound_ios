@@ -361,7 +361,7 @@
 //
 //    [[NSUserDefaults standardUserDefaults] synchronize];
 //    
-//    [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists binary:NO compressed:YES target:self action:@selector(didBuildDataWithPlaylist:)];
+//    [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists binary:YES compressed:YES target:self action:@selector(didBuildDataWithPlaylist:)];
 }
 
 

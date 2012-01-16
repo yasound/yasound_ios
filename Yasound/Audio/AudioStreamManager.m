@@ -63,7 +63,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     self.currentRadio = radio;
 
 #ifdef USE_FAKE_RADIO_URL
-    NSURL* radiourl = [NSURL URLWithString:@"http://ys-web01-vbo.alionis.net:8000/ubik.mp3"];
+    NSURL* radiourl = [NSURL URLWithString:@"http://dev.yasound.com:8001/fakeid"];
 #else
     NSURL* radiourl = [NSURL URLWithString:self.currentRadio.url];
 #endif
