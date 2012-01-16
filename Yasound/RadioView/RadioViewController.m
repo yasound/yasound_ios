@@ -914,7 +914,28 @@ static Song* _gNowPlayingSong = nil;
         [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
     }
 }
-         
+     
+
+- (void)addSongLog:(NSString*)title user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent
+{
+    WallMessage* m = [[WallMessage alloc] init];
+    m.user = user;
+    m.avatarURL = avatarURL;
+    m.date = date;
+    m.text = text;
+    
+    // compute the size of the text => will allow to update the cell's height dynamically
+    CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+    m.textHeight = suggestedSize.height;
+    
+    [self.messages insertObject:m atIndex:0];
+    
+    if (!silent)
+    {
+        [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+    }
+}
+
 
 
 
