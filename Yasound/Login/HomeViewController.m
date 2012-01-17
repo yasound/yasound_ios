@@ -9,13 +9,13 @@
 #import "HomeViewController.h"
 #import "LoginViewController.h"
 #import "SignupViewController.h"
-#import "SettingsViewController.h"
+#import "CreateMyRadio.h"
 #import "MyYasoundViewController.h"
 #import "RadioTabBarController.h"
 #import "YasoundSessionManager.h"
 #import "YasoundDataProvider.h"
 #import "ActivityAlertView.h"
-
+#import "RootViewController.h"
 
 #define ROW_LOGIN 0
 #define ROW_SIGNUP 1
@@ -215,7 +215,7 @@
     {
         if ([[YasoundSessionManager main] getAccount:user])
             // call root to launch the Radio
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
         else
         {
             [[YasoundSessionManager main] addAccount:user];
@@ -234,7 +234,7 @@
     assert(radio);
     
     // account just being create, go to configuration screen
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:radio];
+    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
 }

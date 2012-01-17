@@ -7,7 +7,7 @@
 //
 
 #import "SignupViewController.h"
-#import "SettingsViewController.h"
+#import "CreateMyRadio.h"
 #import "YasoundDataProvider.h"
 #import "LegalViewController.h"
 #import "ActivityAlertView.h"
@@ -376,8 +376,8 @@
 {
     assert(radio);
     
-    // account just being create, go to configuration screen
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:radio];
+    // account just being create, go to CreateMyRadio screen
+    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio"  bundle:nil  wizard:YES radio:radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
 }

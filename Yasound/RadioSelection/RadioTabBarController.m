@@ -12,7 +12,8 @@
 #import "MyYasoundViewController.h"
 #import "BundleFileManager.h"
 #import "RadioViewController.h"
-
+#import "CreateMyRadio.h"
+#import "YasoundDataProvider.h"
 
 
 @implementation RadioTabBarController
@@ -37,9 +38,21 @@
     
   BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"GuiTintColor" error:nil];
   self.tabBar.tintColor = stylesheet.color;
-
+    
+    UIViewController* view1 = nil;
+    
+    NSNumber* radioCreatedNb = [[NSUserDefaults standardUserDefaults] objectForKey:@"radioCreated"];
+    if ((radioCreatedNb != nil) && ([radioCreatedNb boolValue] == NO))
+    {
+        // Mon Yasound
+        view1 = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:NO radio:[YasoundDataProvider main].radio];
+    }
+    else
+    {
+    
   // Mon Yasound
-    MyYasoundViewController* view1 = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil title:NSLocalizedString(@"selection_tab_myyasound", nil) tabIcon:@"tabIconMyYasound.png"];
+        view1 = [[MyYasoundViewController alloc] initWithNibName:@"MyYasoundViewController" bundle:nil title:NSLocalizedString(@"selection_tab_myyasound", nil) tabIcon:@"tabIconMyYasound.png"];
+    }
   
   // Selection
   RadioSelectionViewController* view2 = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTSelection title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIconFavorites.png"];
@@ -69,6 +82,18 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    NSNumber* forceTabIndex = [[NSUserDefaults standardUserDefaults] objectForKey:@"forceTabIndex"];
+    if (forceTabIndex != nil)
+    {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"forceTabIndex"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+         
+        NSInteger index = [forceTabIndex integerValue];
+        self.selectedIndex = index;
+        return;
+    }
+    
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

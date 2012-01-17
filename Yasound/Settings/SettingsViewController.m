@@ -152,6 +152,12 @@
     
     if ([ActivityAlertView isRunning])
         [ActivityAlertView close];
+    
+
+    // radio create has started. Remove the flag from the user's settings, to remove the "Create My Radio" screen
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"radioCreated"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
 }
 
 - (void) viewWillDisappear:(BOOL)animated

@@ -84,9 +84,9 @@ NSArray* gFakeUsersFavorites = nil;
 
     _segmentControl = (UISegmentedControl *) [_segmentBarButtonItem customView];
 
-    [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_myyasound", nil) forSegmentAtIndex:0];
-    [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_friends", nil) forSegmentAtIndex:1];
-    [_segmentControl setTitle:NSLocalizedString(@"myyaound_tab_favorites", nil) forSegmentAtIndex:2];
+    [_segmentControl setTitle:NSLocalizedString(@"myyasound_tab_myyasound", nil) forSegmentAtIndex:0];
+    [_segmentControl setTitle:NSLocalizedString(@"myyasound_tab_friends", nil) forSegmentAtIndex:1];
+    [_segmentControl setTitle:NSLocalizedString(@"myyasound_tab_favorites", nil) forSegmentAtIndex:2];
 
     [_segmentControl addTarget:self action:@selector(onmSegmentClicked:) forControlEvents:UIControlEventValueChanged];
     

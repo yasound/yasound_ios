@@ -15,7 +15,7 @@
 #import "ActivityAlertView.h"
 #import "RegExp.h"
 #import "YasoundSessionManager.h"
-
+#import "RootViewController.h"
 
 
 #define ROW_EMAIL 0
@@ -241,7 +241,7 @@
     [[YasoundSessionManager main] registerForYasound:_email withPword:_pword];
     
     // call root to launch the Radio
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
 }
 
 
