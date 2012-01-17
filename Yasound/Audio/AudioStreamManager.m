@@ -92,14 +92,14 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 
 
-- (void)pauseRadio
-{
-    if (_gAudioStreamer == nil)
-        return;
-
-    [_gAudioStreamer pause];
-    [[YasoundDataProvider main] stopListeningRadio:self.currentRadio];
-}
+//- (void)pauseRadio
+//{
+//    if (_gAudioStreamer == nil)
+//        return;
+//
+//    [_gAudioStreamer pause];
+//    [[YasoundDataProvider main] stopListeningRadio:self.currentRadio];
+//}
 
 
 - (void)playRadio

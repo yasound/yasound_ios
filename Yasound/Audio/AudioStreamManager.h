@@ -21,7 +21,7 @@
 - (void)startRadio:(Radio*)radio;
 - (void)stopRadio;
 
-- (void)pauseRadio;
+//- (void)pauseRadio;
 - (void)playRadio;
 
 
