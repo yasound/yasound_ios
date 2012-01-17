@@ -271,7 +271,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarBackground" error:nil];
     UIView* messageBarView = [[UIView alloc] initWithFrame:sheet.frame];
     
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     messageBarView.backgroundColor = [UIColor colorWithPatternImage:sheet.image];
     [_viewWall addSubview:messageBarView];   
     
@@ -322,7 +322,7 @@ static Song* _gNowPlayingSong = nil;
     //
     // status bar
     //
-    BundleStylesheet* sheetStatus = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" error:nil];
+    BundleStylesheet* sheetStatus = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _statusBar = [[UIView alloc] initWithFrame:sheetStatus.frame];
     UIImageView* statusBarBackground = [sheetStatus makeImage];
     statusBarBackground.frame = CGRectMake(0, 0, sheetStatus.frame.size.width, sheetStatus.frame.size.height);
@@ -878,8 +878,11 @@ static Song* _gNowPlayingSong = nil;
         viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y + frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height - frame.size.height);
         
         _trackInteractionView = [[TrackInteractionView alloc] initWithSong:_gNowPlayingSong];
-        _trackInteractionView.frame = CGRectMake(0, frame.size.height, frame.size.width, frame.size.height);
-        _trackInteractionView.backgroundColor = [UIColor blackColor];
+        _trackInteractionView.frame = CGRectMake(0, frame.size.height -1, frame.size.width, frame.size.height);
+
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        _trackInteractionView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+        
         [_playingNowContainer addSubview:_trackInteractionView];
 
     }
