@@ -52,31 +52,31 @@
         view.backgroundColor = [UIColor clearColor];
         
         // avatar
-        sheet = [[Theme theme] stylesheetForKey:@"CellAvatar" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.avatar = [[WebImageView alloc] initWithImageAtURL:m.avatarURL];
         self.avatar.frame = sheet.frame;
         [view addSubview:self.avatar];
 
         // avatar mask
-        sheet = [[Theme theme] stylesheetForKey:@"CellAvatarMask" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"CellAvatarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIImageView* imageView = [[[UIImageView alloc] initWithImage:[sheet image]] autorelease];
         imageView.frame = sheet.frame;
         [view addSubview:imageView];
         
         // date
-        sheet = [[Theme theme] stylesheetForKey:@"CellDate" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"CellDate" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.date = [sheet makeLabel];
         self.date.text = [self dateToString:m.date];
         [view addSubview:self.date];
         
         // user
-        sheet = [[Theme theme] stylesheetForKey:@"CellUser" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"CellUser" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.user = [sheet makeLabel];
         self.user.text = m.user;
         [view addSubview:self.user];
 
         // message background
-        BundleStylesheet* messageSheet = [[Theme theme] stylesheetForKey:@"CellMessage" error:nil];
+        BundleStylesheet* messageSheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIView* bkg = [[UIView alloc] initWithFrame:messageSheet.frame];
         bkg.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, m.textHeight + 2*MESSAGE_SPACING);
         
@@ -100,7 +100,7 @@
         
 //        [self.contentView addSubview:self.background];
         
-        sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         imageView = [[UIImageView alloc] initWithImage:[sheet image]];
         imageView.frame = CGRectMake(0, bkg.frame.origin.y + bkg.frame.size.height + sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
         [view addSubview:imageView];
