@@ -20,11 +20,21 @@
 @synthesize rootViewController;
 
 
+#define GOOGLE_ANALYTICS_LOG NO
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
     // google analytics launcher
+    NSMutableDictionary *trackerParameters =
+    [NSMutableDictionary dictionaryWithCapacity:0];
+    
+    [trackerParameters setValue:[NSNumber numberWithBool:GOOGLE_ANALYTICS_LOG]
+                         forKey:kGANDebugEnabledKey];
+    
     [EasyTracker launchWithOptions:launchOptions
-                    withParameters:nil
+                    withParameters:trackerParameters
                          withError:nil];
     
     navigationController = [[UINavigationController alloc] init];

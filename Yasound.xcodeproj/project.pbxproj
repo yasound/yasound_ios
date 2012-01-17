@@ -200,12 +200,6 @@
 		BC8B084014926F22007E1307 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083614926F22007E1307 /* Icon@2x.png */; };
 		BC8B084214927B7D007E1307 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B084114927B7D007E1307 /* Icon.png */; };
 		BC8B084314927B7D007E1307 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B084114927B7D007E1307 /* Icon.png */; };
-		BC914B0C1491846800D5D7B4 /* blues.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B031491846800D5D7B4 /* blues.bundle */; };
-		BC914B0D1491846800D5D7B4 /* blues.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B031491846800D5D7B4 /* blues.bundle */; };
-		BC914B121491846800D5D7B4 /* classic.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B061491846800D5D7B4 /* classic.bundle */; };
-		BC914B131491846800D5D7B4 /* classic.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B061491846800D5D7B4 /* classic.bundle */; };
-		BC914B181491846800D5D7B4 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B091491846800D5D7B4 /* default.bundle */; };
-		BC914B191491846800D5D7B4 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B091491846800D5D7B4 /* default.bundle */; };
 		BC914B2014920ADE00D5D7B4 /* btnArrowIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */; };
 		BC914B2114920ADE00D5D7B4 /* btnArrowIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */; };
 		BC914B2214920ADE00D5D7B4 /* btnArrowIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1F14920ADE00D5D7B4 /* btnArrowIndicator@2x.png */; };
@@ -248,6 +242,9 @@
 		BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
+		BCB2FDCD14C4B07D00BFA4FC /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCB2FDCC14C4B07D00BFA4FC /* default.bundle */; };
+		BCB2FDCE14C4B07D00BFA4FC /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCB2FDCC14C4B07D00BFA4FC /* default.bundle */; };
+		BCB2FDCF14C4B07D00BFA4FC /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCB2FDCC14C4B07D00BFA4FC /* default.bundle */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
@@ -809,9 +806,6 @@
 		E5F3B8C41498B88D008DD607 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		E5F3B8C51498B88D008DD607 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		E5F3B8C61498B88D008DD607 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
-		E5F3B8D81498B88D008DD607 /* blues.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B031491846800D5D7B4 /* blues.bundle */; };
-		E5F3B8D91498B88D008DD607 /* classic.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B061491846800D5D7B4 /* classic.bundle */; };
-		E5F3B8DA1498B88D008DD607 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC914B091491846800D5D7B4 /* default.bundle */; };
 		E5F3B8DB1498B88D008DD607 /* btnArrowIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */; };
 		E5F3B8DC1498B88D008DD607 /* btnArrowIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1F14920ADE00D5D7B4 /* btnArrowIndicator@2x.png */; };
 		E5F3B8DD1498B88D008DD607 /* tabIconFavorites.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B080714924D75007E1307 /* tabIconFavorites.png */; };
@@ -939,9 +933,6 @@
 		BC8B083514926F22007E1307 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		BC8B083614926F22007E1307 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		BC8B084114927B7D007E1307 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		BC914B031491846800D5D7B4 /* blues.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = blues.bundle; sourceTree = "<group>"; };
-		BC914B061491846800D5D7B4 /* classic.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = classic.bundle; sourceTree = "<group>"; };
-		BC914B091491846800D5D7B4 /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = default.bundle; sourceTree = "<group>"; };
 		BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnArrowIndicator.png; sourceTree = "<group>"; };
 		BC914B1F14920ADE00D5D7B4 /* btnArrowIndicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnArrowIndicator@2x.png"; sourceTree = "<group>"; };
 		BC93B4A3148E686C00A87157 /* ThemeSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSelectorViewController.h; sourceTree = "<group>"; };
@@ -967,6 +958,7 @@
 		BCA6554814BCA8590043B2DA /* Auth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
 		BCB178B214BEE90100A3EDE3 /* TracksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksView.h; sourceTree = "<group>"; };
 		BCB178B314BEE90100A3EDE3 /* TracksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksView.m; sourceTree = "<group>"; };
+		BCB2FDCC14C4B07D00BFA4FC /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = default.bundle; path = resources/themes/default.bundle; sourceTree = SOURCE_ROOT; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		BCB5F28C1485416B00C28B3D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
@@ -2031,9 +2023,7 @@
 		BCE4631B148FD89100422448 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
-				BC914B031491846800D5D7B4 /* blues.bundle */,
-				BC914B061491846800D5D7B4 /* classic.bundle */,
-				BC914B091491846800D5D7B4 /* default.bundle */,
+				BCB2FDCC14C4B07D00BFA4FC /* default.bundle */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -2344,9 +2334,6 @@
 				BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
-				BC914B0D1491846800D5D7B4 /* blues.bundle in Resources */,
-				BC914B131491846800D5D7B4 /* classic.bundle in Resources */,
-				BC914B191491846800D5D7B4 /* default.bundle in Resources */,
 				BC914B2114920ADE00D5D7B4 /* btnArrowIndicator.png in Resources */,
 				BC914B2314920ADE00D5D7B4 /* btnArrowIndicator@2x.png in Resources */,
 				BC8B081214924D75007E1307 /* tabIconFavorites.png in Resources */,
@@ -2442,6 +2429,7 @@
 				BC9522B914B71352001E1ACE /* btnPlay@2x.png in Resources */,
 				BC03052214C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052514C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
+				BCB2FDCE14C4B07D00BFA4FC /* default.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2494,9 +2482,6 @@
 				BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
-				BC914B0C1491846800D5D7B4 /* blues.bundle in Resources */,
-				BC914B121491846800D5D7B4 /* classic.bundle in Resources */,
-				BC914B181491846800D5D7B4 /* default.bundle in Resources */,
 				BC914B2014920ADE00D5D7B4 /* btnArrowIndicator.png in Resources */,
 				BC914B2214920ADE00D5D7B4 /* btnArrowIndicator@2x.png in Resources */,
 				BC8B081114924D75007E1307 /* tabIconFavorites.png in Resources */,
@@ -2592,6 +2577,7 @@
 				BC9522B814B71352001E1ACE /* btnPlay@2x.png in Resources */,
 				BC03052114C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052414C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
+				BCB2FDCD14C4B07D00BFA4FC /* default.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2644,9 +2630,6 @@
 				E5F3B8C41498B88D008DD607 /* StyleSelectorViewController.xib in Resources */,
 				E5F3B8C51498B88D008DD607 /* MyYasoundBackground.png in Resources */,
 				E5F3B8C61498B88D008DD607 /* MyYasoundBackground@2x.png in Resources */,
-				E5F3B8D81498B88D008DD607 /* blues.bundle in Resources */,
-				E5F3B8D91498B88D008DD607 /* classic.bundle in Resources */,
-				E5F3B8DA1498B88D008DD607 /* default.bundle in Resources */,
 				E5F3B8DB1498B88D008DD607 /* btnArrowIndicator.png in Resources */,
 				E5F3B8DC1498B88D008DD607 /* btnArrowIndicator@2x.png in Resources */,
 				E5F3B8DD1498B88D008DD607 /* tabIconFavorites.png in Resources */,
@@ -2742,6 +2725,7 @@
 				BC9522BA14B71352001E1ACE /* btnPlay@2x.png in Resources */,
 				BC03052314C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052614C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
+				BCB2FDCF14C4B07D00BFA4FC /* default.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

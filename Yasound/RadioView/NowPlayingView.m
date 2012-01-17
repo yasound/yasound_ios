@@ -22,7 +22,7 @@
         _target = target;
         _action = action;
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         
         CGRect frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
         self.frame = frame;
@@ -35,12 +35,11 @@
 //        imageView.frame = sheet.frame;
 //        [self addSubview:imageView];
         
-        // header now playing bar track image mask
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarMask" error:nil];
-        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-        imageView.frame = sheet.frame;
-        [self addSubview:imageView];
-        
+//        // header now playing bar track image mask
+//        sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarMask" error:nil];
+//        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+//        imageView.frame = sheet.frame;
+//        [self addSubview:imageView];
         
         // header now playing bar label
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLabel" error:nil];

@@ -101,13 +101,13 @@ static Song* _gNowPlayingSong = nil;
     //
     // header
     //
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeader" error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Header" error:nil];
     _headerView = [[UIView alloc] initWithFrame:sheet.frame];
     _headerView.backgroundColor = sheet.color;
     [self.view addSubview:_headerView];
     
-    // header picto image
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderPicto" error:nil];
+    // header background
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderBackground" error:nil];
     UIImageView* image = [[UIImageView alloc] initWithImage:[sheet image]];
     CGFloat x = self.view.frame.origin.x + self.view.frame.size.width - sheet.frame.size.width;
     image.frame = CGRectMake(x, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
@@ -115,13 +115,13 @@ static Song* _gNowPlayingSong = nil;
     
     
     // header back arrow
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderBack" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderBack" error:nil];
     UIButton* btn = [sheet makeButton];
 //    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
     
     // header avatar, as a second back button
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderAvatar" error:nil];
 //    _radioImage = [[WebImageView alloc] initWithImageFrame:CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height)];
     _radioImage = [[WebImageView alloc] initWithImageFrame:sheet.frame];
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
@@ -143,7 +143,7 @@ static Song* _gNowPlayingSong = nil;
 //    [_headerView addSubview:avatarMask];
     
     // header avatar mask  as button
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatarMask" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderAvatarMask" error:nil];
     btn = [[UIButton alloc] initWithFrame:sheet.frame];
     [btn setImage:[sheet image] forState:UIControlStateNormal]; 
 //    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
@@ -157,31 +157,31 @@ static Song* _gNowPlayingSong = nil;
 
     
     // header title
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderTitle" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderTitle" error:nil];
     UILabel* label = [sheet makeLabel];
     label.text = self.radio.name;
     [_headerView addSubview:label];
     
     // header heart image
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderHeart" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderHeart" error:nil];
     image = [[UIImageView alloc] initWithImage:[sheet image]];
     image.frame = sheet.frame;
     [_headerView addSubview:image];
 
     // header likes
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderLikes" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderLikes" error:nil];
     label = [sheet makeLabel];
     label.text = [NSString stringWithFormat:@"%d", [self.radio.likes integerValue]];
     [_headerView addSubview:label];
     
     // header headset image
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderHeadSet" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderHeadSet" error:nil];
     image = [[UIImageView alloc] initWithImage:[sheet image]];
     image.frame = sheet.frame;
     [_headerView addSubview:image];
     
     // header listeners
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderListeners" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderListeners" error:nil];
     label = [sheet makeLabel];
     label.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
     [_headerView addSubview:label];
@@ -194,7 +194,7 @@ static Song* _gNowPlayingSong = nil;
 //    [_headerView addSubview:btn];
 
     //favorites button
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderFavoriteButton" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderFavoriteButton" error:nil];
     UIButton* button = [sheet makeButton];
     [button addTarget:self action:@selector(onFavorite:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:button];
@@ -212,7 +212,7 @@ static Song* _gNowPlayingSong = nil;
     
     //.................................................................................
     // header interactive zone to overload button
-    BundleStylesheet* sheetAvatar = [[Theme theme] stylesheetForKey:@"RadioViewHeaderAvatar" error:nil];
+    BundleStylesheet* sheetAvatar = [[Theme theme] stylesheetForKey:@"HeaderAvatar" error:nil];
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
     
@@ -229,8 +229,15 @@ static Song* _gNowPlayingSong = nil;
     // header now playing bar
     //
     
+    // border
+    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBorder" error:nil];
+    UIImageView* imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+    imageView.frame = sheet.frame;
+    [self.view addSubview:imageView];
+    
+    
     // header now playing bar image
-//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" error:nil];
     
     _playingNowContainer = [[UIView alloc] initWithFrame:sheet.frame];
     [self.view addSubview:_playingNowContainer];
@@ -302,13 +309,13 @@ static Song* _gNowPlayingSong = nil;
     [_viewWall addSubview:_tableView];
 
     
-    //....................................................................................
-    //
-    // extra layer
-    //
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewExtraLayer" error:nil];
-    image = [sheet makeImage];
-    [_viewWall addSubview:image];
+//    //....................................................................................
+//    //
+//    // extra layer
+//    //
+//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewExtraLayer" error:nil];
+//    image = [sheet makeImage];
+//    [_viewWall addSubview:image];
 
     
     //....................................................................................
@@ -916,25 +923,6 @@ static Song* _gNowPlayingSong = nil;
 }
      
 
-- (void)addSongLog:(NSString*)title user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent
-{
-    WallMessage* m = [[WallMessage alloc] init];
-    m.user = user;
-    m.avatarURL = avatarURL;
-    m.date = date;
-    m.text = text;
-    
-    // compute the size of the text => will allow to update the cell's height dynamically
-    CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-    m.textHeight = suggestedSize.height;
-    
-    [self.messages insertObject:m atIndex:0];
-    
-    if (!silent)
-    {
-        [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
-    }
-}
 
 
 
