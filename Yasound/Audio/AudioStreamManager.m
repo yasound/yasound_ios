@@ -110,8 +110,8 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 
     //LBDEBUG DEBUG TODO : UNMUTE RADIO
-//    [_gAudioStreamer start];
-//    [[YasoundDataProvider main] startListeningRadio:self.currentRadio];
+    [_gAudioStreamer start];
+    [[YasoundDataProvider main] startListeningRadio:self.currentRadio];
 }
 
 
