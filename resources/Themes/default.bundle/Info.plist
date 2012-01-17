@@ -419,32 +419,31 @@
 			<key>minHeight</key>
 			<integer>26</integer>
 		</dict>
-		<key>RadioViewCellBackground1</key>
-		<dict>
-			<key>color</key>
-			<string>white</string>
-		</dict>
-		<key>RadioViewCellBackground0</key>
-		<dict>
-			<key>color</key>
-			<string>rgb(245,245,245)</string>
-		</dict>
-		<key>RadioViewCellAvatar</key>
+		<key>CellAvatar</key>
 		<dict>
 			<key>x</key>
 			<integer>3</integer>
 			<key>y</key>
 			<integer>4</integer>
 			<key>width</key>
-			<integer>32</integer>
+			<integer>35</integer>
 			<key>height</key>
-			<integer>32</integer>
-			<key>color</key>
-			<string>rgb(194,194,190)</string>
-			<key>borderSize</key>
-			<integer>1</integer>
+			<integer>35</integer>
 		</dict>
-		<key>RadioViewCellDate</key>
+		<key>CellAvatarMask</key>
+		<dict>
+			<key>x</key>
+			<integer>3</integer>
+			<key>y</key>
+			<integer>4</integer>
+			<key>name</key>
+			<string>UserMask</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/</string>
+		</dict>
+		<key>CellDate</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -466,7 +465,7 @@
 			<key>y</key>
 			<integer>6</integer>
 		</dict>
-		<key>RadioViewCellUser</key>
+		<key>CellUser</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -478,15 +477,15 @@
 				<string>bold</string>
 			</dict>
 			<key>height</key>
-			<integer>10</integer>
+			<integer>15</integer>
 			<key>width</key>
 			<integer>240</integer>
 			<key>x</key>
-			<integer>40</integer>
+			<integer>46</integer>
 			<key>y</key>
-			<integer>6</integer>
+			<integer>4</integer>
 		</dict>
-		<key>RadioViewCellMessage</key>
+		<key>CellMessage</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -500,11 +499,24 @@
 			<key>height</key>
 			<integer>12</integer>
 			<key>width</key>
-			<integer>280</integer>
+			<integer>270</integer>
 			<key>x</key>
-			<integer>40</integer>
+			<integer>46</integer>
 			<key>y</key>
 			<integer>21</integer>
+		</dict>
+		<key>CellSeparator</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>10</integer>
+			<key>name</key>
+			<string>MessageSeparator</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/</string>
 		</dict>
 		<key>RadioViewStatusBar</key>
 		<dict>

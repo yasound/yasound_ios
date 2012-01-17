@@ -73,8 +73,9 @@ static AudioStreamer* _gAudioStreamer = nil;
     
     
     _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radiourl];
-    [_gAudioStreamer start];
-    [[YasoundDataProvider main] startListeningRadio:self.currentRadio];
+    //LBDEBUG DEBUG TODO : UNMUTE RADIO
+//    [_gAudioStreamer start];
+//    [[YasoundDataProvider main] startListeningRadio:self.currentRadio];
 
 }
 
@@ -107,8 +108,10 @@ static AudioStreamer* _gAudioStreamer = nil;
     if (_gAudioStreamer == nil)
         return;
 
-    [_gAudioStreamer start];
-    [[YasoundDataProvider main] startListeningRadio:self.currentRadio];
+
+    //LBDEBUG DEBUG TODO : UNMUTE RADIO
+//    [_gAudioStreamer start];
+//    [[YasoundDataProvider main] startListeningRadio:self.currentRadio];
 }
 
 

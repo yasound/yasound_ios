@@ -67,7 +67,7 @@ static Song* _gNowPlayingSong = nil;
     
     _statusBarButtonToggled = NO;
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellMessage" error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"CellMessage" error:nil];
     _messageFont = [sheet makeFont];
     [_messageFont retain];
     
@@ -292,6 +292,13 @@ static Song* _gNowPlayingSong = nil;
     //
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableView" error:nil];    
     _tableView = [[UITableView alloc] initWithFrame:sheet.frame style:UITableViewStylePlain];
+
+//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableView" error:nil];    
+//    _tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MyYasoundBackground.png"]];
+//    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MyYasoundBackground.png"]];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
