@@ -120,7 +120,7 @@
 							<int key="type">2</int>
 							<double key="pointSize">17</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="892705145">
+						<object class="NSFont" key="IBUIFont" id="650077946">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">17</double>
 							<int key="NSfFlags">16</int>
@@ -160,7 +160,7 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
 						<reference key="IBUIFontDescription" ref="1048680636"/>
-						<reference key="IBUIFont" ref="892705145"/>
+						<reference key="IBUIFont" ref="650077946"/>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
