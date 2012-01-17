@@ -8,6 +8,8 @@
 
 #import "Model.h"
 
+@class Radio;
+
 typedef enum  
 {
     eMoodLike = 0,
@@ -27,6 +29,8 @@ UserMood stringToUsermood(NSString* str);
 @property (retain, nonatomic) NSString* api_key;
 @property (retain, nonatomic) NSString* email;
 @property (retain, nonatomic) NSString* picture;
+@property (retain, nonatomic) Radio* current_radio;
+@property (retain, nonatomic) Radio* own_radio;
 
 - (NSString*)toString;
 @end

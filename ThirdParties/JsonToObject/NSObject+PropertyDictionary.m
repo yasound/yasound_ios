@@ -59,8 +59,11 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
     {
       // custom object
       NSDictionary* dictVal = [dict valueForKey:propName];
-      val = [[c alloc] init];
-      [val loadPropertiesFromDictionary:dictVal];
+        if (dictVal && [dictVal isKindOfClass:[NSDictionary class]])
+        {
+          val = [[c alloc] init];
+          [val loadPropertiesFromDictionary:dictVal];
+        }
     }
     [self setValue:val forKey:propName]; 
   }
