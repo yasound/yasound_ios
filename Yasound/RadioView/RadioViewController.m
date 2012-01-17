@@ -1291,8 +1291,7 @@ static Song* _gNowPlayingSong = nil;
 - (void)playAudio
 {
     _playingNowView.playPauseButton.selected = NO;
-    [[AudioStreamManager main] playRadio];
-
+    [[AudioStreamManager main] startRadio:self.radio];
 }
 
 - (void)pauseAudio

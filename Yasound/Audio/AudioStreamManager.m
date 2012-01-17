@@ -87,6 +87,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     [[YasoundDataProvider main] stopListeningRadio:self.currentRadio];
     [_gAudioStreamer stop];
     [_gAudioStreamer release];
+    _gAudioStreamer = nil;
     
     self.currentRadio = nil;
 }
