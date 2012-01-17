@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "Radio.h"
 
 @implementation User
 
@@ -16,6 +17,8 @@
 @synthesize api_key;
 @synthesize email;
 @synthesize picture;
+@synthesize current_radio;
+@synthesize own_radio;
 
 - (NSString*)toString
 {
