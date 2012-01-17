@@ -1146,7 +1146,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction)onFavorite:(id)sender
 {
-    [ActivityAlertView showWithTitle:nil];
+    [[ActivityModelessSpinner main] addRef];
     [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoritesRadioReceived:)];
 }
 
@@ -1158,13 +1158,14 @@ static Song* _gNowPlayingSong = nil;
     {
         if ([radio.id integerValue] == currentRadioId)
         {
-            [ActivityAlertView close];
-            [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_alredy_added", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+            [[ActivityModelessSpinner main] removeRef];
+            [[YasoundDataProvider main] setRadio:self.radio asFavorite:NO];
+            [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_removed", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
             return;
         }
     }
             
-    [ActivityAlertView close];
+    [[ActivityModelessSpinner main] removeRef];
     [[YasoundDataProvider main] setRadio:self.radio asFavorite:YES];
 
     [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_added", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
