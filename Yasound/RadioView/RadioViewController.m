@@ -270,7 +270,9 @@ static Song* _gNowPlayingSong = nil;
     //
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarBackground" error:nil];
     UIView* messageBarView = [[UIView alloc] initWithFrame:sheet.frame];
-    messageBarView.backgroundColor = sheet.color;
+    
+    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" error:nil];
+    messageBarView.backgroundColor = [UIColor colorWithPatternImage:sheet.image];
     [_viewWall addSubview:messageBarView];   
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBar" error:nil];    
