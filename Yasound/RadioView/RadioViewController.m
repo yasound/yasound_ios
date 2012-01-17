@@ -415,21 +415,6 @@ static Song* _gNowPlayingSong = nil;
 }
 
 
-#pragma mark - AVAudioSession Delegate
-
-- (void)beginInterruption
-{
-    [self pauseAudio];
-}
-
-- (void) endInterruptionWithFlags: (NSUInteger) flags
-{
-    if (flags & AVAudioSessionInterruptionFlags_ShouldResume)
-    {
-        [self playAudio];    
-    }
-}
-
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -465,7 +450,7 @@ static Song* _gNowPlayingSong = nil;
 
     //End recieving events
     // <=> background audio playing
-    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    //[[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [self resignFirstResponder];
     
     if ((_timerUpdate != nil) && [_timerUpdate isValid])
@@ -509,24 +494,24 @@ static Song* _gNowPlayingSong = nil;
 //Make sure we can recieve remote control events
 - (BOOL)canBecomeFirstResponder 
 {
-    return YES;
+  return YES;
 }
 
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event 
 {
-    //if it is a remote control event handle it correctly
-    if (event.type == UIEventTypeRemoteControl) 
-    {
-        if (event.subtype == UIEventSubtypeRemoteControlPlay) 
-            [self playAudio];
-
-        else if (event.subtype == UIEventSubtypeRemoteControlPause) 
-            [self pauseAudio];
-
-        else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) 
-            [self onPlayPause:nil];
-        
-    }
+  //if it is a remote control event handle it correctly
+  if (event.type == UIEventTypeRemoteControl) 
+  {
+    if (event.subtype == UIEventSubtypeRemoteControlPlay) 
+      [self playAudio];
+    
+    else if (event.subtype == UIEventSubtypeRemoteControlPause) 
+      [self pauseAudio];
+    
+    else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) 
+      [self onPlayPause:nil];
+    
+  }
 }
 
 

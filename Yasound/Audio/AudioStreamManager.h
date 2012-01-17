@@ -9,6 +9,7 @@
 // a simple front-end to handle the calls to AudioStream and server notifications
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "Radio.h"
 
 @interface AudioStreamManager : NSObject
@@ -23,6 +24,7 @@
 
 //- (void)pauseRadio;
 - (void)playRadio;
+- (void)togglePlayPauseRadio;
 
 
 @end

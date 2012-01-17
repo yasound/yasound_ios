@@ -115,6 +115,34 @@ static AudioStreamer* _gAudioStreamer = nil;
     [[YasoundDataProvider main] startListeningRadio:self.currentRadio];
 }
 
+- (void)togglePlayPauseRadio
+{
+  if (_gAudioStreamer == nil)
+    return;
+  
+  
+  //LBDEBUG DEBUG TODO : UNMUTE RADIO
+  if (_gAudioStreamer.state != AS_PLAYING)
+    [self playRadio];
+  else
+    [self stopRadio];
+}
+
+
+#pragma mark - AVAudioSession Delegate
+
+- (void)beginInterruption
+{
+  [self pauseAudio];
+}
+
+- (void) endInterruptionWithFlags: (NSUInteger) flags
+{
+  if (flags & AVAudioSessionInterruptionFlags_ShouldResume)
+  {
+    [self playAudio];    
+  }
+}
 
 
 
