@@ -9,6 +9,8 @@
 #import "TracksView.h"
 #import "YasoundDataProvider.h"
 #import "NextSong.h"
+#import "BundleFileManager.h"
+#import "Theme.h"
 
 @implementation TracksView
 
@@ -29,13 +31,14 @@
   self.dataSource = self;
   self.delegate = self;
   self.scrollEnabled = NO;
-  self.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+  self.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self updateView];
 }
 
 - (void)updateView
 {
+    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MyYasoundBackground.png"]];
     [[YasoundDataProvider main] nextSongsForUserRadioWithTarget:self action:@selector(onNextSongsReceived:)];
 }
 
@@ -80,7 +83,17 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    cell.backgroundColor = [UIColor whiteColor];
+    UIView* view = [[UIView alloc] initWithFrame:cell.frame];
+    view.backgroundColor = [UIColor clearColor];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImage* image = [sheet image];
+    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.frame = CGRectMake(0, cell.frame.size.height - image.size.height, sheet.frame.size.width, sheet.frame.size.height);
+    [view addSubview:imageView];
+    
+    cell.backgroundView = view;
+    [view release];
 }
 
 
@@ -93,8 +106,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) 
     {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
+    
   
     if (_data == nil)
     {

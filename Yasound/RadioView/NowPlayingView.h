@@ -15,6 +15,8 @@
     SEL _action;
 }
 
+@property (nonatomic, retain) UIButton* playPauseButton;
+
 - (id)initWithSong:(Song*)song target:(id)target action:(SEL)action;
 
 @end

@@ -12,6 +12,8 @@
 
 @implementation NowPlayingView
 
+@synthesize playPauseButton;
+
 
 //LBDEBUG TODO : use image, likes disklikes from Song
 
@@ -22,68 +24,97 @@
         _target = target;
         _action = action;
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         
         CGRect frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
         self.frame = frame;
-        
+
         UIImageView* imageView = nil;
         
-        // header now playing bar track image 
-//        sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarImage" error:nil];
-//        imageView = [[UIImageView alloc] initWithImage:image];
-//        imageView.frame = sheet.frame;
-//        [self addSubview:imageView];
-        
-        // header now playing bar track image mask
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarMask" error:nil];
+        //grabber
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarGrabber" error:nil];
         imageView = [[UIImageView alloc] initWithImage:[sheet image]];
         imageView.frame = sheet.frame;
         [self addSubview:imageView];
         
         
+        
+        // fake image
+        UIImage* image = [UIImage imageNamed:@"TrackImageDummy.png"];
+        imageView = [[UIImageView alloc] initWithImage:image];
+        
+        // header now playing bar track image 
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImage" error:nil];
+        imageView.frame = sheet.frame;
+        [self addSubview:imageView];
+        
+//        // header now playing bar track image mask
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" error:nil];
+        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+        imageView.frame = sheet.frame;
+        [self addSubview:imageView];
+        
         // header now playing bar label
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLabel" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarLabel" error:nil];
         UILabel* label = [sheet makeLabel];
         [self addSubview:label];
         
         // header now playing bar artist
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarArtist" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarArtist" error:nil];
         label = [sheet makeLabel];
         label.text = song.metadata.artist_name;
         [self addSubview:label];
         
         // header now playing bar title
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarTitle" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarTitle" error:nil];
         label = [sheet makeLabel];
         label.text = song.metadata.name;
         [self addSubview:label];
         
         // header now playing bar likes image
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikesImage" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarLikesImage" error:nil];
         imageView = [[UIImageView alloc] initWithImage:[sheet image]];
         imageView.frame = sheet.frame;
         [self addSubview:imageView];
         
         // header now playing bar likes
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarLikes" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarLikes" error:nil];
         label = [sheet makeLabel];
 //        label.text = [NSString stringWithFormat:@"%d", nbLikes];
         label.text = [NSString stringWithFormat:@"%d", 4321];
         [self addSubview:label];
         
         // header now playing bar dislikes image
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikesImage" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarDislikesImage" error:nil];
         imageView = [[UIImageView alloc] initWithImage:[sheet image]];
         imageView.frame = sheet.frame;
         [self addSubview:imageView];
         
         // header now playing bar dislikes
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBarDislikes" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarDislikes" error:nil];
         label = [sheet makeLabel];
 //        label.text = [NSString stringWithFormat:@"%d", nbDislikes];
         label.text = [NSString stringWithFormat:@"%d", 1234];
         [self addSubview:label];
+        
+        
+        //play pause button
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingPlayPauseFrame" error:nil];
+        frame = sheet.frame;
+        self.playPauseButton = [[UIButton alloc] initWithFrame:sheet.frame];
+        
+        NSString* tmppath = [[Theme theme] pathForResource:@"btnPause" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+        UIImage* imageFile = [UIImage imageWithContentsOfFile:tmppath];
+        [self.playPauseButton setImage:imageFile forState:UIControlStateNormal];
+        
+        tmppath = [[Theme theme] pathForResource:@"btnPlay" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+        imageFile = [UIImage imageWithContentsOfFile:tmppath];
+        [self.playPauseButton setImage:imageFile forState:UIControlStateSelected];
+        
+        [self addSubview:self.playPauseButton];
+
+        
+        
     }
     
     return self;
@@ -92,7 +123,6 @@
 
 
 #pragma mark - touches actions
-
 
 
 

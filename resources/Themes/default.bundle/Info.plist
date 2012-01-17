@@ -10,7 +10,7 @@
 	<string>theme_default</string>
 	<key>stylesheet</key>
 	<dict>
-		<key>RadioViewHeader</key>
+		<key>Header</key>
 		<dict>
 			<key>x</key>
 			<integer>0</integer>
@@ -23,7 +23,20 @@
 			<key>color</key>
 			<string>rgb(51,51,51)</string>
 		</dict>
-		<key>RadioViewHeaderBack</key>
+		<key>HeaderBackground</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>Header</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Header</string>
+		</dict>
+		<key>HeaderBack</key>
 		<dict>
 			<key>x</key>
 			<integer>5</integer>
@@ -36,7 +49,7 @@
 			<key>path</key>
 			<string>images/Header</string>
 		</dict>
-		<key>RadioViewHeaderAvatar</key>
+		<key>HeaderAvatar</key>
 		<dict>
 			<key>x</key>
 			<integer>25</integer>
@@ -47,12 +60,12 @@
 			<key>height</key>
 			<integer>50</integer>
 		</dict>
-		<key>RadioViewHeaderAvatarMask</key>
+		<key>HeaderAvatarMask</key>
 		<dict>
 			<key>x</key>
-			<integer>23</integer>
+			<integer>25</integer>
 			<key>y</key>
-			<integer>3</integer>
+			<integer>7</integer>
 			<key>name</key>
 			<string>AvatarMask</string>
 			<key>type</key>
@@ -60,14 +73,14 @@
 			<key>path</key>
 			<string>images/Header</string>
 		</dict>
-		<key>RadioViewHeaderTitle</key>
+		<key>HeaderTitle</key>
 		<dict>
 			<key>font</key>
 			<dict>
 				<key>name</key>
 				<string>HelveticaNeue</string>
 				<key>size</key>
-				<integer>20</integer>
+				<integer>18</integer>
 				<key>text</key>
 				<string>Jenny&apos;s Radio</string>
 				<key>textColor</key>
@@ -84,7 +97,7 @@
 			<key>height</key>
 			<integer>20</integer>
 		</dict>
-		<key>RadioViewHeaderHeart</key>
+		<key>HeaderHeart</key>
 		<dict>
 			<key>x</key>
 			<integer>80</integer>
@@ -97,7 +110,7 @@
 			<key>path</key>
 			<string>images/Header</string>
 		</dict>
-		<key>RadioViewHeaderHeadSet</key>
+		<key>HeaderHeadSet</key>
 		<dict>
 			<key>x</key>
 			<integer>126</integer>
@@ -110,14 +123,14 @@
 			<key>path</key>
 			<string>images/Header</string>
 		</dict>
-		<key>RadioViewHeaderLikes</key>
+		<key>HeaderLikes</key>
 		<dict>
 			<key>font</key>
 			<dict>
 				<key>name</key>
 				<string>HelveticaNeue</string>
 				<key>size</key>
-				<integer>10</integer>
+				<integer>12</integer>
 				<key>text</key>
 				<string>12345</string>
 				<key>textColor</key>
@@ -128,18 +141,18 @@
 			<key>width</key>
 			<integer>32</integer>
 			<key>x</key>
-			<integer>89</integer>
+			<integer>93</integer>
 			<key>y</key>
-			<integer>39</integer>
+			<integer>40</integer>
 		</dict>
-		<key>RadioViewHeaderListeners</key>
+		<key>HeaderListeners</key>
 		<dict>
 			<key>font</key>
 			<dict>
 				<key>name</key>
 				<string>HelveticaNeue</string>
 				<key>size</key>
-				<integer>10</integer>
+				<integer>12</integer>
 				<key>text</key>
 				<string>12345</string>
 				<key>textColor</key>
@@ -150,47 +163,16 @@
 			<key>width</key>
 			<integer>32</integer>
 			<key>x</key>
-			<integer>135</integer>
+			<integer>137</integer>
 			<key>y</key>
-			<integer>39</integer>
+			<integer>40</integer>
 		</dict>
-		<key>RadioViewHeaderPicto</key>
+		<key>HeaderFavoriteButton</key>
 		<dict>
 			<key>x</key>
-			<integer>0</integer>
+			<integer>278</integer>
 			<key>y</key>
-			<integer>0</integer>
-			<key>name</key>
-			<string>Header</string>
-			<key>type</key>
-			<string>png</string>
-			<key>path</key>
-			<string>images/Header</string>
-		</dict>
-		<key>RadioViewHeaderEditButton</key>
-		<dict>
-			<key>name</key>
-			<string>EditButton</string>
-			<key>type</key>
-			<string>png</string>
-			<key>path</key>
-			<string>images/Header/Buttons</string>
-			<key>x</key>
-			<integer>282</integer>
-			<key>y</key>
-			<integer>23</integer>
-			<key>states</key>
-			<array>
-				<string>up</string>
-				<string>down</string>
-			</array>
-		</dict>
-		<key>RadioViewHeaderFavoriteButton</key>
-		<dict>
-			<key>x</key>
-			<integer>260</integer>
-			<key>y</key>
-			<integer>23</integer>
+			<integer>6</integer>
 			<key>name</key>
 			<string>FavoritesButton</string>
 			<key>type</key>
@@ -198,18 +180,18 @@
 			<key>path</key>
 			<string>images/Header/Buttons</string>
 		</dict>
-		<key>RadioViewHeaderPlayPauseFrame</key>
+		<key>NowPlayingPlayPauseFrame</key>
 		<dict>
 			<key>x</key>
-			<integer>282</integer>
+			<integer>278</integer>
 			<key>y</key>
-			<integer>23</integer>
+			<integer>6</integer>
 			<key>width</key>
-			<integer>26</integer>
+			<integer>36</integer>
 			<key>height</key>
-			<integer>26</integer>
+			<integer>36</integer>
 		</dict>
-		<key>RadioViewHeaderNowPlayingBar</key>
+		<key>NowPlayingBar</key>
 		<dict>
 			<key>x</key>
 			<integer>0</integer>
@@ -220,7 +202,20 @@
 			<key>height</key>
 			<integer>48</integer>
 		</dict>
-		<key>RadioViewHeaderNowPlayingBarImage</key>
+		<key>NowPlayingBorder</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>62</integer>
+			<key>name</key>
+			<string>NowPlayingBorder</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Header/NowPlaying</string>
+		</dict>
+		<key>NowPlayingBarImage</key>
 		<dict>
 			<key>x</key>
 			<integer>4</integer>
@@ -231,20 +226,20 @@
 			<key>height</key>
 			<integer>38</integer>
 		</dict>
-		<key>RadioViewHeaderNowPlayingBarMask</key>
+		<key>NowPlayingBarMask</key>
 		<dict>
 			<key>x</key>
 			<integer>4</integer>
 			<key>y</key>
 			<integer>5</integer>
 			<key>name</key>
-			<string>NowPlayingBarMask</string>
+			<string>TrackMask</string>
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>
 			<string>images/Header/NowPlaying</string>
 		</dict>
-		<key>RadioViewHeaderNowPlayingBarLabel</key>
+		<key>NowPlayingBarLabel</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -266,7 +261,7 @@
 			<key>y</key>
 			<integer>4</integer>
 		</dict>
-		<key>RadioViewHeaderNowPlayingBarArtist</key>
+		<key>NowPlayingBarArtist</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -286,7 +281,7 @@
 			<key>y</key>
 			<integer>17</integer>
 		</dict>
-		<key>RadioViewHeaderNowPlayingBarTitle</key>
+		<key>NowPlayingBarTitle</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -306,7 +301,7 @@
 			<key>y</key>
 			<integer>30</integer>
 		</dict>
-		<key>RadioViewHeaderNowPlayingBarLikes</key>
+		<key>NowPlayingBarLikes</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -322,11 +317,11 @@
 			<key>width</key>
 			<integer>30</integer>
 			<key>x</key>
-			<integer>286</integer>
+			<integer>248</integer>
 			<key>y</key>
-			<integer>20</integer>
+			<integer>10</integer>
 		</dict>
-		<key>RadioViewHeaderNowPlayingBarDislikes</key>
+		<key>NowPlayingBarDislikes</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -342,16 +337,16 @@
 			<key>width</key>
 			<integer>30</integer>
 			<key>x</key>
-			<integer>286</integer>
+			<integer>248</integer>
 			<key>y</key>
-			<integer>32</integer>
+			<integer>30</integer>
 		</dict>
-		<key>RadioViewHeaderNowPlayingBarLikesImage</key>
+		<key>NowPlayingBarLikesImage</key>
 		<dict>
 			<key>x</key>
-			<integer>273</integer>
+			<integer>230</integer>
 			<key>y</key>
-			<integer>19</integer>
+			<integer>6</integer>
 			<key>name</key>
 			<string>Likes</string>
 			<key>type</key>
@@ -359,14 +354,27 @@
 			<key>path</key>
 			<string>images/Header/NowPlaying</string>
 		</dict>
-		<key>RadioViewHeaderNowPlayingBarDislikesImage</key>
+		<key>NowPlayingBarDislikesImage</key>
 		<dict>
 			<key>x</key>
-			<integer>273</integer>
+			<integer>230</integer>
 			<key>y</key>
-			<integer>31</integer>
+			<integer>26</integer>
 			<key>name</key>
 			<string>Dislikes</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Header/NowPlaying</string>
+		</dict>
+		<key>NowPlayingBarGrabber</key>
+		<dict>
+			<key>x</key>
+			<integer>144</integer>
+			<key>y</key>
+			<integer>32</integer>
+			<key>name</key>
+			<string>NowPlayingGrabber</string>
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>
@@ -419,37 +427,36 @@
 			<key>height</key>
 			<integer>293</integer>
 		</dict>
-		<key>RadioViewTableViewCellMinHeight</key>
+		<key>CellMinHeight</key>
 		<dict>
 			<key>minHeight</key>
-			<integer>26</integer>
+			<integer>42</integer>
 		</dict>
-		<key>RadioViewCellBackground1</key>
-		<dict>
-			<key>color</key>
-			<string>white</string>
-		</dict>
-		<key>RadioViewCellBackground0</key>
-		<dict>
-			<key>color</key>
-			<string>rgb(245,245,245)</string>
-		</dict>
-		<key>RadioViewCellAvatar</key>
+		<key>CellAvatar</key>
 		<dict>
 			<key>x</key>
 			<integer>3</integer>
 			<key>y</key>
 			<integer>4</integer>
 			<key>width</key>
-			<integer>32</integer>
+			<integer>35</integer>
 			<key>height</key>
-			<integer>32</integer>
-			<key>color</key>
-			<string>rgb(194,194,190)</string>
-			<key>borderSize</key>
-			<integer>1</integer>
+			<integer>35</integer>
 		</dict>
-		<key>RadioViewCellDate</key>
+		<key>CellAvatarMask</key>
+		<dict>
+			<key>x</key>
+			<integer>3</integer>
+			<key>y</key>
+			<integer>4</integer>
+			<key>name</key>
+			<string>UserMask</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/</string>
+		</dict>
+		<key>CellDate</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -471,7 +478,7 @@
 			<key>y</key>
 			<integer>6</integer>
 		</dict>
-		<key>RadioViewCellUser</key>
+		<key>CellUser</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -483,15 +490,15 @@
 				<string>bold</string>
 			</dict>
 			<key>height</key>
-			<integer>10</integer>
+			<integer>15</integer>
 			<key>width</key>
 			<integer>240</integer>
 			<key>x</key>
-			<integer>40</integer>
+			<integer>46</integer>
 			<key>y</key>
-			<integer>6</integer>
+			<integer>4</integer>
 		</dict>
-		<key>RadioViewCellMessage</key>
+		<key>CellMessage</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -505,11 +512,24 @@
 			<key>height</key>
 			<integer>12</integer>
 			<key>width</key>
-			<integer>280</integer>
+			<integer>270</integer>
 			<key>x</key>
-			<integer>40</integer>
+			<integer>46</integer>
 			<key>y</key>
 			<integer>21</integer>
+		</dict>
+		<key>CellSeparator</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>10</integer>
+			<key>name</key>
+			<string>MessageSeparator</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/</string>
 		</dict>
 		<key>RadioViewStatusBar</key>
 		<dict>
@@ -597,7 +617,7 @@
 			<key>height</key>
 			<integer>42</integer>
 		</dict>
-		<key>RadioViewStatusBarUserName</key>
+		<key>StatusBarUserName</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -607,15 +627,17 @@
 				<integer>9</integer>
 				<key>textColor</key>
 				<string>white</string>
+				<key>weight</key>
+				<string>bold</string>
 			</dict>
 			<key>x</key>
 			<integer>4</integer>
 			<key>y</key>
-			<integer>50</integer>
+			<integer>46</integer>
 			<key>width</key>
 			<integer>80</integer>
 			<key>height</key>
-			<integer>10</integer>
+			<integer>12</integer>
 		</dict>
 		<key>RadioViewExtraLayer</key>
 		<dict>

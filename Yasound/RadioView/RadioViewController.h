@@ -53,8 +53,6 @@
     CGFloat _cellMinHeight;
     
     NSTimer* _timerUpdate;
-
-    UIButton* _playPauseButton;
 }
 
 @property (nonatomic, retain) Radio* radio;

@@ -30,6 +30,9 @@
 }
 
 
+
+#define MESSAGE_SPACING 4
+
 - initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier message:(WallMessage*)m indexPath:(NSIndexPath*)indexPath
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
@@ -39,45 +42,69 @@
         self.background = self.contentView;
         UIView* view = self.background;
         
-        // background color
-        if (indexPath.row & 1)
-            sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellBackground1" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        else
-            sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellBackground0" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        view.backgroundColor = sheet.color;
+//        // background color
+//        if (indexPath.row & 1)
+//            sheet = [[Theme theme] stylesheetForKey:@"CellBackground1" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        else
+//            sheet = [[Theme theme] stylesheetForKey:@"CellBackground0" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        view.backgroundColor = sheet.color;
+        
+        view.backgroundColor = [UIColor clearColor];
         
         // avatar
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellAvatar" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.avatar = [[WebImageView alloc] initWithImageAtURL:m.avatarURL];
         self.avatar.frame = sheet.frame;
-        [self.avatar.layer setBorderColor: [sheet.color CGColor]];
-        [self.avatar.layer setBorderWidth: [[sheet.customProperties objectForKey:@"borderSize"] integerValue]];    
         [view addSubview:self.avatar];
+
+        // avatar mask
+        sheet = [[Theme theme] stylesheetForKey:@"CellAvatarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImageView* imageView = [[[UIImageView alloc] initWithImage:[sheet image]] autorelease];
+        imageView.frame = sheet.frame;
+        [view addSubview:imageView];
         
         // date
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellDate" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"CellDate" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.date = [sheet makeLabel];
         self.date.text = [self dateToString:m.date];
         [view addSubview:self.date];
         
         // user
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellUser" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"CellUser" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.user = [sheet makeLabel];
         self.user.text = m.user;
         [view addSubview:self.user];
+
+        // message background
+        BundleStylesheet* messageSheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIView* bkg = [[UIView alloc] initWithFrame:messageSheet.frame];
+        bkg.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, m.textHeight + 2*MESSAGE_SPACING);
+        
+        bkg.layer.masksToBounds = YES;
+        bkg.layer.cornerRadius = 4;
+        bkg.layer.borderColor = [UIColor colorWithRed:231.f/255.f green:231.f/255.f blue:231.f/255.f alpha:1].CGColor;
+        bkg.layer.borderWidth = 1.0; 
+        bkg.layer.backgroundColor = [UIColor whiteColor].CGColor;
+        [view addSubview:bkg];
+
         
         // message
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellMessage" error:nil];
-        self.message = [sheet makeLabel];
+        self.message = [messageSheet makeLabel];
         self.message.text = m.text;
-        self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, m.textHeight);
+        self.message.frame = CGRectMake(self.message.frame.origin.x + MESSAGE_SPACING, self.message.frame.origin.y + MESSAGE_SPACING, self.message.frame.size.width - 2*MESSAGE_SPACING, m.textHeight);
+        
         [self.message setLineBreakMode:UILineBreakModeWordWrap];
         //[label setMinimumFontSize:FONT_SIZE];
         [self.message setNumberOfLines:0];        
         [view addSubview:self.message];
         
-
 //        [self.contentView addSubview:self.background];
+        
+        sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+        imageView.frame = CGRectMake(0, bkg.frame.origin.y + bkg.frame.size.height + sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
+        [view addSubview:imageView];
+        
 
     }
     return self;
@@ -89,11 +116,12 @@
     BundleStylesheet* sheet = nil;
 
     // background color
-    if (indexPath.row & 1)
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellBackground1" error:nil];
-    else
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewCellBackground0" error:nil];
-    self.background.backgroundColor = sheet.color;
+//    if (indexPath.row & 1)
+//        sheet = [[Theme theme] stylesheetForKey:@"CellBackground1" error:nil];
+//    else
+//        sheet = [[Theme theme] stylesheetForKey:@"CellBackground0" error:nil];
+//    self.background.backgroundColor = sheet.color;
+    self.backgroundColor = [UIColor clearColor];
     
     // avatar
 //    [self.avatar setImage:image];
