@@ -15,7 +15,7 @@
 #import "SongUser.h"
 #import "NextSong.h"
 
-#define USE_YASOUND_LOCAL_SERVER 1
+#define USE_YASOUND_LOCAL_SERVER 0
 
 typedef NSString* taskID;
 
