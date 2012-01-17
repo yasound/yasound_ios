@@ -200,23 +200,13 @@ static Song* _gNowPlayingSong = nil;
     [_headerView addSubview:button];
     
     
-    //play pause button
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderPlayPauseFrame" error:nil];
-    CGRect frame = sheet.frame;
-    _playPauseButton = [[UIButton alloc] initWithFrame:sheet.frame];
-    [_playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
-    [_playPauseButton setImage:[UIImage imageNamed:@"btnPause.png"] forState:UIControlStateNormal];
-    [_playPauseButton setImage:[UIImage imageNamed:@"btnPlay.png"] forState:UIControlStateSelected];
-    [_headerView addSubview:_playPauseButton];
-    
-    
     //.................................................................................
     // header interactive zone to overload button
     BundleStylesheet* sheetAvatar = [[Theme theme] stylesheetForKey:@"HeaderAvatar" error:nil];
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
     
-    frame = CGRectMake(0, 0, sheetAvatar.frame.origin.x + sheetAvatar.frame.size.width, _headerView.frame.size.height - sheet.frame.size.height);
+    CGRect frame = CGRectMake(0, 0, sheetAvatar.frame.origin.x + sheetAvatar.frame.size.width, _headerView.frame.size.height - sheet.frame.size.height);
     InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:frame target:self action:@selector(onBack:)];
     [_headerView addSubview:interactiveView];
     
@@ -247,6 +237,7 @@ static Song* _gNowPlayingSong = nil;
     // now playing bar is set in setNowPlaying;
     
     
+
     
     
     
@@ -825,6 +816,8 @@ static Song* _gNowPlayingSong = nil;
     
     //LBDEBUG TODO : get image, likes dislikes from Song
     NowPlayingView* view = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onNowPlayingTouched)];
+    [view.playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
+
     
     [UIView transitionWithView:_playingNowContainer
                       duration:0.5
@@ -1181,7 +1174,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction) onPlayPause:(id)sender
 {
-    if (!_playPauseButton.selected)
+    if (!_playingNowView.playPauseButton.selected)
         [self pauseAudio];
     else
         [self playAudio];
@@ -1248,14 +1241,14 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)playAudio
 {
-    _playPauseButton.selected = NO;
+    _playingNowView.playPauseButton.selected = NO;
     [[AudioStreamManager main] playRadio];
 
 }
 
 - (void)pauseAudio
 {
-    _playPauseButton.selected = YES;
+    _playingNowView.playPauseButton.selected = YES;
     
     [[AudioStreamManager main] pauseRadio];
 }

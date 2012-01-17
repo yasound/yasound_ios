@@ -48,6 +48,12 @@
 		BC03053114C0724D00F39374 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
+		BC178D8F14C57D3B00B18420 /* TrackImageDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */; };
+		BC178D9014C57D3B00B18420 /* TrackImageDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */; };
+		BC178D9114C57D3B00B18420 /* TrackImageDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */; };
+		BC178D9414C591A000B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178D9314C591A000B18420 /* default.bundle */; };
+		BC178D9514C591A000B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178D9314C591A000B18420 /* default.bundle */; };
+		BC178D9614C591A000B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178D9314C591A000B18420 /* default.bundle */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
@@ -220,18 +226,6 @@
 		BC9522A414B70FE9001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A514B70FF2001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A614B70FF7001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
-		BC9522AF14B71352001E1ACE /* btnPause.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AB14B71352001E1ACE /* btnPause.png */; };
-		BC9522B014B71352001E1ACE /* btnPause.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AB14B71352001E1ACE /* btnPause.png */; };
-		BC9522B114B71352001E1ACE /* btnPause.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AB14B71352001E1ACE /* btnPause.png */; };
-		BC9522B214B71352001E1ACE /* btnPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AC14B71352001E1ACE /* btnPause@2x.png */; };
-		BC9522B314B71352001E1ACE /* btnPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AC14B71352001E1ACE /* btnPause@2x.png */; };
-		BC9522B414B71352001E1ACE /* btnPause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AC14B71352001E1ACE /* btnPause@2x.png */; };
-		BC9522B514B71352001E1ACE /* btnPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AD14B71352001E1ACE /* btnPlay.png */; };
-		BC9522B614B71352001E1ACE /* btnPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AD14B71352001E1ACE /* btnPlay.png */; };
-		BC9522B714B71352001E1ACE /* btnPlay.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AD14B71352001E1ACE /* btnPlay.png */; };
-		BC9522B814B71352001E1ACE /* btnPlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AE14B71352001E1ACE /* btnPlay@2x.png */; };
-		BC9522B914B71352001E1ACE /* btnPlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AE14B71352001E1ACE /* btnPlay@2x.png */; };
-		BC9522BA14B71352001E1ACE /* btnPlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9522AE14B71352001E1ACE /* btnPlay@2x.png */; };
 		BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
 		BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
@@ -242,9 +236,6 @@
 		BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
-		BCB2FDCD14C4B07D00BFA4FC /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCB2FDCC14C4B07D00BFA4FC /* default.bundle */; };
-		BCB2FDCE14C4B07D00BFA4FC /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCB2FDCC14C4B07D00BFA4FC /* default.bundle */; };
-		BCB2FDCF14C4B07D00BFA4FC /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCB2FDCC14C4B07D00BFA4FC /* default.bundle */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
@@ -857,6 +848,8 @@
 		BC03052E14C0724D00F39374 /* AudioStreamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamManager.m; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
+		BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackImageDummy.png; sourceTree = "<group>"; };
+		BC178D9314C591A000B18420 /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = default.bundle; path = resources/themes/default.bundle; sourceTree = SOURCE_ROOT; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
 		BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
 		BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingView.h; sourceTree = "<group>"; };
@@ -944,10 +937,6 @@
 		BC943A5014688AE70031CE17 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BC943A5114688AE70031CE17 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BC95229914B6F787001E1ACE /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
-		BC9522AB14B71352001E1ACE /* btnPause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnPause.png; sourceTree = "<group>"; };
-		BC9522AC14B71352001E1ACE /* btnPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnPause@2x.png"; sourceTree = "<group>"; };
-		BC9522AD14B71352001E1ACE /* btnPlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnPlay.png; sourceTree = "<group>"; };
-		BC9522AE14B71352001E1ACE /* btnPlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnPlay@2x.png"; sourceTree = "<group>"; };
 		BC9F4143147E8A5F00D417EF /* BundleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleFileManager.h; sourceTree = "<group>"; };
 		BC9F4144147E8A5F00D417EF /* BundleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleFileManager.m; sourceTree = "<group>"; };
 		BC9F4145147E8A5F00D417EF /* BundleStylesheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleStylesheet.h; sourceTree = "<group>"; };
@@ -958,7 +947,6 @@
 		BCA6554814BCA8590043B2DA /* Auth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
 		BCB178B214BEE90100A3EDE3 /* TracksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksView.h; sourceTree = "<group>"; };
 		BCB178B314BEE90100A3EDE3 /* TracksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksView.m; sourceTree = "<group>"; };
-		BCB2FDCC14C4B07D00BFA4FC /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = default.bundle; path = resources/themes/default.bundle; sourceTree = SOURCE_ROOT; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		BCB5F28C1485416B00C28B3D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
@@ -1511,10 +1499,6 @@
 		BC914AD11491845D00D5D7B4 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				BC9522AB14B71352001E1ACE /* btnPause.png */,
-				BC9522AC14B71352001E1ACE /* btnPause@2x.png */,
-				BC9522AD14B71352001E1ACE /* btnPlay.png */,
-				BC9522AE14B71352001E1ACE /* btnPlay@2x.png */,
 				BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */,
 				BC914B1F14920ADE00D5D7B4 /* btnArrowIndicator@2x.png */,
 			);
@@ -2023,7 +2007,7 @@
 		BCE4631B148FD89100422448 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
-				BCB2FDCC14C4B07D00BFA4FC /* default.bundle */,
+				BC178D9314C591A000B18420 /* default.bundle */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -2047,6 +2031,7 @@
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */,
 				BCBAB4B914A3920600CF922A /* Settings */,
 				BC8B080614924D75007E1307 /* Tabs */,
 				BC914AD11491845D00D5D7B4 /* Buttons */,
@@ -2423,13 +2408,10 @@
 				BC6314DC14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828ADA14B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229B14B6F787001E1ACE /* EasyTracker.plist in Resources */,
-				BC9522B014B71352001E1ACE /* btnPause.png in Resources */,
-				BC9522B314B71352001E1ACE /* btnPause@2x.png in Resources */,
-				BC9522B614B71352001E1ACE /* btnPlay.png in Resources */,
-				BC9522B914B71352001E1ACE /* btnPlay@2x.png in Resources */,
 				BC03052214C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052514C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
-				BCB2FDCE14C4B07D00BFA4FC /* default.bundle in Resources */,
+				BC178D9014C57D3B00B18420 /* TrackImageDummy.png in Resources */,
+				BC178D9514C591A000B18420 /* default.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2571,13 +2553,10 @@
 				BC6314DB14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828AD914B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229A14B6F787001E1ACE /* EasyTracker.plist in Resources */,
-				BC9522AF14B71352001E1ACE /* btnPause.png in Resources */,
-				BC9522B214B71352001E1ACE /* btnPause@2x.png in Resources */,
-				BC9522B514B71352001E1ACE /* btnPlay.png in Resources */,
-				BC9522B814B71352001E1ACE /* btnPlay@2x.png in Resources */,
 				BC03052114C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052414C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
-				BCB2FDCD14C4B07D00BFA4FC /* default.bundle in Resources */,
+				BC178D8F14C57D3B00B18420 /* TrackImageDummy.png in Resources */,
+				BC178D9414C591A000B18420 /* default.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2719,13 +2698,10 @@
 				BC6314DD14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828ADB14B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229C14B6F787001E1ACE /* EasyTracker.plist in Resources */,
-				BC9522B114B71352001E1ACE /* btnPause.png in Resources */,
-				BC9522B414B71352001E1ACE /* btnPause@2x.png in Resources */,
-				BC9522B714B71352001E1ACE /* btnPlay.png in Resources */,
-				BC9522BA14B71352001E1ACE /* btnPlay@2x.png in Resources */,
 				BC03052314C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052614C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
-				BCB2FDCF14C4B07D00BFA4FC /* default.bundle in Resources */,
+				BC178D9114C57D3B00B18420 /* TrackImageDummy.png in Resources */,
+				BC178D9614C591A000B18420 /* default.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
