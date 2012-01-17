@@ -394,7 +394,7 @@ static Song* _gNowPlayingSong = nil;
         // -----------------------------
         // page control
         // -----------------------------
-        CGRect framePageControl = CGRectMake(0, sheetStatus.frame.origin.y, sheetStatus.frame.size.width, 36);
+        CGRect framePageControl = CGRectMake(0, sheetStatus.frame.origin.y, sheetStatus.frame.size.width, 12);
         
         _pageControl = [[UIPageControl alloc] initWithFrame:framePageControl];
         _pageControl.numberOfPages = 2;
