@@ -367,6 +367,19 @@
 			<key>path</key>
 			<string>images/Header/NowPlaying</string>
 		</dict>
+		<key>NowPlayingBarGrabber</key>
+		<dict>
+			<key>x</key>
+			<integer>144</integer>
+			<key>y</key>
+			<integer>32</integer>
+			<key>name</key>
+			<string>NowPlayingGrabber</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Header/NowPlaying</string>
+		</dict>
 		<key>RadioViewMessageBarBackground</key>
 		<dict>
 			<key>x</key>
@@ -414,10 +427,10 @@
 			<key>height</key>
 			<integer>293</integer>
 		</dict>
-		<key>RadioViewTableViewCellMinHeight</key>
+		<key>CellMinHeight</key>
 		<dict>
 			<key>minHeight</key>
-			<integer>26</integer>
+			<integer>42</integer>
 		</dict>
 		<key>CellAvatar</key>
 		<dict>
@@ -604,7 +617,7 @@
 			<key>height</key>
 			<integer>42</integer>
 		</dict>
-		<key>RadioViewStatusBarUserName</key>
+		<key>StatusBarUserName</key>
 		<dict>
 			<key>font</key>
 			<dict>
@@ -614,15 +627,17 @@
 				<integer>9</integer>
 				<key>textColor</key>
 				<string>white</string>
+				<key>weight</key>
+				<string>bold</string>
 			</dict>
 			<key>x</key>
 			<integer>4</integer>
 			<key>y</key>
-			<integer>50</integer>
+			<integer>46</integer>
 			<key>width</key>
 			<integer>80</integer>
 			<key>height</key>
-			<integer>10</integer>
+			<integer>12</integer>
 		</dict>
 		<key>RadioViewExtraLayer</key>
 		<dict>

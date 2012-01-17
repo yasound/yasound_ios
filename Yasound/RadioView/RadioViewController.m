@@ -73,7 +73,7 @@ static Song* _gNowPlayingSong = nil;
     
     _messageWidth = sheet.frame.size.width;
     
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"CellMinHeight" error:nil];
     _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
     }
     
@@ -679,6 +679,30 @@ static Song* _gNowPlayingSong = nil;
 }
 
 
+#define EV_TYPE_MESSAGE @"M"
+#define EV_TYPE_LOGIN @"J"
+#define EV_TYPE_LOGOUT @"L"
+#define EV_TYPE_SONG @"S"
+#define EV_TYPE_START_LISTENING @"T"
+#define EV_TYPE_STOP_LISTENING @"P"
+
+
++ (NSString*)evTypeToString:(NSString*)type
+{
+    if ([type isEqualToString:EV_TYPE_MESSAGE])
+        return @"Message";
+    if ([type isEqualToString:EV_TYPE_LOGIN])
+        return @"Login";
+    if ([type isEqualToString:EV_TYPE_LOGOUT])
+        return @"Logout";
+    if ([type isEqualToString:EV_TYPE_SONG])
+        return @"Song";
+    if ([type isEqualToString:EV_TYPE_START_LISTENING])
+        return @"StartListening";
+    if ([type isEqualToString:EV_TYPE_STOP_LISTENING])
+        return @"StopListening";
+}
+
 - (void)receiveWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
   Meta* meta = [info valueForKey:@"meta"];
@@ -700,9 +724,12 @@ static Song* _gNowPlayingSong = nil;
   for (int i = [events count] - 1; i >= 0; i--)
   {
     ev  = [events objectAtIndex:i];
+      
+     // NSLog(@"parse Message type %@", [RadioViewController evTypeToString:ev.type]);
     
-    if ([ev.type isEqualToString:@"M"])
+    if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
     {
+        //NSLog(@"parse message date %@  compare to last %@", ev.start_date, _lastWallEventDate);
       if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
       {
 //        NSString* picturePath = ev.user.picture;
@@ -717,13 +744,13 @@ static Song* _gNowPlayingSong = nil;
         [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
       }
     }
-    else if ([ev.type isEqualToString:@"J"])
+    else if ([ev.type isEqualToString:EV_TYPE_LOGIN])
     {
       if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
         [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", ev.user.name]];
         
     }
-    else if ([ev.type isEqualToString:@"L"])
+    else if ([ev.type isEqualToString:EV_TYPE_LOGOUT])
     {
       if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
         [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", ev.user.name]];
@@ -1093,6 +1120,12 @@ static Song* _gNowPlayingSong = nil;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField endEditing:TRUE];
+    
+    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    NSString* cleanText = [textField.text stringByTrimmingCharactersInSet:space];
+    if (cleanText.length == 0)
+        return;
+    
     [self sendMessage:textField.text];
     textField.text = nil;
     return FALSE;
@@ -1101,19 +1134,22 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)sendMessage:(NSString *)message
 {
+    [[ActivityModelessSpinner main] addRef];
     [[YasoundDataProvider main] postWallMessage:message toRadio:self.radio target:self action:@selector(wallMessagePosted:withInfo:)];
 }
 
 - (void)wallMessagePosted:(NSString*)eventURL withInfo:(NSDictionary*)info
 {
-  NSError* error = [info valueForKey:@"error"];
-  if (error)
-  {
-    NSLog(@"wall message can't be posted: %@", error.domain);
-    return;
-  }
-  
-  [self onUpdate:nil];
+    [[ActivityModelessSpinner main] removeRef];
+
+    NSError* error = [info valueForKey:@"error"];
+    if (error)
+    {
+        NSLog(@"wall message can't be posted: %@", error.domain);
+        return;
+    }
+
+    [self onUpdate:nil];
 }
 
 
@@ -1298,8 +1334,6 @@ static Song* _gNowPlayingSong = nil;
     // upsize status bar : show users
     else
     {
-        [[YasoundDataProvider main] connectedUsersForRadio:self.radio target:self action:@selector(onRadioUsersReceived:info:)];
-                                         
         _pageControl.hidden = YES;
         
         [self cleanStatusMessages];
@@ -1316,12 +1350,16 @@ static Song* _gNowPlayingSong = nil;
         _statusUsers.alpha = 0;
         [_statusBar addSubview:_statusUsers];
 
+        [[ActivityModelessSpinner main] addRef];
+        [[YasoundDataProvider main] connectedUsersForRadio:self.radio target:self action:@selector(onRadioUsersReceived:info:)];
+
 
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration: 0.15];
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y - _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
         _statusUsers.alpha = 1;
         [UIView commitAnimations];        
+
     }
     
 }
@@ -1330,38 +1368,56 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onRadioUsersReceived:(NSArray*)users info:(NSDictionary*)info
 {
-    BundleStylesheet* imageSheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    BundleStylesheet* nameSheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserName" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    [[ActivityModelessSpinner main] removeRef];
+    
+    BundleStylesheet* imageSheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* nameSheet = [[Theme theme] stylesheetForKey:@"StatusBarUserName" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 
     CGRect imageRect = imageSheet.frame;
     CGRect nameRect = nameSheet.frame;
+
+    UIFont* font = [nameSheet makeFont];
 
     // fill scrollview with users
     for (User* user in users)
     {
         WebImageView* imageView ;
         
+        CGFloat textWidth = [user.name sizeWithFont:font].width;
+        CGFloat greatestWidth = (imageRect.size.width > textWidth) ? imageRect.size.width : textWidth;
+        CGRect imageRect2 = CGRectMake(imageRect.origin.x + (greatestWidth / 2.f) - (imageRect.size.width / 2.f), imageRect.origin.y, imageRect.size.width, imageRect.size.height);
+        CGRect nameRect2 = CGRectMake(nameRect.origin.x + (greatestWidth / 2.f) - (textWidth / 2.f), nameRect.origin.y, textWidth, nameRect.size.height);
+        
         if (user.picture == nil)
         {
             imageView = [[WebImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy.png"]];
-            imageView.frame = imageRect;
+            imageView.frame = imageRect2;
         }
         else
         {
             NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:user.picture];
             imageView = [[WebImageView alloc] initWithImageAtURL:imageURL];
-            imageView.frame = imageRect;
+            imageView.frame = imageRect2;
         }
         
         [_statusUsers addSubview:imageView];
         
+        
+        // image mask
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" error:nil];
+        UIImageView* mask = [[UIImageView alloc] initWithImage:[sheet image]];
+        mask.frame = imageRect2;
+        [_statusUsers addSubview:mask];
+        
+        
         UILabel* name = [nameSheet makeLabel];
-        name.frame = nameRect;
+        name.frame = nameRect2;
         name.text = user.name;
         [_statusUsers addSubview:name];
         
-        imageRect = CGRectMake(imageRect.origin.x + nameRect.size.width +1, imageRect.origin.y, imageRect.size.width, imageRect.size.height);
-        nameRect = CGRectMake(nameRect.origin.x + nameRect.size.width +1, nameRect.origin.y, nameRect.size.width, nameRect.size.height);
+        
+        imageRect = CGRectMake(imageRect.origin.x + greatestWidth +8, imageRect.origin.y, imageRect.size.width, imageRect.size.height);
+        nameRect = CGRectMake(nameRect.origin.x + greatestWidth +8, nameRect.origin.y, nameRect.size.width, nameRect.size.height);
         
     }
     // set scrollview content size

@@ -28,8 +28,17 @@
         
         CGRect frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
         self.frame = frame;
-        
+
         UIImageView* imageView = nil;
+        
+        //grabber
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarGrabber" error:nil];
+        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+        imageView.frame = sheet.frame;
+        [self addSubview:imageView];
+        
+        
+        
         // fake image
         UIImage* image = [UIImage imageNamed:@"TrackImageDummy.png"];
         imageView = [[UIImageView alloc] initWithImage:image];
@@ -103,6 +112,8 @@
         [self.playPauseButton setImage:imageFile forState:UIControlStateSelected];
         
         [self addSubview:self.playPauseButton];
+
+        
         
     }
     
