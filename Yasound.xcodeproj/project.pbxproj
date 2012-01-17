@@ -28,6 +28,9 @@
 		40F4C79114BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79214BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79314BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
+		B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
+		B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
+		B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		BC0304E814BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		BC0304E914BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		BC0304EA14BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
@@ -851,6 +854,8 @@
 		40F4C78A14BDF40F00A163F9 /* SongUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUser.m; sourceTree = "<group>"; };
 		40F4C78F14BEEF6F00A163F9 /* NextSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextSong.h; sourceTree = "<group>"; };
 		40F4C79014BEEF6F00A163F9 /* NextSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextSong.m; sourceTree = "<group>"; };
+		B172043D14C54446007F3FB0 /* BuyLinkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyLinkManager.h; sourceTree = "<group>"; };
+		B172043E14C54446007F3FB0 /* BuyLinkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyLinkManager.m; sourceTree = "<group>"; };
 		BC0304E614BF030200F39374 /* Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tutorial.h; sourceTree = "<group>"; };
 		BC0304E714BF030200F39374 /* Tutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tutorial.m; sourceTree = "<group>"; };
 		BC0304FC14C0248100F39374 /* InteractiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractiveView.h; sourceTree = "<group>"; };
@@ -1349,6 +1354,16 @@
 			path = DataProvider;
 			sourceTree = "<group>";
 		};
+		B172043C14C54446007F3FB0 /* BuyLink */ = {
+			isa = PBXGroup;
+			children = (
+				B172043D14C54446007F3FB0 /* BuyLinkManager.h */,
+				B172043E14C54446007F3FB0 /* BuyLinkManager.m */,
+			);
+			name = BuyLink;
+			path = LibTools/BuyLink;
+			sourceTree = SOURCE_ROOT;
+		};
 		BC0DD8381487C73E00DCD550 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1563,6 +1578,7 @@
 		BCA2CCD6149A95460000637E /* LibTools */ = {
 			isa = PBXGroup;
 			children = (
+				B172043C14C54446007F3FB0 /* BuyLink */,
 				BC27F39114BE598700EF1C5F /* YasoundReachability */,
 				BCDC97D414AB820500D54631 /* Security */,
 				BCDC979114AB7DD100D54631 /* SocialSessionManager */,
@@ -2863,6 +2879,7 @@
 				BC0304FF14C0248100F39374 /* InteractiveView.m in Sources */,
 				BC03050514C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03053014C0724D00F39374 /* AudioStreamManager.m in Sources */,
+				B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2981,6 +2998,7 @@
 				BC0304FE14C0248100F39374 /* InteractiveView.m in Sources */,
 				BC03050414C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03052F14C0724D00F39374 /* AudioStreamManager.m in Sources */,
+				B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3100,6 +3118,7 @@
 				BC03050014C0248100F39374 /* InteractiveView.m in Sources */,
 				BC03050614C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03053114C0724D00F39374 /* AudioStreamManager.m in Sources */,
+				B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

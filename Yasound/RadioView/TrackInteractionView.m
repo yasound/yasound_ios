@@ -13,6 +13,7 @@
 #import "SessionManager.h"
 #import "YasoundSessionManager.h"
 #import "ActivityModelessSpinner.h"
+#import "BuyLinkManager.h"
 
 @implementation TrackInteractionView
 
@@ -102,6 +103,19 @@
 
 - (void)onTrackBuy:(id)sender
 {
+    BuyLinkManager *mgr = [[BuyLinkManager alloc] init];
+    NSString *link = [mgr generateLink:_song.metadata.artist_name 
+                                 album:_song.metadata.album_name 
+                                  song:_song.metadata.name];
+    if (link) 
+    {
+        NSURL *url = [[NSURL alloc] initWithString:link];
+        [[UIApplication sharedApplication] openURL:url];
+        [url release];
+    }
+    [mgr release];
+    
+    
 //    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/com.apple.jingle.search.DirectAction/search?artist=Prince";
 
 //    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?artistTerm
