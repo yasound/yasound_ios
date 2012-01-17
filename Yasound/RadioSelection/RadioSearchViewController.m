@@ -189,9 +189,8 @@ static NSArray* gFakeSearchUsers = nil;
     
     _radios = radios;
     [_radios retain];
-    [_tableView reloadData];
+    [self.searchDisplayController.searchResultsTableView reloadData];
 }
-
 
  
 

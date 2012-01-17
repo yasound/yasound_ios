@@ -8,9 +8,6 @@
 
 #import "YasoundDataProvider.h"
 
-
-#define USE_LOCAL_SERVER 0
-
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"
 
@@ -49,7 +46,7 @@ static YasoundDataProvider* _main = nil;
     if (self)
     {
         NSString* baseUrl;
-#if USE_LOCAL_SERVER
+#if USE_YASOUND_LOCAL_SERVER
         baseUrl = LOCAL_URL;
         NSLog(@"use LOCAL SERVER '%@'", baseUrl);
 #else

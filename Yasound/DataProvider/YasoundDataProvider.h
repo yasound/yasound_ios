@@ -15,6 +15,8 @@
 #import "SongUser.h"
 #import "NextSong.h"
 
+#define USE_YASOUND_LOCAL_SERVER 0
+
 typedef NSString* taskID;
 
 typedef enum  
@@ -57,6 +59,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
 
 - (void)userRadioWithTarget:(id)target action:(SEL)selector;
+
+- (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
 
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
