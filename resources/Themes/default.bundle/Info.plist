@@ -544,6 +544,59 @@
 			<key>path</key>
 			<string>images/</string>
 		</dict>
+		<key>SongCellBackground</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>TrackBackground</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/</string>
+		</dict>
+		<key>SongCellDate</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>name</key>
+				<string>Arial</string>
+				<key>size</key>
+				<integer>12</integer>
+				<key>textColor</key>
+				<string>rgb(32,32,32)</string>
+			</dict>
+			<key>height</key>
+			<integer>16</integer>
+			<key>width</key>
+			<integer>100</integer>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+		</dict>
+		<key>SongCellMessage</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>name</key>
+				<string>Arial</string>
+				<key>size</key>
+				<integer>12</integer>
+				<key>textColor</key>
+				<string>rgb(32,32,32)</string>
+			</dict>
+			<key>height</key>
+			<integer>16</integer>
+			<key>width</key>
+			<integer>100</integer>
+			<key>x</key>
+			<integer>100</integer>
+			<key>y</key>
+			<integer>0</integer>
+		</dict>
 		<key>RadioViewStatusBar</key>
 		<dict>
 			<key>x</key>

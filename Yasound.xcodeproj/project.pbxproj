@@ -254,6 +254,9 @@
 		BCA83E7214C6D3EB000A8295 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
 		BCA83E7314C6D3EB000A8295 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
 		BCA83E7414C6D3EB000A8295 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
+		BCA83E7D14C7258F000A8295 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
+		BCA83E7E14C7258F000A8295 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
+		BCA83E7F14C7258F000A8295 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
 		BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
@@ -971,6 +974,8 @@
 		BCA83E6C14C6D3EB000A8295 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoritesViewController.h; path = RadioSelection/FavoritesViewController.h; sourceTree = "<group>"; };
 		BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoritesViewController.m; path = RadioSelection/FavoritesViewController.m; sourceTree = "<group>"; };
 		BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavoritesViewController.xib; path = RadioSelection/FavoritesViewController.xib; sourceTree = "<group>"; };
+		BCA83E7B14C7258F000A8295 /* SongViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongViewCell.h; sourceTree = "<group>"; };
+		BCA83E7C14C7258F000A8295 /* SongViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongViewCell.m; sourceTree = "<group>"; };
 		BCB178B214BEE90100A3EDE3 /* TracksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksView.h; sourceTree = "<group>"; };
 		BCB178B314BEE90100A3EDE3 /* TracksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksView.m; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
@@ -1609,6 +1614,8 @@
 				BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */,
 				BC0304FC14C0248100F39374 /* InteractiveView.h */,
 				BC0304FD14C0248100F39374 /* InteractiveView.m */,
+				BCA83E7B14C7258F000A8295 /* SongViewCell.h */,
+				BCA83E7C14C7258F000A8295 /* SongViewCell.m */,
 				BC0DD8461487EAE900DCD550 /* RadioViewCell.h */,
 				BC0DD8471487EAE900DCD550 /* RadioViewCell.m */,
 				BCB5F28C1485416B00C28B3D /* RadioViewController.h */,
@@ -2876,6 +2883,7 @@
 				BC178DAB14C5E99800B18420 /* CreateMyRadio.m in Sources */,
 				BCA83E6714C6D3D1000A8295 /* FriendsViewController.m in Sources */,
 				BCA83E7014C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
+				BCA83E7E14C7258F000A8295 /* SongViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2996,6 +3004,7 @@
 				BC178DAA14C5E99800B18420 /* CreateMyRadio.m in Sources */,
 				BCA83E6614C6D3D1000A8295 /* FriendsViewController.m in Sources */,
 				BCA83E6F14C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
+				BCA83E7D14C7258F000A8295 /* SongViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3117,6 +3126,7 @@
 				BC178DAC14C5E99800B18420 /* CreateMyRadio.m in Sources */,
 				BCA83E6814C6D3D1000A8295 /* FriendsViewController.m in Sources */,
 				BCA83E7114C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
+				BCA83E7F14C7258F000A8295 /* SongViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
