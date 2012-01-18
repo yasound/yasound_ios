@@ -114,15 +114,6 @@
         [url release];
     }
     [mgr release];
-    
-    
-//    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/com.apple.jingle.search.DirectAction/search?artist=Prince";
-
-//    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?artistTerm
-//    
-//    NSURL* url = [[NSURL alloc] initWithString:[buyString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-//    [[UIApplication sharedApplication] openURL:url];
-//    [url release];
 }
 
 
