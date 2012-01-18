@@ -24,6 +24,7 @@
 #import "AudioStreamer.h"
 #import "AudioStreamManager.h"
 
+#import "SongViewCell.h"
 
 
 //#define LOCAL 1 // use localhost as the server
@@ -950,7 +951,7 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-#define ROW_SONG_HEIGHT 20
+#define ROW_SONG_HEIGHT 24
 
 //.................................................................................................
 //
@@ -1033,15 +1034,37 @@ static Song* _gNowPlayingSong = nil;
     NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
     CGFloat height = [nb floatValue];
     
-    RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
+    if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
     {
-        cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
+        RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
+        }
+        else
+            [cell update:ev height:height indexPath:indexPath];
+        
+        return cell;
+    }
+    else if ([ev.type isEqualToString:EV_TYPE_SONG])
+    {
+        SongViewCell* cell = (SongViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[[SongViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
+        }
+        else
+            [cell update:ev height:height indexPath:indexPath];
+        
+        return cell;
     }
     else
-        [cell update:ev height:height indexPath:indexPath];
+    {
+        assert(0);
+        return nil;
+    }
     
-    return cell;
+    return nil;
 }
 
 
