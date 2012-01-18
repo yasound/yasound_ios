@@ -121,18 +121,23 @@
 
 - (void)onTrackShare:(id)sender
 {
-    NSString* message = @"message_test2";
-    NSString* title = @"title_test2";
+    NSString* message = NSLocalizedString(@"I am currenting listening to %@, by %@ on %@", nil);
+    NSString* title = NSLocalizedString(@"Yasound share", nil);
     NSURL* pictureURL = nil;
     
+    NSString* fullMessage = [NSString stringWithFormat:message,
+                             _song.metadata.name,
+                             _song.metadata.artist_name,
+                             _song.metadata.album_name];
     
+                             
     if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
         _sharing = YES;
         [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_share_facebook", nil)];
         [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_FOR_SHARING target:self selector:@selector(onSharingTimeout:) userInfo:nil repeats:NO];
 
-        [[YasoundSessionManager main] postMessageForFacebook:message title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
+        [[YasoundSessionManager main] postMessageForFacebook:fullMessage title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
     }
 
     else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
@@ -141,7 +146,7 @@
         [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_share_twitter", nil)];
         [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_FOR_SHARING target:self selector:@selector(onSharingTimeout:) userInfo:nil repeats:NO];
 
-        [[YasoundSessionManager main] postMessageForTwitter:message title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
+        [[YasoundSessionManager main] postMessageForTwitter:fullMessage title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
     }
     
     //    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/com.apple.jingle.search.DirectAction/search?artist=Prince";
