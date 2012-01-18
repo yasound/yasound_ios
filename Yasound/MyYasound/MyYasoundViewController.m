@@ -566,7 +566,10 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
 {    
     if (buttonIndex == 0)
-        [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutDidReturned)];
+    {
+      [[AudioStreamManager main] stopRadio];
+      [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutDidReturned)];
+    }
 }
 
 
