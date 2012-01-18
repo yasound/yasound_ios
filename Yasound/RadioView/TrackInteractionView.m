@@ -125,6 +125,7 @@
     NSString* message = NSLocalizedString(@"I am currently listening to %@, by %@ on %@", nil);
     NSString* title = NSLocalizedString(@"Yasound share", nil);
     NSURL* pictureURL = [[NSURL alloc] initWithString:@"http://yasound.com/fr/images/logo.png"];
+    NSURL* link = [[NSURL alloc] initWithString:@"http://yasound.com/"];
     
     NSString* fullMessage = [NSString stringWithFormat:message,
                              _song.metadata.name,
@@ -138,7 +139,7 @@
         [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_share_facebook", nil)];
         [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_FOR_SHARING target:self selector:@selector(onSharingTimeout:) userInfo:nil repeats:NO];
 
-        [[YasoundSessionManager main] postMessageForFacebook:fullMessage title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
+        [[YasoundSessionManager main] postMessageForFacebook:fullMessage title:title picture:pictureURL link:link target:self action:@selector(onPostMessageFinished:)];
     }
 
     else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
@@ -158,6 +159,7 @@
     //    [[UIApplication sharedApplication] openURL:url];
     //    [url release];
     [pictureURL release];
+    [link release];
 }
 
 
