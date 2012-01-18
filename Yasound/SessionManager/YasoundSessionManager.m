@@ -368,11 +368,11 @@ static YasoundSessionManager* _main = nil;
 #pragma mark - post Messages
 
 
-- (BOOL)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action
+- (BOOL)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl link:(NSURL*)link target:(id)target action:(SEL)action
 {
     _postTarget = target;
     _postAction = action;
-    [[FacebookSessionManager facebook] requestPostMessage:message title:title picture:pictureUrl];
+    [[FacebookSessionManager facebook] requestPostMessage:message title:title picture:pictureUrl link:link];
 }
 
 
