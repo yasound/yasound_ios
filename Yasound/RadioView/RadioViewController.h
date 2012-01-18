@@ -54,6 +54,8 @@
     CGFloat _cellMinHeight;
     
     NSTimer* _timerUpdate;
+    
+    NSMutableArray* _wallEvents;
 }
 
 @property (nonatomic, retain) Radio* radio;

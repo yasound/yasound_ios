@@ -75,6 +75,8 @@ static Song* _gNowPlayingSong = nil;
     
     sheet = [[Theme theme] stylesheetForKey:@"CellMinHeight" error:nil];
     _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
+        
+        _wallEvents = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -523,6 +525,7 @@ static Song* _gNowPlayingSong = nil;
 - (void)dealloc
 {
     [_messageFont release];
+    [_wallEvents release];
     [super dealloc];
 }
 
@@ -701,6 +704,16 @@ static Song* _gNowPlayingSong = nil;
         return @"StopListening";
 }
 
+- (void)logWallEvents
+{
+    int i = 0;
+    for (WallEvent* w in _wallEvents)
+    {
+        NSLog(@"(%d) -%@- %@", i, w.type, [w.type isEqualToString:EV_TYPE_MESSAGE] ? w.text : w.song.metadata.name);
+        i++;
+    }
+}
+
 - (void)receiveWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
   Meta* meta = [info valueForKey:@"meta"];
@@ -735,7 +748,16 @@ static Song* _gNowPlayingSong = nil;
           NSLog(@"show message %@", ev.text);
         NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
         [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
+          
+          [_wallEvents addObject:ev];
       }
+    }
+    else if ([ev.type isEqualToString:EV_TYPE_SONG])
+    {
+        if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
+        {       
+            [_wallEvents addObject:ev];
+        }
     }
     else if ([ev.type isEqualToString:EV_TYPE_LOGIN])
     {
@@ -759,6 +781,8 @@ static Song* _gNowPlayingSong = nil;
         _lastWallEventDate = nil;
     
   _lastConnectionUpdateDate = [NSDate date];
+    
+    [self logWallEvents];
   
 //  [_tableView reloadData];
 }
