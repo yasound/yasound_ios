@@ -1134,6 +1134,9 @@ static Song* _gNowPlayingSong = nil;
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        //LBDEBUG FLAG
+        _previouslyInsertedEventCell = nil;
+        
         return cell;
     }
     else if ([ev.type isEqualToString:EV_TYPE_SONG])
@@ -1162,8 +1165,8 @@ static Song* _gNowPlayingSong = nil;
             
 //            SongViewCell* previousCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(indexPath.row-1) inSection:0]];
             //            assert(previousCell);
-            assert(_previouslyInsertedEventCell);
-            if (!_previouslyInsertedEventCell.hidden)
+//            assert(_previouslyInsertedEventCell);
+            if (_previouslyInsertedEventCell && !_previouslyInsertedEventCell.hidden)
             {
                 UIImage* image = [UIImage imageNamed:@"bullets.png"];
                 UIImageView* bulletsView = [[UIImageView alloc] initWithImage:image];
