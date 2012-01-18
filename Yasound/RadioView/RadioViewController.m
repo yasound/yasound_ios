@@ -24,7 +24,6 @@
 #import "AudioStreamer.h"
 #import "AudioStreamManager.h"
 
-#import "SongViewCell.h"
 #import "User.h"
 
 //#define LOCAL 1 // use localhost as the server
@@ -55,6 +54,8 @@ static Song* _gNowPlayingSong = nil;
 
         _trackInteractionViewDisplayed = NO;
         _previouslyInsertedEventWasSong = NO;
+        _previouslyInsertedEventIndex = -1;
+        _previouslyInsertedEventCell = nil;
     
     //LBDEBUG
     //        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
@@ -68,7 +69,7 @@ static Song* _gNowPlayingSong = nil;
     
     _statusBarButtonToggled = NO;
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"CellMessage" error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _messageFont = [sheet makeFont];
     [_messageFont retain];
     
@@ -427,18 +428,28 @@ static Song* _gNowPlayingSong = nil;
     //LBDEBUG§
 //    [self onUpdate:nil];
     
-    
-    WallEvent* ev2 = [self fakeEventMessage:@"user1" text:@"text1"];
-    [_wallEvents addObject:ev2];
-    [self addMessage];
-    
-    WallEvent* ev = [self fakeEventSong:@"proutsong"];
-    [_wallEvents addObject:ev];
-    [self addSong];
 
-    WallEvent* ev3 = [self fakeEventMessage:@"user3" text:@"text3 "];
-    [_wallEvents addObject:ev3];
-    [self addMessage];
+    //LBDEBUG FAKE
+    
+//    WallEvent* ev2 = [self fakeEventMessage:@"user1" text:@"text1"];
+//    [_wallEvents insertObject:ev2 atIndex:0];
+//    [self addMessage];
+//    
+//    WallEvent* ev = [self fakeEventSong:@"proutsong"];
+//    [_wallEvents insertObject:ev atIndex:0];
+//    [self addSong];
+//
+//    WallEvent* ev4 = [self fakeEventSong:@"proutsong 2"];
+//    [_wallEvents insertObject:ev4 atIndex:0];
+//    [self addSong];
+//
+//    WallEvent* ev6 = [self fakeEventSong:@"proutsong 3"];
+//    [_wallEvents insertObject:ev6 atIndex:0];
+//    [self addSong];
+//
+//    WallEvent* ev3 = [self fakeEventMessage:@"user3" text:@"text3 "];
+//    [_wallEvents insertObject:ev3 atIndex:0];
+//    [self addMessage];
 
 }
 
@@ -584,10 +595,9 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onUpdate:(NSTimer*)timer
 {    
-    //LBDEBUG ICI
-//  [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
-//  [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
-//    
+    //LBDEBUG FAKE
+  [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
+  [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
     
 }
 
@@ -795,9 +805,9 @@ static Song* _gNowPlayingSong = nil;
     if (addedCount)
         [self didAddWallEvents:addedCount atIndex:addedAtIndex];
     
-    int minMessageCount = 8;
-    if ([self eventMessageCount] < minMessageCount)
-        [self askForNextWallEvents];
+//    int minMessageCount = 8;
+//    if ([self eventMessageCount] < minMessageCount)
+//        [self askForNextWallEvents];
 }
 
 
@@ -961,15 +971,22 @@ static Song* _gNowPlayingSong = nil;
 
 
 
+
 - (void)insertMessageAtIndex:(NSInteger)index  silent:(BOOL)silent
 {
+    NSLog(@"insertMessageAtIndex %d   silent %d", index, silent);
+
     WallEvent* ev = [_wallEvents objectAtIndex:index];
     NSString* text = ev.text;
     
     // compute the size of the text => will allow to update the cell's height dynamically
     CGSize suggestedSize = [text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
     
-    [_wallHeights insertObject:[NSNumber numberWithFloat:suggestedSize.height] atIndex:index];
+    CGFloat height = suggestedSize.height;
+//    if (height > _cellMinHeight)
+//        height += THE_REST_OF_THE_CELL_HEIGHT;
+    
+    [_wallHeights insertObject:[NSNumber numberWithFloat:height] atIndex:index];
     
     //    [self.messages insertObject:m atIndex:0];
     //    
@@ -988,10 +1005,29 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)insertSongAtIndex:(NSInteger)index silent:(BOOL)silent
 {
+    ////
+    {
+        WallEvent* ev = [_wallEvents objectAtIndex:index];
+    NSLog(@"insertSongAtIndex %d   silent %d     date %@", index, silent, ev.start_date);
+    }
+    /////
+    
+    [_wallHeights insertObject:[NSNumber numberWithFloat:ROW_SONG_HEIGHT] atIndex:index];
+
+    
+    // previous song entry must be hidden
     if (_previouslyInsertedEventWasSong)
-        [_wallHeights insertObject:[NSNumber numberWithFloat:0] atIndex:index];
-    else
-        [_wallHeights insertObject:[NSNumber numberWithFloat:ROW_SONG_HEIGHT] atIndex:index];
+    {
+        NSLog(@"_previouslyInsertedEventWasSong! : height = 0 for index  %d", _previouslyInsertedEventIndex);
+
+        if (index > _previouslyInsertedEventIndex)
+        {
+            NSLog(@"Cette cellule sera cachée!");
+            
+            [_wallHeights replaceObjectAtIndex:index withObject:[NSNumber numberWithFloat:0]];
+        }
+    }
+
     
     UITableViewRowAnimation anim = (silent) ? UITableViewRowAnimationNone : UITableViewRowAnimationTop;
 
@@ -999,6 +1035,7 @@ static Song* _gNowPlayingSong = nil;
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
     
     _previouslyInsertedEventWasSong = YES;
+    _previouslyInsertedEventIndex = index;
 
 }
 
@@ -1028,6 +1065,9 @@ static Song* _gNowPlayingSong = nil;
     return [_wallEvents count];
 }
 
+#define THE_REST_OF_THE_CELL_HEIGHT 44
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
@@ -1036,12 +1076,20 @@ static Song* _gNowPlayingSong = nil;
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
     
     if ([ev.type isEqualToString:EV_TYPE_SONG])
+    {
+        //LBDEBUG ICI
+        //NSLog(@"%@ : height %.2f", ev.song.metadata.name, height);
+        
         return height;
+    }
     
-    if (height < _cellMinHeight)
+    if ((height + THE_REST_OF_THE_CELL_HEIGHT) < _cellMinHeight)
         return _cellMinHeight;
+
+    //LBDEBUG FLAG
+    return (height + THE_REST_OF_THE_CELL_HEIGHT);
     
-    return _cellMinHeight + height;
+//    return _cellMinHeight + height;
 }
 
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -1084,6 +1132,8 @@ static Song* _gNowPlayingSong = nil;
         else
             [cell update:ev height:height indexPath:indexPath];
         
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         return cell;
     }
     else if ([ev.type isEqualToString:EV_TYPE_SONG])
@@ -1095,6 +1145,36 @@ static Song* _gNowPlayingSong = nil;
         }
         else
             [cell update:ev height:height indexPath:indexPath];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        
+        NSLog(@"height = %.2f for cell %@    row %d    date %@", height, ev.song.metadata.name, indexPath.row, ev.start_date);
+
+        //LBDEBUG ICI
+        if (height == 0)
+        {
+            
+            NSLog(@"must be hidden");
+            
+            
+            cell.hidden = YES;
+            
+//            SongViewCell* previousCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(indexPath.row-1) inSection:0]];
+            //            assert(previousCell);
+            assert(_previouslyInsertedEventCell);
+            if (!_previouslyInsertedEventCell.hidden)
+            {
+                UIImage* image = [UIImage imageNamed:@"bullets.png"];
+                UIImageView* bulletsView = [[UIImageView alloc] initWithImage:image];
+                CGRect frame = CGRectMake(_previouslyInsertedEventCell.frame.size.width - image.size.width, (_previouslyInsertedEventCell.frame.size.height /2.f) - (image.size.height / 2.f), image.size.width, image.size.height);
+                bulletsView.frame = frame;
+                [_previouslyInsertedEventCell.contentView addSubview:bulletsView];
+            }
+            
+        }
+        
+        _previouslyInsertedEventCell = cell;
         
         return cell;
     }

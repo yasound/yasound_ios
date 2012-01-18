@@ -371,6 +371,12 @@
 		BCCA79F114B1FF720011AADD /* iconLogout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */; };
 		BCCA79F214B1FF720011AADD /* iconLogout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */; };
 		BCCA79F314B1FF720011AADD /* iconLogout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */; };
+		BCD1219C14C749D90013B2EF /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219A14C749D90013B2EF /* bullets.png */; };
+		BCD1219D14C749D90013B2EF /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219A14C749D90013B2EF /* bullets.png */; };
+		BCD1219E14C749D90013B2EF /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219A14C749D90013B2EF /* bullets.png */; };
+		BCD1219F14C749D90013B2EF /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219B14C749D90013B2EF /* bullets@2x.png */; };
+		BCD121A014C749D90013B2EF /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219B14C749D90013B2EF /* bullets@2x.png */; };
+		BCD121A114C749D90013B2EF /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219B14C749D90013B2EF /* bullets@2x.png */; };
 		BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BCD8C7A214B4B59F009EAF61 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
 		BCD8C7A314B4B59F009EAF61 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
@@ -1027,6 +1033,8 @@
 		BCCA79DF14B1DDB20011AADD /* grayArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrowRight@2x.png"; sourceTree = "<group>"; };
 		BCCA79EC14B1FF720011AADD /* iconLogout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLogout.png; sourceTree = "<group>"; };
 		BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLogout@2x.png"; sourceTree = "<group>"; };
+		BCD1219A14C749D90013B2EF /* bullets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullets.png; sourceTree = "<group>"; };
+		BCD1219B14C749D90013B2EF /* bullets@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullets@2x.png"; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
 		BCD4C2C514695FCD000A236A /* ActivityAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityAlertView.m; sourceTree = "<group>"; };
 		BCD8C7A014B4B59F009EAF61 /* YasoundSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundSessionManager.h; sourceTree = "<group>"; };
@@ -2080,6 +2088,8 @@
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCD1219A14C749D90013B2EF /* bullets.png */,
+				BCD1219B14C749D90013B2EF /* bullets@2x.png */,
 				BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */,
 				BCBAB4B914A3920600CF922A /* Settings */,
 				BC8B080614924D75007E1307 /* Tabs */,
@@ -2464,6 +2474,8 @@
 				BC178DB314C63E4A00B18420 /* default.bundle in Resources */,
 				BCA83E6A14C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
 				BCA83E7314C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
+				BCD1219D14C749D90013B2EF /* bullets.png in Resources */,
+				BCD121A014C749D90013B2EF /* bullets@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2612,6 +2624,8 @@
 				BC178DB214C63E4A00B18420 /* default.bundle in Resources */,
 				BCA83E6914C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
 				BCA83E7214C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
+				BCD1219C14C749D90013B2EF /* bullets.png in Resources */,
+				BCD1219F14C749D90013B2EF /* bullets@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2760,6 +2774,8 @@
 				BC178DB414C63E4A00B18420 /* default.bundle in Resources */,
 				BCA83E6B14C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
 				BCA83E7414C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
+				BCD1219E14C749D90013B2EF /* bullets.png in Resources */,
+				BCD121A114C749D90013B2EF /* bullets@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

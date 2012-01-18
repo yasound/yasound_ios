@@ -10,6 +10,7 @@
 #import "NowPlayingView.h"
 #import "TrackInteractionView.h"
 #import "TracksView.h"
+#import "SongViewCell.h"
 
 @class Radio;
 @class AudioStreamer;
@@ -58,6 +59,8 @@
     NSMutableArray* _wallHeights;
     
     BOOL _previouslyInsertedEventWasSong;
+    NSInteger _previouslyInsertedEventIndex;
+    SongViewCell* _previouslyInsertedEventCell;
 }
 
 @property (nonatomic, retain) Radio* radio;
