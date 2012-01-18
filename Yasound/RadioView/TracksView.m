@@ -30,7 +30,6 @@
     
   self.dataSource = self;
   self.delegate = self;
-  self.scrollEnabled = YES;
   self.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self updateView];
@@ -108,6 +107,7 @@
     {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
+    cell.showsReorderControl = YES;
     
   
     if (_data == nil)
@@ -119,12 +119,21 @@
     NextSong* song = [_data objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%d - %@", [song.order integerValue], song.song.metadata.name];
     cell.detailTextLabel.text = song.song.metadata.artist_name;
-  
   return cell;
 }
 
 
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
 
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    NextSong* song = [_data objectAtIndex:destinationIndexPath.row];
+    [_data exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
+    [[YasoundDataProvider main] moveNextSong:song toPosition:destinationIndexPath.row target:self action:@selector(onUpdateTrack:info:)];  
+}
 
 
 
@@ -178,144 +187,6 @@
 
 
 
-
-#pragma mark - touches actions
-
-
-
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
-{
-  //NSLog(@"touchesBegan");
-  
-  UITouch *aTouch = [touches anyObject];
-  CGPoint touchPoint = [aTouch locationInView:self];
-  
-  BOOL done = NO;
-  NSInteger row = 0;
-  NSInteger nbCells = [self numberOfRowsInSection:0];
-  while (!done && (row < nbCells))
-  {
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    CGRect rect = [self rectForRowAtIndexPath:indexPath];
-
-    if (CGRectContainsPoint(rect, touchPoint))
-    {
-        NextSong* song = [_data objectAtIndex:indexPath.row];
-        NSLog(@"selected '%@'", song.song.metadata.name);
-        
-      _selectedIndexPath = indexPath;
-      [_selectedIndexPath retain];
-      done = YES;
-    }
-    
-    row++;
-  }
-  
-  [super touchesBegan:touches withEvent:event];
-  
-}
-
-
-
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 
-{
-  //NSLog(@"touchesMoved");
-  
-  if (_selectedIndexPath == nil)
-  {
-    [super touchesMoved:touches withEvent:event];
-    return;
-  }
-  
-  UITouch *aTouch = [touches anyObject];
-  CGPoint touchPoint = [aTouch locationInView:self];
-
-  
-  BOOL done = NO;
-  NSInteger row = 0;
-  NSInteger nbCells = [self numberOfRowsInSection:0];
-  while (!done && (row < nbCells))
-  {
-    if (row == _selectedIndexPath.row)
-    {
-      row++;
-      continue;
-    }
-    
-
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    CGRect rect = [self rectForRowAtIndexPath:indexPath];
-    
-    if (CGRectContainsPoint(rect, touchPoint))
-    {
-        if (_destIndexPath != nil)
-            [_destIndexPath release];
-
-        _destIndexPath = indexPath;
-        [_destIndexPath retain];
-        
-        NextSong* song = [_data objectAtIndex:_destIndexPath.row];
-//        NSLog(@"update gui to '%@'", song.song.metadata.name);
-        
-        // update data
-        [_data exchangeObjectAtIndex:_selectedIndexPath.row withObjectAtIndex:_destIndexPath.row];
-        
-        // update gui
-        [self moveRowAtIndexPath:_selectedIndexPath  toIndexPath:_destIndexPath];
-
-        _selectedIndexPath = _destIndexPath;
-        
-        done = YES;
-    }
-    
-    row++;
-  }
-
-  
-  
-  [super touchesMoved:touches withEvent:event];
-  
-}
-
-
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
-{
-  // NSLog(@"touchesEnded");
-    if (_destIndexPath != nil)
-    {
-        //        // update tracks info display (order number...)
-        //        [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(onUpdateTrack:) userInfo:_selectedIndexPath repeats:NO];
-        //        [NSTimer scheduledTimerWithTimeInterval:0.6 target:self selector:@selector(onUpdateTrack:) userInfo:indexPath repeats:NO];
-
-        NextSong* song = [_data objectAtIndex:_destIndexPath.row];
-        NSLog(@"move to destination '%@'", song.song.metadata.name);
-
-        [[YasoundDataProvider main] moveNextSong:song toPosition:_destIndexPath.row target:self action:@selector(onUpdateTrack:info:)];   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
-
-
-        // didDeleteNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
-    }
-    
-    
-    [_selectedIndexPath release];
-    _selectedIndexPath = nil;
-    [_destIndexPath release];
-    _destIndexPath = nil;
-  
-  [super touchesEnded:touches withEvent:event];
-}
-
-
-
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event 
-{
-  /* no state to clean up, so null implementation */
-  [super touchesCancelled:touches withEvent:event];
-}
 
 
 
