@@ -61,7 +61,7 @@
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic) BOOL ownRadio;
-@property (nonatomic, retain) NSMutableArray* messages;
+//@property (nonatomic, retain) NSMutableArray* messages;
 @property (atomic, retain) NSMutableArray* statusMessages;
 @property (nonatomic, retain) UIButton* favoriteButton;
 

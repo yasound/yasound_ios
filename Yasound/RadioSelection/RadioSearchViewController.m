@@ -144,7 +144,7 @@ static NSArray* gFakeSearchUsers = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RadioSelectionTableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
+    RadioSelectionTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
     RadioViewController* view = [[RadioViewController alloc] initWithRadio:cell.radio];
     [self.navigationController pushViewController:view animated:YES];

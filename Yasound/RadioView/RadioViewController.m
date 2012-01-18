@@ -38,7 +38,7 @@ static Song* _gNowPlayingSong = nil;
 
 
 @synthesize radio;
-@synthesize messages;
+//@synthesize messages;
 @synthesize statusMessages;
 @synthesize ownRadio;
 @synthesize favoriteButton;
@@ -62,7 +62,7 @@ static Song* _gNowPlayingSong = nil;
     _lastConnectionUpdateDate = [NSDate date];
     _lastSongUpdateDate = nil;
     
-    self.messages = [[NSMutableArray alloc] init];
+//    self.messages = [[NSMutableArray alloc] init];
     self.statusMessages = [[NSMutableArray alloc] init];
     
     _statusBarButtonToggled = NO;
@@ -950,7 +950,7 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-
+#define ROW_SONG_HEIGHT 20
 
 //.................................................................................................
 //
@@ -983,6 +983,8 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)addSong
 {
+    [_wallHeights insertObject:[NSNumber numberWithFloat:ROW_SONG_HEIGHT] atIndex:0];
+
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
 }
 
@@ -1011,14 +1013,14 @@ static Song* _gNowPlayingSong = nil;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
     //    NSLog(@"number messages %d", [self.messages count]);
-    return [self.messages count];
+    return [_wallEvents count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    WallMessage* m = [self.messages objectAtIndex:indexPath.row];
-    
-    return m.textHeight + _cellMinHeight;
+//    return m.textHeight + _cellMinHeight;
+    NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
+    return [nb floatValue];
 }
 
 
@@ -1026,15 +1028,18 @@ static Song* _gNowPlayingSong = nil;
 {
     static NSString* CellIdentifier = @"RadioViewCell";
     
-    WallMessage* m = [self.messages objectAtIndex:indexPath.row];
+    WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
+//    WallMessage* m = [self.messages objectAtIndex:indexPath.row];
+    NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
+    CGFloat height = [nb floatValue];
     
     RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier message:m indexPath:indexPath] autorelease];
+        cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
     }
     else
-        [cell update:m indexPath:indexPath];
+        [cell update:ev height:height indexPath:indexPath];
     
     return cell;
 }
