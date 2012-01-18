@@ -14,8 +14,8 @@
 #import "ActivityAlertView.h"
 #import "YasoundDataProvider.h"
 #import "YasoundReachability.h"
+#import "AudioStreamManager.h"
 #import "SettingsViewController.h"
-
 
 
 
@@ -52,6 +52,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifLoginScreen:) name:NOTIF_LOGIN_SCREEN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifWizard:) name:NOTIF_WIZARD object:nil];
     
+  //Make sure the system follows our playback status
+  // <=> Background audio playing
+  [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+  [[AVAudioSession sharedInstance] setActive: YES error: nil];  
+  [[AVAudioSession sharedInstance] setDelegate: self];
 }
 
 - (void)viewDidUnload
@@ -69,6 +74,7 @@
         [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged)];
     }
 
+  [self becomeFirstResponder];
 }
 
 
@@ -192,5 +198,35 @@
     [self.navigationController pushViewController:tabBarController animated:NO];    
     [tabBarController release];
 }
+
+
+#pragma mark - Background Audio Playing
+
+
+//Make sure we can recieve remote control events
+- (BOOL)canBecomeFirstResponder 
+{
+  return YES;
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event 
+{
+  //if it is a remote control event handle it correctly
+  if (event.type == UIEventTypeRemoteControl) 
+  {
+    if (event.subtype == UIEventSubtypeRemoteControlPlay) 
+      [[AudioStreamManager main] startRadio:[AudioStreamManager main].currentRadio];
+    
+    else if (event.subtype == UIEventSubtypeRemoteControlPause) 
+      [[AudioStreamManager main] stopRadio];
+    
+    else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) 
+      [[AudioStreamManager main] togglePlayPauseRadio];
+    
+  }
+}
+
+
+
 
 @end

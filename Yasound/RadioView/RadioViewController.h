@@ -7,7 +7,6 @@
 
 #import <UIKit/UIKit.h>
 #import "WallMessage.h"
-#import <AVFoundation/AVFoundation.h>
 #import "NowPlayingView.h"
 #import "TrackInteractionView.h"
 #import "TracksView.h"

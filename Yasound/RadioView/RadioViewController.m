@@ -419,29 +419,8 @@ static Song* _gNowPlayingSong = nil;
     
     // get the actual data from the server to update the GUI
     [self onUpdate:nil];
-    
-    //Make sure the system follows our playback status
-    // <=> Background audio playing
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-    [[AVAudioSession sharedInstance] setActive: YES error: nil];  
-    [[AVAudioSession sharedInstance] setDelegate: self];
 }
 
-
-#pragma mark - AVAudioSession Delegate
-
-- (void)beginInterruption
-{
-    [self pauseAudio];
-}
-
-- (void) endInterruptionWithFlags: (NSUInteger) flags
-{
-    if (flags & AVAudioSessionInterruptionFlags_ShouldResume)
-    {
-        [self playAudio];    
-    }
-}
 
 
 - (void)viewDidAppear:(BOOL)animated
@@ -451,7 +430,9 @@ static Song* _gNowPlayingSong = nil;
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_PLAY object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_STOP object:nil];
+   
     //Once the view has loaded then we can register to begin recieving controls and we can become the first responder
     // <=> background audio playing
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
@@ -505,29 +486,29 @@ static Song* _gNowPlayingSong = nil;
 
 
 
+
+
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    [[YasoundDataProvider main] leaveRadioWall:self.radio];
-
-    //End recieving events
-    // <=> background audio playing
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [self resignFirstResponder];
+    
+    [[YasoundDataProvider main] leaveRadioWall:self.radio];
     
     if ((_timerUpdate != nil) && [_timerUpdate isValid])
     {
         [_timerUpdate invalidate];
         _timerUpdate = nil;
     }
-}
 
+    [super viewWillDisappear: animated];
+}
 
 
 
 - (void)viewDidUnload
 {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
   [super viewDidUnload];
   // Release any retained subviews of the main view.
   // e.g. self.myOutlet = nil;
@@ -545,37 +526,6 @@ static Song* _gNowPlayingSong = nil;
     [super dealloc];
 }
 
-
-
-
-
-
-
-#pragma mark - Background Audio Playing
-
-
-//Make sure we can recieve remote control events
-- (BOOL)canBecomeFirstResponder 
-{
-    return YES;
-}
-
-- (void)remoteControlReceivedWithEvent:(UIEvent *)event 
-{
-    //if it is a remote control event handle it correctly
-    if (event.type == UIEventTypeRemoteControl) 
-    {
-        if (event.subtype == UIEventSubtypeRemoteControlPlay) 
-            [self playAudio];
-
-        else if (event.subtype == UIEventSubtypeRemoteControlPause) 
-            [self pauseAudio];
-
-        else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) 
-            [self onPlayPause:nil];
-        
-    }
-}
 
 
 
@@ -1495,9 +1445,19 @@ static Song* _gNowPlayingSong = nil;
 {
     if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_ERROR])
     {
-        [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
-        return;
+      [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
+      return;
     }
+    else if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_PLAY])
+    {
+      [self playAudio];
+      return;
+    }
+    else if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_STOP])
+    {
+      [self pauseAudio];
+      return;
+    }  
 }
 
 

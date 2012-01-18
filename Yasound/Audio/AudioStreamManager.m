@@ -89,7 +89,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     [_gAudioStreamer release];
     _gAudioStreamer = nil;
     
-    self.currentRadio = nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_STOP object:nil];
 }
 
 
@@ -113,8 +113,37 @@ static AudioStreamer* _gAudioStreamer = nil;
     //LBDEBUG DEBUG TODO : UNMUTE RADIO
     [_gAudioStreamer start];
     [[YasoundDataProvider main] startListeningRadio:self.currentRadio];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_PLAY object:nil];
 }
 
+- (void)togglePlayPauseRadio
+{
+  if (_gAudioStreamer == nil)
+    return;
+  
+  
+  //LBDEBUG DEBUG TODO : UNMUTE RADIO
+  if (_gAudioStreamer.state != AS_PLAYING)
+    [self playRadio];
+  else
+    [self stopRadio];
+}
+
+
+#pragma mark - AVAudioSession Delegate
+
+- (void)beginInterruption
+{
+  [self pauseAudio];
+}
+
+- (void) endInterruptionWithFlags: (NSUInteger) flags
+{
+  if (flags & AVAudioSessionInterruptionFlags_ShouldResume)
+  {
+    [self playAudio];    
+  }
+}
 
 
 
