@@ -16,6 +16,8 @@
     
     IBOutlet UITableView* _tableView;
     
+    NSArray* _friends_online;
+    NSArray* _friends_offline;
 }
 
 

@@ -13,7 +13,7 @@
 #import "Theme.h"
 #import "YasoundDataProvider.h"
 #import "RadioSelectionTableViewCell.h"
-
+#import "ActivityModelessSpinner.h"
 
 
 @implementation FavoritesViewController
@@ -62,6 +62,7 @@
         _nowPlayingButton.enabled = NO;
     
     [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(receiveRadios:info:)];
+    [[ActivityModelessSpinner main] addRef];
 }
 
 
@@ -91,6 +92,7 @@
     }
     
     _radios = radios;
+    [[ActivityModelessSpinner main] removeRef];
     [_tableView reloadData];
 }
 
