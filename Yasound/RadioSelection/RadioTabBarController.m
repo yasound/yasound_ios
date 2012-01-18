@@ -14,6 +14,8 @@
 #import "RadioViewController.h"
 #import "CreateMyRadio.h"
 #import "YasoundDataProvider.h"
+#import "FriendsViewController.h"
+#import "FavoritesViewController.h"
 
 
 @implementation RadioTabBarController
