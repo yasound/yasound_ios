@@ -42,4 +42,32 @@
   return desc;
 }
 
+
+
+- (void)dealloc
+{
+    if (_children != nil)
+        [_children release];
+    [super dealloc];
+}
+
+- (void)addChild:(WallEvent*)child
+{
+    if (_children == nil)
+    {
+        _children = [[NSMutableArray alloc] init];
+        [_children retain];
+    }
+    
+    [_children addObject:child];
+}
+
+- (NSArray*)getChildren
+{
+    return _children;
+}
+
+
+
+
 @end

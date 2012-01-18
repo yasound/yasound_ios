@@ -12,6 +12,9 @@
 #import "User.h"
 
 @interface WallEvent : Model
+{
+    NSMutableArray* _children;
+}
 
 @property (retain, nonatomic) NSString* type;
 @property (retain, nonatomic) NSString* text;
@@ -23,5 +26,8 @@
 @property (retain, nonatomic) User* user;
 
 - (NSString*)toString;
+
+- (void)addChild:(WallEvent*)child;
+- (NSArray*)getChildren;
 
 @end

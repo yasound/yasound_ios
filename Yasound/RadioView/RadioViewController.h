@@ -62,6 +62,8 @@
     BOOL _previouslyInsertedEventWasSong;
     NSInteger _previouslyInsertedEventIndex;
     SongViewCell* _previouslyInsertedEventCell;
+    
+    WallEvent* _containerEventSong;
 }
 
 @property (nonatomic, retain) Radio* radio;

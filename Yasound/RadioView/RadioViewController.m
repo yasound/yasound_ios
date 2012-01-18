@@ -56,6 +56,7 @@ static Song* _gNowPlayingSong = nil;
         _previouslyInsertedEventWasSong = NO;
         _previouslyInsertedEventIndex = -1;
         _previouslyInsertedEventCell = nil;
+        _containerEventSong = nil;
     
     //LBDEBUG
     //        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
@@ -697,7 +698,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)didAddWallEvents:(int)count atIndex:(int)index
 {
-//    NSLog(@"%d events added at index %d", count, index);
+    NSLog(@"%d events added at index %d", count, index);
 
     NSMutableArray* indexes = [[NSMutableArray alloc] init];
     for (NSInteger i = index; i < (index+count); i++)
@@ -709,12 +710,25 @@ static Song* _gNowPlayingSong = nil;
         {
             [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
             [self insertMessageAtIndex:i silent:YES];
+            
+//            _containerEventSong = nil;
         }
         else if ([type isEqualToString:EV_TYPE_SONG])
         {
             // VOIR
 //            [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
           //  [self insertSongAtIndex:i silent:YES];
+//            
+//            if (_containerEventSong != nil)
+//            {
+//                [_containerEventSong addChild:ev];
+//            }
+//            else
+//            {
+                [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+                [self insertSongAtIndex:i silent:YES];
+//                _containerEventSong = ev;
+//            }
         }
         else
         {
@@ -794,30 +808,67 @@ static Song* _gNowPlayingSong = nil;
             {
                 [_wallEvents insertObject:ev atIndex:0];
                 [self addMessage];
+                
+                _containerEventSong = nil;
             }
             else if ([ev.type isEqualToString:EV_TYPE_SONG])
             {
                 // VOIR
 //                [_wallEvents insertObject:ev atIndex:0];
              //   [self addSong];
+                
+                if (_containerEventSong != nil)
+                {
+                    [_containerEventSong addChild:ev];
+                }
+                else
+                {
+                    [_wallEvents insertObject:ev atIndex:0];
+                    [self addSong];
+                    _containerEventSong = ev;
+                }
             }
             
         }
         else if (_wallEvents.count == 0 || [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count-1]).start_date] == NSOrderedAscending)
         {
             // VOIR
-            if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
-            {
+//            if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+//            {
             /////////////    
             
-            [_wallEvents addObject:ev];
+            if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+            {
+                [_wallEvents addObject:ev];
+                
+                if (addedAtIndex == -1)
+                    addedAtIndex = _wallEvents.count - 1;
+                addedCount++;
+                
+                _containerEventSong = nil;
+
+            }
+            else if ([ev.type isEqualToString:EV_TYPE_SONG])
+            {
+                if (_containerEventSong != nil)
+                {
+                    [_containerEventSong addChild:ev];
+                }
+                else
+                {
+                    [_wallEvents addObject:ev];
+                    if (addedAtIndex == -1)
+                        addedAtIndex = _wallEvents.count - 1;
+                    addedCount++;
+
+                    _containerEventSong = ev;
+                }
+            }
             
-            if (addedAtIndex == -1)
-                addedAtIndex = _wallEvents.count - 1;
-            addedCount++;
+            
                 
                 // VOIR
-            }
+//            }
             ////////////////
         }
     }
@@ -1148,13 +1199,14 @@ static Song* _gNowPlayingSong = nil;
     }
     else if ([ev.type isEqualToString:EV_TYPE_SONG])
     {
-        NSInteger prevIndex = indexPath.row-1;
-        if (prevIndex >= 0)
-        {
-            WallEvent* prevEv = [_wallEvents objectAtIndex:prevIndex];
-            if ([prevEv.type isEqualToString:EV_TYPE_SONG])
-                return 0;
-        }
+        // VOIR
+//        NSInteger prevIndex = indexPath.row-1;
+//        if (prevIndex >= 0)
+//        {
+//            WallEvent* prevEv = [_wallEvents objectAtIndex:prevIndex];
+//            if ([prevEv.type isEqualToString:EV_TYPE_SONG])
+//                return 0;
+//        }
         
         return ROW_SONG_HEIGHT;
     }
@@ -1239,27 +1291,28 @@ static Song* _gNowPlayingSong = nil;
         NSLog(@"height = %.2f for cell %@    row %d    date %@", height, ev.song.metadata.name, indexPath.row, ev.start_date);
 
         //LBDEBUG ICI
-        if (height == 0)
-        {
-            
-            NSLog(@"must be hidden");
-            
-            
-            cell.hidden = YES;
-            
-//            SongViewCell* previousCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(indexPath.row-1) inSection:0]];
-            //            assert(previousCell);
-//            assert(_previouslyInsertedEventCell);
-            if (_previouslyInsertedEventCell && !_previouslyInsertedEventCell.hidden)
-            {
-                UIImage* image = [UIImage imageNamed:@"bullets.png"];
-                UIImageView* bulletsView = [[UIImageView alloc] initWithImage:image];
-                CGRect frame = CGRectMake(_previouslyInsertedEventCell.frame.size.width - image.size.width, (_previouslyInsertedEventCell.frame.size.height /2.f) - (image.size.height / 2.f), image.size.width, image.size.height);
-                bulletsView.frame = frame;
-                [_previouslyInsertedEventCell.contentView addSubview:bulletsView];
-            }
-            
-        }
+        // VOIR
+//        if (height == 0)
+//        {
+//            
+//            NSLog(@"must be hidden");
+//            
+//            
+//            cell.hidden = YES;
+//            
+////            SongViewCell* previousCell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:(indexPath.row-1) inSection:0]];
+//            //            assert(previousCell);
+////            assert(_previouslyInsertedEventCell);
+//            if (_previouslyInsertedEventCell && !_previouslyInsertedEventCell.hidden)
+//            {
+//                UIImage* image = [UIImage imageNamed:@"bullets.png"];
+//                UIImageView* bulletsView = [[UIImageView alloc] initWithImage:image];
+//                CGRect frame = CGRectMake(_previouslyInsertedEventCell.frame.size.width - image.size.width, (_previouslyInsertedEventCell.frame.size.height /2.f) - (image.size.height / 2.f), image.size.width, image.size.height);
+//                bulletsView.frame = frame;
+//                [_previouslyInsertedEventCell.contentView addSubview:bulletsView];
+//            }
+//            
+//        }
         
         _previouslyInsertedEventCell = cell;
         
