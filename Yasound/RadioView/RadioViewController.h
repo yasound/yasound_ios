@@ -43,7 +43,6 @@
     BOOL _viewTracksDisplayed;
 
     NSDate* _lastWallEventDate;
-    NSDate* _lastConnectionUpdateDate;
     NSDate* _lastSongUpdateDate;
   
     WallMessage* _currentMessage;
