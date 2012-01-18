@@ -52,8 +52,18 @@
             NSLog (@"playlist : %@", listname);
         }
         
-        _selectedPlaylists = [[NSMutableArray alloc] init];
-        [_selectedPlaylists retain];
+        if (_wizard)
+        {
+            _selectedPlaylists = [NSMutableArray arrayWithArray:_playlists];
+            [_selectedPlaylists retain];
+        }
+        else
+        {
+            _selectedPlaylists = [[NSMutableArray alloc] init];
+            [_selectedPlaylists retain];
+        }
+        
+            
     }
     
     return self;
