@@ -16,7 +16,7 @@
     
     IBOutlet UITableView* _tableView;
 
-
+    NSArray* _radios;
 }
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;

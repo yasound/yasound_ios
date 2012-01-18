@@ -17,6 +17,9 @@
 		40274BC41491287900F26008 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40274BC61491287D00F26008 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40274BC71491288100F26008 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
+		40A98AE714C74C3F00999793 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
+		40A98AE814C74C3F00999793 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
+		40A98AE914C74C3F00999793 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
 		40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40F4C77414BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
@@ -852,6 +855,8 @@
 		40274B7D1491048900F26008 /* Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Container.m; sourceTree = "<group>"; };
 		40274B7E1491048900F26008 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		40274B7F1491048900F26008 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		40A98AE514C74C3E00999793 /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserTableViewCell.h; path = RadioSelection/UserTableViewCell.h; sourceTree = "<group>"; };
+		40A98AE614C74C3F00999793 /* UserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserTableViewCell.m; path = RadioSelection/UserTableViewCell.m; sourceTree = "<group>"; };
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
 		40F4C77214BB053100A163F9 /* RadioUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioUser.h; sourceTree = "<group>"; };
@@ -1432,6 +1437,8 @@
 				BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */,
 				BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */,
 				BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */,
+				40A98AE514C74C3E00999793 /* UserTableViewCell.h */,
+				40A98AE614C74C3F00999793 /* UserTableViewCell.m */,
 				BCA83E6314C6D3D1000A8295 /* FriendsViewController.h */,
 				BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */,
 				BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */,
@@ -2900,6 +2907,7 @@
 				BCA83E6714C6D3D1000A8295 /* FriendsViewController.m in Sources */,
 				BCA83E7014C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 				BCA83E7E14C7258F000A8295 /* SongViewCell.m in Sources */,
+				40A98AE814C74C3F00999793 /* UserTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3021,6 +3029,7 @@
 				BCA83E6614C6D3D1000A8295 /* FriendsViewController.m in Sources */,
 				BCA83E6F14C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 				BCA83E7D14C7258F000A8295 /* SongViewCell.m in Sources */,
+				40A98AE714C74C3F00999793 /* UserTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3143,6 +3152,7 @@
 				BCA83E6814C6D3D1000A8295 /* FriendsViewController.m in Sources */,
 				BCA83E7114C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 				BCA83E7F14C7258F000A8295 /* SongViewCell.m in Sources */,
+				40A98AE914C74C3F00999793 /* UserTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

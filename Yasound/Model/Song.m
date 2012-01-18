@@ -12,7 +12,8 @@
 
 @synthesize song;
 @synthesize metadata;
-//@synthesize playlist;
+@synthesize likes;
+@synthesize dislikes;
 
 
 - (NSString*)toString

@@ -63,6 +63,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)friendsWithTarget:(id)target action:(SEL)selector;
 
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
+- (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;

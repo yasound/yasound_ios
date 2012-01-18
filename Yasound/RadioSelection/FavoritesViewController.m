@@ -11,7 +11,9 @@
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-
+#import "YasoundDataProvider.h"
+#import "RadioSelectionTableViewCell.h"
+#import "ActivityModelessSpinner.h"
 
 
 @implementation FavoritesViewController
@@ -24,7 +26,9 @@
         UIImage* tabImage = [UIImage imageNamed:tabIcon];
         UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
         self.tabBarItem = theItem;
-        [theItem release];      
+        [theItem release]; 
+        
+        _radios = nil;
     }
     return self;
 }
@@ -47,6 +51,8 @@
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MyYasoundBackground.png"]];
+    
+    
 }
 
 
@@ -54,6 +60,9 @@
 {
     if ([AudioStreamManager main].currentRadio == nil)
         _nowPlayingButton.enabled = NO;
+    
+    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(receiveRadios:info:)];
+    [[ActivityModelessSpinner main] addRef];
 }
 
 
@@ -73,6 +82,20 @@
 
 
 
+- (void)receiveRadios:(NSArray*)radios info:(NSDictionary*)info
+{
+    NSError* error = [info valueForKey:@"error"];
+    if (error)
+    {
+        NSLog(@"can't get radios: %@", error.domain);
+        return;
+    }
+    
+    _radios = radios;
+    [[ActivityModelessSpinner main] removeRef];
+    [_tableView reloadData];
+}
+
 
 
 
@@ -90,7 +113,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return 1;
+    if (!_radios)
+        return 0;
+    return _radios.count;
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,27 +141,35 @@
     [view release];    
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    static NSString* CellIdentifier = @"Cell";
+    static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
     
-    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!_radios)
+        return nil;
     
-    if (cell == nil) 
-    {   
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
+    NSInteger rowIndex = indexPath.row;
     
-    cell.textLabel.text = @"test";
-
+    Radio* radio = [_radios objectAtIndex:rowIndex];
     
-    return cell;    
+    RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
+    return cell;   
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    RadioSelectionTableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
+    
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:cell.radio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release]; 
 }
 
 

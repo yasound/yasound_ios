@@ -58,9 +58,7 @@ static Song* _gNowPlayingSong = nil;
         _previouslyInsertedEventCell = nil;
         _containerEventSong = nil;
     
-    //LBDEBUG
-    //        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
-    
+        _firstRequest = YES;
     
     _lastWallEventDate = nil;
     _lastSongUpdateDate = nil;
@@ -178,11 +176,11 @@ static Song* _gNowPlayingSong = nil;
     image.frame = sheet.frame;
     [_headerView addSubview:image];
 
-    // header likes
+    // header favorite
     sheet = [[Theme theme] stylesheetForKey:@"HeaderLikes" error:nil];
-    label = [sheet makeLabel];
-    label.text = [NSString stringWithFormat:@"%d", [self.radio.likes integerValue]];
-    [_headerView addSubview:label];
+    _favoritesLabel = [sheet makeLabel];
+    _favoritesLabel.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
+    [_headerView addSubview:_favoritesLabel];
     
     // header headset image
     sheet = [[Theme theme] stylesheetForKey:@"HeaderHeadSet" error:nil];
@@ -192,9 +190,9 @@ static Song* _gNowPlayingSong = nil;
     
     // header listeners
     sheet = [[Theme theme] stylesheetForKey:@"HeaderListeners" error:nil];
-    label = [sheet makeLabel];
-    label.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
-    [_headerView addSubview:label];
+    _listenersLabel = [sheet makeLabel];
+    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
+    [_headerView addSubview:_listenersLabel];
     
     // header edit settings button
     //LBDEBUG
@@ -600,10 +598,11 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onUpdate:(NSTimer*)timer
 {    
-    //LBDEBUG FAKE
-  [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
-  [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
-    
+    if (timer)
+        _firstRequest = NO;
+    [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
+    [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
+    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
 
 
@@ -767,6 +766,9 @@ static Song* _gNowPlayingSong = nil;
         return;
     }
     
+    if (!events || events.count == 0)
+        return;
+    
     WallEvent* ev = nil;
     for (int i = [events count] - 1; i >= 0; i--)
     {
@@ -792,14 +794,14 @@ static Song* _gNowPlayingSong = nil;
     else
         _lastWallEventDate = nil;
     
-    
-    
     int addedAtIndex = -1;
     int addedCount = 0;
     for (ev in events)
     {
         if (![ev.type isEqualToString:EV_TYPE_MESSAGE] && ![ev.type isEqualToString:EV_TYPE_SONG])
+        {
             continue;
+        }
 
         if (_wallEvents.count != 0 && [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:0]).start_date] == NSOrderedDescending)
         {
@@ -916,8 +918,6 @@ static Song* _gNowPlayingSong = nil;
         }
     }
     
-    // MatDebug
-    [self logWallEvents];
 
     //VOIR2
 //    if (addedCount)
@@ -926,6 +926,16 @@ static Song* _gNowPlayingSong = nil;
 //    int minMessageCount = 8;
 //    if ([self eventMessageCount] < minMessageCount)
 //        [self askForNextWallEvents];
+    
+    if (_firstRequest)
+    {
+        int minMessageCount = 8;
+        int messageCount = [self eventMessageCount];
+        if (messageCount < minMessageCount)
+        {
+            [self askForNextWallEvents];
+        }
+    }
 }
 
 
@@ -959,6 +969,16 @@ static Song* _gNowPlayingSong = nil;
   }
   
   
+}
+
+- (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
+{
+    if (!r)
+        return;
+    
+    self.radio = r;
+    _favoritesLabel.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
+    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
 }
 
 

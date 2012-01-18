@@ -13,6 +13,9 @@
 {
     id _target;
     SEL _action;
+    Song* _song;
+    UILabel* _likesLabel;
+    UILabel* _dislikesLabel;
 }
 
 @property (nonatomic, retain) UIButton* playPauseButton;
