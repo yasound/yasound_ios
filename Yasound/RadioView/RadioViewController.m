@@ -77,6 +77,7 @@ static Song* _gNowPlayingSong = nil;
     _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
         
         _wallEvents = [[NSMutableArray alloc] init];
+        _wallHeights = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -526,6 +527,7 @@ static Song* _gNowPlayingSong = nil;
 {
     [_messageFont release];
     [_wallEvents release];
+    [_wallHeights release];
     [super dealloc];
 }
 
@@ -760,7 +762,7 @@ static Song* _gNowPlayingSong = nil;
         {       
             [_wallEvents insertObject:ev atIndex:0];
 
-            [self addSong:(_wallEvents.count-1)];
+            [self addSong];
         }
     }
     else if ([ev.type isEqualToString:EV_TYPE_LOGIN])
@@ -955,28 +957,31 @@ static Song* _gNowPlayingSong = nil;
 // MESSAGES
 //
 
-- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent
+//- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent
+- (void)addMessage
 {
-    WallMessage* m = [[WallMessage alloc] init];
-    m.user = user;
-    m.avatarURL = avatarURL;
-    m.date = date;
-    m.text = text;
+//    WallMessage* m = [[WallMessage alloc] init];
+//    m.user = user;
+//    m.avatarURL = avatarURL;
+//    m.date = date;
+    WallEvent* ev = [_wallEvents objectAtIndex:0];
+    NSString* text = ev.text;
 
     // compute the size of the text => will allow to update the cell's height dynamically
-    CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-    m.textHeight = suggestedSize.height;
-
-    [self.messages insertObject:m atIndex:0];
+    CGSize suggestedSize = [text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
     
-    if (!silent)
-    {
+    [_wallHeights insertObject:[NSNumber numberWithFloat:suggestedSize.height] atIndex:0];
+
+//    [self.messages insertObject:m atIndex:0];
+//    
+//    if (!silent)
+//    {
         [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
-    }
+//    }
 }
      
 
-- (void)addSong:(NSInteger)index
+- (void)addSong
 {
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
 }
