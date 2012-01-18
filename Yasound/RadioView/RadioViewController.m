@@ -773,6 +773,9 @@ static Song* _gNowPlayingSong = nil;
         return;
     }
     
+    if (!events || events.count == 0)
+        return;
+    
     WallEvent* ev = nil;
     for (int i = [events count] - 1; i >= 0; i--)
     {
@@ -798,23 +801,27 @@ static Song* _gNowPlayingSong = nil;
     else
         _lastWallEventDate = nil;
     
-    
-    
     int addedAtIndex = -1;
     int addedCount = 0;
     for (ev in events)
     {
         if (![ev.type isEqualToString:EV_TYPE_MESSAGE] && ![ev.type isEqualToString:EV_TYPE_SONG])
+        {
             continue;
+        }
 
         if (_wallEvents.count != 0 && [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:0]).start_date] == NSOrderedDescending)
         {
             [_wallEvents insertObject:ev atIndex:0];
             
             if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+            {
                 [self addMessage];
+            }
             else if ([ev.type isEqualToString:EV_TYPE_SONG])
+            {
                 [self addSong];
+            }
         }
         else if (_wallEvents.count == 0 || [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count-1]).start_date] == NSOrderedAscending)
         {
@@ -1030,9 +1037,11 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)addSong
 {
+    NSLog(@"addSong 1");
     [_wallHeights insertObject:[NSNumber numberWithFloat:ROW_SONG_HEIGHT] atIndex:0];
-
+    NSLog(@"addSong 2");
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+    NSLog(@"addSong 3");
 }
 
 
