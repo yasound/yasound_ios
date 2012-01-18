@@ -345,6 +345,12 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+- (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector
+{
+    Auth* auth = self.apiKeyAuth;
+    [_communicator getObjectWithClass:[Radio class] andID:radioId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
 - (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector
 {
     Auth* auth = self.apiKeyAuth;
