@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "QualitySwitchLabel.h"
 
-typedef enum
-{
-  RSTSelection = 0,
-  RSTTop,
-  RSTNew,
-  RSTSearch
-} RadioSelectionType;
+//LBDEBUG
+//typedef enum
+//{
+//    RSTSelection,
+//  RSTTop,
+//  RSTNew,
+//  RSTSearch
+//} RadioSelectionType;
 
 
 @interface RadioSelectionViewController : UIViewController
@@ -28,13 +29,14 @@ typedef enum
   IBOutlet UITableView* _tableView;  
   
   NSString* _currentStyle;
-  RadioSelectionType _type;
+//  RadioSelectionType _type;
   
   NSArray* _radios;
 }
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabIcon:(NSString*)tabIcon;
+//- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabIcon:(NSString*)tabIcon;
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;
 
 - (IBAction)onStyleSelectorClicked:(id)sender;
 - (IBAction)onNowPlayingClicked:(id)sender;
