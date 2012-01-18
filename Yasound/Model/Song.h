@@ -14,6 +14,8 @@
 
 @property (retain, nonatomic) NSNumber* song;
 @property (retain, nonatomic) SongMetadata* metadata;
+@property (retain, nonatomic) NSNumber* likes;
+@property (retain, nonatomic) NSNumber* dislikes;
 
 - (NSString*)toString;
 
