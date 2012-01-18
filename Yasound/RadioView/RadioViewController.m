@@ -41,7 +41,7 @@ static Song* _gNowPlayingSong = nil;
 @synthesize messages;
 @synthesize statusMessages;
 @synthesize ownRadio;
-
+@synthesize favoriteButton;
 
 - (id)initWithRadio:(Radio*)radio
 {
@@ -194,10 +194,23 @@ static Song* _gNowPlayingSong = nil;
 //    [_headerView addSubview:btn];
 
     //favorites button
-    sheet = [[Theme theme] stylesheetForKey:@"HeaderFavoriteButton" error:nil];
-    UIButton* button = [sheet makeButton];
-    [button addTarget:self action:@selector(onFavorite:) forControlEvents:UIControlEventTouchUpInside];
-    [_headerView addSubview:button];
+
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderFavoriteEmptyButton" error:nil];
+    CGRect frame = sheet.frame;
+    self.favoriteButton = [[UIButton alloc] initWithFrame:sheet.frame];
+    
+    NSString* tmppath = [[Theme theme] pathForResource:@"btnFavoriteEmpty" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+    UIImage* imageFile = [UIImage imageWithContentsOfFile:tmppath];
+    [self.favoriteButton setImage:imageFile forState:UIControlStateNormal];
+    
+    tmppath = [[Theme theme] pathForResource:@"btnFavoriteFull" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+    imageFile = [UIImage imageWithContentsOfFile:tmppath];
+    [self.favoriteButton setImage:imageFile forState:UIControlStateSelected];
+    
+    [self.favoriteButton addTarget:self action:@selector(onFavorite:) forControlEvents:UIControlEventTouchUpInside];
+    [_headerView addSubview:self.favoriteButton];
+    
+
     
     
     //.................................................................................
@@ -206,7 +219,7 @@ static Song* _gNowPlayingSong = nil;
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
     
-    CGRect frame = CGRectMake(0, 0, sheetAvatar.frame.origin.x + sheetAvatar.frame.size.width, _headerView.frame.size.height - sheet.frame.size.height);
+    frame = CGRectMake(0, 0, sheetAvatar.frame.origin.x + sheetAvatar.frame.size.width, _headerView.frame.size.height - sheet.frame.size.height);
     InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:frame target:self action:@selector(onBack:)];
     [_headerView addSubview:interactiveView];
     
@@ -455,7 +468,42 @@ static Song* _gNowPlayingSong = nil;
     
     if (self.ownRadio)
         [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
+    
+    // update favorite button
+    [[ActivityModelessSpinner main] addRef];
+    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoriteUpdate:)];
 }
+ 
+
+
+- (void)onFavoriteUpdate:(NSArray*)radios
+{
+    [[ActivityModelessSpinner main] removeRef];
+
+    NSInteger currentRadioId = [self.radio.id integerValue];
+    
+    for (Radio* radio in radios)
+    {
+        if ([radio.id integerValue] == currentRadioId)
+        {
+            self.favoriteButton.selected = YES;
+            return;
+        }
+    }
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -1208,6 +1256,7 @@ static Song* _gNowPlayingSong = nil;
         {
             [[ActivityModelessSpinner main] removeRef];
             [[YasoundDataProvider main] setRadio:self.radio asFavorite:NO];
+            self.favoriteButton.selected = NO;
             [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_removed", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
             return;
         }
@@ -1215,6 +1264,7 @@ static Song* _gNowPlayingSong = nil;
             
     [[ActivityModelessSpinner main] removeRef];
     [[YasoundDataProvider main] setRadio:self.radio asFavorite:YES];
+    self.favoriteButton.selected = YES;
 
     [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_added", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
 }
