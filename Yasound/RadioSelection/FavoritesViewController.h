@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface FavoritesViewController : UIViewController
+{
+    IBOutlet UIToolbar* _toolbar;
+    IBOutlet UILabel* _toolbarTitle;
+    IBOutlet UIBarButtonItem* _nowPlayingButton;
+
+}
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;
 

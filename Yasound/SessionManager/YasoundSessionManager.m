@@ -414,6 +414,11 @@ static YasoundSessionManager* _main = nil;
 
 - (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error errorMessage:(NSString*)errorMessage
 {
+    // duplicate message, let's act it's no error, just let the dialog spinner die himself
+    NSRange range = [errorMessage rangeOfString:@"#506"];
+    if (range.location != NSNotFound)
+        return;
+
     if (requestType == SRequestInfoUser)
     {
         NSLog(@"requestDidFailed : could not get user info.");
@@ -428,6 +433,7 @@ static YasoundSessionManager* _main = nil;
     }
     
     
+
     if (requestType == SRequestPostMessage)
     {
         NSLog(@"requestDidFailed : could not post message.");
@@ -435,11 +441,6 @@ static YasoundSessionManager* _main = nil;
         NSLog(@"%@", [error localizedDescription]);
         NSLog(@"%@", [error description]);
         NSLog(@"%@", errorMessage);
-        
-        // duplicate message, let's act it's no error, just let the dialog spinner die himself
-        NSRange range = [errorMessage rangeOfString:@"#506"];
-        if (range.location != NSNotFound)
-            return;
         
         if ((_postTarget != nil) && (_postAction != nil))
             [_postTarget performSelector:_postAction withObject:[NSNumber numberWithBool:NO]];

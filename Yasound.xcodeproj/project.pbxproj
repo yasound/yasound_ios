@@ -288,10 +288,6 @@
 		BCBAB4BF14A39B9800CF922A /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
 		BCBAB4C014A39B9800CF922A /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
 		BCBAB4C114A39B9800CF922A /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
-		BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
-		BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
-		BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
-		BCC408A8148D0327001C02E4 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
 		BCC408AE148D15F8001C02E4 /* bigRedButtonDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */; };
 		BCC408AF148D15F8001C02E4 /* bigRedButtonDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */; };
 		BCC408B0148D15F8001C02E4 /* bigRedButtonDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AB148D15F8001C02E4 /* bigRedButtonDown@2x.png */; };
@@ -755,8 +751,6 @@
 		E5F3B86D1498B88D008DD607 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		E5F3B86E1498B88D008DD607 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		E5F3B8701498B88D008DD607 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
-		E5F3B8721498B88D008DD607 /* MyYasound_RadioSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */; };
-		E5F3B8731498B88D008DD607 /* MyYasound_Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */; };
 		E5F3B8741498B88D008DD607 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		E5F3B8751498B88D008DD607 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		E5F3B8771498B88D008DD607 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
@@ -995,8 +989,6 @@
 		BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KeywordsViewController.xib; path = Settings/KeywordsViewController.xib; sourceTree = "<group>"; };
 		BCBAB4BA14A3920600CF922A /* iTunesConnect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesConnect.png; sourceTree = "<group>"; };
 		BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesConnect@2x.png"; sourceTree = "<group>"; };
-		BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_RadioSelection.m; path = MyYasound/MyYasound_RadioSelection.m; sourceTree = "<group>"; };
-		BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasound_Settings.m; path = MyYasound/MyYasound_Settings.m; sourceTree = "<group>"; };
 		BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonDown.png; sourceTree = "<group>"; };
 		BCC408AB148D15F8001C02E4 /* bigRedButtonDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigRedButtonDown@2x.png"; sourceTree = "<group>"; };
 		BCC408AC148D15F8001C02E4 /* bigRedButtonUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonUp.png; sourceTree = "<group>"; };
@@ -1493,8 +1485,6 @@
 		BC71F595147FC10500DAE4BD /* My Yasound */ = {
 			isa = PBXGroup;
 			children = (
-				BCC408A4148D0327001C02E4 /* MyYasound_Settings.m */,
-				BCC408A3148D0327001C02E4 /* MyYasound_RadioSelection.m */,
 				BC71F58C147FBCEA00DAE4BD /* MyYasoundViewController.h */,
 				BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */,
 				BC71F58E147FBCEA00DAE4BD /* MyYasoundViewController.xib */,
@@ -2790,8 +2780,6 @@
 				BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4514863646008F3738 /* Theme.m in Sources */,
 				BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */,
-				BCC408A6148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */,
-				BCC408A8148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
 				BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
 				BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
 				40274BC41491287900F26008 /* Communicator.m in Sources */,
@@ -2912,8 +2900,6 @@
 				BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4414863646008F3738 /* Theme.m in Sources */,
 				BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */,
-				BCC408A5148D0327001C02E4 /* MyYasound_RadioSelection.m in Sources */,
-				BCC408A7148D0327001C02E4 /* MyYasound_Settings.m in Sources */,
 				BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
 				BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
 				40274B801491048900F26008 /* Communicator.m in Sources */,
@@ -3036,8 +3022,6 @@
 				E5F3B86D1498B88D008DD607 /* RadioViewController.m in Sources */,
 				E5F3B86E1498B88D008DD607 /* Theme.m in Sources */,
 				E5F3B8701498B88D008DD607 /* RadioViewCell.m in Sources */,
-				E5F3B8721498B88D008DD607 /* MyYasound_RadioSelection.m in Sources */,
-				E5F3B8731498B88D008DD607 /* MyYasound_Settings.m in Sources */,
 				E5F3B8741498B88D008DD607 /* ThemeSelectorViewController.m in Sources */,
 				E5F3B8751498B88D008DD607 /* StyleSelectorViewController.m in Sources */,
 				E5F3B8771498B88D008DD607 /* Communicator.m in Sources */,
