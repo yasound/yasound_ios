@@ -33,7 +33,7 @@
 
 #define MESSAGE_SPACING 4
 
-- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath
+- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev height:(CGFloat)ParamHeight indexPath:(NSIndexPath*)indexPath
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
@@ -41,6 +41,19 @@
         BundleStylesheet* sheet = nil;
         self.background = self.contentView;
         UIView* view = self.background;
+        
+        
+        sheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIFont* messageFont = [sheet makeFont];
+        CGFloat messageWidth = sheet.frame.size.width;
+
+        
+        // compute the size of the text => will allow to update the cell's height dynamically
+        CGSize suggestedSize = [ev.text sizeWithFont:messageFont constrainedToSize:CGSizeMake(messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+        CGFloat height = suggestedSize.height;
+
+        
+        
         
 //        // background color
 //        if (indexPath.row & 1)
@@ -129,6 +142,7 @@
 //        sheet = [[Theme theme] stylesheetForKey:@"CellBackground0" error:nil];
 //    self.background.backgroundColor = sheet.color;
     self.backgroundColor = [UIColor clearColor];
+//    self.backgroundColor = [UIColor redColor];
     
     // avatar
 //    [self.avatar setImage:image];

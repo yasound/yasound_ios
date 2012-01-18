@@ -80,6 +80,8 @@ static Song* _gNowPlayingSong = nil;
         
         _wallEvents = [[NSMutableArray alloc] init];
         _wallHeights = [[NSMutableArray alloc] init];
+        _mapHeights = [[NSMutableDictionary alloc] init];
+//        _arrayHeights = [[NSMutableArray alloc] init];
 //        [_wallEvents retain];
 //        [_wallHeights retain];
     }
@@ -557,6 +559,8 @@ static Song* _gNowPlayingSong = nil;
     [_messageFont release];
     [_wallEvents release];
     [_wallHeights release];
+//    [_arrayHeights release];
+    [_mapHeights release];
     [super dealloc];
 }
 
@@ -698,23 +702,27 @@ static Song* _gNowPlayingSong = nil;
     NSMutableArray* indexes = [[NSMutableArray alloc] init];
     for (NSInteger i = index; i < (index+count); i++)
     {
-        [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
 
         WallEvent* ev = [_wallEvents objectAtIndex:i];
         NSString* type = ev.type;
         if ([type isEqualToString:EV_TYPE_MESSAGE])
         {
+            [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
             [self insertMessageAtIndex:i silent:YES];
         }
         else if ([type isEqualToString:EV_TYPE_SONG])
         {
-            [self insertSongAtIndex:i silent:YES];
+            // VOIR
+//            [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+          //  [self insertSongAtIndex:i silent:YES];
         }
         else
         {
             assert(0);
         }
     }
+    
+//    [_tableView reloadData];
     
     [_tableView insertRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
 
@@ -781,21 +789,36 @@ static Song* _gNowPlayingSong = nil;
 
         if (_wallEvents.count != 0 && [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:0]).start_date] == NSOrderedDescending)
         {
-            [_wallEvents insertObject:ev atIndex:0];
             
             if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+            {
+                [_wallEvents insertObject:ev atIndex:0];
                 [self addMessage];
+            }
             else if ([ev.type isEqualToString:EV_TYPE_SONG])
-                [self addSong];
+            {
+                // VOIR
+//                [_wallEvents insertObject:ev atIndex:0];
+             //   [self addSong];
+            }
             
         }
         else if (_wallEvents.count == 0 || [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count-1]).start_date] == NSOrderedAscending)
         {
+            // VOIR
+            if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+            {
+            /////////////    
+            
             [_wallEvents addObject:ev];
             
             if (addedAtIndex == -1)
                 addedAtIndex = _wallEvents.count - 1;
             addedCount++;
+                
+                // VOIR
+            }
+            ////////////////
         }
     }
     
@@ -1068,29 +1091,82 @@ static Song* _gNowPlayingSong = nil;
 #define THE_REST_OF_THE_CELL_HEIGHT 44
 
 
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+//{
+//    NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
+//    CGFloat height = [nb floatValue];
+//    
+//    WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
+//    
+//    if ([ev.type isEqualToString:EV_TYPE_SONG])
+//    {
+//        //LBDEBUG ICI
+//        //NSLog(@"%@ : height %.2f", ev.song.metadata.name, height);
+//        
+//        return height;
+//    }
+//    
+//    if ((height + THE_REST_OF_THE_CELL_HEIGHT) < _cellMinHeight)
+//        return _cellMinHeight;
+//
+//    //LBDEBUG FLAG
+//    return (height + THE_REST_OF_THE_CELL_HEIGHT);
+//    
+////    return _cellMinHeight + height;
+//}
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
-    CGFloat height = [nb floatValue];
-    
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
     
-    if ([ev.type isEqualToString:EV_TYPE_SONG])
-    {
-        //LBDEBUG ICI
-        //NSLog(@"%@ : height %.2f", ev.song.metadata.name, height);
-        
-        return height;
-    }
-    
-    if ((height + THE_REST_OF_THE_CELL_HEIGHT) < _cellMinHeight)
-        return _cellMinHeight;
+    //TRY LBDEBUG FLAG
+//    if (_arrayHeights.count != _wallEvents.count)
+//    {
+//        [_arrayHeights release];
+//        _arrayHeights = [[NSMutableArray alloc] initWithCapacity:_wallEvents.count];
+//    }
 
-    //LBDEBUG FLAG
-    return (height + THE_REST_OF_THE_CELL_HEIGHT);
+    if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+    {
+        NSString* text = ev.text;
+        
+        // compute the size of the text => will allow to update the cell's height dynamically
+        CGSize suggestedSize = [text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+        
+        CGFloat height = suggestedSize.height;
+        
+//        [_arrayHeights replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithFloat:height]];
+//        [_mapHeights setObject:[NSNumber numberWithFloat:height] forKey:ev];
+        NSValue* key = [NSValue valueWithNonretainedObject:ev];
+        [_mapHeights setObject:[NSNumber numberWithFloat:height] forKey:key];
+        
+        if (height < _cellMinHeight)
+            return _cellMinHeight;
+        
+        return (height + THE_REST_OF_THE_CELL_HEIGHT);
+    }
+    else if ([ev.type isEqualToString:EV_TYPE_SONG])
+    {
+        NSInteger prevIndex = indexPath.row-1;
+        if (prevIndex >= 0)
+        {
+            WallEvent* prevEv = [_wallEvents objectAtIndex:prevIndex];
+            if ([prevEv.type isEqualToString:EV_TYPE_SONG])
+                return 0;
+        }
+        
+        return ROW_SONG_HEIGHT;
+    }
+    else
+    {
+        assert(0);
+    }
+
     
-//    return _cellMinHeight + height;
 }
+
+
 
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 //{
@@ -1119,11 +1195,17 @@ static Song* _gNowPlayingSong = nil;
     
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
 
-    NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
-    CGFloat height = [nb floatValue];
+//    NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
+//    CGFloat height = [nb floatValue];
     
     if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
     {
+//        CGFloat height = [[_arrayHeights objectAtIndex:indexPath.row ] floatValue];
+//        CGFloat height = [[_mapHeights objectForKey:ev] floatValue];
+        NSValue* key = [NSValue valueWithNonretainedObject:ev];
+        CGFloat height = [[_mapHeights objectForKey:key] floatValue];
+
+        
         RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil)
         {
@@ -1141,6 +1223,8 @@ static Song* _gNowPlayingSong = nil;
     }
     else if ([ev.type isEqualToString:EV_TYPE_SONG])
     {
+        CGFloat height = 0; // unused
+        
         SongViewCell* cell = (SongViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil)
         {
