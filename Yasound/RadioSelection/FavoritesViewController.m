@@ -7,14 +7,22 @@
 //
 
 #import "FavoritesViewController.h"
+#import "RadioViewController.h"
+#import "AudioStreamManager.h"
+
+
 
 @implementation FavoritesViewController
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self) 
+    {
+        UIImage* tabImage = [UIImage imageNamed:tabIcon];
+        UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
+        self.tabBarItem = theItem;
+        [theItem release];      
     }
     return self;
 }
@@ -32,8 +40,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    _toolbarTitle.text = NSLocalizedString(@"FavoritesView_title", nil);
+    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 }
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if ([AudioStreamManager main].currentRadio == nil)
+        _nowPlayingButton.enabled = NO;
+}
+
 
 - (void)viewDidUnload
 {
@@ -47,5 +65,20 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+
+
+
+
+#pragma mark - IBActions
+
+- (IBAction)nowPlayingClicked:(id)sender
+{
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
 
 @end

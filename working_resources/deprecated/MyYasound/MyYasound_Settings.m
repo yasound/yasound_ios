@@ -192,7 +192,7 @@
 
     static NSString* CellIdentifier = @"Cell";
 
-    UITableViewCell *cell = [_settingsTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) 
     {   
@@ -311,7 +311,7 @@
     
     if ((indexPath.section == SECTION_DIVERS) && (indexPath.row == ROW_LOGOUT))
     {
-        [_settingsTableView deselectRowAtIndexPath:[_settingsTableView indexPathForSelectedRow] animated:YES];
+        [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
 
         UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_logout_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_logout_logout", nil), nil];
 
