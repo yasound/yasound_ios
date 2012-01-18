@@ -11,6 +11,24 @@
 		4009010C14967AEE00C9E51A /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010A14967AEE00C9E51A /* WebImageView.m */; };
 		4009011C149A69F100C9E51A /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009011B149A69F100C9E51A /* Auth.m */; };
 		4009011D149A69F100C9E51A /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009011B149A69F100C9E51A /* Auth.m */; };
+		401D1E1614C77D8A00CD7387 /* UserCellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1014C77D8A00CD7387 /* UserCellBackgroundBlue.png */; };
+		401D1E1714C77D8A00CD7387 /* UserCellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1014C77D8A00CD7387 /* UserCellBackgroundBlue.png */; };
+		401D1E1814C77D8A00CD7387 /* UserCellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1014C77D8A00CD7387 /* UserCellBackgroundBlue.png */; };
+		401D1E1914C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1114C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png */; };
+		401D1E1A14C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1114C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png */; };
+		401D1E1B14C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1114C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png */; };
+		401D1E1C14C77D8A00CD7387 /* UserCellBackgroundDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1214C77D8A00CD7387 /* UserCellBackgroundDark.png */; };
+		401D1E1D14C77D8A00CD7387 /* UserCellBackgroundDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1214C77D8A00CD7387 /* UserCellBackgroundDark.png */; };
+		401D1E1E14C77D8A00CD7387 /* UserCellBackgroundDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1214C77D8A00CD7387 /* UserCellBackgroundDark.png */; };
+		401D1E1F14C77D8A00CD7387 /* UserCellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1314C77D8A00CD7387 /* UserCellBackgroundDark@2x.png */; };
+		401D1E2014C77D8A00CD7387 /* UserCellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1314C77D8A00CD7387 /* UserCellBackgroundDark@2x.png */; };
+		401D1E2114C77D8A00CD7387 /* UserCellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1314C77D8A00CD7387 /* UserCellBackgroundDark@2x.png */; };
+		401D1E2214C77D8A00CD7387 /* UserCellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1414C77D8A00CD7387 /* UserCellBackgroundLight.png */; };
+		401D1E2314C77D8A00CD7387 /* UserCellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1414C77D8A00CD7387 /* UserCellBackgroundLight.png */; };
+		401D1E2414C77D8A00CD7387 /* UserCellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1414C77D8A00CD7387 /* UserCellBackgroundLight.png */; };
+		401D1E2514C77D8A00CD7387 /* UserCellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1514C77D8A00CD7387 /* UserCellBackgroundLight@2x.png */; };
+		401D1E2614C77D8A00CD7387 /* UserCellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1514C77D8A00CD7387 /* UserCellBackgroundLight@2x.png */; };
+		401D1E2714C77D8A00CD7387 /* UserCellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1514C77D8A00CD7387 /* UserCellBackgroundLight@2x.png */; };
 		40274B801491048900F26008 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40274B811491048900F26008 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40274B821491048900F26008 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
@@ -849,6 +867,12 @@
 		4009010A14967AEE00C9E51A /* WebImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebImageView.m; sourceTree = "<group>"; };
 		4009011A149A69F100C9E51A /* Auth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Auth.h; path = Yasound/Model/Auth.h; sourceTree = SOURCE_ROOT; };
 		4009011B149A69F100C9E51A /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Auth.m; path = Yasound/Model/Auth.m; sourceTree = SOURCE_ROOT; };
+		401D1E1014C77D8A00CD7387 /* UserCellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UserCellBackgroundBlue.png; path = RadioSelection/UserCellBackgroundBlue.png; sourceTree = "<group>"; };
+		401D1E1114C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserCellBackgroundBlue@2x.png"; path = "RadioSelection/UserCellBackgroundBlue@2x.png"; sourceTree = "<group>"; };
+		401D1E1214C77D8A00CD7387 /* UserCellBackgroundDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UserCellBackgroundDark.png; path = RadioSelection/UserCellBackgroundDark.png; sourceTree = "<group>"; };
+		401D1E1314C77D8A00CD7387 /* UserCellBackgroundDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserCellBackgroundDark@2x.png"; path = "RadioSelection/UserCellBackgroundDark@2x.png"; sourceTree = "<group>"; };
+		401D1E1414C77D8A00CD7387 /* UserCellBackgroundLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UserCellBackgroundLight.png; path = RadioSelection/UserCellBackgroundLight.png; sourceTree = "<group>"; };
+		401D1E1514C77D8A00CD7387 /* UserCellBackgroundLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserCellBackgroundLight@2x.png"; path = "RadioSelection/UserCellBackgroundLight@2x.png"; sourceTree = "<group>"; };
 		40274B7A1491048900F26008 /* Communicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communicator.h; sourceTree = "<group>"; };
 		40274B7B1491048900F26008 /* Communicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communicator.m; sourceTree = "<group>"; };
 		40274B7C1491048900F26008 /* Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Container.h; sourceTree = "<group>"; };
@@ -1462,6 +1486,12 @@
 				BCF62DB414839355001B1908 /* CellBackgroundDark@2x.png */,
 				BCF62DB514839355001B1908 /* CellBackgroundLight.png */,
 				BCF62DB614839355001B1908 /* CellBackgroundLight@2x.png */,
+				401D1E1014C77D8A00CD7387 /* UserCellBackgroundBlue.png */,
+				401D1E1114C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png */,
+				401D1E1214C77D8A00CD7387 /* UserCellBackgroundDark.png */,
+				401D1E1314C77D8A00CD7387 /* UserCellBackgroundDark@2x.png */,
+				401D1E1414C77D8A00CD7387 /* UserCellBackgroundLight.png */,
+				401D1E1514C77D8A00CD7387 /* UserCellBackgroundLight@2x.png */,
 				BCF62DB714839355001B1908 /* MaskGray.png */,
 				BCF62DB814839355001B1908 /* MaskGray@2x.png */,
 				BCF62DB914839355001B1908 /* MaskSelected.png */,
@@ -2483,6 +2513,12 @@
 				BCA83E7314C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
 				BCD1219D14C749D90013B2EF /* bullets.png in Resources */,
 				BCD121A014C749D90013B2EF /* bullets@2x.png in Resources */,
+				401D1E1714C77D8A00CD7387 /* UserCellBackgroundBlue.png in Resources */,
+				401D1E1A14C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png in Resources */,
+				401D1E1D14C77D8A00CD7387 /* UserCellBackgroundDark.png in Resources */,
+				401D1E2014C77D8A00CD7387 /* UserCellBackgroundDark@2x.png in Resources */,
+				401D1E2314C77D8A00CD7387 /* UserCellBackgroundLight.png in Resources */,
+				401D1E2614C77D8A00CD7387 /* UserCellBackgroundLight@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2633,6 +2669,12 @@
 				BCA83E7214C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
 				BCD1219C14C749D90013B2EF /* bullets.png in Resources */,
 				BCD1219F14C749D90013B2EF /* bullets@2x.png in Resources */,
+				401D1E1614C77D8A00CD7387 /* UserCellBackgroundBlue.png in Resources */,
+				401D1E1914C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png in Resources */,
+				401D1E1C14C77D8A00CD7387 /* UserCellBackgroundDark.png in Resources */,
+				401D1E1F14C77D8A00CD7387 /* UserCellBackgroundDark@2x.png in Resources */,
+				401D1E2214C77D8A00CD7387 /* UserCellBackgroundLight.png in Resources */,
+				401D1E2514C77D8A00CD7387 /* UserCellBackgroundLight@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2783,6 +2825,12 @@
 				BCA83E7414C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
 				BCD1219E14C749D90013B2EF /* bullets.png in Resources */,
 				BCD121A114C749D90013B2EF /* bullets@2x.png in Resources */,
+				401D1E1814C77D8A00CD7387 /* UserCellBackgroundBlue.png in Resources */,
+				401D1E1B14C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png in Resources */,
+				401D1E1E14C77D8A00CD7387 /* UserCellBackgroundDark.png in Resources */,
+				401D1E2114C77D8A00CD7387 /* UserCellBackgroundDark@2x.png in Resources */,
+				401D1E2414C77D8A00CD7387 /* UserCellBackgroundLight.png in Resources */,
+				401D1E2714C77D8A00CD7387 /* UserCellBackgroundLight@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

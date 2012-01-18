@@ -31,9 +31,9 @@
     
     // cell background
     if (rowIndex & 1)
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"UserCellBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
     else
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"UserCellBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
 
     [self addSubview:self.cellBackground];
     
@@ -79,7 +79,7 @@
     
     _bkgBackup = self.cellBackground.image;
     [_bkgBackup retain];
-    _bkgSelected = [UIImage imageNamed:@"CellBackgroundBlue.png"];
+    _bkgSelected = [UIImage imageNamed:@"UserCellBackgroundBlue.png"];
     [_bkgSelected retain];
 
     
