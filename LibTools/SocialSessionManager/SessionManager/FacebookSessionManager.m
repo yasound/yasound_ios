@@ -149,7 +149,7 @@ static FacebookSessionManager* _facebook = nil;
 
 
 
-- (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl
+- (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl link:(NSURL*)link
 {
   if (!_facebookConnect)
     return NO;
@@ -175,7 +175,12 @@ static FacebookSessionManager* _facebook = nil;
     [params setObject:[pictureUrl absoluteString] forKey:@"picture"];
     [params setObject:message forKey:@"description"];
   }
-  
+
+  if (link)
+  {
+      [params setObject:[link absoluteString] forKey:@"link"];
+  }
+    
   _requestFeed = [_facebookConnect requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST"  andDelegate:self];  
   // get feedback in didLoad delegate
   
