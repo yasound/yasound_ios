@@ -443,7 +443,7 @@
 		<key>CellMinHeight</key>
 		<dict>
 			<key>minHeight</key>
-			<integer>42</integer>
+			<integer>60</integer>
 		</dict>
 		<key>CellAvatar</key>
 		<dict>

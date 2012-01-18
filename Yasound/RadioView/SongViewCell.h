@@ -18,8 +18,8 @@
 //@property (nonatomic, retain) UILabel* user;
 @property (nonatomic, retain) UILabel* message;
 
-- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath;
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath;
 
-- update:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath;
+- (void)update:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath;
 
 @end

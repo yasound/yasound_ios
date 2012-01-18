@@ -25,7 +25,7 @@
 #import "AudioStreamManager.h"
 
 #import "SongViewCell.h"
-
+#import "User.h"
 
 //#define LOCAL 1 // use localhost as the server
 
@@ -54,6 +54,7 @@ static Song* _gNowPlayingSong = nil;
         self.ownRadio = [[YasoundDataProvider main].user.id intValue] == [self.radio.creator.id intValue];
 
         _trackInteractionViewDisplayed = NO;
+        _previouslyInsertedEventWasSong = NO;
     
     //LBDEBUG
     //        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
@@ -222,7 +223,7 @@ static Song* _gNowPlayingSong = nil;
     // header interactive zone to overload button
     BundleStylesheet* sheetAvatar = [[Theme theme] stylesheetForKey:@"HeaderAvatar" error:nil];
     
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewHeaderNowPlayingBar" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" error:nil];
     
     frame = CGRectMake(0, 0, sheetAvatar.frame.origin.x + sheetAvatar.frame.size.width, _headerView.frame.size.height - sheet.frame.size.height);
     InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:frame target:self action:@selector(onBack:)];
@@ -321,7 +322,7 @@ static Song* _gNowPlayingSong = nil;
     _tableView.dataSource = self;
     
 
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableViewCellMinHeight" error:nil];    
+    sheet = [[Theme theme] stylesheetForKey:@"CellMinHeight" error:nil];    
     _tableView.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
 
     [_viewWall addSubview:_tableView];
@@ -423,7 +424,22 @@ static Song* _gNowPlayingSong = nil;
     
     
     // get the actual data from the server to update the GUI
-    [self onUpdate:nil];
+    //LBDEBUG§
+//    [self onUpdate:nil];
+    
+    
+    WallEvent* ev2 = [self fakeEventMessage:@"user1" text:@"text1"];
+    [_wallEvents addObject:ev2];
+    [self addMessage];
+    
+    WallEvent* ev = [self fakeEventSong:@"proutsong"];
+    [_wallEvents addObject:ev];
+    [self addSong];
+
+    WallEvent* ev3 = [self fakeEventMessage:@"user3" text:@"text3 "];
+    [_wallEvents addObject:ev3];
+    [self addMessage];
+
 }
 
 
@@ -551,6 +567,13 @@ static Song* _gNowPlayingSong = nil;
 
 #pragma mark - Data 
 
+#define EV_TYPE_MESSAGE @"M"
+#define EV_TYPE_LOGIN @"J"
+#define EV_TYPE_LOGOUT @"L"
+#define EV_TYPE_SONG @"S"
+#define EV_TYPE_START_LISTENING @"T"
+#define EV_TYPE_STOP_LISTENING @"P"
+
 
 //....................................................................
 //
@@ -561,18 +584,42 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onUpdate:(NSTimer*)timer
 {    
-  [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
-  [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
+    //LBDEBUG ICI
+//  [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
+//  [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
 //    
+    
 }
 
 
-#define EV_TYPE_MESSAGE @"M"
-#define EV_TYPE_LOGIN @"J"
-#define EV_TYPE_LOGOUT @"L"
-#define EV_TYPE_SONG @"S"
-#define EV_TYPE_START_LISTENING @"T"
-#define EV_TYPE_STOP_LISTENING @"P"
+
+- (WallEvent*)fakeEventSong:(NSString*)name
+{
+    WallEvent* ev = [[WallEvent alloc] init];
+    ev.type = [NSString stringWithString:EV_TYPE_SONG];
+    ev.start_date = [NSDate date];
+    ev.song = [[Song alloc] init];
+    ev.song.metadata = [[SongMetadata alloc] init];
+    ev.song.metadata.name = [NSString stringWithString:name];
+    
+    return ev;
+}
+
+- (WallEvent*)fakeEventMessage:(NSString*)user text:(NSString*)text
+{
+    WallEvent* ev = [[WallEvent alloc] init];
+    ev.type = [NSString stringWithString:EV_TYPE_MESSAGE];
+    ev.start_date = [NSDate date];
+    ev.text = [NSString stringWithString:text];
+    ev.user =  [[User alloc] init];
+    ev.user.name = [NSString stringWithString:user];
+    
+    return ev;
+}
+
+
+
+
 
 
 + (NSString*)evTypeToString:(NSString*)type
@@ -935,16 +982,23 @@ static Song* _gNowPlayingSong = nil;
     if (!silent)
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
     //    }
+    
+    _previouslyInsertedEventWasSong = NO;
 }
 
 - (void)insertSongAtIndex:(NSInteger)index silent:(BOOL)silent
 {
-    [_wallHeights insertObject:[NSNumber numberWithFloat:ROW_SONG_HEIGHT] atIndex:index];
+    if (_previouslyInsertedEventWasSong)
+        [_wallHeights insertObject:[NSNumber numberWithFloat:0] atIndex:index];
+    else
+        [_wallHeights insertObject:[NSNumber numberWithFloat:ROW_SONG_HEIGHT] atIndex:index];
     
     UITableViewRowAnimation anim = (silent) ? UITableViewRowAnimationNone : UITableViewRowAnimationTop;
 
     if (!silent)
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
+    
+    _previouslyInsertedEventWasSong = YES;
 
 }
 
@@ -977,9 +1031,39 @@ static Song* _gNowPlayingSong = nil;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
-    return [nb floatValue];
+    CGFloat height = [nb floatValue];
+    
+    WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
+    
+    if ([ev.type isEqualToString:EV_TYPE_SONG])
+        return height;
+    
+    if (height < _cellMinHeight)
+        return _cellMinHeight;
+    
+    return _cellMinHeight + height;
 }
 
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//    NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
+//    CGFloat height = [nb floatValue];
+//    
+////    UIColor* color;
+////    if (indexPath.row & 1)
+////        color = [UIColor redColor];
+////    else
+////        color = [UIColor blueColor];
+////        
+////    cell.backgroundColor = color; 
+//
+////    cell.frame = CGRectMake(0, 0, 0, 0);
+//    //LBDEBUG ICI
+////    if (height == 0)
+////    {
+////        cell.hidden = YES;
+////    }
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {

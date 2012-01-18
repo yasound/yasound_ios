@@ -33,11 +33,15 @@
 
 #define MESSAGE_SPACING 4
 
-- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
     {
+//        //LBDEBUG ICI
+//        if (height == 0)
+//            return self;
+        
         BundleStylesheet* sheet = nil;
         
         UIView* view = self.contentView;
@@ -83,9 +87,13 @@
 }
 
 
-- update:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath
+- (void)update:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath
 {
     BundleStylesheet* sheet = nil;
+    
+//    //LBDEBUG ICI
+//    if (height == 0)
+//        return;
 
     // background color
 //    if (indexPath.row & 1)

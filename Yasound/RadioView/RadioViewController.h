@@ -56,6 +56,8 @@
     
     NSMutableArray* _wallEvents;
     NSMutableArray* _wallHeights;
+    
+    BOOL _previouslyInsertedEventWasSong;
 }
 
 @property (nonatomic, retain) Radio* radio;
