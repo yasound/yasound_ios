@@ -480,8 +480,6 @@ static YasoundDataProvider* _main = nil;
     WallEvent* msg = [[WallEvent alloc] init];
     msg.user = _user;
     msg.radio = radio;
-    msg.start_date = [NSDate date];
-    msg.end_date = [NSDate date];
     msg.type = @"M";
     msg.text = message;
     [_communicator postNewObject:msg notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
@@ -498,8 +496,6 @@ static YasoundDataProvider* _main = nil;
     e.user = _user;
     e.radio = radio;
     e.type = @"J"; // joined
-    e.start_date = [NSDate date];
-    e.end_date = [NSDate date];
     [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
@@ -514,8 +510,6 @@ static YasoundDataProvider* _main = nil;
     e.user = _user;
     e.radio = radio;
     e.type = @"L"; // left
-    e.start_date = [NSDate date];
-    e.end_date = [NSDate date];
     [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
@@ -530,8 +524,6 @@ static YasoundDataProvider* _main = nil;
     e.user = _user;
     e.radio = radio;
     e.type = @"T"; // start listening
-    e.start_date = [NSDate date];
-    e.end_date = [NSDate date];
     [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
@@ -546,8 +538,6 @@ static YasoundDataProvider* _main = nil;
     e.user = _user;
     e.radio = radio;
     e.type = @"P"; // stop listening
-    e.start_date = [NSDate date];
-    e.end_date = [NSDate date];
     [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 

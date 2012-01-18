@@ -752,7 +752,7 @@ static Song* _gNowPlayingSong = nil;
   
     if (ev != nil)
     {
-        NSLog(@"ev.start_date %@", ev.start_date);
+        NSLog(@"ev.start_date %@ (%@ - %@)", ev.start_date, ev.type, ev.text);
         _lastWallEventDate = ev.start_date;
     }
     else
