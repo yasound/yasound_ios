@@ -14,6 +14,7 @@
 #import "YasoundSessionManager.h"
 #import "ActivityModelessSpinner.h"
 #import "BuyLinkManager.h"
+#import "AudioStreamManager.h"
 
 @implementation TrackInteractionView
 
@@ -114,15 +115,6 @@
         [url release];
     }
     [mgr release];
-    
-    
-//    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/com.apple.jingle.search.DirectAction/search?artist=Prince";
-
-//    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?artistTerm
-//    
-//    NSURL* url = [[NSURL alloc] initWithString:[buyString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-//    [[UIApplication sharedApplication] openURL:url];
-//    [url release];
 }
 
 
@@ -130,18 +122,23 @@
 
 - (void)onTrackShare:(id)sender
 {
-    NSString* message = @"message_test2";
-    NSString* title = @"title_test2";
-    NSURL* pictureURL = nil;
+    NSString* message = NSLocalizedString(@"I am currently listening to %@, by %@ on %@", nil);
+    NSString* title = NSLocalizedString(@"Yasound share", nil);
+    NSURL* pictureURL = [[NSURL alloc] initWithString:@"http://yasound.com/fr/images/logo.png"];
     
+    NSString* fullMessage = [NSString stringWithFormat:message,
+                             _song.metadata.name,
+                             _song.metadata.artist_name,
+                             [AudioStreamManager main].currentRadio.name];
     
+                             
     if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
         _sharing = YES;
         [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_share_facebook", nil)];
         [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_FOR_SHARING target:self selector:@selector(onSharingTimeout:) userInfo:nil repeats:NO];
 
-        [[YasoundSessionManager main] postMessageForFacebook:message title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
+        [[YasoundSessionManager main] postMessageForFacebook:fullMessage title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
     }
 
     else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
@@ -150,7 +147,7 @@
         [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_share_twitter", nil)];
         [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_FOR_SHARING target:self selector:@selector(onSharingTimeout:) userInfo:nil repeats:NO];
 
-        [[YasoundSessionManager main] postMessageForTwitter:message title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
+        [[YasoundSessionManager main] postMessageForTwitter:fullMessage title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
     }
     
     //    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/com.apple.jingle.search.DirectAction/search?artist=Prince";
@@ -160,6 +157,7 @@
     //    NSURL* url = [[NSURL alloc] initWithString:[buyString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     //    [[UIApplication sharedApplication] openURL:url];
     //    [url release];
+    [pictureURL release];
 }
 
 
