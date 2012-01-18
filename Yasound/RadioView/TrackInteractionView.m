@@ -14,6 +14,7 @@
 #import "YasoundSessionManager.h"
 #import "ActivityModelessSpinner.h"
 #import "BuyLinkManager.h"
+#import "AudioStreamManager.h"
 
 @implementation TrackInteractionView
 
@@ -121,14 +122,14 @@
 
 - (void)onTrackShare:(id)sender
 {
-    NSString* message = NSLocalizedString(@"I am currenting listening to %@, by %@ on %@", nil);
+    NSString* message = NSLocalizedString(@"I am currently listening to %@, by %@ on %@", nil);
     NSString* title = NSLocalizedString(@"Yasound share", nil);
-    NSURL* pictureURL = nil;
+    NSURL* pictureURL = [[NSURL alloc] initWithString:@"http://yasound.com/fr/images/logo.png"];
     
     NSString* fullMessage = [NSString stringWithFormat:message,
                              _song.metadata.name,
                              _song.metadata.artist_name,
-                             _song.metadata.album_name];
+                             [AudioStreamManager main].currentRadio.name];
     
                              
     if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
@@ -156,6 +157,7 @@
     //    NSURL* url = [[NSURL alloc] initWithString:[buyString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     //    [[UIApplication sharedApplication] openURL:url];
     //    [url release];
+    [pictureURL release];
 }
 
 
