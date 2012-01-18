@@ -52,7 +52,7 @@
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MyYasoundBackground.png"]];
     
-    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(receiveRadios:info:)];
+    
 }
 
 
@@ -60,6 +60,8 @@
 {
     if ([AudioStreamManager main].currentRadio == nil)
         _nowPlayingButton.enabled = NO;
+    
+    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(receiveRadios:info:)];
 }
 
 
@@ -135,6 +137,11 @@
     
     cell.backgroundView = view;
     [view release];    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
 }
 
 
