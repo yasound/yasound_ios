@@ -78,6 +78,8 @@ static Song* _gNowPlayingSong = nil;
         
         _wallEvents = [[NSMutableArray alloc] init];
         _wallHeights = [[NSMutableArray alloc] init];
+//        [_wallEvents retain];
+//        [_wallHeights retain];
     }
     
     return self;
@@ -744,6 +746,14 @@ static Song* _gNowPlayingSong = nil;
         [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
     else
     {
+        assert(_wallEvents.count > 0);
+        
+        //LBDEBUG TODO DELETE DEBUG
+        NSLog(@"DEBUG(6) WallEvent.count %d    index %d", _wallEvents.count,_wallEvents.count - 1);
+        
+        //////////////////////////////
+
+        
         WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
         [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
     }
@@ -752,6 +762,43 @@ static Song* _gNowPlayingSong = nil;
 - (void)didAddWallEvents:(int)count atIndex:(int)index
 {
     NSLog(@"%d events added at index %d", count, index);
+
+    NSMutableArray* indexes = [[NSMutableArray alloc] init];
+    for (NSInteger i = index; i < (index+count); i++)
+    {
+        [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+
+        assert(_wallEvents.count > 0);
+        
+        //LBDEBUG TODO DELETE DEBUG
+        NSLog(@"DEBUG(7) WallEvent.count %d    index %d", _wallEvents.count,i);
+        
+        //////////////////////////////
+
+        
+        WallEvent* ev = [_wallEvents objectAtIndex:i];
+        NSString* type = ev.type;
+        if ([type isEqualToString:EV_TYPE_MESSAGE])
+        {
+            [self insertMessageAtIndex:i silent:YES];
+        }
+        else if ([type isEqualToString:EV_TYPE_SONG])
+        {
+            [self insertSongAtIndex:i silent:YES];
+        }
+        else
+        {
+            assert(0);
+        }
+    }
+    
+    [_tableView insertRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
+
+//    [_tableView reloadRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
+    
+
+//    [_tableView insertRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
+    
     
     // todo...
     // add message views
@@ -777,6 +824,14 @@ static Song* _gNowPlayingSong = nil;
     WallEvent* ev = nil;
     for (int i = [events count] - 1; i >= 0; i--)
     {
+        assert(events.count > 0);
+
+        //LBDEBUG TODO DELETE DEBUG
+        NSLog(@"DEBUG(8) events.count %d    index %d", events.count,i);
+        
+        //////////////////////////////
+
+        
         ev  = [events objectAtIndex:i];
         if ([ev.type isEqualToString:EV_TYPE_LOGIN])
         {
@@ -808,6 +863,12 @@ static Song* _gNowPlayingSong = nil;
         if (![ev.type isEqualToString:EV_TYPE_MESSAGE] && ![ev.type isEqualToString:EV_TYPE_SONG])
             continue;
 
+//        assert(_wallEvents.count > 0);
+        
+        //LBDEBUG TODO DELETE DEBUG
+        NSLog(@"DEBUG wallEvents.count %d    index %d", _wallEvents.count, _wallEvents.count-1);
+            //////////////////////////////
+
         if (_wallEvents.count != 0 && [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:0]).start_date] == NSOrderedDescending)
         {
             [_wallEvents insertObject:ev atIndex:0];
@@ -816,10 +877,20 @@ static Song* _gNowPlayingSong = nil;
                 [self addMessage];
             else if ([ev.type isEqualToString:EV_TYPE_SONG])
                 [self addSong];
+            
+            //LBDEBUG
+            assert(_wallEvents.count == _wallHeights.count);
         }
         else if (_wallEvents.count == 0 || [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count-1]).start_date] == NSOrderedAscending)
         {
             [_wallEvents addObject:ev];
+            
+            //LBDEBUG
+//            assert(_wallEvents.count == _wallHeights.count);
+
+            
+            //LBDEBUG FLAG
+            
             if (addedAtIndex == -1)
                 addedAtIndex = _wallEvents.count - 1;
             addedCount++;
@@ -831,6 +902,10 @@ static Song* _gNowPlayingSong = nil;
     
     if (addedCount)
         [self didAddWallEvents:addedCount atIndex:addedAtIndex];
+    
+    //LBDEBUG
+    assert(_wallEvents.count == _wallHeights.count);
+
     
     int minMessageCount = 8;
     if ([self eventMessageCount] < minMessageCount)
@@ -1008,34 +1083,57 @@ static Song* _gNowPlayingSong = nil;
 //- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent
 - (void)addMessage
 {
-//    WallMessage* m = [[WallMessage alloc] init];
-//    m.user = user;
-//    m.avatarURL = avatarURL;
-//    m.date = date;
-    WallEvent* ev = [_wallEvents objectAtIndex:0];
-    NSString* text = ev.text;
-
-    // compute the size of the text => will allow to update the cell's height dynamically
-    CGSize suggestedSize = [text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-    
-    [_wallHeights insertObject:[NSNumber numberWithFloat:suggestedSize.height] atIndex:0];
-
-//    [self.messages insertObject:m atIndex:0];
-//    
-//    if (!silent)
-//    {
-        [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
-//    }
+    [self insertMessageAtIndex:0 silent:NO];
 }
      
 
 - (void)addSong
 {
-    [_wallHeights insertObject:[NSNumber numberWithFloat:ROW_SONG_HEIGHT] atIndex:0];
-
-    [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+    [self insertSongAtIndex:0 silent:NO];
 }
 
+
+
+- (void)insertMessageAtIndex:(NSInteger)index  silent:(BOOL)silent
+{
+    assert(_wallEvents.count > 0);
+    
+    //LBDEBUG TODO DELETE DEBUG
+    NSLog(@"DEBUG(2) wallEvents.count %d    index %d", _wallEvents.count, index);
+    //////////////////////////////
+
+    
+    WallEvent* ev = [_wallEvents objectAtIndex:index];
+    NSString* text = ev.text;
+    
+    // compute the size of the text => will allow to update the cell's height dynamically
+    CGSize suggestedSize = [text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+    
+    [_wallHeights insertObject:[NSNumber numberWithFloat:suggestedSize.height] atIndex:index];
+    
+    //    [self.messages insertObject:m atIndex:0];
+    //    
+    //    if (!silent)
+    //    {
+    
+    
+    UITableViewRowAnimation anim = (silent) ? UITableViewRowAnimationNone : UITableViewRowAnimationTop;
+
+    if (!silent)
+    [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
+    //    }
+}
+
+- (void)insertSongAtIndex:(NSInteger)index silent:(BOOL)silent
+{
+    [_wallHeights insertObject:[NSNumber numberWithFloat:ROW_SONG_HEIGHT] atIndex:index];
+    
+    UITableViewRowAnimation anim = (silent) ? UITableViewRowAnimationNone : UITableViewRowAnimationTop;
+
+    if (!silent)
+    [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
+
+}
 
 
 
@@ -1067,6 +1165,18 @@ static Song* _gNowPlayingSong = nil;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
 //    return m.textHeight + _cellMinHeight;
+    assert(_wallHeights.count > 0);
+
+    
+    
+    //LBDEBUG TODO DELETE DEBUG
+    if ((_wallHeights.count == 1) && (indexPath.row == 1))
+    {
+        NSLog(@"MERDE");
+    }
+    NSLog(@"DEBUG(3) wallHeight.count %d    index %d", _wallHeights.count, indexPath.row);
+    //////////////////////////////
+
     NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
     return [nb floatValue];
 }
@@ -1076,6 +1186,16 @@ static Song* _gNowPlayingSong = nil;
 {
     static NSString* CellIdentifier = @"RadioViewCell";
     
+    assert(_wallEvents.count > 0);
+    assert(_wallHeights.count > 0);
+
+    
+    //LBDEBUG TODO DELETE DEBUG
+    NSLog(@"DEBUG(4) WallEvent.count %d    index %d", _wallEvents.count, indexPath.row);
+    NSLog(@"DEBUG(5) wallHeight.count %d    index %d", _wallHeights.count, indexPath.row);
+
+    //////////////////////////////
+
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
 //    WallMessage* m = [self.messages objectAtIndex:indexPath.row];
     NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];

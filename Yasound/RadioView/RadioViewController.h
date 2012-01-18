@@ -68,9 +68,13 @@
 - (void)initRadioView;
 
 - (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
+- (void)setStatusMessage:(NSString*)message;
+
 - (void)addMessage;
 - (void)addSong;
-- (void)setStatusMessage:(NSString*)message;
+- (void)insertMessageAtIndex:(NSInteger)index  silent:(BOOL)silent;
+- (void)insertSongAtIndex:(NSInteger)index  silent:(BOOL)silent;
+                        
 
 
 @end
