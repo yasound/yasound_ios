@@ -161,13 +161,10 @@
 
 - (void)updateRadios:(NSString*)genre
 {
-    //LBDEBUG ICI
-//    if (_type == RSTSelection)
-//        [[YasoundDataProvider main] selectedRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
-//    else if (_type == RSTTop)
-//        [[YasoundDataProvider main] topRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
-//    else if (_type == RSTNew)
-//        [[YasoundDataProvider main] newRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
+    NSString* g = genre;
+    if ([genre isEqualToString:@"style_all"])
+        g= nil;
+    [[YasoundDataProvider main] topRadiosWithGenre:g withTarget:self action:@selector(receiveRadios:withInfo:)];
 }
 
 

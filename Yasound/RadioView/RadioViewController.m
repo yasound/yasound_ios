@@ -757,7 +757,6 @@ static Song* _gNowPlayingSong = nil;
         int messageCount = [self eventMessageCount];
         if (messageCount < minMessageCount)
         {
-            NSLog(@"nb message = %d => ask for next page", messageCount);
             [self askForNextWallEvents];
         }
     }

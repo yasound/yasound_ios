@@ -118,7 +118,7 @@
         
         [self addSubview:self.playPauseButton];
         
-        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
     }
     
     return self;
@@ -132,7 +132,6 @@
 
 - (void)receiveSong:(Song*)song withInfo:(NSDictionary*)info
 {
-    NSLog(@"receive song %@ (%@ - %@)", song.metadata.name, song.likes, song.dislikes);
     _song = song;
     _likesLabel.text = [NSString stringWithFormat:@"%d", [_song.likes intValue]];
     _dislikesLabel.text = [NSString stringWithFormat:@"%d", [_song.dislikes intValue]];
