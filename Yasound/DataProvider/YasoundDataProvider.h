@@ -86,6 +86,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector;
 
 - (void)wallEventsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)wallEventsForRadio:(Radio*)radio afterEvent:(WallEvent*)lastEvent target:(id)target action:(SEL)selector;
+
 - (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;

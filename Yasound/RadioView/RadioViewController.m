@@ -457,6 +457,7 @@ static Song* _gNowPlayingSong = nil;
         [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
 }
 
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
