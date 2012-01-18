@@ -8,7 +8,7 @@
 #import "RadioViewCell.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "WallMessage.h"
+#import "WallEvent.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -33,7 +33,7 @@
 
 #define MESSAGE_SPACING 4
 
-- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier message:(WallMessage*)m indexPath:(NSIndexPath*)indexPath
+- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
@@ -53,7 +53,9 @@
         
         // avatar
         sheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.avatar = [[WebImageView alloc] initWithImageAtURL:m.avatarURL];
+//        self.avatar = [[WebImageView alloc] initWithImageAtURL:m.avatarURL];
+        //LBDEBUG
+        self.avatar = [[WebImageView alloc] initWithImageAtURL:nil];
         self.avatar.frame = sheet.frame;
         [view addSubview:self.avatar];
 
@@ -66,19 +68,22 @@
         // date
         sheet = [[Theme theme] stylesheetForKey:@"CellDate" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.date = [sheet makeLabel];
-        self.date.text = [self dateToString:m.date];
+//        self.date.text = [self dateToString:m.date];
+        self.date.text = [self dateToString:ev.start_date];
         [view addSubview:self.date];
         
         // user
         sheet = [[Theme theme] stylesheetForKey:@"CellUser" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.user = [sheet makeLabel];
-        self.user.text = m.user;
+//        self.user.text = m.user;
+        self.user.text = ev.user.name;
         [view addSubview:self.user];
 
         // message background
         BundleStylesheet* messageSheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIView* bkg = [[UIView alloc] initWithFrame:messageSheet.frame];
-        bkg.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, m.textHeight + 2*MESSAGE_SPACING);
+//        bkg.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, m.textHeight + 2*MESSAGE_SPACING);
+        bkg.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, height + 2*MESSAGE_SPACING);
         
         bkg.layer.masksToBounds = YES;
         bkg.layer.cornerRadius = 4;
@@ -90,8 +95,10 @@
         
         // message
         self.message = [messageSheet makeLabel];
-        self.message.text = m.text;
-        self.message.frame = CGRectMake(self.message.frame.origin.x + MESSAGE_SPACING, self.message.frame.origin.y + MESSAGE_SPACING, self.message.frame.size.width - 2*MESSAGE_SPACING, m.textHeight);
+//        self.message.text = m.text;
+        self.message.text = ev.text;
+//        self.message.frame = CGRectMake(self.message.frame.origin.x + MESSAGE_SPACING, self.message.frame.origin.y + MESSAGE_SPACING, self.message.frame.size.width - 2*MESSAGE_SPACING, m.textHeight);
+        self.message.frame = CGRectMake(self.message.frame.origin.x + MESSAGE_SPACING, self.message.frame.origin.y + MESSAGE_SPACING, self.message.frame.size.width - 2*MESSAGE_SPACING, height);
         
         [self.message setLineBreakMode:UILineBreakModeWordWrap];
         //[label setMinimumFontSize:FONT_SIZE];
@@ -111,7 +118,7 @@
 }
 
 
-- update:(WallMessage*)m indexPath:(NSIndexPath*)indexPath
+- update:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath
 {
     BundleStylesheet* sheet = nil;
 
@@ -127,14 +134,19 @@
 //    [self.avatar setImage:image];
     
     // date
-  self.date.text = [self dateToString:m.date];
+//    self.date.text = [self dateToString:m.date];
+    self.date.text = [self dateToString:ev.start_date];
     
     // user
-    self.user.text = m.user;
+//    self.user.text = m.user;
+    self.user.text = ev.user.name;
     
     // message
-    self.message.text = m.text;
-    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, m.textHeight);
+//    self.message.text = m.text;
+//    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, m.textHeight);
+
+    self.message.text = ev.text;
+    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, height);
 }
 
 

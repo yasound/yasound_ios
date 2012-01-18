@@ -55,11 +55,12 @@
     NSTimer* _timerUpdate;
     
     NSMutableArray* _wallEvents;
+    NSMutableArray* _wallHeights;
 }
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic) BOOL ownRadio;
-@property (nonatomic, retain) NSMutableArray* messages;
+//@property (nonatomic, retain) NSMutableArray* messages;
 @property (atomic, retain) NSMutableArray* statusMessages;
 @property (nonatomic, retain) UIButton* favoriteButton;
 
@@ -67,8 +68,8 @@
 - (void)initRadioView;
 
 - (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
-- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent;
-- (void)addSong:(NSInteger)index;
+- (void)addMessage;
+- (void)addSong;
 - (void)setStatusMessage:(NSString*)message;
 
 

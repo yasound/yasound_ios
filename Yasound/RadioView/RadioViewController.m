@@ -38,7 +38,7 @@ static Song* _gNowPlayingSong = nil;
 
 
 @synthesize radio;
-@synthesize messages;
+//@synthesize messages;
 @synthesize statusMessages;
 @synthesize ownRadio;
 @synthesize favoriteButton;
@@ -61,7 +61,7 @@ static Song* _gNowPlayingSong = nil;
     _lastWallEventDate = nil;
     _lastSongUpdateDate = nil;
     
-    self.messages = [[NSMutableArray alloc] init];
+//    self.messages = [[NSMutableArray alloc] init];
     self.statusMessages = [[NSMutableArray alloc] init];
     
     _statusBarButtonToggled = NO;
@@ -76,6 +76,7 @@ static Song* _gNowPlayingSong = nil;
     _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
         
         _wallEvents = [[NSMutableArray alloc] init];
+        _wallHeights = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -525,6 +526,7 @@ static Song* _gNowPlayingSong = nil;
 {
     [_messageFont release];
     [_wallEvents release];
+    [_wallHeights release];
     [super dealloc];
 }
 
@@ -754,84 +756,6 @@ static Song* _gNowPlayingSong = nil;
     // add message views
 }
 
-//- (void)receiveWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
-//{
-//  Meta* meta = [info valueForKey:@"meta"];
-//  NSError* err = [info valueForKey:@"error"];
-//  
-//  if (err)
-//  {
-//      NSLog(@"receiveWallEvents error!");
-//      return;
-//  }
-//  
-//  if (!meta)
-//  {
-//      NSLog(@"receiveWallEvents : no meta data!");
-//      return;
-//  }
-//    
-//  WallEvent* ev = nil;
-//  for (int i = [events count] - 1; i >= 0; i--)
-//  {
-//    ev  = [events objectAtIndex:i];
-//      
-//     // NSLog(@"parse Message type %@", [RadioViewController evTypeToString:ev.type]);
-//    
-//    if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
-//    {
-//        //NSLog(@"parse message date %@  compare to last %@", ev.start_date, _lastWallEventDate);
-//        
-////        NSLog(@"message %@ (%@ - %@)", ev.text, ev.start_date, _lastWallEventDate);
-//      if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
-//      {
-//          NSLog(@"show message %@", ev.text);
-//          NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
-//
-//          [_wallEvents insertObject:ev atIndex:0];
-//
-//          [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
-//      }
-//
-//    }
-//    else if ([ev.type isEqualToString:EV_TYPE_SONG])
-//    {
-//        if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
-//        {       
-//            [_wallEvents insertObject:ev atIndex:0];
-//
-//            [self addSong:(_wallEvents.count-1)];
-//        }
-//    }
-//    else if ([ev.type isEqualToString:EV_TYPE_LOGIN])
-//    {
-//      if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
-//        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", ev.user.name]];
-//        
-//    }
-//    else if ([ev.type isEqualToString:EV_TYPE_LOGOUT])
-//    {
-//      if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
-//        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", ev.user.name]];
-//    }
-//  }
-//  
-//    if (ev != nil)
-//    {
-//        NSLog(@"ev.start_date %@ (%@ - %@)", ev.start_date, ev.type, ev.text);
-//        _lastWallEventDate = ev.start_date;
-//    }
-//    else
-//        _lastWallEventDate = nil;
-//    
-//  _lastConnectionUpdateDate = [NSDate date];
-//    
-//    [self logWallEvents];
-//  
-////  [_tableView reloadData];
-//}
-
-
 - (void)receiveWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
     Meta* meta = [info valueForKey:@"meta"];
@@ -888,10 +812,9 @@ static Song* _gNowPlayingSong = nil;
             [_wallEvents insertObject:ev atIndex:0];
             
             if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
-            {
-                NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
-                [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
-            }
+                [self addMessage];
+            else if ([ev.type isEqualToString:EV_TYPE_SONG])
+                [self addSong];
         }
         else if (_wallEvents.count == 0 || [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count-1]).start_date] == NSOrderedAscending)
         {
@@ -902,10 +825,11 @@ static Song* _gNowPlayingSong = nil;
         }
     }
     
+    // MatDebug
+    [self logWallEvents];
+    
     if (addedCount)
         [self didAddWallEvents:addedCount atIndex:addedAtIndex];
-    
-    [self logWallEvents];
     
     int minMessageCount = 8;
     if ([self eventMessageCount] < minMessageCount)
@@ -1073,36 +997,41 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-
+#define ROW_SONG_HEIGHT 20
 
 //.................................................................................................
 //
 // MESSAGES
 //
 
-- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent
+//- (void)addMessage:(NSString*)text user:(NSString*)user avatar:(NSURL*)avatarURL date:(NSDate*)date silent:(BOOL)silent
+- (void)addMessage
 {
-    WallMessage* m = [[WallMessage alloc] init];
-    m.user = user;
-    m.avatarURL = avatarURL;
-    m.date = date;
-    m.text = text;
+//    WallMessage* m = [[WallMessage alloc] init];
+//    m.user = user;
+//    m.avatarURL = avatarURL;
+//    m.date = date;
+    WallEvent* ev = [_wallEvents objectAtIndex:0];
+    NSString* text = ev.text;
 
     // compute the size of the text => will allow to update the cell's height dynamically
-    CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-    m.textHeight = suggestedSize.height;
-
-    [self.messages insertObject:m atIndex:0];
+    CGSize suggestedSize = [text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
     
-    if (!silent)
-    {
+    [_wallHeights insertObject:[NSNumber numberWithFloat:suggestedSize.height] atIndex:0];
+
+//    [self.messages insertObject:m atIndex:0];
+//    
+//    if (!silent)
+//    {
         [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
-    }
+//    }
 }
      
 
-- (void)addSong:(NSInteger)index
+- (void)addSong
 {
+    [_wallHeights insertObject:[NSNumber numberWithFloat:ROW_SONG_HEIGHT] atIndex:0];
+
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
 }
 
@@ -1131,14 +1060,14 @@ static Song* _gNowPlayingSong = nil;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
     //    NSLog(@"number messages %d", [self.messages count]);
-    return [self.messages count];
+    return [_wallEvents count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    WallMessage* m = [self.messages objectAtIndex:indexPath.row];
-    
-    return m.textHeight + _cellMinHeight;
+//    return m.textHeight + _cellMinHeight;
+    NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
+    return [nb floatValue];
 }
 
 
@@ -1146,15 +1075,18 @@ static Song* _gNowPlayingSong = nil;
 {
     static NSString* CellIdentifier = @"RadioViewCell";
     
-    WallMessage* m = [self.messages objectAtIndex:indexPath.row];
+    WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
+//    WallMessage* m = [self.messages objectAtIndex:indexPath.row];
+    NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
+    CGFloat height = [nb floatValue];
     
     RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier message:m indexPath:indexPath] autorelease];
+        cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
     }
     else
-        [cell update:m indexPath:indexPath];
+        [cell update:ev height:height indexPath:indexPath];
     
     return cell;
 }
