@@ -540,123 +540,6 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-//.................................................................................................
-//
-// EXAMPLE
-//
-
-
-//- (void)EXAMPLE_NOWPLAYING
-//{
-//    //
-//    // NOW PLAYING
-//    //
-//    NSInteger randIndex = (rand() %5)+1;
-//    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-//    Song* song = [[Song alloc] init];
-//    song.metadata = [[SongMetadata alloc] init];
-//    song.metadata.name = @"Mon Titre à moi super remix de la mort";
-//    song.metadata.artist_name = @"Mon Artiste";
-//    
-//    NSLog(@"SONG '%@'  '%@'  ", song.metadata.name, song.metadata.artist_name);
-//    
-////    song.metadata.image = image;
-//    [self setNowPlaying:song];
-//    
-//    //fake LBDEBUG
-//    _fakeNowPlayingTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onFakeNowPlayingTick:) userInfo:nil repeats:YES];
-//}
-//
-//- (void)onFakeNowPlayingTick:(NSTimer*)timer
-//{
-//    NSInteger randIndex = (rand() %5)+1;
-//    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-//    
-//    if (_fakeNowPlayingIndex)
-//    {
-//        _fakeNowPlayingIndex = 0;
-//        Song* song = [[Song alloc] init];
-//        song.metadata = [[SongMetadata alloc] init];
-//        song.metadata.name = @"Mon Titre à moi super remix de la mort";
-//        song.metadata.artist_name = @"Mon Artiste";
-//        [self setNowPlaying:song];
-//    }
-//    else
-//    {
-//        _fakeNowPlayingIndex = 1;
-//        Song* song = [[Song alloc] init];
-//        song.metadata = [[SongMetadata alloc] init];
-//        song.metadata.name = @"Shabada song (feat. Prince)";
-//        song.metadata.artist_name = @"Macha Berger";
-//        [self setNowPlaying:song];
-//    }
-//    
-//    
-//}
-
-
-
-- (void)EXAMPLE
-{
-
-    
-    //
-    // MESSAGES
-    //
-    NSInteger randIndex = (rand() %5)+1;
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-//    [self addMessage:@"Vivamus sodales adipiscing sapien." user:@"Tancrède" avatar:image date:@"2011-07-09 20h30" silent:YES];
-    
-    randIndex = (rand() %5)+1;
-    image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-//    [self addMessage:@"Vivamus auctor leo vel dui. Aliquam erat volutpat. Phasellus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras tempor." user:@"Gertrude"  avatar:image date:@"2011-07-09 19h30" silent:YES];
-    
-    randIndex = (rand() %5)+1;
-    image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-//    [self addMessage:@"Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare." user:@"Argeavielle"  avatar:image date:@"2011-07-09 18h30" silent:YES];
-    
-    randIndex = (rand() %5)+1;
-    image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-//    [self addMessage:@"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat." user:@"Anthèlme"  avatar:image date:@"2011-07-09 20h30" silent:YES];
-
-    [_tableView reloadData];
-    
-    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onEXAMPLE_DELAYED:) userInfo:nil repeats:NO];
-    [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(onEXAMPLE_DELAYED:) userInfo:nil repeats:NO];
-    [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(onEXAMPLE_DELAYED:) userInfo:nil repeats:NO];
-    [NSTimer scheduledTimerWithTimeInterval:8 target:self selector:@selector(onEXAMPLE_DELAYED:) userInfo:nil repeats:NO];
-
-    
-    //
-    // STATUS BAR
-    //
-    [self setStatusMessage:@"Mon message de status..."];
-}
-
-
-- (void)onEXAMPLE_DELAYED:(NSTimer*)timer
-{
-    NSInteger randIndex = (rand() %5)+1;
-    UIImage* image = [UIImage imageNamed:[NSString stringWithFormat:@"avatarDummy%d.png", randIndex]];
-//    [self addMessage:@"Pellentesque sit amet sem et purus pretium consectetuer." user:@"Tancrède"  avatar:image date:@"2011-07-09 20h30" silent:NO];
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -746,14 +629,6 @@ static Song* _gNowPlayingSong = nil;
         [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
     else
     {
-        assert(_wallEvents.count > 0);
-        
-        //LBDEBUG TODO DELETE DEBUG
-        NSLog(@"DEBUG(6) WallEvent.count %d    index %d", _wallEvents.count,_wallEvents.count - 1);
-        
-        //////////////////////////////
-
-        
         WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
         [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
     }
@@ -761,21 +636,13 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)didAddWallEvents:(int)count atIndex:(int)index
 {
-    NSLog(@"%d events added at index %d", count, index);
+//    NSLog(@"%d events added at index %d", count, index);
 
     NSMutableArray* indexes = [[NSMutableArray alloc] init];
     for (NSInteger i = index; i < (index+count); i++)
     {
         [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
 
-        assert(_wallEvents.count > 0);
-        
-        //LBDEBUG TODO DELETE DEBUG
-        NSLog(@"DEBUG(7) WallEvent.count %d    index %d", _wallEvents.count,i);
-        
-        //////////////////////////////
-
-        
         WallEvent* ev = [_wallEvents objectAtIndex:i];
         NSString* type = ev.type;
         if ([type isEqualToString:EV_TYPE_MESSAGE])
@@ -824,14 +691,6 @@ static Song* _gNowPlayingSong = nil;
     WallEvent* ev = nil;
     for (int i = [events count] - 1; i >= 0; i--)
     {
-        assert(events.count > 0);
-
-        //LBDEBUG TODO DELETE DEBUG
-        NSLog(@"DEBUG(8) events.count %d    index %d", events.count,i);
-        
-        //////////////////////////////
-
-        
         ev  = [events objectAtIndex:i];
         if ([ev.type isEqualToString:EV_TYPE_LOGIN])
         {
@@ -863,12 +722,6 @@ static Song* _gNowPlayingSong = nil;
         if (![ev.type isEqualToString:EV_TYPE_MESSAGE] && ![ev.type isEqualToString:EV_TYPE_SONG])
             continue;
 
-//        assert(_wallEvents.count > 0);
-        
-        //LBDEBUG TODO DELETE DEBUG
-        NSLog(@"DEBUG wallEvents.count %d    index %d", _wallEvents.count, _wallEvents.count-1);
-            //////////////////////////////
-
         if (_wallEvents.count != 0 && [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:0]).start_date] == NSOrderedDescending)
         {
             [_wallEvents insertObject:ev atIndex:0];
@@ -878,18 +731,10 @@ static Song* _gNowPlayingSong = nil;
             else if ([ev.type isEqualToString:EV_TYPE_SONG])
                 [self addSong];
             
-            //LBDEBUG
-            assert(_wallEvents.count == _wallHeights.count);
         }
         else if (_wallEvents.count == 0 || [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count-1]).start_date] == NSOrderedAscending)
         {
             [_wallEvents addObject:ev];
-            
-            //LBDEBUG
-//            assert(_wallEvents.count == _wallHeights.count);
-
-            
-            //LBDEBUG FLAG
             
             if (addedAtIndex == -1)
                 addedAtIndex = _wallEvents.count - 1;
@@ -903,10 +748,6 @@ static Song* _gNowPlayingSong = nil;
     if (addedCount)
         [self didAddWallEvents:addedCount atIndex:addedAtIndex];
     
-    //LBDEBUG
-    assert(_wallEvents.count == _wallHeights.count);
-
-    
     int minMessageCount = 8;
     if ([self eventMessageCount] < minMessageCount)
         [self askForNextWallEvents];
@@ -914,27 +755,6 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-
-
-//LBDEBUG
-//- (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
-//{
-//  NSError* error = [info valueForKey:@"error"];
-//  if (!r)
-//    return;
-//  if (error)
-//  {
-//    NSLog(@"can't receive radio: %@", error.domain);
-//    return;
-//  }
-//  
-//  self.radio = r;
-//  
-//  // radio header picture
-//  // header avatar
-//
-//  [self onUpdate:nil]; 
-//}
 
 - (void)receiveRadioSongs:(NSArray*)events withInfo:(NSDictionary*)info
 {
@@ -1096,13 +916,6 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)insertMessageAtIndex:(NSInteger)index  silent:(BOOL)silent
 {
-    assert(_wallEvents.count > 0);
-    
-    //LBDEBUG TODO DELETE DEBUG
-    NSLog(@"DEBUG(2) wallEvents.count %d    index %d", _wallEvents.count, index);
-    //////////////////////////////
-
-    
     WallEvent* ev = [_wallEvents objectAtIndex:index];
     NSString* text = ev.text;
     
@@ -1158,25 +971,11 @@ static Song* _gNowPlayingSong = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    //    NSLog(@"number messages %d", [self.messages count]);
     return [_wallEvents count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-//    return m.textHeight + _cellMinHeight;
-    assert(_wallHeights.count > 0);
-
-    
-    
-    //LBDEBUG TODO DELETE DEBUG
-    if ((_wallHeights.count == 1) && (indexPath.row == 1))
-    {
-        NSLog(@"MERDE");
-    }
-    NSLog(@"DEBUG(3) wallHeight.count %d    index %d", _wallHeights.count, indexPath.row);
-    //////////////////////////////
-
     NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
     return [nb floatValue];
 }
@@ -1186,18 +985,8 @@ static Song* _gNowPlayingSong = nil;
 {
     static NSString* CellIdentifier = @"RadioViewCell";
     
-    assert(_wallEvents.count > 0);
-    assert(_wallHeights.count > 0);
-
-    
-    //LBDEBUG TODO DELETE DEBUG
-    NSLog(@"DEBUG(4) WallEvent.count %d    index %d", _wallEvents.count, indexPath.row);
-    NSLog(@"DEBUG(5) wallHeight.count %d    index %d", _wallHeights.count, indexPath.row);
-
-    //////////////////////////////
-
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
-//    WallMessage* m = [self.messages objectAtIndex:indexPath.row];
+
     NSNumber* nb = [_wallHeights objectAtIndex:indexPath.row];
     CGFloat height = [nb floatValue];
     
@@ -1695,133 +1484,6 @@ static Song* _gNowPlayingSong = nil;
 
 @end
 
-
-
-
-
-
-
-//.................................................................................................
-//
-// DEPRECATED CODE
-//
-
-
-
-
-
-
-
-
-
-//- (void)requestStarted:(ASIHTTPRequest *)request
-//{
-//    NSLog(@"requestStarted");
-//}
-
-//- (void)requestFailed:(ASIHTTPRequest *)request
-//{
-//    NSLog(@"RadioViewController update requestFailed");
-//}
-
-
-//- (void)requestFinished:(ASIHTTPRequest *)request
-//{
-//    NSLog(@"Request sent, response we got: \n%@\n\n", request.responseString);
-//    NSLog(@"status message: %@\n\n", request.responseStatusMessage);
-//    NSLog(@"cookies: %@\n\n", request.responseCookies);
-//    
-//    //clean message arrays
-//    [self.messages removeAllObjects];
-//    
-//    NSXMLParser* parser = [[NSXMLParser alloc] initWithData:request.responseData];
-//    [parser setDelegate:self];
-//    [parser parse];
-//    
-//    [_tableView reloadData];    
-//}
-
-
-
-
-
-
-
-
-//
-//#pragma mark - NSXLMParser Delegate
-//
-//- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict 
-//{
-//    //NSLog(@"XML start element: %@", elementName);
-//    
-//    if ( [elementName isEqualToString:@"post"]) 
-//        _currentMessage = [[Message alloc] init];
-//        }
-//
-//
-//- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string 
-//{
-//    if (!_currentXMLString)
-//        _currentXMLString = [[NSMutableString alloc] initWithCapacity:50];
-//        
-//        [_currentXMLString appendString:string];
-//}
-//
-//
-//
-//- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
-//{
-//    NSString* str = [_currentXMLString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-//    
-//    //NSLog(@"XML end element: %@", elementName);
-//    
-//    if ([elementName isEqualToString:@"post"]) 
-//    {
-//        if ([self.messages count] < _currentMessage.identifier - 1)
-//        {
-//            //NSLog(@"New post: %d\n", _currentMessage.identifier);
-//            
-//            WallMessage* m = [[Message alloc] init];
-//            m.user = _currentMessage.user;
-//            m.date = _currentMessage.date;
-//            m.text = _currentMessage.text;
-//            
-//            // compute the size of the text => will allow to update the cell's height dynamically
-//            CGSize suggestedSize = [m.text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-//            m.textHeight = suggestedSize.height;
-//            
-//            
-//            [self.messages insertObject:m atIndex:0];
-//        }
-//        else
-//            [_currentMessage release];
-//        _currentMessage = nil;
-//    }
-//    else if ([elementName isEqualToString:@"id"]) 
-//    {
-//        _currentMessage.identifier = str.intValue;
-//    }
-//    else if ([elementName isEqualToString:@"kind"]) 
-//    {
-//        _currentMessage.kind = str;
-//    }
-//    else if ([elementName isEqualToString:@"author"]) 
-//    {
-//        _currentMessage.user = str;
-//    }
-//    else if ([elementName isEqualToString:@"date"]) 
-//    {
-//        _currentMessage.date = str;
-//    }
-//    else if ([elementName isEqualToString:@"message"]) 
-//    {
-//        _currentMessage.text = str;
-//    }
-//    
-//    [_currentXMLString release];
-//    _currentXMLString = nil;
-//}
 
 
 
