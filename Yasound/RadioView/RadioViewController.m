@@ -55,9 +55,7 @@ static Song* _gNowPlayingSong = nil;
 
         _trackInteractionViewDisplayed = NO;
     
-    //LBDEBUG
-    //        [[YasoundDataProvider main] radioWithID:1 target:self action:@selector(receiveRadio:withInfo:)];
-    
+        _firstRequest = YES;
     
     _lastWallEventDate = nil;
     _lastSongUpdateDate = nil;
@@ -561,6 +559,8 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onUpdate:(NSTimer*)timer
 {    
+    if (timer)
+        _firstRequest = NO;
   [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
   [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
 //    
@@ -751,9 +751,16 @@ static Song* _gNowPlayingSong = nil;
     if (addedCount)
         [self didAddWallEvents:addedCount atIndex:addedAtIndex];
     
-    int minMessageCount = 8;
-    if ([self eventMessageCount] < minMessageCount)
-        [self askForNextWallEvents];
+    if (_firstRequest)
+    {
+        int minMessageCount = 8;
+        int messageCount = [self eventMessageCount];
+        if (messageCount < minMessageCount)
+        {
+            NSLog(@"nb message = %d => ask for next page", messageCount);
+            [self askForNextWallEvents];
+        }
+    }
 }
 
 
