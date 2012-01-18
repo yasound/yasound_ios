@@ -68,6 +68,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     NSString* uuid = radio.uuid;
     NSString* url = [NSString stringWithFormat:@"http://dev.yasound.com:8001/%@", uuid];
     NSURL* radiourl = [NSURL URLWithString:url];
+    NSLog(@"radio url: %@\n", url);
 #endif
     
     

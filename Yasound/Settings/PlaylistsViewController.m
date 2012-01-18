@@ -312,9 +312,9 @@
     //LBDEBUG email playlist file
     //  [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
 
-  Radio* radio = [[Radio alloc] init];
-  radio.id = [NSNumber numberWithInt:1];
     //LBDEBUG
+    Radio* radio = [YasoundDataProvider main].radio;
+    NSLog(@"radio %@", radio.name);
   [[YasoundDataProvider main] updatePlaylists:data forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
     //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
 
@@ -330,8 +330,28 @@
     NSLog(@"update playlists error %d", error.code);
   else
     NSLog(@"playlists updated  task: %@", task_id);
+    
+    taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task_id repeats:YES];
+}
 
-    [self onFakeSubmitAction:nil];
+- (void)checkPlaylistTask:(NSTimer*)timer
+{
+    taskID task = timer.userInfo;
+    [[YasoundDataProvider main] taskStatus:task target:self action:@selector(receiveTaskStatus:error:)];
+}
+
+- (void)receiveTaskStatus:(taskStatus)status error:(NSError*) error
+{
+    if (status == eTaskSuccess)
+    {
+        [taskTimer invalidate];
+        [self onFakeSubmitAction:nil];
+    }
+    else if (status == eTaskFailure)
+    {
+        [taskTimer invalidate];
+        [self onFakeSubmitAction:nil];
+    }
 }
 
 

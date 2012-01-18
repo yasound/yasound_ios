@@ -32,6 +32,8 @@
     NSArray* _playlists;                   // NSArray of MPMediaPlaylist*
     NSMutableArray* _playlistsDesc;        // NSArray of NSDictionary {name, count}
     NSMutableArray* _selectedPlaylists;    // NSMutableArray of MPMediaPlaylist*
+    
+    NSTimer* taskTimer;
 }
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;

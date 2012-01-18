@@ -728,16 +728,11 @@ static Song* _gNowPlayingSong = nil;
     if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
     {
         //NSLog(@"parse message date %@  compare to last %@", ev.start_date, _lastWallEventDate);
+        
+        NSLog(@"message %@ (%@ - %@)", ev.text, ev.start_date, _lastWallEventDate);
       if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
       {
-//        NSString* picturePath = ev.user.picture;
-//        NSString* url = nil;
-//        if (picturePath)
-//        {
-//          url = @"https://dev.yasound.com/";
-//          url = [url stringByAppendingString:picturePath];
-//        }
-//        [self addMessage:ev.text user:ev.user.username avatar:url date:ev.start_date silent:YES];
+          NSLog(@"show message %@", ev.text);
         NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
         [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
       }
