@@ -746,10 +746,11 @@ static Song* _gNowPlayingSong = nil;
       if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
       {
           NSLog(@"show message %@", ev.text);
-        NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
-        [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
-          
+          NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
+
           [_wallEvents addObject:ev];
+
+          [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
       }
 
     }
