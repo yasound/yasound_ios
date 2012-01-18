@@ -57,6 +57,12 @@
 		BC178D9814C5A2A000B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178D9714C5A2A000B18420 /* default.bundle */; };
 		BC178D9914C5A2A000B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178D9714C5A2A000B18420 /* default.bundle */; };
 		BC178D9A14C5A2A000B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178D9714C5A2A000B18420 /* default.bundle */; };
+		BC178DAA14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
+		BC178DAB14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
+		BC178DAC14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
+		BC178DAD14C5E99800B18420 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
+		BC178DAE14C5E99800B18420 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
+		BC178DAF14C5E99800B18420 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
@@ -855,6 +861,9 @@
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackImageDummy.png; sourceTree = "<group>"; };
 		BC178D9714C5A2A000B18420 /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = default.bundle; path = resources/themes/default.bundle; sourceTree = SOURCE_ROOT; };
+		BC178DA714C5E99800B18420 /* CreateMyRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateMyRadio.h; path = Settings/CreateMyRadio.h; sourceTree = "<group>"; };
+		BC178DA814C5E99800B18420 /* CreateMyRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateMyRadio.m; path = Settings/CreateMyRadio.m; sourceTree = "<group>"; };
+		BC178DA914C5E99800B18420 /* CreateMyRadio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateMyRadio.xib; path = Settings/CreateMyRadio.xib; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
 		BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
 		BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingView.h; sourceTree = "<group>"; };
@@ -1609,6 +1618,9 @@
 				BCCA790414AE14080011AADD /* LegalViewController.h */,
 				BCCA790514AE14090011AADD /* LegalViewController.m */,
 				BCCA790614AE14090011AADD /* LegalViewController.xib */,
+				BC178DA714C5E99800B18420 /* CreateMyRadio.h */,
+				BC178DA814C5E99800B18420 /* CreateMyRadio.m */,
+				BC178DA914C5E99800B18420 /* CreateMyRadio.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -2428,6 +2440,7 @@
 				BC03052514C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
 				BC178D9014C57D3B00B18420 /* TrackImageDummy.png in Resources */,
 				BC178D9914C5A2A000B18420 /* default.bundle in Resources */,
+				BC178DAE14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2573,6 +2586,7 @@
 				BC03052414C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
 				BC178D8F14C57D3B00B18420 /* TrackImageDummy.png in Resources */,
 				BC178D9814C5A2A000B18420 /* default.bundle in Resources */,
+				BC178DAD14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2718,6 +2732,7 @@
 				BC03052614C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
 				BC178D9114C57D3B00B18420 /* TrackImageDummy.png in Resources */,
 				BC178D9A14C5A2A000B18420 /* default.bundle in Resources */,
+				BC178DAF14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2840,6 +2855,7 @@
 				BC03050514C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03053014C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */,
+				BC178DAB14C5E99800B18420 /* CreateMyRadio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2959,6 +2975,7 @@
 				BC03050414C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03052F14C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */,
+				BC178DAA14C5E99800B18420 /* CreateMyRadio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3079,6 +3096,7 @@
 				BC03050614C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03053114C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */,
+				BC178DAC14C5E99800B18420 /* CreateMyRadio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

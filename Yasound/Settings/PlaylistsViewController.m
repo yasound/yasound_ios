@@ -12,7 +12,7 @@
 #import "RadioViewController.h"
 #import "PlaylistMoulinor.h"
 #import "YasoundDataProvider.h"
-
+#import "RootViewController.h"
 
 
 @implementation PlaylistsViewController
@@ -343,7 +343,7 @@
     if (_wizard)
     {
         // call root to launch the Radio
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
     }
     else
         [self.navigationController popViewControllerAnimated:YES];

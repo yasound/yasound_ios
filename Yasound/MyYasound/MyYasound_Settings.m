@@ -19,7 +19,7 @@
 #import "S7Macros.h"
 #import <QuartzCore/QuartzCore.h>
 #import "YasoundSessionManager.h"
-
+#import "RootViewController.h"
 
 
 @implementation MyYasoundViewController (Settings)
@@ -346,7 +346,7 @@
 
 - (void)logoutDidReturned
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_LoginScreen" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
 }
 
 

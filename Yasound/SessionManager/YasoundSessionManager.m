@@ -254,9 +254,6 @@ static YasoundSessionManager* _main = nil;
     // callback
     assert(_target);
     [_target performSelector:_action withObject:user];
-
-//    // call root to launch the Radio
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIF_PushRadio" object:nil];
 }
 
 

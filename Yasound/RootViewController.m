@@ -15,6 +15,8 @@
 #import "YasoundDataProvider.h"
 #import "YasoundReachability.h"
 #import "AudioStreamManager.h"
+#import "SettingsViewController.h"
+
 
 
 //#define FORCE_ROOTVIEW_RADIOS
@@ -45,8 +47,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPushRadio:) name:@"NOTIF_PushRadio" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLoginScreen:) name:@"NOTIF_LoginScreen" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushRadio:) name:NOTIF_PUSH_RADIO object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushRadioSelection:) name:NOTIF_PUSH_RADIO_SELECTION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifLoginScreen:) name:NOTIF_LOGIN_SCREEN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifWizard:) name:NOTIF_WIZARD object:nil];
     
   //Make sure the system follows our playback status
   // <=> Background audio playing
@@ -70,6 +74,7 @@
         [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged)];
     }
 
+  [self becomeFirstResponder];
 }
 
 
@@ -141,15 +146,27 @@
 
 
 
-- (void)onPushRadio:(NSNotification *)notification
+- (void)onNotifPushRadio:(NSNotification *)notification
 {
     // go back to root, removing all viewcontroller
     [self.navigationController popToRootViewControllerAnimated:NO];
     [self launchRadio];
 }
 
+- (void)onNotifPushRadioSelection:(NSNotification*)notification
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:2] forKey:@"forceTabIndex"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 
-- (void)onLoginScreen:(NSNotification *)notification
+    // add tabs
+    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
+    [self.navigationController pushViewController:tabBarController animated:NO];    
+    [tabBarController release];
+}
+
+
+
+- (void)onNotifLoginScreen:(NSNotification *)notification
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
 
@@ -157,6 +174,17 @@
     [self.navigationController pushViewController:view animated:NO];
     [view release];
 }
+
+- (void)onNotifWizard:(NSNotification *)notification
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
+    [self.navigationController pushViewController:view animated:NO];
+    [view release];
+}
+
+
 
 
 
