@@ -60,7 +60,6 @@ static Song* _gNowPlayingSong = nil;
     
     
     _lastWallEventDate = nil;
-    _lastConnectionUpdateDate = [NSDate date];
     _lastSongUpdateDate = nil;
     
 //    self.messages = [[NSMutableArray alloc] init];
@@ -717,68 +716,81 @@ static Song* _gNowPlayingSong = nil;
     }
 }
 
+- (int)eventMessageCount
+{
+    int count = 0;
+    for (WallEvent* w in _wallEvents)
+    {
+        if ([w.type isEqualToString:EV_TYPE_MESSAGE])
+            count++;
+    }
+    return count;
+}
+
+- (int)eventSongCount
+{
+    int count = 0;
+    for (WallEvent* w in _wallEvents)
+    {
+        if ([w.type isEqualToString:EV_TYPE_SONG])
+            count++;
+    }
+    return count;
+}
+
+- (void)askForNextWallEvents
+{
+    if (_wallEvents.count == 0)
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
+    else
+    {
+        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
+    }
+}
+
+- (void)didAddWallEvents:(int)count atIndex:(int)index
+{
+    NSLog(@"%d events added at index %d", count, index);
+    
+    // todo...
+    // add message views
+}
+
 - (void)receiveWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
-  Meta* meta = [info valueForKey:@"meta"];
-  NSError* err = [info valueForKey:@"error"];
-  
-  if (err)
-  {
-      NSLog(@"receiveWallEvents error!");
-      return;
-  }
-  
-  if (!meta)
-  {
-      NSLog(@"receiveWallEvents : no meta data!");
-      return;
-  }
+    Meta* meta = [info valueForKey:@"meta"];
+    NSError* err = [info valueForKey:@"error"];
     
-  WallEvent* ev = nil;
-  for (int i = [events count] - 1; i >= 0; i--)
-  {
-    ev  = [events objectAtIndex:i];
-      
-     // NSLog(@"parse Message type %@", [RadioViewController evTypeToString:ev.type]);
-    
-    if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+    if (err)
     {
-        //NSLog(@"parse message date %@  compare to last %@", ev.start_date, _lastWallEventDate);
-        
-//        NSLog(@"message %@ (%@ - %@)", ev.text, ev.start_date, _lastWallEventDate);
-      if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
-      {
-          NSLog(@"show message %@", ev.text);
-          NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
-
-          [_wallEvents insertObject:ev atIndex:0];
-
-          [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
-      }
-
+        NSLog(@"receiveWallEvents error!");
+        return;
     }
-    else if ([ev.type isEqualToString:EV_TYPE_SONG])
+    
+    if (!meta)
     {
-        if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
-        {       
-            [_wallEvents insertObject:ev atIndex:0];
-
-            [self addSong];
+        NSLog(@"receiveWallEvents : no meta data!");
+        return;
+    }
+    
+    WallEvent* ev = nil;
+    for (int i = [events count] - 1; i >= 0; i--)
+    {
+        ev  = [events objectAtIndex:i];
+        if ([ev.type isEqualToString:EV_TYPE_LOGIN])
+        {
+            if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
+                [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", ev.user.name]];
+            
+        }
+        else if ([ev.type isEqualToString:EV_TYPE_LOGOUT])
+        {
+            if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
+                [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", ev.user.name]];
         }
     }
-    else if ([ev.type isEqualToString:EV_TYPE_LOGIN])
-    {
-      if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
-        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", ev.user.name]];
-        
-    }
-    else if ([ev.type isEqualToString:EV_TYPE_LOGOUT])
-    {
-      if ([ev.start_date compare:_lastWallEventDate] == NSOrderedDescending)
-        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", ev.user.name]];
-    }
-  }
-  
+    
     if (ev != nil)
     {
         NSLog(@"ev.start_date %@ (%@ - %@)", ev.start_date, ev.type, ev.text);
@@ -787,12 +799,47 @@ static Song* _gNowPlayingSong = nil;
     else
         _lastWallEventDate = nil;
     
-  _lastConnectionUpdateDate = [NSDate date];
     
+    
+    int addedAtIndex = -1;
+    int addedCount = 0;
+    for (ev in events)
+    {
+        if (![ev.type isEqualToString:EV_TYPE_MESSAGE] && ![ev.type isEqualToString:EV_TYPE_SONG])
+            continue;
+
+        if (_wallEvents.count != 0 && [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:0]).start_date] == NSOrderedDescending)
+        {
+            [_wallEvents insertObject:ev atIndex:0];
+            
+            if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+                [self addMessage];
+            else if ([ev.type isEqualToString:EV_TYPE_SONG])
+                [self addSong];
+        }
+        else if (_wallEvents.count == 0 || [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count-1]).start_date] == NSOrderedAscending)
+        {
+            [_wallEvents addObject:ev];
+            if (addedAtIndex == -1)
+                addedAtIndex = _wallEvents.count - 1;
+            addedCount++;
+        }
+    }
+    
+    // MatDebug
     [self logWallEvents];
-  
-//  [_tableView reloadData];
+    
+    if (addedCount)
+        [self didAddWallEvents:addedCount atIndex:addedAtIndex];
+    
+    int minMessageCount = 8;
+    if ([self eventMessageCount] < minMessageCount)
+        [self askForNextWallEvents];
 }
+
+
+
+
 
 //LBDEBUG
 //- (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
