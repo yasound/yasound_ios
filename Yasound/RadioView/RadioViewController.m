@@ -832,38 +832,81 @@ static Song* _gNowPlayingSong = nil;
         }
         else if (_wallEvents.count == 0 || [ev.start_date compare:((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count-1]).start_date] == NSOrderedAscending)
         {
-            // VOIR
-//            if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
-//            {
-            /////////////    
             
             if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
             {
-                [_wallEvents addObject:ev];
-                
                 if (addedAtIndex == -1)
-                    addedAtIndex = _wallEvents.count - 1;
+                    addedAtIndex = _wallEvents.count;
+                else
+                    addedAtIndex++;
                 addedCount++;
                 
+                [_wallEvents addObject:ev];
+                [self insertMessageAtIndex:addedAtIndex silent:YES];
+                
                 _containerEventSong = nil;
-
             }
             else if ([ev.type isEqualToString:EV_TYPE_SONG])
             {
+                // VOIR
+                //                [_wallEvents insertObject:ev atIndex:0];
+                //   [self addSong];
+                
                 if (_containerEventSong != nil)
                 {
                     [_containerEventSong addChild:ev];
                 }
                 else
                 {
-                    [_wallEvents addObject:ev];
                     if (addedAtIndex == -1)
-                        addedAtIndex = _wallEvents.count - 1;
+                        addedAtIndex = _wallEvents.count;
+                    else
+                        addedAtIndex++;
                     addedCount++;
+                    
+                    [_wallEvents addObject:ev];
+                    [self insertSongAtIndex:addedAtIndex silent:YES];
+
 
                     _containerEventSong = ev;
                 }
             }
+            
+            
+            
+            // VOIR
+//            if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+//            {
+            /////////////    
+
+            // VOIR2
+//            if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+//            {
+//                [_wallEvents addObject:ev];
+//                
+//                if (addedAtIndex == -1)
+//                    addedAtIndex = _wallEvents.count - 1;
+//                addedCount++;
+//                
+//                _containerEventSong = nil;
+//
+//            }
+//            else if ([ev.type isEqualToString:EV_TYPE_SONG])
+//            {
+//                if (_containerEventSong != nil)
+//                {
+//                    [_containerEventSong addChild:ev];
+//                }
+//                else
+//                {
+//                    [_wallEvents addObject:ev];
+//                    if (addedAtIndex == -1)
+//                        addedAtIndex = _wallEvents.count - 1;
+//                    addedCount++;
+//
+//                    _containerEventSong = ev;
+//                }
+//            }
             
             
                 
@@ -875,9 +918,10 @@ static Song* _gNowPlayingSong = nil;
     
     // MatDebug
     [self logWallEvents];
-    
-    if (addedCount)
-        [self didAddWallEvents:addedCount atIndex:addedAtIndex];
+
+    //VOIR2
+//    if (addedCount)
+//        [self didAddWallEvents:addedCount atIndex:addedAtIndex];
     
 //    int minMessageCount = 8;
 //    if ([self eventMessageCount] < minMessageCount)
@@ -1070,7 +1114,7 @@ static Song* _gNowPlayingSong = nil;
     
     UITableViewRowAnimation anim = (silent) ? UITableViewRowAnimationNone : UITableViewRowAnimationTop;
 
-    if (!silent)
+//    if (!silent)
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
     //    }
     
@@ -1105,7 +1149,7 @@ static Song* _gNowPlayingSong = nil;
     
     UITableViewRowAnimation anim = (silent) ? UITableViewRowAnimationNone : UITableViewRowAnimationTop;
 
-    if (!silent)
+//    if (!silent)
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
     
     _previouslyInsertedEventWasSong = YES;
@@ -1139,7 +1183,7 @@ static Song* _gNowPlayingSong = nil;
     return [_wallEvents count];
 }
 
-#define THE_REST_OF_THE_CELL_HEIGHT 44
+#define THE_REST_OF_THE_CELL_HEIGHT 50
 
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -1257,14 +1301,15 @@ static Song* _gNowPlayingSong = nil;
         NSValue* key = [NSValue valueWithNonretainedObject:ev];
         CGFloat height = [[_mapHeights objectForKey:key] floatValue];
 
-        
-        RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil)
-        {
-            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
-        }
-        else
-            [cell update:ev height:height indexPath:indexPath];
+
+        // VOIR4
+//        RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//        if (cell == nil)
+//        {
+            RadioViewCell* cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
+//        }
+//        else
+//            [cell update:ev height:height indexPath:indexPath];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -1276,14 +1321,15 @@ static Song* _gNowPlayingSong = nil;
     else if ([ev.type isEqualToString:EV_TYPE_SONG])
     {
         CGFloat height = 0; // unused
-        
-        SongViewCell* cell = (SongViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil)
-        {
-            cell = [[[SongViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
-        }
-        else
-            [cell update:ev height:height indexPath:indexPath];
+
+        //VOIR4
+//        SongViewCell* cell = (SongViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//        if (cell == nil)
+//        {
+           SongViewCell* cell = [[[SongViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
+//        }
+//        else
+//            [cell update:ev height:height indexPath:indexPath];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
