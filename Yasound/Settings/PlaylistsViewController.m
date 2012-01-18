@@ -202,7 +202,7 @@
     NSDictionary* dico = [_playlistsDesc objectAtIndex:indexPath.row];
     cell.textLabel.text = [dico objectForKey:@"name"];
     
-    if ([_selectedPlaylists containsObject:[_playlists objectAtIndex:indexPath.row]])
+    if ([_selectedPlaylists containsObject:[_playlists objectAtIndex:indexPath.row]] || _wizard)
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     else
         cell.accessoryType = UITableViewCellAccessoryNone;
