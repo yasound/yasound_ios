@@ -30,7 +30,7 @@
     
   self.dataSource = self;
   self.delegate = self;
-  self.scrollEnabled = NO;
+  self.scrollEnabled = YES;
   self.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self updateView];

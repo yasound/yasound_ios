@@ -14,6 +14,8 @@
     IBOutlet UILabel* _toolbarTitle;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
     
+    IBOutlet UITableView* _tableView;
+    
 }
 
 
