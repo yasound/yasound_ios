@@ -748,7 +748,7 @@ static Song* _gNowPlayingSong = nil;
           NSLog(@"show message %@", ev.text);
           NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
 
-          [_wallEvents addObject:ev];
+          [_wallEvents insertObject:ev atIndex:0];
 
           [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
       }
@@ -758,7 +758,9 @@ static Song* _gNowPlayingSong = nil;
     {
         if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
         {       
-            [_wallEvents addObject:ev];
+            [_wallEvents insertObject:ev atIndex:0];
+
+            [self addSong:(_wallEvents.count-1)];
         }
     }
     else if ([ev.type isEqualToString:EV_TYPE_LOGIN])
@@ -973,6 +975,11 @@ static Song* _gNowPlayingSong = nil;
     }
 }
      
+
+- (void)addSong:(NSInteger)index
+{
+    [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+}
 
 
 
