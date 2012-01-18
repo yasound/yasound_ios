@@ -11,6 +11,7 @@
 #import "BundleFileManager.h"
 #import "RadioViewController.h"
 #import "ActivityAlertView.h"
+#import "Theme.h"
 
 #import "PlaylistsViewController.h"
 #import "SettingsViewController.h"
@@ -115,6 +116,10 @@
     
     _toolbarTitle.text = NSLocalizedString(@"MyYasound_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+
+    //ICI
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    [_toolbar insertSubview:[[[UIImageView alloc] initWithImage:[sheet image]] autorelease] atIndex:1];
     
     
 //    _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];

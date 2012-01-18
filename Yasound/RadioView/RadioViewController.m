@@ -728,14 +728,14 @@ static Song* _gNowPlayingSong = nil;
     if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
     {
         //NSLog(@"parse message date %@  compare to last %@", ev.start_date, _lastWallEventDate);
+        //NSLog(@"message %@ (%@ - %@)", ev.text, ev.start_date, _lastWallEventDate);
         
-        NSLog(@"message %@ (%@ - %@)", ev.text, ev.start_date, _lastWallEventDate);
-      if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
-      {
-          NSLog(@"show message %@", ev.text);
-        NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
-        [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
-      }
+        if ((!_lastWallEventDate || [ev.start_date compare:_lastWallEventDate] == NSOrderedDescending))
+        {
+            //NSLog(@"show message %@", ev.text);
+            NSURL* url = [[YasoundDataProvider main] urlForPicture:ev.user.picture];
+            [self addMessage:ev.text user:ev.user.name avatar:url date:ev.start_date silent:NO];
+        }
     }
     else if ([ev.type isEqualToString:EV_TYPE_LOGIN])
     {
