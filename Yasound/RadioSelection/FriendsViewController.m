@@ -133,17 +133,15 @@
     return 2;
 }
 
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section > 1)
-        return nil;
+    if (section == 0)
+        return @"Online";
+    else if (section == 1)
+        return @"Offline";
     
-    UILabel* view = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 55)];
-    view.text = section == 0 ? @"online" : @"offline";
-    return view;
+    return @"";
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
@@ -167,6 +165,7 @@
 {
     return 55;
 }
+
 
 
 
