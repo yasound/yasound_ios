@@ -54,9 +54,15 @@
 		BC178D8F14C57D3B00B18420 /* TrackImageDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */; };
 		BC178D9014C57D3B00B18420 /* TrackImageDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */; };
 		BC178D9114C57D3B00B18420 /* TrackImageDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */; };
-		BC178D9814C5A2A000B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178D9714C5A2A000B18420 /* default.bundle */; };
-		BC178D9914C5A2A000B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178D9714C5A2A000B18420 /* default.bundle */; };
-		BC178D9A14C5A2A000B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178D9714C5A2A000B18420 /* default.bundle */; };
+		BC178DAA14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
+		BC178DAB14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
+		BC178DAC14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
+		BC178DAD14C5E99800B18420 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
+		BC178DAE14C5E99800B18420 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
+		BC178DAF14C5E99800B18420 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
+		BC178DB214C63E4A00B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178DB114C63E4A00B18420 /* default.bundle */; };
+		BC178DB314C63E4A00B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178DB114C63E4A00B18420 /* default.bundle */; };
+		BC178DB414C63E4A00B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178DB114C63E4A00B18420 /* default.bundle */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
@@ -236,6 +242,18 @@
 		BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BCA6554914BCA8590043B2DA /* Auth.h in Sources */ = {isa = PBXBuildFile; fileRef = BCA6554714BCA8590043B2DA /* Auth.h */; };
 		BCA6554A14BCA8590043B2DA /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6554814BCA8590043B2DA /* Auth.m */; };
+		BCA83E6614C6D3D1000A8295 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
+		BCA83E6714C6D3D1000A8295 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
+		BCA83E6814C6D3D1000A8295 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
+		BCA83E6914C6D3D1000A8295 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
+		BCA83E6A14C6D3D1000A8295 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
+		BCA83E6B14C6D3D1000A8295 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
+		BCA83E6F14C6D3EB000A8295 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
+		BCA83E7014C6D3EB000A8295 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
+		BCA83E7114C6D3EB000A8295 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
+		BCA83E7214C6D3EB000A8295 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
+		BCA83E7314C6D3EB000A8295 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
+		BCA83E7414C6D3EB000A8295 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
 		BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
@@ -854,7 +872,10 @@
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackImageDummy.png; sourceTree = "<group>"; };
-		BC178D9714C5A2A000B18420 /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = default.bundle; path = resources/themes/default.bundle; sourceTree = SOURCE_ROOT; };
+		BC178DA714C5E99800B18420 /* CreateMyRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateMyRadio.h; path = Settings/CreateMyRadio.h; sourceTree = "<group>"; };
+		BC178DA814C5E99800B18420 /* CreateMyRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateMyRadio.m; path = Settings/CreateMyRadio.m; sourceTree = "<group>"; };
+		BC178DA914C5E99800B18420 /* CreateMyRadio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateMyRadio.xib; path = Settings/CreateMyRadio.xib; sourceTree = "<group>"; };
+		BC178DB114C63E4A00B18420 /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = default.bundle; path = resources/themes/default.bundle; sourceTree = SOURCE_ROOT; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
 		BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
 		BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingView.h; sourceTree = "<group>"; };
@@ -950,6 +971,12 @@
 		BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistMoulinor.m; sourceTree = "<group>"; };
 		BCA6554714BCA8590043B2DA /* Auth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
 		BCA6554814BCA8590043B2DA /* Auth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
+		BCA83E6314C6D3D1000A8295 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendsViewController.h; path = RadioSelection/FriendsViewController.h; sourceTree = "<group>"; };
+		BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsViewController.m; path = RadioSelection/FriendsViewController.m; sourceTree = "<group>"; };
+		BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendsViewController.xib; path = RadioSelection/FriendsViewController.xib; sourceTree = "<group>"; };
+		BCA83E6C14C6D3EB000A8295 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoritesViewController.h; path = RadioSelection/FavoritesViewController.h; sourceTree = "<group>"; };
+		BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoritesViewController.m; path = RadioSelection/FavoritesViewController.m; sourceTree = "<group>"; };
+		BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavoritesViewController.xib; path = RadioSelection/FavoritesViewController.xib; sourceTree = "<group>"; };
 		BCB178B214BEE90100A3EDE3 /* TracksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksView.h; sourceTree = "<group>"; };
 		BCB178B314BEE90100A3EDE3 /* TracksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksView.m; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
@@ -1400,6 +1427,12 @@
 				BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */,
 				BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */,
 				BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */,
+				BCA83E6314C6D3D1000A8295 /* FriendsViewController.h */,
+				BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */,
+				BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */,
+				BCA83E6C14C6D3EB000A8295 /* FavoritesViewController.h */,
+				BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */,
+				BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */,
 			);
 			name = "Radio Selection";
 			sourceTree = "<group>";
@@ -1609,6 +1642,9 @@
 				BCCA790414AE14080011AADD /* LegalViewController.h */,
 				BCCA790514AE14090011AADD /* LegalViewController.m */,
 				BCCA790614AE14090011AADD /* LegalViewController.xib */,
+				BC178DA714C5E99800B18420 /* CreateMyRadio.h */,
+				BC178DA814C5E99800B18420 /* CreateMyRadio.m */,
+				BC178DA914C5E99800B18420 /* CreateMyRadio.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -2023,7 +2059,7 @@
 		BCE4631B148FD89100422448 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
-				BC178D9714C5A2A000B18420 /* default.bundle */,
+				BC178DB114C63E4A00B18420 /* default.bundle */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -2427,7 +2463,10 @@
 				BC03052214C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052514C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
 				BC178D9014C57D3B00B18420 /* TrackImageDummy.png in Resources */,
-				BC178D9914C5A2A000B18420 /* default.bundle in Resources */,
+				BC178DAE14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
+				BC178DB314C63E4A00B18420 /* default.bundle in Resources */,
+				BCA83E6A14C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
+				BCA83E7314C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2572,7 +2611,10 @@
 				BC03052114C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052414C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
 				BC178D8F14C57D3B00B18420 /* TrackImageDummy.png in Resources */,
-				BC178D9814C5A2A000B18420 /* default.bundle in Resources */,
+				BC178DAD14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
+				BC178DB214C63E4A00B18420 /* default.bundle in Resources */,
+				BCA83E6914C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
+				BCA83E7214C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2717,7 +2759,10 @@
 				BC03052314C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052614C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
 				BC178D9114C57D3B00B18420 /* TrackImageDummy.png in Resources */,
-				BC178D9A14C5A2A000B18420 /* default.bundle in Resources */,
+				BC178DAF14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
+				BC178DB414C63E4A00B18420 /* default.bundle in Resources */,
+				BCA83E6B14C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
+				BCA83E7414C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2840,6 +2885,9 @@
 				BC03050514C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03053014C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */,
+				BC178DAB14C5E99800B18420 /* CreateMyRadio.m in Sources */,
+				BCA83E6714C6D3D1000A8295 /* FriendsViewController.m in Sources */,
+				BCA83E7014C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2959,6 +3007,9 @@
 				BC03050414C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03052F14C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */,
+				BC178DAA14C5E99800B18420 /* CreateMyRadio.m in Sources */,
+				BCA83E6614C6D3D1000A8295 /* FriendsViewController.m in Sources */,
+				BCA83E6F14C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3079,6 +3130,9 @@
 				BC03050614C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03053114C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */,
+				BC178DAC14C5E99800B18420 /* CreateMyRadio.m in Sources */,
+				BCA83E6814C6D3D1000A8295 /* FriendsViewController.m in Sources */,
+				BCA83E7114C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

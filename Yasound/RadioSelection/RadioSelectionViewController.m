@@ -18,12 +18,12 @@
 
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabIcon:(NSString*)tabIcon
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil  title:(NSString*)title tabIcon:(NSString*)tabIcon
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-      _type = type;
+//      _type = type;
       
       UIImage* tabImage = [UIImage imageNamed:tabIcon];
       UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
@@ -161,12 +161,13 @@
 
 - (void)updateRadios:(NSString*)genre
 {
-    if (_type == RSTSelection)
-        [[YasoundDataProvider main] selectedRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
-    else if (_type == RSTTop)
-        [[YasoundDataProvider main] topRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
-    else if (_type == RSTNew)
-        [[YasoundDataProvider main] newRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
+    //LBDEBUG ICI
+//    if (_type == RSTSelection)
+//        [[YasoundDataProvider main] selectedRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
+//    else if (_type == RSTTop)
+//        [[YasoundDataProvider main] topRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
+//    else if (_type == RSTNew)
+//        [[YasoundDataProvider main] newRadiosWithGenre:genre withTarget:self action:@selector(receiveRadios:withInfo:)];
 }
 
 

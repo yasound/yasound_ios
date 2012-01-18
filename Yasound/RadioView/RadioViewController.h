@@ -7,7 +7,6 @@
 
 #import <UIKit/UIKit.h>
 #import "WallMessage.h"
-#import <AVFoundation/AVFoundation.h>
 #import "NowPlayingView.h"
 #import "TrackInteractionView.h"
 #import "TracksView.h"
@@ -34,6 +33,8 @@
     BOOL _statusBarButtonToggled;
     UIScrollView* _statusUsers;
     
+    UIButton* _favoriteButton;
+    
     UIView* _viewContainer;
     UIPageControl* _pageControl;
     
@@ -59,6 +60,7 @@
 @property (nonatomic) BOOL ownRadio;
 @property (nonatomic, retain) NSMutableArray* messages;
 @property (atomic, retain) NSMutableArray* statusMessages;
+@property (nonatomic, retain) UIButton* favoriteButton;
 
 - (id)initWithRadio:(Radio*)radio;
 - (void)initRadioView;

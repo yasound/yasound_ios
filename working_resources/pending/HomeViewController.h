@@ -14,8 +14,11 @@
 {
     IBOutlet UILabel* _titleLabel;
 
+    IBOutlet UITableView* _tableView;
+    
     //...............................................
     IBOutlet UILabel* _facebookLoginLabel;
+    IBOutlet UILabel* _twitterLoginLabel;
 
 }
 
