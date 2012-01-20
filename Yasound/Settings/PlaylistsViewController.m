@@ -112,9 +112,20 @@
     // next button in toolbar
     if (_wizard)
     {
+        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_cancel", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
+
         _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
-        NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
+
+        UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+
+
+//        NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
+        NSMutableArray* items = [[NSMutableArray alloc] init];
+        
+        [items addObject:backBtn];
+        [items addObject:space];
         [items addObject:_nextBtn];
+        
         [_toolbar setItems:items animated:NO];
         
         if (([_playlists count] != 0) || forceEnableNextBtn)
@@ -267,6 +278,13 @@
 
 - (IBAction)onBack:(id)sender
 {
+    if (_wizard)
+    {
+        // call root to launch the Radio
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO_SELECTION object:nil];
+        return;
+    }
+    
     // save or cancel
     if (!_wizard && _changed)
     {

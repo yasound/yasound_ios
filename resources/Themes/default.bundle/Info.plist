@@ -613,39 +613,39 @@
 		<dict>
 			<key>font</key>
 			<dict>
-				<key>name</key>
-				<string>Arial</string>
 				<key>size</key>
-				<integer>12</integer>
+				<integer>13</integer>
 				<key>textColor</key>
-				<string>rgb(32,32,32)</string>
+				<string>white</string>
+				<key>weight</key>
+				<string>bold</string>
 			</dict>
 			<key>height</key>
 			<integer>16</integer>
 			<key>width</key>
 			<integer>100</integer>
 			<key>x</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>y</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<key>SongCellMessage</key>
 		<dict>
 			<key>font</key>
 			<dict>
-				<key>name</key>
-				<string>Arial</string>
 				<key>size</key>
 				<integer>12</integer>
 				<key>textColor</key>
-				<string>rgb(32,32,32)</string>
+				<string>rgb(72,72,72)</string>
+				<key>weight</key>
+				<string>bold</string>
 			</dict>
 			<key>height</key>
 			<integer>16</integer>
 			<key>width</key>
 			<integer>100</integer>
 			<key>x</key>
-			<integer>100</integer>
+			<integer>52</integer>
 			<key>y</key>
 			<integer>0</integer>
 		</dict>

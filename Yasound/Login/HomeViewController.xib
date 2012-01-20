@@ -101,7 +101,6 @@
 						<string key="NSFrame">{{58, 240}, {232, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -204,6 +203,14 @@
 					<int key="connectionID">118</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_facebookButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="281887735"/>
+					</object>
+					<int key="connectionID">119</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onFacebook:</string>
 						<reference key="source" ref="281887735"/>
@@ -290,7 +297,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">118</int>
+			<int key="maxID">119</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -298,10 +305,15 @@
 					<string key="className">HomeViewController</string>
 					<string key="superclassName">TrackedUIViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="_facebookButton">UIButton</string>
 						<string key="_facebookLoginLabel">UILabel</string>
 						<string key="_titleLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="_facebookButton">
+							<string key="name">_facebookButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="_facebookLoginLabel">
 							<string key="name">_facebookLoginLabel</string>
 							<string key="candidateClassName">UILabel</string>

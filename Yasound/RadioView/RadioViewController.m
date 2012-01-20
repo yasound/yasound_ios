@@ -426,31 +426,12 @@ static Song* _gNowPlayingSong = nil;
     
     
     // get the actual data from the server to update the GUI
-    //LBDEBUG§
+    //LBDEBUG 
 //    [self onUpdate:nil];
     
 
-    //LBDEBUG FAKE
-    
-//    WallEvent* ev2 = [self fakeEventMessage:@"user1" text:@"text1"];
-//    [_wallEvents insertObject:ev2 atIndex:0];
-//    [self addMessage];
-//    
-//    WallEvent* ev = [self fakeEventSong:@"proutsong"];
-//    [_wallEvents insertObject:ev atIndex:0];
-//    [self addSong];
-//
-//    WallEvent* ev4 = [self fakeEventSong:@"proutsong 2"];
-//    [_wallEvents insertObject:ev4 atIndex:0];
-//    [self addSong];
-//
-//    WallEvent* ev6 = [self fakeEventSong:@"proutsong 3"];
-//    [_wallEvents insertObject:ev6 atIndex:0];
-//    [self addSong];
-//
-//    WallEvent* ev3 = [self fakeEventMessage:@"user3" text:@"text3 "];
-//    [_wallEvents insertObject:ev3 atIndex:0];
-//    [self addMessage];
+
+
 
 }
 
@@ -486,6 +467,64 @@ static Song* _gNowPlayingSong = nil;
     // update favorite button
     [[ActivityModelessSpinner main] addRef];
     [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoriteUpdate:)];
+    
+    
+    //LBDEBUG FAKE
+    ///////////////////////////////////////////////////////////////////////////////////
+    NSMutableArray* events = [[NSMutableArray alloc] init];
+    
+    NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
+    Meta* meta = [[Meta alloc] init];
+    [info setObject:meta forKey:@"meta"];
+    
+    int time = 0;
+    WallEvent* ev2 = [self fakeEventMessage:@"user1" text:@"text1" timeInterval:time*60];
+    time++;
+    [events addObject:ev2];
+    
+    WallEvent* ev = [self fakeEventSong:@"proutsong" timeInterval:time*60];
+    time++;
+    [events addObject:ev];
+    
+    WallEvent* ev4 = [self fakeEventSong:@"proutsong 2" timeInterval:time*60];
+    time++;
+    [events addObject:ev4];
+    
+    WallEvent* ev6 = [self fakeEventSong:@"proutsong 3" timeInterval:time*60];
+    time++;
+    [events addObject:ev6];
+
+    int i = 0;
+    for (i = 0; i < 8; i++)
+    {
+        WallEvent* ev = [self fakeEventMessage:@"user3" text:[NSString stringWithFormat:@"textbot %d", time] timeInterval:time*60];
+        time++;
+    [events addObject:ev];
+    }
+
+    for (i = 0; i < 12; i++)
+    {
+        WallEvent* ev = [self fakeEventSong:[NSString stringWithFormat:@"proutsong bot %d", time] timeInterval:time*60];
+        time++;
+        [events addObject:ev];
+    }
+
+    
+    for (i = 0; i < 4; i++)
+    {
+        WallEvent* ev = [self fakeEventMessage:@"user3" text:[NSString stringWithFormat:@"textbot %d", time] timeInterval:time*60];
+        time++;
+        [events addObject:ev];
+    }
+
+    [self receiveWallEvents:events withInfo:info];
+
+//    {
+//        Meta* meta = [info valueForKey:@"meta"];
+//        NSError* err = [info valueForKey:@"error"];
+//        
+//        if (err)
+    ////////////////////////////////////////////////////////////////////////////////////
 }
  
 
@@ -598,20 +637,25 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onUpdate:(NSTimer*)timer
 {    
-    if (timer)
-        _firstRequest = NO;
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
-    [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
-    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
+    // LBDEBUG FAKE
+    
+//    if (timer)
+//        _firstRequest = NO;
+//    [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
+//    [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
+//    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
 
 
 
-- (WallEvent*)fakeEventSong:(NSString*)name
+- (WallEvent*)fakeEventSong:(NSString*)name timeInterval:(NSInteger)timeInterval
 {
     WallEvent* ev = [[WallEvent alloc] init];
     ev.type = [NSString stringWithString:EV_TYPE_SONG];
     ev.start_date = [NSDate date];
+    //NSLog(@"\ndate %@", ev.start_date);
+    ev.start_date = [ev.start_date addTimeInterval:timeInterval];
+    //NSLog(@"new date %@", ev.start_date);
     ev.song = [[Song alloc] init];
     ev.song.metadata = [[SongMetadata alloc] init];
     ev.song.metadata.name = [NSString stringWithString:name];
@@ -619,11 +663,12 @@ static Song* _gNowPlayingSong = nil;
     return ev;
 }
 
-- (WallEvent*)fakeEventMessage:(NSString*)user text:(NSString*)text
+- (WallEvent*)fakeEventMessage:(NSString*)user text:(NSString*)text  timeInterval:(NSInteger)timeInterval
 {
     WallEvent* ev = [[WallEvent alloc] init];
     ev.type = [NSString stringWithString:EV_TYPE_MESSAGE];
     ev.start_date = [NSDate date];
+    ev.start_date = [ev.start_date addTimeInterval:timeInterval];
     ev.text = [NSString stringWithString:text];
     ev.user =  [[User alloc] init];
     ev.user.name = [NSString stringWithString:user];
@@ -686,13 +731,14 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)askForNextWallEvents
 {
-    if (_wallEvents.count == 0)
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
-    else
-    {
-        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
-    }
+    //LBDEBUG FAKE
+//    if (_wallEvents.count == 0)
+//        [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
+//    else
+//    {
+//        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
+//        [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
+//    }
 }
 
 - (void)didAddWallEvents:(int)count atIndex:(int)index
