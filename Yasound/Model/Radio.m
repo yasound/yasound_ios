@@ -22,6 +22,7 @@
 @synthesize listeners;
 @synthesize picture;
 @synthesize tags;
+@synthesize valid;
 
 - (NSArray*)tagsArray
 {

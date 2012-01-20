@@ -96,7 +96,7 @@
     {
         if (f.current_radio)
             [online addObject:f];
-        else if (f.own_radio)
+        else if (f.own_radio && [f.own_radio.valid boolValue])
             [offline addObject:f];
     }
     
@@ -212,7 +212,7 @@
     Radio* r;
     if (u.current_radio)
         r = u.current_radio;
-    else if (u.own_radio)
+    else if (u.own_radio && [u.own_radio.valid boolValue])
         r = u.own_radio;
     else
         return;

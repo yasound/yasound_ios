@@ -23,6 +23,7 @@
 @property (retain, nonatomic) NSNumber* listeners;
 @property (retain, nonatomic) NSString* picture;
 @property (retain, nonatomic) NSString* tags;
+@property (retain, nonatomic) NSNumber* valid;
 
 - (NSArray*)tagsArray;
 - (void)setTagsWithArray:(NSArray*)tagArray;
