@@ -629,12 +629,14 @@ static YasoundDataProvider* _main = nil;
     if (!nextSong || !nextSong.id)
         return;
     
+    NSNumber* oldOrder = nextSong.order;
     Auth* auth = self.apiKeyAuth;
     int order = position + 1;
     nextSong.order = [NSNumber numberWithInt:order];
     NSMutableDictionary* userData = [[NSMutableDictionary alloc] init];
     [userData setValue:target forKey:@"clientTarget"];
     [userData setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
+    
     [_communicator updateObject:nextSong notifyTarget:self byCalling:@selector(didUpdateNextSong:withInfo:) withUserData:userData withAuth:auth];
 }
 
