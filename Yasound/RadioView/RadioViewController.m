@@ -428,7 +428,8 @@ static Song* _gNowPlayingSong = nil;
     
     // get the actual data from the server to update the GUI
     //LBDEBUG 
-//    [self onUpdate:nil];
+    //FAKE 
+    [self onUpdate:nil];
     
 
 
@@ -472,73 +473,73 @@ static Song* _gNowPlayingSong = nil;
     
     //LBDEBUG FAKE
     ///////////////////////////////////////////////////////////////////////////////////
-    NSMutableArray* events = [[NSMutableArray alloc] init];
-    
-    NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
-    Meta* meta = [[Meta alloc] init];
-    [info setObject:meta forKey:@"meta"];
-    
-    int time = 0;
-    WallEvent* ev2 = [self fakeEventMessage:@"user1" text:@"text1" timeInterval:time*60];
-    time++;
-    [events addObject:ev2];
-    
-    WallEvent* ev = [self fakeEventSong:@"proutsong" timeInterval:time*60];
-    time++;
-    [events addObject:ev];
-    
-    WallEvent* ev4 = [self fakeEventSong:@"proutsong 2" timeInterval:time*60];
-    time++;
-    [events addObject:ev4];
-    
-    WallEvent* ev6 = [self fakeEventSong:@"proutsong 3" timeInterval:time*60];
-    time++;
-    [events addObject:ev6];
-
-    NSString* BUFFER = NSLocalizedString(@"TEST", nil);
-    int i = 0;
-    for (i = 0; i < 8; i++)
-    {
+//    NSMutableArray* events = [[NSMutableArray alloc] init];
+//    
+//    NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
+//    Meta* meta = [[Meta alloc] init];
+//    [info setObject:meta forKey:@"meta"];
+//    
+//    int time = 0;
+//    WallEvent* ev2 = [self fakeEventMessage:@"user1" text:@"text1" timeInterval:time*60];
+//    time++;
+//    [events addObject:ev2];
+//    
+//    WallEvent* ev = [self fakeEventSong:@"proutsong" timeInterval:time*60];
+//    time++;
+//    [events addObject:ev];
+//    
+//    WallEvent* ev4 = [self fakeEventSong:@"proutsong 2" timeInterval:time*60];
+//    time++;
+//    [events addObject:ev4];
+//    
+//    WallEvent* ev6 = [self fakeEventSong:@"proutsong 3" timeInterval:time*60];
+//    time++;
+//    [events addObject:ev6];
+//
+//    NSString* BUFFER = NSLocalizedString(@"TEST", nil);
+//    int i = 0;
+//    for (i = 0; i < 8; i++)
+//    {
+////        NSInteger length = rand() % (BUFFER.length / 6);
+//        NSInteger length = 5;
+//        NSString* str = [NSString stringWithFormat:@"%@.END.", [BUFFER substringToIndex:length]];
+//        
+//        NSRange range = [str rangeOfString:@"\n"];
+//        if (range.location != NSNotFound)
+//        {
+//            NSLog(@"retour chariot trouvé");
+//        }
+//        
+//        WallEvent* ev = [self fakeEventMessage:@"user3" text:[NSString stringWithFormat:@"textbot %d %@", time, str] timeInterval:time*60];
+//        time++;
+//    [events addObject:ev];
+//    }
+//
+//    for (i = 0; i < 12; i++)
+//    {
+//        WallEvent* ev = [self fakeEventSong:[NSString stringWithFormat:@"proutsong bot %d", time] timeInterval:time*60];
+//        time++;
+//        [events addObject:ev];
+//    }
+//
+//    
+//    for (i = 0; i < 4; i++)
+//    {
 //        NSInteger length = rand() % (BUFFER.length / 6);
-        NSInteger length = 5;
-        NSString* str = [NSString stringWithFormat:@"%@.END.", [BUFFER substringToIndex:length]];
-        
-        NSRange range = [str rangeOfString:@"\n"];
-        if (range.location != NSNotFound)
-        {
-            NSLog(@"retour chariot trouvé");
-        }
-        
-        WallEvent* ev = [self fakeEventMessage:@"user3" text:[NSString stringWithFormat:@"textbot %d %@", time, str] timeInterval:time*60];
-        time++;
-    [events addObject:ev];
-    }
-
-    for (i = 0; i < 12; i++)
-    {
-        WallEvent* ev = [self fakeEventSong:[NSString stringWithFormat:@"proutsong bot %d", time] timeInterval:time*60];
-        time++;
-        [events addObject:ev];
-    }
-
-    
-    for (i = 0; i < 4; i++)
-    {
-        NSInteger length = rand() % (BUFFER.length / 6);
-        NSString* str = [NSString stringWithFormat:@"%@.END.", [BUFFER substringToIndex:length]];
-
-        NSRange range = [str rangeOfString:@"\n"];
-        if (range.location != NSNotFound)
-        {
-            NSLog(@"retour chariot trouvé");
-        }
-
-        WallEvent* ev = [self fakeEventMessage:@"user3" text:[NSString stringWithFormat:@"textbot %d %@", time, str] timeInterval:time*60];
-        time++;
-        [events addObject:ev];
-    }
-
-    [self receiveWallEvents:events withInfo:info];
+//        NSString* str = [NSString stringWithFormat:@"%@.END.", [BUFFER substringToIndex:length]];
+//
+//        NSRange range = [str rangeOfString:@"\n"];
+//        if (range.location != NSNotFound)
+//        {
+//            NSLog(@"retour chariot trouvé");
+//        }
+//
+//        WallEvent* ev = [self fakeEventMessage:@"user3" text:[NSString stringWithFormat:@"textbot %d %@", time, str] timeInterval:time*60];
+//        time++;
+//        [events addObject:ev];
+//    }
+//
+//    [self receiveWallEvents:events withInfo:info];
 
 //    {
 //        Meta* meta = [info valueForKey:@"meta"];
@@ -660,11 +661,11 @@ static Song* _gNowPlayingSong = nil;
 {    
     // LBDEBUG FAKE
     
-//    if (timer)
-//        _firstRequest = NO;
-//    [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
-//    [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
-//    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
+    if (timer)
+        _firstRequest = NO;
+    [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
+    [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
+    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
 
 
@@ -753,13 +754,13 @@ static Song* _gNowPlayingSong = nil;
 - (void)askForNextWallEvents
 {
     //LBDEBUG FAKE
-//    if (_wallEvents.count == 0)
-//        [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
-//    else
-//    {
-//        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
-//        [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
-//    }
+    if (_wallEvents.count == 0)
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
+    else
+    {
+        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
+    }
 }
 
 - (void)didAddWallEvents:(int)count atIndex:(int)index
@@ -1366,29 +1367,29 @@ static Song* _gNowPlayingSong = nil;
 }
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
-
-    if ([ev.type isEqualToString:EV_TYPE_SONG])
-    {
-        UIView* view = [[UIView alloc] initWithFrame:cell.frame];
-        view.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.25];
-        cell.backgroundView = view;
-        [view release];
-        return;
-    }
-    
-    if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
-    {
-        UIView* view = [[UIView alloc] initWithFrame:cell.frame];
-        view.backgroundColor = [UIColor colorWithRed:((float)rand() / (float)RAND_MAX) green:((float)rand() / (float)RAND_MAX) blue:((float)rand() / (float)RAND_MAX) alpha:0.25];
-        cell.backgroundView = view;
-        [view release];
-        return;
-    }
-
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//    WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
+//
+//    if ([ev.type isEqualToString:EV_TYPE_SONG])
+//    {
+//        UIView* view = [[UIView alloc] initWithFrame:cell.frame];
+//        view.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.25];
+//        cell.backgroundView = view;
+//        [view release];
+//        return;
+//    }
+//    
+//    if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+//    {
+//        UIView* view = [[UIView alloc] initWithFrame:cell.frame];
+//        view.backgroundColor = [UIColor colorWithRed:((float)rand() / (float)RAND_MAX) green:((float)rand() / (float)RAND_MAX) blue:((float)rand() / (float)RAND_MAX) alpha:0.25];
+//        cell.backgroundView = view;
+//        [view release];
+//        return;
+//    }
+//
+//}
 
 
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
