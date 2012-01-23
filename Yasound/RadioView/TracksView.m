@@ -130,7 +130,7 @@
 
 -(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    NextSong* song = [_data objectAtIndex:destinationIndexPath.row];
+    NextSong* song = [_data objectAtIndex:sourceIndexPath.row];
     [_data exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
     [[YasoundDataProvider main] moveNextSong:song toPosition:destinationIndexPath.row target:self action:@selector(onUpdateTrack:info:)];  
 }
