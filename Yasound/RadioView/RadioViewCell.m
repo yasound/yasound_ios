@@ -48,10 +48,12 @@
         CGFloat messageWidth = sheet.frame.size.width;
 
         
-        // compute the size of the text => will allow to update the cell's height dynamically
-        CGSize suggestedSize = [ev.text sizeWithFont:messageFont constrainedToSize:CGSizeMake(messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-        CGFloat height = suggestedSize.height;
+//        // compute the size of the text => will allow to update the cell's height dynamically
+//        CGSize suggestedSize = [ev.text sizeWithFont:messageFont constrainedToSize:CGSizeMake(messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+//        CGFloat height = suggestedSize.height;
 
+        assert([ev isTextHeightComputed] == YES);
+        CGFloat height = [ev getTextHeight];
         
         
         
@@ -122,7 +124,7 @@
         
         sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-        imageView.frame = CGRectMake(0, bkg.frame.origin.y + bkg.frame.size.height + sheet.frame.origin.y + MESSAGE_SPACING, sheet.frame.size.width, sheet.frame.size.height);
+        imageView.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, sheet.frame.size.width, sheet.frame.size.height);
         [view addSubview:imageView];
         
 

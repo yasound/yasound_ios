@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "Model.h"
 #import "Song.h"
 #import "Radio.h"
@@ -14,6 +15,8 @@
 @interface WallEvent : Model
 {
     NSMutableArray* _children;
+    CGFloat _textHeight;
+    BOOL _textHeightComputed;
 }
 
 @property (retain, nonatomic) NSString* type;
@@ -29,5 +32,9 @@
 
 - (void)addChild:(WallEvent*)child;
 - (NSArray*)getChildren;
+
+- (BOOL)isTextHeightComputed;
+- (CGFloat)getTextHeight;
+- (CGFloat)computeTextHeightUsingFont:(UIFont*)font withConstraint:(CGFloat)width;
 
 @end

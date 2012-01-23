@@ -19,6 +19,17 @@
 @synthesize radio;
 @synthesize user;
 
+- (id)init
+{
+    if (self = [super init])
+    {
+        _textHeight = 0;
+        _textHeightComputed = NO;
+    }
+    return self;
+}
+
+
 - (NSString*)toString
 {
 //  NSString* desc = [NSString stringWithFormat:@"id: '%@' type: '%@', text: '%@'", self.id, self.type, self.text];
@@ -65,6 +76,39 @@
 - (NSArray*)getChildren
 {
     return _children;
+}
+
+
+- (BOOL)isTextHeightComputed
+{
+    return _textHeightComputed;
+}
+
+- (CGFloat)getTextHeight
+{
+    return _textHeight;
+}
+
+- (CGFloat)computeTextHeightUsingFont:(UIFont*)font withConstraint:(CGFloat)width
+{
+    // compute the size of the text => will allow to update the cell's height dynamically
+    CGSize suggestedSize = [self.text sizeWithFont:font constrainedToSize:CGSizeMake(width, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+    _textHeightComputed = YES;
+    _textHeight = suggestedSize.height;
+    
+    // add lineheight each time a "\n" is found.
+    NSRange range = NSMakeRange(0, self.text.length);
+    NSRange find = [self.text rangeOfString:@"\n" options:NSLiteralSearch range:range];
+    while (find.location != NSNotFound)
+    {
+        _textHeight += font.lineHeight;
+        
+        range.location = find.location + find.length;
+        range.length = self.text.length - range.location;
+        find = [self.text rangeOfString:@"\n" options:NSLiteralSearch range:range];
+    }
+    
+    return _textHeight;
 }
 
 
