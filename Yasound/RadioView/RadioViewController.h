@@ -46,7 +46,11 @@
     TracksView* _viewTracks;
     BOOL _viewTracksDisplayed;
 
-    NSDate* _lastWallEventDate;
+    WallEvent* _lastWallEvent;
+    WallEvent* _lastSongEvent;
+    NSDate* _latestEventDate;
+    
+    NSInteger _countMessageEvent;
     NSDate* _lastSongUpdateDate;
   
     WallMessage* _currentMessage;
@@ -66,7 +70,7 @@
     NSInteger _previouslyInsertedEventIndex;
     SongViewCell* _previouslyInsertedEventCell;
     
-    WallEvent* _containerEventSong;
+//    WallEvent* _containerEventSong;
     
     BOOL _firstRequest;
 }
@@ -85,8 +89,8 @@
 
 - (void)addMessage;
 - (void)addSong;
-- (void)insertMessageAtIndex:(NSInteger)index  silent:(BOOL)silent;
-- (void)insertSongAtIndex:(NSInteger)index  silent:(BOOL)silent;
+- (void)insertMessage;
+- (void)insertSong;
                         
 
 

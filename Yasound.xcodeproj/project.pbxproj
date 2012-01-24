@@ -52,6 +52,9 @@
 		B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
+		BC01F5AB14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
+		BC01F5AC14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
+		BC01F5AD14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC0304E814BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		BC0304E914BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		BC0304EA14BF030200F39374 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
@@ -891,6 +894,8 @@
 		40F4C79014BEEF6F00A163F9 /* NextSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextSong.m; sourceTree = "<group>"; };
 		B172043D14C54446007F3FB0 /* BuyLinkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyLinkManager.h; sourceTree = "<group>"; };
 		B172043E14C54446007F3FB0 /* BuyLinkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyLinkManager.m; sourceTree = "<group>"; };
+		BC01F5A914CEB01F00EF62A2 /* DateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateAdditions.h; sourceTree = "<group>"; };
+		BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateAdditions.m; sourceTree = "<group>"; };
 		BC0304E614BF030200F39374 /* Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tutorial.h; sourceTree = "<group>"; };
 		BC0304E714BF030200F39374 /* Tutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tutorial.m; sourceTree = "<group>"; };
 		BC0304FC14C0248100F39374 /* InteractiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractiveView.h; sourceTree = "<group>"; };
@@ -1405,6 +1410,16 @@
 			path = LibTools/BuyLink;
 			sourceTree = SOURCE_ROOT;
 		};
+		BC01F5A814CEB01F00EF62A2 /* DateAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				BC01F5A914CEB01F00EF62A2 /* DateAdditions.h */,
+				BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */,
+			);
+			name = DateAdditions;
+			path = LibTools/DateAdditions;
+			sourceTree = SOURCE_ROOT;
+		};
 		BC0DD8381487C73E00DCD550 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1627,6 +1642,7 @@
 		BCA2CCD6149A95460000637E /* LibTools */ = {
 			isa = PBXGroup;
 			children = (
+				BC01F5A814CEB01F00EF62A2 /* DateAdditions */,
 				B172043C14C54446007F3FB0 /* BuyLink */,
 				BC27F39114BE598700EF1C5F /* YasoundReachability */,
 				BCDC97D414AB820500D54631 /* Security */,
@@ -2956,6 +2972,7 @@
 				BCA83E7014C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 				BCA83E7E14C7258F000A8295 /* SongViewCell.m in Sources */,
 				40A98AE814C74C3F00999793 /* UserTableViewCell.m in Sources */,
+				BC01F5AC14CEB01F00EF62A2 /* DateAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3078,6 +3095,7 @@
 				BCA83E6F14C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 				BCA83E7D14C7258F000A8295 /* SongViewCell.m in Sources */,
 				40A98AE714C74C3F00999793 /* UserTableViewCell.m in Sources */,
+				BC01F5AB14CEB01F00EF62A2 /* DateAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3201,6 +3219,7 @@
 				BCA83E7114C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 				BCA83E7F14C7258F000A8295 /* SongViewCell.m in Sources */,
 				40A98AE914C74C3F00999793 /* UserTableViewCell.m in Sources */,
+				BC01F5AD14CEB01F00EF62A2 /* DateAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
