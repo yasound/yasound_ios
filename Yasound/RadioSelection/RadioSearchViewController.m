@@ -14,10 +14,6 @@
 @implementation RadioSearchViewController
 
 
-//LBDEBUG
-static NSArray* gFakeSearchUsers = nil;
-
-
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,15 +22,6 @@ static NSArray* gFakeSearchUsers = nil;
     UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
     self.tabBarItem = theItem;
     [theItem release];      
-    
-    // LBDEBUG static init
-    if (gFakeSearchUsers == nil)
-    {
-      NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
-      gFakeSearchUsers = [resources objectForKey:@"fakeUsers"];
-    }
-    ///////////////
-    
     
   }
   

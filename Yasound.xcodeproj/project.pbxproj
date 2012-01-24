@@ -1572,7 +1572,7 @@
 		E5A9A3B71454DC0500EA374C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E5A9A3B91454DC0500EA374C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E5A9A3BB1454DC0500EA374C /* Yasound-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yasound-Prefix.pch"; sourceTree = "<group>"; };
-		E5F3B8F01498B88D008DD607 /* yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yasound.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5F3B8F01498B88D008DD607 /* Yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yasound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2544,7 +2544,7 @@
 			children = (
 				E5A9A3A91454DC0500EA374C /* Yasound.app */,
 				BC71F635147FEC6F00DAE4BD /* YasoundD.app */,
-				E5F3B8F01498B88D008DD607 /* yasound.app */,
+				E5F3B8F01498B88D008DD607 /* Yasound.app */,
 				BC93CDEA14CF3F7A007C723F /* Yasound.app */,
 			);
 			name = Products;
@@ -2681,7 +2681,7 @@
 			);
 			name = "Yasound adhoc";
 			productName = Yasound;
-			productReference = E5F3B8F01498B88D008DD607 /* yasound.app */;
+			productReference = E5F3B8F01498B88D008DD607 /* Yasound.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -3905,6 +3905,8 @@
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3922,6 +3924,9 @@
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
+				SUPPORTED_PLATFORMS = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

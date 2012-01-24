@@ -53,10 +53,6 @@
 
 
 
-//LBDEBUG
-//NSArray* gFakeUsersFriends = nil;
-//NSArray* gFakeUsersFavorites = nil;
-
 
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
@@ -70,15 +66,6 @@
       UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
       self.tabBarItem = theItem;
       [theItem release];   
-      
-//      // LBDEBUG static init
-//      if (gFakeUsersFriends == nil)
-//      {
-//        NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
-//        gFakeUsersFriends = [resources objectForKey:@"fakeUsersFriends"];
-//        gFakeUsersFavorites = [resources objectForKey:@"fakeUsersFavorites"];
-//      }
-//      ///////////////
 
     }
     return self;

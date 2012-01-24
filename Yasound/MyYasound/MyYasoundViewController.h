@@ -42,10 +42,6 @@
     ChartView* _graphView;
 }
 
-//LBDEBUG
-//extern NSArray* gFakeUsersFriends;
-//extern NSArray* gFakeUsersFavorites;
-
 
 //@property (nonatomic, retain) IBOutlet UIView* viewContainer;
 //@property (nonatomic, retain) IBOutlet UIView* viewMyYasound;
