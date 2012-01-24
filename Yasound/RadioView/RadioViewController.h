@@ -53,9 +53,6 @@
     NSInteger _countMessageEvent;
     NSDate* _lastSongUpdateDate;
   
-    WallMessage* _currentMessage;
-    NSMutableString* _currentXMLString;
-    
     UIFont* _messageFont;
     CGFloat _messageWidth;
     CGFloat _cellMinHeight;
@@ -63,17 +60,6 @@
     NSTimer* _timerUpdate;
     
     NSMutableArray* _wallEvents;
-    NSNumber* _lastWallEventID;
-//    NSMutableArray* _wallHeights;
-//    NSMutableDictionary* _mapHeights;
-    
-    BOOL _previouslyInsertedEventWasSong;
-    NSInteger _previouslyInsertedEventIndex;
-    SongViewCell* _previouslyInsertedEventCell;
-    
-//    WallEvent* _containerEventSong;
-    
-    BOOL _firstRequest;
 }
 
 @property (nonatomic, retain) Radio* radio;
