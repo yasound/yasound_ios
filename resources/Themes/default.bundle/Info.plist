@@ -450,7 +450,7 @@
 			<key>x</key>
 			<integer>3</integer>
 			<key>y</key>
-			<integer>4</integer>
+			<integer>8</integer>
 			<key>width</key>
 			<integer>35</integer>
 			<key>height</key>
@@ -461,7 +461,7 @@
 			<key>x</key>
 			<integer>3</integer>
 			<key>y</key>
-			<integer>4</integer>
+			<integer>8</integer>
 			<key>name</key>
 			<string>UserMask</string>
 			<key>type</key>
@@ -489,7 +489,7 @@
 			<key>x</key>
 			<integer>190</integer>
 			<key>y</key>
-			<integer>6</integer>
+			<integer>10</integer>
 		</dict>
 		<key>CellUser</key>
 		<dict>
@@ -509,7 +509,7 @@
 			<key>x</key>
 			<integer>46</integer>
 			<key>y</key>
-			<integer>4</integer>
+			<integer>8</integer>
 		</dict>
 		<key>CellMessage</key>
 		<dict>
@@ -529,7 +529,7 @@
 			<key>x</key>
 			<integer>46</integer>
 			<key>y</key>
-			<integer>21</integer>
+			<integer>25</integer>
 		</dict>
 		<key>SectionOnlineLabel</key>
 		<dict>
@@ -613,41 +613,41 @@
 		<dict>
 			<key>font</key>
 			<dict>
-				<key>name</key>
-				<string>Arial</string>
 				<key>size</key>
-				<integer>12</integer>
+				<integer>13</integer>
 				<key>textColor</key>
-				<string>rgb(32,32,32)</string>
+				<string>white</string>
+				<key>weight</key>
+				<string>bold</string>
 			</dict>
 			<key>height</key>
 			<integer>16</integer>
 			<key>width</key>
 			<integer>100</integer>
 			<key>x</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>y</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<key>SongCellMessage</key>
 		<dict>
 			<key>font</key>
 			<dict>
-				<key>name</key>
-				<string>Arial</string>
 				<key>size</key>
 				<integer>12</integer>
 				<key>textColor</key>
-				<string>rgb(32,32,32)</string>
+				<string>rgb(72,72,72)</string>
+				<key>weight</key>
+				<string>bold</string>
 			</dict>
 			<key>height</key>
 			<integer>16</integer>
 			<key>width</key>
-			<integer>100</integer>
+			<integer>255</integer>
 			<key>x</key>
-			<integer>100</integer>
+			<integer>52</integer>
 			<key>y</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<key>RadioViewStatusBar</key>
 		<dict>

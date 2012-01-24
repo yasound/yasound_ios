@@ -13,7 +13,7 @@
 #import "KeywordsViewController.h"
 #import "PlaylistsViewController.h"
 #import "ActivityAlertView.h"
-
+#import "RootViewController.h"
 
 #define SECTION_CONFIG 0
 #define ROW_CONFIG_TITLE 0
@@ -73,11 +73,26 @@
     
     if (_wizard)
     {
+
+//        NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
+//        [items removeObjectAtIndex:0]; // remove back button
+
+        NSMutableArray* items = [[NSMutableArray alloc] init];
+
+        
+        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_cancel", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
+
+        UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
         _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
-        NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
-        [items removeObjectAtIndex:0]; // remove back button
+
+        //        [items addObject:_backBtn];
+        [items addObject:backBtn];
+        [items addObject:space];
         [items addObject:_nextBtn];
+        
         [_toolbar setItems:items animated:NO];
+//        [space release];
     }
 
 
@@ -498,6 +513,13 @@
 
 - (IBAction)onBack:(id)sender
 {
+    if (_wizard)
+    {
+        // call root to launch the Radio
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO_SELECTION object:nil];
+        return;
+    }
+    
     // save or cancel
     if (!_wizard && _changed)
     {

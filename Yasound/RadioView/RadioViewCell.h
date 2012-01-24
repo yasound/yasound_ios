@@ -11,6 +11,8 @@
 
 @class WallEvent;
 
+#define THE_REST_OF_THE_CELL_HEIGHT 50
+
 @interface RadioViewCell : UITableViewCell
 
 @property (nonatomic, retain) UIView* background;

@@ -15,6 +15,7 @@
     IBOutlet UILabel* _titleLabel;
 
     //...............................................
+    IBOutlet UIButton* _facebookButton;
     IBOutlet UILabel* _facebookLoginLabel;
 
 }

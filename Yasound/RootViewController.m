@@ -67,6 +67,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+//    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
+//    [self.navigationController pushViewController:view animated:NO];
+//    [view release];
+
     if (_firstTime)
     {
         _firstTime = NO;
@@ -155,7 +159,7 @@
 
 - (void)onNotifPushRadioSelection:(NSNotification*)notification
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:2] forKey:@"forceTabIndex"];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:3] forKey:@"forceTabIndex"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     // add tabs

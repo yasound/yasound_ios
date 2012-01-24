@@ -59,8 +59,8 @@
     NSTimer* _timerUpdate;
     
     NSMutableArray* _wallEvents;
-    NSMutableArray* _wallHeights;
-    NSMutableDictionary* _mapHeights;
+//    NSMutableArray* _wallHeights;
+//    NSMutableDictionary* _mapHeights;
     
     BOOL _previouslyInsertedEventWasSong;
     NSInteger _previouslyInsertedEventIndex;

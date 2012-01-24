@@ -29,6 +29,7 @@
 //#define LOCAL 1 // use localhost as the server
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
+#define ROW_SONG_HEIGHT 20
 
 @implementation RadioViewController
 
@@ -78,8 +79,8 @@ static Song* _gNowPlayingSong = nil;
     _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
         
         _wallEvents = [[NSMutableArray alloc] init];
-        _wallHeights = [[NSMutableArray alloc] init];
-        _mapHeights = [[NSMutableDictionary alloc] init];
+//        _wallHeights = [[NSMutableArray alloc] init];
+//        _mapHeights = [[NSMutableDictionary alloc] init];
 //        _arrayHeights = [[NSMutableArray alloc] init];
 //        [_wallEvents retain];
 //        [_wallHeights retain];
@@ -426,31 +427,13 @@ static Song* _gNowPlayingSong = nil;
     
     
     // get the actual data from the server to update the GUI
-    //LBDEBUG§
-//    [self onUpdate:nil];
+    //LBDEBUG 
+    //FAKE 
+    [self onUpdate:nil];
     
 
-    //LBDEBUG FAKE
-    
-//    WallEvent* ev2 = [self fakeEventMessage:@"user1" text:@"text1"];
-//    [_wallEvents insertObject:ev2 atIndex:0];
-//    [self addMessage];
-//    
-//    WallEvent* ev = [self fakeEventSong:@"proutsong"];
-//    [_wallEvents insertObject:ev atIndex:0];
-//    [self addSong];
-//
-//    WallEvent* ev4 = [self fakeEventSong:@"proutsong 2"];
-//    [_wallEvents insertObject:ev4 atIndex:0];
-//    [self addSong];
-//
-//    WallEvent* ev6 = [self fakeEventSong:@"proutsong 3"];
-//    [_wallEvents insertObject:ev6 atIndex:0];
-//    [self addSong];
-//
-//    WallEvent* ev3 = [self fakeEventMessage:@"user3" text:@"text3 "];
-//    [_wallEvents insertObject:ev3 atIndex:0];
-//    [self addMessage];
+
+
 
 }
 
@@ -486,6 +469,84 @@ static Song* _gNowPlayingSong = nil;
     // update favorite button
     [[ActivityModelessSpinner main] addRef];
     [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoriteUpdate:)];
+    
+    
+    //LBDEBUG FAKE
+    ///////////////////////////////////////////////////////////////////////////////////
+//    NSMutableArray* events = [[NSMutableArray alloc] init];
+//    
+//    NSMutableDictionary* info = [[NSMutableDictionary alloc] init];
+//    Meta* meta = [[Meta alloc] init];
+//    [info setObject:meta forKey:@"meta"];
+//    
+//    int time = 0;
+//    WallEvent* ev2 = [self fakeEventMessage:@"user1" text:@"text1" timeInterval:time*60];
+//    time++;
+//    [events addObject:ev2];
+//    
+//    WallEvent* ev = [self fakeEventSong:@"proutsong" timeInterval:time*60];
+//    time++;
+//    [events addObject:ev];
+//    
+//    WallEvent* ev4 = [self fakeEventSong:@"proutsong 2" timeInterval:time*60];
+//    time++;
+//    [events addObject:ev4];
+//    
+//    WallEvent* ev6 = [self fakeEventSong:@"proutsong 3" timeInterval:time*60];
+//    time++;
+//    [events addObject:ev6];
+//
+//    NSString* BUFFER = NSLocalizedString(@"TEST", nil);
+//    int i = 0;
+//    for (i = 0; i < 8; i++)
+//    {
+////        NSInteger length = rand() % (BUFFER.length / 6);
+//        NSInteger length = 5;
+//        NSString* str = [NSString stringWithFormat:@"%@.END.", [BUFFER substringToIndex:length]];
+//        
+//        NSRange range = [str rangeOfString:@"\n"];
+//        if (range.location != NSNotFound)
+//        {
+//            NSLog(@"retour chariot trouvé");
+//        }
+//        
+//        WallEvent* ev = [self fakeEventMessage:@"user3" text:[NSString stringWithFormat:@"textbot %d %@", time, str] timeInterval:time*60];
+//        time++;
+//    [events addObject:ev];
+//    }
+//
+//    for (i = 0; i < 12; i++)
+//    {
+//        WallEvent* ev = [self fakeEventSong:[NSString stringWithFormat:@"proutsong bot %d", time] timeInterval:time*60];
+//        time++;
+//        [events addObject:ev];
+//    }
+//
+//    
+//    for (i = 0; i < 4; i++)
+//    {
+//        NSInteger length = rand() % (BUFFER.length / 6);
+//        NSString* str = [NSString stringWithFormat:@"%@.END.", [BUFFER substringToIndex:length]];
+//
+//        NSRange range = [str rangeOfString:@"\n"];
+//        if (range.location != NSNotFound)
+//        {
+//            NSLog(@"retour chariot trouvé");
+//        }
+//
+//        WallEvent* ev = [self fakeEventMessage:@"user3" text:[NSString stringWithFormat:@"textbot %d %@", time, str] timeInterval:time*60];
+//        time++;
+//        [events addObject:ev];
+//    }
+//
+//    [self receiveWallEvents:events withInfo:info];
+
+//    {
+//        Meta* meta = [info valueForKey:@"meta"];
+//        NSError* err = [info valueForKey:@"error"];
+//        
+//        if (err)
+    ////////////////////////////////////////////////////////////////////////////////////
 }
  
 
@@ -557,9 +618,9 @@ static Song* _gNowPlayingSong = nil;
 {
     [_messageFont release];
     [_wallEvents release];
-    [_wallHeights release];
+//    [_wallHeights release];
 //    [_arrayHeights release];
-    [_mapHeights release];
+//    [_mapHeights release];
     [super dealloc];
 }
 
@@ -598,8 +659,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onUpdate:(NSTimer*)timer
 {    
-    if (timer)
-        _firstRequest = NO;
+    // LBDEBUG FAKE
     [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
     [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
@@ -607,11 +667,14 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-- (WallEvent*)fakeEventSong:(NSString*)name
+- (WallEvent*)fakeEventSong:(NSString*)name timeInterval:(NSInteger)timeInterval
 {
     WallEvent* ev = [[WallEvent alloc] init];
     ev.type = [NSString stringWithString:EV_TYPE_SONG];
     ev.start_date = [NSDate date];
+    //NSLog(@"\ndate %@", ev.start_date);
+    ev.start_date = [ev.start_date addTimeInterval:timeInterval];
+    //NSLog(@"new date %@", ev.start_date);
     ev.song = [[Song alloc] init];
     ev.song.metadata = [[SongMetadata alloc] init];
     ev.song.metadata.name = [NSString stringWithString:name];
@@ -619,11 +682,12 @@ static Song* _gNowPlayingSong = nil;
     return ev;
 }
 
-- (WallEvent*)fakeEventMessage:(NSString*)user text:(NSString*)text
+- (WallEvent*)fakeEventMessage:(NSString*)user text:(NSString*)text  timeInterval:(NSInteger)timeInterval
 {
     WallEvent* ev = [[WallEvent alloc] init];
     ev.type = [NSString stringWithString:EV_TYPE_MESSAGE];
     ev.start_date = [NSDate date];
+    ev.start_date = [ev.start_date addTimeInterval:timeInterval];
     ev.text = [NSString stringWithString:text];
     ev.user =  [[User alloc] init];
     ev.user.name = [NSString stringWithString:user];
@@ -686,6 +750,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)askForNextWallEvents
 {
+    //LBDEBUG FAKE
     if (_wallEvents.count == 0)
         [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
     else
@@ -757,6 +822,7 @@ static Song* _gNowPlayingSong = nil;
     if (err)
     {
         NSLog(@"receiveWallEvents error!");
+        _firstRequest = NO;
         return;
     }
     
@@ -767,7 +833,9 @@ static Song* _gNowPlayingSong = nil;
     }
     
     if (!events || events.count == 0)
+    {
         return;
+    }
     
     WallEvent* ev = nil;
     for (int i = [events count] - 1; i >= 0; i--)
@@ -935,6 +1003,8 @@ static Song* _gNowPlayingSong = nil;
         {
             [self askForNextWallEvents];
         }
+        else
+            _firstRequest = NO;
     }
 }
 
@@ -1088,7 +1158,6 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-#define ROW_SONG_HEIGHT 24
 
 //.................................................................................................
 //
@@ -1115,16 +1184,19 @@ static Song* _gNowPlayingSong = nil;
     NSLog(@"insertMessageAtIndex %d   silent %d", index, silent);
 
     WallEvent* ev = [_wallEvents objectAtIndex:index];
-    NSString* text = ev.text;
     
-    // compute the size of the text => will allow to update the cell's height dynamically
-    CGSize suggestedSize = [text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+    [ev computeTextHeightUsingFont:_messageFont withConstraint:270];
     
-    CGFloat height = suggestedSize.height;
+//    NSString* text = ev.text;
+//    
+//    // compute the size of the text => will allow to update the cell's height dynamically
+//    CGSize suggestedSize = [text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+//    
+//    CGFloat height = suggestedSize.height;
 //    if (height > _cellMinHeight)
 //        height += THE_REST_OF_THE_CELL_HEIGHT;
     
-    [_wallHeights insertObject:[NSNumber numberWithFloat:height] atIndex:index];
+//    [_wallHeights insertObject:[NSNumber numberWithFloat:height] atIndex:index];
     
     //    [self.messages insertObject:m atIndex:0];
     //    
@@ -1150,7 +1222,7 @@ static Song* _gNowPlayingSong = nil;
     }
     /////
     
-    [_wallHeights insertObject:[NSNumber numberWithFloat:ROW_SONG_HEIGHT] atIndex:index];
+//    [_wallHeights insertObject:[NSNumber numberWithFloat:ROW_SONG_HEIGHT] atIndex:index];
 
     
     // previous song entry must be hidden
@@ -1162,7 +1234,7 @@ static Song* _gNowPlayingSong = nil;
         {
             NSLog(@"Cette cellule sera cachée!");
             
-            [_wallHeights replaceObjectAtIndex:index withObject:[NSNumber numberWithFloat:0]];
+//            [_wallHeights replaceObjectAtIndex:index withObject:[NSNumber numberWithFloat:0]];
         }
     }
 
@@ -1203,7 +1275,6 @@ static Song* _gNowPlayingSong = nil;
     return [_wallEvents count];
 }
 
-#define THE_REST_OF_THE_CELL_HEIGHT 50
 
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -1244,22 +1315,37 @@ static Song* _gNowPlayingSong = nil;
 
     if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
     {
-        NSString* text = ev.text;
+        assert([ev isTextHeightComputed] == YES);
         
-        // compute the size of the text => will allow to update the cell's height dynamically
-        CGSize suggestedSize = [text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+        CGFloat height = [ev getTextHeight];
         
-        CGFloat height = suggestedSize.height;
-        
-//        [_arrayHeights replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithFloat:height]];
-//        [_mapHeights setObject:[NSNumber numberWithFloat:height] forKey:ev];
-        NSValue* key = [NSValue valueWithNonretainedObject:ev];
-        [_mapHeights setObject:[NSNumber numberWithFloat:height] forKey:key];
-        
-        if (height < _cellMinHeight)
+        if ((height + THE_REST_OF_THE_CELL_HEIGHT) < _cellMinHeight)
+        {
+            NSLog(@"HEIGHT INF date %@ : %.2f",ev.start_date, _cellMinHeight);
+
             return _cellMinHeight;
+        }
+        
+        NSLog(@"HEIGHT SUP date %@ : %.2f", ev.start_date, (height + THE_REST_OF_THE_CELL_HEIGHT));
         
         return (height + THE_REST_OF_THE_CELL_HEIGHT);
+        
+//        NSString* text = ev.text;
+//        
+//        // compute the size of the text => will allow to update the cell's height dynamically
+//        CGSize suggestedSize = [text sizeWithFont:_messageFont constrainedToSize:CGSizeMake(_messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+//        
+//        CGFloat height = suggestedSize.height;
+//        
+////        [_arrayHeights replaceObjectAtIndex:indexPath.row withObject:[NSNumber numberWithFloat:height]];
+////        [_mapHeights setObject:[NSNumber numberWithFloat:height] forKey:ev];
+//        NSValue* key = [NSValue valueWithNonretainedObject:ev];
+//        [_mapHeights setObject:[NSNumber numberWithFloat:height] forKey:key];
+//        
+//        if (height < _cellMinHeight)
+//            return _cellMinHeight;
+//        
+//        return (height + THE_REST_OF_THE_CELL_HEIGHT);
     }
     else if ([ev.type isEqualToString:EV_TYPE_SONG])
     {
@@ -1282,6 +1368,30 @@ static Song* _gNowPlayingSong = nil;
     
 }
 
+
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//    WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
+//
+//    if ([ev.type isEqualToString:EV_TYPE_SONG])
+//    {
+//        UIView* view = [[UIView alloc] initWithFrame:cell.frame];
+//        view.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.25];
+//        cell.backgroundView = view;
+//        [view release];
+//        return;
+//    }
+//    
+//    if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+//    {
+//        UIView* view = [[UIView alloc] initWithFrame:cell.frame];
+//        view.backgroundColor = [UIColor colorWithRed:((float)rand() / (float)RAND_MAX) green:((float)rand() / (float)RAND_MAX) blue:((float)rand() / (float)RAND_MAX) alpha:0.25];
+//        cell.backgroundView = view;
+//        [view release];
+//        return;
+//    }
+//
+//}
 
 
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -1318,15 +1428,15 @@ static Song* _gNowPlayingSong = nil;
     {
 //        CGFloat height = [[_arrayHeights objectAtIndex:indexPath.row ] floatValue];
 //        CGFloat height = [[_mapHeights objectForKey:ev] floatValue];
-        NSValue* key = [NSValue valueWithNonretainedObject:ev];
-        CGFloat height = [[_mapHeights objectForKey:key] floatValue];
+//        NSValue* key = [NSValue valueWithNonretainedObject:ev];
+//        CGFloat height = [[_mapHeights objectForKey:key] floatValue];
 
 
         // VOIR4
 //        RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 //        if (cell == nil)
 //        {
-            RadioViewCell* cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
+            RadioViewCell* cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:0 indexPath:indexPath] autorelease];
 //        }
 //        else
 //            [cell update:ev height:height indexPath:indexPath];
