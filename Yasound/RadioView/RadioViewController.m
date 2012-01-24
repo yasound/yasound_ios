@@ -82,6 +82,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"CellMinHeight" error:nil];
     _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
         
+      _lastWallEventID = nil;
         _wallEvents = [[NSMutableArray alloc] init];
 //        _wallHeights = [[NSMutableArray alloc] init];
 //        _mapHeights = [[NSMutableDictionary alloc] init];
@@ -658,14 +659,14 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onTimerUpdate:(NSTimer*)timer
 {    
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 arget:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
     [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
 
 - (void)updatePreviousWall
 {    
-  [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:100 target:self action:@selector(receiveWallEvents:withInfo:)];
+  [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:200 target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
 
     [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
@@ -762,82 +763,99 @@ static Song* _gNowPlayingSong = nil;
     return count;
 }
 
+//<<<<<<< HEAD
+////- (void)askForNextWallEvents
+////{
+////    //LBDEBUG FAKE
+////  int pageSize = 50;
+////    if (_wallEvents.count == 0)
+////<<<<<<< HEAD
+////        [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receivedWallEvents:withInfo:)];
+////    else
+////    {
+////        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
+////        [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receivedWallEvents:withInfo:)];
+////=======
+////      [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize target:self action:@selector(receiveWallEvents:withInfo:)];
+////    else
+////    {
+////        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
+////        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
+////>>>>>>> 371fa72fb79630a0f8ec60bc981dcb3f648c1da8
+////    }
+////}
+//
+//
+//=======
 //- (void)askForNextWallEvents
 //{
 //    //LBDEBUG FAKE
 //  int pageSize = 50;
 //    if (_wallEvents.count == 0)
-//<<<<<<< HEAD
-//        [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receivedWallEvents:withInfo:)];
-//    else
-//    {
-//        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
-//        [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receivedWallEvents:withInfo:)];
-//=======
 //      [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize target:self action:@selector(receiveWallEvents:withInfo:)];
 //    else
 //    {
-//        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
-//        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
-//>>>>>>> 371fa72fb79630a0f8ec60bc981dcb3f648c1da8
+//        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize afterEventWithID:_lastWallEventID target:self action:@selector(receiveWallEvents:withInfo:)];
 //    }
 //}
+//>>>>>>> 28ba1bef146fa8b03a414d770feb21a95dbcf543
 
 
 
-- (void)didAddWallEvents:(int)count atIndex:(int)index
-{
-    NSLog(@"%d events added at index %d", count, index);
 
-    NSMutableArray* indexes = [[NSMutableArray alloc] init];
-    for (NSInteger i = index; i < (index+count); i++)
-    {
-
-        WallEvent* ev = [_wallEvents objectAtIndex:i];
-        NSString* type = ev.type;
-        if ([type isEqualToString:EV_TYPE_MESSAGE])
-        {
-            [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-            [self insertMessageAtIndex:i silent:YES];
-            
-//            _containerEventSong = nil;
-        }
-        else if ([type isEqualToString:EV_TYPE_SONG])
-        {
-            // VOIR
+//- (void)didAddWallEvents:(int)count atIndex:(int)index
+//{
+//    NSLog(@"%d events added at index %d", count, index);
+//
+//    NSMutableArray* indexes = [[NSMutableArray alloc] init];
+//    for (NSInteger i = index; i < (index+count); i++)
+//    {
+//
+//        WallEvent* ev = [_wallEvents objectAtIndex:i];
+//        NSString* type = ev.type;
+//        if ([type isEqualToString:EV_TYPE_MESSAGE])
+//        {
 //            [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-          //  [self insertSongAtIndex:i silent:YES];
+//            [self insertMessageAtIndex:i silent:YES];
 //            
-//            if (_containerEventSong != nil)
-//            {
-//                [_containerEventSong addChild:ev];
-//            }
-//            else
-//            {
-                [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-                [self insertSongAtIndex:i silent:YES];
-//                _containerEventSong = ev;
-//            }
-        }
-        else
-        {
-            assert(0);
-        }
-    }
-    
-//    [_tableView reloadData];
-    
-    [_tableView insertRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
-
-//    [_tableView reloadRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
-    
-
+////            _containerEventSong = nil;
+//        }
+//        else if ([type isEqualToString:EV_TYPE_SONG])
+//        {
+//            // VOIR
+////            [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+//          //  [self insertSongAtIndex:i silent:YES];
+////            
+////            if (_containerEventSong != nil)
+////            {
+////                [_containerEventSong addChild:ev];
+////            }
+////            else
+////            {
+//                [indexes addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+//                [self insertSongAtIndex:i silent:YES];
+////                _containerEventSong = ev;
+////            }
+//        }
+//        else
+//        {
+//            assert(0);
+//        }
+//    }
+//    
+////    [_tableView reloadData];
+//    
 //    [_tableView insertRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
-    
-    
-    // todo...
-    // add message views
-}
+//
+////    [_tableView reloadRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
+//    
+//
+////    [_tableView insertRowsAtIndexPaths:indexes withRowAnimation:UITableViewRowAnimationNone];
+//    
+//    
+//    // todo...
+//    // add message views
+//}
 
 
 
@@ -965,7 +983,7 @@ static Song* _gNowPlayingSong = nil;
     // ask for more
     if (_countMessageEvent < NB_MAX_EVENTMESSAGE)
     {
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:50 afterEvent:_lastWallEvent target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:100 afterEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
     }
 //    else
 //    {
@@ -975,13 +993,20 @@ static Song* _gNowPlayingSong = nil;
     
     NSLog(@"end receivedPreviousWAllEvents\n");
 }
+//=======
+//      _lastWallEventID = ev.id;
+//        if (![ev.type isEqualToString:EV_TYPE_MESSAGE] && ![ev.type isEqualToString:EV_TYPE_SONG])
+//        {
+//            continue;
+//        }
+//>>>>>>> 28ba1bef146fa8b03a414d770feb21a95dbcf543
 
 
 
 - (void)receivedPreviousLoginEvent:(WallEvent*)ev
 {
-    NSLog(@"receivedPreviousLoginEvent ev %@", ev.start_date);
-    NSLog(@"compared to _lastWallEvent : %@ : %@", [RadioViewController evTypeToString:_lastWallEvent.type], _lastWallEvent.start_date);
+//    NSLog(@"receivedPreviousLoginEvent ev %@", ev.start_date);
+//    NSLog(@"compared to _lastWallEvent : %@ : %@", [RadioViewController evTypeToString:_lastWallEvent.type], _lastWallEvent.start_date);
     
     // update lastWallEvent
     if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThan:_lastWallEvent.start_date]))
@@ -998,7 +1023,7 @@ static Song* _gNowPlayingSong = nil;
 - (void)receivedPreviousLogoutEvent:(WallEvent*)ev
 {
     // update lastWallEvent
-    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThan:_lastWallEvent.start_date]))
+    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThanOrEqualTo:_lastWallEvent.start_date]))
         _lastWallEvent = ev;
 
     
@@ -1013,7 +1038,7 @@ static Song* _gNowPlayingSong = nil;
 - (void)receivedPreviousStartListeningEvent:(WallEvent*)ev
 {
     // update lastWallEvent
-    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThan:_lastWallEvent.start_date]))
+    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThanOrEqualTo:_lastWallEvent.start_date]))
         _lastWallEvent = ev;
     
 }
@@ -1022,7 +1047,7 @@ static Song* _gNowPlayingSong = nil;
 - (void)receivedPreviousStopListeningEvent:(WallEvent*)ev
 {
     // update lastWallEvent
-    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThan:_lastWallEvent.start_date]))
+    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThanOrEqualTo:_lastWallEvent.start_date]))
         _lastWallEvent = ev;
     
 }
@@ -1031,7 +1056,7 @@ static Song* _gNowPlayingSong = nil;
 - (void)receivedPreviousSongEvent:(WallEvent*)ev
 {
     // update lastWallEvent
-    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThan:_lastWallEvent.start_date]))
+    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThanOrEqualTo:_lastWallEvent.start_date]))
         _lastWallEvent = ev;
     
     if (_latestSongContainer != nil)
@@ -1051,7 +1076,7 @@ static Song* _gNowPlayingSong = nil;
 - (void)receivedPreviousMessageEvent:(WallEvent*)ev
 {
     // update lastWallEvent
-    if ([ev.start_date isEarlierThan:_lastWallEvent.start_date])
+    if ([ev.start_date isEarlierThanOrEqualTo:_lastWallEvent.start_date])
         _lastWallEvent = ev;
     
     [_wallEvents addObject:ev];
@@ -1102,7 +1127,9 @@ static Song* _gNowPlayingSong = nil;
         return;
     }
     
-    //NSLog(@"\nreceivedCurrentWallEvents %d events", events.count);
+    
+    NSLog(@"\nreceivedCurrentWallEvents %d events", events.count);
+    
     
     for (WallEvent* ev in events)
     {

@@ -475,17 +475,18 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize afterEvent:(WallEvent*)lastEvent target:(id)target action:(SEL)selector
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize afterEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector
 {
   if (!radio || !radio.id)
     return;
-  if (!lastEvent || !lastEvent.id)
+  if (!lastEventID)
     return;
+  
   Auth* auth = self.apiKeyAuth;
   NSNumber* radioID = radio.id;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
   NSMutableArray* params = [[NSMutableArray alloc] init];
-  [params addObject:[NSString stringWithFormat:@"id__lt=%@", lastEvent.id]];
+  [params addObject:[NSString stringWithFormat:@"id__lt=%@", lastEventID]];
   [params addObject:[NSString stringWithFormat:@"limit=%d", pageSize]];
   [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
