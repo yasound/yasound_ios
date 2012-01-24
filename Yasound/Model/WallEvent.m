@@ -78,6 +78,32 @@
     return _children;
 }
 
+- (void)setChildren:(NSArray*)children
+{
+    if (_children != nil)
+    {
+        [_children release];
+        _children = nil;
+    }
+    
+    if (children == nil)
+        return;
+    
+    _children = [[NSMutableArray alloc] initWithArray:children];
+    [_children retain];
+}
+
+- (BOOL)removeChildren
+{
+    if (_children == nil)
+        return NO;
+    
+    [_children release];
+    _children = nil;
+    return YES;
+}
+
+
 
 - (BOOL)isTextHeightComputed
 {

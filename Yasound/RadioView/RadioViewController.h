@@ -47,7 +47,7 @@
     BOOL _viewTracksDisplayed;
 
     WallEvent* _lastWallEvent;
-    WallEvent* _lastSongEvent;
+    WallEvent* _latestSongContainer;
     NSDate* _latestEventDate;
     
     NSInteger _countMessageEvent;

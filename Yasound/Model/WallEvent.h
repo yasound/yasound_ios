@@ -32,6 +32,8 @@
 
 - (void)addChild:(WallEvent*)child;
 - (NSArray*)getChildren;
+- (void)setChildren:(NSArray*)children;
+- (BOOL)removeChildren;
 
 - (BOOL)isTextHeightComputed;
 - (CGFloat)getTextHeight;
