@@ -32,6 +32,9 @@
 #define SERVER_DATA_REQUEST_TIMER 5.0f
 #define ROW_SONG_HEIGHT 20
 
+#define NB_MAX_EVENTMESSAGE 10
+
+
 @implementation RadioViewController
 
 
@@ -435,6 +438,10 @@ static Song* _gNowPlayingSong = nil;
     //LBDEBUG 
     //FAKE 
     [self updatePreviousWall];
+    
+    // launch the update timer
+//    _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onTimerUpdate:) userInfo:nil repeats:YES];
+    
 }
 
 
@@ -875,9 +882,6 @@ static Song* _gNowPlayingSong = nil;
 // received previous wall events
 //
 
-#define NB_MAX_EVENTMESSAGE 20
-
-
 - (void)receivedPreviousWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
     Meta* meta = [info valueForKey:@"meta"];
@@ -902,6 +906,8 @@ static Song* _gNowPlayingSong = nil;
     {
         NSLog(@"NO MORE EVENTS. end receivedPreviousWallEvents\n");
         //_latestSongContainer = nil;
+
+        assert(_timerUpdate == nil);
 
         // launch the update timer
         _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onTimerUpdate:) userInfo:nil repeats:YES];
@@ -984,6 +990,12 @@ static Song* _gNowPlayingSong = nil;
     if (_countMessageEvent < NB_MAX_EVENTMESSAGE)
     {
         [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:100 afterEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+    }
+    else
+    {
+        assert(_timerUpdate == nil);
+        // launch the update timer
+        _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onTimerUpdate:) userInfo:nil repeats:YES];
     }
 //    else
 //    {
