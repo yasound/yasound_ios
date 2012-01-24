@@ -660,9 +660,6 @@ static Song* _gNowPlayingSong = nil;
 - (void)onUpdate:(NSTimer*)timer
 {    
     // LBDEBUG FAKE
-    
-    if (timer)
-        _firstRequest = NO;
     [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
     [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
@@ -825,6 +822,7 @@ static Song* _gNowPlayingSong = nil;
     if (err)
     {
         NSLog(@"receiveWallEvents error!");
+        _firstRequest = NO;
         return;
     }
     
@@ -835,7 +833,9 @@ static Song* _gNowPlayingSong = nil;
     }
     
     if (!events || events.count == 0)
+    {
         return;
+    }
     
     WallEvent* ev = nil;
     for (int i = [events count] - 1; i >= 0; i--)
@@ -1003,6 +1003,8 @@ static Song* _gNowPlayingSong = nil;
         {
             [self askForNextWallEvents];
         }
+        else
+            _firstRequest = NO;
     }
 }
 

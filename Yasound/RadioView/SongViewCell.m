@@ -58,7 +58,7 @@
 
         sheet = [[Theme theme] stylesheetForKey:@"SongCellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.message = [sheet makeLabel];
-        self.message.text = ev.song.metadata.name;
+        self.message.text = [NSString stringWithFormat:@"%@ - %@", ev.song.metadata.artist_name, ev.song.metadata.name];
         [view addSubview:self.message];
 
         
