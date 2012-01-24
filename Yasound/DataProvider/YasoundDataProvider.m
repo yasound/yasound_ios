@@ -14,8 +14,6 @@
 #define APP_KEY_COOKIE_NAME @"app_key"
 #define APP_KEY_IPHONE @"yasound_iphone_app"
 
-#define WALL_EVENTS_PAGE_SIZE 50
-
 @interface YasoundDataProvider (internal)
 
 - (void)login:(NSString*)username password:(NSString*)pwd target:(id)target action:(SEL)selector userData:(NSDictionary*)userData;
@@ -465,7 +463,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 // get wall events
-- (void)wallEventsForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector
 {
   if (radio == nil)
     return;
@@ -473,11 +471,11 @@ static YasoundDataProvider* _main = nil;
   NSNumber* radioID = radio.id;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
   NSMutableArray* params = [[NSMutableArray alloc] init];
-  [params addObject:[NSString stringWithFormat:@"limit=%d", WALL_EVENTS_PAGE_SIZE]];
+  [params addObject:[NSString stringWithFormat:@"limit=%d", pageSize]];
   [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-- (void)wallEventsForRadio:(Radio*)radio afterEvent:(WallEvent*)lastEvent target:(id)target action:(SEL)selector
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize afterEvent:(WallEvent*)lastEvent target:(id)target action:(SEL)selector
 {
   if (!radio || !radio.id)
     return;
@@ -488,7 +486,7 @@ static YasoundDataProvider* _main = nil;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
   NSMutableArray* params = [[NSMutableArray alloc] init];
   [params addObject:[NSString stringWithFormat:@"id__lt=%@", lastEvent.id]];
-  [params addObject:[NSString stringWithFormat:@"limit=%d", WALL_EVENTS_PAGE_SIZE]];
+  [params addObject:[NSString stringWithFormat:@"limit=%d", pageSize]];
   [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 

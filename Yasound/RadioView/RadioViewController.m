@@ -660,7 +660,8 @@ static Song* _gNowPlayingSong = nil;
 - (void)onUpdate:(NSTimer*)timer
 {    
     // LBDEBUG FAKE
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
+  int pageSize = 50;
+  [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize target:self action:@selector(receiveWallEvents:withInfo:)];
     [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
@@ -751,12 +752,13 @@ static Song* _gNowPlayingSong = nil;
 - (void)askForNextWallEvents
 {
     //LBDEBUG FAKE
+  int pageSize = 50;
     if (_wallEvents.count == 0)
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receiveWallEvents:withInfo:)];
+      [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize target:self action:@selector(receiveWallEvents:withInfo:)];
     else
     {
         WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
     }
 }
 
