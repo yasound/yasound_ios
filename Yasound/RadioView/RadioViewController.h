@@ -48,7 +48,7 @@
 
     WallEvent* _lastWallEvent;
     WallEvent* _latestSongContainer;
-    NSDate* _latestEventDate;
+    WallEvent* _latestEvent;
     
     NSInteger _countMessageEvent;
     NSDate* _lastSongUpdateDate;

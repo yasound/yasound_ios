@@ -62,7 +62,7 @@ static Song* _gNowPlayingSong = nil;
     
         _firstRequest = YES;
     
-    _latestEventDate = nil;
+    _latestEvent = nil;
         _lastWallEvent = nil;
         _latestSongContainer = nil;
         _countMessageEvent = 0;
@@ -913,25 +913,35 @@ static Song* _gNowPlayingSong = nil;
     
     if (count > 0)
     {
-        WallEvent* ev = [_wallEvents objectAtIndex:0];
+        WallEvent* ev = [events objectAtIndex:0];
+        WallEvent* wev = [_wallEvents objectAtIndex:0];
+        
+        NSLog(@"first event is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
+        NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
 
-        _latestEventDate = ev.start_date;
-        NSLog(@"_lastestEventDate is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
+        if ([wev.start_date isLaterThan:ev.start_date])
+            _latestEvent = wev;
+        else
+            _latestEvent = ev;
+        
+
+        NSLog(@"_latestEvent is %@ : %@", [RadioViewController evTypeToString:_latestEvent.type], _latestEvent.start_date);
+        NSLog(@"_lastWallEvent is %@ : %@", [RadioViewController evTypeToString:_lastWallEvent.type], _lastWallEvent.start_date);
         //_latestSongContainer = child.start_date;
         
-        ev = [_wallEvents objectAtIndex:(_wallEvents.count -1)];
-        NSArray* children = [ev getChildren];
-        
-        // if no children, the last event is the main event itself
-        if (children == nil)
-        {
-            _lastWallEvent = ev;
-        }
-        // if children, the last event is the last inserted children
-        else
-        {
-            _lastWallEvent = [children objectAtIndex:(children.count -1)];
-        }
+//        ev = [_wallEvents objectAtIndex:(_wallEvents.count -1)];
+//        NSArray* children = [ev getChildren];
+//        
+//        // if no children, the last event is the main event itself
+//        if (children == nil)
+//        {
+//            _lastWallEvent = ev;
+//        }
+//        // if children, the last event is the last inserted children
+//        else
+//        {
+//            _lastWallEvent = [children objectAtIndex:(children.count -1)];
+//        }
 
         
         
@@ -958,6 +968,13 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedPreviousLoginEvent:(WallEvent*)ev
 {
+    NSLog(@"receivedPreviousLoginEvent ev %@", ev.start_date);
+    NSLog(@"compared to _lastWallEvent : %@ : %@", [RadioViewController evTypeToString:_lastWallEvent.type], _lastWallEvent.start_date);
+    
+    // update lastWallEvent
+    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThan:_lastWallEvent.start_date]))
+        _lastWallEvent = ev;
+    
 //    if (_latestEventDate == nil)
 //        return;
 //    
@@ -968,6 +985,11 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedPreviousLogoutEvent:(WallEvent*)ev
 {
+    // update lastWallEvent
+    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThan:_lastWallEvent.start_date]))
+        _lastWallEvent = ev;
+
+    
 //    if (_latestEventDate == nil)
 //        return;
 //    
@@ -978,18 +1000,28 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedPreviousStartListeningEvent:(WallEvent*)ev
 {
+    // update lastWallEvent
+    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThan:_lastWallEvent.start_date]))
+        _lastWallEvent = ev;
     
 }
 
 
 - (void)receivedPreviousStopListeningEvent:(WallEvent*)ev
 {
+    // update lastWallEvent
+    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThan:_lastWallEvent.start_date]))
+        _lastWallEvent = ev;
     
 }
 
 
 - (void)receivedPreviousSongEvent:(WallEvent*)ev
 {
+    // update lastWallEvent
+    if ((_lastWallEvent == nil) || ([ev.start_date isEarlierThan:_lastWallEvent.start_date]))
+        _lastWallEvent = ev;
+    
     if (_latestSongContainer != nil)
     {
         [_latestSongContainer addChild:ev];
@@ -1006,6 +1038,10 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedPreviousMessageEvent:(WallEvent*)ev
 {
+    // update lastWallEvent
+    if ([ev.start_date isEarlierThan:_lastWallEvent.start_date])
+        _lastWallEvent = ev;
+    
     [_wallEvents addObject:ev];
     [self addMessage];
     _latestSongContainer = nil;    
@@ -1088,25 +1124,35 @@ static Song* _gNowPlayingSong = nil;
     
     if (count > 0)
     {
-        WallEvent* ev = [_wallEvents objectAtIndex:0];
+        WallEvent* ev = [events objectAtIndex:0];
+        WallEvent* wev = [_wallEvents objectAtIndex:0];
         
-        _latestEventDate = ev.start_date;
-        NSLog(@"_lastestEventDate is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
+        NSLog(@"first event is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
+        NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
+        
+        if ([wev.start_date isLaterThan:ev.start_date])
+            _latestEvent = wev;
+        else
+            _latestEvent = ev;
+        
+        
+        NSLog(@"_latestEvent is %@ : %@", [RadioViewController evTypeToString:_latestEvent.type], _latestEvent.start_date);
+
         //_latestSongContainer = child.start_date;
         
-        ev = [_wallEvents objectAtIndex:(_wallEvents.count -1)];
-        NSArray* children = [ev getChildren];
-        
-        // if no children, the last event is the main event itself
-        if (children == nil)
-        {
-            _lastWallEvent = ev;
-        }
-        // if children, the last event is the last inserted children
-        else
-        {
-            _lastWallEvent = [children objectAtIndex:(children.count -1)];
-        }
+//        ev = [_wallEvents objectAtIndex:(_wallEvents.count -1)];
+//        NSArray* children = [ev getChildren];
+//        
+//        // if no children, the last event is the main event itself
+//        if (children == nil)
+//        {
+//            _lastWallEvent = ev;
+//        }
+//        // if children, the last event is the last inserted children
+//        else
+//        {
+//            _lastWallEvent = [children objectAtIndex:(children.count -1)];
+//        }
         
         
     }
@@ -1120,10 +1166,10 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedCurrentLoginEvent:(WallEvent*)ev
 {
-    if (_latestEventDate == nil)
+    if (_latestEvent == nil)
         return;
     
-    if ([ev.start_date isLaterThan:_latestEventDate])
+    if ([ev.start_date isLaterThan:_latestEvent.start_date])
     {
         NSLog(@"receivedCurrentLoginEvent %@ ", ev.user.name);
         [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", ev.user.name]];
@@ -1133,10 +1179,10 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedCurrentLogoutEvent:(WallEvent*)ev
 {
-    if (_latestEventDate == nil)
+    if (_latestEvent == nil)
         return;
     
-    if ([ev.start_date isLaterThan:_latestEventDate])
+    if ([ev.start_date isLaterThan:_latestEvent.start_date])
     {
         NSLog(@"receivedCurrentLogoutEvent %@ ", ev.user.name);
         [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", ev.user.name]];    
@@ -1159,11 +1205,9 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedCurrentSongEvent:(WallEvent*)ev
 {
-    if ((_latestEventDate != nil) && ([ev.start_date isEarlierThanOrEqualTo:_latestEventDate]))
+    if ((_latestEvent != nil) && ([ev.start_date isEarlierThanOrEqualTo:_latestEvent.start_date]))
         return;
     
-    NSLog(@"LatestEventDate %@", _latestEventDate);
-
 
     // replace lastSongEvent container with this new one
     if (_latestSongContainer != nil)
@@ -1190,7 +1234,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedCurrentMessageEvent:(WallEvent*)ev
 {
-    if ((_latestEventDate != nil) && ([ev.start_date isEarlierThanOrEqualTo:_latestEventDate]))
+    if ((_latestEvent != nil) && ([ev.start_date isEarlierThanOrEqualTo:_latestEvent.start_date]))
         return;
     
     NSLog(@"receivedCurrentMessageEvent ADD %@ : date %@", ev.user.name, ev.start_date);
