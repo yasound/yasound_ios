@@ -59,6 +59,7 @@
     NSTimer* _timerUpdate;
     
     NSMutableArray* _wallEvents;
+    NSNumber* _lastWallEventID;
 //    NSMutableArray* _wallHeights;
 //    NSMutableDictionary* _mapHeights;
     

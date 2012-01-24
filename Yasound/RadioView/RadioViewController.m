@@ -78,6 +78,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"CellMinHeight" error:nil];
     _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
         
+      _lastWallEventID = nil;
         _wallEvents = [[NSMutableArray alloc] init];
 //        _wallHeights = [[NSMutableArray alloc] init];
 //        _mapHeights = [[NSMutableDictionary alloc] init];
@@ -757,8 +758,7 @@ static Song* _gNowPlayingSong = nil;
       [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize target:self action:@selector(receiveWallEvents:withInfo:)];
     else
     {
-        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize afterEventWithID:_lastWallEventID target:self action:@selector(receiveWallEvents:withInfo:)];
     }
 }
 
@@ -868,6 +868,7 @@ static Song* _gNowPlayingSong = nil;
     int addedCount = 0;
     for (ev in events)
     {
+      _lastWallEventID = ev.id;
         if (![ev.type isEqualToString:EV_TYPE_MESSAGE] && ![ev.type isEqualToString:EV_TYPE_SONG])
         {
             continue;
