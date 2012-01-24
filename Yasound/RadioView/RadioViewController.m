@@ -658,21 +658,22 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onTimerUpdate:(NSTimer*)timer
 {    
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 arget:self action:@selector(receivedCurrentWallEvents:withInfo:)];
     [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
 
 - (void)updatePreviousWall
 {    
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+  [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:100 target:self action:@selector(receiveWallEvents:withInfo:)];
+
     [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
 
 - (void)updateCurrentWall
 {    
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
 }
 
 
@@ -761,17 +762,28 @@ static Song* _gNowPlayingSong = nil;
     return count;
 }
 
-- (void)askForNextWallEvents
-{
-    //LBDEBUG FAKE
-    if (_wallEvents.count == 0)
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receivedWallEvents:withInfo:)];
-    else
-    {
-        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receivedWallEvents:withInfo:)];
-    }
-}
+//- (void)askForNextWallEvents
+//{
+//    //LBDEBUG FAKE
+//  int pageSize = 50;
+//    if (_wallEvents.count == 0)
+//<<<<<<< HEAD
+//        [[YasoundDataProvider main] wallEventsForRadio:self.radio target:self action:@selector(receivedWallEvents:withInfo:)];
+//    else
+//    {
+//        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
+//        [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:last target:self action:@selector(receivedWallEvents:withInfo:)];
+//=======
+//      [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize target:self action:@selector(receiveWallEvents:withInfo:)];
+//    else
+//    {
+//        WallEvent* last = [_wallEvents objectAtIndex:_wallEvents.count - 1];
+//        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:pageSize afterEvent:last target:self action:@selector(receiveWallEvents:withInfo:)];
+//>>>>>>> 371fa72fb79630a0f8ec60bc981dcb3f648c1da8
+//    }
+//}
+
+
 
 - (void)didAddWallEvents:(int)count atIndex:(int)index
 {
@@ -953,7 +965,7 @@ static Song* _gNowPlayingSong = nil;
     // ask for more
     if (_countMessageEvent < NB_MAX_EVENTMESSAGE)
     {
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio afterEvent:_lastWallEvent target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:50 afterEvent:_lastWallEvent target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
     }
 //    else
 //    {
