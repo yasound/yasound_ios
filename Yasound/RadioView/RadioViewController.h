@@ -18,7 +18,15 @@
 
 @interface RadioViewController : UIViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource>
 {
+    NSDate* _BEGIN;
+    NSDate* _END;
+    
+    BOOL _updatingPrevious;
+    UILabel* _updatingPreviousLabel;
+    UIActivityIndicatorView* _updatingPreviousIndicator;
+    
     UIView* _headerView;
+    BOOL _firstUpdateRequest;
     
     UILabel* _favoritesLabel;
     UILabel* _listenersLabel;

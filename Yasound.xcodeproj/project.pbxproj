@@ -196,6 +196,14 @@
 		BC40CC7514CFF3FE00DF0950 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC6F14CFF3FE00DF0950 /* MenuViewController.xib */; };
 		BC40CC7614CFF3FE00DF0950 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC6F14CFF3FE00DF0950 /* MenuViewController.xib */; };
 		BC40CC7714CFF3FE00DF0950 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC6F14CFF3FE00DF0950 /* MenuViewController.xib */; };
+		BC40CC7F14D0093F00DF0950 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
+		BC40CC8014D0093F00DF0950 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
+		BC40CC8114D0093F00DF0950 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
+		BC40CC8214D0093F00DF0950 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
+		BC40CC8414D010BD00DF0950 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
+		BC40CC8514D010DD00DF0950 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
+		BC40CC8614D010E500DF0950 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
+		BC40CC8714D010EB00DF0950 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
 		BC49890414A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890514A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890614A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
@@ -1362,6 +1370,9 @@
 		BC40CC6D14CFF3FE00DF0950 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		BC40CC6E14CFF3FE00DF0950 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		BC40CC6F14CFF3FE00DF0950 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		BC40CC7D14D0093F00DF0950 /* DDMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuController.h; sourceTree = "<group>"; };
+		BC40CC7E14D0093F00DF0950 /* DDMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuController.m; sourceTree = "<group>"; };
+		BC40CC8314D010BD00DF0950 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BC4988F014A107DF00873381 /* ApiKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
 		BC4988F114A107DF00873381 /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
 		BC4988F414A107DF00873381 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
@@ -1696,6 +1707,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC40CC8414D010BD00DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6A14CF64F500DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
 				BC40CBC214CF63B500DF0950 /* libfacebook_ios_sdk.a in Frameworks */,
 				BC71F5DA147FEC6F00DAE4BD /* SystemConfiguration.framework in Frameworks */,
@@ -1724,6 +1736,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC40CC8614D010E500DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6814CF64EC00DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
 				BC40CBC014CF63A800DF0950 /* libfacebook_ios_sdk.a in Frameworks */,
 				BC93CD3D14CF3F7A007C723F /* SystemConfiguration.framework in Frameworks */,
@@ -1752,6 +1765,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC40CC8714D010EB00DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6B14CF64F800DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
 				BC40CBBF14CF63A300DF0950 /* libfacebook_ios_sdk.a in Frameworks */,
 				E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */,
@@ -1780,6 +1794,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC40CC8514D010DD00DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6914CF64F100DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
 				BC40CBC114CF63B200DF0950 /* libfacebook_ios_sdk.a in Frameworks */,
 				E5F3B8901498B88D008DD607 /* SystemConfiguration.framework in Frameworks */,
@@ -2023,6 +2038,16 @@
 				BC40CC0914CF64B100DF0950 /* twitter_load.png */,
 			);
 			path = SAOAuthTwitterEngine;
+			sourceTree = "<group>";
+		};
+		BC40CC7C14D0093F00DF0950 /* DDMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				BC40CC7D14D0093F00DF0950 /* DDMenuController.h */,
+				BC40CC7E14D0093F00DF0950 /* DDMenuController.m */,
+			);
+			name = DDMenuController;
+			path = ThirdParties/DDMenuController;
 			sourceTree = "<group>";
 		};
 		BC5EE20E147D3EB300A282A5 /* Radio Selection */ = {
@@ -2362,6 +2387,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				BC40CC7C14D0093F00DF0950 /* DDMenuController */,
 				BC40CBC414CF648500DF0950 /* Twitter-OAuth-iPhone */,
 				BC40CBB314CF633600DF0950 /* facebook-ios-sdk */,
 				BCCA798614AE24C80011AADD /* s7graphview */,
@@ -2740,6 +2766,7 @@
 		E5A9A3AC1454DC0500EA374C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC40CC8314D010BD00DF0950 /* QuartzCore.framework */,
 				BCDC97D214AB81EA00D54631 /* Accounts.framework */,
 				BCDC97CE14AB81BF00D54631 /* Security.framework */,
 				BCDC97CF14AB81BF00D54631 /* Twitter.framework */,
@@ -3700,6 +3727,7 @@
 				BC40CC4F14CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5314CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC7114CFF3FE00DF0950 /* MenuViewController.m in Sources */,
+				BC40CC8014D0093F00DF0950 /* DDMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3825,6 +3853,7 @@
 				BC40CC5114CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5514CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC7314CFF3FE00DF0950 /* MenuViewController.m in Sources */,
+				BC40CC8214D0093F00DF0950 /* DDMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3949,6 +3978,7 @@
 				BC40CC4E14CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5214CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC7014CFF3FE00DF0950 /* MenuViewController.m in Sources */,
+				BC40CC7F14D0093F00DF0950 /* DDMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4074,6 +4104,7 @@
 				BC40CC5014CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5414CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC7214CFF3FE00DF0950 /* MenuViewController.m in Sources */,
+				BC40CC8114D0093F00DF0950 /* DDMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

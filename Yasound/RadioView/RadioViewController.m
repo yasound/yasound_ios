@@ -34,6 +34,9 @@
 
 #define NB_MAX_EVENTMESSAGE 10
 
+#define WALL_FIRSTREQUEST_FIRST_PAGESIZE 100
+#define WALL_FIRSTREQUEST_SECOND_PAGESIZE 50
+
 
 @implementation RadioViewController
 
@@ -59,6 +62,8 @@ static Song* _gNowPlayingSong = nil;
 
         _trackInteractionViewDisplayed = NO;
 
+        _updatingPrevious = NO;
+        _firstUpdateRequest = YES;
         _latestEvent = nil;
         _lastWallEvent = nil;
         _latestSongContainer = nil;
@@ -524,7 +529,13 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)updatePreviousWall
 {    
-  [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:200 target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+    //ICI PROFILE
+    _BEGIN = [NSDate date];
+    [_BEGIN retain];
+    
+    _updatingPrevious = YES;
+
+    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_FIRST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
 
     [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
@@ -636,6 +647,17 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedPreviousWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
+    //ICI PROFILE
+    if (_firstUpdateRequest)
+    {
+        _END = [NSDate date];
+        NSTimeInterval timeDifference = [_END timeIntervalSinceDate:_BEGIN];
+        NSLog(@"PROFILE %.2f", timeDifference);
+        
+        [_BEGIN release];
+    }
+    
+    
     Meta* meta = [info valueForKey:@"meta"];
     NSError* err = [info valueForKey:@"error"];
     
@@ -656,11 +678,17 @@ static Song* _gNowPlayingSong = nil;
     if (!events || events.count == 0)
     {
         NSLog(@"NO MORE EVENTS. end receivedPreviousWallEvents\n");
-
-        assert(_timerUpdate == nil);
-
-        // launch the update timer
-        _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onTimerUpdate:) userInfo:nil repeats:YES];
+        
+        _updatingPrevious = NO;
+        
+        if (_firstUpdateRequest)
+        {
+            assert(_timerUpdate == nil);
+            
+            _firstUpdateRequest = NO;
+            // launch the update timer
+            _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onTimerUpdate:) userInfo:nil repeats:YES];
+        }
 
         return;
     }
@@ -696,38 +724,41 @@ static Song* _gNowPlayingSong = nil;
     }
 
     NSInteger count = events.count;
-    
-    if (count > 0)
-    {
-        WallEvent* ev = [events objectAtIndex:0];
-        WallEvent* wev = [_wallEvents objectAtIndex:0];
-        
-        NSLog(@"first event is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
-        NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
 
-        if ([wev.start_date isLaterThan:ev.start_date])
-            _latestEvent = wev;
-        else
-            _latestEvent = ev;
-        
+    // update _latestEvent
+    WallEvent* ev = [events objectAtIndex:0];
+    WallEvent* wev = [_wallEvents objectAtIndex:0];
+    
+    NSLog(@"first event is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
+    NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
 
-        NSLog(@"_latestEvent is %@ : %@", [RadioViewController evTypeToString:_latestEvent.type], _latestEvent.start_date);
-        NSLog(@"_lastWallEvent is %@ : %@", [RadioViewController evTypeToString:_lastWallEvent.type], _lastWallEvent.start_date);
-    }
+    if ([wev.start_date isLaterThan:ev.start_date])
+        _latestEvent = wev;
     else
-        return;
-    
-    
-    // ask for more
-    if (_countMessageEvent < NB_MAX_EVENTMESSAGE)
-    {
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:100 afterEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
-    }
-    else
+        _latestEvent = ev;    
+
+    NSLog(@"_latestEvent is %@ : %@", [RadioViewController evTypeToString:_latestEvent.type], _latestEvent.start_date);
+    NSLog(@"_lastWallEvent is %@ : %@", [RadioViewController evTypeToString:_lastWallEvent.type], _lastWallEvent.start_date);
+
+    // launch update timer
+    if (_firstUpdateRequest)
     {
         assert(_timerUpdate == nil);
+        
+        _firstUpdateRequest = NO;
         // launch the update timer
         _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onTimerUpdate:) userInfo:nil repeats:YES];
+    }
+
+    
+    // ask for more previous messages
+    if (_countMessageEvent < NB_MAX_EVENTMESSAGE)
+    {
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_SECOND_PAGESIZE afterEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+    }
+    else
+    {
+        _updatingPrevious = NO;
     }
     
     
@@ -1729,6 +1760,56 @@ static Song* _gNowPlayingSong = nil;
       return;
     }  
 }
+
+
+
+
+
+
+
+//#pragma mark -
+//#pragma mark ScrollView Callbacks
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{	
+////    NSLog(@"SCROLLVIEW frame %.2f,%.2f  %.2f x %.2f", scrollView.frame.origin.x, scrollView.frame.origin.y, scrollView.frame.size.width, scrollView.frame.size.height);
+////    NSLog(@"SCROLLVIEW scrollView.contentOffset.y %.2f ", scrollView.contentOffset.y);
+////    NSLog(@"SCROLLVIEW scrollView.contentSize.height %.2f ", scrollView.contentSize.height);
+//
+//    
+//    if (!_updatingPrevious)
+//        return;
+//    
+//    CGFloat posY = scrollView.frame.origin.y + (scrollView.contentOffset.y * (-1)) + scrollView.contentSize.height;
+//    
+//    if (_updatingPreviousIndicator == nil)
+//    {
+//        _updatingPreviousIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//        [self.view addSubview:_updatingPreviousIndicator];
+//        [_updatingPreviousIndicator startAnimating];
+//        
+//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"UpdatingPreviousLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        _updatingPreviousLabel = [sheet makeLabel];
+//        _updatingPreviousLabel.text = NSLocalizedString(@"UpdatingPrevious_label", nil);
+//        [self.view addSubview:_updatingPreviousLabel];
+//    }
+//
+//    _updatingPreviousIndicator.frame = CGRectMake(60, posY+10, 22, 22);
+//    _updatingPreviousLabel.frame = CGRectMake(160, posY+10, 150, 22);
+//
+////	if (scrollView.isDragging)
+////    {
+////        if (scrollView.contentOffset.y > -DRAGGABLE_HEIGHT && scrollView.contentOffset.y < 0.0f) 
+////        {
+////            self.draggableTableView.frame = CGRectMake(0,  -DRAGGABLE_HEIGHT - scrollView.contentOffset.y, self.draggableTableView.frame.size.width, self.draggableTableView.frame.size.height);
+////        } 
+////        else if (scrollView.contentOffset.y < -DRAGGABLE_HEIGHT) 
+////        {
+////        }
+////	}
+//}
+
+
+#pragma mark Updating Previous
 
 
 
