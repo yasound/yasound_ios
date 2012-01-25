@@ -207,6 +207,11 @@
     [view release];
 }
 
+- (IBAction)menuBarItemClicked:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 
 

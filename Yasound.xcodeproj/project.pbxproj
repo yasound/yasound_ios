@@ -309,6 +309,14 @@
 		BC828AD914B49E9500763558 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC828ADA14B49E9500763558 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC828ADB14B49E9500763558 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
+		BC88905914D0BC70004CCE04 /* barItemMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = BC88905714D0BC70004CCE04 /* barItemMenu.png */; };
+		BC88905A14D0BC70004CCE04 /* barItemMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = BC88905714D0BC70004CCE04 /* barItemMenu.png */; };
+		BC88905B14D0BC70004CCE04 /* barItemMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = BC88905714D0BC70004CCE04 /* barItemMenu.png */; };
+		BC88905C14D0BC70004CCE04 /* barItemMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = BC88905714D0BC70004CCE04 /* barItemMenu.png */; };
+		BC88905D14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC88905814D0BC70004CCE04 /* barItemMenu@2x.png */; };
+		BC88905E14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC88905814D0BC70004CCE04 /* barItemMenu@2x.png */; };
+		BC88905F14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC88905814D0BC70004CCE04 /* barItemMenu@2x.png */; };
+		BC88906014D0BC70004CCE04 /* barItemMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC88905814D0BC70004CCE04 /* barItemMenu@2x.png */; };
 		BC8B081114924D75007E1307 /* tabIconFavorites.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B080714924D75007E1307 /* tabIconFavorites.png */; };
 		BC8B081214924D75007E1307 /* tabIconFavorites.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B080714924D75007E1307 /* tabIconFavorites.png */; };
 		BC8B081314924D75007E1307 /* tabIconFavorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B080814924D75007E1307 /* tabIconFavorites@2x.png */; };
@@ -1417,6 +1425,8 @@
 		BC828AD314B49E9500763558 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BC828AD414B49E9500763558 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		BC828AD514B49E9500763558 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		BC88905714D0BC70004CCE04 /* barItemMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemMenu.png; sourceTree = "<group>"; };
+		BC88905814D0BC70004CCE04 /* barItemMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemMenu@2x.png"; sourceTree = "<group>"; };
 		BC8B080714924D75007E1307 /* tabIconFavorites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabIconFavorites.png; sourceTree = "<group>"; };
 		BC8B080814924D75007E1307 /* tabIconFavorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabIconFavorites@2x.png"; sourceTree = "<group>"; };
 		BC8B080914924D75007E1307 /* tabIconMyYasound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabIconMyYasound.png; sourceTree = "<group>"; };
@@ -2160,6 +2170,15 @@
 			name = avatarDummy;
 			sourceTree = "<group>";
 		};
+		BC88905614D0BC70004CCE04 /* BarItems */ = {
+			isa = PBXGroup;
+			children = (
+				BC88905714D0BC70004CCE04 /* barItemMenu.png */,
+				BC88905814D0BC70004CCE04 /* barItemMenu@2x.png */,
+			);
+			path = BarItems;
+			sourceTree = "<group>";
+		};
 		BC8B080614924D75007E1307 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -2660,6 +2679,7 @@
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BC88905614D0BC70004CCE04 /* BarItems */,
 				BCD1219A14C749D90013B2EF /* bullets.png */,
 				BCD1219B14C749D90013B2EF /* bullets@2x.png */,
 				BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */,
@@ -3115,6 +3135,8 @@
 				BC40CC0F14CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5714CF64B100DF0950 /* twitter_load.png in Resources */,
 				BC40CC7514CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
+				BC88905A14D0BC70004CCE04 /* barItemMenu.png in Resources */,
+				BC88905E14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3274,6 +3296,8 @@
 				BC40CC1114CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5914CF64B100DF0950 /* twitter_load.png in Resources */,
 				BC40CC7714CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
+				BC88905C14D0BC70004CCE04 /* barItemMenu.png in Resources */,
+				BC88906014D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3433,6 +3457,8 @@
 				BC40CC0E14CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5614CF64B100DF0950 /* twitter_load.png in Resources */,
 				BC40CC7414CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
+				BC88905914D0BC70004CCE04 /* barItemMenu.png in Resources */,
+				BC88905D14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3592,6 +3618,8 @@
 				BC40CC1014CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5814CF64B100DF0950 /* twitter_load.png in Resources */,
 				BC40CC7614CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
+				BC88905B14D0BC70004CCE04 /* barItemMenu.png in Resources */,
+				BC88905F14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

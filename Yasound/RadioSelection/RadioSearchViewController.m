@@ -179,6 +179,14 @@
     [self.searchDisplayController.searchResultsTableView reloadData];
 }
 
+
+#pragma mark - IBActions
+
+- (IBAction)menuBarItemClicked:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
  
 
 

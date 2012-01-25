@@ -23,5 +23,8 @@
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;
 
+- (IBAction)menuBarItemClicked:(id)sender;
+
+
 @end
 

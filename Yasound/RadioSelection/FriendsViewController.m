@@ -22,10 +22,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        UIImage* tabImage = [UIImage imageNamed:tabIcon];
-        UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
-        self.tabBarItem = theItem;
-        [theItem release];     
+//        UIImage* tabImage = [UIImage imageNamed:tabIcon];
+//        UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
+//        self.tabBarItem = theItem;
+//        [theItem release];     
         
         _friends_online = nil;
         _friends_offline = nil;
@@ -46,7 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     _toolbarTitle.text = NSLocalizedString(@"FriendsView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
@@ -242,5 +242,12 @@
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
+
+- (IBAction)menuBarItemClicked:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 
 @end
