@@ -23,10 +23,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        UIImage* tabImage = [UIImage imageNamed:tabIcon];
-        UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
-        self.tabBarItem = theItem;
-        [theItem release]; 
+//        UIImage* tabImage = [UIImage imageNamed:tabIcon];
+//        UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
+//        self.tabBarItem = theItem;
+//        [theItem release]; 
         
         _radios = nil;
     }
