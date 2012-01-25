@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MenuViewController : UIViewController
+{
+    IBOutlet UITableView* _tableView;
+}
 
 @end

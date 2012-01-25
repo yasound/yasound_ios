@@ -8,7 +8,6 @@
 
 #import "RootViewController.h"
 #import "HomeViewController.h"
-#import "RadioTabBarController.h"
 #import "RadioViewController.h"
 #import "YasoundSessionManager.h"
 #import "ActivityAlertView.h"
@@ -16,7 +15,7 @@
 #import "YasoundReachability.h"
 #import "AudioStreamManager.h"
 #import "SettingsViewController.h"
-
+#import "RadioSelectionViewController.h"
 
 
 //#define FORCE_ROOTVIEW_RADIOS
@@ -30,6 +29,7 @@
     if (self) 
     {
         _firstTime = YES;
+        _menuView = nil;
     }
     return self;
 }
@@ -42,6 +42,13 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)dealloc
+{
+    if (_menuView != nil)
+        [_menuView release];
+    [super dealloc];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -51,6 +58,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushRadioSelection:) name:NOTIF_PUSH_RADIO_SELECTION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifLoginScreen:) name:NOTIF_LOGIN_SCREEN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifWizard:) name:NOTIF_WIZARD object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifMenu:) name:NOTIF_MENU object:nil];
     
   //Make sure the system follows our playback status
   // <=> Background audio playing
@@ -159,13 +167,23 @@
 
 - (void)onNotifPushRadioSelection:(NSNotification*)notification
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:3] forKey:@"forceTabIndex"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:3] forKey:@"forceTabIndex"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
 
-    // add tabs
-    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
-    [self.navigationController pushViewController:tabBarController animated:NO];    
-    [tabBarController release];
+    if (_menuView == nil)
+    {
+        _menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        [_menuView retain];
+        [self.navigationController pushViewController:_menuView animated:NO];
+    }
+    else
+    {
+        [self.navigationController popToViewController:_menuView animated:NO];
+    }
+    
+    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIconNew.png"];
+    [self.navigationController pushViewController:view animated:NO];    
+    [view relese];
 }
 
 
@@ -188,19 +206,43 @@
     [view release];
 }
 
+- (void)onNotifMenu:(NSNotification *)notification
+{
+    [self.navigationController popToViewController:_menuView animated:YES];
+}
+
 
 
 
 
 - (void)launchRadio
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"automaticLaunch"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"automaticLaunch"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    // ask for radio contents to the provider
+    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
+}
 
-    // add tabs
-    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
-    [self.navigationController pushViewController:tabBarController animated:NO];    
-    [tabBarController release];
+
+- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+{
+    [ActivityAlertView close];
+    
+    if (_menuView == nil)
+    {
+        _menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        [_menuView retain];
+        [self.navigationController pushViewController:_menuView animated:NO];
+    }
+    else
+    {
+        [self.navigationController popToViewController:_menuView animated:NO];
+    }
+    
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
 }
 
 

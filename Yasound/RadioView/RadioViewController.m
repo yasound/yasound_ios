@@ -10,7 +10,6 @@
 #import "Theme.h"
 #import "Track.h"
 #import "RadioViewCell.h"
-#import "RadioTabBarController.h"
 
 
 #import "YasoundDataProvider.h"
@@ -23,6 +22,7 @@
 #import "ActivityModelessSpinner.h"
 #import "AudioStreamer.h"
 #import "AudioStreamManager.h"
+#import "RootViewController.h"
 
 #import "User.h"
 #import "DateAdditions.h"
@@ -1486,7 +1486,8 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction)onBack:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_MENU object:nil];
 }
 
 
@@ -1603,11 +1604,11 @@ static Song* _gNowPlayingSong = nil;
 }
 
 
-- (IBAction) onSearch:(id)sender
-{
-    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
-    [self.navigationController pushViewController:tabBarController animated:YES];    
-}
+//- (IBAction) onSearch:(id)sender
+//{
+//    RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
+//    [self.navigationController pushViewController:tabBarController animated:YES];    
+//}
 
 
 - (IBAction)onStatusBarButtonClicked:(id)sender
@@ -1811,9 +1812,9 @@ static Song* _gNowPlayingSong = nil;
 
 #pragma mark Updating Previous
 
-
-
-
+//
+//- (void)show
+//
 
 
 @end
