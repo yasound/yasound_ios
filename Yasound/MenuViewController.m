@@ -368,7 +368,8 @@
             UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_logout_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_logout_logout", nil), nil];
             
             popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-            [popupQuery showFromTabBar:self.view];
+//            [popupQuery showFromTabBar:self.view];
+            [popupQuery showFromRect:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + self.view.frame.size.height, popupQuery.frame.size.width, popupQuery.frame.size.height) inView:self.view animated:YES];
             [popupQuery release];
         }    
     }    
