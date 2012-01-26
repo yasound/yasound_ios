@@ -123,6 +123,13 @@
 
 - (void)loginProcess
 {
+    if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
+        return;
+    }
+    
+    
     if ([YasoundSessionManager main].registered)
     {
 //        // TAG ACTIVITY ALERT
