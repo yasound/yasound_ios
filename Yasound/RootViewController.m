@@ -160,8 +160,6 @@
 
 - (void)onNotifPushRadio:(NSNotification *)notification
 {
-    // go back to root, removing all viewcontroller
-    [self.navigationController popToRootViewControllerAnimated:NO];
     [self launchRadio];
 }
 
@@ -183,7 +181,7 @@
     
     RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIconNew.png"];
     [self.navigationController pushViewController:view animated:NO];    
-    [view relese];
+    [view release];
 }
 
 
@@ -191,6 +189,8 @@
 - (void)onNotifLoginScreen:(NSNotification *)notification
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
+    [_menuView release];
+    _menuView = nil;
 
     HomeViewController* view = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:NO];
@@ -200,6 +200,8 @@
 - (void)onNotifWizard:(NSNotification *)notification
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
+    [_menuView release];
+    _menuView = nil;
     
     SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
     [self.navigationController pushViewController:view animated:NO];
