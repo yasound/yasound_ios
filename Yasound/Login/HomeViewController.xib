@@ -56,7 +56,7 @@
 					<object class="IBUIButton" id="281887735">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{7, 229}, {307, 46}}</string>
+						<string key="NSFrame">{{7, 283}, {307, 46}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="961416357"/>
@@ -81,6 +81,10 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">cellFacebookDown.png</string>
 						</object>
+						<object class="NSCustomResource" key="IBUIDisabledImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">cellFacebookDisabled.png</string>
+						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">cellFacebookUp.png</string>
@@ -98,9 +102,10 @@
 					<object class="IBUILabel" id="961416357">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{58, 240}, {232, 21}}</string>
+						<string key="NSFrame">{{58, 294}, {232, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -288,7 +293,7 @@
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="102.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="107.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="1" key="107.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="0.0" key="107.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="111.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="115.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="117.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -303,7 +308,7 @@
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">HomeViewController</string>
-					<string key="superclassName">TrackedUIViewController</string>
+					<string key="superclassName">TestflightViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_facebookButton">UIButton</string>
 						<string key="_facebookLoginLabel">UILabel</string>
@@ -329,6 +334,14 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">TestflightViewController</string>
+					<string key="superclassName">TrackedUIViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TestflightViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">TrackedUIViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -344,6 +357,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="LoginBackground.png">{320, 480}</string>
+			<string key="cellFacebookDisabled.png">{307, 46}</string>
 			<string key="cellFacebookDown.png">{307, 46}</string>
 			<string key="cellFacebookUp.png">{307, 46}</string>
 		</dictionary>

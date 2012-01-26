@@ -10,7 +10,7 @@
 #import "Security/SFHFKeychainUtils.h"
 #import "FacebookSessionManager.h"
 #import "TwitterSessionManager.h"
-#import "ActivityAlertView.h"
+//#import "ActivityAlertView.h"
 
 @implementation YasoundSessionManager
 
@@ -234,10 +234,10 @@ static YasoundSessionManager* _main = nil;
     
     if (user == nil)
     {
+        assert(_target);
         [self loginError];
         // callback
-        assert(_target);
-        [_target performSelector:_action withObject:nil];        
+        //[_target performSelector:_action withObject:nil];        
         return;
     }
     
@@ -266,22 +266,23 @@ static YasoundSessionManager* _main = nil;
 
 - (void)loginError
 {
-    [ActivityAlertView close];
+    [_target performSelector:_action withObject:nil];
+//    [ActivityAlertView close];
     
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [av show];
-    [av release];  
+//    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [av show];
+//    [av release];  
 }
 
 // Called when a button is clicked. The view will be automatically dismissed after this call returns
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    // refers to (user == nil) in loginRequestDidReturn
-    
-    // callback
-    assert(_target);
-    [_target performSelector:_action withObject:nil];
-}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    // refers to (user == nil) in loginRequestDidReturn
+//    
+//    // callback
+//    assert(_target);
+//    [_target performSelector:_action withObject:nil];
+//}
 
 
 
@@ -511,9 +512,9 @@ static YasoundSessionManager* _main = nil;
     NSLog(@"token '%@'", token);
     NSLog(@"email '%@'", email);
     
-    // TAG ACTIVITY ALERT
-    if (![ActivityAlertView isRunning])
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+//    // TAG ACTIVITY ALERT
+//    if (![ActivityAlertView isRunning])
+//        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     
     
     if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])

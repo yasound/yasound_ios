@@ -673,6 +673,7 @@ static Song* _gNowPlayingSong = nil;
     
     if (!meta)
     {
+        // ICI POSSIBLE COUPURE SERVEUR
         assert(0);
         NSLog(@"receivedPreviousWallEvents : no meta data!");
         return;

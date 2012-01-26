@@ -16,7 +16,7 @@
 #import "AudioStreamManager.h"
 #import "SettingsViewController.h"
 #import "RadioSelectionViewController.h"
-
+#import "ConnectionView.h"
 
 //#define FORCE_ROOTVIEW_RADIOS
 
@@ -119,8 +119,11 @@
 {
     if ([YasoundSessionManager main].registered)
     {
-        // TAG ACTIVITY ALERT
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+//        // TAG ACTIVITY ALERT
+//        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+        
+        // show connection alert
+        [self.view addSubview:[ConnectionView start]];
         
         if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
             [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:)];
@@ -139,19 +142,29 @@
 
 - (void)loginReturned:(User*)user
 {
+    // show connection alert
+    [ConnectionView stop];
+
     if (user != nil)
     {
         [self launchRadio];
     }
     else
     {
+        // show alert message for connection error
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        
+        // and logout properly
         [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
     }
 }
 
 - (void)logoutReturned
 {
-
+    // once logout done, go back to the home screen
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
 }
 
 
