@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EasyTracker.h"
 
-@interface FriendsViewController : UIViewController
+@interface FriendsViewController : TrackedUIViewController
 {
     IBOutlet UIToolbar* _toolbar;
     IBOutlet UILabel* _toolbarTitle;

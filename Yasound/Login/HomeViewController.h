@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "EasyTracker.h"
 
-
 @interface HomeViewController : TrackedUIViewController
 {
     IBOutlet UILabel* _titleLabel;

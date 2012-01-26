@@ -26,6 +26,7 @@
 
 #import "User.h"
 #import "DateAdditions.h"
+#import "GANTracker.h"
 
 //#define LOCAL 1 // use localhost as the server
 
@@ -1541,6 +1542,12 @@ static Song* _gNowPlayingSong = nil;
     if (_viewTracksDisplayed)
         return;
     
+    NSError* error;
+	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go to TracksView" label:nil value:0 withError:&error]) 
+    {
+		        NSLog(@"GANTracker Error tracking foreground event: %@", error);
+	}
+    
     [_viewTracks updateView];
 
     CGRect frame = _viewWall.frame;
@@ -1565,6 +1572,12 @@ static Song* _gNowPlayingSong = nil;
     if (!_viewTracksDisplayed)
         return;
 
+    NSError* error;
+	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go back to RadioView" label:nil value:0 withError:&error]) 
+    {
+        NSLog(@"GANTracker Error tracking foreground event: %@", error);
+	}
+    
     CGRect frame = _viewWall.frame;
     
     [UIView beginAnimations:nil context:NULL];

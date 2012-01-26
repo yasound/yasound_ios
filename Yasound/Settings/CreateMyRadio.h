@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Radio.h"
+#import "EasyTracker.h"
 
 
-@interface CreateMyRadio : UIViewController
+@interface CreateMyRadio : TrackedUIViewController
 {
     BOOL _wizard;
     

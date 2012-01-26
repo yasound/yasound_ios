@@ -11,12 +11,13 @@
 #import "TrackInteractionView.h"
 #import "TracksView.h"
 #import "SongViewCell.h"
+#import "EasyTracker.h"
 
 @class Radio;
 @class AudioStreamer;
 @class WebImageView;
 
-@interface RadioViewController : UIViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface RadioViewController : TrackedUIViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource>
 {
     NSDate* _BEGIN;
     NSDate* _END;

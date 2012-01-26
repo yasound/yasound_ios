@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "QualitySwitchLabel.h"
+#import "EasyTracker.h"
 
 //LBDEBUG
 //typedef enum
@@ -19,7 +20,7 @@
 //} RadioSelectionType;
 
 
-@interface RadioSelectionViewController : UIViewController
+@interface RadioSelectionViewController : TrackedUIViewController
 {
   IBOutlet QualitySwitchLabel* _qualitySwitchLabel;
   IBOutlet UILabel* _topBarTitle;

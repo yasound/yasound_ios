@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EasyTracker.h"
 
-@interface MenuViewController : UIViewController
+
+@interface MenuViewController : TrackedUIViewController
 {
     IBOutlet UITableView* _tableView;
 }

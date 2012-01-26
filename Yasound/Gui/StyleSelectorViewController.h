@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EasyTracker.h"
 
 @protocol StyleSelectorDelegate <NSObject>
 @required
@@ -17,7 +18,7 @@
 @end
 
 
-@interface StyleSelectorViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface StyleSelectorViewController : TrackedUIViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 {
   
 }
