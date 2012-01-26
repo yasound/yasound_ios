@@ -24,7 +24,7 @@
   IBOutlet QualitySwitchLabel* _qualitySwitchLabel;
   IBOutlet UILabel* _topBarTitle;
   IBOutlet UILabel* _categoryTitle;
-    IBOutlet UIButton* _nowPlayingButton;
+    IBOutlet UIBarButtonItem* _nowPlayingButton;
     
   IBOutlet UITableView* _tableView;  
   

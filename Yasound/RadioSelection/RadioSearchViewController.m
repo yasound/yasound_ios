@@ -9,6 +9,8 @@
 #import "RadioSearchViewController.h"
 #import "RadioSelectionTableViewCell.h"
 #import "RadioViewController.h"
+#import "AudioStreamManager.h"
+
 
 
 @implementation RadioSearchViewController
@@ -52,7 +54,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+//    _toolbarTitle.text = NSLocalizedString(@"FriendsView_title", nil);
+    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 }
 
 - (void)viewDidUnload
@@ -159,6 +163,15 @@
     [[YasoundDataProvider main] searchRadios:searchBar.text withGenre:nil withTarget:self action:@selector(receiveRadios:withInfo:)];
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSLog(@"searchBarSearchButtonClicked %@", searchBar.text);
+    
+    [[YasoundDataProvider main] searchRadios:searchBar.text withGenre:nil withTarget:self action:@selector(receiveRadios:withInfo:)];
+}
+
+
+
 
 
 
@@ -181,6 +194,14 @@
 
 
 #pragma mark - IBActions
+
+- (IBAction)nowPlayingClicked:(id)sender
+{
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
 
 - (IBAction)menuBarItemClicked:(id)sender
 {

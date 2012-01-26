@@ -11,11 +11,15 @@
 
 @interface RadioSearchViewController : UIViewController
 {
-  IBOutlet UITableView* _tableView;
+    IBOutlet UITableView* _tableView;
+    IBOutlet UIBarButtonItem* _nowPlayingButton;
+
     NSArray* _radios;
 }
 
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem;
+
+- (IBAction)nowPlayingClicked:(id)sender;
 
 @end

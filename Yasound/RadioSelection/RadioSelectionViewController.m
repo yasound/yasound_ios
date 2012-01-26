@@ -50,7 +50,9 @@
 {
   [super viewDidLoad];
 
-  _topBarTitle.text = self.title;
+//  _topBarTitle.text = NSLocalizedString(@"FavoritesView_title", nil);
+    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+    
     [_qualitySwitchLabel loadView];
     
     // now playing button
