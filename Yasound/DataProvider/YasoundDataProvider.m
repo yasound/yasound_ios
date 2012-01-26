@@ -534,35 +534,6 @@ static YasoundDataProvider* _main = nil;
   [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
-- (void)startListeningRadio:(Radio*)radio
-{
-  if (!_user || !radio)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  
-  WallEvent* e = [[WallEvent alloc] init];
-  e.user = _user;
-  e.radio = radio;
-  e.type = @"T"; // start listening
-  [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
-}
-
-- (void)stopListeningRadio:(Radio*)radio
-{
-  if (!_user || !radio)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  
-  WallEvent* e = [[WallEvent alloc] init];
-  e.user = _user;
-  e.radio = radio;
-  e.type = @"P"; // stop listening
-  [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
-}
-
-
 
 - (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {

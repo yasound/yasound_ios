@@ -55,7 +55,6 @@ static AudioStreamer* _gAudioStreamer = nil;
     
     if (_gAudioStreamer != nil)
     {
-        [[YasoundDataProvider main] stopListeningRadio:self.currentRadio];
         [_gAudioStreamer stop];
         [_gAudioStreamer release];
     }
@@ -73,10 +72,11 @@ static AudioStreamer* _gAudioStreamer = nil;
     
     
     
-    _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radiourl];
+  User* u = [YasoundDataProvider main].user;
+  NSString* cookie = [NSString stringWithFormat:@"username=%@; api_key=%@", u.username, u.api_key];
+    _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radiourl andCookie:cookie];
     //LBDEBUG DEBUG TODO : UNMUTE RADIO
     [_gAudioStreamer start];
-    [[YasoundDataProvider main] startListeningRadio:self.currentRadio];
 
 }
 
@@ -85,7 +85,6 @@ static AudioStreamer* _gAudioStreamer = nil;
     if (_gAudioStreamer == nil)
         return;
 
-    [[YasoundDataProvider main] stopListeningRadio:self.currentRadio];
     [_gAudioStreamer stop];
     [_gAudioStreamer release];
     _gAudioStreamer = nil;
@@ -101,7 +100,6 @@ static AudioStreamer* _gAudioStreamer = nil;
 //        return;
 //
 //    [_gAudioStreamer pause];
-//    [[YasoundDataProvider main] stopListeningRadio:self.currentRadio];
 //}
 
 
@@ -113,7 +111,6 @@ static AudioStreamer* _gAudioStreamer = nil;
 
     //LBDEBUG DEBUG TODO : UNMUTE RADIO
     [_gAudioStreamer start];
-    [[YasoundDataProvider main] startListeningRadio:self.currentRadio];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_PLAY object:nil];
 }
 

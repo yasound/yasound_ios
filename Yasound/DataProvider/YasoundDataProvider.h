@@ -117,9 +117,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)enterRadioWall:(Radio*)radio;
 - (void)leaveRadioWall:(Radio*)radio;
 
-- (void)startListeningRadio:(Radio*)radio;
-- (void)stopListeningRadio:(Radio*)radio;
-
 - (NSURL*)urlForPicture:(NSString*)picturePath;
 
 
