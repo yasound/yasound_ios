@@ -113,6 +113,7 @@ extern NSString * const ASStatusChangedNotification;
 @interface AudioStreamer : NSObject
 {
 	NSURL *url;
+  NSString* cookie;
 
 	//
 	// Special threading consideration:
@@ -180,6 +181,7 @@ extern NSString * const ASStatusChangedNotification;
 @property (readonly) NSDictionary *httpHeaders;
 
 - (id)initWithURL:(NSURL *)aURL;
+- (id)initWithURL:(NSURL *)aURL andCookie:(NSString*)aCookie;
 - (void)start;
 - (void)stop;
 - (void)pause;

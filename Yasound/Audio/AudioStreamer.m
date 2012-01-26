@@ -243,9 +243,22 @@ void ASReadStreamCallBack
 	if (self != nil)
 	{
 		url = [aURL retain];
+    cookie = nil;
 	}
 	return self;
 }
+
+- (id)initWithURL:(NSURL *)aURL andCookie:(NSString*)aCookie
+{
+	self = [super init];
+	if (self != nil)
+	{
+		url = [aURL retain];
+    cookie = aCookie;
+	}
+	return self;
+}
+
 
 //
 // dealloc
@@ -648,6 +661,14 @@ void ASReadStreamCallBack
 		// Create the HTTP GET request
 		//
 		CFHTTPMessageRef message= CFHTTPMessageCreateRequest(NULL, (CFStringRef)@"GET", (CFURLRef)url, kCFHTTPVersion1_1);
+    
+    //
+    // add cookie if requested
+    //
+    if (cookie)
+    {
+      CFHTTPMessageSetHeaderFieldValue(message, (CFStringRef)@"Cookie", (CFStringRef)cookie);
+    }
 		
 		//
 		// If we are creating this request to seek to a location, set the
