@@ -69,6 +69,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     if ([AudioStreamManager main].currentRadio == nil)
         [_nowPlayingButton setEnabled:NO];
 }

@@ -74,6 +74,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     //    [[NSNotificationCenter defaultCenter] addObserver:self
     //                                             selector:@selector (keyboardDidShow:)
     //                                                 name: UIKeyboardDidShowNotification object:nil];

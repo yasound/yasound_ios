@@ -392,6 +392,8 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
     [[AudioStreamManager main] startRadio:self.radio];
     [[YasoundDataProvider main] enterRadioWall:self.radio];
     

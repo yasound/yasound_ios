@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#ifdef TESTFLIGHT_SDK
+#import "TestFlight.h"
+#endif
 
 @class RootViewController;
 

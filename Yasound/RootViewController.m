@@ -75,10 +75,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-//    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
-//    [self.navigationController pushViewController:view animated:NO];
-//    [view release];
-
+    [super viewDidAppear:animated];
+    
     if (_firstTime)
     {
         _firstTime = NO;

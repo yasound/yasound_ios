@@ -248,8 +248,6 @@
 		BC71F583147F979700DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC71F589147F9CD900DAE4BD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
-		BC71F58F147FBCEA00DAE4BD /* MyYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */; };
-		BC71F590147FBCEA00DAE4BD /* MyYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F58E147FBCEA00DAE4BD /* MyYasoundViewController.xib */; };
 		BC71F5AF147FE0A800DAE4BD /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A3147FE0A800DAE4BD /* avatarDummy.png */; };
 		BC71F5B0147FE0A800DAE4BD /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A4147FE0A800DAE4BD /* avatarDummy@2x.png */; };
 		BC71F5B1147FE0A800DAE4BD /* avatarDummy1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A5147FE0A800DAE4BD /* avatarDummy1.png */; };
@@ -273,7 +271,6 @@
 		BC71F5D4147FEC6F00DAE4BD /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC71F5D5147FEC6F00DAE4BD /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC71F5D6147FEC6F00DAE4BD /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		BC71F5D8147FEC6F00DAE4BD /* MyYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */; };
 		BC71F5DA147FEC6F00DAE4BD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
 		BC71F5DB147FEC6F00DAE4BD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A57145F005B00A88910 /* MobileCoreServices.framework */; };
 		BC71F5DC147FEC6F00DAE4BD /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A55145EFFD900A88910 /* libz.dylib */; };
@@ -290,7 +287,6 @@
 		BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC71F624147FEC6F00DAE4BD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
-		BC71F625147FEC6F00DAE4BD /* MyYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F58E147FBCEA00DAE4BD /* MyYasoundViewController.xib */; };
 		BC71F626147FEC6F00DAE4BD /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A3147FE0A800DAE4BD /* avatarDummy.png */; };
 		BC71F627147FEC6F00DAE4BD /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A4147FE0A800DAE4BD /* avatarDummy@2x.png */; };
 		BC71F628147FEC6F00DAE4BD /* avatarDummy1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A5147FE0A800DAE4BD /* avatarDummy1.png */; };
@@ -374,7 +370,6 @@
 		BC93CCD214CF3F7A007C723F /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC93CCD314CF3F7A007C723F /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC93CCD414CF3F7A007C723F /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		BC93CCD514CF3F7A007C723F /* MyYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */; };
 		BC93CCD614CF3F7A007C723F /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
 		BC93CCD714CF3F7A007C723F /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BC93CCD814CF3F7A007C723F /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
@@ -486,7 +481,6 @@
 		BC93CD5614CF3F7A007C723F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC93CD5714CF3F7A007C723F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC93CD5814CF3F7A007C723F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
-		BC93CD5914CF3F7A007C723F /* MyYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F58E147FBCEA00DAE4BD /* MyYasoundViewController.xib */; };
 		BC93CD5A14CF3F7A007C723F /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A3147FE0A800DAE4BD /* avatarDummy.png */; };
 		BC93CD5B14CF3F7A007C723F /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A4147FE0A800DAE4BD /* avatarDummy@2x.png */; };
 		BC93CD5C14CF3F7A007C723F /* avatarDummy1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A5147FE0A800DAE4BD /* avatarDummy1.png */; };
@@ -1097,7 +1091,6 @@
 		E5F3B8681498B88D008DD607 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		E5F3B8691498B88D008DD607 /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		E5F3B86A1498B88D008DD607 /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		E5F3B86B1498B88D008DD607 /* MyYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */; };
 		E5F3B86C1498B88D008DD607 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
 		E5F3B86D1498B88D008DD607 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		E5F3B86E1498B88D008DD607 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
@@ -1125,7 +1118,6 @@
 		E5F3B89E1498B88D008DD607 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		E5F3B89F1498B88D008DD607 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		E5F3B8A01498B88D008DD607 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
-		E5F3B8A11498B88D008DD607 /* MyYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F58E147FBCEA00DAE4BD /* MyYasoundViewController.xib */; };
 		E5F3B8A21498B88D008DD607 /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A3147FE0A800DAE4BD /* avatarDummy.png */; };
 		E5F3B8A31498B88D008DD607 /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A4147FE0A800DAE4BD /* avatarDummy@2x.png */; };
 		E5F3B8A41498B88D008DD607 /* avatarDummy1.png in Resources */ = {isa = PBXBuildFile; fileRef = BC71F5A5147FE0A800DAE4BD /* avatarDummy1.png */; };
@@ -1406,9 +1398,6 @@
 		BC71F582147F979700DAE4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F586147F97DA00DAE4BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F588147F9CD900DAE4BD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		BC71F58C147FBCEA00DAE4BD /* MyYasoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyYasoundViewController.h; path = MyYasound/MyYasoundViewController.h; sourceTree = "<group>"; };
-		BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyYasoundViewController.m; path = MyYasound/MyYasoundViewController.m; sourceTree = "<group>"; };
-		BC71F58E147FBCEA00DAE4BD /* MyYasoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyYasoundViewController.xib; path = MyYasound/MyYasoundViewController.xib; sourceTree = "<group>"; };
 		BC71F5A3147FE0A800DAE4BD /* avatarDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatarDummy.png; path = RadioSelection/avatarDummy/avatarDummy.png; sourceTree = "<group>"; };
 		BC71F5A4147FE0A800DAE4BD /* avatarDummy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatarDummy@2x.png"; path = "RadioSelection/avatarDummy/avatarDummy@2x.png"; sourceTree = "<group>"; };
 		BC71F5A5147FE0A800DAE4BD /* avatarDummy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatarDummy1.png; path = RadioSelection/avatarDummy/avatarDummy1.png; sourceTree = "<group>"; };
@@ -2139,9 +2128,6 @@
 		BC71F595147FC10500DAE4BD /* My Yasound */ = {
 			isa = PBXGroup;
 			children = (
-				BC71F58C147FBCEA00DAE4BD /* MyYasoundViewController.h */,
-				BC71F58D147FBCEA00DAE4BD /* MyYasoundViewController.m */,
-				BC71F58E147FBCEA00DAE4BD /* MyYasoundViewController.xib */,
 				BCCA799214B1AE520011AADD /* StatsViewController.h */,
 				BCCA799314B1AE520011AADD /* StatsViewController.m */,
 				BCCA799414B1AE520011AADD /* StatsViewController.xib */,
@@ -2990,7 +2976,6 @@
 				BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */,
 				BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */,
 				BC71F624147FEC6F00DAE4BD /* MainWindow.xib in Resources */,
-				BC71F625147FEC6F00DAE4BD /* MyYasoundViewController.xib in Resources */,
 				BC71F626147FEC6F00DAE4BD /* avatarDummy.png in Resources */,
 				BC71F627147FEC6F00DAE4BD /* avatarDummy@2x.png in Resources */,
 				BC71F628147FEC6F00DAE4BD /* avatarDummy1.png in Resources */,
@@ -3151,7 +3136,6 @@
 				BC93CD5614CF3F7A007C723F /* Localizable.strings in Resources */,
 				BC93CD5714CF3F7A007C723F /* Localizable.strings in Resources */,
 				BC93CD5814CF3F7A007C723F /* MainWindow.xib in Resources */,
-				BC93CD5914CF3F7A007C723F /* MyYasoundViewController.xib in Resources */,
 				BC93CD5A14CF3F7A007C723F /* avatarDummy.png in Resources */,
 				BC93CD5B14CF3F7A007C723F /* avatarDummy@2x.png in Resources */,
 				BC93CD5C14CF3F7A007C723F /* avatarDummy1.png in Resources */,
@@ -3312,7 +3296,6 @@
 				BC71F583147F979700DAE4BD /* Localizable.strings in Resources */,
 				BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */,
 				BC71F589147F9CD900DAE4BD /* MainWindow.xib in Resources */,
-				BC71F590147FBCEA00DAE4BD /* MyYasoundViewController.xib in Resources */,
 				BC71F5AF147FE0A800DAE4BD /* avatarDummy.png in Resources */,
 				BC71F5B0147FE0A800DAE4BD /* avatarDummy@2x.png in Resources */,
 				BC71F5B1147FE0A800DAE4BD /* avatarDummy1.png in Resources */,
@@ -3473,7 +3456,6 @@
 				E5F3B89E1498B88D008DD607 /* Localizable.strings in Resources */,
 				E5F3B89F1498B88D008DD607 /* Localizable.strings in Resources */,
 				E5F3B8A01498B88D008DD607 /* MainWindow.xib in Resources */,
-				E5F3B8A11498B88D008DD607 /* MyYasoundViewController.xib in Resources */,
 				E5F3B8A21498B88D008DD607 /* avatarDummy.png in Resources */,
 				E5F3B8A31498B88D008DD607 /* avatarDummy@2x.png in Resources */,
 				E5F3B8A41498B88D008DD607 /* avatarDummy1.png in Resources */,
@@ -3641,7 +3623,6 @@
 				BC71F5D4147FEC6F00DAE4BD /* RadioSelectionTableViewCell.m in Sources */,
 				BC71F5D5147FEC6F00DAE4BD /* BundleFileManager.m in Sources */,
 				BC71F5D6147FEC6F00DAE4BD /* BundleStylesheet.m in Sources */,
-				BC71F5D8147FEC6F00DAE4BD /* MyYasoundViewController.m in Sources */,
 				BCF62DE3148394F0001B1908 /* RadioSearchViewController.m in Sources */,
 				BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4514863646008F3738 /* Theme.m in Sources */,
@@ -3767,7 +3748,6 @@
 				BC93CCD214CF3F7A007C723F /* RadioSelectionTableViewCell.m in Sources */,
 				BC93CCD314CF3F7A007C723F /* BundleFileManager.m in Sources */,
 				BC93CCD414CF3F7A007C723F /* BundleStylesheet.m in Sources */,
-				BC93CCD514CF3F7A007C723F /* MyYasoundViewController.m in Sources */,
 				BC93CCD614CF3F7A007C723F /* RadioSearchViewController.m in Sources */,
 				BC93CCD714CF3F7A007C723F /* RadioViewController.m in Sources */,
 				BC93CCD814CF3F7A007C723F /* Theme.m in Sources */,
@@ -3890,7 +3870,6 @@
 				BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */,
 				BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */,
 				BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */,
-				BC71F58F147FBCEA00DAE4BD /* MyYasoundViewController.m in Sources */,
 				BCF62DE2148394F0001B1908 /* RadioSearchViewController.m in Sources */,
 				BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4414863646008F3738 /* Theme.m in Sources */,
@@ -4016,7 +3995,6 @@
 				E5F3B8681498B88D008DD607 /* RadioSelectionTableViewCell.m in Sources */,
 				E5F3B8691498B88D008DD607 /* BundleFileManager.m in Sources */,
 				E5F3B86A1498B88D008DD607 /* BundleStylesheet.m in Sources */,
-				E5F3B86B1498B88D008DD607 /* MyYasoundViewController.m in Sources */,
 				E5F3B86C1498B88D008DD607 /* RadioSearchViewController.m in Sources */,
 				E5F3B86D1498B88D008DD607 /* RadioViewController.m in Sources */,
 				E5F3B86E1498B88D008DD607 /* Theme.m in Sources */,

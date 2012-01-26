@@ -23,8 +23,50 @@
 #define GOOGLE_ANALYTICS_LOG NO
 
 
+#ifdef TESTFLIGHT_SDK
+/*
+ My Apps Custom uncaught exception catcher, we do special stuff here, and TestFlight takes care of the rest
+ **/
+void HandleExceptions(NSException *exception) {
+    NSLog(@"HandleExceptions");
+    // Save application data on crash
+}
+/*
+ My Apps Custom signal catcher, we do special stuff here, and TestFlight takes care of the rest
+ **/
+void SignalHandler(int sig) {
+    NSLog(@"SignalHandler");
+    // Save application data on crash
+}
+#endif
+
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#ifdef TESTFLIGHT_SDK
+    
+    // installs HandleExceptions as the Uncaught Exception Handler
+    NSSetUncaughtExceptionHandler(&HandleExceptions);
+    
+    // create the signal action structure 
+    struct sigaction newSignalAction;
+    
+    // initialize the signal action structure
+    memset(&newSignalAction, 0, sizeof(newSignalAction));
+    
+    // set SignalHandler as the handler in the signal action structure
+    newSignalAction.sa_handler = &SignalHandler;
+    
+    // set SignalHandler as the handlers for SIGABRT, SIGILL and SIGBUS
+    sigaction(SIGABRT, &newSignalAction, NULL);
+    sigaction(SIGILL, &newSignalAction, NULL);
+    sigaction(SIGBUS, &newSignalAction, NULL);
+    
+    [TestFlight takeOff:@"997d8f9a93194760139ff86ee63b16a7_MzU2NTkyMDExLTEwLTIwIDAxOjU0OjMyLjQzNTk1Nw"];
+    
+#endif
+    
 
     // google analytics launcher
     NSMutableDictionary *trackerParameters =
