@@ -59,6 +59,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifLoginScreen:) name:NOTIF_LOGIN_SCREEN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifWizard:) name:NOTIF_WIZARD object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifMenu:) name:NOTIF_MENU object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorCommunicationServer:) name:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionLost:) name:NOTIF_ERROR_CONNECTION_LOST object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionNo:) name:NOTIF_ERROR_CONNECTION_NO object:nil];
+
+    
+
     
   //Make sure the system follows our playback status
   // <=> Background audio playing
@@ -96,9 +102,9 @@
         
 #ifdef FORCE_ROOTVIEW_RADIOS
         // add tabs
-        RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
-        [self.navigationController pushViewController:tabBarController animated:NO];    
-        [tabBarController release];
+//        RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
+//        [self.navigationController pushViewController:tabBarController animated:NO];    
+//        [tabBarController release];
 #else
         [self loginProcess];
 #endif
@@ -223,6 +229,40 @@
 {
     [self.navigationController popToViewController:_menuView animated:YES];
 }
+
+- (void)onNotifErrorCommunicationServer:(NSNotification *)notification
+{
+    // show alert message for connection error
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Connection", nil) message:NSLocalizedString(@"Error_communication_server", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];  
+    
+    // and logout properly
+    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+}
+
+- (void)onNotifErrorConnectionLost:(NSNotification *)notification
+{
+    // show alert message for connection error
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_lost", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];  
+    
+    // and logout properly
+    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+}
+
+- (void)onNotifErrorConnectionNo:(NSNotification *)notification
+{
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_no", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];  
+    
+    // and logout properly
+    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+}
+
+
 
 
 
