@@ -10,7 +10,6 @@
 #import "LoginViewController.h"
 #import "SignupViewController.h"
 #import "CreateMyRadio.h"
-#import "MyYasoundViewController.h"
 #import "YasoundSessionManager.h"
 #import "YasoundDataProvider.h"
 #import "ActivityAlertView.h"

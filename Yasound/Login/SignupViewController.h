@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 
 
-@interface SignupViewController : TrackedUIViewController
+@interface SignupViewController : TestflightViewController
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;

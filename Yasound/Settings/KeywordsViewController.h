@@ -9,11 +9,11 @@
 
 #import <UIKit/UIKit.h>
 #import "YasoundDataProvider.h"
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 
 
 
-@interface KeywordsViewController : TrackedUIViewController
+@interface KeywordsViewController : TestflightViewController
 {
     Radio* _myRadio;
     

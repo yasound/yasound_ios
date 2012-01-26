@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MenuViewController.h"
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 
 #define NOTIF_PUSH_RADIO @"NOTIF_PushRadio"
 #define NOTIF_PUSH_RADIO_SELECTION @"NOTIF_PushRadioSelection"
@@ -17,7 +17,7 @@
 #define NOTIF_MENU @"NOTIF_Menu"
 
 
-@interface RootViewController : TrackedUIViewController
+@interface RootViewController : TestflightViewController
 {
     BOOL _firstTime;
     

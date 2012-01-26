@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 #import "ChartView.h"
 
-@interface StatsViewController : TrackedUIViewController
+@interface StatsViewController : TestflightViewController
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;

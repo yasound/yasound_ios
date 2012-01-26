@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 
 
-@interface MenuViewController : TrackedUIViewController
+@interface MenuViewController : TestflightViewController
 {
     IBOutlet UITableView* _tableView;
 }

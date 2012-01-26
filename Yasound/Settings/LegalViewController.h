@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 
 
-@interface LegalViewController : TrackedUIViewController
+@interface LegalViewController : TestflightViewController
 {
     IBOutlet UIToolbar* _toolbar;
     IBOutlet UIBarButtonItem* _backBtn;

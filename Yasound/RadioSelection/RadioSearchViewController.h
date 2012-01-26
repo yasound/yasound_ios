@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "YasoundDataProvider.h"
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 
 
-@interface RadioSearchViewController : TrackedUIViewController
+@interface RadioSearchViewController : TestflightViewController
 {
     IBOutlet UITableView* _tableView;
     IBOutlet UIBarButtonItem* _nowPlayingButton;

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 
 @protocol ThemeSelectorDelegate <NSObject>
 @required
@@ -16,7 +16,7 @@
 @end
 
 
-@interface ThemeSelectorViewController : TrackedUIViewController
+@interface ThemeSelectorViewController : TestflightViewController
 {
     IBOutlet UILabel* _themeSelectorTitle;
     IBOutlet UITableView* _tableView;

@@ -685,6 +685,22 @@
 		BCBAB4BF14A39B9800CF922A /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
 		BCBAB4C014A39B9800CF922A /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
 		BCBAB4C114A39B9800CF922A /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
+		BCBE5C6D14D1618A0077FC62 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
+		BCBE5C6E14D1618A0077FC62 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
+		BCBE5C6F14D1618A0077FC62 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
+		BCBE5C7014D1618A0077FC62 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
+		BCBE5C7614D167DE0077FC62 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBE5C7214D167DE0077FC62 /* libTestFlight.a */; };
+		BCBE5C7714D167DE0077FC62 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBE5C7214D167DE0077FC62 /* libTestFlight.a */; };
+		BCBE5C7814D167DE0077FC62 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBE5C7214D167DE0077FC62 /* libTestFlight.a */; };
+		BCBE5C7914D167DE0077FC62 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBE5C7214D167DE0077FC62 /* libTestFlight.a */; };
+		BCBE5C7A14D167DE0077FC62 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7314D167DE0077FC62 /* README.txt */; };
+		BCBE5C7B14D167DE0077FC62 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7314D167DE0077FC62 /* README.txt */; };
+		BCBE5C7C14D167DE0077FC62 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7314D167DE0077FC62 /* README.txt */; };
+		BCBE5C7D14D167DE0077FC62 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7314D167DE0077FC62 /* README.txt */; };
+		BCBE5C7E14D167DE0077FC62 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
+		BCBE5C7F14D167DE0077FC62 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
+		BCBE5C8014D167DE0077FC62 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
+		BCBE5C8114D167DE0077FC62 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
 		BCC408AE148D15F8001C02E4 /* bigRedButtonDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */; };
 		BCC408AF148D15F8001C02E4 /* bigRedButtonDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */; };
 		BCC408B0148D15F8001C02E4 /* bigRedButtonDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AB148D15F8001C02E4 /* bigRedButtonDown@2x.png */; };
@@ -1478,6 +1494,12 @@
 		BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KeywordsViewController.xib; path = Settings/KeywordsViewController.xib; sourceTree = "<group>"; };
 		BCBAB4BA14A3920600CF922A /* iTunesConnect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesConnect.png; sourceTree = "<group>"; };
 		BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesConnect@2x.png"; sourceTree = "<group>"; };
+		BCBE5C6B14D1618A0077FC62 /* TestflightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestflightViewController.h; sourceTree = "<group>"; };
+		BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestflightViewController.m; sourceTree = "<group>"; };
+		BCBE5C7214D167DE0077FC62 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		BCBE5C7314D167DE0077FC62 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		BCBE5C7414D167DE0077FC62 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
+		BCBE5C7514D167DE0077FC62 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonDown.png; sourceTree = "<group>"; };
 		BCC408AB148D15F8001C02E4 /* bigRedButtonDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigRedButtonDown@2x.png"; sourceTree = "<group>"; };
 		BCC408AC148D15F8001C02E4 /* bigRedButtonUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonUp.png; sourceTree = "<group>"; };
@@ -1722,6 +1744,7 @@
 				BCDC96DA14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
 				BCDC96DD14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1314CF64B100DF0950 /* libOAuth.a in Frameworks */,
+				BCBE5C7714D167DE0077FC62 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1751,6 +1774,7 @@
 				BC93CD4D14CF3F7A007C723F /* libGoogleAnalytics.a in Frameworks */,
 				BC93CD4E14CF3F7A007C723F /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1514CF64B100DF0950 /* libOAuth.a in Frameworks */,
+				BCBE5C7914D167DE0077FC62 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1780,6 +1804,7 @@
 				BCDC96D914AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
 				BCDC96DC14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1214CF64B100DF0950 /* libOAuth.a in Frameworks */,
+				BCBE5C7614D167DE0077FC62 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1809,6 +1834,7 @@
 				BCDC96DB14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
 				BCDC96DE14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1414CF64B100DF0950 /* libOAuth.a in Frameworks */,
+				BCBE5C7814D167DE0077FC62 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2226,6 +2252,7 @@
 		BCA2CCD6149A95460000637E /* LibTools */ = {
 			isa = PBXGroup;
 			children = (
+				BCBE5C6A14D161890077FC62 /* TestflightViewController */,
 				BC01F5A814CEB01F00EF62A2 /* DateAdditions */,
 				B172043C14C54446007F3FB0 /* BuyLink */,
 				BC27F39114BE598700EF1C5F /* YasoundReachability */,
@@ -2300,6 +2327,28 @@
 				BCBAB4BA14A3920600CF922A /* iTunesConnect.png */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		BCBE5C6A14D161890077FC62 /* TestflightViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BCBE5C6B14D1618A0077FC62 /* TestflightViewController.h */,
+				BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */,
+			);
+			name = TestflightViewController;
+			path = LibTools/TestflightViewController;
+			sourceTree = SOURCE_ROOT;
+		};
+		BCBE5C7114D167DE0077FC62 /* TestFlightSDK0.8.2 */ = {
+			isa = PBXGroup;
+			children = (
+				BCBE5C7214D167DE0077FC62 /* libTestFlight.a */,
+				BCBE5C7314D167DE0077FC62 /* README.txt */,
+				BCBE5C7414D167DE0077FC62 /* release_notes.txt */,
+				BCBE5C7514D167DE0077FC62 /* TestFlight.h */,
+			);
+			name = TestFlightSDK0.8.2;
+			path = ThirdParties/TestFlightSDK/TestFlightSDK0.8.2;
 			sourceTree = "<group>";
 		};
 		BCC408A9148D15F8001C02E4 /* MyYasound */ = {
@@ -2384,6 +2433,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				BCBE5C7114D167DE0077FC62 /* TestFlightSDK0.8.2 */,
 				BC40CC7C14D0093F00DF0950 /* DDMenuController */,
 				BC40CBC414CF648500DF0950 /* Twitter-OAuth-iPhone */,
 				BC40CBB314CF633600DF0950 /* facebook-ios-sdk */,
@@ -3122,6 +3172,8 @@
 				BC40CC7514CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
 				BC88905A14D0BC70004CCE04 /* barItemMenu.png in Resources */,
 				BC88905E14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
+				BCBE5C7B14D167DE0077FC62 /* README.txt in Resources */,
+				BCBE5C7F14D167DE0077FC62 /* release_notes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3282,6 +3334,8 @@
 				BC40CC7714CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
 				BC88905C14D0BC70004CCE04 /* barItemMenu.png in Resources */,
 				BC88906014D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
+				BCBE5C7D14D167DE0077FC62 /* README.txt in Resources */,
+				BCBE5C8114D167DE0077FC62 /* release_notes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3442,6 +3496,8 @@
 				BC40CC7414CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
 				BC88905914D0BC70004CCE04 /* barItemMenu.png in Resources */,
 				BC88905D14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
+				BCBE5C7A14D167DE0077FC62 /* README.txt in Resources */,
+				BCBE5C7E14D167DE0077FC62 /* release_notes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3602,6 +3658,8 @@
 				BC40CC7614CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
 				BC88905B14D0BC70004CCE04 /* barItemMenu.png in Resources */,
 				BC88905F14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
+				BCBE5C7C14D167DE0077FC62 /* README.txt in Resources */,
+				BCBE5C8014D167DE0077FC62 /* release_notes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3728,6 +3786,7 @@
 				BC40CC5314CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC7114CFF3FE00DF0950 /* MenuViewController.m in Sources */,
 				BC40CC8014D0093F00DF0950 /* DDMenuController.m in Sources */,
+				BCBE5C6E14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3852,6 +3911,7 @@
 				BC40CC5514CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC7314CFF3FE00DF0950 /* MenuViewController.m in Sources */,
 				BC40CC8214D0093F00DF0950 /* DDMenuController.m in Sources */,
+				BCBE5C7014D1618A0077FC62 /* TestflightViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3975,6 +4035,7 @@
 				BC40CC5214CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC7014CFF3FE00DF0950 /* MenuViewController.m in Sources */,
 				BC40CC7F14D0093F00DF0950 /* DDMenuController.m in Sources */,
+				BCBE5C6D14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4099,6 +4160,7 @@
 				BC40CC5414CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC7214CFF3FE00DF0950 /* MenuViewController.m in Sources */,
 				BC40CC8114D0093F00DF0950 /* DDMenuController.m in Sources */,
+				BCBE5C6F14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4186,6 +4248,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -4203,6 +4266,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -4222,6 +4286,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
@@ -4249,6 +4314,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
@@ -4345,6 +4411,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "";
@@ -4364,6 +4431,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "";
@@ -4378,12 +4446,18 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					TESTFLIGHT_SDK,
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "";
@@ -4399,12 +4473,14 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = TESTFLIGHT_SDK;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "";

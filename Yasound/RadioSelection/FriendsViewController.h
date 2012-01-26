@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 
-@interface FriendsViewController : TrackedUIViewController
+@interface FriendsViewController : TestflightViewController
 {
     IBOutlet UIToolbar* _toolbar;
     IBOutlet UILabel* _toolbarTitle;

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 
 
-@interface PlaylistsViewController : TrackedUIViewController
+@interface PlaylistsViewController : TestflightViewController
 {
     BOOL _wizard;
     BOOL _changed;

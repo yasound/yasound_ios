@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 
-@interface HomeViewController : TrackedUIViewController
+@interface HomeViewController : TestflightViewController
 {
     IBOutlet UILabel* _titleLabel;
 

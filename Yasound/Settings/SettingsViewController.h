@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 #import "YasoundDataProvider.h"
 #import "WebImageView.h"
 
 
-@interface SettingsViewController : TrackedUIViewController
+@interface SettingsViewController : TestflightViewController
 {
     BOOL _wizard;
     BOOL _changed;

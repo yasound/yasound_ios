@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EasyTracker.h"
+#import "TestflightViewController.h"
 
-@interface FavoritesViewController : TrackedUIViewController
+@interface FavoritesViewController : TestflightViewController
 {
     IBOutlet UILabel* _toolbarTitle;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
