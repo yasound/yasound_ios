@@ -1514,8 +1514,8 @@
 		BCBE5C7514D167DE0077FC62 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		BCBE5C8214D1A1B60077FC62 /* cellFacebookDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellFacebookDisabled.png; sourceTree = "<group>"; };
 		BCBE5C8314D1A1B60077FC62 /* cellFacebookDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellFacebookDisabled@2x.png"; sourceTree = "<group>"; };
-		BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectionView.h; path = Gui/ConnectionView.h; sourceTree = "<group>"; };
-		BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectionView.m; path = Gui/ConnectionView.m; sourceTree = "<group>"; };
+		BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionView.h; sourceTree = "<group>"; };
+		BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionView.m; sourceTree = "<group>"; };
 		BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonDown.png; sourceTree = "<group>"; };
 		BCC408AB148D15F8001C02E4 /* bigRedButtonDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigRedButtonDown@2x.png"; sourceTree = "<group>"; };
 		BCC408AC148D15F8001C02E4 /* bigRedButtonUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonUp.png; sourceTree = "<group>"; };
@@ -2720,8 +2720,6 @@
 				BCDC97EB14AB9B2800D54631 /* HomeViewController.h */,
 				BCDC97EC14AB9B2800D54631 /* HomeViewController.m */,
 				BCDC97ED14AB9B2800D54631 /* HomeViewController.xib */,
-				BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */,
-				BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */,
 				BCDC97F414AB9BF300D54631 /* LoginViewController.h */,
 				BCDC97F514AB9BF300D54631 /* LoginViewController.m */,
 				BCDC97F614AB9BF300D54631 /* LoginViewController.xib */,
@@ -2773,6 +2771,8 @@
 		BCFECFE61468439900BA20D9 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
+				BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */,
+				BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */,
 				BC27F37D14BE463600EF1C5F /* QualitySwitchLabel.h */,
 				BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */,
 				BCD4C2C414695FCD000A236A /* ActivityAlertView.h */,

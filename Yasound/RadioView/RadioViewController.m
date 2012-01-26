@@ -64,6 +64,7 @@ static Song* _gNowPlayingSong = nil;
         _trackInteractionViewDisplayed = NO;
 
         _serverErrorCount = 0;
+        _streamErrorCount = 0;
         _updatingPrevious = NO;
         _firstUpdateRequest = YES;
         _latestEvent = nil;
@@ -1792,8 +1793,13 @@ static Song* _gNowPlayingSong = nil;
 {
     if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_ERROR])
     {
-      [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
-      return;
+        [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
+        
+        // LBDEBUG TO BE COMPLETED
+        _streamErrorCount++;
+        [[AudioStreamManager main] stopRadio];
+        [[AudioStreamManager main] startRadio:self.radio];
+        return;
     }
     else if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_PLAY])
     {
