@@ -15,7 +15,7 @@
 #import "RadioUser.h"
 #import "SongUser.h"
 #import "NextSong.h"
-#import "Song2.h"
+#import "Song.h"
 
 #define USE_YASOUND_LOCAL_SERVER 1
 
@@ -84,8 +84,8 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
 
-- (void)setMood:(UserMood)mood forSong:(Song2*)song;
-- (void)songUserForSong:(Song2*)song target:(id)target action:(SEL)selector;
+- (void)setMood:(UserMood)mood forSong:(Song*)song;
+- (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector;
 
 - (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;
 - (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize afterEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
@@ -103,7 +103,7 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
-- (void)addSongToUserRadio:(Song2*)song;
+- (void)addSongToUserRadio:(Song*)song;
 
 - (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector;
 
@@ -116,7 +116,7 @@ taskStatus stringToStatus(NSString* str);
 //
 - (void)moveNextSong:(NextSong*)nextSong toPosition:(int)position target:(id)target action:(SEL)selector;   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
 - (void)deleteNextSong:(NextSong*)nextSong target:(id)target action:(SEL)selector;                          // didDeleteNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
-- (void)addSongToNextSongs:(Song2*)song atPosition:(int)position target:(id)target action:(SEL)selector;     // didAddNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
+- (void)addSongToNextSongs:(Song*)song atPosition:(int)position target:(id)target action:(SEL)selector;     // didAddNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
 
 
 - (void)enterRadioWall:(Radio*)radio;

@@ -7,12 +7,12 @@
 //
 
 #import "Model.h"
-#import "Song2.h"
+#import "Song.h"
 #import "User.h"
 
 @interface SongUser : Model
 
-@property (retain) Song2* song;
+@property (retain) Song* song;
 @property (retain) User* user;
 @property (retain) NSString* mood;
 

@@ -35,10 +35,6 @@
 @property (retain, nonatomic) NSString* song_album;
 @property (retain, nonatomic) NSString* song_cover_filename;
 
-//@property (retain, nonatomic) Song* song;
-//@property (retain, nonatomic) Radio* radio;
-//@property (retain, nonatomic) User* user;
-
 - (NSString*)toString;
 
 - (void)addChild:(WallEvent*)child;

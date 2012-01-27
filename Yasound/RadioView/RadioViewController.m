@@ -42,7 +42,7 @@
 @implementation RadioViewController
 
 
-static Song2* _gNowPlayingSong = nil;
+static Song* _gNowPlayingSong = nil;
 
 
 
@@ -1051,7 +1051,7 @@ static Song2* _gNowPlayingSong = nil;
 //  
 //}
 
-- (void) receivedCurrentSong:(Song2*)song withInfo:(NSDictionary*)info
+- (void) receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
 {
   if (song.id != _gNowPlayingSong.id)
       [self setNowPlaying:song];
@@ -1086,7 +1086,7 @@ static Song2* _gNowPlayingSong = nil;
 
 #pragma mark - Now Playing
 
-- (void)setNowPlaying:(Song2*)song
+- (void)setNowPlaying:(Song*)song
 {
     if (_gNowPlayingSong != nil)
         [_gNowPlayingSong release];

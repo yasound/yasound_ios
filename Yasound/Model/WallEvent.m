@@ -27,10 +27,6 @@
 @synthesize song_artist;
 @synthesize song_cover_filename;
 
-//@synthesize song;
-//@synthesize radio;
-//@synthesize user;
-
 - (id)init
 {
     if (self = [super init])

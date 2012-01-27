@@ -24,7 +24,7 @@
 
 //LBDEBUG TODO : use image, likes disklikes from Song
 
-- (id)initWithSong:(Song2*)song target:(id)target action:(SEL)action
+- (id)initWithSong:(Song*)song target:(id)target action:(SEL)action
 {
     if (self = [super init])
     {

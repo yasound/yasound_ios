@@ -1,5 +1,5 @@
 //
-//  Song2.h
+//  Song.h
 //  Yasound
 //
 //  Created by matthieu campion on 1/27/12.
@@ -8,7 +8,7 @@
 
 #import "Model.h"
 
-@interface Song2 : Model
+@interface Song : Model
 
 @property (retain, nonatomic) NSString* name;
 @property (retain, nonatomic) NSString* artist;

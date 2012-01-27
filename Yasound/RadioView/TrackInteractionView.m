@@ -19,7 +19,7 @@
 @implementation TrackInteractionView
 
 
-- (id)initWithSong:(Song2*)song
+- (id)initWithSong:(Song*)song
 {
     if (self = [super init])
     {

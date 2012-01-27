@@ -15,10 +15,10 @@
 		400B8A9614D2ED0C003FD81E /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
 		400B8A9714D2ED0C003FD81E /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
 		400B8A9814D2ED0C003FD81E /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
-		400B8AAB14D2F1D4003FD81E /* Song2.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AAA14D2F1D4003FD81E /* Song2.m */; };
-		400B8AAC14D2F1D4003FD81E /* Song2.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AAA14D2F1D4003FD81E /* Song2.m */; };
-		400B8AAD14D2F1D4003FD81E /* Song2.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AAA14D2F1D4003FD81E /* Song2.m */; };
-		400B8AAE14D2F1D4003FD81E /* Song2.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AAA14D2F1D4003FD81E /* Song2.m */; };
+		400B8AB114D31540003FD81E /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
+		400B8AB214D31540003FD81E /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
+		400B8AB314D31540003FD81E /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
+		400B8AB414D31540003FD81E /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
 		401D1E1614C77D8A00CD7387 /* UserCellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1014C77D8A00CD7387 /* UserCellBackgroundBlue.png */; };
 		401D1E1714C77D8A00CD7387 /* UserCellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1014C77D8A00CD7387 /* UserCellBackgroundBlue.png */; };
 		401D1E1814C77D8A00CD7387 /* UserCellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1014C77D8A00CD7387 /* UserCellBackgroundBlue.png */; };
@@ -1271,8 +1271,8 @@
 		4009011B149A69F100C9E51A /* Auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Auth.m; path = Yasound/Model/Auth.m; sourceTree = SOURCE_ROOT; };
 		400B8A9314D2ED0B003FD81E /* WallMessagePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallMessagePost.h; sourceTree = "<group>"; };
 		400B8A9414D2ED0C003FD81E /* WallMessagePost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallMessagePost.m; sourceTree = "<group>"; };
-		400B8AA914D2F1D4003FD81E /* Song2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song2.h; sourceTree = "<group>"; };
-		400B8AAA14D2F1D4003FD81E /* Song2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song2.m; sourceTree = "<group>"; };
+		400B8AAF14D31540003FD81E /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		400B8AB014D31540003FD81E /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		401D1E1014C77D8A00CD7387 /* UserCellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UserCellBackgroundBlue.png; path = RadioSelection/UserCellBackgroundBlue.png; sourceTree = "<group>"; };
 		401D1E1114C77D8A00CD7387 /* UserCellBackgroundBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserCellBackgroundBlue@2x.png"; path = "RadioSelection/UserCellBackgroundBlue@2x.png"; sourceTree = "<group>"; };
 		401D1E1214C77D8A00CD7387 /* UserCellBackgroundDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UserCellBackgroundDark.png; path = RadioSelection/UserCellBackgroundDark.png; sourceTree = "<group>"; };
@@ -1915,8 +1915,8 @@
 				40F4C78A14BDF40F00A163F9 /* SongUser.m */,
 				40F4C78F14BEEF6F00A163F9 /* NextSong.h */,
 				40F4C79014BEEF6F00A163F9 /* NextSong.m */,
-				400B8AA914D2F1D4003FD81E /* Song2.h */,
-				400B8AAA14D2F1D4003FD81E /* Song2.m */,
+				400B8AAF14D31540003FD81E /* Song.h */,
+				400B8AB014D31540003FD81E /* Song.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3786,7 +3786,7 @@
 				BC40CC8014D0093F00DF0950 /* DDMenuController.m in Sources */,
 				BCBE5C6E14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9614D2ED0C003FD81E /* WallMessagePost.m in Sources */,
-				400B8AAC14D2F1D4003FD81E /* Song2.m in Sources */,
+				400B8AB214D31540003FD81E /* Song.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3911,7 +3911,7 @@
 				BC40CC8214D0093F00DF0950 /* DDMenuController.m in Sources */,
 				BCBE5C7014D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9814D2ED0C003FD81E /* WallMessagePost.m in Sources */,
-				400B8AAE14D2F1D4003FD81E /* Song2.m in Sources */,
+				400B8AB414D31540003FD81E /* Song.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4035,7 +4035,7 @@
 				BC40CC7F14D0093F00DF0950 /* DDMenuController.m in Sources */,
 				BCBE5C6D14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9514D2ED0C003FD81E /* WallMessagePost.m in Sources */,
-				400B8AAB14D2F1D4003FD81E /* Song2.m in Sources */,
+				400B8AB114D31540003FD81E /* Song.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4160,7 +4160,7 @@
 				BC40CC8114D0093F00DF0950 /* DDMenuController.m in Sources */,
 				BCBE5C6F14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9714D2ED0C003FD81E /* WallMessagePost.m in Sources */,
-				400B8AAD14D2F1D4003FD81E /* Song2.m in Sources */,
+				400B8AB314D31540003FD81E /* Song.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

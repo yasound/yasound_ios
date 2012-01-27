@@ -6,17 +6,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Song2.h"
+#import "Song.h"
 
 
 @interface TrackInteractionView : UIView
 {
-    Song2* _song;
+    Song* _song;
     
     BOOL _sharing;
 }
 
-- (id)initWithSong:(Song2*)song;
+- (id)initWithSong:(Song*)song;
 
 @end
 

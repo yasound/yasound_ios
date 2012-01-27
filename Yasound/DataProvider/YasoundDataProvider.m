@@ -600,7 +600,7 @@ static YasoundDataProvider* _main = nil;
   Auth* auth = self.apiKeyAuth;
   NSNumber* radioID = radio.id;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/current_song", radioID];
-  [_communicator getObjectWithClass:[Song2 class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  [_communicator getObjectWithClass:[Song class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector
@@ -687,7 +687,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)addSongToNextSongs:(Song2*)song atPosition:(int)position target:(id)target action:(SEL)selector
+- (void)addSongToNextSongs:(Song*)song atPosition:(int)position target:(id)target action:(SEL)selector
 {
   if (!song || !song.id)
     return;
@@ -721,7 +721,7 @@ static YasoundDataProvider* _main = nil;
   [self nextSongsForUserRadioWithTarget:target action:selector];
 }
 
-- (void)addSongToUserRadio:(Song2*)song
+- (void)addSongToUserRadio:(Song*)song
 {
   if (!song || !song.id || !self.radio || !self.radio.id)
     return;
@@ -731,7 +731,7 @@ static YasoundDataProvider* _main = nil;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/favorite_song", self.radio.id];
   NSString* data = [NSString stringWithFormat:@"{\"id\":\"%@\"}", songID];
   
-  [_communicator postToURL:relativeUrl absolute:NO withStringData:data objectClass:[Song2 class] notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+  [_communicator postToURL:relativeUrl absolute:NO withStringData:data objectClass:[Song class] notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
 
@@ -792,7 +792,7 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)setMood:(UserMood)mood forSong:(Song2*)song
+- (void)setMood:(UserMood)mood forSong:(Song*)song
 {
   if (!song || !song.id)
     return;
@@ -822,7 +822,7 @@ static YasoundDataProvider* _main = nil;
   [_communicator postToURL:url absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];
 }
 
-- (void)songUserForSong:(Song2*)song target:(id)target action:(SEL)selector
+- (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector
 {
   if (!song || !song.id)
     return;

@@ -1,14 +1,14 @@
 //
-//  Song2.m
+//  Song.m
 //  Yasound
 //
 //  Created by matthieu campion on 1/27/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "Song2.h"
+#import "Song.h"
 
-@implementation Song2
+@implementation Song
 
 @synthesize name;
 @synthesize artist;
