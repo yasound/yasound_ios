@@ -740,10 +740,6 @@ static Song* _gNowPlayingSong = nil;
 
     // update _latestEvent
     
-    //LBDEBUG FIX
-    assert(events.count > 0);
-//    assert(_wallEvents.count > 0);
-    
     WallEvent* ev = [events objectAtIndex:0];
     WallEvent* wev = nil;
     
@@ -1233,9 +1229,6 @@ static Song* _gNowPlayingSong = nil;
 {
     NSInteger index = _wallEvents.count - 1;
 
-    //LBDEBUG FIX
-    assert(_wallEvents.count > 0);
-
     WallEvent* ev = [_wallEvents objectAtIndex:index];
     [ev computeTextHeightUsingFont:_messageFont withConstraint:270];
     
@@ -1259,9 +1252,6 @@ static Song* _gNowPlayingSong = nil;
 {
     NSInteger index = 0;
     
-    //LBDEBUG FIX
-    assert(_wallEvents.count > 0);
-
     WallEvent* ev = [_wallEvents objectAtIndex:index];
     [ev computeTextHeightUsingFont:_messageFont withConstraint:270];
     
@@ -1273,9 +1263,6 @@ static Song* _gNowPlayingSong = nil;
 - (void)insertSong
 {
     NSInteger index = 0;
-
-    //LBDEBUG FIX
-    assert(_wallEvents.count > 0);
 
     WallEvent* ev = [_wallEvents objectAtIndex:index];
     UITableViewRowAnimation anim = UITableViewRowAnimationTop;
@@ -1312,9 +1299,6 @@ static Song* _gNowPlayingSong = nil;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    //LBDEBUG FIX
-    assert(_wallEvents.count > 0);
-
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
     
     if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
@@ -1349,9 +1333,6 @@ static Song* _gNowPlayingSong = nil;
 {
     static NSString* CellIdentifier = @"RadioViewCell";
     
-    //LBDEBUG FIX
-    assert(_wallEvents.count > 0);
-
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
 
     if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
