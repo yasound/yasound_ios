@@ -1097,7 +1097,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void) receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
 {
-    if (song.id != _gNowPlayingSong.id)
+    if ([song.id intValue] != [_gNowPlayingSong.id intValue])
         [self setNowPlaying:song];
 
 }
