@@ -254,7 +254,7 @@ void ASReadStreamCallBack
 	if (self != nil)
 	{
 		url = [aURL retain];
-    cookie = aCookie;
+    cookie = [aCookie retain];
 	}
 	return self;
 }
