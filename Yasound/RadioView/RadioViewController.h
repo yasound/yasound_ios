@@ -69,6 +69,9 @@
     NSTimer* _timerUpdate;
     
     NSMutableArray* _wallEvents;
+    
+    NSInteger _serverErrorCount;
+    NSInteger _streamErrorCount;
 }
 
 @property (nonatomic, retain) Radio* radio;

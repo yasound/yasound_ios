@@ -701,6 +701,18 @@
 		BCBE5C7F14D167DE0077FC62 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
 		BCBE5C8014D167DE0077FC62 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
 		BCBE5C8114D167DE0077FC62 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
+		BCBE5C8414D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C8214D1A1B60077FC62 /* cellFacebookDisabled.png */; };
+		BCBE5C8514D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C8214D1A1B60077FC62 /* cellFacebookDisabled.png */; };
+		BCBE5C8614D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C8214D1A1B60077FC62 /* cellFacebookDisabled.png */; };
+		BCBE5C8714D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C8214D1A1B60077FC62 /* cellFacebookDisabled.png */; };
+		BCBE5C8814D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C8314D1A1B60077FC62 /* cellFacebookDisabled@2x.png */; };
+		BCBE5C8914D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C8314D1A1B60077FC62 /* cellFacebookDisabled@2x.png */; };
+		BCBE5C8A14D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C8314D1A1B60077FC62 /* cellFacebookDisabled@2x.png */; };
+		BCBE5C8B14D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C8314D1A1B60077FC62 /* cellFacebookDisabled@2x.png */; };
+		BCBE5C8E14D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
+		BCBE5C8F14D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
+		BCBE5C9014D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
+		BCBE5C9114D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
 		BCC408AE148D15F8001C02E4 /* bigRedButtonDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */; };
 		BCC408AF148D15F8001C02E4 /* bigRedButtonDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */; };
 		BCC408B0148D15F8001C02E4 /* bigRedButtonDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC408AB148D15F8001C02E4 /* bigRedButtonDown@2x.png */; };
@@ -1500,6 +1512,10 @@
 		BCBE5C7314D167DE0077FC62 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		BCBE5C7414D167DE0077FC62 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
 		BCBE5C7514D167DE0077FC62 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		BCBE5C8214D1A1B60077FC62 /* cellFacebookDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellFacebookDisabled.png; sourceTree = "<group>"; };
+		BCBE5C8314D1A1B60077FC62 /* cellFacebookDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellFacebookDisabled@2x.png"; sourceTree = "<group>"; };
+		BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionView.h; sourceTree = "<group>"; };
+		BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionView.m; sourceTree = "<group>"; };
 		BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonDown.png; sourceTree = "<group>"; };
 		BCC408AB148D15F8001C02E4 /* bigRedButtonDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigRedButtonDown@2x.png"; sourceTree = "<group>"; };
 		BCC408AC148D15F8001C02E4 /* bigRedButtonUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigRedButtonUp.png; sourceTree = "<group>"; };
@@ -2221,6 +2237,8 @@
 		BC914ADC1491845D00D5D7B4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				BCBE5C8214D1A1B60077FC62 /* cellFacebookDisabled.png */,
+				BCBE5C8314D1A1B60077FC62 /* cellFacebookDisabled@2x.png */,
 				BCDC952814AB604700D54631 /* cellFacebookDown.png */,
 				BCDC952914AB604700D54631 /* cellFacebookDown@2x.png */,
 				BCDC952A14AB604700D54631 /* cellFacebookUp.png */,
@@ -2753,6 +2771,8 @@
 		BCFECFE61468439900BA20D9 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
+				BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */,
+				BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */,
 				BC27F37D14BE463600EF1C5F /* QualitySwitchLabel.h */,
 				BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */,
 				BCD4C2C414695FCD000A236A /* ActivityAlertView.h */,
@@ -3174,6 +3194,8 @@
 				BC88905E14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
 				BCBE5C7B14D167DE0077FC62 /* README.txt in Resources */,
 				BCBE5C7F14D167DE0077FC62 /* release_notes.txt in Resources */,
+				BCBE5C8514D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */,
+				BCBE5C8914D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3336,6 +3358,8 @@
 				BC88906014D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
 				BCBE5C7D14D167DE0077FC62 /* README.txt in Resources */,
 				BCBE5C8114D167DE0077FC62 /* release_notes.txt in Resources */,
+				BCBE5C8714D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */,
+				BCBE5C8B14D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3498,6 +3522,8 @@
 				BC88905D14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
 				BCBE5C7A14D167DE0077FC62 /* README.txt in Resources */,
 				BCBE5C7E14D167DE0077FC62 /* release_notes.txt in Resources */,
+				BCBE5C8414D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */,
+				BCBE5C8814D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3660,6 +3686,8 @@
 				BC88905F14D0BC70004CCE04 /* barItemMenu@2x.png in Resources */,
 				BCBE5C7C14D167DE0077FC62 /* README.txt in Resources */,
 				BCBE5C8014D167DE0077FC62 /* release_notes.txt in Resources */,
+				BCBE5C8614D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */,
+				BCBE5C8A14D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3787,6 +3815,7 @@
 				BCBE5C6E14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9614D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB214D31540003FD81E /* Song.m in Sources */,
+				BCBE5C8F14D1A2F30077FC62 /* ConnectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3912,6 +3941,7 @@
 				BCBE5C7014D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9814D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB414D31540003FD81E /* Song.m in Sources */,
+				BCBE5C9114D1A2F30077FC62 /* ConnectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4036,6 +4066,7 @@
 				BCBE5C6D14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9514D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB114D31540003FD81E /* Song.m in Sources */,
+				BCBE5C8E14D1A2F30077FC62 /* ConnectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4161,6 +4192,7 @@
 				BCBE5C6F14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9714D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB314D31540003FD81E /* Song.m in Sources */,
+				BCBE5C9014D1A2F30077FC62 /* ConnectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

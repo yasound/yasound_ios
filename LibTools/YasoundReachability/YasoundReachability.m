@@ -6,6 +6,8 @@
 //
 
 #import "YasoundReachability.h"
+#import "RootViewController.h"
+
 
 @implementation YasoundReachability
 
@@ -53,10 +55,8 @@ static YasoundReachability* _main = nil;
     if (ns == NotReachable)
     {
         self.hasNetwork = YR_NO;
-        
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_no", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];  
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
         
         if (_target != nil)
             [_target performSelector:_action];
@@ -104,13 +104,13 @@ static YasoundReachability* _main = nil;
         {
             self.hasNetwork = YR_NO;
             
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_lost", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [av show];
-            [av release];  
-            
             // network connection is back
+            // LBDEBUG TODO ?
             if (_target != nil)
                 [_target performSelector:_action];
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_LOST object:nil];
+            
         }
         
         return;

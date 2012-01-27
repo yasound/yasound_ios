@@ -15,6 +15,10 @@
 #define NOTIF_LOGIN_SCREEN @"NOTIF_LoginScreen"
 #define NOTIF_WIZARD @"NOTIF_Wizard"
 #define NOTIF_MENU @"NOTIF_Menu"
+#define NOTIF_ERROR_COMMUNICATION_SERVER @"NOTIF_ErrorCommunicationServer"
+#define NOTIF_ERROR_CONNECTION_LOST @"NOTIF_ErrorConnectionLost"
+#define NOTIF_ERROR_CONNECTION_NO @"NOTIF_ErrorConnectionNo"
+
 
 
 @interface RootViewController : TestflightViewController

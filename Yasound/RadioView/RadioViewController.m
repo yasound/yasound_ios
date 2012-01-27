@@ -63,6 +63,8 @@ static Song* _gNowPlayingSong = nil;
 
         _trackInteractionViewDisplayed = NO;
 
+        _serverErrorCount = 0;
+        _streamErrorCount = 0;
         _updatingPrevious = NO;
         _firstUpdateRequest = YES;
         _latestEvent = nil;
@@ -456,7 +458,12 @@ static Song* _gNowPlayingSong = nil;
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [self resignFirstResponder];
     
-    [[YasoundDataProvider main] leaveRadioWall:self.radio];
+    if (_serverErrorCount == 0)
+        [[YasoundDataProvider main] leaveRadioWall:self.radio];
+    else
+    {
+        [[AudioStreamManager main] stopRadio];
+    }
     
     if ((_timerUpdate != nil) && [_timerUpdate isValid])
     {
@@ -531,7 +538,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)updatePreviousWall
 {    
-    //ICI PROFILE
+    // PROFILE
     _BEGIN = [NSDate date];
     [_BEGIN retain];
     
@@ -642,7 +649,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedPreviousWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
-    //ICI PROFILE
+    // PROFILE
     if (_firstUpdateRequest)
     {
         _END = [NSDate date];
@@ -658,17 +665,28 @@ static Song* _gNowPlayingSong = nil;
     
     if (err)
     {
-        assert(0);
-        NSLog(@"receivedPreviousWallEvents error!");
+        if (_serverErrorCount == 3)
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
+        else
+            _serverErrorCount++;
+        
+        NSLog(@"receivedPreviousWallEvents ERROR!");
         return;
     }
     
     if (!meta)
     {
-        assert(0);
-        NSLog(@"receivedPreviousWallEvents : no meta data!");
+        if (_serverErrorCount == 3)
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
+        else
+            _serverErrorCount++;
+        
+        NSLog(@"receivedPreviousWallEvents : ERROR no meta data!");
         return;
     }
+    
+    // reset error count
+    _serverErrorCount = 0;
     
     if (!events || events.count == 0)
     {
@@ -854,15 +872,28 @@ static Song* _gNowPlayingSong = nil;
     
     if (err)
     {
-        NSLog(@"receivedCurrentWallEvents error!");
+        if (_serverErrorCount == 3)
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
+        else
+            _serverErrorCount++;
+        
+        NSLog(@"receivedCurrentWallEvents ERROR!");
         return;
     }
     
     if (!meta)
     {
-        NSLog(@"receivedCurrentWallEvents : no meta data!");
+        if (_serverErrorCount == 3)
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
+        else
+            _serverErrorCount++;
+        
+        NSLog(@"receivedCurrentWallEvents : ERROR no meta data!");
         return;
     }
+    
+    // reset error count
+    _serverErrorCount = 0;
     
     if (!events || events.count == 0)
     {
@@ -1748,8 +1779,13 @@ static Song* _gNowPlayingSong = nil;
 {
     if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_ERROR])
     {
-      [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
-      return;
+        [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
+        
+        // LBDEBUG TO BE COMPLETED
+        _streamErrorCount++;
+        [[AudioStreamManager main] stopRadio];
+        [[AudioStreamManager main] startRadio:self.radio];
+        return;
     }
     else if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_PLAY])
     {

@@ -14,8 +14,8 @@
 #import "YasoundDataProvider.h"
 #import "ActivityAlertView.h"
 #import "RootViewController.h"
-
-
+#import "ConnectionView.h"
+#import "YasoundReachability.h"
 
 @implementation HomeViewController
 
@@ -52,6 +52,8 @@
     _titleLabel.text = NSLocalizedString(@"HomeView_title", nil);
 
     _facebookLoginLabel.text = NSLocalizedString(@"HomeView_facebook_label", nil);
+    
+//    [self.view addSubview:[ConnectionView start]];
 }
 
 
@@ -79,11 +81,24 @@
 
 - (IBAction) onFacebook:(id)sender
 {
+    if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
+        return;
+    }
+    
     // TAG ACTIVITY ALERT
     if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
         [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     
     [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(socialLoginReturned:)];
+    
+    // show a connection alert
+    [self.view addSubview:[ConnectionView start]];
+    
+    // and disable facebook button
+    _facebookButton.enabled = NO;
+
 }
 
 
@@ -91,6 +106,9 @@
 
 - (void)socialLoginReturned:(User*)user
 {
+    // close the connection alert
+    [ConnectionView stop];
+
     if (user != nil)
     {
         if ([[YasoundSessionManager main] getAccount:user])
@@ -103,6 +121,16 @@
             // ask for radio contents to the provider
             [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
         }
+    }
+    else
+    {
+        // show alert message for connection error
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        
+        // enable the facebook again, to let the user retry
+        _facebookButton.enabled = YES;
     }
 }
             
