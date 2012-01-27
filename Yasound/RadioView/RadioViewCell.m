@@ -91,7 +91,7 @@
         sheet = [[Theme theme] stylesheetForKey:@"CellUser" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.user = [sheet makeLabel];
 //        self.user.text = m.user;
-        self.user.text = ev.user.name;
+        self.user.text = ev.user_name;
         [view addSubview:self.user];
 
         // message background
@@ -155,7 +155,7 @@
     
     // user
 //    self.user.text = m.user;
-    self.user.text = ev.user.name;
+    self.user.text = ev.user_name;
     
     // message
 //    self.message.text = m.text;

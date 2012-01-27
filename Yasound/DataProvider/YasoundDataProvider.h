@@ -10,12 +10,14 @@
 #import "Communicator.h"
 #import "Radio.h"
 #import "WallEvent.h"
+#import "WallMessagePost.h"
 #import "ApiKey.h"
 #import "RadioUser.h"
 #import "SongUser.h"
 #import "NextSong.h"
+#import "Song.h"
 
-#define USE_YASOUND_LOCAL_SERVER 0
+#define USE_YASOUND_LOCAL_SERVER 1
 
 typedef NSString* taskID;
 
@@ -63,7 +65,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)friendsWithTarget:(id)target action:(SEL)selector;
 
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
-- (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
@@ -94,7 +95,11 @@ taskStatus stringToStatus(NSString* str);
 - (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)listenersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
-- (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+//- (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
+- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
+- (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 

@@ -15,7 +15,7 @@
 #import "ActivityAlertView.h"
 #import "RootViewController.h"
 #import "ConnectionView.h"
-
+#import "YasoundReachability.h"
 
 @implementation HomeViewController
 
@@ -81,6 +81,12 @@
 
 - (IBAction) onFacebook:(id)sender
 {
+    if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
+        return;
+    }
+    
     // TAG ACTIVITY ALERT
     if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
         [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        

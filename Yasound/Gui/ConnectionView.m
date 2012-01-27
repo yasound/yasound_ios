@@ -45,9 +45,9 @@ static ConnectionView* _main = nil;
     {
         self.layer.masksToBounds = YES;
         self.layer.cornerRadius = 6;
-        self.layer.borderColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0.15].CGColor;
+        self.layer.borderColor = [UIColor colorWithRed:0.1 green:0.1 blue:0.1 alpha:0.05].CGColor;
         self.layer.borderWidth = 1.0; 
-        self.layer.backgroundColor = [UIColor colorWithRed:0.25 green:0.25 blue:0.25 alpha:0.15].CGColor;
+        self.layer.backgroundColor = [UIColor colorWithRed:0.25 green:0.25 blue:0.25 alpha:0.05].CGColor;
         
 //        self.layer.shadowOffset = CGSizeMake(-10, 10);
 //        self.layer.shadowRadius = 5;

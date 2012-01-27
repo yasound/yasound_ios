@@ -64,6 +64,7 @@ static Song* _gNowPlayingSong = nil;
         _trackInteractionViewDisplayed = NO;
 
         _serverErrorCount = 0;
+        _streamErrorCount = 0;
         _updatingPrevious = NO;
         _firstUpdateRequest = YES;
         _latestEvent = nil;
@@ -515,11 +516,7 @@ static Song* _gNowPlayingSong = nil;
 #pragma mark - Data 
 
 #define EV_TYPE_MESSAGE @"M"
-#define EV_TYPE_LOGIN @"J"
-#define EV_TYPE_LOGOUT @"L"
 #define EV_TYPE_SONG @"S"
-#define EV_TYPE_START_LISTENING @"T"
-#define EV_TYPE_STOP_LISTENING @"P"
 
 
 //....................................................................
@@ -532,7 +529,10 @@ static Song* _gNowPlayingSong = nil;
 - (void)onTimerUpdate:(NSTimer*)timer
 {    
     [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
-    [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
+  
+    //#FIXME mat replace by get_current_song
+//    [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
+  [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
 
@@ -546,7 +546,9 @@ static Song* _gNowPlayingSong = nil;
 
     [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_FIRST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
 
-    [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
+  //#FIXME mat replace by get_current_song
+//    [[YasoundDataProvider main] songsForRadio:self.radio target:self action:@selector(receiveRadioSongs:withInfo:)];
+  [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
 
@@ -566,9 +568,8 @@ static Song* _gNowPlayingSong = nil;
     //NSLog(@"\ndate %@", ev.start_date);
     ev.start_date = [ev.start_date addTimeInterval:timeInterval];
     //NSLog(@"new date %@", ev.start_date);
-    ev.song = [[Song alloc] init];
-    ev.song.metadata = [[SongMetadata alloc] init];
-    ev.song.metadata.name = [NSString stringWithString:name];
+    ev.song_name = [NSString stringWithString:name];
+    ev.song_id = [NSNumber numberWithInt:1];
     
     return ev;
 }
@@ -580,8 +581,8 @@ static Song* _gNowPlayingSong = nil;
     ev.start_date = [NSDate date];
     ev.start_date = [ev.start_date addTimeInterval:timeInterval];
     ev.text = [NSString stringWithString:text];
-    ev.user =  [[User alloc] init];
-    ev.user.name = [NSString stringWithString:user];
+    ev.user_name = [NSString stringWithString:user];
+    ev.user_id = [NSNumber numberWithInt:1];
     
     return ev;
 }
@@ -595,16 +596,8 @@ static Song* _gNowPlayingSong = nil;
 {
     if ([type isEqualToString:EV_TYPE_MESSAGE])
         return @"MESSAGE";
-    if ([type isEqualToString:EV_TYPE_LOGIN])
-        return @"Login";
-    if ([type isEqualToString:EV_TYPE_LOGOUT])
-        return @"Logout";
     if ([type isEqualToString:EV_TYPE_SONG])
         return @"SONG";
-    if ([type isEqualToString:EV_TYPE_START_LISTENING])
-        return @"StartListening";
-    if ([type isEqualToString:EV_TYPE_STOP_LISTENING])
-        return @"StopListening";
     
     return @"UNKNOWN";
 }
@@ -614,7 +607,7 @@ static Song* _gNowPlayingSong = nil;
     int i = 0;
     for (WallEvent* w in _wallEvents)
     {
-        NSLog(@"(%d) -%@- %@", i, w.type, [w.type isEqualToString:EV_TYPE_MESSAGE] ? w.text : w.song.metadata.name);
+        NSLog(@"(%d) -%@- %@", i, w.type, [w.type isEqualToString:EV_TYPE_MESSAGE] ? w.text : w.song_name);
         i++;
     }
 }
@@ -720,19 +713,19 @@ static Song* _gNowPlayingSong = nil;
         //NSString* typestr = [RadioViewController evTypeToString:ev.type];
         //NSLog(@"receivedPreviousWallEvents %@ : date %@", typestr, ev.start_date);
         
-        if ([ev.type isEqualToString:EV_TYPE_LOGIN])
-            [self receivedPreviousLoginEvent:ev];
+//        if ([ev.type isEqualToString:EV_TYPE_LOGIN])
+//            [self receivedPreviousLoginEvent:ev];
+//
+//        else if ([ev.type isEqualToString:EV_TYPE_LOGOUT])
+//            [self receivedPreviousLogoutEvent:ev];
+//
+//        else if ([ev.type isEqualToString:EV_TYPE_START_LISTENING])
+//            [self receivedPreviousStartListeningEvent:ev];
+//
+//        else if ([ev.type isEqualToString:EV_TYPE_STOP_LISTENING])
+//            [self receivedPreviousStopListeningEvent:ev];
 
-        else if ([ev.type isEqualToString:EV_TYPE_LOGOUT])
-            [self receivedPreviousLogoutEvent:ev];
-
-        else if ([ev.type isEqualToString:EV_TYPE_START_LISTENING])
-            [self receivedPreviousStartListeningEvent:ev];
-
-        else if ([ev.type isEqualToString:EV_TYPE_STOP_LISTENING])
-            [self receivedPreviousStopListeningEvent:ev];
-
-        else if ([ev.type isEqualToString:EV_TYPE_SONG])
+        if ([ev.type isEqualToString:EV_TYPE_SONG])
             [self receivedPreviousSongEvent:ev];
 
         else if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
@@ -922,21 +915,24 @@ static Song* _gNowPlayingSong = nil;
     NSLog(@"\nreceivedCurrentWallEvents %d events", events.count);
     
     
-    for (WallEvent* ev in events)
+//    for (WallEvent* ev in events)
+  
+  for (int i = events.count - 1; i >= 0; i--)
     {
-        if ([ev.type isEqualToString:EV_TYPE_LOGIN])
-            [self receivedCurrentLoginEvent:ev];
+      WallEvent* ev = [events objectAtIndex:i];
+//        if ([ev.type isEqualToString:EV_TYPE_LOGIN])
+//            [self receivedCurrentLoginEvent:ev];
+//        
+//        else if ([ev.type isEqualToString:EV_TYPE_LOGOUT])
+//            [self receivedCurrentLogoutEvent:ev];
+//        
+//        else if ([ev.type isEqualToString:EV_TYPE_START_LISTENING])
+//            [self receivedCurrentStartListeningEvent:ev];
+//        
+//        else if ([ev.type isEqualToString:EV_TYPE_STOP_LISTENING])
+//            [self receivedCurrentStopListeningEvent:ev];
         
-        else if ([ev.type isEqualToString:EV_TYPE_LOGOUT])
-            [self receivedCurrentLogoutEvent:ev];
-        
-        else if ([ev.type isEqualToString:EV_TYPE_START_LISTENING])
-            [self receivedCurrentStartListeningEvent:ev];
-        
-        else if ([ev.type isEqualToString:EV_TYPE_STOP_LISTENING])
-            [self receivedCurrentStopListeningEvent:ev];
-        
-        else if ([ev.type isEqualToString:EV_TYPE_SONG])
+        if ([ev.type isEqualToString:EV_TYPE_SONG])
             [self receivedCurrentSongEvent:ev];
         
         else if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
@@ -979,44 +975,45 @@ static Song* _gNowPlayingSong = nil;
 }
 
 
+//#FIXME: do that in the method which get connected users...
 
-- (void)receivedCurrentLoginEvent:(WallEvent*)ev
-{
-    if (_latestEvent == nil)
-        return;
-    
-    if ([ev.start_date isLaterThan:_latestEvent.start_date])
-    {
-        NSLog(@"receivedCurrentLoginEvent %@ ", ev.user.name);
-        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", ev.user.name]];
-    }
-}
-
-
-- (void)receivedCurrentLogoutEvent:(WallEvent*)ev
-{
-    if (_latestEvent == nil)
-        return;
-    
-    if ([ev.start_date isLaterThan:_latestEvent.start_date])
-    {
-        NSLog(@"receivedCurrentLogoutEvent %@ ", ev.user.name);
-        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", ev.user.name]];    
-    }
-}
-
-
-
-- (void)receivedCurrentStartListeningEvent:(WallEvent*)ev
-{
-    
-}
-
-
-- (void)receivedCurrentStopListeningEvent:(WallEvent*)ev
-{
-    
-}
+//- (void)receivedCurrentLoginEvent:(WallEvent*)ev
+//{
+//    if (_latestEvent == nil)
+//        return;
+//    
+//    if ([ev.start_date isLaterThan:_latestEvent.start_date])
+//    {
+//        NSLog(@"receivedCurrentLoginEvent %@ ", ev.user.name);
+//        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", ev.user.name]];
+//    }
+//}
+//
+//
+//- (void)receivedCurrentLogoutEvent:(WallEvent*)ev
+//{
+//    if (_latestEvent == nil)
+//        return;
+//    
+//    if ([ev.start_date isLaterThan:_latestEvent.start_date])
+//    {
+//        NSLog(@"receivedCurrentLogoutEvent %@ ", ev.user.name);
+//        [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", ev.user.name]];    
+//    }
+//}
+//
+//
+//
+//- (void)receivedCurrentStartListeningEvent:(WallEvent*)ev
+//{
+//    
+//}
+//
+//
+//- (void)receivedCurrentStopListeningEvent:(WallEvent*)ev
+//{
+//    
+//}
 
 
 - (void)receivedCurrentSongEvent:(WallEvent*)ev
@@ -1028,7 +1025,7 @@ static Song* _gNowPlayingSong = nil;
     // replace lastSongEvent container with this new one
     if (_latestSongContainer != nil)
     {
-        NSLog(@"receivedCurrentSongEvent REPLACE %@ : date %@", ev.song.metadata.name, ev.start_date);
+        NSLog(@"receivedCurrentSongEvent REPLACE %@ : date %@", ev.song_name, ev.start_date);
 
         [ev setChildren:[_latestSongContainer getChildren]];
         [_latestSongContainer removeChildren];
@@ -1038,7 +1035,7 @@ static Song* _gNowPlayingSong = nil;
     }
     else
     {
-        NSLog(@"receivedCurrentSongEvent ADD %@ : date %@", ev.song.metadata.name, ev.start_date);
+        NSLog(@"receivedCurrentSongEvent ADD %@ : date %@", ev.song_name, ev.start_date);
 
         [_wallEvents insertObject:ev atIndex:0];
         [self insertSong];
@@ -1053,7 +1050,7 @@ static Song* _gNowPlayingSong = nil;
     if ((_latestEvent != nil) && ([ev.start_date isEarlierThanOrEqualTo:_latestEvent.start_date]))
         return;
     
-    NSLog(@"receivedCurrentMessageEvent ADD %@ : date %@", ev.user.name, ev.start_date);
+    NSLog(@"receivedCurrentMessageEvent ADD %@ : date %@", ev.user_name, ev.start_date);
 
     [_wallEvents insertObject:ev atIndex:0];
     [self insertMessage];
@@ -1070,55 +1067,43 @@ static Song* _gNowPlayingSong = nil;
 
 
 
+  //#FIXME mat replace by get_current_song
 
+//- (void)receiveRadioSongs:(NSArray*)events withInfo:(NSDictionary*)info
+//{
+//  Meta* meta = [info valueForKey:@"meta"];
+//  NSError* err = [info valueForKey:@"error"];
+//  
+//  if (err)
+//  {
+//    NSLog(@"receiveRadioSongs error!");
+//    return;
+//  }
+//  
+//  if (!meta)
+//  {
+//    NSLog(@"receiveRadioSongs : no meta data!");
+//    return;
+//  }
+//  
+//  if ([events count] == 0)
+//    return;
+//  
+//  WallEvent* ev = [events objectAtIndex:0];
+//  if (_lastSongUpdateDate == nil || [ev.start_date compare:_lastSongUpdateDate] == NSOrderedDescending)
+//  {
+//    [self setNowPlaying:ev.song];
+//    _lastSongUpdateDate = ev.start_date;
+//  }
+//  
+//  
+//}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- (void)receiveRadioSongs:(NSArray*)events withInfo:(NSDictionary*)info
+- (void) receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
 {
-  Meta* meta = [info valueForKey:@"meta"];
-  NSError* err = [info valueForKey:@"error"];
-  
-  if (err)
-  {
-    NSLog(@"receiveRadioSongs error!");
-    return;
-  }
-  
-  if (!meta)
-  {
-    NSLog(@"receiveRadioSongs : no meta data!");
-    return;
-  }
-  
-  if ([events count] == 0)
-    return;
-  
-    //LBDEBUG FIX
-    assert(events.count > 0);
-    
-  WallEvent* ev = [events objectAtIndex:0];
-  if (_lastSongUpdateDate == nil || [ev.start_date compare:_lastSongUpdateDate] == NSOrderedDescending)
-  {
-    [self setNowPlaying:ev.song];
-    _lastSongUpdateDate = ev.start_date;
-  }
-  
-  
+    if (song.id != _gNowPlayingSong.id)
+        [self setNowPlaying:song];
+
 }
 
 - (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
@@ -1827,8 +1812,13 @@ static Song* _gNowPlayingSong = nil;
 {
     if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_ERROR])
     {
-      [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
-      return;
+        [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
+        
+        // LBDEBUG TO BE COMPLETED
+        _streamErrorCount++;
+        [[AudioStreamManager main] stopRadio];
+        [[AudioStreamManager main] startRadio:self.radio];
+        return;
     }
     else if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_PLAY])
     {

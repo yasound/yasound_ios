@@ -2,21 +2,24 @@
 //  Song.h
 //  Yasound
 //
-//  Created by matthieu campion on 12/9/11.
-//  Copyright (c) 2011 Yasound. All rights reserved.
+//  Created by matthieu campion on 1/27/12.
+//  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
 #import "Model.h"
-#import "SongMetadata.h"
 
 @interface Song : Model
 
+@property (retain, nonatomic) NSString* name;
+@property (retain, nonatomic) NSString* artist;
+@property (retain, nonatomic) NSString* album;
+@property (retain, nonatomic) NSString* cover;
 
-@property (retain, nonatomic) NSNumber* song;
-@property (retain, nonatomic) SongMetadata* metadata;
+@end
+
+@interface SongStatus : Model
+
 @property (retain, nonatomic) NSNumber* likes;
 @property (retain, nonatomic) NSNumber* dislikes;
-
-- (NSString*)toString;
 
 @end

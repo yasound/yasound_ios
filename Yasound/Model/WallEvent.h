@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Model.h"
-#import "Song.h"
 #import "Radio.h"
 #import "User.h"
 
@@ -23,10 +22,18 @@
 @property (retain, nonatomic) NSString* text;
 @property (retain, nonatomic) NSNumber* animated_emoticon;
 @property (retain, nonatomic) NSDate* start_date;
-@property (retain, nonatomic) NSDate* end_date;
-@property (retain, nonatomic) Song* song;
-@property (retain, nonatomic) Radio* radio;
-@property (retain, nonatomic) User* user;
+
+@property (retain, nonatomic) NSNumber* radio_id;
+
+@property (retain, nonatomic) NSNumber* user_id;
+@property (retain, nonatomic) NSString* user_name;
+@property (retain, nonatomic) NSString* user_picture;
+
+@property (retain, nonatomic) NSNumber* song_id;
+@property (retain, nonatomic) NSString* song_name;
+@property (retain, nonatomic) NSString* song_artist;
+@property (retain, nonatomic) NSString* song_album;
+@property (retain, nonatomic) NSString* song_cover_filename;
 
 - (NSString*)toString;
 
