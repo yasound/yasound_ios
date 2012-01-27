@@ -746,13 +746,23 @@ static Song* _gNowPlayingSong = nil;
     NSInteger count = events.count;
 
     // update _latestEvent
+    
+    //LBDEBUG FIX
+    assert(events.count > 0);
+//    assert(_wallEvents.count > 0);
+    
     WallEvent* ev = [events objectAtIndex:0];
-    WallEvent* wev = [_wallEvents objectAtIndex:0];
+    WallEvent* wev = nil;
+    
+    if (_wallEvents.count > 0)
+        wev = [_wallEvents objectAtIndex:0];
     
     NSLog(@"first event is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
-    NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
+    
+    if (wev != nil)
+        NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
 
-    if ([wev.start_date isLaterThan:ev.start_date])
+    if ((wev != nil) && [wev.start_date isLaterThan:ev.start_date])
         _latestEvent = wev;
     else
         _latestEvent = ev;    
@@ -941,13 +951,20 @@ static Song* _gNowPlayingSong = nil;
     
     if (count > 0)
     {
+        assert(events.count > 0);
+//        assert(_wallEvents.count > 0);
+
         WallEvent* ev = [events objectAtIndex:0];
-        WallEvent* wev = [_wallEvents objectAtIndex:0];
+        WallEvent* wev = nil;
+        
+        if (_wallEvents.count > 0)
+            wev = [_wallEvents objectAtIndex:0];
         
         NSLog(@"first event is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
-        NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
+        if (wev != nil)
+            NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
         
-        if ([wev.start_date isLaterThan:ev.start_date])
+        if ((wev != nil) && [wev.start_date isLaterThan:ev.start_date])
             _latestEvent = wev;
         else
             _latestEvent = ev;
@@ -1091,6 +1108,9 @@ static Song* _gNowPlayingSong = nil;
   if ([events count] == 0)
     return;
   
+    //LBDEBUG FIX
+    assert(events.count > 0);
+    
   WallEvent* ev = [events objectAtIndex:0];
   if (_lastSongUpdateDate == nil || [ev.start_date compare:_lastSongUpdateDate] == NSOrderedDescending)
   {
@@ -1228,6 +1248,9 @@ static Song* _gNowPlayingSong = nil;
 {
     NSInteger index = _wallEvents.count - 1;
 
+    //LBDEBUG FIX
+    assert(_wallEvents.count > 0);
+
     WallEvent* ev = [_wallEvents objectAtIndex:index];
     [ev computeTextHeightUsingFont:_messageFont withConstraint:270];
     
@@ -1251,6 +1274,9 @@ static Song* _gNowPlayingSong = nil;
 {
     NSInteger index = 0;
     
+    //LBDEBUG FIX
+    assert(_wallEvents.count > 0);
+
     WallEvent* ev = [_wallEvents objectAtIndex:index];
     [ev computeTextHeightUsingFont:_messageFont withConstraint:270];
     
@@ -1262,6 +1288,9 @@ static Song* _gNowPlayingSong = nil;
 - (void)insertSong
 {
     NSInteger index = 0;
+
+    //LBDEBUG FIX
+    assert(_wallEvents.count > 0);
 
     WallEvent* ev = [_wallEvents objectAtIndex:index];
     UITableViewRowAnimation anim = UITableViewRowAnimationTop;
@@ -1298,6 +1327,9 @@ static Song* _gNowPlayingSong = nil;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+    //LBDEBUG FIX
+    assert(_wallEvents.count > 0);
+
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
     
     if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
@@ -1332,6 +1364,9 @@ static Song* _gNowPlayingSong = nil;
 {
     static NSString* CellIdentifier = @"RadioViewCell";
     
+    //LBDEBUG FIX
+    assert(_wallEvents.count > 0);
+
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
 
     if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
