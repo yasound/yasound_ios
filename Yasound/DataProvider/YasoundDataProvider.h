@@ -10,12 +10,14 @@
 #import "Communicator.h"
 #import "Radio.h"
 #import "WallEvent.h"
+#import "WallMessagePost.h"
 #import "ApiKey.h"
 #import "RadioUser.h"
 #import "SongUser.h"
 #import "NextSong.h"
+#import "Song2.h"
 
-#define USE_YASOUND_LOCAL_SERVER 0
+#define USE_YASOUND_LOCAL_SERVER 1
 
 typedef NSString* taskID;
 
@@ -63,7 +65,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)friendsWithTarget:(id)target action:(SEL)selector;
 
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
-- (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
@@ -83,8 +84,8 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
 
-- (void)setMood:(UserMood)mood forSong:(Song*)song;
-- (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector;
+- (void)setMood:(UserMood)mood forSong:(Song2*)song;
+- (void)songUserForSong:(Song2*)song target:(id)target action:(SEL)selector;
 
 - (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;
 - (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize afterEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
@@ -94,11 +95,15 @@ taskStatus stringToStatus(NSString* str);
 - (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)listenersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
-- (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+//- (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
+- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
+- (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
-- (void)addSongToUserRadio:(Song*)song;
+- (void)addSongToUserRadio:(Song2*)song;
 
 - (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector;
 
@@ -111,7 +116,7 @@ taskStatus stringToStatus(NSString* str);
 //
 - (void)moveNextSong:(NextSong*)nextSong toPosition:(int)position target:(id)target action:(SEL)selector;   // didMoveNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
 - (void)deleteNextSong:(NextSong*)nextSong target:(id)target action:(SEL)selector;                          // didDeleteNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
-- (void)addSongToNextSongs:(Song*)song atPosition:(int)position target:(id)target action:(SEL)selector;     // didAddNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
+- (void)addSongToNextSongs:(Song2*)song atPosition:(int)position target:(id)target action:(SEL)selector;     // didAddNextSong:(NSArray*)new_next_songs info:(NSDictionary*)info
 
 
 - (void)enterRadioWall:(Radio*)radio;

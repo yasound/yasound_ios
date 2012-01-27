@@ -58,7 +58,7 @@
 
         sheet = [[Theme theme] stylesheetForKey:@"SongCellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.message = [sheet makeLabel];
-        self.message.text = [NSString stringWithFormat:@"%@ - %@", ev.song.metadata.artist_name, ev.song.metadata.name];
+        self.message.text = [NSString stringWithFormat:@"%@ - %@", ev.song_artist, ev.song_name];
         [view addSubview:self.message];
 
         
@@ -118,7 +118,7 @@
 //    self.message.text = m.te;
 //    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, m.textHeight);
 
-    self.message.text = ev.song.metadata.name;
+    self.message.text = ev.song_name;
 //    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, height);
 }
 

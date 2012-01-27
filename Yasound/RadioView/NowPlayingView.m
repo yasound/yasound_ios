@@ -10,6 +10,12 @@
 #import "Theme.h"
 #import "YasoundDataProvider.h"
 
+@interface NowPlayingView (internal)
+
+- (void) onUpdate:(NSTimer*)timer;
+
+@end
+
 
 @implementation NowPlayingView
 
@@ -18,7 +24,7 @@
 
 //LBDEBUG TODO : use image, likes disklikes from Song
 
-- (id)initWithSong:(Song*)song target:(id)target action:(SEL)action
+- (id)initWithSong:(Song2*)song target:(id)target action:(SEL)action
 {
     if (self = [super init])
     {
@@ -65,13 +71,13 @@
         // header now playing bar artist
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarArtist" error:nil];
         label = [sheet makeLabel];
-        label.text = song.metadata.artist_name;
+        label.text = song.artist;
         [self addSubview:label];
         
         // header now playing bar title
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarTitle" error:nil];
         label = [sheet makeLabel];
-        label.text = song.metadata.name;
+        label.text = song.name;
         [self addSubview:label];
         
         // header now playing bar likes image
@@ -80,13 +86,10 @@
         imageView.frame = sheet.frame;
         [self addSubview:imageView];
         
-        NSLog(@"song likes %@  dislikes %@", song.likes, song.dislikes);
-        
         // header now playing bar likes
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarLikes" error:nil];
         _likesLabel = [sheet makeLabel];
-//        label.text = [NSString stringWithFormat:@"%d", nbLikes];
-        _likesLabel.text = [NSString stringWithFormat:@"%d", [_song.likes intValue]];
+        _likesLabel.text = @"0";
         [self addSubview:_likesLabel];
         
         // header now playing bar dislikes image
@@ -98,8 +101,7 @@
         // header now playing bar dislikes
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarDislikes" error:nil];
         _dislikesLabel = [sheet makeLabel];
-//        label.text = [NSString stringWithFormat:@"%d", nbDislikes];
-        _dislikesLabel.text = [NSString stringWithFormat:@"%d", [_song.dislikes intValue]];
+        _dislikesLabel.text = @"0";
         [self addSubview:_dislikesLabel];
         
         
@@ -118,6 +120,7 @@
         
         [self addSubview:self.playPauseButton];
         
+      [self onUpdate:nil];
         [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
     }
     
@@ -126,15 +129,13 @@
 
 - (void) onUpdate:(NSTimer*)timer
 {
-    NSNumber* songId = _song.id;
-    [[YasoundDataProvider main] songWithId:songId target:self action:@selector(receiveSong:withInfo:)];
+  [[YasoundDataProvider main] statusForSongId:_song.id target:self action:@selector(receiveStatus:withInfo:)];
 }
 
-- (void)receiveSong:(Song*)song withInfo:(NSDictionary*)info
+- (void)receiveStatus:(SongStatus*)status withInfo:(NSDictionary*)info
 {
-    _song = song;
-    _likesLabel.text = [NSString stringWithFormat:@"%d", [_song.likes intValue]];
-    _dislikesLabel.text = [NSString stringWithFormat:@"%d", [_song.dislikes intValue]];
+    _likesLabel.text = [NSString stringWithFormat:@"%d", [status.likes intValue]];
+    _dislikesLabel.text = [NSString stringWithFormat:@"%d", [status.dislikes intValue]];
 }
 
 

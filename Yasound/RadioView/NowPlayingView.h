@@ -7,19 +7,19 @@
 
 #import <UIKit/UIKit.h>
 #import "WebImageView.h"
-#import "Song.h"
+#import "Song2.h"
 
 @interface NowPlayingView : UIView
 {
     id _target;
     SEL _action;
-    Song* _song;
+    Song2* _song;
     UILabel* _likesLabel;
     UILabel* _dislikesLabel;
 }
 
 @property (nonatomic, retain) UIButton* playPauseButton;
 
-- (id)initWithSong:(Song*)song target:(id)target action:(SEL)action;
+- (id)initWithSong:(Song2*)song target:(id)target action:(SEL)action;
 
 @end

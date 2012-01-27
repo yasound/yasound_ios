@@ -14,10 +14,22 @@
 @synthesize text;
 @synthesize animated_emoticon;
 @synthesize start_date;
-@synthesize end_date;
-@synthesize song;
-@synthesize radio;
-@synthesize user;
+
+@synthesize radio_id;
+
+@synthesize user_id;
+@synthesize user_name;
+@synthesize user_picture;
+
+@synthesize song_id;
+@synthesize song_name;
+@synthesize song_album;
+@synthesize song_artist;
+@synthesize song_cover_filename;
+
+//@synthesize song;
+//@synthesize radio;
+//@synthesize user;
 
 - (id)init
 {
@@ -32,23 +44,14 @@
 
 - (NSString*)toString
 {
-//  NSString* desc = [NSString stringWithFormat:@"id: '%@' type: '%@', text: '%@'", self.id, self.type, self.text];
   NSString* desc;
-  if ([self.type compare:@"J"] == NSOrderedSame)
+  if ([self.type compare:@"M"] == NSOrderedSame)
   {
-    desc = [NSString stringWithFormat:@"'%@' joined radio '%@'", [self.user toString], [self.radio toString]];
-  }
-  else if ([self.type compare:@"L"] == NSOrderedSame)
-  {
-    desc = [NSString stringWithFormat:@"'%@' left radio '%@'", [self.user toString], [self.radio toString]];
-  }
-  else if ([self.type compare:@"M"] == NSOrderedSame)
-  {
-    desc = [NSString stringWithFormat:@"message from '%@'   text: '%@' emoticon: '%@'", [self.user toString], self.text, self. animated_emoticon];
+    desc = [NSString stringWithFormat:@"message from '%@'   text: '%@' emoticon: '%@'", self.user_name, self.text, self. animated_emoticon];
   }
   else if ([self.type compare:@"S"] == NSOrderedSame)
   {
-    desc = [NSString stringWithFormat:@"song: '%@'", [self.song toString]];
+    desc = [NSString stringWithFormat:@"song: '%@'", self.song_name];
   }
   return desc;
 }

@@ -19,7 +19,7 @@
 @implementation TrackInteractionView
 
 
-- (id)initWithSong:(Song*)song
+- (id)initWithSong:(Song2*)song
 {
     if (self = [super init])
     {
@@ -105,9 +105,9 @@
 - (void)onTrackBuy:(id)sender
 {
     BuyLinkManager *mgr = [[BuyLinkManager alloc] init];
-    NSString *link = [mgr generateLink:_song.metadata.artist_name 
-                                 album:_song.metadata.album_name 
-                                  song:_song.metadata.name];
+    NSString *link = [mgr generateLink:_song.artist 
+                                 album:_song.album 
+                                  song:_song.name];
     if (link) 
     {
         NSURL *url = [[NSURL alloc] initWithString:link];
@@ -130,8 +130,8 @@
     Radio *currentRadio = [AudioStreamManager main].currentRadio;
     
     NSString* fullMessage = [NSString stringWithFormat:message,
-                             _song.metadata.name,
-                             _song.metadata.artist_name,
+                             _song.name,
+                             _song.artist,
                              currentRadio.name];
     
     NSURL* fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link,

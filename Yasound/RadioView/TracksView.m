@@ -117,8 +117,8 @@
     }
     
     NextSong* song = [_data objectAtIndex:indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%d - %@", [song.order integerValue], song.song.metadata.name];
-    cell.detailTextLabel.text = song.song.metadata.artist_name;
+    cell.textLabel.text = [NSString stringWithFormat:@"%d - %@", [song.order integerValue], song.song.name];
+    cell.detailTextLabel.text = song.song.artist;
   return cell;
 }
 
@@ -167,7 +167,7 @@
   {
       NextSong* song = [_data objectAtIndex:indexPath.row];
       
-    NSLog(@"deleting '%@'", song.song.metadata.name);
+    NSLog(@"deleting '%@'", song.song.name);
 
     // update data
     [_data removeObjectAtIndex:indexPath.row];
