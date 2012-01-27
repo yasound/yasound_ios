@@ -739,13 +739,19 @@ static Song* _gNowPlayingSong = nil;
     NSInteger count = events.count;
 
     // update _latestEvent
+    
     WallEvent* ev = [events objectAtIndex:0];
-    WallEvent* wev = [_wallEvents objectAtIndex:0];
+    WallEvent* wev = nil;
+    
+    if (_wallEvents.count > 0)
+        wev = [_wallEvents objectAtIndex:0];
     
     NSLog(@"first event is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
-    NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
+    
+    if (wev != nil)
+        NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
 
-    if ([wev.start_date isLaterThan:ev.start_date])
+    if ((wev != nil) && [wev.start_date isLaterThan:ev.start_date])
         _latestEvent = wev;
     else
         _latestEvent = ev;    
@@ -937,13 +943,20 @@ static Song* _gNowPlayingSong = nil;
     
     if (count > 0)
     {
+        assert(events.count > 0);
+//        assert(_wallEvents.count > 0);
+
         WallEvent* ev = [events objectAtIndex:0];
-        WallEvent* wev = [_wallEvents objectAtIndex:0];
+        WallEvent* wev = nil;
+        
+        if (_wallEvents.count > 0)
+            wev = [_wallEvents objectAtIndex:0];
         
         NSLog(@"first event is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
-        NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
+        if (wev != nil)
+            NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
         
-        if ([wev.start_date isLaterThan:ev.start_date])
+        if ((wev != nil) && [wev.start_date isLaterThan:ev.start_date])
             _latestEvent = wev;
         else
             _latestEvent = ev;
@@ -1084,8 +1097,9 @@ static Song* _gNowPlayingSong = nil;
 
 - (void) receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
 {
-  if (song.id != _gNowPlayingSong.id)
-      [self setNowPlaying:song];
+    if (song.id != _gNowPlayingSong.id)
+        [self setNowPlaying:song];
+
 }
 
 - (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
