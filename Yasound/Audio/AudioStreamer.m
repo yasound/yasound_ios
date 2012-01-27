@@ -255,6 +255,7 @@ void ASReadStreamCallBack
 	{
 		url = [aURL retain];
     cookie = aCookie;
+    [cookie retain];
 	}
 	return self;
 }
@@ -270,6 +271,8 @@ void ASReadStreamCallBack
 	[self stop];
 	[url release];
 	[super dealloc];
+  if (cookie)
+    [cookie release];
 }
 
 //
