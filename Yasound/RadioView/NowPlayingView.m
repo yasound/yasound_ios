@@ -121,7 +121,9 @@
         [self addSubview:self.playPauseButton];
         
       [self onUpdate:nil];
-        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
+      
+      // #FIXME: mat deactivate temporarily 
+//        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
     }
     
     return self;
