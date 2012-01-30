@@ -23,7 +23,22 @@
 - (NSString*) dateToString:(NSDate*)d
 {
   NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-  [dateFormat setDateFormat:@"HH:mm"];
+//  [dateFormat setDateFormat:@"HH:mm"];
+  NSDate* now = [NSDate date];
+  NSDateComponents* todayComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:now];
+  NSDateComponents* refComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:d];
+  
+  if (todayComponents.year == refComponents.year && todayComponents.month == refComponents.month && todayComponents.day == refComponents.day)
+  {
+    // today: show time
+    [dateFormat setDateFormat:@"HH:mm"];
+  }
+  else
+  {
+    // not today: show date
+    [dateFormat setDateFormat:@"dd/MM"];
+  }
+  
   NSString* s = [dateFormat stringFromDate:d];
   [dateFormat release];
   return s;
