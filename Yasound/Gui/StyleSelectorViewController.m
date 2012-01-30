@@ -15,7 +15,7 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil target:(id)target
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil currentStyle:(NSString*)currentStyle target:(id)target
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
@@ -25,6 +25,8 @@
       NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
       self.styles = [resources objectForKey:@"styles"];
       assert(self.styles != nil);
+      
+      _startStyle = currentStyle;
     }
     return self;
 }
@@ -43,6 +45,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+  
+  NSInteger i = 0;
+  for (NSString* s in self.styles) 
+  {
+    if ([s isEqualToString:_startStyle])
+    {
+      [stylePickerView selectRow:i inComponent:0 animated:YES];
+      break;
+    }
+    i++;
+  }
 }
 
 - (void)viewDidUnload
@@ -78,24 +91,19 @@
 }
 
 
-#pragma mark - UIPickerViewDelegate
-
-//- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
-//- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-  NSString* style = [self.styles objectAtIndex:row];
-  
-  [self.delegate didSelectStyle:style];
-}
-
-
 #pragma mark - IBActions
 
 - (IBAction)onDoneClicked:(id)sender
 {
-  [self.delegate cancelSelectStyle];
+  NSInteger row = [stylePickerView selectedRowInComponent:0];
+  NSString* style = [self.styles objectAtIndex:row];
+  [self.delegate didSelectStyle:style];
+  [self.delegate closeSelectStyleController];
+}
+
+- (IBAction)onCancelClicked:(id)sender
+{
+  [self.delegate closeSelectStyleController];
 }
 
 

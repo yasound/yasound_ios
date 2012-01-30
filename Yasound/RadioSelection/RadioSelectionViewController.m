@@ -197,7 +197,7 @@
 
 - (IBAction)onStyleSelectorClicked:(id)sender
 {
-  StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil target:self];
+  StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil currentStyle:_currentStyle target:self];
 //  self.navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
   [self.navigationController presentModalViewController:view animated:YES];
@@ -233,7 +233,7 @@
     [self updateRadios:_currentStyle];
 }
 
-- (void)cancelSelectStyle
+- (void)closeSelectStyleController
 {
   [self.navigationController dismissModalViewControllerAnimated:YES];
 }

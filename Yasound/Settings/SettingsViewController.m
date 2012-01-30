@@ -409,7 +409,7 @@
 
 - (void)openStyleSelector
 {
-    StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil target:self];
+    StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil currentStyle:_myRadio.genre target:self];
     //  self.navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self.navigationController presentModalViewController:view animated:YES];
@@ -433,7 +433,7 @@
      */
 }
 
-- (void)cancelSelectStyle
+- (void)closeSelectStyleController
 {
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }

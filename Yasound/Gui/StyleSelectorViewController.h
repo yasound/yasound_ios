@@ -13,21 +13,23 @@
 @required
 
 - (void)didSelectStyle:(NSString*)style;
-- (void)cancelSelectStyle;
+- (void)closeSelectStyleController;
 
 @end
 
 
 @interface StyleSelectorViewController : TestflightViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 {
-  
+  IBOutlet UIPickerView* stylePickerView;
+  NSString* _startStyle;
 }
 
 @property (nonatomic, retain) NSArray* styles;
 @property (retain) id<StyleSelectorDelegate> delegate;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil target:(id)target;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil currentStyle:(NSString*)currentStyle target:(id)target;
 - (IBAction)onDoneClicked:(id)sender;
+- (IBAction)onCancelClicked:(id)sender;
 
 @end
