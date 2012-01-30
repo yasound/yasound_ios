@@ -9,6 +9,12 @@
 #import "RadioSelectionTableViewCell.h"
 #import "BundleFileManager.h"
 
+@interface RadioSelectionTableViewCell (internal_update)
+
+- (void)onUpdate:(NSTimer*)timer;
+
+@end
+
 @implementation RadioSelectionTableViewCell
 
 @synthesize radio;
@@ -22,14 +28,14 @@
 @synthesize cellBackground;
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex radio:(Radio*)radio;
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex radio:(Radio*)r;
 {
   if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
   {
     BundleStylesheet* stylesheet;
     NSError* error;
     
-      self.radio = radio;
+      self.radio = r;
     
     // cell background
     if (rowIndex & 1)
@@ -40,7 +46,7 @@
     [self addSubview:self.cellBackground];
     
     // avatar
-    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     self.radioAvatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
     stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionAvatar" retainStylesheet:YES overwriteStylesheet:NO error:&error];
     self.radioAvatar.frame = stylesheet.frame;
@@ -59,27 +65,27 @@
     
     // title
     self.radioTitle = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-    self.radioTitle.text = radio.name;
+    self.radioTitle.text = self.radio.name;
     [self addSubview:self.radioTitle];
 
     // subtitle 1
     self.radioSubtitle1 = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-      self.radioSubtitle1.text = radio.creator.name;
+      self.radioSubtitle1.text = @"";
     [self addSubview:self.radioSubtitle1];
 
     // subtitle 2
     self.radioSubtitle2 = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-      self.radioSubtitle2.text = radio.genre;
+      self.radioSubtitle2.text = @"";
     [self addSubview:self.radioSubtitle2];
 
     // likes
     self.radioLikes = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-    self.radioLikes.text = [NSString stringWithFormat:@"%d", [radio.favorites integerValue]];
+    self.radioLikes.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
     [self addSubview:self.radioLikes];
 
     // listeners
     self.radioListeners = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-    self.radioListeners.text = [NSString stringWithFormat:@"%d", [radio.listeners integerValue]];
+    self.radioListeners.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
     [self addSubview:self.radioListeners];
     
     // configure selected view
@@ -99,18 +105,37 @@
     [_bkgSelected retain];
 
     
+    _updateTimer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
+    [_updateTimer fire];
   }
   return self;
 }
 
 
+
+
 - (void)dealloc
 {
+  [_updateTimer invalidate];
   [_maskBackup release];
   [_maskSelected release];
   [_bkgBackup release];
   [_bkgSelected release];
   [super dealloc];
+}
+
+- (void)receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
+{
+  if (!song)
+    return;
+  
+  self.radioSubtitle1.text = song.artist;
+  self.radioSubtitle2.text = song.name;
+}
+
+- (void)onUpdate:(NSTimer*)timer
+{
+  [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
 }
 
 

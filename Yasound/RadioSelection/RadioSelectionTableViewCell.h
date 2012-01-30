@@ -17,6 +17,7 @@
   UIImage* _bkgBackup;
   UIImage* _bkgSelected;
 
+  NSTimer* _updateTimer;
 }
 
 @property (nonatomic, retain) Radio* radio;
