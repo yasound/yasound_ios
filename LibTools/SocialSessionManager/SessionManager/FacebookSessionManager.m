@@ -134,13 +134,13 @@ static FacebookSessionManager* _facebook = nil;
   if (requestType == SRequestInfoUser)
   {
     _requestMe = [_facebookConnect requestWithGraphPath:@"me" andDelegate:self];
-    return;
+    return YES;
   }
   
   if (requestType == SRequestInfoFriends)
   {
     _requestFriends = [_facebookConnect requestWithGraphPath:@"me/friends" andDelegate:self];
-    return;
+    return YES;
   }
   
   return YES;

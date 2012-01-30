@@ -136,6 +136,8 @@
     
     if (section == SECTION_MISC)
         return 2;
+  
+  return 0;
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

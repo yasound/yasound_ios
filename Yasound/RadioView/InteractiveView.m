@@ -49,7 +49,6 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
 {
-    UITouch *theTouch = [touches anyObject];
     [_target performSelector:_action];
 }
 

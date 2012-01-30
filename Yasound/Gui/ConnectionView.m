@@ -19,7 +19,7 @@ static ConnectionView* _main = nil;
 + (ConnectionView*)start
 {
     if (_main != nil)
-        return;
+        return _main;
     _main = [[ConnectionView alloc] initWithFrame:CGRectMake(86,158, 138, 90)];
     
     return _main;
