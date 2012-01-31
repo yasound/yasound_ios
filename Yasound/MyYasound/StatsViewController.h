@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
 #import "ChartView.h"
+#import "RadioListeningStat.h"
 
 @interface StatsViewController : TestflightViewController
 {
@@ -31,6 +32,10 @@
     UIView* _weekGraphBoundingBox;
 
     UIView* _monthGraphBoundingBox;
+  
+  RadioListeningStat* _lastStat;
+  UILabel* _listenersLabel;
+  UILabel* _favoritesLabel;
 }
 
 @property (nonatomic, retain) ChartView* weekGraphView;
