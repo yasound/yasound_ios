@@ -225,7 +225,7 @@
     request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:@"https://upload.twitter.com/1/statuses/update_with_media.json"] parameters:nil requestMethod:TWRequestMethodPOST];
   
     NSData* imgData = [NSData dataWithContentsOfURL:pictureUrl];
-    UIImage* img = [[UIImage alloc] initWithData:imgData cache:NO];
+    UIImage* img = [[UIImage alloc] initWithData:imgData];
     
     NSData* data = UIImagePNGRepresentation(img);
     [request addMultiPartData:data withName:@"media" type:@"image/png"];
@@ -238,6 +238,8 @@
    {
      [self performSelectorOnMainThread:@selector(onMessagePosted:) withObject:urlResponse waitUntilDone:NO];
    }];
+  
+  return TRUE;
 }
 
 - (void)onMessagePosted:(NSHTTPURLResponse*)urlResponse

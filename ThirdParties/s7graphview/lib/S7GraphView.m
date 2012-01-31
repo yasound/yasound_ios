@@ -235,7 +235,7 @@
 //	CGFloat stepY = (self.frame.size.height - (offsetY*2)) / maxY;
 	CGFloat stepY = (self.frame.size.height - (offsetY)) / maxY;
     
-    NSMutableArray* values = [self.dataSource graphView:self yValuesForPlot:0];
+    NSArray* values = [self.dataSource graphView:self yValuesForPlot:0];
     NSArray *sortedValuesForAxisY;
     sortedValuesForAxisY = [values sortedArrayUsingComparator:^(id a, id b) 
     {

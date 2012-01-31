@@ -27,21 +27,22 @@
 }
 
 
--(id)initWithImageAtURL:(NSURL*)url
+-(id)initWithImageAtURL:(NSURL*)Url
 {
     self = [super init];
     if (self)
     {
-        [self setUrl:url];
+        [self setUrl:Url];
     }
   
   return self;
 }
 
 
-- (void)setUrl:(NSURL *)url
+- (void)setUrl:(NSURL *)Url
 {
-    if (url == nil)
+    url = Url;
+    if (Url == nil)
     {
         [self setImage:[UIImage imageNamed:@"avatarDummy.png"]]; 
         return;
@@ -57,7 +58,7 @@
     [_ai setFrame:stylesheet.frame];
     [self addSubview:_ai];
     
-    ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:url];
+    ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:Url];
     // the https certificate seems to be ok but keep next line commented...
 //    req.validatesSecureCertificate = FALSE;
     req.requestMethod = @"GET";

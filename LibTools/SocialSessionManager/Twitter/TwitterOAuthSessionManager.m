@@ -158,6 +158,7 @@
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl
 {
   _requestPost = [_engine sendUpdate:message];
+  return TRUE;
 }
 
 
@@ -175,6 +176,125 @@
 
 
 #pragma mark - SA_OAuthTwitterEngineDelegate
+
+- (void)parseUserInfo:(NSString*)data
+{
+  NSInteger length = [data length];
+  NSRange range = NSMakeRange(0, length);
+  
+  
+  //.....................................................................
+  //
+  // parse oauth_token and oauth_token_secret
+  //
+  NSRange begin = [data rangeOfString:@"oauth_token=" options:NSLiteralSearch range:range];
+  if (begin.location == NSNotFound)
+  {
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+  
+  range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
+  NSRange end = [data rangeOfString:@"&oauth_token_secret=" options:NSLiteralSearch range:range];
+  if (end.location == NSNotFound)
+  {
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+  
+  //.....................................................................
+  //
+  // extract and store
+  //
+  NSString* oauth_token = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
+  
+  begin = end;
+  range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
+  end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
+  if (end.location == NSNotFound)
+  {
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+  
+  NSString* oauth_token_secret = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
+  
+  //LBDEBUG
+  assert (oauth_token != nil);
+  [[NSUserDefaults standardUserDefaults] setValue:oauth_token forKey:DATA_FIELD_TOKEN];
+  assert (oauth_token_secret != nil);
+  [[NSUserDefaults standardUserDefaults] setValue:oauth_token_secret forKey:DATA_FIELD_TOKEN_SECRET];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+  
+  //  NSLog(@"oauth_token %@", oauth_token);
+  
+  //  NSLog(@"oauth_token_secret %@", oauth_token_secret);
+  
+  
+  //.....................................................................
+  //
+  // parse userid
+  //
+  
+  begin = [data rangeOfString:@"user_id=" options:NSLiteralSearch range:range];
+  if (begin.location == NSNotFound)
+  {
+    NSLog(@"TwitterOAuthSession warning : no userid has been parsed. May be normal.");
+    return;
+  }
+  
+  range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
+  end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
+  if (end.location == NSNotFound)
+  {
+    assert(0);
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+  
+  // extract user id
+  NSString* userid = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
+  
+  // store it
+  [[NSUserDefaults standardUserDefaults] setValue:userid forKey:OAUTH_USERID];
+  
+  
+  
+  //.....................................................................
+  //
+  // parse user screen name
+  //
+  
+  range = NSMakeRange(end.location + end.length, length - (end.location + end.length));
+  
+  begin = [data rangeOfString:@"screen_name=" options:NSLiteralSearch range:range];
+  if (begin.location == NSNotFound)
+  {
+    assert(0);
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+  
+  range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
+  end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
+  if (end.location == NSNotFound)
+  {
+    assert(0);
+    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    return;
+  }
+  
+  // extract user screen name
+  NSString* screenname = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
+  
+  // store it
+  [[NSUserDefaults standardUserDefaults] setValue:screenname forKey:OAUTH_SCREENNAME];
+  
+  
+  
+  
+  
+}
 
 
 //implement these methods to store off the creds returned by Twitter
@@ -201,125 +321,6 @@
 
 
 
-- (void)parseUserInfo:(NSString*)data
-{
-  NSInteger length = [data length];
-  NSRange range = NSMakeRange(0, length);
-    
-    
-    //.....................................................................
-    //
-    // parse oauth_token and oauth_token_secret
-    //
-    NSRange begin = [data rangeOfString:@"oauth_token=" options:NSLiteralSearch range:range];
-    if (begin.location == NSNotFound)
-    {
-        NSLog(@"TwitterOAuthSession Manager data parsing error!");
-        return;
-    }
-    
-    range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
-    NSRange end = [data rangeOfString:@"&oauth_token_secret=" options:NSLiteralSearch range:range];
-    if (end.location == NSNotFound)
-    {
-        NSLog(@"TwitterOAuthSession Manager data parsing error!");
-        return;
-    }
-    
-    //.....................................................................
-    //
-    // extract and store
-    //
-    NSString* oauth_token = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
-    
-    begin = end;
-    range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
-    end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
-    if (end.location == NSNotFound)
-    {
-        NSLog(@"TwitterOAuthSession Manager data parsing error!");
-        return;
-    }
-    
-    NSString* oauth_token_secret = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
-    
-    //LBDEBUG
-    assert (oauth_token != nil);
-    [[NSUserDefaults standardUserDefaults] setValue:oauth_token forKey:DATA_FIELD_TOKEN];
-    assert (oauth_token_secret != nil);
-    [[NSUserDefaults standardUserDefaults] setValue:oauth_token_secret forKey:DATA_FIELD_TOKEN_SECRET];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    //  NSLog(@"oauth_token %@", oauth_token);
-    
-    //  NSLog(@"oauth_token_secret %@", oauth_token_secret);
-
-
-  //.....................................................................
-  //
-  // parse userid
-  //
-  
-   begin = [data rangeOfString:@"user_id=" options:NSLiteralSearch range:range];
-  if (begin.location == NSNotFound)
-  {
-    NSLog(@"TwitterOAuthSession warning : no userid has been parsed. May be normal.");
-    return;
-  }
-
-  range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
-   end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
-  if (end.location == NSNotFound)
-  {
-    assert(0);
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
-    return;
-  }
-
-  // extract user id
-  NSString* userid = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
-  
-  // store it
-  [[NSUserDefaults standardUserDefaults] setValue:userid forKey:OAUTH_USERID];
-
-
-  
-  //.....................................................................
-  //
-  // parse user screen name
-  //
-
-  range = NSMakeRange(end.location + end.length, length - (end.location + end.length));
-
-  begin = [data rangeOfString:@"screen_name=" options:NSLiteralSearch range:range];
-  if (begin.location == NSNotFound)
-  {
-    assert(0);
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
-    return;
-  }
-
-  range = NSMakeRange(begin.location + begin.length, length - (begin.location + begin.length));
-  end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
-  if (end.location == NSNotFound)
-  {
-    assert(0);
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
-    return;
-  }
-
-  // extract user screen name
-  NSString* screenname = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
-
-  // store it
-  [[NSUserDefaults standardUserDefaults] setValue:screenname forKey:OAUTH_SCREENNAME];
- 
-    
-    
-    
-    
-}
-
 
 
 
@@ -344,7 +345,7 @@
   
   // warn the calling process that we have the credentials and that it can be considered itself as logged.
   if (_isLoging && (data != nil))
-    [self performSelectorOnMainThread:@selector(onTwitterCredentialsRetrieved) withObject:nil waitUntilDone:nil];
+    [self performSelectorOnMainThread:@selector(onTwitterCredentialsRetrieved) withObject:nil waitUntilDone:FALSE];
   
   return data;
 }
