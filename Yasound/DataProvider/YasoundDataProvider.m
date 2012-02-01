@@ -904,7 +904,7 @@ static YasoundDataProvider* _main = nil;
 - (void)listeningStatsSinceDate:(NSDate*)refDate target:(id)target action:(SEL)selector
 {
   NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-  [formatter setDateFormat:@"yyy-MM-dd"];
+  [formatter setDateFormat:@"yyy-MM-dd HH:MM"];
   NSString* refDateStr = [formatter stringFromDate:refDate];
   [formatter release];
   

@@ -10,7 +10,7 @@
 
 @implementation RadioListeningStat
 
-@synthesize radio_uri;
+@synthesize radio;
 @synthesize date;
 @synthesize overall_listening_time;
 @synthesize audience;

@@ -30,6 +30,8 @@
 #define GRAPH_HEIGHT 180
 
 
+#define RADIO_LISTENING_STAT_DELTA_HOURS 1
+
 
 @implementation StatsViewController
 
@@ -117,6 +119,8 @@
 }
 
 
+
+
 - (void)receivedWeekStats:(NSArray*)stats withInfo:(NSDictionary*)info
 {
   if (!stats || stats.count == 0)
@@ -136,22 +140,23 @@
     [audiences addObject:stat.audience];
   }
   
-  NSDate* today = [[NSDate alloc] init];
   NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-  NSDateComponents* offsetComponents = [[NSDateComponents alloc] init];
-  [offsetComponents setDay:-6]; // 6 days ago
-  NSDate* sixDaysAgo = [gregorian dateByAddingComponents:offsetComponents toDate:today options:0];
   
-  while ([((NSDate*)[dates objectAtIndex:0]) isLaterThan:sixDaysAgo]) 
+  int nbStatsRequired = 7 * (24.0 / RADIO_LISTENING_STAT_DELTA_HOURS);
+  
+  while (dates.count < nbStatsRequired) 
   {
     NSDate* firstDate = [dates objectAtIndex:0];
-    offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setDay:-1]; // the day before
+    NSDateComponents* offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setHour:-1]; // the hour before
     NSDate* d = [gregorian dateByAddingComponents:offsetComponents toDate:firstDate options:0];
+    [offsetComponents release];
     
     [dates insertObject:d atIndex:0];
     [audiences insertObject:[NSNumber numberWithInt:0] atIndex:0];
   }
+  
+  [gregorian release];
   
   weekGraphView.dates = dates;
   weekGraphView.values = audiences;
@@ -178,24 +183,23 @@
     [audiences addObject:stat.audience];
   }
   
-  NSDate* today = [[NSDate alloc] init];
   NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-  NSDateComponents* offsetComponents = [[NSDateComponents alloc] init];
-  // (1 month - 1 day) ago
-  [offsetComponents setMonth:-1];
-  [offsetComponents setDay:+1]; 
-  NSDate* ago = [gregorian dateByAddingComponents:offsetComponents toDate:today options:0];
   
-  while ([((NSDate*)[dates objectAtIndex:0]) isLaterThan:ago]) 
+  int nbStatsRequired = 28 * (24.0 / RADIO_LISTENING_STAT_DELTA_HOURS); // at least 28 days
+  
+  while (dates.count < nbStatsRequired) 
   {
     NSDate* firstDate = [dates objectAtIndex:0];
-    offsetComponents = [[NSDateComponents alloc] init];
-    [offsetComponents setDay:-1]; // the day before
+    NSDateComponents* offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setHour:-1]; // the hour before
     NSDate* d = [gregorian dateByAddingComponents:offsetComponents toDate:firstDate options:0];
+    [offsetComponents release];
     
     [dates insertObject:d atIndex:0];
     [audiences insertObject:[NSNumber numberWithInt:0] atIndex:0];
   }
+  
+  [gregorian release];
   
   
   monthGraphView.dates = dates;

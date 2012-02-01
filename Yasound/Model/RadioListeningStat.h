@@ -10,7 +10,7 @@
 
 @interface RadioListeningStat : Model
 
-@property (retain ,nonatomic) NSString* radio_uri;
+@property (retain ,nonatomic) NSString* radio; // radio uri
 @property (retain ,nonatomic) NSDate* date;
 @property (retain ,nonatomic) NSNumber* overall_listening_time;
 @property (retain ,nonatomic) NSNumber* audience;

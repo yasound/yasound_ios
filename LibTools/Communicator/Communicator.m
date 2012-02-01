@@ -740,7 +740,7 @@
         }
         urlStr = [urlStr stringByAppendingString:p];
     }
-    NSURL* new = [NSURL URLWithString:urlStr];
+    NSURL* new = [NSURL URLWithString:[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     return new;
 }
 
