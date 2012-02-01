@@ -48,6 +48,10 @@
 		40A98AE914C74C3F00999793 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
 		40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
+		40EAA55814D85EF60000621C /* RadioListeningStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55714D85EF60000621C /* RadioListeningStat.m */; };
+		40EAA55914D85EF60000621C /* RadioListeningStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55714D85EF60000621C /* RadioListeningStat.m */; };
+		40EAA55A14D85EF60000621C /* RadioListeningStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55714D85EF60000621C /* RadioListeningStat.m */; };
+		40EAA55B14D85EF60000621C /* RadioListeningStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55714D85EF60000621C /* RadioListeningStat.m */; };
 		40F4C77414BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
 		40F4C77514BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
 		40F4C77614BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
@@ -1301,6 +1305,8 @@
 		40A98AE614C74C3F00999793 /* UserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserTableViewCell.m; path = RadioSelection/UserTableViewCell.m; sourceTree = "<group>"; };
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
+		40EAA55614D85EF60000621C /* RadioListeningStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioListeningStat.h; sourceTree = "<group>"; };
+		40EAA55714D85EF60000621C /* RadioListeningStat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioListeningStat.m; sourceTree = "<group>"; };
 		40F4C77214BB053100A163F9 /* RadioUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioUser.h; sourceTree = "<group>"; };
 		40F4C77314BB053100A163F9 /* RadioUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioUser.m; sourceTree = "<group>"; };
 		40F4C78914BDF40F00A163F9 /* SongUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongUser.h; sourceTree = "<group>"; };
@@ -1933,6 +1939,8 @@
 				40F4C79014BEEF6F00A163F9 /* NextSong.m */,
 				400B8AAF14D31540003FD81E /* Song.h */,
 				400B8AB014D31540003FD81E /* Song.m */,
+				40EAA55614D85EF60000621C /* RadioListeningStat.h */,
+				40EAA55714D85EF60000621C /* RadioListeningStat.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3816,6 +3824,7 @@
 				400B8A9614D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB214D31540003FD81E /* Song.m in Sources */,
 				BCBE5C8F14D1A2F30077FC62 /* ConnectionView.m in Sources */,
+				40EAA55914D85EF60000621C /* RadioListeningStat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3942,6 +3951,7 @@
 				400B8A9814D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB414D31540003FD81E /* Song.m in Sources */,
 				BCBE5C9114D1A2F30077FC62 /* ConnectionView.m in Sources */,
+				40EAA55B14D85EF60000621C /* RadioListeningStat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4067,6 +4077,7 @@
 				400B8A9514D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB114D31540003FD81E /* Song.m in Sources */,
 				BCBE5C8E14D1A2F30077FC62 /* ConnectionView.m in Sources */,
+				40EAA55814D85EF60000621C /* RadioListeningStat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4193,6 +4204,7 @@
 				400B8A9714D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB314D31540003FD81E /* Song.m in Sources */,
 				BCBE5C9014D1A2F30077FC62 /* ConnectionView.m in Sources */,
+				40EAA55A14D85EF60000621C /* RadioListeningStat.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

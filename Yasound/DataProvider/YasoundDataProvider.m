@@ -894,6 +894,59 @@ static YasoundDataProvider* _main = nil;
     [target performSelector:selector withObject:status withObject:error];
 }
 
+
+
+
+// 
+// Radio listening stats
+//
+
+- (void)listeningStatsSinceDate:(NSDate*)refDate target:(id)target action:(SEL)selector
+{
+  NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+  [formatter setDateFormat:@"yyy-MM-dd HH:MM"];
+  NSString* refDateStr = [formatter stringFromDate:refDate];
+  [formatter release];
+  
+  NSLog(@"ref date string: %@", refDateStr);
+  
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = @"/api/v1/listening_stats/";
+  NSMutableArray* params = [[NSMutableArray alloc] init];
+  [params addObject:@"order_by=date"];
+  [params addObject:[NSString stringWithFormat:@"radio=%@", self.radio.id]];
+  [params addObject:[NSString stringWithFormat:@"date__gt=%@", refDateStr]];
+  
+  [_communicator getObjectsWithClass:[RadioListeningStat class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)weekListeningStatsWithTarget:(id)target action:(SEL)selector
+{
+  NSDate* today = [[NSDate alloc] init];
+  NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+  NSDateComponents* offsetComponents = [[NSDateComponents alloc] init];
+  [offsetComponents setWeek:-1]; // week = -1 => last week
+  NSDate* lastWeek = [gregorian dateByAddingComponents:offsetComponents toDate:today options:0];
+
+  NSLog(@"today: %@    last week: %@", today, lastWeek);
+  
+  [self listeningStatsSinceDate:lastWeek target:target action:selector];
+}
+
+- (void)monthListeningStatsWithTarget:(id)target action:(SEL)selector
+{
+  NSDate* today = [[NSDate alloc] init];
+  NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+  NSDateComponents* offsetComponents = [[NSDateComponents alloc] init];
+  [offsetComponents setMonth:-1]; // month = -1 => last month
+  NSDate* lastMonth = [gregorian dateByAddingComponents:offsetComponents toDate:today options:0];
+  
+  NSLog(@"today: %@    last month: %@", today, lastMonth);
+  
+  [self listeningStatsSinceDate:lastMonth target:target action:selector];
+}
+
+
 @end
 
 

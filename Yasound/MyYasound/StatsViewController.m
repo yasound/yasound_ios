@@ -8,6 +8,7 @@
 
 #import "StatsViewController.h"
 #import "YasoundDataProvider.h"
+#import "DateAdditions.h"
 
 #define SECTION_STATS 0
 #define ROW_STATS_LISTENERS 0
@@ -28,6 +29,8 @@
 #define GRAPH_WIDTH 290
 #define GRAPH_HEIGHT 180
 
+
+#define RADIO_LISTENING_STAT_DELTA_HOURS 1
 
 
 @implementation StatsViewController
@@ -50,6 +53,7 @@
         monthGraphView.plotColor = RGB(235,200,50);
         monthGraphView.fillColor = RGBA(235,200,50,64);
 
+      _lastStat = nil;
     }
     
     return self;
@@ -95,6 +99,10 @@
     
     _cellWeekSelectorLabel.text = NSLocalizedString(@"StatsView_weekselector_label", nil);
     _cellMonthSelectorLabel.text = NSLocalizedString(@"StatsView_monthselector_label", nil);
+  
+  [[YasoundDataProvider main] weekListeningStatsWithTarget:self action:@selector(receivedWeekStats:withInfo:)];
+  [[YasoundDataProvider main] monthListeningStatsWithTarget:self action:@selector(receivedMonthStats:withInfo:)];
+  
 }
 
 - (void)viewDidUnload
@@ -112,6 +120,92 @@
 
 
 
+
+- (void)receivedWeekStats:(NSArray*)stats withInfo:(NSDictionary*)info
+{
+  if (!stats || stats.count == 0)
+    return;
+  
+  _lastStat = [stats objectAtIndex:stats.count - 1];
+  if (_listenersLabel)
+    _listenersLabel.text = [NSString stringWithFormat:@"%@", _lastStat.audience];
+  if (_favoritesLabel)
+    _favoritesLabel.text = [NSString stringWithFormat:@"%@", _lastStat.favorites];
+
+  NSMutableArray* dates = [[NSMutableArray alloc] init];
+  NSMutableArray* audiences = [[NSMutableArray alloc] init];
+  for (RadioListeningStat* stat in stats) 
+  {
+    [dates addObject:stat.date];
+    [audiences addObject:stat.audience];
+  }
+  
+  NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+  
+  int nbStatsRequired = 7 * (24.0 / RADIO_LISTENING_STAT_DELTA_HOURS);
+  
+  while (dates.count < nbStatsRequired) 
+  {
+    NSDate* firstDate = [dates objectAtIndex:0];
+    NSDateComponents* offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setHour:-1]; // the hour before
+    NSDate* d = [gregorian dateByAddingComponents:offsetComponents toDate:firstDate options:0];
+    [offsetComponents release];
+    
+    [dates insertObject:d atIndex:0];
+    [audiences insertObject:[NSNumber numberWithInt:0] atIndex:0];
+  }
+  
+  [gregorian release];
+  
+  weekGraphView.dates = dates;
+  weekGraphView.values = audiences;
+  [weekGraphView reloadData];
+}
+
+
+- (void)receivedMonthStats:(NSArray*)stats withInfo:(NSDictionary*)info
+{
+  if (!stats || stats.count == 0)
+    return;
+  
+  _lastStat = [stats objectAtIndex:stats.count - 1];
+  if (_listenersLabel)
+    _listenersLabel.text = [NSString stringWithFormat:@"%@", _lastStat.audience];
+  if (_favoritesLabel)
+    _favoritesLabel.text = [NSString stringWithFormat:@"%@", _lastStat.favorites];
+  
+  NSMutableArray* dates = [[NSMutableArray alloc] init];
+  NSMutableArray* audiences = [[NSMutableArray alloc] init];
+  for (RadioListeningStat* stat in stats) 
+  {
+    [dates addObject:stat.date];
+    [audiences addObject:stat.audience];
+  }
+  
+  NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+  
+  int nbStatsRequired = 28 * (24.0 / RADIO_LISTENING_STAT_DELTA_HOURS); // at least 28 days
+  
+  while (dates.count < nbStatsRequired) 
+  {
+    NSDate* firstDate = [dates objectAtIndex:0];
+    NSDateComponents* offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setHour:-1]; // the hour before
+    NSDate* d = [gregorian dateByAddingComponents:offsetComponents toDate:firstDate options:0];
+    [offsetComponents release];
+    
+    [dates insertObject:d atIndex:0];
+    [audiences insertObject:[NSNumber numberWithInt:0] atIndex:0];
+  }
+  
+  [gregorian release];
+  
+  
+  monthGraphView.dates = dates;
+  monthGraphView.values = audiences;
+  [monthGraphView reloadData];
+}
 
 
 
@@ -187,21 +281,26 @@
     
     if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_LISTENERS))
     {
-        NSInteger nbListeners = 0;
-        if (weekGraphView.values != nil)
-        {
-            nbListeners = [[weekGraphView.values objectAtIndex:([weekGraphView.values count]-1)] integerValue];
-        }
-        
-        cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", nbListeners];
-        [cell.imageView setImage:[UIImage imageNamed:@"iconStatsListeners.png"]];
+      NSString* audienceStr = @"-";
+      if (_lastStat)
+        audienceStr = [NSString stringWithFormat:@"%@", _lastStat.audience];
+      
+      cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
+      cell.detailTextLabel.text = audienceStr;
+      _listenersLabel = cell.detailTextLabel;
+      [cell.imageView setImage:[UIImage imageNamed:@"iconStatsListeners.png"]];
     }
 
     else if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_LIKES))
     {
+      NSString* favoritesStr = @"-";
+      if (_lastStat)
+        favoritesStr = [NSString stringWithFormat:@"%@", _lastStat.favorites];
+
+      
         cell.textLabel.text = NSLocalizedString(@"StatsView_likes_label", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", 254];
+        cell.detailTextLabel.text = favoritesStr;
+      _favoritesLabel = cell.detailTextLabel;
         [cell.imageView setImage:[UIImage imageNamed:@"iconStatsLikes.png"]];
     }
 
