@@ -245,6 +245,10 @@ void ASReadStreamCallBack
 		url = [aURL retain];
     cookie = nil;
 	}
+  
+  notificationCenter = [[NSNotificationCenter defaultCenter] retain];
+  notificationQueue = [[NSNotificationQueue initWithNotificationCenter: notificationCenter] retain];
+  
 	return self;
 }
 
@@ -256,7 +260,11 @@ void ASReadStreamCallBack
 		url = [aURL retain];
     cookie = [aCookie retain];
 	}
-	return self;
+
+  notificationCenter = [[NSNotificationCenter defaultCenter] retain];
+  notificationQueue = [[[NSNotificationQueue alloc] initWithNotificationCenter: notificationCenter] retain];
+  
+  return self;
 }
 
 
@@ -272,6 +280,9 @@ void ASReadStreamCallBack
 	[super dealloc];
   if (cookie)
     [cookie release];
+  
+  [notificationQueue release];
+  [notificationCenter release];
 }
 
 //
@@ -467,7 +478,7 @@ void ASReadStreamCallBack
         //							message:NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil)];
 
         //send notification instead of displaying an alert
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
+    [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSNotificationNoCoalescing];
 	}
 }
 
@@ -701,7 +712,7 @@ void ASReadStreamCallBack
 //								message:NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil)];
 
             //send notification instead of displaying an alert
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
+            [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSNotificationNoCoalescing];
 
             return NO;
 		}
@@ -747,7 +758,7 @@ void ASReadStreamCallBack
 //								message:NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil)];
             
             //send notification instead of displaying an alert
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
+      [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSNotificationNoCoalescing];
 
 			return NO;
 		}
@@ -954,8 +965,7 @@ cleanup:
 		{
 			NSAssert([[NSThread currentThread] isEqual:[NSThread mainThread]],
 				@"Playback can only be started from the main thread.");
-			notificationCenter =
-				[[NSNotificationCenter defaultCenter] retain];
+      
 			self.state = AS_STARTING_FILE_THREAD;
 			internalThread =
 				[[NSThread alloc]

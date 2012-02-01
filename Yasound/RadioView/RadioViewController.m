@@ -1797,7 +1797,7 @@ static Song* _gNowPlayingSong = nil;
         
         // LBDEBUG TO BE COMPLETED
         _streamErrorCount++;
-        [[AudioStreamManager main] stopRadio];
+        //[[AudioStreamManager main] stopRadio];
         [[AudioStreamManager main] startRadio:self.radio];
         return;
     }
