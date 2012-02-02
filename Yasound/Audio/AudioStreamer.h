@@ -148,7 +148,8 @@ extern NSString * const ASStatusChangedNotification;
 
 	CFReadStreamRef stream;
 	NSNotificationCenter *notificationCenter;
-	
+	NSNotificationQueue* notificationQueue;
+  
 	UInt32 bitRate;				// Bits per second in the file
 	NSInteger dataOffset;		// Offset of the first audio packet in the stream
 	NSInteger fileLength;		// Length of the file in bytes

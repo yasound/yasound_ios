@@ -84,8 +84,7 @@ static AudioStreamer* _gAudioStreamer = nil;
 {
     if (_gAudioStreamer == nil)
         return;
-
-    [_gAudioStreamer stop];
+    //[_gAudioStreamer stop];
     [_gAudioStreamer release];
     _gAudioStreamer = nil;
     

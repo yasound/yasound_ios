@@ -4333,7 +4333,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SAS Yasound";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -4345,8 +4344,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
+				PROVISIONING_PROFILE = "11B08395-ED82-461D-A4C3-A04035BE1994";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
@@ -4361,7 +4359,6 @@
 					"$(ARCHS_STANDARD_32_BIT)",
 				);
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SAS Yasound";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -4373,8 +4370,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
+				PROVISIONING_PROFILE = "11B08395-ED82-461D-A4C3-A04035BE1994";
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
