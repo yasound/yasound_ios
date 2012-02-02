@@ -61,7 +61,7 @@ static YasoundDataProvider* _main = nil;
     [resourceNames setObject:@"user" forKey:[User class]];
     [resourceNames setObject:@"wall_event" forKey:[WallEvent class]];
     //        [resourceNames setObject:@"metadata" forKey:[SongMetadata class]];
-//    [resourceNames setObject:@"song" forKey:[Song class]];
+    [resourceNames setObject:@"song" forKey:[Song class]];
     [resourceNames setObject:@"api_key" forKey:[ApiKey class]];
     [resourceNames setObject:@"radio_user" forKey:[RadioUser class]];
     [resourceNames setObject:@"song_user" forKey:[SongUser class]];
