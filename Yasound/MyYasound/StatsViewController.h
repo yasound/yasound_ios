@@ -16,16 +16,16 @@
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
     
-    IBOutlet UITableViewCell* _cellWeekSelector;
     IBOutlet UITableViewCell* _cellMonthSelector;
+  IBOutlet UITableViewCell* _cellLeaderBoardSelector;
 
     IBOutlet UIButton* _btnPreviousWeek;
     IBOutlet UIButton* _btnNextWeek;
     IBOutlet UIButton* _btnPreviousMonth;
     IBOutlet UIButton* _btnNextMonth;
 
-    IBOutlet UILabel* _cellWeekSelectorLabel;
     IBOutlet UILabel* _cellMonthSelectorLabel;
+  IBOutlet UILabel* _cellLeaderBoardSelectorLabel;
     
     IBOutlet UITableView* _tableView;  
     
@@ -33,16 +33,10 @@
 
     UIView* _monthGraphBoundingBox;
   
-  RadioListeningStat* _lastStat;
-  UILabel* _listenersLabel;
-  UILabel* _favoritesLabel;
+  ChartView* _monthGraphView;
+  
+  NSArray* _leaderboard;
 }
-
-@property (nonatomic, retain) ChartView* weekGraphView;
-@property (nonatomic, retain) ChartView* monthGraphView;
-
-
-- (void)reloadData;
 
 - (IBAction)onBack:(id)sender;
 

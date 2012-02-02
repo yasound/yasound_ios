@@ -17,6 +17,7 @@
 #import "NextSong.h"
 #import "Song.h"
 #import "RadioListeningStat.h"
+#import "LeaderBoardEntry.h"
 
 #define USE_YASOUND_LOCAL_SERVER 0
 
@@ -131,7 +132,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector;
 
 
-- (void)weekListeningStatsWithTarget:(id)target action:(SEL)selector;
 - (void)monthListeningStatsWithTarget:(id)target action:(SEL)selector;
+- (void)leaderboardWithTarget:(id)target action:(SEL)selector;
 
 @end

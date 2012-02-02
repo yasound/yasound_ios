@@ -13,7 +13,8 @@
 @property (retain ,nonatomic) NSString* radio; // radio uri
 @property (retain ,nonatomic) NSDate* date;
 @property (retain ,nonatomic) NSNumber* overall_listening_time;
-@property (retain ,nonatomic) NSNumber* audience;
+@property (retain ,nonatomic) NSNumber* audience_peak;
+@property (retain ,nonatomic) NSNumber* connections;
 @property (retain ,nonatomic) NSNumber* favorites;
 @property (retain ,nonatomic) NSNumber* likes;
 @property (retain ,nonatomic) NSNumber* dislikes;

@@ -286,57 +286,7 @@
     {
         if (indexPath.row == ROW_ME_STATS)
         {
-            // fake data for graph, waiting for the server request to be implemented
-            NSMutableArray* thisMonthDates = [[NSMutableArray alloc] initWithCapacity:31];
-            NSMutableArray* thisMonthValues = [[NSMutableArray alloc] initWithCapacity:31];
-            
-            [thisMonthDates retain];
-            [thisMonthValues retain];
-            
-            NSCalendar*       calendar = [[[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar] autorelease];
-            NSDateComponents* components = [[[NSDateComponents alloc] init] autorelease];
-            components.day = 0;
-            NSDate* today = [NSDate date];
-            
-            srand(time(NULL));
-            NSInteger previousValue = 0;
-            for (int i = 0; i < 31; i++)
-            {
-                components.day = i - 31;
-                NSDate* newDate = [calendar dateByAddingComponents:components toDate:today options:0];
-                
-                
-                NSInteger incr = (rand() % 500)+1;
-                NSInteger delta = rand() % incr;
-                if (rand() & 1) delta *= (-1);
-                NSInteger value = previousValue + delta;
-                if (value < 0)
-                    value = 0;
-                
-                [thisMonthDates addObject:newDate];
-                [thisMonthValues addObject:[NSNumber numberWithInteger:value]];
-                
-                previousValue = value;
-            }
-            
-            // now, get "this week" data
-            NSMutableArray* thisWeekDates = [[NSMutableArray alloc] initWithCapacity:7];
-            NSMutableArray* thisWeekValues = [[NSMutableArray alloc] initWithCapacity:7];
-            [thisWeekDates retain];
-            [thisWeekValues retain];
-            for (int i = 0; i < 7; i++)
-            {
-                NSInteger index = 31 - 7 + i;
-                [thisWeekDates insertObject:[thisMonthDates objectAtIndex:index] atIndex:i];
-                [thisWeekValues insertObject:[thisMonthValues objectAtIndex:index] atIndex:i];
-            }
-            
             StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil];
-            view.weekGraphView.dates = thisWeekDates;
-            view.weekGraphView.values = thisWeekValues;
-            view.monthGraphView.dates = thisMonthDates;
-            view.monthGraphView.values = thisMonthValues;
-            [view reloadData];
             
             [self.navigationController pushViewController:view animated:YES];
             [view release];

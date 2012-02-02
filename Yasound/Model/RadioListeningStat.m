@@ -13,7 +13,8 @@
 @synthesize radio;
 @synthesize date;
 @synthesize overall_listening_time;
-@synthesize audience;
+@synthesize audience_peak;
+@synthesize connections;
 @synthesize favorites;
 @synthesize likes;
 @synthesize dislikes;
