@@ -21,6 +21,7 @@
 
 - (id)initWithSong:(Song*)song
 {
+  assert(song != nil);
     if (self = [super init])
     {
         _song = song;

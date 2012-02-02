@@ -20,6 +20,7 @@
 @implementation NowPlayingView
 
 @synthesize playPauseButton;
+@synthesize song = _song;
 
 
 //LBDEBUG TODO : use image, likes disklikes from Song
@@ -119,27 +120,17 @@
         [self.playPauseButton setImage:imageFile forState:UIControlStateSelected];
         
         [self addSubview:self.playPauseButton];
-        
-      [self onUpdate:nil];
-      
-      // #FIXME: mat deactivate temporarily 
-//        [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
     }
     
     return self;
 }
 
-- (void) onUpdate:(NSTimer*)timer
+- (void)setSongStatus:(SongStatus*)status
 {
-  [[YasoundDataProvider main] statusForSongId:_song.id target:self action:@selector(receiveStatus:withInfo:)];
-}
-
-- (void)receiveStatus:(SongStatus*)status withInfo:(NSDictionary*)info
-{
+  NSLog(@"song status likes=%@ dislikes=%@", status.likes, status.dislikes);
     _likesLabel.text = [NSString stringWithFormat:@"%d", [status.likes intValue]];
     _dislikesLabel.text = [NSString stringWithFormat:@"%d", [status.dislikes intValue]];
 }
-
 
 
 #pragma mark - touches actions

@@ -229,7 +229,10 @@ static Song* _gNowPlayingSong = nil;
     _playingNowView = nil;
     
     // now playing bar is set in setNowPlaying;
-    
+  if (_gNowPlayingSong != nil)
+  {
+    [self setNowPlaying:_gNowPlayingSong];
+  }
     
 
     
@@ -1097,9 +1100,21 @@ static Song* _gNowPlayingSong = nil;
 
 - (void) receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
 {
-    if ([song.id intValue] != [_gNowPlayingSong.id intValue])
-        [self setNowPlaying:song];
+  if (!song)
+    return;
+  
+  if (!_gNowPlayingSong || [song.id intValue] != [_gNowPlayingSong.id intValue])
+      [self setNowPlaying:song];
+  
+  [[YasoundDataProvider main] statusForSongId:song.id target:self action:@selector(receivedCurrentSongStatus:withInfo:)];
+}
 
+- (void)receivedCurrentSongStatus:(SongStatus*)status withInfo:(NSDictionary*)info
+{
+  if (!status)
+    return;
+  if (_playingNowView)
+    [_playingNowView setSongStatus:status];
 }
 
 - (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info
@@ -1133,6 +1148,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)setNowPlaying:(Song*)song
 {
+  assert(song != nil);
     if (_gNowPlayingSong != nil)
         [_gNowPlayingSong release];
     
@@ -1150,7 +1166,7 @@ static Song* _gNowPlayingSong = nil;
     [UIView transitionWithView:_playingNowContainer
                       duration:0.5
                        options:UIViewAnimationOptionTransitionFlipFromRight
-                    animations:^{ [_playingNowView removeFromSuperview]; [_playingNowContainer addSubview:view]; _playingNowView = view; }
+                    animations:^{ [_playingNowView removeFromSuperview]; if (_playingNowView){[_playingNowView release];} [_playingNowContainer addSubview:view]; _playingNowView = view; }
                     completion:NULL];    
 }
 
@@ -1169,7 +1185,7 @@ static Song* _gNowPlayingSong = nil;
         playingNowFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height *2);
         viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y + frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height - frame.size.height);
         
-        _trackInteractionView = [[TrackInteractionView alloc] initWithSong:_gNowPlayingSong];
+        _trackInteractionView = [[TrackInteractionView alloc] initWithSong:_playingNowView.song];
         _trackInteractionView.frame = CGRectMake(0, frame.size.height -1, frame.size.width, frame.size.height);
 
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
