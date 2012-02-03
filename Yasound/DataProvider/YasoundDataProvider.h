@@ -63,6 +63,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
 
 - (void)userRadioWithTarget:(id)target action:(SEL)selector;
+- (void)reloadUserRadio;
 
 - (void)friendsWithTarget:(id)target action:(SEL)selector;
 

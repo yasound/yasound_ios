@@ -626,6 +626,9 @@
     {
         [self.navigationController popViewControllerAnimated:YES];
     }
+  
+  // be sure to get updated user's radio 
+  [[YasoundDataProvider main] reloadUserRadio];
 }
 
 

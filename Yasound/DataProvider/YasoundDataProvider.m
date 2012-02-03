@@ -337,6 +337,19 @@ static YasoundDataProvider* _main = nil;
   }
 }
 
+- (void)reloadUserRadio
+{
+  [self userRadioWithTarget:self action:@selector(reloadedUserRadio:withInfo:)];
+}
+
+- (void)reloadedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+{
+  if (!r)
+    return;
+  
+  _radio = r;
+}
+
 
 - (void)friendsWithTarget:(id)target action:(SEL)selector
 {
