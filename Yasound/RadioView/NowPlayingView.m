@@ -127,7 +127,6 @@
 
 - (void)setSongStatus:(SongStatus*)status
 {
-  NSLog(@"song status likes=%@ dislikes=%@", status.likes, status.dislikes);
     _likesLabel.text = [NSString stringWithFormat:@"%d", [status.likes intValue]];
     _dislikesLabel.text = [NSString stringWithFormat:@"%d", [status.dislikes intValue]];
 }

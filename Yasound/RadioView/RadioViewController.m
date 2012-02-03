@@ -28,6 +28,8 @@
 #import "DateAdditions.h"
 #import "GANTracker.h"
 
+#import "UserViewCell.h"
+
 //#define LOCAL 1 // use localhost as the server
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
@@ -86,6 +88,8 @@ static Song* _gNowPlayingSong = nil;
         _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
 
         _wallEvents = [[NSMutableArray alloc] init];
+      _connectedUsers = nil;
+      _usersContainer = nil;
     }
     
     return self;
@@ -317,10 +321,6 @@ static Song* _gNowPlayingSong = nil;
     _statusBarButton = [sheet makeButton];
     [_statusBarButton addTarget:self action:@selector(onStatusBarButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_statusBar addSubview:_statusBarButton];
-    
-    // status bar avatar
-    // build dynamically
-    _statusUsers = nil;
   
     
     
@@ -533,6 +533,8 @@ static Song* _gNowPlayingSong = nil;
     [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
   [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
+  
+  [[YasoundDataProvider main] connectedUsersForRadio:self.radio target:self action:@selector(receivedConnectedUsers:withInfo:)];
 }
 
 - (void)updatePreviousWall
@@ -947,6 +949,92 @@ static Song* _gNowPlayingSong = nil;
 
 
 
+- (void)userJoined:(User*)u
+{
+  NSLog(@"%@ joined", u.name);
+  [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", u.name]];
+  
+}
+
+- (void)userLeft:(User*)u
+{
+  NSLog(@"%@ left", u.name);
+  [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", u.name]];
+}
+
+- (void)receivedConnectedUsers:(NSArray*)users withInfo:(NSDictionary*)info
+{
+  if (!users || users.count == 0)
+    return;
+  
+  if (_connectedUsers && _connectedUsers.count > 0)
+  {
+    // get diff
+    NSMutableArray* joined = [NSMutableArray array];
+    NSMutableArray* left = [NSMutableArray array];
+    
+    // user arrays are sorted by id
+    NSArray* oldUsers = _connectedUsers;
+    NSArray* newUsers = users;
+    User* u;
+    
+    User* firstNew = [newUsers objectAtIndex:0];
+    User* lastNew = [newUsers objectAtIndex:newUsers.count - 1];
+    User* firstOld = [oldUsers objectAtIndex:0];
+    User* lastOld = [oldUsers objectAtIndex:oldUsers.count - 1];
+    
+    
+    for (u in oldUsers)
+    {
+      if ([u.id intValue] >= [firstNew.id intValue])
+        break;
+      [left addObject:u];
+    }
+    
+    NSEnumerator* reverseEnumerator = [oldUsers reverseObjectEnumerator];
+    while (u = [reverseEnumerator nextObject]) 
+    {
+      if ([u.id intValue] <= [lastNew.id intValue])
+        break;
+      [left addObject:u];
+    }
+    
+    for (u in newUsers)
+    {
+      if ([u.id intValue] >= [firstOld.id intValue])
+        break;
+      [joined addObject:u];
+    }
+    
+    reverseEnumerator = [newUsers reverseObjectEnumerator];
+    while (u = [reverseEnumerator nextObject]) 
+    {
+      if ([u.id intValue] <= [lastOld.id intValue])
+        break;
+      [joined addObject:u];
+    }
+    
+    
+    for (u in joined)
+      [self userJoined:u];
+    for (u in left)
+      [self userLeft:u];
+  }
+  
+  if (_connectedUsers)
+    [_connectedUsers release];
+  _connectedUsers = users;
+  [_connectedUsers retain];
+  
+  if (_usersContainer)
+    [_usersContainer reloadData];
+}
+
+
+
+
+
+
 
 
 
@@ -1102,7 +1190,46 @@ static Song* _gNowPlayingSong = nil;
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
 }
 
+- (NSIndexPath *)usersContainerWillSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+  return nil;
+}
 
+
+- (void*)usersContainerWillDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+}
+
+
+
+- (NSInteger)numberOfSectionsInUsersContainer
+{
+  return 1;
+}
+
+- (NSInteger)usersContainerNumberOfRowsInSection:(NSInteger)section
+{
+  return _connectedUsers.count;
+}
+
+- (CGFloat)usersContainerWidthForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  BundleStylesheet* nameSheet = [[Theme theme] stylesheetForKey:@"StatusBarUserName" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+  CGRect nameRect = nameSheet.frame;
+  return nameRect.size.width + 2 * USER_VIEW_CELL_BORDER;
+}
+
+- (UITableViewCell*)usersContainerCellForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+  NSString* cellIdentifier = @"UserViewCell";
+  UserViewCell* cell = [_usersContainer dequeueReusableCellWithIdentifier:cellIdentifier];
+  if (cell == nil)
+  {
+    cell = [[[UserViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+  }
+  cell.user = [_connectedUsers objectAtIndex:indexPath.row];
+  return cell;
+}
 
 
 //.................................................................................................
@@ -1115,23 +1242,42 @@ static Song* _gNowPlayingSong = nil;
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+  if (tableView == _usersContainer)
+    return [self usersContainerWillSelectRowAtIndexPath:indexPath];
+  
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if (tableView == _usersContainer)
+    [self usersContainerWillDisplayCell:cell forRowAtIndexPath:indexPath];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+  if (tableView == _usersContainer)
+    return [self numberOfSectionsInUsersContainer];
+  
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return [_wallEvents count];
+  if (tableView == _usersContainer)
+    return [self usersContainerNumberOfRowsInSection:section];
+  
+  
+  return [_wallEvents count];
 }
 
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+  if (tableView == _usersContainer)
+    return [self usersContainerWidthForRowAtIndexPath:indexPath];
+  
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
     
     if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
@@ -1164,6 +1310,9 @@ static Song* _gNowPlayingSong = nil;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+  if (tableView == _usersContainer)
+    return [self usersContainerCellForRowAtIndexPath:indexPath];
+  
     static NSString* CellIdentifier = @"RadioViewCell";
     
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
@@ -1191,8 +1340,6 @@ static Song* _gNowPlayingSong = nil;
     
     return nil;
 }
-
-
 
 
 
@@ -1510,7 +1657,6 @@ static Song* _gNowPlayingSong = nil;
         [UIView setAnimationDidStopSelector:@selector(onStatusBarClosed:finished:context:)];
         
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y + _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
-        _statusUsers.alpha = 0;
         [UIView commitAnimations];        
     }
     
@@ -1526,21 +1672,22 @@ static Song* _gNowPlayingSong = nil;
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
         
-        // create scrollview
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserScrollView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        _statusUsers = [[UIScrollView alloc] initWithFrame:sheet.frame];
-        
-        _statusUsers.alpha = 0;
-        [_statusBar addSubview:_statusUsers];
-
-        [[ActivityModelessSpinner main] addRef];
-        [[YasoundDataProvider main] connectedUsersForRadio:self.radio target:self action:@selector(onRadioUsersReceived:info:)];
+      _usersContainer = [[OrientedTableView alloc] initWithFrame:sheet.frame];
+      _usersContainer.orientedTableViewDataSource = self;
+      _usersContainer.delegate = self;
+      _usersContainer.tableViewOrientation = kTableViewOrientationHorizontal;
+      _usersContainer.backgroundColor = [UIColor clearColor];
+      _usersContainer.separatorColor = [UIColor clearColor];
+      _usersContainer.separatorStyle = UITableViewCellSeparatorStyleNone;
+      
+      [_statusBar addSubview:_usersContainer];
 
 
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration: 0.15];
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y - _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
-        _statusUsers.alpha = 1;
+      _usersContainer.alpha = 1;
         [UIView commitAnimations];        
 
     }
@@ -1548,71 +1695,13 @@ static Song* _gNowPlayingSong = nil;
 }
 
 
-
-- (void)onRadioUsersReceived:(NSArray*)users info:(NSDictionary*)info
-{
-    [[ActivityModelessSpinner main] removeRef];
-    
-    BundleStylesheet* imageSheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    BundleStylesheet* nameSheet = [[Theme theme] stylesheetForKey:@"StatusBarUserName" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-
-    CGRect imageRect = imageSheet.frame;
-    CGRect nameRect = nameSheet.frame;
-
-    UIFont* font = [nameSheet makeFont];
-
-    // fill scrollview with users
-    for (User* user in users)
-    {
-        WebImageView* imageView ;
-        
-        CGFloat textWidth = [user.name sizeWithFont:font].width;
-        CGFloat greatestWidth = (imageRect.size.width > textWidth) ? imageRect.size.width : textWidth;
-        CGRect imageRect2 = CGRectMake(imageRect.origin.x + (greatestWidth / 2.f) - (imageRect.size.width / 2.f), imageRect.origin.y, imageRect.size.width, imageRect.size.height);
-        CGRect nameRect2 = CGRectMake(nameRect.origin.x + (greatestWidth / 2.f) - (textWidth / 2.f), nameRect.origin.y, textWidth, nameRect.size.height);
-        
-        if (user.picture == nil)
-        {
-            imageView = [[WebImageView alloc] initWithImage:[UIImage imageNamed:@"avatarDummy.png"]];
-            imageView.frame = imageRect2;
-        }
-        else
-        {
-            NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:user.picture];
-            imageView = [[WebImageView alloc] initWithImageAtURL:imageURL];
-            imageView.frame = imageRect2;
-        }
-        
-        [_statusUsers addSubview:imageView];
-        
-        
-        // image mask
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" error:nil];
-        UIImageView* mask = [[UIImageView alloc] initWithImage:[sheet image]];
-        mask.frame = imageRect2;
-        [_statusUsers addSubview:mask];
-        
-        
-        UILabel* name = [nameSheet makeLabel];
-        name.frame = nameRect2;
-        name.text = user.name;
-        [_statusUsers addSubview:name];
-        
-        
-        imageRect = CGRectMake(imageRect.origin.x + greatestWidth +8, imageRect.origin.y, imageRect.size.width, imageRect.size.height);
-        nameRect = CGRectMake(nameRect.origin.x + greatestWidth +8, nameRect.origin.y, nameRect.size.width, nameRect.size.height);
-        
-    }
-    // set scrollview content size
-    //        [_statusUsers setContentSize:CGSizeMake(nameRect.origin.x + nameRect.size.width, _statusBar.frame.size.height)];
-    [_statusUsers setContentSize:CGSizeMake(nameRect.origin.x, _statusBar.frame.size.height)];    
-}
-
-
 - (void)onStatusBarClosed:(NSString *)animationId finished:(BOOL)finished context:(void *)context 
 {
-    [_statusUsers removeFromSuperview];
-    [_statusUsers release];
+  [_usersContainer removeFromSuperview];
+  [_usersContainer release];
+  _usersContainer = nil;
+
+  
 }
 
 

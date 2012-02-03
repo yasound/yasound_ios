@@ -56,6 +56,14 @@
 		40EAA55F14DA980F0000621C /* LeaderBoardEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55D14DA980F0000621C /* LeaderBoardEntry.m */; };
 		40EAA56014DA980F0000621C /* LeaderBoardEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55D14DA980F0000621C /* LeaderBoardEntry.m */; };
 		40EAA56114DA980F0000621C /* LeaderBoardEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55D14DA980F0000621C /* LeaderBoardEntry.m */; };
+		40EAA59014DC24C10000621C /* OrientedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA58F14DC24C10000621C /* OrientedTableView.m */; };
+		40EAA59114DC24C10000621C /* OrientedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA58F14DC24C10000621C /* OrientedTableView.m */; };
+		40EAA59214DC24C10000621C /* OrientedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA58F14DC24C10000621C /* OrientedTableView.m */; };
+		40EAA59314DC24C10000621C /* OrientedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA58F14DC24C10000621C /* OrientedTableView.m */; };
+		40EAA59614DC2DFE0000621C /* UserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA59514DC2DFE0000621C /* UserViewCell.m */; };
+		40EAA59714DC2DFE0000621C /* UserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA59514DC2DFE0000621C /* UserViewCell.m */; };
+		40EAA59814DC2DFE0000621C /* UserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA59514DC2DFE0000621C /* UserViewCell.m */; };
+		40EAA59914DC2DFE0000621C /* UserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA59514DC2DFE0000621C /* UserViewCell.m */; };
 		40F4C77414BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
 		40F4C77514BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
 		40F4C77614BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
@@ -1313,6 +1321,10 @@
 		40EAA55714D85EF60000621C /* RadioListeningStat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioListeningStat.m; sourceTree = "<group>"; };
 		40EAA55C14DA980F0000621C /* LeaderBoardEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderBoardEntry.h; sourceTree = "<group>"; };
 		40EAA55D14DA980F0000621C /* LeaderBoardEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderBoardEntry.m; sourceTree = "<group>"; };
+		40EAA58E14DC24C10000621C /* OrientedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrientedTableView.h; sourceTree = "<group>"; };
+		40EAA58F14DC24C10000621C /* OrientedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrientedTableView.m; sourceTree = "<group>"; };
+		40EAA59414DC2DFE0000621C /* UserViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewCell.h; sourceTree = "<group>"; };
+		40EAA59514DC2DFE0000621C /* UserViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewCell.m; sourceTree = "<group>"; };
 		40F4C77214BB053100A163F9 /* RadioUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioUser.h; sourceTree = "<group>"; };
 		40F4C77314BB053100A163F9 /* RadioUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioUser.m; sourceTree = "<group>"; };
 		40F4C78914BDF40F00A163F9 /* SongUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongUser.h; sourceTree = "<group>"; };
@@ -2326,6 +2338,8 @@
 				BC0DD8471487EAE900DCD550 /* RadioViewCell.m */,
 				BCB5F28C1485416B00C28B3D /* RadioViewController.h */,
 				BCB5F28D1485416B00C28B3D /* RadioViewController.m */,
+				40EAA59414DC2DFE0000621C /* UserViewCell.h */,
+				40EAA59514DC2DFE0000621C /* UserViewCell.m */,
 			);
 			path = RadioView;
 			sourceTree = "<group>";
@@ -2797,6 +2811,8 @@
 				BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */,
 				BCFECFE71468439900BA20D9 /* MenuHeader.h */,
 				BCFECFE81468439900BA20D9 /* MenuHeader.m */,
+				40EAA58E14DC24C10000621C /* OrientedTableView.h */,
+				40EAA58F14DC24C10000621C /* OrientedTableView.m */,
 				BCFECFE91468439900BA20D9 /* SlidingMenu.h */,
 				BCFECFEA1468439900BA20D9 /* SlidingMenu.m */,
 				BCFECFEB1468439900BA20D9 /* Tile.h */,
@@ -3834,6 +3850,8 @@
 				BCBE5C8F14D1A2F30077FC62 /* ConnectionView.m in Sources */,
 				40EAA55914D85EF60000621C /* RadioListeningStat.m in Sources */,
 				40EAA55F14DA980F0000621C /* LeaderBoardEntry.m in Sources */,
+				40EAA59114DC24C10000621C /* OrientedTableView.m in Sources */,
+				40EAA59714DC2DFE0000621C /* UserViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3962,6 +3980,8 @@
 				BCBE5C9114D1A2F30077FC62 /* ConnectionView.m in Sources */,
 				40EAA55B14D85EF60000621C /* RadioListeningStat.m in Sources */,
 				40EAA56114DA980F0000621C /* LeaderBoardEntry.m in Sources */,
+				40EAA59314DC24C10000621C /* OrientedTableView.m in Sources */,
+				40EAA59914DC2DFE0000621C /* UserViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4089,6 +4109,8 @@
 				BCBE5C8E14D1A2F30077FC62 /* ConnectionView.m in Sources */,
 				40EAA55814D85EF60000621C /* RadioListeningStat.m in Sources */,
 				40EAA55E14DA980F0000621C /* LeaderBoardEntry.m in Sources */,
+				40EAA59014DC24C10000621C /* OrientedTableView.m in Sources */,
+				40EAA59614DC2DFE0000621C /* UserViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4217,6 +4239,8 @@
 				BCBE5C9014D1A2F30077FC62 /* ConnectionView.m in Sources */,
 				40EAA55A14D85EF60000621C /* RadioListeningStat.m in Sources */,
 				40EAA56014DA980F0000621C /* LeaderBoardEntry.m in Sources */,
+				40EAA59214DC24C10000621C /* OrientedTableView.m in Sources */,
+				40EAA59814DC2DFE0000621C /* UserViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

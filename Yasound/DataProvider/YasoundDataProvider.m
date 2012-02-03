@@ -508,12 +508,6 @@ static YasoundDataProvider* _main = nil;
   Auth* auth = self.apiKeyAuth;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/connect", radio.id];
   [_communicator postToURL:relativeUrl absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];  
-  
-//  WallEvent* e = [[WallEvent alloc] init];
-//  e.user = _user;
-//  e.radio = radio;
-//  e.type = @"J"; // joined
-//  [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
 - (void)leaveRadioWall:(Radio*)radio
@@ -524,17 +518,6 @@ static YasoundDataProvider* _main = nil;
   Auth* auth = self.apiKeyAuth;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/disconnect", radio.id];
   [_communicator postToURL:relativeUrl absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];  
-  
-//  if (!_user || !radio)
-//    return;
-//  
-//  Auth* auth = self.apiKeyAuth;
-//  
-//  WallEvent* e = [[WallEvent alloc] init];
-//  e.user = _user;
-//  e.radio = radio;
-//  e.type = @"L"; // left
-//  [_communicator postNewObject:e notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
 
@@ -582,16 +565,6 @@ static YasoundDataProvider* _main = nil;
   NSArray* params = [NSArray arrayWithObject:@"limit=0"];
   [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
-
-//- (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector
-//{
-//  if (radio == nil || !radio.id)
-//    return;
-//  Auth* auth = self.apiKeyAuth;
-//  NSNumber* radioID = radio.id;
-//  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/songs", radioID];
-//  [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-//}
 
 - (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {

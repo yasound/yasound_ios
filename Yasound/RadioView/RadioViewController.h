@@ -12,6 +12,7 @@
 #import "TracksView.h"
 #import "SongViewCell.h"
 #import "TestflightViewController.h"
+#import "OrientedTableView.h"
 
 @class Radio;
 @class AudioStreamer;
@@ -44,7 +45,6 @@
     UIView* _statusBar;
     UIButton* _statusBarButton;
     BOOL _statusBarButtonToggled;
-    UIScrollView* _statusUsers;
     
     UIButton* _favoriteButton;
     
@@ -71,6 +71,9 @@
     
     NSInteger _serverErrorCount;
     NSInteger _streamErrorCount;
+  
+  NSArray* _connectedUsers;
+  OrientedTableView* _usersContainer;
 }
 
 @property (nonatomic, retain) Radio* radio;

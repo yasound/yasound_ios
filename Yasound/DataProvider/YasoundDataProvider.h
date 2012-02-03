@@ -97,8 +97,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)listenersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
-//- (void)songsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-
 - (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector;
