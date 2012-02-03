@@ -708,13 +708,10 @@ void ASReadStreamCallBack
 			kCFStreamPropertyHTTPShouldAutoredirect,
 			kCFBooleanTrue) == false)
 		{
-//			[self presentAlertWithTitle:NSLocalizedStringFromTable(@"File Error", @"Errors", nil)
-//								message:NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil)];
+      //send notification instead of displaying an alert
+      [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSNotificationNoCoalescing];
 
-            //send notification instead of displaying an alert
-            [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSNotificationNoCoalescing];
-
-            return NO;
+      return NO;
 		}
 		
 		//
