@@ -124,6 +124,22 @@
 		BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
+		BC33F43914DDC6A100D4C67F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43714DDC6A100D4C67F /* Default.png */; };
+		BC33F43A14DDC6A100D4C67F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43714DDC6A100D4C67F /* Default.png */; };
+		BC33F43B14DDC6A100D4C67F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43714DDC6A100D4C67F /* Default.png */; };
+		BC33F43C14DDC6A100D4C67F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
+		BC33F43D14DDC6A100D4C67F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
+		BC33F43E14DDC6A100D4C67F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
+		BC33F44114DDC6A900D4C67F /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43F14DDC6A900D4C67F /* LoginBackground.png */; };
+		BC33F44214DDC6A900D4C67F /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43F14DDC6A900D4C67F /* LoginBackground.png */; };
+		BC33F44314DDC6A900D4C67F /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43F14DDC6A900D4C67F /* LoginBackground.png */; };
+		BC33F44414DDC6A900D4C67F /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44014DDC6A900D4C67F /* LoginBackground@2x.png */; };
+		BC33F44514DDC6A900D4C67F /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44014DDC6A900D4C67F /* LoginBackground@2x.png */; };
+		BC33F44614DDC6A900D4C67F /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44014DDC6A900D4C67F /* LoginBackground@2x.png */; };
+		BC33F44C14DDC6B200D4C67F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44814DDC6B200D4C67F /* Default.png */; };
+		BC33F44D14DDC6B200D4C67F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44914DDC6B200D4C67F /* Default@2x.png */; };
+		BC33F44E14DDC6B200D4C67F /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44A14DDC6B200D4C67F /* LoginBackground.png */; };
+		BC33F44F14DDC6B200D4C67F /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44B14DDC6B200D4C67F /* LoginBackground@2x.png */; };
 		BC40CBBF14CF63A300DF0950 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
 		BC40CBC014CF63A800DF0950 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
 		BC40CBC114CF63B200DF0950 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
@@ -299,8 +315,6 @@
 		BC71F5E1147FEC6F00DAE4BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		BC71F5E2147FEC6F00DAE4BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		BC71F5E4147FEC6F00DAE4BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
-		BC71F5FB147FEC6F00DAE4BD /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
-		BC71F5FC147FEC6F00DAE4BD /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
 		BC71F616147FEC6F00DAE4BD /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
@@ -491,8 +505,6 @@
 		BC93CD4D14CF3F7A007C723F /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
 		BC93CD4E14CF3F7A007C723F /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		BC93CD5214CF3F7A007C723F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
-		BC93CD5314CF3F7A007C723F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
-		BC93CD5414CF3F7A007C723F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
 		BC93CD5514CF3F7A007C723F /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC93CD5614CF3F7A007C723F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC93CD5714CF3F7A007C723F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
@@ -569,8 +581,6 @@
 		BC93CD9F14CF3F7A007C723F /* loginIcon32Twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94E814A8CB3500D54631 /* loginIcon32Twitter@2x.png */; };
 		BC93CDA014CF3F7A007C723F /* loginIcon32Yasound.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94E914A8CB3500D54631 /* loginIcon32Yasound.png */; };
 		BC93CDA114CF3F7A007C723F /* loginIcon32Yasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94EA14A8CB3500D54631 /* loginIcon32Yasound@2x.png */; };
-		BC93CDA214CF3F7A007C723F /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC951F14AA3B2300D54631 /* LoginBackground.png */; };
-		BC93CDA314CF3F7A007C723F /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952014AA3B2300D54631 /* LoginBackground@2x.png */; };
 		BC93CDA414CF3F7A007C723F /* cellFacebookDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952814AB604700D54631 /* cellFacebookDown.png */; };
 		BC93CDA514CF3F7A007C723F /* cellFacebookDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952914AB604700D54631 /* cellFacebookDown@2x.png */; };
 		BC93CDA614CF3F7A007C723F /* cellFacebookUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952A14AB604700D54631 /* cellFacebookUp.png */; };
@@ -637,8 +647,6 @@
 		BC93CDE414CF3F7A007C723F /* UserCellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1314C77D8A00CD7387 /* UserCellBackgroundDark@2x.png */; };
 		BC93CDE514CF3F7A007C723F /* UserCellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1414C77D8A00CD7387 /* UserCellBackgroundLight.png */; };
 		BC93CDE614CF3F7A007C723F /* UserCellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 401D1E1514C77D8A00CD7387 /* UserCellBackgroundLight@2x.png */; };
-		BC943A5314688AE70031CE17 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
-		BC943A5414688AE70031CE17 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
 		BC95229A14B6F787001E1ACE /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
 		BC95229B14B6F787001E1ACE /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
 		BC95229C14B6F787001E1ACE /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
@@ -855,12 +863,6 @@
 		BCDC950C14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94EA14A8CB3500D54631 /* loginIcon32Yasound@2x.png */; };
 		BCDC950D14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94EA14A8CB3500D54631 /* loginIcon32Yasound@2x.png */; };
 		BCDC950E14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC94EA14A8CB3500D54631 /* loginIcon32Yasound@2x.png */; };
-		BCDC952114AA3B2300D54631 /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC951F14AA3B2300D54631 /* LoginBackground.png */; };
-		BCDC952214AA3B2300D54631 /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC951F14AA3B2300D54631 /* LoginBackground.png */; };
-		BCDC952314AA3B2300D54631 /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC951F14AA3B2300D54631 /* LoginBackground.png */; };
-		BCDC952414AA3B2300D54631 /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952014AA3B2300D54631 /* LoginBackground@2x.png */; };
-		BCDC952514AA3B2300D54631 /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952014AA3B2300D54631 /* LoginBackground@2x.png */; };
-		BCDC952614AA3B2300D54631 /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952014AA3B2300D54631 /* LoginBackground@2x.png */; };
 		BCDC953014AB604700D54631 /* cellFacebookDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952814AB604700D54631 /* cellFacebookDown.png */; };
 		BCDC953114AB604700D54631 /* cellFacebookDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952814AB604700D54631 /* cellFacebookDown.png */; };
 		BCDC953214AB604700D54631 /* cellFacebookDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC952814AB604700D54631 /* cellFacebookDown.png */; };
@@ -1156,8 +1158,6 @@
 		E5F3B8971498B88D008DD607 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		E5F3B8981498B88D008DD607 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
 		E5F3B89A1498B88D008DD607 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
-		E5F3B89B1498B88D008DD607 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5014688AE70031CE17 /* Default.png */; };
-		E5F3B89C1498B88D008DD607 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC943A5114688AE70031CE17 /* Default@2x.png */; };
 		E5F3B89D1498B88D008DD607 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		E5F3B89E1498B88D008DD607 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		E5F3B89F1498B88D008DD607 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
@@ -1362,6 +1362,14 @@
 		BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QualitySwitchLabel.m; sourceTree = "<group>"; };
 		BC27F39214BE598700EF1C5F /* YasoundReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundReachability.h; sourceTree = "<group>"; };
 		BC27F39314BE598700EF1C5F /* YasoundReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundReachability.m; sourceTree = "<group>"; };
+		BC33F43714DDC6A100D4C67F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BC33F43814DDC6A100D4C67F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BC33F43F14DDC6A900D4C67F /* LoginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBackground.png; sourceTree = "<group>"; };
+		BC33F44014DDC6A900D4C67F /* LoginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginBackground@2x.png"; sourceTree = "<group>"; };
+		BC33F44814DDC6B200D4C67F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BC33F44914DDC6B200D4C67F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BC33F44A14DDC6B200D4C67F /* LoginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBackground.png; sourceTree = "<group>"; };
+		BC33F44B14DDC6B200D4C67F /* LoginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginBackground@2x.png"; sourceTree = "<group>"; };
 		BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "ThirdParties/facebook-ios-sdk/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "OAuthConsumer-iPhoneLib.xcodeproj"; path = "ThirdParties/Twitter-OAuth-iPhone/OAuthConsumeriPhoneLib/OAuthConsumer-iPhoneLib.xcodeproj"; sourceTree = "<group>"; };
 		BC40CBD014CF64B100DF0950 /* jQueryInject.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jQueryInject.txt; sourceTree = "<group>"; };
@@ -1493,8 +1501,6 @@
 		BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleSelectorViewController.m; sourceTree = "<group>"; };
 		BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StyleSelectorViewController.xib; sourceTree = "<group>"; };
 		BC93CDEA14CF3F7A007C723F /* Yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yasound.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC943A5014688AE70031CE17 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		BC943A5114688AE70031CE17 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BC95229914B6F787001E1ACE /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
 		BC9F4143147E8A5F00D417EF /* BundleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleFileManager.h; sourceTree = "<group>"; };
 		BC9F4144147E8A5F00D417EF /* BundleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleFileManager.m; sourceTree = "<group>"; };
@@ -1591,8 +1597,6 @@
 		BCDC94E814A8CB3500D54631 /* loginIcon32Twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIcon32Twitter@2x.png"; sourceTree = "<group>"; };
 		BCDC94E914A8CB3500D54631 /* loginIcon32Yasound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIcon32Yasound.png; sourceTree = "<group>"; };
 		BCDC94EA14A8CB3500D54631 /* loginIcon32Yasound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIcon32Yasound@2x.png"; sourceTree = "<group>"; };
-		BCDC951F14AA3B2300D54631 /* LoginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBackground.png; sourceTree = "<group>"; };
-		BCDC952014AA3B2300D54631 /* LoginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginBackground@2x.png"; sourceTree = "<group>"; };
 		BCDC952814AB604700D54631 /* cellFacebookDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellFacebookDown.png; sourceTree = "<group>"; };
 		BCDC952914AB604700D54631 /* cellFacebookDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellFacebookDown@2x.png"; sourceTree = "<group>"; };
 		BCDC952A14AB604700D54631 /* cellFacebookUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellFacebookUp.png; sourceTree = "<group>"; };
@@ -1975,6 +1979,17 @@
 			path = LibTools/YasoundReachability;
 			sourceTree = SOURCE_ROOT;
 		};
+		BC33F44714DDC6B200D4C67F /* App Store */ = {
+			isa = PBXGroup;
+			children = (
+				BC33F44814DDC6B200D4C67F /* Default.png */,
+				BC33F44914DDC6B200D4C67F /* Default@2x.png */,
+				BC33F44A14DDC6B200D4C67F /* LoginBackground.png */,
+				BC33F44B14DDC6B200D4C67F /* LoginBackground@2x.png */,
+			);
+			path = "App Store";
+			sourceTree = "<group>";
+		};
 		BC40CBB314CF633600DF0950 /* facebook-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
@@ -2265,6 +2280,8 @@
 		BC914ADC1491845D00D5D7B4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				BC33F43F14DDC6A900D4C67F /* LoginBackground.png */,
+				BC33F44014DDC6A900D4C67F /* LoginBackground@2x.png */,
 				BCBE5C8214D1A1B60077FC62 /* cellFacebookDisabled.png */,
 				BCBE5C8314D1A1B60077FC62 /* cellFacebookDisabled@2x.png */,
 				BCDC952814AB604700D54631 /* cellFacebookDown.png */,
@@ -2275,8 +2292,6 @@
 				BCDC952D14AB604700D54631 /* cellTwitterDown@2x.png */,
 				BCDC952E14AB604700D54631 /* cellTwitterUp.png */,
 				BCDC952F14AB604700D54631 /* cellTwitterUp@2x.png */,
-				BCDC951F14AA3B2300D54631 /* LoginBackground.png */,
-				BCDC952014AA3B2300D54631 /* LoginBackground@2x.png */,
 				BCDC94DD14A8CB3500D54631 /* 26 */,
 				BCDC94E414A8CB3500D54631 /* 32 */,
 			);
@@ -2763,6 +2778,9 @@
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BC33F44714DDC6B200D4C67F /* App Store */,
+				BC33F43714DDC6A100D4C67F /* Default.png */,
+				BC33F43814DDC6A100D4C67F /* Default@2x.png */,
 				BC88905614D0BC70004CCE04 /* BarItems */,
 				BCD1219A14C749D90013B2EF /* bullets.png */,
 				BCD1219B14C749D90013B2EF /* bullets@2x.png */,
@@ -2774,9 +2792,7 @@
 				BCE4631B148FD89100422448 /* Themes */,
 				BCC408A9148D15F8001C02E4 /* MyYasound */,
 				BC5EE217147D427100A282A5 /* RadioSelection */,
-				BC943A5014688AE70031CE17 /* Default.png */,
 				BC95229914B6F787001E1ACE /* EasyTracker.plist */,
-				BC943A5114688AE70031CE17 /* Default@2x.png */,
 				BC8B084114927B7D007E1307 /* Icon.png */,
 				BC8B083214926F22007E1307 /* Icon-72.png */,
 				BC8B083314926F22007E1307 /* Icon-Small-50.png */,
@@ -3072,8 +3088,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC71F5E4147FEC6F00DAE4BD /* InfoPlist.strings in Resources */,
-				BC71F5FB147FEC6F00DAE4BD /* Default.png in Resources */,
-				BC71F5FC147FEC6F00DAE4BD /* Default@2x.png in Resources */,
 				BC71F616147FEC6F00DAE4BD /* RadioSelectionViewController.xib in Resources */,
 				BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */,
 				BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */,
@@ -3150,8 +3164,6 @@
 				BCDC950714A8CB3500D54631 /* loginIcon32Twitter@2x.png in Resources */,
 				BCDC950A14A8CB3500D54631 /* loginIcon32Yasound.png in Resources */,
 				BCDC950D14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */,
-				BCDC952214AA3B2300D54631 /* LoginBackground.png in Resources */,
-				BCDC952514AA3B2300D54631 /* LoginBackground@2x.png in Resources */,
 				BCDC953114AB604700D54631 /* cellFacebookDown.png in Resources */,
 				BCDC953414AB604700D54631 /* cellFacebookDown@2x.png in Resources */,
 				BCDC953714AB604700D54631 /* cellFacebookUp.png in Resources */,
@@ -3228,6 +3240,10 @@
 				BCBE5C7F14D167DE0077FC62 /* release_notes.txt in Resources */,
 				BCBE5C8514D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */,
 				BCBE5C8914D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */,
+				BC33F43A14DDC6A100D4C67F /* Default.png in Resources */,
+				BC33F43D14DDC6A100D4C67F /* Default@2x.png in Resources */,
+				BC33F44214DDC6A900D4C67F /* LoginBackground.png in Resources */,
+				BC33F44514DDC6A900D4C67F /* LoginBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3236,8 +3252,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC93CD5214CF3F7A007C723F /* InfoPlist.strings in Resources */,
-				BC93CD5314CF3F7A007C723F /* Default.png in Resources */,
-				BC93CD5414CF3F7A007C723F /* Default@2x.png in Resources */,
 				BC93CD5514CF3F7A007C723F /* RadioSelectionViewController.xib in Resources */,
 				BC93CD5614CF3F7A007C723F /* Localizable.strings in Resources */,
 				BC93CD5714CF3F7A007C723F /* Localizable.strings in Resources */,
@@ -3314,8 +3328,6 @@
 				BC93CD9F14CF3F7A007C723F /* loginIcon32Twitter@2x.png in Resources */,
 				BC93CDA014CF3F7A007C723F /* loginIcon32Yasound.png in Resources */,
 				BC93CDA114CF3F7A007C723F /* loginIcon32Yasound@2x.png in Resources */,
-				BC93CDA214CF3F7A007C723F /* LoginBackground.png in Resources */,
-				BC93CDA314CF3F7A007C723F /* LoginBackground@2x.png in Resources */,
 				BC93CDA414CF3F7A007C723F /* cellFacebookDown.png in Resources */,
 				BC93CDA514CF3F7A007C723F /* cellFacebookDown@2x.png in Resources */,
 				BC93CDA614CF3F7A007C723F /* cellFacebookUp.png in Resources */,
@@ -3392,6 +3404,10 @@
 				BCBE5C8114D167DE0077FC62 /* release_notes.txt in Resources */,
 				BCBE5C8714D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */,
 				BCBE5C8B14D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */,
+				BC33F44C14DDC6B200D4C67F /* Default.png in Resources */,
+				BC33F44D14DDC6B200D4C67F /* Default@2x.png in Resources */,
+				BC33F44E14DDC6B200D4C67F /* LoginBackground.png in Resources */,
+				BC33F44F14DDC6B200D4C67F /* LoginBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3400,8 +3416,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5A9A3B81454DC0500EA374C /* InfoPlist.strings in Resources */,
-				BC943A5314688AE70031CE17 /* Default.png in Resources */,
-				BC943A5414688AE70031CE17 /* Default@2x.png in Resources */,
 				BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */,
 				BC71F583147F979700DAE4BD /* Localizable.strings in Resources */,
 				BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */,
@@ -3478,8 +3492,6 @@
 				BCDC950614A8CB3500D54631 /* loginIcon32Twitter@2x.png in Resources */,
 				BCDC950914A8CB3500D54631 /* loginIcon32Yasound.png in Resources */,
 				BCDC950C14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */,
-				BCDC952114AA3B2300D54631 /* LoginBackground.png in Resources */,
-				BCDC952414AA3B2300D54631 /* LoginBackground@2x.png in Resources */,
 				BCDC953014AB604700D54631 /* cellFacebookDown.png in Resources */,
 				BCDC953314AB604700D54631 /* cellFacebookDown@2x.png in Resources */,
 				BCDC953614AB604700D54631 /* cellFacebookUp.png in Resources */,
@@ -3556,6 +3568,10 @@
 				BCBE5C7E14D167DE0077FC62 /* release_notes.txt in Resources */,
 				BCBE5C8414D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */,
 				BCBE5C8814D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */,
+				BC33F43914DDC6A100D4C67F /* Default.png in Resources */,
+				BC33F43C14DDC6A100D4C67F /* Default@2x.png in Resources */,
+				BC33F44114DDC6A900D4C67F /* LoginBackground.png in Resources */,
+				BC33F44414DDC6A900D4C67F /* LoginBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3564,8 +3580,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5F3B89A1498B88D008DD607 /* InfoPlist.strings in Resources */,
-				E5F3B89B1498B88D008DD607 /* Default.png in Resources */,
-				E5F3B89C1498B88D008DD607 /* Default@2x.png in Resources */,
 				E5F3B89D1498B88D008DD607 /* RadioSelectionViewController.xib in Resources */,
 				E5F3B89E1498B88D008DD607 /* Localizable.strings in Resources */,
 				E5F3B89F1498B88D008DD607 /* Localizable.strings in Resources */,
@@ -3642,8 +3656,6 @@
 				BCDC950814A8CB3500D54631 /* loginIcon32Twitter@2x.png in Resources */,
 				BCDC950B14A8CB3500D54631 /* loginIcon32Yasound.png in Resources */,
 				BCDC950E14A8CB3500D54631 /* loginIcon32Yasound@2x.png in Resources */,
-				BCDC952314AA3B2300D54631 /* LoginBackground.png in Resources */,
-				BCDC952614AA3B2300D54631 /* LoginBackground@2x.png in Resources */,
 				BCDC953214AB604700D54631 /* cellFacebookDown.png in Resources */,
 				BCDC953514AB604700D54631 /* cellFacebookDown@2x.png in Resources */,
 				BCDC953814AB604700D54631 /* cellFacebookUp.png in Resources */,
@@ -3720,6 +3732,10 @@
 				BCBE5C8014D167DE0077FC62 /* release_notes.txt in Resources */,
 				BCBE5C8614D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */,
 				BCBE5C8A14D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */,
+				BC33F43B14DDC6A100D4C67F /* Default.png in Resources */,
+				BC33F43E14DDC6A100D4C67F /* Default@2x.png in Resources */,
+				BC33F44314DDC6A900D4C67F /* LoginBackground.png in Resources */,
+				BC33F44614DDC6A900D4C67F /* LoginBackground@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4368,7 +4384,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "11B08395-ED82-461D-A4C3-A04035BE1994";
+				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
@@ -4394,7 +4410,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "11B08395-ED82-461D-A4C3-A04035BE1994";
+				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
