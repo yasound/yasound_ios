@@ -166,17 +166,6 @@ static Song* _gNowPlayingSong = nil;
     _favoritesLabel.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
     [_headerView addSubview:_favoritesLabel];
     
-    // header headset image
-    sheet = [[Theme theme] stylesheetForKey:@"HeaderHeadSet" error:nil];
-    image = [[UIImageView alloc] initWithImage:[sheet image]];
-    image.frame = sheet.frame;
-    [_headerView addSubview:image];
-    
-    // header listeners
-    sheet = [[Theme theme] stylesheetForKey:@"HeaderListeners" error:nil];
-    _listenersLabel = [sheet makeLabel];
-    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
-    [_headerView addSubview:_listenersLabel];
     
     //favorites button
     sheet = [[Theme theme] stylesheetForKey:@"HeaderFavoriteEmptyButton" error:nil];
@@ -330,6 +319,17 @@ static Song* _gNowPlayingSong = nil;
     [_statusBar addSubview:_statusBarButton];
   
     
+    // headset image
+    sheet = [[Theme theme] stylesheetForKey:@"StatusHeadSet" error:nil];
+    image = [[UIImageView alloc] initWithImage:[sheet image]];
+    image.frame = sheet.frame;
+    [_statusBar addSubview:image];
+    
+    // listeners
+    sheet = [[Theme theme] stylesheetForKey:@"StatusListeners" error:nil];
+    _listenersLabel = [sheet makeLabel];
+    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
+    [_statusBar addSubview:_listenersLabel];
     
     
     
