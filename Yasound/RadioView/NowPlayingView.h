@@ -15,7 +15,6 @@
     SEL _action;
     Song* _song;
     UILabel* _likesLabel;
-    UILabel* _dislikesLabel;
   NSTimer* _timer;
 }
 

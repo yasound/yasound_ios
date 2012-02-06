@@ -190,7 +190,7 @@ static Song* _gNowPlayingSong = nil;
     // header interactive zone to overload button
     BundleStylesheet* sheetAvatar = [[Theme theme] stylesheetForKey:@"HeaderAvatar" error:nil];
     
-    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
     frame = CGRectMake(0, 0, sheetAvatar.frame.origin.x + sheetAvatar.frame.size.width, _headerView.frame.size.height - sheet.frame.size.height);
     InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:frame target:self action:@selector(onBack:)];
@@ -213,7 +213,7 @@ static Song* _gNowPlayingSong = nil;
     
     
     // header now playing bar image
-    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
     UIImageView* playingNowContainer = [[UIImageView alloc] initWithImage:[sheet image]];
     playingNowContainer.frame = sheet.frame;
@@ -1062,9 +1062,20 @@ static Song* _gNowPlayingSong = nil;
 //    if (_trackInteractionViewDisplayed)
 //        return;
     
+    if (_playingNowView != nil)
+    {
+        [_playingNowView removeFromSuperview];
+        [_playingNowView release];
+    }
+    
     //LBDEBUG TODO : get image, likes dislikes from Song
-    NowPlayingView* view = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onNowPlayingTouched)];
-    [view.playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
+    _playingNowView = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onNowPlayingTouched)];
+    [_playingNowView.playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    _playingNowView.frame = sheet.frame;
+    
+    [self.view addSubview:_playingNowView];
 
     
 //    [UIView transitionWithView:_playingNowContainer
@@ -1643,10 +1654,6 @@ static Song* _gNowPlayingSong = nil;
     // downsize status bar : hide users
     if (_statusBarButtonToggled)
     {
-//        _pageControl.hidden = NO;
-//        _listenersIcon.hidden = NO;
-//        _listenersLabel.hidden = NO;
-        
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
         sheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOff" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -1669,10 +1676,6 @@ static Song* _gNowPlayingSong = nil;
     // upsize status bar : show users
     else
     {
-//        _pageControl.hidden = YES;
-//        _listenersIcon.hidden = YES;
-//        _listenersLabel.hidden = YES;
-        
         [self cleanStatusMessages];
         
         _statusBarButtonToggled = !_statusBarButtonToggled;

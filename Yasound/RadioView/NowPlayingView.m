@@ -9,6 +9,7 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "YasoundDataProvider.h"
+#import "TrackInteractionView.h"
 
 @interface NowPlayingView (internal)
 
@@ -59,8 +60,8 @@
       else
       {
         // fake image
-        UIImage* image = [UIImage imageNamed:@"TrackImageDummy.png"];
-        imageView = [[UIImageView alloc] initWithImage:image];
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
       }
         
         
@@ -75,46 +76,37 @@
         imageView.frame = sheet.frame;
         [self addSubview:imageView];
         
-        // header now playing bar label
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarLabel" error:nil];
+        // header now playing bar info (artist - title)
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarInfo" error:nil];
         UILabel* label = [sheet makeLabel];
+        label.text = [NSString stringWithFormat:@"%@ - %@", song.artist, song.name];
         [self addSubview:label];
         
-        // header now playing bar artist
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarArtist" error:nil];
-        label = [sheet makeLabel];
-        label.text = song.artist;
-        [self addSubview:label];
         
-        // header now playing bar title
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarTitle" error:nil];
-        label = [sheet makeLabel];
-        label.text = song.name;
-        [self addSubview:label];
-        
-        // header now playing bar likes image
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarLikesImage" error:nil];
-        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-        imageView.frame = sheet.frame;
-        [self addSubview:imageView];
+        // track interaction buttons
+        TrackInteractionView* trackInteractionView = [[TrackInteractionView alloc] initWithSong:song];
+        trackInteractionView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+        [self addSubview:trackInteractionView];
         
         // header now playing bar likes
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarLikes" error:nil];
         _likesLabel = [sheet makeLabel];
         _likesLabel.text = @"0";
-        [self addSubview:_likesLabel];
         
-        // header now playing bar dislikes image
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarDislikesImage" error:nil];
-        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-        imageView.frame = sheet.frame;
-        [self addSubview:imageView];
+        if (_likesLabel.text.length > 4)
+            _likesLabel.font = [_likesLabel.font fontWithSize:9];
+        else if (_likesLabel.text.length > 3)
+            _likesLabel.font = [_likesLabel.font fontWithSize:10];
+        else if (_likesLabel.text.length > 2)
+            _likesLabel.font = [_likesLabel.font fontWithSize:11];
+        else 
+            _likesLabel.font = [_likesLabel.font fontWithSize:13];
         
-        // header now playing bar dislikes
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarDislikes" error:nil];
-        _dislikesLabel = [sheet makeLabel];
-        _dislikesLabel.text = @"0";
-        [self addSubview:_dislikesLabel];
+        
+        [self addSubview:_likesLabel];        
+        
+        
+        
         
         
         //play pause button
@@ -139,7 +131,17 @@
 - (void)setSongStatus:(SongStatus*)status
 {
     _likesLabel.text = [NSString stringWithFormat:@"%d", [status.likes intValue]];
-    _dislikesLabel.text = [NSString stringWithFormat:@"%d", [status.dislikes intValue]];
+
+    if (_likesLabel.text.length > 4)
+        _likesLabel.font = [_likesLabel.font fontWithSize:9];
+    else if (_likesLabel.text.length > 3)
+        _likesLabel.font = [_likesLabel.font fontWithSize:10];
+    else if (_likesLabel.text.length > 2)
+        _likesLabel.font = [_likesLabel.font fontWithSize:11];
+    else 
+        _likesLabel.font = [_likesLabel.font fontWithSize:13];
+
+//    _dislikesLabel.text = [NSString stringWithFormat:@"%d", [status.dislikes intValue]];
 }
 
 

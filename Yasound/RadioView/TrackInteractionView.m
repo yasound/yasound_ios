@@ -35,25 +35,23 @@
         
         UIButton* btn  = nil;
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonLike" error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonBuy" error:nil];
+        btn = [sheet makeButton];
+        [btn addTarget:self action:@selector(onTrackBuy:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btn];
+
+        sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonLike" error:nil];
         btn = [sheet makeButton];
         [btn addTarget:self action:@selector(onTrackLike:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
         
-        sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonDislike" error:nil];
-        btn = [sheet makeButton];
-        [btn addTarget:self action:@selector(onTrackDislike:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:btn];
 
-        sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonAdd" error:nil];
-        btn = [sheet makeButton];
-        [btn addTarget:self action:@selector(onTrackAdd:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:btn];
 
-        sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonBuy" error:nil];
-        btn = [sheet makeButton];
-        [btn addTarget:self action:@selector(onTrackBuy:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:btn];
+        
+//        sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonAdd" error:nil];
+//        btn = [sheet makeButton];
+//        [btn addTarget:self action:@selector(onTrackAdd:) forControlEvents:UIControlEventTouchUpInside];
+//        [self addSubview:btn];
 
         sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonShare" error:nil];
         btn = [sheet makeButton];

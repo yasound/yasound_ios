@@ -99,9 +99,6 @@
 		BC03053114C0724D00F39374 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
-		BC178D8F14C57D3B00B18420 /* TrackImageDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */; };
-		BC178D9014C57D3B00B18420 /* TrackImageDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */; };
-		BC178D9114C57D3B00B18420 /* TrackImageDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */; };
 		BC178DAA14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
 		BC178DAB14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
 		BC178DAC14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
@@ -634,7 +631,6 @@
 		BC93CDD714CF3F7A007C723F /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
 		BC93CDD814CF3F7A007C723F /* btnNowPlaying.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03051F14C06DD200F39374 /* btnNowPlaying.png */; };
 		BC93CDD914CF3F7A007C723F /* btnNowPlaying@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03052014C06DD200F39374 /* btnNowPlaying@2x.png */; };
-		BC93CDDA14CF3F7A007C723F /* TrackImageDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */; };
 		BC93CDDB14CF3F7A007C723F /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
 		BC93CDDC14CF3F7A007C723F /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178DB114C63E4A00B18420 /* default.bundle */; };
 		BC93CDDD14CF3F7A007C723F /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
@@ -1347,7 +1343,6 @@
 		BC03052E14C0724D00F39374 /* AudioStreamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamManager.m; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
-		BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackImageDummy.png; sourceTree = "<group>"; };
 		BC178DA714C5E99800B18420 /* CreateMyRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateMyRadio.h; path = Settings/CreateMyRadio.h; sourceTree = "<group>"; };
 		BC178DA814C5E99800B18420 /* CreateMyRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateMyRadio.m; path = Settings/CreateMyRadio.m; sourceTree = "<group>"; };
 		BC178DA914C5E99800B18420 /* CreateMyRadio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateMyRadio.xib; path = Settings/CreateMyRadio.xib; sourceTree = "<group>"; };
@@ -2784,7 +2779,6 @@
 				BC88905614D0BC70004CCE04 /* BarItems */,
 				BCD1219A14C749D90013B2EF /* bullets.png */,
 				BCD1219B14C749D90013B2EF /* bullets@2x.png */,
-				BC178D8E14C57D3B00B18420 /* TrackImageDummy.png */,
 				BCBAB4B914A3920600CF922A /* Settings */,
 				BC8B080614924D75007E1307 /* Tabs */,
 				BC914AD11491845D00D5D7B4 /* Buttons */,
@@ -3217,7 +3211,6 @@
 				BC95229B14B6F787001E1ACE /* EasyTracker.plist in Resources */,
 				BC03052214C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052514C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
-				BC178D9014C57D3B00B18420 /* TrackImageDummy.png in Resources */,
 				BC178DAE14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
 				BC178DB314C63E4A00B18420 /* default.bundle in Resources */,
 				BCA83E6A14C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
@@ -3381,7 +3374,6 @@
 				BC93CDD714CF3F7A007C723F /* EasyTracker.plist in Resources */,
 				BC93CDD814CF3F7A007C723F /* btnNowPlaying.png in Resources */,
 				BC93CDD914CF3F7A007C723F /* btnNowPlaying@2x.png in Resources */,
-				BC93CDDA14CF3F7A007C723F /* TrackImageDummy.png in Resources */,
 				BC93CDDB14CF3F7A007C723F /* CreateMyRadio.xib in Resources */,
 				BC93CDDC14CF3F7A007C723F /* default.bundle in Resources */,
 				BC93CDDD14CF3F7A007C723F /* FriendsViewController.xib in Resources */,
@@ -3545,7 +3537,6 @@
 				BC95229A14B6F787001E1ACE /* EasyTracker.plist in Resources */,
 				BC03052114C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052414C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
-				BC178D8F14C57D3B00B18420 /* TrackImageDummy.png in Resources */,
 				BC178DAD14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
 				BC178DB214C63E4A00B18420 /* default.bundle in Resources */,
 				BCA83E6914C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
@@ -3709,7 +3700,6 @@
 				BC95229C14B6F787001E1ACE /* EasyTracker.plist in Resources */,
 				BC03052314C06DD200F39374 /* btnNowPlaying.png in Resources */,
 				BC03052614C06DD200F39374 /* btnNowPlaying@2x.png in Resources */,
-				BC178D9114C57D3B00B18420 /* TrackImageDummy.png in Resources */,
 				BC178DAF14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
 				BC178DB414C63E4A00B18420 /* default.bundle in Resources */,
 				BCA83E6B14C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
