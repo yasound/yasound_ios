@@ -154,14 +154,6 @@ static Song* _gNowPlayingSong = nil;
     label.text = self.radio.name;
     [_headerView addSubview:label];
 
-    //LBDEBUG
-//    label.layer.masksToBounds = NO;
-//    label.layer.shadowOffset = CGSizeMake(0, -1);
-//    label.layer.shadowRadius = 2;
-//    label.layer.shadowOpacity = 1.0;
-//    label.layer.shadowColor = [UIColor redColor].CGColor;
-
-    
     // header heart image
     sheet = [[Theme theme] stylesheetForKey:@"HeaderHeart" error:nil];
     image = [[UIImageView alloc] initWithImage:[sheet image]];
@@ -325,14 +317,14 @@ static Song* _gNowPlayingSong = nil;
     //
     // status bar
     //
-    BundleStylesheet* sheetStatus = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheetStatus = [[Theme theme] stylesheetForKey:@"StatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _statusBar = [[UIView alloc] initWithFrame:sheetStatus.frame];
     UIImageView* statusBarBackground = [sheetStatus makeImage];
     statusBarBackground.frame = CGRectMake(0, 0, sheetStatus.frame.size.width, sheetStatus.frame.size.height);
     [self.view addSubview:_statusBar];
     [_statusBar addSubview:statusBarBackground];
     
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButton" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"StatusBarButton" error:nil];
     _statusBarButton = [sheet makeButton];
     [_statusBarButton addTarget:self action:@selector(onStatusBarButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_statusBar addSubview:_statusBarButton];
@@ -385,7 +377,7 @@ static Song* _gNowPlayingSong = nil;
         // -----------------------------
         // page control
         // -----------------------------
-        CGRect framePageControl = CGRectMake(0, sheetStatus.frame.origin.y, sheetStatus.frame.size.width, 12);
+        CGRect framePageControl = CGRectMake(0, sheetStatus.frame.origin.y + 8, sheetStatus.frame.size.width, 12);
         
         _pageControl = [[UIPageControl alloc] initWithFrame:framePageControl];
         _pageControl.numberOfPages = 2;
@@ -1655,7 +1647,7 @@ static Song* _gNowPlayingSong = nil;
         
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButtonOff" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOff" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
         
         [UIView beginAnimations:nil context:NULL];
@@ -1676,7 +1668,7 @@ static Song* _gNowPlayingSong = nil;
         
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
         
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserScrollView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
