@@ -91,7 +91,39 @@ void SignalHandler(int sig) {
     rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
     [self.navigationController pushViewController:rootViewController animated:NO];
     
+  // Push Notifications:
+  NSLog(@"Ask for push notification\n");
+  [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
+
+  
   return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+  NSLog(@"applicationDidFinishLaunchingWithOptions dev token test");
+  NSString *deviceTokenStr = [[[[deviceToken description]
+                                stringByReplacingOccurrencesOfString: @"<" withString: @""] 
+                               stringByReplacingOccurrencesOfString: @">" withString: @""] 
+                              stringByReplacingOccurrencesOfString: @" " withString: @""];
+  
+  NSLog(@"Device Token: %@", deviceTokenStr);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+  NSLog(@"didFailToRegisterForRemoteNotificationsWithError:\n%@", [error localizedDescription]);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+  NSLog(@"didReceiveRemoteNotification:\n");
+  NSArray* allKeys = [userInfo allKeys];
+  for (NSString* key in allKeys)
+  {
+    NSString* value = [userInfo objectForKey:key];
+    NSLog(@"\t%@: %@", key, value);
+  }
 }
 
 
