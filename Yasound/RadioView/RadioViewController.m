@@ -63,7 +63,7 @@ static Song* _gNowPlayingSong = nil;
         
         self.ownRadio = [[YasoundDataProvider main].user.id intValue] == [self.radio.creator.id intValue];
 
-        _trackInteractionViewDisplayed = NO;
+//        _trackInteractionViewDisplayed = NO;
 
         _serverErrorCount = 0;
         _streamErrorCount = 0;
@@ -129,10 +129,10 @@ static Song* _gNowPlayingSong = nil;
     [_headerView addSubview:image];
     
     
-    // header back arrow
-    sheet = [[Theme theme] stylesheetForKey:@"HeaderBack" error:nil];
-    UIButton* btn = [sheet makeButton];
-    [_headerView addSubview:btn];
+//    // header back arrow
+//    sheet = [[Theme theme] stylesheetForKey:@"HeaderBack" error:nil];
+//    UIButton* btn = [sheet makeButton];
+//    [_headerView addSubview:btn];
     
     // header avatar, as a second back button
     sheet = [[Theme theme] stylesheetForKey:@"HeaderAvatar" error:nil];
@@ -143,7 +143,7 @@ static Song* _gNowPlayingSong = nil;
     
     // header avatar mask  as button
     sheet = [[Theme theme] stylesheetForKey:@"HeaderAvatarMask" error:nil];
-    btn = [[UIButton alloc] initWithFrame:sheet.frame];
+    UIButton* btn = [[UIButton alloc] initWithFrame:sheet.frame];
     [btn setImage:[sheet image] forState:UIControlStateNormal]; 
     [_headerView addSubview:btn];
     
@@ -216,18 +216,23 @@ static Song* _gNowPlayingSong = nil;
     // header now playing bar
     //
     
-    // border
-    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBorder" error:nil];
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-    imageView.frame = sheet.frame;
-    [self.view addSubview:imageView];
+//    // border
+//    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBorder" error:nil];
+//    UIImageView* imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+//    imageView.frame = sheet.frame;
+//    [self.view addSubview:imageView];
     
     
     // header now playing bar image
     sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" error:nil];
     
-    _playingNowContainer = [[UIView alloc] initWithFrame:sheet.frame];
-    [self.view addSubview:_playingNowContainer];
+    UIImageView* playingNowContainer = [[UIImageView alloc] initWithImage:[sheet image]];
+    playingNowContainer.frame = sheet.frame;
+    
+//    _playingNowContainer = [[UIView alloc] initWithFrame:sheet.frame];
+//    [self.view addSubview:_playingNowContainer];
+    
+    [self.view addSubview:playingNowContainer];
 
     _playingNowView = nil;
     
@@ -268,11 +273,12 @@ static Song* _gNowPlayingSong = nil;
     //
     // message bar
     //
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarBackground" error:nil];
-    UIView* messageBarView = [[UIView alloc] initWithFrame:sheet.frame];
+    sheet = [[Theme theme] stylesheetForKey:@"MessageBarBackground" error:nil];
+    UIImageView* messageBarView = [[UIImageView alloc] initWithImage:[sheet image]];
+    messageBarView.frame = sheet.frame;
     
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    messageBarView.backgroundColor = [UIColor colorWithPatternImage:sheet.image];
+//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    messageBarView.backgroundColor = [UIColor colorWithPatternImage:sheet.image];
     [_viewWall addSubview:messageBarView];   
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBar" error:nil];    
@@ -284,7 +290,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarFont" error:nil];
     [messageBar setFont:[sheet makeFont]];
 
-    // don't add messagebar now, do it after the extra layer
+    [messageBarView addSubview:messageBar];
     
     //....................................................................................
     //
@@ -293,7 +299,8 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableView" error:nil];    
     _tableView = [[UITableView alloc] initWithFrame:sheet.frame style:UITableViewStylePlain];
 
-    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MyYasoundBackground.png"]];
+    sheet = [[Theme theme] stylesheetForKey:@"TableViewBackground" error:nil];    
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     _tableView.delegate = self;
@@ -325,14 +332,6 @@ static Song* _gNowPlayingSong = nil;
     
     
     
-    
-    
-    
-    //....................................................................................
-    //
-    // add objects that must display ABOVE the extra layer
-    //
-    [_viewWall addSubview:messageBar];
     
     
     
@@ -1060,82 +1059,82 @@ static Song* _gNowPlayingSong = nil;
     _gNowPlayingSong = song;
     [_gNowPlayingSong retain];
     
-    if (_trackInteractionViewDisplayed)
-        return;
+//    if (_trackInteractionViewDisplayed)
+//        return;
     
     //LBDEBUG TODO : get image, likes dislikes from Song
     NowPlayingView* view = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onNowPlayingTouched)];
     [view.playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
 
     
-    [UIView transitionWithView:_playingNowContainer
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionFlipFromRight
-                    animations:^{ [_playingNowView removeFromSuperview]; if (_playingNowView){[_playingNowView release];} [_playingNowContainer addSubview:view]; _playingNowView = view; }
-                    completion:NULL];    
+//    [UIView transitionWithView:_playingNowContainer
+//                      duration:0.5
+//                       options:UIViewAnimationOptionTransitionFlipFromRight
+//                    animations:^{ [_playingNowView removeFromSuperview]; if (_playingNowView){[_playingNowView release];} [_playingNowContainer addSubview:view]; _playingNowView = view; }
+//                    completion:NULL];    
 }
 
 
-- (void)onNowPlayingTouched
-{
-    CGRect frame, playingNowFrame, viewContainerFrame;
-    BOOL callbackWhenStop = NO;
+//- (void)onNowPlayingTouched
+//{
+//    CGRect frame, playingNowFrame, viewContainerFrame;
+//    BOOL callbackWhenStop = NO;
+//
+//    // open the track interaction view
+//    if (!_trackInteractionViewDisplayed)
+//    {
+//        _trackInteractionViewDisplayed = YES;
+//
+//        frame = _playingNowContainer.frame;
+//        playingNowFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height *2);
+//        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y + frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height - frame.size.height);
+//        
+//        _trackInteractionView = [[TrackInteractionView alloc] initWithSong:_playingNowView.song];
+//        _trackInteractionView.frame = CGRectMake(0, frame.size.height -1, frame.size.width, frame.size.height);
+//
+//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        _trackInteractionView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+//        
+//        [_playingNowContainer addSubview:_trackInteractionView];
+//
+//    }
+//
+//    // close the track interaction view
+//    else
+//    {
+//        _trackInteractionViewDisplayed = NO;
+//        callbackWhenStop = YES;
+//        
+//        frame = _playingNowContainer.frame;
+//        frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height /2);
+//        playingNowFrame = frame;
+//        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y - frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height + frame.size.height);
+//    }
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration: 0.16];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//    if (callbackWhenStop)
+//    {
+//        [UIView setAnimationDelegate:self];
+//        [UIView setAnimationDidStopSelector:@selector(nowPlayingAnimationFinished:finished:context:)];
+//    }
+//
+//    
+//    _playingNowContainer.frame = playingNowFrame;
+//    _viewContainer.frame = viewContainerFrame;
+//    
+//    [UIView commitAnimations];        
+//}
 
-    // open the track interaction view
-    if (!_trackInteractionViewDisplayed)
-    {
-        _trackInteractionViewDisplayed = YES;
-
-        frame = _playingNowContainer.frame;
-        playingNowFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height *2);
-        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y + frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height - frame.size.height);
-        
-        _trackInteractionView = [[TrackInteractionView alloc] initWithSong:_playingNowView.song];
-        _trackInteractionView.frame = CGRectMake(0, frame.size.height -1, frame.size.width, frame.size.height);
-
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        _trackInteractionView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-        
-        [_playingNowContainer addSubview:_trackInteractionView];
-
-    }
-
-    // close the track interaction view
-    else
-    {
-        _trackInteractionViewDisplayed = NO;
-        callbackWhenStop = YES;
-        
-        frame = _playingNowContainer.frame;
-        frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height /2);
-        playingNowFrame = frame;
-        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y - frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height + frame.size.height);
-    }
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration: 0.16];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    if (callbackWhenStop)
-    {
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(nowPlayingAnimationFinished:finished:context:)];
-    }
-
-    
-    _playingNowContainer.frame = playingNowFrame;
-    _viewContainer.frame = viewContainerFrame;
-    
-    [UIView commitAnimations];        
-}
 
 
-
-- (void)nowPlayingAnimationFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
-{
-    [_trackInteractionView removeFromSuperview];
-    [_trackInteractionView release];
-    _trackInteractionView = nil;
-}
+//- (void)nowPlayingAnimationFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+//{
+//    [_trackInteractionView removeFromSuperview];
+//    [_trackInteractionView release];
+//    _trackInteractionView = nil;
+//}
 
 
 

@@ -41,11 +41,11 @@
 
         UIImageView* imageView = nil;
         
-        //grabber
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarGrabber" error:nil];
-        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-        imageView.frame = sheet.frame;
-        [self addSubview:imageView];
+//        //grabber
+//        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarGrabber" error:nil];
+//        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+//        imageView.frame = sheet.frame;
+//        [self addSubview:imageView];
         
         
         

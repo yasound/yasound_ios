@@ -35,10 +35,10 @@
   
     UITableView* _tableView;
     
-    UIView* _playingNowContainer;
+//    UIView* _playingNowContainer;
     NowPlayingView* _playingNowView;
-    TrackInteractionView* _trackInteractionView;
-    BOOL _trackInteractionViewDisplayed;
+//    TrackInteractionView* _trackInteractionView;
+//    BOOL _trackInteractionViewDisplayed;
     
     WebImageView* _radioImage;
     
