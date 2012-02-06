@@ -321,9 +321,9 @@ static Song* _gNowPlayingSong = nil;
     
     // headset image
     sheet = [[Theme theme] stylesheetForKey:@"StatusHeadSet" error:nil];
-    image = [[UIImageView alloc] initWithImage:[sheet image]];
-    image.frame = sheet.frame;
-    [_statusBar addSubview:image];
+    _listenersIcon = [[UIImageView alloc] initWithImage:[sheet image]];
+    _listenersIcon.frame = sheet.frame;
+    [_statusBar addSubview:_listenersIcon];
     
     // listeners
     sheet = [[Theme theme] stylesheetForKey:@"StatusListeners" error:nil];
@@ -1643,7 +1643,9 @@ static Song* _gNowPlayingSong = nil;
     // downsize status bar : hide users
     if (_statusBarButtonToggled)
     {
-        _pageControl.hidden = NO;
+//        _pageControl.hidden = NO;
+//        _listenersIcon.hidden = NO;
+//        _listenersLabel.hidden = NO;
         
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
@@ -1656,13 +1658,20 @@ static Song* _gNowPlayingSong = nil;
         [UIView setAnimationDidStopSelector:@selector(onStatusBarClosed:finished:context:)];
         
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y + _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
+        
+        _pageControl.alpha = 1;
+        _listenersIcon.alpha = 1;
+        _listenersLabel.alpha = 1;
+        
         [UIView commitAnimations];        
     }
     
     // upsize status bar : show users
     else
     {
-        _pageControl.hidden = YES;
+//        _pageControl.hidden = YES;
+//        _listenersIcon.hidden = YES;
+//        _listenersLabel.hidden = YES;
         
         [self cleanStatusMessages];
         
@@ -1685,8 +1694,15 @@ static Song* _gNowPlayingSong = nil;
 
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration: 0.15];
+        
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y - _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
-      _usersContainer.alpha = 1;
+        _usersContainer.alpha = 1;
+        
+        _pageControl.alpha = 0;
+        _listenersIcon.alpha = 0;
+        _listenersLabel.alpha = 0;
+
+        
         [UIView commitAnimations];        
 
     }

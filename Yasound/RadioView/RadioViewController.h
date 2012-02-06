@@ -31,6 +31,8 @@
     BOOL _firstUpdateRequest;
     
     UILabel* _favoritesLabel;
+    
+    UIImageView* _listenersIcon;
     UILabel* _listenersLabel;
   
     UITableView* _tableView;
