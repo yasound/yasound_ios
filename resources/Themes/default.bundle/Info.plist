@@ -39,20 +39,20 @@
 		<key>HeaderAvatar</key>
 		<dict>
 			<key>x</key>
-			<integer>25</integer>
+			<integer>266</integer>
 			<key>y</key>
-			<integer>7</integer>
+			<integer>10</integer>
 			<key>width</key>
-			<integer>50</integer>
+			<integer>46</integer>
 			<key>height</key>
-			<integer>50</integer>
+			<integer>46</integer>
 		</dict>
 		<key>HeaderAvatarMask</key>
 		<dict>
 			<key>x</key>
-			<integer>25</integer>
+			<integer>264</integer>
 			<key>y</key>
-			<integer>7</integer>
+			<integer>8</integer>
 			<key>name</key>
 			<string>AvatarMask</string>
 			<key>type</key>
@@ -65,24 +65,30 @@
 			<key>font</key>
 			<dict>
 				<key>name</key>
-				<string>HelveticaNeue</string>
+				<string>HelveticaNeue-Bold</string>
 				<key>size</key>
 				<integer>18</integer>
 				<key>text</key>
 				<string>Jenny&apos;s Radio</string>
 				<key>textColor</key>
-				<string>white</string>
+				<string>rgb(255,237,207)</string>
 				<key>textAlignement</key>
-				<string>left</string>
+				<string>right</string>
+				<key>shadowOffset</key>
+				<string>0, -1</string>
+				<key>shadowRadius</key>
+				<integer>1</integer>
+				<key>shadowOpacity</key>
+				<integer>1</integer>
 			</dict>
 			<key>x</key>
-			<integer>80</integer>
+			<integer>54</integer>
 			<key>y</key>
 			<integer>12</integer>
 			<key>width</key>
-			<integer>200</integer>
+			<integer>204</integer>
 			<key>height</key>
-			<integer>20</integer>
+			<integer>22</integer>
 		</dict>
 		<key>HeaderHeart</key>
 		<dict>
@@ -372,13 +378,13 @@
 		<key>RadioViewMessageBar</key>
 		<dict>
 			<key>x</key>
-			<integer>4</integer>
+			<integer>8</integer>
 			<key>y</key>
-			<integer>4</integer>
+			<integer>8</integer>
 			<key>width</key>
-			<integer>312</integer>
+			<integer>304</integer>
 			<key>height</key>
-			<integer>21</integer>
+			<integer>22</integer>
 		</dict>
 		<key>RadioViewMessageBarFont</key>
 		<dict>
@@ -392,16 +398,16 @@
 				<string>left</string>
 			</dict>
 		</dict>
-		<key>RadioViewTableView</key>
+		<key>TableView</key>
 		<dict>
 			<key>x</key>
 			<integer>0</integer>
 			<key>y</key>
-			<integer>30</integer>
+			<integer>38</integer>
 			<key>width</key>
 			<integer>320</integer>
 			<key>height</key>
-			<integer>293</integer>
+			<integer>258</integer>
 		</dict>
 		<key>CellMinHeight</key>
 		<dict>

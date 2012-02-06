@@ -7,7 +7,7 @@
 
 #import "BundleStylesheet.h"
 #import "BundleFileManager.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 //..................................................................................
 //  
@@ -33,6 +33,12 @@
 @synthesize backgroundColorIsSet = _backgroundColorIsSet;
 @synthesize weight = _weight;
 @synthesize weightIsSet = _weightIsSet;
+
+@synthesize shadowOffset = _shadowOffset;
+@synthesize shadowRadius = _shadowRadius;
+@synthesize shadowOpacity = _shadowOpacity;
+@synthesize shadowColor = _shadowColor;
+@synthesize shadowIsSet = _shadowIsSet;
 
 
 
@@ -67,6 +73,7 @@
   _textColorIsSet = NO;
   _backgroundColorIsSet = NO;
   _weightIsSet = NO;
+    _shadowIsSet = NO;
 
 
   // default init
@@ -135,6 +142,45 @@
     _textAlignement = [BundleFontsheet alignementFromString:alignement];
     _textAlignmentIsSet = YES;
   }
+    
+    NSString* shadowOffset = [sheet valueForKey:@"shadowOffset"];
+    if (shadowOffset != nil)
+    {
+        _shadowIsSet = YES;
+
+        NSArray* array =[shadowOffset componentsSeparatedByString:@", "];
+        _shadowOffset.width = 0;
+        _shadowOffset.height = 0;
+        if (array.count > 0)
+        {
+            NSString* tmp = [array objectAtIndex:0];
+            _shadowOffset.width = [tmp floatValue];
+        }
+        if (array.count > 1)
+        {
+            NSString* tmp = [array objectAtIndex:1];
+            _shadowOffset.height = [tmp floatValue];
+        }
+
+        _shadowRadius = 1;
+        NSNumber* shadowRadius = [sheet valueForKey:@"shadowRadius"];
+        if (shadowRadius != nil )
+            _shadowRadius = [shadowRadius integerValue];
+        
+        _shadowOpacity = 0.5;
+        NSNumber* shadowOpacity = [sheet valueForKey:@"shadowOpacity"];
+        if (shadowOpacity != nil )
+            _shadowOpacity = [shadowOpacity floatValue];
+        
+        _shadowColor = [UIColor blackColor];
+        NSString* shadowColor = [sheet valueForKey:@"shadowColor"];
+        if (shadowColor != nil)
+        {
+            _shadowColor = [BundleStylesheet colorFromString:[shadowColor stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+        }
+
+    }
+
 
   return self;
 }
@@ -671,6 +717,18 @@ static NSNumber* _isRetina = nil;
     label.textColor = fontsheet.textColor;
     label.text = fontsheet.text;
     label.textAlignment = fontsheet.textAlignement;
+    
+    // apply shadow, if requested
+    if (fontsheet.shadowIsSet)
+    {
+        label.layer.masksToBounds = NO;
+        
+        label.layer.shadowOffset = fontsheet.shadowOffset;
+        label.layer.shadowRadius = fontsheet.shadowRadius;
+        label.layer.shadowOpacity = fontsheet.shadowOpacity;
+        label.layer.shadowColor = fontsheet.shadowColor.CGColor;
+    }
+    
 
     label.font = [self makeFont];
     
@@ -741,6 +799,17 @@ static NSNumber* _isRetina = nil;
     {
         CGFloat alpha = [alphaNb floatValue];
         label.alpha = alpha;
+    }
+    
+    // apply shadow, if requested
+    if (fontsheet.shadowIsSet)
+    {
+        label.layer.masksToBounds = NO;
+        
+        label.layer.shadowOffset = fontsheet.shadowOffset;
+        label.layer.shadowRadius = fontsheet.shadowRadius;
+        label.layer.shadowOpacity = fontsheet.shadowOpacity;
+        label.layer.shadowColor = fontsheet.shadowColor.CGColor;
     }
   
   return YES;

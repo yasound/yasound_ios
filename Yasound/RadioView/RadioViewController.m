@@ -153,6 +153,14 @@ static Song* _gNowPlayingSong = nil;
     UILabel* label = [sheet makeLabel];
     label.text = self.radio.name;
     [_headerView addSubview:label];
+
+    //LBDEBUG
+//    label.layer.masksToBounds = NO;
+//    label.layer.shadowOffset = CGSizeMake(0, -1);
+//    label.layer.shadowRadius = 2;
+//    label.layer.shadowOpacity = 1.0;
+//    label.layer.shadowColor = [UIColor redColor].CGColor;
+
     
     // header heart image
     sheet = [[Theme theme] stylesheetForKey:@"HeaderHeart" error:nil];
@@ -296,7 +304,7 @@ static Song* _gNowPlayingSong = nil;
     //
     // table view
     //
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableView" error:nil];    
+    sheet = [[Theme theme] stylesheetForKey:@"TableView" error:nil];    
     _tableView = [[UITableView alloc] initWithFrame:sheet.frame style:UITableViewStylePlain];
 
     sheet = [[Theme theme] stylesheetForKey:@"TableViewBackground" error:nil];    

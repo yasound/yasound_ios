@@ -39,6 +39,13 @@
 @property (nonatomic, retain, readonly) NSString* weight;
 @property (nonatomic, readonly) BOOL weightIsSet;
 
+@property (nonatomic, readonly) CGSize shadowOffset;
+@property (nonatomic, readonly) NSInteger shadowRadius;
+@property (nonatomic, readonly) CGFloat shadowOpacity;
+@property (nonatomic, retain, readonly) UIColor* shadowColor;
+@property (nonatomic, readonly) BOOL shadowIsSet;
+
+
 - (id)initWithSheet:(NSDictionary*)sheet forClass:(NSString*)class defaultFontsheet:(BundleFontsheet*)defaultFontsheet bundle:(NSBundle*)bundle error:(NSError **)anError;
 
 
