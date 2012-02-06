@@ -49,9 +49,20 @@
         
         
         
+        
+      NSLog(@"now playing song cover '%@'", song.cover);
+      if (song.cover)
+      {        
+        NSURL* url = [[YasoundDataProvider main] urlForPicture:song.cover];
+        imageView = [[WebImageView alloc] initWithImageAtURL:url];
+      }
+      else
+      {
         // fake image
         UIImage* image = [UIImage imageNamed:@"TrackImageDummy.png"];
         imageView = [[UIImageView alloc] initWithImage:image];
+      }
+        
         
         // header now playing bar track image 
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImage" error:nil];
