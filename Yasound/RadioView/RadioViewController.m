@@ -63,7 +63,7 @@ static Song* _gNowPlayingSong = nil;
         
         self.ownRadio = [[YasoundDataProvider main].user.id intValue] == [self.radio.creator.id intValue];
 
-        _trackInteractionViewDisplayed = NO;
+//        _trackInteractionViewDisplayed = NO;
 
         _serverErrorCount = 0;
         _streamErrorCount = 0;
@@ -129,10 +129,10 @@ static Song* _gNowPlayingSong = nil;
     [_headerView addSubview:image];
     
     
-    // header back arrow
-    sheet = [[Theme theme] stylesheetForKey:@"HeaderBack" error:nil];
-    UIButton* btn = [sheet makeButton];
-    [_headerView addSubview:btn];
+//    // header back arrow
+//    sheet = [[Theme theme] stylesheetForKey:@"HeaderBack" error:nil];
+//    UIButton* btn = [sheet makeButton];
+//    [_headerView addSubview:btn];
     
     // header avatar, as a second back button
     sheet = [[Theme theme] stylesheetForKey:@"HeaderAvatar" error:nil];
@@ -143,7 +143,7 @@ static Song* _gNowPlayingSong = nil;
     
     // header avatar mask  as button
     sheet = [[Theme theme] stylesheetForKey:@"HeaderAvatarMask" error:nil];
-    btn = [[UIButton alloc] initWithFrame:sheet.frame];
+    UIButton* btn = [[UIButton alloc] initWithFrame:sheet.frame];
     [btn setImage:[sheet image] forState:UIControlStateNormal]; 
     [_headerView addSubview:btn];
     
@@ -153,7 +153,7 @@ static Song* _gNowPlayingSong = nil;
     UILabel* label = [sheet makeLabel];
     label.text = self.radio.name;
     [_headerView addSubview:label];
-    
+
     // header heart image
     sheet = [[Theme theme] stylesheetForKey:@"HeaderHeart" error:nil];
     image = [[UIImageView alloc] initWithImage:[sheet image]];
@@ -166,17 +166,6 @@ static Song* _gNowPlayingSong = nil;
     _favoritesLabel.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
     [_headerView addSubview:_favoritesLabel];
     
-    // header headset image
-    sheet = [[Theme theme] stylesheetForKey:@"HeaderHeadSet" error:nil];
-    image = [[UIImageView alloc] initWithImage:[sheet image]];
-    image.frame = sheet.frame;
-    [_headerView addSubview:image];
-    
-    // header listeners
-    sheet = [[Theme theme] stylesheetForKey:@"HeaderListeners" error:nil];
-    _listenersLabel = [sheet makeLabel];
-    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
-    [_headerView addSubview:_listenersLabel];
     
     //favorites button
     sheet = [[Theme theme] stylesheetForKey:@"HeaderFavoriteEmptyButton" error:nil];
@@ -201,7 +190,7 @@ static Song* _gNowPlayingSong = nil;
     // header interactive zone to overload button
     BundleStylesheet* sheetAvatar = [[Theme theme] stylesheetForKey:@"HeaderAvatar" error:nil];
     
-    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
     frame = CGRectMake(0, 0, sheetAvatar.frame.origin.x + sheetAvatar.frame.size.width, _headerView.frame.size.height - sheet.frame.size.height);
     InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:frame target:self action:@selector(onBack:)];
@@ -216,18 +205,23 @@ static Song* _gNowPlayingSong = nil;
     // header now playing bar
     //
     
-    // border
-    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBorder" error:nil];
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-    imageView.frame = sheet.frame;
-    [self.view addSubview:imageView];
+//    // border
+//    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBorder" error:nil];
+//    UIImageView* imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+//    imageView.frame = sheet.frame;
+//    [self.view addSubview:imageView];
     
     
     // header now playing bar image
-    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
-    _playingNowContainer = [[UIView alloc] initWithFrame:sheet.frame];
-    [self.view addSubview:_playingNowContainer];
+    UIImageView* playingNowContainer = [[UIImageView alloc] initWithImage:[sheet image]];
+    playingNowContainer.frame = sheet.frame;
+    
+//    _playingNowContainer = [[UIView alloc] initWithFrame:sheet.frame];
+//    [self.view addSubview:_playingNowContainer];
+    
+    [self.view addSubview:playingNowContainer];
 
     _playingNowView = nil;
     
@@ -268,11 +262,12 @@ static Song* _gNowPlayingSong = nil;
     //
     // message bar
     //
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarBackground" error:nil];
-    UIView* messageBarView = [[UIView alloc] initWithFrame:sheet.frame];
+    sheet = [[Theme theme] stylesheetForKey:@"MessageBarBackground" error:nil];
+    UIImageView* messageBarView = [[UIImageView alloc] initWithImage:[sheet image]];
+    messageBarView.frame = sheet.frame;
     
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    messageBarView.backgroundColor = [UIColor colorWithPatternImage:sheet.image];
+//    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    messageBarView.backgroundColor = [UIColor colorWithPatternImage:sheet.image];
     [_viewWall addSubview:messageBarView];   
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBar" error:nil];    
@@ -284,16 +279,17 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarFont" error:nil];
     [messageBar setFont:[sheet makeFont]];
 
-    // don't add messagebar now, do it after the extra layer
+    [messageBarView addSubview:messageBar];
     
     //....................................................................................
     //
     // table view
     //
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewTableView" error:nil];    
+    sheet = [[Theme theme] stylesheetForKey:@"TableView" error:nil];    
     _tableView = [[UITableView alloc] initWithFrame:sheet.frame style:UITableViewStylePlain];
 
-    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MyYasoundBackground.png"]];
+    sheet = [[Theme theme] stylesheetForKey:@"TableViewBackground" error:nil];    
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     _tableView.delegate = self;
@@ -310,29 +306,32 @@ static Song* _gNowPlayingSong = nil;
     //
     // status bar
     //
-    BundleStylesheet* sheetStatus = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheetStatus = [[Theme theme] stylesheetForKey:@"StatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _statusBar = [[UIView alloc] initWithFrame:sheetStatus.frame];
     UIImageView* statusBarBackground = [sheetStatus makeImage];
     statusBarBackground.frame = CGRectMake(0, 0, sheetStatus.frame.size.width, sheetStatus.frame.size.height);
     [self.view addSubview:_statusBar];
     [_statusBar addSubview:statusBarBackground];
     
-    sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButton" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"StatusBarButton" error:nil];
     _statusBarButton = [sheet makeButton];
     [_statusBarButton addTarget:self action:@selector(onStatusBarButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_statusBar addSubview:_statusBarButton];
   
     
+    // headset image
+    sheet = [[Theme theme] stylesheetForKey:@"StatusHeadSet" error:nil];
+    _listenersIcon = [[UIImageView alloc] initWithImage:[sheet image]];
+    _listenersIcon.frame = sheet.frame;
+    [_statusBar addSubview:_listenersIcon];
+    
+    // listeners
+    sheet = [[Theme theme] stylesheetForKey:@"StatusListeners" error:nil];
+    _listenersLabel = [sheet makeLabel];
+    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
+    [_statusBar addSubview:_listenersLabel];
     
     
-    
-    
-    
-    //....................................................................................
-    //
-    // add objects that must display ABOVE the extra layer
-    //
-    [_viewWall addSubview:messageBar];
     
     
     
@@ -378,7 +377,7 @@ static Song* _gNowPlayingSong = nil;
         // -----------------------------
         // page control
         // -----------------------------
-        CGRect framePageControl = CGRectMake(0, sheetStatus.frame.origin.y, sheetStatus.frame.size.width, 12);
+        CGRect framePageControl = CGRectMake(0, sheetStatus.frame.origin.y + 8, sheetStatus.frame.size.width, 12);
         
         _pageControl = [[UIPageControl alloc] initWithFrame:framePageControl];
         _pageControl.numberOfPages = 2;
@@ -1060,82 +1059,93 @@ static Song* _gNowPlayingSong = nil;
     _gNowPlayingSong = song;
     [_gNowPlayingSong retain];
     
-    if (_trackInteractionViewDisplayed)
-        return;
+//    if (_trackInteractionViewDisplayed)
+//        return;
+    
+    if (_playingNowView != nil)
+    {
+        [_playingNowView removeFromSuperview];
+        [_playingNowView release];
+    }
     
     //LBDEBUG TODO : get image, likes dislikes from Song
-    NowPlayingView* view = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onNowPlayingTouched)];
-    [view.playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
+    _playingNowView = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onNowPlayingTouched)];
+    [_playingNowView.playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    _playingNowView.frame = sheet.frame;
+    
+    [self.view addSubview:_playingNowView];
 
     
-    [UIView transitionWithView:_playingNowContainer
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionFlipFromRight
-                    animations:^{ [_playingNowView removeFromSuperview]; if (_playingNowView){[_playingNowView release];} [_playingNowContainer addSubview:view]; _playingNowView = view; }
-                    completion:NULL];    
+//    [UIView transitionWithView:_playingNowContainer
+//                      duration:0.5
+//                       options:UIViewAnimationOptionTransitionFlipFromRight
+//                    animations:^{ [_playingNowView removeFromSuperview]; if (_playingNowView){[_playingNowView release];} [_playingNowContainer addSubview:view]; _playingNowView = view; }
+//                    completion:NULL];    
 }
 
 
-- (void)onNowPlayingTouched
-{
-    CGRect frame, playingNowFrame, viewContainerFrame;
-    BOOL callbackWhenStop = NO;
+//- (void)onNowPlayingTouched
+//{
+//    CGRect frame, playingNowFrame, viewContainerFrame;
+//    BOOL callbackWhenStop = NO;
+//
+//    // open the track interaction view
+//    if (!_trackInteractionViewDisplayed)
+//    {
+//        _trackInteractionViewDisplayed = YES;
+//
+//        frame = _playingNowContainer.frame;
+//        playingNowFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height *2);
+//        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y + frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height - frame.size.height);
+//        
+//        _trackInteractionView = [[TrackInteractionView alloc] initWithSong:_playingNowView.song];
+//        _trackInteractionView.frame = CGRectMake(0, frame.size.height -1, frame.size.width, frame.size.height);
+//
+//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        _trackInteractionView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+//        
+//        [_playingNowContainer addSubview:_trackInteractionView];
+//
+//    }
+//
+//    // close the track interaction view
+//    else
+//    {
+//        _trackInteractionViewDisplayed = NO;
+//        callbackWhenStop = YES;
+//        
+//        frame = _playingNowContainer.frame;
+//        frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height /2);
+//        playingNowFrame = frame;
+//        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y - frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height + frame.size.height);
+//    }
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration: 0.16];
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//    if (callbackWhenStop)
+//    {
+//        [UIView setAnimationDelegate:self];
+//        [UIView setAnimationDidStopSelector:@selector(nowPlayingAnimationFinished:finished:context:)];
+//    }
+//
+//    
+//    _playingNowContainer.frame = playingNowFrame;
+//    _viewContainer.frame = viewContainerFrame;
+//    
+//    [UIView commitAnimations];        
+//}
 
-    // open the track interaction view
-    if (!_trackInteractionViewDisplayed)
-    {
-        _trackInteractionViewDisplayed = YES;
-
-        frame = _playingNowContainer.frame;
-        playingNowFrame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height *2);
-        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y + frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height - frame.size.height);
-        
-        _trackInteractionView = [[TrackInteractionView alloc] initWithSong:_playingNowView.song];
-        _trackInteractionView.frame = CGRectMake(0, frame.size.height -1, frame.size.width, frame.size.height);
-
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        _trackInteractionView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-        
-        [_playingNowContainer addSubview:_trackInteractionView];
-
-    }
-
-    // close the track interaction view
-    else
-    {
-        _trackInteractionViewDisplayed = NO;
-        callbackWhenStop = YES;
-        
-        frame = _playingNowContainer.frame;
-        frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, frame.size.height /2);
-        playingNowFrame = frame;
-        viewContainerFrame = CGRectMake(_viewContainer.frame.origin.x, _viewContainer.frame.origin.y - frame.size.height, _viewContainer.frame.size.width, _viewContainer.frame.size.height + frame.size.height);
-    }
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration: 0.16];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    if (callbackWhenStop)
-    {
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(nowPlayingAnimationFinished:finished:context:)];
-    }
-
-    
-    _playingNowContainer.frame = playingNowFrame;
-    _viewContainer.frame = viewContainerFrame;
-    
-    [UIView commitAnimations];        
-}
 
 
-
-- (void)nowPlayingAnimationFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
-{
-    [_trackInteractionView removeFromSuperview];
-    [_trackInteractionView release];
-    _trackInteractionView = nil;
-}
+//- (void)nowPlayingAnimationFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+//{
+//    [_trackInteractionView removeFromSuperview];
+//    [_trackInteractionView release];
+//    _trackInteractionView = nil;
+//}
 
 
 
@@ -1644,11 +1654,9 @@ static Song* _gNowPlayingSong = nil;
     // downsize status bar : hide users
     if (_statusBarButtonToggled)
     {
-        _pageControl.hidden = NO;
-        
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButtonOff" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOff" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
         
         [UIView beginAnimations:nil context:NULL];
@@ -1657,19 +1665,22 @@ static Song* _gNowPlayingSong = nil;
         [UIView setAnimationDidStopSelector:@selector(onStatusBarClosed:finished:context:)];
         
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y + _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
+        
+        _pageControl.alpha = 1;
+        _listenersIcon.alpha = 1;
+        _listenersLabel.alpha = 1;
+        
         [UIView commitAnimations];        
     }
     
     // upsize status bar : show users
     else
     {
-        _pageControl.hidden = YES;
-        
         [self cleanStatusMessages];
         
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
-        sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
         
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserScrollView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -1686,8 +1697,15 @@ static Song* _gNowPlayingSong = nil;
 
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration: 0.15];
+        
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y - _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
-      _usersContainer.alpha = 1;
+        _usersContainer.alpha = 1;
+        
+        _pageControl.alpha = 0;
+        _listenersIcon.alpha = 0;
+        _listenersLabel.alpha = 0;
+
+        
         [UIView commitAnimations];        
 
     }

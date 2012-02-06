@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "WallMessage.h"
 #import "NowPlayingView.h"
-#import "TrackInteractionView.h"
+//#import "TrackInteractionView.h"
 #import "TracksView.h"
 #import "SongViewCell.h"
 #import "TestflightViewController.h"
@@ -31,14 +31,16 @@
     BOOL _firstUpdateRequest;
     
     UILabel* _favoritesLabel;
+    
+    UIImageView* _listenersIcon;
     UILabel* _listenersLabel;
   
     UITableView* _tableView;
     
-    UIView* _playingNowContainer;
+//    UIView* _playingNowContainer;
     NowPlayingView* _playingNowView;
-    TrackInteractionView* _trackInteractionView;
-    BOOL _trackInteractionViewDisplayed;
+//    TrackInteractionView* _trackInteractionView;
+//    BOOL _trackInteractionViewDisplayed;
     
     WebImageView* _radioImage;
     

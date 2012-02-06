@@ -11,7 +11,7 @@
 #import "YasoundDataProvider.h"
 
 #define USE_FAKE_RADIO_URL 0
-
+#define MUTE_RADIO 1
 
 @implementation AudioStreamManager
 
@@ -49,6 +49,10 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 - (void)startRadio:(Radio*)radio
 {
+#if MUTE_RADIO
+    return;
+#endif
+    
     if ([radio.id intValue]  == [self.currentRadio.id intValue])
         return;
     
@@ -75,13 +79,16 @@ static AudioStreamer* _gAudioStreamer = nil;
   User* u = [YasoundDataProvider main].user;
   NSString* cookie = [NSString stringWithFormat:@"username=%@; api_key=%@", u.username, u.api_key];
     _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radiourl andCookie:cookie];
-    //LBDEBUG DEBUG TODO : UNMUTE RADIO
     [_gAudioStreamer start];
 
 }
 
 - (void)stopRadio
 {
+#if MUTE_RADIO
+    return;
+#endif
+    
     if (_gAudioStreamer == nil)
         return;
     //[_gAudioStreamer stop];
@@ -104,6 +111,10 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 - (void)playRadio
 {
+#if MUTE_RADIO
+    return;
+#endif
+    
     if (_gAudioStreamer == nil)
         return;
 
@@ -131,7 +142,7 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 - (void)beginInterruption
 {
-  [self pauseAudio];
+  [self stopRadio];
 }
 
 - (void) endInterruptionWithFlags: (NSUInteger) flags
