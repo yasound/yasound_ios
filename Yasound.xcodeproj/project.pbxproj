@@ -1070,6 +1070,10 @@
 		BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
 		BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
+		BCF3588514E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
+		BCF3588614E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
+		BCF3588714E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
+		BCF3588814E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
 		BCF62DBF14839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC014839355001B1908 /* categoryShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DAF14839355001B1908 /* categoryShadow.png */; };
 		BCF62DC114839355001B1908 /* categoryShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DB014839355001B1908 /* categoryShadow@2x.png */; };
@@ -1707,6 +1711,8 @@
 		BCDC982114ACDEA200D54631 /* iconStats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconStats@2x.png"; sourceTree = "<group>"; };
 		BCE46322148FD96300422448 /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
 		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
+		BCF3588314E07A87003594BF /* ScrollingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollingLabel.h; path = Yasound/Gui/ScrollingLabel.h; sourceTree = "<group>"; };
+		BCF3588414E07A87003594BF /* ScrollingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollingLabel.m; path = Yasound/Gui/ScrollingLabel.m; sourceTree = "<group>"; };
 		BCF62DAF14839355001B1908 /* categoryShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = categoryShadow.png; path = RadioSelection/categoryShadow.png; sourceTree = "<group>"; };
 		BCF62DB014839355001B1908 /* categoryShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "categoryShadow@2x.png"; path = "RadioSelection/categoryShadow@2x.png"; sourceTree = "<group>"; };
 		BCF62DB114839355001B1908 /* CellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellBackgroundBlue.png; path = RadioSelection/CellBackgroundBlue.png; sourceTree = "<group>"; };
@@ -2851,6 +2857,8 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
+				BCF3588314E07A87003594BF /* ScrollingLabel.h */,
+				BCF3588414E07A87003594BF /* ScrollingLabel.m */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,
@@ -3858,6 +3866,7 @@
 				40EAA55F14DA980F0000621C /* LeaderBoardEntry.m in Sources */,
 				40EAA59114DC24C10000621C /* OrientedTableView.m in Sources */,
 				40EAA59714DC2DFE0000621C /* UserViewCell.m in Sources */,
+				BCF3588614E07A87003594BF /* ScrollingLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3988,6 +3997,7 @@
 				40EAA56114DA980F0000621C /* LeaderBoardEntry.m in Sources */,
 				40EAA59314DC24C10000621C /* OrientedTableView.m in Sources */,
 				40EAA59914DC2DFE0000621C /* UserViewCell.m in Sources */,
+				BCF3588814E07A87003594BF /* ScrollingLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4117,6 +4127,7 @@
 				40EAA55E14DA980F0000621C /* LeaderBoardEntry.m in Sources */,
 				40EAA59014DC24C10000621C /* OrientedTableView.m in Sources */,
 				40EAA59614DC2DFE0000621C /* UserViewCell.m in Sources */,
+				BCF3588514E07A87003594BF /* ScrollingLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4247,6 +4258,7 @@
 				40EAA56014DA980F0000621C /* LeaderBoardEntry.m in Sources */,
 				40EAA59214DC24C10000621C /* OrientedTableView.m in Sources */,
 				40EAA59814DC2DFE0000621C /* UserViewCell.m in Sources */,
+				BCF3588714E07A87003594BF /* ScrollingLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

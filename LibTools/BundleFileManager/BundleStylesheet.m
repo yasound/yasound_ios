@@ -745,6 +745,7 @@ static NSNumber* _isRetina = nil;
 
 
 
+
 - (BOOL)applyToLabel:(UILabel*)label class:(NSString*)class
 {
   if (class == nil)

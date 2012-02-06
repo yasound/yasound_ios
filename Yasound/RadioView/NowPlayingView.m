@@ -10,6 +10,7 @@
 #import "Theme.h"
 #import "YasoundDataProvider.h"
 #import "TrackInteractionView.h"
+#import "ScrollingLabel.h"
 
 @interface NowPlayingView (internal)
 
@@ -78,9 +79,16 @@
         
         // header now playing bar info (artist - title)
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarInfo" error:nil];
-        UILabel* label = [sheet makeLabel];
-        label.text = [NSString stringWithFormat:@"%@ - %@", song.artist, song.name];
-        [self addSubview:label];
+        ScrollingLabel* title = [[ScrollingLabel alloc] initWithStyle:@"NowPlayingBarInfo"];
+        title.text = [NSString stringWithFormat:@"%@ - %@", song.artist, song.name];
+        title.frame = sheet.frame;
+        [self addSubview:title];
+                                 
+        
+//        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarInfo" error:nil];
+//        UILabel* label = [sheet makeLabel];
+//        label.text = [NSString stringWithFormat:@"%@ - %@", song.artist, song.name];
+//        [self addSubview:label];
         
         
         // track interaction buttons
