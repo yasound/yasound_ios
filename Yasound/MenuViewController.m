@@ -80,6 +80,10 @@
 
     sheet = [[Theme theme] stylesheetForKey:@"MenuRowSingle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _tableView.rowHeight = sheet.frame.size.height;
+    
+    sheet = [[Theme theme] stylesheetForKey:@"MenuBackground" error:nil];    
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+    
 
 }
 
@@ -233,10 +237,13 @@
     
     else if (
              ((indexPath.section == SECTION_RADIOS) && (indexPath.row == SECTION_RADIOS_NB_ROWS-1)) || 
-             ((indexPath.section == SECTION_ME) && (indexPath.row == SECTION_ME_NB_ROWS-1)) || 
-             ((indexPath.section == SECTION_MISC) && (indexPath.row == SECTION_MISC_NB_ROWS-1)) )
+             ((indexPath.section == SECTION_ME) && (indexPath.row == SECTION_ME_NB_ROWS-1)) )
     {
         style = @"MenuRowLast";    
+    }
+    else if ((indexPath.section == SECTION_MISC) && (indexPath.row == SECTION_MISC_NB_ROWS-1))
+    {
+        style = @"MenuRowInter";        
     }
     else
     {

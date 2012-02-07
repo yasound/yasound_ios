@@ -784,6 +784,19 @@
 			<key>path</key>
 			<string>images/</string>
 		</dict>
+		<key>MenuBackground</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MenuBackground</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Menu</string>
+		</dict>
 		<key>MenuSection</key>
 		<dict>
 			<key>x</key>
