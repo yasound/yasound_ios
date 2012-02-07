@@ -595,22 +595,8 @@
 		BC93CDB314CF3F7A007C723F /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97ED14AB9B2800D54631 /* HomeViewController.xib */; };
 		BC93CDB414CF3F7A007C723F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
 		BC93CDB514CF3F7A007C723F /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
-		BC93CDB614CF3F7A007C723F /* iconLegal.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981814ACDEA200D54631 /* iconLegal.png */; };
-		BC93CDB714CF3F7A007C723F /* iconLegal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981914ACDEA200D54631 /* iconLegal@2x.png */; };
-		BC93CDB814CF3F7A007C723F /* iconMyRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981A14ACDEA200D54631 /* iconMyRadio.png */; };
-		BC93CDB914CF3F7A007C723F /* iconMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981B14ACDEA200D54631 /* iconMyRadio@2x.png */; };
-		BC93CDBA14CF3F7A007C723F /* iconPlaylists.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981C14ACDEA200D54631 /* iconPlaylists.png */; };
-		BC93CDBB14CF3F7A007C723F /* iconPlaylists@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981D14ACDEA200D54631 /* iconPlaylists@2x.png */; };
-		BC93CDBC14CF3F7A007C723F /* iconSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981E14ACDEA200D54631 /* iconSettings.png */; };
-		BC93CDBD14CF3F7A007C723F /* iconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981F14ACDEA200D54631 /* iconSettings@2x.png */; };
-		BC93CDBE14CF3F7A007C723F /* iconStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982014ACDEA200D54631 /* iconStats.png */; };
-		BC93CDBF14CF3F7A007C723F /* iconStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982114ACDEA200D54631 /* iconStats@2x.png */; };
 		BC93CDC014CF3F7A007C723F /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
 		BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
-		BC93CDC214CF3F7A007C723F /* iconStatsLikes.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799B14B1C8FB0011AADD /* iconStatsLikes.png */; };
-		BC93CDC314CF3F7A007C723F /* iconStatsLikes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799C14B1C8FB0011AADD /* iconStatsLikes@2x.png */; };
-		BC93CDC414CF3F7A007C723F /* iconStatsListeners.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799D14B1C8FB0011AADD /* iconStatsListeners.png */; };
-		BC93CDC514CF3F7A007C723F /* iconStatsListeners@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799E14B1C8FB0011AADD /* iconStatsListeners@2x.png */; };
 		BC93CDC614CF3F7A007C723F /* blackArrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79BC14B1D1CF0011AADD /* blackArrowLeft.png */; };
 		BC93CDC714CF3F7A007C723F /* blackArrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79BD14B1D1CF0011AADD /* blackArrowLeft@2x.png */; };
 		BC93CDC814CF3F7A007C723F /* blackArrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79BE14B1D1CF0011AADD /* blackArrowRight.png */; };
@@ -623,8 +609,6 @@
 		BC93CDCF14CF3F7A007C723F /* grayArrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79DD14B1DDB20011AADD /* grayArrowLeft@2x.png */; };
 		BC93CDD014CF3F7A007C723F /* grayArrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79DE14B1DDB20011AADD /* grayArrowRight.png */; };
 		BC93CDD114CF3F7A007C723F /* grayArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79DF14B1DDB20011AADD /* grayArrowRight@2x.png */; };
-		BC93CDD214CF3F7A007C723F /* iconLogout.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79EC14B1FF720011AADD /* iconLogout.png */; };
-		BC93CDD314CF3F7A007C723F /* iconLogout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */; };
 		BC93CDD414CF3F7A007C723F /* btnSettingsAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D614B47CA900549EF6 /* btnSettingsAdd.png */; };
 		BC93CDD514CF3F7A007C723F /* btnSettingsAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D714B47CA900549EF6 /* btnSettingsAdd@2x.png */; };
 		BC93CDD614CF3F7A007C723F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
@@ -759,18 +743,6 @@
 		BCCA799814B1AE520011AADD /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BCCA799914B1AE520011AADD /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BCCA799A14B1AE520011AADD /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
-		BCCA799F14B1C8FB0011AADD /* iconStatsLikes.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799B14B1C8FB0011AADD /* iconStatsLikes.png */; };
-		BCCA79A014B1C8FB0011AADD /* iconStatsLikes.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799B14B1C8FB0011AADD /* iconStatsLikes.png */; };
-		BCCA79A114B1C8FB0011AADD /* iconStatsLikes.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799B14B1C8FB0011AADD /* iconStatsLikes.png */; };
-		BCCA79A214B1C8FB0011AADD /* iconStatsLikes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799C14B1C8FB0011AADD /* iconStatsLikes@2x.png */; };
-		BCCA79A314B1C8FB0011AADD /* iconStatsLikes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799C14B1C8FB0011AADD /* iconStatsLikes@2x.png */; };
-		BCCA79A414B1C8FB0011AADD /* iconStatsLikes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799C14B1C8FB0011AADD /* iconStatsLikes@2x.png */; };
-		BCCA79A514B1C8FB0011AADD /* iconStatsListeners.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799D14B1C8FB0011AADD /* iconStatsListeners.png */; };
-		BCCA79A614B1C8FB0011AADD /* iconStatsListeners.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799D14B1C8FB0011AADD /* iconStatsListeners.png */; };
-		BCCA79A714B1C8FB0011AADD /* iconStatsListeners.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799D14B1C8FB0011AADD /* iconStatsListeners.png */; };
-		BCCA79A814B1C8FB0011AADD /* iconStatsListeners@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799E14B1C8FB0011AADD /* iconStatsListeners@2x.png */; };
-		BCCA79A914B1C8FB0011AADD /* iconStatsListeners@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799E14B1C8FB0011AADD /* iconStatsListeners@2x.png */; };
-		BCCA79AA14B1C8FB0011AADD /* iconStatsListeners@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799E14B1C8FB0011AADD /* iconStatsListeners@2x.png */; };
 		BCCA79C414B1D1D00011AADD /* blackArrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79BC14B1D1CF0011AADD /* blackArrowLeft.png */; };
 		BCCA79C514B1D1D00011AADD /* blackArrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79BC14B1D1CF0011AADD /* blackArrowLeft.png */; };
 		BCCA79C614B1D1D00011AADD /* blackArrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79BC14B1D1CF0011AADD /* blackArrowLeft.png */; };
@@ -807,12 +779,6 @@
 		BCCA79E914B1DDB20011AADD /* grayArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79DF14B1DDB20011AADD /* grayArrowRight@2x.png */; };
 		BCCA79EA14B1DDB20011AADD /* grayArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79DF14B1DDB20011AADD /* grayArrowRight@2x.png */; };
 		BCCA79EB14B1DDB20011AADD /* grayArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79DF14B1DDB20011AADD /* grayArrowRight@2x.png */; };
-		BCCA79EE14B1FF720011AADD /* iconLogout.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79EC14B1FF720011AADD /* iconLogout.png */; };
-		BCCA79EF14B1FF720011AADD /* iconLogout.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79EC14B1FF720011AADD /* iconLogout.png */; };
-		BCCA79F014B1FF720011AADD /* iconLogout.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79EC14B1FF720011AADD /* iconLogout.png */; };
-		BCCA79F114B1FF720011AADD /* iconLogout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */; };
-		BCCA79F214B1FF720011AADD /* iconLogout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */; };
-		BCCA79F314B1FF720011AADD /* iconLogout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */; };
 		BCD1219C14C749D90013B2EF /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219A14C749D90013B2EF /* bullets.png */; };
 		BCD1219D14C749D90013B2EF /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219A14C749D90013B2EF /* bullets.png */; };
 		BCD1219E14C749D90013B2EF /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219A14C749D90013B2EF /* bullets.png */; };
@@ -1036,36 +1002,6 @@
 		BCDC981314ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
 		BCDC981414ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
 		BCDC981514ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
-		BCDC982214ACDEA200D54631 /* iconLegal.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981814ACDEA200D54631 /* iconLegal.png */; };
-		BCDC982314ACDEA200D54631 /* iconLegal.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981814ACDEA200D54631 /* iconLegal.png */; };
-		BCDC982414ACDEA200D54631 /* iconLegal.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981814ACDEA200D54631 /* iconLegal.png */; };
-		BCDC982514ACDEA200D54631 /* iconLegal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981914ACDEA200D54631 /* iconLegal@2x.png */; };
-		BCDC982614ACDEA200D54631 /* iconLegal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981914ACDEA200D54631 /* iconLegal@2x.png */; };
-		BCDC982714ACDEA200D54631 /* iconLegal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981914ACDEA200D54631 /* iconLegal@2x.png */; };
-		BCDC982814ACDEA200D54631 /* iconMyRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981A14ACDEA200D54631 /* iconMyRadio.png */; };
-		BCDC982914ACDEA200D54631 /* iconMyRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981A14ACDEA200D54631 /* iconMyRadio.png */; };
-		BCDC982A14ACDEA200D54631 /* iconMyRadio.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981A14ACDEA200D54631 /* iconMyRadio.png */; };
-		BCDC982B14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981B14ACDEA200D54631 /* iconMyRadio@2x.png */; };
-		BCDC982C14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981B14ACDEA200D54631 /* iconMyRadio@2x.png */; };
-		BCDC982D14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981B14ACDEA200D54631 /* iconMyRadio@2x.png */; };
-		BCDC982E14ACDEA200D54631 /* iconPlaylists.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981C14ACDEA200D54631 /* iconPlaylists.png */; };
-		BCDC982F14ACDEA200D54631 /* iconPlaylists.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981C14ACDEA200D54631 /* iconPlaylists.png */; };
-		BCDC983014ACDEA200D54631 /* iconPlaylists.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981C14ACDEA200D54631 /* iconPlaylists.png */; };
-		BCDC983114ACDEA200D54631 /* iconPlaylists@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981D14ACDEA200D54631 /* iconPlaylists@2x.png */; };
-		BCDC983214ACDEA200D54631 /* iconPlaylists@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981D14ACDEA200D54631 /* iconPlaylists@2x.png */; };
-		BCDC983314ACDEA200D54631 /* iconPlaylists@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981D14ACDEA200D54631 /* iconPlaylists@2x.png */; };
-		BCDC983414ACDEA200D54631 /* iconSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981E14ACDEA200D54631 /* iconSettings.png */; };
-		BCDC983514ACDEA200D54631 /* iconSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981E14ACDEA200D54631 /* iconSettings.png */; };
-		BCDC983614ACDEA200D54631 /* iconSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981E14ACDEA200D54631 /* iconSettings.png */; };
-		BCDC983714ACDEA200D54631 /* iconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981F14ACDEA200D54631 /* iconSettings@2x.png */; };
-		BCDC983814ACDEA200D54631 /* iconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981F14ACDEA200D54631 /* iconSettings@2x.png */; };
-		BCDC983914ACDEA200D54631 /* iconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC981F14ACDEA200D54631 /* iconSettings@2x.png */; };
-		BCDC983A14ACDEA200D54631 /* iconStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982014ACDEA200D54631 /* iconStats.png */; };
-		BCDC983B14ACDEA200D54631 /* iconStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982014ACDEA200D54631 /* iconStats.png */; };
-		BCDC983C14ACDEA200D54631 /* iconStats.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982014ACDEA200D54631 /* iconStats.png */; };
-		BCDC983D14ACDEA200D54631 /* iconStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982114ACDEA200D54631 /* iconStats@2x.png */; };
-		BCDC983E14ACDEA200D54631 /* iconStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982114ACDEA200D54631 /* iconStats@2x.png */; };
-		BCDC983F14ACDEA200D54631 /* iconStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDC982114ACDEA200D54631 /* iconStats@2x.png */; };
 		BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -1560,10 +1496,6 @@
 		BCCA799214B1AE520011AADD /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsViewController.h; path = MyYasound/StatsViewController.h; sourceTree = "<group>"; };
 		BCCA799314B1AE520011AADD /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsViewController.m; path = MyYasound/StatsViewController.m; sourceTree = "<group>"; };
 		BCCA799414B1AE520011AADD /* StatsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsViewController.xib; path = MyYasound/StatsViewController.xib; sourceTree = "<group>"; };
-		BCCA799B14B1C8FB0011AADD /* iconStatsLikes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconStatsLikes.png; sourceTree = "<group>"; };
-		BCCA799C14B1C8FB0011AADD /* iconStatsLikes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconStatsLikes@2x.png"; sourceTree = "<group>"; };
-		BCCA799D14B1C8FB0011AADD /* iconStatsListeners.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconStatsListeners.png; sourceTree = "<group>"; };
-		BCCA799E14B1C8FB0011AADD /* iconStatsListeners@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconStatsListeners@2x.png"; sourceTree = "<group>"; };
 		BCCA79BC14B1D1CF0011AADD /* blackArrowLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrowLeft.png; sourceTree = "<group>"; };
 		BCCA79BD14B1D1CF0011AADD /* blackArrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrowLeft@2x.png"; sourceTree = "<group>"; };
 		BCCA79BE14B1D1CF0011AADD /* blackArrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrowRight.png; sourceTree = "<group>"; };
@@ -1576,8 +1508,6 @@
 		BCCA79DD14B1DDB20011AADD /* grayArrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrowLeft@2x.png"; sourceTree = "<group>"; };
 		BCCA79DE14B1DDB20011AADD /* grayArrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrowRight.png; sourceTree = "<group>"; };
 		BCCA79DF14B1DDB20011AADD /* grayArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrowRight@2x.png"; sourceTree = "<group>"; };
-		BCCA79EC14B1FF720011AADD /* iconLogout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLogout.png; sourceTree = "<group>"; };
-		BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLogout@2x.png"; sourceTree = "<group>"; };
 		BCD1219A14C749D90013B2EF /* bullets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullets.png; sourceTree = "<group>"; };
 		BCD1219B14C749D90013B2EF /* bullets@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bullets@2x.png"; sourceTree = "<group>"; };
 		BCD4C2C414695FCD000A236A /* ActivityAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityAlertView.h; sourceTree = "<group>"; };
@@ -1699,16 +1629,6 @@
 		BCDC980D14ACB44300D54631 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = Login/SignupViewController.h; sourceTree = "<group>"; };
 		BCDC980E14ACB44300D54631 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = Login/SignupViewController.m; sourceTree = "<group>"; };
 		BCDC980F14ACB44300D54631 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = Login/SignupViewController.xib; sourceTree = "<group>"; };
-		BCDC981814ACDEA200D54631 /* iconLegal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLegal.png; sourceTree = "<group>"; };
-		BCDC981914ACDEA200D54631 /* iconLegal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLegal@2x.png"; sourceTree = "<group>"; };
-		BCDC981A14ACDEA200D54631 /* iconMyRadio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconMyRadio.png; sourceTree = "<group>"; };
-		BCDC981B14ACDEA200D54631 /* iconMyRadio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconMyRadio@2x.png"; sourceTree = "<group>"; };
-		BCDC981C14ACDEA200D54631 /* iconPlaylists.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconPlaylists.png; sourceTree = "<group>"; };
-		BCDC981D14ACDEA200D54631 /* iconPlaylists@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconPlaylists@2x.png"; sourceTree = "<group>"; };
-		BCDC981E14ACDEA200D54631 /* iconSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconSettings.png; sourceTree = "<group>"; };
-		BCDC981F14ACDEA200D54631 /* iconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconSettings@2x.png"; sourceTree = "<group>"; };
-		BCDC982014ACDEA200D54631 /* iconStats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconStats.png; sourceTree = "<group>"; };
-		BCDC982114ACDEA200D54631 /* iconStats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconStats@2x.png"; sourceTree = "<group>"; };
 		BCE46322148FD96300422448 /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
 		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
 		BCF3588314E07A87003594BF /* ScrollingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollingLabel.h; path = Yasound/Gui/ScrollingLabel.h; sourceTree = "<group>"; };
@@ -2419,7 +2339,6 @@
 			isa = PBXGroup;
 			children = (
 				BCCA79BB14B1D1CF0011AADD /* arrows */,
-				BCDC981714ACDEA200D54631 /* icons */,
 				BCE46322148FD96300422448 /* MyYasoundBackground.png */,
 				BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */,
 				BCC408AA148D15F8001C02E4 /* bigRedButtonDown.png */,
@@ -2728,29 +2647,6 @@
 			name = Security;
 			path = LibTools/Security;
 			sourceTree = SOURCE_ROOT;
-		};
-		BCDC981714ACDEA200D54631 /* icons */ = {
-			isa = PBXGroup;
-			children = (
-				BCCA799B14B1C8FB0011AADD /* iconStatsLikes.png */,
-				BCCA799C14B1C8FB0011AADD /* iconStatsLikes@2x.png */,
-				BCCA799D14B1C8FB0011AADD /* iconStatsListeners.png */,
-				BCCA799E14B1C8FB0011AADD /* iconStatsListeners@2x.png */,
-				BCCA79EC14B1FF720011AADD /* iconLogout.png */,
-				BCCA79ED14B1FF720011AADD /* iconLogout@2x.png */,
-				BCDC981814ACDEA200D54631 /* iconLegal.png */,
-				BCDC981914ACDEA200D54631 /* iconLegal@2x.png */,
-				BCDC981A14ACDEA200D54631 /* iconMyRadio.png */,
-				BCDC981B14ACDEA200D54631 /* iconMyRadio@2x.png */,
-				BCDC981C14ACDEA200D54631 /* iconPlaylists.png */,
-				BCDC981D14ACDEA200D54631 /* iconPlaylists@2x.png */,
-				BCDC981E14ACDEA200D54631 /* iconSettings.png */,
-				BCDC981F14ACDEA200D54631 /* iconSettings@2x.png */,
-				BCDC982014ACDEA200D54631 /* iconStats.png */,
-				BCDC982114ACDEA200D54631 /* iconStats@2x.png */,
-			);
-			path = icons;
-			sourceTree = "<group>";
 		};
 		BCE4631B148FD89100422448 /* Themes */ = {
 			isa = PBXGroup;
@@ -3183,22 +3079,8 @@
 				BCDC97F214AB9B2800D54631 /* HomeViewController.xib in Resources */,
 				BCDC97FB14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 				BCDC981414ACB44300D54631 /* SignupViewController.xib in Resources */,
-				BCDC982314ACDEA200D54631 /* iconLegal.png in Resources */,
-				BCDC982614ACDEA200D54631 /* iconLegal@2x.png in Resources */,
-				BCDC982914ACDEA200D54631 /* iconMyRadio.png in Resources */,
-				BCDC982C14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */,
-				BCDC982F14ACDEA200D54631 /* iconPlaylists.png in Resources */,
-				BCDC983214ACDEA200D54631 /* iconPlaylists@2x.png in Resources */,
-				BCDC983514ACDEA200D54631 /* iconSettings.png in Resources */,
-				BCDC983814ACDEA200D54631 /* iconSettings@2x.png in Resources */,
-				BCDC983B14ACDEA200D54631 /* iconStats.png in Resources */,
-				BCDC983E14ACDEA200D54631 /* iconStats@2x.png in Resources */,
 				BCCA790B14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799914B1AE520011AADD /* StatsViewController.xib in Resources */,
-				BCCA79A014B1C8FB0011AADD /* iconStatsLikes.png in Resources */,
-				BCCA79A314B1C8FB0011AADD /* iconStatsLikes@2x.png in Resources */,
-				BCCA79A614B1C8FB0011AADD /* iconStatsListeners.png in Resources */,
-				BCCA79A914B1C8FB0011AADD /* iconStatsListeners@2x.png in Resources */,
 				BCCA79C514B1D1D00011AADD /* blackArrowLeft.png in Resources */,
 				BCCA79C814B1D1D00011AADD /* blackArrowLeft@2x.png in Resources */,
 				BCCA79CB14B1D1D00011AADD /* blackArrowRight.png in Resources */,
@@ -3211,8 +3093,6 @@
 				BCCA79E414B1DDB20011AADD /* grayArrowLeft@2x.png in Resources */,
 				BCCA79E714B1DDB20011AADD /* grayArrowRight.png in Resources */,
 				BCCA79EA14B1DDB20011AADD /* grayArrowRight@2x.png in Resources */,
-				BCCA79EF14B1FF720011AADD /* iconLogout.png in Resources */,
-				BCCA79F214B1FF720011AADD /* iconLogout@2x.png in Resources */,
 				BC6314D914B47CA900549EF6 /* btnSettingsAdd.png in Resources */,
 				BC6314DC14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828ADA14B49E9500763558 /* RootViewController.xib in Resources */,
@@ -3346,22 +3226,8 @@
 				BC93CDB314CF3F7A007C723F /* HomeViewController.xib in Resources */,
 				BC93CDB414CF3F7A007C723F /* LoginViewController.xib in Resources */,
 				BC93CDB514CF3F7A007C723F /* SignupViewController.xib in Resources */,
-				BC93CDB614CF3F7A007C723F /* iconLegal.png in Resources */,
-				BC93CDB714CF3F7A007C723F /* iconLegal@2x.png in Resources */,
-				BC93CDB814CF3F7A007C723F /* iconMyRadio.png in Resources */,
-				BC93CDB914CF3F7A007C723F /* iconMyRadio@2x.png in Resources */,
-				BC93CDBA14CF3F7A007C723F /* iconPlaylists.png in Resources */,
-				BC93CDBB14CF3F7A007C723F /* iconPlaylists@2x.png in Resources */,
-				BC93CDBC14CF3F7A007C723F /* iconSettings.png in Resources */,
-				BC93CDBD14CF3F7A007C723F /* iconSettings@2x.png in Resources */,
-				BC93CDBE14CF3F7A007C723F /* iconStats.png in Resources */,
-				BC93CDBF14CF3F7A007C723F /* iconStats@2x.png in Resources */,
 				BC93CDC014CF3F7A007C723F /* LegalViewController.xib in Resources */,
 				BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */,
-				BC93CDC214CF3F7A007C723F /* iconStatsLikes.png in Resources */,
-				BC93CDC314CF3F7A007C723F /* iconStatsLikes@2x.png in Resources */,
-				BC93CDC414CF3F7A007C723F /* iconStatsListeners.png in Resources */,
-				BC93CDC514CF3F7A007C723F /* iconStatsListeners@2x.png in Resources */,
 				BC93CDC614CF3F7A007C723F /* blackArrowLeft.png in Resources */,
 				BC93CDC714CF3F7A007C723F /* blackArrowLeft@2x.png in Resources */,
 				BC93CDC814CF3F7A007C723F /* blackArrowRight.png in Resources */,
@@ -3374,8 +3240,6 @@
 				BC93CDCF14CF3F7A007C723F /* grayArrowLeft@2x.png in Resources */,
 				BC93CDD014CF3F7A007C723F /* grayArrowRight.png in Resources */,
 				BC93CDD114CF3F7A007C723F /* grayArrowRight@2x.png in Resources */,
-				BC93CDD214CF3F7A007C723F /* iconLogout.png in Resources */,
-				BC93CDD314CF3F7A007C723F /* iconLogout@2x.png in Resources */,
 				BC93CDD414CF3F7A007C723F /* btnSettingsAdd.png in Resources */,
 				BC93CDD514CF3F7A007C723F /* btnSettingsAdd@2x.png in Resources */,
 				BC93CDD614CF3F7A007C723F /* RootViewController.xib in Resources */,
@@ -3509,22 +3373,8 @@
 				BCDC97F114AB9B2800D54631 /* HomeViewController.xib in Resources */,
 				BCDC97FA14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 				BCDC981314ACB44300D54631 /* SignupViewController.xib in Resources */,
-				BCDC982214ACDEA200D54631 /* iconLegal.png in Resources */,
-				BCDC982514ACDEA200D54631 /* iconLegal@2x.png in Resources */,
-				BCDC982814ACDEA200D54631 /* iconMyRadio.png in Resources */,
-				BCDC982B14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */,
-				BCDC982E14ACDEA200D54631 /* iconPlaylists.png in Resources */,
-				BCDC983114ACDEA200D54631 /* iconPlaylists@2x.png in Resources */,
-				BCDC983414ACDEA200D54631 /* iconSettings.png in Resources */,
-				BCDC983714ACDEA200D54631 /* iconSettings@2x.png in Resources */,
-				BCDC983A14ACDEA200D54631 /* iconStats.png in Resources */,
-				BCDC983D14ACDEA200D54631 /* iconStats@2x.png in Resources */,
 				BCCA790A14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799814B1AE520011AADD /* StatsViewController.xib in Resources */,
-				BCCA799F14B1C8FB0011AADD /* iconStatsLikes.png in Resources */,
-				BCCA79A214B1C8FB0011AADD /* iconStatsLikes@2x.png in Resources */,
-				BCCA79A514B1C8FB0011AADD /* iconStatsListeners.png in Resources */,
-				BCCA79A814B1C8FB0011AADD /* iconStatsListeners@2x.png in Resources */,
 				BCCA79C414B1D1D00011AADD /* blackArrowLeft.png in Resources */,
 				BCCA79C714B1D1D00011AADD /* blackArrowLeft@2x.png in Resources */,
 				BCCA79CA14B1D1D00011AADD /* blackArrowRight.png in Resources */,
@@ -3537,8 +3387,6 @@
 				BCCA79E314B1DDB20011AADD /* grayArrowLeft@2x.png in Resources */,
 				BCCA79E614B1DDB20011AADD /* grayArrowRight.png in Resources */,
 				BCCA79E914B1DDB20011AADD /* grayArrowRight@2x.png in Resources */,
-				BCCA79EE14B1FF720011AADD /* iconLogout.png in Resources */,
-				BCCA79F114B1FF720011AADD /* iconLogout@2x.png in Resources */,
 				BC6314D814B47CA900549EF6 /* btnSettingsAdd.png in Resources */,
 				BC6314DB14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828AD914B49E9500763558 /* RootViewController.xib in Resources */,
@@ -3672,22 +3520,8 @@
 				BCDC97F314AB9B2800D54631 /* HomeViewController.xib in Resources */,
 				BCDC97FC14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 				BCDC981514ACB44300D54631 /* SignupViewController.xib in Resources */,
-				BCDC982414ACDEA200D54631 /* iconLegal.png in Resources */,
-				BCDC982714ACDEA200D54631 /* iconLegal@2x.png in Resources */,
-				BCDC982A14ACDEA200D54631 /* iconMyRadio.png in Resources */,
-				BCDC982D14ACDEA200D54631 /* iconMyRadio@2x.png in Resources */,
-				BCDC983014ACDEA200D54631 /* iconPlaylists.png in Resources */,
-				BCDC983314ACDEA200D54631 /* iconPlaylists@2x.png in Resources */,
-				BCDC983614ACDEA200D54631 /* iconSettings.png in Resources */,
-				BCDC983914ACDEA200D54631 /* iconSettings@2x.png in Resources */,
-				BCDC983C14ACDEA200D54631 /* iconStats.png in Resources */,
-				BCDC983F14ACDEA200D54631 /* iconStats@2x.png in Resources */,
 				BCCA790C14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799A14B1AE520011AADD /* StatsViewController.xib in Resources */,
-				BCCA79A114B1C8FB0011AADD /* iconStatsLikes.png in Resources */,
-				BCCA79A414B1C8FB0011AADD /* iconStatsLikes@2x.png in Resources */,
-				BCCA79A714B1C8FB0011AADD /* iconStatsListeners.png in Resources */,
-				BCCA79AA14B1C8FB0011AADD /* iconStatsListeners@2x.png in Resources */,
 				BCCA79C614B1D1D00011AADD /* blackArrowLeft.png in Resources */,
 				BCCA79C914B1D1D00011AADD /* blackArrowLeft@2x.png in Resources */,
 				BCCA79CC14B1D1D00011AADD /* blackArrowRight.png in Resources */,
@@ -3700,8 +3534,6 @@
 				BCCA79E514B1DDB20011AADD /* grayArrowLeft@2x.png in Resources */,
 				BCCA79E814B1DDB20011AADD /* grayArrowRight.png in Resources */,
 				BCCA79EB14B1DDB20011AADD /* grayArrowRight@2x.png in Resources */,
-				BCCA79F014B1FF720011AADD /* iconLogout.png in Resources */,
-				BCCA79F314B1FF720011AADD /* iconLogout@2x.png in Resources */,
 				BC6314DA14B47CA900549EF6 /* btnSettingsAdd.png in Resources */,
 				BC6314DD14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828ADB14B49E9500763558 /* RootViewController.xib in Resources */,
