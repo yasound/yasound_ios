@@ -393,7 +393,7 @@
 				<key>shadowOffset</key>
 				<string>0, -1</string>
 				<key>shadowRadius</key>
-				<string>1</string>
+				<integer>1</integer>
 			</dict>
 			<key>height</key>
 			<integer>15</integer>
@@ -509,18 +509,22 @@
 				<key>size</key>
 				<integer>13</integer>
 				<key>textColor</key>
-				<string>white</string>
+				<string>rgb(255,231,188)</string>
 				<key>weight</key>
 				<string>bold</string>
+				<key>shadowOffset</key>
+				<string>0, -1</string>
+				<key>shadowRadius</key>
+				<integer>1</integer>
 			</dict>
 			<key>height</key>
 			<integer>16</integer>
 			<key>width</key>
 			<integer>100</integer>
 			<key>x</key>
-			<integer>2</integer>
+			<integer>18</integer>
 			<key>y</key>
-			<integer>2</integer>
+			<integer>0</integer>
 		</dict>
 		<key>SongCellMessage</key>
 		<dict>
@@ -529,18 +533,22 @@
 				<key>size</key>
 				<integer>12</integer>
 				<key>textColor</key>
-				<string>rgb(72,72,72)</string>
+				<string>white</string>
 				<key>weight</key>
 				<string>bold</string>
+				<key>shadowOffset</key>
+				<string>0, -1</string>
+				<key>shadowRadius</key>
+				<integer>1</integer>
 			</dict>
 			<key>height</key>
 			<integer>16</integer>
 			<key>width</key>
-			<integer>255</integer>
+			<integer>240</integer>
 			<key>x</key>
-			<integer>52</integer>
+			<integer>76</integer>
 			<key>y</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>StatusBar</key>
 		<dict>
