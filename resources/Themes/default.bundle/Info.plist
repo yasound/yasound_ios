@@ -784,6 +784,71 @@
 			<key>path</key>
 			<string>images/</string>
 		</dict>
+		<key>MenuSection</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MenuSection</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Menu</string>
+		</dict>
+		<key>MenuRowFirst</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MenuRowFirst</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Menu</string>
+		</dict>
+		<key>MenuRowInter</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MenuRowInter</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Menu</string>
+		</dict>
+		<key>MenuRowLast</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MenuRowLast</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Menu</string>
+		</dict>
+		<key>MenuRowSingle</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MenuRowSingle</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Menu</string>
+		</dict>
 	</dict>
 </dict>
 </plist>

@@ -20,7 +20,8 @@
 #import "AudioStreamManager.h"
 #import "YasoundSessionManager.h"
 #import "RootViewController.h"
-
+#import "BundleStylesheet.h"
+#import "Theme.h"
 
 
 @implementation MenuViewController
@@ -67,9 +68,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     _tableView.backgroundColor =  [UIColor colorWithRed:0.35 green:0.35 blue:0.35 alpha:1];
-    _tableView.sectionHeaderHeight = 40;
+
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    _tableView.sectionHeaderHeight = sheet.frame.size.height;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -148,34 +151,34 @@
 
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-	NSString *title = nil;
-    // Return a title or nil as appropriate for the section.
-    
-	switch (section) {
-        case 0:
-            title = @"iPhone Apps Development";
-            break;
-        case SPENDING_LIST:
-            title = @"Android Apps Development";
-            break;
-        default:
-            break;
-    }
-    
-	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 40)];
-	[v setBackgroundColor:[UIColor blackColor]];
-    
-	UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(10,3, tableView.bounds.size.width - 10,40)] autorelease];
-	label.text = title;
-	label.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.60];
-	label.font = [UIFont fontWithName:@"Arial-BoldMT" size:14];
-	label.backgroundColor = [UIColor clearColor];
-	[v addSubview:label];
-    
-	return v;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//	NSString *title = nil;
+//    // Return a title or nil as appropriate for the section.
+//    
+//	switch (section) {
+//        case 0:
+//            title = @"iPhone Apps Development";
+//            break;
+//        case SPENDING_LIST:
+//            title = @"Android Apps Development";
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 40)];
+//	[v setBackgroundColor:[UIColor blackColor]];
+//    
+//	UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(10,3, tableView.bounds.size.width - 10,40)] autorelease];
+//	label.text = title;
+//	label.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.60];
+//	label.font = [UIFont fontWithName:@"Arial-BoldMT" size:14];
+//	label.backgroundColor = [UIColor clearColor];
+//	[v addSubview:label];
+//    
+//	return v;
+//}
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
