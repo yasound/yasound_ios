@@ -588,6 +588,9 @@ static NSNumber* _isRetina = nil;
     }
     else
     {
+        if ([BundleStylesheet isRetina])
+            name = [name stringByAppendingString:@"@2x"];
+        
         NSString* tmppath = [bundle pathForResource:name ofType:type inDirectory:path];
         src = [UIImage imageWithContentsOfFile:tmppath];
     }
@@ -612,18 +615,34 @@ static NSNumber* _isRetina = nil;
     height = src.size.height / [states count];
     
     //LBDEBUG avoir iOS bug : 
+//    if ([BundleStylesheet isRetina])
+//    {
+//        width /= 2.f;
+//        height /= 2.f;
+//    }
+    
+    UIImage* newImage = nil;
+    
     if ([BundleStylesheet isRetina])
     {
-        width *= 2;
-        height *= 2;
+        CGSize newSize = CGSizeMake(width, height * 2.f);
+        UIGraphicsBeginImageContext (newSize);
+        [src drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+        newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
     }
+    else
+    {
+        newImage = src;
+    }
+    
   
   // create image from source, for every states
   int srcx = 0;
   int srcy = 0;
   for (int index = 0; index < [states count]; index++, srcy += height)
   {
-    CGImageRef imageRef = CGImageCreateWithImageInRect([src CGImage], CGRectMake(srcx, srcy, width, height));
+    CGImageRef imageRef = CGImageCreateWithImageInRect([newImage CGImage], CGRectMake(srcx, srcy, width, height));
     UIImage* image = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);    
     
