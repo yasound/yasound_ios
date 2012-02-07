@@ -9,6 +9,7 @@
 #import "UserViewCell.h"
 #import "Theme.h"
 #import "YasoundDataProvider.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @implementation UserViewCell
@@ -22,17 +23,21 @@
       
       BundleStylesheet* imageSheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
       BundleStylesheet* nameSheet = [[Theme theme] stylesheetForKey:@"StatusBarUserName" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-      BundleStylesheet* maskSheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" error:nil];
+//      BundleStylesheet* maskSheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" error:nil];
       
       CGRect nameRect = nameSheet.frame;
       CGRect imageRect = imageSheet.frame;
       
-      CGRect nameRect2 = CGRectMake(USER_VIEW_CELL_BORDER, nameRect.origin.y, nameRect.size.width, nameRect.size.height);
-      CGRect imageRect2 = CGRectMake(nameRect2.origin.x + nameRect2.size.width / 2.f - imageRect.size.width / 2.f, imageRect.origin.y, imageRect.size.width, imageRect.size.height);
+      CGRect nameRect2 = CGRectMake(USER_VIEW_CELL_BORDER, nameRect.origin.y +4, nameRect.size.width, nameRect.size.height);
+      CGRect imageRect2 = CGRectMake(nameRect2.origin.x + nameRect2.size.width / 2.f - imageRect.size.width / 2.f, imageRect.origin.y +4, imageRect.size.width, imageRect.size.height);
       
       _avatarView = [[WebImageView alloc] initWithFrame:imageRect];
-      _maskView = [[UIImageView alloc] initWithImage:[maskSheet image]];
-      _maskView.frame = imageRect;
+        
+        _avatarView.layer.masksToBounds = YES;
+        _avatarView.layer.cornerRadius = 6;
+
+//      _maskView = [[UIImageView alloc] initWithImage:[maskSheet image]];
+//      _maskView.frame = imageRect;
       
       UIFont* font = [nameSheet makeFont];
       _nameLabel = [nameSheet makeLabel];
@@ -40,10 +45,10 @@
       
       _nameLabel.frame = nameRect2;
       _avatarView.frame = imageRect2;
-      _maskView.frame = imageRect2;
+//      _maskView.frame = imageRect2;
       
       [self.contentView addSubview:_avatarView];
-      [self.contentView addSubview:_maskView];
+//      [self.contentView addSubview:_maskView];
       [self.contentView addSubview:_nameLabel]; 
     }
     return self;
