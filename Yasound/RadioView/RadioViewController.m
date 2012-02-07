@@ -154,11 +154,7 @@ static Song* _gNowPlayingSong = nil;
     label.text = self.radio.name;
     [_headerView addSubview:label];
 
-    // header heart image
-    sheet = [[Theme theme] stylesheetForKey:@"HeaderHeart" error:nil];
-    image = [[UIImageView alloc] initWithImage:[sheet image]];
-    image.frame = sheet.frame;
-    [_headerView addSubview:image];
+    
 
     // header favorite
     sheet = [[Theme theme] stylesheetForKey:@"HeaderLikes" error:nil];
@@ -168,14 +164,14 @@ static Song* _gNowPlayingSong = nil;
     
     
     //favorites button
-    sheet = [[Theme theme] stylesheetForKey:@"HeaderFavoriteEmptyButton" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderFavoriteButtonFrame" error:nil];
     CGRect frame = sheet.frame;
     self.favoriteButton = [[UIButton alloc] initWithFrame:sheet.frame];
     
     NSString* tmppath = [[Theme theme] pathForResource:@"btnFavoriteEmpty" ofType:@"png" inDirectory:@"images/Header/Buttons"];
     UIImage* imageFile = [UIImage imageWithContentsOfFile:tmppath];
     [self.favoriteButton setImage:imageFile forState:UIControlStateNormal];
-    
+
     tmppath = [[Theme theme] pathForResource:@"btnFavoriteFull" ofType:@"png" inDirectory:@"images/Header/Buttons"];
     imageFile = [UIImage imageWithContentsOfFile:tmppath];
     [self.favoriteButton setImage:imageFile forState:UIControlStateSelected];
@@ -183,18 +179,32 @@ static Song* _gNowPlayingSong = nil;
     [self.favoriteButton addTarget:self action:@selector(onFavorite:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:self.favoriteButton];
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     
     
     //.................................................................................
     // header interactive zone to overload button
-    BundleStylesheet* sheetAvatar = [[Theme theme] stylesheetForKey:@"HeaderAvatar" error:nil];
-    
-    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    
-    frame = CGRectMake(0, 0, sheetAvatar.frame.origin.x + sheetAvatar.frame.size.width, _headerView.frame.size.height - sheet.frame.size.height);
-    InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:frame target:self action:@selector(onBack:)];
-    [_headerView addSubview:interactiveView];
+//    BundleStylesheet* sheetAvatar = [[Theme theme] stylesheetForKey:@"HeaderAvatar" error:nil];
+//    
+//    sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    
+//    frame = CGRectMake(0, 0, sheetAvatar.frame.origin.x + sheetAvatar.frame.size.width, _headerView.frame.size.height - sheet.frame.size.height);
+//    InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:frame target:self action:@selector(onBack:)];
+//    [_headerView addSubview:interactiveView];
+
+    sheet = [[Theme theme] stylesheetForKey:@"HeaderMenuButton" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    btn = [sheet makeButton];
+    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+    [_headerView addSubview:btn];
     
     
     
@@ -279,7 +289,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarFont" error:nil];
     [messageBar setFont:[sheet makeFont]];
 
-    [messageBarView addSubview:messageBar];
+    [_viewWall addSubview:messageBar];
     
     //....................................................................................
     //
