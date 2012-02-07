@@ -67,6 +67,7 @@ void SignalHandler(int sig) {
     
 #endif
     
+  [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 
     // google analytics launcher
     NSMutableDictionary *trackerParameters =
@@ -91,7 +92,39 @@ void SignalHandler(int sig) {
     rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
     [self.navigationController pushViewController:rootViewController animated:NO];
     
+  // Push Notifications:
+  NSLog(@"Ask for push notification\n");
+  [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
+
+  
   return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+  NSLog(@"applicationDidFinishLaunchingWithOptions dev token test");
+  NSString *deviceTokenStr = [[[[deviceToken description]
+                                stringByReplacingOccurrencesOfString: @"<" withString: @""] 
+                               stringByReplacingOccurrencesOfString: @">" withString: @""] 
+                              stringByReplacingOccurrencesOfString: @" " withString: @""];
+  
+  NSLog(@"Device Token: %@", deviceTokenStr);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+  NSLog(@"didFailToRegisterForRemoteNotificationsWithError:\n%@", [error localizedDescription]);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+  NSLog(@"didReceiveRemoteNotification:\n");
+  NSArray* allKeys = [userInfo allKeys];
+  for (NSString* key in allKeys)
+  {
+    NSString* value = [userInfo objectForKey:key];
+    NSLog(@"\t%@: %@", key, value);
+  }
 }
 
 
@@ -123,6 +156,7 @@ void SignalHandler(int sig) {
   /*
    Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
    */
+  [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
   [rootViewController becomeFirstResponder];
 
 }
@@ -144,6 +178,23 @@ void SignalHandler(int sig) {
   [super dealloc];
 }
 
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event 
+{
+  //if it is a remote control event handle it correctly
+  if (event.type == UIEventTypeRemoteControl) 
+  {
+    if (event.subtype == UIEventSubtypeRemoteControlPlay) 
+      [[AudioStreamManager main] startRadio:[AudioStreamManager main].currentRadio];
+    
+    else if (event.subtype == UIEventSubtypeRemoteControlPause) 
+      [[AudioStreamManager main] stopRadio];
+    
+    else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) 
+      [[AudioStreamManager main] togglePlayPauseRadio];
+    
+  }
+}
 
 
 

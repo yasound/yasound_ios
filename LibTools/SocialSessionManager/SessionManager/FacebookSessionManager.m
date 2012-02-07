@@ -48,7 +48,7 @@ static FacebookSessionManager* _facebook = nil;
   if (self)
   {
     _facebookConnect = nil;
-    _facebookPermissions = [[NSArray arrayWithObjects:@"user_about_me", @"publish_stream", @"offline_access", nil] retain];    
+    _facebookPermissions = [[NSArray arrayWithObjects:@"user_about_me", @"publish_stream", @"publish_actions", @"offline_access", nil] retain];    
   }
   return self;
 }
