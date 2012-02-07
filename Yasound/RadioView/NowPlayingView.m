@@ -122,13 +122,21 @@
         frame = sheet.frame;
         self.playPauseButton = [[UIButton alloc] initWithFrame:sheet.frame];
         
-        NSString* tmppath = [[Theme theme] pathForResource:@"btnPause" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+        NSString* tmppath = [[Theme theme] pathForResource:@"btnPauseUp" ofType:@"png" inDirectory:@"images/Header/Buttons"];
         UIImage* imageFile = [UIImage imageWithContentsOfFile:tmppath];
         [self.playPauseButton setImage:imageFile forState:UIControlStateNormal];
+
+        tmppath = [[Theme theme] pathForResource:@"btnPauseDown" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+        imageFile = [UIImage imageWithContentsOfFile:tmppath];
+        [self.playPauseButton setImage:imageFile forState:UIControlStateNormal|UIControlStateHighlighted];
         
-        tmppath = [[Theme theme] pathForResource:@"btnPlay" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+        tmppath = [[Theme theme] pathForResource:@"btnPlayUp" ofType:@"png" inDirectory:@"images/Header/Buttons"];
         imageFile = [UIImage imageWithContentsOfFile:tmppath];
         [self.playPauseButton setImage:imageFile forState:UIControlStateSelected];
+
+        tmppath = [[Theme theme] pathForResource:@"btnPlayDown" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+        imageFile = [UIImage imageWithContentsOfFile:tmppath];
+        [self.playPauseButton setImage:imageFile forState:UIControlStateSelected|UIControlStateHighlighted];
         
         [self addSubview:self.playPauseButton];
     }
