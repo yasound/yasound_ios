@@ -67,6 +67,7 @@ void SignalHandler(int sig) {
     
 #endif
     
+  [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 
     // google analytics launcher
     NSMutableDictionary *trackerParameters =
@@ -155,6 +156,7 @@ void SignalHandler(int sig) {
   /*
    Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
    */
+  [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
   [rootViewController becomeFirstResponder];
 
 }
@@ -176,6 +178,23 @@ void SignalHandler(int sig) {
   [super dealloc];
 }
 
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event 
+{
+  //if it is a remote control event handle it correctly
+  if (event.type == UIEventTypeRemoteControl) 
+  {
+    if (event.subtype == UIEventSubtypeRemoteControlPlay) 
+      [[AudioStreamManager main] startRadio:[AudioStreamManager main].currentRadio];
+    
+    else if (event.subtype == UIEventSubtypeRemoteControlPause) 
+      [[AudioStreamManager main] stopRadio];
+    
+    else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) 
+      [[AudioStreamManager main] togglePlayPauseRadio];
+    
+  }
+}
 
 
 

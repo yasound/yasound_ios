@@ -407,7 +407,6 @@ static Song* _gNowPlayingSong = nil;
    
     //Once the view has loaded then we can register to begin recieving controls and we can become the first responder
     // <=> background audio playing
-    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     [self becomeFirstResponder];    
     
     // check for tutorial

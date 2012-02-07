@@ -830,11 +830,7 @@ void ASReadStreamCallBack
 			self                       // data to pass to your interruption listener callback
 		);
 		UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
-		AudioSessionSetProperty (
-			kAudioSessionProperty_AudioCategory,
-			sizeof (sessionCategory),
-			&sessionCategory
-		);
+		//AudioSessionSetProperty (kAudioSessionProperty_AudioCategory, sizeof (sessionCategory),	&sessionCategory);
 		AudioSessionSetActive(true);
 	#endif
 	
