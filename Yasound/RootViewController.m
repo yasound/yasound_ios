@@ -82,6 +82,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
+//LBDEBUG ICI
+//    MenuViewController* menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+//    [self.navigationController pushViewController:menuView animated:NO];
+
     
     if (_firstTime)
     {
