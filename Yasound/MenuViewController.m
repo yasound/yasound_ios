@@ -282,7 +282,9 @@
     if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO))
     {
         cell.textLabel.text = NSLocalizedString(@"MenuView_myradio_myradio", nil);
-        [cell.imageView setImage:[UIImage imageNamed:@"iconMyRadio.png"]];
+        
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMyRadio" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        [cell.imageView setImage:[sheet image]];
     }
     
     else if (indexPath.section == SECTION_RADIOS)
@@ -290,22 +292,26 @@
         if (indexPath.row == ROW_RADIOS_FAVORITES)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_radios_favorites", nil);            
-            [cell.imageView setImage:[UIImage imageNamed:@"tabIconTop.png"]];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconRadiosFavorites" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
         }
         else if (indexPath.row == ROW_RADIOS_FRIENDS)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_radios_friends", nil);            
-            [cell.imageView setImage:[UIImage imageNamed:@"tabIconFavorites.png"]];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconRadiosFriends" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
         }
         else if (indexPath.row == ROW_RADIOS_SELECTION)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_radios_selection", nil);            
-            [cell.imageView setImage:[UIImage imageNamed:@"tabIconNew.png"]];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconRadiosSelection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
         }
         else if (indexPath.row == ROW_RADIOS_SEARCH)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_radios_search", nil);            
-            [cell.imageView setImage:[UIImage imageNamed:@"tabIconSearch.png"]];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconRadiosSearch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
         }
     }
     
@@ -314,17 +320,20 @@
         if (indexPath.row == ROW_ME_STATS)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_me_stats", nil);            
-            [cell.imageView setImage:[UIImage imageNamed:@"iconStats.png"]];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMeStats" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
         }
         else if (indexPath.row == ROW_ME_PLAYLISTS)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_me_playlists", nil);            
-            [cell.imageView setImage:[UIImage imageNamed:@"iconPlaylists.png"]];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMePlaylists" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
         }
         else if (indexPath.row == ROW_ME_CONFIG)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_me_config", nil);            
-            [cell.imageView setImage:[UIImage imageNamed:@"iconSettings.png"]];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMeSettings" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
         }
     }
     
@@ -333,12 +342,14 @@
         if (indexPath.row == ROW_MISC_LEGAL)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_misc_legal", nil);            
-            [cell.imageView setImage:[UIImage imageNamed:@"iconLegal.png"]];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMiscLegal" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
         }
         else if (indexPath.row == ROW_MISC_LOGOUT)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_misc_logout", nil);            
-            [cell.imageView setImage:[UIImage imageNamed:@"iconLogout.png"]];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMiscLogout" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
         }    
     }
 

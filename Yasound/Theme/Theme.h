@@ -20,9 +20,9 @@
 + (BOOL)setTheme:(NSString*)themeId;
 + (Theme*)theme;
 
-
 - (id)initWithThemeId:(NSString*)themeId;
 - (id)initWithBundleName:(NSString*)bundleName;
+
 
 
 
