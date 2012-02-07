@@ -350,26 +350,13 @@
 		<key>CellAvatar</key>
 		<dict>
 			<key>x</key>
-			<integer>3</integer>
+			<integer>8</integer>
 			<key>y</key>
 			<integer>8</integer>
 			<key>width</key>
 			<integer>35</integer>
 			<key>height</key>
 			<integer>35</integer>
-		</dict>
-		<key>CellAvatarMask</key>
-		<dict>
-			<key>x</key>
-			<integer>3</integer>
-			<key>y</key>
-			<integer>8</integer>
-			<key>name</key>
-			<string>UserMask</string>
-			<key>type</key>
-			<string>png</string>
-			<key>path</key>
-			<string>images/</string>
 		</dict>
 		<key>CellDate</key>
 		<dict>
@@ -380,9 +367,9 @@
 				<key>name</key>
 				<string>Arial</string>
 				<key>size</key>
-				<integer>10</integer>
+				<integer>11</integer>
 				<key>textColor</key>
-				<string>rgb(96,96,96)</string>
+				<string>rgb(196,196,196)</string>
 			</dict>
 			<key>height</key>
 			<integer>12</integer>
@@ -400,16 +387,20 @@
 				<key>size</key>
 				<integer>12</integer>
 				<key>textColor</key>
-				<string>rgb(32,32,32)</string>
+				<string>white</string>
 				<key>weight</key>
 				<string>bold</string>
+				<key>shadowOffset</key>
+				<string>0, -1</string>
+				<key>shadowRadius</key>
+				<string>1</string>
 			</dict>
 			<key>height</key>
 			<integer>15</integer>
 			<key>width</key>
-			<integer>240</integer>
+			<integer>235</integer>
 			<key>x</key>
-			<integer>46</integer>
+			<integer>51</integer>
 			<key>y</key>
 			<integer>8</integer>
 		</dict>
@@ -427,9 +418,9 @@
 			<key>height</key>
 			<integer>12</integer>
 			<key>width</key>
-			<integer>270</integer>
+			<integer>265</integer>
 			<key>x</key>
-			<integer>46</integer>
+			<integer>51</integer>
 			<key>y</key>
 			<integer>25</integer>
 		</dict>
