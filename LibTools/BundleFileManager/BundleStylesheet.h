@@ -74,6 +74,8 @@
 @property (nonatomic, retain, readonly) NSDictionary* customProperties;
 
 
++ (BOOL)isRetina;
+
 // init a stylesheet using a stylesheet contents (NSDictionary), for a given bundle 
 - (id)initWithSheet:(NSDictionary*)sheet bundle:(NSBundle*)bundle error:(NSError **)anError;
 

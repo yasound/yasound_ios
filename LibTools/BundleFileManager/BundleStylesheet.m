@@ -252,6 +252,19 @@ static NSNumber* _isRetina = nil;
 }
 
 
++ (BOOL)isRetina
+{
+    if (_isRetina == nil)
+    {
+        BOOL isRetina = ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2);
+        isRetina &= (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone);
+        _isRetina = [NSNumber numberWithBool:isRetina];
+    }
+
+    return [_isRetina boolValue];
+}
+
+
 
 
 
@@ -597,6 +610,13 @@ static NSNumber* _isRetina = nil;
     height = [heightStr integerValue];
   else 
     height = src.size.height / [states count];
+    
+    //LBDEBUG avoir iOS bug : 
+    if ([BundleStylesheet isRetina])
+    {
+        width *= 2;
+        height *= 2;
+    }
   
   // create image from source, for every states
   int srcx = 0;
