@@ -27,20 +27,24 @@
 @implementation MenuViewController
 
 #define SECTION_MYRADIO 0
+#define SECTION_MYRADIO_NB_ROWS 1
 #define ROW_MYRADIO 0
 
 #define SECTION_RADIOS 1
+#define SECTION_RADIOS_NB_ROWS 4
 #define ROW_RADIOS_FRIENDS 0
 #define ROW_RADIOS_FAVORITES 1
 #define ROW_RADIOS_SELECTION 2
 #define ROW_RADIOS_SEARCH 3
 
 #define SECTION_ME 2
+#define SECTION_ME_NB_ROWS 3
 #define ROW_ME_STATS 0
 #define ROW_ME_PLAYLISTS 1
 #define ROW_ME_CONFIG 2
 
 #define SECTION_MISC 3
+#define SECTION_MISC_NB_ROWS 2
 #define ROW_MISC_LEGAL 0
 #define ROW_MISC_LOGOUT 1
 
@@ -73,6 +77,10 @@
 
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _tableView.sectionHeaderHeight = sheet.frame.size.height;
+
+    sheet = [[Theme theme] stylesheetForKey:@"MenuRowSingle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    _tableView.rowHeight = sheet.frame.size.height;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -107,22 +115,22 @@
     return 4;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == SECTION_MYRADIO)
-        return NSLocalizedString(@"MenuView_section_myradio", nil);
-    
-    if (section == SECTION_RADIOS)
-        return NSLocalizedString(@"MenuView_section_radios", nil);
-    
-    if (section == SECTION_ME)
-        return NSLocalizedString(@"MenuView_section_me", nil);
-    
-    if (section == SECTION_MISC)
-        return NSLocalizedString(@"MenuView_section_misc", nil);
-
-    return nil;
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    if (section == SECTION_MYRADIO)
+//        return NSLocalizedString(@"MenuView_section_myradio", nil);
+//    
+//    if (section == SECTION_RADIOS)
+//        return NSLocalizedString(@"MenuView_section_radios", nil);
+//    
+//    if (section == SECTION_ME)
+//        return NSLocalizedString(@"MenuView_section_me", nil);
+//    
+//    if (section == SECTION_MISC)
+//        return NSLocalizedString(@"MenuView_section_misc", nil);
+//
+//    return nil;
+//}
 
 
 
@@ -130,16 +138,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
     if (section == SECTION_MYRADIO)
-        return 1;
+        return SECTION_MYRADIO_NB_ROWS;
     
     if (section == SECTION_RADIOS)
-        return 4;
+        return SECTION_RADIOS_NB_ROWS;
     
     if (section == SECTION_ME)
-        return 3;
+        return SECTION_ME_NB_ROWS;
     
     if (section == SECTION_MISC)
-        return 2;
+        return SECTION_MISC_NB_ROWS;
   
   return 0;
 }
@@ -151,12 +159,40 @@
 
 
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    
+    if (section == SECTION_MYRADIO)
+        title = NSLocalizedString(@"MenuView_section_myradio", nil);
+    
+    else if (section == SECTION_RADIOS)
+        title = NSLocalizedString(@"MenuView_section_radios", nil);
+    
+    else if (section == SECTION_ME)
+        title = NSLocalizedString(@"MenuView_section_me", nil);
+    
+    else if (section == SECTION_MISC)
+        title = NSLocalizedString(@"MenuView_section_misc", nil);
+
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+
+    UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
+    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, 44);
+    
+    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+    
+    
 //	NSString *title = nil;
 //    // Return a title or nil as appropriate for the section.
 //    
-//	switch (section) {
+//	switch (section) 
+//    {
 //        case 0:
 //            title = @"iPhone Apps Development";
 //            break;
@@ -178,15 +214,40 @@
 //	[v addSubview:label];
 //    
 //	return v;
-//}
+}
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    UIView* view = [[UIView alloc] initWithFrame:cell.frame];
-    view.backgroundColor = [UIColor colorWithRed:0.35 green:0.35 blue:0.35 alpha:1];
+    NSString* style = nil;
+    
+    if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO))
+    {
+        style = @"MenuRowSingle";
+    }
+    
+    else if (indexPath.row == 0)
+    {
+        style = @"MenuRowFirst";
+    }
+    
+    else if (
+             ((indexPath.section == SECTION_RADIOS) && (indexPath.row == SECTION_RADIOS_NB_ROWS-1)) || 
+             ((indexPath.section == SECTION_ME) && (indexPath.row == SECTION_ME_NB_ROWS-1)) || 
+             ((indexPath.section == SECTION_MISC) && (indexPath.row == SECTION_MISC_NB_ROWS-1)) )
+    {
+        style = @"MenuRowLast";    
+    }
+    else
+    {
+        style = @"MenuRowInter";        
+    }
+
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:style retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
+    view.frame = sheet.frame;
     cell.backgroundView = view;
-    [view release];    
+    [view release];
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

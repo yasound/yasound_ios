@@ -797,6 +797,36 @@
 			<key>path</key>
 			<string>images/Menu</string>
 		</dict>
+		<key>MenuSectionTitle</key>
+		<dict>
+			<key>x</key>
+			<integer>10</integer>
+			<key>y</key>
+			<integer>4</integer>
+			<key>width</key>
+			<integer>290</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>size</key>
+				<integer>14</integer>
+				<key>weight</key>
+				<string>bold</string>
+				<key>textColor</key>
+				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>shadowOffset</key>
+				<string>0, -1</string>
+				<key>shadowRadius</key>
+				<integer>1</integer>
+				<key>shadowOpacity</key>
+				<real>0.8</real>
+				<key>shadowColor</key>
+				<string>black</string>
+			</dict>
+		</dict>
 		<key>MenuRowFirst</key>
 		<dict>
 			<key>x</key>

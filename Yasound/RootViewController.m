@@ -84,16 +84,16 @@
     [super viewDidAppear:animated];
 
 //LBDEBUG ICI
-//    MenuViewController* menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-//    [self.navigationController pushViewController:menuView animated:NO];
+    MenuViewController* menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    [self.navigationController pushViewController:menuView animated:NO];
 
     
-    if (_firstTime)
-    {
-        _firstTime = NO;
-        
-        [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged)];
-    }
+//    if (_firstTime)
+//    {
+//        _firstTime = NO;
+//        
+//        [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged)];
+//    }
 
   [self becomeFirstResponder];
 }
