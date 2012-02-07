@@ -22,6 +22,7 @@
 #define PM_TAG_ARTIST @"ARTS"
 #define PM_TAG_ALBUM @"ALBM"
 #define PM_TAG_SONG @"SONG"
+#define PM_TAG_UUID @"UUID"
 
 
 #define PM_FIELD_UNKNOWN @""

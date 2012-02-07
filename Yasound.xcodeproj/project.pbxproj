@@ -76,6 +76,14 @@
 		B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
+		B1D634C914E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */; };
+		B1D634CA14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */; };
+		B1D634CB14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */; };
+		B1D634CC14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */; };
+		B1D634CD14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */; };
+		B1D634CE14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */; };
+		B1D634CF14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */; };
+		B1D634D014E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */; };
 		BC01F5AB14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC01F5AC14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC01F5AD14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
@@ -1269,6 +1277,10 @@
 		40F4C79014BEEF6F00A163F9 /* NextSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextSong.m; sourceTree = "<group>"; };
 		B172043D14C54446007F3FB0 /* BuyLinkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyLinkManager.h; sourceTree = "<group>"; };
 		B172043E14C54446007F3FB0 /* BuyLinkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyLinkManager.m; sourceTree = "<group>"; };
+		B1D634C514E1BC4E00BE852E /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
+		B1D634C714E1BC4E00BE852E /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		BC01F5A914CEB01F00EF62A2 /* DateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateAdditions.h; sourceTree = "<group>"; };
 		BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateAdditions.m; sourceTree = "<group>"; };
 		BC0304E614BF030200F39374 /* Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tutorial.h; sourceTree = "<group>"; };
@@ -1843,6 +1855,18 @@
 			path = LibTools/BuyLink;
 			sourceTree = SOURCE_ROOT;
 		};
+		B1D634C414E1BC4E00BE852E /* UIDevice-with-UniqueIdentifier-for-iOS-5 */ = {
+			isa = PBXGroup;
+			children = (
+				B1D634C514E1BC4E00BE852E /* NSString+MD5Addition.h */,
+				B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */,
+				B1D634C714E1BC4E00BE852E /* UIDevice+IdentifierAddition.h */,
+				B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */,
+			);
+			name = "UIDevice-with-UniqueIdentifier-for-iOS-5";
+			path = "ThirdParties/UIDevice-with-UniqueIdentifier-for-iOS-5";
+			sourceTree = "<group>";
+		};
 		BC01F5A814CEB01F00EF62A2 /* DateAdditions */ = {
 			isa = PBXGroup;
 			children = (
@@ -2416,6 +2440,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				B1D634C414E1BC4E00BE852E /* UIDevice-with-UniqueIdentifier-for-iOS-5 */,
 				BCBE5C7114D167DE0077FC62 /* TestFlightSDK0.8.2 */,
 				BC40CC7C14D0093F00DF0950 /* DDMenuController */,
 				BC40CBC414CF648500DF0950 /* Twitter-OAuth-iPhone */,
@@ -3699,6 +3724,8 @@
 				40EAA59114DC24C10000621C /* OrientedTableView.m in Sources */,
 				40EAA59714DC2DFE0000621C /* UserViewCell.m in Sources */,
 				BCF3588614E07A87003594BF /* ScrollingLabel.m in Sources */,
+				B1D634CA14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
+				B1D634CE14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3830,6 +3857,8 @@
 				40EAA59314DC24C10000621C /* OrientedTableView.m in Sources */,
 				40EAA59914DC2DFE0000621C /* UserViewCell.m in Sources */,
 				BCF3588814E07A87003594BF /* ScrollingLabel.m in Sources */,
+				B1D634CC14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
+				B1D634D014E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3960,6 +3989,8 @@
 				40EAA59014DC24C10000621C /* OrientedTableView.m in Sources */,
 				40EAA59614DC2DFE0000621C /* UserViewCell.m in Sources */,
 				BCF3588514E07A87003594BF /* ScrollingLabel.m in Sources */,
+				B1D634C914E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
+				B1D634CD14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4091,6 +4122,8 @@
 				40EAA59214DC24C10000621C /* OrientedTableView.m in Sources */,
 				40EAA59814DC2DFE0000621C /* UserViewCell.m in Sources */,
 				BCF3588714E07A87003594BF /* ScrollingLabel.m in Sources */,
+				B1D634CB14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
+				B1D634CF14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4331,6 +4364,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
@@ -4351,6 +4385,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;

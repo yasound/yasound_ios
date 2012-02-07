@@ -10,6 +10,7 @@
 #import "NSData+CocoaDevUsersAdditions.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import "UIDevice+IdentifierAddition.h"
 
 #define SIZEOF_INT16 2
 
@@ -114,6 +115,8 @@ static PlaylistMoulinor* _main = nil;
 //        [data appendBytes:str length:strlen(str)];    
 //    }
 
+    // uuid
+    [data appendData:[self dataWithUUID]];
     // for all playlist
     for (MPMediaPlaylist* list in mediaPlaylists)
     {
@@ -445,7 +448,51 @@ static PlaylistMoulinor* _main = nil;
     return data;
 }
 
+
+//**********************************************************************************************************
+//
+// dataWithUUID
+//
+// build a "CSV-like" formated NSData, from the unique device identifier
+//
+//
+
+- (NSData*) dataWithUUID
+{
+    NSMutableData* data = [[NSMutableData alloc] init];
+    NSString *uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     
+    if (!_binary)
+    {
+        //..................................................................................
+        // an entry for the uuid
+        //
+        NSString* output = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_UUID, uuid];
+        NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
+        [data appendData:outputData];
+    }
+    else 
+    {
+        //..................................................................................
+        // an entry for the uuid
+        //
+        const char* str = (const char*) [PM_TAG_UUID UTF8String];
+        int16_t size = strlen(str);
+        [data appendBytes:str length:size];    
+        
+        str = (const char*) [uuid UTF8String];
+        size = strlen(str);
+        // write size
+        [data appendBytes:&size length:SIZEOF_INT16];
+        // write str
+        [data appendBytes:str length:size];    
+        
+    }
+    
+    
+    return data;
+}
+
     
     
     
