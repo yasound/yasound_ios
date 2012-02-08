@@ -48,28 +48,14 @@
         CGFloat messageWidth = sheet.frame.size.width;
 
         
-//        // compute the size of the text => will allow to update the cell's height dynamically
-//        CGSize suggestedSize = [ev.text sizeWithFont:messageFont constrainedToSize:CGSizeMake(messageWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-//        CGFloat height = suggestedSize.height;
-
         assert([ev isTextHeightComputed] == YES);
         CGFloat height = [ev getTextHeight];
         
-        
-        
-//        // background color
-//        if (indexPath.row & 1)
-//            sheet = [[Theme theme] stylesheetForKey:@"CellBackground1" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        else
-//            sheet = [[Theme theme] stylesheetForKey:@"CellBackground0" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        view.backgroundColor = sheet.color;
         
         view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.12];
         
         // avatar
         sheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        self.avatar = [[WebImageView alloc] initWithImageAtURL:m.avatarURL];
-        //LBDEBUG
         self.avatar = [[WebImageView alloc] initWithImageAtURL:nil];
         self.avatar.frame = sheet.frame;
         [view addSubview:self.avatar];
@@ -78,30 +64,21 @@
         self.avatar.layer.cornerRadius = 6;
 
 
-//        // avatar mask
-//        sheet = [[Theme theme] stylesheetForKey:@"CellAvatarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        UIImageView* imageView = [[[UIImageView alloc] initWithImage:[sheet image]] autorelease];
-//        imageView.frame = sheet.frame;
-//        [view addSubview:imageView];
-        
         // date
         sheet = [[Theme theme] stylesheetForKey:@"CellDate" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.date = [sheet makeLabel];
-//        self.date.text = [self dateToString:m.date];
         self.date.text = [self dateToString:ev.start_date];
         [view addSubview:self.date];
         
         // user
         sheet = [[Theme theme] stylesheetForKey:@"CellUser" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.user = [sheet makeLabel];
-//        self.user.text = m.user;
         self.user.text = ev.user_name;
         [view addSubview:self.user];
 
         // message background
         BundleStylesheet* messageSheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIView* bkg = [[UIView alloc] initWithFrame:messageSheet.frame];
-//        bkg.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, m.textHeight + 2*MESSAGE_SPACING);
         bkg.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, height + 2*MESSAGE_SPACING);
         
         bkg.layer.masksToBounds = YES;
@@ -114,17 +91,12 @@
         
         // message
         self.message = [messageSheet makeLabel];
-//        self.message.text = m.text;
         self.message.text = ev.text;
-//        self.message.frame = CGRectMake(self.message.frame.origin.x + MESSAGE_SPACING, self.message.frame.origin.y + MESSAGE_SPACING, self.message.frame.size.width - 2*MESSAGE_SPACING, m.textHeight);
         self.message.frame = CGRectMake(self.message.frame.origin.x + MESSAGE_SPACING, self.message.frame.origin.y + MESSAGE_SPACING, self.message.frame.size.width - 2*MESSAGE_SPACING, height);
         
         [self.message setLineBreakMode:UILineBreakModeWordWrap];
-        //[label setMinimumFontSize:FONT_SIZE];
         [self.message setNumberOfLines:0];        
         [view addSubview:self.message];
-        
-//        [self.contentView addSubview:self.background];
         
         sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIImageView* imageView = [[UIImageView alloc] initWithImage:[sheet image]];
@@ -141,36 +113,16 @@
 {
     BundleStylesheet* sheet = nil;
 
-    // background color
-//    if (indexPath.row & 1)
-//        sheet = [[Theme theme] stylesheetForKey:@"CellBackground1" error:nil];
-//    else
-//        sheet = [[Theme theme] stylesheetForKey:@"CellBackground0" error:nil];
-//    self.background.backgroundColor = sheet.color;
     self.backgroundColor = [UIColor clearColor];
-//    self.backgroundColor = [UIColor redColor];
-    
-    // avatar
-//    [self.avatar setImage:image];
-    
-    // date
-//    self.date.text = [self dateToString:m.date];
     self.date.text = [self dateToString:ev.start_date];
-    
-    // user
-//    self.user.text = m.user;
     self.user.text = ev.user_name;
-    
-    // message
-//    self.message.text = m.text;
-//    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, m.textHeight);
-
     self.message.text = ev.text;
     self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, height);
 }
 
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated 
+{
     
 	[super setSelected:selected animated:animated];
     

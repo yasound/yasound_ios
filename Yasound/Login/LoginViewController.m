@@ -75,20 +75,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    //    [[NSNotificationCenter defaultCenter] addObserver:self
-    //                                             selector:@selector (keyboardDidShow:)
-    //                                                 name: UIKeyboardDidShowNotification object:nil];
-    //    
-    //    [[NSNotificationCenter defaultCenter] addObserver:self 
-    //                                             selector:@selector (keyboardDidHide:)
-    //                                                 name: UIKeyboardDidHideNotification object:nil];
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    //    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super viewDidDisappear:animated];
 }
 
 - (void)viewDidUnload

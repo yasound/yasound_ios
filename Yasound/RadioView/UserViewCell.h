@@ -16,7 +16,6 @@
 {
   User* _user;
   WebImageView* _avatarView;
-  UIImageView* _maskView;
   UILabel* _nameLabel;
 }
 

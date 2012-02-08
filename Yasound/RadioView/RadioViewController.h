@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 #import "WallMessage.h"
 #import "NowPlayingView.h"
-//#import "TrackInteractionView.h"
 #import "TracksView.h"
 #import "SongViewCell.h"
 #import "TestflightViewController.h"
@@ -37,10 +36,7 @@
   
     UITableView* _tableView;
     
-//    UIView* _playingNowContainer;
     NowPlayingView* _playingNowView;
-//    TrackInteractionView* _trackInteractionView;
-//    BOOL _trackInteractionViewDisplayed;
     
     WebImageView* _radioImage;
     
@@ -80,7 +76,6 @@
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic) BOOL ownRadio;
-//@property (nonatomic, retain) NSMutableArray* messages;
 @property (atomic, retain) NSMutableArray* statusMessages;
 @property (nonatomic, retain) UIButton* favoriteButton;
 

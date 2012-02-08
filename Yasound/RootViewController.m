@@ -100,15 +100,7 @@
     {
         [[YasoundReachability main] removeTarget];
         
-#ifdef FORCE_ROOTVIEW_RADIOS
-        // add tabs
-//        RadioTabBarController* tabBarController = [[RadioTabBarController alloc] init];
-//        [self.navigationController pushViewController:tabBarController animated:NO];    
-//        [tabBarController release];
-#else
         [self loginProcess];
-#endif
-    
     }
 }
 

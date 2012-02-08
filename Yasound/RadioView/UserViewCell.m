@@ -23,7 +23,6 @@
       
       BundleStylesheet* imageSheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
       BundleStylesheet* nameSheet = [[Theme theme] stylesheetForKey:@"StatusBarUserName" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//      BundleStylesheet* maskSheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" error:nil];
       
       CGRect nameRect = nameSheet.frame;
       CGRect imageRect = imageSheet.frame;
@@ -36,19 +35,14 @@
         _avatarView.layer.masksToBounds = YES;
         _avatarView.layer.cornerRadius = 6;
 
-//      _maskView = [[UIImageView alloc] initWithImage:[maskSheet image]];
-//      _maskView.frame = imageRect;
-      
       UIFont* font = [nameSheet makeFont];
       _nameLabel = [nameSheet makeLabel];
       _nameLabel.font = font;
       
       _nameLabel.frame = nameRect2;
       _avatarView.frame = imageRect2;
-//      _maskView.frame = imageRect2;
       
       [self.contentView addSubview:_avatarView];
-//      [self.contentView addSubview:_maskView];
       [self.contentView addSubview:_nameLabel]; 
     }
     return self;
