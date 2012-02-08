@@ -256,7 +256,7 @@
   
   if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_LISTENERS))
   {      
-    NSNumber* listeners = [YasoundDataProvider main].radio.listeners;
+    NSNumber* listeners = [YasoundDataProvider main].radio.nb_current_users;
     cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", listeners];
     [cell.imageView setImage:[UIImage imageNamed:@"iconStatsListeners.png"]];

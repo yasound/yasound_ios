@@ -19,10 +19,10 @@
 @synthesize playlists;
 @synthesize likes;
 @synthesize favorites;
-@synthesize listeners;
 @synthesize picture;
 @synthesize tags;
 @synthesize valid;
+@synthesize nb_current_users;
 
 - (NSArray*)tagsArray
 {
