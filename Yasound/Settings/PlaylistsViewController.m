@@ -46,36 +46,6 @@
         
         _selectedPlaylists = [[NSMutableArray alloc] init];
         [_selectedPlaylists retain];
-        
-//        if (_wizard)
-//        {
-//            for (MPMediaPlaylist* list in _playlists)
-//            {
-//                NSString* listname = [list valueForProperty: MPMediaPlaylistPropertyName];
-//                
-//                NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
-//                [dico setObject:listname forKey:@"name"];
-//                [dico setObject:[NSNumber numberWithInteger:[list count]] forKey:@"count"];
-//                [_playlistsDesc addObject:dico];
-//                
-//                NSLog (@"playlist : %@", listname);
-//            }
-//            _selectedPlaylists = [NSMutableArray arrayWithArray:_playlists];
-//            [_selectedPlaylists retain];
-//        }
-//        else
-//        {
-//            Radio* radio = [YasoundDataProvider main].radio;
-//            [[YasoundDataProvider main] playlistsForRadio:radio 
-//                                                   target:self 
-//                                                   action:@selector(receivePlaylists:withInfo:)
-//             ];
-//
-//            _selectedPlaylists = [[NSMutableArray alloc] init];
-//            [_selectedPlaylists retain];
-//        }
-        
-            
     }
     
     return self;
