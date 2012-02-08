@@ -16,6 +16,8 @@
 #import "YasoundDataProvider.h"
 #import "UIDevice+IdentifierAddition.h"
 
+#import "SongUploader.h"
+
 @implementation PlaylistsViewController
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard
