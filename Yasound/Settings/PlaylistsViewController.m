@@ -13,7 +13,8 @@
 #import "PlaylistMoulinor.h"
 #import "YasoundDataProvider.h"
 #import "RootViewController.h"
-
+#import "YasoundDataProvider.h"
+#import "UIDevice+IdentifierAddition.h"
 
 @implementation PlaylistsViewController
 
@@ -28,37 +29,40 @@
         if (_wizard)
             _changed = YES;
         
-        
         //......................................................................................
         // init playlists
         //
         MPMediaQuery *playlistsquery = [MPMediaQuery playlistsQuery];
-        
         _playlistsDesc = [[NSMutableArray alloc] init];
         [_playlistsDesc retain];
-        
         _playlists = [playlistsquery collections];
         [_playlists retain];
-        
-        for (MPMediaPlaylist* list in _playlists)
-        {
-            NSString* listname = [list valueForProperty: MPMediaPlaylistPropertyName];
-            
-            NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
-            [dico setObject:listname forKey:@"name"];
-            [dico setObject:[NSNumber numberWithInteger:[list count]] forKey:@"count"];
-            [_playlistsDesc addObject:dico];
-            
-            NSLog (@"playlist : %@", listname);
-        }
+
         
         if (_wizard)
         {
+            for (MPMediaPlaylist* list in _playlists)
+            {
+                NSString* listname = [list valueForProperty: MPMediaPlaylistPropertyName];
+                
+                NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+                [dico setObject:listname forKey:@"name"];
+                [dico setObject:[NSNumber numberWithInteger:[list count]] forKey:@"count"];
+                [_playlistsDesc addObject:dico];
+                
+                NSLog (@"playlist : %@", listname);
+            }
             _selectedPlaylists = [NSMutableArray arrayWithArray:_playlists];
             [_selectedPlaylists retain];
         }
         else
         {
+            Radio* radio = [YasoundDataProvider main].radio;
+            [[YasoundDataProvider main] playlistsForRadio:radio 
+                                                   target:self 
+                                                   action:@selector(receivePlaylists:withInfo:)
+             ];
+
             _selectedPlaylists = [[NSMutableArray alloc] init];
             [_selectedPlaylists retain];
         }
@@ -69,12 +73,63 @@
     return self;
 }
 
+-(NSMutableDictionary *)findPlayListByName:(NSString *)name withSource:(NSString *)source
+{
+    for (NSMutableDictionary *item in _playlistsDesc) {
+        NSString* aName = [item objectForKey:@"name"];
+        NSString* aSource = [item objectForKey:@"source"];
+        if ([name isEqualToString:aName] && [source isEqualToString:aSource]) {
+            return item;
+        }
+    }
+    return NULL;
+}
 
+- (void)buildPlaylistData:(NSArray *)localPlaylists withRemotePlaylists:(NSArray *)remotePlaylists
+{
+    for (Playlist *playlist in remotePlaylists) {
+        NSString* name = playlist.name;
+        NSString* source = playlist.source;
+        NSNumber* count = playlist.song_count;
+        NSNumber* matched = playlist.matched_song_count;
+        NSNumber* unmatched = playlist.unmatched_song_count;
+        
+        NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+        [dico setObject:name forKey:@"name"];
+        [dico setObject:source forKey:@"source"];
+        [dico setObject:count forKey:@"count"];
+        [dico setObject:matched forKey:@"matched"];
+        [dico setObject:unmatched forKey:@"unmatched"];
+        [_playlistsDesc addObject:dico];
+    }
+    
+    NSString *source = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    for (MPMediaPlaylist *playlist in localPlaylists) {
+        NSString* name = [playlist valueForProperty: MPMediaPlaylistPropertyName];
+        NSNumber* count = [NSNumber numberWithInteger:[playlist count]];
+        NSNumber* localPlaylistIndex = [NSNumber numberWithInt:[localPlaylists indexOfObject:playlist]];
+        
+        NSMutableDictionary *dico = [self findPlayListByName:name withSource:source];
+        if (dico) {
+            [dico setObject:count forKey:@"count"];
+            [dico setObject:localPlaylistIndex forKey:@"localPlaylistIndex"];
+        } else {
+            NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+            [dico setObject:name forKey:@"name"];
+            [dico setObject:count forKey:@"count"];
+            [dico setObject:localPlaylistIndex forKey:@"localPlaylistIndex"];
+            [_playlistsDesc addObject:dico];
+        }
+    }
+}
 
+- (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
+{
+    [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
+    [self refreshView];
+}
 
-
-
-
+                                                                                      
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -136,14 +191,7 @@
     
     
     _cellHowtoLabel.text = NSLocalizedString(@"PlaylistsView_howto", nil);
-    
-    if ([_playlistsDesc count] == 0)
-    {
-        [_tableView removeFromSuperview];
-        _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
-        [_container addSubview:_itunesConnectView];
-    }
-
+    [self refreshView];
 }
 
 - (void)viewDidUnload
@@ -160,7 +208,18 @@
 }
 
 
-
+-(void)refreshView
+{
+    if ([_playlistsDesc count] == 0)
+    {
+        [_tableView removeFromSuperview];
+        _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
+        [_container addSubview:_itunesConnectView];
+    } else {
+        [_itunesConnectView removeFromSuperview];
+        [self.view addSubview:_tableView];
+    }
+}
 
 
 
@@ -226,13 +285,29 @@
     NSDictionary* dico = [_playlistsDesc objectAtIndex:indexPath.row];
     cell.textLabel.text = [dico objectForKey:@"name"];
     
-    if ([_selectedPlaylists containsObject:[_playlists objectAtIndex:indexPath.row]] || _wizard)
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    else
-        cell.accessoryType = UITableViewCellAccessoryNone;
+    NSDictionary *selectedItem = [_playlistsDesc objectAtIndex:indexPath.row];
+    NSNumber *localPlaylistIndex = [selectedItem objectForKey:@"localPlaylistIndex"];
+    if (localPlaylistIndex != NULL) {
+        
+        if ([_selectedPlaylists containsObject:[_playlists objectAtIndex:[localPlaylistIndex integerValue]]] || _wizard)
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        else
+            cell.accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", [[dico objectForKey:@"count"] integerValue]];
+    NSNumber *matched = [dico objectForKey:@"matched"];
+    NSNumber *unmatched = [dico objectForKey:@"unmatched"];
     
+    if (matched != NULL && unmatched != NULL) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d (%d+%d) songs", 
+                                     [[dico objectForKey:@"count"] integerValue],
+                                     [matched integerValue],
+                                     [unmatched integerValue]];
+    } else {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", [[dico objectForKey:@"count"] integerValue]];
+    }
     return cell;
 }
 
@@ -243,7 +318,13 @@
         return;
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    MPMediaPlaylist* list = [_playlists objectAtIndex:indexPath.row];
+    NSDictionary *item = [_playlistsDesc objectAtIndex:indexPath.row];
+    NSNumber *localPlaylistIndex = [item objectForKey:@"localPlaylistIndex"];
+    if (localPlaylistIndex == NULL) {
+        return;
+    }
+    
+    MPMediaPlaylist* list = [_playlists objectAtIndex:[localPlaylistIndex integerValue]];
     
     if ([_selectedPlaylists containsObject:list] == YES)
     {

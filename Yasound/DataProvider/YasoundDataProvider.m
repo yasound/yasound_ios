@@ -903,6 +903,13 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[LeaderBoardEntry class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
+// Playlists
+- (void)playlistsForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+{
+  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/all_playlist/", radio.id];
+  Auth* auth = self.apiKeyAuth;
+  [_communicator getObjectsWithClass:[Playlist class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
 
 @end
 
@@ -924,3 +931,5 @@ taskStatus stringToStatus(NSString* str)
   
   return status;
 }
+
+

@@ -13,5 +13,8 @@
 @property (retain, nonatomic) NSString* name;
 @property (retain, nonatomic) NSString* source;
 @property (retain, nonatomic) NSNumber* enabled;
+@property (retain, nonatomic) NSNumber* song_count;
+@property (retain, nonatomic) NSNumber* matched_song_count;
+@property (retain, nonatomic) NSNumber* unmatched_song_count;
 
 @end
