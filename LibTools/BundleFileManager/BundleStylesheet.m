@@ -411,7 +411,7 @@ static NSNumber* _isRetina = nil;
 
 - (UIImage*)image
 {
-  return [self.images valueForKey:@"up"];
+  return [self.images valueForKey:@"normal"];
 }
 
 
@@ -500,6 +500,9 @@ static NSNumber* _isRetina = nil;
 {
   
     NSString* name = [sheet valueForKey:@"name"];
+    NSString* normal = [sheet valueForKey:@"normal"];
+    if (name == nil)
+        name = normal;
 
     UIImage* image;
 
@@ -509,6 +512,16 @@ static NSNumber* _isRetina = nil;
         NSString* type = [sheet valueForKey:@"type"];
         NSString* path = [sheet valueForKey:@"path"];
 
+        NSString* highlighted = [sheet valueForKey:@"highlighted"];
+        NSString* selected = [sheet valueForKey:@"selected"];
+        NSString* selectedhighlighted = [sheet valueForKey:@"selected|highlighted"];
+        if (selectedhighlighted == nil)
+            selectedhighlighted = [sheet valueForKey:@"highlighted|selected"];
+        NSString* disabled = [sheet valueForKey:@"disabled"];
+        NSString* selecteddisabled = [sheet valueForKey:@"selected|disabled"];
+        if (selecteddisabled == nil)
+            selecteddisabled = [sheet valueForKey:@"disabled|selected"];
+        
         if (path == nil)
         {
             NSString* tmppath = [name stringByAppendingPathExtension:type];
@@ -519,6 +532,48 @@ static NSNumber* _isRetina = nil;
                 assert(0);
                 return [BundleFileManager errorHandling:@"image" forPath:name error:anError];
             }
+            [_images setValue:image forKey:@"normal"];
+            
+            if (highlighted != nil)
+            {
+                NSString* tmppath = [highlighted stringByAppendingPathExtension:type];
+                image = [UIImage imageNamed:tmppath];
+                if (image != nil)
+                    [_images setValue:image forKey:@"highlighted"];
+            }
+                
+            if (selected != nil)
+            {
+                NSString* tmppath = [selected stringByAppendingPathExtension:type];
+                image = [UIImage imageNamed:tmppath];
+                if (image != nil)
+                [_images setValue:image forKey:@"selected"];
+            }
+
+            if (selectedhighlighted != nil)
+            {
+                NSString* tmppath = [selectedhighlighted stringByAppendingPathExtension:type];
+                image = [UIImage imageNamed:tmppath];
+                if (image != nil)
+                [_images setValue:image forKey:@"selected|highlighted"];
+            }
+
+            if (disabled != nil)
+            {
+                NSString* tmppath = [disabled stringByAppendingPathExtension:type];
+                image = [UIImage imageNamed:tmppath];
+                if (image != nil)
+                [_images setValue:image forKey:@"disabled"];
+            }
+
+            if (selecteddisabled != nil)
+            {
+                NSString* tmppath = [selecteddisabled stringByAppendingPathExtension:type];
+                image = [UIImage imageNamed:tmppath];
+                if (image != nil)
+                [_images setValue:image forKey:@"selected|disabled"];
+            }
+            
         }
         else
         {
@@ -531,10 +586,51 @@ static NSNumber* _isRetina = nil;
                 assert(0);
                 return [BundleFileManager errorHandling:@"image" forPath:name error:anError];
             }
+            [_images setValue:image forKey:@"normal"];
+
+            if (highlighted != nil)
+            {
+                NSString* tmppath = [bundle pathForResource:highlighted ofType:type inDirectory:path];
+                image = [UIImage imageWithContentsOfFile:tmppath];
+                if (image != nil)
+                    [_images setValue:image forKey:@"highlighted"];
+            }
+            
+            if (selected != nil)
+            {
+                NSString* tmppath = [bundle pathForResource:selected ofType:type inDirectory:path];
+                image = [UIImage imageWithContentsOfFile:tmppath];
+                if (image != nil)
+                    [_images setValue:image forKey:@"selected"];
+            }
+            
+            if (selectedhighlighted != nil)
+            {
+                NSString* tmppath = [bundle pathForResource:selectedhighlighted ofType:type inDirectory:path];
+                image = [UIImage imageWithContentsOfFile:tmppath];
+                if (image != nil)
+                    [_images setValue:image forKey:@"selected|highlighted"];
+            }
+            
+            if (disabled != nil)
+            {
+                NSString* tmppath = [bundle pathForResource:disabled ofType:type inDirectory:path];
+                image = [UIImage imageWithContentsOfFile:tmppath];
+                if (image != nil)
+                    [_images setValue:image forKey:@"disabled"];
+            }
+            
+            if (selecteddisabled != nil)
+            {
+                NSString* tmppath = [bundle pathForResource:selecteddisabled ofType:type inDirectory:path];
+                image = [UIImage imageWithContentsOfFile:tmppath];
+                if (image != nil)
+                    [_images setValue:image forKey:@"selected|disabled"];
+            }
+            
         }
 
     
-    [_images setValue:image forKey:@"up"];
   }
   
   // look if width and height are provided
@@ -614,35 +710,12 @@ static NSNumber* _isRetina = nil;
   else 
     height = src.size.height / [states count];
     
-    //LBDEBUG avoir iOS bug : 
-//    if ([BundleStylesheet isRetina])
-//    {
-//        width /= 2.f;
-//        height /= 2.f;
-//    }
-    
-    UIImage* newImage = nil;
-    
-    if ([BundleStylesheet isRetina])
-    {
-        CGSize newSize = CGSizeMake(width, height * 2.f);
-        UIGraphicsBeginImageContext (newSize);
-        [src drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-        newImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-    }
-    else
-    {
-        newImage = src;
-    }
-    
-  
   // create image from source, for every states
   int srcx = 0;
   int srcy = 0;
   for (int index = 0; index < [states count]; index++, srcy += height)
   {
-    CGImageRef imageRef = CGImageCreateWithImageInRect([newImage CGImage], CGRectMake(srcx, srcy, width, height));
+    CGImageRef imageRef = CGImageCreateWithImageInRect([src CGImage], CGRectMake(srcx, srcy, width, height));
     UIImage* image = [UIImage imageWithCGImage:imageRef];
     CGImageRelease(imageRef);    
     
@@ -676,16 +749,23 @@ static NSNumber* _isRetina = nil;
   NSArray* allKeys = [self.images allKeys];
   for (NSString* key in allKeys)
   {
-    if ([key isEqualToString:@"up"])
+    if ([key isEqualToString:@"normal"])
       [button setImage:[self.images valueForKey:key] forState:UIControlStateNormal];
-    else if ([key isEqualToString:@"down"])
+      
+    else if ([key isEqualToString:@"highlighted"])
       [button setImage:[self.images valueForKey:key] forState:UIControlStateHighlighted];
+      
     else if ([key isEqualToString:@"disabled"])
       [button setImage:[self.images valueForKey:key] forState:UIControlStateDisabled];
-    else if ([key isEqualToString:@"selectedUp"])
+      
+    else if ([key isEqualToString:@"selected"])
       [button setImage:[self.images valueForKey:key] forState:UIControlStateSelected];
-    else if ([key isEqualToString:@"selectedDown"])
+      
+    else if ([key isEqualToString:@"selected|highlighted"])
       [button setImage:[self.images valueForKey:key] forState:(UIControlStateSelected|UIControlStateHighlighted)];
+
+    else if ([key isEqualToString:@"selected|disabled"])
+        [button setImage:[self.images valueForKey:key] forState:(UIControlStateSelected|UIControlStateDisabled)];
   }
     
     NSNumber* alphaNb = [self.customProperties objectForKey:@"alpha"];
