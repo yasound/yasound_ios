@@ -138,4 +138,8 @@ taskStatus stringToStatus(NSString* str);
 // Playlist
 - (void)playlistsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
+
+- (void)uploadSong:(NSData*)songData target:(id)target action:(SEL)selector;
+
+
 @end

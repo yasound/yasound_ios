@@ -73,9 +73,14 @@
 		40F4C79114BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79214BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79314BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
+		B138AA6814E2BAFC0069E08A /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B138AA6714E2BAFC0069E08A /* SongUploader.m */; };
 		B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
+		B19245DA14E2DAF700B18EEF /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B19245D914E2DAF700B18EEF /* TSLibraryImport.m */; };
+		B19245DB14E2DAF700B18EEF /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B19245D914E2DAF700B18EEF /* TSLibraryImport.m */; };
+		B19245DC14E2DAF700B18EEF /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B19245D914E2DAF700B18EEF /* TSLibraryImport.m */; };
+		B19245DD14E2DAF700B18EEF /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B19245D914E2DAF700B18EEF /* TSLibraryImport.m */; };
 		B1D634C914E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */; };
 		B1D634CA14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */; };
 		B1D634CB14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */; };
@@ -1275,8 +1280,12 @@
 		40F4C78A14BDF40F00A163F9 /* SongUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUser.m; sourceTree = "<group>"; };
 		40F4C78F14BEEF6F00A163F9 /* NextSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextSong.h; sourceTree = "<group>"; };
 		40F4C79014BEEF6F00A163F9 /* NextSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextSong.m; sourceTree = "<group>"; };
+		B138AA6614E2BAFC0069E08A /* SongUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongUploader.h; sourceTree = "<group>"; };
+		B138AA6714E2BAFC0069E08A /* SongUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUploader.m; sourceTree = "<group>"; };
 		B172043D14C54446007F3FB0 /* BuyLinkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyLinkManager.h; sourceTree = "<group>"; };
 		B172043E14C54446007F3FB0 /* BuyLinkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyLinkManager.m; sourceTree = "<group>"; };
+		B19245D814E2DAF700B18EEF /* TSLibraryImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSLibraryImport.h; sourceTree = "<group>"; };
+		B19245D914E2DAF700B18EEF /* TSLibraryImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLibraryImport.m; sourceTree = "<group>"; };
 		B1D634C514E1BC4E00BE852E /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
 		B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		B1D634C714E1BC4E00BE852E /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
@@ -1759,11 +1768,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC9522A514B70FF2001E1ACE /* AVFoundation.framework in Frameworks */,
 				BC40CC8714D010EB00DF0950 /* QuartzCore.framework in Frameworks */,
 				BC40CC6B14CF64F800DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */,
 				BC40CBBF14CF63A300DF0950 /* libfacebook_ios_sdk.a in Frameworks */,
 				E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */,
-				BC9522A514B70FF2001E1ACE /* AVFoundation.framework in Frameworks */,
 				BCDC97DA14AB827200D54631 /* Accounts.framework in Frameworks */,
 				BCDC97DB14AB827200D54631 /* libxml2.dylib in Frameworks */,
 				BCDC97DC14AB827200D54631 /* Security.framework in Frameworks */,
@@ -1841,6 +1850,8 @@
 				BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */,
 				40AAEC4914921AE70031B39D /* YasoundDataProvider.h */,
 				40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */,
+				B138AA6614E2BAFC0069E08A /* SongUploader.h */,
+				B138AA6714E2BAFC0069E08A /* SongUploader.m */,
 			);
 			path = DataProvider;
 			sourceTree = "<group>";
@@ -1854,6 +1865,16 @@
 			name = BuyLink;
 			path = LibTools/BuyLink;
 			sourceTree = SOURCE_ROOT;
+		};
+		B1BBEE9914E2DA9500E7E0EA /* TSLibraryImport */ = {
+			isa = PBXGroup;
+			children = (
+				B19245D814E2DAF700B18EEF /* TSLibraryImport.h */,
+				B19245D914E2DAF700B18EEF /* TSLibraryImport.m */,
+			);
+			name = TSLibraryImport;
+			path = ThirdParties/TSLibraryImport;
+			sourceTree = "<group>";
 		};
 		B1D634C414E1BC4E00BE852E /* UIDevice-with-UniqueIdentifier-for-iOS-5 */ = {
 			isa = PBXGroup;
@@ -2440,6 +2461,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				B1BBEE9914E2DA9500E7E0EA /* TSLibraryImport */,
 				B1D634C414E1BC4E00BE852E /* UIDevice-with-UniqueIdentifier-for-iOS-5 */,
 				BCBE5C7114D167DE0077FC62 /* TestFlightSDK0.8.2 */,
 				BC40CC7C14D0093F00DF0950 /* DDMenuController */,
@@ -3726,6 +3748,7 @@
 				BCF3588614E07A87003594BF /* ScrollingLabel.m in Sources */,
 				B1D634CA14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
 				B1D634CE14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
+				B19245DB14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3859,6 +3882,7 @@
 				BCF3588814E07A87003594BF /* ScrollingLabel.m in Sources */,
 				B1D634CC14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
 				B1D634D014E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
+				B19245DD14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3991,6 +4015,8 @@
 				BCF3588514E07A87003594BF /* ScrollingLabel.m in Sources */,
 				B1D634C914E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
 				B1D634CD14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
+				B138AA6814E2BAFC0069E08A /* SongUploader.m in Sources */,
+				B19245DA14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4124,6 +4150,7 @@
 				BCF3588714E07A87003594BF /* ScrollingLabel.m in Sources */,
 				B1D634CB14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
 				B1D634CF14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
+				B19245DC14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

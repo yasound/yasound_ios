@@ -901,6 +901,14 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[Playlist class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
+
+- (void)uploadSong:(NSData*)song target:(id)target action:(SEL)selector
+{
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = @"api/v1/upload_song";
+  [_communicator postData:song withKey:@"song" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
 @end
 
 
