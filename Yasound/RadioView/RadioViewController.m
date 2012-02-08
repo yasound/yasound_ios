@@ -53,6 +53,7 @@ static Song* _gNowPlayingSong = nil;
 @synthesize statusMessages;
 @synthesize ownRadio;
 @synthesize favoriteButton;
+@synthesize playPauseButton;
 
 - (id)initWithRadio:(Radio*)radio
 {
@@ -207,6 +208,16 @@ static Song* _gNowPlayingSong = nil;
     
 
     
+    //play pause button
+    sheet = [[Theme theme] stylesheetForKey:@"PlayPauseButton" error:nil];
+    frame = sheet.frame;
+    self.playPauseButton = [sheet makeButton];
+    [self.playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.playPauseButton];
+    
+    self.playPauseButton.selected = YES;
+
+    
     
     
     //.......................................................................................................................................
@@ -356,6 +367,8 @@ static Song* _gNowPlayingSong = nil;
         _pageControl.userInteractionEnabled = NO;
         [self.view addSubview:_pageControl];
     }
+    
+    
     
     
     
@@ -1040,13 +1053,14 @@ static Song* _gNowPlayingSong = nil;
     }
     
     //LBDEBUG TODO : get image, likes dislikes from Song
-    _playingNowView = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong target:self action:@selector(onNowPlayingTouched)];
-    [_playingNowView.playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
+    _playingNowView = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong];
+//    [_playingNowView.playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _playingNowView.frame = sheet.frame;
     
     [self.view addSubview:_playingNowView];
+    [self.view bringSubviewToFront:self.playPauseButton];
 }
 
 
@@ -1450,7 +1464,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction) onPlayPause:(id)sender
 {
-    if (!_playingNowView.playPauseButton.selected)
+    if (!self.playPauseButton.selected)
         [self pauseAudio];
     else
         [self playAudio];
@@ -1529,13 +1543,13 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)playAudio
 {
-    _playingNowView.playPauseButton.selected = NO;
+    self.playPauseButton.selected = NO;
     [[AudioStreamManager main] startRadio:self.radio];
 }
 
 - (void)pauseAudio
 {
-    _playingNowView.playPauseButton.selected = YES;
+    self.playPauseButton.selected = YES;
     
     [[AudioStreamManager main] stopRadio];
 }

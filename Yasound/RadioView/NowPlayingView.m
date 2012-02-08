@@ -21,19 +21,16 @@
 
 @implementation NowPlayingView
 
-@synthesize playPauseButton;
+//@synthesize playPauseButton;
 @synthesize song = _song;
 
 
 //LBDEBUG TODO : use image, likes disklikes from Song
 
-- (id)initWithSong:(Song*)song target:(id)target action:(SEL)action
+- (id)initWithSong:(Song*)song
 {
     if (self = [super init])
     {
-        _target = target;
-        _action = action;
-        
         _song = song;
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -117,28 +114,28 @@
         
         
         
-        //play pause button
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingPlayPauseFrame" error:nil];
-        frame = sheet.frame;
-        self.playPauseButton = [[UIButton alloc] initWithFrame:sheet.frame];
-        
-        NSString* tmppath = [[Theme theme] pathForResource:@"btnPauseUp" ofType:@"png" inDirectory:@"images/Header/Buttons"];
-        UIImage* imageFile = [UIImage imageWithContentsOfFile:tmppath];
-        [self.playPauseButton setImage:imageFile forState:UIControlStateNormal];
-
-        tmppath = [[Theme theme] pathForResource:@"btnPauseDown" ofType:@"png" inDirectory:@"images/Header/Buttons"];
-        imageFile = [UIImage imageWithContentsOfFile:tmppath];
-        [self.playPauseButton setImage:imageFile forState:UIControlStateNormal|UIControlStateHighlighted];
-        
-        tmppath = [[Theme theme] pathForResource:@"btnPlayUp" ofType:@"png" inDirectory:@"images/Header/Buttons"];
-        imageFile = [UIImage imageWithContentsOfFile:tmppath];
-        [self.playPauseButton setImage:imageFile forState:UIControlStateSelected];
-
-        tmppath = [[Theme theme] pathForResource:@"btnPlayDown" ofType:@"png" inDirectory:@"images/Header/Buttons"];
-        imageFile = [UIImage imageWithContentsOfFile:tmppath];
-        [self.playPauseButton setImage:imageFile forState:UIControlStateSelected|UIControlStateHighlighted];
-        
-        [self addSubview:self.playPauseButton];
+//        //play pause button
+//        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingPlayPauseFrame" error:nil];
+//        frame = sheet.frame;
+//        self.playPauseButton = [[UIButton alloc] initWithFrame:sheet.frame];
+//        
+//        NSString* tmppath = [[Theme theme] pathForResource:@"btnPauseUp" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+//        UIImage* imageFile = [UIImage imageWithContentsOfFile:tmppath];
+//        [self.playPauseButton setImage:imageFile forState:UIControlStateNormal];
+//
+//        tmppath = [[Theme theme] pathForResource:@"btnPauseDown" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+//        imageFile = [UIImage imageWithContentsOfFile:tmppath];
+//        [self.playPauseButton setImage:imageFile forState:UIControlStateNormal|UIControlStateHighlighted];
+//        
+//        tmppath = [[Theme theme] pathForResource:@"btnPlayUp" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+//        imageFile = [UIImage imageWithContentsOfFile:tmppath];
+//        [self.playPauseButton setImage:imageFile forState:UIControlStateSelected];
+//
+//        tmppath = [[Theme theme] pathForResource:@"btnPlayDown" ofType:@"png" inDirectory:@"images/Header/Buttons"];
+//        imageFile = [UIImage imageWithContentsOfFile:tmppath];
+//        [self.playPauseButton setImage:imageFile forState:UIControlStateSelected|UIControlStateHighlighted];
+//        
+//        [self addSubview:self.playPauseButton];
     }
     
     return self;
@@ -160,34 +157,6 @@
 //    _dislikesLabel.text = [NSString stringWithFormat:@"%d", [status.dislikes intValue]];
 }
 
-
-#pragma mark - touches actions
-
-
-
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
-//{
-//    UITouch *aTouch = [touches anyObject];
-//    
-//    if (aTouch.tapCount == 2) 
-//    
-//}
-//
-
-
-
-//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event 
-//{
-//    
-//}
-
-
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
-{
-    UITouch *theTouch = [touches anyObject];
-    [_target performSelector:_action];
-}
 
 
 

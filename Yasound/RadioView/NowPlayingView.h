@@ -11,17 +11,15 @@
 
 @interface NowPlayingView : UIView
 {
-    id _target;
-    SEL _action;
     Song* _song;
     UILabel* _likesLabel;
   NSTimer* _timer;
 }
 
-@property (nonatomic, retain) UIButton* playPauseButton;
+//@property (nonatomic, retain) UIButton* playPauseButton;
 @property (nonatomic, retain) Song* song;
 
-- (id)initWithSong:(Song*)song target:(id)target action:(SEL)action;
+- (id)initWithSong:(Song*)song;
 
 - (void)setSongStatus:(SongStatus*)status;
 

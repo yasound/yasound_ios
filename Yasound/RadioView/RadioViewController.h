@@ -78,6 +78,8 @@
 @property (nonatomic) BOOL ownRadio;
 @property (atomic, retain) NSMutableArray* statusMessages;
 @property (nonatomic, retain) UIButton* favoriteButton;
+@property (nonatomic, retain) UIButton* playPauseButton;
+
 
 - (id)initWithRadio:(Radio*)radio;
 - (void)initRadioView;

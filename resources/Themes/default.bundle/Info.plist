@@ -196,6 +196,25 @@
 			<key>height</key>
 			<integer>36</integer>
 		</dict>
+		<key>PlayPauseButton</key>
+		<dict>
+			<key>x</key>
+			<integer>278</integer>
+			<key>y</key>
+			<integer>80</integer>
+			<key>normal</key>
+			<string>btnPlayUp</string>
+			<key>highlighted</key>
+			<string>btnPlayDown</string>
+			<key>selected</key>
+			<string>btnPauseUp</string>
+			<key>selected|highlighted</key>
+			<string>btnPauseDown</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Header/Buttons</string>
+		</dict>
 		<key>NowPlayingBar</key>
 		<dict>
 			<key>x</key>
