@@ -13,6 +13,8 @@
 @synthesize name;
 @synthesize source;
 @synthesize enabled;
-
+@synthesize song_count;
+@synthesize matched_song_count;
+@synthesize unmatched_song_count;
 
 @end

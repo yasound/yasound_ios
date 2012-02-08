@@ -37,8 +37,7 @@
 }
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;
-
-
+- (void) refreshView;
 - (IBAction)onBack:(id)sender;
 - (IBAction)onNext:(id)sender;
 
