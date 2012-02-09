@@ -18,6 +18,8 @@
 
 #import "SongUploader.h"
 
+
+
 @implementation PlaylistsViewController
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard
@@ -25,6 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
+        _displayMode = eDisplayModeNormal;
         _wizard = wizard;
         
         _changed = NO;
@@ -100,8 +103,11 @@
 
         NSMutableDictionary *dico = [self findPlayListByName:name withSource:source];
         if (dico) {
+            // existing playlist on device and on remote server
             [dico setObject:count forKey:@"count"];
             [dico setObject:localPlaylistIndex forKey:@"localPlaylistIndex"];
+            
+            [_selectedPlaylists addObject:playlist];
         } else {
             // new playlist on local device
             NSNumber* neverSynchronized = [NSNumber numberWithBool:YES];
@@ -191,8 +197,22 @@
             _nextBtn.enabled = YES;
         else
             _nextBtn.enabled = NO;
+    } else {
+        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
+        
+        UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onEdit:)];
+        
+        UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        NSMutableArray* items = [[NSMutableArray alloc] init];
+        
+        [items addObject:backBtn];
+        [items addObject:space];
+        [items addObject:edit];
+        
+        [_toolbar setItems:items animated:NO];
+        
     }
-    
     
     _cellHowtoLabel.text = NSLocalizedString(@"PlaylistsView_howto", nil);
     [self refreshView];
@@ -311,6 +331,11 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         else
             cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        if (!_wizard && _displayMode == eDisplayModeEdit) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        
     } else {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -333,6 +358,7 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (synchronized)",
                                      cell.detailTextLabel.text];
     }
+    
     return cell;
 }
 
@@ -417,6 +443,16 @@
 - (IBAction)onNext:(id)sender
 {
     [self save];
+}
+
+- (IBAction)onEdit:(id)sender
+{
+    if (_displayMode == eDisplayModeNormal) {
+        _displayMode = eDisplayModeEdit;
+    } else {
+        _displayMode = eDisplayModeNormal;
+    }
+    [_tableView reloadData];
 }
 
 
