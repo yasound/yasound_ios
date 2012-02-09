@@ -137,6 +137,14 @@
 		BC26E70114E4169400D30554 /* CellRowSingle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6FB14E4169400D30554 /* CellRowSingle@2x.png */; };
 		BC26E70214E4169400D30554 /* CellRowSingle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6FB14E4169400D30554 /* CellRowSingle@2x.png */; };
 		BC26E70314E4169400D30554 /* CellRowSingle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6FB14E4169400D30554 /* CellRowSingle@2x.png */; };
+		BC26E70614E41BC400D30554 /* CellRowChart.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E70414E41BC400D30554 /* CellRowChart.png */; };
+		BC26E70714E41BC400D30554 /* CellRowChart.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E70414E41BC400D30554 /* CellRowChart.png */; };
+		BC26E70814E41BC400D30554 /* CellRowChart.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E70414E41BC400D30554 /* CellRowChart.png */; };
+		BC26E70914E41BC400D30554 /* CellRowChart.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E70414E41BC400D30554 /* CellRowChart.png */; };
+		BC26E70A14E41BC400D30554 /* CellRowChart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E70514E41BC400D30554 /* CellRowChart@2x.png */; };
+		BC26E70B14E41BC400D30554 /* CellRowChart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E70514E41BC400D30554 /* CellRowChart@2x.png */; };
+		BC26E70C14E41BC400D30554 /* CellRowChart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E70514E41BC400D30554 /* CellRowChart@2x.png */; };
+		BC26E70D14E41BC400D30554 /* CellRowChart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E70514E41BC400D30554 /* CellRowChart@2x.png */; };
 		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
@@ -1328,6 +1336,8 @@
 		BC26E6CA14E40E3100D30554 /* CreateMyRadioBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadioBackground@2x.png"; sourceTree = "<group>"; };
 		BC26E6FA14E4169400D30554 /* CellRowSingle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRowSingle.png; sourceTree = "<group>"; };
 		BC26E6FB14E4169400D30554 /* CellRowSingle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRowSingle@2x.png"; sourceTree = "<group>"; };
+		BC26E70414E41BC400D30554 /* CellRowChart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRowChart.png; sourceTree = "<group>"; };
+		BC26E70514E41BC400D30554 /* CellRowChart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRowChart@2x.png"; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
 		BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
 		BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingView.h; sourceTree = "<group>"; };
@@ -1958,6 +1968,8 @@
 		BC26E6F914E4169400D30554 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				BC26E70414E41BC400D30554 /* CellRowChart.png */,
+				BC26E70514E41BC400D30554 /* CellRowChart@2x.png */,
 				BC26E6FA14E4169400D30554 /* CellRowSingle.png */,
 				BC26E6FB14E4169400D30554 /* CellRowSingle@2x.png */,
 			);
@@ -3208,6 +3220,8 @@
 				BC26E6D014E40E3100D30554 /* CreateMyRadioBackground@2x.png in Resources */,
 				BC26E6FD14E4169400D30554 /* CellRowSingle.png in Resources */,
 				BC26E70114E4169400D30554 /* CellRowSingle@2x.png in Resources */,
+				BC26E70714E41BC400D30554 /* CellRowChart.png in Resources */,
+				BC26E70B14E41BC400D30554 /* CellRowChart@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3359,6 +3373,8 @@
 				BC26E6D214E40E3100D30554 /* CreateMyRadioBackground@2x.png in Resources */,
 				BC26E6FF14E4169400D30554 /* CellRowSingle.png in Resources */,
 				BC26E70314E4169400D30554 /* CellRowSingle@2x.png in Resources */,
+				BC26E70914E41BC400D30554 /* CellRowChart.png in Resources */,
+				BC26E70D14E41BC400D30554 /* CellRowChart@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3510,6 +3526,8 @@
 				BC26E6CF14E40E3100D30554 /* CreateMyRadioBackground@2x.png in Resources */,
 				BC26E6FC14E4169400D30554 /* CellRowSingle.png in Resources */,
 				BC26E70014E4169400D30554 /* CellRowSingle@2x.png in Resources */,
+				BC26E70614E41BC400D30554 /* CellRowChart.png in Resources */,
+				BC26E70A14E41BC400D30554 /* CellRowChart@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3661,6 +3679,8 @@
 				BC26E6D114E40E3100D30554 /* CreateMyRadioBackground@2x.png in Resources */,
 				BC26E6FE14E4169400D30554 /* CellRowSingle.png in Resources */,
 				BC26E70214E4169400D30554 /* CellRowSingle@2x.png in Resources */,
+				BC26E70814E41BC400D30554 /* CellRowChart.png in Resources */,
+				BC26E70C14E41BC400D30554 /* CellRowChart@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
