@@ -311,7 +311,7 @@ static Song* _gNowPlayingSong = nil;
     // listeners
     sheet = [[Theme theme] stylesheetForKey:@"StatusListeners" error:nil];
     _listenersLabel = [sheet makeLabel];
-    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
+    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
     [_statusBar addSubview:_listenersLabel];
     
     
@@ -517,7 +517,7 @@ static Song* _gNowPlayingSong = nil;
   [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
   
-  [[YasoundDataProvider main] connectedUsersForRadio:self.radio target:self action:@selector(receivedConnectedUsers:withInfo:)];
+  [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
 }
 
 - (void)updatePreviousWall
@@ -926,7 +926,7 @@ static Song* _gNowPlayingSong = nil;
     
     self.radio = r;
     _favoritesLabel.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
-    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
+    _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
 }
 
 
@@ -945,7 +945,7 @@ static Song* _gNowPlayingSong = nil;
   [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", u.name]];
 }
 
-- (void)receivedConnectedUsers:(NSArray*)users withInfo:(NSDictionary*)info
+- (void)receivedCurrentUsers:(NSArray*)users withInfo:(NSDictionary*)info
 {
   if (!users || users.count == 0)
     return;

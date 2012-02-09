@@ -160,14 +160,14 @@
 {
   NSLog(@"searchBarTextDidEndEditing %@", searchBar.text);
     
-    [[YasoundDataProvider main] searchRadios:searchBar.text withGenre:nil withTarget:self action:@selector(receiveRadios:withInfo:)];
+    [[YasoundDataProvider main] searchRadios:searchBar.text withTarget:self action:@selector(receiveRadios:withInfo:)];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSLog(@"searchBarSearchButtonClicked %@", searchBar.text);
     
-    [[YasoundDataProvider main] searchRadios:searchBar.text withGenre:nil withTarget:self action:@selector(receiveRadios:withInfo:)];
+    [[YasoundDataProvider main] searchRadios:searchBar.text withTarget:self action:@selector(receiveRadios:withInfo:)];
 }
 
 

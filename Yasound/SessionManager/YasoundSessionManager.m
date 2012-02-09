@@ -502,12 +502,14 @@ static YasoundSessionManager* _main = nil;
     NSDictionary* dico = [data objectAtIndex:0];
     
     NSString* username = [dico valueForKey:DATA_FIELD_USERNAME];
+    NSString* name = [dico valueForKey:DATA_FIELD_NAME];
     NSString* uid = [dico valueForKey:DATA_FIELD_ID];
     NSString* token = [dico valueForKey:DATA_FIELD_TOKEN];
     NSString* email = [dico valueForKey:DATA_FIELD_EMAIL];
     
     NSLog(@"ready to request social login to the server with : ");
     NSLog(@"username '%@'", username);
+    NSLog(@"name '%@'", name);
     NSLog(@"uid '%@'", uid);
     NSLog(@"token '%@'", token);
     NSLog(@"email '%@'", email);
@@ -520,8 +522,10 @@ static YasoundSessionManager* _main = nil;
     if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
         NSLog(@"facebook social login request");
-        
-        [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token email:email target:self action:@selector(loginSocialValidated:info:)];
+      NSString* n = username;
+      if (!n)
+        n = name;
+        [[YasoundDataProvider main] loginFacebook:n type:@"facebook" uid:uid token:token email:email target:self action:@selector(loginSocialValidated:info:)];
     }
     else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
     {

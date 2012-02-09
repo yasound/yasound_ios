@@ -368,7 +368,6 @@ static YasoundDataProvider* _main = nil;
 {
   Auth* auth = self.apiKeyAuth;
   NSMutableArray* params = [NSMutableArray array];
-  [params addObject:@"ready=true"];
   if (genre)
     [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
   [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
@@ -378,7 +377,6 @@ static YasoundDataProvider* _main = nil;
 {
   Auth* auth = self.apiKeyAuth;
   NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-overall_listening_time"];
-  [params addObject:@"ready=true"];
   if (genre)
     [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
   
@@ -389,7 +387,6 @@ static YasoundDataProvider* _main = nil;
 {
   Auth* auth = self.apiKeyAuth;
   NSMutableArray* params = [NSMutableArray array];
-  [params addObject:@"ready=true"];
   if (genre)
     [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
   
@@ -400,7 +397,6 @@ static YasoundDataProvider* _main = nil;
 {
   Auth* auth = self.apiKeyAuth;
   NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-created"];
-  [params addObject:@"ready=true"];
   if (genre)
     [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
   
@@ -411,7 +407,6 @@ static YasoundDataProvider* _main = nil;
 {
   Auth* auth = self.apiKeyAuth;
   NSMutableArray* params = [NSMutableArray array];
-  [params addObject:@"ready=true"];
   if (genre)
     [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
   
@@ -422,7 +417,6 @@ static YasoundDataProvider* _main = nil;
 {
   Auth* auth = self.apiKeyAuth;
   NSMutableArray* params = [NSMutableArray array];
-  [params addObject:@"ready=true"];
   if (genre)
     [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
   
@@ -431,18 +425,13 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)searchRadios:(NSString*)search withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
+- (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector
 {
   Auth* auth = self.apiKeyAuth;
   NSMutableArray* params = [NSMutableArray array];
-  [params addObject:@"ready=true"];
-  if (search)
-    [params addObject:[NSString stringWithFormat:@"name__contains=%@", search]];
-  if (genre)
-    [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-  
-  
-  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
+
+  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
@@ -557,26 +546,16 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-- (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
   if (radio == nil || !radio.id)
     return;
   Auth* auth = self.apiKeyAuth;
   NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/connected_user", radioID];
+  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/current_user", radioID];
   NSArray* params = [NSArray arrayWithObject:@"limit=0"];
   [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
 
-- (void)listenersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
-{
-  if (radio == nil || !radio.id)
-    return;
-  Auth* auth = self.apiKeyAuth;
-  NSNumber* radioID = radio.id;
-  NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/listener", radioID];
-  NSArray* params = [NSArray arrayWithObject:@"limit=0"];
-  [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector
@@ -909,6 +888,14 @@ static YasoundDataProvider* _main = nil;
   NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/all_playlist/", radio.id];
   Auth* auth = self.apiKeyAuth;
   [_communicator getObjectsWithClass:[Playlist class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+
+- (void)uploadSong:(NSData*)song target:(id)target action:(SEL)selector
+{
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = @"api/v1/upload_song";
+  [_communicator postData:song withKey:@"song" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 @end

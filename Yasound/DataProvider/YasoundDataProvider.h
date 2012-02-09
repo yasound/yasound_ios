@@ -77,7 +77,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 
-- (void)searchRadios:(NSString*)search withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
+- (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector;
 
 - (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setMood:(UserMood)mood forRadio:(Radio*)radio;
@@ -96,8 +96,7 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)connectedUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)listenersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
@@ -138,5 +137,9 @@ taskStatus stringToStatus(NSString* str);
 
 // Playlist
 - (void)playlistsForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
+
+- (void)uploadSong:(NSData*)songData target:(id)target action:(SEL)selector;
+
 
 @end

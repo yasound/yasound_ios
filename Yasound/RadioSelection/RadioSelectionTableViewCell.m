@@ -85,7 +85,7 @@
 
     // listeners
     self.radioListeners = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-    self.radioListeners.text = [NSString stringWithFormat:@"%d", [self.radio.listeners integerValue]];
+    self.radioListeners.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
     [self addSubview:self.radioListeners];
     
     // configure selected view

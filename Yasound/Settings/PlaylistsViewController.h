@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
 
+typedef enum {
+    eDisplayModeNormal = 0,
+    eDisplayModeEdit = 1,
+} DisplayMode;
+
 
 @interface PlaylistsViewController : TestflightViewController
 {
@@ -33,12 +38,17 @@
     NSMutableArray* _playlistsDesc;        // NSArray of NSDictionary {name, count}
     NSMutableArray* _selectedPlaylists;    // NSMutableArray of MPMediaPlaylist*
     
+    NSMutableArray* _remotePlaylistsDesc;
+    NSMutableArray* _localPlaylistsDesc;
+    
     NSTimer* taskTimer;
+    DisplayMode _displayMode;
 }
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;
 - (void) refreshView;
 - (IBAction)onBack:(id)sender;
 - (IBAction)onNext:(id)sender;
+- (IBAction)onEdit:(id)sender;
 
 @end

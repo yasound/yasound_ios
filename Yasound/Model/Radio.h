@@ -20,10 +20,10 @@
 @property (retain, nonatomic) NSArray* playlists;
 @property (retain, nonatomic) NSNumber* likes;
 @property (retain, nonatomic) NSNumber* favorites;
-@property (retain, nonatomic) NSNumber* listeners;
 @property (retain, nonatomic) NSString* picture;
 @property (retain, nonatomic) NSString* tags;
 @property (retain, nonatomic) NSNumber* valid;
+@property (retain, nonatomic) NSNumber* nb_current_users;
 
 - (NSArray*)tagsArray;
 - (void)setTagsWithArray:(NSArray*)tagArray;
