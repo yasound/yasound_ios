@@ -81,6 +81,14 @@
 		B19245DB14E2DAF700B18EEF /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B19245D914E2DAF700B18EEF /* TSLibraryImport.m */; };
 		B19245DC14E2DAF700B18EEF /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B19245D914E2DAF700B18EEF /* TSLibraryImport.m */; };
 		B19245DD14E2DAF700B18EEF /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B19245D914E2DAF700B18EEF /* TSLibraryImport.m */; };
+		B19BF5EE14E420DA00BF8FCF /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19BF5EC14E420DA00BF8FCF /* SongsViewController.m */; };
+		B19BF5EF14E420DA00BF8FCF /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19BF5EC14E420DA00BF8FCF /* SongsViewController.m */; };
+		B19BF5F014E420DA00BF8FCF /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19BF5EC14E420DA00BF8FCF /* SongsViewController.m */; };
+		B19BF5F114E420DA00BF8FCF /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19BF5EC14E420DA00BF8FCF /* SongsViewController.m */; };
+		B19BF5F214E420DA00BF8FCF /* SongsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B19BF5ED14E420DA00BF8FCF /* SongsViewController.xib */; };
+		B19BF5F314E420DA00BF8FCF /* SongsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B19BF5ED14E420DA00BF8FCF /* SongsViewController.xib */; };
+		B19BF5F414E420DA00BF8FCF /* SongsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B19BF5ED14E420DA00BF8FCF /* SongsViewController.xib */; };
+		B19BF5F514E420DA00BF8FCF /* SongsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B19BF5ED14E420DA00BF8FCF /* SongsViewController.xib */; };
 		B1D634C914E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */; };
 		B1D634CA14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */; };
 		B1D634CB14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */; };
@@ -1302,6 +1310,9 @@
 		B172043E14C54446007F3FB0 /* BuyLinkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyLinkManager.m; sourceTree = "<group>"; };
 		B19245D814E2DAF700B18EEF /* TSLibraryImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSLibraryImport.h; sourceTree = "<group>"; };
 		B19245D914E2DAF700B18EEF /* TSLibraryImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLibraryImport.m; sourceTree = "<group>"; };
+		B19BF5EB14E420DA00BF8FCF /* SongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongsViewController.h; path = Settings/SongsViewController.h; sourceTree = "<group>"; };
+		B19BF5EC14E420DA00BF8FCF /* SongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongsViewController.m; path = Settings/SongsViewController.m; sourceTree = "<group>"; };
+		B19BF5ED14E420DA00BF8FCF /* SongsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongsViewController.xib; path = Settings/SongsViewController.xib; sourceTree = "<group>"; };
 		B1D634C514E1BC4E00BE852E /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
 		B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		B1D634C714E1BC4E00BE852E /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
@@ -2357,6 +2368,9 @@
 		BCBAB48D14A22FEC00CF922A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				B19BF5EB14E420DA00BF8FCF /* SongsViewController.h */,
+				B19BF5EC14E420DA00BF8FCF /* SongsViewController.m */,
+				B19BF5ED14E420DA00BF8FCF /* SongsViewController.xib */,
 				BCBAB49714A2322900CF922A /* SettingsViewController.h */,
 				BCBAB49814A2322900CF922A /* SettingsViewController.m */,
 				BCBAB49914A2322900CF922A /* SettingsViewController.xib */,
@@ -3208,6 +3222,7 @@
 				BC26E6D014E40E3100D30554 /* CreateMyRadioBackground@2x.png in Resources */,
 				BC26E6FD14E4169400D30554 /* CellRowSingle.png in Resources */,
 				BC26E70114E4169400D30554 /* CellRowSingle@2x.png in Resources */,
+				B19BF5F314E420DA00BF8FCF /* SongsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3359,6 +3374,7 @@
 				BC26E6D214E40E3100D30554 /* CreateMyRadioBackground@2x.png in Resources */,
 				BC26E6FF14E4169400D30554 /* CellRowSingle.png in Resources */,
 				BC26E70314E4169400D30554 /* CellRowSingle@2x.png in Resources */,
+				B19BF5F514E420DA00BF8FCF /* SongsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3510,6 +3526,7 @@
 				BC26E6CF14E40E3100D30554 /* CreateMyRadioBackground@2x.png in Resources */,
 				BC26E6FC14E4169400D30554 /* CellRowSingle.png in Resources */,
 				BC26E70014E4169400D30554 /* CellRowSingle@2x.png in Resources */,
+				B19BF5F214E420DA00BF8FCF /* SongsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3661,6 +3678,7 @@
 				BC26E6D114E40E3100D30554 /* CreateMyRadioBackground@2x.png in Resources */,
 				BC26E6FE14E4169400D30554 /* CellRowSingle.png in Resources */,
 				BC26E70214E4169400D30554 /* CellRowSingle@2x.png in Resources */,
+				B19BF5F414E420DA00BF8FCF /* SongsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3797,6 +3815,7 @@
 				B1D634CA14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
 				B1D634CE14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 				B19245DB14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
+				B19BF5EF14E420DA00BF8FCF /* SongsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3931,6 +3950,7 @@
 				B1D634CC14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
 				B1D634D014E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 				B19245DD14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
+				B19BF5F114E420DA00BF8FCF /* SongsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4065,6 +4085,7 @@
 				B1D634CD14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 				B138AA6814E2BAFC0069E08A /* SongUploader.m in Sources */,
 				B19245DA14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
+				B19BF5EE14E420DA00BF8FCF /* SongsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4199,6 +4220,7 @@
 				B1D634CB14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
 				B1D634CF14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 				B19245DC14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
+				B19BF5F014E420DA00BF8FCF /* SongsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
