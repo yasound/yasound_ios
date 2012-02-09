@@ -48,6 +48,13 @@
         
         _selectedPlaylists = [[NSMutableArray alloc] init];
         [_selectedPlaylists retain];
+        
+        _localPlaylistsDesc = [[NSMutableArray alloc] init];
+        [_localPlaylistsDesc retain];
+        
+        _remotePlaylistsDesc = [[NSMutableArray alloc] init];
+        [_remotePlaylistsDesc retain];
+        
     }
     
     return self;
@@ -73,6 +80,7 @@
         NSNumber* count = playlist.song_count;
         NSNumber* matched = playlist.matched_song_count;
         NSNumber* unmatched = playlist.unmatched_song_count;
+        NSNumber* neverSynchronized = [NSNumber numberWithBool:FALSE];
         
         NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
         [dico setObject:name forKey:@"name"];
@@ -80,6 +88,7 @@
         [dico setObject:count forKey:@"count"];
         [dico setObject:matched forKey:@"matched"];
         [dico setObject:unmatched forKey:@"unmatched"];
+        [dico setObject:neverSynchronized forKey:@"neverSynchronized"];
         [_playlistsDesc addObject:dico];
     }
     
@@ -88,17 +97,30 @@
         NSString* name = [playlist valueForProperty: MPMediaPlaylistPropertyName];
         NSNumber* count = [NSNumber numberWithInteger:[playlist count]];
         NSNumber* localPlaylistIndex = [NSNumber numberWithInt:[localPlaylists indexOfObject:playlist]];
-        
+
         NSMutableDictionary *dico = [self findPlayListByName:name withSource:source];
         if (dico) {
             [dico setObject:count forKey:@"count"];
             [dico setObject:localPlaylistIndex forKey:@"localPlaylistIndex"];
         } else {
+            // new playlist on local device
+            NSNumber* neverSynchronized = [NSNumber numberWithBool:YES];
             NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
             [dico setObject:name forKey:@"name"];
             [dico setObject:count forKey:@"count"];
             [dico setObject:localPlaylistIndex forKey:@"localPlaylistIndex"];
+            [dico setObject:count forKey:@"count"];
+            [dico setObject:neverSynchronized forKey:@"neverSynchronized"];
             [_playlistsDesc addObject:dico];
+        }
+    }
+    
+    for (NSDictionary *dico in _playlistsDesc) {
+        NSNumber* localPlaylistIndex = [dico objectForKey:@"localPlaylistIndex"];
+        if (localPlaylistIndex) {
+            [_localPlaylistsDesc addObject:dico];
+        } else {
+            [_remotePlaylistsDesc addObject:dico];
         }
     }
 }
@@ -121,6 +143,8 @@
 
 - (void)dealloc
 {
+    [_localPlaylistsDesc release];
+    [_remotePlaylistsDesc release];
     [_playlists release];
     [_playlistsDesc release];
     [_selectedPlaylists release];
@@ -210,18 +234,20 @@
 #pragma mark - TableView Source and Delegate
 
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
-//{
-//    if (tableView == _settingsTableView)
-//        return [self titleInSettingsTableViewForHeaderInSection:section];
-//    
-//    return nil;
-//}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
+{
+    if (section == 1) {
+        return NSLocalizedString(@"PlaylistsView_table_header_local_playlists", nil);
+    } else if (section == 2) {
+        return NSLocalizedString(@"PlaylistsView_table_header_other_playlists", nil);
+    }
+    return nil;
+}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 
@@ -230,7 +256,11 @@
 {
     if (section == 1)
     {
-        NSInteger nbRows = [_playlistsDesc count];
+        NSInteger nbRows = [_localPlaylistsDesc count];
+        return nbRows;
+    }
+    else if (section == 2) {
+        NSInteger nbRows = [_remotePlaylistsDesc count];
         return nbRows;
     }
     
@@ -250,6 +280,12 @@
     if (indexPath.section == 0)
         return _cellHowto;
     
+    NSMutableArray *source = NULL;
+    if (indexPath.section == 1) {
+        source = _localPlaylistsDesc;
+    } else if (indexPath.section == 2) {
+        source = _remotePlaylistsDesc;
+    }
     
     static NSString* CellIdentifier = @"Cell";
     
@@ -257,15 +293,17 @@
     
     if (cell == nil) 
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
     NSLog(@"ROW  section %d   row %d", indexPath.section, indexPath.row);
     
-    NSDictionary* dico = [_playlistsDesc objectAtIndex:indexPath.row];
+    NSDictionary* dico = [source objectAtIndex:indexPath.row];
+  
+    BOOL neverSynchronized = [(NSNumber *)[dico objectForKey:@"neverSynchronized"] boolValue];
     cell.textLabel.text = [dico objectForKey:@"name"];
     
-    NSDictionary *selectedItem = [_playlistsDesc objectAtIndex:indexPath.row];
+    NSDictionary *selectedItem = [source objectAtIndex:indexPath.row];
     NSNumber *localPlaylistIndex = [selectedItem objectForKey:@"localPlaylistIndex"];
     if (localPlaylistIndex != NULL) {
         
@@ -288,6 +326,13 @@
     } else {
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", [[dico objectForKey:@"count"] integerValue]];
     }
+    if (neverSynchronized) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (never synchronized)",
+                                     cell.detailTextLabel.text];
+    } else {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (synchronized)",
+                                     cell.detailTextLabel.text];
+    }
     return cell;
 }
 
@@ -296,9 +341,16 @@
 {
     if (indexPath.section == 0)
         return;
+
+    NSMutableArray *source = NULL;
+    if (indexPath.section == 1) {
+        source = _localPlaylistsDesc;
+    } else if (indexPath.section == 2) {
+        source = _remotePlaylistsDesc;
+    }
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSDictionary *item = [_playlistsDesc objectAtIndex:indexPath.row];
+    NSDictionary *item = [source objectAtIndex:indexPath.row];
     NSNumber *localPlaylistIndex = [item objectForKey:@"localPlaylistIndex"];
     if (localPlaylistIndex == NULL) {
         return;

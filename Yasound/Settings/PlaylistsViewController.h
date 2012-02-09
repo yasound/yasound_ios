@@ -33,6 +33,9 @@
     NSMutableArray* _playlistsDesc;        // NSArray of NSDictionary {name, count}
     NSMutableArray* _selectedPlaylists;    // NSMutableArray of MPMediaPlaylist*
     
+    NSMutableArray* _remotePlaylistsDesc;
+    NSMutableArray* _localPlaylistsDesc;
+    
     NSTimer* taskTimer;
 }
 
