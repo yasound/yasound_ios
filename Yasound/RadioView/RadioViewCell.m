@@ -10,6 +10,7 @@
 #import "Theme.h"
 #import "WallEvent.h"
 #import <QuartzCore/QuartzCore.h>
+#import "YasoundDataProvider.h"
 
 
 @implementation RadioViewCell
@@ -56,7 +57,7 @@
         
         // avatar
         sheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.avatar = [[WebImageView alloc] initWithImageAtURL:nil];
+        self.avatar = [[WebImageView alloc] initWithImageAtURL:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
         self.avatar.frame = sheet.frame;
         [view addSubview:self.avatar];
         
