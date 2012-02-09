@@ -7,12 +7,15 @@
 //
 
 #import "YasoundDataProvider.h"
+#import "UIImage+Resize.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"
 
 #define APP_KEY_COOKIE_NAME @"app_key"
 #define APP_KEY_IPHONE @"yasound_iphone_app"
+
+#define MAX_IMAGE_DIMENSION 1024
 
 @interface YasoundDataProvider (internal)
 
@@ -442,19 +445,45 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+-(UIImage*)resizeImage:(UIImage*)img
+{
+  CGFloat w = img.size.width;
+  CGFloat h = img.size.height;
+  if (w >= h)
+  {
+    float ratio = MAX_IMAGE_DIMENSION / w;
+    w = MAX_IMAGE_DIMENSION;
+    h *= ratio;
+  }
+  else
+  {
+    float ratio = MAX_IMAGE_DIMENSION / h;
+    h = MAX_IMAGE_DIMENSION;
+    w *= ratio;
+  }
+  CGSize size = CGSizeMake(w, h);
+  UIImage* newImg = [img resizedImage:size interpolationQuality:kCGInterpolationDefault];
+  return newImg;
+}
+
+
 - (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
+  NSLog(@"img %f, %f", img.size.width, img.size.height);
+  UIImage* resizedImg = [self resizeImage:img];
+  NSLog(@"resized img %f, %f", resizedImg.size.width, resizedImg.size.height);
   Auth* auth = self.apiKeyAuth;
   NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/picture", radio.id];
-  [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
 {
+  UIImage* resizedImg = [self resizeImage:img];
   Auth* auth = self.apiKeyAuth;
   NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/picture", user.id];
-  [_communicator postData:UIImagePNGRepresentation(img) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 // get wall events

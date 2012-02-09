@@ -53,7 +53,6 @@
     BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" error:nil];
     
     _ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];	
-    [_ai autorelease];
     [_ai startAnimating];
     [_ai setFrame:stylesheet.frame];
     [self addSubview:_ai];
@@ -77,6 +76,7 @@
     [self setImage:[UIImage imageWithData: data]]; 
     [_ai stopAnimating];
     [_ai removeFromSuperview];
+    [_ai release];
 }
 
 

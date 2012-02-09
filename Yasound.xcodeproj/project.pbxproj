@@ -64,6 +64,18 @@
 		40EAA59714DC2DFE0000621C /* UserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA59514DC2DFE0000621C /* UserViewCell.m */; };
 		40EAA59814DC2DFE0000621C /* UserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA59514DC2DFE0000621C /* UserViewCell.m */; };
 		40EAA59914DC2DFE0000621C /* UserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA59514DC2DFE0000621C /* UserViewCell.m */; };
+		40ED563014E41CE100C0A0F4 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED562F14E41CE100C0A0F4 /* UIImage+Resize.m */; };
+		40ED563114E41CE100C0A0F4 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED562F14E41CE100C0A0F4 /* UIImage+Resize.m */; };
+		40ED563214E41CE100C0A0F4 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED562F14E41CE100C0A0F4 /* UIImage+Resize.m */; };
+		40ED563314E41CE100C0A0F4 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED562F14E41CE100C0A0F4 /* UIImage+Resize.m */; };
+		40ED563814E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED563514E41F7200C0A0F4 /* UIImage+Alpha.m */; };
+		40ED563914E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED563514E41F7200C0A0F4 /* UIImage+Alpha.m */; };
+		40ED563A14E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED563514E41F7200C0A0F4 /* UIImage+Alpha.m */; };
+		40ED563B14E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED563514E41F7200C0A0F4 /* UIImage+Alpha.m */; };
+		40ED563C14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED563714E41F7200C0A0F4 /* UIImage+RoundedCorner.m */; };
+		40ED563D14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED563714E41F7200C0A0F4 /* UIImage+RoundedCorner.m */; };
+		40ED563E14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED563714E41F7200C0A0F4 /* UIImage+RoundedCorner.m */; };
+		40ED563F14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED563714E41F7200C0A0F4 /* UIImage+RoundedCorner.m */; };
 		40F4C77414BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
 		40F4C77514BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
 		40F4C77614BB053100A163F9 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
@@ -1282,6 +1294,12 @@
 		40EAA58F14DC24C10000621C /* OrientedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrientedTableView.m; sourceTree = "<group>"; };
 		40EAA59414DC2DFE0000621C /* UserViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewCell.h; sourceTree = "<group>"; };
 		40EAA59514DC2DFE0000621C /* UserViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewCell.m; sourceTree = "<group>"; };
+		40ED562E14E41CE100C0A0F4 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		40ED562F14E41CE100C0A0F4 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		40ED563414E41F7200C0A0F4 /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		40ED563514E41F7200C0A0F4 /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		40ED563614E41F7200C0A0F4 /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		40ED563714E41F7200C0A0F4 /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		40F4C77214BB053100A163F9 /* RadioUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioUser.h; sourceTree = "<group>"; };
 		40F4C77314BB053100A163F9 /* RadioUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioUser.m; sourceTree = "<group>"; };
 		40F4C78914BDF40F00A163F9 /* SongUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongUser.h; sourceTree = "<group>"; };
@@ -1866,6 +1884,20 @@
 			path = DataProvider;
 			sourceTree = "<group>";
 		};
+		40ED562D14E41CE100C0A0F4 /* ImageResize */ = {
+			isa = PBXGroup;
+			children = (
+				40ED562E14E41CE100C0A0F4 /* UIImage+Resize.h */,
+				40ED562F14E41CE100C0A0F4 /* UIImage+Resize.m */,
+				40ED563414E41F7200C0A0F4 /* UIImage+Alpha.h */,
+				40ED563514E41F7200C0A0F4 /* UIImage+Alpha.m */,
+				40ED563614E41F7200C0A0F4 /* UIImage+RoundedCorner.h */,
+				40ED563714E41F7200C0A0F4 /* UIImage+RoundedCorner.m */,
+			);
+			name = ImageResize;
+			path = LibTools/ImageResize;
+			sourceTree = SOURCE_ROOT;
+		};
 		B172043C14C54446007F3FB0 /* BuyLink */ = {
 			isa = PBXGroup;
 			children = (
@@ -2289,6 +2321,7 @@
 		BCA2CCD6149A95460000637E /* LibTools */ = {
 			isa = PBXGroup;
 			children = (
+				40ED562D14E41CE100C0A0F4 /* ImageResize */,
 				BCBE5C6A14D161890077FC62 /* TestflightViewController */,
 				BC01F5A814CEB01F00EF62A2 /* DateAdditions */,
 				B172043C14C54446007F3FB0 /* BuyLink */,
@@ -3769,6 +3802,9 @@
 				B1D634CA14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
 				B1D634CE14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 				B19245DB14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
+				40ED563114E41CE100C0A0F4 /* UIImage+Resize.m in Sources */,
+				40ED563914E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */,
+				40ED563D14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3903,6 +3939,9 @@
 				B1D634CC14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
 				B1D634D014E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 				B19245DD14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
+				40ED563314E41CE100C0A0F4 /* UIImage+Resize.m in Sources */,
+				40ED563B14E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */,
+				40ED563F14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4037,6 +4076,9 @@
 				B1D634CD14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 				B138AA6814E2BAFC0069E08A /* SongUploader.m in Sources */,
 				B19245DA14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
+				40ED563014E41CE100C0A0F4 /* UIImage+Resize.m in Sources */,
+				40ED563814E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */,
+				40ED563C14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4171,6 +4213,9 @@
 				B1D634CB14E1BC4E00BE852E /* NSString+MD5Addition.m in Sources */,
 				B1D634CF14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */,
 				B19245DC14E2DAF700B18EEF /* TSLibraryImport.m in Sources */,
+				40ED563214E41CE100C0A0F4 /* UIImage+Resize.m in Sources */,
+				40ED563A14E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */,
+				40ED563E14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
