@@ -20,7 +20,7 @@
 #import "LeaderBoardEntry.h"
 #import "Playlist.h"
 
-#define USE_YASOUND_LOCAL_SERVER 0
+#define USE_YASOUND_LOCAL_SERVER 1
 
 typedef NSString* taskID;
 
@@ -77,7 +77,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 
-- (void)searchRadios:(NSString*)search withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
+- (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector;
 
 - (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setMood:(UserMood)mood forRadio:(Radio*)radio;
