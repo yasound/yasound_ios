@@ -1464,7 +1464,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction) onPlayPause:(id)sender
 {
-    if (!self.playPauseButton.selected)
+    if (self.playPauseButton.selected)
         [self pauseAudio];
     else
         [self playAudio];
@@ -1543,13 +1543,13 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)playAudio
 {
-    self.playPauseButton.selected = NO;
+    self.playPauseButton.selected = YES;
     [[AudioStreamManager main] startRadio:self.radio];
 }
 
 - (void)pauseAudio
 {
-    self.playPauseButton.selected = YES;
+    self.playPauseButton.selected = NO;
     
     [[AudioStreamManager main] stopRadio];
 }

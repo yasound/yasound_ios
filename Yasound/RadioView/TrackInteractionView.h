@@ -9,7 +9,7 @@
 #import "Song.h"
 
 
-@interface TrackInteractionView : UIView
+@interface TrackInteractionView : UIView <UIAlertViewDelegate>
 {
     Song* _song;
     
