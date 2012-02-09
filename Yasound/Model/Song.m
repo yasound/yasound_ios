@@ -14,6 +14,7 @@
 @synthesize artist;
 @synthesize album;
 @synthesize cover;
+@synthesize song;
 
 @end
 

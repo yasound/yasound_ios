@@ -876,6 +876,8 @@ static YasoundDataProvider* _main = nil;
   [_communicator getURL:url absolute:NO notifyTarget:self byCalling:@selector(receiveTaskStatus:withInfo:) withUserData:userData withAuth:auth];
 }
 
+
+
 - (void)receiveTaskStatus:(NSString*)response withInfo:(NSDictionary*)info
 {
   NSDictionary* userData = [info valueForKey:@"userData"];
@@ -917,6 +919,16 @@ static YasoundDataProvider* _main = nil;
   NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/all_playlist/", radio.id];
   Auth* auth = self.apiKeyAuth;
   [_communicator getObjectsWithClass:[Playlist class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)songsForPlaylist:(NSInteger)playlistId target:(id)target action:(SEL)selector
+{
+  NSString* url = [NSString stringWithFormat:@"api/v1/song/"];
+  Auth* auth = self.apiKeyAuth;
+  NSMutableArray* params = [[NSMutableArray alloc] init];
+  [params addObject:[NSString stringWithFormat:@"playlist=%@", playlistId]];
+  
+  [_communicator getObjectsWithClass:[Song class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 

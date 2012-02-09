@@ -102,7 +102,7 @@
     
     _cellMonthSelectorLabel.text = NSLocalizedString(@"StatsView_monthselector_label", nil);
   _cellLeaderBoardSelectorLabel.text = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
-  
+    
   [[YasoundDataProvider main] monthListeningStatsWithTarget:self action:@selector(receivedMonthStats:withInfo:)];
   [[YasoundDataProvider main] leaderboardWithTarget:self action:@selector(receivedLeaderBoard:withInfo:)];
   
@@ -226,11 +226,14 @@
 
 
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//    if (tableView == _settingsTableView)
-//        [self willDisplayCellInSettingsTableView:cell forRowAtIndexPath:indexPath];
-//}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    
+    UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
+    cell.backgroundView = view;
+    [view release];
+    
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -258,6 +261,7 @@
   {      
     NSNumber* listeners = [YasoundDataProvider main].radio.nb_current_users;
     cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
+    
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", listeners];
     [cell.imageView setImage:[UIImage imageNamed:@"iconStatsListeners.png"]];
   }
@@ -287,7 +291,11 @@
     
     [cell.imageView setImage:nil];
   }
-  
+    
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    
+    
   return cell;
 }
 
