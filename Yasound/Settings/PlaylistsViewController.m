@@ -79,6 +79,7 @@
 - (void)buildPlaylistData:(NSArray *)localPlaylists withRemotePlaylists:(NSArray *)remotePlaylists
 {
     for (Playlist *playlist in remotePlaylists) {
+        NSNumber* playlistId = [NSNumber numberWithInteger:playlist.id];
         NSString* name = playlist.name;
         NSString* source = playlist.source;
         NSNumber* count = playlist.song_count;
@@ -87,6 +88,7 @@
         NSNumber* neverSynchronized = [NSNumber numberWithBool:FALSE];
         
         NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+        [dico setObject:playlistId forKey:@"playlistId"];
         [dico setObject:name forKey:@"name"];
         [dico setObject:source forKey:@"source"];
         [dico setObject:count forKey:@"count"];
@@ -336,7 +338,7 @@
         else
             cell.accessoryType = UITableViewCellAccessoryNone;
         
-        if (!_wizard && _displayMode == eDisplayModeEdit) {
+        if (!_wizard && _displayMode == eDisplayModeEdit && !neverSynchronized) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         
@@ -348,7 +350,7 @@
     NSNumber *unmatched = [dico objectForKey:@"unmatched"];
     
     if (matched != NULL && unmatched != NULL) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d (%d+%d) songs", 
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d (%d matched +%d unmatched) songs", 
                                      [[dico objectForKey:@"count"] integerValue],
                                      [matched integerValue],
                                      [unmatched integerValue]];
@@ -388,9 +390,12 @@
     
     if (_displayMode == eDisplayModeEdit) {
         // display detailed view about playlist
-        if (!_songsViewController) {
-            _songsViewController = [[SongsViewController alloc] initWithNibName:@"SongsViewController" bundle:nil];    
+        
+        if (_songsViewController) {
+            [_songsViewController release];
         }
+        NSNumber *playlistId = [item objectForKey:@"playlistId"];
+        _songsViewController = [[SongsViewController alloc] initWithNibName:@"SongsViewController" bundle:nil playlistId:[playlistId integerValue]];    
         [self.navigationController pushViewController:_songsViewController animated:TRUE];
         return;
     }
