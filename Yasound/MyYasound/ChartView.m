@@ -50,8 +50,9 @@
         [dateFormatter release];        
         [numberFormatter release];
         
-        CGFloat value = 247.f / 255.f;
-        self.backgroundColor = [UIColor colorWithRed:value green:value blue:value alpha:1];
+//        CGFloat value = 247.f / 255.f;
+//        self.backgroundColor = [UIColor colorWithRed:value green:value blue:value alpha:1];
+        self.backgroundColor = [UIColor clearColor];
         
 //        self.plotColor = RGB(5, 141, 191); 
 //        self.fillColor = RGB(5, 141, 191); 
