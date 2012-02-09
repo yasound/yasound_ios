@@ -44,6 +44,8 @@
         _playlists = [playlistsquery collections];
         [_playlists retain];
 
+        [self.view addSubview:_tableView];
+        
         Radio* radio = [YasoundDataProvider main].radio;
         [[YasoundDataProvider main] playlistsForRadio:radio 
                                                target:self 
@@ -221,7 +223,6 @@
     }
     
     _cellHowtoLabel.text = NSLocalizedString(@"PlaylistsView_howto", nil);
-    [self refreshView];
 }
 
 - (void)viewDidUnload
@@ -246,8 +247,7 @@
         _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
         [_container addSubview:_itunesConnectView];
     } else {
-        [_itunesConnectView removeFromSuperview];
-        [self.view addSubview:_tableView];
+        [_tableView reloadData];
     }
 }
 
