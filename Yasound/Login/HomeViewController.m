@@ -51,9 +51,7 @@
     
     _titleLabel.text = NSLocalizedString(@"HomeView_title", nil);
 
-    _facebookLoginLabel.text = NSLocalizedString(@"HomeView_facebook_label", nil);
-    
-//    [self.view addSubview:[ConnectionView start]];
+    _facebookLoginLabel.text = NSLocalizedString(@"HomeView_facebook_label", nil);    
 }
 
 
@@ -93,11 +91,19 @@
     
     [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(socialLoginReturned:)];
     
+    // and disable facebook button
+    _facebookButton.enabled = NO;
+
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+    _facebookButton.alpha = 0;
+    _facebookLoginLabel.alpha = 0;
+
+    [UIView commitAnimations];   
+    
     // show a connection alert
     [self.view addSubview:[ConnectionView start]];
     
-    // and disable facebook button
-    _facebookButton.enabled = NO;
 
 }
 
@@ -108,6 +114,14 @@
 {
     // close the connection alert
     [ConnectionView stop];
+    
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+    _facebookButton.alpha = 1;
+    _facebookLoginLabel.alpha = 1;
+    
+    [UIView commitAnimations];   
+    
 
     if (user != nil)
     {

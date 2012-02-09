@@ -11,7 +11,7 @@
 #import "SettingsViewController.h"
 #import "RootViewController.h"
 
-
+#import <QuartzCore/QuartzCore.h>
 
 @implementation CreateMyRadio
 
@@ -64,6 +64,17 @@
 
     _toolbarTitle.text = NSLocalizedString(@"CreateMyRadio_title", nil);
     
+    
+    _goButton.backgroundColor = [UIColor colorWithRed:85.f/255.f green:85.f/255.f blue:85.f/255.f alpha:1];
+    _goButton.layer.cornerRadius = 10;
+    _goButton.layer.borderColor = [UIColor colorWithRed:160.f/255.f green:160.f/255.f blue:160.f/255.f alpha:1];
+    _goButton.layer.borderWidth = 1;
+
+    _skipButton.backgroundColor = [UIColor colorWithRed:85.f/255.f green:85.f/255.f blue:85.f/255.f alpha:1];
+    _skipButton.layer.cornerRadius = 10;
+    _skipButton.layer.borderColor = [UIColor colorWithRed:160.f/255.f green:160.f/255.f blue:160.f/255.f alpha:1];
+    _skipButton.layer.borderWidth = 1;
+
     [_goButton setTitle: NSLocalizedString(@"CreateMyRadio_goButton_text", nil) forState: UIControlStateNormal];
     [_goButton addTarget:self action:@selector(onGo:) forControlEvents:UIControlEventTouchUpInside];
     

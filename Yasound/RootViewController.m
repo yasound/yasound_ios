@@ -79,10 +79,11 @@
     [super viewDidUnload];
 }
 
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+
     if (_firstTime)
     {
         _firstTime = NO;
