@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
-
+#import "SongsViewController.h"
 typedef enum {
     eDisplayModeNormal = 0,
     eDisplayModeEdit = 1,
@@ -43,6 +43,7 @@ typedef enum {
     
     NSTimer* taskTimer;
     DisplayMode _displayMode;
+    SongsViewController *_songsViewController;
 }
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;

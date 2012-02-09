@@ -15,6 +15,7 @@
 #import "RootViewController.h"
 #import "YasoundDataProvider.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "SongsViewController.h"
 
 #import "SongUploader.h"
 
@@ -29,7 +30,7 @@
     {
         _displayMode = eDisplayModeNormal;
         _wizard = wizard;
-        
+        _songsViewController = nil;
         _changed = NO;
         if (_wizard)
             _changed = YES;
@@ -149,6 +150,9 @@
 
 - (void)dealloc
 {
+    if (_songsViewController) {
+        [_songsViewController release];
+    }
     [_localPlaylistsDesc release];
     [_remotePlaylistsDesc release];
     [_playlists release];
@@ -381,6 +385,16 @@
     if (localPlaylistIndex == NULL) {
         return;
     }
+    
+    if (_displayMode == eDisplayModeEdit) {
+        // display detailed view about playlist
+        if (!_songsViewController) {
+            _songsViewController = [[SongsViewController alloc] initWithNibName:@"SongsViewController" bundle:nil];    
+        }
+        [self.navigationController pushViewController:_songsViewController animated:TRUE];
+        return;
+    }
+    
     
     MPMediaPlaylist* list = [_playlists objectAtIndex:[localPlaylistIndex integerValue]];
     
