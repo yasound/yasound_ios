@@ -935,11 +935,11 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)uploadSong:(NSData*)song songId:(NSNumber*)songId target:(id)target action:(SEL)selector
+- (void)uploadSong:(NSData*)song songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
 {
   Auth* auth = self.apiKeyAuth;
   NSString* url = [NSString stringWithFormat:@"api/v1/upload_song/%@/", songId];
-  [_communicator postData:song withKey:@"song" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  [_communicator postData:song withKey:@"song" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withProgress:progressDelegate];
 }
 
 @end

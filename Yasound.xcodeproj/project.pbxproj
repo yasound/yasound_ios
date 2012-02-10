@@ -112,6 +112,10 @@
 		B1D634CE14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */; };
 		B1D634CF14E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */; };
 		B1D634D014E1BC4E00BE852E /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */; };
+		B1F8868814E5B44300256383 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F8868714E5B44300256383 /* MBProgressHUD.m */; };
+		B1F8868914E5B44300256383 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F8868714E5B44300256383 /* MBProgressHUD.m */; };
+		B1F8868A14E5B44300256383 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F8868714E5B44300256383 /* MBProgressHUD.m */; };
+		B1F8868B14E5B44300256383 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F8868714E5B44300256383 /* MBProgressHUD.m */; };
 		BC01F5AB14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC01F5AC14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC01F5AD14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
@@ -1394,6 +1398,8 @@
 		B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		B1D634C714E1BC4E00BE852E /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
 		B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		B1F8868614E5B44300256383 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		B1F8868714E5B44300256383 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		BC01F5A914CEB01F00EF62A2 /* DateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateAdditions.h; sourceTree = "<group>"; };
 		BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateAdditions.m; sourceTree = "<group>"; };
 		BC0304E614BF030200F39374 /* Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tutorial.h; sourceTree = "<group>"; };
@@ -2024,6 +2030,16 @@
 			path = "ThirdParties/UIDevice-with-UniqueIdentifier-for-iOS-5";
 			sourceTree = "<group>";
 		};
+		B1F8868514E5B44300256383 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				B1F8868614E5B44300256383 /* MBProgressHUD.h */,
+				B1F8868714E5B44300256383 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			path = ThirdParties/MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		BC01F5A814CEB01F00EF62A2 /* DateAdditions */ = {
 			isa = PBXGroup;
 			children = (
@@ -2631,6 +2647,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				B1F8868514E5B44300256383 /* MBProgressHUD */,
 				B1BBEE9914E2DA9500E7E0EA /* TSLibraryImport */,
 				B1D634C414E1BC4E00BE852E /* UIDevice-with-UniqueIdentifier-for-iOS-5 */,
 				BCBE5C7114D167DE0077FC62 /* TestFlightSDK0.8.2 */,
@@ -4004,6 +4021,7 @@
 				40ED563D14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 				B19BF5EF14E420DA00BF8FCF /* SongsViewController.m in Sources */,
 				B17A085714E4E881008E4742 /* SongUploader.m in Sources */,
+				B1F8868914E5B44300256383 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4143,6 +4161,7 @@
 				40ED563F14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 				B19BF5F114E420DA00BF8FCF /* SongsViewController.m in Sources */,
 				B17A085914E4E883008E4742 /* SongUploader.m in Sources */,
+				B1F8868B14E5B44300256383 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4281,6 +4300,7 @@
 				40ED563814E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */,
 				40ED563C14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 				B19BF5EE14E420DA00BF8FCF /* SongsViewController.m in Sources */,
+				B1F8868814E5B44300256383 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4420,6 +4440,7 @@
 				40ED563E14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 				B19BF5F014E420DA00BF8FCF /* SongsViewController.m in Sources */,
 				B17A085814E4E882008E4742 /* SongUploader.m in Sources */,
+				B1F8868A14E5B44300256383 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

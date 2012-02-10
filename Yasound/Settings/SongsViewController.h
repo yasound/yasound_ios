@@ -9,6 +9,7 @@
 #import "TestflightViewController.h"
 #import "Playlist.h"
 #import "Song.h"
+#import "MBProgressHUD.h"
 
 @interface SongsViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 {
@@ -18,6 +19,7 @@
     NSArray* _songs; // Array of Song*
 
     Song* _selectedSong;
+    MBProgressHUD* _hud;
 }
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil playlistId:(NSInteger)playlistId;
 -(IBAction)onBack:(id)sender;
