@@ -46,7 +46,15 @@ static SongUploader* _main = nil;
 
 -(MPMediaItem *)findSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist
 {
-  MPMediaQuery *query = [MPMediaQuery songsQuery];
+  MPMediaPropertyPredicate *artistPredicate = [MPMediaPropertyPredicate predicateWithValue:artist forProperty: MPMediaItemPropertyArtist];
+  MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue:album forProperty: MPMediaItemPropertyAlbumTitle];
+  MPMediaPropertyPredicate *titlePredicate = [MPMediaPropertyPredicate predicateWithValue:title forProperty: MPMediaItemPropertyTitle];
+    
+  MPMediaQuery *query = [[MPMediaQuery alloc] init];
+  [query addFilterPredicate:artistPredicate];
+  [query addFilterPredicate:albumPredicate];
+  [query addFilterPredicate:titlePredicate];
+  
   for (MPMediaItem* item in query.items) {
     NSString* aTitle = [item valueForProperty:MPMediaItemPropertyTitle];
     NSString* aArtist = [item valueForProperty:MPMediaItemPropertyArtist];
@@ -54,9 +62,12 @@ static SongUploader* _main = nil;
     if ([title isEqualToString:aTitle] &&
         [artist isEqualToString:aArtist] &&
         [album isEqualToString:aAlbum]) {
+      
+      [query release];
       return item;
     }
   }
+  [query release];
   return NULL;
 }
 
