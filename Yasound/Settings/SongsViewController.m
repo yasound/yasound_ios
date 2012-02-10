@@ -19,7 +19,6 @@
     if (self) {
         // Custom initialization
         _playlistId = playlistId;
-        [self resetArrays];
     }
     return self;
 }
@@ -40,11 +39,7 @@
 
 - (void)viewDidUnload
 {
-    [_needSyncSongs release];
-    [_matchedSongs release];
-    [_unmatchedSongs release];
-    [_protectedSongs release];
-    
+    [_songs release];
     [super viewDidUnload];
 }
 
@@ -56,70 +51,42 @@
 
 #pragma mark - Private methods
 
-- (void)resetArrays
-{
-    if(_needSyncSongs) {
-        [_needSyncSongs release];
-    }
-    
-    if (_matchedSongs) {
-        [_matchedSongs release];
-    }
-    
-    if (_unmatchedSongs) {
-        [_unmatchedSongs release];
-    }
-
-    if (_protectedSongs) {
-        [_protectedSongs release];
-    }
-    
-    _matchedSongs = [[NSMutableArray alloc] init ];
-    [_matchedSongs retain];
-    
-    _unmatchedSongs = [[NSMutableArray alloc] init ];
-    [_unmatchedSongs retain];
-    
-    _needSyncSongs = [[NSMutableArray alloc] init ];
-    [_needSyncSongs retain];
-
-    _protectedSongs = [[NSMutableArray alloc] init ];
-    [_protectedSongs retain];
-}
-
 - (void)refreshView
 {
     [ActivityAlertView showWithTitle:NSLocalizedString(@"Alert_contact_server", nil)];
-    [self resetArrays];
     [[YasoundDataProvider main] songsForPlaylist:_playlistId target:self action:@selector(receiveSongs:withInfo:)];
 }
 
 
 - (void)buildSongsData:(NSArray *)songs
 {
-    SongUploader *songUploader = [SongUploader main];
-    
-    // split data between matched, unmatched, sync in progress songs
-    for (Song *song in songs) {
-        if ([song.song isKindOfClass:[NSNumber class]]) {
-            [_matchedSongs addObject:song];
-            continue;
-        }
-        
-        if (![songUploader canUploadSong:song.name album:song.album artist:song.artist]) {
-            [_protectedSongs addObject:song];
-            continue;
-        }
-        
-        BOOL needSync = [song.need_sync boolValue];
-        if (needSync) {
-            [_needSyncSongs addObject:song];
-            continue;
-        }
-
-        [_unmatchedSongs addObject:song];
+    if (_songs) {
+        [_songs release];
     }
+    _songs = [[NSArray alloc] initWithArray:songs];
 }
+//    SongUploader *songUploader = [SongUploader main];
+//    
+//    // split data between matched, unmatched, sync in progress songs
+//    for (Song *song in songs) {
+//        if ([song.song isKindOfClass:[NSNumber class]]) {
+//            [_matchedSongs addObject:song];
+//            continue;
+//        }
+//        
+//        if (![songUploader canUploadSong:song.name album:song.album artist:song.artist]) {
+//            [_protectedSongs addObject:song];
+//            continue;
+//        }
+//        
+//        BOOL needSync = [song.need_sync boolValue];
+//        if (needSync) {
+//            [_needSyncSongs addObject:song];
+//            continue;
+//        }
+//
+//        [_unmatchedSongs addObject:song];
+//    }
 
 -(void)uploadSongFinished
 {
@@ -144,13 +111,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
 {
     if (section == 0) {
-        return NSLocalizedString(@"SongsView_unmatched_songs", nil);
-    } else if (section == 1) {
-        return NSLocalizedString(@"SongsView_matched_songs", nil);
-    } else if (section == 2) { 
-        return NSLocalizedString(@"SongsView_need_sync_songs", nil);
-    } else if (section == 3) { 
-        return NSLocalizedString(@"SongsView_protected_songs", nil);
+        return NSLocalizedString(@"SongsView_songs", nil);
     }
     return @"Header";
 }
@@ -158,7 +119,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 1;
 }
 
 
@@ -166,13 +127,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
     if (section == 0) {
-        return [_unmatchedSongs count];
-    } else if (section == 1){ 
-        return [_matchedSongs count];
-    } else if (section == 2) { 
-        return [_needSyncSongs count];
-    } else if (section == 3) { 
-        return [_protectedSongs count];
+        return [_songs count];
     }
     return 0;
 }
@@ -181,18 +136,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-
-    NSMutableArray *source = NULL;
-    if (indexPath.section == 0) {
-        source = _unmatchedSongs;
-    } else if (indexPath.section == 1) {
-        source = _matchedSongs;
-    } else if (indexPath.section == 2) {
-        source = _needSyncSongs;
-    } else if (indexPath.section == 3) {
-        source = _protectedSongs;
-    }
-    
     static NSString* CellIdentifier = @"SongCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -200,41 +143,54 @@
     {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-    Song *song = [source objectAtIndex:indexPath.row];
+    Song *song = [_songs objectAtIndex:indexPath.row];
     cell.textLabel.text = song.name;
+    
+    if ([song.song isKindOfClass:[NSNumber class]]) {
+        cell.detailTextLabel.text = @"synchronized";
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+    SongUploader *songUploader = [SongUploader main];
+    if (![songUploader canUploadSong:song.name album:song.album artist:song.artist]) {
+        cell.detailTextLabel.text = @"protected";
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+    BOOL needSync = [song.need_sync boolValue];
+    if (needSync) {
+        cell.detailTextLabel.text = @"synchronization in progress";
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+    cell.detailTextLabel.text = @"click to synchronize";
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section != 0) {
-        return;
-    }
-
-    NSMutableArray *source = NULL;
-    if (indexPath.section == 0) {
-        source = _unmatchedSongs;
-    } else if (indexPath.section == 1) {
-        source = _matchedSongs;
-    } else if (indexPath.section == 2) {
-        source = _needSyncSongs;
-    } else if (indexPath.section == 3) {
-        source = _protectedSongs;
-    }
-    
-    _selectedSong = [source objectAtIndex:indexPath.row];
+    _selectedSong = [_songs objectAtIndex:indexPath.row];
     if (!_selectedSong) {
         return;
     }
+    if ([_selectedSong.song isKindOfClass:[NSNumber class]]) {
+        return;
+    }
+    SongUploader *songUploader = [SongUploader main];
+    if (![songUploader canUploadSong:_selectedSong.name album:_selectedSong.album artist:_selectedSong.artist]) {
+        return;
+    }
+    BOOL needSync = [_selectedSong.need_sync boolValue];
+    if (needSync) {
+        return;
+    }    
     
     UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SongsView_confirm_upload", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SongsView_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SongsView_upload_songs", nil), nil];
     
     popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     [popupQuery showInView:self.view];
     [popupQuery release];
-    
-
 }
 
 #pragma mark - IBActions
