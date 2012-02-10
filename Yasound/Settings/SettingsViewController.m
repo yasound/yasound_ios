@@ -240,6 +240,91 @@
 }
 
 
+
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 33;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    
+    if (section == SECTION_CONFIG)
+        title =  NSLocalizedString(@"SettingsView_section_config", nil);
+    
+    else if (section == SECTION_IMAGE)
+        title =  NSLocalizedString(@"SettingsView_section_image", nil);
+    
+    else if (section == SECTION_THEME)
+        title =  NSLocalizedString(@"SettingsView_section_theme", nil);
+    
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableViewSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    UIImage* image = [sheet image];
+    CGFloat height = image.size.height;
+    UIImageView* view = [[UIImageView alloc] initWithImage:image];
+    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
+    
+    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
+
+
+
+
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    NSInteger nbRows;
+    if (indexPath.section == SECTION_CONFIG)
+        nbRows =  3;
+    
+    else if (indexPath.section == SECTION_IMAGE)
+        nbRows =  1;
+    
+    else if (indexPath.section == SECTION_THEME)
+        nbRows =  1;
+    
+    if (nbRows == 1)
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else if (indexPath.row == 0)
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else if (indexPath.row == (nbRows -1))
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+}
+
+
+
+
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 //{
 //    if (tableView == _settingsTableView)
@@ -272,15 +357,25 @@
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"SettingsView_row_genre_label", nil);
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
         NSString* style = _myRadio.genre;
         cell.detailTextLabel.text = NSLocalizedString(style, nil);
+        
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:182.f/255.f green:212.f/255.f blue:1 alpha:1];
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     }
     else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"SettingsView_row_keywords_label", nil);
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
         cell.detailTextLabel.text = _keywords;
-    }
+
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:182.f/255.f green:212.f/255.f blue:1 alpha:1];
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+}
     
     return cell;
 }

@@ -948,6 +948,7 @@ static YasoundDataProvider* _main = nil;
 
 taskStatus stringToStatus(NSString* str)
 {
+  NSLog(@"Task status: %@", str);
   taskStatus status = eTaskStatusNone;
   if ([str isEqualToString:@"PENDING"])
     status = eTaskPending;

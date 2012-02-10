@@ -44,6 +44,7 @@
     if (self)
     {
         _baseURL = base;
+        [ASIHTTPRequest setDefaultTimeOutSeconds:30];
     }
     
     return self;
