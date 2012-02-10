@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">11C74</string>
+		<string key="IBDocument.SystemVersion">11D50b</string>
 		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1138.23</string>
-		<string key="IBDocument.HIToolboxVersion">567.00</string>
+		<string key="IBDocument.AppKitVersion">1138.32</string>
+		<string key="IBDocument.HIToolboxVersion">568.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">933</string>
@@ -62,6 +62,7 @@
 						<string key="NSFrame">{{0, 44}, {320, 416}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:418</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="601419334">
 							<int key="NSColorSpace">3</int>
@@ -169,15 +170,16 @@
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="515842547"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
+								<reference key="IBUIBackgroundColor" ref="601419334"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Label</string>
-								<object class="NSColor" key="IBUITextColor" id="847622210">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
+								<object class="NSColor" key="IBUITextColor" id="684534841">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
@@ -191,6 +193,7 @@
 								<string key="NSFrame">{{86, 6}, {196, 31}}</string>
 								<reference key="NSSuperview" ref="92214824"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:304</string>
 								<reference key="IBUIBackgroundColor" ref="601419334"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -201,7 +204,7 @@
 								<string key="IBUIPlaceholder">enter Yasound's title</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+									<bytes key="NSRGB">MC43MTU3ODExMjUxIDAuODM3MTQwOTUxNyAxAA</bytes>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 								<float key="IBUIMinimumFontSize">17</float>
@@ -262,13 +265,14 @@
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="513875858"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
+								<reference key="IBUIBackgroundColor" ref="601419334"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Label</string>
-								<reference key="IBUITextColor" ref="847622210"/>
+								<reference key="IBUITextColor" ref="684534841"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
@@ -281,6 +285,7 @@
 								<string key="NSFrame">{{227, 4}, {35, 35}}</string>
 								<reference key="NSSuperview" ref="390780444"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:567</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -343,13 +348,14 @@
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1035637887"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
+								<reference key="IBUIBackgroundColor" ref="601419334"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Label</string>
-								<reference key="IBUITextColor" ref="847622210"/>
+								<reference key="IBUITextColor" ref="684534841"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
@@ -690,7 +696,7 @@
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">LegalViewController</string>
-					<string key="superclassName">TrackedUIViewController</string>
+					<string key="superclassName">TestflightViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="onBack:">id</string>
 						<string key="onNext:">id</string>
@@ -736,7 +742,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">LoginViewController</string>
-					<string key="superclassName">TrackedUIViewController</string>
+					<string key="superclassName">TestflightViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="onBack:">id</string>
 						<string key="onSubmit:">id</string>
@@ -812,14 +818,19 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">PlaylistsViewController</string>
-					<string key="superclassName">TrackedUIViewController</string>
+					<string key="superclassName">TestflightViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="onBack:">id</string>
+						<string key="onEdit:">id</string>
 						<string key="onNext:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="onBack:">
 							<string key="name">onBack:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onEdit:">
+							<string key="name">onEdit:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="onNext:">
@@ -883,7 +894,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">SignupViewController</string>
-					<string key="superclassName">TrackedUIViewController</string>
+					<string key="superclassName">TestflightViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="onBack:">id</string>
 						<string key="onSubmit:">id</string>
@@ -993,8 +1004,38 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">SongsViewController</string>
+					<string key="superclassName">TestflightViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">onBack:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">onBack:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">onBack:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">_tableView</string>
+						<string key="NS.object.0">UITableView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">_tableView</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">_tableView</string>
+							<string key="candidateClassName">UITableView</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/SongsViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">StatsViewController</string>
-					<string key="superclassName">TrackedUIViewController</string>
+					<string key="superclassName">TestflightViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="onBack:">id</string>
 						<string key="onNextMonth:">id</string>
@@ -1030,10 +1071,10 @@
 						<string key="_btnNextWeek">UIButton</string>
 						<string key="_btnPreviousMonth">UIButton</string>
 						<string key="_btnPreviousWeek">UIButton</string>
+						<string key="_cellLeaderBoardSelector">UITableViewCell</string>
+						<string key="_cellLeaderBoardSelectorLabel">UILabel</string>
 						<string key="_cellMonthSelector">UITableViewCell</string>
 						<string key="_cellMonthSelectorLabel">UILabel</string>
-						<string key="_cellWeekSelector">UITableViewCell</string>
-						<string key="_cellWeekSelectorLabel">UILabel</string>
 						<string key="_tableView">UITableView</string>
 						<string key="_titleLabel">UILabel</string>
 					</dictionary>
@@ -1058,20 +1099,20 @@
 							<string key="name">_btnPreviousWeek</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="_cellLeaderBoardSelector">
+							<string key="name">_cellLeaderBoardSelector</string>
+							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellLeaderBoardSelectorLabel">
+							<string key="name">_cellLeaderBoardSelectorLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="_cellMonthSelector">
 							<string key="name">_cellMonthSelector</string>
 							<string key="candidateClassName">UITableViewCell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_cellMonthSelectorLabel">
 							<string key="name">_cellMonthSelectorLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_cellWeekSelector">
-							<string key="name">_cellWeekSelector</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_cellWeekSelectorLabel">
-							<string key="name">_cellWeekSelectorLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_tableView">
@@ -1086,6 +1127,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/StatsViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">TestflightViewController</string>
+					<string key="superclassName">TrackedUIViewController</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/TestflightViewController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1111,7 +1160,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="MyYasoundBackground.png">{320, 480}</string>
+			<string key="MyYasoundBackground.png">{320, 460}</string>
 			<string key="avatarDummy.png">{50, 50}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>
