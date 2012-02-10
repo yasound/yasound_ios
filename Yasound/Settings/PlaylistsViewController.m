@@ -443,20 +443,19 @@
     NSNumber *unmatched = [dico objectForKey:@"unmatched"];
     
     if (matched != NULL && unmatched != NULL) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d (%d matched +%d unmatched) songs", 
-                                     [[dico objectForKey:@"count"] integerValue],
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"PlaylistsView_cell_detail_with_matched", nil), 
                                      [matched integerValue],
-                                     [unmatched integerValue]];
+                                     [[dico objectForKey:@"count"] integerValue]];
     } else {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", [[dico objectForKey:@"count"] integerValue]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"PlaylistsView_cell_detail",nil), [[dico objectForKey:@"count"] integerValue]];
     }
-    if (neverSynchronized) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (never synchronized)",
-                                     cell.detailTextLabel.text];
-    } else {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (synchronized)",
-                                     cell.detailTextLabel.text];
-    }
+//    if (neverSynchronized) {
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (never synchronized)",
+//                                     cell.detailTextLabel.text];
+//    } else {
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (synchronized)",
+//                                     cell.detailTextLabel.text];
+//    }
     
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 
@@ -496,8 +495,6 @@
             [_selectedPlaylists removeObject:item];
             cell.accessoryType = UITableViewCellAccessoryNone; 
         }
-        NSLog(@"selected playlists = %@", _selectedPlaylists);
-        NSLog(@"unselected playlists = %@", _unselectedPlaylists);
         return;
     }
     
