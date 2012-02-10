@@ -16,6 +16,7 @@
     IBOutlet UIBarButtonItem* _nowPlayingButton;
     
     IBOutlet UITableView* _tableView;
+  IBOutlet UIButton* _inviteButton;
     
     NSArray* _friends_online;
     NSArray* _friends_offline;
@@ -25,6 +26,7 @@
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;
 
 - (IBAction)menuBarItemClicked:(id)sender;
+- (IBAction)inviteButtonClicked:(id)sender;
 
 
 @end
