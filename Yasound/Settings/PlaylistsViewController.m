@@ -141,6 +141,7 @@
             [_remotePlaylistsDesc addObject:dico];
         }
         if ([enabled boolValue] == FALSE) {
+            NSLog(@"adding %@ to unselected playlists", dico);
             [_unselectedPlaylists addObject:dico];
         } else {
             [_selectedPlaylists addObject:dico];
@@ -409,8 +410,6 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    NSLog(@"ROW  section %d   row %d", indexPath.section, indexPath.row);
-    
     NSDictionary* dico = [source objectAtIndex:indexPath.row];
   
     BOOL neverSynchronized = [(NSNumber *)[dico objectForKey:@"neverSynchronized"] boolValue];
@@ -480,6 +479,7 @@
     }
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selected = FALSE;
     NSDictionary *item = [source objectAtIndex:indexPath.row];
     MPMediaPlaylist *mediaPlaylist = [item objectForKey:@"mediaPlaylist"];
     if (mediaPlaylist == NULL) {
@@ -487,13 +487,17 @@
         if ([_unselectedPlaylists containsObject:item] == YES)
         {
             [_unselectedPlaylists removeObject:item];
+            [_selectedPlaylists addObject:item];
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         else
         {
             [_unselectedPlaylists addObject:item];
+            [_selectedPlaylists removeObject:item];
             cell.accessoryType = UITableViewCellAccessoryNone; 
         }
+        NSLog(@"selected playlists = %@", _selectedPlaylists);
+        NSLog(@"unselected playlists = %@", _unselectedPlaylists);
         return;
     }
     
@@ -511,27 +515,24 @@
         return;
     }
     
-    if ([_selectedPlaylists containsObject:item] == YES)
-    {
-        [_selectedPlaylists removeObject:item];
-        [_unselectedPlaylists addObject:item];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        
-        if ([_selectedPlaylists count] == 0)
-            [_nextBtn setEnabled:NO];
-
-    }
-    else
+    if ([_unselectedPlaylists containsObject:item] == YES)
     {
         [_unselectedPlaylists removeObject:item];
         [_selectedPlaylists addObject:item];
-        cell.accessoryType = UITableViewCellAccessoryCheckmark; 
-
-        [_nextBtn setEnabled:YES];
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else
+    {
+        [_unselectedPlaylists addObject:item];
+        [_selectedPlaylists removeObject:item];
+        cell.accessoryType = UITableViewCellAccessoryNone; 
     }
     
-    cell.selected = FALSE;
-    _changed = YES;
+    if ([_selectedPlaylists count] == 0)
+        [_nextBtn setEnabled:NO];
+    else {
+        [_nextBtn setEnabled:YES];
+    }
 }
 
 
@@ -613,8 +614,6 @@
                                          compressed:YES 
                                              target:self 
                                              action:@selector(didBuildDataWithPlaylist:)];
-    
-//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
 }
 
 
