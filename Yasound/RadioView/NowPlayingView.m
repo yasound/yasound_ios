@@ -32,6 +32,7 @@
     if (self = [super init])
     {
         _song = song;
+      _userLikesSong = NO;
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         
@@ -91,24 +92,18 @@
         // track interaction buttons
         TrackInteractionView* trackInteractionView = [[TrackInteractionView alloc] initWithSong:song];
         trackInteractionView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+        [trackInteractionView setButtonLikeClickedTarget:self action:@selector(trackInteractionViewLikeButtonCliked)];
         [self addSubview:trackInteractionView];
         
         // header now playing bar likes
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarLikes" error:nil];
         _likesLabel = [sheet makeLabel];
-        _likesLabel.text = @"0";
-        
-        if (_likesLabel.text.length > 4)
-            _likesLabel.font = [_likesLabel.font fontWithSize:9];
-        else if (_likesLabel.text.length > 3)
-            _likesLabel.font = [_likesLabel.font fontWithSize:10];
-        else if (_likesLabel.text.length > 2)
-            _likesLabel.font = [_likesLabel.font fontWithSize:11];
-        else 
-            _likesLabel.font = [_likesLabel.font fontWithSize:13];
+        [self setNbLikes:0];
         
         
-        [self addSubview:_likesLabel];        
+        [self addSubview:_likesLabel];  
+      
+      [[YasoundDataProvider main] songUserForSong:_song target:self action:@selector(receivedSongUser:withInfo:)];
         
         
         
@@ -141,23 +136,45 @@
     return self;
 }
 
+- (void)setNbLikes:(int)nbLikes
+{
+  _likesLabel.text = [NSString stringWithFormat:@"%d", nbLikes];
+  
+  if (_likesLabel.text.length > 4)
+    _likesLabel.font = [_likesLabel.font fontWithSize:9];
+  else if (_likesLabel.text.length > 3)
+    _likesLabel.font = [_likesLabel.font fontWithSize:10];
+  else if (_likesLabel.text.length > 2)
+    _likesLabel.font = [_likesLabel.font fontWithSize:11];
+  else 
+    _likesLabel.font = [_likesLabel.font fontWithSize:13];
+}
+
 - (void)setSongStatus:(SongStatus*)status
 {
-    _likesLabel.text = [NSString stringWithFormat:@"%d", [status.likes intValue]];
-
-    if (_likesLabel.text.length > 4)
-        _likesLabel.font = [_likesLabel.font fontWithSize:9];
-    else if (_likesLabel.text.length > 3)
-        _likesLabel.font = [_likesLabel.font fontWithSize:10];
-    else if (_likesLabel.text.length > 2)
-        _likesLabel.font = [_likesLabel.font fontWithSize:11];
-    else 
-        _likesLabel.font = [_likesLabel.font fontWithSize:13];
+  [self setNbLikes:[status.likes intValue]];
 
 //    _dislikesLabel.text = [NSString stringWithFormat:@"%d", [status.dislikes intValue]];
 }
 
+- (void)trackInteractionViewLikeButtonCliked
+{
+  if (_userLikesSong)
+    return; // already likes this song
+  
+  int nbLikes = [_likesLabel.text intValue];
+  nbLikes++;
+  [self setNbLikes:nbLikes];
+  _userLikesSong = YES;
+}
 
+- (void)receivedSongUser:(SongUser*)songUser withInfo:(NSDictionary*)info
+{
+  if (!songUser)
+    return;
+  
+  _userLikesSong = ([songUser userMood] == eMoodLike);
+}
 
 
 

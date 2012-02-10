@@ -27,6 +27,8 @@
         _song = song;
         [_song retain];
         _sharing = NO;
+      _buttonLikedClickedTarget = nil;
+      _buttonLikedClickedAction = nil;
         
 //        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TrackInteraction" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //        
@@ -72,6 +74,12 @@
 }
 
 
+- (void)setButtonLikeClickedTarget:(id)target action:(SEL)action
+{
+  _buttonLikedClickedTarget = target;
+  _buttonLikedClickedAction = action;
+}
+
 #define SPINNER_DELAY 1.5f
 
 - (void)onTrackLike:(id)sender
@@ -79,6 +87,9 @@
     [[YasoundDataProvider main] setMood:eMoodLike forSong:_song];
     [[ActivityModelessSpinner main] addRefForTimeInterval:SPINNER_DELAY];
     //[ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_like", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+  
+  if (_buttonLikedClickedTarget && _buttonLikedClickedAction)
+    [_buttonLikedClickedTarget performSelector:_buttonLikedClickedAction];
 }
 
 - (void)onTrackDislike:(id)sender

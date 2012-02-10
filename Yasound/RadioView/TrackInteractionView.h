@@ -14,9 +14,13 @@
     Song* _song;
     
     BOOL _sharing;
+  
+  id _buttonLikedClickedTarget;
+  SEL _buttonLikedClickedAction;
 }
 
 - (id)initWithSong:(Song*)song;
+- (void)setButtonLikeClickedTarget:(id)target action:(SEL)action;
 
 @end
 
