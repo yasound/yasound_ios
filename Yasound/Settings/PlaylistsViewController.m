@@ -433,7 +433,7 @@
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
         } else if (_displayMode == eDisplayModeEdit) {
-            if (mediaPlaylist != NULL) {
+            if (mediaPlaylist != NULL && neverSynchronized == FALSE) {
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
         }
@@ -502,7 +502,11 @@
     
     if (_displayMode == eDisplayModeEdit) {
         // display detailed view about playlist
-        
+        BOOL neverSynchronized = [(NSNumber *)[item objectForKey:@"neverSynchronized"] boolValue];
+        if (neverSynchronized) {
+          return;
+        }
+      
         if (_songsViewController) {
             [_songsViewController release];
         }
