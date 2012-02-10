@@ -12,7 +12,8 @@
 #import "RadioViewController.h"
 #import "YasoundDataProvider.h"
 #import "AudioStreamManager.h"
-
+#import "BundleFileManager.h"
+#import "Theme.h"
 
 @implementation RadioSelectionViewController
 
@@ -49,6 +50,11 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+    
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuBackground" error:nil];    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
 
 //  _topBarTitle.text = NSLocalizedString(@"FavoritesView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);

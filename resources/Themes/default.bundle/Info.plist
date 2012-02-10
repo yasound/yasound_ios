@@ -828,7 +828,35 @@
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>
-			<string>images/Menu</string>
+			<string>images/TableView</string>
+		</dict>
+		<key>TableViewStyleSelectionBar</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>StyleSelectionBar</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/TableView</string>
+		</dict>
+		<key>TableViewDisclosure</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>normal</key>
+			<string>TableViewDisclosure</string>
+			<key>highlighted</key>
+			<string>TableViewDisclosureHighlighted</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/TableView</string>
 		</dict>
 		<key>MenuSectionTitle</key>
 		<dict>
