@@ -53,7 +53,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     return;
 #endif
     
-    if ([radio.id intValue]  == [self.currentRadio.id intValue])
+    if (_gAudioStreamer && [radio.id intValue]  == [self.currentRadio.id intValue])
         return;
     
     
@@ -91,7 +91,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     
     if (_gAudioStreamer == nil)
         return;
-    //[_gAudioStreamer stop];
+    [_gAudioStreamer stop];
     [_gAudioStreamer release];
     _gAudioStreamer = nil;
     

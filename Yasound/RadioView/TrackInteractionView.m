@@ -139,10 +139,14 @@
     if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
         _sharing = YES;
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_share_facebook", nil)];
-        [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_FOR_SHARING target:self selector:@selector(onSharingTimeout:) userInfo:nil repeats:NO];
-
-        [[YasoundSessionManager main] postMessageForFacebook:fullMessage title:title picture:pictureURL link:fullLink target:self action:@selector(onPostMessageFinished:)];
+      
+      NSString* alertMsg = [NSString stringWithFormat: NSLocalizedString(@"ShareTrackOnFacebookAlertMessage", nil), fullMessage];
+      UIAlertView *message = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"ShareTrackOnFacebookAlertTitle", nil)
+                                                        message: alertMsg
+                                                       delegate: self
+                                              cancelButtonTitle: NSLocalizedString(@"ShareTrackOnFacebookAlertCancel", nil)
+                                              otherButtonTitles: NSLocalizedString(@"ShareTrackOnFacebookAlertShare", nil), nil];
+      [message show];
     }
 
     else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
@@ -165,7 +169,31 @@
     [fullLink release];
 }
 
-
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+  if (buttonIndex == 0)
+    return;
+  
+  NSString* message = NSLocalizedString(@"I am currently listening to %@, by %@ on %@", nil);
+  NSString* title = NSLocalizedString(@"Yasound share", nil);
+  NSURL* pictureURL = [[NSURL alloc] initWithString:@"http://yasound.com/fr/images/logo.png"];
+  NSString* link = @"https://dev.yasound.com/listen/%@";
+  
+  Radio *currentRadio = [AudioStreamManager main].currentRadio;
+  
+  NSString* fullMessage = [NSString stringWithFormat:message,
+                           _song.name,
+                           _song.artist,
+                           currentRadio.name];
+  
+  NSURL* fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link,
+                                                   currentRadio.uuid]];
+  
+  [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_share_facebook", nil)];
+  [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_FOR_SHARING target:self selector:@selector(onSharingTimeout:) userInfo:nil repeats:NO];
+  
+  [[YasoundSessionManager main] postMessageForFacebook:fullMessage title:title picture:pictureURL link:fullLink target:self action:@selector(onPostMessageFinished:)];
+}
 
 - (void)onSharingTimeout:(NSTimer*)timer
 {

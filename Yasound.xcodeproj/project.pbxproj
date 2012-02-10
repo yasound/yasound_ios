@@ -89,6 +89,9 @@
 		B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
+		B17A085714E4E881008E4742 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B138AA6714E2BAFC0069E08A /* SongUploader.m */; };
+		B17A085814E4E882008E4742 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B138AA6714E2BAFC0069E08A /* SongUploader.m */; };
+		B17A085914E4E883008E4742 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B138AA6714E2BAFC0069E08A /* SongUploader.m */; };
 		B19245DA14E2DAF700B18EEF /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B19245D914E2DAF700B18EEF /* TSLibraryImport.m */; };
 		B19245DB14E2DAF700B18EEF /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B19245D914E2DAF700B18EEF /* TSLibraryImport.m */; };
 		B19245DC14E2DAF700B18EEF /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B19245D914E2DAF700B18EEF /* TSLibraryImport.m */; };
@@ -3852,6 +3855,7 @@
 				40ED563914E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */,
 				40ED563D14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 				B19BF5EF14E420DA00BF8FCF /* SongsViewController.m in Sources */,
+				B17A085714E4E881008E4742 /* SongUploader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3990,6 +3994,7 @@
 				40ED563B14E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */,
 				40ED563F14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 				B19BF5F114E420DA00BF8FCF /* SongsViewController.m in Sources */,
+				B17A085914E4E883008E4742 /* SongUploader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4266,6 +4271,7 @@
 				40ED563A14E41F7200C0A0F4 /* UIImage+Alpha.m in Sources */,
 				40ED563E14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 				B19BF5F014E420DA00BF8FCF /* SongsViewController.m in Sources */,
+				B17A085814E4E882008E4742 /* SongUploader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

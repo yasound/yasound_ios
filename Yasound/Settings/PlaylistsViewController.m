@@ -44,6 +44,8 @@
         _playlists = [playlistsquery collections];
         [_playlists retain];
 
+        [self.view addSubview:_tableView];
+        
         Radio* radio = [YasoundDataProvider main].radio;
         [[YasoundDataProvider main] playlistsForRadio:radio 
                                                target:self 
@@ -85,6 +87,7 @@
         NSNumber* count = playlist.song_count;
         NSNumber* matched = playlist.matched_song_count;
         NSNumber* unmatched = playlist.unmatched_song_count;
+        NSNumber* enabled = playlist.enabled;
         NSNumber* neverSynchronized = [NSNumber numberWithBool:FALSE];
         
         NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
@@ -95,6 +98,7 @@
         [dico setObject:matched forKey:@"matched"];
         [dico setObject:unmatched forKey:@"unmatched"];
         [dico setObject:neverSynchronized forKey:@"neverSynchronized"];
+        [dico setObject:enabled forKey:@"enabled"];
         [_playlistsDesc addObject:dico];
     }
     
@@ -110,7 +114,10 @@
             [dico setObject:count forKey:@"count"];
             [dico setObject:localPlaylistIndex forKey:@"localPlaylistIndex"];
             
-            [_selectedPlaylists addObject:playlist];
+            BOOL enabled = [(NSNumber *)[dico objectForKey:@"enabled"] boolValue]; 
+            if (enabled == TRUE) {
+                [_selectedPlaylists addObject:playlist];
+            }
         } else {
             // new playlist on local device
             NSNumber* neverSynchronized = [NSNumber numberWithBool:YES];
@@ -221,7 +228,6 @@
     }
     
     _cellHowtoLabel.text = NSLocalizedString(@"PlaylistsView_howto", nil);
-    [self refreshView];
 }
 
 - (void)viewDidUnload
@@ -246,8 +252,7 @@
         _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
         [_container addSubview:_itunesConnectView];
     } else {
-        [_itunesConnectView removeFromSuperview];
-        [self.view addSubview:_tableView];
+        [_tableView reloadData];
     }
 }
 
