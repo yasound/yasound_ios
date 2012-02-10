@@ -224,15 +224,18 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     NSString* style = nil;
+    NSString* selectedStyle = nil;
     
     if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO))
     {
         style = @"MenuRowSingle";
+        selectedStyle = @"MenuRowSingleSelected";
     }
     
     else if (indexPath.row == 0)
     {
         style = @"MenuRowFirst";
+        selectedStyle = @"MenuRowFirstSelected";
     }
     
     else if (
@@ -240,14 +243,17 @@
              ((indexPath.section == SECTION_ME) && (indexPath.row == SECTION_ME_NB_ROWS-1)) )
     {
         style = @"MenuRowLast";    
+        selectedStyle = @"MenuRowFirstSelected";
     }
     else if ((indexPath.section == SECTION_MISC) && (indexPath.row == SECTION_MISC_NB_ROWS-1))
     {
         style = @"MenuRowInter";        
+        selectedStyle = @"MenuRowFirstSelected";
     }
     else
     {
         style = @"MenuRowInter";        
+        selectedStyle = @"MenuRowFirstSelected";
     }
 
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:style retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -255,6 +261,12 @@
     view.frame = sheet.frame;
     cell.backgroundView = view;
     [view release];
+
+    sheet = [[Theme theme] stylesheetForKey:selectedStyle retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* selectedView = [[UIImageView alloc] initWithImage:[sheet image]];
+    selectedView.frame = sheet.frame;
+    cell.selectedBackgroundView = selectedView;
+    [selectedView release];
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

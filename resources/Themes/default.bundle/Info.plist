@@ -860,6 +860,19 @@
 			<key>path</key>
 			<string>images/Menu</string>
 		</dict>
+		<key>MenuRowFirstSelected</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MenuRowFirstSelected</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Menu</string>
+		</dict>
 		<key>MenuRowInter</key>
 		<dict>
 			<key>x</key>
@@ -868,6 +881,19 @@
 			<integer>0</integer>
 			<key>name</key>
 			<string>MenuRowInter</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Menu</string>
+		</dict>
+		<key>MenuRowInterSelected</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MenuRowInterSelected</string>
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>
@@ -886,6 +912,19 @@
 			<key>path</key>
 			<string>images/Menu</string>
 		</dict>
+		<key>MenuRowLastSelected</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MenuRowLastSelected</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Menu</string>
+		</dict>
 		<key>MenuRowSingle</key>
 		<dict>
 			<key>x</key>
@@ -894,6 +933,19 @@
 			<integer>0</integer>
 			<key>name</key>
 			<string>MenuRowSingle</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Menu</string>
+		</dict>
+		<key>MenuRowSingleSelected</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MenuRowSingleSelected</string>
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>

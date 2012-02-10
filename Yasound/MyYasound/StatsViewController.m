@@ -9,6 +9,9 @@
 #import "StatsViewController.h"
 #import "YasoundDataProvider.h"
 #import "DateAdditions.h"
+#import "BundleFileManager.h"
+#import "Theme.h"
+
 
 #define SECTION_STATS 0
 #define ROW_STATS_LISTENERS 0
@@ -20,11 +23,11 @@
 //#define ROW_WEEKCHART_CHART 1
 
 #define SECTION_MONTHCHART 1
-#define ROW_MONTHCHART_CONTROL 0
-#define ROW_MONTHCHART_CHART 1
+//#define ROW_MONTHCHART_CONTROL 0
+#define ROW_MONTHCHART_CHART 0
 
 #define SECTION_LEADERBOARD 2
-#define ROW_LEADERBOARD_CONTROL 0
+//#define ROW_LEADERBOARD_CONTROL 0
 
 
 #define GRAPH_X 5
@@ -91,17 +94,17 @@
     _titleLabel.text = NSLocalizedString(@"StatsView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
-    _btnNextWeek.enabled = NO;
-    _btnNextMonth.enabled = NO;
+//    _btnNextWeek.enabled = NO;
+//    _btnNextMonth.enabled = NO;
     
     // simplify the process for now
-    [_btnNextWeek removeFromSuperview];
-    [_btnNextMonth removeFromSuperview];
-    [_btnPreviousWeek removeFromSuperview];
-    [_btnPreviousMonth removeFromSuperview];
+//    [_btnNextWeek removeFromSuperview];
+//    [_btnNextMonth removeFromSuperview];
+//    [_btnPreviousWeek removeFromSuperview];
+//    [_btnPreviousMonth removeFromSuperview];
     
-    _cellMonthSelectorLabel.text = NSLocalizedString(@"StatsView_monthselector_label", nil);
-  _cellLeaderBoardSelectorLabel.text = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
+//    _cellMonthSelectorLabel.text = NSLocalizedString(@"StatsView_monthselector_label", nil);
+//  _cellLeaderBoardSelectorLabel.text = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
     
   [[YasoundDataProvider main] monthListeningStatsWithTarget:self action:@selector(receivedMonthStats:withInfo:)];
   [[YasoundDataProvider main] leaderboardWithTarget:self action:@selector(receivedLeaderBoard:withInfo:)];
@@ -204,12 +207,12 @@
   if (section == SECTION_STATS)
     return 1;
   else if (section == SECTION_MONTHCHART)
-    return 2;
+    return 1;
   else if (section == SECTION_LEADERBOARD)
   {
     if (!_leaderboard)
         return 0;
-    return _leaderboard.count + 1;
+    return _leaderboard.count;
   }
   return 0;
 }
@@ -225,6 +228,42 @@
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 22;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    
+    if (section == 0)
+        return nil;
+    
+    if (section == SECTION_MONTHCHART)
+        title = NSLocalizedString(@"StatsView_monthselector_label", nil);
+    
+    else if (section == SECTION_LEADERBOARD)
+        title = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
+    
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    UIImage* image = [sheet image];
+    CGFloat height = image.size.height;
+    UIImageView* view = [[UIImageView alloc] initWithImage:image];
+    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
+    
+    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
+
+
+
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
@@ -237,19 +276,51 @@
     }
     
     
-    UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
-    cell.backgroundView = view;
-    [view release];
+    NSInteger nbRows;
+    if (indexPath.section == SECTION_STATS)
+    {
+        nbRows = 1;
+    }
+    else if (indexPath.section == SECTION_LEADERBOARD) 
+    {
+        nbRows = [_leaderboard count];
+    }
+    
+    if (nbRows == 1)
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else if (indexPath.row == 0)
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else if (indexPath.row == (nbRows -1))
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
     
 }
 
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CONTROL))
-    return _cellMonthSelector;
-  if ((indexPath.section == SECTION_LEADERBOARD) && (indexPath.row == ROW_LEADERBOARD_CONTROL))
-    return _cellLeaderBoardSelector;
+//  if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CONTROL))
+//    return _cellMonthSelector;
+//  if ((indexPath.section == SECTION_LEADERBOARD) && (indexPath.row == ROW_LEADERBOARD_CONTROL))
+//    return _cellLeaderBoardSelector;
   
   
   
@@ -263,7 +334,8 @@
   }
   
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  cell.textLabel.textColor = [UIColor blackColor];
+  cell.textLabel.textColor = [UIColor whiteColor];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:160.f/255.f green:182.f/255.f blue:222.f/255.f alpha:1];
   
   if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_LISTENERS))
   {      
@@ -285,14 +357,20 @@
     [_monthGraphBoundingBox addSubview:_monthGraphView];
     _monthGraphView.clipsToBounds = YES;    
   }
-  else if ((indexPath.section == SECTION_LEADERBOARD) && (indexPath.row > ROW_LEADERBOARD_CONTROL))
+//  else if ((indexPath.section == SECTION_LEADERBOARD) && (indexPath.row > ROW_LEADERBOARD_CONTROL))
+  else if (indexPath.section == SECTION_LEADERBOARD)
   {
-    assert(indexPath.row > 0);
-    NSUInteger entryIndex = indexPath.row - 1;
+//    assert(indexPath.row > 0);
+//      NSUInteger entryIndex = indexPath.row - 1;
+      NSUInteger entryIndex = indexPath.row ;
     LeaderBoardEntry* entry = [_leaderboard objectAtIndex:entryIndex];
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", entry.leaderboard_rank, entry.name];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", entry.favorites, @"favoris"];
+      
+      if ([entry.favorites integerValue] > 1)
+          cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", entry.favorites, @"favoris"];
+      else
+          cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", entry.favorites, @"favori"];
     
     if ([entry isUserRadio])
       cell.textLabel.textColor = [UIColor redColor];

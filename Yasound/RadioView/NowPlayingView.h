@@ -14,6 +14,7 @@
     Song* _song;
     UILabel* _likesLabel;
   NSTimer* _timer;
+  BOOL _userLikesSong;
 }
 
 //@property (nonatomic, retain) UIButton* playPauseButton;
