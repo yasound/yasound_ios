@@ -43,6 +43,7 @@
     [_needSyncSongs release];
     [_matchedSongs release];
     [_unmatchedSongs release];
+    [_protectedSongs release];
     
     [super viewDidUnload];
 }
@@ -68,6 +69,10 @@
     if (_unmatchedSongs) {
         [_unmatchedSongs release];
     }
+
+    if (_protectedSongs) {
+        [_protectedSongs release];
+    }
     
     _matchedSongs = [[NSMutableArray alloc] init ];
     [_matchedSongs retain];
@@ -77,6 +82,9 @@
     
     _needSyncSongs = [[NSMutableArray alloc] init ];
     [_needSyncSongs retain];
+
+    _protectedSongs = [[NSMutableArray alloc] init ];
+    [_protectedSongs retain];
 }
 
 - (void)refreshView
@@ -89,18 +97,27 @@
 
 - (void)buildSongsData:(NSArray *)songs
 {
+    SongUploader *songUploader = [SongUploader main];
+    
     // split data between matched, unmatched, sync in progress songs
     for (Song *song in songs) {
+        if ([song.song isKindOfClass:[NSNumber class]]) {
+            [_matchedSongs addObject:song];
+            continue;
+        }
+        
+        if (![songUploader canUploadSong:song.name album:song.album artist:song.artist]) {
+            [_protectedSongs addObject:song];
+            continue;
+        }
+        
         BOOL needSync = [song.need_sync boolValue];
         if (needSync) {
             [_needSyncSongs addObject:song];
-        } else {
-            if ([song.song isKindOfClass:[NSNumber class]]) {
-                [_matchedSongs addObject:song];
-            } else {
-                [_unmatchedSongs addObject:song];
-            }
+            continue;
         }
+
+        [_unmatchedSongs addObject:song];
     }
 }
 
@@ -132,6 +149,8 @@
         return NSLocalizedString(@"SongsView_matched_songs", nil);
     } else if (section == 2) { 
         return NSLocalizedString(@"SongsView_need_sync_songs", nil);
+    } else if (section == 3) { 
+        return NSLocalizedString(@"SongsView_protected_songs", nil);
     }
     return @"Header";
 }
@@ -139,7 +158,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 4;
 }
 
 
@@ -152,6 +171,8 @@
         return [_matchedSongs count];
     } else if (section == 2) { 
         return [_needSyncSongs count];
+    } else if (section == 3) { 
+        return [_protectedSongs count];
     }
     return 0;
 }
@@ -168,6 +189,8 @@
         source = _matchedSongs;
     } else if (indexPath.section == 2) {
         source = _needSyncSongs;
+    } else if (indexPath.section == 3) {
+        source = _protectedSongs;
     }
     
     static NSString* CellIdentifier = @"SongCell";
@@ -196,9 +219,9 @@
         source = _matchedSongs;
     } else if (indexPath.section == 2) {
         source = _needSyncSongs;
+    } else if (indexPath.section == 3) {
+        source = _protectedSongs;
     }
-    
-    
     
     _selectedSong = [source objectAtIndex:indexPath.row];
     if (!_selectedSong) {
