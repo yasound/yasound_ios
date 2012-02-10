@@ -53,7 +53,6 @@
 
 - (void)refreshView
 {
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"Alert_contact_server", nil)];
     [[YasoundDataProvider main] songsForPlaylist:_playlistId target:self action:@selector(receiveSongs:withInfo:)];
 }
 
@@ -90,19 +89,30 @@
 
 -(void)uploadSongFinished
 {
-    [ActivityAlertView close];
+    [_hud hide:YES];
+    [_hud release];
     [self refreshView];
 }
 
 -(void)uploadSong:(Song *)song 
 {
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"Alert_contact_server", nil)];
+    _hud = [[MBProgressHUD alloc] initWithView:self.view];
+	[self.navigationController.view addSubview:_hud];
+	
+    // Set determinate mode
+    _hud.mode = MBProgressHUDModeDeterminate;
+    
+    _hud.labelText = NSLocalizedString(@"SongsView_upload_progress", nil);
+
+    [_hud show:YES];
+    
     [[SongUploader main] uploadSong:song.name 
                               album:song.album 
                              artist:song.artist
                              songId:song.id
                              target:self 
-                             action:@selector(uploadSongFinished)];
+                             action:@selector(uploadSongFinished)
+                   progressDelegate:_hud];
 }
 
 #pragma mark - TableView Source and Delegate
