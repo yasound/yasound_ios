@@ -151,12 +151,6 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    SongUploader *songUploader = [SongUploader main];
-    if (![songUploader canUploadSong:song.name album:song.album artist:song.artist]) {
-        cell.detailTextLabel.text = @"protected";
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    }
     BOOL needSync = [song.need_sync boolValue];
     if (needSync) {
         cell.detailTextLabel.text = @"synchronization in progress";
@@ -179,12 +173,16 @@
     }
     SongUploader *songUploader = [SongUploader main];
     if (![songUploader canUploadSong:_selectedSong.name album:_selectedSong.album artist:_selectedSong.artist]) {
-        return;
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongsView_alert_cannot_upload", nil) message:NSLocalizedString(@"SongsView_alert_cannot_upload_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;    
     }
     BOOL needSync = [_selectedSong.need_sync boolValue];
     if (needSync) {
         return;
     }    
+    
     
     UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SongsView_confirm_upload", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SongsView_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SongsView_upload_songs", nil), nil];
     
