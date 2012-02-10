@@ -18,12 +18,13 @@
 //#define PM_TAG_SONG @"SNG"
 
 
-#define PM_TAG_PLAYLIST @"LIST"
-#define PM_TAG_ARTIST @"ARTS"
-#define PM_TAG_ALBUM @"ALBM"
-#define PM_TAG_SONG @"SONG"
-#define PM_TAG_UUID @"UUID"
-
+#define PM_TAG_PLAYLIST             @"LIST"
+#define PM_TAG_ARTIST               @"ARTS"
+#define PM_TAG_ALBUM                @"ALBM"
+#define PM_TAG_SONG                 @"SONG"
+#define PM_TAG_UUID                 @"UUID"
+#define PM_TAG_REMOVE_PLAYLIST      @"REMV"
+#define PM_TAG_REMOTE_PLAYLIST      @"RLST"
 
 #define PM_FIELD_UNKNOWN @""
 
@@ -51,7 +52,7 @@
 
 + (PlaylistMoulinor*)main;
 
-- (BOOL)buildDataWithPlaylists:(NSArray*)mediaPlaylists binary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action;
+- (BOOL)buildDataWithPlaylists:(NSArray*)mediaPlaylists removedPlaylists:(NSArray*)removedPlaylists binary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action;
 
 - (void)emailData:(NSData*)data to:(NSString*)email mimetype:(NSString*)mimetype filename:(NSString*)filename controller:(UIViewController*)controller;
 

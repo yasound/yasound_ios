@@ -41,6 +41,12 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+
+- (void)dealloc
+{
+    [super dealloc];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -63,6 +69,11 @@
     
     [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(receiveRadios:info:)];
     [[ActivityModelessSpinner main] addRef];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
 }
 
 
