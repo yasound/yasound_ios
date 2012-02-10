@@ -44,8 +44,9 @@ static ActivityModelessSpinner* _main = nil;
 - (void)addRef
 {
     self.refcount++;
-    if (self.hidden)
-        [self show];
+// meeloo: we decided to disable this for now.
+//    if (self.hidden)
+//        [self show];
 }
 
 
@@ -65,8 +66,9 @@ static ActivityModelessSpinner* _main = nil;
     assert(self.refcount > 0);
     
     self.refcount--;
-    if (self.refcount == 0)
-        [self hide];
+// meeloo: we decided to disable this for now.
+//    if (self.refcount == 0)
+//        [self hide];
 }
 
 

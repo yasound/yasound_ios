@@ -22,7 +22,7 @@
 @property (retain, nonatomic) NSNumber* favorites;
 @property (retain, nonatomic) NSString* picture;
 @property (retain, nonatomic) NSString* tags;
-@property (retain, nonatomic) NSNumber* valid;
+@property (retain, nonatomic) NSNumber* ready;
 @property (retain, nonatomic) NSNumber* nb_current_users;
 
 - (NSArray*)tagsArray;

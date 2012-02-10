@@ -52,17 +52,18 @@
 
     BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" error:nil];
     
-    _ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];	
-    [_ai autorelease];
-    [_ai startAnimating];
-    [_ai setFrame:stylesheet.frame];
-    [self addSubview:_ai];
+    UIActivityIndicatorView* ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];	
+    [ai startAnimating];
+    [ai setFrame:stylesheet.frame];
+    [self addSubview:ai];
     
     ASIHTTPRequest *req = [ASIHTTPRequest requestWithURL:Url];
     // the https certificate seems to be ok but keep next line commented...
 //    req.validatesSecureCertificate = FALSE;
     req.requestMethod = @"GET";
     [req setDelegate:self];
+    req.userInfo = [NSDictionary dictionaryWithObject:ai forKey:@"ActivityIndicatorView"];
+  
     [req startAsynchronous];
 }
 
@@ -75,8 +76,11 @@
     // Use when fetching binary data
     NSData* data = [request responseData];
     [self setImage:[UIImage imageWithData: data]]; 
-    [_ai stopAnimating];
-    [_ai removeFromSuperview];
+  
+  UIActivityIndicatorView* ai  = [request.userInfo valueForKey:@"ActivityIndicatorView"];
+  [ai stopAnimating];
+  [ai removeFromSuperview];
+  [ai release];
 }
 
 
@@ -84,6 +88,11 @@
 {
   NSError *error = [request error];
   NSLog(@"HTTP Request error: %@", [error localizedDescription]);
+  
+  UIActivityIndicatorView* ai  = [request.userInfo valueForKey:@"ActivityIndicatorView"];
+  [ai stopAnimating];
+  [ai removeFromSuperview];
+  [ai release];
 }
 
 

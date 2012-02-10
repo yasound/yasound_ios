@@ -14,6 +14,8 @@
 @synthesize artist;
 @synthesize album;
 @synthesize cover;
+@synthesize song;
+@synthesize need_sync;
 
 @end
 

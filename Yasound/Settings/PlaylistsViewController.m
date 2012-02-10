@@ -15,6 +15,7 @@
 #import "RootViewController.h"
 #import "YasoundDataProvider.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "SongsViewController.h"
 
 #import "SongUploader.h"
 
@@ -30,7 +31,7 @@
     {
         _displayMode = eDisplayModeNormal;
         _wizard = wizard;
-        
+        _songsViewController = nil;
         _changed = NO;
         if (_wizard)
             _changed = YES;
@@ -44,6 +45,8 @@
         _playlists = [playlistsquery collections];
         [_playlists retain];
 
+        [self.view addSubview:_tableView];
+        
         Radio* radio = [YasoundDataProvider main].radio;
         [[YasoundDataProvider main] playlistsForRadio:radio 
                                                target:self 
@@ -79,20 +82,24 @@
 - (void)buildPlaylistData:(NSArray *)localPlaylists withRemotePlaylists:(NSArray *)remotePlaylists
 {
     for (Playlist *playlist in remotePlaylists) {
+        NSNumber* playlistId = [NSNumber numberWithInteger:playlist.id];
         NSString* name = playlist.name;
         NSString* source = playlist.source;
         NSNumber* count = playlist.song_count;
         NSNumber* matched = playlist.matched_song_count;
         NSNumber* unmatched = playlist.unmatched_song_count;
+        NSNumber* enabled = playlist.enabled;
         NSNumber* neverSynchronized = [NSNumber numberWithBool:FALSE];
         
         NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+        [dico setObject:playlistId forKey:@"playlistId"];
         [dico setObject:name forKey:@"name"];
         [dico setObject:source forKey:@"source"];
         [dico setObject:count forKey:@"count"];
         [dico setObject:matched forKey:@"matched"];
         [dico setObject:unmatched forKey:@"unmatched"];
         [dico setObject:neverSynchronized forKey:@"neverSynchronized"];
+        [dico setObject:enabled forKey:@"enabled"];
         [_playlistsDesc addObject:dico];
     }
     
@@ -108,7 +115,10 @@
             [dico setObject:count forKey:@"count"];
             [dico setObject:localPlaylistIndex forKey:@"localPlaylistIndex"];
             
-            [_selectedPlaylists addObject:playlist];
+            BOOL enabled = [(NSNumber *)[dico objectForKey:@"enabled"] boolValue]; 
+            if (enabled == TRUE) {
+                [_selectedPlaylists addObject:playlist];
+            }
         } else {
             // new playlist on local device
             NSNumber* neverSynchronized = [NSNumber numberWithBool:YES];
@@ -150,6 +160,9 @@
 
 - (void)dealloc
 {
+    if (_songsViewController) {
+        [_songsViewController release];
+    }
     [_localPlaylistsDesc release];
     [_remotePlaylistsDesc release];
     [_playlists release];
@@ -216,7 +229,6 @@
     }
     
     _cellHowtoLabel.text = NSLocalizedString(@"PlaylistsView_howto", nil);
-    [self refreshView];
 }
 
 - (void)viewDidUnload
@@ -241,8 +253,7 @@
         _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
         [_container addSubview:_itunesConnectView];
     } else {
-        [_itunesConnectView removeFromSuperview];
-        [self.view addSubview:_tableView];
+        [_tableView reloadData];
     }
 }
 
@@ -417,7 +428,7 @@
         else
             cell.accessoryType = UITableViewCellAccessoryNone;
         
-        if (!_wizard && _displayMode == eDisplayModeEdit) {
+        if (!_wizard && _displayMode == eDisplayModeEdit && !neverSynchronized) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
         
@@ -429,7 +440,7 @@
     NSNumber *unmatched = [dico objectForKey:@"unmatched"];
     
     if (matched != NULL && unmatched != NULL) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d (%d+%d) songs", 
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d (%d matched +%d unmatched) songs", 
                                      [[dico objectForKey:@"count"] integerValue],
                                      [matched integerValue],
                                      [unmatched integerValue]];
@@ -466,6 +477,19 @@
     if (localPlaylistIndex == NULL) {
         return;
     }
+    
+    if (_displayMode == eDisplayModeEdit) {
+        // display detailed view about playlist
+        
+        if (_songsViewController) {
+            [_songsViewController release];
+        }
+        NSNumber *playlistId = [item objectForKey:@"playlistId"];
+        _songsViewController = [[SongsViewController alloc] initWithNibName:@"SongsViewController" bundle:nil playlistId:[playlistId integerValue]];    
+        [self.navigationController pushViewController:_songsViewController animated:TRUE];
+        return;
+    }
+    
     
     MPMediaPlaylist* list = [_playlists objectAtIndex:[localPlaylistIndex integerValue]];
     

@@ -21,7 +21,7 @@
 @synthesize favorites;
 @synthesize picture;
 @synthesize tags;
-@synthesize valid;
+@synthesize ready;
 @synthesize nb_current_users;
 
 - (NSArray*)tagsArray

@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SongUploader : NSObject
+@interface SongUploader : NSObject {
+  NSString* _tempSongFile;
+  id _target;
+  SEL _selector;
+}
 + (SongUploader*)main;
 
-- (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist;
+- (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
 @end

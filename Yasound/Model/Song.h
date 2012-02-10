@@ -14,6 +14,8 @@
 @property (retain, nonatomic) NSString* artist;
 @property (retain, nonatomic) NSString* album;
 @property (retain, nonatomic) NSString* cover;
+@property (retain, nonatomic) NSNumber* song;
+@property (retain, nonatomic) NSNumber* need_sync;
 
 @end
 
