@@ -8,14 +8,16 @@
 
 #import "TestflightViewController.h"
 #import "Playlist.h"
+#import "Song.h"
 
-@interface SongsViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SongsViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 {
     NSInteger _playlistId;
     IBOutlet UITableView* _tableView;  
     
     NSMutableArray* _matchedSongs; // Array of Song*
     NSMutableArray* _unmatchedSongs; // Array of Song*
+    Song *_selectedSong;
 }
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil playlistId:(NSInteger)playlistId;
 -(IBAction)onBack:(id)sender;

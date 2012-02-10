@@ -9,6 +9,7 @@
 #import "SongsViewController.h"
 #import "YasoundDataProvider.h"
 #import "ActivityAlertView.h"
+#import "SongUploader.h"
 
 @implementation SongsViewController
 
@@ -64,15 +65,29 @@
 #pragma mark - Private methods
 - (void)buildSongsData:(NSArray *)songs
 {
+    // split data between matched and unmatched songs
     for (Song *song in songs) {
-        NSLog(@"song = %@, yasoundsong = %@", song.name, song.song);
         if ([song.song isKindOfClass:[NSNumber class]]) {
             [_matchedSongs addObject:song];
         } else {
-            NSLog(@"unmatched!");
             [_unmatchedSongs addObject:song];
         }
     }
+}
+
+-(void)uploadSongFinished
+{
+    [ActivityAlertView close];
+}
+
+-(void)uploadSong:(Song *)song 
+{
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"Alert_contact_server", nil)];
+    [[SongUploader main] uploadSong:song.name 
+                              album:song.album 
+                             artist:song.artist 
+                             target:self 
+                             action:@selector(uploadSongFinished)];
 }
 
 #pragma mark - TableView Source and Delegate
@@ -130,6 +145,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSMutableArray *source = NULL;
+    if (indexPath.section == 0) {
+        source = _unmatchedSongs;
+    } else if (indexPath.section == 1) {
+        source = _matchedSongs;
+    }
+
+    _selectedSong = [source objectAtIndex:indexPath.row];
+    if (!_selectedSong) {
+        return;
+    }
+    
+    UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you want to upload song ?", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Submit", nil), nil];
+    
+    popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [popupQuery showInView:self.view];
+    [popupQuery release];
+    
 
 }
 
@@ -147,6 +180,16 @@
     [self buildSongsData:songs];
     [_tableView reloadData];
     [ActivityAlertView close];
+}
+
+#pragma mark - ActionSheet Delegate
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+    if (buttonIndex == 0 && _selectedSong) {
+        [self uploadSong:_selectedSong];
+    }
 }
 
 
