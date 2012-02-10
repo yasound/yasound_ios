@@ -147,17 +147,17 @@
     cell.textLabel.text = song.name;
     
     if ([song.song isKindOfClass:[NSNumber class]]) {
-        cell.detailTextLabel.text = @"synchronized";
+        cell.detailTextLabel.text = NSLocalizedString(@"SongsView_synchronized", nil);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     BOOL needSync = [song.need_sync boolValue];
     if (needSync) {
-        cell.detailTextLabel.text = @"synchronization in progress";
+        cell.detailTextLabel.text = NSLocalizedString(@"SongsView_synchronization_in_progress", nil);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    cell.detailTextLabel.text = @"click to synchronize";
+    cell.detailTextLabel.text = NSLocalizedString(@"SongsView_click_to_synchronize", nil);
     return cell;
 }
 
