@@ -305,7 +305,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 28;
+    return 33;
 }
 
 
@@ -323,7 +323,7 @@
         title = NSLocalizedString(@"PlaylistsView_table_header_other_playlists", nil);
 
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableViewSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
     UIImage* image = [sheet image];
     CGFloat height = image.size.height;
@@ -457,6 +457,7 @@
                                      cell.detailTextLabel.text];
     }
     
+    cell.detailTextLabel.textColor = [UIColor grayColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 
     
