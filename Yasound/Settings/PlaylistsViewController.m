@@ -357,14 +357,14 @@
     NSInteger nbRows;
     if (indexPath.section == 1)
     {
-        NSInteger nbRows = [_localPlaylistsDesc count];
+        nbRows = [_localPlaylistsDesc count];
     }
     else if (indexPath.section == 2) 
     {
-        NSInteger nbRows = [_remotePlaylistsDesc count];
+        nbRows = [_remotePlaylistsDesc count];
     }
     
-    if (nbRows == 0)
+    if (nbRows == 1)
     {
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
         cell.backgroundView = view;
