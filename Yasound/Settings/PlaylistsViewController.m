@@ -141,7 +141,6 @@
             [_remotePlaylistsDesc addObject:dico];
         }
         if ([enabled boolValue] == FALSE) {
-            NSLog(@"adding %@ to unselected playlists", dico);
             [_unselectedPlaylists addObject:dico];
         } else {
             [_selectedPlaylists addObject:dico];
@@ -433,7 +432,7 @@
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
         } else if (_displayMode == eDisplayModeEdit) {
-            if (mediaPlaylist != NULL) {
+            if (mediaPlaylist != NULL && neverSynchronized == FALSE) {
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
         }
@@ -443,20 +442,19 @@
     NSNumber *unmatched = [dico objectForKey:@"unmatched"];
     
     if (matched != NULL && unmatched != NULL) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d (%d matched +%d unmatched) songs", 
-                                     [[dico objectForKey:@"count"] integerValue],
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"PlaylistsView_cell_detail_with_matched", nil), 
                                      [matched integerValue],
-                                     [unmatched integerValue]];
+                                     [[dico objectForKey:@"count"] integerValue]];
     } else {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", [[dico objectForKey:@"count"] integerValue]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"PlaylistsView_cell_detail",nil), [[dico objectForKey:@"count"] integerValue]];
     }
-    if (neverSynchronized) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (never synchronized)",
-                                     cell.detailTextLabel.text];
-    } else {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (synchronized)",
-                                     cell.detailTextLabel.text];
-    }
+//    if (neverSynchronized) {
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (never synchronized)",
+//                                     cell.detailTextLabel.text];
+//    } else {
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (synchronized)",
+//                                     cell.detailTextLabel.text];
+//    }
     
     cell.detailTextLabel.textColor = [UIColor grayColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
@@ -497,8 +495,6 @@
             [_selectedPlaylists removeObject:item];
             cell.accessoryType = UITableViewCellAccessoryNone; 
         }
-        NSLog(@"selected playlists = %@", _selectedPlaylists);
-        NSLog(@"unselected playlists = %@", _unselectedPlaylists);
         return;
     }
     
@@ -506,7 +502,11 @@
     
     if (_displayMode == eDisplayModeEdit) {
         // display detailed view about playlist
-        
+        BOOL neverSynchronized = [(NSNumber *)[item objectForKey:@"neverSynchronized"] boolValue];
+        if (neverSynchronized) {
+          return;
+        }
+      
         if (_songsViewController) {
             [_songsViewController release];
         }
