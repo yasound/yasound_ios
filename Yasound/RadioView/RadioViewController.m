@@ -1625,6 +1625,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onStatusBarClosed:(NSString *)animationId finished:(BOOL)finished context:(void *)context 
 {
+    [UIView setAnimationDelegate:nil];
   [_usersContainer removeFromSuperview];
   [_usersContainer release];
   _usersContainer = nil;

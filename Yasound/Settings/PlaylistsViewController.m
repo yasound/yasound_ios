@@ -305,7 +305,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 22;
+    return 28;
 }
 
 
@@ -418,7 +418,9 @@
   
     BOOL neverSynchronized = [(NSNumber *)[dico objectForKey:@"neverSynchronized"] boolValue];
     cell.textLabel.text = [dico objectForKey:@"name"];
-    
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+
     NSDictionary *selectedItem = [source objectAtIndex:indexPath.row];
     NSNumber *localPlaylistIndex = [selectedItem objectForKey:@"localPlaylistIndex"];
     if (localPlaylistIndex != NULL) {
@@ -454,6 +456,9 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (synchronized)",
                                      cell.detailTextLabel.text];
     }
+    
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+
     
     return cell;
 }
