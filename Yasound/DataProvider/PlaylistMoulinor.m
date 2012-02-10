@@ -57,7 +57,7 @@ static PlaylistMoulinor* _main = nil;
 // build a "CSV-like" formated NSData, from the playlists contents
 //
 //
-- (BOOL)buildDataWithPlaylists:(NSArray*)mediaPlaylists binary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action;
+- (BOOL)buildDataWithPlaylists:(NSArray*)mediaPlaylists removedPlaylists:(NSArray*)removedPlaylists binary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action;
 {
     if ((target == nil) || (action == nil))
     {
@@ -71,8 +71,10 @@ static PlaylistMoulinor* _main = nil;
     _target = target;
     _action = action;
     
+    NSArray *lists = [[NSArray alloc] initWithObjects:mediaPlaylists, removedPlaylists, nil];
+    
     // use an asynchronous operation
-    NSInvocationOperation* operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(thProcess:) object:mediaPlaylists];
+    NSInvocationOperation* operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(thProcess:) object:lists];
     [_queue addOperation:operation];
     [operation release];
     
@@ -88,7 +90,11 @@ static PlaylistMoulinor* _main = nil;
 
 - (void)thProcess:(id)userInfo
 {
-    NSArray* mediaPlaylists = userInfo;
+    NSArray* lists = userInfo;
+    NSArray* mediaPlaylists = [lists objectAtIndex:0];
+    NSArray* removedPlaylists = [lists objectAtIndex:1];
+    [lists release];
+    
     
     NSMutableData* data = [[NSMutableData alloc] init];
     
@@ -117,12 +123,25 @@ static PlaylistMoulinor* _main = nil;
 
     // uuid
     [data appendData:[self dataWithUUID]];
+
     // for all playlist
-    for (MPMediaPlaylist* list in mediaPlaylists)
+    for (NSDictionary* dico in mediaPlaylists) {
+        MPMediaPlaylist *mediaPlaylist = [dico objectForKey:@"mediaPlaylist"];
+        if (mediaPlaylist) {
+            NSData* playlistData = [self dataWithPlaylist:mediaPlaylist];
+            [data appendData:playlistData];
+        } else {
+            NSData* playlistData = [self dataWithRemotePlaylist:dico];
+            [data appendData:playlistData];
+        }
+    }
+    
+    for (NSDictionary* list in removedPlaylists)
     {
-        NSData* playlistData = [self dataWithPlaylist:list];
+        NSData* playlistData = [self dataWithRemovedPlaylist:list];
         [data appendData:playlistData];
     }
+    
     
     // delay for building the data
     double timePassedForBuilding_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
@@ -493,9 +512,99 @@ static PlaylistMoulinor* _main = nil;
     return data;
 }
 
+#pragma mark - Remote playlists
+    
+- (NSData*)dataWithRemotePlaylist:(NSDictionary*)playlist
+{
+    NSString* title = [playlist objectForKey:@"name"];
+    NSString* source = [playlist objectForKey:@"source"];
+    
+    NSMutableData* data = [[NSMutableData alloc] init];
+    
+    //.............................................................................................
+    // an entry for the playlist
+    //
+    if (!_binary)
+    {
+        NSString* title = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_REMOTE_PLAYLIST, title];
+        NSData* titleData = [title dataUsingEncoding:NSUTF8StringEncoding];
+        [data appendData:titleData];
+        NSData* sourceData = [source dataUsingEncoding:NSUTF8StringEncoding];
+        [data appendData:sourceData];
+    }
+    else
+    {
+        // write tag playlist
+        const char* str = (const char*) [PM_TAG_REMOTE_PLAYLIST UTF8String];
+        int16_t size = strlen(str);
+        [data appendBytes:str length:size];    
+        
+        str = (const char*) [title UTF8String];
+        size = strlen(str);
+        
+        // write playlist title size
+        [data appendBytes:&size length:SIZEOF_INT16];
+        // write playlist title 
+        [data appendBytes:str length:size];    
+        
+        str = (const char*) [source UTF8String];
+        size = strlen(str);
+        
+        // write source size
+        [data appendBytes:&size length:SIZEOF_INT16];
+        // write source 
+        [data appendBytes:str length:size];    
+    }
+    return data;
+}
+    
+#pragma mark - Removed playlists
+
+- (NSData*)dataWithRemovedPlaylist:(NSDictionary*)playlist
+{
+    NSString* title = [playlist objectForKey:@"name"];
+    NSString* source = [playlist objectForKey:@"source"];
     
     
+    NSMutableData* data = [[NSMutableData alloc] init];
     
+    //.............................................................................................
+    // an entry for the playlist
+    //
+    if (!_binary)
+    {
+        NSString* title = [NSString stringWithFormat:@"%@;\"%@\";\n", PM_TAG_REMOVE_PLAYLIST, title];
+        NSData* titleData = [title dataUsingEncoding:NSUTF8StringEncoding];
+        [data appendData:titleData];
+        NSData* sourceData = [source dataUsingEncoding:NSUTF8StringEncoding];
+        [data appendData:sourceData];
+    }
+    else
+    {
+        // write tag playlist
+        const char* str = (const char*) [PM_TAG_REMOVE_PLAYLIST UTF8String];
+        int16_t size = strlen(str);
+        [data appendBytes:str length:size];    
+        
+        str = (const char*) [title UTF8String];
+        size = strlen(str);
+        
+        // write playlist title size
+        [data appendBytes:&size length:SIZEOF_INT16];
+        // write playlist title 
+        [data appendBytes:str length:size];    
+
+        str = (const char*) [source UTF8String];
+        size = strlen(str);
+        
+        // write source size
+        [data appendBytes:&size length:SIZEOF_INT16];
+        // write source 
+        [data appendBytes:str length:size];    
+    }
+    return data;
+}
+
     
     
     

@@ -38,6 +38,7 @@ typedef enum {
     NSMutableArray* _playlistsDesc;        // NSArray of NSDictionary {name, count}
     NSMutableArray* _selectedPlaylists;    // NSMutableArray of MPMediaPlaylist*
     
+    NSMutableArray* _unselectedPlaylists;  // NSMutableArray of Dictionary
     NSMutableArray* _remotePlaylistsDesc;
     NSMutableArray* _localPlaylistsDesc;
     
