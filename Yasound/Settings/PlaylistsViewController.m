@@ -18,7 +18,8 @@
 
 #import "SongUploader.h"
 
-
+#import "BundleFileManager.h"
+#import "Theme.h"
 
 @implementation PlaylistsViewController
 
@@ -254,15 +255,15 @@
 #pragma mark - TableView Source and Delegate
 
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
-{
-    if (section == 1) {
-        return NSLocalizedString(@"PlaylistsView_table_header_local_playlists", nil);
-    } else if (section == 2) {
-        return NSLocalizedString(@"PlaylistsView_table_header_other_playlists", nil);
-    }
-    return nil;
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
+//{
+//    if (section == 1) {
+//        return NSLocalizedString(@"PlaylistsView_table_header_local_playlists", nil);
+//    } else if (section == 2) {
+//        return NSLocalizedString(@"PlaylistsView_table_header_other_playlists", nil);
+//    }
+//    return nil;
+//}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -288,11 +289,95 @@
 }
 
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//    if (tableView == _settingsTableView)
-//        [self willDisplayCellInSettingsTableView:cell forRowAtIndexPath:indexPath];
-//}
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 22;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    
+    if (section == 0)
+        return nil;
+    
+    if (section == 1)
+        title = NSLocalizedString(@"PlaylistsView_table_header_local_playlists", nil);
+    
+    else if (section == 2)
+        title = NSLocalizedString(@"PlaylistsView_table_header_other_playlists", nil);
+
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    UIImage* image = [sheet image];
+    CGFloat height = image.size.height;
+    UIImageView* view = [[UIImageView alloc] initWithImage:image];
+    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
+    
+    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
+
+
+
+
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    if ((indexPath.section == 0) && (indexPath.row == 0))
+    {
+        UIView* view = [[UIView alloc] initWithFrame:cell.frame];
+        view.backgroundColor = [UIColor clearColor];
+        cell.backgroundView = view;
+        [view release];
+        return;
+    }
+    
+    NSInteger nbRows;
+    if (indexPath.section == 1)
+    {
+        NSInteger nbRows = [_localPlaylistsDesc count];
+    }
+    else if (indexPath.section == 2) 
+    {
+        NSInteger nbRows = [_remotePlaylistsDesc count];
+    }
+    
+    if (nbRows == 0)
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else if (indexPath.row == 0)
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else if (indexPath.row == (nbRows -1))
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
