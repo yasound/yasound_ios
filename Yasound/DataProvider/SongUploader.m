@@ -85,6 +85,11 @@ static SongUploader* _main = nil;
   _selector = selector;
 
   NSURL *assetURL = [item valueForProperty:MPMediaItemPropertyAssetURL];
+  if (assetURL == nil) {
+    NSLog(@"assertURL is nil for %@", item);
+    return FALSE;
+  }
+  
   NSString* ext = [TSLibraryImport extensionForAssetURL:assetURL];
   
   NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

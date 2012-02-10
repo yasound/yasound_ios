@@ -55,6 +55,9 @@
         
         _selectedPlaylists = [[NSMutableArray alloc] init];
         [_selectedPlaylists retain];
+
+        _unselectedPlaylists = [[NSMutableArray alloc] init];
+        [_unselectedPlaylists retain];
         
         _localPlaylistsDesc = [[NSMutableArray alloc] init];
         [_localPlaylistsDesc retain];
@@ -107,37 +110,40 @@
     for (MPMediaPlaylist *playlist in localPlaylists) {
         NSString* name = [playlist valueForProperty: MPMediaPlaylistPropertyName];
         NSNumber* count = [NSNumber numberWithInteger:[playlist count]];
-        NSNumber* localPlaylistIndex = [NSNumber numberWithInt:[localPlaylists indexOfObject:playlist]];
 
         NSMutableDictionary *dico = [self findPlayListByName:name withSource:source];
         if (dico) {
             // existing playlist on device and on remote server
             [dico setObject:count forKey:@"count"];
-            [dico setObject:localPlaylistIndex forKey:@"localPlaylistIndex"];
-            
-            BOOL enabled = [(NSNumber *)[dico objectForKey:@"enabled"] boolValue]; 
-            if (enabled == TRUE) {
-                [_selectedPlaylists addObject:playlist];
-            }
+            [dico setObject:playlist forKey:@"mediaPlaylist"];
         } else {
             // new playlist on local device
             NSNumber* neverSynchronized = [NSNumber numberWithBool:YES];
+            NSNumber* enabled = [NSNumber numberWithBool:NO];
             NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
             [dico setObject:name forKey:@"name"];
             [dico setObject:count forKey:@"count"];
-            [dico setObject:localPlaylistIndex forKey:@"localPlaylistIndex"];
+            [dico setObject:playlist forKey:@"mediaPlaylist"];
             [dico setObject:count forKey:@"count"];
             [dico setObject:neverSynchronized forKey:@"neverSynchronized"];
+            [dico setObject:source forKey:@"source"];
+            [dico setObject:enabled forKey:@"enabled"];
             [_playlistsDesc addObject:dico];
         }
     }
     
     for (NSDictionary *dico in _playlistsDesc) {
-        NSNumber* localPlaylistIndex = [dico objectForKey:@"localPlaylistIndex"];
-        if (localPlaylistIndex) {
+        MPMediaPlaylist *mediaPlaylist = [dico objectForKey:@"mediaPlaylist"]; 
+        NSNumber* enabled = [dico objectForKey:@"enabled"];
+        if (mediaPlaylist) {
             [_localPlaylistsDesc addObject:dico];
         } else {
             [_remotePlaylistsDesc addObject:dico];
+        }
+        if ([enabled boolValue] == FALSE) {
+            [_unselectedPlaylists addObject:dico];
+        } else {
+            [_selectedPlaylists addObject:dico];
         }
     }
 }
@@ -168,7 +174,7 @@
     [_playlists release];
     [_playlistsDesc release];
     [_selectedPlaylists release];
-
+    [_unselectedPlaylists release];
     [super dealloc];
 }
 
@@ -198,7 +204,6 @@
         UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
 
-//        NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
         NSMutableArray* items = [[NSMutableArray alloc] init];
         
         [items addObject:backBtn];
@@ -234,8 +239,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -300,12 +303,9 @@
 }
 
 
-
-
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 22;
+    return 33;
 }
 
 
@@ -323,7 +323,7 @@
         title = NSLocalizedString(@"PlaylistsView_table_header_other_playlists", nil);
 
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableViewSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
     UIImage* image = [sheet image];
     CGFloat height = image.size.height;
@@ -337,9 +337,6 @@
     
     return view;
 }
-
-
-
 
 
 
@@ -412,48 +409,56 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    NSLog(@"ROW  section %d   row %d", indexPath.section, indexPath.row);
-    
     NSDictionary* dico = [source objectAtIndex:indexPath.row];
   
     BOOL neverSynchronized = [(NSNumber *)[dico objectForKey:@"neverSynchronized"] boolValue];
     cell.textLabel.text = [dico objectForKey:@"name"];
-    
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+
     NSDictionary *selectedItem = [source objectAtIndex:indexPath.row];
-    NSNumber *localPlaylistIndex = [selectedItem objectForKey:@"localPlaylistIndex"];
-    if (localPlaylistIndex != NULL) {
-        
-        if ([_selectedPlaylists containsObject:[_playlists objectAtIndex:[localPlaylistIndex integerValue]]] || _wizard)
+    MPMediaPlaylist *mediaPlaylist = [selectedItem objectForKey:@"mediaPlaylist"];
+    
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    if (_wizard) {
+        if (mediaPlaylist != NULL) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        else
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        
-        if (!_wizard && _displayMode == eDisplayModeEdit && !neverSynchronized) {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
-        
     } else {
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (_displayMode == eDisplayModeNormal) {
+            if ([_unselectedPlaylists containsObject:dico]) {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+        } else if (_displayMode == eDisplayModeEdit) {
+            if (mediaPlaylist != NULL && neverSynchronized == FALSE) {
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }
+        }
     }
     
     NSNumber *matched = [dico objectForKey:@"matched"];
     NSNumber *unmatched = [dico objectForKey:@"unmatched"];
     
     if (matched != NULL && unmatched != NULL) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d (%d matched +%d unmatched) songs", 
-                                     [[dico objectForKey:@"count"] integerValue],
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"PlaylistsView_cell_detail_with_matched", nil), 
                                      [matched integerValue],
-                                     [unmatched integerValue]];
+                                     [[dico objectForKey:@"count"] integerValue]];
     } else {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d songs", [[dico objectForKey:@"count"] integerValue]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"PlaylistsView_cell_detail",nil), [[dico objectForKey:@"count"] integerValue]];
     }
-    if (neverSynchronized) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (never synchronized)",
-                                     cell.detailTextLabel.text];
-    } else {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (synchronized)",
-                                     cell.detailTextLabel.text];
-    }
+//    if (neverSynchronized) {
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (never synchronized)",
+//                                     cell.detailTextLabel.text];
+//    } else {
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (synchronized)",
+//                                     cell.detailTextLabel.text];
+//    }
+    
+    cell.detailTextLabel.textColor = [UIColor grayColor];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+
     
     return cell;
 }
@@ -463,7 +468,8 @@
 {
     if (indexPath.section == 0)
         return;
-
+    _changed = YES;
+    
     NSMutableArray *source = NULL;
     if (indexPath.section == 1) {
         source = _localPlaylistsDesc;
@@ -472,15 +478,35 @@
     }
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selected = FALSE;
     NSDictionary *item = [source objectAtIndex:indexPath.row];
-    NSNumber *localPlaylistIndex = [item objectForKey:@"localPlaylistIndex"];
-    if (localPlaylistIndex == NULL) {
+    MPMediaPlaylist *mediaPlaylist = [item objectForKey:@"mediaPlaylist"];
+    if (mediaPlaylist == NULL) {
+        // special handler for remote playlists
+        if ([_unselectedPlaylists containsObject:item] == YES)
+        {
+            [_unselectedPlaylists removeObject:item];
+            [_selectedPlaylists addObject:item];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else
+        {
+            [_unselectedPlaylists addObject:item];
+            [_selectedPlaylists removeObject:item];
+            cell.accessoryType = UITableViewCellAccessoryNone; 
+        }
         return;
     }
     
+    // handler for local playlists
+    
     if (_displayMode == eDisplayModeEdit) {
         // display detailed view about playlist
-        
+        BOOL neverSynchronized = [(NSNumber *)[item objectForKey:@"neverSynchronized"] boolValue];
+        if (neverSynchronized) {
+          return;
+        }
+      
         if (_songsViewController) {
             [_songsViewController release];
         }
@@ -490,30 +516,24 @@
         return;
     }
     
-    
-    MPMediaPlaylist* list = [_playlists objectAtIndex:[localPlaylistIndex integerValue]];
-    
-    if ([_selectedPlaylists containsObject:list] == YES)
+    if ([_unselectedPlaylists containsObject:item] == YES)
     {
-        NSLog(@"deselect\n");
-        [_selectedPlaylists removeObject:list];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        
-        if ([_selectedPlaylists count] == 0)
-            [_nextBtn setEnabled:NO];
-
+        [_unselectedPlaylists removeObject:item];
+        [_selectedPlaylists addObject:item];
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     else
     {
-        NSLog(@"select\n");
-        [_selectedPlaylists addObject:list];
-        cell.accessoryType = UITableViewCellAccessoryCheckmark; 
-
-        [_nextBtn setEnabled:YES];
+        [_unselectedPlaylists addObject:item];
+        [_selectedPlaylists removeObject:item];
+        cell.accessoryType = UITableViewCellAccessoryNone; 
     }
     
-    cell.selected = FALSE;
-    _changed = YES;
+    if ([_selectedPlaylists count] == 0)
+        [_nextBtn setEnabled:NO];
+    else {
+        [_nextBtn setEnabled:YES];
+    }
 }
 
 
@@ -589,9 +609,12 @@
     
     [[NSUserDefaults standardUserDefaults] synchronize];
     //    
-    [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists binary:YES compressed:YES target:self action:@selector(didBuildDataWithPlaylist:)];
-    
-//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
+    [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists
+                                   removedPlaylists:_unselectedPlaylists
+                                             binary:YES 
+                                         compressed:YES 
+                                             target:self 
+                                             action:@selector(didBuildDataWithPlaylist:)];
 }
 
 

@@ -139,6 +139,8 @@ static ActivityModelessSpinner* _main = nil;
     [_view removeFromSuperview];
     [_view release];
     
+    [UIView setAnimationDelegate:nil];
+
     _ai = nil;
     _view = nil;
 }
