@@ -371,6 +371,7 @@ static YasoundDataProvider* _main = nil;
 {
   Auth* auth = self.apiKeyAuth;
   NSMutableArray* params = [NSMutableArray array];
+  [params addObject:@"ready=true"];
   if (genre)
     [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
   [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
@@ -380,6 +381,7 @@ static YasoundDataProvider* _main = nil;
 {
   Auth* auth = self.apiKeyAuth;
   NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-overall_listening_time"];
+  [params addObject:@"ready=true"];
   if (genre)
     [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
   
@@ -400,6 +402,7 @@ static YasoundDataProvider* _main = nil;
 {
   Auth* auth = self.apiKeyAuth;
   NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-created"];
+  [params addObject:@"ready=true"];
   if (genre)
     [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
   
