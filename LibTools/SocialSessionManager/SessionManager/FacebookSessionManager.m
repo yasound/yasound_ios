@@ -7,6 +7,7 @@
 //
 
 #import "FacebookSessionManager.h"
+#include "YasoundDataProvider.h"
 
 
 
@@ -318,16 +319,23 @@ static FacebookSessionManager* _facebook = nil;
 }
 
 
-  
-
-
 - (BOOL)handleOpenURL:(NSURL *)url
 {
   return [_facebookConnect handleOpenURL:url];
 }
 
-  
 
+- (void)inviteFriends
+{
+  NSDictionary* data = [NSDictionary dictionaryWithObject:[YasoundDataProvider main].user.id forKey:@"from_user"];
+  NSString* dataStr = data.JSONRepresentation;
+  NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                 NSLocalizedString(@"Facebook_AppRequest_Message", nil),  @"message",
+                                 dataStr, @"data",
+                                 nil];
+  
+  [_facebookConnect dialog:@"apprequests" andParams:params andDelegate:self];
+}
 
 
 

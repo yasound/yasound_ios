@@ -15,10 +15,9 @@
     NSInteger _playlistId;
     IBOutlet UITableView* _tableView;  
     
-    NSMutableArray* _matchedSongs; // Array of Song*
-    NSMutableArray* _unmatchedSongs; // Array of Song*
-    NSMutableArray* _needSyncSongs; // Array of Song*
-    Song *_selectedSong;
+    NSArray* _songs; // Array of Song*
+
+    Song* _selectedSong;
 }
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil playlistId:(NSInteger)playlistId;
 -(IBAction)onBack:(id)sender;

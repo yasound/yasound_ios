@@ -130,6 +130,20 @@ static SongUploader* _main = nil;
 }
 
 
+- (BOOL)canUploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist
+{
+    MPMediaItem *item = [self findSong:title album:album artist:artist];
+    if (!item) {
+        return FALSE;
+    }
+    NSURL *assetURL = [item valueForProperty:MPMediaItemPropertyAssetURL];
+    if (assetURL == nil) {
+        return FALSE;
+    }
+    return TRUE;
+}
+
+
 
 
 

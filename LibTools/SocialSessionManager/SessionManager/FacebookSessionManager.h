@@ -12,7 +12,7 @@
 
 
 
-@interface FacebookSessionManager : SessionManager <FBSessionDelegate, FBRequestDelegate>
+@interface FacebookSessionManager : SessionManager <FBSessionDelegate, FBRequestDelegate, FBDialogDelegate>
 {
   Facebook* _facebookConnect;
   NSArray* _facebookPermissions;
@@ -33,6 +33,8 @@
 
 - (BOOL)requestGetInfo:(SessionRequestType)requestType;
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl link:(NSURL*)link;
+
+- (void)inviteFriends;
 
 
 
