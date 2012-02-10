@@ -15,6 +15,8 @@
 #import "ActivityModelessSpinner.h"
 #import "UserTableViewCell.h"
 
+#import "FacebookSessionManager.h"
+
 @implementation FriendsViewController
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
@@ -51,6 +53,8 @@
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MyYasoundBackground.png"]];
+  
+  [_inviteButton setTitle:NSLocalizedString(@"InviteFriends_button_text", nil) forState:UIControlStateNormal];
 }
 
 - (void)viewDidUnload
@@ -248,6 +252,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)inviteButtonClicked:(id)sender
+{
+  [[FacebookSessionManager facebook] inviteFriends];
+}
 
 
 @end

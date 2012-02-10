@@ -18,7 +18,9 @@
     NSMutableArray* _matchedSongs; // Array of Song*
     NSMutableArray* _unmatchedSongs; // Array of Song*
     NSMutableArray* _needSyncSongs; // Array of Song*
-    Song *_selectedSong;
+    NSMutableArray* _protectedSongs; // Array o Song*
+    
+    Song* _selectedSong;
 }
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil playlistId:(NSInteger)playlistId;
 -(IBAction)onBack:(id)sender;

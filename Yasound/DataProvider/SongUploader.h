@@ -17,4 +17,5 @@
 
 - (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
+- (BOOL)canUploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist;
 @end
