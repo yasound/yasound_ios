@@ -19,11 +19,7 @@
     if (self) {
         // Custom initialization
         _playlistId = playlistId;
-        _matchedSongs = [[NSMutableArray alloc] init ];
-        [_matchedSongs retain];
-        
-        _unmatchedSongs = [[NSMutableArray alloc] init ];
-        [_unmatchedSongs retain];
+        [self resetArrays];
     }
     return self;
 }
@@ -32,8 +28,6 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
@@ -41,19 +35,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"Alert_contact_server", nil)];
-    [[YasoundDataProvider main] songsForPlaylist:_playlistId target:self action:@selector(receiveSongs:withInfo:)];
+    [self refreshView];
 }
 
 - (void)viewDidUnload
 {
+    [_needSyncSongs release];
     [_matchedSongs release];
     [_unmatchedSongs release];
     
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -63,14 +54,52 @@
 }
 
 #pragma mark - Private methods
+
+- (void)resetArrays
+{
+    if(_needSyncSongs) {
+        [_needSyncSongs release];
+    }
+    
+    if (_matchedSongs) {
+        [_matchedSongs release];
+    }
+    
+    if (_unmatchedSongs) {
+        [_unmatchedSongs release];
+    }
+    
+    _matchedSongs = [[NSMutableArray alloc] init ];
+    [_matchedSongs retain];
+    
+    _unmatchedSongs = [[NSMutableArray alloc] init ];
+    [_unmatchedSongs retain];
+    
+    _needSyncSongs = [[NSMutableArray alloc] init ];
+    [_needSyncSongs retain];
+}
+
+- (void)refreshView
+{
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"Alert_contact_server", nil)];
+    [self resetArrays];
+    [[YasoundDataProvider main] songsForPlaylist:_playlistId target:self action:@selector(receiveSongs:withInfo:)];
+}
+
+
 - (void)buildSongsData:(NSArray *)songs
 {
-    // split data between matched and unmatched songs
+    // split data between matched, unmatched, sync in progress songs
     for (Song *song in songs) {
-        if ([song.song isKindOfClass:[NSNumber class]]) {
-            [_matchedSongs addObject:song];
+        BOOL needSync = [song.need_sync boolValue];
+        if (needSync) {
+            [_needSyncSongs addObject:song];
         } else {
-            [_unmatchedSongs addObject:song];
+            if ([song.song isKindOfClass:[NSNumber class]]) {
+                [_matchedSongs addObject:song];
+            } else {
+                [_unmatchedSongs addObject:song];
+            }
         }
     }
 }
@@ -78,6 +107,7 @@
 -(void)uploadSongFinished
 {
     [ActivityAlertView close];
+    [self refreshView];
 }
 
 -(void)uploadSong:(Song *)song 
@@ -85,7 +115,8 @@
     [ActivityAlertView showWithTitle:NSLocalizedString(@"Alert_contact_server", nil)];
     [[SongUploader main] uploadSong:song.name 
                               album:song.album 
-                             artist:song.artist 
+                             artist:song.artist
+                             songId:song.id
                              target:self 
                              action:@selector(uploadSongFinished)];
 }
@@ -97,14 +128,18 @@
 {
     if (section == 0) {
         return NSLocalizedString(@"SongsView_unmatched_songs", nil);
-    } 
-    return NSLocalizedString(@"SongsView_matched_songs", nil);
+    } else if (section == 1) {
+        return NSLocalizedString(@"SongsView_matched_songs", nil);
+    } else if (section == 2) { 
+        return NSLocalizedString(@"SongsView_need_sync_songs", nil);
+    }
+    return @"Header";
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 
@@ -113,8 +148,12 @@
 {
     if (section == 0) {
         return [_unmatchedSongs count];
+    } else if (section == 1){ 
+        return [_matchedSongs count];
+    } else if (section == 2) { 
+        return [_needSyncSongs count];
     }
-    return [_matchedSongs count];
+    return 0;
 }
 
 
@@ -127,6 +166,8 @@
         source = _unmatchedSongs;
     } else if (indexPath.section == 1) {
         source = _matchedSongs;
+    } else if (indexPath.section == 2) {
+        source = _needSyncSongs;
     }
     
     static NSString* CellIdentifier = @"SongCell";
@@ -138,26 +179,33 @@
     }
     Song *song = [source objectAtIndex:indexPath.row];
     cell.textLabel.text = song.name;
-    NSLog(@"name = %@, id=%d", song.name, [song.id integerValue]);
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section != 0) {
+        return;
+    }
+
     NSMutableArray *source = NULL;
     if (indexPath.section == 0) {
         source = _unmatchedSongs;
     } else if (indexPath.section == 1) {
         source = _matchedSongs;
+    } else if (indexPath.section == 2) {
+        source = _needSyncSongs;
     }
-
+    
+    
+    
     _selectedSong = [source objectAtIndex:indexPath.row];
     if (!_selectedSong) {
         return;
     }
     
-    UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Do you want to upload song ?", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Submit", nil), nil];
+    UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SongsView_confirm_upload", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SongsView_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SongsView_upload_songs", nil), nil];
     
     popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     [popupQuery showInView:self.view];

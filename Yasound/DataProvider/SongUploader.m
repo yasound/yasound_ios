@@ -74,7 +74,7 @@ static SongUploader* _main = nil;
 
 #pragma mark - public functions
 
-- (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist target:(id)target action:(SEL)selector
+- (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector
 {
   MPMediaItem *item = [self findSong:title album:album artist:artist];
   if (!item) {
@@ -119,7 +119,7 @@ static SongUploader* _main = nil;
     import = nil;  
     
     NSData *data = [NSData dataWithContentsOfFile: fullPath];
-    [[YasoundDataProvider main] uploadSong:data target:self action:@selector(onUploadFinished:withInfos:)];
+    [[YasoundDataProvider main] uploadSong:data songId:songId target:self action:@selector(onUploadFinished:withInfos:)];
   }];
   return TRUE;
 }
