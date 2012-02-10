@@ -141,7 +141,6 @@
             [_remotePlaylistsDesc addObject:dico];
         }
         if ([enabled boolValue] == FALSE) {
-            NSLog(@"adding %@ to unselected playlists", dico);
             [_unselectedPlaylists addObject:dico];
         } else {
             [_selectedPlaylists addObject:dico];
