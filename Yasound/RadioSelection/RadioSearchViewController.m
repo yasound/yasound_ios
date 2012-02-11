@@ -23,7 +23,9 @@
   {
     UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
     self.tabBarItem = theItem;
-    [theItem release];      
+    [theItem release];   
+      
+
     
   }
   
@@ -57,6 +59,9 @@
 
 //    _toolbarTitle.text = NSLocalizedString(@"FriendsView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+    
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+
 }
 
 - (void)viewDidUnload
