@@ -280,7 +280,7 @@
 					<key>text</key>
 					<string>12345</string>
 					<key>textColor</key>
-					<string>rgb(90,90,90)</string>
+					<string>white</string>
 					<key>shadowOffset</key>
 					<string>0, -1</string>
 					<key>shadowRadius</key>
@@ -308,7 +308,7 @@
 					<key>text</key>
 					<string>234</string>
 					<key>textColor</key>
-					<string>rgb(90,90,90)</string>
+					<string>white</string>
 					<key>shadowOffset</key>
 					<string>0, -1</string>
 					<key>shadowRadius</key>
