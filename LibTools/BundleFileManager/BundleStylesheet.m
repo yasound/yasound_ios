@@ -7,7 +7,10 @@
 
 #import "BundleStylesheet.h"
 #import "BundleFileManager.h"
+
+#if USE_COREGRAPHIC_LAYER
 #import <QuartzCore/QuartzCore.h>
+#endif
 
 //..................................................................................
 //  
@@ -838,6 +841,7 @@ static NSNumber* _isRetina = nil;
     label.textAlignment = fontsheet.textAlignement;
     
     // apply shadow, if requested
+#if USE_COREGRAPHIC_LAYER
     if (fontsheet.shadowIsSet)
     {
         label.layer.masksToBounds = NO;
@@ -847,6 +851,7 @@ static NSNumber* _isRetina = nil;
         label.layer.shadowOpacity = fontsheet.shadowOpacity;
         label.layer.shadowColor = fontsheet.shadowColor.CGColor;
     }
+#endif
     
 
     label.font = [self makeFont];
@@ -922,6 +927,7 @@ static NSNumber* _isRetina = nil;
     }
     
     // apply shadow, if requested
+#if USE_COREGRAPHIC_LAYER
     if (fontsheet.shadowIsSet)
     {
         label.layer.masksToBounds = NO;
@@ -931,6 +937,7 @@ static NSNumber* _isRetina = nil;
         label.layer.shadowOpacity = fontsheet.shadowOpacity;
         label.layer.shadowColor = fontsheet.shadowColor.CGColor;
     }
+#endif
   
   return YES;
 }

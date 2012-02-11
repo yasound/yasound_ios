@@ -9,7 +9,10 @@
 #import "UserViewCell.h"
 #import "Theme.h"
 #import "YasoundDataProvider.h"
+
+#if USE_COREGRAPHIC_LAYER
 #import <QuartzCore/QuartzCore.h>
+#endif
 
 
 @implementation UserViewCell
@@ -32,8 +35,11 @@
       
       _avatarView = [[WebImageView alloc] initWithFrame:imageRect];
         
+        
+#if USE_COREGRAPHIC_LAYER
         _avatarView.layer.masksToBounds = YES;
         _avatarView.layer.cornerRadius = 6;
+#endif
 
       UIFont* font = [nameSheet makeFont];
       _nameLabel = [nameSheet makeLabel];
