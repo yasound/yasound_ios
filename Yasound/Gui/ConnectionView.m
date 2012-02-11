@@ -7,7 +7,10 @@
 //
 
 #import "ConnectionView.h"
+
+#if USE_COREGRAPHIC_LAYER
 #import "QuartzCore/QuartzCore.h"
+#endif
 
 @implementation ConnectionView
 
@@ -43,11 +46,13 @@ static ConnectionView* _main = nil;
     self = [super initWithFrame:frame];
     if (self) 
     {
-        self.layer.masksToBounds = YES;
+#if USE_COREGRAPHIC_LAYER
+       self.layer.masksToBounds = YES;
         self.layer.cornerRadius = 6;
         self.layer.borderColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.2].CGColor;
         self.layer.borderWidth = 1.0; 
         self.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1].CGColor;
+#endif
         
 //        self.layer.shadowOffset = CGSizeMake(-10, 10);
 //        self.layer.shadowRadius = 5;

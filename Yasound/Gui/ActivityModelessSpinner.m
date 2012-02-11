@@ -7,8 +7,11 @@
 
 #import "ActivityModelessSpinner.h"
 #import "BundleFileManager.h"
-#import <QuartzCore/QuartzCore.h>
 #import "YasoundAppDelegate.h"
+
+#if USE_COREGRAPHIC_LAYER
+#import <QuartzCore/QuartzCore.h>
+#endif
 
 @implementation ActivityModelessSpinner
 
@@ -80,11 +83,14 @@ static ActivityModelessSpinner* _main = nil;
     CGRect initFrame = CGRectMake(sheet.frame.origin.x + sheet.frame.size.width, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
     
     _view = [[UIView alloc] initWithFrame:initFrame];
+    
+#if USE_COREGRAPHIC_LAYER
     _view.layer.masksToBounds = YES;
     _view.layer.cornerRadius = 6;
     _view.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _view.layer.borderWidth = 1.0; 
     _view.layer.backgroundColor = [UIColor darkGrayColor].CGColor;
+#endif
     
     _view.alpha = 0.75;
     

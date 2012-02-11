@@ -41,9 +41,9 @@
     
     // cell background
     if (rowIndex & 1)
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
     else
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
 
     [self addSubview:self.cellBackground];
     
@@ -111,6 +111,58 @@
     [_updateTimer fire];
   }
   return self;
+}
+
+
+- (void)updateWithRadio:(Radio*)radio rowIndex:(NSInteger)rowIndex
+{
+    self.radio = radio;
+    
+    BundleStylesheet* sheet = nil;
+    
+    if (rowIndex & 1)
+        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    else
+        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    [self.cellBackground setImage:[sheet image]];
+    
+    //assert([_updateTimer isValid]);
+    
+    // avatar
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
+    [self.radioAvatar setUrl:imageURL];
+    
+    // avatar mask
+    NSString* avatarMask;
+    if (rowIndex & 1)
+        avatarMask = @"RadioSelectionMaskWhite";
+    else
+        avatarMask = @"RadioSelectionMaskGray";
+    
+    sheet = [[BundleFileManager main] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    [self.radioAvatarMask setImage:[sheet image]];
+    
+    // title
+    self.radioTitle.text = self.radio.name;
+    
+    // subtitle 1
+    self.radioSubtitle1.text = @"";
+    
+    // subtitle 2
+    self.radioSubtitle2.text = @"";
+    
+    // likes
+    self.radioLikes.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
+    
+    // listeners
+    self.radioListeners.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
+    
+    // configure selected view
+    //    UIView* myBackView = [[UIView alloc] initWithFrame:self.frame];
+    //    myBackView.backgroundColor = [UIColor colorWithRed:220.f/255.f green:227.f/255.f blue:239.f/255.f alpha:1];
+    //    self.selectedBackgroundView = myBackView;
+    //    [myBackView release];
 }
 
 

@@ -32,6 +32,6 @@
 
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex radio:(Radio*)radio;
-
+- (void)updateWithRadio:(Radio*)radio rowIndex:(NSInteger)rowIndex;
 
 @end

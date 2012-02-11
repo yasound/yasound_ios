@@ -22,17 +22,17 @@
 
 @interface RadioSelectionViewController : TestflightViewController
 {
-  IBOutlet QualitySwitchLabel* _qualitySwitchLabel;
-  IBOutlet UILabel* _topBarTitle;
-  IBOutlet UILabel* _categoryTitle;
+    IBOutlet QualitySwitchLabel* _qualitySwitchLabel;
+    IBOutlet UILabel* _topBarTitle;
+    IBOutlet UILabel* _categoryTitle;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
     
-  IBOutlet UITableView* _tableView;  
-  
-  NSString* _currentStyle;
-//  RadioSelectionType _type;
-  
-  NSArray* _radios;
+    IBOutlet UITableView* _tableView;  
+    
+    NSString* _currentStyle;
+    //  RadioSelectionType _type;
+    
+    NSMutableArray* _radios;
 }
 
 
