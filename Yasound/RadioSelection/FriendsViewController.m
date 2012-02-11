@@ -52,9 +52,10 @@
     _toolbarTitle.text = NSLocalizedString(@"FriendsView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
-    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MyYasoundBackground.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
   
-  [_inviteButton setTitle:NSLocalizedString(@"InviteFriends_button_text", nil) forState:UIControlStateNormal];
+    _cellInviteLabel.text = NSLocalizedString(@"InviteFriends_button_text", nil);
 }
 
 - (void)viewDidUnload
@@ -130,32 +131,31 @@
 #pragma mark - TableView Source and Delegate
 
 
+#define SECTION_INVITE_BUTTON 0
+#define SECTION_ONLINE 1
+#define SECTION_OFFLINE 2
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (section == 0)
-        return @"Online";
-    else if (section == 1)
-        return @"Offline";
-    
-    return @"";
-}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    if (section == 0)
+    if (section == SECTION_INVITE_BUTTON)
+    {
+        return 1;
+    }
+    else if (section == SECTION_ONLINE)
     {
         if (!_friends_online)
             return 0;
         return _friends_online.count;
     }
-    else if (section == 1)
+    else if (section == SECTION_OFFLINE)
     {
         if (!_friends_offline)
             return 0;
@@ -165,10 +165,63 @@
         return 0;
 }
 
+
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == SECTION_INVITE_BUTTON)
+        return 8;
+    
+    return 33;
+}
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    
+    if (section == SECTION_INVITE_BUTTON)
+    {
+        UIView* view = [[UIView alloc] init];
+        view.backgroundColor = [UIColor clearColor];
+        return view;
+    }
+    else if (section == SECTION_ONLINE)
+    {
+        title = NSLocalizedString(@"Online", nil);
+    }
+    else if (section == SECTION_OFFLINE)
+    {
+        title = NSLocalizedString(@"Offline", nil);
+    }
+    
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableViewSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    UIImage* image = [sheet image];
+    CGFloat height = image.size.height;
+    UIImageView* view = [[UIImageView alloc] initWithImage:image];
+    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
+    
+    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
+
+
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 55;
 }
+
+
 
 
 
@@ -192,12 +245,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+    if (indexPath.section == SECTION_INVITE_BUTTON)
+    {
+        return _cellInvite;
+    }
+    
     static NSString *cellIdentifier = @"UserTableViewCell";
     
     NSInteger sectionIndex = indexPath.section;
     NSInteger rowIndex = indexPath.row;
     
-    if (sectionIndex > 1 || !_friends_online || !_friends_offline)
+    if (sectionIndex > SECTION_OFFLINE || !_friends_online || !_friends_offline)
         return nil;
     NSArray* friends = sectionIndex == 0 ? _friends_online : _friends_offline;
     
@@ -210,6 +268,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == SECTION_INVITE_BUTTON)
+    {
+        [self inviteButtonClicked:nil];
+        return;
+    }
+    
     UserTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
     User* u = cell.user;
