@@ -32,7 +32,7 @@
   if (self)
   {
     url = Url;
-    NSLog(@"new image cache for url %@", [url absoluteString]);
+    //NSLog(@"new image cache for url %@", [url absoluteString]);
     [self load];
   }
   return self;
@@ -48,7 +48,7 @@
 
 - (void) addView:(WebImageView*)view
 {
-  NSLog(@"Add view 0x%p to cache for %@", view, [url absoluteString]);
+  //NSLog(@"Add view 0x%p to cache for %@", view, [url absoluteString]);
   if (webImages == nil)
     webImages = [[NSMutableSet alloc] init];
   [webImages addObject:view];
@@ -66,14 +66,14 @@
 
 - (void) removeView:(WebImageView*)view
 {
-  NSLog(@"Remove view 0x%p from cache for %@", view, [url absoluteString]);
+  //NSLog(@"Remove view 0x%p from cache for %@", view, [url absoluteString]);
   [webImages removeObject:view];
 }    
 
 
 - (void)load
 {
-  NSLog(@"Initiate load for %@", [url absoluteString]);
+  //NSLog(@"Initiate load for %@", [url absoluteString]);
   BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" error:nil];
   
   assert(anims == nil);
@@ -103,7 +103,7 @@
 {
   // Use when fetching text data
   //NSString *responseString = [request responseString];
-  NSLog(@"HTTP Request for image ok: %@", [url absoluteString]);
+  //NSLog(@"HTTP Request for image ok: %@", [url absoluteString]);
   
   // Use when fetching binary data
   NSData* data = [request responseData];
@@ -113,7 +113,7 @@
   
   for (WebImageView* view in webImages)
   {
-    NSLog(@"set image for 0x%p", view);
+    //NSLog(@"set image for 0x%p", view);
 
     [view setImage:image];
   }
@@ -132,7 +132,7 @@
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
   NSError *error = [request error];
-  NSLog(@"HTTP Request error: %@", [error localizedDescription]);
+  //NSLog(@"HTTP Request error: %@", [error localizedDescription]);
   
   for (UIActivityIndicatorView* view in anims)
   {
@@ -200,7 +200,7 @@ static NSMutableDictionary* gDictionnary = NULL;
 
 -(id)initWithImageFrame:(CGRect)frame
 {
-  NSLog(@"WebImage initWithImageFrame 0x%p", self);
+  //NSLog(@"WebImage initWithImageFrame 0x%p", self);
   self = [super init];
   if (self)
   {
@@ -214,7 +214,7 @@ static NSMutableDictionary* gDictionnary = NULL;
 
 -(id)initWithImageAtURL:(NSURL*)Url
 {
-  NSLog(@"WebImage initWithImageAtURL 0x%p / %@", self, [Url absoluteURL]);
+  //NSLog(@"WebImage initWithImageAtURL 0x%p / %@", self, [Url absoluteURL]);
   self = [super init];
   if (self)
   {
@@ -226,18 +226,18 @@ static NSMutableDictionary* gDictionnary = NULL;
 
 -(void)dealloc
 {
-  NSLog(@"WebImage dealloc 0x%p / %@", self, [self.url absoluteURL]);
+  //NSLog(@"WebImage dealloc 0x%p / %@", self, [self.url absoluteURL]);
   [WebImageView removeView:self fromUrl:self.url];
 }
 
 - (void)setUrl:(NSURL *)Url
 {
-  NSLog(@"WebImage 0x%p setUrl:%@ (old: 0x%x / new: 0x%x)", self, [Url absoluteURL], self.url, Url);
+  //NSLog(@"WebImage 0x%p setUrl:%@ (old: 0x%p / new: 0x%p)", self, [Url absoluteURL], self.url, Url);
   if (url != nil)
   {
     NSURL* u = url;
     NSString* s = [u absoluteString];
-    NSLog(@"WebImage 0x%p previous url:%@", self, s);
+    //NSLog(@"WebImage 0x%p previous url:%@", self, s);
     [WebImageView removeView:self fromUrl:url];
   }
 
