@@ -22,7 +22,7 @@
 @property (nonatomic, retain) User* user;
 @property (nonatomic, retain) UILabel* userName;
 @property (nonatomic, retain) UILabel* radioStatus;
-@property (nonatomic, retain) UIImageView* cellBackground;
+//@property (nonatomic, retain) UIImageView* cellBackground;
 @property (nonatomic, retain) WebImageView* userAvatar;
 @property (nonatomic, retain) UIImageView* userAvatarMask;
 

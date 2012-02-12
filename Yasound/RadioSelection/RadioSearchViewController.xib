@@ -89,7 +89,7 @@
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
 						<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
 						<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
-						<float key="IBUIRowHeight">44</float>
+						<float key="IBUIRowHeight">66</float>
 						<float key="IBUISectionHeaderHeight">22</float>
 						<float key="IBUISectionFooterHeight">22</float>
 					</object>
@@ -360,12 +360,17 @@
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_nowPlayingButton">UIBarButtonItem</string>
+						<string key="_searchController">UISearchDisplayController</string>
 						<string key="_tableView">UITableView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="_nowPlayingButton">
 							<string key="name">_nowPlayingButton</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_searchController">
+							<string key="name">_searchController</string>
+							<string key="candidateClassName">UISearchDisplayController</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_tableView">
 							<string key="name">_tableView</string>

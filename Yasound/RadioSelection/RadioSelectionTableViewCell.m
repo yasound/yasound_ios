@@ -25,7 +25,7 @@
 @synthesize radioListeners;
 @synthesize radioAvatar;
 @synthesize radioAvatarMask;
-@synthesize cellBackground;
+//@synthesize cellBackground;
 
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex radio:(Radio*)r;

@@ -161,6 +161,7 @@
 }
 
 
+
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     NSInteger rowIndex = indexPath.row;
@@ -177,8 +178,9 @@
     }
     
     cell.backgroundView = imageView;
-
+    
 }
+
 
 
 

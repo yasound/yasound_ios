@@ -26,7 +26,7 @@
 @property (nonatomic, retain) UILabel* radioSubtitle2;
 @property (nonatomic, retain) UILabel* radioLikes;
 @property (nonatomic, retain) UILabel* radioListeners;
-@property (nonatomic, retain) UIImageView* cellBackground;
+//@property (nonatomic, retain) UIImageView* cellBackground;
 @property (nonatomic, retain) WebImageView* radioAvatar;
 @property (nonatomic, retain) UIImageView* radioAvatarMask;
 

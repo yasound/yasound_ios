@@ -259,6 +259,31 @@
 
 
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    if (indexPath.section == SECTION_INVITE_BUTTON)
+        return nil;
+
+    NSInteger rowIndex = indexPath.row;
+    UIImageView* imageView = nil;
+    
+    // cell background
+    if (rowIndex & 1)
+    {
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    }
+    else
+    {
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    }
+    
+    cell.backgroundView = imageView;
+    
+}
+
+
+
+
 
 
 

@@ -10,7 +10,7 @@
 #import "RadioSelectionTableViewCell.h"
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
-
+#import "BundleFileManager.h"
 
 
 @implementation RadioSearchViewController
@@ -66,6 +66,7 @@
     _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
     _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
 
 }
 
@@ -119,6 +120,28 @@
     NSLog(@"RADIO COUNT %d", _radios.count);
     
     return _radios.count;
+}
+
+
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    NSInteger rowIndex = indexPath.row;
+    UIImageView* imageView = nil;
+    
+    // cell background
+    if (rowIndex & 1)
+    {
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    }
+    else
+    {
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    }
+    
+    cell.backgroundView = imageView;
+    
 }
 
 

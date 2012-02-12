@@ -17,7 +17,7 @@
 
 @synthesize userAvatar;
 @synthesize userAvatarMask;
-@synthesize cellBackground;
+//@synthesize cellBackground;
 
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex user:(User*)u;
@@ -31,13 +31,13 @@
       
       self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    // cell background
-    if (rowIndex & 1)
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
-    else
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
-
-    [self addSubview:self.cellBackground];
+//    // cell background
+//    if (rowIndex & 1)
+//      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+//    else
+//      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+//
+//    [self addSubview:self.cellBackground];
     
     // avatar
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.user.picture];
@@ -79,10 +79,10 @@
     _maskSelected = [UIImage imageNamed:@"CellRadioHighlighted_Mask.png"];
     [_maskSelected retain];
     
-    _bkgBackup = self.cellBackground.image;
-    [_bkgBackup retain];
-    _bkgSelected = [UIImage imageNamed:@"CellRadioHighlighted.png"];
-    [_bkgSelected retain];
+//    _bkgBackup = self.cellBackground.image;
+//    [_bkgBackup retain];
+//    _bkgSelected = [UIImage imageNamed:@"CellRadioHighlighted.png"];
+//    [_bkgSelected retain];
 
     
   }
@@ -99,12 +99,12 @@
     
     BundleStylesheet* sheet = nil;
     
-    if (rowIndex & 1)
-        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    else
-        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    
-    [self.cellBackground setImage:[sheet image]];
+//    if (rowIndex & 1)
+//        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    else
+//        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    
+//    [self.cellBackground setImage:[sheet image]];
 
     
     
@@ -163,7 +163,7 @@
 
   if (selected)
   {
-    self.cellBackground.image = _bkgSelected;
+//    self.cellBackground.image = _bkgSelected;
     self.userAvatarMask.image = _maskSelected;
    
     BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
@@ -171,7 +171,7 @@
   }
   else
   {
-    self.cellBackground.image = _bkgBackup;
+//    self.cellBackground.image = _bkgBackup;
     self.userAvatarMask.image = _maskBackup;
 
     BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
