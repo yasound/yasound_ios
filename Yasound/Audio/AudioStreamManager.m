@@ -11,7 +11,7 @@
 #import "YasoundDataProvider.h"
 
 #define USE_FAKE_RADIO_URL 0
-#define MUTE_RADIO 0
+#define MUTE_RADIO 1
 
 @implementation AudioStreamManager
 

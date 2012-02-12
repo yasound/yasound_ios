@@ -90,6 +90,62 @@
 }
 
 
+
+
+
+- (void)updateWithUser:(User*)user rowIndex:(NSInteger)rowIndex
+{
+    self.user = user;
+    
+    BundleStylesheet* sheet = nil;
+    
+    if (rowIndex & 1)
+        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    else
+        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    [self.cellBackground setImage:[sheet image]];
+
+    
+    
+    // avatar
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.user.picture];
+    [self.userAvatar setUrl:imageURL];
+    
+    // avatar mask
+    NSString* avatarMask;
+    if (rowIndex & 1)
+        avatarMask = @"RadioSelectionMaskWhite";
+    else
+        avatarMask = @"RadioSelectionMaskGray";
+    
+    sheet = [[BundleFileManager main] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    [self.userAvatarMask setImage:[sheet image]];
+
+    // name
+    self.userName.text = self.user.name;
+    
+    // radio status
+    NSString* status;
+    if (self.user.current_radio)
+        status = [NSString stringWithFormat:@"listening to %@", self.user.current_radio.name];
+    else if (self.user.own_radio)
+        status = [NSString stringWithFormat:@"radio: %@", self.user.own_radio.name];
+    self.radioStatus.text = status;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 - (void)dealloc
 {
   [_maskBackup release];

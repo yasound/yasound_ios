@@ -55,7 +55,7 @@
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
 						<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
 						<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
-						<float key="IBUIRowHeight">44</float>
+						<float key="IBUIRowHeight">66</float>
 						<float key="IBUISectionHeaderHeight">22</float>
 						<float key="IBUISectionFooterHeight">22</float>
 					</object>
@@ -343,16 +343,21 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_inviteButton">UIButton</string>
+						<string key="_cellInvite">UITableViewCell</string>
+						<string key="_cellInviteLabel">UILabel</string>
 						<string key="_nowPlayingButton">UIBarButtonItem</string>
 						<string key="_tableView">UITableView</string>
 						<string key="_toolbar">UIToolbar</string>
 						<string key="_toolbarTitle">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_inviteButton">
-							<string key="name">_inviteButton</string>
-							<string key="candidateClassName">UIButton</string>
+						<object class="IBToOneOutletInfo" key="_cellInvite">
+							<string key="name">_cellInvite</string>
+							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_cellInviteLabel">
+							<string key="name">_cellInviteLabel</string>
+							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_nowPlayingButton">
 							<string key="name">_nowPlayingButton</string>
@@ -400,7 +405,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="NS.key.0">barItemMenu.png</string>
-			<string key="NS.object.0">{21, 18}</string>
+			<string key="NS.object.0">{19, 17}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

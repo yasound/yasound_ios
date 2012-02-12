@@ -131,26 +131,35 @@
 
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 66;
-}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+    if (!_radios)
+        return nil;
+    
     static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
     
     if (!_radios)
         return nil;
     
-    NSInteger rowIndex = indexPath.row;
+    RadioSelectionTableViewCell* cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
+    NSInteger rowIndex = indexPath.row;
     Radio* radio = [_radios objectAtIndex:rowIndex];
     
-    RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
-    return cell;   
+    if (cell == nil)
+    {    
+        cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
+    }
+    else
+        [cell updateWithRadio:radio rowIndex:rowIndex];
+    
+    
+    return cell;
 }
+
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

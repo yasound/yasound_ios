@@ -208,11 +208,6 @@
 
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 66;
-}
-
 
 
 
@@ -284,9 +279,20 @@
     NSArray* friends = sectionIndex == 0 ? _friends_online : _friends_offline;
     
     User* friend = [friends objectAtIndex:rowIndex];
+
     
-    UserTableViewCell* cell = [[UserTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex user:friend];
-    return cell;      
+    
+    UserTableViewCell* cell = (UserTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil)
+    {    
+        cell = [[UserTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex user:friend];
+    }
+    else
+        [cell updateWithUser:friend rowIndex:rowIndex];
+    
+    
+    return cell;
 }
 
 

@@ -41,9 +41,15 @@
     
     // cell background
     if (rowIndex & 1)
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    {
+        UIImageView* imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+        self.cellBackground = imageView;
+    }
     else
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    {
+        UIImageView* imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+        self.cellBackground = imageView;
+    }
 
     [self addSubview:self.cellBackground];
     
@@ -165,12 +171,6 @@
     // listeners
     self.radioListeners.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
     
-    
-    // configure selected view
-    //    UIView* myBackView = [[UIView alloc] initWithFrame:self.frame];
-    //    myBackView.backgroundColor = [UIColor colorWithRed:220.f/255.f green:227.f/255.f blue:239.f/255.f alpha:1];
-    //    self.selectedBackgroundView = myBackView;
-    //    [myBackView release];
 }
 
 

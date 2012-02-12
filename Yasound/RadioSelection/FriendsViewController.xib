@@ -127,7 +127,7 @@
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
 						<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
 						<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
-						<float key="IBUIRowHeight">44</float>
+						<float key="IBUIRowHeight">66</float>
 						<float key="IBUISectionHeaderHeight">22</float>
 						<float key="IBUISectionFooterHeight">22</float>
 					</object>
@@ -516,7 +516,7 @@
 			<string key="CellButton.png">{320, 46}</string>
 			<string key="CellButtonHighlighted.png">{320, 46}</string>
 			<string key="TableViewDisclosure.png">{28, 28}</string>
-			<string key="barItemMenu.png">{21, 18}</string>
+			<string key="barItemMenu.png">{19, 17}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

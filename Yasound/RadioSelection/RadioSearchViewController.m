@@ -62,6 +62,7 @@
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
+    
     _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
     _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
@@ -121,10 +122,6 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  return 66;
-}
 
 
 
@@ -132,15 +129,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
-  
+    static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
+    
+    if (!_radios)
+        return nil;
+    
+    RadioSelectionTableViewCell* cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
     NSInteger rowIndex = indexPath.row;
-
     Radio* radio = [_radios objectAtIndex:rowIndex];
-    RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];  
-  
-  return cell;
+    
+    if (cell == nil)
+    {    
+        cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
+    }
+    else
+        [cell updateWithRadio:radio rowIndex:rowIndex];
+    
+    
+    
+    return cell;
 }
+
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
