@@ -15,6 +15,7 @@
 {
     IBOutlet UITableView* _tableView;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
+    IBOutlet UISearchDisplayController* _searchController;
 
     NSArray* _radios;
 }

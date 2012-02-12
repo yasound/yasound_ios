@@ -21,9 +21,9 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) 
   {
-    UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
-    self.tabBarItem = theItem;
-    [theItem release];   
+//    UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
+//    self.tabBarItem = theItem;
+//    [theItem release];   
       
 
     
@@ -61,6 +61,10 @@
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    
+    _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
+    _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
 
 }
 
@@ -119,7 +123,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return 55;
+  return 66;
 }
 
 
