@@ -20,8 +20,8 @@
     IBOutlet UITableViewCell* _cellInvite;
     IBOutlet UILabel* _cellInviteLabel;
     
-    NSArray* _friends_online;
-    NSArray* _friends_offline;
+    NSMutableArray* _friends_online;
+    NSMutableArray* _friends_offline;
 }
 
 

@@ -771,30 +771,6 @@
 		BC9F4AD614E6C7E900008AA3 /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9214E6C7E900008AA3 /* CellRadioLight@2x.png */; };
 		BC9F4AD714E6C7E900008AA3 /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9214E6C7E900008AA3 /* CellRadioLight@2x.png */; };
 		BC9F4AD814E6C7E900008AA3 /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9214E6C7E900008AA3 /* CellRadioLight@2x.png */; };
-		BC9F4AD914E6C7E900008AA3 /* UserCellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9314E6C7E900008AA3 /* UserCellBackgroundBlue.png */; };
-		BC9F4ADA14E6C7E900008AA3 /* UserCellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9314E6C7E900008AA3 /* UserCellBackgroundBlue.png */; };
-		BC9F4ADB14E6C7E900008AA3 /* UserCellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9314E6C7E900008AA3 /* UserCellBackgroundBlue.png */; };
-		BC9F4ADC14E6C7E900008AA3 /* UserCellBackgroundBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9314E6C7E900008AA3 /* UserCellBackgroundBlue.png */; };
-		BC9F4ADD14E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9414E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png */; };
-		BC9F4ADE14E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9414E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png */; };
-		BC9F4ADF14E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9414E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png */; };
-		BC9F4AE014E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9414E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png */; };
-		BC9F4AE114E6C7E900008AA3 /* UserCellBackgroundDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9514E6C7E900008AA3 /* UserCellBackgroundDark.png */; };
-		BC9F4AE214E6C7E900008AA3 /* UserCellBackgroundDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9514E6C7E900008AA3 /* UserCellBackgroundDark.png */; };
-		BC9F4AE314E6C7E900008AA3 /* UserCellBackgroundDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9514E6C7E900008AA3 /* UserCellBackgroundDark.png */; };
-		BC9F4AE414E6C7E900008AA3 /* UserCellBackgroundDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9514E6C7E900008AA3 /* UserCellBackgroundDark.png */; };
-		BC9F4AE514E6C7E900008AA3 /* UserCellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9614E6C7E900008AA3 /* UserCellBackgroundDark@2x.png */; };
-		BC9F4AE614E6C7E900008AA3 /* UserCellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9614E6C7E900008AA3 /* UserCellBackgroundDark@2x.png */; };
-		BC9F4AE714E6C7E900008AA3 /* UserCellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9614E6C7E900008AA3 /* UserCellBackgroundDark@2x.png */; };
-		BC9F4AE814E6C7E900008AA3 /* UserCellBackgroundDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9614E6C7E900008AA3 /* UserCellBackgroundDark@2x.png */; };
-		BC9F4AE914E6C7E900008AA3 /* UserCellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9714E6C7E900008AA3 /* UserCellBackgroundLight.png */; };
-		BC9F4AEA14E6C7E900008AA3 /* UserCellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9714E6C7E900008AA3 /* UserCellBackgroundLight.png */; };
-		BC9F4AEB14E6C7E900008AA3 /* UserCellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9714E6C7E900008AA3 /* UserCellBackgroundLight.png */; };
-		BC9F4AEC14E6C7E900008AA3 /* UserCellBackgroundLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9714E6C7E900008AA3 /* UserCellBackgroundLight.png */; };
-		BC9F4AED14E6C7E900008AA3 /* UserCellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9814E6C7E900008AA3 /* UserCellBackgroundLight@2x.png */; };
-		BC9F4AEE14E6C7E900008AA3 /* UserCellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9814E6C7E900008AA3 /* UserCellBackgroundLight@2x.png */; };
-		BC9F4AEF14E6C7E900008AA3 /* UserCellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9814E6C7E900008AA3 /* UserCellBackgroundLight@2x.png */; };
-		BC9F4AF014E6C7E900008AA3 /* UserCellBackgroundLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9814E6C7E900008AA3 /* UserCellBackgroundLight@2x.png */; };
 		BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BCA2CCD4149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
@@ -1600,12 +1576,6 @@
 		BC9F4A9014E6C7E900008AA3 /* CellRadioLight_Mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellRadioLight_Mask@2x.png"; path = "RadioSelection/CellRadioLight_Mask@2x.png"; sourceTree = "<group>"; };
 		BC9F4A9114E6C7E900008AA3 /* CellRadioLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellRadioLight.png; path = RadioSelection/CellRadioLight.png; sourceTree = "<group>"; };
 		BC9F4A9214E6C7E900008AA3 /* CellRadioLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellRadioLight@2x.png"; path = "RadioSelection/CellRadioLight@2x.png"; sourceTree = "<group>"; };
-		BC9F4A9314E6C7E900008AA3 /* UserCellBackgroundBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UserCellBackgroundBlue.png; path = RadioSelection/UserCellBackgroundBlue.png; sourceTree = "<group>"; };
-		BC9F4A9414E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserCellBackgroundBlue@2x.png"; path = "RadioSelection/UserCellBackgroundBlue@2x.png"; sourceTree = "<group>"; };
-		BC9F4A9514E6C7E900008AA3 /* UserCellBackgroundDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UserCellBackgroundDark.png; path = RadioSelection/UserCellBackgroundDark.png; sourceTree = "<group>"; };
-		BC9F4A9614E6C7E900008AA3 /* UserCellBackgroundDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserCellBackgroundDark@2x.png"; path = "RadioSelection/UserCellBackgroundDark@2x.png"; sourceTree = "<group>"; };
-		BC9F4A9714E6C7E900008AA3 /* UserCellBackgroundLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UserCellBackgroundLight.png; path = RadioSelection/UserCellBackgroundLight.png; sourceTree = "<group>"; };
-		BC9F4A9814E6C7E900008AA3 /* UserCellBackgroundLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UserCellBackgroundLight@2x.png"; path = "RadioSelection/UserCellBackgroundLight@2x.png"; sourceTree = "<group>"; };
 		BCA2CCD1149A80270000637E /* PlaylistMoulinor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistMoulinor.h; sourceTree = "<group>"; };
 		BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistMoulinor.m; sourceTree = "<group>"; };
 		BCA6554714BCA8590043B2DA /* Auth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
@@ -2288,12 +2258,6 @@
 				BC9F4A9014E6C7E900008AA3 /* CellRadioLight_Mask@2x.png */,
 				BC9F4A9114E6C7E900008AA3 /* CellRadioLight.png */,
 				BC9F4A9214E6C7E900008AA3 /* CellRadioLight@2x.png */,
-				BC9F4A9314E6C7E900008AA3 /* UserCellBackgroundBlue.png */,
-				BC9F4A9414E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png */,
-				BC9F4A9514E6C7E900008AA3 /* UserCellBackgroundDark.png */,
-				BC9F4A9614E6C7E900008AA3 /* UserCellBackgroundDark@2x.png */,
-				BC9F4A9714E6C7E900008AA3 /* UserCellBackgroundLight.png */,
-				BC9F4A9814E6C7E900008AA3 /* UserCellBackgroundLight@2x.png */,
 				BC71F5A2147FE07600DAE4BD /* avatarDummy */,
 			);
 			name = RadioSelection;
@@ -3369,12 +3333,6 @@
 				BC9F4ACE14E6C7E900008AA3 /* CellRadioLight_Mask@2x.png in Resources */,
 				BC9F4AD214E6C7E900008AA3 /* CellRadioLight.png in Resources */,
 				BC9F4AD614E6C7E900008AA3 /* CellRadioLight@2x.png in Resources */,
-				BC9F4ADA14E6C7E900008AA3 /* UserCellBackgroundBlue.png in Resources */,
-				BC9F4ADE14E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png in Resources */,
-				BC9F4AE214E6C7E900008AA3 /* UserCellBackgroundDark.png in Resources */,
-				BC9F4AE614E6C7E900008AA3 /* UserCellBackgroundDark@2x.png in Resources */,
-				BC9F4AEA14E6C7E900008AA3 /* UserCellBackgroundLight.png in Resources */,
-				BC9F4AEE14E6C7E900008AA3 /* UserCellBackgroundLight@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3535,12 +3493,6 @@
 				BC9F4AD014E6C7E900008AA3 /* CellRadioLight_Mask@2x.png in Resources */,
 				BC9F4AD414E6C7E900008AA3 /* CellRadioLight.png in Resources */,
 				BC9F4AD814E6C7E900008AA3 /* CellRadioLight@2x.png in Resources */,
-				BC9F4ADC14E6C7E900008AA3 /* UserCellBackgroundBlue.png in Resources */,
-				BC9F4AE014E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png in Resources */,
-				BC9F4AE414E6C7E900008AA3 /* UserCellBackgroundDark.png in Resources */,
-				BC9F4AE814E6C7E900008AA3 /* UserCellBackgroundDark@2x.png in Resources */,
-				BC9F4AEC14E6C7E900008AA3 /* UserCellBackgroundLight.png in Resources */,
-				BC9F4AF014E6C7E900008AA3 /* UserCellBackgroundLight@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3701,12 +3653,6 @@
 				BC9F4ACD14E6C7E900008AA3 /* CellRadioLight_Mask@2x.png in Resources */,
 				BC9F4AD114E6C7E900008AA3 /* CellRadioLight.png in Resources */,
 				BC9F4AD514E6C7E900008AA3 /* CellRadioLight@2x.png in Resources */,
-				BC9F4AD914E6C7E900008AA3 /* UserCellBackgroundBlue.png in Resources */,
-				BC9F4ADD14E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png in Resources */,
-				BC9F4AE114E6C7E900008AA3 /* UserCellBackgroundDark.png in Resources */,
-				BC9F4AE514E6C7E900008AA3 /* UserCellBackgroundDark@2x.png in Resources */,
-				BC9F4AE914E6C7E900008AA3 /* UserCellBackgroundLight.png in Resources */,
-				BC9F4AED14E6C7E900008AA3 /* UserCellBackgroundLight@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3867,12 +3813,6 @@
 				BC9F4ACF14E6C7E900008AA3 /* CellRadioLight_Mask@2x.png in Resources */,
 				BC9F4AD314E6C7E900008AA3 /* CellRadioLight.png in Resources */,
 				BC9F4AD714E6C7E900008AA3 /* CellRadioLight@2x.png in Resources */,
-				BC9F4ADB14E6C7E900008AA3 /* UserCellBackgroundBlue.png in Resources */,
-				BC9F4ADF14E6C7E900008AA3 /* UserCellBackgroundBlue@2x.png in Resources */,
-				BC9F4AE314E6C7E900008AA3 /* UserCellBackgroundDark.png in Resources */,
-				BC9F4AE714E6C7E900008AA3 /* UserCellBackgroundDark@2x.png in Resources */,
-				BC9F4AEB14E6C7E900008AA3 /* UserCellBackgroundLight.png in Resources */,
-				BC9F4AEF14E6C7E900008AA3 /* UserCellBackgroundLight@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

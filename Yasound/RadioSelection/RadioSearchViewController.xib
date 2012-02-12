@@ -163,6 +163,14 @@
 					<int key="connectionID">44</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_searchController</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="100192337"/>
+					</object>
+					<int key="connectionID">51</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">menuBarItemClicked:</string>
 						<reference key="source" ref="560187532"/>
@@ -332,13 +340,13 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">50</int>
+			<int key="maxID">51</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">RadioSearchViewController</string>
-					<string key="superclassName">UIViewController</string>
+					<string key="superclassName">TestflightViewController</string>
 					<object class="NSMutableDictionary" key="actions">
 						<string key="NS.key.0">nowPlayingClicked:</string>
 						<string key="NS.object.0">id</string>
@@ -393,7 +401,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="NS.key.0">barItemMenu.png</string>
-			<string key="NS.object.0">{21, 18}</string>
+			<string key="NS.object.0">{19, 17}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

@@ -114,6 +114,10 @@
 }
 
 
+
+
+
+
 - (void)updateWithRadio:(Radio*)radio rowIndex:(NSInteger)rowIndex
 {
     self.radio = radio;
@@ -127,7 +131,8 @@
     
     [self.cellBackground setImage:[sheet image]];
     
-    //assert([_updateTimer isValid]);
+    assert([_updateTimer isValid]);
+
     
     // avatar
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
@@ -151,12 +156,15 @@
     
     // subtitle 2
     self.radioSubtitle2.text = @"";
+
+    [_updateTimer fire];
     
     // likes
     self.radioLikes.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
     
     // listeners
     self.radioListeners.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
+    
     
     // configure selected view
     //    UIView* myBackView = [[UIView alloc] initWithFrame:self.frame];

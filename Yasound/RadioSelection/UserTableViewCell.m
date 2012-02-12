@@ -28,12 +28,14 @@
     NSError* error;
     
       self.user = u;
+      
+      self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     // cell background
     if (rowIndex & 1)
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"UserCellBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
     else
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"UserCellBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
 
     [self addSubview:self.cellBackground];
     
@@ -47,9 +49,9 @@
     // avatar mask
     NSString* avatarMask;
     if (rowIndex & 1)
-      avatarMask = @"RadioSelectionMaskGray";
-    else
       avatarMask = @"RadioSelectionMaskWhite";
+    else
+      avatarMask = @"RadioSelectionMaskGray";
     
     stylesheet = [[BundleFileManager main] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:&error];
     self.userAvatarMask = [stylesheet makeImage];
@@ -74,12 +76,12 @@
     
     _maskBackup = self.userAvatarMask.image;
     [_maskBackup retain];
-    _maskSelected = [UIImage imageNamed:@"MaskSelected.png"];
+    _maskSelected = [UIImage imageNamed:@"CellRadioHighlighted_Mask.png"];
     [_maskSelected retain];
     
     _bkgBackup = self.cellBackground.image;
     [_bkgBackup retain];
-    _bkgSelected = [UIImage imageNamed:@"UserCellBackgroundBlue.png"];
+    _bkgSelected = [UIImage imageNamed:@"CellRadioHighlighted.png"];
     [_bkgSelected retain];
 
     

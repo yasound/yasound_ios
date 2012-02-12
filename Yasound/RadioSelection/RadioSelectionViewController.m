@@ -75,7 +75,7 @@
     NSString* str;
     
     _currentStyle = @"style_all";
-    _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
+    _categoryTitle.text = NSLocalizedString(_currentStyle, nil) ;
 
 #ifdef TEST_FAKE
     _radios = [[NSMutableArray alloc] init];
@@ -277,7 +277,7 @@
     //  [self.navigationController dismissModalViewControllerAnimated:YES];
     
     _currentStyle = style;
-    _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
+    _categoryTitle.text = NSLocalizedString(_currentStyle, nil);
     
     [self updateRadios:_currentStyle];
 }

@@ -817,19 +817,6 @@
 			<key>path</key>
 			<string>images/Menu</string>
 		</dict>
-		<key>TableViewSection</key>
-		<dict>
-			<key>x</key>
-			<integer>0</integer>
-			<key>y</key>
-			<integer>0</integer>
-			<key>name</key>
-			<string>TableViewSection</string>
-			<key>type</key>
-			<string>png</string>
-			<key>path</key>
-			<string>images/TableView</string>
-		</dict>
 		<key>TableViewStyleSelectionBar</key>
 		<dict>
 			<key>x</key>

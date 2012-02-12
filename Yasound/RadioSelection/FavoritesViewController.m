@@ -129,32 +129,11 @@
     return _radios.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 50;
-//}
 
-
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    UIView* view = [[UIView alloc] initWithFrame:cell.frame];
-    view.backgroundColor = [UIColor clearColor];
-    
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIImage* image = [sheet image];
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
-    CGRect frame =     CGRectMake(0, cell.frame.size.height - image.size.height -2, sheet.frame.size.width, sheet.frame.size.height);
-    imageView.frame = frame;
-    [view addSubview:imageView];
-    
-    cell.backgroundView = view;
-    [view release];    
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 55;
+    return 66;
 }
 
 

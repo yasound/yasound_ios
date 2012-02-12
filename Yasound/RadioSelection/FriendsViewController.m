@@ -19,18 +19,35 @@
 
 @implementation FriendsViewController
 
+
+//#define FAKE_USERS
+
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-//        UIImage* tabImage = [UIImage imageNamed:tabIcon];
-//        UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
-//        self.tabBarItem = theItem;
-//        [theItem release];     
-        
+#ifdef FAKE_USERS
+        _friends_online = [[NSMutableArray alloc] init];
+        _friends_offline = [[NSMutableArray alloc] init];
+        for (int i = 0; i < 10; i++)
+        {
+            User* user = [[User alloc] init];
+            user.username = [NSString stringWithFormat:@"username %d", i];
+            user.password = [NSString stringWithFormat:@"password %d", i];
+            user.name = [NSString stringWithFormat:@"name %d", i];
+            user.api_key = [NSString stringWithFormat:@"api_key %d", i];
+            user.email = [NSString stringWithFormat:@"email %d", i];
+            user.current_radio = [YasoundDataProvider main].radio;
+            user.own_radio = [YasoundDataProvider main].radio;
+            
+            [_friends_online addObject:user];
+            [_friends_offline addObject:user];
+        }
+#else
         _friends_online = nil;
         _friends_offline = nil;
+#endif
     }
     return self;
 }
@@ -67,8 +84,10 @@
 
 - (void)updateFriends
 {
+#ifndef FAKE_USERS
     [[YasoundDataProvider main] friendsWithTarget:self action:@selector(receiveFriends:info:)];
     [[ActivityModelessSpinner main] addRef];
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -174,8 +193,27 @@
     if (section == SECTION_INVITE_BUTTON)
         return 8;
     
-    return 33;
+//    return 33;
+    return 22;
 }
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == SECTION_INVITE_BUTTON)
+        return 0;
+    
+    return 22;
+}
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 66;
+}
+
+
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -198,7 +236,7 @@
     }
     
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableViewSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
     UIImage* image = [sheet image];
     CGFloat height = image.size.height;
@@ -215,32 +253,18 @@
 
 
 
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    return 55;
-}
-
-
-
-
-
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    UIView* view = [[UIView alloc] initWithFrame:cell.frame];
+    UIView* view = [[UIView alloc] init];
     view.backgroundColor = [UIColor clearColor];
-    
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIImage* image = [sheet image];
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
-    CGRect frame =     CGRectMake(0, cell.frame.size.height - image.size.height -2, sheet.frame.size.width, sheet.frame.size.height);
-    imageView.frame = frame;
-    [view addSubview:imageView];
-    
-    cell.backgroundView = view;
-    [view release];    
+    return view;
 }
+
+
+
+
+
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
