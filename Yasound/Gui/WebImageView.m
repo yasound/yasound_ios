@@ -200,6 +200,7 @@ static NSMutableDictionary* gDictionnary = NULL;
 
 -(id)initWithImageFrame:(CGRect)frame
 {
+  NSLog(@"WebImage initWithImageFrame 0x%p", self);
   self = [super init];
   if (self)
   {
@@ -213,6 +214,7 @@ static NSMutableDictionary* gDictionnary = NULL;
 
 -(id)initWithImageAtURL:(NSURL*)Url
 {
+  NSLog(@"WebImage initWithImageAtURL 0x%p / %@", self, [Url absoluteURL]);
   self = [super init];
   if (self)
   {
@@ -224,20 +226,23 @@ static NSMutableDictionary* gDictionnary = NULL;
 
 -(void)dealloc
 {
+  NSLog(@"WebImage dealloc 0x%p / %@", self, [self.url absoluteURL]);
   [WebImageView removeView:self fromUrl:self.url];
 }
 
 - (void)setUrl:(NSURL *)Url
 {
+  NSLog(@"WebImage 0x%p setUrl:%@ (old: 0x%x / new: 0x%x)", self, [Url absoluteURL], self.url, Url);
   if (url != nil)
   {
     NSURL* u = url;
     NSString* s = [u absoluteString];
-    NSLog(@"WebImage setUrl:%@", s);
+    NSLog(@"WebImage 0x%p previous url:%@", self, s);
     [WebImageView removeView:self fromUrl:url];
   }
 
   url = Url;
+  [url retain];
   if (Url == nil)
   {
     [self setImage:[UIImage imageNamed:@"avatarDummy.png"]]; 
