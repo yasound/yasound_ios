@@ -27,8 +27,9 @@
 @implementation MenuViewController
 
 #define SECTION_MYRADIO 0
-#define SECTION_MYRADIO_NB_ROWS 1
-#define ROW_MYRADIO 0
+#define SECTION_MYRADIO_NB_ROWS 2
+#define ROW_MYRADIO_MYRADIO 0
+#define ROW_MYRADIO_NOWPLAYING 1
 
 #define SECTION_RADIOS 1
 #define SECTION_RADIOS_NB_ROWS 4
@@ -226,12 +227,18 @@
     NSString* style = nil;
     NSString* selectedStyle = nil;
     
-    if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO))
+    if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_MYRADIO))
     {
-        style = @"MenuRowSingle";
-        selectedStyle = @"MenuRowSingleSelected";
+        style = @"MenuRowFirst";
+        selectedStyle = @"MenuRowFirstSelected";
     }
-    
+
+    else if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_NOWPLAYING))
+    {
+        style = @"MenuRowLast";
+        selectedStyle = @"MenuRowLastSelected";
+    }
+
     else if (indexPath.row == 0)
     {
         style = @"MenuRowFirst";
@@ -291,14 +298,22 @@
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
-    if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO))
+    if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_MYRADIO))
     {
         cell.textLabel.text = NSLocalizedString(@"MenuView_myradio_myradio", nil);
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMyRadio" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         [cell.imageView setImage:[sheet image]];
     }
-    
+
+    else if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_NOWPLAYING))
+    {
+        cell.textLabel.text = NSLocalizedString(@"MenuView_myradio_nowplaying", nil);
+        
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMyRadio" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        [cell.imageView setImage:[sheet image]];
+    }
+
     else if (indexPath.section == SECTION_RADIOS)
     {
         if (indexPath.row == ROW_RADIOS_FAVORITES)
@@ -372,13 +387,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO))
+    if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_MYRADIO))
     {
         RadioViewController* view = [[RadioViewController alloc] initWithRadio:[YasoundDataProvider main].radio];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
+    else if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_NOWPLAYING))
+    {
+        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+
     else if (indexPath.section == SECTION_RADIOS)
     {
         if (indexPath.row == ROW_RADIOS_FAVORITES)
