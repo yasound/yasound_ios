@@ -67,6 +67,10 @@ static ASIDownloadCache *gHttpCache = NULL;
     [view addSubview:ai];
     [anims addObject:ai];
   }
+  else
+  {
+    [self load];
+  }
 }    
 
 - (void) removeView:(WebImageView*)view
