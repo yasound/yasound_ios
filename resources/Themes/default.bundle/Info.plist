@@ -1096,6 +1096,19 @@
 			<key>path</key>
 			<string>images/Icons</string>
 		</dict>
+		<key>StatsView_StickerMyRadio</key>
+		<dict>
+			<key>x</key>
+			<integer>6</integer>
+			<key>y</key>
+			<integer>6</integer>
+			<key>name</key>
+			<string>StickerMyRadio</string>
+			<key>path</key>
+			<string>images/Stats</string>
+			<key>type</key>
+			<string>png</string>
+		</dict>
 	</dict>
 </dict>
 </plist>
