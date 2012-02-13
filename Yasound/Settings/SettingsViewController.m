@@ -673,6 +673,8 @@
             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         else if (buttonIndex == 1)
             picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+      else
+        return;
             
         [_pickImageQuery release];
         _pickImageQuery = nil;
