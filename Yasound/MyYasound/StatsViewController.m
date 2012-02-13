@@ -57,7 +57,7 @@
         _monthGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
         
         _monthGraphView.plotColor = RGB(200,200,200);
-        _monthGraphView.fillColor = RGBA(196,236,254,128);
+        _monthGraphView.fillColor = RGBA(196,246,254,96);
       
       _leaderboard = nil;
     }
@@ -233,6 +233,15 @@
     return 22;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 22;
+}
+
+
+
+
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     NSString* title = nil;
@@ -322,68 +331,110 @@
 //  if ((indexPath.section == SECTION_LEADERBOARD) && (indexPath.row == ROW_LEADERBOARD_CONTROL))
 //    return _cellLeaderBoardSelector;
   
-  
-  
-  static NSString* CellIdentifier = @"Cell";
-  
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  
-  if (cell == nil) 
-  {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
-  }
-  
-  cell.selectionStyle = UITableViewCellSelectionStyleNone;
-  cell.textLabel.textColor = [UIColor whiteColor];
-    cell.detailTextLabel.textColor = [UIColor colorWithRed:160.f/255.f green:182.f/255.f blue:222.f/255.f alpha:1];
-  
-  if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_LISTENERS))
-  {      
-    NSNumber* listeners = [YasoundDataProvider main].radio.nb_current_users;
-    cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
+    UITableViewCell* cell = nil;
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", listeners];
-      cell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:174.f/255.f blue:0 alpha:1];
+    if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_LISTENERS))
+    {      
+        static NSString* CellIdentifier = @"Cell";
+
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+        if (cell == nil) 
+        {
+          cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        }
+
+        NSNumber* listeners = [YasoundDataProvider main].radio.nb_current_users;
+        cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
+
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", listeners];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:174.f/255.f blue:0 alpha:1];
+
+        [cell.imageView setImage:[UIImage imageNamed:@"iconSubscribers.png"]];
       
-    [cell.imageView setImage:[UIImage imageNamed:@"iconSubscribers.png"]];
-      
-  }
+    }
   
-  else if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CHART))
-  {
-    CGRect frame = CGRectMake(GRAPH_X, GRAPH_Y, GRAPH_WIDTH, GRAPH_HEIGHT - GRAPH_Y - 2);
-    _monthGraphBoundingBox = [[UIView alloc] initWithFrame:frame];
-    [cell.contentView addSubview:_monthGraphBoundingBox];
+    else if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CHART))
+    {
+        static NSString* CellIdentifier = @"CellChart";
+
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+        if (cell == nil) 
+        {
+          cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        }
+
+
+        CGRect frame = CGRectMake(GRAPH_X, GRAPH_Y, GRAPH_WIDTH, GRAPH_HEIGHT - GRAPH_Y - 2);
+        _monthGraphBoundingBox = [[UIView alloc] initWithFrame:frame];
+        [cell.contentView addSubview:_monthGraphBoundingBox];
+
+        frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+        _monthGraphView.frame = frame;
+        [_monthGraphBoundingBox addSubview:_monthGraphView];
+        _monthGraphView.clipsToBounds = YES;    
+    }
+
     
-    frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-    _monthGraphView.frame = frame;
-    [_monthGraphBoundingBox addSubview:_monthGraphView];
-    _monthGraphView.clipsToBounds = YES;    
-  }
-//  else if ((indexPath.section == SECTION_LEADERBOARD) && (indexPath.row > ROW_LEADERBOARD_CONTROL))
-  else if (indexPath.section == SECTION_LEADERBOARD)
-  {
-//    assert(indexPath.row > 0);
-//      NSUInteger entryIndex = indexPath.row - 1;
-      NSUInteger entryIndex = indexPath.row ;
-    LeaderBoardEntry* entry = [_leaderboard objectAtIndex:entryIndex];
+    else if (indexPath.section == SECTION_LEADERBOARD)
+    {
+        static NSString* CellIdentifier = @"CellLeaderboard";
+        
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) 
+        {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        }
+        
+
+        
+        LeaderBoardEntry* entry = [_leaderboard objectAtIndex:indexPath.row];
+
+        BundleStylesheet* sheet = nil;
+        
+        // sticker userRadio
+        if ([entry isUserRadio])
+        {
+            sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_StickerMyRadio" error:nil];
+            UIImageView* view = [[sheet makeImage] autorelease];
+            [cell.contentView addSubview:view];
+        }
+        
+        // radio rank
+        sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_Rank" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UILabel* label = [[sheet makeLabel] autorelease];
+        label.text = [NSString stringWithFormat:@"%@", entry.leaderboard_rank];
+        [cell.contentView addSubview:label];
+
+        // radio name
+        sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_Name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        label = [[sheet makeLabel] autorelease];
+        label.text = [NSString stringWithFormat:@"%@", entry.name];
+        [cell.contentView addSubview:label];
+
+        // favorites
+        sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_Favorites" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        label = [[sheet makeLabel] autorelease];
+        label.text = [NSString stringWithFormat:@"%@", entry.favorites];
+        [cell.contentView addSubview:label];
+
+        // favorites icon
+        sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_FavoritesIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImageView* imageView = [[sheet makeImage] autorelease];
+        [cell.contentView addSubview:imageView];
+    }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", entry.leaderboard_rank, entry.name];
-      
-      if ([entry.favorites integerValue] > 1)
-          cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", entry.favorites, @"favoris"];
-      else
-          cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", entry.favorites, @"favori"];
-    
-    if ([entry isUserRadio])
-      cell.textLabel.textColor = [UIColor redColor];
-    
-    [cell.imageView setImage:nil];
-  }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:160.f/255.f green:182.f/255.f blue:222.f/255.f alpha:1];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+
     
+    
+//    NSLog(@"cell nil : section %d  row %d", indexPath.section, indexPath.row);
     
   return cell;
 }
