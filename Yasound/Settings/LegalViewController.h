@@ -15,14 +15,7 @@
     IBOutlet UIToolbar* _toolbar;
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
-    
-    IBOutlet UITableView* _tableView;  
-//    IBOutlet UITableViewCell* _cellAgreement;
-//    IBOutlet UILabel* _cellAgreementLabel;
-    
-    NSString* _legalText;
-    UIFont* _legalFont;
-    UILabel* _legalLabel;
+    IBOutlet UIWebView* _webview;
 }
 
 

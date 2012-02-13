@@ -297,10 +297,13 @@ static Song* _gNowPlayingSong = nil;
     [self.view addSubview:_statusBar];
     [_statusBar addSubview:statusBarBackground];
     
-    sheet = [[Theme theme] stylesheetForKey:@"StatusBarButton" error:nil];
-    _statusBarButton = [sheet makeButton];
-    [_statusBarButton addTarget:self action:@selector(onStatusBarButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_statusBar addSubview:_statusBarButton];
+    sheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOff" error:nil];
+  _statusBarButtonImage = [sheet makeImage];
+  [_statusBar addSubview:_statusBarButtonImage];
+  
+  sheet = [[Theme theme] stylesheetForKey:@"StatusBarInteractiveView" error:nil];
+  InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onStatusBarButtonClicked:)];
+  [_statusBar addSubview:interactiveView];
   
     
     // headset image
@@ -1116,21 +1119,44 @@ static Song* _gNowPlayingSong = nil;
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
 }
 
+
+
+
+
+
+
+
+
 #pragma mark - User list
 
-- (NSIndexPath *)usersContainerWillSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (NSIndexPath *)usersContainerDidSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  User* user = [_connectedUsers objectAtIndex:indexPath.row];
+    UITableViewCell* cell = [_usersContainer cellForRowAtIndexPath:indexPath];
+    cell.selected = NO;
+
+    User* user = [_connectedUsers objectAtIndex:indexPath.row];
   if ([user.id intValue] == [radio.creator.id intValue])
     return nil;
   
   [[YasoundDataProvider main] radioForUser:user withTarget:self action:@selector(receivedRadioForSelectedUser:withInfo:)];
+    
+    
   return nil;
 }
 
 
 - (void)usersContainerWillDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    UIView* view = [[UIView alloc] initWithFrame:cell.frame];
+//    view.backgroundColor = [UIColor redColor];
+//    
+//    CGFloat width = cell.frame.size.width;
+//    
+//    UIView* selection = [[UIView alloc] initWithFrame:CGRectMake(0, 12, width, 58)];
+//    selection.backgroundColor = [UIColor blueColor];
+//    [view addSubview:selection];
+//
+//    cell.selectedBackgroundView = view;
 }
 
 
@@ -1161,8 +1187,21 @@ static Song* _gNowPlayingSong = nil;
     cell = [[[UserViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
   }
   cell.user = [_connectedUsers objectAtIndex:indexPath.row];
+    
+    
+    CGFloat width = cell.frame.size.width;
+
+    UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ListenerSelectedBackground.png"]];
+    view.frame = CGRectMake(0, 12, width, 58);
+    cell.selectedBackgroundView = view;
+    
   return cell;
 }
+
+
+
+
+
 
 - (void)receivedRadioForSelectedUser:(Radio*)r withInfo:(NSDictionary*)info
 {
@@ -1217,10 +1256,10 @@ static Song* _gNowPlayingSong = nil;
 #pragma mark - TableView Source and Delegate
 
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (NSIndexPath *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
   if (tableView == _usersContainer)
-    return [self usersContainerWillSelectRowAtIndexPath:indexPath];
+    return [self usersContainerDidSelectRowAtIndexPath:indexPath];
   
     return nil;
 }
@@ -1619,13 +1658,14 @@ static Song* _gNowPlayingSong = nil;
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
         sheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOff" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
+      [_statusBarButtonImage setImage:[sheet image]];
         
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration: 0.15];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(onStatusBarClosed:finished:context:)];
         
+      _statusBarButtonImage.frame = sheet.frame;
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y + _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
         
         _pageControl.alpha = 1;
@@ -1642,8 +1682,8 @@ static Song* _gNowPlayingSong = nil;
         
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
-        sheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
+        BundleStylesheet* buttonImageSheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+      [_statusBarButtonImage setImage:[buttonImageSheet image]];
         
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserScrollView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
       _usersContainer = [[OrientedTableView alloc] initWithFrame:sheet.frame];
@@ -1660,6 +1700,7 @@ static Song* _gNowPlayingSong = nil;
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration: 0.15];
         
+      _statusBarButtonImage.frame = buttonImageSheet.frame;
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y - _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
         _usersContainer.alpha = 1;
         

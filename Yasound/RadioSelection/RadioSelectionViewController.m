@@ -236,7 +236,7 @@
     NSString* g = genre;
     if ([genre isEqualToString:@"style_all"])
         g= nil;
-    [[YasoundDataProvider main] topRadiosWithGenre:g withTarget:self action:@selector(receiveRadios:withInfo:)];
+  [[YasoundDataProvider main] selectedRadiosWithGenre:g withTarget:self action:@selector(receiveRadios:withInfo:)];
 }
 
 

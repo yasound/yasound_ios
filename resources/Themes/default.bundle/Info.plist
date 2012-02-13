@@ -579,7 +579,7 @@
 			<key>path</key>
 			<string>images/StatusBar</string>
 		</dict>
-		<key>StatusBarButton</key>
+		<key>StatusBarButtonOff</key>
 		<dict>
 			<key>x</key>
 			<integer>294</integer>
@@ -592,23 +592,29 @@
 			<key>path</key>
 			<string>images/StatusBar</string>
 		</dict>
-		<key>StatusBarButtonOff</key>
-		<dict>
-			<key>name</key>
-			<string>StatusArrowUp</string>
-			<key>type</key>
-			<string>png</string>
-			<key>path</key>
-			<string>images/StatusBar</string>
-		</dict>
 		<key>StatusBarButtonOn</key>
 		<dict>
+			<key>x</key>
+			<integer>294</integer>
+			<key>y</key>
+			<integer>47</integer>
 			<key>name</key>
 			<string>StatusArrowDown</string>
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>
 			<string>images/StatusBar</string>
+		</dict>
+		<key>StatusBarInteractiveView</key>
+		<dict>
+			<key>x</key>
+			<integer>275</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>width</key>
+			<integer>50</integer>
+			<key>height</key>
+			<integer>60</integer>
 		</dict>
 		<key>RadioViewStatusBarMessage</key>
 		<dict>
@@ -635,7 +641,7 @@
 			<key>height</key>
 			<integer>64</integer>
 			<key>width</key>
-			<integer>294</integer>
+			<integer>275</integer>
 			<key>x</key>
 			<integer>0</integer>
 			<key>y</key>
