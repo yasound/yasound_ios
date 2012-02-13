@@ -15,6 +15,7 @@
 
 #define TIMER_PERIOD 0.01
 #define HEIGHT 16
+#define ADDITIONAL_SPACE 20
 
 
 
@@ -86,7 +87,7 @@
     // compute the size of the text
     CGSize suggestedSize = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(FLT_MAX, HEIGHT) lineBreakMode:UILineBreakModeClip];
     
-    CGRect frame = CGRectMake(posx, 0, suggestedSize.width + 10, HEIGHT);
+    CGRect frame = CGRectMake(posx, 0, suggestedSize.width +ADDITIONAL_SPACE, HEIGHT);
     label.frame = frame;
     label.text = self.text;
     
