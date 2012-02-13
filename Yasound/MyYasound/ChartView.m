@@ -56,8 +56,8 @@
         
 //        self.plotColor = RGB(5, 141, 191); 
 //        self.fillColor = RGB(5, 141, 191); 
-        self.spotColor = RGBA(200,200,200,128);
-        self.spotBorderColor = RGBA(96,96,96,128);
+        self.spotColor = RGBA(255,255,255,128);
+        self.spotBorderColor = RGBA(164,164,164,128);
 //        self.backgroundColor = [UIColor redColor];
         
         self.drawAxisX = YES;
@@ -65,8 +65,8 @@
         self.drawGridX = NO;
         self.drawGridY = YES;
         
-        self.xValuesColor = RGB(148, 148, 148);
-        self.yValuesColor = RGB(5, 141, 191);
+        self.xValuesColor = RGB(255, 255, 255);
+        self.yValuesColor = RGB(173, 237, 255);
 
         
         self.gridXColor = RGB(64, 64, 64);

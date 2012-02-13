@@ -492,6 +492,31 @@
     [req startAsynchronous];
 }
 
+
+- (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth withProgress:(id)progressDelegate
+{
+    NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
+    NSLog(@"post data url '%@'", u.absoluteString);
+    if (!u)
+    {
+        NSLog(@"post data: invalid url");
+        return;
+    }
+    
+    NSDictionary* userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"POST_DATA", @"method", userData, @"userData", nil];
+    
+    ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
+    [req addData:data forKey:key];
+    req.userInfo = userInfo;
+    req.delegate = self;
+    [self applyAuth:auth toRequest:req];
+    [self fillRequest:req];
+    [req setUploadProgressDelegate:progressDelegate];
+    [req startAsynchronous];
+}
+
+
+
 - (void)postToURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
     [self postNewObject:nil withURL:url absolute:absolute notifyTarget:target byCalling:selector withUserData:userData withAuth:auth returnNewObject:NO withAuthForGET:nil];

@@ -56,7 +56,7 @@
     _toolbarTitle.text = NSLocalizedString(@"FavoritesView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
-    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"MyYasoundBackground.png"]];
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
     
 }
@@ -129,49 +129,57 @@
     return _radios.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 50;
-//}
-
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    UIView* view = [[UIView alloc] initWithFrame:cell.frame];
-    view.backgroundColor = [UIColor clearColor];
+    NSInteger rowIndex = indexPath.row;
+    UIImageView* imageView = nil;
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIImage* image = [sheet image];
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
-    CGRect frame =     CGRectMake(0, cell.frame.size.height - image.size.height -2, sheet.frame.size.width, sheet.frame.size.height);
-    imageView.frame = frame;
-    [view addSubview:imageView];
+    // cell background
+    if (rowIndex & 1)
+    {
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    }
+    else
+    {
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    }
     
-    cell.backgroundView = view;
-    [view release];    
+    cell.backgroundView = imageView;
+    
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 55;
-}
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+    if (!_radios)
+        return nil;
+    
     static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
     
     if (!_radios)
         return nil;
     
-    NSInteger rowIndex = indexPath.row;
+    RadioSelectionTableViewCell* cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
+    NSInteger rowIndex = indexPath.row;
     Radio* radio = [_radios objectAtIndex:rowIndex];
     
-    RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
-    return cell;   
+    if (cell == nil)
+    {    
+        cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
+    }
+    else
+        [cell updateWithRadio:radio rowIndex:rowIndex];
+    
+    
+    return cell;
 }
+
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -46,7 +46,15 @@ static SongUploader* _main = nil;
 
 -(MPMediaItem *)findSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist
 {
-  MPMediaQuery *query = [MPMediaQuery songsQuery];
+  MPMediaPropertyPredicate *artistPredicate = [MPMediaPropertyPredicate predicateWithValue:artist forProperty: MPMediaItemPropertyArtist];
+  MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue:album forProperty: MPMediaItemPropertyAlbumTitle];
+  MPMediaPropertyPredicate *titlePredicate = [MPMediaPropertyPredicate predicateWithValue:title forProperty: MPMediaItemPropertyTitle];
+    
+  MPMediaQuery *query = [[MPMediaQuery alloc] init];
+  [query addFilterPredicate:artistPredicate];
+  [query addFilterPredicate:albumPredicate];
+  [query addFilterPredicate:titlePredicate];
+  
   for (MPMediaItem* item in query.items) {
     NSString* aTitle = [item valueForProperty:MPMediaItemPropertyTitle];
     NSString* aArtist = [item valueForProperty:MPMediaItemPropertyArtist];
@@ -54,9 +62,12 @@ static SongUploader* _main = nil;
     if ([title isEqualToString:aTitle] &&
         [artist isEqualToString:aArtist] &&
         [album isEqualToString:aAlbum]) {
+      
+      [query release];
       return item;
     }
   }
+  [query release];
   return NULL;
 }
 
@@ -74,7 +85,7 @@ static SongUploader* _main = nil;
 
 #pragma mark - public functions
 
-- (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector
+- (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
 {
   MPMediaItem *item = [self findSong:title album:album artist:artist];
   if (!item) {
@@ -124,7 +135,7 @@ static SongUploader* _main = nil;
     import = nil;  
     
     NSData *data = [NSData dataWithContentsOfFile: fullPath];
-    [[YasoundDataProvider main] uploadSong:data songId:songId target:self action:@selector(onUploadFinished:withInfos:)];
+    [[YasoundDataProvider main] uploadSong:data songId:songId target:self action:@selector(onUploadFinished:withInfos:) progressDelegate:progressDelegate];
   }];
   return TRUE;
 }

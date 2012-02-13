@@ -199,9 +199,9 @@
     if (![RegExp emailIsValid:email])
     {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_email_not_valid", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];  
-        return;    
+    [av show];
+    [av release];  
+    return;    
     }
     
     _email = [NSString stringWithString:email];

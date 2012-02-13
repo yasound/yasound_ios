@@ -7,7 +7,10 @@
 
 #import "BundleStylesheet.h"
 #import "BundleFileManager.h"
+
+#if USE_COREGRAPHIC_SHADOW
 #import <QuartzCore/QuartzCore.h>
+#endif
 
 //..................................................................................
 //  
@@ -215,6 +218,7 @@
 
 @implementation BundleStylesheet
 
+@synthesize name;
 @synthesize images = _images;
 @synthesize frame = _frame;
 @synthesize color = _color;
@@ -225,7 +229,7 @@
 
 static NSMutableDictionary* gFonts = nil;
 static NSNumber* _isRetina = nil;
-
+static NSMutableDictionary* gImageViews = nil;
 
 
 - (id)init
@@ -420,9 +424,11 @@ static NSNumber* _isRetina = nil;
 //
 // init a stylesheet using a stylesheet contents (NSDictionary), for a given bundle 
 //
-- (id)initWithSheet:(NSDictionary*)sheet bundle:(NSBundle*)bundle error:(NSError **)anError
+- (id)initWithSheet:(NSDictionary*)sheet name:(NSString*)name bundle:(NSBundle*)bundle error:(NSError **)anError
 {
   self = [self init];
+    
+    self.name = [NSString stringWithString:name];
   
   // store the sheet, to let the use access its custom properties
   _customProperties = [[NSDictionary alloc] initWithDictionary:sheet];
@@ -838,6 +844,7 @@ static NSNumber* _isRetina = nil;
     label.textAlignment = fontsheet.textAlignement;
     
     // apply shadow, if requested
+#if USE_COREGRAPHIC_SHADOW
     if (fontsheet.shadowIsSet)
     {
         label.layer.masksToBounds = NO;
@@ -847,6 +854,7 @@ static NSNumber* _isRetina = nil;
         label.layer.shadowOpacity = fontsheet.shadowOpacity;
         label.layer.shadowColor = fontsheet.shadowColor.CGColor;
     }
+#endif
     
 
     label.font = [self makeFont];
@@ -922,6 +930,7 @@ static NSNumber* _isRetina = nil;
     }
     
     // apply shadow, if requested
+#if USE_COREGRAPHIC_SHADOW
     if (fontsheet.shadowIsSet)
     {
         label.layer.masksToBounds = NO;
@@ -931,6 +940,7 @@ static NSNumber* _isRetina = nil;
         label.layer.shadowOpacity = fontsheet.shadowOpacity;
         label.layer.shadowColor = fontsheet.shadowColor.CGColor;
     }
+#endif
   
   return YES;
 }
@@ -956,6 +966,33 @@ static NSNumber* _isRetina = nil;
     
   return view;
 }
+
+- (UIImageView*)makeImageAndRetain:(BOOL)retainView
+{
+    UIImageView* view = [self makeImage];
+    if (retainView)
+    {
+        if (gImageViews == nil)
+        {
+            gImageViews = [[NSMutableDictionary alloc] init];
+            [gImageViews retain];
+        }
+        [gImageViews setObject:view forKey:self.name];
+    }
+}
+
+- (UIImageView*)getRetainedImage
+{
+    UIImageView* view = nil;
+    if (gImageViews)
+        [gImageViews objectForKey:self.name];
+    if (view != nil)
+        return view;
+    
+    view = [self makeImageAndRetain:YES];
+    return view;
+}
+
 
 
 

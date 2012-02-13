@@ -10,7 +10,7 @@
 #import "RadioSelectionTableViewCell.h"
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
-
+#import "BundleFileManager.h"
 
 
 @implementation RadioSearchViewController
@@ -21,9 +21,11 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) 
   {
-    UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
-    self.tabBarItem = theItem;
-    [theItem release];      
+//    UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
+//    self.tabBarItem = theItem;
+//    [theItem release];   
+      
+
     
   }
   
@@ -57,6 +59,15 @@
 
 //    _toolbarTitle.text = NSLocalizedString(@"FriendsView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+    
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    
+    
+    _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
+    _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
+
 }
 
 - (void)viewDidUnload
@@ -112,10 +123,28 @@
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  return 55;
+    NSInteger rowIndex = indexPath.row;
+    UIImageView* imageView = nil;
+    
+    // cell background
+    if (rowIndex & 1)
+    {
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    }
+    else
+    {
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    }
+    
+    cell.backgroundView = imageView;
+    
 }
+
+
 
 
 
@@ -123,15 +152,30 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
-  
+    static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
+    
+    if (!_radios)
+        return nil;
+    
+    RadioSelectionTableViewCell* cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
     NSInteger rowIndex = indexPath.row;
-
     Radio* radio = [_radios objectAtIndex:rowIndex];
-    RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];  
-  
-  return cell;
+    
+    if (cell == nil)
+    {    
+        cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
+    }
+    else
+        [cell updateWithRadio:radio rowIndex:rowIndex];
+    
+    
+    
+    return cell;
 }
+
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

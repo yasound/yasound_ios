@@ -318,7 +318,7 @@ static BundleFileManager* _main = nil;
     return nil;
   }
   
-  stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem bundle:self error:anError];
+    stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem name:key bundle:self error:anError];
 
   return stylesheet;
 }
@@ -339,7 +339,7 @@ static BundleFileManager* _main = nil;
     return nil;
   }
   
-  stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem bundle:self error:anError];
+  stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem name:key bundle:self error:anError];
   
   if (retainStylesheet)
     [self.stylesheets setObject:stylesheet forKey:key];

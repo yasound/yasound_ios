@@ -66,7 +66,7 @@
   NSDictionary* _customProperties;
 }
 
-
+@property (nonatomic, retain) NSString* name;
 @property (nonatomic, retain, readonly) NSMutableDictionary* images;
 @property (nonatomic, readonly) CGRect frame;
 @property (nonatomic, readonly) UIColor* color;
@@ -77,7 +77,7 @@
 + (BOOL)isRetina;
 
 // init a stylesheet using a stylesheet contents (NSDictionary), for a given bundle 
-- (id)initWithSheet:(NSDictionary*)sheet bundle:(NSBundle*)bundle error:(NSError **)anError;
+- (id)initWithSheet:(NSDictionary*)sheet name:(NSString*)name bundle:(NSBundle*)bundle error:(NSError **)anError;
 
 // return the first image stored in the dictionnary. useful shortcut when a stylesheet contains a single image.
 // use the dictionary property, and appropriate keys, when it's supposed to store several images.
@@ -102,6 +102,8 @@
 
 // create UIImageView using the parsed stylesheet
 - (UIImageView*)makeImage;
+- (UIImageView*)makeImageAndRetain:(BOOL)retainView;
+- (UIImageView*)getRetainedImage;
 
 @end
 

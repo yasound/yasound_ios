@@ -18,28 +18,30 @@
 @implementation RadioSelectionViewController
 
 
+//#define TEST_FAKE 0
+
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil  title:(NSString*)title tabIcon:(NSString*)tabIcon
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-//      _type = type;
-      
-      UIImage* tabImage = [UIImage imageNamed:tabIcon];
-      UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
-      self.tabBarItem = theItem;
-      [theItem release];      
-
-      _tableView.delegate = self;
-      _tableView.dataSource = self;
-}
+        //      _type = type;
+        
+        UIImage* tabImage = [UIImage imageNamed:tabIcon];
+        UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
+        self.tabBarItem = theItem;
+        [theItem release];      
+        
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
     return self;
 }
 
 - (void)dealloc
 {
-  NSLog(@"RadioSlectionViewController dealloc");
+    NSLog(@"RadioSlectionViewController dealloc");
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,27 +56,46 @@
 
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
+    [super viewDidLoad];
     
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuBackground" error:nil];    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-
-//  _topBarTitle.text = NSLocalizedString(@"FavoritesView_title", nil);
+    
+    //  _topBarTitle.text = NSLocalizedString(@"FavoritesView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
     [_qualitySwitchLabel loadView];
     
     // now playing button
-//    UIButton* btn = [[UIButton alloc] initWithFrame:frame];
+    //    UIButton* btn = [[UIButton alloc] initWithFrame:frame];
     
     
-  NSString* str;
-  
-  _currentStyle = @"style_all";
-  _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
+    NSString* str;
+    
+    _currentStyle = @"style_all";
+    _categoryTitle.text = NSLocalizedString(_currentStyle, nil) ;
 
+#ifdef TEST_FAKE
+    _radios = [[NSMutableArray alloc] init];
+    [_radios retain];
+    for (int i = 0; i < 32; i++)
+    {
+        Radio* radio = [[Radio alloc] init];
+        radio.name = [NSString stringWithFormat:@"radio %d", i];
+        radio.genre = [NSString stringWithFormat:@"genre %d", i];
+        radio.picture = nil;
+        radio.likes = [NSNumber numberWithInteger:456];
+        radio.favorites = [NSNumber numberWithInteger:654];
+        
+        [_radios addObject:radio];
+    }
+    
+    [_tableView reloadData];
+#endif
+    
+    
     [self updateRadios:nil];
 }
 
@@ -97,8 +118,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-  [super viewWillAppear:animated];
-  [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+    [super viewWillAppear:animated];
+    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
 }
 
 
@@ -129,15 +150,37 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-  return 1;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-  if (!_radios)
-    return 0;
-  return [_radios count];
+    if (!_radios)
+        return 0;
+    return [_radios count];
 }
+
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    NSInteger rowIndex = indexPath.row;
+    UIImageView* imageView = nil;
+    
+    // cell background
+    if (rowIndex & 1)
+    {
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    }
+    else
+    {
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+    }
+    
+    cell.backgroundView = imageView;
+    
+}
+
 
 
 
@@ -145,17 +188,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
-  
-  if (!_radios)
-    return nil;
-  
-  NSInteger rowIndex = indexPath.row;
-  
-  Radio* radio = [_radios objectAtIndex:rowIndex];
-  
-  RadioSelectionTableViewCell* cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
-  return cell;
+    static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
+    
+    if (!_radios)
+        return nil;
+    
+    RadioSelectionTableViewCell* cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+
+    NSInteger rowIndex = indexPath.row;
+    Radio* radio = [_radios objectAtIndex:rowIndex];
+    
+    if (cell == nil)
+    {    
+        cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
+    }
+    else
+        [cell updateWithRadio:radio rowIndex:rowIndex];
+    
+    
+    
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -187,6 +239,10 @@
 
 - (void)receiveRadios:(NSArray*)radios withInfo:(NSDictionary*)info
 {
+#ifdef TEST_FAKE
+    return;
+#endif
+    
     NSError* error = [info valueForKey:@"error"];
     if (error)
     {
@@ -208,10 +264,10 @@
 
 - (IBAction)onStyleSelectorClicked:(id)sender
 {
-  StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil currentStyle:_currentStyle target:self];
-//  self.navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-   self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-  [self.navigationController presentModalViewController:view animated:YES];
+    StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil currentStyle:_currentStyle target:self];
+    //  self.navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    [self.navigationController presentModalViewController:view animated:YES];
 }
 
 
@@ -236,17 +292,17 @@
 
 - (void)didSelectStyle:(NSString*)style
 {
-//  [self.navigationController dismissModalViewControllerAnimated:YES];
-  
-  _currentStyle = style;
-  _categoryTitle.text = [NSLocalizedString(_currentStyle, nil) uppercaseString];
-  
+    //  [self.navigationController dismissModalViewControllerAnimated:YES];
+    
+    _currentStyle = style;
+    _categoryTitle.text = NSLocalizedString(_currentStyle, nil);
+    
     [self updateRadios:_currentStyle];
 }
 
 - (void)closeSelectStyleController
 {
-  [self.navigationController dismissModalViewControllerAnimated:YES];
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 

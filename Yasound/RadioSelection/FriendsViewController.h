@@ -16,10 +16,12 @@
     IBOutlet UIBarButtonItem* _nowPlayingButton;
     
     IBOutlet UITableView* _tableView;
-  IBOutlet UIButton* _inviteButton;
     
-    NSArray* _friends_online;
-    NSArray* _friends_offline;
+    IBOutlet UITableViewCell* _cellInvite;
+    IBOutlet UILabel* _cellInviteLabel;
+    
+    NSMutableArray* _friends_online;
+    NSMutableArray* _friends_offline;
 }
 
 

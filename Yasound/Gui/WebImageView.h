@@ -13,8 +13,10 @@
 
 @property (retain, nonatomic) NSURL* url;
 
--(id)initWithImageFrame:(CGRect)frame;
--(id)initWithImageAtURL:(NSURL*)url;        
+-(id) initWithImageFrame:(CGRect)frame;
+-(id) initWithImageAtURL:(NSURL*)url;        
 
++(void) initCache;
++(void) clearCache;
 
 @end

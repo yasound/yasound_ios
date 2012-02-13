@@ -9,9 +9,11 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "WallEvent.h"
-#import <QuartzCore/QuartzCore.h>
 #import "YasoundDataProvider.h"
 
+#if USE_COREGRAPHIC_LAYER
+#import <QuartzCore/QuartzCore.h>
+#endif
 
 @implementation RadioViewCell
 
@@ -61,9 +63,10 @@
         self.avatar.frame = sheet.frame;
         [view addSubview:self.avatar];
         
+#if USE_COREGRAPHIC_LAYER
         self.avatar.layer.masksToBounds = YES;
         self.avatar.layer.cornerRadius = 6;
-
+#endif
 
         // date
         sheet = [[Theme theme] stylesheetForKey:@"CellDate" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -82,11 +85,13 @@
         UIView* bkg = [[UIView alloc] initWithFrame:messageSheet.frame];
         bkg.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, height + 2*MESSAGE_SPACING);
         
+#if USE_COREGRAPHIC_LAYER
         bkg.layer.masksToBounds = YES;
         bkg.layer.cornerRadius = 4;
         bkg.layer.borderColor = [UIColor colorWithRed:231.f/255.f green:231.f/255.f blue:231.f/255.f alpha:1].CGColor;
         bkg.layer.borderWidth = 1.0; 
         bkg.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.9].CGColor;
+#endif
         [view addSubview:bkg];
 
         

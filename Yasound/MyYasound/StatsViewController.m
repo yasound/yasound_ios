@@ -56,8 +56,8 @@
 
         _monthGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
         
-        _monthGraphView.plotColor = RGB(235,200,50);
-        _monthGraphView.fillColor = RGBA(235,200,50,64);
+        _monthGraphView.plotColor = RGB(200,200,200);
+        _monthGraphView.fillColor = RGBA(196,236,254,128);
       
       _leaderboard = nil;
     }
@@ -269,7 +269,7 @@
 {
     if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CHART))
     {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowChart.png"]];
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ChartBackground.png"]];
         cell.backgroundView = view;
         [view release];
         return;
@@ -343,7 +343,10 @@
     cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", listeners];
-    [cell.imageView setImage:[UIImage imageNamed:@"iconStatsListeners.png"]];
+      cell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:174.f/255.f blue:0 alpha:1];
+      
+    [cell.imageView setImage:[UIImage imageNamed:@"iconSubscribers.png"]];
+      
   }
   
   else if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CHART))

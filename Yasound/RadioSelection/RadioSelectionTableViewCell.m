@@ -25,7 +25,7 @@
 @synthesize radioListeners;
 @synthesize radioAvatar;
 @synthesize radioAvatarMask;
-@synthesize cellBackground;
+//@synthesize cellBackground;
 
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier rowIndex:(NSInteger)rowIndex radio:(Radio*)r;
@@ -34,16 +34,24 @@
   {
     BundleStylesheet* stylesheet;
     NSError* error;
+      
+      self.selectionStyle = UITableViewCellSelectionStyleNone;
     
       self.radio = r;
     
-    // cell background
-    if (rowIndex & 1)
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
-    else
-      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+//    // cell background
+//    if (rowIndex & 1)
+//    {
+//        UIImageView* imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+//        self.cellBackground = imageView;
+//    }
+//    else
+//    {
+//        UIImageView* imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+//        self.cellBackground = imageView;
+//    }
 
-    [self addSubview:self.cellBackground];
+//    [self addSubview:self.cellBackground];
     
     // avatar
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
@@ -55,9 +63,9 @@
     // avatar mask
     NSString* avatarMask;
     if (rowIndex & 1)
-      avatarMask = @"RadioSelectionMaskGray";
-    else
       avatarMask = @"RadioSelectionMaskWhite";
+    else
+      avatarMask = @"RadioSelectionMaskGray";
     
     stylesheet = [[BundleFileManager main] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:&error];
     self.radioAvatarMask = [stylesheet makeImage];
@@ -96,19 +104,84 @@
     
     _maskBackup = self.radioAvatarMask.image;
     [_maskBackup retain];
-    _maskSelected = [UIImage imageNamed:@"MaskSelected.png"];
+    _maskSelected = [UIImage imageNamed:@"CellRadioHighlighted_Mask.png"];
     [_maskSelected retain];
     
-    _bkgBackup = self.cellBackground.image;
-    [_bkgBackup retain];
-    _bkgSelected = [UIImage imageNamed:@"CellBackgroundBlue.png"];
-    [_bkgSelected retain];
+//    _bkgBackup = self.cellBackground.image;
+//    [_bkgBackup retain];
+//    _bkgSelected = [UIImage imageNamed:@"CellRadioHighlighted.png"];
+//    [_bkgSelected retain];
 
     
     _updateTimer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
     [_updateTimer fire];
   }
   return self;
+}
+
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview 
+{
+    [super willMoveToSuperview:newSuperview];
+    if(!newSuperview) 
+    {
+        [_updateTimer invalidate];
+    }
+}
+
+
+
+
+- (void)updateWithRadio:(Radio*)radio rowIndex:(NSInteger)rowIndex
+{
+    self.radio = radio;
+    
+    BundleStylesheet* sheet = nil;
+    
+//    if (rowIndex & 1)
+//        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    else
+//        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    
+//    [self.cellBackground setImage:[sheet image]];
+    
+
+    
+    // avatar
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
+    [self.radioAvatar setUrl:imageURL];
+    
+    // avatar mask
+    NSString* avatarMask;
+    if (rowIndex & 1)
+        avatarMask = @"RadioSelectionMaskWhite";
+    else
+        avatarMask = @"RadioSelectionMaskGray";
+    
+    sheet = [[BundleFileManager main] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    [self.radioAvatarMask setImage:[sheet image]];
+    
+    // title
+    self.radioTitle.text = self.radio.name;
+    
+    // subtitle 1
+    self.radioSubtitle1.text = @"";
+    
+    // subtitle 2
+    self.radioSubtitle2.text = @"";
+
+    
+    // likes
+    self.radioLikes.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
+    
+    // listeners
+    self.radioListeners.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
+    
+    _updateTimer = [NSTimer scheduledTimerWithTimeInterval:20 target:self selector:@selector(onUpdate:) userInfo:nil repeats:YES];
+    [_updateTimer fire];
+    
+    
 }
 
 
@@ -146,43 +219,43 @@
 
   if (selected)
   {
-    self.cellBackground.image = _bkgSelected;
-    self.radioAvatarMask.image = _maskSelected;
+//    self.cellBackground.image = _bkgSelected;
+//    self.radioAvatarMask.image = _maskSelected;
    
-    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
-    [sheet applyToLabel:self.radioTitle class:@"selected"];
-
-    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1" error:nil];
-    [sheet applyToLabel:self.radioSubtitle1 class:@"selected"];
-
-    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2" error:nil];
-    [sheet applyToLabel:self.radioSubtitle2 class:@"selected"];
-
-    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes" error:nil];
-    [sheet applyToLabel:self.radioLikes class:@"selected"];
-
-    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners" error:nil];
-    [sheet applyToLabel:self.radioListeners class:@"selected"];
+//    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
+//    [sheet applyToLabel:self.radioTitle class:@"selected"];
+//
+//    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1" error:nil];
+//    [sheet applyToLabel:self.radioSubtitle1 class:@"selected"];
+//
+//    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2" error:nil];
+//    [sheet applyToLabel:self.radioSubtitle2 class:@"selected"];
+//
+//    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes" error:nil];
+//    [sheet applyToLabel:self.radioLikes class:@"selected"];
+//
+//    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners" error:nil];
+//    [sheet applyToLabel:self.radioListeners class:@"selected"];
   }
   else
   {
-    self.cellBackground.image = _bkgBackup;
-    self.radioAvatarMask.image = _maskBackup;
+//    self.cellBackground.image = _bkgBackup;
+//    self.radioAvatarMask.image = _maskBackup;
 
-    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
-    [sheet applyToLabel:self.radioTitle class:nil];
-    
-    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1" error:nil];
-    [sheet applyToLabel:self.radioSubtitle1 class:nil];
-    
-    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2" error:nil];
-    [sheet applyToLabel:self.radioSubtitle2 class:nil];
-    
-    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes" error:nil];
-    [sheet applyToLabel:self.radioLikes class:nil];
-    
-    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners" error:nil];
-    [sheet applyToLabel:self.radioListeners class:nil];
+//    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
+//    [sheet applyToLabel:self.radioTitle class:nil];
+//    
+//    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1" error:nil];
+//    [sheet applyToLabel:self.radioSubtitle1 class:nil];
+//    
+//    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle2" error:nil];
+//    [sheet applyToLabel:self.radioSubtitle2 class:nil];
+//    
+//    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionLikes" error:nil];
+//    [sheet applyToLabel:self.radioLikes class:nil];
+//    
+//    sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionListeners" error:nil];
+//    [sheet applyToLabel:self.radioListeners class:nil];
   }
 }
 
