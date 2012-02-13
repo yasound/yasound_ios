@@ -666,19 +666,21 @@
     
     if (actionSheet == _pickImageQuery)
     {
-        UIImagePickerController* picker =  [[UIImagePickerController alloc] init];
-        picker.delegate = self;
+      UIImagePickerControllerSourceType sourceType;
         
         if (buttonIndex == 0)
-            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            sourceType = UIImagePickerControllerSourceTypeCamera;
         else if (buttonIndex == 1)
-            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
       else
         return;
-            
+      
         [_pickImageQuery release];
         _pickImageQuery = nil;
 
+      UIImagePickerController* picker =  [[UIImagePickerController alloc] init];
+      picker.delegate = self;
+      picker.sourceType = sourceType;
         [self presentModalViewController:picker animated:YES];
         
         return;
