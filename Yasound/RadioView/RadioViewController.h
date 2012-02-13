@@ -41,7 +41,8 @@
     WebImageView* _radioImage;
     
     UIView* _statusBar;
-    UIButton* _statusBarButton;
+//    UIButton* _statusBarButton;
+  UIImageView* _statusBarButtonImage;
     BOOL _statusBarButtonToggled;
     
     UIButton* _favoriteButton;

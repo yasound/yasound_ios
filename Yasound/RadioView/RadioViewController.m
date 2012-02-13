@@ -297,10 +297,13 @@ static Song* _gNowPlayingSong = nil;
     [self.view addSubview:_statusBar];
     [_statusBar addSubview:statusBarBackground];
     
-    sheet = [[Theme theme] stylesheetForKey:@"StatusBarButton" error:nil];
-    _statusBarButton = [sheet makeButton];
-    [_statusBarButton addTarget:self action:@selector(onStatusBarButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_statusBar addSubview:_statusBarButton];
+    sheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOff" error:nil];
+  _statusBarButtonImage = [sheet makeImage];
+  [_statusBar addSubview:_statusBarButtonImage];
+  
+  sheet = [[Theme theme] stylesheetForKey:@"StatusBarInteractiveView" error:nil];
+  InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onStatusBarButtonClicked:)];
+  [_statusBar addSubview:interactiveView];
   
     
     // headset image
@@ -1619,13 +1622,14 @@ static Song* _gNowPlayingSong = nil;
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
         sheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOff" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
+      [_statusBarButtonImage setImage:[sheet image]];
         
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration: 0.15];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(onStatusBarClosed:finished:context:)];
         
+      _statusBarButtonImage.frame = sheet.frame;
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y + _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
         
         _pageControl.alpha = 1;
@@ -1642,8 +1646,8 @@ static Song* _gNowPlayingSong = nil;
         
         _statusBarButtonToggled = !_statusBarButtonToggled;
 
-        sheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        [_statusBarButton setImage:[sheet image] forState:UIControlStateNormal];
+        BundleStylesheet* buttonImageSheet = [[Theme theme] stylesheetForKey:@"StatusBarButtonOn" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+      [_statusBarButtonImage setImage:[buttonImageSheet image]];
         
         sheet = [[Theme theme] stylesheetForKey:@"RadioViewStatusBarUserScrollView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
       _usersContainer = [[OrientedTableView alloc] initWithFrame:sheet.frame];
@@ -1660,6 +1664,7 @@ static Song* _gNowPlayingSong = nil;
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration: 0.15];
         
+      _statusBarButtonImage.frame = buttonImageSheet.frame;
         _statusBar.frame = CGRectMake(_statusBar.frame.origin.x, _statusBar.frame.origin.y - _statusBar.frame.size.height/2, _statusBar.frame.size.width, _statusBar.frame.size.height);
         _usersContainer.alpha = 1;
         
