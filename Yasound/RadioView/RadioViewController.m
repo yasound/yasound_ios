@@ -345,6 +345,7 @@ static Song* _gNowPlayingSong = nil;
     
     if (self.ownRadio)
     {
+#if 0 // Disabled next track editing for first release (SM on 13/02).
         // -----------------------------
         // One finger, swipe left
         // -----------------------------
@@ -358,7 +359,6 @@ static Song* _gNowPlayingSong = nil;
         UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight:)] autorelease];
         [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
         [_viewContainer addGestureRecognizer:swipeRight];
-
         
         
         // -----------------------------
@@ -370,6 +370,7 @@ static Song* _gNowPlayingSong = nil;
         _pageControl.numberOfPages = 2;
         _pageControl.userInteractionEnabled = NO;
         [self.view addSubview:_pageControl];
+#endif
     }
     
     
