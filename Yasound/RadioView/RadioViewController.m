@@ -1425,8 +1425,8 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction)onBack:(id)sender
 {
-//    [self.navigationController popViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_MENU object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_MENU object:nil];
 }
 
 
