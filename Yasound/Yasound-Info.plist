@@ -125,18 +125,18 @@
 				<dict>
 					<key>name</key>
 					<string>HelveticaNeue</string>
+					<key>shadowOffset</key>
+					<string>0, -1</string>
+					<key>shadowOpacity</key>
+					<integer>1</integer>
+					<key>shadowRadius</key>
+					<integer>1</integer>
 					<key>size</key>
 					<integer>11</integer>
 					<key>text</key>
 					<string>12345</string>
 					<key>textColor</key>
 					<string>white</string>
-					<key>shadowOffset</key>
-					<string>0, -1</string>
-					<key>shadowRadius</key>
-					<integer>1</integer>
-					<key>shadowOpacity</key>
-					<integer>1</integer>
 				</dict>
 				<key>height</key>
 				<integer>10</integer>
@@ -153,18 +153,18 @@
 				<dict>
 					<key>name</key>
 					<string>HelveticaNeue</string>
+					<key>shadowOffset</key>
+					<string>0, -1</string>
+					<key>shadowOpacity</key>
+					<integer>1</integer>
+					<key>shadowRadius</key>
+					<integer>1</integer>
 					<key>size</key>
 					<integer>11</integer>
 					<key>text</key>
 					<string>234</string>
 					<key>textColor</key>
 					<string>white</string>
-					<key>shadowOffset</key>
-					<string>0, -1</string>
-					<key>shadowRadius</key>
-					<integer>1</integer>
-					<key>shadowOpacity</key>
-					<integer>1</integer>
 				</dict>
 				<key>height</key>
 				<integer>10</integer>
@@ -203,16 +203,16 @@
 				<dict>
 					<key>name</key>
 					<string>HelveticaNeue</string>
+					<key>shadowOffset</key>
+					<string>0, -1</string>
+					<key>shadowOpacity</key>
+					<integer>1</integer>
+					<key>shadowRadius</key>
+					<integer>1</integer>
 					<key>size</key>
 					<integer>10</integer>
 					<key>textColor</key>
 					<string>white</string>
-					<key>shadowOffset</key>
-					<string>0, -1</string>
-					<key>shadowRadius</key>
-					<integer>1</integer>
-					<key>shadowOpacity</key>
-					<integer>1</integer>
 				</dict>
 				<key>height</key>
 				<integer>21</integer>
@@ -229,16 +229,16 @@
 				<dict>
 					<key>name</key>
 					<string>HelveticaNeue</string>
+					<key>shadowOffset</key>
+					<string>0, -1</string>
+					<key>shadowOpacity</key>
+					<integer>1</integer>
+					<key>shadowRadius</key>
+					<integer>1</integer>
 					<key>size</key>
 					<integer>10</integer>
 					<key>textColor</key>
 					<string>white</string>
-					<key>shadowOffset</key>
-					<string>0, -1</string>
-					<key>shadowRadius</key>
-					<integer>1</integer>
-					<key>shadowOpacity</key>
-					<integer>1</integer>
 				</dict>
 				<key>height</key>
 				<integer>21</integer>
@@ -255,18 +255,18 @@
 				<dict>
 					<key>name</key>
 					<string>HelveticaNeue-Bold</string>
+					<key>shadowOffset</key>
+					<string>0, -1</string>
+					<key>shadowOpacity</key>
+					<integer>1</integer>
+					<key>shadowRadius</key>
+					<integer>1</integer>
 					<key>size</key>
 					<integer>16</integer>
 					<key>textColor</key>
 					<string>white</string>
 					<key>weight</key>
 					<string>bold</string>
-					<key>shadowOffset</key>
-					<string>0, -1</string>
-					<key>shadowRadius</key>
-					<integer>1</integer>
-					<key>shadowOpacity</key>
-					<integer>1</integer>
 				</dict>
 				<key>height</key>
 				<integer>21</integer>
@@ -370,7 +370,7 @@
 		<string>audio</string>
 	</array>
 	<key>UIPrerenderedIcon</key>
-	<true/>
+	<false/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleBlackOpaque</string>
 	<key>UISupportedInterfaceOrientations</key>

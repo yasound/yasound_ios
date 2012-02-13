@@ -304,7 +304,41 @@ static YasoundDataProvider* _main = nil;
     return;
   }
   
-  NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"creator=%@", _user.id]];
+  [self radioForUser:_user withTarget:target action:selector];
+}
+
+
+- (void)reloadUserRadio
+{
+  [self userRadioWithTarget:self action:@selector(reloadedUserRadio:withInfo:)];
+}
+
+- (void)reloadedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+{
+  if (!r)
+    return;
+  
+  _radio = r;
+}
+
+
+- (void)friendsWithTarget:(id)target action:(SEL)selector
+{
+  Auth* auth = self.apiKeyAuth;
+  [_communicator getObjectsWithClass:[User class] withURL:@"/api/v1/friend" absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector
+{
+  if (!u)
+  {
+    NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no user" code:1 userInfo:nil] forKey:@"error"];
+    if (target && selector)
+      [target performSelector:selector withObject:nil withObject:info];
+    return;
+  }
+  
+  NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"creator=%@", u.id]];
   Auth* auth = self.apiKeyAuth;
   NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
   [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveUserRadios:withInfo:) withUserData:data withAuth:auth];
@@ -338,26 +372,6 @@ static YasoundDataProvider* _main = nil;
   {
     [target performSelector:selector withObject:_radio withObject:finalInfo];
   }
-}
-
-- (void)reloadUserRadio
-{
-  [self userRadioWithTarget:self action:@selector(reloadedUserRadio:withInfo:)];
-}
-
-- (void)reloadedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
-{
-  if (!r)
-    return;
-  
-  _radio = r;
-}
-
-
-- (void)friendsWithTarget:(id)target action:(SEL)selector
-{
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectsWithClass:[User class] withURL:@"/api/v1/friend" absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 

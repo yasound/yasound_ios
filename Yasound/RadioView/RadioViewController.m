@@ -91,6 +91,7 @@ static Song* _gNowPlayingSong = nil;
         _wallEvents = [[NSMutableArray alloc] init];
       _connectedUsers = nil;
       _usersContainer = nil;
+      _radioForSelectedUser = nil;
     }
     
     return self;
@@ -1115,13 +1116,20 @@ static Song* _gNowPlayingSong = nil;
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
 }
 
+#pragma mark - User list
+
 - (NSIndexPath *)usersContainerWillSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+  User* user = [_connectedUsers objectAtIndex:indexPath.row];
+  if ([user.id intValue] == [radio.creator.id intValue])
+    return nil;
+  
+  [[YasoundDataProvider main] radioForUser:user withTarget:self action:@selector(receivedRadioForSelectedUser:withInfo:)];
   return nil;
 }
 
 
-- (void*)usersContainerWillDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)usersContainerWillDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 }
 
@@ -1154,6 +1162,50 @@ static Song* _gNowPlayingSong = nil;
   }
   cell.user = [_connectedUsers objectAtIndex:indexPath.row];
   return cell;
+}
+
+- (void)receivedRadioForSelectedUser:(Radio*)r withInfo:(NSDictionary*)info
+{
+  if (!r)
+    return;
+  if (![r.ready boolValue])
+  {
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:r.creator.name message:NSLocalizedString(@"GoTo_CurrentUser_Radio_Unavailable", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"GoTo_CurrentUser_Radio_Unavailable_OkButton_Title", nil) otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+    return;
+  }
+  
+  NSLog(@"radio '%@'   creator '%@'", r.name, r.creator.name);
+  _radioForSelectedUser = r;
+  
+  NSString* s = NSLocalizedString(@"GoTo_CurrentUser_Radio", nil);
+  NSString* msg = [NSString stringWithFormat:s, _radioForSelectedUser.name];
+  UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:r.creator.name message:msg delegate:self cancelButtonTitle:NSLocalizedString(@"GoTo_CurrentUser_Radio_CancelButton_Title", nil) otherButtonTitles:NSLocalizedString(@"GoTo_CurrentUser_Radio_OkButton_Title", nil), nil];
+  [alertView show];
+  [alertView release];
+  
+  
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+  if (buttonIndex == 0)
+  {
+    // cancel
+    NSLog(@"don't go to radio");
+  }
+  else if (buttonIndex == 1)
+  {
+    NSLog(@"go to %@ - %@", _radioForSelectedUser.name, _radioForSelectedUser.id);
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:_radioForSelectedUser];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release]; 
+    
+    _radioForSelectedUser = nil;
+  }
 }
 
 
@@ -1425,8 +1477,8 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction)onBack:(id)sender
 {
-//    [self.navigationController popViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_MENU object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_MENU object:nil];
 }
 
 
