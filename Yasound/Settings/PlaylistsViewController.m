@@ -433,6 +433,7 @@
     cell.textLabel.text = [dico objectForKey:@"name"];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
 
     NSDictionary *selectedItem = [source objectAtIndex:indexPath.row];
     MPMediaPlaylist *mediaPlaylist = [selectedItem objectForKey:@"mediaPlaylist"];
