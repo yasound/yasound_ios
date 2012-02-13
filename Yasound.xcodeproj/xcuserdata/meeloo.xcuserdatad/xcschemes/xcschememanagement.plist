@@ -29,6 +29,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>YasoundD MUTE.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>YasoundD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -37,6 +42,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>BC3FA65D14E93B660055AB4A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BC71F5BB147FEC6F00DAE4BD</key>
 		<dict>
 			<key>primary</key>
