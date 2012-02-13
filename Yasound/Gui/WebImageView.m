@@ -8,6 +8,11 @@
 
 #import "WebImageView.h"
 #import "BundleFileManager.h"
+#import "ASIDownloadCache.h"
+
+static NSMutableDictionary* gDictionnary = NULL;
+static ASIDownloadCache *gHttpCache = NULL;
+
 
 @interface WebImageCache : NSObject <ASIHTTPRequestDelegate> 
 {
@@ -94,7 +99,8 @@
   //    req.validatesSecureCertificate = FALSE;
   req.requestMethod = @"GET";
   [req setDelegate:self];
-  
+  [req setDownloadCache:gHttpCache];
+  [req setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];  
   [req startAsynchronous];
 }
 
@@ -153,8 +159,6 @@
 
 @synthesize url;
 
-static NSMutableDictionary* gDictionnary = NULL;
-
 +(void)initCache
 {
   if (gDictionnary)
@@ -162,6 +166,17 @@ static NSMutableDictionary* gDictionnary = NULL;
   
   gDictionnary = [[NSMutableDictionary alloc] init];
   [gDictionnary retain];
+
+  gHttpCache = [[[ASIDownloadCache alloc] init] autorelease];
+  NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+  NSString *path = [cachePath stringByAppendingPathComponent:@"WebImage"];
+  NSLog(@"Cache path for WebImage: %@", path);
+  [gHttpCache setStoragePath:path];
+  gHttpCache.defaultCachePolicy = ASIAskServerIfModifiedWhenStaleCachePolicy;
+  gHttpCache.shouldRespectCacheControlHeaders = FALSE;
+  
+  // Don't forget - you are responsible for retaining your cache!
+  [gHttpCache retain];
 }
 
 +(void)clearCache
@@ -170,6 +185,7 @@ static NSMutableDictionary* gDictionnary = NULL;
     return;
   
   [gDictionnary release];
+  [gHttpCache release];
 }
 
 
