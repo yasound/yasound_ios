@@ -218,8 +218,9 @@
             _nextBtn.enabled = NO;
     } else {
         UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
-        
-        UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onEdit:)];
+  
+      // For the moment we disable playlist editing until we have a better solution.
+//        UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onEdit:)];
         
         UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
@@ -227,7 +228,7 @@
         
         [items addObject:backBtn];
         [items addObject:space];
-        [items addObject:edit];
+//        [items addObject:edit];
         
         [_toolbar setItems:items animated:NO];
         
