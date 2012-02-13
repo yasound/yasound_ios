@@ -27,9 +27,8 @@
 @implementation MenuViewController
 
 #define SECTION_MYRADIO 0
-#define SECTION_MYRADIO_NB_ROWS 2
+#define SECTION_MYRADIO_NB_ROWS 1
 #define ROW_MYRADIO_MYRADIO 0
-#define ROW_MYRADIO_NOWPLAYING 1
 
 #define SECTION_RADIOS 1
 #define SECTION_RADIOS_NB_ROWS 4
@@ -84,6 +83,9 @@
     
     sheet = [[Theme theme] stylesheetForKey:@"MenuBackground" error:nil];    
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+    
+    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+
     
 
 }
@@ -233,12 +235,6 @@
         selectedStyle = @"MenuRowFirstSelected";
     }
 
-    else if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_NOWPLAYING))
-    {
-        style = @"MenuRowLast";
-        selectedStyle = @"MenuRowLastSelected";
-    }
-
     else if (indexPath.row == 0)
     {
         style = @"MenuRowFirst";
@@ -301,14 +297,6 @@
     if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_MYRADIO))
     {
         cell.textLabel.text = NSLocalizedString(@"MenuView_myradio_myradio", nil);
-        
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMyRadio" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        [cell.imageView setImage:[sheet image]];
-    }
-
-    else if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_NOWPLAYING))
-    {
-        cell.textLabel.text = NSLocalizedString(@"MenuView_myradio_nowplaying", nil);
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMyRadio" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         [cell.imageView setImage:[sheet image]];
@@ -394,13 +382,6 @@
         [view release];
     }
     
-    else if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_NOWPLAYING))
-    {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
-
     else if (indexPath.section == SECTION_RADIOS)
     {
         if (indexPath.row == ROW_RADIOS_FAVORITES)
@@ -491,11 +472,26 @@
 
 
 
-
 - (void)logoutDidReturned
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
 }
+
+
+
+
+
+
+
+#pragma mark - IBActions
+
+- (IBAction)nowPlayingClicked:(id)sender
+{
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
 
 
 

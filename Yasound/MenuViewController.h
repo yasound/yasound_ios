@@ -13,6 +13,10 @@
 @interface MenuViewController : TestflightViewController
 {
     IBOutlet UITableView* _tableView;
+    IBOutlet UIBarButtonItem* _nowPlayingButton;
 }
+
+
+- (IBAction)nowPlayingClicked:(id)sender;
 
 @end
