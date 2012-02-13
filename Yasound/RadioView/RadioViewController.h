@@ -17,7 +17,7 @@
 @class AudioStreamer;
 @class WebImageView;
 
-@interface RadioViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface RadioViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 {
     NSDate* _BEGIN;
     NSDate* _END;
@@ -72,6 +72,7 @@
   
   NSArray* _connectedUsers;
   OrientedTableView* _usersContainer;
+  Radio* _radioForSelectedUser;
 }
 
 @property (nonatomic, retain) Radio* radio;
