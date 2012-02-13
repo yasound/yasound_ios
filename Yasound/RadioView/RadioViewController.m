@@ -1116,21 +1116,44 @@ static Song* _gNowPlayingSong = nil;
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
 }
 
+
+
+
+
+
+
+
+
 #pragma mark - User list
 
-- (NSIndexPath *)usersContainerWillSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (NSIndexPath *)usersContainerDidSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  User* user = [_connectedUsers objectAtIndex:indexPath.row];
+    UITableViewCell* cell = [_usersContainer cellForRowAtIndexPath:indexPath];
+    cell.selected = NO;
+
+    User* user = [_connectedUsers objectAtIndex:indexPath.row];
   if ([user.id intValue] == [radio.creator.id intValue])
     return nil;
   
   [[YasoundDataProvider main] radioForUser:user withTarget:self action:@selector(receivedRadioForSelectedUser:withInfo:)];
+    
+    
   return nil;
 }
 
 
 - (void)usersContainerWillDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    UIView* view = [[UIView alloc] initWithFrame:cell.frame];
+//    view.backgroundColor = [UIColor redColor];
+//    
+//    CGFloat width = cell.frame.size.width;
+//    
+//    UIView* selection = [[UIView alloc] initWithFrame:CGRectMake(0, 12, width, 58)];
+//    selection.backgroundColor = [UIColor blueColor];
+//    [view addSubview:selection];
+//
+//    cell.selectedBackgroundView = view;
 }
 
 
@@ -1161,8 +1184,21 @@ static Song* _gNowPlayingSong = nil;
     cell = [[[UserViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
   }
   cell.user = [_connectedUsers objectAtIndex:indexPath.row];
+    
+    
+    CGFloat width = cell.frame.size.width;
+
+    UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ListenerSelectedBackground.png"]];
+    view.frame = CGRectMake(0, 12, width, 58);
+    cell.selectedBackgroundView = view;
+    
   return cell;
 }
+
+
+
+
+
 
 - (void)receivedRadioForSelectedUser:(Radio*)r withInfo:(NSDictionary*)info
 {
@@ -1217,10 +1253,10 @@ static Song* _gNowPlayingSong = nil;
 #pragma mark - TableView Source and Delegate
 
 
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath 
+- (NSIndexPath *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
   if (tableView == _usersContainer)
-    return [self usersContainerWillSelectRowAtIndexPath:indexPath];
+    return [self usersContainerDidSelectRowAtIndexPath:indexPath];
   
     return nil;
 }
