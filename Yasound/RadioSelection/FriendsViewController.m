@@ -319,7 +319,7 @@
     
     if (sectionIndex > SECTION_OFFLINE || !_friends_online || !_friends_offline)
         return nil;
-    NSArray* friends = sectionIndex == 0 ? _friends_online : _friends_offline;
+    NSArray* friends = ((sectionIndex == 1) ? _friends_online : _friends_offline);
     
     User* friend = [friends objectAtIndex:rowIndex];
 
