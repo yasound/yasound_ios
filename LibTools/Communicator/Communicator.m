@@ -38,6 +38,20 @@
 
 @synthesize appCookie;
 
+- (void)callAction:(SEL)action onTarget:(id)target withObject:(id)obj1 withObject:(id)obj2
+{
+  if (!target)
+    return;
+  if (!action)
+  {
+    [target release];
+    return;
+  }
+  
+  [target performSelector:action withObject:obj1 withObject:obj2];
+  [target release];
+}
+
 - (id)initWithBaseURL:(NSString*)base
 {
     self = [super init];
@@ -268,8 +282,7 @@
         [info setValue:userData forKey:@"userData"];
     
     [info setValue:err forKey:@"error"];
-    if (target && selector)
-        [target performSelector:selector withObject:result withObject:info];
+  [self callAction:selector onTarget:target withObject:result withObject:info];
 }
 
 
@@ -630,8 +643,7 @@
         [data setValue:error forKey:@"error"];
     }
     
-    if (target && selector)
-        [target performSelector:selector withObject:response withObject:data];
+    [self callAction:selector onTarget:target withObject:response withObject:data];
 }
 
 
@@ -653,8 +665,7 @@
         [data setValue:error forKey:@"error"];
     }
     
-    if (target && selector)
-        [target performSelector:selector withObject:response withObject:data];
+    [self callAction:selector onTarget:target withObject:response withObject:data];
 }
 
 - (void)handleResponse:(ASIHTTPRequest *)request success:(BOOL)succeeded
