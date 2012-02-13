@@ -42,13 +42,9 @@
 {
   if (!target)
     return;
-  if (!action)
-  {
-    [target release];
-    return;
-  }
   
-  [target performSelector:action withObject:obj1 withObject:obj2];
+  if (action)
+    [target performSelector:action withObject:obj1 withObject:obj2];
   [target release];
 }
 
