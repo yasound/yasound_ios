@@ -22,6 +22,7 @@
     
     NSMutableArray* _friends_online;
     NSMutableArray* _friends_offline;
+  NSTimer* _updateTimer;
 }
 
 

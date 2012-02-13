@@ -44,6 +44,9 @@
 
 - (void)dealloc
 {
+  [_tableView release];
+  [_toolbarTitle release];
+  [_nowPlayingButton release];
     [super dealloc];
 }
 

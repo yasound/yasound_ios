@@ -27,6 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+      _updateTimer = nil;
 #ifdef FAKE_USERS
         _friends_online = [[NSMutableArray alloc] init];
         _friends_offline = [[NSMutableArray alloc] init];
@@ -50,6 +51,17 @@
 #endif
     }
     return self;
+}
+
+- (void)dealloc
+{
+  [_tableView release];
+  [_toolbar release];
+  [_toolbarTitle release];
+  [_nowPlayingButton release];
+  [_cellInvite release];
+  [_cellInviteLabel release];
+  [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,7 +88,7 @@
 }
 
 - (void)viewDidUnload
-{
+{  
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -97,7 +109,13 @@
     
     [self updateFriends];
     
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+    _updateTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+  if (_updateTimer)
+    [_updateTimer invalidate];
 }
 
 - (void)onTimer:(NSTimer*)timer

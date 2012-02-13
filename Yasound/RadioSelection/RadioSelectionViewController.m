@@ -41,7 +41,12 @@
 
 - (void)dealloc
 {
-    NSLog(@"RadioSlectionViewController dealloc");
+  [_tableView release];
+  [_qualitySwitchLabel release];
+  [_topBarTitle release];
+  [_categoryTitle release];
+  [_nowPlayingButton release];
+  [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning

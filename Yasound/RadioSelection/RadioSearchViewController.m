@@ -38,6 +38,9 @@
 {
     if (_radios != nil)
         [_radios release];
+  [_tableView release];
+  [_nowPlayingButton release];
+  [_searchController release];
     [super dealloc];
 }
 
