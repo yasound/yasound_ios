@@ -155,7 +155,9 @@
 
     if (user != nil)
     {
-        [self launchRadio];
+        NSNumber* radioId = [[NSUserDefaults standardUserDefaults] objectForKey:@"NowPlaying"];
+        
+        [self launchRadio:radioId];
     }
     else
     {
@@ -179,7 +181,8 @@
 
 - (void)onNotifPushRadio:(NSNotification *)notification
 {
-    [self launchRadio];
+    // my radio
+    [self launchRadio:nil];
 }
 
 - (void)onNotifCancelWizard:(NSNotification*)notification
@@ -296,14 +299,16 @@
 
 
 
-- (void)launchRadio
+- (void)launchRadio:(NSNumber*)radioId
 {
-//    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"automaticLaunch"];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    // ask for radio contents to the provider
-    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
+    if (radioId != nil)
+        [[YasoundDataProvider main] radioWithId:(NSNumber*)radioId target:self action:@selector(onGetRadio:info:)];
+
+    else
+        // ask for radio contents to the provider
+        [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
 }
+
 
 
 - (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
