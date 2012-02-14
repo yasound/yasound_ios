@@ -121,6 +121,15 @@ static FacebookSessionManager* _facebook = nil;
 - (void)logout
 {
   [_facebookConnect logout:self];
+    
+    // Remove saved authorization information if it exists
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"FBAccessTokenKey"]) {
+        [defaults removeObjectForKey:@"FBAccessTokenKey"];
+        [defaults removeObjectForKey:@"FBExpirationDateKey"];
+        [defaults synchronize];
+    }
+        
 }
 
 
@@ -212,14 +221,6 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)fbDidLogout
 {
-  // Remove saved authorization information if it exists
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  if ([defaults objectForKey:@"FBAccessTokenKey"]) {
-    [defaults removeObjectForKey:@"FBAccessTokenKey"];
-    [defaults removeObjectForKey:@"FBExpirationDateKey"];
-    [defaults synchronize];
-  }
-  
   [self.delegate sessionDidLogout];  
 }
 
@@ -240,6 +241,7 @@ static FacebookSessionManager* _facebook = nil;
 //  NSLog(@"didReceiveResponse");
 //}
 
+// ICI
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error
 {

@@ -266,12 +266,19 @@ static YasoundSessionManager* _main = nil;
 
 - (void)loginError
 {
-    [_target performSelector:_action withObject:nil];
+    User* nilUser = nil;
+    [_target performSelector:_action withObject:nilUser withObject:[NSDictionary dictionaryWithObject:@"Login" forKey:@"error"]];
 //    [ActivityAlertView close];
     
 //    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 //    [av show];
 //    [av release];  
+}
+
+- (void)userInfoError
+{
+    User* nilUser = nil;
+    [_target performSelector:_action withObject:nilUser withObject:[NSDictionary dictionaryWithObject:@"UserInfo" forKey:@"error"]];
 }
 
 // Called when a button is clicked. The view will be automatically dismissed after this call returns
@@ -416,9 +423,9 @@ static YasoundSessionManager* _main = nil;
 - (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error errorMessage:(NSString*)errorMessage
 {
     // duplicate message, let's act it's no error, just let the dialog spinner die himself
-    NSRange range = [errorMessage rangeOfString:@"#506"];
-    if (range.location != NSNotFound)
-        return;
+//    NSRange range = [errorMessage rangeOfString:@"#506"];
+//    if (range.location != NSNotFound)
+//        return;
 
     if (requestType == SRequestInfoUser)
     {
@@ -428,8 +435,10 @@ static YasoundSessionManager* _main = nil;
         NSLog(@"%@", [error description]);
         NSLog(@"%@", errorMessage);
 
-        self.loginType = nil;
-        [self loginError];
+        [self userInfoError];
+        
+        
+        
         return;
     }
     
@@ -494,8 +503,7 @@ static YasoundSessionManager* _main = nil;
     if ([data count] == 0)
     {
         NSLog(@"requestDidLoad SRequestInfoUser error : no info.");
-        self.loginType = nil;
-        [self loginError];
+        [self userInfoError];
         return;
     }
     

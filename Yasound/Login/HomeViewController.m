@@ -17,6 +17,7 @@
 #import "ConnectionView.h"
 #import "YasoundReachability.h"
 
+
 @implementation HomeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -87,9 +88,13 @@
     
     // TAG ACTIVITY ALERT
     if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    {
+        // J'AIMERAI SAVOIR SI ON REPASSE ICI OU PAS
+        assert(0);
         [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    }
 
-    [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(socialLoginReturned:)];
+    [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(socialLoginReturned:info:)];
     
     // and disable facebook button
     _facebookButton.enabled = NO;
@@ -110,7 +115,7 @@
 
 
 
-- (void)socialLoginReturned:(User*)user
+- (void)socialLoginReturned:(User*)user info:(NSDictionary*)info
 {
     // close the connection alert
     [ConnectionView stop];
@@ -138,15 +143,38 @@
     }
     else
     {
+        NSString* message = nil;
+        if (info != nil)
+        {
+            NSString* errorValue = [info objectForKey:@"error"];
+            if ([errorValue isEqualToString:@"Login"])
+                message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
+            else if ([errorValue isEqualToString:@"UserInfo"])
+                message = NSLocalizedString(@"YasoundSessionManager_userinfo_error", nil);
+            
+        }
+        
         // show alert message for connection error
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
         [av release];  
         
-        // enable the facebook again, to let the user retry
-        _facebookButton.enabled = YES;
+//        // enable the facebook again, to let the user retry
+//        _facebookButton.enabled = YES;
+        // and logout properly
+        [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+        
+        
     }
 }
+
+
+- (void)logoutReturned
+{
+    // once logout done, go back to the home screen
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];    
+}
+
             
             
 #pragma mark - YasoundDataProvider
