@@ -265,6 +265,9 @@
 "SongsView_click_to_synchronize" = "cliquer pour synchroniser";
 "SongsView_upload_progress" = "Synchronisation";
 
+"Facebook_AppRequest_Message" = "Rejoignez moi sur Yasound. Vous Pourrez écouter ma radio, créer la votre et découvrir de nouveaus artistes gratuitement.";
+"InviteFriends_button_text" = "Inviter mes amis";
+
 "GoTo_CurrentUser_Radio" = "Voulez-vous écouter sa radio ?";
 "GoTo_CurrentUser_Radio_Unavailable" = "Cet utilisateur n'a pas encore de radio.";
 "GoTo_CurrentUser_Radio_CancelButton_Title" = "Non";
@@ -272,3 +275,9 @@
 "GoTo_CurrentUser_Radio_Unavailable_OkButton_Title" = "OK";
 
 "SearchBar_Placeholder" = "utilisateur, radio, artiste ou titre";
+
+"GoTo_FriendRadio_Title" = "Rejoindre ?";
+"GoTo_FriendRadio_Label" = "Sa radio";
+"GoTo_FriendCurrentRadio_Label" = "La radio qu'il écoute";
+"GoTo_FriendRadioCancel_Label" = "Annuler";
+

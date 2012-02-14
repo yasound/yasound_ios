@@ -362,7 +362,7 @@
   
   if (currentRadio && ownRadio && [currentRadio.id intValue] != [ownRadio.id intValue])
   {
-    UIActionSheet* joiinRadioSheet = [[UIActionSheet alloc] initWithTitle:@"join radio" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"radio he is listening to", @"his radio", nil];
+    UIActionSheet* joiinRadioSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"GoTo_FriendRadio_Title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"GoTo_FriendRadioCancel_Label", nil)destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"GoTo_FriendCurrentRadio_Label", nil), NSLocalizedString(@"GoTo_FriendRadio_Label", nil), nil];
     joiinRadioSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     [joiinRadioSheet showInView:self.view];
   }

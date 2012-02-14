@@ -283,3 +283,9 @@
 "GoTo_CurrentUser_Radio_Unavailable_OkButton_Title" = "OK";
 
 "SearchBar_Placeholder" = "user, radio, artist or song";
+
+"GoTo_FriendRadio_Title" = "Join ?";
+"GoTo_FriendRadio_Label" = "His radio";
+"GoTo_FriendCurrentRadio_Label" = "The radio he is listening to";
+"GoTo_FriendRadioCancel_Label" = "Cancel";
+
