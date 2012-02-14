@@ -11,6 +11,11 @@
 #import "RootViewController.h"
 #import "FacebookSessionManager.h"
 #import "AudioStreamManager.h"
+#import "YasoundDataProvider.h"
+#import "RadioViewController.h"
+#import "CreateMyRadio.h"
+#import "PlaylistsViewController.h"
+#import "StatsViewController.h"
 
 @implementation YasoundAppDelegate
 
@@ -212,6 +217,68 @@ void SignalHandler(int sig) {
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation 
 {
     return [[FacebookSessionManager facebook]  handleOpenURL:url]; 
+}
+
+
+#pragma mark - MyRadio
+
+- (UIViewController*)myRadioSetupViewController
+{
+  [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"skipRadioCreationSendToSelection"];
+  [[NSUserDefaults standardUserDefaults] synchronize]; 
+  UIViewController* controller = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:NO radio:[YasoundDataProvider main].radio];
+  return controller;
+}
+
+- (void)goToMyRadioFromViewController:(UIViewController*)sourceController
+{
+  Radio* r = [YasoundDataProvider main].radio;
+  
+  UIViewController* controller = nil;
+  if ([r.ready boolValue])
+  {
+    controller = [[RadioViewController alloc] initWithRadio:r];
+  }
+  else
+  {
+    controller = [self myRadioSetupViewController];
+  }
+  [sourceController.navigationController pushViewController:controller animated:YES];
+  [controller release];
+}
+
+- (void)goToMyRadioStatsFromViewController:(UIViewController*)sourceController
+{
+  Radio* r = [YasoundDataProvider main].radio;
+  
+  UIViewController* controller = nil;
+  if ([r.ready boolValue])
+  {
+    controller = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil wizard:NO radio:r];
+  }
+  else
+  {
+    controller = [self myRadioSetupViewController];
+  }
+  [sourceController.navigationController pushViewController:controller animated:YES];
+  [controller release];
+}
+
+- (void)goToMyRadioPlaylistsFromViewController:(UIViewController*)sourceController
+{
+  Radio* r = [YasoundDataProvider main].radio;
+  
+  UIViewController* controller = nil;
+  if ([r.ready boolValue])
+  {
+    controller = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewCOntroller" bundle:nil wizard:NO];
+  }
+  else
+  {
+    controller = [self myRadioSetupViewController];
+  }
+  [sourceController.navigationController pushViewController:controller animated:YES];
+  [controller release];
 }
 
 

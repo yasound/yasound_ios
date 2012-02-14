@@ -11,10 +11,11 @@
 #import "TestflightViewController.h"
 
 #define NOTIF_PUSH_RADIO @"NOTIF_PushRadio"
-#define NOTIF_PUSH_RADIO_SELECTION @"NOTIF_PushRadioSelection"
+#define NOTIF_CANCEL_WIZARD @"NOTIF_CancelWizard"
 #define NOTIF_LOGIN_SCREEN @"NOTIF_LoginScreen"
 #define NOTIF_WIZARD @"NOTIF_Wizard"
-#define NOTIF_MENU @"NOTIF_Menu"
+#define NOTIF_POP_TO_MENU @"NOTIF_PopToMenu"
+#define NOTIF_PUSH_MENU @"NOTIF_PushMenu"
 #define NOTIF_ERROR_COMMUNICATION_SERVER @"NOTIF_ErrorCommunicationServer"
 #define NOTIF_ERROR_CONNECTION_LOST @"NOTIF_ErrorConnectionLost"
 #define NOTIF_ERROR_CONNECTION_NO @"NOTIF_ErrorConnectionNo"
