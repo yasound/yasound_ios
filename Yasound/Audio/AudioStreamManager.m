@@ -63,6 +63,11 @@ static AudioStreamer* _gAudioStreamer = nil;
     }
 
     self.currentRadio = radio;
+    
+    // save the current radio reference in the user defaults
+    // to retrieve it when the app starts
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:[self.currentRadio.id integerValue]] forKey:@"NowPlaying"];
+    [[NSUserDefaults standardUserDefaults] synchronize];        
 
 #if USE_FAKE_RADIO_URL || USE_YASOUND_LOCAL_SERVER
     NSURL* radiourl = [NSURL URLWithString:@"http://dev.yasound.com:8001/fakeid"];
