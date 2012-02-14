@@ -16,6 +16,7 @@
 #import "YasoundDataProvider.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "SongsViewController.h"
+#import "ActivityAlertView.h"
 
 #import "SongUploader.h"
 
@@ -29,6 +30,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
+      [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
+      
         _displayMode = eDisplayModeNormal;
         _wizard = wizard;
         _songsViewController = nil;
@@ -65,6 +68,7 @@
         _remotePlaylistsDesc = [[NSMutableArray alloc] init];
         [_remotePlaylistsDesc retain];
         
+      [ActivityAlertView close];
     }
     
     return self;

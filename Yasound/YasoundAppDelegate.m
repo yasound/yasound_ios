@@ -11,11 +11,13 @@
 #import "RootViewController.h"
 #import "FacebookSessionManager.h"
 #import "AudioStreamManager.h"
+#import "YasoundSessionManager.h"
 #import "YasoundDataProvider.h"
 #import "RadioViewController.h"
 #import "CreateMyRadio.h"
 #import "PlaylistsViewController.h"
 #import "StatsViewController.h"
+
 
 @implementation YasoundAppDelegate
 
@@ -98,8 +100,8 @@ void SignalHandler(int sig) {
     [self.navigationController pushViewController:rootViewController animated:NO];
     
   // Push Notifications:
-  NSLog(@"Ask for push notification\n");
-  [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
+//  NSLog(@"Ask for push notification\n");
+//  [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
 
   
   return YES;
@@ -118,8 +120,9 @@ void SignalHandler(int sig) {
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-  NSLog(@"didFailToRegisterForRemoteNotificationsWithError:\n%@", [error localizedDescription]);
+    NSLog(@"didFailToRegisterForRemoteNotificationsWithError:\n%@", [error localizedDescription]);
 }
+
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
@@ -271,7 +274,7 @@ void SignalHandler(int sig) {
   UIViewController* controller = nil;
   if ([r.ready boolValue])
   {
-    controller = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewCOntroller" bundle:nil wizard:NO];
+    controller = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:NO];
   }
   else
   {

@@ -134,11 +134,11 @@
         [self.view addSubview:[ConnectionView start]];
         
         if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
-            [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:)];
+            [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
         else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
-            [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:)];
+            [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
         else
-            [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:)];
+            [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
     }
     else
     {
@@ -148,7 +148,7 @@
     }
 }
 
-- (void)loginReturned:(User*)user
+- (void)loginReturned:(User*)user info:(NSDictionary*)info
 {
     // show connection alert
     [ConnectionView stop];
@@ -161,8 +161,19 @@
     }
     else
     {
+        NSString* message = nil;
+        if (info != nil)
+        {
+            NSString* errorValue = [info objectForKey:@"error"];
+            if ([errorValue isEqualToString:@"Login"])
+                message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
+            else if ([errorValue isEqualToString:@"UserInfo"])
+                    message = NSLocalizedString(@"YasoundSessionManager_userinfo_error", nil);
+                
+        }
+        
         // show alert message for connection error
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
         [av release];  
         
@@ -176,6 +187,7 @@
     // once logout done, go back to the home screen
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
 }
+
 
 
 
