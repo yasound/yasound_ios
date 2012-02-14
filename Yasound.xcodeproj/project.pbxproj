@@ -163,8 +163,6 @@
 		BC33F44F14DDC6B200D4C67F /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44B14DDC6B200D4C67F /* LoginBackground@2x.png */; };
 		BC3FA66314E93B660055AB4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		BC3FA66414E93B660055AB4A /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
-		BC3FA66514E93B660055AB4A /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE81468439900BA20D9 /* MenuHeader.m */; };
-		BC3FA66614E93B660055AB4A /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
 		BC3FA66714E93B660055AB4A /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BC3FA66814E93B660055AB4A /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC3FA66914E93B660055AB4A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -591,8 +589,6 @@
 		BC71F589147F9CD900DAE4BD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
 		BC71F5BD147FEC6F00DAE4BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		BC71F5BE147FEC6F00DAE4BD /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
-		BC71F5BF147FEC6F00DAE4BD /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE81468439900BA20D9 /* MenuHeader.m */; };
-		BC71F5C0147FEC6F00DAE4BD /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
 		BC71F5C1147FEC6F00DAE4BD /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -656,8 +652,6 @@
 		BC93CCC814CF3F7A007C723F /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6554814BCA8590043B2DA /* Auth.m */; };
 		BC93CCC914CF3F7A007C723F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		BC93CCCA14CF3F7A007C723F /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
-		BC93CCCB14CF3F7A007C723F /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE81468439900BA20D9 /* MenuHeader.m */; };
-		BC93CCCC14CF3F7A007C723F /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
 		BC93CCCD14CF3F7A007C723F /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BC93CCCE14CF3F7A007C723F /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC93CCCF14CF3F7A007C723F /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -1335,8 +1329,6 @@
 		BCF62DE4148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		BCF62DE5148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
-		BCFECFFC1468439900BA20D9 /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE81468439900BA20D9 /* MenuHeader.m */; };
-		BCFECFFD1468439900BA20D9 /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
 		BCFECFFE1468439900BA20D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		E5280A56145EFFD900A88910 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A55145EFFD900A88910 /* libz.dylib */; };
@@ -1352,8 +1344,6 @@
 		E5A9A3BA1454DC0500EA374C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		E5F3B8551498B88D008DD607 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		E5F3B8561498B88D008DD607 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
-		E5F3B8571498B88D008DD607 /* MenuHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE81468439900BA20D9 /* MenuHeader.m */; };
-		E5F3B8581498B88D008DD607 /* SlidingMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEA1468439900BA20D9 /* SlidingMenu.m */; };
 		E5F3B8591498B88D008DD607 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		E5F3B85B1498B88D008DD607 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		E5F3B85C1498B88D008DD607 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
@@ -1916,10 +1906,6 @@
 		BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSearchViewController.xib; path = RadioSelection/RadioSearchViewController.xib; sourceTree = "<group>"; };
 		BCFECFE41468439900BA20D9 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		BCFECFE51468439900BA20D9 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
-		BCFECFE71468439900BA20D9 /* MenuHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuHeader.h; sourceTree = "<group>"; };
-		BCFECFE81468439900BA20D9 /* MenuHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuHeader.m; sourceTree = "<group>"; };
-		BCFECFE91468439900BA20D9 /* SlidingMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlidingMenu.h; sourceTree = "<group>"; };
-		BCFECFEA1468439900BA20D9 /* SlidingMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlidingMenu.m; sourceTree = "<group>"; };
 		BCFECFEB1468439900BA20D9 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		BCFECFEC1468439900BA20D9 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
 		BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundAppDelegate.h; sourceTree = "<group>"; };
@@ -3042,12 +3028,8 @@
 				BCD4C2C514695FCD000A236A /* ActivityAlertView.m */,
 				BC03050214C02E9D00F39374 /* ActivityModelessSpinner.h */,
 				BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */,
-				BCFECFE71468439900BA20D9 /* MenuHeader.h */,
-				BCFECFE81468439900BA20D9 /* MenuHeader.m */,
 				40EAA58E14DC24C10000621C /* OrientedTableView.h */,
 				40EAA58F14DC24C10000621C /* OrientedTableView.m */,
-				BCFECFE91468439900BA20D9 /* SlidingMenu.h */,
-				BCFECFEA1468439900BA20D9 /* SlidingMenu.m */,
 				BCFECFEB1468439900BA20D9 /* Tile.h */,
 				BCFECFEC1468439900BA20D9 /* Tile.m */,
 				BC93B4AA148E68DE00A87157 /* StyleSelectorViewController.h */,
@@ -3982,8 +3964,6 @@
 			files = (
 				BC3FA66314E93B660055AB4A /* main.m in Sources */,
 				BC3FA66414E93B660055AB4A /* AudioStreamer.m in Sources */,
-				BC3FA66514E93B660055AB4A /* MenuHeader.m in Sources */,
-				BC3FA66614E93B660055AB4A /* SlidingMenu.m in Sources */,
 				BC3FA66714E93B660055AB4A /* Tile.m in Sources */,
 				BC3FA66814E93B660055AB4A /* YasoundAppDelegate.m in Sources */,
 				BC3FA66914E93B660055AB4A /* ActivityAlertView.m in Sources */,
@@ -4121,8 +4101,6 @@
 			files = (
 				BC71F5BD147FEC6F00DAE4BD /* main.m in Sources */,
 				BC71F5BE147FEC6F00DAE4BD /* AudioStreamer.m in Sources */,
-				BC71F5BF147FEC6F00DAE4BD /* MenuHeader.m in Sources */,
-				BC71F5C0147FEC6F00DAE4BD /* SlidingMenu.m in Sources */,
 				BC71F5C1147FEC6F00DAE4BD /* Tile.m in Sources */,
 				BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */,
 				BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */,
@@ -4262,8 +4240,6 @@
 				BC93CCC814CF3F7A007C723F /* Auth.m in Sources */,
 				BC93CCC914CF3F7A007C723F /* main.m in Sources */,
 				BC93CCCA14CF3F7A007C723F /* AudioStreamer.m in Sources */,
-				BC93CCCB14CF3F7A007C723F /* MenuHeader.m in Sources */,
-				BC93CCCC14CF3F7A007C723F /* SlidingMenu.m in Sources */,
 				BC93CCCD14CF3F7A007C723F /* Tile.m in Sources */,
 				BC93CCCE14CF3F7A007C723F /* YasoundAppDelegate.m in Sources */,
 				BC93CCCF14CF3F7A007C723F /* ActivityAlertView.m in Sources */,
@@ -4400,8 +4376,6 @@
 			files = (
 				E5A9A3BA1454DC0500EA374C /* main.m in Sources */,
 				BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */,
-				BCFECFFC1468439900BA20D9 /* MenuHeader.m in Sources */,
-				BCFECFFD1468439900BA20D9 /* SlidingMenu.m in Sources */,
 				BCFECFFE1468439900BA20D9 /* Tile.m in Sources */,
 				BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */,
 				BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */,
@@ -4541,8 +4515,6 @@
 				BCA6554A14BCA8590043B2DA /* Auth.m in Sources */,
 				E5F3B8551498B88D008DD607 /* main.m in Sources */,
 				E5F3B8561498B88D008DD607 /* AudioStreamer.m in Sources */,
-				E5F3B8571498B88D008DD607 /* MenuHeader.m in Sources */,
-				E5F3B8581498B88D008DD607 /* SlidingMenu.m in Sources */,
 				E5F3B8591498B88D008DD607 /* Tile.m in Sources */,
 				E5F3B85B1498B88D008DD607 /* YasoundAppDelegate.m in Sources */,
 				E5F3B85C1498B88D008DD607 /* ActivityAlertView.m in Sources */,
