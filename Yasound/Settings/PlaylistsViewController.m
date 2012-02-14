@@ -569,7 +569,7 @@
     if (_wizard)
     {
         // call root to launch the Radio
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO_SELECTION object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CANCEL_WIZARD object:nil];
         return;
     }
     

@@ -22,6 +22,7 @@
 #import "RootViewController.h"
 #import "BundleStylesheet.h"
 #import "Theme.h"
+#import "YasoundAppDelegate.h"
 
 
 @implementation MenuViewController
@@ -377,9 +378,11 @@
 {
     if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_MYRADIO))
     {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[YasoundDataProvider main].radio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
+//        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[YasoundDataProvider main].radio];
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release];
+      YasoundAppDelegate* appDelegate =  (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
+      [appDelegate goToMyRadioFromViewController:self];
     }
     
     else if (indexPath.section == SECTION_RADIOS)
@@ -414,16 +417,20 @@
     {
         if (indexPath.row == ROW_ME_STATS)
         {
-            StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil];
-            
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
+//            StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil];
+//            
+//            [self.navigationController pushViewController:view animated:YES];
+//            [view release];
+          YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
+          [appDelegate goToMyRadioStatsFromViewController:self];
         }
         else if (indexPath.row == ROW_ME_PLAYLISTS)
         {
-            PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:NO];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
+//            PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:NO];
+//            [self.navigationController pushViewController:view animated:YES];
+//            [view release];
+          YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
+          [appDelegate goToMyRadioPlaylistsFromViewController:self];
         }
         else if (indexPath.row == ROW_ME_CONFIG)
         {
