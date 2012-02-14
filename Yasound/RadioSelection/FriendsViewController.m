@@ -11,7 +11,6 @@
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "YasoundDataProvider.h"
 #import "ActivityModelessSpinner.h"
 #import "UserTableViewCell.h"
 
@@ -28,6 +27,7 @@
     if (self) 
     {
       _updateTimer = nil;
+      _selectedFriend = nil;
 #ifdef FAKE_USERS
         _friends_online = [[NSMutableArray alloc] init];
         _friends_offline = [[NSMutableArray alloc] init];
@@ -288,11 +288,11 @@
     // cell background
     if (rowIndex & 1)
     {
-        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"UserCellBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
     }
     else
     {
-        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"UserCellBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
     }
     
     cell.backgroundView = imageView;
@@ -349,18 +349,35 @@
     
     UserTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    User* u = cell.user;
-    Radio* r;
-    if (u.current_radio)
-        r = u.current_radio;
-    else if (u.own_radio && [u.own_radio.ready boolValue])
-        r = u.own_radio;
-    else
-        return;
-    
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:r];
+    _selectedFriend = cell.user;
+    Radio* currentRadio = nil;
+    Radio* ownRadio = nil;
+    if (_selectedFriend.current_radio)
+        currentRadio = _selectedFriend.current_radio;
+    if (_selectedFriend.own_radio && [_selectedFriend.own_radio.ready boolValue])
+        ownRadio = _selectedFriend.own_radio;
+  
+  if (!currentRadio && !ownRadio)
+    return;
+  
+  if (currentRadio && ownRadio && [currentRadio.id intValue] != [ownRadio.id intValue])
+  {
+    UIActionSheet* joiinRadioSheet = [[UIActionSheet alloc] initWithTitle:@"join radio" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"radio he is listening to", @"his radio", nil];
+    joiinRadioSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [joiinRadioSheet showInView:self.view];
+  }
+  else if (currentRadio)
+  {
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:currentRadio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];  
+  }
+  else if (ownRadio)
+  {
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:ownRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];  
+  }  
 }
 
 
@@ -369,7 +386,34 @@
 
 
 
+#pragma mark - ActionSheet Delegate
 
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+  NSLog(@"action sheet button %d", buttonIndex);
+  Radio* currentRadio = nil;
+  Radio* ownRadio = nil;
+  if (_selectedFriend.current_radio)
+    currentRadio = _selectedFriend.current_radio;
+  if (_selectedFriend.own_radio && [_selectedFriend.own_radio.ready boolValue])
+    ownRadio = _selectedFriend.own_radio;
+  
+  if (buttonIndex == 0)
+  {
+    assert(currentRadio);
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:currentRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+  }
+  else if (buttonIndex == 1)
+  {
+    assert(ownRadio);
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:ownRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+  }
+}
 
 
 
