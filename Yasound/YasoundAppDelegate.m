@@ -271,7 +271,7 @@ void SignalHandler(int sig) {
   UIViewController* controller = nil;
   if ([r.ready boolValue])
   {
-    controller = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewCOntroller" bundle:nil wizard:NO];
+    controller = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:NO];
   }
   else
   {
