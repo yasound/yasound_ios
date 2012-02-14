@@ -281,3 +281,4 @@
 "GoTo_CurrentUser_Radio_OkButton_Title" = "Yes";
 "GoTo_CurrentUser_Radio_Unavailable_OkButton_Title" = "OK";
 
+"SearchBar_Placeholder" = "user, radio, artist or song";
