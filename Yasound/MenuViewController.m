@@ -96,6 +96,14 @@
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  
+  if ([AudioStreamManager main].currentRadio == nil)
+    [_nowPlayingButton setEnabled:NO];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
