@@ -117,6 +117,89 @@ static YasoundDataProvider* _main = nil;
 
 
 
+
+
+
+- (void)userRadioWithTarget:(id)target action:(SEL)selector andData:(NSDictionary*)userData
+{  
+  if (!_user)
+  {
+    NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no logged user" code:1 userInfo:nil] forKey:@"error"];
+    if (target && selector)
+      [target performSelector:selector withObject:nil withObject:info];
+    return;
+  }
+  
+  NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"creator=%@", _user.id]];
+  Auth* auth = self.apiKeyAuth;
+  
+  NSMutableDictionary* data;
+  if (userData)
+    data = [NSMutableDictionary dictionaryWithDictionary:userData];
+  else
+    data = [NSMutableDictionary dictionary];
+  [data setValue:target forKey:@"clientTarget"];
+  [data setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
+  
+  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveUserRadios:withInfo:) withUserData:data withAuth:auth];
+}
+
+- (void)userRadioWithTarget:(id)target action:(SEL)selector
+{
+  [self userRadioWithTarget:target action:selector andData:nil];
+}
+
+- (void)didReceiveUserRadios:(NSArray*)radios withInfo:(NSDictionary*)info
+{
+  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
+  
+  Radio* r = nil;
+  if (!radios || [radios count] == 0)
+  {
+    NSError* err = [NSError errorWithDomain:[NSString stringWithFormat:@"no radio for user '%@'", _user.username] code:1 userInfo:nil];
+    [finalInfo setValue:err forKey:@"error"];
+  }
+  else
+  {
+    r = [radios objectAtIndex:0];
+  }
+  
+  if (r)
+  {
+    _radio = r;
+  }
+  
+  NSDictionary* userData = [info valueForKey:@"userData"];
+  id target = [userData valueForKey:@"clientTarget"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+  
+  if (target && selector)
+  {
+    [target performSelector:selector withObject:_radio withObject:finalInfo];
+  }
+}
+
+
+
+- (void)reloadUserRadio
+{
+  [self userRadioWithTarget:self action:@selector(reloadedUserRadio:withInfo:)];
+}
+
+- (void)reloadedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+{
+  if (!r)
+    return;
+  
+  _radio = r;
+}
+
+
+
+
+
+
+
 // SIGN UP
 - (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username target:(id)target action:(SEL)selector
 {
@@ -288,45 +371,36 @@ static YasoundDataProvider* _main = nil;
   id target = [userData valueForKey:@"clientTarget"];
   SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
   
+//  if (target && selector)
+//  {
+//    [target performSelector:selector withObject:_user withObject:finalInfo];
+//  }
+  
+  NSMutableDictionary* data = [NSMutableDictionary dictionary];
+  [data setValue:target forKey:@"finalTarget"];
+  [data setValue:NSStringFromSelector(selector) forKey:@"finalSelector"];
+  
+  [self userRadioWithTarget:self action:@selector(didReceiveLoggedUserRadio:withInfo:) andData:data];
+}
+
+- (void)didReceiveLoggedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+{
+  NSDictionary* userData = [info valueForKey:@"userData"];
+  id target = [userData valueForKey:@"finalTarget"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
+ 
+  NSMutableDictionary* finalInfo = [NSMutableDictionary dictionary];
   if (target && selector)
   {
     [target performSelector:selector withObject:_user withObject:finalInfo];
   }
-}
 
-- (void)userRadioWithTarget:(id)target action:(SEL)selector
-{  
-  if (!_user)
-  {
-    NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no logged user" code:1 userInfo:nil] forKey:@"error"];
-    if (target && selector)
-      [target performSelector:selector withObject:nil withObject:info];
-    return;
-  }
-  
-  [self radioForUser:_user withTarget:target action:selector];
 }
 
 
-- (void)reloadUserRadio
-{
-  [self userRadioWithTarget:self action:@selector(reloadedUserRadio:withInfo:)];
-}
-
-- (void)reloadedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
-{
-  if (!r)
-    return;
-  
-  _radio = r;
-}
 
 
-- (void)friendsWithTarget:(id)target action:(SEL)selector
-{
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectsWithClass:[User class] withURL:@"/api/v1/friend" absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-}
+
 
 - (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector
 {
@@ -341,10 +415,10 @@ static YasoundDataProvider* _main = nil;
   NSArray* params = [NSArray arrayWithObject:[NSString stringWithFormat:@"creator=%@", u.id]];
   Auth* auth = self.apiKeyAuth;
   NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
-  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveUserRadios:withInfo:) withUserData:data withAuth:auth];
+  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:self byCalling:@selector(didReceiveRadios:withInfo:) withUserData:data withAuth:auth];
 }
 
-- (void)didReceiveUserRadios:(NSArray*)radios withInfo:(NSDictionary*)info
+- (void)didReceiveRadios:(NSArray*)radios withInfo:(NSDictionary*)info
 {
   NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] init];
   
@@ -359,11 +433,6 @@ static YasoundDataProvider* _main = nil;
     r = [radios objectAtIndex:0];
   }
   
-  if (r)
-  {
-    _radio = r;
-  }
-  
   NSDictionary* userData = [info valueForKey:@"userData"];
   id target = [userData valueForKey:@"clientTarget"];
   SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
@@ -375,10 +444,18 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+
+
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector
 {
   Auth* auth = self.apiKeyAuth;
   [_communicator getObjectWithClass:[Radio class] andID:radioId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)friendsWithTarget:(id)target action:(SEL)selector
+{
+  Auth* auth = self.apiKeyAuth;
+  [_communicator getObjectsWithClass:[User class] withURL:@"/api/v1/friend" absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector

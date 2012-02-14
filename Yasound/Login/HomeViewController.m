@@ -184,6 +184,8 @@
     assert(radio);
     
     // account just being create, go to configuration screen
+  [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"skipRadioCreationSendToSelection"];
+  [[NSUserDefaults standardUserDefaults] synchronize]; 
     CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    

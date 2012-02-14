@@ -71,6 +71,7 @@
     _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
 
+  _searchController.searchBar.placeholder = NSLocalizedString(@"SearchBar_Placeholder", nil);
 }
 
 - (void)viewDidUnload

@@ -100,6 +100,11 @@
     else
     {
         _skipButton.hidden = YES;
+      
+      UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_cancel", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
+      NSMutableArray* items = [[NSMutableArray alloc] init];
+      [items addObject:backBtn];
+      [toolbar setItems:items animated:NO];
     }
 
     
@@ -148,9 +153,13 @@
 
 - (IBAction)onSkip:(id)sender
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO_SELECTION object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CANCEL_WIZARD object:nil];
 }
 
+- (void)onBack:(id)sender
+{
+  [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 
