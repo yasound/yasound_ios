@@ -9,6 +9,10 @@
 #import "WebImageView.h"
 #import "BundleFileManager.h"
 #import "ASIDownloadCache.h"
+#import <Math.h>
+
+
+#define IMAGE_THUMB_SIZE 100.f
 
 static NSMutableDictionary* gDictionnary = NULL;
 static ASIDownloadCache *gHttpCache = NULL;
@@ -60,7 +64,7 @@ static ASIDownloadCache *gHttpCache = NULL;
   [view setImage:image];
   if (anims != nil) // We are currently reloading this image
   {
-    BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" error:nil];
+      BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIActivityIndicatorView* ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];	
     [ai startAnimating];
     [ai setFrame:stylesheet.frame];
@@ -83,7 +87,7 @@ static ASIDownloadCache *gHttpCache = NULL;
 - (void)load
 {
   //NSLog(@"Initiate load for %@", [url absoluteString]);
-  BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" error:nil];
+  BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
   
   assert(anims == nil);
   anims = [[NSMutableArray alloc] init];
@@ -109,6 +113,7 @@ static ASIDownloadCache *gHttpCache = NULL;
 }
 
 
+
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
   // Use when fetching text data
@@ -118,9 +123,22 @@ static ASIDownloadCache *gHttpCache = NULL;
   // Use when fetching binary data
   NSData* data = [request responseData];
   [image release];
-  image = [UIImage imageWithData: data]; 
-  [image retain];
-  
+    
+    UIImage* tmp = [UIImage imageWithData: data];
+
+    // we need a square image
+    CGFloat size = (tmp.size.width > tmp.size.height)? tmp.size.height : tmp.size.width;
+    CGFloat x = (tmp.size.width - size) / 2.f;
+    CGFloat y = (tmp.size.height - size) / 2.f;
+    
+    CGImageRef imageRef = CGImageCreateWithImageInRect([tmp CGImage], CGRectMake(x, y, size, size));
+    image = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    
+    [image retain];
+    
+    
+    
   for (WebImageView* view in webImages)
   {
     //NSLog(@"set image for 0x%p", view);
@@ -153,6 +171,13 @@ static ASIDownloadCache *gHttpCache = NULL;
   [anims release];
   anims = nil;
 }
+
+
+
+
+
+
+
 
 
 @end
