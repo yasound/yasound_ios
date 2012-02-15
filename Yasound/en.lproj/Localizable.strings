@@ -151,6 +151,7 @@
 "PlaylistsView_cell_detail" = "%d tracks";
 "LegalView_title" = "Terms Of Use";
 
+"PlaylistsViewController_FetchingPlaylists" = "Synchronizing playlists";
 
 
 "MenuView_section_myradio" = "My Radio";
@@ -284,8 +285,6 @@
 "GoTo_CurrentUser_Radio_OkButton_Title" = "Yes";
 "GoTo_CurrentUser_Radio_Unavailable_OkButton_Title" = "OK";
 
-<<<<<<< HEAD
-=======
 "SearchBar_Placeholder" = "user, radio, artist or song";
 
 "GoTo_FriendRadio_Title" = "Join ?";
@@ -293,4 +292,3 @@
 "GoTo_FriendCurrentRadio_Label" = "The radio he is listening to";
 "GoTo_FriendRadioCancel_Label" = "Cancel";
 
->>>>>>> a786b69f8deafda261c2e92bbc36c2102236c6d7
