@@ -151,7 +151,7 @@
 "PlaylistsView_cell_detail" = "%d titres";
 "LegalView_title" = "Conditions d'utilisation";
 
-
+"PlaylistsViewController_FetchingPlaylists" = "Synchronisation des listes de chansons";
 
 "MenuView_section_myradio" = "Ma Radio";
 "MenuView_section_radios" = "Radios";
