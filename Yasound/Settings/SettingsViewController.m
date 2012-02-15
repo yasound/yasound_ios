@@ -168,11 +168,6 @@
     if ([ActivityAlertView isRunning])
         [ActivityAlertView close];
     
-
-    // radio create has started. Remove the flag from the user's settings, to remove the "Create My Radio" screen
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"radioCreated"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -723,9 +718,9 @@
     
      if (_wizard)
      {
-        PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];    
+         // call root to launch the Radio
+         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
+         
      }
     else
     {
