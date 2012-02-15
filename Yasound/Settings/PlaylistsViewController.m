@@ -707,16 +707,22 @@
 //LBDEBUG
 - (void)onFakeSubmitAction:(NSTimer*)timer
 {
-    [ActivityAlertView close];
-    
-    if (_wizard)
-    {
-        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];    
-    }
-    else
-        [self.navigationController popViewControllerAnimated:YES];
+  // be sure to get updated radio (with correct 'ready' flag)
+  [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
+}
+
+- (void)receivedUserRadioAfterPlaylistsUpdate:(Radio*)r withInfo:(NSDictionary*)info
+{
+  [ActivityAlertView close];
+  
+  if (_wizard)
+  {
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];    
+  }
+  else
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
