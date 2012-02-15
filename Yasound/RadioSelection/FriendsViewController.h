@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
+#import "YasoundDataProvider.h"
 
-@interface FriendsViewController : TestflightViewController
+@interface FriendsViewController : TestflightViewController <UIActionSheetDelegate>
 {
     IBOutlet UIToolbar* _toolbar;
     IBOutlet UILabel* _toolbarTitle;
@@ -23,6 +24,8 @@
     NSMutableArray* _friends_online;
     NSMutableArray* _friends_offline;
   NSTimer* _updateTimer;
+  
+  User* _selectedFriend;
 }
 
 

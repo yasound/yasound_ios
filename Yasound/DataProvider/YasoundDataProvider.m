@@ -8,6 +8,7 @@
 
 #import "YasoundDataProvider.h"
 #import "UIImage+Resize.h"
+#import "NSObject+SBJson.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 #define DEV_URL @"https://dev.yasound.com"
@@ -16,6 +17,111 @@
 #define APP_KEY_IPHONE @"yasound_iphone_app"
 
 #define MAX_IMAGE_DIMENSION 1024
+
+@implementation TaskInfo
+
+@synthesize status;
+@synthesize progress;
+@synthesize message;
+
+- (void)loadWithStatus:(taskStatus)s progress:(float)p message:(NSString*)m
+{
+  self.status = s;
+  self.progress = p;
+  self.message = m;
+}
+
+
+- (void)loadWithDictionary:(NSDictionary*)desc
+{
+  if (!desc)
+    return;
+  taskStatus s = eTaskStatusNone;
+  float p = 0;
+  NSString* m = nil;
+  
+  NSString* statusStr = [desc valueForKey:@"status"];
+  s = stringToStatus(statusStr);
+  NSNumber* progressNumber = (NSNumber*)[desc valueForKey:@"progress"];
+  if (progressNumber)
+    p = [progressNumber floatValue];
+  NSString* msg = [desc valueForKey:@"message"];
+  m = msg;
+  
+  [self loadWithStatus:s progress:p message:m];
+}
+
+- (void)loadWithString:(NSString*)desc
+{
+  if (!desc)
+    return;
+  NSDictionary* descDict = [desc JSONValue];
+  [self loadWithDictionary:descDict];
+}
+
+
+- (id)initWithStatus:(taskStatus)s progress:(float)p message:(NSString*)m
+{
+  self = [super init];
+  if (self)
+  {
+    self.status = eTaskStatusNone;
+    self.progress = 0;
+    self.message = nil;
+    
+    [self loadWithStatus:s progress:p message:m];
+  }
+  return self;
+}
+
+
+- (id)initWithDictionary:(NSDictionary*)desc
+{
+  self = [super init];
+  if (self)
+  {
+    self.status = eTaskStatusNone;
+    self.progress = 0;
+    self.message = nil;
+    
+    [self loadWithDictionary:desc];
+  }
+  return self;
+}
+
+- (id)initWithString:(NSString*)desc
+{
+  self = [super init];
+  if (self)
+  {
+    self.status = eTaskStatusNone;
+    self.progress = 0;
+    self.message = nil;
+    
+    [self loadWithString:desc];
+  }
+  return self;
+}
+
++ (TaskInfo*)taskInfoWithStatus:(taskStatus)s progress:(float)p message:(NSString*)m
+{
+  TaskInfo* info = [[[TaskInfo alloc] initWithStatus:s progress:p message:m] autorelease];
+  return info;
+}
+
++ (TaskInfo*)taskInfoWithDictionary:(NSDictionary*)desc
+{
+  TaskInfo* info = [[[TaskInfo alloc] initWithDictionary:desc] autorelease];
+  return info;
+}
+
++ (TaskInfo*)taskInfoWithString:(NSString*)desc
+{
+  TaskInfo* info = [[[TaskInfo alloc] initWithString:desc] autorelease];
+  return info;
+}
+
+@end
 
 @interface YasoundDataProvider (internal)
 
@@ -978,10 +1084,11 @@ static YasoundDataProvider* _main = nil;
   id target = [userData valueForKey:@"target"];
   SEL selector = NSSelectorFromString([userData valueForKey:@"selector"]);
   NSError* error = [info valueForKey:@"error"];
-  taskStatus status = stringToStatus(response);
+  
+  TaskInfo* taskInfo = [TaskInfo taskInfoWithString:response];
   
   if (target && selector)
-    [target performSelector:selector withObject:status withObject:error];
+    [target performSelector:selector withObject:taskInfo withObject:error];
 }
 
 

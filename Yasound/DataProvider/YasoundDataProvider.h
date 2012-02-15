@@ -34,6 +34,22 @@ typedef enum
   eTaskStatusNone = 5
 } taskStatus;
 
+@interface TaskInfo : NSObject
+
+@property taskStatus status;
+@property float progress;
+@property (retain) NSString* message;
+
+- (id)initWithStatus:(taskStatus)s progress:(float)p message:(NSString*)m;
+- (id)initWithDictionary:(NSDictionary*)desc;
+- (id)initWithString:(NSString*)desc;
+
++ (TaskInfo*)taskInfoWithStatus:(taskStatus)s progress:(float)p message:(NSString*)m;
++ (TaskInfo*)taskInfoWithDictionary:(NSDictionary*)desc;
++ (TaskInfo*)taskInfoWithString:(NSString*)desc;
+
+@end
+
 taskStatus stringToStatus(NSString* str);
 
 @interface YasoundDataProvider : NSObject

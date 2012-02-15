@@ -43,8 +43,8 @@
 "QualitySwitch_standard_quality_switch" = "Son Qualité Standard";
 
 "YasoundReachability_connection" = "Internet";
-"YasoundReachability_connection_no" = "pas de connexion internet!";
-"YasoundReachability_connection_lost" = "connexion internet perdue!";
+"YasoundReachability_connection_no" = "pas de connexion Internet!";
+"YasoundReachability_connection_lost" = "connexion Internet perdue!";
 "YasoundReachability_host" = "Serveur Yasound";
 "YasoundReachability_host_no" = "impossible de joindre le serveur!";
 
@@ -137,7 +137,7 @@
 "StatsView_monthselector_label" = "Audience des 30 derniers jours";
 "StatsView_leaderboardselector_label" = "Classement";
 
-"KeywordsView_title" = "List des mots-clés";
+"KeywordsView_title" = "Liste des mots-clés";
 "KeywordsView_add_label" = "Ajouter un mot-clé";
 "KeywordsView_textfield_placeholder" = "entrez le mot-clé ici";
 
@@ -265,6 +265,9 @@
 "SongsView_click_to_synchronize" = "cliquer pour synchroniser";
 "SongsView_upload_progress" = "Synchronisation";
 
+"Facebook_AppRequest_Message" = "Rejoignez moi sur Yasound. Vous Pourrez écouter ma radio, créer la votre et découvrir de nouveaus artistes gratuitement.";
+"InviteFriends_button_text" = "Inviter mes amis";
+
 "GoTo_CurrentUser_Radio" = "Voulez-vous écouter sa radio ?";
 "GoTo_CurrentUser_Radio_Unavailable" = "Cet utilisateur n'a pas encore de radio.";
 "GoTo_CurrentUser_Radio_CancelButton_Title" = "Non";
@@ -272,3 +275,9 @@
 "GoTo_CurrentUser_Radio_Unavailable_OkButton_Title" = "OK";
 
 "SearchBar_Placeholder" = "utilisateur, radio, artiste ou titre";
+
+"GoTo_FriendRadio_Title" = "Rejoindre ?";
+"GoTo_FriendRadio_Label" = "Sa radio";
+"GoTo_FriendCurrentRadio_Label" = "La radio qu'il écoute";
+"GoTo_FriendRadioCancel_Label" = "Annuler";
+
