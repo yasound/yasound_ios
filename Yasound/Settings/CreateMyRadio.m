@@ -27,9 +27,6 @@
         self.radio = aRadio;
         _wizard = wizard;
         
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"radioCreated"];
-        [[NSUserDefaults standardUserDefaults] synchronize];        
-        
         UIImage* tabImage = [UIImage imageNamed:@"tabIconMyYasound.png"];
         UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"selection_tab_myyasound", nil) image:tabImage tag:0];
         self.tabBarItem = theItem;

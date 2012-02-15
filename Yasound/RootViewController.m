@@ -14,7 +14,7 @@
 #import "YasoundDataProvider.h"
 #import "YasoundReachability.h"
 #import "AudioStreamManager.h"
-#import "SettingsViewController.h"
+#import "PlaylistsViewController.h"
 #import "RadioSelectionViewController.h"
 #import "ConnectionView.h"
 #import "YasoundAppDelegate.h"
@@ -248,7 +248,9 @@
     [self.navigationController popToViewController:_menuView animated:NO];
   }
     
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
+//    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
+    
+    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

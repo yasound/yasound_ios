@@ -130,14 +130,15 @@
 
     if (user != nil)
     {
+        // check if local account has been setted (<=> radio full configured)
         if ([[YasoundSessionManager main] getAccount:user])
             // call root to launch the Radio
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
         else
         {
             [[YasoundSessionManager main] addAccount:user];
-            
-            // ask for radio contents to the provider
+
+            // ask for radio contents to the provider, in order to launch the radio configuration
             [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
         }
     }
@@ -184,8 +185,9 @@
     assert(radio);
     
     // account just being create, go to configuration screen
-  [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"skipRadioCreationSendToSelection"];
-  [[NSUserDefaults standardUserDefaults] synchronize]; 
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"skipRadioCreationSendToSelection"];
+    [[NSUserDefaults standardUserDefaults] synchronize]; 
+    
     CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
