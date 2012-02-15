@@ -39,6 +39,7 @@
         if (_wizard)
             _changed = YES;
         
+        
         //......................................................................................
         // init playlists
         //
@@ -187,7 +188,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     _titleLabel.text = NSLocalizedString(@"PlaylistsView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
 
@@ -439,6 +440,11 @@
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
+    
+    UIImageView *checkmark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"WhiteCheckmark.png"]];
+    cell.accessoryView = checkmark;
+    [checkmark release];
+
 
     NSDictionary *selectedItem = [source objectAtIndex:indexPath.row];
     MPMediaPlaylist *mediaPlaylist = [selectedItem objectForKey:@"mediaPlaylist"];

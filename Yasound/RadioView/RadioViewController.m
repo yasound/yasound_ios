@@ -74,6 +74,7 @@ static Song* _gNowPlayingSong = nil;
         _lastWallEvent = nil;
         _countMessageEvent = 0;
         _lastSongUpdateDate = nil;
+        _favoritesButtonLocked = NO;
 
         self.statusMessages = [[NSMutableArray alloc] init];
 
@@ -930,6 +931,7 @@ static Song* _gNowPlayingSong = nil;
         return;
     
     self.radio = r;
+    
     _favoritesLabel.text = [NSString stringWithFormat:@"%d", [self.radio.favorites integerValue]];
     _listenersLabel.text = [NSString stringWithFormat:@"%d", [self.radio.nb_current_users integerValue]];
 }
@@ -1525,7 +1527,25 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction)onFavorite:(id)sender
 {
+    if (_favoritesButtonLocked)
+        return;
+    
+    _favoritesButtonLocked = YES;
+    
     [[ActivityModelessSpinner main] addRef];
+    
+    // update the local GUI in advance, and then send the request, and wait for the delayed update
+    self.favoriteButton.selected = !self.favoriteButton.selected;
+    NSInteger nbFavorites = [_favoritesLabel.text integerValue];
+    if (self.favoriteButton.selected)
+        nbFavorites++;
+    else
+        nbFavorites--;
+    
+    _favoritesLabel.text = [NSString stringWithFormat:@"%d", nbFavorites];
+
+    
+    // send online request
     [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoritesRadioReceived:)];
 }
 
@@ -1540,7 +1560,8 @@ static Song* _gNowPlayingSong = nil;
             [[ActivityModelessSpinner main] removeRef];
             [[YasoundDataProvider main] setRadio:self.radio asFavorite:NO];
             self.favoriteButton.selected = NO;
-            [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_removed", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+
+            _favoritesButtonLocked = NO;
             return;
         }
     }
@@ -1548,8 +1569,7 @@ static Song* _gNowPlayingSong = nil;
     [[ActivityModelessSpinner main] removeRef];
     [[YasoundDataProvider main] setRadio:self.radio asFavorite:YES];
     self.favoriteButton.selected = YES;
-
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_favorite_added", nil) closeAfterTimeInterval:ACTIVITYALERT_TIMEINTERVAL];
+    _favoritesButtonLocked = NO;
 }
 
 

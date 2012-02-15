@@ -30,6 +30,7 @@
     BOOL _firstUpdateRequest;
     
     UILabel* _favoritesLabel;
+    BOOL _favoritesButtonLocked;
     
     UIImageView* _listenersIcon;
     UILabel* _listenersLabel;
