@@ -20,8 +20,14 @@
 
 + (void)showWithTitle:(NSString *)title;
 + (void)showWithTitle:(NSString *)title closeAfterTimeInterval:(NSTimeInterval)timeInterval;
+
++ (void)showWithTitle:(NSString *)title message:(NSString*)message;
++ (void)showWithTitle:(NSString *)title message:(NSString*)message closeAfterTimeInterval:(NSTimeInterval)timeInterval;
+
 + (void)close;
 + (BOOL)isRunning;
+
++ (ActivityAlertView*)current;
 
 
 // initWithTitle from UIAlertView

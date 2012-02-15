@@ -280,7 +280,7 @@
 			<key>UserCellBackgroundDark</key>
 			<dict>
 				<key>name</key>
-				<string>UserCellBackgroundDark</string>
+				<string>UserCellRadioDark</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>
@@ -291,7 +291,7 @@
 			<key>UserCellBackgroundLight</key>
 			<dict>
 				<key>name</key>
-				<string>UserCellBackgroundLight</string>
+				<string>UserCellRadioLight</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>

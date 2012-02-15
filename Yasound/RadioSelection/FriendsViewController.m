@@ -11,11 +11,12 @@
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "YasoundDataProvider.h"
 #import "ActivityModelessSpinner.h"
 #import "UserTableViewCell.h"
 
 #import "FacebookSessionManager.h"
+
+#define SHOW_INVITE_BUTTON 1
 
 @implementation FriendsViewController
 
@@ -28,6 +29,7 @@
     if (self) 
     {
       _updateTimer = nil;
+      _selectedFriend = nil;
 #ifdef FAKE_USERS
         _friends_online = [[NSMutableArray alloc] init];
         _friends_offline = [[NSMutableArray alloc] init];
@@ -167,21 +169,35 @@
 
 #pragma mark - TableView Source and Delegate
 
+#if SHOW_INVITE_BUTTON
 
 #define SECTION_INVITE_BUTTON 0
 #define SECTION_ONLINE 1
 #define SECTION_OFFLINE 2
 
+#else
+
+#define SECTION_ONLINE 0
+#define SECTION_OFFLINE 1
+
+#endif
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#if SHOW_INVITE_BUTTON
     return 3;
+#endif
+  
+  return 2;
 }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
+#if SHOW_INVITE_BUTTON
     if (section == SECTION_INVITE_BUTTON)
     {
         return 1;
@@ -200,6 +216,24 @@
     }
     else 
         return 0;
+#else
+  
+  if (section == SECTION_ONLINE)
+  {
+    if (!_friends_online)
+      return 0;
+    return _friends_online.count;
+  }
+  else if (section == SECTION_OFFLINE)
+  {
+    if (!_friends_offline)
+      return 0;
+    return _friends_offline.count;
+  }
+  else 
+    return 0;
+  
+#endif
 }
 
 
@@ -208,19 +242,22 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+#if SHOW_INVITE_BUTTON
     if (section == SECTION_INVITE_BUTTON)
         return 8;
+#endif
     
-//    return 33;
     return 22;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+#if SHOW_INVITE_BUTTON
     if (section == SECTION_INVITE_BUTTON)
         return 0;
-    
+#endif    
+  
     return 22;
 }
 
@@ -232,7 +269,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     NSString* title = nil;
-    
+
+#if SHOW_INVITE_BUTTON
     if (section == SECTION_INVITE_BUTTON)
     {
         UIView* view = [[UIView alloc] init];
@@ -247,7 +285,16 @@
     {
         title = NSLocalizedString(@"Offline", nil);
     }
-    
+#else
+  if (section == SECTION_ONLINE)
+  {
+    title = NSLocalizedString(@"Online", nil);
+  }
+  else if (section == SECTION_OFFLINE)
+  {
+    title = NSLocalizedString(@"Offline", nil);
+  }
+#endif
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
@@ -279,8 +326,10 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+#if SHOW_INVITE_BUTTON
     if (indexPath.section == SECTION_INVITE_BUTTON)
         return nil;
+#endif
 
     NSInteger rowIndex = indexPath.row;
     UIImageView* imageView = nil;
@@ -288,11 +337,11 @@
     // cell background
     if (rowIndex & 1)
     {
-        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"UserCellBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
     }
     else
     {
-        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+        imageView = [[[BundleFileManager main] stylesheetForKey:@"UserCellBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
     }
     
     cell.backgroundView = imageView;
@@ -307,10 +356,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+#if SHOW_INVITE_BUTTON
     if (indexPath.section == SECTION_INVITE_BUTTON)
     {
         return _cellInvite;
     }
+#endif
     
     static NSString *cellIdentifier = @"UserTableViewCell";
     
@@ -319,7 +370,7 @@
     
     if (sectionIndex > SECTION_OFFLINE || !_friends_online || !_friends_offline)
         return nil;
-    NSArray* friends = ((sectionIndex == 1) ? _friends_online : _friends_offline);
+    NSArray* friends = ((sectionIndex == SECTION_ONLINE) ? _friends_online : _friends_offline);
     
     User* friend = [friends objectAtIndex:rowIndex];
 
@@ -341,26 +392,45 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+#if SHOW_INVITE_BUTTON
     if (indexPath.section == SECTION_INVITE_BUTTON)
     {
         [self inviteButtonClicked:nil];
         return;
     }
+#endif
     
     UserTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    User* u = cell.user;
-    Radio* r;
-    if (u.current_radio)
-        r = u.current_radio;
-    else if (u.own_radio && [u.own_radio.ready boolValue])
-        r = u.own_radio;
-    else
-        return;
-    
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:r];
+    _selectedFriend = cell.user;
+    Radio* currentRadio = nil;
+    Radio* ownRadio = nil;
+    if (_selectedFriend.current_radio)
+        currentRadio = _selectedFriend.current_radio;
+    if (_selectedFriend.own_radio && [_selectedFriend.own_radio.ready boolValue])
+        ownRadio = _selectedFriend.own_radio;
+  
+  if (!currentRadio && !ownRadio)
+    return;
+  
+  if (currentRadio && ownRadio && [currentRadio.id intValue] != [ownRadio.id intValue])
+  {
+    UIActionSheet* joiinRadioSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"GoTo_FriendRadio_Title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"GoTo_FriendRadioCancel_Label", nil)destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"GoTo_FriendCurrentRadio_Label", nil), NSLocalizedString(@"GoTo_FriendRadio_Label", nil), nil];
+    joiinRadioSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [joiinRadioSheet showInView:self.view];
+  }
+  else if (currentRadio)
+  {
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:currentRadio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];  
+  }
+  else if (ownRadio)
+  {
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:ownRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];  
+  }  
 }
 
 
@@ -369,7 +439,34 @@
 
 
 
+#pragma mark - ActionSheet Delegate
 
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+  NSLog(@"action sheet button %d", buttonIndex);
+  Radio* currentRadio = nil;
+  Radio* ownRadio = nil;
+  if (_selectedFriend.current_radio)
+    currentRadio = _selectedFriend.current_radio;
+  if (_selectedFriend.own_radio && [_selectedFriend.own_radio.ready boolValue])
+    ownRadio = _selectedFriend.own_radio;
+  
+  if (buttonIndex == 0)
+  {
+    assert(currentRadio);
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:currentRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+  }
+  else if (buttonIndex == 1)
+  {
+    assert(ownRadio);
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:ownRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+  }
+}
 
 
 
