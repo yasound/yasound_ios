@@ -32,11 +32,12 @@
 #define ROW_MYRADIO_MYRADIO 0
 
 #define SECTION_RADIOS 1
-#define SECTION_RADIOS_NB_ROWS 4
+#define SECTION_RADIOS_NB_ROWS 5
 #define ROW_RADIOS_FRIENDS 0
 #define ROW_RADIOS_FAVORITES 1
 #define ROW_RADIOS_SELECTION 2
-#define ROW_RADIOS_SEARCH 3
+#define ROW_RADIOS_TOP 3
+#define ROW_RADIOS_SEARCH 4
 
 #define SECTION_ME 2
 #define SECTION_ME_NB_ROWS 3
@@ -333,6 +334,12 @@
             BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconRadiosSelection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             [cell.imageView setImage:[sheet image]];
         }
+        else if (indexPath.row == ROW_RADIOS_TOP)
+        {
+            cell.textLabel.text = NSLocalizedString(@"MenuView_radios_top", nil);            
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconLeaderboard" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
+        }
         else if (indexPath.row == ROW_RADIOS_SEARCH)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_radios_search", nil);            
@@ -411,7 +418,13 @@
         }
         else if (indexPath.row == ROW_RADIOS_SELECTION)
         {
-            RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIconNew.png"];
+            RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTSelection];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
+        else if (indexPath.row == ROW_RADIOS_TOP)
+        {
+            RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTTop];
             [self.navigationController pushViewController:view animated:YES];
             [view release];
         }

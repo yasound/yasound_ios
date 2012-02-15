@@ -166,6 +166,7 @@
 "MenuView_radios_favorites" = "My favorites";
 "MenuView_radios_friends" = "My friends";
 "MenuView_radios_selection" = "Selection";
+"MenuView_radios_top" = "Top";
 "MenuView_radios_search" = "Search";
 "MenuView_me_stats" = "My stats";
 "MenuView_me_playlists" = "Programming";
@@ -198,6 +199,7 @@
 "selection_tab_friends" = "Friends";
 "selection_tab_favorites" = "Favorites";
 "selection_tab_selection" = "Selection";
+"selection_tab_top" = "Top";
 "selection_tab_search" = "Search";
 
 "myyasound_tab_myyasound" = "My Radio";

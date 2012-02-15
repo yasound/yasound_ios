@@ -14,7 +14,7 @@
 #import "YasoundDataProvider.h"
 #import "YasoundReachability.h"
 #import "AudioStreamManager.h"
-#import "SettingsViewController.h"
+#import "PlaylistsViewController.h"
 #import "RadioSelectionViewController.h"
 #import "ConnectionView.h"
 #import "YasoundAppDelegate.h"
@@ -215,7 +215,7 @@
     
   if (sendToSelection)
   {
-    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIconNew.png"];
+      RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTSelection];
     [self.navigationController pushViewController:view animated:NO];    
     [view release];
   }
@@ -248,7 +248,9 @@
     [self.navigationController popToViewController:_menuView animated:NO];
   }
     
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
+//    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
+    
+    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
@@ -338,14 +340,6 @@
         [self.navigationController popToViewController:_menuView animated:NO];
     }
 
-    //LBDEBUG TEST
-//    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIconNew.png"];
-//    [self.navigationController pushViewController:view animated:NO];    
-//    [view release];
-    
-//    RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
   YasoundAppDelegate* appDelegate =  (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
   [appDelegate goToMyRadioFromViewController:self];
 }

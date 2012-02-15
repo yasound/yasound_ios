@@ -17,7 +17,7 @@
 #import "UIDevice+IdentifierAddition.h"
 #import "SongsViewController.h"
 #import "ActivityAlertView.h"
-
+#import "SettingsViewController.h"
 #import "SongUploader.h"
 
 #import "BundleFileManager.h"
@@ -711,8 +711,9 @@
     
     if (_wizard)
     {
-        // call root to launch the Radio
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
+        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];    
     }
     else
         [self.navigationController popViewControllerAnimated:YES];

@@ -21,17 +21,17 @@
 //#define TEST_FAKE 0
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil  title:(NSString*)title tabIcon:(NSString*)tabIcon
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        //      _type = type;
+        _type = type;
         
-        UIImage* tabImage = [UIImage imageNamed:tabIcon];
-        UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
-        self.tabBarItem = theItem;
-        [theItem release];      
+//        UIImage* tabImage = [UIImage imageNamed:tabIcon];
+//        UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
+//        self.tabBarItem = theItem;
+//        [theItem release];      
         
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -62,6 +62,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSString* title = nil;
+    if (_type == RSTSelection)
+        title = NSLocalizedString(@"MenuView_radios_selection", nil);
+    else if (_type == RSTTop)
+        title = NSLocalizedString(@"MenuView_radios_top", nil);
+    
+    _topBarTitle.text = title;
     
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuBackground" error:nil];    
@@ -236,7 +244,11 @@
     NSString* g = genre;
     if ([genre isEqualToString:@"style_all"])
         g= nil;
-  [[YasoundDataProvider main] selectedRadiosWithGenre:g withTarget:self action:@selector(receiveRadios:withInfo:)];
+    
+    if (_type == RSTTop)
+        [[YasoundDataProvider main] topRadiosWithGenre:g withTarget:self action:@selector(receiveRadios:withInfo:)];
+    else if (_type == RSTSelection)
+        [[YasoundDataProvider main] selectedRadiosWithGenre:g withTarget:self action:@selector(receiveRadios:withInfo:)];
 }
 
 
