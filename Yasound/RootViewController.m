@@ -215,7 +215,7 @@
     
   if (sendToSelection)
   {
-    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIconNew.png"];
+      RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTSelection];
     [self.navigationController pushViewController:view animated:NO];    
     [view release];
   }
@@ -340,14 +340,6 @@
         [self.navigationController popToViewController:_menuView animated:NO];
     }
 
-    //LBDEBUG TEST
-//    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil title:NSLocalizedString(@"selection_tab_selection", nil) tabIcon:@"tabIconNew.png"];
-//    [self.navigationController pushViewController:view animated:NO];    
-//    [view release];
-    
-//    RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
   YasoundAppDelegate* appDelegate =  (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
   [appDelegate goToMyRadioFromViewController:self];
 }
