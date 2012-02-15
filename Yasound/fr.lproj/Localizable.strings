@@ -151,7 +151,7 @@
 "PlaylistsView_cell_detail" = "%d titres";
 "LegalView_title" = "Conditions d'utilisation";
 
-
+"PlaylistsViewController_FetchingPlaylists" = "Synchronisation des listes de chansons";
 
 "MenuView_section_myradio" = "Ma Radio";
 "MenuView_section_radios" = "Radios";
@@ -165,6 +165,7 @@
 "MenuView_radios_favorites" = "Mes favoris";
 "MenuView_radios_friends" = "Mes amis";
 "MenuView_radios_selection" = "Sélection";
+"MenuView_radios_top" = "Top";
 "MenuView_radios_search" = "Recherche";
 "MenuView_me_stats" = "Mes statistiques";
 "MenuView_me_playlists" = "Ma programmation";
@@ -198,6 +199,7 @@
 "selection_tab_friends" = "Friends";
 "selection_tab_favorites" = "Favorites";
 "selection_tab_selection" = "Sélection";
+"selection_tab_top" = "Top";
 "selection_tab_search" = "Recherche";
 
 "myyasound_tab_myyasound" = "Ma Radio";

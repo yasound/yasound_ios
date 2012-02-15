@@ -258,7 +258,7 @@ void SignalHandler(int sig) {
   UIViewController* controller = nil;
   if ([r.ready boolValue])
   {
-    controller = [[StatsViewController alloc] initWithNibName:@"StatsViewCOntroller" bundle:nil];
+    controller = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil];
   }
   else
   {

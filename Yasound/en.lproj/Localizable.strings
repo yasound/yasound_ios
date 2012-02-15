@@ -151,6 +151,7 @@
 "PlaylistsView_cell_detail" = "%d tracks";
 "LegalView_title" = "Terms Of Use";
 
+"PlaylistsViewController_FetchingPlaylists" = "Synchronizing playlists";
 
 
 "MenuView_section_myradio" = "My Radio";
@@ -165,6 +166,7 @@
 "MenuView_radios_favorites" = "My favorites";
 "MenuView_radios_friends" = "My friends";
 "MenuView_radios_selection" = "Selection";
+"MenuView_radios_top" = "Top";
 "MenuView_radios_search" = "Search";
 "MenuView_me_stats" = "My stats";
 "MenuView_me_playlists" = "Programming";
@@ -177,6 +179,7 @@
 
 "YasoundSessionManager_login_title" = "log in";
 "YasoundSessionManager_login_error" = "unable to connect to the server!";
+"YasoundSessionManager_userinfo_error" = "unable to get user information!";
 
 
 "RadioSelection_update" = "update";
@@ -197,6 +200,7 @@
 "selection_tab_friends" = "Friends";
 "selection_tab_favorites" = "Favorites";
 "selection_tab_selection" = "Selection";
+"selection_tab_top" = "Top";
 "selection_tab_search" = "Search";
 
 "myyasound_tab_myyasound" = "My Radio";
@@ -281,8 +285,6 @@
 "GoTo_CurrentUser_Radio_OkButton_Title" = "Yes";
 "GoTo_CurrentUser_Radio_Unavailable_OkButton_Title" = "OK";
 
-<<<<<<< HEAD
-=======
 "SearchBar_Placeholder" = "user, radio, artist or song";
 
 "GoTo_FriendRadio_Title" = "Join ?";
@@ -290,4 +292,3 @@
 "GoTo_FriendCurrentRadio_Label" = "The radio he is listening to";
 "GoTo_FriendRadioCancel_Label" = "Cancel";
 
->>>>>>> a786b69f8deafda261c2e92bbc36c2102236c6d7

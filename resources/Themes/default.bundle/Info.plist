@@ -1198,6 +1198,28 @@
 			<key>type</key>
 			<string>png</string>
 		</dict>
+		<key>PlaylistsView_Howto</key>
+		<dict>
+			<key>x</key>
+			<integer>9</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>width</key>
+			<integer>302</integer>
+			<key>height</key>
+			<integer>44</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>center</string>
+				<key>size</key>
+				<integer>11</integer>
+				<key>textColor</key>
+				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+			</dict>
+		</dict>
 	</dict>
 </dict>
 </plist>
