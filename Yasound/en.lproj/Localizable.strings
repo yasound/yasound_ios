@@ -6,29 +6,29 @@
 "Navigation_cancel" = "Cancel";
 
 "Connection" = "Connection";
-"Error_communication_server" = "problems communicating with the server!";
+"Error_communication_server" = "error communicating with server!";
 
 
-"style_all" = "Every styles";
+"style_all" = "All style";
 "style_classique" = "Classical";
 "style_blues" = "Blues";
 "style_alternative" = "Alternative";
 "style_electro" = "Electro";
-"style_chanson_francaise" = "French songs";
+"style_chanson_francaise" = "French Music";
 "style_jazz" = "Jazz";
 "style_pop" = "Pop";
 "style_reggae" = "Reggae";
 "style_rock" = "Rock";
 "style_metal" = "Metal";
 "style_hiphop" = "Hip hop";
-"style_rnbsoul" = "Rnb / Soul";
+"style_rnbsoul" = "RnB / Soul";
 "style_world" = "World";
-"style_divers" = "Various";
+"style_divers" = "Miscellaneous";
 
 "theme_default" = "Default";
 "theme_default_description" = "Yasound's standard theme";
 "theme_blues" = "Blues";
-"theme_blues_description" = "The blues theme";
+"theme_blues_description" = "Blues theme";
 "theme_classic" = "Classical";
 "theme_classic_description" = "Classical theme";
 
@@ -37,49 +37,49 @@
 
 "Alert_contact_server" = "contacting server";
 
-"QualitySwitch_high_quality_label" = "High sound quality";
-"QualitySwitch_standard_quality_label" = "Standard sound quality";
-"QualitySwitch_high_quality_switch" = "High sound quality";
-"QualitySwitch_standard_quality_switch" = "Standard sound quality";
+"QualitySwitch_high_quality_label" = "High-quality audio";
+"QualitySwitch_standard_quality_label" = "Standard-quality audio";
+"QualitySwitch_high_quality_switch" = "High-quality audio";
+"QualitySwitch_standard_quality_switch" = "Standard-quality audio";
 
 "YasoundReachability_connection" = "Internet";
-"YasoundReachability_connection_no" = "no internet connection!";
-"YasoundReachability_connection_lost" = "internet connection lost!";
+"YasoundReachability_connection_no" = "no Internet connection!";
+"YasoundReachability_connection_lost" = "Connection lost!";
 "YasoundReachability_host" = "Yasound Server";
 "YasoundReachability_host_no" = "unable to contact the server!";
 
 
 "HomeView_title" = "Yasound";
-"HomeView_facebook_label" = "Login with Facebook";
-"HomeView_twitter_label" = "Login with Twitter";
+"HomeView_facebook_label" = "Log in with Facebook";
+"HomeView_twitter_label" = "Log in with Twitter";
 "HomeView_login_label" = "log in";
 "HomeView_signup_label" = "create an account";
 
 
-"LoginView_title" = "Connection";
+"LoginView_title" = "Log in";
 "LoginView_email_label" = "email";
 "LoginView_email_placeholder" = "enter your email address";
 "LoginView_pword_label" = "password";
 "LoginView_pword_placeholder" = "required";
 "LoginView_submit_label" = "connection";
 "LoginView_alert_title" = "Connection";
-"LoginView_alert_message_error" = "incorrect connection information!";
-"LoginView_alert_email_not_valid" = "invalid email address!";
+"LoginView_alert_message_error" = "incorrect login information!";
+"LoginView_alert_email_not_valid" = "incorrect email address!";
 
 
 "SignupView_title" = "Create an account";
 "SignupView_username_label" = "User";
-"SignupView_username_placeholder" = "Choose a user name";
-"SignupView_pword_label" = "Passeword";
+"SignupView_username_placeholder" = "Choose a username";
+"SignupView_pword_label" = "Password";
 "SignupView_pword_placeholder" = "required";
 "SignupView_email_label" = "Email";
 "SignupView_email_placeholder" = "enter your email address";
 "SignupView_submit_label" = "Create the account";
 "SignupView_alert_title" = "Account creation";
-"SignupView_alert_message_error" = "An account already exists with that email address!";
+"SignupView_alert_message_error" = "E-mail address already exists!";
 "SignupView_alert_email_not_valid" = "invalid email address!";
-"SignupView_legal_read_label" = "Read the EULA";
-"SignupView_legal_valid_label" = "I have read the EULA and I accept it";
+"SignupView_legal_read_label" = "Read the Terms of Use";
+"SignupView_legal_valid_label" = "I have read and agree to the Terms of Use";
 
 
 "MyYasound_title" = "My Radio";
@@ -88,17 +88,17 @@
 "MyYasoundSettings_stats_label" = "Stats";
 "MyYasoundSettings_config_playlists_label" = "Programming";
 "MyYasoundSettings_config_settings_label" = "Settings";
-"MyYasoundSettings_legal_label" = "User's license";
+"MyYasoundSettings_legal_label" = "Terms of Use";
 "MyYasoundSettings_logout_label" = "Log out";
 
 
 "FriendsView_title" = "My friends";
 
-"FavoritesView_title" =  "Mes Favorites";
+"FavoritesView_title" =  "My Favorites";
 
 
 "CreateMyRadio_title" = "Welcome!";
-"CreateMyRadio_text" = "Welcome to Yasound, create your own webradio and interact in real time with your listeners and facebook friends.";
+"CreateMyRadio_text" = "Welcome to Yasound. Yasound is an audio social network. Create your own web radio from your playlists and share it for free. Discover and comment in real time the radio programs of your community and your friends' music.";
 "CreateMyRadio_goButton_text" = "Create my radio!";
 "CreateMyRadio_skipButton_text" = "Later";
 
@@ -113,7 +113,7 @@
 "SettingsView_row_keywords_label" = "Tags";
 "SettingsView_keywords_empty" = "no tags";
 
-"SettingsView_saveOrCancel_title" = "Save changes?";
+"SettingsView_saveOrCancel_title" = "Save changes ?";
 "SettingsView_saveOrCancel_cancel" = "Cancel";
 "SettingsView_saveOrCancel_save" = "Save";
 "SettingsView_saveOrCancel_dontsave" = "Don't save";
@@ -125,7 +125,7 @@
 "SettingsView_logout_cancel" = "Cancel";
 "SettingsView_logout_logout" = "Disconnect";
 
-"SettingsView_submit_title" = "update radio";
+"SettingsView_submit_title" = "update your radio";
 
 
 
@@ -135,33 +135,33 @@
 "StatsView_likes_label" = "subscribers";
 "StatsView_weekselector_label" = "current week";
 "StatsView_monthselector_label" = "current month";
-"StatsView_leaderboardselector_label" = "leaderboard";
+"StatsView_leaderboardselector_label" = "Ranking";
 
 "KeywordsView_title" = "Tags list";
 "KeywordsView_add_label" = "Add a tag";
-"KeywordsView_textfield_placeholder" = "input tag here";
+"KeywordsView_textfield_placeholder" = "enter a tag here";
 
 "PlaylistsView_title" = "Programming";
-"PlaylistsView_howto" = "Choose the playlist that will be used as the contents for your radio.";
-"PlaylistsView_empty_message" = "There are currently no playlist in this device, your radio will thus be invisible for now.\n You can create a playlist directly in the Music app of this device, or by syncing some from iTunes on your computer. Go back to the programming menu once this is done.";
+"PlaylistsView_howto" = "Select the playlists you would like to use as your radio content. None of the tracks will be uploaded. We will only send the listing to our servers where there will be analyzed everyday in order to play the integrity of the tracks you have selected.";
+"PlaylistsView_empty_message" = "Warning: there are currently no playlists available on this device. \n You need to select at least one playlist to create your radio. Meanwhile, you can stream radios shared by your community.";
 "PlaylistsView_submit_title" = "updating playlists";
 "PlaylistsView_table_header_local_playlists" = "On this device";
-"PlaylistsView_table_header_other_playlists" = "From other devices";
+"PlaylistsView_table_header_other_playlists" = "On other devices";
 "PlaylistsView_cell_detail_with_matched" = "%d matched on %d";
 "PlaylistsView_cell_detail" = "%d tracks";
-"LegalView_title" = "EULA";
+"LegalView_title" = "Terms Of Use";
 
 
 
 "MenuView_section_myradio" = "My Radio";
 "MenuView_section_radios" = "Radios";
 "MenuView_section_me" = "Me";
-"MenuView_section_misc" = "Various";
+"MenuView_section_misc" = "Miscellaneous";
 
 
 
 "MenuView_myradio_myradio" = "My radio";
-"MenuView_myradio_nowplaying" = "Now playing";
+"MenuView_myradio_nowplaying" = "On air";
 "MenuView_radios_favorites" = "My favorites";
 "MenuView_radios_friends" = "My friends";
 "MenuView_radios_selection" = "Selection";
@@ -169,7 +169,7 @@
 "MenuView_me_stats" = "My stats";
 "MenuView_me_playlists" = "Programming";
 "MenuView_me_config" = "Settings";
-"MenuView_misc_legal" = "Licensing agreament";
+"MenuView_misc_legal" = "Terms of Use";
 "MenuView_misc_logout" = "Log out";
 
 
@@ -177,14 +177,13 @@
 
 "YasoundSessionManager_login_title" = "log in";
 "YasoundSessionManager_login_error" = "unable to connect to the server!";
-"YasoundSessionManager_userinfo_error" = "unable to retrieve user information!";
 
 
 "RadioSelection_update" = "update";
 
 
-"Tutorial_RadioView_title" = "Welcome you the radio wall";
-"Tutorial_RadioView_message" = "Chat with the other listeners of this radio!";
+"Tutorial_RadioView_title" = "Welcome to your wall";
+"Tutorial_RadioView_message" = "Chat with other listeners !";
 
 "Tutorial_TracksView_title" = "This is your radio";
 "Tutorial_TracksView_message" = "Swipe the screen to the left to edit your radio's programming!";
@@ -204,14 +203,14 @@
 "myyasound_tab_friends" = "My friends";
 "myyasound_tab_favorites" = "My favorites";
 
-"myyasound_settings_configuration" = "My radio's settings";
+"myyasound_settings_configuration" = "My Radio settings";
 "myyasound_settings_playlists" = "Playlists to broadcast";
 
-"myyasound_settings_goto_label" = "Access my radio";
-"myyasound_settings_submit_title" = "Save modifications";
+"myyasound_settings_goto_label" = "Access my Radio";
+"myyasound_settings_submit_title" = "Save settings";
 
 
-"radioview_message" = "tap to enter your message";
+"radioview_message" = "enter your message";
 "RadioView_status_message_audiostream_error" = "error : unable to read the audio stream";
 
 "RadioView_favorite_alredy_added" = "already added to favorites!";
@@ -221,7 +220,7 @@
 "RadioView_track_dislike" = "Dislike!";
 "RadioView_track_add" = "Track added to my radio!";
 
-"TracksView_no_tracks" = "no track on the list!";
+"TracksView_no_tracks" = "no tracks found!";
 
 "RadioView_track_share_facebook" = "Share on Facebook!";
 "RadioView_track_share_twitter" = "Share on Twitter!";
@@ -229,7 +228,7 @@
 "RadioView_track_share_facebook_error" = "Error while sharing on Facebook.";
 "RadioView_track_share_twitter_error" = "Error while sharing on Twitter.";
 
-"RadioView_track_share_message" = "I listen to %@, by %@ on %@";
+"RadioView_track_share_message" = "I am listening to %@, by %@ on %@";
 
 
 "ShareTrackOnFacebookAlertTitle" = "Share this radio on Facebook";
@@ -243,37 +242,37 @@
 
 "LegalView_legal_text" = "\
 1. You are requested to behave nicely : \n\
-- courteous language\
+- polite language\
 - be a gentleman\
-- no nudity / gore / unpleasent pictures\
+- no gore or nudity photos\
 - respect the laws of your country of residence.\
 \n\n\
-2. You have to own all the copyrights on the material you choose to upload to your radio on Yasound.\n\
+2. You must own the copyright or have the necessary rights for any content you upload on Yasound.\n\
 \n\n\
 ";
 
 
 "UpdatingPrevious_label" = "wall update...";
 
-"SongsView_unmatched_songs" = "Non synchronisés";
-"SongsView_matched_songs" = "Synchronisés";
-"SongsView_need_sync_songs" = "En cours de synchronisation";
-"SongsView_confirm_upload" = "Voulez-vous synchroniser ce titre ?";
-"SongsView_cancel" = "Annuler";
-"SongsView_upload_songs" = "Synchroniser";
-"SongsView_protected_songs" = "Non synchronisables";
-"SongsView_confirm_upload" = "Synchroniser ce titre ?";
-"SongsView_cancel" = "Annuler";
-"SongsView_upload_songs" = "Synchroniser";
-"SongsView_songs" = "Titres";
-"SongsView_alert_cannot_upload" = "Synchronisation impossible";
-"SongsView_alert_cannot_upload_message" = "Le titre n'est pas disponible pour synchronisation";
-"SongsView_synchronized" = "synchronisé";
-"SongsView_synchronization_in_progress" = "synchronisation en cours";
-"SongsView_click_to_synchronize" = "cliquer pour synchroniser";
-"SongsView_upload_progress" = "Synchronisation";
+"SongsView_unmatched_songs" = "Unmatched songs";
+"SongsView_matched_songs" = "Matched songs";
+"SongsView_need_sync_songs" = "Synchronizing";
+"SongsView_confirm_upload" = "Would you like to synchronize the song?";
+"SongsView_cancel" = "Cancel";
+"SongsView_upload_songs" = "Synchronized";
+"SongsView_protected_songs" = "Unable to synchronize the song";
+"SongsView_confirm_upload" = "Synchronize the song ?";
+"SongsView_cancel" = "Cancel";
+"SongsView_upload_songs" = "Synchronize";
+"SongsView_songs" = "Songs";
+"SongsView_alert_cannot_upload" = "Unable to synchronize";
+"SongsView_alert_cannot_upload_message" = "The song cannot be synchronized";
+"SongsView_synchronized" = "synchronized";
+"SongsView_synchronization_in_progress" = "synchronizing";
+"SongsView_click_to_synchronize" = "Click to synchronize";
+"SongsView_upload_progress" = "Synchronizing";
 
-"Facebook_AppRequest_Message" = "Join me on Yasound. You will listen to my radio, create your own and discover new artists freely.";
+"Facebook_AppRequest_Message" = "Join me on Yasound. You can listen to my radio, create your own and discover new artists for free.";
 "InviteFriends_button_text" = "Invite my friends";
 
 "GoTo_CurrentUser_Radio" = "Do you want to listen to his radio\n%@?";
@@ -282,6 +281,8 @@
 "GoTo_CurrentUser_Radio_OkButton_Title" = "Yes";
 "GoTo_CurrentUser_Radio_Unavailable_OkButton_Title" = "OK";
 
+<<<<<<< HEAD
+=======
 "SearchBar_Placeholder" = "user, radio, artist or song";
 
 "GoTo_FriendRadio_Title" = "Join ?";
@@ -289,3 +290,4 @@
 "GoTo_FriendCurrentRadio_Label" = "The radio he is listening to";
 "GoTo_FriendRadioCancel_Label" = "Cancel";
 
+>>>>>>> a786b69f8deafda261c2e92bbc36c2102236c6d7

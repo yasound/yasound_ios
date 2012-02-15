@@ -43,8 +43,8 @@
 "QualitySwitch_standard_quality_switch" = "Son Qualité Standard";
 
 "YasoundReachability_connection" = "Internet";
-"YasoundReachability_connection_no" = "pas de connexion internet!";
-"YasoundReachability_connection_lost" = "connexion internet perdue!";
+"YasoundReachability_connection_no" = "pas de connexion Internet!";
+"YasoundReachability_connection_lost" = "connexion Internet perdue!";
 "YasoundReachability_host" = "Serveur Yasound";
 "YasoundReachability_host_no" = "impossible de joindre le serveur!";
 
@@ -137,7 +137,7 @@
 "StatsView_monthselector_label" = "Audience des 30 derniers jours";
 "StatsView_leaderboardselector_label" = "Classement";
 
-"KeywordsView_title" = "List des mots-clés";
+"KeywordsView_title" = "Liste des mots-clés";
 "KeywordsView_add_label" = "Ajouter un mot-clé";
 "KeywordsView_textfield_placeholder" = "entrez le mot-clé ici";
 
