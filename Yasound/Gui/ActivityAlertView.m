@@ -14,6 +14,11 @@
 
 static ActivityAlertView* _alertView = nil;
 
++ (ActivityAlertView*)current
+{
+  return _alertView;
+}
+
 + (void)showWithTitle:(NSString *)title 
 {
     [ActivityAlertView showWithTitle:title closeAfterTimeInterval:0];
@@ -46,6 +51,44 @@ static ActivityAlertView* _alertView = nil;
         [NSTimer scheduledTimerWithTimeInterval:timeInterval target:_alertView selector:@selector(onStaticClose:) userInfo:nil repeats:NO];
     }
 }
+
++ (void)showWithTitle:(NSString *)title message:(NSString*)message
+{
+  [ActivityAlertView showWithTitle:title message:message closeAfterTimeInterval:0];
+}
+
++ (void)showWithTitle:(NSString *)title message:(NSString*)message closeAfterTimeInterval:(NSTimeInterval)timeInterval
+{
+  if (_alertView)
+  {
+    [_alertView close];
+    [_alertView release];
+  }
+  
+  _alertView = [[ActivityAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+  if (title == nil)
+    _alertView.activityView.frame = CGRectMake(125, 20, 30, 30);
+  else
+  {
+    UIFont* font = [UIFont boldSystemFontOfSize:16];
+    CGSize suggestedSize = [title sizeWithFont:font constrainedToSize:CGSizeMake(200, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+    
+    if (message)
+      suggestedSize.height += ([message sizeWithFont:font constrainedToSize:CGSizeMake(200, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap].height + 15);
+    
+    _alertView.activityView.frame = CGRectMake(125, suggestedSize.height + 30, 30, 30);
+  }
+  
+  _alertView.running = YES;
+  [_alertView show];
+  
+  if (timeInterval > 0)
+  {
+    [NSTimer scheduledTimerWithTimeInterval:timeInterval target:_alertView selector:@selector(onStaticClose:) userInfo:nil repeats:NO];
+  }
+}
+
+
 
 
 + (void)close

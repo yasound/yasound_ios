@@ -629,7 +629,7 @@
 - (void) save
 {
     //fake commnunication
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil)];
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
     //    
@@ -676,18 +676,25 @@
     [[YasoundDataProvider main] taskStatus:task target:self action:@selector(receiveTaskStatus:error:)];
 }
 
-- (void)receiveTaskStatus:(taskStatus)status error:(NSError*) error
+- (void)receiveTaskStatus:(TaskInfo*)taskInfo error:(NSError*) error
 {
-    if (status == eTaskSuccess)
+    if (taskInfo.status == eTaskSuccess)
     {
         [taskTimer invalidate];
         [self onFakeSubmitAction:nil];
     }
-    else if (status == eTaskFailure)
+    else if (taskInfo.status == eTaskFailure)
     {
         [taskTimer invalidate];
         [self onFakeSubmitAction:nil];
     }
+  else if (taskInfo.status == eTaskPending)
+  {
+    NSString* msg = [NSString stringWithFormat:@"%d%%", (int)(taskInfo.progress * 100)];
+    if (taskInfo.message)
+      msg = [msg stringByAppendingFormat:@" - %@", taskInfo.message];
+    [ActivityAlertView current].message = msg;
+  }
 }
 
 
