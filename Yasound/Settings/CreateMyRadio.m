@@ -108,6 +108,12 @@
     _text.text = NSLocalizedString(@"CreateMyRadio_text", nil);
 //    CGRect frame = _goButton.frame;
 //    _goButton.titleLabel.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    
+    
+    _logoPosX = _logo.frame.origin.x;
+    
+    _logo.frame = CGRectMake(self.view.frame.size.width + _logo.frame.size.width, _logo.frame.origin.y, _logo.frame.size.width, _logo.frame.size.height);
+    
 
     
 }
@@ -117,10 +123,19 @@
 //{
 //}
 
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    
-//}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration: 0.33];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+    _logo.frame = CGRectMake(_logoPosX, _logo.frame.origin.y, _logo.frame.size.width, _logo.frame.size.height);
+    
+    [UIView commitAnimations];
+
+}
 
 - (void)viewDidUnload
 {

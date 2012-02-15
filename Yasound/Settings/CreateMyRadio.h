@@ -20,6 +20,8 @@
     IBOutlet UILabel* _text;
     IBOutlet UIButton* _goButton;
     IBOutlet UIButton* _skipButton;
+    IBOutlet UIImageView* _logo;
+    CGFloat _logoPosX;
 }
 
 @property (nonatomic, retain) Radio* radio;

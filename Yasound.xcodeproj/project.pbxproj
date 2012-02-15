@@ -1355,6 +1355,16 @@
 		BCE7518B14EC1DBF00056916 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
 		BCE7518C14EC1DBF00056916 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
 		BCE7518D14EC1DBF00056916 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
+		BCE751B214EC2DC100056916 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B014EC2DC100056916 /* logo.png */; };
+		BCE751B314EC2DC100056916 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B014EC2DC100056916 /* logo.png */; };
+		BCE751B414EC2DC100056916 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B014EC2DC100056916 /* logo.png */; };
+		BCE751B514EC2DC100056916 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B014EC2DC100056916 /* logo.png */; };
+		BCE751B614EC2DC100056916 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B014EC2DC100056916 /* logo.png */; };
+		BCE751B714EC2DC100056916 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B114EC2DC100056916 /* logo@2x.png */; };
+		BCE751B814EC2DC100056916 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B114EC2DC100056916 /* logo@2x.png */; };
+		BCE751B914EC2DC100056916 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B114EC2DC100056916 /* logo@2x.png */; };
+		BCE751BA14EC2DC100056916 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B114EC2DC100056916 /* logo@2x.png */; };
+		BCE751BB14EC2DC100056916 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B114EC2DC100056916 /* logo@2x.png */; };
 		BCF3588514E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
 		BCF3588614E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
 		BCF3588714E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
@@ -1942,6 +1952,8 @@
 		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
 		BCE7518714EC1DBF00056916 /* AdaptiveLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdaptiveLabel.h; sourceTree = "<group>"; };
 		BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdaptiveLabel.m; sourceTree = "<group>"; };
+		BCE751B014EC2DC100056916 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		BCE751B114EC2DC100056916 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		BCF3588314E07A87003594BF /* ScrollingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollingLabel.h; path = Yasound/Gui/ScrollingLabel.h; sourceTree = "<group>"; };
 		BCF3588414E07A87003594BF /* ScrollingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollingLabel.m; path = Yasound/Gui/ScrollingLabel.m; sourceTree = "<group>"; };
 		BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSearchViewController.h; path = RadioSelection/RadioSearchViewController.h; sourceTree = "<group>"; };
@@ -3035,6 +3047,8 @@
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCE751B014EC2DC100056916 /* logo.png */,
+				BCE751B114EC2DC100056916 /* logo@2x.png */,
 				BC9F4A0A14E6AC5400008AA3 /* TableView */,
 				BC33F44714DDC6B200D4C67F /* App Store */,
 				BC33F43714DDC6A100D4C67F /* Default.png */,
@@ -3497,6 +3511,8 @@
 				40104F5A14EAC69B00996326 /* UserCellRadioLight@2x.png in Resources */,
 				BC413D6D14EBC2F9009EB307 /* WhiteCheckmark.png in Resources */,
 				BC413D7214EBC2F9009EB307 /* WhiteCheckmark@2x.png in Resources */,
+				BCE751B614EC2DC100056916 /* logo.png in Resources */,
+				BCE751BB14EC2DC100056916 /* logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3633,6 +3649,8 @@
 				40104F5714EAC69B00996326 /* UserCellRadioLight@2x.png in Resources */,
 				BC413D6A14EBC2F9009EB307 /* WhiteCheckmark.png in Resources */,
 				BC413D6F14EBC2F9009EB307 /* WhiteCheckmark@2x.png in Resources */,
+				BCE751B314EC2DC100056916 /* logo.png in Resources */,
+				BCE751B814EC2DC100056916 /* logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3769,6 +3787,8 @@
 				40104F5914EAC69B00996326 /* UserCellRadioLight@2x.png in Resources */,
 				BC413D6C14EBC2F9009EB307 /* WhiteCheckmark.png in Resources */,
 				BC413D7114EBC2F9009EB307 /* WhiteCheckmark@2x.png in Resources */,
+				BCE751B514EC2DC100056916 /* logo.png in Resources */,
+				BCE751BA14EC2DC100056916 /* logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3905,6 +3925,8 @@
 				40104F5614EAC69B00996326 /* UserCellRadioLight@2x.png in Resources */,
 				BC413D6914EBC2F9009EB307 /* WhiteCheckmark.png in Resources */,
 				BC413D6E14EBC2F9009EB307 /* WhiteCheckmark@2x.png in Resources */,
+				BCE751B214EC2DC100056916 /* logo.png in Resources */,
+				BCE751B714EC2DC100056916 /* logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4041,6 +4063,8 @@
 				40104F5814EAC69B00996326 /* UserCellRadioLight@2x.png in Resources */,
 				BC413D6B14EBC2F9009EB307 /* WhiteCheckmark.png in Resources */,
 				BC413D7014EBC2F9009EB307 /* WhiteCheckmark@2x.png in Resources */,
+				BCE751B414EC2DC100056916 /* logo.png in Resources */,
+				BCE751B914EC2DC100056916 /* logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
