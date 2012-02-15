@@ -82,22 +82,22 @@
 }
 
 
-#import "CreateMyRadio.h"
+//#import "CreateMyRadio.h"
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 
-    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:nil];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
+//    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:nil];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
     
-//    if (_firstTime)
-//    {
-//        _firstTime = NO;
-//        
-//        [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged)];
-//    }
+    if (_firstTime)
+    {
+        _firstTime = NO;
+        
+        [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged)];
+    }
 
   [self becomeFirstResponder];
 }
