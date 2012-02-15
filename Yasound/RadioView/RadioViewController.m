@@ -402,9 +402,10 @@ static Song* _gNowPlayingSong = nil;
     
     // check for tutorial
     [[Tutorial main] show:TUTORIAL_KEY_RADIOVIEW everyTime:NO];
-    
-    if (self.ownRadio)
-        [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
+
+    // we don't do it for now, since we removed the TracksView from the scenario
+//    if (self.ownRadio)
+//        [[Tutorial main] show:TUTORIAL_KEY_TRACKSVIEW everyTime:NO];
     
     // update favorite button
     [[ActivityModelessSpinner main] addRef];

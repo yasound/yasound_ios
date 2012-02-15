@@ -88,17 +88,12 @@
 {
     [super viewDidAppear:animated];
 
-    //LBDBEUG
-    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:nil];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-    
-//    if (_firstTime)
-//    {
-//        _firstTime = NO;
-//        
-//        [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged)];
-//    }
+    if (_firstTime)
+    {
+        _firstTime = NO;
+        
+        [[YasoundReachability main] startWithTargetForChange:self action:@selector(onReachabilityChanged)];
+    }
 
   [self becomeFirstResponder];
 }
