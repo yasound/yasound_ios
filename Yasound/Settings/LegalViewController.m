@@ -52,7 +52,7 @@
     _webview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 
     
-    NSURL* url = [NSURL URLWithString:@"http://google.com"];
+    NSURL* url = [NSURL URLWithString:@"http://yasound.com/legal/eula.html"];
     NSURLRequest* requestObj = [NSURLRequest requestWithURL:url];
     [_webview loadRequest:requestObj];
     
