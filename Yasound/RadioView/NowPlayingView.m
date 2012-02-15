@@ -138,7 +138,7 @@
 
 - (void)setNbLikes:(int)nbLikes
 {
-  _likesLabel.text = [NSString stringWithFormat:@"%d", nbLikes];
+    _likesLabel.text = [NSString stringWithFormat:@"%d", nbLikes];
   
   if (_likesLabel.text.length > 4)
     _likesLabel.font = [_likesLabel.font fontWithSize:9];
