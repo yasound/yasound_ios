@@ -178,6 +178,7 @@
 
 "YasoundSessionManager_login_title" = "log in";
 "YasoundSessionManager_login_error" = "unable to connect to the server!";
+"YasoundSessionManager_userinfo_error" = "unable to get user information!";
 
 
 "RadioSelection_update" = "update";

@@ -1350,6 +1350,11 @@
 		BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
 		BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
+		BCE7518914EC1DBF00056916 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
+		BCE7518A14EC1DBF00056916 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
+		BCE7518B14EC1DBF00056916 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
+		BCE7518C14EC1DBF00056916 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
+		BCE7518D14EC1DBF00056916 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
 		BCF3588514E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
 		BCF3588614E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
 		BCF3588714E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
@@ -1935,6 +1940,8 @@
 		BCDC980F14ACB44300D54631 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = Login/SignupViewController.xib; sourceTree = "<group>"; };
 		BCE46322148FD96300422448 /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
 		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
+		BCE7518714EC1DBF00056916 /* AdaptiveLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdaptiveLabel.h; sourceTree = "<group>"; };
+		BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdaptiveLabel.m; sourceTree = "<group>"; };
 		BCF3588314E07A87003594BF /* ScrollingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollingLabel.h; path = Yasound/Gui/ScrollingLabel.h; sourceTree = "<group>"; };
 		BCF3588414E07A87003594BF /* ScrollingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollingLabel.m; path = Yasound/Gui/ScrollingLabel.m; sourceTree = "<group>"; };
 		BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSearchViewController.h; path = RadioSelection/RadioSearchViewController.h; sourceTree = "<group>"; };
@@ -3070,6 +3077,8 @@
 		BCFECFE61468439900BA20D9 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
+				BCE7518714EC1DBF00056916 /* AdaptiveLabel.h */,
+				BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */,
 				BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */,
 				BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */,
 				BC27F37D14BE463600EF1C5F /* QualitySwitchLabel.h */,
@@ -4172,6 +4181,7 @@
 				BC3FA6E414E93B660055AB4A /* SongsViewController.m in Sources */,
 				BC3FA6E514E93B660055AB4A /* SongUploader.m in Sources */,
 				BC3FA6E614E93B660055AB4A /* MBProgressHUD.m in Sources */,
+				BCE7518D14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4309,6 +4319,7 @@
 				B19BF5EF14E420DA00BF8FCF /* SongsViewController.m in Sources */,
 				B17A085714E4E881008E4742 /* SongUploader.m in Sources */,
 				B1F8868914E5B44300256383 /* MBProgressHUD.m in Sources */,
+				BCE7518A14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4447,6 +4458,7 @@
 				B19BF5F114E420DA00BF8FCF /* SongsViewController.m in Sources */,
 				B17A085914E4E883008E4742 /* SongUploader.m in Sources */,
 				B1F8868B14E5B44300256383 /* MBProgressHUD.m in Sources */,
+				BCE7518C14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4584,6 +4596,7 @@
 				40ED563C14E41F7200C0A0F4 /* UIImage+RoundedCorner.m in Sources */,
 				B19BF5EE14E420DA00BF8FCF /* SongsViewController.m in Sources */,
 				B1F8868814E5B44300256383 /* MBProgressHUD.m in Sources */,
+				BCE7518914EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4722,6 +4735,7 @@
 				B19BF5F014E420DA00BF8FCF /* SongsViewController.m in Sources */,
 				B17A085814E4E882008E4742 /* SongUploader.m in Sources */,
 				B1F8868A14E5B44300256383 /* MBProgressHUD.m in Sources */,
+				BCE7518B14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

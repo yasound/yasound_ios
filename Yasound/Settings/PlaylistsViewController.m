@@ -171,6 +171,7 @@
 
 - (void)dealloc
 {
+    [_howto release];
     if (_songsViewController) {
         [_songsViewController release];
     }
@@ -239,7 +240,15 @@
         
     }
     
-    _cellHowtoLabel.text = NSLocalizedString(@"PlaylistsView_howto", nil);
+    _howto = NSLocalizedString(@"PlaylistsView_howto", nil);
+    [_howto retain];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"PlaylistsView_Howto" error:nil];
+    UIFont* font = [sheet makeFont];
+    
+    // dynamic size
+    CGSize suggestedSize = [_howto sizeWithFont:font constrainedToSize:CGSizeMake(sheet.frame.size.width, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+    _cellHowtoHeight = suggestedSize.height;
 }
 
 - (void)viewDidUnload
@@ -320,6 +329,14 @@
         return 0;
     
     return 22;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) 
+        return _cellHowtoHeight;
+    
+    return 44;
 }
 
 
@@ -415,7 +432,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     if (indexPath.section == 0)
-        return _cellHowto;
+    {
+        static NSString* CellIdentifier = @"CellHowto";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) 
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"PlaylistsView_Howto" error:nil];
+
+        UILabel* label = [sheet makeLabel];
+        label.text = _howto;
+        label.numberOfLines = 0;
+        label.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, sheet.frame.size.width, _cellHowtoHeight);
+        [cell addSubview:label];
+
+        return cell;
+    }
+    
+    
     
     NSMutableArray *source = NULL;
     if (indexPath.section == 1) {
