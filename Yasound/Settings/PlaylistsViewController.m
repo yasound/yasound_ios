@@ -30,7 +30,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-      [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
       
         _displayMode = eDisplayModeNormal;
         _wizard = wizard;
@@ -39,41 +38,17 @@
         if (_wizard)
             _changed = YES;
         
-        
-        //......................................................................................
-        // init playlists
-        //
-        MPMediaQuery *playlistsquery = [MPMediaQuery playlistsQuery];
-        _playlistsDesc = [[NSMutableArray alloc] init];
-        [_playlistsDesc retain];
-        _playlists = [playlistsquery collections];
-        [_playlists retain];
-
-        [self.view addSubview:_tableView];
-        
-        Radio* radio = [YasoundDataProvider main].radio;
-        [[YasoundDataProvider main] playlistsForRadio:radio 
-                                               target:self 
-                                               action:@selector(receivePlaylists:withInfo:)
-         ];
-        
-        _selectedPlaylists = [[NSMutableArray alloc] init];
-        [_selectedPlaylists retain];
-
-        _unselectedPlaylists = [[NSMutableArray alloc] init];
-        [_unselectedPlaylists retain];
-        
-        _localPlaylistsDesc = [[NSMutableArray alloc] init];
-        [_localPlaylistsDesc retain];
-        
-        _remotePlaylistsDesc = [[NSMutableArray alloc] init];
-        [_remotePlaylistsDesc retain];
-        
-      [ActivityAlertView close];
+        _checkmarkImage = [UIImage imageNamed:@"WhiteCheckmark.png"];
+        [_checkmarkImage retain];
     }
     
     return self;
 }
+
+
+
+
+
 
 -(NSMutableDictionary *)findPlayListByName:(NSString *)name withSource:(NSString *)source
 {
@@ -89,7 +64,8 @@
 
 - (void)buildPlaylistData:(NSArray *)localPlaylists withRemotePlaylists:(NSArray *)remotePlaylists
 {
-    for (Playlist *playlist in remotePlaylists) {
+    for (Playlist* playlist in remotePlaylists) 
+    {
         NSNumber* playlistId = [NSNumber numberWithInteger:playlist.id];
         NSString* name = playlist.name;
         NSString* source = playlist.source;
@@ -137,19 +113,21 @@
         }
     }
     
-    for (NSDictionary *dico in _playlistsDesc) {
+    for (NSDictionary *dico in _playlistsDesc) 
+    {
         MPMediaPlaylist *mediaPlaylist = [dico objectForKey:@"mediaPlaylist"]; 
         NSNumber* enabled = [dico objectForKey:@"enabled"];
-        if (mediaPlaylist) {
+        
+        if (mediaPlaylist) 
             [_localPlaylistsDesc addObject:dico];
-        } else {
+        else
             [_remotePlaylistsDesc addObject:dico];
-        }
-        if ([enabled boolValue] == FALSE) {
+
+        if ([enabled boolValue] == FALSE)
             [_unselectedPlaylists addObject:dico];
-        } else {
+        else
             [_selectedPlaylists addObject:dico];
-        }
+
     }
 }
 
@@ -157,6 +135,8 @@
 {
     [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
     [self refreshView];
+
+    [ActivityAlertView close];
 }
 
                                                                                       
@@ -171,6 +151,7 @@
 
 - (void)dealloc
 {
+    [_checkmarkImage release];
     [_howto release];
     if (_songsViewController) {
         [_songsViewController release];
@@ -246,9 +227,47 @@
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"PlaylistsView_Howto" error:nil];
     UIFont* font = [sheet makeFont];
     
-    // dynamic size
+    // dynamic size of howto text
     CGSize suggestedSize = [_howto sizeWithFont:font constrainedToSize:CGSizeMake(sheet.frame.size.width, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
     _cellHowtoHeight = suggestedSize.height;
+    
+    
+    
+    //......................................................................................
+    // init playlists
+    //
+
+    [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
+    
+    MPMediaQuery *playlistsquery = [MPMediaQuery playlistsQuery];
+    _playlistsDesc = [[NSMutableArray alloc] init];
+    [_playlistsDesc retain];
+    _playlists = [playlistsquery collections];
+    [_playlists retain];
+    
+    [self.view addSubview:_tableView];
+    
+    Radio* radio = [YasoundDataProvider main].radio;
+    [[YasoundDataProvider main] playlistsForRadio:radio 
+                                           target:self 
+                                           action:@selector(receivePlaylists:withInfo:)
+     ];
+    
+    _selectedPlaylists = [[NSMutableArray alloc] init];
+    [_selectedPlaylists retain];
+    
+    _unselectedPlaylists = [[NSMutableArray alloc] init];
+    [_unselectedPlaylists retain];
+    
+    _localPlaylistsDesc = [[NSMutableArray alloc] init];
+    [_localPlaylistsDesc retain];
+    
+    _remotePlaylistsDesc = [[NSMutableArray alloc] init];
+    [_remotePlaylistsDesc retain];
+    
+    
+    
+    
 }
 
 - (void)viewDidUnload
@@ -476,25 +495,22 @@
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
     
-    UIImageView *checkmark = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"WhiteCheckmark.png"]];
-    cell.accessoryView = checkmark;
-    [checkmark release];
-
-
     NSDictionary *selectedItem = [source objectAtIndex:indexPath.row];
     MPMediaPlaylist *mediaPlaylist = [selectedItem objectForKey:@"mediaPlaylist"];
+
     
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    [self checkmark:cell with:NO];
     if (_wizard) {
-        if (mediaPlaylist != NULL) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        if (mediaPlaylist != NULL) 
+        {
+            [self checkmark:cell with:YES];
         }
     } else {
         if (_displayMode == eDisplayModeNormal) {
             if ([_unselectedPlaylists containsObject:dico]) {
-                cell.accessoryType = UITableViewCellAccessoryNone;
+                [self checkmark:cell with:NO];
             } else {
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                [self checkmark:cell with:YES];
             }
         } else if (_displayMode == eDisplayModeEdit) {
             if (mediaPlaylist != NULL && neverSynchronized == FALSE) {
@@ -535,75 +551,87 @@
         return;
     _changed = YES;
     
-    NSMutableArray *source = NULL;
-    if (indexPath.section == 1) {
+    NSMutableArray* source = NULL;
+    if (indexPath.section == 1) 
         source = _localPlaylistsDesc;
-    } else if (indexPath.section == 2) {
+    else if (indexPath.section == 2) 
         source = _remotePlaylistsDesc;
-    }
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.selected = FALSE;
-    NSDictionary *item = [source objectAtIndex:indexPath.row];
-    MPMediaPlaylist *mediaPlaylist = [item objectForKey:@"mediaPlaylist"];
-    if (mediaPlaylist == NULL) {
+    
+    NSDictionary* playlistDico = [source objectAtIndex:indexPath.row];
+    MPMediaPlaylist* mediaPlaylist = [playlistDico objectForKey:@"mediaPlaylist"];
+    
+    if (mediaPlaylist == NULL) 
+    {
         // special handler for remote playlists
-        if ([_unselectedPlaylists containsObject:item] == YES)
+        if ([_unselectedPlaylists containsObject:playlistDico] == YES)
         {
-            [_unselectedPlaylists removeObject:item];
-            [_selectedPlaylists addObject:item];
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [_unselectedPlaylists removeObject:playlistDico];
+            [_selectedPlaylists addObject:playlistDico];
+            [self checkmark:cell with:YES];
         }
         else
         {
-            [_unselectedPlaylists addObject:item];
-            [_selectedPlaylists removeObject:item];
-            cell.accessoryType = UITableViewCellAccessoryNone; 
+            [_unselectedPlaylists addObject:playlistDico];
+            [_selectedPlaylists removeObject:playlistDico];
+            [self checkmark:cell with:NO];
         }
         return;
     }
     
     // handler for local playlists
     
-    if (_displayMode == eDisplayModeEdit) {
+    if (_displayMode == eDisplayModeEdit) 
+    {
         // display detailed view about playlist
-        BOOL neverSynchronized = [(NSNumber *)[item objectForKey:@"neverSynchronized"] boolValue];
-        if (neverSynchronized) {
+        BOOL neverSynchronized = [(NSNumber *)[playlistDico objectForKey:@"neverSynchronized"] boolValue];
+        if (neverSynchronized) 
           return;
-        }
       
-        if (_songsViewController) {
+        if (_songsViewController) 
             [_songsViewController release];
-        }
-        NSNumber *playlistId = [item objectForKey:@"playlistId"];
+
+        NSNumber *playlistId = [playlistDico objectForKey:@"playlistId"];
         _songsViewController = [[SongsViewController alloc] initWithNibName:@"SongsViewController" bundle:nil playlistId:[playlistId integerValue]];    
         [self.navigationController pushViewController:_songsViewController animated:TRUE];
         return;
     }
     
-    if ([_unselectedPlaylists containsObject:item] == YES)
+    if ([_unselectedPlaylists containsObject:playlistDico] == YES)
     {
-        [_unselectedPlaylists removeObject:item];
-        [_selectedPlaylists addObject:item];
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [_unselectedPlaylists removeObject:playlistDico];
+        [_selectedPlaylists addObject:playlistDico];
+        [self checkmark:cell with:YES];
     }
     else
     {
-        [_unselectedPlaylists addObject:item];
-        [_selectedPlaylists removeObject:item];
-        cell.accessoryType = UITableViewCellAccessoryNone; 
+        [_unselectedPlaylists addObject:playlistDico];
+        [_selectedPlaylists removeObject:playlistDico];
+        [self checkmark:cell with:NO];
     }
     
     if ([_selectedPlaylists count] == 0)
         [_nextBtn setEnabled:NO];
-    else {
+    else 
         [_nextBtn setEnabled:YES];
-    }
 }
 
 
 
-
+- (void)checkmark:(UITableViewCell*)cell with:(BOOL)value
+{
+    if (value)
+    {
+        UIImageView *checkmark = [[UIImageView alloc] initWithImage:_checkmarkImage];
+        cell.accessoryView = checkmark;
+        [checkmark release];
+        return;
+    }
+    
+    cell.accessoryView = nil;
+}
 
 
 

@@ -44,6 +44,8 @@ typedef enum {
     NSTimer* taskTimer;
     DisplayMode _displayMode;
     SongsViewController *_songsViewController;
+    
+    UIImage* _checkmarkImage;
 }
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;
