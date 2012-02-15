@@ -65,9 +65,9 @@
     
     NSString* title = nil;
     if (_type == RSTSelection)
-        title = NSLocalizedString("MenuView_radios_selection", nil);
+        title = NSLocalizedString(@"MenuView_radios_selection", nil);
     else if (_type == RSTTop)
-        title = NSLocalizedString("MenuView_radios_selection", nil);
+        title = NSLocalizedString(@"MenuView_radios_top", nil);
     
     _topBarTitle.text = title;
     
