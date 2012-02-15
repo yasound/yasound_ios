@@ -713,22 +713,24 @@
 - (void)onRadioImageUpdate:(NSString*)msg info:(NSDictionary*)info
 {
     NSLog(@"onRadioImageUpdate info %@", info);
-
-    [ActivityAlertView close];
-    
-     if (_wizard)
-     {
-         // call root to launch the Radio
-         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
-         
-     }
-    else
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
   
-  // be sure to get updated user's radio 
-  [[YasoundDataProvider main] reloadUserRadio];
+  // be sure to get updated radio (with correct picture)
+  [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPictureUpdate:withInfo:)];
+}
+
+- (void)receivedUserRadioAfterPictureUpdate:(Radio*)r withInfo:(NSDictionary*)info
+{
+  [ActivityAlertView close];
+  
+  if (_wizard)
+  {
+    // call root to launch the Radio
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
+  }
+  else
+  {
+    [self.navigationController popViewControllerAnimated:YES];
+  }
 }
 
 

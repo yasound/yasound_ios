@@ -236,6 +236,7 @@ void SignalHandler(int sig) {
 - (void)goToMyRadioFromViewController:(UIViewController*)sourceController
 {
   Radio* r = [YasoundDataProvider main].radio;
+  NSLog(@"go to my radio '%@' (%@)", r.name, r.ready);
   
   UIViewController* controller = nil;
   if ([r.ready boolValue])
