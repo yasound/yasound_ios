@@ -11,6 +11,14 @@
 #import "Radio.h"
 #import "User.h"
 
+typedef enum 
+{
+  eWallEventTypeMessage = 0,
+  eWallEventTypeSong,
+  eWallEventTypeLike,
+  eWallEventTypeNone,
+} WallEventType;
+
 @interface WallEvent : Model
 {
     NSMutableArray* _children;
@@ -36,6 +44,14 @@
 @property (retain, nonatomic) NSString* song_cover_filename;
 
 - (NSString*)toString;
+
+- (WallEventType)wallEventType;
+- (void)setWallEventType:(WallEventType)t;
+- (BOOL)isOfType:(WallEventType)t;
+
+- (NSString*)wallEventTypeString;
+
+
 
 - (void)addChild:(WallEvent*)child;
 - (NSArray*)getChildren;

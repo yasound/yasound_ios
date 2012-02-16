@@ -29,11 +29,13 @@
 #import "GANTracker.h"
 
 #import "UserViewCell.h"
+#import "LikeViewCell.h"
 
 //#define LOCAL 1 // use localhost as the server
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
 #define ROW_SONG_HEIGHT 18
+#define ROW_LIKE_HEIGHT 18
 
 #define NB_MAX_EVENTMESSAGE 10
 
@@ -507,10 +509,6 @@ static Song* _gNowPlayingSong = nil;
 
 #pragma mark - Data 
 
-#define EV_TYPE_MESSAGE @"M"
-#define EV_TYPE_SONG @"S"
-
-
 //....................................................................
 //
 // onTimerUpdate
@@ -551,7 +549,7 @@ static Song* _gNowPlayingSong = nil;
 - (WallEvent*)fakeEventSong:(NSString*)name timeInterval:(NSInteger)timeInterval
 {
     WallEvent* ev = [[WallEvent alloc] init];
-    ev.type = [NSString stringWithString:EV_TYPE_SONG];
+  [ev setWallEventType:eWallEventTypeSong];
     ev.start_date = [NSDate date];
     ev.start_date = [ev.start_date addTimeInterval:timeInterval];
     ev.song_name = [NSString stringWithString:name];
@@ -563,7 +561,7 @@ static Song* _gNowPlayingSong = nil;
 - (WallEvent*)fakeEventMessage:(NSString*)user text:(NSString*)text  timeInterval:(NSInteger)timeInterval
 {
     WallEvent* ev = [[WallEvent alloc] init];
-    ev.type = [NSString stringWithString:EV_TYPE_MESSAGE];
+  [ev setWallEventType:eWallEventTypeMessage];
     ev.start_date = [NSDate date];
     ev.start_date = [ev.start_date addTimeInterval:timeInterval];
     ev.text = [NSString stringWithString:text];
@@ -576,24 +574,12 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-
-
-+ (NSString*)evTypeToString:(NSString*)type
-{
-    if ([type isEqualToString:EV_TYPE_MESSAGE])
-        return @"MESSAGE";
-    if ([type isEqualToString:EV_TYPE_SONG])
-        return @"SONG";
-    
-    return @"UNKNOWN";
-}
-
 - (void)logWallEvents
 {
     int i = 0;
     for (WallEvent* w in _wallEvents)
     {
-        NSLog(@"(%d) -%@- %@", i, w.type, [w.type isEqualToString:EV_TYPE_MESSAGE] ? w.text : w.song_name);
+      NSLog(@"(%d) -%@- %@", i, w.type, [w isOfType:eWallEventTypeMessage]  ? w.text : w.song_name);
         i++;
     }
 }
@@ -603,7 +589,7 @@ static Song* _gNowPlayingSong = nil;
     int count = 0;
     for (WallEvent* w in _wallEvents)
     {
-        if ([w.type isEqualToString:EV_TYPE_MESSAGE])
+        if ([w isOfType:eWallEventTypeMessage])
             count++;
     }
     return count;
@@ -614,7 +600,7 @@ static Song* _gNowPlayingSong = nil;
     int count = 0;
     for (WallEvent* w in _wallEvents)
     {
-        if ([w.type isEqualToString:EV_TYPE_SONG])
+        if ([w isOfType:eWallEventTypeSong])
             count++;
     }
     return count;
@@ -696,14 +682,15 @@ static Song* _gNowPlayingSong = nil;
     
     for (WallEvent* ev in events)
     {
-        if ([ev.type isEqualToString:EV_TYPE_SONG])
+        if ([ev isOfType:eWallEventTypeSong])
             [self receivedPreviousSongEvent:ev];
-
-        else if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+        else if ([ev isOfType:eWallEventTypeMessage])
         {
             [self receivedPreviousMessageEvent:ev];
             _countMessageEvent++;
         }
+        else if ([ev isOfType:eWallEventTypeLike])
+          [self receivedPreviousLikeEvent:ev];
         
     }
 
@@ -717,18 +704,18 @@ static Song* _gNowPlayingSong = nil;
     if (_wallEvents.count > 0)
         wev = [_wallEvents objectAtIndex:0];
     
-    NSLog(@"first event is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
+    NSLog(@"first event is %@ : %@", [ev wallEventTypeString], ev.start_date);
     
     if (wev != nil)
-        NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
+        NSLog(@"first wallevent is %@ : %@", [wev wallEventTypeString], wev.start_date);
 
     if ((wev != nil) && [wev.start_date isLaterThan:ev.start_date])
         _latestEvent = wev;
     else
         _latestEvent = ev;    
 
-    NSLog(@"_latestEvent is %@ : %@", [RadioViewController evTypeToString:_latestEvent.type], _latestEvent.start_date);
-    NSLog(@"_lastWallEvent is %@ : %@", [RadioViewController evTypeToString:_lastWallEvent.type], _lastWallEvent.start_date);
+    NSLog(@"_latestEvent is %@ : %@", [_latestEvent wallEventTypeString], _latestEvent.start_date);
+    NSLog(@"_lastWallEvent is %@ : %@", [_lastWallEvent wallEventTypeString], _lastWallEvent.start_date);
 
     // launch update timer
     if (_firstUpdateRequest)
@@ -775,6 +762,16 @@ static Song* _gNowPlayingSong = nil;
     
     [_wallEvents addObject:ev];
     [self addMessage];
+}
+
+- (void)receivedPreviousLikeEvent:(WallEvent*)ev
+{
+  // update lastWallEvent
+  if ([ev.start_date isEarlierThanOrEqualTo:_lastWallEvent.start_date])
+    _lastWallEvent = ev;
+  
+  [_wallEvents addObject:ev];
+  [self addLike];
 }
 
 
@@ -838,14 +835,15 @@ static Song* _gNowPlayingSong = nil;
   for (int i = events.count - 1; i >= 0; i--)
     {
       WallEvent* ev = [events objectAtIndex:i];        
-        if ([ev.type isEqualToString:EV_TYPE_SONG])
+      if ([ev isOfType:eWallEventTypeSong])
             [self receivedCurrentSongEvent:ev];
-        
-        else if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
-        {
-            [self receivedCurrentMessageEvent:ev];
-            _countMessageEvent++;
-        }
+      else if ([ev isOfType:eWallEventTypeMessage])
+      {
+          [self receivedCurrentMessageEvent:ev];
+          _countMessageEvent++;
+      }
+      else if ([ev isOfType:eWallEventTypeLike])
+        [self receivedCurrentLikeEvent:ev];
         
     }
     
@@ -862,9 +860,9 @@ static Song* _gNowPlayingSong = nil;
         if (_wallEvents.count > 0)
             wev = [_wallEvents objectAtIndex:0];
         
-        NSLog(@"first event is %@ : %@", [RadioViewController evTypeToString:ev.type], ev.start_date);
+        NSLog(@"first event is %@ : %@", [ev wallEventTypeString], ev.start_date);
         if (wev != nil)
-            NSLog(@"first wallevent is %@ : %@", [RadioViewController evTypeToString:wev.type], wev.start_date);
+            NSLog(@"first wallevent is %@ : %@", [wev wallEventTypeString], wev.start_date);
         
         if ((wev != nil) && [wev.start_date isLaterThan:ev.start_date])
             _latestEvent = wev;
@@ -872,7 +870,7 @@ static Song* _gNowPlayingSong = nil;
             _latestEvent = ev;
         
         
-        NSLog(@"_latestEvent is %@ : %@", [RadioViewController evTypeToString:_latestEvent.type], _latestEvent.start_date);
+        NSLog(@"_latestEvent is %@ : %@", [_latestEvent wallEventTypeString], _latestEvent.start_date);
     }
     else
         return;
@@ -900,6 +898,15 @@ static Song* _gNowPlayingSong = nil;
 
     [_wallEvents insertObject:ev atIndex:0];
     [self insertMessage];
+}
+
+- (void)receivedCurrentLikeEvent:(WallEvent*)ev
+{
+  if ((_latestEvent != nil) && ([ev.start_date isEarlierThanOrEqualTo:_latestEvent.start_date]))
+    return;
+  
+  [_wallEvents insertObject:ev atIndex:0];
+  [self insertLike];
 }
 
 
@@ -1099,6 +1106,14 @@ static Song* _gNowPlayingSong = nil;
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
 }
 
+- (void)addLike
+{
+  NSInteger index = _wallEvents.count - 1;
+  
+  UITableViewRowAnimation anim = UITableViewRowAnimationNone;
+  [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
+}
+
 
 
 
@@ -1121,6 +1136,14 @@ static Song* _gNowPlayingSong = nil;
     WallEvent* ev = [_wallEvents objectAtIndex:index];
     UITableViewRowAnimation anim = UITableViewRowAnimationTop;
     [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
+}
+
+- (void)insertLike
+{
+  NSInteger index = 0;
+  
+  UITableViewRowAnimation anim = UITableViewRowAnimationTop;
+  [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
 }
 
 
@@ -1300,7 +1323,7 @@ static Song* _gNowPlayingSong = nil;
   
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
     
-    if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+    if ([ev isOfType:eWallEventTypeMessage])
     {
         assert([ev isTextHeightComputed] == YES);
         
@@ -1313,9 +1336,13 @@ static Song* _gNowPlayingSong = nil;
         
         return (height + THE_REST_OF_THE_CELL_HEIGHT);
     }
-    else if ([ev.type isEqualToString:EV_TYPE_SONG])
+    else if ([ev isOfType:eWallEventTypeSong])
     {
         return ROW_SONG_HEIGHT;
+    }
+    else if ([ev isOfType:eWallEventTypeLike])
+    {
+      return ROW_LIKE_HEIGHT;
     }
     else
     {
@@ -1337,20 +1364,28 @@ static Song* _gNowPlayingSong = nil;
     
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
 
-    if ([ev.type isEqualToString:EV_TYPE_MESSAGE])
+    if ([ev isOfType:eWallEventTypeMessage])
     {
         RadioViewCell* cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:0 indexPath:indexPath] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
     }
-    else if ([ev.type isEqualToString:EV_TYPE_SONG])
+    else if ([ev isOfType:eWallEventTypeSong])
     {
         CGFloat height = 0; // unused
 
        SongViewCell* cell = [[[SongViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
+    }
+    else if ([ev isOfType:eWallEventTypeLike])
+    {
+      CGFloat height = 0; // unused
+      
+      LikeViewCell* cell = [[[LikeViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
+      cell.selectionStyle = UITableViewCellSelectionStyleNone;
+      return cell;
     }
     else
     {

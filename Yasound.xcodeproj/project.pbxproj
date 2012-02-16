@@ -39,6 +39,11 @@
 		40104F5814EAC69B00996326 /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40104F4614EAC69B00996326 /* UserCellRadioLight@2x.png */; };
 		40104F5914EAC69B00996326 /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40104F4614EAC69B00996326 /* UserCellRadioLight@2x.png */; };
 		40104F5A14EAC69B00996326 /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40104F4614EAC69B00996326 /* UserCellRadioLight@2x.png */; };
+		40104FC514ED3CFA00996326 /* LikeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40104FC414ED3CF900996326 /* LikeViewCell.m */; };
+		40104FC614ED3CFA00996326 /* LikeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40104FC414ED3CF900996326 /* LikeViewCell.m */; };
+		40104FC714ED3CFA00996326 /* LikeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40104FC414ED3CF900996326 /* LikeViewCell.m */; };
+		40104FC814ED3CFA00996326 /* LikeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40104FC414ED3CF900996326 /* LikeViewCell.m */; };
+		40104FC914ED3CFA00996326 /* LikeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40104FC414ED3CF900996326 /* LikeViewCell.m */; };
 		40274B801491048900F26008 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40274B811491048900F26008 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40274B821491048900F26008 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
@@ -1546,6 +1551,8 @@
 		40104F4414EAC69B00996326 /* UserCellRadioDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserCellRadioDark@2x.png"; sourceTree = "<group>"; };
 		40104F4514EAC69B00996326 /* UserCellRadioLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UserCellRadioLight.png; sourceTree = "<group>"; };
 		40104F4614EAC69B00996326 /* UserCellRadioLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserCellRadioLight@2x.png"; sourceTree = "<group>"; };
+		40104FC314ED3CF900996326 /* LikeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeViewCell.h; sourceTree = "<group>"; };
+		40104FC414ED3CF900996326 /* LikeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeViewCell.m; sourceTree = "<group>"; };
 		40274B7A1491048900F26008 /* Communicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communicator.h; sourceTree = "<group>"; };
 		40274B7B1491048900F26008 /* Communicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communicator.m; sourceTree = "<group>"; };
 		40274B7C1491048900F26008 /* Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Container.h; sourceTree = "<group>"; };
@@ -2662,6 +2669,8 @@
 				BCB5F28D1485416B00C28B3D /* RadioViewController.m */,
 				40EAA59414DC2DFE0000621C /* UserViewCell.h */,
 				40EAA59514DC2DFE0000621C /* UserViewCell.m */,
+				40104FC314ED3CF900996326 /* LikeViewCell.h */,
+				40104FC414ED3CF900996326 /* LikeViewCell.m */,
 			);
 			path = RadioView;
 			sourceTree = "<group>";
@@ -4222,6 +4231,7 @@
 				BC3FA6E514E93B660055AB4A /* SongUploader.m in Sources */,
 				BC3FA6E614E93B660055AB4A /* MBProgressHUD.m in Sources */,
 				BCE7518D14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
+				40104FC914ED3CFA00996326 /* LikeViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4360,6 +4370,7 @@
 				B17A085714E4E881008E4742 /* SongUploader.m in Sources */,
 				B1F8868914E5B44300256383 /* MBProgressHUD.m in Sources */,
 				BCE7518A14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
+				40104FC614ED3CFA00996326 /* LikeViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4499,6 +4510,7 @@
 				B17A085914E4E883008E4742 /* SongUploader.m in Sources */,
 				B1F8868B14E5B44300256383 /* MBProgressHUD.m in Sources */,
 				BCE7518C14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
+				40104FC814ED3CFA00996326 /* LikeViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4637,6 +4649,7 @@
 				B19BF5EE14E420DA00BF8FCF /* SongsViewController.m in Sources */,
 				B1F8868814E5B44300256383 /* MBProgressHUD.m in Sources */,
 				BCE7518914EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
+				40104FC514ED3CFA00996326 /* LikeViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4776,6 +4789,7 @@
 				B17A085814E4E882008E4742 /* SongUploader.m in Sources */,
 				B1F8868A14E5B44300256383 /* MBProgressHUD.m in Sources */,
 				BCE7518B14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
+				40104FC714ED3CFA00996326 /* LikeViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

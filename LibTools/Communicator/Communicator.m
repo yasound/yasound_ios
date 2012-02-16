@@ -605,6 +605,8 @@
     BOOL returnNewObject = [[userinfo valueForKey:@"returnNewObject"] boolValue];
     Auth* authForGET = [userinfo valueForKey:@"authForGET"];
     NSDictionary* userData = [userinfo valueForKey:@"userData"];
+  
+  NSString* response = request.responseString;
     
     NSString* location = [request.responseHeaders valueForKey:@"Location"];
     if (returnNewObject)

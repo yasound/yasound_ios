@@ -27,6 +27,10 @@
 @synthesize song_artist;
 @synthesize song_cover_filename;
 
+#define WALL_EVENT_TYPE_MESSAGE @"M"
+#define WALL_EVENT_TYPE_SONG @"S"
+#define WALL_EVENT_TYPE_LIKE @"L"
+
 - (id)init
 {
     if (self = [super init])
@@ -52,7 +56,69 @@
   return desc;
 }
 
+- (WallEventType)wallEventType
+{
+  if ([self.type isEqualToString:WALL_EVENT_TYPE_MESSAGE])
+    return eWallEventTypeMessage;
+  if ([self.type isEqualToString:WALL_EVENT_TYPE_SONG])
+    return eWallEventTypeSong;
+  if ([self.type isEqualToString:WALL_EVENT_TYPE_LIKE])
+    return eWallEventTypeLike;
+  
+  return eWallEventTypeNone;
+}
 
+- (void)setWallEventType:(WallEventType)t
+{
+  switch (t) 
+  {
+    case eWallEventTypeMessage:
+      self.type = WALL_EVENT_TYPE_MESSAGE;
+      break;
+      
+    case eWallEventTypeSong:
+      self.type = WALL_EVENT_TYPE_SONG;
+      break;
+      
+    case eWallEventTypeLike:
+      self.type = WALL_EVENT_TYPE_LIKE;
+      break;
+      
+    case eWallEventTypeNone:
+    default:
+      self.type = nil;
+      break;
+  }
+}
+
+- (BOOL)isOfType:(WallEventType)t
+{
+  WallEventType selfType = [self wallEventType];
+  return (selfType == t);
+}
+
+- (NSString*)wallEventTypeString
+{
+  WallEventType t = [self wallEventType];
+  switch (t) 
+  {
+    case eWallEventTypeMessage:
+      return @"Message";
+      
+    case eWallEventTypeSong:
+      return @"Song";
+      
+    case eWallEventTypeLike:
+      return @"Like";
+      
+      
+    case eWallEventTypeNone:
+    default:
+      break;
+  }
+  
+  return @"NoType";
+}
 
 - (void)dealloc
 {
