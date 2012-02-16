@@ -67,7 +67,6 @@
     
     _titleLabel.text = NSLocalizedString(@"KeywordsView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);    
-    _cellAddLabel.text = NSLocalizedString(@"KeywordsView_add_label", nil);
 }
 
 
@@ -128,9 +127,49 @@
 }
 
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//}
+
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    NSInteger nbRows;
+    if (indexPath.section == 0)
+        nbRows =  1;
+    else
+    {
+        nbRows = [_keywords count];
+        if (_firstRowIsNotValidated == YES)
+            nbRows++;
+    }
+    
+    if (nbRows == 1)
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else if (indexPath.row == 0)
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else if (indexPath.row == (nbRows -1))
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+}
+
+
+
 
 - (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -176,8 +215,6 @@
         return _cellTextField;
     }
     
-    if ((indexPath.section == 0) && (indexPath.row == 0))
-        return _cellAdd;
 
     static NSString *CellIdentifier = @"Cell";
 
@@ -187,8 +224,19 @@
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    cell.textLabel.text = [_keywords objectAtIndex:indexPath.row];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if ((indexPath.section == 0) && (indexPath.row == 0))
+    {
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TableViewDisclosure.png"]];
+        cell.textLabel.text = NSLocalizedString(@"KeywordsView_add_label", nil);
+        cell.textLabel.textColor = [UIColor whiteColor];
+
+    }
+    else
+    {
+        cell.textLabel.text = [_keywords objectAtIndex:indexPath.row];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     
   
     return cell;
