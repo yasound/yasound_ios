@@ -112,7 +112,7 @@
         
         sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.separator = [[UIImageView alloc] initWithImage:[sheet image]];
-        self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, sheet.frame.size.width, sheet.frame.size.height);
+        self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - sheet.frame.size.height, sheet.frame.size.width, sheet.frame.size.height);
         [view addSubview:self.separator];
         
 

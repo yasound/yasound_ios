@@ -34,7 +34,7 @@
 //#define LOCAL 1 // use localhost as the server
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
-#define ROW_SONG_HEIGHT 18
+#define ROW_SONG_HEIGHT 15
 #define ROW_LIKE_HEIGHT 26
 
 #define NB_MAX_EVENTMESSAGE 10

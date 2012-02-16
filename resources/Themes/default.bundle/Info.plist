@@ -540,7 +540,7 @@
 			<key>x</key>
 			<integer>18</integer>
 			<key>y</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 		</dict>
 		<key>SongCellMessage</key>
 		<dict>
@@ -564,7 +564,7 @@
 			<key>x</key>
 			<integer>76</integer>
 			<key>y</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 		</dict>
 		<key>LikeCellBackground</key>
 		<dict>
