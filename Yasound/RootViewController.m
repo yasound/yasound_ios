@@ -163,7 +163,16 @@
     {
         NSNumber* radioId = [[NSUserDefaults standardUserDefaults] objectForKey:@"NowPlaying"];
         
-        [self launchRadio:radioId];
+        if (radioId == nil)
+        {
+            Radio* myRadio = user.own_radio;
+            if (myRadio && myRadio.ready)
+                [self launchRadio:myRadio];
+            else
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_MENU object:nil];
+        }
+        else
+            [self launchRadio:radioId];
     }
     else
     {
@@ -346,8 +355,17 @@
         [self.navigationController popToViewController:_menuView animated:NO];
     }
 
-  YasoundAppDelegate* appDelegate =  (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
-  [appDelegate goToMyRadioFromViewController:self];
+    if ([[YasoundDataProvider main].radio.id intValue] == [radio.id intValue])
+    {
+      YasoundAppDelegate* appDelegate =  (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
+      [appDelegate goToMyRadioFromViewController:self];
+    }
+    else
+    {
+        RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release]; 
+    }
 }
 
 
