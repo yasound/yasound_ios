@@ -1158,10 +1158,12 @@ static Song* _gNowPlayingSong = nil;
 
 - (NSIndexPath *)usersContainerDidSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+  
     UITableViewCell* cell = [_usersContainer cellForRowAtIndexPath:indexPath];
     cell.selected = NO;
 
     User* user = [_connectedUsers objectAtIndex:indexPath.row];
+  NSLog(@"row: %d   user: %@", indexPath.row, user.name);
   if ([user.id intValue] == [radio.creator.id intValue])
     return nil;
   

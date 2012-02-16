@@ -545,7 +545,7 @@ static YasoundDataProvider* _main = nil;
   
   if (target && selector)
   {
-    [target performSelector:selector withObject:_radio withObject:finalInfo];
+    [target performSelector:selector withObject:r withObject:finalInfo];
   }
 }
 
