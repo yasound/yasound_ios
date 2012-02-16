@@ -17,11 +17,13 @@
 
 @implementation RadioViewCell
 
-@synthesize background;
+//@synthesize background;
 @synthesize avatar;
 @synthesize date;
 @synthesize user;
 @synthesize message;
+@synthesize messageBackground;
+@synthesize separator;
 
 - (NSString*) dateToString:(NSDate*)d
 {
@@ -36,14 +38,15 @@
 
 #define MESSAGE_SPACING 4
 
-- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev height:(CGFloat)ParamHeight indexPath:(NSIndexPath*)indexPath
+- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
     {
         BundleStylesheet* sheet = nil;
-        self.background = self.contentView;
-        UIView* view = self.background;
+//        self.background = self.contentView;
+//        UIView* view = self.background;
+        UIView* view = self.contentView;
         
         
         sheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -85,17 +88,17 @@
 
         // message background
         BundleStylesheet* messageSheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UIView* bkg = [[UIView alloc] initWithFrame:messageSheet.frame];
-        bkg.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, height + 2*MESSAGE_SPACING);
+        self.messageBackground = [[UIView alloc] initWithFrame:messageSheet.frame];
+        self.messageBackground.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, height + 2*MESSAGE_SPACING);
         
 #if USE_COREGRAPHIC_LAYER
-        bkg.layer.masksToBounds = YES;
-        bkg.layer.cornerRadius = 4;
-        bkg.layer.borderColor = [UIColor colorWithRed:231.f/255.f green:231.f/255.f blue:231.f/255.f alpha:1].CGColor;
-        bkg.layer.borderWidth = 1.0; 
-        bkg.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.9].CGColor;
+        self.messageBackground.layer.masksToBounds = YES;
+        self.messageBackground.layer.cornerRadius = 4;
+        self.messageBackground.layer.borderColor = [UIColor colorWithRed:231.f/255.f green:231.f/255.f blue:231.f/255.f alpha:1].CGColor;
+        self.messageBackground.layer.borderWidth = 1.0; 
+        self.messageBackground.layer.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1].CGColor;
 #endif
-        [view addSubview:bkg];
+        [view addSubview:self.messageBackground];
 
         
         // message
@@ -108,9 +111,9 @@
         [view addSubview:self.message];
         
         sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UIImageView* imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-        imageView.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, sheet.frame.size.width, sheet.frame.size.height);
-        [view addSubview:imageView];
+        self.separator = [[UIImageView alloc] initWithImage:[sheet image]];
+        self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, sheet.frame.size.width, sheet.frame.size.height);
+        [view addSubview:self.separator];
         
 
     }
@@ -118,16 +121,22 @@
 }
 
 
-- update:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath
+- update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
 {
     BundleStylesheet* sheet = nil;
 
-//    self.backgroundColor = [UIColor clearColor];
+    assert([ev isTextHeightComputed] == YES);
+    CGFloat height = [ev getTextHeight];
     
     self.date.text = [self dateToString:ev.start_date];
     self.user.text = ev.user_name;
     self.message.text = ev.text;
+    
+    self.messageBackground.frame = CGRectMake(self.messageBackground.frame.origin.x, self.messageBackground.frame.origin.y, self.messageBackground.frame.size.width, height + 2*MESSAGE_SPACING);
+    
     self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, height);
+    
+    self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, self.separator.frame.size.width, self.separator.frame.size.height);
 }
 
 
