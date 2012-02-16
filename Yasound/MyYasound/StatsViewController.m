@@ -428,7 +428,7 @@
 //            sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_StickerMyRadio" error:nil];
 //            UIImageView* view = [[sheet makeImage] autorelease];
 //            [cell.contentView addSubview:view];
-//
+
 //            [UIView beginAnimations:nil context:nil];
 //            [UIView setAnimationDuration: 0.33];
 //            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
@@ -438,8 +438,8 @@
 //            view.frame = CGRectMake(sheet.frame.origin.x +10, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
 //            
 //            [UIView commitAnimations];
-//
-//            
+
+            
 //        }
         
 

@@ -1105,13 +1105,17 @@
 		<key>StatsView_LeaderBoard_StickerMyRadio</key>
 		<dict>
 			<key>x</key>
-			<integer>-26</integer>
+			<integer>-9</integer>
 			<key>y</key>
-			<integer>5</integer>
+			<integer>10</integer>
+			<key>width</key>
+			<integer>20</integer>
+			<key>height</key>
+			<integer>20</integer>
 			<key>name</key>
-			<string>ArrowMyRadio</string>
+			<string>IconMyRadio</string>
 			<key>path</key>
-			<string>images/Stats</string>
+			<string>images/Icons</string>
 			<key>type</key>
 			<string>png</string>
 		</dict>
