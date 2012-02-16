@@ -349,8 +349,6 @@
 		BC3FA70714E93B660055AB4A /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		BC3FA70814E93B660055AB4A /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BC3FA70914E93B660055AB4A /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
-		BC3FA70A14E93B660055AB4A /* btnArrowIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */; };
-		BC3FA70B14E93B660055AB4A /* btnArrowIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1F14920ADE00D5D7B4 /* btnArrowIndicator@2x.png */; };
 		BC3FA70C14E93B660055AB4A /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083214926F22007E1307 /* Icon-72.png */; };
 		BC3FA70D14E93B660055AB4A /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083314926F22007E1307 /* Icon-Small-50.png */; };
 		BC3FA70E14E93B660055AB4A /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083414926F22007E1307 /* Icon-Small.png */; };
@@ -393,8 +391,6 @@
 		BC3FA73314E93B660055AB4A /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
 		BC3FA73414E93B660055AB4A /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
 		BC3FA73514E93B660055AB4A /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
-		BC3FA73614E93B660055AB4A /* btnSettingsAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D614B47CA900549EF6 /* btnSettingsAdd.png */; };
-		BC3FA73714E93B660055AB4A /* btnSettingsAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D714B47CA900549EF6 /* btnSettingsAdd@2x.png */; };
 		BC3FA73814E93B660055AB4A /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC3FA73914E93B660055AB4A /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
 		BC3FA73A14E93B660055AB4A /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
@@ -610,12 +606,6 @@
 		BC6314D214B4665200549EF6 /* RegExp.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6314D114B4665200549EF6 /* RegExp.m */; };
 		BC6314D314B4665200549EF6 /* RegExp.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6314D114B4665200549EF6 /* RegExp.m */; };
 		BC6314D414B4665200549EF6 /* RegExp.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6314D114B4665200549EF6 /* RegExp.m */; };
-		BC6314D814B47CA900549EF6 /* btnSettingsAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D614B47CA900549EF6 /* btnSettingsAdd.png */; };
-		BC6314D914B47CA900549EF6 /* btnSettingsAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D614B47CA900549EF6 /* btnSettingsAdd.png */; };
-		BC6314DA14B47CA900549EF6 /* btnSettingsAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D614B47CA900549EF6 /* btnSettingsAdd.png */; };
-		BC6314DB14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D714B47CA900549EF6 /* btnSettingsAdd@2x.png */; };
-		BC6314DC14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D714B47CA900549EF6 /* btnSettingsAdd@2x.png */; };
-		BC6314DD14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D714B47CA900549EF6 /* btnSettingsAdd@2x.png */; };
 		BC6ADD18149B9EDF00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
 		BC6ADD1A149B9EEE00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
 		BC6ADD1B149B9EFF00D00E5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
@@ -671,10 +661,6 @@
 		BC8B084014926F22007E1307 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083614926F22007E1307 /* Icon@2x.png */; };
 		BC8B084214927B7D007E1307 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B084114927B7D007E1307 /* Icon.png */; };
 		BC8B084314927B7D007E1307 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B084114927B7D007E1307 /* Icon.png */; };
-		BC914B2014920ADE00D5D7B4 /* btnArrowIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */; };
-		BC914B2114920ADE00D5D7B4 /* btnArrowIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */; };
-		BC914B2214920ADE00D5D7B4 /* btnArrowIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1F14920ADE00D5D7B4 /* btnArrowIndicator@2x.png */; };
-		BC914B2314920ADE00D5D7B4 /* btnArrowIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1F14920ADE00D5D7B4 /* btnArrowIndicator@2x.png */; };
 		BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
@@ -806,8 +792,6 @@
 		BC93CD7C14CF3F7A007C723F /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		BC93CD7D14CF3F7A007C723F /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BC93CD7E14CF3F7A007C723F /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
-		BC93CD7F14CF3F7A007C723F /* btnArrowIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */; };
-		BC93CD8014CF3F7A007C723F /* btnArrowIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1F14920ADE00D5D7B4 /* btnArrowIndicator@2x.png */; };
 		BC93CD8B14CF3F7A007C723F /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083214926F22007E1307 /* Icon-72.png */; };
 		BC93CD8C14CF3F7A007C723F /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083314926F22007E1307 /* Icon-Small-50.png */; };
 		BC93CD8D14CF3F7A007C723F /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083414926F22007E1307 /* Icon-Small.png */; };
@@ -850,8 +834,6 @@
 		BC93CDB514CF3F7A007C723F /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
 		BC93CDC014CF3F7A007C723F /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
 		BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
-		BC93CDD414CF3F7A007C723F /* btnSettingsAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D614B47CA900549EF6 /* btnSettingsAdd.png */; };
-		BC93CDD514CF3F7A007C723F /* btnSettingsAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC6314D714B47CA900549EF6 /* btnSettingsAdd@2x.png */; };
 		BC93CDD614CF3F7A007C723F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC93CDD714CF3F7A007C723F /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
 		BC93CDDB14CF3F7A007C723F /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
@@ -1431,8 +1413,6 @@
 		E5F3B8C41498B88D008DD607 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		E5F3B8C51498B88D008DD607 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		E5F3B8C61498B88D008DD607 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
-		E5F3B8DB1498B88D008DD607 /* btnArrowIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */; };
-		E5F3B8DC1498B88D008DD607 /* btnArrowIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC914B1F14920ADE00D5D7B4 /* btnArrowIndicator@2x.png */; };
 		E5F3B8E71498B88D008DD607 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083214926F22007E1307 /* Icon-72.png */; };
 		E5F3B8E81498B88D008DD607 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083314926F22007E1307 /* Icon-Small-50.png */; };
 		E5F3B8E91498B88D008DD607 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083414926F22007E1307 /* Icon-Small.png */; };
@@ -1711,8 +1691,6 @@
 		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
 		BC6314D014B4665200549EF6 /* RegExp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExp.h; sourceTree = "<group>"; };
 		BC6314D114B4665200549EF6 /* RegExp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExp.m; sourceTree = "<group>"; };
-		BC6314D614B47CA900549EF6 /* btnSettingsAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnSettingsAdd.png; sourceTree = "<group>"; };
-		BC6314D714B47CA900549EF6 /* btnSettingsAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnSettingsAdd@2x.png"; sourceTree = "<group>"; };
 		BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BC71F582147F979700DAE4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F586147F97DA00DAE4BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1729,8 +1707,6 @@
 		BC8B083514926F22007E1307 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		BC8B083614926F22007E1307 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		BC8B084114927B7D007E1307 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnArrowIndicator.png; sourceTree = "<group>"; };
-		BC914B1F14920ADE00D5D7B4 /* btnArrowIndicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btnArrowIndicator@2x.png"; sourceTree = "<group>"; };
 		BC93B4A3148E686C00A87157 /* ThemeSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSelectorViewController.h; sourceTree = "<group>"; };
 		BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSelectorViewController.m; sourceTree = "<group>"; };
 		BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeSelectorViewController.xib; sourceTree = "<group>"; };
@@ -2544,15 +2520,6 @@
 			path = BarItems;
 			sourceTree = "<group>";
 		};
-		BC914AD11491845D00D5D7B4 /* Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				BC914B1E14920ADE00D5D7B4 /* btnArrowIndicator.png */,
-				BC914B1F14920ADE00D5D7B4 /* btnArrowIndicator@2x.png */,
-			);
-			path = Buttons;
-			sourceTree = "<group>";
-		};
 		BC914ADC1491845D00D5D7B4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -2694,8 +2661,6 @@
 		BCBAB4B914A3920600CF922A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				BC6314D614B47CA900549EF6 /* btnSettingsAdd.png */,
-				BC6314D714B47CA900549EF6 /* btnSettingsAdd@2x.png */,
 				BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */,
 				BCBAB4BA14A3920600CF922A /* iTunesConnect.png */,
 			);
@@ -3067,7 +3032,6 @@
 				BCD1219B14C749D90013B2EF /* bullets@2x.png */,
 				BCBAB4B914A3920600CF922A /* Settings */,
 				BCC6AD5014E8800F001AC34B /* Stats */,
-				BC914AD11491845D00D5D7B4 /* Buttons */,
 				BC914ADC1491845D00D5D7B4 /* Login */,
 				BCE4631B148FD89100422448 /* Themes */,
 				BCC408A9148D15F8001C02E4 /* MyYasound */,
@@ -3401,8 +3365,6 @@
 				BC3FA70714E93B660055AB4A /* StyleSelectorViewController.xib in Resources */,
 				BC3FA70814E93B660055AB4A /* MyYasoundBackground.png in Resources */,
 				BC3FA70914E93B660055AB4A /* MyYasoundBackground@2x.png in Resources */,
-				BC3FA70A14E93B660055AB4A /* btnArrowIndicator.png in Resources */,
-				BC3FA70B14E93B660055AB4A /* btnArrowIndicator@2x.png in Resources */,
 				BC3FA70C14E93B660055AB4A /* Icon-72.png in Resources */,
 				BC3FA70D14E93B660055AB4A /* Icon-Small-50.png in Resources */,
 				BC3FA70E14E93B660055AB4A /* Icon-Small.png in Resources */,
@@ -3445,8 +3407,6 @@
 				BC3FA73314E93B660055AB4A /* SignupViewController.xib in Resources */,
 				BC3FA73414E93B660055AB4A /* LegalViewController.xib in Resources */,
 				BC3FA73514E93B660055AB4A /* StatsViewController.xib in Resources */,
-				BC3FA73614E93B660055AB4A /* btnSettingsAdd.png in Resources */,
-				BC3FA73714E93B660055AB4A /* btnSettingsAdd@2x.png in Resources */,
 				BC3FA73814E93B660055AB4A /* RootViewController.xib in Resources */,
 				BC3FA73914E93B660055AB4A /* EasyTracker.plist in Resources */,
 				BC3FA73A14E93B660055AB4A /* CreateMyRadio.xib in Resources */,
@@ -3539,8 +3499,6 @@
 				BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
-				BC914B2114920ADE00D5D7B4 /* btnArrowIndicator.png in Resources */,
-				BC914B2314920ADE00D5D7B4 /* btnArrowIndicator@2x.png in Resources */,
 				BC8B083814926F22007E1307 /* Icon-72.png in Resources */,
 				BC8B083A14926F22007E1307 /* Icon-Small-50.png in Resources */,
 				BC8B083C14926F22007E1307 /* Icon-Small.png in Resources */,
@@ -3583,8 +3541,6 @@
 				BCDC981414ACB44300D54631 /* SignupViewController.xib in Resources */,
 				BCCA790B14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799914B1AE520011AADD /* StatsViewController.xib in Resources */,
-				BC6314D914B47CA900549EF6 /* btnSettingsAdd.png in Resources */,
-				BC6314DC14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828ADA14B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229B14B6F787001E1ACE /* EasyTracker.plist in Resources */,
 				BC178DAE14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
@@ -3677,8 +3633,6 @@
 				BC93CD7C14CF3F7A007C723F /* StyleSelectorViewController.xib in Resources */,
 				BC93CD7D14CF3F7A007C723F /* MyYasoundBackground.png in Resources */,
 				BC93CD7E14CF3F7A007C723F /* MyYasoundBackground@2x.png in Resources */,
-				BC93CD7F14CF3F7A007C723F /* btnArrowIndicator.png in Resources */,
-				BC93CD8014CF3F7A007C723F /* btnArrowIndicator@2x.png in Resources */,
 				BC93CD8B14CF3F7A007C723F /* Icon-72.png in Resources */,
 				BC93CD8C14CF3F7A007C723F /* Icon-Small-50.png in Resources */,
 				BC93CD8D14CF3F7A007C723F /* Icon-Small.png in Resources */,
@@ -3721,8 +3675,6 @@
 				BC93CDB514CF3F7A007C723F /* SignupViewController.xib in Resources */,
 				BC93CDC014CF3F7A007C723F /* LegalViewController.xib in Resources */,
 				BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */,
-				BC93CDD414CF3F7A007C723F /* btnSettingsAdd.png in Resources */,
-				BC93CDD514CF3F7A007C723F /* btnSettingsAdd@2x.png in Resources */,
 				BC93CDD614CF3F7A007C723F /* RootViewController.xib in Resources */,
 				BC93CDD714CF3F7A007C723F /* EasyTracker.plist in Resources */,
 				BC93CDDB14CF3F7A007C723F /* CreateMyRadio.xib in Resources */,
@@ -3815,8 +3767,6 @@
 				BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
-				BC914B2014920ADE00D5D7B4 /* btnArrowIndicator.png in Resources */,
-				BC914B2214920ADE00D5D7B4 /* btnArrowIndicator@2x.png in Resources */,
 				BC8B083714926F22007E1307 /* Icon-72.png in Resources */,
 				BC8B083914926F22007E1307 /* Icon-Small-50.png in Resources */,
 				BC8B083B14926F22007E1307 /* Icon-Small.png in Resources */,
@@ -3859,8 +3809,6 @@
 				BCDC981314ACB44300D54631 /* SignupViewController.xib in Resources */,
 				BCCA790A14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799814B1AE520011AADD /* StatsViewController.xib in Resources */,
-				BC6314D814B47CA900549EF6 /* btnSettingsAdd.png in Resources */,
-				BC6314DB14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828AD914B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229A14B6F787001E1ACE /* EasyTracker.plist in Resources */,
 				BC178DAD14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
@@ -3953,8 +3901,6 @@
 				E5F3B8C41498B88D008DD607 /* StyleSelectorViewController.xib in Resources */,
 				E5F3B8C51498B88D008DD607 /* MyYasoundBackground.png in Resources */,
 				E5F3B8C61498B88D008DD607 /* MyYasoundBackground@2x.png in Resources */,
-				E5F3B8DB1498B88D008DD607 /* btnArrowIndicator.png in Resources */,
-				E5F3B8DC1498B88D008DD607 /* btnArrowIndicator@2x.png in Resources */,
 				E5F3B8E71498B88D008DD607 /* Icon-72.png in Resources */,
 				E5F3B8E81498B88D008DD607 /* Icon-Small-50.png in Resources */,
 				E5F3B8E91498B88D008DD607 /* Icon-Small.png in Resources */,
@@ -3997,8 +3943,6 @@
 				BCDC981514ACB44300D54631 /* SignupViewController.xib in Resources */,
 				BCCA790C14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799A14B1AE520011AADD /* StatsViewController.xib in Resources */,
-				BC6314DA14B47CA900549EF6 /* btnSettingsAdd.png in Resources */,
-				BC6314DD14B47CA900549EF6 /* btnSettingsAdd@2x.png in Resources */,
 				BC828ADB14B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229C14B6F787001E1ACE /* EasyTracker.plist in Resources */,
 				BC178DAF14C5E99800B18420 /* CreateMyRadio.xib in Resources */,

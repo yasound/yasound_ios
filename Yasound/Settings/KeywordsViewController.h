@@ -24,8 +24,8 @@
     
     IBOutlet UITableView* _tableView;
     
-    IBOutlet UITableViewCell* _cellAdd;
-    IBOutlet UILabel* _cellAddLabel;
+//    IBOutlet UITableViewCell* _cellAdd;
+//    IBOutlet UILabel* _cellAddLabel;
     
     IBOutlet UITableViewCell* _cellTextField;
     IBOutlet UITextField* _textField;

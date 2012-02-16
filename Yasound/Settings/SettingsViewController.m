@@ -204,19 +204,6 @@
     return 2;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
-{
-    if (section == SECTION_CONFIG)
-        return NSLocalizedString(@"SettingsView_section_config", nil);
-    
-    if (section == SECTION_IMAGE)
-        return NSLocalizedString(@"SettingsView_section_image", nil);
-    
-    if (section == SECTION_THEME)
-        return NSLocalizedString(@"SettingsView_section_theme", nil);
-    
-    return nil;
-}
 
 
 
@@ -256,13 +243,13 @@
     NSString* title = nil;
     
     if (section == SECTION_CONFIG)
-        title =  NSLocalizedString(@"SettingsView_section_config", nil);
+        title = NSLocalizedString(@"SettingsView_section_config", nil);
     
     else if (section == SECTION_IMAGE)
-        title =  NSLocalizedString(@"SettingsView_section_image", nil);
+        title = NSLocalizedString(@"SettingsView_section_image", nil);
     
     else if (section == SECTION_THEME)
-        title =  NSLocalizedString(@"SettingsView_section_theme", nil);
+        title = NSLocalizedString(@"SettingsView_section_theme", nil);
     
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -279,7 +266,7 @@
     
     return view;
 }
-
+    
 
 
 
