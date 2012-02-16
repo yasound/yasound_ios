@@ -457,6 +457,8 @@
         
         if (cell == nil) 
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"PlaylistsView_Howto" error:nil];
 
@@ -471,12 +473,12 @@
     
     
     
-    NSMutableArray *source = NULL;
-    if (indexPath.section == 1) {
+    NSMutableArray *source = nil;
+    
+    if (indexPath.section == 1) 
         source = _localPlaylistsDesc;
-    } else if (indexPath.section == 2) {
+    else if (indexPath.section == 2)
         source = _remotePlaylistsDesc;
-    }
     
     static NSString* CellIdentifier = @"Cell";
     
@@ -495,32 +497,37 @@
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
     
-    NSDictionary *selectedItem = [source objectAtIndex:indexPath.row];
-    MPMediaPlaylist *mediaPlaylist = [selectedItem objectForKey:@"mediaPlaylist"];
+    NSDictionary* selectedItem = [source objectAtIndex:indexPath.row];
+    MPMediaPlaylist* mediaPlaylist = [selectedItem objectForKey:@"mediaPlaylist"];
 
     
     [self checkmark:cell with:NO];
-    if (_wizard) {
-        if (mediaPlaylist != NULL) 
+    if (_wizard) 
+    {
+        if (mediaPlaylist != nil) 
         {
             [self checkmark:cell with:YES];
         }
-    } else {
-        if (_displayMode == eDisplayModeNormal) {
-            if ([_unselectedPlaylists containsObject:dico]) {
+    } 
+    else 
+    {
+        if (_displayMode == eDisplayModeNormal) 
+        {
+            if ([_unselectedPlaylists containsObject:dico]) 
                 [self checkmark:cell with:NO];
-            } else {
+            else
                 [self checkmark:cell with:YES];
-            }
-        } else if (_displayMode == eDisplayModeEdit) {
-            if (mediaPlaylist != NULL && neverSynchronized == FALSE) {
+
+        } 
+        else if (_displayMode == eDisplayModeEdit) 
+        {
+            if (mediaPlaylist != NULL && neverSynchronized == FALSE) 
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            }
         }
     }
     
-    NSNumber *matched = [dico objectForKey:@"matched"];
-    NSNumber *unmatched = [dico objectForKey:@"unmatched"];
+    NSNumber* matched = [dico objectForKey:@"matched"];
+    NSNumber* unmatched = [dico objectForKey:@"unmatched"];
     
     if (matched != NULL && unmatched != NULL) {
         cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"PlaylistsView_cell_detail_with_matched", nil), 
