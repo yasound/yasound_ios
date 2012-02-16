@@ -124,6 +124,15 @@
         [[UIApplication sharedApplication] openURL:url];
         [url release];
     }
+    else
+    {
+      UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UnableToFindSongOniTunesTitle", nil) 
+                                                   message:NSLocalizedString(@"UnableToFindSongOniTunesMessage", nil) 
+                                                  delegate:self 
+                                         cancelButtonTitle:@"OK" 
+                                         otherButtonTitles:nil];
+      [av show];
+    }
     [mgr release];
 }
 
