@@ -64,8 +64,8 @@
     
     sheet = [[Theme theme] stylesheetForKey:@"LikeCellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.message = [sheet makeLabel];
-//    self.message.text = [NSString stringWithFormat:@"%@ %@", ev.user_name, NSLocalizedString(@"User_Likes_Song_Label", nil)];
-    self.message.text = [NSString stringWithFormat:@"%@", ev.user_name];
+    self.message.text = [NSString stringWithFormat:@"%@ %@", ev.user_name, NSLocalizedString(@"User_Likes_Song_Label", nil)];
+//    self.message.text = [NSString stringWithFormat:@"%@", ev.user_name];
     [view addSubview:self.message];
     
     sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
