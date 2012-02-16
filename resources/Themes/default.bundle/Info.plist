@@ -1164,19 +1164,6 @@
 				<key>weight</key>
 				<string>bold</string>
 			</dict>
-			<key>font.userRadio</key>
-			<dict>
-				<key>textAlignement</key>
-				<string>left</string>
-				<key>size</key>
-				<integer>14</integer>
-				<key>textColor</key>
-				<string>rgb(250,170,2)</string>
-				<key>backgroundColor</key>
-				<string>clear</string>
-				<key>weight</key>
-				<string>bold</string>
-			</dict>
 		</dict>
 		<key>StatsView_LeaderBoard_Favorites</key>
 		<dict>
