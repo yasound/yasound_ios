@@ -566,6 +566,67 @@
 			<key>y</key>
 			<integer>0</integer>
 		</dict>
+		<key>LikeCellBackground</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>TrackBackground</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/</string>
+		</dict>
+		<key>LikeCellMessage</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>size</key>
+				<integer>11</integer>
+				<key>textColor</key>
+				<string>white</string>
+				<key>weight</key>
+				<string>bold</string>
+				<key>shadowOffset</key>
+				<string>0, -1</string>
+				<key>shadowRadius</key>
+				<integer>1</integer>
+			</dict>
+			<key>height</key>
+			<integer>16</integer>
+			<key>width</key>
+			<integer>240</integer>
+			<key>x</key>
+			<integer>76</integer>
+			<key>y</key>
+			<integer>0</integer>
+		</dict>
+		<key>LikeCellDate</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>size</key>
+				<integer>13</integer>
+				<key>textColor</key>
+				<string>rgb(255,231,188)</string>
+				<key>weight</key>
+				<string>bold</string>
+				<key>shadowOffset</key>
+				<string>0, -1</string>
+				<key>shadowRadius</key>
+				<integer>1</integer>
+			</dict>
+			<key>height</key>
+			<integer>16</integer>
+			<key>width</key>
+			<integer>100</integer>
+			<key>x</key>
+			<integer>18</integer>
+			<key>y</key>
+			<integer>0</integer>
+		</dict>
 		<key>StatusBar</key>
 		<dict>
 			<key>x</key>
