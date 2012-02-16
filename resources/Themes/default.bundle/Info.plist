@@ -579,6 +579,19 @@
 			<key>path</key>
 			<string>images/</string>
 		</dict>
+		<key>LikeCellPicto</key>
+		<dict>
+			<key>x</key>
+			<integer>30</integer>
+			<key>y</key>
+			<integer>2</integer>
+			<key>name</key>
+			<string>Like</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Wall</string>
+		</dict>
 		<key>LikeCellMessage</key>
 		<dict>
 			<key>font</key>
@@ -595,37 +608,35 @@
 				<integer>1</integer>
 			</dict>
 			<key>height</key>
-			<integer>16</integer>
+			<integer>15</integer>
 			<key>width</key>
-			<integer>240</integer>
+			<integer>200</integer>
 			<key>x</key>
-			<integer>76</integer>
+			<integer>51</integer>
 			<key>y</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
 		<key>LikeCellDate</key>
 		<dict>
 			<key>font</key>
 			<dict>
 				<key>size</key>
-				<integer>13</integer>
+				<integer>11</integer>
 				<key>textColor</key>
-				<string>rgb(255,231,188)</string>
-				<key>weight</key>
-				<string>bold</string>
-				<key>shadowOffset</key>
-				<string>0, -1</string>
-				<key>shadowRadius</key>
-				<integer>1</integer>
+				<string>rgb(196,196,196)</string>
+				<key>textAlignement</key>
+				<string>right</string>
+				<key>name</key>
+				<string>Arial</string>
 			</dict>
 			<key>height</key>
-			<integer>16</integer>
+			<integer>12</integer>
 			<key>width</key>
-			<integer>100</integer>
+			<integer>70</integer>
 			<key>x</key>
-			<integer>18</integer>
+			<integer>240</integer>
 			<key>y</key>
-			<integer>0</integer>
+			<integer>7</integer>
 		</dict>
 		<key>StatusBar</key>
 		<dict>

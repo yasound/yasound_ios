@@ -35,7 +35,7 @@
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
 #define ROW_SONG_HEIGHT 18
-#define ROW_LIKE_HEIGHT 18
+#define ROW_LIKE_HEIGHT 26
 
 #define NB_MAX_EVENTMESSAGE 10
 
@@ -1381,7 +1381,7 @@ static Song* _gNowPlayingSong = nil;
     }
     else if ([ev isOfType:eWallEventTypeLike])
     {
-      CGFloat height = 0; // unused
+      CGFloat height = ROW_LIKE_HEIGHT;
       
       LikeViewCell* cell = [[[LikeViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
