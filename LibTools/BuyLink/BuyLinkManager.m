@@ -17,53 +17,63 @@
 
 - (NSString *) getSeparator:(NSString *)url
 {
-    NSRange range = [url rangeOfString:@"?"];
-    if (range.location == NSNotFound) {
-        return @"?";
-    }
-    return @"&";
+  NSRange range = [url rangeOfString:@"?"];
+  if (range.location == NSNotFound) {
+    return @"?";
+  }
+  return @"&";
 }
 
 - (NSString *)getTrackViewUrl:(NSString *)responseString
 {
-    SBJsonParser *parser = [[SBJsonParser alloc] init]; 
-    NSDictionary *object = [parser objectWithString:responseString error:nil];
-
-    NSArray *results = (NSArray *) [object objectForKey:@"results"];
-    NSString *trackViewUrl = nil;
-    
-    if ([results count] > 0) {
-        NSDictionary *result = [results objectAtIndex:0];
-        trackViewUrl = (NSString *)[result objectForKey:@"trackViewUrl"];
-        if (trackViewUrl) {
-            [trackViewUrl retain];
-        }
+  SBJsonParser *parser = [[SBJsonParser alloc] init]; 
+  NSDictionary *object = [parser objectWithString:responseString error:nil];
+  
+  NSArray *results = (NSArray *) [object objectForKey:@"results"];
+  NSString *trackViewUrl = nil;
+  
+  if ([results count] > 0) {
+    NSDictionary *result = [results objectAtIndex:0];
+    trackViewUrl = (NSString *)[result objectForKey:@"trackViewUrl"];
+    if (trackViewUrl) {
+      [trackViewUrl retain];
     }
-    [parser release];
-    return trackViewUrl;
+  }
+  [parser release];
+  return trackViewUrl;
 }
 
 -(NSString *) generateLink: (NSString *) artist album:(NSString *)album song:(NSString *)song
 {
-    NSString *tradeUrl = nil;
-    NSString *term = [NSString stringWithFormat:@"%@ %@ %@",
-                      artist,
-                      album,
-                      song];
-    
-    NSString *urlString =[NSString stringWithFormat:@"%@?term=%@&entity=musicTrack&limit=1&country=FR",ITUNES_BASE_URL, [term stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURL *url = [NSURL URLWithString:urlString];
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request startSynchronous];
-    NSError *error = [request error];
-    if (!error) {
-        NSString *response = [request responseString];
-        NSString *trackViewUrl = [self getTrackViewUrl:response];
-        tradeUrl =[NSString stringWithFormat:@"%@%@%@%@", TRADEDOUBLER_URL, trackViewUrl, [self getSeparator:trackViewUrl], TRADEDOUBLER_ID];
-        
-        [trackViewUrl release];
-        NSLog(@"tradeURL = %@", tradeUrl);
+  NSString *tradeUrl = nil;
+  NSString *term = [NSString stringWithFormat:@"%@ %@ %@",
+                    artist,
+                    album,
+                    song];
+  
+  NSString *urlString =[NSString stringWithFormat:@"%@?term=%@&entity=musicTrack&limit=1&country=FR",ITUNES_BASE_URL, [term stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+  NSURL *url = [NSURL URLWithString:urlString];
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+  [request startSynchronous];
+  NSError *error = [request error];
+  if (!error) {
+    NSString *response = [request responseString];
+    [request release];
+    if (response == nil)
+    {
+      return nil;
     }
-    return tradeUrl;
+    NSString *trackViewUrl = [self getTrackViewUrl:response];
+    if (trackViewUrl == nil)
+    {
+      [response release];
+      return nil;
+    }
+    tradeUrl =[NSString stringWithFormat:@"%@%@%@%@", TRADEDOUBLER_URL, trackViewUrl, [self getSeparator:trackViewUrl], TRADEDOUBLER_ID];
+    
+    [trackViewUrl release];
+    NSLog(@"tradeURL = %@", tradeUrl);
+  }
+  return tradeUrl;
 }
 @end

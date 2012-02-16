@@ -294,3 +294,7 @@
 
 "User_Likes_Song_Label" = "likes this song";
 
+"UnableToFindSongOniTunesTitle" = "Sorry!";
+"UnableToFindSongOniTunesMessage" = "Couldn't find this song on the iTunes store";
+
+
