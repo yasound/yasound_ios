@@ -1105,11 +1105,11 @@
 		<key>StatsView_LeaderBoard_StickerMyRadio</key>
 		<dict>
 			<key>x</key>
-			<integer>5</integer>
+			<integer>-26</integer>
 			<key>y</key>
-			<integer>6</integer>
+			<integer>5</integer>
 			<key>name</key>
-			<string>StickerMyRadio</string>
+			<string>ArrowMyRadio</string>
 			<key>path</key>
 			<string>images/Stats</string>
 			<key>type</key>
@@ -1140,11 +1140,11 @@
 		<key>StatsView_LeaderBoard_Name</key>
 		<dict>
 			<key>x</key>
-			<integer>40</integer>
+			<integer>14</integer>
 			<key>y</key>
 			<integer>13</integer>
 			<key>width</key>
-			<integer>170</integer>
+			<integer>196</integer>
 			<key>height</key>
 			<integer>16</integer>
 			<key>font</key>
@@ -1155,6 +1155,19 @@
 				<integer>14</integer>
 				<key>textColor</key>
 				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+			<key>font.userRadio</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>14</integer>
+				<key>textColor</key>
+				<string>rgb(250,170,2)</string>
 				<key>backgroundColor</key>
 				<string>clear</string>
 				<key>weight</key>

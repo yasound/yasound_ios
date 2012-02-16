@@ -394,25 +394,22 @@
 
         BundleStylesheet* sheet = nil;
         
-        // sticker userRadio
-        if ([entry isUserRadio])
-        {
-            sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_StickerMyRadio" error:nil];
-            UIImageView* view = [[sheet makeImage] autorelease];
-            [cell.contentView addSubview:view];
-        }
         
-        // radio rank
-        sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_Rank" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        // radio rank
+//        sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_Rank" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        UILabel* label = [[sheet makeLabel] autorelease];
+////        label.text = [NSString stringWithFormat:@"%@", entry.leaderboard_rank];
+//        label.text = [NSString stringWithFormat:@"123"];
+//        [cell.contentView addSubview:label];
+
+        // radio rank + name
+        sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_Name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UILabel* label = [[sheet makeLabel] autorelease];
-        label.text = [NSString stringWithFormat:@"%@", entry.leaderboard_rank];
+        label.text = [NSString stringWithFormat:@"%@ - %@",  entry.leaderboard_rank, entry.name];
         [cell.contentView addSubview:label];
 
-        // radio name
-        sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_Name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        label = [[sheet makeLabel] autorelease];
-        label.text = [NSString stringWithFormat:@"%@", entry.name];
-        [cell.contentView addSubview:label];
+        if ([entry isUserRadio])
+            [sheet applyToLabel:label class:@"userRadio"];
 
         // favorites
         sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_Favorites" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -424,6 +421,30 @@
         sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_FavoritesIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIImageView* imageView = [[sheet makeImage] autorelease];
         [cell.contentView addSubview:imageView];
+        
+//        // sticker userRadio
+//        if ([entry isUserRadio])
+//        {
+//            sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_StickerMyRadio" error:nil];
+//            UIImageView* view = [[sheet makeImage] autorelease];
+//            [cell.contentView addSubview:view];
+//
+//            [UIView beginAnimations:nil context:nil];
+//            [UIView setAnimationDuration: 0.33];
+//            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//            [UIView setAnimationRepeatCount: HUGE_VAL];
+//            [UIView setAnimationRepeatAutoreverses: YES];
+//            
+//            view.frame = CGRectMake(sheet.frame.origin.x +10, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
+//            
+//            [UIView commitAnimations];
+//
+//            
+//        }
+        
+
+        
+
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
