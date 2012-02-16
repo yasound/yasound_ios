@@ -283,7 +283,7 @@
 "GoTo_FriendCurrentRadio_Label" = "La radio qu'il écoute";
 "GoTo_FriendRadioCancel_Label" = "Annuler";
 
-"User_Likes_Song_Label" = "aime cette chanson";
-
 "UnableToFindSongOniTunesTitle" = "Désolé!";
 "UnableToFindSongOniTunesMessage" = "L'iTunes store ne connait pas cette chanson";
+
+"User_Likes_Song_Label" = "aime.";

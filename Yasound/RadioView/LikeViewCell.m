@@ -19,22 +19,7 @@
 - (NSString*) dateToString:(NSDate*)d
 {
   NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-  //  [dateFormat setDateFormat:@"HH:mm"];
-  NSDate* now = [NSDate date];
-  NSDateComponents* todayComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:now];
-  NSDateComponents* refComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:d];
-  
-  if (todayComponents.year == refComponents.year && todayComponents.month == refComponents.month && todayComponents.day == refComponents.day)
-  {
-    // today: show time
-    [dateFormat setDateFormat:@"HH:mm"];
-  }
-  else
-  {
-    // not today: show date
-    [dateFormat setDateFormat:@"dd/MM"];
-  }
-  
+  [dateFormat setDateFormat:@"dd/MM' 'HH:mm"];
   NSString* s = [dateFormat stringFromDate:d];
   [dateFormat release];
   return s;
@@ -51,35 +36,32 @@
   self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
   if (self) 
   {    
-    BundleStylesheet* sheet = nil;
-    
+    BundleStylesheet* sheet = nil;    
     UIView* view = self.contentView;
+      
+      sheet = [[Theme theme] stylesheetForKey:@"MessageCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+      view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     
-    sheet = [[Theme theme] stylesheetForKey:@"LikeCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIImageView* imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-    imageView.frame = sheet.frame;
-    [view addSubview:imageView];
-    
-    sheet = [[Theme theme] stylesheetForKey:@"LikeCellDate" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    self.date = [sheet makeLabel];
-    self.date.text = [self dateToString:ev.start_date];
-    [view addSubview:self.date];
-    
+    sheet = [[Theme theme] stylesheetForKey:@"LikeCellPicto" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    [view addSubview:[sheet makeImage]];
+
     sheet = [[Theme theme] stylesheetForKey:@"LikeCellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.message = [sheet makeLabel];
     self.message.text = [NSString stringWithFormat:@"%@ %@", ev.user_name, NSLocalizedString(@"User_Likes_Song_Label", nil)];
     [view addSubview:self.message];
+    
+    sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* imageView = [[UIImageView alloc] initWithImage:[sheet image]];
+    imageView.frame = CGRectMake(0, height - 2, sheet.frame.size.width, sheet.frame.size.height);
+    [view addSubview:imageView];
   }
   return self;
 }
 
 
 - (void)update:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath
-{
-  BundleStylesheet* sheet = nil;
-  self.date.text = [self dateToString:ev.start_date];
-  
-  self.message.text = ev.song_name;
+{  
+  self.message.text = [NSString stringWithFormat:@"%@ %@", ev.user_name, NSLocalizedString(@"User_Likes_Song_Label", nil)];
 }
 
 

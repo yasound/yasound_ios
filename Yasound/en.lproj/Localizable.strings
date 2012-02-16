@@ -292,7 +292,7 @@
 "GoTo_FriendCurrentRadio_Label" = "The radio he is listening to";
 "GoTo_FriendRadioCancel_Label" = "Cancel";
 
-"User_Likes_Song_Label" = "likes this song";
+"User_Likes_Song_Label" = "likes.";
 
 "UnableToFindSongOniTunesTitle" = "Sorry!";
 "UnableToFindSongOniTunesMessage" = "Couldn't find this song on the iTunes store";

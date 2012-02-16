@@ -295,6 +295,10 @@
         nbRows = [_leaderboard count];
     }
     
+    
+    LeaderBoardEntry* entry = [_leaderboard objectAtIndex:indexPath.row];
+    BOOL isUserRadio = [entry isUserRadio];
+
     if (nbRows == 1)
     {
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
@@ -303,19 +307,31 @@
     }
     else if (indexPath.row == 0)
     {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
+        UIImageView* view = nil;
+        if (isUserRadio)
+            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldFirst.png"]];
+        else
+            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
         cell.backgroundView = view;
         [view release];
     }
     else if (indexPath.row == (nbRows -1))
     {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
+        UIImageView* view = nil;
+        if (isUserRadio)
+            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldLast.png"]];
+        else
+            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
         cell.backgroundView = view;
         [view release];
     }
     else
     {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
+        UIImageView* view = nil;
+        if (isUserRadio)
+            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldInter.png"]];
+        else
+            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
         cell.backgroundView = view;
         [view release];
     }
@@ -394,24 +410,11 @@
 
         BundleStylesheet* sheet = nil;
         
-        // sticker userRadio
-        if ([entry isUserRadio])
-        {
-            sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_StickerMyRadio" error:nil];
-            UIImageView* view = [[sheet makeImage] autorelease];
-            [cell.contentView addSubview:view];
-        }
         
-        // radio rank
-        sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_Rank" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UILabel* label = [[sheet makeLabel] autorelease];
-        label.text = [NSString stringWithFormat:@"%@", entry.leaderboard_rank];
-        [cell.contentView addSubview:label];
-
-        // radio name
+        // radio rank + name
         sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_Name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        label = [[sheet makeLabel] autorelease];
-        label.text = [NSString stringWithFormat:@"%@", entry.name];
+        UILabel* label = [[sheet makeLabel] autorelease];
+        label.text = [NSString stringWithFormat:@"%@ - %@",  entry.leaderboard_rank, entry.name];
         [cell.contentView addSubview:label];
 
         // favorites
@@ -424,6 +427,7 @@
         sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_FavoritesIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIImageView* imageView = [[sheet makeImage] autorelease];
         [cell.contentView addSubview:imageView];
+        
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

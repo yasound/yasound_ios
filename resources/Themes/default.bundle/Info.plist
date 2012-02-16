@@ -540,7 +540,7 @@
 			<key>x</key>
 			<integer>18</integer>
 			<key>y</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 		</dict>
 		<key>SongCellMessage</key>
 		<dict>
@@ -564,7 +564,7 @@
 			<key>x</key>
 			<integer>76</integer>
 			<key>y</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 		</dict>
 		<key>LikeCellBackground</key>
 		<dict>
@@ -578,6 +578,32 @@
 			<string>png</string>
 			<key>path</key>
 			<string>images/</string>
+		</dict>
+		<key>LikeCellPicto</key>
+		<dict>
+			<key>x</key>
+			<integer>30</integer>
+			<key>y</key>
+			<integer>2</integer>
+			<key>name</key>
+			<string>Like</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Wall</string>
+		</dict>
+		<key>MessageCellBackground</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MessageEventBackground</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Wall</string>
 		</dict>
 		<key>LikeCellMessage</key>
 		<dict>
@@ -595,37 +621,35 @@
 				<integer>1</integer>
 			</dict>
 			<key>height</key>
-			<integer>16</integer>
+			<integer>15</integer>
 			<key>width</key>
-			<integer>240</integer>
+			<integer>200</integer>
 			<key>x</key>
-			<integer>76</integer>
+			<integer>51</integer>
 			<key>y</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
 		<key>LikeCellDate</key>
 		<dict>
 			<key>font</key>
 			<dict>
 				<key>size</key>
-				<integer>13</integer>
+				<integer>11</integer>
 				<key>textColor</key>
-				<string>rgb(255,231,188)</string>
-				<key>weight</key>
-				<string>bold</string>
-				<key>shadowOffset</key>
-				<string>0, -1</string>
-				<key>shadowRadius</key>
-				<integer>1</integer>
+				<string>rgb(196,196,196)</string>
+				<key>textAlignement</key>
+				<string>right</string>
+				<key>name</key>
+				<string>Arial</string>
 			</dict>
 			<key>height</key>
-			<integer>16</integer>
+			<integer>12</integer>
 			<key>width</key>
-			<integer>100</integer>
+			<integer>70</integer>
 			<key>x</key>
-			<integer>18</integer>
+			<integer>240</integer>
 			<key>y</key>
-			<integer>0</integer>
+			<integer>7</integer>
 		</dict>
 		<key>StatusBar</key>
 		<dict>
@@ -845,18 +869,18 @@
 			<key>y</key>
 			<integer>10</integer>
 		</dict>
-		<key>TableViewBackground</key>
+		<key>WallBackground</key>
 		<dict>
 			<key>x</key>
 			<integer>0</integer>
 			<key>y</key>
 			<integer>0</integer>
 			<key>name</key>
-			<string>BodyBackground</string>
+			<string>WallBackground</string>
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>
-			<string>images/</string>
+			<string>images/Wall</string>
 		</dict>
 		<key>MenuBackground</key>
 		<dict>
@@ -1166,13 +1190,17 @@
 		<key>StatsView_LeaderBoard_StickerMyRadio</key>
 		<dict>
 			<key>x</key>
-			<integer>5</integer>
+			<integer>-9</integer>
 			<key>y</key>
-			<integer>6</integer>
+			<integer>10</integer>
+			<key>width</key>
+			<integer>20</integer>
+			<key>height</key>
+			<integer>20</integer>
 			<key>name</key>
-			<string>StickerMyRadio</string>
+			<string>IconMyRadio</string>
 			<key>path</key>
-			<string>images/Stats</string>
+			<string>images/Icons</string>
 			<key>type</key>
 			<string>png</string>
 		</dict>
@@ -1201,11 +1229,11 @@
 		<key>StatsView_LeaderBoard_Name</key>
 		<dict>
 			<key>x</key>
-			<integer>40</integer>
+			<integer>14</integer>
 			<key>y</key>
 			<integer>13</integer>
 			<key>width</key>
-			<integer>170</integer>
+			<integer>196</integer>
 			<key>height</key>
 			<integer>16</integer>
 			<key>font</key>

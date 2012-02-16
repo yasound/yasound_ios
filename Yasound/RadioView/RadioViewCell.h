@@ -15,14 +15,18 @@
 
 @interface RadioViewCell : UITableViewCell
 
-@property (nonatomic, retain) UIView* background;
+//@property (nonatomic, retain) UIView* background;
 @property (nonatomic, retain) WebImageView* avatar;
 @property (nonatomic, retain) UILabel* date;
 @property (nonatomic, retain) UILabel* user;
+@property (nonatomic, retain) UIView* messageBackground;
 @property (nonatomic, retain) UILabel* message;
+@property (nonatomic, retain) UIImageView* separator;
 
-- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath;
 
-- update:(WallEvent*)ev height:(CGFloat)height indexPath:(NSIndexPath*)indexPath;
+
+- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
+
+- update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
 
 @end

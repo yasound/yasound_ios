@@ -34,8 +34,8 @@
 //#define LOCAL 1 // use localhost as the server
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
-#define ROW_SONG_HEIGHT 18
-#define ROW_LIKE_HEIGHT 18
+#define ROW_SONG_HEIGHT 15
+#define ROW_LIKE_HEIGHT 26
 
 #define NB_MAX_EVENTMESSAGE 10
 
@@ -275,7 +275,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"TableView" error:nil];    
     _tableView = [[UITableView alloc] initWithFrame:sheet.frame style:UITableViewStylePlain];
 
-    sheet = [[Theme theme] stylesheetForKey:@"TableViewBackground" error:nil];    
+    sheet = [[Theme theme] stylesheetForKey:@"WallBackground" error:nil];    
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
@@ -1158,10 +1158,12 @@ static Song* _gNowPlayingSong = nil;
 
 - (NSIndexPath *)usersContainerDidSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+  
     UITableViewCell* cell = [_usersContainer cellForRowAtIndexPath:indexPath];
     cell.selected = NO;
 
     User* user = [_connectedUsers objectAtIndex:indexPath.row];
+  NSLog(@"row: %d   user: %@", indexPath.row, user.name);
   if ([user.id intValue] == [radio.creator.id intValue])
     return nil;
   
@@ -1293,8 +1295,11 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if (tableView == _usersContainer)
-    [self usersContainerWillDisplayCell:cell forRowAtIndexPath:indexPath];
+    if (tableView == _usersContainer)
+    {
+        [self usersContainerWillDisplayCell:cell forRowAtIndexPath:indexPath];
+        return;
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -1360,31 +1365,54 @@ static Song* _gNowPlayingSong = nil;
   if (tableView == _usersContainer)
     return [self usersContainerCellForRowAtIndexPath:indexPath];
   
-    static NSString* CellIdentifier = @"RadioViewCell";
     
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
 
     if ([ev isOfType:eWallEventTypeMessage])
     {
-        RadioViewCell* cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:0 indexPath:indexPath] autorelease];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        static NSString* CellIdentifier = @"RadioViewMessageCell";
+        
+        RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev indexPath:indexPath] autorelease];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        else
+            [cell update:ev indexPath:indexPath];
         
         return cell;
     }
     else if ([ev isOfType:eWallEventTypeSong])
     {
+        static NSString* CellIdentifier = @"RadioViewSongCell";
         CGFloat height = 0; // unused
 
-       SongViewCell* cell = [[[SongViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        SongViewCell* cell = (SongViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[[SongViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        else
+            [cell update:ev height:height indexPath:indexPath];
+        
         return cell;
     }
     else if ([ev isOfType:eWallEventTypeLike])
     {
-      CGFloat height = 0; // unused
+        static NSString* CellIdentifier = @"RadioViewLikeCell";
+        CGFloat height = ROW_LIKE_HEIGHT;
       
-      LikeViewCell* cell = [[[LikeViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
-      cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        LikeViewCell* cell = (LikeViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[[LikeViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev height:height indexPath:indexPath] autorelease];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        else
+            [cell update:ev height:height indexPath:indexPath];
+        
       return cell;
     }
     else
