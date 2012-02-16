@@ -152,7 +152,7 @@
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
-					<object class="NSColorSpace" key="NSCustomColorSpace" id="715305335">
+					<object class="NSColorSpace" key="NSCustomColorSpace">
 						<int key="NSID">2</int>
 					</object>
 				</object>
@@ -174,7 +174,7 @@
 				<bool key="IBUIUserInteractionEnabled">NO</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<string key="IBUIText">Favoris</string>
-				<object class="NSColor" key="IBUITextColor">
+				<object class="NSColor" key="IBUITextColor" id="30384629">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
 				</object>
@@ -217,11 +217,7 @@
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<string key="IBUIText"/>
 								<string key="IBUIPlaceholder">enter your keyword here.</string>
-								<object class="NSColor" key="IBUITextColor">
-									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MAA</bytes>
-									<reference key="NSCustomColorSpace" ref="715305335"/>
-								</object>
+								<reference key="IBUITextColor" ref="30384629"/>
 								<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 								<float key="IBUIMinimumFontSize">17</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
@@ -528,8 +524,6 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>_backBtn</string>
-							<string>_cellAdd</string>
-							<string>_cellAddLabel</string>
 							<string>_cellTextField</string>
 							<string>_editBtn</string>
 							<string>_tableView</string>
@@ -540,8 +534,6 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIBarButtonItem</string>
-							<string>UITableViewCell</string>
-							<string>UILabel</string>
 							<string>UITableViewCell</string>
 							<string>UIBarButtonItem</string>
 							<string>UITableView</string>
@@ -555,8 +547,6 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>_backBtn</string>
-							<string>_cellAdd</string>
-							<string>_cellAddLabel</string>
 							<string>_cellTextField</string>
 							<string>_editBtn</string>
 							<string>_tableView</string>
@@ -569,14 +559,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">_backBtn</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">_cellAdd</string>
-								<string key="candidateClassName">UITableViewCell</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">_cellAddLabel</string>
-								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">_cellTextField</string>

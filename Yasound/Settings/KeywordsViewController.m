@@ -229,12 +229,14 @@
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TableViewDisclosure.png"]];
         cell.textLabel.text = NSLocalizedString(@"KeywordsView_add_label", nil);
         cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
 
     }
     else
     {
         cell.textLabel.text = [_keywords objectAtIndex:indexPath.row];
         cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
@@ -256,12 +258,17 @@
     if (indexPath.section != 0)
         return;
     
+    if (_firstRowIsNotValidated)
+        return;
+    
     _firstRowIsNotValidated = YES;
     
     NSIndexPath* newIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
     [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationTop];
     
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    [_textField becomeFirstResponder];
 }
 
 
