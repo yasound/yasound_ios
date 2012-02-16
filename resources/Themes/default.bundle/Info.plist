@@ -592,6 +592,19 @@
 			<key>path</key>
 			<string>images/Wall</string>
 		</dict>
+		<key>MessageCellBackground</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>MessageEventBackground</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Wall</string>
+		</dict>
 		<key>LikeCellMessage</key>
 		<dict>
 			<key>font</key>
@@ -856,18 +869,18 @@
 			<key>y</key>
 			<integer>10</integer>
 		</dict>
-		<key>TableViewBackground</key>
+		<key>WallBackground</key>
 		<dict>
 			<key>x</key>
 			<integer>0</integer>
 			<key>y</key>
 			<integer>0</integer>
 			<key>name</key>
-			<string>BodyBackground</string>
+			<string>WallBackground</string>
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>
-			<string>images/</string>
+			<string>images/Wall</string>
 		</dict>
 		<key>MenuBackground</key>
 		<dict>

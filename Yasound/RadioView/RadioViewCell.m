@@ -55,7 +55,10 @@
         CGFloat height = [ev getTextHeight];
         
         
-        view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.12];
+//        view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.12];
+        
+        sheet = [[Theme theme] stylesheetForKey:@"MessageCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
         
         // avatar
         sheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -119,7 +122,8 @@
 {
     BundleStylesheet* sheet = nil;
 
-    self.backgroundColor = [UIColor clearColor];
+//    self.backgroundColor = [UIColor clearColor];
+    
     self.date.text = [self dateToString:ev.start_date];
     self.user.text = ev.user_name;
     self.message.text = ev.text;

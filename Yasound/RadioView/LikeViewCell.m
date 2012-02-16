@@ -39,8 +39,13 @@
     BundleStylesheet* sheet = nil;
     
     UIView* view = self.contentView;
-    
-     view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.12];
+
+      
+      sheet = [[Theme theme] stylesheetForKey:@"MessageCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+      view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+
+//      view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.12];
+//      view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.12];
 //    view.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
     
 //    sheet = [[Theme theme] stylesheetForKey:@"LikeCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
