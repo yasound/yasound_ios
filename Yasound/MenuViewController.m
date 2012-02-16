@@ -304,7 +304,7 @@
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
     cell.textLabel.textColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1];
     cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.accessoryType = UITableViewCellAccessoryNone;
 
     if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_MYRADIO))
     {
