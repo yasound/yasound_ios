@@ -146,7 +146,7 @@
 
 - (void)onTrackShare:(id)sender
 {
-    NSString* message = NSLocalizedString(@"I am currently listening to %@, by %@ on %@", nil);
+    NSString* message = NSLocalizedString(@"RadioView_track_share_message", nil);
     NSString* title = NSLocalizedString(@"Yasound share", nil);
     NSURL* pictureURL = [[NSURL alloc] initWithString:@"http://yasound.com/fr/images/logo.png"];
     NSString* link = @"https://dev.yasound.com/listen/%@";

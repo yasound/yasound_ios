@@ -147,7 +147,7 @@
 "PlaylistsView_submit_title" = "Mise à jour de la programmation";
 "PlaylistsView_table_header_local_playlists" = "Sur cet appareil";
 "PlaylistsView_table_header_other_playlists" = "Sur d'autres appareils";
-"PlaylistsView_cell_detail_with_matched" = "%d disponibles sur %d";
+"PlaylistsView_cell_detail_with_matched" = "%d identifiées sur %d";
 "PlaylistsView_cell_detail" = "%d titres";
 "LegalView_title" = "Conditions d'utilisation";
 
