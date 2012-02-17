@@ -264,10 +264,6 @@
     
     _remotePlaylistsDesc = [[NSMutableArray alloc] init];
     [_remotePlaylistsDesc retain];
-    
-    
-    
-    
 }
 
 - (void)viewDidUnload
