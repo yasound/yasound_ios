@@ -182,10 +182,6 @@
 		BC33F44414DDC6A900D4C67F /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44014DDC6A900D4C67F /* LoginBackground@2x.png */; };
 		BC33F44514DDC6A900D4C67F /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44014DDC6A900D4C67F /* LoginBackground@2x.png */; };
 		BC33F44614DDC6A900D4C67F /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44014DDC6A900D4C67F /* LoginBackground@2x.png */; };
-		BC33F44C14DDC6B200D4C67F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44814DDC6B200D4C67F /* Default.png */; };
-		BC33F44D14DDC6B200D4C67F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44914DDC6B200D4C67F /* Default@2x.png */; };
-		BC33F44E14DDC6B200D4C67F /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44A14DDC6B200D4C67F /* LoginBackground.png */; };
-		BC33F44F14DDC6B200D4C67F /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44B14DDC6B200D4C67F /* LoginBackground@2x.png */; };
 		BC3FA66314E93B660055AB4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		BC3FA66414E93B660055AB4A /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BC3FA66714E93B660055AB4A /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
@@ -661,6 +657,10 @@
 		BC8B084014926F22007E1307 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083614926F22007E1307 /* Icon@2x.png */; };
 		BC8B084214927B7D007E1307 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B084114927B7D007E1307 /* Icon.png */; };
 		BC8B084314927B7D007E1307 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B084114927B7D007E1307 /* Icon.png */; };
+		BC8E039314EE5B1600C79A4C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43714DDC6A100D4C67F /* Default.png */; };
+		BC8E039414EE5B1600C79A4C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
+		BC8E039514EE5B1600C79A4C /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43F14DDC6A900D4C67F /* LoginBackground.png */; };
+		BC8E039614EE5B1600C79A4C /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F44014DDC6A900D4C67F /* LoginBackground@2x.png */; };
 		BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
@@ -1630,10 +1630,6 @@
 		BC33F43814DDC6A100D4C67F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BC33F43F14DDC6A900D4C67F /* LoginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBackground.png; sourceTree = "<group>"; };
 		BC33F44014DDC6A900D4C67F /* LoginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginBackground@2x.png"; sourceTree = "<group>"; };
-		BC33F44814DDC6B200D4C67F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		BC33F44914DDC6B200D4C67F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		BC33F44A14DDC6B200D4C67F /* LoginBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBackground.png; sourceTree = "<group>"; };
-		BC33F44B14DDC6B200D4C67F /* LoginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginBackground@2x.png"; sourceTree = "<group>"; };
 		BC3FA77C14E93B660055AB4A /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3FA78514E96AEB0055AB4A /* ListenerSelectedBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ListenerSelectedBackground.png; sourceTree = "<group>"; };
 		BC3FA78614E96AEB0055AB4A /* ListenerSelectedBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ListenerSelectedBackground@2x.png"; sourceTree = "<group>"; };
@@ -2310,17 +2306,6 @@
 			name = YasoundReachability;
 			path = LibTools/YasoundReachability;
 			sourceTree = SOURCE_ROOT;
-		};
-		BC33F44714DDC6B200D4C67F /* App Store */ = {
-			isa = PBXGroup;
-			children = (
-				BC33F44814DDC6B200D4C67F /* Default.png */,
-				BC33F44914DDC6B200D4C67F /* Default@2x.png */,
-				BC33F44A14DDC6B200D4C67F /* LoginBackground.png */,
-				BC33F44B14DDC6B200D4C67F /* LoginBackground@2x.png */,
-			);
-			path = "App Store";
-			sourceTree = "<group>";
 		};
 		BC40CBB314CF633600DF0950 /* facebook-ios-sdk */ = {
 			isa = PBXGroup;
@@ -3066,7 +3051,6 @@
 				BCE751B014EC2DC100056916 /* logo.png */,
 				BCE751B114EC2DC100056916 /* logo@2x.png */,
 				BC9F4A0A14E6AC5400008AA3 /* TableView */,
-				BC33F44714DDC6B200D4C67F /* App Store */,
 				BC33F43714DDC6A100D4C67F /* Default.png */,
 				BC33F43814DDC6A100D4C67F /* Default@2x.png */,
 				BC88905614D0BC70004CCE04 /* BarItems */,
@@ -3677,6 +3661,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC8E039314EE5B1600C79A4C /* Default.png in Resources */,
+				BC8E039414EE5B1600C79A4C /* Default@2x.png in Resources */,
+				BC8E039514EE5B1600C79A4C /* LoginBackground.png in Resources */,
+				BC8E039614EE5B1600C79A4C /* LoginBackground@2x.png in Resources */,
 				BC93CD5214CF3F7A007C723F /* InfoPlist.strings in Resources */,
 				BC93CD5514CF3F7A007C723F /* RadioSelectionViewController.xib in Resources */,
 				BC93CD5614CF3F7A007C723F /* Localizable.strings in Resources */,
@@ -3747,10 +3735,6 @@
 				BCBE5C8114D167DE0077FC62 /* release_notes.txt in Resources */,
 				BCBE5C8714D1A1B60077FC62 /* cellFacebookDisabled.png in Resources */,
 				BCBE5C8B14D1A1B60077FC62 /* cellFacebookDisabled@2x.png in Resources */,
-				BC33F44C14DDC6B200D4C67F /* Default.png in Resources */,
-				BC33F44D14DDC6B200D4C67F /* Default@2x.png in Resources */,
-				BC33F44E14DDC6B200D4C67F /* LoginBackground.png in Resources */,
-				BC33F44F14DDC6B200D4C67F /* LoginBackground@2x.png in Resources */,
 				BC26E6CE14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */,
 				BC26E6D214E40E3100D30554 /* CreateMyRadioBackground@2x.png in Resources */,
 				B19BF5F514E420DA00BF8FCF /* SongsViewController.xib in Resources */,
@@ -4999,7 +4983,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
+				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
@@ -5027,7 +5011,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
+				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
