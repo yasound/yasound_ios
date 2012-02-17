@@ -118,6 +118,8 @@
     NSString *link = [mgr generateLink:_song.artist 
                                  album:_song.album 
                                   song:_song.name];
+    [mgr release];
+    
     if (link) 
     {
         NSURL *url = [[NSURL alloc] initWithString:link];
@@ -126,14 +128,17 @@
     }
     else
     {
-      UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UnableToFindSongOniTunesTitle", nil) 
-                                                   message:NSLocalizedString(@"UnableToFindSongOniTunesMessage", nil) 
-                                                  delegate:self 
-                                         cancelButtonTitle:@"OK" 
-                                         otherButtonTitles:nil];
+      UIAlertView *av = nil;
+      av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UnableToFindSongOniTunes_Title", nil) 
+                                     message:NSLocalizedString(@"UnableToFindSongOniTunes_Message", nil) 
+                                    delegate:nil 
+                           cancelButtonTitle:NSLocalizedString(@"UnableToFindSongOniTunes_OK", nil) 
+                           otherButtonTitles:nil];
+      
       [av show];
+      [av release];  
     }
-    [mgr release];
+  
 }
 
 

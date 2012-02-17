@@ -58,17 +58,15 @@
   NSError *error = [request error];
   if (!error) {
     NSString *response = [request responseString];
-    [request release];
-    if (response == nil)
-    {
-      return nil;
-    }
     NSString *trackViewUrl = [self getTrackViewUrl:response];
-    if (trackViewUrl == nil)
+    
+    if (!response || !trackViewUrl)
     {
-      [response release];
+      if (trackViewUrl)
+        [trackViewUrl release];
       return nil;
     }
+
     tradeUrl =[NSString stringWithFormat:@"%@%@%@%@", TRADEDOUBLER_URL, trackViewUrl, [self getSeparator:trackViewUrl], TRADEDOUBLER_ID];
     
     [trackViewUrl release];
