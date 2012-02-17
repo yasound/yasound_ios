@@ -38,7 +38,11 @@
         UIButton* btn  = nil;
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonBuy" error:nil];
-        btn = [sheet makeButton];
+        UIImage* image = [UIImage imageNamed:@"btnBuyUp.png"];
+        UIImage* imageHighlighted = [UIImage imageNamed:@"btnBuyDown.png"];
+        btn = [[UIButton alloc] initWithFrame:CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, image.size.width, image.size.height)];
+        [btn setImage:image forState:UIControlStateNormal];
+        [btn setImage:imageHighlighted forState:UIControlStateHighlighted];
         [btn addTarget:self action:@selector(onTrackBuy:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
 
