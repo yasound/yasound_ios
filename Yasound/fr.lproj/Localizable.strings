@@ -290,4 +290,7 @@
 "UnableToFindSongOniTunes_Message" = "L'iTunes store ne connait pas cette chanson";
 "UnableToFindSongOniTunes_OK" = "D'accord";
 
+"UserTableViewCell_ListeningTo" = "écoute";
+"UserTableViewCell_Radio" = "radio:";
+
 
