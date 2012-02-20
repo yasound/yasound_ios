@@ -10,7 +10,7 @@
 #import "RadioSelectionTableViewCell.h"
 #import "StyleSelectorViewController.h"
 #import "RadioViewController.h"
-#import "YasoundDataProvider.h"
+#import "YasoundDataCache.h"
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
@@ -246,9 +246,9 @@
         g= nil;
     
     if (_type == RSTTop)
-        [[YasoundDataProvider main] topRadiosWithGenre:g withTarget:self action:@selector(receiveRadios:withInfo:)];
+        [[YasoundDataCache main] requestRadios:REQUEST_RADIOS_TOP withGenre:g target:self action:@selector(receiveRadios:withInfo:)];
     else if (_type == RSTSelection)
-        [[YasoundDataProvider main] selectedRadiosWithGenre:g withTarget:self action:@selector(receiveRadios:withInfo:)];
+        [[YasoundDataCache main] requestRadios:REQUEST_RADIOS_SELECTION withGenre:g target:self action:@selector(receiveRadios:withInfo:)];
 }
 
 

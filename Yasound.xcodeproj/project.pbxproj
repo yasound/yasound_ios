@@ -637,6 +637,11 @@
 		BC524F2714EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1414EEC25A001B4FC5 /* btnBuyUp@2x.png */; };
 		BC524F2814EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1414EEC25A001B4FC5 /* btnBuyUp@2x.png */; };
 		BC524F2914EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1414EEC25A001B4FC5 /* btnBuyUp@2x.png */; };
+		BC5C900F14F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
+		BC5C901014F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
+		BC5C901114F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
+		BC5C901214F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
+		BC5C901314F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
 		BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC6314D214B4665200549EF6 /* RegExp.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6314D114B4665200549EF6 /* RegExp.m */; };
@@ -1760,6 +1765,8 @@
 		BC524F1114EEC25A001B4FC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/btnBuyDown@2x.png"; sourceTree = "<group>"; };
 		BC524F1314EEC25A001B4FC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/btnBuyUp.png; sourceTree = "<group>"; };
 		BC524F1514EEC25A001B4FC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/btnBuyUp@2x.png"; sourceTree = "<group>"; };
+		BC5C900D14F2A4EB00C7D01E /* YasoundDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCache.h; sourceTree = "<group>"; };
+		BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCache.m; sourceTree = "<group>"; };
 		BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionViewController.h; path = RadioSelection/RadioSelectionViewController.h; sourceTree = "<group>"; };
 		BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionViewController.m; path = RadioSelection/RadioSelectionViewController.m; sourceTree = "<group>"; };
 		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
@@ -2236,6 +2243,8 @@
 				BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */,
 				40AAEC4914921AE70031B39D /* YasoundDataProvider.h */,
 				40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */,
+				BC5C900D14F2A4EB00C7D01E /* YasoundDataCache.h */,
+				BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */,
 				B138AA6614E2BAFC0069E08A /* SongUploader.h */,
 				B138AA6714E2BAFC0069E08A /* SongUploader.m */,
 			);
@@ -4312,6 +4321,7 @@
 				BC3FA6E614E93B660055AB4A /* MBProgressHUD.m in Sources */,
 				BCE7518D14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC914ED3CFA00996326 /* LikeViewCell.m in Sources */,
+				BC5C901314F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4451,6 +4461,7 @@
 				B1F8868914E5B44300256383 /* MBProgressHUD.m in Sources */,
 				BCE7518A14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC614ED3CFA00996326 /* LikeViewCell.m in Sources */,
+				BC5C901014F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4591,6 +4602,7 @@
 				B1F8868B14E5B44300256383 /* MBProgressHUD.m in Sources */,
 				BCE7518C14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC814ED3CFA00996326 /* LikeViewCell.m in Sources */,
+				BC5C901214F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4730,6 +4742,7 @@
 				B1F8868814E5B44300256383 /* MBProgressHUD.m in Sources */,
 				BCE7518914EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC514ED3CFA00996326 /* LikeViewCell.m in Sources */,
+				BC5C900F14F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4870,6 +4883,7 @@
 				B1F8868A14E5B44300256383 /* MBProgressHUD.m in Sources */,
 				BCE7518B14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC714ED3CFA00996326 /* LikeViewCell.m in Sources */,
+				BC5C901114F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

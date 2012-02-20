@@ -58,23 +58,26 @@ static ASIDownloadCache *gHttpCache = NULL;
 - (void) addView:(WebImageView*)view
 {
   //NSLog(@"Add view 0x%p to cache for %@", view, [url absoluteString]);
-  if (webImages == nil)
-    webImages = [[NSMutableSet alloc] init];
-  [webImages addObject:view];
-  [view setImage:image];
-  if (anims != nil) // We are currently reloading this image
-  {
-      BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIActivityIndicatorView* ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];	
-    [ai startAnimating];
-    [ai setFrame:stylesheet.frame];
-    [view addSubview:ai];
-    [anims addObject:ai];
-  }
-  else
-  {
-    [self load];
-  }
+
+    if (webImages == nil)
+        webImages = [[NSMutableSet alloc] init];
+    
+    [webImages addObject:view];
+    [view setImage:image];
+    
+    if (anims != nil) // We are currently reloading this image
+    {
+        BundleStylesheet* stylesheet = [[BundleFileManager main] stylesheetForKey:@"WebImageActivityIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIActivityIndicatorView* ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];	
+        [ai startAnimating];
+        [ai setFrame:stylesheet.frame];
+        [view addSubview:ai];
+        [anims addObject:ai];
+    }
+    else
+    {
+        [self load];
+    }
 }    
 
 - (void) removeView:(WebImageView*)view
@@ -230,8 +233,9 @@ static ASIDownloadCache *gHttpCache = NULL;
 
 +(void) addView:(WebImageView*)view toUrl:(NSURL*)url
 {
-  [WebImageView initCache];
-  WebImageCache* cache = [gDictionnary objectForKey:url];
+    [WebImageView initCache];
+    WebImageCache* cache = [gDictionnary objectForKey:url];
+    
   if (cache == nil)
   {
     cache = [[WebImageCache alloc] initWithURL:url];
