@@ -11,11 +11,9 @@
 
 
 // 300 seconds = 5 min
-//LBDEBUG
-//#define TIMEOUT_INTERVAL 300
-#define TIMEOUT_INTERVAL 60
+#define TIMEOUT_INTERVAL 300
 
-
+#define GENRE_NIL @"GENRE_NIL"
 
 
 //.................................................................................................
@@ -96,19 +94,21 @@ static YasoundDataCache* _main = nil;
 
 - (NSArray*)cachedDataForKey:(NSString*)key withGenre:(NSString*)genre
 {
+    NSString* _genre = (genre == nil)? GENRE_NIL : genre;
+    
     // get cache
     NSDictionary* requestCache = [_cache objectForKey:key];
     if (requestCache == nil)
         return nil;
     
-    NSDictionary* requestCacheForGenre = [requestCache objectForKey:genre];
+    NSDictionary* requestCacheForGenre = [requestCache objectForKey:_genre];
     if (requestCacheForGenre == nil)
         return nil;
     
     // cache is here, see if it's expired
     NSDate* timeout = [requestCacheForGenre objectForKey:@"timeout"];
     NSDate* date = [NSDate date];
-    if ([date isEarlierThanOrEqualTo:timeout])
+    if ([date isLaterThanOrEqualTo:timeout])
         return nil; // yes, it's expired
     
     // everything's ok, return cached data
@@ -202,11 +202,13 @@ static YasoundDataCache* _main = nil;
     }
     
     // get/create dico for request/genre
-    NSMutableDictionary* requestCacheForGenre = [requestCache objectForKey:op.genre];
+    NSString* _genre = (op.genre == nil)? GENRE_NIL : op.genre;
+
+    NSMutableDictionary* requestCacheForGenre = [requestCache objectForKey:_genre];
     if (requestCacheForGenre == nil)
     {
         requestCacheForGenre = [[NSMutableDictionary alloc] init];
-        [_cache setObject:requestCacheForGenre forKey:op.genre];
+        [requestCache setObject:requestCacheForGenre forKey:_genre];
     }
     
     // cache data 
@@ -222,6 +224,8 @@ static YasoundDataCache* _main = nil;
     
     // return results to pending client
     NSDictionary* infoDico = nil;
+    
+    NSLog(@"YasoundDataCache : return server's updated data");
     [target performSelector:action withObject:radios withObject:infoDico];
     
     // process the next pending operation, if any
@@ -254,6 +258,7 @@ static YasoundDataCache* _main = nil;
 
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
+    NSLog(@"YasoundDataCache : return local cached data");
     [target performSelector:selector withObject:data withObject:infoDico];
 }
 
