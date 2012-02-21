@@ -37,10 +37,10 @@
 @interface YasoundDataCache : NSObject
 {
     NSMutableDictionary* _cacheRadios;
-    NSMutableArray* _pendingRadios;
+//    NSMutableArray* _pendingRadios;
 
     NSMutableDictionary* _cacheSongs;
-    NSMutableArray* _pendingSongs;
+//    NSMutableArray* _pendingSongs;
 }
 
 
