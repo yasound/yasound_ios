@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Radio.h"
 
 
 #define REQUEST_RADIOS_ALL @"radiosWithGenre"
@@ -21,8 +21,8 @@
 
 @interface YasoundDataCachePendingOp : NSObject
 
-@property (nonatomic, retain) NSString* REQUEST;
-@property (nonatomic, retain) NSString* genre;
+@property (nonatomic, retain) id object;
+@property (nonatomic, retain) id info;
 @property (nonatomic, retain) id target;
 @property (nonatomic) SEL action;
 @end
@@ -30,11 +30,17 @@
 
 
 
+
+
+
+
 @interface YasoundDataCache : NSObject
 {
-    NSMutableDictionary* _cache;
-    
-    NSMutableArray* _pending;
+    NSMutableDictionary* _cacheRadios;
+    NSMutableArray* _pendingRadios;
+
+    NSMutableDictionary* _cacheSongs;
+    NSMutableArray* _pendingSongs;
 }
 
 
@@ -54,9 +60,20 @@
 
 //
 // return local cache , if it's available, using a request key and a genre
-// request for an update to server if local cache is not available
+// request for an update to server if local cache is not available or expired
+//
+// - (void)selector:(NSArray*)data withInfo:(NSDictionnary*)info
 //
 - (void)requestRadios:(NSString*)REQUEST withGenre:(NSString*)genre target:(id)target action:(SEL)selector;
+
+
+//
+// return local cache , if it's available, using the radio ID
+// request for an update to server if local cache is not available or expired
+//
+// - (void)selector:(Song*)song withInfo:(NSDictionnary*)info
+//
+- (void)requestCurrentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 
 @end
