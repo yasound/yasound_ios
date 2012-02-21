@@ -457,7 +457,11 @@
         return;
     }
     
-    NSDictionary* userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"GET_URL", @"method", userData, @"userData", nil];
+  NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+  [userInfo setValue:target                         forKey:@"target"];
+  [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
+  [userInfo setValue:@"GET_URL"                     forKey:@"method"];
+  [userInfo setValue:userData                       forKey:@"userData"];
     
     ASIHTTPRequest* req = [[ASIHTTPRequest alloc] initWithURL:u];
     req.delegate = self;
@@ -477,7 +481,11 @@
         return;
     }
     
-    NSDictionary* userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"POST_DATA", @"method", userData, @"userData", nil];
+  NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+  [userInfo setValue:target forKey:@"target"];
+  [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
+  [userInfo setValue:@"POST_DATA" forKey:@"method"];
+  [userInfo setValue:userData forKey:@"userData"];
     
     ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
     [req addData:data forKey:key];
@@ -499,7 +507,12 @@
         return;
     }
     
-    NSDictionary* userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", @"POST_DATA", @"method", userData, @"userData", nil];
+  NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+  [userInfo setValue:target forKey:@"target"];
+  [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
+  [userInfo setValue:@"POST_DATA" forKey:@"method"];
+  [userInfo setValue:userData forKey:@"userData"];
+  
     
     ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
     [req addData:data forKey:key];

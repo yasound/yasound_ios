@@ -208,7 +208,7 @@
 
 - (void)onUpdate:(NSTimer*)timer
 {
-  [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
+  [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:) userData:@"currentSOngForRadio_userData"];
 }
 
 

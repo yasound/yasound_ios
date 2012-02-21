@@ -259,7 +259,6 @@
 #ifdef TEST_FAKE
     return;
 #endif
-    
     NSError* error = [info valueForKey:@"error"];
     if (error)
     {
