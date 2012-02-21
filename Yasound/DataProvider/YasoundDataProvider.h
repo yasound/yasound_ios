@@ -83,6 +83,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)reloadUserRadio;
 
 - (void)friendsWithTarget:(id)target action:(SEL)selector;
+- (void)friendsWithTarget:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector;
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
