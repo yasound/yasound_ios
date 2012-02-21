@@ -11,7 +11,8 @@
 
 
 // 300 seconds = 5 min
-#define TIMEOUT_INTERVAL 300
+#define RADIOS_TIMEOUT_INTERVAL 60
+#define CURRENTSONGS_TIMEOUT_INTERVAL 60
 
 #define GENRE_NIL @"GENRE_NIL"
 
@@ -192,14 +193,14 @@ static YasoundDataCache* _main = nil;
     
     // expiration date for the newly received data
     NSDate* date = [NSDate date];
-    NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_INTERVAL];
+    NSDate* timeout = [date dateByAddingTimeInterval:RADIOS_TIMEOUT_INTERVAL];
     
     // get/create dico for request
-    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:op.object];
+    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:[NSNumber numberWithInteger:op.object]];
     if (requestCache == nil)
     {
         requestCache = [[NSMutableDictionary alloc] init];
-        [_cacheRadios setObject:requestCache forKey:op.object];
+        [_cacheRadios setObject:requestCache forKey:[NSNumber numberWithInteger:op.object]];
     }
     
     // get/create dico for request/genre
@@ -317,7 +318,7 @@ static YasoundDataCache* _main = nil;
 - (Song*)cachedSongForRadio:(Radio*)radio
 {
     // get cache
-    NSDictionary* requestCache = [_cacheSongs objectForKey:radio];
+    NSDictionary* requestCache = [_cacheSongs objectForKey:[NSNumber numberWithInteger:radio]];
     if (requestCache == nil)
         return nil;
     
@@ -375,14 +376,15 @@ static YasoundDataCache* _main = nil;
     
     // expiration date for the newly received data
     NSDate* date = [NSDate date];
-    NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_INTERVAL];
+    NSDate* timeout = [date dateByAddingTimeInterval:CURRENTSONGS_TIMEOUT_INTERVAL];
     
     // get/create dico for request
-    NSMutableDictionary* requestCache = [_cacheSongs objectForKey:op.object];
+    NSMutableDictionary* requestCache = [_cacheSongs objectForKey:[NSNumber numberWithInteger:op.object]];
     if (requestCache == nil)
     {
         requestCache = [[NSMutableDictionary alloc] init];
-        [_cacheSongs setObject:requestCache forKey:op.object];
+        [_cacheSongs setObject:requestCache forKey:[NSNumber numberWithInteger:op.object]];
+  //      [_cacheSongs setObject:requestCache forKey:@"prout"];
     }
     
     // cache data 

@@ -8,6 +8,9 @@
 
 #import "RadioSelectionTableViewCell.h"
 #import "BundleFileManager.h"
+#import "YasoundDataCache.h"
+
+
 
 @interface RadioSelectionTableViewCell (internal_update)
 
@@ -208,7 +211,7 @@
 
 - (void)onUpdate:(NSTimer*)timer
 {
-  [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:) userData:@"currentSOngForRadio_userData"];
+    [[YasoundDataCache main] requestCurrentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
 }
 
 
