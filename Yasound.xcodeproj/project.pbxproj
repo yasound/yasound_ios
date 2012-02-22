@@ -50,6 +50,11 @@
 		40274BC41491287900F26008 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40274BC61491287D00F26008 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40274BC71491288100F26008 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
+		405ACE1B14F5551000DCB97A /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
+		405ACE1C14F5551000DCB97A /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
+		405ACE1D14F5551000DCB97A /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
+		405ACE1E14F5551000DCB97A /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
+		405ACE1F14F5551000DCB97A /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
 		40A98AE714C74C3F00999793 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
 		40A98AE814C74C3F00999793 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
 		40A98AE914C74C3F00999793 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
@@ -1604,6 +1609,8 @@
 		40274B7D1491048900F26008 /* Container.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Container.m; sourceTree = "<group>"; };
 		40274B7E1491048900F26008 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		40274B7F1491048900F26008 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		405ACE1914F5551000DCB97A /* YasoundSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundSong.h; sourceTree = "<group>"; };
+		405ACE1A14F5551000DCB97A /* YasoundSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundSong.m; sourceTree = "<group>"; };
 		40A98AE514C74C3E00999793 /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserTableViewCell.h; path = RadioSelection/UserTableViewCell.h; sourceTree = "<group>"; };
 		40A98AE614C74C3F00999793 /* UserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserTableViewCell.m; path = RadioSelection/UserTableViewCell.m; sourceTree = "<group>"; };
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
@@ -2350,6 +2357,8 @@
 				40EAA55714D85EF60000621C /* RadioListeningStat.m */,
 				40EAA55C14DA980F0000621C /* LeaderBoardEntry.h */,
 				40EAA55D14DA980F0000621C /* LeaderBoardEntry.m */,
+				405ACE1914F5551000DCB97A /* YasoundSong.h */,
+				405ACE1A14F5551000DCB97A /* YasoundSong.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4322,6 +4331,7 @@
 				BCE7518D14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC914ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901314F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
+				405ACE1F14F5551000DCB97A /* YasoundSong.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4462,6 +4472,7 @@
 				BCE7518A14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC614ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901014F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
+				405ACE1C14F5551000DCB97A /* YasoundSong.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4603,6 +4614,7 @@
 				BCE7518C14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC814ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901214F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
+				405ACE1E14F5551000DCB97A /* YasoundSong.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4743,6 +4755,7 @@
 				BCE7518914EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC514ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C900F14F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
+				405ACE1B14F5551000DCB97A /* YasoundSong.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4884,6 +4897,7 @@
 				BCE7518B14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC714ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901114F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
+				405ACE1D14F5551000DCB97A /* YasoundSong.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

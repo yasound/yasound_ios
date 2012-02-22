@@ -500,8 +500,9 @@ static YasoundDataProvider* _main = nil;
   {
     [target performSelector:selector withObject:_user withObject:finalInfo];
   }
-
 }
+
+
 
 
 
@@ -1176,6 +1177,16 @@ static YasoundDataProvider* _main = nil;
   Auth* auth = self.apiKeyAuth;
   NSString* url = [NSString stringWithFormat:@"api/v1/upload_song/%@/", songId];
   [_communicator postData:song withKey:@"song" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withProgress:progressDelegate];
+}
+
+- (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector
+{
+  if (!playlist)
+    return;
+  
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = [NSString stringWithFormat:@"api/v1/playlist/%@/matched_song", playlist.id];
+  [_communicator getObjectsWithClass:[YasoundSong class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 @end
