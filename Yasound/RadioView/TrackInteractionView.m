@@ -122,6 +122,14 @@
     NSString *link = [mgr generateLink:_song.artist 
                                  album:_song.album 
                                   song:_song.name];
+    
+    if (!link) 
+    {
+        // let's retry without album
+        link = [mgr generateLink:_song.artist 
+                           album:@""
+                            song:_song.name];
+    }
     [mgr release];
     
     if (link) 
