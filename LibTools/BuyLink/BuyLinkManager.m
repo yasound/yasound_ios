@@ -46,10 +46,14 @@
 -(NSString *) generateLink: (NSString *) artist album:(NSString *)album song:(NSString *)song
 {
   NSString *tradeUrl = nil;
+  NSString *artistSanitized = [artist stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+  NSString *albumSanitized = [album stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+  NSString *songSanitized = [song stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+    
   NSString *term = [NSString stringWithFormat:@"%@ %@ %@",
-                    artist,
-                    album,
-                    song];
+                    artistSanitized,
+                    albumSanitized,
+                    songSanitized];
   
   NSString *urlString =[NSString stringWithFormat:@"%@?term=%@&entity=musicTrack&limit=1&country=FR",ITUNES_BASE_URL, [term stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
   NSURL *url = [NSURL URLWithString:urlString];
