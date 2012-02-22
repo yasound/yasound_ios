@@ -81,7 +81,7 @@
     
     url = [self URLWithURL:url andParams:params];
     
-    NSLog(@"url: %@", url.absoluteString);
+    // NSLog(@"url: %@", url.absoluteString);
     return url;
 }
 

@@ -561,9 +561,16 @@ static YasoundDataProvider* _main = nil;
 
 - (void)friendsWithTarget:(id)target action:(SEL)selector
 {
-  Auth* auth = self.apiKeyAuth;
-  [_communicator getObjectsWithClass:[User class] withURL:@"/api/v1/friend" absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    [self friendsWithTarget:target action:selector userData:nil];
 }
+
+
+- (void)friendsWithTarget:(id)target action:(SEL)selector userData:(id)userData
+{
+    Auth* auth = self.apiKeyAuth;
+    [_communicator getObjectsWithClass:[User class] withURL:@"/api/v1/friend" absolute:NO notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+}
+
 
 - (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {

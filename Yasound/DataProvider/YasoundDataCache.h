@@ -37,10 +37,8 @@
 @interface YasoundDataCache : NSObject
 {
     NSMutableDictionary* _cacheRadios;
-    NSMutableArray* _pendingRadios;
-
     NSMutableDictionary* _cacheSongs;
-    NSMutableArray* _pendingSongs;
+    NSMutableDictionary* _cacheFriends;
 }
 
 
@@ -55,7 +53,10 @@
 
 
 // be carreful, empty the whole local cache
-- (void)clearAll:(BOOL)yesImSure;
+- (void)clearRadiosAll;
+
+- (void)clearCurrentSongs;
+- (void)clearFriends;
 
 
 //
@@ -74,6 +75,9 @@
 // - (void)selector:(Song*)song withInfo:(NSDictionnary*)info
 //
 - (void)requestCurrentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+
+
+- (void)requestFriendsWithTarget:(id)target action:(SEL)selector;
 
 
 @end
