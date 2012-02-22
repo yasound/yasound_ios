@@ -676,6 +676,16 @@
 		BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC71F624147FEC6F00DAE4BD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
+		BC82062414F4FA4400FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82062214F4FA4400FAE05E /* ProgrammingViewController.m */; };
+		BC82062514F4FA4400FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82062214F4FA4400FAE05E /* ProgrammingViewController.m */; };
+		BC82062614F4FA4400FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82062214F4FA4400FAE05E /* ProgrammingViewController.m */; };
+		BC82062714F4FA4400FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82062214F4FA4400FAE05E /* ProgrammingViewController.m */; };
+		BC82062814F4FA4400FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82062214F4FA4400FAE05E /* ProgrammingViewController.m */; };
+		BC82062914F4FA4400FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82062314F4FA4400FAE05E /* ProgrammingViewController.xib */; };
+		BC82062A14F4FA4400FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82062314F4FA4400FAE05E /* ProgrammingViewController.xib */; };
+		BC82062B14F4FA4400FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82062314F4FA4400FAE05E /* ProgrammingViewController.xib */; };
+		BC82062C14F4FA4400FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82062314F4FA4400FAE05E /* ProgrammingViewController.xib */; };
+		BC82062D14F4FA4400FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82062314F4FA4400FAE05E /* ProgrammingViewController.xib */; };
 		BC828AD614B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		BC828AD714B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		BC828AD814B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
@@ -1777,6 +1787,9 @@
 		BC71F586147F97DA00DAE4BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F588147F9CD900DAE4BD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		BC71F635147FEC6F00DAE4BD /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC82062114F4FA4400FAE05E /* ProgrammingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingViewController.h; path = Programming/ProgrammingViewController.h; sourceTree = "<group>"; };
+		BC82062214F4FA4400FAE05E /* ProgrammingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingViewController.m; path = Programming/ProgrammingViewController.m; sourceTree = "<group>"; };
+		BC82062314F4FA4400FAE05E /* ProgrammingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingViewController.xib; path = Programming/ProgrammingViewController.xib; sourceTree = "<group>"; };
 		BC828AD314B49E9500763558 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BC828AD414B49E9500763558 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		BC828AD514B49E9500763558 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -2024,8 +2037,8 @@
 		BCE751EF14ED5E4200056916 /* CellRowGoldInter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRowGoldInter@2x.png"; sourceTree = "<group>"; };
 		BCE751F014ED5E4200056916 /* CellRowGoldLast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRowGoldLast.png; sourceTree = "<group>"; };
 		BCE751F114ED5E4200056916 /* CellRowGoldLast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRowGoldLast@2x.png"; sourceTree = "<group>"; };
-		BCF3588314E07A87003594BF /* ScrollingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollingLabel.h; path = Yasound/Gui/ScrollingLabel.h; sourceTree = "<group>"; };
-		BCF3588414E07A87003594BF /* ScrollingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollingLabel.m; path = Yasound/Gui/ScrollingLabel.m; sourceTree = "<group>"; };
+		BCF3588314E07A87003594BF /* ScrollingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingLabel.h; sourceTree = "<group>"; };
+		BCF3588414E07A87003594BF /* ScrollingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingLabel.m; sourceTree = "<group>"; };
 		BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSearchViewController.h; path = RadioSelection/RadioSearchViewController.h; sourceTree = "<group>"; };
 		BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSearchViewController.m; path = RadioSelection/RadioSearchViewController.m; sourceTree = "<group>"; };
 		BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSearchViewController.xib; path = RadioSelection/RadioSearchViewController.xib; sourceTree = "<group>"; };
@@ -2597,6 +2610,16 @@
 			name = "My Yasound";
 			sourceTree = "<group>";
 		};
+		BC82062014F4F7EA00FAE05E /* Programming */ = {
+			isa = PBXGroup;
+			children = (
+				BC82062114F4FA4400FAE05E /* ProgrammingViewController.h */,
+				BC82062214F4FA4400FAE05E /* ProgrammingViewController.m */,
+				BC82062314F4FA4400FAE05E /* ProgrammingViewController.xib */,
+			);
+			name = Programming;
+			sourceTree = "<group>";
+		};
 		BC88905614D0BC70004CCE04 /* BarItems */ = {
 			isa = PBXGroup;
 			children = (
@@ -3155,6 +3178,8 @@
 		BCFECFE61468439900BA20D9 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
+				BCF3588314E07A87003594BF /* ScrollingLabel.h */,
+				BCF3588414E07A87003594BF /* ScrollingLabel.m */,
 				BCE7518714EC1DBF00056916 /* AdaptiveLabel.h */,
 				BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */,
 				BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */,
@@ -3193,8 +3218,6 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
-				BCF3588314E07A87003594BF /* ScrollingLabel.h */,
-				BCF3588414E07A87003594BF /* ScrollingLabel.m */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,
@@ -3247,6 +3270,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
+				BC82062014F4F7EA00FAE05E /* Programming */,
 				BCBAB48D14A22FEC00CF922A /* Settings */,
 				40AAEC4714921ACE0031B39D /* DataProvider */,
 				BCFECFE31468439900BA20D9 /* Audio */,
@@ -3587,6 +3611,7 @@
 				BC524F1F14EEC25A001B4FC5 /* btnBuyDown@2x.png in Resources */,
 				BC524F2414EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2914EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
+				BC82062D14F4FA4400FAE05E /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3735,6 +3760,7 @@
 				BC524F1C14EEC25A001B4FC5 /* btnBuyDown@2x.png in Resources */,
 				BC524F2114EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2614EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
+				BC82062A14F4FA4400FAE05E /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3883,6 +3909,7 @@
 				BC524F1E14EEC25A001B4FC5 /* btnBuyDown@2x.png in Resources */,
 				BC524F2314EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2814EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
+				BC82062C14F4FA4400FAE05E /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4031,6 +4058,7 @@
 				BC524F1B14EEC25A001B4FC5 /* btnBuyDown@2x.png in Resources */,
 				BC524F2014EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2514EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
+				BC82062914F4FA4400FAE05E /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4179,6 +4207,7 @@
 				BC524F1D14EEC25A001B4FC5 /* btnBuyDown@2x.png in Resources */,
 				BC524F2214EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2714EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
+				BC82062B14F4FA4400FAE05E /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4322,6 +4351,7 @@
 				BCE7518D14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC914ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901314F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
+				BC82062814F4FA4400FAE05E /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4462,6 +4492,7 @@
 				BCE7518A14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC614ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901014F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
+				BC82062514F4FA4400FAE05E /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4603,6 +4634,7 @@
 				BCE7518C14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC814ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901214F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
+				BC82062714F4FA4400FAE05E /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4743,6 +4775,7 @@
 				BCE7518914EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC514ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C900F14F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
+				BC82062414F4FA4400FAE05E /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4884,6 +4917,7 @@
 				BCE7518B14EC1DBF00056916 /* AdaptiveLabel.m in Sources */,
 				40104FC714ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901114F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
+				BC82062614F4FA4400FAE05E /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
