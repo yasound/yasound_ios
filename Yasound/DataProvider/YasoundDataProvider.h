@@ -19,6 +19,7 @@
 #import "RadioListeningStat.h"
 #import "LeaderBoardEntry.h"
 #import "Playlist.h"
+#import "YasoundSong.h"
 
 #define USE_YASOUND_LOCAL_SERVER 0
 
@@ -168,5 +169,7 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)uploadSong:(NSData*)songData songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
 
+// Get matched songs for a playlist. Returns a NSArray of YasoundSong objects
+- (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
 
 @end
