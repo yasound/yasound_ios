@@ -73,15 +73,25 @@
         return;
     
     // merge all song arrays
-    self.matchedSongs = [[NSArray alloc] initWithArray:[_data objectAtIndex:0]];
+    self.matchedSongs = [[NSMutableArray alloc] init];
     
-    for (int i = 1; i < _nbPlaylists; i++)
-        self.matchedSongs = [self.matchedSongs arrayByAddingObjectsFromArray:[_data objectAtIndex:1]];
+    for (NSInteger i = 0; i < _nbPlaylists; i++)
+    {
+        NSArray* songs = [_data objectAtIndex:i];
+        
+        for (Song* song in songs)
+        {
+            [self.matchedSongs addObject:song];
+        }
+    }
+    
+    self.matchedSongs = [self.matchedSongs sortedArrayUsingSelector:@selector(nameCompare:)];
     
     [_tableView reloadData];
 
     [ActivityAlertView close];
 }
+
 
 
 
@@ -157,6 +167,53 @@
 
 
 
+
+
+
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
+{
+    
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    [tempArray addObject:@"A"];
+    [tempArray addObject:@"B"];
+    [tempArray addObject:@"C"];
+    [tempArray addObject:@"D"];
+    [tempArray addObject:@"E"];
+    [tempArray addObject:@"F"];
+    [tempArray addObject:@"G"];
+    [tempArray addObject:@"H"];
+    [tempArray addObject:@"I"];
+    [tempArray addObject:@"J"];
+    [tempArray addObject:@"K"];
+    [tempArray addObject:@"L"];
+    [tempArray addObject:@"M"];
+    [tempArray addObject:@"N"];
+    [tempArray addObject:@"O"];
+    [tempArray addObject:@"P"];
+    [tempArray addObject:@"Q"];
+    [tempArray addObject:@"R"];
+    [tempArray addObject:@"S"];
+    [tempArray addObject:@"T"];
+    [tempArray addObject:@"U"];
+    [tempArray addObject:@"V"];
+    [tempArray addObject:@"W"];
+    [tempArray addObject:@"X"];
+    [tempArray addObject:@"Y"];
+    [tempArray addObject:@"Z"];
+    
+    return tempArray;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
+{
+    return index;
+}
+
+
+
+
 //
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 //{
@@ -190,70 +247,13 @@
 
 
 
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//    if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CHART))
-//    {
-//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ChartBackground.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//        return;
-//    }
-//    
-//    
-//    NSInteger nbRows;
-//    if (indexPath.section == SECTION_STATS)
-//    {
-//        nbRows = 1;
-//    }
-//    else if (indexPath.section == SECTION_LEADERBOARD) 
-//    {
-//        nbRows = [_leaderboard count];
-//    }
-//    
-//    
-//    LeaderBoardEntry* entry = [_leaderboard objectAtIndex:indexPath.row];
-//    BOOL isUserRadio = [entry isUserRadio];
-//    
-//    if (nbRows == 1)
-//    {
-//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else if (indexPath.row == 0)
-//    {
-//        UIImageView* view = nil;
-//        if (isUserRadio)
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldFirst.png"]];
-//        else
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else if (indexPath.row == (nbRows -1))
-//    {
-//        UIImageView* view = nil;
-//        if (isUserRadio)
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldLast.png"]];
-//        else
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else
-//    {
-//        UIImageView* view = nil;
-//        if (isUserRadio)
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldInter.png"]];
-//        else
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    
-//}
-//
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainRow.png"]];
+    cell.backgroundView = view;
+    [view release];
+}
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -270,7 +270,12 @@
     Song* song = [self.matchedSongs objectAtIndex:indexPath.row];
     
     cell.textLabel.text = song.name;
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
     
     
     return cell;

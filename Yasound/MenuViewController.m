@@ -453,7 +453,8 @@
 //            PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:NO];
 //            [self.navigationController pushViewController:view animated:YES];
 //            [view release];
-//          YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
+
+//            YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
 //          [appDelegate goToMyRadioPlaylistsFromViewController:self];
             
             ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil];

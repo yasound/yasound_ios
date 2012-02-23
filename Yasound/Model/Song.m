@@ -59,6 +59,27 @@
   }
 }
 
+
+- (NSComparisonResult)nameCompare:(Song*)second
+{
+    return [self.name compare:second.name];
+}
+
+- (NSComparisonResult)ArtistNameCompare:(Song*)second
+{
+    return [self.artist compare:second.artist];
+}
+
+- (NSComparisonResult)AlbumNameCompare:(Song*)second
+{
+    return [self.album compare:second.album];
+}
+
+
+
+
+
+
 @end
 
 

@@ -31,6 +31,10 @@ typedef enum
 - (SongFrequencyType)frequencyType;
 - (void)setFrequencyType:(SongFrequencyType)f;
 
+- (NSComparisonResult)nameCompare:(Song*)second;
+- (NSComparisonResult)ArtistNameCompare:(Song*)second;
+- (NSComparisonResult)AlbumNameCompare:(Song*)second;
+
 @end
 
 @interface SongStatus : Model
