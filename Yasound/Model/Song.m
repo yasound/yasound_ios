@@ -60,9 +60,69 @@
 }
 
 
+
+
+- (NSString*)getFirstSignificantWord:(NSString*)field
+{
+    BOOL first = YES;
+    CFStringRef string = field;
+    CFLocaleRef locale = CFLocaleCopyCurrent();
+    
+    CFStringTokenizerRef tokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, string, CFRangeMake(0, CFStringGetLength(string)), kCFStringTokenizerUnitWord, locale);
+    
+    CFStringTokenizerTokenType tokenType = kCFStringTokenizerTokenNone;
+    unsigned tokensFound = 0;
+    
+    while(kCFStringTokenizerTokenNone != (tokenType = CFStringTokenizerAdvanceToNextToken(tokenizer))) 
+    {
+        CFRange tokenRange = CFStringTokenizerGetCurrentTokenRange(tokenizer);
+        CFStringRef tokenValue = CFStringCreateWithSubstring(kCFAllocatorDefault, string, tokenRange);
+
+        if (first)
+        {
+            first = NO;
+            
+            NSString* token = (NSString*)tokenValue;
+            
+            if ( ([token compare:@"the" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
+                ([token compare:@"a" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
+                ([token compare:@"le" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
+                ([token compare:@"la" options:NSCaseInsensitiveSearch] != NSOrderedSame))
+            {
+                [tokenValue autorelease];
+                CFRelease(tokenizer);
+                CFRelease(locale);   
+                return token;
+            }
+            
+            CFRelease(tokenValue);
+            ++tokensFound;
+        }
+        else
+        {
+            //CFRelease(tokenValue);
+            [tokenValue autorelease];
+
+            CFRelease(tokenizer);
+            CFRelease(locale);   
+
+            return tokenValue;
+        }
+    }
+    
+    // Clean up
+    CFRelease(tokenizer);
+    CFRelease(locale);   
+    return nil;
+}
+
+
 - (NSComparisonResult)nameCompare:(Song*)second
 {
-    return [self.name compare:second.name];
+    NSString* firstItem = [self getFirstSignificantWord:self.name];
+    NSString* secondItem = [self getFirstSignificantWord:second.name];
+
+    return [firstItem compare:secondItem];
 }
 
 - (NSComparisonResult)ArtistNameCompare:(Song*)second

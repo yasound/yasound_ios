@@ -1403,6 +1403,16 @@
 		BCDC981314ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
 		BCDC981414ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
 		BCDC981514ACB44300D54631 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
+		BCDFD34114F6A00900706E06 /* SongViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDFD33F14F6A00900706E06 /* SongViewControllerViewController.m */; };
+		BCDFD34214F6A00900706E06 /* SongViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDFD33F14F6A00900706E06 /* SongViewControllerViewController.m */; };
+		BCDFD34314F6A00900706E06 /* SongViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDFD33F14F6A00900706E06 /* SongViewControllerViewController.m */; };
+		BCDFD34414F6A00900706E06 /* SongViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDFD33F14F6A00900706E06 /* SongViewControllerViewController.m */; };
+		BCDFD34514F6A00900706E06 /* SongViewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDFD33F14F6A00900706E06 /* SongViewControllerViewController.m */; };
+		BCDFD34614F6A00900706E06 /* SongViewControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDFD34014F6A00900706E06 /* SongViewControllerViewController.xib */; };
+		BCDFD34714F6A00900706E06 /* SongViewControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDFD34014F6A00900706E06 /* SongViewControllerViewController.xib */; };
+		BCDFD34814F6A00900706E06 /* SongViewControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDFD34014F6A00900706E06 /* SongViewControllerViewController.xib */; };
+		BCDFD34914F6A00900706E06 /* SongViewControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDFD34014F6A00900706E06 /* SongViewControllerViewController.xib */; };
+		BCDFD34A14F6A00900706E06 /* SongViewControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDFD34014F6A00900706E06 /* SongViewControllerViewController.xib */; };
 		BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -2044,6 +2054,9 @@
 		BCDC980D14ACB44300D54631 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = Login/SignupViewController.h; sourceTree = "<group>"; };
 		BCDC980E14ACB44300D54631 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = Login/SignupViewController.m; sourceTree = "<group>"; };
 		BCDC980F14ACB44300D54631 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = Login/SignupViewController.xib; sourceTree = "<group>"; };
+		BCDFD33E14F6A00900706E06 /* SongViewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongViewControllerViewController.h; path = Programming/SongViewControllerViewController.h; sourceTree = "<group>"; };
+		BCDFD33F14F6A00900706E06 /* SongViewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongViewControllerViewController.m; path = Programming/SongViewControllerViewController.m; sourceTree = "<group>"; };
+		BCDFD34014F6A00900706E06 /* SongViewControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongViewControllerViewController.xib; path = Programming/SongViewControllerViewController.xib; sourceTree = "<group>"; };
 		BCE46322148FD96300422448 /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
 		BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
 		BCE7518714EC1DBF00056916 /* AdaptiveLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdaptiveLabel.h; sourceTree = "<group>"; };
@@ -2634,6 +2647,9 @@
 		BC82066E14F561C900FAE05E /* Programming */ = {
 			isa = PBXGroup;
 			children = (
+				BCDFD33E14F6A00900706E06 /* SongViewControllerViewController.h */,
+				BCDFD33F14F6A00900706E06 /* SongViewControllerViewController.m */,
+				BCDFD34014F6A00900706E06 /* SongViewControllerViewController.xib */,
 				BC82066F14F5620200FAE05E /* ProgrammingViewController.h */,
 				BC82067014F5620200FAE05E /* ProgrammingViewController.m */,
 				BC82067114F5620200FAE05E /* ProgrammingViewController.xib */,
@@ -3645,6 +3661,7 @@
 				BC82067B14F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
 				BC8206A714F67BE600FAE05E /* CellPlainRow.png in Resources */,
 				BC8206AC14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
+				BCDFD34A14F6A00900706E06 /* SongViewControllerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3796,6 +3813,7 @@
 				BC82067814F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
 				BC8206A414F67BE600FAE05E /* CellPlainRow.png in Resources */,
 				BC8206A914F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
+				BCDFD34714F6A00900706E06 /* SongViewControllerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3947,6 +3965,7 @@
 				BC82067A14F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
 				BC8206A614F67BE600FAE05E /* CellPlainRow.png in Resources */,
 				BC8206AB14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
+				BCDFD34914F6A00900706E06 /* SongViewControllerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4098,6 +4117,7 @@
 				BC82067714F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
 				BC8206A314F67BE600FAE05E /* CellPlainRow.png in Resources */,
 				BC8206A814F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
+				BCDFD34614F6A00900706E06 /* SongViewControllerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4249,6 +4269,7 @@
 				BC82067914F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
 				BC8206A514F67BE600FAE05E /* CellPlainRow.png in Resources */,
 				BC8206AA14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
+				BCDFD34814F6A00900706E06 /* SongViewControllerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4394,6 +4415,7 @@
 				BC5C901314F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 				405ACE1F14F5551000DCB97A /* YasoundSong.m in Sources */,
 				BC82067614F5620200FAE05E /* ProgrammingViewController.m in Sources */,
+				BCDFD34514F6A00900706E06 /* SongViewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4536,6 +4558,7 @@
 				BC5C901014F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 				405ACE1C14F5551000DCB97A /* YasoundSong.m in Sources */,
 				BC82067314F5620200FAE05E /* ProgrammingViewController.m in Sources */,
+				BCDFD34214F6A00900706E06 /* SongViewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4679,6 +4702,7 @@
 				BC5C901214F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 				405ACE1E14F5551000DCB97A /* YasoundSong.m in Sources */,
 				BC82067514F5620200FAE05E /* ProgrammingViewController.m in Sources */,
+				BCDFD34414F6A00900706E06 /* SongViewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4821,6 +4845,7 @@
 				BC5C900F14F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 				405ACE1B14F5551000DCB97A /* YasoundSong.m in Sources */,
 				BC82067214F5620200FAE05E /* ProgrammingViewController.m in Sources */,
+				BCDFD34114F6A00900706E06 /* SongViewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4964,6 +4989,7 @@
 				BC5C901114F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 				405ACE1D14F5551000DCB97A /* YasoundSong.m in Sources */,
 				BC82067414F5620200FAE05E /* ProgrammingViewController.m in Sources */,
+				BCDFD34314F6A00900706E06 /* SongViewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
