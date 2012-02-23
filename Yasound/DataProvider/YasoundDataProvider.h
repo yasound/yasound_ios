@@ -169,7 +169,9 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)uploadSong:(NSData*)songData songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
 
-// Get matched songs for a playlist. Returns a NSArray of YasoundSong objects
+// Get matched songs for a playlist. Returns a NSArray of Song objects
 - (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
+
+//- (void)searchSong:(NSString*)search target:(id)target action:(SEL)selector;
 
 @end

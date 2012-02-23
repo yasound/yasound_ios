@@ -8,6 +8,14 @@
 
 #import "Model.h"
 
+typedef enum 
+{
+  eSongFrequencyTypeLow = 0,
+  eSongFrequencyTypeNormal,
+  eSongFrequencyTypeHigh,
+  eSongFrequencyTypeNone,
+} SongFrequencyType;
+
 @interface Song : Model
 
 @property (retain, nonatomic) NSString* name;
@@ -16,6 +24,12 @@
 @property (retain, nonatomic) NSString* cover;
 @property (retain, nonatomic) NSNumber* song;
 @property (retain, nonatomic) NSNumber* need_sync;
+@property (retain, nonatomic) NSNumber* likes;
+@property (retain, nonatomic) NSDate* last_play_time;
+@property (retain, nonatomic) NSString* frequency;
+
+- (SongFrequencyType)frequencyType;
+- (void)setFrequencyType:(SongFrequencyType)f;
 
 @end
 
