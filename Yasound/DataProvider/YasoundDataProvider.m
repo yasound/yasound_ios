@@ -500,6 +500,7 @@ static YasoundDataProvider* _main = nil;
   {
     [target performSelector:selector withObject:_user withObject:finalInfo];
   }
+  
 }
 
 
@@ -1202,7 +1203,7 @@ static YasoundDataProvider* _main = nil;
     return;
   
   Auth* auth = self.apiKeyAuth;
-  NSString* url = @"api/v1/edit_song";
+  NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
   [_communicator updateObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
@@ -1212,7 +1213,7 @@ static YasoundDataProvider* _main = nil;
     return;
   
   Auth* auth = self.apiKeyAuth;
-  NSString* url = @"api/v1/edit_song";
+  NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
   [_communicator deleteObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
