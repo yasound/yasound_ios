@@ -153,6 +153,8 @@
 
 "PlaylistsViewController_FetchingPlaylists" = "Synchronizing playlists";
 
+"ProgrammingView_title" = "Programming";
+
 
 "MenuView_section_myradio" = "My Radio";
 "MenuView_section_radios" = "Radios";
@@ -170,6 +172,7 @@
 "MenuView_radios_search" = "Search";
 "MenuView_me_stats" = "My stats";
 "MenuView_me_playlists" = "Programming";
+"MenuView_me_programming" = "Programming";
 "MenuView_me_config" = "Settings";
 "MenuView_misc_legal" = "Terms of Use";
 "MenuView_misc_logout" = "Log out";
