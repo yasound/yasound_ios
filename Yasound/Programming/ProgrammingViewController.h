@@ -14,7 +14,13 @@
     IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
     IBOutlet UIToolbar* _toolbar;
-
+    
+    NSMutableArray* _data;
+    NSInteger _nbReceivedData;
+    NSInteger _nbPlaylists;
+    
 }
+
+@property (nonatomic, retain) NSArray* matchedSongs;
 
 @end

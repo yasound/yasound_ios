@@ -681,6 +681,16 @@
 		BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC71F624147FEC6F00DAE4BD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
+		BC82067214F5620200FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
+		BC82067314F5620200FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
+		BC82067414F5620200FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
+		BC82067514F5620200FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
+		BC82067614F5620200FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
+		BC82067714F5620200FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82067114F5620200FAE05E /* ProgrammingViewController.xib */; };
+		BC82067814F5620200FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82067114F5620200FAE05E /* ProgrammingViewController.xib */; };
+		BC82067914F5620200FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82067114F5620200FAE05E /* ProgrammingViewController.xib */; };
+		BC82067A14F5620200FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82067114F5620200FAE05E /* ProgrammingViewController.xib */; };
+		BC82067B14F5620200FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82067114F5620200FAE05E /* ProgrammingViewController.xib */; };
 		BC828AD614B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		BC828AD714B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		BC828AD814B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
@@ -1784,6 +1794,9 @@
 		BC71F586147F97DA00DAE4BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F588147F9CD900DAE4BD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		BC71F635147FEC6F00DAE4BD /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC82066F14F5620200FAE05E /* ProgrammingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingViewController.h; path = Programming/ProgrammingViewController.h; sourceTree = "<group>"; };
+		BC82067014F5620200FAE05E /* ProgrammingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingViewController.m; path = Programming/ProgrammingViewController.m; sourceTree = "<group>"; };
+		BC82067114F5620200FAE05E /* ProgrammingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingViewController.xib; path = Programming/ProgrammingViewController.xib; sourceTree = "<group>"; };
 		BC828AD314B49E9500763558 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BC828AD414B49E9500763558 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		BC828AD514B49E9500763558 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -2606,6 +2619,16 @@
 			name = "My Yasound";
 			sourceTree = "<group>";
 		};
+		BC82066E14F561C900FAE05E /* Programming */ = {
+			isa = PBXGroup;
+			children = (
+				BC82066F14F5620200FAE05E /* ProgrammingViewController.h */,
+				BC82067014F5620200FAE05E /* ProgrammingViewController.m */,
+				BC82067114F5620200FAE05E /* ProgrammingViewController.xib */,
+			);
+			name = Programming;
+			sourceTree = "<group>";
+		};
 		BC88905614D0BC70004CCE04 /* BarItems */ = {
 			isa = PBXGroup;
 			children = (
@@ -3256,6 +3279,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
+				BC82066E14F561C900FAE05E /* Programming */,
 				BCBAB48D14A22FEC00CF922A /* Settings */,
 				40AAEC4714921ACE0031B39D /* DataProvider */,
 				BCFECFE31468439900BA20D9 /* Audio */,
@@ -3596,6 +3620,7 @@
 				BC524F1F14EEC25A001B4FC5 /* btnBuyDown@2x.png in Resources */,
 				BC524F2414EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2914EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
+				BC82067B14F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3744,6 +3769,7 @@
 				BC524F1C14EEC25A001B4FC5 /* btnBuyDown@2x.png in Resources */,
 				BC524F2114EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2614EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
+				BC82067814F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3892,6 +3918,7 @@
 				BC524F1E14EEC25A001B4FC5 /* btnBuyDown@2x.png in Resources */,
 				BC524F2314EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2814EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
+				BC82067A14F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4040,6 +4067,7 @@
 				BC524F1B14EEC25A001B4FC5 /* btnBuyDown@2x.png in Resources */,
 				BC524F2014EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2514EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
+				BC82067714F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4188,6 +4216,7 @@
 				BC524F1D14EEC25A001B4FC5 /* btnBuyDown@2x.png in Resources */,
 				BC524F2214EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2714EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
+				BC82067914F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4332,6 +4361,7 @@
 				40104FC914ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901314F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 				405ACE1F14F5551000DCB97A /* YasoundSong.m in Sources */,
+				BC82067614F5620200FAE05E /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4473,6 +4503,7 @@
 				40104FC614ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901014F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 				405ACE1C14F5551000DCB97A /* YasoundSong.m in Sources */,
+				BC82067314F5620200FAE05E /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4615,6 +4646,7 @@
 				40104FC814ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901214F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 				405ACE1E14F5551000DCB97A /* YasoundSong.m in Sources */,
+				BC82067514F5620200FAE05E /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4756,6 +4788,7 @@
 				40104FC514ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C900F14F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 				405ACE1B14F5551000DCB97A /* YasoundSong.m in Sources */,
+				BC82067214F5620200FAE05E /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4898,6 +4931,7 @@
 				40104FC714ED3CFA00996326 /* LikeViewCell.m in Sources */,
 				BC5C901114F2A4EB00C7D01E /* YasoundDataCache.m in Sources */,
 				405ACE1D14F5551000DCB97A /* YasoundSong.m in Sources */,
+				BC82067414F5620200FAE05E /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

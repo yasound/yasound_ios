@@ -7,19 +7,29 @@
 //
 
 #import "ProgrammingViewController.h"
+#import "ActivityAlertView.h"
+#import "Radio.h"
+#import "YasoundDataProvider.h"
 
-@interface ProgrammingViewController ()
 
-@end
 
 @implementation ProgrammingViewController
+
+@synthesize matchedSongs;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        // Custom initialization
+        _data = [[NSMutableArray alloc] init];
+        [_data retain];
+        
+        _nbReceivedData = 0;
+        _nbPlaylists = 0;
+        
     }
     return self;
 }
@@ -32,7 +42,48 @@
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    
+
+    [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
+    
+    Radio* radio = [YasoundDataProvider main].radio;
+    [[YasoundDataProvider main] playlistsForRadio:radio target:self action:@selector(receivePlaylists:withInfo:)];
 }
+
+
+- (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
+{
+    _nbPlaylists = playlists.count;
+    for (Playlist* playlist in playlists) 
+    {
+        [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)]; 
+        // didReceiveMatchedSongs:(NSArray*)matched_songs info:
+    }
+}
+
+
+- (void)matchedSongsReceveived:(NSArray*)songs info:(NSDictionary*)info
+{
+    _nbReceivedData++;
+    [_data addObject:songs];
+    
+    if (_nbReceivedData != _nbPlaylists)
+        return;
+    
+    // merge all song arrays
+    self.matchedSongs = [[NSArray alloc] initWithArray:[_data objectAtIndex:0]];
+    
+    for (int i = 1; i < _nbPlaylists; i++)
+        self.matchedSongs = [self.matchedSongs arrayByaddingobjectsfromarray:[_data objectAtIndex:1]];
+    
+    [_tableView reloadData];
+
+    [ActivityAlertView close];
+}
+
+
+
+
 
 - (void)viewDidUnload
 {
@@ -73,7 +124,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    YasoundSong
+    ICI
 }
 
 
