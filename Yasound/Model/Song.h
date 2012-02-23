@@ -10,8 +10,7 @@
 
 typedef enum 
 {
-  eSongFrequencyTypeLow = 0,
-  eSongFrequencyTypeNormal,
+  eSongFrequencyTypeNormal = 0,
   eSongFrequencyTypeHigh,
   eSongFrequencyTypeNone,
 } SongFrequencyType;
@@ -26,10 +25,14 @@ typedef enum
 @property (retain, nonatomic) NSNumber* need_sync;
 @property (retain, nonatomic) NSNumber* likes;
 @property (retain, nonatomic) NSDate* last_play_time;
-@property (retain, nonatomic) NSString* frequency;
+@property (retain, nonatomic) NSNumber* frequency;
+@property (retain, nonatomic) NSNumber* enabled;
 
 - (SongFrequencyType)frequencyType;
 - (void)setFrequencyType:(SongFrequencyType)f;
+
+- (BOOL)isSongEnabled;
+- (void)enableSong:(BOOL)on;
 
 - (NSString*)getFirstSignificantWord;
 - (NSComparisonResult)nameCompare:(Song*)second;
@@ -37,6 +40,10 @@ typedef enum
 - (NSComparisonResult)AlbumNameCompare:(Song*)second;
 
 @end
+
+
+
+
 
 @interface SongStatus : Model
 

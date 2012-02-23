@@ -640,7 +640,7 @@
     SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
     Model* obj            = [userinfo valueForKey:@"object"];
     NSDictionary* userData = [userinfo valueForKey:@"userData"];
-    
+  
     [self notifytarget:target byCalling:selector withUserData:userData withObject:obj andSuccess:succeeded];
 }
 

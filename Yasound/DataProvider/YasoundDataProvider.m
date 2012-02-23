@@ -501,23 +501,7 @@ static YasoundDataProvider* _main = nil;
     [target performSelector:selector withObject:_user withObject:finalInfo];
   }
   
-  //MatTest
-//  [self searchSong:@"praising" target:self action:@selector(didReceiveSearchSongs:withInfo:)];
 }
-
-//MatTest
-//- (void)didReceiveSearchSongs:(NSArray*)searchedSongs withInfo:(NSDictionary*)info
-//{
-//  if (!searchedSongs)
-//    return;
-//  
-//  int i = 0;
-//  for (YasoundSong* s in searchedSongs) 
-//  {
-//    NSLog(@"%d %@ - %@ - %@", i, s.artist_name, s.album_name, s.name);
-//    i++;
-//  }
-//}
 
 
 
@@ -1213,14 +1197,45 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[Song class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-//- (void)searchSong:(NSString*)search target:(id)target action:(SEL)selector
-//{
-//  Auth* auth = self.apiKeyAuth;
-//  NSString* url = @"api/v1/search_song";
-//  NSMutableArray* params = [[NSMutableArray alloc] init];
-//  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
-//  [_communicator getObjectsWithClass:[YasoundSong class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
-//}
+- (void)updateSong:(Song*)song target:(id)target action:(SEL)selector
+{
+  if (!song)
+    return;
+  
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
+  [_communicator updateObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector
+{
+  if (!song)
+    return;
+  
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
+  [_communicator deleteObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)searchSong:(NSString*)search target:(id)target action:(SEL)selector
+{
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = @"api/v1/search_song";
+  NSMutableArray* params = [[NSMutableArray alloc] init];
+  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
+  [_communicator getObjectsWithClass:[YasoundSong class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)addSong:(YasoundSong*)yasoundSong target:(id)target action:(SEL)selector
+{
+  if (!yasoundSong)
+    return;
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = @"api/v1/add_song";
+  NSMutableArray* params = [[NSMutableArray alloc] init];
+  [params addObject:[NSString stringWithFormat:@"yasound_song=%@", yasoundSong.id]];
+  [_communicator postToURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
 
 @end
 

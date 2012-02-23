@@ -8,10 +8,6 @@
 
 #import "Song.h"
 
-#define FREQUENCY_TYPE_LOW_STRING     @"L"
-#define FREQUENCY_TYPE_NORMAL_STRING  @"N"
-#define FREQUENCY_TYPE_HIGH_STRING    @"H"
-
 @implementation Song
 
 @synthesize name;
@@ -23,40 +19,47 @@
 @synthesize likes;
 @synthesize last_play_time;
 @synthesize frequency;
+@synthesize enabled;
 
 - (SongFrequencyType)frequencyType
 {
-  if ([self.frequency isEqualToString:FREQUENCY_TYPE_LOW_STRING])
-    return eSongFrequencyTypeLow;
-  else if ([self.frequency isEqualToString:FREQUENCY_TYPE_NORMAL_STRING])
-    return eSongFrequencyTypeNormal;
-  else if ([self.frequency isEqualToString:FREQUENCY_TYPE_HIGH_STRING])
+  if (!self.frequency)
+    return eSongFrequencyTypeNone;
+  
+  float f = [self.frequency floatValue];
+  if (f > 0.75)
     return eSongFrequencyTypeHigh;
   
-  return eSongFrequencyTypeNone;
+  return eSongFrequencyTypeNormal;
 }
 
 - (void)setFrequencyType:(SongFrequencyType)f
 {
   switch (f) 
   {
-    case eSongFrequencyTypeLow:
-      self.frequency = FREQUENCY_TYPE_LOW_STRING;
-      break;
-      
     case eSongFrequencyTypeNormal:
-      self.frequency = FREQUENCY_TYPE_NORMAL_STRING;
+      self.frequency = [NSNumber numberWithFloat:0.5];
       break;
       
     case eSongFrequencyTypeHigh:
-      self.frequency = FREQUENCY_TYPE_HIGH_STRING;
+      self.frequency = [NSNumber numberWithFloat:1];
       break;
       
     case eSongFrequencyTypeNone:
     default:
-      self.frequency = @"";
+      self.frequency = [NSNumber numberWithFloat:0];
       break;
   }
+}
+
+- (BOOL)isSongEnabled
+{
+  return [self.enabled boolValue];
+}
+
+- (void)enableSong:(BOOL)on
+{
+  self.enabled = [NSNumber numberWithBool:on];
 }
 
 
