@@ -1231,9 +1231,8 @@ static YasoundDataProvider* _main = nil;
   if (!yasoundSong)
     return;
   Auth* auth = self.apiKeyAuth;
-  NSString* url = @"api/v1/add_song";
-  NSMutableArray* params = [[NSMutableArray alloc] init];
-  [params addObject:[NSString stringWithFormat:@"yasound_song=%@", yasoundSong.id]];
+  int playlistIndex = 0;
+  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/playlist/%d/add_song/%@", _radio, playlistIndex, yasoundSong.id];
   [_communicator postToURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
