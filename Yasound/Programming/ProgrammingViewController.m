@@ -326,12 +326,20 @@ static NSMutableArray* gIndexMap = nil;
     
     cell.textLabel.text = song.name;
     cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    if ([song isSongEnabled])
+    {
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+    }
+    else 
+    {
+        cell.textLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
+    }
+    
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-    cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-    
     
     return cell;
 }

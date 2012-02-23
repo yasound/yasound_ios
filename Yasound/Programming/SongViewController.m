@@ -12,14 +12,14 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 
-#define NB_ROWS 7
+#define NB_ROWS 4
 #define ROW_COVER 0
-#define ROW_NAME 1
-#define ROW_ARTIST 2
-#define ROW_ALBUM 3
-#define ROW_NBLIKES 4
-#define ROW_LAST_READ 5
-#define ROW_FREQUENCY 6
+#define ROW_NBLIKES 1
+#define ROW_LAST_READ 2
+#define ROW_FREQUENCY 3
+
+#define BORDER 8
+#define COVER_SIZE 96
 
 
 @implementation SongViewController
@@ -87,7 +87,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {    
     if (indexPath.row == ROW_COVER)
-        return 148;
+        return (COVER_SIZE + 2*BORDER);
     
     return 44;
 }
@@ -97,8 +97,7 @@
 {
     if (indexPath.row == ROW_COVER)
     {
-        UIView* view = [[UIView alloc] init];
-        view.backgroundColor = [UIColor clearColor];
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainSongCardRow.png"]];
         cell.backgroundView = view;
         [view release];
         return;
@@ -122,6 +121,7 @@
         if (cell == nil) 
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 
+        // image cover
         WebImageView* imageView = nil;
         if (self.song.cover)
         {        
@@ -135,11 +135,28 @@
             imageView = [[UIImageView alloc] initWithImage:[sheet image]];
         }
         
-        CGFloat size = 128;
-        CGFloat height = 148;
-        imageView.frame = CGRectMake((cell.frame.size.width - size) / 2.f, (height - size) / 2.f, size, size);
+        CGFloat size = COVER_SIZE;
+        CGFloat height = (COVER_SIZE + 2*BORDER);
+        imageView.frame = CGRectMake(BORDER, (height - size) / 2.f, size, size);
         
         [cell addSubview:imageView];
+        
+        // name, artist, album
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UILabel* label = [sheet makeLabel];
+        label.text = song.name;
+        [cell addSubview:label];
+
+        sheet = [[Theme theme] stylesheetForKey:@"SongView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        label = [sheet makeLabel];
+        label.text = song.artist;
+        [cell addSubview:label];
+
+        sheet = [[Theme theme] stylesheetForKey:@"SongView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        label = [sheet makeLabel];
+        label.text = song.album;
+        [cell addSubview:label];
+
         return cell;
         
     }
@@ -154,22 +171,24 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    if (indexPath.row == ROW_NAME)
-    {
-        cell.textLabel.text = NSLocalizedString(@"SongView_name", nil);
-        cell.detailTextLabel.text = self.song.name;
-    }
-    else if (indexPath.row == ROW_ARTIST)
-    {
-        cell.textLabel.text = NSLocalizedString(@"SongView_artist", nil);
-        cell.detailTextLabel.text = self.song.artist;
-    }
-    else if (indexPath.row == ROW_ALBUM)
-    {
-        cell.textLabel.text = NSLocalizedString(@"SongView_album", nil);
-        cell.detailTextLabel.text = self.song.album;
-    }
-    else if (indexPath.row == ROW_NBLIKES)
+//    if (indexPath.row == ROW_NAME)
+//    {
+//        cell.textLabel.text = NSLocalizedString(@"SongView_name", nil);
+//        cell.detailTextLabel.text = self.song.name;
+//    }
+//    else if (indexPath.row == ROW_ARTIST)
+//    {
+//        cell.textLabel.text = NSLocalizedString(@"SongView_artist", nil);
+//        cell.detailTextLabel.text = self.song.artist;
+//    }
+//    else if (indexPath.row == ROW_ALBUM)
+//    {
+//        cell.textLabel.text = NSLocalizedString(@"SongView_album", nil);
+//        cell.detailTextLabel.text = self.song.album;
+//    }
+//    else 
+    
+    if (indexPath.row == ROW_NBLIKES)
     {
         cell.textLabel.text = NSLocalizedString(@"SongView_nbLikes", nil);
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.song.likes];

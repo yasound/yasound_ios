@@ -717,6 +717,16 @@
 		BC84C71C14F6A94300EB5370 /* SongViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC84C71414F6A94300EB5370 /* SongViewController.xib */; };
 		BC84C71D14F6A94300EB5370 /* SongViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC84C71414F6A94300EB5370 /* SongViewController.xib */; };
 		BC84C71E14F6A94300EB5370 /* SongViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC84C71414F6A94300EB5370 /* SongViewController.xib */; };
+		BC84C72714F6B47800EB5370 /* CellPlainSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72514F6B47800EB5370 /* CellPlainSongCardRow.png */; };
+		BC84C72814F6B47800EB5370 /* CellPlainSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72514F6B47800EB5370 /* CellPlainSongCardRow.png */; };
+		BC84C72914F6B47800EB5370 /* CellPlainSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72514F6B47800EB5370 /* CellPlainSongCardRow.png */; };
+		BC84C72A14F6B47800EB5370 /* CellPlainSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72514F6B47800EB5370 /* CellPlainSongCardRow.png */; };
+		BC84C72B14F6B47800EB5370 /* CellPlainSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72514F6B47800EB5370 /* CellPlainSongCardRow.png */; };
+		BC84C72C14F6B47800EB5370 /* CellPlainSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72614F6B47800EB5370 /* CellPlainSongCardRow@2x.png */; };
+		BC84C72D14F6B47800EB5370 /* CellPlainSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72614F6B47800EB5370 /* CellPlainSongCardRow@2x.png */; };
+		BC84C72E14F6B47800EB5370 /* CellPlainSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72614F6B47800EB5370 /* CellPlainSongCardRow@2x.png */; };
+		BC84C72F14F6B47800EB5370 /* CellPlainSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72614F6B47800EB5370 /* CellPlainSongCardRow@2x.png */; };
+		BC84C73014F6B47800EB5370 /* CellPlainSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72614F6B47800EB5370 /* CellPlainSongCardRow@2x.png */; };
 		BC88905914D0BC70004CCE04 /* barItemMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = BC88905714D0BC70004CCE04 /* barItemMenu.png */; };
 		BC88905A14D0BC70004CCE04 /* barItemMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = BC88905714D0BC70004CCE04 /* barItemMenu.png */; };
 		BC88905B14D0BC70004CCE04 /* barItemMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = BC88905714D0BC70004CCE04 /* barItemMenu.png */; };
@@ -1825,6 +1835,8 @@
 		BC84C71214F6A94300EB5370 /* SongViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongViewController.h; path = Programming/SongViewController.h; sourceTree = "<group>"; };
 		BC84C71314F6A94300EB5370 /* SongViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongViewController.m; path = Programming/SongViewController.m; sourceTree = "<group>"; };
 		BC84C71414F6A94300EB5370 /* SongViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongViewController.xib; path = Programming/SongViewController.xib; sourceTree = "<group>"; };
+		BC84C72514F6B47800EB5370 /* CellPlainSongCardRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellPlainSongCardRow.png; sourceTree = "<group>"; };
+		BC84C72614F6B47800EB5370 /* CellPlainSongCardRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellPlainSongCardRow@2x.png"; sourceTree = "<group>"; };
 		BC88905714D0BC70004CCE04 /* barItemMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemMenu.png; sourceTree = "<group>"; };
 		BC88905814D0BC70004CCE04 /* barItemMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemMenu@2x.png"; sourceTree = "<group>"; };
 		BC8B083214926F22007E1307 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
@@ -2662,6 +2674,8 @@
 			children = (
 				BC8206A114F67BE600FAE05E /* CellPlainRow.png */,
 				BC8206A214F67BE600FAE05E /* CellPlainRow@2x.png */,
+				BC84C72514F6B47800EB5370 /* CellPlainSongCardRow.png */,
+				BC84C72614F6B47800EB5370 /* CellPlainSongCardRow@2x.png */,
 			);
 			path = TableViewPlain;
 			sourceTree = "<group>";
@@ -3662,6 +3676,8 @@
 				BC8206A714F67BE600FAE05E /* CellPlainRow.png in Resources */,
 				BC8206AC14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
 				BC84C71E14F6A94300EB5370 /* SongViewController.xib in Resources */,
+				BC84C72B14F6B47800EB5370 /* CellPlainSongCardRow.png in Resources */,
+				BC84C73014F6B47800EB5370 /* CellPlainSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3814,6 +3830,8 @@
 				BC8206A414F67BE600FAE05E /* CellPlainRow.png in Resources */,
 				BC8206A914F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
 				BC84C71B14F6A94300EB5370 /* SongViewController.xib in Resources */,
+				BC84C72814F6B47800EB5370 /* CellPlainSongCardRow.png in Resources */,
+				BC84C72D14F6B47800EB5370 /* CellPlainSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3966,6 +3984,8 @@
 				BC8206A614F67BE600FAE05E /* CellPlainRow.png in Resources */,
 				BC8206AB14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
 				BC84C71D14F6A94300EB5370 /* SongViewController.xib in Resources */,
+				BC84C72A14F6B47800EB5370 /* CellPlainSongCardRow.png in Resources */,
+				BC84C72F14F6B47800EB5370 /* CellPlainSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4118,6 +4138,8 @@
 				BC8206A314F67BE600FAE05E /* CellPlainRow.png in Resources */,
 				BC8206A814F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
 				BC84C71A14F6A94300EB5370 /* SongViewController.xib in Resources */,
+				BC84C72714F6B47800EB5370 /* CellPlainSongCardRow.png in Resources */,
+				BC84C72C14F6B47800EB5370 /* CellPlainSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4270,6 +4292,8 @@
 				BC8206A514F67BE600FAE05E /* CellPlainRow.png in Resources */,
 				BC8206AA14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
 				BC84C71C14F6A94300EB5370 /* SongViewController.xib in Resources */,
+				BC84C72914F6B47800EB5370 /* CellPlainSongCardRow.png in Resources */,
+				BC84C72E14F6B47800EB5370 /* CellPlainSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5147,7 +5171,7 @@
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"USE_COREGRAPHIC_LAYER=1",
-					"USE_COREGRAPHIC_SHADOW=0",
+					"USE_COREGRAPHIC_SHADOW=1",
 					"MUTE_RADIO=1",
 					"$(inherited)",
 				);
@@ -5172,7 +5196,7 @@
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"USE_COREGRAPHIC_LAYER=1",
-					"USE_COREGRAPHIC_SHADOW=0",
+					"USE_COREGRAPHIC_SHADOW=1",
 					"MUTE_RADIO=1",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
