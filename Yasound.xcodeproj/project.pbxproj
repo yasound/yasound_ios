@@ -691,6 +691,16 @@
 		BC82067914F5620200FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82067114F5620200FAE05E /* ProgrammingViewController.xib */; };
 		BC82067A14F5620200FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82067114F5620200FAE05E /* ProgrammingViewController.xib */; };
 		BC82067B14F5620200FAE05E /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82067114F5620200FAE05E /* ProgrammingViewController.xib */; };
+		BC8206A314F67BE600FAE05E /* CellPlainRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A114F67BE600FAE05E /* CellPlainRow.png */; };
+		BC8206A414F67BE600FAE05E /* CellPlainRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A114F67BE600FAE05E /* CellPlainRow.png */; };
+		BC8206A514F67BE600FAE05E /* CellPlainRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A114F67BE600FAE05E /* CellPlainRow.png */; };
+		BC8206A614F67BE600FAE05E /* CellPlainRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A114F67BE600FAE05E /* CellPlainRow.png */; };
+		BC8206A714F67BE600FAE05E /* CellPlainRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A114F67BE600FAE05E /* CellPlainRow.png */; };
+		BC8206A814F67BE600FAE05E /* CellPlainRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A214F67BE600FAE05E /* CellPlainRow@2x.png */; };
+		BC8206A914F67BE600FAE05E /* CellPlainRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A214F67BE600FAE05E /* CellPlainRow@2x.png */; };
+		BC8206AA14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A214F67BE600FAE05E /* CellPlainRow@2x.png */; };
+		BC8206AB14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A214F67BE600FAE05E /* CellPlainRow@2x.png */; };
+		BC8206AC14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A214F67BE600FAE05E /* CellPlainRow@2x.png */; };
 		BC828AD614B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		BC828AD714B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		BC828AD814B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
@@ -1797,6 +1807,8 @@
 		BC82066F14F5620200FAE05E /* ProgrammingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingViewController.h; path = Programming/ProgrammingViewController.h; sourceTree = "<group>"; };
 		BC82067014F5620200FAE05E /* ProgrammingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingViewController.m; path = Programming/ProgrammingViewController.m; sourceTree = "<group>"; };
 		BC82067114F5620200FAE05E /* ProgrammingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingViewController.xib; path = Programming/ProgrammingViewController.xib; sourceTree = "<group>"; };
+		BC8206A114F67BE600FAE05E /* CellPlainRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellPlainRow.png; sourceTree = "<group>"; };
+		BC8206A214F67BE600FAE05E /* CellPlainRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellPlainRow@2x.png"; sourceTree = "<group>"; };
 		BC828AD314B49E9500763558 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BC828AD414B49E9500763558 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		BC828AD514B49E9500763558 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -2629,6 +2641,15 @@
 			name = Programming;
 			sourceTree = "<group>";
 		};
+		BC82069414F67B8A00FAE05E /* TableViewPlain */ = {
+			isa = PBXGroup;
+			children = (
+				BC8206A114F67BE600FAE05E /* CellPlainRow.png */,
+				BC8206A214F67BE600FAE05E /* CellPlainRow@2x.png */,
+			);
+			path = TableViewPlain;
+			sourceTree = "<group>";
+		};
 		BC88905614D0BC70004CCE04 /* BarItems */ = {
 			isa = PBXGroup;
 			children = (
@@ -3147,6 +3168,7 @@
 			children = (
 				BCE751B014EC2DC100056916 /* logo.png */,
 				BCE751B114EC2DC100056916 /* logo@2x.png */,
+				BC82069414F67B8A00FAE05E /* TableViewPlain */,
 				BC9F4A0A14E6AC5400008AA3 /* TableView */,
 				BC33F43714DDC6A100D4C67F /* Default.png */,
 				BC33F43814DDC6A100D4C67F /* Default@2x.png */,
@@ -3621,6 +3643,8 @@
 				BC524F2414EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2914EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
 				BC82067B14F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
+				BC8206A714F67BE600FAE05E /* CellPlainRow.png in Resources */,
+				BC8206AC14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3770,6 +3794,8 @@
 				BC524F2114EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2614EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
 				BC82067814F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
+				BC8206A414F67BE600FAE05E /* CellPlainRow.png in Resources */,
+				BC8206A914F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3919,6 +3945,8 @@
 				BC524F2314EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2814EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
 				BC82067A14F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
+				BC8206A614F67BE600FAE05E /* CellPlainRow.png in Resources */,
+				BC8206AB14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4068,6 +4096,8 @@
 				BC524F2014EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2514EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
 				BC82067714F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
+				BC8206A314F67BE600FAE05E /* CellPlainRow.png in Resources */,
+				BC8206A814F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4217,6 +4247,8 @@
 				BC524F2214EEC25A001B4FC5 /* btnBuyUp.png in Resources */,
 				BC524F2714EEC25A001B4FC5 /* btnBuyUp@2x.png in Resources */,
 				BC82067914F5620200FAE05E /* ProgrammingViewController.xib in Resources */,
+				BC8206A514F67BE600FAE05E /* CellPlainRow.png in Resources */,
+				BC8206AA14F67BE600FAE05E /* CellPlainRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5085,7 +5117,6 @@
 		BC3FA77A14E93B660055AB4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -5104,7 +5135,6 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = YasoundD;
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5112,7 +5142,6 @@
 		BC3FA77B14E93B660055AB4A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -5130,7 +5159,6 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = YasoundD;
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -5205,7 +5233,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
+				PROVISIONING_PROFILE = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
@@ -5233,7 +5261,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
+				PROVISIONING_PROFILE = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5391,7 +5419,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "F67033E3-E714-4605-A3E3-45DAD7E81CA0";
+				PROVISIONING_PROFILE = "3FA1D1C5-35FF-4012-8810-C0C6D6C83061";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5416,7 +5444,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "F67033E3-E714-4605-A3E3-45DAD7E81CA0";
+				PROVISIONING_PROFILE = "3FA1D1C5-35FF-4012-8810-C0C6D6C83061";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

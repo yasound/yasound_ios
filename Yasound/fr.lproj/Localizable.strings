@@ -290,9 +290,9 @@
 "User_Likes_Song_Label" = "aime.";
 
 
-"UnableToFindSongOniTunes_Title" = "Désolé !";
-"UnableToFindSongOniTunes_Message" = "L'iTunes store ne connait pas cette chanson";
-"UnableToFindSongOniTunes_OK" = "D'accord";
+"UnableToFindSongOniTunes_Title" = "Désolé";
+"UnableToFindSongOniTunes_Message" = "Nous n'avons pas pu faire la correspondance avec l'iTunes Store.";
+"UnableToFindSongOniTunes_OK" = "OK";
 
 "UserTableViewCell_ListeningTo" = "écoute";
 "UserTableViewCell_Radio" = "radio:";
