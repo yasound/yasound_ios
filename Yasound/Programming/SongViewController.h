@@ -1,5 +1,5 @@
 //
-//  SongViewControllerViewController.h
+//  SongViewController.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 23/02/12.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Song.h"
 
-@interface SongViewControllerViewController : UIViewController
+@interface SongViewController : UIViewController
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;

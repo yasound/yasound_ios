@@ -10,7 +10,7 @@
 #import "ActivityAlertView.h"
 #import "Radio.h"
 #import "YasoundDataProvider.h"
-
+#import "SongViewController.h"
 
 
 @implementation ProgrammingViewController
@@ -339,7 +339,11 @@ static NSMutableArray* gIndexMap = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    Song* song = [self.matchedSongs objectAtIndex:indexPath.row];
+    SongViewController* view = [[SongViewController alloc] initWithNibName:@"SongViewController" bundle:nil song:song];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+
 }
 
 
