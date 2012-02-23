@@ -66,9 +66,15 @@
       self.radioStatus = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
       NSString* status;
       if (self.user.current_radio)
-          status = [NSString stringWithFormat:@"listening to %@", self.user.current_radio.name];
+      {
+        NSString* listeningTo = NSLocalizedString(@"UserTableViewCell_ListeningTo", nil);
+          status = [NSString stringWithFormat:@"%@ %@", listeningTo, self.user.current_radio.name];
+      }
       else if (self.user.own_radio)
-          status = [NSString stringWithFormat:@"radio: %@", self.user.own_radio.name];
+      {
+        NSString* radioHeader = NSLocalizedString(@"UserTableViewCell_Radio", nil);
+          status = [NSString stringWithFormat:@"%@ %@", radioHeader, self.user.own_radio.name];
+      }
       self.radioStatus.text = status;
       [self addSubview:self.radioStatus];
 
@@ -128,9 +134,15 @@
     // radio status
     NSString* status;
     if (self.user.current_radio)
-        status = [NSString stringWithFormat:@"listening to %@", self.user.current_radio.name];
+    {
+      NSString* listeningTo = NSLocalizedString(@"UserTableViewCell_ListeningTo", nil);
+        status = [NSString stringWithFormat:@"%@ %@", listeningTo, self.user.current_radio.name];
+    }
     else if (self.user.own_radio)
-        status = [NSString stringWithFormat:@"radio: %@", self.user.own_radio.name];
+    {
+      NSString* radioHeader = NSLocalizedString(@"UserTableViewCell_Radio", nil);
+        status = [NSString stringWithFormat:@"%@ %@", radioHeader, self.user.own_radio.name];
+    }
     self.radioStatus.text = status;
 }
 

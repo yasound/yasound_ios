@@ -19,6 +19,7 @@
 #import "RadioListeningStat.h"
 #import "LeaderBoardEntry.h"
 #import "Playlist.h"
+#import "YasoundSong.h"
 
 #define USE_YASOUND_LOCAL_SERVER 0
 
@@ -83,6 +84,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)reloadUserRadio;
 
 - (void)friendsWithTarget:(id)target action:(SEL)selector;
+- (void)friendsWithTarget:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector;
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
@@ -93,6 +95,13 @@ taskStatus stringToStatus(NSString* str);
 - (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
+
+- (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+- (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+- (void)selectedRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+- (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+- (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+- (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector;
 
@@ -116,6 +125,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 - (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
@@ -159,5 +169,7 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)uploadSong:(NSData*)songData songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
 
+// Get matched songs for a playlist. Returns a NSArray of YasoundSong objects
+- (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
 
 @end

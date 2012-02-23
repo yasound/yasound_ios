@@ -13,6 +13,7 @@
 #import "Theme.h"
 #import "ActivityModelessSpinner.h"
 #import "UserTableViewCell.h"
+#import "YasoundDataCache.h"
 
 #import "FacebookSessionManager.h"
 
@@ -99,8 +100,8 @@
 - (void)updateFriends
 {
 #ifndef FAKE_USERS
-    [[YasoundDataProvider main] friendsWithTarget:self action:@selector(receiveFriends:info:)];
     [[ActivityModelessSpinner main] addRef];
+    [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(receiveFriends:info:)];
 #endif
 }
 

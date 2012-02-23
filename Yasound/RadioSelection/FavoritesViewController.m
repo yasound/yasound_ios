@@ -11,7 +11,7 @@
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "YasoundDataProvider.h"
+#import "YasoundDataCache.h"
 #import "RadioSelectionTableViewCell.h"
 #import "ActivityModelessSpinner.h"
 
@@ -70,8 +70,8 @@
     if ([AudioStreamManager main].currentRadio == nil)
         _nowPlayingButton.enabled = NO;
     
-    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(receiveRadios:info:)];
     [[ActivityModelessSpinner main] addRef];
+    [[YasoundDataCache main] requestRadios:REQUEST_RADIOS_FAVORITES withGenre:nil target:self action:@selector(receiveRadios:info:)];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

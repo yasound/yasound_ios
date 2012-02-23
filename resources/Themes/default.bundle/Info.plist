@@ -829,14 +829,6 @@
 			<integer>74</integer>
 			<key>y</key>
 			<integer>32</integer>
-			<key>normal</key>
-			<string>btnBuyUp</string>
-			<key>highlighted</key>
-			<string>btnBuyDown</string>
-			<key>type</key>
-			<string>png</string>
-			<key>path</key>
-			<string>images/Header/Buttons</string>
 		</dict>
 		<key>ViewContainer</key>
 		<dict>

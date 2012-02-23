@@ -153,6 +153,9 @@
 
 "PlaylistsViewController_FetchingPlaylists" = "Synchronisation des listes de chansons";
 
+"ProgrammingView_title" = "Programmation";
+
+
 "MenuView_section_myradio" = "Ma Radio";
 "MenuView_section_radios" = "Radios";
 "MenuView_section_me" = "Moi";
@@ -169,6 +172,7 @@
 "MenuView_radios_search" = "Recherche";
 "MenuView_me_stats" = "Mes statistiques";
 "MenuView_me_playlists" = "Ma programmation";
+"MenuView_me_programming" = "Ma programmation";
 "MenuView_me_config" = "Paramètres";
 "MenuView_misc_legal" = "Conditions d'utilisation";
 "MenuView_misc_logout" = "Se déconnecter";
@@ -289,5 +293,8 @@
 "UnableToFindSongOniTunes_Title" = "Désolé";
 "UnableToFindSongOniTunes_Message" = "Nous n'avons pas pu faire la correspondance avec l'iTunes Store.";
 "UnableToFindSongOniTunes_OK" = "OK";
+
+"UserTableViewCell_ListeningTo" = "écoute";
+"UserTableViewCell_Radio" = "radio:";
 
 
