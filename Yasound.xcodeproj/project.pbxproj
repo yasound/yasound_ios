@@ -4863,7 +4863,6 @@
 		BC3FA77A14E93B660055AB4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4882,7 +4881,6 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = YasoundD;
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4890,7 +4888,6 @@
 		BC3FA77B14E93B660055AB4A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4908,7 +4905,6 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = YasoundD;
-				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4983,7 +4979,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
+				PROVISIONING_PROFILE = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
@@ -5011,7 +5007,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "25F0E499-A251-4EC2-BBF5-25AD7DED7AA8";
+				PROVISIONING_PROFILE = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5169,7 +5165,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "F67033E3-E714-4605-A3E3-45DAD7E81CA0";
+				PROVISIONING_PROFILE = "3FA1D1C5-35FF-4012-8810-C0C6D6C83061";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5194,7 +5190,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "F67033E3-E714-4605-A3E3-45DAD7E81CA0";
+				PROVISIONING_PROFILE = "3FA1D1C5-35FF-4012-8810-C0C6D6C83061";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
