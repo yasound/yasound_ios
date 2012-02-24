@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Song.h"
+#import "RCSwitchClone.h"
 
 @interface SongViewController : UIViewController
 {
@@ -15,7 +16,8 @@
     IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
     
-    UISwitch* _switcher;
+    UISwitch* _switchEnabled;
+    UISwitch* _switchFrequency;
 }
 
 @property (nonatomic, retain) Song* song;

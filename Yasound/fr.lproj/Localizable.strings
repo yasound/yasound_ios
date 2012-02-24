@@ -161,7 +161,7 @@
 "SongView_album" = "album";
 "SongView_nbLikes" = "likes";
 "SongView_lastRead" = "dernière lecture";
-"SongView_frequency" = "fréquence de lecture";
+"SongView_frequency" = "haute fréquence de lecture";
 "SongView_frequency_normal" = "normale";
 "SongView_frequency_high" = "haute";
 "SongView_frequency_none" = "-";
