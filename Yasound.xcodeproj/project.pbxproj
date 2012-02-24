@@ -240,6 +240,31 @@
 		BC10398614F7DA49007C5496 /* btn_slider_track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC10393814F7DA49007C5496 /* btn_slider_track@2x.png */; };
 		BC10398714F7DA49007C5496 /* btn_slider_track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC10393814F7DA49007C5496 /* btn_slider_track@2x.png */; };
 		BC10398814F7DA49007C5496 /* btn_slider_track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC10393814F7DA49007C5496 /* btn_slider_track@2x.png */; };
+		BC10398B14F7E483007C5496 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10398A14F7E483007C5496 /* SongUploader.m */; };
+		BC10398C14F7E483007C5496 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10398A14F7E483007C5496 /* SongUploader.m */; };
+		BC10398D14F7E483007C5496 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10398A14F7E483007C5496 /* SongUploader.m */; };
+		BC10398E14F7E483007C5496 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10398A14F7E483007C5496 /* SongUploader.m */; };
+		BC10398F14F7E483007C5496 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10398A14F7E483007C5496 /* SongUploader.m */; };
+		BC10399314F7E4A0007C5496 /* SongUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10399114F7E4A0007C5496 /* SongUploadViewController.m */; };
+		BC10399414F7E4A0007C5496 /* SongUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10399114F7E4A0007C5496 /* SongUploadViewController.m */; };
+		BC10399514F7E4A0007C5496 /* SongUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10399114F7E4A0007C5496 /* SongUploadViewController.m */; };
+		BC10399614F7E4A0007C5496 /* SongUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10399114F7E4A0007C5496 /* SongUploadViewController.m */; };
+		BC10399714F7E4A0007C5496 /* SongUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10399114F7E4A0007C5496 /* SongUploadViewController.m */; };
+		BC10399814F7E4A0007C5496 /* SongUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */; };
+		BC10399914F7E4A0007C5496 /* SongUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */; };
+		BC10399A14F7E4A0007C5496 /* SongUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */; };
+		BC10399B14F7E4A0007C5496 /* SongUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */; };
+		BC10399C14F7E4A0007C5496 /* SongUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */; };
+		BC1039A514F7E79A007C5496 /* barItemSynchronize.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A314F7E79A007C5496 /* barItemSynchronize.png */; };
+		BC1039A614F7E79A007C5496 /* barItemSynchronize.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A314F7E79A007C5496 /* barItemSynchronize.png */; };
+		BC1039A714F7E79A007C5496 /* barItemSynchronize.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A314F7E79A007C5496 /* barItemSynchronize.png */; };
+		BC1039A814F7E79A007C5496 /* barItemSynchronize.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A314F7E79A007C5496 /* barItemSynchronize.png */; };
+		BC1039A914F7E79A007C5496 /* barItemSynchronize.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A314F7E79A007C5496 /* barItemSynchronize.png */; };
+		BC1039AA14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */; };
+		BC1039AB14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */; };
+		BC1039AC14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */; };
+		BC1039AD14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */; };
+		BC1039AE14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */; };
 		BC178DAA14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
 		BC178DAB14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
 		BC178DAC14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
@@ -1819,6 +1844,13 @@
 		BC10393614F7DA49007C5496 /* btn_slider_track_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_slider_track_pressed@2x.png"; path = "ThirdParties/RCSwitch/btn_slider_track_pressed@2x.png"; sourceTree = "<group>"; };
 		BC10393714F7DA49007C5496 /* btn_slider_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_slider_track.png; path = ThirdParties/RCSwitch/btn_slider_track.png; sourceTree = "<group>"; };
 		BC10393814F7DA49007C5496 /* btn_slider_track@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_slider_track@2x.png"; path = "ThirdParties/RCSwitch/btn_slider_track@2x.png"; sourceTree = "<group>"; };
+		BC10398914F7E483007C5496 /* SongUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongUploader.h; path = Programming/SongUploader.h; sourceTree = "<group>"; };
+		BC10398A14F7E483007C5496 /* SongUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongUploader.m; path = Programming/SongUploader.m; sourceTree = "<group>"; };
+		BC10399014F7E4A0007C5496 /* SongUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongUploadViewController.h; path = Programming/SongUploadViewController.h; sourceTree = "<group>"; };
+		BC10399114F7E4A0007C5496 /* SongUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongUploadViewController.m; path = Programming/SongUploadViewController.m; sourceTree = "<group>"; };
+		BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongUploadViewController.xib; path = Programming/SongUploadViewController.xib; sourceTree = "<group>"; };
+		BC1039A314F7E79A007C5496 /* barItemSynchronize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemSynchronize.png; sourceTree = "<group>"; };
+		BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemSynchronize@2x.png"; sourceTree = "<group>"; };
 		BC178DA714C5E99800B18420 /* CreateMyRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateMyRadio.h; path = Settings/CreateMyRadio.h; sourceTree = "<group>"; };
 		BC178DA814C5E99800B18420 /* CreateMyRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateMyRadio.m; path = Settings/CreateMyRadio.m; sourceTree = "<group>"; };
 		BC178DA914C5E99800B18420 /* CreateMyRadio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateMyRadio.xib; path = Settings/CreateMyRadio.xib; sourceTree = "<group>"; };
@@ -2819,6 +2851,11 @@
 				BC82066F14F5620200FAE05E /* ProgrammingViewController.h */,
 				BC82067014F5620200FAE05E /* ProgrammingViewController.m */,
 				BC82067114F5620200FAE05E /* ProgrammingViewController.xib */,
+				BC10398914F7E483007C5496 /* SongUploader.h */,
+				BC10398A14F7E483007C5496 /* SongUploader.m */,
+				BC10399014F7E4A0007C5496 /* SongUploadViewController.h */,
+				BC10399114F7E4A0007C5496 /* SongUploadViewController.m */,
+				BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */,
 			);
 			name = Programming;
 			sourceTree = "<group>";
@@ -2837,6 +2874,8 @@
 		BC88905614D0BC70004CCE04 /* BarItems */ = {
 			isa = PBXGroup;
 			children = (
+				BC1039A314F7E79A007C5496 /* barItemSynchronize.png */,
+				BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */,
 				BC88905714D0BC70004CCE04 /* barItemMenu.png */,
 				BC88905814D0BC70004CCE04 /* barItemMenu@2x.png */,
 			);
@@ -3849,6 +3888,9 @@
 				BC10397E14F7DA49007C5496 /* btn_slider_track_pressed@2x.png in Resources */,
 				BC10398314F7DA49007C5496 /* btn_slider_track.png in Resources */,
 				BC10398814F7DA49007C5496 /* btn_slider_track@2x.png in Resources */,
+				BC10399C14F7E4A0007C5496 /* SongUploadViewController.xib in Resources */,
+				BC1039A914F7E79A007C5496 /* barItemSynchronize.png in Resources */,
+				BC1039AE14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4019,6 +4061,9 @@
 				BC10397B14F7DA49007C5496 /* btn_slider_track_pressed@2x.png in Resources */,
 				BC10398014F7DA49007C5496 /* btn_slider_track.png in Resources */,
 				BC10398514F7DA49007C5496 /* btn_slider_track@2x.png in Resources */,
+				BC10399914F7E4A0007C5496 /* SongUploadViewController.xib in Resources */,
+				BC1039A614F7E79A007C5496 /* barItemSynchronize.png in Resources */,
+				BC1039AB14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4189,6 +4234,9 @@
 				BC10397D14F7DA49007C5496 /* btn_slider_track_pressed@2x.png in Resources */,
 				BC10398214F7DA49007C5496 /* btn_slider_track.png in Resources */,
 				BC10398714F7DA49007C5496 /* btn_slider_track@2x.png in Resources */,
+				BC10399B14F7E4A0007C5496 /* SongUploadViewController.xib in Resources */,
+				BC1039A814F7E79A007C5496 /* barItemSynchronize.png in Resources */,
+				BC1039AD14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4359,6 +4407,9 @@
 				BC10397A14F7DA49007C5496 /* btn_slider_track_pressed@2x.png in Resources */,
 				BC10397F14F7DA49007C5496 /* btn_slider_track.png in Resources */,
 				BC10398414F7DA49007C5496 /* btn_slider_track@2x.png in Resources */,
+				BC10399814F7E4A0007C5496 /* SongUploadViewController.xib in Resources */,
+				BC1039A514F7E79A007C5496 /* barItemSynchronize.png in Resources */,
+				BC1039AA14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4529,6 +4580,9 @@
 				BC10397C14F7DA49007C5496 /* btn_slider_track_pressed@2x.png in Resources */,
 				BC10398114F7DA49007C5496 /* btn_slider_track.png in Resources */,
 				BC10398614F7DA49007C5496 /* btn_slider_track@2x.png in Resources */,
+				BC10399A14F7E4A0007C5496 /* SongUploadViewController.xib in Resources */,
+				BC1039A714F7E79A007C5496 /* barItemSynchronize.png in Resources */,
+				BC1039AC14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4678,6 +4732,8 @@
 				BC10391E14F7DA38007C5496 /* RCSwitch.m in Sources */,
 				BC10392314F7DA38007C5496 /* RCSwitchClone.m in Sources */,
 				BC10392814F7DA38007C5496 /* RCSwitchOnOff.m in Sources */,
+				BC10398F14F7E483007C5496 /* SongUploader.m in Sources */,
+				BC10399714F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4824,6 +4880,8 @@
 				BC10391B14F7DA38007C5496 /* RCSwitch.m in Sources */,
 				BC10392014F7DA38007C5496 /* RCSwitchClone.m in Sources */,
 				BC10392514F7DA38007C5496 /* RCSwitchOnOff.m in Sources */,
+				BC10398C14F7E483007C5496 /* SongUploader.m in Sources */,
+				BC10399414F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4971,6 +5029,8 @@
 				BC10391D14F7DA38007C5496 /* RCSwitch.m in Sources */,
 				BC10392214F7DA38007C5496 /* RCSwitchClone.m in Sources */,
 				BC10392714F7DA38007C5496 /* RCSwitchOnOff.m in Sources */,
+				BC10398E14F7E483007C5496 /* SongUploader.m in Sources */,
+				BC10399614F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5117,6 +5177,8 @@
 				BC10391A14F7DA38007C5496 /* RCSwitch.m in Sources */,
 				BC10391F14F7DA38007C5496 /* RCSwitchClone.m in Sources */,
 				BC10392414F7DA38007C5496 /* RCSwitchOnOff.m in Sources */,
+				BC10398B14F7E483007C5496 /* SongUploader.m in Sources */,
+				BC10399314F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5264,6 +5326,8 @@
 				BC10391C14F7DA38007C5496 /* RCSwitch.m in Sources */,
 				BC10392114F7DA38007C5496 /* RCSwitchClone.m in Sources */,
 				BC10392614F7DA38007C5496 /* RCSwitchOnOff.m in Sources */,
+				BC10398D14F7E483007C5496 /* SongUploader.m in Sources */,
+				BC10399514F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
