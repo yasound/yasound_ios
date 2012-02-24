@@ -121,6 +121,9 @@
         if (cell == nil) 
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 
+        cell.selectionStyle  = UITableViewCellSelectionStyleNone;
+        
+
         // image cover
         WebImageView* imageView = nil;
         if (self.song.cover)
@@ -156,6 +159,20 @@
         label = [sheet makeLabel];
         label.text = song.album;
         [cell addSubview:label];
+        
+        // enable/disable
+        sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        label = [sheet makeLabel];
+        label.text = NSLocalizedString(@"SongView_enable_label", nil);
+        [cell addSubview:label];
+
+        sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_switch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        _switchEnabled = [[UISwitch alloc] init];
+        _switchEnabled.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, _switchEnabled.frame.size.width, _switchEnabled.frame.size.height);
+        [cell addSubview:_switchEnabled];
+        
+        _switchEnabled.on = [self.song isSongEnabled];
+        [_switchEnabled addTarget:self action:@selector(onSwitchEnabled:)  forControlEvents:UIControlEventValueChanged];
 
         return cell;
         
@@ -170,6 +187,8 @@
     {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
 //    if (indexPath.row == ROW_NAME)
 //    {
@@ -196,7 +215,7 @@
     else if (indexPath.row == ROW_LAST_READ)
     {
         cell.textLabel.text = NSLocalizedString(@"SongView_lastRead", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.song.last_play_time];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self dateToString:self.song.last_play_time]];
     }
     else if (indexPath.row == ROW_FREQUENCY)
     {
@@ -204,14 +223,22 @@
         
         NSString* frequencyStr = nil;
         
-        if (self.song.frequency == eSongFrequencyTypeNormal)
-            frequencyStr = NSLocalizedString(@"SongView_frequency_normal", nil);
-        else if (self.song.frequency == eSongFrequencyTypeHigh)
-            frequencyStr = NSLocalizedString(@"SongView_frequency_high", nil);
-        else 
-            frequencyStr = NSLocalizedString(@"SongView_frequency_none", nil);
+        _switchFrequency = [[UISwitch alloc] init];
+        _switchFrequency.frame = CGRectMake(cell.frame.size.width - _switchFrequency.frame.size.width - BORDER, (cell.frame.size.height - _switchFrequency.frame.size.height) / 2.f, _switchFrequency.frame.size.width, _switchFrequency.frame.size.height);
+        [cell addSubview:_switchFrequency];
+        
 
-        cell.detailTextLabel.text = frequencyStr;
+        if (self.song.frequency == eSongFrequencyTypeNormal)
+            _switchFrequency.on = NO;
+        else if (self.song.frequency == eSongFrequencyTypeHigh)
+            _switchFrequency.on = YES;
+        else 
+        {
+            _switchFrequency.on = NO;
+            _switchFrequency.enabled = NO;
+        }
+        
+        [_switchFrequency addTarget:self action:@selector(onSwitchFrequency:)  forControlEvents:UIControlEventValueChanged];
     }
 
 
@@ -241,6 +268,31 @@
 
 
 
+- (NSString*) dateToString:(NSDate*)d
+{
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+    //  [dateFormat setDateFormat:@"HH:mm"];
+    NSDate* now = [NSDate date];
+    NSDateComponents* todayComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:now];
+    NSDateComponents* refComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:d];
+    
+    if (todayComponents.year == refComponents.year && todayComponents.month == refComponents.month && todayComponents.day == refComponents.day)
+    {
+        // today: show time
+        [dateFormat setDateFormat:@"dd/MM, HH:mm"];
+    }
+    else
+    {
+        // not today: show date
+        [dateFormat setDateFormat:@"dd/MM, HH:mm"];
+    }
+    
+    NSString* s = [dateFormat stringFromDate:d];
+    [dateFormat release];
+    return s;
+}
+
+
 
 
 
@@ -251,5 +303,27 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+- (void)onSwitchEnabled:(id)sender
+{
+    [self.song enableSong:_switchEnabled.on];
+    [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(songUpdated:info:)];
+}
+
+- (void)onSwitchFrequency:(id)sender
+{
+
+}
+
+
+- (void)songUpdated:(Song*)song info:(NSDictionary*)info
+{
+    self.song = song;
+    
+    [_switchEnabled setOn:[self.song isSongEnabled] animated:YES];
+}
+
+
 
 @end
