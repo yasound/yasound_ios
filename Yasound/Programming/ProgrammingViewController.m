@@ -98,6 +98,20 @@ static NSMutableArray* gIndexMap = nil;
 }
 
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    // redraw the last selected song's cell, if it's been updated
+    NSIndexPath* indexPath = [_tableView indexPathForSelectedRow];
+    if (indexPath != nil)
+    {
+        [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+
+}
+
+
 - (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
 {
     _nbPlaylists = playlists.count;
@@ -347,8 +361,6 @@ static NSMutableArray* gIndexMap = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-     
     Song* song = [self.matchedSongs objectAtIndex:indexPath.row];
     SongViewController* view = [[SongViewController alloc] initWithNibName:@"SongViewController" bundle:nil song:song];
     [self.navigationController pushViewController:view animated:YES];
