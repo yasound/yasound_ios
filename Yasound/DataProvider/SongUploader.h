@@ -7,15 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Song.h"
 
-@interface SongUploader : NSObject {
+
+@interface SongUploader : NSObject 
+{
   NSString* _tempSongFile;
   id _target;
   SEL _selector;
 }
+
 + (SongUploader*)main;
 
-- (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
 
+
+- (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
 - (BOOL)canUploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist;
+
+- (BOOL)uploadSong:(Song*)song target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
+- (BOOL)canUploadSong:(Song*)song;
+
+
 @end

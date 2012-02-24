@@ -240,11 +240,6 @@
 		BC10398614F7DA49007C5496 /* btn_slider_track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC10393814F7DA49007C5496 /* btn_slider_track@2x.png */; };
 		BC10398714F7DA49007C5496 /* btn_slider_track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC10393814F7DA49007C5496 /* btn_slider_track@2x.png */; };
 		BC10398814F7DA49007C5496 /* btn_slider_track@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC10393814F7DA49007C5496 /* btn_slider_track@2x.png */; };
-		BC10398B14F7E483007C5496 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10398A14F7E483007C5496 /* SongUploader.m */; };
-		BC10398C14F7E483007C5496 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10398A14F7E483007C5496 /* SongUploader.m */; };
-		BC10398D14F7E483007C5496 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10398A14F7E483007C5496 /* SongUploader.m */; };
-		BC10398E14F7E483007C5496 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10398A14F7E483007C5496 /* SongUploader.m */; };
-		BC10398F14F7E483007C5496 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10398A14F7E483007C5496 /* SongUploader.m */; };
 		BC10399314F7E4A0007C5496 /* SongUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10399114F7E4A0007C5496 /* SongUploadViewController.m */; };
 		BC10399414F7E4A0007C5496 /* SongUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10399114F7E4A0007C5496 /* SongUploadViewController.m */; };
 		BC10399514F7E4A0007C5496 /* SongUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10399114F7E4A0007C5496 /* SongUploadViewController.m */; };
@@ -265,6 +260,11 @@
 		BC1039AC14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */; };
 		BC1039AD14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */; };
 		BC1039AE14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */; };
+		BC1039B114F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
+		BC1039B214F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
+		BC1039B314F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
+		BC1039B414F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
+		BC1039B514F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
 		BC178DAA14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
 		BC178DAB14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
 		BC178DAC14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
@@ -1844,13 +1844,13 @@
 		BC10393614F7DA49007C5496 /* btn_slider_track_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_slider_track_pressed@2x.png"; path = "ThirdParties/RCSwitch/btn_slider_track_pressed@2x.png"; sourceTree = "<group>"; };
 		BC10393714F7DA49007C5496 /* btn_slider_track.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_slider_track.png; path = ThirdParties/RCSwitch/btn_slider_track.png; sourceTree = "<group>"; };
 		BC10393814F7DA49007C5496 /* btn_slider_track@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_slider_track@2x.png"; path = "ThirdParties/RCSwitch/btn_slider_track@2x.png"; sourceTree = "<group>"; };
-		BC10398914F7E483007C5496 /* SongUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongUploader.h; path = Programming/SongUploader.h; sourceTree = "<group>"; };
-		BC10398A14F7E483007C5496 /* SongUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongUploader.m; path = Programming/SongUploader.m; sourceTree = "<group>"; };
 		BC10399014F7E4A0007C5496 /* SongUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongUploadViewController.h; path = Programming/SongUploadViewController.h; sourceTree = "<group>"; };
 		BC10399114F7E4A0007C5496 /* SongUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongUploadViewController.m; path = Programming/SongUploadViewController.m; sourceTree = "<group>"; };
 		BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongUploadViewController.xib; path = Programming/SongUploadViewController.xib; sourceTree = "<group>"; };
 		BC1039A314F7E79A007C5496 /* barItemSynchronize.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemSynchronize.png; sourceTree = "<group>"; };
 		BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemSynchronize@2x.png"; sourceTree = "<group>"; };
+		BC1039AF14F7F8EA007C5496 /* SongUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongUploadManager.h; path = Programming/SongUploadManager.h; sourceTree = "<group>"; };
+		BC1039B014F7F8EA007C5496 /* SongUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongUploadManager.m; path = Programming/SongUploadManager.m; sourceTree = "<group>"; };
 		BC178DA714C5E99800B18420 /* CreateMyRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateMyRadio.h; path = Settings/CreateMyRadio.h; sourceTree = "<group>"; };
 		BC178DA814C5E99800B18420 /* CreateMyRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateMyRadio.m; path = Settings/CreateMyRadio.m; sourceTree = "<group>"; };
 		BC178DA914C5E99800B18420 /* CreateMyRadio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateMyRadio.xib; path = Settings/CreateMyRadio.xib; sourceTree = "<group>"; };
@@ -2230,8 +2230,8 @@
 		BCE751EF14ED5E4200056916 /* CellRowGoldInter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRowGoldInter@2x.png"; sourceTree = "<group>"; };
 		BCE751F014ED5E4200056916 /* CellRowGoldLast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRowGoldLast.png; sourceTree = "<group>"; };
 		BCE751F114ED5E4200056916 /* CellRowGoldLast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRowGoldLast@2x.png"; sourceTree = "<group>"; };
-		BCF3588314E07A87003594BF /* ScrollingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollingLabel.h; path = Yasound/Gui/ScrollingLabel.h; sourceTree = "<group>"; };
-		BCF3588414E07A87003594BF /* ScrollingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollingLabel.m; path = Yasound/Gui/ScrollingLabel.m; sourceTree = "<group>"; };
+		BCF3588314E07A87003594BF /* ScrollingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingLabel.h; sourceTree = "<group>"; };
+		BCF3588414E07A87003594BF /* ScrollingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingLabel.m; sourceTree = "<group>"; };
 		BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSearchViewController.h; path = RadioSelection/RadioSearchViewController.h; sourceTree = "<group>"; };
 		BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSearchViewController.m; path = RadioSelection/RadioSearchViewController.m; sourceTree = "<group>"; };
 		BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSearchViewController.xib; path = RadioSelection/RadioSearchViewController.xib; sourceTree = "<group>"; };
@@ -2845,14 +2845,14 @@
 		BC82066E14F561C900FAE05E /* Programming */ = {
 			isa = PBXGroup;
 			children = (
+				BC1039AF14F7F8EA007C5496 /* SongUploadManager.h */,
+				BC1039B014F7F8EA007C5496 /* SongUploadManager.m */,
 				BC84C71214F6A94300EB5370 /* SongViewController.h */,
 				BC84C71314F6A94300EB5370 /* SongViewController.m */,
 				BC84C71414F6A94300EB5370 /* SongViewController.xib */,
 				BC82066F14F5620200FAE05E /* ProgrammingViewController.h */,
 				BC82067014F5620200FAE05E /* ProgrammingViewController.m */,
 				BC82067114F5620200FAE05E /* ProgrammingViewController.xib */,
-				BC10398914F7E483007C5496 /* SongUploader.h */,
-				BC10398A14F7E483007C5496 /* SongUploader.m */,
 				BC10399014F7E4A0007C5496 /* SongUploadViewController.h */,
 				BC10399114F7E4A0007C5496 /* SongUploadViewController.m */,
 				BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */,
@@ -3433,6 +3433,8 @@
 		BCFECFE61468439900BA20D9 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
+				BCF3588314E07A87003594BF /* ScrollingLabel.h */,
+				BCF3588414E07A87003594BF /* ScrollingLabel.m */,
 				BCE7518714EC1DBF00056916 /* AdaptiveLabel.h */,
 				BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */,
 				BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */,
@@ -3471,8 +3473,6 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
-				BCF3588314E07A87003594BF /* ScrollingLabel.h */,
-				BCF3588414E07A87003594BF /* ScrollingLabel.m */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,
@@ -4732,8 +4732,8 @@
 				BC10391E14F7DA38007C5496 /* RCSwitch.m in Sources */,
 				BC10392314F7DA38007C5496 /* RCSwitchClone.m in Sources */,
 				BC10392814F7DA38007C5496 /* RCSwitchOnOff.m in Sources */,
-				BC10398F14F7E483007C5496 /* SongUploader.m in Sources */,
 				BC10399714F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
+				BC1039B514F7F8EA007C5496 /* SongUploadManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4880,8 +4880,8 @@
 				BC10391B14F7DA38007C5496 /* RCSwitch.m in Sources */,
 				BC10392014F7DA38007C5496 /* RCSwitchClone.m in Sources */,
 				BC10392514F7DA38007C5496 /* RCSwitchOnOff.m in Sources */,
-				BC10398C14F7E483007C5496 /* SongUploader.m in Sources */,
 				BC10399414F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
+				BC1039B214F7F8EA007C5496 /* SongUploadManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5029,8 +5029,8 @@
 				BC10391D14F7DA38007C5496 /* RCSwitch.m in Sources */,
 				BC10392214F7DA38007C5496 /* RCSwitchClone.m in Sources */,
 				BC10392714F7DA38007C5496 /* RCSwitchOnOff.m in Sources */,
-				BC10398E14F7E483007C5496 /* SongUploader.m in Sources */,
 				BC10399614F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
+				BC1039B414F7F8EA007C5496 /* SongUploadManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5177,8 +5177,8 @@
 				BC10391A14F7DA38007C5496 /* RCSwitch.m in Sources */,
 				BC10391F14F7DA38007C5496 /* RCSwitchClone.m in Sources */,
 				BC10392414F7DA38007C5496 /* RCSwitchOnOff.m in Sources */,
-				BC10398B14F7E483007C5496 /* SongUploader.m in Sources */,
 				BC10399314F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
+				BC1039B114F7F8EA007C5496 /* SongUploadManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5326,8 +5326,8 @@
 				BC10391C14F7DA38007C5496 /* RCSwitch.m in Sources */,
 				BC10392114F7DA38007C5496 /* RCSwitchClone.m in Sources */,
 				BC10392614F7DA38007C5496 /* RCSwitchOnOff.m in Sources */,
-				BC10398D14F7E483007C5496 /* SongUploader.m in Sources */,
 				BC10399514F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
+				BC1039B314F7F8EA007C5496 /* SongUploadManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

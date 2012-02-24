@@ -11,7 +11,7 @@
 #import "Radio.h"
 #import "YasoundDataProvider.h"
 #import "SongViewController.h"
-
+#import "SongUploadViewController.h"
 
 @implementation ProgrammingViewController
 
@@ -388,6 +388,13 @@ static NSMutableArray* gIndexMap = nil;
 - (IBAction)onBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)onSynchronize:(id)semder
+{
+    SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
 }
 
 

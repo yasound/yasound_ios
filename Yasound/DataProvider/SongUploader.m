@@ -28,21 +28,26 @@ static SongUploader* _main = nil;
   return _main;
 }
 
+
 - (id)init
 {
   self = [super init];
-  if (self) {
+  if (self) 
+  {
     _tempSongFile = nil;
   }
   return self;
 }
 
+
 - (void) dealloc
 {
-  if (_tempSongFile) {
+  if (_tempSongFile) 
     [_tempSongFile release];
-  }
+
 }
+
+
 
 -(MPMediaItem *)findSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist
 {
@@ -55,11 +60,13 @@ static SongUploader* _main = nil;
   [query addFilterPredicate:albumPredicate];
   [query addFilterPredicate:titlePredicate];
   
-  for (MPMediaItem* item in query.items) {
+  for (MPMediaItem* item in query.items) 
+  {
     NSString* aTitle = [item valueForProperty:MPMediaItemPropertyTitle];
     NSString* aArtist = [item valueForProperty:MPMediaItemPropertyArtist];
     NSString* aAlbum = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
-    if ([title isEqualToString:aTitle] &&
+
+      if ([title isEqualToString:aTitle] &&
         [artist isEqualToString:aArtist] &&
         [album isEqualToString:aAlbum]) {
       
@@ -67,9 +74,16 @@ static SongUploader* _main = nil;
       return item;
     }
   }
+    
   [query release];
   return NULL;
 }
+
+
+
+
+
+
 
 #pragma mark - YasoundDataProvider callbacks
 
@@ -83,20 +97,24 @@ static SongUploader* _main = nil;
 }
 
 
+
+
+
 #pragma mark - public functions
 
 - (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
 {
   MPMediaItem *item = [self findSong:title album:album artist:artist];
-  if (!item) {
+  if (!item) 
     return FALSE;
-  }
-  
+
+    
   _target = target;
   _selector = selector;
 
   NSURL *assetURL = [item valueForProperty:MPMediaItemPropertyAssetURL];
-  if (assetURL == nil) {
+  if (assetURL == nil) 
+  {
     NSLog(@"assertURL is nil for %@", item);
     return FALSE;
   }
@@ -113,16 +131,18 @@ static SongUploader* _main = nil;
   NSFileManager *fileMgr = [NSFileManager defaultManager];
   [fileMgr removeItemAtPath:fullPath error:&error];
   
-  if (_tempSongFile) {
+  if (_tempSongFile)
     [_tempSongFile release];
-  }
-  _tempSongFile = [[NSString alloc] initWithString:fullPath];
+
+    _tempSongFile = [[NSString alloc] initWithString:fullPath];
     
   NSURL* outURL = [[NSURL fileURLWithPath:[documentsDirectory stringByAppendingPathComponent:title]] URLByAppendingPathExtension:ext];    
   
   TSLibraryImport* import = [[TSLibraryImport alloc] init];
-  [import importAsset:assetURL toURL:outURL completionBlock:^(TSLibraryImport* import) {
-    if (import.status != AVAssetExportSessionStatusCompleted) {
+  [import importAsset:assetURL toURL:outURL completionBlock:^(TSLibraryImport* import) 
+    {
+    if (import.status != AVAssetExportSessionStatusCompleted) 
+    {
       // something went wrong with the import
       NSLog(@"Error importing: %@", import.error);
       [import release];
@@ -141,19 +161,32 @@ static SongUploader* _main = nil;
 }
 
 
+
+
 - (BOOL)canUploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist
 {
     MPMediaItem *item = [self findSong:title album:album artist:artist];
-    if (!item) {
+    if (!item) 
         return FALSE;
-    }
+
     NSURL *assetURL = [item valueForProperty:MPMediaItemPropertyAssetURL];
-    if (assetURL == nil) {
+    if (assetURL == nil) 
         return FALSE;
-    }
+
     return TRUE;
 }
 
+
+
+- (BOOL)uploadSong:(Song*)song target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
+{
+    return [self uploadSong:song.name album:song.album artist:song.artist songId:song.id target:target action:selector progressDelegate:progressDelegate];
+}
+
+- (BOOL)canUploadSong:(Song*)song
+{
+    return [self canUploadSong:song.name album:song.album artist:song.artist];
+}
 
 
 
