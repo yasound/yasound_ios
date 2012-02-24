@@ -500,12 +500,7 @@ static YasoundDataProvider* _main = nil;
   {
     [target performSelector:selector withObject:_user withObject:finalInfo];
   }
-  
 }
-
-
-
-
 
 
 
@@ -1232,9 +1227,62 @@ static YasoundDataProvider* _main = nil;
     return;
   Auth* auth = self.apiKeyAuth;
   int playlistIndex = 0;
-  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/playlist/%d/add_song/%@", _radio, playlistIndex, yasoundSong.id];
-  [_communicator postToURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/playlist/%d/add_song/%@", _radio.id, playlistIndex, yasoundSong.id];
+  
+  NSMutableDictionary* userData = [NSMutableDictionary dictionary];
+  [userData setValue:target forKey:@"finalTarget"];
+  [userData setValue:NSStringFromSelector(selector) forKey:@"finalSelector"];
+  
+  [_communicator postToURL:url absolute:NO notifyTarget:self byCalling:@selector(didAddSong:info:) withUserData:userData withAuth:auth];
 }
+
+- (void)didAddSong:(NSString*)res info:(NSDictionary*)info
+{
+  NSDictionary* dict = [res JSONValue];
+  NSNumber* songInstanceID = [dict valueForKey:@"song_instance_id"];
+  
+  NSMutableDictionary* status = [NSMutableDictionary dictionary];
+  [status setValue:[dict valueForKey:@"success"] forKey:@"success"];
+  [status setValue:[dict valueForKey:@"created"] forKey:@"created"];
+  
+  if (!songInstanceID)
+  {
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"finalTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
+    
+    if (target && selector)
+    {
+      NSMutableDictionary* finalInfo = [NSMutableDictionary dictionary];
+      [finalInfo setValue:[info valueForKey:@"error"] forKey:@"error"];
+      [finalInfo setValue:status forKey:@"status"];
+      [target performSelector:selector withObject:nil withObject:finalInfo];
+    }
+    return;
+  }
+  
+  NSMutableDictionary* userData = [NSMutableDictionary dictionaryWithDictionary:[info valueForKey:@"userData"]];
+  [userData setValue:status forKey:@"status"];
+  
+  Auth* auth = self.apiKeyAuth;
+  [_communicator getObjectWithClass:[Song class] andID:songInstanceID notifyTarget:self byCalling:@selector(didReceiveAddedSong:info:) withUserData:userData withAuth:auth];
+}
+
+- (void)didReceiveAddedSong:(Song*)addedSong info:(NSDictionary*)info
+{
+  NSDictionary* userData = [info valueForKey:@"userData"];
+  id target = [userData valueForKey:@"finalTarget"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
+  NSDictionary* status = [userData valueForKey:@"status"];
+  
+  if (target && selector)
+  {
+    NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
+    [finalInfo setValue:status forKey:@"status"];
+    [target performSelector:selector withObject:addedSong withObject:finalInfo];
+  }
+}
+
 
 @end
 

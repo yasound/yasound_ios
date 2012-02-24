@@ -628,7 +628,8 @@
     }
     else
     {
-        [self notifytarget:target byCalling:selector withUserData:userData withObject:location andSuccess:succeeded];
+      NSString* res = (location != nil) ? location : response;
+        [self notifytarget:target byCalling:selector withUserData:userData withObject:res andSuccess:succeeded];
     }
 }
 
