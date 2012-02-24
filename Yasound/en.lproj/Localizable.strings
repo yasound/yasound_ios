@@ -165,6 +165,7 @@
 "SongView_frequency_normal" = "normal";
 "SongView_frequency_high" = "high";
 "SongView_frequency_none" = "-";
+"SongView_enable_label" = "enable the song";
 
 
 "MenuView_section_myradio" = "My Radio";

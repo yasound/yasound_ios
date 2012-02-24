@@ -14,6 +14,8 @@
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
+    
+    UISwitch* _switcher;
 }
 
 @property (nonatomic, retain) Song* song;

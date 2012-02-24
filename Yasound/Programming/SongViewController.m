@@ -121,6 +121,9 @@
         if (cell == nil) 
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 
+        cell.selectionStyle  = UITableViewCellSelectionStyleNone;
+        
+
         // image cover
         WebImageView* imageView = nil;
         if (self.song.cover)
@@ -156,6 +159,20 @@
         label = [sheet makeLabel];
         label.text = song.album;
         [cell addSubview:label];
+        
+        // enable/disable
+        sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        label = [sheet makeLabel];
+        label.text = NSLocalizedString(@"SongView_enable_label", nil);
+        [cell addSubview:label];
+
+        sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_switch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        _switcher = [[UISwitch alloc] init];
+        _switcher.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, _switcher.frame.size.width, _switcher.frame.size.height);
+        [cell addSubview:_switcher];
+        
+        _switcher.on = [self.song isSongEnabled];
+        [_switcher addTarget:self action:@selector(onSwitch:)  forControlEvents:UIControlEventValueChanged];
 
         return cell;
         
@@ -251,5 +268,22 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+- (void)onSwitch:(id)sender
+{
+    [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(songUpdated:info:)];
+}
+
+
+- (void)songUpdated:(Song*)song info:(NSDictionary*)info
+{
+    self.song = song;
+    
+    [_switcher setOn:[self.song isSongEnabled] animated:YES];
+
+    
+}
+
 
 @end

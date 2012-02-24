@@ -1327,6 +1327,41 @@
 				<string>bold</string>
 			</dict>
 		</dict>
+		<key>SongView_enable_label</key>
+		<dict>
+			<key>x</key>
+			<integer>112</integer>
+			<key>y</key>
+			<integer>80</integer>
+			<key>width</key>
+			<integer>114</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>right</string>
+				<key>size</key>
+				<integer>11</integer>
+				<key>textColor</key>
+				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<key>SongView_enable_switch</key>
+		<dict>
+			<key>x</key>
+			<integer>234</integer>
+			<key>y</key>
+			<integer>75</integer>
+			<key>width</key>
+			<integer>0</integer>
+			<key>height</key>
+			<integer>0</integer>
+		</dict>
 	</dict>
 </dict>
 </plist>
