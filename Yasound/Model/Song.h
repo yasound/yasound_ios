@@ -34,11 +34,16 @@ typedef enum
 - (BOOL)isSongEnabled;
 - (void)enableSong:(BOOL)on;
 
+- (NSString*)getFirstSignificantWord;
 - (NSComparisonResult)nameCompare:(Song*)second;
 - (NSComparisonResult)ArtistNameCompare:(Song*)second;
 - (NSComparisonResult)AlbumNameCompare:(Song*)second;
 
 @end
+
+
+
+
 
 @interface SongStatus : Model
 

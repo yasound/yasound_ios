@@ -22,5 +22,6 @@
 }
 
 @property (nonatomic, retain) NSMutableArray* matchedSongs;
+@property (nonatomic, retain) NSMutableArray* alphabeticRepo;
 
 @end

@@ -89,12 +89,6 @@
 				<string>rgb(255,237,207)</string>
 				<key>textAlignement</key>
 				<string>right</string>
-				<key>shadowOffset</key>
-				<string>0, -1</string>
-				<key>shadowRadius</key>
-				<integer>1</integer>
-				<key>shadowOpacity</key>
-				<integer>1</integer>
 			</dict>
 			<key>x</key>
 			<integer>54</integer>
@@ -130,12 +124,6 @@
 				<string>123456</string>
 				<key>textColor</key>
 				<string>white</string>
-				<key>shadowOffset</key>
-				<string>0, -1</string>
-				<key>shadowRadius</key>
-				<integer>1</integer>
-				<key>shadowOpacity</key>
-				<integer>1</integer>
 			</dict>
 			<key>height</key>
 			<integer>15</integer>
@@ -158,12 +146,6 @@
 				<string>123456</string>
 				<key>textColor</key>
 				<string>white</string>
-				<key>shadowOffset</key>
-				<string>0, -1</string>
-				<key>shadowRadius</key>
-				<integer>1</integer>
-				<key>shadowOpacity</key>
-				<integer>1</integer>
 			</dict>
 			<key>height</key>
 			<integer>16</integer>
@@ -275,10 +257,6 @@
 				<integer>13</integer>
 				<key>textColor</key>
 				<string>white</string>
-				<key>shadowOffset</key>
-				<string>1, 1</string>
-				<key>shadowRadius</key>
-				<integer>1</integer>
 			</dict>
 			<key>height</key>
 			<integer>18</integer>
@@ -406,10 +384,6 @@
 				<string>white</string>
 				<key>weight</key>
 				<string>bold</string>
-				<key>shadowOffset</key>
-				<string>0, -1</string>
-				<key>shadowRadius</key>
-				<integer>1</integer>
 			</dict>
 			<key>height</key>
 			<integer>15</integer>
@@ -528,10 +502,6 @@
 				<string>rgb(255,231,188)</string>
 				<key>weight</key>
 				<string>bold</string>
-				<key>shadowOffset</key>
-				<string>0, -1</string>
-				<key>shadowRadius</key>
-				<integer>1</integer>
 			</dict>
 			<key>height</key>
 			<integer>16</integer>
@@ -552,10 +522,6 @@
 				<string>white</string>
 				<key>weight</key>
 				<string>bold</string>
-				<key>shadowOffset</key>
-				<string>0, -1</string>
-				<key>shadowRadius</key>
-				<integer>1</integer>
 			</dict>
 			<key>height</key>
 			<integer>16</integer>
@@ -615,10 +581,6 @@
 				<string>white</string>
 				<key>weight</key>
 				<string>bold</string>
-				<key>shadowOffset</key>
-				<string>0, -1</string>
-				<key>shadowRadius</key>
-				<integer>1</integer>
 			</dict>
 			<key>height</key>
 			<integer>15</integer>
@@ -948,14 +910,6 @@
 				<string>white</string>
 				<key>backgroundColor</key>
 				<string>clear</string>
-				<key>shadowOffset</key>
-				<string>0, -1</string>
-				<key>shadowRadius</key>
-				<integer>1</integer>
-				<key>shadowOpacity</key>
-				<real>0.8</real>
-				<key>shadowColor</key>
-				<string>black</string>
 			</dict>
 		</dict>
 		<key>MenuRowFirst</key>
@@ -1299,6 +1253,78 @@
 				<string>white</string>
 				<key>backgroundColor</key>
 				<string>clear</string>
+			</dict>
+		</dict>
+		<key>SongView_name</key>
+		<dict>
+			<key>x</key>
+			<integer>112</integer>
+			<key>y</key>
+			<integer>8</integer>
+			<key>width</key>
+			<integer>196</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>13</integer>
+				<key>textColor</key>
+				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<key>SongView_artist</key>
+		<dict>
+			<key>x</key>
+			<integer>112</integer>
+			<key>y</key>
+			<integer>36</integer>
+			<key>width</key>
+			<integer>196</integer>
+			<key>height</key>
+			<integer>13</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>11</integer>
+				<key>textColor</key>
+				<string>rgb(196,196,196)</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<key>SongView_album</key>
+		<dict>
+			<key>x</key>
+			<integer>112</integer>
+			<key>y</key>
+			<integer>50</integer>
+			<key>width</key>
+			<integer>196</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>11</integer>
+				<key>textColor</key>
+				<string>rgb(196,196,196)</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
 			</dict>
 		</dict>
 	</dict>

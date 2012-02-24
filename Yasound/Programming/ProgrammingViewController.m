@@ -10,12 +10,16 @@
 #import "ActivityAlertView.h"
 #import "Radio.h"
 #import "YasoundDataProvider.h"
-
+#import "SongViewController.h"
 
 
 @implementation ProgrammingViewController
 
 @synthesize matchedSongs;
+@synthesize alphabeticRepo;
+
+static NSMutableArray* gIndexMap = nil;
+
 
 
 
@@ -30,9 +34,50 @@
         _nbReceivedData = 0;
         _nbPlaylists = 0;
         
+        if (gIndexMap == nil)
+            [self initIndexMap];
+        
     }
     return self;
 }
+
+
+
+- (void)initIndexMap
+{
+    gIndexMap = [[NSMutableArray alloc] init];
+    [gIndexMap retain];
+    [gIndexMap addObject:@"-"];
+    [gIndexMap addObject:@"A"];
+    [gIndexMap addObject:@"B"];
+    [gIndexMap addObject:@"C"];
+    [gIndexMap addObject:@"D"];
+    [gIndexMap addObject:@"E"];
+    [gIndexMap addObject:@"F"];
+    [gIndexMap addObject:@"G"];
+    [gIndexMap addObject:@"H"];
+    [gIndexMap addObject:@"I"];
+    [gIndexMap addObject:@"J"];
+    [gIndexMap addObject:@"K"];
+    [gIndexMap addObject:@"L"];
+    [gIndexMap addObject:@"M"];
+    [gIndexMap addObject:@"N"];
+    [gIndexMap addObject:@"O"];
+    [gIndexMap addObject:@"P"];
+    [gIndexMap addObject:@"Q"];
+    [gIndexMap addObject:@"R"];
+    [gIndexMap addObject:@"S"];
+    [gIndexMap addObject:@"T"];
+    [gIndexMap addObject:@"U"];
+    [gIndexMap addObject:@"V"];
+    [gIndexMap addObject:@"W"];
+    [gIndexMap addObject:@"X"];
+    [gIndexMap addObject:@"Y"];
+    [gIndexMap addObject:@"Z"];
+}
+
+
+
 
 - (void)viewDidLoad
 {
@@ -84,8 +129,46 @@
             [self.matchedSongs addObject:song];
         }
     }
-    
+
+    // sort matched song
     self.matchedSongs = [self.matchedSongs sortedArrayUsingSelector:@selector(nameCompare:)];
+    
+//    // group the songs by letter
+//    self.alphabeticRepo = [[NSMutableArray alloc] init];
+//
+//    Song* song = [self.matchedSongs objectAtIndex:0];
+//    NSString* comparator =  [song getFirstSignificantWord:song.name];
+//    NSInteger repoIndex = 0;
+//    
+//    for (Song* song in self.matchedSongs)
+//    {
+//        NSString* currentComparator = [song getFirstSignificantWord:song.name];
+//        
+//        BOOL isDigit = NO;
+//        char firstChar = [currentComparator characterAtIndex:0];
+//        if (firstChar >= '0' && firstChar <= '9')
+//            isDigit = YES;
+//                
+//        if (!isDigit && [currentComparator compare:comparator options:NSCaseInsensitiveSearch] != NSOrderedSame)
+//        {
+//            comparator = currentComparator;
+//            repoIndex++;
+//        }
+//        
+//        NSMutableArray* currentRepo = nil;
+//        if (self.alphabeticRepo.count > repoIndex)
+//            currentRepo = [self.alphabeticRepo objectAtIndex:repoIndex];
+//        if (currentRepo == nil)
+//        {
+//            currentRepo = [[NSMutableArray alloc] init];
+//            [self.alphabeticRepo addObject:currentRepo];
+//        }
+//        
+//        [currentRepo addObject:song];
+//    }
+    
+    
+
     
     [_tableView reloadData];
 
@@ -136,6 +219,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+//    return gIndexMap.count;
     return 1;
 }
 
@@ -171,45 +255,16 @@
 
 
 
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
-{
-    
-    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-    [tempArray addObject:@"A"];
-    [tempArray addObject:@"B"];
-    [tempArray addObject:@"C"];
-    [tempArray addObject:@"D"];
-    [tempArray addObject:@"E"];
-    [tempArray addObject:@"F"];
-    [tempArray addObject:@"G"];
-    [tempArray addObject:@"H"];
-    [tempArray addObject:@"I"];
-    [tempArray addObject:@"J"];
-    [tempArray addObject:@"K"];
-    [tempArray addObject:@"L"];
-    [tempArray addObject:@"M"];
-    [tempArray addObject:@"N"];
-    [tempArray addObject:@"O"];
-    [tempArray addObject:@"P"];
-    [tempArray addObject:@"Q"];
-    [tempArray addObject:@"R"];
-    [tempArray addObject:@"S"];
-    [tempArray addObject:@"T"];
-    [tempArray addObject:@"U"];
-    [tempArray addObject:@"V"];
-    [tempArray addObject:@"W"];
-    [tempArray addObject:@"X"];
-    [tempArray addObject:@"Y"];
-    [tempArray addObject:@"Z"];
-    
-    return tempArray;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
-{
-    return index;
-}
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
+//{
+//    return gIndexMap;
+//}
+//
+//
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
+//{
+//    return index;
+//}
 
 
 
@@ -271,12 +326,20 @@
     
     cell.textLabel.text = song.name;
     cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    if ([song isSongEnabled])
+    {
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+    }
+    else 
+    {
+        cell.textLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
+    }
+    
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-    cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-    
     
     return cell;
 }
@@ -284,6 +347,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Song* song = [self.matchedSongs objectAtIndex:indexPath.row];
+    SongViewController* view = [[SongViewController alloc] initWithNibName:@"SongViewController" bundle:nil song:song];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+
 }
 
 

@@ -155,6 +155,17 @@
 
 "ProgrammingView_title" = "Programming";
 
+"SongView_title" = "Song";
+"SongView_name" = "title";
+"SongView_artist" = "artist";
+"SongView_album" = "album";
+"SongView_nbLikes" = "likes";
+"SongView_lastRead" = "last play";
+"SongView_frequency" = "frequency";
+"SongView_frequency_normal" = "normal";
+"SongView_frequency_high" = "high";
+"SongView_frequency_none" = "-";
+
 
 "MenuView_section_myradio" = "My Radio";
 "MenuView_section_radios" = "Radios";
