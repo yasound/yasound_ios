@@ -7,6 +7,10 @@
 //
 
 #import "SongUploadViewController.h"
+#import "SongUploadManager.h"
+#import "BundleFileManager.h"
+#import "Theme.h"
+
 
 @interface SongUploadViewController ()
 
@@ -74,7 +78,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-//    return self.matchedSongs.count;
+    return [SongUploadManager main].items.count; 
 }
 
 
@@ -168,6 +172,16 @@
     {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
+    
+    SongUploadManagerItem* item = [[SongUploadManager main].items objectAtIndex:indexPath.row];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = item.song.name;
+    [cell addSubview:label];
+    
+    
+    
 //    
 //    Song* song = [self.matchedSongs objectAtIndex:indexPath.row];
 //    

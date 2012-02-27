@@ -167,6 +167,11 @@
 "SongView_frequency_none" = "-";
 "SongView_enable_label" = "activer le morceau";
 
+"SongAddView_title" = "Ajouter un titre";
+"SongAddView_cant_add_title" = "Ajout impossible";
+"SongAddView_cant_add_message" = "Le fichier n'est pas disponible sur l'appareil";
+"SongAddView_alert" = "liste en construction...";
+
 
 "MenuView_section_myradio" = "Ma Radio";
 "MenuView_section_radios" = "Radios";

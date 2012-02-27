@@ -167,6 +167,11 @@
 "SongView_frequency_none" = "-";
 "SongView_enable_label" = "enable the song";
 
+"SongAddView_title" = "Add a song";
+"SongAddView_cant_add_title" = "Unable to add";
+"SongAddView_cant_add_message" = "The file is not available on this device.";
+"SongAddView_alert" = "building list...";
+
 
 "MenuView_section_myradio" = "My Radio";
 "MenuView_section_radios" = "Radios";

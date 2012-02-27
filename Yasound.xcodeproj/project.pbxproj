@@ -1198,6 +1198,21 @@
 		BCA83E7D14C7258F000A8295 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
 		BCA83E7E14C7258F000A8295 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
 		BCA83E7F14C7258F000A8295 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
+		BCAAE18314FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE18114FBD46F00B7F2B4 /* CellButtonAdd.png */; };
+		BCAAE18414FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE18114FBD46F00B7F2B4 /* CellButtonAdd.png */; };
+		BCAAE18514FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE18114FBD46F00B7F2B4 /* CellButtonAdd.png */; };
+		BCAAE18614FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE18114FBD46F00B7F2B4 /* CellButtonAdd.png */; };
+		BCAAE18714FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE18114FBD46F00B7F2B4 /* CellButtonAdd.png */; };
+		BCAAE18814FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE18214FBD46F00B7F2B4 /* CellButtonAdd@2x.png */; };
+		BCAAE18914FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE18214FBD46F00B7F2B4 /* CellButtonAdd@2x.png */; };
+		BCAAE18A14FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE18214FBD46F00B7F2B4 /* CellButtonAdd@2x.png */; };
+		BCAAE18B14FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE18214FBD46F00B7F2B4 /* CellButtonAdd@2x.png */; };
+		BCAAE18C14FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE18214FBD46F00B7F2B4 /* CellButtonAdd@2x.png */; };
+		BCAAE18F14FBE17D00B7F2B4 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
+		BCAAE19014FBE17D00B7F2B4 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
+		BCAAE19114FBE17D00B7F2B4 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
+		BCAAE19214FBE17D00B7F2B4 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
+		BCAAE19314FBE17D00B7F2B4 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
@@ -1211,6 +1226,26 @@
 		BCB2B27A14FB8EB60000BFA3 /* SongInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27214FB8EB60000BFA3 /* SongInfoViewController.xib */; };
 		BCB2B27B14FB8EB60000BFA3 /* SongInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27214FB8EB60000BFA3 /* SongInfoViewController.xib */; };
 		BCB2B27C14FB8EB60000BFA3 /* SongInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27214FB8EB60000BFA3 /* SongInfoViewController.xib */; };
+		BCB2B27F14FB93D40000BFA3 /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27D14FB93D40000BFA3 /* barItemAdd.png */; };
+		BCB2B28014FB93D40000BFA3 /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27D14FB93D40000BFA3 /* barItemAdd.png */; };
+		BCB2B28114FB93D40000BFA3 /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27D14FB93D40000BFA3 /* barItemAdd.png */; };
+		BCB2B28214FB93D40000BFA3 /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27D14FB93D40000BFA3 /* barItemAdd.png */; };
+		BCB2B28314FB93D40000BFA3 /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27D14FB93D40000BFA3 /* barItemAdd.png */; };
+		BCB2B28414FB93D40000BFA3 /* barItemAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27E14FB93D40000BFA3 /* barItemAdd@2x.png */; };
+		BCB2B28514FB93D40000BFA3 /* barItemAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27E14FB93D40000BFA3 /* barItemAdd@2x.png */; };
+		BCB2B28614FB93D40000BFA3 /* barItemAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27E14FB93D40000BFA3 /* barItemAdd@2x.png */; };
+		BCB2B28714FB93D40000BFA3 /* barItemAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27E14FB93D40000BFA3 /* barItemAdd@2x.png */; };
+		BCB2B28814FB93D40000BFA3 /* barItemAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B27E14FB93D40000BFA3 /* barItemAdd@2x.png */; };
+		BCB2B29314FBB14A0000BFA3 /* SongAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */; };
+		BCB2B29414FBB14A0000BFA3 /* SongAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */; };
+		BCB2B29514FBB14A0000BFA3 /* SongAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */; };
+		BCB2B29614FBB14A0000BFA3 /* SongAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */; };
+		BCB2B29714FBB14A0000BFA3 /* SongAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */; };
+		BCB2B29814FBB14A0000BFA3 /* SongAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */; };
+		BCB2B29914FBB14A0000BFA3 /* SongAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */; };
+		BCB2B29A14FBB14A0000BFA3 /* SongAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */; };
+		BCB2B29B14FBB14A0000BFA3 /* SongAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */; };
+		BCB2B29C14FBB14A0000BFA3 /* SongAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
@@ -2047,11 +2082,20 @@
 		BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavoritesViewController.xib; path = RadioSelection/FavoritesViewController.xib; sourceTree = "<group>"; };
 		BCA83E7B14C7258F000A8295 /* SongViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongViewCell.h; sourceTree = "<group>"; };
 		BCA83E7C14C7258F000A8295 /* SongViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongViewCell.m; sourceTree = "<group>"; };
+		BCAAE18114FBD46F00B7F2B4 /* CellButtonAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellButtonAdd.png; sourceTree = "<group>"; };
+		BCAAE18214FBD46F00B7F2B4 /* CellButtonAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellButtonAdd@2x.png"; sourceTree = "<group>"; };
+		BCAAE18D14FBE17D00B7F2B4 /* TimeProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeProfile.h; sourceTree = "<group>"; };
+		BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeProfile.m; sourceTree = "<group>"; };
 		BCB178B214BEE90100A3EDE3 /* TracksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksView.h; sourceTree = "<group>"; };
 		BCB178B314BEE90100A3EDE3 /* TracksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksView.m; sourceTree = "<group>"; };
 		BCB2B27014FB8EB60000BFA3 /* SongInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongInfoViewController.h; path = Programming/SongInfoViewController.h; sourceTree = "<group>"; };
 		BCB2B27114FB8EB60000BFA3 /* SongInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongInfoViewController.m; path = Programming/SongInfoViewController.m; sourceTree = "<group>"; };
 		BCB2B27214FB8EB60000BFA3 /* SongInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongInfoViewController.xib; path = Programming/SongInfoViewController.xib; sourceTree = "<group>"; };
+		BCB2B27D14FB93D40000BFA3 /* barItemAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemAdd.png; sourceTree = "<group>"; };
+		BCB2B27E14FB93D40000BFA3 /* barItemAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemAdd@2x.png"; sourceTree = "<group>"; };
+		BCB2B29014FBB1490000BFA3 /* SongAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongAddViewController.h; path = Programming/SongAddViewController.h; sourceTree = "<group>"; };
+		BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongAddViewController.m; path = Programming/SongAddViewController.m; sourceTree = "<group>"; };
+		BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongAddViewController.xib; path = Programming/SongAddViewController.xib; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		BCB5F28C1485416B00C28B3D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
@@ -2798,6 +2842,8 @@
 		BC6314CF14B4665200549EF6 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				BCAAE18D14FBE17D00B7F2B4 /* TimeProfile.h */,
+				BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */,
 				BC0304E614BF030200F39374 /* Tutorial.h */,
 				BC0304E714BF030200F39374 /* Tutorial.m */,
 				BC6314D014B4665200549EF6 /* RegExp.h */,
@@ -2848,6 +2894,9 @@
 				BC82066F14F5620200FAE05E /* ProgrammingViewController.h */,
 				BC82067014F5620200FAE05E /* ProgrammingViewController.m */,
 				BC82067114F5620200FAE05E /* ProgrammingViewController.xib */,
+				BCB2B29014FBB1490000BFA3 /* SongAddViewController.h */,
+				BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */,
+				BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */,
 				BCB2B27014FB8EB60000BFA3 /* SongInfoViewController.h */,
 				BCB2B27114FB8EB60000BFA3 /* SongInfoViewController.m */,
 				BCB2B27214FB8EB60000BFA3 /* SongInfoViewController.xib */,
@@ -2863,6 +2912,8 @@
 		BC82069414F67B8A00FAE05E /* TableViewPlain */ = {
 			isa = PBXGroup;
 			children = (
+				BCAAE18114FBD46F00B7F2B4 /* CellButtonAdd.png */,
+				BCAAE18214FBD46F00B7F2B4 /* CellButtonAdd@2x.png */,
 				BC8206A114F67BE600FAE05E /* CellPlainRow.png */,
 				BC8206A214F67BE600FAE05E /* CellPlainRow@2x.png */,
 				BC84C72514F6B47800EB5370 /* CellPlainSongCardRow.png */,
@@ -2874,6 +2925,8 @@
 		BC88905614D0BC70004CCE04 /* BarItems */ = {
 			isa = PBXGroup;
 			children = (
+				BCB2B27D14FB93D40000BFA3 /* barItemAdd.png */,
+				BCB2B27E14FB93D40000BFA3 /* barItemAdd@2x.png */,
 				BC1039A314F7E79A007C5496 /* barItemSynchronize.png */,
 				BC1039A414F7E79A007C5496 /* barItemSynchronize@2x.png */,
 				BC88905714D0BC70004CCE04 /* barItemMenu.png */,
@@ -3891,6 +3944,11 @@
 				BC1039A914F7E79A007C5496 /* barItemSynchronize.png in Resources */,
 				BC1039AE14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */,
 				BCB2B27C14FB8EB60000BFA3 /* SongInfoViewController.xib in Resources */,
+				BCB2B28314FB93D40000BFA3 /* barItemAdd.png in Resources */,
+				BCB2B28814FB93D40000BFA3 /* barItemAdd@2x.png in Resources */,
+				BCB2B29C14FBB14A0000BFA3 /* SongAddViewController.xib in Resources */,
+				BCAAE18714FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */,
+				BCAAE18C14FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4064,6 +4122,11 @@
 				BC1039A614F7E79A007C5496 /* barItemSynchronize.png in Resources */,
 				BC1039AB14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */,
 				BCB2B27914FB8EB60000BFA3 /* SongInfoViewController.xib in Resources */,
+				BCB2B28014FB93D40000BFA3 /* barItemAdd.png in Resources */,
+				BCB2B28514FB93D40000BFA3 /* barItemAdd@2x.png in Resources */,
+				BCB2B29914FBB14A0000BFA3 /* SongAddViewController.xib in Resources */,
+				BCAAE18414FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */,
+				BCAAE18914FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4237,6 +4300,11 @@
 				BC1039A814F7E79A007C5496 /* barItemSynchronize.png in Resources */,
 				BC1039AD14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */,
 				BCB2B27B14FB8EB60000BFA3 /* SongInfoViewController.xib in Resources */,
+				BCB2B28214FB93D40000BFA3 /* barItemAdd.png in Resources */,
+				BCB2B28714FB93D40000BFA3 /* barItemAdd@2x.png in Resources */,
+				BCB2B29B14FBB14A0000BFA3 /* SongAddViewController.xib in Resources */,
+				BCAAE18614FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */,
+				BCAAE18B14FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4410,6 +4478,11 @@
 				BC1039A514F7E79A007C5496 /* barItemSynchronize.png in Resources */,
 				BC1039AA14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */,
 				BCB2B27814FB8EB60000BFA3 /* SongInfoViewController.xib in Resources */,
+				BCB2B27F14FB93D40000BFA3 /* barItemAdd.png in Resources */,
+				BCB2B28414FB93D40000BFA3 /* barItemAdd@2x.png in Resources */,
+				BCB2B29814FBB14A0000BFA3 /* SongAddViewController.xib in Resources */,
+				BCAAE18314FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */,
+				BCAAE18814FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4583,6 +4656,11 @@
 				BC1039A714F7E79A007C5496 /* barItemSynchronize.png in Resources */,
 				BC1039AC14F7E79A007C5496 /* barItemSynchronize@2x.png in Resources */,
 				BCB2B27A14FB8EB60000BFA3 /* SongInfoViewController.xib in Resources */,
+				BCB2B28114FB93D40000BFA3 /* barItemAdd.png in Resources */,
+				BCB2B28614FB93D40000BFA3 /* barItemAdd@2x.png in Resources */,
+				BCB2B29A14FBB14A0000BFA3 /* SongAddViewController.xib in Resources */,
+				BCAAE18514FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */,
+				BCAAE18A14FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4734,6 +4812,8 @@
 				BC10399714F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
 				BC1039B514F7F8EA007C5496 /* SongUploadManager.m in Sources */,
 				BCB2B27714FB8EB60000BFA3 /* SongInfoViewController.m in Sources */,
+				BCB2B29714FBB14A0000BFA3 /* SongAddViewController.m in Sources */,
+				BCAAE19314FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4882,6 +4962,8 @@
 				BC10399414F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
 				BC1039B214F7F8EA007C5496 /* SongUploadManager.m in Sources */,
 				BCB2B27414FB8EB60000BFA3 /* SongInfoViewController.m in Sources */,
+				BCB2B29414FBB14A0000BFA3 /* SongAddViewController.m in Sources */,
+				BCAAE19014FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5031,6 +5113,8 @@
 				BC10399614F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
 				BC1039B414F7F8EA007C5496 /* SongUploadManager.m in Sources */,
 				BCB2B27614FB8EB60000BFA3 /* SongInfoViewController.m in Sources */,
+				BCB2B29614FBB14A0000BFA3 /* SongAddViewController.m in Sources */,
+				BCAAE19214FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5179,6 +5263,8 @@
 				BC10399314F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
 				BC1039B114F7F8EA007C5496 /* SongUploadManager.m in Sources */,
 				BCB2B27314FB8EB60000BFA3 /* SongInfoViewController.m in Sources */,
+				BCB2B29314FBB14A0000BFA3 /* SongAddViewController.m in Sources */,
+				BCAAE18F14FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5328,6 +5414,8 @@
 				BC10399514F7E4A0007C5496 /* SongUploadViewController.m in Sources */,
 				BC1039B314F7F8EA007C5496 /* SongUploadManager.m in Sources */,
 				BCB2B27514FB8EB60000BFA3 /* SongInfoViewController.m in Sources */,
+				BCB2B29514FBB14A0000BFA3 /* SongAddViewController.m in Sources */,
+				BCAAE19114FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

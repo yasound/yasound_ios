@@ -99,7 +99,7 @@ static SongUploadManager* _main;
 
 - (void)addAndUploadSong:(Song*)song
 {
-    SongUploadManagerItem* item = [[SongUploadManagerItem alloc] init];
+    SongUploadManagerItem* item = [[SongUploadManagerItem alloc] initWithSong:song];
     [_items addObject:item];
     
     if (self.items.count == 1)
@@ -110,7 +110,8 @@ static SongUploadManager* _main;
 - (void)loop
 {
     SongUploadManagerItem* item = [self.items objectAtIndex:self.index];
-    [item startUpload];
+    //LBDEBUG
+//    [item startUpload];
 }
 
 

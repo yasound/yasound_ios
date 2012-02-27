@@ -12,6 +12,10 @@
 #import "YasoundDataProvider.h"
 #import "SongInfoViewController.h"
 #import "SongUploadViewController.h"
+#import "SongAddViewController.h"
+
+
+
 
 @implementation ProgrammingViewController
 
@@ -393,6 +397,14 @@ static NSMutableArray* gIndexMap = nil;
 - (IBAction)onSynchronize:(id)semder
 {
     SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
+
+- (IBAction)onAdd:(id)sender
+{
+    SongAddViewController* view = [[SongAddViewController alloc] initWithNibName:@"SongAddViewController" bundle:nil withMatchedSongs:self.matchedSongs];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
