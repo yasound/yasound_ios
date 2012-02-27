@@ -1,12 +1,12 @@
 //
-//  SongViewController.m
+//  SongInfoViewController.m
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 23/02/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "SongViewController.h"
+#import "SongInfoViewController.h"
 #import "WebImageView.h"
 #import "YasoundDataProvider.h"
 #import "BundleFileManager.h"
@@ -22,7 +22,7 @@
 #define COVER_SIZE 96
 
 
-@implementation SongViewController
+@implementation SongInfoViewController
 
 
 @synthesize song;

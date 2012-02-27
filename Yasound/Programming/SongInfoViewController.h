@@ -1,5 +1,5 @@
 //
-//  SongViewController.h
+//  SongInfoViewController.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 23/02/12.
@@ -10,7 +10,7 @@
 #import "Song.h"
 #import "RCSwitchClone.h"
 
-@interface SongViewController : UIViewController
+@interface SongInfoViewController : UIViewController
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
