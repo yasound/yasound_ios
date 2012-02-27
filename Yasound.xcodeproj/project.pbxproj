@@ -2845,14 +2845,14 @@
 		BC82066E14F561C900FAE05E /* Programming */ = {
 			isa = PBXGroup;
 			children = (
+				BC82066F14F5620200FAE05E /* ProgrammingViewController.h */,
+				BC82067014F5620200FAE05E /* ProgrammingViewController.m */,
+				BC82067114F5620200FAE05E /* ProgrammingViewController.xib */,
 				BCB2B27014FB8EB60000BFA3 /* SongInfoViewController.h */,
 				BCB2B27114FB8EB60000BFA3 /* SongInfoViewController.m */,
 				BCB2B27214FB8EB60000BFA3 /* SongInfoViewController.xib */,
 				BC1039AF14F7F8EA007C5496 /* SongUploadManager.h */,
 				BC1039B014F7F8EA007C5496 /* SongUploadManager.m */,
-				BC82066F14F5620200FAE05E /* ProgrammingViewController.h */,
-				BC82067014F5620200FAE05E /* ProgrammingViewController.m */,
-				BC82067114F5620200FAE05E /* ProgrammingViewController.xib */,
 				BC10399014F7E4A0007C5496 /* SongUploadViewController.h */,
 				BC10399114F7E4A0007C5496 /* SongUploadViewController.m */,
 				BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */,
