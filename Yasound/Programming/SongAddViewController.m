@@ -13,6 +13,7 @@
 #import "SongUploadManager.h"
 #import "TimeProfile.h"
 #import "ActivityAlertView.h"
+#import "SongUploadViewController.h"
 
 
 #define PM_FIELD_UNKNOWN @""
@@ -289,23 +290,6 @@
 
     Song* song = [self.localSongs objectAtIndex:indexPath.row];
     
-//    MPMediaItem* item = [self.localSongs objectAtIndex:indexPath.row];
-//    
-//    // retrieve media item's info
-//    NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
-//    if (song == nil)
-//        song = [NSString stringWithString:PM_FIELD_UNKNOWN];
-//    NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
-//    if (artist == nil)
-//        artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
-//    NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];  
-//    if (album == nil)
-//        album = [NSString stringWithString:PM_FIELD_UNKNOWN];
-
-    
-//    cell.textLabel.text = song;
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", album, artist];
-    
     cell.textLabel.text = song.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
     
@@ -331,25 +315,12 @@
 }
 
 
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
     Song* song = [self.localSongs objectAtIndex:indexPath.row];
-//    MPMediaItem* item = [self.localSongs objectAtIndex:indexPath.row];
-
-//    Song* song = [[Song alloc] init];
-//    
-//    song.name = [NSString stringWithString:[item valueForProperty:MPMediaItemPropertyTitle]];
-//    if (song.name == nil)
-//        song.name = [NSString stringWithString:PM_FIELD_UNKNOWN];
-//    
-//    song.artist = [NSString stringWithString:[item valueForProperty:MPMediaItemPropertyArtist]];
-//    if (song.artist == nil)
-//        song.artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
-//    
-//    song.album  = [NSString stringWithString:[item valueForProperty:MPMediaItemPropertyAlbumTitle]];
-//    if (song.album == nil)
-//        song.album = [NSString stringWithString:PM_FIELD_UNKNOWN];
 
     BOOL can = [[SongUploader main] canUploadSong:song];
     if (!can)
@@ -363,7 +334,12 @@
     // add an upload job to the queue
     [[SongUploadManager main] addAndUploadSong:song];
     
-    [song autorelease];
+    // and remove the song from the current list
+    [self.localSongs removeObjectAtIndex:indexPath.row];
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
+    
 }
 
 
@@ -386,6 +362,14 @@
 - (IBAction)onBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (IBAction)onSynchronize:(id)semder
+{
+    SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
 }
 
 

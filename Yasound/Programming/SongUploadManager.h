@@ -65,6 +65,7 @@
 }
 
 @property (nonatomic, retain) Song* song;
+@property (nonatomic) CGFloat currentProgress;
 @property (nonatomic, retain) id<SongUploadManagerItemDelegate> delegate;
 
 - (id)initWithSong:(Song*)aSong;

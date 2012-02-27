@@ -171,6 +171,10 @@
 "SongAddView_cant_add_title" = "Ajout impossible";
 "SongAddView_cant_add_message" = "Le fichier n'est pas disponible sur l'appareil";
 "SongAddView_alert" = "liste en construction...";
+"SongAddView_added" = "ajouté à la file de téléchargement!";
+
+"SongUpload_title" = "Téléchargement";
+"SongUpload_progressCompleted" = "Terminé.";
 
 
 "MenuView_section_myradio" = "Ma Radio";

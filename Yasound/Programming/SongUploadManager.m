@@ -16,6 +16,7 @@
 @implementation SongUploadManagerItem
 
 @synthesize song;
+@synthesize currentProgress;
 @synthesize delegate;
 
 - (id)initWithSong:(Song*)aSong
@@ -32,7 +33,9 @@
 {
     _uploader = [[SongUploader alloc] init];
     [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinish) progressDelegate:self];
-                 
+                
+    self.currentProgress = 0;
+    
     if (self.delegate != nil)
         [self.delegate songUploadDidStart:song];
 }
@@ -50,6 +53,8 @@
 
 - (void)setProgress:(float)newProgress
 {
+    self.currentProgress = newProgress;
+
     if (self.delegate != nil)
         [self.delegate songUploadProgress:self.song progress:newProgress];
 }
@@ -110,8 +115,7 @@ static SongUploadManager* _main;
 - (void)loop
 {
     SongUploadManagerItem* item = [self.items objectAtIndex:self.index];
-    //LBDEBUG
-//    [item startUpload];
+    [item startUpload];
 }
 
 

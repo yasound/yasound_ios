@@ -1213,6 +1213,21 @@
 		BCAAE19114FBE17D00B7F2B4 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		BCAAE19214FBE17D00B7F2B4 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		BCAAE19314FBE17D00B7F2B4 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
+		BCAAE19614FBF02E00B7F2B4 /* CellButtonDel.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19414FBF02E00B7F2B4 /* CellButtonDel.png */; };
+		BCAAE19714FBF02E00B7F2B4 /* CellButtonDel.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19414FBF02E00B7F2B4 /* CellButtonDel.png */; };
+		BCAAE19814FBF02E00B7F2B4 /* CellButtonDel.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19414FBF02E00B7F2B4 /* CellButtonDel.png */; };
+		BCAAE19914FBF02E00B7F2B4 /* CellButtonDel.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19414FBF02E00B7F2B4 /* CellButtonDel.png */; };
+		BCAAE19A14FBF02E00B7F2B4 /* CellButtonDel.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19414FBF02E00B7F2B4 /* CellButtonDel.png */; };
+		BCAAE19B14FBF02E00B7F2B4 /* CellButtonDel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19514FBF02E00B7F2B4 /* CellButtonDel@2x.png */; };
+		BCAAE19C14FBF02E00B7F2B4 /* CellButtonDel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19514FBF02E00B7F2B4 /* CellButtonDel@2x.png */; };
+		BCAAE19D14FBF02E00B7F2B4 /* CellButtonDel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19514FBF02E00B7F2B4 /* CellButtonDel@2x.png */; };
+		BCAAE19E14FBF02E00B7F2B4 /* CellButtonDel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19514FBF02E00B7F2B4 /* CellButtonDel@2x.png */; };
+		BCAAE19F14FBF02E00B7F2B4 /* CellButtonDel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19514FBF02E00B7F2B4 /* CellButtonDel@2x.png */; };
+		BCAAE1A214FBF10500B7F2B4 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
+		BCAAE1A314FBF10500B7F2B4 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
+		BCAAE1A414FBF10500B7F2B4 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
+		BCAAE1A514FBF10500B7F2B4 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
+		BCAAE1A614FBF10500B7F2B4 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
@@ -2086,6 +2101,10 @@
 		BCAAE18214FBD46F00B7F2B4 /* CellButtonAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellButtonAdd@2x.png"; sourceTree = "<group>"; };
 		BCAAE18D14FBE17D00B7F2B4 /* TimeProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeProfile.h; sourceTree = "<group>"; };
 		BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeProfile.m; sourceTree = "<group>"; };
+		BCAAE19414FBF02E00B7F2B4 /* CellButtonDel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellButtonDel.png; sourceTree = "<group>"; };
+		BCAAE19514FBF02E00B7F2B4 /* CellButtonDel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellButtonDel@2x.png"; sourceTree = "<group>"; };
+		BCAAE1A014FBF10500B7F2B4 /* SongUploadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongUploadCell.h; path = Programming/SongUploadCell.h; sourceTree = "<group>"; };
+		BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongUploadCell.m; path = Programming/SongUploadCell.m; sourceTree = "<group>"; };
 		BCB178B214BEE90100A3EDE3 /* TracksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksView.h; sourceTree = "<group>"; };
 		BCB178B314BEE90100A3EDE3 /* TracksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksView.m; sourceTree = "<group>"; };
 		BCB2B27014FB8EB60000BFA3 /* SongInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongInfoViewController.h; path = Programming/SongInfoViewController.h; sourceTree = "<group>"; };
@@ -2912,6 +2931,8 @@
 		BC82069414F67B8A00FAE05E /* TableViewPlain */ = {
 			isa = PBXGroup;
 			children = (
+				BCAAE19414FBF02E00B7F2B4 /* CellButtonDel.png */,
+				BCAAE19514FBF02E00B7F2B4 /* CellButtonDel@2x.png */,
 				BCAAE18114FBD46F00B7F2B4 /* CellButtonAdd.png */,
 				BCAAE18214FBD46F00B7F2B4 /* CellButtonAdd@2x.png */,
 				BC8206A114F67BE600FAE05E /* CellPlainRow.png */,
@@ -3068,6 +3089,8 @@
 				BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */,
 				BCBAB4A014A240B300CF922A /* PlaylistsViewController.h */,
 				BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */,
+				BCAAE1A014FBF10500B7F2B4 /* SongUploadCell.h */,
+				BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */,
 				BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */,
 				BCCA790414AE14080011AADD /* LegalViewController.h */,
 				BCCA790514AE14090011AADD /* LegalViewController.m */,
@@ -3949,6 +3972,8 @@
 				BCB2B29C14FBB14A0000BFA3 /* SongAddViewController.xib in Resources */,
 				BCAAE18714FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */,
 				BCAAE18C14FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */,
+				BCAAE19A14FBF02E00B7F2B4 /* CellButtonDel.png in Resources */,
+				BCAAE19F14FBF02E00B7F2B4 /* CellButtonDel@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4127,6 +4152,8 @@
 				BCB2B29914FBB14A0000BFA3 /* SongAddViewController.xib in Resources */,
 				BCAAE18414FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */,
 				BCAAE18914FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */,
+				BCAAE19714FBF02E00B7F2B4 /* CellButtonDel.png in Resources */,
+				BCAAE19C14FBF02E00B7F2B4 /* CellButtonDel@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4305,6 +4332,8 @@
 				BCB2B29B14FBB14A0000BFA3 /* SongAddViewController.xib in Resources */,
 				BCAAE18614FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */,
 				BCAAE18B14FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */,
+				BCAAE19914FBF02E00B7F2B4 /* CellButtonDel.png in Resources */,
+				BCAAE19E14FBF02E00B7F2B4 /* CellButtonDel@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4483,6 +4512,8 @@
 				BCB2B29814FBB14A0000BFA3 /* SongAddViewController.xib in Resources */,
 				BCAAE18314FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */,
 				BCAAE18814FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */,
+				BCAAE19614FBF02E00B7F2B4 /* CellButtonDel.png in Resources */,
+				BCAAE19B14FBF02E00B7F2B4 /* CellButtonDel@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4661,6 +4692,8 @@
 				BCB2B29A14FBB14A0000BFA3 /* SongAddViewController.xib in Resources */,
 				BCAAE18514FBD46F00B7F2B4 /* CellButtonAdd.png in Resources */,
 				BCAAE18A14FBD46F00B7F2B4 /* CellButtonAdd@2x.png in Resources */,
+				BCAAE19814FBF02E00B7F2B4 /* CellButtonDel.png in Resources */,
+				BCAAE19D14FBF02E00B7F2B4 /* CellButtonDel@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4814,6 +4847,7 @@
 				BCB2B27714FB8EB60000BFA3 /* SongInfoViewController.m in Sources */,
 				BCB2B29714FBB14A0000BFA3 /* SongAddViewController.m in Sources */,
 				BCAAE19314FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
+				BCAAE1A614FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4964,6 +4998,7 @@
 				BCB2B27414FB8EB60000BFA3 /* SongInfoViewController.m in Sources */,
 				BCB2B29414FBB14A0000BFA3 /* SongAddViewController.m in Sources */,
 				BCAAE19014FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
+				BCAAE1A314FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5115,6 +5150,7 @@
 				BCB2B27614FB8EB60000BFA3 /* SongInfoViewController.m in Sources */,
 				BCB2B29614FBB14A0000BFA3 /* SongAddViewController.m in Sources */,
 				BCAAE19214FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
+				BCAAE1A514FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5265,6 +5301,7 @@
 				BCB2B27314FB8EB60000BFA3 /* SongInfoViewController.m in Sources */,
 				BCB2B29314FBB14A0000BFA3 /* SongAddViewController.m in Sources */,
 				BCAAE18F14FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
+				BCAAE1A214FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5416,6 +5453,7 @@
 				BCB2B27514FB8EB60000BFA3 /* SongInfoViewController.m in Sources */,
 				BCB2B29514FBB14A0000BFA3 /* SongAddViewController.m in Sources */,
 				BCAAE19114FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
+				BCAAE1A414FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@
 #import "SongUploadManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-
+#import "SongUploadCell.h"
 
 @interface SongUploadViewController ()
 
@@ -21,8 +21,24 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self) 
+    {
+
+        
+//        //LBDEBUG FAKE
+//        for (int i = 0; i < 5; i++)
+//        {
+//            Song* song = [[Song alloc] init];
+//            song.name = @"dsflkjdsf l";
+//            song.album = @"sdfg fghdsflkjdsf l";
+//            song.artist = @"sdfggdfhs dsf l";
+//            [[SongUploadManager main] addAndUploadSong:song];
+//            [song release];
+//        }
+//        //////////////////// 
+
+    
+    
     }
     return self;
 }
@@ -31,7 +47,7 @@
 {
     [super viewDidLoad];
     
-    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
+    _titleLabel.text = NSLocalizedString(@"SongUpload_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
@@ -166,19 +182,40 @@
 {
     static NSString* CellIdentifier = @"Cell";
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    SongUploadCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    SongUploadManagerItem* item = [[SongUploadManager main].items objectAtIndex:indexPath.row];
     
     if (cell == nil) 
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[SongUploadCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier mediaItem:item] autorelease];
     }
+    else
+    {
+        [cell update:item];
+    }
+        
+//        // button "delete"
+//        UIImage* image = [UIImage imageNamed:@"CellButtonDel.png"];
+//        UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(cell.frame.size.width - image.size.width, 0, image.size.width, image.size.height)];
+//        [button setImage:image forState:UIControlStateNormal];
+//        [button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell addSubview:button];
+//    }
+//    
+//    
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    UILabel* label = [sheet makeLabel];
+//    label.text = [NSString stringWithFormat:@"%@ - %@", item.song.name, item.song.artist];
+//    [cell addSubview:label];
+//    
+//    sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    UIProgressView* progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+//    progressView.frame = sheet.frame;
+//    [cell addSubview:progressView];
+//    
     
-    SongUploadManagerItem* item = [[SongUploadManager main].items objectAtIndex:indexPath.row];
-    
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UILabel* label = [sheet makeLabel];
-    label.text = item.song.name;
-    [cell addSubview:label];
+//    ,     // normal progress bar
+//                                   UIProgressViewStyleDefault UIProgressViewStyleBar, 
     
     
     
@@ -234,6 +271,10 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)onButtonClicked:(id)sender
+{
+
+}
 
 
 @end
