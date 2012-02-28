@@ -123,11 +123,18 @@
         else
             [_remotePlaylistsDesc addObject:dico];
 
-        if ([enabled boolValue] == FALSE)
-            [_unselectedPlaylists addObject:dico];
-        else
-            [_selectedPlaylists addObject:dico];
-
+        if (_wizard) 
+        {
+            if (mediaPlaylist)
+                [_selectedPlaylists addObject:dico];
+        }
+        else 
+        {
+            if ([enabled boolValue] == FALSE)
+                [_unselectedPlaylists addObject:dico];
+            else
+                [_selectedPlaylists addObject:dico];
+        }
     }
 }
 
@@ -498,28 +505,18 @@
 
     
     [self checkmark:cell with:NO];
-    if (_wizard) 
+    if (_displayMode == eDisplayModeNormal) 
     {
-        if (mediaPlaylist != nil) 
-        {
+        if ([_unselectedPlaylists containsObject:dico]) 
+            [self checkmark:cell with:NO];
+        else
             [self checkmark:cell with:YES];
-        }
-    } 
-    else 
-    {
-        if (_displayMode == eDisplayModeNormal) 
-        {
-            if ([_unselectedPlaylists containsObject:dico]) 
-                [self checkmark:cell with:NO];
-            else
-                [self checkmark:cell with:YES];
 
-        } 
-        else if (_displayMode == eDisplayModeEdit) 
-        {
-            if (mediaPlaylist != NULL && neverSynchronized == FALSE) 
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
+    } 
+    else if (_displayMode == eDisplayModeEdit) 
+    {
+        if (mediaPlaylist != NULL && neverSynchronized == FALSE) 
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     NSNumber* matched = [dico objectForKey:@"matched"];
