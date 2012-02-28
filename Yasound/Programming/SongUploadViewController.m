@@ -183,7 +183,7 @@
     static NSString* CellIdentifier = @"Cell";
     
     SongUploadCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    SongUploadManagerItem* item = [[SongUploadManager main].items objectAtIndex:indexPath.row];
+    SongUploadItem* item = [[SongUploadManager main].items objectAtIndex:indexPath.row];
     
     if (cell == nil) 
     {

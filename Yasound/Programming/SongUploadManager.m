@@ -13,17 +13,20 @@
 
 
 
-@implementation SongUploadManagerItem
+@implementation SongUploadItem
 
 @synthesize song;
 @synthesize currentProgress;
 @synthesize delegate;
+@synthesize status;
+
 
 - (id)initWithSong:(Song*)aSong
 {
     if (self = [super init])
     {   
         self.song = aSong;
+        self.status = SongUploadItemStatusPending;
     }
     return self;
 }
@@ -31,6 +34,8 @@
 
 - (void)startUpload
 {
+    self.status = SongUploadItemStatusUploading;
+    
     _uploader = [[SongUploader alloc] init];
     [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
                 
@@ -42,6 +47,14 @@
 
 - (void)uploadDidFinished:(NSDictionary*)info
 {
+    NSNumber* succeeded = [info objectForKey:@"succeeded"];
+    assert(succeeded != nil);
+    
+    if ([succeeded boolValue])
+        self.status = SongUploadItemStatusCompleted;
+    else
+        self.status = SongUploadItemStatusFailed;
+    
     if (self.delegate != nil)
         [self.delegate songUploadDidFinish:song info:info];
     
@@ -105,10 +118,8 @@ static SongUploadManager* _main;
 
 - (void)addAndUploadSong:(Song*)song
 {
-    SongUploadManagerItem* item = [[SongUploadManagerItem alloc] initWithSong:song];
+    SongUploadItem* item = [[SongUploadItem alloc] initWithSong:song];
     [_items addObject:item];
-    
-    _index = _items.count - 1;
     
     if (!_uploading)
         [self loop];
@@ -119,7 +130,7 @@ static SongUploadManager* _main;
 {
     _uploading = YES;
     
-    SongUploadManagerItem* item = [self.items objectAtIndex:self.index];
+    SongUploadItem* item = [self.items objectAtIndex:self.index];
     [item startUpload];
 }
 

@@ -12,12 +12,13 @@
 
 @interface SongUploadCell : UITableViewCell
 
-@property (nonatomic, assign) SongUploadManagerItem* item;
+@property (nonatomic, assign) SongUploadItem* item;
 @property (nonatomic, retain) UILabel* label;
+@property (nonatomic, retain) UILabel* labelStatus;
 @property (nonatomic, retain) UIProgressView* progressView;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadManagerItem*)item;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadItem*)item;
 
-- (void)update:(SongUploadManagerItem*)mediaItem;
+- (void)update:(SongUploadItem*)mediaItem;
 
 @end

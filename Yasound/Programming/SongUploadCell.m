@@ -16,11 +16,12 @@
 
 @synthesize item;
 @synthesize label;
+@synthesize labelStatus;
 @synthesize progressView;
 
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadManagerItem*)item
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadItem*)item
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) 
@@ -29,6 +30,9 @@
         
         self.item = item;
         self.item.delegate = self;
+        self.progressView = nil;
+        self.labelStatus = nil;
+
         
         
         // button "delete"
@@ -44,11 +48,38 @@
     self.label.text = [NSString stringWithFormat:@"%@ - %@", item.song.name, item.song.artist];
     [self addSubview:self.label];
     
-    sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-    self.progressView.frame = sheet.frame;
-        self.progressView.progress = self.item.currentProgress;
-    [self addSubview:self.progressView];
+        if ((item.status == SongUploadItemStatusPending) || (item.status == SongUploadItemStatusUploading))
+        {
+            if (self.progressView == nil)
+            {
+                sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+                self.progressView.frame = sheet.frame;
+                [self addSubview:self.progressView];
+            }
+            self.progressView.progress = self.item.currentProgress;
+        }
+        else if (item.status == SongUploadItemStatusCompleted)
+        {
+            if (self.labelStatus == nil)
+            {
+                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                self.labelStatus = [sheet makeLabel];
+                [self addSubview:self.labelStatus];
+            }
+            self.labelStatus.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
+        }
+        else if (item.status == SongUploadItemStatusFailed)
+        {
+            if (self.labelStatus == nil)
+            {
+                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                self.labelStatus = [sheet makeLabel];
+                [self addSubview:self.labelStatus];
+            }
+            self.labelStatus.text = NSLocalizedString(@"SongUpload_progressFailed", nil);   
+        }
+        
     
     }
     return self;
@@ -66,12 +97,37 @@
 }
 
 
-- (void)update:(SongUploadManagerItem*)mediaItem
+- (void)update:(SongUploadItem*)mediaItem
 {
     self.item = mediaItem;
     self.item.delegate = self;
     
     self.label.text = [NSString stringWithFormat:@"%@ - %@", mediaItem.song.name, mediaItem.song.artist];
+    
+    
+    if ((self.item.status == SongUploadItemStatusPending) || (self.item.status == SongUploadItemStatusUploading))
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+        self.progressView.frame = sheet.frame;
+        self.progressView.progress = self.item.currentProgress;
+        [self addSubview:self.progressView];
+    }
+    else if (self.item.status == SongUploadItemStatusCompleted)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.labelStatus = [sheet makeLabel];
+        [self addSubview:self.labelStatus];
+        self.labelStatus.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
+    }
+    else if (self.item.status == SongUploadItemStatusFailed)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.labelStatus = [sheet makeLabel];
+        [self addSubview:self.labelStatus];
+        self.labelStatus.text = NSLocalizedString(@"SongUpload_progressFailed", nil);   
+    }
+
     self.progressView.progress = self.item.currentProgress;
 }
 
@@ -92,7 +148,7 @@
 
 
 
-#pragma mark - SongUploadManagerItemDelegate
+#pragma mark - SongUploadItemDelegate
 
 - (void)songUploadDidStart:(Song*)song
 {
