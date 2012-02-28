@@ -167,7 +167,14 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)songsForPlaylist:(NSInteger)playlistId target:(id)target action:(SEL)selector;
 
-- (void)uploadSong:(NSData*)songData songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
+- (void)uploadSong:(NSData*)songData 
+             title:(NSString*)title
+             album:(NSString*)album
+             artist:(NSString*)artist
+            songId:(NSNumber*)songId 
+            target:(id)target 
+            action:(SEL)selector 
+  progressDelegate:(id)progressDelegate;
 
 // Get matched songs for a playlist. Returns a NSArray of Song objects
 - (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
