@@ -155,7 +155,11 @@ static SongUploader* _main = nil;
     import = nil;  
     
     NSData *data = [NSData dataWithContentsOfFile: fullPath];
-    [[YasoundDataProvider main] uploadSong:data songId:songId target:self action:@selector(onUploadDidFinish:withInfos:) progressDelegate:progressDelegate];
+    [[YasoundDataProvider main] uploadSong:data 
+                                     title:title
+                                     album:album
+                                    artist:artist 
+                                    songId:songId target:self action:@selector(onUploadDidFinish:withInfos:) progressDelegate:progressDelegate];
   }];
   return TRUE;
 }
