@@ -62,6 +62,7 @@
 @interface SongUploadManagerItem : NSObject
 {
     SongUploader* _uploader;
+    
 }
 
 @property (nonatomic, retain) Song* song;
@@ -79,6 +80,9 @@
 
 
 @interface SongUploadManager : NSObject
+{
+    BOOL _uploading;
+}
 
 @property (atomic, retain, readonly) NSMutableArray* items;
 @property (nonatomic, readonly) NSInteger index;

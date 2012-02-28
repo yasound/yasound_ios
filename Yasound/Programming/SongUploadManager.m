@@ -94,6 +94,7 @@ static SongUploadManager* _main;
     {
         _items = [[NSMutableArray alloc] init];
         _index = 0;
+        _uploading = NO;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotification:) name:NOTIF_UPLOAD_DIDFINISH object:nil];
     }
@@ -107,13 +108,17 @@ static SongUploadManager* _main;
     SongUploadManagerItem* item = [[SongUploadManagerItem alloc] initWithSong:song];
     [_items addObject:item];
     
-    if (self.items.count == 1)
+    _index = _items.count - 1;
+    
+    if (!_uploading)
         [self loop];
 }
 
 
 - (void)loop
 {
+    _uploading = YES;
+    
     SongUploadManagerItem* item = [self.items objectAtIndex:self.index];
     [item startUpload];
 }
@@ -124,7 +129,10 @@ static SongUploadManager* _main;
     // move to the next item
     _index++;
     
-    [self loop];
+    if (_index < self.items.count)
+        [self loop];
+    else
+        _uploading = NO;
 }
 
 
