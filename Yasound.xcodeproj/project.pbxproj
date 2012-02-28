@@ -2924,6 +2924,8 @@
 				BC10399014F7E4A0007C5496 /* SongUploadViewController.h */,
 				BC10399114F7E4A0007C5496 /* SongUploadViewController.m */,
 				BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */,
+				BCAAE1A014FBF10500B7F2B4 /* SongUploadCell.h */,
+				BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */,
 			);
 			name = Programming;
 			sourceTree = "<group>";
@@ -3089,8 +3091,6 @@
 				BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */,
 				BCBAB4A014A240B300CF922A /* PlaylistsViewController.h */,
 				BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */,
-				BCAAE1A014FBF10500B7F2B4 /* SongUploadCell.h */,
-				BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */,
 				BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */,
 				BCCA790414AE14080011AADD /* LegalViewController.h */,
 				BCCA790514AE14090011AADD /* LegalViewController.m */,

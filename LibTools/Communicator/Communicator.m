@@ -667,6 +667,7 @@
     
     NSMutableDictionary* data = [[NSMutableDictionary alloc] init];
     [data setValue:userData forKey:@"userData"];
+    [data setObject:[NSNumber numberWithBool:succeeded] forKey:@"succeeded"];
     
     NSString* response = request.responseString;
     

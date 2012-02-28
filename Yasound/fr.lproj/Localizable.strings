@@ -175,6 +175,7 @@
 
 "SongUpload_title" = "Téléchargement";
 "SongUpload_progressCompleted" = "Terminé.";
+"SongUpload_progressFailed" = "Echec.";
 
 
 "MenuView_section_myradio" = "Ma Radio";

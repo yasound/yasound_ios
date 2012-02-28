@@ -53,7 +53,7 @@
 
 - (void)songUploadDidStart:(Song*)song;
 - (void)songUploadProgress:(Song*)song progress:(CGFloat)progress;
-- (void)songUploadDidFinish:(Song*)song;
+- (void)songUploadDidFinish:(Song*)song info:(NSDictionary*)info;
 
 @end
 

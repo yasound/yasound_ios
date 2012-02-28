@@ -32,7 +32,7 @@
 - (void)startUpload
 {
     _uploader = [[SongUploader alloc] init];
-    [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinish) progressDelegate:self];
+    [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
                 
     self.currentProgress = 0;
     
@@ -40,10 +40,10 @@
         [self.delegate songUploadDidStart:song];
 }
 
-- (void)uploadDidFinish
+- (void)uploadDidFinished:(NSDictionary*)info
 {
     if (self.delegate != nil)
-        [self.delegate songUploadDidFinish:song];
+        [self.delegate songUploadDidFinish:song info:info];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFINISH object:self];
 }

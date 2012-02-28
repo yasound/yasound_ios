@@ -175,6 +175,7 @@
 
 "SongUpload_title" = "Upload";
 "SongUpload_progressCompleted" = "Completed.";
+"SongUpload_progressFailed" = "Failed.";
 
 "MenuView_section_myradio" = "My Radio";
 "MenuView_section_radios" = "Radios";

@@ -130,7 +130,9 @@ static NSMutableArray* gIndexMap = nil;
 - (void)matchedSongsReceveived:(NSArray*)songs info:(NSDictionary*)info
 {
     _nbReceivedData++;
-    [_data addObject:songs];
+    
+    if ((songs != nil) && (songs.count != 0))
+        [_data addObject:songs];
     
     if (_nbReceivedData != _nbPlaylists)
         return;
@@ -138,7 +140,7 @@ static NSMutableArray* gIndexMap = nil;
     // merge all song arrays
     self.matchedSongs = [[NSMutableArray alloc] init];
     
-    for (NSInteger i = 0; i < _nbPlaylists; i++)
+    for (NSInteger i = 0; i < _data.count; i++)
     {
         NSArray* songs = [_data objectAtIndex:i];
         

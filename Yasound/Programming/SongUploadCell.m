@@ -47,6 +47,7 @@
     sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
     self.progressView.frame = sheet.frame;
+        self.progressView.progress = self.item.currentProgress;
     [self addSubview:self.progressView];
     
     }
@@ -103,15 +104,26 @@
     self.progressView.progress = progress;
 }
 
-- (void)songUploadDidFinish:(Song*)song
+- (void)songUploadDidFinish:(Song*)song info:(NSDictionary*)info
 {
+    NSLog(@"songUploadDidFinish : info %@", info);
     [self.progressView removeFromSuperview];
     [self.progressView release];
     
+    BOOL succeeded = NO;
+    succeeded = [[info objectForKey:@"succeeded"] boolValue];
+    
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* label = [sheet makeLabel];
-    label.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
     [self addSubview:label];
+    
+    if (succeeded)
+        label.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
+    else
+        label.text = NSLocalizedString(@"SongUpload_progressFailed", nil);
+    
+//    if (!succeeded)
+// changer le bouton LBDEBUG TODO        
 
 }
 

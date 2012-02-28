@@ -87,13 +87,13 @@ static SongUploader* _main = nil;
 
 #pragma mark - YasoundDataProvider callbacks
 
-- (void)onUploadFinished:(NSString*)msg withInfos:(NSDictionary*)info
+- (void)onUploadDidFinish:(NSString*)msg withInfos:(NSDictionary*)info
 {
   NSError *error;
   NSFileManager *fileMgr = [NSFileManager defaultManager];
   [fileMgr removeItemAtPath:_tempSongFile error:&error];
 
-  [_target performSelector:_selector];
+    [_target performSelector:_selector withObject:info];
 }
 
 
@@ -155,7 +155,7 @@ static SongUploader* _main = nil;
     import = nil;  
     
     NSData *data = [NSData dataWithContentsOfFile: fullPath];
-    [[YasoundDataProvider main] uploadSong:data songId:songId target:self action:@selector(onUploadFinished:withInfos:) progressDelegate:progressDelegate];
+    [[YasoundDataProvider main] uploadSong:data songId:songId target:self action:@selector(onUploadDidFinish:withInfos:) progressDelegate:progressDelegate];
   }];
   return TRUE;
 }
