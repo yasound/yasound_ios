@@ -9,7 +9,6 @@
 #import "SongUploadManager.h"
 
 
-#define NOTIF_UPLOAD_DIDFINISH @"NOTIF_UploadDidFinish"
 
 
 
@@ -51,14 +50,23 @@
     assert(succeeded != nil);
     
     if ([succeeded boolValue])
+    {
         self.status = SongUploadItemStatusCompleted;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDSUCCEED object:self];
+    }
     else
+    {
         self.status = SongUploadItemStatusFailed;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFAIL object:self];
+    }
     
     if (self.delegate != nil)
         [self.delegate songUploadDidFinish:song info:info];
     
+    // send notif to ask the manager to continue with the upload list
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFINISH object:self];
+    
+    // send notif to warn the list handlers to update, depending on the request's result
 }
 
 

@@ -46,6 +46,12 @@
 
 
 
+#define NOTIF_UPLOAD_DIDFINISH @"NOTIF_UploadDidFinish"
+
+#define NOTIF_UPLOAD_DIDSUCCEED @"NOTIF_UploadDidSucceed"
+#define NOTIF_UPLOAD_DIDFAIL @"NOTIF_UploadDidFail"
+
+
 
 
 @protocol SongUploadItemDelegate <NSObject>
