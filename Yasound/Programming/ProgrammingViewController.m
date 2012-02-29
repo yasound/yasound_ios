@@ -368,10 +368,10 @@ static NSMutableArray* gIndexMap = nil;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Song* song = [self.matchedSongs objectAtIndex:indexPath.row];
+    
     SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
-
 }
 
 

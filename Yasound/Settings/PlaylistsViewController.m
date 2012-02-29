@@ -75,7 +75,7 @@
 {
     for (Playlist* playlist in remotePlaylists) 
     {
-        NSNumber* playlistId = [NSNumber numberWithInteger:playlist.id];
+        NSNumber* playlistId = [NSNumber numberWithInteger:[playlist.id integerValue]];
         NSString* name = playlist.name;
         NSString* source = playlist.source;
         NSNumber* count = playlist.song_count;

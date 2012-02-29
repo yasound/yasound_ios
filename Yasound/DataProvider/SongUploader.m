@@ -134,7 +134,7 @@ static SongUploader* _main = nil;
   if (_tempSongFile)
     [_tempSongFile release];
 
-    _tempSongFile = [NSString stringWithFormat:fullPath];
+    _tempSongFile = [[NSString alloc] initWithFormat:fullPath];
     
   NSURL* outURL = [[NSURL fileURLWithPath:[documentsDirectory stringByAppendingPathComponent:title]] URLByAppendingPathExtension:ext];    
   

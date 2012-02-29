@@ -2,7 +2,7 @@
 //  SongInfoViewController.m
 //  Yasound
 //
-//  Created by LOIC BERTHELOT on 23/02/12.
+//  Created by LOIC BERTHELOT on 29/02/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
@@ -11,6 +11,15 @@
 #import "YasoundDataProvider.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
+
+
+
+
+@implementation SongInfoViewController
+
+
+@synthesize song;
+
 
 #define NB_ROWS 4
 #define ROW_COVER 0
@@ -22,17 +31,14 @@
 #define COVER_SIZE 96
 
 
-@implementation SongInfoViewController
 
 
-@synthesize song;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)song
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.song = song;
+        self.song = aSong;
     }
     return self;
 }
@@ -41,9 +47,9 @@
 {
     [super viewDidLoad];
 
-    _titleLabel.text = NSLocalizedString(@"SongView_title", nil);
+    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-
+    
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 }
 
@@ -58,6 +64,8 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
 
 
 
@@ -120,10 +128,10 @@
         
         if (cell == nil) 
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-
+        
         cell.selectionStyle  = UITableViewCellSelectionStyleNone;
         
-
+        
         // image cover
         WebImageView* imageView = nil;
         if (self.song.cover)
@@ -149,12 +157,12 @@
         UILabel* label = [sheet makeLabel];
         label.text = song.name;
         [cell addSubview:label];
-
+        
         sheet = [[Theme theme] stylesheetForKey:@"SongView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         label = [sheet makeLabel];
         label.text = song.artist;
         [cell addSubview:label];
-
+        
         sheet = [[Theme theme] stylesheetForKey:@"SongView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         label = [sheet makeLabel];
         label.text = song.album;
@@ -165,7 +173,7 @@
         label = [sheet makeLabel];
         label.text = NSLocalizedString(@"SongView_enable_label", nil);
         [cell addSubview:label];
-
+        
         sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_switch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         _switchEnabled = [[UISwitch alloc] init];
         _switchEnabled.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, _switchEnabled.frame.size.width, _switchEnabled.frame.size.height);
@@ -173,11 +181,11 @@
         
         _switchEnabled.on = [self.song isSongEnabled];
         [_switchEnabled addTarget:self action:@selector(onSwitchEnabled:)  forControlEvents:UIControlEventValueChanged];
-
+        
         return cell;
         
     }
-
+    
     
     static NSString* CellIdentifier = @"Cell";
     
@@ -190,22 +198,22 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-//    if (indexPath.row == ROW_NAME)
-//    {
-//        cell.textLabel.text = NSLocalizedString(@"SongView_name", nil);
-//        cell.detailTextLabel.text = self.song.name;
-//    }
-//    else if (indexPath.row == ROW_ARTIST)
-//    {
-//        cell.textLabel.text = NSLocalizedString(@"SongView_artist", nil);
-//        cell.detailTextLabel.text = self.song.artist;
-//    }
-//    else if (indexPath.row == ROW_ALBUM)
-//    {
-//        cell.textLabel.text = NSLocalizedString(@"SongView_album", nil);
-//        cell.detailTextLabel.text = self.song.album;
-//    }
-//    else 
+    //    if (indexPath.row == ROW_NAME)
+    //    {
+    //        cell.textLabel.text = NSLocalizedString(@"SongView_name", nil);
+    //        cell.detailTextLabel.text = self.song.name;
+    //    }
+    //    else if (indexPath.row == ROW_ARTIST)
+    //    {
+    //        cell.textLabel.text = NSLocalizedString(@"SongView_artist", nil);
+    //        cell.detailTextLabel.text = self.song.artist;
+    //    }
+    //    else if (indexPath.row == ROW_ALBUM)
+    //    {
+    //        cell.textLabel.text = NSLocalizedString(@"SongView_album", nil);
+    //        cell.detailTextLabel.text = self.song.album;
+    //    }
+    //    else 
     
     if (indexPath.row == ROW_NBLIKES)
     {
@@ -227,7 +235,7 @@
         _switchFrequency.frame = CGRectMake(cell.frame.size.width - _switchFrequency.frame.size.width - BORDER, (cell.frame.size.height - _switchFrequency.frame.size.height) / 2.f, _switchFrequency.frame.size.width, _switchFrequency.frame.size.height);
         [cell addSubview:_switchFrequency];
         
-
+        
         if (self.song.frequency == eSongFrequencyTypeNormal)
             _switchFrequency.on = NO;
         else if (self.song.frequency == eSongFrequencyTypeHigh)
@@ -240,8 +248,8 @@
         
         [_switchFrequency addTarget:self action:@selector(onSwitchFrequency:)  forControlEvents:UIControlEventValueChanged];
     }
-
-
+    
+    
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
@@ -297,6 +305,11 @@
 
 
 
+
+
+
+
+
 #pragma mark - IBActions
 
 - (IBAction)onBack:(id)sender
@@ -305,24 +318,6 @@
 }
 
 
-- (void)onSwitchEnabled:(id)sender
-{
-    [self.song enableSong:_switchEnabled.on];
-    [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(songUpdated:info:)];
-}
-
-- (void)onSwitchFrequency:(id)sender
-{
-
-}
-
-
-- (void)songUpdated:(Song*)song info:(NSDictionary*)info
-{
-    self.song = song;
-    
-    [_switchEnabled setOn:[self.song isSongEnabled] animated:YES];
-}
 
 
 
