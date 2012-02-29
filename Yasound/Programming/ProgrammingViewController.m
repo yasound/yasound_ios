@@ -13,7 +13,7 @@
 #import "SongInfoViewController.h"
 #import "SongUploadViewController.h"
 #import "SongAddViewController.h"
-
+#import "TimeProfile.h"
 
 
 
@@ -97,6 +97,8 @@ static NSMutableArray* gIndexMap = nil;
     
     //NSLog(@"%d - %d", _nbReceivedData, _nbPlaylists);
     
+    [[TimeProfile main] begin];
+    
     Radio* radio = [YasoundDataProvider main].radio;
     [[YasoundDataProvider main] playlistsForRadio:radio target:self action:@selector(receivePlaylists:withInfo:)];
 }
@@ -149,9 +151,19 @@ static NSMutableArray* gIndexMap = nil;
             [self.matchedSongs addObject:song];
         }
     }
+    
+    [[TimeProfile main] end];
+    
+    
+    
+    [[TimeProfile main] begin];
 
     // sort matched song
     self.matchedSongs = [self.matchedSongs sortedArrayUsingSelector:@selector(nameCompare:)];
+
+    [[TimeProfile main] end];
+
+    
     
 //    // group the songs by letter
 //    self.alphabeticRepo = [[NSMutableArray alloc] init];
