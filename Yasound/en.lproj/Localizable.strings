@@ -149,6 +149,14 @@
 "PlaylistsView_table_header_other_playlists" = "On other devices";
 "PlaylistsView_cell_detail_with_matched" = "%d matched on %d";
 "PlaylistsView_cell_detail" = "%d tracks";
+
+"PlaylistsView_matchedSongsTitle_zero" = "Warning";
+"PlaylistsView_matchedSongsMessage_zero" = "No song has been automatically synchronized with the server. Your radio doesn't play right now but you can upload your songs choosing the Programming function from the menu.";
+"PlaylistsView_matchedSongsTitle_ok" = "Synchronization";
+"PlaylistsView_matchedSongsMessage_ok_1" = "1 song has been synchronized with your radio. You can use the Programming function from the menu to upload other songs.";
+"PlaylistsView_matchedSongsMessage_ok_n" = "%d songs have been synchronized with your radio. You can update your radio's contents choosing the Programming function from the menu, and upload other songs.";
+
+
 "LegalView_title" = "Terms Of Use";
 
 "PlaylistsViewController_FetchingPlaylists" = "Synchronizing playlists";

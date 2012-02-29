@@ -23,7 +23,16 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 
+
+
 @implementation PlaylistsViewController
+
+
+@synthesize nbMatchedSongs;
+@synthesize nbPlaylistsForChecking;
+@synthesize nbParsedPlaylistsForChecking;
+
+
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard
 {
@@ -707,7 +716,7 @@
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
     
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     //    
     [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists
                                    removedPlaylists:_unselectedPlaylists
@@ -744,7 +753,12 @@
     NSLog(@"playlists updated  task: %@", task_id);
     
     taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task_id repeats:YES];
+    
 }
+
+
+
+
 
 - (void)checkPlaylistTask:(NSTimer*)timer
 {
@@ -752,17 +766,21 @@
     [[YasoundDataProvider main] taskStatus:task target:self action:@selector(receiveTaskStatus:error:)];
 }
 
+
+
 - (void)receiveTaskStatus:(TaskInfo*)taskInfo error:(NSError*) error
 {
     if (taskInfo.status == eTaskSuccess)
     {
-        [taskTimer invalidate];
-        [self onFakeSubmitAction:nil];
+        if ([taskTimer isValid])
+            [taskTimer invalidate];
+        [self finalize];
     }
     else if (taskInfo.status == eTaskFailure)
     {
-        [taskTimer invalidate];
-        [self onFakeSubmitAction:nil];
+        if ([taskTimer isValid])
+            [taskTimer invalidate];
+        [self finalize];
     }
   else if (taskInfo.status == eTaskPending)
   {
@@ -774,16 +792,105 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 //LBDEBUG
-- (void)onFakeSubmitAction:(NSTimer*)timer
+- (void)finalize
 {
-  // be sure to get updated radio (with correct 'ready' flag)
-  [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
+    // be sure to get updated radio (with correct 'ready' flag)
+    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
 }
 
 - (void)receivedUserRadioAfterPlaylistsUpdate:(Radio*)r withInfo:(NSDictionary*)info
 {
-  [ActivityAlertView close];
+    // now, ask for registered playlists, we want to check how many songs have been synchrpnized
+    [[YasoundDataProvider main] playlistsForRadio:r target:self action:@selector(receivePlaylistsForChecking:withInfo:)];
+}
+    
+    
+- (void)receivePlaylistsForChecking:(NSArray*)playlists withInfo:(NSDictionary*)info
+{
+    self.nbPlaylistsForChecking = playlists.count;
+    self.nbParsedPlaylistsForChecking = 0;
+    self.nbMatchedSongs = 0;
+    
+    
+    for (Playlist* playlist in playlists) 
+    {
+        [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)]; 
+        // didReceiveMatchedSongs:(NSArray*)matched_songs info:
+    }
+}
+    
+    
+- (void)matchedSongsReceveived:(NSArray*)songs info:(NSDictionary*)info
+{
+    self.nbParsedPlaylistsForChecking++;
+    
+    if (songs != nil)
+        self.nbMatchedSongs += songs.count;
+    
+    if (nbParsedPlaylistsForChecking != nbPlaylistsForChecking)
+        return;
+
+    // now we have the right count of the synchronized songs
+    [ActivityAlertView close];
+
+    // user dialog to report 
+    NSString* title = nil;
+    NSString* message = nil;
+    
+    if (self.nbMatchedSongs == 0)
+    {
+        title = NSLocalizedString(@"PlaylistsView_matchedSongsTitle_zero", nil);
+        message = NSLocalizedString(@"PlaylistsView_matchedSongsMessage_zero", nil);
+    }
+    else
+    {
+        title = NSLocalizedString(@"PlaylistsView_matchedSongsTitle_ok", nil);
+        
+        if (self.nbMatchedSongs == 1)
+            message = NSLocalizedString(@"PlaylistsView_matchedSongsMessage_ok_1", nil);
+        else
+            message = NSLocalizedString(@"PlaylistsView_matchedSongsMessage_ok_n", nil);
+        
+        message = [message stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", self.nbMatchedSongs]];
+
+    }
+
+    UIAlertView* av = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [av show];
+    [av release];  
+}
+    
+
+
+
+
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self getOut];
+}
+    
+    
+
+
+
+- (void)getOut
+{
   
   if (_wizard)
   {
