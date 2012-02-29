@@ -97,6 +97,7 @@ static NSMutableArray* gIndexMap = nil;
     
     //NSLog(@"%d - %d", _nbReceivedData, _nbPlaylists);
     
+    // PROFILE
     [[TimeProfile main] begin];
     
     Radio* radio = [YasoundDataProvider main].radio;
@@ -152,18 +153,22 @@ static NSMutableArray* gIndexMap = nil;
         }
     }
     
+    //PROFILE
     [[TimeProfile main] end];
+    [[TimeProfile main] logInterval:@"Download matched songs"];
     
-    
-    
+
+    // PROFILE
     [[TimeProfile main] begin];
 
     // sort matched song
     self.matchedSongs = [self.matchedSongs sortedArrayUsingSelector:@selector(nameCompare:)];
 
+    // PROFILE
     [[TimeProfile main] end];
+    [[TimeProfile main] logInterval:@"Sort matched songs"];
 
-    
+    NSLog(@"%d matched songs", self.matchedSongs.count);
     
 //    // group the songs by letter
 //    self.alphabeticRepo = [[NSMutableArray alloc] init];

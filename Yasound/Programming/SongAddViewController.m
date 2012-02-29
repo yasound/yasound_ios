@@ -33,23 +33,26 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.localSongs = [[NSMutableArray alloc] init];
-        self.matchedSongs = matchedSongs;
+        self.matchedSongs = [NSSet setWithArray:matchedSongs];
     }
     return self;
 }
 
 
-- (BOOL)doesArrayContainSong:(NSArray*)array song:(Song*)aSong
+//- (BOOL)doesContainSong:(NSArray*)array song:(Song*)aSong
+- (BOOL)doesContainSong:(NSSet*)array song:(Song*)aSong
 {
     for (Song* song in array)
     {
+        assert(song.name != nil);
         if (![song.name isEqualToString:aSong.name])
             continue;
         
+        assert(song.album != nil);
         if (![song.album isEqualToString:aSong.album])
             continue;
 
+        assert(song.artist != nil);
         if (![song.artist isEqualToString:aSong.artist])
             continue;
         
@@ -74,12 +77,14 @@
     
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];        
     
-    
+    // PROFILE
     [[TimeProfile main] begin];
     
     
     MPMediaQuery* allAlbumsQuery = [MPMediaQuery albumsQuery];
     NSArray* allAlbumsArray = [allAlbumsQuery collections];
+    
+    NSMutableSet* localCollection = [[NSMutableSet alloc] init];
     
     // list all local albums
     for (MPMediaItemCollection* collection in allAlbumsArray) 
@@ -89,31 +94,47 @@
         {
             Song* song = [[Song alloc] init];
             
-            song.name = [NSString stringWithString:[item valueForProperty:MPMediaItemPropertyTitle]];
-            if (song.name == nil)
+            NSString* value = [item valueForProperty:MPMediaItemPropertyTitle];
+            if (value == nil)
                 song.name = [NSString stringWithString:PM_FIELD_UNKNOWN];
+            else
+                song.name = [NSString stringWithString:value];
+
             
-            song.artist = [NSString stringWithString:[item valueForProperty:MPMediaItemPropertyArtist]];
-            if (song.artist == nil)
+            value = [item valueForProperty:MPMediaItemPropertyArtist];
+            if (value == nil)
                 song.artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
+            else
+                song.artist = [NSString stringWithString:value];
+
             
-            song.album  = [NSString stringWithString:[item valueForProperty:MPMediaItemPropertyAlbumTitle]];
-            if (song.album == nil)
+            value = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
+            if (value == nil)
                 song.album = [NSString stringWithString:PM_FIELD_UNKNOWN];
-            
+            else
+                song.album = [NSString stringWithString:value];
+
             
             // don't include it if it's included in the matched songs already
-            if ([self doesArrayContainSong:matchedSongs song:song])
+            if ([self doesContainSong:self.matchedSongs song:song])
                 continue;
             
-            [self.localSongs addObject:song];
+            [localCollection addObject:song];
+
         }
     }
     
+    self.localSongs = [[NSArray alloc] initWithArray:[localCollection allObjects]];
+    [localCollection release];
+    
+    // PROFILE
     [[TimeProfile main] end];
+    // PROFILE
+    [[TimeProfile main] logInterval:@"Local Media Songs parsing"];
+
     
     NSLog(@"SongAddViewController : %d songs added to the local array", self.localSongs.count);
-    [[TimeProfile main] logInterval];
+
     
     [ActivityAlertView close];
     

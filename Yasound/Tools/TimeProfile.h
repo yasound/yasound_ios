@@ -18,6 +18,6 @@
 - (void)begin;
 - (void)end;
 - (NSTimeInterval)interval;
-- (void)logInterval;
+- (void)logInterval:(NSString*)nameReference;
 
 @end

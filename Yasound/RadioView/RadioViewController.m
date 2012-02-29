@@ -527,10 +527,6 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)updatePreviousWall
 {    
-    // PROFILE
-    _BEGIN = [NSDate date];
-    [_BEGIN retain];
-    
     _updatingPrevious = YES;
 
     [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_FIRST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
@@ -621,17 +617,6 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedPreviousWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
-    // PROFILE
-    if (_firstUpdateRequest)
-    {
-        _END = [NSDate date];
-        NSTimeInterval timeDifference = [_END timeIntervalSinceDate:_BEGIN];
-        NSLog(@"PROFILE %.2f", timeDifference);
-        
-        [_BEGIN release];
-    }
-    
-    
     Meta* meta = [info valueForKey:@"meta"];
     NSError* err = [info valueForKey:@"error"];
     

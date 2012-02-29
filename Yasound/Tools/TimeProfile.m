@@ -42,9 +42,12 @@ static TimeProfile* _main;
     return [self.dateEnd timeIntervalSinceDate:self.dateBegin];
 }
 
-- (void)logInterval
+- (void)logInterval:(NSString*)nameReference
 {
-    NSLog(@"TimeProfile %.2f", [self interval]);
+    if (nameReference != nil)
+        NSLog(@"TimeProfile '%@' %.2f", nameReference, [self interval]);
+    else
+        NSLog(@"TimeProfile %.2f", [self interval]);
 
 }
 
