@@ -19,6 +19,7 @@ typedef enum {
 {
     BOOL _wizard;
     BOOL _changed;
+    BOOL _forceEnableNextBtn;
     
     IBOutlet UIView* _container;
 

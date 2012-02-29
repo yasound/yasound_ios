@@ -181,10 +181,10 @@
     _titleLabel.text = NSLocalizedString(@"PlaylistsView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
 
-    BOOL forceEnableNextBtn = NO;
+    _forceEnableNextBtn = NO;
     
 #if TARGET_IPHONE_SIMULATOR
-    forceEnableNextBtn = YES;
+    _forceEnableNextBtn = YES;
 #endif
 
     
@@ -206,11 +206,12 @@
         
         [_toolbar setItems:items animated:NO];
         
-        if (([_playlists count] != 0) || forceEnableNextBtn)
-            _nextBtn.enabled = YES;
-        else
-            _nextBtn.enabled = NO;
-    } else {
+        _nextBtn.enabled = NO;
+
+        
+    } 
+    else 
+    {
         UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
   
       // For the moment we disable playlist editing until we have a better solution.
@@ -251,6 +252,12 @@
     [_playlistsDesc retain];
     _playlists = [playlistsquery collections];
     [_playlists retain];
+    
+    if (([_playlists count] != 0) || _forceEnableNextBtn)
+        _nextBtn.enabled = YES;
+    else
+        _nextBtn.enabled = NO;
+    
     
     [self.view addSubview:_tableView];
     
