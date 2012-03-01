@@ -1189,10 +1189,10 @@ static YasoundDataProvider* _main = nil;
     
   
   NSMutableDictionary* jsonObject = [NSMutableDictionary dictionary];
-    [jsonObject setObject:self.radio forKey:@"radio_id"];
+    [jsonObject setObject:self.radio.id forKey:@"radio_id"];
     [jsonObject setObject:title forKey:@"title"];
   [jsonObject setObject:album forKey:@"album"];
-  [jsonObject setObject:artist forKey:@"artist"];
+  [jsonObject setObject:artist forKey:@"artist"];   
   NSString* jsonString = jsonObject.JSONRepresentation;
     
   [_communicator postData:song withKey:@"song" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withProgress:progressDelegate withAdditionalJsonData:jsonString];
