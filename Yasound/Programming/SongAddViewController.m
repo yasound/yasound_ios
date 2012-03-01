@@ -124,7 +124,7 @@
         }
     }
     
-    self.localSongs = [[NSArray alloc] initWithArray:[localCollection allObjects]];
+    self.localSongs = [[NSMutableArray alloc] initWithArray:[localCollection allObjects]];
     [localCollection release];
     
     // PROFILE

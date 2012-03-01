@@ -1189,7 +1189,8 @@ static YasoundDataProvider* _main = nil;
     
   
   NSMutableDictionary* jsonObject = [NSMutableDictionary dictionary];
-  [jsonObject setObject:title forKey:@"title"];
+    [jsonObject setObject:self.radio forKey:@"radio_id"];
+    [jsonObject setObject:title forKey:@"title"];
   [jsonObject setObject:album forKey:@"album"];
   [jsonObject setObject:artist forKey:@"artist"];
   NSString* jsonString = jsonObject.JSONRepresentation;
