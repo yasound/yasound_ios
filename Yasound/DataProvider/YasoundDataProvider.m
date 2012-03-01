@@ -500,6 +500,37 @@ static YasoundDataProvider* _main = nil;
   {
     [target performSelector:selector withObject:_user withObject:finalInfo];
   }
+  
+  //MatTest
+  [self playlistsForRadio:_radio target:self action:@selector(didReceivePlaylists:info:)];
+}
+
+//MatTest
+- (void)didReceivePlaylists:(NSArray*)playlists info:(NSDictionary*)info
+{
+  if (!playlists)
+    return;
+  if (playlists.count == 0)
+    return;
+  
+  Playlist* p = [playlists objectAtIndex:0];
+  [self matchedSongsForPlaylist:p target:self action:@selector(didReceivematchedSongs:info:)];
+}
+
+- (void)didReceivematchedSongs:(NSArray*)songs info:(NSDictionary*)info
+{
+  if (!songs)
+    return;
+  if (songs.count == 0)
+    return;
+  
+  int i = 0;
+  for (Song* s in songs) 
+  {
+    NSLog(@"%d %@ - %@ - %@ (%@ - %d)", i, s.artist, s.album, s.name, s.frequency, (int)[s frequencyType]);
+    SongFrequencyType f = [s frequencyType];
+    i++;
+  }
 }
 
 
@@ -847,6 +878,15 @@ static YasoundDataProvider* _main = nil;
   Auth* auth = self.apiKeyAuth;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/song/%@/status", songId];
   [_communicator getObjectWithClass:[SongStatus class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector
+{
+  if (!songId)
+    return;
+  
+  Auth* auth = self.apiKeyAuth;
+  [_communicator getObjectWithClass:[Song class] andID:songId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector

@@ -128,6 +128,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector;
+- (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
