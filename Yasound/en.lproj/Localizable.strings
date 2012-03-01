@@ -162,6 +162,11 @@
 "PlaylistsViewController_FetchingPlaylists" = "Synchronizing playlists";
 
 "ProgrammingView_title" = "Programming";
+"ProgrammingView_subtitle" = "synchronization...";
+"ProgrammingView_subtitled_count_0" = "no synchronized song";
+"ProgrammingView_subtitled_count_1" = "1 synchronized song";
+"ProgrammingView_subtitled_count_n" = "%d synchronized songs";
+
 
 "SongView_title" = "Song";
 "SongView_name" = "title";
@@ -180,6 +185,10 @@
 "SongAddView_cant_add_message" = "The file is not available on this device.";
 "SongAddView_alert" = "building list...";
 "SongAddView_added" = "added to the upload pending list!";
+"SongAddView_subtitle" = "loading...";
+"SongAddView_subtitled_count_0" = "no song available";
+"SongAddView_subtitled_count_1" = "1 song available";
+"SongAddView_subtitled_count_n" = "%d songs available";
 
 "SongUpload_title" = "Upload";
 "SongUpload_progressCompleted" = "Completed.";

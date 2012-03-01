@@ -70,6 +70,7 @@
     [super viewDidLoad];
 
     _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
+    _subtitleLabel.text = NSLocalizedString(@"SongAddView_subtitle", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
@@ -134,6 +135,19 @@
 
     
     NSLog(@"SongAddViewController : %d songs added to the local array", self.localSongs.count);
+    
+    NSString* subtitle = nil;
+    if (self.localSongs.count == 0)
+        subtitle = NSLocalizedString(@"SongAddView_subtitled_count_0", nil);
+    else if (self.localSongs.count == 1)
+        subtitle = NSLocalizedString(@"SongAddView_subtitled_count_1", nil);
+    else if (self.localSongs.count > 1)
+        subtitle = NSLocalizedString(@"SongAddView_subtitled_count_n", nil);
+    
+    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", self.localSongs.count]];
+    
+    _subtitleLabel.text = subtitle;
+    
 
     
     [ActivityAlertView close];

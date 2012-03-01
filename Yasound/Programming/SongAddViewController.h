@@ -12,6 +12,7 @@
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
+    IBOutlet UILabel* _subtitleLabel;
     IBOutlet UISegmentedControl* _segment;
     IBOutlet UITableView* _tableView;
     

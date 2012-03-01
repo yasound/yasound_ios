@@ -88,6 +88,7 @@ static NSMutableArray* gIndexMap = nil;
     [super viewDidLoad];
 
     _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
+    _subtitleLabel.text = NSLocalizedString(@"ProgrammingView_subtitle", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
@@ -169,6 +170,19 @@ static NSMutableArray* gIndexMap = nil;
     [[TimeProfile main] logInterval:@"Sort matched songs"];
 
     NSLog(@"%d matched songs", self.matchedSongs.count);
+    
+    NSString* subtitle = nil;
+    if (self.matchedSongs.count == 0)
+        subtitle = NSLocalizedString(@"ProgrammingView_subtitled_count_0", nil);
+    else if (self.matchedSongs.count == 1)
+        subtitle = NSLocalizedString(@"ProgrammingView_subtitled_count_1", nil);
+    else if (self.matchedSongs.count > 1)
+        subtitle = NSLocalizedString(@"ProgrammingView_subtitled_count_n", nil);
+    
+    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", self.matchedSongs.count]];
+
+    _subtitleLabel.text = subtitle;
+    
     
 //    // group the songs by letter
 //    self.alphabeticRepo = [[NSMutableArray alloc] init];
