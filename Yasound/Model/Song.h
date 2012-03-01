@@ -16,6 +16,11 @@ typedef enum
 } SongFrequencyType;
 
 @interface Song : Model
+{
+    NSString* _name;
+    NSString* _nameWithoutArticle;
+    NSString* _firstRelevantWord;
+}
 
 @property (retain, nonatomic) NSString* name;
 @property (retain, nonatomic) NSString* artist;
@@ -34,7 +39,9 @@ typedef enum
 - (BOOL)isSongEnabled;
 - (void)enableSong:(BOOL)on;
 
-- (NSString*)getFirstSignificantWord;
+- (NSString*)getFirstRelevantWord;
+- (NSString*)getNameWithoutArticle;
+
 - (NSComparisonResult)nameCompare:(Song*)second;
 - (NSComparisonResult)ArtistNameCompare:(Song*)second;
 - (NSComparisonResult)AlbumNameCompare:(Song*)second;

@@ -38,13 +38,37 @@ static NSMutableArray* gIndexMap = nil;
         _nbReceivedData = 0;
         _nbPlaylists = 0;
         
+        _numericSet = [[NSCharacterSet decimalDigitCharacterSet] retain];
+        _lowerCaseSet = [[NSCharacterSet lowercaseLetterCharacterSet] retain];
+        _upperCaseSet = [[NSCharacterSet uppercaseLetterCharacterSet] retain];
+
         if (gIndexMap == nil)
             [self initIndexMap];
+        
+        self.matchedSongs = [[NSMutableDictionary alloc] init];
+        self.alphabeticRepo = [[NSMutableDictionary alloc] init];
+        self.relevantWords = [[NSMutableDictionary alloc] init];
+        
+        for (NSString* indexKey in gIndexMap)
+        {
+            NSMutableArray* letterRepo = [[NSMutableArray alloc] init];
+            [self.alphabeticRepo setObject:letterRepo forKey:indexKey];
+        }
+        
         
     }
     return self;
 }
 
+
+- (void)dealloc
+{
+    [_numericSet release];
+    [_lowerCaseSet release];
+    [_upperCaseSet release];
+    
+    [super dealloc];
+}
 
 
 - (void)initIndexMap
@@ -78,6 +102,7 @@ static NSMutableArray* gIndexMap = nil;
     [gIndexMap addObject:@"X"];
     [gIndexMap addObject:@"Y"];
     [gIndexMap addObject:@"Z"];
+    [gIndexMap addObject:@"#"];
 }
 
 
@@ -141,27 +166,75 @@ static NSMutableArray* gIndexMap = nil;
     if (_nbReceivedData != _nbPlaylists)
         return;
     
-    // merge all song arrays
-    self.matchedSongs = [[NSMutableArray alloc] init];
+    //PROFILE
+    [[TimeProfile main] end];
+    [[TimeProfile main] logInterval:@"Download matched songs"];
     
+    
+    // PROFILE
+    [[TimeProfile main] begin];
+
+    // merge songs
     for (NSInteger i = 0; i < _data.count; i++)
     {
         NSArray* songs = [_data objectAtIndex:i];
         
         for (Song* song in songs)
         {
-            [self.matchedSongs addObject:song];
+            // create a key for the dictionary 
+            NSString* key = [NSString stringWithFormat:@"%@|%@|%@", song.name, song.artist, song.album];
+            // and store the song in the dictionnary, for later convenient use
+            [self.matchedSongs setObject:song forKey:key];
+            
+            // and now,
+            // get what u need to sort alphabetically
+            NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
+            
+            // want to store it for later use
+            [self.relevantWords setObject:firstRelevantWord forKey:song.name];
+             
+            unichar c = [firstRelevantWord characterAtIndex:0];
+            
+            // first letter is [0 .. 9]
+            if ([_numericSet characterIsMember:c]) 
+            {
+                NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"-"];
+                [letterRepo addObject:song];
+            }
+            // first letter is [a .. z] || [A .. Z]
+            else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
+            {
+                NSString* upperCaseChar = [[NSString stringWithCharacters:&c length:1] uppercaseString];
+                NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:upperCaseChar];
+                [letterRepo addObject:song];
+            }
+            // other cases (foreign languages, ...)
+            else
+            {
+                NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"#"];
+                [letterRepo addObject:song];
+            }
         }
     }
     
-    //PROFILE
-    [[TimeProfile main] end];
-    [[TimeProfile main] logInterval:@"Download matched songs"];
+    // sort alphabetically
+    for (NSString* key in [self.alphabeticRepo allKeys])
+    {
+        // don't sort the foreign languages
+        if ([key isEqualToString:@"#"])
+            continue;
+        
+        NSMutableArray* sortedArray = [[self.alphabeticRepo objectForKey:key] sortedArrayUsingSelector:@selector(nameCompare:)];
+
+    }
     
 
-    // PROFILE
-    [[TimeProfile main] begin];
-
+    NSArray* keys = [self.matchedSongs allKeys];
+    for (NSString* key in keys)
+    {
+        
+    }
+    
     // sort matched song
     self.matchedSongs = [self.matchedSongs sortedArrayUsingSelector:@selector(nameCompare:)];
 
@@ -184,16 +257,21 @@ static NSMutableArray* gIndexMap = nil;
     _subtitleLabel.text = subtitle;
     
     
+    // PROFILE
+    [[TimeProfile main] begin];
+
+    
+    
 //    // group the songs by letter
 //    self.alphabeticRepo = [[NSMutableArray alloc] init];
 //
 //    Song* song = [self.matchedSongs objectAtIndex:0];
-//    NSString* comparator =  [song getFirstSignificantWord:song.name];
+//    NSString* comparator =  [song getFirstRelevantWord:song.name];
 //    NSInteger repoIndex = 0;
 //    
 //    for (Song* song in self.matchedSongs)
 //    {
-//        NSString* currentComparator = [song getFirstSignificantWord:song.name];
+//        NSString* currentComparator = [song getFirstRelevantWord:song.name];
 //        
 //        BOOL isDigit = NO;
 //        char firstChar = [currentComparator characterAtIndex:0];
@@ -219,6 +297,9 @@ static NSMutableArray* gIndexMap = nil;
 //    }
     
     
+    // PROFILE
+    [[TimeProfile main] end];
+    [[TimeProfile main] logInterval:@"Sort matched songs"];
 
     
     [_tableView reloadData];
@@ -306,16 +387,16 @@ static NSMutableArray* gIndexMap = nil;
 
 
 
-//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
-//{
-//    return gIndexMap;
-//}
-//
-//
-//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
-//{
-//    return index;
-//}
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
+{
+    return gIndexMap;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
+{
+    return 1;
+}
 
 
 

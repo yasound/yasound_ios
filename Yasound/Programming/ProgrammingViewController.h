@@ -20,9 +20,14 @@
     NSInteger _nbReceivedData;
     NSInteger _nbPlaylists;
     
+    NSCharacterSet* _numericSet;
+    NSCharacterSet* _lowerCaseSet;
+    NSCharacterSet* _upperCaseSet;
+    
 }
 
-@property (nonatomic, retain) NSMutableArray* matchedSongs;
-@property (nonatomic, retain) NSMutableArray* alphabeticRepo;
+@property (nonatomic, retain) NSMutableDictionary* matchedSongs;
+@property (nonatomic, retain) NSMutableDictionary* alphabeticRepo;
+@property (nonatomic, retain) NSMutableDictionary* relevantWords;
 
 @end
