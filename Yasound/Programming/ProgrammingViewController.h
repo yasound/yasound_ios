@@ -28,6 +28,5 @@
 
 @property (nonatomic, retain) NSMutableDictionary* matchedSongs;
 @property (nonatomic, retain) NSMutableDictionary* alphabeticRepo;
-@property (nonatomic, retain) NSMutableDictionary* relevantWords;
 
 @end

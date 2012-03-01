@@ -206,8 +206,8 @@
 
 - (NSComparisonResult)nameCompare:(Song*)second
 {
-    NSString* firstItem = [self getFirstRelevantWord:self.name];
-    NSString* secondItem = [self getFirstRelevantWord:second.name];
+    NSString* firstItem = [self getFirstRelevantWord];
+    NSString* secondItem = [second getFirstRelevantWord];
 
     return [firstItem compare:secondItem];
 }

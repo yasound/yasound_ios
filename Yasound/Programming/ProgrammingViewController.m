@@ -14,7 +14,8 @@
 #import "SongUploadViewController.h"
 #import "SongAddViewController.h"
 #import "TimeProfile.h"
-
+#import "BundleFileManager.h"
+#import "Theme.h"
 
 
 @implementation ProgrammingViewController
@@ -47,7 +48,6 @@ static NSMutableArray* gIndexMap = nil;
         
         self.matchedSongs = [[NSMutableDictionary alloc] init];
         self.alphabeticRepo = [[NSMutableDictionary alloc] init];
-        self.relevantWords = [[NSMutableDictionary alloc] init];
         
         for (NSString* indexKey in gIndexMap)
         {
@@ -190,10 +190,10 @@ static NSMutableArray* gIndexMap = nil;
             // get what u need to sort alphabetically
             NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
             
-            // want to store it for later use
-            [self.relevantWords setObject:firstRelevantWord forKey:song.name];
-             
             unichar c = [firstRelevantWord characterAtIndex:0];
+            
+            // we spread the songs, in a dictionnary, and group them depending on their first letter
+            // => each table view section will be related to a letter
             
             // first letter is [0 .. 9]
             if ([_numericSet characterIsMember:c]) 
@@ -217,26 +217,18 @@ static NSMutableArray* gIndexMap = nil;
         }
     }
     
-    // sort alphabetically
+    // now, sort alphabetically each letter repository
     for (NSString* key in [self.alphabeticRepo allKeys])
     {
         // don't sort the foreign languages
         if ([key isEqualToString:@"#"])
             continue;
         
-        NSMutableArray* sortedArray = [[self.alphabeticRepo objectForKey:key] sortedArrayUsingSelector:@selector(nameCompare:)];
-
+        NSMutableArray* array = [self.alphabeticRepo objectForKey:key];
+        NSMutableArray* sortedArray = [array sortedArrayUsingSelector:@selector(nameCompare:)];
+        [self.alphabeticRepo setObject:sortedArray forKey:key];
     }
     
-
-    NSArray* keys = [self.matchedSongs allKeys];
-    for (NSString* key in keys)
-    {
-        
-    }
-    
-    // sort matched song
-    self.matchedSongs = [self.matchedSongs sortedArrayUsingSelector:@selector(nameCompare:)];
 
     // PROFILE
     [[TimeProfile main] end];
@@ -257,8 +249,8 @@ static NSMutableArray* gIndexMap = nil;
     _subtitleLabel.text = subtitle;
     
     
-    // PROFILE
-    [[TimeProfile main] begin];
+//    // PROFILE
+//    [[TimeProfile main] begin];
 
     
     
@@ -297,9 +289,9 @@ static NSMutableArray* gIndexMap = nil;
 //    }
     
     
-    // PROFILE
-    [[TimeProfile main] end];
-    [[TimeProfile main] logInterval:@"Sort matched songs"];
+//    // PROFILE
+//    [[TimeProfile main] end];
+//    [[TimeProfile main] logInterval:@"Sort matched songs"];
 
     
     [_tableView reloadData];
@@ -342,24 +334,40 @@ static NSMutableArray* gIndexMap = nil;
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
 //{
-//    if (tableView == _settingsTableView)
-//        return [self titleInSettingsTableViewForHeaderInSection:section];
-//    
-//    return nil;
+//    return [gIndexMap objectAtIndex:section];
 //}
+
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = [gIndexMap objectAtIndex:section];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
+    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, 44);
+    
+    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//    return gIndexMap.count;
-    return 1;
+    return gIndexMap.count;
 }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return self.matchedSongs.count;
+    NSArray* letterRepo = [self.alphabeticRepo objectForKey:[gIndexMap objectAtIndex:section]];
+    assert(letterRepo != nil);
+    return letterRepo.count;
 }
 
 
@@ -395,7 +403,7 @@ static NSMutableArray* gIndexMap = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
 {
-    return 1;
+    return index;
 }
 
 
@@ -454,7 +462,8 @@ static NSMutableArray* gIndexMap = nil;
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    Song* song = [self.matchedSongs objectAtIndex:indexPath.row];
+    NSArray* letterRepo = [self.alphabeticRepo objectForKey:[gIndexMap objectAtIndex:indexPath.section]];
+    Song* song = [letterRepo objectAtIndex:indexPath.row];
     
     cell.textLabel.text = song.name;
     cell.textLabel.backgroundColor = [UIColor clearColor];
@@ -479,7 +488,8 @@ static NSMutableArray* gIndexMap = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Song* song = [self.matchedSongs objectAtIndex:indexPath.row];
+    NSArray* letterRepo = [self.alphabeticRepo objectForKey:[gIndexMap objectAtIndex:indexPath.section]];
+    Song* song = [letterRepo objectAtIndex:indexPath.row];
     
     SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
     [self.navigationController pushViewController:view animated:YES];
