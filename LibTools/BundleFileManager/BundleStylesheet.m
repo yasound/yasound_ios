@@ -84,10 +84,10 @@
   {
     _size = 12;
     _textAlignement = UITextAlignmentLeft;
-    _text = [[NSString alloc] initWithString:@""];
+    _text = [NSString stringWithFormat:@""];
     _textColor = [UIColor blackColor];
     _backgroundColor = [UIColor clearColor];
-    _weight = [[NSString alloc] initWithString:@"normal"];
+    _weight = [NSString stringWithFormat:@"normal"];
   }
   else
   {
@@ -95,13 +95,13 @@
     _textAlignement = defaultFontsheet.textAlignement;
     _textColor = defaultFontsheet.textColor;
     _backgroundColor = defaultFontsheet.backgroundColor;
-    _weight = [[NSString alloc] initWithString:defaultFontsheet.weight];
+    _weight = [NSString stringWithFormat:defaultFontsheet.weight];
   }
 
   NSString* fontName = [sheet valueForKey:@"name"];
   if (fontName != nil)
   {
-    _name = [[NSString alloc] initWithString:fontName];
+    _name = [NSString stringWithFormat:fontName];
     _nameIsSet = YES;
   }
 
@@ -115,7 +115,7 @@
   NSString* fontText = [sheet valueForKey:@"text"];
   if (fontText != nil)
   {
-    _text = [[NSString alloc] initWithString:fontText];
+    _text = [NSString stringWithFormat:fontText];
   }
   
   NSString* textColor = [sheet valueForKey:@"textColor"];

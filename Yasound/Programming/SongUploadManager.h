@@ -14,7 +14,7 @@
     A SIMPLE HOWTO :
  
 1-
-    SongUploadManager handles an array of items (SongUploadManagerItem).
+    SongUploadManager handles an array of items (SongUploadItem).
  
  
 2-
@@ -35,7 +35,7 @@
     [SongUploadManager main].items 
 
     // for instance, in a custom UITableViewCell:
-    SongUploadManagerItem* uploader = [[SongUploadManager main].items objectAtIndex:cellIndexPath.row];
+    SongUploadItem* uploader = [[SongUploadManager main].items objectAtIndex:cellIndexPath.row];
     uploader.delegate = self;
 
     // implements protocol's delegates here
@@ -46,26 +46,43 @@
 
 
 
+#define NOTIF_UPLOAD_DIDFINISH @"NOTIF_UploadDidFinish"
+
+#define NOTIF_UPLOAD_DIDSUCCEED @"NOTIF_UploadDidSucceed"
+#define NOTIF_UPLOAD_DIDFAIL @"NOTIF_UploadDidFail"
 
 
-@protocol SongUploadManagerItemDelegate <NSObject>
+
+
+@protocol SongUploadItemDelegate <NSObject>
 @required
 
 - (void)songUploadDidStart:(Song*)song;
 - (void)songUploadProgress:(Song*)song progress:(CGFloat)progress;
-- (void)songUploadDidFinish:(Song*)song;
+- (void)songUploadDidFinish:(Song*)song info:(NSDictionary*)info;
 
 @end
 
+typedef enum SongUploadItemStatus 
+{
+	SongUploadItemStatusPending = 0,
+	SongUploadItemStatusUploading = 1,
+	SongUploadItemStatusCompleted = 2,
+	SongUploadItemStatusFailed = 3
+} SongUploadItemStatus;
 
 
-@interface SongUploadManagerItem : NSObject
+
+@interface SongUploadItem : NSObject
 {
     SongUploader* _uploader;
+    
 }
 
 @property (nonatomic, retain) Song* song;
-@property (nonatomic, retain) id<SongUploadManagerItemDelegate> delegate;
+@property (nonatomic) CGFloat currentProgress;
+@property (nonatomic) SongUploadItemStatus status;
+@property (nonatomic, retain) id<SongUploadItemDelegate> delegate;
 
 - (id)initWithSong:(Song*)aSong;
 - (void)startUpload;
@@ -78,6 +95,9 @@
 
 
 @interface SongUploadManager : NSObject
+{
+    BOOL _uploading;
+}
 
 @property (atomic, retain, readonly) NSMutableArray* items;
 @property (nonatomic, readonly) NSInteger index;

@@ -83,6 +83,7 @@
 
 
 //#import "CreateMyRadio.h"
+//#import "SongUploadViewController.h"
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -91,6 +92,14 @@
 //    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:nil];
 //    [self.navigationController pushViewController:view animated:YES];
 //    [view release];
+
+    
+    
+    //LBDEBUG FAKE
+//    SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
+    
     
     if (_firstTime)
     {

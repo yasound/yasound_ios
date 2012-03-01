@@ -57,7 +57,8 @@
 	return self;
 }
 
-- (void)dealloc {
+- (void)dealloc 
+{
     self.state = nil;
 }
 

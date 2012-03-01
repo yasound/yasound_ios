@@ -50,10 +50,6 @@ static ConnectionView* _main = nil;
         self.layer.borderWidth = 1.0; 
         self.layer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.1].CGColor;
         
-//        self.layer.shadowOffset = CGSizeMake(-10, 10);
-//        self.layer.shadowRadius = 5;
-//        self.layer.shadowOpacity = 0.05;
-        
         _indicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(56, 18, 22, 22)];
         [_indicator retain];
 		[self addSubview:_indicator];

@@ -127,12 +127,6 @@
 					<string>clear</string>
 					<key>name</key>
 					<string>HelveticaNeue</string>
-					<key>shadowOffset</key>
-					<string>0, -1</string>
-					<key>shadowOpacity</key>
-					<integer>1</integer>
-					<key>shadowRadius</key>
-					<integer>1</integer>
 					<key>size</key>
 					<integer>11</integer>
 					<key>textAlignement</key>
@@ -157,12 +151,6 @@
 					<string>clear</string>
 					<key>name</key>
 					<string>HelveticaNeue</string>
-					<key>shadowOffset</key>
-					<string>0, -1</string>
-					<key>shadowOpacity</key>
-					<integer>1</integer>
-					<key>shadowRadius</key>
-					<integer>1</integer>
 					<key>size</key>
 					<integer>11</integer>
 					<key>textAlignement</key>
@@ -207,12 +195,6 @@
 				<dict>
 					<key>name</key>
 					<string>HelveticaNeue</string>
-					<key>shadowOffset</key>
-					<string>0, -1</string>
-					<key>shadowOpacity</key>
-					<integer>1</integer>
-					<key>shadowRadius</key>
-					<integer>1</integer>
 					<key>size</key>
 					<integer>10</integer>
 					<key>textColor</key>
@@ -233,12 +215,6 @@
 				<dict>
 					<key>name</key>
 					<string>HelveticaNeue</string>
-					<key>shadowOffset</key>
-					<string>0, -1</string>
-					<key>shadowOpacity</key>
-					<integer>1</integer>
-					<key>shadowRadius</key>
-					<integer>1</integer>
 					<key>size</key>
 					<integer>10</integer>
 					<key>textColor</key>
@@ -259,12 +235,6 @@
 				<dict>
 					<key>name</key>
 					<string>HelveticaNeue-Bold</string>
-					<key>shadowOffset</key>
-					<string>0, -1</string>
-					<key>shadowOpacity</key>
-					<integer>1</integer>
-					<key>shadowRadius</key>
-					<integer>1</integer>
 					<key>size</key>
 					<integer>16</integer>
 					<key>textColor</key>

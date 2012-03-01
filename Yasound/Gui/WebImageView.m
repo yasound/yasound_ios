@@ -53,6 +53,7 @@ static ASIDownloadCache *gHttpCache = NULL;
   [webImages release];
   assert(anims == nil);
   [image release];
+    [super dealloc];
 }
 
 - (void) addView:(WebImageView*)view

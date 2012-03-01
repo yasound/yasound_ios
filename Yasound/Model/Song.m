@@ -10,7 +10,7 @@
 
 @implementation Song
 
-@synthesize name;
+//@synthesize name;
 @synthesize artist;
 @synthesize album;
 @synthesize cover;
@@ -20,6 +20,46 @@
 @synthesize last_play_time;
 @synthesize frequency;
 @synthesize enabled;
+
+
+//- (id)init
+//{
+//    if (self = [super init])
+//    {
+//        _nameWithoutArticle = nil;
+//    }
+//    return self;
+//}
+
+- (void)dealloc
+{
+    if (_nameWithoutArticle != nil)
+        [_nameWithoutArticle release];
+    [super dealloc];
+}
+
+- (void)setName:(NSString*)name
+{
+    if (_name != nil)
+        [_name release];
+    _name = [NSString stringWithString:name];
+    [_name retain];
+    
+    if (_nameWithoutArticle != nil)
+        [_nameWithoutArticle release];
+    _nameWithoutArticle = nil;
+    
+    if (_firstRelevantWord != nil)
+        [_firstRelevantWord release];
+    _firstRelevantWord = nil;
+}
+
+- (NSString*)name
+{
+    return _name;
+}
+
+
 
 - (SongFrequencyType)frequencyType
 {
@@ -32,6 +72,7 @@
   
   return eSongFrequencyTypeNormal;
 }
+
 
 - (void)setFrequencyType:(SongFrequencyType)f
 {
@@ -63,12 +104,44 @@
 }
 
 
-
-
-- (NSString*)getFirstSignificantWord:(NSString*)field
+- (NSString*)getNameWithoutArticle
 {
+    // return cache 
+    if (_nameWithoutArticle != nil)
+        return _nameWithoutArticle;
+    
+    NSString* firstWord = [self getFirstRelevantWord];
+    if (firstWord == nil)
+        return self.name;
+    
+    NSRange range = [self.name rangeOfString:firstWord];
+    if (range.location == NSNotFound)
+        return self.name;
+
+    NSRange range2;
+    range2.location = range.location + range.length;
+    range2.length = self.name.length - range2.location;
+        
+    _nameWithoutArticle = [self.name substringWithRange:range2];
+    _nameWithoutArticle =  [_nameWithoutArticle stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    // store cache
+    [_nameWithoutArticle retain];
+
+    return _nameWithoutArticle;
+}
+
+
+
+- (NSString*)getFirstRelevantWord
+{
+    // return cache
+    if (_firstRelevantWord != nil)
+        return _firstRelevantWord;
+        
+        
     BOOL first = YES;
-    CFStringRef string = field;
+    CFStringRef string = self.name;
     CFLocaleRef locale = CFLocaleCopyCurrent();
     
     CFStringTokenizerRef tokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, string, CFRangeMake(0, CFStringGetLength(string)), kCFStringTokenizerUnitWord, locale);
@@ -90,11 +163,18 @@
             if ( ([token compare:@"the" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
                 ([token compare:@"a" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
                 ([token compare:@"le" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
-                ([token compare:@"la" options:NSCaseInsensitiveSearch] != NSOrderedSame))
+                ([token compare:@"la" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
+                ([token compare:@"l'" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
+                ([token compare:@"l" options:NSCaseInsensitiveSearch] != NSOrderedSame)) 
             {
                 [tokenValue autorelease];
                 CFRelease(tokenizer);
                 CFRelease(locale);   
+                
+                // store cache
+                _firstRelevantWord = [NSString stringWithString:token];
+                [_firstRelevantWord retain];
+                
                 return token;
             }
             
@@ -109,6 +189,10 @@
             CFRelease(tokenizer);
             CFRelease(locale);   
 
+            // store cache
+            _firstRelevantWord = [NSString stringWithString:tokenValue];
+            [_firstRelevantWord retain];
+
             return tokenValue;
         }
     }
@@ -122,8 +206,8 @@
 
 - (NSComparisonResult)nameCompare:(Song*)second
 {
-    NSString* firstItem = [self getFirstSignificantWord:self.name];
-    NSString* secondItem = [self getFirstSignificantWord:second.name];
+    NSString* firstItem = [self getFirstRelevantWord];
+    NSString* secondItem = [second getFirstRelevantWord];
 
     return [firstItem compare:secondItem];
 }

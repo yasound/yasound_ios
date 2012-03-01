@@ -524,6 +524,34 @@
     [req startAsynchronous];
 }
 
+- (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth withProgress:(id)progressDelegate withAdditionalJsonData:(NSString*)jsonData
+{
+  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
+  NSLog(@"post data url '%@'", u.absoluteString);
+  if (!u)
+  {
+    NSLog(@"post data: invalid url");
+    return;
+  }
+  
+  NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+  [userInfo setValue:target forKey:@"target"];
+  [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
+  [userInfo setValue:@"POST_DATA" forKey:@"method"];
+  [userInfo setValue:userData forKey:@"userData"];
+  
+  
+  ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
+  [req addData:data forKey:key];
+  [req addPostValue:jsonData forKey:@"data"];
+  req.userInfo = userInfo;
+  req.delegate = self;
+  [self applyAuth:auth toRequest:req];
+  [self fillRequest:req];
+  [req setUploadProgressDelegate:progressDelegate];
+  [req startAsynchronous];  
+}
+
 
 
 - (void)postToURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
@@ -667,6 +695,7 @@
     
     NSMutableDictionary* data = [[NSMutableDictionary alloc] init];
     [data setValue:userData forKey:@"userData"];
+    [data setObject:[NSNumber numberWithBool:succeeded] forKey:@"succeeded"];
     
     NSString* response = request.responseString;
     

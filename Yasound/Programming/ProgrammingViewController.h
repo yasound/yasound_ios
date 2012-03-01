@@ -12,6 +12,7 @@
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
+    IBOutlet UILabel* _subtitleLabel;
     IBOutlet UITableView* _tableView;
     IBOutlet UIToolbar* _toolbar;
     
@@ -19,9 +20,13 @@
     NSInteger _nbReceivedData;
     NSInteger _nbPlaylists;
     
+    NSCharacterSet* _numericSet;
+    NSCharacterSet* _lowerCaseSet;
+    NSCharacterSet* _upperCaseSet;
+    
 }
 
-@property (nonatomic, retain) NSMutableArray* matchedSongs;
-@property (nonatomic, retain) NSMutableArray* alphabeticRepo;
+@property (nonatomic, retain) NSMutableDictionary* matchedSongs;
+@property (nonatomic, retain) NSMutableDictionary* alphabeticRepo;
 
 @end

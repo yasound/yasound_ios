@@ -9,20 +9,23 @@
 #import "SongUploadManager.h"
 
 
-#define NOTIF_UPLOAD_DIDFINISH @"NOTIF_UploadDidFinish"
 
 
 
-@implementation SongUploadManagerItem
+@implementation SongUploadItem
 
 @synthesize song;
+@synthesize currentProgress;
 @synthesize delegate;
+@synthesize status;
+
 
 - (id)initWithSong:(Song*)aSong
 {
     if (self = [super init])
     {   
         self.song = aSong;
+        self.status = SongUploadItemStatusPending;
     }
     return self;
 }
@@ -30,19 +33,40 @@
 
 - (void)startUpload
 {
+    self.status = SongUploadItemStatusUploading;
+    
     _uploader = [[SongUploader alloc] init];
-    [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinish) progressDelegate:self];
-                 
+    [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
+                
+    self.currentProgress = 0;
+    
     if (self.delegate != nil)
         [self.delegate songUploadDidStart:song];
 }
 
-- (void)uploadDidFinish
+- (void)uploadDidFinished:(NSDictionary*)info
 {
-    if (self.delegate != nil)
-        [self.delegate songUploadDidFinish:song];
+    NSNumber* succeeded = [info objectForKey:@"succeeded"];
+    assert(succeeded != nil);
     
+    if ([succeeded boolValue])
+    {
+        self.status = SongUploadItemStatusCompleted;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDSUCCEED object:self];
+    }
+    else
+    {
+        self.status = SongUploadItemStatusFailed;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFAIL object:self];
+    }
+    
+    if (self.delegate != nil)
+        [self.delegate songUploadDidFinish:song info:info];
+    
+    // send notif to ask the manager to continue with the upload list
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFINISH object:self];
+    
+    // send notif to warn the list handlers to update, depending on the request's result
 }
 
 
@@ -50,6 +74,8 @@
 
 - (void)setProgress:(float)newProgress
 {
+    self.currentProgress = newProgress;
+
     if (self.delegate != nil)
         [self.delegate songUploadProgress:self.song progress:newProgress];
 }
@@ -89,6 +115,7 @@ static SongUploadManager* _main;
     {
         _items = [[NSMutableArray alloc] init];
         _index = 0;
+        _uploading = NO;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotification:) name:NOTIF_UPLOAD_DIDFINISH object:nil];
     }
@@ -99,17 +126,19 @@ static SongUploadManager* _main;
 
 - (void)addAndUploadSong:(Song*)song
 {
-    SongUploadManagerItem* item = [[SongUploadManagerItem alloc] init];
+    SongUploadItem* item = [[SongUploadItem alloc] initWithSong:song];
     [_items addObject:item];
     
-    if (self.items.count == 1)
+    if (!_uploading)
         [self loop];
 }
 
 
 - (void)loop
 {
-    SongUploadManagerItem* item = [self.items objectAtIndex:self.index];
+    _uploading = YES;
+    
+    SongUploadItem* item = [self.items objectAtIndex:self.index];
     [item startUpload];
 }
 
@@ -119,7 +148,10 @@ static SongUploadManager* _main;
     // move to the next item
     _index++;
     
-    [self loop];
+    if (_index < self.items.count)
+        [self loop];
+    else
+        _uploading = NO;
 }
 
 
