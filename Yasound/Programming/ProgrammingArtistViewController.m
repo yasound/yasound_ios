@@ -87,11 +87,6 @@
 #pragma mark - TableView Source and Delegate
 
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
-//{
-//    return [gIndexMap objectAtIndex:section];
-//}
-
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -100,88 +95,11 @@
 }
 
 
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    return 22;
-//}
-//
-
-
-//- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    NSString* title = nil;
-//    
-//    NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
-//
-//    if (nbRows == 0)
-//        return nil;
-//    
-//    if (tableView == _titlesView)
-//        title = [[SongCatalog programmingCatalog].indexMap objectAtIndex:section];
-//    else if (tableView == _artistsView)
-//        title = [[SongCatalog programmingCatalog].indexMap objectAtIndex:section];
-//    else if (tableView == _albumsView)
-//        title = [SongCatalog programmingCatalog].selectedArtist;
-//    else if (tableView == _songsView)
-//        title = [SongCatalog programmingCatalog].selectedAlbum;
-//    
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    
-//    UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
-//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, 44);
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UILabel* label = [sheet makeLabel];
-//    label.text = title;
-//    [view addSubview:label];
-//    
-//    return view;
-//}
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
     NSInteger count = [SongCatalog programmingCatalog].selectedArtistRepo.count;
     return count;
 }
-
-
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{    
-//    return 44;
-//}
-
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return 22;
-//}
-
-
-
-
-
-//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
-//{
-//    if ((tableView == _titlesView) || (tableView == _artistsView))
-//        return [SongCatalog programmingCatalog].indexMap;
-//    
-//    return nil;
-//}
-
-
-//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
-//{
-//    if ((tableView == _titlesView) || (tableView == _artistsView))
-//        return index;
-//
-//    return 0;
-//}
-
-
 
 
 

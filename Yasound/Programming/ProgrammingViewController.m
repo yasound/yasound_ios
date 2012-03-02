@@ -24,7 +24,6 @@
 @implementation ProgrammingViewController
 
 @synthesize matchedSongs;
-//@synthesize catalog;
 
 
 #define SEGMENT_INDEX_ALPHA 0
@@ -44,8 +43,6 @@
         _nbPlaylists = 0;
         
         self.matchedSongs = [[NSMutableDictionary alloc] init];
-        
-//        [SongCatalog programmingCatalog] = [[SongCatalog alloc] init];
     }
     return self;
 }
@@ -92,19 +89,7 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    // redraw the last selected song's cell, if it's been updated
-    // a voir plus tard
-//    NSIndexPath* indexPath = [_tableView indexPathForSelectedRow];
-//    if (indexPath != nil)
-//    {
-//        [_tableView deselectRowAtIndexPath:indexPath animated:YES];
-//        [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
-//    }
-    
 
-}
 
 
 - (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
@@ -128,7 +113,6 @@
     for (Playlist* playlist in playlists) 
     {
         [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)]; 
-        // didReceiveMatchedSongs:(NSArray*)matched_songs info:
     }
 }
 
