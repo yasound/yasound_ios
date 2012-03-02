@@ -172,6 +172,10 @@
 "ProgrammingView_segment_artists" = "artists";
 "ProgrammingView_unknownArtist" = "#Unknown artist";
 "ProgrammingView_unknownAlbum" = "Unknown album";
+"ProgramminView_nb_albums_1" = "1 album";
+"ProgramminView_nb_albums_n" = "%d albums";
+"ProgramminView_nb_songs_1" = "1 song";
+"ProgramminView_nb_songs_n" = "%d songs";
 
 
 "SongView_title" = "Song";

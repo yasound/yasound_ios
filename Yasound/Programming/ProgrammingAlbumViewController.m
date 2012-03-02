@@ -43,7 +43,7 @@
     [super viewDidLoad];
 
     _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-    _subtitleLabel.text = NSLocalizedString(@"ProgrammingView_subtitle", nil);
+    _subtitleLabel.text = [SongCatalog programmingCatalog].selectedAlbum;
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
@@ -136,7 +136,7 @@
         cell.detailTextLabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
     }
     
-    cell.textLabel.text = song.name;
+    cell.textLabel.text = [NSString stringWithFormat:@"%d. %@", indexPath.row+1, song.name];
 
     
     

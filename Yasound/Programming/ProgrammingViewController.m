@@ -400,9 +400,22 @@
     {
         NSArray* artistsForSection = [[SongCatalog programmingCatalog].alphaArtistsOrder objectForKey:charIndex];
         
-        cell.textLabel.textColor = [UIColor whiteColor];
         NSString* artist = [artistsForSection objectAtIndex:indexPath.row];
+        
+        NSDictionary* artistsRepo = [[SongCatalog programmingCatalog].alphaArtistsRepo objectForKey:charIndex];
+        NSDictionary* artistRepo = [artistsRepo objectForKey:artist];
+
+        NSInteger nbAlbums = artistRepo.count;
+        
+        cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.text = artist;
+
+        if (nbAlbums == 1)
+            cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_albums_1", nil);
+        else
+            cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_albums_n", nil);
+
+         cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
     }
 
     

@@ -49,7 +49,7 @@
     [super viewDidLoad];
 
     _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-    _subtitleLabel.text = NSLocalizedString(@"ProgrammingView_subtitle", nil);
+    _subtitleLabel.text = [SongCatalog programmingCatalog].selectedArtist;
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
@@ -130,9 +130,21 @@
     NSString* charIndex = [[SongCatalog programmingCatalog].indexMap objectAtIndex:indexPath.section];
     
     NSArray* albums = [[SongCatalog programmingCatalog].selectedArtistRepo allKeys];
+    NSArray* albumRepos = [[SongCatalog programmingCatalog].selectedArtistRepo allValues];
     
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text = [albums objectAtIndex:indexPath.row];
+    
+    
+    NSArray* songs = [albumRepos objectAtIndex:indexPath.row];
+    NSInteger nbSongs = songs.count;
+    
+    if (nbSongs == 1)
+        cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_songs_1", nil);
+    else
+        cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_songs_n", nil);
+    
+    cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];    
 
     
     return cell;
