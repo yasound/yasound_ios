@@ -22,44 +22,76 @@
 @implementation SongAddViewController
 
 
+
+#define SEGMENT_INDEX_ALPHA 0
+#define SEGMENT_INDEX_ARTIST 1
+#define SEGMENT_INDEX_SERVER 2
+
+
 @synthesize  localSongs;
 @synthesize remoteSongs;
 @synthesize matchedSongs;
 
+static NSMutableArray* gIndexMap = nil;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withMatchedSongs:(NSArray*)matchedSongs
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withMatchedSongs:(NSDictionary*)matchedSongs
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.matchedSongs = [NSSet setWithArray:matchedSongs];
+        self.matchedSongs = matchedSongs;
+        
+        self.alphabeticRepo = [[NSMutableDictionary alloc] init];
+        self.artistsRepo = [[NSMutableDictionary alloc] init];
+        self.artistsIndexSections = [[NSMutableArray alloc] init];
+        
+        if (gIndexMap == nil)
+            [self initIndexMap];
+        
+        for (NSString* indexKey in gIndexMap)
+        {
+            NSMutableArray* letterRepo = [[NSMutableArray alloc] init];
+            [self.alphabeticRepo setObject:letterRepo forKey:indexKey];
+        }
+        
     }
     return self;
 }
 
 
-//- (BOOL)doesContainSong:(NSArray*)array song:(Song*)aSong
-- (BOOL)doesContainSong:(NSSet*)array song:(Song*)aSong
+- (void)initIndexMap
 {
-    for (Song* song in array)
-    {
-        assert(song.name != nil);
-        if (![song.name isEqualToString:aSong.name])
-            continue;
-        
-        assert(song.album != nil);
-        if (![song.album isEqualToString:aSong.album])
-            continue;
-
-        assert(song.artist != nil);
-        if (![song.artist isEqualToString:aSong.artist])
-            continue;
-        
-        return YES;
-    }
-    
-    return NO;
+    gIndexMap = [[NSMutableArray alloc] init];
+    [gIndexMap retain];
+    [gIndexMap addObject:@"-"];
+    [gIndexMap addObject:@"A"];
+    [gIndexMap addObject:@"B"];
+    [gIndexMap addObject:@"C"];
+    [gIndexMap addObject:@"D"];
+    [gIndexMap addObject:@"E"];
+    [gIndexMap addObject:@"F"];
+    [gIndexMap addObject:@"G"];
+    [gIndexMap addObject:@"H"];
+    [gIndexMap addObject:@"I"];
+    [gIndexMap addObject:@"J"];
+    [gIndexMap addObject:@"K"];
+    [gIndexMap addObject:@"L"];
+    [gIndexMap addObject:@"M"];
+    [gIndexMap addObject:@"N"];
+    [gIndexMap addObject:@"O"];
+    [gIndexMap addObject:@"P"];
+    [gIndexMap addObject:@"Q"];
+    [gIndexMap addObject:@"R"];
+    [gIndexMap addObject:@"S"];
+    [gIndexMap addObject:@"T"];
+    [gIndexMap addObject:@"U"];
+    [gIndexMap addObject:@"V"];
+    [gIndexMap addObject:@"W"];
+    [gIndexMap addObject:@"X"];
+    [gIndexMap addObject:@"Y"];
+    [gIndexMap addObject:@"Z"];
+    [gIndexMap addObject:@"#"];
 }
 
 
@@ -100,29 +132,42 @@
         {
             Song* song = [[Song alloc] init];
             
+            NSString* artistKey = [item valueForProperty:MPMediaItemPropertyArtist];
+            NSString* albumKey = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
+
+            
+            
             NSString* value = [item valueForProperty:MPMediaItemPropertyTitle];
             if (value == nil)
                 song.name = [NSString stringWithString:PM_FIELD_UNKNOWN];
             else
                 song.name = [NSString stringWithString:value];
 
-            
-            value = [item valueForProperty:MPMediaItemPropertyArtist];
-            if (value == nil)
+            if (artistKey == nil)
+            {
+                artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
                 song.artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
+            }
             else
-                song.artist = [NSString stringWithString:value];
+                song.artist = [NSString stringWithString:artistKey];
 
             
-            value = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
-            if (value == nil)
+            if (albumKey == nil)
+            {
+                albumKey =  NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
                 song.album = [NSString stringWithString:PM_FIELD_UNKNOWN];
+            }
             else
-                song.album = [NSString stringWithString:value];
+                song.album = [NSString stringWithString:albumKey];
 
+            
+            // create a key for the dictionary 
+            NSString* key = [NSString stringWithFormat:@"%@|%@|%@", song.name, artistKey, albumKey];
+            
             
             // don't include it if it's included in the matched songs already
-            if ([self doesContainSong:self.matchedSongs song:song])
+            Song* matchedSong = [self.matchedSongs objectForKey:key];
+            if (matchedSongs != nil)
                 continue;
             
             [localCollection addObject:song];

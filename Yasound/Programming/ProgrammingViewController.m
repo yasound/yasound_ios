@@ -21,13 +21,8 @@
 @implementation ProgrammingViewController
 
 @synthesize matchedSongs;
-@synthesize alphabeticRepo;
-@synthesize artistsRepo;
-@synthesize artistsRepoKeys;
-@synthesize artistsIndexSections;
+@synthesize catalog;
 
-
-static NSMutableArray* gIndexMap = nil;
 
 
 #define SEGMENT_INDEX_ALPHA 0
@@ -46,25 +41,9 @@ static NSMutableArray* gIndexMap = nil;
         _nbReceivedData = 0;
         _nbPlaylists = 0;
         
-        _numericSet = [[NSCharacterSet decimalDigitCharacterSet] retain];
-        _lowerCaseSet = [[NSCharacterSet lowercaseLetterCharacterSet] retain];
-        _upperCaseSet = [[NSCharacterSet uppercaseLetterCharacterSet] retain];
-
-        if (gIndexMap == nil)
-            [self initIndexMap];
-        
         self.matchedSongs = [[NSMutableDictionary alloc] init];
-        self.alphabeticRepo = [[NSMutableDictionary alloc] init];
-        self.artistsRepo = [[NSMutableDictionary alloc] init];
-        self.artistsIndexSections = [[NSMutableArray alloc] init];
         
-        for (NSString* indexKey in gIndexMap)
-        {
-            NSMutableArray* letterRepo = [[NSMutableArray alloc] init];
-            [self.alphabeticRepo setObject:letterRepo forKey:indexKey];
-        }
-        
-        
+        self.catalog = [[SongCatalog alloc] init];
     }
     return self;
 }
@@ -72,47 +51,9 @@ static NSMutableArray* gIndexMap = nil;
 
 - (void)dealloc
 {
-    [_numericSet release];
-    [_lowerCaseSet release];
-    [_upperCaseSet release];
-    
     [super dealloc];
 }
 
-
-- (void)initIndexMap
-{
-    gIndexMap = [[NSMutableArray alloc] init];
-    [gIndexMap retain];
-    [gIndexMap addObject:@"-"];
-    [gIndexMap addObject:@"A"];
-    [gIndexMap addObject:@"B"];
-    [gIndexMap addObject:@"C"];
-    [gIndexMap addObject:@"D"];
-    [gIndexMap addObject:@"E"];
-    [gIndexMap addObject:@"F"];
-    [gIndexMap addObject:@"G"];
-    [gIndexMap addObject:@"H"];
-    [gIndexMap addObject:@"I"];
-    [gIndexMap addObject:@"J"];
-    [gIndexMap addObject:@"K"];
-    [gIndexMap addObject:@"L"];
-    [gIndexMap addObject:@"M"];
-    [gIndexMap addObject:@"N"];
-    [gIndexMap addObject:@"O"];
-    [gIndexMap addObject:@"P"];
-    [gIndexMap addObject:@"Q"];
-    [gIndexMap addObject:@"R"];
-    [gIndexMap addObject:@"S"];
-    [gIndexMap addObject:@"T"];
-    [gIndexMap addObject:@"U"];
-    [gIndexMap addObject:@"V"];
-    [gIndexMap addObject:@"W"];
-    [gIndexMap addObject:@"X"];
-    [gIndexMap addObject:@"Y"];
-    [gIndexMap addObject:@"Z"];
-    [gIndexMap addObject:@"#"];
-}
 
 
 
@@ -230,42 +171,6 @@ static NSMutableArray* gIndexMap = nil;
         
         for (Song* song in songs)
         {
-            // create a key for the dictionary 
-            NSString* key = [NSString stringWithFormat:@"%@|%@|%@", song.name, song.artist, song.album];
-            // and store the song in the dictionnary, for later convenient use
-            [self.matchedSongs setObject:song forKey:key];
-            
-            // and now,
-            // get what u need to sort alphabetically
-            NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
-            
-            unichar c = [firstRelevantWord characterAtIndex:0];
-            
-            // we spread the songs, in a dictionnary, and group them depending on their first letter
-            // => each table view section will be related to a letter
-            
-            // first letter is [0 .. 9]
-            if ([_numericSet characterIsMember:c]) 
-            {
-                NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"-"];
-                [letterRepo addObject:song];
-            }
-            // first letter is [a .. z] || [A .. Z]
-            else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
-            {
-                NSString* upperCaseChar = [[NSString stringWithCharacters:&c length:1] uppercaseString];
-                NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:upperCaseChar];
-                [letterRepo addObject:song];
-            }
-            // other cases (foreign languages, ...)
-            else
-            {
-                NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"#"];
-                [letterRepo addObject:song];
-            }
-
-
-            
             // be aware of empty artist names, and empty album names
             NSString* artistKey = song.artist;
             if ((artistKey == nil) || (artistKey.length == 0))
@@ -281,79 +186,16 @@ static NSMutableArray* gIndexMap = nil;
             }
             
             
-            // also, take care about the other sorting dictionnary (the one that sort the songs by artists and albums)
-            NSMutableDictionary* albumsRepo = [self.artistsRepo objectForKey:artistKey];
-            if (albumsRepo == nil)
-            {
-                albumsRepo = [[NSMutableDictionary alloc] init];
-                [self.artistsRepo setObject:albumsRepo forKey:artistKey];
-            }
-            NSMutableArray* albumRepo = [albumsRepo objectForKey:albumKey];
-            if (albumRepo == nil)
-            {
-                albumRepo = [[NSMutableArray alloc] init];
-                [albumsRepo setObject:albumRepo forKey:albumKey];
-            }
-            [albumRepo addObject:song];
-
-
+            // create a key for the dictionary 
+            NSString* key = [NSString stringWithFormat:@"%@|%@|%@", song.name, artistKey, albumKey];
+            // and store the song in the dictionnary, for later convenient use
+            [self.matchedSongs setObject:song forKey:key];
         }
     }
     
-    // now, sort alphabetically each letter repository
-    for (NSString* key in [self.alphabeticRepo allKeys])
-    {
-        // don't sort the foreign languages
-        if ([key isEqualToString:@"#"])
-            continue;
-        
-        NSMutableArray* array = [self.alphabeticRepo objectForKey:key];
-        NSMutableArray* sortedArray = [array sortedArrayUsingSelector:@selector(nameCompare:)];
-        [self.alphabeticRepo setObject:sortedArray forKey:key];
-    }
+    // build catalog
+    [self.catalog buildWithSource:self.matchedSongs];
     
-    // and finalize the artists repository ergonomy (<=> artists names are keys of the artists repository, and we want to sort them alphabetically)
-    self.artistsRepoKeys = [NSArray arrayWithArray:[self.artistsRepo allKeys]];
-    self.artistsRepoKeys = [self.artistsRepoKeys  sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    
-//    NSLog(@"%@", self.artistsRepoKeys);
-    
-    // also, prepare the relation between the alphabetic scrolling Index, and the artists names
-    NSInteger section = 0;
-    NSInteger artistIndex = 0;
-    [self.artistsIndexSections addObject:[NSNumber numberWithInteger:section]]; // first section of "-" index
-    section++;
-    for (int i = 1; i < (gIndexMap.count - 1); i++)
-    {
-        NSString* indexChar = [gIndexMap objectAtIndex:i];
-        NSString* firstArtistChar = [[[self.artistsRepoKeys objectAtIndex:artistIndex] substringToIndex:1] uppercaseString];
-        
-//        NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
-        
-        // for instance, if indexChar is "A", and firstArtistChar is "B" already (<=> no artist in the "A" index),
-        // keep the current index as an index section, and continue
-        NSComparisonResult result = [firstArtistChar compare:indexChar];
-        if ((result == NSOrderedDescending) || (result == NSOrderedSame))
-        {
-            [self.artistsIndexSections addObject:[NSNumber numberWithInteger:artistIndex]];
-            continue;
-        }
-        
-        // otherwise, go to the artist section, where the first letter corresponds to the indexChar (<=> if indexChar is "B", goes to the first artist in "B")
-        while ((artistIndex < (self.artistsRepoKeys.count-1)) && (result == NSOrderedAscending))
-        {
-            artistIndex++;
-            firstArtistChar = [[[self.artistsRepoKeys objectAtIndex:artistIndex] substringToIndex:1] uppercaseString];
-            result = [firstArtistChar compare:indexChar];
-
-//            NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
-        }
-        
-        [self.artistsIndexSections addObject:[NSNumber numberWithInteger:artistIndex]];
-    }
-    
-    // last section index : it's the "#" section, for the names in foreign characters. Keep the last provided artist index.
-    [self.artistsIndexSections addObject:[NSNumber numberWithInteger:artistIndex]];
 
     // PROFILE
     [[TimeProfile main] end];
@@ -431,11 +273,11 @@ static NSMutableArray* gIndexMap = nil;
     
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        title = [gIndexMap objectAtIndex:section];
+        title = [self.catalog.indexMap objectAtIndex:section];
     }
     else
     {
-        title = [self.artistsRepoKeys objectAtIndex:section];
+        title = [self.catalog.artistsRepoKeys objectAtIndex:section];
     }
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -455,9 +297,9 @@ static NSMutableArray* gIndexMap = nil;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
-        return gIndexMap.count;
+        return self.catalog.indexMap.count;
     else
-        return self.artistsRepoKeys.count;
+        return self.catalog.artistsRepoKeys.count;
 }
 
 
@@ -466,14 +308,14 @@ static NSMutableArray* gIndexMap = nil;
 {
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        NSArray* letterRepo = [self.alphabeticRepo objectForKey:[gIndexMap objectAtIndex:section]];
+        NSArray* letterRepo = [self.catalog.alphabeticRepo objectForKey:[self.catalog.indexMap objectAtIndex:section]];
         assert(letterRepo != nil);
         return letterRepo.count;
     }
     else
     {
-        NSString* artist = [self.artistsRepoKeys objectAtIndex:section]; 
-        NSDictionary* albumsRepo = [self.artistsRepo objectForKey:artist];
+        NSString* artist = [self.catalog.artistsRepoKeys objectAtIndex:section]; 
+        NSDictionary* albumsRepo = [self.catalog.artistsRepo objectForKey:artist];
         NSArray* albumsValues = [albumsRepo allValues];
         NSInteger count = 0;
         for (NSArray* album in albumsValues)
@@ -507,7 +349,7 @@ static NSMutableArray* gIndexMap = nil;
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
 {
-    return gIndexMap;
+    return self.catalog.indexMap;
 }
 
 
@@ -517,7 +359,7 @@ static NSMutableArray* gIndexMap = nil;
         return index;
     else
     {
-        NSNumber* nb = [self.artistsIndexSections objectAtIndex:index];
+        NSNumber* nb = [self.catalog.artistsIndexSections objectAtIndex:index];
         return [nb integerValue];
     }
 }
@@ -551,13 +393,13 @@ static NSMutableArray* gIndexMap = nil;
     
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        NSArray* letterRepo = [self.alphabeticRepo objectForKey:[gIndexMap objectAtIndex:indexPath.section]];
+        NSArray* letterRepo = [self.catalog.alphabeticRepo objectForKey:[self.catalog.indexMap objectAtIndex:indexPath.section]];
         song = [letterRepo objectAtIndex:indexPath.row];
     }
     else
     {
-        NSString* artist = [self.artistsRepoKeys objectAtIndex:indexPath.section];
-        NSDictionary* albumsRepo = [self.artistsRepo objectForKey:artist];
+        NSString* artist = [self.catalog.artistsRepoKeys objectAtIndex:indexPath.section];
+        NSDictionary* albumsRepo = [self.catalog.artistsRepo objectForKey:artist];
         NSArray* albumsValues = [albumsRepo allValues];
         NSInteger count = 0;
         BOOL done = NO;
@@ -602,7 +444,7 @@ static NSMutableArray* gIndexMap = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSArray* letterRepo = [self.alphabeticRepo objectForKey:[gIndexMap objectAtIndex:indexPath.section]];
+    NSArray* letterRepo = [self.catalog.alphabeticRepo objectForKey:[self.catalog.indexMap objectAtIndex:indexPath.section]];
     Song* song = [letterRepo objectAtIndex:indexPath.row];
     
     SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];

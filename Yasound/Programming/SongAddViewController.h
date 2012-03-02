@@ -28,7 +28,12 @@
 
 @property (nonatomic, assign) NSDictionary* matchedSongs;
 
+@property (nonatomic, retain) NSMutableDictionary* alphabeticRepo;
+@property (nonatomic, retain) NSMutableDictionary* artistsRepo;
+@property (nonatomic, retain) NSArray* artistsRepoKeys;
+@property (nonatomic, retain) NSMutableArray* artistsIndexSections;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withMatchedSongs:(NSArray*)matchedSongs;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withMatchedSongs:(NSDictionary*)matchedSongs;
 
 @end
