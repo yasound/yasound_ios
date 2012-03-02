@@ -205,30 +205,6 @@ typedef enum
   return count;
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//  SearchResultCategory cat = [self categoryForSection:section];
-//  switch (cat) 
-//  {
-//    case eSearchByRadioAttributes:
-//      return NSLocalizedString(@"RadioSearch_CategoryRadioAttributes_SectionTitle", nil);
-//      break;
-//      
-//    case eSearchByRadioCreator:
-//      return NSLocalizedString(@"RadioSearch_CategoryRadioCreator_SectionTitle", nil);
-//      break;
-//      
-//    case eSearchByRadioSong:
-//      return NSLocalizedString(@"RadioSearch_CategoryRadioSong_SectionTitle", nil);
-//      break;
-//      
-//    default:
-//      break;
-//  }
-//  
-//  return @"";
-//}
-
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
   NSString* title = nil;
@@ -349,6 +325,8 @@ typedef enum
   if (_radiosBySong != nil)
     [_radiosBySong release];
   _radiosBySong = nil;
+  
+  [self.searchDisplayController.searchResultsTableView reloadData];
   
   [[YasoundDataProvider main] searchRadios:searchText withTarget:self action:@selector(receiveRadios:withInfo:)];
   [[YasoundDataProvider main] searchRadiosByCreator:searchText withTarget:self action:@selector(receiveRadiosSearchedByCreator:withInfo:)];
