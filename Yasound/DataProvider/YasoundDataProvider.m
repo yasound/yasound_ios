@@ -709,6 +709,24 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
+- (void)searchRadiosByCreator:(NSString*)search withTarget:(id)target action:(SEL)selector
+{
+  Auth* auth = self.apiKeyAuth;
+  NSMutableArray* params = [NSMutableArray array];
+  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
+  
+  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search_radio_by_user" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)searchRadiosBySong:(NSString*)search withTarget:(id)target action:(SEL)selector
+{
+  Auth* auth = self.apiKeyAuth;
+  NSMutableArray* params = [NSMutableArray array];
+  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
+  
+  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search_radio_by_song" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
 
 - (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
