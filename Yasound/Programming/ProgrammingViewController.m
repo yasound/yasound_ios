@@ -253,26 +253,35 @@ static NSMutableArray* gIndexMap = nil;
                 [letterRepo addObject:song];
             }
 
+
+            
+            // be aware of empty artist names, and empty album names
+            NSString* artistKey = song.artist;
+            if ((artistKey == nil) || (artistKey.length == 0))
+            {
+                artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
+                NSLog(@"empty artist found!");
+            }
+            NSString* albumKey = song.album;
+            if ((albumKey == nil) || (albumKey.length == 0))
+            {
+                artistKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+                NSLog(@"empty album found!");
+            }
+            
             
             // also, take care about the other sorting dictionnary (the one that sort the songs by artists and albums)
-            NSMutableDictionary* albumsRepo = [self.artistsRepo objectForKey:song.artist];
+            NSMutableDictionary* albumsRepo = [self.artistsRepo objectForKey:artistKey];
             if (albumsRepo == nil)
             {
                 albumsRepo = [[NSMutableDictionary alloc] init];
-                [self.artistsRepo setObject:albumsRepo forKey:song.artist];
+                [self.artistsRepo setObject:albumsRepo forKey:artistKey];
             }
-//            NSMutableDictionary* albumRepo = [albumsRepo objectForKey:song.album];
-//            if (albumRepo == nil)
-//            {
-//                albumRepo = [[NSMutableDictionary alloc] init];
-//                [albumsRepo setObject:albumRepo forKey:song.album];
-//            }
-//            [albumRepo setObject:song forKey:song.name];
-            NSMutableArray* albumRepo = [albumsRepo objectForKey:song.album];
+            NSMutableArray* albumRepo = [albumsRepo objectForKey:albumKey];
             if (albumRepo == nil)
             {
                 albumRepo = [[NSMutableArray alloc] init];
-                [albumsRepo setObject:albumRepo forKey:song.album];
+                [albumsRepo setObject:albumRepo forKey:albumKey];
             }
             [albumRepo addObject:song];
 

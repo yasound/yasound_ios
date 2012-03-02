@@ -170,6 +170,8 @@
 "ProgrammingView_error_message" = "An error happened during the synchronization.";
 "ProgrammingView_segment_titles" = "titles";
 "ProgrammingView_segment_artists" = "artists";
+"ProgrammingView_unknownArtist" = "#Unknown artist";
+"ProgrammingView_unknownAlbum" = "Unknown album";
 
 
 "SongView_title" = "Song";
