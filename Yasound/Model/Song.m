@@ -212,12 +212,12 @@
     return [firstItem compare:secondItem];
 }
 
-- (NSComparisonResult)ArtistNameCompare:(Song*)second
+- (NSComparisonResult)artistCompare:(Song*)second
 {
     return [self.artist compare:second.artist];
 }
 
-- (NSComparisonResult)AlbumNameCompare:(Song*)second
+- (NSComparisonResult)albumCompare:(Song*)second
 {
     return [self.album compare:second.album];
 }

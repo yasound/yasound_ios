@@ -73,6 +73,9 @@
     _subtitleLabel.text = NSLocalizedString(@"SongAddView_subtitle", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
+    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_titles", nil) forSegmentAtIndex:0];  
+    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_artists", nil) forSegmentAtIndex:1];  
+    
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
     
@@ -406,6 +409,12 @@
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
+
+- (IBAction)onSegmentClicked:(id)sender
+{
+    
+}
+
 
 
 @end

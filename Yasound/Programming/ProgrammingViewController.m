@@ -22,9 +22,16 @@
 
 @synthesize matchedSongs;
 @synthesize alphabeticRepo;
+@synthesize artistsRepo;
+@synthesize artistsRepoKeys;
+@synthesize artistsIndexSections;
+
 
 static NSMutableArray* gIndexMap = nil;
 
+
+#define SEGMENT_INDEX_ALPHA 0
+#define SEGMENT_INDEX_ARTIST 1
 
 
 
@@ -48,6 +55,8 @@ static NSMutableArray* gIndexMap = nil;
         
         self.matchedSongs = [[NSMutableDictionary alloc] init];
         self.alphabeticRepo = [[NSMutableDictionary alloc] init];
+        self.artistsRepo = [[NSMutableDictionary alloc] init];
+        self.artistsIndexSections = [[NSMutableArray alloc] init];
         
         for (NSString* indexKey in gIndexMap)
         {
@@ -116,6 +125,9 @@ static NSMutableArray* gIndexMap = nil;
     _subtitleLabel.text = NSLocalizedString(@"ProgrammingView_subtitle", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
+    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_titles", nil) forSegmentAtIndex:0];  
+    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_artists", nil) forSegmentAtIndex:1];  
+    [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
@@ -240,6 +252,31 @@ static NSMutableArray* gIndexMap = nil;
                 NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"#"];
                 [letterRepo addObject:song];
             }
+
+            
+            // also, take care about the other sorting dictionnary (the one that sort the songs by artists and albums)
+            NSMutableDictionary* albumsRepo = [self.artistsRepo objectForKey:song.artist];
+            if (albumsRepo == nil)
+            {
+                albumsRepo = [[NSMutableDictionary alloc] init];
+                [self.artistsRepo setObject:albumsRepo forKey:song.artist];
+            }
+//            NSMutableDictionary* albumRepo = [albumsRepo objectForKey:song.album];
+//            if (albumRepo == nil)
+//            {
+//                albumRepo = [[NSMutableDictionary alloc] init];
+//                [albumsRepo setObject:albumRepo forKey:song.album];
+//            }
+//            [albumRepo setObject:song forKey:song.name];
+            NSMutableArray* albumRepo = [albumsRepo objectForKey:song.album];
+            if (albumRepo == nil)
+            {
+                albumRepo = [[NSMutableArray alloc] init];
+                [albumsRepo setObject:albumRepo forKey:song.album];
+            }
+            [albumRepo addObject:song];
+
+
         }
     }
     
@@ -255,6 +292,48 @@ static NSMutableArray* gIndexMap = nil;
         [self.alphabeticRepo setObject:sortedArray forKey:key];
     }
     
+    // and finalize the artists repository ergonomy (<=> artists names are keys of the artists repository, and we want to sort them alphabetically)
+    self.artistsRepoKeys = [NSArray arrayWithArray:[self.artistsRepo allKeys]];
+    self.artistsRepoKeys = [self.artistsRepoKeys  sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    
+    //NSLog(@"%@", self.artistsRepoKeys);
+    
+    // also, prepare the relation between the alphabetic scrolling Index, and the artists names
+    NSInteger section = 0;
+    NSInteger artistIndex = 0;
+    [self.artistsIndexSections addObject:[NSNumber numberWithInteger:section]]; // first section of "-" index
+    section++;
+    for (int i = 1; i < (gIndexMap.count - 1); i++)
+    {
+        NSString* indexChar = [gIndexMap objectAtIndex:i];
+        NSString* firstArtistChar = [[[self.artistsRepoKeys objectAtIndex:artistIndex] substringToIndex:1] uppercaseString];
+        
+        // NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
+        
+        // for instance, if indexChar is "A", and firstArtistChar is "B" already (<=> no artist in the "A" index),
+        // keep the current index as an index section, and continue
+        NSComparisonResult result = [firstArtistChar compare:indexChar];
+        if ((result == NSOrderedDescending) || (result == NSOrderedSame))
+        {
+            [self.artistsIndexSections addObject:[NSNumber numberWithInteger:artistIndex]];
+            continue;
+        }
+        
+        // otherwise, go to the artist section, where the first letter corresponds to the indexChar (<=> if indexChar is "B", goes to the first artist in "B")
+        while ((artistIndex < self.artistsRepoKeys.count) && (result == NSOrderedAscending))
+        {
+            artistIndex++;
+            firstArtistChar = [[[self.artistsRepoKeys objectAtIndex:artistIndex] substringToIndex:1] uppercaseString];
+            result = [firstArtistChar compare:indexChar];
+
+            // NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
+        }
+        
+        [self.artistsIndexSections addObject:[NSNumber numberWithInteger:artistIndex]];
+    }
+    
+    // last section index : it's the "#" section, for the names in foreign characters. Keep the last provided artist index.
+    [self.artistsIndexSections addObject:[NSNumber numberWithInteger:artistIndex]];
 
     // PROFILE
     [[TimeProfile main] end];
@@ -324,7 +403,16 @@ static NSMutableArray* gIndexMap = nil;
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSString* title = [gIndexMap objectAtIndex:section];
+    NSString* title = nil;
+    
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    {
+        title = [gIndexMap objectAtIndex:section];
+    }
+    else
+    {
+        title = [self.artistsRepoKeys objectAtIndex:section];
+    }
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
@@ -342,16 +430,33 @@ static NSMutableArray* gIndexMap = nil;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return gIndexMap.count;
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+        return gIndexMap.count;
+    else
+        return self.artistsRepoKeys.count;
 }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    NSArray* letterRepo = [self.alphabeticRepo objectForKey:[gIndexMap objectAtIndex:section]];
-    assert(letterRepo != nil);
-    return letterRepo.count;
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    {
+        NSArray* letterRepo = [self.alphabeticRepo objectForKey:[gIndexMap objectAtIndex:section]];
+        assert(letterRepo != nil);
+        return letterRepo.count;
+    }
+    else
+    {
+        NSString* artist = [self.artistsRepoKeys objectAtIndex:section]; 
+        NSDictionary* albumsRepo = [self.artistsRepo objectForKey:artist];
+        NSArray* albumsValues = [albumsRepo allValues];
+        NSInteger count = 0;
+        for (NSArray* album in albumsValues)
+            count += album.count;
+            
+        return count;
+    }
 }
 
 
@@ -376,9 +481,6 @@ static NSMutableArray* gIndexMap = nil;
 
 
 
-
-
-
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
 {
     return gIndexMap;
@@ -387,41 +489,16 @@ static NSMutableArray* gIndexMap = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
 {
-    return index;
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+        return index;
+    else
+    {
+        NSNumber* nb = [self.artistsIndexSections objectAtIndex:index];
+        return [nb integerValue];
+    }
 }
 
 
-
-
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    NSString* title = nil;
-//    
-//    if (section == 0)
-//        return nil;
-//    
-//    if (section == SECTION_MONTHCHART)
-//        title = NSLocalizedString(@"StatsView_monthselector_label", nil);
-//    
-//    else if (section == SECTION_LEADERBOARD)
-//        title = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
-//    
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    
-//    UIImage* image = [sheet image];
-//    CGFloat height = image.size.height;
-//    UIImageView* view = [[UIImageView alloc] initWithImage:image];
-//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UILabel* label = [sheet makeLabel];
-//    label.text = title;
-//    [view addSubview:label];
-//    
-//    return view;
-//}
 
 
 
@@ -446,8 +523,37 @@ static NSMutableArray* gIndexMap = nil;
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    NSArray* letterRepo = [self.alphabeticRepo objectForKey:[gIndexMap objectAtIndex:indexPath.section]];
-    Song* song = [letterRepo objectAtIndex:indexPath.row];
+    Song* song = nil;
+    
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    {
+        NSArray* letterRepo = [self.alphabeticRepo objectForKey:[gIndexMap objectAtIndex:indexPath.section]];
+        song = [letterRepo objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        NSString* artist = [self.artistsRepoKeys objectAtIndex:indexPath.section];
+        NSDictionary* albumsRepo = [self.artistsRepo objectForKey:artist];
+        NSArray* albumsValues = [albumsRepo allValues];
+        NSInteger count = 0;
+        BOOL done = NO;
+        for (NSArray* album in albumsValues)
+        {
+            for (Song* albumSong in album)
+            {
+                count++;
+                if (count == indexPath.row)
+                {
+                    song = albumSong;
+                    done = YES;
+                    break;
+                }
+            }
+            
+            if (done)
+                break;
+        }
+}
     
     cell.textLabel.text = song.name;
     cell.textLabel.backgroundColor = [UIColor clearColor];
@@ -515,6 +621,11 @@ static NSMutableArray* gIndexMap = nil;
     SongAddViewController* view = [[SongAddViewController alloc] initWithNibName:@"SongAddViewController" bundle:nil withMatchedSongs:self.matchedSongs];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
+}
+
+- (IBAction)onSegmentClicked:(id)sender
+{
+    [_tableView reloadData];
 }
 
 

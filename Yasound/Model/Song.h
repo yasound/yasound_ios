@@ -43,8 +43,8 @@ typedef enum
 - (NSString*)getNameWithoutArticle;
 
 - (NSComparisonResult)nameCompare:(Song*)second;
-- (NSComparisonResult)ArtistNameCompare:(Song*)second;
-- (NSComparisonResult)AlbumNameCompare:(Song*)second;
+- (NSComparisonResult)artistCompare:(Song*)second;
+- (NSComparisonResult)albumCompare:(Song*)second;
 
 @end
 

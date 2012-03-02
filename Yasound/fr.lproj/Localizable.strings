@@ -169,7 +169,8 @@
 "ProgrammingView_subtitled_count_n" = "%d morceaux synchronisés";
 "ProgrammingView_error_title" = "Synchronisation";
 "ProgrammingView_error_message" = "une erreur est survenue pendant la synchronisation.";
-
+"ProgrammingView_segment_titles" = "titres";
+"ProgrammingView_segment_artists" = "artistes";
 
 
 
