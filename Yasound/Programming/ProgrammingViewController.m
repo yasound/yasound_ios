@@ -255,14 +255,7 @@
     _songsView.hidden = NO;
     [_container addSubview:_titlesView];
 
-    //LBDEBUG : TODO?
-    //[_titlesView reloadData];
-
     [ActivityAlertView close];
-    
-    
-    //LBDEBUG
-    //NSLog(@"%@", self.artistsRepo);
 }
 
 
@@ -363,9 +356,6 @@
     else if (tableView == _albumsView)
     {
         NSInteger count = self.catalog.selectedArtistRepo.count;
-        
-        //LBDEBUG
-        NSLog(@"albumView count %d", count);
         return count;
     }
     else if (tableView == _songsView)
@@ -474,8 +464,6 @@
     else if (tableView == _albumsView)
     {
         NSArray* albums = [self.catalog.selectedArtistRepo allKeys];
-        //LBDEBUG
-        NSLog(@"%@", albums);
         
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.text = [albums objectAtIndex:indexPath.row];
@@ -497,29 +485,7 @@
         
         cell.textLabel.text = song.name;
     }
-    
-//        NSString* artist = [self.catalog.artistsRepoKeys objectAtIndex:indexPath.section];
-//        NSDictionary* albumsRepo = [self.catalog.artistsRepo objectForKey:artist];
-//        NSArray* albumsValues = [albumsRepo allValues];
-//        NSInteger count = 0;
-//        BOOL done = NO;
-//        for (NSArray* album in albumsValues)
-//        {
-//            for (Song* albumSong in album)
-//            {
-//                if (count == indexPath.row)
-//                {
-//                    song = albumSong;
-//                    done = YES;
-//                    break;
-//                }
-//                count++;
-//            }
-//            
-//            if (done)
-//                break;
-//        }
-//}
+
     
     
     return cell;

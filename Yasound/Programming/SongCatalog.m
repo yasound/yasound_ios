@@ -167,9 +167,6 @@
 
         
         
-        //LBDEBUG
-        NSLog(@"%@ | %@ | %@", artistKey, albumKey, song.name);
-        
         // now the Artist / Album / Song catalog
         c = [song.artist characterAtIndex:0];
         NSMutableDictionary* artistsRepo = nil;
@@ -182,8 +179,6 @@
         else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
         {
             NSString* upperC = [[NSString stringWithCharacters:&c length:1] uppercaseString];
-            //LBDEBUG
-            NSLog(@"upperC %@", upperC);
             artistsRepo = [self.alphaArtistsRepo objectForKey:upperC];
             artistsPREORDER = [self.alphaArtistsPREORDER objectForKey:upperC];
         }
