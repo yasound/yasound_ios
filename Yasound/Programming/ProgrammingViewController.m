@@ -360,6 +360,10 @@ static NSMutableArray* gIndexMap = nil;
     [_tableView reloadData];
 
     [ActivityAlertView close];
+    
+    
+    //LBDEBUG
+    //NSLog(@"%@", self.artistsRepo);
 }
 
 
@@ -541,13 +545,13 @@ static NSMutableArray* gIndexMap = nil;
         {
             for (Song* albumSong in album)
             {
-                count++;
                 if (count == indexPath.row)
                 {
                     song = albumSong;
                     done = YES;
                     break;
                 }
+                count++;
             }
             
             if (done)
