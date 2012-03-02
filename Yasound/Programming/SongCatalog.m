@@ -9,12 +9,14 @@
 #import "SongCatalog.h"
 #import "Song.h"
 
+
+
+
 @implementation SongCatalog
 
+@synthesize matchedSongs;
+
 @synthesize alphabeticRepo;
-//@synthesize artistsRepo;
-//@synthesize artistsRepoKeys;
-//@synthesize artistsIndexSections;
 @synthesize indexMap;
 @synthesize alphaArtistsRepo;
 @synthesize alphaArtistsOrder;
@@ -24,6 +26,33 @@
 @synthesize selectedAlbum;
 @synthesize selectedArtistRepo;
 @synthesize selectedAlbumRepo;
+
+
+
+
+static SongCatalog* _programmingCatalog;
+
++ (SongCatalog*)programmingCatalog
+{
+    if (_programmingCatalog == nil)
+    {
+        _programmingCatalog = [[SongCatalog alloc] init];
+    }
+    return _programmingCatalog;
+}
+
++ (void)releaseProgrammingCatalog
+{
+    if (_programmingCatalog == nil)
+        return;
+    
+    [_programmingCatalog release];
+    _programmingCatalog = nil;
+}
+
+
+
+
 
 
 - (id)init
@@ -36,8 +65,6 @@
         
         
         self.alphabeticRepo = [[NSMutableDictionary alloc] init];
-//        self.artistsRepo = [[NSMutableDictionary alloc] init];
-//        self.artistsIndexSections = [[NSMutableArray alloc] init];
         
         self.alphaArtistsRepo = [[NSMutableDictionary alloc] init];
         self.alphaArtistsPREORDER = [[NSMutableDictionary alloc] init];
@@ -60,11 +87,13 @@
             
             NSMutableArray* letterArtistOrder = [[NSMutableArray alloc] init];
             [self.alphaArtistsOrder setObject:letterArtistOrder forKey:indexKey];
-}
+        }
 
     }
     return self;
 }
+
+
 
 
 - (void)dealloc
@@ -246,6 +275,12 @@
         NSMutableArray* sortedArray = [array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
         [self.alphaArtistsOrder setObject:sortedArray forKey:key];
     }
+    
+    
+    
+//    NSLog(@"%@", self.alphabeticRepo);
+//    NSLog(@"%@", self.alphaArtistsRepo);
+//    NSLog(@"%@", self.alphaArtistsOrder);
     
 }
 

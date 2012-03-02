@@ -16,6 +16,8 @@
     NSCharacterSet* _upperCaseSet;
 }
 
+@property (nonatomic, retain) NSMutableDictionary* matchedSongs;
+
 @property (nonatomic, retain) NSMutableArray* indexMap; // "-", "A", "B", ...
 @property (nonatomic, retain) NSMutableDictionary* alphabeticRepo;  // "A" => {song1, song2, ...}, "B" ... }
 @property (nonatomic, retain) NSMutableDictionary* alphaArtistsRepo; // "A" => {artist1 => { album1 => [song1, ...], ... }, ...}, ...
@@ -29,12 +31,8 @@
 @property (nonatomic, assign) NSArray* selectedAlbumRepo;
 
 
-//@property (nonatomic, retain) NSMutableDictionary* artistsRepo; // "First Artist" => {"first Album" => {song1, song2, ...},  "other artist"... }
-//@property (nonatomic, retain) NSArray* artistsRepoKeys;  // "First Artist A",  "Second Artist B", ...
-
-
-//@property (nonatomic, retain) NSMutableArray* artistsIndexSections; // section number for index letter "-", section number for index letter "A", section number for index letter "B", ... 
-
++ (SongCatalog*)programmingCatalog;
++ (void)releaseProgrammingCatalog;
 
 - (void)buildWithSource:(NSDictionary*)source;
 

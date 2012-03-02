@@ -7,7 +7,6 @@
 //
 
 #import "TestflightViewController.h"
-#import "SongCatalog.h"
 
 @interface ProgrammingViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 {
@@ -17,13 +16,7 @@
     IBOutlet UIToolbar* _toolbar;
     IBOutlet UISegmentedControl* _segment;
     
-    IBOutlet UIView* _container;
-    
-    
-    UITableView* _titlesView;
-    UITableView* _artistsView;
-    UITableView* _albumsView;
-    UITableView* _songsView;
+    IBOutlet UITableView* _tableView;
 
     
     NSMutableArray* _data;
@@ -32,7 +25,7 @@
 }
 
 @property (nonatomic, retain) NSMutableDictionary* matchedSongs;
-@property (nonatomic, retain) SongCatalog* catalog;
+//@property (nonatomic, retain) SongCatalog* catalog;
 
 
 @end

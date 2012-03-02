@@ -16,12 +16,15 @@
 #import "TimeProfile.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
+#import "SongCatalog.h"
+#import "ProgrammingArtistViewController.h"
+
 
 
 @implementation ProgrammingViewController
 
 @synthesize matchedSongs;
-@synthesize catalog;
+//@synthesize catalog;
 
 
 #define SEGMENT_INDEX_ALPHA 0
@@ -42,7 +45,7 @@
         
         self.matchedSongs = [[NSMutableDictionary alloc] init];
         
-        self.catalog = [[SongCatalog alloc] init];
+//        [SongCatalog programmingCatalog] = [[SongCatalog alloc] init];
     }
     return self;
 }
@@ -50,10 +53,7 @@
 
 - (void)dealloc
 {
-    [_titlesView release];
-    [_artistsView release];
-    [_albumsView release];
-    [_songsView release];
+    [SongCatalog releaseProgrammingCatalog];
     [super dealloc];
 }
 
@@ -74,38 +74,10 @@
     [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    _container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    
-    CGRect frame = CGRectMake(0, 0, _container.frame.size.width, _container.frame.size.height);
-    _titlesView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-    _titlesView.delegate = self;
-    _titlesView.dataSource = self;
-    _artistsView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-    _artistsView.delegate = self;
-    _artistsView.dataSource = self;
-    _albumsView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-    _albumsView.delegate = self;
-    _albumsView.dataSource = self;
-    _songsView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
-    _songsView.delegate = self;
-    _songsView.dataSource = self;
-    
-    _titlesView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    _artistsView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    _albumsView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    _songsView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    [_titlesView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [_artistsView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [_albumsView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [_songsView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-
-    
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
     // waiting for the synchronization to be done
-    _titlesView.hidden = YES;
-    _artistsView.hidden = YES;
-    _albumsView.hidden = YES;
-    _songsView.hidden = YES;
+    _tableView.hidden = YES;
     
 
     [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
@@ -226,7 +198,8 @@
     }
     
     // build catalog
-    [self.catalog buildWithSource:self.matchedSongs];
+    [[SongCatalog programmingCatalog] buildWithSource:self.matchedSongs];
+    [SongCatalog programmingCatalog].matchedSongs = self.matchedSongs;
     
 
     // PROFILE
@@ -249,11 +222,8 @@
     
     
     // now that the synchronization is been done,
-    _titlesView.hidden = NO;
-    _artistsView.hidden = NO;
-    _albumsView.hidden = NO;
-    _songsView.hidden = NO;
-    [_container addSubview:_titlesView];
+    _tableView.hidden = NO;
+    [_tableView reloadData];
 
     [ActivityAlertView close];
 }
@@ -300,12 +270,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
-        return self.catalog.indexMap.count;
-    else if (tableView == _artistsView)
-        return self.catalog.indexMap.count;
-    else
-        return 1;
+    return [SongCatalog programmingCatalog].indexMap.count;
 }
 
 
@@ -323,22 +288,12 @@
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSString* title = nil;
-    
     NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
 
     if (nbRows == 0)
         return nil;
     
-    if (tableView == _titlesView)
-        title = [self.catalog.indexMap objectAtIndex:section];
-    else if (tableView == _artistsView)
-        title = [self.catalog.indexMap objectAtIndex:section];
-    else if (tableView == _albumsView)
-        title = self.catalog.selectedArtist;
-    else if (tableView == _songsView)
-        title = self.catalog.selectedAlbum;
-    
+    NSString* title = [[SongCatalog programmingCatalog].indexMap objectAtIndex:section];
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
@@ -359,30 +314,22 @@
     return [self getNbRowsForTable:tableView inSection:section];
 }
 
+
 - (NSInteger)getNbRowsForTable:(UITableView*)tableView inSection:(NSInteger)section
 {
-    NSString* charIndex = [self.catalog.indexMap objectAtIndex:section];
+    NSString* charIndex = [[SongCatalog programmingCatalog].indexMap objectAtIndex:section];
     
-    if (tableView == _titlesView)
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        NSArray* letterRepo = [self.catalog.alphabeticRepo objectForKey:charIndex];
+        NSArray* letterRepo = [[SongCatalog programmingCatalog].alphabeticRepo objectForKey:charIndex];
         assert(letterRepo != nil);
         return letterRepo.count;
     }
-    else if (tableView == _artistsView)
+    else
     {
-        NSArray* artistsForSection = [self.catalog.alphaArtistsOrder objectForKey:charIndex];
+        NSArray* artistsForSection = [[SongCatalog programmingCatalog].alphaArtistsOrder objectForKey:charIndex];
         NSInteger count = artistsForSection.count;
         return count;
-    }
-    else if (tableView == _albumsView)
-    {
-        NSInteger count = self.catalog.selectedArtistRepo.count;
-        return count;
-    }
-    else if (tableView == _songsView)
-    {
-        return self.catalog.selectedAlbumRepo.count;
     }
 
 }
@@ -406,19 +353,13 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
 {
-    if ((tableView == _titlesView) || (tableView == _artistsView))
-        return self.catalog.indexMap;
-    
-    return nil;
+    return [SongCatalog programmingCatalog].indexMap;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
 {
-    if ((tableView == _titlesView) || (tableView == _artistsView))
-        return index;
-
-    return 0;
+    return index;
 }
 
 
@@ -449,11 +390,11 @@
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 
-    NSString* charIndex = [self.catalog.indexMap objectAtIndex:indexPath.section];
+    NSString* charIndex = [[SongCatalog programmingCatalog].indexMap objectAtIndex:indexPath.section];
     
-    if (tableView == _titlesView)
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        NSArray* letterRepo = [self.catalog.alphabeticRepo objectForKey:charIndex];
+        NSArray* letterRepo = [[SongCatalog programmingCatalog].alphabeticRepo objectForKey:charIndex];
         Song* song = [letterRepo objectAtIndex:indexPath.row];
 
         if ([song isSongEnabled])
@@ -471,37 +412,13 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
         
     }
-    else if (tableView == _artistsView)
+    else
     {
-        NSArray* artistsForSection = [self.catalog.alphaArtistsOrder objectForKey:charIndex];
+        NSArray* artistsForSection = [[SongCatalog programmingCatalog].alphaArtistsOrder objectForKey:charIndex];
         
         cell.textLabel.textColor = [UIColor whiteColor];
         NSString* artist = [artistsForSection objectAtIndex:indexPath.row];
         cell.textLabel.text = artist;
-    }
-    else if (tableView == _albumsView)
-    {
-        NSArray* albums = [self.catalog.selectedArtistRepo allKeys];
-        
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.text = [albums objectAtIndex:indexPath.row];
-    }
-    else if (tableView == _songsView)
-    {   
-        Song* song = [self.catalog getSongAtRow:indexPath.row];
-        
-        if ([song isSongEnabled])
-        {
-            cell.textLabel.textColor = [UIColor whiteColor];
-            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-        }
-        else 
-        {
-            cell.textLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
-        }
-        
-        cell.textLabel.text = song.name;
     }
 
     
@@ -516,40 +433,20 @@
     
     
     
-    if (tableView == _titlesView)
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        NSArray* letterRepo = [self.catalog.alphabeticRepo objectForKey:[self.catalog.indexMap objectAtIndex:indexPath.section]];
+        NSArray* letterRepo = [[SongCatalog programmingCatalog].alphabeticRepo objectForKey:[[SongCatalog programmingCatalog].indexMap objectAtIndex:indexPath.section]];
         Song* song = [letterRepo objectAtIndex:indexPath.row];
         
         SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }
-    else if (tableView == _artistsView)
+    else
     {
-        [self.catalog selectArtistInSection:indexPath.section atRow:indexPath.row];
+        [[SongCatalog programmingCatalog] selectArtistInSection:indexPath.section atRow:indexPath.row];
         
-        [_artistsView removeFromSuperview];
-        [_container addSubview:_albumsView];
-        
-        [_albumsView reloadData];
-    }
-
-    else if (tableView == _albumsView)
-    {
-        [self.catalog selectAlbumAtRow:indexPath.row];
-        
-        [_albumsView removeFromSuperview];
-        [_container addSubview:_songsView];
-
-        [_songsView reloadData];
-    }
-    
-    else if (tableView == _songsView)
-    {
-        Song* song = [self.catalog getSongAtRow:indexPath.row];
-        
-        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
+        ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }
@@ -595,21 +492,7 @@
 
 - (IBAction)onSegmentClicked:(id)sender
 {
-    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
-    {
-        [_artistsView removeFromSuperview];
-        [_albumsView removeFromSuperview];
-        [_songsView removeFromSuperview];
-        
-        [_container addSubview:_titlesView];
-    }
-    else if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
-    {
-        [_titlesView removeFromSuperview];
-        [_container addSubview:_artistsView];
-        
-        [_artistsView reloadData];
-    }
+    [_tableView reloadData];
 }
 
 
