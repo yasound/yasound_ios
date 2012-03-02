@@ -351,4 +351,8 @@
 "UserTableViewCell_ListeningTo" = "écoute";
 "UserTableViewCell_Radio" = "radio:";
 
+"RadioSearch_CategoryRadioAttributes_SectionTitle" = "radio infos";
+"RadioSearch_CategoryRadioCreator_SectionTitle" = "créateur";
+"RadioSearch_CategoryRadioSong_SectionTitle" = "titre, artiste, album";
+
 
