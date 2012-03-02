@@ -197,7 +197,7 @@ static SongCatalog* _programmingCatalog;
         
         
         // now the Artist / Album / Song catalog
-        c = [song.artist characterAtIndex:0];
+        c = [artistKey characterAtIndex:0];
         NSMutableDictionary* artistsRepo = nil;
         NSMutableDictionary* artistsPREORDER = nil;
         if ([_numericSet characterIsMember:c])
