@@ -102,6 +102,7 @@
   if (fontName != nil)
   {
     _name = [NSString stringWithFormat:fontName];
+      [_name retain];
     _nameIsSet = YES;
   }
 
@@ -222,7 +223,7 @@
 @synthesize images = _images;
 @synthesize frame = _frame;
 @synthesize color = _color;
-@synthesize fontsheets = _fontsheets;
+@synthesize fontsheets;
 @synthesize customProperties = _customProperties;
 
 
@@ -248,7 +249,8 @@ static NSMutableDictionary* gImageViews = nil;
   
   _images = [[NSMutableDictionary alloc] init];
   _frame = CGRectMake(0, 0, 0, 0);
-  _fontsheets = [[NSMutableDictionary alloc] init];
+  self.fontsheets = [[NSMutableDictionary alloc] init];
+    
   _customProperties = nil;
 
   
@@ -461,7 +463,7 @@ static NSMutableDictionary* gImageViews = nil;
   if (fontDico)
   {
     defaultFontsheet = [[BundleFontsheet alloc] initWithSheet:fontDico forClass:@"default" defaultFontsheet:nil bundle:bundle error:anError];
-    [_fontsheets setObject:defaultFontsheet forKey:@"default"];
+    [self.fontsheets setObject:defaultFontsheet forKey:@"default"];
   }
 
   // other font sheets:
@@ -488,7 +490,7 @@ static NSMutableDictionary* gImageViews = nil;
     assert (fontDico != nil);
     
     BundleFontsheet* fontsheet = [[BundleFontsheet alloc] initWithSheet:fontDico forClass:keySuffix defaultFontsheet:defaultFontsheet bundle:bundle error:anError];
-    [_fontsheets setObject:fontsheet forKey:keySuffix];
+    [self.fontsheets setObject:fontsheet forKey:keySuffix];
   }
   
   
