@@ -316,7 +316,7 @@ static NSMutableArray* gIndexMap = nil;
     self.artistsRepoKeys = [NSArray arrayWithArray:[self.artistsRepo allKeys]];
     self.artistsRepoKeys = [self.artistsRepoKeys  sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
-    NSLog(@"%@", self.artistsRepoKeys);
+//    NSLog(@"%@", self.artistsRepoKeys);
     
     // also, prepare the relation between the alphabetic scrolling Index, and the artists names
     NSInteger section = 0;
@@ -328,7 +328,7 @@ static NSMutableArray* gIndexMap = nil;
         NSString* indexChar = [gIndexMap objectAtIndex:i];
         NSString* firstArtistChar = [[[self.artistsRepoKeys objectAtIndex:artistIndex] substringToIndex:1] uppercaseString];
         
-        NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
+//        NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
         
         // for instance, if indexChar is "A", and firstArtistChar is "B" already (<=> no artist in the "A" index),
         // keep the current index as an index section, and continue
@@ -346,7 +346,7 @@ static NSMutableArray* gIndexMap = nil;
             firstArtistChar = [[[self.artistsRepoKeys objectAtIndex:artistIndex] substringToIndex:1] uppercaseString];
             result = [firstArtistChar compare:indexChar];
 
-            NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
+//            NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
         }
         
         [self.artistsIndexSections addObject:[NSNumber numberWithInteger:artistIndex]];

@@ -531,7 +531,7 @@ static YasoundDataProvider* _main = nil;
   int i = 0;
   for (Song* s in songs) 
   {
-    NSLog(@"%d %@ - %@ - %@ (%@ - %d)", i, s.artist, s.album, s.name, s.frequency, (int)[s frequencyType]);
+    // NSLog(@"%d %@ - %@ - %@ (%@ - %d)", i, s.artist, s.album, s.name, s.frequency, (int)[s frequencyType]);
     SongFrequencyType f = [s frequencyType];
     i++;
   }
