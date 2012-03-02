@@ -195,6 +195,10 @@
 "SongAddView_subtitled_count_0" = "no song available";
 "SongAddView_subtitled_count_1" = "1 song available";
 "SongAddView_subtitled_count_n" = "%d songs available";
+"SongAddView_segment_titles" = "titles";
+"SongAddView_segment_artists" = "artists";
+"SongAddView_segment_server" = "server";
+
 
 "SongUpload_title" = "Upload";
 "SongUpload_progressCompleted" = "Completed.";

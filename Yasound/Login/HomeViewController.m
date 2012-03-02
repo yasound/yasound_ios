@@ -182,7 +182,7 @@
             
 - (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
 {
-    assert(radio);
+//    assert(radio);
     
     // account just being create, go to configuration screen
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"skipRadioCreationSendToSelection"];

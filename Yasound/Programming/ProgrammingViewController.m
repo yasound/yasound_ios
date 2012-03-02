@@ -168,6 +168,17 @@ static NSMutableArray* gIndexMap = nil;
     
     NSLog(@"received %d playlists", _nbPlaylists);
     
+    if (_nbPlaylists == 0)
+    {
+        [ActivityAlertView close];
+        
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingView_error_title", nil) message:NSLocalizedString(@"ProgrammingView_error_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;
+    }
+    
+    
     
     for (Playlist* playlist in playlists) 
     {
@@ -305,7 +316,7 @@ static NSMutableArray* gIndexMap = nil;
     self.artistsRepoKeys = [NSArray arrayWithArray:[self.artistsRepo allKeys]];
     self.artistsRepoKeys = [self.artistsRepoKeys  sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
-    //NSLog(@"%@", self.artistsRepoKeys);
+    NSLog(@"%@", self.artistsRepoKeys);
     
     // also, prepare the relation between the alphabetic scrolling Index, and the artists names
     NSInteger section = 0;
@@ -317,7 +328,7 @@ static NSMutableArray* gIndexMap = nil;
         NSString* indexChar = [gIndexMap objectAtIndex:i];
         NSString* firstArtistChar = [[[self.artistsRepoKeys objectAtIndex:artistIndex] substringToIndex:1] uppercaseString];
         
-        // NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
+        NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
         
         // for instance, if indexChar is "A", and firstArtistChar is "B" already (<=> no artist in the "A" index),
         // keep the current index as an index section, and continue
@@ -329,13 +340,13 @@ static NSMutableArray* gIndexMap = nil;
         }
         
         // otherwise, go to the artist section, where the first letter corresponds to the indexChar (<=> if indexChar is "B", goes to the first artist in "B")
-        while ((artistIndex < self.artistsRepoKeys.count) && (result == NSOrderedAscending))
+        while ((artistIndex < (self.artistsRepoKeys.count-1)) && (result == NSOrderedAscending))
         {
             artistIndex++;
             firstArtistChar = [[[self.artistsRepoKeys objectAtIndex:artistIndex] substringToIndex:1] uppercaseString];
             result = [firstArtistChar compare:indexChar];
 
-            // NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
+            NSLog(@"indexChar %@, firstArtistChar %@", indexChar, firstArtistChar);
         }
         
         [self.artistsIndexSections addObject:[NSNumber numberWithInteger:artistIndex]];

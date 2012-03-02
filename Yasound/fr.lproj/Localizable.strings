@@ -196,8 +196,9 @@
 "SongAddView_subtitled_count_0" = "pas de morceau disponible";
 "SongAddView_subtitled_count_1" = "1 morceau disponible";
 "SongAddView_subtitled_count_n" = "%d morceaux disponibles";
-
-
+"SongAddView_segment_titles" = "titres";
+"SongAddView_segment_artists" = "artistes";
+"SongAddView_segment_server" = "serveur";
 
 
 "SongUpload_title" = "Téléchargement";
