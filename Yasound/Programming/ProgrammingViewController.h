@@ -14,9 +14,16 @@
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
     IBOutlet UILabel* _subtitleLabel;
-    IBOutlet UITableView* _tableView;
     IBOutlet UIToolbar* _toolbar;
     IBOutlet UISegmentedControl* _segment;
+    
+    IBOutlet UIView* _container;
+    
+    
+    UITableView* _titlesView;
+    UITableView* _artistsView;
+    UITableView* _albumsView;
+    UITableView* _songsView;
 
     
     NSMutableArray* _data;
@@ -26,5 +33,6 @@
 
 @property (nonatomic, retain) NSMutableDictionary* matchedSongs;
 @property (nonatomic, retain) SongCatalog* catalog;
+
 
 @end
