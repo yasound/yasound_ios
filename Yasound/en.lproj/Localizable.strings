@@ -166,6 +166,8 @@
 "ProgrammingView_subtitled_count_0" = "no synchronized song";
 "ProgrammingView_subtitled_count_1" = "1 synchronized song";
 "ProgrammingView_subtitled_count_n" = "%d synchronized songs";
+"ProgrammingView_error_title" = "Synchronization";
+"ProgrammingView_error_message" = "An error happened during the synchronization.";
 
 
 "SongView_title" = "Song";

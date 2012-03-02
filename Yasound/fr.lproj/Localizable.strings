@@ -167,8 +167,8 @@
 "ProgrammingView_subtitled_count_0" = "aucun morceau synchronisé";
 "ProgrammingView_subtitled_count_1" = "1 morceau synchronisé";
 "ProgrammingView_subtitled_count_n" = "%d morceaux synchronisés";
-"ProgrammingView_error_title" = "synchronisation";
-"ProgrammingView_error_message" = "une erreur est surve ICI ";
+"ProgrammingView_error_title" = "Synchronisation";
+"ProgrammingView_error_message" = "une erreur est survenue pendant la synchronisation.";
 
 
 

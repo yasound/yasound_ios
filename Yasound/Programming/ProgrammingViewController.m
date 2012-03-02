@@ -116,7 +116,12 @@ static NSMutableArray* gIndexMap = nil;
     _subtitleLabel.text = NSLocalizedString(@"ProgrammingView_subtitle", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    
+    // waiting for the synchronization to be done
+    _tableView.hidden = YES;
     
 
     [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
@@ -165,9 +170,6 @@ static NSMutableArray* gIndexMap = nil;
     NSNumber* succeededNb = [info objectForKey:@"succeeded"];
     assert(succeededNb != nil);
     BOOL succeeded = [succeededNb boolValue];
-    
-    //LBDEBUG
-    succeeded = NO;
     
     if (!succeeded)
     {
@@ -273,50 +275,8 @@ static NSMutableArray* gIndexMap = nil;
     _subtitleLabel.text = subtitle;
     
     
-//    // PROFILE
-//    [[TimeProfile main] begin];
-
-    
-    
-//    // group the songs by letter
-//    self.alphabeticRepo = [[NSMutableArray alloc] init];
-//
-//    Song* song = [self.matchedSongs objectAtIndex:0];
-//    NSString* comparator =  [song getFirstRelevantWord:song.name];
-//    NSInteger repoIndex = 0;
-//    
-//    for (Song* song in self.matchedSongs)
-//    {
-//        NSString* currentComparator = [song getFirstRelevantWord:song.name];
-//        
-//        BOOL isDigit = NO;
-//        char firstChar = [currentComparator characterAtIndex:0];
-//        if (firstChar >= '0' && firstChar <= '9')
-//            isDigit = YES;
-//                
-//        if (!isDigit && [currentComparator compare:comparator options:NSCaseInsensitiveSearch] != NSOrderedSame)
-//        {
-//            comparator = currentComparator;
-//            repoIndex++;
-//        }
-//        
-//        NSMutableArray* currentRepo = nil;
-//        if (self.alphabeticRepo.count > repoIndex)
-//            currentRepo = [self.alphabeticRepo objectAtIndex:repoIndex];
-//        if (currentRepo == nil)
-//        {
-//            currentRepo = [[NSMutableArray alloc] init];
-//            [self.alphabeticRepo addObject:currentRepo];
-//        }
-//        
-//        [currentRepo addObject:song];
-//    }
-    
-    
-//    // PROFILE
-//    [[TimeProfile main] end];
-//    [[TimeProfile main] logInterval:@"Sort matched songs"];
-
+    // now that the synchronization is been done,
+    _tableView.hidden = NO;
     
     [_tableView reloadData];
 
