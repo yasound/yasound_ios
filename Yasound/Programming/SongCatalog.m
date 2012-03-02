@@ -172,31 +172,38 @@
         
         // now the Artist / Album / Song catalog
         c = [song.artist characterAtIndex:0];
-        NSMutableDictionary* artistRepo = nil;
-        NSMutableDictionary* artistPREORDER = nil;
+        NSMutableDictionary* artistsRepo = nil;
+        NSMutableDictionary* artistsPREORDER = nil;
         if ([_numericSet characterIsMember:c])
         {
-            artistRepo = [self.alphaArtistsRepo objectForKey:@"-"];
-            artistPREORDER = [self.alphaArtistsPREORDER objectForKey:@"-"];
+            artistsRepo = [self.alphaArtistsRepo objectForKey:@"-"];
+            artistsPREORDER = [self.alphaArtistsPREORDER objectForKey:@"-"];
         }
         else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
         {
             NSString* upperC = [[NSString stringWithCharacters:&c length:1] uppercaseString];
             //LBDEBUG
             NSLog(@"upperC %@", upperC);
-            artistRepo = [self.alphaArtistsRepo objectForKey:upperC];
-            artistPREORDER = [self.alphaArtistsPREORDER objectForKey:upperC];
+            artistsRepo = [self.alphaArtistsRepo objectForKey:upperC];
+            artistsPREORDER = [self.alphaArtistsPREORDER objectForKey:upperC];
         }
         else
         {
-            artistRepo = [self.alphaArtistsRepo objectForKey:@"#"];
-            artistPREORDER = [self.alphaArtistsPREORDER objectForKey:@"#"];
+            artistsRepo = [self.alphaArtistsRepo objectForKey:@"#"];
+            artistsPREORDER = [self.alphaArtistsPREORDER objectForKey:@"#"];
         }
         
         // store artist name, to be alphabetically sorted later
         // => we use a dictionary here to optimize the insert operation (the inserted object must be unique)
         // => when it'll be completed, the dictionnary will be turned into a array and we will sort it alphabetically
-        [artistPREORDER setObject:artistKey forKey:artistKey];
+        [artistsPREORDER setObject:artistKey forKey:artistKey];
+        
+        NSMutableDictionary* artistRepo = [artistsRepo objectForKey:artistKey];
+        if (artistRepo == nil)
+        {
+            artistRepo = [[NSMutableDictionary alloc] init];
+            [artistsRepo setObject:artistRepo forKey:artistKey];
+        }
             
         // store the song in the right repository
         NSMutableArray* albumRepo = [artistRepo objectForKey:albumKey];
@@ -272,9 +279,12 @@
     
     self.selectedArtist = artist;
     
-    NSDictionary* artistsRepo = [self.alphaArtistsRepo objectForKey:charIndex];
-    self.selectedArtistRepo = [artistsRepo objectForKey:artist];
+    NSLog(@"selected artist %@", self.selectedArtist);
     
+    NSDictionary* artistsRepo = [self.alphaArtistsRepo objectForKey:charIndex];
+    
+    self.selectedArtistRepo = [artistsRepo objectForKey:artist];
+
     return YES;
 }
 
@@ -284,12 +294,15 @@
     if (self.selectedArtistRepo == nil)
         return NO;
         
-    NSArray* albums = [self.selectedArtistRepo allValues];
+    NSArray* albums = [self.selectedArtistRepo allKeys];
     
     if (row >= albums.count)
         return NO;
     
     self.selectedAlbum = [albums objectAtIndex:row];
+    
+    NSLog(@"selected album %@", self.selectedAlbum);
+
     
     self.selectedAlbumRepo = [self.selectedArtistRepo objectForKey:self.selectedAlbum];
     

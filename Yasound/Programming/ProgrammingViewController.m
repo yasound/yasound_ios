@@ -358,15 +358,15 @@
     {
         NSArray* artistsForSection = [self.catalog.alphaArtistsOrder objectForKey:charIndex];
         NSInteger count = artistsForSection.count;
-        
-        //LBDEBUG
-        NSLog(@"count for letter %@ : %d", charIndex, count);
-        
         return count;
     }
     else if (tableView == _albumsView)
     {
-        return self.catalog.selectedArtistRepo.count;
+        NSInteger count = self.catalog.selectedArtistRepo.count;
+        
+        //LBDEBUG
+        NSLog(@"albumView count %d", count);
+        return count;
     }
     else if (tableView == _songsView)
     {
@@ -473,7 +473,9 @@
     }
     else if (tableView == _albumsView)
     {
-        NSArray* albums = [self.catalog.selectedArtistRepo allValues];
+        NSArray* albums = [self.catalog.selectedArtistRepo allKeys];
+        //LBDEBUG
+        NSLog(@"%@", albums);
         
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.text = [albums objectAtIndex:indexPath.row];
@@ -526,6 +528,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    
+    
     if (tableView == _titlesView)
     {
         NSArray* letterRepo = [self.catalog.alphabeticRepo objectForKey:[self.catalog.indexMap objectAtIndex:indexPath.section]];
@@ -541,6 +547,8 @@
         
         [_artistsView removeFromSuperview];
         [_container addSubview:_albumsView];
+        
+        [_albumsView reloadData];
     }
 
     else if (tableView == _albumsView)
@@ -549,6 +557,8 @@
         
         [_albumsView removeFromSuperview];
         [_container addSubview:_songsView];
+
+        [_songsView reloadData];
     }
     
     else if (tableView == _songsView)
