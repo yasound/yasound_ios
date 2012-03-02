@@ -165,6 +165,10 @@ static YasoundDataProvider* _main = nil;
     _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];
     _communicator.appCookie = self.appCookie;
     
+      // DEFAULT TIMEOUT
+      [ASIHTTPRequest setDefaultTimeOutSeconds:60];
+
+    
     NSMutableDictionary* resourceNames = [Model resourceNames];
     [resourceNames setObject:@"radio" forKey:[Radio class]];
     [resourceNames setObject:@"user" forKey:[User class]];

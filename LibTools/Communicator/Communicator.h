@@ -14,8 +14,8 @@
 
 @interface Communicator : NSObject <ASIHTTPRequestDelegate>
 {
-  NSString* _baseURL;
-  NSHTTPCookie* appCookie;
+    NSString* _baseURL;
+    NSHTTPCookie* appCookie;
 }
 
 @property (retain) NSHTTPCookie* appCookie;

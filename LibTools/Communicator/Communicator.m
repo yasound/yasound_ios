@@ -40,12 +40,12 @@
 
 - (void)callAction:(SEL)action onTarget:(id)target withObject:(id)obj1 withObject:(id)obj2
 {
-  if (!target)
-    return;
-  
-  if (action)
-    [target performSelector:action withObject:obj1 withObject:obj2];
-  [target release];
+    if (!target)
+        return;
+    
+    if (action)
+        [target performSelector:action withObject:obj1 withObject:obj2];
+    [target release];
 }
 
 - (id)initWithBaseURL:(NSString*)base
@@ -277,8 +277,10 @@
     if (userData)
         [info setValue:userData forKey:@"userData"];
     
+    [info setObject:[NSNumber numberWithBool:succeeded] forKey:@"succeeded"];
+    
     [info setValue:err forKey:@"error"];
-  [self callAction:selector onTarget:target withObject:result withObject:info];
+    [self callAction:selector onTarget:target withObject:result withObject:info];
 }
 
 
@@ -293,7 +295,7 @@
     [userinfo setValue:@"GET_ALL" forKey:@"method"];
     [userinfo setValue:objectClass forKey:@"objectClass"];
     [userinfo setValue:userData forKey:@"userData"];
-
+    
     req.userInfo = userinfo;
     
     req.delegate = self;
@@ -311,7 +313,7 @@
     [userinfo setValue:@"GET" forKey:@"method"];
     [userinfo setValue:objectClass forKey:@"objectClass"];
     [userinfo setValue:userData forKey:@"userData"];
-   
+    
     req.userInfo = userinfo;
     
     req.delegate = self;
@@ -457,11 +459,11 @@
         return;
     }
     
-  NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
-  [userInfo setValue:target                         forKey:@"target"];
-  [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
-  [userInfo setValue:@"GET_URL"                     forKey:@"method"];
-  [userInfo setValue:userData                       forKey:@"userData"];
+    NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+    [userInfo setValue:target                         forKey:@"target"];
+    [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
+    [userInfo setValue:@"GET_URL"                     forKey:@"method"];
+    [userInfo setValue:userData                       forKey:@"userData"];
     
     ASIHTTPRequest* req = [[ASIHTTPRequest alloc] initWithURL:u];
     req.delegate = self;
@@ -481,11 +483,11 @@
         return;
     }
     
-  NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
-  [userInfo setValue:target forKey:@"target"];
-  [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
-  [userInfo setValue:@"POST_DATA" forKey:@"method"];
-  [userInfo setValue:userData forKey:@"userData"];
+    NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+    [userInfo setValue:target forKey:@"target"];
+    [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
+    [userInfo setValue:@"POST_DATA" forKey:@"method"];
+    [userInfo setValue:userData forKey:@"userData"];
     
     ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
     [req addData:data forKey:key];
@@ -507,12 +509,12 @@
         return;
     }
     
-  NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
-  [userInfo setValue:target forKey:@"target"];
-  [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
-  [userInfo setValue:@"POST_DATA" forKey:@"method"];
-  [userInfo setValue:userData forKey:@"userData"];
-  
+    NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+    [userInfo setValue:target forKey:@"target"];
+    [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
+    [userInfo setValue:@"POST_DATA" forKey:@"method"];
+    [userInfo setValue:userData forKey:@"userData"];
+    
     
     ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
     [req addData:data forKey:key];
@@ -526,30 +528,30 @@
 
 - (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth withProgress:(id)progressDelegate withAdditionalJsonData:(NSString*)jsonData
 {
-  NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
-  NSLog(@"post data url '%@'", u.absoluteString);
-  if (!u)
-  {
-    NSLog(@"post data: invalid url");
-    return;
-  }
-  
-  NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
-  [userInfo setValue:target forKey:@"target"];
-  [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
-  [userInfo setValue:@"POST_DATA" forKey:@"method"];
-  [userInfo setValue:userData forKey:@"userData"];
-  
-  
-  ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
-  [req addData:data forKey:key];
-  [req addPostValue:jsonData forKey:@"data"];
-  req.userInfo = userInfo;
-  req.delegate = self;
-  [self applyAuth:auth toRequest:req];
-  [self fillRequest:req];
-  [req setUploadProgressDelegate:progressDelegate];
-  [req startAsynchronous];  
+    NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
+    NSLog(@"post data url '%@'", u.absoluteString);
+    if (!u)
+    {
+        NSLog(@"post data: invalid url");
+        return;
+    }
+    
+    NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+    [userInfo setValue:target forKey:@"target"];
+    [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
+    [userInfo setValue:@"POST_DATA" forKey:@"method"];
+    [userInfo setValue:userData forKey:@"userData"];
+    
+    
+    ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
+    [req addData:data forKey:key];
+    [req addPostValue:jsonData forKey:@"data"];
+    req.userInfo = userInfo;
+    req.delegate = self;
+    [self applyAuth:auth toRequest:req];
+    [self fillRequest:req];
+    [req setUploadProgressDelegate:progressDelegate];
+    [req startAsynchronous];  
 }
 
 
@@ -646,8 +648,8 @@
     BOOL returnNewObject = [[userinfo valueForKey:@"returnNewObject"] boolValue];
     Auth* authForGET = [userinfo valueForKey:@"authForGET"];
     NSDictionary* userData = [userinfo valueForKey:@"userData"];
-  
-  NSString* response = request.responseString;
+    
+    NSString* response = request.responseString;
     
     NSString* location = [request.responseHeaders valueForKey:@"Location"];
     if (returnNewObject)
@@ -656,7 +658,7 @@
     }
     else
     {
-      NSString* res = (location != nil) ? location : response;
+        NSString* res = (location != nil) ? location : response;
         [self notifytarget:target byCalling:selector withUserData:userData withObject:res andSuccess:succeeded];
     }
 }
@@ -669,7 +671,7 @@
     SEL selector      = NSSelectorFromString([userinfo valueForKey:@"selector"]);
     Model* obj            = [userinfo valueForKey:@"object"];
     NSDictionary* userData = [userinfo valueForKey:@"userData"];
-  
+    
     [self notifytarget:target byCalling:selector withUserData:userData withObject:obj andSuccess:succeeded];
 }
 
@@ -860,7 +862,7 @@
 - (void)fillRequest:(ASIHTTPRequest*)request
 {
     // the https certificate seems to be ok but keep next line commented...
-//    request.validatesSecureCertificate = FALSE;
+    //    request.validatesSecureCertificate = FALSE;
     
     if (self.appCookie)
     {
@@ -1066,4 +1068,3 @@
 }
 
 @end
-

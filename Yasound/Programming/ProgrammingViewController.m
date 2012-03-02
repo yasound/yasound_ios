@@ -148,6 +148,10 @@ static NSMutableArray* gIndexMap = nil;
 - (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
 {
     _nbPlaylists = playlists.count;
+    
+    NSLog(@"received %d playlists", _nbPlaylists);
+    
+    
     for (Playlist* playlist in playlists) 
     {
         [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)]; 
@@ -158,9 +162,29 @@ static NSMutableArray* gIndexMap = nil;
 
 - (void)matchedSongsReceveived:(NSArray*)songs info:(NSDictionary*)info
 {
+    NSNumber* succeededNb = [info objectForKey:@"succeeded"];
+    assert(succeededNb != nil);
+    BOOL succeeded = [succeededNb boolValue];
+    
+    //LBDEBUG
+    succeeded = NO;
+    
+    if (!succeeded)
+    {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingView_error_title", nil) message:NSLocalizedString(@"ProgrammingView_error_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+
+        NSLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
+        NSLog(@"%@", info);
+    }
+    
+    
+    NSLog(@"received playlist nb %d : %d songs", _nbReceivedData, songs.count);
+    
     _nbReceivedData++;
     
-    if ((songs != nil) && (songs.count != 0))
+    if (succeeded && (songs != nil) && (songs.count != 0))
         [_data addObject:songs];
     
     if (_nbReceivedData != _nbPlaylists)
