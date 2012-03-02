@@ -297,9 +297,38 @@
 //}
 
 
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+        return self.catalog.indexMap.count;
+    else if (tableView == _artistsView)
+        return self.catalog.indexMap.count;
+    else
+        return 1;
+}
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
+    if (nbRows == 0)
+        return 0;
+
+    return 22;
+}
+
+
+
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     NSString* title = nil;
+    
+    NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
+
+    if (nbRows == 0)
+        return nil;
     
     if (tableView == _titlesView)
         title = [self.catalog.indexMap objectAtIndex:section];
@@ -325,19 +354,12 @@
 }
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
-        return self.catalog.indexMap.count;
-    else if (tableView == _artistsView)
-        return self.catalog.indexMap.count;
-    else
-        return 1;
+    return [self getNbRowsForTable:tableView inSection:section];
 }
 
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+- (NSInteger)getNbRowsForTable:(UITableView*)tableView inSection:(NSInteger)section
 {
     NSString* charIndex = [self.catalog.indexMap objectAtIndex:section];
     
@@ -362,6 +384,7 @@
     {
         return self.catalog.selectedAlbumRepo.count;
     }
+
 }
 
 
@@ -372,11 +395,6 @@
 //}
 
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    return 22;
-//}
-//
 //- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 //{
 //    return 22;
