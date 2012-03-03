@@ -31,10 +31,16 @@
 @property (nonatomic, assign) NSArray* selectedAlbumRepo;
 
 
-+ (SongCatalog*)programmingCatalog;
-+ (void)releaseProgrammingCatalog;
++ (SongCatalog*)synchronizedCatalog; // for the server's synchronized songs
++ (void)releaseSynchronizedCatalog; // for the device's local iTunes songs
 
-- (void)buildWithSource:(NSDictionary*)source;
++ (SongCatalog*)availableCatalog;
++ (void)releaseAvailableCatalog;
+
+- (void)buildSynchronizedWithSource:(NSDictionary*)synchronizedSource;
+- (void)buildAvailableComparingToSource:(NSDictionary*)synchronizedSource;
+
+
 
 - (BOOL)selectArtistInSection:(NSInteger)section atRow:(NSInteger)row;
 - (BOOL)selectAlbumAtRow:(NSInteger)row;

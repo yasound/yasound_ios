@@ -23,15 +23,11 @@
 }
 
 
-@property (nonatomic, retain) NSMutableArray* localSongs;
-@property (nonatomic, retain) NSArray* remoteSongs;
+//@property (nonatomic, retain) NSMutableArray* localSongs;
+//@property (nonatomic, retain) NSArray* remoteSongs;
+//
+//@property (nonatomic, assign) NSDictionary* matchedSongs;
 
-@property (nonatomic, assign) NSDictionary* matchedSongs;
-
-@property (nonatomic, retain) NSMutableDictionary* alphabeticRepo;
-@property (nonatomic, retain) NSMutableDictionary* artistsRepo;
-@property (nonatomic, retain) NSArray* artistsRepoKeys;
-@property (nonatomic, retain) NSMutableArray* artistsIndexSections;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withMatchedSongs:(NSDictionary*)matchedSongs;

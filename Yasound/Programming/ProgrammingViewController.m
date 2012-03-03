@@ -182,8 +182,8 @@
     }
     
     // build catalog
-    [[SongCatalog programmingCatalog] buildWithSource:self.matchedSongs];
-    [SongCatalog programmingCatalog].matchedSongs = self.matchedSongs;
+    [[SongCatalog synchronizedCatalog] buildSynchronizedWithSource:self.matchedSongs];
+    [SongCatalog synchronizedCatalog].matchedSongs = self.matchedSongs;
     
 
     // PROFILE
@@ -254,7 +254,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [SongCatalog programmingCatalog].indexMap.count;
+    return [SongCatalog synchronizedCatalog].indexMap.count;
 }
 
 
@@ -277,7 +277,7 @@
     if (nbRows == 0)
         return nil;
     
-    NSString* title = [[SongCatalog programmingCatalog].indexMap objectAtIndex:section];
+    NSString* title = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:section];
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
@@ -301,17 +301,17 @@
 
 - (NSInteger)getNbRowsForTable:(UITableView*)tableView inSection:(NSInteger)section
 {
-    NSString* charIndex = [[SongCatalog programmingCatalog].indexMap objectAtIndex:section];
+    NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:section];
     
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        NSArray* letterRepo = [[SongCatalog programmingCatalog].alphabeticRepo objectForKey:charIndex];
+        NSArray* letterRepo = [[SongCatalog synchronizedCatalog].alphabeticRepo objectForKey:charIndex];
         assert(letterRepo != nil);
         return letterRepo.count;
     }
     else
     {
-        NSArray* artistsForSection = [[SongCatalog programmingCatalog].alphaArtistsOrder objectForKey:charIndex];
+        NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsOrder objectForKey:charIndex];
         NSInteger count = artistsForSection.count;
         return count;
     }
@@ -337,7 +337,7 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
 {
-    return [SongCatalog programmingCatalog].indexMap;
+    return [SongCatalog synchronizedCatalog].indexMap;
 }
 
 
@@ -374,11 +374,11 @@
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 
-    NSString* charIndex = [[SongCatalog programmingCatalog].indexMap objectAtIndex:indexPath.section];
+    NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
     
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        NSArray* letterRepo = [[SongCatalog programmingCatalog].alphabeticRepo objectForKey:charIndex];
+        NSArray* letterRepo = [[SongCatalog synchronizedCatalog].alphabeticRepo objectForKey:charIndex];
         Song* song = [letterRepo objectAtIndex:indexPath.row];
 
         if ([song isSongEnabled])
@@ -398,11 +398,11 @@
     }
     else
     {
-        NSArray* artistsForSection = [[SongCatalog programmingCatalog].alphaArtistsOrder objectForKey:charIndex];
+        NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsOrder objectForKey:charIndex];
         
         NSString* artist = [artistsForSection objectAtIndex:indexPath.row];
         
-        NSDictionary* artistsRepo = [[SongCatalog programmingCatalog].alphaArtistsRepo objectForKey:charIndex];
+        NSDictionary* artistsRepo = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];
         NSDictionary* artistRepo = [artistsRepo objectForKey:artist];
 
         NSInteger nbAlbums = artistRepo.count;
@@ -432,7 +432,7 @@
     
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        NSArray* letterRepo = [[SongCatalog programmingCatalog].alphabeticRepo objectForKey:[[SongCatalog programmingCatalog].indexMap objectAtIndex:indexPath.section]];
+        NSArray* letterRepo = [[SongCatalog synchronizedCatalog].alphabeticRepo objectForKey:[[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section]];
         Song* song = [letterRepo objectAtIndex:indexPath.row];
         
         SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
@@ -441,7 +441,7 @@
     }
     else
     {
-        [[SongCatalog programmingCatalog] selectArtistInSection:indexPath.section atRow:indexPath.row];
+        [[SongCatalog synchronizedCatalog] selectArtistInSection:indexPath.section atRow:indexPath.row];
         
         ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];

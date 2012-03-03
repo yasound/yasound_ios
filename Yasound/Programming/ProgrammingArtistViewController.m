@@ -49,7 +49,7 @@
     [super viewDidLoad];
 
     _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-    _subtitleLabel.text = [SongCatalog programmingCatalog].selectedArtist;
+    _subtitleLabel.text = [SongCatalog synchronizedCatalog].selectedArtist;
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
@@ -97,7 +97,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    NSInteger count = [SongCatalog programmingCatalog].selectedArtistRepo.count;
+    NSInteger count = [SongCatalog synchronizedCatalog].selectedArtistRepo.count;
     return count;
 }
 
@@ -129,10 +129,10 @@
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 
-    NSString* charIndex = [[SongCatalog programmingCatalog].indexMap objectAtIndex:indexPath.section];
+    NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
     
-    NSArray* albums = [[SongCatalog programmingCatalog].selectedArtistRepo allKeys];
-    NSArray* albumRepos = [[SongCatalog programmingCatalog].selectedArtistRepo allValues];
+    NSArray* albums = [[SongCatalog synchronizedCatalog].selectedArtistRepo allKeys];
+    NSArray* albumRepos = [[SongCatalog synchronizedCatalog].selectedArtistRepo allValues];
     
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text = [albums objectAtIndex:indexPath.row];
@@ -157,7 +157,7 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
-    [[SongCatalog programmingCatalog] selectAlbumAtRow:indexPath.row];
+    [[SongCatalog synchronizedCatalog] selectAlbumAtRow:indexPath.row];
 
     ProgrammingAlbumViewController* view = [[ProgrammingAlbumViewController alloc] initWithNibName:@"ProgrammingAlbumViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:YES];
@@ -197,7 +197,7 @@
 
 - (IBAction)onAdd:(id)sender
 {
-    SongAddViewController* view = [[SongAddViewController alloc] initWithNibName:@"SongAddViewController" bundle:nil withMatchedSongs:[SongCatalog programmingCatalog].matchedSongs];
+    SongAddViewController* view = [[SongAddViewController alloc] initWithNibName:@"SongAddViewController" bundle:nil withMatchedSongs:[SongCatalog synchronizedCatalog].matchedSongs];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

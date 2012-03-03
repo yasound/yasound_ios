@@ -43,7 +43,7 @@
     [super viewDidLoad];
 
     _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-    _subtitleLabel.text = [SongCatalog programmingCatalog].selectedAlbum;
+    _subtitleLabel.text = [SongCatalog synchronizedCatalog].selectedAlbum;
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
@@ -88,7 +88,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return [SongCatalog programmingCatalog].selectedAlbumRepo.count;
+    return [SongCatalog synchronizedCatalog].selectedAlbumRepo.count;
 }
 
 
@@ -122,9 +122,9 @@
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
-    NSString* charIndex = [[SongCatalog programmingCatalog].indexMap objectAtIndex:indexPath.section];
+    NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
     
-    Song* song = [[SongCatalog programmingCatalog] getSongAtRow:indexPath.row];
+    Song* song = [[SongCatalog synchronizedCatalog] getSongAtRow:indexPath.row];
     
     if ([song isSongEnabled])
     {
@@ -150,7 +150,7 @@
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
     
-    Song* song = [[SongCatalog programmingCatalog] getSongAtRow:indexPath.row];
+    Song* song = [[SongCatalog synchronizedCatalog] getSongAtRow:indexPath.row];
     
     SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
     [self.navigationController pushViewController:view animated:YES];
@@ -185,7 +185,7 @@
 
 - (IBAction)onAdd:(id)sender
 {
-    SongAddViewController* view = [[SongAddViewController alloc] initWithNibName:@"SongAddViewController" bundle:nil withMatchedSongs:[SongCatalog programmingCatalog].matchedSongs];
+    SongAddViewController* view = [[SongAddViewController alloc] initWithNibName:@"SongAddViewController" bundle:nil withMatchedSongs:[SongCatalog synchronizedCatalog].matchedSongs];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

@@ -22,14 +22,14 @@
 @synthesize enabled;
 
 
-//- (id)init
-//{
-//    if (self = [super init])
-//    {
-//        _nameWithoutArticle = nil;
-//    }
-//    return self;
-//}
+- (id)init
+{
+    if (self = [super init])
+    {
+        _uploading = NO;
+    }
+    return self;
+}
 
 - (void)dealloc
 {
@@ -221,6 +221,17 @@
 {
     return [self.album compare:second.album];
 }
+
+- (BOOL)isUploading
+{
+    return _uploading;
+}
+
+- (void)setUploading:(BOOL)set
+{
+    _uploading = set;
+}
+
 
 
 

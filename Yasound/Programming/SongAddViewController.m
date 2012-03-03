@@ -8,15 +8,15 @@
 
 #import "SongAddViewController.h"
 #import "Song.h"
-#import <MediaPlayer/MediaPlayer.h>
 #import "SongUploader.h"
 #import "SongUploadManager.h"
 #import "TimeProfile.h"
 #import "ActivityAlertView.h"
 #import "SongUploadViewController.h"
+#import "SongCatalog.h"
+#import "BundleFileManager.h"
+#import "Theme.h"
 
-
-#define PM_FIELD_UNKNOWN @""
 #define BORDER 8
 
 @implementation SongAddViewController
@@ -28,11 +28,6 @@
 #define SEGMENT_INDEX_SERVER 2
 
 
-@synthesize  localSongs;
-@synthesize remoteSongs;
-@synthesize matchedSongs;
-
-static NSMutableArray* gIndexMap = nil;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withMatchedSongs:(NSDictionary*)matchedSongs
@@ -40,58 +35,9 @@ static NSMutableArray* gIndexMap = nil;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.matchedSongs = matchedSongs;
-        
-        self.alphabeticRepo = [[NSMutableDictionary alloc] init];
-        self.artistsRepo = [[NSMutableDictionary alloc] init];
-        self.artistsIndexSections = [[NSMutableArray alloc] init];
-        
-        if (gIndexMap == nil)
-            [self initIndexMap];
-        
-        for (NSString* indexKey in gIndexMap)
-        {
-            NSMutableArray* letterRepo = [[NSMutableArray alloc] init];
-            [self.alphabeticRepo setObject:letterRepo forKey:indexKey];
-        }
         
     }
     return self;
-}
-
-
-- (void)initIndexMap
-{
-    gIndexMap = [[NSMutableArray alloc] init];
-    [gIndexMap retain];
-    [gIndexMap addObject:@"-"];
-    [gIndexMap addObject:@"A"];
-    [gIndexMap addObject:@"B"];
-    [gIndexMap addObject:@"C"];
-    [gIndexMap addObject:@"D"];
-    [gIndexMap addObject:@"E"];
-    [gIndexMap addObject:@"F"];
-    [gIndexMap addObject:@"G"];
-    [gIndexMap addObject:@"H"];
-    [gIndexMap addObject:@"I"];
-    [gIndexMap addObject:@"J"];
-    [gIndexMap addObject:@"K"];
-    [gIndexMap addObject:@"L"];
-    [gIndexMap addObject:@"M"];
-    [gIndexMap addObject:@"N"];
-    [gIndexMap addObject:@"O"];
-    [gIndexMap addObject:@"P"];
-    [gIndexMap addObject:@"Q"];
-    [gIndexMap addObject:@"R"];
-    [gIndexMap addObject:@"S"];
-    [gIndexMap addObject:@"T"];
-    [gIndexMap addObject:@"U"];
-    [gIndexMap addObject:@"V"];
-    [gIndexMap addObject:@"W"];
-    [gIndexMap addObject:@"X"];
-    [gIndexMap addObject:@"Y"];
-    [gIndexMap addObject:@"Z"];
-    [gIndexMap addObject:@"#"];
 }
 
 
@@ -118,83 +64,27 @@ static NSMutableArray* gIndexMap = nil;
     // PROFILE
     [[TimeProfile main] begin];
     
+    [[SongCatalog availableCatalog] buildAvailableComparingToSource:[SongCatalog synchronizedCatalog].matchedSongs];
     
-    MPMediaQuery* allAlbumsQuery = [MPMediaQuery albumsQuery];
-    NSArray* allAlbumsArray = [allAlbumsQuery collections];
-    
-    NSMutableSet* localCollection = [[NSMutableSet alloc] init];
-    
-    // list all local albums
-    for (MPMediaItemCollection* collection in allAlbumsArray) 
-    {
-        // list all local songs from albums
-        for (MPMediaItem* item in collection.items)
-        {
-            Song* song = [[Song alloc] init];
-            
-            NSString* artistKey = [item valueForProperty:MPMediaItemPropertyArtist];
-            NSString* albumKey = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
-
-            
-            
-            NSString* value = [item valueForProperty:MPMediaItemPropertyTitle];
-            if (value == nil)
-                song.name = [NSString stringWithString:PM_FIELD_UNKNOWN];
-            else
-                song.name = [NSString stringWithString:value];
-
-            if (artistKey == nil)
-            {
-                artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
-                song.artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
-            }
-            else
-                song.artist = [NSString stringWithString:artistKey];
-
-            
-            if (albumKey == nil)
-            {
-                albumKey =  NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
-                song.album = [NSString stringWithString:PM_FIELD_UNKNOWN];
-            }
-            else
-                song.album = [NSString stringWithString:albumKey];
-
-            
-            // create a key for the dictionary 
-            NSString* key = [NSString stringWithFormat:@"%@|%@|%@", song.name, artistKey, albumKey];
-            
-            
-            // don't include it if it's included in the matched songs already
-            Song* matchedSong = [self.matchedSongs objectForKey:key];
-            if (matchedSongs != nil)
-                continue;
-            
-            [localCollection addObject:song];
-
-        }
-    }
-    
-    self.localSongs = [[NSMutableArray alloc] initWithArray:[localCollection allObjects]];
-    [localCollection release];
     
     // PROFILE
     [[TimeProfile main] end];
     // PROFILE
     [[TimeProfile main] logInterval:@"Local Media Songs parsing"];
 
+    NSInteger count = [SongCatalog availableCatalog].alphabeticRepo.count;
     
-    NSLog(@"SongAddViewController : %d songs added to the local array", self.localSongs.count);
+    NSLog(@"SongAddViewController : %d songs added to the local array", count);
     
     NSString* subtitle = nil;
-    if (self.localSongs.count == 0)
+    if (count == 0)
         subtitle = NSLocalizedString(@"SongAddView_subtitled_count_0", nil);
-    else if (self.localSongs.count == 1)
+    else if (count == 1)
         subtitle = NSLocalizedString(@"SongAddView_subtitled_count_1", nil);
-    else if (self.localSongs.count > 1)
+    else if (count > 1)
         subtitle = NSLocalizedString(@"SongAddView_subtitled_count_n", nil);
     
-    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", self.localSongs.count]];
+    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", count]];
     
     _subtitleLabel.text = subtitle;
     
@@ -204,10 +94,7 @@ static NSMutableArray* gIndexMap = nil;
     
     
     
-    
-    
-    
-    if (self.localSongs.count == 0)
+    if (count == 0)
     {
         [_tableView removeFromSuperview];
         NSString* str = NSLocalizedString(@"PlaylistsView_empty_message", nil);
@@ -255,14 +142,66 @@ static NSMutableArray* gIndexMap = nil;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [SongCatalog availableCatalog].indexMap.count;
 }
 
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
+    if (nbRows == 0)
+        return 0;
+    
+    return 22;
+}
+
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
+    
+    if (nbRows == 0)
+        return nil;
+    
+    NSString* title = [[SongCatalog availableCatalog].indexMap objectAtIndex:section];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
+    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, 44);
+    
+    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return self.localSongs.count;
+    return [self getNbRowsForTable:tableView inSection:section];
+}
+
+
+- (NSInteger)getNbRowsForTable:(UITableView*)tableView inSection:(NSInteger)section
+{
+    NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:section];
+    
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    {
+        NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:charIndex];
+        assert(letterRepo != nil);
+        return letterRepo.count;
+    }
+    else
+    {
+        NSArray* artistsForSection = [[SongCatalog availableCatalog].alphaArtistsOrder objectForKey:charIndex];
+        NSInteger count = artistsForSection.count;
+        return count;
+    }
+    
 }
 
 
@@ -273,11 +212,6 @@ static NSMutableArray* gIndexMap = nil;
 //}
 
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    return 22;
-//}
-//
 //- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 //{
 //    return 22;
@@ -287,52 +221,18 @@ static NSMutableArray* gIndexMap = nil;
 
 
 
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
+{
+    return [SongCatalog availableCatalog].indexMap;
+}
 
 
-
-//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
-//{
-//    return gIndexMap;
-//}
-//
-//
-//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
-//{
-//    return index;
-//}
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
+{
+    return index;
+}
 
 
-
-
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    NSString* title = nil;
-//    
-//    if (section == 0)
-//        return nil;
-//    
-//    if (section == SECTION_MONTHCHART)
-//        title = NSLocalizedString(@"StatsView_monthselector_label", nil);
-//    
-//    else if (section == SECTION_LEADERBOARD)
-//        title = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
-//    
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    
-//    UIImage* image = [sheet image];
-//    CGFloat height = image.size.height;
-//    UIImageView* view = [[UIImageView alloc] initWithImage:image];
-//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UILabel* label = [sheet makeLabel];
-//    label.text = title;
-//    [view addSubview:label];
-//    
-//    return view;
-//}
 
 
 
@@ -355,86 +255,101 @@ static NSMutableArray* gIndexMap = nil;
     if (cell == nil) 
     {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1];
-        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-
-        // button "add"
-        UIImage* image = [UIImage imageNamed:@"CellButtonAdd.png"];
-        UIImageView* button = [[UIImageView alloc] initWithImage:image];
-        button.frame = CGRectMake(cell.frame.size.width - image.size.width, 0, image.size.width, image.size.height);
-        [cell addSubview:button];
-        
-        CGRect textFrame = cell.textLabel.frame;
-        cell.textLabel.frame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width - button.frame.size.width, textFrame.size.height);
-        textFrame = cell.detailTextLabel.frame;
-        cell.detailTextLabel.frame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width - button.frame.size.width, textFrame.size.height);
     }
-
-    Song* song = [self.localSongs objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = song.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    
+    NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
+    
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    {
+        NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:charIndex];
+        Song* song = [letterRepo objectAtIndex:indexPath.row];
+        
+        if ([song isSongEnabled])
+        {
+            cell.textLabel.textColor = [UIColor whiteColor];
+            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+        }
+        else 
+        {
+            cell.textLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
+        }
+        
+        cell.textLabel.text = song.name;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
+        
+    }
+    else
+    {
+        NSArray* artistsForSection = [[SongCatalog availableCatalog].alphaArtistsOrder objectForKey:charIndex];
+        
+        NSString* artist = [artistsForSection objectAtIndex:indexPath.row];
+        
+        NSDictionary* artistsRepo = [[SongCatalog availableCatalog].alphaArtistsRepo objectForKey:charIndex];
+        NSDictionary* artistRepo = [artistsRepo objectForKey:artist];
+        
+        NSInteger nbAlbums = artistRepo.count;
+        
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.text = artist;
+        
+        if (nbAlbums == 1)
+            cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_albums_1", nil);
+        else
+            cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_albums_n", nil);
+        
+        cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
+    }
     
     
-
-    // don't add the artwork now, but keep the code here in case of...
-    //
-//    MPMediaItemArtwork* artWork = [item valueForProperty:MPMediaItemPropertyArtwork];
-//    UIImageView* image = [[UIImageView alloc] initWithImage:[artWork imageWithSize:CGSizeMake(30, 30)]];
-//    CGRect frame = CGRectMake(8, 7, 30, 30);
-//    image.frame = frame;
-//    [cell addSubview:image];
-//    
-//    CGRect textFrame = cell.textLabel.frame;
-//    cell.textLabel.frame = CGRectMake(textFrame.origin.x + frame.origin.x + frame.size.width, textFrame.origin.y, textFrame.size.width - frame.origin.x - frame.size.width, textFrame.size.height);
-//    textFrame = cell.detailTextLabel.frame;
-//    cell.detailTextLabel.frame = CGRectMake(textFrame.origin.x + frame.origin.x + frame.size.width, textFrame.origin.y, textFrame.size.width - frame.origin.x - frame.size.width, textFrame.size.height);
-    
-    
-//    NSString *const MPMediaItemPropertyArtwork;
     
     return cell;
 }
 
 
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    Song* song = [self.localSongs objectAtIndex:indexPath.row];
-
-    BOOL can = [[SongUploader main] canUploadSong:song];
-    if (!can)
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    
+    
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongAddView_cant_add_title", nil) message:NSLocalizedString(@"SongAddView_cant_add_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];  
-        return;
+        NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:[[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section]];
+        Song* song = [letterRepo objectAtIndex:indexPath.row];
+        
+        BOOL can = [[SongUploader main] canUploadSong:song];
+        if (!can)
+        {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongAddView_cant_add_title", nil) message:NSLocalizedString(@"SongAddView_cant_add_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];  
+            return;
+        }
+        
+        // add an upload job to the queue
+        [[SongUploadManager main] addAndUploadSong:song];
+        
+        // and flag the current song as "uploading song"
+        song.uploading = YES;
+        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell setNeedsLayout];
+        
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
+    }
+    else
+    {
+        [[SongCatalog availableCatalog] selectArtistInSection:indexPath.section atRow:indexPath.row];
+        
+//        ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil];
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release];
     }
     
-    // add an upload job to the queue
-    [[SongUploadManager main] addAndUploadSong:song];
-    
-    // and remove the song from the current list
-    [self.localSongs removeObjectAtIndex:indexPath.row];
-    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
-    
 }
-
-
-
-
-
-
-
-
-
 
 
 

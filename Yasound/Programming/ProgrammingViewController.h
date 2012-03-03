@@ -25,7 +25,6 @@
 }
 
 @property (nonatomic, retain) NSMutableDictionary* matchedSongs;
-//@property (nonatomic, retain) SongCatalog* catalog;
 
 
 @end
