@@ -17,6 +17,7 @@
 @implementation SongCatalog
 
 @synthesize matchedSongs;
+@synthesize nbSongs;
 
 @synthesize alphabeticRepo;
 @synthesize indexMap;
@@ -97,6 +98,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         _lowerCaseSet = [[NSCharacterSet lowercaseLetterCharacterSet] retain];
         _upperCaseSet = [[NSCharacterSet uppercaseLetterCharacterSet] retain];
         
+        self.nbSongs = 0;
+
         
         self.alphabeticRepo = [[NSMutableDictionary alloc] init];
         
@@ -208,6 +211,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         
         
         [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
+        self.nbSongs++;
     }
     
     [self finalizeCatalog];
@@ -273,6 +277,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
                 continue;
             
             [self sortAndCatalog:song usingArtistKey:artistKey andAlbumKey:albumKey];
+            self.nbSongs++;
+
         }
     }
     

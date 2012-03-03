@@ -41,6 +41,14 @@
 }
 
 
+- (void)dealloc
+{
+    [SongCatalog releaseAvailableCatalog];
+    [super dealloc];
+}
+
+
+
 
 
 - (void)viewDidLoad
@@ -72,7 +80,7 @@
     // PROFILE
     [[TimeProfile main] logInterval:@"Local Media Songs parsing"];
 
-    NSInteger count = [SongCatalog availableCatalog].alphabeticRepo.count;
+    NSInteger count = [SongCatalog availableCatalog].nbSongs;
     
     NSLog(@"SongAddViewController : %d songs added to the local array", count);
     

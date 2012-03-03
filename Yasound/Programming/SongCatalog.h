@@ -16,6 +16,9 @@
     NSCharacterSet* _upperCaseSet;
 }
 
+
+@property (nonatomic) NSInteger nbSongs;
+
 @property (nonatomic, retain) NSMutableDictionary* matchedSongs;
 
 @property (nonatomic, retain) NSMutableArray* indexMap; // "-", "A", "B", ...
