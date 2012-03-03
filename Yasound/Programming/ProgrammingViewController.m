@@ -446,7 +446,7 @@
     {
         [[SongCatalog synchronizedCatalog] selectArtistInSection:indexPath.section atRow:indexPath.row];
         
-        ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil];
+        ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil usingCatalog:[SongCatalog synchronizedCatalog]];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

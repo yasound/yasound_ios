@@ -20,12 +20,14 @@
 
 @implementation ProgrammingAlbumViewController
 
+@synthesize catalog;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil usingCatalog:(SongCatalog*)catalog
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+        self.catalog = catalog;
     }
     return self;
 }
@@ -43,11 +45,17 @@
     [super viewDidLoad];
 
     _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-    _subtitleLabel.text = [SongCatalog synchronizedCatalog].selectedAlbum;
+    _subtitleLabel.text = self.catalog.selectedAlbum;
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    
+    if (self.catalog == [SongCatalog synchronizedCatalog])
+    {
+//        _addBtn TODO ADD BUTTON
+        
+    }
 }
 
 
@@ -88,7 +96,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return [SongCatalog synchronizedCatalog].selectedAlbumRepo.count;
+    return self.catalog.selectedAlbumRepo.count;
 }
 
 
@@ -122,9 +130,9 @@
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
-    NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
+    NSString* charIndex = [self.catalog.indexMap objectAtIndex:indexPath.section];
     
-    Song* song = [[SongCatalog synchronizedCatalog] getSongAtRow:indexPath.row];
+    Song* song = [self.catalog getSongAtRow:indexPath.row];
     
     if ([song isSongEnabled])
     {
@@ -150,7 +158,7 @@
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
     
-    Song* song = [[SongCatalog synchronizedCatalog] getSongAtRow:indexPath.row];
+    Song* song = [self.catalog getSongAtRow:indexPath.row];
     
     SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
     [self.navigationController pushViewController:view animated:YES];

@@ -7,6 +7,7 @@
 //
 
 #import "TestflightViewController.h"
+#import "SongCatalog.h"
 
 @interface ProgrammingArtistViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 {
@@ -17,6 +18,10 @@
     
     IBOutlet UITableView* _tableView;
 }
+
+@property (nonatomic, assign) SongCatalog* catalog;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil usingCatalog:(SongCatalog*)catalog;
 
 
 @end

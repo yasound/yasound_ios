@@ -16,6 +16,7 @@
 #import "SongCatalog.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
+#import "ProgrammingArtistViewController.h"
 
 #define BORDER 8
 
@@ -62,8 +63,8 @@
     [_segment setTitle:NSLocalizedString(@"SongAddView_segment_titles", nil) forSegmentAtIndex:0];  
     [_segment setTitle:NSLocalizedString(@"SongAddView_segment_artists", nil) forSegmentAtIndex:1];  
     [_segment insertSegmentWithTitle:NSLocalizedString(@"SongAddView_segment_server", nil) atIndex:2 animated:NO];
-    
-    
+    [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
+
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
     
@@ -352,9 +353,9 @@
     {
         [[SongCatalog availableCatalog] selectArtistInSection:indexPath.section atRow:indexPath.row];
         
-//        ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
+        ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil usingCatalog:[SongCatalog availableCatalog]];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
     }
     
 }
@@ -382,7 +383,17 @@
 
 - (IBAction)onSegmentClicked:(id)sender
 {
+    NSInteger index = [_segment selectedSegmentIndex];
+    if ((index == SEGMENT_INDEX_ALPHA) || (index == SEGMENT_INDEX_ARTIST))
+    {
+        [_tableView reloadData];
+        return;
+    }
     
+    if (index == SEGMENT_INDEX_SERVER)
+    {
+    
+    }
 }
 
 

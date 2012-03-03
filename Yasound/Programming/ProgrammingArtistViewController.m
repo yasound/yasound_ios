@@ -23,13 +23,16 @@
 
 
 
+@synthesize catalog;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil usingCatalog:(SongCatalog*)catalog
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+        self.catalog = catalog;
     }
     return self;
 }
@@ -49,7 +52,7 @@
     [super viewDidLoad];
 
     _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-    _subtitleLabel.text = [SongCatalog synchronizedCatalog].selectedArtist;
+    _subtitleLabel.text = self.catalog.selectedArtist;
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
@@ -97,7 +100,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    NSInteger count = [SongCatalog synchronizedCatalog].selectedArtistRepo.count;
+    NSInteger count = self.catalog.selectedArtistRepo.count;
     return count;
 }
 
@@ -129,10 +132,10 @@
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 
-    NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
+    NSString* charIndex = [self.catalog.indexMap objectAtIndex:indexPath.section];
     
-    NSArray* albums = [[SongCatalog synchronizedCatalog].selectedArtistRepo allKeys];
-    NSArray* albumRepos = [[SongCatalog synchronizedCatalog].selectedArtistRepo allValues];
+    NSArray* albums = [self.catalog.selectedArtistRepo allKeys];
+    NSArray* albumRepos = [self.catalog.selectedArtistRepo allValues];
     
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text = [albums objectAtIndex:indexPath.row];
@@ -157,9 +160,9 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
-    [[SongCatalog synchronizedCatalog] selectAlbumAtRow:indexPath.row];
+    [self.catalog selectAlbumAtRow:indexPath.row];
 
-    ProgrammingAlbumViewController* view = [[ProgrammingAlbumViewController alloc] initWithNibName:@"ProgrammingAlbumViewController" bundle:nil];
+    ProgrammingAlbumViewController* view = [[ProgrammingAlbumViewController alloc] initWithNibName:@"ProgrammingAlbumViewController" bundle:nil usingCatalog:self.catalog];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 
