@@ -15,4 +15,25 @@
 @synthesize album_name;
 @synthesize cover;
 
+
+- (void)init
+{
+    if (self = [super init])
+    {
+        _uploading = NO;
+    }
+    return self;
+}
+
+- (BOOL)isUploading
+{
+    return _uploading;
+}
+
+- (void)setUploading:(BOOL)set
+{
+    _uploading = set;
+}
+
+
 @end

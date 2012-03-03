@@ -202,6 +202,12 @@
 "SongAddView_segment_titles" = "titles";
 "SongAddView_segment_artists" = "artists";
 "SongAddView_segment_server" = "server";
+"SongAddView_searchServer" = "Search for a song from the server";
+"SongAddView_addFromServer" = "Add from the server";
+"SongAddView_requestServer" = "Searching the songs";
+"SongAddView_addedError" = "Unabled to add the song.";
+"SongAddView_addedOk" = "This song has been added to your radio!";
+
 
 
 "SongUpload_title" = "Upload";

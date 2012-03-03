@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SongAddViewController : UIViewController
+@interface SongAddViewController : UIViewController<UISearchBarDelegate, UISearchDisplayDelegate>
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
@@ -19,10 +19,15 @@
     IBOutlet UIView* _itunesConnectView;
     IBOutlet UILabel* _itunesConnectLabel;
     
+    IBOutlet UISearchBar* _searchBar;
+    IBOutlet UISearchDisplayController* _searchController;
+    NSInteger _selectedIndex;
+    
     
 }
 
-
+@property (nonatomic, retain) NSMutableArray* searchedSongs;
+@property (nonatomic, retain) NSString* subtitle;
 //@property (nonatomic, retain) NSMutableArray* localSongs;
 //@property (nonatomic, retain) NSArray* remoteSongs;
 //

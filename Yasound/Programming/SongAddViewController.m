@@ -17,10 +17,15 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "ProgrammingArtistViewController.h"
+#import "YasoundDataProvider.h"
 
 #define BORDER 8
 
 @implementation SongAddViewController
+
+
+@synthesize searchedSongs;
+@synthesize subtitle;
 
 
 
@@ -36,7 +41,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        
+        _selectedIndex = -1;
     }
     return self;
 }
@@ -68,6 +73,15 @@
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
     
+    _searchBar.frame = CGRectMake(0, 44, _searchBar.frame.size.width, _searchBar.frame.size.height);
+    _searchBar.placeholder = NSLocalizedString(@"SongAddView_searchServer", nil);
+    
+    _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
+    _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
+    
+    
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];        
     
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(afterBreath:) userInfo:nil repeats:NO];
@@ -90,17 +104,16 @@
     
     NSLog(@"SongAddViewController : %d songs added to the local array", count);
     
-    NSString* subtitle = nil;
     if (count == 0)
-        subtitle = NSLocalizedString(@"SongAddView_subtitled_count_0", nil);
+        self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_0", nil);
     else if (count == 1)
-        subtitle = NSLocalizedString(@"SongAddView_subtitled_count_1", nil);
+        self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_1", nil);
     else if (count > 1)
-        subtitle = NSLocalizedString(@"SongAddView_subtitled_count_n", nil);
+        self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_n", nil);
     
-    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", count]];
+    self.subtitle = [self.subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", count]];
     
-    _subtitleLabel.text = subtitle;
+    _subtitleLabel.text = self.subtitle;
     
 
     
@@ -158,13 +171,26 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+{        
+    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+    {
+        NSLog(@"flag 1");
+        
+        return 1;
+    }
+    
     return [SongCatalog availableCatalog].indexMap.count;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+    {
+        NSLog(@"flag 2");
+        return 0;
+    }
+    
     NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
     if (nbRows == 0)
         return 0;
@@ -175,6 +201,13 @@
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+    {
+        NSLog(@"flag 3");
+        return nil;
+    }
+    
+
     NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
     
     if (nbRows == 0)
@@ -198,6 +231,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
+    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+    {
+        NSLog(@"flag 4");
+        
+        if (self.searchedSongs == nil)
+            return 0;
+        
+        return self.searchedSongs.count;
+    }
+    
+    
     return [self getNbRowsForTable:tableView inSection:section];
 }
 
@@ -239,13 +283,24 @@
 
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
-{
+{    
+    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+        return nil;
+    
+
     return [SongCatalog availableCatalog].indexMap;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
 {
+    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+    {
+        NSLog(@"flag 5");
+        return 0;
+    }
+    
+    
     return index;
 }
 
@@ -276,6 +331,23 @@
     
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    
+    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+    {
+        NSLog(@"flag 6");
+        
+        YasoundSong* song = [self.searchedSongs objectAtIndex:indexPath.row];
+     
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+        
+        cell.textLabel.text = song.name;
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album_name, song.artist_name];     
+        
+        return cell;
+    }
+    
+
     
     NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
     
@@ -321,8 +393,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
+    
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_SERVER)
+    {
+        NSLog(@"flag 7");
+
+        YasoundSong* song = [self.searchedSongs objectAtIndex:indexPath.row];
+        
+        [ActivityAlertView showWithTitle:nil];
+
+        [[YasoundDataProvider main] addSong:song target:self action:@selector(songAdded:info:)];
+
+
+        return;
+    }
+    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+
     
     
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
@@ -363,6 +451,27 @@
 
 
 
+- (void)songAdded:(YasoundSong*)song info:(NSDictionary*)info
+{
+    [ActivityAlertView close];
+
+    if (song == nil)
+    {
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedError", nil) closeAfterTimeInterval:2];
+        return;
+    }
+    
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedOk", nil) closeAfterTimeInterval:2];
+    
+    // and flag the current song as "uploading song"
+    UITableView* tableView = _searchController.searchResultsTableView;
+    NSIndexPath* indexPath = [tableView indexPathForSelectedRow];
+    song.uploading = YES;
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    [cell setNeedsLayout];
+}
+
+
 
 
 
@@ -386,15 +495,97 @@
     NSInteger index = [_segment selectedSegmentIndex];
     if ((index == SEGMENT_INDEX_ALPHA) || (index == SEGMENT_INDEX_ARTIST))
     {
+        _subtitleLabel.text = self.subtitle;
+
+        if (_selectedIndex == SEGMENT_INDEX_SERVER)
+        {
+            [_searchBar removeFromSuperview];
+            [self.view addSubview:_tableView];
+        }
+        
         [_tableView reloadData];
-        return;
     }
     
-    if (index == SEGMENT_INDEX_SERVER)
+    else if (index == SEGMENT_INDEX_SERVER)
     {
-    
+        _subtitleLabel.text = NSLocalizedString(@"SongAddView_addFromServer", nil);
+
+        [_tableView removeFromSuperview];
+        
+        [self.view addSubview:_searchBar];
+        
     }
+    
+    _selectedIndex = index;
 }
+
+
+
+
+
+
+#pragma mark - Search Delegate
+
+//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+//{
+//
+//}
+//
+//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+//{
+//
+//}
+
+- (void)requestsSongSearch:(NSString*)searchText
+{
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_requestServer", nil)];
+    
+    [[YasoundDataProvider main] searchSong:searchText target:self action:@selector(didReceiveSongs:info:)]; 
+    
+}
+
+     
+- (void)didReceiveSongs:(NSArray*)songs info:(NSDictionary*)info
+{
+    self.searchedSongs = songs;
+    [_searchController.searchResultsTableView reloadData];
+    
+    [ActivityAlertView close];
+}
+
+
+//{
+//    if (_radios != nil)
+//        [_radios release];
+//    _radios = nil;
+//    if (_radiosByCreator != nil)
+//        [_radiosByCreator release];
+//    _radiosByCreator = nil;
+//    if (_radiosBySong != nil)
+//        [_radiosBySong release];
+//    _radiosBySong = nil;
+//    
+//    [self.searchDisplayController.searchResultsTableView reloadData];
+//    
+//    [[YasoundDataProvider main] searchRadios:searchText withTarget:self action:@selector(receiveRadios:withInfo:)];
+//    [[YasoundDataProvider main] searchRadiosByCreator:searchText withTarget:self action:@selector(receiveRadiosSearchedByCreator:withInfo:)];
+//    [[YasoundDataProvider main] searchRadiosBySong:searchText withTarget:self action:@selector(receiveRadiosSearchBySong:withInfo:)];
+//}
+
+//- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+//{
+//    NSLog(@"searchBarTextDidEndEditing %@", searchBar.text);
+//    
+//    [self searchRadios:searchBar.text];
+//}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSLog(@"searchBarSearchButtonClicked %@", searchBar.text);
+    
+    [self requestsSongSearch:searchBar.text];
+}
+
 
 
 

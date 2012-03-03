@@ -203,7 +203,11 @@
 "SongAddView_segment_titles" = "titres";
 "SongAddView_segment_artists" = "artistes";
 "SongAddView_segment_server" = "serveur";
-
+"SongAddView_searchServer" = "Rechercher un titre sur le serveur";
+"SongAddView_addFromServer" = "Ajout depuis le server";
+"SongAddView_requestServer" = "Recherche des morceaux";
+"SongAddView_addedError" = "Impossible d'ajouter le morceau.";
+"SongAddView_addedOk" = "Le morceau a été ajouté à votre programmation!";
 
 "SongUpload_title" = "Téléchargement";
 "SongUpload_progressCompleted" = "Terminé.";

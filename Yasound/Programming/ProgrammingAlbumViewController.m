@@ -17,6 +17,8 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "SongCatalog.h"
+#import "SongUploader.h"
+#import "SongUploadManager.h"
 
 @implementation ProgrammingAlbumViewController
 
@@ -44,7 +46,11 @@
 {
     [super viewDidLoad];
 
-    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
+    if (self.catalog == [SongCatalog synchronizedCatalog])
+        _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
+    else if (self.catalog == [SongCatalog availableCatalog])
+        _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
+        
     _subtitleLabel.text = self.catalog.selectedAlbum;
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
@@ -160,9 +166,34 @@
     
     Song* song = [self.catalog getSongAtRow:indexPath.row];
     
-    SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
+    if (self.catalog == [SongCatalog synchronizedCatalog])
+    {
+        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    else if (self.catalog == [SongCatalog availableCatalog])
+    {
+        BOOL can = [[SongUploader main] canUploadSong:song];
+        if (!can)
+        {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongAddView_cant_add_title", nil) message:NSLocalizedString(@"SongAddView_cant_add_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];  
+            return;
+        }
+        
+        // add an upload job to the queue
+        [[SongUploadManager main] addAndUploadSong:song];
+        
+        // and flag the current song as "uploading song"
+        song.uploading = YES;
+        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell setNeedsLayout];
+        
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
+    }
+
 }
 
 

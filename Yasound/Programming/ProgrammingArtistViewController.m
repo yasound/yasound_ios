@@ -51,7 +51,11 @@
 {
     [super viewDidLoad];
 
-    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
+    if (self.catalog == [SongCatalog synchronizedCatalog])
+        _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
+    else if (self.catalog == [SongCatalog availableCatalog])
+        _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
+
     _subtitleLabel.text = self.catalog.selectedArtist;
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
