@@ -76,10 +76,10 @@
     _searchBar.frame = CGRectMake(0, 44, _searchBar.frame.size.width, _searchBar.frame.size.height);
     _searchBar.placeholder = NSLocalizedString(@"SongAddView_searchServer", nil);
     
-    _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
-    _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-    _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
+//    _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
+//    _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+//    _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
     
     
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];        
@@ -463,11 +463,10 @@
     
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedOk", nil) closeAfterTimeInterval:2];
     
-    // and flag the current song as "uploading song"
-    UITableView* tableView = _searchController.searchResultsTableView;
-    NSIndexPath* indexPath = [tableView indexPathForSelectedRow];
+    // and flag the current song as "uploading song"    UITableView* tableView = _searchController.searchResultsTableView;
+    NSIndexPath* indexPath = [_tableView indexPathForSelectedRow];
     song.uploading = YES;
-    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    UITableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
     [cell setNeedsLayout];
 }
 
@@ -499,10 +498,14 @@
 
         if (_selectedIndex == SEGMENT_INDEX_SERVER)
         {
+            
+            _tableView.frame = CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y - _searchBar.frame.size.height, _tableView.frame.size.width, _tableView.frame.size.height + _searchBar.frame.size.height);
+
             [_searchBar removeFromSuperview];
-            [self.view addSubview:_tableView];
         }
         
+        _selectedIndex = index;
+
         [_tableView reloadData];
     }
     
@@ -510,13 +513,15 @@
     {
         _subtitleLabel.text = NSLocalizedString(@"SongAddView_addFromServer", nil);
 
-        [_tableView removeFromSuperview];
-        
         [self.view addSubview:_searchBar];
+        _tableView.frame = CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y + _searchBar.frame.size.height, _tableView.frame.size.width, _tableView.frame.size.height - _searchBar.frame.size.height);
+
+        _selectedIndex = index;
         
+        [_tableView reloadData];
+
     }
     
-    _selectedIndex = index;
 }
 
 
@@ -548,7 +553,7 @@
 - (void)didReceiveSongs:(NSArray*)songs info:(NSDictionary*)info
 {
     self.searchedSongs = songs;
-    [_searchController.searchResultsTableView reloadData];
+    [_tableView reloadData];
     
     [ActivityAlertView close];
 }
@@ -574,9 +579,9 @@
 
 //- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 //{
-//    NSLog(@"searchBarTextDidEndEditing %@", searchBar.text);
+//    NSLog(@"searchBarSearchButtonClicked %@", searchBar.text);
 //    
-//    [self searchRadios:searchBar.text];
+//    [self requestsSongSearch:searchBar.text];
 //}
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar

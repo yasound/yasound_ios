@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SongAddViewController : UIViewController<UISearchBarDelegate, UISearchDisplayDelegate>
+@interface SongAddViewController : UIViewController
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
@@ -20,7 +20,6 @@
     IBOutlet UILabel* _itunesConnectLabel;
     
     IBOutlet UISearchBar* _searchBar;
-    IBOutlet UISearchDisplayController* _searchController;
     NSInteger _selectedIndex;
     
     
