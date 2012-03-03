@@ -176,10 +176,13 @@
             
             // create a key for the dictionary 
             NSString* key = [NSString stringWithFormat:@"%@|%@|%@", song.name, artistKey, albumKey];
+
             // and store the song in the dictionnary, for later convenient use
             [self.matchedSongs setObject:song forKey:key];
+            
         }
     }
+    
     
     // build catalog
     [[SongCatalog synchronizedCatalog] buildSynchronizedWithSource:self.matchedSongs];

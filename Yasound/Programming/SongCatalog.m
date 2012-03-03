@@ -227,6 +227,9 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 
 - (void)buildAvailableComparingToSource:(NSDictionary*)synchronizedSource
 {
+    
+    //NSLog(@"%@", synchronizedSource);
+    
     MPMediaQuery* allAlbumsQuery = [MPMediaQuery albumsQuery];
     NSArray* allAlbumsArray = [allAlbumsQuery collections];
     
@@ -267,13 +270,32 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
                 song.album = [NSString stringWithString:albumKey];
             
             
+            
+            
             // create a key for the dictionary 
             NSString* key = [NSString stringWithFormat:@"%@|%@|%@", song.name, artistKey, albumKey];
             
             
-            // don't include it if it's included in the matched songs already
+//            //LBDEBUG
+//            NSLog(@"key %@", key);
+//            
+//            NSString* key1 = [key precomposedStringWithCanonicalMapping];
+//            NSString* key2 = [key precomposedStringWithCompatibilityMapping];
+//            NSString* key3 = [key decomposedStringWithCanonicalMapping];
+//            NSString* key4 = [key decomposedStringWithCompatibilityMapping];
+            
+//            NSLog(@"key1 %@", key1);
+//            NSLog(@"key2 %@", key2);
+//            NSLog(@"key3 %@", key3);
+//            NSLog(@"key4 %@", key4);
+            
             Song* matchedSong = [synchronizedSource objectForKey:key];
-            if (matchedSongs != nil)
+            
+//            matchedSong = [synchronizedSource objectForKey:key1];
+            
+            // don't include it if it's included in the matched songs already
+   //         Song* matchedSong = [synchronizedSource objectForKey:key];
+            if (matchedSong != nil)
                 continue;
             
             [self sortAndCatalog:song usingArtistKey:artistKey andAlbumKey:albumKey];

@@ -69,6 +69,11 @@
     
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];        
     
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(afterBreath:) userInfo:nil repeats:NO];
+}
+
+- (void)afterBreath:(NSTimer*)timer
+{
     // PROFILE
     [[TimeProfile main] begin];
     
@@ -111,8 +116,11 @@
         
         // IB, sometimes, is, huh.....
         [_itunesConnectView addSubview:_itunesConnectLabel];
+        return;
         
     }
+    
+    [_tableView reloadData];
 
 }
 
@@ -275,16 +283,8 @@
         NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:charIndex];
         Song* song = [letterRepo objectAtIndex:indexPath.row];
         
-        if ([song isSongEnabled])
-        {
-            cell.textLabel.textColor = [UIColor whiteColor];
-            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-        }
-        else 
-        {
-            cell.textLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
-        }
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
         
         cell.textLabel.text = song.name;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
