@@ -50,7 +50,8 @@
 
 - (void)dealloc
 {
-    [SongCatalog releaseProgrammingCatalog];
+    [SongCatalog releaseAvailableCatalog];
+    [SongCatalog releaseSynchronizedCatalog];
     [super dealloc];
 }
 
