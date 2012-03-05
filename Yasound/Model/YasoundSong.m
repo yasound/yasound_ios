@@ -16,7 +16,7 @@
 @synthesize cover;
 
 
-- (void)init
+- (id)init
 {
     if (self = [super init])
     {
