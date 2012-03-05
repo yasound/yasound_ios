@@ -382,7 +382,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_SERVER)
     {
@@ -448,13 +448,30 @@
         return;
     }
     
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedOk", nil) closeAfterTimeInterval:2];
+    NSDictionary* status = [info objectForKey:@"status"];
+    NSNumber* successNb = [status objectForKey:@"success"];
+    NSNumber* createdNb = [status objectForKey:@"created"];
+    BOOL success = YES;
+    BOOL created = YES;
+
+    if ((successNb != nil) && (createdNb != nil))
+    {
+        success = [successNb boolValue];
+        created = [createdNb boolValue];
+    }
     
-    // and flag the current song as "uploading song"    UITableView* tableView = _searchController.searchResultsTableView;
-    NSIndexPath* indexPath = [_tableView indexPathForSelectedRow];
-    song.uploading = YES;
-    UITableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
-    [cell setNeedsLayout];
+    if (success && !created)
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedAlready", nil) closeAfterTimeInterval:2];
+    else
+    {
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedOk", nil) closeAfterTimeInterval:2];
+    
+        // and flag the current song as "uploading song"    UITableView* tableView = _searchController.searchResultsTableView;
+        NSIndexPath* indexPath = [_tableView indexPathForSelectedRow];
+        song.uploading = YES;
+        UITableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
+        [cell setNeedsLayout];
+    }
 }
 
 
