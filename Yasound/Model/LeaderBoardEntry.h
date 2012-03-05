@@ -11,7 +11,7 @@
 @interface LeaderBoardEntry : Model
 
 @property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic) NSNumber* favorites;
+@property (retain, nonatomic) NSNumber* leaderboard_favorites;
 @property (retain, nonatomic) NSNumber* leaderboard_rank;
 @property (retain, nonatomic) NSNumber* mine;
 

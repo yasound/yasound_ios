@@ -59,6 +59,7 @@
         _monthGraphView.plotColor = RGB(200,200,200);
         _monthGraphView.fillColor = RGBA(196,246,254,96);
       
+      _listenersLabel = nil;
       _leaderboard = nil;
     }
     
@@ -108,7 +109,7 @@
     
   [[YasoundDataProvider main] monthListeningStatsWithTarget:self action:@selector(receivedMonthStats:withInfo:)];
   [[YasoundDataProvider main] leaderboardWithTarget:self action:@selector(receivedLeaderBoard:withInfo:)];
-  
+  [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadio:withInfo:)];
 }
 
 - (void)viewDidUnload
@@ -122,6 +123,17 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)receivedUserRadio:(Radio*)r withInfo:(NSDictionary*)info
+{
+  if (!r)
+    return;
+  if (_listenersLabel)
+  {
+    NSNumber* listeners = r.nb_current_users;
+    _listenersLabel.text = [NSString stringWithFormat:@"%@", listeners];
+  }
 }
 
 
@@ -171,7 +183,7 @@
   NSLog(@"%d entries in leaderboard", entries.count);
   for (LeaderBoardEntry* entry in entries)
   {
-    NSLog(@"%@ - %@: %@ favorites %@", entry.leaderboard_rank, entry.name, entry.favorites, [entry isUserRadio] ? @"(user's radio)" : @"");
+    NSLog(@"%@ - %@: %@ favorites %@", entry.leaderboard_rank, entry.name, entry.leaderboard_favorites, [entry isUserRadio] ? @"(user's radio)" : @"");
   }
   
   _leaderboard = entries;
@@ -363,8 +375,9 @@
         NSNumber* listeners = [YasoundDataProvider main].radio.nb_current_users;
         cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
 
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", listeners];
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:1 green:174.f/255.f blue:0 alpha:1];
+      _listenersLabel = cell.detailTextLabel;
+      _listenersLabel.text = [NSString stringWithFormat:@"%@", listeners];
+      _listenersLabel.textColor = [UIColor colorWithRed:1 green:174.f/255.f blue:0 alpha:1];
 
         [cell.imageView setImage:[UIImage imageNamed:@"iconSubscribers.png"]];
       
@@ -420,7 +433,7 @@
         // favorites
         sheet = [[Theme theme] stylesheetForKey:@"StatsView_LeaderBoard_Favorites" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         label = [[sheet makeLabel] autorelease];
-        label.text = [NSString stringWithFormat:@"%@", entry.favorites];
+        label.text = [NSString stringWithFormat:@"%@", entry.leaderboard_favorites];
         [cell.contentView addSubview:label];
 
         // favorites icon
