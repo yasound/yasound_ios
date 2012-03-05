@@ -9,7 +9,8 @@
 #import "SongUploadCell.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-
+#import "SongCatalog.h"
+#import "RootViewController.h"
 
 
 @implementation SongUploadCell
@@ -167,6 +168,14 @@
     
     // update the GUI, using the same item
     [self update:self.item];
+
+    
+    // add the song to the catalog of synchronized catalog (we dont want to re-generate it entirely)
+    [[SongCatalog synchronizedCatalog] insertAndSortSong:song];
+    
+    // and let the views know about it
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    
     
 //    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //    UILabel* label = [sheet makeLabel];

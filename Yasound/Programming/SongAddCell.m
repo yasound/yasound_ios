@@ -73,6 +73,8 @@
     
     if ([song isUploading])
         self.button.enabled = NO;
+    else
+        self.button.enabled = YES;
 
     self.label.text = aSong.name;
     self.detailedLabel.text = [NSString stringWithFormat:@"%@ - %@", aSong.album, aSong.artist];

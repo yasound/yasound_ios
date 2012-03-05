@@ -134,6 +134,30 @@ static SongUploadManager* _main;
 }
 
 
+- (Song*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album
+{
+    for (SongUploadItem* item in self.items)
+    {
+        NSString* verif = item.song.name;
+        if (![verif isEqualToString:name])
+            continue;
+        
+        verif = item.song.album;
+        if (![verif isEqualToString:album])
+            continue;
+
+        verif = item.song.artist;
+        if (![verif isEqualToString:artist])
+            continue;
+        
+        return item.song;
+}
+    
+    return nil;
+}
+
+
+
 - (void)loop
 {
     _uploading = YES;

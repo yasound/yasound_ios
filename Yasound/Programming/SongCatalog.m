@@ -9,6 +9,8 @@
 #import "SongCatalog.h"
 #import "Song.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "SongUploadManager.h"
+
 
 
 #define PM_FIELD_UNKNOWN @""
@@ -297,6 +299,13 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
    //         Song* matchedSong = [synchronizedSource objectForKey:key];
             if (matchedSong != nil)
                 continue;
+            
+            // before putting this song into the catalog,
+            // check if it's not uploading already.
+            Song* uploadingSong = [[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album];
+            if (uploadingSong != nil)
+                [song setUploading:YES];
+
             
             [self sortAndCatalog:song usingArtistKey:artistKey andAlbumKey:albumKey];
             self.nbSongs++;

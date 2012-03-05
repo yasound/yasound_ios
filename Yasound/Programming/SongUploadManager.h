@@ -105,6 +105,7 @@ typedef enum SongUploadItemStatus
 + (SongUploadManager*)main;
 
 - (void)addAndUploadSong:(Song*)song;
+- (Song*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album;
 
 
 @end
