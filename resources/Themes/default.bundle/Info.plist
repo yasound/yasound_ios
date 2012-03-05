@@ -1303,6 +1303,69 @@
 				<string>bold</string>
 			</dict>
 		</dict>
+		<key>SongAdd_label</key>
+		<dict>
+			<key>x</key>
+			<integer>52</integer>
+			<key>y</key>
+			<integer>6</integer>
+			<key>width</key>
+			<integer>240</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>16</integer>
+				<key>textColor</key>
+				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<key>SongAdd_detailedLabel</key>
+		<dict>
+			<key>x</key>
+			<integer>52</integer>
+			<key>y</key>
+			<integer>22</integer>
+			<key>width</key>
+			<integer>240</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>13</integer>
+				<key>textColor</key>
+				<string>rgb(128,128,128)</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>normal</string>
+			</dict>
+		</dict>
+		<key>SongAdd_addButton</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>normal</key>
+			<string>CellButtonAdd</string>
+			<key>disabled</key>
+			<string>CellButtonAddDisabled</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Programming</string>
+		</dict>
 		<key>SongUpload_progressCompletedLabel</key>
 		<dict>
 			<key>x</key>
