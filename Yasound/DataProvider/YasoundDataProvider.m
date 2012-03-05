@@ -1290,12 +1290,14 @@ static YasoundDataProvider* _main = nil;
   [_communicator deleteObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-- (void)searchSong:(NSString*)search target:(id)target action:(SEL)selector
+- (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector
 {
   Auth* auth = self.apiKeyAuth;
   NSString* url = @"api/v1/search_song";
   NSMutableArray* params = [[NSMutableArray alloc] init];
   [params addObject:[NSString stringWithFormat:@"search=%@", search]];
+  [params addObject:[NSString stringWithFormat:@"song_count=%d", count]];
+  [params addObject:[NSString stringWithFormat:@"song_offset=%d", offset]];
   [_communicator getObjectsWithClass:[YasoundSong class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
