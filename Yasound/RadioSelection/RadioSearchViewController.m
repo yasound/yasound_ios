@@ -333,12 +333,12 @@ typedef enum
   [[YasoundDataProvider main] searchRadiosBySong:searchText withTarget:self action:@selector(receiveRadiosSearchBySong:withInfo:)];
 }
 
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-{
-  NSLog(@"searchBarTextDidEndEditing %@", searchBar.text);
-    
-  [self searchRadios:searchBar.text];
-}
+//- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+//{
+//  NSLog(@"searchBarTextDidEndEditing %@", searchBar.text);
+//    
+//  [self searchRadios:searchBar.text];
+//}
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {

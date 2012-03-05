@@ -17,6 +17,7 @@
 			<string>IBUIToolbar</string>
 			<string>IBUIImageView</string>
 			<string>IBUISearchBar</string>
+			<string>IBUISearchDisplayController</string>
 			<string>IBUISegmentedControl</string>
 			<string>IBUITableView</string>
 			<string>IBUIView</string>
@@ -306,6 +307,9 @@
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				</object>
 			</object>
+			<object class="IBUISearchDisplayController" id="283521899">
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<array class="NSMutableArray" key="connectionRecords">
@@ -375,11 +379,27 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">searchDisplayController</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="283521899"/>
+					</object>
+					<int key="connectionID">55</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">_searchBar</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="653672769"/>
 					</object>
-					<int key="connectionID">51</int>
+					<int key="connectionID">61</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_searchController</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="283521899"/>
+					</object>
+					<int key="connectionID">63</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -427,7 +447,47 @@
 						<reference key="source" ref="653672769"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
-					<int key="connectionID">50</int>
+					<int key="connectionID">60</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">searchBar</string>
+						<reference key="source" ref="283521899"/>
+						<reference key="destination" ref="653672769"/>
+					</object>
+					<int key="connectionID">54</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">searchContentsController</string>
+						<reference key="source" ref="283521899"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">56</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">searchResultsDataSource</string>
+						<reference key="source" ref="283521899"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">57</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">searchResultsDelegate</string>
+						<reference key="source" ref="283521899"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">58</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="283521899"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">59</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -548,8 +608,13 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">49</int>
+						<int key="objectID">52</int>
 						<reference key="object" ref="653672769"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">53</int>
+						<reference key="object" ref="283521899"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</array>
@@ -571,7 +636,8 @@
 				<string key="32.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="49.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="52.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="53.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -580,7 +646,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">51</int>
+			<int key="maxID">63</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -773,212 +839,6 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">ProgrammingAlbumViewController</string>
-					<string key="superclassName">TestflightViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_backBtn">UIBarButtonItem</string>
-						<string key="_subtitleLabel">UILabel</string>
-						<string key="_tableView">UITableView</string>
-						<string key="_titleLabel">UILabel</string>
-						<string key="_toolbar">UIToolbar</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_backBtn">
-							<string key="name">_backBtn</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_subtitleLabel">
-							<string key="name">_subtitleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_tableView">
-							<string key="name">_tableView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_titleLabel">
-							<string key="name">_titleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_toolbar">
-							<string key="name">_toolbar</string>
-							<string key="candidateClassName">UIToolbar</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ProgrammingAlbumViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ProgrammingArtistViewController</string>
-					<string key="superclassName">TestflightViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_backBtn">UIBarButtonItem</string>
-						<string key="_subtitleLabel">UILabel</string>
-						<string key="_tableView">UITableView</string>
-						<string key="_titleLabel">UILabel</string>
-						<string key="_toolbar">UIToolbar</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_backBtn">
-							<string key="name">_backBtn</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_subtitleLabel">
-							<string key="name">_subtitleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_tableView">
-							<string key="name">_tableView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_titleLabel">
-							<string key="name">_titleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_toolbar">
-							<string key="name">_toolbar</string>
-							<string key="candidateClassName">UIToolbar</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ProgrammingArtistViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ProgrammingViewController</string>
-					<string key="superclassName">TestflightViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_backBtn">UIBarButtonItem</string>
-						<string key="_segment">UISegmentedControl</string>
-						<string key="_subtitleLabel">UILabel</string>
-						<string key="_tableView">UITableView</string>
-						<string key="_titleLabel">UILabel</string>
-						<string key="_toolbar">UIToolbar</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_backBtn">
-							<string key="name">_backBtn</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_segment">
-							<string key="name">_segment</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_subtitleLabel">
-							<string key="name">_subtitleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_tableView">
-							<string key="name">_tableView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_titleLabel">
-							<string key="name">_titleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_toolbar">
-							<string key="name">_toolbar</string>
-							<string key="candidateClassName">UIToolbar</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ProgrammingViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">RadioViewController</string>
-					<string key="superclassName">TestflightViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/RadioViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SettingsViewController</string>
-					<string key="superclassName">TestflightViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_backBtn">UIBarButtonItem</string>
-						<string key="_container">UIView</string>
-						<string key="_settingsImageCell">UITableViewCell</string>
-						<string key="_settingsImageImage">WebImageView</string>
-						<string key="_settingsImageLabel">UILabel</string>
-						<string key="_settingsThemeCell">UITableViewCell</string>
-						<string key="_settingsThemeImage">UIImageView</string>
-						<string key="_settingsThemeTitle">UILabel</string>
-						<string key="_settingsTitleCell">UITableViewCell</string>
-						<string key="_settingsTitleLabel">UILabel</string>
-						<string key="_settingsTitleTextField">UITextField</string>
-						<string key="_tableView">UITableView</string>
-						<string key="_titleLabel">UILabel</string>
-						<string key="_toolbar">UIToolbar</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_backBtn">
-							<string key="name">_backBtn</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_container">
-							<string key="name">_container</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsImageCell">
-							<string key="name">_settingsImageCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsImageImage">
-							<string key="name">_settingsImageImage</string>
-							<string key="candidateClassName">WebImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsImageLabel">
-							<string key="name">_settingsImageLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsThemeCell">
-							<string key="name">_settingsThemeCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsThemeImage">
-							<string key="name">_settingsThemeImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsThemeTitle">
-							<string key="name">_settingsThemeTitle</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsTitleCell">
-							<string key="name">_settingsTitleCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsTitleLabel">
-							<string key="name">_settingsTitleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_settingsTitleTextField">
-							<string key="name">_settingsTitleTextField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_tableView">
-							<string key="name">_tableView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_titleLabel">
-							<string key="name">_titleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_toolbar">
-							<string key="name">_toolbar</string>
-							<string key="candidateClassName">UIToolbar</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SettingsViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">SignupViewController</string>
 					<string key="superclassName">TestflightViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
@@ -1097,6 +957,7 @@
 						<string key="_itunesConnectLabel">UILabel</string>
 						<string key="_itunesConnectView">UIView</string>
 						<string key="_searchBar">UISearchBar</string>
+						<string key="_searchController">UISearchDisplayController</string>
 						<string key="_segment">UISegmentedControl</string>
 						<string key="_subtitleLabel">UILabel</string>
 						<string key="_tableView">UITableView</string>
@@ -1118,6 +979,10 @@
 						<object class="IBToOneOutletInfo" key="_searchBar">
 							<string key="name">_searchBar</string>
 							<string key="candidateClassName">UISearchBar</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_searchController">
+							<string key="name">_searchController</string>
+							<string key="candidateClassName">UISearchDisplayController</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_segment">
 							<string key="name">_segment</string>
@@ -1177,33 +1042,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/SongInfoViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SongUploadViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="_backBtn">UIBarButtonItem</string>
-						<string key="_tableView">UITableView</string>
-						<string key="_titleLabel">UILabel</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="_backBtn">
-							<string key="name">_backBtn</string>
-							<string key="candidateClassName">UIBarButtonItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_tableView">
-							<string key="name">_tableView</string>
-							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="_titleLabel">
-							<string key="name">_titleLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/SongUploadViewController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1346,14 +1184,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/TrackedUIViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">WebImageView</string>
-					<string key="superclassName">UIImageView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/WebImageView.h</string>
 					</object>
 				</object>
 			</array>

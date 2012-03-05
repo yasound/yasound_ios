@@ -76,10 +76,10 @@
     _searchBar.frame = CGRectMake(0, 44, _searchBar.frame.size.width, _searchBar.frame.size.height);
     _searchBar.placeholder = NSLocalizedString(@"SongAddView_searchServer", nil);
     
-//    _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
-//    _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-//    _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
+    _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
+    _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+    _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
     
     
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];        
@@ -173,11 +173,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {        
     if (_selectedIndex == SEGMENT_INDEX_SERVER)
-    {
-        NSLog(@"flag 1");
-        
         return 1;
-    }
     
     return [SongCatalog availableCatalog].indexMap.count;
 }
@@ -186,10 +182,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (_selectedIndex == SEGMENT_INDEX_SERVER)
-    {
-        NSLog(@"flag 2");
         return 0;
-    }
     
     NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
     if (nbRows == 0)
@@ -202,10 +195,7 @@
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (_selectedIndex == SEGMENT_INDEX_SERVER)
-    {
-        NSLog(@"flag 3");
         return nil;
-    }
     
 
     NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
@@ -233,8 +223,6 @@
 {
     if (_selectedIndex == SEGMENT_INDEX_SERVER)
     {
-        NSLog(@"flag 4");
-        
         if (self.searchedSongs == nil)
             return 0;
         
@@ -296,7 +284,6 @@
 {
     if (_selectedIndex == SEGMENT_INDEX_SERVER)
     {
-        NSLog(@"flag 5");
         return 0;
     }
     
@@ -334,8 +321,6 @@
     
     if (_selectedIndex == SEGMENT_INDEX_SERVER)
     {
-        NSLog(@"flag 6");
-        
         YasoundSong* song = [self.searchedSongs objectAtIndex:indexPath.row];
      
         cell.textLabel.textColor = [UIColor whiteColor];
@@ -397,8 +382,6 @@
     
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_SERVER)
     {
-        NSLog(@"flag 7");
-
         YasoundSong* song = [self.searchedSongs objectAtIndex:indexPath.row];
         
         [ActivityAlertView showWithTitle:nil];
@@ -553,7 +536,7 @@
 - (void)didReceiveSongs:(NSArray*)songs info:(NSDictionary*)info
 {
     self.searchedSongs = songs;
-    [_tableView reloadData];
+    [_searchController.searchResultsTableView reloadData];
     
     [ActivityAlertView close];
 }

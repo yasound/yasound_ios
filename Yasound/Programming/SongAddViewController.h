@@ -21,12 +21,14 @@
     
     IBOutlet UISearchBar* _searchBar;
     NSInteger _selectedIndex;
+    IBOutlet UISearchDisplayController* _searchController;
     
     
 }
 
 @property (nonatomic, retain) NSMutableArray* searchedSongs;
 @property (nonatomic, retain) NSString* subtitle;
+
 //@property (nonatomic, retain) NSMutableArray* localSongs;
 //@property (nonatomic, retain) NSArray* remoteSongs;
 //
