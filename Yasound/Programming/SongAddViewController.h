@@ -17,6 +17,7 @@
     IBOutlet UITableView* _tableView;
     IBOutlet UIView* _searchView;
     IBOutlet UIToolbar* _navBar;
+    IBOutlet UIToolbar* _toolbar;
     
     IBOutlet UIView* _itunesConnectView;
     IBOutlet UILabel* _itunesConnectLabel;

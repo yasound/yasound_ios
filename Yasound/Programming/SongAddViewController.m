@@ -134,6 +134,9 @@
         [_tableView removeFromSuperview];
         NSString* str = NSLocalizedString(@"PlaylistsView_empty_message", nil);
         _itunesConnectLabel.text = str;
+        
+        _itunesConnectView.frame = CGRectMake(_itunesConnectView.frame.origin.x, 44, _itunesConnectView.frame.size.width, _itunesConnectView.frame.size.height);
+        
         [self.view addSubview:_itunesConnectView];
         
         // IB, sometimes, is, huh.....
@@ -142,6 +145,7 @@
         [self.view bringSubviewToFront:_navBar];
         [self.view bringSubviewToFront:_titleLabel];
         [self.view bringSubviewToFront:_subtitleLabel];
+        [self.view bringSubviewToFront:_toolbar];
 
         return;
         
@@ -528,7 +532,16 @@
         {
             [_searchView removeFromSuperview];
             if ([SongCatalog availableCatalog].nbSongs == 0)
+            {
+                _itunesConnectView.frame = CGRectMake(_itunesConnectView.frame.origin.x, 44, _itunesConnectView.frame.size.width, _itunesConnectView.frame.size.height);
+
                 [self.view addSubview:_itunesConnectView];
+                
+                [self.view bringSubviewToFront:_navBar];
+                [self.view bringSubviewToFront:_titleLabel];
+                [self.view bringSubviewToFront:_subtitleLabel];
+                [self.view bringSubviewToFront:_toolbar];
+            }
             else
                 [self.view addSubview:_tableView];
 
