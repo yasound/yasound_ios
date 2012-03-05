@@ -18,6 +18,7 @@
 #import "RadioSelectionViewController.h"
 #import "ConnectionView.h"
 #import "YasoundAppDelegate.h"
+#import "SongUploadManager.h"
 
 //#define FORCE_ROOTVIEW_RADIOS
 
@@ -182,6 +183,20 @@
         }
         else
             [self launchRadio:radioId];
+      
+      NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
+      if (lastUserID && [lastUserID intValue] == [user.id intValue])
+      {
+        // restart song uploads not completed on last application shutdown
+        [[SongUploadManager main] restartUploads];
+      }
+      else
+      {
+        [[SongUploadManager main] clearStoredUpdloads];
+      }
+      
+      [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:@"LastConnectedUserID"];
+      [[NSUserDefaults standardUserDefaults] synchronize];
     }
     else
     {

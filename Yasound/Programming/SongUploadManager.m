@@ -87,7 +87,7 @@
 
 
 
-
+#define SONG_UPLOADS_DEFAULTS_ENTRY_NAME @"SongUploads"
 
 
 
@@ -123,6 +123,101 @@ static SongUploadManager* _main;
 }
 
 
+// get the list of song upload info stored in user defaults
+- (NSArray*)storedSongsToUpload
+{
+  NSMutableArray* storedUploads = [[NSUserDefaults standardUserDefaults] objectForKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
+  if (!storedUploads)
+    return nil;
+  
+  NSMutableArray* songs = [NSMutableArray arrayWithCapacity:storedUploads.count];
+  
+  for (NSDictionary* songInfo in storedUploads) 
+  {
+    NSString* storedName = [songInfo valueForKey:@"name"];
+    NSString* storedArtist = [songInfo valueForKey:@"artist"];
+    NSString* storedAlbum = [songInfo valueForKey:@"album"];
+    Song* s = [[Song alloc] init];
+    s.name = storedName;
+    s.artist = storedArtist;
+    s.album = storedAlbum;
+    [s setUploading:YES];
+    
+    [songs addObject:s];
+  }
+  return songs;
+}
+
+// store song upload info in user defaults
+- (void)storeUpload:(Song*)song
+{
+  NSArray* storedUploads = [[NSUserDefaults standardUserDefaults] objectForKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
+  NSMutableArray* newUploads = nil;
+  if (!storedUploads)
+    newUploads = [NSMutableArray array];
+  else
+    newUploads = [NSMutableArray arrayWithArray:storedUploads];
+  
+  NSMutableDictionary* songInfo = [NSMutableDictionary dictionary];
+  [songInfo setValue:song.name forKey:@"name"];
+  [songInfo setValue:song.artist forKey:@"artist"];
+  [songInfo setValue:song.album forKey:@"album"];
+  [newUploads addObject:songInfo];
+  
+  [[NSUserDefaults standardUserDefaults] setObject:newUploads forKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
+  [[NSUserDefaults standardUserDefaults] synchronize];        
+}
+
+// remove song upload info from user defaults
+- (void)releaseUpload:(Song*)song
+{
+  NSArray* storedUploads = [[NSUserDefaults standardUserDefaults] objectForKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
+  if (!storedUploads)
+    return;
+  
+  NSDictionary* toremove = nil;
+  for (NSDictionary* songInfo in storedUploads) 
+  {
+    NSString* storedName = [songInfo valueForKey:@"name"];
+    NSString* storedArtist = [songInfo valueForKey:@"artist"];
+    NSString* storedAlbum = [songInfo valueForKey:@"album"];
+    if ([song.name isEqualToString:storedName] && [song.artist isEqualToString:storedArtist] && [song.album isEqualToString:storedAlbum])
+    {
+      toremove = songInfo;
+      break;
+    }
+  }
+  
+  NSMutableArray* uploads = [NSMutableArray arrayWithArray:storedUploads];
+  if (toremove)
+    [uploads removeObject:toremove];
+  
+  [[NSUserDefaults standardUserDefaults] setObject:uploads forKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)restartUploads
+{
+  // get song info of all non-completed uploads from previous application session
+  NSArray* storedSongs = [self storedSongsToUpload];
+  
+  [self clearStoredUpdloads];
+  
+  if (storedSongs)
+  {
+    for (Song* s  in storedSongs) 
+    {
+      [self addAndUploadSong:s];
+    }
+  }
+}
+
+- (void)clearStoredUpdloads
+{
+  [[NSUserDefaults standardUserDefaults] removeObjectForKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 
 - (void)addAndUploadSong:(Song*)song
 {
@@ -131,6 +226,8 @@ static SongUploadManager* _main;
     
     if (!_uploading)
         [self loop];
+  
+  [self storeUpload:song]; // store song upload in user defaults in order to resume it if the application exits before completion
 }
 
 
@@ -145,6 +242,9 @@ static SongUploadManager* _main;
 
 - (void)onNotification:(NSNotification *)notification
 {
+  SongUploadItem* finishedItem = [self.items objectAtIndex:_index];
+  [self releaseUpload:finishedItem.song]; // remove song upload entry stored in user defaults
+  
     // move to the next item
     _index++;
     

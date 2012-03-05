@@ -250,9 +250,9 @@
     {
         cell.textLabel.text = NSLocalizedString(@"SongView_frequency", nil);
 
-        if (self.song.frequency == eSongFrequencyTypeNormal)
+        if ([self.song frequencyType] == eSongFrequencyTypeNormal)
             _switchFrequency.on = NO;
-        else if (self.song.frequency == eSongFrequencyTypeHigh)
+        else if ([self.song frequencyType] == eSongFrequencyTypeHigh)
             _switchFrequency.on = YES;
         else 
         {
@@ -333,6 +333,15 @@
     [self.song enableSong:enabled];
     
     [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
+}
+
+- (void)onSwitchFrequency:(id)sender
+{
+  BOOL highFreq = _switchFrequency.on;
+  SongFrequencyType freq = highFreq ? eSongFrequencyTypeHigh : eSongFrequencyTypeNormal;
+  [self.song setFrequencyType:freq];
+  
+  [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
 }
 
 

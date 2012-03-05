@@ -102,7 +102,6 @@ void SignalHandler(int sig) {
   // Push Notifications:
 //  NSLog(@"Ask for push notification\n");
 //  [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
-
   
   return YES;
 }
