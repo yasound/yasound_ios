@@ -44,6 +44,8 @@
 - (void)buildAvailableComparingToSource:(NSDictionary*)synchronizedSource;
 
 
+- (void)insertAndSortSong:(Song*)song;
+
 
 - (BOOL)selectArtistInSection:(NSInteger)section atRow:(NSInteger)row;
 - (BOOL)selectAlbumAtRow:(NSInteger)row;

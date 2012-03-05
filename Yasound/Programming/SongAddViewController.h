@@ -16,6 +16,7 @@
     IBOutlet UISegmentedControl* _segment;
     IBOutlet UITableView* _tableView;
     IBOutlet UIView* _searchView;
+    IBOutlet UIToolbar* _navBar;
     
     IBOutlet UIView* _itunesConnectView;
     IBOutlet UILabel* _itunesConnectLabel;

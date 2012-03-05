@@ -18,6 +18,7 @@
 #import "Theme.h"
 #import "ProgrammingArtistViewController.h"
 #import "YasoundDataProvider.h"
+#import "RootViewController.h"
 
 #define BORDER 8
 
@@ -134,6 +135,11 @@
         
         // IB, sometimes, is, huh.....
         [_itunesConnectView addSubview:_itunesConnectLabel];
+        
+        [self.view bringSubviewToFront:_navBar];
+        [self.view bringSubviewToFront:_titleLabel];
+        [self.view bringSubviewToFront:_subtitleLabel];
+
         return;
         
     }
@@ -438,7 +444,7 @@
 
 
 
-- (void)songAdded:(YasoundSong*)song info:(NSDictionary*)info
+- (void)songAdded:(Song*)song info:(NSDictionary*)info
 {
     [ActivityAlertView close];
 
@@ -466,10 +472,18 @@
     {
         [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedOk", nil) closeAfterTimeInterval:2];
     
-        // and flag the current song as "uploading song"    UITableView* tableView = _searchController.searchResultsTableView;
-        NSIndexPath* indexPath = [_tableView indexPathForSelectedRow];
+        // add the song to the catalog of synchronized catalog (we dont want to re-generate it entirely)
+        [[SongCatalog synchronizedCatalog] insertAndSortSong:song];
+        
+        // and let the views know about it
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+        
+        //  flag the current song as "uploading song"    
+        NSIndexPath* indexPath = [_searchController.searchResultsTableView indexPathForSelectedRow];
+        
+        // have a flag "synchronized" instead of using "uploading"
         song.uploading = YES;
-        UITableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
+        UITableViewCell* cell = [_searchController.searchResultsTableView cellForRowAtIndexPath:indexPath];
         [cell setNeedsLayout];
     }
 }
