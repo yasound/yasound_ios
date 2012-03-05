@@ -195,7 +195,23 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     for (Song* song in songs)
     {
-        [self insertAndSortSong:song];
+        // be aware of empty artist names, and empty album names
+        NSString* artistKey = song.artist;
+        if ((artistKey == nil) || (artistKey.length == 0))
+        {
+            artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
+            NSLog(@"empty artist found!");
+        }
+        NSString* albumKey = song.album;
+        if ((albumKey == nil) || (albumKey.length == 0))
+        {
+            artistKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+            NSLog(@"empty album found!");
+        }
+        
+        
+        [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
+        self.nbSongs++;    
     }
     
     [self finalizeCatalog];
@@ -323,6 +339,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
     self.nbSongs++;    
+    
+    [self finalizeCatalog];
 }
 
 
@@ -424,7 +442,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
             continue;
         
         NSMutableArray* array = [self.alphabeticRepo objectForKey:key];
-        NSMutableArray* sortedArray = [array sortedArrayUsingSelector:@selector(nameCompare:)];
+        NSMutableArray* sortedArray = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(nameCompare:)]];
         [self.alphabeticRepo setObject:sortedArray forKey:key];
     }
     
@@ -436,7 +454,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         NSArray* array = [artistPREORDER allValues];
         
         // alphabetic sort
-        array = [array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+        array = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
         
         [self.alphaArtistsOrder setObject:array forKey:indexKey];
     }
@@ -447,7 +465,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
             continue;
         
         NSMutableArray* array = [self.alphaArtistsOrder objectForKey:key];
-        NSMutableArray* sortedArray = [array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+        NSMutableArray* sortedArray = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
         [self.alphaArtistsOrder setObject:sortedArray forKey:key];
     }
     

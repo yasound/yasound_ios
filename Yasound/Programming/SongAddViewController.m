@@ -19,6 +19,7 @@
 #import "ProgrammingArtistViewController.h"
 #import "YasoundDataProvider.h"
 #import "RootViewController.h"
+#import "SongInfoViewController.h"
 
 #define BORDER 8
 
@@ -402,7 +403,6 @@
         return;
     }
     
-    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 
     
     
@@ -410,25 +410,10 @@
     {
         NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:[[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section]];
         Song* song = [letterRepo objectAtIndex:indexPath.row];
-        
-        BOOL can = [[SongUploader main] canUploadSong:song];
-        if (!can)
-        {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongAddView_cant_add_title", nil) message:NSLocalizedString(@"SongAddView_cant_add_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [av show];
-            [av release];  
-            return;
-        }
-        
-        // add an upload job to the queue
-        [[SongUploadManager main] addAndUploadSong:song];
-        
-        // and flag the current song as "uploading song"
-        song.uploading = YES;
-        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-        [cell setNeedsLayout];
-        
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
+
+        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
     }
     else
     {
@@ -550,6 +535,33 @@
     
 }
 
+
+
+
+- (void)onSongUploadButtonClicked:(id)sender
+{
+//    NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:[[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section]];
+//    Song* song = [letterRepo objectAtIndex:indexPath.row];
+//    
+//    BOOL can = [[SongUploader main] canUploadSong:song];
+//    if (!can)
+//    {
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongAddView_cant_add_title", nil) message:NSLocalizedString(@"SongAddView_cant_add_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [av show];
+//        [av release];  
+//        return;
+//    }
+//    
+//    // add an upload job to the queue
+//    [[SongUploadManager main] addAndUploadSong:song];
+//    
+//    // and flag the current song as "uploading song"
+//    song.uploading = YES;
+//    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+//    [cell setNeedsLayout];
+//    
+//    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
+}
 
 
 
