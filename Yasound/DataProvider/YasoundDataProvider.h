@@ -186,7 +186,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector; // didDeleteSong:(Song*)song info:(NSDictionary*)info
 
 // Get searched songs. Returns a NSArray of YasoundSong objects
-- (void)searchSong:(NSString*)search target:(id)target action:(SEL)selector; // didReceiveSearchedSongs:(NSArray*)songs info:(NSDictionary*)info
+- (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector; // didReceiveSearchedSongs:(NSArray*)songs info:(NSDictionary*)info
 
 - (void)addSong:(YasoundSong*)yasoundSong target:(id)target action:(SEL)selector;  // didReceiveAddedSong:(Song*)addedSong info:(NSDictionary*)info and info contains a dictionary for key 'status' with 2 NSNumber* (boolean) 'success' (true if the request succeeded) and 'created' (true if a song has been added, false if this song was already in the playlist)
 
