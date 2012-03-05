@@ -73,11 +73,13 @@
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
     
-    _searchBar.frame = CGRectMake(0, 44, _searchBar.frame.size.width, _searchBar.frame.size.height);
     _searchBar.placeholder = NSLocalizedString(@"SongAddView_searchServer", nil);
     
+    _searchView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    _searchView.frame = CGRectMake(0, 44, _searchView.frame.size.width, _searchView.frame.size.height);
+    
     _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
+    _searchController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
     
@@ -101,6 +103,8 @@
     [[TimeProfile main] logInterval:@"Local Media Songs parsing"];
 
     NSInteger count = [SongCatalog availableCatalog].nbSongs;
+    
+        
     
     NSLog(@"SongAddViewController : %d songs added to the local array", count);
     
@@ -481,27 +485,35 @@
 
         if (_selectedIndex == SEGMENT_INDEX_SERVER)
         {
-            
-            _tableView.frame = CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y - _searchBar.frame.size.height, _tableView.frame.size.width, _tableView.frame.size.height + _searchBar.frame.size.height);
+            [_searchView removeFromSuperview];
+            if ([SongCatalog availableCatalog].nbSongs == 0)
+                [self.view addSubview:_itunesConnectView];
+            else
+                [self.view addSubview:_tableView];
 
-            [_searchBar removeFromSuperview];
         }
         
         _selectedIndex = index;
 
-        [_tableView reloadData];
+        if ([SongCatalog availableCatalog].nbSongs != 0)
+            [_tableView reloadData];
     }
     
     else if (index == SEGMENT_INDEX_SERVER)
     {
         _subtitleLabel.text = NSLocalizedString(@"SongAddView_addFromServer", nil);
 
-        [self.view addSubview:_searchBar];
-        _tableView.frame = CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y + _searchBar.frame.size.height, _tableView.frame.size.width, _tableView.frame.size.height - _searchBar.frame.size.height);
-
+        if ([SongCatalog availableCatalog].nbSongs == 0)
+            [_itunesConnectView removeFromSuperview];
+        else
+            [_tableView removeFromSuperview];
+        
+        
+        [self.view addSubview:_searchView];
+        
         _selectedIndex = index;
         
-        [_tableView reloadData];
+        [_searchController.searchResultsTableView reloadData];
 
     }
     
