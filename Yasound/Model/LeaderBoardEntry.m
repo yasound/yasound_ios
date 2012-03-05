@@ -11,7 +11,7 @@
 @implementation LeaderBoardEntry
 
 @synthesize name;
-@synthesize favorites;
+@synthesize leaderboard_favorites;
 @synthesize leaderboard_rank;
 @synthesize mine;
 
