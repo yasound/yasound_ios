@@ -485,12 +485,13 @@
     else
     {
         [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedOk", nil) closeAfterTimeInterval:2];
-    
+
         // add the song to the catalog of synchronized catalog (we dont want to re-generate it entirely)
-        [[SongCatalog synchronizedCatalog] insertAndSortSong:song];
+        [[SongCatalog synchronizedCatalog] insertAndSortAndEnableSong:song];
         
         // and let the views know about it
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+
         
         //  flag the current song as "uploading song"    
         NSIndexPath* indexPath = [_searchController.searchResultsTableView indexPathForSelectedRow];

@@ -9,6 +9,8 @@
 #import "SongCatalog.h"
 #import "Song.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "SongUploadManager.h"
+
 
 
 #define PM_FIELD_UNKNOWN @""
@@ -276,27 +278,19 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
             NSString* key = [NSString stringWithFormat:@"%@|%@|%@", song.name, artistKey, albumKey];
             
             
-//            //LBDEBUG
-//            NSLog(@"key %@", key);
-//            
-//            NSString* key1 = [key precomposedStringWithCanonicalMapping];
-//            NSString* key2 = [key precomposedStringWithCompatibilityMapping];
-//            NSString* key3 = [key decomposedStringWithCanonicalMapping];
-//            NSString* key4 = [key decomposedStringWithCompatibilityMapping];
-            
-//            NSLog(@"key1 %@", key1);
-//            NSLog(@"key2 %@", key2);
-//            NSLog(@"key3 %@", key3);
-//            NSLog(@"key4 %@", key4);
-            
             Song* matchedSong = [synchronizedSource objectForKey:key];
             
-//            matchedSong = [synchronizedSource objectForKey:key1];
             
             // don't include it if it's included in the matched songs already
-   //         Song* matchedSong = [synchronizedSource objectForKey:key];
             if (matchedSong != nil)
                 continue;
+            
+            // before putting this song into the catalog,
+            // check if it's not uploading already.
+            Song* uploadingSong = [[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album];
+            if (uploadingSong != nil)
+                [song setUploading:YES];
+
             
             [self sortAndCatalog:song usingArtistKey:artistKey andAlbumKey:albumKey];
             self.nbSongs++;
@@ -320,7 +314,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 //
 
 
-- (void)insertAndSortSong:(Song*)song
+- (void)insertAndSortAndEnableSong:(Song*)song;
 {
     // be aware of empty artist names, and empty album names
     NSString* artistKey = song.artist;
@@ -336,6 +330,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         NSLog(@"empty album found!");
     }
     
+    [song enableSong:YES];
     
     [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
     self.nbSongs++;    
