@@ -18,6 +18,7 @@
 #import "Theme.h"
 #import "ProgrammingArtistViewController.h"
 #import "YasoundDataProvider.h"
+#import "RootViewController.h"
 
 #define BORDER 8
 
@@ -73,11 +74,13 @@
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
     
-    _searchBar.frame = CGRectMake(0, 44, _searchBar.frame.size.width, _searchBar.frame.size.height);
     _searchBar.placeholder = NSLocalizedString(@"SongAddView_searchServer", nil);
     
+    _searchView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    _searchView.frame = CGRectMake(0, 44, _searchView.frame.size.width, _searchView.frame.size.height);
+    
     _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
+    _searchController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
     _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
     
@@ -101,6 +104,8 @@
     [[TimeProfile main] logInterval:@"Local Media Songs parsing"];
 
     NSInteger count = [SongCatalog availableCatalog].nbSongs;
+    
+        
     
     NSLog(@"SongAddViewController : %d songs added to the local array", count);
     
@@ -130,6 +135,11 @@
         
         // IB, sometimes, is, huh.....
         [_itunesConnectView addSubview:_itunesConnectLabel];
+        
+        [self.view bringSubviewToFront:_navBar];
+        [self.view bringSubviewToFront:_titleLabel];
+        [self.view bringSubviewToFront:_subtitleLabel];
+
         return;
         
     }
@@ -378,7 +388,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_SERVER)
     {
@@ -434,7 +444,7 @@
 
 
 
-- (void)songAdded:(YasoundSong*)song info:(NSDictionary*)info
+- (void)songAdded:(Song*)song info:(NSDictionary*)info
 {
     [ActivityAlertView close];
 
@@ -444,13 +454,38 @@
         return;
     }
     
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedOk", nil) closeAfterTimeInterval:2];
+    NSDictionary* status = [info objectForKey:@"status"];
+    NSNumber* successNb = [status objectForKey:@"success"];
+    NSNumber* createdNb = [status objectForKey:@"created"];
+    BOOL success = YES;
+    BOOL created = YES;
+
+    if ((successNb != nil) && (createdNb != nil))
+    {
+        success = [successNb boolValue];
+        created = [createdNb boolValue];
+    }
     
-    // and flag the current song as "uploading song"    UITableView* tableView = _searchController.searchResultsTableView;
-    NSIndexPath* indexPath = [_tableView indexPathForSelectedRow];
-    song.uploading = YES;
-    UITableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
-    [cell setNeedsLayout];
+    if (success && !created)
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedAlready", nil) closeAfterTimeInterval:2];
+    else
+    {
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedOk", nil) closeAfterTimeInterval:2];
+    
+        // add the song to the catalog of synchronized catalog (we dont want to re-generate it entirely)
+        [[SongCatalog synchronizedCatalog] insertAndSortSong:song];
+        
+        // and let the views know about it
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+        
+        //  flag the current song as "uploading song"    
+        NSIndexPath* indexPath = [_searchController.searchResultsTableView indexPathForSelectedRow];
+        
+        // have a flag "synchronized" instead of using "uploading"
+        song.uploading = YES;
+        UITableViewCell* cell = [_searchController.searchResultsTableView cellForRowAtIndexPath:indexPath];
+        [cell setNeedsLayout];
+    }
 }
 
 
@@ -481,27 +516,35 @@
 
         if (_selectedIndex == SEGMENT_INDEX_SERVER)
         {
-            
-            _tableView.frame = CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y - _searchBar.frame.size.height, _tableView.frame.size.width, _tableView.frame.size.height + _searchBar.frame.size.height);
+            [_searchView removeFromSuperview];
+            if ([SongCatalog availableCatalog].nbSongs == 0)
+                [self.view addSubview:_itunesConnectView];
+            else
+                [self.view addSubview:_tableView];
 
-            [_searchBar removeFromSuperview];
         }
         
         _selectedIndex = index;
 
-        [_tableView reloadData];
+        if ([SongCatalog availableCatalog].nbSongs != 0)
+            [_tableView reloadData];
     }
     
     else if (index == SEGMENT_INDEX_SERVER)
     {
         _subtitleLabel.text = NSLocalizedString(@"SongAddView_addFromServer", nil);
 
-        [self.view addSubview:_searchBar];
-        _tableView.frame = CGRectMake(_tableView.frame.origin.x, _tableView.frame.origin.y + _searchBar.frame.size.height, _tableView.frame.size.width, _tableView.frame.size.height - _searchBar.frame.size.height);
-
+        if ([SongCatalog availableCatalog].nbSongs == 0)
+            [_itunesConnectView removeFromSuperview];
+        else
+            [_tableView removeFromSuperview];
+        
+        
+        [self.view addSubview:_searchView];
+        
         _selectedIndex = index;
         
-        [_tableView reloadData];
+        [_searchController.searchResultsTableView reloadData];
 
     }
     

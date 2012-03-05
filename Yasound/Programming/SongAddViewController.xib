@@ -139,6 +139,7 @@
 								<string key="NSFrame">{{52, 8}, {198, 30}}</string>
 								<reference key="NSSuperview" ref="291490842"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -237,7 +238,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="471426321">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIImageView" id="271741906">
@@ -245,6 +246,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{320, 416}</string>
 						<reference key="NSSuperview" ref="471426321"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="555483791"/>
 						<string key="NSReuseIdentifierKey">_NS:567</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -259,6 +261,8 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 5}, {280, 98}}</string>
 						<reference key="NSSuperview" ref="471426321"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -284,6 +288,8 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 416}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="271741906"/>
 				<string key="NSReuseIdentifierKey">_NS:196</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
@@ -293,21 +299,39 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUISearchBar" id="653672769">
+			<object class="IBUIView" id="937143873">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">290</int>
-				<string key="NSFrameSize">{320, 44}</string>
+				<int key="NSvFlags">292</int>
+				<array class="NSMutableArray" key="NSSubviews">
+					<object class="IBUISearchBar" id="1021447850">
+						<reference key="NSNextResponder" ref="937143873"/>
+						<int key="NSvFlags">290</int>
+						<string key="NSFrameSize">{320, 44}</string>
+						<reference key="NSSuperview" ref="937143873"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<int key="IBUIContentMode">3</int>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBBarStyle">1</int>
+						<object class="IBUITextInputTraits" key="IBTextInputTraits">
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						</object>
+					</object>
+				</array>
+				<string key="NSFrameSize">{320, 372}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="1021447850"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<int key="IBUIContentMode">3</int>
-				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-				<int key="IBBarStyle">1</int>
-				<object class="IBUITextInputTraits" key="IBTextInputTraits">
-					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<object class="NSColor" key="IBUIBackgroundColor">
+					<int key="NSColorSpace">3</int>
+					<bytes key="NSWhite">MQA</bytes>
+					<reference key="NSCustomColorSpace" ref="668103183"/>
 				</object>
+				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUISearchDisplayController" id="283521899">
+			<object class="IBUISearchDisplayController" id="677358146">
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</array>
@@ -379,27 +403,43 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_searchView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="937143873"/>
+					</object>
+					<int key="connectionID">68</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">searchDisplayController</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="283521899"/>
+						<reference key="destination" ref="677358146"/>
 					</object>
-					<int key="connectionID">55</int>
+					<int key="connectionID">72</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">_searchBar</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="653672769"/>
+						<reference key="destination" ref="1021447850"/>
 					</object>
-					<int key="connectionID">61</int>
+					<int key="connectionID">78</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">_searchController</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="283521899"/>
+						<reference key="destination" ref="677358146"/>
 					</object>
-					<int key="connectionID">63</int>
+					<int key="connectionID">79</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_navBar</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="346008302"/>
+					</object>
+					<int key="connectionID">80</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -444,50 +484,50 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
-						<reference key="source" ref="653672769"/>
+						<reference key="source" ref="1021447850"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
-					<int key="connectionID">60</int>
+					<int key="connectionID">77</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">searchBar</string>
-						<reference key="source" ref="283521899"/>
-						<reference key="destination" ref="653672769"/>
+						<reference key="source" ref="677358146"/>
+						<reference key="destination" ref="1021447850"/>
 					</object>
-					<int key="connectionID">54</int>
+					<int key="connectionID">71</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">searchContentsController</string>
-						<reference key="source" ref="283521899"/>
+						<reference key="source" ref="677358146"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
-					<int key="connectionID">56</int>
+					<int key="connectionID">73</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">searchResultsDataSource</string>
-						<reference key="source" ref="283521899"/>
+						<reference key="source" ref="677358146"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
-					<int key="connectionID">57</int>
+					<int key="connectionID">74</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">searchResultsDelegate</string>
-						<reference key="source" ref="283521899"/>
+						<reference key="source" ref="677358146"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
-					<int key="connectionID">58</int>
+					<int key="connectionID">75</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">delegate</string>
-						<reference key="source" ref="283521899"/>
+						<reference key="source" ref="677358146"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
-					<int key="connectionID">59</int>
+					<int key="connectionID">76</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -608,13 +648,21 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">52</int>
-						<reference key="object" ref="653672769"/>
+						<int key="objectID">64</int>
+						<reference key="object" ref="937143873"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="1021447850"/>
+						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">53</int>
-						<reference key="object" ref="283521899"/>
+						<int key="objectID">69</int>
+						<reference key="object" ref="1021447850"/>
+						<reference key="parent" ref="937143873"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">70</int>
+						<reference key="object" ref="677358146"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</array>
@@ -636,17 +684,18 @@
 				<string key="32.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="52.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="53.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="64.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="69.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="70.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">63</int>
+			<int key="maxID">80</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -956,8 +1005,10 @@
 						<string key="_backBtn">UIBarButtonItem</string>
 						<string key="_itunesConnectLabel">UILabel</string>
 						<string key="_itunesConnectView">UIView</string>
+						<string key="_navBar">UIToolbar</string>
 						<string key="_searchBar">UISearchBar</string>
 						<string key="_searchController">UISearchDisplayController</string>
+						<string key="_searchView">UIView</string>
 						<string key="_segment">UISegmentedControl</string>
 						<string key="_subtitleLabel">UILabel</string>
 						<string key="_tableView">UITableView</string>
@@ -976,6 +1027,10 @@
 							<string key="name">_itunesConnectView</string>
 							<string key="candidateClassName">UIView</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="_navBar">
+							<string key="name">_navBar</string>
+							<string key="candidateClassName">UIToolbar</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="_searchBar">
 							<string key="name">_searchBar</string>
 							<string key="candidateClassName">UISearchBar</string>
@@ -983,6 +1038,10 @@
 						<object class="IBToOneOutletInfo" key="_searchController">
 							<string key="name">_searchController</string>
 							<string key="candidateClassName">UISearchDisplayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_searchView">
+							<string key="name">_searchView</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_segment">
 							<string key="name">_segment</string>

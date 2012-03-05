@@ -15,6 +15,8 @@
     IBOutlet UILabel* _subtitleLabel;
     IBOutlet UISegmentedControl* _segment;
     IBOutlet UITableView* _tableView;
+    IBOutlet UIView* _searchView;
+    IBOutlet UIToolbar* _navBar;
     
     IBOutlet UIView* _itunesConnectView;
     IBOutlet UILabel* _itunesConnectLabel;
@@ -22,7 +24,6 @@
     IBOutlet UISearchBar* _searchBar;
     NSInteger _selectedIndex;
     IBOutlet UISearchDisplayController* _searchController;
-    
     
 }
 

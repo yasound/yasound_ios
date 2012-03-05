@@ -20,6 +20,7 @@
 #define NOTIF_ERROR_CONNECTION_LOST @"NOTIF_ErrorConnectionLost"
 #define NOTIF_ERROR_CONNECTION_NO @"NOTIF_ErrorConnectionNo"
 
+#define NOTIF_PROGAMMING_SONG_ADDED @"NOTIF_SongAdded"
 
 
 @interface RootViewController : TestflightViewController

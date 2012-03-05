@@ -195,23 +195,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     for (Song* song in songs)
     {
-        // be aware of empty artist names, and empty album names
-        NSString* artistKey = song.artist;
-        if ((artistKey == nil) || (artistKey.length == 0))
-        {
-            artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
-            NSLog(@"empty artist found!");
-        }
-        NSString* albumKey = song.album;
-        if ((albumKey == nil) || (albumKey.length == 0))
-        {
-            artistKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
-            NSLog(@"empty album found!");
-        }
-        
-        
-        [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
-        self.nbSongs++;
+        [self insertAndSortSong:song];
     }
     
     [self finalizeCatalog];
@@ -318,6 +302,28 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 //
 // common building methods for both catalogs
 //
+
+
+- (void)insertAndSortSong:(Song*)song
+{
+    // be aware of empty artist names, and empty album names
+    NSString* artistKey = song.artist;
+    if ((artistKey == nil) || (artistKey.length == 0))
+    {
+        artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
+        NSLog(@"empty artist found!");
+    }
+    NSString* albumKey = song.album;
+    if ((albumKey == nil) || (albumKey.length == 0))
+    {
+        artistKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+        NSLog(@"empty album found!");
+    }
+    
+    
+    [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
+    self.nbSongs++;    
+}
 
 
 

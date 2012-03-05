@@ -18,6 +18,9 @@
 #import "Theme.h"
 #import "SongCatalog.h"
 #import "ProgrammingAlbumViewController.h"
+#import "RootViewController.h"
+
+
 
 @implementation ProgrammingArtistViewController
 
@@ -41,6 +44,7 @@
 - (void)dealloc
 {
     [super dealloc];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -50,6 +54,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    
 
     if (self.catalog == [SongCatalog synchronizedCatalog])
         _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
@@ -208,6 +215,13 @@
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
+
+
+- (void)onNotifSongAdded:(NSNotification*)notif
+{
+    [_tableView reloadData];    
+}
+
 
 
 
