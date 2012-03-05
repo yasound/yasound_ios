@@ -64,6 +64,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:nil];
+
 
     _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
     _subtitleLabel.text = NSLocalizedString(@"SongAddView_subtitle", nil);
@@ -644,6 +648,12 @@
 }
 
 
+
+
+- (void)onNotificationUploadCanceled:(NSNotification*)notif
+{
+    [_tableView reloadData];
+}
 
 
 @end

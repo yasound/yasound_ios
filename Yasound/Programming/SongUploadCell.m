@@ -138,7 +138,7 @@
 
 - (void)onButtonClicked:(id)sender
 {
-    
+    [self.item cancelUpload];
 }
 
 

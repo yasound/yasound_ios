@@ -84,6 +84,21 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 
 
 
++ (NSString*)catalogKeyOfSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album
+{
+    NSString* artistKey = artist;
+    NSString* albumKey = album;
+    
+    if (artistKey == nil)
+        artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
+
+    if (albumKey == nil)
+        albumKey =  NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+    
+    return [NSString stringWithFormat:@"%@|%@|%@", name, artistKey, albumKey];
+}
+
+
 
 
 //...............................................................................................
@@ -275,7 +290,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
             
             
             // create a key for the dictionary 
-            NSString* key = [NSString stringWithFormat:@"%@|%@|%@", song.name, artistKey, albumKey];
+            NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
             
             
             Song* matchedSong = [synchronizedSource objectForKey:key];

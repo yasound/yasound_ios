@@ -40,6 +40,8 @@
 + (SongCatalog*)availableCatalog;
 + (void)releaseAvailableCatalog;
 
++ (NSString*)catalogKeyOfSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album;
+
 - (void)buildSynchronizedWithSource:(NSDictionary*)synchronizedSource;
 - (void)buildAvailableComparingToSource:(NSDictionary*)synchronizedSource;
 

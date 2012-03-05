@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "Song.h"
+#import "YasoundDataProvider.h"
 
 
 @interface SongUploader : NSObject 
 {
   NSString* _tempSongFile;
+    ASIFormDataRequest* _request;
   id _target;
   SEL _selector;
 }
+
 
 + (SongUploader*)main;
 
@@ -26,6 +29,9 @@
 
 - (BOOL)uploadSong:(Song*)song target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
 - (BOOL)canUploadSong:(Song*)song;
+
+
+- (void)cancelSongUpload:(Song*)song;
 
 
 @end

@@ -473,7 +473,7 @@
     [req startAsynchronous];
 }
 
-- (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
+- (ASIFormDataRequest*)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
     NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
     NSLog(@"post data url '%@'", u.absoluteString);
@@ -496,10 +496,12 @@
     [self applyAuth:auth toRequest:req];
     [self fillRequest:req];
     [req startAsynchronous];
+    
+    return req;
 }
 
 
-- (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth withProgress:(id)progressDelegate
+- (ASIFormDataRequest*)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth withProgress:(id)progressDelegate
 {
     NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
     NSLog(@"post data url '%@'", u.absoluteString);
@@ -524,9 +526,11 @@
     [self fillRequest:req];
     [req setUploadProgressDelegate:progressDelegate];
     [req startAsynchronous];
+    
+    return req;
 }
 
-- (void)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth withProgress:(id)progressDelegate withAdditionalJsonData:(NSString*)jsonData
+- (ASIFormDataRequest*)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth withProgress:(id)progressDelegate withAdditionalJsonData:(NSString*)jsonData
 {
     NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
     NSLog(@"post data url '%@'", u.absoluteString);
@@ -551,7 +555,9 @@
     [self applyAuth:auth toRequest:req];
     [self fillRequest:req];
     [req setUploadProgressDelegate:progressDelegate];
-    [req startAsynchronous];  
+    [req startAsynchronous]; 
+    
+    return req;
 }
 
 

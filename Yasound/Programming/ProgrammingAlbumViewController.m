@@ -52,6 +52,7 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:nil];
     
 
     if (self.catalog == [SongCatalog synchronizedCatalog])
@@ -250,6 +251,12 @@
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
     [_tableView reloadData];    
+}
+
+
+- (void)onNotificationUploadCanceled:(NSNotification*)notif
+{
+    [_tableView reloadData];
 }
 
 

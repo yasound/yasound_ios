@@ -1237,7 +1237,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)uploadSong:(NSData*)song 
+- (ASIFormDataRequest*)uploadSong:(NSData*)song 
              title:(NSString*)title
              album:(NSString*)album
              artist:(NSString*)artist
@@ -1257,7 +1257,7 @@ static YasoundDataProvider* _main = nil;
   [jsonObject setObject:artist forKey:@"artist"];   
   NSString* jsonString = jsonObject.JSONRepresentation;
     
-  [_communicator postData:song withKey:@"song" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withProgress:progressDelegate withAdditionalJsonData:jsonString];
+  return [_communicator postData:song withKey:@"song" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withProgress:progressDelegate withAdditionalJsonData:jsonString];
 }
 
 - (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector

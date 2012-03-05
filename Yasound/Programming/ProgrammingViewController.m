@@ -164,23 +164,8 @@
         
         for (Song* song in songs)
         {
-            // be aware of empty artist names, and empty album names
-            NSString* artistKey = song.artist;
-            if ((artistKey == nil) || (artistKey.length == 0))
-            {
-                artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
-                NSLog(@"empty artist found!");
-            }
-            NSString* albumKey = song.album;
-            if ((albumKey == nil) || (albumKey.length == 0))
-            {
-                artistKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
-                NSLog(@"empty album found!");
-            }
-            
-            
             // create a key for the dictionary 
-            NSString* key = [NSString stringWithFormat:@"%@|%@|%@", song.name, artistKey, albumKey];
+            NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
 
             // and store the song in the dictionnary, for later convenient use
             [self.matchedSongs setObject:song forKey:key];

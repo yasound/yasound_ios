@@ -44,6 +44,16 @@
         [self.delegate songUploadDidStart:song];
 }
 
+- (void)cancelUpload
+{
+    [_uploader cancelSongUpload:self.song];
+    
+    [self.song setUploading:NO];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL object:self];
+}
+
+
 - (void)uploadDidFinished:(NSDictionary*)info
 {
     NSNumber* succeeded = [info objectForKey:@"succeeded"];
@@ -56,7 +66,13 @@
     }
     else
     {
+ 
         self.status = SongUploadItemStatusFailed;
+        
+        // ne pas faire ça tout de suite
+        // attendre de voir comment on gère la reprise 'dun upload e´choué
+        // [self.song setUploading:NO];
+
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFAIL object:self];
     }
     
@@ -94,8 +110,8 @@
 @implementation SongUploadManager
 
 @synthesize items = _items;
-@synthesize index = _index;
-
+//@synthesize index = _index;
+@synthesize currentlyUploadingItem = _currentlyUploadingItem;
 
 static SongUploadManager* _main;
 
@@ -114,10 +130,13 @@ static SongUploadManager* _main;
     if (self = [super init])
     {
         _items = [[NSMutableArray alloc] init];
-        _index = 0;
-        _uploading = NO;
+//        _index = 0;
+//        _uploading = NO;
+        _currentlyUploadingItem = nil;
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotification:) name:NOTIF_UPLOAD_DIDFINISH object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationFinish:) name:NOTIF_UPLOAD_DIDFINISH object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationCancel:) name:NOTIF_UPLOAD_DIDCANCEL object:nil];
+        
     }
     return self;
 }
@@ -129,7 +148,7 @@ static SongUploadManager* _main;
     SongUploadItem* item = [[SongUploadItem alloc] initWithSong:song];
     [_items addObject:item];
     
-    if (!_uploading)
+//    if (!_uploading)
         [self loop];
 }
 
@@ -160,23 +179,75 @@ static SongUploadManager* _main;
 
 - (void)loop
 {
-    _uploading = YES;
+//    _uploading = YES;
     
-    SongUploadItem* item = [self.items objectAtIndex:self.index];
-    [item startUpload];
+    // check if an item is currently uploading
+    // if not, start the upload
+    
+    for (SongUploadItem* item in self.items)
+    {
+        if ((item.status == SongUploadItemStatusCompleted) || (item.status == SongUploadItemStatusFailed))
+            continue;
+        
+        // an item is currently uploading. Wait for it to finish before starting another upload.
+        if (item.status == SongUploadItemStatusUploading)
+            return;
+            
+        // start another upload
+        if (item.status == SongUploadItemStatusPending)
+        {
+            [item startUpload];
+            return;
+        }
+    }
 }
 
 
-- (void)onNotification:(NSNotification *)notification
+- (void)onNotificationFinish:(NSNotification *)notification
 {
     // move to the next item
-    _index++;
+//    _index++;
     
-    if (_index < self.items.count)
-        [self loop];
-    else
-        _uploading = NO;
+    [self loop];
+//    else
+//        _uploading = NO;
 }
+
+- (void)onNotificationCancel:(NSNotification *)notification
+{
+    SongUploadItem* item = notification.object;
+    assert(item != nil);
+    
+    BOOL found = NO;
+    NSInteger itemIndex = 0;
+    for (itemIndex = 0; itemIndex < self.items.count; itemIndex++)
+    {
+        SongUploadItem* anItem = [self.items objectAtIndex:itemIndex];
+        
+        if (anItem == item)
+        {
+            found = YES;
+            break;
+        }
+    }
+    
+    assert(found == YES);
+    
+    [self.items removeObjectAtIndex:itemIndex];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:self];
+
+    // move to the next item,
+    // dont need to increment since we deleted the current item
+    //_index++;
+    
+//    if (_index < self.items.count)
+        [self loop];
+//    else
+//        _uploading = NO;
+    
+}
+
 
 
 @end

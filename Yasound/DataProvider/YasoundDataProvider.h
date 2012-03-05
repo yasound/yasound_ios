@@ -170,7 +170,7 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)songsForPlaylist:(NSInteger)playlistId target:(id)target action:(SEL)selector;
 
-- (void)uploadSong:(NSData*)songData 
+- (ASIFormDataRequest*)uploadSong:(NSData*)songData 
              title:(NSString*)title
              album:(NSString*)album
              artist:(NSString*)artist

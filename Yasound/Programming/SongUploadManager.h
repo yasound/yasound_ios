@@ -47,6 +47,8 @@
 
 
 #define NOTIF_UPLOAD_DIDFINISH @"NOTIF_UploadDidFinish"
+#define NOTIF_UPLOAD_DIDCANCEL @"NOTIF_UploadDidCancel"
+#define NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH @"NOTIF_UploadDidCancelNeedGuiRefresh"
 
 #define NOTIF_UPLOAD_DIDSUCCEED @"NOTIF_UploadDidSucceed"
 #define NOTIF_UPLOAD_DIDFAIL @"NOTIF_UploadDidFail"
@@ -86,6 +88,7 @@ typedef enum SongUploadItemStatus
 
 - (id)initWithSong:(Song*)aSong;
 - (void)startUpload;
+- (void)cancelUpload;
 
 @end
 
@@ -96,11 +99,12 @@ typedef enum SongUploadItemStatus
 
 @interface SongUploadManager : NSObject
 {
-    BOOL _uploading;
+//    BOOL _uploading;
 }
 
 @property (atomic, retain, readonly) NSMutableArray* items;
-@property (nonatomic, readonly) NSInteger index;
+@property (atomic, assign, readonly) SongUploadItem* currentlyUploadingItem;
+//@property (nonatomic, readonly) NSInteger index;
 
 + (SongUploadManager*)main;
 

@@ -12,6 +12,7 @@
 #import "TSLibraryImport.h"
 
 #import "YasoundDataProvider.h"
+#import "SongCatalog.h"
 
 @implementation SongUploader
 
@@ -34,7 +35,8 @@ static SongUploader* _main = nil;
   self = [super init];
   if (self) 
   {
-    _tempSongFile = nil;
+      _tempSongFile = nil;
+      _request = nil;
   }
   return self;
 }
@@ -92,6 +94,7 @@ static SongUploader* _main = nil;
   NSError *error;
   NSFileManager *fileMgr = [NSFileManager defaultManager];
   [fileMgr removeItemAtPath:_tempSongFile error:&error];
+    
 
     [_target performSelector:_selector withObject:info];
 }
@@ -155,11 +158,12 @@ static SongUploader* _main = nil;
     import = nil;  
     
     NSData *data = [NSData dataWithContentsOfFile: fullPath];
-    [[YasoundDataProvider main] uploadSong:data 
+    _request = [[YasoundDataProvider main] uploadSong:data 
                                      title:title
                                      album:album
                                     artist:artist 
                                     songId:songId target:self action:@selector(onUploadDidFinish:withInfos:) progressDelegate:progressDelegate];
+        
   }];
   return TRUE;
 }
@@ -190,6 +194,15 @@ static SongUploader* _main = nil;
 - (BOOL)canUploadSong:(Song*)song
 {
     return [self canUploadSong:song.name album:song.album artist:song.artist];
+}
+
+
+
+- (void)cancelSongUpload:(Song*)song
+{
+    assert(_request != nil);
+    
+    [_request clearDelegatesAndCancel];
 }
 
 

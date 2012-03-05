@@ -47,6 +47,10 @@
 {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:nil];
+
+    
+    
     _titleLabel.text = NSLocalizedString(@"SongUpload_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
@@ -257,7 +261,10 @@
 
 
 
-
+- (void)onNotificationUploadCanceled:(NSNotification*)notif
+{
+    [_tableView reloadData];
+}
 
 
 
