@@ -20,7 +20,7 @@
 #import "SongUploader.h"
 #import "SongUploadManager.h"
 #import "RootViewController.h"
-
+#import "SongAddCell.h"
 
 
 
@@ -131,39 +131,62 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    static NSString* CellIdentifier = @"Cell";
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) 
+    if (self.catalog == [SongCatalog availableCatalog])
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        static NSString* CellAddIdentifier = @"CellAdd";
 
-    NSString* charIndex = [self.catalog.indexMap objectAtIndex:indexPath.section];
-    
-    Song* song = [self.catalog getSongAtRow:indexPath.row];
-    
-    if ([song isSongEnabled])
-    {
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+        Song* song = [self.catalog getSongAtRow:indexPath.row];
+        
+        SongAddCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
+        
+        if (cell == nil) 
+        {
+            cell = [[[SongAddCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier song:song] autorelease];
+        }
+        else
+            [cell update:song];        
+        
+        return cell;
     }
-    else 
-    {
-        cell.textLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
-    }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%d. %@", indexPath.row+1, song.name];
+    else
+    {
+        static NSString* CellIdentifier = @"Cell";
 
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) 
+        {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        }
+        
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+        NSString* charIndex = [self.catalog.indexMap objectAtIndex:indexPath.section];
+        
+        Song* song = [self.catalog getSongAtRow:indexPath.row];
+        
+        if ([song isSongEnabled])
+        {
+            cell.textLabel.textColor = [UIColor whiteColor];
+            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+        }
+        else 
+        {
+            cell.textLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
+        }
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%d. %@", indexPath.row+1, song.name];
+
+        return cell;
     
+    }
     
-    return cell;
+    return nil;
 }
 
 
@@ -182,24 +205,9 @@
     }
     else if (self.catalog == [SongCatalog availableCatalog])
     {
-        BOOL can = [[SongUploader main] canUploadSong:song];
-        if (!can)
-        {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongAddView_cant_add_title", nil) message:NSLocalizedString(@"SongAddView_cant_add_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [av show];
-            [av release];  
-            return;
-        }
-        
-        // add an upload job to the queue
-        [[SongUploadManager main] addAndUploadSong:song];
-        
-        // and flag the current song as "uploading song"
-        song.uploading = YES;
-        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-        [cell setNeedsLayout];
-        
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
+        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
     }
 
 }

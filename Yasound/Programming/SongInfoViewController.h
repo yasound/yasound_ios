@@ -8,12 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "Song.h"
+#import "WebImageView.h"
+
+
 
 @interface SongInfoViewController : UIViewController
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
+    
+    WebImageView* _imageView;
+    UILabel* _name;
+    UILabel* _artist;
+    UILabel* _album;
+    UILabel* _enabledLabel;
 
     UISwitch* _switchEnabled;
     UISwitch* _switchFrequency;

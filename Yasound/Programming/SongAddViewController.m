@@ -19,6 +19,9 @@
 #import "ProgrammingArtistViewController.h"
 #import "YasoundDataProvider.h"
 #import "RootViewController.h"
+#import "SongInfoViewController.h"
+#import "SongAddCell.h"
+
 
 #define BORDER 8
 
@@ -131,6 +134,9 @@
         [_tableView removeFromSuperview];
         NSString* str = NSLocalizedString(@"PlaylistsView_empty_message", nil);
         _itunesConnectLabel.text = str;
+        
+        _itunesConnectView.frame = CGRectMake(_itunesConnectView.frame.origin.x, 44, _itunesConnectView.frame.size.width, _itunesConnectView.frame.size.height);
+        
         [self.view addSubview:_itunesConnectView];
         
         // IB, sometimes, is, huh.....
@@ -139,6 +145,7 @@
         [self.view bringSubviewToFront:_navBar];
         [self.view bringSubviewToFront:_titleLabel];
         [self.view bringSubviewToFront:_subtitleLabel];
+        [self.view bringSubviewToFront:_toolbar];
 
         return;
         
@@ -317,20 +324,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    static NSString* CellIdentifier = @"Cell";
-    
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) 
-    {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+
     
     if (_selectedIndex == SEGMENT_INDEX_SERVER)
     {
+        static NSString* CellIdentifier = @"CellServer";
+        
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) 
+        {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        }
+
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        
         YasoundSong* song = [self.searchedSongs objectAtIndex:indexPath.row];
      
         cell.textLabel.textColor = [UIColor whiteColor];
@@ -342,24 +351,44 @@
         return cell;
     }
     
-
-    
-    NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
-    
-    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    else if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
+        static NSString* CellAddIdentifier = @"CellAdd";
+
+        NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
         NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:charIndex];
         Song* song = [letterRepo objectAtIndex:indexPath.row];
         
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
         
-        cell.textLabel.text = song.name;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
+        SongAddCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
         
+        if (cell == nil) 
+        {
+            cell = [[[SongAddCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellAddIdentifier song:song] autorelease];
+        }
+        else
+            [cell update:song];        
+
+        return cell;
     }
     else
     {
+        static NSString* CellIdentifier = @"CellArtist";
+        
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) 
+        {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+
+            cell.textLabel.backgroundColor = [UIColor clearColor];
+            cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+            cell.textLabel.textColor = [UIColor whiteColor];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+
+        
+        NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
         NSArray* artistsForSection = [[SongCatalog availableCatalog].alphaArtistsOrder objectForKey:charIndex];
         
         NSString* artist = [artistsForSection objectAtIndex:indexPath.row];
@@ -369,7 +398,6 @@
         
         NSInteger nbAlbums = artistRepo.count;
         
-        cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.text = artist;
         
         if (nbAlbums == 1)
@@ -378,11 +406,13 @@
             cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_albums_n", nil);
         
         cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
+        
+        return cell;
     }
     
     
     
-    return cell;
+    return nil;
 }
 
 
@@ -402,7 +432,6 @@
         return;
     }
     
-    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 
     
     
@@ -410,25 +439,10 @@
     {
         NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:[[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section]];
         Song* song = [letterRepo objectAtIndex:indexPath.row];
-        
-        BOOL can = [[SongUploader main] canUploadSong:song];
-        if (!can)
-        {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongAddView_cant_add_title", nil) message:NSLocalizedString(@"SongAddView_cant_add_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [av show];
-            [av release];  
-            return;
-        }
-        
-        // add an upload job to the queue
-        [[SongUploadManager main] addAndUploadSong:song];
-        
-        // and flag the current song as "uploading song"
-        song.uploading = YES;
-        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-        [cell setNeedsLayout];
-        
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
+
+        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
     }
     else
     {
@@ -518,7 +532,16 @@
         {
             [_searchView removeFromSuperview];
             if ([SongCatalog availableCatalog].nbSongs == 0)
+            {
+                _itunesConnectView.frame = CGRectMake(_itunesConnectView.frame.origin.x, 44, _itunesConnectView.frame.size.width, _itunesConnectView.frame.size.height);
+
                 [self.view addSubview:_itunesConnectView];
+                
+                [self.view bringSubviewToFront:_navBar];
+                [self.view bringSubviewToFront:_titleLabel];
+                [self.view bringSubviewToFront:_subtitleLabel];
+                [self.view bringSubviewToFront:_toolbar];
+            }
             else
                 [self.view addSubview:_tableView];
 
@@ -549,6 +572,8 @@
     }
     
 }
+
+
 
 
 
