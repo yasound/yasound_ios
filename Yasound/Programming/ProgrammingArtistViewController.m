@@ -20,6 +20,7 @@
 #import "ProgrammingAlbumViewController.h"
 #import "RootViewController.h"
 
+#import "AudioStreamManager.h"
 
 
 @implementation ProgrammingArtistViewController
@@ -65,11 +66,23 @@
 
     _subtitleLabel.text = self.catalog.selectedArtist;
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    
+    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 }
 
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([AudioStreamManager main].currentRadio == nil)
+        [_nowPlayingButton setEnabled:NO];
+    else
+        [_nowPlayingButton setEnabled:YES];
+    
+}
 
 
 
@@ -201,6 +214,12 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+- (IBAction)nowPlayingClicked:(id)sender
+{
+    // call root to launch the Radio
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
+}
 - (IBAction)onSynchronize:(id)semder
 {
     SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];

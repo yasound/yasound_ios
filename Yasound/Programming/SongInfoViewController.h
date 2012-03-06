@@ -17,7 +17,8 @@
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
-    
+    IBOutlet UIBarButtonItem* _nowPlayingButton;
+
     WebImageView* _imageView;
     UILabel* _name;
     UILabel* _artist;

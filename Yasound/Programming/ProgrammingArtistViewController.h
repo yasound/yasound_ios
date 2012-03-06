@@ -12,6 +12,8 @@
 @interface ProgrammingArtistViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 {
     IBOutlet UIBarButtonItem* _backBtn;
+    IBOutlet UIBarButtonItem* _nowPlayingButton;
+
     IBOutlet UILabel* _titleLabel;
     IBOutlet UILabel* _subtitleLabel;
     IBOutlet UIToolbar* _toolbar;

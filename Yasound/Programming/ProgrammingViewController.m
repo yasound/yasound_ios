@@ -19,7 +19,7 @@
 #import "SongCatalog.h"
 #import "ProgrammingArtistViewController.h"
 #import "RootViewController.h"
-
+#import "AudioStreamManager.h"
 
 
 @implementation ProgrammingViewController
@@ -70,7 +70,8 @@
     _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
     _subtitleLabel.text = NSLocalizedString(@"ProgrammingView_subtitle", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    
+    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+
     [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_titles", nil) forSegmentAtIndex:0];  
     [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_artists", nil) forSegmentAtIndex:1];  
     [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
@@ -95,6 +96,17 @@
 
 
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([AudioStreamManager main].currentRadio == nil)
+        [_nowPlayingButton setEnabled:NO];
+    else
+        [_nowPlayingButton setEnabled:YES];
+
+}
+
 
 
 - (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
@@ -103,11 +115,6 @@
         _nbPlaylists = 0;
     else
         _nbPlaylists = playlists.count;
-    
-    
-    //LBDEBUG TEST DEBUG
-    playlists = nil;
-    _nbPlaylists = 0;
     
     
     NSLog(@"received %d playlists", _nbPlaylists);
@@ -482,6 +489,13 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)nowPlayingClicked:(id)sender
+{
+    // call root to launch the Radio
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
+}
+
 
 - (IBAction)onSynchronize:(id)semder
 {

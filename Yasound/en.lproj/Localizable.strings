@@ -163,9 +163,9 @@
 
 "ProgrammingView_title" = "Programming";
 "ProgrammingView_subtitle" = "synchronization...";
-"ProgrammingView_subtitled_count_0" = "no synchronized song";
-"ProgrammingView_subtitled_count_1" = "1 synchronized song";
-"ProgrammingView_subtitled_count_n" = "%d synchronized songs";
+"ProgrammingView_subtitled_count_0" = "no song";
+"ProgrammingView_subtitled_count_1" = "1 song";
+"ProgrammingView_subtitled_count_n" = "%d songs";
 "ProgrammingView_error_title" = "Synchronization";
 "ProgrammingView_error_message" = "An error happened during the synchronization.";
 "ProgrammingView_error_no_playlist_message" = "An error happened: no playlist has been downloaded.";

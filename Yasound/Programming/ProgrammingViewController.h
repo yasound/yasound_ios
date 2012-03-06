@@ -15,6 +15,8 @@
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UIBarButtonItem* _addBtn;
     IBOutlet UIBarButtonItem* _synchroBtn;
+    IBOutlet UIBarButtonItem* _nowPlayingButton;
+    
     IBOutlet UILabel* _titleLabel;
     IBOutlet UILabel* _subtitleLabel;
     IBOutlet UIToolbar* _toolbar;
