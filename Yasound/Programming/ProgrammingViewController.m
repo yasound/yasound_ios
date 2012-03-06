@@ -99,7 +99,16 @@
 
 - (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
 {
-    _nbPlaylists = playlists.count;
+    if (playlists == nil)
+        _nbPlaylists = 0;
+    else
+        _nbPlaylists = playlists.count;
+    
+    
+    //LBDEBUG TEST DEBUG
+    playlists = nil;
+    _nbPlaylists = 0;
+    
     
     NSLog(@"received %d playlists", _nbPlaylists);
     
@@ -107,7 +116,16 @@
     {
         [ActivityAlertView close];
         
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingView_error_title", nil) message:NSLocalizedString(@"ProgrammingView_error_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        // disable all functions
+        _addBtn.enabled = NO;
+        _segment.enabled = NO;
+        _synchroBtn.enabled = NO;
+        _subtitleLabel.text =  NSLocalizedString(@"ProgrammingView_subtitle_error", nil);
+        
+        
+        // display an error dialog
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingView_error_title", nil) message:NSLocalizedString(@"ProgrammingView_error_no_playlist_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
         [av release];  
         return;

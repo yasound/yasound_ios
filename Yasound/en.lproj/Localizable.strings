@@ -168,6 +168,7 @@
 "ProgrammingView_subtitled_count_n" = "%d synchronized songs";
 "ProgrammingView_error_title" = "Synchronization";
 "ProgrammingView_error_message" = "An error happened during the synchronization.";
+"ProgrammingView_error_no_playlist_message" = "An error happened: no playlist has been downloaded.";
 "ProgrammingView_segment_titles" = "titles";
 "ProgrammingView_segment_artists" = "artists";
 "ProgrammingView_unknownArtist" = "#Unknown artist";
@@ -176,6 +177,7 @@
 "ProgramminView_nb_albums_n" = "%d albums";
 "ProgramminView_nb_songs_1" = "1 song";
 "ProgramminView_nb_songs_n" = "%d songs";
+"ProgrammingView_subtitle_error" = "erreur";
 
 
 "SongView_title" = "Song";

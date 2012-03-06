@@ -109,7 +109,6 @@
 						<string key="NSFrame">{{60, 20}, {204, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -142,7 +141,6 @@
 								<string key="NSFrame">{{52, 8}, {207, 30}}</string>
 								<reference key="NSSuperview" ref="996548257"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:273</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -292,6 +290,22 @@
 						<reference key="destination" ref="147141620"/>
 					</object>
 					<int key="connectionID">33</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_addBtn</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="168688442"/>
+					</object>
+					<int key="connectionID">36</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_synchroBtn</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="526914930"/>
+					</object>
+					<int key="connectionID">37</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -456,7 +470,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">35</int>
+			<int key="maxID">37</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -652,14 +666,20 @@
 					<string key="className">ProgrammingViewController</string>
 					<string key="superclassName">TestflightViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="_addBtn">UIBarButtonItem</string>
 						<string key="_backBtn">UIBarButtonItem</string>
 						<string key="_segment">UISegmentedControl</string>
 						<string key="_subtitleLabel">UILabel</string>
+						<string key="_synchroBtn">UIBarButtonItem</string>
 						<string key="_tableView">UITableView</string>
 						<string key="_titleLabel">UILabel</string>
 						<string key="_toolbar">UIToolbar</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="_addBtn">
+							<string key="name">_addBtn</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="_backBtn">
 							<string key="name">_backBtn</string>
 							<string key="candidateClassName">UIBarButtonItem</string>
@@ -671,6 +691,10 @@
 						<object class="IBToOneOutletInfo" key="_subtitleLabel">
 							<string key="name">_subtitleLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_synchroBtn">
+							<string key="name">_synchroBtn</string>
+							<string key="candidateClassName">UIBarButtonItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_tableView">
 							<string key="name">_tableView</string>

@@ -13,6 +13,8 @@
 @interface ProgrammingViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 {
     IBOutlet UIBarButtonItem* _backBtn;
+    IBOutlet UIBarButtonItem* _addBtn;
+    IBOutlet UIBarButtonItem* _synchroBtn;
     IBOutlet UILabel* _titleLabel;
     IBOutlet UILabel* _subtitleLabel;
     IBOutlet UIToolbar* _toolbar;
