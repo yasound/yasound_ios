@@ -167,51 +167,24 @@ static SongUploadManager* _main;
   return songs;
 }
 
-// store song upload info in user defaults
-- (void)storeUpload:(Song*)song
+// store pending and uploading songs in user defaults in order to restart the uncompleted ones at next login
+- (void)refreshStoredUploads
 {
-  NSArray* storedUploads = [[NSUserDefaults standardUserDefaults] objectForKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
-  NSMutableArray* newUploads = nil;
-  if (!storedUploads)
-    newUploads = [NSMutableArray array];
-  else
-    newUploads = [NSMutableArray arrayWithArray:storedUploads];
-  
-  NSMutableDictionary* songInfo = [NSMutableDictionary dictionary];
-  [songInfo setValue:song.name forKey:@"name"];
-  [songInfo setValue:song.artist forKey:@"artist"];
-  [songInfo setValue:song.album forKey:@"album"];
-  [newUploads addObject:songInfo];
-  
-  [[NSUserDefaults standardUserDefaults] setObject:newUploads forKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
-  [[NSUserDefaults standardUserDefaults] synchronize];        
-}
-
-// remove song upload info from user defaults
-- (void)releaseUpload:(Song*)song
-{
-  NSArray* storedUploads = [[NSUserDefaults standardUserDefaults] objectForKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
-  if (!storedUploads)
-    return;
-  
-  NSDictionary* toremove = nil;
-  for (NSDictionary* songInfo in storedUploads) 
+  NSMutableArray* newUploads = [NSMutableArray array];
+  for (SongUploadItem* item in self.items) 
   {
-    NSString* storedName = [songInfo valueForKey:@"name"];
-    NSString* storedArtist = [songInfo valueForKey:@"artist"];
-    NSString* storedAlbum = [songInfo valueForKey:@"album"];
-    if ([song.name isEqualToString:storedName] && [song.artist isEqualToString:storedArtist] && [song.album isEqualToString:storedAlbum])
+    SongUploadItemStatus status = item.status;
+    if (status == SongUploadItemStatusPending || status == SongUploadItemStatusUploading)
     {
-      toremove = songInfo;
-      break;
+      Song* song = item.song;
+      NSMutableDictionary* songInfo = [NSMutableDictionary dictionary];
+      [songInfo setValue:song.name forKey:@"name"];
+      [songInfo setValue:song.artist forKey:@"artist"];
+      [songInfo setValue:song.album forKey:@"album"];
+      [newUploads addObject:songInfo];
     }
   }
-  
-  NSMutableArray* uploads = [NSMutableArray arrayWithArray:storedUploads];
-  if (toremove)
-    [uploads removeObject:toremove];
-  
-  [[NSUserDefaults standardUserDefaults] setObject:uploads forKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
+  [[NSUserDefaults standardUserDefaults] setObject:newUploads forKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -246,7 +219,7 @@ static SongUploadManager* _main;
 //    if (!_uploading)
         [self loop];
   
-  [self storeUpload:song]; // store song upload in user defaults in order to resume it if the application exits before completion
+  [self refreshStoredUploads]; // store song upload in user defaults in order to resume it if the application exits before completion
 }
 
 
@@ -301,16 +274,15 @@ static SongUploadManager* _main;
 
 
 - (void)onNotificationFinish:(NSNotification *)notification
-{
-  SongUploadItem* finishedItem = [self.items objectAtIndex:_index];
-  [self releaseUpload:finishedItem.song]; // remove song upload entry stored in user defaults
-  
+{  
     // move to the next item
 //    _index++;
     
     [self loop];
 //    else
 //        _uploading = NO;
+  
+  [self refreshStoredUploads];
 }
 
 - (void)onNotificationCancel:(NSNotification *)notification
@@ -346,6 +318,7 @@ static SongUploadManager* _main;
 //    else
 //        _uploading = NO;
     
+  [self refreshStoredUploads];
 }
 
 
