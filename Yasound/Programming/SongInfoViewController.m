@@ -10,7 +10,8 @@
 #import "YasoundDataProvider.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-
+#import "AudioStreamManager.h"
+#import "RootViewController.h"
 
 
 
@@ -48,6 +49,7 @@
 
     _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 }
@@ -69,6 +71,18 @@
 
 
 
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([AudioStreamManager main].currentRadio == nil)
+        [_nowPlayingButton setEnabled:NO];
+    else
+        [_nowPlayingButton setEnabled:YES];
+    
+}
 
 
 
@@ -324,7 +338,11 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
+- (IBAction)nowPlayingClicked:(id)sender
+{
+    // call root to launch the Radio
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
+}
 
 - (void)onSwitchEnabled:(id)sender
 {

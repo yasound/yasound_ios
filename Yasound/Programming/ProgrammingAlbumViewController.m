@@ -21,6 +21,7 @@
 #import "SongUploadManager.h"
 #import "RootViewController.h"
 #import "SongAddCell.h"
+#import "AudioStreamManager.h"
 
 
 
@@ -62,7 +63,8 @@
         
     _subtitleLabel.text = self.catalog.selectedAlbum;
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    
+    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
@@ -73,6 +75,17 @@
     }
 }
 
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([AudioStreamManager main].currentRadio == nil)
+        [_nowPlayingButton setEnabled:NO];
+    else
+        [_nowPlayingButton setEnabled:YES];
+    
+}
 
 
 
@@ -238,6 +251,12 @@
     [view release];
 }
 
+
+- (IBAction)nowPlayingClicked:(id)sender
+{
+    // call root to launch the Radio
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
+}
 
 - (IBAction)onAdd:(id)sender
 {
