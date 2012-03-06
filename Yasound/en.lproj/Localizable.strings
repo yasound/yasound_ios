@@ -145,6 +145,7 @@
 "PlaylistsView_howto" = "Select the playlists you would like to use as your radio content. None of the tracks will be uploaded. We will only send the listing to our servers where there will be analyzed everyday in order to play the integrity of the tracks you have selected.";
 "PlaylistsView_empty_message" = "Warning: there are currently no playlists\navailable on this device. \n You need to select at least one playlist to create your radio. Meanwhile, you can stream radios shared by your community.";
 "PlaylistsView_submit_title" = "updating playlists";
+"PlaylistsView_submit_error_radio" = "Could not get the radio";
 "PlaylistsView_table_header_local_playlists" = "On this device";
 "PlaylistsView_table_header_other_playlists" = "On other devices";
 "PlaylistsView_cell_detail_with_matched" = "%d matched on %d";

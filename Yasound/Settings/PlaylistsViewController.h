@@ -47,11 +47,15 @@ typedef enum {
     SongsViewController *_songsViewController;
     
     UIImage* _checkmarkImage;
+    
+    UIAlertView* _alertMatchedSongs;
+    UIAlertView* _alertSubmitError;
 }
 
 @property (nonatomic) NSInteger nbPlaylistsForChecking;
 @property (nonatomic) NSInteger nbParsedPlaylistsForChecking;
 @property (nonatomic) NSInteger nbMatchedSongs;
+@property (nonatomic, retain) NSData* playlistsDataPackage;
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;
 - (void) refreshView;
