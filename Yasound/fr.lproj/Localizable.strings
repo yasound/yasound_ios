@@ -216,7 +216,7 @@
 
 "SongUpload_warning_title" = "Attention";
 "SongUpload_warning_message" = "Vous vous engagez à ne télécharger vers nos serveurs à destination de diffusion publique sur votre radio uniquement des \
-enregistrements dont vous possédez l'intégralité des droits. En cas d'interview, ou autre  captation sonore, vous certifiez détenir l'autorisation écrite de tous les intervenants.";
+enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'interview, ou autre  captation sonore, vous certifiez détenir l'autorisation écrite de tous les intervenants.";
 "Button_dontShowAgain" = "Ne plus afficher";
 
 "MenuView_section_myradio" = "Ma Radio";

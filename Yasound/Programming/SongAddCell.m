@@ -90,6 +90,7 @@
 }
 
 
+
 - (void)onButtonClicked:(id)sender
 {
     BOOL can = [[SongUploader main] canUploadSong:song];
@@ -104,10 +105,13 @@
     NSNumber* warning = [[NSUserDefaults standardUserDefaults] objectForKey:@"userUploadWarning"];
     if ((warning == nil) || ([warning boolValue] == YES))
     {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongUpload_warning_title", nil) message:NSLocalizedString(@"SongUpload_warning_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil) ];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongUpload_warning_title", nil) message:NSLocalizedString(@"SongUpload_warning_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
         [av show];
         [av release];  
     }
+    else
+    [self requestUpload];
+
 }
 
 
@@ -123,7 +127,12 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
-    // add an upload job to the queue
+    [self requestUpload];
+}
+
+- (void)requestUpload
+{
+   // add an upload job to the queue
     [[SongUploadManager main] addAndUploadSong:song];
     
     // and flag the current song as "uploading song"
