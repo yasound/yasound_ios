@@ -23,21 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-
-        
-//        //LBDEBUG FAKE
-//        for (int i = 0; i < 5; i++)
-//        {
-//            Song* song = [[Song alloc] init];
-//            song.name = @"dsflkjdsf l";
-//            song.album = @"sdfg fghdsflkjdsf l";
-//            song.artist = @"sdfggdfhs dsf l";
-//            [[SongUploadManager main] addAndUploadSong:song];
-//            [song release];
-//        }
-//        //////////////////// 
-
-    
+ 
     
     }
     return self;

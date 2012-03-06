@@ -215,6 +215,11 @@
 "SongUpload_progressCompleted" = "Completed.";
 "SongUpload_progressFailed" = "Failed.";
 
+"SongUpload_warning_title" = "Warning";
+"SongUpload_warning_message" = "You have to own the rights of all the audio files that you upload to our servers to be broadcasted publicly on your radio. In case of an interview, or audio recording, you certify that you already have the written agreements of all the parties.";
+"Button_dontShowAgain" = "Don't show again";
+
+
 "MenuView_section_myradio" = "My Radio";
 "MenuView_section_radios" = "Radios";
 "MenuView_section_me" = "Me";
