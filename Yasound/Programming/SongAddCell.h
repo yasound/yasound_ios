@@ -11,6 +11,9 @@
 
 
 @interface SongAddCell : UITableViewCell
+{
+    UIAlertView* _alertWarning;
+}
 
 @property (nonatomic, assign) Song* song;
 

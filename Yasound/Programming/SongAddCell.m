@@ -105,9 +105,9 @@
     NSNumber* warning = [[NSUserDefaults standardUserDefaults] objectForKey:@"userUploadWarning"];
     if ((warning == nil) || ([warning boolValue] == YES))
     {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongUpload_warning_title", nil) message:NSLocalizedString(@"SongUpload_warning_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
-        [av show];
-        [av release];  
+        _alertWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongUpload_warning_title", nil) message:NSLocalizedString(@"SongUpload_warning_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
+        [_alertWarning show];
+        [_alertWarning release];  
     }
     else
     [self requestUpload];
@@ -121,6 +121,9 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if (alertView != _alertWarning)
+        return;
+    
     if (buttonIndex == 1)
     {
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"userUploadWarning"];
