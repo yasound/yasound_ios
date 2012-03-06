@@ -195,7 +195,7 @@
 
 "SongAddView_title" = "Ajouter un titre";
 "SongAddView_cant_add_title" = "Ajout impossible";
-"SongAddView_cant_add_message" = "Le fichier n'est pas disponible sur l'appareil";
+"SongAddView_cant_add_message" = "Ce fichier n'est pas actuellement sur cet appareil. Récupérez le depuis iCloud avant de réessayer.";
 "SongAddView_alert" = "liste en construction...";
 "SongAddView_added" = "ajouté à la file de téléchargement!";
 "SongAddView_subtitle" = "chargement...";
