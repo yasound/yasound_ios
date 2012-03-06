@@ -25,8 +25,8 @@
 
 
 
-- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
 
-- update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
+- (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
 
 @end
