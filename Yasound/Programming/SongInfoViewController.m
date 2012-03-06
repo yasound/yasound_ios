@@ -181,19 +181,8 @@
         
         else
         {
-            // image cover
-            if (self.song.cover)
-            {        
-                NSURL* url = [[YasoundDataProvider main] urlForPicture:self.song.cover];
-                [_imageView setUrl:url];
-            }
-            else
-            {
-                // fake image
-                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-                [_imageView setImage:[sheet image]];
-            }
-
+          NSURL* url = [[YasoundDataProvider main] urlForSongCover:self.song];
+          [_imageView setUrl:url];
         }
         
         
