@@ -226,11 +226,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
             NSLog(@"empty album found!");
         }
         
-        
-        //LBDEBUG
-        NSLog(@"artistKey '%@'", artistKey);
-        assert(artistKey.length != 0);
-        
         [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
         self.nbSongs++;    
     }
@@ -311,10 +306,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
                 [song setUploading:YES];
 
             
-            //LBDEBUG
-            NSLog(@"artistKey '%@'", artistKey);
-            assert(artistKey.length != 0);
-
             [self sortAndCatalog:song usingArtistKey:artistKey andAlbumKey:albumKey];
             self.nbSongs++;
 
@@ -355,11 +346,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     [song enableSong:YES];
     
-    //LBDEBUG
-    NSLog(@"artistKey '%@'", artistKey);
-    assert(artistKey.length != 0);
-
-    
     [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
     self.nbSongs++;    
     
@@ -381,9 +367,11 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     assert(firstRelevantWord != nil);
     assert(firstRelevantWord.length != 0);
     
-    //LBDEBUG
-    NSLog(@"firstRelevant word %@", firstRelevantWord);
-    NSLog(@"length %d", firstRelevantWord);
+    // just in case of
+    if ((firstRelevantWord == nil) || (firstRelevantWord.length == 0))
+        firstRelevantWord = @"#";
+    
+    
     
     unichar c = [firstRelevantWord characterAtIndex:0];
     
