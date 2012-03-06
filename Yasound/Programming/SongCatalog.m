@@ -227,6 +227,10 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         }
         
         
+        //LBDEBUG
+        NSLog(@"artistKey '%@'", artistKey);
+        assert(artistKey.length != 0);
+        
         [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
         self.nbSongs++;    
     }
@@ -269,7 +273,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
             else
                 song.name = [NSString stringWithString:value];
             
-            if (artistKey == nil)
+            if ((artistKey == nil) || (artistKey.length == 0))
             {
                 artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
                 song.artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
@@ -278,7 +282,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
                 song.artist = [NSString stringWithString:artistKey];
             
             
-            if (albumKey == nil)
+            if ((albumKey == nil) || (albumKey.length == 0))
             {
                 albumKey =  NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
                 song.album = [NSString stringWithString:PM_FIELD_UNKNOWN];
@@ -307,6 +311,10 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
                 [song setUploading:YES];
 
             
+            //LBDEBUG
+            NSLog(@"artistKey '%@'", artistKey);
+            assert(artistKey.length != 0);
+
             [self sortAndCatalog:song usingArtistKey:artistKey andAlbumKey:albumKey];
             self.nbSongs++;
 
@@ -346,6 +354,11 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     }
     
     [song enableSong:YES];
+    
+    //LBDEBUG
+    NSLog(@"artistKey '%@'", artistKey);
+    assert(artistKey.length != 0);
+
     
     [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
     self.nbSongs++;    
