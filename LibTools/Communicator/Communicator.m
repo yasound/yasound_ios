@@ -779,7 +779,11 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-    [self handleResponse:request success:YES];
+  BOOL success = YES;
+  if (request.responseStatusCode / 100 == 4 || request.responseStatusCode / 100 == 5)
+    success = NO;
+  
+  [self handleResponse:request success:success];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request

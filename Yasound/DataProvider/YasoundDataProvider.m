@@ -504,40 +504,7 @@ static YasoundDataProvider* _main = nil;
   {
     [target performSelector:selector withObject:_user withObject:finalInfo];
   }
-  
-  //MatTest
-  [self playlistsForRadio:_radio target:self action:@selector(didReceivePlaylists:info:)];
 }
-
-//MatTest
-- (void)didReceivePlaylists:(NSArray*)playlists info:(NSDictionary*)info
-{
-  if (!playlists)
-    return;
-  if (playlists.count == 0)
-    return;
-  
-  Playlist* p = [playlists objectAtIndex:0];
-  [self matchedSongsForPlaylist:p target:self action:@selector(didReceivematchedSongs:info:)];
-}
-
-- (void)didReceivematchedSongs:(NSArray*)songs info:(NSDictionary*)info
-{
-  if (!songs)
-    return;
-  if (songs.count == 0)
-    return;
-  
-  int i = 0;
-  for (Song* s in songs) 
-  {
-    // NSLog(@"%d %@ - %@ - %@ (%@ - %d)", i, s.artist, s.album, s.name, s.frequency, (int)[s frequencyType]);
-    SongFrequencyType f = [s frequencyType];
-    i++;
-  }
-}
-
-
 
 
 - (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector
