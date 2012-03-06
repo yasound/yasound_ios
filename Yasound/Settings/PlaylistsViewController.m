@@ -31,7 +31,7 @@
 @synthesize nbMatchedSongs;
 @synthesize nbPlaylistsForChecking;
 @synthesize nbParsedPlaylistsForChecking;
-
+@synthesize playlistsDataPackage;
 
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard
@@ -733,16 +733,59 @@
     //LBDEBUG email playlist file
     //  [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
 
-    //LBDEBUG
     Radio* radio = [YasoundDataProvider main].radio;
-    NSLog(@"radio %@", radio.name);
-  [[YasoundDataProvider main] updatePlaylists:data forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
-    //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
-
-    //LBDEBUG
-    //[self onFakeSubmitAction:nil];
+    NSLog(@"Playlists data package has been built.");
     
+    
+    if (radio == nil)
+    {
+        self.playlistsDataPackage = data;
+        
+        [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
+        return;
+    }
+    else
+    {
+        NSLog(@"For radio %@", radio.name);
+        [[YasoundDataProvider main] updatePlaylists:data forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
+    }
 }
+    
+
+
+- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+{
+    if (radio == nil)
+    {
+        [ActivityAlertView close];
+
+        _alertSubmitError = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:NSLocalizedString(@"PlaylistsView_submit_error_radio", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [_alertSubmitError show];
+        [_alertSubmitError release];  
+        return;
+    }
+    else
+    {
+        NSLog(@"For radio %@", radio.name);
+        [[YasoundDataProvider main] updatePlaylists:self.playlistsDataPackage forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
+    }
+}
+
+
+#pragma mark - UIAlertViewDelegate
+    
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView == _alertMatchedSongs)
+    {
+        [self getOut];
+        return;
+    }
+}
+
+    
+    
+    
 
 
 - (void)receiveUpdatePLaylistsResponse:(taskID)task_id error:(NSError*)error
@@ -867,9 +910,9 @@
 
     }
 
-    UIAlertView* av = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [av show];
-    [av release];  
+    _alertMatchedSongs = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [_alertMatchedSongs show];
+    [_alertMatchedSongs release];  
 }
     
 
@@ -877,15 +920,6 @@
 
 
 
-
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    [self getOut];
-}
-    
-    
 
 
 

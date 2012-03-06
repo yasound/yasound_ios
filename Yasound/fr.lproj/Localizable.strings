@@ -145,6 +145,7 @@
 "PlaylistsView_howto" = "Sélectionnez les playlists qui fourniront le contenu de votre radio. Aucun titre ne sera téléchargé. Seule la liste des titres sera envoyée vers nos serveurs et analysée quotidiennement afin d'améliorer la programmation de votre radio.";
 "PlaylistsView_empty_message" = "Attention : il n'y a pas de musique sur votre appareil. Vous devez avoir au moins une playlist pour créer votre radio. En attendant vous pouvez écouter les radios de la communauté.";
 "PlaylistsView_submit_title" = "Mise à jour de la programmation";
+"PlaylistsView_submit_error_radio" = "Erreur de récupération de la radio";
 "PlaylistsView_table_header_local_playlists" = "Sur cet appareil";
 "PlaylistsView_table_header_other_playlists" = "Sur d'autres appareils";
 "PlaylistsView_cell_detail_with_matched" = "%d identifiées sur %d";
