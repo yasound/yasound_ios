@@ -365,6 +365,13 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     // get what u need to sort alphabetically
     NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
     
+    assert(firstRelevantWord != nil);
+    assert(firstRelevantWord.length != 0);
+    
+    //LBDEBUG
+    NSLog(@"firstRelevant word %@", firstRelevantWord);
+    NSLog(@"length %d", firstRelevantWord);
+    
     unichar c = [firstRelevantWord characterAtIndex:0];
     
     // we spread the songs, in a dictionnary, and group them depending on their first letter
@@ -393,6 +400,9 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     
     // now the Artist / Album / Song catalog
+    
+    assert(artistKey.length != 0);
+    
     c = [artistKey characterAtIndex:0];
     NSMutableDictionary* artistsRepo = nil;
     NSMutableDictionary* artistsPREORDER = nil;
