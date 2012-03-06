@@ -38,7 +38,7 @@
 
 #define MESSAGE_SPACING 4
 
-- initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
@@ -121,10 +121,8 @@
 }
 
 
-- update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
+- (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
 {
-    BundleStylesheet* sheet = nil;
-
     assert([ev isTextHeightComputed] == YES);
     CGFloat height = [ev getTextHeight];
     
@@ -137,6 +135,8 @@
     self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, height);
     
     self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, self.separator.frame.size.width, self.separator.frame.size.height);
+  
+  [self.avatar setUrl:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
 }
 
 
