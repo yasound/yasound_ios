@@ -401,6 +401,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     // now the Artist / Album / Song catalog
     
+    // TODO : comprendre pourquoi l'assert se déclenche chez seb
+    
     assert(artistKey.length != 0);
     
     c = [artistKey characterAtIndex:0];
