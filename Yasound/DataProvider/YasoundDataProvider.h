@@ -154,7 +154,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)leaveRadioWall:(Radio*)radio;
 
 - (NSURL*)urlForPicture:(NSString*)picturePath;
-
+- (NSURL*)urlForSongCover:(Song*)song;
 
 - (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 

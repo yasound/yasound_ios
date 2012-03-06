@@ -218,6 +218,19 @@ static YasoundDataProvider* _main = nil;
   return url;
 }
 
+- (NSURL*)urlForSongCover:(Song*)song
+{
+  if (!song || !song.id)
+    return nil;
+  
+  AuthApiKey* a = (AuthApiKey*)self.apiKeyAuth;
+  NSArray* params = a.urlParams;
+  
+  NSString* base = [NSString stringWithFormat:@"api/v1/song_instance/%@/cover/", song.id];
+  NSURL* url = [_communicator urlWithURL:base absolute:NO addTrailingSlash:NO params:params];
+  return url;
+}
+
 - (void)resetUser
 {
   _user = nil;

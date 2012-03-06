@@ -144,20 +144,9 @@
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         
             cell.selectionStyle  = UITableViewCellSelectionStyleNone;
-        
-        
-            // image cover
-            if (self.song.cover)
-            {        
-                NSURL* url = [[YasoundDataProvider main] urlForPicture:self.song.cover];
-                _imageView = [[WebImageView alloc] initWithImageAtURL:url];
-            }
-            else
-            {
-                // fake image
-                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-                 _imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-            }
+      
+          NSURL* url = [[YasoundDataProvider main] urlForSongCover:self.song];
+          _imageView = [[WebImageView alloc] initWithImageAtURL:url];
             
             CGFloat size = COVER_SIZE;
             CGFloat height = (COVER_SIZE + 2*BORDER);
