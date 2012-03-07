@@ -187,6 +187,10 @@
 "SongView_album" = "album";
 "SongView_nbLikes" = "likes";
 "SongView_lastRead" = "last play";
+"SongView_rating" = "rating";
+"SongView_genre" = "genre";
+"SongView_duration" = "duration";
+
 "SongView_frequency" = "activate high frequency";
 "SongView_frequency_normal" = "normal";
 "SongView_frequency_high" = "high";

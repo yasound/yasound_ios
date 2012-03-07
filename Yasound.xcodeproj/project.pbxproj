@@ -1680,6 +1680,26 @@
 		BCF62DE3148394F0001B1908 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
 		BCF62DE4148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		BCF62DE5148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
+		BCFA440C1507A63100A03380 /* SongRatingBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44081507A63100A03380 /* SongRatingBullet.png */; };
+		BCFA440D1507A63100A03380 /* SongRatingBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44081507A63100A03380 /* SongRatingBullet.png */; };
+		BCFA440E1507A63100A03380 /* SongRatingBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44081507A63100A03380 /* SongRatingBullet.png */; };
+		BCFA440F1507A63100A03380 /* SongRatingBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44081507A63100A03380 /* SongRatingBullet.png */; };
+		BCFA44101507A63100A03380 /* SongRatingBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44081507A63100A03380 /* SongRatingBullet.png */; };
+		BCFA44111507A63100A03380 /* SongRatingBullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */; };
+		BCFA44121507A63100A03380 /* SongRatingBullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */; };
+		BCFA44131507A63100A03380 /* SongRatingBullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */; };
+		BCFA44141507A63100A03380 /* SongRatingBullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */; };
+		BCFA44151507A63100A03380 /* SongRatingBullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */; };
+		BCFA44161507A63100A03380 /* SongRatingStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440A1507A63100A03380 /* SongRatingStar.png */; };
+		BCFA44171507A63100A03380 /* SongRatingStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440A1507A63100A03380 /* SongRatingStar.png */; };
+		BCFA44181507A63100A03380 /* SongRatingStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440A1507A63100A03380 /* SongRatingStar.png */; };
+		BCFA44191507A63100A03380 /* SongRatingStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440A1507A63100A03380 /* SongRatingStar.png */; };
+		BCFA441A1507A63100A03380 /* SongRatingStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440A1507A63100A03380 /* SongRatingStar.png */; };
+		BCFA441B1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
+		BCFA441C1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
+		BCFA441D1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
+		BCFA441E1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
+		BCFA441F1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
 		BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BCFECFFE1468439900BA20D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
@@ -2340,6 +2360,10 @@
 		BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSearchViewController.h; path = RadioSelection/RadioSearchViewController.h; sourceTree = "<group>"; };
 		BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSearchViewController.m; path = RadioSelection/RadioSearchViewController.m; sourceTree = "<group>"; };
 		BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSearchViewController.xib; path = RadioSelection/RadioSearchViewController.xib; sourceTree = "<group>"; };
+		BCFA44081507A63100A03380 /* SongRatingBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SongRatingBullet.png; sourceTree = "<group>"; };
+		BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SongRatingBullet@2x.png"; sourceTree = "<group>"; };
+		BCFA440A1507A63100A03380 /* SongRatingStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SongRatingStar.png; sourceTree = "<group>"; };
+		BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SongRatingStar@2x.png"; sourceTree = "<group>"; };
 		BCFECFE41468439900BA20D9 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		BCFECFE51468439900BA20D9 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		BCFECFEB1468439900BA20D9 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
@@ -3517,9 +3541,21 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		BCFA44071507A63100A03380 /* Programming */ = {
+			isa = PBXGroup;
+			children = (
+				BCFA44081507A63100A03380 /* SongRatingBullet.png */,
+				BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */,
+				BCFA440A1507A63100A03380 /* SongRatingStar.png */,
+				BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */,
+			);
+			path = Programming;
+			sourceTree = "<group>";
+		};
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCFA44071507A63100A03380 /* Programming */,
 				BCE751B014EC2DC100056916 /* logo.png */,
 				BCE751B114EC2DC100056916 /* logo@2x.png */,
 				BC82069414F67B8A00FAE05E /* TableViewPlain */,
@@ -4028,6 +4064,10 @@
 				BCD0CBD814FE851900E75CEF /* SongInfoViewController.xib in Resources */,
 				BCDF653615013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
 				BCDF654215013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
+				BCFA44101507A63100A03380 /* SongRatingBullet.png in Resources */,
+				BCFA44151507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
+				BCFA441A1507A63100A03380 /* SongRatingStar.png in Resources */,
+				BCFA441F1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4208,6 +4248,10 @@
 				BCD0CBD514FE851900E75CEF /* SongInfoViewController.xib in Resources */,
 				BCDF653315013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
 				BCDF653F15013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
+				BCFA440D1507A63100A03380 /* SongRatingBullet.png in Resources */,
+				BCFA44121507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
+				BCFA44171507A63100A03380 /* SongRatingStar.png in Resources */,
+				BCFA441C1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4388,6 +4432,10 @@
 				BCD0CBD714FE851900E75CEF /* SongInfoViewController.xib in Resources */,
 				BCDF653515013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
 				BCDF654115013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
+				BCFA440F1507A63100A03380 /* SongRatingBullet.png in Resources */,
+				BCFA44141507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
+				BCFA44191507A63100A03380 /* SongRatingStar.png in Resources */,
+				BCFA441E1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4568,6 +4616,10 @@
 				BCD0CBD414FE851900E75CEF /* SongInfoViewController.xib in Resources */,
 				BCDF653215013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
 				BCDF653E15013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
+				BCFA440C1507A63100A03380 /* SongRatingBullet.png in Resources */,
+				BCFA44111507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
+				BCFA44161507A63100A03380 /* SongRatingStar.png in Resources */,
+				BCFA441B1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4748,6 +4800,10 @@
 				BCD0CBD614FE851900E75CEF /* SongInfoViewController.xib in Resources */,
 				BCDF653415013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
 				BCDF654015013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
+				BCFA440E1507A63100A03380 /* SongRatingBullet.png in Resources */,
+				BCFA44131507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
+				BCFA44181507A63100A03380 /* SongRatingStar.png in Resources */,
+				BCFA441D1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Song.h"
-#import "WebImageView.h"
+#import "SongLocal.h"
 
 
 
@@ -19,18 +18,16 @@
     IBOutlet UITableView* _tableView;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
 
-    WebImageView* _imageView;
+    UIImageView* _imageView;
     UILabel* _name;
     UILabel* _artist;
     UILabel* _album;
 
-    UISwitch* _switchFrequency;
-
 }
 
-@property (nonatomic, retain) Song* song;
+@property (nonatomic, retain) SongLocal* song;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(SongLocal*)aSong;
 
 - (IBAction)onBack:(id)sender;
 

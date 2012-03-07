@@ -22,7 +22,7 @@
 #import "RootViewController.h"
 #import "SongAddCell.h"
 #import "AudioStreamManager.h"
-
+#import "LocalSongInfoViewController.h"
 
 
 @implementation ProgrammingAlbumViewController
@@ -208,18 +208,19 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
-    
-    Song* song = [self.catalog getSongAtRow:indexPath.row];
-    
     if (self.catalog == [SongCatalog synchronizedCatalog])
     {
+        Song* song = [self.catalog getSongAtRow:indexPath.row];
+
         SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }
     else if (self.catalog == [SongCatalog availableCatalog])
     {
-        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
+        SongLocal* songLocal = (SongLocal*)[self.catalog getSongAtRow:indexPath.row];
+
+        LocalSongInfoViewController* view = [[LocalSongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:songLocal];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

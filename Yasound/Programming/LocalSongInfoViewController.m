@@ -21,11 +21,19 @@
 @synthesize song;
 
 
+//@property (nonatomic, retain) NSString* genre;
+//@property (nonatomic) NSTimeInterval playbackDuration; 
+//@property (nonatomic) NSUInteger albumTrackNumber;
+//@property (nonatomic) NSUInteger albumTrackCount;
+//@property (nonatomic, retain) MPMediaItemArtwork* artwork;
+//@property (nonatomic) NSUInteger rating;
+
+
 #define NB_ROWS 4
 #define ROW_COVER 0
-#define ROW_NBLIKES 1
-#define ROW_LAST_READ 2
-#define ROW_FREQUENCY 3
+#define ROW_GENRE 1
+#define ROW_DURATION 2
+#define ROW_RATING 3
 
 #define BORDER 8
 #define COVER_SIZE 96
@@ -33,7 +41,7 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(SongLocal*)aSong
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
@@ -47,7 +55,7 @@
 {
     [super viewDidLoad];
 
-    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
+    _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
@@ -131,73 +139,110 @@
 
 
 
+
+
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     if (indexPath.row == ROW_COVER)
     {
         static NSString* CellIdentifier = @"CellCover";
+        UITableViewCell* cell = nil;
         
-        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
         
-        if (cell == nil) 
-        {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        
-            cell.selectionStyle  = UITableViewCellSelectionStyleNone;
-      
-          NSURL* url = [[YasoundDataProvider main] urlForSongCover:self.song];
-          _imageView = [[WebImageView alloc] initWithImageAtURL:url];
-            
-            CGFloat size = COVER_SIZE;
-            CGFloat height = (COVER_SIZE + 2*BORDER);
-             _imageView.frame = CGRectMake(BORDER, (height - size) / 2.f, size, size);
-            
-            [cell addSubview:_imageView];
-            
-            // name, artist, album
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            _name = [sheet makeLabel];
-            [cell addSubview:_name];
-            
-            sheet = [[Theme theme] stylesheetForKey:@"SongView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            _artist = [sheet makeLabel];
-            [cell addSubview:_artist];
-            
-            sheet = [[Theme theme] stylesheetForKey:@"SongView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            _album = [sheet makeLabel];
-            [cell addSubview:_album];
-            
-//            // enable/disable
-//            sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            _enabledLabel = [sheet makeLabel];
-//            [cell addSubview:_enabledLabel];
-//            
-//            sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_switch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            _switchEnabled = [[UISwitch alloc] init];
-//            _switchEnabled.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, _switchEnabled.frame.size.width, _switchEnabled.frame.size.height);
-//            [cell addSubview:_switchEnabled];
-            
-        }
-        
-        else
-        {
-          NSURL* url = [[YasoundDataProvider main] urlForSongCover:self.song];
-          [_imageView setUrl:url];
-        }
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:16];
         
         
-        _name.text = song.name;
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+
+        cell.selectionStyle  = UITableViewCellSelectionStyleNone;
+
+        _imageView = [[UIImageView alloc] initWithImage:[self.song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)]];
+
+        CGFloat size = COVER_SIZE;
+        CGFloat height = (COVER_SIZE + 2*BORDER);
+        _imageView.frame = CGRectMake(BORDER, (height - size) / 2.f, size, size);
+
+        [cell addSubview:_imageView];
+
+        // name, artist, album
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        _name = [sheet makeLabel];
+        [cell addSubview:_name];
+
+        sheet = [[Theme theme] stylesheetForKey:@"SongView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        _artist = [sheet makeLabel];
+        [cell addSubview:_artist];
+
+        sheet = [[Theme theme] stylesheetForKey:@"SongView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        _album = [sheet makeLabel];
+        [cell addSubview:_album];
+
+
+        _name.text = [NSString stringWithFormat:@"%d. %@", song.albumTrackNumber, song.name];
         _artist.text = song.artist;
         _album.text = song.album;
-//        _enabledLabel.text = NSLocalizedString(@"SongView_enable_label", nil);
-//
-//        _switchEnabled.on = [self.song isSongEnabled];
-//        [_switchEnabled addTarget:self action:@selector(onSwitchEnabled:)  forControlEvents:UIControlEventValueChanged];
 
-        
         return cell;
         
     }
+    
+    
+    
+    
+    if (indexPath.row == ROW_RATING)
+    {
+        static NSString* CellIdentifier = @"CellRating";
+        UITableViewCell* cell = nil;
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.selectionStyle  = UITableViewCellSelectionStyleNone;
+        
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.textLabel.textColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
+        
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:16];
+        
+
+        cell.textLabel.text = NSLocalizedString(@"SongView_rating", nil);
+        
+        UIImage* star = [UIImage imageNamed:@"SongRatingStar.png"];
+        UIImage* bullet = [UIImage imageNamed:@"SongRatingBullet.png"];
+        
+        NSInteger i = 0;
+        CGRect frame = CGRectMake(180, (cell.frame.size.height - star.size.height) /2.f, star.size.width, star.size.height);
+        for (i = 0; i < self.song.rating; i++)
+        {
+            UIImageView* view = [[UIImageView alloc] initWithImage:star];
+            view.frame = frame;
+            [cell addSubview:view];
+            
+            frame = CGRectMake(frame.origin.x + frame.size.width + 8, frame.origin.y, star.size.width, star.size.height);
+        }
+
+        frame = CGRectMake(frame.origin.x, (cell.frame.size.height - bullet.size.height) /2.f, bullet.size.width, bullet.size.height);
+        for (NSInteger j = i; j < 5; j++)
+        {
+            UIImageView* view = [[UIImageView alloc] initWithImage:bullet];
+            view.frame = frame;
+            [cell addSubview:view];
+            
+            frame = CGRectMake(frame.origin.x + star.size.width + 5, frame.origin.y, bullet.size.width, bullet.size.height);
+        }
+        
+        return cell;
+    }
+
+
     
     
     static NSString* CellIdentifier = @"Cell";
@@ -210,15 +255,6 @@
     
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-        if (indexPath.row == ROW_FREQUENCY)
-        {
-            NSString* frequencyStr = nil;
-            
-            _switchFrequency = [[UISwitch alloc] init];
-            _switchFrequency.frame = CGRectMake(cell.frame.size.width - _switchFrequency.frame.size.width - BORDER, (cell.frame.size.height - _switchFrequency.frame.size.height) / 2.f, _switchFrequency.frame.size.width, _switchFrequency.frame.size.height);
-            [cell addSubview:_switchFrequency];
-        }
-        
         cell.textLabel.backgroundColor = [UIColor clearColor];
         cell.textLabel.textColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
@@ -228,31 +264,19 @@
         cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:16];
     }
     
-    if (indexPath.row == ROW_NBLIKES)
+    if (indexPath.row == ROW_GENRE)
     {
-        cell.textLabel.text = NSLocalizedString(@"SongView_nbLikes", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.song.likes];
+        cell.textLabel.text = NSLocalizedString(@"SongView_genre", nil);
+        cell.detailTextLabel.text = self.song.genre;
     }
-    else if (indexPath.row == ROW_LAST_READ)
+    else if (indexPath.row == ROW_DURATION)
     {
-        cell.textLabel.text = NSLocalizedString(@"SongView_lastRead", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self dateToString:self.song.last_play_time]];
-    }
-    else if (indexPath.row == ROW_FREQUENCY)
-    {
-        cell.textLabel.text = NSLocalizedString(@"SongView_frequency", nil);
-
-        if ([self.song frequencyType] == eSongFrequencyTypeNormal)
-            _switchFrequency.on = NO;
-        else if ([self.song frequencyType] == eSongFrequencyTypeHigh)
-            _switchFrequency.on = YES;
-        else 
-        {
-            _switchFrequency.on = NO;
-            _switchFrequency.enabled = NO;
-        }
+        cell.textLabel.text = NSLocalizedString(@"SongView_duration", nil);
         
-        [_switchFrequency addTarget:self action:@selector(onSwitchFrequency:)  forControlEvents:UIControlEventValueChanged];
+        NSInteger min = self.song.playbackDuration / 60;
+        NSInteger sec = ((CGFloat)(self.song.playbackDuration / 60.f) - min) * 100;
+        
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%d:%d", min, sec];
     }
 
 
@@ -271,33 +295,6 @@
 
 
 
-
-
-
-
-- (NSString*) dateToString:(NSDate*)d
-{
-    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-    //  [dateFormat setDateFormat:@"HH:mm"];
-    NSDate* now = [NSDate date];
-    NSDateComponents* todayComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:now];
-    NSDateComponents* refComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:d];
-    
-    if (todayComponents.year == refComponents.year && todayComponents.month == refComponents.month && todayComponents.day == refComponents.day)
-    {
-        // today: show time
-        [dateFormat setDateFormat:@"dd/MM, HH:mm"];
-    }
-    else
-    {
-        // not today: show date
-        [dateFormat setDateFormat:@"dd/MM, HH:mm"];
-    }
-    
-    NSString* s = [dateFormat stringFromDate:d];
-    [dateFormat release];
-    return s;
-}
 
 
 
@@ -322,30 +319,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
 }
 
-- (void)onSwitchEnabled:(id)sender
-{
-//    BOOL enabled = _switchEnabled.on;
-    
-//    [self.song enableSong:enabled];
-    
-    [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
-}
 
-- (void)onSwitchFrequency:(id)sender
-{
-  BOOL highFreq = _switchFrequency.on;
-  SongFrequencyType freq = highFreq ? eSongFrequencyTypeHigh : eSongFrequencyTypeNormal;
-  [self.song setFrequencyType:freq];
-  
-  [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
-}
-
-
-- (void)onSongUpdated:(Song*)song info:(NSDictionary*)info
-{
-    self.song = song;
-    [_tableView reloadData];
-}
 
 
 
