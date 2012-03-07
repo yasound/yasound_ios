@@ -8,6 +8,7 @@
 
 #import "SongCatalog.h"
 #import "Song.h"
+#import "SongLocal.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "SongUploadManager.h"
 
@@ -256,43 +257,9 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         // list all local songs from albums
         for (MPMediaItem* item in collection.items)
         {
-            Song* song = [[Song alloc] init];
+            SongLocal* songLocal = [[SongLocal alloc] initWithMediaItem:item];
             
-            NSString* artistKey = [item valueForProperty:MPMediaItemPropertyArtist];
-            NSString* albumKey = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
-            
-            
-            NSString* value = [item valueForProperty:MPMediaItemPropertyTitle];
-            if (value == nil)
-                song.name = [NSString stringWithString:PM_FIELD_UNKNOWN];
-            else
-                song.name = [NSString stringWithString:value];
-            
-            if ((artistKey == nil) || (artistKey.length == 0))
-            {
-                artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
-                song.artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
-            }
-            else
-                song.artist = [NSString stringWithString:artistKey];
-            
-            
-            if ((albumKey == nil) || (albumKey.length == 0))
-            {
-                albumKey =  NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
-                song.album = [NSString stringWithString:PM_FIELD_UNKNOWN];
-            }
-            else
-                song.album = [NSString stringWithString:albumKey];
-            
-            
-            
-            
-            // create a key for the dictionary 
-            NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
-            
-            
-            Song* matchedSong = [synchronizedSource objectForKey:key];
+            Song* matchedSong = [synchronizedSource objectForKey:songLocal.catalogKey];
             
             
             // don't include it if it's included in the matched songs already
@@ -301,12 +268,13 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
             
             // before putting this song into the catalog,
             // check if it's not uploading already.
-            Song* uploadingSong = [[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album];
+            Song* uploadingSong = [[SongUploadManager main] getUploadingSong:songLocal.name artist:songLocal.artist album:songLocal.album];
             if (uploadingSong != nil)
-                [song setUploading:YES];
+                [songLocal setUploading:YES];
 
+            // REMEMBER THAT HERE, songLocal is SongLocal* 
             
-            [self sortAndCatalog:song usingArtistKey:artistKey andAlbumKey:albumKey];
+            [self sortAndCatalog:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
             self.nbSongs++;
 
         }
