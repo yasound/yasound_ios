@@ -236,7 +236,11 @@
     else if (indexPath.row == ROW_LAST_READ)
     {
         cell.textLabel.text = NSLocalizedString(@"SongView_lastRead", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self dateToString:self.song.last_play_time]];
+        
+        if (self.song.last_play_time != nil)
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self dateToString:self.song.last_play_time]];
+        else
+            cell.detailTextLabel.text = @"-";
     }
     else if (indexPath.row == ROW_FREQUENCY)
     {
