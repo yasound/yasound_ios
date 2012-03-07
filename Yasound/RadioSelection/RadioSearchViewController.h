@@ -11,11 +11,12 @@
 #import "TestflightViewController.h"
 
 
-@interface RadioSearchViewController : TestflightViewController
+@interface RadioSearchViewController : TestflightViewController <UISearchBarDelegate, UISearchDisplayDelegate>
 {
-    IBOutlet UITableView* _tableView;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
     IBOutlet UISearchDisplayController* _searchController;
+  
+  UIColor* _backgroundColor;
 
   NSArray* _radios;
   NSArray* _radiosByCreator;
