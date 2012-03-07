@@ -8,6 +8,7 @@
 
 #import "SongAddViewController.h"
 #import "Song.h"
+#import "SongLocal.h"
 #import "SongUploader.h"
 #import "SongUploadManager.h"
 #import "TimeProfile.h"
@@ -19,7 +20,7 @@
 #import "ProgrammingArtistViewController.h"
 #import "YasoundDataProvider.h"
 #import "RootViewController.h"
-#import "SongInfoViewController.h"
+#import "LocalSongInfoViewController.h"
 #import "SongAddCell.h"
 
 
@@ -442,9 +443,9 @@
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
         NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:[[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section]];
-        Song* song = [letterRepo objectAtIndex:indexPath.row];
+        SongLocal* songLocal = (SongLocal*)[letterRepo objectAtIndex:indexPath.row];
 
-        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
+        LocalSongInfoViewController* view = [[LocalSongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:songLocal];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

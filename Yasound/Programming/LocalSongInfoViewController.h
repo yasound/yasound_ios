@@ -1,0 +1,34 @@
+//
+//  LocalSongInfoViewController.h
+//  Yasound
+//
+//  Created by LOIC BERTHELOT on 29/02/12.
+//  Copyright (c) 2012 Yasound. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "SongLocal.h"
+
+
+
+@interface LocalSongInfoViewController : UIViewController
+{
+    IBOutlet UIBarButtonItem* _backBtn;
+    IBOutlet UILabel* _titleLabel;
+    IBOutlet UITableView* _tableView;
+    IBOutlet UIBarButtonItem* _nowPlayingButton;
+
+    UIImageView* _imageView;
+    UILabel* _name;
+    UILabel* _artist;
+    UILabel* _album;
+
+}
+
+@property (nonatomic, retain) SongLocal* song;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(SongLocal*)aSong;
+
+- (IBAction)onBack:(id)sender;
+
+@end

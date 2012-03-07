@@ -187,6 +187,10 @@
 "SongView_album" = "album";
 "SongView_nbLikes" = "likes";
 "SongView_lastRead" = "last play";
+"SongView_rating" = "rating";
+"SongView_genre" = "genre";
+"SongView_duration" = "duration";
+
 "SongView_frequency" = "activate high frequency";
 "SongView_frequency_normal" = "normal";
 "SongView_frequency_high" = "high";
@@ -220,7 +224,7 @@
 
 "SongUpload_warning_title" = "Warning";
 "SongUpload_warning_message" = "You have to own the rights of all the audio files that you upload to our servers to be broadcasted publicly on your radio. \nIn case of an interview, or audio recording, you certify that you already have the written agreements of all the parties.";
-"Button_dontShowAgain" = "Don't show again";
+"Button_dontShowAgain" = "I agree";
 
 
 "MenuView_section_myradio" = "My Radio";

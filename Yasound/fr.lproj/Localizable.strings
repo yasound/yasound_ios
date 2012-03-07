@@ -187,6 +187,10 @@
 "SongView_album" = "album";
 "SongView_nbLikes" = "likes";
 "SongView_lastRead" = "dernière lecture";
+"SongView_rating" = "classement";
+"SongView_genre" = "genre";
+"SongView_duration" = "durée";
+
 "SongView_frequency" = "haute fréquence de lecture";
 "SongView_frequency_normal" = "normale";
 "SongView_frequency_high" = "haute";
@@ -219,7 +223,7 @@
 "SongUpload_warning_title" = "Attention";
 "SongUpload_warning_message" = "Vous vous engagez à ne télécharger vers nos serveurs à destination de diffusion publique sur votre radio uniquement des \
 enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'interview, ou autre  captation sonore, vous certifiez détenir l'autorisation écrite de tous les intervenants.";
-"Button_dontShowAgain" = "Ne plus afficher";
+"Button_dontShowAgain" = "Je suis d'accord";
 
 "MenuView_section_myradio" = "Ma Radio";
 "MenuView_section_radios" = "Radios";
