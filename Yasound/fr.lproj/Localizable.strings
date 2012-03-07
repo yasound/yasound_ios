@@ -145,13 +145,81 @@
 "PlaylistsView_howto" = "Sélectionnez les playlists qui fourniront le contenu de votre radio. Aucun titre ne sera téléchargé. Seule la liste des titres sera envoyée vers nos serveurs et analysée quotidiennement afin d'améliorer la programmation de votre radio.";
 "PlaylistsView_empty_message" = "Attention : il n'y a pas de musique sur votre appareil. Vous devez avoir au moins une playlist pour créer votre radio. En attendant vous pouvez écouter les radios de la communauté.";
 "PlaylistsView_submit_title" = "Mise à jour de la programmation";
+"PlaylistsView_submit_error_radio" = "Erreur de récupération de la radio";
 "PlaylistsView_table_header_local_playlists" = "Sur cet appareil";
 "PlaylistsView_table_header_other_playlists" = "Sur d'autres appareils";
 "PlaylistsView_cell_detail_with_matched" = "%d identifiées sur %d";
 "PlaylistsView_cell_detail" = "%d titres";
+
+"PlaylistsView_matchedSongsTitle_zero" = "Attention";
+"PlaylistsView_matchedSongsMessage_zero" = "Aucun morceau n'a pu être automatiquement synchronisé avec le serveur. Votre radio ne contient pas de musique mais vous pourrez télécharger manuellement vos morceaux sur le serveur, en utilisant la fonction Programmation du menu.";
+"PlaylistsView_matchedSongsTitle_ok" = "Synchronisation";
+"PlaylistsView_matchedSongsMessage_ok_1" = "1 morceau a été synchronisé avec votre radio. Vous pourrez utiliser la fonction Programmation du menu pour télécharger manuellement d'autres morceaux.";
+"PlaylistsView_matchedSongsMessage_ok_n" = "%d morceaux ont été automatiquement synchronisés avec votre radio. Vous pourrez gérer le contenu de votre radio avec la fonction Programmation du menu, et télécharger manuellement d'autres morceaux.";
+
+
+
 "LegalView_title" = "Conditions d'utilisation";
 
 "PlaylistsViewController_FetchingPlaylists" = "Synchronisation des listes de chansons";
+
+"ProgrammingView_title" = "Programmation";
+"ProgrammingView_subtitle" = "synchronisation...";
+"ProgrammingView_subtitled_count_0" = "aucun morceau";
+"ProgrammingView_subtitled_count_1" = "1 morceau";
+"ProgrammingView_subtitled_count_n" = "%d morceaux";
+"ProgrammingView_error_title" = "Synchronisation";
+"ProgrammingView_error_message" = "une erreur est survenue pendant la synchronisation.";
+"ProgrammingView_error_no_playlist_message" = "une erreur est survenue : aucune playlist n'a été détectée.";
+"ProgrammingView_segment_titles" = "titres";
+"ProgrammingView_segment_artists" = "artistes";
+"ProgrammingView_unknownArtist" = "#Artist inconnu";
+"ProgrammingView_unknownAlbum" = "Album inconnu";
+"ProgramminView_nb_albums_1" = "1 album";
+"ProgramminView_nb_albums_n" = "%d albums";
+"ProgramminView_nb_songs_1" = "1 song";
+"ProgramminView_nb_songs_n" = "%d songs";
+"ProgrammingView_subtitle_error" = "erreur";
+
+"SongView_title" = "Song";
+"SongView_name" = "titre";
+"SongView_artist" = "artiste";
+"SongView_album" = "album";
+"SongView_nbLikes" = "likes";
+"SongView_lastRead" = "dernière lecture";
+"SongView_frequency" = "haute fréquence de lecture";
+"SongView_frequency_normal" = "normale";
+"SongView_frequency_high" = "haute";
+"SongView_frequency_none" = "-";
+"SongView_enable_label" = "activer le morceau";
+
+"SongAddView_title" = "Ajouter un titre";
+"SongAddView_cant_add_title" = "Ajout impossible";
+"SongAddView_cant_add_message" = "Ce fichier n'est pas actuellement sur cet appareil. Récupérez le depuis iCloud avant de réessayer.";
+"SongAddView_alert" = "liste en construction...";
+"SongAddView_added" = "ajouté à la file de téléchargement!";
+"SongAddView_subtitle" = "chargement...";
+"SongAddView_subtitled_count_0" = "pas de morceau disponible";
+"SongAddView_subtitled_count_1" = "1 morceau disponible";
+"SongAddView_subtitled_count_n" = "%d morceaux disponibles";
+"SongAddView_segment_titles" = "titres";
+"SongAddView_segment_artists" = "artistes";
+"SongAddView_segment_server" = "serveur";
+"SongAddView_searchServer" = "Rechercher un titre sur le serveur";
+"SongAddView_addFromServer" = "Ajout depuis le serveur";
+"SongAddView_requestServer" = "Recherche des morceaux";
+"SongAddView_addedError" = "Impossible d'ajouter le morceau.";
+"SongAddView_addedOk" = "Le morceau a été ajouté à votre programmation!";
+"SongAddView_addedAlready" = "Le morceau est déjà présent dans votre programmation!";
+
+"SongUpload_title" = "Téléchargement";
+"SongUpload_progressCompleted" = "Terminé.";
+"SongUpload_progressFailed" = "Echec.";
+
+"SongUpload_warning_title" = "Attention";
+"SongUpload_warning_message" = "Vous vous engagez à ne télécharger vers nos serveurs à destination de diffusion publique sur votre radio uniquement des \
+enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'interview, ou autre  captation sonore, vous certifiez détenir l'autorisation écrite de tous les intervenants.";
+"Button_dontShowAgain" = "Ne plus afficher";
 
 "MenuView_section_myradio" = "Ma Radio";
 "MenuView_section_radios" = "Radios";
@@ -169,6 +237,7 @@
 "MenuView_radios_search" = "Recherche";
 "MenuView_me_stats" = "Mes statistiques";
 "MenuView_me_playlists" = "Ma programmation";
+"MenuView_me_programming" = "Ma programmation";
 "MenuView_me_config" = "Paramètres";
 "MenuView_misc_legal" = "Conditions d'utilisation";
 "MenuView_misc_logout" = "Se déconnecter";
@@ -292,5 +361,9 @@
 
 "UserTableViewCell_ListeningTo" = "écoute";
 "UserTableViewCell_Radio" = "radio:";
+
+"RadioSearch_CategoryRadioAttributes_SectionTitle" = "radio infos";
+"RadioSearch_CategoryRadioCreator_SectionTitle" = "créateur";
+"RadioSearch_CategoryRadioSong_SectionTitle" = "titre, artiste, album";
 
 

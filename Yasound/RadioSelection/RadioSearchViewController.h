@@ -17,7 +17,11 @@
     IBOutlet UIBarButtonItem* _nowPlayingButton;
     IBOutlet UISearchDisplayController* _searchController;
 
-    NSArray* _radios;
+  NSArray* _radios;
+  NSArray* _radiosByCreator;
+  NSArray* _radiosBySong;
+  
+  BOOL _viewVisible;
 }
 
 

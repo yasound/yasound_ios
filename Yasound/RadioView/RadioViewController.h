@@ -19,9 +19,6 @@
 
 @interface RadioViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 {
-    NSDate* _BEGIN;
-    NSDate* _END;
-    
     BOOL _updatingPrevious;
     UILabel* _updatingPreviousLabel;
     UIActivityIndicatorView* _updatingPreviousIndicator;

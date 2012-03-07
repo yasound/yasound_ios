@@ -472,7 +472,7 @@ static BundleFileManager* _main = nil;
 
 + (NSObject*) errorHandling:(NSString*)type forPath:(NSString*)path error:(NSError **)anError
 {
-  NSString* msg = [[NSString alloc] initWithFormat:@"could not find %@ file", type];
+  NSString* msg = [NSString stringWithFormat:@"could not find %@ file", type];
   
   NSMutableDictionary* details = [[NSMutableDictionary alloc] init];
   [details setValue:msg forKey:NSLocalizedDescriptionKey];

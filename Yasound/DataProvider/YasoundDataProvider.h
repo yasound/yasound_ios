@@ -19,6 +19,7 @@
 #import "RadioListeningStat.h"
 #import "LeaderBoardEntry.h"
 #import "Playlist.h"
+#import "YasoundSong.h"
 
 #define USE_YASOUND_LOCAL_SERVER 0
 
@@ -103,6 +104,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector;
+- (void)searchRadiosByCreator:(NSString*)search withTarget:(id)target action:(SEL)selector;
+- (void)searchRadiosBySong:(NSString*)search withTarget:(id)target action:(SEL)selector;
 
 - (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setMood:(UserMood)mood forRadio:(Radio*)radio;
@@ -127,6 +130,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector;
+- (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
@@ -150,7 +154,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)leaveRadioWall:(Radio*)radio;
 
 - (NSURL*)urlForPicture:(NSString*)picturePath;
-
+- (NSURL*)urlForSongCover:(Song*)song;
 
 - (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
@@ -166,7 +170,24 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)songsForPlaylist:(NSInteger)playlistId target:(id)target action:(SEL)selector;
 
-- (void)uploadSong:(NSData*)songData songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate;
+- (ASIFormDataRequest*)uploadSong:(NSData*)songData 
+             title:(NSString*)title
+             album:(NSString*)album
+             artist:(NSString*)artist
+            songId:(NSNumber*)songId 
+            target:(id)target 
+            action:(SEL)selector 
+  progressDelegate:(id)progressDelegate;
 
+// Get matched songs for a playlist. Returns a NSArray of Song objects
+- (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
+
+- (void)updateSong:(Song*)song target:(id)target action:(SEL)selector; // didUpdateSong:(Song*)song info:(NSDictionary*)info
+- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector; // didDeleteSong:(Song*)song info:(NSDictionary*)info
+
+// Get searched songs. Returns a NSArray of YasoundSong objects
+- (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector; // didReceiveSearchedSongs:(NSArray*)songs info:(NSDictionary*)info
+
+- (void)addSong:(YasoundSong*)yasoundSong target:(id)target action:(SEL)selector;  // didReceiveAddedSong:(Song*)addedSong info:(NSDictionary*)info and info contains a dictionary for key 'status' with 2 NSNumber* (boolean) 'success' (true if the request succeeded) and 'created' (true if a song has been added, false if this song was already in the playlist)
 
 @end

@@ -23,7 +23,16 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 
+
+
 @implementation PlaylistsViewController
+
+
+@synthesize nbMatchedSongs;
+@synthesize nbPlaylistsForChecking;
+@synthesize nbParsedPlaylistsForChecking;
+@synthesize playlistsDataPackage;
+
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard
 {
@@ -66,7 +75,7 @@
 {
     for (Playlist* playlist in remotePlaylists) 
     {
-        NSNumber* playlistId = [NSNumber numberWithInteger:playlist.id];
+        NSNumber* playlistId = [NSNumber numberWithInteger:[playlist.id integerValue]];
         NSString* name = playlist.name;
         NSString* source = playlist.source;
         NSNumber* count = playlist.song_count;
@@ -123,11 +132,18 @@
         else
             [_remotePlaylistsDesc addObject:dico];
 
-        if ([enabled boolValue] == FALSE)
-            [_unselectedPlaylists addObject:dico];
-        else
-            [_selectedPlaylists addObject:dico];
-
+        if (_wizard) 
+        {
+            if (mediaPlaylist)
+                [_selectedPlaylists addObject:dico];
+        }
+        else 
+        {
+            if ([enabled boolValue] == FALSE)
+                [_unselectedPlaylists addObject:dico];
+            else
+                [_selectedPlaylists addObject:dico];
+        }
     }
 }
 
@@ -174,10 +190,10 @@
     _titleLabel.text = NSLocalizedString(@"PlaylistsView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
 
-    BOOL forceEnableNextBtn = NO;
+    _forceEnableNextBtn = NO;
     
 #if TARGET_IPHONE_SIMULATOR
-    forceEnableNextBtn = YES;
+    _forceEnableNextBtn = YES;
 #endif
 
     
@@ -199,11 +215,12 @@
         
         [_toolbar setItems:items animated:NO];
         
-        if (([_playlists count] != 0) || forceEnableNextBtn)
-            _nextBtn.enabled = YES;
-        else
-            _nextBtn.enabled = NO;
-    } else {
+        _nextBtn.enabled = NO;
+
+        
+    } 
+    else 
+    {
         UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
   
       // For the moment we disable playlist editing until we have a better solution.
@@ -244,6 +261,12 @@
     [_playlistsDesc retain];
     _playlists = [playlistsquery collections];
     [_playlists retain];
+    
+    if (([_playlists count] != 0) || _forceEnableNextBtn)
+        _nextBtn.enabled = YES;
+    else
+        _nextBtn.enabled = NO;
+    
     
     [self.view addSubview:_tableView];
     
@@ -498,28 +521,18 @@
 
     
     [self checkmark:cell with:NO];
-    if (_wizard) 
+    if (_displayMode == eDisplayModeNormal) 
     {
-        if (mediaPlaylist != nil) 
-        {
+        if ([_unselectedPlaylists containsObject:dico]) 
+            [self checkmark:cell with:NO];
+        else
             [self checkmark:cell with:YES];
-        }
-    } 
-    else 
-    {
-        if (_displayMode == eDisplayModeNormal) 
-        {
-            if ([_unselectedPlaylists containsObject:dico]) 
-                [self checkmark:cell with:NO];
-            else
-                [self checkmark:cell with:YES];
 
-        } 
-        else if (_displayMode == eDisplayModeEdit) 
-        {
-            if (mediaPlaylist != NULL && neverSynchronized == FALSE) 
-                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
+    } 
+    else if (_displayMode == eDisplayModeEdit) 
+    {
+        if (mediaPlaylist != NULL && neverSynchronized == FALSE) 
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     NSNumber* matched = [dico objectForKey:@"matched"];
@@ -703,7 +716,7 @@
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
     
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
     //    
     [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists
                                    removedPlaylists:_unselectedPlaylists
@@ -720,16 +733,59 @@
     //LBDEBUG email playlist file
     //  [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
 
-    //LBDEBUG
     Radio* radio = [YasoundDataProvider main].radio;
-    NSLog(@"radio %@", radio.name);
-  [[YasoundDataProvider main] updatePlaylists:data forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
-    //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
-
-    //LBDEBUG
-    //[self onFakeSubmitAction:nil];
+    NSLog(@"Playlists data package has been built.");
     
+    
+    if (radio == nil)
+    {
+        self.playlistsDataPackage = data;
+        
+        [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
+        return;
+    }
+    else
+    {
+        NSLog(@"For radio %@", radio.name);
+        [[YasoundDataProvider main] updatePlaylists:data forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
+    }
 }
+    
+
+
+- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+{
+    if (radio == nil)
+    {
+        [ActivityAlertView close];
+
+        _alertSubmitError = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:NSLocalizedString(@"PlaylistsView_submit_error_radio", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [_alertSubmitError show];
+        [_alertSubmitError release];  
+        return;
+    }
+    else
+    {
+        NSLog(@"For radio %@", radio.name);
+        [[YasoundDataProvider main] updatePlaylists:self.playlistsDataPackage forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
+    }
+}
+
+
+#pragma mark - UIAlertViewDelegate
+    
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView == _alertMatchedSongs)
+    {
+        [self getOut];
+        return;
+    }
+}
+
+    
+    
+    
 
 
 - (void)receiveUpdatePLaylistsResponse:(taskID)task_id error:(NSError*)error
@@ -740,7 +796,12 @@
     NSLog(@"playlists updated  task: %@", task_id);
     
     taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task_id repeats:YES];
+    
 }
+
+
+
+
 
 - (void)checkPlaylistTask:(NSTimer*)timer
 {
@@ -748,17 +809,21 @@
     [[YasoundDataProvider main] taskStatus:task target:self action:@selector(receiveTaskStatus:error:)];
 }
 
+
+
 - (void)receiveTaskStatus:(TaskInfo*)taskInfo error:(NSError*) error
 {
     if (taskInfo.status == eTaskSuccess)
     {
-        [taskTimer invalidate];
-        [self onFakeSubmitAction:nil];
+        if ([taskTimer isValid])
+            [taskTimer invalidate];
+        [self finalize];
     }
     else if (taskInfo.status == eTaskFailure)
     {
-        [taskTimer invalidate];
-        [self onFakeSubmitAction:nil];
+        if ([taskTimer isValid])
+            [taskTimer invalidate];
+        [self finalize];
     }
   else if (taskInfo.status == eTaskPending)
   {
@@ -770,16 +835,96 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 //LBDEBUG
-- (void)onFakeSubmitAction:(NSTimer*)timer
+- (void)finalize
 {
-  // be sure to get updated radio (with correct 'ready' flag)
-  [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
+    // be sure to get updated radio (with correct 'ready' flag)
+    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
 }
 
 - (void)receivedUserRadioAfterPlaylistsUpdate:(Radio*)r withInfo:(NSDictionary*)info
 {
-  [ActivityAlertView close];
+    // now, ask for registered playlists, we want to check how many songs have been synchrpnized
+    [[YasoundDataProvider main] playlistsForRadio:r target:self action:@selector(receivePlaylistsForChecking:withInfo:)];
+}
+    
+    
+- (void)receivePlaylistsForChecking:(NSArray*)playlists withInfo:(NSDictionary*)info
+{
+    self.nbPlaylistsForChecking = playlists.count;
+    self.nbParsedPlaylistsForChecking = 0;
+    self.nbMatchedSongs = 0;
+    
+    
+    for (Playlist* playlist in playlists) 
+    {
+        [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)]; 
+        // didReceiveMatchedSongs:(NSArray*)matched_songs info:
+    }
+}
+    
+    
+- (void)matchedSongsReceveived:(NSArray*)songs info:(NSDictionary*)info
+{
+    self.nbParsedPlaylistsForChecking++;
+    
+    if (songs != nil)
+        self.nbMatchedSongs += songs.count;
+    
+    if (nbParsedPlaylistsForChecking != nbPlaylistsForChecking)
+        return;
+
+    // now we have the right count of the synchronized songs
+    [ActivityAlertView close];
+
+    // user dialog to report 
+    NSString* title = nil;
+    NSString* message = nil;
+    
+    if (self.nbMatchedSongs == 0)
+    {
+        title = NSLocalizedString(@"PlaylistsView_matchedSongsTitle_zero", nil);
+        message = NSLocalizedString(@"PlaylistsView_matchedSongsMessage_zero", nil);
+    }
+    else
+    {
+        title = NSLocalizedString(@"PlaylistsView_matchedSongsTitle_ok", nil);
+        
+        if (self.nbMatchedSongs == 1)
+            message = NSLocalizedString(@"PlaylistsView_matchedSongsMessage_ok_1", nil);
+        else
+            message = NSLocalizedString(@"PlaylistsView_matchedSongsMessage_ok_n", nil);
+        
+        message = [message stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", self.nbMatchedSongs]];
+
+    }
+
+    _alertMatchedSongs = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [_alertMatchedSongs show];
+    [_alertMatchedSongs release];  
+}
+    
+
+
+
+
+
+
+
+
+- (void)getOut
+{
   
   if (_wizard)
   {

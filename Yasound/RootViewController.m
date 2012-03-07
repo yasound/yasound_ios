@@ -18,6 +18,7 @@
 #import "RadioSelectionViewController.h"
 #import "ConnectionView.h"
 #import "YasoundAppDelegate.h"
+#import "SongUploadManager.h"
 
 //#define FORCE_ROOTVIEW_RADIOS
 
@@ -83,6 +84,7 @@
 
 
 //#import "CreateMyRadio.h"
+//#import "SongUploadViewController.h"
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -91,6 +93,14 @@
 //    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:nil];
 //    [self.navigationController pushViewController:view animated:YES];
 //    [view release];
+
+    
+    
+    //LBDEBUG FAKE
+//    SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
+    
     
     if (_firstTime)
     {
@@ -173,6 +183,20 @@
         }
         else
             [self launchRadio:radioId];
+      
+      NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
+      if (lastUserID && [lastUserID intValue] == [user.id intValue])
+      {
+        // restart song uploads not completed on last application shutdown
+        [[SongUploadManager main] restartUploads];
+      }
+      else
+      {
+        [[SongUploadManager main] clearStoredUpdloads];
+      }
+      
+      [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:@"LastConnectedUserID"];
+      [[NSUserDefaults standardUserDefaults] synchronize];
     }
     else
     {

@@ -519,22 +519,18 @@ static Song* _gNowPlayingSong = nil;
 - (void)onTimerUpdate:(NSTimer*)timer
 {    
     [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
-  [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
+    [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
-  
-  [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
+    [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
 }
 
 - (void)updatePreviousWall
 {    
-    // PROFILE
-    _BEGIN = [NSDate date];
-    [_BEGIN retain];
-    
     _updatingPrevious = YES;
 
     [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_FIRST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
-  [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
+    
+    [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
 }
 
@@ -621,17 +617,6 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedPreviousWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
-    // PROFILE
-    if (_firstUpdateRequest)
-    {
-        _END = [NSDate date];
-        NSTimeInterval timeDifference = [_END timeIntervalSinceDate:_BEGIN];
-        NSLog(@"PROFILE %.2f", timeDifference);
-        
-        [_BEGIN release];
-    }
-    
-    
     Meta* meta = [info valueForKey:@"meta"];
     NSError* err = [info valueForKey:@"error"];
     
@@ -1058,18 +1043,13 @@ static Song* _gNowPlayingSong = nil;
     _gNowPlayingSong = song;
     [_gNowPlayingSong retain];
     
-//    if (_trackInteractionViewDisplayed)
-//        return;
-    
     if (_playingNowView != nil)
     {
         [_playingNowView removeFromSuperview];
         [_playingNowView release];
     }
     
-    //LBDEBUG TODO : get image, likes dislikes from Song
     _playingNowView = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong];
-//    [_playingNowView.playPauseButton addTarget:self action:@selector(onPlayPause:) forControlEvents:UIControlEventTouchUpInside];
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _playingNowView.frame = sheet.frame;

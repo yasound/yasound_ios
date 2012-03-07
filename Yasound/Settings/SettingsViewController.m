@@ -448,15 +448,19 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField endEditing:TRUE];
+    
+    return FALSE;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
     _changed = YES;
     
     // set radio title
     _myRadio.name = textField.text;
     
-    return FALSE;
+    NSLog(@"Radio name has changed for '%@'", _myRadio.name);
 }
-
-
 
 
 
@@ -683,15 +687,17 @@
     //LBDEBUG TODO CLEAN
 //    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
     
+    NSLog(@"send update request for radio '%@'", _myRadio.name);
+    
     [[YasoundDataProvider main] updateRadio:_myRadio target:self action:@selector(onRadioUpdated:info:)];
 }
 
 - (void)onRadioUpdated:(Radio*)radio info:(NSDictionary*)info
 {
-    NSLog(@"onRadioUpdated info %@", info);
+    NSLog(@"onRadioUpdated '%@', info %@", radio.name, info);
     
     if (_settingsImageChanged)
-        [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:_myRadio target:self action:@selector(onRadioImageUpdate:info:)];
+        [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:radio target:self action:@selector(onRadioImageUpdate:info:)];
     else
         [self onRadioImageUpdate:nil info:nil];
 

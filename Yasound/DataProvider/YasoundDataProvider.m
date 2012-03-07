@@ -165,6 +165,10 @@ static YasoundDataProvider* _main = nil;
     _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];
     _communicator.appCookie = self.appCookie;
     
+      // DEFAULT TIMEOUT
+      [ASIHTTPRequest setDefaultTimeOutSeconds:60];
+
+    
     NSMutableDictionary* resourceNames = [Model resourceNames];
     [resourceNames setObject:@"radio" forKey:[Radio class]];
     [resourceNames setObject:@"user" forKey:[User class]];
@@ -211,6 +215,19 @@ static YasoundDataProvider* _main = nil;
     return nil;
   
   NSURL* url = [_communicator urlWithURL:picturePath absolute:NO addTrailingSlash:NO params:nil];
+  return url;
+}
+
+- (NSURL*)urlForSongCover:(Song*)song
+{
+  if (!song || !song.id)
+    return nil;
+  
+  AuthApiKey* a = (AuthApiKey*)self.apiKeyAuth;
+  NSArray* params = a.urlParams;
+  
+  NSString* base = [NSString stringWithFormat:@"api/v1/song_instance/%@/cover/", song.id];
+  NSURL* url = [_communicator urlWithURL:base absolute:NO addTrailingSlash:NO params:params];
   return url;
 }
 
@@ -500,12 +517,7 @@ static YasoundDataProvider* _main = nil;
   {
     [target performSelector:selector withObject:_user withObject:finalInfo];
   }
-
 }
-
-
-
-
 
 
 - (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector
@@ -675,6 +687,24 @@ static YasoundDataProvider* _main = nil;
   [params addObject:[NSString stringWithFormat:@"search=%@", search]];
 
   [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)searchRadiosByCreator:(NSString*)search withTarget:(id)target action:(SEL)selector
+{
+  Auth* auth = self.apiKeyAuth;
+  NSMutableArray* params = [NSMutableArray array];
+  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
+  
+  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search_radio_by_user" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)searchRadiosBySong:(NSString*)search withTarget:(id)target action:(SEL)selector
+{
+  Auth* auth = self.apiKeyAuth;
+  NSMutableArray* params = [NSMutableArray array];
+  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
+  
+  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/search_radio_by_song" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 
@@ -850,6 +880,15 @@ static YasoundDataProvider* _main = nil;
   Auth* auth = self.apiKeyAuth;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/song/%@/status", songId];
   [_communicator getObjectWithClass:[SongStatus class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector
+{
+  if (!songId)
+    return;
+  
+  Auth* auth = self.apiKeyAuth;
+  [_communicator getObjectWithClass:[Song class] andID:songId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector
@@ -1178,12 +1217,132 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)uploadSong:(NSData*)song songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
+- (ASIFormDataRequest*)uploadSong:(NSData*)song 
+             title:(NSString*)title
+             album:(NSString*)album
+             artist:(NSString*)artist
+            songId:(NSNumber*)songId 
+            target:(id)target 
+            action:(SEL)selector 
+  progressDelegate:(id)progressDelegate
 {
   Auth* auth = self.apiKeyAuth;
   NSString* url = [NSString stringWithFormat:@"api/v1/upload_song/%@/", songId];
-  [_communicator postData:song withKey:@"song" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withProgress:progressDelegate];
+    
+  
+  NSMutableDictionary* jsonObject = [NSMutableDictionary dictionary];
+    [jsonObject setObject:self.radio.id forKey:@"radio_id"];
+    [jsonObject setObject:title forKey:@"title"];
+  [jsonObject setObject:album forKey:@"album"];
+  [jsonObject setObject:artist forKey:@"artist"];   
+  NSString* jsonString = jsonObject.JSONRepresentation;
+    
+  return [_communicator postData:song withKey:@"song" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth withProgress:progressDelegate withAdditionalJsonData:jsonString];
 }
+
+- (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector
+{
+  if (!playlist)
+    return;
+  
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = [NSString stringWithFormat:@"api/v1/playlist/%@/matched_song", playlist.id];
+  [_communicator getObjectsWithClass:[Song class] withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)updateSong:(Song*)song target:(id)target action:(SEL)selector
+{
+  if (!song)
+    return;
+  
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
+  [_communicator updateObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector
+{
+  if (!song)
+    return;
+  
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
+  [_communicator deleteObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector
+{
+  Auth* auth = self.apiKeyAuth;
+  NSString* url = @"api/v1/search_song";
+  NSMutableArray* params = [[NSMutableArray alloc] init];
+  [params addObject:[NSString stringWithFormat:@"search=%@", search]];
+  [params addObject:[NSString stringWithFormat:@"song_count=%d", count]];
+  [params addObject:[NSString stringWithFormat:@"song_offset=%d", offset]];
+  [_communicator getObjectsWithClass:[YasoundSong class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)addSong:(YasoundSong*)yasoundSong target:(id)target action:(SEL)selector
+{
+  if (!yasoundSong)
+    return;
+  Auth* auth = self.apiKeyAuth;
+  int playlistIndex = 0;
+  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/playlist/%d/add_song/%@", _radio.id, playlistIndex, yasoundSong.id];
+  
+  NSMutableDictionary* userData = [NSMutableDictionary dictionary];
+  [userData setValue:target forKey:@"finalTarget"];
+  [userData setValue:NSStringFromSelector(selector) forKey:@"finalSelector"];
+  
+  [_communicator postToURL:url absolute:NO notifyTarget:self byCalling:@selector(didAddSong:info:) withUserData:userData withAuth:auth];
+}
+
+- (void)didAddSong:(NSString*)res info:(NSDictionary*)info
+{
+  NSDictionary* dict = [res JSONValue];
+  NSNumber* songInstanceID = [dict valueForKey:@"song_instance_id"];
+  
+  NSMutableDictionary* status = [NSMutableDictionary dictionary];
+  [status setValue:[dict valueForKey:@"success"] forKey:@"success"];
+  [status setValue:[dict valueForKey:@"created"] forKey:@"created"];
+  
+  if (!songInstanceID)
+  {
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"finalTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
+    
+    if (target && selector)
+    {
+      NSMutableDictionary* finalInfo = [NSMutableDictionary dictionary];
+      [finalInfo setValue:[info valueForKey:@"error"] forKey:@"error"];
+      [finalInfo setValue:status forKey:@"status"];
+      [target performSelector:selector withObject:nil withObject:finalInfo];
+    }
+    return;
+  }
+  
+  NSMutableDictionary* userData = [NSMutableDictionary dictionaryWithDictionary:[info valueForKey:@"userData"]];
+  [userData setValue:status forKey:@"status"];
+  
+  Auth* auth = self.apiKeyAuth;
+  [_communicator getObjectWithClass:[Song class] andID:songInstanceID notifyTarget:self byCalling:@selector(didReceiveAddedSong:info:) withUserData:userData withAuth:auth];
+}
+
+- (void)didReceiveAddedSong:(Song*)addedSong info:(NSDictionary*)info
+{
+  NSDictionary* userData = [info valueForKey:@"userData"];
+  id target = [userData valueForKey:@"finalTarget"];
+  SEL selector = NSSelectorFromString([userData valueForKey:@"finalSelector"]);
+  NSDictionary* status = [userData valueForKey:@"status"];
+  
+  if (target && selector)
+  {
+    NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
+    [finalInfo setValue:status forKey:@"status"];
+    [target performSelector:selector withObject:addedSong withObject:finalInfo];
+  }
+}
+
 
 @end
 

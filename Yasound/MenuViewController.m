@@ -23,6 +23,7 @@
 #import "BundleStylesheet.h"
 #import "Theme.h"
 #import "YasoundAppDelegate.h"
+#import "ProgrammingViewController.h"
 
 
 @implementation MenuViewController
@@ -42,7 +43,7 @@
 #define SECTION_ME 2
 #define SECTION_ME_NB_ROWS 3
 #define ROW_ME_STATS 0
-#define ROW_ME_PLAYLISTS 1
+#define ROW_ME_PROGRAMMING 1
 #define ROW_ME_CONFIG 2
 
 #define SECTION_MISC 3
@@ -356,9 +357,9 @@
             BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMeStats" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             [cell.imageView setImage:[sheet image]];
         }
-        else if (indexPath.row == ROW_ME_PLAYLISTS)
+        else if (indexPath.row == ROW_ME_PROGRAMMING)
         {
-            cell.textLabel.text = NSLocalizedString(@"MenuView_me_playlists", nil);            
+            cell.textLabel.text = NSLocalizedString(@"MenuView_me_programming", nil);            
             BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMePlaylists" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             [cell.imageView setImage:[sheet image]];
         }
@@ -447,13 +448,18 @@
           YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
           [appDelegate goToMyRadioStatsFromViewController:self];
         }
-        else if (indexPath.row == ROW_ME_PLAYLISTS)
+        else if (indexPath.row == ROW_ME_PROGRAMMING)
         {
 //            PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:NO];
 //            [self.navigationController pushViewController:view animated:YES];
 //            [view release];
-          YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
-          [appDelegate goToMyRadioPlaylistsFromViewController:self];
+
+//            YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
+//          [appDelegate goToMyRadioPlaylistsFromViewController:self];
+            
+            ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
         }
         else if (indexPath.row == ROW_ME_CONFIG)
         {

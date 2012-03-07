@@ -1,0 +1,195 @@
+//
+//  SongUploadCell.m
+//  Yasound
+//
+//  Created by LOIC BERTHELOT on 27/02/12.
+//  Copyright (c) 2012 Yasound. All rights reserved.
+//
+
+#import "SongUploadCell.h"
+#import "BundleFileManager.h"
+#import "Theme.h"
+#import "SongCatalog.h"
+#import "RootViewController.h"
+
+
+@implementation SongUploadCell
+
+@synthesize item;
+@synthesize label;
+@synthesize labelStatus;
+@synthesize progressView;
+
+
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadItem*)item
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) 
+    {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        self.item = item;
+        self.item.delegate = self;
+        self.progressView = nil;
+        self.labelStatus = nil;
+
+        
+        
+        // button "delete"
+        UIImage* image = [UIImage imageNamed:@"CellButtonDel.png"];
+        UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - image.size.width, 0, image.size.width, image.size.height)];
+        [button setImage:image forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:button];
+    
+        
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.label = [sheet makeLabel];
+    self.label.text = [NSString stringWithFormat:@"%@ - %@", item.song.name, item.song.artist];
+    [self addSubview:self.label];
+        
+        
+        // status label
+        sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.labelStatus = [sheet makeLabel];
+        self.labelStatus.text = @"";
+        [self addSubview:self.labelStatus];
+        // don't show it now, show it when you need it
+        self.labelStatus.hidden = YES;
+
+    
+        if ((item.status == SongUploadItemStatusPending) || (item.status == SongUploadItemStatusUploading))
+        {
+            if (self.progressView == nil)
+            {
+                sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+                self.progressView.frame = sheet.frame;
+                [self addSubview:self.progressView];
+                
+            }
+            self.progressView.progress = self.item.currentProgress;
+        }
+        else if (item.status == SongUploadItemStatusCompleted)
+        {
+            self.labelStatus.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
+            self.labelStatus.hidden = NO;
+        }
+        else if (item.status == SongUploadItemStatusFailed)
+        {
+            self.labelStatus.text = NSLocalizedString(@"SongUpload_progressFailed", nil);   
+            self.labelStatus.hidden = NO;
+        }
+        
+    
+    }
+    return self;
+}
+
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview 
+{
+    [super willMoveToSuperview:newSuperview];
+    if(!newSuperview) 
+    {
+        self.item.delegate = nil;
+    }
+}
+
+
+- (void)update:(SongUploadItem*)mediaItem
+{
+    self.item = mediaItem;
+    self.item.delegate = self;
+    
+    self.label.text = [NSString stringWithFormat:@"%@ - %@", mediaItem.song.name, mediaItem.song.artist];
+    
+    
+    if ((self.item.status == SongUploadItemStatusPending) || (self.item.status == SongUploadItemStatusUploading))
+    {
+        self.progressView.progress = self.item.currentProgress;
+    }
+    else if (self.item.status == SongUploadItemStatusCompleted)
+    {
+        self.progressView.hidden = YES;
+        self.labelStatus.hidden = NO;
+        self.labelStatus.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
+    }
+    else if (self.item.status == SongUploadItemStatusFailed)
+    {
+        self.progressView.hidden = YES;
+        self.labelStatus.hidden = NO;
+        self.labelStatus.text = NSLocalizedString(@"SongUpload_progressFailed", nil);   
+    }
+
+}
+
+
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+
+- (void)onButtonClicked:(id)sender
+{
+    [self.item cancelUpload];
+}
+
+
+
+#pragma mark - SongUploadItemDelegate
+
+- (void)songUploadDidStart:(Song*)song
+{
+    
+}
+
+- (void)songUploadProgress:(Song*)song progress:(CGFloat)progress
+{
+    self.progressView.progress = progress;
+}
+
+- (void)songUploadDidFinish:(Song*)song info:(NSDictionary*)info
+{
+    NSLog(@"songUploadDidFinish : info %@", info);
+
+//    [self.progressView removeFromSuperview];
+//    [self.progressView release];
+    
+    BOOL succeeded = NO;
+    succeeded = [[info objectForKey:@"succeeded"] boolValue];
+    
+    
+    // update the GUI, using the same item
+    [self update:self.item];
+
+    
+    // add the song to the catalog of synchronized catalog (we dont want to re-generate it entirely)
+    [[SongCatalog synchronizedCatalog] insertAndSortAndEnableSong:song];
+    
+    // and let the views know about it
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    
+    
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    UILabel* label = [sheet makeLabel];
+//    [self addSubview:label];
+    
+//    if (succeeded)
+//        label.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
+//    else
+//        label.text = NSLocalizedString(@"SongUpload_progressFailed", nil);
+    
+//    if (!succeeded)
+// changer le bouton LBDEBUG TODO        
+
+}
+
+
+@end

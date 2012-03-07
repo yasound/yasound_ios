@@ -11,6 +11,15 @@
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
+#import "Theme.h"
+
+typedef enum 
+{
+  eSearchByRadioAttributes = 0,
+  eSearchByRadioCreator = 1,
+  eSearchByRadioSong = 2,
+  eSearchNone = 3
+} SearchResultCategory;
 
 
 @implementation RadioSearchViewController
@@ -24,8 +33,6 @@
 //    UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
 //    self.tabBarItem = theItem;
 //    [theItem release];   
-      
-
     
   }
   
@@ -59,6 +66,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+  
+  _radios = nil;
+  _radiosByCreator = nil;
+  _radiosBySong = nil;
 
 //    _toolbarTitle.text = NSLocalizedString(@"FriendsView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
@@ -93,7 +104,15 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+  _viewVisible = YES;
+}
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+  _viewVisible = NO;
+}
 
 
 
@@ -107,25 +126,120 @@
 #pragma mark - TableView Source and Delegate
 
 
+- (SearchResultCategory)categoryForSection:(NSInteger)section
+{
+  NSInteger radiosSection = 0;
+  NSInteger radiosByCreatorSection = 1;
+  NSInteger radiosBySongSection = 2;
+  if (!_radios)
+  {
+    radiosSection = -1;
+    radiosByCreatorSection--;
+    radiosBySongSection--;
+  }
+  if (!_radiosByCreator)
+  {
+    radiosByCreatorSection = -1;
+    radiosBySongSection--;
+  }
+  if (!_radiosBySong)
+    radiosBySongSection = -1;
+  
+  if (section == radiosSection)
+    return eSearchByRadioAttributes;
+  else if (section == radiosByCreatorSection)
+    return eSearchByRadioCreator;
+  else if (section == radiosBySongSection)
+    return eSearchByRadioSong;
+  
+  return eSearchNone;
+}
+
+
+- (NSArray*)radiosForSection:(NSInteger)section
+{
+  SearchResultCategory cat = [self categoryForSection:section];
+  switch (cat) 
+  {
+    case eSearchByRadioAttributes:
+      return _radios;
+      break;
+      
+    case eSearchByRadioCreator:
+      return _radiosByCreator;
+      break;
+      
+    case eSearchByRadioSong:
+      return _radiosBySong;
+      break;
+      
+    case eSearchNone:
+    default:
+      break;
+  }
+  
+  return nil;
+}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (_radios == nil)
-        return 0;
-  return 1;
+  NSInteger nbSections = 0;
+  if (_radios)
+    nbSections++;
+  if (_radiosByCreator)
+    nbSections++;
+  if (_radiosBySong)
+    nbSections++;
+  return nbSections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    if (_radios == nil)
-        return 0;
-    
-    NSLog(@"RADIO COUNT %d", _radios.count);
-    
-    return _radios.count;
+  NSArray* radios = [self radiosForSection:section];
+  if (!radios)
+    return 0;
+  
+  NSInteger count = radios.count;
+  NSLog(@"RADIO COUNT %d", count);
+  return count;
 }
 
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+  NSString* title = nil;
+  
+  SearchResultCategory cat = [self categoryForSection:section];
+  switch (cat) 
+  {
+    case eSearchByRadioAttributes:
+      title = NSLocalizedString(@"RadioSearch_CategoryRadioAttributes_SectionTitle", nil);
+      break;
+      
+    case eSearchByRadioCreator:
+      title = NSLocalizedString(@"RadioSearch_CategoryRadioCreator_SectionTitle", nil);
+      break;
+      
+    case eSearchByRadioSong:
+      title = NSLocalizedString(@"RadioSearch_CategoryRadioSong_SectionTitle", nil);
+      break;
+      
+    default:
+      break;
+  }
+  
+  BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+  
+  UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
+  view.frame = CGRectMake(0, 0, tableView.bounds.size.width, 44);
+  
+  sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+  UILabel* label = [sheet makeLabel];
+  label.text = title;
+  [view addSubview:label];
+  
+  return view;
+}
 
 
 
@@ -157,14 +271,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
+  NSInteger rowIndex = indexPath.row;
+  NSInteger sectionIndex = indexPath.section;
     
-    if (!_radios)
-        return nil;
+  NSArray* radios = [self radiosForSection:sectionIndex];
+  if (!radios)
+    return nil;
     
     RadioSelectionTableViewCell* cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    NSInteger rowIndex = indexPath.row;
-    Radio* radio = [_radios objectAtIndex:rowIndex];
+
+    Radio* radio = [radios objectAtIndex:rowIndex];
     
     if (cell == nil)
     {    
@@ -198,24 +314,37 @@
 
 #pragma mark - UISearchBarDelegate
 
-
-//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-//{
-//  NSLog(@"textDidChange %@", searchText);
-//}
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+- (void)searchRadios:(NSString*)searchText
 {
-  NSLog(@"searchBarTextDidEndEditing %@", searchBar.text);
-    
-    [[YasoundDataProvider main] searchRadios:searchBar.text withTarget:self action:@selector(receiveRadios:withInfo:)];
+  if (_radios != nil)
+    [_radios release];
+  _radios = nil;
+  if (_radiosByCreator != nil)
+    [_radiosByCreator release];
+  _radiosByCreator = nil;
+  if (_radiosBySong != nil)
+    [_radiosBySong release];
+  _radiosBySong = nil;
+  
+  [self.searchDisplayController.searchResultsTableView reloadData];
+  
+  [[YasoundDataProvider main] searchRadios:searchText withTarget:self action:@selector(receiveRadios:withInfo:)];
+  [[YasoundDataProvider main] searchRadiosByCreator:searchText withTarget:self action:@selector(receiveRadiosSearchedByCreator:withInfo:)];
+  [[YasoundDataProvider main] searchRadiosBySong:searchText withTarget:self action:@selector(receiveRadiosSearchBySong:withInfo:)];
 }
+
+//- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+//{
+//  NSLog(@"searchBarTextDidEndEditing %@", searchBar.text);
+//    
+//  [self searchRadios:searchBar.text];
+//}
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSLog(@"searchBarSearchButtonClicked %@", searchBar.text);
     
-    [[YasoundDataProvider main] searchRadios:searchBar.text withTarget:self action:@selector(receiveRadios:withInfo:)];
+  [self searchRadios:searchBar.text];
 }
 
 
@@ -225,6 +354,9 @@
 
 - (void)receiveRadios:(NSArray*)radios withInfo:(NSDictionary*)info
 {
+  if (!_viewVisible)
+    return;
+  
     NSError* error = [info valueForKey:@"error"];
     if (error)
     {
@@ -233,11 +365,71 @@
     }
     
     if (_radios != nil)
+    {
         [_radios release];
+      _radios = nil;
+    }
     
+  if (radios.count > 0)
+  {
     _radios = radios;
     [_radios retain];
+  }
     [self.searchDisplayController.searchResultsTableView reloadData];
+}
+
+- (void)receiveRadiosSearchedByCreator:(NSArray*)radios withInfo:(NSDictionary*)info
+{
+  if (!_viewVisible)
+    return;
+  
+  NSError* error = [info valueForKey:@"error"];
+  if (error)
+  {
+    NSLog(@"can't get radios: %@", error.domain);
+    return;
+  }
+  
+  if (_radiosByCreator != nil)
+  {
+    [_radiosByCreator release];
+    _radiosByCreator = nil;
+  }
+  
+  if (radios.count > 0)
+  {
+    _radiosByCreator = radios;
+    [_radiosByCreator retain];
+  }
+  
+  [self.searchDisplayController.searchResultsTableView reloadData];
+}
+
+- (void)receiveRadiosSearchBySong:(NSArray*)radios withInfo:(NSDictionary*)info
+{
+  if (!_viewVisible)
+    return;
+  
+  NSError* error = [info valueForKey:@"error"];
+  if (error)
+  {
+    NSLog(@"can't get radios: %@", error.domain);
+    return;
+  }
+  
+  if (_radiosBySong != nil)
+  {
+    [_radiosBySong release];
+    _radiosBySong = nil;
+  }
+  
+  if (radios.count > 0)
+  {
+    _radiosBySong = radios;
+    [_radiosBySong retain];
+  }
+  
+  [self.searchDisplayController.searchResultsTableView reloadData];
 }
 
 
