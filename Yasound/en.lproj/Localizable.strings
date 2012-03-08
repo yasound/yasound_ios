@@ -226,12 +226,12 @@
 "SongUpload_warning_message" = "You have to own the rights of all the audio files that you upload to our servers to be broadcasted publicly on your radio. \nIn case of an interview, or audio recording, you certify that you already have the written agreements of all the parties.";
 "Button_dontShowAgain" = "I agree";
 
-"YasoundUpload_interrupt_WIFI_title" = "3G connection";
-"YasoundUpload_interrupt_WIFI_message" = "Current uploads are interrupted until a WIFI connection is back.";
+"YasoundUpload_interrupt_WIFI_title" = "3G network";
+"YasoundUpload_interrupt_WIFI_message" = "Current uploads are stopped until this device is connected to a WIFI network.";
 "YasoundUpload_restart_WIFI_title" = "Uploads";
-"YasoundUpload_restart_WIFI_message" = "Pending uploads will resume as soon as a WIFI connection is available.";
-"YasoundUpload_add_WIFI_title" = "3G connection";
-"YasoundUpload_add_WIFI_message" = "The song is added to the pending uploads queue. File transfert will begin as soon as a WIFI connection is available.";
+"YasoundUpload_restart_WIFI_message" = "Pending uploads will resume as soon as this device is connected to a WIFI network.";
+"YasoundUpload_add_WIFI_title" = "3G network";
+"YasoundUpload_add_WIFI_message" = "The song is added to the pending uploads queue. File transfert will start as soon this device is connected to a WIFI network.";
 
 
 "MenuView_section_myradio" = "My Radio";
