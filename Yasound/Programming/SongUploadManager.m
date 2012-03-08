@@ -202,7 +202,7 @@ static SongUploadManager* _main;
   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)restartUploads
+- (void)importUploads
 {
   // get song info of all non-completed uploads from previous application session
   NSArray* storedSongs = [self storedSongsToUpload];
@@ -213,7 +213,7 @@ static SongUploadManager* _main;
   {
     for (Song* s  in storedSongs) 
     {
-        [self addSong:s startUploadNow:YES];
+        [self addSong:s startUploadNow:NO];
     }
   }
 }

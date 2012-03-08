@@ -114,7 +114,7 @@ typedef enum SongUploadItemStatus
 + (SongUploadManager*)main;
 
 - (void)addSong:(Song*)song startUploadNow:(BOOL)startUploadNow;
-- (void)restartUploads;
+- (void)importUploads;
 - (void)clearStoredUpdloads;
 
 - (void)interruptUploads;

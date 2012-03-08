@@ -188,9 +188,11 @@
       NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
       if (lastUserID && [lastUserID intValue] == [user.id intValue])
       {
+          [[SongUploadManager main] importUploads];
+
           if ([YasoundReachability main].networkStatus == kReachableViaWiFi)
               // restart song uploads not completed on last application shutdown
-              [[SongUploadManager main] restartUploads];
+              [[SongUploadManager main] resumeUploads];
           
           else if ([SongUploadManager main].items.count > 0)
           {
