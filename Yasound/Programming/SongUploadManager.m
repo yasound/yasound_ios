@@ -135,8 +135,6 @@
 @synthesize items = _items;
 @synthesize interrupted;
 @synthesize notified3G;
-//@synthesize index = _index;
-//@synthesize currentlyUploadingItem = _currentlyUploadingItem;
 
 static SongUploadManager* _main;
 
@@ -163,10 +161,6 @@ static SongUploadManager* _main;
         BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
         self.interrupted = !isWifi;
         
-        
-//        _index = 0;
-//        _uploading = NO;
-//        _currentlyUploadingItem = nil;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationFinish:) name:NOTIF_UPLOAD_DIDFINISH object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationCancel:) name:NOTIF_UPLOAD_DIDCANCEL object:nil];
@@ -301,8 +295,6 @@ static SongUploadManager* _main;
 
 - (void)loop
 {
-//    _uploading = YES;
-    
     // check if an item is currently uploading
     // if not, start the upload
     
@@ -327,12 +319,8 @@ static SongUploadManager* _main;
 
 - (void)onNotificationFinish:(NSNotification *)notification
 {  
-    // move to the next item
-//    _index++;
     
     [self loop];
-//    else
-//        _uploading = NO;
   
   [self refreshStoredUploads];
 }
@@ -361,14 +349,7 @@ static SongUploadManager* _main;
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:self];
 
-    // move to the next item,
-    // dont need to increment since we deleted the current item
-    //_index++;
-    
-//    if (_index < self.items.count)
         [self loop];
-//    else
-//        _uploading = NO;
     
   [self refreshStoredUploads];
 }
@@ -379,38 +360,6 @@ static SongUploadManager* _main;
 
 - (void)onNotificationInterrupt:(NSNotification *)notification
 {
-//    SongUploadItem* item = notification.object;
-//    assert(item != nil);
-//    
-//    BOOL found = NO;
-//    NSInteger itemIndex = 0;
-//    for (itemIndex = 0; itemIndex < self.items.count; itemIndex++)
-//    {
-//        SongUploadItem* anItem = [self.items objectAtIndex:itemIndex];
-//        
-//        if (anItem == item)
-//        {
-//            found = YES;
-//            break;
-//        }
-//    }
-//    
-//    assert(found == YES);
-//    
-//    [self.items removeObjectAtIndex:itemIndex];
-//    
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:self];
-//    
-//    // move to the next item,
-//    // dont need to increment since we deleted the current item
-//    //_index++;
-//    
-//    //    if (_index < self.items.count)
-//    [self loop];
-//    //    else
-//    //        _uploading = NO;
-//    
-//    [self refreshStoredUploads];
 }
 
 
