@@ -24,6 +24,7 @@
 @property (retain, nonatomic) NSString* tags;
 @property (retain, nonatomic) NSNumber* ready;
 @property (retain, nonatomic) NSNumber* nb_current_users;
+@property (retain, nonatomic) NSString* stream_url;
 
 - (NSArray*)tagsArray;
 - (void)setTagsWithArray:(NSArray*)tagArray;
