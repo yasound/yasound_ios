@@ -148,8 +148,10 @@
     song.uploading = YES;
     [self update:song];
     
-    if (!isWifi)
+    if (!isWifi && ![SongUploadManager main].notified3G)
     {
+        [SongUploadManager main].notified3G = YES;
+        
         _wifiWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_add_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_add_WIFI_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [_wifiWarning show];
         [_wifiWarning release];  

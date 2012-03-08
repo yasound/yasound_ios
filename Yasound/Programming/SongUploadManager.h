@@ -107,6 +107,7 @@ typedef enum SongUploadItemStatus
 
 @property (atomic, retain, readonly) NSMutableArray* items;
 @property (nonatomic)  BOOL interrupted;
+@property (nonatomic) BOOL notified3G;
 
 //@property (atomic, assign, readonly) SongUploadItem* currentlyUploadingItem;
 //@property (nonatomic, readonly) NSInteger index;

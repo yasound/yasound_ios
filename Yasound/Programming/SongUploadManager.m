@@ -134,6 +134,7 @@
 
 @synthesize items = _items;
 @synthesize interrupted;
+@synthesize notified3G;
 //@synthesize index = _index;
 //@synthesize currentlyUploadingItem = _currentlyUploadingItem;
 
@@ -157,6 +158,7 @@ static SongUploadManager* _main;
         
         
         self.interrupted = NO;
+        self.notified3G = NO;
         
         BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
         self.interrupted = !isWifi;
