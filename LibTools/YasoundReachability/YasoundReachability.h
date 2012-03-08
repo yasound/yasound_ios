@@ -29,6 +29,7 @@ typedef enum
 
 @property (readwrite) YasoundReachabilityBOOL hasNetwork;
 @property (readwrite) YasoundReachabilityBOOL isReachable;
+@property (readonly) NetworkStatus networkStatus;
 
 + (YasoundReachability*)main;
 

@@ -53,6 +53,17 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL object:self];
 }
 
+- (void)interruptUpload
+{
+    if (self.status != SongUploadItemStatusUploading)
+        return;
+    
+    [self.song setUploading:NO];
+    self.status = SongUploadItemStatusPending;
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDINTERRUPT object:self];
+}
+
+
 
 - (void)uploadDidFinished:(NSDictionary*)info
 {
@@ -110,8 +121,9 @@
 @implementation SongUploadManager
 
 @synthesize items = _items;
+@synthesize interrupted;
 //@synthesize index = _index;
-@synthesize currentlyUploadingItem = _currentlyUploadingItem;
+//@synthesize currentlyUploadingItem = _currentlyUploadingItem;
 
 static SongUploadManager* _main;
 
@@ -130,12 +142,14 @@ static SongUploadManager* _main;
     if (self = [super init])
     {
         _items = [[NSMutableArray alloc] init];
+        self.interrupted = NO;
 //        _index = 0;
 //        _uploading = NO;
-        _currentlyUploadingItem = nil;
+//        _currentlyUploadingItem = nil;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationFinish:) name:NOTIF_UPLOAD_DIDFINISH object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationCancel:) name:NOTIF_UPLOAD_DIDCANCEL object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationInterrupt:) name:NOTIF_UPLOAD_DIDINTERRUPT object:nil];
         
     }
     return self;
@@ -199,7 +213,7 @@ static SongUploadManager* _main;
   {
     for (Song* s  in storedSongs) 
     {
-      [self addAndUploadSong:s];
+        [self addSong:s startUploadNow:YES];
     }
   }
 }
@@ -211,12 +225,29 @@ static SongUploadManager* _main;
 }
 
 
-- (void)addAndUploadSong:(Song*)song
+
+- (void)interruptUploads
+{
+    self.interrupted = YES;
+    for (SongUploadItem* item in self.items)
+        [item interruptUpload];
+}
+
+- (void)resumeUploads
+{
+    self.interrupted = NO;
+    [self loop];
+}
+
+
+
+
+- (void)addSong:(Song*)song startUploadNow:(BOOL)startUploadNow
 {
     SongUploadItem* item = [[SongUploadItem alloc] initWithSong:song];
     [_items addObject:item];
-    
-//    if (!_uploading)
+
+    if (startUploadNow)
         [self loop];
   
   [self refreshStoredUploads]; // store song upload in user defaults in order to resume it if the application exits before completion
@@ -320,6 +351,49 @@ static SongUploadManager* _main;
     
   [self refreshStoredUploads];
 }
+
+
+
+
+
+- (void)onNotificationInterrupt:(NSNotification *)notification
+{
+//    SongUploadItem* item = notification.object;
+//    assert(item != nil);
+//    
+//    BOOL found = NO;
+//    NSInteger itemIndex = 0;
+//    for (itemIndex = 0; itemIndex < self.items.count; itemIndex++)
+//    {
+//        SongUploadItem* anItem = [self.items objectAtIndex:itemIndex];
+//        
+//        if (anItem == item)
+//        {
+//            found = YES;
+//            break;
+//        }
+//    }
+//    
+//    assert(found == YES);
+//    
+//    [self.items removeObjectAtIndex:itemIndex];
+//    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:self];
+//    
+//    // move to the next item,
+//    // dont need to increment since we deleted the current item
+//    //_index++;
+//    
+//    //    if (_index < self.items.count)
+//    [self loop];
+//    //    else
+//    //        _uploading = NO;
+//    
+//    [self refreshStoredUploads];
+}
+
+
+
 
 
 

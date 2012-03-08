@@ -225,6 +225,14 @@
 enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'interview, ou autre  captation sonore, vous certifiez détenir l'autorisation écrite de tous les intervenants.";
 "Button_dontShowAgain" = "Je suis d'accord";
 
+"YasoundUpload_interrupt_WIFI_title" = "Connexion 3G";
+"YasoundUpload_interrupt_WIFI_message" = "Les téléchargements en cours sont stoppés dans l'attente d'une connexion WIFI.";
+"YasoundUpload_restart_WIFI_title" = "Téléchargements";
+"YasoundUpload_restart_WIFI_message" = "Les téléchargements en attente reprendront dès qu'une connexion WIFI sera disponible.";
+"YasoundUpload_add_WIFI_title" = "Connexion 3G";
+"YasoundUpload_add_WIFI_message" = "Le morceau est ajouté dans la file des téléchargements. Le transfert démarrera dès qu'une connexion WIFI sera disponible";
+
+
 "MenuView_section_myradio" = "Ma Radio";
 "MenuView_section_radios" = "Radios";
 "MenuView_section_me" = "Moi";

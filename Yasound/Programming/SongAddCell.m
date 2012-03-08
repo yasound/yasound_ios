@@ -12,7 +12,7 @@
 #import "SongUploadManager.h"
 #import "SongCatalog.h"
 #import "ActivityAlertView.h"
-
+#import "YasoundReachability.h"
 
 
 @implementation SongAddCell
@@ -136,14 +136,27 @@
 
 - (void)requestUpload
 {
+    BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
+    
+        
+    BOOL startUploadNow = isWifi;
+    
    // add an upload job to the queue
-    [[SongUploadManager main] addAndUploadSong:song];
+    [[SongUploadManager main] addSong:song startUploadNow:startUploadNow];
     
     // and flag the current song as "uploading song"
     song.uploading = YES;
     [self update:song];
     
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
+    if (!isWifi)
+    {
+        _wifiWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_add_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_add_WIFI_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [_wifiWarning show];
+        [_wifiWarning release];  
+        return; 
+    }
+    else
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
     
 }
 
