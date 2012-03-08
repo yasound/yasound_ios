@@ -8,6 +8,7 @@
 
 #import "SongUploadManager.h"
 
+#import "YasoundReachability.h"
 
 
 
@@ -42,11 +43,13 @@
     
     if (self.delegate != nil)
         [self.delegate songUploadDidStart:song];
+    
+    
 }
 
 - (void)cancelUpload
 {
-    [_uploader cancelSongUpload:self.song];
+    [_uploader cancelSongUpload];
     
     [self.song setUploading:NO];
 
@@ -60,6 +63,15 @@
     
     [self.song setUploading:NO];
     self.status = SongUploadItemStatusPending;
+
+    [_uploader cancelSongUpload];
+    [_uploader release];
+    
+    self.currentProgress = 0;
+
+    if (self.delegate != nil)
+        [self.delegate songUploadProgress:self.song progress:0];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDINTERRUPT object:self];
 }
 
@@ -142,7 +154,14 @@ static SongUploadManager* _main;
     if (self = [super init])
     {
         _items = [[NSMutableArray alloc] init];
+        
+        
         self.interrupted = NO;
+        
+        BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
+        self.interrupted = !isWifi;
+        
+        
 //        _index = 0;
 //        _uploading = NO;
 //        _currentlyUploadingItem = nil;

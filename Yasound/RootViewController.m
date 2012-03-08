@@ -352,11 +352,17 @@
     {
         NSLog(@"onNotifErrorConnectionBack WWAN ");
     
-    
-        //YasoundUpload_interrupt_WIFI_title
-        
-//        if ([SongUploadManager main].interrupted)
-//            [[SongUploadManager main] resumeUploads];
+        if (![SongUploadManager main].interrupted)
+        {
+            [[SongUploadManager main] interruptUploads];
+            
+            // show alert message for connection error
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];  
+            
+            
+        }
 
     }
    else 

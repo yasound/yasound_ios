@@ -198,7 +198,7 @@ static SongUploader* _main = nil;
 
 
 
-- (void)cancelSongUpload:(Song*)song
+- (void)cancelSongUpload
 {
     assert(_request != nil);
     
