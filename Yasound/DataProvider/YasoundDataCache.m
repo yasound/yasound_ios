@@ -15,6 +15,10 @@
 #define TIMEOUT_CURRENTSONGS 60
 #define TIMEOUT_FRIENDS 60
 
+// 1 hour
+#define TIMEOUT_IMAGE (10*60)
+
+
 #define GENRE_NIL @"GENRE_NIL"
 
 
@@ -561,56 +565,96 @@ static UIImage* gDummyImage = nil;
 {
     NSString* key = [url absoluteString];
     
-    // is there a cache for this image
+    // is there a cache for this image?
     YasoundDataCacheImage* cache = [_cacheImages objectForKey:key];
 
     UIImage* image = nil;
     BOOL imageNeedsUpdate = NO;
     
+    // there is not a cache, yet
     if (cache == nil)
     {
+        imageNeedsUpdate = YES;
+
         cache = [[YasoundDataCacheImage alloc] initWithUrl:url];
-        cache.target = target;
-        cache.action = selector;
-        cache.timeout = nil;
-        cache.image = nil;
         [_cacheImages setObject:cache forKey:key];        
         
-        
+        // set its timeout timer
+        cache.timer = [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_IMAGE target:self selector:@selector(onImageTimeout:) userInfo:key repeats:NO];
+    }
+    
+    // there is a cache, reset its timeout timer
+    else
+    {
+        cache.timeout = NO;
+        [cache.timer invalidate];
+        cache.timer = [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_IMAGE target:self selector:@selector(onImageTimeout:) userInfo:key repeats:NO];
+    }        
+    
+    
+    // cache image is not downloaded yet
+    if (cache.image == nil) 
+    {
+        // let the target know when it's downloaded
+        [cache addTarget:target action:selector];
+
         if (gDummyImage == nil)
             gDummyImage = [UIImage imageNamed:@"avatarDummy.png"];
-
-        imageNeedsUpdate = YES;
         
-        // not yet, we will return a dummy image, and request for the expected one asynchronously
+        // meanwhile, give the target the dummy image
         image = gDummyImage;
     }
+    
+    // it's downloaded already, give it to the target
     else
-        // yes there is a cache
         image = cache.image;
-
-    if (image == nil)
-        imageNeedsUpdate = YES;
     
-    // does the cache need to be updated?
-    if (cache.timeout != nil)
-    {
-        NSDate* date = [NSDate date];
-        if ([date isLaterThanOrEqualTo:cache.timeout])
-            imageNeedsUpdate = YES;
-    }
     
+    // request the image to the server
     if (imageNeedsUpdate)
-    {
-        cache.target = target;
-        cache.action = selector;
-        
-        [cache update];
-    }
+        [cache start];
+    
     
     return image;
 }
 
+
+
+// this target doesn't want to receive the downloaded image anymore.
+// it's necessary for the TableViews' cells for instance : the cells are reused for different objects, without having been released and reallocated.
+// Therefore, we have to break the link manually, in order to avoid weird behavior (wrong images appearing in the wrong cells...)
+- (void)releaseImageRequest:(NSURL*)url forTarget:(id)target
+{
+    NSString* key = [url absoluteString];
+    
+    YasoundDataCacheImage* cache = [_cacheImages objectForKey:key];
+    if (cache == nil)
+        return;
+    
+    // image is downloaded already
+    if (cache.image != nil)
+        return;
+    
+    // image is still downloading. Clear it's targets list
+    [cache removeTarget:target];
+}
+
+
+
+
+// image timeout is triggered
+- (void)onImageTimeout:(NSTimer*)timer
+{
+    NSString* key = timer.userInfo;
+    
+    // is this image still in the cache?
+    YasoundDataCacheImage* cache = [_cacheImages objectForKey:key];
+    if (cache == nil)
+        return;
+    
+    // yes. flag the timeout. The Garbage Collector will know, then.
+    cache.timeout = YES;    
+}
 
 
 

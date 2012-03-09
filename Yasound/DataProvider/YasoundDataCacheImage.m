@@ -8,17 +8,26 @@
 
 #import "YasoundDataCacheImage.h"
 
-// 30 minutes
-#define TIMEOUT_IMAGE (30*60)
+
+
+
+
+@implementation YasoundDataCacheImageTarget
+@synthesize target;
+@synthesize action;
+@end
+
+
+
 
 
 @implementation YasoundDataCacheImage
 
 @synthesize url;
 @synthesize timeout;
+@synthesize timer;
 @synthesize image;
-@synthesize target;
-@synthesize action;
+@synthesize targets;
 @synthesize receivedData;
 
 
@@ -27,14 +36,50 @@
     if (self = [super init])
     {
         self.url = aUrl;
+        self.targets = [[NSMutableArray alloc] init];
+        self.timeout = NO;
     }
     
     return self;
 }
 
 
+- (void)addTarget:(id)target action:(SEL)action
+{
+    if (self.targets == nil)
+        return;
+    
+    // only once
+    for (YasoundDataCacheImageTarget* t in self.targets)
+    {
+        if (t.target == target)
+            return;
+    }
+    
+    YasoundDataCacheImageTarget* t = [[YasoundDataCacheImageTarget alloc] init];
+    t.target = target;
+    t.action = action;
+    [self.targets addObject:t];
+}
 
-- (void)update
+- (void)removeTarget:(id)target
+{
+    if (self.targets == nil)
+        return;
+    
+    for (NSInteger index = 0; index < self.targets.count; index++)
+    {
+        YasoundDataCacheImageTarget* t = [self.targets objectAtIndex:index];
+        if (t.target == target)
+        {
+            [self.targets removeObjectAtIndex:index];
+            return;
+        }
+    }
+}
+
+
+- (void)start
 {    
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
     
@@ -77,12 +122,17 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     self.image = [[UIImage alloc] initWithData:self.receivedData];
-    NSDate* date = [NSDate date];
-    self.timeout = [date dateByAddingTimeInterval:TIMEOUT_IMAGE];
 
     // callback
-    if ((self.target != nil) && ([self.target respondsToSelector:self.action]))
-        [self.target performSelector:self.action withObject:self.image];
+    for (YasoundDataCacheImageTarget* t in self.targets)
+    {
+        if ((t.target != nil) && ([t.target respondsToSelector:t.action]))
+            [t.target performSelector:t.action withObject:self.image];
+    }
+    
+    [self.targets relase];
+    self.targets = nil;
+
     
     
     [self.receivedData release];

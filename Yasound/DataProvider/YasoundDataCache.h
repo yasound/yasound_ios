@@ -91,6 +91,7 @@
 
 
 - (UIImage*)requestImage:(NSURL*)url target:(id)target action:(SEL)selector;
+- (void)releaseImageRequest:(NSURL*)url forTarget:(id)target;
 
 
 @end
