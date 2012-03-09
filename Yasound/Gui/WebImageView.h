@@ -17,5 +17,6 @@
 -(id) initWithImageFrame:(CGRect)frame;
 -(id) initWithImageAtURL:(NSURL*)url;        
 
+- (void)releaseCache;
 
 @end

@@ -142,6 +142,7 @@
     if(!newSuperview) 
     {
         [_updateTimer invalidate];
+        [radioAvatar releaseCache];
     }
 }
 

@@ -598,11 +598,13 @@ static UIImage* gDummyImage = nil;
         // let the target know when it's downloaded
         [cache addTarget:target action:selector];
 
-        if (gDummyImage == nil)
-            gDummyImage = [UIImage imageNamed:@"avatarDummy.png"];
+//        if (gDummyImage == nil)
+//            gDummyImage = [UIImage imageNamed:@"avatarDummy.png"];
+//        
+//        // meanwhile, give the target the dummy image
+//        image = gDummyImage;
         
-        // meanwhile, give the target the dummy image
-        image = gDummyImage;
+        image  = [UIImage imageNamed:@"avatarDummy.png"];
     }
     
     // it's downloaded already, give it to the target

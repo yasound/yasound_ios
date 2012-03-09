@@ -130,7 +130,7 @@
             [t.target performSelector:t.action withObject:self.image];
     }
     
-    [self.targets relase];
+    [self.targets release];
     self.targets = nil;
 
     

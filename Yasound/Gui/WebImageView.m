@@ -78,4 +78,10 @@
 }
 
 
+- (void)releaseCache
+{
+    [[YasoundDataCache main] releaseImageRequest:self.url forTarget:self];
+}
+
+
 @end
