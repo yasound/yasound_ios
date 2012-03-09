@@ -237,7 +237,7 @@
     //LBDEBUG
     [[TimeProfile main] end:TIMEPROFILE_CELL_BUILD];
 //    [[TimeProfile main] logInterval:TIMEPROFILE_CELL_BUILD inMilliseconds:YES];
-    [[TimeProfile main] logAverageInterval:TIMEPROFILE_CELL_BUILD inMilliseconds:YES];
+//    [[TimeProfile main] logAverageInterval:TIMEPROFILE_CELL_BUILD inMilliseconds:YES];
 
     
     

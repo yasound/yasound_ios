@@ -59,7 +59,7 @@
       
       
       
-      
+
     // avatar
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     self.radioAvatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
@@ -163,7 +163,6 @@
     [self.backgroundView setImage:[sheet image]];
 
 
-    
     // avatar
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     [self.radioAvatar setUrl:imageURL];

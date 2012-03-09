@@ -356,7 +356,7 @@ static YasoundDataCache* _main = nil;
     
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
-    NSLog(@"YasoundDataCache requestCurrentSongForRadio : return local cached data");
+    //NSLog(@"YasoundDataCache requestCurrentSongForRadio : return local cached data"); // don't display it all the time, too much of it :)
     [target performSelector:selector withObject:data withObject:infoDico];    
 }
 
