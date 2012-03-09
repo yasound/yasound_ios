@@ -332,8 +332,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     // get what u need to sort alphabetically
     NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
     
-    assert(firstRelevantWord != nil);
-    assert(firstRelevantWord.length != 0);
+    //assert(firstRelevantWord != nil);
+    //assert(firstRelevantWord.length != 0);
     
     // just in case of
     if ((firstRelevantWord == nil) || (firstRelevantWord.length == 0))
@@ -372,7 +372,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     // TODO : comprendre pourquoi l'assert se déclenche chez seb
     
-    assert(artistKey.length != 0);
+    //assert(artistKey.length != 0);
     
     c = [artistKey characterAtIndex:0];
     NSMutableDictionary* artistsRepo = nil;

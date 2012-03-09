@@ -6039,7 +6039,6 @@
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					TESTFLIGHT_SDK,
-					"DEBUG=1",
 					"$(inherited)",
 					"USE_COREGRAPHIC_LAYER=1",
 					"USE_COREGRAPHIC_SHADOW=0",
