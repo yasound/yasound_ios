@@ -11,7 +11,7 @@
 #import "NSObject+SBJson.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
-#define DEV_URL @"https://dev.yasound.com"
+#define DEV_URL @"https://api.yasound.com"
 
 #define APP_KEY_COOKIE_NAME @"app_key"
 #define APP_KEY_IPHONE @"yasound_iphone_app"
