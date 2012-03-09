@@ -14,9 +14,13 @@
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
+#import "TimeProfile.h"
 
 @implementation RadioSelectionViewController
 
+
+#define TIMEPROFILE_CELL_BUILD @"TimeProfileCellBuild"
+//#define TIMEPROFILE_CELL_UPDATE @"TimeProfileCellUpdate"
 
 //#define TEST_FAKE 0
 
@@ -175,24 +179,31 @@
 
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    NSInteger rowIndex = indexPath.row;
-    UIImageView* imageView = nil;
-    
-    // cell background
-    if (rowIndex & 1)
-    {
-        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
-    }
-    else
-    {
-        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
-    }
-    
-    cell.backgroundView = imageView;
-    
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//    NSInteger rowIndex = indexPath.row;
+//    UIImageView* imageView = nil;
+//    
+//    //LBDEBUG
+//    [[TimeProfile main] begin];
+//    
+//    // cell background
+//    if (rowIndex & 1)
+//    {
+//        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+//    }
+//    else
+//    {
+//        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+//    }
+//    
+//    cell.backgroundView = imageView;
+//
+//    //LBDEBUG
+//    [[TimeProfile main] end];
+//    [[TimeProfile main] logInterval:[NSString stringWithFormat:@"willDisplayCell %d", indexPath.row] inMilliseconds:YES];
+//
+//}
 
 
 
@@ -206,6 +217,9 @@
     if (!_radios)
         return nil;
     
+    //LBDEBUG
+    [[TimeProfile main] begin:TIMEPROFILE_CELL_BUILD];
+    
     RadioSelectionTableViewCell* cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
     NSInteger rowIndex = indexPath.row;
@@ -216,8 +230,15 @@
         cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
     }
     else
+    {
         [cell updateWithRadio:radio rowIndex:rowIndex];
-    
+    }
+
+    //LBDEBUG
+    [[TimeProfile main] end:TIMEPROFILE_CELL_BUILD];
+//    [[TimeProfile main] logInterval:TIMEPROFILE_CELL_BUILD inMilliseconds:YES];
+    [[TimeProfile main] logAverageInterval:TIMEPROFILE_CELL_BUILD inMilliseconds:YES];
+
     
     
     return cell;

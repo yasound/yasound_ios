@@ -186,6 +186,19 @@ static YasoundDataCache* _main = nil;
     YasoundDataCachePendingOp* op = [info objectForKey:@"userData"]; 
     assert(op != nil);
     
+    id target = op.target;
+    SEL action = op.action;
+    
+    if (radios == nil)
+    {
+        NSLog(@"YasoundDataCache requestRadios : the server returned nil!");
+        [target performSelector:action withObject:nil withObject:info];
+        return;
+    }
+
+    
+    
+    
     // expiration date for the newly received data
     NSDate* date = [NSDate date];
     NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RADIOS];
@@ -210,10 +223,8 @@ static YasoundDataCache* _main = nil;
     
     // cache data 
     [requestCacheForGenre setObject:timeout forKey:@"timeout"];
-    [requestCacheForGenre setObject:radios forKey:@"data"];
     
-    id target = op.target;
-    SEL action = op.action;
+    [requestCacheForGenre setObject:radios forKey:@"data"];
     
     // pending operation cleaning
     [op release];
@@ -357,6 +368,19 @@ static YasoundDataCache* _main = nil;
     YasoundDataCachePendingOp* op = [info objectForKey:@"userData"]; 
     assert(op != nil);
     
+    id target = op.target;
+    SEL action = op.action;
+    
+    // the radio may be empty
+    if (song == nil)
+    {
+        NSLog(@"YasoundDataCache requestCurrentSong : the server returned nil!");
+        [target performSelector:action withObject:nil withObject:info];
+        return;
+    }
+    
+
+    
     
     // expiration date for the newly received data
     NSDate* date = [NSDate date];
@@ -373,10 +397,9 @@ static YasoundDataCache* _main = nil;
     
     // cache data 
     [requestCache setObject:timeout forKey:@"timeout"];
+    
     [requestCache setObject:song forKey:@"data"];
     
-    id target = op.target;
-    SEL action = op.action;
     
     // pending operation cleaning
     [op release];
@@ -475,6 +498,17 @@ static YasoundDataCache* _main = nil;
 {
     YasoundDataCachePendingOp* op = [info objectForKey:@"userData"]; 
     assert(op != nil);
+
+    id target = op.target;
+    SEL action = op.action;
+
+    if (friends == nil)
+    {
+        NSLog(@"YasoundDataCache requestFriendsWithTarget : the server returned nil!");
+        [target performSelector:action withObject:nil withObject:info];
+        return;
+    }
+        
     
     
     // expiration date for the newly received data
@@ -483,10 +517,9 @@ static YasoundDataCache* _main = nil;
     
     // cache data 
     [_cacheFriends setObject:timeout forKey:@"timeout"];
+    
     [_cacheFriends setObject:friends forKey:@"data"];
     
-    id target = op.target;
-    SEL action = op.action;
     
     // pending operation cleaning
     [op release];

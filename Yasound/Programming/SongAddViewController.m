@@ -24,6 +24,8 @@
 #import "SongAddCell.h"
 
 
+#define TIMEPROFILE_AVAILABLECATALOG_BUILD @"TimeProfileAvailableCatalogBuild"
+
 #define BORDER 8
 
 @implementation SongAddViewController
@@ -101,15 +103,15 @@
 - (void)afterBreath:(NSTimer*)timer
 {
     // PROFILE
-    [[TimeProfile main] begin];
+    [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
     
     [[SongCatalog availableCatalog] buildAvailableComparingToSource:[SongCatalog synchronizedCatalog].matchedSongs];
     
     
     // PROFILE
-    [[TimeProfile main] end];
+    [[TimeProfile main] end:TIMEPROFILE_AVAILABLECATALOG_BUILD];
     // PROFILE
-    [[TimeProfile main] logInterval:@"Local Media Songs parsing"];
+    [[TimeProfile main] logInterval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
 
     NSInteger count = [SongCatalog availableCatalog].nbSongs;
     
