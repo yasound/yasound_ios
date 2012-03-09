@@ -578,18 +578,10 @@ static UIImage* gDummyImage = nil;
 
         cache = [[YasoundDataCacheImage alloc] initWithUrl:url];
         [_cacheImages setObject:cache forKey:key];        
-        
-        // set its timeout timer
-        cache.timer = [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_IMAGE target:self selector:@selector(onImageTimeout:) userInfo:key repeats:NO];
     }
-    
-    // there is a cache, reset its timeout timer
-    else
-    {
-        cache.timeout = NO;
-        [cache.timer invalidate];
-        cache.timer = [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_IMAGE target:self selector:@selector(onImageTimeout:) userInfo:key repeats:NO];
-    }        
+
+    // set the last_access date
+    cache.last_access = [NSDate date];
     
     
     // cache image is not downloaded yet
@@ -647,20 +639,6 @@ static UIImage* gDummyImage = nil;
 
 
 
-
-// image timeout is triggered
-- (void)onImageTimeout:(NSTimer*)timer
-{
-    NSString* key = timer.userInfo;
-    
-    // is this image still in the cache?
-    YasoundDataCacheImage* cache = [_cacheImages objectForKey:key];
-    if (cache == nil)
-        return;
-    
-    // yes. flag the timeout. The Garbage Collector will know, then.
-    cache.timeout = YES;    
-}
 
 
 

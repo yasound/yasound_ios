@@ -97,8 +97,7 @@ static YasoundDataCacheImageManager* _main;
 @implementation YasoundDataCacheImage
 
 @synthesize url;
-@synthesize timeout;
-@synthesize timer;
+@synthesize last_access;
 @synthesize image;
 @synthesize targets;
 @synthesize receivedData;
@@ -112,7 +111,6 @@ static YasoundDataCacheImageManager* _main;
     {
         self.url = aUrl;
         self.targets = [[NSMutableArray alloc] init];
-        self.timeout = NO;
         self.failed = NO;
     }
     

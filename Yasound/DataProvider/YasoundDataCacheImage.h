@@ -31,8 +31,7 @@
 @interface YasoundDataCacheImage : NSObject
 
 @property (nonatomic, retain) NSURL* url;
-@property (nonatomic, retain) NSTimer* timer;
-@property (nonatomic) BOOL timeout;
+@property (nonatomic, retain) NSDate* last_access;
 @property (nonatomic, retain) UIImage* image;
 
 @property (nonatomic, retain) NSMutableArray* targets;
