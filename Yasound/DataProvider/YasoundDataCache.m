@@ -597,6 +597,10 @@ static UIImage* gDummyImage = nil;
     {
         // let the target know when it's downloaded
         [cache addTarget:target action:selector];
+        
+        // last try was unsuccessful, retry.
+        if (cache.failed)
+            imageNeedsUpdate = YES;
 
 //        if (gDummyImage == nil)
 //            gDummyImage = [UIImage imageNamed:@"avatarDummy.png"];

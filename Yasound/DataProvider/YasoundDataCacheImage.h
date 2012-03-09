@@ -8,10 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
+@class YasoundDataCacheImage;
+
+@interface YasoundDataCacheImageManager : NSObject
+@property (nonatomic, retain) NSMutableArray* fifo;
++ (YasoundDataCacheImageManager*)main;
+- (void)addItem:(YasoundDataCacheImage*)item;
+- (void)loop;
+@end
+
+
+
+
 @interface YasoundDataCacheImageTarget : NSObject
 @property (nonatomic, retain) id target;
 @property (nonatomic) SEL action;
 @end
+
+
 
 
 @interface YasoundDataCacheImage : NSObject
@@ -24,6 +38,8 @@
 @property (nonatomic, retain) NSMutableArray* targets;
 
 @property (nonatomic, retain) NSMutableData* receivedData;
+
+@property (nonatomic) BOOL failed;
 
 
 - (id)initWithUrl:(NSURL*)url;

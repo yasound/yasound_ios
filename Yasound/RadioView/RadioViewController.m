@@ -647,7 +647,7 @@ static Song* _gNowPlayingSong = nil;
     
     if (!events || events.count == 0)
     {
-        NSLog(@"NO MORE EVENTS. end receivedPreviousWallEvents\n");
+        // NSLog(@"NO MORE EVENTS. end receivedPreviousWallEvents\n");
         
         _updatingPrevious = NO;
         
@@ -810,7 +810,7 @@ static Song* _gNowPlayingSong = nil;
     
     if (!events || events.count == 0)
     {
-        NSLog(@"NO MORE EVENTS. end receivedCurrentWallEvents\n");
+        //NSLog(@"NO MORE EVENTS. end receivedCurrentWallEvents\n");
         return;
     }
     
