@@ -38,6 +38,7 @@
 
 
 
+
 //.................................................................................................
 //
 // YasoundDataCache
@@ -74,6 +75,10 @@ static YasoundDataCache* _main = nil;
       _cacheFriends = [[NSMutableDictionary alloc] init];
       [_cacheFriends retain];
       
+      _cacheImages = [[NSMutableDictionary alloc] init];
+      [_cacheImages retain];
+
+      
   }
   
   return self;
@@ -85,6 +90,7 @@ static YasoundDataCache* _main = nil;
     [_cacheRadios release];
     [_cacheSongs release];
     [_cacheFriends release];
+    [_cacheImages release];
     [super dealloc];
 }
 
@@ -536,6 +542,73 @@ static YasoundDataCache* _main = nil;
     [_cacheFriends release];
     _cacheFriends = [[NSMutableDictionary alloc] init];
     [_cacheFriends retain];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+static UIImage* gDummyImage = nil;
+
+- (UIImage*)requestImage:(NSURL*)url target:(id)target action:(SEL)selector
+{
+    NSString* key = [url absoluteString];
+    
+    // is there a cache for this image
+    YasoundDataCacheImage* cache = [_cacheImages objectForKey:key];
+
+    UIImage* image = nil;
+    BOOL imageNeedsUpdate = NO;
+    
+    if (cache == nil)
+    {
+        cache = [[YasoundDataCacheImage alloc] initWithUrl:url];
+        cache.target = target;
+        cache.action = selector;
+        cache.timeout = nil;
+        cache.image = nil;
+        [_cacheImages setObject:cache forKey:key];        
+        
+        
+        if (gDummyImage == nil)
+            gDummyImage = [UIImage imageNamed:@"avatarDummy.png"];
+
+        imageNeedsUpdate = YES;
+        
+        // not yet, we will return a dummy image, and request for the expected one asynchronously
+        image = gDummyImage;
+    }
+    else
+        // yes there is a cache
+        image = cache.image;
+
+    if (image == nil)
+        imageNeedsUpdate = YES;
+    
+    // does the cache need to be updated?
+    if (cache.timeout != nil)
+    {
+        NSDate* date = [NSDate date];
+        if ([date isLaterThanOrEqualTo:cache.timeout])
+            imageNeedsUpdate = YES;
+    }
+    
+    if (imageNeedsUpdate)
+    {
+        cache.target = target;
+        cache.action = selector;
+        
+        [cache update];
+    }
+    
+    return image;
 }
 
 
