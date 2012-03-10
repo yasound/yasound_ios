@@ -38,7 +38,7 @@
 
 @property (nonatomic, retain) NSMutableData* receivedData;
 
-@property (nonatomic) BOOL failed;
+@property (nonatomic) BOOL isDownloading;
 
 
 - (id)initWithUrl:(NSURL*)url;

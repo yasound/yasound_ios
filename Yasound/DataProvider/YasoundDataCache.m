@@ -574,8 +574,7 @@ static UIImage* gDummyImage = nil;
     // there is not a cache, yet
     if (cache == nil)
     {
-        imageNeedsUpdate = YES;
-
+        // init the cache. The image may be imported from the disk, if it's been stored already
         cache = [[YasoundDataCacheImage alloc] initWithUrl:url];
         [_cacheImages setObject:cache forKey:key];        
     }
@@ -584,14 +583,16 @@ static UIImage* gDummyImage = nil;
     cache.last_access = [NSDate date];
     
     
-    // cache image is not downloaded yet
+    // cache image is not downloaded yet (or was not store on disk)
     if (cache.image == nil) 
     {
         // let the target know when it's downloaded
         [cache addTarget:target action:selector];
         
         // last try was unsuccessful, retry.
-        if (cache.failed)
+        if (cache.isDownloading)
+            imageNeedsUpdate = NO;
+        else
             imageNeedsUpdate = YES;
 
 //        if (gDummyImage == nil)

@@ -101,8 +101,10 @@ static YasoundDataCacheImageManager* _main;
 @synthesize image;
 @synthesize targets;
 @synthesize receivedData;
-@synthesize failed;
+@synthesize isDownloading;
 
+
+static NSString* _cacheDirectory = nil;
 
 
 - (id)initWithUrl:(NSURL*)aUrl
@@ -111,7 +113,17 @@ static YasoundDataCacheImageManager* _main;
     {
         self.url = aUrl;
         self.targets = [[NSMutableArray alloc] init];
-        self.failed = NO;
+        self.isDownloading = NO;
+        
+        // try to import the image from the disk
+        // first, try to get the local filepath for this url
+        NSString* filepath = nil;
+        NSDictionary* imageRegister = [[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegister"];
+        if (imageRegister != nil)
+            filepath = [imageRegister objectForKey:[self.url absoluteString]];
+        // then, try to load the file
+        if (filepath != nil)
+            self.image = [[UIImage alloc] initWithContentsOfFile:filepath];
     }
     
     return self;
@@ -155,8 +167,6 @@ static YasoundDataCacheImageManager* _main;
 
 - (void)start
 {    
-    self.failed = NO;
-    
     [[YasoundDataCacheImageManager main] addItem:self];
 }
  
@@ -164,6 +174,8 @@ static YasoundDataCacheImageManager* _main;
 
 - (void)launch
 {
+    self.isDownloading = YES;
+    
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:self.url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60.0];
     
     NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -171,7 +183,7 @@ static YasoundDataCacheImageManager* _main;
     if (!connection) 
     {
         NSLog(@"YasoundDataCache requestImageToServer : connection did fail!");
-        failed = YES;
+        self.isDownloading = NO;
         
         [[YasoundDataCacheImageManager main] loop];
         return;
@@ -195,7 +207,7 @@ static YasoundDataCacheImageManager* _main;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    self.failed = YES;
+    self.isDownloading = NO;
     
     [connection release];
     [self.receivedData release];
@@ -215,9 +227,64 @@ static YasoundDataCacheImageManager* _main;
 
     self.image = [[UIImage alloc] initWithData:self.receivedData];
     
+    // we want to store the image on disk.
+    
+    // set the cache directory
+    if (_cacheDirectory == nil)
+    {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES); 
+        _cacheDirectory = [paths objectAtIndex:0]; 
+        _cacheDirectory = [_cacheDirectory stringByAppendingPathComponent:@"images"];
+        [_cacheDirectory retain];
+        
+        NSError* error;
+        BOOL res = [[NSFileManager defaultManager] createDirectoryAtPath:_cacheDirectory withIntermediateDirectories:YES attributes:nil error:&error];
+        
+        // something went wront
+        if (!res)
+        {
+            _cacheDirectory = nil;
+            
+            NSLog(@"error creating the cache directory! Error - %@", [error localizedDescription]);
+        }
+    }
+    
+    // get a unique filepath and store the file
+    if (_cacheDirectory != nil)
+    {
+        CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+        CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+        NSString* filePath = [_cacheDirectory stringByAppendingPathComponent:(NSString *)newUniqueIdString];
+        
+        NSError* error;
+        BOOL res = [self.receivedData writeToFile:filePath options:NSAtomicWrite error:&error];
+
+        // something went wront
+        if (!res)
+        {
+            NSLog(@"error writing the file '%@'! Error - %@", filePath, [error localizedDescription]);
+        }
+        
+        // everything's fine. write the info down to the image register
+        else
+        {
+            NSMutableDictionary* imageRegister = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegister"]];
+            
+            // the info is : the filepath for the url as the key
+            [imageRegister setObject:filePath forKey:[self.url absoluteString]];
+            [[NSUserDefaults standardUserDefaults] setObject:imageRegister forKey:@"imageRegister"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            
+            
+        }
+        
+    }
+
+    
     
 
-    // callback
+    // callback for all registered targets
     for (YasoundDataCacheImageTarget* t in self.targets)
     {
         if ((t.target != nil) && ([t.target respondsToSelector:t.action]))
@@ -232,6 +299,10 @@ static YasoundDataCacheImageManager* _main;
     [self.receivedData release];
     self.receivedData = nil;
     
+    self.isDownloading = NO;
+    
+    
+    // call for next download
     [[YasoundDataCacheImageManager main] loop];    
 }
 
