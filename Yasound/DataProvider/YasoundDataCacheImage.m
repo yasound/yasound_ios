@@ -21,7 +21,8 @@
 @synthesize db;
 @synthesize cacheDirectory;
 
-static NSInteger _dbSizeMax = 1024 * 1024 * 128; // CACHE MAX SIZE : 128Mo
+//static NSInteger _dbSizeMax = 1024 * 1024 * 128; // CACHE MAX SIZE : 128Mo
+static NSInteger _dbSizeMax = 1024 * 1024 * 4; // CACHE MAX SIZE : 8Mo
 
 static YasoundDataCacheImageManager* _main;
 
@@ -174,9 +175,12 @@ static YasoundDataCacheImageManager* _main;
     if (currentRegisteredSize < _dbSizeMax)
         return;
     
+    NSLog(@"YasoundDataCacheImage start Garbage Collector : current size %d vs max size %d", currentRegisteredSize, _dbSizeMax);
+    
     // get all the registered images, ordered from the oldest one to the newer one
     FMResultSet* s = [db executeQuery:@"SELECT * FROM imageRegister ORDER BY last_access ASC"];
     BOOL done = NO;
+    NSInteger counter = 0;
     while (!done && [s next]) 
     {
         NSString* url = [s stringForColumnIndex:0];
@@ -199,7 +203,13 @@ static YasoundDataCacheImageManager* _main;
         // do we need some more?
         currentRegisteredSize -= filesize;
         done = (currentRegisteredSize < _dbSizeMax);
+        
+        counter++;
+        NSLog(@"deleted file %@ for url %@", filepath, url);
     }
+    
+    NSLog(@"\ndeleted %d files", counter);
+
     
     // things back to normal, we are below the limit.
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:currentRegisteredSize] forKey:@"imageRegisterSize"];
@@ -209,7 +219,9 @@ static YasoundDataCacheImageManager* _main;
     // dont have a choice, we have to delete the whole thing
     if (currentRegisteredSize > _dbSizeMax)
     {
-        
+        NSLog(@"extreme case! we are still above the limit : %d vs %d", currentRegisteredSize, _dbSizeMax);
+        NSLog(@"reset the DB and cache!");
+        [self resetDB];
     }
 
     
