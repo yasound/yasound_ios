@@ -18,6 +18,8 @@
 @property (nonatomic, retain) NSMutableArray* fifo;
 @property (nonatomic, retain) FMDatabase* db;
 @property (nonatomic, retain) NSString* cacheDirectory;
+@property (nonatomic, retain) NSMutableDictionary* memoryCacheImages;
+
 
 + (YasoundDataCacheImageManager*)main;
 - (void)addItem:(YasoundDataCacheImage*)item;

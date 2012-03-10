@@ -48,7 +48,7 @@
     NSMutableDictionary* _cacheRadios;
     NSMutableDictionary* _cacheSongs;
     NSMutableDictionary* _cacheFriends;
-    NSMutableDictionary* _cacheImages;
+//    NSMutableDictionary* _cacheImages;
 }
 
 

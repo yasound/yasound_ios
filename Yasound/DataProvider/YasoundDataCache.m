@@ -79,8 +79,8 @@ static YasoundDataCache* _main = nil;
       _cacheFriends = [[NSMutableDictionary alloc] init];
       [_cacheFriends retain];
       
-      _cacheImages = [[NSMutableDictionary alloc] init];
-      [_cacheImages retain];
+//      _cacheImages = [[NSMutableDictionary alloc] init];
+//      [_cacheImages retain];
   }
   
   return self;
@@ -92,7 +92,7 @@ static YasoundDataCache* _main = nil;
     [_cacheRadios release];
     [_cacheSongs release];
     [_cacheFriends release];
-    [_cacheImages release];
+//    [_cacheImages release];
     
     [super dealloc];
 }
@@ -565,7 +565,7 @@ static UIImage* gDummyImage = nil;
     NSString* key = [url absoluteString];
     
     // is there a cache for this image?
-    YasoundDataCacheImage* cache = [_cacheImages objectForKey:key];
+    YasoundDataCacheImage* cache = [[YasoundDataCacheImageManager main].memoryCacheImages objectForKey:key];
 
     UIImage* image = nil;
     BOOL imageNeedsUpdate = NO;
@@ -575,7 +575,7 @@ static UIImage* gDummyImage = nil;
     {
         // init the cache. The image may be imported from the disk, if it's been stored already
         cache = [[YasoundDataCacheImage alloc] initWithUrl:url];
-        [_cacheImages setObject:cache forKey:key];        
+        [[YasoundDataCacheImageManager main].memoryCacheImages setObject:cache forKey:key];        
     }
 
     // set the last_access date
@@ -631,7 +631,7 @@ static UIImage* gDummyImage = nil;
 {
     NSString* key = [url absoluteString];
     
-    YasoundDataCacheImage* cache = [_cacheImages objectForKey:key];
+    YasoundDataCacheImage* cache = [[YasoundDataCacheImageManager main].memoryCacheImages objectForKey:key];
     if (cache == nil)
         return;
     

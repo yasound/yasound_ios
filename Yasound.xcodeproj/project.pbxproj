@@ -1320,11 +1320,6 @@
 		BCC4141B150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
 		BCC4141C150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
 		BCC4141D150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
-		BCC41420150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */; };
-		BCC41421150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */; };
-		BCC41422150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */; };
-		BCC41423150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */; };
-		BCC41424150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */; };
 		BCC4143E150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
 		BCC4143F150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
 		BCC41440150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
@@ -2229,8 +2224,6 @@
 		BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionView.m; sourceTree = "<group>"; };
 		BCC41417150A9ED100A5150B /* YasoundDataCacheImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCacheImage.h; sourceTree = "<group>"; };
 		BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCacheImage.m; sourceTree = "<group>"; };
-		BCC4141E150AF5A600A5150B /* YasoundDataCacheGC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCacheGC.h; sourceTree = "<group>"; };
-		BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCacheGC.m; sourceTree = "<group>"; };
 		BCC41433150B00D700A5150B /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = ThirdParties/fmdb/src/FMDatabase.h; sourceTree = "<group>"; };
 		BCC41434150B00D700A5150B /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = ThirdParties/fmdb/src/FMDatabase.m; sourceTree = "<group>"; };
 		BCC41435150B00D700A5150B /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = ThirdParties/fmdb/src/FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -2629,8 +2622,6 @@
 				40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */,
 				BCC41417150A9ED100A5150B /* YasoundDataCacheImage.h */,
 				BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */,
-				BCC4141E150AF5A600A5150B /* YasoundDataCacheGC.h */,
-				BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */,
 				BC5C900D14F2A4EB00C7D01E /* YasoundDataCache.h */,
 				BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */,
 				B138AA6614E2BAFC0069E08A /* SongUploader.h */,
@@ -5036,7 +5027,6 @@
 				BC188BD41507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BE01507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141D150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
-				BCC41424150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */,
 				BCC41442150B00D700A5150B /* FMDatabase.m in Sources */,
 				BCC41447150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
 				BCC4144C150B00D700A5150B /* FMDatabasePool.m in Sources */,
@@ -5200,7 +5190,6 @@
 				BC188BD11507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDD1507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141A150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
-				BCC41421150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */,
 				BCC4143F150B00D700A5150B /* FMDatabase.m in Sources */,
 				BCC41444150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
 				BCC41449150B00D700A5150B /* FMDatabasePool.m in Sources */,
@@ -5365,7 +5354,6 @@
 				BC188BD31507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDF1507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141C150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
-				BCC41423150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */,
 				BCC41441150B00D700A5150B /* FMDatabase.m in Sources */,
 				BCC41446150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
 				BCC4144B150B00D700A5150B /* FMDatabasePool.m in Sources */,
@@ -5529,7 +5517,6 @@
 				BC188BD01507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDC1507647900E38692 /* SongLocal.m in Sources */,
 				BCC41419150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
-				BCC41420150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */,
 				BCC4143E150B00D700A5150B /* FMDatabase.m in Sources */,
 				BCC41443150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
 				BCC41448150B00D700A5150B /* FMDatabasePool.m in Sources */,
@@ -5694,7 +5681,6 @@
 				BC188BD21507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDE1507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141B150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
-				BCC41422150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */,
 				BCC41440150B00D700A5150B /* FMDatabase.m in Sources */,
 				BCC41445150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
 				BCC4144A150B00D700A5150B /* FMDatabasePool.m in Sources */,

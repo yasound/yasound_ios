@@ -20,6 +20,8 @@
 @synthesize fifo;
 @synthesize db;
 @synthesize cacheDirectory;
+@synthesize memoryCacheImages;
+
 
 static NSInteger _dbSizeMax = 1024 * 1024 * 128; // CACHE MAX SIZE : 128Mo
 
@@ -64,6 +66,9 @@ static YasoundDataCacheImageManager* _main;
         [self.db close];
         [self.db release];
         
+        // delete memory cache
+        [self.memoryCacheImages release];
+        
         NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
         NSString* dbPath = [paths objectAtIndex:0]; 
         dbPath = [dbPath stringByAppendingPathComponent:@"cache.db"];
@@ -87,6 +92,10 @@ static YasoundDataCacheImageManager* _main;
 {
     // memory object fifo
     self.fifo = [[NSMutableArray alloc] init];
+
+    // memory cache images
+    self.memoryCacheImages = [[NSMutableDictionary alloc] init];
+
     
     // registered size accu
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:0] forKey:@"imageRegisterSize"];
@@ -195,6 +204,10 @@ static YasoundDataCacheImageManager* _main;
             NSLog(@"error deleting the file from the cache disk! Error - %@", [error localizedDescription]);
             continue;
         }
+        
+        // remove the object from the memory cache
+        [self.memoryCacheImages removeObjectForKey:url];
+        
         
         // remove the entry from the DB
          [db executeQuery:@"DELETE FROM imageRegister WHERE url=?", url];
