@@ -19,6 +19,9 @@
 
 @synthesize fifo;
 @synthesize db;
+@synthesize cacheDirectory;
+
+static NSInteger _dbSizeMax = 1024 * 1024 * 128; // CACHE MAX SIZE : 128Mo
 
 static YasoundDataCacheImageManager* _main;
 
@@ -36,31 +39,98 @@ static YasoundDataCacheImageManager* _main;
 {
     if (self = [super init])
     {
-        self.fifo = [[NSMutableArray alloc] init];
+        [self initDB];
+            
+    }
+    return self;
+}
+
+
+- (void)resetDB
+{
+    // empty fifo
+    [self.fifo release];
+    
+    // delete the cache directory
+    NSError* error;
+    BOOL res = [[NSFileManager defaultManager] removeItemAtPath:self.cacheDirectory error:&error];
+    if (!res)
+    {
+        NSLog(@"error deleting the cache directory! Error - %@", [error localizedDescription]);
+    }
+    else 
+    {
+        // delete db file
+        [self.db close];
+        [self.db release];
         
         NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
         NSString* dbPath = [paths objectAtIndex:0]; 
         dbPath = [dbPath stringByAppendingPathComponent:@"cache.db"];
-        
-        self.db = [FMDatabase databaseWithPath:dbPath];
-        if (![self.db open]) 
+
+        BOOL res = [[NSFileManager defaultManager] removeItemAtPath:dbPath error:&error];
+        if (!res)
         {
-            NSLog(@"YasoundDataCache error : could not open the db file.");
-            [self.db release];
-        }      
-        else 
-        {
-            BOOL res = [self.db tableExists:@"imageRegister"];
-            if (!res)
-            {
-                NSLog(@"YasoundDataCache create database imageRegister table");
-                [self.db executeUpdate:@"CREATE TABLE imageRegister (url VARCHAR(255), filepath VARCHAR(255), last_access timestamp, filesize INTEGER)"];
-            }
+            NSLog(@"error deleting the DB file! Error - %@", [error localizedDescription]);
         }
+
         
     }
-    return self;
+
+    
+    // and init the whole thing again... 
+    [self initDB];
 }
+
+
+- (void)initDB
+{
+    // memory object fifo
+    self.fifo = [[NSMutableArray alloc] init];
+    
+    // registered size accu
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:0] forKey:@"imageRegisterSize"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+
+    // set the cache directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES); 
+    self.cacheDirectory = [paths objectAtIndex:0]; 
+    self.cacheDirectory = [self.cacheDirectory stringByAppendingPathComponent:@"images"];
+    
+    NSError* error;
+    BOOL res = [[NSFileManager defaultManager] createDirectoryAtPath:self.cacheDirectory withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    // something went wront
+    if (!res)
+    {
+        self.cacheDirectory = nil;
+        NSLog(@"error creating the cache directory! Error - %@", [error localizedDescription]);
+    }
+
+    
+    // create the DB file
+    paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
+    NSString* dbPath = [paths objectAtIndex:0]; 
+    dbPath = [dbPath stringByAppendingPathComponent:@"cache.db"];
+    
+    self.db = [FMDatabase databaseWithPath:dbPath];
+    if (![self.db open]) 
+    {
+        NSLog(@"YasoundDataCache error : could not open the db file.");
+        [self.db release];
+    }      
+    else 
+    {
+        BOOL res = [self.db tableExists:@"imageRegister"];
+        if (!res)
+        {
+            NSLog(@"YasoundDataCache create database imageRegister table");
+            [self.db executeUpdate:@"CREATE TABLE imageRegister (url VARCHAR(255), filepath VARCHAR(255), last_access timestamp, filesize INTEGER)"];
+        }
+    }
+}
+
 
 
 - (void)dump
@@ -96,6 +166,55 @@ static YasoundDataCacheImageManager* _main;
     
     NSLog(@"end.\n----------------------------------------------\n");
 }
+
+
+
+- (void)startGC:(NSInteger)currentRegisteredSize
+{
+    if (currentRegisteredSize < _dbSizeMax)
+        return;
+    
+    // get all the registered images, ordered from the oldest one to the newer one
+    FMResultSet* s = [db executeQuery:@"SELECT * FROM imageRegister ORDER BY last_access ASC"];
+    BOOL done = NO;
+    while (!done && [s next]) 
+    {
+        NSString* url = [s stringForColumnIndex:0];
+        NSString* filepath = [s stringForColumnIndex:1];
+        NSUInteger filesize = [s intForColumnIndex:3];
+        
+        // delete the file
+        NSError* error;
+        BOOL res = [[NSFileManager defaultManager] removeItemAtPath:filepath error:&error];
+        
+        if (!res)
+        {
+            NSLog(@"error deleting the file from the cache disk! Error - %@", [error localizedDescription]);
+            continue;
+        }
+        
+        // remove the entry from the DB
+         [db executeQuery:@"DELETE FROM imageRegister WHERE url=?", url];
+
+        // do we need some more?
+        currentRegisteredSize -= filesize;
+        done = (currentRegisteredSize < _dbSizeMax);
+    }
+    
+    // things back to normal, we are below the limit.
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:currentRegisteredSize] forKey:@"imageRegisterSize"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    // extreme case : there were error in deleting the files, and the cache is still over the limit
+    // dont have a choice, we have to delete the whole thing
+    if (currentRegisteredSize > _dbSizeMax)
+    {
+        
+    }
+
+    
+}
+
 
 
 - (void)dealloc
@@ -173,7 +292,6 @@ static YasoundDataCacheImageManager* _main;
 @synthesize action;
 
 
-static NSString* _cacheDirectory = nil;
 
 
 - (id)initWithUrl:(NSURL*)aUrl
@@ -184,15 +302,13 @@ static NSString* _cacheDirectory = nil;
         self.targets = [[NSMutableArray alloc] init];
         self.isDownloading = NO;
         
-//        // try to import the image from the disk
-//        // first, try to get the local filepath for this url
-//        NSString* filepath = nil;
-//        NSDictionary* imageRegister = [[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegister"];
-//        if (imageRegister != nil)
-//            filepath = [imageRegister objectForKey:[self.url absoluteString]];
-//        // then, try to load the file
-//        if (filepath != nil)
-//            self.image = [[UIImage alloc] initWithContentsOfFile:filepath];
+        // try to import the image from the disk
+        FMResultSet* s = [[YasoundDataCacheImageManager main].db executeQuery:@"SELECT * FROM imageRegister WHERE url=?", self.url];
+        if ([s next]) 
+        {
+            NSString* filepath = [s stringForColumnIndex:1];
+            self.image = [[UIImage alloc] initWithContentsOfFile:filepath];
+        }
     }
     
     return self;
@@ -309,33 +425,13 @@ static NSString* _cacheDirectory = nil;
     self.image = [[UIImage alloc] initWithData:self.receivedData];
     
     // we want to store the image on disk.
-    
-    // set the cache directory
-    if (_cacheDirectory == nil)
-    {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES); 
-        _cacheDirectory = [paths objectAtIndex:0]; 
-        _cacheDirectory = [_cacheDirectory stringByAppendingPathComponent:@"images"];
-        [_cacheDirectory retain];
-        
-        NSError* error;
-        BOOL res = [[NSFileManager defaultManager] createDirectoryAtPath:_cacheDirectory withIntermediateDirectories:YES attributes:nil error:&error];
-        
-        // something went wront
-        if (!res)
-        {
-            _cacheDirectory = nil;
-            
-            NSLog(@"error creating the cache directory! Error - %@", [error localizedDescription]);
-        }
-    }
-    
+
     // get a unique filepath and store the file
-    if (_cacheDirectory != nil)
+    if ([YasoundDataCacheImageManager main].cacheDirectory != nil)
     {
         CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
         CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
-        NSString* filePath = [_cacheDirectory stringByAppendingPathComponent:(NSString *)newUniqueIdString];
+        NSString* filePath = [[YasoundDataCacheImageManager main].cacheDirectory stringByAppendingPathComponent:(NSString *)newUniqueIdString];
         
         NSError* error;
         BOOL res = [self.receivedData writeToFile:filePath options:NSAtomicWrite error:&error];
@@ -352,6 +448,17 @@ static NSString* _cacheDirectory = nil;
             NSDate* now = [NSDate date];
             
             [[YasoundDataCacheImageManager main].db executeUpdate:@"INSERT INTO imageRegister VALUES (?,?,?,?)", [self.url absoluteString], filePath, now, [NSNumber numberWithInt:self.receivedData.length]];
+            
+            // and update the cache size count
+            NSInteger imageRegisterSize = [[[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegisterSize"] integerValue];
+            imageRegisterSize += self.receivedData.length;
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:imageRegisterSize] forKey:@"imageRegisterSize"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            
+            // check if GC is necessary
+            [[YasoundDataCacheImageManager main] startGC:imageRegisterSize];
+            
             
 //            NSMutableDictionary* imageRegister = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegister"]];
 //            
