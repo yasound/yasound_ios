@@ -16,7 +16,9 @@
 //
 
 @implementation YasoundDataCacheImageManager
+
 @synthesize fifo;
+@synthesize db;
 
 static YasoundDataCacheImageManager* _main;
 
@@ -35,9 +37,39 @@ static YasoundDataCacheImageManager* _main;
     if (self = [super init])
     {
         self.fifo = [[NSMutableArray alloc] init];
+        
+        NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
+        NSString* dbPath = [paths objectAtIndex:0]; 
+        dbPath = [dbPath stringByAppendingPathComponent:@"cache.db"];
+        
+        self.db = [FMDatabase databaseWithPath:dbPath];
+        if (![self.db open]) 
+        {
+            NSLog(@"YasoundDataCache error : could not open the db file.");
+            [self.db release];
+        }      
+        else 
+        {
+            BOOL res = [self.db tableExists:@"imageRegister"];
+            if (!res)
+            {
+                NSLog(@"YasoundDataCache create database imageRegister table");
+                [self.db executeUpdate:@"CREATE TABLE imageRegister (url VARCHAR(255), filepath VARCHAR(255), last_access timestamp, filesize INTEGER)"];
+            }
+        }
+        
     }
     return self;
 }
+
+
+- (void)dealloc
+{
+    [self.db close];
+    [self.db release];
+    [super dealloc];
+}
+
 
 - (void)addItem:(YasoundDataCacheImage*)item
 {
@@ -102,6 +134,8 @@ static YasoundDataCacheImageManager* _main;
 @synthesize targets;
 @synthesize receivedData;
 @synthesize isDownloading;
+@synthesize target;
+@synthesize action;
 
 
 static NSString* _cacheDirectory = nil;
@@ -115,15 +149,15 @@ static NSString* _cacheDirectory = nil;
         self.targets = [[NSMutableArray alloc] init];
         self.isDownloading = NO;
         
-        // try to import the image from the disk
-        // first, try to get the local filepath for this url
-        NSString* filepath = nil;
-        NSDictionary* imageRegister = [[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegister"];
-        if (imageRegister != nil)
-            filepath = [imageRegister objectForKey:[self.url absoluteString]];
-        // then, try to load the file
-        if (filepath != nil)
-            self.image = [[UIImage alloc] initWithContentsOfFile:filepath];
+//        // try to import the image from the disk
+//        // first, try to get the local filepath for this url
+//        NSString* filepath = nil;
+//        NSDictionary* imageRegister = [[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegister"];
+//        if (imageRegister != nil)
+//            filepath = [imageRegister objectForKey:[self.url absoluteString]];
+//        // then, try to load the file
+//        if (filepath != nil)
+//            self.image = [[UIImage alloc] initWithContentsOfFile:filepath];
     }
     
     return self;
@@ -165,9 +199,24 @@ static NSString* _cacheDirectory = nil;
 }
 
 
-- (void)start
+- (void)start:(id)target action:(SEL)action
 {    
+    self.target = target;
+    self.action = action;
+    
     [[YasoundDataCacheImageManager main] addItem:self];
+}
+
+- (void)updateTimestamp
+{
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"]; //this is the sqlite's format
+    NSDate* now = [NSDate date];
+    NSString* dateStr = [formatter stringFromDate:now];
+
+    [[YasoundDataCacheImageManager main].db executeUpdate:@"UPDATE imageRegister SET last_access=? WHERE url=?", dateStr, [self.url absoluteString]];
+    
+    [formatter release];
 }
  
 
@@ -268,12 +317,23 @@ static NSString* _cacheDirectory = nil;
         // everything's fine. write the info down to the image register
         else
         {
-            NSMutableDictionary* imageRegister = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegister"]];
+            NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"]; //this is the sqlite's format
+            NSDate* now = [NSDate date];
+            NSString* dateStr = [formatter stringFromDate:now];
+            //NSDate *date = [formatter dateFromString:score.datetime];
             
-            // the info is : the filepath for the url as the key
-            [imageRegister setObject:filePath forKey:[self.url absoluteString]];
-            [[NSUserDefaults standardUserDefaults] setObject:imageRegister forKey:@"imageRegister"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [[YasoundDataCacheImageManager main].db executeUpdate:@"INSERT INTO imageRegister VALUES (?,?,?,?)", [self.url absoluteString], filePath, dateStr, self.receivedData.length];
+            
+            [formatter release];
+            
+//            NSMutableDictionary* imageRegister = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegister"]];
+//            
+//            // the info is : the filepath for the url as the key
+//            [imageRegister setObject:filePath forKey:[self.url absoluteString]];
+//            [[NSUserDefaults standardUserDefaults] setObject:imageRegister forKey:@"imageRegister"];
+//            [[NSUserDefaults standardUserDefaults] synchronize];
             
             
             

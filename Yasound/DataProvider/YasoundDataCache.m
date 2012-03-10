@@ -81,8 +81,6 @@ static YasoundDataCache* _main = nil;
       
       _cacheImages = [[NSMutableDictionary alloc] init];
       [_cacheImages retain];
-
-      
   }
   
   return self;
@@ -95,6 +93,7 @@ static YasoundDataCache* _main = nil;
     [_cacheSongs release];
     [_cacheFriends release];
     [_cacheImages release];
+    
     [super dealloc];
 }
 
@@ -580,7 +579,7 @@ static UIImage* gDummyImage = nil;
     }
 
     // set the last_access date
-    cache.last_access = [NSDate date];
+    [cache updateTimestamp];
     
     
     // cache image is not downloaded yet (or was not store on disk)
@@ -616,6 +615,8 @@ static UIImage* gDummyImage = nil;
     
     return image;
 }
+
+
 
 
 

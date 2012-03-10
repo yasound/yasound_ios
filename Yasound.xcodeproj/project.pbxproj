@@ -1320,6 +1320,36 @@
 		BCC4141B150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
 		BCC4141C150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
 		BCC4141D150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
+		BCC41420150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */; };
+		BCC41421150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */; };
+		BCC41422150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */; };
+		BCC41423150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */; };
+		BCC41424150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */; };
+		BCC4143E150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
+		BCC4143F150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
+		BCC41440150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
+		BCC41441150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
+		BCC41442150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
+		BCC41443150B00D700A5150B /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */; };
+		BCC41444150B00D700A5150B /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */; };
+		BCC41445150B00D700A5150B /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */; };
+		BCC41446150B00D700A5150B /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */; };
+		BCC41447150B00D700A5150B /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */; };
+		BCC41448150B00D700A5150B /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41438150B00D700A5150B /* FMDatabasePool.m */; };
+		BCC41449150B00D700A5150B /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41438150B00D700A5150B /* FMDatabasePool.m */; };
+		BCC4144A150B00D700A5150B /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41438150B00D700A5150B /* FMDatabasePool.m */; };
+		BCC4144B150B00D700A5150B /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41438150B00D700A5150B /* FMDatabasePool.m */; };
+		BCC4144C150B00D700A5150B /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41438150B00D700A5150B /* FMDatabasePool.m */; };
+		BCC4144D150B00D700A5150B /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */; };
+		BCC4144E150B00D700A5150B /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */; };
+		BCC4144F150B00D700A5150B /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */; };
+		BCC41450150B00D700A5150B /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */; };
+		BCC41451150B00D700A5150B /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */; };
+		BCC41457150B00D700A5150B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143D150B00D700A5150B /* FMResultSet.m */; };
+		BCC41458150B00D700A5150B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143D150B00D700A5150B /* FMResultSet.m */; };
+		BCC41459150B00D700A5150B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143D150B00D700A5150B /* FMResultSet.m */; };
+		BCC4145A150B00D700A5150B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143D150B00D700A5150B /* FMResultSet.m */; };
+		BCC4145B150B00D700A5150B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143D150B00D700A5150B /* FMResultSet.m */; };
 		BCC6AD3E14E87757001AC34B /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD3C14E87757001AC34B /* avatarDummy.png */; };
 		BCC6AD3F14E87757001AC34B /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD3C14E87757001AC34B /* avatarDummy.png */; };
 		BCC6AD4014E87757001AC34B /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD3C14E87757001AC34B /* avatarDummy.png */; };
@@ -2199,6 +2229,18 @@
 		BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionView.m; sourceTree = "<group>"; };
 		BCC41417150A9ED100A5150B /* YasoundDataCacheImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCacheImage.h; sourceTree = "<group>"; };
 		BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCacheImage.m; sourceTree = "<group>"; };
+		BCC4141E150AF5A600A5150B /* YasoundDataCacheGC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCacheGC.h; sourceTree = "<group>"; };
+		BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCacheGC.m; sourceTree = "<group>"; };
+		BCC41433150B00D700A5150B /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = ThirdParties/fmdb/src/FMDatabase.h; sourceTree = "<group>"; };
+		BCC41434150B00D700A5150B /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = ThirdParties/fmdb/src/FMDatabase.m; sourceTree = "<group>"; };
+		BCC41435150B00D700A5150B /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = ThirdParties/fmdb/src/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = ThirdParties/fmdb/src/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		BCC41437150B00D700A5150B /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = ThirdParties/fmdb/src/FMDatabasePool.h; sourceTree = "<group>"; };
+		BCC41438150B00D700A5150B /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = ThirdParties/fmdb/src/FMDatabasePool.m; sourceTree = "<group>"; };
+		BCC41439150B00D700A5150B /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = ThirdParties/fmdb/src/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = ThirdParties/fmdb/src/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		BCC4143C150B00D700A5150B /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = ThirdParties/fmdb/src/FMResultSet.h; sourceTree = "<group>"; };
+		BCC4143D150B00D700A5150B /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = ThirdParties/fmdb/src/FMResultSet.m; sourceTree = "<group>"; };
 		BCC6AD3C14E87757001AC34B /* avatarDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatarDummy.png; path = resources/RadioSelection/avatarDummy.png; sourceTree = SOURCE_ROOT; };
 		BCC6AD3D14E87757001AC34B /* avatarDummy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatarDummy@2x.png"; path = "resources/RadioSelection/avatarDummy@2x.png"; sourceTree = SOURCE_ROOT; };
 		BCC6AD5114E8800F001AC34B /* ChartBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChartBackground.png; sourceTree = "<group>"; };
@@ -2587,6 +2629,8 @@
 				40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */,
 				BCC41417150A9ED100A5150B /* YasoundDataCacheImage.h */,
 				BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */,
+				BCC4141E150AF5A600A5150B /* YasoundDataCacheGC.h */,
+				BCC4141F150AF5A600A5150B /* YasoundDataCacheGC.m */,
 				BC5C900D14F2A4EB00C7D01E /* YasoundDataCache.h */,
 				BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */,
 				B138AA6614E2BAFC0069E08A /* SongUploader.h */,
@@ -3229,6 +3273,23 @@
 			path = MyYasound;
 			sourceTree = "<group>";
 		};
+		BCC41432150B00C800A5150B /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				BCC41433150B00D700A5150B /* FMDatabase.h */,
+				BCC41434150B00D700A5150B /* FMDatabase.m */,
+				BCC41435150B00D700A5150B /* FMDatabaseAdditions.h */,
+				BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */,
+				BCC41437150B00D700A5150B /* FMDatabasePool.h */,
+				BCC41438150B00D700A5150B /* FMDatabasePool.m */,
+				BCC41439150B00D700A5150B /* FMDatabaseQueue.h */,
+				BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */,
+				BCC4143C150B00D700A5150B /* FMResultSet.h */,
+				BCC4143D150B00D700A5150B /* FMResultSet.m */,
+			);
+			name = fmdb;
+			sourceTree = "<group>";
+		};
 		BCC6AD5014E8800F001AC34B /* Stats */ = {
 			isa = PBXGroup;
 			children = (
@@ -3290,6 +3351,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				BCC41432150B00C800A5150B /* fmdb */,
 				BC10391214F7DA08007C5496 /* RCSwitch */,
 				B1F8868514E5B44300256383 /* MBProgressHUD */,
 				B1BBEE9914E2DA9500E7E0EA /* TSLibraryImport */,
@@ -4974,6 +5036,12 @@
 				BC188BD41507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BE01507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141D150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
+				BCC41424150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */,
+				BCC41442150B00D700A5150B /* FMDatabase.m in Sources */,
+				BCC41447150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
+				BCC4144C150B00D700A5150B /* FMDatabasePool.m in Sources */,
+				BCC41451150B00D700A5150B /* FMDatabaseQueue.m in Sources */,
+				BCC4145B150B00D700A5150B /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5132,6 +5200,12 @@
 				BC188BD11507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDD1507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141A150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
+				BCC41421150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */,
+				BCC4143F150B00D700A5150B /* FMDatabase.m in Sources */,
+				BCC41444150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
+				BCC41449150B00D700A5150B /* FMDatabasePool.m in Sources */,
+				BCC4144E150B00D700A5150B /* FMDatabaseQueue.m in Sources */,
+				BCC41458150B00D700A5150B /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5291,6 +5365,12 @@
 				BC188BD31507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDF1507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141C150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
+				BCC41423150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */,
+				BCC41441150B00D700A5150B /* FMDatabase.m in Sources */,
+				BCC41446150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
+				BCC4144B150B00D700A5150B /* FMDatabasePool.m in Sources */,
+				BCC41450150B00D700A5150B /* FMDatabaseQueue.m in Sources */,
+				BCC4145A150B00D700A5150B /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5449,6 +5529,12 @@
 				BC188BD01507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDC1507647900E38692 /* SongLocal.m in Sources */,
 				BCC41419150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
+				BCC41420150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */,
+				BCC4143E150B00D700A5150B /* FMDatabase.m in Sources */,
+				BCC41443150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
+				BCC41448150B00D700A5150B /* FMDatabasePool.m in Sources */,
+				BCC4144D150B00D700A5150B /* FMDatabaseQueue.m in Sources */,
+				BCC41457150B00D700A5150B /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5608,6 +5694,12 @@
 				BC188BD21507638100E38692 /* LocalSongInfoViewController.m in Sources */,
 				BC188BDE1507647900E38692 /* SongLocal.m in Sources */,
 				BCC4141B150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
+				BCC41422150AF5A600A5150B /* YasoundDataCacheGC.m in Sources */,
+				BCC41440150B00D700A5150B /* FMDatabase.m in Sources */,
+				BCC41445150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
+				BCC4144A150B00D700A5150B /* FMDatabasePool.m in Sources */,
+				BCC4144F150B00D700A5150B /* FMDatabaseQueue.m in Sources */,
+				BCC41459150B00D700A5150B /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
