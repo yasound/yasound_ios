@@ -244,16 +244,8 @@ static NSString* _cacheDirectory = nil;
 
 - (void)updateTimestamp
 {
-    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"]; //this is the sqlite's format
     NSDate* now = [NSDate date];
-    NSString* dateStr = [formatter stringFromDate:now];
-
-    //LBDEBUG TEST
-//    [[YasoundDataCacheImageManager main].db executeUpdate:@"UPDATE imageRegister SET last_access=? WHERE url=?", dateStr, [self.url absoluteString]];
     [[YasoundDataCacheImageManager main].db executeUpdate:@"UPDATE imageRegister SET last_access=? WHERE url=?", now, [self.url absoluteString]];
-    
-    [formatter release];
 }
 
 
@@ -357,17 +349,9 @@ static NSString* _cacheDirectory = nil;
         // everything's fine. write the info down to the image register
         else
         {
-            NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"]; //this is the sqlite's format
             NSDate* now = [NSDate date];
-            NSString* dateStr = [formatter stringFromDate:now];
-            //NSDate *date = [formatter dateFromString:score.datetime];
             
-//LBDEBUG TEST            
-//            [[YasoundDataCacheImageManager main].db executeUpdate:@"INSERT INTO imageRegister VALUES (?,?,?,?)", [self.url absoluteString], filePath, dateStr, [NSNumber numberWithInt:self.receivedData.length]];
             [[YasoundDataCacheImageManager main].db executeUpdate:@"INSERT INTO imageRegister VALUES (?,?,?,?)", [self.url absoluteString], filePath, now, [NSNumber numberWithInt:self.receivedData.length]];
-            
-            [formatter release];
             
 //            NSMutableDictionary* imageRegister = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegister"]];
 //            
