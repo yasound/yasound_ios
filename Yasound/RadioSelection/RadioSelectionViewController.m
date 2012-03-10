@@ -20,7 +20,6 @@
 
 
 #define TIMEPROFILE_CELL_BUILD @"TimeProfileCellBuild"
-//#define TIMEPROFILE_CELL_UPDATE @"TimeProfileCellUpdate"
 
 //#define TEST_FAKE 0
 
@@ -189,8 +188,7 @@
     if (!_radios)
         return nil;
     
-    //LBDEBUG
-    [[TimeProfile main] begin:TIMEPROFILE_CELL_BUILD];
+    //[[TimeProfile main] begin:TIMEPROFILE_CELL_BUILD];
     
     RadioSelectionTableViewCell* cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
@@ -206,10 +204,9 @@
         [cell updateWithRadio:radio rowIndex:rowIndex];
     }
 
-    //LBDEBUG
-    [[TimeProfile main] end:TIMEPROFILE_CELL_BUILD];
-//    [[TimeProfile main] logInterval:TIMEPROFILE_CELL_BUILD inMilliseconds:YES];
-    [[TimeProfile main] logAverageInterval:TIMEPROFILE_CELL_BUILD inMilliseconds:YES];
+    //[[TimeProfile main] end:TIMEPROFILE_CELL_BUILD];
+    //[[TimeProfile main] logInterval:TIMEPROFILE_CELL_BUILD inMilliseconds:YES];
+    //[[TimeProfile main] logAverageInterval:TIMEPROFILE_CELL_BUILD inMilliseconds:YES];
 
     
     

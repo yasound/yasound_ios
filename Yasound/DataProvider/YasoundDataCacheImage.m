@@ -21,8 +21,7 @@
 @synthesize db;
 @synthesize cacheDirectory;
 
-//static NSInteger _dbSizeMax = 1024 * 1024 * 128; // CACHE MAX SIZE : 128Mo
-static NSInteger _dbSizeMax = 1024 * 1024 * 4; // CACHE MAX SIZE : 8Mo
+static NSInteger _dbSizeMax = 1024 * 1024 * 128; // CACHE MAX SIZE : 128Mo
 
 static YasoundDataCacheImageManager* _main;
 
