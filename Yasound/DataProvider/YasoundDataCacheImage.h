@@ -52,7 +52,7 @@
 
 
 - (id)initWithUrl:(NSURL*)url;
-- (void)start:(id)target action:(SEL)action; // action for downloaded notification
+- (void)start;
 - (void)updateTimestamp;
 
 

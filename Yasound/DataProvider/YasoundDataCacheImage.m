@@ -7,7 +7,7 @@
 //
 
 #import "YasoundDataCacheImage.h"
-
+#import "FMDatabaseAdditions.h"
 
 //........................................................................................
 //
@@ -65,9 +65,15 @@ static YasoundDataCacheImageManager* _main;
 
 - (void)dump
 {
+    NSUInteger count = [db intForQuery:@"select count(*) from imageRegister"];
+    if (count == 0)
+        return;
+    
     NSLog(@"\n\n-------------------------------------------\nSQLITE imageRegister dump\n");
     
-    FMResultSet* s = [db executeQuery:@"SELECT COUNT(*) FROM imageRegister"];
+    NSLog(@"%d elements in db", count);
+    
+    FMResultSet* s = [db executeQuery:@"SELECT * FROM imageRegister"];
     NSInteger counter = 0;
     while ([s next]) 
     {
@@ -77,11 +83,12 @@ static YasoundDataCacheImageManager* _main;
         NSUInteger filesize = [s intForColumnIndex:3];
         
         NSRange range = NSMakeRange(url.length - 8, 8);
-        NSString* short_url = [url substringWithRange:range];
-        short_url = [@"..." stringByAppendingString:short_url];
+        NSMutableString* short_url = @"...";
+        short_url = [short_url stringByAppendingString:[url substringWithRange:range]];
+        
         range = NSMakeRange(filepath.length - 8, 8);
-        NSString* short_filepath = [filepath substringWithRange:range];
-        short_filepath = [@"..." stringByAppendingString:short_filepath];
+        NSMutableString* short_filepath = @"...";
+        short_filepath = [short_filepath stringByAppendingString:[filepath substringWithRange:range]];
         
         NSLog(@"%d. %@ - %@ - %@ - %d", counter, short_url, short_filepath, last_access, filesize);
         counter++;
@@ -227,7 +234,7 @@ static NSString* _cacheDirectory = nil;
 }
 
 
-- (void)start:(id)target action:(SEL)action
+- (void)start
 {    
     self.target = target;
     self.action = action;
@@ -355,7 +362,7 @@ static NSString* _cacheDirectory = nil;
             //NSDate *date = [formatter dateFromString:score.datetime];
             
             
-            [[YasoundDataCacheImageManager main].db executeUpdate:@"INSERT INTO imageRegister VALUES (?,?,?,?)", [self.url absoluteString], filePath, dateStr, self.receivedData.length];
+            [[YasoundDataCacheImageManager main].db executeUpdate:@"INSERT INTO imageRegister VALUES (?,?,?,?)", [self.url absoluteString], filePath, dateStr, [NSNumber numberWithInt:self.receivedData.length]];
             
             [formatter release];
             
