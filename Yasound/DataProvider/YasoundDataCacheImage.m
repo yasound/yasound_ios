@@ -63,6 +63,34 @@ static YasoundDataCacheImageManager* _main;
 }
 
 
+- (void)dump
+{
+    NSLog(@"\n\n-------------------------------------------\nSQLITE imageRegister dump\n");
+    
+    FMResultSet* s = [db executeQuery:@"SELECT COUNT(*) FROM imageRegister"];
+    NSInteger counter = 0;
+    while ([s next]) 
+    {
+        NSString* url = [s stringForColumnIndex:0];
+        NSString* filepath = [s stringForColumnIndex:1];
+        NSDate* last_access = [s dateForColumnIndex:2];
+        NSUInteger filesize = [s intForColumnIndex:3];
+        
+        NSRange range = NSMakeRange(url.length - 8, 8);
+        NSString* short_url = [url substringWithRange:range];
+        short_url = [@"..." stringByAppendingString:short_url];
+        range = NSMakeRange(filepath.length - 8, 8);
+        NSString* short_filepath = [filepath substringWithRange:range];
+        short_filepath = [@"..." stringByAppendingString:short_filepath];
+        
+        NSLog(@"%d. %@ - %@ - %@ - %d", counter, short_url, short_filepath, last_access, filesize);
+        counter++;
+    }
+    
+    NSLog(@"end.\n----------------------------------------------\n");
+}
+
+
 - (void)dealloc
 {
     [self.db close];
@@ -218,6 +246,9 @@ static NSString* _cacheDirectory = nil;
     
     [formatter release];
 }
+
+
+
  
 
 

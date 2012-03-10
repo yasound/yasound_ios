@@ -613,6 +613,10 @@ static UIImage* gDummyImage = nil;
         [cache start];
     
     
+    //LBDEBUG
+    [[YasoundDataCacheImageManager main] dump];
+    
+    
     return image;
 }
 

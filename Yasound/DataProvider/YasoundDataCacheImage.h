@@ -22,6 +22,8 @@
 - (void)addItem:(YasoundDataCacheImage*)item;
 - (void)loop;
 
+- (void)dump;
+
 @end
 
 
@@ -52,6 +54,7 @@
 - (id)initWithUrl:(NSURL*)url;
 - (void)start:(id)target action:(SEL)action; // action for downloaded notification
 - (void)updateTimestamp;
+
 
 - (void)addTarget:(id)target action:(SEL)action;
 - (void)removeTarget:(id)target;
