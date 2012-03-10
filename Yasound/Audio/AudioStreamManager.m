@@ -70,7 +70,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     [[NSUserDefaults standardUserDefaults] synchronize];        
 
 #if USE_FAKE_RADIO_URL || USE_YASOUND_LOCAL_SERVER
-    NSURL* radiourl = [NSURL URLWithString:@"http://dev.yasound.com:8001/fakeid"];
+    NSURL* radiourl = [NSURL URLWithString:@"http://api.yasound.com:8001/fakeid"];
 #else
   NSString* url = radio.stream_url;
     NSURL* radiourl = [NSURL URLWithString:url];
