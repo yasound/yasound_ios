@@ -249,7 +249,9 @@ static NSString* _cacheDirectory = nil;
     NSDate* now = [NSDate date];
     NSString* dateStr = [formatter stringFromDate:now];
 
-    [[YasoundDataCacheImageManager main].db executeUpdate:@"UPDATE imageRegister SET last_access=? WHERE url=?", dateStr, [self.url absoluteString]];
+    //LBDEBUG TEST
+//    [[YasoundDataCacheImageManager main].db executeUpdate:@"UPDATE imageRegister SET last_access=? WHERE url=?", dateStr, [self.url absoluteString]];
+    [[YasoundDataCacheImageManager main].db executeUpdate:@"UPDATE imageRegister SET last_access=? WHERE url=?", now, [self.url absoluteString]];
     
     [formatter release];
 }
@@ -361,8 +363,9 @@ static NSString* _cacheDirectory = nil;
             NSString* dateStr = [formatter stringFromDate:now];
             //NSDate *date = [formatter dateFromString:score.datetime];
             
-            
-            [[YasoundDataCacheImageManager main].db executeUpdate:@"INSERT INTO imageRegister VALUES (?,?,?,?)", [self.url absoluteString], filePath, dateStr, [NSNumber numberWithInt:self.receivedData.length]];
+//LBDEBUG TEST            
+//            [[YasoundDataCacheImageManager main].db executeUpdate:@"INSERT INTO imageRegister VALUES (?,?,?,?)", [self.url absoluteString], filePath, dateStr, [NSNumber numberWithInt:self.receivedData.length]];
+            [[YasoundDataCacheImageManager main].db executeUpdate:@"INSERT INTO imageRegister VALUES (?,?,?,?)", [self.url absoluteString], filePath, now, [NSNumber numberWithInt:self.receivedData.length]];
             
             [formatter release];
             
