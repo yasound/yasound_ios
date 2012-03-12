@@ -8,6 +8,7 @@
 
 #import "SongUploadManager.h"
 
+#import "YasoundReachability.h"
 
 
 
@@ -42,16 +43,38 @@
     
     if (self.delegate != nil)
         [self.delegate songUploadDidStart:song];
+    
+    
 }
 
 - (void)cancelUpload
 {
-    [_uploader cancelSongUpload:self.song];
+    [_uploader cancelSongUpload];
     
     [self.song setUploading:NO];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL object:self];
 }
+
+- (void)interruptUpload
+{
+    if (self.status != SongUploadItemStatusUploading)
+        return;
+    
+    [self.song setUploading:NO];
+    self.status = SongUploadItemStatusPending;
+
+    [_uploader cancelSongUpload];
+    [_uploader release];
+    
+    self.currentProgress = 0;
+
+    if (self.delegate != nil)
+        [self.delegate songUploadProgress:self.song progress:0];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDINTERRUPT object:self];
+}
+
 
 
 - (void)uploadDidFinished:(NSDictionary*)info
@@ -110,8 +133,8 @@
 @implementation SongUploadManager
 
 @synthesize items = _items;
-//@synthesize index = _index;
-@synthesize currentlyUploadingItem = _currentlyUploadingItem;
+@synthesize interrupted;
+@synthesize notified3G;
 
 static SongUploadManager* _main;
 
@@ -130,12 +153,18 @@ static SongUploadManager* _main;
     if (self = [super init])
     {
         _items = [[NSMutableArray alloc] init];
-//        _index = 0;
-//        _uploading = NO;
-        _currentlyUploadingItem = nil;
+        
+        
+        self.interrupted = NO;
+        self.notified3G = NO;
+        
+        BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
+        self.interrupted = !isWifi;
+        
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationFinish:) name:NOTIF_UPLOAD_DIDFINISH object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationCancel:) name:NOTIF_UPLOAD_DIDCANCEL object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationInterrupt:) name:NOTIF_UPLOAD_DIDINTERRUPT object:nil];
         
     }
     return self;
@@ -188,7 +217,7 @@ static SongUploadManager* _main;
   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)restartUploads
+- (void)importUploads
 {
   // get song info of all non-completed uploads from previous application session
   NSArray* storedSongs = [self storedSongsToUpload];
@@ -199,7 +228,7 @@ static SongUploadManager* _main;
   {
     for (Song* s  in storedSongs) 
     {
-      [self addAndUploadSong:s];
+        [self addSong:s startUploadNow:NO];
     }
   }
 }
@@ -211,12 +240,29 @@ static SongUploadManager* _main;
 }
 
 
-- (void)addAndUploadSong:(Song*)song
+
+- (void)interruptUploads
+{
+    self.interrupted = YES;
+    for (SongUploadItem* item in self.items)
+        [item interruptUpload];
+}
+
+- (void)resumeUploads
+{
+    self.interrupted = NO;
+    [self loop];
+}
+
+
+
+
+- (void)addSong:(Song*)song startUploadNow:(BOOL)startUploadNow
 {
     SongUploadItem* item = [[SongUploadItem alloc] initWithSong:song];
     [_items addObject:item];
-    
-//    if (!_uploading)
+
+    if (startUploadNow)
         [self loop];
   
   [self refreshStoredUploads]; // store song upload in user defaults in order to resume it if the application exits before completion
@@ -249,8 +295,6 @@ static SongUploadManager* _main;
 
 - (void)loop
 {
-//    _uploading = YES;
-    
     // check if an item is currently uploading
     // if not, start the upload
     
@@ -275,12 +319,8 @@ static SongUploadManager* _main;
 
 - (void)onNotificationFinish:(NSNotification *)notification
 {  
-    // move to the next item
-//    _index++;
     
     [self loop];
-//    else
-//        _uploading = NO;
   
   [self refreshStoredUploads];
 }
@@ -309,17 +349,21 @@ static SongUploadManager* _main;
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:self];
 
-    // move to the next item,
-    // dont need to increment since we deleted the current item
-    //_index++;
-    
-//    if (_index < self.items.count)
         [self loop];
-//    else
-//        _uploading = NO;
     
   [self refreshStoredUploads];
 }
+
+
+
+
+
+- (void)onNotificationInterrupt:(NSNotification *)notification
+{
+}
+
+
+
 
 
 

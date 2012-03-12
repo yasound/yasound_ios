@@ -8,6 +8,7 @@
 
 #import "SongAddViewController.h"
 #import "Song.h"
+#import "SongLocal.h"
 #import "SongUploader.h"
 #import "SongUploadManager.h"
 #import "TimeProfile.h"
@@ -19,9 +20,11 @@
 #import "ProgrammingArtistViewController.h"
 #import "YasoundDataProvider.h"
 #import "RootViewController.h"
-#import "SongInfoViewController.h"
+#import "LocalSongInfoViewController.h"
 #import "SongAddCell.h"
 
+
+#define TIMEPROFILE_AVAILABLECATALOG_BUILD @"TimeProfileAvailableCatalogBuild"
 
 #define BORDER 8
 
@@ -100,15 +103,15 @@
 - (void)afterBreath:(NSTimer*)timer
 {
     // PROFILE
-    [[TimeProfile main] begin];
+    [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
     
     [[SongCatalog availableCatalog] buildAvailableComparingToSource:[SongCatalog synchronizedCatalog].matchedSongs];
     
     
     // PROFILE
-    [[TimeProfile main] end];
+    [[TimeProfile main] end:TIMEPROFILE_AVAILABLECATALOG_BUILD];
     // PROFILE
-    [[TimeProfile main] logInterval:@"Local Media Songs parsing"];
+    [[TimeProfile main] logInterval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
 
     NSInteger count = [SongCatalog availableCatalog].nbSongs;
     
@@ -442,9 +445,9 @@
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
         NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:[[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section]];
-        Song* song = [letterRepo objectAtIndex:indexPath.row];
+        SongLocal* songLocal = (SongLocal*)[letterRepo objectAtIndex:indexPath.row];
 
-        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
+        LocalSongInfoViewController* view = [[LocalSongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:songLocal];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

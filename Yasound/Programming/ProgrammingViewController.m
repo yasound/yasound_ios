@@ -30,6 +30,9 @@
 #define SEGMENT_INDEX_ALPHA 0
 #define SEGMENT_INDEX_ARTIST 1
 
+#define TIMEPROFILE_DOWNLOAD @"Programming download synchronized"
+#define TIMEPROFILE_BUILD @"Programming build catalog"
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -88,7 +91,7 @@
     //NSLog(@"%d - %d", _nbReceivedData, _nbPlaylists);
     
     // PROFILE
-    [[TimeProfile main] begin];
+    [[TimeProfile main] begin:TIMEPROFILE_DOWNLOAD];
     
     Radio* radio = [YasoundDataProvider main].radio;
     [[YasoundDataProvider main] playlistsForRadio:radio target:self action:@selector(receivePlaylists:withInfo:)];
@@ -175,12 +178,12 @@
         return;
     
     //PROFILE
-    [[TimeProfile main] end];
-    [[TimeProfile main] logInterval:@"Download matched songs"];
+    [[TimeProfile main] end:TIMEPROFILE_DOWNLOAD];
+    [[TimeProfile main] logInterval:TIMEPROFILE_DOWNLOAD inMilliseconds:NO];
     
     
     // PROFILE
-    [[TimeProfile main] begin];
+    [[TimeProfile main] begin:TIMEPROFILE_BUILD];
 
     // merge songs
     for (NSInteger i = 0; i < _data.count; i++)
@@ -205,8 +208,8 @@
     
 
     // PROFILE
-    [[TimeProfile main] end];
-    [[TimeProfile main] logInterval:@"Sort matched songs"];
+    [[TimeProfile main] end:TIMEPROFILE_BUILD];
+    [[TimeProfile main] logInterval:TIMEPROFILE_BUILD inMilliseconds:NO];
 
     NSLog(@"%d matched songs", self.matchedSongs.count);
     

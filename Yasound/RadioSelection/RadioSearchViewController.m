@@ -13,6 +13,8 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 
+#define ROW_HEIGHT 66.0
+
 typedef enum 
 {
   eSearchByRadioAttributes = 0,
@@ -45,9 +47,9 @@ typedef enum
 {
     if (_radios != nil)
         [_radios release];
-  [_tableView release];
   [_nowPlayingButton release];
   [_searchController release];
+  [_backgroundColor release];
     [super dealloc];
 }
 
@@ -70,17 +72,18 @@ typedef enum
   _radios = nil;
   _radiosByCreator = nil;
   _radiosBySong = nil;
+  
+  _backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+  [_backgroundColor retain];
+  
+  self.view.backgroundColor = _backgroundColor;
 
-//    _toolbarTitle.text = NSLocalizedString(@"FriendsView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
-    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    
-    
-    _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _searchController.searchResultsTableView.backgroundColor = _tableView.backgroundColor;
-    _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-    _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
+  _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+  _searchController.searchResultsTableView.backgroundColor = _backgroundColor;
+  _searchController.searchResultsTableView.rowHeight = ROW_HEIGHT;
 
   _searchController.searchBar.placeholder = NSLocalizedString(@"SearchBar_Placeholder", nil);
 }
@@ -95,7 +98,7 @@ typedef enum
 - (void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
-  [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+  [_searchController.searchResultsTableView deselectRowAtIndexPath:[_searchController.searchResultsTableView indexPathForSelectedRow] animated:NO];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -243,25 +246,6 @@ typedef enum
 
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    NSInteger rowIndex = indexPath.row;
-    UIImageView* imageView = nil;
-    
-    // cell background
-    if (rowIndex & 1)
-    {
-        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
-    }
-    else
-    {
-        imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
-    }
-    
-    cell.backgroundView = imageView;
-    
-}
-
 
 
 
@@ -288,13 +272,9 @@ typedef enum
     }
     else
         [cell updateWithRadio:radio rowIndex:rowIndex];
-    
-    
-    
+  
     return cell;
 }
-
-
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -307,7 +287,15 @@ typedef enum
 }
 
 
+#pragma mark - UISearchDisplayDelegate
 
+- (void)searchDisplayController:(UISearchDisplayController *)controller willShowSearchResultsTableView:(UITableView *)tableView
+{
+  _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite; 
+  _searchController.searchResultsTableView.backgroundColor = _backgroundColor;
+  _searchController.searchResultsTableView.rowHeight = ROW_HEIGHT;
+}
 
 
 
@@ -333,20 +321,10 @@ typedef enum
   [[YasoundDataProvider main] searchRadiosBySong:searchText withTarget:self action:@selector(receiveRadiosSearchBySong:withInfo:)];
 }
 
-//- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-//{
-//  NSLog(@"searchBarTextDidEndEditing %@", searchBar.text);
-//    
-//  [self searchRadios:searchBar.text];
-//}
-
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"searchBarSearchButtonClicked %@", searchBar.text);
-    
   [self searchRadios:searchBar.text];
 }
-
 
 
 

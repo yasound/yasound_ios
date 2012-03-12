@@ -92,7 +92,7 @@
 "MyYasoundSettings_logout_label" = "Se déconnecter";
 
 
-"FriendsView_title" = "Ma liste d'Amis";
+"FriendsView_title" = "Mes Amis";
 
 "FavoritesView_title" =  "Mes Favoris";
 
@@ -161,7 +161,7 @@
 
 "LegalView_title" = "Conditions d'utilisation";
 
-"PlaylistsViewController_FetchingPlaylists" = "Synchronisation des listes de chansons";
+"PlaylistsViewController_FetchingPlaylists" = "Chargement";
 
 "ProgrammingView_title" = "Programmation";
 "ProgrammingView_subtitle" = "synchronisation...";
@@ -171,8 +171,8 @@
 "ProgrammingView_error_title" = "Synchronisation";
 "ProgrammingView_error_message" = "une erreur est survenue pendant la synchronisation.";
 "ProgrammingView_error_no_playlist_message" = "une erreur est survenue : aucune playlist n'a été détectée.";
-"ProgrammingView_segment_titles" = "titres";
-"ProgrammingView_segment_artists" = "artistes";
+"ProgrammingView_segment_titles" = "Titres";
+"ProgrammingView_segment_artists" = "Artistes";
 "ProgrammingView_unknownArtist" = "#Artist inconnu";
 "ProgrammingView_unknownAlbum" = "Album inconnu";
 "ProgramminView_nb_albums_1" = "1 album";
@@ -185,26 +185,30 @@
 "SongView_name" = "titre";
 "SongView_artist" = "artiste";
 "SongView_album" = "album";
-"SongView_nbLikes" = "likes";
-"SongView_lastRead" = "dernière lecture";
-"SongView_frequency" = "haute fréquence de lecture";
+"SongView_nbLikes" = "Auditeurs qui aiment";
+"SongView_lastRead" = "Dernière diffusion";
+"SongView_rating" = "classement";
+"SongView_genre" = "genre";
+"SongView_duration" = "durée";
+
+"SongView_frequency" = "Haute fréquence de diffusion";
 "SongView_frequency_normal" = "normale";
 "SongView_frequency_high" = "haute";
 "SongView_frequency_none" = "-";
-"SongView_enable_label" = "activer le morceau";
+"SongView_enable_label" = "Activer le morceau";
 
 "SongAddView_title" = "Ajouter un titre";
 "SongAddView_cant_add_title" = "Ajout impossible";
 "SongAddView_cant_add_message" = "Ce fichier n'est pas actuellement sur cet appareil. Récupérez le depuis iCloud avant de réessayer.";
-"SongAddView_alert" = "liste en construction...";
-"SongAddView_added" = "ajouté à la file de téléchargement!";
+"SongAddView_alert" = "Chargement";
+"SongAddView_added" = "Ajouté à la file de téléchargement";
 "SongAddView_subtitle" = "chargement...";
 "SongAddView_subtitled_count_0" = "pas de morceau disponible";
 "SongAddView_subtitled_count_1" = "1 morceau disponible";
 "SongAddView_subtitled_count_n" = "%d morceaux disponibles";
-"SongAddView_segment_titles" = "titres";
-"SongAddView_segment_artists" = "artistes";
-"SongAddView_segment_server" = "serveur";
+"SongAddView_segment_titles" = "Titres";
+"SongAddView_segment_artists" = "Artistes";
+"SongAddView_segment_server" = "Serveur";
 "SongAddView_searchServer" = "Rechercher un titre sur le serveur";
 "SongAddView_addFromServer" = "Ajout depuis le serveur";
 "SongAddView_requestServer" = "Recherche des morceaux";
@@ -213,13 +217,21 @@
 "SongAddView_addedAlready" = "Le morceau est déjà présent dans votre programmation!";
 
 "SongUpload_title" = "Téléchargement";
-"SongUpload_progressCompleted" = "Terminé.";
+"SongUpload_progressCompleted" = "Chargé";
 "SongUpload_progressFailed" = "Echec.";
 
 "SongUpload_warning_title" = "Attention";
 "SongUpload_warning_message" = "Vous vous engagez à ne télécharger vers nos serveurs à destination de diffusion publique sur votre radio uniquement des \
 enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'interview, ou autre  captation sonore, vous certifiez détenir l'autorisation écrite de tous les intervenants.";
-"Button_dontShowAgain" = "Ne plus afficher";
+"Button_dontShowAgain" = "Je suis d'accord";
+
+"YasoundUpload_interrupt_WIFI_title" = "Connexion 3G";
+"YasoundUpload_interrupt_WIFI_message" = "Les téléchargements en cours sont stoppés dans l'attente d'une connexion WIFI.";
+"YasoundUpload_restart_WIFI_title" = "Téléchargements";
+"YasoundUpload_restart_WIFI_message" = "Les téléchargements en attente reprendront dès qu'une connexion WIFI sera disponible.";
+"YasoundUpload_add_WIFI_title" = "Connexion 3G";
+"YasoundUpload_add_WIFI_message" = "Le morceau est ajouté dans la file des téléchargements. Le transfert démarrera dès qu'une connexion WIFI sera disponible";
+
 
 "MenuView_section_myradio" = "Ma Radio";
 "MenuView_section_radios" = "Radios";
@@ -246,8 +258,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 
 "YasoundSessionManager_login_title" = "log in";
-"YasoundSessionManager_login_error" = "impossible de se connecter au serveur!";
-"YasoundSessionManager_userinfo_error" = "impossible de récupérer les informations utilisateur!";
+"YasoundSessionManager_login_error" = "Impossible de se connecter au serveur!";
+"YasoundSessionManager_userinfo_error" = "Impossible de récupérer les informations utilisateur!";
 
 
 "RadioSelection_update" = "mise à jour";

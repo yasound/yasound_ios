@@ -31,13 +31,18 @@
       
       self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-//    // cell background
-//    if (rowIndex & 1)
-//      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
-//    else
-//      self.cellBackground = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
-//
-//    [self addSubview:self.cellBackground];
+      // cell background
+      UIImageView* imageView = nil;
+      if (rowIndex & 1)
+      {
+          imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+      }
+      else
+      {
+          imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+      }
+      
+      self.backgroundView = imageView;
     
     // avatar
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.user.picture];
@@ -105,12 +110,13 @@
     
     BundleStylesheet* sheet = nil;
     
-//    if (rowIndex & 1)
-//        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    else
-//        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    
-//    [self.cellBackground setImage:[sheet image]];
+    if (rowIndex & 1)
+        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    else
+        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    
+    [self.backgroundView setImage:[sheet image]];
 
     
     

@@ -17,6 +17,8 @@
 #define NOTIF_POP_TO_MENU @"NOTIF_PopToMenu"
 #define NOTIF_PUSH_MENU @"NOTIF_PushMenu"
 #define NOTIF_ERROR_COMMUNICATION_SERVER @"NOTIF_ErrorCommunicationServer"
+
+#define NOTIF_ERROR_CONNECTION_BACK @"NOTIF_ErrorConnectionBack"
 #define NOTIF_ERROR_CONNECTION_LOST @"NOTIF_ErrorConnectionLost"
 #define NOTIF_ERROR_CONNECTION_NO @"NOTIF_ErrorConnectionNo"
 

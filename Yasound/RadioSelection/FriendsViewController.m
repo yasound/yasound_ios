@@ -325,35 +325,6 @@
 
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-#if SHOW_INVITE_BUTTON
-    if (indexPath.section == SECTION_INVITE_BUTTON)
-        return nil;
-#endif
-
-    NSInteger rowIndex = indexPath.row;
-    UIImageView* imageView = nil;
-    
-    // cell background
-    if (rowIndex & 1)
-    {
-        imageView = [[[BundleFileManager main] stylesheetForKey:@"UserCellBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
-    }
-    else
-    {
-        imageView = [[[BundleFileManager main] stylesheetForKey:@"UserCellBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
-    }
-    
-    cell.backgroundView = imageView;
-    
-}
-
-
-
-
-
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {

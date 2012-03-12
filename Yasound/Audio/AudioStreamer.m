@@ -1601,6 +1601,8 @@ cleanup:
 	fileStreamPropertyID:(AudioFileStreamPropertyID)inPropertyID
 	ioFlags:(UInt32 *)ioFlags
 {
+  const char* c = (char*)&inPropertyID;
+  NSLog(@"handlePropertyChangeForFileStream: %c%c%c%c", c[3], c[2], c[1], c[0]);
 	@synchronized(self)
 	{
 		if ([self isFinishing])
@@ -1642,6 +1644,22 @@ cleanup:
 		}
 		else if (inPropertyID == kAudioFileStreamProperty_DataFormat)
 		{
+      {
+        AudioStreamBasicDescription desc;
+        NSLog(@"!!!!!!!!!!!!!! New Stream format !!!!!!!!!!!!!!!!!!!");
+        UInt32 asbdSize = sizeof(desc);
+        
+        // get the stream format.
+        err = AudioFileStreamGetProperty(inAudioFileStream, kAudioFileStreamProperty_DataFormat, &asbdSize, &desc);
+        if (err)
+        {
+          NSLog(@"Error getting new stream format...");
+          return;
+        }
+
+        NSLog(@"---------------->>>>>>>> New Sample Rate: %f", desc.mSampleRate);
+      }
+      
 			if (asbd.mSampleRate == 0)
 			{
 				UInt32 asbdSize = sizeof(asbd);

@@ -274,6 +274,16 @@
 		BC178DB214C63E4A00B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178DB114C63E4A00B18420 /* default.bundle */; };
 		BC178DB314C63E4A00B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178DB114C63E4A00B18420 /* default.bundle */; };
 		BC178DB414C63E4A00B18420 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178DB114C63E4A00B18420 /* default.bundle */; };
+		BC188BD01507638100E38692 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
+		BC188BD11507638100E38692 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
+		BC188BD21507638100E38692 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
+		BC188BD31507638100E38692 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
+		BC188BD41507638100E38692 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
+		BC188BDC1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
+		BC188BDD1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
+		BC188BDE1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
+		BC188BDF1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
+		BC188BE01507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		BC26E6CB14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
 		BC26E6CC14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
 		BC26E6CD14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
@@ -1305,6 +1315,36 @@
 		BCBE5C8F14D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
 		BCBE5C9014D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
 		BCBE5C9114D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
+		BCC41419150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
+		BCC4141A150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
+		BCC4141B150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
+		BCC4141C150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
+		BCC4141D150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
+		BCC4143E150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
+		BCC4143F150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
+		BCC41440150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
+		BCC41441150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
+		BCC41442150B00D700A5150B /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
+		BCC41443150B00D700A5150B /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */; };
+		BCC41444150B00D700A5150B /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */; };
+		BCC41445150B00D700A5150B /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */; };
+		BCC41446150B00D700A5150B /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */; };
+		BCC41447150B00D700A5150B /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */; };
+		BCC41448150B00D700A5150B /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41438150B00D700A5150B /* FMDatabasePool.m */; };
+		BCC41449150B00D700A5150B /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41438150B00D700A5150B /* FMDatabasePool.m */; };
+		BCC4144A150B00D700A5150B /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41438150B00D700A5150B /* FMDatabasePool.m */; };
+		BCC4144B150B00D700A5150B /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41438150B00D700A5150B /* FMDatabasePool.m */; };
+		BCC4144C150B00D700A5150B /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41438150B00D700A5150B /* FMDatabasePool.m */; };
+		BCC4144D150B00D700A5150B /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */; };
+		BCC4144E150B00D700A5150B /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */; };
+		BCC4144F150B00D700A5150B /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */; };
+		BCC41450150B00D700A5150B /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */; };
+		BCC41451150B00D700A5150B /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */; };
+		BCC41457150B00D700A5150B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143D150B00D700A5150B /* FMResultSet.m */; };
+		BCC41458150B00D700A5150B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143D150B00D700A5150B /* FMResultSet.m */; };
+		BCC41459150B00D700A5150B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143D150B00D700A5150B /* FMResultSet.m */; };
+		BCC4145A150B00D700A5150B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143D150B00D700A5150B /* FMResultSet.m */; };
+		BCC4145B150B00D700A5150B /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143D150B00D700A5150B /* FMResultSet.m */; };
 		BCC6AD3E14E87757001AC34B /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD3C14E87757001AC34B /* avatarDummy.png */; };
 		BCC6AD3F14E87757001AC34B /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD3C14E87757001AC34B /* avatarDummy.png */; };
 		BCC6AD4014E87757001AC34B /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD3C14E87757001AC34B /* avatarDummy.png */; };
@@ -1670,6 +1710,26 @@
 		BCF62DE3148394F0001B1908 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
 		BCF62DE4148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		BCF62DE5148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
+		BCFA440C1507A63100A03380 /* SongRatingBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44081507A63100A03380 /* SongRatingBullet.png */; };
+		BCFA440D1507A63100A03380 /* SongRatingBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44081507A63100A03380 /* SongRatingBullet.png */; };
+		BCFA440E1507A63100A03380 /* SongRatingBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44081507A63100A03380 /* SongRatingBullet.png */; };
+		BCFA440F1507A63100A03380 /* SongRatingBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44081507A63100A03380 /* SongRatingBullet.png */; };
+		BCFA44101507A63100A03380 /* SongRatingBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44081507A63100A03380 /* SongRatingBullet.png */; };
+		BCFA44111507A63100A03380 /* SongRatingBullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */; };
+		BCFA44121507A63100A03380 /* SongRatingBullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */; };
+		BCFA44131507A63100A03380 /* SongRatingBullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */; };
+		BCFA44141507A63100A03380 /* SongRatingBullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */; };
+		BCFA44151507A63100A03380 /* SongRatingBullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */; };
+		BCFA44161507A63100A03380 /* SongRatingStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440A1507A63100A03380 /* SongRatingStar.png */; };
+		BCFA44171507A63100A03380 /* SongRatingStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440A1507A63100A03380 /* SongRatingStar.png */; };
+		BCFA44181507A63100A03380 /* SongRatingStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440A1507A63100A03380 /* SongRatingStar.png */; };
+		BCFA44191507A63100A03380 /* SongRatingStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440A1507A63100A03380 /* SongRatingStar.png */; };
+		BCFA441A1507A63100A03380 /* SongRatingStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440A1507A63100A03380 /* SongRatingStar.png */; };
+		BCFA441B1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
+		BCFA441C1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
+		BCFA441D1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
+		BCFA441E1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
+		BCFA441F1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
 		BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BCFECFFE1468439900BA20D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
@@ -1925,6 +1985,10 @@
 		BC178DA814C5E99800B18420 /* CreateMyRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateMyRadio.m; path = Settings/CreateMyRadio.m; sourceTree = "<group>"; };
 		BC178DA914C5E99800B18420 /* CreateMyRadio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateMyRadio.xib; path = Settings/CreateMyRadio.xib; sourceTree = "<group>"; };
 		BC178DB114C63E4A00B18420 /* default.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = default.bundle; path = resources/themes/default.bundle; sourceTree = SOURCE_ROOT; };
+		BC188BCD1507638100E38692 /* LocalSongInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalSongInfoViewController.h; path = Programming/LocalSongInfoViewController.h; sourceTree = "<group>"; };
+		BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalSongInfoViewController.m; path = Programming/LocalSongInfoViewController.m; sourceTree = "<group>"; };
+		BC188BDA1507647900E38692 /* SongLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongLocal.h; sourceTree = "<group>"; };
+		BC188BDB1507647900E38692 /* SongLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLocal.m; sourceTree = "<group>"; };
 		BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateMyRadioBackground.png; sourceTree = "<group>"; };
 		BC26E6CA14E40E3100D30554 /* CreateMyRadioBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadioBackground@2x.png"; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
@@ -2158,6 +2222,18 @@
 		BCBE5C8314D1A1B60077FC62 /* cellFacebookDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellFacebookDisabled@2x.png"; sourceTree = "<group>"; };
 		BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionView.h; sourceTree = "<group>"; };
 		BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionView.m; sourceTree = "<group>"; };
+		BCC41417150A9ED100A5150B /* YasoundDataCacheImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCacheImage.h; sourceTree = "<group>"; };
+		BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCacheImage.m; sourceTree = "<group>"; };
+		BCC41433150B00D700A5150B /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = ThirdParties/fmdb/src/FMDatabase.h; sourceTree = "<group>"; };
+		BCC41434150B00D700A5150B /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = ThirdParties/fmdb/src/FMDatabase.m; sourceTree = "<group>"; };
+		BCC41435150B00D700A5150B /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = ThirdParties/fmdb/src/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = ThirdParties/fmdb/src/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		BCC41437150B00D700A5150B /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = ThirdParties/fmdb/src/FMDatabasePool.h; sourceTree = "<group>"; };
+		BCC41438150B00D700A5150B /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = ThirdParties/fmdb/src/FMDatabasePool.m; sourceTree = "<group>"; };
+		BCC41439150B00D700A5150B /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = ThirdParties/fmdb/src/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = ThirdParties/fmdb/src/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		BCC4143C150B00D700A5150B /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = ThirdParties/fmdb/src/FMResultSet.h; sourceTree = "<group>"; };
+		BCC4143D150B00D700A5150B /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = ThirdParties/fmdb/src/FMResultSet.m; sourceTree = "<group>"; };
 		BCC6AD3C14E87757001AC34B /* avatarDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = avatarDummy.png; path = resources/RadioSelection/avatarDummy.png; sourceTree = SOURCE_ROOT; };
 		BCC6AD3D14E87757001AC34B /* avatarDummy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "avatarDummy@2x.png"; path = "resources/RadioSelection/avatarDummy@2x.png"; sourceTree = SOURCE_ROOT; };
 		BCC6AD5114E8800F001AC34B /* ChartBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChartBackground.png; sourceTree = "<group>"; };
@@ -2326,6 +2402,10 @@
 		BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSearchViewController.h; path = RadioSelection/RadioSearchViewController.h; sourceTree = "<group>"; };
 		BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSearchViewController.m; path = RadioSelection/RadioSearchViewController.m; sourceTree = "<group>"; };
 		BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSearchViewController.xib; path = RadioSelection/RadioSearchViewController.xib; sourceTree = "<group>"; };
+		BCFA44081507A63100A03380 /* SongRatingBullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SongRatingBullet.png; sourceTree = "<group>"; };
+		BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SongRatingBullet@2x.png"; sourceTree = "<group>"; };
+		BCFA440A1507A63100A03380 /* SongRatingStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SongRatingStar.png; sourceTree = "<group>"; };
+		BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SongRatingStar@2x.png"; sourceTree = "<group>"; };
 		BCFECFE41468439900BA20D9 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		BCFECFE51468439900BA20D9 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		BCFECFEB1468439900BA20D9 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
@@ -2540,6 +2620,8 @@
 				BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */,
 				40AAEC4914921AE70031B39D /* YasoundDataProvider.h */,
 				40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */,
+				BCC41417150A9ED100A5150B /* YasoundDataCacheImage.h */,
+				BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */,
 				BC5C900D14F2A4EB00C7D01E /* YasoundDataCache.h */,
 				BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */,
 				B138AA6614E2BAFC0069E08A /* SongUploader.h */,
@@ -2643,6 +2725,8 @@
 				40F4C79014BEEF6F00A163F9 /* NextSong.m */,
 				400B8AAF14D31540003FD81E /* Song.h */,
 				400B8AB014D31540003FD81E /* Song.m */,
+				BC188BDA1507647900E38692 /* SongLocal.h */,
+				BC188BDB1507647900E38692 /* SongLocal.m */,
 				40EAA55614D85EF60000621C /* RadioListeningStat.h */,
 				40EAA55714D85EF60000621C /* RadioListeningStat.m */,
 				40EAA55C14DA980F0000621C /* LeaderBoardEntry.h */,
@@ -2938,6 +3022,8 @@
 		BC82066E14F561C900FAE05E /* Programming */ = {
 			isa = PBXGroup;
 			children = (
+				BC188BCD1507638100E38692 /* LocalSongInfoViewController.h */,
+				BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */,
 				BC5EA8E1150100750002697D /* SongCatalog.h */,
 				BC5EA8E2150100750002697D /* SongCatalog.m */,
 				BC82066F14F5620200FAE05E /* ProgrammingViewController.h */,
@@ -3178,6 +3264,23 @@
 			path = MyYasound;
 			sourceTree = "<group>";
 		};
+		BCC41432150B00C800A5150B /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				BCC41433150B00D700A5150B /* FMDatabase.h */,
+				BCC41434150B00D700A5150B /* FMDatabase.m */,
+				BCC41435150B00D700A5150B /* FMDatabaseAdditions.h */,
+				BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */,
+				BCC41437150B00D700A5150B /* FMDatabasePool.h */,
+				BCC41438150B00D700A5150B /* FMDatabasePool.m */,
+				BCC41439150B00D700A5150B /* FMDatabaseQueue.h */,
+				BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */,
+				BCC4143C150B00D700A5150B /* FMResultSet.h */,
+				BCC4143D150B00D700A5150B /* FMResultSet.m */,
+			);
+			name = fmdb;
+			sourceTree = "<group>";
+		};
 		BCC6AD5014E8800F001AC34B /* Stats */ = {
 			isa = PBXGroup;
 			children = (
@@ -3239,6 +3342,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				BCC41432150B00C800A5150B /* fmdb */,
 				BC10391214F7DA08007C5496 /* RCSwitch */,
 				B1F8868514E5B44300256383 /* MBProgressHUD */,
 				B1BBEE9914E2DA9500E7E0EA /* TSLibraryImport */,
@@ -3499,9 +3603,21 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		BCFA44071507A63100A03380 /* Programming */ = {
+			isa = PBXGroup;
+			children = (
+				BCFA44081507A63100A03380 /* SongRatingBullet.png */,
+				BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */,
+				BCFA440A1507A63100A03380 /* SongRatingStar.png */,
+				BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */,
+			);
+			path = Programming;
+			sourceTree = "<group>";
+		};
 		BCFECF8F146840B300BA20D9 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCFA44071507A63100A03380 /* Programming */,
 				BCE751B014EC2DC100056916 /* logo.png */,
 				BCE751B114EC2DC100056916 /* logo@2x.png */,
 				BC82069414F67B8A00FAE05E /* TableViewPlain */,
@@ -4010,6 +4126,10 @@
 				BCD0CBD814FE851900E75CEF /* SongInfoViewController.xib in Resources */,
 				BCDF653615013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
 				BCDF654215013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
+				BCFA44101507A63100A03380 /* SongRatingBullet.png in Resources */,
+				BCFA44151507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
+				BCFA441A1507A63100A03380 /* SongRatingStar.png in Resources */,
+				BCFA441F1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4190,6 +4310,10 @@
 				BCD0CBD514FE851900E75CEF /* SongInfoViewController.xib in Resources */,
 				BCDF653315013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
 				BCDF653F15013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
+				BCFA440D1507A63100A03380 /* SongRatingBullet.png in Resources */,
+				BCFA44121507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
+				BCFA44171507A63100A03380 /* SongRatingStar.png in Resources */,
+				BCFA441C1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4370,6 +4494,10 @@
 				BCD0CBD714FE851900E75CEF /* SongInfoViewController.xib in Resources */,
 				BCDF653515013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
 				BCDF654115013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
+				BCFA440F1507A63100A03380 /* SongRatingBullet.png in Resources */,
+				BCFA44141507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
+				BCFA44191507A63100A03380 /* SongRatingStar.png in Resources */,
+				BCFA441E1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4550,6 +4678,10 @@
 				BCD0CBD414FE851900E75CEF /* SongInfoViewController.xib in Resources */,
 				BCDF653215013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
 				BCDF653E15013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
+				BCFA440C1507A63100A03380 /* SongRatingBullet.png in Resources */,
+				BCFA44111507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
+				BCFA44161507A63100A03380 /* SongRatingStar.png in Resources */,
+				BCFA441B1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4730,6 +4862,10 @@
 				BCD0CBD614FE851900E75CEF /* SongInfoViewController.xib in Resources */,
 				BCDF653415013CF1005FD75D /* ProgrammingArtistViewController.xib in Resources */,
 				BCDF654015013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */,
+				BCFA440E1507A63100A03380 /* SongRatingBullet.png in Resources */,
+				BCFA44131507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
+				BCFA44181507A63100A03380 /* SongRatingStar.png in Resources */,
+				BCFA441D1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4888,6 +5024,14 @@
 				BCDF653115013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
 				BCDF653D15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD8186C1504F74700B818D1 /* SongAddCell.m in Sources */,
+				BC188BD41507638100E38692 /* LocalSongInfoViewController.m in Sources */,
+				BC188BE01507647900E38692 /* SongLocal.m in Sources */,
+				BCC4141D150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
+				BCC41442150B00D700A5150B /* FMDatabase.m in Sources */,
+				BCC41447150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
+				BCC4144C150B00D700A5150B /* FMDatabasePool.m in Sources */,
+				BCC41451150B00D700A5150B /* FMDatabaseQueue.m in Sources */,
+				BCC4145B150B00D700A5150B /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5043,6 +5187,14 @@
 				BCDF652E15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
 				BCDF653A15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD818691504F74700B818D1 /* SongAddCell.m in Sources */,
+				BC188BD11507638100E38692 /* LocalSongInfoViewController.m in Sources */,
+				BC188BDD1507647900E38692 /* SongLocal.m in Sources */,
+				BCC4141A150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
+				BCC4143F150B00D700A5150B /* FMDatabase.m in Sources */,
+				BCC41444150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
+				BCC41449150B00D700A5150B /* FMDatabasePool.m in Sources */,
+				BCC4144E150B00D700A5150B /* FMDatabaseQueue.m in Sources */,
+				BCC41458150B00D700A5150B /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5199,6 +5351,14 @@
 				BCDF653015013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
 				BCDF653C15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD8186B1504F74700B818D1 /* SongAddCell.m in Sources */,
+				BC188BD31507638100E38692 /* LocalSongInfoViewController.m in Sources */,
+				BC188BDF1507647900E38692 /* SongLocal.m in Sources */,
+				BCC4141C150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
+				BCC41441150B00D700A5150B /* FMDatabase.m in Sources */,
+				BCC41446150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
+				BCC4144B150B00D700A5150B /* FMDatabasePool.m in Sources */,
+				BCC41450150B00D700A5150B /* FMDatabaseQueue.m in Sources */,
+				BCC4145A150B00D700A5150B /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5354,6 +5514,14 @@
 				BCDF652D15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
 				BCDF653915013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD818681504F74700B818D1 /* SongAddCell.m in Sources */,
+				BC188BD01507638100E38692 /* LocalSongInfoViewController.m in Sources */,
+				BC188BDC1507647900E38692 /* SongLocal.m in Sources */,
+				BCC41419150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
+				BCC4143E150B00D700A5150B /* FMDatabase.m in Sources */,
+				BCC41443150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
+				BCC41448150B00D700A5150B /* FMDatabasePool.m in Sources */,
+				BCC4144D150B00D700A5150B /* FMDatabaseQueue.m in Sources */,
+				BCC41457150B00D700A5150B /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5510,6 +5678,14 @@
 				BCDF652F15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
 				BCDF653B15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD8186A1504F74700B818D1 /* SongAddCell.m in Sources */,
+				BC188BD21507638100E38692 /* LocalSongInfoViewController.m in Sources */,
+				BC188BDE1507647900E38692 /* SongLocal.m in Sources */,
+				BCC4141B150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */,
+				BCC41440150B00D700A5150B /* FMDatabase.m in Sources */,
+				BCC41445150B00D700A5150B /* FMDatabaseAdditions.m in Sources */,
+				BCC4144A150B00D700A5150B /* FMDatabasePool.m in Sources */,
+				BCC4144F150B00D700A5150B /* FMDatabaseQueue.m in Sources */,
+				BCC41459150B00D700A5150B /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5782,8 +5958,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
+				PROVISIONING_PROFILE = "D7BADA6E-DA07-4A21-A2A8-C66A3E939227";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
@@ -5811,8 +5986,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E8CF9A5B-121A-418C-99C6-8854DBFDDE2E";
+				PROVISIONING_PROFILE = "D7BADA6E-DA07-4A21-A2A8-C66A3E939227";
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
@@ -5955,7 +6129,6 @@
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					TESTFLIGHT_SDK,
-					"DEBUG=1",
 					"$(inherited)",
 					"USE_COREGRAPHIC_LAYER=1",
 					"USE_COREGRAPHIC_SHADOW=0",
@@ -5969,7 +6142,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "3FA1D1C5-35FF-4012-8810-C0C6D6C83061";
+				PROVISIONING_PROFILE = "55EDA979-C42D-4DDD-B6CC-294CAF180C0A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5994,7 +6167,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "3FA1D1C5-35FF-4012-8810-C0C6D6C83061";
+				PROVISIONING_PROFILE = "55EDA979-C42D-4DDD-B6CC-294CAF180C0A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

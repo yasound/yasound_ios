@@ -8,16 +8,30 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TimeProfile : NSObject
+
+@interface TimeProfileItem : NSObject
 
 @property (nonatomic, retain) NSDate* dateBegin;
 @property (nonatomic, retain) NSDate* dateEnd;
 
+- (NSTimeInterval)interval;
+
+@end
+
+
+
+
+
+@interface TimeProfile : NSObject
+
+@property (nonatomic, retain) NSMutableDictionary* items;
+
 + (TimeProfile*)main;
 
-- (void)begin;
-- (void)end;
-- (NSTimeInterval)interval;
-- (void)logInterval:(NSString*)nameReference;
+- (void)begin:(NSString*)nameReference;
+- (void)end:(NSString*)nameReference;
+
+- (void)logInterval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds;
+- (void)logAverageInterval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds;
 
 @end

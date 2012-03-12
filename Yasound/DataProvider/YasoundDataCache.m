@@ -15,6 +15,10 @@
 #define TIMEOUT_CURRENTSONGS 60
 #define TIMEOUT_FRIENDS 60
 
+// 1 hour
+#define TIMEOUT_IMAGE (10*60)
+
+
 #define GENRE_NIL @"GENRE_NIL"
 
 
@@ -32,6 +36,7 @@
 @synthesize action;
 
 @end
+
 
 
 
@@ -74,6 +79,8 @@ static YasoundDataCache* _main = nil;
       _cacheFriends = [[NSMutableDictionary alloc] init];
       [_cacheFriends retain];
       
+//      _cacheImages = [[NSMutableDictionary alloc] init];
+//      [_cacheImages retain];
   }
   
   return self;
@@ -85,6 +92,8 @@ static YasoundDataCache* _main = nil;
     [_cacheRadios release];
     [_cacheSongs release];
     [_cacheFriends release];
+//    [_cacheImages release];
+    
     [super dealloc];
 }
 
@@ -186,6 +195,19 @@ static YasoundDataCache* _main = nil;
     YasoundDataCachePendingOp* op = [info objectForKey:@"userData"]; 
     assert(op != nil);
     
+    id target = op.target;
+    SEL action = op.action;
+    
+    if (radios == nil)
+    {
+        NSLog(@"YasoundDataCache requestRadios : the server returned nil!");
+        [target performSelector:action withObject:nil withObject:info];
+        return;
+    }
+
+    
+    
+    
     // expiration date for the newly received data
     NSDate* date = [NSDate date];
     NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RADIOS];
@@ -210,10 +232,8 @@ static YasoundDataCache* _main = nil;
     
     // cache data 
     [requestCacheForGenre setObject:timeout forKey:@"timeout"];
-    [requestCacheForGenre setObject:radios forKey:@"data"];
     
-    id target = op.target;
-    SEL action = op.action;
+    [requestCacheForGenre setObject:radios forKey:@"data"];
     
     // pending operation cleaning
     [op release];
@@ -345,7 +365,7 @@ static YasoundDataCache* _main = nil;
     
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
-    NSLog(@"YasoundDataCache requestCurrentSongForRadio : return local cached data");
+    //NSLog(@"YasoundDataCache requestCurrentSongForRadio : return local cached data"); // don't display it all the time, too much of it :)
     [target performSelector:selector withObject:data withObject:infoDico];    
 }
 
@@ -356,6 +376,19 @@ static YasoundDataCache* _main = nil;
 {
     YasoundDataCachePendingOp* op = [info objectForKey:@"userData"]; 
     assert(op != nil);
+    
+    id target = op.target;
+    SEL action = op.action;
+    
+    // the radio may be empty
+    if (song == nil)
+    {
+        NSLog(@"YasoundDataCache requestCurrentSong : the server returned nil!");
+        [target performSelector:action withObject:nil withObject:info];
+        return;
+    }
+    
+
     
     
     // expiration date for the newly received data
@@ -373,10 +406,9 @@ static YasoundDataCache* _main = nil;
     
     // cache data 
     [requestCache setObject:timeout forKey:@"timeout"];
+    
     [requestCache setObject:song forKey:@"data"];
     
-    id target = op.target;
-    SEL action = op.action;
     
     // pending operation cleaning
     [op release];
@@ -475,6 +507,17 @@ static YasoundDataCache* _main = nil;
 {
     YasoundDataCachePendingOp* op = [info objectForKey:@"userData"]; 
     assert(op != nil);
+
+    id target = op.target;
+    SEL action = op.action;
+
+    if (friends == nil)
+    {
+        NSLog(@"YasoundDataCache requestFriendsWithTarget : the server returned nil!");
+        [target performSelector:action withObject:nil withObject:info];
+        return;
+    }
+        
     
     
     // expiration date for the newly received data
@@ -483,10 +526,9 @@ static YasoundDataCache* _main = nil;
     
     // cache data 
     [_cacheFriends setObject:timeout forKey:@"timeout"];
+    
     [_cacheFriends setObject:friends forKey:@"data"];
     
-    id target = op.target;
-    SEL action = op.action;
     
     // pending operation cleaning
     [op release];
@@ -504,6 +546,104 @@ static YasoundDataCache* _main = nil;
     _cacheFriends = [[NSMutableDictionary alloc] init];
     [_cacheFriends retain];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+static UIImage* gDummyImage = nil;
+
+- (UIImage*)requestImage:(NSURL*)url target:(id)target action:(SEL)selector
+{
+    NSString* key = [url absoluteString];
+    
+    // is there a cache for this image?
+    YasoundDataCacheImage* cache = [[YasoundDataCacheImageManager main].memoryCacheImages objectForKey:key];
+
+    UIImage* image = nil;
+    BOOL imageNeedsUpdate = NO;
+    
+    // there is not a cache, yet
+    if (cache == nil)
+    {
+        // init the cache. The image may be imported from the disk, if it's been stored already
+        cache = [[YasoundDataCacheImage alloc] initWithUrl:url];
+        [[YasoundDataCacheImageManager main].memoryCacheImages setObject:cache forKey:key];        
+    }
+
+    // set the last_access date
+    [cache updateTimestamp];
+    
+    
+    // cache image is not downloaded yet (or was not store on disk)
+    if (cache.image == nil) 
+    {
+        // let the target know when it's downloaded
+        [cache addTarget:target action:selector];
+        
+        // last try was unsuccessful, retry.
+        if (cache.isDownloading)
+            imageNeedsUpdate = NO;
+        else
+            imageNeedsUpdate = YES;
+
+//        if (gDummyImage == nil)
+//            gDummyImage = [UIImage imageNamed:@"avatarDummy.png"];
+//        
+//        // meanwhile, give the target the dummy image
+//        image = gDummyImage;
+        
+        image  = [UIImage imageNamed:@"avatarDummy.png"];
+    }
+    
+    // it's downloaded already, give it to the target
+    else
+        image = cache.image;
+    
+    
+    // request the image to the server
+    if (imageNeedsUpdate)
+        [cache start];
+    
+    
+    //LBDEBUG
+//    [[YasoundDataCacheImageManager main] dump];
+    
+    
+    return image;
+}
+
+
+
+
+
+// this target doesn't want to receive the downloaded image anymore.
+// it's necessary for the TableViews' cells for instance : the cells are reused for different objects, without having been released and reallocated.
+// Therefore, we have to break the link manually, in order to avoid weird behavior (wrong images appearing in the wrong cells...)
+- (void)releaseImageRequest:(NSURL*)url forTarget:(id)target
+{
+    NSString* key = [url absoluteString];
+    
+    YasoundDataCacheImage* cache = [[YasoundDataCacheImageManager main].memoryCacheImages objectForKey:key];
+    if (cache == nil)
+        return;
+    
+    // image is downloaded already
+    if (cache.image != nil)
+        return;
+    
+    // image is still downloading. Clear it's targets list
+    [cache removeTarget:target];
+}
+
+
 
 
 

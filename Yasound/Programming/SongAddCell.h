@@ -13,6 +13,7 @@
 @interface SongAddCell : UITableViewCell
 {
     UIAlertView* _alertWarning;
+    UIAlertView* _wifiWarning;
 }
 
 @property (nonatomic, assign) Song* song;

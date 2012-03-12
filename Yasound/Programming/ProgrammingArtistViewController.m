@@ -19,8 +19,8 @@
 #import "SongCatalog.h"
 #import "ProgrammingAlbumViewController.h"
 #import "RootViewController.h"
-
 #import "AudioStreamManager.h"
+#import "SongLocal.h"
 
 
 @implementation ProgrammingArtistViewController
@@ -175,6 +175,15 @@
     
     cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];    
 
+    id firstSong = [songs objectAtIndex:0];
+    if ([firstSong isKindOfClass:[SongLocal class]])
+    {
+        SongLocal* songLocal = (SongLocal*)firstSong;
+        
+        NSInteger imageSize = 44;
+        cell.imageView.image = [songLocal.artwork imageWithSize:CGSizeMake(imageSize,imageSize)];
+    }
+        
     
     return cell;
 }

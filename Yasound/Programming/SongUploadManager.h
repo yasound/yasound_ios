@@ -49,6 +49,7 @@
 #define NOTIF_UPLOAD_DIDFINISH @"NOTIF_UploadDidFinish"
 #define NOTIF_UPLOAD_DIDCANCEL @"NOTIF_UploadDidCancel"
 #define NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH @"NOTIF_UploadDidCancelNeedGuiRefresh"
+#define NOTIF_UPLOAD_DIDINTERRUPT @"NOTIF_UploadDidInterrupt"
 
 #define NOTIF_UPLOAD_DIDSUCCEED @"NOTIF_UploadDidSucceed"
 #define NOTIF_UPLOAD_DIDFAIL @"NOTIF_UploadDidFail"
@@ -88,7 +89,9 @@ typedef enum SongUploadItemStatus
 
 - (id)initWithSong:(Song*)aSong;
 - (void)startUpload;
-- (void)cancelUpload;
+- (void)cancelUpload; // interrupt and remove
+
+- (void)interruptUpload; // interrupt only
 
 @end
 
@@ -98,19 +101,20 @@ typedef enum SongUploadItemStatus
 
 
 @interface SongUploadManager : NSObject
-{
-//    BOOL _uploading;
-}
 
 @property (atomic, retain, readonly) NSMutableArray* items;
-@property (atomic, assign, readonly) SongUploadItem* currentlyUploadingItem;
-//@property (nonatomic, readonly) NSInteger index;
+@property (nonatomic)  BOOL interrupted;
+@property (nonatomic) BOOL notified3G;
+
 
 + (SongUploadManager*)main;
 
-- (void)addAndUploadSong:(Song*)song;
-- (void)restartUploads;
+- (void)addSong:(Song*)song startUploadNow:(BOOL)startUploadNow;
+- (void)importUploads;
 - (void)clearStoredUpdloads;
+
+- (void)interruptUploads;
+- (void)resumeUploads;
 
 - (Song*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album;
 

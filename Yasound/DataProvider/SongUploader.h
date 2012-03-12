@@ -31,7 +31,7 @@
 - (BOOL)canUploadSong:(Song*)song;
 
 
-- (void)cancelSongUpload:(Song*)song;
+- (void)cancelSongUpload;
 
 
 @end

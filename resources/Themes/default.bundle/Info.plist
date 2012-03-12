@@ -1270,7 +1270,7 @@
 				<key>textAlignement</key>
 				<string>left</string>
 				<key>size</key>
-				<integer>13</integer>
+				<integer>15</integer>
 				<key>textColor</key>
 				<string>white</string>
 				<key>backgroundColor</key>

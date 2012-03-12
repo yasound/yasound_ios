@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Radio.h"
-
+#import "YasoundDataCacheImage.h"
 
 #define REQUEST_RADIOS_ALL @"radiosWithGenre"
 #define REQUEST_RADIOS_TOP @"topRadiosWithGenre"
@@ -30,6 +30,15 @@
 
 
 
+//@interface YasoundDataCacheImage
+//
+//@property (nonatomic, retain) NSDate* timeout;
+//@property (nonatomic, retain) UIImage* image;
+//@property (nonatomic, retain) id target;
+//@property (nonatomic) SEL action;
+//
+//
+//@end
 
 
 
@@ -39,6 +48,7 @@
     NSMutableDictionary* _cacheRadios;
     NSMutableDictionary* _cacheSongs;
     NSMutableDictionary* _cacheFriends;
+//    NSMutableDictionary* _cacheImages;
 }
 
 
@@ -78,6 +88,10 @@
 
 
 - (void)requestFriendsWithTarget:(id)target action:(SEL)selector;
+
+
+- (UIImage*)requestImage:(NSURL*)url target:(id)target action:(SEL)selector;
+- (void)releaseImageRequest:(NSURL*)url forTarget:(id)target;
 
 
 @end

@@ -12,7 +12,7 @@
 #import "SongUploadManager.h"
 #import "SongCatalog.h"
 #import "ActivityAlertView.h"
-
+#import "YasoundReachability.h"
 
 
 @implementation SongAddCell
@@ -105,7 +105,7 @@
     NSNumber* warning = [[NSUserDefaults standardUserDefaults] objectForKey:@"userUploadWarning"];
     if ((warning == nil) || ([warning boolValue] == YES))
     {
-        _alertWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongUpload_warning_title", nil) message:NSLocalizedString(@"SongUpload_warning_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
+        _alertWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongUpload_warning_title", nil) message:NSLocalizedString(@"SongUpload_warning_message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
         [_alertWarning show];
         [_alertWarning release];  
     }
@@ -128,21 +128,37 @@
     {
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"userUploadWarning"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+
+        [self requestUpload];
     }
     
-    [self requestUpload];
 }
 
 - (void)requestUpload
 {
+    BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
+    
+        
+    BOOL startUploadNow = isWifi;
+    
    // add an upload job to the queue
-    [[SongUploadManager main] addAndUploadSong:song];
+    [[SongUploadManager main] addSong:song startUploadNow:startUploadNow];
     
     // and flag the current song as "uploading song"
     song.uploading = YES;
     [self update:song];
     
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
+    if (!isWifi && ![SongUploadManager main].notified3G)
+    {
+        [SongUploadManager main].notified3G = YES;
+        
+        _wifiWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_add_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_add_WIFI_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [_wifiWarning show];
+        [_wifiWarning release];  
+        return; 
+    }
+    else
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
     
 }
 

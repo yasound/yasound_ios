@@ -63,6 +63,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPopToMenu:) name:NOTIF_POP_TO_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushMenu:) name:NOTIF_PUSH_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorCommunicationServer:) name:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionBack:) name:NOTIF_ERROR_CONNECTION_BACK object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionLost:) name:NOTIF_ERROR_CONNECTION_LOST object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionNo:) name:NOTIF_ERROR_CONNECTION_NO object:nil];
 
@@ -187,8 +188,18 @@
       NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
       if (lastUserID && [lastUserID intValue] == [user.id intValue])
       {
-        // restart song uploads not completed on last application shutdown
-        [[SongUploadManager main] restartUploads];
+          [[SongUploadManager main] importUploads];
+
+          if ([YasoundReachability main].networkStatus == kReachableViaWiFi)
+              // restart song uploads not completed on last application shutdown
+              [[SongUploadManager main] resumeUploads];
+          
+          else if ([SongUploadManager main].items.count > 0)
+          {
+              UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_restart_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_restart_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+              [av show];
+              [av release];  
+          }
       }
       else
       {
@@ -324,6 +335,50 @@
     // and logout properly
     [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
 }
+
+- (void)onNotifErrorConnectionBack:(NSNotification *)notification
+{
+    NetworkStatus status = [YasoundReachability main].networkStatus;
+    
+    if (status == ReachableViaWiFi)
+    {
+        NSLog(@"onNotifErrorConnectionBack WIFI ");
+        
+        if ([SongUploadManager main].interrupted)
+            [[SongUploadManager main] resumeUploads];
+        
+    }
+    else if (status == ReachableViaWWAN)
+    {
+        NSLog(@"onNotifErrorConnectionBack WWAN ");
+    
+        if (![SongUploadManager main].interrupted)
+        {
+            [[SongUploadManager main] interruptUploads];
+            
+            // show alert message for connection error
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];  
+            
+            
+        }
+
+    }
+   else 
+       NSLog(@"onNotifErrorConnectionBack ERROR unexpected STATUS CODE!");
+    
+    
+    
+//    // show alert message for connection error
+//    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_lost", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [av show];
+//    [av release];  
+//    
+//    // and logout properly
+//    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+}
+
 
 - (void)onNotifErrorConnectionLost:(NSNotification *)notification
 {
