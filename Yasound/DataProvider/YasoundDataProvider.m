@@ -628,12 +628,11 @@ static YasoundDataProvider* _main = nil;
 - (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
 {
   Auth* auth = self.apiKeyAuth;
-  NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-overall_listening_time"];
-  [params addObject:@"ready=true"];
+  NSMutableArray* params = [NSMutableArray array];
   if (genre)
     [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
   
-  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/top_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
 - (void)selectedRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
