@@ -110,6 +110,8 @@
     if ((self.item.status == SongUploadItemStatusPending) || (self.item.status == SongUploadItemStatusUploading))
     {
         self.progressView.progress = self.item.currentProgress;
+        self.progressView.hidden = NO;
+        self.labelStatus.hidden = YES;
     }
     else if (self.item.status == SongUploadItemStatusCompleted)
     {
