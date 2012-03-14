@@ -604,7 +604,7 @@
 {
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_requestServer", nil)];
     
-  [[YasoundDataProvider main] searchSong:searchText count:20 offset:20 target:self action:@selector(didReceiveSongs:info:)]; 
+  [[YasoundDataProvider main] searchSong:searchText count:20 offset:0 target:self action:@selector(didReceiveSongs:info:)]; 
     
 }
 

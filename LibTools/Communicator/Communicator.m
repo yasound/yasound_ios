@@ -828,9 +828,9 @@
         {
             urlStr = [urlStr stringByAppendingString:@"&"];
         }
-        urlStr = [urlStr stringByAppendingString:p];
+        urlStr = [urlStr stringByAppendingString:[p stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     }
-    NSURL* new = [NSURL URLWithString:[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL* new = [NSURL URLWithString:urlStr];
     return new;
 }
 
