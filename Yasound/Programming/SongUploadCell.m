@@ -58,27 +58,42 @@
         // don't show it now, show it when you need it
         self.labelStatus.hidden = YES;
 
-    
-        if ((item.status == SongUploadItemStatusPending) || (item.status == SongUploadItemStatusUploading))
+
+        if (self.progressView == nil)
         {
-            if (self.progressView == nil)
-            {
-                sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-                self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-                self.progressView.frame = sheet.frame;
-                [self addSubview:self.progressView];
-                
-            }
+            sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+            self.progressView.frame = sheet.frame;
+            [self addSubview:self.progressView];
+            
+        }
+
+        if (item.status == SongUploadItemStatusUploading)
+        {
+            self.progressView.hidden = NO;
+            self.labelStatus.hidden = YES;
             self.progressView.progress = self.item.currentProgress;
+        }
+        else if (item.status == SongUploadItemStatusPending)
+        {
+            if ([SongUploadManager main].isRunning)
+                self.labelStatus.text = NSLocalizedString(@"SongUpload_pending", nil);    
+            else
+                self.labelStatus.text = NSLocalizedString(@"SongUpload_waitingForWifi", nil);        
+
+            self.progressView.hidden = YES;
+            self.labelStatus.hidden = NO;
         }
         else if (item.status == SongUploadItemStatusCompleted)
         {
             self.labelStatus.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
+            self.progressView.hidden = YES;
             self.labelStatus.hidden = NO;
         }
         else if (item.status == SongUploadItemStatusFailed)
         {
             self.labelStatus.text = NSLocalizedString(@"SongUpload_progressFailed", nil);   
+            self.progressView.hidden = YES;
             self.labelStatus.hidden = NO;
         }
         
@@ -107,11 +122,21 @@
     self.label.text = [NSString stringWithFormat:@"%@ - %@", mediaItem.song.name, mediaItem.song.artist];
     
     
-    if ((self.item.status == SongUploadItemStatusPending) || (self.item.status == SongUploadItemStatusUploading))
+    if (self.item.status == SongUploadItemStatusUploading) 
     {
         self.progressView.progress = self.item.currentProgress;
         self.progressView.hidden = NO;
         self.labelStatus.hidden = YES;
+    }
+    else if (self.item.status == SongUploadItemStatusPending) 
+    {
+        self.progressView.hidden = YES;
+        self.labelStatus.hidden = NO;
+        
+        if ([SongUploadManager main].isRunning)
+            self.labelStatus.text = NSLocalizedString(@"SongUpload_pending", nil);    
+        else
+            self.labelStatus.text = NSLocalizedString(@"SongUpload_waitingForWifi", nil);        
     }
     else if (self.item.status == SongUploadItemStatusCompleted)
     {
@@ -149,7 +174,13 @@
 
 - (void)songUploadDidStart:(Song*)song
 {
-    
+    [self update:self.item];
+}
+
+
+- (void)songUploadDidInterrupt:(Song*)song
+{
+    [self update:self.item];
 }
 
 - (void)songUploadProgress:(Song*)song progress:(CGFloat)progress

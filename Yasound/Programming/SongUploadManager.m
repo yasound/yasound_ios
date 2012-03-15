@@ -70,7 +70,7 @@
     self.currentProgress = 0;
 
     if (self.delegate != nil)
-        [self.delegate songUploadProgress:self.song progress:0];
+        [self.delegate songUploadDidInterrupt:self.song];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDINTERRUPT object:self];
 }
@@ -133,7 +133,7 @@
 @implementation SongUploadManager
 
 @synthesize items = _items;
-@synthesize interrupted;
+@synthesize isRunning;
 @synthesize notified3G;
 
 static SongUploadManager* _main;
@@ -155,11 +155,11 @@ static SongUploadManager* _main;
         _items = [[NSMutableArray alloc] init];
         
         
-        self.interrupted = NO;
+        self.isRunning = YES;
         self.notified3G = NO;
         
         BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
-        self.interrupted = !isWifi;
+        self.isRunning = isWifi;
         
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationFinish:) name:NOTIF_UPLOAD_DIDFINISH object:nil];
@@ -243,14 +243,14 @@ static SongUploadManager* _main;
 
 - (void)interruptUploads
 {
-    self.interrupted = YES;
+    self.isRunning = NO;
     for (SongUploadItem* item in self.items)
         [item interruptUpload];
 }
 
 - (void)resumeUploads
 {
-    self.interrupted = NO;
+    self.isRunning = YES;
     [self loop];
 }
 
@@ -295,6 +295,9 @@ static SongUploadManager* _main;
 
 - (void)loop
 {
+    if (!self.isRunning)
+        return;
+    
     // check if an item is currently uploading
     // if not, start the upload
     
@@ -349,9 +352,10 @@ static SongUploadManager* _main;
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:self];
 
-        [self loop];
     
-  [self refreshStoredUploads];
+    [self loop];
+    
+    [self refreshStoredUploads];
 }
 
 

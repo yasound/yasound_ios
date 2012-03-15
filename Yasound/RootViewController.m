@@ -344,15 +344,16 @@
     {
         NSLog(@"onNotifErrorConnectionBack WIFI ");
         
-        if ([SongUploadManager main].interrupted)
+        if (![SongUploadManager main].isRunning)
             [[SongUploadManager main] resumeUploads];
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:nil];
     }
     else if (status == ReachableViaWWAN)
     {
         NSLog(@"onNotifErrorConnectionBack WWAN ");
     
-        if (![SongUploadManager main].interrupted)
+        if ([SongUploadManager main].isRunning)
         {
             [[SongUploadManager main] interruptUploads];
             
@@ -360,10 +361,9 @@
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [av show];
             [av release];  
-            
-            
         }
-
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:nil];
     }
    else 
        NSLog(@"onNotifErrorConnectionBack ERROR unexpected STATUS CODE!");
