@@ -102,7 +102,6 @@ static SongUploader* _main = nil;
 
 
 
-
 #pragma mark - public functions
 
 - (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
@@ -144,12 +143,20 @@ static SongUploader* _main = nil;
   TSLibraryImport* import = [[TSLibraryImport alloc] init];
   [import importAsset:assetURL toURL:outURL completionBlock:^(TSLibraryImport* import) 
     {
+        
     if (import.status != AVAssetExportSessionStatusCompleted) 
     {
       // something went wrong with the import
       NSLog(@"Error importing: %@", import.error);
       [import release];
       import = nil;
+        
+        // client callback
+        NSMutableDictionary* info = [NSMutableDictionary dictionary];
+        [info setObject:[NSNumber numberWithBool:NO] forKey:@"succeeded"];
+        [info setObject:[NSString stringWithString:@"SongUpload_failedIncorrectFile"] forKey:@"detailedInfo"];
+        [self onUploadDidFinish:nil withInfos:info];
+
       return;
     }
     
@@ -200,9 +207,9 @@ static SongUploader* _main = nil;
 
 - (void)cancelSongUpload
 {
-    assert(_request != nil);
-    
-    [_request clearDelegatesAndCancel];
+    // request may be nil, if the upload has been canceled because the file is incorrect for instance
+    if (_request != nil)
+        [_request clearDelegatesAndCancel];
 }
 
 

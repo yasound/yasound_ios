@@ -223,6 +223,8 @@
 "SongUpload_progressFailed" = "Failed";
 "SongUpload_pending" = "Pending";
 "SongUpload_waitingForWifi" = "Waiting for Wifi to resume";
+"SongUpload_failedIncorrectFile" = "Incorrect file";
+"SongUpload_failedUploading" = "Upload did not end properly";
 
 "SongUpload_warning_title" = "Warning";
 "SongUpload_warning_message" = "You have to own the rights of all the audio files that you upload to our servers to be broadcasted publicly on your radio. \nIn case of an interview, or audio recording, you certify that you already have the written agreements of all the parties.";

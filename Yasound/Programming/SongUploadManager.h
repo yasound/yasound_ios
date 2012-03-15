@@ -86,6 +86,7 @@ typedef enum SongUploadItemStatus
 @property (nonatomic, retain) Song* song;
 @property (nonatomic) CGFloat currentProgress;
 @property (nonatomic) SongUploadItemStatus status;
+@property (nonatomic, retain) NSString* detailedInfo;
 @property (nonatomic, retain) id<SongUploadItemDelegate> delegate;
 
 - (id)initWithSong:(Song*)aSong;

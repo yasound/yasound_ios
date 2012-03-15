@@ -19,7 +19,7 @@
 @synthesize currentProgress;
 @synthesize delegate;
 @synthesize status;
-
+@synthesize detailedInfo;
 
 - (id)initWithSong:(Song*)aSong
 {
@@ -81,6 +81,8 @@
 {
     NSNumber* succeeded = [info objectForKey:@"succeeded"];
     assert(succeeded != nil);
+    
+    self.detailedInfo = [info objectForKey:@"detailedInfo"];
     
     if ([succeeded boolValue])
     {

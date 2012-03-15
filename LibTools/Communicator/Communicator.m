@@ -704,6 +704,8 @@
     NSMutableDictionary* data = [[NSMutableDictionary alloc] init];
     [data setValue:userData forKey:@"userData"];
     [data setObject:[NSNumber numberWithBool:succeeded] forKey:@"succeeded"];
+    if (!succeeded)
+        [data setObject:[NSString stringWithString:@"SongUpload_failedUploading"] forKey:@"detailedInfo"];
     
     NSString* response = request.responseString;
     

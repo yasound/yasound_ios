@@ -221,6 +221,8 @@
 "SongUpload_progressFailed" = "Echec";
 "SongUpload_pending" = "En attente";
 "SongUpload_waitingForWifi" = "En attente d'une connexion Wifi";
+"SongUpload_failedIncorrectFile" = "Fichier incorrect";
+"SongUpload_failedUploading" = "Téléchargement incomplet";
 
 
 "SongUpload_warning_title" = "Attention";

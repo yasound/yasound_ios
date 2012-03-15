@@ -21,7 +21,6 @@
 @synthesize progressView;
 
 
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadItem*)item
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -86,13 +85,21 @@
         }
         else if (item.status == SongUploadItemStatusCompleted)
         {
-            self.labelStatus.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
+            if (self.item.detailedInfo != nil)
+                self.labelStatus.text = [NSString stringWithFormat:@"%@ - %@", 
+                                         NSLocalizedString(@"SongUpload_progressCompleted", nil), NSLocalizedString(self.item.detailedInfo, nil)];
+            else
+                self.labelStatus.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
             self.progressView.hidden = YES;
             self.labelStatus.hidden = NO;
         }
         else if (item.status == SongUploadItemStatusFailed)
         {
-            self.labelStatus.text = NSLocalizedString(@"SongUpload_progressFailed", nil);   
+            if (self.item.detailedInfo != nil)
+                self.labelStatus.text = [NSString stringWithFormat:@"%@ - %@", 
+                                         NSLocalizedString(@"SongUpload_progressFailed", nil), NSLocalizedString(self.item.detailedInfo, nil)];
+            else
+                self.labelStatus.text = NSLocalizedString(@"SongUpload_progressFailed", nil);   
             self.progressView.hidden = YES;
             self.labelStatus.hidden = NO;
         }
@@ -142,13 +149,23 @@
     {
         self.progressView.hidden = YES;
         self.labelStatus.hidden = NO;
-        self.labelStatus.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
+        if (self.item.detailedInfo != nil)
+            self.labelStatus.text = [NSString stringWithFormat:@"%@ - %@", 
+                                     NSLocalizedString(@"SongUpload_progressCompleted", nil), NSLocalizedString(self.item.detailedInfo, nil)];
+        else
+            self.labelStatus.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
     }
     else if (self.item.status == SongUploadItemStatusFailed)
     {
         self.progressView.hidden = YES;
         self.labelStatus.hidden = NO;
-        self.labelStatus.text = NSLocalizedString(@"SongUpload_progressFailed", nil);   
+        
+        if (self.item.detailedInfo != nil)
+            self.labelStatus.text = [NSString stringWithFormat:@"%@ - %@", 
+                                     NSLocalizedString(@"SongUpload_progressFailed", nil), NSLocalizedString(self.item.detailedInfo, nil)];
+        else
+            self.labelStatus.text = NSLocalizedString(@"SongUpload_progressFailed", nil);   
+        
     }
 
 }
@@ -192,12 +209,9 @@
 {
     NSLog(@"songUploadDidFinish : info %@", info);
 
-//    [self.progressView removeFromSuperview];
-//    [self.progressView release];
-    
     BOOL succeeded = NO;
     succeeded = [[info objectForKey:@"succeeded"] boolValue];
-    
+        
     
     // update the GUI, using the same item
     [self update:self.item];
@@ -208,20 +222,6 @@
     
     // and let the views know about it
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:nil];
-    
-    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UILabel* label = [sheet makeLabel];
-//    [self addSubview:label];
-    
-//    if (succeeded)
-//        label.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
-//    else
-//        label.text = NSLocalizedString(@"SongUpload_progressFailed", nil);
-    
-//    if (!succeeded)
-// changer le bouton LBDEBUG TODO        
-
 }
 
 
