@@ -140,6 +140,10 @@ static SongUploader* _main = nil;
   
   //NSLog(@"SongUploader %@", fullPath);
     
+    if (_tempSongFile)
+        [_tempSongFile release];
+    _tempSongFile = [[NSString alloc] initWithFormat:fullPath];    
+    
     NSURL* outURL = [NSURL fileURLWithPath:fullPath];  
     
   TSLibraryImport* import = [[TSLibraryImport alloc] init];
