@@ -123,8 +123,8 @@ static SongUploader* _main = nil;
   
   NSString* ext = [TSLibraryImport extensionForAssetURL:assetURL];
   
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* cacheDirectory = [paths objectAtIndex:0];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString* cacheDirectory = [paths objectAtIndex:0];
     
 //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 //  NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -142,12 +142,12 @@ static SongUploader* _main = nil;
 //    _tempSongFile = [[NSString alloc] initWithFormat:fullPath];
     
     
-//    CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
-//	CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
-//	NSString* fullPath = [cacheDirectory stringByAppendingPathComponent:(NSString *)newUniqueIdString];
-//    fullPath = [fullPath stringByAppendingPathExtension:ext];
+    CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+	CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+	NSString* fullPath = [cacheDirectory stringByAppendingPathComponent:(NSString *)newUniqueIdString];
+    fullPath = [fullPath stringByAppendingPathExtension:ext];
     
-    NSString* fullPath = [cacheDirectory stringByAppendingPathComponent:@"prout.mp3"];
+   // NSString* fullPath = [cacheDirectory stringByAppendingPathComponent:@"prout.mp3"];
                           
     
   if (_tempSongFile)
