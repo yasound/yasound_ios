@@ -123,23 +123,49 @@ static SongUploader* _main = nil;
   
   NSString* ext = [TSLibraryImport extensionForAssetURL:assetURL];
   
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* cacheDirectory = [paths objectAtIndex:0];
+    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//  NSString *documentsDirectory = [paths objectAtIndex:0];
+//  
+//  NSString *filename = [NSString stringWithFormat:@"%@.%@", title, ext];
+//  NSString *fullPath = [documentsDirectory stringByAppendingPathComponent: filename];
   
-  NSString *filename = [NSString stringWithFormat:@"%@.%@", title, ext];
-  NSString *fullPath = [documentsDirectory stringByAppendingPathComponent: filename];
+//  NSError *error;
+//  NSFileManager *fileMgr = [NSFileManager defaultManager];
+//  [fileMgr removeItemAtPath:fullPath error:&error];
   
-  NSError *error;
-  NSFileManager *fileMgr = [NSFileManager defaultManager];
-  [fileMgr removeItemAtPath:fullPath error:&error];
-  
+//  if (_tempSongFile)
+//    [_tempSongFile release];
+//
+//    _tempSongFile = [[NSString alloc] initWithFormat:fullPath];
+    
+    
+//    CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+//	CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+//	NSString* fullPath = [cacheDirectory stringByAppendingPathComponent:(NSString *)newUniqueIdString];
+//    fullPath = [fullPath stringByAppendingPathExtension:ext];
+    
+    NSString* fullPath = [cacheDirectory stringByAppendingPathComponent:@"prout.mp3"];
+                          
+    
   if (_tempSongFile)
     [_tempSongFile release];
 
     _tempSongFile = [[NSString alloc] initWithFormat:fullPath];
+
+//    NSURL* tmpURL = [NSURL URLWithString:filePath];
     
-  NSURL* outURL = [[NSURL fileURLWithPath:[documentsDirectory stringByAppendingPathComponent:title]] URLByAppendingPathExtension:ext];    
+    NSLog(@"%@", fullPath);
+    
+
+    
+//    NSURL* outURL = [[NSURL fileURLWithPath:[documentsDirectory stringByAppendingPathComponent:title]] URLByAppendingPathExtension:ext];    
+    NSURL* outURL = [NSURL URLWithString:fullPath];    
   
+    
+    
   TSLibraryImport* import = [[TSLibraryImport alloc] init];
   [import importAsset:assetURL toURL:outURL completionBlock:^(TSLibraryImport* import) 
     {

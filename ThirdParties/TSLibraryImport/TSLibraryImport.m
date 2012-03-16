@@ -60,9 +60,24 @@
 - (void)doMp3ImportToFile:(NSURL*)destURL completionBlock:(void (^)(TSLibraryImport* import))completionBlock {
 	//TODO: instead of putting this in the same directory as the dest file, we should probably stuff
 	//this in tmp
+    
+    //LBDEBUG
+//    CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+//	CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+//	NSString* filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:(NSString *)newUniqueIdString];
+//    filePath = [filePath stringByAppendingPathExtension:@"mov"];
+//    NSURL* tmpURL = [NSURL URLWithString:filePath];
+//    
+//    NSLog(@"%@", filePath);
+    
+
 	NSURL* tmpURL = [[destURL URLByDeletingPathExtension] URLByAppendingPathExtension:@"mov"];
 	[[NSFileManager defaultManager] removeItemAtURL:tmpURL error:nil];
+    
 	exportSession.outputURL = tmpURL;
+    
+    NSLog(@"%@", tmpURL);
+
 	
 	exportSession.outputFileType = AVFileTypeQuickTimeMovie;
 	[exportSession exportAsynchronouslyWithCompletionHandler:^(void) {
