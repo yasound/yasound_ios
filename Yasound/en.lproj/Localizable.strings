@@ -146,7 +146,7 @@
 "PlaylistsView_empty_message" = "Warning: there are currently no playlists\navailable on this device. \n You need to select at least one playlist to create your radio. Meanwhile, you can stream radios shared by your community.";
 "PlaylistsView_submit_title" = "updating playlists";
 "PlaylistsView_submit_error_radio" = "Could not get the radio";
-"PlaylistsView_table_header_local_playlists" = "On this device";
+"PlaylistsView_table_header_local_playlists" = "Select the playlists";
 "PlaylistsView_table_header_other_playlists" = "On other devices";
 "PlaylistsView_cell_detail_with_matched" = "%d matched on %d";
 "PlaylistsView_cell_detail" = "%d tracks";
@@ -156,6 +156,8 @@
 "PlaylistsView_matchedSongsTitle_ok" = "Synchronization";
 "PlaylistsView_matchedSongsMessage_ok_1" = "1 song has been synchronized with your radio. You can use the Programming function from the menu to upload other songs.";
 "PlaylistsView_matchedSongsMessage_ok_n" = "%d songs have been synchronized with your radio. You can update your radio's contents choosing the Programming function from the menu, and upload other songs.";
+"PlaylistsView_allMusic" = "All my music";
+"PlaylistsView_allMusic_detail" = "%d songs";
 
 
 "LegalView_title" = "Terms Of Use";
