@@ -165,7 +165,7 @@
 
     // build global songs catalog
     MPMediaQuery* query = [MPMediaQuery songsQuery];
-    _songs = [query collections];
+    _songs = [query items];
     [_songs retain];
      
      [[TimeProfile main] end:@"Playlists_catalogSongs"];
@@ -807,12 +807,23 @@
     
 //    [[NSUserDefaults standardUserDefaults] synchronize];
     //    
-    [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists
-                                   removedPlaylists:_unselectedPlaylists
-                                             binary:YES 
-                                         compressed:YES 
-                                             target:self 
-                                             action:@selector(didBuildDataWithPlaylist:)];
+    if (_switchAllMyMusic.on)
+    {
+        [[PlaylistMoulinor main] buildDataWithSongs:_songs
+                                                 binary:YES 
+                                             compressed:YES 
+                                                 target:self 
+                                                 action:@selector(didBuildDataWithPlaylist:)];
+    }
+    else
+    {
+        [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists
+                                       removedPlaylists:_unselectedPlaylists
+                                                 binary:YES 
+                                             compressed:YES 
+                                                 target:self 
+                                                 action:@selector(didBuildDataWithPlaylist:)];
+    }
 }
 
 
@@ -820,7 +831,9 @@
 - (void) didBuildDataWithPlaylist:(NSData*)data
 {
     //LBDEBUG email playlist file
-    //  [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
+//      [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
+//    [ActivityAlertView close];
+//    return;
 
     Radio* radio = [YasoundDataProvider main].radio;
     NSLog(@"Playlists data package has been built.");

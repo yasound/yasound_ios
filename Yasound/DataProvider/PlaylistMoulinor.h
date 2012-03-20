@@ -54,6 +54,8 @@
 
 - (BOOL)buildDataWithPlaylists:(NSArray*)mediaPlaylists removedPlaylists:(NSArray*)removedPlaylists binary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action;
 
+- (BOOL)buildDataWithSongs:(NSArray*)mediaSongs binary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action;
+
 - (void)emailData:(NSData*)data to:(NSString*)email mimetype:(NSString*)mimetype filename:(NSString*)filename controller:(UIViewController*)controller;
 
 @end
