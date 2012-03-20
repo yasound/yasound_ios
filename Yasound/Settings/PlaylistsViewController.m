@@ -22,6 +22,7 @@
 
 #import "BundleFileManager.h"
 #import "Theme.h"
+#import "TimeProfile.h"
 
 
 
@@ -149,13 +150,27 @@
 
 - (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
 {
+    [[TimeProfile main] end:@"Playlists_download"];
+    [[TimeProfile main] logInterval:@"Playlists_download" inMilliseconds:NO];
+    
+    [[TimeProfile main] begin:@"Playlists_buildPlaylists"];
+
     // build playlist
     [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
-    
+
+     [[TimeProfile main] end:@"Playlists_buildPlaylists"];
+     [[TimeProfile main] logInterval:@"Playlists_buildPlaylists" inMilliseconds:NO];
+
+     [[TimeProfile main] begin:@"Playlists_catalogSongs"];
+
     // build global songs catalog
     MPMediaQuery* query = [MPMediaQuery songsQuery];
     _songs = [query collections];
     [_songs retain];
+     
+     [[TimeProfile main] end:@"Playlists_catalogSongs"];
+     [[TimeProfile main] logInterval:@"Playlists_catalogSongs" inMilliseconds:NO];
+
     
     // refresh
     [self refreshView];
@@ -264,11 +279,17 @@
 
     [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
     
+    [[TimeProfile main] begin:@"Playlists_catalogPlaylists"];
+
     MPMediaQuery *playlistsquery = [MPMediaQuery playlistsQuery];
     _playlistsDesc = [[NSMutableArray alloc] init];
     [_playlistsDesc retain];
     _playlists = [playlistsquery collections];
     [_playlists retain];
+    
+    [[TimeProfile main] end:@"Playlists_catalogPlaylists"];
+    [[TimeProfile main] logInterval:@"Playlists_catalogPlaylists" inMilliseconds:NO];
+
     
     if (([_playlists count] != 0) || _forceEnableNextBtn)
         _nextBtn.enabled = YES;
@@ -277,6 +298,9 @@
     
     
     [self.view addSubview:_tableView];
+    
+    
+    [[TimeProfile main] begin:@"Playlists_download"];
     
     Radio* radio = [YasoundDataProvider main].radio;
     [[YasoundDataProvider main] playlistsForRadio:radio 
