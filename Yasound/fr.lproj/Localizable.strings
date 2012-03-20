@@ -146,7 +146,7 @@
 "PlaylistsView_empty_message" = "Attention : il n'y a pas de musique sur votre appareil. Vous devez avoir au moins une playlist pour créer votre radio. En attendant vous pouvez écouter les radios de la communauté.";
 "PlaylistsView_submit_title" = "Mise à jour de la programmation";
 "PlaylistsView_submit_error_radio" = "Erreur de récupération de la radio";
-"PlaylistsView_table_header_local_playlists" = "Sur cet appareil";
+"PlaylistsView_table_header_local_playlists" = "Sélection des playlists";
 "PlaylistsView_table_header_other_playlists" = "Sur d'autres appareils";
 "PlaylistsView_cell_detail_with_matched" = "%d identifiées sur %d";
 "PlaylistsView_cell_detail" = "%d titres";
@@ -156,6 +156,8 @@
 "PlaylistsView_matchedSongsTitle_ok" = "Synchronisation";
 "PlaylistsView_matchedSongsMessage_ok_1" = "1 morceau a été synchronisé avec votre radio. Vous pourrez utiliser la fonction Programmation du menu pour télécharger manuellement d'autres morceaux.";
 "PlaylistsView_matchedSongsMessage_ok_n" = "%d morceaux ont été automatiquement synchronisés avec votre radio. Vous pourrez gérer le contenu de votre radio avec la fonction Programmation du menu, et télécharger manuellement d'autres morceaux.";
+"PlaylistsView_allMusic" = "Toute ma musique";
+"PlaylistsView_allMusic_detail" = "%d morceaux";
 
 
 
@@ -218,7 +220,12 @@
 
 "SongUpload_title" = "Téléchargement";
 "SongUpload_progressCompleted" = "Chargé";
-"SongUpload_progressFailed" = "Echec.";
+"SongUpload_progressFailed" = "Echec";
+"SongUpload_pending" = "En attente";
+"SongUpload_waitingForWifi" = "En attente d'une connexion Wifi";
+"SongUpload_failedIncorrectFile" = "Fichier incorrect";
+"SongUpload_failedUploading" = "Téléchargement incomplet";
+
 
 "SongUpload_warning_title" = "Attention";
 "SongUpload_warning_message" = "Vous vous engagez à ne télécharger vers nos serveurs à destination de diffusion publique sur votre radio uniquement des \

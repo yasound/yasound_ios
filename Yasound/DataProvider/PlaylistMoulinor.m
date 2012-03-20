@@ -74,7 +74,32 @@ static PlaylistMoulinor* _main = nil;
     NSArray *lists = [[NSArray alloc] initWithObjects:mediaPlaylists, removedPlaylists, nil];
     
     // use an asynchronous operation
-    NSInvocationOperation* operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(thProcess:) object:lists];
+    NSInvocationOperation* operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(thProcessForPlaylists::) object:lists];
+    [_queue addOperation:operation];
+    [operation release];
+    
+    return YES;
+}
+
+
+
+
+- (BOOL)buildDataWithSongs:(NSArray*)mediaSongs binary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action
+{
+    if ((target == nil) || (action == nil))
+    {
+        NSLog(@"buildDataWithSongs  error : target|selector is nil!");
+        assert(0);
+        return NO;
+    }
+    
+    _binary = binary;
+    _compressed = compressed;
+    _target = target;
+    _action = action;
+    
+    // use an asynchronous operation
+    NSInvocationOperation* operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(thProcessForSongs:) object:mediaSongs];
     [_queue addOperation:operation];
     [operation release];
     
@@ -85,10 +110,14 @@ static PlaylistMoulinor* _main = nil;
 
 
 
+
+
+
+
 #pragma mark - Thread
 
 
-- (void)thProcess:(id)userInfo
+- (void)thProcessForPlaylists:(id)userInfo
 {
     NSArray* lists = userInfo;
     NSArray* mediaPlaylists = [lists objectAtIndex:0];
@@ -149,9 +178,71 @@ static PlaylistMoulinor* _main = nil;
 
 
 
+
+
+
+- (void)thProcessForSongs:(id)userInfo
+{
+    NSArray* songs = userInfo;
+    
+    NSMutableData* data = [[NSMutableData alloc] init];
+    
+    // current time
+    NSDate* BEGIN = [NSDate date];
+    
+    // uuid
+    [data appendData:[self dataWithUUID]];
+    
+    // dico to sort the items
+    NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
+    
+    NSInteger index = 0;
+    // for each item
+    for (MPMediaItem* item in songs)
+    {
+        [self sortItem:item withIndex:index inDictionary:dico];
+        index++;
+    }
+    
+    // now, output the sorted list in the data buffer
+    NSArray* artists = [dico allKeys];
+    // for each artist
+    for (NSString* artist in artists)
+    {
+        NSDictionary* dicoArtist = [dico objectForKey:artist];
+        NSData* artistData = [self dataWithArtist:artist dictionary:dicoArtist];
+        [data appendData:artistData];
+    }
+
+    
+    // delay for building the data
+    double timePassedForBuilding_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
+    BEGIN = [NSDate date];
+    
+
+    if (!_compressed)
+    {
+        // send results
+        [_target performSelectorOnMainThread:_action withObject:data waitUntilDone:NO];
+        return;
+    }
     
     
+    NSData* compressedData = [data zlibDeflate];
     
+    // delay for compressing the data
+    double timePassedForCompressing_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
+    
+    NSLog(@"PlaylistMoulinor songs  uncompressed data : %d bytes    compressed data : %d bytes", [data length], [compressedData length]);
+    NSLog(@"PlaylistMoulinor songs  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
+    
+    // send results
+    [_target performSelectorOnMainThread:_action withObject:compressedData waitUntilDone:NO];
+}
+
+
+
+
     
     
     
@@ -253,48 +344,56 @@ static PlaylistMoulinor* _main = nil;
     // for each item
     for (MPMediaItem* item in [playlist items])
     {
-        NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
-        if (song == nil)
-            song = [NSString stringWithString:PM_FIELD_UNKNOWN];
-        NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
-        if (artist == nil)
-            artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
-        NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];  
-        if (album == nil)
-            album = [NSString stringWithString:PM_FIELD_UNKNOWN];
-        //NSLog(@"%d : %@  |  %@  |  %@", index, artist, album, song);
-        
-        // sort by artist
-        NSMutableDictionary* dicoArtist = [dico objectForKey:artist];
-        if (dicoArtist == nil)
-        {
-            dicoArtist = [[NSMutableDictionary alloc] init];
-            [dico setObject:dicoArtist forKey:artist];
-        }
-        
-        // sort by album
-        NSMutableArray* arrayAlbum = [dicoArtist objectForKey:album];
-        if (arrayAlbum == nil)
-        {
-            arrayAlbum = [[NSMutableArray alloc] init];
-            [dicoArtist setObject:arrayAlbum forKey:album];
-        }
-        
-        // add the item's song
-        NSMutableDictionary* dicoSong = [[NSMutableDictionary alloc] init];
-        [arrayAlbum addObject:dicoSong];
-        
-        // song's index in playlist
-        [dicoSong setObject:[NSNumber numberWithInteger:index] forKey:@"index"];
-        // song's title
-        [dicoSong setObject:song forKey:@"title"];
-        
+        [self sortItem:item withIndex:index inDictionary:dico];
         index++;
     }
     
     return dico;
 }
 
+
+
+
+
+- (NSDictionary*)sortItem:(MPMediaItem*)item withIndex:(NSInteger)index inDictionary:(NSMutableDictionary*)dico
+{
+    NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
+    if (song == nil)
+        song = [NSString stringWithString:PM_FIELD_UNKNOWN];
+    NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
+    if (artist == nil)
+        artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
+    NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];  
+    if (album == nil)
+        album = [NSString stringWithString:PM_FIELD_UNKNOWN];
+    
+    //NSLog(@"%d : %@  |  %@  |  %@", index, artist, album, song);
+    
+    // sort by artist
+    NSMutableDictionary* dicoArtist = [dico objectForKey:artist];
+    if (dicoArtist == nil)
+    {
+        dicoArtist = [[NSMutableDictionary alloc] init];
+        [dico setObject:dicoArtist forKey:artist];
+    }
+    
+    // sort by album
+    NSMutableArray* arrayAlbum = [dicoArtist objectForKey:album];
+    if (arrayAlbum == nil)
+    {
+        arrayAlbum = [[NSMutableArray alloc] init];
+        [dicoArtist setObject:arrayAlbum forKey:album];
+    }
+    
+    // add the item's song
+    NSMutableDictionary* dicoSong = [[NSMutableDictionary alloc] init];
+    [arrayAlbum addObject:dicoSong];
+    
+    // song's index in playlist
+    [dicoSong setObject:[NSNumber numberWithInteger:index] forKey:@"index"];
+    // song's title
+    [dicoSong setObject:song forKey:@"title"];
+}
 
 
 

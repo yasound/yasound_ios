@@ -284,6 +284,16 @@
 		BC188BDE1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		BC188BDF1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		BC188BE01507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
+		BC237D4D1518E57800B8B66F /* GrayCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4B1518E57800B8B66F /* GrayCheckmark.png */; };
+		BC237D4E1518E57800B8B66F /* GrayCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4B1518E57800B8B66F /* GrayCheckmark.png */; };
+		BC237D4F1518E57800B8B66F /* GrayCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4B1518E57800B8B66F /* GrayCheckmark.png */; };
+		BC237D501518E57800B8B66F /* GrayCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4B1518E57800B8B66F /* GrayCheckmark.png */; };
+		BC237D511518E57800B8B66F /* GrayCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4B1518E57800B8B66F /* GrayCheckmark.png */; };
+		BC237D521518E57800B8B66F /* GrayCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */; };
+		BC237D531518E57800B8B66F /* GrayCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */; };
+		BC237D541518E57800B8B66F /* GrayCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */; };
+		BC237D551518E57800B8B66F /* GrayCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */; };
+		BC237D561518E57800B8B66F /* GrayCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */; };
 		BC26E6CB14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
 		BC26E6CC14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
 		BC26E6CD14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
@@ -1989,6 +1999,8 @@
 		BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalSongInfoViewController.m; path = Programming/LocalSongInfoViewController.m; sourceTree = "<group>"; };
 		BC188BDA1507647900E38692 /* SongLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongLocal.h; sourceTree = "<group>"; };
 		BC188BDB1507647900E38692 /* SongLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLocal.m; sourceTree = "<group>"; };
+		BC237D4B1518E57800B8B66F /* GrayCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GrayCheckmark.png; sourceTree = "<group>"; };
+		BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GrayCheckmark@2x.png"; sourceTree = "<group>"; };
 		BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateMyRadioBackground.png; sourceTree = "<group>"; };
 		BC26E6CA14E40E3100D30554 /* CreateMyRadioBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadioBackground@2x.png"; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
@@ -3116,6 +3128,8 @@
 		BC9F4A0A14E6AC5400008AA3 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				BC237D4B1518E57800B8B66F /* GrayCheckmark.png */,
+				BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */,
 				BC413D6714EBC2F9009EB307 /* WhiteCheckmark.png */,
 				BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */,
 				BC3FA78514E96AEB0055AB4A /* ListenerSelectedBackground.png */,
@@ -4130,6 +4144,8 @@
 				BCFA44151507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
 				BCFA441A1507A63100A03380 /* SongRatingStar.png in Resources */,
 				BCFA441F1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
+				BC237D511518E57800B8B66F /* GrayCheckmark.png in Resources */,
+				BC237D561518E57800B8B66F /* GrayCheckmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4314,6 +4330,8 @@
 				BCFA44121507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
 				BCFA44171507A63100A03380 /* SongRatingStar.png in Resources */,
 				BCFA441C1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
+				BC237D4E1518E57800B8B66F /* GrayCheckmark.png in Resources */,
+				BC237D531518E57800B8B66F /* GrayCheckmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4498,6 +4516,8 @@
 				BCFA44141507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
 				BCFA44191507A63100A03380 /* SongRatingStar.png in Resources */,
 				BCFA441E1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
+				BC237D501518E57800B8B66F /* GrayCheckmark.png in Resources */,
+				BC237D551518E57800B8B66F /* GrayCheckmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4682,6 +4702,8 @@
 				BCFA44111507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
 				BCFA44161507A63100A03380 /* SongRatingStar.png in Resources */,
 				BCFA441B1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
+				BC237D4D1518E57800B8B66F /* GrayCheckmark.png in Resources */,
+				BC237D521518E57800B8B66F /* GrayCheckmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4866,6 +4888,8 @@
 				BCFA44131507A63100A03380 /* SongRatingBullet@2x.png in Resources */,
 				BCFA44181507A63100A03380 /* SongRatingStar.png in Resources */,
 				BCFA441D1507A63100A03380 /* SongRatingStar@2x.png in Resources */,
+				BC237D4F1518E57800B8B66F /* GrayCheckmark.png in Resources */,
+				BC237D541518E57800B8B66F /* GrayCheckmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6142,7 +6166,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "55EDA979-C42D-4DDD-B6CC-294CAF180C0A";
+				PROVISIONING_PROFILE = "20943D4C-5AD0-43E8-A893-BD44EDC99E46";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -6167,7 +6191,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "55EDA979-C42D-4DDD-B6CC-294CAF180C0A";
+				PROVISIONING_PROFILE = "20943D4C-5AD0-43E8-A893-BD44EDC99E46";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

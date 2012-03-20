@@ -61,6 +61,7 @@
 @required
 
 - (void)songUploadDidStart:(Song*)song;
+- (void)songUploadDidInterrupt:(Song*)song;
 - (void)songUploadProgress:(Song*)song progress:(CGFloat)progress;
 - (void)songUploadDidFinish:(Song*)song info:(NSDictionary*)info;
 
@@ -85,6 +86,7 @@ typedef enum SongUploadItemStatus
 @property (nonatomic, retain) Song* song;
 @property (nonatomic) CGFloat currentProgress;
 @property (nonatomic) SongUploadItemStatus status;
+@property (nonatomic, retain) NSString* detailedInfo;
 @property (nonatomic, retain) id<SongUploadItemDelegate> delegate;
 
 - (id)initWithSong:(Song*)aSong;
@@ -103,7 +105,7 @@ typedef enum SongUploadItemStatus
 @interface SongUploadManager : NSObject
 
 @property (atomic, retain, readonly) NSMutableArray* items;
-@property (nonatomic)  BOOL interrupted;
+@property (nonatomic)  BOOL isRunning;
 @property (nonatomic) BOOL notified3G;
 
 

@@ -102,7 +102,6 @@ static SongUploader* _main = nil;
 
 
 
-
 #pragma mark - public functions
 
 - (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
@@ -124,32 +123,46 @@ static SongUploader* _main = nil;
   
   NSString* ext = [TSLibraryImport extensionForAssetURL:assetURL];
   
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  NSString *documentsDirectory = [paths objectAtIndex:0];
-  
-  NSString *filename = [NSString stringWithFormat:@"%@.%@", title, ext];
-  NSString *fullPath = [documentsDirectory stringByAppendingPathComponent: filename];
-  
-  NSError *error;
+    // store the tmp file in Cache directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString* cacheDirectory = [paths objectAtIndex:0];
+    
+    // get a unique and safe filename for the temp file
+    CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+	CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+	NSString* fullPath = [cacheDirectory stringByAppendingPathComponent:(NSString *)newUniqueIdString];
+    fullPath = [fullPath stringByAppendingPathExtension:ext];
+    
+    
   NSFileManager *fileMgr = [NSFileManager defaultManager];
+  NSError *error;
   [fileMgr removeItemAtPath:fullPath error:&error];
   
-  if (_tempSongFile)
-    [_tempSongFile release];
-
-    _tempSongFile = [[NSString alloc] initWithFormat:fullPath];
+  //NSLog(@"SongUploader %@", fullPath);
     
-  NSURL* outURL = [[NSURL fileURLWithPath:[documentsDirectory stringByAppendingPathComponent:title]] URLByAppendingPathExtension:ext];    
-  
+    if (_tempSongFile)
+        [_tempSongFile release];
+    _tempSongFile = [[NSString alloc] initWithFormat:fullPath];    
+    
+    NSURL* outURL = [NSURL fileURLWithPath:fullPath];  
+    
   TSLibraryImport* import = [[TSLibraryImport alloc] init];
   [import importAsset:assetURL toURL:outURL completionBlock:^(TSLibraryImport* import) 
     {
+        
     if (import.status != AVAssetExportSessionStatusCompleted) 
     {
       // something went wrong with the import
       NSLog(@"Error importing: %@", import.error);
       [import release];
       import = nil;
+        
+        // client callback
+        NSMutableDictionary* info = [NSMutableDictionary dictionary];
+        [info setObject:[NSNumber numberWithBool:NO] forKey:@"succeeded"];
+        [info setObject:[NSString stringWithString:@"SongUpload_failedIncorrectFile"] forKey:@"detailedInfo"];
+        [self onUploadDidFinish:nil withInfos:info];
+
       return;
     }
     
@@ -200,9 +213,9 @@ static SongUploader* _main = nil;
 
 - (void)cancelSongUpload
 {
-    assert(_request != nil);
-    
-    [_request clearDelegatesAndCancel];
+    // request may be nil, if the upload has been canceled because the file is incorrect for instance
+    if (_request != nil)
+        [_request clearDelegatesAndCancel];
 }
 
 
