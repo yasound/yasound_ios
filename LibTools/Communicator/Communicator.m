@@ -76,6 +76,8 @@
         url = [NSURL URLWithString:_baseURL];
         if ([path hasPrefix:@"/"] && path.length > 1)
             path = [path substringFromIndex:1];
+        if ([path hasSuffix:@"/"] && path.length > 1)
+          path = [path substringToIndex:path.length-1]; // remove trailing slash since [NSURL URLByAppendingPathComponent] adds a trailing slash leading to double slash bug in iOS older than version 5
         url = [url URLByAppendingPathComponent:path];
     }
     
@@ -781,6 +783,7 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+  NSLog(@"request (%p) FINISHED", request);
   BOOL success = YES;
   if (request.responseStatusCode / 100 == 4 || request.responseStatusCode / 100 == 5)
     success = NO;
@@ -790,9 +793,41 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-    NSLog(@"HTTP Request failed: %@\n%@\n\n", request.responseStatusMessage, request.responseString);
+  NSLog(@"request.url = %@  request.response.statusCode = %d", request.url.absoluteString, request.responseStatusCode);
+  NSLog(@"request (%p) FAILED", request);
     [self handleResponse:request success:NO];
 }
+
+//- (void)requestStarted:(ASIHTTPRequest *)request
+//{
+//  NSLog(@"request (%p) STARTED", request);
+//}
+//
+//- (void)request:(ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders
+//{
+//  NSLog(@"request (%p) RECIEVED response headers", request);
+//}
+//
+//- (void)request:(ASIHTTPRequest *)request willRedirectToURL:(NSURL *)newURL
+//{
+//  [request redirectToURL:newURL];
+//  NSLog(@"request (%p) will REDIRECT to url '%@'", request, newURL.absoluteString);
+//}
+//
+//- (void)requestRedirected:(ASIHTTPRequest *)request
+//{
+//  NSLog(@"request (%p) REDIRECTED", request);
+//}
+//
+//- (void)authenticationNeededForRequest:(ASIHTTPRequest *)request
+//{
+//  NSLog(@"request (%p) AUTHENTICATION needed", request);
+//}
+//
+//- (void)proxyAuthenticationNeededForRequest:(ASIHTTPRequest *)request
+//{
+//  NSLog(@"request (%p) PROXY AUTHENTICATION needed", request);
+//}
 
 @end
 
