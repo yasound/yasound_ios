@@ -4,6 +4,7 @@
 "Navigation_next" = "Suivant";
 "Navigation_NowPlaying" = "A l'écoute";
 "Navigation_cancel" = "Annuler";
+"Navigation_OK" = "OK";
 
 "Connection" = "Connexion";
 "Error_communication_server" = "problème de communication avec le serveur!";
@@ -231,7 +232,8 @@
 "SongUpload_warning_title" = "Attention";
 "SongUpload_warning_message" = "Vous vous engagez à ne télécharger vers nos serveurs à destination de diffusion publique sur votre radio uniquement des \
 enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'interview, ou autre  captation sonore, vous certifiez détenir l'autorisation écrite de tous les intervenants.";
-"Button_dontShowAgain" = "Je suis d'accord";
+"Button_iAgree" = "Je suis d'accord";
+"Button_dontShowAgain" = "Ne plus afficher";
 
 "YasoundUpload_interrupt_WIFI_title" = "Connexion 3G";
 "YasoundUpload_interrupt_WIFI_message" = "Les téléchargements en cours sont stoppés dans l'attente d'une connexion WIFI.";

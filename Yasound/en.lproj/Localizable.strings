@@ -4,6 +4,7 @@
 "Navigation_next" = "Next";
 "Navigation_NowPlaying" = "Now playing";
 "Navigation_cancel" = "Cancel";
+"Navigation_OK" = "OK";
 
 "Connection" = "Connection";
 "Error_communication_server" = "error communicating with server!";
@@ -231,7 +232,8 @@
 
 "SongUpload_warning_title" = "Warning";
 "SongUpload_warning_message" = "You have to own the rights of all the audio files that you upload to our servers to be broadcasted publicly on your radio. \nIn case of an interview, or audio recording, you certify that you already have the written agreements of all the parties.";
-"Button_dontShowAgain" = "I agree";
+"Button_iAgree" = "I agree";
+"Button_dontShowAgain" = "Don't show again";
 
 "YasoundUpload_interrupt_WIFI_title" = "3G network";
 "YasoundUpload_interrupt_WIFI_message" = "Current uploads are stopped until this device is connected to a WIFI network.";
