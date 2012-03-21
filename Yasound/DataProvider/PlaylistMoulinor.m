@@ -74,7 +74,7 @@ static PlaylistMoulinor* _main = nil;
     NSArray *lists = [[NSArray alloc] initWithObjects:mediaPlaylists, removedPlaylists, nil];
     
     // use an asynchronous operation
-    NSInvocationOperation* operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(thProcessForPlaylists::) object:lists];
+    NSInvocationOperation* operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(thProcessForPlaylists:) object:lists];
     [_queue addOperation:operation];
     [operation release];
     

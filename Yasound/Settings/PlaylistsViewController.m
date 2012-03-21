@@ -893,8 +893,20 @@
 - (void)receiveUpdatePLaylistsResponse:(taskID)task_id error:(NSError*)error
 {
   if (error)
-    NSLog(@"update playlists error %d", error.code);
-  else
+  {
+      NSLog(@"update playlists error %d", error.code);
+      NSLog(@"%@", error);
+      
+      [ActivityAlertView close];
+      
+      UIAlertView* av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:NSLocalizedString(@"PlaylistsView_submit_error_creating_radio", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+      [av show];
+      [av release];  
+
+      
+      return;
+  }
+    
     NSLog(@"playlists updated  task: %@", task_id);
     
     taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task_id repeats:YES];

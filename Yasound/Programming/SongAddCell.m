@@ -158,7 +158,17 @@
         return; 
     }
     else
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
+    {
+        NSNumber* warning = [[NSUserDefaults standardUserDefaults] objectForKey:@"userUploadSongAdded"];
+        if ((warning == nil) || ([warning boolValue] == YES))
+        {
+            _alertWarning = [[UIAlertView alloc] initWithTitle:@"Yasound" message:NSLocalizedString(@"SongAddView_added", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
+            [_alertWarning show];
+            [_alertWarning release];  
+        }
+
+        // [ActivityAlertView showWithTitle:NSLocalizedString(@"", nil) closeAfterTimeInterval:1];
+    }
     
 }
 

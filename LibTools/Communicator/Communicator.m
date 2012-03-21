@@ -790,6 +790,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+    NSLog(@"HTTP Request failed: %@\n%@\n\n", request.responseStatusMessage, request.responseString);
     [self handleResponse:request success:NO];
 }
 
