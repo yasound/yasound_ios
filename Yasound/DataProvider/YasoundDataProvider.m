@@ -786,6 +786,8 @@ static YasoundDataProvider* _main = nil;
   [params addObject:[NSString stringWithFormat:@"id__lt=%@", lastEventID]];
   [params addObject:[NSString stringWithFormat:@"limit=%d", pageSize]];
   [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    
+    
 }
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector
