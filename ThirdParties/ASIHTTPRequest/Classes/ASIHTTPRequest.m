@@ -732,6 +732,10 @@ static NSOperationQueue *sharedQueue = nil;
 	[self setQueue:nil];
 	[self setDownloadProgressDelegate:nil];
 	[self setUploadProgressDelegate:nil];
+    
+    //LBDEBUG TEST
+    [self.userInfo release];
+    self.userInfo = nil;
 
 	#if NS_BLOCKS_AVAILABLE
 	// Clear blocks

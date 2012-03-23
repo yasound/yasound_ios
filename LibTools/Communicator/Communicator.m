@@ -45,6 +45,8 @@
     
     if (action)
         [target performSelector:action withObject:obj1 withObject:obj2];
+    
+    //LBDEBUG heuuuu c'est un peu chaud chaud de faire ça non? à voir avec mat...
     [target release];
 }
 

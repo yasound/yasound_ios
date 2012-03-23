@@ -129,11 +129,14 @@
 		@throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"unrecognized file extension" userInfo:nil];
 	}
 
-	[exportSession exportAsynchronouslyWithCompletionHandler:^(void) {
+	[exportSession exportAsynchronouslyWithCompletionHandler:^(void) 
+    {
 		completionBlock(self);
-		[exportSession release];
-		exportSession = nil;
+        [exportSession release];
+        exportSession = nil;
 	}];
+    
+
 }
 
 - (void)extractQuicktimeMovie:(NSURL*)movieURL toFile:(NSURL*)destURL {

@@ -36,6 +36,8 @@ static YasoundReachability* _main = nil;
     [_reachHost release];
 //    [_reachConnection release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [super dealloc];
 }
 
 

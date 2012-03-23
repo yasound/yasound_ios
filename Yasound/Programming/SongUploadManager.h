@@ -80,7 +80,6 @@ typedef enum SongUploadItemStatus
 @interface SongUploadItem : NSObject
 {
     SongUploader* _uploader;
-    
 }
 
 @property (nonatomic, retain) Song* song;
@@ -88,6 +87,8 @@ typedef enum SongUploadItemStatus
 @property (nonatomic) SongUploadItemStatus status;
 @property (nonatomic, retain) NSString* detailedInfo;
 @property (nonatomic, retain) id<SongUploadItemDelegate> delegate;
+//@property (nonatomic, retain) SongUploader* uploader;
+
 
 - (id)initWithSong:(Song*)aSong;
 - (void)startUpload;

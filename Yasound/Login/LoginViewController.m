@@ -42,6 +42,8 @@
         [_email release];
     if (_pword)
         [_pword release];
+    
+    [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning

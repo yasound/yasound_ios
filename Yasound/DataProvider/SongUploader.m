@@ -13,6 +13,8 @@
 
 #import "YasoundDataProvider.h"
 #import "SongCatalog.h"
+#import "ASIFormDataRequest.h"
+
 
 @implementation SongUploader
 
@@ -47,6 +49,9 @@ static SongUploader* _main = nil;
   if (_tempSongFile) 
     [_tempSongFile release];
 
+    NSLog(@"SongUploader dealloc");
+    
+    [super dealloc];
 }
 
 
@@ -86,7 +91,6 @@ static SongUploader* _main = nil;
 
 
 
-
 #pragma mark - YasoundDataProvider callbacks
 
 - (void)onUploadDidFinish:(NSString*)msg withInfos:(NSDictionary*)info
@@ -94,9 +98,14 @@ static SongUploader* _main = nil;
   NSError *error;
   NSFileManager *fileMgr = [NSFileManager defaultManager];
   [fileMgr removeItemAtPath:_tempSongFile error:&error];
-    
 
     [_target performSelector:_selector withObject:info];
+    
+
+    
+    //LBDEBUG TEST
+    [_request clearDelegatesAndCancel];
+    [_request release];
 }
 
 
@@ -169,7 +178,8 @@ static SongUploader* _main = nil;
     // import completed
     [import release];
     import = nil;  
-    
+
+        //LBDEBUG TODO ?
     NSData *data = [NSData dataWithContentsOfFile: fullPath];
     _request = [[YasoundDataProvider main] uploadSong:data 
                                      title:title
@@ -215,7 +225,12 @@ static SongUploader* _main = nil;
 {
     // request may be nil, if the upload has been canceled because the file is incorrect for instance
     if (_request != nil)
+    {
         [_request clearDelegatesAndCancel];
+        [_request release];
+    }
+    
+    //LBDEBUG TEST
 }
 
 

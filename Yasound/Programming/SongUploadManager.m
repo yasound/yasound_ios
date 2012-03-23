@@ -20,6 +20,7 @@
 @synthesize delegate;
 @synthesize status;
 @synthesize detailedInfo;
+//@synthesize uploader;
 
 - (id)initWithSong:(Song*)aSong
 {
@@ -38,7 +39,7 @@
     
     _uploader = [[SongUploader alloc] init];
     [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
-                
+
     self.currentProgress = 0;
     
     if (self.delegate != nil)
@@ -49,7 +50,15 @@
 
 - (void)cancelUpload
 {
-    [_uploader cancelSongUpload];
+    if (self.status == SongUploadItemStatusUploading)
+    {
+        [_uploader cancelSongUpload];
+        [_uploader release];
+        _uploader = nil;
+    }
+    //LBDEBUG TEST
+//    [_uploader release];
+
     
     [self.song setUploading:NO];
 
@@ -64,9 +73,15 @@
     [self.song setUploading:NO];
     self.status = SongUploadItemStatusPending;
 
-    [_uploader cancelSongUpload];
-    [_uploader release];
-    
+    if (_uploader)
+    {
+        [_uploader cancelSongUpload];
+        [_uploader release];
+        _uploader = nil;
+    }
+    //LBDEBUG TEST
+//    [_uploader release];
+
     self.currentProgress = 0;
 
     if (self.delegate != nil)
@@ -81,8 +96,20 @@
 {
     NSNumber* succeeded = [info objectForKey:@"succeeded"];
     assert(succeeded != nil);
-    
     self.detailedInfo = [info objectForKey:@"detailedInfo"];
+    
+//    if (self.uploader)
+//    {
+//        [self.uploader cancelSongUpload];
+//       
+//        // LBDEBUG don't release it here, since the Communicator does it automatically (should not though, I think...)
+//        //[self.uploader release];
+//        //self.uploader = nil;
+//    }
+    
+//    [_uploader release];
+    //LBDEBUG TEST
+//    [_uploader release];
     
     if ([succeeded boolValue])
     {
