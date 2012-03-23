@@ -787,7 +787,7 @@ static YasoundDataProvider* _main = nil;
   [params addObject:[NSString stringWithFormat:@"limit=%d", pageSize]];
   [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
     
-    
+    [params release];
 }
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector
@@ -1194,6 +1194,8 @@ static YasoundDataProvider* _main = nil;
   [params addObject:[NSString stringWithFormat:@"radio=%@", self.radio.id]];
   
   [_communicator getObjectsWithClass:[RadioListeningStat class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    
+    [params release];    
 }
 
 - (void)leaderboardWithTarget:(id)target action:(SEL)selector
@@ -1219,6 +1221,9 @@ static YasoundDataProvider* _main = nil;
   [params addObject:[NSString stringWithFormat:@"playlist=%@", playlistId]];
   
   [_communicator getObjectsWithClass:[Song class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    
+    [params release];
+    
 }
 
 
@@ -1284,6 +1289,9 @@ static YasoundDataProvider* _main = nil;
   [params addObject:[NSString stringWithFormat:@"song_count=%d", count]];
   [params addObject:[NSString stringWithFormat:@"song_offset=%d", offset]];
   [_communicator getObjectsWithClass:[YasoundSong class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    
+    [params release];
+    
 }
 
 - (void)addSong:(YasoundSong*)yasoundSong target:(id)target action:(SEL)selector
