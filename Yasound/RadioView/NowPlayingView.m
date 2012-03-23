@@ -76,11 +76,12 @@
         [self addSubview:imageView];
         
         // header now playing bar info (artist - title)
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarInfo" error:nil];
-        ScrollingLabel* title = [[ScrollingLabel alloc] initWithStyle:@"NowPlayingBarInfo"];
-        title.text = [NSString stringWithFormat:@"%@ - %@", song.artist, song.name];
-        title.frame = sheet.frame;
-        [self addSubview:title];
+//        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarInfo" error:nil];
+//        ScrollingLabel* title = [[ScrollingLabel alloc] initWithStyle:@"NowPlayingBarInfo"];
+//        title.text = [NSString stringWithFormat:@"%@ - %@", song.artist, song.name];
+//        title.frame = sheet.frame;
+//        [self addSubview:title];
+        //LBDEBUG
                                  
         
 //        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarInfo" error:nil];

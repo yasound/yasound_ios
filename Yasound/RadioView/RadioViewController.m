@@ -519,9 +519,9 @@ static Song* _gNowPlayingSong = nil;
 - (void)onTimerUpdate:(NSTimer*)timer
 {    
     [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
-    [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
-    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
-    [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
+//    [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
+//    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
+//    [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
 }
 
 - (void)updatePreviousWall
@@ -656,6 +656,7 @@ static Song* _gNowPlayingSong = nil;
             assert(_timerUpdate == nil);
             
             _firstUpdateRequest = NO;
+
             // launch the update timer
             _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onTimerUpdate:) userInfo:nil repeats:YES];
         }
@@ -780,6 +781,9 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedCurrentWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
+    //LBDEBUG
+    return;
+    
     Meta* meta = [info valueForKey:@"meta"];
     NSError* err = [info valueForKey:@"error"];
     

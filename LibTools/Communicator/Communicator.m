@@ -290,8 +290,9 @@
 {
     if (!req)
         [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
-    
+
     NSMutableDictionary* userinfo = [[NSMutableDictionary alloc] init];
+
     [userinfo setValue:target forKey:@"target"];
     [userinfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
     [userinfo setValue:@"GET_ALL" forKey:@"method"];
