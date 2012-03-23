@@ -857,7 +857,7 @@ void ASReadStreamCallBack
 			runMode:NSDefaultRunLoopMode
 			beforeDate:date];
         
-        [date release];
+//        [date autorelease];
 		
 		@synchronized(self) {
 			if (seekWasRequested) {

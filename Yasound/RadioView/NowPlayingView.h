@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "WebImageView.h"
 #import "Song.h"
+#import "TrackInteractionView.h"
 
 @interface NowPlayingView : UIView
 {
@@ -15,6 +16,8 @@
     UILabel* _likesLabel;
   NSTimer* _timer;
   BOOL _userLikesSong;
+    WebImageView* _webImageView;
+    TrackInteractionView* _trackInteractionView;
 }
 
 //@property (nonatomic, retain) UIButton* playPauseButton;

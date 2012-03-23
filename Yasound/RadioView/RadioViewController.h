@@ -19,6 +19,8 @@
 
 @interface RadioViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 {
+//    NSAutoreleasePool* _ap;
+    
     BOOL _updatingPrevious;
     UILabel* _updatingPreviousLabel;
     UIActivityIndicatorView* _updatingPreviousIndicator;

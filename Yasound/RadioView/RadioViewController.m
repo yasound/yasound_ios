@@ -488,6 +488,10 @@ static Song* _gNowPlayingSong = nil;
 {
     [_messageFont release];
     [_wallEvents release];
+    
+//    if (_ap != nil)
+//        [_ap release];
+
     [super dealloc];
 }
 
@@ -518,10 +522,15 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onTimerUpdate:(NSTimer*)timer
 {    
+//    if (_ap != nil)
+//        [_ap release];
+//    
+//    _ap = [[NSAutoreleasePool alloc] init];
+    
     [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
-//    [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
-//    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
-//    [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
+    [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
+    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
+    [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
 }
 
 - (void)updatePreviousWall
@@ -781,9 +790,6 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedCurrentWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
-    //LBDEBUG
-    return;
-    
     Meta* meta = [info valueForKey:@"meta"];
     NSError* err = [info valueForKey:@"error"];
     
@@ -907,7 +913,7 @@ static Song* _gNowPlayingSong = nil;
 {
   if (!song)
     return;
-  
+ 
   if (!_gNowPlayingSong || [song.id intValue] != [_gNowPlayingSong.id intValue])
       [self setNowPlaying:song];
   
