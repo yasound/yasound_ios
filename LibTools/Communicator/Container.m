@@ -58,7 +58,6 @@
     id obj = [[objectClass alloc] init];
     [obj loadPropertiesFromDictionary:objDict];
       
-      //LBDEBUG
       assert(obj != nil);
       
     [temp addObject:obj];

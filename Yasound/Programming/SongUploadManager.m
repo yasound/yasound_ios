@@ -56,8 +56,6 @@
         [_uploader release];
         _uploader = nil;
     }
-    //LBDEBUG TEST
-//    [_uploader release];
 
     
     [self.song setUploading:NO];
@@ -79,8 +77,6 @@
         [_uploader release];
         _uploader = nil;
     }
-    //LBDEBUG TEST
-//    [_uploader release];
 
     self.currentProgress = 0;
 
@@ -98,18 +94,15 @@
     assert(succeeded != nil);
     self.detailedInfo = [info objectForKey:@"detailedInfo"];
     
+
+    // LBDEBUG don't release it here, since the Communicator does it automatically (should not though, I think...)
 //    if (self.uploader)
 //    {
 //        [self.uploader cancelSongUpload];
 //       
-//        // LBDEBUG don't release it here, since the Communicator does it automatically (should not though, I think...)
 //        //[self.uploader release];
 //        //self.uploader = nil;
 //    }
-    
-//    [_uploader release];
-    //LBDEBUG TEST
-//    [_uploader release];
     
     if ([succeeded boolValue])
     {

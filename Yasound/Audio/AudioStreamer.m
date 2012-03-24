@@ -850,15 +850,12 @@ void ASReadStreamCallBack
 	BOOL isRunning = YES;
 	do
 	{
-        //LBDEBUG
         NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0.25];
         
 		isRunning = [[NSRunLoop currentRunLoop]
 			runMode:NSDefaultRunLoopMode
 			beforeDate:date];
         
-//        [date autorelease];
-		
 		@synchronized(self) {
 			if (seekWasRequested) {
 				[self internalSeekToTime:requestedSeekTime];

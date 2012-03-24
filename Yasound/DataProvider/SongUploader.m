@@ -101,9 +101,6 @@ static SongUploader* _main = nil;
 
     [_target performSelector:_selector withObject:info];
     
-
-    
-    //LBDEBUG TEST
     [_request clearDelegatesAndCancel];
     [_request release];
 }
@@ -179,7 +176,9 @@ static SongUploader* _main = nil;
     [import release];
     import = nil;  
 
-        //LBDEBUG TODO ?
+
+        // LBDEBUG : is this data properly released? just make sure...
+        
     NSData *data = [NSData dataWithContentsOfFile: fullPath];
     _request = [[YasoundDataProvider main] uploadSong:data 
                                      title:title
@@ -229,8 +228,6 @@ static SongUploader* _main = nil;
         [_request clearDelegatesAndCancel];
         [_request release];
     }
-    
-    //LBDEBUG TEST
 }
 
 
