@@ -217,7 +217,7 @@
 "SongAddView_addFromServer" = "Add from the server";
 "SongAddView_requestServer" = "Searching the songs";
 "SongAddView_addedError" = "Unabled to add the song.";
-"SongAddView_addedOk" = "This song has been added to your radio!";
+"SongAddView_addedOk" = "This song has been added to your radio";
 "SongAddView_addedAlready" = "Your programmation contains this song already!";
 
 

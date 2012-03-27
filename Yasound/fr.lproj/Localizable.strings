@@ -217,7 +217,7 @@
 "SongAddView_addFromServer" = "Ajout depuis le serveur";
 "SongAddView_requestServer" = "Recherche des morceaux";
 "SongAddView_addedError" = "Impossible d'ajouter le morceau.";
-"SongAddView_addedOk" = "Le morceau a été ajouté à votre programmation!";
+"SongAddView_addedOk" = "Le morceau a été ajouté à votre programmation";
 "SongAddView_addedAlready" = "Le morceau est déjà présent dans votre programmation!";
 
 "SongUpload_title" = "Téléchargement";
