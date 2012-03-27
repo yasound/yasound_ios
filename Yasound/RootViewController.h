@@ -30,6 +30,7 @@
     BOOL _firstTime;
     
     MenuViewController* _menuView;
+    UIAlertView* _alertWifiInterrupted;
 }
 
 @end

@@ -1,8 +1,6 @@
 //
-//  UIScrollViewTestAppDelegate.h
-//  UIScrollViewTest
+//  YasoundAppDelegate.y
 //
-//  Created by Sébastien Métrot on 10/24/11.
 //  Copyright 2011 Yasound. All rights reserved.
 //
 

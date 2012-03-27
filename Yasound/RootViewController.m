@@ -336,10 +336,18 @@
     [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
 }
 
+
+
+//
+// onNotifErrorConnectionBack 
+//
+// when the 3G or wifi turns on
+// 
 - (void)onNotifErrorConnectionBack:(NSNotification *)notification
 {
     NetworkStatus status = [YasoundReachability main].networkStatus;
     
+    // Wifi turns on
     if (status == ReachableViaWiFi)
     {
         NSLog(@"onNotifErrorConnectionBack WIFI ");
@@ -349,18 +357,23 @@
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:nil];
     }
+    
+    // 3G turns on (<=> or wifi turns off, then 3G turns on)
     else if (status == ReachableViaWWAN)
     {
         NSLog(@"onNotifErrorConnectionBack WWAN ");
     
         if ([SongUploadManager main].isRunning)
         {
-            [[SongUploadManager main] interruptUploads];
-            
-            // show alert message for connection error
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [av show];
-            [av release];  
+                [[SongUploadManager main] interruptUploads];
+                
+            if (_alertWifiInterrupted == nil)
+            {
+                // show alert message for connection error
+                _alertWifiInterrupted = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [_alertWifiInterrupted show];
+                [_alertWifiInterrupted release];  
+            }
         }
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:nil];
@@ -456,6 +469,19 @@
 {
   return YES;
 }
+
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView == _alertWifiInterrupted)
+    {
+        _alertWifiInterrupted = nil;
+    }
+}
+
 
 
 

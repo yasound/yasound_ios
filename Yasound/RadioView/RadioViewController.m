@@ -10,7 +10,7 @@
 #import "Theme.h"
 #import "Track.h"
 #import "RadioViewCell.h"
-
+#import "YasoundAppDelegate.h"
 
 #import "YasoundDataProvider.h"
 #import "WallEvent.h"
@@ -1573,8 +1573,13 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction)onBack:(id)sender
 {
+    // I need to check something... 
+    YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
+    UINavigationController* appController = appDelegate.navigationController;
+    UINavigationController* thisController = self.navigationController;
+    
+     
     [self.navigationController popViewControllerAnimated:YES];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_POP_TO_MENU object:nil];
 }
 
 
