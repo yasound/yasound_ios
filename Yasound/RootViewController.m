@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "HomeViewController.h"
+#import "LoginViewController.h"
 #import "RadioViewController.h"
 #import "YasoundSessionManager.h"
 #import "ActivityAlertView.h"
@@ -159,7 +159,7 @@
     }
     else
     {
-        HomeViewController* view = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+        LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:NO];
         [view release];
     }
@@ -279,7 +279,7 @@
     [_menuView release];
     _menuView = nil;
 
-    HomeViewController* view = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:NO];
     [view release];
 }
