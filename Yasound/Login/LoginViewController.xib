@@ -56,14 +56,13 @@
 					<object class="IBUIButton" id="120389532">
 						<reference key="NSNextResponder" ref="620316837"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{23, 237}, {275, 58}}</string>
+						<string key="NSFrame">{{23, 230}, {275, 58}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="814006387"/>
+						<reference key="NSNextKeyView" ref="94336076"/>
 						<string key="NSReuseIdentifierKey">_NS:225</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<bool key="IBUIEnabled">NO</bool>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="930697488">
@@ -103,9 +102,10 @@
 					<object class="IBUILabel" id="94336076">
 						<reference key="NSNextResponder" ref="620316837"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{84, 243}, {191, 45}}</string>
+						<string key="NSFrame">{{84, 236}, {191, 45}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="814006387"/>
 						<string key="NSReuseIdentifierKey">_NS:328</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -135,14 +135,13 @@
 					<object class="IBUIButton" id="814006387">
 						<reference key="NSNextResponder" ref="620316837"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{23, 334}, {275, 58}}</string>
+						<string key="NSFrame">{{23, 316}, {275, 58}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="741069440"/>
 						<string key="NSReuseIdentifierKey">_NS:225</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<bool key="IBUIEnabled">NO</bool>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUIHighlightedTitleColor" ref="930697488"/>
@@ -169,7 +168,7 @@
 					<object class="IBUILabel" id="741069440">
 						<reference key="NSNextResponder" ref="620316837"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{84, 340}, {191, 45}}</string>
+						<string key="NSFrame">{{84, 322}, {191, 45}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="162292384"/>
@@ -291,9 +290,10 @@
 					<object class="IBUIButton" id="162292384">
 						<reference key="NSNextResponder" ref="620316837"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{43, 393}, {232, 15}}</string>
+						<string key="NSFrame">{{34, 381}, {250, 15}}</string>
 						<reference key="NSSuperview" ref="620316837"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -303,7 +303,7 @@
 						<reference key="IBUIHighlightedTitleColor" ref="930697488"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MSAwLjk5NTYzNTE0MzMgMC45ODI1NDA1NzMzAA</bytes>
+							<bytes key="NSRGB">MC44NTQ2MTk1NjUyIDAuODUwODg5MjczMyAwLjgzOTY5ODM5NzYAA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="580093801"/>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
@@ -342,6 +342,70 @@
 					<int key="connectionID">147</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_facebookButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="87830494"/>
+					</object>
+					<int key="connectionID">150</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_facebookLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="925192010"/>
+					</object>
+					<int key="connectionID">151</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_signupButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="162292384"/>
+					</object>
+					<int key="connectionID">152</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_titleLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="1018283591"/>
+					</object>
+					<int key="connectionID">153</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_twitterButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="120389532"/>
+					</object>
+					<int key="connectionID">154</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_twitterLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="94336076"/>
+					</object>
+					<int key="connectionID">155</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_yasoundButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="814006387"/>
+					</object>
+					<int key="connectionID">156</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_yasoundLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="741069440"/>
+					</object>
+					<int key="connectionID">157</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onFacebook:</string>
 						<reference key="source" ref="87830494"/>
@@ -349,6 +413,24 @@
 						<int key="IBEventType">3</int>
 					</object>
 					<int key="connectionID">148</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">onTwitter:</string>
+						<reference key="source" ref="120389532"/>
+						<reference key="destination" ref="975951072"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">158</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">onYasound:</string>
+						<reference key="source" ref="814006387"/>
+						<reference key="destination" ref="975951072"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">149</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -380,10 +462,10 @@
 							<reference ref="87830494"/>
 							<reference ref="925192010"/>
 							<reference ref="120389532"/>
-							<reference ref="94336076"/>
 							<reference ref="814006387"/>
 							<reference ref="741069440"/>
 							<reference ref="162292384"/>
+							<reference ref="94336076"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">LoginViewController</string>
@@ -458,13 +540,15 @@
 				<string key="144.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="0.0" key="144.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="145.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="146.CustomClassName">UnderlinedButton</string>
 				<string key="146.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="1" key="146.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">148</int>
+			<int key="maxID">158</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -474,7 +558,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_facebookButton">UIButton</string>
 						<string key="_facebookLabel">UILabel</string>
-						<string key="_signupButton">UIButton</string>
+						<string key="_signupButton">UnderlinedButton</string>
 						<string key="_titleLabel">UILabel</string>
 						<string key="_twitterButton">UIButton</string>
 						<string key="_twitterLabel">UILabel</string>
@@ -492,7 +576,7 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="_signupButton">
 							<string key="name">_signupButton</string>
-							<string key="candidateClassName">UIButton</string>
+							<string key="candidateClassName">UnderlinedButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_titleLabel">
 							<string key="name">_titleLabel</string>
@@ -534,6 +618,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/TrackedUIViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UnderlinedButton</string>
+					<string key="superclassName">UIButton</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/UnderlinedButton.h</string>
 					</object>
 				</object>
 			</array>

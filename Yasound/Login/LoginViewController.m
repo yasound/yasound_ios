@@ -14,7 +14,7 @@
 #import "ConnectionView.h"
 #import "SongUploadManager.h"
 #import "CreateMyRadio.h"
-
+#import "YasoundLoginViewController.h"
 
 
 
@@ -55,7 +55,10 @@
     _facebookLabel.text = NSLocalizedString(@"LoginView_facebook_label", nil);    
     _twitterLabel.text = NSLocalizedString(@"LoginView_twitter_label", nil);    
     _yasoundLabel.text = NSLocalizedString(@"LoginView_yasound_label", nil);    
-    _signupButton.titleLabel.text = NSLocalizedString(@"LoginView_signup_label", nil);    
+    
+    [_signupButton setTitle:NSLocalizedString(@"LoginView_signup_label", nil) forState:UIControlStateNormal];
+
+    
 }
 
 
@@ -114,6 +117,14 @@
     
     
 }
+
+
+
+- (IBAction)onTwitter:(id)sender
+{
+    
+}
+
 
 
 
@@ -204,6 +215,28 @@
 
 
 
+
+
+
+
+
+- (IBAction)onYasound:(id)sender
+{
+    YasoundLoginViewController* view = [[YasoundLoginViewController alloc] initWithNibName:@"YasoundLoginViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:NO];
+    [view release];
+}
+
+
+
+
+
+
+
+
+
+
+
 #pragma mark - YasoundDataProvider
 
 - (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
@@ -222,3 +255,17 @@
 
 
 @end
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        

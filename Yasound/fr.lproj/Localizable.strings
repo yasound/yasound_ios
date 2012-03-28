@@ -50,22 +50,28 @@
 "YasoundReachability_host_no" = "impossible de joindre le serveur!";
 
 
-"HomeView_title" = "Yasound";
-"HomeView_facebook_label" = "se connecter avec Facebook";
-"HomeView_twitter_label" = "se connecter avec Twitter";
-"HomeView_login_label" = "se connecter";
-"HomeView_signup_label" = "créer un compte";
+"LoginView_title" = "Yasound";
+"LoginView_facebook_label" = "se connecter avec Facebook";
+"LoginView_twitter_label" = "se connecter avec Twitter";
+"LoginView_yasound_label" = "se connecter avec Yasound";
+"LoginView_signup_label" = "Pas encore enregistré? Crééz un compte.";
 
-
-"LoginView_title" = "Connexion";
-"LoginView_email_label" = "email";
-"LoginView_email_placeholder" = "entrez votre adresse email";
-"LoginView_pword_label" = "mot de passe";
-"LoginView_pword_placeholder" = "requis";
-"LoginView_submit_label" = "connexion";
-"LoginView_alert_title" = "Connexion";
-"LoginView_alert_message_error" = "informations de connexion incorrectes!";
-"LoginView_alert_email_not_valid" = "L'adresse email n'est pas valide!";
+//"HomeView_title" = "Yasound";
+//"HomeView_facebook_label" = "se connecter avec Facebook";
+//"HomeView_twitter_label" = "se connecter avec Twitter";
+//"HomeView_login_label" = "se connecter";
+//"HomeView_signup_label" = "créer un compte";
+//
+//
+//"LoginView_title" = "Connexion";
+//"LoginView_email_label" = "email";
+//"LoginView_email_placeholder" = "entrez votre adresse email";
+//"LoginView_pword_label" = "mot de passe";
+//"LoginView_pword_placeholder" = "requis";
+//"LoginView_submit_label" = "connexion";
+//"LoginView_alert_title" = "Connexion";
+//"LoginView_alert_message_error" = "informations de connexion incorrectes!";
+//"LoginView_alert_email_not_valid" = "L'adresse email n'est pas valide!";
 
 
 "SignupView_title" = "Créer un compte";

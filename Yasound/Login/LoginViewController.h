@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
+#import "UnderlinedButton.h"
 
 @interface LoginViewController : TestflightViewController
 {
@@ -23,7 +24,7 @@
     IBOutlet UIButton* _yasoundButton;
     IBOutlet UILabel* _yasoundLabel;
 
-    IBOutlet UIButton* _signupButton;
+    IBOutlet UnderlinedButton* _signupButton;
 }
 
 @end
