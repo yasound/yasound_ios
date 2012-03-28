@@ -32,8 +32,9 @@
 }
 
 
-- (void)setTitle:(NSString *)title forState:(UIControlState)state
+- (void)setTitle:(NSString *)title forState:(UIControlState)state textAlignement:(UITextAlignment)textAlignment
 {
+    _textAlignment = textAlignment;
     _suggestedSize = [title sizeWithFont:self.titleLabel.font constrainedToSize:CGSizeMake(self.frame.size.width, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
     [super setTitle:title forState:state];
 }
@@ -55,8 +56,20 @@
     CGFloat baseline = rect.size.height + self.titleLabel.font.descender + 2;
     
     // Draw a single line from left to right
-    CGContextMoveToPoint(context, rect.size.width - _suggestedSize.width, baseline);
-    CGContextAddLineToPoint(context, rect.size.width, baseline);
+    CGFloat x1, x2;
+    if (_textAlignment == UITextAlignmentRight)
+    {
+        x1 = rect.size.width - _suggestedSize.width;
+        x2 = rect.size.width;
+    }
+    else
+    {
+        x1 = 0;
+        x2 = _suggestedSize.width;  
+    }
+    
+    CGContextMoveToPoint(context, x1, baseline);
+    CGContextAddLineToPoint(context, x2, baseline);
     CGContextStrokePath(context);
 }
 

@@ -50,7 +50,20 @@
 {
     [super viewDidLoad];
     
-    _titleLabel.text = NSLocalizedString(@"LoginView_title", nil);
+//    _titleItem.text = NSLocalizedString(@"LoginView_title", nil);
+    
+    _titleItem.title = NSLocalizedString(@"YasoundLoginView_title", nil);
+    _backItem.title = NSLocalizedString(@"Navigation_back", nil);
+
+    _label.text =  NSLocalizedString(@"YasoundLoginView_label", nil);
+    _email.placeholder = NSLocalizedString(@"YasoundLoginView_email", nil);
+    _pword.placeholder = NSLocalizedString(@"YasoundLoginView_password", nil);
+    
+    _loginLabel.text = NSLocalizedString(@"YasoundLoginView_button_login", nil);
+
+    [_signupButton setTitle:NSLocalizedString(@"LoginView_signup_label", nil) forState:UIControlStateNormal textAlignement:UITextAlignmentLeft];
+    [_forgetButton setTitle:NSLocalizedString(@"YasoundLoginView_button_forgot", nil) forState:UIControlStateNormal textAlignement:UITextAlignmentLeft];
+
     
     [_email becomeFirstResponder];
     
@@ -85,6 +98,13 @@
     // once logout done, go back to the home screen
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];    
 }
+
+
+- (IBAction)onBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
 
 
 

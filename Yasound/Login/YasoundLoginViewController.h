@@ -11,14 +11,18 @@
 
 @interface YasoundLoginViewController : TestflightViewController
 {
-    IBOutlet UILabel* _titleLabel;
+    IBOutlet UIBarButtonItem* _backItem;
+    IBOutlet UIBarButtonItem* _titleItem;
     
     //...............................................
     IBOutlet UILabel* _label;
     IBOutlet UITextField* _email;
     IBOutlet UITextField* _pword;
     
+    IBOutlet UIButton* _loginButton;
+    IBOutlet UILabel* _loginLabel;
     IBOutlet UIButton* _signupButton;
+    IBOutlet UIButton* _forgetButton;
     
 }
 

@@ -57,6 +57,12 @@
 "LoginView_yasound_label" = "Log in with Yasound";
 "LoginView_signup_label" = "No registered yet? Create an account.";
 
+"YasoundLoginView_title" = "Login";
+"YasoundLoginView_label" = "Login using your email address.";
+"YasoundLoginView_email" = "Email address";
+"YasoundLoginView_password" = "Password";
+"YasoundLoginView_button_login" = "Log in";
+"YasoundLoginView_button_forgot" = "Forgot your password?";
 
 
 //"HomeView_title" = "Yasound";

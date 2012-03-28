@@ -11,6 +11,7 @@
 @interface UnderlinedButton : UIButton 
 {
     CGSize _suggestedSize;
+    UITextAlignment* _textAlignment;
 }
 
 @end
