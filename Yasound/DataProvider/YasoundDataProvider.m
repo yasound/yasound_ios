@@ -9,9 +9,9 @@
 #import "YasoundDataProvider.h"
 #import "UIImage+Resize.h"
 #import "NSObject+SBJson.h"
+#import "YasoundAppDelegate.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
-#define DEV_URL @"https://api.yasound.com"
 
 #define APP_KEY_COOKIE_NAME @"app_key"
 #define APP_KEY_IPHONE @"yasound_iphone_app"
@@ -159,7 +159,7 @@ static YasoundDataProvider* _main = nil;
     baseUrl = LOCAL_URL;
     NSLog(@"use LOCAL SERVER '%@'", baseUrl);
 #else
-    baseUrl = DEV_URL;
+      baseUrl = APPDELEGATE.serverURL;
     NSLog(@"use DEV SERVER '%@'", baseUrl);
 #endif
     _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];

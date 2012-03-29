@@ -50,6 +50,8 @@
 	<string>MainWindow</string>
 	<key>Resources</key>
 	<dict>
+		<key>serverURL</key>
+		<string>https://api.yasound.com/</string>
 		<key>styles</key>
 		<array>
 			<string>style_all</string>
