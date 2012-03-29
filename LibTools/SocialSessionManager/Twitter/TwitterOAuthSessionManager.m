@@ -128,8 +128,15 @@
     NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
     [user setValue:userid forKey:DATA_FIELD_ID];
     [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
-      [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN] forKey:DATA_FIELD_TOKEN];
-      [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN_SECRET] forKey:DATA_FIELD_TOKEN_SECRET];
+      
+      NSString* token = [[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN];
+      
+      NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+      NSString* tokenSecret = [SFHFKeychainUtils getPasswordForUsername:token andServiceName:BundleName error:nil];
+      
+      [user setValue:token forKey:DATA_FIELD_TOKEN];
+      [user setValue:tokenSecret forKey:DATA_FIELD_TOKEN_SECRET];
+
     [user setValue:username forKey:DATA_FIELD_USERNAME];
     [user setValue:userscreenname forKey:DATA_FIELD_NAME];
       
@@ -230,8 +237,12 @@
   //LBDEBUG
   assert (oauth_token != nil);
   [[NSUserDefaults standardUserDefaults] setValue:oauth_token forKey:DATA_FIELD_TOKEN];
-  assert (oauth_token_secret != nil);
-  [[NSUserDefaults standardUserDefaults] setValue:oauth_token_secret forKey:DATA_FIELD_TOKEN_SECRET];
+
+    assert (oauth_token_secret != nil);
+    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+    [SFHFKeychainUtils storeUsername:oauth_token andPassword:oauth_token_secret  forServiceName:BundleName updateExisting:YES error:nil];
+
+    
   [[NSUserDefaults standardUserDefaults] synchronize];
   
   //  NSLog(@"oauth_token %@", oauth_token);

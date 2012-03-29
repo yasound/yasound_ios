@@ -153,8 +153,14 @@
   
   NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
   [user setValue:userid forKey:DATA_FIELD_ID];
-    [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN] forKey:DATA_FIELD_TOKEN];
-    [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN_SECRET] forKey:DATA_FIELD_TOKEN_SECRET];
+    
+    NSString* token = [[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN];
+    
+    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+    NSString* tokenSecret = [SFHFKeychainUtils getPasswordForUsername:token andServiceName:BundleName error:nil];
+    
+    [user setValue:token forKey:DATA_FIELD_TOKEN];
+    [user setValue:tokenSecret forKey:DATA_FIELD_TOKEN_SECRET];
   [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
   [user setValue:self.account.username forKey:DATA_FIELD_USERNAME];
     [user setValue:userscreenname forKey:DATA_FIELD_NAME];
@@ -300,6 +306,8 @@
   // choose an account and register the app
   else
   {
+      
+      // choose an item in the list of registered twitter accounts
     TwitterAccountsViewController* controller = [[TwitterAccountsViewController alloc] initWithNibName:@"TwitterAccountsViewController" bundle:nil accounts:self.accounts target:self];
       //LBDEBUG ICI //parent
 //    [self.delegate presentModalViewController:controller animated: YES];  
@@ -397,9 +405,10 @@
     //LBDEBUG
     assert (oauth_token != nil);
     [[NSUserDefaults standardUserDefaults] setValue:oauth_token forKey:DATA_FIELD_TOKEN];
-    assert (oauth_token_secret != nil);
-    [[NSUserDefaults standardUserDefaults] setValue:oauth_token_secret forKey:DATA_FIELD_TOKEN_SECRET];
     [[NSUserDefaults standardUserDefaults] synchronize];
+
+    assert (oauth_token_secret != nil);
+    [SFHFKeychainUtils storeUsername:oauth_token andPassword:oauth_token_secret  forServiceName:BundleName updateExisting:YES error:nil];
     
   //  NSLog(@"oauth_token %@", oauth_token);
     
@@ -474,13 +483,14 @@
 {
   self.account = account;
   
-//  NSLog(@"accountDescription %@", account.accountDescription);
-//  NSLog(@"username %@", account.username);
+  NSLog(@"selected accountDescription %@", account.accountDescription);
+  NSLog(@"selected username %@", account.username);
 
   // store this account identifier in order to load it automatically the next times
   NSString* identifier = self.account.identifier;
   [[NSUserDefaults standardUserDefaults] setValue:identifier forKey:ACCOUNT_IDENTIFIER];
-  
+
+    // ICI : reverse auth to get token and token_secret
   
   [self.delegate sessionDidLogin:YES];
 }
