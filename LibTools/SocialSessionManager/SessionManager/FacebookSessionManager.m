@@ -16,9 +16,15 @@
 @synthesize facebookConnect = _facebookConnect;
 
 
+#ifdef USE_DEV_SERVER
+#define Yasound_Server_Definition @"Yasound DEV SERVER"
+#define FB_App_Id @"352524858117964"
+#define DB_APP_Secret @"687fbb99c25598cee5425ab24fec2f99"
+#else
+#define Yasound_Server_Definition @"Yasound PRODUCTION SERVER"
 #define FB_App_Id @"296167703762159"
 #define DB_APP_Secret @"af4d20f383ed42cabfb4bf4b960bb03f"
-
+#endif
 
 
 
@@ -36,6 +42,9 @@ static FacebookSessionManager* _facebook = nil;
   if (!_facebook)
   {
     _facebook = [[FacebookSessionManager alloc] init];
+      
+      NSLog(@"FacebookSessionManager init, using %@ , FB_App_Id %@", Yasound_Server_Definition, FB_App_Id);
+      
   }
   
   return _facebook;
