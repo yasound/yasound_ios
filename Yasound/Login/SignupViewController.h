@@ -12,45 +12,20 @@
 
 @interface SignupViewController : TestflightViewController
 {
-    IBOutlet UIBarButtonItem* _backBtn;
-    IBOutlet UILabel* _titleLabel;
-
-    //.............................................
-    IBOutlet UITableView* _tableView;
+    IBOutlet UIBarButtonItem* _backItem;
+    IBOutlet UIBarButtonItem* _titleItem;
     
-    //.............................................
-    IBOutlet UITableViewCell* _cellUsername;
-    IBOutlet UILabel* _cellUsernameLabel;
-    IBOutlet UITextField* _cellUsernameTextfield;
+    //...............................................
+    IBOutlet UILabel* _label;
+    IBOutlet UITextField* _username;
+    IBOutlet UITextField* _email;
+    IBOutlet UITextField* _pword;
     
-    IBOutlet UITableViewCell* _cellPword;
-    IBOutlet UILabel* _cellPwordLabel;
-    IBOutlet UITextField* _cellPwordTextfield;
-
-    IBOutlet UITableViewCell* _cellEmail;
-    IBOutlet UILabel* _cellEmailLabel;
-    IBOutlet UITextField* _cellEmailTextfield;
-
-    IBOutlet UITableViewCell* _cellLegal;
-    NSString* _cellLegalReadLabel;
-    IBOutlet UILabel* _cellLegalValidLabel;
-
-    
-    IBOutlet UITableViewCell* _cellSubmit;
-    IBOutlet UIButton* _submitBtn;
-    
-    BOOL _userValidatedInfo;
-    BOOL _userValidatedLegal;
-    
-    
-    NSString* _email;
-    NSString* _pword;
-    
+    IBOutlet UIButton* _submitButton;
+    IBOutlet UILabel* _submitLabel;
 }
 
 
-- (IBAction)onBack:(id)sender;
-- (IBAction)onSwitch:(id)sender;
 - (IBAction) onSubmit:(id)sender;
 
 @end

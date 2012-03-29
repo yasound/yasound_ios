@@ -26,6 +26,11 @@
     
 }
 
+
+- (IBAction) onSubmit:(id)sender;
+- (IBAction)onSignupClicked:(id)sender;
+- (IBAction)onForgotClicked:(id)sender;
+
 @end
 
 

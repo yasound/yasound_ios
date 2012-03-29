@@ -15,7 +15,7 @@
 #import "SongUploadManager.h"
 #import "CreateMyRadio.h"
 #import "YasoundLoginViewController.h"
-
+#import "SignupViewController.h"
 
 
 @implementation LoginViewController
@@ -228,6 +228,12 @@
 }
 
 
+- (IBAction)onYasoundSignup:(id)sender
+{
+    SignupViewController* view = [[SignupViewController alloc] initWithNibName:@"SignupViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:NO];
+    [view release];    
+}
 
 
 

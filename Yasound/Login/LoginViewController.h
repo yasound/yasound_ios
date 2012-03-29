@@ -27,6 +27,14 @@
     IBOutlet UnderlinedButton* _signupButton;
 }
 
+
+- (IBAction)onFacebook:(id)sender;
+- (IBAction)onTwitter:(id)sender;
+- (IBAction)onYasound:(id)sender;
+- (IBAction)onYasoundSignup:(id)sender;
+
+
+
 @end
 
 

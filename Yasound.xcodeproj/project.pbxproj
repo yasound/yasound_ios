@@ -376,7 +376,6 @@
 		BC3FA6A314E93B660055AB4A /* TwitterOAuthSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97A314AB7DD100D54631 /* TwitterOAuthSessionManager.m */; };
 		BC3FA6A414E93B660055AB4A /* TwitterSigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97A514AB7DD100D54631 /* TwitterSigninViewController.m */; };
 		BC3FA6A514E93B660055AB4A /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97D614AB820500D54631 /* SFHFKeychainUtils.m */; };
-		BC3FA6A714E93B660055AB4A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97F514AB9BF300D54631 /* LoginViewController.m */; };
 		BC3FA6A814E93B660055AB4A /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
 		BC3FA6A914E93B660055AB4A /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
 		BC3FA6AA14E93B660055AB4A /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
@@ -490,7 +489,6 @@
 		BC3FA72E14E93B660055AB4A /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		BC3FA72F14E93B660055AB4A /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
 		BC3FA73014E93B660055AB4A /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
-		BC3FA73214E93B660055AB4A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
 		BC3FA73314E93B660055AB4A /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
 		BC3FA73414E93B660055AB4A /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
 		BC3FA73514E93B660055AB4A /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
@@ -906,7 +904,6 @@
 		BC93CD1C14CF3F7A007C723F /* TwitterOAuthSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97A314AB7DD100D54631 /* TwitterOAuthSessionManager.m */; };
 		BC93CD1D14CF3F7A007C723F /* TwitterSigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97A514AB7DD100D54631 /* TwitterSigninViewController.m */; };
 		BC93CD1E14CF3F7A007C723F /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97D614AB820500D54631 /* SFHFKeychainUtils.m */; };
-		BC93CD2014CF3F7A007C723F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97F514AB9BF300D54631 /* LoginViewController.m */; };
 		BC93CD2114CF3F7A007C723F /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
 		BC93CD2214CF3F7A007C723F /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
 		BC93CD2314CF3F7A007C723F /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
@@ -979,7 +976,6 @@
 		BC93CDAF14CF3F7A007C723F /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
 		BC93CDB114CF3F7A007C723F /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
 		BC93CDB214CF3F7A007C723F /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
-		BC93CDB414CF3F7A007C723F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
 		BC93CDB514CF3F7A007C723F /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
 		BC93CDC014CF3F7A007C723F /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
 		BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
@@ -1352,6 +1348,26 @@
 		BCB0EF0F1523518900290383 /* UnderlinedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EF0C1523518900290383 /* UnderlinedButton.m */; };
 		BCB0EF101523518900290383 /* UnderlinedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EF0C1523518900290383 /* UnderlinedButton.m */; };
 		BCB0EF111523518900290383 /* UnderlinedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EF0C1523518900290383 /* UnderlinedButton.m */; };
+		BCB0EF151523740400290383 /* barItemLargeBkgDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF131523740400290383 /* barItemLargeBkgDisabled.png */; };
+		BCB0EF161523740400290383 /* barItemLargeBkgDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF131523740400290383 /* barItemLargeBkgDisabled.png */; };
+		BCB0EF171523740400290383 /* barItemLargeBkgDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF131523740400290383 /* barItemLargeBkgDisabled.png */; };
+		BCB0EF181523740400290383 /* barItemLargeBkgDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF131523740400290383 /* barItemLargeBkgDisabled.png */; };
+		BCB0EF191523740400290383 /* barItemLargeBkgDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF131523740400290383 /* barItemLargeBkgDisabled.png */; };
+		BCB0EF1A1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF141523740400290383 /* barItemLargeBkgDisabled@2x.png */; };
+		BCB0EF1B1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF141523740400290383 /* barItemLargeBkgDisabled@2x.png */; };
+		BCB0EF1C1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF141523740400290383 /* barItemLargeBkgDisabled@2x.png */; };
+		BCB0EF1D1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF141523740400290383 /* barItemLargeBkgDisabled@2x.png */; };
+		BCB0EF1E1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF141523740400290383 /* barItemLargeBkgDisabled@2x.png */; };
+		BCB0EF221524755F00290383 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EF201524755E00290383 /* LoginViewController.m */; };
+		BCB0EF231524755F00290383 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EF201524755E00290383 /* LoginViewController.m */; };
+		BCB0EF241524755F00290383 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EF201524755E00290383 /* LoginViewController.m */; };
+		BCB0EF251524755F00290383 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EF201524755E00290383 /* LoginViewController.m */; };
+		BCB0EF261524755F00290383 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EF201524755E00290383 /* LoginViewController.m */; };
+		BCB0EF271524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
+		BCB0EF281524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
+		BCB0EF291524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
+		BCB0EF2A1524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
+		BCB0EF2B1524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
 		BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
@@ -1656,12 +1672,6 @@
 		BCDC97DF14AB828B00D54631 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CC14AB818300D54631 /* libxml2.dylib */; };
 		BCDC97E014AB828B00D54631 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CE14AB81BF00D54631 /* Security.framework */; };
 		BCDC97E114AB828B00D54631 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CF14AB81BF00D54631 /* Twitter.framework */; };
-		BCDC97F714AB9BF300D54631 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97F514AB9BF300D54631 /* LoginViewController.m */; };
-		BCDC97F814AB9BF300D54631 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97F514AB9BF300D54631 /* LoginViewController.m */; };
-		BCDC97F914AB9BF300D54631 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97F514AB9BF300D54631 /* LoginViewController.m */; };
-		BCDC97FA14AB9BF300D54631 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
-		BCDC97FB14AB9BF300D54631 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
-		BCDC97FC14AB9BF300D54631 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97F614AB9BF300D54631 /* LoginViewController.xib */; };
 		BCDC981014ACB44300D54631 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
 		BCDC981114ACB44300D54631 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
 		BCDC981214ACB44300D54631 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
@@ -2259,6 +2269,11 @@
 		BCB0EEC41523419100290383 /* barItemSynchronize@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemSynchronize@2x.png"; sourceTree = "<group>"; };
 		BCB0EF0B1523518900290383 /* UnderlinedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnderlinedButton.h; path = ThirdParties/UnderlinedButton/UnderlinedButton.h; sourceTree = SOURCE_ROOT; };
 		BCB0EF0C1523518900290383 /* UnderlinedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnderlinedButton.m; path = ThirdParties/UnderlinedButton/UnderlinedButton.m; sourceTree = SOURCE_ROOT; };
+		BCB0EF131523740400290383 /* barItemLargeBkgDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemLargeBkgDisabled.png; sourceTree = "<group>"; };
+		BCB0EF141523740400290383 /* barItemLargeBkgDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemLargeBkgDisabled@2x.png"; sourceTree = "<group>"; };
+		BCB0EF1F1524755E00290383 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
+		BCB0EF201524755E00290383 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
+		BCB0EF211524755E00290383 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
 		BCB178B214BEE90100A3EDE3 /* TracksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksView.h; sourceTree = "<group>"; };
 		BCB178B314BEE90100A3EDE3 /* TracksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksView.m; sourceTree = "<group>"; };
 		BCB2B29014FBB1490000BFA3 /* SongAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongAddViewController.h; path = Programming/SongAddViewController.h; sourceTree = "<group>"; };
@@ -2416,9 +2431,6 @@
 		BCDC97D214AB81EA00D54631 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		BCDC97D514AB820500D54631 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		BCDC97D614AB820500D54631 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
-		BCDC97F414AB9BF300D54631 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
-		BCDC97F514AB9BF300D54631 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
-		BCDC97F614AB9BF300D54631 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
 		BCDC980D14ACB44300D54631 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = Login/SignupViewController.h; sourceTree = "<group>"; };
 		BCDC980E14ACB44300D54631 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = Login/SignupViewController.m; sourceTree = "<group>"; };
 		BCDC980F14ACB44300D54631 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = Login/SignupViewController.xib; sourceTree = "<group>"; };
@@ -3113,6 +3125,8 @@
 		BC88905614D0BC70004CCE04 /* BarItems */ = {
 			isa = PBXGroup;
 			children = (
+				BCB0EF131523740400290383 /* barItemLargeBkgDisabled.png */,
+				BCB0EF141523740400290383 /* barItemLargeBkgDisabled@2x.png */,
 				BCB0EEB71523419100290383 /* barItemAdd.png */,
 				BCB0EEB81523419100290383 /* barItemAdd@2x.png */,
 				BCB0EEB91523419100290383 /* barItemBkg.png */,
@@ -3633,9 +3647,9 @@
 		BCE4632E148FDEA000422448 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				BCDC97F414AB9BF300D54631 /* LoginViewController.h */,
-				BCDC97F514AB9BF300D54631 /* LoginViewController.m */,
-				BCDC97F614AB9BF300D54631 /* LoginViewController.xib */,
+				BCB0EF1F1524755E00290383 /* LoginViewController.h */,
+				BCB0EF201524755E00290383 /* LoginViewController.m */,
+				BCB0EF211524755E00290383 /* LoginViewController.xib */,
 				BCB0EE0915233A6300290383 /* YasoundLoginViewController.h */,
 				BCB0EE0A15233A6300290383 /* YasoundLoginViewController.m */,
 				BCB0EE0B15233A6300290383 /* YasoundLoginViewController.xib */,
@@ -4023,7 +4037,6 @@
 				BC3FA72E14E93B660055AB4A /* ReadMe.txt in Resources */,
 				BC3FA72F14E93B660055AB4A /* TwitterAccountsViewController.xib in Resources */,
 				BC3FA73014E93B660055AB4A /* TwitterSigninViewController.xib in Resources */,
-				BC3FA73214E93B660055AB4A /* LoginViewController.xib in Resources */,
 				BC3FA73314E93B660055AB4A /* SignupViewController.xib in Resources */,
 				BC3FA73414E93B660055AB4A /* LegalViewController.xib in Resources */,
 				BC3FA73514E93B660055AB4A /* StatsViewController.xib in Resources */,
@@ -4179,6 +4192,9 @@
 				BCB0EF001523419100290383 /* barItemMenu@2x.png in Resources */,
 				BCB0EF051523419100290383 /* barItemSynchronize.png in Resources */,
 				BCB0EF0A1523419100290383 /* barItemSynchronize@2x.png in Resources */,
+				BCB0EF191523740400290383 /* barItemLargeBkgDisabled.png in Resources */,
+				BCB0EF1E1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */,
+				BCB0EF2B1524755F00290383 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4213,7 +4229,6 @@
 				BCDC96E014AB7D8A00D54631 /* ReadMe.txt in Resources */,
 				BCDC97BA14AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C614AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
-				BCDC97FB14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 				BCDC981414ACB44300D54631 /* SignupViewController.xib in Resources */,
 				BCCA790B14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799914B1AE520011AADD /* StatsViewController.xib in Resources */,
@@ -4369,6 +4384,9 @@
 				BCB0EEFD1523419100290383 /* barItemMenu@2x.png in Resources */,
 				BCB0EF021523419100290383 /* barItemSynchronize.png in Resources */,
 				BCB0EF071523419100290383 /* barItemSynchronize@2x.png in Resources */,
+				BCB0EF161523740400290383 /* barItemLargeBkgDisabled.png in Resources */,
+				BCB0EF1B1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */,
+				BCB0EF281524755F00290383 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4405,7 +4423,6 @@
 				BC93CDAF14CF3F7A007C723F /* ReadMe.txt in Resources */,
 				BC93CDB114CF3F7A007C723F /* TwitterAccountsViewController.xib in Resources */,
 				BC93CDB214CF3F7A007C723F /* TwitterSigninViewController.xib in Resources */,
-				BC93CDB414CF3F7A007C723F /* LoginViewController.xib in Resources */,
 				BC93CDB514CF3F7A007C723F /* SignupViewController.xib in Resources */,
 				BC93CDC014CF3F7A007C723F /* LegalViewController.xib in Resources */,
 				BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */,
@@ -4559,6 +4576,9 @@
 				BCB0EEFF1523419100290383 /* barItemMenu@2x.png in Resources */,
 				BCB0EF041523419100290383 /* barItemSynchronize.png in Resources */,
 				BCB0EF091523419100290383 /* barItemSynchronize@2x.png in Resources */,
+				BCB0EF181523740400290383 /* barItemLargeBkgDisabled.png in Resources */,
+				BCB0EF1D1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */,
+				BCB0EF2A1524755F00290383 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4593,7 +4613,6 @@
 				BCDC96DF14AB7D8A00D54631 /* ReadMe.txt in Resources */,
 				BCDC97B914AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C514AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
-				BCDC97FA14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 				BCDC981314ACB44300D54631 /* SignupViewController.xib in Resources */,
 				BCCA790A14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799814B1AE520011AADD /* StatsViewController.xib in Resources */,
@@ -4749,6 +4768,9 @@
 				BCB0EEFC1523419100290383 /* barItemMenu@2x.png in Resources */,
 				BCB0EF011523419100290383 /* barItemSynchronize.png in Resources */,
 				BCB0EF061523419100290383 /* barItemSynchronize@2x.png in Resources */,
+				BCB0EF151523740400290383 /* barItemLargeBkgDisabled.png in Resources */,
+				BCB0EF1A1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */,
+				BCB0EF271524755F00290383 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4783,7 +4805,6 @@
 				BCDC96E114AB7D8A00D54631 /* ReadMe.txt in Resources */,
 				BCDC97BB14AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C714AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
-				BCDC97FC14AB9BF300D54631 /* LoginViewController.xib in Resources */,
 				BCDC981514ACB44300D54631 /* SignupViewController.xib in Resources */,
 				BCCA790C14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799A14B1AE520011AADD /* StatsViewController.xib in Resources */,
@@ -4939,6 +4960,9 @@
 				BCB0EEFE1523419100290383 /* barItemMenu@2x.png in Resources */,
 				BCB0EF031523419100290383 /* barItemSynchronize.png in Resources */,
 				BCB0EF081523419100290383 /* barItemSynchronize@2x.png in Resources */,
+				BCB0EF171523740400290383 /* barItemLargeBkgDisabled.png in Resources */,
+				BCB0EF1C1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */,
+				BCB0EF291524755F00290383 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5014,7 +5038,6 @@
 				BC3FA6A314E93B660055AB4A /* TwitterOAuthSessionManager.m in Sources */,
 				BC3FA6A414E93B660055AB4A /* TwitterSigninViewController.m in Sources */,
 				BC3FA6A514E93B660055AB4A /* SFHFKeychainUtils.m in Sources */,
-				BC3FA6A714E93B660055AB4A /* LoginViewController.m in Sources */,
 				BC3FA6A814E93B660055AB4A /* SignupViewController.m in Sources */,
 				BC3FA6A914E93B660055AB4A /* LegalViewController.m in Sources */,
 				BC3FA6AA14E93B660055AB4A /* S7GraphView.m in Sources */,
@@ -5106,6 +5129,7 @@
 				BCC4145B150B00D700A5150B /* FMResultSet.m in Sources */,
 				BCB0EE1015233A6300290383 /* YasoundLoginViewController.m in Sources */,
 				BCB0EF111523518900290383 /* UnderlinedButton.m in Sources */,
+				BCB0EF261524755F00290383 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5178,7 +5202,6 @@
 				BCDC97C014AB7DD100D54631 /* TwitterOAuthSessionManager.m in Sources */,
 				BCDC97C314AB7DD100D54631 /* TwitterSigninViewController.m in Sources */,
 				BCDC97D814AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
-				BCDC97F814AB9BF300D54631 /* LoginViewController.m in Sources */,
 				BCDC981114ACB44300D54631 /* SignupViewController.m in Sources */,
 				BCCA790814AE14090011AADD /* LegalViewController.m in Sources */,
 				BCCA798B14AE24D80011AADD /* S7GraphView.m in Sources */,
@@ -5270,6 +5293,7 @@
 				BCC41458150B00D700A5150B /* FMResultSet.m in Sources */,
 				BCB0EE0D15233A6300290383 /* YasoundLoginViewController.m in Sources */,
 				BCB0EF0E1523518900290383 /* UnderlinedButton.m in Sources */,
+				BCB0EF231524755F00290383 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5343,7 +5367,6 @@
 				BC93CD1C14CF3F7A007C723F /* TwitterOAuthSessionManager.m in Sources */,
 				BC93CD1D14CF3F7A007C723F /* TwitterSigninViewController.m in Sources */,
 				BC93CD1E14CF3F7A007C723F /* SFHFKeychainUtils.m in Sources */,
-				BC93CD2014CF3F7A007C723F /* LoginViewController.m in Sources */,
 				BC93CD2114CF3F7A007C723F /* SignupViewController.m in Sources */,
 				BC93CD2214CF3F7A007C723F /* LegalViewController.m in Sources */,
 				BC93CD2314CF3F7A007C723F /* S7GraphView.m in Sources */,
@@ -5435,6 +5458,7 @@
 				BCC4145A150B00D700A5150B /* FMResultSet.m in Sources */,
 				BCB0EE0F15233A6300290383 /* YasoundLoginViewController.m in Sources */,
 				BCB0EF101523518900290383 /* UnderlinedButton.m in Sources */,
+				BCB0EF251524755F00290383 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5507,7 +5531,6 @@
 				BCDC97BF14AB7DD100D54631 /* TwitterOAuthSessionManager.m in Sources */,
 				BCDC97C214AB7DD100D54631 /* TwitterSigninViewController.m in Sources */,
 				BCDC97D714AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
-				BCDC97F714AB9BF300D54631 /* LoginViewController.m in Sources */,
 				BCDC981014ACB44300D54631 /* SignupViewController.m in Sources */,
 				BCCA790714AE14090011AADD /* LegalViewController.m in Sources */,
 				BCCA798A14AE24D80011AADD /* S7GraphView.m in Sources */,
@@ -5599,6 +5622,7 @@
 				BCC41457150B00D700A5150B /* FMResultSet.m in Sources */,
 				BCB0EE0C15233A6300290383 /* YasoundLoginViewController.m in Sources */,
 				BCB0EF0D1523518900290383 /* UnderlinedButton.m in Sources */,
+				BCB0EF221524755F00290383 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5672,7 +5696,6 @@
 				BCDC97C114AB7DD100D54631 /* TwitterOAuthSessionManager.m in Sources */,
 				BCDC97C414AB7DD100D54631 /* TwitterSigninViewController.m in Sources */,
 				BCDC97D914AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
-				BCDC97F914AB9BF300D54631 /* LoginViewController.m in Sources */,
 				BCDC981214ACB44300D54631 /* SignupViewController.m in Sources */,
 				BCCA790914AE14090011AADD /* LegalViewController.m in Sources */,
 				BCCA798C14AE24D80011AADD /* S7GraphView.m in Sources */,
@@ -5764,6 +5787,7 @@
 				BCC41459150B00D700A5150B /* FMResultSet.m in Sources */,
 				BCB0EE0E15233A6300290383 /* YasoundLoginViewController.m in Sources */,
 				BCB0EF0F1523518900290383 /* UnderlinedButton.m in Sources */,
+				BCB0EF241524755F00290383 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

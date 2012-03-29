@@ -63,6 +63,18 @@
 "YasoundLoginView_button_login" = "Connexion";
 "YasoundLoginView_button_forgot" = "Mot de passe oublié?";
 
+"LoginView_alert_title" = "Connexion";
+"LoginView_alert_message_error" = "Informations de connexion incorrectes!";
+"LoginView_alert_email_not_valid" = "L'adresse email n'est pas valide!";
+
+"SignupView_title" = "Enregistrement";
+"SignupView_label" = "s'enregistrer avec son adresse email.";
+"SignupView_username" = "Choisir un nom d'utilisateur";
+"SignupView_submit_button" = "Soumettre";
+
+
+
+
 //"HomeView_title" = "Yasound";
 //"HomeView_facebook_label" = "se connecter avec Facebook";
 //"HomeView_twitter_label" = "se connecter avec Twitter";

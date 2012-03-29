@@ -14,7 +14,7 @@
 #import "ConnectionView.h"
 #import "SongUploadManager.h"
 #import "CreateMyRadio.h"
-
+#import "RegExp.h"
 
 
 
@@ -76,8 +76,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    _loginButton.enabled = NO;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -90,19 +89,119 @@
 
 
 
+
+
+
+
+#pragma mark - TextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == _email)
+    {
+        [_pword becomeFirstResponder];
+    }
+    else
+    {
+        [textField resignFirstResponder];    
+        
+        // activate "submit" button
+        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
+        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+        if ((email.length != 0) && (pword.length != 0))
+            _loginButton.enabled = YES;
+        else
+            _loginButton.enabled = NO;
+        
+    }
+    return YES;
+}
+
+
+
+
+- (IBAction) onSubmit:(id)sender
+{
+    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
+    NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+    
+    if (![RegExp emailIsValid:email])
+    {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_email_not_valid", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;    
+    }
+    
+    _email = [NSString stringWithString:email];
+    _pword = [NSString stringWithString:pword];
+    [_email retain];
+    [_pword retain];
+    
+    // TAG ACTIVITY ALERT
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    
+    // login request to server
+    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
+}
+
+- (void) requestDidReturn:(User*)user info:(NSDictionary*)info
+{
+    [ActivityAlertView close];
+    
+    NSLog(@"login returned : %@ %@", user, info);
+    
+    if (user == nil)
+    {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;
+    }
+    
+    // store info for automatic login, for the next sessions
+    [[YasoundSessionManager main] registerForYasound:_email withPword:_pword];
+    
+    // call root to launch the Radio
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #pragma mark - IBActions
 
-
-- (void)logoutReturned
-{
-    // once logout done, go back to the home screen
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];    
-}
 
 
 - (IBAction)onBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+
+- (IBAction)onSignupClicked:(id)sender
+{
+
+}
+
+
+- (IBAction)onForgotClicked:(id)sender
+{
+    
 }
 
 
