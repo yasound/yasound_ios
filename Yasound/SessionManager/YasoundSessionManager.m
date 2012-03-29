@@ -354,7 +354,7 @@ static YasoundSessionManager* _main = nil;
     self.registered = YES;
     
     //LBDEBUG
-    NSLog(@"dico %@", _dico);
+    //NSLog(@"dico %@", _dico);
     
     NSLog(@"registerForFacebook self.loginType %@", self.loginType);
     
@@ -540,7 +540,23 @@ static YasoundSessionManager* _main = nil;
         NSLog(@"twitter social login request");
         
         NSString* tokenSecret = [dico valueForKey:DATA_FIELD_TOKEN_SECRET];
+
+        if (token == nil)
+            NSLog(@"error Twitter token is nil!");
+        if (tokenSecret == nil)
+            NSLog(@"error Twitter tokenSecret is nil!");
         
+        // don't bother asking the server if you don't the requested info at this point
+        if ((token == nil) || (tokenSecret == nil))
+        {
+            // callback
+            assert(_target);
+            [_target performSelector:_action withObject:nil];
+
+            return;
+        }
+        
+        // ok, request login to server
         [[YasoundDataProvider main] loginTwitter:username type:@"twitter" uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(loginSocialValidated:info:)];
     }
 }

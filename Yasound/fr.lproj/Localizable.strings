@@ -296,7 +296,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "YasoundSessionManager_login_error" = "Impossible de se connecter au serveur!";
 "YasoundSessionManager_userinfo_error" = "Impossible de récupérer les informations utilisateur!";
 
-
 "RadioSelection_update" = "mise à jour";
 
 

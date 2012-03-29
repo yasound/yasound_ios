@@ -201,8 +201,12 @@
             if ([errorValue isEqualToString:@"Login"])
                 message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
             else if ([errorValue isEqualToString:@"UserInfo"])
-                message = NSLocalizedString(@"YasoundSessionManager_userinfo_error", nil);
+                message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
             
+        }
+        else
+        {
+            message = NSLocalizedString(@"YasoundSessionManager_userinfo_error", nil);        
         }
         
         // show alert message for connection error
