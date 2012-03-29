@@ -11,13 +11,14 @@
 #import "Security/SFHFKeychainUtils.h"
 #import "YasoundAppDelegate.h"
 
-//neywen test
+
+#ifdef USE_DEV_SERVER
+#define kOAuthConsumerKey @"iLkxaRcY8QKku0UhaMvPQ"         //REPLACE With Twitter App OAuth Key  
+#define kOAuthConsumerSecret @"rZYlrG4KXIat3nNJ3U8qXniQBSkJu8PjI1v7sCTHg"     //REPLACE With Twitter App OAuth Secret  
+#else
 #define kOAuthConsumerKey @"bvpS9ZEO6REqL96Sjuklg"         //REPLACE With Twitter App OAuth Key  
 #define kOAuthConsumerSecret @"TMdhQbWXarXoxkjwSdUbTif5CyapHLfcAdYfTnTOmc"     //REPLACE With Twitter App OAuth Secret  
-
-// yasound
-//#define kOAuthConsumerKey @"bvpS9ZEO6REqL96Sjuklg"         //REPLACE With Twitter App OAuth Key  
-//#define kOAuthConsumerSecret @"TMdhQbWXarXoxkjwSdUbTif5CyapHLfcAdYfTnTOmc"     //REPLACE With Twitter App OAuth Secret  
+#endif
 
 
 
@@ -39,6 +40,13 @@
   
   if (!_engine)
   {  
+#ifdef USE_DEV_SERVER
+      NSLog(@"TwitterOAuthSessionManager linked to DEV SERVER : id %@.", kOAuthConsumerKey);
+#else
+      NSLog(@"TwitterOAuthSessionManager linked to PRODUCTION SERVER : id %@.", kOAuthConsumerKey);
+#endif      
+      
+      
     _engine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];  
     _engine.consumerKey    = kOAuthConsumerKey;  
     _engine.consumerSecret = kOAuthConsumerSecret;  
