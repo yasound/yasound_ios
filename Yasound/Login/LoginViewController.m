@@ -102,16 +102,11 @@
     
     [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(socialLoginReturned:info:)];
     
-    // and disable facebook button
-    _facebookButton.enabled = NO;
+    // and disable buttons
+    [self enableButtons:NO];
     
-    [UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.3];
-    _facebookButton.alpha = 0;
-    _facebookLabel.alpha = 0;
-    
-    [UIView commitAnimations];   
-    
+    [self hideButtons:YES];
+        
     // show a connection alert
     [self.view addSubview:[ConnectionView start]];
     
@@ -122,7 +117,30 @@
 
 - (IBAction)onTwitter:(id)sender
 {
+    if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
+        return;
+    }
     
+    // TAG ACTIVITY ALERT
+    if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    {
+        // J'AIMERAI SAVOIR SI ON REPASSE ICI OU PAS
+        assert(0);
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    }
+    
+    [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(socialLoginReturned:info:)];
+    
+    // and disable buttons
+    [self enableButtons:NO];
+    
+    [self hideButtons:YES];
+
+    
+    // show a connection alert
+    [self.view addSubview:[ConnectionView start]];
 }
 
 
@@ -133,13 +151,8 @@
 {
     // close the connection alert
     [ConnectionView stop];
-    
-    [UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.3];
-    _facebookButton.alpha = 1;
-    _facebookLabel.alpha = 1;
-    
-    [UIView commitAnimations];   
+
+    [self hideButtons:NO];
     
     
     if (user != nil)
@@ -238,6 +251,35 @@
 
 
 
+
+
+
+
+
+- (void)enableButtons:(BOOL)enable
+{
+    _facebookButton.enabled = enable;
+    _twitterButton.enabled = enable;
+    _yasoundButton.enabled = enable;
+    _signupButton.enabled = enable;
+}
+
+
+- (void)hideButtons:(BOOL)hide
+{
+    CGFloat alpha = (hide)? 0 : 1;
+    
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+    _facebookButton.alpha = alpha;
+    _facebookLabel.alpha = alpha;
+    _twitterButton.alpha = alpha;
+    _twitterLabel.alpha = alpha;
+    _yasoundButton.alpha = alpha;
+    _yasoundLabel.alpha = alpha;
+    _signupButton.alpha = alpha;
+    [UIView commitAnimations];   
+}
 
 
 
