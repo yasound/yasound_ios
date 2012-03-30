@@ -20,6 +20,19 @@
 
 @implementation YasoundLoginViewController
 
+
+
+//@synthesize email;
+//@synthesize pword;
+
+
+
+
+
+
+
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -64,6 +77,7 @@
     [_signupButton setTitle:NSLocalizedString(@"LoginView_signup_label", nil) forState:UIControlStateNormal textAlignement:UITextAlignmentLeft];
     [_forgetButton setTitle:NSLocalizedString(@"YasoundLoginView_button_forgot", nil) forState:UIControlStateNormal textAlignement:UITextAlignmentLeft];
 
+//    _loginButton.enabled = NO;
     
     [_email becomeFirstResponder];
     
@@ -76,7 +90,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    _loginButton.enabled = NO;
+//    _loginButton.enabled = NO;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -109,10 +123,10 @@
         NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
         NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
         NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
-        if ((email.length != 0) && (pword.length != 0))
-            _loginButton.enabled = YES;
-        else
-            _loginButton.enabled = NO;
+//        if ((email.length != 0) && (pword.length != 0))
+//            _loginButton.enabled = YES;
+//        else
+//            _loginButton.enabled = NO;
         
     }
     return YES;
@@ -135,10 +149,10 @@
         return;    
     }
     
-    _email = [NSString stringWithString:email];
-    _pword = [NSString stringWithString:pword];
-    [_email retain];
-    [_pword retain];
+//    _email = [NSString stringWithString:email];
+//    _pword = [NSString stringWithString:pword];
+//    [_email retain];
+//    [_pword retain];
     
     // TAG ACTIVITY ALERT
     [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        

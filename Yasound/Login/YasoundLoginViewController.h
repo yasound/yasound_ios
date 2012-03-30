@@ -26,6 +26,10 @@
     
 }
 
+//@property (nonatomic, retain) IBOutlet UITextField* email;
+//@property (nonatomic, retain) IBOutlet UITextField* pword;
+
+
 
 - (IBAction) onSubmit:(id)sender;
 - (IBAction)onSignupClicked:(id)sender;
