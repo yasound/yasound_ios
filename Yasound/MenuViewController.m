@@ -24,9 +24,16 @@
 #import "Theme.h"
 #import "YasoundAppDelegate.h"
 #import "ProgrammingViewController.h"
+#import "AccountFacebookViewController.h"
+#import "AccountTwitterViewController.h"
+#import "AccountYasoundViewController.h"
+
+
 
 
 @implementation MenuViewController
+
+#define NB_SECTIONS 5
 
 #define SECTION_MYRADIO 0
 #define SECTION_MYRADIO_NB_ROWS 1
@@ -46,7 +53,13 @@
 #define ROW_ME_PROGRAMMING 1
 #define ROW_ME_CONFIG 2
 
-#define SECTION_MISC 3
+#define SECTION_ACCOUNTS 3
+#define SECTION_ACCOUNTS_NB_ROWS 3
+#define ROW_ACCOUNTS_FACEBOOK 0
+#define ROW_ACCOUNTS_TWITTER 1
+#define ROW_ACCOUNTS_YASOUND 2
+
+#define SECTION_MISC 4
 #define SECTION_MISC_NB_ROWS 2
 #define ROW_MISC_LEGAL 0
 #define ROW_MISC_LOGOUT 1
@@ -132,7 +145,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return NB_SECTIONS;
 }
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -163,6 +176,9 @@
     if (section == SECTION_RADIOS)
         return SECTION_RADIOS_NB_ROWS;
     
+    if (section == SECTION_ACCOUNTS)
+        return SECTION_ACCOUNTS_NB_ROWS;
+
     if (section == SECTION_ME)
         return SECTION_ME_NB_ROWS;
     
@@ -191,6 +207,9 @@
     
     else if (section == SECTION_ME)
         title = NSLocalizedString(@"MenuView_section_me", nil);
+
+    else if (section == SECTION_ACCOUNTS)
+        title = NSLocalizedString(@"MenuView_section_accounts", nil);
     
     else if (section == SECTION_MISC)
         title = NSLocalizedString(@"MenuView_section_misc", nil);
@@ -371,6 +390,28 @@
         }
     }
     
+    else if (indexPath.section == SECTION_ACCOUNTS)
+    {
+        if (indexPath.row == ROW_ACCOUNTS_FACEBOOK)
+        {
+            cell.textLabel.text = @"Facebook";  
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsFacebook" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_TWITTER)
+        {
+            cell.textLabel.text = @"Twitter";
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsTwitter" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_YASOUND)
+        {
+            cell.textLabel.text = @"Yasound";
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsYasound" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            [cell.imageView setImage:[sheet image]];
+        }
+    }
+    
     else if (indexPath.section == SECTION_MISC)
     {
         if (indexPath.row == ROW_MISC_LEGAL)
@@ -468,6 +509,30 @@
             [view release];
         }
     }
+    
+    else if (indexPath.section == SECTION_ACCOUNTS)
+    {
+        if (indexPath.row == ROW_ACCOUNTS_FACEBOOK)
+        {
+            AccountFacebookViewController* view = [[AccountFacebookViewController alloc] initWithNibName:@"AccountFacebookViewController" bundle:nil];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_TWITTER)
+        {
+            AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_YASOUND)
+        {
+            AccountYasoundViewController* view = [[AccountYasoundViewController alloc] initWithNibName:@"AccountYasoundViewController" bundle:nil];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
+    }
+    
+    
     
     else if (indexPath.section == SECTION_MISC)
     {

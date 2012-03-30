@@ -136,13 +136,10 @@
         return;    
     }
     
-//    _email = [NSString stringWithString:email];
-//    _pword = [NSString stringWithString:pword];
-//    [_email retain];
-//    [_pword retain];
-    
     // TAG ACTIVITY ALERT
     [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    
+    NSLog(@"Signup email %@   pword %@   username %@", email, pword, username);
     
     //signup
     [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];

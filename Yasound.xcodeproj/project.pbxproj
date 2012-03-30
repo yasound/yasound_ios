@@ -2164,6 +2164,36 @@
 		BCFA441D1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
 		BCFA441E1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
 		BCFA441F1507A63100A03380 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
+		BCFD4D271525FE45006CBA19 /* AccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D251525FE45006CBA19 /* AccountFacebookViewController.m */; };
+		BCFD4D281525FE45006CBA19 /* AccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D251525FE45006CBA19 /* AccountFacebookViewController.m */; };
+		BCFD4D291525FE45006CBA19 /* AccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D251525FE45006CBA19 /* AccountFacebookViewController.m */; };
+		BCFD4D2A1525FE45006CBA19 /* AccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D251525FE45006CBA19 /* AccountFacebookViewController.m */; };
+		BCFD4D2B1525FE45006CBA19 /* AccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D251525FE45006CBA19 /* AccountFacebookViewController.m */; };
+		BCFD4D2C1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */; };
+		BCFD4D2D1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */; };
+		BCFD4D2E1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */; };
+		BCFD4D2F1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */; };
+		BCFD4D301525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */; };
+		BCFD4D341525FE5E006CBA19 /* AccountTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D321525FE5E006CBA19 /* AccountTwitterViewController.m */; };
+		BCFD4D351525FE5E006CBA19 /* AccountTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D321525FE5E006CBA19 /* AccountTwitterViewController.m */; };
+		BCFD4D361525FE5E006CBA19 /* AccountTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D321525FE5E006CBA19 /* AccountTwitterViewController.m */; };
+		BCFD4D371525FE5E006CBA19 /* AccountTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D321525FE5E006CBA19 /* AccountTwitterViewController.m */; };
+		BCFD4D381525FE5E006CBA19 /* AccountTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D321525FE5E006CBA19 /* AccountTwitterViewController.m */; };
+		BCFD4D391525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D331525FE5E006CBA19 /* AccountTwitterViewController.xib */; };
+		BCFD4D3A1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D331525FE5E006CBA19 /* AccountTwitterViewController.xib */; };
+		BCFD4D3B1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D331525FE5E006CBA19 /* AccountTwitterViewController.xib */; };
+		BCFD4D3C1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D331525FE5E006CBA19 /* AccountTwitterViewController.xib */; };
+		BCFD4D3D1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D331525FE5E006CBA19 /* AccountTwitterViewController.xib */; };
+		BCFD4D411525FE7A006CBA19 /* AccountYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D3F1525FE7A006CBA19 /* AccountYasoundViewController.m */; };
+		BCFD4D421525FE7A006CBA19 /* AccountYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D3F1525FE7A006CBA19 /* AccountYasoundViewController.m */; };
+		BCFD4D431525FE7A006CBA19 /* AccountYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D3F1525FE7A006CBA19 /* AccountYasoundViewController.m */; };
+		BCFD4D441525FE7A006CBA19 /* AccountYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D3F1525FE7A006CBA19 /* AccountYasoundViewController.m */; };
+		BCFD4D451525FE7A006CBA19 /* AccountYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D3F1525FE7A006CBA19 /* AccountYasoundViewController.m */; };
+		BCFD4D461525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
+		BCFD4D471525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
+		BCFD4D481525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
+		BCFD4D491525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
+		BCFD4D4A1525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
 		BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BCFECFFE1468439900BA20D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
@@ -2873,6 +2903,15 @@
 		BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SongRatingBullet@2x.png"; sourceTree = "<group>"; };
 		BCFA440A1507A63100A03380 /* SongRatingStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SongRatingStar.png; sourceTree = "<group>"; };
 		BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SongRatingStar@2x.png"; sourceTree = "<group>"; };
+		BCFD4D241525FE45006CBA19 /* AccountFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountFacebookViewController.h; path = Settings/AccountFacebookViewController.h; sourceTree = "<group>"; };
+		BCFD4D251525FE45006CBA19 /* AccountFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountFacebookViewController.m; path = Settings/AccountFacebookViewController.m; sourceTree = "<group>"; };
+		BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountFacebookViewController.xib; path = Settings/AccountFacebookViewController.xib; sourceTree = "<group>"; };
+		BCFD4D311525FE5E006CBA19 /* AccountTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountTwitterViewController.h; path = Settings/AccountTwitterViewController.h; sourceTree = "<group>"; };
+		BCFD4D321525FE5E006CBA19 /* AccountTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountTwitterViewController.m; path = Settings/AccountTwitterViewController.m; sourceTree = "<group>"; };
+		BCFD4D331525FE5E006CBA19 /* AccountTwitterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountTwitterViewController.xib; path = Settings/AccountTwitterViewController.xib; sourceTree = "<group>"; };
+		BCFD4D3E1525FE7A006CBA19 /* AccountYasoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountYasoundViewController.h; path = Settings/AccountYasoundViewController.h; sourceTree = "<group>"; };
+		BCFD4D3F1525FE7A006CBA19 /* AccountYasoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountYasoundViewController.m; path = Settings/AccountYasoundViewController.m; sourceTree = "<group>"; };
+		BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountYasoundViewController.xib; path = Settings/AccountYasoundViewController.xib; sourceTree = "<group>"; };
 		BCFECFE41468439900BA20D9 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		BCFECFE51468439900BA20D9 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		BCFECFEB1468439900BA20D9 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
@@ -3768,6 +3807,15 @@
 				BC178DA714C5E99800B18420 /* CreateMyRadio.h */,
 				BC178DA814C5E99800B18420 /* CreateMyRadio.m */,
 				BC178DA914C5E99800B18420 /* CreateMyRadio.xib */,
+				BCFD4D241525FE45006CBA19 /* AccountFacebookViewController.h */,
+				BCFD4D251525FE45006CBA19 /* AccountFacebookViewController.m */,
+				BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */,
+				BCFD4D311525FE5E006CBA19 /* AccountTwitterViewController.h */,
+				BCFD4D321525FE5E006CBA19 /* AccountTwitterViewController.m */,
+				BCFD4D331525FE5E006CBA19 /* AccountTwitterViewController.xib */,
+				BCFD4D3E1525FE7A006CBA19 /* AccountYasoundViewController.h */,
+				BCFD4D3F1525FE7A006CBA19 /* AccountYasoundViewController.m */,
+				BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -4875,6 +4923,9 @@
 				BC56F5DF152486AF005D1B40 /* barItemLargeBkgDisabled.png in Resources */,
 				BC56F5E0152486AF005D1B40 /* barItemLargeBkgDisabled@2x.png in Resources */,
 				BC56F5E1152486AF005D1B40 /* LoginViewController.xib in Resources */,
+				BCFD4D2E1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
+				BCFD4D3B1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */,
+				BCFD4D481525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5067,6 +5118,9 @@
 				BCB0EF161523740400290383 /* barItemLargeBkgDisabled.png in Resources */,
 				BCB0EF1B1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */,
 				BCB0EF281524755F00290383 /* LoginViewController.xib in Resources */,
+				BCFD4D2D1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
+				BCFD4D3A1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */,
+				BCFD4D471525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5259,6 +5313,9 @@
 				BCB0EF181523740400290383 /* barItemLargeBkgDisabled.png in Resources */,
 				BCB0EF1D1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */,
 				BCB0EF2A1524755F00290383 /* LoginViewController.xib in Resources */,
+				BCFD4D301525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
+				BCFD4D3D1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */,
+				BCFD4D4A1525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5451,6 +5508,9 @@
 				BCB0EF151523740400290383 /* barItemLargeBkgDisabled.png in Resources */,
 				BCB0EF1A1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */,
 				BCB0EF271524755F00290383 /* LoginViewController.xib in Resources */,
+				BCFD4D2C1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
+				BCFD4D391525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */,
+				BCFD4D461525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5643,6 +5703,9 @@
 				BCB0EF171523740400290383 /* barItemLargeBkgDisabled.png in Resources */,
 				BCB0EF1C1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */,
 				BCB0EF291524755F00290383 /* LoginViewController.xib in Resources */,
+				BCFD4D2F1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
+				BCFD4D3C1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */,
+				BCFD4D491525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5982,6 +6045,9 @@
 				BC011A4D1525B2A4007AE3F5 /* NSData+Base64.m in Sources */,
 				BC011A531525B2A4007AE3F5 /* OAuth+Additions.m in Sources */,
 				BC011A591525B2A4007AE3F5 /* OAuthCore.m in Sources */,
+				BCFD4D291525FE45006CBA19 /* AccountFacebookViewController.m in Sources */,
+				BCFD4D361525FE5E006CBA19 /* AccountTwitterViewController.m in Sources */,
+				BCFD4D431525FE7A006CBA19 /* AccountYasoundViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6150,6 +6216,9 @@
 				BC011A4C1525B2A4007AE3F5 /* NSData+Base64.m in Sources */,
 				BC011A521525B2A4007AE3F5 /* OAuth+Additions.m in Sources */,
 				BC011A581525B2A4007AE3F5 /* OAuthCore.m in Sources */,
+				BCFD4D281525FE45006CBA19 /* AccountFacebookViewController.m in Sources */,
+				BCFD4D351525FE5E006CBA19 /* AccountTwitterViewController.m in Sources */,
+				BCFD4D421525FE7A006CBA19 /* AccountYasoundViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6319,6 +6388,9 @@
 				BC011A4F1525B2A4007AE3F5 /* NSData+Base64.m in Sources */,
 				BC011A551525B2A4007AE3F5 /* OAuth+Additions.m in Sources */,
 				BC011A5B1525B2A4007AE3F5 /* OAuthCore.m in Sources */,
+				BCFD4D2B1525FE45006CBA19 /* AccountFacebookViewController.m in Sources */,
+				BCFD4D381525FE5E006CBA19 /* AccountTwitterViewController.m in Sources */,
+				BCFD4D451525FE7A006CBA19 /* AccountYasoundViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6487,6 +6559,9 @@
 				BC011A4B1525B2A4007AE3F5 /* NSData+Base64.m in Sources */,
 				BC011A511525B2A4007AE3F5 /* OAuth+Additions.m in Sources */,
 				BC011A571525B2A4007AE3F5 /* OAuthCore.m in Sources */,
+				BCFD4D271525FE45006CBA19 /* AccountFacebookViewController.m in Sources */,
+				BCFD4D341525FE5E006CBA19 /* AccountTwitterViewController.m in Sources */,
+				BCFD4D411525FE7A006CBA19 /* AccountYasoundViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6656,6 +6731,9 @@
 				BC011A4E1525B2A4007AE3F5 /* NSData+Base64.m in Sources */,
 				BC011A541525B2A4007AE3F5 /* OAuth+Additions.m in Sources */,
 				BC011A5A1525B2A4007AE3F5 /* OAuthCore.m in Sources */,
+				BCFD4D2A1525FE45006CBA19 /* AccountFacebookViewController.m in Sources */,
+				BCFD4D371525FE5E006CBA19 /* AccountTwitterViewController.m in Sources */,
+				BCFD4D441525FE7A006CBA19 /* AccountYasoundViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

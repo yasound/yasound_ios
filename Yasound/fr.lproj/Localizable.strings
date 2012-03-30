@@ -271,6 +271,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MenuView_section_myradio" = "Ma Radio";
 "MenuView_section_radios" = "Radios";
 "MenuView_section_me" = "Moi";
+"MenuView_section_accounts" = "Comptes";
 "MenuView_section_misc" = "Divers";
 
 
