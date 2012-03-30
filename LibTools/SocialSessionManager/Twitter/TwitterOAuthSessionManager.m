@@ -298,9 +298,7 @@
   end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
   if (end.location == NSNotFound)
   {
-    assert(0);
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
-    return;
+      end.location = data.length;
   }
   
   // extract user screen name
