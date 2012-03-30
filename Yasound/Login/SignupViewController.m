@@ -75,7 +75,7 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    _submitButton.enabled = NO;
+//    _submitButton.enabled = NO;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -108,10 +108,10 @@
         NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
         NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
         NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
-        if ((email.length != 0) && (pword.length != 0))
-            _submitButton.enabled = YES;
-        else
-            _submitButton.enabled = NO;
+//        if ((email.length != 0) && (pword.length != 0))
+//            _submitButton.enabled = YES;
+//        else
+//            _submitButton.enabled = NO;
         
     }
     return YES;
@@ -123,6 +123,8 @@
 - (IBAction) onSubmit:(id)sender
 {
     NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    
+    NSString* username = [_username.text stringByTrimmingCharactersInSet:space];
     NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
     NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
     
@@ -134,16 +136,21 @@
         return;    
     }
     
-    _email = [NSString stringWithString:email];
-    _pword = [NSString stringWithString:pword];
-    [_email retain];
-    [_pword retain];
+//    _email = [NSString stringWithString:email];
+//    _pword = [NSString stringWithString:pword];
+//    [_email retain];
+//    [_pword retain];
     
     // TAG ACTIVITY ALERT
     [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     
-    // login request to server
-    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
+    //signup
+    [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];
+
+    
+    
+//    // login request to server
+//    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
 }
 
 - (void) requestDidReturn:(User*)user info:(NSDictionary*)info
