@@ -69,7 +69,7 @@
     
     if (slash && ![path hasSuffix:@"/"])
         path = [path stringByAppendingString:@"/"];
-    
+
     NSURL* url;
     if (absolute)
         url = [NSURL URLWithString:path];
@@ -78,14 +78,11 @@
         url = [NSURL URLWithString:_baseURL];
         if ([path hasPrefix:@"/"] && path.length > 1)
             path = [path substringFromIndex:1];
-        if ([path hasSuffix:@"/"] && path.length > 1)
-          path = [path substringToIndex:path.length-1]; // remove trailing slash since [NSURL URLByAppendingPathComponent] adds a trailing slash leading to double slash bug in iOS older than version 5
         url = [url URLByAppendingPathComponent:path];
     }
     
     url = [self URLWithURL:url andParams:params];
     
-    // NSLog(@"url: %@", url.absoluteString);
     return url;
 }
 
