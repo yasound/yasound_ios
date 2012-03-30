@@ -174,9 +174,14 @@
         [av release];  
         return;
     }
+
     
+    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+    NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
+    NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+
     // store info for automatic login, for the next sessions
-    [[YasoundSessionManager main] registerForYasound:_email withPword:_pword];
+    [[YasoundSessionManager main] registerForYasound:email withPword:pword];
     
     // call root to launch the Radio
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];

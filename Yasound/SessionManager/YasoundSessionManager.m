@@ -41,6 +41,8 @@ static YasoundSessionManager* _main = nil;
         else
             _dico = [[NSMutableDictionary alloc] init];
         
+        NSLog(@"import dico %@", _dico);
+        
         [_dico retain];
             
     }
@@ -141,6 +143,8 @@ static YasoundSessionManager* _main = nil;
 
 - (void)save
 {
+    NSLog(@"save : %@", _dico);
+    
     [[NSUserDefaults standardUserDefaults] setObject:_dico forKey:@"YasoundSessionManager"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
