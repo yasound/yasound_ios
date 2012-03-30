@@ -491,6 +491,10 @@
   [[NSUserDefaults standardUserDefaults] setValue:identifier forKey:ACCOUNT_IDENTIFIER];
 
     // ICI : reverse auth to get token and token_secret
+    
+    
+    
+    
   
   [self.delegate sessionDidLogin:YES];
 }
@@ -500,6 +504,65 @@
 
 
 
+
+
+- (void)test
+{
+    //  Assume that we stored the result of Step 1 into a var 'resultOfStep1'
+    NSString* S = @"resultOfStep1";
+    
+    
+    NSDictionary *step2Params = [[NSMutableDictionary alloc] init];
+    [step2Params setValue:@"JP3PyvG67rXRsnayOJOcQ" forKey:@"x_reverse_auth_target"];
+    [step2Params setValue:S forKey:@"x_reverse_auth_parameters"];            
+
+    NSURL *url2 = [NSURL URLWithString:@"https://api.twitter.com/oauth/access_token"];
+    TWRequest *stepTwoRequest = 
+    [[TWRequest alloc] initWithURL:url2 parameters:step2Params requestMethod:TWRequestMethodPOST];
+
+    //  You *MUST* keep the ACAccountStore alive for as long as you need an ACAccount instance
+    //  See WWDC 2011 Session 124 for more info.
+    self.store = [[ACAccountStore alloc] init];
+
+    //  We only want to receive Twitter accounts
+    ACAccountType *twitterType = 
+    [self.store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+
+    //  Obtain the user's permission to access the store
+    [self.store requestAccessToAccountsWithType:twitterType 
+                                 withCompletionHandler:^(BOOL granted, NSError *error) 
+    {
+                                     if (!granted) 
+                                     {
+                                         // handle this scenario gracefully
+                                     } 
+                                     else 
+                                     {
+                                         // obtain all the local account instances
+                                         NSArray *accounts = 
+                                         [self.store accountsWithAccountType:twitterType];
+                                         
+                                         // for simplicity, we will choose the first account returned - in your app,
+                                         // you should ensure that the user chooses the correct Twitter account
+                                         // to use with your application.  DO NOT FORGET THIS STEP.
+                                         [stepTwoRequest setAccount:[accounts objectAtIndex:0]];
+                                         
+                                         // execute the request
+                                         [stepTwoRequest performRequestWithHandler:
+                                          ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) 
+                                         {
+                                              NSString *responseStr = 
+                                              [[NSString alloc] initWithData:responseData 
+                                                                    encoding:NSUTF8StringEncoding];
+                                              
+                                              // see below for an example response
+                                              NSLog(@"The user's info for your server:\n%@", responseStr);
+                                          }];
+                                     } 
+                                 }];
+
+
+}
 
 
 
