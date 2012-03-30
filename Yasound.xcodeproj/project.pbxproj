@@ -128,6 +128,30 @@
 		B1F8868914E5B44300256383 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F8868714E5B44300256383 /* MBProgressHUD.m */; };
 		B1F8868A14E5B44300256383 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F8868714E5B44300256383 /* MBProgressHUD.m */; };
 		B1F8868B14E5B44300256383 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F8868714E5B44300256383 /* MBProgressHUD.m */; };
+		BC011A3E1525B113007AE3F5 /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A3D1525B113007AE3F5 /* TWSignedRequest.m */; };
+		BC011A3F1525B113007AE3F5 /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A3D1525B113007AE3F5 /* TWSignedRequest.m */; };
+		BC011A401525B113007AE3F5 /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A3D1525B113007AE3F5 /* TWSignedRequest.m */; };
+		BC011A411525B113007AE3F5 /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A3D1525B113007AE3F5 /* TWSignedRequest.m */; };
+		BC011A421525B113007AE3F5 /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A3D1525B113007AE3F5 /* TWSignedRequest.m */; };
+		BC011A431525B113007AE3F5 /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A3D1525B113007AE3F5 /* TWSignedRequest.m */; };
+		BC011A4B1525B2A4007AE3F5 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A461525B2A4007AE3F5 /* NSData+Base64.m */; };
+		BC011A4C1525B2A4007AE3F5 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A461525B2A4007AE3F5 /* NSData+Base64.m */; };
+		BC011A4D1525B2A4007AE3F5 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A461525B2A4007AE3F5 /* NSData+Base64.m */; };
+		BC011A4E1525B2A4007AE3F5 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A461525B2A4007AE3F5 /* NSData+Base64.m */; };
+		BC011A4F1525B2A4007AE3F5 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A461525B2A4007AE3F5 /* NSData+Base64.m */; };
+		BC011A501525B2A4007AE3F5 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A461525B2A4007AE3F5 /* NSData+Base64.m */; };
+		BC011A511525B2A4007AE3F5 /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A481525B2A4007AE3F5 /* OAuth+Additions.m */; };
+		BC011A521525B2A4007AE3F5 /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A481525B2A4007AE3F5 /* OAuth+Additions.m */; };
+		BC011A531525B2A4007AE3F5 /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A481525B2A4007AE3F5 /* OAuth+Additions.m */; };
+		BC011A541525B2A4007AE3F5 /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A481525B2A4007AE3F5 /* OAuth+Additions.m */; };
+		BC011A551525B2A4007AE3F5 /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A481525B2A4007AE3F5 /* OAuth+Additions.m */; };
+		BC011A561525B2A4007AE3F5 /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A481525B2A4007AE3F5 /* OAuth+Additions.m */; };
+		BC011A571525B2A4007AE3F5 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A4A1525B2A4007AE3F5 /* OAuthCore.m */; };
+		BC011A581525B2A4007AE3F5 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A4A1525B2A4007AE3F5 /* OAuthCore.m */; };
+		BC011A591525B2A4007AE3F5 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A4A1525B2A4007AE3F5 /* OAuthCore.m */; };
+		BC011A5A1525B2A4007AE3F5 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A4A1525B2A4007AE3F5 /* OAuthCore.m */; };
+		BC011A5B1525B2A4007AE3F5 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A4A1525B2A4007AE3F5 /* OAuthCore.m */; };
+		BC011A5C1525B2A4007AE3F5 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BC011A4A1525B2A4007AE3F5 /* OAuthCore.m */; };
 		BC01F5AB14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC01F5AC14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC01F5AD14CEB01F00EF62A2 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
@@ -2364,6 +2388,14 @@
 		B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		B1F8868614E5B44300256383 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		B1F8868714E5B44300256383 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		BC011A3C1525B113007AE3F5 /* TWSignedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWSignedRequest.h; path = ThirdParties/TWiOS5ReverseAuthExample/TWiOS5ReverseAuthExample/TWSignedRequest.h; sourceTree = "<group>"; };
+		BC011A3D1525B113007AE3F5 /* TWSignedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWSignedRequest.m; path = ThirdParties/TWiOS5ReverseAuthExample/TWiOS5ReverseAuthExample/TWSignedRequest.m; sourceTree = "<group>"; };
+		BC011A451525B2A4007AE3F5 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		BC011A461525B2A4007AE3F5 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		BC011A471525B2A4007AE3F5 /* OAuth+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAuth+Additions.h"; sourceTree = "<group>"; };
+		BC011A481525B2A4007AE3F5 /* OAuth+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAuth+Additions.m"; sourceTree = "<group>"; };
+		BC011A491525B2A4007AE3F5 /* OAuthCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthCore.h; sourceTree = "<group>"; };
+		BC011A4A1525B2A4007AE3F5 /* OAuthCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthCore.m; sourceTree = "<group>"; };
 		BC01F5A914CEB01F00EF62A2 /* DateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateAdditions.h; sourceTree = "<group>"; };
 		BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateAdditions.m; sourceTree = "<group>"; };
 		BC0304E614BF030200F39374 /* Tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tutorial.h; sourceTree = "<group>"; };
@@ -3151,6 +3183,30 @@
 			path = ThirdParties/MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		BC011A3B1525AF92007AE3F5 /* TWiOS5ReverseAuthExample */ = {
+			isa = PBXGroup;
+			children = (
+				BC011A441525B2A4007AE3F5 /* ABOAuthCore */,
+				BC011A3C1525B113007AE3F5 /* TWSignedRequest.h */,
+				BC011A3D1525B113007AE3F5 /* TWSignedRequest.m */,
+			);
+			name = TWiOS5ReverseAuthExample;
+			sourceTree = "<group>";
+		};
+		BC011A441525B2A4007AE3F5 /* ABOAuthCore */ = {
+			isa = PBXGroup;
+			children = (
+				BC011A451525B2A4007AE3F5 /* NSData+Base64.h */,
+				BC011A461525B2A4007AE3F5 /* NSData+Base64.m */,
+				BC011A471525B2A4007AE3F5 /* OAuth+Additions.h */,
+				BC011A481525B2A4007AE3F5 /* OAuth+Additions.m */,
+				BC011A491525B2A4007AE3F5 /* OAuthCore.h */,
+				BC011A4A1525B2A4007AE3F5 /* OAuthCore.m */,
+			);
+			name = ABOAuthCore;
+			path = ThirdParties/TWiOS5ReverseAuthExample/TWiOS5ReverseAuthExample/ABOAuthCore;
+			sourceTree = "<group>";
+		};
 		BC01F5A814CEB01F00EF62A2 /* DateAdditions */ = {
 			isa = PBXGroup;
 			children = (
@@ -3808,6 +3864,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				BC011A3B1525AF92007AE3F5 /* TWiOS5ReverseAuthExample */,
 				BCB0EF12152351A900290383 /* UnderlinedButton */,
 				BCC41432150B00C800A5150B /* fmdb */,
 				BC10391214F7DA08007C5496 /* RCSwitch */,
@@ -5753,6 +5810,10 @@
 				BCB0EE1015233A6300290383 /* YasoundLoginViewController.m in Sources */,
 				BCB0EF111523518900290383 /* UnderlinedButton.m in Sources */,
 				BCB0EF261524755F00290383 /* LoginViewController.m in Sources */,
+				BC011A431525B113007AE3F5 /* TWSignedRequest.m in Sources */,
+				BC011A501525B2A4007AE3F5 /* NSData+Base64.m in Sources */,
+				BC011A561525B2A4007AE3F5 /* OAuth+Additions.m in Sources */,
+				BC011A5C1525B2A4007AE3F5 /* OAuthCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5917,6 +5978,10 @@
 				BC56F50D152486AF005D1B40 /* YasoundLoginViewController.m in Sources */,
 				BC56F50E152486AF005D1B40 /* UnderlinedButton.m in Sources */,
 				BC56F50F152486AF005D1B40 /* LoginViewController.m in Sources */,
+				BC011A401525B113007AE3F5 /* TWSignedRequest.m in Sources */,
+				BC011A4D1525B2A4007AE3F5 /* NSData+Base64.m in Sources */,
+				BC011A531525B2A4007AE3F5 /* OAuth+Additions.m in Sources */,
+				BC011A591525B2A4007AE3F5 /* OAuthCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6081,6 +6146,10 @@
 				BCB0EE0D15233A6300290383 /* YasoundLoginViewController.m in Sources */,
 				BCB0EF0E1523518900290383 /* UnderlinedButton.m in Sources */,
 				BCB0EF231524755F00290383 /* LoginViewController.m in Sources */,
+				BC011A3F1525B113007AE3F5 /* TWSignedRequest.m in Sources */,
+				BC011A4C1525B2A4007AE3F5 /* NSData+Base64.m in Sources */,
+				BC011A521525B2A4007AE3F5 /* OAuth+Additions.m in Sources */,
+				BC011A581525B2A4007AE3F5 /* OAuthCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6246,6 +6315,10 @@
 				BCB0EE0F15233A6300290383 /* YasoundLoginViewController.m in Sources */,
 				BCB0EF101523518900290383 /* UnderlinedButton.m in Sources */,
 				BCB0EF251524755F00290383 /* LoginViewController.m in Sources */,
+				BC011A421525B113007AE3F5 /* TWSignedRequest.m in Sources */,
+				BC011A4F1525B2A4007AE3F5 /* NSData+Base64.m in Sources */,
+				BC011A551525B2A4007AE3F5 /* OAuth+Additions.m in Sources */,
+				BC011A5B1525B2A4007AE3F5 /* OAuthCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6410,6 +6483,10 @@
 				BCB0EE0C15233A6300290383 /* YasoundLoginViewController.m in Sources */,
 				BCB0EF0D1523518900290383 /* UnderlinedButton.m in Sources */,
 				BCB0EF221524755F00290383 /* LoginViewController.m in Sources */,
+				BC011A3E1525B113007AE3F5 /* TWSignedRequest.m in Sources */,
+				BC011A4B1525B2A4007AE3F5 /* NSData+Base64.m in Sources */,
+				BC011A511525B2A4007AE3F5 /* OAuth+Additions.m in Sources */,
+				BC011A571525B2A4007AE3F5 /* OAuthCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6575,6 +6652,10 @@
 				BCB0EE0E15233A6300290383 /* YasoundLoginViewController.m in Sources */,
 				BCB0EF0F1523518900290383 /* UnderlinedButton.m in Sources */,
 				BCB0EF241524755F00290383 /* LoginViewController.m in Sources */,
+				BC011A411525B113007AE3F5 /* TWSignedRequest.m in Sources */,
+				BC011A4E1525B2A4007AE3F5 /* NSData+Base64.m in Sources */,
+				BC011A541525B2A4007AE3F5 /* OAuth+Additions.m in Sources */,
+				BC011A5A1525B2A4007AE3F5 /* OAuthCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

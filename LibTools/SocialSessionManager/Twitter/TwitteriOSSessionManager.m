@@ -12,10 +12,25 @@
 #import "Security/SFHFKeychainUtils.h"
 #import <Twitter/Twitter.h>
 #import "YasoundAppDelegate.h"
-
+#import "TWSignedRequest.h"
 
 
 #define ACCOUNT_IDENTIFIER @"twitterAccountIdentifier"
+
+
+#define TW_X_AUTH_MODE_KEY                  @"x_auth_mode"
+#define TW_X_AUTH_MODE_REVERSE_AUTH         @"reverse_auth"
+#define TW_X_AUTH_MODE_CLIENT_AUTH          @"client_auth"
+#define TW_X_AUTH_REVERSE_PARMS             @"x_reverse_auth_parameters"
+#define TW_X_AUTH_REVERSE_TARGET            @"x_reverse_auth_target"
+#define TW_X_AUTH_USERNAME                  @"x_auth_username"
+#define TW_X_AUTH_PASSWORD                  @"x_auth_password"
+#define TW_SCREEN_NAME                      @"screen_name"
+#define TW_USER_ID                          @"user_id"
+#define TW_OAUTH_URL_REQUEST_TOKEN          @"https://api.twitter.com/oauth/request_token"
+#define TW_OAUTH_URL_AUTH_TOKEN             @"https://api.twitter.com/oauth/access_token"
+
+
 
 @implementation TwitteriOSSessionManager
 
@@ -485,16 +500,28 @@
   
   NSLog(@"selected accountDescription %@", account.accountDescription);
   NSLog(@"selected username %@", account.username);
+    
 
   // store this account identifier in order to load it automatically the next times
   NSString* identifier = self.account.identifier;
   [[NSUserDefaults standardUserDefaults] setValue:identifier forKey:ACCOUNT_IDENTIFIER];
 
-    // ICI : reverse auth to get token and token_secret
+    
+    // check if the oauth token and token secret are already there
+    NSString* token = [[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN];
+    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+    NSString* tokenSecret = [SFHFKeychainUtils getPasswordForUsername:token andServiceName:BundleName error:nil];
+    
+    // no. request reverse auth 
+    if ((token == nil) || (tokenSecret == nil))
+    {
+        NSLog(@"need to perform reverse auth.");
+        [self performReverseAuth];
+        return;
+    }
     
     
-    
-    
+    // yes. go on.
   
   [self.delegate sessionDidLogin:YES];
 }
@@ -506,62 +533,135 @@
 
 
 
-- (void)test
+#pragma mark - Reverse Auth
+
+
+
+
+- (void)performReverseAuth
 {
-    //  Assume that we stored the result of Step 1 into a var 'resultOfStep1'
-    NSString* S = @"resultOfStep1";
+        NSURL *url = [NSURL URLWithString:TW_OAUTH_URL_REQUEST_TOKEN];
+        
+        // "reverse_auth" is a required parameter
+        NSDictionary *dict = [NSDictionary dictionaryWithObject:TW_X_AUTH_MODE_REVERSE_AUTH forKey:TW_X_AUTH_MODE_KEY];
+        TWSignedRequest *signedRequest = [[TWSignedRequest alloc] initWithURL:url parameters:dict requestMethod:TWSignedRequestMethodPOST];
+        
+        [signedRequest performRequestWithHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (!data) 
+            {
+                //[self showAlert:@"Unable to receive a request_token." title:@"Yikes"];
+                [self _handleError:error forResponse:response];
+            }
+            else 
+            {
+                NSString *signedReverseAuthSignature = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                
+                //
+                //  Step 2)  Ask Twitter for the user's auth token and secret
+                //           include x_reverse_auth_target=CK2 and x_reverse_auth_parameters=signedReverseAuthSignature parameters
+                //
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    
+                    NSDictionary *step2Params = [NSDictionary dictionaryWithObjectsAndKeys:[TWSignedRequest consumerKey], TW_X_AUTH_REVERSE_TARGET, signedReverseAuthSignature, TW_X_AUTH_REVERSE_PARMS, nil];
+                    NSURL *authTokenURL = [NSURL URLWithString:TW_OAUTH_URL_AUTH_TOKEN];
+                    TWRequest *step2Request = [[TWRequest alloc] initWithURL:authTokenURL parameters:step2Params requestMethod:TWRequestMethodPOST];
+                    
+                    //  Obtain the user's permission to access the store
+                            [step2Request setAccount:self.account];
+                            [step2Request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) 
+                    {
+                                if (!responseData) 
+                                {
+                                    //[self showAlert:@"Error occurred in Step 2.  Check console for more info." title:@"Yikes"];
+                                    [self _handleError:error forResponse:response];
+                                }
+                                else 
+                                {
+                                    NSString *responseStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+                                    [self _handleStep2Response:responseStr];
+                                }
+                    }];
+                    
+                });
+            }
+        }];
+
+}
+
+                               
+                               
+                               
+- (void)_handleError:(NSError *)error forResponse:(NSURLResponse *)response
+{
+    NSHTTPURLResponse *urlResponse = (NSHTTPURLResponse *)response;
+
+    NSLog(@"reverse auth error!");
+    NSLog(@"[Step Two Request Error]: %@", [error localizedDescription]);
+    NSLog(@"[Step Two Request Error]: Response Code:%d \"%@\" ", [urlResponse statusCode], [NSHTTPURLResponse localizedStringForStatusCode:[urlResponse statusCode]]);
     
+    [self.delegate sessionDidLogin:NO];
+}
+
+
+
+#define RESPONSE_EXPECTED_SIZE 4
+- (void)_handleStep2Response:(NSString *)responseStr
+{
+    NSDictionary *dict = [NSURL ab_parseURLQueryString:responseStr];
     
-    NSDictionary *step2Params = [[NSMutableDictionary alloc] init];
-    [step2Params setValue:@"JP3PyvG67rXRsnayOJOcQ" forKey:@"x_reverse_auth_target"];
-    [step2Params setValue:S forKey:@"x_reverse_auth_parameters"];            
-
-    NSURL *url2 = [NSURL URLWithString:@"https://api.twitter.com/oauth/access_token"];
-    TWRequest *stepTwoRequest = 
-    [[TWRequest alloc] initWithURL:url2 parameters:step2Params requestMethod:TWRequestMethodPOST];
-
-    //  You *MUST* keep the ACAccountStore alive for as long as you need an ACAccount instance
-    //  See WWDC 2011 Session 124 for more info.
-    self.store = [[ACAccountStore alloc] init];
-
-    //  We only want to receive Twitter accounts
-    ACAccountType *twitterType = 
-    [self.store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-
-    //  Obtain the user's permission to access the store
-    [self.store requestAccessToAccountsWithType:twitterType 
-                                 withCompletionHandler:^(BOOL granted, NSError *error) 
+    // We are expecting a response dict of the format:
+    //
+    // {
+    //     "oauth_token" = ...
+    //     "oauth_token_secret" = ...
+    //     "screen_name" = ...
+    //     "user_id" = ...
+    // }
+    
+    if ([dict count] == RESPONSE_EXPECTED_SIZE) 
     {
-                                     if (!granted) 
-                                     {
-                                         // handle this scenario gracefully
-                                     } 
-                                     else 
-                                     {
-                                         // obtain all the local account instances
-                                         NSArray *accounts = 
-                                         [self.store accountsWithAccountType:twitterType];
-                                         
-                                         // for simplicity, we will choose the first account returned - in your app,
-                                         // you should ensure that the user chooses the correct Twitter account
-                                         // to use with your application.  DO NOT FORGET THIS STEP.
-                                         [stepTwoRequest setAccount:[accounts objectAtIndex:0]];
-                                         
-                                         // execute the request
-                                         [stepTwoRequest performRequestWithHandler:
-                                          ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) 
-                                         {
-                                              NSString *responseStr = 
-                                              [[NSString alloc] initWithData:responseData 
-                                                                    encoding:NSUTF8StringEncoding];
-                                              
-                                              // see below for an example response
-                                              NSLog(@"The user's info for your server:\n%@", responseStr);
-                                          }];
-                                     } 
-                                 }];
+        //[self showAlert:[NSString stringWithFormat:@"User: %@\nUser ID: %@", [dict objectForKey:TW_SCREEN_NAME], [dict objectForKey:TW_USER_ID]] title:@"Success!"];
+        // NSLog(@"The user's info for your server:\n%@", dict);
+        NSLog(@"reverse auth success!");
 
-
+    }
+    else 
+    {
+        //[self showAlert:@"The response doesn't seem correct.  Please check the console." title:@"Hmm..."];
+        NSLog(@"reverse auth received answer but its size is not what we expected:");
+        NSLog(@"The user's info for your server:\n%@", dict);
+    }
+    
+    NSString* token = [dict objectForKey:@"oauth_token"];
+    NSString* token_secret = [dict objectForKey:@"oauth_token_secret"];
+    if (token == nil)
+    {
+        NSLog(@"reverse auth error : dit not retrieved token!");
+         [self.delegate sessionDidLogin:NO];
+        return;
+    }
+    else
+    {
+        // store token and secret
+        [[NSUserDefaults standardUserDefaults] setValue:token forKey:DATA_FIELD_TOKEN];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    
+    if (token_secret == nil)
+    {
+        NSLog(@"reverse auth error : dit not retrieved token_secret!");
+        [self.delegate sessionDidLogin:NO];
+        return;
+    }
+    else
+    {
+        NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+        [SFHFKeychainUtils storeUsername:token andPassword:token_secret  forServiceName:BundleName updateExisting:YES error:nil];
+    }
+    
+    [self.delegate sessionDidLogin:YES];
+        
 }
 
 
