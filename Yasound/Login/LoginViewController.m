@@ -63,6 +63,12 @@
 
 
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    //[self enableButtons:YES];
+    [super viewDidAppear:animated];
+}
+
 
 - (void)viewDidUnload
 {
