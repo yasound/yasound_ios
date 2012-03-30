@@ -12,6 +12,11 @@
 {
     IBOutlet UIBarButtonItem* _backItem;
     IBOutlet UIBarButtonItem* _titleItem;
+    
+    IBOutlet UILabel* _usernameLabel;
+    IBOutlet UILabel* _usernameValue;
+    IBOutlet UILabel* _logoutLabel;
+
 }
 
 - (IBAction)onBack:(id)sender;

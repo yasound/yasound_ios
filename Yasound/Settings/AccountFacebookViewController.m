@@ -29,6 +29,11 @@
 
     _titleItem.title = @"Facebook";
     _backItem.title = NSLocalizedString(@"Navigation_back", nil);    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    
+    _usernameLabel.text = NSLocalizedString(@"AccountsView_username_label", nil);
+    _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
+    
 }
 
 - (void)viewDidUnload

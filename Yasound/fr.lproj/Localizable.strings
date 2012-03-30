@@ -290,7 +290,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MenuView_misc_legal" = "Conditions d'utilisation";
 "MenuView_misc_logout" = "Se déconnecter";
 
-
+"AccountsView_username_label" = "Nom d'utilisateur";
+"AccountsView_logout_label" = "Se déconnecter";
 
 
 "YasoundSessionManager_login_title" = "log in";

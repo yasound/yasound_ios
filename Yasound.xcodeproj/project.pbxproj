@@ -2194,6 +2194,30 @@
 		BCFD4D481525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
 		BCFD4D491525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
 		BCFD4D4A1525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
+		BCFD4D4F15260D2F006CBA19 /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4B15260D2F006CBA19 /* BigActionButton.png */; };
+		BCFD4D5015260D2F006CBA19 /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4B15260D2F006CBA19 /* BigActionButton.png */; };
+		BCFD4D5115260D2F006CBA19 /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4B15260D2F006CBA19 /* BigActionButton.png */; };
+		BCFD4D5215260D2F006CBA19 /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4B15260D2F006CBA19 /* BigActionButton.png */; };
+		BCFD4D5315260D2F006CBA19 /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4B15260D2F006CBA19 /* BigActionButton.png */; };
+		BCFD4D5415260D2F006CBA19 /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4B15260D2F006CBA19 /* BigActionButton.png */; };
+		BCFD4D5515260D2F006CBA19 /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4C15260D2F006CBA19 /* BigActionButton@2x.png */; };
+		BCFD4D5615260D2F006CBA19 /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4C15260D2F006CBA19 /* BigActionButton@2x.png */; };
+		BCFD4D5715260D2F006CBA19 /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4C15260D2F006CBA19 /* BigActionButton@2x.png */; };
+		BCFD4D5815260D2F006CBA19 /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4C15260D2F006CBA19 /* BigActionButton@2x.png */; };
+		BCFD4D5915260D2F006CBA19 /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4C15260D2F006CBA19 /* BigActionButton@2x.png */; };
+		BCFD4D5A15260D2F006CBA19 /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4C15260D2F006CBA19 /* BigActionButton@2x.png */; };
+		BCFD4D5B15260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4D15260D2F006CBA19 /* BigActionButtonHighlighted.png */; };
+		BCFD4D5C15260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4D15260D2F006CBA19 /* BigActionButtonHighlighted.png */; };
+		BCFD4D5D15260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4D15260D2F006CBA19 /* BigActionButtonHighlighted.png */; };
+		BCFD4D5E15260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4D15260D2F006CBA19 /* BigActionButtonHighlighted.png */; };
+		BCFD4D5F15260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4D15260D2F006CBA19 /* BigActionButtonHighlighted.png */; };
+		BCFD4D6015260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4D15260D2F006CBA19 /* BigActionButtonHighlighted.png */; };
+		BCFD4D6115260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4E15260D2F006CBA19 /* BigActionButtonHighlighted@2x.png */; };
+		BCFD4D6215260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4E15260D2F006CBA19 /* BigActionButtonHighlighted@2x.png */; };
+		BCFD4D6315260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4E15260D2F006CBA19 /* BigActionButtonHighlighted@2x.png */; };
+		BCFD4D6415260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4E15260D2F006CBA19 /* BigActionButtonHighlighted@2x.png */; };
+		BCFD4D6515260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4E15260D2F006CBA19 /* BigActionButtonHighlighted@2x.png */; };
+		BCFD4D6615260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4E15260D2F006CBA19 /* BigActionButtonHighlighted@2x.png */; };
 		BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BCFECFFE1468439900BA20D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
@@ -2912,6 +2936,10 @@
 		BCFD4D3E1525FE7A006CBA19 /* AccountYasoundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountYasoundViewController.h; path = Settings/AccountYasoundViewController.h; sourceTree = "<group>"; };
 		BCFD4D3F1525FE7A006CBA19 /* AccountYasoundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountYasoundViewController.m; path = Settings/AccountYasoundViewController.m; sourceTree = "<group>"; };
 		BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountYasoundViewController.xib; path = Settings/AccountYasoundViewController.xib; sourceTree = "<group>"; };
+		BCFD4D4B15260D2F006CBA19 /* BigActionButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigActionButton.png; sourceTree = "<group>"; };
+		BCFD4D4C15260D2F006CBA19 /* BigActionButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigActionButton@2x.png"; sourceTree = "<group>"; };
+		BCFD4D4D15260D2F006CBA19 /* BigActionButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigActionButtonHighlighted.png; sourceTree = "<group>"; };
+		BCFD4D4E15260D2F006CBA19 /* BigActionButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigActionButtonHighlighted@2x.png"; sourceTree = "<group>"; };
 		BCFECFE41468439900BA20D9 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
 		BCFECFE51468439900BA20D9 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
 		BCFECFEB1468439900BA20D9 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
@@ -3823,6 +3851,10 @@
 		BCBAB4B914A3920600CF922A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				BCFD4D4B15260D2F006CBA19 /* BigActionButton.png */,
+				BCFD4D4C15260D2F006CBA19 /* BigActionButton@2x.png */,
+				BCFD4D4D15260D2F006CBA19 /* BigActionButtonHighlighted.png */,
+				BCFD4D4E15260D2F006CBA19 /* BigActionButtonHighlighted@2x.png */,
 				BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */,
 				BCBAB4BA14A3920600CF922A /* iTunesConnect.png */,
 			);
@@ -4731,6 +4763,10 @@
 				BCB0EF191523740400290383 /* barItemLargeBkgDisabled.png in Resources */,
 				BCB0EF1E1523740400290383 /* barItemLargeBkgDisabled@2x.png in Resources */,
 				BCB0EF2B1524755F00290383 /* LoginViewController.xib in Resources */,
+				BCFD4D5415260D2F006CBA19 /* BigActionButton.png in Resources */,
+				BCFD4D5A15260D2F006CBA19 /* BigActionButton@2x.png in Resources */,
+				BCFD4D6015260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */,
+				BCFD4D6615260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4926,6 +4962,10 @@
 				BCFD4D2E1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
 				BCFD4D3B1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */,
 				BCFD4D481525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */,
+				BCFD4D5115260D2F006CBA19 /* BigActionButton.png in Resources */,
+				BCFD4D5715260D2F006CBA19 /* BigActionButton@2x.png in Resources */,
+				BCFD4D5D15260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */,
+				BCFD4D6315260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5121,6 +5161,10 @@
 				BCFD4D2D1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
 				BCFD4D3A1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */,
 				BCFD4D471525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */,
+				BCFD4D5015260D2F006CBA19 /* BigActionButton.png in Resources */,
+				BCFD4D5615260D2F006CBA19 /* BigActionButton@2x.png in Resources */,
+				BCFD4D5C15260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */,
+				BCFD4D6215260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5316,6 +5360,10 @@
 				BCFD4D301525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
 				BCFD4D3D1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */,
 				BCFD4D4A1525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */,
+				BCFD4D5315260D2F006CBA19 /* BigActionButton.png in Resources */,
+				BCFD4D5915260D2F006CBA19 /* BigActionButton@2x.png in Resources */,
+				BCFD4D5F15260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */,
+				BCFD4D6515260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5511,6 +5559,10 @@
 				BCFD4D2C1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
 				BCFD4D391525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */,
 				BCFD4D461525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */,
+				BCFD4D4F15260D2F006CBA19 /* BigActionButton.png in Resources */,
+				BCFD4D5515260D2F006CBA19 /* BigActionButton@2x.png in Resources */,
+				BCFD4D5B15260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */,
+				BCFD4D6115260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5706,6 +5758,10 @@
 				BCFD4D2F1525FE45006CBA19 /* AccountFacebookViewController.xib in Resources */,
 				BCFD4D3C1525FE5E006CBA19 /* AccountTwitterViewController.xib in Resources */,
 				BCFD4D491525FE7A006CBA19 /* AccountYasoundViewController.xib in Resources */,
+				BCFD4D5215260D2F006CBA19 /* BigActionButton.png in Resources */,
+				BCFD4D5815260D2F006CBA19 /* BigActionButton@2x.png in Resources */,
+				BCFD4D5E15260D2F006CBA19 /* BigActionButtonHighlighted.png in Resources */,
+				BCFD4D6415260D2F006CBA19 /* BigActionButtonHighlighted@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

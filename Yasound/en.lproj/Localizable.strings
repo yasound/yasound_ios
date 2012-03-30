@@ -290,6 +290,8 @@
 "MenuView_misc_legal" = "Terms of Use";
 "MenuView_misc_logout" = "Log out";
 
+"AccountsView_username_label" = "Username";
+"AccountsView_logout_label" = "Logout";
 
 
 

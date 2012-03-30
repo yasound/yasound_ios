@@ -29,6 +29,7 @@
     
     _titleItem.title = @"Twitter";
     _backItem.title = NSLocalizedString(@"Navigation_back", nil);    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 }
 
 - (void)viewDidUnload
