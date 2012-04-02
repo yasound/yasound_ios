@@ -329,9 +329,9 @@ static YasoundDataProvider* _main = nil;
   [self resetUser];
   
   User* u = [[User alloc] init];
-  u.username = email;
-  u.email = email;
+  u.username = username;
   u.name = username;
+  u.email = email;
   u.password = pwd;
   
   NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", u.username, @"username", u.password, @"password", nil];
