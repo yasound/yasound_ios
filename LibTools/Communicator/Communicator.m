@@ -889,6 +889,7 @@
         AuthPassword* a = (AuthPassword*)auth;
         request.username = a.username;
         request.password = a.password;
+        [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];        
     }
     else if ([auth isKindOfClass:[AuthApiKey class]])
     {
