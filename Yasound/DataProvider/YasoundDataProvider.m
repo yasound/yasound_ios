@@ -279,7 +279,10 @@ static YasoundDataProvider* _main = nil;
   Radio* r = nil;
   if (!radios || [radios count] == 0)
   {
-    NSError* err = [NSError errorWithDomain:[NSString stringWithFormat:@"no radio for user '%@'", _user.username] code:1 userInfo:nil];
+      NSString* str = [NSString stringWithFormat:@"no radio for user '%@'", _user.username];
+      NSLog(@"%@", str);
+      
+    NSError* err = [NSError errorWithDomain:str code:1 userInfo:nil];
     [finalInfo setValue:err forKey:@"error"];
   }
   else

@@ -147,7 +147,7 @@ static NSString* const kGGTwitterLoadingBackgroundImage = @"twitter_load.png";
 		
 		_navBar = [[[UINavigationBar alloc] initWithFrame: CGRectMake(0, 0, 480, 32)] autorelease];
 	} else {
-		self.view = [[[UIView alloc] initWithFrame: CGRectMake(0, 0, 320, 416)] autorelease];	
+		self.view = [[[UIView alloc] initWithFrame: CGRectMake(0, 0, 320, 460)] autorelease];	
 		_backgroundView.frame =  CGRectMake(0, 44, 320, 416);
 		_navBar = [[[UINavigationBar alloc] initWithFrame: CGRectMake(0, 0, 320, 44)] autorelease];
 	}
@@ -218,12 +218,11 @@ static NSString* const kGGTwitterLoadingBackgroundImage = @"twitter_load.png";
 - (void) webViewDidFinishLoad: (UIWebView *) webView {
 	_loading = NO;
 	//[self performInjection];
-	if (_firstLoad) {
+	if (_firstLoad) 
+    {
 		[_webView performSelector: @selector(stringByEvaluatingJavaScriptFromString:) withObject: @"window.scrollBy(0,200)" afterDelay: 0];
 		_firstLoad = NO;
 	} 
-    
-    
     //LBDEBUG
     else
     {
@@ -233,10 +232,9 @@ static NSString* const kGGTwitterLoadingBackgroundImage = @"twitter_load.png";
             [_delegate OAuthTwitterController: self authenticatedWithUsername: _engine.username];
         [self performSelector: @selector(dismissModalViewControllerAnimated:) withObject: (id) kCFBooleanTrue afterDelay: 1.0];
     }
-    
-    //LBDEBUG replaced code
-//    else 
-//    {
+
+//LBDEBUG fixed "Copy the Pin" bug    
+//    else {
 //		NSString					*authPin = [self locateAuthPinInWebView: webView];
 //
 //		if (authPin.length) {
@@ -246,8 +244,7 @@ static NSString* const kGGTwitterLoadingBackgroundImage = @"twitter_load.png";
 //		
 //		NSString					*formCount = [webView stringByEvaluatingJavaScriptFromString: @"document.forms.length"];
 //		
-//		if ([formCount isEqualToString: @"0"]) 
-//        {
+//		if ([formCount isEqualToString: @"0"]) {
 //			[self showPinCopyPrompt];
 //		}
 //	}
@@ -298,7 +295,7 @@ Ugly. I apologize for its inelegance. Bleah.
 		js = @"var d = document.getElementById('oauth-pin'); if (d == null) d = document.getElementById('oauth_pin'); " \
 		"if (d) { var d2 = d.getElementsByTagName('code'); if (d2.length > 0) d2[0].innerHTML; }";
 		pin = [[webView stringByEvaluatingJavaScriptFromString: js] stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        
+		
 		if (pin.length == 7) {
 			return pin;
 		}
@@ -356,8 +353,6 @@ Ugly. I apologize for its inelegance. Bleah.
 - (BOOL) webView: (UIWebView *) webView shouldStartLoadWithRequest: (NSURLRequest *) request navigationType: (UIWebViewNavigationType) navigationType {
 	NSData				*data = [request HTTPBody];
 	char				*raw = data ? (char *) [data bytes] : "";
-    
-    NSLog(@"webView shouldStartLoadWithRequest %@", request);
 	
 	if (raw && strstr(raw, "cancel=")) {
 		[self denied];

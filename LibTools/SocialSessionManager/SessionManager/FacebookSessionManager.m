@@ -133,11 +133,12 @@ static FacebookSessionManager* _facebook = nil;
     
     // Remove saved authorization information if it exists
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"FBAccessTokenKey"]) {
+//    if ([defaults objectForKey:@"FBAccessTokenKey"]) 
+//    {
         [defaults removeObjectForKey:@"FBAccessTokenKey"];
         [defaults removeObjectForKey:@"FBExpirationDateKey"];
         [defaults synchronize];
-    }
+//    }
         
 }
 

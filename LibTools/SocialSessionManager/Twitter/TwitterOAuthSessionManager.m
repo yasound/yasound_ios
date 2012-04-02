@@ -78,7 +78,10 @@
   // clean credentials
   NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
   
-  [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_SCREENNAME];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERID];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:DATA_FIELD_TOKEN];
   
   // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
   //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];

@@ -411,6 +411,7 @@ static YasoundSessionManager* _main = nil;
 
 - (void)sessionDidLogin:(BOOL)authorized
 {
+    NSLog(@"YasoundSessionManager::sessionDidLogin    authorized %d", authorized);
     NSLog(@"self.loginType %@", self.loginType);
     
     if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
