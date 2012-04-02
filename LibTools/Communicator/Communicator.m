@@ -916,6 +916,8 @@
     {
         [request.requestCookies addObject:self.appCookie];
     }
+    // TODO: get locale of device in order to send appropriated headers
+    [request addRequestHeader:@"Accept-Language" value:@"fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3"];
 }
 
 - (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withUrlParams:(NSArray*)params withAuth:(Auth*)auth
