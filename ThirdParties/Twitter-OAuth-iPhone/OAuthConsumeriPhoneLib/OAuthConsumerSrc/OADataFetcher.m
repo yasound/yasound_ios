@@ -45,6 +45,11 @@
                                          returningResponse:&response
                                                      error:&error];
 	
+    //LBDEBUG
+    NSString* dump = [[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding];
+    NSLog(@"%@", dump);
+    
+    
     if (response == nil || responseData == nil || error != nil) {
         OAServiceTicket *ticket= [[[OAServiceTicket alloc] initWithRequest:request
                                                                  response:response

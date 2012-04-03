@@ -7,7 +7,7 @@
 //
 
 #import "FacebookSessionManager.h"
-#include "YasoundDataProvider.h"
+//#include "YasoundDataProvider.h"
 
 
 
@@ -339,6 +339,7 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)inviteFriends
 {
+    /*
   NSDictionary* data = [NSDictionary dictionaryWithObject:[YasoundDataProvider main].user.id forKey:@"from_user"];
   NSString* dataStr = data.JSONRepresentation;
   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -347,6 +348,7 @@ static FacebookSessionManager* _facebook = nil;
                                  nil];
   
   [_facebookConnect dialog:@"apprequests" andParams:params andDelegate:self];
+     */
 }
 
 

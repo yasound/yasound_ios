@@ -223,13 +223,15 @@ static NSString* const kGGTwitterLoadingBackgroundImage = @"twitter_load.png";
 		[_webView performSelector: @selector(stringByEvaluatingJavaScriptFromString:) withObject: @"window.scrollBy(0,200)" afterDelay: 0];
 		_firstLoad = NO;
 	} 
-    //LBDEBUG
+
+    //LBDEBUG TEST
     else
     {
         [_engine requestAccessToken];
         
         if ([_delegate respondsToSelector: @selector(OAuthTwitterController:authenticatedWithUsername:)])
             [_delegate OAuthTwitterController: self authenticatedWithUsername: _engine.username];
+        
         [self performSelector: @selector(dismissModalViewControllerAnimated:) withObject: (id) kCFBooleanTrue afterDelay: 1.0];
     }
 

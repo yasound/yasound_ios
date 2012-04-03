@@ -22,6 +22,7 @@
 @interface TwitterOAuthSessionManager : SessionManager <SA_OAuthTwitterControllerDelegate>
 {
   SA_OAuthTwitterEngine* _engine;
+    SA_OAuthTwitterController* _controller;
   UIViewController* _parent;
   
   NSString* _requestFriends;

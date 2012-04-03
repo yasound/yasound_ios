@@ -9,9 +9,12 @@
 
 #import "TwitterOAuthSessionManager.h"
 #import "Security/SFHFKeychainUtils.h"
+
+//LBDEBUG ICI
 #import "YasoundAppDelegate.h"
 
 
+//LBDEBUG ICI
 #ifdef USE_DEV_SERVER
 #define kOAuthConsumerKey @"iLkxaRcY8QKku0UhaMvPQ"         //REPLACE With Twitter App OAuth Key  
 #define kOAuthConsumerSecret @"rZYlrG4KXIat3nNJ3U8qXniQBSkJu8PjI1v7sCTHg"     //REPLACE With Twitter App OAuth Secret  
@@ -20,6 +23,10 @@
 #define kOAuthConsumerSecret @"TMdhQbWXarXoxkjwSdUbTif5CyapHLfcAdYfTnTOmc"     //REPLACE With Twitter App OAuth Secret  
 #endif
 
+
+//LBDEBUG ICI
+//#define kOAuthConsumerKey @"TdpKTtfEsEfPFXrq9GlQ"         //REPLACE With Twitter App OAuth Key  
+//#define kOAuthConsumerSecret @"JPPj1VXXTYQ6w81CrszFRYxfHkKvPi4BYD6pV9CnGQ"     //REPLACE With Twitter App OAuth Secret  
 
 
 
@@ -54,18 +61,20 @@
   
     if(![_engine isAuthorized])
     {  
-        SA_OAuthTwitterController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_engine delegate:self];  
-        if (!controller)
+        _controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_engine delegate:self];  
+        if (!_controller)
           return;
 
-        controller.delegate = self;
+        _controller.delegate = self;
     
+        //LBDEBUG ICI
+//        [_parent presentModalViewController:_controller animated: YES];  
+
         YasoundAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-        NSArray* viewControllers = appDelegate.navigationController.childViewControllers;
+        NSArray* viewControllers = appDelegate.navigationController.viewControllers;
         UIViewController* viewController = [viewControllers objectAtIndex:(viewControllers.count-1)];
-      
-        //LBDEBUG ICI //parent
-        [viewController presentModalViewController:controller animated: YES];  
+
+        [viewController presentModalViewController:_controller animated: YES];  
     }  
 }
 
@@ -76,21 +85,40 @@
   _isLoging = NO;
   
   // clean credentials
-  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+    NSString* token = [[NSUserDefaults standardUserDefaults] valueForKey:DATA_FIELD_TOKEN];
   
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_SCREENNAME];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERID];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DATA_FIELD_TOKEN];
+    
+    
   
   // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
   //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
   
+    
+
+    
+    
+    
   NSError* error;
   NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
   [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
 
+    [SFHFKeychainUtils deleteItemForUsername:token andServiceName:BundleName error:nil];
+    
+    
+    
+    if (_controller)
+    {
+        [_controller release];
+    }
+    
   // clean twitter engine
+    
+    
   if (_engine)
   {
     [_engine clearAccessToken];

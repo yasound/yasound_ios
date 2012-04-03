@@ -168,10 +168,10 @@
 - (IBAction)onUsernameClicked:(id)sender
 {
   if ([FacebookSessionManager facebook].authorized)
-    [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUsername];
+    [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
 
   else if ([TwitterSessionManager twitter].authorized)
-    [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUsername];
+    [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
 }
 
 
@@ -264,7 +264,7 @@
 
 - (void)requestDidFailed:(SessionRequestType)requestType error:(NSError*)error errorMessage:(NSString*)errorMessage
 {
-  if (requestType == SRequestInfoUsername)
+  if (requestType == SRequestInfoUser)
     [self log:@"could not get user info."];
 
   else if ((requestType == SRequestInfoFriends) || (requestType == SRequestInfoFollowers))
@@ -281,7 +281,7 @@
 
 - (void)requestDidLoad:(SessionRequestType)requestType data:(NSArray*)data;
 {
-  if (requestType == SRequestInfoUsername)
+  if (requestType == SRequestInfoUser)
   {
     if ([data count] == 0)
     {
