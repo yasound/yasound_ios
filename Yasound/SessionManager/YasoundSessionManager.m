@@ -676,7 +676,7 @@ static YasoundSessionManager* _main = nil;
     [self.associatingInfo setObject:pword forKey:@"pword"];
     
     // tell the server
-    [[YasoundDataProvider main] associateAccountYasound:email password:pword target:self action:@selector(associateYasoundRequestDidReturn:info:)];
+    [[YasoundDataProvider main] associateAccountYasound:email password:pword target:self action:@selector(associateYasoundRequestDidReturn:)];
 
 }
 

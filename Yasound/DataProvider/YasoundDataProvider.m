@@ -548,15 +548,22 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)associateAccountYasound:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector
+- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector
 {
-    Auth* a = [[AuthPassword alloc] initWithUsername:email andPassword:pwd];
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil, @"clientData", nil];
-    [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/account/association/" absolute:NO notifyTarget:self byCalling:@selector(receiveYasoundAssociation:withInfo:) withUserData:data withAuth:a];
+    Auth* auth = self.apiKeyAuth;
+
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+    
+    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveYasoundAssociation:info:) withUserData:data withAuth:auth];
+
+    [req addPostValue:email forKey:@"email"];
+    [req addPostValue:pword forKey:@"pword"];
+    
+    [req startAsynchronous];
 }
 
 
-- (void)receiveYasoundAssociation:(NSArray*)users withInfo:(NSDictionary*)info
+- (void)receiveYasoundAssociation:(id)obj info:(NSDictionary*)info
 {
     NSLog(@"YasoundDataProvider receiveYasoundAssociation : info %@", info);
     

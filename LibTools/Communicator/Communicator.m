@@ -985,6 +985,34 @@
 
 
 
+//LBDEBUG
+- (ASIFormDataRequest*)buildPostRequestToURL:(NSString *)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary *)userData withAuth:(Auth *)auth
+{
+    NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
+    NSLog(@"postRequestToURL '%@'", u.absoluteString);
+    if (!u)
+    {
+        NSLog(@"postRequestToURL: invalid url");
+        return;
+    }
+
+    NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+    [userInfo setValue:target forKey:@"target"];
+    [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
+    [userInfo setValue:@"POST" forKey:@"method"];
+    [userInfo setValue:userData forKey:@"userData"];
+
+    ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
+    req.userInfo = userInfo;
+    req.delegate = self;
+    [self applyAuth:auth toRequest:req];
+    [self fillRequest:req];
+//    [req startAsynchronous];
+
+    return req;
+}
+
+
 - (ASIHTTPRequest*)postRequestForURL:(NSString*)path absolute:(BOOL)isAbsolute withStringData:(NSString*)stringData withAuth:(Auth*)auth
 {
     NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
