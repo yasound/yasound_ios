@@ -20,7 +20,7 @@
 }
 
 - (IBAction)onBack:(id)sender;
-- (IBAction)onLogoutClicked:(id)sender;
+- (IBAction)onButtonClicked:(id)sender;
 
 
 @end

@@ -80,6 +80,13 @@ taskStatus stringToStatus(NSString* str);
 - (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector;
 - (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
 
+
+- (void)associateAccountYasound:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector;
+- (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector;
+- (void)associateAccountTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
+
+
+
 - (void)userRadioWithTarget:(id)target action:(SEL)selector;
 - (void)reloadUserRadio;
 

@@ -38,7 +38,7 @@
     _usernameLabel.text = NSLocalizedString(@"AccountsView_username_label", nil);
     
     
-    if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
     {
         _usernameLabel.textColor = [UIColor whiteColor];
         _usernameValue.textColor = [UIColor whiteColor];
@@ -81,18 +81,18 @@
 }
 
 
-- (IBAction)onLogoutClicked:(id)sender
+- (IBAction)onButtonClicked:(id)sender
 {
     // logout
-    if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
     {
-        [[YasoundSessionManager main] logoutForFacebookWithTarget:self action:@selector(socialLoginReturned:info:)];
+        [[YasoundSessionManager main] associateAccount:LOGIN_TYPE_FACEBOOK withTarget:self action:@selector(associateReturned:) associate:NO];
     }
     
     // login
     else
     {
-        [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(socialLoginReturned:info:)];
+        [[YasoundSessionManager main] associateAccount:LOGIN_TYPE_FACEBOOK withTarget:self action:@selector(associateReturned:) associate:YES];
         
         // show a connection alert
         [self.view addSubview:[ConnectionView start]];
@@ -102,75 +102,23 @@
 
 
 
-- (void)socialLoginReturned:(User*)user info:(NSDictionary*)info
+- (void)associateReturned:(NSDictionary*)info
 {
     // close the connection alert
     [ConnectionView stop];
     
-    
-    if (user != nil)
-    {
-        NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
-        if (lastUserID && [lastUserID intValue] == [user.id intValue])
-        {
-            [[SongUploadManager main] importUploads];
-            
-            if ([YasoundReachability main].networkStatus == kReachableViaWiFi)
-                // restart song uploads not completed on last application shutdown
-                [[SongUploadManager main] resumeUploads];
-            else if ([SongUploadManager main].items.count > 0)
-            {
-                UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_restart_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_restart_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [av show];
-                [av release];  
-            }
-        }
-        else
-        {
-            [[SongUploadManager main] clearStoredUpdloads];
-        }
-        
-        [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:@"LastConnectedUserID"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    else
-    {
-        NSString* message = nil;
-        if (info != nil)
-        {
-            NSString* errorValue = [info objectForKey:@"error"];
-            if ([errorValue isEqualToString:@"Login"])
-                message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
-            else if ([errorValue isEqualToString:@"UserInfo"])
-                message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
-            
-        }
-        else
-        {
-            message = NSLocalizedString(@"YasoundSessionManager_userinfo_error", nil);        
-        }
-        
-        // show alert message for connection error
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];  
-        
-        //        // enable the facebook again, to let the user retry
-        //        _facebookButton.enabled = YES;
-        // and logout properly
-        [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
-        
-        
-    }
 }
 
 
-
-
-- (void)logoutDidReturned
+- (void)dissociateReturned:(NSDictionary*)info
 {
-    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
+    // close the connection alert
+    [ConnectionView stop];
+    
 }
+
+
+
 
 
 

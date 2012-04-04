@@ -577,7 +577,7 @@ static YasoundSessionManager* _main = nil;
       NSString* n = username;
       if (!n)
         n = name;
-        [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token email:email target:self action:@selector(loginSocialValidated:)];
+        [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token email:email target:self action:@selector(loginSocialValidated:info:)];
     }
     
     
@@ -673,6 +673,11 @@ static YasoundSessionManager* _main = nil;
         {
             _associatingYasound = YES;
             
+            //ICI
+
+            NSString* email = [_dico objectForKey:@"email"];
+            NSString* pword = [SFHFKeychainUtils getPasswordForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
+            
             [[YasoundDataProvider main] associateAccountYasound:email password:pword target:self action:@selector(associateYasoundRequestDidReturn:info:)];
         }
 
@@ -693,8 +698,12 @@ static YasoundSessionManager* _main = nil;
         }
         else if ([accountIdentifier isEqualToString:LOGIN_TYPE_YASOUND])
         {
-            
             _associatingYasound = YES;
+            
+            //ICI
+            NSString* email = [_dico objectForKey:@"email"];
+            NSString* pword = [SFHFKeychainUtils getPasswordForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
+
             [[YasoundDataProvider main] dissociateAccountYasound:email target:self action:@selector(dissociateYasoundRequestDidReturn:info:)];
         }
 
@@ -745,7 +754,7 @@ static YasoundSessionManager* _main = nil;
     
     if (_associatingFacebook)
     {
-        [self accountManagerAdd:LOGIN_TYPE_FACEBOOK;    
+        [self accountManagerAdd:LOGIN_TYPE_FACEBOOK];
     }
     else if (_associatingTwitter)
     {
@@ -764,7 +773,7 @@ static YasoundSessionManager* _main = nil;
     
     if (_associatingFacebook)
     {
-        [self accountManagerRemove:LOGIN_TYPE_FACEBOOK;    
+        [self accountManagerRemove:LOGIN_TYPE_FACEBOOK];   
      }
      else if (_associatingTwitter)
      {
