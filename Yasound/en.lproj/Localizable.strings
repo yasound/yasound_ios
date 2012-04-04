@@ -293,6 +293,9 @@
 "AccountsView_username_label" = "Username";
 "AccountsView_logout_label" = "Logout";
 "AccountsView_login_label" = "Login";
+"AccountsView_alert_title" = "%@ Account";
+"AccountView_alert_user_incorrect" = "Incorrect login information.";
+"AccountsView_alert_success" = "%@ account registered.";
 
 
 

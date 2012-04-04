@@ -293,7 +293,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "AccountsView_username_label" = "Nom d'utilisateur";
 "AccountsView_logout_label" = "Se déconnecter";
 "AccountsView_login_label" = "Se connecter";
-
+"AccountsView_alert_title" = "Compte %@";
+"AccountView_alert_user_incorrect" = "Informations de connexion incorrectes.";
+"AccountsView_alert_success" = "Compte %@ enregistré.";
 
 "YasoundSessionManager_login_title" = "log in";
 "YasoundSessionManager_login_error" = "Impossible de se connecter au serveur!";

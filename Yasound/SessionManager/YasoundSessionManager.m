@@ -750,13 +750,16 @@ static YasoundSessionManager* _main = nil;
 {
     NSLog(@"associateYasoundRequestDidReturnd :%@", info);
     
-
-//    [self accountManagerAdd:LOGIN_TYPE_YASOUND];
-
+    BOOL succeeded = NO;
     
-    // store the local association
-    //ICI
-    [self accountManagerAdd:LOGIN_TYPE_YASOUND  withInfo:self.associatingInfo];
+    NSNumber* nb = [info objectForKey:@"succeeded"];
+    succeeded = [nb boolValue];
+    
+    if (succeeded)
+    {
+        // store the local association
+        [self accountManagerAdd:LOGIN_TYPE_YASOUND  withInfo:self.associatingInfo];
+    }        
 
     self.associatingYasound = NO;
 

@@ -11,6 +11,8 @@
 #import "AudioStreamManager.h"
 #import "ConnectionView.h"
 #import "RegExp.h"
+#import "ActivityAlertView.h"
+
 
 @interface AccountYasoundViewController ()
 
@@ -39,21 +41,7 @@
     _email.placeholder = NSLocalizedString(@"YasoundLoginView_email", nil);
     _pword.placeholder = NSLocalizedString(@"YasoundLoginView_password", nil);
     
-    
-    if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_YASOUND])
-    {
-        _email.enabled = NO;
-        _pword.enabled = NO;
-        _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
-    }
-    else
-    {
-        _email.enabled = YES;
-        _pword.enabled = YES;
-
-        _logoutLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
-    }
-    
+    [self update];
 }
 
 - (void)viewDidUnload
@@ -72,6 +60,34 @@
 
 
 
+
+- (void)update
+{
+    if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_YASOUND])
+    {
+        _email.enabled = NO;
+        _pword.enabled = NO;
+        
+        _email.textColor = [UIColor darkGrayColor];
+        _email.backgroundColor = [UIColor lightGrayColor];
+        _pword.textColor = [UIColor darkGrayColor];
+        _pword.backgroundColor = [UIColor lightGrayColor];
+        
+        _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
+    }
+    else
+    {
+        _email.enabled = YES;
+        _pword.enabled = YES;
+        
+        _email.textColor = [UIColor blackColor];
+        _email.backgroundColor = [UIColor whiteColor];
+        _pword.textColor = [UIColor blackColor];
+        _pword.backgroundColor = [UIColor whiteColor];
+
+        _logoutLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
+    }
+}
 
 
 
@@ -143,7 +159,7 @@
         [[YasoundSessionManager main] associateAccountYasound:email pword:pword target:self action:@selector(associateReturned:)];
         
         // show a connection alert
-        [self.view addSubview:[ConnectionView start]];
+        [self.view addSubview:[ConnectionView startWithFrame:CGRectMake(86,340, 138, 90)]];
     }
     
 }
@@ -152,8 +168,34 @@
 
 - (void)associateReturned:(NSDictionary*)info
 {
+    NSLog(@"associateReturned :%@", info);
+
     // close the connection alert
     [ConnectionView stop];
+    
+    BOOL succeeded = NO;
+    
+    NSNumber* nb = [info objectForKey:@"succeeded"];
+    succeeded = [nb boolValue];
+
+    if (!succeeded)
+    {
+        NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
+        title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Yasound"];
+        
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:NSLocalizedString(@"AccountView_alert_user_incorrect", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;    
+    }
+    
+    
+    // success
+    NSString* title =  NSLocalizedString(@"AccountsView_alert_success", nil);
+    title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Yasound"];
+    [ActivityAlertView showWithTitle:title closeAfterTimeInterval:2];
+    
+    [self update];
     
 }
 

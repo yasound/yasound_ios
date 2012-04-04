@@ -567,7 +567,7 @@ static YasoundDataProvider* _main = nil;
 {
     NSLog(@"YasoundDataProvider receiveYasoundAssociation : info %@", info);
     
-    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
     
     NSDictionary* userData = [info valueForKey:@"userData"];
     id target = [userData valueForKey:@"clientTarget"];
