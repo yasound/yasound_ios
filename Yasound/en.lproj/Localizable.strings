@@ -292,6 +292,7 @@
 
 "AccountsView_username_label" = "Username";
 "AccountsView_logout_label" = "Logout";
+"AccountsView_login_label" = "Login";
 
 
 

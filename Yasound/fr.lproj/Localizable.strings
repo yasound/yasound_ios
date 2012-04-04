@@ -292,6 +292,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "AccountsView_username_label" = "Nom d'utilisateur";
 "AccountsView_logout_label" = "Se déconnecter";
+"AccountsView_login_label" = "Se connecter";
 
 
 "YasoundSessionManager_login_title" = "log in";

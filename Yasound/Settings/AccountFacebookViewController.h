@@ -16,10 +16,11 @@
     IBOutlet UILabel* _usernameLabel;
     IBOutlet UILabel* _usernameValue;
     IBOutlet UILabel* _logoutLabel;
-
+    
 }
 
 - (IBAction)onBack:(id)sender;
+- (IBAction)onLogoutClicked:(id)sender;
 
 
 @end

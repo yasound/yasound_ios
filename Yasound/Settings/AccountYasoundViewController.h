@@ -17,5 +17,6 @@
 
 
 - (IBAction)onBack:(id)sender;
+- (IBAction)onLogoutClicked:(id)sender;
 
 @end

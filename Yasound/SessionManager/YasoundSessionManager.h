@@ -23,6 +23,10 @@
 
     id _postTarget;
     SEL _postAction;
+    
+    BOOL _associatingFacebook;
+    BOOL _associatingTwitter;
+    BOOL _associatingYasound;
 }
 
 @property (nonatomic) BOOL registered;
@@ -51,6 +55,11 @@
 - (void)registerForYasound:(NSString*)email withPword:(NSString*)pword;
 - (void)registerForFacebook; // login info are handle by SocialSessionManager
 - (void)registerForTwitter; // login info are handle by SocialSessionManager
+
+
+- (void)associateAccount:(NSString*)accountIdentifier withTarget:(id)target action:(SEL)action  associate:(BOOL)associate;
+- (BOOL)isAccountAssociated:(NSString*)accountIdentifier;
+
 
 - (BOOL)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl  link:(NSURL*)link target:(id)target action:(SEL)action;
 - (BOOL)postMessageForTwitter:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action;
