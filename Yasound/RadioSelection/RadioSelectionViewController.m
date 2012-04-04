@@ -15,6 +15,7 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "TimeProfile.h"
+#import "ProfileViewController.h"
 
 @implementation RadioSelectionViewController
 
@@ -203,7 +204,7 @@
     {
         [cell updateWithRadio:radio rowIndex:rowIndex];
     }
-
+        
     //[[TimeProfile main] end:TIMEPROFILE_CELL_BUILD];
     //[[TimeProfile main] logInterval:TIMEPROFILE_CELL_BUILD inMilliseconds:YES];
     //[[TimeProfile main] logAverageInterval:TIMEPROFILE_CELL_BUILD inMilliseconds:YES];
@@ -213,13 +214,18 @@
     return cell;
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RadioSelectionTableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
     
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:cell.radio];
+//    RadioViewController* view = [[RadioViewController alloc] initWithRadio:cell.radio];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];  
+    
+    ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:cell.radio.creator];
     [self.navigationController pushViewController:view animated:YES];
-    [view release];  
+    [view release];
 }
 
 

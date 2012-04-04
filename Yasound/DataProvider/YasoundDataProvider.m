@@ -910,6 +910,15 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[NextSong class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
+- (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector
+{
+    if (!userId)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    [_communicator getObjectWithClass:[User class] andID:userId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
 - (void)moveNextSong:(NextSong*)nextSong toPosition:(int)position target:(id)target action:(SEL)selector
 {
   if (!nextSong || !nextSong.id)
