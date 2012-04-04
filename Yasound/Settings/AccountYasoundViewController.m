@@ -183,7 +183,7 @@
         NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
         title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Yasound"];
         
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:NSLocalizedString(@"AccountView_alert_user_incorrect", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:NSLocalizedString(@"AccountsView_alert_user_incorrect", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
         [av release];  
         return;    
@@ -191,7 +191,7 @@
     
     
     // success
-    NSString* title =  NSLocalizedString(@"AccountsView_alert_success", nil);
+    NSString* title =  NSLocalizedString(@"AccountsView_alert_login_success", nil);
     title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Yasound"];
     [ActivityAlertView showWithTitle:title closeAfterTimeInterval:2];
     
@@ -200,10 +200,37 @@
 }
 
 
+
 - (void)dissociateReturned:(NSDictionary*)info
 {
+    NSLog(@"dissociateReturned :%@", info);
+    
     // close the connection alert
     [ConnectionView stop];
+    
+    BOOL succeeded = NO;
+    
+    NSNumber* nb = [info objectForKey:@"succeeded"];
+    succeeded = [nb boolValue];
+    
+    if (!succeeded)
+    {
+        NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
+        title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Yasound"];
+        
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:NSLocalizedString(@"AccountsView_alert_logout_error", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;    
+    }
+    
+    
+    // success
+    NSString* title =  NSLocalizedString(@"AccountsView_alert_logout_success", nil);
+    title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Yasound"];
+    [ActivityAlertView showWithTitle:title closeAfterTimeInterval:2];
+    
+    [self update];
     
 }
 

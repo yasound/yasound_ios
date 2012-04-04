@@ -296,6 +296,9 @@
 "AccountsView_alert_title" = "%@ Account";
 "AccountView_alert_user_incorrect" = "Incorrect login information.";
 "AccountsView_alert_success" = "%@ account registered.";
+"AccountsView_alert_login_success" = "%@ account registered.";
+"AccountsView_alert_logout_success" = "%@ account unregistered.";
+"AccountsView_alert_logout_error" = "Unabled to unregister the account.";
 
 
 
