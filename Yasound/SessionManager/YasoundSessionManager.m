@@ -332,6 +332,12 @@ static YasoundSessionManager* _main = nil;
         [SFHFKeychainUtils deleteItemForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
     }
     
+    // remove all associated accounts
+    [self accountManagerRemove:LOGIN_TYPE_FACEBOOK];
+    [self accountManagerRemove:LOGIN_TYPE_TWITTER];
+    [self accountManagerRemove:LOGIN_TYPE_YASOUND];
+
+    
 
     [_dico release];
     _dico = nil;
@@ -356,7 +362,9 @@ static YasoundSessionManager* _main = nil;
     
     // store pword with security
     [SFHFKeychainUtils storeUsername:email andPassword:pword  forServiceName:@"YasoundSessionManager" updateExisting:YES error:nil];
-    
+
+    // and add the account as associated account
+    [self accountManagerAdd:LOGIN_TYPE_YASOUND];
 
     [self save];
 }
@@ -372,6 +380,8 @@ static YasoundSessionManager* _main = nil;
     
     NSLog(@"registerForFacebook self.loginType %@", self.loginType);
     
+    // and add the account as associated account
+    [self accountManagerAdd:LOGIN_TYPE_FACEBOOK];
     
     [self save];
 
@@ -384,6 +394,9 @@ static YasoundSessionManager* _main = nil;
     
     NSLog(@"registerForTwitter self.loginType %@", self.loginType);
     
+    // and add the account as associated account
+    [self accountManagerAdd:LOGIN_TYPE_TWITTER];
+
     [self save];
 
 }
@@ -792,27 +805,35 @@ static YasoundSessionManager* _main = nil;
 
 - (NSDictionary*)accountManagerGet:(NSString*)accountIdentifier
 {
-    NSMutableDictionary* accountManager = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"]];
-    if (accountManager == nil)
+    NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"];
+    if (dico == nil)
     return NO;
     
-    return [accountManager objectForKey:accountIdentifier];
+    NSLog(@"dico %@", dico);
+    
+    return [dico objectForKey:accountIdentifier];
 }
 
 
 
 - (BOOL)accountManagerAdd:(NSString*)accountIdentifier
 {
-    NSMutableDictionary* accountManager = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"]];
-    if (accountManager == nil)
+    NSMutableDictionary* accountManager;
+    
+    NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"];
+    if (dico == nil)
     {
         accountManager = [[NSMutableDictionary alloc] init];
-        [[NSUserDefaults standardUserDefaults] setObject:accountManager forKey:@"AccountManager"];
+    }
+    else
+    {
+       accountManager = [NSMutableDictionary dictionaryWithDictionary:dico];
     }
     
     NSMutableDictionary* account = [[NSMutableDictionary alloc] init];
     [accountManager setObject:account forKey:accountIdentifier];
     
+    [[NSUserDefaults standardUserDefaults] setObject:accountManager forKey:@"AccountManager"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     return YES;
@@ -821,12 +842,17 @@ static YasoundSessionManager* _main = nil;
 
 - (BOOL)accountManagerRemove:(NSString*)accountIdentifier
 {
-    NSMutableDictionary* accountManager = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"]];
-    if (accountManager == nil)
+    NSMutableDictionary* accountManager;
+    
+    NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"];
+    if (dico == nil)
         return NO;
+
+    accountManager = [NSMutableDictionary dictionaryWithDictionary:dico];
     
     [accountManager removeObjectForKey:accountIdentifier];
     
+    [[NSUserDefaults standardUserDefaults] setObject:accountManager forKey:@"AccountManager"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     return YES;
