@@ -132,6 +132,7 @@
 "SettingsView_section_config" = "Configuration";
 "SettingsView_section_image" = "Picture";
 "SettingsView_section_theme" = "Graphical Theme";
+"SettingsView_section_accounts" = "Comptes";
 
 "SettingsView_row_image_label" = "Picture";
 "SettingsView_row_title_label" = "Name";
@@ -271,7 +272,6 @@
 "MenuView_section_myradio" = "My Radio";
 "MenuView_section_radios" = "Radios";
 "MenuView_section_me" = "Me";
-"MenuView_section_accounts" = "Accounts";
 "MenuView_section_misc" = "Miscellaneous";
 
 
