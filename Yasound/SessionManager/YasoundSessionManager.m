@@ -15,6 +15,11 @@
 @implementation YasoundSessionManager
 
 @synthesize registered;
+@synthesize associatingFacebook;
+@synthesize associatingTwitter;
+@synthesize associatingYasound;
+@synthesize associatingInfo;
+
 
 static YasoundSessionManager* _main = nil;
 
@@ -43,10 +48,10 @@ static YasoundSessionManager* _main = nil;
         
         NSLog(@"import dico %@", _dico);
         
-        
-        _associatingFacebook = NO;
-        _associatingTwitter = NO;
-        _associatingYasound = NO;
+        self.associatingInfo = [[NSMutableDictionary alloc] init];
+        self.associatingFacebook = NO;
+        self.associatingTwitter = NO;
+        self.associatingYasound = NO;
         
         
         [_dico retain];
@@ -364,7 +369,7 @@ static YasoundSessionManager* _main = nil;
     [SFHFKeychainUtils storeUsername:email andPassword:pword  forServiceName:@"YasoundSessionManager" updateExisting:YES error:nil];
 
     // and add the account as associated account
-    [self accountManagerAdd:LOGIN_TYPE_YASOUND];
+    [self accountManagerAdd:LOGIN_TYPE_YASOUND withInfo:[NSDictionary dictionaryWithObjectsAndKeys:email,@"email",pword,@"pword",nil]];
 
     [self save];
 }
@@ -381,7 +386,7 @@ static YasoundSessionManager* _main = nil;
     NSLog(@"registerForFacebook self.loginType %@", self.loginType);
     
     // and add the account as associated account
-    [self accountManagerAdd:LOGIN_TYPE_FACEBOOK];
+    [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:[NSDictionary dictionaryWithObjectsAndKeys:/*ICI*/nil]];
     
     [self save];
 
@@ -395,7 +400,7 @@ static YasoundSessionManager* _main = nil;
     NSLog(@"registerForTwitter self.loginType %@", self.loginType);
     
     // and add the account as associated account
-    [self accountManagerAdd:LOGIN_TYPE_TWITTER];
+    [self accountManagerAdd:LOGIN_TYPE_TWITTER  withInfo:[NSDictionary dictionaryWithObjectsAndKeys:/*ICI*/nil]];
 
     [self save];
 
@@ -562,7 +567,7 @@ static YasoundSessionManager* _main = nil;
     //
     // associating process
     //
-    if (_associatingFacebook)
+    if (self.associatingFacebook)
     {
         NSLog(@"facebook social associating request");
 
@@ -571,7 +576,7 @@ static YasoundSessionManager* _main = nil;
     }
     
     
-    else if (_associatingTwitter)
+    else if (self.associatingTwitter)
     {
         NSLog(@"twitter social associating request");
 
@@ -658,6 +663,40 @@ static YasoundSessionManager* _main = nil;
     return (dico != nil);
 }
 
+
+
+- (void)associateAccountYasound:(NSString*)email pword:(NSString*)pword target:(id)target action:(SEL)action
+{
+    _target = target;
+    _action = action;
+ 
+    self.associatingYasound = YES;
+    
+    [self.associatingInfo setObject:email forKey:@"email"];
+    [self.associatingInfo setObject:pword forKey:@"pword"];
+    
+    // tell the server
+    [[YasoundDataProvider main] associateAccountYasound:email password:pword target:self action:@selector(associateYasoundRequestDidReturn:info:)];
+
+}
+
+
+
+- (void)dissociateAccount:(NSString*)accountIdentifier target:(id)target action:(SEL)action
+{
+    _target = target;
+    _action = action;
+
+    self.associatingYasound = YES;
+
+    //ICI
+//    
+//    [[YasoundDataProvider main] dissociateAccountYasound:email target:self action:@selector(dissociateYasoundRequestDidReturn:info:)];
+
+}
+
+
+
 - (void)associateAccount:(NSString*)accountIdentifier withTarget:(id)target action:(SEL)action  associate:(BOOL)associate
 {
     _target = target;
@@ -668,7 +707,7 @@ static YasoundSessionManager* _main = nil;
     {
         if ([accountIdentifier isEqualToString:LOGIN_TYPE_FACEBOOK])
         {
-            _associatingFacebook = YES;
+            self.associatingFacebook = YES;
 
             [[FacebookSessionManager facebook] setTarget:self];
             [[FacebookSessionManager facebook] login];    
@@ -676,22 +715,11 @@ static YasoundSessionManager* _main = nil;
         }
         else if ([accountIdentifier isEqualToString:LOGIN_TYPE_TWITTER])
         {
-            _associatingTwitter = YES;
+            self.associatingTwitter = YES;
 
             [[TwitterSessionManager twitter] setTarget:self];
             [[TwitterSessionManager twitter] login];
 
-        }
-        else if ([accountIdentifier isEqualToString:LOGIN_TYPE_YASOUND])
-        {
-            _associatingYasound = YES;
-            
-            //ICI
-
-            NSString* email = [_dico objectForKey:@"email"];
-            NSString* pword = [SFHFKeychainUtils getPasswordForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
-            
-            [[YasoundDataProvider main] associateAccountYasound:email password:pword target:self action:@selector(associateYasoundRequestDidReturn:info:)];
         }
 
     }
@@ -701,23 +729,13 @@ static YasoundSessionManager* _main = nil;
     {
         if ([accountIdentifier isEqualToString:LOGIN_TYPE_FACEBOOK])
         {
-            _associatingFacebook = YES;
+            self.associatingFacebook = YES;
             
         }
         else if ([accountIdentifier isEqualToString:LOGIN_TYPE_TWITTER])
         {
-            _associatingTwitter = YES;
+            self.associatingTwitter = YES;
             
-        }
-        else if ([accountIdentifier isEqualToString:LOGIN_TYPE_YASOUND])
-        {
-            _associatingYasound = YES;
-            
-            //ICI
-            NSString* email = [_dico objectForKey:@"email"];
-            NSString* pword = [SFHFKeychainUtils getPasswordForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
-
-            [[YasoundDataProvider main] dissociateAccountYasound:email target:self action:@selector(dissociateYasoundRequestDidReturn:info:)];
         }
 
     }
@@ -733,9 +751,14 @@ static YasoundSessionManager* _main = nil;
     NSLog(@"associateYasoundRequestDidReturnd :%@", info);
     
 
-    [self accountManagerAdd:LOGIN_TYPE_YASOUND];
+//    [self accountManagerAdd:LOGIN_TYPE_YASOUND];
 
-    _associatingYasound = NO;
+    
+    // store the local association
+    //ICI
+    [self accountManagerAdd:LOGIN_TYPE_YASOUND  withInfo:self.associatingInfo];
+
+    self.associatingYasound = NO;
 
     // callback
     [_target performSelector:_action withObject:info];    
@@ -750,7 +773,7 @@ static YasoundSessionManager* _main = nil;
     
     [self accountManagerRemove:LOGIN_TYPE_YASOUND];
     
-    _associatingYasound = NO;
+    self.associatingYasound = NO;
     
     // callback
     [_target performSelector:_action withObject:info];    
@@ -765,11 +788,11 @@ static YasoundSessionManager* _main = nil;
 {
     NSLog(@"associatingSocialValidated returned : %@", info);
     
-    if (_associatingFacebook)
+    if (self.associatingFacebook)
     {
         [self accountManagerAdd:LOGIN_TYPE_FACEBOOK];
     }
-    else if (_associatingTwitter)
+    else if (self.associatingTwitter)
     {
         [self accountManagerAdd:LOGIN_TYPE_TWITTER];    
     }
@@ -784,11 +807,11 @@ static YasoundSessionManager* _main = nil;
 {
     NSLog(@"dissociatingSocialValidated returned : %@", info);
     
-    if (_associatingFacebook)
+    if (self.associatingFacebook)
     {
         [self accountManagerRemove:LOGIN_TYPE_FACEBOOK];   
      }
-     else if (_associatingTwitter)
+     else if (self.associatingTwitter)
      {
          [self accountManagerRemove:LOGIN_TYPE_TWITTER];    
      }
@@ -816,7 +839,7 @@ static YasoundSessionManager* _main = nil;
 
 
 
-- (BOOL)accountManagerAdd:(NSString*)accountIdentifier
+- (BOOL)accountManagerAdd:(NSString*)accountIdentifier withInfo:(NSDictionary*)accountInfo
 {
     NSMutableDictionary* accountManager;
     
@@ -830,8 +853,7 @@ static YasoundSessionManager* _main = nil;
        accountManager = [NSMutableDictionary dictionaryWithDictionary:dico];
     }
     
-    NSMutableDictionary* account = [[NSMutableDictionary alloc] init];
-    [accountManager setObject:account forKey:accountIdentifier];
+    [accountManager setObject:accountInfo forKey:accountIdentifier];
     
     [[NSUserDefaults standardUserDefaults] setObject:accountManager forKey:@"AccountManager"];
     [[NSUserDefaults standardUserDefaults] synchronize];

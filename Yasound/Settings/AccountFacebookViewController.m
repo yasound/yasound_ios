@@ -86,7 +86,7 @@
     // logout
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
     {
-        [[YasoundSessionManager main] associateAccount:LOGIN_TYPE_FACEBOOK withTarget:self action:@selector(associateReturned:) associate:NO];
+        [[YasoundSessionManager main] associateAccount:LOGIN_TYPE_FACEBOOK withTarget:self action:@selector(dissociateReturned:) associate:NO];
     }
     
     // login

@@ -85,7 +85,7 @@
     // logout
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
     {
-        [[YasoundSessionManager main] associateAccount:LOGIN_TYPE_TWITTER withTarget:self action:@selector(associateReturned:) associate:NO];
+        [[YasoundSessionManager main] associateAccount:LOGIN_TYPE_TWITTER withTarget:self action:@selector(dissociateReturned:) associate:NO];
     }
     
     // login

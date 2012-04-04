@@ -23,14 +23,17 @@
 
     id _postTarget;
     SEL _postAction;
-    
-    BOOL _associatingFacebook;
-    BOOL _associatingTwitter;
-    BOOL _associatingYasound;
 }
 
 @property (nonatomic) BOOL registered;
 @property (nonatomic, retain) NSString* loginType;
+
+@property (nonatomic) BOOL associatingFacebook;
+@property (nonatomic) BOOL associatingTwitter;
+@property (nonatomic) BOOL associatingYasound;
+
+@property (nonatomic, retain) NSMutableDictionary* associatingInfo;
+
 
 + (YasoundSessionManager*)main;
 
@@ -57,8 +60,12 @@
 - (void)registerForTwitter; // login info are handle by SocialSessionManager
 
 
+- (void)associateAccountYasound:(NSString*)email pword:(NSString*)pword target:(id)target action:(SEL)action;
 - (void)associateAccount:(NSString*)accountIdentifier withTarget:(id)target action:(SEL)action  associate:(BOOL)associate;
+- (void)dissociateAccount:(NSString*)accountIdentifier target:(id)target action:(SEL)action;
 - (BOOL)isAccountAssociated:(NSString*)accountIdentifier;
+
+
 
 
 - (BOOL)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl  link:(NSURL*)link target:(id)target action:(SEL)action;

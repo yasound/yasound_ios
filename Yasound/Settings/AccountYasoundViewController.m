@@ -10,6 +10,7 @@
 #import "YasoundSessionManager.h"
 #import "AudioStreamManager.h"
 #import "ConnectionView.h"
+#import "RegExp.h"
 
 @interface AccountYasoundViewController ()
 
@@ -35,24 +36,22 @@
     _backItem.title = NSLocalizedString(@"Navigation_back", nil);    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
-    _usernameLabel.text = NSLocalizedString(@"AccountsView_username_label", nil);
+    _email.placeholder = NSLocalizedString(@"YasoundLoginView_email", nil);
+    _pword.placeholder = NSLocalizedString(@"YasoundLoginView_password", nil);
     
     
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_YASOUND])
     {
-        _usernameLabel.textColor = [UIColor whiteColor];
-        _usernameValue.textColor = [UIColor whiteColor];
+        _email.enabled = NO;
+        _pword.enabled = NO;
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
-        
-        _usernameValue.text = [YasoundDataProvider main].user.name;
     }
     else
     {
-        _usernameLabel.textColor = [UIColor grayColor];
-        _usernameValue.textColor = [UIColor grayColor];
+        _email.enabled = YES;
+        _pword.enabled = YES;
+
         _logoutLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
-        
-        _usernameValue.text = @"-";
     }
     
 }
@@ -73,6 +72,42 @@
 
 
 
+
+
+
+
+
+#pragma mark - TextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == _email)
+    {
+        [_pword becomeFirstResponder];
+    }
+    else
+    {
+        [textField resignFirstResponder];    
+        
+        // activate "submit" button
+        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
+        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+        //        if ((email.length != 0) && (pword.length != 0))
+        //            _loginButton.enabled = YES;
+        //        else
+        //            _loginButton.enabled = NO;
+        
+    }
+    return YES;
+}
+
+
+
+
+
+
+
 #pragma mark - IBActions
 
 - (IBAction)onBack:(id)sender
@@ -86,13 +121,26 @@
     // logout
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_YASOUND])
     {
-        [[YasoundSessionManager main] associateAccount:LOGIN_TYPE_YASOUND withTarget:self action:@selector(associateReturned:) associate:NO];
+        [[YasoundSessionManager main] dissociateAccount:LOGIN_TYPE_YASOUND target:self action:@selector(dissociateReturned:)];
     }
     
     // login
     else
     {
-        [[YasoundSessionManager main] associateAccount:LOGIN_TYPE_YASOUND withTarget:self action:@selector(associateReturned:) associate:YES];
+        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
+        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+        
+        if (![RegExp emailIsValid:email])
+        {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_email_not_valid", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];  
+            return;    
+        }
+
+        
+        [[YasoundSessionManager main] associateAccountYasound:email pword:pword target:self action:@selector(associateReturned:)];
         
         // show a connection alert
         [self.view addSubview:[ConnectionView start]];

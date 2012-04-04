@@ -551,13 +551,15 @@ static YasoundDataProvider* _main = nil;
 - (void)associateAccountYasound:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector
 {
     Auth* a = [[AuthPassword alloc] initWithUsername:email andPassword:pwd];
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", @"clientData", nil];
-    [_communicator getObjectsWithClass:[User class] withURL:@"/api/v1/account/association/" absolute:NO notifyTarget:self byCalling:@selector(receiveYasoundAssociation:withInfo:) withUserData:data withAuth:a];
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil, @"clientData", nil];
+    [_communicator getObjectsWithClass:[User class] withURL:@"api/v1/account/association/" absolute:NO notifyTarget:self byCalling:@selector(receiveYasoundAssociation:withInfo:) withUserData:data withAuth:a];
 }
 
 
 - (void)receiveYasoundAssociation:(NSArray*)users withInfo:(NSDictionary*)info
 {
+    NSLog(@"YasoundDataProvider receiveYasoundAssociation : info %@", info);
+    
     NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] init];
     
     NSDictionary* userData = [info valueForKey:@"userData"];

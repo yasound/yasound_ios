@@ -13,8 +13,9 @@
     IBOutlet UIBarButtonItem* _backItem;
     IBOutlet UIBarButtonItem* _titleItem;
     
-    IBOutlet UILabel* _usernameLabel;
-    IBOutlet UILabel* _usernameValue;
+    IBOutlet UITextField* _email;
+    IBOutlet UITextField* _pword;
+
     IBOutlet UILabel* _logoutLabel;
     
 }
