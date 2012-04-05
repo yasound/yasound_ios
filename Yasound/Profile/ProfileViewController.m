@@ -13,7 +13,7 @@
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
 #import "RadioSelectionTableViewCell.h"
-
+#import "RadioViewController.h"
 
 @implementation ProfileViewController
 
@@ -288,7 +288,31 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Displays selected radio
+    Radio* radio = nil;
+    if (indexPath.section == SECTION_COVER)
+    {
+        return;
+    }
+    else if (indexPath.section == SECTION_CURRENT_RADIO)
+    {
+        radio = self.user.current_radio;
+    }
+    else if (indexPath.section == SECTION_OWN_RADIO)
+    {
+        radio = self.user.own_radio;
+    }
+    else if (indexPath.section == SECTION_FAVORITE_RADIOS)
+    {
+        radio = [_favoriteRadios objectAtIndex:indexPath.row];
+    }
     
+    if (radio) 
+    {
+        RadioViewController* view = [[RadioViewController alloc] initWithRadio:self.user.current_radio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];  
+    }
 }
 
 
