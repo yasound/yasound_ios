@@ -369,7 +369,7 @@ static YasoundDataProvider* _main = nil;
   u.email = email;
   u.password = pwd;
   
-  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", u.username, @"username", u.password, @"password", nil];
+  NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", u.email, @"email", u.password, @"password", nil];
   
   [_communicator postNewObject:u withURL:@"api/v1/signup" absolute:NO notifyTarget:self byCalling:@selector(didReceiveSignup:withInfo:) withUserData:userData withAuth:nil returnNewObject:NO withAuthForGET:NO];
 }
@@ -382,7 +382,7 @@ static YasoundDataProvider* _main = nil;
   
   id target = [userData valueForKey:@"clientTarget"];
   SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-  NSString* username = [userData valueForKey:@"username"];
+  NSString* email = [userData valueForKey:@"email"];
   NSString* pwd = [userData valueForKey:@"password"];
   
   NSError* error = [info valueForKey:@"error"];
@@ -399,7 +399,7 @@ static YasoundDataProvider* _main = nil;
   }
   NSDictionary* loginUserData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
   
-  [self login:username password:pwd target:self action:@selector(didReceiveNewUserLogin:withInfo:) userData:loginUserData];
+  [self login:email password:pwd target:self action:@selector(didReceiveNewUserLogin:withInfo:) userData:loginUserData];
 }
 
 - (void)didReceiveNewUserLogin:(User*)u withInfo:(NSDictionary*)info
