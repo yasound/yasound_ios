@@ -31,6 +31,8 @@
 #import "UserViewCell.h"
 #import "LikeViewCell.h"
 
+#import "ProfileViewController.h"
+
 //#define LOCAL 1 // use localhost as the server
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
@@ -1277,9 +1279,27 @@ static Song* _gNowPlayingSong = nil;
 
 - (NSIndexPath *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  if (tableView == _usersContainer)
-    return [self usersContainerDidSelectRowAtIndexPath:indexPath];
-  
+    if (tableView == _usersContainer)
+    {
+        return [self usersContainerDidSelectRowAtIndexPath:indexPath];
+    } 
+    else if (tableView == _tableView)
+    {
+        WallEvent* event = [_wallEvents objectAtIndex:indexPath.row];
+        if (event != nil && event.user_id != nil) 
+        {
+            // Build fake user object with given id
+            User *user = [[User alloc] init];
+            user.id = event.user_id;
+            
+            // Launch view
+            ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:user];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+            [user release];
+        }
+    }
+
     return nil;
 }
 
