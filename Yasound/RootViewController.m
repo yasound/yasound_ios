@@ -19,6 +19,7 @@
 #import "ConnectionView.h"
 #import "YasoundAppDelegate.h"
 #import "SongUploadManager.h"
+#import "NotificationCenterViewController.h"
 
 //#define FORCE_ROOTVIEW_RADIOS
 
@@ -172,18 +173,28 @@
 
     if (user != nil)
     {
+      if (APPDELEGATE.mustGoToNotificationCenter)
+      {
+        [self goToNotificationCenter];
+        [APPDELEGATE setMustGoToNotificationCenter:NO];
+        
+      }
+      else
+      {
         NSNumber* radioId = [[NSUserDefaults standardUserDefaults] objectForKey:@"NowPlaying"];
         
         if (radioId == nil)
         {
-            Radio* myRadio = user.own_radio;
-            if (myRadio && myRadio.ready)
-                [self launchRadio:myRadio];
-            else
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_MENU object:nil];
+          Radio* myRadio = user.own_radio;
+          if (myRadio && myRadio.ready)
+            [self launchRadio:myRadio];
+          else
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_MENU object:nil];
         }
         else
-            [self launchRadio:radioId];
+          [self launchRadio:radioId];
+      }
+        
       
       NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
       if (lastUserID && [lastUserID intValue] == [user.id intValue])
@@ -236,6 +247,24 @@
 {
     // once logout done, go back to the home screen
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
+}
+
+- (void)goToNotificationCenter
+{
+  if (_menuView == nil)
+  {
+    _menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    [_menuView retain];
+    [self.navigationController pushViewController:_menuView animated:NO];
+  }
+  else
+  {
+    [self.navigationController popToViewController:_menuView animated:NO];
+  }
+  
+  NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
+  [self.navigationController pushViewController:view animated:YES];
+  [view release];
 }
 
 

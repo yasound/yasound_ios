@@ -379,6 +379,11 @@
     [self.delegate sessionLoginFailed];
 }
 
+- (void)sessionLoginCanceled
+{
+  [self.delegate sessionLoginCanceled];
+}
+
 
 - (void)createAccount
 {

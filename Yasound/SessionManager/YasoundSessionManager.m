@@ -303,6 +303,18 @@ static YasoundSessionManager* _main = nil;
 //    [av release];  
 }
 
+- (void)loginCanceled
+{
+  User* nilUser = nil;
+  _error = NO;
+  [_target performSelector:_action withObject:nilUser withObject:[NSDictionary dictionaryWithObject:@"Cancel" forKey:@"error"]];
+  //    [ActivityAlertView close];
+  
+  //    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  //    [av show];
+  //    [av release];  
+}
+
 - (void)userInfoError
 {
     User* nilUser = nil;
@@ -537,6 +549,12 @@ static YasoundSessionManager* _main = nil;
 {
     self.loginType = nil;
     [self loginError];
+}
+
+- (void)sessionLoginCanceled
+{
+  self.loginType = nil;
+  [self loginCanceled];
 }
 
 
