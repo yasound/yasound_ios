@@ -930,6 +930,17 @@ static YasoundDataProvider* _main = nil;
   
   [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/favorite_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
+
+- (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector
+{
+    Auth* auth = self.apiKeyAuth;
+    NSMutableArray* params = [NSMutableArray array];
+    
+    NSString *url = [NSString stringWithFormat:@"/api/v1/user/%@/favorite_radio", u.id];
+    
+    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
 //
 
 

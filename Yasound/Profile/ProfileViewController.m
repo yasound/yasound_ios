@@ -347,8 +347,15 @@
 {
     self.user = aUser;
     [_tableView reloadData];
+    [[YasoundDataProvider main] favoriteRadiosForUser:self.user withTarget:self action:@selector(favoritesRadioReceived:withInfo:)];
+    
 }
 
+
+- (void)favoritesRadioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
+{
+    //[_tableView reloadData];
+}
 
 
 
