@@ -549,7 +549,15 @@ static YasoundSessionManager* _main = nil;
     NSString* uid = [dico valueForKey:DATA_FIELD_ID];
     NSString* token = [dico valueForKey:DATA_FIELD_TOKEN];
     NSString* email = [dico valueForKey:DATA_FIELD_EMAIL];
+
+    NSString* username_n = username;
+    if (username_n == nil)
+        username_n = @"";
     
+    NSString* email_n = email;
+    if (email_n == nil)
+        email_n = @"";
+
     NSLog(@"ready to request social login to the server with : ");
     NSLog(@"username '%@'", username);
     NSLog(@"name '%@'", name);
@@ -570,10 +578,10 @@ static YasoundSessionManager* _main = nil;
         NSLog(@"facebook social associating request");
         
         [self.associatingInfo removeAllObjects];
-        [self.associatingInfo setObject:username forKey:@"username"];
+        [self.associatingInfo setObject:username_n forKey:@"username"];
         [self.associatingInfo setObject:uid forKey:@"uid"];
         [self.associatingInfo setObject:token forKey:@"token"];
-        [self.associatingInfo setObject:email forKey:@"email"];
+        [self.associatingInfo setObject:email_n forKey:@"email"];
 
         // request to yasound server
         [[YasoundDataProvider main] associateAccountFacebook:username uid:uid token:token email:email target:self action:@selector(associatingSocialValidated:)];
@@ -587,11 +595,11 @@ static YasoundSessionManager* _main = nil;
         NSString* tokenSecret = [dico valueForKey:DATA_FIELD_TOKEN_SECRET];
 
         [self.associatingInfo removeAllObjects];
-        [self.associatingInfo setObject:username forKey:@"username"];
+        [self.associatingInfo setObject:username_n forKey:@"username"];
         [self.associatingInfo setObject:uid forKey:@"uid"];
         [self.associatingInfo setObject:token forKey:@"token"];
         [self.associatingInfo setObject:tokenSecret forKey:@"tokenSecret"];
-        [self.associatingInfo setObject:email forKey:@"email"];
+        [self.associatingInfo setObject:email_n forKey:@"email"];
         
         // request to yasound server
         [[YasoundDataProvider main] associateAccountTwitter:username uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(associatingSocialValidated:)];
@@ -608,10 +616,10 @@ static YasoundSessionManager* _main = nil;
 //        n = name;
         
         [self.associatingInfo removeAllObjects];
-        [self.associatingInfo setObject:username forKey:@"username"];
+        [self.associatingInfo setObject:username_n forKey:@"username"];
         [self.associatingInfo setObject:uid forKey:@"uid"];
         [self.associatingInfo setObject:token forKey:@"token"];
-        [self.associatingInfo setObject:email forKey:@"email"];
+        [self.associatingInfo setObject:email_n forKey:@"email"];
         
         // and add the account as associated account
         [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:self.associatingInfo];
@@ -643,11 +651,11 @@ static YasoundSessionManager* _main = nil;
         }
         
         [self.associatingInfo removeAllObjects];
-        [self.associatingInfo setObject:username forKey:@"username"];
+        [self.associatingInfo setObject:username_n forKey:@"username"];
         [self.associatingInfo setObject:uid forKey:@"uid"];
         [self.associatingInfo setObject:token forKey:@"token"];
         [self.associatingInfo setObject:tokenSecret forKey:@"tokenSecret"];
-        [self.associatingInfo setObject:email forKey:@"email"];
+        [self.associatingInfo setObject:email_n forKey:@"email"];
         
         // and add the account as associated account
         [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:self.associatingInfo];
