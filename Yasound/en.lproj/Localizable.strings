@@ -257,6 +257,7 @@
 "MenuView_radios_selection" = "Selection";
 "MenuView_radios_top" = "Top";
 "MenuView_radios_search" = "Search";
+"MenuView_me_notifs" = "My notifications";
 "MenuView_me_stats" = "My stats";
 "MenuView_me_playlists" = "Programming";
 "MenuView_me_programming" = "Programming";
@@ -395,3 +396,18 @@
 "RadioSearch_CategoryRadioAttributes_SectionTitle" = "radio infos";
 "RadioSearch_CategoryRadioCreator_SectionTitle" = "creator";
 "RadioSearch_CategoryRadioSong_SectionTitle" = "title, artist, album";
+
+
+"APNs_UIR" = "%@ is listening to your radio";
+"APNs_FIR" = "%@ is listening to your radio";
+"APNs_FOn" = "%@ is now online";
+"APNs_Msg" = "%@ posted a message on your wall";
+"APNs_Sng" = "%@ likes your song '%@'";
+"APNs_RIF" = "%@ added your radio to his favorites";
+"APNs_RSh" = "%@ shared a message about your radio";
+"APNs_FCR" = "%@ created a radio";
+
+"APNs_YAS" = "you have a message from Yasound";
+
+"NotificationCenterView_title" =  "My Notifications";
+"NotificationCenterView_edit" = "Edit";

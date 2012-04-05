@@ -24,6 +24,7 @@
 #import "Theme.h"
 #import "YasoundAppDelegate.h"
 #import "ProgrammingViewController.h"
+#import "NotificationCenterViewController.h"
 
 
 @implementation MenuViewController
@@ -41,10 +42,11 @@
 #define ROW_RADIOS_SEARCH 4
 
 #define SECTION_ME 2
-#define SECTION_ME_NB_ROWS 3
-#define ROW_ME_STATS 0
-#define ROW_ME_PROGRAMMING 1
-#define ROW_ME_CONFIG 2
+#define SECTION_ME_NB_ROWS 4
+#define ROW_ME_NOTIFS 0
+#define ROW_ME_STATS 1
+#define ROW_ME_PROGRAMMING 2
+#define ROW_ME_CONFIG 3
 
 #define SECTION_MISC 3
 #define SECTION_MISC_NB_ROWS 2
@@ -351,7 +353,13 @@
     
     else if (indexPath.section == SECTION_ME)
     {
-        if (indexPath.row == ROW_ME_STATS)
+      if (indexPath.row == ROW_ME_NOTIFS)
+      {
+        cell.textLabel.text = NSLocalizedString(@"MenuView_me_notifs", nil);            
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMeNotifs" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        [cell.imageView setImage:[sheet image]];
+      }
+        else if (indexPath.row == ROW_ME_STATS)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_me_stats", nil);            
             BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMeStats" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -439,7 +447,13 @@
     
     else if (indexPath.section == SECTION_ME)
     {
-        if (indexPath.row == ROW_ME_STATS)
+      if (indexPath.row == ROW_ME_NOTIFS)
+      {
+        NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+      }
+        else if (indexPath.row == ROW_ME_STATS)
         {
 //            StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil];
 //            

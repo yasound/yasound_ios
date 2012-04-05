@@ -17,6 +17,9 @@
 #import "CreateMyRadio.h"
 #import "PlaylistsViewController.h"
 #import "StatsViewController.h"
+#import "APNsNotifInfo.h"
+#import "YasoundNotifCenter.h"
+
 
 
 @implementation YasoundAppDelegate
@@ -25,6 +28,7 @@
 @synthesize window;
 @synthesize navigationController;
 @synthesize rootViewController;
+@synthesize APNsTokenString = _APNsTokenString;
 
 
 #define GOOGLE_ANALYTICS_LOG NO
@@ -73,7 +77,12 @@ void SignalHandler(int sig) {
     [TestFlight takeOff:@"997d8f9a93194760139ff86ee63b16a7_MzU2NTkyMDExLTEwLTIwIDAxOjU0OjMyLjQzNTk1Nw"];
     
 #endif
-    
+  
+  _APNsTokenString = nil;
+#ifdef USE_YASOUND_LOCAL_SERVER
+  _APNsTokenString = @"09a95beae4592774dd36843b9573dd8066a7b59cb135fd3e7e5326606a82c417";
+#endif
+  
   [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 
     // google analytics launcher
@@ -100,8 +109,15 @@ void SignalHandler(int sig) {
     [self.navigationController pushViewController:rootViewController animated:NO];
     
   // Push Notifications:
-//  NSLog(@"Ask for push notification\n");
-//  [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
+  NSLog(@"Ask for push notification\n");
+  [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
+  
+  id remoteNotifInfo = [launchOptions valueForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+  if (remoteNotifInfo)
+  {
+    YasoundAppDelegate* appDelegate = application.delegate;
+    [appDelegate handlePushNotification:remoteNotifInfo];
+  }
   
   return YES;
 }
@@ -109,12 +125,16 @@ void SignalHandler(int sig) {
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
   NSLog(@"applicationDidFinishLaunchingWithOptions dev token test");
-  NSString *deviceTokenStr = [[[[deviceToken description]
+  NSString* deviceTokenStr = [[[[deviceToken description]
                                 stringByReplacingOccurrencesOfString: @"<" withString: @""] 
                                stringByReplacingOccurrencesOfString: @">" withString: @""] 
                               stringByReplacingOccurrencesOfString: @" " withString: @""];
   
   NSLog(@"Device Token: %@", deviceTokenStr);
+  
+  _APNsTokenString = deviceTokenStr;
+  [_APNsTokenString retain];
+  [self sendAPNsTokenString];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -126,11 +146,67 @@ void SignalHandler(int sig) {
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
   NSLog(@"didReceiveRemoteNotification:\n");
-  NSArray* allKeys = [userInfo allKeys];
-  for (NSString* key in allKeys)
+  [self handlePushNotification:userInfo];
+}
+
+- (void)handlePushNotification:(NSDictionary*)notifDesc
+{     
+//  APNsNotifInfo* notifInfo = [[APNsNotifInfo alloc] initWithDictionary:notifDesc];
+  APNsNotifInfo* notifInfo = [[YasoundNotifCenter main] addNotifInfoWithDescription:notifDesc];
+  APNsNotifType t = [notifInfo type];
+  switch (t) 
   {
-    NSString* value = [userInfo objectForKey:key];
-    NSLog(@"\t%@: %@", key, value);
+    case eAPNsNotif_UserInRadio:
+      NSLog(@"user in radio %@", [notifInfo radioID]);
+      break;
+      
+    case eAPNsNotif_FriendInRadio:
+      NSLog(@"friend in radio %@", [notifInfo radioID]);
+      break;
+      
+    case eAPNsNotif_FriendOnline:
+      NSLog(@"a friend (%@) is online: go to friends list", [notifInfo userName]);
+      break;
+      
+    case eAPNsNotif_MessagePosted:
+      NSLog(@"message posted in radio %@", [notifInfo radioID]);
+      break;
+      
+    case eAPNsNotif_SongLiked:
+      NSLog(@"song liked in radio %@", [notifInfo radioID]);
+      break;
+      
+    case eAPNsNotif_RadioInFavorites:
+      NSLog(@"radio added in favorites %@", [notifInfo radioID]);
+      break;
+      
+    case eAPNsNotif_RadioShared:
+      NSLog(@"radio shared %@", [notifInfo radioID]);
+      break;
+      
+    case eAPNsNotif_FriendCreatedRadio:
+      NSLog(@"friend created radio %@", [notifInfo radioID]);
+      break;
+      
+    default:
+      break;
+  }
+}
+
+- (void)sendAPNsTokenString
+{
+  if (!_APNsTokenString)
+    return;
+  
+  BOOL sandbox = YES; // #FIXME
+#ifdef APP_STORE_TARGET
+  sandbox = false;
+#endif
+  BOOL canSend = [[YasoundDataProvider main] sendAPNsDeviceToken:_APNsTokenString isSandbox:sandbox];
+  if (canSend)
+  {
+    [_APNsTokenString release];
+    _APNsTokenString = nil;
   }
 }
 

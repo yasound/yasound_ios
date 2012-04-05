@@ -20,8 +20,8 @@
 #import "LeaderBoardEntry.h"
 #import "Playlist.h"
 #import "YasoundSong.h"
-
-#define USE_YASOUND_LOCAL_SERVER 0
+#import "APNsDeviceToken.h"
+#import "APNsPreferences.h"
 
 typedef NSString* taskID;
 
@@ -80,6 +80,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector;
 - (void)loginTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
 
+- (BOOL)sendAPNsDeviceToken:(NSString*)deviceToken isSandbox:(BOOL)sandbox;
+
 - (void)userRadioWithTarget:(id)target action:(SEL)selector;
 - (void)reloadUserRadio;
 
@@ -110,6 +112,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setMood:(UserMood)mood forRadio:(Radio*)radio;
 - (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite;
+- (void)radioHasBeenShared:(Radio*)radio;
 
 - (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
@@ -189,5 +192,10 @@ taskStatus stringToStatus(NSString* str);
 - (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector; // didReceiveSearchedSongs:(NSArray*)songs info:(NSDictionary*)info
 
 - (void)addSong:(YasoundSong*)yasoundSong target:(id)target action:(SEL)selector;  // didReceiveAddedSong:(Song*)addedSong info:(NSDictionary*)info and info contains a dictionary for key 'status' with 2 NSNumber* (boolean) 'success' (true if the request succeeded) and 'created' (true if a song has been added, false if this song was already in the playlist)
+
+
+// APNs (Apple Push Notification service) preferences
+- (void)apnsPreferencesWithTarget:(id)target action:(SEL)selector;
+- (void)setApnsPreferences:(APNsPreferences*)prefs target:(id)target action:(SEL)selector;
 
 @end

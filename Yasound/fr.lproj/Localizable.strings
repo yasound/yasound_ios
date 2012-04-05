@@ -257,6 +257,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MenuView_radios_selection" = "Sélection";
 "MenuView_radios_top" = "Top";
 "MenuView_radios_search" = "Recherche";
+"MenuView_me_notifs" = "Mes notifications";
 "MenuView_me_stats" = "Mes statistiques";
 "MenuView_me_playlists" = "Ma programmation";
 "MenuView_me_programming" = "Ma programmation";
@@ -389,3 +390,16 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "RadioSearch_CategoryRadioSong_SectionTitle" = "titre, artiste, album";
 
 
+"APNs_UIR" = "%@ écoute votre radio";
+"APNs_FIR" = "%@ écoute votre radio";
+"APNs_FOn" = "%@ vient de se connecter";
+"APNs_Msg" = "%@ a posté un message sur votre mur";
+"APNs_Sng" = "%@ aime votre chanson '%@'";
+"APNs_RIF" = "%@ a ajouté votre radio à ses favoris";
+"APNs_RSh" = "%@ a partagé un message à propos de votre radio";
+"APNs_FCR" = "%@ a créé une radio";
+
+"APNs_YAS" = "Yasound vous a envoyé un message";
+
+"NotificationCenterView_title" =  "Mes Notifications";
+"NotificationCenterView_edit" = "Modifier";
