@@ -308,7 +308,6 @@ static FacebookSessionManager* _facebook = nil;
       [user setValue:[dico valueForKey:@"name"] forKey:DATA_FIELD_NAME];
       
       NSString* email = [dico valueForKey:@"email"];
-      //LBDEBUG EMAIL
       NSLog(@"facebook email '%@'", email);
       [user setValue:email forKey:DATA_FIELD_EMAIL];
     

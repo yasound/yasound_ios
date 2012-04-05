@@ -440,7 +440,6 @@
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
         _changed = YES;
-//        _settingsGenreLabel.textColor = [UIColor whiteColor];
         [self openStyleSelector];
         return;
     }
@@ -448,14 +447,8 @@
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
     {
         _changed = YES;
-//        KeywordsViewController* view = [[KeywordsViewController alloc] initWithTarget:self action:@selector(onKeywordsChanged:)];
         KeywordsViewController* view = [[KeywordsViewController alloc] initWithNibName:@"KeywordsViewController" bundle:nil radio:_myRadio];
         
-        //LBDEBUG
-//        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStylePlain target:view action:@selector(onBack:)];
-//        [[self navigationItem] setBackBarButtonItem: backBtn];
-//        [backBtn release];
-
         [self.navigationController pushViewController:view animated:YES];
         [view release];
         return;
@@ -780,9 +773,6 @@
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SettingsView_submit_title", nil)];
 
     
-    //LBDEBUG TODO CLEAN
-//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
-    
     NSLog(@"send update request for radio '%@'", _myRadio.name);
     
     [[YasoundDataProvider main] updateRadio:_myRadio target:self action:@selector(onRadioUpdated:info:)];
@@ -821,18 +811,6 @@
     [self.navigationController popViewControllerAnimated:YES];
   }
 }
-
-
-//LBDEBUG TODO CLEAN
-//- (void)onFakeSubmitAction:(NSTimer*)timer
-//{
-//    [ActivityAlertView close];
-//    
-//    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];    
-//}
-
 
 
 

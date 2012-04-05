@@ -146,7 +146,6 @@
         NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
         title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Twitter"];
         
-        //LBDEBUG TEST
         NSDictionary* userData = [info objectForKey:@"userData"];
         NSInteger statusCode = [[userData objectForKey:@"responseStatusCode"] intValue];
         

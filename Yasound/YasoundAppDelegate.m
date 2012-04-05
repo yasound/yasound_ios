@@ -300,7 +300,6 @@ void SignalHandler(int sig) {
         NSLog(@"Application Server URL : %@", _serverURL);
     }
 
-    //LBDEBUG
     NSLog(@"Application Server URL : %@", _serverURL);
     return _serverURL;    
 }

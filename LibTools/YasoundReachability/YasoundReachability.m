@@ -152,7 +152,6 @@ static YasoundReachability* _main = nil;
             NSLog(@"no _connection");
             
             // network connection is back
-            // LBDEBUG TODO ?
             if (_target != nil)
                 [_target performSelector:_action];
 

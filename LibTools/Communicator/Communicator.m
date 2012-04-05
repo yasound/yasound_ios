@@ -656,7 +656,6 @@
     BOOL returnNewObject = [[userinfo valueForKey:@"returnNewObject"] boolValue];
     Auth* authForGET = [userinfo valueForKey:@"authForGET"];
     
-    //LBDEBUG
     NSMutableDictionary* userData = [NSMutableDictionary dictionaryWithDictionary:[userinfo valueForKey:@"userData"]];
     [userData setObject:[NSNumber numberWithInteger:request.responseStatusCode] forKey:@"responseStatusCode"];
     
@@ -988,7 +987,6 @@
 
 
 
-//LBDEBUG
 - (ASIFormDataRequest*)buildPostRequestToURL:(NSString *)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary *)userData withAuth:(Auth *)auth
 {
     NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
@@ -1010,7 +1008,7 @@
     req.delegate = self;
     [self applyAuth:auth toRequest:req];
     [self fillRequest:req];
-//    [req startAsynchronous];
+//    [req startAsynchronous]; // let the parent do that
 
     return req;
 }

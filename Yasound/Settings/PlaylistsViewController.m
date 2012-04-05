@@ -958,7 +958,6 @@
 
 
 
-//LBDEBUG
 - (void)finalize
 {
     // be sure to get updated radio (with correct 'ready' flag)

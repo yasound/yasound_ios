@@ -406,9 +406,6 @@ static YasoundSessionManager* _main = nil;
     self.loginType = LOGIN_TYPE_FACEBOOK;
     self.registered = YES;
     
-    //LBDEBUG
-    //NSLog(@"dico %@", _dico);
-
     // local account manager is handle in the SocialSessionManager delegate
     
     NSLog(@"registerForFacebook self.loginType %@", self.loginType);

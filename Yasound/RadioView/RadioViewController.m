@@ -379,6 +379,9 @@ static Song* _gNowPlayingSong = nil;
     }
     
     
+    //LBDEBUG 
+    - (void)setNowPlaying:(Song*)song
+    
     
     
     

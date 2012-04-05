@@ -229,7 +229,7 @@ static NSString* const kGGTwitterLoadingBackgroundImage = @"twitter_load.png";
 		_firstLoad = NO;
 	} 
 
-    //LBDEBUG TEST
+    //LBDEBUG 
     else
     {
         [_engine requestAccessToken];

@@ -24,7 +24,6 @@
 @synthesize song = _song;
 
 
-//LBDEBUG TODO : use image, likes disklikes from Song
 
 - (id)initWithSong:(Song*)song
 {

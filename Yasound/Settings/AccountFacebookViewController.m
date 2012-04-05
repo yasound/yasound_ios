@@ -148,7 +148,6 @@
         title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Facebook"];
 
         
-        //LBDEBUG TEST
         NSDictionary* userData = [info objectForKey:@"userData"];
         NSInteger statusCode = [[userData objectForKey:@"responseStatusCode"] intValue];
         
