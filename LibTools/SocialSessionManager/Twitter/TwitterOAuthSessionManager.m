@@ -156,7 +156,8 @@
 
 - (BOOL)requestGetInfo:(SessionRequestType)requestType
 {
-  if (!_engine || ![_engine isAuthorized])
+    if (!_engine || ![_engine isAuthorized]) 
+//        if (!_engine)
     return NO;
   
   if (requestType == SRequestInfoUser)

@@ -887,13 +887,19 @@ static YasoundSessionManager* _main = nil;
     succeeded = [nb boolValue];
     
     
-    if (succeeded && self.associatingFacebook)
+    if (self.associatingFacebook)
     {
-        [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:self.associatingInfo];
+        if (succeeded)
+            [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:self.associatingInfo];
+        else
+            [[FacebookSessionManager facebook] invalidConnexion];
     }
-    else if (succeeded && self.associatingTwitter)
+    else if (self.associatingTwitter)
     {
-        [self accountManagerAdd:LOGIN_TYPE_TWITTER  withInfo:self.associatingInfo];
+        if (succeeded)
+            [self accountManagerAdd:LOGIN_TYPE_TWITTER  withInfo:self.associatingInfo];
+        else
+            [[TwitterSessionManager twitter] invalidConnexion];
     }
 
     // callback
