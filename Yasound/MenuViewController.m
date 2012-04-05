@@ -26,6 +26,7 @@
 #import "ProgrammingViewController.h"
 
 #import "NotificationCenterViewController.h"
+#import "YasoundNotifCenter.h"
 
 
 
@@ -67,7 +68,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        // Custom initialization
+      _notificationsCell = nil;
     }
     return self;
 }
@@ -99,8 +100,7 @@
     
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
-    
-
+    [[YasoundNotifCenter main] addTarget:self action:@selector(unreadNotifCountChanged) forEvent:eAPNsUnreadNotifCountChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -123,6 +123,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+  
+  [[YasoundNotifCenter main] removeTarget:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -133,7 +135,14 @@
 
 
 
-
+- (void)unreadNotifCountChanged
+{
+  if (!_notificationsCell)
+    return;
+  
+  NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
+  [_notificationsCell setUnreadCount:unread];
+}
 
 
 #pragma mark - TableView Source and Delegate
@@ -305,12 +314,24 @@
 {
     static NSString *CellIdentifier = @"CellIdentifier";
     
-    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  UITableViewCell *cell = nil;
+  
+  if (indexPath.section == SECTION_ME && indexPath.row == ROW_ME_NOTIFS)
+  {
+    NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
+    if (!_notificationsCell)
+      _notificationsCell = [[NotificationTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil unreadCount:unread];
     
+    [_notificationsCell setUnreadCount:unread];
+    cell = _notificationsCell;
+  }
+  else
+  {
+    cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) 
-    {   
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+      cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];    
+  }
+  
 
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
     cell.textLabel.textColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1];

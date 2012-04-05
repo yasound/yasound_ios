@@ -104,6 +104,12 @@
 		4028E7CB152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
 		4028E7CC152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
 		4028E7CD152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
+		4028EC11152DD9D70056B34B /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028EC10152DD9D70056B34B /* NotificationTableViewCell.m */; };
+		4028EC12152DD9D70056B34B /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028EC10152DD9D70056B34B /* NotificationTableViewCell.m */; };
+		4028EC13152DD9D70056B34B /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028EC10152DD9D70056B34B /* NotificationTableViewCell.m */; };
+		4028EC14152DD9D70056B34B /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028EC10152DD9D70056B34B /* NotificationTableViewCell.m */; };
+		4028EC15152DD9D70056B34B /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028EC10152DD9D70056B34B /* NotificationTableViewCell.m */; };
+		4028EC16152DD9D70056B34B /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028EC10152DD9D70056B34B /* NotificationTableViewCell.m */; };
 		405ACE1B14F5551000DCB97A /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
 		405ACE1C14F5551000DCB97A /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
 		405ACE1D14F5551000DCB97A /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
@@ -2563,6 +2569,8 @@
 		4028E7BF152DC13F0056B34B /* MessageWeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageWeViewController.h; path = Notifications/MessageWeViewController.h; sourceTree = "<group>"; };
 		4028E7C0152DC13F0056B34B /* MessageWeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageWeViewController.m; path = Notifications/MessageWeViewController.m; sourceTree = "<group>"; };
 		4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageWeViewController.xib; path = Notifications/MessageWeViewController.xib; sourceTree = "<group>"; };
+		4028EC0F152DD9D60056B34B /* NotificationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTableViewCell.h; sourceTree = "<group>"; };
+		4028EC10152DD9D70056B34B /* NotificationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationTableViewCell.m; sourceTree = "<group>"; };
 		405ACE1914F5551000DCB97A /* YasoundSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundSong.h; sourceTree = "<group>"; };
 		405ACE1A14F5551000DCB97A /* YasoundSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundSong.m; sourceTree = "<group>"; };
 		40A98AE514C74C3E00999793 /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserTableViewCell.h; path = RadioSelection/UserTableViewCell.h; sourceTree = "<group>"; };
@@ -4613,6 +4621,8 @@
 				BC40CC6D14CFF3FE00DF0950 /* MenuViewController.h */,
 				BC40CC6E14CFF3FE00DF0950 /* MenuViewController.m */,
 				BC40CC6F14CFF3FE00DF0950 /* MenuViewController.xib */,
+				4028EC0F152DD9D60056B34B /* NotificationTableViewCell.h */,
+				4028EC10152DD9D70056B34B /* NotificationTableViewCell.m */,
 			);
 			path = Yasound;
 			sourceTree = "<group>";
@@ -6258,6 +6268,7 @@
 				4028E7B2152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B8152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C7152DC1400056B34B /* MessageWeViewController.m in Sources */,
+				4028EC16152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6440,6 +6451,7 @@
 				4028E7AF152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B5152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C4152DC1400056B34B /* MessageWeViewController.m in Sources */,
+				4028EC13152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6622,6 +6634,7 @@
 				4028E7AE152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B4152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C3152DC1400056B34B /* MessageWeViewController.m in Sources */,
+				4028EC12152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6805,6 +6818,7 @@
 				4028E7B1152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B7152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C6152DC1400056B34B /* MessageWeViewController.m in Sources */,
+				4028EC15152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6987,6 +7001,7 @@
 				4028E7AD152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B3152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C2152DC1400056B34B /* MessageWeViewController.m in Sources */,
+				4028EC11152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7170,6 +7185,7 @@
 				4028E7B0152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B6152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C5152DC1400056B34B /* MessageWeViewController.m in Sources */,
+				4028EC14152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

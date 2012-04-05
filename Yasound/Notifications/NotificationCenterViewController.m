@@ -190,13 +190,8 @@
   
   [notifInfo setRead:YES];
   
-//  RadioSelectionTableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
-//  
-//  RadioViewController* view = [[RadioViewController alloc] initWithRadio:cell.radio];
-//  [self.navigationController pushViewController:view animated:YES];
-//  [view release];  
-  
-  
+  NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
+  [cell updateWithNotifInfo:notifInfo];
 }
 
 

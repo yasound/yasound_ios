@@ -371,6 +371,28 @@
 				<key>y</key>
 				<integer>5</integer>
 			</dict>
+			<key>UnreadNotifBadge</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>name</key>
+					<string>HelveticaNeue-Bold</string>
+					<key>size</key>
+					<integer>15</integer>
+					<key>textColor</key>
+					<string>white</string>
+					<key>backgroundColor</key>
+					<string>clear</string>
+				</dict>
+				<key>height</key>
+				<integer>20</integer>
+				<key>width</key>
+				<integer>60</integer>
+				<key>x</key>
+				<integer>230</integer>
+				<key>y</key>
+				<integer>12</integer>
+			</dict>
 		</dict>
 		<key>themes</key>
 		<array>
