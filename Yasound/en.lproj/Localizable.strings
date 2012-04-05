@@ -416,7 +416,11 @@
 "SongsView_upload_progress" = "Synchronizing";
 
 "Facebook_AppRequest_Message" = "Join me on Yasound. You can listen to my radio, create your own and discover new artists for free.";
-"InviteFriends_button_text" = "Invite my friends";
+"InviteFacebookFriends_button_text" = "Invite my Facebook friends";
+"InviteTwitterFriends_button_text" = "Inviter my Twitter followers";
+"Twitter_AppRequest_Message" = "Join me on #Yasound, listen to my radio, create your's and discover new artists! http://yasound.com";
+"Twitter_AppRequest_Title" = "Invite my Twitter friends";
+"Twitter_AppRequest_AlertTitle" = "Posting the invitation to your followers...";
 
 "GoTo_CurrentUser_Radio" = "Do you want to listen to his radio\n%@?";
 "GoTo_CurrentUser_Radio_Unavailable" = "This user has no radio yet";

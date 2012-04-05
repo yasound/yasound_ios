@@ -12,17 +12,20 @@
 
 @interface FriendsViewController : TestflightViewController <UIActionSheetDelegate>
 {
-    IBOutlet UIToolbar* _toolbar;
-    IBOutlet UILabel* _toolbarTitle;
-    IBOutlet UIBarButtonItem* _nowPlayingButton;
+  IBOutlet UIToolbar* _toolbar;
+  IBOutlet UILabel* _toolbarTitle;
+  IBOutlet UIBarButtonItem* _nowPlayingButton;
+  
+  IBOutlet UITableView* _tableView;
     
-    IBOutlet UITableView* _tableView;
+  IBOutlet UITableViewCell* _cellInviteFacebook;
+  IBOutlet UILabel* _cellInviteFacebookLabel;
+
+  IBOutlet UITableViewCell* _cellInviteTwitter;
+  IBOutlet UILabel* _cellInviteTwitterLabel;
     
-    IBOutlet UITableViewCell* _cellInvite;
-    IBOutlet UILabel* _cellInviteLabel;
-    
-    NSMutableArray* _friends_online;
-    NSMutableArray* _friends_offline;
+  NSMutableArray* _friends_online;
+  NSMutableArray* _friends_offline;
   NSTimer* _updateTimer;
   
   User* _selectedFriend;
