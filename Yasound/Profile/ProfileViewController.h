@@ -20,14 +20,8 @@
     IBOutlet UIBarButtonItem* _nowPlayingButton;
 
     WebImageView* _imageView;
+    NSArray* _favoriteRadios;
     UILabel* _name;
-    UILabel* _artist;
-    UILabel* _album;
-    UILabel* _enabledLabel;
-
-    UISwitch* _switchEnabled;
-    UISwitch* _switchFrequency;
-
 }
 
 @property (nonatomic, retain) User* user;
