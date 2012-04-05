@@ -65,6 +65,10 @@ static NotificationManager* _main = nil;
 
 
 
+- (BOOL)get:(NSString*)notifIdentifier
+{
+    return [[self.notifications objectForKey:notifIdentifier] boolValue];
+}
 
 
 

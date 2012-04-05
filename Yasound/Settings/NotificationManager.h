@@ -27,6 +27,7 @@
 + (NotificationManager*)main;
 
 
+- (BOOL)get:(NSString*)notifIdentifier;
 - (void)save;
 
 

@@ -32,7 +32,7 @@
         
         [self.notifSwitch addTarget:self action:@selector(onSwitch:) forControlEvents:UIControlEventValueChanged];
         
-        self.notifSwitch.on = [[[NotificationManager main].notifications objectForKey:notifIdentifier] boolValue];
+        self.notifSwitch.on = [[NotificationManager main] get:notifIdentifier];
 
     }
     return self;
@@ -43,7 +43,7 @@
 {
     self.notifIdentifier = notifIdentifier;
     self.textLabel.text = NSLocalizedString(self.notifIdentifier, nil);
-    self.notifSwitch.on = [[[NotificationManager main].notifications objectForKey:notifIdentifier] boolValue];
+    self.notifSwitch.on = [[NotificationManager main] get:notifIdentifier];
 }
 
 
