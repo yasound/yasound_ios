@@ -14,6 +14,7 @@
 #import "ActivityModelessSpinner.h"
 #import "UserTableViewCell.h"
 #import "YasoundDataCache.h"
+#import "ProfileViewController.h"
 
 #import "FacebookSessionManager.h"
 
@@ -371,7 +372,11 @@
         return;
     }
 #endif
-    
+
+    ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:_selectedFriend];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+
     UserTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
     _selectedFriend = cell.user;
