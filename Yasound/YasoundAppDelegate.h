@@ -1,8 +1,6 @@
 //
-//  UIScrollViewTestAppDelegate.h
-//  UIScrollViewTest
+//  YasoundAppDelegate.y
 //
-//  Created by Sébastien Métrot on 10/24/11.
 //  Copyright 2011 Yasound. All rights reserved.
 //
 
@@ -10,6 +8,11 @@
 #ifdef TESTFLIGHT_SDK
 #import "TestFlight.h"
 #endif
+
+
+#define APPDELEGATE ((YasoundAppDelegate*)[UIApplication sharedApplication].delegate)
+
+
 
 @class RootViewController;
 
@@ -21,8 +24,11 @@
 
 @property (nonatomic, retain)  IBOutlet UIWindow *window;
 @property (nonatomic, retain)  UINavigationController *navigationController;
-
 @property (nonatomic, retain) RootViewController* rootViewController;
+@property (nonatomic, retain) NSString* serverURL;
+
+
+- (NSString*)getServerUrlWith:(NSString*)target;
 
 @property (nonatomic, readonly) NSString* APNsTokenString;
 

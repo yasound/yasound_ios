@@ -69,7 +69,7 @@
     
     if (slash && ![path hasSuffix:@"/"])
         path = [path stringByAppendingString:@"/"];
-    
+
     NSURL* url;
     if (absolute)
         url = [NSURL URLWithString:path];
@@ -78,14 +78,11 @@
         url = [NSURL URLWithString:_baseURL];
         if ([path hasPrefix:@"/"] && path.length > 1)
             path = [path substringFromIndex:1];
-        if ([path hasSuffix:@"/"] && path.length > 1)
-          path = [path substringToIndex:path.length-1]; // remove trailing slash since [NSURL URLByAppendingPathComponent] adds a trailing slash leading to double slash bug in iOS older than version 5
         url = [url URLByAppendingPathComponent:path];
     }
     
     url = [self URLWithURL:url andParams:params];
     
-    // NSLog(@"url: %@", url.absoluteString);
     return url;
 }
 
@@ -892,6 +889,7 @@
         AuthPassword* a = (AuthPassword*)auth;
         request.username = a.username;
         request.password = a.password;
+        [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];        
     }
     else if ([auth isKindOfClass:[AuthApiKey class]])
     {
@@ -919,6 +917,8 @@
     {
         [request.requestCookies addObject:self.appCookie];
     }
+    // TODO: get locale of device in order to send appropriated headers
+    [request addRequestHeader:@"Accept-Language" value:@"fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3"];
 }
 
 - (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withUrlParams:(NSArray*)params withAuth:(Auth*)auth
@@ -983,6 +983,34 @@
     return req;
 }
 
+
+
+//LBDEBUG
+- (ASIFormDataRequest*)buildPostRequestToURL:(NSString *)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary *)userData withAuth:(Auth *)auth
+{
+    NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
+    NSLog(@"postRequestToURL '%@'", u.absoluteString);
+    if (!u)
+    {
+        NSLog(@"postRequestToURL: invalid url");
+        return;
+    }
+
+    NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+    [userInfo setValue:target forKey:@"target"];
+    [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
+    [userInfo setValue:@"POST" forKey:@"method"];
+    [userInfo setValue:userData forKey:@"userData"];
+
+    ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
+    req.userInfo = userInfo;
+    req.delegate = self;
+    [self applyAuth:auth toRequest:req];
+    [self fillRequest:req];
+//    [req startAsynchronous];
+
+    return req;
+}
 
 
 - (ASIHTTPRequest*)postRequestForURL:(NSString*)path absolute:(BOOL)isAbsolute withStringData:(NSString*)stringData withAuth:(Auth*)auth

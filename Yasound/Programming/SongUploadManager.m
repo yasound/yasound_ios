@@ -339,15 +339,16 @@ static SongUploadManager* _main;
             return;
         }
     }
+    
+    // nothing else to upload
+    self.isRunning = NO;
 }
 
 
 - (void)onNotificationFinish:(NSNotification *)notification
 {  
-    
-    [self loop];
-  
-  [self refreshStoredUploads];
+    [self loop];  
+    [self refreshStoredUploads];
 }
 
 - (void)onNotificationCancel:(NSNotification *)notification

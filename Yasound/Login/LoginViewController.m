@@ -7,20 +7,15 @@
 //
 
 #import "LoginViewController.h"
-#import "RadioViewController.h"
-#import "BundleFileManager.h"
-#import "SettingsViewController.h"
-
-#import "YasoundDataProvider.h"
-#import "ActivityAlertView.h"
-#import "RegExp.h"
 #import "YasoundSessionManager.h"
+#import "YasoundReachability.h"
 #import "RootViewController.h"
-
-
-#define ROW_EMAIL 0
-#define ROW_PWORD 1
-
+#import "ActivityAlertView.h"
+#import "ConnectionView.h"
+#import "SongUploadManager.h"
+#import "CreateMyRadio.h"
+#import "YasoundLoginViewController.h"
+#import "SignupViewController.h"
 
 
 @implementation LoginViewController
@@ -30,7 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.title =  NSLocalizedString(@"LoginView_title", nil);        
+        //self.title =  NSLocalizedString(@"LoginView_title", nil);        
     }
     return self;
 }
@@ -38,11 +33,6 @@
 
 - (void) dealloc
 {
-    if (_email)
-        [_email release];
-    if (_pword)
-        [_pword release];
-    
     [super dealloc];
 }
 
@@ -61,28 +51,24 @@
     [super viewDidLoad];
     
     _titleLabel.text = NSLocalizedString(@"LoginView_title", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
-    _cellEmailLabel.text = NSLocalizedString(@"LoginView_email_label", nil);
-    _cellEmailTextfield.placeholder = NSLocalizedString(@"LoginView_email_placeholder", nil);
+    _facebookLabel.text = NSLocalizedString(@"LoginView_facebook_label", nil);    
+    _twitterLabel.text = NSLocalizedString(@"LoginView_twitter_label", nil);    
+    _yasoundLabel.text = NSLocalizedString(@"LoginView_yasound_label", nil);    
     
-    _cellPwordLabel.text = NSLocalizedString(@"LoginView_pword_label", nil);
-    _cellPwordTextfield.placeholder = NSLocalizedString(@"LoginView_pword_placeholder", nil);
+    [_signupButton setTitle:NSLocalizedString(@"LoginView_signup_label", nil) forState:UIControlStateNormal  textAlignement:UITextAlignmentRight];
+
     
-    [_submitBtn setTitle:NSLocalizedString(@"LoginView_submit_label", nil) forState:UIControlStateNormal];
-    
-    _submitBtn.enabled = NO;
 }
+
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    //[self enableButtons:YES];
     [super viewDidAppear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-}
 
 - (void)viewDidUnload
 {
@@ -101,146 +87,243 @@
 
 
 
-
-
-
-#pragma mark - TableView Source and Delegate
-
-
-
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
-{
-    return 2;
-}
-
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 38;
-}
-
-
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    if (indexPath.row == ROW_EMAIL)
-        return _cellEmail;
-    
-    if (indexPath.row == ROW_PWORD)
-        return _cellPword;
-    
-    return nil;
-}
-
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
-
-
-
-#pragma mark - TextField Delegate
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    if (textField == _cellEmailTextfield)
-    {
-        [_cellPwordTextfield becomeFirstResponder];
-    }
-    else
-    {
-        [textField resignFirstResponder];    
-        
-        // activate "submit" button
-        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-        NSString* email = [_cellEmailTextfield.text stringByTrimmingCharactersInSet:space];
-        NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
-        if ((email.length != 0) && (pword.length != 0))
-            _submitBtn.enabled = YES;
-        else
-            _submitBtn.enabled = NO;
-        
-    }
-    return YES;
-}
-
-
-
-
-
 #pragma mark - IBActions
 
 
-- (IBAction)onBack:(id)sender
+- (IBAction)onFacebook:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-- (IBAction) onSubmit:(id)sender
-{
-    NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-    NSString* email = [_cellEmailTextfield.text stringByTrimmingCharactersInSet:space];
-    NSString* pword = [_cellPwordTextfield.text stringByTrimmingCharactersInSet:space];
-    
-    if (![RegExp emailIsValid:email])
+    if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
     {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_email_not_valid", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [av show];
-    [av release];  
-    return;    
-    }
-    
-    _email = [NSString stringWithString:email];
-    _pword = [NSString stringWithString:pword];
-    [_email retain];
-    [_pword retain];
-    
-    // TAG ACTIVITY ALERT
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
-    
-    // login request to server
-    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
-}
-
-- (void) requestDidReturn:(User*)user info:(NSDictionary*)info
-{
-    [ActivityAlertView close];
-    
-    NSLog(@"login returned : %@ %@", user, info);
-    
-    if (user == nil)
-    {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];  
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
         return;
     }
     
-    // store info for automatic login, for the next sessions
-    [[YasoundSessionManager main] registerForYasound:_email withPword:_pword];
+    // TAG ACTIVITY ALERT
+    if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    {
+        // J'AIMERAI SAVOIR SI ON REPASSE ICI OU PAS
+        assert(0);
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    }
     
-    // call root to launch the Radio
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
+    [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(socialLoginReturned:info:)];
+    
+    // and disable buttons
+    [self enableButtons:NO];
+    
+    [self hideButtons:YES];
+        
+    // show a connection alert
+    [self.view addSubview:[ConnectionView start]];
+    
+    
 }
 
 
+
+- (IBAction)onTwitter:(id)sender
+{
+    if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
+        return;
+    }
+    
+    // TAG ACTIVITY ALERT
+    if ([YasoundSessionManager main].registered && [[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    {
+        // J'AIMERAI SAVOIR SI ON REPASSE ICI OU PAS
+        assert(0);
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    }
+    
+    [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(socialLoginReturned:info:)];
+    
+    // and disable buttons
+    [self enableButtons:NO];
+    
+    [self hideButtons:YES];
+
+    
+    // show a connection alert
+    [self.view addSubview:[ConnectionView start]];
+}
+
+
+
+
+
+- (void)socialLoginReturned:(User*)user info:(NSDictionary*)info
+{
+    // close the connection alert
+    [ConnectionView stop];
+
+    [self hideButtons:NO];
+    
+    
+    if (user != nil)
+    {
+        // check if local account has been setted (<=> radio full configured)
+        if ([[YasoundSessionManager main] getAccount:user])
+            // call root to launch the Radio
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
+        else
+        {
+            [[YasoundSessionManager main] addAccount:user];
+            
+            // ask for radio contents to the provider, in order to launch the radio configuration
+            [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
+        }
+        
+        NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
+        if (lastUserID && [lastUserID intValue] == [user.id intValue])
+        {
+            [[SongUploadManager main] importUploads];
+            
+            if ([YasoundReachability main].networkStatus == kReachableViaWiFi)
+                // restart song uploads not completed on last application shutdown
+                [[SongUploadManager main] resumeUploads];
+            else if ([SongUploadManager main].items.count > 0)
+            {
+                UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_restart_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_restart_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [av show];
+                [av release];  
+            }
+        }
+        else
+        {
+            [[SongUploadManager main] clearStoredUpdloads];
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:@"LastConnectedUserID"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    else
+    {
+        NSString* message = nil;
+        if (info != nil)
+        {
+            NSString* errorValue = [info objectForKey:@"error"];
+            if ([errorValue isEqualToString:@"Login"])
+                message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
+            else if ([errorValue isEqualToString:@"UserInfo"])
+                message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
+            
+        }
+        else
+        {
+            message = NSLocalizedString(@"YasoundSessionManager_userinfo_error", nil);        
+        }
+        
+        // show alert message for connection error
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        
+        //        // enable the facebook again, to let the user retry
+        //        _facebookButton.enabled = YES;
+        // and logout properly
+        [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+        
+        
+    }
+}
+
+
+- (void)logoutReturned
+{
+    // once logout done, go back to the home screen
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];    
+}
+
+
+
+
+
+
+
+
+- (IBAction)onYasound:(id)sender
+{
+    YasoundLoginViewController* view = [[YasoundLoginViewController alloc] initWithNibName:@"YasoundLoginViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:NO];
+    [view release];
+}
+
+
+- (IBAction)onYasoundSignup:(id)sender
+{
+    SignupViewController* view = [[SignupViewController alloc] initWithNibName:@"SignupViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:NO];
+    [view release];    
+}
+
+
+
+
+
+
+
+
+
+- (void)enableButtons:(BOOL)enable
+{
+    _facebookButton.enabled = enable;
+    _twitterButton.enabled = enable;
+    _yasoundButton.enabled = enable;
+    _signupButton.enabled = enable;
+}
+
+
+- (void)hideButtons:(BOOL)hide
+{
+    CGFloat alpha = (hide)? 0 : 1;
+    
+    [UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.3];
+    _facebookButton.alpha = alpha;
+    _facebookLabel.alpha = alpha;
+    _twitterButton.alpha = alpha;
+    _twitterLabel.alpha = alpha;
+    _yasoundButton.alpha = alpha;
+    _yasoundLabel.alpha = alpha;
+    _signupButton.alpha = alpha;
+    [UIView commitAnimations];   
+}
+
+
+
+
+
+#pragma mark - YasoundDataProvider
+
+- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+{
+    //    assert(radio);
+    
+    // account just being create, go to configuration screen
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"skipRadioCreationSendToSelection"];
+    [[NSUserDefaults standardUserDefaults] synchronize]; 
+    
+    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:radio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];    
+}
 
 
 
 @end
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        

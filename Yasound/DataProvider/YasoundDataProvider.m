@@ -12,7 +12,6 @@
 #import "YasoundAppDelegate.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
-#define DEV_URL @"https://api.yasound.com"
 
 #define APP_KEY_COOKIE_NAME @"app_key"
 #define APP_KEY_IPHONE @"yasound_iphone_app"
@@ -160,7 +159,7 @@ static YasoundDataProvider* _main = nil;
     baseUrl = LOCAL_URL;
     NSLog(@"use LOCAL SERVER '%@'", baseUrl);
 #else
-    baseUrl = DEV_URL;
+      baseUrl = APPDELEGATE.serverURL;
     NSLog(@"use DEV SERVER '%@'", baseUrl);
 #endif
     _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];
@@ -307,7 +306,10 @@ static YasoundDataProvider* _main = nil;
   Radio* r = nil;
   if (!radios || [radios count] == 0)
   {
-    NSError* err = [NSError errorWithDomain:[NSString stringWithFormat:@"no radio for user '%@'", _user.username] code:1 userInfo:nil];
+      NSString* str = [NSString stringWithFormat:@"no radio for user '%@'", _user.username];
+      NSLog(@"%@", str);
+      
+    NSError* err = [NSError errorWithDomain:str code:1 userInfo:nil];
     [finalInfo setValue:err forKey:@"error"];
   }
   else
@@ -358,9 +360,9 @@ static YasoundDataProvider* _main = nil;
   [self resetUser];
   
   User* u = [[User alloc] init];
-  u.username = email;
-  u.email = email;
+  u.username = username;
   u.name = username;
+  u.email = email;
   u.password = pwd;
   
   NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", u.username, @"username", u.password, @"password", nil];
@@ -432,11 +434,10 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-//
-//
-// Yasound Login
-//
-//
+
+
+#pragma mark - Login Yasound
+
 
 - (void)login:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector userData:(NSDictionary*)userData
 {
@@ -495,11 +496,9 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-//
-//
-// Social Login
-//
-//
+
+
+#pragma mark - Login Facebook and Twitter
 
 - (void)loginSocialWithAuth:(AuthSocial*)auth target:(id)target action:(SEL)selector
 {
@@ -586,9 +585,182 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-//
-// get radio
-//
+
+
+
+
+#pragma mark - Yasound Account Association
+
+
+
+- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector
+{
+    Auth* auth = self.apiKeyAuth;
+
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+    
+    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveYasoundAssociation:info:) withUserData:data withAuth:auth];
+
+    [req addPostValue:@"yasound" forKey:@"account_type"];
+    [req addPostValue:email forKey:@"email"];
+    [req addPostValue:pword forKey:@"password"];
+    
+    [req startAsynchronous];
+}
+
+
+- (void)receiveYasoundAssociation:(id)obj info:(NSDictionary*)info
+{
+    NSLog(@"YasoundDataProvider receiveYasoundAssociation : info %@", info);
+    
+    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
+    
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"clientTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    NSDictionary* clientData = [userData valueForKey:@"clientData"];
+    if (clientData)
+        [finalInfo setValue:clientData forKey:@"userData"];
+    
+    if (target && selector)
+    {
+        [target performSelector:selector withObject:finalInfo];
+    }
+}
+
+- (void)receiveFacebookssociation:(id)obj info:(NSDictionary*)info
+{
+    NSLog(@"YasoundDataProvider receiveFacebookAssociation : info %@", info);
+    
+    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
+    
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"clientTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    NSDictionary* clientData = [userData valueForKey:@"clientData"];
+    if (clientData)
+        [finalInfo setValue:clientData forKey:@"userData"];
+    
+    if (target && selector)
+    {
+        [target performSelector:selector withObject:finalInfo];
+    }
+}
+
+- (void)receiveTwitterAssociation:(id)obj info:(NSDictionary*)info
+{
+    NSLog(@"YasoundDataProvider receiveTwitterAssociation : info %@", info);
+    
+    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
+    
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"clientTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    NSDictionary* clientData = [userData valueForKey:@"clientData"];
+    if (clientData)
+        [finalInfo setValue:clientData forKey:@"userData"];
+    
+    if (target && selector)
+    {
+        [target performSelector:selector withObject:finalInfo];
+    }
+}
+
+- (void)receiveDissociation:(id)obj info:(NSDictionary*)info
+{
+    NSLog(@"YasoundDataProvider receiveDissociation : info %@", info);
+    
+    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
+    
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"clientTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    NSDictionary* clientData = [userData valueForKey:@"clientData"];
+    if (clientData)
+        [finalInfo setValue:clientData forKey:@"userData"];
+    
+    if (target && selector)
+    {
+        [target performSelector:selector withObject:finalInfo];
+    }
+}
+
+
+
+#pragma mark - Facebook Account Association
+
+
+- (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector
+{
+    Auth* auth = self.apiKeyAuth;
+    
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+    
+    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveFacebookAssociation:info:) withUserData:data withAuth:auth];
+    
+    [req addPostValue:@"facebook" forKey:@"account_type"];
+    [req addPostValue:uid forKey:@"uid"];
+    [req addPostValue:token forKey:@"token"];
+    
+    [req startAsynchronous];
+}
+
+
+
+
+
+
+#pragma mark - Twitter Account Association
+
+
+
+- (void)associateAccountTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector
+{
+    Auth* auth = self.apiKeyAuth;
+    
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+    
+    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveTwitterAssociation:info:) withUserData:data withAuth:auth];
+    
+    [req addPostValue:@"twitter" forKey:@"account_type"];
+    [req addPostValue:uid forKey:@"uid"];
+    [req addPostValue:token forKey:@"token"];
+    [req addPostValue:tokenSecret forKey:@"token_secret"];
+    
+    [req startAsynchronous];
+}
+
+
+#pragma mark - Accounts Dissociation
+
+- (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector
+{
+    Auth* auth = self.apiKeyAuth;
+    
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+    
+    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/dissociation" absolute:NO notifyTarget:self byCalling:@selector(receiveDissociation:info:) withUserData:data withAuth:auth];
+    
+    [req addPostValue:accountTypeIdentifier forKey:@"account_type"];
+    
+    [req startAsynchronous];
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - requests about radios
 
 - (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector
 {
@@ -987,6 +1159,15 @@ static YasoundDataProvider* _main = nil;
   NSNumber* radioID = self.radio.id;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/next_songs", radioID];
   [_communicator getObjectsWithClass:[NextSong class] withURL:relativeUrl absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+}
+
+- (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector
+{
+    if (!userId)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    [_communicator getObjectWithClass:[User class] andID:userId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
 - (void)moveNextSong:(NextSong*)nextSong toPosition:(int)position target:(id)target action:(SEL)selector

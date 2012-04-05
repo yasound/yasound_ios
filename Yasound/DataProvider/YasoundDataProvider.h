@@ -82,6 +82,13 @@ taskStatus stringToStatus(NSString* str);
 
 - (BOOL)sendAPNsDeviceToken:(NSString*)deviceToken isSandbox:(BOOL)sandbox;
 
+- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector;
+- (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector;
+- (void)associateAccountTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
+- (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector;
+
+
+
 - (void)userRadioWithTarget:(id)target action:(SEL)selector;
 - (void)reloadUserRadio;
 
@@ -140,6 +147,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)addSongToUserRadio:(Song*)song;
 
 - (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector;
+
+- (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector;
 
 
 //

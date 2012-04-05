@@ -97,6 +97,8 @@
 - (NSString *)sendUpdate:(NSString *)status; // statuses/update
 - (NSString *)sendUpdate:(NSString *)status inReplyTo:(unsigned long)updateID; // statuses/update
 
+- (NSString *)sendRetweet:(NSString *)updateID;
+
 - (NSString *)getRepliesStartingAtPage:(int)pageNum; // statuses/mentions
 - (NSString *)getRepliesSinceID:(unsigned long)sinceID startingAtPage:(int)pageNum count:(int)count; // statuses/mentions
 - (NSString *)getRepliesSinceID:(unsigned long)sinceID withMaximumID:(unsigned long)maxID startingAtPage:(int)pageNum count:(int)count; // statuses/mentions
@@ -105,6 +107,7 @@
 
 - (NSString *)getFeaturedUsers; // statuses/features (undocumented, returns invalid JSON data)
 
+- (NSString *)sendUpdate:(NSString *)status uploadPhoto:(UIImage *)image latitude:(double)aLatitude longitude:(double)aLongitude;
 
 // User methods
 

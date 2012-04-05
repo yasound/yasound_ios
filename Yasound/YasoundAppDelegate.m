@@ -1,8 +1,6 @@
 //
-//  UIScrollViewTestAppDelegate.m
-//  UIScrollViewTest
+//  YasoundAppDelegate.m
 //
-//  Created by Sébastien Métrot on 10/24/11.
 //  Copyright 2011 Yasound. All rights reserved.
 //
 
@@ -29,7 +27,7 @@
 @synthesize navigationController;
 @synthesize rootViewController;
 @synthesize APNsTokenString = _APNsTokenString;
-
+@synthesize serverURL = _serverURL;
 
 #define GOOGLE_ANALYTICS_LOG NO
 
@@ -296,6 +294,43 @@ void SignalHandler(int sig) {
 {
     return [[FacebookSessionManager facebook]  handleOpenURL:url]; 
 }
+
+
+
+
+
+
+
+
+
+
+
+- (NSString*)serverURL
+{
+    if (_serverURL == nil)
+    {
+        NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
+        self.serverURL = [resources objectForKey:@"serverURL"];
+        NSLog(@"Application Server URL : %@", _serverURL);
+    }
+
+    //LBDEBUG
+    NSLog(@"Application Server URL : %@", _serverURL);
+    return _serverURL;    
+}
+
+
+- (NSString*)getServerUrlWith:(NSString*)target
+{
+    NSString* str = self.serverURL;
+    str = [str stringByAppendingPathComponent:target];
+    return str;
+}
+
+
+
+
+
 
 
 #pragma mark - MyRadio

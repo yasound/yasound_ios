@@ -15,6 +15,9 @@
 #import "ActivityModelessSpinner.h"
 #import "BuyLinkManager.h"
 #import "AudioStreamManager.h"
+#import "YasoundAppDelegate.h"
+
+
 
 @implementation TrackInteractionView
 
@@ -160,8 +163,8 @@
 {
     NSString* message = NSLocalizedString(@"RadioView_track_share_message", nil);
     NSString* title = NSLocalizedString(@"Yasound share", nil);
-    NSURL* pictureURL = [[NSURL alloc] initWithString:@"http://yasound.com/fr/images/logo.png"];
-    NSString* link = @"https://api.yasound.com/listen/%@";
+    NSURL* pictureURL = [[NSURL alloc] initWithString:[APPDELEGATE getServerUrlWith:@"fr/images/logo.png"]];
+    NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
     
     Radio *currentRadio = [AudioStreamManager main].currentRadio;
     
@@ -213,8 +216,8 @@
   
   NSString* message = NSLocalizedString(@"RadioView_track_share_message", nil);
   NSString* title = NSLocalizedString(@"Yasound share", nil);
-  NSURL* pictureURL = [[NSURL alloc] initWithString:@"http://yasound.com/fr/images/logo.png"];
-  NSString* link = @"https://api.yasound.com/listen/%@";
+  NSURL* pictureURL = [[NSURL alloc] initWithString:[APPDELEGATE getServerUrlWith:@"fr/images/logo.png"]];
+  NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
   
   Radio *currentRadio = [AudioStreamManager main].currentRadio;
   

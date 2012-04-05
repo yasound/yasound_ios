@@ -50,22 +50,47 @@
 "YasoundReachability_host_no" = "unable to contact the server!";
 
 
-"HomeView_title" = "Yasound";
-"HomeView_facebook_label" = "Log in with Facebook";
-"HomeView_twitter_label" = "Log in with Twitter";
-"HomeView_login_label" = "log in";
-"HomeView_signup_label" = "create an account";
 
+"LoginView_title" = "Yasound";
+"LoginView_facebook_label" = "Log in with Facebook";
+"LoginView_twitter_label" = "Log in with Twitter";
+"LoginView_yasound_label" = "Log in with Yasound";
+"LoginView_signup_label" = "No registered yet? Create an account.";
 
-"LoginView_title" = "Log in";
-"LoginView_email_label" = "email";
-"LoginView_email_placeholder" = "enter your email address";
-"LoginView_pword_label" = "password";
-"LoginView_pword_placeholder" = "required";
-"LoginView_submit_label" = "connection";
+"YasoundLoginView_title" = "Login";
+"YasoundLoginView_label" = "Login using your email address.";
+"YasoundLoginView_email" = "Email address";
+"YasoundLoginView_password" = "Password";
+"YasoundLoginView_button_login" = "Log in";
+"YasoundLoginView_button_forgot" = "Forgot your password?";
+
 "LoginView_alert_title" = "Connection";
-"LoginView_alert_message_error" = "incorrect login information!";
-"LoginView_alert_email_not_valid" = "incorrect email address!";
+"LoginView_alert_message_error" = "Incorrect login information!";
+"LoginView_alert_email_not_valid" = "Incorrect email address!";
+
+"SignupView_title" = "Sign up";
+"SignupView_label" = "Sign with an email address.";
+"SignupView_username" = "Choose a username";
+"SignupView_submit_button" = "Submit";
+
+
+
+//"HomeView_title" = "Yasound";
+//"HomeView_facebook_label" = "Log in with Facebook";
+//"HomeView_twitter_label" = "Log in with Twitter";
+//"HomeView_login_label" = "log in";
+//"HomeView_signup_label" = "create an account";
+//
+//
+//"LoginView_title" = "Log in";
+//"LoginView_email_label" = "email";
+//"LoginView_email_placeholder" = "enter your email address";
+//"LoginView_pword_label" = "password";
+//"LoginView_pword_placeholder" = "required";
+//"LoginView_submit_label" = "connection";
+//"LoginView_alert_title" = "Connection";
+//"LoginView_alert_message_error" = "incorrect login information!";
+//"LoginView_alert_email_not_valid" = "incorrect email address!";
 
 
 "SignupView_title" = "Create an account";
@@ -107,6 +132,7 @@
 "SettingsView_section_config" = "Configuration";
 "SettingsView_section_image" = "Picture";
 "SettingsView_section_theme" = "Graphical Theme";
+"SettingsView_section_accounts" = "Comptes";
 
 "SettingsView_row_image_label" = "Picture";
 "SettingsView_row_title_label" = "Name";
@@ -217,7 +243,7 @@
 "SongAddView_addFromServer" = "Add from the server";
 "SongAddView_requestServer" = "Searching the songs";
 "SongAddView_addedError" = "Unabled to add the song.";
-"SongAddView_addedOk" = "This song has been added to your radio!";
+"SongAddView_addedOk" = "This song has been added to your radio";
 "SongAddView_addedAlready" = "Your programmation contains this song already!";
 
 
@@ -262,9 +288,31 @@
 "MenuView_me_playlists" = "Programming";
 "MenuView_me_programming" = "Programming";
 "MenuView_me_config" = "Settings";
+"MenuView_me_notifs" = "Notifications";
 "MenuView_misc_legal" = "Terms of Use";
 "MenuView_misc_logout" = "Log out";
 
+"NotificationView_title" = "Notifications";
+
+"NotifFriendGoesOnline" = "Friend goes online";
+"NotifFriendEnters" = "Friend enters";
+"NotifUserEnters" = "User enters";
+"NotifPostReceived" = "Post received";
+"NotifLikeReceived" = "Like received";
+"NotifSubscriptionReceived" = "Subscription received";
+"NotifRadioShared" = "Radio shared";
+"NotifNewFriendRadio" = "New friend radio";
+
+
+"AccountsView_username_label" = "Username";
+"AccountsView_logout_label" = "Logout";
+"AccountsView_login_label" = "Login";
+"AccountsView_alert_title" = "%@ Account";
+"AccountView_alert_user_incorrect" = "Incorrect login information.";
+"AccountsView_alert_success" = "%@ account registered.";
+"AccountsView_alert_login_success" = "%@ account registered.";
+"AccountsView_alert_logout_success" = "%@ account unregistered.";
+"AccountsView_alert_logout_error" = "Unabled to unregister the account.";
 
 
 

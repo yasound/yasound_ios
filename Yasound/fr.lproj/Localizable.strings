@@ -50,22 +50,47 @@
 "YasoundReachability_host_no" = "impossible de joindre le serveur!";
 
 
-"HomeView_title" = "Yasound";
-"HomeView_facebook_label" = "se connecter avec Facebook";
-"HomeView_twitter_label" = "se connecter avec Twitter";
-"HomeView_login_label" = "se connecter";
-"HomeView_signup_label" = "créer un compte";
+"LoginView_title" = "Yasound";
+"LoginView_facebook_label" = "Se connecter avec Facebook";
+"LoginView_twitter_label" = "Se connecter avec Twitter";
+"LoginView_yasound_label" = "Se connecter avec Yasound";
+"LoginView_signup_label" = "Pas encore enregistré? Crééz un compte.";
 
+"YasoundLoginView_title" = "Connexion";
+"YasoundLoginView_label" = "Connexion avec l'adresse email.";
+"YasoundLoginView_email" = "Adresse email";
+"YasoundLoginView_password" = "Mot de passe";
+"YasoundLoginView_button_login" = "Connexion";
+"YasoundLoginView_button_forgot" = "Mot de passe oublié?";
 
-"LoginView_title" = "Connexion";
-"LoginView_email_label" = "email";
-"LoginView_email_placeholder" = "entrez votre adresse email";
-"LoginView_pword_label" = "mot de passe";
-"LoginView_pword_placeholder" = "requis";
-"LoginView_submit_label" = "connexion";
 "LoginView_alert_title" = "Connexion";
-"LoginView_alert_message_error" = "informations de connexion incorrectes!";
+"LoginView_alert_message_error" = "Informations de connexion incorrectes!";
 "LoginView_alert_email_not_valid" = "L'adresse email n'est pas valide!";
+
+"SignupView_title" = "Enregistrement";
+"SignupView_label" = "s'enregistrer avec son adresse email.";
+"SignupView_username" = "Choisir un nom d'utilisateur";
+"SignupView_submit_button" = "Soumettre";
+
+
+
+
+//"HomeView_title" = "Yasound";
+//"HomeView_facebook_label" = "se connecter avec Facebook";
+//"HomeView_twitter_label" = "se connecter avec Twitter";
+//"HomeView_login_label" = "se connecter";
+//"HomeView_signup_label" = "créer un compte";
+//
+//
+//"LoginView_title" = "Connexion";
+//"LoginView_email_label" = "email";
+//"LoginView_email_placeholder" = "entrez votre adresse email";
+//"LoginView_pword_label" = "mot de passe";
+//"LoginView_pword_placeholder" = "requis";
+//"LoginView_submit_label" = "connexion";
+//"LoginView_alert_title" = "Connexion";
+//"LoginView_alert_message_error" = "informations de connexion incorrectes!";
+//"LoginView_alert_email_not_valid" = "L'adresse email n'est pas valide!";
 
 
 "SignupView_title" = "Créer un compte";
@@ -107,6 +132,7 @@
 "SettingsView_section_config" = "Configuration";
 "SettingsView_section_image" = "Image";
 "SettingsView_section_theme" = "Thème Graphique";
+"SettingsView_section_accounts" = "Comptes";
 
 "SettingsView_row_image_label" = "Image";
 "SettingsView_row_title_label" = "Titre";
@@ -217,7 +243,7 @@
 "SongAddView_addFromServer" = "Ajout depuis le serveur";
 "SongAddView_requestServer" = "Recherche des morceaux";
 "SongAddView_addedError" = "Impossible d'ajouter le morceau.";
-"SongAddView_addedOk" = "Le morceau a été ajouté à votre programmation!";
+"SongAddView_addedOk" = "Le morceau a été ajouté à votre programmation";
 "SongAddView_addedAlready" = "Le morceau est déjà présent dans votre programmation!";
 
 "SongUpload_title" = "Téléchargement";
@@ -262,16 +288,37 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MenuView_me_playlists" = "Ma programmation";
 "MenuView_me_programming" = "Ma programmation";
 "MenuView_me_config" = "Paramètres";
+"MenuView_me_notifs" = "Notifications";
 "MenuView_misc_legal" = "Conditions d'utilisation";
 "MenuView_misc_logout" = "Se déconnecter";
 
+"NotificationView_title" = "Notifications";
+
+"NotifFriendGoesOnline" = "Friend goes online";
+"NotifFriendEnters" = "Friend enters";
+"NotifUserEnters" = "User enters";
+"NotifPostReceived" = "Post received";
+"NotifLikeReceived" = "Like received";
+"NotifSubscriptionReceived" = "Subscription received";
+"NotifRadioShared" = "Radio shared";
+"NotifNewFriendRadio" = "New friend radio";
+
+
+
+"AccountsView_username_label" = "Nom d'utilisateur";
+"AccountsView_logout_label" = "Se déconnecter";
+"AccountsView_login_label" = "Se connecter";
+"AccountsView_alert_title" = "Compte %@";
+"AccountView_alert_user_incorrect" = "Informations de connexion incorrectes.";
+"AccountsView_alert_login_success" = "Compte %@ enregistré.";
+"AccountsView_alert_logout_success" = "Compte %@ déconnecté.";
+"AccountsView_alert_logout_error" = "Impossible de déconnecter le compte.";
 
 
 
 "YasoundSessionManager_login_title" = "log in";
 "YasoundSessionManager_login_error" = "Impossible de se connecter au serveur!";
 "YasoundSessionManager_userinfo_error" = "Impossible de récupérer les informations utilisateur!";
-
 
 "RadioSelection_update" = "mise à jour";
 

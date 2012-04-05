@@ -1052,6 +1052,15 @@
 			<key>path</key>
 			<string>images/Icons</string>
 		</dict>
+		<key>IconMeNotifications</key>
+		<dict>
+			<key>name</key>
+			<string>IconMeNotifications</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+		</dict>
 		<key>IconMeStats</key>
 		<dict>
 			<key>name</key>
@@ -1065,6 +1074,33 @@
 		<dict>
 			<key>name</key>
 			<string>IconMeNotifs</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+		</dict>
+		<key>IconAccountsFacebook</key>
+		<dict>
+			<key>name</key>
+			<string>IconAccountsFacebook</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+		</dict>
+		<key>IconAccountsTwitter</key>
+		<dict>
+			<key>name</key>
+			<string>IconAccountsTwitter</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+		</dict>
+		<key>IconAccountsYasound</key>
+		<dict>
+			<key>name</key>
+			<string>IconAccountsYasound</string>
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>

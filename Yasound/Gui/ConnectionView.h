@@ -14,6 +14,7 @@
 }
 
 + (ConnectionView*)start;
++ (ConnectionView*)startWithFrame:(CGRect)frame;
 + (void)stop;
 
 

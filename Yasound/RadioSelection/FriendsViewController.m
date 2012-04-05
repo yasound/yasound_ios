@@ -14,6 +14,7 @@
 #import "ActivityModelessSpinner.h"
 #import "UserTableViewCell.h"
 #import "YasoundDataCache.h"
+#import "ProfileViewController.h"
 
 #import "FacebookSessionManager.h"
 
@@ -371,38 +372,45 @@
         return;
     }
 #endif
-    
+
     UserTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    
     _selectedFriend = cell.user;
-    Radio* currentRadio = nil;
-    Radio* ownRadio = nil;
-    if (_selectedFriend.current_radio)
-        currentRadio = _selectedFriend.current_radio;
-    if (_selectedFriend.own_radio && [_selectedFriend.own_radio.ready boolValue])
-        ownRadio = _selectedFriend.own_radio;
-  
-  if (!currentRadio && !ownRadio)
-    return;
-  
-  if (currentRadio && ownRadio && [currentRadio.id intValue] != [ownRadio.id intValue])
-  {
-    UIActionSheet* joiinRadioSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"GoTo_FriendRadio_Title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"GoTo_FriendRadioCancel_Label", nil)destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"GoTo_FriendCurrentRadio_Label", nil), NSLocalizedString(@"GoTo_FriendRadio_Label", nil), nil];
-    joiinRadioSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    [joiinRadioSheet showInView:self.view];
-  }
-  else if (currentRadio)
-  {
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:currentRadio];
+
+    ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:_selectedFriend];
     [self.navigationController pushViewController:view animated:YES];
-    [view release];  
-  }
-  else if (ownRadio)
-  {
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:ownRadio];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];  
-  }  
+    [view release];
+
+//    UserTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+//    
+//    _selectedFriend = cell.user;
+//    Radio* currentRadio = nil;
+//    Radio* ownRadio = nil;
+//    if (_selectedFriend.current_radio)
+//        currentRadio = _selectedFriend.current_radio;
+//    if (_selectedFriend.own_radio && [_selectedFriend.own_radio.ready boolValue])
+//        ownRadio = _selectedFriend.own_radio;
+//  
+//  if (!currentRadio && !ownRadio)
+//    return;
+//  
+//  if (currentRadio && ownRadio && [currentRadio.id intValue] != [ownRadio.id intValue])
+//  {
+//    UIActionSheet* joiinRadioSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"GoTo_FriendRadio_Title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"GoTo_FriendRadioCancel_Label", nil)destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"GoTo_FriendCurrentRadio_Label", nil), NSLocalizedString(@"GoTo_FriendRadio_Label", nil), nil];
+//    joiinRadioSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+//    [joiinRadioSheet showInView:self.view];
+//  }
+//  else if (currentRadio)
+//  {
+//    RadioViewController* view = [[RadioViewController alloc] initWithRadio:currentRadio];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];  
+//  }
+//  else if (ownRadio)
+//  {
+//    RadioViewController* view = [[RadioViewController alloc] initWithRadio:ownRadio];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];  
+//  }  
 }
 
 

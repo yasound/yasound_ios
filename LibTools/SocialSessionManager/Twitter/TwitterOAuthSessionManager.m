@@ -9,16 +9,24 @@
 
 #import "TwitterOAuthSessionManager.h"
 #import "Security/SFHFKeychainUtils.h"
+
+//LBDEBUG ICI
 #import "YasoundAppDelegate.h"
 
-//neywen test
+
+//LBDEBUG ICI
+#ifdef USE_DEV_SERVER
+#define kOAuthConsumerKey @"iLkxaRcY8QKku0UhaMvPQ"         //REPLACE With Twitter App OAuth Key  
+#define kOAuthConsumerSecret @"rZYlrG4KXIat3nNJ3U8qXniQBSkJu8PjI1v7sCTHg"     //REPLACE With Twitter App OAuth Secret  
+#else
 #define kOAuthConsumerKey @"bvpS9ZEO6REqL96Sjuklg"         //REPLACE With Twitter App OAuth Key  
 #define kOAuthConsumerSecret @"TMdhQbWXarXoxkjwSdUbTif5CyapHLfcAdYfTnTOmc"     //REPLACE With Twitter App OAuth Secret  
+#endif
 
-// yasound
-//#define kOAuthConsumerKey @"bvpS9ZEO6REqL96Sjuklg"         //REPLACE With Twitter App OAuth Key  
-//#define kOAuthConsumerSecret @"TMdhQbWXarXoxkjwSdUbTif5CyapHLfcAdYfTnTOmc"     //REPLACE With Twitter App OAuth Secret  
 
+//LBDEBUG ICI
+//#define kOAuthConsumerKey @"TdpKTtfEsEfPFXrq9GlQ"         //REPLACE With Twitter App OAuth Key  
+//#define kOAuthConsumerSecret @"JPPj1VXXTYQ6w81CrszFRYxfHkKvPi4BYD6pV9CnGQ"     //REPLACE With Twitter App OAuth Secret  
 
 
 
@@ -39,6 +47,13 @@
   
   if (!_engine)
   {  
+#ifdef USE_DEV_SERVER
+      NSLog(@"TwitterOAuthSessionManager linked to DEV SERVER : id %@.", kOAuthConsumerKey);
+#else
+      NSLog(@"TwitterOAuthSessionManager linked to PRODUCTION SERVER : id %@.", kOAuthConsumerKey);
+#endif      
+      
+      
     _engine = [[SA_OAuthTwitterEngine alloc] initOAuthWithDelegate:self];  
     _engine.consumerKey    = kOAuthConsumerKey;  
     _engine.consumerSecret = kOAuthConsumerSecret;  
@@ -46,18 +61,20 @@
   
     if(![_engine isAuthorized])
     {  
-        SA_OAuthTwitterController *controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_engine delegate:self];  
-        if (!controller)
+        _controller = [SA_OAuthTwitterController controllerToEnterCredentialsWithTwitterEngine:_engine delegate:self];  
+        if (!_controller)
           return;
 
-        controller.delegate = self;
+        _controller.delegate = self;
     
+        //LBDEBUG ICI
+//        [_parent presentModalViewController:_controller animated: YES];  
+
         YasoundAppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-        NSArray* viewControllers = appDelegate.navigationController.childViewControllers;
+        NSArray* viewControllers = appDelegate.navigationController.viewControllers;
         UIViewController* viewController = [viewControllers objectAtIndex:(viewControllers.count-1)];
-      
-        //LBDEBUG ICI //parent
-        [viewController presentModalViewController:controller animated: YES];  
+
+        [viewController presentModalViewController:_controller animated: YES];  
     }  
 }
 
@@ -68,18 +85,40 @@
   _isLoging = NO;
   
   // clean credentials
-  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+    NSString* token = [[NSUserDefaults standardUserDefaults] valueForKey:DATA_FIELD_TOKEN];
   
-  [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_SCREENNAME];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERID];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:DATA_FIELD_TOKEN];
+    
+    
   
   // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
   //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
   
+    
+
+    
+    
+    
   NSError* error;
   NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
   [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
 
+    [SFHFKeychainUtils deleteItemForUsername:token andServiceName:BundleName error:nil];
+    
+    
+    
+    if (_controller)
+    {
+        [_controller release];
+    }
+    
   // clean twitter engine
+    
+    
   if (_engine)
   {
     [_engine clearAccessToken];
@@ -120,8 +159,15 @@
     NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
     [user setValue:userid forKey:DATA_FIELD_ID];
     [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
-      [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN] forKey:DATA_FIELD_TOKEN];
-      [user setValue:[[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN_SECRET] forKey:DATA_FIELD_TOKEN_SECRET];
+      
+      NSString* token = [[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN];
+      
+      NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+      NSString* tokenSecret = [SFHFKeychainUtils getPasswordForUsername:token andServiceName:BundleName error:nil];
+      
+      [user setValue:token forKey:DATA_FIELD_TOKEN];
+      [user setValue:tokenSecret forKey:DATA_FIELD_TOKEN_SECRET];
+
     [user setValue:username forKey:DATA_FIELD_USERNAME];
     [user setValue:userscreenname forKey:DATA_FIELD_NAME];
       
@@ -222,8 +268,12 @@
   //LBDEBUG
   assert (oauth_token != nil);
   [[NSUserDefaults standardUserDefaults] setValue:oauth_token forKey:DATA_FIELD_TOKEN];
-  assert (oauth_token_secret != nil);
-  [[NSUserDefaults standardUserDefaults] setValue:oauth_token_secret forKey:DATA_FIELD_TOKEN_SECRET];
+
+    assert (oauth_token_secret != nil);
+    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+    [SFHFKeychainUtils storeUsername:oauth_token andPassword:oauth_token_secret  forServiceName:BundleName updateExisting:YES error:nil];
+
+    
   [[NSUserDefaults standardUserDefaults] synchronize];
   
   //  NSLog(@"oauth_token %@", oauth_token);
@@ -279,9 +329,7 @@
   end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
   if (end.location == NSNotFound)
   {
-    assert(0);
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
-    return;
+      end.location = data.length;
   }
   
   // extract user screen name

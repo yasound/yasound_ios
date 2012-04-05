@@ -935,8 +935,6 @@
     }
     else if (taskInfo.status == eTaskFailure)
     {
-        if ([taskTimer isValid])
-            [taskTimer invalidate];
         [self finalize];
     }
   else if (taskInfo.status == eTaskPending)
