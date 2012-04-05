@@ -60,9 +60,11 @@
 - (void)registerForTwitter; // login info are handle by SocialSessionManager
 
 
-- (void)associateAccountYasound:(NSString*)email pword:(NSString*)pword target:(id)target action:(SEL)action;
-- (void)associateAccount:(NSString*)accountIdentifier withTarget:(id)target action:(SEL)action  associate:(BOOL)associate;
-- (void)dissociateAccount:(NSString*)accountIdentifier target:(id)target action:(SEL)action;
+
+- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector;
+- (void)associateAccountFacebook:(NSString*)username uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector;
+- (void)associateAccountTwitter:(NSString*)username uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector;
+- (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector;
 - (BOOL)isAccountAssociated:(NSString*)accountIdentifier;
 
 

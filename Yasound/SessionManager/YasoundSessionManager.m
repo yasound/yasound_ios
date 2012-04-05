@@ -682,68 +682,91 @@ static YasoundSessionManager* _main = nil;
 
 
 
-- (void)dissociateAccount:(NSString*)accountIdentifier target:(id)target action:(SEL)action
+- (void)associateAccountFacebook:(NSString*)username uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector
 {
     _target = target;
-    _action = action;
+    _action = selector;
+    
+    self.associatingFacebook = YES;
+    
+    [self.associatingInfo setObject:username forKey:@"username"];
+    [self.associatingInfo setObject:uid forKey:@"uid"];
+    [self.associatingInfo setObject:token forKey:@"token"];
+    [self.associatingInfo setObject:email forKey:@"email"];
+
+    // launch login dialog to get user info
+    [[FacebookSessionManager facebook] setTarget:self];
+    [[FacebookSessionManager facebook] login];    
+}
+
+
+- (void)associateAccountTwitter:(NSString*)username uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector
+{
+    _target = target;
+    _action = selector;
+    
+    self.associatingFacebook = YES;
+    
+    [self.associatingInfo setObject:username forKey:@"username"];
+    [self.associatingInfo setObject:uid forKey:@"uid"];
+    [self.associatingInfo setObject:token forKey:@"token"];
+    [self.associatingInfo setObject:tokenSecret forKey:@"tokenSecret"];
+    [self.associatingInfo setObject:email forKey:@"email"];
+    
+    // launch login dialog to get user info
+    [[TwitterSessionManager twitter] setTarget:self];
+    [[TwitterSessionManager twitter] login];
+}
+
+
+
+- (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector
+{
+    _target = target;
+    _action = selector;
 
     self.associatingYasound = YES;
-
-    //ICI
-//    
-//    [[YasoundDataProvider main] dissociateAccountYasound:email target:self action:@selector(dissociateYasoundRequestDidReturn:info:)];
-
+    
+    [[YasoundDataProvider main] dissociateAccount:accountTypeIdentifier  target:self action:@selector(dissociateRequestDidReturn:)];
 }
 
 
 
-- (void)associateAccount:(NSString*)accountIdentifier withTarget:(id)target action:(SEL)action  associate:(BOOL)associate
-{
-    _target = target;
-    _action = action;
-    
-    
-    if (associate)
-    {
-        if ([accountIdentifier isEqualToString:LOGIN_TYPE_FACEBOOK])
-        {
-            self.associatingFacebook = YES;
-
-            [[FacebookSessionManager facebook] setTarget:self];
-            [[FacebookSessionManager facebook] login];    
-
-        }
-        else if ([accountIdentifier isEqualToString:LOGIN_TYPE_TWITTER])
-        {
-            self.associatingTwitter = YES;
-
-            [[TwitterSessionManager twitter] setTarget:self];
-            [[TwitterSessionManager twitter] login];
-
-        }
-
-    }
-
-
-    else 
-    {
-        if ([accountIdentifier isEqualToString:LOGIN_TYPE_FACEBOOK])
-        {
-            self.associatingFacebook = YES;
-            
-        }
-        else if ([accountIdentifier isEqualToString:LOGIN_TYPE_TWITTER])
-        {
-            self.associatingTwitter = YES;
-            
-        }
-
-    }
-}
 
 
 
 #pragma mark - YasoundDataProvider actions
+
+
+- (void)dissociateRequestDidReturn:(NSDictionary*)info
+{
+    NSLog(@"dissociateRequestDidReturn :%@", info);
+    
+    
+    if (self.associatingFacebook)
+    {
+        [self accountManagerRemove:LOGIN_TYPE_FACEBOOK];
+        self.associatingFacebook = NO;
+    }
+    else if (self.associatingTwitter)
+    {
+        [self accountManagerRemove:LOGIN_TYPE_TWITTER];
+        self.associatingTwitter = NO;
+    }
+    else if (self.associatingYasound)
+    {
+        [self accountManagerRemove:LOGIN_TYPE_YASOUND];
+        self.associatingYasound = NO;
+    }
+    
+    
+    // callback
+    [_target performSelector:_action withObject:info];    
+}
+
+
+
+
 
 
 - (void) associateYasoundRequestDidReturn:(NSDictionary*)info
@@ -769,18 +792,6 @@ static YasoundSessionManager* _main = nil;
 
 
 
-- (void) dissociateYasoundRequestDidReturn:(NSDictionary*)info
-{
-    NSLog(@"dissociateYasoundRequestDidReturn :%@", info);
-    
-    
-    [self accountManagerRemove:LOGIN_TYPE_YASOUND];
-    
-    self.associatingYasound = NO;
-    
-    // callback
-    [_target performSelector:_action withObject:info];    
-}
 
 
 

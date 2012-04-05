@@ -609,6 +609,12 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+#pragma mark - Accounts Dissociation
+
+- (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector
+{
+
+}
 
 
 

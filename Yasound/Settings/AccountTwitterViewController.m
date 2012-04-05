@@ -10,6 +10,7 @@
 #import "YasoundSessionManager.h"
 #import "AudioStreamManager.h"
 #import "ConnectionView.h"
+#import "ActivityAlertView.h"
 
 @interface AccountTwitterViewController ()
 
@@ -36,7 +37,30 @@
     
     _usernameLabel.text = NSLocalizedString(@"AccountsView_username_label", nil);
     
-    
+    [self update];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+
+
+
+
+
+
+- (void)update
+{
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
     {
         _usernameLabel.textColor = [UIColor whiteColor];
@@ -53,19 +77,6 @@
         
         _usernameValue.text = @"-";
     }
-    
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 
@@ -85,16 +96,16 @@
     // logout
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
     {
-        [[YasoundSessionManager main] associateAccount:LOGIN_TYPE_TWITTER withTarget:self action:@selector(dissociateReturned:) associate:NO];
+        [[YasoundSessionManager main] dissociateAccount:LOGIN_TYPE_TWITTER target:self action:@selector(dissociateReturned:)];
     }
     
     // login
     else
     {
-        [[YasoundSessionManager main] associateAccount:LOGIN_TYPE_TWITTER withTarget:self action:@selector(associateReturned:) associate:YES];
+        [[YasoundSessionManager main] associateAccountTwitter:self action:@selector(associateReturned:)];
         
         // show a connection alert
-        [self.view addSubview:[ConnectionView start]];
+        [self.view addSubview:[ConnectionView startWithFrame:CGRectMake(86,340, 138, 90)]];
     }
     
 }
@@ -103,18 +114,72 @@
 
 - (void)associateReturned:(NSDictionary*)info
 {
+    NSLog(@"associateReturned :%@", info);
+    
     // close the connection alert
     [ConnectionView stop];
     
+    BOOL succeeded = NO;
+    
+    NSNumber* nb = [info objectForKey:@"succeeded"];
+    succeeded = [nb boolValue];
+    
+    if (!succeeded)
+    {
+        NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
+        title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Twitter"];
+        
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:NSLocalizedString(@"AccountsView_alert_user_incorrect", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;    
+    }
+    
+    
+    // success
+    NSString* title =  NSLocalizedString(@"AccountsView_alert_login_success", nil);
+    title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Twitter"];
+    [ActivityAlertView showWithTitle:title closeAfterTimeInterval:2];
+    
+    [self update];
+    
 }
+
 
 
 - (void)dissociateReturned:(NSDictionary*)info
 {
+    NSLog(@"dissociateReturned :%@", info);
+    
     // close the connection alert
     [ConnectionView stop];
     
+    BOOL succeeded = NO;
+    
+    NSNumber* nb = [info objectForKey:@"succeeded"];
+    succeeded = [nb boolValue];
+    
+    if (!succeeded)
+    {
+        NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
+        title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Twitter"];
+        
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:NSLocalizedString(@"AccountsView_alert_logout_error", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;    
+    }
+    
+    
+    // success
+    NSString* title =  NSLocalizedString(@"AccountsView_alert_logout_success", nil);
+    title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Twitter"];
+    [ActivityAlertView showWithTitle:title closeAfterTimeInterval:2];
+    
+    [self update];
+    
 }
+
 
 
 
