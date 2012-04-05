@@ -450,3 +450,5 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "NotificationCenterView_title" =  "Mes Notifications";
 "NotificationCenterView_edit" = "Modifier";
+
+"YasoundMessage_title" = "Message de Yasound";

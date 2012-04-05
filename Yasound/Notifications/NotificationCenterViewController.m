@@ -12,6 +12,9 @@
 #import "AudioStreamManager.h"
 #import "NotificationCenterTableViewcCell.h"
 #import "YasoundNotifCenter.h"
+#import "FriendsViewController.h"
+#import "RadioViewController.h"
+#import "MessageWeViewController.h"
 
 @implementation NotificationCenterViewController
 
@@ -121,6 +124,36 @@
   return cell;
 }
 
+
+- (void)goToFriendsViewController
+{
+  FriendsViewController* view = [[FriendsViewController alloc] initWithNibName:@"FriendsViewController" bundle:nil title:NSLocalizedString(@"selection_tab_friends", nil) tabIcon:@"tabIconFavorites.png"];
+  [self.navigationController pushViewController:view animated:YES];
+  [view release];
+}
+
+- (void)goToRadio:(NSNumber*)radioID
+{
+  [[YasoundDataProvider main] radioWithId:radioID target:self action:@selector(receivedRadio:withInfo:)];
+}
+
+- (void)goToMessageWebView:(NSString*)url
+{
+  MessageWeViewController* view = [[MessageWeViewController alloc] initWithNibName:@"MessageWeViewController" bundle:nil url:url];
+  [self.navigationController pushViewController:view animated:YES];
+  [view release];
+}
+
+- (void)receivedRadio:(Radio*)radio withInfo:(NSDictionary*)info
+{
+  if (!radio)
+    return;
+  
+  RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
+  [self.navigationController pushViewController:view animated:YES];
+  [view release]; 
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   APNsNotifInfo* notifInfo = [[YasoundNotifCenter main].notifInfos objectAtIndex:indexPath.row];
@@ -132,6 +165,7 @@
   {
     case eAPNsNotif_FriendOnline:
       NSLog(@"go to friend screen");
+      [self goToFriendsViewController];
       break;
       
     case eAPNsNotif_UserInRadio:
@@ -142,10 +176,12 @@
     case eAPNsNotif_RadioShared:
     case eAPNsNotif_FriendCreatedRadio:
       NSLog(@"go to radio %@", radioID);
+      [self goToRadio:radioID];
       break;
       
     case eAPNsNotif_YasoundMessage:
       NSLog(@"go to web page %@", url);
+      [self goToMessageWebView:url];
       break;
       
     default:

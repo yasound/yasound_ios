@@ -97,6 +97,10 @@
   else
     _notifTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:fontSize];
   
+  NSString* s = [self dateToString:_notifInfo.date];
+  _notifDateLabel.text = s;
+
+  
   if (read)
     _unreadImage.hidden = YES;
 }
