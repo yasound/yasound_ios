@@ -145,9 +145,16 @@
     {
         NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
         title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Facebook"];
+
         
-        NSString* message = [info objectForKey:@"response"];
-        if (message == nil)
+        //LBDEBUG TEST
+        NSDictionary* userData = [info objectForKey:@"userData"];
+        NSInteger statusCode = [[userData objectForKey:@"responseStatusCode"] intValue];
+        
+        NSString* message = nil;
+        if (statusCode == 400)
+            message = [info objectForKey:@"response"];
+        else
             message = NSLocalizedString(@"AccountsView_alert_user_incorrect", nil);
         
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

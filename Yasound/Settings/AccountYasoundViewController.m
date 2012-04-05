@@ -78,10 +78,10 @@
         _pword.text = [account objectForKey:@"pword"];
         
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
-
-        [_logoutButton setImage:@"BigActionRedButton.png" forState:UIControlStateNormal];
-        [_logoutButton setImage:@"BigActionRedButtonHighlighted.png" forState:UIControlStateHighlighted];
-        [_logoutButton setImage:@"BigActionButtonDisabled.png" forState:UIControlStateDisabled];
+//
+//        [_logoutButton setImage:@"BigActionRedButton.png" forState:UIControlStateNormal];
+//        [_logoutButton setImage:@"BigActionRedButtonHighlighted.png" forState:UIControlStateHighlighted];
+//        [_logoutButton setImage:@"BigActionButtonDisabled.png" forState:UIControlStateDisabled];
 
         // disable the button if you want to prevent the user to disconnect from the only one associated account
         if ([[YasoundSessionManager main] accountManagerNumberOfAccounts] == 1)
@@ -101,9 +101,9 @@
 
         _logoutLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
         
-        [_logoutButton setImage:@"BigActionGreenButton.png" forState:UIControlStateNormal];
-        [_logoutButton setImage:@"BigActionGreenButtonHighlighted.png" forState:UIControlStateHighlighted];
-        [_logoutButton setImage:@"BigActionButtonDisabled.png" forState:UIControlStateDisabled];
+//        [_logoutButton setImage:@"BigActionGreenButton.png" forState:UIControlStateNormal];
+//        [_logoutButton setImage:@"BigActionGreenButtonHighlighted.png" forState:UIControlStateHighlighted];
+//        [_logoutButton setImage:@"BigActionButtonDisabled.png" forState:UIControlStateDisabled];
         
     }
 }
@@ -202,8 +202,14 @@
         NSString* title =  NSLocalizedString(@"AccountsView_alert_title", nil);
         title = [title stringByReplacingOccurrencesOfString:@"%@" withString:@"Yasound"];
         
-        NSString* message = [info objectForKey:@"response"];
-        if (message == nil)
+        //LBDEBUG TEST
+        NSDictionary* userData = [info objectForKey:@"userData"];
+        NSInteger statusCode = [[userData objectForKey:@"responseStatusCode"] intValue];
+        
+        NSString* message = nil;
+        if (statusCode == 400)
+            message = [info objectForKey:@"response"];
+        else
             message = NSLocalizedString(@"AccountsView_alert_user_incorrect", nil);
         
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
