@@ -23,8 +23,8 @@
 
 #define NB_ROWS 4
 #define ROW_COVER 0
-#define ROW_NBLIKES 1
-#define ROW_LAST_READ 2
+#define ROW_OWN_RADIO 1
+#define ROW_CURRENT_RADIO 2
 #define ROW_FREQUENCY 3
 
 #define BORDER 8
@@ -53,7 +53,6 @@
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
-    [[YasoundDataProvider main] userWithId:self.user.id target:self action:@selector(onUserInfo:info:)];
 }
 
 - (void)viewDidUnload
@@ -78,6 +77,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [[YasoundDataProvider main] userWithId:self.user.id target:self action:@selector(onUserInfo:info:)];
     
     if ([AudioStreamManager main].currentRadio == nil)
         [_nowPlayingButton setEnabled:NO];
@@ -230,19 +230,15 @@
         cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:16];
     }
     
-    if (indexPath.row == ROW_NBLIKES)
+    if (indexPath.row == ROW_OWN_RADIO)
     {
-        cell.textLabel.text = NSLocalizedString(@"SongView_nbLikes", nil);
-//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.song.likes];
+        cell.textLabel.text = NSLocalizedString(@"ProfileViewController_ownradio", nil);
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.user.own_radio.name];
     }
-    else if (indexPath.row == ROW_LAST_READ)
+    else if (indexPath.row == ROW_CURRENT_RADIO)
     {
-        cell.textLabel.text = NSLocalizedString(@"SongView_lastRead", nil);
-        
-//        if (self.song.last_play_time != nil)
-//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self dateToString:self.song.last_play_time]];
-//        else
-//            cell.detailTextLabel.text = @"-";
+        cell.textLabel.text = NSLocalizedString(@"ProfileViewController_currentradio", nil);
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.user.current_radio.name];
     }
     else if (indexPath.row == ROW_FREQUENCY)
     {
@@ -347,10 +343,10 @@
 }
 
 
-- (void)onUserInfo:(User*)user info:(NSDictionary*)info
+- (void)onUserInfo:(User*)aUser info:(NSDictionary*)info
 {
-//    self.song = song;
-//    [_tableView reloadData];
+    self.user = aUser;
+    [_tableView reloadData];
 }
 
 
