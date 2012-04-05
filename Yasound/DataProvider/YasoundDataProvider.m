@@ -632,7 +632,7 @@ static YasoundDataProvider* _main = nil;
     }
 }
 
-- (void)receiveFacebookssociation:(id)obj info:(NSDictionary*)info
+- (void)receiveFacebookAssociation:(id)obj info:(NSDictionary*)info
 {
     NSLog(@"YasoundDataProvider receiveFacebookAssociation : info %@", info);
     

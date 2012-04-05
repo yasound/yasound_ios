@@ -309,7 +309,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "AccountsView_logout_label" = "Se déconnecter";
 "AccountsView_login_label" = "Se connecter";
 "AccountsView_alert_title" = "Compte %@";
-"AccountView_alert_user_incorrect" = "Informations de connexion incorrectes.";
+"AccountsView_alert_user_incorrect" = "Informations de connexion incorrectes.";
 "AccountsView_alert_login_success" = "Compte %@ enregistré.";
 "AccountsView_alert_logout_success" = "Compte %@ déconnecté.";
 "AccountsView_alert_logout_error" = "Impossible de déconnecter le compte.";

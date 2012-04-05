@@ -303,6 +303,18 @@ static YasoundSessionManager* _main = nil;
 //    [av release];  
 }
 
+- (void)loginCanceled
+{
+  User* nilUser = nil;
+  _error = NO;
+  [_target performSelector:_action withObject:nilUser withObject:[NSDictionary dictionaryWithObject:@"Cancel" forKey:@"error"]];
+  //    [ActivityAlertView close];
+  
+  //    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  //    [av show];
+  //    [av release];  
+}
+
 - (void)userInfoError
 {
     User* nilUser = nil;
@@ -456,9 +468,17 @@ static YasoundSessionManager* _main = nil;
 - (void)sessionDidLogin:(BOOL)authorized
 {
     NSLog(@"YasoundSessionManager::sessionDidLogin    authorized %d", authorized);
-    NSLog(@"self.loginType %@", self.loginType);
     
-    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    if (self.associatingFacebook)
+    {
+        [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
+    }
+    else if (self.associatingTwitter)
+    {
+        [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
+    }
+    
+    else if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
         [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
     }
@@ -531,6 +551,12 @@ static YasoundSessionManager* _main = nil;
     [self loginError];
 }
 
+- (void)sessionLoginCanceled
+{
+  self.loginType = nil;
+  [self loginCanceled];
+}
+
 
 - (void)sessionDidLogout
 {
@@ -598,7 +624,8 @@ static YasoundSessionManager* _main = nil;
         [self.associatingInfo setObject:email_n forKey:@"email"];
 
         // request to yasound server
-        [[YasoundDataProvider main] associateAccountFacebook:username uid:uid token:token email:email target:self action:@selector(associatingSocialValidated:)];
+        
+        [[YasoundDataProvider main] associateAccountFacebook:username type:LOGIN_TYPE_FACEBOOK uid:uid token:token email:email target:self action:@selector(associatingSocialValidated:)];
     }
     
     
@@ -616,7 +643,7 @@ static YasoundSessionManager* _main = nil;
         [self.associatingInfo setObject:email_n forKey:@"email"];
         
         // request to yasound server
-        [[YasoundDataProvider main] associateAccountTwitter:username uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(associatingSocialValidated:)];
+        [[YasoundDataProvider main] associateAccountTwitter:username  type:LOGIN_TYPE_TWITTER uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(associatingSocialValidated:)];
     }
     
     //
@@ -849,11 +876,17 @@ static YasoundSessionManager* _main = nil;
 {
     NSLog(@"associatingSocialValidated returned : %@", info);
     
-    if (self.associatingFacebook)
+    BOOL succeeded = NO;
+    
+    NSNumber* nb = [info objectForKey:@"succeeded"];
+    succeeded = [nb boolValue];
+    
+    
+    if (succeeded && self.associatingFacebook)
     {
         [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:self.associatingInfo];
     }
-    else if (self.associatingTwitter)
+    else if (succeeded && self.associatingTwitter)
     {
         [self accountManagerAdd:LOGIN_TYPE_TWITTER  withInfo:self.associatingInfo];
     }

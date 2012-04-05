@@ -439,6 +439,7 @@
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller
 {
   _isLoging = NO;
+  [self.delegate sessionLoginCanceled];
   NSLog(@"OAuthTwitterControllerCanceled");
 }
 
