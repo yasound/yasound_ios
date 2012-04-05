@@ -456,9 +456,17 @@ static YasoundSessionManager* _main = nil;
 - (void)sessionDidLogin:(BOOL)authorized
 {
     NSLog(@"YasoundSessionManager::sessionDidLogin    authorized %d", authorized);
-    NSLog(@"self.loginType %@", self.loginType);
     
-    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    if (self.associatingFacebook)
+    {
+        [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
+    }
+    else if (self.associatingTwitter)
+    {
+        [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
+    }
+    
+    else if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
         [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
     }
@@ -850,11 +858,17 @@ static YasoundSessionManager* _main = nil;
 {
     NSLog(@"associatingSocialValidated returned : %@", info);
     
-    if (self.associatingFacebook)
+    BOOL succeeded = NO;
+    
+    NSNumber* nb = [info objectForKey:@"succeeded"];
+    succeeded = [nb boolValue];
+    
+    
+    if (succeeded && self.associatingFacebook)
     {
         [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:self.associatingInfo];
     }
-    else if (self.associatingTwitter)
+    else if (succeeded && self.associatingTwitter)
     {
         [self accountManagerAdd:LOGIN_TYPE_TWITTER  withInfo:self.associatingInfo];
     }
