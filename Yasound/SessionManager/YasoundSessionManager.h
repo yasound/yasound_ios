@@ -23,6 +23,8 @@
 
     id _postTarget;
     SEL _postAction;
+    
+    BOOL _error;
 }
 
 @property (nonatomic) BOOL registered;

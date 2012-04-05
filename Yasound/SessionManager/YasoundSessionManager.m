@@ -52,6 +52,8 @@ static YasoundSessionManager* _main = nil;
         self.associatingFacebook = NO;
         self.associatingTwitter = NO;
         self.associatingYasound = NO;
+        _error = NO;
+
         
         
         [_dico retain];
@@ -174,6 +176,8 @@ static YasoundSessionManager* _main = nil;
     
     _target = target;
     _action = action;
+    _error = NO;
+
     
     NSString* email = [_dico objectForKey:@"email"];
     NSString* pword = [SFHFKeychainUtils getPasswordForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
@@ -186,6 +190,7 @@ static YasoundSessionManager* _main = nil;
 {
     _target = target;
     _action = action;
+    _error = NO;
     
     self.loginType = LOGIN_TYPE_FACEBOOK;
 
@@ -199,6 +204,7 @@ static YasoundSessionManager* _main = nil;
 {
     _target = target;
     _action = action;
+    _error = NO;
     
     self.loginType = LOGIN_TYPE_TWITTER;
 
@@ -245,6 +251,12 @@ static YasoundSessionManager* _main = nil;
 
 - (void) loginSocialValidated:(User*)user info:(NSDictionary*)info
 {
+    if (_error)
+    {
+        NSLog(@"loginSocialValidated returned but canceled because error");
+        return;
+    }
+
     NSLog(@"loginSocialValidated returned : %@ %@", user, info);
     
     if (user == nil)
@@ -282,6 +294,7 @@ static YasoundSessionManager* _main = nil;
 - (void)loginError
 {
     User* nilUser = nil;
+    _error = YES;
     [_target performSelector:_action withObject:nilUser withObject:[NSDictionary dictionaryWithObject:@"Login" forKey:@"error"]];
 //    [ActivityAlertView close];
     
@@ -293,6 +306,7 @@ static YasoundSessionManager* _main = nil;
 - (void)userInfoError
 {
     User* nilUser = nil;
+    _error = YES;
     [_target performSelector:_action withObject:nilUser withObject:[NSDictionary dictionaryWithObject:@"UserInfo" forKey:@"error"]];
 }
 
@@ -658,7 +672,7 @@ static YasoundSessionManager* _main = nil;
         [self.associatingInfo setObject:email_n forKey:@"email"];
         
         // and add the account as associated account
-        [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:self.associatingInfo];
+        [self accountManagerAdd:LOGIN_TYPE_TWITTER  withInfo:self.associatingInfo];
         
         
         
