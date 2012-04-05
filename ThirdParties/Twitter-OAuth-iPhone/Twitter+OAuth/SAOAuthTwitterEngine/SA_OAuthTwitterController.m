@@ -16,6 +16,11 @@
 
 #import "SA_OAuthTwitterController.h"
 
+#import "OAMutableURLRequest.h"
+#import "OARequestParameter.h"
+#import "OADataFetcher.h"
+
+
 // Constants
 static NSString* const kGGTwitterLoadingBackgroundImage = @"twitter_load.png";
 
@@ -351,11 +356,108 @@ Ugly. I apologize for its inelegance. Bleah.
 	[UIView commitAnimations];
 }
 
+- (void)requestAccessToken:(NSString*)callback {
+  
+  OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:
+                                  [NSURL URLWithString:@"https://twitter.com/oauth/access_token"] 
+                                                                 consumer:_engine.consumer
+                                                                    token:_engine.requestToken
+                                                                    realm:nil		// our service provider doesn't specify a realm
+                                                        signatureProvider:nil]; 	// use the default method, HMAC-SHA1
+  [request setHTTPMethod: @"POST"];
+  
+	NSArray *parts = [callback componentsSeparatedByString:@"?"];
+	NSArray *pairs = [[parts objectAtIndex:1] componentsSeparatedByString:@"&"];
+	for (NSString *pair in pairs) {
+		NSArray *elements = [pair componentsSeparatedByString:@"="];
+		[request setOAuthParameterName:[elements objectAtIndex:0] withValue:[elements objectAtIndex:1]];
+	}
+	
+	OADataFetcher *dataFetcher = [[OADataFetcher alloc] init];
+	[dataFetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(setAccessToken:withData:) didFailSelector:@selector(serviceTicket:didFailWithError:)];
+	[dataFetcher release];
+	[request release];
+}
+
+- (void)setAccessToken:(OAServiceTicket*)ticket withData:(NSData*)data {
+	if (ticket.didSucceed && data != nil) {
+		NSString *dataString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+		if (dataString) {
+			NSString *username = [self extractUsernameFromHTTPBody:dataString];
+			if (username != nil) {
+        
+				NSString *accessToken = [NSString stringWithString:dataString];
+				
+				//[SFHFKeychainUtils storeUsername:username andPassword:accessToken forServiceName:@"Callback_OAuth" updateExisting:YES error:&error];
+				//if (error) {
+				//	@throw [NSException exceptionWithName:@"Exception" reason:@"The keychain, it hates us." userInfo:nil];
+				//}
+        
+				//[self.delegate performSelectorOnMainThread:@selector(credentialSucceeded:) withObject:username waitUntilDone:NO];
+        NSLog(@"Twitter Access token received: %@ - %@", username, accessToken);
+				return;
+			}
+		}
+	}
+  
+	[self serviceTicket:nil didFailWithError:[NSError errorWithDomain:
+                                            NSLocalizedString(@"Twitter rejected the authentication.", @"Failed to start authentication")
+                                                               code:0 userInfo:nil]];
+}
+
+/**
+ * Utility function to grab screen name out of authorization response.
+ */
+- (NSString*)extractUsernameFromHTTPBody:(NSString*)body {
+	if (body != nil && [body length] > 0) {
+		NSArray *tuples = [body componentsSeparatedByString:@"&"];
+		if (tuples.count > 0) {
+			for (NSString *tuple in tuples) {
+				NSArray *keyValueArray = [tuple componentsSeparatedByString:@"="];
+				if (keyValueArray.count == 2 && [[keyValueArray objectAtIndex:0] isEqualToString:@"screen_name"]) 
+					return [keyValueArray objectAtIndex:1];
+			}
+		}
+	}
+	return nil;
+}
+
+/**
+ * Meh. 
+ */
+- (void)serviceTicket:(OAServiceTicket*)ticket didFailWithError:(NSError*)err {
+	self.error = err;
+	if (self.delegate) {
+		[self.delegate performSelectorOnMainThread:@selector(credentialFailed:) withObject:self waitUntilDone:NO];
+	}
+}
+
+
+
 
 - (BOOL) webView: (UIWebView *) webView shouldStartLoadWithRequest: (NSURLRequest *) request navigationType: (UIWebViewNavigationType) navigationType {
 	NSData				*data = [request HTTPBody];
 	char				*raw = data ? (char *) [data bytes] : "";
 	
+  
+  {
+    BOOL    response = YES;
+    NSURL 	*requestURL = [request URL];
+    
+    NSDictionary *dictionary = [request allHTTPHeaderFields];
+    for (id key in dictionary) {
+      NSLog(@"HTTPHeaderFields - key: %@, value: %@", [key description], [[dictionary objectForKey:key] description]);
+    }
+    
+    NSLog(@"%@", [requestURL description]);
+    if ([[requestURL host] isEqualToString:@"yasound.com"])
+    {
+      [self requestAccessToken: [requestURL absoluteString]];
+      return NO;
+    }	
+    
+  }
+  
 	if (raw && strstr(raw, "cancel=")) {
 		[self denied];
 		return NO;

@@ -40,6 +40,9 @@
 @implementation SA_OAuthTwitterEngine
 
 @synthesize pin = _pin, requestTokenURL = _requestTokenURL, accessTokenURL = _accessTokenURL, authorizeURL = _authorizeURL;
+@synthesize consumer = _consumer;
+@synthesize requestToken = _requestToken;
+@synthesize accessToken = _accessToken;
 @synthesize consumerSecret = _consumerSecret, consumerKey = _consumerKey;
 
 - (void) dealloc {
