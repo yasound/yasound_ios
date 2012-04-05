@@ -598,7 +598,8 @@ static YasoundSessionManager* _main = nil;
         [self.associatingInfo setObject:email_n forKey:@"email"];
 
         // request to yasound server
-        [[YasoundDataProvider main] associateAccountFacebook:username uid:uid token:token email:email target:self action:@selector(associatingSocialValidated:)];
+        
+        [[YasoundDataProvider main] associateAccountFacebook:username type:LOGIN_TYPE_FACEBOOK uid:uid token:token email:email target:self action:@selector(associatingSocialValidated:)];
     }
     
     
@@ -616,7 +617,7 @@ static YasoundSessionManager* _main = nil;
         [self.associatingInfo setObject:email_n forKey:@"email"];
         
         // request to yasound server
-        [[YasoundDataProvider main] associateAccountTwitter:username uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(associatingSocialValidated:)];
+        [[YasoundDataProvider main] associateAccountTwitter:username  type:LOGIN_TYPE_TWITTER uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(associatingSocialValidated:)];
     }
     
     //
