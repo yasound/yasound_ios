@@ -321,7 +321,7 @@
 {
     _favoriteRadios = radios;
     [_favoriteRadios retain];
-   // [_tableView reloadData];
+    [_tableView reloadData];
 }
 
 
