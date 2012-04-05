@@ -17,6 +17,7 @@
 #import "StatsViewController.h"
 #import "APNsNotifInfo.h"
 #import "YasoundNotifCenter.h"
+#import "NotificationCenterViewController.h"
 
 
 
@@ -110,11 +111,13 @@ void SignalHandler(int sig) {
   NSLog(@"Ask for push notification\n");
   [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
   
+  _mustGoToNotificationCenter = NO;
   id remoteNotifInfo = [launchOptions valueForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
   if (remoteNotifInfo)
   {
     YasoundAppDelegate* appDelegate = application.delegate;
     [appDelegate handlePushNotification:remoteNotifInfo];
+    _mustGoToNotificationCenter = YES;
   }
   
   return YES;
@@ -140,55 +143,38 @@ void SignalHandler(int sig) {
     NSLog(@"didFailToRegisterForRemoteNotificationsWithError:\n%@", [error localizedDescription]);
 }
 
+- (void)goToNotificationCenter
+{
+  NSLog(@"go to notification center");
+  NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
+  [self.navigationController pushViewController:view animated:YES];
+  [view release];
+}
+
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
   NSLog(@"didReceiveRemoteNotification:\n");
   [self handlePushNotification:userInfo];
+  
+  if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive)
+    [self goToNotificationCenter];
+    
+}
+
+- (BOOL)mustGoToNotificationCenter
+{
+  return _mustGoToNotificationCenter;
+}
+
+- (void)setMustGoToNotificationCenter:(BOOL)go
+{
+  _mustGoToNotificationCenter = go;
 }
 
 - (void)handlePushNotification:(NSDictionary*)notifDesc
 {     
-//  APNsNotifInfo* notifInfo = [[APNsNotifInfo alloc] initWithDictionary:notifDesc];
   APNsNotifInfo* notifInfo = [[YasoundNotifCenter main] addNotifInfoWithDescription:notifDesc];
-  APNsNotifType t = [notifInfo type];
-  switch (t) 
-  {
-    case eAPNsNotif_UserInRadio:
-      NSLog(@"user in radio %@", [notifInfo radioID]);
-      break;
-      
-    case eAPNsNotif_FriendInRadio:
-      NSLog(@"friend in radio %@", [notifInfo radioID]);
-      break;
-      
-    case eAPNsNotif_FriendOnline:
-      NSLog(@"a friend (%@) is online: go to friends list", [notifInfo userName]);
-      break;
-      
-    case eAPNsNotif_MessagePosted:
-      NSLog(@"message posted in radio %@", [notifInfo radioID]);
-      break;
-      
-    case eAPNsNotif_SongLiked:
-      NSLog(@"song liked in radio %@", [notifInfo radioID]);
-      break;
-      
-    case eAPNsNotif_RadioInFavorites:
-      NSLog(@"radio added in favorites %@", [notifInfo radioID]);
-      break;
-      
-    case eAPNsNotif_RadioShared:
-      NSLog(@"radio shared %@", [notifInfo radioID]);
-      break;
-      
-    case eAPNsNotif_FriendCreatedRadio:
-      NSLog(@"friend created radio %@", [notifInfo radioID]);
-      break;
-      
-    default:
-      break;
-  }
 }
 
 - (void)sendAPNsTokenString

@@ -20,12 +20,17 @@
 {
   NSString* _APNsTokenString;
   NSDictionary* _receivedAPNsInfo;
+  
+  BOOL _mustGoToNotificationCenter;
 }
 
 @property (nonatomic, retain)  IBOutlet UIWindow *window;
 @property (nonatomic, retain)  UINavigationController *navigationController;
 @property (nonatomic, retain) RootViewController* rootViewController;
 @property (nonatomic, retain) NSString* serverURL;
+
+- (BOOL)mustGoToNotificationCenter;
+- (void)setMustGoToNotificationCenter:(BOOL)go;
 
 
 - (NSString*)getServerUrlWith:(NSString*)target;
