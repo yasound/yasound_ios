@@ -883,6 +883,24 @@ static Song* _gNowPlayingSong = nil;
 }
 
 
+-(void)playSound
+{
+  return;
+  //Get the filename of the sound file:
+  NSString *path = [NSString stringWithFormat:@"%@%@", [[NSBundle mainBundle] resourcePath], @"/beeps/.wav"];
+  
+  //declare a system sound
+  SystemSoundID soundID;
+  
+  //Get a URL for the sound file
+  NSURL *filePath = [NSURL fileURLWithPath:path isDirectory:NO];
+  
+  //Use audio sevices to create the sound
+  AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
+  //Use audio services to play the sound
+  AudioServicesPlaySystemSound(soundID);
+}
+
 - (void)receivedCurrentMessageEvent:(WallEvent*)ev
 {
     if ((_latestEvent != nil) && ([ev.start_date isEarlierThanOrEqualTo:_latestEvent.start_date]))
@@ -892,6 +910,7 @@ static Song* _gNowPlayingSong = nil;
 
     [_wallEvents insertObject:ev atIndex:0];
     [self insertMessage];
+  [self playSound];
 }
 
 - (void)receivedCurrentLikeEvent:(WallEvent*)ev
