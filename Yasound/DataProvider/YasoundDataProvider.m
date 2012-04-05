@@ -556,8 +556,9 @@ static YasoundDataProvider* _main = nil;
     
     ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveYasoundAssociation:info:) withUserData:data withAuth:auth];
 
+    [req addPostValue:@"yasound" forKey:@"account_type"];
     [req addPostValue:email forKey:@"email"];
-    [req addPostValue:pword forKey:@"pword"];
+    [req addPostValue:pword forKey:@"password"];
     
     [req startAsynchronous];
 }
