@@ -293,6 +293,16 @@
 
 "NotificationView_title" = "Notifications";
 
+"NotifFriendGoesOnline" = "Friend goes online";
+"NotifFriendEnters" = "Friend enters";
+"NotifUserEnters" = "User enters";
+"NotifPostReceived" = "Post received";
+"NotifLikeReceived" = "Like received";
+"NotifSubscriptionReceived" = "Subscription received";
+"NotifRadioShared" = "Radio shared";
+"NotifNewFriendRadio" = "New friend radio";
+
+
 "AccountsView_username_label" = "Username";
 "AccountsView_logout_label" = "Logout";
 "AccountsView_login_label" = "Login";

@@ -293,6 +293,17 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "NotificationView_title" = "Notifications";
 
+"NotifFriendGoesOnline" = "Friend goes online";
+"NotifFriendEnters" = "Friend enters";
+"NotifUserEnters" = "User enters";
+"NotifPostReceived" = "Post received";
+"NotifLikeReceived" = "Like received";
+"NotifSubscriptionReceived" = "Subscription received";
+"NotifRadioShared" = "Radio shared";
+"NotifNewFriendRadio" = "New friend radio";
+
+
+
 "AccountsView_username_label" = "Nom d'utilisateur";
 "AccountsView_logout_label" = "Se déconnecter";
 "AccountsView_login_label" = "Se connecter";

@@ -6,9 +6,11 @@
 //
 
 #import "NotificationViewCell.h"
+#import "NotificationManager.h"
 
 @implementation NotificationViewCell
 
+@synthesize notifIdentifier;
 @synthesize notifSwitch;
 
 
@@ -20,11 +22,15 @@
         self.notifIdentifier = notifIdentifier;
         
         self.textLabel.textColor = [UIColor whiteColor];
+        self.textLabel.backgroundColor = [UIColor clearColor];
         self.textLabel.text = NSLocalizedString(self.notifIdentifier, nil);
         
-        _switchEnabled = [[UISwitch alloc] init];
-        _switchEnabled.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, _switchEnabled.frame.size.width, _switchEnabled.frame.size.height);
-
+        self.notifSwitch = [[UISwitch alloc] init];
+        CGRect frame = self.notifSwitch.frame;
+        self.notifSwitch.frame = CGRectMake(self.frame.size.width - frame.size.width - 8, (self.frame.size.height - frame.size.height) / 2.f, frame.size.width, frame.size.height);
+        [self addSubview:self.notifSwitch];
+        
+        self.notifSwitch.on = [[[NotificationManager main].notifications objectForKey:notifIdentifier] boolValue];
 
     }
     return self;
@@ -33,20 +39,8 @@
 
 - (void)update:(NSString*)notifIdentifier
 {
-    assert([ev isTextHeightComputed] == YES);
-    CGFloat height = [ev getTextHeight];
-    
-    self.date.text = [self dateToString:ev.start_date];
-    self.user.text = ev.user_name;
-    self.message.text = ev.text;
-    
-    self.messageBackground.frame = CGRectMake(self.messageBackground.frame.origin.x, self.messageBackground.frame.origin.y, self.messageBackground.frame.size.width, height + 2*MESSAGE_SPACING);
-    
-    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, height);
-    
-    self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, self.separator.frame.size.width, self.separator.frame.size.height);
-  
-  [self.avatar setUrl:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
+    self.textLabel.text = NSLocalizedString(self.notifIdentifier, nil);
+    self.notifSwitch.on = [[[NotificationManager main].notifications objectForKey:notifIdentifier] boolValue];
 }
 
 
