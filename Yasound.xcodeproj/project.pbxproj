@@ -92,6 +92,18 @@
 		4028E7BC152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7AC152D9E6F0056B34B /* NotificationCenterViewController.xib */; };
 		4028E7BD152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7AC152D9E6F0056B34B /* NotificationCenterViewController.xib */; };
 		4028E7BE152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7AC152D9E6F0056B34B /* NotificationCenterViewController.xib */; };
+		4028E7C2152DC1400056B34B /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
+		4028E7C3152DC1400056B34B /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
+		4028E7C4152DC1400056B34B /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
+		4028E7C5152DC1400056B34B /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
+		4028E7C6152DC1400056B34B /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
+		4028E7C7152DC1400056B34B /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
+		4028E7C8152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
+		4028E7C9152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
+		4028E7CA152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
+		4028E7CB152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
+		4028E7CC152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
+		4028E7CD152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
 		405ACE1B14F5551000DCB97A /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
 		405ACE1C14F5551000DCB97A /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
 		405ACE1D14F5551000DCB97A /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
@@ -2500,6 +2512,9 @@
 		4028E7AA152D9E6F0056B34B /* NotificationCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationCenterViewController.h; path = Notifications/NotificationCenterViewController.h; sourceTree = "<group>"; };
 		4028E7AB152D9E6F0056B34B /* NotificationCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationCenterViewController.m; path = Notifications/NotificationCenterViewController.m; sourceTree = "<group>"; };
 		4028E7AC152D9E6F0056B34B /* NotificationCenterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationCenterViewController.xib; path = Notifications/NotificationCenterViewController.xib; sourceTree = "<group>"; };
+		4028E7BF152DC13F0056B34B /* MessageWeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageWeViewController.h; path = Notifications/MessageWeViewController.h; sourceTree = "<group>"; };
+		4028E7C0152DC13F0056B34B /* MessageWeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageWeViewController.m; path = Notifications/MessageWeViewController.m; sourceTree = "<group>"; };
+		4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageWeViewController.xib; path = Notifications/MessageWeViewController.xib; sourceTree = "<group>"; };
 		405ACE1914F5551000DCB97A /* YasoundSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundSong.h; sourceTree = "<group>"; };
 		405ACE1A14F5551000DCB97A /* YasoundSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundSong.m; sourceTree = "<group>"; };
 		40A98AE514C74C3E00999793 /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserTableViewCell.h; path = RadioSelection/UserTableViewCell.h; sourceTree = "<group>"; };
@@ -3296,6 +3311,9 @@
 				4028E7AA152D9E6F0056B34B /* NotificationCenterViewController.h */,
 				4028E7AB152D9E6F0056B34B /* NotificationCenterViewController.m */,
 				4028E7AC152D9E6F0056B34B /* NotificationCenterViewController.xib */,
+				4028E7BF152DC13F0056B34B /* MessageWeViewController.h */,
+				4028E7C0152DC13F0056B34B /* MessageWeViewController.m */,
+				4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -4922,6 +4940,7 @@
 				BC4CA7A5152D20BF0051A085 /* BigActionButtonDisabled.png in Resources */,
 				BC4CA7AB152D20BF0051A085 /* BigActionButtonDisabled@2x.png in Resources */,
 				4028E7BE152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
+				4028E7CD152DC1400056B34B /* MessageWeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5126,6 +5145,7 @@
 				BC4CA7C8152D26130051A085 /* NotificationViewController.xib in Resources */,
 				B16CAEC7152D791600317510 /* ProfileViewController.xib in Resources */,
 				4028E7BB152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
+				4028E7CA152DC1400056B34B /* MessageWeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5330,6 +5350,7 @@
 				BC4CA7C7152D26130051A085 /* NotificationViewController.xib in Resources */,
 				B16CAEC6152D791600317510 /* ProfileViewController.xib in Resources */,
 				4028E7BA152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
+				4028E7C9152DC1400056B34B /* MessageWeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5534,6 +5555,7 @@
 				BC4CA7CA152D26130051A085 /* NotificationViewController.xib in Resources */,
 				B16CAEC9152D791600317510 /* ProfileViewController.xib in Resources */,
 				4028E7BD152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
+				4028E7CC152DC1400056B34B /* MessageWeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5738,6 +5760,7 @@
 				BC4CA7C6152D26130051A085 /* NotificationViewController.xib in Resources */,
 				B16CAEC5152D791600317510 /* ProfileViewController.xib in Resources */,
 				4028E7B9152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
+				4028E7C8152DC1400056B34B /* MessageWeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5942,6 +5965,7 @@
 				BC4CA7C9152D26130051A085 /* NotificationViewController.xib in Resources */,
 				B16CAEC8152D791600317510 /* ProfileViewController.xib in Resources */,
 				4028E7BC152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
+				4028E7CB152DC1400056B34B /* MessageWeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6121,6 +6145,7 @@
 				4028E7A6152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7B2152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B8152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
+				4028E7C7152DC1400056B34B /* MessageWeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6302,6 +6327,7 @@
 				4028E7A3152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7AF152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B5152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
+				4028E7C4152DC1400056B34B /* MessageWeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6483,6 +6509,7 @@
 				4028E7A2152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7AE152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B4152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
+				4028E7C3152DC1400056B34B /* MessageWeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6665,6 +6692,7 @@
 				4028E7A5152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7B1152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B7152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
+				4028E7C6152DC1400056B34B /* MessageWeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6846,6 +6874,7 @@
 				4028E7A1152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7AD152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B3152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
+				4028E7C2152DC1400056B34B /* MessageWeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7028,6 +7057,7 @@
 				4028E7A4152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7B0152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B6152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
+				4028E7C5152DC1400056B34B /* MessageWeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

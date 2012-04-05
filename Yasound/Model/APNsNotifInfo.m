@@ -17,7 +17,7 @@
 #define APNS_NOTIF_RADIO_SHARED @"APNs_RSh"
 #define APNS_NOTIF_FRIEND_CREATED_RADIO @"APNs_FCR"
 
-#define APNS_NOTIF_YASOUND_MESSAGE @"APNs_Yas"
+#define APNS_NOTIF_YASOUND_MESSAGE @"APNs_YAS"
 
 
 #define APS_ATTRIBUTE_NAME @"aps"
@@ -213,8 +213,6 @@
     return nil;
   
   NSArray* locArgs = [self locArgs];
-  if (!locArgs)
-    return nil;
   
   int nbArgs = [locArgs count];
   id args[nbArgs];
