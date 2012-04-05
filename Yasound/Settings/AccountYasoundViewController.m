@@ -74,6 +74,10 @@
         _pword.backgroundColor = [UIColor lightGrayColor];
         
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
+
+        // disable the button if you want to prevent the user to disconnect from the only one associated account
+        if ([[YasoundSessionManager main] accountManagerNumberOfAccounts] == 1)
+            _logoutButton.enabled = NO;
     }
     else
     {

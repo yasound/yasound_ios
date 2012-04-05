@@ -68,6 +68,10 @@
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
         
         _usernameValue.text = [YasoundDataProvider main].user.name;
+        
+        // disable the button if you want to prevent the user to disconnect from the only one associated account
+        if ([[YasoundSessionManager main] accountManagerNumberOfAccounts] == 1)
+            _logoutButton.enabled = NO;
     }
     else
     {

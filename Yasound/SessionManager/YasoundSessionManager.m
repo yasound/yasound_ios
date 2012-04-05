@@ -840,6 +840,17 @@ static YasoundSessionManager* _main = nil;
 
 #pragma mark - Account Manager routines
 
+
+- (NSInteger)accountManagerNumberOfAccounts
+{
+    NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"];
+    if (dico == nil)
+        return 0;
+    
+    return [dico count];
+}
+
+
 - (NSDictionary*)accountManagerGet:(NSString*)accountIdentifier
 {
     NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"];

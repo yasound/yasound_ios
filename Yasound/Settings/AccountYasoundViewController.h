@@ -17,6 +17,7 @@
     IBOutlet UITextField* _pword;
 
     IBOutlet UILabel* _logoutLabel;
+    IBOutlet UIButton* _logoutButton;
     
 }
 

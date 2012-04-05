@@ -68,6 +68,8 @@
 - (BOOL)isAccountAssociated:(NSString*)accountIdentifier;
 
 
+- (NSInteger)accountManagerNumberOfAccounts;
+- (NSDictionary*)accountManagerGet:(NSString*)accountIdentifier;
 
 
 - (BOOL)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl  link:(NSURL*)link target:(id)target action:(SEL)action;
