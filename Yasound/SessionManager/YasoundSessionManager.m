@@ -785,7 +785,7 @@ static YasoundSessionManager* _main = nil;
     _target = target;
     _action = selector;
     
-    self.associatingFacebook = YES;
+    self.associatingTwitter = YES;
     
     // launch login dialog to get user info
     [[TwitterSessionManager twitter] setTarget:self];
