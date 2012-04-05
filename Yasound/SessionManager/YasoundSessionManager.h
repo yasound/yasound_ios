@@ -14,6 +14,8 @@
 #define LOGIN_TYPE_FACEBOOK @"facebook"
 #define LOGIN_TYPE_TWITTER @"twitter"
 
+#import "FacebookSessionManager.h"
+#import "TwitterSessionManager.h"
 
 @interface YasoundSessionManager : NSObject
 {
@@ -73,6 +75,8 @@
 - (NSInteger)accountManagerNumberOfAccounts;
 - (NSDictionary*)accountManagerGet:(NSString*)accountIdentifier;
 
+- (FacebookSessionManager*) getFacebookManager;
+- (TwitterSessionManager*) getTwitterManager;
 
 - (BOOL)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl  link:(NSURL*)link target:(id)target action:(SEL)action;
 - (BOOL)postMessageForTwitter:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action;

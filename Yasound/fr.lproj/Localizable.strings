@@ -407,7 +407,12 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "SongsView_upload_progress" = "Synchronisation";
 
 "Facebook_AppRequest_Message" = "Rejoignez-moi sur Yasound. Vous Pourrez écouter ma radio, créer la votre et découvrir de nouveaus artistes gratuitement.";
-"InviteFriends_button_text" = "Inviter mes amis";
+"InviteFacebookFriends_button_text" = "Inviter mes amis Facebook";
+"InviteTwitterFriends_button_text" = "Inviter mes amis Twitter";
+"Twitter_AppRequest_Message" = "Rejoignez-moi sur #Yasound pour écouter ma radio, créer la votre et découvrir de nouveaus artistes gratuitement http://yasound.com";
+"Twitter_AppRequest_Title" = "Inviter mes amis Twitter";
+"Twitter_AppRequest_AlertTitle" = "Envoi de l'invitation sur Twitter...";
+
 
 "GoTo_CurrentUser_Radio" = "Voulez-vous écouter sa radio ?";
 "GoTo_CurrentUser_Radio_Unavailable" = "Cet utilisateur n'a pas encore de radio.";

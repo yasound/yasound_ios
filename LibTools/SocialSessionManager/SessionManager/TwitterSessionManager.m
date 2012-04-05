@@ -12,8 +12,7 @@
 #import <Accounts/Accounts.h>
 #import "TwitterAccountsViewController.h"
 #import "Version.h"
-
-
+#import "ActivityAlertView.h"
 
 // the following is activated, 'til we get the reverse auth enabled by twitter
 #define FORCE_OAUTH_LIB 1
@@ -169,6 +168,14 @@ static TwitterSessionManager* _twitter = nil;
     return [_oauthManager requestPostMessage:message title:title picture:pictureUrl];  
 }
 
+
+
+- (void)inviteFriends
+{
+  [ActivityAlertView showWithTitle:NSLocalizedString(@"Twitter_AppRequest_AlertTitle", nil)];
+  [self requestPostMessage:NSLocalizedString(@"Twitter_AppRequest_Message", nil) title:NSLocalizedString(@"Facebook_AppRequest_Message", nil) picture:nil];
+  [ActivityAlertView close];
+}
 
 
 

@@ -946,7 +946,7 @@ static YasoundSessionManager* _main = nil;
 {
     NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"];
     if (dico == nil)
-    return NO;
+      return nil;
     
     NSLog(@"dico %@", dico);
     
@@ -998,6 +998,19 @@ static YasoundSessionManager* _main = nil;
 
 
 
+- (FacebookSessionManager*) getFacebookManager
+{
+  if ([self accountManagerGet: LOGIN_TYPE_FACEBOOK])
+    return [FacebookSessionManager facebook];
+  return nil;
+}
+
+- (TwitterSessionManager*) getTwitterManager
+{
+  if ([self accountManagerGet: LOGIN_TYPE_TWITTER])
+    return [TwitterSessionManager twitter];
+  return nil;
+}
 
 
 
