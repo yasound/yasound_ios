@@ -16,7 +16,7 @@
 #import "YasoundDataCache.h"
 #import "ProfileViewController.h"
 
-#import "FacebookSessionManager.h"
+#import "YasoundSessionManager.h"
 
 #define SHOW_INVITE_BUTTON 1
 
@@ -63,8 +63,10 @@
   [_toolbar release];
   [_toolbarTitle release];
   [_nowPlayingButton release];
-  [_cellInvite release];
-  [_cellInviteLabel release];
+  [_cellInviteFacebook release];
+  [_cellInviteFacebookLabel release];
+  [_cellInviteTwitter release];
+  [_cellInviteTwitterLabel release];
   [super dealloc];
 }
 
@@ -88,7 +90,8 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
   
-    _cellInviteLabel.text = NSLocalizedString(@"InviteFriends_button_text", nil);
+  _cellInviteFacebookLabel.text = NSLocalizedString(@"InviteFacebookFriends_button_text", nil);
+  _cellInviteTwitterLabel.text = NSLocalizedString(@"InviteTwitterFriends_button_text", nil);
 }
 
 - (void)viewDidUnload
@@ -202,7 +205,12 @@
 #if SHOW_INVITE_BUTTON
     if (section == SECTION_INVITE_BUTTON)
     {
-        return 1;
+      int count = 0;
+      if ([[YasoundSessionManager main] getFacebookManager])
+        count ++;
+      if ([[YasoundSessionManager main] getTwitterManager])
+        count ++;
+      return count;
     }
     else if (section == SECTION_ONLINE)
     {
@@ -332,7 +340,14 @@
 #if SHOW_INVITE_BUTTON
     if (indexPath.section == SECTION_INVITE_BUTTON)
     {
-        return _cellInvite;
+      id tab[2];
+      int i = 0;
+      if ([[YasoundSessionManager main] getFacebookManager])
+        tab[i++] = _cellInviteFacebook;
+      if ([[YasoundSessionManager main] getTwitterManager])
+        tab[i++] = _cellInviteTwitter;
+      NSInteger rowIndex = indexPath.row;
+        return tab[rowIndex];
     }
 #endif
     
@@ -368,8 +383,17 @@
 #if SHOW_INVITE_BUTTON
     if (indexPath.section == SECTION_INVITE_BUTTON)
     {
-        [self inviteButtonClicked:nil];
-        return;
+      int i = indexPath.row;
+      if ([[YasoundSessionManager main] getFacebookManager] && !i--)
+        [self inviteFacebookButtonClicked:nil];
+      else if ([[YasoundSessionManager main] getTwitterManager] && !i--)
+        [self inviteTwitterButtonClicked:nil];
+      else
+      {
+        // we should never get there!
+        assert(0);
+      }
+      return;
     }
 #endif
 
@@ -466,9 +490,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)inviteButtonClicked:(id)sender
+- (IBAction)inviteFacebookButtonClicked:(id)sender
 {
   [[FacebookSessionManager facebook] inviteFriends];
+}
+
+- (IBAction)inviteTwitterButtonClicked:(id)sender
+{
+  [[TwitterSessionManager twitter] inviteFriends];
 }
 
 

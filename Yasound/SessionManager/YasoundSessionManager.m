@@ -785,7 +785,7 @@ static YasoundSessionManager* _main = nil;
     _target = target;
     _action = selector;
     
-    self.associatingFacebook = YES;
+    self.associatingTwitter = YES;
     
     // launch login dialog to get user info
     [[TwitterSessionManager twitter] setTarget:self];
@@ -820,11 +820,16 @@ static YasoundSessionManager* _main = nil;
     if (self.associatingFacebook)
     {
         [self accountManagerRemove:LOGIN_TYPE_FACEBOOK];
+        [[FacebookSessionManager facebook] invalidConnexion];
         self.associatingFacebook = NO;
     }
     else if (self.associatingTwitter)
     {
+
         [self accountManagerRemove:LOGIN_TYPE_TWITTER];
+        
+        [[TwitterSessionManager twitter] invalidConnexion];
+
         self.associatingTwitter = NO;
     }
     else if (self.associatingYasound)
@@ -882,13 +887,19 @@ static YasoundSessionManager* _main = nil;
     succeeded = [nb boolValue];
     
     
-    if (succeeded && self.associatingFacebook)
+    if (self.associatingFacebook)
     {
-        [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:self.associatingInfo];
+        if (succeeded)
+            [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:self.associatingInfo];
+        else
+            [[FacebookSessionManager facebook] invalidConnexion];
     }
-    else if (succeeded && self.associatingTwitter)
+    else if (self.associatingTwitter)
     {
-        [self accountManagerAdd:LOGIN_TYPE_TWITTER  withInfo:self.associatingInfo];
+        if (succeeded)
+            [self accountManagerAdd:LOGIN_TYPE_TWITTER  withInfo:self.associatingInfo];
+        else
+            [[TwitterSessionManager twitter] invalidConnexion];
     }
 
     // callback
@@ -935,7 +946,7 @@ static YasoundSessionManager* _main = nil;
 {
     NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"];
     if (dico == nil)
-    return NO;
+      return nil;
     
     NSLog(@"dico %@", dico);
     
@@ -987,6 +998,19 @@ static YasoundSessionManager* _main = nil;
 
 
 
+- (FacebookSessionManager*) getFacebookManager
+{
+  if ([self accountManagerGet: LOGIN_TYPE_FACEBOOK])
+    return [FacebookSessionManager facebook];
+  return nil;
+}
+
+- (TwitterSessionManager*) getTwitterManager
+{
+  if ([self accountManagerGet: LOGIN_TYPE_TWITTER])
+    return [TwitterSessionManager twitter];
+  return nil;
+}
 
 
 

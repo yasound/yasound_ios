@@ -87,26 +87,32 @@
 
 - (void)logout
 {
-  [[NSUserDefaults standardUserDefaults] removeObjectForKey:ACCOUNT_IDENTIFIER];
+    [self invalidConnexion];
+  [self.delegate sessionDidLogout];    
+}
 
-  // also clean oauth credentials
-  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+
+
+- (void)invalidConnexion
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:ACCOUNT_IDENTIFIER];
+    
+    // also clean oauth credentials
+    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
     NSString* token = [[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN];
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DATA_FIELD_TOKEN];
-
     
-  NSError* error;
-  NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
-  [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
+    
+    NSError* error;
+    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+    [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
     
     [SFHFKeychainUtils deleteItemForUsername:token andServiceName:BundleName error:nil];
-
-
-  
-  [self.delegate sessionDidLogout];    
 }
+
+
 
 
 - (BOOL)authorized

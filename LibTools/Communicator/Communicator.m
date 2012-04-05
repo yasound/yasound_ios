@@ -655,7 +655,10 @@
     Class objectClass            = [userinfo valueForKey:@"objectClass"];
     BOOL returnNewObject = [[userinfo valueForKey:@"returnNewObject"] boolValue];
     Auth* authForGET = [userinfo valueForKey:@"authForGET"];
-    NSDictionary* userData = [userinfo valueForKey:@"userData"];
+    
+    //LBDEBUG
+    NSMutableDictionary* userData = [NSMutableDictionary dictionaryWithDictionary:[userinfo valueForKey:@"userData"]];
+    [userData setObject:[NSNumber numberWithInteger:request.responseStatusCode] forKey:@"responseStatusCode"];
     
     NSString* response = request.responseString;
     

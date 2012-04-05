@@ -33,6 +33,7 @@
 - (void)setTarget:(id<SessionDelegate>)delegate;
 - (void)login;
 - (void)logout;
+- (void)invalidConnexion;
 
 - (BOOL)requestGetInfo:(SessionRequestType)requestType;
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;

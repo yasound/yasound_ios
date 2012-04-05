@@ -12,7 +12,7 @@
 #import "Theme.h"
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
-
+#import "RadioSelectionTableViewCell.h"
 
 
 @implementation ProfileViewController
@@ -20,12 +20,11 @@
 
 @synthesize user;
 
-
-#define NB_ROWS 4
-#define ROW_COVER 0
-#define ROW_OWN_RADIO 1
-#define ROW_CURRENT_RADIO 2
-#define ROW_FREQUENCY 3
+#define SECTION_COVER               0
+#define SECTION_OWN_RADIO           1
+#define SECTION_CURRENT_RADIO       2
+#define SECTION_FAVORITE_RADIOS     3
+#define SECTION_COUNT               4
 
 #define BORDER 8
 #define COVER_SIZE 96
@@ -47,7 +46,7 @@
 {
     [super viewDidLoad];
 
-    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
+    _titleLabel.text = NSLocalizedString(@"ProfileView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
@@ -60,6 +59,11 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    if (_favoriteRadios) 
+    {
+        [_favoriteRadios release];
+        _favoriteRadios = nil;
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -94,48 +98,98 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //    return gIndexMap.count;
-    return 1;
+    return SECTION_COUNT;
 }
-
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return NB_ROWS;
+    switch (section) {
+        case SECTION_COVER:
+            return 1;
+            break;
+        case SECTION_CURRENT_RADIO:
+            if (self.user != nil && self.user.current_radio) 
+            {
+                return 1;
+            }
+            break;
+        case SECTION_OWN_RADIO:
+            if (self.user != nil && self.user.own_radio) 
+            {
+                return 1;
+            }
+            break;
+        case SECTION_FAVORITE_RADIOS:
+            if (_favoriteRadios) {
+                return [_favoriteRadios count];
+            }
+        default:
+            break;
+    }
+    return 0;
 }
-
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {    
-    if (indexPath.row == ROW_COVER)
+    if (indexPath.section == SECTION_COVER)
         return (COVER_SIZE + 2*BORDER);
     
-    return 44;
+    return 62;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    
+    if (section == SECTION_OWN_RADIO)
+    {
+        title = NSLocalizedString(@"ProfileView_section_own_radio", nil);
+    }
+    else if (section == SECTION_CURRENT_RADIO)
+    {
+        title = NSLocalizedString(@"ProfileView_section_current_radio", nil);
+    }
+    else if (section == SECTION_FAVORITE_RADIOS)
+    {
+        title = NSLocalizedString(@"ProfileView_section_favorite_radios", nil);
+    }
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    UIImage* image = [sheet image];
+    CGFloat height = image.size.height;
+    UIImageView* view = [[UIImageView alloc] initWithImage:image];
+    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
+    
+    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
+
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if (indexPath.row == ROW_COVER)
+    if (indexPath.section == SECTION_COVER)
     {
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainSongCardRow.png"]];
         cell.backgroundView = view;
         [view release];
         return;
     }
-    
-    UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainRow.png"]];
-    cell.backgroundView = view;
-    [view release];
 }
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if (indexPath.row == ROW_COVER)
+    NSInteger rowIndex = indexPath.row;
+    NSInteger sectionIndex = indexPath.section;
+
+    if (sectionIndex == SECTION_COVER)
     {
         static NSString* CellIdentifier = @"CellCover";
         
@@ -155,111 +209,79 @@
              _imageView.frame = CGRectMake(BORDER, (height - size) / 2.f, size, size);
 
             [cell addSubview:_imageView];
-//            
             // name
             BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _name = [sheet makeLabel];
             [cell addSubview:_name];
-//            
-//            sheet = [[Theme theme] stylesheetForKey:@"SongView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            _artist = [sheet makeLabel];
-//            [cell addSubview:_artist];
-//            
-//            sheet = [[Theme theme] stylesheetForKey:@"SongView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            _album = [sheet makeLabel];
-//            [cell addSubview:_album];
-//            
-//            // enable/disable
-//            sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            _enabledLabel = [sheet makeLabel];
-//            [cell addSubview:_enabledLabel];
-//            
-//            sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_switch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            _switchEnabled = [[UISwitch alloc] init];
-//            _switchEnabled.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, _switchEnabled.frame.size.width, _switchEnabled.frame.size.height);
-//            [cell addSubview:_switchEnabled];
+
             
         }
-        
         else
         {
-//          NSURL* url = [[YasoundDataProvider main] urlForSongCover:self.song];
-//          [_imageView setUrl:url];
+            NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
+            [_imageView setUrl:url];
         }
         
-        
-        _name.text = user.name;
-//        _artist.text = song.artist;
-//        _album.text = song.album;
-        _enabledLabel.text = NSLocalizedString(@"SongView_enable_label", nil);
-
-//        _switchEnabled.on = [self.song isSongEnabled];
-        [_switchEnabled addTarget:self action:@selector(onSwitchEnabled:)  forControlEvents:UIControlEventValueChanged];
-
-        
+        _name.text = self.user.name;
         return cell;
         
     }
     
+    static NSString *cellIdentifier1 = @"RadioSelectionTableViewCell_1";
+    static NSString *cellIdentifier2 = @"RadioSelectionTableViewCell_2";
+    static NSString *cellIdentifier3 = @"RadioSelectionTableViewCell_3";
     
-    static NSString* CellIdentifier = @"Cell";
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) 
+    NSString *cellIdentifier = cellIdentifier1;
+    Radio* radio = nil;
+    if (sectionIndex == SECTION_OWN_RADIO)
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
-    
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-        if (indexPath.row == ROW_FREQUENCY)
+        cellIdentifier = cellIdentifier1;
+        
+        radio = self.user.own_radio;
+        if (!radio) 
         {
-            NSString* frequencyStr = nil;
-            
-            _switchFrequency = [[UISwitch alloc] init];
-            _switchFrequency.frame = CGRectMake(cell.frame.size.width - _switchFrequency.frame.size.width - BORDER, (cell.frame.size.height - _switchFrequency.frame.size.height) / 2.f, _switchFrequency.frame.size.width, _switchFrequency.frame.size.height);
-            [cell addSubview:_switchFrequency];
+            return nil;
+        }
+    }
+    else if (sectionIndex == SECTION_CURRENT_RADIO)
+    {
+        cellIdentifier = cellIdentifier2;
+
+        radio = self.user.current_radio;
+        if (!radio) 
+        {
+            return nil;
+        }
+    }
+    else if (sectionIndex == SECTION_FAVORITE_RADIOS)
+    {
+        cellIdentifier = cellIdentifier3;
+
+        NSArray* radios = _favoriteRadios;
+        if (!radios) 
+        {
+            return nil;
         }
         
-        cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.textLabel.textColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
-        cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
-        
-        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-        cell.detailTextLabel.textColor = [UIColor whiteColor];
-        cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:16];
-    }
-    
-    if (indexPath.row == ROW_OWN_RADIO)
-    {
-        cell.textLabel.text = NSLocalizedString(@"ProfileViewController_ownradio", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.user.own_radio.name];
-    }
-    else if (indexPath.row == ROW_CURRENT_RADIO)
-    {
-        cell.textLabel.text = NSLocalizedString(@"ProfileViewController_currentradio", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.user.current_radio.name];
-    }
-    else if (indexPath.row == ROW_FREQUENCY)
-    {
-        cell.textLabel.text = NSLocalizedString(@"SongView_frequency", nil);
-
-//        if ([self.song frequencyType] == eSongFrequencyTypeNormal)
-//            _switchFrequency.on = NO;
-//        else if ([self.song frequencyType] == eSongFrequencyTypeHigh)
-//            _switchFrequency.on = YES;
-//        else 
-//        {
-//            _switchFrequency.on = NO;
-//            _switchFrequency.enabled = NO;
-//        }
-        
-        [_switchFrequency addTarget:self action:@selector(onSwitchFrequency:)  forControlEvents:UIControlEventValueChanged];
+        radio = [radios objectAtIndex:rowIndex];
+        if (!radio) 
+        {
+            return nil;
+        }
     }
 
-
+    RadioSelectionTableViewCell* cell;
     
-    
+    cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil)
+    {    
+        cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
+    }
+    else
+    {
+        [cell updateWithRadio:radio rowIndex:rowIndex];
+    }
     return cell;
 }
 
@@ -268,47 +290,6 @@
 {
     
 }
-
-
-
-
-
-
-
-
-
-- (NSString*) dateToString:(NSDate*)d
-{
-    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-    //  [dateFormat setDateFormat:@"HH:mm"];
-    NSDate* now = [NSDate date];
-    NSDateComponents* todayComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:now];
-    NSDateComponents* refComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:d];
-    
-    if (todayComponents.year == refComponents.year && todayComponents.month == refComponents.month && todayComponents.day == refComponents.day)
-    {
-        // today: show time
-        [dateFormat setDateFormat:@"dd/MM, HH:mm"];
-    }
-    else
-    {
-        // not today: show date
-        [dateFormat setDateFormat:@"dd/MM, HH:mm"];
-    }
-    
-    NSString* s = [dateFormat stringFromDate:d];
-    [dateFormat release];
-    return s;
-}
-
-
-
-
-
-
-
-
-
 
 
 #pragma mark - IBActions
@@ -324,29 +305,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
 }
 
-- (void)onSwitchEnabled:(id)sender
-{
-    BOOL enabled = _switchEnabled.on;
-    
-//    [self.song enableSong:enabled];
-//    
-//    [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
-}
-
-- (void)onSwitchFrequency:(id)sender
-{
-//  BOOL highFreq = _switchFrequency.on;
-//  SongFrequencyType freq = highFreq ? eSongFrequencyTypeHigh : eSongFrequencyTypeNormal;
-//  [self.song setFrequencyType:freq];
-//  
-//  [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
-}
-
-
 - (void)onUserInfo:(User*)aUser info:(NSDictionary*)info
 {
     self.user = aUser;
     [_tableView reloadData];
+    [_favoriteRadios release];
+    _favoriteRadios = nil;
+    
     [[YasoundDataProvider main] favoriteRadiosForUser:self.user withTarget:self action:@selector(favoritesRadioReceived:withInfo:)];
     
 }
@@ -354,7 +319,9 @@
 
 - (void)favoritesRadioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
 {
-    //[_tableView reloadData];
+    _favoriteRadios = radios;
+    [_favoriteRadios retain];
+    [_tableView reloadData];
 }
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "FacebookSessionManager.h"
-//#include "YasoundDataProvider.h"
+#include "YasoundSessionManager.h"
 
 
 
@@ -57,6 +57,7 @@ static FacebookSessionManager* _facebook = nil;
   self = [super init];
   if (self)
   {
+      _logout = NO;
     _facebookConnect = nil;
 //    _facebookPermissions = [[NSArray arrayWithObjects:@"user_about_me", @"publish_stream", @"publish_actions", @"offline_access", nil] retain];    
     _facebookPermissions = [[NSArray arrayWithObjects:@"user_about_me", @"publish_stream", @"offline_access", nil] retain];    
@@ -129,18 +130,23 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)logout
 {
-  [_facebookConnect logout:self];
-    
-    // Remove saved authorization information if it exists
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    if ([defaults objectForKey:@"FBAccessTokenKey"]) 
-//    {
-        [defaults removeObjectForKey:@"FBAccessTokenKey"];
-        [defaults removeObjectForKey:@"FBExpirationDateKey"];
-        [defaults synchronize];
-//    }
+    _logout = YES;
+    [self invalidConnexion];
         
 }
+
+- (void)invalidConnexion
+{
+    [_facebookConnect logout:self];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //    if ([defaults objectForKey:@"FBAccessTokenKey"]) 
+    //    {
+    [defaults removeObjectForKey:@"FBAccessTokenKey"];
+    [defaults removeObjectForKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
+}
+
 
 
 
@@ -231,7 +237,11 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)fbDidLogout
 {
-  [self.delegate sessionDidLogout];  
+    if (_logout)
+    {
+        [self.delegate sessionDidLogout];  
+        _logout = NO;
+    }
 }
 
 
@@ -339,8 +349,8 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)inviteFriends
 {
-    /*
-  NSDictionary* data = [NSDictionary dictionaryWithObject:[YasoundDataProvider main].user.id forKey:@"from_user"];
+  NSString* uid = [[[YasoundSessionManager main] accountManagerGet] objectForKey:@"uid"];
+  NSDictionary* data = [NSDictionary dictionaryWithObject:uid forKey:@"from_user"];
   NSString* dataStr = data.JSONRepresentation;
   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                  NSLocalizedString(@"Facebook_AppRequest_Message", nil),  @"message",
@@ -348,7 +358,6 @@ static FacebookSessionManager* _facebook = nil;
                                  nil];
   
   [_facebookConnect dialog:@"apprequests" andParams:params andDelegate:self];
-     */
 }
 
 

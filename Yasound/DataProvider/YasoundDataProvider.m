@@ -613,12 +613,15 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)receiveYasoundAssociation:(id)obj info:(NSDictionary*)info
+- (void)receiveYasoundAssociation:(NSString*)response info:(NSDictionary*)info
 {
     NSLog(@"YasoundDataProvider receiveYasoundAssociation : info %@", info);
     
     NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
     
+    if (response != nil)
+        [finalInfo setObject:response forKey:@"response"];
+    
     NSDictionary* userData = [info valueForKey:@"userData"];
     id target = [userData valueForKey:@"clientTarget"];
     SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
@@ -632,12 +635,15 @@ static YasoundDataProvider* _main = nil;
     }
 }
 
-- (void)receiveFacebookAssociation:(id)obj info:(NSDictionary*)info
+- (void)receiveFacebookAssociation:(NSString*)response info:(NSDictionary*)info
 {
-    NSLog(@"YasoundDataProvider receiveFacebookAssociation : info %@", info);
+    NSLog(@"YasoundDataProvider receiveFacebookAssociation : info %@  %@", info, response);
     
     NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
     
+    if (response != nil)
+        [finalInfo setObject:response forKey:@"response"];
+    
     NSDictionary* userData = [info valueForKey:@"userData"];
     id target = [userData valueForKey:@"clientTarget"];
     SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
@@ -651,11 +657,14 @@ static YasoundDataProvider* _main = nil;
     }
 }
 
-- (void)receiveTwitterAssociation:(id)obj info:(NSDictionary*)info
+- (void)receiveTwitterAssociation:(NSString*)response info:(NSDictionary*)info
 {
     NSLog(@"YasoundDataProvider receiveTwitterAssociation : info %@", info);
     
     NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
+    
+    if (response != nil)
+        [finalInfo setObject:response forKey:@"response"];
     
     NSDictionary* userData = [info valueForKey:@"userData"];
     id target = [userData valueForKey:@"clientTarget"];
