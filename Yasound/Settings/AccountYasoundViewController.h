@@ -12,10 +12,17 @@
 {
     IBOutlet UIBarButtonItem* _backItem;
     IBOutlet UIBarButtonItem* _titleItem;
+    
+    IBOutlet UITextField* _email;
+    IBOutlet UITextField* _pword;
+
+    IBOutlet UILabel* _logoutLabel;
+    IBOutlet UIButton* _logoutButton;
+    
 }
 
-
-
 - (IBAction)onBack:(id)sender;
+- (IBAction)onButtonClicked:(id)sender;
+
 
 @end

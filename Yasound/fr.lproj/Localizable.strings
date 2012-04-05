@@ -132,6 +132,7 @@
 "SettingsView_section_config" = "Configuration";
 "SettingsView_section_image" = "Image";
 "SettingsView_section_theme" = "Thème Graphique";
+"SettingsView_section_accounts" = "Comptes";
 
 "SettingsView_row_image_label" = "Image";
 "SettingsView_row_title_label" = "Titre";
@@ -271,7 +272,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MenuView_section_myradio" = "Ma Radio";
 "MenuView_section_radios" = "Radios";
 "MenuView_section_me" = "Moi";
-"MenuView_section_accounts" = "Comptes";
 "MenuView_section_misc" = "Divers";
 
 
@@ -287,11 +287,32 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MenuView_me_playlists" = "Ma programmation";
 "MenuView_me_programming" = "Ma programmation";
 "MenuView_me_config" = "Paramètres";
+"MenuView_me_notifs" = "Notifications";
 "MenuView_misc_legal" = "Conditions d'utilisation";
 "MenuView_misc_logout" = "Se déconnecter";
 
+"NotificationView_title" = "Notifications";
+
+"NotifFriendGoesOnline" = "Friend goes online";
+"NotifFriendEnters" = "Friend enters";
+"NotifUserEnters" = "User enters";
+"NotifPostReceived" = "Post received";
+"NotifLikeReceived" = "Like received";
+"NotifSubscriptionReceived" = "Subscription received";
+"NotifRadioShared" = "Radio shared";
+"NotifNewFriendRadio" = "New friend radio";
+
+
+
 "AccountsView_username_label" = "Nom d'utilisateur";
 "AccountsView_logout_label" = "Se déconnecter";
+"AccountsView_login_label" = "Se connecter";
+"AccountsView_alert_title" = "Compte %@";
+"AccountView_alert_user_incorrect" = "Informations de connexion incorrectes.";
+"AccountsView_alert_login_success" = "Compte %@ enregistré.";
+"AccountsView_alert_logout_success" = "Compte %@ déconnecté.";
+"AccountsView_alert_logout_error" = "Impossible de déconnecter le compte.";
+
 
 
 "YasoundSessionManager_login_title" = "log in";

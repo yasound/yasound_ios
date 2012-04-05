@@ -34,12 +34,15 @@
 	UIInterfaceOrientation                      _orientation;
 	BOOL										_loading, _firstLoad;
 	UIToolbar									*_pinCopyPromptBar;
+  
+  NSError		*error;	
 }
 
 
 @property (nonatomic, readwrite, retain) SA_OAuthTwitterEngine *engine;
 @property (nonatomic, readwrite, assign) id <SA_OAuthTwitterControllerDelegate> delegate;
 @property (nonatomic, readonly) UINavigationBar *navigationBar;
+@property(nonatomic,retain) NSError *error;
 
 + (SA_OAuthTwitterController *) controllerToEnterCredentialsWithTwitterEngine: (SA_OAuthTwitterEngine *) engine delegate: (id <SA_OAuthTwitterControllerDelegate>) delegate forOrientation:(UIInterfaceOrientation)theOrientation;
 + (SA_OAuthTwitterController *) controllerToEnterCredentialsWithTwitterEngine: (SA_OAuthTwitterEngine *) engine delegate: (id <SA_OAuthTwitterControllerDelegate>) delegate;

@@ -15,6 +15,11 @@
 @implementation YasoundSessionManager
 
 @synthesize registered;
+@synthesize associatingFacebook;
+@synthesize associatingTwitter;
+@synthesize associatingYasound;
+@synthesize associatingInfo;
+
 
 static YasoundSessionManager* _main = nil;
 
@@ -42,6 +47,12 @@ static YasoundSessionManager* _main = nil;
             _dico = [[NSMutableDictionary alloc] init];
         
         NSLog(@"import dico %@", _dico);
+        
+        self.associatingInfo = [[NSMutableDictionary alloc] init];
+        self.associatingFacebook = NO;
+        self.associatingTwitter = NO;
+        self.associatingYasound = NO;
+        
         
         [_dico retain];
             
@@ -326,6 +337,13 @@ static YasoundSessionManager* _main = nil;
         [SFHFKeychainUtils deleteItemForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
     }
     
+    // remove all associated accounts
+    [self accountManagerRemove:LOGIN_TYPE_FACEBOOK];
+    [self accountManagerRemove:LOGIN_TYPE_TWITTER];
+    [self accountManagerRemove:LOGIN_TYPE_YASOUND];
+
+    
+
     [_dico release];
     _dico = nil;
     _dico = [[NSMutableDictionary alloc] init];
@@ -337,6 +355,8 @@ static YasoundSessionManager* _main = nil;
     [target performSelector:action];
 }
 
+
+
 - (void)registerForYasound:(NSString*)email withPword:(NSString*)pword
 {
     self.loginType = LOGIN_TYPE_YASOUND;
@@ -347,6 +367,9 @@ static YasoundSessionManager* _main = nil;
     
     // store pword with security
     [SFHFKeychainUtils storeUsername:email andPassword:pword  forServiceName:@"YasoundSessionManager" updateExisting:YES error:nil];
+
+    // and add the account as associated account
+    [self accountManagerAdd:LOGIN_TYPE_YASOUND withInfo:[NSDictionary dictionaryWithObjectsAndKeys:email,@"email",pword,@"pword",nil]];
 
     [self save];
 }
@@ -362,6 +385,9 @@ static YasoundSessionManager* _main = nil;
     
     NSLog(@"registerForFacebook self.loginType %@", self.loginType);
     
+    // and add the account as associated account
+    [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:[NSDictionary dictionaryWithObjectsAndKeys:/*ICI*/nil]];
+    
     [self save];
 
 }
@@ -370,6 +396,12 @@ static YasoundSessionManager* _main = nil;
 {
     self.loginType = LOGIN_TYPE_TWITTER;
     self.registered = YES;
+    
+    NSLog(@"registerForTwitter self.loginType %@", self.loginType);
+    
+    // and add the account as associated account
+    [self accountManagerAdd:LOGIN_TYPE_TWITTER  withInfo:[NSDictionary dictionaryWithObjectsAndKeys:/*ICI*/nil]];
+
     [self save];
 
 }
@@ -532,14 +564,41 @@ static YasoundSessionManager* _main = nil;
 //        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     
     
-    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    //
+    // associating process
+    //
+    if (self.associatingFacebook)
+    {
+        NSLog(@"facebook social associating request");
+
+        // request to yasound server
+        [[YasoundDataProvider main] associateAccountFacebook:username uid:uid token:token email:email target:self action:@selector(associatingSocialValidated:)];
+    }
+    
+    
+    else if (self.associatingTwitter)
+    {
+        NSLog(@"twitter social associating request");
+
+        NSString* tokenSecret = [dico valueForKey:DATA_FIELD_TOKEN_SECRET];
+
+        // request to yasound server
+        [[YasoundDataProvider main] associateAccountTwitter:username uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(associatingSocialValidated:)];
+    }
+    
+    //
+    // login process
+    //
+    else if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
         NSLog(@"facebook social login request");
       NSString* n = username;
       if (!n)
         n = name;
-        [[YasoundDataProvider main] loginFacebook:n type:@"facebook" uid:uid token:token email:email target:self action:@selector(loginSocialValidated:info:)];
+        [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token email:email target:self action:@selector(loginSocialValidated:info:)];
     }
+    
+    
     else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
     {
         NSLog(@"twitter social login request");
@@ -573,6 +632,277 @@ static YasoundSessionManager* _main = nil;
     
     if ((_postTarget != nil) && (_postAction != nil))
         [_postTarget performSelector:_postAction withObject:[NSNumber numberWithBool:YES]];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - accounts association
+
+
+- (BOOL)isAccountAssociated:(NSString*)accountIdentifier
+{
+    NSDictionary* dico = [self accountManagerGet:accountIdentifier];
+    return (dico != nil);
+}
+
+
+
+- (void)associateAccountYasound:(NSString*)email pword:(NSString*)pword target:(id)target action:(SEL)action
+{
+    _target = target;
+    _action = action;
+ 
+    self.associatingYasound = YES;
+    
+    [self.associatingInfo setObject:email forKey:@"email"];
+    [self.associatingInfo setObject:pword forKey:@"pword"];
+    
+    // tell the server
+    [[YasoundDataProvider main] associateAccountYasound:email password:pword target:self action:@selector(associateYasoundRequestDidReturn:)];
+
+}
+
+
+
+- (void)associateAccountFacebook:(NSString*)username uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector
+{
+    _target = target;
+    _action = selector;
+    
+    self.associatingFacebook = YES;
+    
+    [self.associatingInfo setObject:username forKey:@"username"];
+    [self.associatingInfo setObject:uid forKey:@"uid"];
+    [self.associatingInfo setObject:token forKey:@"token"];
+    [self.associatingInfo setObject:email forKey:@"email"];
+
+    // launch login dialog to get user info
+    [[FacebookSessionManager facebook] setTarget:self];
+    [[FacebookSessionManager facebook] login];    
+}
+
+
+- (void)associateAccountTwitter:(NSString*)username uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector
+{
+    _target = target;
+    _action = selector;
+    
+    self.associatingFacebook = YES;
+    
+    [self.associatingInfo setObject:username forKey:@"username"];
+    [self.associatingInfo setObject:uid forKey:@"uid"];
+    [self.associatingInfo setObject:token forKey:@"token"];
+    [self.associatingInfo setObject:tokenSecret forKey:@"tokenSecret"];
+    [self.associatingInfo setObject:email forKey:@"email"];
+    
+    // launch login dialog to get user info
+    [[TwitterSessionManager twitter] setTarget:self];
+    [[TwitterSessionManager twitter] login];
+}
+
+
+
+- (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector
+{
+    _target = target;
+    _action = selector;
+
+    self.associatingYasound = YES;
+    
+    [[YasoundDataProvider main] dissociateAccount:accountTypeIdentifier  target:self action:@selector(dissociateRequestDidReturn:)];
+}
+
+
+
+
+
+
+#pragma mark - YasoundDataProvider actions
+
+
+- (void)dissociateRequestDidReturn:(NSDictionary*)info
+{
+    NSLog(@"dissociateRequestDidReturn :%@", info);
+    
+    
+    if (self.associatingFacebook)
+    {
+        [self accountManagerRemove:LOGIN_TYPE_FACEBOOK];
+        self.associatingFacebook = NO;
+    }
+    else if (self.associatingTwitter)
+    {
+        [self accountManagerRemove:LOGIN_TYPE_TWITTER];
+        self.associatingTwitter = NO;
+    }
+    else if (self.associatingYasound)
+    {
+        [self accountManagerRemove:LOGIN_TYPE_YASOUND];
+        self.associatingYasound = NO;
+    }
+    
+    
+    // callback
+    [_target performSelector:_action withObject:info];    
+}
+
+
+
+
+
+
+- (void) associateYasoundRequestDidReturn:(NSDictionary*)info
+{
+    NSLog(@"associateYasoundRequestDidReturnd :%@", info);
+    
+    BOOL succeeded = NO;
+    
+    NSNumber* nb = [info objectForKey:@"succeeded"];
+    succeeded = [nb boolValue];
+    
+    if (succeeded)
+    {
+        // store the local association
+        [self accountManagerAdd:LOGIN_TYPE_YASOUND  withInfo:self.associatingInfo];
+    }        
+
+    self.associatingYasound = NO;
+
+    // callback
+    [_target performSelector:_action withObject:info];    
+}
+
+
+
+
+
+
+
+#pragma mark - YasoundDataProvider actions
+
+- (void) associatingSocialValidated:(NSDictionary*)info
+{
+    NSLog(@"associatingSocialValidated returned : %@", info);
+    
+    if (self.associatingFacebook)
+    {
+        [self accountManagerAdd:LOGIN_TYPE_FACEBOOK];
+    }
+    else if (self.associatingTwitter)
+    {
+        [self accountManagerAdd:LOGIN_TYPE_TWITTER];    
+    }
+
+    // callback
+    [_target performSelector:_action withObject:info];
+}
+
+
+         
+ - (void) dissociatingSocialValidated:(NSDictionary*)info
+{
+    NSLog(@"dissociatingSocialValidated returned : %@", info);
+    
+    if (self.associatingFacebook)
+    {
+        [self accountManagerRemove:LOGIN_TYPE_FACEBOOK];   
+     }
+     else if (self.associatingTwitter)
+     {
+         [self accountManagerRemove:LOGIN_TYPE_TWITTER];    
+     }
+         
+     // callback
+     [_target performSelector:_action withObject:info];
+ }
+        
+                 
+
+
+
+#pragma mark - Account Manager routines
+
+
+- (NSInteger)accountManagerNumberOfAccounts
+{
+    NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"];
+    if (dico == nil)
+        return 0;
+    
+    return [dico count];
+}
+
+
+- (NSDictionary*)accountManagerGet:(NSString*)accountIdentifier
+{
+    NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"];
+    if (dico == nil)
+    return NO;
+    
+    NSLog(@"dico %@", dico);
+    
+    return [dico objectForKey:accountIdentifier];
+}
+
+
+
+- (BOOL)accountManagerAdd:(NSString*)accountIdentifier withInfo:(NSDictionary*)accountInfo
+{
+    NSMutableDictionary* accountManager;
+    
+    NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"];
+    if (dico == nil)
+    {
+        accountManager = [[NSMutableDictionary alloc] init];
+    }
+    else
+    {
+       accountManager = [NSMutableDictionary dictionaryWithDictionary:dico];
+    }
+    
+    [accountManager setObject:accountInfo forKey:accountIdentifier];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:accountManager forKey:@"AccountManager"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    return YES;
+}
+
+
+- (BOOL)accountManagerRemove:(NSString*)accountIdentifier
+{
+    NSMutableDictionary* accountManager;
+    
+    NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"AccountManager"];
+    if (dico == nil)
+        return NO;
+
+    accountManager = [NSMutableDictionary dictionaryWithDictionary:dico];
+    
+    [accountManager removeObjectForKey:accountIdentifier];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:accountManager forKey:@"AccountManager"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    return YES;
 }
 
 

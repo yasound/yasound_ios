@@ -15,7 +15,7 @@
 #import "SongUploadManager.h"
 #import "CreateMyRadio.h"
 #import "RegExp.h"
-#import "SignupViewController.h"x
+#import "SignupViewController.h"
 
 
 @implementation YasoundLoginViewController

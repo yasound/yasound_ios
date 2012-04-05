@@ -26,6 +26,16 @@ static ConnectionView* _main = nil;
     return _main;
 }
 
++ (ConnectionView*)startWithFrame:(CGRect)frame
+{
+    if (_main != nil)
+        return _main;
+    _main = [[ConnectionView alloc] initWithFrame:frame];
+    
+    return _main;
+}
+
+
 
 + (void)stop
 {

@@ -14,6 +14,13 @@
 #import "PlaylistsViewController.h"
 #import "ActivityAlertView.h"
 #import "RootViewController.h"
+#import "AccountFacebookViewController.h"
+#import "AccountTwitterViewController.h"
+#import "AccountYasoundViewController.h"
+
+
+
+#define NB_SECTIONS 3
 
 #define SECTION_CONFIG 0
 #define ROW_CONFIG_TITLE 0
@@ -23,10 +30,14 @@
 #define SECTION_IMAGE 1
 #define ROW_IMAGE 0
 
-#define SECTION_THEME 2
-#define ROW_THEME 0
+//#define SECTION_THEME 2
+//#define ROW_THEME 0
 
-
+#define SECTION_ACCOUNTS 2
+#define SECTION_ACCOUNTS_NB_ROWS 3
+#define ROW_ACCOUNTS_FACEBOOK 0
+#define ROW_ACCOUNTS_TWITTER 1
+#define ROW_ACCOUNTS_YASOUND 2
 
 
 
@@ -199,9 +210,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //LBDEBUG
-//    return 3;
-    return 2;
+    return NB_SECTIONS;
 }
 
 
@@ -215,8 +224,11 @@
     if (section == SECTION_IMAGE)
         return 1;
 
-    if (section == SECTION_THEME)
-        return 1;
+//    if (section == SECTION_THEME)
+//        return 1;
+
+    if (section == SECTION_ACCOUNTS)
+        return SECTION_ACCOUNTS_NB_ROWS;
 
     return 0;
 }
@@ -248,9 +260,12 @@
     else if (section == SECTION_IMAGE)
         title = NSLocalizedString(@"SettingsView_section_image", nil);
     
-    else if (section == SECTION_THEME)
-        title = NSLocalizedString(@"SettingsView_section_theme", nil);
-    
+//    else if (section == SECTION_THEME)
+//        title = NSLocalizedString(@"SettingsView_section_theme", nil);
+
+    else if (section == SECTION_ACCOUNTS)
+        title = NSLocalizedString(@"SettingsView_section_accounts", nil);
+
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
@@ -281,9 +296,12 @@
     else if (indexPath.section == SECTION_IMAGE)
         nbRows =  1;
     
-    else if (indexPath.section == SECTION_THEME)
-        nbRows =  1;
+//    else if (indexPath.section == SECTION_THEME)
+//        nbRows =  1;
     
+    else if (indexPath.section == SECTION_ACCOUNTS)
+        nbRows =  SECTION_ACCOUNTS_NB_ROWS;
+
     if (nbRows == 1)
     {
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
@@ -328,8 +346,8 @@
     if ((indexPath.section == SECTION_IMAGE) && (indexPath.row == ROW_IMAGE))
         return _settingsImageCell;
     
-    if ((indexPath.section == SECTION_THEME) && (indexPath.row == ROW_THEME))
-        return _settingsThemeCell;
+//    if ((indexPath.section == SECTION_THEME) && (indexPath.row == ROW_THEME))
+//        return _settingsThemeCell;
 
     
     static NSString* CellIdentifier = @"Cell";
@@ -340,13 +358,14 @@
     {   
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
+
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"SettingsView_row_genre_label", nil);
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.backgroundColor = [UIColor clearColor];
         NSString* style = _myRadio.genre;
         cell.detailTextLabel.text = NSLocalizedString(style, nil);
         
@@ -357,13 +376,36 @@
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"SettingsView_row_keywords_label", nil);
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.backgroundColor = [UIColor clearColor];
         cell.detailTextLabel.text = _keywords;
 
         cell.detailTextLabel.textColor = [UIColor colorWithRed:182.f/255.f green:212.f/255.f blue:1 alpha:1];
         cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-}
+    }
+    
+    else if (indexPath.section == SECTION_ACCOUNTS)
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+        if (indexPath.row == ROW_ACCOUNTS_FACEBOOK)
+        {
+            cell.textLabel.text = @"Facebook";  
+//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsFacebook" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            [cell.imageView setImage:[sheet image]];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_TWITTER)
+        {
+            cell.textLabel.text = @"Twitter";
+//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsTwitter" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            [cell.imageView setImage:[sheet image]];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_YASOUND)
+        {
+            cell.textLabel.text = @"Yasound";
+//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsYasound" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            [cell.imageView setImage:[sheet image]];
+        }
+    }
+
     
     return cell;
 }
@@ -372,10 +414,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _changed = YES;
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
+        _changed = YES;
 //        _settingsGenreLabel.textColor = [UIColor whiteColor];
         [self openStyleSelector];
         return;
@@ -383,6 +425,7 @@
 
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
     {
+        _changed = YES;
 //        KeywordsViewController* view = [[KeywordsViewController alloc] initWithTarget:self action:@selector(onKeywordsChanged:)];
         KeywordsViewController* view = [[KeywordsViewController alloc] initWithNibName:@"KeywordsViewController" bundle:nil radio:_myRadio];
         
@@ -399,17 +442,41 @@
     
     if ((indexPath.section == SECTION_IMAGE) && (indexPath.row == ROW_IMAGE))
     {
+        _changed = YES;
+
         [self pickImageDialog];
         return;
     }
     
     
-    if ((indexPath.section == SECTION_THEME) && (indexPath.row == ROW_THEME))
+//    if ((indexPath.section == SECTION_THEME) && (indexPath.row == ROW_THEME))
+//    {
+//        [self openThemeSelector];
+//        return;
+//    }
+    
+    else if (indexPath.section == SECTION_ACCOUNTS)
     {
-//        _settingsThemeTitle.textColor = [UIColor whiteColor];
-        [self openThemeSelector];
-        return;
+        if (indexPath.row == ROW_ACCOUNTS_FACEBOOK)
+        {
+            AccountFacebookViewController* view = [[AccountFacebookViewController alloc] initWithNibName:@"AccountFacebookViewController" bundle:nil];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_TWITTER)
+        {
+            AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_YASOUND)
+        {
+            AccountYasoundViewController* view = [[AccountYasoundViewController alloc] initWithNibName:@"AccountYasoundViewController" bundle:nil];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
     }
+    
 }
 
 
