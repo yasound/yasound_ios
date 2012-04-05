@@ -105,9 +105,19 @@
 {
     switch (section) {
         case SECTION_COVER:
-        case SECTION_CURRENT_RADIO:
-        case SECTION_OWN_RADIO:
             return 1;
+            break;
+        case SECTION_CURRENT_RADIO:
+            if (self.user != nil && self.user.current_radio) 
+            {
+                return 1;
+            }
+            break;
+        case SECTION_OWN_RADIO:
+            if (self.user != nil && self.user.own_radio) 
+            {
+                return 1;
+            }
             break;
         case SECTION_FAVORITE_RADIOS:
             if (_favoriteRadios) {
@@ -124,8 +134,41 @@
     if (indexPath.section == SECTION_COVER)
         return (COVER_SIZE + 2*BORDER);
     
-    return 44;
+    return 62;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    
+    if (section == SECTION_OWN_RADIO)
+    {
+        title = NSLocalizedString(@"ProfileView_section_own_radio", nil);
+    }
+    else if (section == SECTION_CURRENT_RADIO)
+    {
+        title = NSLocalizedString(@"ProfileView_section_current_radio", nil);
+    }
+    else if (section == SECTION_FAVORITE_RADIOS)
+    {
+        title = NSLocalizedString(@"ProfileView_section_favorite_radios", nil);
+    }
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    UIImage* image = [sheet image];
+    CGFloat height = image.size.height;
+    UIImageView* view = [[UIImageView alloc] initWithImage:image];
+    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
+    
+    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
+
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -137,10 +180,6 @@
         [view release];
         return;
     }
-    
-    UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainRow.png"]];
-    cell.backgroundView = view;
-    [view release];
 }
 
 
@@ -183,7 +222,7 @@
             [_imageView setUrl:url];
         }
         
-        _name.text = user.name;
+        _name.text = self.user.name;
         return cell;
         
     }
@@ -282,7 +321,7 @@
 {
     _favoriteRadios = radios;
     [_favoriteRadios retain];
-    [_tableView reloadData];
+   // [_tableView reloadData];
 }
 
 
