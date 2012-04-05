@@ -111,10 +111,10 @@
     
     
     
-    if (_controller)
-    {
-        [_controller release];
-    }
+//    if (_controller)
+//    {
+//        [_controller release];
+//    }
     
   // clean twitter engine
     
