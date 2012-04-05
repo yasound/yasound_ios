@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 
 
-#define NOTIF_FriendGoesOnline @"NotifFriendGoesOnline"
-#define NOTIF_FriendEnters @"NotifFriendEnters"
-#define NOTIF_UserEnters @"NotifUserEnters"
-#define NOTIF_PostReceived @"NotifPostReceived"
-#define NOTIF_LikeReceived @"NotifLikeReceived"
-#define NOTIF_SubscriptionReceived @"NotifSubscriptionReceived"
-#define NOTIF_RadioShared @"NotifRadioShared"
-#define NOTIF_NewFriendRadio @"NotifNewFriendRadio"
+//#define NOTIF_FriendGoesOnline @"NotifFriendGoesOnline"
+//#define NOTIF_FriendEnters @"NotifFriendEnters"
+//#define NOTIF_UserEnters @"NotifUserEnters"
+//#define NOTIF_PostReceived @"NotifPostReceived"
+//#define NOTIF_LikeReceived @"NotifLikeReceived"
+//#define NOTIF_SubscriptionReceived @"NotifSubscriptionReceived"
+//#define NOTIF_RadioShared @"NotifRadioShared"
+//#define NOTIF_NewFriendRadio @"NotifNewFriendRadio"
 
 
 
