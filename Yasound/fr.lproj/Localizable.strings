@@ -287,8 +287,11 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MenuView_me_playlists" = "Ma programmation";
 "MenuView_me_programming" = "Ma programmation";
 "MenuView_me_config" = "Paramètres";
+"MenuView_me_notifs" = "Notifications";
 "MenuView_misc_legal" = "Conditions d'utilisation";
 "MenuView_misc_logout" = "Se déconnecter";
+
+"NotificationView_title" = "Notifications";
 
 "AccountsView_username_label" = "Nom d'utilisateur";
 "AccountsView_logout_label" = "Se déconnecter";

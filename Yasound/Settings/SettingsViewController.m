@@ -414,10 +414,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _changed = YES;
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
+        _changed = YES;
 //        _settingsGenreLabel.textColor = [UIColor whiteColor];
         [self openStyleSelector];
         return;
@@ -425,6 +425,7 @@
 
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
     {
+        _changed = YES;
 //        KeywordsViewController* view = [[KeywordsViewController alloc] initWithTarget:self action:@selector(onKeywordsChanged:)];
         KeywordsViewController* view = [[KeywordsViewController alloc] initWithNibName:@"KeywordsViewController" bundle:nil radio:_myRadio];
         
@@ -441,6 +442,8 @@
     
     if ((indexPath.section == SECTION_IMAGE) && (indexPath.row == ROW_IMAGE))
     {
+        _changed = YES;
+
         [self pickImageDialog];
         return;
     }

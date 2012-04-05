@@ -1052,6 +1052,15 @@
 			<key>path</key>
 			<string>images/Icons</string>
 		</dict>
+		<key>IconMeNotifications</key>
+		<dict>
+			<key>name</key>
+			<string>IconMeNotifications</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+		</dict>
 		<key>IconMeStats</key>
 		<dict>
 			<key>name</key>

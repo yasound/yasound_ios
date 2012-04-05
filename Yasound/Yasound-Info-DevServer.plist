@@ -50,6 +50,25 @@
 	<string>MainWindow</string>
 	<key>Resources</key>
 	<dict>
+		<key>notifications</key>
+		<dict>
+			<key>NotifFriendEnters</key>
+			<true/>
+			<key>NotifFriendGoesOnline</key>
+			<true/>
+			<key>NotifLikeReceived</key>
+			<true/>
+			<key>NotifNewFriendRadio</key>
+			<true/>
+			<key>NotifPostReceived</key>
+			<true/>
+			<key>NotifRadioShared</key>
+			<true/>
+			<key>NotifSubscriptionReceived</key>
+			<true/>
+			<key>NotifUserEnters</key>
+			<true/>
+		</dict>
 		<key>serverURL</key>
 		<string>http://dev.yasound.com/</string>
 		<key>styles</key>
