@@ -100,9 +100,7 @@
   NSString* s = [self dateToString:_notifInfo.date];
   _notifDateLabel.text = s;
 
-  
-  if (read)
-    _unreadImage.hidden = YES;
+  _unreadImage.hidden = read;
 }
 
 @end

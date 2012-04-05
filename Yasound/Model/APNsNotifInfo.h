@@ -26,7 +26,7 @@ typedef enum
 
 @protocol APNsNotifInfoDelegate <NSObject>
 
-- (void)notifInfoDidChange:(APNsNotifInfo*)notifInfo;
+- (void)notifInfoHasBeenRead:(APNsNotifInfo*)notifInfo;
 
 @end
 

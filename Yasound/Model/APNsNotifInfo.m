@@ -97,9 +97,6 @@
   [newInfoDict setValue:d forKey:DATE_ATTRIBUTE_NAME];
   
   [_data setValue:newInfoDict forKey:INTERNAL_INFO_ATTRIBUTE_NAME];
-  
-  if (self.delegate)
-    [self.delegate notifInfoDidChange:self];
 }
 
 - (BOOL)read
@@ -132,7 +129,7 @@
   [_data setValue:newInfoDict forKey:INTERNAL_INFO_ATTRIBUTE_NAME];
   
   if (self.delegate)
-    [self.delegate notifInfoDidChange:self];
+    [self.delegate notifInfoHasBeenRead:self];
 }
 
 - (NSString*)locKey

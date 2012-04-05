@@ -260,14 +260,19 @@ static YasoundNotifCenter* _main = nil;
   [self save];
   
   [self sendNotifAddedEvent:info];
+  [self sendUnreadCountChangedEvent];
 }
 
 - (void)deleteNotifInfo:(APNsNotifInfo*)info
 {
+  BOOL read = [info read];
   [self sendNotifDeletedEvent:info];
   [_notifInfos removeObject:info];
   [info release];
   [self save];
+  
+  if (!read)
+    [self sendUnreadCountChangedEvent];
 }
 
 
@@ -275,13 +280,10 @@ static YasoundNotifCenter* _main = nil;
 
 #pragma mark - APNsNotifInfoDelegate
 
-- (void)notifInfoDidChange:(APNsNotifInfo *)notifInfo
+- (void)notifInfoHasBeenRead:(APNsNotifInfo *)notifInfo
 {
-  NSInteger oldUnread = [self unreadNotifCount];
   [self save];
-  NSInteger newUnread = [self unreadNotifCount];
-  if (oldUnread != newUnread)
-    [self sendUnreadCountChangedEvent];
+  [self sendUnreadCountChangedEvent];
 }
 
 @end
