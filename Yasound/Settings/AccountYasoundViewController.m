@@ -78,10 +78,11 @@
         _pword.text = [account objectForKey:@"pword"];
         
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
-//
-//        [_logoutButton setImage:@"BigActionRedButton.png" forState:UIControlStateNormal];
-//        [_logoutButton setImage:@"BigActionRedButtonHighlighted.png" forState:UIControlStateHighlighted];
-//        [_logoutButton setImage:@"BigActionButtonDisabled.png" forState:UIControlStateDisabled];
+        
+        _logoutLabel.hidden = NO;
+        _logoutButton.hidden = NO;
+        _loginLabel.hidden = YES;
+        _loginButton.hidden = YES;
 
         // disable the button if you want to prevent the user to disconnect from the only one associated account
         if ([[YasoundSessionManager main] accountManagerNumberOfAccounts] == 1)
@@ -99,11 +100,12 @@
         _pword.textColor = [UIColor blackColor];
         _pword.backgroundColor = [UIColor whiteColor];
 
-        _logoutLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
+        _loginLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
         
-//        [_logoutButton setImage:@"BigActionGreenButton.png" forState:UIControlStateNormal];
-//        [_logoutButton setImage:@"BigActionGreenButtonHighlighted.png" forState:UIControlStateHighlighted];
-//        [_logoutButton setImage:@"BigActionButtonDisabled.png" forState:UIControlStateDisabled];
+        _loginLabel.hidden = NO;
+        _loginButton.hidden = NO;
+        _logoutLabel.hidden = YES;
+        _logoutButton.hidden = YES;
         
     }
 }

@@ -15,8 +15,11 @@
     
     IBOutlet UILabel* _usernameLabel;
     IBOutlet UILabel* _usernameValue;
+
     IBOutlet UILabel* _logoutLabel;
     IBOutlet UIButton* _logoutButton;
+    IBOutlet UILabel* _loginLabel;
+    IBOutlet UIButton* _loginButton;
     
 }
 

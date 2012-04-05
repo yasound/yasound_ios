@@ -235,6 +235,11 @@ static FacebookSessionManager* _facebook = nil;
   [self.delegate sessionDidLogin:YES];
 }
 
+- (void)fbDidNotLogin:(BOOL)cancelled
+{
+    [self.delegate sessionDidLogout];  
+}
+
 - (void)fbDidLogout
 {
     if (_logout)

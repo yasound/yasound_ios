@@ -18,6 +18,8 @@
 
     IBOutlet UILabel* _logoutLabel;
     IBOutlet UIButton* _logoutButton;
+    IBOutlet UILabel* _loginLabel;
+    IBOutlet UIButton* _loginButton;
     
 }
 

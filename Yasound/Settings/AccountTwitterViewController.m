@@ -65,11 +65,13 @@
     {
         _usernameLabel.textColor = [UIColor whiteColor];
         _usernameValue.textColor = [UIColor whiteColor];
+
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
         
-//        [_logoutButton setImage:@"BigActionRedButton.png" forState:UIControlStateNormal];
-//        [_logoutButton setImage:@"BigActionRedButtonHighlighted.png" forState:UIControlStateHighlighted];
-//        [_logoutButton setImage:@"BigActionButtonDisabled.png" forState:UIControlStateDisabled];
+        _logoutLabel.hidden = NO;
+        _logoutButton.hidden = NO;
+        _loginLabel.hidden = YES;
+        _loginButton.hidden = YES;
 
         NSDictionary* account = [[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER];
         _usernameValue.text = [account objectForKey:@"username"];
@@ -82,11 +84,13 @@
     {
         _usernameLabel.textColor = [UIColor grayColor];
         _usernameValue.textColor = [UIColor grayColor];
-        _logoutLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
+
+        _loginLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
         
-//        [_logoutButton setImage:@"BigActionGreenButton.png" forState:UIControlStateNormal];
-//        [_logoutButton setImage:@"BigActionGreenButtonHighlighted.png" forState:UIControlStateHighlighted];
-//        [_logoutButton setImage:@"BigActionButtonDisabled.png" forState:UIControlStateDisabled];
+        _loginLabel.hidden = NO;
+        _loginButton.hidden = NO;
+        _logoutLabel.hidden = YES;
+        _logoutButton.hidden = YES;
         
         _usernameValue.text = @"-";
     }

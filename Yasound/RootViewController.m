@@ -483,9 +483,14 @@
     }
     else
     {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release]; 
+        //LBDEBUG
+        _menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        [_menuView retain];
+        [self.navigationController pushViewController:_menuView animated:NO];
+
+//        RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release]; 
     }
 }
 
