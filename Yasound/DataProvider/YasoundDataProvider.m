@@ -10,6 +10,7 @@
 #import "UIImage+Resize.h"
 #import "NSObject+SBJson.h"
 #import "YasoundAppDelegate.h"
+#import "UIDevice+IdentifierAddition.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 
@@ -255,6 +256,9 @@ static YasoundDataProvider* _main = nil;
     [token setSandbox];
   else
     [token setDevelopment];
+  
+  NSString* uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+  token.uuid = uuid;
   
   Auth* auth = self.apiKeyAuth;
   NSString* relativeURL = @"/api/v1/ios_push_notif_token";

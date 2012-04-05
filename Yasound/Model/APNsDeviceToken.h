@@ -12,6 +12,7 @@
 
 @property (retain, nonatomic) NSString* device_token;
 @property (retain, nonatomic) NSString* device_token_type;
+@property (retain, nonatomic) NSString* uuid;
 
 - (BOOL)isSandbox;
 - (void)setSandbox;

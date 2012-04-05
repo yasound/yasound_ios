@@ -15,6 +15,7 @@
 
 @synthesize device_token;
 @synthesize device_token_type;
+@synthesize uuid;
 
 - (BOOL)isSandbox
 {
