@@ -583,7 +583,62 @@ static YasoundDataProvider* _main = nil;
     }
 }
 
+- (void)receiveFacebookssociation:(id)obj info:(NSDictionary*)info
+{
+    NSLog(@"YasoundDataProvider receiveFacebookAssociation : info %@", info);
+    
+    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
+    
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"clientTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    NSDictionary* clientData = [userData valueForKey:@"clientData"];
+    if (clientData)
+        [finalInfo setValue:clientData forKey:@"userData"];
+    
+    if (target && selector)
+    {
+        [target performSelector:selector withObject:finalInfo];
+    }
+}
 
+- (void)receiveTwitterAssociation:(id)obj info:(NSDictionary*)info
+{
+    NSLog(@"YasoundDataProvider receiveTwitterAssociation : info %@", info);
+    
+    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
+    
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"clientTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    NSDictionary* clientData = [userData valueForKey:@"clientData"];
+    if (clientData)
+        [finalInfo setValue:clientData forKey:@"userData"];
+    
+    if (target && selector)
+    {
+        [target performSelector:selector withObject:finalInfo];
+    }
+}
+
+- (void)receiveDissociation:(id)obj info:(NSDictionary*)info
+{
+    NSLog(@"YasoundDataProvider receiveDissociation : info %@", info);
+    
+    NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
+    
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"clientTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    NSDictionary* clientData = [userData valueForKey:@"clientData"];
+    if (clientData)
+        [finalInfo setValue:clientData forKey:@"userData"];
+    
+    if (target && selector)
+    {
+        [target performSelector:selector withObject:finalInfo];
+    }
+}
 
 
 
@@ -592,7 +647,17 @@ static YasoundDataProvider* _main = nil;
 
 - (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector
 {
-
+    Auth* auth = self.apiKeyAuth;
+    
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+    
+    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveFacebookAssociation:info:) withUserData:data withAuth:auth];
+    
+    [req addPostValue:@"facebook" forKey:@"account_type"];
+    [req addPostValue:uid forKey:@"uid"];
+    [req addPostValue:token forKey:@"token"];
+    
+    [req startAsynchronous];
 }
 
 
@@ -606,7 +671,18 @@ static YasoundDataProvider* _main = nil;
 
 - (void)associateAccountTwitter:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret email:(NSString*)email target:(id)target action:(SEL)selector
 {
-
+    Auth* auth = self.apiKeyAuth;
+    
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+    
+    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveTwitterAssociation:info:) withUserData:data withAuth:auth];
+    
+    [req addPostValue:@"twitter" forKey:@"account_type"];
+    [req addPostValue:uid forKey:@"uid"];
+    [req addPostValue:token forKey:@"token"];
+    [req addPostValue:tokenSecret forKey:@"token_secret"];
+    
+    [req startAsynchronous];
 }
 
 
@@ -614,6 +690,15 @@ static YasoundDataProvider* _main = nil;
 
 - (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector
 {
+    Auth* auth = self.apiKeyAuth;
+    
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
+    
+    ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/dissociation" absolute:NO notifyTarget:self byCalling:@selector(receiveDissociation:info:) withUserData:data withAuth:auth];
+    
+    [req addPostValue:accountTypeIdentifier forKey:@"account_type"];
+    
+    [req startAsynchronous];
 
 }
 
