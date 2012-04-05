@@ -67,7 +67,8 @@
         _usernameValue.textColor = [UIColor whiteColor];
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
         
-        _usernameValue.text = [YasoundDataProvider main].user.name;
+        NSDictionary* account = [[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER];
+        _usernameValue.text = [account objectForKey:@"username"];
 
         // disable the button if you want to prevent the user to disconnect from the only one associated account
         if ([[YasoundSessionManager main] accountManagerNumberOfAccounts] == 1)
