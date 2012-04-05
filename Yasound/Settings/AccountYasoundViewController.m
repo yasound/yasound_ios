@@ -79,9 +79,15 @@
         
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
 
+        [_logoutButton setImage:@"BigActionRedButton.png" forState:UIControlStateNormal];
+        [_logoutButton setImage:@"BigActionRedButtonHighlighted.png" forState:UIControlStateHighlighted];
+        [_logoutButton setImage:@"BigActionButtonDisabled.png" forState:UIControlStateDisabled];
+
         // disable the button if you want to prevent the user to disconnect from the only one associated account
         if ([[YasoundSessionManager main] accountManagerNumberOfAccounts] == 1)
             _logoutButton.enabled = NO;
+        
+        
     }
     else
     {
@@ -94,6 +100,11 @@
         _pword.backgroundColor = [UIColor whiteColor];
 
         _logoutLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
+        
+        [_logoutButton setImage:@"BigActionGreenButton.png" forState:UIControlStateNormal];
+        [_logoutButton setImage:@"BigActionGreenButtonHighlighted.png" forState:UIControlStateHighlighted];
+        [_logoutButton setImage:@"BigActionButtonDisabled.png" forState:UIControlStateDisabled];
+        
     }
 }
 
