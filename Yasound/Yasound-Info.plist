@@ -107,6 +107,66 @@
 				<key>color</key>
 				<string>black</string>
 			</dict>
+			<key>NotificationDate</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>name</key>
+					<string>HelveticaNeue</string>
+					<key>size</key>
+					<integer>13</integer>
+					<key>textColor</key>
+					<string>white</string>
+				</dict>
+				<key>height</key>
+				<integer>18</integer>
+				<key>width</key>
+				<integer>40</integer>
+				<key>x</key>
+				<integer>270</integer>
+				<key>y</key>
+				<integer>5</integer>
+			</dict>
+			<key>NotificationText</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>name</key>
+					<string>HelveticaNeue</string>
+					<key>size</key>
+					<integer>13</integer>
+					<key>textColor</key>
+					<string>white</string>
+				</dict>
+				<key>height</key>
+				<integer>34</integer>
+				<key>width</key>
+				<integer>222</integer>
+				<key>x</key>
+				<integer>38</integer>
+				<key>y</key>
+				<integer>5</integer>
+			</dict>
+			<key>NotificationViewCellLabel</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>size</key>
+					<integer>15</integer>
+					<key>textColor</key>
+					<string>white</string>
+					<key>weight</key>
+					<string>bold</string>
+				</dict>
+				<key>height</key>
+				<integer>21</integer>
+				<key>width</key>
+				<integer>200</integer>
+				<key>x</key>
+				<integer>16</integer>
+				<key>y</key>
+				<integer>8</integer>
+			</dict>
 			<key>RadioSelectionAvatar</key>
 			<dict>
 				<key>height</key>
@@ -272,6 +332,28 @@
 				<key>y</key>
 				<integer>5</integer>
 			</dict>
+			<key>UnreadNotifBadge</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>backgroundColor</key>
+					<string>clear</string>
+					<key>name</key>
+					<string>HelveticaNeue-Bold</string>
+					<key>size</key>
+					<integer>15</integer>
+					<key>textColor</key>
+					<string>white</string>
+				</dict>
+				<key>height</key>
+				<integer>20</integer>
+				<key>width</key>
+				<integer>60</integer>
+				<key>x</key>
+				<integer>230</integer>
+				<key>y</key>
+				<integer>12</integer>
+			</dict>
 			<key>UserCellBackgroundDark</key>
 			<dict>
 				<key>name</key>
@@ -330,68 +412,6 @@
 				<integer>0</integer>
 				<key>y</key>
 				<integer>44</integer>
-			</dict>
-			<key>NotificationText</key>
-			<dict>
-				<key>font</key>
-				<dict>
-					<key>name</key>
-					<string>HelveticaNeue</string>
-					<key>size</key>
-					<integer>13</integer>
-					<key>textColor</key>
-					<string>white</string>
-				</dict>
-				<key>height</key>
-				<integer>34</integer>
-				<key>width</key>
-				<integer>222</integer>
-				<key>x</key>
-				<integer>38</integer>
-				<key>y</key>
-				<integer>5</integer>
-			</dict>
-			<key>NotificationDate</key>
-			<dict>
-				<key>font</key>
-				<dict>
-					<key>name</key>
-					<string>HelveticaNeue</string>
-					<key>size</key>
-					<integer>13</integer>
-					<key>textColor</key>
-					<string>white</string>
-				</dict>
-				<key>height</key>
-				<integer>18</integer>
-				<key>width</key>
-				<integer>40</integer>
-				<key>x</key>
-				<integer>270</integer>
-				<key>y</key>
-				<integer>5</integer>
-			</dict>
-			<key>UnreadNotifBadge</key>
-			<dict>
-				<key>font</key>
-				<dict>
-					<key>name</key>
-					<string>HelveticaNeue-Bold</string>
-					<key>size</key>
-					<integer>15</integer>
-					<key>textColor</key>
-					<string>white</string>
-					<key>backgroundColor</key>
-					<string>clear</string>
-				</dict>
-				<key>height</key>
-				<integer>20</integer>
-				<key>width</key>
-				<integer>60</integer>
-				<key>x</key>
-				<integer>230</integer>
-				<key>y</key>
-				<integer>12</integer>
 			</dict>
 		</dict>
 		<key>themes</key>
