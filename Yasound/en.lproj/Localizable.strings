@@ -133,6 +133,7 @@
 "SettingsView_section_image" = "Picture";
 "SettingsView_section_theme" = "Graphical Theme";
 "SettingsView_section_accounts" = "Comptes";
+"SettingsView_section_notifs" = "Notifications";
 
 "SettingsView_row_image_label" = "Picture";
 "SettingsView_row_title_label" = "Name";
@@ -153,6 +154,7 @@
 "SettingsView_logout_logout" = "Disconnect";
 
 "SettingsView_submit_title" = "update your radio";
+
 
 
 

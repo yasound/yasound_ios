@@ -133,6 +133,7 @@
 "SettingsView_section_image" = "Image";
 "SettingsView_section_theme" = "Thème Graphique";
 "SettingsView_section_accounts" = "Comptes";
+"SettingsView_section_notifs" = "Notifications";
 
 "SettingsView_row_image_label" = "Image";
 "SettingsView_row_title_label" = "Titre";
@@ -294,14 +295,14 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "NotificationView_title" = "Notifications";
 
-"NotifFriendGoesOnline" = "Friend goes online";
-"NotifFriendEnters" = "Friend enters";
-"NotifUserEnters" = "User enters";
-"NotifPostReceived" = "Post received";
-"NotifLikeReceived" = "Like received";
-"NotifSubscriptionReceived" = "Subscription received";
-"NotifRadioShared" = "Radio shared";
-"NotifNewFriendRadio" = "New friend radio";
+"NotifFriendGoesOnline" = "Mes amis passent en ligne";
+"NotifFriendEnters" = "Mes amis entrent dans ma radio";
+"NotifUserEnters" = "Un utilisateur entre dans ma radio";
+"NotifPostReceived" = "J'ai reçu un post sur ma radio";
+"NotifLikeReceived" = "Un like a été reçu";
+"NotifSubscriptionReceived" = "Ma radio a été mise en favorite";
+"NotifRadioShared" = "Ma radio a été partagée";
+"NotifNewFriendRadio" = "Un ami a créé une radio";
 
 
 

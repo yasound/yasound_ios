@@ -107,6 +107,26 @@
 				<key>color</key>
 				<string>black</string>
 			</dict>
+			<key>NotificationViewCellLabel</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>size</key>
+					<integer>15</integer>
+					<key>textColor</key>
+					<string>white</string>
+					<key>weight</key>
+					<string>bold</string>
+				</dict>
+				<key>height</key>
+				<integer>21</integer>
+				<key>width</key>
+				<integer>200</integer>
+				<key>x</key>
+				<integer>16</integer>
+				<key>y</key>
+				<integer>8</integer>
+			</dict>
 			<key>RadioSelectionAvatar</key>
 			<dict>
 				<key>height</key>

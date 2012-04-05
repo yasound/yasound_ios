@@ -17,10 +17,11 @@
 #import "AccountFacebookViewController.h"
 #import "AccountTwitterViewController.h"
 #import "AccountYasoundViewController.h"
+#import "NotificationViewController.h"
 
 
 
-#define NB_SECTIONS 3
+#define NB_SECTIONS 4
 
 #define SECTION_CONFIG 0
 #define ROW_CONFIG_TITLE 0
@@ -39,6 +40,9 @@
 #define ROW_ACCOUNTS_TWITTER 1
 #define ROW_ACCOUNTS_YASOUND 2
 
+#define SECTION_NOTIFS 3
+#define SECTION_NOTIFS_NB_ROWS 1
+#define ROW_NOTIFS 0
 
 
 @implementation SettingsViewController
@@ -230,6 +234,9 @@
     if (section == SECTION_ACCOUNTS)
         return SECTION_ACCOUNTS_NB_ROWS;
 
+    if (section == SECTION_NOTIFS)
+        return SECTION_NOTIFS_NB_ROWS;
+
     return 0;
 }
 
@@ -266,6 +273,9 @@
     else if (section == SECTION_ACCOUNTS)
         title = NSLocalizedString(@"SettingsView_section_accounts", nil);
 
+    else if (section == SECTION_NOTIFS)
+        title = NSLocalizedString(@"SettingsView_section_notifs", nil);
+
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
@@ -301,6 +311,9 @@
     
     else if (indexPath.section == SECTION_ACCOUNTS)
         nbRows =  SECTION_ACCOUNTS_NB_ROWS;
+
+    else if (indexPath.section == SECTION_NOTIFS)
+        nbRows =  SECTION_NOTIFS_NB_ROWS;
 
     if (nbRows == 1)
     {
@@ -405,6 +418,15 @@
 //            [cell.imageView setImage:[sheet image]];
         }
     }
+    
+    else if (indexPath.section == SECTION_NOTIFS)
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = NSLocalizedString(@"SettingsView_section_notifs", nil);
+        
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    }
 
     
     return cell;
@@ -475,6 +497,13 @@
             [self.navigationController pushViewController:view animated:YES];
             [view release];
         }
+    }
+    
+    else if (indexPath.section == SECTION_NOTIFS)
+    {
+        NotificationViewController* view = [[NotificationViewController alloc] initWithNibName:@"NotificationViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
     }
     
 }

@@ -41,7 +41,7 @@
 {
     [super viewDidLoad];
 
-    _titleItem.title = NSLocalizedString(@"SettingsView_title", nil);
+    _titleItem.title = NSLocalizedString(@"NotificationView_title", nil);
     _backItem.title = NSLocalizedString(@"Navigation_back", nil);
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
@@ -98,7 +98,7 @@
 {
     NSInteger nbRows = [NotificationManager main].notifications.count;
     
-    if (nbRows == 1) 
+    if (nbRows == 1)
     {
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
         cell.backgroundView = view;
