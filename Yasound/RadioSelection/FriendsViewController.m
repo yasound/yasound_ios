@@ -18,7 +18,7 @@
 
 #import "FacebookSessionManager.h"
 
-#define SHOW_INVITE_BUTTON 0
+#define SHOW_INVITE_BUTTON 1
 
 @implementation FriendsViewController
 
