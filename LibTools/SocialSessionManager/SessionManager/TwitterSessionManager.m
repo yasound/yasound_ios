@@ -126,6 +126,16 @@ static TwitterSessionManager* _twitter = nil;
 }
 
 
+- (void)invalidConnexion
+{
+    if (_iosManager)
+        [_iosManager invalidConnexion];
+    else
+        [_oauthManager invalidConnexion];
+    
+}
+
+
 
 
 - (void)login;

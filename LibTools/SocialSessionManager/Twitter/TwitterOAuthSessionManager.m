@@ -83,54 +83,63 @@
 - (void)logout
 {
   _isLoging = NO;
+
+    [self invalidConnexion];
   
-  // clean credentials
+  [self.delegate sessionDidLogout];  
+}
+
+
+
+- (void)invalidConnexion
+{
+    // clean credentials
     NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
     NSString* token = [[NSUserDefaults standardUserDefaults] valueForKey:DATA_FIELD_TOKEN];
-  
+    
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_SCREENNAME];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERID];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:DATA_FIELD_TOKEN];
     
-    
-  
-  // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
-  //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
-  
-    
-
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     
     
-  NSError* error;
-  NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
-  [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
-
+    // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
+    //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
+    
+    
+    
+    
+    
+    
+    NSError* error;
+    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+    [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
+    
     [SFHFKeychainUtils deleteItemForUsername:token andServiceName:BundleName error:nil];
     
     
     
-//    if (_controller)
-//    {
-//        [_controller release];
-//    }
+    //    if (_controller)
+    //    {
+    //        [_controller release];
+    //    }
     
-  // clean twitter engine
+    // clean twitter engine
     
     
-  if (_engine)
-  {
-    [_engine clearAccessToken];
-    [_engine clearsCookies];
+    if (_engine)
+    {
+        [_engine clearAccessToken];
+        [_engine clearsCookies];
+        
+        [_engine release];
+        _engine=nil;  
+    }
 
-    [_engine release];
-    _engine=nil;  
-  }
-  
-  [self.delegate sessionDidLogout];  
 }
-
 
 
 

@@ -820,11 +820,16 @@ static YasoundSessionManager* _main = nil;
     if (self.associatingFacebook)
     {
         [self accountManagerRemove:LOGIN_TYPE_FACEBOOK];
+        [[FacebookSessionManager facebook] invalidConnexion];
         self.associatingFacebook = NO;
     }
     else if (self.associatingTwitter)
     {
+
         [self accountManagerRemove:LOGIN_TYPE_TWITTER];
+        
+        [[TwitterSessionManager twitter] invalidConnexion];
+
         self.associatingTwitter = NO;
     }
     else if (self.associatingYasound)
