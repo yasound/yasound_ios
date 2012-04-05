@@ -237,7 +237,7 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)fbDidNotLogin:(BOOL)cancelled
 {
-    [self.delegate sessionDidLogout];  
+    [self.delegate sessionLoginCanceled];  
 }
 
 - (void)fbDidLogout
