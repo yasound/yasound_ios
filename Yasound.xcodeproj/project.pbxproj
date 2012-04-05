@@ -98,6 +98,16 @@
 		40F4C79214BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79314BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		B138AA6814E2BAFC0069E08A /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B138AA6714E2BAFC0069E08A /* SongUploader.m */; };
+		B16CAEC0152D791600317510 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16CAEBE152D791600317510 /* ProfileViewController.m */; };
+		B16CAEC1152D791600317510 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16CAEBE152D791600317510 /* ProfileViewController.m */; };
+		B16CAEC2152D791600317510 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16CAEBE152D791600317510 /* ProfileViewController.m */; };
+		B16CAEC3152D791600317510 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16CAEBE152D791600317510 /* ProfileViewController.m */; };
+		B16CAEC4152D791600317510 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16CAEBE152D791600317510 /* ProfileViewController.m */; };
+		B16CAEC5152D791600317510 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16CAEBF152D791600317510 /* ProfileViewController.xib */; };
+		B16CAEC6152D791600317510 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16CAEBF152D791600317510 /* ProfileViewController.xib */; };
+		B16CAEC7152D791600317510 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16CAEBF152D791600317510 /* ProfileViewController.xib */; };
+		B16CAEC8152D791600317510 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16CAEBF152D791600317510 /* ProfileViewController.xib */; };
+		B16CAEC9152D791600317510 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16CAEBF152D791600317510 /* ProfileViewController.xib */; };
 		B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
@@ -2463,6 +2473,9 @@
 		40F4C79014BEEF6F00A163F9 /* NextSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextSong.m; sourceTree = "<group>"; };
 		B138AA6614E2BAFC0069E08A /* SongUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongUploader.h; sourceTree = "<group>"; };
 		B138AA6714E2BAFC0069E08A /* SongUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUploader.m; sourceTree = "<group>"; };
+		B16CAEBD152D791600317510 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		B16CAEBE152D791600317510 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		B16CAEBF152D791600317510 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		B172043D14C54446007F3FB0 /* BuyLinkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyLinkManager.h; sourceTree = "<group>"; };
 		B172043E14C54446007F3FB0 /* BuyLinkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyLinkManager.m; sourceTree = "<group>"; };
 		B19245D814E2DAF700B18EEF /* TSLibraryImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSLibraryImport.h; sourceTree = "<group>"; };
@@ -3250,6 +3263,16 @@
 			name = ImageResize;
 			path = LibTools/ImageResize;
 			sourceTree = SOURCE_ROOT;
+		};
+		B16CAEBC152D791600317510 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B16CAEBD152D791600317510 /* ProfileViewController.h */,
+				B16CAEBE152D791600317510 /* ProfileViewController.m */,
+				B16CAEBF152D791600317510 /* ProfileViewController.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
 		};
 		B172043C14C54446007F3FB0 /* BuyLink */ = {
 			isa = PBXGroup;
@@ -4410,6 +4433,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
+				B16CAEBC152D791600317510 /* Profile */,
 				BC82066E14F561C900FAE05E /* Programming */,
 				BCBAB48D14A22FEC00CF922A /* Settings */,
 				40AAEC4714921ACE0031B39D /* DataProvider */,
@@ -5023,6 +5047,7 @@
 				BC4CA7A2152D20BF0051A085 /* BigActionButtonDisabled.png in Resources */,
 				BC4CA7A8152D20BF0051A085 /* BigActionButtonDisabled@2x.png in Resources */,
 				BC4CA7C8152D26130051A085 /* NotificationViewController.xib in Resources */,
+				B16CAEC7152D791600317510 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5225,6 +5250,7 @@
 				BC4CA7A1152D20BF0051A085 /* BigActionButtonDisabled.png in Resources */,
 				BC4CA7A7152D20BF0051A085 /* BigActionButtonDisabled@2x.png in Resources */,
 				BC4CA7C7152D26130051A085 /* NotificationViewController.xib in Resources */,
+				B16CAEC6152D791600317510 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5427,6 +5453,7 @@
 				BC4CA7A4152D20BF0051A085 /* BigActionButtonDisabled.png in Resources */,
 				BC4CA7AA152D20BF0051A085 /* BigActionButtonDisabled@2x.png in Resources */,
 				BC4CA7CA152D26130051A085 /* NotificationViewController.xib in Resources */,
+				B16CAEC9152D791600317510 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5629,6 +5656,7 @@
 				BC4CA7A0152D20BF0051A085 /* BigActionButtonDisabled.png in Resources */,
 				BC4CA7A6152D20BF0051A085 /* BigActionButtonDisabled@2x.png in Resources */,
 				BC4CA7C6152D26130051A085 /* NotificationViewController.xib in Resources */,
+				B16CAEC5152D791600317510 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5831,6 +5859,7 @@
 				BC4CA7A3152D20BF0051A085 /* BigActionButtonDisabled.png in Resources */,
 				BC4CA7A9152D20BF0051A085 /* BigActionButtonDisabled@2x.png in Resources */,
 				BC4CA7C9152D26130051A085 /* NotificationViewController.xib in Resources */,
+				B16CAEC8152D791600317510 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6178,6 +6207,7 @@
 				BC4CA7C3152D26130051A085 /* NotificationViewController.m in Sources */,
 				BC4CA7CF152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D7152D33C40051A085 /* NotificationManager.m in Sources */,
+				B16CAEC2152D791600317510 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6352,6 +6382,7 @@
 				BC4CA7C2152D26130051A085 /* NotificationViewController.m in Sources */,
 				BC4CA7CE152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D6152D33C40051A085 /* NotificationManager.m in Sources */,
+				B16CAEC1152D791600317510 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6527,6 +6558,7 @@
 				BC4CA7C5152D26130051A085 /* NotificationViewController.m in Sources */,
 				BC4CA7D1152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D9152D33C40051A085 /* NotificationManager.m in Sources */,
+				B16CAEC4152D791600317510 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6701,6 +6733,7 @@
 				BC4CA7C1152D26130051A085 /* NotificationViewController.m in Sources */,
 				BC4CA7CD152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D5152D33C40051A085 /* NotificationManager.m in Sources */,
+				B16CAEC0152D791600317510 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6876,6 +6909,7 @@
 				BC4CA7C4152D26130051A085 /* NotificationViewController.m in Sources */,
 				BC4CA7D0152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D8152D33C40051A085 /* NotificationManager.m in Sources */,
+				B16CAEC3152D791600317510 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

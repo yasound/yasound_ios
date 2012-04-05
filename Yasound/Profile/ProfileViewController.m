@@ -147,7 +147,6 @@
         
             cell.selectionStyle  = UITableViewCellSelectionStyleNone;
       
-            NSLog(@"user id = %d", [self.user.id intValue]); 
             NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
             _imageView = [[WebImageView alloc] initWithImageAtURL:url];
 
@@ -157,10 +156,10 @@
 
             [cell addSubview:_imageView];
 //            
-//            // name, artist, album
-//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            _name = [sheet makeLabel];
-//            [cell addSubview:_name];
+            // name
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            _name = [sheet makeLabel];
+            [cell addSubview:_name];
 //            
 //            sheet = [[Theme theme] stylesheetForKey:@"SongView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //            _artist = [sheet makeLabel];
@@ -189,7 +188,7 @@
         }
         
         
-//        _name.text = song.name;
+        _name.text = user.name;
 //        _artist.text = song.artist;
 //        _album.text = song.album;
         _enabledLabel.text = NSLocalizedString(@"SongView_enable_label", nil);
