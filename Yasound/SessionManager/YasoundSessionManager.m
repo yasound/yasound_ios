@@ -613,11 +613,11 @@ static YasoundSessionManager* _main = nil;
         email_n = @"";
 
     NSLog(@"ready to request social login to the server with : ");
-    NSLog(@"username '%@'", username);
+    NSLog(@"username '%@'", username_n);
     NSLog(@"name '%@'", name);
     NSLog(@"uid '%@'", uid);
     NSLog(@"token '%@'", token);
-    NSLog(@"email '%@'", email);
+    NSLog(@"email '%@'", email_n);
     
 //    // TAG ACTIVITY ALERT
 //    if (![ActivityAlertView isRunning])
@@ -639,7 +639,7 @@ static YasoundSessionManager* _main = nil;
 
         // request to yasound server
         
-        [[YasoundDataProvider main] associateAccountFacebook:username type:LOGIN_TYPE_FACEBOOK uid:uid token:token email:email target:self action:@selector(associatingSocialValidated:)];
+        [[YasoundDataProvider main] associateAccountFacebook:username_n type:LOGIN_TYPE_FACEBOOK uid:uid token:token email:email_n target:self action:@selector(associatingSocialValidated:)];
     }
     
     
