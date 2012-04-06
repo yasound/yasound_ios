@@ -9,6 +9,7 @@
 #import "NotificationViewController.h"
 #import "NotificationManager.h"
 #import "NotificationViewCell.h"
+#import "YasoundDataProvider.h"
 
 
 
@@ -47,6 +48,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
+  [[YasoundDataProvider main] apnsPreferencesWithTarget:self action:@selector(receivedAPNsPreferences:withInfo:)];
 }
 
 - (void)viewDidUnload
@@ -63,7 +65,14 @@
 
 
 
-
+- (void)receivedAPNsPreferences:(APNsPreferences*)prefs withInfo:(NSDictionary*)info
+{
+  if (!prefs)
+    return;
+  
+  [[NotificationManager main] updateWithAPNsPreferences:prefs];
+  [_tableView reloadData];
+}
 
 
 
@@ -161,6 +170,9 @@
 
 - (IBAction)onBack:(id)sender
 {
+  APNsPreferences* prefs = [[NotificationManager main] APNsPreferences];
+  [[YasoundDataProvider main] setApnsPreferences:prefs target:nil action:nil];
+  
     [self.navigationController popViewControllerAnimated:YES];
 }
 
