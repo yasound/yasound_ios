@@ -466,3 +466,9 @@
 "NotificationCenterView_edit" = "Edit";
 
 "YasoundMessage_title" = "Message from Yasound";
+
+"ProfileView_title" = "Profile";
+"ProfileView_section_own_radio" = "His radio";
+"ProfileView_section_current_radio" = "The radio he is listening to";
+"ProfileView_section_favorite_radios" = "Favorites";
+

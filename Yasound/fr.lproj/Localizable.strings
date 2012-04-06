@@ -457,3 +457,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "NotificationCenterView_edit" = "Modifier";
 
 "YasoundMessage_title" = "Message de Yasound";
+
+"ProfileView_title" = "Profil";
+"ProfileView_section_own_radio" = "Sa radio";
+"ProfileView_section_current_radio" = "La radio qu'il écoute";
+"ProfileView_section_favorite_radios" = "Ses favoris";
