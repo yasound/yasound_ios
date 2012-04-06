@@ -81,6 +81,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [_favoriteRadios release];
+    _favoriteRadios = nil;
+    
     [[YasoundDataProvider main] userWithId:self.user.id target:self action:@selector(onUserInfo:info:)];
     
     if ([AudioStreamManager main].currentRadio == nil)
