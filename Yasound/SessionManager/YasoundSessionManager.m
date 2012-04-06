@@ -474,6 +474,7 @@ static YasoundSessionManager* _main = nil;
         else
         {
             NSLog(@"automatic");
+            self.associatingFacebook = NO;
             self.associatingAutomatic = NO;
             
             [_target performSelector:_action withObject:nil];
@@ -486,6 +487,7 @@ static YasoundSessionManager* _main = nil;
         else
         {
             NSLog(@"automatic");
+            self.associatingTwitter = NO;
             self.associatingAutomatic = NO;
             
             [_target performSelector:_action withObject:nil];
@@ -510,6 +512,13 @@ static YasoundSessionManager* _main = nil;
 //    if (range.location != NSNotFound)
 //        return;
 
+    
+    self.associatingFacebook = NO;
+    self.associatingTwitter = NO;
+    self.associatingYasound = NO;
+    self.associatingAutomatic = NO;
+    
+    
     if (requestType == SRequestInfoUser)
     {
         NSLog(@"requestDidFailed : could not get user info.");
@@ -985,6 +994,12 @@ static YasoundSessionManager* _main = nil;
      {
          [self accountManagerRemove:LOGIN_TYPE_TWITTER];    
      }
+    
+    self.associatingFacebook = NO;
+    self.associatingTwitter = NO;
+    self.associatingYasound = NO;
+    self.associatingAutomatic = NO;
+    
          
      // callback
      [_target performSelector:_action withObject:info];
