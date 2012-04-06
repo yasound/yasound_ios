@@ -406,7 +406,7 @@
   
   // warn the calling process that we have the credentials and that it can be considered itself as logged.
   if (_isLoging && (data != nil))
-    [self performSelectorOnMainThread:@selector(onTwitterCredentialsRetrieved) withObject:nil waitUntilDone:FALSE];
+      [self performSelectorOnMainThread:@selector(onTwitterCredentialsRetrieved:) withObject:nil waitUntilDone:FALSE];
   
   return data;
 }
@@ -424,9 +424,10 @@
 
 
 
-- (void)onTwitterCredentialsRetrieved
+- (void)onTwitterCredentialsRetrieved:(NSString*)data
 {
-  [self.delegate sessionDidLogin:YES];
+    BOOL res = (data != nil);
+    [self.delegate sessionDidLogin:res];
 }
 
 

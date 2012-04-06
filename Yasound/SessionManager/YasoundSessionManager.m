@@ -469,38 +469,38 @@ static YasoundSessionManager* _main = nil;
     
     if (self.associatingFacebook)
     {
-        if (!self.associatingAutomatic)
+        if (!self.associatingAutomatic && authorized)
             [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
         else
         {
             NSLog(@"automatic");
-            self.associatingFacebook = NO;
-            self.associatingAutomatic = NO;
-            
             [_target performSelector:_action withObject:nil];
         }
     }
     else if (self.associatingTwitter)
     {
-        if (!self.associatingAutomatic)
+        if (!self.associatingAutomatic && authorized)
             [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
         else
         {
             NSLog(@"automatic");
-            self.associatingTwitter = NO;
-            self.associatingAutomatic = NO;
-            
             [_target performSelector:_action withObject:nil];
         }
     }
     
     else if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
-        [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
+        if (authorized)
+            [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
+        else
+            [_target performSelector:_action withObject:nil];
     }
     else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
     {
-        [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
+        if (authorized)
+            [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
+        else
+            [_target performSelector:_action withObject:nil];
     }
 }
 
@@ -512,13 +512,6 @@ static YasoundSessionManager* _main = nil;
 //    if (range.location != NSNotFound)
 //        return;
 
-    
-    self.associatingFacebook = NO;
-    self.associatingTwitter = NO;
-    self.associatingYasound = NO;
-    self.associatingAutomatic = NO;
-    
-    
     if (requestType == SRequestInfoUser)
     {
         NSLog(@"requestDidFailed : could not get user info.");
@@ -762,6 +755,14 @@ static YasoundSessionManager* _main = nil;
 #pragma mark - accounts association
 
 
+- (void)associateClean
+{
+    self.associatingFacebook = NO;
+    self.associatingTwitter = NO;
+    self.associatingYasound = NO;
+    self.associatingAutomatic = NO;
+}
+
 - (BOOL)isAccountAssociated:(NSString*)accountIdentifier
 {
     NSDictionary* dico = [self accountManagerGet:accountIdentifier];
@@ -774,6 +775,8 @@ static YasoundSessionManager* _main = nil;
 // => we need to login all the other accounts as well
 - (void)associateAccountsAutomatic
 {
+    [self associateClean];
+    
     if (![self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK] && [self accountManagerGet:LOGIN_TYPE_FACEBOOK])
     {
         NSLog(@"\n Automatic associating account Facebook.");
@@ -811,7 +814,10 @@ static YasoundSessionManager* _main = nil;
     
     _target = target;
     _action = action;
- 
+
+    if (!automatic)
+        [self associateClean];
+
     self.associatingYasound = YES;
     
     [self.associatingInfo setObject:email forKey:@"email"];
@@ -831,6 +837,9 @@ static YasoundSessionManager* _main = nil;
     _target = target;
     _action = selector;
     
+    if (!automatic)
+        [self associateClean];
+    
     self.associatingFacebook = YES;
     self.associatingAutomatic = automatic;
 
@@ -845,6 +854,9 @@ static YasoundSessionManager* _main = nil;
     _target = target;
     _action = selector;
     
+    if (!automatic)
+        [self associateClean];
+
     self.associatingTwitter = YES;
     self.associatingAutomatic = automatic;
 
@@ -859,6 +871,8 @@ static YasoundSessionManager* _main = nil;
 {
     _target = target;
     _action = selector;
+    
+    [self associateClean];
 
     if ([accountTypeIdentifier isEqualToString:LOGIN_TYPE_FACEBOOK])
         self.associatingFacebook = YES;
@@ -887,25 +901,16 @@ static YasoundSessionManager* _main = nil;
     {
         [self accountManagerRemove:LOGIN_TYPE_FACEBOOK];
         [[FacebookSessionManager facebook] invalidConnexion];
-        self.associatingFacebook = NO;
     }
     else if (self.associatingTwitter)
     {
-
         [self accountManagerRemove:LOGIN_TYPE_TWITTER];
-        
         [[TwitterSessionManager twitter] invalidConnexion];
-
-        self.associatingTwitter = NO;
     }
     else if (self.associatingYasound)
     {
         [self accountManagerRemove:LOGIN_TYPE_YASOUND];
-        self.associatingYasound = NO;
     }
-    
-    self.associatingAutomatic = NO;
-
     
     
     // callback
@@ -931,10 +936,6 @@ static YasoundSessionManager* _main = nil;
         // store the local association
         [self accountManagerAdd:LOGIN_TYPE_YASOUND  withInfo:self.associatingInfo];
     }        
-
-    self.associatingYasound = NO;
-    self.associatingAutomatic = NO;
-
 
     // callback
     [_target performSelector:_action withObject:info];    
@@ -973,8 +974,7 @@ static YasoundSessionManager* _main = nil;
             [[TwitterSessionManager twitter] invalidConnexion];
     }
     
-    self.associatingAutomatic = NO;
-
+    [self associateClean];
 
     // callback
     [_target performSelector:_action withObject:info];
@@ -995,10 +995,7 @@ static YasoundSessionManager* _main = nil;
          [self accountManagerRemove:LOGIN_TYPE_TWITTER];    
      }
     
-    self.associatingFacebook = NO;
-    self.associatingTwitter = NO;
-    self.associatingYasound = NO;
-    self.associatingAutomatic = NO;
+    [self associateClean];
     
          
      // callback
