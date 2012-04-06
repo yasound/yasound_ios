@@ -203,6 +203,8 @@
     BOOL shareTwitter = (facebook && twitter && (buttonIndex == 1)) || (twitter && (buttonIndex == 0));
     
     NSString* title = NSLocalizedString(@"Yasound share", nil);
+
+    
     NSURL* pictureURL = [[NSURL alloc] initWithString:[APPDELEGATE getServerUrlWith:@"fr/images/logo.png"]];
     NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
     NSURL* fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link,
@@ -211,6 +213,10 @@
     if (shareFacebook)
     {
         _sharingFacebook = YES;
+        
+        NSLog(@"postMessageForFacebook : %@", self.shareFullMessage);
+        NSLog(@"pictureURL : %@", [pictureURL absoluteString]);
+        NSLog(@"link : %@", [fullLink absoluteString]);
         
         [[YasoundSessionManager main] postMessageForFacebook:self.shareFullMessage title:title picture:pictureURL link:fullLink target:self action:@selector(onPostMessageFinished:)];
 

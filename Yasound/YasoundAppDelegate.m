@@ -297,6 +297,7 @@ void SignalHandler(int sig) {
     {
         NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
         self.serverURL = [resources objectForKey:@"serverURL"];
+        
         NSLog(@"Application Server URL : %@", _serverURL);
     }
 
@@ -308,7 +309,9 @@ void SignalHandler(int sig) {
 - (NSString*)getServerUrlWith:(NSString*)target
 {
     NSString* str = self.serverURL;
-    str = [str stringByAppendingPathComponent:target];
+    
+    str = [str stringByAppendingString:target];
+
     return str;
 }
 
@@ -340,9 +343,9 @@ void SignalHandler(int sig) {
   }
   else
   {
-      controller = [[RadioViewController alloc] initWithRadio:r];
-      //LBDEBUG ICI
-//    controller = [self myRadioSetupViewController];
+//      controller = [[RadioViewController alloc] initWithRadio:r];
+      //LBDEBUG FAKE
+    controller = [self myRadioSetupViewController];
   }
   [sourceController.navigationController pushViewController:controller animated:YES];
   [controller release];
