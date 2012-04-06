@@ -155,7 +155,13 @@
 //    [_pword retain];
     
     // TAG ACTIVITY ALERT
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+//    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    
+    [self.view addSubview:[ConnectionView start]];
+
+    [_email resignFirstResponder];    
+    [_pword resignFirstResponder];    
+
     
     // login request to server
     [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
@@ -163,7 +169,11 @@
 
 - (void) requestDidReturn:(User*)user info:(NSDictionary*)info
 {
-    [ActivityAlertView close];
+//    [ActivityAlertView close];
+
+    // close the connection alert
+    [ConnectionView stop];
+
     
     NSLog(@"login returned : %@ %@", user, info);
     
@@ -172,6 +182,10 @@
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
         [av release];  
+
+        // go back to the login error
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
+
         return;
     }
 

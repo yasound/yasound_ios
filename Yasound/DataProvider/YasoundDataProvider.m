@@ -463,40 +463,50 @@ static YasoundDataProvider* _main = nil;
 //
 - (void)receiveLogin:(NSArray*)users withInfo:(NSDictionary*)info
 {
-  NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] init];
-  
-  User* u = nil;
-  if (!users || [users count] == 0)
-  {
-    NSError* err = [NSError errorWithDomain:@"no logged user" code:1 userInfo:nil];
-    [finalInfo setValue:err forKey:@"error"];
-  }
-  else
-  {
+    NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
+
+    NSDictionary* userData = [info valueForKey:@"userData"];
+    id target = [userData valueForKey:@"clientTarget"];
+    SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    NSDictionary* clientData = [userData valueForKey:@"clientData"];
+
+
+    User* u = nil;
+    if (!users || [users count] == 0)
+    {
+        NSError* err = [NSError errorWithDomain:@"no logged user" code:1 userInfo:nil];
+        [finalInfo setValue:err forKey:@"error"];
+        [finalInfo setObject:[NSNumber numberWithBool:NO] forKey:@"succeeded"];
+        
+        // return if error
+        if ((target != nil) && (selector != nil))
+            [target performSelector:selector withObject:nil withObject:finalInfo];
+        
+        return;
+    }
+
+
+    [finalInfo setObject:[NSNumber numberWithBool:YES] forKey:@"succeeded"];
+
     u = [users objectAtIndex:0];
-  }
-  
-  if (u && u.api_key)
-  {
+
+    if (u && u.api_key)
+    {
     _user = u;
     _apiKey = u.api_key;
-  }
-  
-  NSDictionary* userData = [info valueForKey:@"userData"];
-  id target = [userData valueForKey:@"clientTarget"];
-  SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
-  NSDictionary* clientData = [userData valueForKey:@"clientData"];
-  
-  NSMutableDictionary* data = [NSMutableDictionary dictionary];
-  [data setValue:target forKey:@"finalTarget"];
-  [data setValue:NSStringFromSelector(selector) forKey:@"finalSelector"];
-  if (clientData)
+    }
+
+
+    NSMutableDictionary* data = [NSMutableDictionary dictionaryWithDictionary:finalInfo];
+    [data setValue:target forKey:@"finalTarget"];
+    [data setValue:NSStringFromSelector(selector) forKey:@"finalSelector"];
+    if (clientData)
     [data setValue:clientData forKey:@"clientData"];
-  
-  [self userRadioWithTarget:self action:@selector(didReceiveLoggedUserRadio:withInfo:) andData:data];
-  
-  // send Apple Push Notification service device token
-  [self sendAPNsDeviceTokenWhenLogged];
+
+    [self userRadioWithTarget:self action:@selector(didReceiveLoggedUserRadio:withInfo:) andData:data];
+
+    // send Apple Push Notification service device token
+    [self sendAPNsDeviceTokenWhenLogged];
 }
 
 
