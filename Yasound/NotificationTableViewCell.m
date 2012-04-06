@@ -36,9 +36,7 @@
 {
   if (count == 0)
   {
-//    _unreadCountLabel.hidden = YES;
-    _unreadCountLabel.hidden = NO;
-    _unreadCountLabel.text = [NSString stringWithFormat:@"%d", count];
+    _unreadCountLabel.hidden = YES;
   }
   else
   {
@@ -53,7 +51,13 @@
     key = @"UnreadNotifBadge2";
   
   if (_badgeBackground)
+  {
     [_badgeBackground removeFromSuperview];
+    _badgeBackground = nil;
+  }
+  
+  if (count == 0)
+    return;
   
   NSError* error;
   _badgeBackground = [[[Theme theme] stylesheetForKey:key retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];

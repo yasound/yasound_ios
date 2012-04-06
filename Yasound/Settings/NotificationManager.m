@@ -8,6 +8,16 @@
 
 #import "NotificationManager.h"
 
+#define NOTIF_USER_ENTERS @"NotifUserEnters"
+#define NOTIF_FRIEND_ENTERS @"NotifFriendEnters"
+#define NOTIF_FRIEND_ONLINE @"NotifFriendGoesOnline"
+#define NOTIF_LIKE @"NotifLikeReceived"
+
+#define NOTIF_SUBSCRIPTION @"NotifSubscriptionReceived"
+#define NOTIF_NEW_FRIEND_RADIO @"NotifNewFriendRadio"
+#define NOTIF_POST_RECEIVED @"NotifPostReceived"
+#define NOTIF_RADIO_SHARED @"NotifRadioShared"
+
 @implementation NotificationManager
 
 @synthesize notifications;
@@ -34,34 +44,46 @@ static NotificationManager* _main = nil;
 {
     if (self = [super init])
     {
-        NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
-        NSDictionary* input = [resources objectForKey:@"notifications"];
-
-        self.notifications = [[NSUserDefaults standardUserDefaults] objectForKey:@"Notifications"];
-        if (self.notifications == nil)
-        {
-            self.notifications = [[NSMutableDictionary alloc] init];
-        }
-
-        NSArray* identifiers = [input allKeys];
-        for (NSString* identifier in identifiers)
-        {
-            NSNumber* value = [self.notifications objectForKey:identifier];
-            if (value == nil)
-            {
-                NSNumber* defaultValue = [input objectForKey:identifier]; 
-                [self.notifications setObject:defaultValue forKey:identifier];
-            }
-        }
-        
-        [self save];
+        self.notifications = [[NSMutableDictionary alloc] init];
     }
     
     return self;
+}
 
+- (void)dealloc
+{
+  [self.notifications release];
 }
 
 
+- (void)updateWithAPNsPreferences:(APNsPreferences*)prefs
+{
+  [self.notifications removeAllObjects];
+  
+  [self.notifications setObject:prefs.friend_in_radio forKey:NOTIF_FRIEND_ENTERS];
+  [self.notifications setObject:prefs.user_in_radio forKey:NOTIF_USER_ENTERS];
+  [self.notifications setObject:prefs.friend_online forKey:NOTIF_FRIEND_ONLINE];
+  [self.notifications setObject:prefs.message_posted forKey:NOTIF_POST_RECEIVED];
+  [self.notifications setObject:prefs.song_liked forKey:NOTIF_LIKE];
+  [self.notifications setObject:prefs.radio_in_favorites forKey:NOTIF_SUBSCRIPTION];
+  [self.notifications setObject:prefs.radio_shared forKey:NOTIF_RADIO_SHARED];
+  [self.notifications setObject:prefs.friend_created_radio forKey:NOTIF_NEW_FRIEND_RADIO];
+}
+
+- (APNsPreferences*)APNsPreferences
+{
+  APNsPreferences* prefs = [[APNsPreferences alloc] init];
+  prefs.friend_in_radio = [self.notifications objectForKey:NOTIF_FRIEND_ENTERS];
+  prefs.user_in_radio = [self.notifications objectForKey:NOTIF_USER_ENTERS];
+  prefs.friend_online = [self.notifications objectForKey:NOTIF_FRIEND_ONLINE];
+  prefs.message_posted = [self.notifications objectForKey:NOTIF_POST_RECEIVED];
+  prefs.song_liked = [self.notifications objectForKey:NOTIF_LIKE];
+  prefs.radio_in_favorites = [self.notifications objectForKey:NOTIF_SUBSCRIPTION];
+  prefs.radio_shared = [self.notifications objectForKey:NOTIF_RADIO_SHARED];
+  prefs.friend_created_radio = [self.notifications objectForKey:NOTIF_NEW_FRIEND_RADIO];
+  
+  return prefs;
+}
 
 
 
@@ -72,11 +94,11 @@ static NotificationManager* _main = nil;
 
 
 
-- (void)save
-{
-    [[NSUserDefaults standardUserDefaults] setObject:self.notifications forKey:@"Notifications"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
+//- (void)save
+//{
+//    [[NSUserDefaults standardUserDefaults] setObject:self.notifications forKey:@"Notifications"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//}
 
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "APNsPreferences.h"
 
 
 //#define NOTIF_FriendGoesOnline @"NotifFriendGoesOnline"
@@ -28,7 +29,9 @@
 
 
 - (BOOL)get:(NSString*)notifIdentifier;
-- (void)save;
+//- (void)save;
 
+- (void)updateWithAPNsPreferences:(APNsPreferences*)prefs;
+- (APNsPreferences*)APNsPreferences;
 
 @end

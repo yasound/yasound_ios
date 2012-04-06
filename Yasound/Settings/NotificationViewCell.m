@@ -16,12 +16,12 @@
 @synthesize notifSwitch;
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier notifIdentifier:(NSString*)notifIdentifier
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier notifIdentifier:(NSString*)identifier
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
     {
-        self.notifIdentifier = notifIdentifier;
+        self.notifIdentifier = identifier;
         
         BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"NotificationViewCellLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.label = [sheet makeLabel];
@@ -37,18 +37,18 @@
         
         [self.notifSwitch addTarget:self action:@selector(onSwitch:) forControlEvents:UIControlEventValueChanged];
         
-        self.notifSwitch.on = [[NotificationManager main] get:notifIdentifier];
+        self.notifSwitch.on = [[NotificationManager main] get:identifier];
 
     }
     return self;
 }
 
 
-- (void)update:(NSString*)notifIdentifier
+- (void)update:(NSString*)identifier
 {
-    self.notifIdentifier = notifIdentifier;
+    self.notifIdentifier = identifier;
     self.label.text = NSLocalizedString(self.notifIdentifier, nil);
-    self.notifSwitch.on = [[NotificationManager main] get:notifIdentifier];
+    self.notifSwitch.on = [[NotificationManager main] get:identifier];
 }
 
 
@@ -56,7 +56,7 @@
 - (void)onSwitch:(id)sender
 {
     [[NotificationManager main].notifications setObject:[NSNumber numberWithBool:self.notifSwitch.on] forKey:self.notifIdentifier];
-    [[NotificationManager main] save];
+//    [[NotificationManager main] save];
 }
 
 

@@ -1147,19 +1147,18 @@ static Song* _gNowPlayingSong = nil;
 
 - (NSIndexPath *)usersContainerDidSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  
     UITableViewCell* cell = [_usersContainer cellForRowAtIndexPath:indexPath];
     cell.selected = NO;
 
     User* user = [_connectedUsers objectAtIndex:indexPath.row];
-  NSLog(@"row: %d   user: %@", indexPath.row, user.name);
-  if ([user.id intValue] == [radio.creator.id intValue])
+    
+    // Launch profile view
+    ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:user];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+    [user release];
+    
     return nil;
-  
-  [[YasoundDataProvider main] radioForUser:user withTarget:self action:@selector(receivedRadioForSelectedUser:withInfo:)];
-    
-    
-  return nil;
 }
 
 
@@ -1289,7 +1288,7 @@ static Song* _gNowPlayingSong = nil;
             User *user = [[User alloc] init];
             user.id = event.user_id;
             
-            // Launch view
+            // Launch profile view
             ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:user];
             [self.navigationController pushViewController:view animated:YES];
             [view release];

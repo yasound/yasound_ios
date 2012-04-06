@@ -1,4 +1,5 @@
 /* No comment provided by engineer. */
+"ACCEPT_LANGUAGE" = "fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3";
 
 "Navigation_back" = "Retour";
 "Navigation_next" = "Suivant";
@@ -449,8 +450,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "APNs_Msg" = "%@ a posté un message sur votre mur";
 "APNs_Sng" = "%@ aime votre chanson '%@'";
 "APNs_RIF" = "%@ a ajouté votre radio à ses favoris";
-"APNs_RSh" = "%@ a partagé un message à propos de votre radio";
-"APNs_FCR" = "%@ a créé une radio";
+"APNs_RSh" = "%@ a partagé votre radio";
+"APNs_FCR" = "%@ a créé sa radio";
 
 "APNs_YAS" = "Yasound vous a envoyé un message";
 
@@ -458,3 +459,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "NotificationCenterView_edit" = "Modifier";
 
 "YasoundMessage_title" = "Message de Yasound";
+
+"ProfileView_title" = "Profil";
+"ProfileView_section_own_radio" = "Sa radio";
+"ProfileView_section_current_radio" = "La radio qu'il écoute";
+"ProfileView_section_favorite_radios" = "Ses favoris";

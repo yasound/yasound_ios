@@ -1,4 +1,5 @@
 /* No comment provided by engineer. */
+"ACCEPT_LANGUAGE" = "en,en-us";
 
 "Navigation_back" = "Back";
 "Navigation_next" = "Next";
@@ -459,8 +460,8 @@
 "APNs_Msg" = "%@ posted a message on your wall";
 "APNs_Sng" = "%@ likes your song '%@'";
 "APNs_RIF" = "%@ added your radio to his favorites";
-"APNs_RSh" = "%@ shared a message about your radio";
-"APNs_FCR" = "%@ created a radio";
+"APNs_RSh" = "%@ shared yout radio";
+"APNs_FCR" = "%@ created his radio";
 
 "APNs_YAS" = "you have a message from Yasound";
 
@@ -468,3 +469,9 @@
 "NotificationCenterView_edit" = "Edit";
 
 "YasoundMessage_title" = "Message from Yasound";
+
+"ProfileView_title" = "Profile";
+"ProfileView_section_own_radio" = "His radio";
+"ProfileView_section_current_radio" = "The radio he is listening to";
+"ProfileView_section_favorite_radios" = "Favorites";
+

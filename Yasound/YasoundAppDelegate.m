@@ -157,7 +157,9 @@ void SignalHandler(int sig) {
   NSLog(@"didReceiveRemoteNotification:\n");
   [self handlePushNotification:userInfo];
   
-  if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive)
+  BOOL appInactive = [UIApplication sharedApplication].applicationState == UIApplicationStateInactive;
+  BOOL notifCenterVisible = [self.navigationController.visibleViewController isKindOfClass:[NotificationCenterViewController class]];  
+  if (appInactive && !notifCenterVisible)
     [self goToNotificationCenter];
     
 }
