@@ -449,8 +449,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "APNs_Msg" = "%@ a posté un message sur votre mur";
 "APNs_Sng" = "%@ aime votre chanson '%@'";
 "APNs_RIF" = "%@ a ajouté votre radio à ses favoris";
-"APNs_RSh" = "%@ a partagé un message à propos de votre radio";
-"APNs_FCR" = "%@ a créé une radio";
+"APNs_RSh" = "%@ a partagé votre radio";
+"APNs_FCR" = "%@ a créé sa radio";
 
 "APNs_YAS" = "Yasound vous a envoyé un message";
 

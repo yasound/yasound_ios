@@ -458,8 +458,8 @@
 "APNs_Msg" = "%@ posted a message on your wall";
 "APNs_Sng" = "%@ likes your song '%@'";
 "APNs_RIF" = "%@ added your radio to his favorites";
-"APNs_RSh" = "%@ shared a message about your radio";
-"APNs_FCR" = "%@ created a radio";
+"APNs_RSh" = "%@ shared yout radio";
+"APNs_FCR" = "%@ created his radio";
 
 "APNs_YAS" = "you have a message from Yasound";
 
