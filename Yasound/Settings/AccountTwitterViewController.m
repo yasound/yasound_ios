@@ -119,7 +119,7 @@
     // login
     else
     {
-        [[YasoundSessionManager main] associateAccountTwitter:self action:@selector(associateReturned:)];
+        [[YasoundSessionManager main] associateAccountTwitter:self action:@selector(associateReturned:) automatic:NO];
         
         // show a connection alert
         [self.view addSubview:[ConnectionView startWithFrame:CGRectMake(86,340, 138, 90)]];

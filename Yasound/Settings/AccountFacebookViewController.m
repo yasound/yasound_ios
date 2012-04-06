@@ -120,7 +120,7 @@
     // login
     else
     {
-        [[YasoundSessionManager main] associateAccountFacebook:self action:@selector(associateReturned:)];
+        [[YasoundSessionManager main] associateAccountFacebook:self action:@selector(associateReturned:) automatic:NO];
         
         // show a connection alert
         [self.view addSubview:[ConnectionView startWithFrame:CGRectMake(86,340, 138, 90)]];

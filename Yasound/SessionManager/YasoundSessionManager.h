@@ -35,6 +35,7 @@
 @property (nonatomic) BOOL associatingFacebook;
 @property (nonatomic) BOOL associatingTwitter;
 @property (nonatomic) BOOL associatingYasound;
+@property (nonatomic) BOOL associatingAutomatic;
 
 @property (nonatomic, retain) NSMutableDictionary* associatingInfo;
 
@@ -65,9 +66,9 @@
 
 
 
-- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector;
-- (void)associateAccountFacebook:(id)target action:(SEL)selector;
-- (void)associateAccountTwitter:(id)target action:(SEL)selector;
+- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector automatic:(BOOL)automatic;
+- (void)associateAccountFacebook:(id)target action:(SEL)selector automatic:(BOOL)automatic;
+- (void)associateAccountTwitter:(id)target action:(SEL)selector automatic:(BOOL)automatic;
 - (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector;
 - (BOOL)isAccountAssociated:(NSString*)accountIdentifier;
 

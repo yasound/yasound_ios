@@ -143,6 +143,7 @@
             [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
         else
             [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
+        
     }
     else
     {
@@ -159,28 +160,29 @@
 
     if (user != nil)
     {
-      if (APPDELEGATE.mustGoToNotificationCenter)
-      {
-        [self goToNotificationCenter];
-        [APPDELEGATE setMustGoToNotificationCenter:NO];
-        
-      }
-      else
-      {
-        NSNumber* radioId = [[NSUserDefaults standardUserDefaults] objectForKey:@"NowPlaying"];
-        
-        if (radioId == nil)
+        // login the other associated accounts as well
+        [[YasoundSessionManager main] associateAccountsAutomatic];
+
+        if (APPDELEGATE.mustGoToNotificationCenter)
         {
-          Radio* myRadio = user.own_radio;
-          if (myRadio && myRadio.ready)
-            [self launchRadio:myRadio];
-          else
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_MENU object:nil];
+            [self goToNotificationCenter];
+            [APPDELEGATE setMustGoToNotificationCenter:NO];
         }
         else
-          [self launchRadio:radioId];
+        {
+            NSNumber* radioId = [[NSUserDefaults standardUserDefaults] objectForKey:@"NowPlaying"];
+
+            if (radioId == nil)
+            {
+              Radio* myRadio = user.own_radio;
+              if (myRadio && myRadio.ready)
+                [self launchRadio:myRadio];
+              else
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_MENU object:nil];
+            }
+            else
+                [self launchRadio:radioId];
       }
-        
       
       NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
       if (lastUserID && [lastUserID intValue] == [user.id intValue])

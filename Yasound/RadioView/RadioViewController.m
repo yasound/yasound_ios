@@ -380,11 +380,11 @@ static Song* _gNowPlayingSong = nil;
     
         
     //LBDEBUG FAKE
-//    Song* song = [[Song alloc] init];
-//    song.name = @"mySongName";
-//    song.artist = @"mySongArtist";
-//    song.album = @"mySongAlbum";
-//    [self setNowPlaying:song];
+    Song* song = [[Song alloc] init];
+    song.name = @"anotherSongName";
+    song.artist = @"anotherSongArtist";
+    song.album = @"anotherSongAlbum";
+    [self setNowPlaying:song];
     
     
     

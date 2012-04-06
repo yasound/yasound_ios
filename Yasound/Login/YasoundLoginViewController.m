@@ -183,6 +183,10 @@
     // store info for automatic login, for the next sessions
     [[YasoundSessionManager main] registerForYasound:email withPword:pword];
     
+    // login the other associated accounts as well
+    [[YasoundSessionManager main] associateAccountsAutomatic];
+    
+    
     // call root to launch the Radio
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
 }

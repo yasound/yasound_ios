@@ -227,6 +227,10 @@
     {
         _sharingTwitter = YES;
         
+        NSLog(@"postMessageForTwitter : %@", self.shareFullMessage);
+        NSLog(@"pictureURL : %@", [pictureURL absoluteString]);
+        NSLog(@"link : %@", [fullLink absoluteString]);
+
         [[YasoundSessionManager main] postMessageForTwitter:self.shareFullMessage title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
 
         return;
@@ -241,6 +245,8 @@
 - (void)onPostMessageFinished:(NSNumber*)finished
 {
     BOOL done = [finished boolValue];
+    
+    NSLog(@"onPostMessageFinished received");
     
     if (!done)
     {

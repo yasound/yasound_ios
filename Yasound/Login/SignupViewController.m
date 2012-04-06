@@ -144,8 +144,6 @@
     //signup
     [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];
 
-    
-    
 //    // login request to server
 //    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
 }

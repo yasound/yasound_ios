@@ -163,6 +163,9 @@
     
     if (user != nil)
     {
+        // login the other associated accounts as well
+        [[YasoundSessionManager main] associateAccountsAutomatic];
+
         // check if local account has been setted (<=> radio full configured)
         if ([[YasoundSessionManager main] getAccount:user])
             // call root to launch the Radio
