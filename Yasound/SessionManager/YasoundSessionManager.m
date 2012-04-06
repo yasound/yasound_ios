@@ -606,7 +606,7 @@ static YasoundSessionManager* _main = nil;
 
     NSString* username_n = username;
     if (username_n == nil)
-        username_n = @"";
+        username_n = name;
     
     NSString* email_n = email;
     if (email_n == nil)
