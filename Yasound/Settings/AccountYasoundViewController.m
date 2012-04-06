@@ -175,9 +175,8 @@
             [av release];  
             return;    
         }
-
         
-        [[YasoundSessionManager main] associateAccountYasound:email pword:pword target:self action:@selector(associateReturned:) automatic:NO];
+        [[YasoundSessionManager main] associateAccountYasound:email password:pword target:self action:@selector(associateReturned:) automatic:NO];
         
         // show a connection alert
         [self.view addSubview:[ConnectionView startWithFrame:CGRectMake(86,340, 138, 90)]];

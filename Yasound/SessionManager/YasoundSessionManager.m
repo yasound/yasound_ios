@@ -794,7 +794,7 @@ static YasoundSessionManager* _main = nil;
 }
 
 
-- (void)associateAccountYasound:(NSString*)email pword:(NSString*)pword target:(id)target action:(SEL)action automatic:(BOOL)automatic
+- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)action automatic:(BOOL)automatic
 {
     // there's nothing to for now, when trying to automatically login yasound as associated account
     if (automatic)
