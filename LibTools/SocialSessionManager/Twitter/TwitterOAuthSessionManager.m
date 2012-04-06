@@ -387,10 +387,13 @@
 	//if you don't do this, the user will have to re-authenticate every time they run
 - (NSString *) cachedTwitterOAuthDataForUsername: (NSString *) username
 {
+    
   // username parameter is broken (<=> nil) with iOS 5.
   // this issue is known on Twitter-OAuth-iPhone github.
   // => get the username from the UserDefaults, instead
-  NSString* __username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+    NSString* __username = username;
+    if (__username == nil)
+        __username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
 
   NSError* error;
   NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
