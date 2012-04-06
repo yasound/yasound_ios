@@ -371,11 +371,12 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "RadioView_track_share_twitter_error" = "Impossible de poster le message sur Twitter.";
 "RadioView_track_share_message" = "J'écoute %@, de %@ sur %@";
 
-"ShareTrackOnFacebookAlertTitle" = "Publier sur Facebook";
-"ShareTrackOnFacebookAlertMessage" = "Voulez-vous poster le message suivant : \"%@\"";
+"RadioView_track_share_facebook" = "Publier sur Facebook";
+"RadioView_track_share_twitter" = "Publier sur Twitter";
+
+"ShareTrackOnFacebookAlertMessage" = "Voulez-vous poster le message suivant :\n \"%@\"";
 "ShareTrackOnFacebookAlertCancel" = "Non";
 "ShareTrackOnFacebookAlertShare" = "Publier";
-
 
 
 

@@ -277,11 +277,22 @@ static FacebookSessionManager* _facebook = nil;
   
   SessionRequestType requestType;
   if (request == _requestMe)
+  {
+      _requestMe = nil;
     requestType = SRequestInfoUser;
+  }
   else if (request == _requestFriends)
+  {
+      _requestFriends = nil;
     requestType = SRequestInfoFriends;
+  }
   else if (request == _requestFeed)
+  {
+      _requestFeed = nil;
     requestType = SRequestPostMessage;
+  }
+    
+    
   
   [self.delegate requestDidFailed:requestType error:error errorMessage:nil];
 }
@@ -313,6 +324,8 @@ static FacebookSessionManager* _facebook = nil;
     
     NSArray* data = [NSArray arrayWithObjects:user, nil];
     
+      _requestMe = nil;
+      
     [self.delegate requestDidLoad:SRequestInfoUser data:data];
     return;
   }
@@ -332,6 +345,8 @@ static FacebookSessionManager* _facebook = nil;
 
       [data addObject:user];
     }
+      
+      _requestFriends = nil;
     
     [self.delegate requestDidLoad:SRequestInfoFriends data:data];
     return;
@@ -339,6 +354,8 @@ static FacebookSessionManager* _facebook = nil;
   
   if (request == _requestFeed)
   {
+      _requestFeed = nil;
+      
     [self.delegate requestDidLoad:SRequestPostMessage data:nil];
     return;
   }

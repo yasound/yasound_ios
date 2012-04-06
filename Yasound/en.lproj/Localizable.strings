@@ -375,8 +375,10 @@
 "RadioView_track_share_message" = "I am listening to %@, by %@ on %@";
 
 
-"ShareTrackOnFacebookAlertTitle" = "Share this radio on Facebook";
-"ShareTrackOnFacebookAlertMessage" = "About to post on Facebook: \"%@\"";
+"RadioView_track_share_facebook" = "Share this on Facebook";
+"RadioView_track_share_twitter" = "Share this on Twitter";
+
+"ShareTrackOnFacebookAlertMessage" = "About to post :\n \"%@\"";
 "ShareTrackOnFacebookAlertCancel" = "No";
 "ShareTrackOnFacebookAlertShare" = "Share";
 

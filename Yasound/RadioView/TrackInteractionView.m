@@ -21,6 +21,7 @@
 
 @implementation TrackInteractionView
 
+@synthesize shareFullMessage;
 
 - (id)initWithSong:(Song*)song
 {
@@ -29,7 +30,9 @@
     {
         _song = song;
         [_song retain];
-        _sharing = NO;
+        _sharingFacebook = NO;
+        _sharingTwitter = NO;
+        
       _buttonLikedClickedTarget = nil;
       _buttonLikedClickedAction = nil;
         
@@ -161,108 +164,91 @@
 
 - (void)onTrackShare:(id)sender
 {
+    Radio *currentRadio = [AudioStreamManager main].currentRadio;
+
     NSString* message = NSLocalizedString(@"RadioView_track_share_message", nil);
+    self.shareFullMessage = [NSString stringWithFormat:message, _song.name, _song.artist, currentRadio.name];
+    message = [NSString stringWithFormat: NSLocalizedString(@"ShareTrackOnFacebookAlertMessage", nil), self.shareFullMessage];
+    
+    UIActionSheet* popupQuery = nil;
+
+    BOOL facebook = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_FACEBOOK] != nil);
+    BOOL twitter = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER] != nil);
+    
+    if (facebook && twitter)
+        popupQuery = [[UIActionSheet alloc] initWithTitle:message delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"RadioView_track_share_facebook", nil), NSLocalizedString(@"RadioView_track_share_twitter", nil), nil];
+    else if (facebook)
+        popupQuery = [[UIActionSheet alloc] initWithTitle:message delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"RadioView_track_share_facebook", nil), nil];
+    else if (twitter)
+        popupQuery = [[UIActionSheet alloc] initWithTitle:message delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"RadioView_track_share_twitter", nil), nil];
+    
+    
+    popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [popupQuery showInView:self];
+    [popupQuery release];
+}
+
+
+#pragma mark - ActionSheet Delegate
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+    Radio *currentRadio = [AudioStreamManager main].currentRadio;
+
+    BOOL facebook = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_FACEBOOK] != nil);
+    BOOL twitter = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER] != nil);
+
+    BOOL shareFacebook = (facebook && (buttonIndex == 0));
+    BOOL shareTwitter = (facebook && twitter && (buttonIndex == 1)) || (twitter && (buttonIndex == 0));
+    
     NSString* title = NSLocalizedString(@"Yasound share", nil);
     NSURL* pictureURL = [[NSURL alloc] initWithString:[APPDELEGATE getServerUrlWith:@"fr/images/logo.png"]];
     NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
-    
-    Radio *currentRadio = [AudioStreamManager main].currentRadio;
-    
-    NSString* fullMessage = [NSString stringWithFormat:message,
-                             _song.name,
-                             _song.artist,
-                             currentRadio.name];
-    
     NSURL* fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link,
-                          currentRadio.uuid]];
-                             
-    if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+                                                     currentRadio.uuid]];
+
+    if (shareFacebook)
     {
-        _sharing = YES;
-      
-      NSString* alertMsg = [NSString stringWithFormat: NSLocalizedString(@"ShareTrackOnFacebookAlertMessage", nil), fullMessage];
-      UIAlertView *message = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"ShareTrackOnFacebookAlertTitle", nil)
-                                                        message: alertMsg
-                                                       delegate: self
-                                              cancelButtonTitle: NSLocalizedString(@"ShareTrackOnFacebookAlertCancel", nil)
-                                              otherButtonTitles: NSLocalizedString(@"ShareTrackOnFacebookAlertShare", nil), nil];
-      [message show];
+        _sharingFacebook = YES;
+        
+        [[YasoundSessionManager main] postMessageForFacebook:self.shareFullMessage title:title picture:pictureURL link:fullLink target:self action:@selector(onPostMessageFinished:)];
+
+        return;
     }
 
-    else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    if (shareTwitter)
     {
-        _sharing = YES;
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_share_twitter", nil)];
-        [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_FOR_SHARING target:self selector:@selector(onSharingTimeout:) userInfo:nil repeats:NO];
+        _sharingTwitter = YES;
+        
+        [[YasoundSessionManager main] postMessageForTwitter:self.shareFullMessage title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
 
-        [[YasoundSessionManager main] postMessageForTwitter:fullMessage title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
+        return;
     }
     
-    //    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/com.apple.jingle.search.DirectAction/search?artist=Prince";
-    
-    //    NSString* buyString = @"itms://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?artistTerm
-    //    
-    //    NSURL* url = [[NSURL alloc] initWithString:[buyString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
-    //    [[UIApplication sharedApplication] openURL:url];
-    //    [url release];
     [pictureURL release];
     [fullLink release];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-  if (buttonIndex == 0)
-    return;
-  
-  NSString* message = NSLocalizedString(@"RadioView_track_share_message", nil);
-  NSString* title = NSLocalizedString(@"Yasound share", nil);
-  NSURL* pictureURL = [[NSURL alloc] initWithString:[APPDELEGATE getServerUrlWith:@"fr/images/logo.png"]];
-  NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
-  
-  Radio *currentRadio = [AudioStreamManager main].currentRadio;
-  
-  NSString* fullMessage = [NSString stringWithFormat:message,
-                           _song.name,
-                           _song.artist,
-                           currentRadio.name];
-  
-  NSURL* fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link,
-                                                   currentRadio.uuid]];
-  
-  [ActivityAlertView showWithTitle:NSLocalizedString(@"RadioView_track_share_facebook", nil)];
-  [NSTimer scheduledTimerWithTimeInterval:TIMEOUT_FOR_SHARING target:self selector:@selector(onSharingTimeout:) userInfo:nil repeats:NO];
-  
-  [[YasoundSessionManager main] postMessageForFacebook:fullMessage title:title picture:pictureURL link:fullLink target:self action:@selector(onPostMessageFinished:)];
-}
 
-- (void)onSharingTimeout:(NSTimer*)timer
-{
-    if (_sharing)
-    {
-        _sharing = NO;
-        [ActivityAlertView close];
-        // don't say anything since we don't why the postMessage request did not callback
-    }
-}
 
 - (void)onPostMessageFinished:(NSNumber*)finished
 {
-    if (!_sharing)
-        return;
-    
-    _sharing = NO;
-    [ActivityAlertView close];
     BOOL done = [finished boolValue];
     
     if (!done)
     {
         UIAlertView *av;
         
-        if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+        if (_sharingFacebook)
             av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"RadioView_track_share_error", nil) message:NSLocalizedString(@"RadioView_track_share_facebook_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+        
+        else if (_sharingTwitter)
             av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"RadioView_track_share_error", nil) message:NSLocalizedString(@"RadioView_track_share_twitter_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             
+        _sharingFacebook = NO;
+        _sharingTwitter = NO;
+        
         [av show];
         [av release];  
         return;    
