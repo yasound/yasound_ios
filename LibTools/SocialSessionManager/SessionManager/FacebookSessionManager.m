@@ -372,7 +372,7 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)inviteFriends
 {
-  NSString* uid = [[[YasoundSessionManager main] accountManagerGet] objectForKey:@"uid"];
+  NSString* uid = [[[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_FACEBOOK] objectForKey:@"uid"];
   NSDictionary* data = [NSDictionary dictionaryWithObject:uid forKey:@"from_user"];
   NSString* dataStr = data.JSONRepresentation;
   NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
