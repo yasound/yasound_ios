@@ -604,20 +604,18 @@ static YasoundSessionManager* _main = nil;
     NSString* token = [dico valueForKey:DATA_FIELD_TOKEN];
     NSString* email = [dico valueForKey:DATA_FIELD_EMAIL];
 
-    NSString* username_n = username;
-    if (username_n == nil)
-        username_n = name;
+    if (username == nil)
+        username = name;
     
-    NSString* email_n = email;
-    if (email_n == nil)
-        email_n = @"";
+    if (email == nil)
+        email = @"";
 
     NSLog(@"ready to request social login to the server with : ");
-    NSLog(@"username '%@'", username_n);
+    NSLog(@"username '%@'", username);
     NSLog(@"name '%@'", name);
     NSLog(@"uid '%@'", uid);
     NSLog(@"token '%@'", token);
-    NSLog(@"email '%@'", email_n);
+    NSLog(@"email '%@'", email);
     
 //    // TAG ACTIVITY ALERT
 //    if (![ActivityAlertView isRunning])
@@ -632,14 +630,14 @@ static YasoundSessionManager* _main = nil;
         NSLog(@"facebook social associating request");
         
         [self.associatingInfo removeAllObjects];
-        [self.associatingInfo setObject:username_n forKey:@"username"];
+        [self.associatingInfo setObject:username forKey:@"username"];
         [self.associatingInfo setObject:uid forKey:@"uid"];
         [self.associatingInfo setObject:token forKey:@"token"];
-        [self.associatingInfo setObject:email_n forKey:@"email"];
+        [self.associatingInfo setObject:email forKey:@"email"];
 
         // request to yasound server
         
-        [[YasoundDataProvider main] associateAccountFacebook:username_n type:LOGIN_TYPE_FACEBOOK uid:uid token:token email:email_n target:self action:@selector(associatingSocialValidated:)];
+        [[YasoundDataProvider main] associateAccountFacebook:username type:LOGIN_TYPE_FACEBOOK uid:uid token:token email:email target:self action:@selector(associatingSocialValidated:)];
     }
     
     
@@ -651,11 +649,11 @@ static YasoundSessionManager* _main = nil;
         NSString* tokenSecret = [dico valueForKey:DATA_FIELD_TOKEN_SECRET];
 
         [self.associatingInfo removeAllObjects];
-        [self.associatingInfo setObject:username_n forKey:@"username"];
+        [self.associatingInfo setObject:username forKey:@"username"];
         [self.associatingInfo setObject:uid forKey:@"uid"];
         [self.associatingInfo setObject:token forKey:@"token"];
         [self.associatingInfo setObject:tokenSecret forKey:@"tokenSecret"];
-        [self.associatingInfo setObject:email_n forKey:@"email"];
+        [self.associatingInfo setObject:email forKey:@"email"];
         
         // request to yasound server
         [[YasoundDataProvider main] associateAccountTwitter:username  type:LOGIN_TYPE_TWITTER uid:uid token:token tokenSecret:tokenSecret email:email target:self action:@selector(associatingSocialValidated:)];
@@ -672,10 +670,10 @@ static YasoundSessionManager* _main = nil;
 //        n = name;
         
         [self.associatingInfo removeAllObjects];
-        [self.associatingInfo setObject:username_n forKey:@"username"];
+        [self.associatingInfo setObject:username forKey:@"username"];
         [self.associatingInfo setObject:uid forKey:@"uid"];
         [self.associatingInfo setObject:token forKey:@"token"];
-        [self.associatingInfo setObject:email_n forKey:@"email"];
+        [self.associatingInfo setObject:email forKey:@"email"];
         
         // and add the account as associated account
         [self accountManagerAdd:LOGIN_TYPE_FACEBOOK  withInfo:self.associatingInfo];
@@ -707,11 +705,11 @@ static YasoundSessionManager* _main = nil;
         }
         
         [self.associatingInfo removeAllObjects];
-        [self.associatingInfo setObject:username_n forKey:@"username"];
+        [self.associatingInfo setObject:username forKey:@"username"];
         [self.associatingInfo setObject:uid forKey:@"uid"];
         [self.associatingInfo setObject:token forKey:@"token"];
         [self.associatingInfo setObject:tokenSecret forKey:@"tokenSecret"];
-        [self.associatingInfo setObject:email_n forKey:@"email"];
+        [self.associatingInfo setObject:email forKey:@"email"];
         
         // and add the account as associated account
         [self accountManagerAdd:LOGIN_TYPE_TWITTER  withInfo:self.associatingInfo];
