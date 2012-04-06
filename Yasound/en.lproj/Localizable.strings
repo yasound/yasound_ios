@@ -367,8 +367,6 @@
 
 "TracksView_no_tracks" = "no tracks found!";
 
-"RadioView_track_share_facebook" = "Share on Facebook!";
-"RadioView_track_share_twitter" = "Share on Twitter!";
 "RadioView_track_share_error" = "Error";
 "RadioView_track_share_facebook_error" = "Error while sharing on Facebook.";
 "RadioView_track_share_twitter_error" = "Error while sharing on Twitter.";
@@ -376,8 +374,9 @@
 "RadioView_track_share_message" = "I am listening to %@, by %@ on %@";
 
 
-"RadioView_track_share_facebook" = "Share this on Facebook";
-"RadioView_track_share_twitter" = "Share this on Twitter";
+"RadioView_track_share_facebook" = "Share on Facebook";
+"RadioView_track_share_twitter" = "Share on Twitter";
+"RadioView_track_share_yasound" = "Send an email";
 
 "ShareTrackOnFacebookAlertMessage" = "About to post :\n \"%@\"";
 "ShareTrackOnFacebookAlertCancel" = "No";

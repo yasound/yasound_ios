@@ -365,8 +365,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "TracksView_no_tracks" = "aucune track programmée!";
 
-"RadioView_track_share_facebook" = "Je partage l'info sur Facebook!";
-"RadioView_track_share_twitter" = "Je partage l'info sur Twitter!";
 "RadioView_track_share_error" = "Erreur";
 "RadioView_track_share_facebook_error" = "Impossible de poster le message sur votre wall Facebook.";
 "RadioView_track_share_twitter_error" = "Impossible de poster le message sur Twitter.";
@@ -374,6 +372,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "RadioView_track_share_facebook" = "Publier sur Facebook";
 "RadioView_track_share_twitter" = "Publier sur Twitter";
+"RadioView_track_share_yasound" = "Partager par mail";
 
 "ShareTrackOnFacebookAlertMessage" = "Voulez-vous poster le message suivant :\n \"%@\"";
 "ShareTrackOnFacebookAlertCancel" = "Non";

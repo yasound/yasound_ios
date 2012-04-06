@@ -170,18 +170,32 @@
     self.shareFullMessage = [NSString stringWithFormat:message, _song.name, _song.artist, currentRadio.name];
     message = [NSString stringWithFormat: NSLocalizedString(@"ShareTrackOnFacebookAlertMessage", nil), self.shareFullMessage];
     
-    UIActionSheet* popupQuery = nil;
-
+    UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:message delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:nil];
+    
+    self.shareButtons = [[NSMutableDictionary alloc] init];
+    
     BOOL facebook = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_FACEBOOK] != nil);
     BOOL twitter = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER] != nil);
+    BOOL yasound = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER] != nil);
     
-    if (facebook && twitter)
-        popupQuery = [[UIActionSheet alloc] initWithTitle:message delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"RadioView_track_share_facebook", nil), NSLocalizedString(@"RadioView_track_share_twitter", nil), nil];
-    else if (facebook)
-        popupQuery = [[UIActionSheet alloc] initWithTitle:message delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"RadioView_track_share_facebook", nil), nil];
-    else if (twitter)
-        popupQuery = [[UIActionSheet alloc] initWithTitle:message delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"RadioView_track_share_twitter", nil), nil];
+    if (facebook)
+    {
+        NSInteger index = [popupQuery addButtonWithTitle: NSLocalizedString(@"RadioView_track_share_facebook", nil)];
+        [self.shareButtons setObject:LOGIN_TYPE_FACEBOOK forKey:[NSString stringWithFormat:@"%d", index]];
+    }
     
+    if (twitter)
+    {
+        NSInteger index = [popupQuery addButtonWithTitle: NSLocalizedString(@"RadioView_track_share_twitter", nil)];
+        [self.shareButtons setObject:LOGIN_TYPE_FACEBOOK forKey:[NSString stringWithFormat:@"%d", index]];
+    }
+
+//    if (yasound)
+//    {
+//        NSInteger index = [popupQuery addButtonWithTitle: NSLocalizedString(@"RadioView_track_share_yasound", nil)];
+//        [self.shareButtons setObject:LOGIN_TYPE_FACEBOOK forKey:[NSString stringWithFormat:@"%d", index]];
+//    }
+
     
     popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     [popupQuery showInView:self];
@@ -195,12 +209,19 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
 {
     Radio *currentRadio = [AudioStreamManager main].currentRadio;
+    
+    NSString* buttonIdentifier = [self.shareButtons objectForKey:[NSString stringWithFormat:@"%d", buttonIndex]];
 
-    BOOL facebook = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_FACEBOOK] != nil);
-    BOOL twitter = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER] != nil);
+//    
+//    BOOL facebook = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_FACEBOOK] != nil);
+//    BOOL twitter = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER] != nil);
+//
+//    BOOL shareFacebook = (facebook && (buttonIndex == 0));
+//    BOOL shareTwitter = (facebook && twitter && (buttonIndex == 1)) || (twitter && (buttonIndex == 0));
 
-    BOOL shareFacebook = (facebook && (buttonIndex == 0));
-    BOOL shareTwitter = (facebook && twitter && (buttonIndex == 1)) || (twitter && (buttonIndex == 0));
+    BOOL shareFacebook = ([buttonIdentifier isEqualToString:LOGIN_TYPE_FACEBOOK]);
+    BOOL shareTwitter = ([buttonIdentifier isEqualToString:LOGIN_TYPE_TWITTER]);
+    BOOL shareYasound = ([buttonIdentifier isEqualToString:LOGIN_TYPE_YASOUND]);
     
     NSString* title = NSLocalizedString(@"Yasound share", nil);
 
@@ -235,6 +256,20 @@
 
         return;
     }
+
+//    if (shareYasound)
+//    {
+//        _sharingTwitter = YES;
+//        
+//        NSLog(@"postMessageForTwitter : %@", self.shareFullMessage);
+//        NSLog(@"pictureURL : %@", [pictureURL absoluteString]);
+//        NSLog(@"link : %@", [fullLink absoluteString]);
+//        
+//        [[YasoundSessionManager main] postMessageForTwitter:self.shareFullMessage title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
+//        
+//        return;
+//    }
+    
     
     [pictureURL release];
     [fullLink release];

@@ -21,6 +21,7 @@
 }
 
 @property (nonatomic, retain) NSString* shareFullMessage;
+@property (nonatomic, retain) NSMutableDictionary* shareButtons;
 
 - (id)initWithSong:(Song*)song;
 - (void)setButtonLikeClickedTarget:(id)target action:(SEL)action;
