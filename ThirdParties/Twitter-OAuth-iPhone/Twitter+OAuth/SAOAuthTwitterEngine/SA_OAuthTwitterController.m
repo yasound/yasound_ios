@@ -368,10 +368,15 @@ Ugly. I apologize for its inelegance. Bleah.
   
 	NSArray *parts = [callback componentsSeparatedByString:@"?"];
 	NSArray *pairs = [[parts objectAtIndex:1] componentsSeparatedByString:@"&"];
-	for (NSString *pair in pairs) {
-		NSArray *elements = [pair componentsSeparatedByString:@"="];
-		[request setOAuthParameterName:[elements objectAtIndex:0] withValue:[elements objectAtIndex:1]];
-	}
+
+	//LBDEBUG : setOAuthParameters DOES NOT MATCH THE CURRENT VERSION OF OAMutableURLRequest
+    // TRY AND COMMENT THE CALL TO AVOID A CRASH, AND LET'S SEE WHAT HAPPENS
+//    for (NSString *pair in pairs) 
+//    {
+//		NSArray *elements = [pair componentsSeparatedByString:@"="];
+//        
+//		[request setOAuthParameterName:[elements objectAtIndex:0] withValue:[elements objectAtIndex:1]];
+//	}
 	
 	OADataFetcher *dataFetcher = [[OADataFetcher alloc] init];
 	[dataFetcher fetchDataWithRequest:request delegate:self didFinishSelector:@selector(setAccessToken:withData:) didFailSelector:@selector(serviceTicket:didFailWithError:)];
