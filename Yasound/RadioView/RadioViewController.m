@@ -378,16 +378,6 @@ static Song* _gNowPlayingSong = nil;
 #endif
     }
     
-        
-    //LBDEBUG FAKE
-    Song* song = [[Song alloc] init];
-    song.name = @"anotherSongName";
-    song.artist = @"anotherSongArtist";
-    song.album = @"anotherSongAlbum";
-    [self setNowPlaying:song];
-    
-    
-    
     
     // get the actual data from the server to update the GUI
     [self updatePreviousWall];

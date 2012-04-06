@@ -343,9 +343,7 @@ void SignalHandler(int sig) {
   }
   else
   {
-      controller = [[RadioViewController alloc] initWithRadio:r];
-      //LBDEBUG FAKE
-//    controller = [self myRadioSetupViewController];
+    controller = [self myRadioSetupViewController];
   }
   [sourceController.navigationController pushViewController:controller animated:YES];
   [controller release];
