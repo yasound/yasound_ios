@@ -313,7 +313,7 @@
     
     if (radio) 
     {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:self.user.current_radio];
+        RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
         [self.navigationController pushViewController:view animated:YES];
         [view release];  
     }
