@@ -745,9 +745,11 @@ static YasoundDataProvider* _main = nil;
     
     ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveFacebookAssociation:info:) withUserData:data withAuth:auth];
     
+    [req addPostValue:username forKey:@"username"];
     [req addPostValue:@"facebook" forKey:@"account_type"];
     [req addPostValue:uid forKey:@"uid"];
     [req addPostValue:token forKey:@"token"];
+    [req addPostValue:email forKey:@"email"];
     
     [req startAsynchronous];
 }
@@ -769,10 +771,12 @@ static YasoundDataProvider* _main = nil;
     
     ASIFormDataRequest* req = [_communicator buildPostRequestToURL:@"api/v1/account/association" absolute:NO notifyTarget:self byCalling:@selector(receiveTwitterAssociation:info:) withUserData:data withAuth:auth];
     
+    [req addPostValue:username forKey:@"username"];
     [req addPostValue:@"twitter" forKey:@"account_type"];
     [req addPostValue:uid forKey:@"uid"];
     [req addPostValue:token forKey:@"token"];
     [req addPostValue:tokenSecret forKey:@"token_secret"];
+    [req addPostValue:email forKey:@"email"];
     
     [req startAsynchronous];
 }

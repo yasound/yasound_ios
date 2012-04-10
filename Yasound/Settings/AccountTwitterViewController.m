@@ -73,11 +73,10 @@
         _loginLabel.hidden = YES;
         _loginButton.hidden = YES;
 
-        NSDictionary* account = [[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER];
-        _usernameValue.text = [account objectForKey:@"username"];
+        _usernameValue.text = [YasoundDataProvider main].user.twitter_uid;
 
         // disable the button if you want to prevent the user to disconnect from the only one associated account
-        if ([[YasoundSessionManager main] accountManagerNumberOfAccounts] == 1)
+        if ([[YasoundSessionManager main] numberOfAssociatedAccounts] == 1)
             _logoutButton.enabled = NO;
     }
     else
