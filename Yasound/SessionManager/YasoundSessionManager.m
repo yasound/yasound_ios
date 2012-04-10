@@ -899,49 +899,52 @@ static YasoundSessionManager* _main = nil;
 
 - (void)exportUserData:(User*)user
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     // reset
-    [defaults removeObjectForKey:@"facebook"];
-    [defaults removeObjectForKey:@"twitter"];
-    [defaults removeObjectForKey:@"yasound"];
+    [_dico removeObjectForKey:@"facebook"];
+    [_dico removeObjectForKey:@"twitter"];
+    [_dico removeObjectForKey:@"yasound"];
 
     
     /// export facebook
     NSMutableDictionary* facebook = [[NSMutableDictionary alloc] init];
     if (user.facebook_token)
+    {
         [facebook setObject:user.facebook_token forKey:@"facebook_token"];
-    if (user.facebook_expiration_date)
-        [facebook setObject:user.facebook_expiration_date forKey:@"facebook_expiration_date"];
+        if (user.facebook_expiration_date)
+            [facebook setObject:user.facebook_expiration_date forKey:@"facebook_expiration_date"];
     
-    [defaults setObject:facebook forKey:@"facebook"];
+        [_dico setObject:facebook forKey:@"facebook"];
+    }
 
     
     
     /// export twitter
-    NSString* data = [TwitterOAuthSessionManager buildDataFromToken:user.twitter_token token_secret:user.twitter_token_secret user_id:user.twitter_uid screen_name:user.twitter_username];
 
     NSMutableDictionary* twitter = [[NSMutableDictionary alloc] init];
     if (user.twitter_username)
     {
+        NSString* data = [TwitterOAuthSessionManager buildDataFromToken:user.twitter_token token_secret:user.twitter_token_secret user_id:user.twitter_uid screen_name:user.twitter_username];
+
         [twitter setObject:user.twitter_username forKey:@"twitter_username"];
 
         NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
         // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
         [SFHFKeychainUtils storeUsername:user.twitter_username andPassword:data  forServiceName:BundleName updateExisting:YES error:nil];
+
+        [_dico setObject:facebook forKey:@"twitter"];
     }
     
-    [defaults setObject:facebook forKey:@"twitter"];
     
     
     /// export yasound    
     NSMutableDictionary* yasound = [[NSMutableDictionary alloc] init];
     if (user.yasound_email)
+    {
         [yasound setObject:user.yasound_email forKey:@"yasound_email"];
-    [defaults setObject:facebook forKey:@"yasound"];
+        [_dico setObject:facebook forKey:@"yasound"];
+    }
     
-    
-    [defaults synchronize];
+    [self save];
     
     [facebook release];
     [twitter release];
@@ -951,23 +954,21 @@ static YasoundSessionManager* _main = nil;
 
 - (void)importUserData
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
     // import facebook
-    NSDictionary* dico = [defaults objectForKey:@"facebook"];
+    NSDictionary* dico = [_dico objectForKey:@"facebook"];
     NSString* facebook_token = [dico objectForKey:@"facebook_token"];
     NSString* facebook_expiration_date = [dico objectForKey:@"facebook_expiration_date"];
     [self importFacebookData:facebook_token facebook_expiration_date:facebook_expiration_date];
     
     // import twitter
-    dico = [defaults objectForKey:@"twitter"];
+    dico = [_dico objectForKey:@"twitter"];
     NSString* twitter_username = [dico objectForKey:@"twitter_username"];
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
     NSString* twitter_data = [SFHFKeychainUtils getPasswordForUsername:twitter_username andServiceName:BundleName error:nil];
     [self importTwitterData:twitter_username withData:twitter_data];
     
     // import yasound
-    dico = [defaults objectForKey:@"yasound"];
+    dico = [_dico objectForKey:@"yasound"];
     NSString* yasound_email = [dico objectForKey:@"yasound_email"];
     [self importYasoundData:yasound_email];
 }
@@ -1134,34 +1135,43 @@ static YasoundSessionManager* _main = nil;
 
 - (BOOL)isAccountAssociated:(NSString*)accountIdentifier
 {
-    User* user = [YasoundDataProvider main].user;
-    
-    //LBDEBUG
-    NSLog(@"/n[YasoundDataProvider main].user : ");
-    NSLog(@"facebook_username '%@'", user.facebook_username);
-    NSLog(@"facebook_uid '%@'", user.facebook_uid);
-    NSLog(@"facebook_token '%@'", user.facebook_token);
-    NSLog(@"facebook_expiration_date '%@'", user.facebook_expiration_date);
-    NSLog(@"facebook_email '%@'", user.facebook_email);
-    
-    NSLog(@"twitter_username '%@'", user.twitter_username);
-    NSLog(@"twitter_uid '%@'", user.twitter_uid);
-    NSLog(@"twitter_token '%@'", user.twitter_token);
-    NSLog(@"twitter_token_secret '%@'", user.twitter_token_secret);
-    NSLog(@"twitter_email '%@'", user.twitter_email);
-    
-    NSLog(@"yasound_email '%@'", user.yasound_email);
-
-    
-    if ([accountIdentifier isEqualToString:LOGIN_TYPE_FACEBOOK])
-        return (user.facebook_uid != nil );
-    if ([accountIdentifier isEqualToString:LOGIN_TYPE_TWITTER])
-        return (user.twitter_uid != nil);
-    if ([accountIdentifier isEqualToString:LOGIN_TYPE_YASOUND])
-        return (user.yasound_email != nil);
-    
-    return NO;
+    NSDictionary* dico = [_dico objectForKey:accountIdentifier];
+    return (dico != nil);
 }
+
+
+//deprecated
+//
+//- (BOOL)isAccountAssociated:(NSString*)accountIdentifier
+//{
+//    User* user = [YasoundDataProvider main].user;
+//    
+//    //LBDEBUG
+//    NSLog(@"/n[YasoundDataProvider main].user : ");
+//    NSLog(@"facebook_username '%@'", user.facebook_username);
+//    NSLog(@"facebook_uid '%@'", user.facebook_uid);
+//    NSLog(@"facebook_token '%@'", user.facebook_token);
+//    NSLog(@"facebook_expiration_date '%@'", user.facebook_expiration_date);
+//    NSLog(@"facebook_email '%@'", user.facebook_email);
+//    
+//    NSLog(@"twitter_username '%@'", user.twitter_username);
+//    NSLog(@"twitter_uid '%@'", user.twitter_uid);
+//    NSLog(@"twitter_token '%@'", user.twitter_token);
+//    NSLog(@"twitter_token_secret '%@'", user.twitter_token_secret);
+//    NSLog(@"twitter_email '%@'", user.twitter_email);
+//    
+//    NSLog(@"yasound_email '%@'", user.yasound_email);
+//
+//    
+//    if ([accountIdentifier isEqualToString:LOGIN_TYPE_FACEBOOK])
+//        return (user.facebook_uid != nil );
+//    if ([accountIdentifier isEqualToString:LOGIN_TYPE_TWITTER])
+//        return (user.twitter_uid != nil);
+//    if ([accountIdentifier isEqualToString:LOGIN_TYPE_YASOUND])
+//        return (user.yasound_email != nil);
+//    
+//    return NO;
+//}
 
 
 
