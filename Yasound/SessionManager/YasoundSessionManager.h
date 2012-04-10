@@ -63,6 +63,7 @@
 - (void)registerForTwitter; // login info are handle by SocialSessionManager
 
 - (void)reloadUserData:(User*)user;
+- (void)importUserData;
 
 
 - (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector automatic:(BOOL)automatic;

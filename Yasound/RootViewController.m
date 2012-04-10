@@ -134,17 +134,25 @@
 //        // TAG ACTIVITY ALERT
 //        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
         
+        // import associated accounts
+        [[YasoundSessionManager main] importUserData];
+        
         // show connection alert
         [self.view addSubview:[ConnectionView start]];
         
-        if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+        if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
             [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
-        
-        else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+
+        else if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
             [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
         
-        else
+        else if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_YASOUND])
             [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
+        else
+        {
+            assert(0);
+            NSLog(@"BIG ERROR : NO ASSOCIATED ACCOUNTS BUT REGISTERED.");
+        }
         
     }
     else
