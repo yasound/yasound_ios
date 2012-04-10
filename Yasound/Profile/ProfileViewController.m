@@ -15,21 +15,68 @@
 #import "RadioSelectionTableViewCell.h"
 #import "RadioViewController.h"
 
+typedef enum 
+{
+    eSectionCover = 0,
+    eSectionOwnRadio = 1,
+    eSectionCurrentRadio = 2,
+    eSectionFavoriteRadios = 3,
+} ProfileSection;
+
 @implementation ProfileViewController
 
 
 @synthesize user;
 
-#define SECTION_COUNT               4
-
-#define SECTION_COVER               0
-#define SECTION_OWN_RADIO           1
-#define SECTION_CURRENT_RADIO       2
-#define SECTION_FAVORITE_RADIOS     3
-
 #define BORDER 8
 #define COVER_SIZE 96
 
+
+- (NSInteger)sectionCount
+{
+    NSInteger count = 1;
+    if (self.user && self.user.own_radio)
+        count++;
+    if (self.user && self.user.current_radio)
+        count++;
+    if (_favoriteRadios && _favoriteRadios.count > 0) 
+        count++;
+    return count;
+}
+
+- (NSInteger)indexForSection:(ProfileSection)section
+{
+    if (section == eSectionCover)
+        return 0;
+    if (section == eSectionOwnRadio)
+    {
+        if (!self.user || !self.user.own_radio)
+            return -1;
+        return 1;
+    }
+    if (section == eSectionCurrentRadio)
+    {
+        if (!self.user || !self.user.current_radio)
+            return -1;
+        
+        if (!self.user || !self.user.current_radio)
+            return 1;
+        return 2;
+    }
+    if (section == eSectionFavoriteRadios)
+    {
+        if (!_favoriteRadios || _favoriteRadios.count == 0)
+            return -1;
+        
+        NSInteger index = 1;
+        if (self.user && self.user.own_radio)
+            index++;
+        if (self.user && self.user.current_radio)
+            index++;
+        return index;
+    }
+    return -1;
+}
 
 
 
@@ -92,7 +139,6 @@
         [_nowPlayingButton setEnabled:NO];
     else
         [_nowPlayingButton setEnabled:YES];
-    
 }
 
 
@@ -103,58 +149,56 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return SECTION_COUNT;
+    return [self sectionCount];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
-{
-    switch (section) {
-        case SECTION_COVER:
-            return 1;
-            break;
-        case SECTION_CURRENT_RADIO:
-            if (self.user != nil && self.user.current_radio) 
-            {
-                return 1;
-            }
-            break;
-        case SECTION_OWN_RADIO:
-            if (self.user != nil && self.user.own_radio) 
-            {
-                return 1;
-            }
-            break;
-        case SECTION_FAVORITE_RADIOS:
-            if (_favoriteRadios) {
-                return [_favoriteRadios count];
-            }
-        default:
-            break;
+{    
+    if (section == [self indexForSection:eSectionCover])
+    {
+        return 1;
     }
+    else if (section == [self indexForSection:eSectionOwnRadio])
+    {
+        if (self.user != nil && self.user.own_radio) 
+            return 1;
+    }
+    else if (section == [self indexForSection:eSectionCurrentRadio])
+    {
+        if (self.user != nil && self.user.current_radio) 
+            return 1;
+    }
+    else if (section == [self indexForSection:eSectionFavoriteRadios])
+    {
+        if (_favoriteRadios)
+            return [_favoriteRadios count];
+    }
+    
     return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {    
-    if (indexPath.section == SECTION_COVER)
+    NSInteger indexCover = [self indexForSection:eSectionCover];
+    if (indexPath.section == indexCover)
         return (COVER_SIZE + 2*BORDER);
     
     return 62;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
+{    
     NSString* title = nil;
     
-    if (section == SECTION_OWN_RADIO)
+    if (section == [self indexForSection:eSectionOwnRadio])
     {
         title = NSLocalizedString(@"ProfileView_section_own_radio", nil);
     }
-    else if (section == SECTION_CURRENT_RADIO)
+    else if (section == [self indexForSection:eSectionCurrentRadio])
     {
         title = NSLocalizedString(@"ProfileView_section_current_radio", nil);
     }
-    else if (section == SECTION_FAVORITE_RADIOS)
+    else if (section == [self indexForSection:eSectionFavoriteRadios])
     {
         title = NSLocalizedString(@"ProfileView_section_favorite_radios", nil);
     }
@@ -178,7 +222,8 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if (indexPath.section == SECTION_COVER)
+    NSInteger indexCover = [self indexForSection:eSectionCover];
+    if (indexPath.section == indexCover)
     {
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainSongCardRow.png"]];
         cell.backgroundView = view;
@@ -190,11 +235,11 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
-{
+{    
     NSInteger rowIndex = indexPath.row;
     NSInteger sectionIndex = indexPath.section;
     
-    if (sectionIndex == SECTION_COVER)
+    if (sectionIndex == [self indexForSection:eSectionCover])
     {
         static NSString* CellIdentifier = @"ProfileCellCover";
         
@@ -251,7 +296,7 @@
     
     NSString *cellIdentifier = cellIdentifier1;
     Radio* radio = nil;
-    if (sectionIndex == SECTION_OWN_RADIO)
+    if (sectionIndex == [self indexForSection:eSectionOwnRadio])
     {
         cellIdentifier = cellIdentifier1;
         
@@ -261,7 +306,7 @@
             return nil;
         }
     }
-    else if (sectionIndex == SECTION_CURRENT_RADIO)
+    else if (sectionIndex == [self indexForSection:eSectionCurrentRadio])
     {
         cellIdentifier = cellIdentifier2;
         
@@ -271,7 +316,7 @@
             return nil;
         }
     }
-    else if (sectionIndex == SECTION_FAVORITE_RADIOS)
+    else if (sectionIndex == [self indexForSection:eSectionFavoriteRadios])
     {
         cellIdentifier = cellIdentifier3;
         
@@ -307,19 +352,19 @@
 {
     // Displays selected radio
     Radio* radio = nil;
-    if (indexPath.section == SECTION_COVER)
+    if (indexPath.section == [self indexForSection:eSectionCover])
     {
         return;
     }
-    else if (indexPath.section == SECTION_CURRENT_RADIO)
-    {
-        radio = self.user.current_radio;
-    }
-    else if (indexPath.section == SECTION_OWN_RADIO)
+    else if (indexPath.section == [self indexForSection:eSectionOwnRadio])
     {
         radio = self.user.own_radio;
     }
-    else if (indexPath.section == SECTION_FAVORITE_RADIOS)
+    else if (indexPath.section == [self indexForSection:eSectionCurrentRadio])
+    {
+        radio = self.user.current_radio;
+    }
+    else if (indexPath.section == [self indexForSection:eSectionFavoriteRadios])
     {
         radio = [_favoriteRadios objectAtIndex:indexPath.row];
     }
