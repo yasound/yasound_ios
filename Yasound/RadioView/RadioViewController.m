@@ -1175,7 +1175,7 @@ static Song* _gNowPlayingSong = nil;
     ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:user];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
-    [user release];
+//    [user release];
     
     return nil;
 }
