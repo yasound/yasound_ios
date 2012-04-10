@@ -952,9 +952,25 @@ static YasoundSessionManager* _main = nil;
 - (BOOL)isAccountAssociated:(NSString*)accountIdentifier
 {
     User* user = [YasoundDataProvider main].user;
+    
+    //LBDEBUG
+    NSLog(@"/n[YasoundDataProvider main].user : ");
+    NSLog(@"facebook_username '%@'", user.facebook_username);
+    NSLog(@"facebook_uid '%@'", user.facebook_uid);
+    NSLog(@"facebook_token '%@'", user.facebook_token);
+    NSLog(@"facebook_email '%@'", user.facebook_email);
+    
+    NSLog(@"twitter_username '%@'", user.twitter_username);
+    NSLog(@"twitter_uid '%@'", user.twitter_uid);
+    NSLog(@"twitter_token '%@'", user.twitter_token);
+    NSLog(@"twitter_token_secret '%@'", user.twitter_token_secret);
+    NSLog(@"twitter_email '%@'", user.twitter_email);
+    
+    NSLog(@"yasound_email '%@'", user.yasound_email);
 
+    
     if ([accountIdentifier isEqualToString:LOGIN_TYPE_FACEBOOK])
-        return (user.facebook_uid != nil);
+        return (user.facebook_uid != nil );
     if ([accountIdentifier isEqualToString:LOGIN_TYPE_TWITTER])
         return (user.twitter_uid != nil);
     if ([accountIdentifier isEqualToString:LOGIN_TYPE_YASOUND])
