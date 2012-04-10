@@ -73,7 +73,7 @@
         _loginLabel.hidden = YES;
         _loginButton.hidden = YES;
 
-        _usernameValue.text = [YasoundDataProvider main].user.twitter_uid;
+        _usernameValue.text = [YasoundDataProvider main].user.twitter_username;
 
         // disable the button if you want to prevent the user to disconnect from the only one associated account
         if ([[YasoundSessionManager main] numberOfAssociatedAccounts] == 1)
