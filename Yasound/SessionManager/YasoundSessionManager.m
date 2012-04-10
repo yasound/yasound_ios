@@ -859,6 +859,7 @@ static YasoundSessionManager* _main = nil;
     {
     }
     
+    NSLog(@"call reloadUserWithUserData");
     // reload the current user to update the associated accounts info
     [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
 }
@@ -877,6 +878,7 @@ static YasoundSessionManager* _main = nil;
     NSNumber* nb = [info objectForKey:@"succeeded"];
     succeeded = [nb boolValue];
     
+    NSLog(@"call reloadUserWithUserData");
     // reload the current user to update the associated accounts info
     [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
 }
@@ -931,7 +933,7 @@ static YasoundSessionManager* _main = nil;
 
 + (NSString*)expirationDateToString:(NSDate*)date
 {
-    NSLocale* enUSPOSIXLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease];
+    NSLocale* enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setLocale:enUSPOSIXLocale];
@@ -941,13 +943,14 @@ static YasoundSessionManager* _main = nil;
     NSString* ts = [[NSString alloc] initWithString:datestr];
 
     [dateFormatter release];
+    [enUSPOSIXLocale release];
     return ts;
 }
 
 
 + (NSDate*)stringToExpirationDate:(NSString*)string
 {
-    NSLocale* enUSPOSIXLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease];
+    NSLocale* enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setLocale:enUSPOSIXLocale];
@@ -956,6 +959,7 @@ static YasoundSessionManager* _main = nil;
     NSDate* date = [dateFormatter dateFromString:string];
     [date retain];
     [dateFormatter release];
+    [enUSPOSIXLocale release];
     return date;
 }
 
@@ -989,6 +993,7 @@ static YasoundSessionManager* _main = nil;
     
     [self associateClean];  
     
+    NSLog(@"call reloadUserWithUserData");
     // reload the current user to update the associated accounts info
     [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];  
 }
@@ -1001,6 +1006,7 @@ static YasoundSessionManager* _main = nil;
     
     [self associateClean];
     
+    NSLog(@"call reloadUserWithUserData");
     // reload the current user to update the associated accounts info
     [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
 }
@@ -1033,6 +1039,7 @@ static YasoundSessionManager* _main = nil;
     NSLog(@"facebook_username '%@'", user.facebook_username);
     NSLog(@"facebook_uid '%@'", user.facebook_uid);
     NSLog(@"facebook_token '%@'", user.facebook_token);
+    NSLog(@"facebook_expiration_date '%@'", user.facebook_expiration_date);
     NSLog(@"facebook_email '%@'", user.facebook_email);
     
     NSLog(@"twitter_username '%@'", user.twitter_username);
