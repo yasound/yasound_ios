@@ -135,7 +135,7 @@
 {
     if (indexPath.row == ROW_COVER)
     {
-        static NSString* CellIdentifier = @"CellCover";
+        static NSString* CellIdentifier = @"SongInfoCellCover";
         
         UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         

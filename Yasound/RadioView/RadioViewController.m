@@ -336,14 +336,14 @@ static Song* _gNowPlayingSong = nil;
     // child view Tracks
     //
     
-    frameChild = CGRectMake(frameChild.size.width, frameChild.origin.y, frameChild.size.width, frameChild.size.height);
-    
-    _viewTracks = [[TracksView alloc] initWithFrame:frameChild];
-    [_viewTracks loadView];
-    _viewTracks.backgroundColor = [UIColor clearColor];
-    [_viewContainer addSubview:_viewTracks];
-    
-    _viewTracksDisplayed = NO;
+//    frameChild = CGRectMake(frameChild.size.width, frameChild.origin.y, frameChild.size.width, frameChild.size.height);
+//    
+//    _viewTracks = [[TracksView alloc] initWithFrame:frameChild];
+//    [_viewTracks loadView];
+//    _viewTracks.backgroundColor = [UIColor clearColor];
+//    [_viewContainer addSubview:_viewTracks];
+//    
+//    _viewTracksDisplayed = NO;
     
     
     
@@ -1678,62 +1678,62 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-- (void)onSwipeLeft:(UISwipeGestureRecognizer *)recognizer 
-{ 
-    CGPoint point = [recognizer locationInView:[self view]];
-    NSLog(@"Swipe left - start location: %f,%f", point.x, point.y);
-    
-    if (_viewTracksDisplayed)
-        return;
-    
-    NSError* error;
-	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go to TracksView" label:nil value:0 withError:&error]) 
-    {
-		        NSLog(@"GANTracker Error tracking foreground event: %@", error);
-	}
-    
-    [_viewTracks updateView];
-
-    CGRect frame = _viewWall.frame;
-    
-    [UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.3];
-    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
-    _viewWall.frame = CGRectMake(- frame.size.width, 0, frame.size.width, frame.size.height);
-    _viewTracks.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-    [UIView commitAnimations];   
-    
-    _viewTracksDisplayed = YES;
-    _pageControl.currentPage = 1;
-}
-
-
-- (void)onSwipeRight:(UISwipeGestureRecognizer *)recognizer 
-{ 
-    CGPoint point = [recognizer locationInView:[self view]];
-    NSLog(@"Swipe right - start location: %f,%f", point.x, point.y);
-
-    if (!_viewTracksDisplayed)
-        return;
-
-    NSError* error;
-	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go back to RadioView" label:nil value:0 withError:&error]) 
-    {
-        NSLog(@"GANTracker Error tracking foreground event: %@", error);
-	}
-    
-    CGRect frame = _viewWall.frame;
-    
-    [UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.3];
-    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
-    _viewWall.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-    _viewTracks.frame = CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height);
-    [UIView commitAnimations];   
-
-    _viewTracksDisplayed = NO;
-    _pageControl.currentPage = 0;
-}
+//- (void)onSwipeLeft:(UISwipeGestureRecognizer *)recognizer 
+//{ 
+//    CGPoint point = [recognizer locationInView:[self view]];
+//    NSLog(@"Swipe left - start location: %f,%f", point.x, point.y);
+//    
+//    if (_viewTracksDisplayed)
+//        return;
+//    
+//    NSError* error;
+//	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go to TracksView" label:nil value:0 withError:&error]) 
+//    {
+//		        NSLog(@"GANTracker Error tracking foreground event: %@", error);
+//	}
+//    
+//    [_viewTracks updateView];
+//
+//    CGRect frame = _viewWall.frame;
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//	[UIView setAnimationDuration:0.3];
+//    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
+//    _viewWall.frame = CGRectMake(- frame.size.width, 0, frame.size.width, frame.size.height);
+//    _viewTracks.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+//    [UIView commitAnimations];   
+//    
+//    _viewTracksDisplayed = YES;
+//    _pageControl.currentPage = 1;
+//}
+//
+//
+//- (void)onSwipeRight:(UISwipeGestureRecognizer *)recognizer 
+//{ 
+//    CGPoint point = [recognizer locationInView:[self view]];
+//    NSLog(@"Swipe right - start location: %f,%f", point.x, point.y);
+//
+//    if (!_viewTracksDisplayed)
+//        return;
+//
+//    NSError* error;
+//	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go back to RadioView" label:nil value:0 withError:&error]) 
+//    {
+//        NSLog(@"GANTracker Error tracking foreground event: %@", error);
+//	}
+//    
+//    CGRect frame = _viewWall.frame;
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//	[UIView setAnimationDuration:0.3];
+//    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
+//    _viewWall.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+//    _viewTracks.frame = CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height);
+//    [UIView commitAnimations];   
+//
+//    _viewTracksDisplayed = NO;
+//    _pageControl.currentPage = 0;
+//}
 
 
 

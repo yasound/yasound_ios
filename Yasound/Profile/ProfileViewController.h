@@ -1,5 +1,5 @@
 //
-//  SongInfoViewController.h
+//  ProfileViewController.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 29/02/12.
@@ -15,10 +15,10 @@
 @interface ProfileViewController : UIViewController
 {
     IBOutlet UIBarButtonItem* _backBtn;
-    IBOutlet UILabel* _titleLabel;
+    IBOutlet UIBarButtonItem* _titleLabel;
     IBOutlet UITableView* _tableView;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
-
+    
     WebImageView* _imageView;
     NSArray* _favoriteRadios;
     UILabel* _name;

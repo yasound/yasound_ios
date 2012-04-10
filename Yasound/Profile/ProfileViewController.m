@@ -20,11 +20,12 @@
 
 @synthesize user;
 
+#define SECTION_COUNT               4
+
 #define SECTION_COVER               0
 #define SECTION_OWN_RADIO           1
 #define SECTION_CURRENT_RADIO       2
 #define SECTION_FAVORITE_RADIOS     3
-#define SECTION_COUNT               4
 
 #define BORDER 8
 #define COVER_SIZE 96
@@ -45,8 +46,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    _titleLabel.text = NSLocalizedString(@"ProfileView_title", nil);
+    
+    _titleLabel.title = NSLocalizedString(@"ProfileView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
@@ -192,22 +193,22 @@
 {
     NSInteger rowIndex = indexPath.row;
     NSInteger sectionIndex = indexPath.section;
-
+    
     if (sectionIndex == SECTION_COVER)
     {
-        static NSString* CellIdentifier = @"CellCover";
+        static NSString* CellIdentifier = @"ProfileCellCover";
         
         UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) 
         {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        
+            
             cell.selectionStyle  = UITableViewCellSelectionStyleNone;
-      
+            
             NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
             _imageView = [[WebImageView alloc] initWithImageAtURL:url];
-
+            
             CGFloat size = COVER_SIZE;
             CGFloat height = (COVER_SIZE + 2*BORDER);
             CGRect frame = CGRectMake(BORDER, (height - size) / 2.f, size, size);
@@ -229,7 +230,7 @@
             _name = [sheet makeLabel];
             [cell addSubview:_name];
             [_name release];
-
+            
             
         }
         else
@@ -263,7 +264,7 @@
     else if (sectionIndex == SECTION_CURRENT_RADIO)
     {
         cellIdentifier = cellIdentifier2;
-
+        
         radio = self.user.current_radio;
         if (!radio) 
         {
@@ -273,7 +274,7 @@
     else if (sectionIndex == SECTION_FAVORITE_RADIOS)
     {
         cellIdentifier = cellIdentifier3;
-
+        
         NSArray* radios = _favoriteRadios;
         if (!radios) 
         {
@@ -286,7 +287,7 @@
             return nil;
         }
     }
-
+    
     RadioSelectionTableViewCell* cell;
     
     cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];

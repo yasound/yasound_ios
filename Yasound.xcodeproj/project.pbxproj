@@ -287,7 +287,6 @@
 		40B409F5152EFC630050D334 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7BF152D26130051A085 /* NotificationViewController.m */; };
 		40B409F6152EFC630050D334 /* NotificationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7CC152D308A0051A085 /* NotificationViewCell.m */; };
 		40B409F7152EFC630050D334 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7D4152D33C40051A085 /* NotificationManager.m */; };
-		40B409F8152EFC630050D334 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16CAEBE152D791600317510 /* ProfileViewController.m */; };
 		40B409F9152EFC630050D334 /* APNsDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E788152D9DA80056B34B /* APNsDeviceToken.m */; };
 		40B409FA152EFC630050D334 /* APNsNotifInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78A152D9DA80056B34B /* APNsNotifInfo.m */; };
 		40B409FB152EFC630050D334 /* APNsPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78C152D9DA80056B34B /* APNsPreferences.m */; };
@@ -514,7 +513,6 @@
 		40B40ADA152EFC630050D334 /* BigActionButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4CA79E152D20BF0051A085 /* BigActionButtonDisabled.png */; };
 		40B40ADB152EFC630050D334 /* BigActionButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4CA79F152D20BF0051A085 /* BigActionButtonDisabled@2x.png */; };
 		40B40ADC152EFC630050D334 /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC4CA7C0152D26130051A085 /* NotificationViewController.xib */; };
-		40B40ADD152EFC630050D334 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16CAEBF152D791600317510 /* ProfileViewController.xib */; };
 		40B40ADE152EFC630050D334 /* NotificationCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7AC152D9E6F0056B34B /* NotificationCenterViewController.xib */; };
 		40B40ADF152EFC630050D334 /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
 		40B40AE0152EFC630050D334 /* BigActionGreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF67152DFCEC0070F982 /* BigActionGreenButton.png */; };
@@ -563,16 +561,6 @@
 		40F4C79214BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40F4C79314BEEF7000A163F9 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		B138AA6814E2BAFC0069E08A /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B138AA6714E2BAFC0069E08A /* SongUploader.m */; };
-		B16CAEC0152D791600317510 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16CAEBE152D791600317510 /* ProfileViewController.m */; };
-		B16CAEC1152D791600317510 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16CAEBE152D791600317510 /* ProfileViewController.m */; };
-		B16CAEC2152D791600317510 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16CAEBE152D791600317510 /* ProfileViewController.m */; };
-		B16CAEC3152D791600317510 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16CAEBE152D791600317510 /* ProfileViewController.m */; };
-		B16CAEC4152D791600317510 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16CAEBE152D791600317510 /* ProfileViewController.m */; };
-		B16CAEC5152D791600317510 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16CAEBF152D791600317510 /* ProfileViewController.xib */; };
-		B16CAEC6152D791600317510 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16CAEBF152D791600317510 /* ProfileViewController.xib */; };
-		B16CAEC7152D791600317510 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16CAEBF152D791600317510 /* ProfileViewController.xib */; };
-		B16CAEC8152D791600317510 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16CAEBF152D791600317510 /* ProfileViewController.xib */; };
-		B16CAEC9152D791600317510 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B16CAEBF152D791600317510 /* ProfileViewController.xib */; };
 		B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
@@ -1740,6 +1728,20 @@
 		BC7263BA15345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7263AE15345AE1002386C3 /* ProfilePhotoMask@2x.png */; };
 		BC7263BB15345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7263AE15345AE1002386C3 /* ProfilePhotoMask@2x.png */; };
 		BC7263BC15345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7263AE15345AE1002386C3 /* ProfilePhotoMask@2x.png */; };
+		BC7263C0153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
+		BC7263C1153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
+		BC7263C2153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
+		BC7263C3153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
+		BC7263C4153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
+		BC7263C5153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
+		BC7263C6153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
+		BC7263C7153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
+		BC7263C8153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
+		BC7263C9153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
+		BC7263CA153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
+		BC7263CB153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
+		BC7263CC153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
+		BC7263CD153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
 		BC82067214F5620200FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
 		BC82067314F5620200FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
 		BC82067414F5620200FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
@@ -3033,9 +3035,6 @@
 		40F4C79014BEEF6F00A163F9 /* NextSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextSong.m; sourceTree = "<group>"; };
 		B138AA6614E2BAFC0069E08A /* SongUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongUploader.h; sourceTree = "<group>"; };
 		B138AA6714E2BAFC0069E08A /* SongUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUploader.m; sourceTree = "<group>"; };
-		B16CAEBD152D791600317510 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		B16CAEBE152D791600317510 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		B16CAEBF152D791600317510 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		B172043D14C54446007F3FB0 /* BuyLinkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyLinkManager.h; sourceTree = "<group>"; };
 		B172043E14C54446007F3FB0 /* BuyLinkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyLinkManager.m; sourceTree = "<group>"; };
 		B19245D814E2DAF700B18EEF /* TSLibraryImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSLibraryImport.h; sourceTree = "<group>"; };
@@ -3244,6 +3243,9 @@
 		BC71F635147FEC6F00DAE4BD /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7263AD15345AE1002386C3 /* ProfilePhotoMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfilePhotoMask.png; sourceTree = "<group>"; };
 		BC7263AE15345AE1002386C3 /* ProfilePhotoMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfilePhotoMask@2x.png"; sourceTree = "<group>"; };
+		BC7263BD153479C1002386C3 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		BC7263BE153479C1002386C3 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		BC7263BF153479C1002386C3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		BC82066F14F5620200FAE05E /* ProgrammingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingViewController.h; path = Programming/ProgrammingViewController.h; sourceTree = "<group>"; };
 		BC82067014F5620200FAE05E /* ProgrammingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingViewController.m; path = Programming/ProgrammingViewController.m; sourceTree = "<group>"; };
 		BC82067114F5620200FAE05E /* ProgrammingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingViewController.xib; path = Programming/ProgrammingViewController.xib; sourceTree = "<group>"; };
@@ -3884,9 +3886,9 @@
 		B16CAEBC152D791600317510 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				B16CAEBD152D791600317510 /* ProfileViewController.h */,
-				B16CAEBE152D791600317510 /* ProfileViewController.m */,
-				B16CAEBF152D791600317510 /* ProfileViewController.xib */,
+				BC7263BD153479C1002386C3 /* ProfileViewController.h */,
+				BC7263BE153479C1002386C3 /* ProfileViewController.m */,
+				BC7263BF153479C1002386C3 /* ProfileViewController.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -5514,7 +5516,6 @@
 				40B40ADA152EFC630050D334 /* BigActionButtonDisabled.png in Resources */,
 				40B40ADB152EFC630050D334 /* BigActionButtonDisabled@2x.png in Resources */,
 				40B40ADC152EFC630050D334 /* NotificationViewController.xib in Resources */,
-				40B40ADD152EFC630050D334 /* ProfileViewController.xib in Resources */,
 				40B40ADE152EFC630050D334 /* NotificationCenterViewController.xib in Resources */,
 				40B40ADF152EFC630050D334 /* MessageWeViewController.xib in Resources */,
 				40B40AE0152EFC630050D334 /* BigActionGreenButton.png in Resources */,
@@ -5527,6 +5528,7 @@
 				40B40AE7152EFC630050D334 /* BigActionRedButtonHighlighted@2x.png in Resources */,
 				BC7263B515345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263BC15345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
+				BC7263CD153479C1002386C3 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5737,6 +5739,7 @@
 				BC28FF9E152DFCEC0070F982 /* BigActionRedButtonHighlighted@2x.png in Resources */,
 				BC7263B415345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263BB15345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
+				BC7263CC153479C1002386C3 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5939,7 +5942,6 @@
 				BC4CA7A2152D20BF0051A085 /* BigActionButtonDisabled.png in Resources */,
 				BC4CA7A8152D20BF0051A085 /* BigActionButtonDisabled@2x.png in Resources */,
 				BC4CA7C8152D26130051A085 /* NotificationViewController.xib in Resources */,
-				B16CAEC7152D791600317510 /* ProfileViewController.xib in Resources */,
 				4028E7BB152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7CA152DC1400056B34B /* MessageWeViewController.xib in Resources */,
 				BC28FF71152DFCEC0070F982 /* BigActionGreenButton.png in Resources */,
@@ -5952,6 +5954,7 @@
 				BC28FF9B152DFCEC0070F982 /* BigActionRedButtonHighlighted@2x.png in Resources */,
 				BC7263B115345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263B815345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
+				BC7263C9153479C1002386C3 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6154,7 +6157,6 @@
 				BC4CA7A1152D20BF0051A085 /* BigActionButtonDisabled.png in Resources */,
 				BC4CA7A7152D20BF0051A085 /* BigActionButtonDisabled@2x.png in Resources */,
 				BC4CA7C7152D26130051A085 /* NotificationViewController.xib in Resources */,
-				B16CAEC6152D791600317510 /* ProfileViewController.xib in Resources */,
 				4028E7BA152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7C9152DC1400056B34B /* MessageWeViewController.xib in Resources */,
 				BC28FF70152DFCEC0070F982 /* BigActionGreenButton.png in Resources */,
@@ -6167,6 +6169,7 @@
 				BC28FF9A152DFCEC0070F982 /* BigActionRedButtonHighlighted@2x.png in Resources */,
 				BC7263B015345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263B715345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
+				BC7263C8153479C1002386C3 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6369,7 +6372,6 @@
 				BC4CA7A4152D20BF0051A085 /* BigActionButtonDisabled.png in Resources */,
 				BC4CA7AA152D20BF0051A085 /* BigActionButtonDisabled@2x.png in Resources */,
 				BC4CA7CA152D26130051A085 /* NotificationViewController.xib in Resources */,
-				B16CAEC9152D791600317510 /* ProfileViewController.xib in Resources */,
 				4028E7BD152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7CC152DC1400056B34B /* MessageWeViewController.xib in Resources */,
 				BC28FF73152DFCEC0070F982 /* BigActionGreenButton.png in Resources */,
@@ -6382,6 +6384,7 @@
 				BC28FF9D152DFCEC0070F982 /* BigActionRedButtonHighlighted@2x.png in Resources */,
 				BC7263B315345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263BA15345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
+				BC7263CB153479C1002386C3 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6584,7 +6587,6 @@
 				BC4CA7A0152D20BF0051A085 /* BigActionButtonDisabled.png in Resources */,
 				BC4CA7A6152D20BF0051A085 /* BigActionButtonDisabled@2x.png in Resources */,
 				BC4CA7C6152D26130051A085 /* NotificationViewController.xib in Resources */,
-				B16CAEC5152D791600317510 /* ProfileViewController.xib in Resources */,
 				4028E7B9152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7C8152DC1400056B34B /* MessageWeViewController.xib in Resources */,
 				BC28FF6F152DFCEC0070F982 /* BigActionGreenButton.png in Resources */,
@@ -6597,6 +6599,7 @@
 				BC28FF99152DFCEC0070F982 /* BigActionRedButtonHighlighted@2x.png in Resources */,
 				BC7263AF15345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263B615345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
+				BC7263C7153479C1002386C3 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6799,7 +6802,6 @@
 				BC4CA7A3152D20BF0051A085 /* BigActionButtonDisabled.png in Resources */,
 				BC4CA7A9152D20BF0051A085 /* BigActionButtonDisabled@2x.png in Resources */,
 				BC4CA7C9152D26130051A085 /* NotificationViewController.xib in Resources */,
-				B16CAEC8152D791600317510 /* ProfileViewController.xib in Resources */,
 				4028E7BC152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7CB152DC1400056B34B /* MessageWeViewController.xib in Resources */,
 				BC28FF72152DFCEC0070F982 /* BigActionGreenButton.png in Resources */,
@@ -6812,6 +6814,7 @@
 				BC28FF9C152DFCEC0070F982 /* BigActionRedButtonHighlighted@2x.png in Resources */,
 				BC7263B215345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263B915345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
+				BC7263CA153479C1002386C3 /* ProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6989,7 +6992,6 @@
 				40B409F5152EFC630050D334 /* NotificationViewController.m in Sources */,
 				40B409F6152EFC630050D334 /* NotificationViewCell.m in Sources */,
 				40B409F7152EFC630050D334 /* NotificationManager.m in Sources */,
-				40B409F8152EFC630050D334 /* ProfileViewController.m in Sources */,
 				40B409F9152EFC630050D334 /* APNsDeviceToken.m in Sources */,
 				40B409FA152EFC630050D334 /* APNsNotifInfo.m in Sources */,
 				40B409FB152EFC630050D334 /* APNsPreferences.m in Sources */,
@@ -6998,6 +7000,7 @@
 				40B409FE152EFC630050D334 /* NotificationCenterViewController.m in Sources */,
 				40B409FF152EFC630050D334 /* MessageWeViewController.m in Sources */,
 				40B40A00152EFC630050D334 /* NotificationTableViewCell.m in Sources */,
+				BC7263C6153479C1002386C3 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7176,6 +7179,7 @@
 				4028E7B8152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C7152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC16152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
+				BC7263C5153479C1002386C3 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7350,7 +7354,6 @@
 				BC4CA7C3152D26130051A085 /* NotificationViewController.m in Sources */,
 				BC4CA7CF152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D7152D33C40051A085 /* NotificationManager.m in Sources */,
-				B16CAEC2152D791600317510 /* ProfileViewController.m in Sources */,
 				4028E78F152D9DA80056B34B /* APNsDeviceToken.m in Sources */,
 				4028E795152D9DA80056B34B /* APNsNotifInfo.m in Sources */,
 				4028E79B152D9DA80056B34B /* APNsPreferences.m in Sources */,
@@ -7359,6 +7362,7 @@
 				4028E7B5152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C4152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC13152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
+				BC7263C2153479C1002386C3 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7533,7 +7537,6 @@
 				BC4CA7C2152D26130051A085 /* NotificationViewController.m in Sources */,
 				BC4CA7CE152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D6152D33C40051A085 /* NotificationManager.m in Sources */,
-				B16CAEC1152D791600317510 /* ProfileViewController.m in Sources */,
 				4028E78E152D9DA80056B34B /* APNsDeviceToken.m in Sources */,
 				4028E794152D9DA80056B34B /* APNsNotifInfo.m in Sources */,
 				4028E79A152D9DA80056B34B /* APNsPreferences.m in Sources */,
@@ -7542,6 +7545,7 @@
 				4028E7B4152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C3152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC12152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
+				BC7263C1153479C1002386C3 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7717,7 +7721,6 @@
 				BC4CA7C5152D26130051A085 /* NotificationViewController.m in Sources */,
 				BC4CA7D1152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D9152D33C40051A085 /* NotificationManager.m in Sources */,
-				B16CAEC4152D791600317510 /* ProfileViewController.m in Sources */,
 				4028E791152D9DA80056B34B /* APNsDeviceToken.m in Sources */,
 				4028E797152D9DA80056B34B /* APNsNotifInfo.m in Sources */,
 				4028E79D152D9DA80056B34B /* APNsPreferences.m in Sources */,
@@ -7726,6 +7729,7 @@
 				4028E7B7152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C6152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC15152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
+				BC7263C4153479C1002386C3 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7900,7 +7904,6 @@
 				BC4CA7C1152D26130051A085 /* NotificationViewController.m in Sources */,
 				BC4CA7CD152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D5152D33C40051A085 /* NotificationManager.m in Sources */,
-				B16CAEC0152D791600317510 /* ProfileViewController.m in Sources */,
 				4028E78D152D9DA80056B34B /* APNsDeviceToken.m in Sources */,
 				4028E793152D9DA80056B34B /* APNsNotifInfo.m in Sources */,
 				4028E799152D9DA80056B34B /* APNsPreferences.m in Sources */,
@@ -7909,6 +7912,7 @@
 				4028E7B3152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C2152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC11152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
+				BC7263C0153479C1002386C3 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8084,7 +8088,6 @@
 				BC4CA7C4152D26130051A085 /* NotificationViewController.m in Sources */,
 				BC4CA7D0152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D8152D33C40051A085 /* NotificationManager.m in Sources */,
-				B16CAEC3152D791600317510 /* ProfileViewController.m in Sources */,
 				4028E790152D9DA80056B34B /* APNsDeviceToken.m in Sources */,
 				4028E796152D9DA80056B34B /* APNsNotifInfo.m in Sources */,
 				4028E79C152D9DA80056B34B /* APNsPreferences.m in Sources */,
@@ -8093,6 +8096,7 @@
 				4028E7B6152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C5152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC14152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
+				BC7263C3153479C1002386C3 /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
