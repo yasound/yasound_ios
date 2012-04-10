@@ -387,9 +387,6 @@ static YasoundSessionManager* _main = nil;
     // store pword with security
     [SFHFKeychainUtils storeUsername:email andPassword:pword  forServiceName:@"YasoundSessionManager" updateExisting:YES error:nil];
 
-    // and add the account as associated account
-    [self accountManagerAdd:LOGIN_TYPE_YASOUND withInfo:[NSDictionary dictionaryWithObjectsAndKeys:email,@"email",pword,@"pword",nil]];
-
     [self save];
 }
 
