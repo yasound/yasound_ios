@@ -622,8 +622,11 @@ static YasoundSessionManager* _main = nil;
     {
         NSLog(@"facebook social associating request");
         
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];    
+        NSString* expirationDate = [YasoundSessionManager expirationDateToString:[defaults objectForKey:@"FBExpirationDateKey"]];
+        
         // request to yasound server
-        [[YasoundDataProvider main] associateAccountFacebook:username type:LOGIN_TYPE_FACEBOOK uid:uid token:token email:email target:self action:@selector(associatingSocialValidated:)];
+        [[YasoundDataProvider main] associateAccountFacebook:username type:LOGIN_TYPE_FACEBOOK uid:uid token:token expirationDate:expirationDate email:email target:self action:@selector(associatingSocialValidated:)];
     }
     
     
@@ -648,7 +651,11 @@ static YasoundSessionManager* _main = nil;
 //      if (!n)
 //        n = name;
         
-        [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token email:email target:self action:@selector(loginSocialValidated:info:)];
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];    
+        NSString* expirationDate = [YasoundSessionManager expirationDateToString:[defaults objectForKey:@"FBExpirationDateKey"]];
+
+        
+        [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token expirationDate:expirationDate email:email target:self action:@selector(loginSocialValidated:info:)];
     }
     
     
@@ -875,6 +882,7 @@ static YasoundSessionManager* _main = nil;
 }
 
 
+
 - (void)onUserReloaded:(User*)user info:(NSDictionary*)info
 {
     NSDictionary* userInfo = [info objectForKey:@"userData"];
@@ -883,6 +891,59 @@ static YasoundSessionManager* _main = nil;
     [_target performSelector:_action withObject:userInfo];    
 }
 
+
+- (void)reloadFacebookData:(User*)user
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    [defaults setObject:user.facebook_token forKey:@"FBAccessTokenKey"];
+    NSDate* date = [YasoundSessionManager stringToExpirationDate:user.facebook_expiration_date];
+    
+    [defaults setObject:date forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];  
+
+    NSLog(@"reloadFacebookData  '%@' '%@'", [defaults objectForKey:@"FBAccessTokenKey"], [defaults objectForKey:@"FBExpirationDateKey"]);
+}
+
+
+
+- (void)reloadTwitterData:(User*)user
+{
+    
+}
+
+
++ (NSString*)expirationDateToString:(NSDate*)date
+{
+    NSLocale* enUSPOSIXLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease];
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:enUSPOSIXLocale];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSString* datestr = [dateFormatter stringFromDate:date];
+    NSString* ts = [[NSString alloc] initWithString:datestr];
+
+    [dateFormatter release];
+    [enUSPOSIXLocale release];
+    return ts;
+}
+
+
++ (NSDate*)stringToExpirationDate:(NSString*)string
+{
+    NSLocale* enUSPOSIXLocale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"] autorelease];
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:enUSPOSIXLocale];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSDate* date = [dateFormatter dateFromString:string];
+    [date retain];
+    [dateFormatter release];
+    [enUSPOSIXLocale release];
+    return date;
+}
 
 
 

@@ -112,7 +112,7 @@ static FacebookSessionManager* _facebook = nil;
   
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSLog(@"DEBUG '%@'", [defaults objectForKey:@"FBExpirationDateKey"]);
+   // NSLog(@"DEBUG '%@'", [defaults objectForKey:@"FBExpirationDateKey"]);
     
   if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]) 
   {
