@@ -255,7 +255,7 @@ static YasoundDataProvider* _main = nil;
   if (sandbox)
     [token setSandbox];
   else
-    [token setDevelopment];
+    [token setProduction];
   
   NSString* uuid = [[UIDevice currentDevice] uniqueDeviceIdentifier];
   token.uuid = uuid;
