@@ -174,9 +174,7 @@
     // close the connection alert
     [ConnectionView stop];
 
-    [[YasoundSessionManager main] reloadFacebookData:user];
-    [[YasoundSessionManager main] reloadTwitterData:user];
-    [[YasoundSessionManager main] reloadYasoundData:user];
+    [[YasoundSessionManager main] reloadUserData:user];
     
     
     NSLog(@"login returned : %@ %@", user, info);

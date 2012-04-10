@@ -889,50 +889,110 @@ static YasoundSessionManager* _main = nil;
 {
     NSDictionary* userInfo = [info objectForKey:@"userData"];
     
-    [self reloadFacebookData:user];
-    [self reloadTwitterData:user];
-    [self reloadYasoundData:user];
+    [self reloadUserData:user];
+    
+    // store a local copy of the infos
+    [self exportUserData:user];
     
     // callback
     [_target performSelector:_action withObject:userInfo];    
 }
 
 
-- (void)reloadFacebookData:(User*)user
+
+- (void)exportUserData:(User*)user
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-    [defaults setObject:user.facebook_token forKey:@"FBAccessTokenKey"];
-    NSDate* date = [YasoundSessionManager stringToExpirationDate:user.facebook_expiration_date];
+    /// export facebook
+    NSMutableDictionary* facebook = [[NSMutableDictionary alloc] init];
+    [facebook setObject:user.facebook_token forKey:@"facebook_token"];
+    [facebook setObject:user.facebook_expiration_date forKey:@"facebook_expiration_date"];
+    
+    [defaults setObject:facebook forKey:@"facebook"];
+
+    
+    
+    /// export twitter
+    NSString* data = [TwitterOAuthSessionManager buildDataFromToken:user.twitter_token token_secret:user.twitter_token_secret user_id:user.twitter_uid screen_name:user.twitter_username];
+
+    NSMutableDictionary* twitter = [[NSMutableDictionary alloc] init];
+    [twitter setObject:user.twitter_username forKey:@"twitter_username"];
+
+    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+    // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
+    [SFHFKeychainUtils storeUsername:user.twitter_username andPassword:data  forServiceName:BundleName updateExisting:YES error:nil];
+    
+    [defaults setObject:facebook forKey:@"twitter"];
+    
+    
+    /// export yasound    
+    NSMutableDictionary* yasound = [[NSMutableDictionary alloc] init];
+    [yasound setObject:user.yasound_email forKey:@"yasound_email"];
+    [defaults setObject:facebook forKey:@"yasound"];
+    
+    
+    [defaults synchronize];
+    
+    [facebook release];
+    [twitter release];
+    [yasound release];
+}
+
+
+- (void)importUserData
+{
+    
+}
+
+
+- (void)reloadUserData:(User*)user
+{
+    NSLog(@"reloadUserData from user");
+    [self importFacebookData:user.facebook_token facebook_expiration_date:user.facebook_expiration_date];
+    [self importTwitterData:user.twitter_token token_secret:user.twitter_token_secret user_id:user.twitter_uid screen_name:user.twitter_username];
+    [self importYasoundData:user.yasound_email];
+}
+
+
+- (void)importFacebookData:(NSString*)facebook_token facebook_expiration_date:(NSString*)facebook_expiration_date
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    [defaults setObject:facebook_token forKey:@"FBAccessTokenKey"];
+    NSDate* date = [YasoundSessionManager stringToExpirationDate:facebook_expiration_date];
     
     [defaults setObject:date forKey:@"FBExpirationDateKey"];
     [defaults synchronize];  
 
-    NSLog(@"reloadFacebookData  '%@' '%@'", [defaults objectForKey:@"FBAccessTokenKey"], [defaults objectForKey:@"FBExpirationDateKey"]);
+    NSLog(@"importFacebookData  '%@' '%@'", [defaults objectForKey:@"FBAccessTokenKey"], [defaults objectForKey:@"FBExpirationDateKey"]);
 }
 
 
 
-- (void)reloadTwitterData:(User*)user
+- (void)importTwitterData:(NSString*)twitter_token token_secret:(NSString*)twitter_token_secret user_id:(NSString*)twitter_uid screen_name:(NSString*)twitter_username
 {
-    NSString* data = [TwitterOAuthSessionManager buildDataFromToken:user.twitter_token token_secret:user.twitter_token_secret user_id:user.twitter_uid screen_name:user.twitter_username];
+    NSString* data = [TwitterOAuthSessionManager buildDataFromToken:twitter_token token_secret:twitter_token_secret user_id:twitter_uid screen_name:twitter_username];
     
-    [[NSUserDefaults standardUserDefaults] setValue:user.twitter_username forKey:OAUTH_USERNAME];
+    [[NSUserDefaults standardUserDefaults] setValue:twitter_username forKey:OAUTH_USERNAME];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSError* error;
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
     // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
-    [SFHFKeychainUtils storeUsername:user.twitter_username andPassword:data  forServiceName:BundleName updateExisting:YES error:&error];
+    [SFHFKeychainUtils storeUsername:twitter_username andPassword:data  forServiceName:BundleName updateExisting:YES error:&error];
     
-    NSLog(@"reloadTwitterData '%@'", data);
+    NSLog(@"importTwitterData '%@'", data);
 }
 
 
 
-- (void)reloadYasoundData:(User*)user
+- (void)importYasoundData:(NSString*)yasound_email
 {
-  //LBDEBUG TODO   
+    [[NSUserDefaults standardUserDefaults] setValue:yasound_email forKey:@"yasound_email"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    NSLog(@"importYasoundData '%@'", yasound_email);
 }
 
     

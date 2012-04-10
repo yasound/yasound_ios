@@ -139,8 +139,10 @@
         
         if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
             [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
+        
         else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
             [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
+        
         else
             [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
         
@@ -160,9 +162,7 @@
 
     if (user != nil)
     {
-        [[YasoundSessionManager main] reloadFacebookData:user];
-        [[YasoundSessionManager main] reloadTwitterData:user];
-        [[YasoundSessionManager main] reloadYasoundData:user];
+        [[YasoundSessionManager main] reloadUserData:user];
         
         // login the other associated accounts as well
         [[YasoundSessionManager main] associateAccountsAutomatic];
