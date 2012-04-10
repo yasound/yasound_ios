@@ -348,11 +348,9 @@
   // store it
   [[NSUserDefaults standardUserDefaults] setValue:screenname forKey:OAUTH_SCREENNAME];
   
-  
-  
-  
-  
 }
+
+
 
 
 //implement these methods to store off the creds returned by Twitter
@@ -379,6 +377,11 @@
 
 
 
++ (NSString*) buildDataFromToken:(NSString*)token token_secret:(NSString*)token_secret user_id:(NSString*)user_id screen_name:(NSString*)screen_name
+{
+    return [NSString stringWithFormat:@"oauth_token=%@&oauth_token_secret=%@&user_id=%@&screen_name=%@",
+            token, token_secret, user_id, screen_name];
+}
 
 
 

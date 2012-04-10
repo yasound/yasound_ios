@@ -909,8 +909,21 @@ static YasoundSessionManager* _main = nil;
 
 - (void)reloadTwitterData:(User*)user
 {
+    NSString* data = [TwitterOAuthSessionManager buildDataFromToken:user.twitter_token token_secret:user.twitter_token_secret user_id:user.twitter_uid screen_name:user.twitter_username];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:user.twitter_username forKey:OAUTH_USERNAME];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    NSError* error;
+    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+    // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
+    [SFHFKeychainUtils storeUsername:user.twitter_username andPassword:data  forServiceName:BundleName updateExisting:YES error:&error];
+    
+    NSLog(@"reloadTwitterData '%@'", data);
+    
     
 }
+    
 
 
 + (NSString*)expirationDateToString:(NSDate*)date
