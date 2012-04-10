@@ -51,6 +51,19 @@
 			<key>path</key>
 			<string>images/Header</string>
 		</dict>
+		<key>ProfileRadioPhoto</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>Header</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Header</string>
+		</dict>
 		<key>HeaderAvatar</key>
 		<dict>
 			<key>x</key>
