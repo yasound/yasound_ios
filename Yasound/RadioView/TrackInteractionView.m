@@ -22,6 +22,7 @@
 @implementation TrackInteractionView
 
 @synthesize shareFullMessage;
+@synthesize shareButtons;
 
 - (id)initWithSong:(Song*)song
 {

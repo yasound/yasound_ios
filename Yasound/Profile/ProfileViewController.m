@@ -210,13 +210,25 @@
 
             CGFloat size = COVER_SIZE;
             CGFloat height = (COVER_SIZE + 2*BORDER);
-             _imageView.frame = CGRectMake(BORDER, (height - size) / 2.f, size, size);
-
+            CGRect frame = CGRectMake(BORDER, (height - size) / 2.f, size, size);
+            _imageView.frame = frame;
             [cell addSubview:_imageView];
+            [_imageView release];
+            
+            UIImageView* mask = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ProfilePhotoMask.png"]];
+            mask.frame = frame;
+            [cell addSubview:mask];
+            [mask release];
+            
+            
+            
+            
+            
             // name
             BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _name = [sheet makeLabel];
             [cell addSubview:_name];
+            [_name release];
 
             
         }
