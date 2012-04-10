@@ -941,7 +941,6 @@ static YasoundSessionManager* _main = nil;
     NSString* ts = [[NSString alloc] initWithString:datestr];
 
     [dateFormatter release];
-    [enUSPOSIXLocale release];
     return ts;
 }
 
@@ -957,7 +956,6 @@ static YasoundSessionManager* _main = nil;
     NSDate* date = [dateFormatter dateFromString:string];
     [date retain];
     [dateFormatter release];
-    [enUSPOSIXLocale release];
     return date;
 }
 
