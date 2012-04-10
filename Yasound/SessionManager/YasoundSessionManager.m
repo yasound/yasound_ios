@@ -737,6 +737,7 @@ static YasoundSessionManager* _main = nil;
         NSLog(@"\n Automatic associating account Twitter.");
         [self associateAccountTwitter:self action:@selector(associateAccountsAutomaticReturned:) automatic:YES];
     }
+    
 
     // don't need to do anything for yasound
 //    if (![self.loginType isEqualToString:LOGIN_TYPE_YASOUND] && [self isAccountAssociated:LOGIN_TYPE_YASOUND])
@@ -870,9 +871,17 @@ static YasoundSessionManager* _main = nil;
     NSNumber* nb = [info objectForKey:@"succeeded"];
     succeeded = [nb boolValue];
     
+    // reload the current user to update the associated accounts info
+    [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
+}
 
+
+- (void)onUserReloaded:(User*)user info:(NSDictionary*)info
+{
+    NSDictionary* userInfo = [info objectForKey:@"userData"];
+    
     // callback
-    [_target performSelector:_action withObject:info];    
+    [_target performSelector:_action withObject:userInfo];    
 }
 
 
@@ -904,10 +913,10 @@ static YasoundSessionManager* _main = nil;
             [[TwitterSessionManager twitter] invalidConnexion];
     }
     
-    [self associateClean];
-
-    // callback
-    [_target performSelector:_action withObject:info];
+    [self associateClean];  
+    
+    // reload the current user to update the associated accounts info
+    [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];  
 }
 
 
