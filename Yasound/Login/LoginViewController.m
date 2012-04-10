@@ -163,6 +163,10 @@
     
     if (user != nil)
     {
+        [[YasoundSessionManager main] reloadFacebookData:user];
+        [[YasoundSessionManager main] reloadTwitterData:user];
+        [[YasoundSessionManager main] reloadYasoundData:user];
+        
         // login the other associated accounts as well
         [[YasoundSessionManager main] associateAccountsAutomatic];
 

@@ -891,6 +891,7 @@ static YasoundSessionManager* _main = nil;
     
     [self reloadFacebookData:user];
     [self reloadTwitterData:user];
+    [self reloadYasoundData:user];
     
     // callback
     [_target performSelector:_action withObject:userInfo];    
@@ -925,9 +926,15 @@ static YasoundSessionManager* _main = nil;
     [SFHFKeychainUtils storeUsername:user.twitter_username andPassword:data  forServiceName:BundleName updateExisting:YES error:&error];
     
     NSLog(@"reloadTwitterData '%@'", data);
-    
-    
 }
+
+
+
+- (void)reloadYasoundData:(User*)user
+{
+  //LBDEBUG TODO   
+}
+
     
 
 
