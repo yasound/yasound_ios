@@ -951,14 +951,14 @@ static YasoundSessionManager* _main = nil;
     [self importFacebookData:facebook_token facebook_expiration_date:facebook_expiration_date];
     
     // import twitter
-    NSDictionary* dico = [defaults objectForKey:@"twitter"];
+    dico = [defaults objectForKey:@"twitter"];
     NSString* twitter_username = [dico objectForKey:@"twitter_username"];
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
     NSString* twitter_data = [SFHFKeychainUtils getPasswordForUsername:twitter_username andServiceName:BundleName error:nil];
     [self importTwitterData:twitter_username withData:twitter_data];
     
     // import yasound
-    NSDictionary* dico = [defaults objectForKey:@"yasound"];
+    dico = [defaults objectForKey:@"yasound"];
     NSString* yasound_email = [dico objectForKey:@"yasound_email"];
     [self importYasoundData:yasound_email];
 }
@@ -1003,9 +1003,9 @@ static YasoundSessionManager* _main = nil;
     NSError* error;
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
     // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
-    [SFHFKeychainUtils storeUsername:twitter_username andPassword:data  forServiceName:BundleName updateExisting:YES error:&error];
+    [SFHFKeychainUtils storeUsername:twitter_username andPassword:twitter_data  forServiceName:BundleName updateExisting:YES error:&error];
     
-    NSLog(@"importTwitterData '%@'", data);
+    NSLog(@"importTwitterData '%@'", twitter_data);
 }
 
 
