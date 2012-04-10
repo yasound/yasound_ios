@@ -35,6 +35,7 @@ UserMood stringToUsermood(NSString* str);
 @property (retain, nonatomic) NSString* facebook_username;
 @property (retain, nonatomic) NSString* facebook_uid;
 @property (retain, nonatomic) NSString* facebook_token;
+@property (retain, nonatomic) NSString* facebook_expiration_date;
 @property (retain, nonatomic) NSString* facebook_email;
 
 @property (retain, nonatomic) NSString* twitter_username;

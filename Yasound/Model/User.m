@@ -23,6 +23,7 @@
 @synthesize facebook_username;
 @synthesize facebook_uid;
 @synthesize facebook_token;
+@synthesize facebook_expiration_date;
 @synthesize facebook_email;
 
 @synthesize twitter_username;

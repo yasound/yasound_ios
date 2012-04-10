@@ -551,9 +551,9 @@ static YasoundDataProvider* _main = nil;
 //
 // facebook
 //
-- (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector
+- (void)loginFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token  expirationDate:(NSString*)expirationDate email:(NSString*)email target:(id)target action:(SEL)selector
 {
-  AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid token:token andEmail:email];
+  AuthSocial* auth = [[AuthSocial alloc] initWithUsername:username accountType:type uid:uid token:token  expirationDate:expirationDate andEmail:email];
   [self loginSocialWithAuth:auth target:target action:selector];
 }
 
@@ -741,7 +741,7 @@ static YasoundDataProvider* _main = nil;
 #pragma mark - Facebook Account Association
 
 
-- (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token email:(NSString*)email target:(id)target action:(SEL)selector
+- (void)associateAccountFacebook:(NSString*)username type:(NSString*)type uid:(NSString*)uid token:(NSString*)token  expirationDate:(NSString*)expirationDate email:(NSString*)email target:(id)target action:(SEL)selector
 {
     Auth* auth = self.apiKeyAuth;
     
@@ -753,6 +753,7 @@ static YasoundDataProvider* _main = nil;
     [req addPostValue:@"facebook" forKey:@"account_type"];
     [req addPostValue:uid forKey:@"uid"];
     [req addPostValue:token forKey:@"token"];
+    [req addPostValue:expirationDate forKey:@"expiration_date"];
     [req addPostValue:email forKey:@"email"];
     
     [req startAsynchronous];

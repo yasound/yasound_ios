@@ -45,6 +45,7 @@
   NSString* _accountType;
   NSString* _uid;
   NSString* _token;
+    NSString* _expirationDate;
   NSString* _tokenSecret;
   NSString* _email;
 }

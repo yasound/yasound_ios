@@ -96,6 +96,10 @@ static FacebookSessionManager* _facebook = nil;
 }
 
 
+
+
+
+
 //.......................................................................
 //
 // login using facebook
@@ -107,6 +111,9 @@ static FacebookSessionManager* _facebook = nil;
  //   [_facebookConnect authorizeWithFBAppAuth:YES safariAuth:NO];
   
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSLog(@"DEBUG '%@'", [defaults objectForKey:@"FBExpirationDateKey"]);
+    
   if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]) 
   {
     _facebookConnect.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
