@@ -852,9 +852,8 @@ static YasoundSessionManager* _main = nil;
     {
     }
     
-    
-    // callback
-    [_target performSelector:_action withObject:info];    
+    // reload the current user to update the associated accounts info
+    [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
 }
 
 
@@ -927,10 +926,9 @@ static YasoundSessionManager* _main = nil;
     
     [self associateClean];
     
-         
-     // callback
-     [_target performSelector:_action withObject:info];
- }
+    // reload the current user to update the associated accounts info
+    [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
+}
         
                  
 
