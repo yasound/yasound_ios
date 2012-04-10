@@ -239,13 +239,14 @@ static YasoundDataProvider* _main = nil;
   _apiKey = nil;
 }
 
-- (void)reloadUserWithTarget:(id)target action:(SEL)selector
+- (void)reloadUserWithUserData:(id)data withTarget:(id)target action:(SEL)selector
 {
     if (!self.user)
         return;
     NSMutableDictionary* userData = [NSMutableDictionary dictionary];
     [userData setValue:target forKey:@"clientTarget"];
     [userData setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
+    [userData setValue:data forKey:@"clientData"];
     NSNumber* userId = self.user.id;
     Auth* auth = self.apiKeyAuth;
     [_communicator getObjectWithClass:[User class] andID:userId notifyTarget:self byCalling:@selector(didReloadUser:withInfo:) withUserData:userData withAuth:auth];
@@ -256,12 +257,15 @@ static YasoundDataProvider* _main = nil;
     NSDictionary* userData = [info valueForKey:@"userData"];
     id target = [userData valueForKey:@"clientTarget"];
     SEL selector = NSSelectorFromString([userData valueForKey:@"clientSelector"]);
+    id clientData = [userData valueForKey:@"clientData"];
     
     _user = user;
     
     if (target && selector)
     {
-        [target performSelector:selector withObject:_user withObject:[NSDictionary dictionary]];
+        NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+        [dict setValue:clientData forKey:@"userData"];
+        [target performSelector:selector withObject:_user withObject:dict];
     }
 }
 
