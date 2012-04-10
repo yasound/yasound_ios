@@ -887,6 +887,9 @@ static YasoundSessionManager* _main = nil;
 {
     NSDictionary* userInfo = [info objectForKey:@"userData"];
     
+    [self reloadFacebookData:user];
+    [self reloadTwitterData:user];
+    
     // callback
     [_target performSelector:_action withObject:userInfo];    
 }
