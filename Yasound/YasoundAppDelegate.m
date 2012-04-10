@@ -185,7 +185,7 @@ void SignalHandler(int sig) {
     return;
   
   BOOL sandbox = YES; // #FIXME
-#ifdef APP_STORE_TARGET
+#ifdef APNS_PRODUCTION_TARGET
   sandbox = false;
 #endif
   BOOL canSend = [[YasoundDataProvider main] sendAPNsDeviceToken:_APNsTokenString isSandbox:sandbox];

@@ -16,8 +16,8 @@
 
 - (BOOL)isSandbox;
 - (void)setSandbox;
-- (BOOL)isDevelopment;
-- (void)setDevelopment;
+- (BOOL)isProduction;
+- (void)setProduction;
 
 
 @end

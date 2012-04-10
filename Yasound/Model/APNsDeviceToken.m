@@ -9,7 +9,7 @@
 #import "APNsDeviceToken.h"
 
 #define SANDBOX @"sandbox"
-#define DEVELOPMENT @"development"
+#define PRODUCTION @"production"
 
 @implementation APNsDeviceToken
 
@@ -27,14 +27,14 @@
   self.device_token_type = SANDBOX;
 }
 
-- (BOOL)isDevelopment
+- (BOOL)isProduction
 {
-  return [self.device_token_type isEqualToString:DEVELOPMENT];
+  return [self.device_token_type isEqualToString:PRODUCTION];
 }
 
-- (void)setDevelopment
+- (void)setProduction
 {
-  self.device_token_type = DEVELOPMENT;
+  self.device_token_type = PRODUCTION;
 }
 
 @end
