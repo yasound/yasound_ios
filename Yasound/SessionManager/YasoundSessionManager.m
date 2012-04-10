@@ -891,9 +891,6 @@ static YasoundSessionManager* _main = nil;
     
     [self reloadUserData:user];
     
-    // store a local copy of the infos
-    [self exportUserData:user];
-    
     // callback
     [_target performSelector:_action withObject:userInfo];    
 }
@@ -903,11 +900,19 @@ static YasoundSessionManager* _main = nil;
 - (void)exportUserData:(User*)user
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // reset
+    [defaults removeObjectForKey:@"facebook"];
+    [defaults removeObjectForKey:@"twitter"];
+    [defaults removeObjectForKey:@"yasound"];
 
+    
     /// export facebook
     NSMutableDictionary* facebook = [[NSMutableDictionary alloc] init];
-    [facebook setObject:user.facebook_token forKey:@"facebook_token"];
-    [facebook setObject:user.facebook_expiration_date forKey:@"facebook_expiration_date"];
+    if (user.facebook_token)
+        [facebook setObject:user.facebook_token forKey:@"facebook_token"];
+    if (user.facebook_expiration_date)
+        [facebook setObject:user.facebook_expiration_date forKey:@"facebook_expiration_date"];
     
     [defaults setObject:facebook forKey:@"facebook"];
 
@@ -917,18 +922,22 @@ static YasoundSessionManager* _main = nil;
     NSString* data = [TwitterOAuthSessionManager buildDataFromToken:user.twitter_token token_secret:user.twitter_token_secret user_id:user.twitter_uid screen_name:user.twitter_username];
 
     NSMutableDictionary* twitter = [[NSMutableDictionary alloc] init];
-    [twitter setObject:user.twitter_username forKey:@"twitter_username"];
+    if (user.twitter_username)
+    {
+        [twitter setObject:user.twitter_username forKey:@"twitter_username"];
 
-    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
-    // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
-    [SFHFKeychainUtils storeUsername:user.twitter_username andPassword:data  forServiceName:BundleName updateExisting:YES error:nil];
+        NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+        // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
+        [SFHFKeychainUtils storeUsername:user.twitter_username andPassword:data  forServiceName:BundleName updateExisting:YES error:nil];
+    }
     
     [defaults setObject:facebook forKey:@"twitter"];
     
     
     /// export yasound    
     NSMutableDictionary* yasound = [[NSMutableDictionary alloc] init];
-    [yasound setObject:user.yasound_email forKey:@"yasound_email"];
+    if (user.yasound_email)
+        [yasound setObject:user.yasound_email forKey:@"yasound_email"];
     [defaults setObject:facebook forKey:@"yasound"];
     
     
@@ -970,6 +979,9 @@ static YasoundSessionManager* _main = nil;
     [self importFacebookData:user.facebook_token facebook_expiration_date:user.facebook_expiration_date];
     [self importTwitterData:user.twitter_token token_secret:user.twitter_token_secret user_id:user.twitter_uid screen_name:user.twitter_username];
     [self importYasoundData:user.yasound_email];
+    
+    // store a local copy of the infos
+    [self exportUserData:user];    
 }
 
 

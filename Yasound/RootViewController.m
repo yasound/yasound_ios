@@ -150,8 +150,20 @@
             [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
         else
         {
-            assert(0);
-            NSLog(@"BIG ERROR : NO ASSOCIATED ACCOUNTS BUT REGISTERED.");
+            //for compatibility with previous exclusive system
+            if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+                [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
+            
+            else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+                [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
+            
+            else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_YASOUND])
+                [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
+            else
+            {
+                assert(0);
+                NSLog(@"LOGIN ERROR. COULD NOT DO ANYTHING.");
+            }
         }
         
     }
