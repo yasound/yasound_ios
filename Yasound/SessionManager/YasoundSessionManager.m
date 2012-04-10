@@ -942,7 +942,25 @@ static YasoundSessionManager* _main = nil;
 
 - (void)importUserData
 {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    // import facebook
+    NSDictionary* dico = [defaults objectForKey:@"facebook"];
+    NSString* facebook_token = [dico objectForKey:@"facebook_token"];
+    NSString* facebook_expiration_date = [dico objectForKey:@"facebook_expiration_date"];
+    [self importFacebookData:facebook_token facebook_expiration_date:facebook_expiration_date];
+    
+    // import twitter
+    NSDictionary* dico = [defaults objectForKey:@"twitter"];
+    NSString* twitter_username = [dico objectForKey:@"twitter_username"];
+    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+    NSString* twitter_data = [SFHFKeychainUtils getPasswordForUsername:twitter_username andServiceName:BundleName error:nil];
+    [self importTwitterData:twitter_username withData:twitter_data];
+    
+    // import yasound
+    NSDictionary* dico = [defaults objectForKey:@"yasound"];
+    NSString* yasound_email = [dico objectForKey:@"yasound_email"];
+    [self importYasoundData:yasound_email];
 }
 
 
@@ -973,7 +991,12 @@ static YasoundSessionManager* _main = nil;
 - (void)importTwitterData:(NSString*)twitter_token token_secret:(NSString*)twitter_token_secret user_id:(NSString*)twitter_uid screen_name:(NSString*)twitter_username
 {
     NSString* data = [TwitterOAuthSessionManager buildDataFromToken:twitter_token token_secret:twitter_token_secret user_id:twitter_uid screen_name:twitter_username];
-    
+    [self importTwitterData:twitter_username withData:data];
+}
+
+
+- (void)importTwitterData:(NSString*)twitter_username withData:(NSString*)twitter_data
+{
     [[NSUserDefaults standardUserDefaults] setValue:twitter_username forKey:OAUTH_USERNAME];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
