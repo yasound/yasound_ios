@@ -72,6 +72,7 @@ taskStatus stringToStatus(NSString* str);
 + (YasoundDataProvider*) main;
 
 - (void)resetUser;
+- (void)reloadUserWithTarget:(id)target action:(SEL)selector;
 
 // Yasound
 - (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username target:(id)target action:(SEL)selector;
