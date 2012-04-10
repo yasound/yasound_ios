@@ -37,8 +37,6 @@
 @property (nonatomic) BOOL associatingYasound;
 @property (nonatomic) BOOL associatingAutomatic;
 
-@property (nonatomic, retain) NSMutableDictionary* associatingInfo;
-
 
 + (YasoundSessionManager*)main;
 
@@ -71,10 +69,8 @@
 - (void)associateAccountTwitter:(id)target action:(SEL)selector automatic:(BOOL)automatic;
 - (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector;
 - (BOOL)isAccountAssociated:(NSString*)accountIdentifier;
+- (NSInteger)numberOfAssociatedAccounts;
 
-
-- (NSInteger)accountManagerNumberOfAccounts;
-- (NSDictionary*)accountManagerGet:(NSString*)accountIdentifier;
 
 - (FacebookSessionManager*) getFacebookManager;
 - (TwitterSessionManager*) getTwitterManager;

@@ -20,6 +20,20 @@
 @synthesize current_radio;
 @synthesize own_radio;
 
+@synthesize facebook_username;
+@synthesize facebook_uid;
+@synthesize facebook_token;
+@synthesize facebook_email;
+
+@synthesize twitter_username;
+@synthesize twitter_uid;
+@synthesize twitter_token;
+@synthesize twitter_token_secret;
+@synthesize twitter_email;
+
+@synthesize yasound_email;
+
+
 - (NSString*)toString
 {
   NSString* desc = [NSString stringWithFormat:@"id: '%@' username: '%@', name: '%@'", self.id, self.username, self.name];

@@ -73,9 +73,8 @@
         _pword.textColor = [UIColor darkGrayColor];
         _pword.backgroundColor = [UIColor lightGrayColor];
         
-        NSDictionary* account = [[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_YASOUND];
-        _email.text = [account objectForKey:@"email"];
-        _pword.text = [account objectForKey:@"pword"];
+        _email.text = [YasoundDataProvider main].user.yasound_email;
+        _pword.text = @"-";
         
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
         
@@ -85,7 +84,7 @@
         _loginButton.hidden = YES;
 
         // disable the button if you want to prevent the user to disconnect from the only one associated account
-        if ([[YasoundSessionManager main] accountManagerNumberOfAccounts] == 1)
+        if ([[YasoundSessionManager main] numberOfAssociatedAccounts] == 1)
             _logoutButton.enabled = NO;
         
         
