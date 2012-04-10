@@ -146,6 +146,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"HeaderAvatarMask" error:nil];
     UIButton* btn = [[UIButton alloc] initWithFrame:sheet.frame];
     [btn setImage:[sheet image] forState:UIControlStateNormal]; 
+    [btn addTarget:self action:@selector(onAvatarClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
     
     
@@ -1617,6 +1618,16 @@ static Song* _gNowPlayingSong = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)onAvatarClicked:(id)sender
+{
+    if (self.radio.creator) 
+    {
+        // Launch profile view
+        ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:self.radio.creator];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+}
 
 
 - (IBAction)onFavorite:(id)sender
