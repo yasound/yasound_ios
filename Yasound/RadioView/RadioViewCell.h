@@ -17,6 +17,7 @@
 
 //@property (nonatomic, retain) UIView* background;
 @property (nonatomic, retain) WebImageView* avatar;
+@property (nonatomic, retain) UIButton* avatarMask;
 @property (nonatomic, retain) UILabel* date;
 @property (nonatomic, retain) UILabel* user;
 @property (nonatomic, retain) UIView* messageBackground;

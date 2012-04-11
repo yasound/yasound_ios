@@ -19,6 +19,7 @@
 
 //@synthesize background;
 @synthesize avatar;
+@synthesize avatarMask;
 @synthesize date;
 @synthesize user;
 @synthesize message;
@@ -66,12 +67,15 @@
         // avatar
         sheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.avatar = [[WebImageView alloc] initWithImageAtURL:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
-        self.avatar.frame = sheet.frame;
-        [view addSubview:self.avatar];
+        
+        self.avatarMask = [[UIButton alloc] initWithFrame:sheet.frame];
+        [self.avatarMask setImage:self.avatar.image forState:UIControlStateNormal]; 
+        
+        [view addSubview:self.avatarMask];
         
 #if USE_COREGRAPHIC_LAYER
-        self.avatar.layer.masksToBounds = YES;
-        self.avatar.layer.cornerRadius = 6;
+        self.avatarMask.layer.masksToBounds = YES;
+        self.avatarMask.layer.cornerRadius = 6;
 #endif
 
         // date
