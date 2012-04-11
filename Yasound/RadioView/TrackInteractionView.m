@@ -175,9 +175,9 @@
     
     self.shareButtons = [[NSMutableDictionary alloc] init];
     
-    BOOL facebook = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_FACEBOOK] != nil);
-    BOOL twitter = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER] != nil);
-    BOOL yasound = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER] != nil);
+    BOOL facebook = ([YasoundDataProvider main].user.facebook_uid != nil);
+    BOOL twitter = ([YasoundDataProvider main].user.twitter_uid != nil);
+    BOOL yasound = ([YasoundDataProvider main].user.yasound_email != nil);
     
     if (facebook)
     {
@@ -212,13 +212,6 @@
     Radio *currentRadio = [AudioStreamManager main].currentRadio;
     
     NSString* buttonIdentifier = [self.shareButtons objectForKey:[NSString stringWithFormat:@"%d", buttonIndex]];
-
-//    
-//    BOOL facebook = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_FACEBOOK] != nil);
-//    BOOL twitter = ([[YasoundSessionManager main] accountManagerGet:LOGIN_TYPE_TWITTER] != nil);
-//
-//    BOOL shareFacebook = (facebook && (buttonIndex == 0));
-//    BOOL shareTwitter = (facebook && twitter && (buttonIndex == 1)) || (twitter && (buttonIndex == 0));
 
     BOOL shareFacebook = ([buttonIdentifier isEqualToString:LOGIN_TYPE_FACEBOOK]);
     BOOL shareTwitter = ([buttonIdentifier isEqualToString:LOGIN_TYPE_TWITTER]);
