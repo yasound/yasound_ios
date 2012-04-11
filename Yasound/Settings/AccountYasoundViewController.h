@@ -15,6 +15,7 @@
     
     IBOutlet UITextField* _email;
     IBOutlet UITextField* _pword;
+    IBOutlet UITextField* _pwordConfirm;
 
     IBOutlet UILabel* _logoutLabel;
     IBOutlet UIButton* _logoutButton;

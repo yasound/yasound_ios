@@ -40,6 +40,7 @@
     
     _email.placeholder = NSLocalizedString(@"YasoundLoginView_email", nil);
     _pword.placeholder = NSLocalizedString(@"YasoundLoginView_password", nil);
+    _pwordConfirm.placeholder = NSLocalizedString(@"YasoundLoginView_passwordConfirm", nil);
     
     [self update];
 }
@@ -67,14 +68,18 @@
     {
         _email.enabled = NO;
         _pword.enabled = NO;
+        _pwordConfirm.enabled = NO;
         
         _email.textColor = [UIColor darkGrayColor];
         _email.backgroundColor = [UIColor lightGrayColor];
         _pword.textColor = [UIColor darkGrayColor];
         _pword.backgroundColor = [UIColor lightGrayColor];
+        _pwordConfirm.textColor = [UIColor darkGrayColor];
+        _pwordConfirm.backgroundColor = [UIColor lightGrayColor];
         
         _email.text = [YasoundDataProvider main].user.yasound_email;
         _pword.text = @"-";
+        _pwordConfirm.text = @"-";
         
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
         
@@ -93,11 +98,17 @@
     {
         _email.enabled = YES;
         _pword.enabled = YES;
+        _pwordConfirm.enabled = YES;
         
         _email.textColor = [UIColor blackColor];
         _email.backgroundColor = [UIColor whiteColor];
+        _email.text = @"";
         _pword.textColor = [UIColor blackColor];
         _pword.backgroundColor = [UIColor whiteColor];
+        _pword.text = @"";
+        _pwordConfirm.textColor = [UIColor blackColor];
+        _pwordConfirm.backgroundColor = [UIColor whiteColor];
+        _pwordConfirm.text = @"";
 
         _loginLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
         
@@ -121,6 +132,10 @@
     {
         [_pword becomeFirstResponder];
     }
+    else if (textField == _pword)
+    {
+        [_pwordConfirm becomeFirstResponder];
+    }
     else
     {
         [textField resignFirstResponder];    
@@ -129,6 +144,7 @@
         NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
         NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
         NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+        NSString* pwordConfirm = [_pwordConfirm.text stringByTrimmingCharactersInSet:space];
         //        if ((email.length != 0) && (pword.length != 0))
         //            _loginButton.enabled = YES;
         //        else
@@ -166,6 +182,7 @@
         NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
         NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
         NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+        NSString* pwordConfirm = [_pwordConfirm.text stringByTrimmingCharactersInSet:space];
         
         if (![RegExp emailIsValid:email])
         {
@@ -173,6 +190,14 @@
             [av show];
             [av release];  
             return;    
+        }
+        
+        if (![pword isEqualToString:pwordConfirm])
+        {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_pword_dont_match", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];  
+            return;            
         }
         
         [[YasoundSessionManager main] associateAccountYasound:email password:pword target:self action:@selector(associateReturned:) automatic:NO];

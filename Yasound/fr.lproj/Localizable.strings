@@ -61,12 +61,14 @@
 "YasoundLoginView_label" = "Connexion avec l'adresse email.";
 "YasoundLoginView_email" = "Adresse email";
 "YasoundLoginView_password" = "Mot de passe";
+"YasoundLoginView_passwordConfirm" = "Confirmation du mot de passe";
 "YasoundLoginView_button_login" = "Connexion";
 "YasoundLoginView_button_forgot" = "Mot de passe oublié?";
 
 "LoginView_alert_title" = "Connexion";
 "LoginView_alert_message_error" = "Informations de connexion incorrectes!";
 "LoginView_alert_email_not_valid" = "L'adresse email n'est pas valide!";
+"LoginView_alert_pword_dont_match" = "Les mots de passe ne correspondent pas!";
 
 "SignupView_title" = "Enregistrement";
 "SignupView_label" = "s'enregistrer avec son adresse email.";

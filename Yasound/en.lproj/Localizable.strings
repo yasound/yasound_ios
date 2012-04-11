@@ -62,12 +62,14 @@
 "YasoundLoginView_label" = "Login using your email address.";
 "YasoundLoginView_email" = "Email address";
 "YasoundLoginView_password" = "Password";
+"YasoundLoginView_passwordConfirm" = "Confirm password";
 "YasoundLoginView_button_login" = "Log in";
 "YasoundLoginView_button_forgot" = "Forgot your password?";
 
 "LoginView_alert_title" = "Connection";
 "LoginView_alert_message_error" = "Incorrect login information!";
 "LoginView_alert_email_not_valid" = "Incorrect email address!";
+"LoginView_alert_pword_dont_match" = "Password fields don't match!";
 
 "SignupView_title" = "Sign up";
 "SignupView_label" = "Sign with an email address.";
