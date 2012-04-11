@@ -173,7 +173,7 @@
     // logout
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_YASOUND])
     {
-        [[YasoundSessionManager main] dissociateAccount:LOGIN_TYPE_YASOUND target:self action:@selector(dissociateReturned:)];
+        [[YasoundSessionManager main] dissociateAccount:LOGIN_TYPE_YASOUND target:self action:@selector(dissociateReturned:info:)];
     }
     
     // login
@@ -220,6 +220,13 @@
     BOOL succeeded = NO;
     
     NSNumber* nb = [info objectForKey:@"succeeded"];
+
+    if (nb == nil)
+    {
+        NSDictionary* userData = [info objectForKey:@"userData"];
+        nb = [userData objectForKey:@"succeeded"];
+    }
+    
     succeeded = [nb boolValue];
 
     if (!succeeded)
@@ -254,7 +261,7 @@
 
 
 
-- (void)dissociateReturned:(NSDictionary*)info
+- (void)dissociateReturned:(User*)user info:(NSDictionary*)info
 {
     NSLog(@"dissociateReturned :%@", info);
     
@@ -264,6 +271,13 @@
     BOOL succeeded = NO;
     
     NSNumber* nb = [info objectForKey:@"succeeded"];
+    
+    if (nb == nil)
+    {
+        NSDictionary* userData = [info objectForKey:@"userData"];
+        nb = [userData objectForKey:@"succeeded"];
+    }
+    
     succeeded = [nb boolValue];
     
     if (!succeeded)

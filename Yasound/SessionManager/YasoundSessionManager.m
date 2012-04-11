@@ -509,21 +509,23 @@ static YasoundSessionManager* _main = nil;
     
     if (self.associatingFacebook)
     {
-        [self associateClean];
-        
         if (authorized)
             [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
         else
+        {
+            [self associateClean];
             [_target performSelector:_action withObject:nil withObject:nil];
+        }
     }
     else if (self.associatingTwitter)
     {
-        [self associateClean];
-        
         if (authorized)
             [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
         else
+        {
+            [self associateClean];
             [_target performSelector:_action withObject:nil withObject:nil];
+        }
     }
     
     else if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
@@ -939,7 +941,7 @@ static YasoundSessionManager* _main = nil;
     [self reloadUserData:user];
     
     // callback
-    [_target performSelector:_action withObject:userInfo withObject:info];    
+    [_target performSelector:_action withObject:user withObject:info];    
 }
 
 
