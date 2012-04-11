@@ -252,7 +252,9 @@
         NSLog(@"pictureURL : %@", [pictureURL absoluteString]);
         NSLog(@"link : %@", [fullLink absoluteString]);
 
-        [[YasoundSessionManager main] postMessageForTwitter:self.shareFullMessage title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
+      NSString* msg = [NSString stringWithFormat:@"%@ %@ #yasound", self.shareFullMessage, [fullLink absoluteString]];
+      
+        [[YasoundSessionManager main] postMessageForTwitter:msg title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
 
         return;
     }
