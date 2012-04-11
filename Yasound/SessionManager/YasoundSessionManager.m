@@ -168,10 +168,10 @@ static YasoundSessionManager* _main = nil;
 
 - (BOOL)loginForYasoundWithTarget:(id)target action:(SEL)action
 {
-    if (!self.registered)
-        return NO;
-    if (![self.loginType isEqualToString:LOGIN_TYPE_YASOUND])
-        return NO;
+//    if (!self.registered)
+//        return NO;
+//    if (![self.loginType isEqualToString:LOGIN_TYPE_YASOUND])
+//        return NO;
     
     _target = target;
     _action = action;
