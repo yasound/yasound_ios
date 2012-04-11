@@ -128,14 +128,14 @@
         return;
     }
     
-    
+
+    // import associated accounts
+    [[YasoundSessionManager main] importUserData];
+
     if ([YasoundSessionManager main].registered)
     {
 //        // TAG ACTIVITY ALERT
 //        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
-        
-        // import associated accounts
-        [[YasoundSessionManager main] importUserData];
         
         // show connection alert
         [self.view addSubview:[ConnectionView start]];

@@ -229,7 +229,7 @@ static YasoundSessionManager* _main = nil;
     
     // callback
     assert(_target);
-    [_target performSelector:_action withObject:user];
+    [_target performSelector:_action withObject:user withObject:info];
     
 }
 
@@ -279,7 +279,7 @@ static YasoundSessionManager* _main = nil;
     
     // callback
     assert(_target);
-    [_target performSelector:_action withObject:user];
+    [_target performSelector:_action withObject:user withObject:info];
 }
 
 
@@ -722,7 +722,7 @@ static YasoundSessionManager* _main = nil;
         {
             // callback
             assert(_target);
-            [_target performSelector:_action withObject:nil];
+            [_target performSelector:_action withObject:nil withObject:nil];
 
             return;
         }
@@ -939,7 +939,7 @@ static YasoundSessionManager* _main = nil;
     [self reloadUserData:user];
     
     // callback
-    [_target performSelector:_action withObject:userInfo];    
+    [_target performSelector:_action withObject:userInfo withObject:info];    
 }
 
 

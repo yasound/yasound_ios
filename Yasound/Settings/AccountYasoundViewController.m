@@ -200,7 +200,7 @@
             return;            
         }
         
-        [[YasoundSessionManager main] associateAccountYasound:email password:pword target:self action:@selector(associateReturned:) automatic:NO];
+        [[YasoundSessionManager main] associateAccountYasound:email password:pword target:self action:@selector(associateReturned:info:) automatic:NO];
         
         // show a connection alert
         [self.view addSubview:[ConnectionView startWithFrame:CGRectMake(86,340, 138, 90)]];
@@ -210,7 +210,7 @@
 
 
 
-- (void)associateReturned:(NSDictionary*)info
+- (void)associateReturned:(User*)user info:(NSDictionary*)info
 {
     NSLog(@"associateReturned :%@", info);
 
