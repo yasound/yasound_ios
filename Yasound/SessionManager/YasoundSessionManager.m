@@ -926,6 +926,8 @@ static YasoundSessionManager* _main = nil;
         NSString* data = [TwitterOAuthSessionManager buildDataFromToken:user.twitter_token token_secret:user.twitter_token_secret user_id:user.twitter_uid screen_name:user.twitter_username];
 
         [twitter setObject:user.twitter_username forKey:@"twitter_username"];
+        [twitter setObject:user.twitter_uid forKey:@"twitter_uid"];
+        [twitter setObject:user.twitter_username forKey:@"twitter_screen_name"];
 
         NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
         // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
@@ -1015,7 +1017,7 @@ static YasoundSessionManager* _main = nil;
 }
 
 
-- (void)importTwitterData:(NSString*)twitter_username screen_name:twitter_screen_name uid:twitter_uid withData:(NSString*)twitter_data
+- (void)importTwitterData:(NSString*)twitter_username screen_name:twitter_screen_name uid:(NSString*)twitter_uid withData:(NSString*)twitter_data
 {
     [[NSUserDefaults standardUserDefaults] setValue:twitter_username forKey:OAUTH_USERNAME];
     [[NSUserDefaults standardUserDefaults] setValue:twitter_screen_name forKey:OAUTH_SCREENNAME];
