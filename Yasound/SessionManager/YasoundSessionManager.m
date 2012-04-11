@@ -340,7 +340,7 @@ static YasoundSessionManager* _main = nil;
 - (void)logoutWithTarget:(id)target action:(SEL)action
 {
     // do it for all, this way you're sure :)
-    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+    if ([YasoundDataProvider main ].user.facebook_uid != nil)
     {
         _target = target;
         _action = action;
@@ -348,7 +348,7 @@ static YasoundSessionManager* _main = nil;
         [[FacebookSessionManager facebook] logout];
     }
     
-    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
+    if ([YasoundDataProvider main ].user.twitter_uid != nil)
     {
         _target = target;
         _action = action;
@@ -356,23 +356,63 @@ static YasoundSessionManager* _main = nil;
         [[TwitterSessionManager twitter] logout];
     }
     
-    else if ([self.loginType isEqualToString:LOGIN_TYPE_YASOUND])
+    if ([YasoundDataProvider main ].user.yasound_email != nil)
     {
         NSString* email = [_dico objectForKey:@"email"];
         [SFHFKeychainUtils deleteItemForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
     }
     
-
+    
     [_dico release];
     _dico = nil;
     _dico = [[NSMutableDictionary alloc] init];
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"YasoundSessionManager"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
+    
     // callback
     [target performSelector:action];
 }
+
+
+//deprecated
+//
+//- (void)logoutWithTarget:(id)target action:(SEL)action
+//{
+//    // do it for all, this way you're sure :)
+//    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+//    {
+//        _target = target;
+//        _action = action;
+//        [FacebookSessionManager facebook].delegate = self;
+//        [[FacebookSessionManager facebook] logout];
+//    }
+//    
+//    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
+//    {
+//        _target = target;
+//        _action = action;
+//        [TwitterSessionManager twitter].delegate = self;
+//        [[TwitterSessionManager twitter] logout];
+//    }
+//    
+//    else if ([self.loginType isEqualToString:LOGIN_TYPE_YASOUND])
+//    {
+//        NSString* email = [_dico objectForKey:@"email"];
+//        [SFHFKeychainUtils deleteItemForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
+//    }
+//    
+//
+//    [_dico release];
+//    _dico = nil;
+//    _dico = [[NSMutableDictionary alloc] init];
+//    
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"YasoundSessionManager"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//
+//    // callback
+//    [target performSelector:action];
+//}
 
 
 
