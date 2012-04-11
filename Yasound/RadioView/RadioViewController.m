@@ -1299,22 +1299,6 @@ static Song* _gNowPlayingSong = nil;
     {
         return [self usersContainerDidSelectRowAtIndexPath:indexPath];
     } 
-    else if (tableView == _tableView)
-    {
-        WallEvent* event = [_wallEvents objectAtIndex:indexPath.row];
-        if (event != nil && event.user_id != nil) 
-        {
-            // Build fake user object with given id
-            User *user = [[User alloc] init];
-            user.id = event.user_id;
-            
-            // Launch profile view
-            ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:user];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-            [user release];
-        }
-    }
 
     return nil;
 }
@@ -1403,10 +1387,13 @@ static Song* _gNowPlayingSong = nil;
         {
             cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev indexPath:indexPath] autorelease];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell.avatarMask addTarget:self 
+                                action:@selector(onAvatarClickedInWall:) 
+                      forControlEvents:UIControlEventTouchUpInside];
+
         }
         else
             [cell update:ev indexPath:indexPath];
-        
         return cell;
     }
     else if ([ev isOfType:eWallEventTypeSong])
@@ -1628,6 +1615,27 @@ static Song* _gNowPlayingSong = nil;
         [view release];
     }
 }
+
+- (IBAction)onAvatarClickedInWall:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    NSIndexPath *indexPath = [_tableView indexPathForCell: (UITableViewCell*)[[btn superview]superview]];
+    
+    WallEvent *event = [_wallEvents objectAtIndex:indexPath.row];
+    if (event != nil && event.user_id != nil) 
+    {
+        // Build fake user object with given id
+        User *user = [[User alloc] init];
+        user.id = event.user_id;
+        
+        // Launch profile view
+        ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:user];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        [user release];
+    }
+}
+
 
 
 - (IBAction)onFavorite:(id)sender
