@@ -237,6 +237,9 @@
         NSString* message = nil;
         if (info != nil)
         {
+            //LBDEBUG
+            NSLog(@"DEBUG info %@", info);
+            
             NSString* errorValue = [info objectForKey:@"error"];
             if ([errorValue isEqualToString:@"Login"])
                 message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);

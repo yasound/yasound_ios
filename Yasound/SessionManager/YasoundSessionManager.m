@@ -469,14 +469,14 @@ static YasoundSessionManager* _main = nil;
         if (authorized)
             [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
         else
-            [_target performSelector:_action withObject:nil];
+            [_target performSelector:_action withObject:nil withObject:nil];
     }
     else if (self.associatingTwitter)
     {
         if (authorized)
             [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
         else
-            [_target performSelector:_action withObject:nil];
+            [_target performSelector:_action withObject:nil withObject:nil];
     }
     
     else if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
@@ -484,14 +484,14 @@ static YasoundSessionManager* _main = nil;
         if (authorized)
             [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
         else
-            [_target performSelector:_action withObject:nil];
+            [_target performSelector:_action withObject:nil withObject:nil];
     }
     else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
     {
         if (authorized)
             [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
         else
-            [_target performSelector:_action withObject:nil];
+            [_target performSelector:_action withObject:nil withObject:nil];
     }
 }
 
@@ -966,13 +966,13 @@ static YasoundSessionManager* _main = nil;
     // import twitter
     dico = [_dico objectForKey:@"twitter"];
     
-    //LBDEBUG
-    NSLog(@"DEBUG dicoTwitter %@", dico);
-    
     NSString* twitter_username = [dico objectForKey:@"twitter_username"];
+    NSString* twitter_screen_name = [dico objectForKey:@"twitter_screen_name"];
+    NSString* twitter_uid = [dico objectForKey:@"twitter_uid"];
+    
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
     NSString* twitter_data = [SFHFKeychainUtils getPasswordForUsername:twitter_username andServiceName:BundleName error:nil];
-    [self importTwitterData:twitter_username withData:twitter_data];
+    [self importTwitterData:twitter_username screen_name:twitter_screen_name uid:twitter_uid withData:twitter_data];
     
     // import yasound
     dico = [_dico objectForKey:@"yasound"];
@@ -1011,15 +1011,17 @@ static YasoundSessionManager* _main = nil;
 - (void)importTwitterData:(NSString*)twitter_token token_secret:(NSString*)twitter_token_secret user_id:(NSString*)twitter_uid screen_name:(NSString*)twitter_username
 {
     NSString* data = [TwitterOAuthSessionManager buildDataFromToken:twitter_token token_secret:twitter_token_secret user_id:twitter_uid screen_name:twitter_username];
-    [self importTwitterData:twitter_username withData:data];
+    [self importTwitterData:twitter_username screen_name:twitter_username uid:twitter_uid withData:data];
 }
 
 
-- (void)importTwitterData:(NSString*)twitter_username withData:(NSString*)twitter_data
+- (void)importTwitterData:(NSString*)twitter_username screen_name:twitter_screen_name uid:twitter_uid withData:(NSString*)twitter_data
 {
     [[NSUserDefaults standardUserDefaults] setValue:twitter_username forKey:OAUTH_USERNAME];
+    [[NSUserDefaults standardUserDefaults] setValue:twitter_screen_name forKey:OAUTH_SCREENNAME];
+    [[NSUserDefaults standardUserDefaults] setValue:twitter_uid forKey:OAUTH_USERID];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    
+
     NSError* error;
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
     // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
