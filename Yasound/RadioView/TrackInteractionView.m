@@ -188,8 +188,11 @@
     if (twitter)
     {
         NSInteger index = [popupQuery addButtonWithTitle: NSLocalizedString(@"RadioView_track_share_twitter", nil)];
-        [self.shareButtons setObject:LOGIN_TYPE_FACEBOOK forKey:[NSString stringWithFormat:@"%d", index]];
+        [self.shareButtons setObject:LOGIN_TYPE_TWITTER forKey:[NSString stringWithFormat:@"%d", index]];
     }
+    
+    //LBDEBUG
+    NSLog(@"self.shareButtons %@", self.shareButtons);
 
 //    if (yasound)
 //    {
@@ -209,6 +212,9 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
 {
+    if (buttonIndex == 0)
+        return;
+    
     Radio *currentRadio = [AudioStreamManager main].currentRadio;
     
     NSString* buttonIdentifier = [self.shareButtons objectForKey:[NSString stringWithFormat:@"%d", buttonIndex]];
