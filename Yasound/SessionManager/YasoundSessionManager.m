@@ -719,6 +719,8 @@ static YasoundSessionManager* _main = nil;
         if (tokenSecret == nil)
             NSLog(@"error Twitter tokenSecret is nil!");
         
+        assert(token != nil);
+        
         // don't bother asking the server if you don't the requested info at this point
         if ((token == nil) || (tokenSecret == nil))
         {
