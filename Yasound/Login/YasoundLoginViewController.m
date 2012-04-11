@@ -242,7 +242,7 @@
 
 - (IBAction)onForgotClicked:(id)sender
 {
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://yasound.com/passreset/"]];
 }
 
 
