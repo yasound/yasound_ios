@@ -8,16 +8,6 @@
 
 #import "NotificationManager.h"
 
-#define NOTIF_USER_ENTERS @"NotifUserEnters"
-#define NOTIF_FRIEND_ENTERS @"NotifFriendEnters"
-#define NOTIF_FRIEND_ONLINE @"NotifFriendGoesOnline"
-#define NOTIF_LIKE @"NotifLikeReceived"
-
-#define NOTIF_SUBSCRIPTION @"NotifSubscriptionReceived"
-#define NOTIF_NEW_FRIEND_RADIO @"NotifNewFriendRadio"
-#define NOTIF_POST_RECEIVED @"NotifPostReceived"
-#define NOTIF_RADIO_SHARED @"NotifRadioShared"
-
 @implementation NotificationManager
 
 @synthesize notifications;

@@ -295,17 +295,19 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MenuView_misc_legal" = "Conditions d'utilisation";
 "MenuView_misc_logout" = "Se déconnecter";
 
-"NotificationView_title" = "Notifications";
+"NotificationView_title" = "Me prévenir";
 
-"NotifFriendGoesOnline" = "Mes amis passent en ligne";
-"NotifFriendEnters" = "Mes amis entrent dans ma radio";
-"NotifUserEnters" = "Un utilisateur entre dans ma radio";
-"NotifPostReceived" = "J'ai reçu un post sur ma radio";
-"NotifLikeReceived" = "Un like a été reçu";
-"NotifSubscriptionReceived" = "Ma radio a été mise en favorite";
-"NotifRadioShared" = "Ma radio a été partagée";
-"NotifNewFriendRadio" = "Un ami a créé une radio";
+"NotifFriendGoesOnline" = "Un ami passe en ligne";
+"NotifFriendEnters" = "Un ami entre";
+"NotifUserEnters" = "Un auditeur entre";
+"NotifPostReceived" = "Un auditeur a écrit un message";
+"NotifLikeReceived" = "Un auditeur aime une chanson";
+"NotifSubscriptionReceived" = "Un auditeur l'ajoute à ses favoris";
+"NotifRadioShared" = "Un auditeur la partage";
+"NotifNewFriendRadio" = "Un ami créé une radio";
 
+"NotifSectionRadio" = "activité de ma radio";
+"NotifSectionGeneral" = "activité de mes amis";
 
 
 "AccountsView_username_label" = "Nom d'utilisateur";

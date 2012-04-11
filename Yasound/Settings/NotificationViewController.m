@@ -10,6 +10,24 @@
 #import "NotificationManager.h"
 #import "NotificationViewCell.h"
 #import "YasoundDataProvider.h"
+#import "Theme.h"
+
+#define SECTION_COUNT 2
+#define SECTION_GENERAL 0
+#define SECTION_RADIO 1
+
+#define ROW_GENERAL_COUNT 2
+#define ROW_GENERAL_FRIEND_ONLINE 0
+#define ROW_GENERAL_FRIEND_CREATE_RADIO 1
+
+#define ROW_RADIO_COUNT 6
+#define ROW_RADIO_USER_ENTER 0
+#define ROW_RADIO_FRIEND_ENTER 1
+#define ROW_RADIO_MESSAGE_POSTED 2
+#define ROW_RADIO_SONG_LIKED 3
+#define ROW_RADIO_SHARED 4
+#define ROW_RADIO_FAVORITE 5
+
 
 
 
@@ -89,14 +107,19 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return SECTION_COUNT;
 }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return [NotificationManager main].notifications.count;
+//    return [NotificationManager main].notifications.count;
+    if (section == SECTION_GENERAL)
+        return ROW_GENERAL_COUNT;
+    if (section == SECTION_RADIO)
+        return ROW_RADIO_COUNT;
+    return 0;
 }
 
 
@@ -105,7 +128,13 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    NSInteger nbRows = [NotificationManager main].notifications.count;
+    NSInteger section = indexPath.section;
+//    NSInteger nbRows = [NotificationManager main].notifications.count;
+    NSInteger nbRows = 0;
+    if (section == SECTION_GENERAL)
+        nbRows = ROW_GENERAL_COUNT;
+    else if (section == SECTION_RADIO)
+        nbRows = ROW_RADIO_COUNT;
     
     if (nbRows == 1)
     {
@@ -139,8 +168,32 @@
 {
     static NSString* CellIdentifier = @"CellNotif";
 
-    NSArray* keys = [[NotificationManager main].notifications allKeys];
-    NSString* notifIdentifier = [keys objectAtIndex:indexPath.row];
+//    NSArray* keys = [[NotificationManager main].notifications allKeys];
+//    NSString* notifIdentifier = [keys objectAtIndex:indexPath.row];
+    
+    NSString* notifIdentifier = nil;
+    if (indexPath.section == SECTION_GENERAL)
+    {
+        if (indexPath.row == ROW_GENERAL_FRIEND_ONLINE)
+            notifIdentifier = NOTIF_FRIEND_ONLINE;
+        else if (indexPath.row == ROW_GENERAL_FRIEND_CREATE_RADIO)
+            notifIdentifier = NOTIF_NEW_FRIEND_RADIO;
+    }
+    else if (indexPath.section == SECTION_RADIO)
+    {
+        if (indexPath.row == ROW_RADIO_USER_ENTER)
+            notifIdentifier = NOTIF_USER_ENTERS;
+        else if (indexPath.row == ROW_RADIO_FRIEND_ENTER)
+            notifIdentifier = NOTIF_FRIEND_ENTERS;
+        else if (indexPath.row == ROW_RADIO_FAVORITE)
+            notifIdentifier = NOTIF_SUBSCRIPTION;
+        else if (indexPath.row == ROW_RADIO_MESSAGE_POSTED)
+            notifIdentifier = NOTIF_POST_RECEIVED;
+        else if (indexPath.row == ROW_RADIO_SONG_LIKED)
+            notifIdentifier = NOTIF_LIKE;
+        else if (indexPath.row == ROW_RADIO_SHARED)
+            notifIdentifier = NOTIF_RADIO_SHARED;
+    }
                                  
     NotificationViewCell* cell = (NotificationViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
@@ -156,7 +209,38 @@
 
 
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    
+    if (section == SECTION_GENERAL)
+    {
+        title = NSLocalizedString(@"NotifSectionGeneral", nil);
+    }
+    else if (section == SECTION_RADIO)
+    {
+        title = NSLocalizedString(@"NotifSectionRadio", nil);
+    }
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
+    UIImage* image = [sheet image];
+    CGFloat height = image.size.height;
+    UIImageView* view = [[UIImageView alloc] initWithImage:image];
+    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
+    
+    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{    
+    return 22;
+}
 
 
 

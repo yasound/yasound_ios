@@ -9,16 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "APNsPreferences.h"
 
+#define NOTIF_USER_ENTERS @"NotifUserEnters"
+#define NOTIF_FRIEND_ENTERS @"NotifFriendEnters"
+#define NOTIF_FRIEND_ONLINE @"NotifFriendGoesOnline"
+#define NOTIF_LIKE @"NotifLikeReceived"
 
-//#define NOTIF_FriendGoesOnline @"NotifFriendGoesOnline"
-//#define NOTIF_FriendEnters @"NotifFriendEnters"
-//#define NOTIF_UserEnters @"NotifUserEnters"
-//#define NOTIF_PostReceived @"NotifPostReceived"
-//#define NOTIF_LikeReceived @"NotifLikeReceived"
-//#define NOTIF_SubscriptionReceived @"NotifSubscriptionReceived"
-//#define NOTIF_RadioShared @"NotifRadioShared"
-//#define NOTIF_NewFriendRadio @"NotifNewFriendRadio"
-
+#define NOTIF_SUBSCRIPTION @"NotifSubscriptionReceived"
+#define NOTIF_NEW_FRIEND_RADIO @"NotifNewFriendRadio"
+#define NOTIF_POST_RECEIVED @"NotifPostReceived"
+#define NOTIF_RADIO_SHARED @"NotifRadioShared"
 
 
 @interface NotificationManager : NSObject
