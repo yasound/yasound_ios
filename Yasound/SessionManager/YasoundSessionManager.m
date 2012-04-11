@@ -459,13 +459,18 @@ static YasoundSessionManager* _main = nil;
     if (self.associatingAutomatic)
     {
         NSLog(@"associating automatic.");
-        [_target performSelector:_action withObject:nil];
+        
+        [self associateClean];
+
+        [_target performSelector:_action withObject:nil withObject:nil];
         return;
     }
     
     
     if (self.associatingFacebook)
     {
+        [self associateClean];
+        
         if (authorized)
             [[FacebookSessionManager facebook] requestGetInfo:SRequestInfoUser];
         else
@@ -473,6 +478,8 @@ static YasoundSessionManager* _main = nil;
     }
     else if (self.associatingTwitter)
     {
+        [self associateClean];
+        
         if (authorized)
             [[TwitterSessionManager twitter] requestGetInfo:SRequestInfoUser];
         else

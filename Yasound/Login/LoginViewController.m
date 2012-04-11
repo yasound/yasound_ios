@@ -219,7 +219,9 @@
         }
         else
         {
-            message = NSLocalizedString(@"YasoundSessionManager_userinfo_error", nil);        
+            // case of automatic associating. not an error
+            //message = NSLocalizedString(@"YasoundSessionManager_userinfo_error", nil);      
+            return;
         }
         
         // show alert message for connection error
