@@ -68,7 +68,7 @@
             
             sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             self.progressLabel = [sheet makeLabel];
-            self.progressLabel.text = @"0 ko";
+            self.progressLabel.text = NSLocalizedString(@"SongUpload_progress_prepare", nil);
             [self addSubview:self.progressLabel];
             
         }
@@ -231,6 +231,10 @@
     static NSUInteger BYTES_1Ko = 1024*1024;
     static NSUInteger BYTES_1Mo = 1024*1024*1024;
     // static NSUInteger BYTES_1Go = 1024*1024*1024*1024;
+    
+    if (bytes == 0)
+        return NSLocalizedString(@"SongUpload_progress_prepare", nil);
+
 
     NSString* sizeStr;
     if (bytes < BYTES_1o)

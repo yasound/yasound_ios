@@ -258,7 +258,7 @@
 "SongUpload_waitingForWifi" = "En attente d'une connexion Wifi";
 "SongUpload_failedIncorrectFile" = "Fichier incorrect";
 "SongUpload_failedUploading" = "Téléchargement incomplet";
-
+"SongUpload_progress_prepare" = "En préparation...";
 
 "SongUpload_warning_title" = "Attention";
 "SongUpload_warning_message" = "Vous vous engagez à ne télécharger vers nos serveurs à destination de diffusion publique sur votre radio uniquement des \
