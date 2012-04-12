@@ -142,7 +142,7 @@
     return nil;
   
   NSDictionary* alertDict = [apsDict valueForKey:ALERT_ATTRIBUTE_NAME];
-  if (!alertDict)
+  if (!alertDict || ![alertDict isKindOfClass:[NSDictionary class]])
     return nil;
   
   NSString* locKey = [alertDict valueForKey:LOC_KEY_ATTRIBUTE_NAME];
@@ -159,7 +159,7 @@
     return nil;
   
   NSDictionary* alertDict = [apsDict valueForKey:ALERT_ATTRIBUTE_NAME];
-  if (!alertDict)
+  if (!alertDict || ![alertDict isKindOfClass:[NSDictionary class]])
     return nil;
   
   NSArray* locArgsArray = [alertDict valueForKey:LOC_ARGS_ATTRIBUTE_NAME];
