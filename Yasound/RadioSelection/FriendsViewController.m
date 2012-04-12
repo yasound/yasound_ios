@@ -145,7 +145,7 @@
     {
         if (f.current_radio)
             [online addObject:f];
-        else if (f.own_radio && [f.own_radio.ready boolValue])
+        else
             [offline addObject:f];
     }
     
