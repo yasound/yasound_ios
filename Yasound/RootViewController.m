@@ -422,6 +422,13 @@
         [av show];
         [av release];  
         
+        if ([SongUploadManager main].isRunning)
+        {
+            [[SongUploadManager main] interruptUploads];
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
+
         // and logout properly
         //[[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
     }

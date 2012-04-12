@@ -22,6 +22,7 @@
 @synthesize currentSize;
 @synthesize delegate;
 @synthesize status;
+@synthesize nbFails;
 @synthesize detailedInfo;
 //@synthesize uploader;
 
@@ -42,7 +43,15 @@
     self.status = SongUploadItemStatusUploading;
     
     _uploader = [[SongUploader alloc] init];
-    [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
+    BOOL res = [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
+    if (!res)
+    {
+        self.status = SongUploadItemStatusFailed;
+        self.nbFails++;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFAIL object:self];
+        return;
+    }
+        
 
     self.currentProgress = 0;
     self.currentSize = 0;
@@ -332,15 +341,15 @@ static SongUploadManager* _main;
 
 - (void)loop
 {
-//    if (!self.isRunning)
-//        return;
+    if (!self.isRunning)
+        return;
     
     // check if an item is currently uploading
     // if not, start the upload
     
     for (SongUploadItem* item in self.items)
     {
-        if ((item.status == SongUploadItemStatusCompleted) || (item.nbFails == NB_FAILS_MAX))
+        if ((item.status == SongUploadItemStatusCompleted) || ((item.status == SongUploadItemStatusFailed) && (item.nbFails >= NB_FAILS_MAX)))
             continue;
         
         // an item is currently uploading. Wait for it to finish before starting another upload.

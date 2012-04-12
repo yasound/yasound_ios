@@ -234,6 +234,8 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)fbDidLogin 
 {
+    NSLog(@"fbDidLogin");
+    
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   [defaults setObject:[_facebookConnect accessToken] forKey:@"FBAccessTokenKey"];
   [defaults setObject:[_facebookConnect expirationDate] forKey:@"FBExpirationDateKey"];
@@ -244,11 +246,15 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)fbDidNotLogin:(BOOL)cancelled
 {
+    NSLog(@"fbDidNotLogin");
+
     [self.delegate sessionLoginCanceled];  
 }
 
 - (void)fbDidLogout
 {
+    NSLog(@"fbDidLogout");
+
     if (_logout)
     {
         [self.delegate sessionDidLogout];  
