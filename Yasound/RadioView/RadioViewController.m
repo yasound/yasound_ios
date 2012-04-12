@@ -1385,11 +1385,11 @@ static Song* _gNowPlayingSong = nil;
         RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil)
         {
-            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev indexPath:indexPath] autorelease];
+            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev indexPath:indexPath target:self action:@selector(onAvatarClickedInWall:)] autorelease];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            [cell.avatarMask addTarget:self 
-                                action:@selector(onAvatarClickedInWall:) 
-                      forControlEvents:UIControlEventTouchUpInside];
+            //LBDEBUG
+//            [cell.avatarMask addTarget:self 
+//                                action:@selector(onAvatarClickedInWall:)];
 
         }
         else
@@ -1616,10 +1616,13 @@ static Song* _gNowPlayingSong = nil;
     }
 }
 
-- (IBAction)onAvatarClickedInWall:(id)sender
+- (IBAction)onAvatarClickedInWall:(UITableViewCell*)cell
 {
-    UIButton *btn = (UIButton *)sender;
-    NSIndexPath *indexPath = [_tableView indexPathForCell: (UITableViewCell*)[[btn superview]superview]];
+//    InteractiveView *btn = (InteractiveView *)sender;
+//    id parent = [btn superview];
+//    id gparent = [parent superview];
+//    id ggparent = [gparent superview];
+    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
     
     WallEvent *event = [_wallEvents objectAtIndex:indexPath.row];
     if (event != nil && event.user_id != nil) 

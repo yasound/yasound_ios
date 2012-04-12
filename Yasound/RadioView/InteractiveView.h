@@ -15,4 +15,7 @@
 
 - (id)initWithFrame:(CGRect)frame target:(id)target action:(SEL)action;
 
+- (void)addTarget:(id)target action:(SEL)action;
+
+
 @end
