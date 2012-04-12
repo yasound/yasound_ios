@@ -94,7 +94,7 @@
 {
     if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
+        // TODO? message?
         return;
     }
     
@@ -125,7 +125,7 @@
 {
     if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
+        // TODO? message?
         return;
     }
     

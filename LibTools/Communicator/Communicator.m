@@ -795,7 +795,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-  NSLog(@"request.url = %@  request.response.statusCode = %d", request.url.absoluteString, request.responseStatusCode);
+  NSLog(@"\nrequest.url = %@  request.response.statusCode = %d", request.url.absoluteString, request.responseStatusCode);
   NSLog(@"request (%p) FAILED", request);
     [self handleResponse:request success:NO];
 }

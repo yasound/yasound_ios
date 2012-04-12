@@ -23,7 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
- 
+        
     
     }
     return self;
@@ -33,7 +33,7 @@
 {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationNeedGuiRefresh:) name:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationNeedGuiRefresh:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
     
 
     

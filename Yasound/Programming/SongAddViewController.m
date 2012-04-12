@@ -69,7 +69,7 @@
     [super viewDidLoad];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
 
 
     _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);

@@ -64,9 +64,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPopToMenu:) name:NOTIF_POP_TO_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushMenu:) name:NOTIF_PUSH_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorCommunicationServer:) name:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionBack:) name:NOTIF_ERROR_CONNECTION_BACK object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionLost:) name:NOTIF_ERROR_CONNECTION_LOST object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionNo:) name:NOTIF_ERROR_CONNECTION_NO object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionChanged:) name:NOTIF_REACHABILITY_CHANGED object:nil];
 
     
 
@@ -124,7 +122,7 @@
 {
     if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
+        // TODO? message?
         return;
     }
     
@@ -382,35 +380,80 @@
 
 
 
+////
+//// onNotifErrorConnectionBack 
+////
+//// when the 3G or wifi turns on
+//// 
+//- (void)onNotifErrorConnectionBack:(NSNotification *)notification
+//{
+//    
+//   else 
+//       NSLog(@"onNotifErrorConnectionBack ERROR unexpected STATUS CODE!");
+//    
+//    
+//    
+////    // show alert message for connection error
+////    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_lost", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+////    [av show];
+////    [av release];  
+////    
+////    // and logout properly
+////    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+//}
 //
-// onNotifErrorConnectionBack 
-//
-// when the 3G or wifi turns on
-// 
-- (void)onNotifErrorConnectionBack:(NSNotification *)notification
+
+
+
+
+
+
+
+
+- (void)onNotifErrorConnectionChanged:(NSNotification *)notification
 {
     NetworkStatus status = [YasoundReachability main].networkStatus;
-    
-    // Wifi turns on
-    if (status == ReachableViaWiFi)
+
+    if ([YasoundReachability main].hasNetwork == YR_NO)
     {
-        NSLog(@"onNotifErrorConnectionBack WIFI ");
+        NSLog(@"onNotifErrorConnectionChanged no network ");
+
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_no", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
         
-        if (![SongUploadManager main].isRunning)
+        if ([SongUploadManager main].isRunning)
+        {
+            [[SongUploadManager main] interruptUploads];
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
+
+        // and logout properly
+        //[[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+    }
+
+    // Wifi turns on
+    else if (status == ReachableViaWiFi)
+    {
+        NSLog(@"onNotifErrorConnectionChanged WIFI ");
+
+        // don't test if it's running. If may runs, but paused if the connection was lost, for instance
+//        if (![SongUploadManager main].isRunning)
             [[SongUploadManager main] resumeUploads];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
     }
     
     // 3G turns on (<=> or wifi turns off, then 3G turns on)
     else if (status == ReachableViaWWAN)
     {
-        NSLog(@"onNotifErrorConnectionBack WWAN ");
-    
+        NSLog(@"onNotifErrorConnectionChanged WWAN ");
+        
         if ([SongUploadManager main].isRunning)
         {
-                [[SongUploadManager main] interruptUploads];
-                
+            [[SongUploadManager main] interruptUploads];
+            
             if (_alertWifiInterrupted == nil)
             {
                 // show alert message for connection error
@@ -420,11 +463,10 @@
             }
         }
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
     }
-   else 
-       NSLog(@"onNotifErrorConnectionBack ERROR unexpected STATUS CODE!");
     
+}
     
     
 //    // show alert message for connection error
@@ -434,29 +476,17 @@
 //    
 //    // and logout properly
 //    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
-}
+//}
 
-
-- (void)onNotifErrorConnectionLost:(NSNotification *)notification
-{
-    // show alert message for connection error
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_lost", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [av show];
-    [av release];  
-    
-    // and logout properly
-    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
-}
-
-- (void)onNotifErrorConnectionNo:(NSNotification *)notification
-{
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_no", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [av show];
-    [av release];  
-    
-    // and logout properly
-    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
-}
+//- (void)onNotifErrorConnectionNo:(NSNotification *)notification
+//{
+//    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_no", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [av show];
+//    [av release];  
+//    
+//    // and logout properly
+//    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+//}
 
 
 

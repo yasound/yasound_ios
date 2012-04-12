@@ -62,6 +62,10 @@
     
     UIImage* image = [[YasoundDataCache main] requestImage:aUrl target:self action:@selector(onImageUpdated:)];
     
+    //LBDEBUG ICI
+   // [UIImagePNGRepresentation(image) writeToFile:@"/Users/neywen/tmp/tmp.png" atomically:YES];
+    
+    
     [self setImage:image];
     
     url = aUrl;    

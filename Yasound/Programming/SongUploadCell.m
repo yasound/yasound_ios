@@ -11,7 +11,7 @@
 #import "Theme.h"
 #import "SongCatalog.h"
 #import "RootViewController.h"
-
+#import "YasoundReachability.h"
 
 @implementation SongUploadCell
 
@@ -19,7 +19,7 @@
 @synthesize label;
 @synthesize labelStatus;
 @synthesize progressView;
-
+@synthesize progressLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadItem*)item
 {
@@ -31,6 +31,7 @@
         self.item = item;
         self.item.delegate = self;
         self.progressView = nil;
+        self.progressLabel = nil;
         self.labelStatus = nil;
 
         
@@ -65,22 +66,32 @@
             self.progressView.frame = sheet.frame;
             [self addSubview:self.progressView];
             
+            sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            self.progressLabel = [sheet makeLabel];
+            self.progressLabel.text = NSLocalizedString(@"SongUpload_progress_prepare", nil);
+            [self addSubview:self.progressLabel];
+            
         }
 
         if (item.status == SongUploadItemStatusUploading)
         {
             self.progressView.hidden = NO;
+            self.progressLabel.hidden = NO;
             self.labelStatus.hidden = YES;
             self.progressView.progress = self.item.currentProgress;
+            self.progressLabel.text = [SongUploadCell sizeToStr:self.item.currentSize];
         }
         else if (item.status == SongUploadItemStatusPending)
         {
             if ([SongUploadManager main].isRunning)
                 self.labelStatus.text = NSLocalizedString(@"SongUpload_pending", nil);    
-            else
-                self.labelStatus.text = NSLocalizedString(@"SongUpload_waitingForWifi", nil);        
+            else if ([YasoundReachability main].networkStatus != ReachableViaWiFi)
+                self.labelStatus.text = NSLocalizedString(@"SongUpload_waitingForWifi", nil);   
+            else 
+                self.labelStatus.text = NSLocalizedString(@"SongUpload_pending_not_running", nil);   
 
             self.progressView.hidden = YES;
+            self.progressLabel.hidden = YES;
             self.labelStatus.hidden = NO;
         }
         else if (item.status == SongUploadItemStatusCompleted)
@@ -91,6 +102,7 @@
             else
                 self.labelStatus.text = NSLocalizedString(@"SongUpload_progressCompleted", nil);
             self.progressView.hidden = YES;
+            self.progressLabel.hidden = YES;
             self.labelStatus.hidden = NO;
         }
         else if (item.status == SongUploadItemStatusFailed)
@@ -101,6 +113,7 @@
             else
                 self.labelStatus.text = NSLocalizedString(@"SongUpload_progressFailed", nil);   
             self.progressView.hidden = YES;
+            self.progressLabel.hidden = YES;
             self.labelStatus.hidden = NO;
         }
         
@@ -133,21 +146,24 @@
     {
         self.progressView.progress = self.item.currentProgress;
         self.progressView.hidden = NO;
+        self.progressLabel.hidden = NO;
         self.labelStatus.hidden = YES;
     }
     else if (self.item.status == SongUploadItemStatusPending) 
     {
         self.progressView.hidden = YES;
+        self.progressLabel.hidden = YES;
         self.labelStatus.hidden = NO;
         
         if ([SongUploadManager main].isRunning)
             self.labelStatus.text = NSLocalizedString(@"SongUpload_pending", nil);    
-        else
+        else if ([YasoundReachability main].networkStatus != ReachableViaWiFi)
             self.labelStatus.text = NSLocalizedString(@"SongUpload_waitingForWifi", nil);        
     }
     else if (self.item.status == SongUploadItemStatusCompleted)
     {
         self.progressView.hidden = YES;
+        self.progressLabel.hidden = YES;
         self.labelStatus.hidden = NO;
         if (self.item.detailedInfo != nil)
             self.labelStatus.text = [NSString stringWithFormat:@"%@ - %@", 
@@ -158,6 +174,7 @@
     else if (self.item.status == SongUploadItemStatusFailed)
     {
         self.progressView.hidden = YES;
+        self.progressLabel.hidden = YES;
         self.labelStatus.hidden = NO;
         
         if (self.item.detailedInfo != nil)
@@ -200,10 +217,39 @@
     [self update:self.item];
 }
 
-- (void)songUploadProgress:(Song*)song progress:(CGFloat)progress
+- (void)songUploadProgress:(Song*)song progress:(CGFloat)progress  bytes:(NSUInteger)bytes
 {
     self.progressView.progress = progress;
+    self.progressLabel.text = [SongUploadCell sizeToStr:bytes];
 }
+
+
+
++ (NSString*)sizeToStr:(NSUInteger)bytes
+{
+    static NSUInteger BYTES_1o = 1024;
+    static NSUInteger BYTES_1Ko = 1024*1024;
+    static NSUInteger BYTES_1Mo = 1024*1024*1024;
+    // static NSUInteger BYTES_1Go = 1024*1024*1024*1024;
+    
+    if (bytes == 0)
+        return NSLocalizedString(@"SongUpload_progress_prepare", nil);
+
+
+    NSString* sizeStr;
+    if (bytes < BYTES_1o)
+        sizeStr = [NSString stringWithFormat:@"%d o", bytes];
+    else if (bytes < BYTES_1Ko)
+        sizeStr = [NSString stringWithFormat:@"%.2f Ko", (CGFloat)bytes / (CGFloat)BYTES_1o];
+    else if (bytes < BYTES_1Mo)
+        sizeStr = [NSString stringWithFormat:@"%.2f Mo", (CGFloat)bytes / (CGFloat)BYTES_1Ko];
+    else
+        sizeStr = [NSString stringWithFormat:@"%.2f Go", (CGFloat)bytes / (CGFloat)BYTES_1Mo];
+    
+    return sizeStr;
+    
+}
+
 
 - (void)songUploadDidFinish:(Song*)song info:(NSDictionary*)info
 {

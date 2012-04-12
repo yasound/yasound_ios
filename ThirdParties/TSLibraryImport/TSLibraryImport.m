@@ -25,6 +25,15 @@
 #import "TSLibraryImport.h"
 #import <AVFoundation/AVFoundation.h>
 
+#define TS_TIME_PROFILE 1
+
+#ifdef TS_TIME_PROFILE
+#import "TimeProfile.h"
+#define TIME_PROFILE_EXPORT @"TsLibraryExport"
+#define TIME_PROFILE_EXTRACT @"TsLibraryExtract"
+
+#endif
+
 @interface TSLibraryImport()
 
 + (BOOL)validIpodLibraryURL:(NSURL*)url;
@@ -67,7 +76,19 @@
 	exportSession.outputURL = tmpURL;
     
 	exportSession.outputFileType = AVFileTypeQuickTimeMovie;
-	[exportSession exportAsynchronouslyWithCompletionHandler:^(void) {
+    
+#ifdef TS_TIME_PROFILE
+    [[TimeProfile main] begin:TIME_PROFILE_EXPORT];
+#endif
+    
+	[exportSession exportAsynchronouslyWithCompletionHandler:^(void) 
+    {
+        
+#ifdef TS_TIME_PROFILE
+        [[TimeProfile main] end:TIME_PROFILE_EXPORT];
+        [[TimeProfile main] logInterval:TIME_PROFILE_EXPORT inMilliseconds:NO];
+#endif
+        
 		if (exportSession.status == AVAssetExportSessionStatusFailed) {
 			completionBlock(self);
 		} else if (exportSession.status == AVAssetExportSessionStatusCancelled) {
@@ -129,8 +150,18 @@
 		@throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"unrecognized file extension" userInfo:nil];
 	}
 
+#ifdef TS_TIME_PROFILE
+    [[TimeProfile main] begin:TIME_PROFILE_EXPORT];
+#endif
+    
 	[exportSession exportAsynchronouslyWithCompletionHandler:^(void) 
     {
+        
+#ifdef TS_TIME_PROFILE
+        [[TimeProfile main] end:TIME_PROFILE_EXPORT];
+        [[TimeProfile main] logInterval:TIME_PROFILE_EXPORT inMilliseconds:NO];
+#endif
+        
 		completionBlock(self);
         [exportSession release];
         exportSession = nil;
@@ -148,6 +179,11 @@
 	char atom_name[5];
 	atom_name[4] = '\0';
 	unsigned long atom_size = 0;
+    
+#ifdef TS_TIME_PROFILE
+    [[TimeProfile main] begin:TIME_PROFILE_EXTRACT];
+#endif
+    
 	while (true) {
 		if (feof(src)) {
 			break;
@@ -161,6 +197,7 @@
 			unsigned char buf[bufferSize];
 			if (NULL == dst) {
 				fclose(src);
+                NSLog(@"Couldn't open destination file");
 				@throw [NSException exceptionWithName:TSUnknownError reason:@"Couldn't open destination file" userInfo:nil];
 			}
             // Thanks to Rolf Nilsson/Roni Music for pointing out the bug here:
@@ -175,6 +212,12 @@
             }
 			fclose(dst);
 			fclose(src);
+            
+            #ifdef TS_TIME_PROFILE
+            [[TimeProfile main] end:TIME_PROFILE_EXTRACT];
+            [[TimeProfile main] logInterval:TIME_PROFILE_EXTRACT inMilliseconds:NO];
+            #endif
+            
 			return;
 		}
 		if (atom_size == 0)
@@ -182,6 +225,8 @@
 		fseek(src, atom_size, SEEK_CUR);
 	}
 	fclose(src);
+    
+    NSLog(@"Didn't find mdat chunk");
 	@throw [NSException exceptionWithName:TSUnknownError reason:@"Didn't find mdat chunk"  userInfo:nil];
 }
 
