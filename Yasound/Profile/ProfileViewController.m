@@ -35,9 +35,9 @@ typedef enum
 - (NSInteger)sectionCount
 {
     NSInteger count = 1;
-    if (self.user && self.user.own_radio)
+    if (self.user && self.user.own_radio && [self.user.own_radio.ready boolValue])
         count++;
-    if (self.user && self.user.current_radio)
+    if (self.user && self.user.current_radio && [self.user.current_radio.ready boolValue])
         count++;
     if (_favoriteRadios && _favoriteRadios.count > 0) 
         count++;
@@ -50,17 +50,15 @@ typedef enum
         return 0;
     if (section == eSectionOwnRadio)
     {
-        if (!self.user || !self.user.own_radio)
+        if (!self.user || !self.user.own_radio || ![self.user.own_radio.ready boolValue])
             return -1;
         return 1;
     }
     if (section == eSectionCurrentRadio)
     {
-        if (!self.user || !self.user.current_radio)
+        if (!self.user || !self.user.current_radio || ![self.user.current_radio.ready boolValue])
             return -1;
         
-        if (!self.user || !self.user.current_radio)
-            return 1;
         return 2;
     }
     if (section == eSectionFavoriteRadios)
@@ -69,9 +67,9 @@ typedef enum
             return -1;
         
         NSInteger index = 1;
-        if (self.user && self.user.own_radio)
+        if (self.user && self.user.own_radio && [self.user.own_radio.ready boolValue])
             index++;
-        if (self.user && self.user.current_radio)
+        if (self.user && self.user.current_radio && [self.user.current_radio.ready boolValue])
             index++;
         return index;
     }
@@ -160,12 +158,12 @@ typedef enum
     }
     else if (section == [self indexForSection:eSectionOwnRadio])
     {
-        if (self.user != nil && self.user.own_radio) 
+        if (self.user != nil && self.user.own_radio && [self.user.own_radio.ready boolValue]) 
             return 1;
     }
     else if (section == [self indexForSection:eSectionCurrentRadio])
     {
-        if (self.user != nil && self.user.current_radio) 
+        if (self.user != nil && self.user.current_radio && [self.user.current_radio.ready boolValue]) 
             return 1;
     }
     else if (section == [self indexForSection:eSectionFavoriteRadios])
@@ -301,7 +299,7 @@ typedef enum
         cellIdentifier = cellIdentifier1;
         
         radio = self.user.own_radio;
-        if (!radio) 
+        if (!radio && ![radio.ready boolValue]) 
         {
             return nil;
         }
@@ -311,7 +309,7 @@ typedef enum
         cellIdentifier = cellIdentifier2;
         
         radio = self.user.current_radio;
-        if (!radio) 
+        if (!radio && ![radio.ready boolValue]) 
         {
             return nil;
         }
@@ -327,7 +325,7 @@ typedef enum
         }
         
         radio = [radios objectAtIndex:rowIndex];
-        if (!radio) 
+        if (!radio && ![radio.ready boolValue]) 
         {
             return nil;
         }
