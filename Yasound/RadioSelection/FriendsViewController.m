@@ -497,7 +497,7 @@
 
 - (IBAction)inviteTwitterButtonClicked:(id)sender
 {
-  [[TwitterSessionManager twitter] inviteFriends];
+    [[TwitterSessionManager twitter] inviteFriends:self.view];
 }
 
 
