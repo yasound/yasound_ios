@@ -11,7 +11,7 @@
 #import "Theme.h"
 #import "SongCatalog.h"
 #import "RootViewController.h"
-
+#import "YasoundReachability.h"
 
 @implementation SongUploadCell
 
@@ -77,7 +77,7 @@
         {
             if ([SongUploadManager main].isRunning)
                 self.labelStatus.text = NSLocalizedString(@"SongUpload_pending", nil);    
-            else
+            else if ([YasoundReachability main].networkStatus != ReachableViaWiFi)
                 self.labelStatus.text = NSLocalizedString(@"SongUpload_waitingForWifi", nil);        
 
             self.progressView.hidden = YES;
@@ -142,7 +142,7 @@
         
         if ([SongUploadManager main].isRunning)
             self.labelStatus.text = NSLocalizedString(@"SongUpload_pending", nil);    
-        else
+        else if ([YasoundReachability main].networkStatus != ReachableViaWiFi)
             self.labelStatus.text = NSLocalizedString(@"SongUpload_waitingForWifi", nil);        
     }
     else if (self.item.status == SongUploadItemStatusCompleted)

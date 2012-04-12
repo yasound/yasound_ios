@@ -373,7 +373,7 @@ static SongUploadManager* _main;
     
     [self.items removeObjectAtIndex:itemIndex];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SONG_GUI_NEED_REFRESH object:self];
 
     
     [self loop];

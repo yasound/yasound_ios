@@ -48,8 +48,9 @@
 
 #define NOTIF_UPLOAD_DIDFINISH @"NOTIF_UploadDidFinish"
 #define NOTIF_UPLOAD_DIDCANCEL @"NOTIF_UploadDidCancel"
-#define NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH @"NOTIF_UploadDidCancelNeedGuiRefresh"
 #define NOTIF_UPLOAD_DIDINTERRUPT @"NOTIF_UploadDidInterrupt"
+
+#define NOTIF_SONG_GUI_NEED_REFRESH @"NOTIF_GuiNeedRefresh"
 
 #define NOTIF_UPLOAD_DIDSUCCEED @"NOTIF_UploadDidSucceed"
 #define NOTIF_UPLOAD_DIDFAIL @"NOTIF_UploadDidFail"
