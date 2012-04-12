@@ -75,6 +75,10 @@ void SignalHandler(int sig) {
     
     [TestFlight takeOff:@"997d8f9a93194760139ff86ee63b16a7_MzU2NTkyMDExLTEwLTIwIDAxOjU0OjMyLjQzNTk1Nw"];
     
+#ifdef TESTFLIGHT_SDK_BETATEST
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+#endif    
+    
 #endif
   
   _APNsTokenString = nil;

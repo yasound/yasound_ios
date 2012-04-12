@@ -317,7 +317,6 @@
 		40B40A15152EFC630050D334 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
 		40B40A16152EFC630050D334 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
-		40B40A18152EFC630050D334 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBE5C7214D167DE0077FC62 /* libTestFlight.a */; };
 		40B40A1A152EFC630050D334 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		40B40A1B152EFC630050D334 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		40B40A1C152EFC630050D334 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
@@ -360,8 +359,6 @@
 		40B40A41152EFC630050D334 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		40B40A42152EFC630050D334 /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC0914CF64B100DF0950 /* twitter_load.png */; };
 		40B40A43152EFC630050D334 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC6F14CFF3FE00DF0950 /* MenuViewController.xib */; };
-		40B40A44152EFC630050D334 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7314D167DE0077FC62 /* README.txt */; };
-		40B40A45152EFC630050D334 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
 		40B40A46152EFC630050D334 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43714DDC6A100D4C67F /* Default.png */; };
 		40B40A47152EFC630050D334 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
 		40B40A48152EFC630050D334 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
@@ -996,7 +993,6 @@
 		BC3FA6FB14E93B660055AB4A /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
 		BC3FA6FC14E93B660055AB4A /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
-		BC3FA6FE14E93B660055AB4A /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBE5C7214D167DE0077FC62 /* libTestFlight.a */; };
 		BC3FA70014E93B660055AB4A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		BC3FA70114E93B660055AB4A /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC3FA70214E93B660055AB4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
@@ -1039,8 +1035,6 @@
 		BC3FA74114E93B660055AB4A /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		BC3FA74214E93B660055AB4A /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC0914CF64B100DF0950 /* twitter_load.png */; };
 		BC3FA74314E93B660055AB4A /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC6F14CFF3FE00DF0950 /* MenuViewController.xib */; };
-		BC3FA74614E93B660055AB4A /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7314D167DE0077FC62 /* README.txt */; };
-		BC3FA74714E93B660055AB4A /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
 		BC3FA74A14E93B660055AB4A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43714DDC6A100D4C67F /* Default.png */; };
 		BC3FA74B14E93B660055AB4A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
 		BC3FA74E14E93B660055AB4A /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
@@ -1484,7 +1478,6 @@
 		BC56F524152486AF005D1B40 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
 		BC56F525152486AF005D1B40 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
 		BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
-		BC56F527152486AF005D1B40 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBE5C7214D167DE0077FC62 /* libTestFlight.a */; };
 		BC56F529152486AF005D1B40 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
 		BC56F52A152486AF005D1B40 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC56F52B152486AF005D1B40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
@@ -1527,8 +1520,6 @@
 		BC56F550152486AF005D1B40 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		BC56F551152486AF005D1B40 /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC0914CF64B100DF0950 /* twitter_load.png */; };
 		BC56F552152486AF005D1B40 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC6F14CFF3FE00DF0950 /* MenuViewController.xib */; };
-		BC56F553152486AF005D1B40 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7314D167DE0077FC62 /* README.txt */; };
-		BC56F554152486AF005D1B40 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
 		BC56F555152486AF005D1B40 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43714DDC6A100D4C67F /* Default.png */; };
 		BC56F556152486AF005D1B40 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
 		BC56F557152486AF005D1B40 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
@@ -1955,6 +1946,13 @@
 		BC9522A414B70FE9001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A514B70FF2001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A614B70FF7001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
+		BC9BE8271536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
+		BC9BE8281536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
+		BC9BE8291536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
+		BC9BE82A1536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
+		BC9BE82B1536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
+		BC9BE82C1536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
+		BC9BE82D1536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
 		BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
 		BC9F4A2314E6AC5400008AA3 /* CellRowFirst.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A0D14E6AC5400008AA3 /* CellRowFirst.png */; };
@@ -2378,18 +2376,6 @@
 		BCBE5C6E14D1618A0077FC62 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
 		BCBE5C6F14D1618A0077FC62 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
 		BCBE5C7014D1618A0077FC62 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
-		BCBE5C7614D167DE0077FC62 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBE5C7214D167DE0077FC62 /* libTestFlight.a */; };
-		BCBE5C7714D167DE0077FC62 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBE5C7214D167DE0077FC62 /* libTestFlight.a */; };
-		BCBE5C7814D167DE0077FC62 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBE5C7214D167DE0077FC62 /* libTestFlight.a */; };
-		BCBE5C7914D167DE0077FC62 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBE5C7214D167DE0077FC62 /* libTestFlight.a */; };
-		BCBE5C7A14D167DE0077FC62 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7314D167DE0077FC62 /* README.txt */; };
-		BCBE5C7B14D167DE0077FC62 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7314D167DE0077FC62 /* README.txt */; };
-		BCBE5C7C14D167DE0077FC62 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7314D167DE0077FC62 /* README.txt */; };
-		BCBE5C7D14D167DE0077FC62 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7314D167DE0077FC62 /* README.txt */; };
-		BCBE5C7E14D167DE0077FC62 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
-		BCBE5C7F14D167DE0077FC62 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
-		BCBE5C8014D167DE0077FC62 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
-		BCBE5C8114D167DE0077FC62 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCBE5C7414D167DE0077FC62 /* release_notes.txt */; };
 		BCBE5C8E14D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
 		BCBE5C8F14D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
 		BCBE5C9014D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
@@ -3270,6 +3256,8 @@
 		BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StyleSelectorViewController.xib; sourceTree = "<group>"; };
 		BC93CDEA14CF3F7A007C723F /* Yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yasound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC95229914B6F787001E1ACE /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
+		BC9BE8231536C8B500B01AD2 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		BC9BE8261536C8B500B01AD2 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		BC9F4143147E8A5F00D417EF /* BundleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleFileManager.h; sourceTree = "<group>"; };
 		BC9F4144147E8A5F00D417EF /* BundleFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BundleFileManager.m; sourceTree = "<group>"; };
 		BC9F4145147E8A5F00D417EF /* BundleStylesheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleStylesheet.h; sourceTree = "<group>"; };
@@ -3391,10 +3379,6 @@
 		BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesConnect@2x.png"; sourceTree = "<group>"; };
 		BCBE5C6B14D1618A0077FC62 /* TestflightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestflightViewController.h; sourceTree = "<group>"; };
 		BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestflightViewController.m; sourceTree = "<group>"; };
-		BCBE5C7214D167DE0077FC62 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		BCBE5C7314D167DE0077FC62 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		BCBE5C7414D167DE0077FC62 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
-		BCBE5C7514D167DE0077FC62 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionView.h; sourceTree = "<group>"; };
 		BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionView.m; sourceTree = "<group>"; };
 		BCC41417150A9ED100A5150B /* YasoundDataCacheImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCacheImage.h; sourceTree = "<group>"; };
@@ -3621,7 +3605,7 @@
 				40B40A15152EFC630050D334 /* libGoogleAnalytics.a in Frameworks */,
 				40B40A16152EFC630050D334 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */,
-				40B40A18152EFC630050D334 /* libTestFlight.a in Frameworks */,
+				BC9BE82D1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3651,7 +3635,7 @@
 				BC3FA6FB14E93B660055AB4A /* libGoogleAnalytics.a in Frameworks */,
 				BC3FA6FC14E93B660055AB4A /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */,
-				BC3FA6FE14E93B660055AB4A /* libTestFlight.a in Frameworks */,
+				BC9BE82C1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3681,7 +3665,7 @@
 				BC56F524152486AF005D1B40 /* libGoogleAnalytics.a in Frameworks */,
 				BC56F525152486AF005D1B40 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */,
-				BC56F527152486AF005D1B40 /* libTestFlight.a in Frameworks */,
+				BC9BE8291536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3711,7 +3695,7 @@
 				BCDC96DA14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
 				BCDC96DD14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1314CF64B100DF0950 /* libOAuth.a in Frameworks */,
-				BCBE5C7714D167DE0077FC62 /* libTestFlight.a in Frameworks */,
+				BC9BE8281536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3741,7 +3725,7 @@
 				BC93CD4D14CF3F7A007C723F /* libGoogleAnalytics.a in Frameworks */,
 				BC93CD4E14CF3F7A007C723F /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1514CF64B100DF0950 /* libOAuth.a in Frameworks */,
-				BCBE5C7914D167DE0077FC62 /* libTestFlight.a in Frameworks */,
+				BC9BE82B1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3771,7 +3755,7 @@
 				BCDC96D914AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
 				BCDC96DC14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1214CF64B100DF0950 /* libOAuth.a in Frameworks */,
-				BCBE5C7614D167DE0077FC62 /* libTestFlight.a in Frameworks */,
+				BC9BE8271536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3801,7 +3785,7 @@
 				BCDC96DB14AB7D8900D54631 /* libGoogleAnalytics.a in Frameworks */,
 				BCDC96DE14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1414CF64B100DF0950 /* libOAuth.a in Frameworks */,
-				BCBE5C7814D167DE0077FC62 /* libTestFlight.a in Frameworks */,
+				BC9BE82A1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4405,6 +4389,16 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		BC9BE8221536C8B500B01AD2 /* TestFlightSDK1.0 */ = {
+			isa = PBXGroup;
+			children = (
+				BC9BE8231536C8B500B01AD2 /* libTestFlight.a */,
+				BC9BE8261536C8B500B01AD2 /* TestFlight.h */,
+			);
+			name = TestFlightSDK1.0;
+			path = ThirdParties/TestFlightSDK/TestFlightSDK1.0;
+			sourceTree = "<group>";
+		};
 		BC9F413E147E8A5F00D417EF /* BundleFileManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -4588,18 +4582,6 @@
 			path = LibTools/TestflightViewController;
 			sourceTree = SOURCE_ROOT;
 		};
-		BCBE5C7114D167DE0077FC62 /* TestFlightSDK0.8.2 */ = {
-			isa = PBXGroup;
-			children = (
-				BCBE5C7214D167DE0077FC62 /* libTestFlight.a */,
-				BCBE5C7314D167DE0077FC62 /* README.txt */,
-				BCBE5C7414D167DE0077FC62 /* release_notes.txt */,
-				BCBE5C7514D167DE0077FC62 /* TestFlight.h */,
-			);
-			name = TestFlightSDK0.8.2;
-			path = ThirdParties/TestFlightSDK/TestFlightSDK0.8.2;
-			sourceTree = "<group>";
-		};
 		BCC408A9148D15F8001C02E4 /* MyYasound */ = {
 			isa = PBXGroup;
 			children = (
@@ -4661,6 +4643,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				BC9BE8221536C8B500B01AD2 /* TestFlightSDK1.0 */,
 				BC011A3B1525AF92007AE3F5 /* TWiOS5ReverseAuthExample */,
 				BCB0EF12152351A900290383 /* UnderlinedButton */,
 				BCC41432150B00C800A5150B /* fmdb */,
@@ -4668,7 +4651,6 @@
 				B1F8868514E5B44300256383 /* MBProgressHUD */,
 				B1BBEE9914E2DA9500E7E0EA /* TSLibraryImport */,
 				B1D634C414E1BC4E00BE852E /* UIDevice-with-UniqueIdentifier-for-iOS-5 */,
-				BCBE5C7114D167DE0077FC62 /* TestFlightSDK0.8.2 */,
 				BC40CC7C14D0093F00DF0950 /* DDMenuController */,
 				BC40CBC414CF648500DF0950 /* Twitter-OAuth-iPhone */,
 				BC40CBB314CF633600DF0950 /* facebook-ios-sdk */,
@@ -5363,8 +5345,6 @@
 				40B40A41152EFC630050D334 /* jQueryInjectLandscape.txt in Resources */,
 				40B40A42152EFC630050D334 /* twitter_load.png in Resources */,
 				40B40A43152EFC630050D334 /* MenuViewController.xib in Resources */,
-				40B40A44152EFC630050D334 /* README.txt in Resources */,
-				40B40A45152EFC630050D334 /* release_notes.txt in Resources */,
 				40B40A46152EFC630050D334 /* Default.png in Resources */,
 				40B40A47152EFC630050D334 /* Default@2x.png in Resources */,
 				40B40A48152EFC630050D334 /* CreateMyRadioBackground.png in Resources */,
@@ -5578,8 +5558,6 @@
 				BC3FA74114E93B660055AB4A /* jQueryInjectLandscape.txt in Resources */,
 				BC3FA74214E93B660055AB4A /* twitter_load.png in Resources */,
 				BC3FA74314E93B660055AB4A /* MenuViewController.xib in Resources */,
-				BC3FA74614E93B660055AB4A /* README.txt in Resources */,
-				BC3FA74714E93B660055AB4A /* release_notes.txt in Resources */,
 				BC3FA74A14E93B660055AB4A /* Default.png in Resources */,
 				BC3FA74B14E93B660055AB4A /* Default@2x.png in Resources */,
 				BC3FA74E14E93B660055AB4A /* CreateMyRadioBackground.png in Resources */,
@@ -5789,8 +5767,6 @@
 				BC56F550152486AF005D1B40 /* jQueryInjectLandscape.txt in Resources */,
 				BC56F551152486AF005D1B40 /* twitter_load.png in Resources */,
 				BC56F552152486AF005D1B40 /* MenuViewController.xib in Resources */,
-				BC56F553152486AF005D1B40 /* README.txt in Resources */,
-				BC56F554152486AF005D1B40 /* release_notes.txt in Resources */,
 				BC56F555152486AF005D1B40 /* Default.png in Resources */,
 				BC56F556152486AF005D1B40 /* Default@2x.png in Resources */,
 				BC56F557152486AF005D1B40 /* CreateMyRadioBackground.png in Resources */,
@@ -6004,8 +5980,6 @@
 				BC40CC0F14CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5714CF64B100DF0950 /* twitter_load.png in Resources */,
 				BC40CC7514CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
-				BCBE5C7B14D167DE0077FC62 /* README.txt in Resources */,
-				BCBE5C7F14D167DE0077FC62 /* release_notes.txt in Resources */,
 				BC33F43A14DDC6A100D4C67F /* Default.png in Resources */,
 				BC33F43D14DDC6A100D4C67F /* Default@2x.png in Resources */,
 				BC26E6CC14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */,
@@ -6221,8 +6195,6 @@
 				BC40CC1114CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5914CF64B100DF0950 /* twitter_load.png in Resources */,
 				BC40CC7714CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
-				BCBE5C7D14D167DE0077FC62 /* README.txt in Resources */,
-				BCBE5C8114D167DE0077FC62 /* release_notes.txt in Resources */,
 				BC26E6CE14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */,
 				BC26E6D214E40E3100D30554 /* CreateMyRadioBackground@2x.png in Resources */,
 				B19BF5F514E420DA00BF8FCF /* SongsViewController.xib in Resources */,
@@ -6434,8 +6406,6 @@
 				BC40CC0E14CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5614CF64B100DF0950 /* twitter_load.png in Resources */,
 				BC40CC7414CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
-				BCBE5C7A14D167DE0077FC62 /* README.txt in Resources */,
-				BCBE5C7E14D167DE0077FC62 /* release_notes.txt in Resources */,
 				BC33F43914DDC6A100D4C67F /* Default.png in Resources */,
 				BC33F43C14DDC6A100D4C67F /* Default@2x.png in Resources */,
 				BC26E6CB14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */,
@@ -6649,8 +6619,6 @@
 				BC40CC1014CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5814CF64B100DF0950 /* twitter_load.png in Resources */,
 				BC40CC7614CFF3FE00DF0950 /* MenuViewController.xib in Resources */,
-				BCBE5C7C14D167DE0077FC62 /* README.txt in Resources */,
-				BCBE5C8014D167DE0077FC62 /* release_notes.txt in Resources */,
 				BC33F43B14DDC6A100D4C67F /* Default.png in Resources */,
 				BC33F43E14DDC6A100D4C67F /* Default@2x.png in Resources */,
 				BC26E6CD14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */,
@@ -8286,6 +8254,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -8311,6 +8280,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
@@ -8337,6 +8307,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -8361,6 +8332,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = YasoundD;
 				WRAPPER_EXTENSION = app;
@@ -8386,6 +8358,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -8411,6 +8384,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD DEV SERVER";
@@ -8437,6 +8411,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundD;
@@ -8461,6 +8436,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = YasoundD;
@@ -8490,6 +8466,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "D7BADA6E-DA07-4A21-A2A8-C66A3E939227";
@@ -8519,6 +8496,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "D7BADA6E-DA07-4A21-A2A8-C66A3E939227";
@@ -8625,6 +8603,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
 				WARNING_CFLAGS = "$(inherited)";
@@ -8649,6 +8628,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
 				WARNING_CFLAGS = "$(inherited)";
@@ -8664,7 +8644,8 @@
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"APNS_PRODUCTION_TARGET=1",
-					TESTFLIGHT_SDK,
+					"TESTFLIGHT_SDK=1",
+					"TESTFLIGHT_SDK_BETATEST=1",
 					"$(inherited)",
 					"USE_COREGRAPHIC_LAYER=1",
 					"USE_COREGRAPHIC_SHADOW=0",
@@ -8676,6 +8657,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "20943D4C-5AD0-43E8-A893-BD44EDC99E46";
@@ -8691,7 +8673,9 @@
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"APNS_PRODUCTION_TARGET=1",
-					TESTFLIGHT_SDK,
+					"TESTFLIGHT_SDK=1",
+					"TESTFLIGHT_SDK_BETATEST=1",
+					"$(inherited)",
 					"USE_COREGRAPHIC_LAYER=1",
 					"USE_COREGRAPHIC_SHADOW=0",
 				);
@@ -8702,6 +8686,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
 				PROVISIONING_PROFILE = "20943D4C-5AD0-43E8-A893-BD44EDC99E46";
