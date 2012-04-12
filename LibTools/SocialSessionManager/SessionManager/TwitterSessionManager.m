@@ -187,10 +187,12 @@ static TwitterSessionManager* _twitter = nil;
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
 {
     if (buttonIndex == 0)
+    {
+        [self requestPostMessage:NSLocalizedString(@"Twitter_AppRequest_Message", nil) title:NSLocalizedString(@"Facebook_AppRequest_Message", nil) picture:nil];    
         return;
+    }
     
     
-    [self requestPostMessage:NSLocalizedString(@"Twitter_AppRequest_Message", nil) title:NSLocalizedString(@"Facebook_AppRequest_Message", nil) picture:nil];    
 }
 
 
