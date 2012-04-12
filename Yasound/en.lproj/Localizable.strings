@@ -455,6 +455,7 @@
 
 "UserTableViewCell_ListeningTo" = "listening to";
 "UserTableViewCell_Radio" = "radio:";
+"UserTableViewCell_NoRadio" = "radio: none";
 
 "RadioSearch_CategoryRadioAttributes_SectionTitle" = "radio infos";
 "RadioSearch_CategoryRadioCreator_SectionTitle" = "creator";

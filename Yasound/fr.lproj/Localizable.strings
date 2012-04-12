@@ -442,6 +442,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "UserTableViewCell_ListeningTo" = "écoute";
 "UserTableViewCell_Radio" = "radio:";
+"UserTableViewCell_NoRadio" = "radio: aucune";
 
 "RadioSearch_CategoryRadioAttributes_SectionTitle" = "radio infos";
 "RadioSearch_CategoryRadioCreator_SectionTitle" = "créateur";

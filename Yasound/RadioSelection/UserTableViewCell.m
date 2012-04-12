@@ -146,8 +146,15 @@
     }
     else if (self.user.own_radio)
     {
-      NSString* radioHeader = NSLocalizedString(@"UserTableViewCell_Radio", nil);
+      if ([self.user.own_radio.ready intValue] > 0)
+      {
+        NSString* radioHeader = NSLocalizedString(@"UserTableViewCell_Radio", nil);
         status = [NSString stringWithFormat:@"%@ %@", radioHeader, self.user.own_radio.name];
+      }
+      else
+      {
+        status = NSLocalizedString(@"UserTableViewCell_NoRadio", nil);
+      }
     }
     self.radioStatus.text = status;
 }
