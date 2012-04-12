@@ -1448,6 +1448,41 @@
 				<string>bold</string>
 			</dict>
 		</dict>
+		<key>SongUpload_progress</key>
+		<dict>
+			<key>x</key>
+			<integer>8</integer>
+			<key>y</key>
+			<integer>26</integer>
+			<key>width</key>
+			<integer>100</integer>
+			<key>height</key>
+			<integer>16</integer>
+		</dict>
+		<key>SongUpload_progressLabel</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>13</integer>
+				<key>textColor</key>
+				<string>rgb(200,200,200)</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+			<key>x</key>
+			<integer>116</integer>
+			<key>y</key>
+			<integer>23</integer>
+			<key>width</key>
+			<integer>120</integer>
+			<key>height</key>
+			<integer>16</integer>
+		</dict>
 		<key>SongView_artist</key>
 		<dict>
 			<key>x</key>

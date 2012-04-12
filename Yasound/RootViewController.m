@@ -430,8 +430,9 @@
     else if (status == ReachableViaWiFi)
     {
         NSLog(@"onNotifErrorConnectionChanged WIFI ");
-        
-        if (![SongUploadManager main].isRunning)
+
+        // don't test if it's running. If may runs, but paused if the connection was lost, for instance
+//        if (![SongUploadManager main].isRunning)
             [[SongUploadManager main] resumeUploads];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SONG_GUI_NEED_REFRESH object:nil];

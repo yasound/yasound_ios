@@ -257,6 +257,7 @@
 "SongUpload_progressCompleted" = "Completed";
 "SongUpload_progressFailed" = "Failed";
 "SongUpload_pending" = "Pending";
+"SongUpload_pending_not_running" = "Waiting for the service to start";
 "SongUpload_waitingForWifi" = "Waiting for Wifi to resume";
 "SongUpload_failedIncorrectFile" = "Incorrect file";
 "SongUpload_failedUploading" = "Upload did not end properly";

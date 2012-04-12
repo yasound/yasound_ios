@@ -254,6 +254,7 @@
 "SongUpload_progressCompleted" = "Chargé";
 "SongUpload_progressFailed" = "Echec";
 "SongUpload_pending" = "En attente";
+"SongUpload_pending_not_running" = "En attente de démarrage";
 "SongUpload_waitingForWifi" = "En attente d'une connexion Wifi";
 "SongUpload_failedIncorrectFile" = "Fichier incorrect";
 "SongUpload_failedUploading" = "Téléchargement incomplet";

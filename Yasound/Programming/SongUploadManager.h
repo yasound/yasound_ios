@@ -63,7 +63,7 @@
 
 - (void)songUploadDidStart:(Song*)song;
 - (void)songUploadDidInterrupt:(Song*)song;
-- (void)songUploadProgress:(Song*)song progress:(CGFloat)progress;
+- (void)songUploadProgress:(Song*)song progress:(CGFloat)progress bytes:(NSUInteger)bytes;
 - (void)songUploadDidFinish:(Song*)song info:(NSDictionary*)info;
 
 @end
@@ -85,7 +85,9 @@ typedef enum SongUploadItemStatus
 
 @property (nonatomic, retain) Song* song;
 @property (nonatomic) CGFloat currentProgress;
+@property (nonatomic) NSUInteger currentSize;
 @property (nonatomic) SongUploadItemStatus status;
+@property (nonatomic) NSInteger nbFails;
 @property (nonatomic, retain) NSString* detailedInfo;
 @property (nonatomic, retain) id<SongUploadItemDelegate> delegate;
 //@property (nonatomic, retain) SongUploader* uploader;

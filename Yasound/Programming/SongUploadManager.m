@@ -12,11 +12,14 @@
 
 
 
+#define NB_FAILS_MAX 3
+
 
 @implementation SongUploadItem
 
 @synthesize song;
 @synthesize currentProgress;
+@synthesize currentSize;
 @synthesize delegate;
 @synthesize status;
 @synthesize detailedInfo;
@@ -28,6 +31,7 @@
     {   
         self.song = aSong;
         self.status = SongUploadItemStatusPending;
+        self.nbFails = 0;
     }
     return self;
 }
@@ -41,6 +45,7 @@
     [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
 
     self.currentProgress = 0;
+    self.currentSize = 0;
     
     if (self.delegate != nil)
         [self.delegate songUploadDidStart:song];
@@ -79,6 +84,7 @@
     }
 
     self.currentProgress = 0;
+    self.currentSize = 0;
 
     if (self.delegate != nil)
         [self.delegate songUploadDidInterrupt:self.song];
@@ -113,6 +119,7 @@
     {
  
         self.status = SongUploadItemStatusFailed;
+        self.nbFails++;
         
         // ne pas faire ça tout de suite
         // attendre de voir comment on gère la reprise 'dun upload e´choué
@@ -136,11 +143,16 @@
 - (void)setProgress:(float)newProgress
 {
     self.currentProgress = newProgress;
-
+    
     if (self.delegate != nil)
-        [self.delegate songUploadProgress:self.song progress:newProgress];
+        [self.delegate songUploadProgress:self.song progress:newProgress bytes:self.currentSize];
 }
 
+
+- (void)request:(ASIHTTPRequest *)request didSendBytes:(long long)bytes
+{
+    self.currentSize += bytes;
+}
 
 @end
 
@@ -225,7 +237,10 @@ static SongUploadManager* _main;
   for (SongUploadItem* item in self.items) 
   {
     SongUploadItemStatus status = item.status;
-    if (status == SongUploadItemStatusPending || status == SongUploadItemStatusUploading)
+    if ((status == SongUploadItemStatusPending)
+         || (status == SongUploadItemStatusUploading)
+         || ((status == SongUploadItemStatusFailed) && (item.nbFails < NB_FAILS_MAX))
+        )
     {
       Song* song = item.song;
       NSMutableDictionary* songInfo = [NSMutableDictionary dictionary];
@@ -317,15 +332,15 @@ static SongUploadManager* _main;
 
 - (void)loop
 {
-    if (!self.isRunning)
-        return;
+//    if (!self.isRunning)
+//        return;
     
     // check if an item is currently uploading
     // if not, start the upload
     
     for (SongUploadItem* item in self.items)
     {
-        if ((item.status == SongUploadItemStatusCompleted) || (item.status == SongUploadItemStatusFailed))
+        if ((item.status == SongUploadItemStatusCompleted) || (item.nbFails == NB_FAILS_MAX))
             continue;
         
         // an item is currently uploading. Wait for it to finish before starting another upload.
@@ -333,7 +348,7 @@ static SongUploadManager* _main;
             return;
             
         // start another upload
-        if (item.status == SongUploadItemStatusPending)
+        if ((item.status == SongUploadItemStatusPending) || (item.status == SongUploadItemStatusFailed))
         {
             [item startUpload];
             return;
@@ -341,14 +356,21 @@ static SongUploadManager* _main;
     }
     
     // nothing else to upload
-    self.isRunning = NO;
+//    self.isRunning = NO;
 }
 
 
 - (void)onNotificationFinish:(NSNotification *)notification
 {  
-    [self loop];  
+//    SongUploadItem* item = notification.object;
+//    assert(item);
+//    // if the upload has failed (connection reset for instance), don't remove this item from the local uploading list, we want it to retry at the next session
+//    if (item.status == SongUploadItemStatusCompleted)
+
+        
     [self refreshStoredUploads];
+    
+    [self loop];  
 }
 
 - (void)onNotificationCancel:(NSNotification *)notification

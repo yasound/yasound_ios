@@ -15,7 +15,9 @@
 @property (nonatomic, assign) SongUploadItem* item;
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* labelStatus;
+
 @property (nonatomic, retain) UIProgressView* progressView;
+@property (nonatomic, retain) UILabel* progressLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadItem*)item;
 
