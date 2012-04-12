@@ -450,7 +450,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "APNs_UIR" = "%@ écoute votre radio";
 "APNs_FIR" = "%@ écoute votre radio";
-"APNs_FOn" = "%@ vient de se connecter";
+"APNs_FOn" = "%@ s'est connecté";
 "APNs_Msg" = "%@ a posté un message sur votre mur";
 "APNs_Sng" = "%@ aime votre chanson '%@'";
 "APNs_RIF" = "%@ a ajouté votre radio à ses favoris";

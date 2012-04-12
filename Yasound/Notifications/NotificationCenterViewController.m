@@ -15,6 +15,7 @@
 #import "FriendsViewController.h"
 #import "RadioViewController.h"
 #import "MessageWeViewController.h"
+#import "ProfileViewController.h"
 
 @implementation NotificationCenterViewController
 
@@ -132,6 +133,13 @@
   [view release];
 }
 
+- (void)goToFriendProfile: (User*)user
+{
+  ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:user];
+  [self.navigationController pushViewController:view animated:YES];
+  [view release];
+}
+
 - (void)goToRadio:(NSNumber*)radioID
 {
   [[YasoundDataProvider main] radioWithId:radioID target:self action:@selector(receivedRadio:withInfo:)];
@@ -164,8 +172,15 @@
   switch (t) 
   {
     case eAPNsNotif_FriendOnline:
+    {
       NSLog(@"go to friend screen");
-      [self goToFriendsViewController];
+      User* user = [[User alloc] init];
+      user.id = [notifInfo userID];
+      if (user.id != nil)
+        [self goToFriendProfile: user];
+      else
+        [self goToFriendsViewController];
+    }
       break;
       
     case eAPNsNotif_UserInRadio:
