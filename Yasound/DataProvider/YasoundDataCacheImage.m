@@ -67,28 +67,27 @@ static YasoundDataCacheImageManager* _main;
     if (!res)
     {
         NSLog(@"error deleting the cache directory! Error - %@", [error localizedDescription]);
+        assert(0);
     }
-    else 
+    
+    // delete db file
+    [self.db close];
+    
+    // delete memory cache
+    [self.memoryCacheImages release];
+    
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
+    NSString* dbPath = [paths objectAtIndex:0]; 
+    dbPath = [dbPath stringByAppendingPathComponent:@"cache.db"];
+
+    res = [[NSFileManager defaultManager] removeItemAtPath:dbPath error:&error];
+    if (!res)
     {
-        // delete db file
-        [self.db close];
-        [self.db release];
-        
-        // delete memory cache
-        [self.memoryCacheImages release];
-        
-        NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
-        NSString* dbPath = [paths objectAtIndex:0]; 
-        dbPath = [dbPath stringByAppendingPathComponent:@"cache.db"];
-
-        BOOL res = [[NSFileManager defaultManager] removeItemAtPath:dbPath error:&error];
-        if (!res)
-        {
-            NSLog(@"error deleting the DB file! Error - %@", [error localizedDescription]);
-        }
-
-        
+        NSLog(@"error deleting the DB file! Error - %@", [error localizedDescription]);
+        assert(0);
     }
+
+        
 
     
     // and init the whole thing again... 
