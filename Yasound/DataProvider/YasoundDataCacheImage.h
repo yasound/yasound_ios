@@ -22,10 +22,13 @@
 
 
 + (YasoundDataCacheImageManager*)main;
+
 - (void)addItem:(YasoundDataCacheImage*)item;
 - (void)loop;
-
 - (void)dump;
+
+// be careful
+- (void)clear;
 
 @end
 

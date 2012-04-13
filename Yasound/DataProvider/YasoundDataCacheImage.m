@@ -48,6 +48,14 @@ static YasoundDataCacheImageManager* _main;
 }
 
 
+// be careful
+- (void)clear
+{
+    NSLog(@"YasoundDataCacheImageManager::clear : empty the cache and the DB");
+    [self resetDB];
+}
+
+
 - (void)resetDB
 {
     // empty fifo

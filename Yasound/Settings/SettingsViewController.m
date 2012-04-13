@@ -18,10 +18,12 @@
 #import "AccountTwitterViewController.h"
 #import "AccountYasoundViewController.h"
 #import "NotificationViewController.h"
-
-
+#import "YasoundDataCache.h"
+#import "YasoundDataCacheImage.h"
 
 #define NB_SECTIONS 4
+
+
 
 #define SECTION_CONFIG 0
 #define ROW_CONFIG_TITLE 0
@@ -43,6 +45,16 @@
 #define SECTION_NOTIFS 3
 #define SECTION_NOTIFS_NB_ROWS 1
 #define ROW_NOTIFS 0
+
+#ifdef DEBUG
+#undef NB_SECTIONS
+#define NB_SECTIONS 5
+#define SECTION_CACHE 4
+#define SECTION_CACHE_NB_ROWS 1
+#define ROW_CACHE 0
+#endif
+
+
 
 
 @implementation SettingsViewController
@@ -237,6 +249,11 @@
     if (section == SECTION_NOTIFS)
         return SECTION_NOTIFS_NB_ROWS;
 
+#ifdef DEBUG
+    if (section == SECTION_CACHE)
+        return SECTION_CACHE_NB_ROWS;
+#endif
+
     return 0;
 }
 
@@ -275,6 +292,11 @@
 
     else if (section == SECTION_NOTIFS)
         title = NSLocalizedString(@"SettingsView_section_notifs", nil);
+
+#ifdef DEBUG
+    else if (section == SECTION_CACHE)
+        title = @"Cache";
+#endif
 
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -315,6 +337,11 @@
     else if (indexPath.section == SECTION_NOTIFS)
         nbRows =  SECTION_NOTIFS_NB_ROWS;
 
+#ifdef DEBUG
+    else if (indexPath.section == SECTION_CACHE)
+        nbRows =  SECTION_CACHE_NB_ROWS;
+#endif
+    
     if (nbRows == 1)
     {
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
@@ -402,18 +429,21 @@
         if (indexPath.row == ROW_ACCOUNTS_FACEBOOK)
         {
             cell.textLabel.text = @"Facebook";  
+            cell.detailTextLabel.text = @"";
 //            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsFacebook" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //            [cell.imageView setImage:[sheet image]];
         }
         else if (indexPath.row == ROW_ACCOUNTS_TWITTER)
         {
             cell.textLabel.text = @"Twitter";
+            cell.detailTextLabel.text = @"";
 //            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsTwitter" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //            [cell.imageView setImage:[sheet image]];
         }
         else if (indexPath.row == ROW_ACCOUNTS_YASOUND)
         {
             cell.textLabel.text = @"Yasound";
+            cell.detailTextLabel.text = @"";
 //            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsYasound" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //            [cell.imageView setImage:[sheet image]];
         }
@@ -426,8 +456,21 @@
         
         cell.detailTextLabel.textColor = [UIColor whiteColor];
         cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.text = @"";
     }
 
+#ifdef DEBUG
+    else if (indexPath.section == SECTION_CACHE)
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = @"Empty the cache";
+        
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.text = @"";
+    }
+#endif
+    
     
     return cell;
 }
@@ -498,8 +541,19 @@
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }
+
+#ifdef DEBUG
+    else if (indexPath.section == SECTION_CACHE)
+    {
+        _cacheQuery = [[UIActionSheet alloc] initWithTitle:@"Empty the cache?" delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:@"Empty the cache", nil];
+        _cacheQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [_cacheQuery showInView:self.view];
+        [_cacheQuery release];
+    }
+#endif
     
 }
+
 
 
 
@@ -760,6 +814,23 @@
         
         return;
     }
+    
+#ifdef DEBUG
+    if (actionSheet == _cacheQuery)
+    {
+        // be careful!
+        if (buttonIndex == 0)
+        {
+            [[YasoundDataCache main] clearRadiosAll];
+            [[YasoundDataCache main] clearCurrentSongs];
+            [[YasoundDataCache main] clearFriends];
+            [[YasoundDataCacheImageManager main] clear];
+
+            [ActivityAlertView showWithTitle:@"ok" closeAfterTimeInterval:1];
+        }
+        return;
+    }
+#endif
 }
 
 
