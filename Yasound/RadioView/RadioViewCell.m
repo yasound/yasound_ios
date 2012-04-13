@@ -167,6 +167,18 @@
 	// Configure the view for the selected state
 }
 
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview 
+{
+    [super willMoveToSuperview:newSuperview];
+    if(!newSuperview) 
+    {
+        [self.avatar releaseCache];
+    }
+}
+
+
 @end
 
 
