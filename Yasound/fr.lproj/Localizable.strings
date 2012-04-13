@@ -22,7 +22,7 @@
 "style_reggae" = "Reggae";
 "style_rock" = "Rock";
 "style_metal" = "Metal";
-"style_hiphop" = "Hip hop";
+"style_hiphop" = "Hip Hop";
 "style_rnbsoul" = "Rnb / Soul";
 "style_world" = "World";
 "style_divers" = "Divers";
@@ -207,12 +207,12 @@
 "ProgrammingView_error_no_playlist_message" = "une erreur est survenue : aucune playlist n'a été détectée.";
 "ProgrammingView_segment_titles" = "Titres";
 "ProgrammingView_segment_artists" = "Artistes";
-"ProgrammingView_unknownArtist" = "#Artist inconnu";
+"ProgrammingView_unknownArtist" = "#Artiste inconnu";
 "ProgrammingView_unknownAlbum" = "Album inconnu";
 "ProgramminView_nb_albums_1" = "1 album";
 "ProgramminView_nb_albums_n" = "%d albums";
-"ProgramminView_nb_songs_1" = "1 song";
-"ProgramminView_nb_songs_n" = "%d songs";
+"ProgramminView_nb_songs_1" = "1 morceau";
+"ProgramminView_nb_songs_n" = "%d morceaux";
 "ProgrammingView_subtitle_error" = "erreur";
 
 "SongView_title" = "Song";
@@ -305,10 +305,10 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "NotifLikeReceived" = "Un auditeur aime une chanson";
 "NotifSubscriptionReceived" = "Un auditeur l'ajoute à ses favoris";
 "NotifRadioShared" = "Un auditeur la partage";
-"NotifNewFriendRadio" = "Un ami créé une radio";
+"NotifNewFriendRadio" = "Un ami crée une radio";
 
-"NotifSectionRadio" = "activité de ma radio";
-"NotifSectionGeneral" = "activité de mes amis";
+"NotifSectionRadio" = "Activité de ma radio";
+"NotifSectionGeneral" = "Activité de mes amis";
 
 
 "AccountsView_username_label" = "Nom d'utilisateur";
@@ -366,9 +366,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "RadioView_favorite_removed" = "supprimée des favoris!";
 "RadioView_track_like" = "J'aime!";
 "RadioView_track_dislike" = "J'aime pas!";
-"RadioView_track_add" = "Track ajoutée à ma radio!";
+"RadioView_track_add" = "Morceau ajouté à ma radio!";
 
-"TracksView_no_tracks" = "aucune track programmée!";
+"TracksView_no_tracks" = "aucun morceau programmé!";
 
 "RadioView_track_share_error" = "Erreur";
 "RadioView_track_share_facebook_error" = "Impossible de poster le message sur votre wall Facebook.";
@@ -392,7 +392,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 - photos chastes\
 - vous devez respecter les lois de votre pays de résidence.\
 \n\n\
-2. Vous devez posséder tous les copyrights du contenu que vous uploadez sur Yasound.\n\
+2. Vous devez posséder tous les droits du contenu que vous uploadez sur Yasound.\n\
 \n\n\
 ";
 
@@ -412,10 +412,10 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "SongsView_click_to_synchronize" = "cliquer pour synchroniser";
 "SongsView_upload_progress" = "Synchronisation";
 
-"Facebook_AppRequest_Message" = "Rejoignez-moi sur Yasound. Vous pourrez écouter ma radio, créer la votre et découvrir de nouveaux artistes gratuitement.";
+"Facebook_AppRequest_Message" = "Rejoignez-moi sur Yasound pour écouter une multitude de radios et créer la vôtre gratuitement.";
 "InviteFacebookFriends_button_text" = "Inviter mes amis Facebook";
 "InviteTwitterFriends_button_text" = "Inviter mes amis Twitter";
-"Twitter_AppRequest_Message" = "Rejoignez-moi sur #Yasound pour écouter ma radio, créer la votre et découvrir de nouveaux artistes gratuitement http://yasound.com";
+"Twitter_AppRequest_Message" = "Rejoignez-moi sur #Yasound pour écouter une multitude de radios et créer la vôtre gratuitement: http://yasound.com";
 "Twitter_AppRequest_Title" = "Inviter mes amis Twitter";
 "Twitter_AppRequest_AlertTitle" = "Envoi de l'invitation sur Twitter...";
 
@@ -451,9 +451,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "APNs_UIR" = "%@ écoute votre radio";
 "APNs_FIR" = "%@ écoute votre radio";
-"APNs_FOn" = "%@ s'est connecté";
+"APNs_FOn" = "%@ s'est connecté à Yasound";
 "APNs_Msg" = "%@ a posté un message sur votre mur";
-"APNs_Sng" = "%@ aime votre chanson '%@'";
+"APNs_Sng" = "%@ aime votre titre '%@'";
 "APNs_RIF" = "%@ a ajouté votre radio à ses favoris";
 "APNs_RSh" = "%@ a partagé votre radio";
 "APNs_FCR" = "%@ a créé sa radio";

@@ -426,10 +426,10 @@
 "SongsView_click_to_synchronize" = "Click to synchronize";
 "SongsView_upload_progress" = "Synchronizing";
 
-"Facebook_AppRequest_Message" = "Join me on Yasound. You can listen to my radio, create your own and discover new artists for free.";
+"Facebook_AppRequest_Message" = "Join me on Yasound, listen to many radios and create your own for free.";
 "InviteFacebookFriends_button_text" = "Invite my Facebook friends";
 "InviteTwitterFriends_button_text" = "Invite my Twitter followers";
-"Twitter_AppRequest_Message" = "Join me on #Yasound, listen to my radio, create your's and discover new artists! http://yasound.com";
+"Twitter_AppRequest_Message" = "Join me on #Yasound, listen to many radios and create your own for free: http://yasound.com";
 "Twitter_AppRequest_Title" = "Invite my Twitter followers";
 "Twitter_AppRequest_AlertTitle" = "Posting the invitation to your followers...";
 
@@ -462,9 +462,9 @@
 "RadioSearch_CategoryRadioSong_SectionTitle" = "title, artist, album";
 
 
-"APNs_UIR" = "%@ started listening to your radio";
-"APNs_FIR" = "%@ started listening to your radio";
-"APNs_FOn" = "%@ has connected";
+"APNs_UIR" = "%@ is listening to your radio";
+"APNs_FIR" = "%@ is listening to your radio";
+"APNs_FOn" = "%@ is online on Yasound";
 "APNs_Msg" = "%@ posted a message on your wall";
 "APNs_Sng" = "%@ liked '%@' on your radio";
 "APNs_RIF" = "%@ added your radio as a favorite";
