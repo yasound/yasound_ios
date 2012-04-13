@@ -233,6 +233,7 @@
 
     if (shareFacebook)
     {
+        [[YasoundDataProvider main] radioHasBeenShared:currentRadio];
         _sharingFacebook = YES;
         
         NSLog(@"postMessageForFacebook : %@", self.shareFullMessage);
@@ -246,6 +247,7 @@
 
     if (shareTwitter)
     {
+        [[YasoundDataProvider main] radioHasBeenShared:currentRadio];
         _sharingTwitter = YES;
         
         NSLog(@"postMessageForTwitter : %@", self.shareFullMessage);
