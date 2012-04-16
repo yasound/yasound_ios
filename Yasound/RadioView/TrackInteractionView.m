@@ -191,8 +191,6 @@
         [self.shareButtons setObject:LOGIN_TYPE_TWITTER forKey:[NSString stringWithFormat:@"%d", index]];
     }
     
-    //LBDEBUG
-    NSLog(@"self.shareButtons %@", self.shareButtons);
 
 //    if (yasound)
 //    {
