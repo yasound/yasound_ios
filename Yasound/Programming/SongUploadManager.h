@@ -48,8 +48,9 @@
 
 #define NOTIF_UPLOAD_DIDFINISH @"NOTIF_UploadDidFinish"
 #define NOTIF_UPLOAD_DIDCANCEL @"NOTIF_UploadDidCancel"
-#define NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH @"NOTIF_UploadDidCancelNeedGuiRefresh"
 #define NOTIF_UPLOAD_DIDINTERRUPT @"NOTIF_UploadDidInterrupt"
+
+#define NOTIF_SONG_GUI_NEED_REFRESH @"NOTIF_GuiNeedRefresh"
 
 #define NOTIF_UPLOAD_DIDSUCCEED @"NOTIF_UploadDidSucceed"
 #define NOTIF_UPLOAD_DIDFAIL @"NOTIF_UploadDidFail"
@@ -61,7 +62,8 @@
 @required
 
 - (void)songUploadDidStart:(Song*)song;
-- (void)songUploadProgress:(Song*)song progress:(CGFloat)progress;
+- (void)songUploadDidInterrupt:(Song*)song;
+- (void)songUploadProgress:(Song*)song progress:(CGFloat)progress bytes:(NSUInteger)bytes;
 - (void)songUploadDidFinish:(Song*)song info:(NSDictionary*)info;
 
 @end
@@ -79,13 +81,17 @@ typedef enum SongUploadItemStatus
 @interface SongUploadItem : NSObject
 {
     SongUploader* _uploader;
-    
 }
 
 @property (nonatomic, retain) Song* song;
 @property (nonatomic) CGFloat currentProgress;
+@property (nonatomic) NSUInteger currentSize;
 @property (nonatomic) SongUploadItemStatus status;
+@property (nonatomic) NSInteger nbFails;
+@property (nonatomic, retain) NSString* detailedInfo;
 @property (nonatomic, retain) id<SongUploadItemDelegate> delegate;
+//@property (nonatomic, retain) SongUploader* uploader;
+
 
 - (id)initWithSong:(Song*)aSong;
 - (void)startUpload;
@@ -103,7 +109,7 @@ typedef enum SongUploadItemStatus
 @interface SongUploadManager : NSObject
 
 @property (atomic, retain, readonly) NSMutableArray* items;
-@property (nonatomic)  BOOL interrupted;
+@property (nonatomic)  BOOL isRunning;
 @property (nonatomic) BOOL notified3G;
 
 

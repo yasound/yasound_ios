@@ -20,7 +20,7 @@
     
     UIActionSheet* _saveQuery;
     UIActionSheet* _pickImageQuery;
-
+    UIActionSheet* _cacheQuery;
     
     IBOutlet UIView* _container;
     

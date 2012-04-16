@@ -67,12 +67,12 @@
 
 @implementation AuthSocial
 
-- (id)initWithUsername:(NSString *)name  accountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token andEmail:(NSString*)email
+- (id)initWithUsername:(NSString *)name  accountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token expirationDate:(NSString*)expirationDate andEmail:(NSString*)email
 {
   self = [super initWithUsername:name];
   if (self)
   {
-    [self fillAccountType:type uid:uid token:token tokenSecret:nil andEmail:email];
+    [self fillAccountType:type uid:uid token:token expirationDate:expirationDate tokenSecret:nil andEmail:email];
   }
   return self;
 }
@@ -82,16 +82,17 @@
   self = [super initWithUsername:name];
   if (self)
   {
-    [self fillAccountType:type uid:uid token:token tokenSecret:tokenSecret andEmail:email];
+    [self fillAccountType:type uid:uid token:token expirationDate:nil tokenSecret:tokenSecret andEmail:email];
   }
   return self;
 }
 
-- (void)fillAccountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token tokenSecret:(NSString*)tokenSecret andEmail:(NSString*)email;
+- (void)fillAccountType:(NSString*)type uid:(NSString*)uid token:(NSString*)token expirationDate:(NSString*)expirationDate tokenSecret:(NSString*)tokenSecret andEmail:(NSString*)email;
 {
   _accountType = type;
   _uid = uid;
   _token = token;
+    _expirationDate = expirationDate;
   _tokenSecret = tokenSecret;
   _email = email;
 }
@@ -105,6 +106,8 @@
   [params addObject:[NSString stringWithFormat:@"token=%@", _token]];
   [params addObject:[NSString stringWithFormat:@"name=%@", username]];
   [params addObject:[NSString stringWithFormat:@"email=%@", _email]];
+    if (_expirationDate)
+        [params addObject:[NSString stringWithFormat:@"expiration_date=%@", _expirationDate]];
   if (_tokenSecret)
     [params addObject:[NSString stringWithFormat:@"token_secret=%@", _tokenSecret]];
   return params;

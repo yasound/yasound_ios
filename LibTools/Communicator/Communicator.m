@@ -45,6 +45,8 @@
     
     if (action)
         [target performSelector:action withObject:obj1 withObject:obj2];
+    
+    //LBDEBUG heuuuu c'est un peu chaud chaud de faire ça non? à voir avec mat...
     [target release];
 }
 
@@ -67,7 +69,7 @@
     
     if (slash && ![path hasSuffix:@"/"])
         path = [path stringByAppendingString:@"/"];
-    
+
     NSURL* url;
     if (absolute)
         url = [NSURL URLWithString:path];
@@ -81,7 +83,6 @@
     
     url = [self URLWithURL:url andParams:params];
     
-    // NSLog(@"url: %@", url.absoluteString);
     return url;
 }
 
@@ -288,8 +289,9 @@
 {
     if (!req)
         [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
-    
+
     NSMutableDictionary* userinfo = [[NSMutableDictionary alloc] init];
+
     [userinfo setValue:target forKey:@"target"];
     [userinfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
     [userinfo setValue:@"GET_ALL" forKey:@"method"];
@@ -653,7 +655,9 @@
     Class objectClass            = [userinfo valueForKey:@"objectClass"];
     BOOL returnNewObject = [[userinfo valueForKey:@"returnNewObject"] boolValue];
     Auth* authForGET = [userinfo valueForKey:@"authForGET"];
-    NSDictionary* userData = [userinfo valueForKey:@"userData"];
+    
+    NSMutableDictionary* userData = [NSMutableDictionary dictionaryWithDictionary:[userinfo valueForKey:@"userData"]];
+    [userData setObject:[NSNumber numberWithInteger:request.responseStatusCode] forKey:@"responseStatusCode"];
     
     NSString* response = request.responseString;
     
@@ -704,6 +708,8 @@
     NSMutableDictionary* data = [[NSMutableDictionary alloc] init];
     [data setValue:userData forKey:@"userData"];
     [data setObject:[NSNumber numberWithBool:succeeded] forKey:@"succeeded"];
+    if (!succeeded)
+        [data setObject:[NSString stringWithString:@"SongUpload_failedUploading"] forKey:@"detailedInfo"];
     
     NSString* response = request.responseString;
     
@@ -779,6 +785,7 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
+  NSLog(@"request (%p) FINISHED", request);
   BOOL success = YES;
   if (request.responseStatusCode / 100 == 4 || request.responseStatusCode / 100 == 5)
     success = NO;
@@ -788,8 +795,41 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+  NSLog(@"\nrequest.url = %@  request.response.statusCode = %d", request.url.absoluteString, request.responseStatusCode);
+  NSLog(@"request (%p) FAILED", request);
     [self handleResponse:request success:NO];
 }
+
+//- (void)requestStarted:(ASIHTTPRequest *)request
+//{
+//  NSLog(@"request (%p) STARTED", request);
+//}
+//
+//- (void)request:(ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders
+//{
+//  NSLog(@"request (%p) RECIEVED response headers", request);
+//}
+//
+//- (void)request:(ASIHTTPRequest *)request willRedirectToURL:(NSURL *)newURL
+//{
+//  [request redirectToURL:newURL];
+//  NSLog(@"request (%p) will REDIRECT to url '%@'", request, newURL.absoluteString);
+//}
+//
+//- (void)requestRedirected:(ASIHTTPRequest *)request
+//{
+//  NSLog(@"request (%p) REDIRECTED", request);
+//}
+//
+//- (void)authenticationNeededForRequest:(ASIHTTPRequest *)request
+//{
+//  NSLog(@"request (%p) AUTHENTICATION needed", request);
+//}
+//
+//- (void)proxyAuthenticationNeededForRequest:(ASIHTTPRequest *)request
+//{
+//  NSLog(@"request (%p) PROXY AUTHENTICATION needed", request);
+//}
 
 @end
 
@@ -828,9 +868,9 @@
         {
             urlStr = [urlStr stringByAppendingString:@"&"];
         }
-        urlStr = [urlStr stringByAppendingString:p];
+        urlStr = [urlStr stringByAppendingString:[p stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     }
-    NSURL* new = [NSURL URLWithString:[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL* new = [NSURL URLWithString:urlStr];
     return new;
 }
 
@@ -851,6 +891,7 @@
         AuthPassword* a = (AuthPassword*)auth;
         request.username = a.username;
         request.password = a.password;
+        [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];        
     }
     else if ([auth isKindOfClass:[AuthApiKey class]])
     {
@@ -878,6 +919,8 @@
     {
         [request.requestCookies addObject:self.appCookie];
     }
+    // TODO: get locale of device in order to send appropriated headers
+    [request addRequestHeader:@"Accept-Language" value:NSLocalizedString(@"ACCEPT_LANGUAGE", @"")];
 }
 
 - (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withUrlParams:(NSArray*)params withAuth:(Auth*)auth
@@ -942,6 +985,33 @@
     return req;
 }
 
+
+
+- (ASIFormDataRequest*)buildPostRequestToURL:(NSString *)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary *)userData withAuth:(Auth *)auth
+{
+    NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
+    NSLog(@"postRequestToURL '%@'", u.absoluteString);
+    if (!u)
+    {
+        NSLog(@"postRequestToURL: invalid url");
+        return;
+    }
+
+    NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+    [userInfo setValue:target forKey:@"target"];
+    [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
+    [userInfo setValue:@"POST" forKey:@"method"];
+    [userInfo setValue:userData forKey:@"userData"];
+
+    ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
+    req.userInfo = userInfo;
+    req.delegate = self;
+    [self applyAuth:auth toRequest:req];
+    [self fillRequest:req];
+//    [req startAsynchronous]; // let the parent do that
+
+    return req;
+}
 
 
 - (ASIHTTPRequest*)postRequestForURL:(NSString*)path absolute:(BOOL)isAbsolute withStringData:(NSString*)stringData withAuth:(Auth*)auth

@@ -9,6 +9,9 @@
 #import "Reachability.h"
 
 
+#define NOTIF_REACHABILITY_CHANGED @"NOTIF_ReachabilityChanged"
+
+
 typedef enum
 {
     YR_PENDING = 0,

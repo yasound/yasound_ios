@@ -65,6 +65,8 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
           [val loadPropertiesFromDictionary:dictVal];
         }
     }
+    if ([val isKindOfClass:[NSNull class]])
+      val = nil;
     [self setValue:val forKey:propName]; 
   }
   free(properties);

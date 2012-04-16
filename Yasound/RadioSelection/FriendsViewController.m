@@ -14,10 +14,11 @@
 #import "ActivityModelessSpinner.h"
 #import "UserTableViewCell.h"
 #import "YasoundDataCache.h"
+#import "ProfileViewController.h"
 
-#import "FacebookSessionManager.h"
+#import "YasoundSessionManager.h"
 
-#define SHOW_INVITE_BUTTON 0
+#define SHOW_INVITE_BUTTON 1
 
 @implementation FriendsViewController
 
@@ -62,8 +63,10 @@
   [_toolbar release];
   [_toolbarTitle release];
   [_nowPlayingButton release];
-  [_cellInvite release];
-  [_cellInviteLabel release];
+  [_cellInviteFacebook release];
+  [_cellInviteFacebookLabel release];
+  [_cellInviteTwitter release];
+  [_cellInviteTwitterLabel release];
   [super dealloc];
 }
 
@@ -87,7 +90,8 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
   
-    _cellInviteLabel.text = NSLocalizedString(@"InviteFriends_button_text", nil);
+  _cellInviteFacebookLabel.text = NSLocalizedString(@"InviteFacebookFriends_button_text", nil);
+  _cellInviteTwitterLabel.text = NSLocalizedString(@"InviteTwitterFriends_button_text", nil);
 }
 
 - (void)viewDidUnload
@@ -141,7 +145,7 @@
     {
         if (f.current_radio)
             [online addObject:f];
-        else if (f.own_radio && [f.own_radio.ready boolValue])
+        else
             [offline addObject:f];
     }
     
@@ -201,7 +205,12 @@
 #if SHOW_INVITE_BUTTON
     if (section == SECTION_INVITE_BUTTON)
     {
-        return 1;
+      int count = 0;
+      if ([[YasoundSessionManager main] getFacebookManager])
+        count ++;
+      if ([[YasoundSessionManager main] getTwitterManager])
+        count ++;
+      return count;
     }
     else if (section == SECTION_ONLINE)
     {
@@ -331,7 +340,14 @@
 #if SHOW_INVITE_BUTTON
     if (indexPath.section == SECTION_INVITE_BUTTON)
     {
-        return _cellInvite;
+      id tab[2];
+      int i = 0;
+      if ([[YasoundSessionManager main] getFacebookManager])
+        tab[i++] = _cellInviteFacebook;
+      if ([[YasoundSessionManager main] getTwitterManager])
+        tab[i++] = _cellInviteTwitter;
+      NSInteger rowIndex = indexPath.row;
+        return tab[rowIndex];
     }
 #endif
     
@@ -367,42 +383,58 @@
 #if SHOW_INVITE_BUTTON
     if (indexPath.section == SECTION_INVITE_BUTTON)
     {
-        [self inviteButtonClicked:nil];
-        return;
+      int i = indexPath.row;
+      if ([[YasoundSessionManager main] getFacebookManager] && !i--)
+        [self inviteFacebookButtonClicked:nil];
+      else if ([[YasoundSessionManager main] getTwitterManager] && !i--)
+        [self inviteTwitterButtonClicked:nil];
+      else
+      {
+        // we should never get there!
+        assert(0);
+      }
+      return;
     }
 #endif
-    
+
     UserTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    
     _selectedFriend = cell.user;
-    Radio* currentRadio = nil;
-    Radio* ownRadio = nil;
-    if (_selectedFriend.current_radio)
-        currentRadio = _selectedFriend.current_radio;
-    if (_selectedFriend.own_radio && [_selectedFriend.own_radio.ready boolValue])
-        ownRadio = _selectedFriend.own_radio;
-  
-  if (!currentRadio && !ownRadio)
-    return;
-  
-  if (currentRadio && ownRadio && [currentRadio.id intValue] != [ownRadio.id intValue])
-  {
-    UIActionSheet* joiinRadioSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"GoTo_FriendRadio_Title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"GoTo_FriendRadioCancel_Label", nil)destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"GoTo_FriendCurrentRadio_Label", nil), NSLocalizedString(@"GoTo_FriendRadio_Label", nil), nil];
-    joiinRadioSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    [joiinRadioSheet showInView:self.view];
-  }
-  else if (currentRadio)
-  {
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:currentRadio];
+
+    ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:_selectedFriend];
     [self.navigationController pushViewController:view animated:YES];
-    [view release];  
-  }
-  else if (ownRadio)
-  {
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:ownRadio];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];  
-  }  
+    [view release];
+
+//    UserTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+//    
+//    _selectedFriend = cell.user;
+//    Radio* currentRadio = nil;
+//    Radio* ownRadio = nil;
+//    if (_selectedFriend.current_radio)
+//        currentRadio = _selectedFriend.current_radio;
+//    if (_selectedFriend.own_radio && [_selectedFriend.own_radio.ready boolValue])
+//        ownRadio = _selectedFriend.own_radio;
+//  
+//  if (!currentRadio && !ownRadio)
+//    return;
+//  
+//  if (currentRadio && ownRadio && [currentRadio.id intValue] != [ownRadio.id intValue])
+//  {
+//    UIActionSheet* joiinRadioSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"GoTo_FriendRadio_Title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"GoTo_FriendRadioCancel_Label", nil)destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"GoTo_FriendCurrentRadio_Label", nil), NSLocalizedString(@"GoTo_FriendRadio_Label", nil), nil];
+//    joiinRadioSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+//    [joiinRadioSheet showInView:self.view];
+//  }
+//  else if (currentRadio)
+//  {
+//    RadioViewController* view = [[RadioViewController alloc] initWithRadio:currentRadio];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];  
+//  }
+//  else if (ownRadio)
+//  {
+//    RadioViewController* view = [[RadioViewController alloc] initWithRadio:ownRadio];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];  
+//  }  
 }
 
 
@@ -458,9 +490,14 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)inviteButtonClicked:(id)sender
+- (IBAction)inviteFacebookButtonClicked:(id)sender
 {
   [[FacebookSessionManager facebook] inviteFriends];
+}
+
+- (IBAction)inviteTwitterButtonClicked:(id)sender
+{
+    [[TwitterSessionManager twitter] inviteFriends:self.view];
 }
 
 

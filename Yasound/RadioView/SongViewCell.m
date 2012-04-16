@@ -53,10 +53,6 @@
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
     {
-//        //LBDEBUG ICI
-//        if (height == 0)
-//            return self;
-        
         BundleStylesheet* sheet = nil;
         
         UIView* view = self.contentView;
@@ -76,27 +72,6 @@
         self.message.text = [NSString stringWithFormat:@"%@ - %@", ev.song_artist, ev.song_name];
         [view addSubview:self.message];
 
-        
-        
-//        self.background = self.contentView;
-//        UIView* view = self.background;
-        
-//        // background color
-//        if (indexPath.row & 1)
-//            sheet = [[Theme theme] stylesheetForKey:@"CellBackground1" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        else
-//            sheet = [[Theme theme] stylesheetForKey:@"CellBackground0" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        view.backgroundColor = sheet.color;
-        
-//        view.backgroundColor = [UIColor clearColor];
-        
-        
-//        sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-//        imageView.frame = CGRectMake(0, bkg.frame.origin.y + bkg.frame.size.height + sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
-//        [view addSubview:imageView];
-        
-
     }
     return self;
 }
@@ -106,35 +81,8 @@
 {
     BundleStylesheet* sheet = nil;
     
-//    //LBDEBUG ICI
-//    if (height == 0)
-//        return;
-
-    // background color
-//    if (indexPath.row & 1)
-//        sheet = [[Theme theme] stylesheetForKey:@"CellBackground1" error:nil];
-//    else
-//        sheet = [[Theme theme] stylesheetForKey:@"CellBackground0" error:nil];
-//    self.background.backgroundColor = sheet.color;
-//    self.backgroundColor = [UIColor clearColor];
-    
-    // avatar
-//    [self.avatar setImage:image];
-    
-    // date
-//    self.date.text = [self dateToString:m.date];
     self.date.text = [self dateToString:ev.start_date];
-    
-    // user
-//    self.user.text = m.user;
-//    self.user.text = ev.user.name;
-    
-    // message
-//    self.message.text = m.te;
-//    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, m.textHeight);
-
     self.message.text = ev.song_name;
-//    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, height);
 }
 
 

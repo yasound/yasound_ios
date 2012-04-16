@@ -25,8 +25,15 @@
 #import "YasoundAppDelegate.h"
 #import "ProgrammingViewController.h"
 
+#import "NotificationCenterViewController.h"
+#import "YasoundNotifCenter.h"
+
+
+
 
 @implementation MenuViewController
+
+#define NB_SECTIONS 4
 
 #define SECTION_MYRADIO 0
 #define SECTION_MYRADIO_NB_ROWS 1
@@ -41,10 +48,13 @@
 #define ROW_RADIOS_SEARCH 4
 
 #define SECTION_ME 2
-#define SECTION_ME_NB_ROWS 3
-#define ROW_ME_STATS 0
-#define ROW_ME_PROGRAMMING 1
-#define ROW_ME_CONFIG 2
+#define SECTION_ME_NB_ROWS 4
+
+#define ROW_ME_NOTIFS 0
+#define ROW_ME_STATS 1
+#define ROW_ME_PROGRAMMING 2
+#define ROW_ME_CONFIG 3
+
 
 #define SECTION_MISC 3
 #define SECTION_MISC_NB_ROWS 2
@@ -52,12 +62,13 @@
 #define ROW_MISC_LOGOUT 1
 
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        // Custom initialization
+      _notificationsCell = nil;
     }
     return self;
 }
@@ -89,8 +100,7 @@
     
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
-    
-
+    [[YasoundNotifCenter main] addTarget:self action:@selector(unreadNotifCountChanged) forEvent:eAPNsUnreadNotifCountChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -113,6 +123,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+  
+  [[YasoundNotifCenter main] removeTarget:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -123,7 +135,14 @@
 
 
 
-
+- (void)unreadNotifCountChanged
+{
+  if (!_notificationsCell)
+    return;
+  
+  NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
+  [_notificationsCell setUnreadCount:unread];
+}
 
 
 #pragma mark - TableView Source and Delegate
@@ -132,7 +151,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return NB_SECTIONS;
 }
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -191,7 +210,7 @@
     
     else if (section == SECTION_ME)
         title = NSLocalizedString(@"MenuView_section_me", nil);
-    
+
     else if (section == SECTION_MISC)
         title = NSLocalizedString(@"MenuView_section_misc", nil);
 
@@ -295,12 +314,24 @@
 {
     static NSString *CellIdentifier = @"CellIdentifier";
     
-    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  UITableViewCell *cell = nil;
+  
+  if (indexPath.section == SECTION_ME && indexPath.row == ROW_ME_NOTIFS)
+  {
+    NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
+    if (!_notificationsCell)
+      _notificationsCell = [[NotificationTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil unreadCount:unread];
     
+    [_notificationsCell setUnreadCount:unread];
+    cell = _notificationsCell;
+  }
+  else
+  {
+    cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) 
-    {   
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+      cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];    
+  }
+  
 
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
     cell.textLabel.textColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1];
@@ -351,7 +382,13 @@
     
     else if (indexPath.section == SECTION_ME)
     {
-        if (indexPath.row == ROW_ME_STATS)
+      if (indexPath.row == ROW_ME_NOTIFS)
+      {
+        cell.textLabel.text = NSLocalizedString(@"MenuView_me_notifs", nil);            
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMeNotifs" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        [cell.imageView setImage:[sheet image]];
+      }
+        else if (indexPath.row == ROW_ME_STATS)
         {
             cell.textLabel.text = NSLocalizedString(@"MenuView_me_stats", nil);            
             BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMeStats" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -369,7 +406,10 @@
             BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMeSettings" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             [cell.imageView setImage:[sheet image]];
         }
+        
+        
     }
+    
     
     else if (indexPath.section == SECTION_MISC)
     {
@@ -439,7 +479,13 @@
     
     else if (indexPath.section == SECTION_ME)
     {
-        if (indexPath.row == ROW_ME_STATS)
+      if (indexPath.row == ROW_ME_NOTIFS)
+      {
+        NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+      }
+        else if (indexPath.row == ROW_ME_STATS)
         {
 //            StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil];
 //            
@@ -468,6 +514,9 @@
             [view release];
         }
     }
+    
+    
+    
     
     else if (indexPath.section == SECTION_MISC)
     {

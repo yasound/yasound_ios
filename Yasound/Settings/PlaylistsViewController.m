@@ -22,6 +22,7 @@
 
 #import "BundleFileManager.h"
 #import "Theme.h"
+#import "TimeProfile.h"
 
 
 
@@ -49,6 +50,8 @@
         
         _checkmarkImage = [UIImage imageNamed:@"WhiteCheckmark.png"];
         [_checkmarkImage retain];
+        _checkmarkDisabledImage = [UIImage imageNamed:@"GrayCheckmark.png"];
+        [_checkmarkDisabledImage retain];
     }
     
     return self;
@@ -129,8 +132,6 @@
         
         if (mediaPlaylist) 
             [_localPlaylistsDesc addObject:dico];
-        else
-            [_remotePlaylistsDesc addObject:dico];
 
         if (_wizard) 
         {
@@ -149,7 +150,29 @@
 
 - (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
 {
+    [[TimeProfile main] end:@"Playlists_download"];
+    [[TimeProfile main] logInterval:@"Playlists_download" inMilliseconds:NO];
+    
+    [[TimeProfile main] begin:@"Playlists_buildPlaylists"];
+
+    // build playlist
     [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
+
+     [[TimeProfile main] end:@"Playlists_buildPlaylists"];
+     [[TimeProfile main] logInterval:@"Playlists_buildPlaylists" inMilliseconds:NO];
+
+     [[TimeProfile main] begin:@"Playlists_catalogSongs"];
+
+    // build global songs catalog
+    MPMediaQuery* query = [MPMediaQuery songsQuery];
+    _songs = [query items];
+    [_songs retain];
+     
+     [[TimeProfile main] end:@"Playlists_catalogSongs"];
+     [[TimeProfile main] logInterval:@"Playlists_catalogSongs" inMilliseconds:NO];
+
+    
+    // refresh
     [self refreshView];
 
     [ActivityAlertView close];
@@ -168,12 +191,12 @@
 - (void)dealloc
 {
     [_checkmarkImage release];
+    [_checkmarkDisabledImage release];
     [_howto release];
     if (_songsViewController) {
         [_songsViewController release];
     }
     [_localPlaylistsDesc release];
-    [_remotePlaylistsDesc release];
     [_playlists release];
     [_playlistsDesc release];
     [_selectedPlaylists release];
@@ -256,11 +279,17 @@
 
     [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
     
+    [[TimeProfile main] begin:@"Playlists_catalogPlaylists"];
+
     MPMediaQuery *playlistsquery = [MPMediaQuery playlistsQuery];
     _playlistsDesc = [[NSMutableArray alloc] init];
     [_playlistsDesc retain];
     _playlists = [playlistsquery collections];
     [_playlists retain];
+    
+    [[TimeProfile main] end:@"Playlists_catalogPlaylists"];
+    [[TimeProfile main] logInterval:@"Playlists_catalogPlaylists" inMilliseconds:NO];
+
     
     if (([_playlists count] != 0) || _forceEnableNextBtn)
         _nextBtn.enabled = YES;
@@ -269,6 +298,9 @@
     
     
     [self.view addSubview:_tableView];
+    
+    
+    [[TimeProfile main] begin:@"Playlists_download"];
     
     Radio* radio = [YasoundDataProvider main].radio;
     [[YasoundDataProvider main] playlistsForRadio:radio 
@@ -284,9 +316,6 @@
     
     _localPlaylistsDesc = [[NSMutableArray alloc] init];
     [_localPlaylistsDesc retain];
-    
-    _remotePlaylistsDesc = [[NSMutableArray alloc] init];
-    [_remotePlaylistsDesc retain];
 }
 
 - (void)viewDidUnload
@@ -322,20 +351,10 @@
 #pragma mark - TableView Source and Delegate
 
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
-//{
-//    if (section == 1) {
-//        return NSLocalizedString(@"PlaylistsView_table_header_local_playlists", nil);
-//    } else if (section == 2) {
-//        return NSLocalizedString(@"PlaylistsView_table_header_other_playlists", nil);
-//    }
-//    return nil;
-//}
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 2;
 }
 
 
@@ -347,12 +366,8 @@
         NSInteger nbRows = [_localPlaylistsDesc count];
         return nbRows;
     }
-    else if (section == 2) {
-        NSInteger nbRows = [_remotePlaylistsDesc count];
-        return nbRows;
-    }
     
-    return 1;
+    return 2;
 }
 
 
@@ -435,12 +450,8 @@
     {
         nbRows = [_localPlaylistsDesc count];
     }
-    else if (indexPath.section == 2) 
-    {
-        nbRows = [_remotePlaylistsDesc count];
-    }
     
-    if (nbRows == 1)
+    if ((nbRows == 1) || ((indexPath.section == 0) && (indexPath.row == 1)))
     {
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
         cell.backgroundView = view;
@@ -469,13 +480,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if (indexPath.section == 0)
+    if ((indexPath.section == 0) && (indexPath.row == 0))
     {
         static NSString* CellIdentifier = @"CellHowto";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) 
+        {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        }
+        else
+        {
+            for (id child in cell.subviews)
+            {
+                if ([child isKindOfClass:[UILabel class]])
+                    [child removeFromSuperview];
+            }
+        }
+        
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -492,12 +514,65 @@
     
     
     
+    if ((indexPath.section == 0) && (indexPath.row == 1))
+    {
+        static NSString* CellIdentifier = @"CellSelect";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        _switchAllMyMusic = nil;
+        
+        if (cell == nil) 
+        {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+            _switchAllMyMusic = [[UISwitch alloc] init];
+            _switchAllMyMusic.frame = CGRectMake(cell.frame.size.width - _switchAllMyMusic.frame.size.width - 2*8, 8, _switchAllMyMusic.frame.size.width, _switchAllMyMusic.frame.size.height);
+            [cell addSubview:_switchAllMyMusic];
+
+            
+            cell.textLabel.backgroundColor = [UIColor clearColor];
+            cell.textLabel.textColor = [UIColor whiteColor];
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
+            
+            cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+            cell.detailTextLabel.textColor = [UIColor grayColor];
+            
+            _switchAllMyMusic.on = YES;
+            [_switchAllMyMusic addTarget:self action:@selector(onSwitch:) forControlEvents:UIControlEventValueChanged];
+            
+        }
+        else
+        {
+            for (id child in cell.subviews)
+            {
+                if ([child isKindOfClass:[UISwitch class]])
+                {
+                    _switchAllMyMusic = child;
+                    break;
+                }
+            }
+            
+            assert(_switchAllMyMusic != nil);
+        }
+
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        
+        cell.textLabel.text = NSLocalizedString(@"PlaylistsView_allMusic", nil);
+        
+        NSString* detail = NSLocalizedString(@"PlaylistsView_allMusic_detail", nil);
+        detail = [detail stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", _songs.count]];
+        cell.detailTextLabel.text = detail;
+        
+
+        return cell;
+    }
+    
+    
+    
     NSMutableArray *source = nil;
     
     if (indexPath.section == 1) 
         source = _localPlaylistsDesc;
-    else if (indexPath.section == 2)
-        source = _remotePlaylistsDesc;
     
     static NSString* CellIdentifier = @"Cell";
     
@@ -508,12 +583,23 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    // DISABLE THE CELL IF "ALL MY MUSIC" IS CHECKED
+    if (_switchAllMyMusic.on)
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    else
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    
     NSDictionary* dico = [source objectAtIndex:indexPath.row];
   
     BOOL neverSynchronized = [(NSNumber *)[dico objectForKey:@"neverSynchronized"] boolValue];
     cell.textLabel.text = [dico objectForKey:@"name"];
     cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    
+    if (_switchAllMyMusic.on)
+        cell.textLabel.textColor = [UIColor grayColor];
+    else
+        cell.textLabel.textColor = [UIColor whiteColor];
+    
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
     
     NSDictionary* selectedItem = [source objectAtIndex:indexPath.row];
@@ -570,8 +656,6 @@
     NSMutableArray* source = NULL;
     if (indexPath.section == 1) 
         source = _localPlaylistsDesc;
-    else if (indexPath.section == 2) 
-        source = _remotePlaylistsDesc;
 
     UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.selected = FALSE;
@@ -640,7 +724,12 @@
 {
     if (value)
     {
-        UIImageView *checkmark = [[UIImageView alloc] initWithImage:_checkmarkImage];
+        UIImageView *checkmark = nil;
+        if (!_switchAllMyMusic.on)
+            checkmark = [[UIImageView alloc] initWithImage:_checkmarkImage];
+        else
+            checkmark = [[UIImageView alloc] initWithImage:_checkmarkDisabledImage];
+        
         cell.accessoryView = checkmark;
         [checkmark release];
         return;
@@ -695,9 +784,6 @@
 
 
 
-
-
-
 #pragma mark - ActionSheet Delegate
 
 
@@ -718,12 +804,23 @@
     
 //    [[NSUserDefaults standardUserDefaults] synchronize];
     //    
-    [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists
-                                   removedPlaylists:_unselectedPlaylists
-                                             binary:YES 
-                                         compressed:YES 
-                                             target:self 
-                                             action:@selector(didBuildDataWithPlaylist:)];
+    if (_switchAllMyMusic.on)
+    {
+        [[PlaylistMoulinor main] buildDataWithSongs:_songs
+                                                 binary:YES 
+                                             compressed:YES 
+                                                 target:self 
+                                                 action:@selector(didBuildDataWithPlaylist:)];
+    }
+    else
+    {
+        [[PlaylistMoulinor main] buildDataWithPlaylists:_selectedPlaylists
+                                       removedPlaylists:_unselectedPlaylists
+                                                 binary:YES 
+                                             compressed:YES 
+                                                 target:self 
+                                                 action:@selector(didBuildDataWithPlaylist:)];
+    }
 }
 
 
@@ -731,7 +828,9 @@
 - (void) didBuildDataWithPlaylist:(NSData*)data
 {
     //LBDEBUG email playlist file
-    //  [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
+//      [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
+//    [ActivityAlertView close];
+//    return;
 
     Radio* radio = [YasoundDataProvider main].radio;
     NSLog(@"Playlists data package has been built.");
@@ -791,8 +890,20 @@
 - (void)receiveUpdatePLaylistsResponse:(taskID)task_id error:(NSError*)error
 {
   if (error)
-    NSLog(@"update playlists error %d", error.code);
-  else
+  {
+      NSLog(@"update playlists error %d", error.code);
+      NSLog(@"%@", error);
+      
+      [ActivityAlertView close];
+      
+      UIAlertView* av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:NSLocalizedString(@"PlaylistsView_submit_error_creating_radio", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+      [av show];
+      [av release];  
+
+      
+      return;
+  }
+    
     NSLog(@"playlists updated  task: %@", task_id);
     
     taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task_id repeats:YES];
@@ -821,8 +932,6 @@
     }
     else if (taskInfo.status == eTaskFailure)
     {
-        if ([taskTimer isValid])
-            [taskTimer invalidate];
         [self finalize];
     }
   else if (taskInfo.status == eTaskPending)
@@ -846,7 +955,6 @@
 
 
 
-//LBDEBUG
 - (void)finalize
 {
     // be sure to get updated radio (with correct 'ready' flag)
@@ -917,7 +1025,10 @@
     
 
 
-
+- (void)onSwitch:(id)sender
+{
+    [self refreshView];
+}
 
 
 

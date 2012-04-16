@@ -51,6 +51,19 @@
 			<key>path</key>
 			<string>images/Header</string>
 		</dict>
+		<key>ProfileRadioPhoto</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>name</key>
+			<string>Header</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Header</string>
+		</dict>
 		<key>HeaderAvatar</key>
 		<dict>
 			<key>x</key>
@@ -283,7 +296,7 @@
 			<key>height</key>
 			<integer>18</integer>
 			<key>width</key>
-			<integer>26</integer>
+			<integer>24</integer>
 			<key>x</key>
 			<integer>150</integer>
 			<key>y</key>
@@ -1052,10 +1065,55 @@
 			<key>path</key>
 			<string>images/Icons</string>
 		</dict>
+		<key>IconMeNotifications</key>
+		<dict>
+			<key>name</key>
+			<string>IconMeNotifications</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+		</dict>
 		<key>IconMeStats</key>
 		<dict>
 			<key>name</key>
 			<string>IconMeStats</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+		</dict>
+		<key>IconMeNotifs</key>
+		<dict>
+			<key>name</key>
+			<string>IconMeNotifs</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+		</dict>
+		<key>IconAccountsFacebook</key>
+		<dict>
+			<key>name</key>
+			<string>IconAccountsFacebook</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+		</dict>
+		<key>IconAccountsTwitter</key>
+		<dict>
+			<key>name</key>
+			<string>IconAccountsTwitter</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+		</dict>
+		<key>IconAccountsYasound</key>
+		<dict>
+			<key>name</key>
+			<string>IconAccountsYasound</string>
 			<key>type</key>
 			<string>png</string>
 			<key>path</key>
@@ -1401,6 +1459,30 @@
 			<key>height</key>
 			<integer>16</integer>
 		</dict>
+		<key>SongUpload_progressLabel</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>13</integer>
+				<key>textColor</key>
+				<string>rgb(200,200,200)</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+			<key>x</key>
+			<integer>116</integer>
+			<key>y</key>
+			<integer>23</integer>
+			<key>width</key>
+			<integer>140</integer>
+			<key>height</key>
+			<integer>16</integer>
+		</dict>
 		<key>SongView_artist</key>
 		<dict>
 			<key>x</key>
@@ -1483,6 +1565,58 @@
 			<integer>0</integer>
 			<key>height</key>
 			<integer>0</integer>
+		</dict>
+		<key>NotifUnreadIcon</key>
+		<dict>
+			<key>name</key>
+			<string>IconNotifUnread</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+			<key>x</key>
+			<integer>10</integer>
+			<key>y</key>
+			<integer>15</integer>
+		</dict>
+		<key>UnreadNotifBadge1</key>
+		<dict>
+			<key>name</key>
+			<string>UnreadNotifBadge1</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+			<key>x</key>
+			<integer>223</integer>
+			<key>y</key>
+			<integer>10</integer>
+		</dict>
+		<key>UnreadNotifBadge2</key>
+		<dict>
+			<key>name</key>
+			<string>UnreadNotifBadge2</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+			<key>x</key>
+			<integer>222</integer>
+			<key>y</key>
+			<integer>11</integer>
+		</dict>
+		<key>UnreadNotifBadge3</key>
+		<dict>
+			<key>name</key>
+			<string>UnreadNotifBadge3</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+			<key>x</key>
+			<integer>220</integer>
+			<key>y</key>
+			<integer>11</integer>
 		</dict>
 	</dict>
 </dict>

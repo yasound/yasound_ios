@@ -36,6 +36,8 @@ static YasoundReachability* _main = nil;
     [_reachHost release];
 //    [_reachConnection release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [super dealloc];
 }
 
 
@@ -58,7 +60,7 @@ static YasoundReachability* _main = nil;
     {
         self.hasNetwork = YR_NO;
 
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REACHABILITY_CHANGED object:nil];
         
         if (_target != nil)
             [_target performSelector:_action];
@@ -141,7 +143,7 @@ static YasoundReachability* _main = nil;
             else
                 NSLog(@"_connectionIsBack in WWAN");
 
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_BACK object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REACHABILITY_CHANGED object:nil];
         } 
         else
         {
@@ -150,11 +152,10 @@ static YasoundReachability* _main = nil;
             NSLog(@"no _connection");
             
             // network connection is back
-            // LBDEBUG TODO ?
             if (_target != nil)
                 [_target performSelector:_action];
 
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_LOST object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REACHABILITY_CHANGED object:nil];
             
         }
         

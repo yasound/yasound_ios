@@ -283,6 +283,7 @@ static YasoundDataCache* _main = nil;
 //
 - (void)clearRadios:(NSString*)REQUEST
 {
+    NSLog(@"YasoundDataCache::clearRadios");
     [_cacheRadios removeObjectForKey:REQUEST];
 }
 
@@ -290,6 +291,7 @@ static YasoundDataCache* _main = nil;
 
 - (void)clearRadiosAll
 {
+    NSLog(@"YasoundDataCache::clearRadiosAll");
     [_cacheRadios release];
     
     _cacheRadios = [[NSMutableDictionary alloc] init];
@@ -426,6 +428,7 @@ static YasoundDataCache* _main = nil;
 
 - (void)clearCurrentSongs
 {
+    NSLog(@"YasoundDataCache::clearCurrentSongs");
     [_cacheSongs release];
 
     _cacheSongs = [[NSMutableDictionary alloc] init];
@@ -542,6 +545,8 @@ static YasoundDataCache* _main = nil;
 
 - (void)clearFriends
 {
+    NSLog(@"YasoundDataCache::clearFriends");
+
     [_cacheFriends release];
     _cacheFriends = [[NSMutableDictionary alloc] init];
     [_cacheFriends retain];

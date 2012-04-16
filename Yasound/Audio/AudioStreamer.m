@@ -850,10 +850,12 @@ void ASReadStreamCallBack
 	BOOL isRunning = YES;
 	do
 	{
+        NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0.25];
+        
 		isRunning = [[NSRunLoop currentRunLoop]
 			runMode:NSDefaultRunLoopMode
-			beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.25]];
-		
+			beforeDate:date];
+        
 		@synchronized(self) {
 			if (seekWasRequested) {
 				[self internalSeekToTime:requestedSeekTime];
@@ -1896,7 +1898,7 @@ cleanup:
 				offset += copySize;
 			}
 		}
-	}
+	}    
 }
 
 //

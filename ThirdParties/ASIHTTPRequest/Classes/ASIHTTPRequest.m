@@ -732,6 +732,10 @@ static NSOperationQueue *sharedQueue = nil;
 	[self setQueue:nil];
 	[self setDownloadProgressDelegate:nil];
 	[self setUploadProgressDelegate:nil];
+    
+    //LBDEBUG TEST
+    [self.userInfo release];
+    self.userInfo = nil;
 
 	#if NS_BLOCKS_AVAILABLE
 	// Clear blocks
@@ -1214,6 +1218,7 @@ static NSOperationQueue *sharedQueue = nil;
             CFReadStreamSetProperty((CFReadStreamRef)[self readStream], 
                                     kCFStreamPropertySSLSettings, 
                                     (CFTypeRef)sslProperties);
+            [sslProperties release];
         } 
         
         // Tell CFNetwork to use a client certificate

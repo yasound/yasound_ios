@@ -8,36 +8,35 @@
 
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
-
+#import "UnderlinedButton.h"
 
 @interface LoginViewController : TestflightViewController
 {
-    IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;
+    
+    //...............................................
+    IBOutlet UIButton* _facebookButton;
+    IBOutlet UILabel* _facebookLabel;
 
-    IBOutlet UITableView* _tableView;
-    
-    //.............................................
-    IBOutlet UITableViewCell* _cellEmail;
-    IBOutlet UILabel* _cellEmailLabel;
-    IBOutlet UITextField* _cellEmailTextfield;
-    
-    IBOutlet UITableViewCell* _cellPword;
-    IBOutlet UILabel* _cellPwordLabel;
-    IBOutlet UITextField* _cellPwordTextfield;
+    IBOutlet UIButton* _twitterButton;
+    IBOutlet UILabel* _twitterLabel;
 
-    IBOutlet UIButton* _submitBtn;
-    
-    
-    NSString* _email;
-    NSString* _pword;
+    IBOutlet UIButton* _yasoundButton;
+    IBOutlet UILabel* _yasoundLabel;
+
+    IBOutlet UnderlinedButton* _signupButton;
 }
 
 
-- (IBAction)onBack:(id)sender;
-- (IBAction) onSubmit:(id)sender;
+- (IBAction)onFacebook:(id)sender;
+- (IBAction)onTwitter:(id)sender;
+- (IBAction)onYasound:(id)sender;
+- (IBAction)onYasoundSignup:(id)sender;
+
+
 
 @end
+
 
 
 

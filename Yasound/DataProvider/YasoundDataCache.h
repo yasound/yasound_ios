@@ -64,7 +64,6 @@
 
 // be carreful, empty the whole local cache
 - (void)clearRadiosAll;
-
 - (void)clearCurrentSongs;
 - (void)clearFriends;
 

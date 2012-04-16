@@ -22,6 +22,13 @@
     return self;
 }
 
+- (void)addTarget:(id)target action:(SEL)action
+{
+    _target = target;
+    _action = action;
+}
+
+
 
 
 #pragma mark - touches actions
@@ -49,7 +56,8 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
 {
-    [_target performSelector:_action];
+    if (_target != nil)
+        [_target performSelector:_action];
 }
 
 

@@ -9,7 +9,6 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "YasoundDataProvider.h"
-#import "TrackInteractionView.h"
 #import "ScrollingLabel.h"
 
 @interface NowPlayingView (internal)
@@ -25,7 +24,6 @@
 @synthesize song = _song;
 
 
-//LBDEBUG TODO : use image, likes disklikes from Song
 
 - (id)initWithSong:(Song*)song
 {
@@ -47,14 +45,15 @@
 //        imageView.frame = sheet.frame;
 //        [self addSubview:imageView];
         
-        
+        _webImageView = nil;
         
         
       NSLog(@"now playing song cover '%@'", song.cover);
       if (song.cover)
       {        
         NSURL* url = [[YasoundDataProvider main] urlForPicture:song.cover];
-        imageView = [[WebImageView alloc] initWithImageAtURL:url];
+        _webImageView = [[WebImageView alloc] initWithImageAtURL:url];
+          imageView = _webImageView;
       }
       else
       {
@@ -65,12 +64,12 @@
         
         
         // header now playing bar track image 
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImage" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         imageView.frame = sheet.frame;
         [self addSubview:imageView];
         
 //        // header now playing bar track image mask
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         imageView = [[UIImageView alloc] initWithImage:[sheet image]];
         imageView.frame = sheet.frame;
         [self addSubview:imageView];
@@ -90,16 +89,19 @@
         
         
         // track interaction buttons
-        TrackInteractionView* trackInteractionView = [[TrackInteractionView alloc] initWithSong:song];
-        trackInteractionView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-        [trackInteractionView setButtonLikeClickedTarget:self action:@selector(trackInteractionViewLikeButtonCliked)];
-        [self addSubview:trackInteractionView];
+        _trackInteractionView = [[TrackInteractionView alloc] initWithSong:song];
+        _trackInteractionView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+        [_trackInteractionView setButtonLikeClickedTarget:self action:@selector(trackInteractionViewLikeButtonCliked)];
+        [self addSubview:_trackInteractionView];
         
         // header now playing bar likes
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarLikes" error:nil];
         _likesLabel = [sheet makeLabel];
         [self setNbLikes:0];
-        
+
+        _likesLabel.adjustsFontSizeToFitWidth = YES;
+        _likesLabel.minimumFontSize = 8.0;
+
         
         [self addSubview:_likesLabel];  
       
@@ -136,18 +138,17 @@
     return self;
 }
 
+- (void)dealloc
+{
+    if (_webImageView)
+        [_webImageView release];
+    [_trackInteractionView release];
+    [super dealloc];
+}
+
 - (void)setNbLikes:(int)nbLikes
 {
     _likesLabel.text = [NSString stringWithFormat:@"%d", nbLikes];
-  
-  if (_likesLabel.text.length > 4)
-    _likesLabel.font = [_likesLabel.font fontWithSize:9];
-  else if (_likesLabel.text.length > 3)
-    _likesLabel.font = [_likesLabel.font fontWithSize:10];
-  else if (_likesLabel.text.length > 2)
-    _likesLabel.font = [_likesLabel.font fontWithSize:11];
-  else 
-    _likesLabel.font = [_likesLabel.font fontWithSize:13];
 }
 
 - (void)setSongStatus:(SongStatus*)status

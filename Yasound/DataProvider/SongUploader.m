@@ -13,6 +13,8 @@
 
 #import "YasoundDataProvider.h"
 #import "SongCatalog.h"
+#import "ASIFormDataRequest.h"
+
 
 @implementation SongUploader
 
@@ -47,6 +49,9 @@ static SongUploader* _main = nil;
   if (_tempSongFile) 
     [_tempSongFile release];
 
+    NSLog(@"SongUploader dealloc");
+    
+    [super dealloc];
 }
 
 
@@ -86,7 +91,6 @@ static SongUploader* _main = nil;
 
 
 
-
 #pragma mark - YasoundDataProvider callbacks
 
 - (void)onUploadDidFinish:(NSString*)msg withInfos:(NSDictionary*)info
@@ -94,11 +98,12 @@ static SongUploader* _main = nil;
   NSError *error;
   NSFileManager *fileMgr = [NSFileManager defaultManager];
   [fileMgr removeItemAtPath:_tempSongFile error:&error];
-    
 
     [_target performSelector:_selector withObject:info];
+    
+    [_request clearDelegatesAndCancel];
+    [_request release];
 }
-
 
 
 
@@ -124,39 +129,56 @@ static SongUploader* _main = nil;
   
   NSString* ext = [TSLibraryImport extensionForAssetURL:assetURL];
   
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  NSString *documentsDirectory = [paths objectAtIndex:0];
-  
-  NSString *filename = [NSString stringWithFormat:@"%@.%@", title, ext];
-  NSString *fullPath = [documentsDirectory stringByAppendingPathComponent: filename];
-  
-  NSError *error;
+    // store the tmp file in Cache directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString* cacheDirectory = [paths objectAtIndex:0];
+    
+    // get a unique and safe filename for the temp file
+    CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+	CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+	NSString* fullPath = [cacheDirectory stringByAppendingPathComponent:(NSString *)newUniqueIdString];
+    fullPath = [fullPath stringByAppendingPathExtension:ext];
+    
+    
   NSFileManager *fileMgr = [NSFileManager defaultManager];
+  NSError *error;
   [fileMgr removeItemAtPath:fullPath error:&error];
   
-  if (_tempSongFile)
-    [_tempSongFile release];
-
-    _tempSongFile = [[NSString alloc] initWithFormat:fullPath];
+  //NSLog(@"SongUploader %@", fullPath);
     
-  NSURL* outURL = [[NSURL fileURLWithPath:[documentsDirectory stringByAppendingPathComponent:title]] URLByAppendingPathExtension:ext];    
-  
+    if (_tempSongFile)
+        [_tempSongFile release];
+    _tempSongFile = [[NSString alloc] initWithFormat:fullPath];    
+    
+    NSURL* outURL = [NSURL fileURLWithPath:fullPath];  
+    
   TSLibraryImport* import = [[TSLibraryImport alloc] init];
   [import importAsset:assetURL toURL:outURL completionBlock:^(TSLibraryImport* import) 
     {
+        
     if (import.status != AVAssetExportSessionStatusCompleted) 
     {
       // something went wrong with the import
       NSLog(@"Error importing: %@", import.error);
       [import release];
       import = nil;
+        
+        // client callback
+        NSMutableDictionary* info = [NSMutableDictionary dictionary];
+        [info setObject:[NSNumber numberWithBool:NO] forKey:@"succeeded"];
+        [info setObject:[NSString stringWithString:@"SongUpload_failedIncorrectFile"] forKey:@"detailedInfo"];
+        [self onUploadDidFinish:nil withInfos:info];
+
       return;
     }
     
     // import completed
     [import release];
     import = nil;  
-    
+
+
+        // LBDEBUG : is this data properly released? just make sure...
+        
     NSData *data = [NSData dataWithContentsOfFile: fullPath];
     _request = [[YasoundDataProvider main] uploadSong:data 
                                      title:title
@@ -200,9 +222,12 @@ static SongUploader* _main = nil;
 
 - (void)cancelSongUpload
 {
-    assert(_request != nil);
-    
-    [_request clearDelegatesAndCancel];
+    // request may be nil, if the upload has been canceled because the file is incorrect for instance
+    if (_request != nil)
+    {
+        [_request clearDelegatesAndCancel];
+        [_request release];
+    }
 }
 
 

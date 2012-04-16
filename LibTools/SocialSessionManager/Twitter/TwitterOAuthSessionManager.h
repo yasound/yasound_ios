@@ -22,6 +22,7 @@
 @interface TwitterOAuthSessionManager : SessionManager <SA_OAuthTwitterControllerDelegate>
 {
   SA_OAuthTwitterEngine* _engine;
+    SA_OAuthTwitterController* _controller;
   UIViewController* _parent;
   
   NSString* _requestFriends;
@@ -36,6 +37,8 @@
 
 - (BOOL)requestGetInfo:(SessionRequestType)requestType;
 - (BOOL)requestPostMessage:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl;
+
++ (NSString*) buildDataFromToken:(NSString*)token token_secret:(NSString*)token_secret user_id:(NSString*)user_id screen_name:(NSString*)screen_name;
 
 
 @end

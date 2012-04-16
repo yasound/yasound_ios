@@ -7,16 +7,21 @@
 
 #import <UIKit/UIKit.h>
 #import "WebImageView.h"
-
+#import "InteractiveView.h"
 
 @class WallEvent;
 
 #define THE_REST_OF_THE_CELL_HEIGHT 50
 
 @interface RadioViewCell : UITableViewCell
+{
+    id _myTarget;
+    SEL _myAction;
+}
 
 //@property (nonatomic, retain) UIView* background;
 @property (nonatomic, retain) WebImageView* avatar;
+@property (nonatomic, retain) InteractiveView* avatarMask;
 @property (nonatomic, retain) UILabel* date;
 @property (nonatomic, retain) UILabel* user;
 @property (nonatomic, retain) UIView* messageBackground;
@@ -25,7 +30,7 @@
 
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath target:(id)target action:(SEL)action;
 
 - (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
 

@@ -10,7 +10,7 @@
 #import "Theme.h"
 #import "Track.h"
 #import "RadioViewCell.h"
-
+#import "YasoundAppDelegate.h"
 
 #import "YasoundDataProvider.h"
 #import "WallEvent.h"
@@ -30,6 +30,8 @@
 
 #import "UserViewCell.h"
 #import "LikeViewCell.h"
+
+#import "ProfileViewController.h"
 
 //#define LOCAL 1 // use localhost as the server
 
@@ -144,6 +146,7 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"HeaderAvatarMask" error:nil];
     UIButton* btn = [[UIButton alloc] initWithFrame:sheet.frame];
     [btn setImage:[sheet image] forState:UIControlStateNormal]; 
+    [btn addTarget:self action:@selector(onAvatarClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_headerView addSubview:btn];
     
     
@@ -334,14 +337,14 @@ static Song* _gNowPlayingSong = nil;
     // child view Tracks
     //
     
-    frameChild = CGRectMake(frameChild.size.width, frameChild.origin.y, frameChild.size.width, frameChild.size.height);
-    
-    _viewTracks = [[TracksView alloc] initWithFrame:frameChild];
-    [_viewTracks loadView];
-    _viewTracks.backgroundColor = [UIColor clearColor];
-    [_viewContainer addSubview:_viewTracks];
-    
-    _viewTracksDisplayed = NO;
+//    frameChild = CGRectMake(frameChild.size.width, frameChild.origin.y, frameChild.size.width, frameChild.size.height);
+//    
+//    _viewTracks = [[TracksView alloc] initWithFrame:frameChild];
+//    [_viewTracks loadView];
+//    _viewTracks.backgroundColor = [UIColor clearColor];
+//    [_viewContainer addSubview:_viewTracks];
+//    
+//    _viewTracksDisplayed = NO;
     
     
     
@@ -375,9 +378,6 @@ static Song* _gNowPlayingSong = nil;
         [self.view addSubview:_pageControl];
 #endif
     }
-    
-    
-    
     
     
     // get the actual data from the server to update the GUI
@@ -488,6 +488,10 @@ static Song* _gNowPlayingSong = nil;
 {
     [_messageFont release];
     [_wallEvents release];
+    
+//    if (_ap != nil)
+//        [_ap release];
+
     [super dealloc];
 }
 
@@ -518,6 +522,11 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onTimerUpdate:(NSTimer*)timer
 {    
+//    if (_ap != nil)
+//        [_ap release];
+//    
+//    _ap = [[NSAutoreleasePool alloc] init];
+    
     [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
     [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
@@ -656,6 +665,7 @@ static Song* _gNowPlayingSong = nil;
             assert(_timerUpdate == nil);
             
             _firstUpdateRequest = NO;
+
             // launch the update timer
             _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onTimerUpdate:) userInfo:nil repeats:YES];
         }
@@ -874,6 +884,24 @@ static Song* _gNowPlayingSong = nil;
 }
 
 
+-(void)playSound
+{
+  return;
+  //Get the filename of the sound file:
+  NSString *path = [NSString stringWithFormat:@"%@%@", [[NSBundle mainBundle] resourcePath], @"/beeps/.wav"];
+  
+  //declare a system sound
+  SystemSoundID soundID;
+  
+  //Get a URL for the sound file
+  NSURL *filePath = [NSURL fileURLWithPath:path isDirectory:NO];
+  
+  //Use audio sevices to create the sound
+  AudioServicesCreateSystemSoundID((CFURLRef)filePath, &soundID);
+  //Use audio services to play the sound
+  AudioServicesPlaySystemSound(soundID);
+}
+
 - (void)receivedCurrentMessageEvent:(WallEvent*)ev
 {
     if ((_latestEvent != nil) && ([ev.start_date isEarlierThanOrEqualTo:_latestEvent.start_date]))
@@ -883,6 +911,7 @@ static Song* _gNowPlayingSong = nil;
 
     [_wallEvents insertObject:ev atIndex:0];
     [self insertMessage];
+  [self playSound];
 }
 
 - (void)receivedCurrentLikeEvent:(WallEvent*)ev
@@ -903,7 +932,7 @@ static Song* _gNowPlayingSong = nil;
 {
   if (!song)
     return;
-  
+ 
   if (!_gNowPlayingSong || [song.id intValue] != [_gNowPlayingSong.id intValue])
       [self setNowPlaying:song];
   
@@ -1138,19 +1167,18 @@ static Song* _gNowPlayingSong = nil;
 
 - (NSIndexPath *)usersContainerDidSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  
     UITableViewCell* cell = [_usersContainer cellForRowAtIndexPath:indexPath];
     cell.selected = NO;
 
     User* user = [_connectedUsers objectAtIndex:indexPath.row];
-  NSLog(@"row: %d   user: %@", indexPath.row, user.name);
-  if ([user.id intValue] == [radio.creator.id intValue])
+    
+    // Launch profile view
+    ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:user];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+//    [user release];
+    
     return nil;
-  
-  [[YasoundDataProvider main] radioForUser:user withTarget:self action:@selector(receivedRadioForSelectedUser:withInfo:)];
-    
-    
-  return nil;
 }
 
 
@@ -1267,9 +1295,11 @@ static Song* _gNowPlayingSong = nil;
 
 - (NSIndexPath *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-  if (tableView == _usersContainer)
-    return [self usersContainerDidSelectRowAtIndexPath:indexPath];
-  
+    if (tableView == _usersContainer)
+    {
+        return [self usersContainerDidSelectRowAtIndexPath:indexPath];
+    } 
+
     return nil;
 }
 
@@ -1355,12 +1385,15 @@ static Song* _gNowPlayingSong = nil;
         RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil)
         {
-            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev indexPath:indexPath] autorelease];
+            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev indexPath:indexPath target:self action:@selector(onAvatarClickedInWall:)] autorelease];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            //LBDEBUG
+//            [cell.avatarMask addTarget:self 
+//                                action:@selector(onAvatarClickedInWall:)];
+
         }
         else
             [cell update:ev indexPath:indexPath];
-        
         return cell;
     }
     else if ([ev isOfType:eWallEventTypeSong])
@@ -1563,8 +1596,47 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction)onBack:(id)sender
 {
+    // I need to check something... 
+    YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
+    UINavigationController* appController = appDelegate.navigationController;
+    UINavigationController* thisController = self.navigationController;
+    
+     
     [self.navigationController popViewControllerAnimated:YES];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_POP_TO_MENU object:nil];
+}
+
+- (IBAction)onAvatarClicked:(id)sender
+{
+    if (self.radio.creator) 
+    {
+        // Launch profile view
+        ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:self.radio.creator];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+}
+
+- (IBAction)onAvatarClickedInWall:(UITableViewCell*)cell
+{
+//    InteractiveView *btn = (InteractiveView *)sender;
+//    id parent = [btn superview];
+//    id gparent = [parent superview];
+//    id ggparent = [gparent superview];
+    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+    
+    WallEvent *event = [_wallEvents objectAtIndex:indexPath.row];
+    if (event != nil && event.user_id != nil) 
+    {
+        // Build fake user object with given id
+        User *user = [[User alloc] init];
+        user.id = event.user_id;
+        
+        // Launch profile view
+        ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:user];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        [user release];
+    }
 }
 
 
@@ -1628,62 +1700,62 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-- (void)onSwipeLeft:(UISwipeGestureRecognizer *)recognizer 
-{ 
-    CGPoint point = [recognizer locationInView:[self view]];
-    NSLog(@"Swipe left - start location: %f,%f", point.x, point.y);
-    
-    if (_viewTracksDisplayed)
-        return;
-    
-    NSError* error;
-	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go to TracksView" label:nil value:0 withError:&error]) 
-    {
-		        NSLog(@"GANTracker Error tracking foreground event: %@", error);
-	}
-    
-    [_viewTracks updateView];
-
-    CGRect frame = _viewWall.frame;
-    
-    [UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.3];
-    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
-    _viewWall.frame = CGRectMake(- frame.size.width, 0, frame.size.width, frame.size.height);
-    _viewTracks.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-    [UIView commitAnimations];   
-    
-    _viewTracksDisplayed = YES;
-    _pageControl.currentPage = 1;
-}
-
-
-- (void)onSwipeRight:(UISwipeGestureRecognizer *)recognizer 
-{ 
-    CGPoint point = [recognizer locationInView:[self view]];
-    NSLog(@"Swipe right - start location: %f,%f", point.x, point.y);
-
-    if (!_viewTracksDisplayed)
-        return;
-
-    NSError* error;
-	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go back to RadioView" label:nil value:0 withError:&error]) 
-    {
-        NSLog(@"GANTracker Error tracking foreground event: %@", error);
-	}
-    
-    CGRect frame = _viewWall.frame;
-    
-    [UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.3];
-    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
-    _viewWall.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-    _viewTracks.frame = CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height);
-    [UIView commitAnimations];   
-
-    _viewTracksDisplayed = NO;
-    _pageControl.currentPage = 0;
-}
+//- (void)onSwipeLeft:(UISwipeGestureRecognizer *)recognizer 
+//{ 
+//    CGPoint point = [recognizer locationInView:[self view]];
+//    NSLog(@"Swipe left - start location: %f,%f", point.x, point.y);
+//    
+//    if (_viewTracksDisplayed)
+//        return;
+//    
+//    NSError* error;
+//	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go to TracksView" label:nil value:0 withError:&error]) 
+//    {
+//		        NSLog(@"GANTracker Error tracking foreground event: %@", error);
+//	}
+//    
+//    [_viewTracks updateView];
+//
+//    CGRect frame = _viewWall.frame;
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//	[UIView setAnimationDuration:0.3];
+//    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
+//    _viewWall.frame = CGRectMake(- frame.size.width, 0, frame.size.width, frame.size.height);
+//    _viewTracks.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+//    [UIView commitAnimations];   
+//    
+//    _viewTracksDisplayed = YES;
+//    _pageControl.currentPage = 1;
+//}
+//
+//
+//- (void)onSwipeRight:(UISwipeGestureRecognizer *)recognizer 
+//{ 
+//    CGPoint point = [recognizer locationInView:[self view]];
+//    NSLog(@"Swipe right - start location: %f,%f", point.x, point.y);
+//
+//    if (!_viewTracksDisplayed)
+//        return;
+//
+//    NSError* error;
+//	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go back to RadioView" label:nil value:0 withError:&error]) 
+//    {
+//        NSLog(@"GANTracker Error tracking foreground event: %@", error);
+//	}
+//    
+//    CGRect frame = _viewWall.frame;
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//	[UIView setAnimationDuration:0.3];
+//    [UIView setAnimationDelay: UIViewAnimationCurveEaseInOut];
+//    _viewWall.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+//    _viewTracks.frame = CGRectMake(frame.size.width, 0, frame.size.width, frame.size.height);
+//    [UIView commitAnimations];   
+//
+//    _viewTracksDisplayed = NO;
+//    _pageControl.currentPage = 0;
+//}
 
 
 

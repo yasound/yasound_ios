@@ -35,6 +35,7 @@ typedef enum
 @required
 - (void)sessionDidLogin:(BOOL)authorized;
 - (void)sessionLoginFailed;
+- (void)sessionLoginCanceled;
 - (void)sessionDidLogout;
 
 - (void)requestDidLoad:(SessionRequestType)requestType data:(NSArray*)data;

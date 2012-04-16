@@ -32,5 +32,21 @@ UserMood stringToUsermood(NSString* str);
 @property (retain, nonatomic) Radio* current_radio;
 @property (retain, nonatomic) Radio* own_radio;
 
+@property (retain, nonatomic) NSString* facebook_username;
+@property (retain, nonatomic) NSString* facebook_uid;
+@property (retain, nonatomic) NSString* facebook_token;
+@property (retain, nonatomic) NSString* facebook_expiration_date;
+@property (retain, nonatomic) NSString* facebook_email;
+
+@property (retain, nonatomic) NSString* twitter_username;
+@property (retain, nonatomic) NSString* twitter_uid;
+@property (retain, nonatomic) NSString* twitter_token;
+@property (retain, nonatomic) NSString* twitter_token_secret;
+@property (retain, nonatomic) NSString* twitter_email;
+
+@property (retain, nonatomic) NSString* yasound_email;
+
+
 - (NSString*)toString;
+
 @end

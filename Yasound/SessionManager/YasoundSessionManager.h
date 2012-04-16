@@ -14,6 +14,8 @@
 #define LOGIN_TYPE_FACEBOOK @"facebook"
 #define LOGIN_TYPE_TWITTER @"twitter"
 
+#import "FacebookSessionManager.h"
+#import "TwitterSessionManager.h"
 
 @interface YasoundSessionManager : NSObject
 {
@@ -23,10 +25,18 @@
 
     id _postTarget;
     SEL _postAction;
+    
+    BOOL _error;
 }
 
 @property (nonatomic) BOOL registered;
 @property (nonatomic, retain) NSString* loginType;
+
+@property (nonatomic) BOOL associatingFacebook;
+@property (nonatomic) BOOL associatingTwitter;
+@property (nonatomic) BOOL associatingYasound;
+@property (nonatomic) BOOL associatingAutomatic;
+
 
 + (YasoundSessionManager*)main;
 
@@ -51,6 +61,21 @@
 - (void)registerForYasound:(NSString*)email withPword:(NSString*)pword;
 - (void)registerForFacebook; // login info are handle by SocialSessionManager
 - (void)registerForTwitter; // login info are handle by SocialSessionManager
+
+- (void)reloadUserData:(User*)user;
+- (void)importUserData;
+
+
+- (void)associateAccountYasound:(NSString*)email password:(NSString*)pword target:(id)target action:(SEL)selector automatic:(BOOL)automatic;
+- (void)associateAccountFacebook:(id)target action:(SEL)selector automatic:(BOOL)automatic;
+- (void)associateAccountTwitter:(id)target action:(SEL)selector automatic:(BOOL)automatic;
+- (void)dissociateAccount:(NSString*)accountTypeIdentifier  target:(id)target action:(SEL)selector;
+- (BOOL)isAccountAssociated:(NSString*)accountIdentifier;
+- (NSInteger)numberOfAssociatedAccounts;
+
+
+- (FacebookSessionManager*) getFacebookManager;
+- (TwitterSessionManager*) getTwitterManager;
 
 - (BOOL)postMessageForFacebook:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl  link:(NSURL*)link target:(id)target action:(SEL)action;
 - (BOOL)postMessageForTwitter:(NSString*)message title:(NSString*)title picture:(NSURL*)pictureUrl target:(id)target action:(SEL)action;

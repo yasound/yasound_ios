@@ -1,8 +1,6 @@
 //
-//  UIScrollViewTestAppDelegate.h
-//  UIScrollViewTest
+//  YasoundAppDelegate.y
 //
-//  Created by Sébastien Métrot on 10/24/11.
 //  Copyright 2011 Yasound. All rights reserved.
 //
 
@@ -11,14 +9,36 @@
 #import "TestFlight.h"
 #endif
 
+
+#define APPDELEGATE ((YasoundAppDelegate*)[UIApplication sharedApplication].delegate)
+
+
+
 @class RootViewController;
 
 @interface YasoundAppDelegate : NSObject <UIApplicationDelegate>
+{
+  NSString* _APNsTokenString;
+  NSDictionary* _receivedAPNsInfo;
+  
+  BOOL _mustGoToNotificationCenter;
+}
 
 @property (nonatomic, retain)  IBOutlet UIWindow *window;
 @property (nonatomic, retain)  UINavigationController *navigationController;
-
 @property (nonatomic, retain) RootViewController* rootViewController;
+@property (nonatomic, retain) NSString* serverURL;
+
+- (BOOL)mustGoToNotificationCenter;
+- (void)setMustGoToNotificationCenter:(BOOL)go;
+
+
+- (NSString*)getServerUrlWith:(NSString*)target;
+
+@property (nonatomic, readonly) NSString* APNsTokenString;
+
+- (void)sendAPNsTokenString;
+- (void)handlePushNotification:(NSDictionary*)notifDesc;
 
 - (UIViewController*)myRadioSetupViewController;
 - (void)goToMyRadioFromViewController:(UIViewController*)sourceController;

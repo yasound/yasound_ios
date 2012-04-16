@@ -14,6 +14,16 @@
 #import "PlaylistsViewController.h"
 #import "ActivityAlertView.h"
 #import "RootViewController.h"
+#import "AccountFacebookViewController.h"
+#import "AccountTwitterViewController.h"
+#import "AccountYasoundViewController.h"
+#import "NotificationViewController.h"
+#import "YasoundDataCache.h"
+#import "YasoundDataCacheImage.h"
+
+#define NB_SECTIONS 4
+
+
 
 #define SECTION_CONFIG 0
 #define ROW_CONFIG_TITLE 0
@@ -23,9 +33,26 @@
 #define SECTION_IMAGE 1
 #define ROW_IMAGE 0
 
-#define SECTION_THEME 2
-#define ROW_THEME 0
+//#define SECTION_THEME 2
+//#define ROW_THEME 0
 
+#define SECTION_ACCOUNTS 2
+#define SECTION_ACCOUNTS_NB_ROWS 3
+#define ROW_ACCOUNTS_FACEBOOK 0
+#define ROW_ACCOUNTS_TWITTER 1
+#define ROW_ACCOUNTS_YASOUND 2
+
+#define SECTION_NOTIFS 3
+#define SECTION_NOTIFS_NB_ROWS 1
+#define ROW_NOTIFS 0
+
+#ifdef DEBUG
+#undef NB_SECTIONS
+#define NB_SECTIONS 5
+#define SECTION_CACHE 4
+#define SECTION_CACHE_NB_ROWS 1
+#define ROW_CACHE 0
+#endif
 
 
 
@@ -199,9 +226,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //LBDEBUG
-//    return 3;
-    return 2;
+    return NB_SECTIONS;
 }
 
 
@@ -215,8 +240,19 @@
     if (section == SECTION_IMAGE)
         return 1;
 
-    if (section == SECTION_THEME)
-        return 1;
+//    if (section == SECTION_THEME)
+//        return 1;
+
+    if (section == SECTION_ACCOUNTS)
+        return SECTION_ACCOUNTS_NB_ROWS;
+
+    if (section == SECTION_NOTIFS)
+        return SECTION_NOTIFS_NB_ROWS;
+
+#ifdef DEBUG
+    if (section == SECTION_CACHE)
+        return SECTION_CACHE_NB_ROWS;
+#endif
 
     return 0;
 }
@@ -248,9 +284,20 @@
     else if (section == SECTION_IMAGE)
         title = NSLocalizedString(@"SettingsView_section_image", nil);
     
-    else if (section == SECTION_THEME)
-        title = NSLocalizedString(@"SettingsView_section_theme", nil);
-    
+//    else if (section == SECTION_THEME)
+//        title = NSLocalizedString(@"SettingsView_section_theme", nil);
+
+    else if (section == SECTION_ACCOUNTS)
+        title = NSLocalizedString(@"SettingsView_section_accounts", nil);
+
+    else if (section == SECTION_NOTIFS)
+        title = NSLocalizedString(@"SettingsView_section_notifs", nil);
+
+#ifdef DEBUG
+    else if (section == SECTION_CACHE)
+        title = @"Cache";
+#endif
+
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
@@ -281,8 +328,19 @@
     else if (indexPath.section == SECTION_IMAGE)
         nbRows =  1;
     
-    else if (indexPath.section == SECTION_THEME)
-        nbRows =  1;
+//    else if (indexPath.section == SECTION_THEME)
+//        nbRows =  1;
+    
+    else if (indexPath.section == SECTION_ACCOUNTS)
+        nbRows =  SECTION_ACCOUNTS_NB_ROWS;
+
+    else if (indexPath.section == SECTION_NOTIFS)
+        nbRows =  SECTION_NOTIFS_NB_ROWS;
+
+#ifdef DEBUG
+    else if (indexPath.section == SECTION_CACHE)
+        nbRows =  SECTION_CACHE_NB_ROWS;
+#endif
     
     if (nbRows == 1)
     {
@@ -328,8 +386,8 @@
     if ((indexPath.section == SECTION_IMAGE) && (indexPath.row == ROW_IMAGE))
         return _settingsImageCell;
     
-    if ((indexPath.section == SECTION_THEME) && (indexPath.row == ROW_THEME))
-        return _settingsThemeCell;
+//    if ((indexPath.section == SECTION_THEME) && (indexPath.row == ROW_THEME))
+//        return _settingsThemeCell;
 
     
     static NSString* CellIdentifier = @"Cell";
@@ -340,13 +398,14 @@
     {   
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
+
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"SettingsView_row_genre_label", nil);
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.backgroundColor = [UIColor clearColor];
         NSString* style = _myRadio.genre;
         cell.detailTextLabel.text = NSLocalizedString(style, nil);
         
@@ -357,13 +416,61 @@
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"SettingsView_row_keywords_label", nil);
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.backgroundColor = [UIColor clearColor];
         cell.detailTextLabel.text = _keywords;
 
         cell.detailTextLabel.textColor = [UIColor colorWithRed:182.f/255.f green:212.f/255.f blue:1 alpha:1];
         cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-}
+    }
+    
+    else if (indexPath.section == SECTION_ACCOUNTS)
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+        if (indexPath.row == ROW_ACCOUNTS_FACEBOOK)
+        {
+            cell.textLabel.text = @"Facebook";  
+            cell.detailTextLabel.text = @"";
+//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsFacebook" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            [cell.imageView setImage:[sheet image]];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_TWITTER)
+        {
+            cell.textLabel.text = @"Twitter";
+            cell.detailTextLabel.text = @"";
+//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsTwitter" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            [cell.imageView setImage:[sheet image]];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_YASOUND)
+        {
+            cell.textLabel.text = @"Yasound";
+            cell.detailTextLabel.text = @"";
+//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsYasound" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            [cell.imageView setImage:[sheet image]];
+        }
+    }
+    
+    else if (indexPath.section == SECTION_NOTIFS)
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = NSLocalizedString(@"SettingsView_section_notifs", nil);
+        
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.text = @"";
+    }
+
+#ifdef DEBUG
+    else if (indexPath.section == SECTION_CACHE)
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = @"Empty the cache";
+        
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.text = @"";
+    }
+#endif
+    
     
     return cell;
 }
@@ -372,25 +479,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _changed = YES;
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
-//        _settingsGenreLabel.textColor = [UIColor whiteColor];
+        _changed = YES;
         [self openStyleSelector];
         return;
     }
 
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
     {
-//        KeywordsViewController* view = [[KeywordsViewController alloc] initWithTarget:self action:@selector(onKeywordsChanged:)];
+        _changed = YES;
         KeywordsViewController* view = [[KeywordsViewController alloc] initWithNibName:@"KeywordsViewController" bundle:nil radio:_myRadio];
         
-        //LBDEBUG
-//        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStylePlain target:view action:@selector(onBack:)];
-//        [[self navigationItem] setBackBarButtonItem: backBtn];
-//        [backBtn release];
-
         [self.navigationController pushViewController:view animated:YES];
         [view release];
         return;
@@ -399,18 +500,60 @@
     
     if ((indexPath.section == SECTION_IMAGE) && (indexPath.row == ROW_IMAGE))
     {
+        _changed = YES;
+
         [self pickImageDialog];
         return;
     }
     
     
-    if ((indexPath.section == SECTION_THEME) && (indexPath.row == ROW_THEME))
+//    if ((indexPath.section == SECTION_THEME) && (indexPath.row == ROW_THEME))
+//    {
+//        [self openThemeSelector];
+//        return;
+//    }
+    
+    else if (indexPath.section == SECTION_ACCOUNTS)
     {
-//        _settingsThemeTitle.textColor = [UIColor whiteColor];
-        [self openThemeSelector];
-        return;
+        if (indexPath.row == ROW_ACCOUNTS_FACEBOOK)
+        {
+            AccountFacebookViewController* view = [[AccountFacebookViewController alloc] initWithNibName:@"AccountFacebookViewController" bundle:nil];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_TWITTER)
+        {
+            AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
+        else if (indexPath.row == ROW_ACCOUNTS_YASOUND)
+        {
+            AccountYasoundViewController* view = [[AccountYasoundViewController alloc] initWithNibName:@"AccountYasoundViewController" bundle:nil];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
     }
+    
+    else if (indexPath.section == SECTION_NOTIFS)
+    {
+        NotificationViewController* view = [[NotificationViewController alloc] initWithNibName:@"NotificationViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+
+#ifdef DEBUG
+    else if (indexPath.section == SECTION_CACHE)
+    {
+        _cacheQuery = [[UIActionSheet alloc] initWithTitle:@"Empty the cache?" delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:@"Empty the cache", nil];
+        _cacheQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [_cacheQuery showInView:self.view];
+        [_cacheQuery release];
+    }
+#endif
+    
 }
+
 
 
 
@@ -671,6 +814,23 @@
         
         return;
     }
+    
+#ifdef DEBUG
+    if (actionSheet == _cacheQuery)
+    {
+        // be careful!
+        if (buttonIndex == 0)
+        {
+            [[YasoundDataCache main] clearRadiosAll];
+            [[YasoundDataCache main] clearCurrentSongs];
+            [[YasoundDataCache main] clearFriends];
+            [[YasoundDataCacheImageManager main] clear];
+
+            [ActivityAlertView showWithTitle:@"ok" closeAfterTimeInterval:1];
+        }
+        return;
+    }
+#endif
 }
 
 
@@ -683,9 +843,6 @@
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SettingsView_submit_title", nil)];
 
-    
-    //LBDEBUG TODO CLEAN
-//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onFakeSubmitAction:) userInfo:nil repeats:NO];
     
     NSLog(@"send update request for radio '%@'", _myRadio.name);
     
@@ -725,18 +882,6 @@
     [self.navigationController popViewControllerAnimated:YES];
   }
 }
-
-
-//LBDEBUG TODO CLEAN
-//- (void)onFakeSubmitAction:(NSTimer*)timer
-//{
-//    [ActivityAlertView close];
-//    
-//    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];    
-//}
-
 
 
 

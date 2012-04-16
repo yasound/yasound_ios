@@ -20,6 +20,8 @@
   FBRequest* _requestMe;
   FBRequest* _requestFriends;
   FBRequest* _requestFeed;
+    
+    BOOL _logout;
 }
 
 @property (retain) Facebook* facebookConnect;
@@ -36,6 +38,8 @@
 
 - (void)inviteFriends;
 
+
+- (void)invalidConnexion;
 
 
 - (BOOL)handleOpenURL:(NSURL *)url;

@@ -12,10 +12,12 @@
 #import <Accounts/Accounts.h>
 #import "TwitterAccountsViewController.h"
 #import "Version.h"
+#import "ActivityAlertView.h"
+
+// the following is activated, 'til we get the reverse auth enabled by twitter
+#define FORCE_OAUTH_LIB 1
 
 
-
-//#define FORCE_OAUTH_LIB 1
 
 
 @implementation TwitterSessionManager
@@ -123,6 +125,16 @@ static TwitterSessionManager* _twitter = nil;
 }
 
 
+- (void)invalidConnexion
+{
+    if (_iosManager)
+        [_iosManager invalidConnexion];
+    else
+        [_oauthManager invalidConnexion];
+    
+}
+
+
 
 
 - (void)login;
@@ -158,7 +170,30 @@ static TwitterSessionManager* _twitter = nil;
 
 
 
+- (void)inviteFriends:(UIView*)parentView
+{
+    UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Twitter_AppRequest_AlertTitle", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Twitter_AppRequest_Title", nil), nil];
+    popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [popupQuery showInView:parentView];
+    [popupQuery release];
+}
+    
 
+
+
+#pragma mark - ActionSheet Delegate
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+    if (buttonIndex == 0)
+    {
+        [self requestPostMessage:NSLocalizedString(@"Twitter_AppRequest_Message", nil) title:NSLocalizedString(@"Facebook_AppRequest_Message", nil) picture:nil];    
+        return;
+    }
+    
+    
+}
 
 
 

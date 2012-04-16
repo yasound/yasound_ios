@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import "HomeViewController.h"
+#import "LoginViewController.h"
 #import "RadioViewController.h"
 #import "YasoundSessionManager.h"
 #import "ActivityAlertView.h"
@@ -19,6 +19,7 @@
 #import "ConnectionView.h"
 #import "YasoundAppDelegate.h"
 #import "SongUploadManager.h"
+#import "NotificationCenterViewController.h"
 
 //#define FORCE_ROOTVIEW_RADIOS
 
@@ -63,9 +64,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPopToMenu:) name:NOTIF_POP_TO_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushMenu:) name:NOTIF_PUSH_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorCommunicationServer:) name:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionBack:) name:NOTIF_ERROR_CONNECTION_BACK object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionLost:) name:NOTIF_ERROR_CONNECTION_LOST object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionNo:) name:NOTIF_ERROR_CONNECTION_NO object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionChanged:) name:NOTIF_REACHABILITY_CHANGED object:nil];
 
     
 
@@ -84,24 +83,10 @@
 }
 
 
-//#import "CreateMyRadio.h"
-//#import "SongUploadViewController.h"
-
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 
-//    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:nil];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
-
-    
-    
-    //LBDEBUG FAKE
-//    SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
-    
     
     if (_firstTime)
     {
@@ -137,11 +122,14 @@
 {
     if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_ERROR_CONNECTION_NO object:nil];
+        // TODO? message?
         return;
     }
     
-    
+
+    // import associated accounts
+    [[YasoundSessionManager main] importUserData];
+
     if ([YasoundSessionManager main].registered)
     {
 //        // TAG ACTIVITY ALERT
@@ -150,16 +138,36 @@
         // show connection alert
         [self.view addSubview:[ConnectionView start]];
         
-        if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+        if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
             [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
-        else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+
+        else if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
             [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
-        else
+        
+        else if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_YASOUND])
             [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
+        else
+        {
+            //for compatibility with previous exclusive system
+            if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+                [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
+            
+            else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+                [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
+            
+            else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_YASOUND])
+                [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
+            else
+            {
+                assert(0);
+                NSLog(@"LOGIN ERROR. COULD NOT DO ANYTHING.");
+            }
+        }
+        
     }
     else
     {
-        HomeViewController* view = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+        LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:NO];
         [view release];
     }
@@ -172,18 +180,31 @@
 
     if (user != nil)
     {
-        NSNumber* radioId = [[NSUserDefaults standardUserDefaults] objectForKey:@"NowPlaying"];
+        [[YasoundSessionManager main] reloadUserData:user];
         
-        if (radioId == nil)
+        // login the other associated accounts as well
+        [[YasoundSessionManager main] associateAccountsAutomatic];
+
+        if (APPDELEGATE.mustGoToNotificationCenter)
         {
-            Radio* myRadio = user.own_radio;
-            if (myRadio && myRadio.ready)
-                [self launchRadio:myRadio];
-            else
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_MENU object:nil];
+            [self goToNotificationCenter];
+            [APPDELEGATE setMustGoToNotificationCenter:NO];
         }
         else
-            [self launchRadio:radioId];
+        {
+            NSNumber* radioId = [[NSUserDefaults standardUserDefaults] objectForKey:@"NowPlaying"];
+
+            if (radioId == nil)
+            {
+              Radio* myRadio = user.own_radio;
+              if (myRadio && myRadio.ready)
+                [self launchRadio:myRadio];
+              else
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_MENU object:nil];
+            }
+            else
+                [self launchRadio:radioId];
+      }
       
       NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
       if (lastUserID && [lastUserID intValue] == [user.id intValue])
@@ -214,6 +235,9 @@
         NSString* message = nil;
         if (info != nil)
         {
+            //LBDEBUG
+            NSLog(@"DEBUG info %@", info);
+            
             NSString* errorValue = [info objectForKey:@"error"];
             if ([errorValue isEqualToString:@"Login"])
                 message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
@@ -236,6 +260,24 @@
 {
     // once logout done, go back to the home screen
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
+}
+
+- (void)goToNotificationCenter
+{
+  if (_menuView == nil)
+  {
+    _menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    [_menuView retain];
+    [self.navigationController pushViewController:_menuView animated:NO];
+  }
+  else
+  {
+    [self.navigationController popToViewController:_menuView animated:NO];
+  }
+  
+  NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
+  [self.navigationController pushViewController:view animated:YES];
+  [view release];
 }
 
 
@@ -279,7 +321,7 @@
     [_menuView release];
     _menuView = nil;
 
-    HomeViewController* view = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:NO];
     [view release];
 }
@@ -336,38 +378,95 @@
     [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
 }
 
-- (void)onNotifErrorConnectionBack:(NSNotification *)notification
+
+
+////
+//// onNotifErrorConnectionBack 
+////
+//// when the 3G or wifi turns on
+//// 
+//- (void)onNotifErrorConnectionBack:(NSNotification *)notification
+//{
+//    
+//   else 
+//       NSLog(@"onNotifErrorConnectionBack ERROR unexpected STATUS CODE!");
+//    
+//    
+//    
+////    // show alert message for connection error
+////    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_lost", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+////    [av show];
+////    [av release];  
+////    
+////    // and logout properly
+////    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+//}
+//
+
+
+
+
+
+
+
+
+- (void)onNotifErrorConnectionChanged:(NSNotification *)notification
 {
     NetworkStatus status = [YasoundReachability main].networkStatus;
-    
-    if (status == ReachableViaWiFi)
+
+    if ([YasoundReachability main].hasNetwork == YR_NO)
     {
-        NSLog(@"onNotifErrorConnectionBack WIFI ");
+        NSLog(@"onNotifErrorConnectionChanged no network ");
+
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_no", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
         
-        if ([SongUploadManager main].interrupted)
+        if ([SongUploadManager main].isRunning)
+        {
+            [[SongUploadManager main] interruptUploads];
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
+
+        // and logout properly
+        //[[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+    }
+
+    // Wifi turns on
+    else if (status == ReachableViaWiFi)
+    {
+        NSLog(@"onNotifErrorConnectionChanged WIFI ");
+
+        // don't test if it's running. If may runs, but paused if the connection was lost, for instance
+//        if (![SongUploadManager main].isRunning)
             [[SongUploadManager main] resumeUploads];
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
     }
+    
+    // 3G turns on (<=> or wifi turns off, then 3G turns on)
     else if (status == ReachableViaWWAN)
     {
-        NSLog(@"onNotifErrorConnectionBack WWAN ");
-    
-        if (![SongUploadManager main].interrupted)
+        NSLog(@"onNotifErrorConnectionChanged WWAN ");
+        
+        if ([SongUploadManager main].isRunning)
         {
             [[SongUploadManager main] interruptUploads];
             
-            // show alert message for connection error
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [av show];
-            [av release];  
-            
-            
+            if (_alertWifiInterrupted == nil)
+            {
+                // show alert message for connection error
+                _alertWifiInterrupted = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_interrupt_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [_alertWifiInterrupted show];
+                [_alertWifiInterrupted release];  
+            }
         }
-
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
     }
-   else 
-       NSLog(@"onNotifErrorConnectionBack ERROR unexpected STATUS CODE!");
     
+}
     
     
 //    // show alert message for connection error
@@ -377,29 +476,17 @@
 //    
 //    // and logout properly
 //    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
-}
+//}
 
-
-- (void)onNotifErrorConnectionLost:(NSNotification *)notification
-{
-    // show alert message for connection error
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_lost", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [av show];
-    [av release];  
-    
-    // and logout properly
-    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
-}
-
-- (void)onNotifErrorConnectionNo:(NSNotification *)notification
-{
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_no", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [av show];
-    [av release];  
-    
-    // and logout properly
-    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
-}
+//- (void)onNotifErrorConnectionNo:(NSNotification *)notification
+//{
+//    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_no", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [av show];
+//    [av release];  
+//    
+//    // and logout properly
+//    [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+//}
 
 
 
@@ -441,9 +528,9 @@
     }
     else
     {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release]; 
+        _menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        [_menuView retain];
+        [self.navigationController pushViewController:_menuView animated:NO];
     }
 }
 
@@ -456,6 +543,19 @@
 {
   return YES;
 }
+
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView == _alertWifiInterrupted)
+    {
+        _alertWifiInterrupted = nil;
+    }
+}
+
 
 
 

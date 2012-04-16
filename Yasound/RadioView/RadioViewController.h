@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "WallMessage.h"
 #import "NowPlayingView.h"
-#import "TracksView.h"
+//#import "TracksView.h"
 #import "SongViewCell.h"
 #import "TestflightViewController.h"
 #import "OrientedTableView.h"
@@ -19,6 +19,8 @@
 
 @interface RadioViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 {
+//    NSAutoreleasePool* _ap;
+    
     BOOL _updatingPrevious;
     UILabel* _updatingPreviousLabel;
     UIActivityIndicatorView* _updatingPreviousIndicator;
@@ -49,7 +51,7 @@
     UIPageControl* _pageControl;
     
     UIView* _viewWall;
-    TracksView* _viewTracks;
+//    TracksView* _viewTracks;
     BOOL _viewTracksDisplayed;
 
     WallEvent* _lastWallEvent;

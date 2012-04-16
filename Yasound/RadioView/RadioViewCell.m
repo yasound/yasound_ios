@@ -19,6 +19,7 @@
 
 //@synthesize background;
 @synthesize avatar;
+@synthesize avatarMask;
 @synthesize date;
 @synthesize user;
 @synthesize message;
@@ -38,11 +39,14 @@
 
 #define MESSAGE_SPACING 4
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath target:(id)target action:(SEL)action
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
     {
+        _myTarget = target;
+        _myAction = action;
+        
         BundleStylesheet* sheet = nil;
 //        self.background = self.contentView;
 //        UIView* view = self.background;
@@ -68,6 +72,10 @@
         self.avatar = [[WebImageView alloc] initWithImageAtURL:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
         self.avatar.frame = sheet.frame;
         [view addSubview:self.avatar];
+        
+        // set target from parent
+        self.avatarMask = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onAvatarClicked:)];
+        [view addSubview:self.avatarMask];
         
 #if USE_COREGRAPHIC_LAYER
         self.avatar.layer.masksToBounds = YES;
@@ -135,9 +143,20 @@
     self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, height);
     
     self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, self.separator.frame.size.width, self.separator.frame.size.height);
-  
+    
   [self.avatar setUrl:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
+    
 }
+
+
+- (void)onAvatarClicked:(id)sender
+{
+    if (_myTarget == nil)
+        return;
+    
+    [_myTarget performSelector:_myAction withObject:self];
+}
+
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated 
@@ -147,6 +166,18 @@
     
 	// Configure the view for the selected state
 }
+
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview 
+{
+    [super willMoveToSuperview:newSuperview];
+    if(!newSuperview) 
+    {
+        [self.avatar releaseCache];
+    }
+}
+
 
 @end
 

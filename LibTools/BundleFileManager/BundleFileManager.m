@@ -122,6 +122,7 @@ static BundleFileManager* _main = nil;
 
 - (void) dealloc
 {
+    [super dealloc];
 }
 
 

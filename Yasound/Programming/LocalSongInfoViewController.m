@@ -148,7 +148,7 @@
 {
     if (indexPath.row == ROW_COVER)
     {
-        static NSString* CellIdentifier = @"CellCover";
+        static NSString* CellIdentifier = @"LocalSongInfoCellCover";
         UITableViewCell* cell = nil;
         
         cell.textLabel.backgroundColor = [UIColor clearColor];

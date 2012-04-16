@@ -12,14 +12,19 @@
 
 
 
+#define NB_FAILS_MAX 3
+
 
 @implementation SongUploadItem
 
 @synthesize song;
 @synthesize currentProgress;
+@synthesize currentSize;
 @synthesize delegate;
 @synthesize status;
-
+@synthesize nbFails;
+@synthesize detailedInfo;
+//@synthesize uploader;
 
 - (id)initWithSong:(Song*)aSong
 {
@@ -27,6 +32,7 @@
     {   
         self.song = aSong;
         self.status = SongUploadItemStatusPending;
+        self.nbFails = 0;
     }
     return self;
 }
@@ -37,9 +43,18 @@
     self.status = SongUploadItemStatusUploading;
     
     _uploader = [[SongUploader alloc] init];
-    [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
-                
+    BOOL res = [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
+    if (!res)
+    {
+        self.status = SongUploadItemStatusFailed;
+        self.nbFails++;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFAIL object:self];
+        return;
+    }
+        
+
     self.currentProgress = 0;
+    self.currentSize = 0;
     
     if (self.delegate != nil)
         [self.delegate songUploadDidStart:song];
@@ -49,7 +64,13 @@
 
 - (void)cancelUpload
 {
-    [_uploader cancelSongUpload];
+    if (self.status == SongUploadItemStatusUploading)
+    {
+        [_uploader cancelSongUpload];
+        [_uploader release];
+        _uploader = nil;
+    }
+
     
     [self.song setUploading:NO];
 
@@ -64,13 +85,18 @@
     [self.song setUploading:NO];
     self.status = SongUploadItemStatusPending;
 
-    [_uploader cancelSongUpload];
-    [_uploader release];
-    
+    if (_uploader)
+    {
+        [_uploader cancelSongUpload];
+        [_uploader release];
+        _uploader = nil;
+    }
+
     self.currentProgress = 0;
+    self.currentSize = 0;
 
     if (self.delegate != nil)
-        [self.delegate songUploadProgress:self.song progress:0];
+        [self.delegate songUploadDidInterrupt:self.song];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDINTERRUPT object:self];
 }
@@ -81,6 +107,17 @@
 {
     NSNumber* succeeded = [info objectForKey:@"succeeded"];
     assert(succeeded != nil);
+    self.detailedInfo = [info objectForKey:@"detailedInfo"];
+    
+
+    // LBDEBUG don't release it here, since the Communicator does it automatically (should not though, I think...)
+//    if (self.uploader)
+//    {
+//        [self.uploader cancelSongUpload];
+//       
+//        //[self.uploader release];
+//        //self.uploader = nil;
+//    }
     
     if ([succeeded boolValue])
     {
@@ -91,6 +128,7 @@
     {
  
         self.status = SongUploadItemStatusFailed;
+        self.nbFails++;
         
         // ne pas faire ça tout de suite
         // attendre de voir comment on gère la reprise 'dun upload e´choué
@@ -114,11 +152,16 @@
 - (void)setProgress:(float)newProgress
 {
     self.currentProgress = newProgress;
-
+    
     if (self.delegate != nil)
-        [self.delegate songUploadProgress:self.song progress:newProgress];
+        [self.delegate songUploadProgress:self.song progress:newProgress bytes:self.currentSize];
 }
 
+
+- (void)request:(ASIHTTPRequest *)request didSendBytes:(long long)bytes
+{
+    self.currentSize += bytes;
+}
 
 @end
 
@@ -133,7 +176,7 @@
 @implementation SongUploadManager
 
 @synthesize items = _items;
-@synthesize interrupted;
+@synthesize isRunning;
 @synthesize notified3G;
 
 static SongUploadManager* _main;
@@ -155,11 +198,11 @@ static SongUploadManager* _main;
         _items = [[NSMutableArray alloc] init];
         
         
-        self.interrupted = NO;
+        self.isRunning = YES;
         self.notified3G = NO;
         
         BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
-        self.interrupted = !isWifi;
+        self.isRunning = isWifi;
         
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationFinish:) name:NOTIF_UPLOAD_DIDFINISH object:nil];
@@ -203,7 +246,10 @@ static SongUploadManager* _main;
   for (SongUploadItem* item in self.items) 
   {
     SongUploadItemStatus status = item.status;
-    if (status == SongUploadItemStatusPending || status == SongUploadItemStatusUploading)
+    if ((status == SongUploadItemStatusPending)
+         || (status == SongUploadItemStatusUploading)
+         || ((status == SongUploadItemStatusFailed) && (item.nbFails < NB_FAILS_MAX))
+        )
     {
       Song* song = item.song;
       NSMutableDictionary* songInfo = [NSMutableDictionary dictionary];
@@ -243,14 +289,14 @@ static SongUploadManager* _main;
 
 - (void)interruptUploads
 {
-    self.interrupted = YES;
+    self.isRunning = NO;
     for (SongUploadItem* item in self.items)
         [item interruptUpload];
 }
 
 - (void)resumeUploads
 {
-    self.interrupted = NO;
+    self.isRunning = YES;
     [self loop];
 }
 
@@ -295,12 +341,15 @@ static SongUploadManager* _main;
 
 - (void)loop
 {
+    if (!self.isRunning)
+        return;
+    
     // check if an item is currently uploading
     // if not, start the upload
     
     for (SongUploadItem* item in self.items)
     {
-        if ((item.status == SongUploadItemStatusCompleted) || (item.status == SongUploadItemStatusFailed))
+        if ((item.status == SongUploadItemStatusCompleted) || ((item.status == SongUploadItemStatusFailed) && (item.nbFails >= NB_FAILS_MAX)))
             continue;
         
         // an item is currently uploading. Wait for it to finish before starting another upload.
@@ -308,21 +357,29 @@ static SongUploadManager* _main;
             return;
             
         // start another upload
-        if (item.status == SongUploadItemStatusPending)
+        if ((item.status == SongUploadItemStatusPending) || (item.status == SongUploadItemStatusFailed))
         {
             [item startUpload];
             return;
         }
     }
+    
+    // nothing else to upload
+//    self.isRunning = NO;
 }
 
 
 - (void)onNotificationFinish:(NSNotification *)notification
 {  
+//    SongUploadItem* item = notification.object;
+//    assert(item);
+//    // if the upload has failed (connection reset for instance), don't remove this item from the local uploading list, we want it to retry at the next session
+//    if (item.status == SongUploadItemStatusCompleted)
+
+        
+    [self refreshStoredUploads];
     
-    [self loop];
-  
-  [self refreshStoredUploads];
+    [self loop];  
 }
 
 - (void)onNotificationCancel:(NSNotification *)notification
@@ -347,11 +404,12 @@ static SongUploadManager* _main;
     
     [self.items removeObjectAtIndex:itemIndex];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL_NEEDGUIREFRESH object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_SONG_GUI_NEED_REFRESH object:self];
 
-        [self loop];
     
-  [self refreshStoredUploads];
+    [self loop];
+    
+    [self refreshStoredUploads];
 }
 
 

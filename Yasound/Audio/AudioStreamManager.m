@@ -121,8 +121,6 @@ static AudioStreamer* _gAudioStreamer = nil;
     if (_gAudioStreamer == nil)
         return;
 
-
-    //LBDEBUG DEBUG TODO : UNMUTE RADIO
     [_gAudioStreamer start];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_PLAY object:nil];
 }
@@ -133,7 +131,6 @@ static AudioStreamer* _gAudioStreamer = nil;
     return;
   
   
-  //LBDEBUG DEBUG TODO : UNMUTE RADIO
   if (_gAudioStreamer.state != AS_PLAYING)
     [self playRadio];
   else

@@ -102,12 +102,12 @@
         return;
     }
 
-    NSNumber* warning = [[NSUserDefaults standardUserDefaults] objectForKey:@"userUploadWarning"];
+    NSNumber* warning = [[NSUserDefaults standardUserDefaults] objectForKey:@"legalUploadWarning"];
     if ((warning == nil) || ([warning boolValue] == YES))
     {
-        _alertWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongUpload_warning_title", nil) message:NSLocalizedString(@"SongUpload_warning_message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
-        [_alertWarning show];
-        [_alertWarning release];  
+        _legalUploadWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongUpload_warning_title", nil) message:NSLocalizedString(@"SongUpload_warning_message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:NSLocalizedString(@"Button_iAgree", nil),nil ];
+        [_legalUploadWarning show];
+        [_legalUploadWarning release];  
     }
     else
     [self requestUpload];
@@ -121,17 +121,21 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (alertView != _alertWarning)
-        return;
-    
-    if (buttonIndex == 1)
+    if ((alertView == _legalUploadWarning) && (buttonIndex == 1))
     {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"userUploadWarning"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"legalUploadWarning"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-
         [self requestUpload];
+        return;
     }
+
     
+    if ((alertView == _addedUploadWarning) && (buttonIndex == 1))
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"addedUploadWarning"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return;
+    }
 }
 
 - (void)requestUpload
@@ -158,7 +162,17 @@
         return; 
     }
     else
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_added", nil) closeAfterTimeInterval:1];
+    {
+        NSNumber* warning = [[NSUserDefaults standardUserDefaults] objectForKey:@"addedUploadWarning"];
+        if ((warning == nil) || ([warning boolValue] == YES))
+        {
+            _addedUploadWarning = [[UIAlertView alloc] initWithTitle:@"Yasound" message:NSLocalizedString(@"SongAddView_added", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_OK", nil) otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
+            [_addedUploadWarning show];
+            [_addedUploadWarning release];  
+        }
+
+        // [ActivityAlertView showWithTitle:NSLocalizedString(@"", nil) closeAfterTimeInterval:1];
+    }
     
 }
 
