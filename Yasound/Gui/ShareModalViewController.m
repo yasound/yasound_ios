@@ -69,13 +69,11 @@
     if (!enableFacebook)
     {
         _labelFacebook.textColor = [UIColor grayColor];
-        _textFacebook.text = @"";
     }
     
     if (!enableTwitter)
     {
         _labelTwitter.textColor = [UIColor grayColor];
-        _textTwitter.text = @"";
     }
 
     
@@ -138,11 +136,8 @@
 
     
     // message objects input
-    if (enableFacebook)
-        _textFacebook.text = facebookFullMessage;
-        
-    if (enableTwitter)
-        _textTwitter.text = twitterFullMessage;
+    _textFacebook.text = facebookFullMessage;
+    _textTwitter.text = twitterFullMessage;
     
     _switchFacebook.on = enableFacebook;
     _switchTwitter.on = enableTwitter;
@@ -406,10 +401,16 @@
     NSString* title = NSLocalizedString(@"Yasound share", nil);
 
     if (_switchFacebook.on)
+    {
+        NSLog(@"Share on facebook.");
         [[YasoundSessionManager main] postMessageForFacebook:_textFacebook.text title:title picture:self.pictureUrl link:fullLink target:self action:@selector(onPostMessageFinished:)];
+    }
 
     if (_switchTwitter.on)
+    {
+        NSLog(@"Share on twitter.");
         [[YasoundSessionManager main] postMessageForTwitter:_textTwitter.text title:title picture:self.pictureUrl target:self action:@selector(onPostMessageFinished:)];
+    }
 
     
     [_target performSelector:_action];
