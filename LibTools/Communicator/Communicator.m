@@ -10,6 +10,7 @@
 #import "NSObject+PropertyDictionary.h"
 #import "NSObject+SBJson.h"
 #import "ASIFormDataRequest.h"
+#import "ASIHTTPRequest+Model.h"
 
 @interface Communicator (Communicator_internal)
 - (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withUrlParams:(NSArray*)params withAuth:(Auth*)auth;
@@ -31,6 +32,12 @@
 - (void)applyAuth:(Auth*)auth toRequest:(ASIHTTPRequest*)request;
 - (void)fillRequest:(ASIHTTPRequest*)request;
 - (NSURL*)URLWithURL:(NSURL*)url andParams:(NSArray*)params;
+@end
+
+@interface Communicator (Communicator_internal_v2)
+
+- (BOOL)handleResponse_v2:(ASIHTTPRequest*)req failed:(BOOL)failed;
+
 @end
 
 
@@ -69,7 +76,7 @@
     
     if (slash && ![path hasSuffix:@"/"])
         path = [path stringByAppendingString:@"/"];
-
+    
     NSURL* url;
     if (absolute)
         url = [NSURL URLWithString:path];
@@ -289,9 +296,9 @@
 {
     if (!req)
         [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
-
+    
     NSMutableDictionary* userinfo = [[NSMutableDictionary alloc] init];
-
+    
     [userinfo setValue:target forKey:@"target"];
     [userinfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
     [userinfo setValue:@"GET_ALL" forKey:@"method"];
@@ -785,54 +792,81 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
-  NSLog(@"request (%p) FINISHED", request);
-  BOOL success = YES;
-  if (request.responseStatusCode / 100 == 4 || request.responseStatusCode / 100 == 5)
-    success = NO;
-  
-  [self handleResponse:request success:success];
+    if ([self handleResponse_v2:request failed:NO])
+        return; // it is a v2 request, it has been handled
+    
+    BOOL success = YES;
+    if (request.responseStatusCode / 100 == 4 || request.responseStatusCode / 100 == 5)
+        success = NO;
+    
+    [self handleResponse:request success:success];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-  NSLog(@"\nrequest.url = %@  request.response.statusCode = %d", request.url.absoluteString, request.responseStatusCode);
-  NSLog(@"request (%p) FAILED", request);
+    if ([self handleResponse_v2:request failed:YES])
+        return; // it is a v2 request, it has been handled
+    
     [self handleResponse:request success:NO];
 }
 
-//- (void)requestStarted:(ASIHTTPRequest *)request
-//{
-//  NSLog(@"request (%p) STARTED", request);
-//}
-//
-//- (void)request:(ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders
-//{
-//  NSLog(@"request (%p) RECIEVED response headers", request);
-//}
-//
-//- (void)request:(ASIHTTPRequest *)request willRedirectToURL:(NSURL *)newURL
-//{
-//  [request redirectToURL:newURL];
-//  NSLog(@"request (%p) will REDIRECT to url '%@'", request, newURL.absoluteString);
-//}
-//
-//- (void)requestRedirected:(ASIHTTPRequest *)request
-//{
-//  NSLog(@"request (%p) REDIRECTED", request);
-//}
-//
-//- (void)authenticationNeededForRequest:(ASIHTTPRequest *)request
-//{
-//  NSLog(@"request (%p) AUTHENTICATION needed", request);
-//}
-//
-//- (void)proxyAuthenticationNeededForRequest:(ASIHTTPRequest *)request
-//{
-//  NSLog(@"request (%p) PROXY AUTHENTICATION needed", request);
-//}
 
-@end
 
+#pragma mark - API v2
+
+- (ASIHTTPRequest*)buildRequestWithConfig:(RequestConfig*)config
+{
+    NSURL* u = [self urlWithURL:config.url absolute:config.urlIsAbsolute addTrailingSlash:YES params:config.params];
+    
+    ASIHTTPRequest* req = [[ASIHTTPRequest alloc] initWithURL:u];
+    req.requestMethod = config.method;
+    req.delegate = self;
+    req.userInfo = [NSDictionary dictionaryWithObject:config forKey:REQUEST_CONFIG_USER_INFO_KEY];
+    [self applyAuth:config.auth toRequest:req];
+    [self fillRequest:req];
+    
+    return req;
+}
+
+- (ASIFormDataRequest*)buildFormDataRequestWithConfig:(RequestConfig*)config
+{
+    NSURL* u = [self urlWithURL:config.url absolute:config.urlIsAbsolute addTrailingSlash:YES params:config.params];
+    
+    ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
+    req.requestMethod = config.method;
+    req.delegate = self;
+    req.userInfo = [NSDictionary dictionaryWithObject:config forKey:REQUEST_CONFIG_USER_INFO_KEY];
+    [self applyAuth:config.auth toRequest:req];
+    [self fillRequest:req];
+    
+    return req;
+}
+
+@end  // Communicator
+
+@implementation Communicator (Communicator_internal_v2)
+
+- (BOOL)handleResponse_v2:(ASIHTTPRequest*)req failed:(BOOL)failed
+{
+    // this is a v2 request if :
+    //    req.userinfo is a dictionary with a RequestConfig object for the key REQUEST_CONFIG_USER_INFO_KEY (= @"RequestConfig")
+    if (!req.userInfo)
+        return NO;
+    if ([req.userInfo valueForKey:REQUEST_CONFIG_USER_INFO_KEY] == nil)
+        return NO;
+    if ([[req.userInfo valueForKey:REQUEST_CONFIG_USER_INFO_KEY] isKindOfClass:[RequestConfig class]] == NO)
+        return NO;
+    
+    
+    RequestConfig* config = (RequestConfig*)[req.userInfo valueForKey:REQUEST_CONFIG_USER_INFO_KEY];
+    BOOL success = !failed;
+    if (config.callbackTarget && config.callbackAction)
+        [config.callbackTarget performSelector:config.callbackAction withObject:req withObject:[NSNumber numberWithBool:success]];
+    
+    return YES;
+}
+
+@end  // Communicator (Communicator_internal_v2)
 
 
 
@@ -996,20 +1030,20 @@
         NSLog(@"postRequestToURL: invalid url");
         return;
     }
-
+    
     NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
     [userInfo setValue:target forKey:@"target"];
     [userInfo setValue:NSStringFromSelector(selector) forKey:@"selector"];
     [userInfo setValue:@"POST" forKey:@"method"];
     [userInfo setValue:userData forKey:@"userData"];
-
+    
     ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
     req.userInfo = userInfo;
     req.delegate = self;
     [self applyAuth:auth toRequest:req];
     [self fillRequest:req];
-//    [req startAsynchronous]; // let the parent do that
-
+    //    [req startAsynchronous]; // let the parent do that
+    
     return req;
 }
 
@@ -1147,4 +1181,5 @@
     return req;
 }
 
-@end
+@end  // Communicator (Communicator_internal)
+

@@ -209,4 +209,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)apnsPreferencesWithTarget:(id)target action:(SEL)selector;
 - (void)setApnsPreferences:(APNsPreferences*)prefs target:(id)target action:(SEL)selector;
 
+- (void)testV2;
+
 @end
