@@ -36,6 +36,7 @@
     
     id _target;
     SEL _action;
+    NSInteger _nbRequests;
 
 }
 

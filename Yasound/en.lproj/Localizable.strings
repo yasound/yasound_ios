@@ -375,7 +375,8 @@
 
 "TracksView_no_tracks" = "no tracks found!";
 
-"RadioView_track_share_error" = "Error";
+"RadioView_track_share_error_title" = "Sharing";
+"RadioView_track_share_error" = "Error while sharing.";
 "RadioView_track_share_facebook_error" = "Error while sharing on Facebook.";
 "RadioView_track_share_twitter_error" = "Error while sharing on Twitter.";
 

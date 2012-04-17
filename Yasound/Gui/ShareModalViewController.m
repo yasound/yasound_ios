@@ -399,6 +399,12 @@
         return;
     
     NSString* title = NSLocalizedString(@"Yasound share", nil);
+    
+    _nbRequests = 0;
+    if (_switchFacebook.on)
+        _nbRequests++;
+    if (_switchTwitter.on)
+        _nbRequests++;
 
     if (_switchFacebook.on)
     {
@@ -411,11 +417,31 @@
         NSLog(@"Share on twitter.");
         [[YasoundSessionManager main] postMessageForTwitter:_textTwitter.text title:title picture:self.pictureUrl target:self action:@selector(onPostMessageFinished:)];
     }
-
-    
-    [_target performSelector:_action];
 }
 
+
+- (void)onPostMessageFinished:(NSNumber*)finished
+{
+    BOOL done = [finished boolValue];
+
+    NSLog(@"onPostMessageFinished received");
+
+    if (!done)
+    {
+        UIAlertView *av;
+        
+            av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"RadioView_track_share_error_title", nil) message:NSLocalizedString(@"RadioView_track_share_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [av show];
+        [av release];  
+        return;    
+    }
+
+    _nbRequests--;
+    
+    if (_nbRequests == 0)
+        [_target performSelector:_action];
+}
 
 - (IBAction)onEmailButton:(id)sender
 {

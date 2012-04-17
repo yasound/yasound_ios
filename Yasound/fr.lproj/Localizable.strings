@@ -370,7 +370,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "TracksView_no_tracks" = "aucun morceau programmé!";
 
-"RadioView_track_share_error" = "Erreur";
+"RadioView_track_share_error_title" = "Partage";
+"RadioView_track_share_error" = "Impossible de poster le message.";
 "RadioView_track_share_facebook_error" = "Impossible de poster le message sur votre wall Facebook.";
 "RadioView_track_share_twitter_error" = "Impossible de poster le message sur Twitter.";
 "RadioView_track_share_message" = "J'écoute %@, de %@ sur %@";
