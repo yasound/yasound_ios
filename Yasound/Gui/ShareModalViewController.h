@@ -19,6 +19,7 @@
     IBOutlet UILabel* _labelFacebook;
     IBOutlet UILabel* _labelTwitter;
     IBOutlet UILabel* _labelPublishButton;
+    IBOutlet UILabel* _labelEmail;
     IBOutlet UILabel* _labelEmailButton;
     
     IBOutlet UISwitch* _switchFacebook;
@@ -29,7 +30,6 @@
     
     IBOutlet UITextView* _textFacebook;
     IBOutlet UITextView* _textTwitter;
-    IBOutlet UITextView* _textEmail;
     
     IBOutlet UITableView* _tableView;
     IBOutlet UIBarButtonItem* _cancel;

@@ -20,6 +20,9 @@
   SEL _buttonLikedClickedAction;
 }
 
+@property (nonatomic, retain) UIButton* shareButton;
+
+
 @property (nonatomic, retain) NSString* shareFullMessage;
 @property (nonatomic, retain) NSMutableDictionary* shareButtons;
 

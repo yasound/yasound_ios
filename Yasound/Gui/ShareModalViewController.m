@@ -24,7 +24,7 @@
 
 #define SECTION_EMAIL 1
 #define SECTION_EMAIL_NB_ROWS 2
-#define ROW_EMAIL_TEXT 0
+#define ROW_EMAIL_LABEL 0
 #define ROW_EMAIL_BUTTON 1
 
 
@@ -56,17 +56,33 @@
     [super viewDidLoad];
 
     _cancel.title = NSLocalizedString(@"Navigation_cancel", nil);
+    
+    
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 
     _labelFacebook.text = NSLocalizedString(@"ShareModalView_facebook_label", nil);
     _labelTwitter.text = NSLocalizedString(@"ShareModalView_twitter_label", nil);
     _labelPublishButton.text = NSLocalizedString(@"ShareModalView_publish_button_label", nil);
+    _labelEmail.text = NSLocalizedString(@"ShareModalView_email_label", nil);
     _labelEmailButton.text = NSLocalizedString(@"ShareModalView_email_button_label", nil);
+
+    UIImageView* background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareTextView.png"]];
+    [_textFacebook addSubview:background];
+    [_textFacebook sendSubviewToBack:background];
+    
+    background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareTextView.png"]];
+    [_textTwitter addSubview:background];
+    [_textTwitter sendSubviewToBack:background];
+    
+//    _textFacebook.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ShareTextView.png"]];
+//
+//    _textTwitter.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ShareTextView.png"]];
 
 
     // format messages
     Radio* currentRadio = [AudioStreamManager main].currentRadio;
     
-    NSString* message = NSLocalizedString(@"ShareModalView_facebook_share_message", nil);
+    NSString* message = NSLocalizedString(@"ShareModalView_share_message", nil);
     NSString* facebookFullMessage = [NSString stringWithFormat:message, self.song, self.artist, currentRadio.name];
 
     //
@@ -84,7 +100,6 @@
     // message objects input
     _textFacebook.text = facebookFullMessage;
     _textTwitter.text = twitterFullMessage;
-    _textEmail.text = emailFullMessage;
 
     
     // enable sharing
@@ -146,13 +161,25 @@
 
 
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{    
-//    if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CHART))
-//        return GRAPH_HEIGHT;
-//    
-//    return 44;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{    
+    if ((indexPath.section == SECTION_PUBLISH) && (indexPath.row == ROW_PUBLISH_FACEBOOK))
+        return _cellFacebook.frame.size.height;
+    
+    if ((indexPath.section == SECTION_PUBLISH) && (indexPath.row == ROW_PUBLISH_TWITTER))
+        return _cellTwitter.frame.size.height;
+    
+    if ((indexPath.section == SECTION_PUBLISH) && (indexPath.row == ROW_PUBLISH_BUTTON))
+        return _cellPublishButton.frame.size.height;
+    
+    if ((indexPath.section == SECTION_EMAIL) && (indexPath.row == ROW_EMAIL_LABEL))
+        return _cellEmail.frame.size.height;
+    
+    if ((indexPath.section == SECTION_EMAIL) && (indexPath.row == ROW_EMAIL_BUTTON))
+        return _cellEmailButton.frame.size.height;
+    
+    return 44;
+}
 
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -203,6 +230,15 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+    if ((indexPath.section == SECTION_EMAIL) && (indexPath.row == ROW_EMAIL_LABEL))
+    {
+        UIImageView* view = nil;
+        view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareSmallCellRowFirst.png"]];
+        cell.backgroundView = view;
+        [view release];
+        return;
+    }
+    
     NSInteger nbRows;
     if (indexPath.section == SECTION_PUBLISH)
     {
@@ -216,28 +252,28 @@
     
     if (nbRows == 1)
     {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowSingle.png"]];
         cell.backgroundView = view;
         [view release];
     }
     else if (indexPath.row == 0)
     {
         UIImageView* view = nil;
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
+            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowFirst.png"]];
         cell.backgroundView = view;
         [view release];
     }
     else if (indexPath.row == (nbRows -1))
     {
         UIImageView* view = nil;
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
+            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowLast.png"]];
         cell.backgroundView = view;
         [view release];
     }
     else
     {
         UIImageView* view = nil;
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
+            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowInter.png"]];
         cell.backgroundView = view;
         [view release];
     }
@@ -248,8 +284,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    UITableViewCell* cell = nil;
-    
     if ((indexPath.section == SECTION_PUBLISH) && (indexPath.row == ROW_PUBLISH_FACEBOOK))
         return _cellFacebook;
 
@@ -259,7 +293,7 @@
     if ((indexPath.section == SECTION_PUBLISH) && (indexPath.row == ROW_PUBLISH_BUTTON))
         return _cellPublishButton;
 
-    if ((indexPath.section == SECTION_EMAIL) && (indexPath.row == ROW_EMAIL_TEXT))
+    if ((indexPath.section == SECTION_EMAIL) && (indexPath.row == ROW_EMAIL_LABEL))
         return _cellEmail;
 
     if ((indexPath.section == SECTION_EMAIL) && (indexPath.row == ROW_EMAIL_BUTTON))
@@ -292,6 +326,16 @@
 }
 
 - (IBAction)onSwitchTwitter:(id)sender
+{
+    
+}
+
+- (IBAction)onPublishButton:(id)sender
+{
+
+}
+
+- (IBAction)onEmailButton:(id)sender
 {
     
 }

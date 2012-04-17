@@ -32,6 +32,8 @@
 #import "LikeViewCell.h"
 
 #import "ProfileViewController.h"
+#import "ShareModalViewController.h"
+
 
 //#define LOCAL 1 // use localhost as the server
 
@@ -1080,6 +1082,9 @@ static Song* _gNowPlayingSong = nil;
     
     _playingNowView = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong];
     
+    [_playingNowView.trackInteractionView.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
+
+    
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _playingNowView.frame = sheet.frame;
     
@@ -1863,6 +1868,14 @@ static Song* _gNowPlayingSong = nil;
   
 }
 
+
+
+- (void)onTrackShare:(id)sender
+{
+    ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong.name andArtist:_gNowPlayingSong.artist];
+    [self.navigationController presentModalViewController:view animated:YES];
+    [view release];
+}
 
 
 

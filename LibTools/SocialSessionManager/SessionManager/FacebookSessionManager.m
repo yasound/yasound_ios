@@ -279,7 +279,6 @@ static FacebookSessionManager* _facebook = nil;
 //  NSLog(@"didReceiveResponse");
 //}
 
-// ICI
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error
 {

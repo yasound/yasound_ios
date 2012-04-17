@@ -18,11 +18,13 @@
 #import "YasoundAppDelegate.h"
 
 
-
 @implementation TrackInteractionView
 
+@synthesize shareButton;
 @synthesize shareFullMessage;
 @synthesize shareButtons;
+
+
 
 - (id)initWithSong:(Song*)song
 {
@@ -67,9 +69,11 @@
 //        [self addSubview:btn];
 
         sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonShare" error:nil];
-        btn = [sheet makeButton];
-        [btn addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:btn];
+        self.shareButton = [sheet makeButton];
+        // deprecated. the parent view controller is in charge of the event now.
+        //[self.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self addSubview:self.shareButton];
 
         
     }
@@ -163,7 +167,8 @@
 
 #define TIMEOUT_FOR_SHARING 8
 
-- (void)onTrackShare:(id)sender
+- (void)onTrackShare_deprecated:(id)sender
+//- (void)onTrackShare:(id)sender
 {
     Radio *currentRadio = [AudioStreamManager main].currentRadio;
 

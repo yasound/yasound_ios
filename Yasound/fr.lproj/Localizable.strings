@@ -384,6 +384,16 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "ShareTrackOnFacebookAlertShare" = "Publier";
 
 
+"ShareModalView_facebook_label" = "Publier sur Facebook";
+"ShareModalView_twitter_label" = "Publier sur Twitter";
+"ShareModalView_email_label" = "Envoyer un email";
+"ShareModalView_publish_button_label" = "Publier";
+"ShareModalView_email_button_label" = "Email";
+"ShareModalView_share_message" = "J'écoute %@, de %@ sur %@";
+
+
+
+
 
 "LegalView_legal_text" = "\
 1. Vous vous engagez à avoir une utilisation du service Yasound en \"bon père de famille\" : \n\
