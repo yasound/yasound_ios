@@ -520,6 +520,20 @@
 		40B40AE5152EFC630050D334 /* BigActionRedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF6C152DFCEC0070F982 /* BigActionRedButton@2x.png */; };
 		40B40AE6152EFC630050D334 /* BigActionRedButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF6D152DFCEC0070F982 /* BigActionRedButtonHighlighted.png */; };
 		40B40AE7152EFC630050D334 /* BigActionRedButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF6E152DFCEC0070F982 /* BigActionRedButtonHighlighted@2x.png */; };
+		40CC5A4D153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
+		40CC5A4E153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
+		40CC5A4F153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
+		40CC5A50153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
+		40CC5A51153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
+		40CC5A52153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
+		40CC5A53153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
+		40CC5A56153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
+		40CC5A57153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
+		40CC5A58153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
+		40CC5A59153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
+		40CC5A5A153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
+		40CC5A5B153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
+		40CC5A5C153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
 		40EAA55814D85EF60000621C /* RadioListeningStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55714D85EF60000621C /* RadioListeningStat.m */; };
 		40EAA55914D85EF60000621C /* RadioListeningStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55714D85EF60000621C /* RadioListeningStat.m */; };
 		40EAA55A14D85EF60000621C /* RadioListeningStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55714D85EF60000621C /* RadioListeningStat.m */; };
@@ -2999,6 +3013,10 @@
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
 		40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD LOCAL SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40CC5A4B153D6EF7006C052E /* RequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestConfig.h; sourceTree = "<group>"; };
+		40CC5A4C153D6EF7006C052E /* RequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestConfig.m; sourceTree = "<group>"; };
+		40CC5A54153D9EEB006C052E /* ASIHTTPRequest+Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+Model.h"; sourceTree = "<group>"; };
+		40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+Model.m"; sourceTree = "<group>"; };
 		40EAA55614D85EF60000621C /* RadioListeningStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioListeningStat.h; sourceTree = "<group>"; };
 		40EAA55714D85EF60000621C /* RadioListeningStat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioListeningStat.m; sourceTree = "<group>"; };
 		40EAA55C14DA980F0000621C /* LeaderBoardEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderBoardEntry.h; sourceTree = "<group>"; };
@@ -3814,6 +3832,10 @@
 				40274B7F1491048900F26008 /* Model.m */,
 				4009011A149A69F100C9E51A /* Auth.h */,
 				4009011B149A69F100C9E51A /* Auth.m */,
+				40CC5A4B153D6EF7006C052E /* RequestConfig.h */,
+				40CC5A4C153D6EF7006C052E /* RequestConfig.m */,
+				40CC5A54153D9EEB006C052E /* ASIHTTPRequest+Model.h */,
+				40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */,
 			);
 			name = Communicator;
 			path = LibTools/Communicator;
@@ -6969,6 +6991,8 @@
 				40B409FF152EFC630050D334 /* MessageWeViewController.m in Sources */,
 				40B40A00152EFC630050D334 /* NotificationTableViewCell.m in Sources */,
 				BC7263C6153479C1002386C3 /* ProfileViewController.m in Sources */,
+				40CC5A53153D6EF7006C052E /* RequestConfig.m in Sources */,
+				40CC5A5C153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7148,6 +7172,8 @@
 				4028E7C7152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC16152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 				BC7263C5153479C1002386C3 /* ProfileViewController.m in Sources */,
+				40CC5A52153D6EF7006C052E /* RequestConfig.m in Sources */,
+				40CC5A5B153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7331,6 +7357,8 @@
 				4028E7C4152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC13152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 				BC7263C2153479C1002386C3 /* ProfileViewController.m in Sources */,
+				40CC5A4F153D6EF7006C052E /* RequestConfig.m in Sources */,
+				40CC5A58153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7514,6 +7542,8 @@
 				4028E7C3152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC12152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 				BC7263C1153479C1002386C3 /* ProfileViewController.m in Sources */,
+				40CC5A4E153D6EF7006C052E /* RequestConfig.m in Sources */,
+				40CC5A57153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7698,6 +7728,8 @@
 				4028E7C6152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC15152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 				BC7263C4153479C1002386C3 /* ProfileViewController.m in Sources */,
+				40CC5A51153D6EF7006C052E /* RequestConfig.m in Sources */,
+				40CC5A5A153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7881,6 +7913,8 @@
 				4028E7C2152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC11152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 				BC7263C0153479C1002386C3 /* ProfileViewController.m in Sources */,
+				40CC5A4D153D6EF7006C052E /* RequestConfig.m in Sources */,
+				40CC5A56153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8065,6 +8099,8 @@
 				4028E7C5152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				4028EC14152DD9D70056B34B /* NotificationTableViewCell.m in Sources */,
 				BC7263C3153479C1002386C3 /* ProfileViewController.m in Sources */,
+				40CC5A50153D6EF7006C052E /* RequestConfig.m in Sources */,
+				40CC5A59153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

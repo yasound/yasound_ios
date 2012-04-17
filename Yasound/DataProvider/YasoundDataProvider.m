@@ -11,6 +11,7 @@
 #import "NSObject+SBJson.h"
 #import "YasoundAppDelegate.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "ASIHTTPRequest+Model.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 
@@ -1714,6 +1715,7 @@ static YasoundDataProvider* _main = nil;
   NSString* relativeURL = @"/api/v1/set_notifications_preferences";
   [_communicator postNewObject:prefs withURL:relativeURL absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
+
 
 
 @end

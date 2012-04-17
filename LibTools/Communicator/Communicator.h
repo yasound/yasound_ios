@@ -11,6 +11,7 @@
 #import "Container.h"
 #import "ASIHttpRequest.h"
 #import "Auth.h"
+#import "RequestConfig.h"
 
 @class ASIFormDataRequest;
 
@@ -73,5 +74,10 @@
 
 - (void)postToURL:(NSString*)url absolute:(BOOL)absolute withStringData:(NSString*)stringData objectClass:(Class)objectClass notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth  returnNewObject:(BOOL)returnNew withAuthForGET:(Auth*)getAuth;
 
+
+
+#pragma mark - API v2
+- (ASIHTTPRequest*)buildRequestWithConfig:(RequestConfig*)config;
+- (ASIFormDataRequest*)buildFormDataRequestWithConfig:(RequestConfig*)config;
 
 @end
