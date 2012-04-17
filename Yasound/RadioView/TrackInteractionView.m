@@ -191,8 +191,6 @@
         [self.shareButtons setObject:LOGIN_TYPE_TWITTER forKey:[NSString stringWithFormat:@"%d", index]];
     }
     
-    //LBDEBUG
-    NSLog(@"self.shareButtons %@", self.shareButtons);
 
 //    if (yasound)
 //    {
@@ -254,7 +252,7 @@
         NSLog(@"pictureURL : %@", [pictureURL absoluteString]);
         NSLog(@"link : %@", [fullLink absoluteString]);
 
-      NSString* msg = [NSString stringWithFormat:@"%@ %@ #yasound", self.shareFullMessage, [fullLink absoluteString]];
+      NSString* msg = [NSString stringWithFormat:@"#yasound %@ %@ ", [fullLink absoluteString], self.shareFullMessage];
       
         [[YasoundSessionManager main] postMessageForTwitter:msg title:title picture:pictureURL target:self action:@selector(onPostMessageFinished:)];
 
