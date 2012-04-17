@@ -1872,9 +1872,14 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onTrackShare:(id)sender
 {
-    ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong.name andArtist:_gNowPlayingSong.artist];
+    ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong.name andArtist:_gNowPlayingSong.artist target:self action:@selector(onShareModalReturned)];
     [self.navigationController presentModalViewController:view animated:YES];
     [view release];
+}
+
+- (void)onShareModalReturned
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 

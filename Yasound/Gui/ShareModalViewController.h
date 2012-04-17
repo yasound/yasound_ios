@@ -33,6 +33,9 @@
     
     IBOutlet UITableView* _tableView;
     IBOutlet UIBarButtonItem* _cancel;
+    
+    id _target;
+    SEL _action;
 
 }
 
@@ -41,7 +44,7 @@
 @property (nonatomic, retain) NSURL* pictureUrl;
 @property (nonatomic, retain) NSURL* fullLink;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(NSString*)aSong andArtist:(NSString*)anArtist;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(NSString*)aSong andArtist:(NSString*)anArtist target:(id)target action:(SEL)action;
 
 
 @end

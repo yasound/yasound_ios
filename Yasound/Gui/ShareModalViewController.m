@@ -38,13 +38,16 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(NSString*)aSong andArtist:(NSString*)anArtist
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(NSString*)aSong andArtist:(NSString*)anArtist target:(id)target action:(SEL)action
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
         self.song = aSong;
         self.artist = anArtist;
+        
+        _target = target;
+        _action = action;
     }
     return self;
 }
@@ -317,26 +320,58 @@
 
 - (IBAction)onBack:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (_target == nil)
+        return;
+    
+    [_target performSelector:_action];
 }
 
 - (IBAction)onSwitchFacebook:(id)sender
 {
-
+    if (_switchFacebook.on)
+    {
+        _textFacebook.editable = YES;
+        _textFacebook.textColor = [UIColor colorWithRed:50.f/255.f green:79.f/255.f blue:133.f/255.f alpha:1];
+    }
+    else 
+    {
+        _textFacebook.editable = NO;
+        _textFacebook.textColor = [UIColor colorWithRed:128.f/255.f green:128.f/255.f blue:128.f/255.f alpha:1];
+    }
+    
+    _buttonPublish.enabled = (_switchFacebook.on || _switchTwitter.on);
 }
 
 - (IBAction)onSwitchTwitter:(id)sender
 {
+    if (_switchTwitter.on)
+    {
+        _textTwitter.editable = YES;
+        _textTwitter.textColor = [UIColor colorWithRed:50.f/255.f green:79.f/255.f blue:133.f/255.f alpha:1];
+    }
+    else 
+    {
+        _textTwitter.editable = NO;
+        _textTwitter.textColor = [UIColor colorWithRed:128.f/255.f green:128.f/255.f blue:128.f/255.f alpha:1];
+    }
     
+    _buttonPublish.enabled = (_switchFacebook.on || _switchTwitter.on);
 }
 
 - (IBAction)onPublishButton:(id)sender
 {
-
+    if (_target == nil)
+        return;
+    
+    [_target performSelector:_action];
 }
 
 - (IBAction)onEmailButton:(id)sender
 {
+    if (_target == nil)
+        return;
+    
+    [_target performSelector:_action];
     
 }
 
