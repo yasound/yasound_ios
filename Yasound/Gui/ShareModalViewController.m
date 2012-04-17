@@ -9,6 +9,7 @@
 #import "ShareModalViewController.h"
 #import "AudioStreamManager.h"
 #import "YasoundAppDelegate.h"
+#import "YasoundSessionManager.h"
 
 @interface ShareModalViewController ()
 
@@ -57,7 +58,43 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // enable sharing
+    BOOL enableFacebook = [[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK];
+    BOOL enableTwitter = [[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER];
+    
+    _switchFacebook.enabled = enableFacebook;
+    _switchTwitter.enabled = enableTwitter;
 
+    if (!enableFacebook)
+    {
+        _labelFacebook.textColor = [UIColor grayColor];
+        _textFacebook.text = @"";
+    }
+    
+    if (!enableTwitter)
+    {
+        _labelTwitter.textColor = [UIColor grayColor];
+        _textTwitter.text = @"";
+    }
+
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary* dico = [defaults objectForKey:@"Sharing"];
+
+    NSNumber* nb = [dico objectForKey:@"facebook"];
+    if (enableFacebook && nb)
+        enableFacebook = [nb boolValue];
+    
+    nb = [dico objectForKey:@"twitter"];
+    if (enableTwitter && nb)
+        enableTwitter = [nb boolValue];
+    
+    
+    
+
+    
+    // GUI
     _cancel.title = NSLocalizedString(@"Navigation_cancel", nil);
     
     
@@ -101,27 +138,16 @@
 
     
     // message objects input
-    _textFacebook.text = facebookFullMessage;
-    _textTwitter.text = twitterFullMessage;
-
-    
-    // enable sharing
-    BOOL enableFacebook = YES;
-    BOOL enableTwitter = YES;
-
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary* dico = [defaults objectForKey:@"Sharing"];
-    NSNumber* nb = [dico objectForKey:@"facebook"];
-    if (nb)
-        enableFacebook = [nb boolValue];
-    nb = [dico objectForKey:@"twitter"];
-    if (nb)
-        enableTwitter = [nb boolValue];
+    if (enableFacebook)
+        _textFacebook.text = facebookFullMessage;
+        
+    if (enableTwitter)
+        _textTwitter.text = twitterFullMessage;
     
     _switchFacebook.on = enableFacebook;
     _switchTwitter.on = enableTwitter;
-    
-    
+    [self onSwitchFacebook:nil];
+    [self onSwitchTwitter:nil];
 }
 
 - (void)viewDidUnload
@@ -340,6 +366,13 @@
     }
     
     _buttonPublish.enabled = (_switchFacebook.on || _switchTwitter.on);
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary* dico = [NSMutableDictionary dictionaryWithDictionary:[defaults objectForKey:@"Sharing"]];
+    [dico setObject:[NSNumber numberWithBool:_switchFacebook.on] forKey:@"facebook"];
+    [defaults setObject:dico forKey:@"Sharing"];
+    [defaults synchronize];
+
 }
 
 - (IBAction)onSwitchTwitter:(id)sender
@@ -356,15 +389,32 @@
     }
     
     _buttonPublish.enabled = (_switchFacebook.on || _switchTwitter.on);
+
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary* dico = [NSMutableDictionary dictionaryWithDictionary:[defaults objectForKey:@"Sharing"]];
+    [dico setObject:[NSNumber numberWithBool:_switchTwitter.on] forKey:@"twitter"];
+    [defaults setObject:dico forKey:@"Sharing"];
+    [defaults synchronize];
 }
+
 
 - (IBAction)onPublishButton:(id)sender
 {
     if (_target == nil)
         return;
     
+    NSString* title = NSLocalizedString(@"Yasound share", nil);
+
+    if (_switchFacebook.on)
+        [[YasoundSessionManager main] postMessageForFacebook:_textFacebook.text title:title picture:self.pictureUrl link:fullLink target:self action:@selector(onPostMessageFinished:)];
+
+    if (_switchTwitter.on)
+        [[YasoundSessionManager main] postMessageForTwitter:_textTwitter.text title:title picture:self.pictureUrl target:self action:@selector(onPostMessageFinished:)];
+
+    
     [_target performSelector:_action];
 }
+
 
 - (IBAction)onEmailButton:(id)sender
 {
