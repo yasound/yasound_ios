@@ -97,6 +97,8 @@
     
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    //_tableView.backgroundColor = [UIColor clearColor];
+    //self.view.backgroundColor = [UIColor clearColor];
 
     _labelFacebook.text = NSLocalizedString(@"ShareModalView_facebook_label", nil);
     _labelTwitter.text = NSLocalizedString(@"ShareModalView_twitter_label", nil);
@@ -252,58 +254,58 @@
 
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    if ((indexPath.section == SECTION_EMAIL) && (indexPath.row == ROW_EMAIL_LABEL))
-    {
-        UIImageView* view = nil;
-        view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareSmallCellRowFirst.png"]];
-        cell.backgroundView = view;
-        [view release];
-        return;
-    }
-    
-    NSInteger nbRows;
-    if (indexPath.section == SECTION_PUBLISH)
-    {
-        nbRows = SECTION_PUBLISH_NB_ROWS;
-    }
-    else if (indexPath.section == SECTION_EMAIL) 
-    {
-        nbRows = SECTION_EMAIL_NB_ROWS;
-    }
-    
-    
-    if (nbRows == 1)
-    {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowSingle.png"]];
-        cell.backgroundView = view;
-        [view release];
-    }
-    else if (indexPath.row == 0)
-    {
-        UIImageView* view = nil;
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowFirst.png"]];
-        cell.backgroundView = view;
-        [view release];
-    }
-    else if (indexPath.row == (nbRows -1))
-    {
-        UIImageView* view = nil;
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowLast.png"]];
-        cell.backgroundView = view;
-        [view release];
-    }
-    else
-    {
-        UIImageView* view = nil;
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowInter.png"]];
-        cell.backgroundView = view;
-        [view release];
-    }
-    
-}
-
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//    if ((indexPath.section == SECTION_EMAIL) && (indexPath.row == ROW_EMAIL_LABEL))
+//    {
+//        UIImageView* view = nil;
+//        view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareSmallCellRowFirst.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//        return;
+//    }
+//    
+//    NSInteger nbRows;
+//    if (indexPath.section == SECTION_PUBLISH)
+//    {
+//        nbRows = SECTION_PUBLISH_NB_ROWS;
+//    }
+//    else if (indexPath.section == SECTION_EMAIL) 
+//    {
+//        nbRows = SECTION_EMAIL_NB_ROWS;
+//    }
+//    
+//    
+//    if (nbRows == 1)
+//    {
+//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowSingle.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
+//    else if (indexPath.row == 0)
+//    {
+//        UIImageView* view = nil;
+//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowFirst.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
+//    else if (indexPath.row == (nbRows -1))
+//    {
+//        UIImageView* view = nil;
+//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowLast.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
+//    else
+//    {
+//        UIImageView* view = nil;
+//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowInter.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
+//    
+//}
+//
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
