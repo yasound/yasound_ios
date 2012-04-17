@@ -97,8 +97,6 @@
     
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    //_tableView.backgroundColor = [UIColor clearColor];
-    //self.view.backgroundColor = [UIColor clearColor];
 
     _labelFacebook.text = NSLocalizedString(@"ShareModalView_facebook_label", nil);
     _labelTwitter.text = NSLocalizedString(@"ShareModalView_twitter_label", nil);
@@ -114,10 +112,6 @@
     [_textTwitter addSubview:background];
     [_textTwitter sendSubviewToBack:background];
     
-//    _textFacebook.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ShareTextView.png"]];
-//
-//    _textTwitter.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ShareTextView.png"]];
-
 
     // format messages
     Radio* currentRadio = [AudioStreamManager main].currentRadio;
@@ -206,106 +200,6 @@
     
     return 44;
 }
-
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    return 22;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return 22;
-//}
-
-
-
-
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    NSString* title = nil;
-//    
-//    if (section == 0)
-//        return nil;
-//    
-//    if (section == SECTION_MONTHCHART)
-//        title = NSLocalizedString(@"StatsView_monthselector_label", nil);
-//    
-//    else if (section == SECTION_LEADERBOARD)
-//        title = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
-//    
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    
-//    UIImage* image = [sheet image];
-//    CGFloat height = image.size.height;
-//    UIImageView* view = [[UIImageView alloc] initWithImage:image];
-//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UILabel* label = [sheet makeLabel];
-//    label.text = title;
-//    [view addSubview:label];
-//    
-//    return view;
-//}
-
-
-
-
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//    if ((indexPath.section == SECTION_EMAIL) && (indexPath.row == ROW_EMAIL_LABEL))
-//    {
-//        UIImageView* view = nil;
-//        view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareSmallCellRowFirst.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//        return;
-//    }
-//    
-//    NSInteger nbRows;
-//    if (indexPath.section == SECTION_PUBLISH)
-//    {
-//        nbRows = SECTION_PUBLISH_NB_ROWS;
-//    }
-//    else if (indexPath.section == SECTION_EMAIL) 
-//    {
-//        nbRows = SECTION_EMAIL_NB_ROWS;
-//    }
-//    
-//    
-//    if (nbRows == 1)
-//    {
-//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowSingle.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else if (indexPath.row == 0)
-//    {
-//        UIImageView* view = nil;
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowFirst.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else if (indexPath.row == (nbRows -1))
-//    {
-//        UIImageView* view = nil;
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowLast.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else
-//    {
-//        UIImageView* view = nil;
-//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ShareCellRowInter.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    
-//}
-//
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
