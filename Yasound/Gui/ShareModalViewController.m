@@ -398,7 +398,7 @@
     if (_target == nil)
         return;
     
-    NSString* title = NSLocalizedString(@"Yasound share", nil);
+    NSString* title = NSLocalizedString(@"Yasound_share", nil);
     
     _nbRequests = 0;
     if (_switchFacebook.on)
@@ -445,6 +445,13 @@
 
 - (IBAction)onEmailButton:(id)sender
 {
+    NSString* subject = NSLocalizedString(@"Yasound_share", nil);
+    
+    NSString* url = [[NSString alloc] initWithFormat:@"mailto:?subject=%@&body=%@\n%@", subject, _textFacebook.text, self.fullLink];
+    NSString* escaped = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:escaped]];
+
     if (_target == nil)
         return;
     

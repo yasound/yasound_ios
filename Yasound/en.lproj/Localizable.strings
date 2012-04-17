@@ -391,7 +391,7 @@
 "ShareTrackOnFacebookAlertCancel" = "No";
 "ShareTrackOnFacebookAlertShare" = "Share";
 
-
+"Yasound_share" = "Yasound share";
 "ShareModalView_facebook_label" = "Share on Facebook";
 "ShareModalView_twitter_label" = "Share on Twitter";
 "ShareModalView_email_label" = "Send an email";

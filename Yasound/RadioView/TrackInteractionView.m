@@ -226,7 +226,7 @@
     BOOL shareTwitter = ([buttonIdentifier isEqualToString:LOGIN_TYPE_TWITTER]);
     BOOL shareYasound = ([buttonIdentifier isEqualToString:LOGIN_TYPE_YASOUND]);
     
-    NSString* title = NSLocalizedString(@"Yasound share", nil);
+    NSString* title = NSLocalizedString(@"Yasound_share", nil);
 
     
     NSURL* pictureURL = [[NSURL alloc] initWithString:[APPDELEGATE getServerUrlWith:@"fr/images/logo.png"]];
