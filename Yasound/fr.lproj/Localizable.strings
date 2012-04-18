@@ -392,7 +392,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "ShareModalView_publish_button_label" = "Publier";
 "ShareModalView_email_button_label" = "Email";
 "ShareModalView_share_message" = "J'écoute %@, de %@ sur %@";
-
+"ShareModalView_char_count" = "%d signes";
 
 
 

@@ -18,6 +18,7 @@
     
     IBOutlet UILabel* _labelFacebook;
     IBOutlet UILabel* _labelTwitter;
+    IBOutlet UILabel* _charCountTwitter;
     IBOutlet UILabel* _labelPublishButton;
     IBOutlet UILabel* _labelEmail;
     IBOutlet UILabel* _labelEmailButton;

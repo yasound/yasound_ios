@@ -296,7 +296,7 @@
 							<object class="IBUILabel" id="143247776">
 								<reference key="NSNextResponder" ref="768299238"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 11}, {193, 21}}</string>
+								<string key="NSFrame">{{20, 6}, {193, 21}}</string>
 								<reference key="NSSuperview" ref="768299238"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="1016417448"/>
@@ -348,6 +348,26 @@
 									<int key="IBUIAutocapitalizationType">2</int>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
+								<reference key="IBUIFontDescription" ref="653255102"/>
+								<reference key="IBUIFont" ref="267041292"/>
+							</object>
+							<object class="IBUILabel" id="459773432">
+								<reference key="NSNextResponder" ref="768299238"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{20, 21}, {193, 21}}</string>
+								<reference key="NSSuperview" ref="768299238"/>
+								<reference key="NSWindow"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">Label</string>
+								<reference key="IBUITextColor" ref="585260843"/>
+								<reference key="IBUIHighlightedColor" ref="618433936"/>
+								<int key="IBUIBaselineAdjustment">0</int>
+								<float key="IBUIMinimumFontSize">10</float>
 								<reference key="IBUIFontDescription" ref="653255102"/>
 								<reference key="IBUIFont" ref="267041292"/>
 							</object>
@@ -761,6 +781,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_charCountTwitter</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="459773432"/>
+					</object>
+					<int key="connectionID">65</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dataSource</string>
 						<reference key="source" ref="285669095"/>
 						<reference key="destination" ref="372490531"/>
@@ -941,6 +969,7 @@
 							<reference ref="543490690"/>
 							<reference ref="1016417448"/>
 							<reference ref="143247776"/>
+							<reference ref="459773432"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">publish twitter</string>
@@ -1014,6 +1043,11 @@
 						<reference key="object" ref="634654208"/>
 						<reference key="parent" ref="444629742"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">64</int>
+						<reference key="object" ref="459773432"/>
+						<reference key="parent" ref="375826099"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1045,6 +1079,7 @@
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="59.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="64.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
@@ -1052,7 +1087,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">63</int>
+			<int key="maxID">65</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1068,6 +1103,7 @@
 						<string key="_cellFacebook">UITableViewCell</string>
 						<string key="_cellPublishButton">UITableViewCell</string>
 						<string key="_cellTwitter">UITableViewCell</string>
+						<string key="_charCountTwitter">UILabel</string>
 						<string key="_labelEmail">UILabel</string>
 						<string key="_labelEmailButton">UILabel</string>
 						<string key="_labelFacebook">UILabel</string>
@@ -1111,6 +1147,10 @@
 						<object class="IBToOneOutletInfo" key="_cellTwitter">
 							<string key="name">_cellTwitter</string>
 							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_charCountTwitter">
+							<string key="name">_charCountTwitter</string>
+							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_labelEmail">
 							<string key="name">_labelEmail</string>

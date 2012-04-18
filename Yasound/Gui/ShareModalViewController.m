@@ -134,6 +134,9 @@
     // message objects input
     _textFacebook.text = facebookFullMessage;
     _textTwitter.text = twitterFullMessage;
+    _charCountTwitter.text = NSLocalizedString(@"ShareModalView_char_count", nil);
+    _charCountTwitter.text = [NSString stringWithFormat:_charCountTwitter.text,  _textTwitter.text.length];
+    
     _textFacebook.delegate = self;
     _textTwitter.delegate = self;
     
@@ -387,7 +390,7 @@
     {
         CGPoint point = [_textTwitter.superview convertPoint:_labelTwitter.frame.origin toView:_tableView];
         CGPoint contentOffset = _tableView.contentOffset;
-        contentOffset.y += point.y; // Adjust this value as you need
+        contentOffset.y += point.y -8; // Adjust this value as you need
         [_tableView setContentOffset:contentOffset animated:YES];
     }
 }
@@ -397,10 +400,8 @@
 {
     if (_textTwitter)
     {
-        if (_textTwitter.text.length > TWITTER_MAX_LENGTH)
-        {
-            _textTwitter.text = [_textTwitter.text substringToIndex:TWITTER_MAX_LENGTH];
-        }
+        _charCountTwitter.text = NSLocalizedString(@"ShareModalView_char_count", nil);
+        _charCountTwitter.text = [NSString stringWithFormat:_charCountTwitter.text,  _textTwitter.text.length];
     }
 }
 
