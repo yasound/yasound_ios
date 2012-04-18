@@ -192,9 +192,6 @@ static YasoundDataCache* _main = nil;
 //
 - (void)radioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
 {
-    //LBDEBUG
-    NSLog(@"%@", _cacheRadios);
-
     YasoundDataCachePendingOp* op = [info objectForKey:@"userData"]; 
     assert(op != nil);
     
@@ -248,8 +245,6 @@ static YasoundDataCache* _main = nil;
     //NSLog(@"YasoundDataCache requestRadios : return server's updated data");
     [target performSelector:action withObject:radios withObject:info];
     
-    //LBDEBUG
-    NSLog(@"%@", _cacheRadios);
 }
 
 

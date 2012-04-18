@@ -843,7 +843,9 @@
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SettingsView_submit_title", nil)];
 
-    
+    // empty the cache for radios (to let the change on name / genre appear)
+    [[YasoundDataCache main] clearRadiosAll];
+
     NSLog(@"send update request for radio '%@'", _myRadio.name);
     
     [[YasoundDataProvider main] updateRadio:_myRadio target:self action:@selector(onRadioUpdated:info:)];
