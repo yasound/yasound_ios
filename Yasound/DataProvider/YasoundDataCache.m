@@ -291,7 +291,7 @@ static YasoundDataCache* _main = nil;
 
 - (void)clearRadiosAll
 {
-    NSLog(@"YasoundDataCache::clearRadiosAll");
+    NSLog(@"YasoundDataCache::clearRadiosAll"); 
     [_cacheRadios release];
     
     _cacheRadios = [[NSMutableDictionary alloc] init];

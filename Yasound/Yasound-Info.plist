@@ -189,6 +189,28 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
+			<key>UserSelectionBackgroundLight</key>
+			<dict>
+				<key>name</key>
+				<string>UserCellRadioLight</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
+			<key>UserSelectionBackgroundDark</key>
+			<dict>
+				<key>name</key>
+				<string>UserCellRadioDark</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
 			<key>RadioSelectionBackgroundLight</key>
 			<dict>
 				<key>name</key>

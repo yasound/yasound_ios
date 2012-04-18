@@ -35,11 +35,11 @@
       UIImageView* imageView = nil;
       if (rowIndex & 1)
       {
-          imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+          imageView = [[[BundleFileManager main] stylesheetForKey:@"UserSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
       }
       else
       {
-          imageView = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+          imageView = [[[BundleFileManager main] stylesheetForKey:@"UserSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
       }
       
       self.backgroundView = imageView;
