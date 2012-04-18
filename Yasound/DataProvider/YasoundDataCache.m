@@ -192,6 +192,9 @@ static YasoundDataCache* _main = nil;
 //
 - (void)radioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
 {
+    //LBDEBUG
+    NSLog(@"%@", _cacheRadios);
+
     YasoundDataCachePendingOp* op = [info objectForKey:@"userData"]; 
     assert(op != nil);
     
@@ -212,12 +215,14 @@ static YasoundDataCache* _main = nil;
     NSDate* date = [NSDate date];
     NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RADIOS];
     
+    NSString* RequestId = op.object;
+    
     // get/create dico for request
-    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:[NSNumber numberWithInteger:op.object]];
+    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:RequestId];
     if (requestCache == nil)
     {
         requestCache = [[NSMutableDictionary alloc] init];
-        [_cacheRadios setObject:requestCache forKey:[NSNumber numberWithInteger:op.object]];
+        [_cacheRadios setObject:requestCache forKey:RequestId];
     }
     
     // get/create dico for request/genre
@@ -242,6 +247,9 @@ static YasoundDataCache* _main = nil;
     // return results to pending client
     //NSLog(@"YasoundDataCache requestRadios : return server's updated data");
     [target performSelector:action withObject:radios withObject:info];
+    
+    //LBDEBUG
+    NSLog(@"%@", _cacheRadios);
 }
 
 
@@ -381,6 +389,7 @@ static YasoundDataCache* _main = nil;
     
     id target = op.target;
     SEL action = op.action;
+    Radio* radio = op.object;
     
     // the radio may be empty
     if (song == nil)
@@ -398,12 +407,11 @@ static YasoundDataCache* _main = nil;
     NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_CURRENTSONGS];
     
     // get/create dico for request
-    NSMutableDictionary* requestCache = [_cacheSongs objectForKey:[NSNumber numberWithInteger:op.object]];
+    NSMutableDictionary* requestCache = [_cacheSongs objectForKey:radio.id];
     if (requestCache == nil)
     {
         requestCache = [[NSMutableDictionary alloc] init];
-        [_cacheSongs setObject:requestCache forKey:[NSNumber numberWithInteger:op.object]];
-  //      [_cacheSongs setObject:requestCache forKey:@"prout"];
+        [_cacheSongs setObject:requestCache forKey:radio.id];
     }
     
     // cache data 
