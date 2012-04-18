@@ -240,7 +240,7 @@ static YasoundDataCache* _main = nil;
 //    [_pendingRadios removeObjectAtIndex:0];
     
     // return results to pending client
-    NSLog(@"YasoundDataCache requestRadios : return server's updated data");
+    //NSLog(@"YasoundDataCache requestRadios : return server's updated data");
     [target performSelector:action withObject:radios withObject:info];
 }
 
@@ -270,7 +270,7 @@ static YasoundDataCache* _main = nil;
 
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
-    NSLog(@"YasoundDataCache requestRadios : return local cached data");
+    //NSLog(@"YasoundDataCache requestRadios : return local cached data");
     [target performSelector:selector withObject:data withObject:infoDico];
 }
 
@@ -417,7 +417,7 @@ static YasoundDataCache* _main = nil;
     //    [_pendingRadios removeObjectAtIndex:0];
     
     // return results to pending client
-    NSLog(@"YasoundDataCache requestRadios : return server's updated data");
+    //NSLog(@"YasoundDataCache requestRadios : return server's updated data");
     [target performSelector:action withObject:song withObject:info];
     
     //    // process the next pending operation, if any
@@ -499,7 +499,7 @@ static YasoundDataCache* _main = nil;
     
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
-    NSLog(@"YasoundDataCache requestFriendsWithTarget : return local cached data");
+    //NSLog(@"YasoundDataCache requestFriendsWithTarget : return local cached data");
     [target performSelector:selector withObject:data withObject:infoDico];    
 }
 
@@ -537,7 +537,7 @@ static YasoundDataCache* _main = nil;
     [op release];
     
     // return results to pending client
-    NSLog(@"YasoundDataCache requestFriendsWithTarget : return server's updated data");
+    //NSLog(@"YasoundDataCache requestFriendsWithTarget : return server's updated data");
     [target performSelector:action withObject:friends withObject:info];
 }
 
