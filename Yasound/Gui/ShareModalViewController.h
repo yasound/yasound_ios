@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ShareModalViewController : UIViewController
+@interface ShareModalViewController : UIViewController<UITextFieldDelegate>
 {
     IBOutlet UITableViewCell* _cellFacebook;
     IBOutlet UITableViewCell* _cellTwitter;

@@ -134,11 +134,18 @@
     // message objects input
     _textFacebook.text = facebookFullMessage;
     _textTwitter.text = twitterFullMessage;
+    _textFacebook.delegate = self;
+    _textTwitter.delegate = self;
     
     _switchFacebook.on = enableFacebook;
     _switchTwitter.on = enableTwitter;
     [self onSwitchFacebook:nil];
     [self onSwitchTwitter:nil];
+    
+    
+    // gesture recognizer to close the keyboard
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];    
 }
 
 - (void)viewDidUnload
@@ -354,6 +361,16 @@
     [_target performSelector:_action];
     
 }
+
+
+
+
+-(void)dismissKeyboard 
+{
+    [_textFacebook resignFirstResponder];
+    [_textTwitter resignFirstResponder];
+}
+
 
 
 
