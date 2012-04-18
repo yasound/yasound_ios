@@ -782,16 +782,6 @@
 		BC237D541518E57800B8B66F /* GrayCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */; };
 		BC237D551518E57800B8B66F /* GrayCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */; };
 		BC237D561518E57800B8B66F /* GrayCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */; };
-		BC24D88F153C6127006949C8 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC24D88D153C6127006949C8 /* ShareModalViewController.m */; };
-		BC24D890153C6127006949C8 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC24D88D153C6127006949C8 /* ShareModalViewController.m */; };
-		BC24D891153C6127006949C8 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC24D88D153C6127006949C8 /* ShareModalViewController.m */; };
-		BC24D892153C6127006949C8 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC24D88D153C6127006949C8 /* ShareModalViewController.m */; };
-		BC24D893153C6127006949C8 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC24D88D153C6127006949C8 /* ShareModalViewController.m */; };
-		BC24D894153C6127006949C8 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC24D88E153C6127006949C8 /* ShareModalViewController.xib */; };
-		BC24D895153C6127006949C8 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC24D88E153C6127006949C8 /* ShareModalViewController.xib */; };
-		BC24D896153C6127006949C8 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC24D88E153C6127006949C8 /* ShareModalViewController.xib */; };
-		BC24D897153C6127006949C8 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC24D88E153C6127006949C8 /* ShareModalViewController.xib */; };
-		BC24D898153C6127006949C8 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC24D88E153C6127006949C8 /* ShareModalViewController.xib */; };
 		BC26E6CB14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
 		BC26E6CC14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
 		BC26E6CD14E40E3100D30554 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
@@ -1228,6 +1218,20 @@
 		BC413D7014EBC2F9009EB307 /* WhiteCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */; };
 		BC413D7114EBC2F9009EB307 /* WhiteCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */; };
 		BC413D7214EBC2F9009EB307 /* WhiteCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */; };
+		BC481DE0153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
+		BC481DE1153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
+		BC481DE2153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
+		BC481DE3153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
+		BC481DE4153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
+		BC481DE5153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
+		BC481DE6153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
+		BC481DE7153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
+		BC481DE8153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
+		BC481DE9153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
+		BC481DEA153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
+		BC481DEB153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
+		BC481DEC153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
+		BC481DED153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
 		BC49890414A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890514A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890614A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
@@ -3189,9 +3193,6 @@
 		BC188BDB1507647900E38692 /* SongLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLocal.m; sourceTree = "<group>"; };
 		BC237D4B1518E57800B8B66F /* GrayCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GrayCheckmark.png; sourceTree = "<group>"; };
 		BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GrayCheckmark@2x.png"; sourceTree = "<group>"; };
-		BC24D88C153C6127006949C8 /* ShareModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareModalViewController.h; sourceTree = "<group>"; };
-		BC24D88D153C6127006949C8 /* ShareModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareModalViewController.m; sourceTree = "<group>"; };
-		BC24D88E153C6127006949C8 /* ShareModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareModalViewController.xib; sourceTree = "<group>"; };
 		BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreateMyRadioBackground.png; sourceTree = "<group>"; };
 		BC26E6CA14E40E3100D30554 /* CreateMyRadioBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CreateMyRadioBackground@2x.png"; sourceTree = "<group>"; };
 		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
@@ -3282,6 +3283,9 @@
 		BC40CC8314D010BD00DF0950 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BC413D6714EBC2F9009EB307 /* WhiteCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteCheckmark.png; sourceTree = "<group>"; };
 		BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WhiteCheckmark@2x.png"; sourceTree = "<group>"; };
+		BC481DDD153EFC9B00990214 /* ShareModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareModalViewController.h; sourceTree = "<group>"; };
+		BC481DDE153EFC9B00990214 /* ShareModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareModalViewController.m; sourceTree = "<group>"; };
+		BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareModalViewController.xib; sourceTree = "<group>"; };
 		BC4988F014A107DF00873381 /* ApiKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
 		BC4988F114A107DF00873381 /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
 		BC4988F414A107DF00873381 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
@@ -5122,9 +5126,9 @@
 				BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */,
 				4009010914967AEE00C9E51A /* WebImageView.h */,
 				4009010A14967AEE00C9E51A /* WebImageView.m */,
-				BC24D88C153C6127006949C8 /* ShareModalViewController.h */,
-				BC24D88D153C6127006949C8 /* ShareModalViewController.m */,
-				BC24D88E153C6127006949C8 /* ShareModalViewController.xib */,
+				BC481DDD153EFC9B00990214 /* ShareModalViewController.h */,
+				BC481DDE153EFC9B00990214 /* ShareModalViewController.m */,
+				BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */,
 			);
 			path = Gui;
 			sourceTree = "<group>";
@@ -5655,6 +5659,7 @@
 				BCE49944153D9E2A005A1F02 /* ShareTextView@2x.png in Resources */,
 				BCE4994D153DACE7005A1F02 /* ShareSmallCellRowFirst.png in Resources */,
 				BCE49954153DACE7005A1F02 /* ShareSmallCellRowFirst@2x.png in Resources */,
+				BC481DED153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5874,6 +5879,7 @@
 				BCE49943153D9E2A005A1F02 /* ShareTextView@2x.png in Resources */,
 				BCE4994C153DACE7005A1F02 /* ShareSmallCellRowFirst.png in Resources */,
 				BCE49953153DACE7005A1F02 /* ShareSmallCellRowFirst@2x.png in Resources */,
+				BC481DEC153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6087,7 +6093,6 @@
 				BC7263B115345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263B815345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
 				BC7263C9153479C1002386C3 /* ProfileViewController.xib in Resources */,
-				BC24D896153C6127006949C8 /* ShareModalViewController.xib in Resources */,
 				BCE4990D153D99B8005A1F02 /* ShareCellRowFirst.png in Resources */,
 				BCE49914153D99B8005A1F02 /* ShareCellRowFirst@2x.png in Resources */,
 				BCE4991B153D99B8005A1F02 /* ShareCellRowInter.png in Resources */,
@@ -6098,6 +6103,7 @@
 				BCE49940153D9E2A005A1F02 /* ShareTextView@2x.png in Resources */,
 				BCE49949153DACE7005A1F02 /* ShareSmallCellRowFirst.png in Resources */,
 				BCE49950153DACE7005A1F02 /* ShareSmallCellRowFirst@2x.png in Resources */,
+				BC481DE9153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6311,7 +6317,6 @@
 				BC7263B015345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263B715345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
 				BC7263C8153479C1002386C3 /* ProfileViewController.xib in Resources */,
-				BC24D895153C6127006949C8 /* ShareModalViewController.xib in Resources */,
 				BCE4990C153D99B8005A1F02 /* ShareCellRowFirst.png in Resources */,
 				BCE49913153D99B8005A1F02 /* ShareCellRowFirst@2x.png in Resources */,
 				BCE4991A153D99B8005A1F02 /* ShareCellRowInter.png in Resources */,
@@ -6322,6 +6327,7 @@
 				BCE4993F153D9E2A005A1F02 /* ShareTextView@2x.png in Resources */,
 				BCE49948153DACE7005A1F02 /* ShareSmallCellRowFirst.png in Resources */,
 				BCE4994F153DACE7005A1F02 /* ShareSmallCellRowFirst@2x.png in Resources */,
+				BC481DE8153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6535,7 +6541,6 @@
 				BC7263B315345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263BA15345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
 				BC7263CB153479C1002386C3 /* ProfileViewController.xib in Resources */,
-				BC24D898153C6127006949C8 /* ShareModalViewController.xib in Resources */,
 				BCE4990F153D99B8005A1F02 /* ShareCellRowFirst.png in Resources */,
 				BCE49916153D99B8005A1F02 /* ShareCellRowFirst@2x.png in Resources */,
 				BCE4991D153D99B8005A1F02 /* ShareCellRowInter.png in Resources */,
@@ -6546,6 +6551,7 @@
 				BCE49942153D9E2A005A1F02 /* ShareTextView@2x.png in Resources */,
 				BCE4994B153DACE7005A1F02 /* ShareSmallCellRowFirst.png in Resources */,
 				BCE49952153DACE7005A1F02 /* ShareSmallCellRowFirst@2x.png in Resources */,
+				BC481DEB153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6759,7 +6765,6 @@
 				BC7263AF15345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263B615345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
 				BC7263C7153479C1002386C3 /* ProfileViewController.xib in Resources */,
-				BC24D894153C6127006949C8 /* ShareModalViewController.xib in Resources */,
 				BCE4990B153D99B8005A1F02 /* ShareCellRowFirst.png in Resources */,
 				BCE49912153D99B8005A1F02 /* ShareCellRowFirst@2x.png in Resources */,
 				BCE49919153D99B8005A1F02 /* ShareCellRowInter.png in Resources */,
@@ -6770,6 +6775,7 @@
 				BCE4993E153D9E2A005A1F02 /* ShareTextView@2x.png in Resources */,
 				BCE49947153DACE7005A1F02 /* ShareSmallCellRowFirst.png in Resources */,
 				BCE4994E153DACE7005A1F02 /* ShareSmallCellRowFirst@2x.png in Resources */,
+				BC481DE7153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6983,7 +6989,6 @@
 				BC7263B215345AE1002386C3 /* ProfilePhotoMask.png in Resources */,
 				BC7263B915345AE1002386C3 /* ProfilePhotoMask@2x.png in Resources */,
 				BC7263CA153479C1002386C3 /* ProfileViewController.xib in Resources */,
-				BC24D897153C6127006949C8 /* ShareModalViewController.xib in Resources */,
 				BCE4990E153D99B8005A1F02 /* ShareCellRowFirst.png in Resources */,
 				BCE49915153D99B8005A1F02 /* ShareCellRowFirst@2x.png in Resources */,
 				BCE4991C153D99B8005A1F02 /* ShareCellRowInter.png in Resources */,
@@ -6994,6 +6999,7 @@
 				BCE49941153D9E2A005A1F02 /* ShareTextView@2x.png in Resources */,
 				BCE4994A153DACE7005A1F02 /* ShareSmallCellRowFirst.png in Resources */,
 				BCE49951153DACE7005A1F02 /* ShareSmallCellRowFirst@2x.png in Resources */,
+				BC481DEA153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7182,6 +7188,7 @@
 				BC7263C6153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A53153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5C153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
+				BC481DE6153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7363,6 +7370,7 @@
 				BC7263C5153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A52153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5B153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
+				BC481DE5153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7548,7 +7556,7 @@
 				BC7263C2153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A4F153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A58153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC24D891153C6127006949C8 /* ShareModalViewController.m in Sources */,
+				BC481DE2153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7734,7 +7742,7 @@
 				BC7263C1153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A4E153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A57153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC24D890153C6127006949C8 /* ShareModalViewController.m in Sources */,
+				BC481DE1153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7921,7 +7929,7 @@
 				BC7263C4153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A51153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5A153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC24D893153C6127006949C8 /* ShareModalViewController.m in Sources */,
+				BC481DE4153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8107,7 +8115,7 @@
 				BC7263C0153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A4D153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A56153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC24D88F153C6127006949C8 /* ShareModalViewController.m in Sources */,
+				BC481DE0153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8294,7 +8302,7 @@
 				BC7263C3153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A50153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A59153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC24D892153C6127006949C8 /* ShareModalViewController.m in Sources */,
+				BC481DE3153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
