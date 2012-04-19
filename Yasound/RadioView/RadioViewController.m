@@ -529,7 +529,14 @@ static Song* _gNowPlayingSong = nil;
 //    
 //    _ap = [[NSAutoreleasePool alloc] init];
     
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    if (_wallEvents.count > 0)
+    {
+        NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    }
+    else
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    
     [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
     [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
@@ -547,7 +554,13 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)updateCurrentWall
 {    
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    if (_wallEvents.count > 0)
+    {
+        NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    }
+    else
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
 }
 
 
@@ -728,7 +741,7 @@ static Song* _gNowPlayingSong = nil;
     // ask for more previous messages
     if (_countMessageEvent < NB_MAX_EVENTMESSAGE)
     {
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_SECOND_PAGESIZE afterEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_SECOND_PAGESIZE olderThanEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
     }
     else
     {

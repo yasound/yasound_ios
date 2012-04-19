@@ -1099,7 +1099,7 @@ static YasoundDataProvider* _main = nil;
     [params release];
 }
 
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize afterEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector
 {
   if (!radio || !radio.id)
     return;
@@ -1115,6 +1115,23 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
     
     [params release];
+}
+
+- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector
+{
+    if (!radio || !radio.id)
+        return;
+    if (!eventID)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    NSNumber* radioID = radio.id;
+    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
+    NSMutableArray* params = [[NSMutableArray alloc] init];
+    [params addObject:[NSString stringWithFormat:@"id__gt=%@", eventID]];
+    [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    
+    [params release]; 
 }
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector
@@ -1607,8 +1624,8 @@ static YasoundDataProvider* _main = nil;
 
 - (void)updateSong:(Song*)song target:(id)target action:(SEL)selector
 {
-  if (!song)
-    return;
+    if (!song)
+        return;
   
   Auth* auth = self.apiKeyAuth;
   NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
@@ -1617,8 +1634,8 @@ static YasoundDataProvider* _main = nil;
 
 - (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector
 {
-  if (!song)
-    return;
+    if (!song)
+        return;
   
   Auth* auth = self.apiKeyAuth;
   NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
