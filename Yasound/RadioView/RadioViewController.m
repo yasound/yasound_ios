@@ -1872,6 +1872,15 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onTrackShare:(id)sender
 {
+    UIActionSheet* as = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Send a mail", nil];
+    
+    as.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [as showInView:self.view];
+
+}
+
+- (void)openShareModalDialog
+{
     ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong.name andArtist:_gNowPlayingSong.artist target:self action:@selector(onShareModalReturned)];
     [self.navigationController presentModalViewController:view animated:YES];
     [view release];
