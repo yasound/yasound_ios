@@ -17,7 +17,7 @@
 @class AudioStreamer;
 @class WebImageView;
 
-@interface RadioViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+@interface RadioViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate>
 {
 //    NSAutoreleasePool* _ap;
     
@@ -74,6 +74,8 @@
   NSArray* _connectedUsers;
   OrientedTableView* _usersContainer;
   Radio* _radioForSelectedUser;
+    
+    UIActionSheet* _queryShare;
 }
 
 @property (nonatomic, retain) Radio* radio;

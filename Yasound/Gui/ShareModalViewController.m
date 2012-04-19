@@ -50,7 +50,7 @@
     // GUI
     _buttonCancel.title = NSLocalizedString(@"Navigation_cancel", nil);
     _buttonSend.title = NSLocalizedString(@"ShareModalView_publish_button_label", nil);
-    _itemTitle.title = NSLocalizedString(@"ShareModalView_title", nil);
+    _itemTitle.title = NSLocalizedString(@"ShareModalView_facebook_label", nil);
 
     _songTitle.text = self.song.name;
     _songArtist.text = self.song.artist;
