@@ -392,10 +392,10 @@
 "ShareTrackOnFacebookAlertShare" = "Share";
 
 "Yasound_share" = "Yasound share";
-"ShareModalView_facebook_label" = "Share on Facebook";
-"ShareModalView_twitter_label" = "Share on Twitter";
+"ShareModalView_facebook_label" = "Facebook";
+"ShareModalView_twitter_label" = "Twitter";
 "ShareModalView_email_label" = "Send an email";
-"ShareModalView_publish_button_label" = "Publish";
+"ShareModalView_publish_button_label" = "Send";
 "ShareModalView_email_button_label" = "Email";
 "ShareModalView_share_message" = "I am listening to %@, by %@ on %@";
 "ShareModalView_char_count" = "%d chars";

@@ -386,10 +386,10 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "ShareTrackOnFacebookAlertShare" = "Publier";
 
 
-"ShareModalView_facebook_label" = "Publier sur Facebook";
-"ShareModalView_twitter_label" = "Publier sur Twitter";
+"ShareModalView_facebook_label" = "Facebook";
+"ShareModalView_twitter_label" = "Twitter";
 "ShareModalView_email_label" = "Envoyer un email";
-"ShareModalView_publish_button_label" = "Publier";
+"ShareModalView_publish_button_label" = "Envoyer";
 "ShareModalView_email_button_label" = "Email";
 "ShareModalView_share_message" = "J'écoute %@, de %@ sur %@";
 "ShareModalView_char_count" = "%d signes";

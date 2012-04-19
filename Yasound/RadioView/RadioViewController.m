@@ -1937,6 +1937,11 @@ static Song* _gNowPlayingSong = nil;
 
 
 
+- (void)onShareModalReturned
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
 
 
 #pragma mark - Notifications

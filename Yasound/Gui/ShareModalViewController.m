@@ -92,6 +92,8 @@
     
     // message objects input
     _textView.text = fullMessage;
+    
+    [_textView becomeFirstResponder];
 }
 
 - (void)viewDidUnload
