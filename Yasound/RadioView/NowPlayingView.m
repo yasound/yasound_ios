@@ -63,6 +63,7 @@
       }
         
         
+        
         // header now playing bar track image 
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         imageView.frame = sheet.frame;
