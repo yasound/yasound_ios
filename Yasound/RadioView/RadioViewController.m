@@ -33,6 +33,7 @@
 
 #import "ProfileViewController.h"
 #import "ShareModalViewController.h"
+#import "ShareTwitterModalViewController.h"
 
 
 //#define LOCAL 1 // use localhost as the server
@@ -1912,7 +1913,7 @@ static Song* _gNowPlayingSong = nil;
         }
         else if (buttonIndex == SHARE_TWITTER)
         {
-            ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong target:self action:@selector(onShareModalReturned)];
+            ShareTwitterModalViewController* view = [[ShareTwitterModalViewController alloc] initWithNibName:@"ShareTwitterModalViewController" bundle:nil forSong:_gNowPlayingSong target:self action:@selector(onShareModalReturned)];
             [self.navigationController presentModalViewController:view animated:YES];
             [view release];
         }

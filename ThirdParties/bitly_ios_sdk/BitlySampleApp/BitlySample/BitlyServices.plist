@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BLYBitlyLogin</key>
+	<string></string>
+	<key>BLYBitlyAPIKey</key>
+	<string></string>
+	<key>BLYTwitterOAuthConsumerKey</key>
+	<string></string>
+	<key>BLYTwitterOAuthConsumerSecret</key>
+	<string></string>
+	<key>BLYTwitterOAuthSuccessCallbackURL</key>
+	<string></string>
+</dict>
+</plist>

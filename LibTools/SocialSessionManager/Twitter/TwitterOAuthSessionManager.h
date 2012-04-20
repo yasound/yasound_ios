@@ -40,5 +40,8 @@
 
 + (NSString*) buildDataFromToken:(NSString*)token token_secret:(NSString*)token_secret user_id:(NSString*)user_id screen_name:(NSString*)screen_name;
 
++ (NSString*) oauthConsumerKeyForYasound;
++ (NSString*) oauthConsumerSecretForYasound;
+
 
 @end

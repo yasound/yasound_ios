@@ -399,6 +399,7 @@
 "ShareModalView_email_button_label" = "Email";
 "ShareModalView_share_message" = "I am listening to %@, by %@ on %@";
 "ShareModalView_char_count" = "%d chars";
+"ShareModalView_twitter_constraint" = "warning: tweet maximum length is 140 characters.";
 
 
 

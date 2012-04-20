@@ -393,6 +393,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "ShareModalView_email_button_label" = "Email";
 "ShareModalView_share_message" = "J'écoute %@, de %@ sur %@";
 "ShareModalView_char_count" = "%d signes";
+"ShareModalView_twitter_constraint" = "attention: twitter limite la taille maximale du message à 140 caracteres.";
 
 
 
