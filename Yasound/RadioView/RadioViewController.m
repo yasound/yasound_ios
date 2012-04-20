@@ -1970,17 +1970,62 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onTrackShare:(id)sender
 {
-    ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong.name andArtist:_gNowPlayingSong.artist target:self action:@selector(onShareModalReturned)];
-    [self.navigationController presentModalViewController:view animated:YES];
-    [view release];
+    _queryShare = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", NSLocalizedString(@"ShareModalView_email_label", nil), nil];
+    
+    _queryShare.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [_queryShare showInView:self.view];
+
 }
+
+
+#pragma mark - UIActionSheet Delegate
+
+#define SHARE_FACEBOOK 0
+#define SHARE_TWITTER 1
+#define SHARE_EMAIL 2
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+    // share query result
+    if (actionSheet == _queryShare)
+    {
+        if (buttonIndex == SHARE_FACEBOOK)
+        {
+            ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong target:self action:@selector(onShareModalReturned)];
+            [self.navigationController presentModalViewController:view animated:YES];
+            [view release];
+        }
+        else if (buttonIndex == SHARE_TWITTER)
+        {
+            ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong target:self action:@selector(onShareModalReturned)];
+            [self.navigationController presentModalViewController:view animated:YES];
+            [view release];
+        }
+        else if (buttonIndex == SHARE_EMAIL)
+        {
+            Radio* currentRadio = [AudioStreamManager main].currentRadio;
+            
+            NSString* message = NSLocalizedString(@"ShareModalView_share_message", nil);
+            NSString* fullMessage = [NSString stringWithFormat:message, _gNowPlayingSong.name, _gNowPlayingSong.artist, currentRadio.name];
+            NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
+            NSURL* fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link, currentRadio.uuid]];
+            
+            NSString* subject = NSLocalizedString(@"Yasound_share", nil);
+            NSString* url = [[NSString alloc] initWithFormat:@"mailto:?subject=%@&body=%@\n\n%@", subject, fullMessage, [fullLink absoluteString]];
+            NSString* escaped = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:escaped]];
+        }
+        
+        return;
+    }
+}
+
+
 
 - (void)onShareModalReturned
 {
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }
-
-
 
 
 
