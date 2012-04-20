@@ -35,6 +35,8 @@
 #import "ProfileViewController.h"
 #import "ShareModalViewController.h"
 #import "ShareTwitterModalViewController.h"
+#import "YasoundSessionManager.h"
+
 
 
 //#define LOCAL 1 // use localhost as the server
@@ -1971,7 +1973,15 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onTrackShare:(id)sender
 {
-    _queryShare = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", NSLocalizedString(@"ShareModalView_email_label", nil), nil];
+    _queryShare = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:nil];
+    
+    if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
+        [_queryShare addButtonWithTitle:@"Facebook"];
+    
+    if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
+        [_queryShare addButtonWithTitle:@"Twitter"];
+    
+    [_queryShare addButtonWithTitle:NSLocalizedString(@"ShareModalView_email_label", nil)];
     
     _queryShare.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     [_queryShare showInView:self.view];
@@ -1981,28 +1991,28 @@ static Song* _gNowPlayingSong = nil;
 
 #pragma mark - UIActionSheet Delegate
 
-#define SHARE_FACEBOOK 0
-#define SHARE_TWITTER 1
-#define SHARE_EMAIL 2
-
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
 {
+
     // share query result
     if (actionSheet == _queryShare)
     {
-        if (buttonIndex == SHARE_FACEBOOK)
+        NSString* buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+
+        if ([buttonTitle isEqualToString:@"Facebook"])
         {
             ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong target:self action:@selector(onShareModalReturned)];
             [self.navigationController presentModalViewController:view animated:YES];
             [view release];
         }
-        else if (buttonIndex == SHARE_TWITTER)
+        else if ([buttonTitle isEqualToString:@"Twitter"])
+
         {
             ShareTwitterModalViewController* view = [[ShareTwitterModalViewController alloc] initWithNibName:@"ShareTwitterModalViewController" bundle:nil forSong:_gNowPlayingSong target:self action:@selector(onShareModalReturned)];
             [self.navigationController presentModalViewController:view animated:YES];
             [view release];
         }
-        else if (buttonIndex == SHARE_EMAIL)
+        else if ([buttonTitle isEqualToString:NSLocalizedString(@"ShareModalView_email_label", nil)])
         {
             Radio* currentRadio = [AudioStreamManager main].currentRadio;
             
