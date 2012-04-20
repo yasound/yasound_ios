@@ -381,6 +381,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "RadioView_track_share_twitter" = "Publier sur Twitter";
 "RadioView_track_share_yasound" = "Partager par mail";
 
+"RadioView_loading_previous_events_message" = "chargement...";
+
 "ShareTrackOnFacebookAlertMessage" = "Voulez-vous poster le message suivant :\n \"%@\"";
 "ShareTrackOnFacebookAlertCancel" = "Non";
 "ShareTrackOnFacebookAlertShare" = "Publier";

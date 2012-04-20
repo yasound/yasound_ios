@@ -534,6 +534,13 @@
 		40CC5A5A153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
 		40CC5A5B153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
 		40CC5A5C153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
+		40DE99F115406B98001E63F4 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
+		40DE99F215406B98001E63F4 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
+		40DE99F315406B98001E63F4 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
+		40DE99F415406B98001E63F4 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
+		40DE99F515406B98001E63F4 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
+		40DE99F615406B98001E63F4 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
+		40DE99F715406B98001E63F4 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
 		40EAA55814D85EF60000621C /* RadioListeningStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55714D85EF60000621C /* RadioListeningStat.m */; };
 		40EAA55914D85EF60000621C /* RadioListeningStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55714D85EF60000621C /* RadioListeningStat.m */; };
 		40EAA55A14D85EF60000621C /* RadioListeningStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55714D85EF60000621C /* RadioListeningStat.m */; };
@@ -3101,6 +3108,8 @@
 		40CC5A4C153D6EF7006C052E /* RequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestConfig.m; sourceTree = "<group>"; };
 		40CC5A54153D9EEB006C052E /* ASIHTTPRequest+Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+Model.h"; sourceTree = "<group>"; };
 		40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+Model.m"; sourceTree = "<group>"; };
+		40DE99EF15406B98001E63F4 /* LoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingCell.h; sourceTree = "<group>"; };
+		40DE99F015406B98001E63F4 /* LoadingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingCell.m; sourceTree = "<group>"; };
 		40EAA55614D85EF60000621C /* RadioListeningStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioListeningStat.h; sourceTree = "<group>"; };
 		40EAA55714D85EF60000621C /* RadioListeningStat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioListeningStat.m; sourceTree = "<group>"; };
 		40EAA55C14DA980F0000621C /* LeaderBoardEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderBoardEntry.h; sourceTree = "<group>"; };
@@ -4623,6 +4632,8 @@
 				40EAA59514DC2DFE0000621C /* UserViewCell.m */,
 				40104FC314ED3CF900996326 /* LikeViewCell.h */,
 				40104FC414ED3CF900996326 /* LikeViewCell.m */,
+				40DE99EF15406B98001E63F4 /* LoadingCell.h */,
+				40DE99F015406B98001E63F4 /* LoadingCell.m */,
 			);
 			path = RadioView;
 			sourceTree = "<group>";
@@ -7189,6 +7200,7 @@
 				40CC5A53153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5C153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE6153EFC9B00990214 /* ShareModalViewController.m in Sources */,
+				40DE99F715406B98001E63F4 /* LoadingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7371,6 +7383,7 @@
 				40CC5A52153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5B153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE5153EFC9B00990214 /* ShareModalViewController.m in Sources */,
+				40DE99F615406B98001E63F4 /* LoadingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7557,6 +7570,7 @@
 				40CC5A4F153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A58153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE2153EFC9B00990214 /* ShareModalViewController.m in Sources */,
+				40DE99F315406B98001E63F4 /* LoadingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7743,6 +7757,7 @@
 				40CC5A4E153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A57153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE1153EFC9B00990214 /* ShareModalViewController.m in Sources */,
+				40DE99F215406B98001E63F4 /* LoadingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7930,6 +7945,7 @@
 				40CC5A51153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5A153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE4153EFC9B00990214 /* ShareModalViewController.m in Sources */,
+				40DE99F515406B98001E63F4 /* LoadingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8116,6 +8132,7 @@
 				40CC5A4D153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A56153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE0153EFC9B00990214 /* ShareModalViewController.m in Sources */,
+				40DE99F115406B98001E63F4 /* LoadingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8303,6 +8320,7 @@
 				40CC5A50153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A59153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE3153EFC9B00990214 /* ShareModalViewController.m in Sources */,
+				40DE99F415406B98001E63F4 /* LoadingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

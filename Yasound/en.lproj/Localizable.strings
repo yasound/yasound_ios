@@ -382,6 +382,8 @@
 
 "RadioView_track_share_message" = "I am listening to %@, by %@ on %@";
 
+"RadioView_loading_previous_events_message" = "loading...";
+
 
 "RadioView_track_share_facebook" = "Share on Facebook";
 "RadioView_track_share_twitter" = "Share on Twitter";
