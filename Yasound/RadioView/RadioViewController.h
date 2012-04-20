@@ -17,7 +17,7 @@
 @class AudioStreamer;
 @class WebImageView;
 
-@interface RadioViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate>
+@interface RadioViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
 {
 //    NSAutoreleasePool* _ap;
     
@@ -67,6 +67,7 @@
     NSTimer* _timerUpdate;
     
     NSMutableArray* _wallEvents;
+    BOOL _waitingForPreviousEvents;
     
     NSInteger _serverErrorCount;
     NSInteger _streamErrorCount;
