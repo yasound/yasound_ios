@@ -12,9 +12,9 @@
 #import "YasoundSessionManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "BitlyURLShortener.h"
+//#import "BitlyURLShortener.h"
 #import "TwitterOAuthSessionManager.h"
-#import "BitlyConfig.h"
+//#import "BitlyConfig.h"
 #import "MKBitlyHelper.h"
 
 #define TWITTER_MAX_LENGTH 140

@@ -3267,6 +3267,7 @@
 		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
 		BC6314D014B4665200549EF6 /* RegExp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExp.h; sourceTree = "<group>"; };
 		BC6314D114B4665200549EF6 /* RegExp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExp.m; sourceTree = "<group>"; };
+		BC69A7811542C0E500F05B26 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = "ThirdParties/facebook-ios-sdk/src/JSON/JSON.h"; sourceTree = SOURCE_ROOT; };
 		BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BC71F582147F979700DAE4BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F586147F97DA00DAE4BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -4324,6 +4325,7 @@
 		BC7C07701541A82F004FC760 /* MKBitlyHelper */ = {
 			isa = PBXGroup;
 			children = (
+				BC69A7811542C0E500F05B26 /* JSON.h */,
 				BC7C07711541A82F004FC760 /* MKBitlyHelper.h */,
 				BC7C07721541A82F004FC760 /* MKBitlyHelper.m */,
 			);
