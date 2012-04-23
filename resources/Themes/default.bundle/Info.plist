@@ -186,7 +186,7 @@
 				<key>shadowOffset</key>
 				<string>0, -1</string>
 				<key>shadowRadius</key>
-				<integer>4</integer>
+				<integer>1</integer>
 				<key>shadowColor</key>
 				<string>black</string>
 				<key>shadowOpacity</key>
