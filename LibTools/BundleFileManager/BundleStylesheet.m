@@ -8,9 +8,7 @@
 #import "BundleStylesheet.h"
 #import "BundleFileManager.h"
 
-#if USE_COREGRAPHIC_SHADOW
 #import <QuartzCore/QuartzCore.h>
-#endif
 
 //..................................................................................
 //  
@@ -862,7 +860,6 @@ static NSMutableDictionary* gImageViews = nil;
     label.textAlignment = fontsheet.textAlignement;
     
     // apply shadow, if requested
-#if USE_COREGRAPHIC_SHADOW
     if (fontsheet.shadowIsSet)
     {
         label.layer.masksToBounds = NO;
@@ -872,7 +869,6 @@ static NSMutableDictionary* gImageViews = nil;
         label.layer.shadowOpacity = fontsheet.shadowOpacity;
         label.layer.shadowColor = fontsheet.shadowColor.CGColor;
     }
-#endif
     
 
     label.font = [self makeFont];
@@ -948,7 +944,6 @@ static NSMutableDictionary* gImageViews = nil;
     }
     
     // apply shadow, if requested
-#if USE_COREGRAPHIC_SHADOW
     if (fontsheet.shadowIsSet)
     {
         label.layer.masksToBounds = NO;
@@ -958,7 +953,6 @@ static NSMutableDictionary* gImageViews = nil;
         label.layer.shadowOpacity = fontsheet.shadowOpacity;
         label.layer.shadowColor = fontsheet.shadowColor.CGColor;
     }
-#endif
   
   return YES;
 }
