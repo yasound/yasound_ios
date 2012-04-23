@@ -406,11 +406,9 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     }
     
     NSMutableDictionary* artistRepo = [artistsRepo objectForKey:artistKey];
+    assert(artistRepo != nil);
     if (artistRepo == nil)
-    {
-        artistRepo = [[NSMutableDictionary alloc] init];
-        [artistsRepo setObject:artistRepo forKey:artistKey];
-    }
+        return;
     
     // store the song in the right repository
     NSMutableArray* albumRepo = [artistRepo objectForKey:albumKey];
