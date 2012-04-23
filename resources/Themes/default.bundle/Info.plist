@@ -175,6 +175,8 @@
 			<dict>
 				<key>weight</key>
 				<string>bold</string>
+				<key>textAlignement</key>
+				<string>center</string>
 				<key>size</key>
 				<integer>11</integer>
 				<key>text</key>
@@ -182,9 +184,9 @@
 				<key>textColor</key>
 				<string>white</string>
 				<key>shadowOffset</key>
-				<string>0,-1</string>
+				<string>0, -1</string>
 				<key>shadowRadius</key>
-				<integer>1</integer>
+				<integer>4</integer>
 				<key>shadowColor</key>
 				<string>black</string>
 				<key>shadowOpacity</key>
@@ -197,7 +199,7 @@
 			<key>x</key>
 			<integer>6</integer>
 			<key>y</key>
-			<integer>8</integer>
+			<integer>6</integer>
 		</dict>
 		<key>ProgrammingTitleCell_sublabel</key>
 		<dict>
