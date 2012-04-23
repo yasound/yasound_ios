@@ -424,6 +424,8 @@ static Song* _gNowPlayingSong = nil;
     // update favorite button
     [[ActivityModelessSpinner main] addRef];
     [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoriteUpdate:)];
+    
+    
 }
  
 
