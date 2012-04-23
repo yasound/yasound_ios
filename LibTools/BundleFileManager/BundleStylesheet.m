@@ -85,9 +85,11 @@
     _size = 12;
     _textAlignement = UITextAlignmentLeft;
     _text = [NSString stringWithFormat:@""];
+      [_text retain];
     _textColor = [UIColor blackColor];
     _backgroundColor = [UIColor clearColor];
     _weight = [NSString stringWithFormat:@"normal"];
+      [_weight retain];
   }
   else
   {
@@ -96,6 +98,7 @@
     _textColor = defaultFontsheet.textColor;
     _backgroundColor = defaultFontsheet.backgroundColor;
     _weight = [NSString stringWithFormat:defaultFontsheet.weight];
+      [_weight retain];
   }
 
   NSString* fontName = [sheet valueForKey:@"name"];
@@ -117,6 +120,7 @@
   if (fontText != nil)
   {
     _text = [NSString stringWithFormat:fontText];
+      [_text retain];
   }
   
   NSString* textColor = [sheet valueForKey:@"textColor"];
@@ -137,6 +141,7 @@
   if (fontWeight != nil)
   {
     _weight = fontWeight;
+      [_weight retain];
     _weightIsSet = YES;
   }
   
@@ -187,6 +192,16 @@
 
 
   return self;
+}
+
+
+- (void)dealloc
+{
+    if (_text)
+        [_text release];
+    if (_weight)
+        [_weight release];
+    [super dealloc];
 }
 
 @end
@@ -838,6 +853,7 @@ static NSMutableDictionary* gImageViews = nil;
 - (UILabel*)makeLabel
 {  
     BundleFontsheet* fontsheet = [self.fontsheets objectForKey:@"default"];
+    
 
     UILabel* label = [[UILabel alloc] initWithFrame:self.frame];
     label.backgroundColor = fontsheet.backgroundColor;

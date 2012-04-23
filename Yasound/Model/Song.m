@@ -127,7 +127,7 @@
     
     // store cache
     [_nameWithoutArticle retain];
-
+    
     return _nameWithoutArticle;
 }
 

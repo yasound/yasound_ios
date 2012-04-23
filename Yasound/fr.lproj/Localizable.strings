@@ -215,6 +215,8 @@
 "ProgramminView_nb_songs_n" = "%d morceaux";
 "ProgrammingView_subtitle_error" = "erreur";
 
+"ProgrammingTitleCell_buttonDelete_label" = "Supprimer";
+
 "SongView_title" = "Song";
 "SongView_name" = "titre";
 "SongView_artist" = "artiste";
