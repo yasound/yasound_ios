@@ -421,7 +421,25 @@
 {
     NSLog(@"onSongDeleteRequested for Song %@", song.name);   
     
+     //TODO ; rajouter userData with cell
     
+    // request to server
+    [[YasoundDataProvider main] deleteSong:song target:self action:@selector(onSongDeleted:info:)];
+}
+
+
+// server's callback
+- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
+{
+    NSLog(@"onSongDeleted for Song %@", song.name);   
+    
+    NSDictionary* userData = [info objectForKey:@"userData"];
+    UITableViewCell* cell = [userData objectForKey:@"cell"];
+    NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
+
+    [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song atIndexPath:indexPath];
+    
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];        
 }
 
 

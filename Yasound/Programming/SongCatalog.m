@@ -322,6 +322,117 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 
 
 
+
+- (void)removeSynchronizedSong:(Song*)song atIndexPath:(NSIndexPath*)indexPath
+{
+//    NSLog(@"%@", self.alphabeticRepo);
+//    NSLog(@"%@", self.alphaArtistsRepo);
+//    NSLog(@"%@", self.alphaArtistsPREORDER);
+//    NSLog(@"%@", self.alphaArtistsOrder);
+
+    
+    //
+    // process alphaeticRepo
+    //
+    NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
+    
+    if ((firstRelevantWord == nil) || (firstRelevantWord.length == 0))
+        firstRelevantWord = @"#";
+    
+    unichar c = [firstRelevantWord characterAtIndex:0];
+
+    NSMutableArray* letterRepo = nil;
+    
+    if ([_numericSet characterIsMember:c]) 
+    {
+        letterRepo = [self.alphabeticRepo objectForKey:@"-"];
+    }
+    // first letter is [a .. z] || [A .. Z]
+    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
+    {
+        NSString* upperCaseChar = [[NSString stringWithCharacters:&c length:1] uppercaseString];
+        letterRepo = [self.alphabeticRepo objectForKey:upperCaseChar];
+    }
+    // other cases (foreign languages, ...)
+    else
+    {
+        letterRepo = [self.alphabeticRepo objectForKey:@"#"];
+    }
+    
+    for (NSInteger index = 0; index < letterRepo.count; index++)
+    {
+        Song* letterSong = [letterRepo objectAtIndex:index];
+        if ([letterSong.name isEqualToString:song.name])
+        {
+            [letterRepo removeObjectAtIndex:index];
+            break;
+        }
+    }
+    
+    
+    //
+    // process artistsRepo
+    //
+    
+    NSString* artistKey = song.artist;
+    if ((artistKey == nil) || (artistKey.length == 0))
+    {
+        artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
+        NSLog(@"empty artist found!");
+    }
+    NSString* albumKey = song.album;
+    if ((albumKey == nil) || (albumKey.length == 0))
+    {
+        artistKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+        NSLog(@"empty album found!");
+    }
+    
+    
+    
+    c = [artistKey characterAtIndex:0];
+    NSMutableDictionary* artistsRepo = nil;
+    if ([_numericSet characterIsMember:c])
+    {
+        artistsRepo = [self.alphaArtistsRepo objectForKey:@"-"];
+    }
+    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
+    {
+        NSString* upperC = [[NSString stringWithCharacters:&c length:1] uppercaseString];
+        artistsRepo = [self.alphaArtistsRepo objectForKey:upperC];
+    }
+    else
+    {
+        artistsRepo = [self.alphaArtistsRepo objectForKey:@"#"];
+    }
+    
+    NSMutableDictionary* artistRepo = [artistsRepo objectForKey:artistKey];
+    if (artistRepo == nil)
+    {
+        artistRepo = [[NSMutableDictionary alloc] init];
+        [artistsRepo setObject:artistRepo forKey:artistKey];
+    }
+    
+    // store the song in the right repository
+    NSMutableArray* albumRepo = [artistRepo objectForKey:albumKey];
+    
+    for (NSInteger index = 0; index < albumRepo.count; index++)
+    {
+        Song* albumSong = [albumRepo objectAtIndex:index];
+        if ([albumSong.name isEqualToString:song.name])
+        {
+            [albumRepo removeObjectAtIndex:index];
+            break;
+        }
+    }
+    
+    
+    
+    
+}
+
+
+
+
 //
 // add a song to the catalog,
 // making an alphabetic sort

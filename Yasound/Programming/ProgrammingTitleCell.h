@@ -21,6 +21,8 @@
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* sublabel;
 @property (nonatomic, retain) UIButton* buttonDelete;
+@property (nonatomic, retain) UILabel* buttonLabel;
+@property (nonatomic, retain) UIActivityIndicatorView* buttonSpinner;
 @property (nonatomic, retain) Song* song;
 
 

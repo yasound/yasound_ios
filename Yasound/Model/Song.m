@@ -27,6 +27,7 @@
     if (self = [super init])
     {
         _uploading = NO;
+        _removed = NO;
     }
     return self;
 }
@@ -102,6 +103,18 @@
 {
   self.enabled = [NSNumber numberWithBool:on];
 }
+
+
+- (BOOL)isSongRemoved
+{
+    return _removed;
+}
+
+- (void)removeSong:(BOOL)set
+{
+    _removed = set;
+}
+
 
 
 - (NSString*)getNameWithoutArticle

@@ -16,6 +16,8 @@
 @synthesize label;
 @synthesize sublabel;
 @synthesize buttonDelete;
+@synthesize buttonLabel;
+@synthesize buttonSpinner;
 @synthesize song;
 
 
@@ -132,9 +134,9 @@ static NSMutableDictionary* gEditingSongs = nil;
     
     // delete button label
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"ProgrammingTitleCell_buttonDelete_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UILabel* buttonLabel = [sheet makeLabel];
-    buttonLabel.text = NSLocalizedString(@"ProgrammingTitleCell_buttonDelete_label", nil);
-    [self.buttonDelete addSubview:buttonLabel];
+    self.buttonLabel = [sheet makeLabel];
+    self.buttonLabel.text = NSLocalizedString(@"ProgrammingTitleCell_buttonDelete_label", nil);
+    [self.buttonDelete addSubview:self.buttonLabel];
     
     // compute frames for animation
     CGRect frameLabel = self.label.frame;
