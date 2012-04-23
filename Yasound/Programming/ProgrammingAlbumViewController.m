@@ -23,7 +23,7 @@
 #import "SongAddCell.h"
 #import "AudioStreamManager.h"
 #import "LocalSongInfoViewController.h"
-
+#import "ProgrammingTitleCell.h"
 
 @implementation ProgrammingAlbumViewController
 
@@ -166,42 +166,64 @@
     
     else
     {
-        static NSString* CellIdentifier = @"Cell";
+        static NSString* CellIdentifier = @"CellAlbumSong";
 
-        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        Song* song = [self.catalog getSongAtRow:indexPath.row];
+        
+        ProgrammingTitleCell* cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) 
         {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+            cell = [[[ProgrammingTitleCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:(indexPath.row+1) deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
         }
+        else
+            [cell updateWithSong:song atRow:(indexPath.row+1)];
         
-        cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
-        NSString* charIndex = [self.catalog.indexMap objectAtIndex:indexPath.section];
-        
-        Song* song = [self.catalog getSongAtRow:indexPath.row];
-        
-        if ([song isSongEnabled])
-        {
-            cell.textLabel.textColor = [UIColor whiteColor];
-            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-        }
-        else 
-        {
-            cell.textLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
-        }
-        
-        cell.textLabel.text = [NSString stringWithFormat:@"%d. %@", indexPath.row+1, song.name];
-
         return cell;
-    
     }
     
     return nil;
 }
+
+
+
+
+
+- (void)onSongDeleteRequested:(UITableViewCell*)cell song:(Song*)song
+{
+    NSLog(@"onSongDeleteRequested for Song %@", song.name);   
+    
+    // request to server
+    [[YasoundDataProvider main] deleteSong:song target:self action:@selector(onSongDeleted:info:) userData:cell];
+    
+}
+
+
+// server's callback
+- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
+{
+    NSLog(@"onSongDeleted for Song %@", song.name);  
+    NSLog(@"info %@", info);
+    
+    BOOL success = NO;
+    NSNumber* nbsuccess = [info objectForKey:@"success"];
+    if (nbsuccess != nil)
+        success = [nbsuccess boolValue];
+    
+    NSLog(@"success %d", success);
+    
+    UITableViewCell* cell = [info objectForKey:@"userData"];
+    NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
+    
+    [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song atIndexPath:indexPath];
+    
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];        
+}
+
+
+
+
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

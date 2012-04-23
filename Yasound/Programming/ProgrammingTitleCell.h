@@ -24,10 +24,11 @@
 @property (nonatomic, retain) UILabel* buttonLabel;
 @property (nonatomic, retain) UIActivityIndicatorView* buttonSpinner;
 @property (nonatomic, retain) Song* song;
+@property (nonatomic) NSInteger row;
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong deletingTarget:(id)deletingTarget deletingAction:(SEL)deletingAction;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong atRow:(NSInteger)row deletingTarget:(id)deletingTarget deletingAction:(SEL)deletingAction;
 
-- (void)updateWithSong:(Song*)aSong;
+- (void)updateWithSong:(Song*)aSong atRow:(NSInteger)row;
 
 @end

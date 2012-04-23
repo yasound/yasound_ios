@@ -19,13 +19,14 @@
 @synthesize buttonLabel;
 @synthesize buttonSpinner;
 @synthesize song;
+@synthesize row;
 
 
 static NSMutableDictionary* gEditingSongs = nil;
 
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong deletingTarget:(id)deletingTarget deletingAction:(SEL)deletingAction
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong atRow:(NSInteger)row deletingTarget:(id)deletingTarget deletingAction:(SEL)deletingAction
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) 
@@ -48,7 +49,7 @@ static NSMutableDictionary* gEditingSongs = nil;
         self.sublabel = [sheet makeLabel];
         [self addSubview:self.sublabel];
 
-        [self updateWithSong:aSong];
+        [self updateWithSong:aSong atRow:row];
         
         
         UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight)] autorelease];
@@ -76,11 +77,16 @@ static NSMutableDictionary* gEditingSongs = nil;
 }
 
 
-- (void)updateWithSong:(Song*)aSong
+- (void)updateWithSong:(Song*)aSong atRow:(NSInteger)row
 {
     self.song = aSong;
+    self.row = row;
     
-    self.label.text = song.name;
+    if (self.row == 0)
+        self.label.text = song.name;
+    else
+        self.label.text = [NSString stringWithFormat:@"%d. %@", self.row, song.name];
+
     self.sublabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
     
     BOOL editing = ([gEditingSongs objectForKey:self.song.name] != nil);

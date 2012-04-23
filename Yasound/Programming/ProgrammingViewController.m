@@ -408,10 +408,10 @@
     
     if (cell == nil) 
     {
-        cell = [[[ProgrammingTitleCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
+        cell = [[[ProgrammingTitleCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:0 deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
     }
     else
-        [cell updateWithSong:song];
+        [cell updateWithSong:song atRow:0];
     
     return cell;
 }
