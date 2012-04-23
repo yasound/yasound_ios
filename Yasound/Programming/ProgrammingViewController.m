@@ -56,6 +56,7 @@
 {
     [SongCatalog releaseSynchronizedCatalog];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [_tableView release];
     [super dealloc];
 }
 
@@ -407,13 +408,20 @@
     
     if (cell == nil) 
     {
-        cell = [[ProgrammingTitleCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song];
+        cell = [[[ProgrammingTitleCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
     }
     else
         [cell updateWithSong:song];
     
     return cell;
+}
 
+
+- (void)onSongDeleteRequested:(UITableViewCell*)cell song:(Song*)song
+{
+    NSLog(@"onSongDeleteRequested for Song %@", song.name);   
+    
+    
 }
 
 
@@ -428,7 +436,7 @@
         
         if (cell == nil) 
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         }
         
         cell.textLabel.backgroundColor = [UIColor clearColor];

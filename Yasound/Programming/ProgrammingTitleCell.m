@@ -19,23 +19,28 @@
 @synthesize song;
 
 
+static NSMutableDictionary* gEditingSongs = nil;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong
+
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong deletingTarget:(id)deletingTarget deletingAction:(SEL)deletingAction
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) 
     {
+        if (gEditingSongs == nil)
+            gEditingSongs = [[NSMutableDictionary alloc] init];
+        
         _editMode = NO;
         
-//        self.label = [[UILabel alloc] initWithFrame:CGRectMake(8, 8, 200, 15)];
-//        [self addSubview:self.label];
+        _deletingTarget = deletingTarget;
+        _deletingAction = deletingAction;
+
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"ProgrammingTitleCell_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.label = [sheet makeLabel];
         [self addSubview:self.label];
 
-//        self.sublabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 22, 200, 15)];
-//        [self addSubview:self.sublabel];
 
         sheet = [[Theme theme] stylesheetForKey:@"ProgrammingTitleCell_sublabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.sublabel = [sheet makeLabel];
@@ -62,17 +67,22 @@
 }
 
 
+- (void)dealloc
+{
+    [gEditingSongs removeObjectForKey:self.song.name];
+    [super dealloc];
+}
+
+
 - (void)updateWithSong:(Song*)aSong
 {
     self.song = aSong;
     
     self.label.text = song.name;
     self.sublabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
+    
+    BOOL editing = ([gEditingSongs objectForKey:self.song.name] != nil);
 
-//    //LBDEBUG
-//    NSLog(@"\n\n%@", self.label.text);
-//    NSLog(@"\n\n%@", self.sublabel.text);
-//    
     if ([song isSongEnabled])
     {
         self.label.textColor = [UIColor whiteColor];
@@ -83,6 +93,15 @@
         self.label.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
         self.sublabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
     }
+    
+    if (editing && !_editMode)
+    {
+        [self activateEditModeAnimated:NO];
+    }
+    else if (!editing && _editMode)
+    {
+        [self deactivateEditModeAnimated:NO];
+    }
 }
 
 
@@ -90,9 +109,16 @@
 
 - (void)onSwipeRight
 {
+    [self activateEditModeAnimated:YES];
+}
+
+- (void)activateEditModeAnimated:(BOOL)animated
+{
     if (_editMode)
         return;
+    
     _editMode = YES;
+    [gEditingSongs setObject:[NSNumber numberWithBool:YES] forKey:self.song.name];
     
     // create delete button
     UIImage* image = [UIImage imageNamed:@"barRedItemMediumBkg.png"];
@@ -101,7 +127,7 @@
     [self.buttonDelete setImage:image forState:UIControlStateNormal];
     [self.buttonDelete setImage:[UIImage imageNamed:@"barRedItemMediumBkgHighlighted.png"] forState:UIControlStateHighlighted];
     [self.buttonDelete setImage:[UIImage imageNamed:@"barItemMediumBkgDisabled.png"] forState:UIControlStateDisabled];
-    [self.buttonDelete addTarget:self action:@selector(onDelete:) forControlEvents:UIControlEventTouchUpInside];
+    [self.buttonDelete addTarget:self action:@selector(onDeleteRequest:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.buttonDelete];
     
     // delete button label
@@ -119,21 +145,37 @@
     frameButton = CGRectMake(BORDER, frameButton.origin.y, frameButton.size.width, frameButton.size.height);
     
     // move button and labels with animation
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.3];
+    if (animated)
+    {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.3];
+    }
     self.label.frame = frameLabel;
     self.sublabel.frame = frameSublabel;
     self.buttonDelete.frame = frameButton;
-    [UIView commitAnimations];
+    if (animated)
+    {
+        [UIView commitAnimations];
+    }
 }
 
 
 
 - (void)onSwipeLeft
 {
+    [self deactivateEditModeAnimated:YES];
+
+}
+
+
+- (void)deactivateEditModeAnimated:(BOOL)animated
+{
     if (!_editMode)
         return;
     _editMode = NO;
+    
+    [gEditingSongs removeObjectForKey:self.song.name];
+
     
     CGFloat size = self.buttonDelete.frame.size.width;
     
@@ -146,14 +188,24 @@
     frameButton = CGRectMake(-size, frameButton.origin.y, frameButton.size.width, frameButton.size.height);
     
     // move button and labels with animation
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.3];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(onSwipeLeftStop)];
+    if (animated)
+    {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.3];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(onSwipeLeftStop)];
+    }
     self.label.frame = frameLabel;
     self.sublabel.frame = frameSublabel;
     self.buttonDelete.frame = frameButton;
-    [UIView commitAnimations];
+    if (animated)
+    {
+        [UIView commitAnimations];
+    }
+    else
+    {
+        [self onSwipeLeftStop:nil finished:nil context:nil];
+    }
 }
 
 
@@ -164,9 +216,15 @@
 }
      
 
-- (void)onDelete:(id)sender
+
+- (void)onDeleteRequest:(id)sender
 {
+    [gEditingSongs removeObjectForKey:self.song.name];
+
+    if (_deletingTarget == nil)
+        return;
     
+    [_deletingTarget performSelector:_deletingAction withObject:self withObject:self.song];
 }
 
 

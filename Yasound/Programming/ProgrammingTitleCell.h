@@ -13,6 +13,9 @@
 @interface ProgrammingTitleCell : UITableViewCell
 {
     BOOL _editMode;
+    
+    id _deletingTarget;
+    SEL _deletingAction; // (void)onDeleteRequestedL:(UITableViewCell*)cell forSong:(Song*)song
 }
 
 @property (nonatomic, retain) UILabel* label;
@@ -21,7 +24,7 @@
 @property (nonatomic, retain) Song* song;
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong deletingTarget:(id)deletingTarget deletingAction:(SEL)deletingAction;
 
 - (void)updateWithSong:(Song*)aSong;
 
