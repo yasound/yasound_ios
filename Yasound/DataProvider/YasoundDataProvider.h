@@ -198,7 +198,10 @@ taskStatus stringToStatus(NSString* str);
 - (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
 
 - (void)updateSong:(Song*)song target:(id)target action:(SEL)selector; // didUpdateSong:(Song*)song info:(NSDictionary*)info
-- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector; // didDeleteSong:(Song*)song info:(NSDictionary*)info
+- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector userData:(id)data;    // didDeleteSong:(Song*)song info:(NSDictionary*)info
+                                                                                            // info dictionary contains: 
+                                                                                            // - data for key @"userData"
+                                                                                            // - a NSNumber (boolean) for key @"success"
 
 // Get searched songs. Returns a NSArray of YasoundSong objects
 - (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector; // didReceiveSearchedSongs:(NSArray*)songs info:(NSDictionary*)info
