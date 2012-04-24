@@ -1,0 +1,425 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B120C6AE14C5F46C009C455E /* BitlyTweetSheet_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B120C6A314C5F46B009C455E /* BitlyTweetSheet_iPad.xib */; };
+		B120C6AF14C5F46C009C455E /* BitlyTweetSheet_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B120C6A414C5F46B009C455E /* BitlyTweetSheet_iPhone.xib */; };
+		B120C6B014C5F46C009C455E /* blue-button.png in Resources */ = {isa = PBXBuildFile; fileRef = B120C6A614C5F46B009C455E /* blue-button.png */; };
+		B120C6B114C5F46C009C455E /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = B120C6A714C5F46B009C455E /* gear.png */; };
+		B120C6CA14C6201B009C455E /* ios_app_icon_proto_114.png in Resources */ = {isa = PBXBuildFile; fileRef = B120C6C814C6201B009C455E /* ios_app_icon_proto_114.png */; };
+		B120C6CB14C6201B009C455E /* ios_app_icon_proto_57.png in Resources */ = {isa = PBXBuildFile; fileRef = B120C6C914C6201B009C455E /* ios_app_icon_proto_57.png */; };
+		B13D336B14699B2100014D91 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B13D336A14699B2100014D91 /* UIKit.framework */; };
+		B13D336D14699B2100014D91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B13D336C14699B2100014D91 /* Foundation.framework */; };
+		B13D336F14699B2100014D91 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B13D336E14699B2100014D91 /* CoreGraphics.framework */; };
+		B13D337514699B2100014D91 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B13D337314699B2100014D91 /* InfoPlist.strings */; };
+		B13D337714699B2100014D91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B13D337614699B2100014D91 /* main.m */; };
+		B13D337B14699B2100014D91 /* BLYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B13D337A14699B2100014D91 /* BLYAppDelegate.m */; };
+		B13D337E14699B2100014D91 /* BLYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B13D337D14699B2100014D91 /* BLYViewController.m */; };
+		B13D338114699B2100014D91 /* BLYViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B13D337F14699B2100014D91 /* BLYViewController_iPhone.xib */; };
+		B13D338414699B2100014D91 /* BLYViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B13D338214699B2100014D91 /* BLYViewController_iPad.xib */; };
+		B13D339D14699B8200014D91 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B13D339C14699B8200014D91 /* Security.framework */; };
+		B13D339F14699B8A00014D91 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B13D339E14699B8A00014D91 /* QuartzCore.framework */; };
+		B13D33A114699B9900014D91 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B13D33A014699B9900014D91 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B13D33A314699BA400014D91 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B13D33A214699BA400014D91 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B13D3428146D7E3300014D91 /* BLYBitlyTextViewExample.m in Sources */ = {isa = PBXBuildFile; fileRef = B13D3426146D7E3300014D91 /* BLYBitlyTextViewExample.m */; };
+		B13D3429146D7E3300014D91 /* BLYBitlyTextViewExample_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B13D3427146D7E3300014D91 /* BLYBitlyTextViewExample_iPhone.xib */; };
+		B13D342B146D8C5E00014D91 /* BLYBitlyTextViewExample_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B13D342A146D8C5D00014D91 /* BLYBitlyTextViewExample_iPad.xib */; };
+		B13D342F146DA71F00014D91 /* BLYBitlyURLShortenerExample.m in Sources */ = {isa = PBXBuildFile; fileRef = B13D342D146DA71F00014D91 /* BLYBitlyURLShortenerExample.m */; };
+		B13D3430146DA71F00014D91 /* BLYBitlyURLShortenerExample_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B13D342E146DA71F00014D91 /* BLYBitlyURLShortenerExample_iPhone.xib */; };
+		B163057B1472DBBE005AE82D /* libBitly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B163057A1472DBBE005AE82D /* libBitly.a */; };
+		B187659D14C73D97002EF7ED /* BLYBitlyURLShortenerExample_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B187659C14C73D97002EF7ED /* BLYBitlyURLShortenerExample_iPad.xib */; };
+		B19CCF49147576A000EDB90F /* BitlyServices.plist in Resources */ = {isa = PBXBuildFile; fileRef = B19CCF48147576A000EDB90F /* BitlyServices.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B120C6A314C5F46B009C455E /* BitlyTweetSheet_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BitlyTweetSheet_iPad.xib; sourceTree = "<group>"; };
+		B120C6A414C5F46B009C455E /* BitlyTweetSheet_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BitlyTweetSheet_iPhone.xib; sourceTree = "<group>"; };
+		B120C6A614C5F46B009C455E /* blue-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue-button.png"; sourceTree = "<group>"; };
+		B120C6A714C5F46B009C455E /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
+		B120C6A914C5F46B009C455E /* BitlyConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitlyConfig.h; sourceTree = "<group>"; };
+		B120C6AA14C5F46B009C455E /* BitlyDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitlyDebug.h; sourceTree = "<group>"; };
+		B120C6AB14C5F46B009C455E /* BitlyTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitlyTextView.h; sourceTree = "<group>"; };
+		B120C6AC14C5F46B009C455E /* BitlyTweetSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitlyTweetSheet.h; sourceTree = "<group>"; };
+		B120C6AD14C5F46B009C455E /* BitlyURLShortener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitlyURLShortener.h; sourceTree = "<group>"; };
+		B120C6C814C6201B009C455E /* ios_app_icon_proto_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios_app_icon_proto_114.png; sourceTree = "<group>"; };
+		B120C6C914C6201B009C455E /* ios_app_icon_proto_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ios_app_icon_proto_57.png; sourceTree = "<group>"; };
+		B13D336614699B2100014D91 /* BitlySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitlySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B13D336A14699B2100014D91 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B13D336C14699B2100014D91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B13D336E14699B2100014D91 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B13D337214699B2100014D91 /* BitlySample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BitlySample-Info.plist"; sourceTree = "<group>"; };
+		B13D337414699B2100014D91 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B13D337614699B2100014D91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B13D337814699B2100014D91 /* BitlySample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BitlySample-Prefix.pch"; sourceTree = "<group>"; };
+		B13D337914699B2100014D91 /* BLYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLYAppDelegate.h; sourceTree = "<group>"; };
+		B13D337A14699B2100014D91 /* BLYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLYAppDelegate.m; sourceTree = "<group>"; };
+		B13D337C14699B2100014D91 /* BLYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLYViewController.h; sourceTree = "<group>"; };
+		B13D337D14699B2100014D91 /* BLYViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLYViewController.m; sourceTree = "<group>"; };
+		B13D338014699B2100014D91 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BLYViewController_iPhone.xib; sourceTree = "<group>"; };
+		B13D338314699B2100014D91 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BLYViewController_iPad.xib; sourceTree = "<group>"; };
+		B13D339C14699B8200014D91 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B13D339E14699B8A00014D91 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B13D33A014699B9900014D91 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		B13D33A214699BA400014D91 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		B13D3425146D7E3300014D91 /* BLYBitlyTextViewExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLYBitlyTextViewExample.h; sourceTree = "<group>"; };
+		B13D3426146D7E3300014D91 /* BLYBitlyTextViewExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLYBitlyTextViewExample.m; sourceTree = "<group>"; };
+		B13D3427146D7E3300014D91 /* BLYBitlyTextViewExample_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLYBitlyTextViewExample_iPhone.xib; sourceTree = "<group>"; };
+		B13D342A146D8C5D00014D91 /* BLYBitlyTextViewExample_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLYBitlyTextViewExample_iPad.xib; sourceTree = "<group>"; };
+		B13D342C146DA71F00014D91 /* BLYBitlyURLShortenerExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLYBitlyURLShortenerExample.h; sourceTree = "<group>"; };
+		B13D342D146DA71F00014D91 /* BLYBitlyURLShortenerExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLYBitlyURLShortenerExample.m; sourceTree = "<group>"; };
+		B13D342E146DA71F00014D91 /* BLYBitlyURLShortenerExample_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLYBitlyURLShortenerExample_iPhone.xib; sourceTree = "<group>"; };
+		B163057A1472DBBE005AE82D /* libBitly.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBitly.a; path = "../../../../Library/Developer/Xcode/DerivedData/BitlySDK-dtbmjwvbiidkmufisqonfwuqfjgo/Build/Products/Debug-iphoneos/libBitly.a"; sourceTree = "<group>"; };
+		B187659C14C73D97002EF7ED /* BLYBitlyURLShortenerExample_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLYBitlyURLShortenerExample_iPad.xib; sourceTree = "<group>"; };
+		B19CCF48147576A000EDB90F /* BitlyServices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BitlyServices.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B13D336314699B2100014D91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B163057B1472DBBE005AE82D /* libBitly.a in Frameworks */,
+				B13D33A314699BA400014D91 /* Twitter.framework in Frameworks */,
+				B13D33A114699B9900014D91 /* Accounts.framework in Frameworks */,
+				B13D339F14699B8A00014D91 /* QuartzCore.framework in Frameworks */,
+				B13D339D14699B8200014D91 /* Security.framework in Frameworks */,
+				B13D336B14699B2100014D91 /* UIKit.framework in Frameworks */,
+				B13D336D14699B2100014D91 /* Foundation.framework in Frameworks */,
+				B13D336F14699B2100014D91 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B120C6A214C5F46B009C455E /* BitlyPublic */ = {
+			isa = PBXGroup;
+			children = (
+				B120C6A314C5F46B009C455E /* BitlyTweetSheet_iPad.xib */,
+				B120C6A414C5F46B009C455E /* BitlyTweetSheet_iPhone.xib */,
+				B120C6A514C5F46B009C455E /* Images */,
+				B120C6A814C5F46B009C455E /* PublicHeaders */,
+			);
+			name = BitlyPublic;
+			path = ../BitlyLibrary/Bitly/BitlyPublic;
+			sourceTree = "<group>";
+		};
+		B120C6A514C5F46B009C455E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B120C6A614C5F46B009C455E /* blue-button.png */,
+				B120C6A714C5F46B009C455E /* gear.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		B120C6A814C5F46B009C455E /* PublicHeaders */ = {
+			isa = PBXGroup;
+			children = (
+				B120C6A914C5F46B009C455E /* BitlyConfig.h */,
+				B120C6AA14C5F46B009C455E /* BitlyDebug.h */,
+				B120C6AB14C5F46B009C455E /* BitlyTextView.h */,
+				B120C6AC14C5F46B009C455E /* BitlyTweetSheet.h */,
+				B120C6AD14C5F46B009C455E /* BitlyURLShortener.h */,
+			);
+			path = PublicHeaders;
+			sourceTree = "<group>";
+		};
+		B120C6C714C6201B009C455E /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				B120C6C814C6201B009C455E /* ios_app_icon_proto_114.png */,
+				B120C6C914C6201B009C455E /* ios_app_icon_proto_57.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		B13D335B14699B2100014D91 = {
+			isa = PBXGroup;
+			children = (
+				B120C6A214C5F46B009C455E /* BitlyPublic */,
+				B13D337014699B2100014D91 /* BitlySample */,
+				B13D336914699B2100014D91 /* Frameworks */,
+				B13D336714699B2100014D91 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B13D336714699B2100014D91 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B13D336614699B2100014D91 /* BitlySample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B13D336914699B2100014D91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B163057A1472DBBE005AE82D /* libBitly.a */,
+				B13D33A214699BA400014D91 /* Twitter.framework */,
+				B13D33A014699B9900014D91 /* Accounts.framework */,
+				B13D339E14699B8A00014D91 /* QuartzCore.framework */,
+				B13D339C14699B8200014D91 /* Security.framework */,
+				B13D336A14699B2100014D91 /* UIKit.framework */,
+				B13D336C14699B2100014D91 /* Foundation.framework */,
+				B13D336E14699B2100014D91 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B13D337014699B2100014D91 /* BitlySample */ = {
+			isa = PBXGroup;
+			children = (
+				B13D337914699B2100014D91 /* BLYAppDelegate.h */,
+				B13D337A14699B2100014D91 /* BLYAppDelegate.m */,
+				B13D337C14699B2100014D91 /* BLYViewController.h */,
+				B13D337D14699B2100014D91 /* BLYViewController.m */,
+				B13D337F14699B2100014D91 /* BLYViewController_iPhone.xib */,
+				B13D338214699B2100014D91 /* BLYViewController_iPad.xib */,
+				B13D3425146D7E3300014D91 /* BLYBitlyTextViewExample.h */,
+				B13D3426146D7E3300014D91 /* BLYBitlyTextViewExample.m */,
+				B13D3427146D7E3300014D91 /* BLYBitlyTextViewExample_iPhone.xib */,
+				B13D342A146D8C5D00014D91 /* BLYBitlyTextViewExample_iPad.xib */,
+				B13D342C146DA71F00014D91 /* BLYBitlyURLShortenerExample.h */,
+				B13D342D146DA71F00014D91 /* BLYBitlyURLShortenerExample.m */,
+				B187659C14C73D97002EF7ED /* BLYBitlyURLShortenerExample_iPad.xib */,
+				B13D342E146DA71F00014D91 /* BLYBitlyURLShortenerExample_iPhone.xib */,
+				B13D337114699B2100014D91 /* Supporting Files */,
+			);
+			path = BitlySample;
+			sourceTree = "<group>";
+		};
+		B13D337114699B2100014D91 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B120C6C714C6201B009C455E /* Icons */,
+				B19CCF48147576A000EDB90F /* BitlyServices.plist */,
+				B13D337214699B2100014D91 /* BitlySample-Info.plist */,
+				B13D337314699B2100014D91 /* InfoPlist.strings */,
+				B13D337614699B2100014D91 /* main.m */,
+				B13D337814699B2100014D91 /* BitlySample-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B13D336514699B2100014D91 /* BitlySample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B13D338714699B2200014D91 /* Build configuration list for PBXNativeTarget "BitlySample" */;
+			buildPhases = (
+				B13D336214699B2100014D91 /* Sources */,
+				B13D336314699B2100014D91 /* Frameworks */,
+				B13D336414699B2100014D91 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BitlySample;
+			productName = BitlySample;
+			productReference = B13D336614699B2100014D91 /* BitlySample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B13D335D14699B2100014D91 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = B13D336014699B2100014D91 /* Build configuration list for PBXProject "BitlySample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B13D335B14699B2100014D91;
+			productRefGroup = B13D336714699B2100014D91 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B13D336514699B2100014D91 /* BitlySample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B13D336414699B2100014D91 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B13D337514699B2100014D91 /* InfoPlist.strings in Resources */,
+				B13D338114699B2100014D91 /* BLYViewController_iPhone.xib in Resources */,
+				B13D338414699B2100014D91 /* BLYViewController_iPad.xib in Resources */,
+				B13D3429146D7E3300014D91 /* BLYBitlyTextViewExample_iPhone.xib in Resources */,
+				B13D342B146D8C5E00014D91 /* BLYBitlyTextViewExample_iPad.xib in Resources */,
+				B13D3430146DA71F00014D91 /* BLYBitlyURLShortenerExample_iPhone.xib in Resources */,
+				B19CCF49147576A000EDB90F /* BitlyServices.plist in Resources */,
+				B120C6AE14C5F46C009C455E /* BitlyTweetSheet_iPad.xib in Resources */,
+				B120C6AF14C5F46C009C455E /* BitlyTweetSheet_iPhone.xib in Resources */,
+				B120C6B014C5F46C009C455E /* blue-button.png in Resources */,
+				B120C6B114C5F46C009C455E /* gear.png in Resources */,
+				B120C6CA14C6201B009C455E /* ios_app_icon_proto_114.png in Resources */,
+				B120C6CB14C6201B009C455E /* ios_app_icon_proto_57.png in Resources */,
+				B187659D14C73D97002EF7ED /* BLYBitlyURLShortenerExample_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B13D336214699B2100014D91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B13D337714699B2100014D91 /* main.m in Sources */,
+				B13D337B14699B2100014D91 /* BLYAppDelegate.m in Sources */,
+				B13D337E14699B2100014D91 /* BLYViewController.m in Sources */,
+				B13D3428146D7E3300014D91 /* BLYBitlyTextViewExample.m in Sources */,
+				B13D342F146DA71F00014D91 /* BLYBitlyURLShortenerExample.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B13D337314699B2100014D91 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B13D337414699B2100014D91 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B13D337F14699B2100014D91 /* BLYViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B13D338014699B2100014D91 /* en */,
+			);
+			name = BLYViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		B13D338214699B2100014D91 /* BLYViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B13D338314699B2100014D91 /* en */,
+			);
+			name = BLYViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B13D338514699B2100014D91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B13D338614699B2100014D91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B13D338814699B2200014D91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BitlySample/BitlySample-Prefix.pch";
+				INFOPLIST_FILE = "BitlySample/BitlySample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B13D338914699B2200014D91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BitlySample/BitlySample-Prefix.pch";
+				INFOPLIST_FILE = "BitlySample/BitlySample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B13D336014699B2100014D91 /* Build configuration list for PBXProject "BitlySample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B13D338514699B2100014D91 /* Debug */,
+				B13D338614699B2100014D91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B13D338714699B2200014D91 /* Build configuration list for PBXNativeTarget "BitlySample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B13D338814699B2200014D91 /* Debug */,
+				B13D338914699B2200014D91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B13D335D14699B2100014D91 /* Project object */;
+}

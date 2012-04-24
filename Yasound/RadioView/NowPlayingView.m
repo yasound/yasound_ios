@@ -22,7 +22,7 @@
 
 //@synthesize playPauseButton;
 @synthesize song = _song;
-
+@synthesize trackInteractionView;
 
 
 - (id)initWithSong:(Song*)song
@@ -63,6 +63,7 @@
       }
         
         
+        
         // header now playing bar track image 
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         imageView.frame = sheet.frame;
@@ -89,10 +90,10 @@
         
         
         // track interaction buttons
-        _trackInteractionView = [[TrackInteractionView alloc] initWithSong:song];
-        _trackInteractionView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-        [_trackInteractionView setButtonLikeClickedTarget:self action:@selector(trackInteractionViewLikeButtonCliked)];
-        [self addSubview:_trackInteractionView];
+        self.trackInteractionView = [[TrackInteractionView alloc] initWithSong:song];
+        self.trackInteractionView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+        [self.trackInteractionView setButtonLikeClickedTarget:self action:@selector(trackInteractionViewLikeButtonCliked)];
+        [self addSubview:self.trackInteractionView];
         
         // header now playing bar likes
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarLikes" error:nil];
@@ -142,7 +143,6 @@
 {
     if (_webImageView)
         [_webImageView release];
-    [_trackInteractionView release];
     [super dealloc];
 }
 

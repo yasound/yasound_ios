@@ -34,6 +34,17 @@
 
 
 
++ (NSString*) oauthConsumerKeyForYasound
+{
+    return [NSString stringWithString:kOAuthConsumerKey];
+}
+
++ (NSString*) oauthConsumerSecretForYasound
+{
+    return [NSString stringWithString:kOAuthConsumerSecret];    
+}
+
+
 - (void)setTarget:(id<SessionDelegate>)delegate
 {
   self.delegate = delegate;

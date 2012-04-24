@@ -36,6 +36,13 @@
 
 
 
+"RateApp_title" = "Evaluez Yasound!";
+"RateApp_message" = "Voulez-vous noter cette app? Cela ne prendra pas plus d'une minute. Merci pour votre soutien!";
+"RateApp_button_rate" = "Noter";
+"RateApp_button_later" = "Plus tard";
+"RateApp_button_no" = "Non, merci";
+"RateApp_url" = "http://itunes.apple.com/fr/app/yasound/id492680161?mt=8";
+
 
 "Alert_contact_server" = "appel du serveur";
 
@@ -215,6 +222,8 @@
 "ProgramminView_nb_songs_n" = "%d morceaux";
 "ProgrammingView_subtitle_error" = "erreur";
 
+"ProgrammingTitleCell_buttonDelete_label" = "Supprimer";
+
 "SongView_title" = "Song";
 "SongView_name" = "titre";
 "SongView_artist" = "artiste";
@@ -370,18 +379,33 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "TracksView_no_tracks" = "aucun morceau programmé!";
 
-"RadioView_track_share_error" = "Erreur";
+"RadioView_track_share_error_title" = "Partage";
+"RadioView_track_share_error" = "Impossible de poster le message.";
 "RadioView_track_share_facebook_error" = "Impossible de poster le message sur votre wall Facebook.";
 "RadioView_track_share_twitter_error" = "Impossible de poster le message sur Twitter.";
 "RadioView_track_share_message" = "J'écoute %@, de %@ sur %@";
 
+"Yasound_share" = "Partage Yasound";
 "RadioView_track_share_facebook" = "Publier sur Facebook";
 "RadioView_track_share_twitter" = "Publier sur Twitter";
 "RadioView_track_share_yasound" = "Partager par mail";
 
+"RadioView_loading_previous_events_message" = "chargement...";
+
 "ShareTrackOnFacebookAlertMessage" = "Voulez-vous poster le message suivant :\n \"%@\"";
 "ShareTrackOnFacebookAlertCancel" = "Non";
 "ShareTrackOnFacebookAlertShare" = "Publier";
+
+
+"ShareModalView_facebook_label" = "Facebook";
+"ShareModalView_twitter_label" = "Twitter";
+"ShareModalView_email_label" = "Envoyer un email";
+"ShareModalView_publish_button_label" = "Envoyer";
+"ShareModalView_email_button_label" = "Email";
+"ShareModalView_share_message" = "J'écoute %@, de %@ sur %@";
+"ShareModalView_char_count" = "%d signes";
+"ShareModalView_twitter_constraint" = "attention: twitter limite la taille maximale du message à 140 caracteres.";
+
 
 
 

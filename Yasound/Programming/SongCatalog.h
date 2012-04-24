@@ -47,6 +47,7 @@
 
 
 - (void)insertAndSortAndEnableSong:(Song*)song;
+- (void)removeSynchronizedSong:(Song*)song atIndexPath:(NSIndexPath*)indexPath;
 
 
 - (BOOL)selectArtistInSection:(NSInteger)section atRow:(NSInteger)row;

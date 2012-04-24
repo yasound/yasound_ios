@@ -11,6 +11,7 @@
 #import "NSObject+SBJson.h"
 #import "YasoundAppDelegate.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "ASIHTTPRequest+Model.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 
@@ -1098,7 +1099,7 @@ static YasoundDataProvider* _main = nil;
     [params release];
 }
 
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize afterEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector
 {
   if (!radio || !radio.id)
     return;
@@ -1114,6 +1115,23 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
     
     [params release];
+}
+
+- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector
+{
+    if (!radio || !radio.id)
+        return;
+    if (!eventID)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    NSNumber* radioID = radio.id;
+    NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
+    NSMutableArray* params = [[NSMutableArray alloc] init];
+    [params addObject:[NSString stringWithFormat:@"id__gt=%@", eventID]];
+    [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    
+    [params release]; 
 }
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector
@@ -1606,22 +1624,57 @@ static YasoundDataProvider* _main = nil;
 
 - (void)updateSong:(Song*)song target:(id)target action:(SEL)selector
 {
-  if (!song)
-    return;
+    if (!song)
+        return;
   
   Auth* auth = self.apiKeyAuth;
   NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
   [_communicator updateObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
-- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector
+- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector userData:(id)data
 {
-  if (!song)
-    return;
-  
-  Auth* auth = self.apiKeyAuth;
-  NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
-  [_communicator deleteObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    if (!song)
+        return;
+    
+    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+    [dict setValue:target forKey:@"clientTarget"];
+    [dict setValue:NSStringFromSelector(selector) forKey:@"clientSelector"];
+    [dict setValue:song forKey:@"song"];
+    [dict setValue:data forKey:@"clientData"];
+    
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/delete_song/%@", song.id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"PUT";
+    conf.callbackTarget = self;
+    conf.callbackAction = @selector(didDeleteSong:);
+    conf.userData = dict;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+- (void)didDeleteSong:(ASIHTTPRequest*)req
+{
+    int resCode = req.responseStatusCode;
+    NSDictionary* response = [req responseDict];
+    BOOL success = resCode == 200 && response != nil;
+    
+    NSDictionary* dict = (NSDictionary*)[req userData];
+    id target = [dict valueForKey:@"clientTarget"];
+    SEL action = NSSelectorFromString([dict valueForKey:@"clientSelector"]);
+    id data = [dict valueForKey:@"clientData"];
+    Song* song = (Song*)[dict valueForKey:@"song"];
+    
+    if (target && action)
+    {
+        NSMutableDictionary* info = [NSMutableDictionary dictionary];
+        [info setValue:data forKey:@"userData"];
+        [info setValue:[NSNumber numberWithBool:success] forKey:@"success"];
+        [target performSelector:action withObject:song withObject:info];
+    }
 }
 
 - (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector
@@ -1714,6 +1767,7 @@ static YasoundDataProvider* _main = nil;
   NSString* relativeURL = @"/api/v1/set_notifications_preferences";
   [_communicator postNewObject:prefs withURL:relativeURL absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
+
 
 
 @end

@@ -36,6 +36,14 @@
 
 
 
+"RateApp_title" = "Evaluez Yasound!";
+"RateApp_message" = "Voulez-vous noter cette app? Cela ne prendra pas plus d'une minute. Merci pour votre soutien!";
+"RateApp_button_rate" = "Noter";
+"RateApp_button_later" = "Plus tard";
+"RateApp_button_no" = "Non, merci";
+"RateApp_url" = "http://itunes.apple.com/fr/app/yasound/id492680161?mt=8";
+
+
 
 "Alert_contact_server" = "contacting server";
 
@@ -218,6 +226,8 @@
 "ProgramminView_nb_songs_n" = "%d songs";
 "ProgrammingView_subtitle_error" = "erreur";
 
+"ProgrammingTitleCell_buttonDelete_label" = "Remove";
+
 
 "SongView_title" = "Song";
 "SongView_name" = "title";
@@ -378,11 +388,14 @@
 
 "TracksView_no_tracks" = "no tracks found!";
 
-"RadioView_track_share_error" = "Error";
+"RadioView_track_share_error_title" = "Sharing";
+"RadioView_track_share_error" = "Error while sharing.";
 "RadioView_track_share_facebook_error" = "Error while sharing on Facebook.";
 "RadioView_track_share_twitter_error" = "Error while sharing on Twitter.";
 
 "RadioView_track_share_message" = "I am listening to %@, by %@ on %@";
+
+"RadioView_loading_previous_events_message" = "loading...";
 
 
 "RadioView_track_share_facebook" = "Share on Facebook";
@@ -393,6 +406,15 @@
 "ShareTrackOnFacebookAlertCancel" = "No";
 "ShareTrackOnFacebookAlertShare" = "Share";
 
+"Yasound_share" = "Yasound share";
+"ShareModalView_facebook_label" = "Facebook";
+"ShareModalView_twitter_label" = "Twitter";
+"ShareModalView_email_label" = "Send an email";
+"ShareModalView_publish_button_label" = "Send";
+"ShareModalView_email_button_label" = "Email";
+"ShareModalView_share_message" = "I am listening to %@, by %@ on %@";
+"ShareModalView_char_count" = "%d chars";
+"ShareModalView_twitter_constraint" = "warning: tweet maximum length is 140 characters.";
 
 
 

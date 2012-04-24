@@ -17,10 +17,10 @@
   NSTimer* _timer;
   BOOL _userLikesSong;
     WebImageView* _webImageView;
-    TrackInteractionView* _trackInteractionView;
 }
 
 //@property (nonatomic, retain) UIButton* playPauseButton;
+@property (nonatomic, retain) TrackInteractionView* trackInteractionView;
 @property (nonatomic, retain) Song* song;
 
 - (id)initWithSong:(Song*)song;

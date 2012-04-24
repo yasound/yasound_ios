@@ -20,7 +20,7 @@
 #import "ProgrammingArtistViewController.h"
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
-
+#import "ProgrammingTitleCell.h"
 
 @implementation ProgrammingViewController
 
@@ -56,6 +56,7 @@
 {
     [SongCatalog releaseSynchronizedCatalog];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [_tableView release];
     [super dealloc];
 }
 
@@ -168,6 +169,9 @@
     
     
     NSLog(@"received playlist nb %d : %d songs", _nbReceivedData, songs.count);
+    
+
+
     
     _nbReceivedData++;
     
@@ -383,43 +387,85 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    static NSString* CellIdentifier = @"Cell";
+    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+        return [self cellAlphaForRowAtIndexPath:indexPath];
+    else
+        return [self cellFolderForRowAtIndexPath:indexPath];
+}
+
+
+
+
+- (UITableViewCell*)cellAlphaForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    static NSString* CellIdentifier = @"CellAlpha";
+
+    NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
+    NSArray* letterRepo = [[SongCatalog synchronizedCatalog].alphabeticRepo objectForKey:charIndex];
+    Song* song = [letterRepo objectAtIndex:indexPath.row];
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ProgrammingTitleCell* cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) 
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-
-    NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
-    
-    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
-    {
-        NSArray* letterRepo = [[SongCatalog synchronizedCatalog].alphabeticRepo objectForKey:charIndex];
-        Song* song = [letterRepo objectAtIndex:indexPath.row];
-
-        if ([song isSongEnabled])
-        {
-            cell.textLabel.textColor = [UIColor whiteColor];
-            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-        }
-        else 
-        {
-            cell.textLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-            cell.detailTextLabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
-        }
-        
-        cell.textLabel.text = song.name;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
-        
+        cell = [[[ProgrammingTitleCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:0 deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
     }
     else
-    {
+        [cell updateWithSong:song atRow:0];
+    
+    return cell;
+}
+
+
+- (void)onSongDeleteRequested:(UITableViewCell*)cell song:(Song*)song
+{
+    NSLog(@"onSongDeleteRequested for Song %@", song.name);   
+    
+    // request to server
+    [[YasoundDataProvider main] deleteSong:song target:self action:@selector(onSongDeleted:info:) userData:cell];
+
+}
+
+
+// server's callback
+- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
+{
+    NSLog(@"onSongDeleted for Song %@", song.name);  
+    NSLog(@"info %@", info);
+    
+    BOOL success = NO;
+    NSNumber* nbsuccess = [info objectForKey:@"success"];
+    if (nbsuccess != nil)
+        success = [nbsuccess boolValue];
+    
+    NSLog(@"success %d", success);
+    
+    UITableViewCell* cell = [info objectForKey:@"userData"];
+    NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
+
+    [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song atIndexPath:indexPath];
+    
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];        
+}
+
+
+
+- (UITableViewCell*)cellFolderForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+        NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
         NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsOrder objectForKey:charIndex];
+        static NSString* CellIdentifier = @"Cell";
+        
+        UITableViewCell* cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) 
+        {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        }
+        
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        
         
         NSString* artist = [artistsForSection objectAtIndex:indexPath.row];
         
@@ -437,12 +483,11 @@
             cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_albums_n", nil);
 
          cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
-    }
 
-    
-    
     return cell;
 }
+
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

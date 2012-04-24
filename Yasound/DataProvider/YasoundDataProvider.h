@@ -132,7 +132,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector;
 
 - (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize afterEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
+- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector;
 
 - (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
@@ -197,7 +198,10 @@ taskStatus stringToStatus(NSString* str);
 - (void)matchedSongsForPlaylist:(Playlist*)playlist target:(id)target action:(SEL)selector;  // didReceiveMatchedSongs:(NSArray*)matched_songs info:(NSDictionary*)info
 
 - (void)updateSong:(Song*)song target:(id)target action:(SEL)selector; // didUpdateSong:(Song*)song info:(NSDictionary*)info
-- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector; // didDeleteSong:(Song*)song info:(NSDictionary*)info
+- (void)deleteSong:(Song*)song target:(id)target action:(SEL)selector userData:(id)data;    // didDeleteSong:(Song*)song info:(NSDictionary*)info
+                                                                                            // info dictionary contains: 
+                                                                                            // - data for key @"userData"
+                                                                                            // - a NSNumber (boolean) for key @"success"
 
 // Get searched songs. Returns a NSArray of YasoundSong objects
 - (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector; // didReceiveSearchedSongs:(NSArray*)songs info:(NSDictionary*)info
@@ -208,5 +212,7 @@ taskStatus stringToStatus(NSString* str);
 // APNs (Apple Push Notification service) preferences
 - (void)apnsPreferencesWithTarget:(id)target action:(SEL)selector;
 - (void)setApnsPreferences:(APNsPreferences*)prefs target:(id)target action:(SEL)selector;
+
+- (void)testV2;
 
 @end

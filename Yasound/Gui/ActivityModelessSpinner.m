@@ -9,9 +9,7 @@
 #import "BundleFileManager.h"
 #import "YasoundAppDelegate.h"
 
-#if USE_COREGRAPHIC_LAYER
 #import <QuartzCore/QuartzCore.h>
-#endif
 
 @implementation ActivityModelessSpinner
 
@@ -84,13 +82,11 @@ static ActivityModelessSpinner* _main = nil;
     
     _view = [[UIView alloc] initWithFrame:initFrame];
     
-#if USE_COREGRAPHIC_LAYER
     _view.layer.masksToBounds = YES;
     _view.layer.cornerRadius = 6;
     _view.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _view.layer.borderWidth = 1.0; 
     _view.layer.backgroundColor = [UIColor darkGrayColor].CGColor;
-#endif
     
     _view.alpha = 0.75;
     

@@ -30,8 +30,14 @@
 
 #import "UserViewCell.h"
 #import "LikeViewCell.h"
+#import "LoadingCell.h"
 
 #import "ProfileViewController.h"
+#import "ShareModalViewController.h"
+#import "ShareTwitterModalViewController.h"
+#import "YasoundSessionManager.h"
+
+
 
 //#define LOCAL 1 // use localhost as the server
 
@@ -44,6 +50,9 @@
 #define WALL_FIRSTREQUEST_FIRST_PAGESIZE 20
 #define WALL_FIRSTREQUEST_SECOND_PAGESIZE 20
 
+#define WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE 20
+
+#define WALL_WAITING_ROW_HEIGHT 44
 
 @implementation RadioViewController
 
@@ -94,9 +103,10 @@ static Song* _gNowPlayingSong = nil;
         _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
 
         _wallEvents = [[NSMutableArray alloc] init];
-      _connectedUsers = nil;
-      _usersContainer = nil;
-      _radioForSelectedUser = nil;
+        _waitingForPreviousEvents = NO;
+        _connectedUsers = nil;
+        _usersContainer = nil;
+        _radioForSelectedUser = nil;
     }
     
     return self;
@@ -118,6 +128,8 @@ static Song* _gNowPlayingSong = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _waitingForPreviousEvents = NO;
     
     //....................................................................................
     //
@@ -412,6 +424,8 @@ static Song* _gNowPlayingSong = nil;
     // update favorite button
     [[ActivityModelessSpinner main] addRef];
     [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoriteUpdate:)];
+    
+    
 }
  
 
@@ -496,6 +510,25 @@ static Song* _gNowPlayingSong = nil;
 }
 
 
+- (void)showWaitingEventRow
+{
+    if (_waitingForPreviousEvents)
+        return;
+    
+    _waitingForPreviousEvents = YES;
+    // #FIXME: todo...
+    [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:_wallEvents.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)removeWaitingEventRow
+{
+    if (!_waitingForPreviousEvents)
+        return;
+    
+    _waitingForPreviousEvents = NO;
+    // #FIXME: todo...
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:_wallEvents.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+}
 
 
 
@@ -527,7 +560,14 @@ static Song* _gNowPlayingSong = nil;
 //    
 //    _ap = [[NSAutoreleasePool alloc] init];
     
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    if (_wallEvents.count > 0)
+    {
+        NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    }
+    else
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    
     [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
     [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
@@ -545,7 +585,13 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)updateCurrentWall
 {    
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    if (_wallEvents.count > 0)
+    {
+        NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    }
+    else
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
 }
 
 
@@ -626,6 +672,8 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedPreviousWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
+    [self removeWaitingEventRow];
+    
     Meta* meta = [info valueForKey:@"meta"];
     NSError* err = [info valueForKey:@"error"];
     
@@ -726,7 +774,7 @@ static Song* _gNowPlayingSong = nil;
     // ask for more previous messages
     if (_countMessageEvent < NB_MAX_EVENTMESSAGE)
     {
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_SECOND_PAGESIZE afterEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_SECOND_PAGESIZE olderThanEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
     }
     else
     {
@@ -1080,6 +1128,9 @@ static Song* _gNowPlayingSong = nil;
     
     _playingNowView = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong];
     
+    [_playingNowView.trackInteractionView.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
+
+    
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _playingNowView.frame = sheet.frame;
     
@@ -1322,11 +1373,13 @@ static Song* _gNowPlayingSong = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-  if (tableView == _usersContainer)
-    return [self usersContainerNumberOfRowsInSection:section];
+    if (tableView == _usersContainer)
+        return [self usersContainerNumberOfRowsInSection:section];
   
-  
-  return [_wallEvents count];
+    NSInteger nbRows = [_wallEvents count];
+    if (_waitingForPreviousEvents)
+        nbRows++;
+    return nbRows;
 }
 
 
@@ -1335,6 +1388,9 @@ static Song* _gNowPlayingSong = nil;
 {
   if (tableView == _usersContainer)
     return [self usersContainerWidthForRowAtIndexPath:indexPath];
+    
+    if (_waitingForPreviousEvents && indexPath.row == _wallEvents.count)
+        return WALL_WAITING_ROW_HEIGHT;
   
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
     
@@ -1374,6 +1430,20 @@ static Song* _gNowPlayingSong = nil;
 {
   if (tableView == _usersContainer)
     return [self usersContainerCellForRowAtIndexPath:indexPath];
+    
+    // waiting cell
+    if (_waitingForPreviousEvents && indexPath.row == _wallEvents.count)
+    {
+        static NSString* LoadingCellIdentifier = @"RadioViewLoadingCell";
+        
+        LoadingCell* cell = (LoadingCell*)[tableView dequeueReusableCellWithIdentifier:LoadingCellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[[LoadingCell alloc] initWithFrame:CGRectZero reuseIdentifier:LoadingCellIdentifier] autorelease];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+        }
+        return cell;
+    }
   
     
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
@@ -1438,7 +1508,41 @@ static Song* _gNowPlayingSong = nil;
 }
 
 
+- (void)askForPreviousEvents
+{
+    NSLog(@"ask for previous events");
+    if (_waitingForPreviousEvents)
+        return;
+    
+    if (_wallEvents.count > 0)
+    {
+        NSNumber* lastEventID = ((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count - 1]).id;
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE olderThanEventWithID:lastEventID target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+    }
+    else
+        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+    
+    [self showWaitingEventRow];
+}
 
+
+#pragma mark - UIScrollViewDelegate
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (!_waitingForPreviousEvents)
+    {
+        float offset = scrollView.contentOffset.y;
+        float contentHeight = scrollView.contentSize.height;
+        float viewHeight = scrollView.bounds.size.height;
+        
+        if (offset + viewHeight > contentHeight + WALL_WAITING_ROW_HEIGHT)
+        {
+            [self askForPreviousEvents];
+        }
+    }
+}
 
 
 
@@ -1693,9 +1797,13 @@ static Song* _gNowPlayingSong = nil;
 - (IBAction) onPlayPause:(id)sender
 {
     if (self.playPauseButton.selected)
+    {
         [self pauseAudio];
+    }
     else
+    {
         [self playAudio];
+    }
 }
 
 
@@ -1865,6 +1973,72 @@ static Song* _gNowPlayingSong = nil;
 
 
 
+- (void)onTrackShare:(id)sender
+{
+    _queryShare = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:nil];
+    
+    if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
+        [_queryShare addButtonWithTitle:@"Facebook"];
+    
+    if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
+        [_queryShare addButtonWithTitle:@"Twitter"];
+    
+    [_queryShare addButtonWithTitle:NSLocalizedString(@"ShareModalView_email_label", nil)];
+    
+    _queryShare.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [_queryShare showInView:self.view];
+
+}
+
+
+#pragma mark - UIActionSheet Delegate
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+
+    // share query result
+    if (actionSheet == _queryShare)
+    {
+        NSString* buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+
+        if ([buttonTitle isEqualToString:@"Facebook"])
+        {
+            ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong target:self action:@selector(onShareModalReturned)];
+            [self.navigationController presentModalViewController:view animated:YES];
+            [view release];
+        }
+        else if ([buttonTitle isEqualToString:@"Twitter"])
+
+        {
+            ShareTwitterModalViewController* view = [[ShareTwitterModalViewController alloc] initWithNibName:@"ShareTwitterModalViewController" bundle:nil forSong:_gNowPlayingSong target:self action:@selector(onShareModalReturned)];
+            [self.navigationController presentModalViewController:view animated:YES];
+            [view release];
+        }
+        else if ([buttonTitle isEqualToString:NSLocalizedString(@"ShareModalView_email_label", nil)])
+        {
+            Radio* currentRadio = [AudioStreamManager main].currentRadio;
+            
+            NSString* message = NSLocalizedString(@"ShareModalView_share_message", nil);
+            NSString* fullMessage = [NSString stringWithFormat:message, _gNowPlayingSong.name, _gNowPlayingSong.artist, currentRadio.name];
+            NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
+            NSURL* fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link, currentRadio.uuid]];
+            
+            NSString* subject = NSLocalizedString(@"Yasound_share", nil);
+            NSString* url = [[NSString alloc] initWithFormat:@"mailto:?subject=%@&body=%@\n\n%@", subject, fullMessage, [fullLink absoluteString]];
+            NSString* escaped = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:escaped]];
+        }
+        
+        return;
+    }
+}
+
+
+
+- (void)onShareModalReturned
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
 
 
 

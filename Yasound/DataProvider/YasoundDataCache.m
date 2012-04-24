@@ -212,12 +212,14 @@ static YasoundDataCache* _main = nil;
     NSDate* date = [NSDate date];
     NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RADIOS];
     
+    NSString* RequestId = op.object;
+    
     // get/create dico for request
-    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:[NSNumber numberWithInteger:op.object]];
+    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:RequestId];
     if (requestCache == nil)
     {
         requestCache = [[NSMutableDictionary alloc] init];
-        [_cacheRadios setObject:requestCache forKey:[NSNumber numberWithInteger:op.object]];
+        [_cacheRadios setObject:requestCache forKey:RequestId];
     }
     
     // get/create dico for request/genre
@@ -240,8 +242,9 @@ static YasoundDataCache* _main = nil;
 //    [_pendingRadios removeObjectAtIndex:0];
     
     // return results to pending client
-    NSLog(@"YasoundDataCache requestRadios : return server's updated data");
+    //NSLog(@"YasoundDataCache requestRadios : return server's updated data");
     [target performSelector:action withObject:radios withObject:info];
+    
 }
 
 
@@ -270,7 +273,7 @@ static YasoundDataCache* _main = nil;
 
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
-    NSLog(@"YasoundDataCache requestRadios : return local cached data");
+    //NSLog(@"YasoundDataCache requestRadios : return local cached data");
     [target performSelector:selector withObject:data withObject:infoDico];
 }
 
@@ -291,7 +294,7 @@ static YasoundDataCache* _main = nil;
 
 - (void)clearRadiosAll
 {
-    NSLog(@"YasoundDataCache::clearRadiosAll");
+    NSLog(@"YasoundDataCache::clearRadiosAll"); 
     [_cacheRadios release];
     
     _cacheRadios = [[NSMutableDictionary alloc] init];
@@ -381,6 +384,7 @@ static YasoundDataCache* _main = nil;
     
     id target = op.target;
     SEL action = op.action;
+    Radio* radio = op.object;
     
     // the radio may be empty
     if (song == nil)
@@ -398,12 +402,11 @@ static YasoundDataCache* _main = nil;
     NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_CURRENTSONGS];
     
     // get/create dico for request
-    NSMutableDictionary* requestCache = [_cacheSongs objectForKey:[NSNumber numberWithInteger:op.object]];
+    NSMutableDictionary* requestCache = [_cacheSongs objectForKey:radio.id];
     if (requestCache == nil)
     {
         requestCache = [[NSMutableDictionary alloc] init];
-        [_cacheSongs setObject:requestCache forKey:[NSNumber numberWithInteger:op.object]];
-  //      [_cacheSongs setObject:requestCache forKey:@"prout"];
+        [_cacheSongs setObject:requestCache forKey:radio.id];
     }
     
     // cache data 
@@ -417,7 +420,7 @@ static YasoundDataCache* _main = nil;
     //    [_pendingRadios removeObjectAtIndex:0];
     
     // return results to pending client
-    NSLog(@"YasoundDataCache requestRadios : return server's updated data");
+    //NSLog(@"YasoundDataCache requestRadios : return server's updated data");
     [target performSelector:action withObject:song withObject:info];
     
     //    // process the next pending operation, if any
@@ -499,7 +502,7 @@ static YasoundDataCache* _main = nil;
     
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
-    NSLog(@"YasoundDataCache requestFriendsWithTarget : return local cached data");
+    //NSLog(@"YasoundDataCache requestFriendsWithTarget : return local cached data");
     [target performSelector:selector withObject:data withObject:infoDico];    
 }
 
@@ -537,7 +540,7 @@ static YasoundDataCache* _main = nil;
     [op release];
     
     // return results to pending client
-    NSLog(@"YasoundDataCache requestFriendsWithTarget : return server's updated data");
+    //NSLog(@"YasoundDataCache requestFriendsWithTarget : return server's updated data");
     [target performSelector:action withObject:friends withObject:info];
 }
 

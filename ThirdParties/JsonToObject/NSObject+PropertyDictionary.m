@@ -48,9 +48,27 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
       
       if ([str isKindOfClass:[NSString class]])
       {
-          str = [[str componentsSeparatedByString:@"."] objectAtIndex:0];
+        str = [[str componentsSeparatedByString:@"."] objectAtIndex:0];
         NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+        [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
+        
+        
+        // 19 = length of 2012-04-19T15:46:24
+        
+        if ([str length] >= 19) 
+        {
+          NSTimeZone *serverTimeZone = [[NSTimeZone alloc] initWithName:@"Europe/Paris" data:nil];
+          if ([serverTimeZone isDaylightSavingTime]) 
+          {
+            str = [NSString stringWithFormat:@"%@GMT+02:00", [str substringToIndex:19]];
+          } 
+          else 
+          {
+            str = [NSString stringWithFormat:@"%@GMT+01:00", [str substringToIndex:19]];
+          }
+          [serverTimeZone release];
+        }
+        
         val = [dateFormat dateFromString:str];
         [dateFormat release];
       }

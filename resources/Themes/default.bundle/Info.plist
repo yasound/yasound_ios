@@ -147,6 +147,80 @@
 			<key>y</key>
 			<integer>40</integer>
 		</dict>
+		<key>ProgrammingTitleCell_label</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>weight</key>
+				<string>bold</string>
+				<key>size</key>
+				<integer>15</integer>
+				<key>text</key>
+				<string>lorem ipsum dolore imet lorem ipsum dolore imet lorem ipsum dolore</string>
+				<key>textColor</key>
+				<string>white</string>
+			</dict>
+			<key>height</key>
+			<integer>15</integer>
+			<key>width</key>
+			<integer>280</integer>
+			<key>x</key>
+			<integer>8</integer>
+			<key>y</key>
+			<integer>8</integer>
+		</dict>
+		<key>ProgrammingTitleCell_buttonDelete_label</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>weight</key>
+				<string>bold</string>
+				<key>textAlignement</key>
+				<string>center</string>
+				<key>size</key>
+				<integer>11</integer>
+				<key>text</key>
+				<string>Delete</string>
+				<key>textColor</key>
+				<string>white</string>
+				<key>shadowOffset</key>
+				<string>0, -1</string>
+				<key>shadowRadius</key>
+				<integer>1</integer>
+				<key>shadowColor</key>
+				<string>black</string>
+				<key>shadowOpacity</key>
+				<real>0.5</real>
+			</dict>
+			<key>height</key>
+			<integer>15</integer>
+			<key>width</key>
+			<integer>45</integer>
+			<key>x</key>
+			<integer>6</integer>
+			<key>y</key>
+			<integer>6</integer>
+		</dict>
+		<key>ProgrammingTitleCell_sublabel</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>size</key>
+				<integer>13</integer>
+				<key>text</key>
+				<string>lorem ipsum dolore imet lorem ipsum dolore imet lorem ipsum dolore</string>
+				<key>textColor</key>
+				<string>gray</string>
+			</dict>
+			<key>height</key>
+			<integer>15</integer>
+			<key>width</key>
+			<integer>280</integer>
+			<key>x</key>
+			<integer>8</integer>
+			<key>y</key>
+			<integer>24</integer>
+		</dict>
 		<key>StatusListeners</key>
 		<dict>
 			<key>font</key>
