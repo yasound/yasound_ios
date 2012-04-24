@@ -8,9 +8,7 @@
 #import "BundleStylesheet.h"
 #import "BundleFileManager.h"
 
-#if USE_COREGRAPHIC_SHADOW
 #import <QuartzCore/QuartzCore.h>
-#endif
 
 //..................................................................................
 //  
@@ -85,9 +83,11 @@
     _size = 12;
     _textAlignement = UITextAlignmentLeft;
     _text = [NSString stringWithFormat:@""];
+      [_text retain];
     _textColor = [UIColor blackColor];
     _backgroundColor = [UIColor clearColor];
     _weight = [NSString stringWithFormat:@"normal"];
+      [_weight retain];
   }
   else
   {
@@ -96,6 +96,7 @@
     _textColor = defaultFontsheet.textColor;
     _backgroundColor = defaultFontsheet.backgroundColor;
     _weight = [NSString stringWithFormat:defaultFontsheet.weight];
+      [_weight retain];
   }
 
   NSString* fontName = [sheet valueForKey:@"name"];
@@ -117,6 +118,7 @@
   if (fontText != nil)
   {
     _text = [NSString stringWithFormat:fontText];
+      [_text retain];
   }
   
   NSString* textColor = [sheet valueForKey:@"textColor"];
@@ -137,6 +139,7 @@
   if (fontWeight != nil)
   {
     _weight = fontWeight;
+      [_weight retain];
     _weightIsSet = YES;
   }
   
@@ -187,6 +190,16 @@
 
 
   return self;
+}
+
+
+- (void)dealloc
+{
+    if (_text)
+        [_text release];
+    if (_weight)
+        [_weight release];
+    [super dealloc];
 }
 
 @end
@@ -838,6 +851,7 @@ static NSMutableDictionary* gImageViews = nil;
 - (UILabel*)makeLabel
 {  
     BundleFontsheet* fontsheet = [self.fontsheets objectForKey:@"default"];
+    
 
     UILabel* label = [[UILabel alloc] initWithFrame:self.frame];
     label.backgroundColor = fontsheet.backgroundColor;
@@ -846,7 +860,6 @@ static NSMutableDictionary* gImageViews = nil;
     label.textAlignment = fontsheet.textAlignement;
     
     // apply shadow, if requested
-#if USE_COREGRAPHIC_SHADOW
     if (fontsheet.shadowIsSet)
     {
         label.layer.masksToBounds = NO;
@@ -856,7 +869,6 @@ static NSMutableDictionary* gImageViews = nil;
         label.layer.shadowOpacity = fontsheet.shadowOpacity;
         label.layer.shadowColor = fontsheet.shadowColor.CGColor;
     }
-#endif
     
 
     label.font = [self makeFont];
@@ -932,7 +944,6 @@ static NSMutableDictionary* gImageViews = nil;
     }
     
     // apply shadow, if requested
-#if USE_COREGRAPHIC_SHADOW
     if (fontsheet.shadowIsSet)
     {
         label.layer.masksToBounds = NO;
@@ -942,7 +953,6 @@ static NSMutableDictionary* gImageViews = nil;
         label.layer.shadowOpacity = fontsheet.shadowOpacity;
         label.layer.shadowColor = fontsheet.shadowColor.CGColor;
     }
-#endif
   
   return YES;
 }

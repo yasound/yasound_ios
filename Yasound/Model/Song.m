@@ -27,6 +27,7 @@
     if (self = [super init])
     {
         _uploading = NO;
+        _removed = NO;
     }
     return self;
 }
@@ -104,6 +105,18 @@
 }
 
 
+- (BOOL)isSongRemoved
+{
+    return _removed;
+}
+
+- (void)removeSong:(BOOL)set
+{
+    _removed = set;
+}
+
+
+
 - (NSString*)getNameWithoutArticle
 {
     // return cache 
@@ -127,7 +140,7 @@
     
     // store cache
     [_nameWithoutArticle retain];
-
+    
     return _nameWithoutArticle;
 }
 

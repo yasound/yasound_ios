@@ -111,6 +111,10 @@ void SignalHandler(int sig) {
     rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
     [self.navigationController pushViewController:rootViewController animated:NO];
     
+    
+    
+    
+    
   // Push Notifications:
   NSLog(@"Ask for push notification\n");
   [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
@@ -123,9 +127,72 @@ void SignalHandler(int sig) {
     [appDelegate handlePushNotification:remoteNotifInfo];
     _mustGoToNotificationCenter = YES;
   }
+    
+    
+    [self rateApp];
   
   return YES;
 }
+
+
+
+
+
+#pragma mark - Rate My App
+
+- (void)rateApp 
+{
+    BOOL neverRate = [[NSUserDefaults standardUserDefaults] boolForKey:@"neverRate"];
+    
+    int launchCount = 0;
+    if (neverRate != YES)
+    {
+        launchCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
+        launchCount++;
+        [[NSUserDefaults standardUserDefaults] setInteger:launchCount forKey:@"launchCount"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    else return;
+    
+    if (launchCount > 2) 
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"RateApp_title", nil)
+                                                        message:NSLocalizedString(@"RateApp_message", nil) 
+                                                       delegate:self 
+                                              cancelButtonTitle:nil 
+                                              otherButtonTitles:NSLocalizedString(@"RateApp_button_rate", nil), NSLocalizedString(@"RateApp_button_later", nil), NSLocalizedString(@"RateApp_button_no", nil), nil];
+        alert.delegate = self;
+        [alert show];
+        [alert release];
+    }
+}
+
+
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex 
+{
+    if (buttonIndex == 0) 
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"neverRate"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"RateApp_url", nil)]];
+    }
+    
+    else if (buttonIndex == 1) 
+    {
+    }
+    
+    else if (buttonIndex == 2) 
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"neverRate"];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}    
+
+
+
+
+
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {

@@ -21,6 +21,7 @@ typedef enum
     NSString* _nameWithoutArticle;
     NSString* _firstRelevantWord;
     BOOL _uploading;
+    BOOL _removed;
 }
 
 @property (retain, nonatomic) NSString* name;
@@ -39,6 +40,9 @@ typedef enum
 
 - (BOOL)isSongEnabled;
 - (void)enableSong:(BOOL)on;
+
+- (BOOL)isSongRemoved;
+- (void)removeSong:(BOOL)set;
 
 - (BOOL)isUploading;
 - (void)setUploading:(BOOL)set;

@@ -36,6 +36,14 @@
 
 
 
+"RateApp_title" = "Evaluez Yasound!";
+"RateApp_message" = "Voulez-vous noter cette app? Cela ne prendra pas plus d'une minute. Merci pour votre soutien!";
+"RateApp_button_rate" = "Noter";
+"RateApp_button_later" = "Plus tard";
+"RateApp_button_no" = "Non, merci";
+"RateApp_url" = "http://itunes.apple.com/fr/app/yasound/id492680161?mt=8";
+
+
 
 "Alert_contact_server" = "contacting server";
 
@@ -214,6 +222,8 @@
 "ProgramminView_nb_songs_1" = "1 song";
 "ProgramminView_nb_songs_n" = "%d songs";
 "ProgrammingView_subtitle_error" = "erreur";
+
+"ProgrammingTitleCell_buttonDelete_label" = "Remove";
 
 
 "SongView_title" = "Song";
