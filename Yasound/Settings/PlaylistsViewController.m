@@ -332,7 +332,7 @@
 
 -(void)refreshView
 {
-    if ([_playlistsDesc count] == 0)
+    if (([_playlistsDesc count] == 0) && (_songs.count == 0))
     {
         [_tableView removeFromSuperview];
         _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
