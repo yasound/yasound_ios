@@ -337,9 +337,16 @@
         [_tableView removeFromSuperview];
         _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
         [_container addSubview:_itunesConnectView];
-    } else {
+    } 
+    else 
+    {
         [_tableView reloadData];
     }
+    
+    if (([_selectedPlaylists count] == 0) && (_songs.count == 0))
+        [_nextBtn setEnabled:NO];
+    else 
+        [_nextBtn setEnabled:YES];    
 }
 
 
@@ -712,7 +719,7 @@
         [self checkmark:cell with:NO];
     }
     
-    if ([_selectedPlaylists count] == 0)
+    if (([_selectedPlaylists count] == 0) && (_songs.count == 0))
         [_nextBtn setEnabled:NO];
     else 
         [_nextBtn setEnabled:YES];
