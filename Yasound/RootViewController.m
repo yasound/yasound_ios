@@ -66,6 +66,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorCommunicationServer:) name:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionChanged:) name:NOTIF_REACHABILITY_CHANGED object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadio:) name:NOTIF_GOTO_MY_RADIO object:nil];
     
 
     
@@ -266,7 +267,7 @@
 {
   if (_menuView == nil)
   {
-    _menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
     [_menuView retain];
     [self.navigationController pushViewController:_menuView animated:NO];
   }
@@ -296,7 +297,7 @@
 
     if (_menuView == nil)
     {
-        _menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
         [_menuView retain];
         [self.navigationController pushViewController:_menuView animated:animatePushMenu];
     }
@@ -362,7 +363,7 @@
   
   [self.navigationController popToRootViewControllerAnimated:NO];
   
-  _menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+  _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
   [_menuView retain];
   [self.navigationController pushViewController:_menuView animated:YES];
 }
@@ -512,7 +513,7 @@
     
     if (_menuView == nil)
     {
-        _menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
         [_menuView retain];
         [self.navigationController pushViewController:_menuView animated:NO];
     }
@@ -528,10 +529,32 @@
     }
     else
     {
-        _menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
         [_menuView retain];
         [self.navigationController pushViewController:_menuView animated:NO];
     }
+}
+
+
+
+
+
+- (void)onNotifGotoMyRadio:(NSNotification *)notification
+{
+    Radio* r = [YasoundDataProvider main].radio;
+    NSLog(@"go to my radio '%@' (%@)", r.name, r.ready);
+
+    UIViewController* controller = nil;
+    if ([r.ready boolValue])
+    {
+    controller = [[RadioViewController alloc] initWithRadio:r];
+    }
+    else
+    {
+    controller = [self myRadioSetupViewController];
+    }
+    [sourceController.navigationController pushViewController:controller animated:YES];
+    [controller release];
 }
 
 

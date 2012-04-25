@@ -1,12 +1,12 @@
 //
-//  MenuViewController.m
+//  MenuDynamicViewController.m
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 25/01/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "MenuViewController.h"
+#import "MenuDynamicViewController.h"
 #import "RadioViewController.h"
 #import "YasoundDataProvider.h"
 #import "RadioSelectionViewController.h"
@@ -27,48 +27,38 @@
 
 #import "NotificationCenterViewController.h"
 #import "YasoundNotifCenter.h"
+#import "MenuTableViewCell.h"
 
 
 
-
-@implementation MenuViewController
-
-#define NB_SECTIONS 4
-
-#define SECTION_MYRADIO 0
-#define SECTION_MYRADIO_NB_ROWS 1
-#define ROW_MYRADIO_MYRADIO 0
-
-#define SECTION_RADIOS 1
-#define SECTION_RADIOS_NB_ROWS 5
-#define ROW_RADIOS_FRIENDS 0
-#define ROW_RADIOS_FAVORITES 1
-#define ROW_RADIOS_SELECTION 2
-#define ROW_RADIOS_TOP 3
-#define ROW_RADIOS_SEARCH 4
-
-#define SECTION_ME 2
-#define SECTION_ME_NB_ROWS 4
-
-#define ROW_ME_NOTIFS 0
-#define ROW_ME_STATS 1
-#define ROW_ME_PROGRAMMING 2
-#define ROW_ME_CONFIG 3
+@implementation MenuDynamicViewController
 
 
-#define SECTION_MISC 3
-#define SECTION_MISC_NB_ROWS 2
-#define ROW_MISC_LEGAL 0
-#define ROW_MISC_LOGOUT 1
+@synthesize sections;
 
 
+#define TYPE_MY_RADIO @"my_radio"
+#define TYPE_RADIO @"radio"
+#define TYPE_RADIO_LIST @"radioList"
+#define TYPE_USER @"user"
+#define TYPE_USER_LIST @"user_list"
+#define TYPE_WEB_PAGE @"web_page"
+#define TYPE_RADIO_SEARCH @"radio_search"
+#define TYPE_FRIENDS @"friends"
+#define TYPE_NOTIFICATIONS @"notifications"
+#define TYPE_STATS @"stats"
+#define TYPE_SETTINGS @"settings"
+#define TYPE_PROGRAMMING @"programming"
+#define TYPE_LOGOUT @"logout"
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withSections:(NSArray*)sections
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-      _notificationsCell = nil;
+        _notificationsCell = nil;
+        self.sections = sections;
     }
     return self;
 }
@@ -103,10 +93,14 @@
     [[YasoundNotifCenter main] addTarget:self action:@selector(unreadNotifCountChanged) forEvent:eAPNsUnreadNotifCountChanged];
 }
 
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
 }
+
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -118,6 +112,8 @@
     [_nowPlayingButton setEnabled:YES];
 }
 
+
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -126,6 +122,8 @@
   
   [[YasoundNotifCenter main] removeTarget:self];
 }
+
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -151,69 +149,34 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return NB_SECTIONS;
+    return self.sections.count;
 }
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    if (section == SECTION_MYRADIO)
-//        return NSLocalizedString(@"MenuView_section_myradio", nil);
-//    
-//    if (section == SECTION_RADIOS)
-//        return NSLocalizedString(@"MenuView_section_radios", nil);
-//    
-//    if (section == SECTION_ME)
-//        return NSLocalizedString(@"MenuView_section_me", nil);
-//    
-//    if (section == SECTION_MISC)
-//        return NSLocalizedString(@"MenuView_section_misc", nil);
-//
-//    return nil;
-//}
-
-
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    if (section == SECTION_MYRADIO)
-        return SECTION_MYRADIO_NB_ROWS;
+    NSDictionary* dicoSection = [self.sections objectAtIndex:section];
+    NSArray* rows = [dicoSection objectForKey:@"entries"];
     
-    if (section == SECTION_RADIOS)
-        return SECTION_RADIOS_NB_ROWS;
+    if (rows == nil)
+    {
+        NSLog(@"DynamicMenu parsing error");
+        NSLog(@"%@", self.sections);
+        return 0;
+    }    
     
-    if (section == SECTION_ME)
-        return SECTION_ME_NB_ROWS;
-    
-    if (section == SECTION_MISC)
-        return SECTION_MISC_NB_ROWS;
-  
-  return 0;
+    return rows.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 50;
-//}
 
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSString* title = nil;
+    NSDictionary* dicoSection = [self.sections objectAtIndex:section];
     
-    if (section == SECTION_MYRADIO)
-        title = NSLocalizedString(@"MenuView_section_myradio", nil);
+    NSString* title = [dicoSection objectForKey:@"name"];
     
-    else if (section == SECTION_RADIOS)
-        title = NSLocalizedString(@"MenuView_section_radios", nil);
-    
-    else if (section == SECTION_ME)
-        title = NSLocalizedString(@"MenuView_section_me", nil);
-
-    else if (section == SECTION_MISC)
-        title = NSLocalizedString(@"MenuView_section_misc", nil);
-
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 
     UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
@@ -225,34 +188,6 @@
     [view addSubview:label];
     
     return view;
-    
-    
-//	NSString *title = nil;
-//    // Return a title or nil as appropriate for the section.
-//    
-//	switch (section) 
-//    {
-//        case 0:
-//            title = @"iPhone Apps Development";
-//            break;
-//        case SPENDING_LIST:
-//            title = @"Android Apps Development";
-//            break;
-//        default:
-//            break;
-//    }
-//    
-//	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 40)];
-//	[v setBackgroundColor:[UIColor blackColor]];
-//    
-//	UILabel *label = [[[UILabel alloc] initWithFrame:CGRectMake(10,3, tableView.bounds.size.width - 10,40)] autorelease];
-//	label.text = title;
-//	label.textColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.60];
-//	label.font = [UIFont fontWithName:@"Arial-BoldMT" size:14];
-//	label.backgroundColor = [UIColor clearColor];
-//	[v addSubview:label];
-//    
-//	return v;
 }
 
 
@@ -261,28 +196,25 @@
     NSString* style = nil;
     NSString* selectedStyle = nil;
     
-    if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_MYRADIO))
-    {
-        style = @"MenuRowFirst";
-        selectedStyle = @"MenuRowFirstSelected";
-    }
+    NSDictionary* dicoSection = [self.sections objectAtIndex:indexPath.section];
+    NSArray* rows = [dicoSection objectForKey:@"entries"];
 
-    else if (indexPath.row == 0)
+    
+    if (indexPath.row == 0)
     {
         style = @"MenuRowFirst";
         selectedStyle = @"MenuRowFirstSelected";
     }
     
-    else if (
-             ((indexPath.section == SECTION_RADIOS) && (indexPath.row == SECTION_RADIOS_NB_ROWS-1)) || 
-             ((indexPath.section == SECTION_ME) && (indexPath.row == SECTION_ME_NB_ROWS-1)) )
-    {
-        style = @"MenuRowLast";    
-        selectedStyle = @"MenuRowFirstSelected";
-    }
-    else if ((indexPath.section == SECTION_MISC) && (indexPath.row == SECTION_MISC_NB_ROWS-1))
+    else if ( (indexPath.section == (self.sections.count -1)) && (indexPath.row == (rows.count -1)))
     {
         style = @"MenuRowInter";        
+        selectedStyle = @"MenuRowFirstSelected";
+    }
+    
+    else if (indexPath.row == (rows.count -1))
+    {
+        style = @"MenuRowLast";    
         selectedStyle = @"MenuRowFirstSelected";
     }
     else
@@ -304,143 +236,74 @@
     [selectedView release];
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 55;
-//}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    static NSString *CellIdentifier = @"CellIdentifier";
+    NSDictionary* dicoSection = [self.sections objectAtIndex:indexPath.section];
+    NSArray* rows = [dicoSection objectForKey:@"entries"];
+    NSDictionary* row = [rows objectAtIndex:indexPath.row];
     
-  UITableViewCell *cell = nil;
-  
-  if (indexPath.section == SECTION_ME && indexPath.row == ROW_ME_NOTIFS)
-  {
-    NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
-    if (!_notificationsCell)
-      _notificationsCell = [[NotificationTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil unreadCount:unread];
+    NSString* type = [row objectForKey:@"type"];
     
-    [_notificationsCell setUnreadCount:unread];
-    cell = _notificationsCell;
-  }
-  else
-  {
-    cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) 
-      cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];    
-  }
-  
-
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
-    cell.textLabel.textColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.accessoryType = UITableViewCellAccessoryNone;
-
-    if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_MYRADIO))
-    {
-        cell.textLabel.text = NSLocalizedString(@"MenuView_myradio_myradio", nil);
-        
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMyRadio" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        [cell.imageView setImage:[sheet image]];
-    }
-
-    else if (indexPath.section == SECTION_RADIOS)
-    {
-        if (indexPath.row == ROW_RADIOS_FAVORITES)
-        {
-            cell.textLabel.text = NSLocalizedString(@"MenuView_radios_favorites", nil);            
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconRadiosFavorites" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            [cell.imageView setImage:[sheet image]];
-        }
-        else if (indexPath.row == ROW_RADIOS_FRIENDS)
-        {
-            cell.textLabel.text = NSLocalizedString(@"MenuView_radios_friends", nil);            
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconRadiosFriends" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            [cell.imageView setImage:[sheet image]];
-        }
-        else if (indexPath.row == ROW_RADIOS_SELECTION)
-        {
-            cell.textLabel.text = NSLocalizedString(@"MenuView_radios_selection", nil);            
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconRadiosSelection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            [cell.imageView setImage:[sheet image]];
-        }
-        else if (indexPath.row == ROW_RADIOS_TOP)
-        {
-            cell.textLabel.text = NSLocalizedString(@"MenuView_radios_top", nil);            
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconLeaderboard" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            [cell.imageView setImage:[sheet image]];
-        }
-        else if (indexPath.row == ROW_RADIOS_SEARCH)
-        {
-            cell.textLabel.text = NSLocalizedString(@"MenuView_radios_search", nil);            
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconRadiosSearch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            [cell.imageView setImage:[sheet image]];
-        }
-    }
     
-    else if (indexPath.section == SECTION_ME)
+    if ([type isEqualToString:TYPE_NOTIFICATIONS])
     {
-      if (indexPath.row == ROW_ME_NOTIFS)
-      {
-        cell.textLabel.text = NSLocalizedString(@"MenuView_me_notifs", nil);            
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMeNotifs" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        [cell.imageView setImage:[sheet image]];
-      }
-        else if (indexPath.row == ROW_ME_STATS)
-        {
-            cell.textLabel.text = NSLocalizedString(@"MenuView_me_stats", nil);            
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMeStats" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            [cell.imageView setImage:[sheet image]];
-        }
-        else if (indexPath.row == ROW_ME_PROGRAMMING)
-        {
-            cell.textLabel.text = NSLocalizedString(@"MenuView_me_programming", nil);            
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMePlaylists" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            [cell.imageView setImage:[sheet image]];
-        }
-        else if (indexPath.row == ROW_ME_CONFIG)
-        {
-            cell.textLabel.text = NSLocalizedString(@"MenuView_me_config", nil);            
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMeSettings" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            [cell.imageView setImage:[sheet image]];
-        }
-        
+        NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
+        if (!_notificationsCell)
+            _notificationsCell = [[NotificationTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil unreadCount:unread];
+
+        [_notificationsCell setUnreadCount:unread];
+
+        _notificationsCell.name.text = [row objectForKey:@"name"];
+        [_notificationsCell.icon setUrl:[NSURL URLWithString:[row objectForKey:@"image"]]];
+
+        return _notificationsCell;
         
     }
-    
-    
-    else if (indexPath.section == SECTION_MISC)
+    else
     {
-        if (indexPath.row == ROW_MISC_LEGAL)
-        {
-            cell.textLabel.text = NSLocalizedString(@"MenuView_misc_legal", nil);            
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMiscLegal" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            [cell.imageView setImage:[sheet image]];
-        }
-        else if (indexPath.row == ROW_MISC_LOGOUT)
-        {
-            cell.textLabel.text = NSLocalizedString(@"MenuView_misc_logout", nil);            
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconMiscLogout" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            [cell.imageView setImage:[sheet image]];
-        }    
-    }
+        static NSString* CellIdentifier = @"Cell";
 
-    
-    return cell;   
+        MenuTableViewCell* cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) 
+            cell = [[[MenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];    
+
+        cell.name.text = [row objectForKey:@"name"];
+        [cell.icon setUrl:[NSURL URLWithString:[row objectForKey:@"image"]]];
+    }
 }
 
+         
+         
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((indexPath.section == SECTION_MYRADIO) && (indexPath.row == ROW_MYRADIO_MYRADIO))
+    NSDictionary* dicoSection = [self.sections objectAtIndex:indexPath.section];
+    NSArray* rows = [dicoSection objectForKey:@"entries"];
+    NSDictionary* row = [rows objectAtIndex:indexPath.row];
+    
+    NSString* type = [row objectForKey:@"type"];
+
+    
+#define  @"radio"
+#define TYPE_RADIO_LIST @"radioList"
+#define TYPE_USER @"user"
+#define TYPE_USER_LIST @"user_list"
+#define TYPE_WEB_PAGE @"web_page"
+#define TYPE_RADIO_SEARCH @"radio_search"
+#define TYPE_FRIENDS @"friends"
+#define TYPE_NOTIFICATIONS @"notifications"
+#define TYPE_STATS @"stats"
+#define TYPE_SETTINGS @"settings"
+#define TYPE_PROGRAMMING @"programming"
+#define TYPE_LOGOUT @"logout"
+
+    
+    if ([type isEqualToString:TYPE_RADIO])
     {
-//        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[YasoundDataProvider main].radio];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-      YasoundAppDelegate* appDelegate =  (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
-      [appDelegate goToMyRadioFromViewController:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MY_RADIO object:nil];
+        return;
     }
     
     else if (indexPath.section == SECTION_RADIOS)

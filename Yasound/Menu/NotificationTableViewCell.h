@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebImageView.h"
 
 @interface NotificationTableViewCell : UITableViewCell
 {
   UILabel* _unreadCountLabel;
   UIImageView* _badgeBackground;
 }
+
+@property (nonatomic, retain) UILabel* name;
+@property (nonatomic, retain) WebImageView* icon;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier unreadCount:(NSInteger)count;
 - (void)setUnreadCount:(NSInteger)count;
 

@@ -41,7 +41,6 @@
 - (void)handlePushNotification:(NSDictionary*)notifDesc;
 
 - (UIViewController*)myRadioSetupViewController;
-- (void)goToMyRadioFromViewController:(UIViewController*)sourceController;
 - (void)goToMyRadioStatsFromViewController:(UIViewController*)sourceController;
 - (void)goToMyRadioPlaylistsFromViewController:(UIViewController*)sourceController;
 
