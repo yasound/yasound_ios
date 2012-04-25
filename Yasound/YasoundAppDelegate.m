@@ -12,7 +12,6 @@
 #import "YasoundSessionManager.h"
 #import "YasoundDataProvider.h"
 #import "RadioViewController.h"
-#import "CreateMyRadio.h"
 #import "PlaylistsViewController.h"
 #import "StatsViewController.h"
 #import "APNsNotifInfo.h"
@@ -395,15 +394,6 @@ void SignalHandler(int sig) {
 
 
 #pragma mark - MyRadio
-
-- (UIViewController*)myRadioSetupViewController
-{
-  [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"skipRadioCreationSendToSelection"];
-  [[NSUserDefaults standardUserDefaults] synchronize]; 
-  UIViewController* controller = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:NO radio:[YasoundDataProvider main].radio];
-  return controller;
-}
-
 
 
 

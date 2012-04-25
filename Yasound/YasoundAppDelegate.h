@@ -40,7 +40,6 @@
 - (void)sendAPNsTokenString;
 - (void)handlePushNotification:(NSDictionary*)notifDesc;
 
-- (UIViewController*)myRadioSetupViewController;
 - (void)goToMyRadioStatsFromViewController:(UIViewController*)sourceController;
 - (void)goToMyRadioPlaylistsFromViewController:(UIViewController*)sourceController;
 

@@ -37,9 +37,9 @@
 @synthesize sections;
 
 
-#define TYPE_MY_RADIO @"my_radio"
+#define TYPE_MYRADIO @"my_radio"
 #define TYPE_RADIO @"radio"
-#define TYPE_RADIO_LIST @"radioList"
+#define TYPE_RADIO_LIST @"radio_list"
 #define TYPE_USER @"user"
 #define TYPE_USER_LIST @"user_list"
 #define TYPE_WEB_PAGE @"web_page"
@@ -286,28 +286,72 @@
     NSString* type = [row objectForKey:@"type"];
 
     
-#define  @"radio"
-#define TYPE_RADIO_LIST @"radioList"
-#define TYPE_USER @"user"
-#define TYPE_USER_LIST @"user_list"
-#define TYPE_WEB_PAGE @"web_page"
-#define TYPE_RADIO_SEARCH @"radio_search"
-#define TYPE_FRIENDS @"friends"
-#define TYPE_NOTIFICATIONS @"notifications"
-#define TYPE_STATS @"stats"
-#define TYPE_SETTINGS @"settings"
-#define TYPE_PROGRAMMING @"programming"
-#define TYPE_LOGOUT @"logout"
-
-    
-    if ([type isEqualToString:TYPE_RADIO])
+    if ([type isEqualToString:TYPE_MYRADIO])
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MY_RADIO object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIO object:nil];
         return;
     }
     
-    else if (indexPath.section == SECTION_RADIOS)
+    if ([type isEqualToString:TYPE_RADIO])
     {
+        NSLog(@"TODO");
+        assert(0);
+        return;
+    }
+
+    if ([type isEqualToString:TYPE_RADIO_LIST])
+    {
+        return;
+    }
+    
+    if ([type isEqualToString:TYPE_USER])
+    {
+        return;
+    }
+    
+    if ([type isEqualToString:TYPE_USER_LIST])
+    {
+        return;
+    }
+    
+    if ([type isEqualToString:TYPE_WEB_PAGE])
+    {
+        return;
+    }
+    
+    if ([type isEqualToString:TYPE_RADIO_SEARCH])
+    {
+        return;
+    }
+    
+    if ([type isEqualToString:TYPE_NOTIFICATIONS])
+    {
+        return;
+    }
+    
+    if ([type isEqualToString:TYPE_STATS])
+    {
+        return;
+    }
+    
+    if ([type isEqualToString:TYPE_SETTINGS])
+    {
+        return;
+    }
+
+    if ([type isEqualToString:TYPE_PROGRAMMING])
+    {
+        return;
+    }
+
+    if ([type isEqualToString:TYPE_LOGOUT])
+    {
+        return;
+    }
+
+    
+    
+    
         if (indexPath.row == ROW_RADIOS_FAVORITES)
         {
             FavoritesViewController* view = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil title:NSLocalizedString(@"selection_tab_favorites", nil) tabIcon:@"tabIconTop.png"];

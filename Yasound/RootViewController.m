@@ -20,6 +20,7 @@
 #import "YasoundAppDelegate.h"
 #import "SongUploadManager.h"
 #import "NotificationCenterViewController.h"
+#import "CreateMyRadio.h"
 
 //#define FORCE_ROOTVIEW_RADIOS
 
@@ -66,7 +67,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorCommunicationServer:) name:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionChanged:) name:NOTIF_REACHABILITY_CHANGED object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadio:) name:NOTIF_GOTO_MY_RADIO object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateMyRadio:) name:NOTIF_GOTO_MYRADIO object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateMyRadio:) name:NOTIF_GOTO_CREATE_MYRADIO object:nil];
     
 
     
@@ -544,18 +546,30 @@
     Radio* r = [YasoundDataProvider main].radio;
     NSLog(@"go to my radio '%@' (%@)", r.name, r.ready);
 
-    UIViewController* controller = nil;
-    if ([r.ready boolValue])
+    if (![r.ready boolValue])
     {
-    controller = [[RadioViewController alloc] initWithRadio:r];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_CREATE_MYRADIO object:nil];
+        return;
     }
-    else
-    {
-    controller = [self myRadioSetupViewController];
-    }
-    [sourceController.navigationController pushViewController:controller animated:YES];
-    [controller release];
+        
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:r];
+    [(APPDELEGATE).navigationController pushViewController:view animated:YES];
+    [view release];
 }
+
+
+
+- (void*)onNotifGotoCreateMyRadio
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"skipRadioCreationSendToSelection"];
+    [[NSUserDefaults standardUserDefaults] synchronize]; 
+    
+    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:NO radio:[YasoundDataProvider main].radio];
+    [(APPDELEGATE).navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
+
 
 
 #pragma mark - Background Audio Playing

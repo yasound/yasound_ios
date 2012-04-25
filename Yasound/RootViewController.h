@@ -20,7 +20,8 @@
 
 #define NOTIF_PROGAMMING_SONG_ADDED @"NOTIF_SongAdded"
 
-#define NOTIF_GOTO_MY_RADIO @"NOTIF_goto_myRadio";
+#define NOTIF_GOTO_MYRADIO @"NOTIF_goto_myRadio"
+#define NOTIF_GOTO_CREATE_MYRADIO @"NOTIF_GOTO_CREATE_MYRADIO"
 
 
 @interface RootViewController : TestflightViewController
