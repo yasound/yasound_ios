@@ -180,11 +180,11 @@ static YasoundDataCache* _main = nil;
     NSURL* url = op.object;
     
     // get/create dico for request
-    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:url];
+    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:[url absoluteString]];
     if (requestCache == nil)
     {
         requestCache = [[NSMutableDictionary alloc] init];
-        [_cacheRadios setObject:requestCache forKey:url];
+        [_cacheRadios setObject:requestCache forKey:[url absoluteString]];
     }
     
     // get/create dico for request/genre
@@ -250,7 +250,7 @@ static YasoundDataCache* _main = nil;
 //
 - (void)clearRadios:(NSString*)REQUEST
 {
-    NSLog(@"YasoundDataCache::clearRadios");
+    NSLog(@"YasoundDataCache::clearRadios for ref '%@'", REQUEST);
     [_cacheRadios removeObjectForKey:REQUEST];
 }
 
