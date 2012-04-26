@@ -125,6 +125,8 @@ enum SECTION_MISC_ENUM
 // #FIXME: MatTest: test menu description request (to delete)
 - (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
 {
+    id userData = [req userData];
+    
     NSArray* menuDesc = [req responseArray];
     
     int s = 0;
