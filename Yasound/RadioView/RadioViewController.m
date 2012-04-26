@@ -1766,10 +1766,11 @@ static Song* _gNowPlayingSong = nil;
         nbFavorites--;
     
     _favoritesLabel.text = [NSString stringWithFormat:@"%d", nbFavorites];
-
     
     // send online request
-    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoritesRadioReceived:)];
+    NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
+    NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
+    [[YasoundDataProvider main] radiosWithUrl:url withGenre:nil withTarget:self action:@selector(onFavoriteUpdate:) userData:nil];
 }
 
 - (void)onFavoritesRadioReceived:(NSArray*)radios
