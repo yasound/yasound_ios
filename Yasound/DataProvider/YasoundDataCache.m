@@ -140,51 +140,55 @@ static YasoundDataCache* _main = nil;
 // send a request to server, to update local cache
 //
 
-- (void)requestRadiosUpdate:(NSString*)REQUEST withGenre:(NSString*)genre target:(id)target action:(SEL)action
+- (void)requestRadiosUpdate:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)action
+//- (void)requestRadiosWithUrl:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)selector
 {
     YasoundDataCachePendingOp* op = [[YasoundDataCachePendingOp alloc] init];
     [op retain];
-    op.object = REQUEST;
+    op.object = url;
     op.info = genre;
     op.target = target;
     op.action = action;
+
+    [[YasoundDataProvider main] radiosWithUrl:[url absoluteString] withGenre:genre withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
+    return;
     
 
-    if ([op.object isEqualToString:REQUEST_RADIOS_ALL])
-    {
-        [[YasoundDataProvider main] radiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
-        return;
-    }
-
-    if ([op.object isEqualToString:REQUEST_RADIOS_TOP])
-    {
-        [[YasoundDataProvider main] topRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:)  userData:op];
-        return;
-    }
-
-    if ([op.object isEqualToString:REQUEST_RADIOS_SELECTION])
-    {
-        [[YasoundDataProvider main] selectedRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
-        return;
-    }
-
-    if ([op.object isEqualToString:REQUEST_RADIOS_NEW])
-    {
-        [[YasoundDataProvider main] newRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
-        return;
-    }
-
-    if ([op.object isEqualToString:REQUEST_RADIOS_FRIENDS])
-    {
-        [[YasoundDataProvider main] friendsRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
-        return;
-    }
-
-    if ([op.object isEqualToString:REQUEST_RADIOS_FAVORITES])
-    {
-        [[YasoundDataProvider main] favoriteRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
-        return;
-    }
+//    if ([op.object isEqualToString:REQUEST_RADIOS_ALL])
+//    {
+//        [[YasoundDataProvider main] radiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
+//        return;
+//    }
+//
+//    if ([op.object isEqualToString:REQUEST_RADIOS_TOP])
+//    {
+//        [[YasoundDataProvider main] topRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:)  userData:op];
+//        return;
+//    }
+//
+//    if ([op.object isEqualToString:REQUEST_RADIOS_SELECTION])
+//    {
+//        [[YasoundDataProvider main] selectedRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
+//        return;
+//    }
+//
+//    if ([op.object isEqualToString:REQUEST_RADIOS_NEW])
+//    {
+//        [[YasoundDataProvider main] newRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
+//        return;
+//    }
+//
+//    if ([op.object isEqualToString:REQUEST_RADIOS_FRIENDS])
+//    {
+//        [[YasoundDataProvider main] friendsRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
+//        return;
+//    }
+//
+//    if ([op.object isEqualToString:REQUEST_RADIOS_FAVORITES])
+//    {
+//        [[YasoundDataProvider main] favoriteRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
+//        return;
+//    }
          
 }
 
@@ -215,14 +219,17 @@ static YasoundDataCache* _main = nil;
     NSDate* date = [NSDate date];
     NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RADIOS];
     
-    NSString* RequestId = op.object;
+//    NSString* RequestId = op.object;
+    NSURL* url = op.object;
     
     // get/create dico for request
-    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:RequestId];
+//    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:RequestId];
+    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:url];
     if (requestCache == nil)
     {
         requestCache = [[NSMutableDictionary alloc] init];
-        [_cacheRadios setObject:requestCache forKey:RequestId];
+//        [_cacheRadios setObject:requestCache forKey:RequestId];
+        [_cacheRadios setObject:requestCache forKey:url];
     }
     
     // get/create dico for request/genre
@@ -262,22 +269,42 @@ static YasoundDataCache* _main = nil;
 //
 // - (void)selector:(NSArray*)data withInfo:(NSDictionnary*)info
 //
-- (void)requestRadios:(NSString*)REQUEST withGenre:(NSString*)genre target:(id)target action:(SEL)selector
+- (void)requestRadiosWithUrl:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)selector;
 {
-    NSArray* data = [self cachedRadioForKey:REQUEST withGenre:genre];
+    NSArray* data = [self cachedRadioForKey:url withGenre:genre];
     
     // there is no cached data yet for that request, OR it's expired
     // => request update from server
     if (data == nil)
     {
-        [self requestRadiosUpdate:REQUEST withGenre:genre target:target action:selector];
+        [self requestRadiosUpdate:url withGenre:genre target:target action:selector];
         return;
     }
-
+    
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
     //NSLog(@"YasoundDataCache requestRadios : return local cached data");
     [target performSelector:selector withObject:data withObject:infoDico];
+}
+
+- (void)requestRadios:(NSString*)REQUEST withGenre:(NSString*)genre target:(id)target action:(SEL)selector
+{
+    //TODO
+    //
+//    NSArray* data = [self cachedRadioForKey:REQUEST withGenre:genre];
+//    
+//    // there is no cached data yet for that request, OR it's expired
+//    // => request update from server
+//    if (data == nil)
+//    {
+//        [self requestRadiosUpdate:REQUEST withGenre:genre target:target action:selector];
+//        return;
+//    }
+//
+//    // we got the cached data. Return to client, now.
+//    NSDictionary* infoDico = nil;
+//    //NSLog(@"YasoundDataCache requestRadios : return local cached data");
+//    [target performSelector:selector withObject:data withObject:infoDico];
 }
 
 

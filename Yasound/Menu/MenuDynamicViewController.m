@@ -255,6 +255,9 @@
     
     NSString* type = [row objectForKey:@"type"];
     
+    NSString* imageRef = nil;
+    NSError* error = nil;
+    BundleStylesheet* sheet = nil;
     
     if ([type isEqualToString:TYPE_NOTIFICATIONS])
     {
@@ -265,7 +268,21 @@
         [_notificationsCell setUnreadCount:unread];
 
         _notificationsCell.name.text = [row objectForKey:@"name"];
-        [_notificationsCell.icon setUrl:[NSURL URLWithString:[row objectForKey:@"image"]]];
+        
+        imageRef = [row objectForKey:@"image"];
+        if ((imageRef == nil) || (imageRef.length == 0))
+        {
+            [_notificationsCell.icon setUrl:[NSURL URLWithString:@""]];
+        }
+        else
+        {
+            sheet = [[Theme theme] stylesheetForKey:imageRef retainStylesheet:YES overwriteStylesheet:NO error:&error];
+            
+            if (error == nil)
+                [_notificationsCell.icon setImage:[sheet image]];
+            else
+                [_notificationsCell.icon setUrl:[NSURL URLWithString:imageRef]];
+        }
 
         return _notificationsCell;
         
@@ -279,8 +296,22 @@
             cell = [[[MenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];    
 
         cell.name.text = [row objectForKey:@"name"];
-        [cell.icon setUrl:[NSURL URLWithString:[row objectForKey:@"image"]]];
-        
+
+        imageRef = [row objectForKey:@"image"];
+        if ((imageRef == nil) || (imageRef.length == 0))
+        {
+            [cell.icon setUrl:[NSURL URLWithString:@""]];
+        }
+        else
+        {
+            sheet = [[Theme theme] stylesheetForKey:imageRef retainStylesheet:YES overwriteStylesheet:NO error:&error];
+            
+            if (error == nil)
+                [cell.icon setImage:[sheet image]];
+            else
+                [cell.icon setUrl:[NSURL URLWithString:imageRef]];
+        }
+
         return cell;
     }
 }

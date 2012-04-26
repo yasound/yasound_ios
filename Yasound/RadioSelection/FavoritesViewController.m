@@ -18,17 +18,16 @@
 
 @implementation FavoritesViewController
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon
+@synthesize url;
+
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)aUrl
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-//        UIImage* tabImage = [UIImage imageNamed:tabIcon];
-//        UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
-//        self.tabBarItem = theItem;
-//        [theItem release]; 
-        
         _radios = nil;
+        
+        self.url = aUrl;
     }
     return self;
 }
@@ -71,7 +70,7 @@
         _nowPlayingButton.enabled = NO;
     
     [[ActivityModelessSpinner main] addRef];
-    [[YasoundDataCache main] requestRadios:REQUEST_RADIOS_FAVORITES withGenre:nil target:self action:@selector(receiveRadios:info:)];
+    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:nil target:self action:@selector(receiveRadios:info:)];
 }
 
 - (void)viewDidDisappear:(BOOL)animated

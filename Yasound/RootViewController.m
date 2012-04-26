@@ -270,7 +270,7 @@
 {
   if (_menuView == nil)
   {
-    _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+    _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
     [_menuView retain];
     [self.navigationController pushViewController:_menuView animated:NO];
   }
@@ -300,7 +300,7 @@
 
     if (_menuView == nil)
     {
-        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
         [_menuView retain];
         [self.navigationController pushViewController:_menuView animated:animatePushMenu];
     }
@@ -366,7 +366,7 @@
   
   [self.navigationController popToRootViewControllerAnimated:NO];
   
-  _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+  _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
   [_menuView retain];
   [self.navigationController pushViewController:_menuView animated:YES];
 }
@@ -516,7 +516,7 @@
     
     if (_menuView == nil)
     {
-        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
         [_menuView retain];
         [self.navigationController pushViewController:_menuView animated:NO];
     }
@@ -531,7 +531,7 @@
     }
     else
     {
-        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
         [_menuView retain];
         [self.navigationController pushViewController:_menuView animated:NO];
     }

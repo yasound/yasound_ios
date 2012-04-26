@@ -2,33 +2,33 @@
                   {
                    "name": "Ma radio",
                    "entries":[
-                              { "name": "Ma radio", "image": "", "type": "my_radio"}
+                              { "name": "Ma radio", "image": "IconMyRadio", "type": "my_radio"}
                               ]
                    },
                   {
                    "name": "Radios",
                    "entries":[
-                              { "name": "Mes amis", "image": "", "type": "friends"},
-                              { "name": "Mes favoris", "image": "", "type": "radio_list", "params": {"url":"/api/v1/favorite_radio"}},
-                              { "name": "Sélection", "image": "", "type": "radio_list", "params": {"url":"/api/v1/selected_radio"}},
-                              { "name": "Top", "image": "", "type": "radio_list", "params": {"url":"/api/v1/top_radio"}},
-                              { "name": "Recherche", "image": "", "type": "search_radio"}
+                              { "name": "Mes amis", "image": "IconRadiosFriends", "type": "friends"},
+                              { "name": "Mes favoris", "image": "IconRadiosFavorites", "type": "radio_list", "params": {"url":"/api/v1/favorite_radio"}},
+                              { "name": "Sélection", "image": "IconRadiosSelection", "type": "radio_list", "params": {"url":"/api/v1/selected_radio"}},
+                              { "name": "Top", "image": "IconLeaderboard", "type": "radio_list", "params": {"url":"/api/v1/top_radio"}},
+                              { "name": "Recherche", "image": "IconRadiosSearch", "type": "search_radio"}
                               ]
                    },
                    {
                    "name": "Moi",
                    "entries":[
-                              { "name": "Mes notifications", "image": "", "type": "notifications"},
-                              { "name": "Mes statistiques", "image": "", "type": "stats"},
-                              { "name": "Ma programmation", "image": "", "type": "programming"},
-                              { "name": "Paramètres", "image": "", "type": "settings"}
+                              { "name": "Mes notifications", "image": "IconMeNotifs", "type": "notifications"},
+                              { "name": "Mes statistiques", "image": "IconMeStats", "type": "stats"},
+                              { "name": "Ma programmation", "image": "IconMePlaylists", "type": "programming"},
+                              { "name": "Paramètres", "image": "IconMeSettings", "type": "settings"}
                               ]
                    },
                    {
                    "name": "Divers",
                    "entries":[
-                              { "name": "Conditions d'utilisation", "image": "", "type": "web_page", "params":{"url":"legal/eula.html"}},
-                              { "name": "Se déconnecter", "image": "", "type": "logout"}
+                              { "name": "Conditions d'utilisation", "image": "IconMiscLegal", "type": "web_page", "params":{"url":"legal/eula.html"}},
+                              { "name": "Se déconnecter", "image": "IconMiscLogout", "type": "logout"}
                               ]
                    }
 ]
