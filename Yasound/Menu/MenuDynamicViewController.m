@@ -170,6 +170,7 @@
     {
         NSLog(@"DynamicMenu parsing error");
         NSLog(@"%@", self.sections);
+        assert(0);
         return 0;
     }    
     
@@ -279,6 +280,8 @@
 
         cell.name.text = [row objectForKey:@"name"];
         [cell.icon setUrl:[NSURL URLWithString:[row objectForKey:@"image"]]];
+        
+        return cell;
     }
 }
 
