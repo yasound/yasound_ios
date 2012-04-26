@@ -38,6 +38,9 @@
 
 @implementation RootViewController
 
+
+@synthesize user;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -196,53 +199,14 @@
     {
         [[YasoundSessionManager main] reloadUserData:user];
         
+        self.user = user;
+        
         // login the other associated accounts as well
         [[YasoundSessionManager main] associateAccountsAutomatic];
-
-        if (APPDELEGATE.mustGoToNotificationCenter)
-        {
-            [self goToNotificationCenter];
-            [APPDELEGATE setMustGoToNotificationCenter:NO];
-        }
-        else
-        {
-            NSNumber* radioId = [[NSUserDefaults standardUserDefaults] objectForKey:@"NowPlaying"];
-
-            if (radioId == nil)
-            {
-              Radio* myRadio = user.own_radio;
-              if (myRadio && myRadio.ready)
-                [self launchRadio:myRadio];
-              else
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_MENU object:nil];
-            }
-            else
-                [self launchRadio:radioId];
-      }
-      
-      NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
-      if (lastUserID && [lastUserID intValue] == [user.id intValue])
-      {
-          [[SongUploadManager main] importUploads];
-
-          if ([YasoundReachability main].networkStatus == kReachableViaWiFi)
-              // restart song uploads not completed on last application shutdown
-              [[SongUploadManager main] resumeUploads];
-          
-          else if ([SongUploadManager main].items.count > 0)
-          {
-              UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_restart_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_restart_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-              [av show];
-              [av release];  
-          }
-      }
-      else
-      {
-        [[SongUploadManager main] clearStoredUpdloads];
-      }
-      
-      [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:@"LastConnectedUserID"];
-      [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        // get the app menu from the server, before you can proceed
+        [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+    
     }
     else
     {
@@ -269,6 +233,79 @@
         [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
     }
 }
+
+
+
+// you receive the current menu description from the server
+- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
+{
+    NSString* menuDesc = req.responseString;
+
+    // be sure to store it in the cache
+    [[YasoundDataCache main] setMenu:menuDesc];
+    
+    
+    [self enterTheAppAfterProperLogin];
+}
+
+
+
+// that's what I call a significant method name
+- (void)enterTheAppAfterProperLogin
+{
+    if (APPDELEGATE.mustGoToNotificationCenter)
+    {
+        [self goToNotificationCenter];
+        [APPDELEGATE setMustGoToNotificationCenter:NO];
+    }
+    else
+    {
+        NSNumber* radioId = [[NSUserDefaults standardUserDefaults] objectForKey:@"NowPlaying"];
+        
+        if (radioId == nil)
+        {
+            Radio* myRadio = self.user.own_radio;
+            if (myRadio && myRadio.ready)
+                [self launchRadio:myRadio];
+            else
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_MENU object:nil];
+        }
+        else
+            [self launchRadio:radioId];
+    }
+    
+    NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
+    if (lastUserID && [lastUserID intValue] == [self.user.id intValue])
+    {
+        [[SongUploadManager main] importUploads];
+        
+        if ([YasoundReachability main].networkStatus == kReachableViaWiFi)
+            // restart song uploads not completed on last application shutdown
+            [[SongUploadManager main] resumeUploads];
+        
+        else if ([SongUploadManager main].items.count > 0)
+        {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_restart_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_restart_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];  
+        }
+    }
+    else
+    {
+        [[SongUploadManager main] clearStoredUpdloads];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:self.user.id forKey:@"LastConnectedUserID"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+
+
+
+
+
+
 
 - (void)logoutReturned
 {

@@ -16,7 +16,7 @@
 #import "CreateMyRadio.h"
 #import "RegExp.h"
 #import "SignupViewController.h"
-
+#import "YasoundDataCache.h"
 
 @implementation YasoundLoginViewController
 
@@ -179,6 +179,7 @@
     
     NSLog(@"login returned : %@ %@", user, info);
     
+    
     if (user == nil)
     {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -203,6 +204,28 @@
     [[YasoundSessionManager main] associateAccountsAutomatic];
     
     
+    // get the app menu from the server, before you can proceed
+    [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+}
+
+
+
+// you receive the current menu description from the server
+- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
+{
+    NSString* menuDesc = req.responseString;
+    
+    // be sure to store it in the cache
+    [[YasoundDataCache main] setMenu:menuDesc];
+    
+    
+    [self enterTheAppAfterProperLogin];
+}
+
+
+
+- (void)enterTheAppAfterProperLogin
+{
     // call root to launch the Radio
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
 }

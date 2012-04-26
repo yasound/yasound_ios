@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
 #import "UnderlinedButton.h"
+#import "User.h"
+
+
 
 @interface LoginViewController : TestflightViewController
 {
@@ -26,6 +29,8 @@
 
     IBOutlet UnderlinedButton* _signupButton;
 }
+
+@property (nonatomic, retain) User* user;
 
 
 - (IBAction)onFacebook:(id)sender;

@@ -15,7 +15,7 @@
 #import "SongUploadManager.h"
 #import "CreateMyRadio.h"
 #import "RegExp.h"
-
+#import "YasoundDataCache.h"
 
 
 @implementation SignupViewController
@@ -165,7 +165,30 @@
     // store info for automatic login, for the next sessions
     [[YasoundSessionManager main] registerForYasound:_email withPword:_pword];
     
-    // call root to launch the Radio
+    // get the app menu from the server, before you can proceed
+    [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+ 
+}
+
+
+
+
+
+// you receive the current menu description from the server
+- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
+{
+    NSString* menuDesc = req.responseString;
+    
+    // be sure to store it in the cache
+    [[YasoundDataCache main] setMenu:menuDesc];
+    
+    
+    [self enterTheAppAfterProperLogin];
+}
+
+- (void)enterTheAppAfterProperLogin
+{
+   // call root to launch the Radio
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
 }
 

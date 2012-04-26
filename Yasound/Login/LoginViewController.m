@@ -16,9 +16,12 @@
 #import "CreateMyRadio.h"
 #import "YasoundLoginViewController.h"
 #import "SignupViewController.h"
-
+#import "YasoundDataCache.h"
 
 @implementation LoginViewController
+
+@synthesize user;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -167,41 +170,15 @@
         
         // login the other associated accounts as well
         [[YasoundSessionManager main] associateAccountsAutomatic];
+        
+        
+        self.user = user; 
+        
+        // get the app menu from the server, before you can proceed
+        [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
 
-        // check if local account has been setted (<=> radio full configured)
-        if ([[YasoundSessionManager main] getAccount:user])
-            // call root to launch the Radio
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
-        else
-        {
-            [[YasoundSessionManager main] addAccount:user];
-            
-            // ask for radio contents to the provider, in order to launch the radio configuration
-            [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
-        }
-        
-        NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
-        if (lastUserID && [lastUserID intValue] == [user.id intValue])
-        {
-            [[SongUploadManager main] importUploads];
-            
-            if ([YasoundReachability main].networkStatus == kReachableViaWiFi)
-                // restart song uploads not completed on last application shutdown
-                [[SongUploadManager main] resumeUploads];
-            else if ([SongUploadManager main].items.count > 0)
-            {
-                UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_restart_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_restart_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [av show];
-                [av release];  
-            }
-        }
-        else
-        {
-            [[SongUploadManager main] clearStoredUpdloads];
-        }
-        
-        [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:@"LastConnectedUserID"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+
+
     }
     else
     {
@@ -239,6 +216,59 @@
         
         
     }
+}
+
+
+
+// you receive the current menu description from the server
+- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
+{
+    NSString* menuDesc = req.responseString;
+    
+    // be sure to store it in the cache
+    [[YasoundDataCache main] setMenu:menuDesc];
+    
+    
+    [self enterTheAppAfterProperLogin];
+}
+
+
+- (void)enterAppAfterProperLogin
+{
+    // check if local account has been setted (<=> radio full configured)
+    if ([[YasoundSessionManager main] getAccount:self.user])
+        // call root to launch the Radio
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
+    else
+    {
+        [[YasoundSessionManager main] addAccount:self.user];
+        
+        // ask for radio contents to the provider, in order to launch the radio configuration
+        [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
+    }
+    
+    NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
+    if (lastUserID && [lastUserID intValue] == [self.user.id intValue])
+    {
+        [[SongUploadManager main] importUploads];
+        
+        if ([YasoundReachability main].networkStatus == kReachableViaWiFi)
+            // restart song uploads not completed on last application shutdown
+            [[SongUploadManager main] resumeUploads];
+        else if ([SongUploadManager main].items.count > 0)
+        {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_restart_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_restart_WIFI_message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];  
+        }
+    }
+    else
+    {
+        [[SongUploadManager main] clearStoredUpdloads];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:@"LastConnectedUserID"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 

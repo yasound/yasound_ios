@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "MenuDynamicViewController.h"
 #import "TestflightViewController.h"
+#import "User.h"
+
 
 #define NOTIF_PUSH_RADIO @"NOTIF_PushRadio"
 #define NOTIF_CANCEL_WIZARD @"NOTIF_CancelWizard"
@@ -31,6 +33,8 @@
     MenuDynamicViewController* _menuView;
     UIAlertView* _alertWifiInterrupted;
 }
+
+@property (nonatomic, retain) User* user;
 
 
 @end

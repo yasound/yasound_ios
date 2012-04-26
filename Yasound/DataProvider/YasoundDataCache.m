@@ -660,6 +660,8 @@ static UIImage* gDummyImage = nil;
 - (void)setMenu:(NSString*)JSONdescription
 {
     NSArray* descr = [JSONdescription JSONValue];
+    
+    NSLog(@"YasoundDataCache::setMenu %@", descr);
 
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:descr forKey:@"menuDescription"];
