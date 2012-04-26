@@ -1,21 +1,26 @@
 //
-//  LegalViewController.m
+//  WebPageViewController.m
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 21/12/11.
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
-#import "LegalViewController.h"
+#import "WebPageViewController.h"
 #import "YasoundAppDelegate.h"
 
-@implementation LegalViewController
+@implementation WebPageViewController
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wiz
+@synthesize url;
+
+
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil withUrl:(NSURL*)url andTitle:(NSString*)title
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
+        self.url = url;
+        self.title = title;
     }
     
     return self;
@@ -47,7 +52,7 @@
 {
     [super viewDidLoad];
 
-    _titleLabel.text = NSLocalizedString(@"LegalView_title", nil);
+    _titleLabel.text = self.title;
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
     _webview.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];

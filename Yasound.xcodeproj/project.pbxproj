@@ -180,7 +180,6 @@
 		40B40990152EFC630050D334 /* TwitterSigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97A514AB7DD100D54631 /* TwitterSigninViewController.m */; };
 		40B40991152EFC630050D334 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97D614AB820500D54631 /* SFHFKeychainUtils.m */; };
 		40B40992152EFC630050D334 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
-		40B40993152EFC630050D334 /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
 		40B40994152EFC630050D334 /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
 		40B40995152EFC630050D334 /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798E14AE74630011AADD /* ChartView.m */; };
 		40B40996152EFC630050D334 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA799314B1AE520011AADD /* StatsViewController.m */; };
@@ -330,7 +329,6 @@
 		40B40A33152EFC630050D334 /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
 		40B40A34152EFC630050D334 /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		40B40A35152EFC630050D334 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
-		40B40A36152EFC630050D334 /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
 		40B40A37152EFC630050D334 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		40B40A38152EFC630050D334 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		40B40A39152EFC630050D334 /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
@@ -779,7 +777,6 @@
 		BC3FA6A414E93B660055AB4A /* TwitterSigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97A514AB7DD100D54631 /* TwitterSigninViewController.m */; };
 		BC3FA6A514E93B660055AB4A /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97D614AB820500D54631 /* SFHFKeychainUtils.m */; };
 		BC3FA6A814E93B660055AB4A /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
-		BC3FA6A914E93B660055AB4A /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
 		BC3FA6AA14E93B660055AB4A /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
 		BC3FA6AB14E93B660055AB4A /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798E14AE74630011AADD /* ChartView.m */; };
 		BC3FA6AC14E93B660055AB4A /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA799314B1AE520011AADD /* StatsViewController.m */; };
@@ -890,7 +887,6 @@
 		BC3FA72F14E93B660055AB4A /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
 		BC3FA73014E93B660055AB4A /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		BC3FA73314E93B660055AB4A /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
-		BC3FA73414E93B660055AB4A /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
 		BC3FA73514E93B660055AB4A /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BC3FA73814E93B660055AB4A /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC3FA73914E93B660055AB4A /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
@@ -1253,7 +1249,6 @@
 		BC56F4B2152486AF005D1B40 /* TwitterSigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97A514AB7DD100D54631 /* TwitterSigninViewController.m */; };
 		BC56F4B3152486AF005D1B40 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97D614AB820500D54631 /* SFHFKeychainUtils.m */; };
 		BC56F4B4152486AF005D1B40 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
-		BC56F4B5152486AF005D1B40 /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
 		BC56F4B6152486AF005D1B40 /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
 		BC56F4B7152486AF005D1B40 /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798E14AE74630011AADD /* ChartView.m */; };
 		BC56F4B8152486AF005D1B40 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA799314B1AE520011AADD /* StatsViewController.m */; };
@@ -1390,7 +1385,6 @@
 		BC56F542152486AF005D1B40 /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
 		BC56F543152486AF005D1B40 /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		BC56F544152486AF005D1B40 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
-		BC56F545152486AF005D1B40 /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
 		BC56F546152486AF005D1B40 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BC56F547152486AF005D1B40 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC56F548152486AF005D1B40 /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
@@ -1781,7 +1775,6 @@
 		BC93CD1D14CF3F7A007C723F /* TwitterSigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97A514AB7DD100D54631 /* TwitterSigninViewController.m */; };
 		BC93CD1E14CF3F7A007C723F /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97D614AB820500D54631 /* SFHFKeychainUtils.m */; };
 		BC93CD2114CF3F7A007C723F /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC980E14ACB44300D54631 /* SignupViewController.m */; };
-		BC93CD2214CF3F7A007C723F /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
 		BC93CD2314CF3F7A007C723F /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
 		BC93CD2414CF3F7A007C723F /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798E14AE74630011AADD /* ChartView.m */; };
 		BC93CD2514CF3F7A007C723F /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA799314B1AE520011AADD /* StatsViewController.m */; };
@@ -1853,7 +1846,6 @@
 		BC93CDB114CF3F7A007C723F /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
 		BC93CDB214CF3F7A007C723F /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		BC93CDB514CF3F7A007C723F /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC980F14ACB44300D54631 /* SignupViewController.xib */; };
-		BC93CDC014CF3F7A007C723F /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
 		BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BC93CDD614CF3F7A007C723F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC93CDD714CF3F7A007C723F /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
@@ -1869,6 +1861,20 @@
 		BC9522A414B70FE9001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A514B70FF2001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A614B70FF7001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
+		BC9601B8154997B90003AC7E /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9601B6154997B90003AC7E /* WebPageViewController.m */; };
+		BC9601B9154997B90003AC7E /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9601B6154997B90003AC7E /* WebPageViewController.m */; };
+		BC9601BA154997B90003AC7E /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9601B6154997B90003AC7E /* WebPageViewController.m */; };
+		BC9601BB154997B90003AC7E /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9601B6154997B90003AC7E /* WebPageViewController.m */; };
+		BC9601BC154997B90003AC7E /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9601B6154997B90003AC7E /* WebPageViewController.m */; };
+		BC9601BD154997B90003AC7E /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9601B6154997B90003AC7E /* WebPageViewController.m */; };
+		BC9601BE154997B90003AC7E /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9601B6154997B90003AC7E /* WebPageViewController.m */; };
+		BC9601BF154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
+		BC9601C0154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
+		BC9601C1154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
+		BC9601C2154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
+		BC9601C3154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
+		BC9601C4154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
+		BC9601C5154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
 		BC9BE8271536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
 		BC9BE8281536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
 		BC9BE8291536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
@@ -2365,12 +2371,6 @@
 		BCC6AD6C14E88194001AC34B /* pictoSubscribers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD6614E88194001AC34B /* pictoSubscribers@2x.png */; };
 		BCC6AD6D14E88194001AC34B /* pictoSubscribers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD6614E88194001AC34B /* pictoSubscribers@2x.png */; };
 		BCC6AD6E14E88194001AC34B /* pictoSubscribers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD6614E88194001AC34B /* pictoSubscribers@2x.png */; };
-		BCCA790714AE14090011AADD /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
-		BCCA790814AE14090011AADD /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
-		BCCA790914AE14090011AADD /* LegalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA790514AE14090011AADD /* LegalViewController.m */; };
-		BCCA790A14AE14090011AADD /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
-		BCCA790B14AE14090011AADD /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
-		BCCA790C14AE14090011AADD /* LegalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA790614AE14090011AADD /* LegalViewController.xib */; };
 		BCCA798A14AE24D80011AADD /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
 		BCCA798B14AE24D80011AADD /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
 		BCCA798C14AE24D80011AADD /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
@@ -3209,6 +3209,9 @@
 		BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StyleSelectorViewController.xib; sourceTree = "<group>"; };
 		BC93CDEA14CF3F7A007C723F /* Yasound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yasound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC95229914B6F787001E1ACE /* EasyTracker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EasyTracker.plist; sourceTree = "<group>"; };
+		BC9601B5154997B90003AC7E /* WebPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebPageViewController.h; path = Settings/WebPageViewController.h; sourceTree = "<group>"; };
+		BC9601B6154997B90003AC7E /* WebPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebPageViewController.m; path = Settings/WebPageViewController.m; sourceTree = "<group>"; };
+		BC9601B7154997B90003AC7E /* WebPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebPageViewController.xib; path = Settings/WebPageViewController.xib; sourceTree = "<group>"; };
 		BC9BE8231536C8B500B01AD2 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		BC9BE8261536C8B500B01AD2 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		BC9F4143147E8A5F00D417EF /* BundleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleFileManager.h; sourceTree = "<group>"; };
@@ -3354,9 +3357,6 @@
 		BCC6AD5414E8800F001AC34B /* iconSubscribers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconSubscribers@2x.png"; sourceTree = "<group>"; };
 		BCC6AD6514E88194001AC34B /* pictoSubscribers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pictoSubscribers.png; sourceTree = "<group>"; };
 		BCC6AD6614E88194001AC34B /* pictoSubscribers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pictoSubscribers@2x.png"; sourceTree = "<group>"; };
-		BCCA790414AE14080011AADD /* LegalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LegalViewController.h; path = Settings/LegalViewController.h; sourceTree = "<group>"; };
-		BCCA790514AE14090011AADD /* LegalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LegalViewController.m; path = Settings/LegalViewController.m; sourceTree = "<group>"; };
-		BCCA790614AE14090011AADD /* LegalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LegalViewController.xib; path = Settings/LegalViewController.xib; sourceTree = "<group>"; };
 		BCCA798714AE24D80011AADD /* S7GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = S7GraphView.h; path = ThirdParties/s7graphview/lib/S7GraphView.h; sourceTree = "<group>"; };
 		BCCA798814AE24D80011AADD /* S7GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = S7GraphView.m; path = ThirdParties/s7graphview/lib/S7GraphView.m; sourceTree = "<group>"; };
 		BCCA798914AE24D80011AADD /* S7Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = S7Macros.h; path = ThirdParties/s7graphview/lib/S7Macros.h; sourceTree = "<group>"; };
@@ -4449,9 +4449,9 @@
 				BCBAB4A014A240B300CF922A /* PlaylistsViewController.h */,
 				BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */,
 				BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */,
-				BCCA790414AE14080011AADD /* LegalViewController.h */,
-				BCCA790514AE14090011AADD /* LegalViewController.m */,
-				BCCA790614AE14090011AADD /* LegalViewController.xib */,
+				BC9601B5154997B90003AC7E /* WebPageViewController.h */,
+				BC9601B6154997B90003AC7E /* WebPageViewController.m */,
+				BC9601B7154997B90003AC7E /* WebPageViewController.xib */,
 				BC178DA714C5E99800B18420 /* CreateMyRadio.h */,
 				BC178DA814C5E99800B18420 /* CreateMyRadio.m */,
 				BC178DA914C5E99800B18420 /* CreateMyRadio.xib */,
@@ -5282,7 +5282,6 @@
 				40B40A33152EFC630050D334 /* TwitterAccountsViewController.xib in Resources */,
 				40B40A34152EFC630050D334 /* TwitterSigninViewController.xib in Resources */,
 				40B40A35152EFC630050D334 /* SignupViewController.xib in Resources */,
-				40B40A36152EFC630050D334 /* LegalViewController.xib in Resources */,
 				40B40A37152EFC630050D334 /* StatsViewController.xib in Resources */,
 				40B40A38152EFC630050D334 /* RootViewController.xib in Resources */,
 				40B40A39152EFC630050D334 /* EasyTracker.plist in Resources */,
@@ -5454,6 +5453,7 @@
 				BCE66A941548599A0094B4D0 /* MenuDynamicViewController.xib in Resources */,
 				BCE66B3915494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B4215494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
+				BC9601C5154997B90003AC7E /* WebPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5489,7 +5489,6 @@
 				BC3FA72F14E93B660055AB4A /* TwitterAccountsViewController.xib in Resources */,
 				BC3FA73014E93B660055AB4A /* TwitterSigninViewController.xib in Resources */,
 				BC3FA73314E93B660055AB4A /* SignupViewController.xib in Resources */,
-				BC3FA73414E93B660055AB4A /* LegalViewController.xib in Resources */,
 				BC3FA73514E93B660055AB4A /* StatsViewController.xib in Resources */,
 				BC3FA73814E93B660055AB4A /* RootViewController.xib in Resources */,
 				BC3FA73914E93B660055AB4A /* EasyTracker.plist in Resources */,
@@ -5657,6 +5656,7 @@
 				BCE66A931548599A0094B4D0 /* MenuDynamicViewController.xib in Resources */,
 				BCE66B3815494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B4115494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
+				BC9601C4154997B90003AC7E /* WebPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5692,7 +5692,6 @@
 				BC56F542152486AF005D1B40 /* TwitterAccountsViewController.xib in Resources */,
 				BC56F543152486AF005D1B40 /* TwitterSigninViewController.xib in Resources */,
 				BC56F544152486AF005D1B40 /* SignupViewController.xib in Resources */,
-				BC56F545152486AF005D1B40 /* LegalViewController.xib in Resources */,
 				BC56F546152486AF005D1B40 /* StatsViewController.xib in Resources */,
 				BC56F547152486AF005D1B40 /* RootViewController.xib in Resources */,
 				BC56F548152486AF005D1B40 /* EasyTracker.plist in Resources */,
@@ -5864,6 +5863,7 @@
 				BCE66A901548599A0094B4D0 /* MenuDynamicViewController.xib in Resources */,
 				BCE66B3515494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B3E15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
+				BC9601C1154997B90003AC7E /* WebPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5899,7 +5899,6 @@
 				BCDC97BA14AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C614AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCDC981414ACB44300D54631 /* SignupViewController.xib in Resources */,
-				BCCA790B14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799914B1AE520011AADD /* StatsViewController.xib in Resources */,
 				BC828ADA14B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229B14B6F787001E1ACE /* EasyTracker.plist in Resources */,
@@ -6071,6 +6070,7 @@
 				BCE66A8F1548599A0094B4D0 /* MenuDynamicViewController.xib in Resources */,
 				BCE66B3415494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B3D15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
+				BC9601C0154997B90003AC7E /* WebPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6108,7 +6108,6 @@
 				BC93CDB114CF3F7A007C723F /* TwitterAccountsViewController.xib in Resources */,
 				BC93CDB214CF3F7A007C723F /* TwitterSigninViewController.xib in Resources */,
 				BC93CDB514CF3F7A007C723F /* SignupViewController.xib in Resources */,
-				BC93CDC014CF3F7A007C723F /* LegalViewController.xib in Resources */,
 				BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */,
 				BC93CDD614CF3F7A007C723F /* RootViewController.xib in Resources */,
 				BC93CDD714CF3F7A007C723F /* EasyTracker.plist in Resources */,
@@ -6278,6 +6277,7 @@
 				BCE66A921548599A0094B4D0 /* MenuDynamicViewController.xib in Resources */,
 				BCE66B3715494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B4015494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
+				BC9601C3154997B90003AC7E /* WebPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6313,7 +6313,6 @@
 				BCDC97B914AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C514AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCDC981314ACB44300D54631 /* SignupViewController.xib in Resources */,
-				BCCA790A14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799814B1AE520011AADD /* StatsViewController.xib in Resources */,
 				BC828AD914B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229A14B6F787001E1ACE /* EasyTracker.plist in Resources */,
@@ -6485,6 +6484,7 @@
 				BCE66A8E1548599A0094B4D0 /* MenuDynamicViewController.xib in Resources */,
 				BCE66B3315494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B3C15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
+				BC9601BF154997B90003AC7E /* WebPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6520,7 +6520,6 @@
 				BCDC97BB14AB7DD100D54631 /* TwitterAccountsViewController.xib in Resources */,
 				BCDC97C714AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCDC981514ACB44300D54631 /* SignupViewController.xib in Resources */,
-				BCCA790C14AE14090011AADD /* LegalViewController.xib in Resources */,
 				BCCA799A14B1AE520011AADD /* StatsViewController.xib in Resources */,
 				BC828ADB14B49E9500763558 /* RootViewController.xib in Resources */,
 				BC95229C14B6F787001E1ACE /* EasyTracker.plist in Resources */,
@@ -6692,6 +6691,7 @@
 				BCE66A911548599A0094B4D0 /* MenuDynamicViewController.xib in Resources */,
 				BCE66B3615494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B3F15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
+				BC9601C2154997B90003AC7E /* WebPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6768,7 +6768,6 @@
 				40B40990152EFC630050D334 /* TwitterSigninViewController.m in Sources */,
 				40B40991152EFC630050D334 /* SFHFKeychainUtils.m in Sources */,
 				40B40992152EFC630050D334 /* SignupViewController.m in Sources */,
-				40B40993152EFC630050D334 /* LegalViewController.m in Sources */,
 				40B40994152EFC630050D334 /* S7GraphView.m in Sources */,
 				40B40995152EFC630050D334 /* ChartView.m in Sources */,
 				40B40996152EFC630050D334 /* StatsViewController.m in Sources */,
@@ -6879,6 +6878,7 @@
 				BCE66A8D1548599A0094B4D0 /* MenuDynamicViewController.m in Sources */,
 				BCE66A9B1548599A0094B4D0 /* MenuTableViewCell.m in Sources */,
 				BCE66AA21548599A0094B4D0 /* NotificationTableViewCell.m in Sources */,
+				BC9601BE154997B90003AC7E /* WebPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6952,7 +6952,6 @@
 				BC3FA6A414E93B660055AB4A /* TwitterSigninViewController.m in Sources */,
 				BC3FA6A514E93B660055AB4A /* SFHFKeychainUtils.m in Sources */,
 				BC3FA6A814E93B660055AB4A /* SignupViewController.m in Sources */,
-				BC3FA6A914E93B660055AB4A /* LegalViewController.m in Sources */,
 				BC3FA6AA14E93B660055AB4A /* S7GraphView.m in Sources */,
 				BC3FA6AB14E93B660055AB4A /* ChartView.m in Sources */,
 				BC3FA6AC14E93B660055AB4A /* StatsViewController.m in Sources */,
@@ -7059,6 +7058,7 @@
 				BCE66A8C1548599A0094B4D0 /* MenuDynamicViewController.m in Sources */,
 				BCE66A9A1548599A0094B4D0 /* MenuTableViewCell.m in Sources */,
 				BCE66AA11548599A0094B4D0 /* NotificationTableViewCell.m in Sources */,
+				BC9601BD154997B90003AC7E /* WebPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7132,7 +7132,6 @@
 				BC56F4B2152486AF005D1B40 /* TwitterSigninViewController.m in Sources */,
 				BC56F4B3152486AF005D1B40 /* SFHFKeychainUtils.m in Sources */,
 				BC56F4B4152486AF005D1B40 /* SignupViewController.m in Sources */,
-				BC56F4B5152486AF005D1B40 /* LegalViewController.m in Sources */,
 				BC56F4B6152486AF005D1B40 /* S7GraphView.m in Sources */,
 				BC56F4B7152486AF005D1B40 /* ChartView.m in Sources */,
 				BC56F4B8152486AF005D1B40 /* StatsViewController.m in Sources */,
@@ -7243,6 +7242,7 @@
 				BCE66A891548599A0094B4D0 /* MenuDynamicViewController.m in Sources */,
 				BCE66A971548599A0094B4D0 /* MenuTableViewCell.m in Sources */,
 				BCE66A9E1548599A0094B4D0 /* NotificationTableViewCell.m in Sources */,
+				BC9601BA154997B90003AC7E /* WebPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7316,7 +7316,6 @@
 				BCDC97C314AB7DD100D54631 /* TwitterSigninViewController.m in Sources */,
 				BCDC97D814AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
 				BCDC981114ACB44300D54631 /* SignupViewController.m in Sources */,
-				BCCA790814AE14090011AADD /* LegalViewController.m in Sources */,
 				BCCA798B14AE24D80011AADD /* S7GraphView.m in Sources */,
 				BCCA799014AE74630011AADD /* ChartView.m in Sources */,
 				BCCA799614B1AE520011AADD /* StatsViewController.m in Sources */,
@@ -7427,6 +7426,7 @@
 				BCE66A881548599A0094B4D0 /* MenuDynamicViewController.m in Sources */,
 				BCE66A961548599A0094B4D0 /* MenuTableViewCell.m in Sources */,
 				BCE66A9D1548599A0094B4D0 /* NotificationTableViewCell.m in Sources */,
+				BC9601B9154997B90003AC7E /* WebPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7501,7 +7501,6 @@
 				BC93CD1D14CF3F7A007C723F /* TwitterSigninViewController.m in Sources */,
 				BC93CD1E14CF3F7A007C723F /* SFHFKeychainUtils.m in Sources */,
 				BC93CD2114CF3F7A007C723F /* SignupViewController.m in Sources */,
-				BC93CD2214CF3F7A007C723F /* LegalViewController.m in Sources */,
 				BC93CD2314CF3F7A007C723F /* S7GraphView.m in Sources */,
 				BC93CD2414CF3F7A007C723F /* ChartView.m in Sources */,
 				BC93CD2514CF3F7A007C723F /* StatsViewController.m in Sources */,
@@ -7612,6 +7611,7 @@
 				BCE66A8B1548599A0094B4D0 /* MenuDynamicViewController.m in Sources */,
 				BCE66A991548599A0094B4D0 /* MenuTableViewCell.m in Sources */,
 				BCE66AA01548599A0094B4D0 /* NotificationTableViewCell.m in Sources */,
+				BC9601BC154997B90003AC7E /* WebPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7685,7 +7685,6 @@
 				BCDC97C214AB7DD100D54631 /* TwitterSigninViewController.m in Sources */,
 				BCDC97D714AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
 				BCDC981014ACB44300D54631 /* SignupViewController.m in Sources */,
-				BCCA790714AE14090011AADD /* LegalViewController.m in Sources */,
 				BCCA798A14AE24D80011AADD /* S7GraphView.m in Sources */,
 				BCCA798F14AE74630011AADD /* ChartView.m in Sources */,
 				BCCA799514B1AE520011AADD /* StatsViewController.m in Sources */,
@@ -7796,6 +7795,7 @@
 				BCE66A871548599A0094B4D0 /* MenuDynamicViewController.m in Sources */,
 				BCE66A951548599A0094B4D0 /* MenuTableViewCell.m in Sources */,
 				BCE66A9C1548599A0094B4D0 /* NotificationTableViewCell.m in Sources */,
+				BC9601B8154997B90003AC7E /* WebPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7870,7 +7870,6 @@
 				BCDC97C414AB7DD100D54631 /* TwitterSigninViewController.m in Sources */,
 				BCDC97D914AB820500D54631 /* SFHFKeychainUtils.m in Sources */,
 				BCDC981214ACB44300D54631 /* SignupViewController.m in Sources */,
-				BCCA790914AE14090011AADD /* LegalViewController.m in Sources */,
 				BCCA798C14AE24D80011AADD /* S7GraphView.m in Sources */,
 				BCCA799114AE74630011AADD /* ChartView.m in Sources */,
 				BCCA799714B1AE520011AADD /* StatsViewController.m in Sources */,
@@ -7981,6 +7980,7 @@
 				BCE66A8A1548599A0094B4D0 /* MenuDynamicViewController.m in Sources */,
 				BCE66A981548599A0094B4D0 /* MenuTableViewCell.m in Sources */,
 				BCE66A9F1548599A0094B4D0 /* NotificationTableViewCell.m in Sources */,
+				BC9601BB154997B90003AC7E /* WebPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

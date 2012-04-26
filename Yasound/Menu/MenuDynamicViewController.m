@@ -16,7 +16,7 @@
 #import "StatsViewController.h"
 #import "PlaylistsViewController.h"
 #import "SettingsViewController.h"
-#import "LegalViewController.h"
+#import "WebPageViewController.h"
 #import "AudioStreamManager.h"
 #import "YasoundSessionManager.h"
 #import "RootViewController.h"
@@ -385,11 +385,11 @@
 
     if ([type isEqualToString:TYPE_WEB_PAGE])
     {
-        NSLog(@"TODO");
-        assert(0);
-//        LegalViewController* view = [[LegalViewController alloc] initWithNibName:@"LegalViewController" bundle:nil wizard:NO];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
+        NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:row];
+
+        WebPageViewController* view = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil withUrl:[NSURL URLWithString:url] andTitle:name];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
         return;
     }
     
