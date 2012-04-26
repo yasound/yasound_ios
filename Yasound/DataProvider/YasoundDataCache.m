@@ -8,6 +8,9 @@
 #import "YasoundDataCache.h"
 #import "DateAdditions.h"
 #import "YasoundDataProvider.h"
+#import "NSObject+SBJSON.h"
+
+
 
 
 // 300 seconds = 5 min
@@ -651,6 +654,52 @@ static UIImage* gDummyImage = nil;
     [cache removeTarget:target];
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+//............................................................................................................................................
+//
+// MENU
+//
+
+// return the most recent menu description, or the default menu description if no other one has been downloaded yet
+- (NSArray*)menu
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSArray* descr = [defaults objectForKey:@"menuDescription"];
+
+    if (descr != nil)
+        return descr;
+    
+    // no menu description yet, get the default one from the resources
+    NSString* descrStr = [NSString stringWithContentsOfFile:@"defaultMenuDescription.json.txt" encoding:NSUTF8StringEncoding error:nil];
+    descr = [descrStr JSONValue];
+    [defaults setObject:descr forKey:@"menuDescription"];
+    [defaults synchronize];
+
+    return descr;
+}
+
+
+
+// replace the current menu description in the user settings (does not overwrite the default menu description)
+- (void)setMenu:(NSString*)JSONdescription
+{
+    NSArray* descr = [JSONdescription JSONValue];
+
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:descr forKey:@"menuDescription"];
+    [defaults synchronize];
+}
 
 
 

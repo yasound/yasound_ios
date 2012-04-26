@@ -30,26 +30,16 @@
 
 
 
-//@interface YasoundDataCacheImage
-//
-//@property (nonatomic, retain) NSDate* timeout;
-//@property (nonatomic, retain) UIImage* image;
-//@property (nonatomic, retain) id target;
-//@property (nonatomic) SEL action;
-//
-//
-//@end
-
-
-
-
 @interface YasoundDataCache : NSObject
 {
     NSMutableDictionary* _cacheRadios;
     NSMutableDictionary* _cacheSongs;
     NSMutableDictionary* _cacheFriends;
-//    NSMutableDictionary* _cacheImages;
 }
+
+
+
+
 
 
 
@@ -91,6 +81,18 @@
 
 - (UIImage*)requestImage:(NSURL*)url target:(id)target action:(SEL)selector;
 - (void)releaseImageRequest:(NSURL*)url forTarget:(id)target;
+
+
+
+// return the most recent menu description, or the default menu description if no other one has been downloaded yet
+- (NSArray*)menu;
+
+// replace the current menu description in the user settings (does not overwrite the default menu description)
+- (void)setMenu:(NSString*)JSONdescription;
+
+
+
+
 
 
 @end

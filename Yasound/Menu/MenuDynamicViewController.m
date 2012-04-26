@@ -51,6 +51,14 @@
 #define TYPE_PROGRAMMING @"programming"
 #define TYPE_LOGOUT @"logout"
 
+#define ENTRY_ID_ALL @"radiosWithGenre"
+#define ENTRY_ID_TOP @"topRadiosWithGenre"
+#define ENTRY_ID_SELECTION @"selectedRadiosWithGenre"
+#define ENTRY_ID_NEW @"newRadiosWithGenre"
+#define ENTRY_ID_FRIENDS @"friendsRadiosWithGenre"
+#define ENTRY_ID_FAVORITES @"favoriteRadiosWithGenre"
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withSections:(NSArray*)sections
 {
@@ -301,149 +309,116 @@
 
     if ([type isEqualToString:TYPE_RADIO_LIST])
     {
-        return;
-    }
-    
-    if ([type isEqualToString:TYPE_USER])
-    {
-        return;
-    }
-    
-    if ([type isEqualToString:TYPE_USER_LIST])
-    {
-        return;
-    }
-    
-    if ([type isEqualToString:TYPE_WEB_PAGE])
-    {
-        return;
-    }
-    
-    if ([type isEqualToString:TYPE_RADIO_SEARCH])
-    {
-        return;
-    }
-    
-    if ([type isEqualToString:TYPE_NOTIFICATIONS])
-    {
-        return;
-    }
-    
-    if ([type isEqualToString:TYPE_STATS])
-    {
-        return;
-    }
-    
-    if ([type isEqualToString:TYPE_SETTINGS])
-    {
-        return;
-    }
-
-    if ([type isEqualToString:TYPE_PROGRAMMING])
-    {
-        return;
-    }
-
-    if ([type isEqualToString:TYPE_LOGOUT])
-    {
-        return;
-    }
-
-    
-    
-    
-        if (indexPath.row == ROW_RADIOS_FAVORITES)
+        NSString* entryId = [row objectAtIndex:@"id"];
+        
+//#define ENTRY_ID_ALL @"radiosWithGenre"
+//#define ENTRY_ID_NEW @"newRadiosWithGenre"
+//#define ENTRY_ID_FRIENDS @"friendsRadiosWithGenre"
+        
+        if ([entryId isEqualToString:ENTRY_ID_FAVORITES])
         {
             FavoritesViewController* view = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil title:NSLocalizedString(@"selection_tab_favorites", nil) tabIcon:@"tabIconTop.png"];
             [self.navigationController pushViewController:view animated:YES];
             [view release];
         }
-        else if (indexPath.row == ROW_RADIOS_FRIENDS)
-        {
-            FriendsViewController* view = [[FriendsViewController alloc] initWithNibName:@"FriendsViewController" bundle:nil title:NSLocalizedString(@"selection_tab_friends", nil) tabIcon:@"tabIconFavorites.png"];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-        }
-        else if (indexPath.row == ROW_RADIOS_SELECTION)
+        else if ([entryId isEqualToString:ENTRY_ID_SELECTION])
         {
             RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTSelection];
             [self.navigationController pushViewController:view animated:YES];
             [view release];
         }
-        else if (indexPath.row == ROW_RADIOS_TOP)
+        else if ([entryId isEqualToString:ENTRY_ID_TOP])
         {
             RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTTop];
             [self.navigationController pushViewController:view animated:YES];
             [view release];
         }
-        else if (indexPath.row == ROW_RADIOS_SEARCH)
-        {
-            RadioSearchViewController* view = [[RadioSearchViewController alloc] initWithNibName:@"RadioSearchViewController" bundle:nil title:NSLocalizedString(@"selection_tab_search", nil) tabItem:UITabBarSystemItemSearch];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-        }
+
+        return;
     }
     
-    else if (indexPath.section == SECTION_ME)
+    if ([type isEqualToString:TYPE_USER])
     {
-      if (indexPath.row == ROW_ME_NOTIFS)
-      {
+        NSLog(@"TODO");
+        assert(0);
+        return;
+    }
+    
+    if ([type isEqualToString:TYPE_USER_LIST])
+    {
+        NSLog(@"TODO");
+        assert(0);
+        return;
+    }
+
+    if ([type isEqualToString:TYPE_FRIENDS])
+    {
+        FriendsViewController* view = [[FriendsViewController alloc] initWithNibName:@"FriendsViewController" bundle:nil title:NSLocalizedString(@"selection_tab_friends", nil) tabIcon:@"tabIconFavorites.png"];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
+    }
+
+
+    if ([type isEqualToString:TYPE_WEB_PAGE])
+    {
+        NSLog(@"TODO");
+        assert(0);
+//        LegalViewController* view = [[LegalViewController alloc] initWithNibName:@"LegalViewController" bundle:nil wizard:NO];
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release];
+        return;
+    }
+    
+    if ([type isEqualToString:TYPE_RADIO_SEARCH])
+    {
+        RadioSearchViewController* view = [[RadioSearchViewController alloc] initWithNibName:@"RadioSearchViewController" bundle:nil title:NSLocalizedString(@"selection_tab_search", nil) tabItem:UITabBarSystemItemSearch];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
+    }
+    
+    if ([type isEqualToString:TYPE_NOTIFICATIONS])
+    {
         NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
-      }
-        else if (indexPath.row == ROW_ME_STATS)
-        {
-//            StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil];
-//            
-//            [self.navigationController pushViewController:view animated:YES];
-//            [view release];
-          YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
-          [appDelegate goToMyRadioStatsFromViewController:self];
-        }
-        else if (indexPath.row == ROW_ME_PROGRAMMING)
-        {
-//            PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:NO];
-//            [self.navigationController pushViewController:view animated:YES];
-//            [view release];
-
-//            YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
-//          [appDelegate goToMyRadioPlaylistsFromViewController:self];
-            
-            ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-        }
-        else if (indexPath.row == ROW_ME_CONFIG)
-        {
-            SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:NO radio:[YasoundDataProvider main].radio];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-        }
+        return;
     }
     
-    
-    
-    
-    else if (indexPath.section == SECTION_MISC)
+    if ([type isEqualToString:TYPE_STATS])
     {
-        if (indexPath.row == ROW_MISC_LEGAL)
-        {
-            LegalViewController* view = [[LegalViewController alloc] initWithNibName:@"LegalViewController" bundle:nil wizard:NO];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-        }
-        else if (indexPath.row == ROW_MISC_LOGOUT)
-        {
-            [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
-            
-            UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_logout_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_logout_logout", nil), nil];
-            
-            popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-//            [popupQuery showFromTabBar:self.view];
-            [popupQuery showFromRect:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + self.view.frame.size.height, popupQuery.frame.size.width, popupQuery.frame.size.height) inView:self.view animated:YES];
-            [popupQuery release];
-        }    
+        YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
+        [appDelegate goToMyRadioStatsFromViewController:self];
+        return;
+    }
+    
+    if ([type isEqualToString:TYPE_SETTINGS])
+    {
+        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:NO radio:[YasoundDataProvider main].radio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
+    }
+
+    if ([type isEqualToString:TYPE_PROGRAMMING])
+    {
+        ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
+    }
+
+    if ([type isEqualToString:TYPE_LOGOUT])
+    {
+        [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
+        
+        UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_logout_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_logout_logout", nil), nil];
+        
+        popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [popupQuery showFromRect:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + self.view.frame.size.height, popupQuery.frame.size.width, popupQuery.frame.size.height) inView:self.view animated:YES];
+        [popupQuery release];
+        return;
     }    
 }
 
