@@ -16,6 +16,7 @@
 @interface ASIHTTPRequest (ASIHTTPRequest_YasoundModel)
 
 - (NSDictionary*)responseDict;
+- (NSArray*)responseArray;
 - (Model*)responseObjectWithClass:(Class)ModelClass;
 - (Container*)responseObjectsWithClass:(Class)ModelClass;
 
