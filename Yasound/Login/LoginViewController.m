@@ -233,7 +233,7 @@
 }
 
 
-- (void)enterAppAfterProperLogin
+- (void)enterTheAppAfterProperLogin
 {
     // check if local account has been setted (<=> radio full configured)
     if ([[YasoundSessionManager main] getAccount:self.user])
