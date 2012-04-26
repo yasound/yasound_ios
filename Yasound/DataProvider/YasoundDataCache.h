@@ -10,12 +10,6 @@
 #import "Radio.h"
 #import "YasoundDataCacheImage.h"
 
-#define REQUEST_RADIOS_ALL @"radiosWithGenre"
-#define REQUEST_RADIOS_TOP @"topRadiosWithGenre"
-#define REQUEST_RADIOS_SELECTION @"selectedRadiosWithGenre"
-#define REQUEST_RADIOS_NEW @"newRadiosWithGenre"
-#define REQUEST_RADIOS_FRIENDS @"friendsRadiosWithGenre"
-#define REQUEST_RADIOS_FAVORITES @"favoriteRadiosWithGenre"
 
 
 

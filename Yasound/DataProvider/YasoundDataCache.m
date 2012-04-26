@@ -671,14 +671,23 @@ static UIImage* gDummyImage = nil;
 - (NSDictionary*)menuEntry:(NSString*)entryId
 {
     NSArray* menu = [self menu];
-    for (NSDictionary* entry in menu)
+    
+    for (NSDictionary* section in menu)
     {
-        NSString* curId = [entry objectForKey:@"id"];
-        if ([curId isEqualToString:entryId])
-            return entry;
+        NSArray* entries = [section objectForKey:@"entries"];
+        
+        for (NSDictionary* entry in entries)
+        {
+            NSLog(@"%@", entry);
+            NSString* curId = [entry objectForKey:@"id"];
+            
+            if ([curId isEqualToString:entryId])
+                return entry;
+        }
     }
     
     NSLog(@"YasoundDataCache::menuEntry Error : could not find any entry for id '%@'", entryId);
+    NSLog(@"debug menu : %@", menu);
     
     return nil;
 }

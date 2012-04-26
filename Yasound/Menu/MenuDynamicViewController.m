@@ -51,13 +51,6 @@
 #define TYPE_PROGRAMMING @"programming"
 #define TYPE_LOGOUT @"logout"
 
-#define ENTRY_ID_ALL @"radiosWithGenre"
-#define ENTRY_ID_TOP @"topRadiosWithGenre"
-#define ENTRY_ID_SELECTION @"selectedRadiosWithGenre"
-#define ENTRY_ID_NEW @"newRadiosWithGenre"
-#define ENTRY_ID_FRIENDS @"friendsRadiosWithGenre"
-#define ENTRY_ID_FAVORITES @"favoriteRadiosWithGenre"
-
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withSections:(NSArray*)sections

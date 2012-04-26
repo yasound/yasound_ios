@@ -100,20 +100,27 @@ taskStatus stringToStatus(NSString* str);
 - (void)radioForUser:(User*)u withTarget:(id)target action:(SEL)selector;
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
 
-- (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)selectedRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
 
-- (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)selectedRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+// .........................................................................................
+// deprecated methods
+//
+- (void)radiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
+- (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
+- (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
+- (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
+- (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
+- (void)favoriteRadiosForUser_deprecated:(User*)u withTarget:(id)target action:(SEL)selector;
+
+- (void)radiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+- (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+- (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+- (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+- (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+//
+//..............................................................................................
+
+- (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
-- (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 
