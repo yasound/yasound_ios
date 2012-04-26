@@ -1,6 +1,6 @@
 [
                   {
-                   "name": "Ma radio",
+                   "name": "My radio",
                    "entries":[
                               { "id":"myRadio", "name": "My radio", "image": "IconMyRadio", "type": "my_radio"}
                               ]
@@ -16,7 +16,7 @@
                               ]
                    },
                    {
-                   "name": "Moi",
+                   "name": "Me",
                    "entries":[
                               { "id":"meNotifications", "name": "My notifications", "image": "IconMeNotifs", "type": "notifications"},
                               { "id":"meStats", "name": "My stats", "image": "IconMeStats", "type": "stats"},
@@ -25,10 +25,10 @@
                               ]
                    },
                    {
-                   "name": "Divers",
+                   "name": "Miscellaneous",
                    "entries":[
                               { "id":"miscLegal", "name": "Terms of Use", "image": "IconMiscLegal", "type": "web_page", "params":{"url":"legal/eula.html"}},
                               { "id":"miscLogout", "name": "Log out", "image": "IconMiscLogout", "type": "logout"}
                               ]
                    }
-]
+                 ]

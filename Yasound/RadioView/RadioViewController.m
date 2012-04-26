@@ -36,7 +36,7 @@
 #import "ShareModalViewController.h"
 #import "ShareTwitterModalViewController.h"
 #import "YasoundSessionManager.h"
-
+#import "YasoundDataCache.h"
 
 
 //#define LOCAL 1 // use localhost as the server
@@ -423,7 +423,10 @@ static Song* _gNowPlayingSong = nil;
     
     // update favorite button
     [[ActivityModelessSpinner main] addRef];
-    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoriteUpdate:)];
+    
+    NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
+    NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
+    [[YasoundDataProvider main] radiosWithUrl:url withGenre:nil withTarget:self action:@selector(onFavoriteUpdate:) userData:nil];
     
     
 }
