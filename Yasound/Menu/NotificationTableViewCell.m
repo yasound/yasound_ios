@@ -24,9 +24,11 @@
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuViewCell_icon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.icon = [[WebImageView alloc] initWithFrame:sheet.frame];
+        [self addSubview:self.icon];
         
         sheet = [[Theme theme] stylesheetForKey:@"MenuViewCell_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.name = [sheet makeLabel];
+        [self addSubview:self.name];
 
         
       NSError* error;

@@ -954,7 +954,7 @@
 			<key>x</key>
 			<integer>8</integer>
 			<key>y</key>
-			<integer>8</integer>
+			<integer>4</integer>
 			<key>width</key>
 			<integer>36</integer>
 			<key>height</key>
@@ -971,14 +971,14 @@
 				<key>textColor</key>
 				<string>white</string>
 				<key>backgroundColor</key>
-				<string>red</string>
+				<string>clear</string>
 			</dict>
 			<key>x</key>
-			<integer>64</integer>
+			<integer>52</integer>
 			<key>y</key>
-			<integer>8</integer>
+			<integer>12</integer>
 			<key>width</key>
-			<integer>200</integer>
+			<integer>230</integer>
 			<key>height</key>
 			<integer>20</integer>
 		</dict>

@@ -2,7 +2,7 @@
                   {
                    "name": "Ma radio",
                    "entries":[
-                              { "name": "Ma Radio", "image": "", "type": "my_radio"}
+                              { "name": "Ma radio", "image": "", "type": "my_radio"}
                               ]
                    },
                   {
