@@ -11,7 +11,6 @@
 #import "NSObject+SBJson.h"
 #import "YasoundAppDelegate.h"
 #import "UIDevice+IdentifierAddition.h"
-#import "ASIHTTPRequest+Model.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 
@@ -989,6 +988,16 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/favorite_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
+- (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
+{
+    Auth* auth = self.apiKeyAuth;
+    NSMutableArray* params = [NSMutableArray array];
+    if (genre)
+        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+    
+    [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+}
+
 - (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector
 {
     Auth* auth = self.apiKeyAuth;
@@ -1766,6 +1775,21 @@ static YasoundDataProvider* _main = nil;
   Auth* auth = self.apiKeyAuth;
   NSString* relativeURL = @"/api/v1/set_notifications_preferences";
   [_communicator postNewObject:prefs withURL:relativeURL absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+}
+
+
+- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector
+{    
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/app_menu";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
 }
 
 

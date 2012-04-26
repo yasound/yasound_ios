@@ -20,6 +20,13 @@
     return dict;
 }
 
+- (NSArray*)responseArray
+{
+    NSString* respString = self.responseString;
+    NSArray* array = [respString JSONValue];
+    return array;
+}
+
 - (Model*)responseObjectWithClass:(Class)ModelClass
 {
     NSString* respString = self.responseString;

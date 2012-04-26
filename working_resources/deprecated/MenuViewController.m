@@ -117,6 +117,29 @@ enum SECTION_MISC_ENUM
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
     [[YasoundNotifCenter main] addTarget:self action:@selector(unreadNotifCountChanged) forEvent:eAPNsUnreadNotifCountChanged];
+    
+    // #FIXME: MatTest: test menu description request (to delete)
+    [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+}
+
+// #FIXME: MatTest: test menu description request (to delete)
+- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
+{
+    NSArray* menuDesc = [req responseArray];
+    
+    int s = 0;
+    for (NSDictionary* section in menuDesc)
+    {
+        NSLog(@"section %d - %@", s, [section valueForKey:@"name"]);
+        s++;
+        NSArray* entries = [section valueForKey:@"entries"];
+        int e = 0;
+        for (NSDictionary* entry in entries) 
+        {
+            NSLog(@"entry %d - %@", e, entry);
+            e++;
+        }
+    }
 }
 
 

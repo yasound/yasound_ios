@@ -22,6 +22,7 @@
 #import "YasoundSong.h"
 #import "APNsDeviceToken.h"
 #import "APNsPreferences.h"
+#import "ASIHTTPRequest+Model.h"
 
 typedef NSString* taskID;
 
@@ -113,6 +114,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 - (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
+
+- (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 
 - (void)searchRadios:(NSString*)search withTarget:(id)target action:(SEL)selector;
 - (void)searchRadiosByCreator:(NSString*)search withTarget:(id)target action:(SEL)selector;
@@ -212,6 +215,9 @@ taskStatus stringToStatus(NSString* str);
 // APNs (Apple Push Notification service) preferences
 - (void)apnsPreferencesWithTarget:(id)target action:(SEL)selector;
 - (void)setApnsPreferences:(APNsPreferences*)prefs target:(id)target action:(SEL)selector;
+
+// Menu description
+- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector; // didReceiveMenu:(ASIHTTPRequest*)req
 
 - (void)testV2;
 
