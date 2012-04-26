@@ -1701,6 +1701,11 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector
+{
+    [self menuDescriptionWithTarget:target action:selector userData:nil];
+}
+
 - (void)menuDescriptionWithTarget:(id)target action:(SEL)selector  userData:(id)data
 {    
     RequestConfig* conf = [[RequestConfig alloc] init];
