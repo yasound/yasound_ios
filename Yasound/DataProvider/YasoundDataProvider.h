@@ -217,7 +217,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)setApnsPreferences:(APNsPreferences*)prefs target:(id)target action:(SEL)selector;
 
 // Menu description
-- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector; // didReceiveMenu:(ASIHTTPRequest*)req
+- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector userData:(id)data; // didReceiveMenu:(ASIHTTPRequest*)req
 
 - (void)testV2;
 

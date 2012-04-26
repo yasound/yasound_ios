@@ -1778,7 +1778,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector
+- (void)menuDescriptionWithTarget:(id)target action:(SEL)selector  userData:(id)data
 {    
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = @"api/v1/app_menu";
@@ -1787,6 +1787,7 @@ static YasoundDataProvider* _main = nil;
     conf.method = @"GET";
     conf.callbackTarget = target;
     conf.callbackAction = selector;
+    conf.userData = data;
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     [req startAsynchronous];
