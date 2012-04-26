@@ -681,7 +681,10 @@ static UIImage* gDummyImage = nil;
         return descr;
     
     // no menu description yet, get the default one from the resources
-    NSString* descrStr = [NSString stringWithContentsOfFile:@"defaultMenuDescription.json.txt" encoding:NSUTF8StringEncoding error:nil];
+    
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"defaultMenuDescription.json" ofType: @"txt"];
+
+    NSString* descrStr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     descr = [descrStr JSONValue];
     [defaults setObject:descr forKey:@"menuDescription"];
     [defaults synchronize];

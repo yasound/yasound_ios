@@ -21,7 +21,7 @@
 
 @property (nonatomic, retain) NSArray* sections;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil WithSections:(NSArray*)sections;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withSections:(NSArray*)sections;
 
 
 - (IBAction)nowPlayingClicked:(id)sender;

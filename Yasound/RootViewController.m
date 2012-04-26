@@ -21,6 +21,7 @@
 #import "SongUploadManager.h"
 #import "NotificationCenterViewController.h"
 #import "CreateMyRadio.h"
+#import "YasoundDataCache.h"
 
 //#define FORCE_ROOTVIEW_RADIOS
 
@@ -67,7 +68,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorCommunicationServer:) name:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionChanged:) name:NOTIF_REACHABILITY_CHANGED object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateMyRadio:) name:NOTIF_GOTO_MYRADIO object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadio:) name:NOTIF_GOTO_MYRADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateMyRadio:) name:NOTIF_GOTO_CREATE_MYRADIO object:nil];
     
 
@@ -269,7 +270,7 @@
 {
   if (_menuView == nil)
   {
-    _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
     [_menuView retain];
     [self.navigationController pushViewController:_menuView animated:NO];
   }
@@ -299,7 +300,7 @@
 
     if (_menuView == nil)
     {
-        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
         [_menuView retain];
         [self.navigationController pushViewController:_menuView animated:animatePushMenu];
     }
@@ -365,7 +366,7 @@
   
   [self.navigationController popToRootViewControllerAnimated:NO];
   
-  _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+  _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
   [_menuView retain];
   [self.navigationController pushViewController:_menuView animated:YES];
 }
@@ -515,7 +516,7 @@
     
     if (_menuView == nil)
     {
-        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
         [_menuView retain];
         [self.navigationController pushViewController:_menuView animated:NO];
     }
@@ -526,12 +527,11 @@
 
     if ([[YasoundDataProvider main].radio.id intValue] == [radio.id intValue])
     {
-      YasoundAppDelegate* appDelegate =  (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
-      [appDelegate goToMyRadioFromViewController:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIO object:nil];
     }
     else
     {
-        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
         [_menuView retain];
         [self.navigationController pushViewController:_menuView animated:NO];
     }
@@ -559,7 +559,7 @@
 
 
 
-- (void*)onNotifGotoCreateMyRadio
+- (void*)onNotifGotoCreateMyRadio:(NSNotification *)notification
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"skipRadioCreationSendToSelection"];
     [[NSUserDefaults standardUserDefaults] synchronize]; 
