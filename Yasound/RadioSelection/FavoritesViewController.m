@@ -20,7 +20,7 @@
 
 @synthesize url;
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)aUrl
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)aUrl andTitle:(NSString*)title
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
@@ -28,6 +28,7 @@
         _radios = nil;
         
         self.url = aUrl;
+        self.title = title;
     }
     return self;
 }
@@ -55,7 +56,7 @@
 {
     [super viewDidLoad];
 
-    _toolbarTitle.text = NSLocalizedString(@"FavoritesView_title", nil);
+    _toolbarTitle.text = self.title;
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];

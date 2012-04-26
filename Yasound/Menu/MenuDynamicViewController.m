@@ -325,6 +325,7 @@
     NSArray* rows = [dicoSection objectForKey:@"entries"];
     NSDictionary* row = [rows objectAtIndex:indexPath.row];
     
+    NSString* name = [row objectForKey:@"name"];
     NSString* type = [row objectForKey:@"type"];
 
     
@@ -343,27 +344,21 @@
 
     if ([type isEqualToString:TYPE_RADIO_LIST])
     {
-        NSString* entryId = [row objectAtIndex:@"id"];
+        NSString* url = [self getRowParameter:@"url" forRow:row];
+        NSNumber* genre_selection = [self getRowParameter:@"genre_selection" forRow:row];
+        BOOL displayGenreSelector = YES;
+        if (genre_selection != nil)
+            displayGenreSelector = [genre_selection boolValue];
         
-//#define ENTRY_ID_ALL @"radiosWithGenre"
-//#define ENTRY_ID_NEW @"newRadiosWithGenre"
-//#define ENTRY_ID_FRIENDS @"friendsRadiosWithGenre"
-        
-        if ([entryId isEqualToString:ENTRY_ID_FAVORITES])
+        if (!displayGenreSelector)
         {
-            FavoritesViewController* view = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil title:NSLocalizedString(@"selection_tab_favorites", nil) tabIcon:@"tabIconTop.png"];
+            FavoritesViewController* view = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil withUrl:[NSURL URLWithString:url] andTitle:name];
             [self.navigationController pushViewController:view animated:YES];
             [view release];
         }
-        else if ([entryId isEqualToString:ENTRY_ID_SELECTION])
+        else
         {
-            RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTSelection];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-        }
-        else if ([entryId isEqualToString:ENTRY_ID_TOP])
-        {
-            RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTTop];
+            RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withUrl:[NSURL URLWithString:url]  andTitle:name];
             [self.navigationController pushViewController:view animated:YES];
             [view release];
         }
@@ -455,6 +450,32 @@
         return;
     }    
 }
+                                             
+                                             
+                                             
+                                             
+                                             
+- (id)getRowParameter:(NSString*)param forRow:(NSDictionary*)row
+{
+    NSDictionary* params = [row objectForKey:@"params"];
+    if (params == nil)
+    {
+        NSLog(@"getRowParameter : no params, can not get param '%@'", param);
+        return nil;
+    }
+    
+    NSString* result = [params objectForKey:param];
+    if (result == nil)
+    {
+        NSLog(@"getRowParameter : param '%@' is nil", param);
+        return nil;
+    }
+    
+    return result;
+}
+
+
+                                 
 
 
 #pragma mark - ActionSheet Delegate

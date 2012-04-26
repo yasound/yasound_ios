@@ -9,7 +9,7 @@
                    "name": "Radios",
                    "entries":[
                               { "name": "Mes amis", "image": "IconRadiosFriends", "type": "friends"},
-                              { "name": "Mes favoris", "image": "IconRadiosFavorites", "type": "radio_list", "params": {"url":"/api/v1/favorite_radio"}},
+                              { "name": "Mes favoris", "image": "IconRadiosFavorites", "type": "radio_list", "params": {"url":"/api/v1/favorite_radio", "genre_selection":false}},
                               { "name": "Sélection", "image": "IconRadiosSelection", "type": "radio_list", "params": {"url":"/api/v1/selected_radio"}},
                               { "name": "Top", "image": "IconLeaderboard", "type": "radio_list", "params": {"url":"/api/v1/top_radio"}},
                               { "name": "Recherche", "image": "IconRadiosSearch", "type": "search_radio"}

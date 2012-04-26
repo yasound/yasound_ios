@@ -21,6 +21,6 @@
 
 @property (nonatomic, retain) NSURL* url;
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)aUrl;
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)aUrl andTitle:(NSString*)title;
 
 @end
