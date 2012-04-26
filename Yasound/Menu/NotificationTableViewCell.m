@@ -12,11 +12,25 @@
 
 @implementation NotificationTableViewCell
 
+@synthesize name;
+@synthesize icon;
+
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier unreadCount:(NSInteger)count
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) 
     {
+        
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuViewCell_icon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.icon = [[WebImageView alloc] initWithFrame:sheet.frame];
+        [self addSubview:self.icon];
+        
+        sheet = [[Theme theme] stylesheetForKey:@"MenuViewCell_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.name = [sheet makeLabel];
+        [self addSubview:self.name];
+
+        
       NSError* error;
       _unreadCountLabel = [[[BundleFileManager main] stylesheetForKey:@"UnreadNotifBadge"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
       [self setUnreadCount:count];

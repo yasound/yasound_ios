@@ -949,6 +949,39 @@
 			<key>path</key>
 			<string>images/Menu</string>
 		</dict>
+		<key>MenuViewCell_icon</key>
+		<dict>
+			<key>x</key>
+			<integer>8</integer>
+			<key>y</key>
+			<integer>4</integer>
+			<key>width</key>
+			<integer>36</integer>
+			<key>height</key>
+			<integer>36</integer>
+		</dict>
+		<key>MenuViewCell_name</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>size</key>
+				<integer>14</integer>
+				<key>weight</key>
+				<string>bold</string>
+				<key>textColor</key>
+				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+			</dict>
+			<key>x</key>
+			<integer>52</integer>
+			<key>y</key>
+			<integer>12</integer>
+			<key>width</key>
+			<integer>230</integer>
+			<key>height</key>
+			<integer>20</integer>
+		</dict>
 		<key>TableViewStyleSelectionBar</key>
 		<dict>
 			<key>x</key>

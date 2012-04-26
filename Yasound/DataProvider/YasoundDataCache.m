@@ -8,6 +8,9 @@
 #import "YasoundDataCache.h"
 #import "DateAdditions.h"
 #import "YasoundDataProvider.h"
+#import "NSObject+SBJSON.h"
+
+
 
 
 // 300 seconds = 5 min
@@ -78,9 +81,6 @@ static YasoundDataCache* _main = nil;
       [_cacheSongs retain];
       _cacheFriends = [[NSMutableDictionary alloc] init];
       [_cacheFriends retain];
-      
-//      _cacheImages = [[NSMutableDictionary alloc] init];
-//      [_cacheImages retain];
   }
   
   return self;
@@ -92,7 +92,6 @@ static YasoundDataCache* _main = nil;
     [_cacheRadios release];
     [_cacheSongs release];
     [_cacheFriends release];
-//    [_cacheImages release];
     
     [super dealloc];
 }
@@ -137,52 +136,17 @@ static YasoundDataCache* _main = nil;
 // send a request to server, to update local cache
 //
 
-- (void)requestRadiosUpdate:(NSString*)REQUEST withGenre:(NSString*)genre target:(id)target action:(SEL)action
+- (void)requestRadiosUpdate:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)action
 {
     YasoundDataCachePendingOp* op = [[YasoundDataCachePendingOp alloc] init];
     [op retain];
-    op.object = REQUEST;
+    op.object = url;
     op.info = genre;
     op.target = target;
     op.action = action;
-    
 
-    if ([op.object isEqualToString:REQUEST_RADIOS_ALL])
-    {
-        [[YasoundDataProvider main] radiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
-        return;
-    }
-
-    if ([op.object isEqualToString:REQUEST_RADIOS_TOP])
-    {
-        [[YasoundDataProvider main] topRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:)  userData:op];
-        return;
-    }
-
-    if ([op.object isEqualToString:REQUEST_RADIOS_SELECTION])
-    {
-        [[YasoundDataProvider main] selectedRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
-        return;
-    }
-
-    if ([op.object isEqualToString:REQUEST_RADIOS_NEW])
-    {
-        [[YasoundDataProvider main] newRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
-        return;
-    }
-
-    if ([op.object isEqualToString:REQUEST_RADIOS_FRIENDS])
-    {
-        [[YasoundDataProvider main] friendsRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
-        return;
-    }
-
-    if ([op.object isEqualToString:REQUEST_RADIOS_FAVORITES])
-    {
-        [[YasoundDataProvider main] favoriteRadiosWithGenre:op.info withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
-        return;
-    }
-         
+    [[YasoundDataProvider main] radiosWithUrl:[url absoluteString] withGenre:genre withTarget:self action:@selector(radioReceived:withInfo:) userData:op];
+    return;
 }
 
 
@@ -212,14 +176,15 @@ static YasoundDataCache* _main = nil;
     NSDate* date = [NSDate date];
     NSDate* timeout = [date dateByAddingTimeInterval:TIMEOUT_RADIOS];
     
-    NSString* RequestId = op.object;
+//    NSString* RequestId = op.object;
+    NSURL* url = op.object;
     
     // get/create dico for request
-    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:RequestId];
+    NSMutableDictionary* requestCache = [_cacheRadios objectForKey:[url absoluteString]];
     if (requestCache == nil)
     {
         requestCache = [[NSMutableDictionary alloc] init];
-        [_cacheRadios setObject:requestCache forKey:RequestId];
+        [_cacheRadios setObject:requestCache forKey:[url absoluteString]];
     }
     
     // get/create dico for request/genre
@@ -239,7 +204,6 @@ static YasoundDataCache* _main = nil;
     
     // pending operation cleaning
     [op release];
-//    [_pendingRadios removeObjectAtIndex:0];
     
     // return results to pending client
     //NSLog(@"YasoundDataCache requestRadios : return server's updated data");
@@ -259,18 +223,18 @@ static YasoundDataCache* _main = nil;
 //
 // - (void)selector:(NSArray*)data withInfo:(NSDictionnary*)info
 //
-- (void)requestRadios:(NSString*)REQUEST withGenre:(NSString*)genre target:(id)target action:(SEL)selector
+- (void)requestRadiosWithUrl:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)selector;
 {
-    NSArray* data = [self cachedRadioForKey:REQUEST withGenre:genre];
+    NSArray* data = [self cachedRadioForKey:url withGenre:genre];
     
     // there is no cached data yet for that request, OR it's expired
     // => request update from server
     if (data == nil)
     {
-        [self requestRadiosUpdate:REQUEST withGenre:genre target:target action:selector];
+        [self requestRadiosUpdate:url withGenre:genre target:target action:selector];
         return;
     }
-
+    
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
     //NSLog(@"YasoundDataCache requestRadios : return local cached data");
@@ -286,7 +250,7 @@ static YasoundDataCache* _main = nil;
 //
 - (void)clearRadios:(NSString*)REQUEST
 {
-    NSLog(@"YasoundDataCache::clearRadios");
+    NSLog(@"YasoundDataCache::clearRadios for ref '%@'", REQUEST);
     [_cacheRadios removeObjectForKey:REQUEST];
 }
 
@@ -653,6 +617,100 @@ static UIImage* gDummyImage = nil;
 
 
 
+
+
+
+
+
+
+
+
+
+
+//............................................................................................................................................
+//
+// MENU
+//
+
+// return the most recent menu description, or the default menu description if no other one has been downloaded yet
+- (NSArray*)menu
+{
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSArray* descr = [defaults objectForKey:@"menuDescription"];
+
+    if (descr != nil)
+        return descr;
+    
+    // no menu description yet, get the default one from the resources
+    
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"defaultMenuDescription.json" ofType: @"txt"];
+
+    NSString* descrStr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    descr = [descrStr JSONValue];
+    [defaults setObject:descr forKey:@"menuDescription"];
+    [defaults synchronize];
+
+    return descr;
+}
+
+
+
+
+// replace the current menu description in the user settings (does not overwrite the default menu description)
+- (void)setMenu:(NSString*)JSONdescription
+{
+    NSArray* descr = [JSONdescription JSONValue];
+
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:descr forKey:@"menuDescription"];
+    [defaults synchronize];
+}
+
+
+// return the dictionary description of the current menu, from its given ID (for instance, "radioSelection")
+- (NSDictionary*)menuEntry:(NSString*)entryId
+{
+    NSArray* menu = [self menu];
+    
+    for (NSDictionary* section in menu)
+    {
+        NSArray* entries = [section objectForKey:@"entries"];
+        
+        for (NSDictionary* entry in entries)
+        {
+            NSLog(@"%@", entry);
+            NSString* curId = [entry objectForKey:@"id"];
+            
+            if ([curId isEqualToString:entryId])
+                return entry;
+        }
+    }
+    
+    NSLog(@"YasoundDataCache::menuEntry Error : could not find any entry for id '%@'", entryId);
+    NSLog(@"debug menu : %@", menu);
+    
+    return nil;
+}
+
+
+- (id)entryParameter:(NSString*)param forEntry:(NSDictionary*)entry
+{
+    NSDictionary* params = [entry objectForKey:@"params"];
+    if (params == nil)
+    {
+        NSLog(@"YasoundDataCache::entryParameter : no params, can not get param '%@'", param);
+        return nil;
+    }
+    
+    NSString* result = [params objectForKey:param];
+    if (result == nil)
+    {
+        NSLog(@"YasoundDataCache::entryParameter : param '%@' is nil", param);
+        return nil;
+    }
+    
+    return result;
+}
 
 
 

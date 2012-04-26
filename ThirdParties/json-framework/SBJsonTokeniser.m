@@ -442,7 +442,7 @@
             tok = sbjson_token_error;
             break;
     }
-
+    
     if (tok == sbjson_token_eof) {
         // We ran out of bytes in the middle of a token.
         // We don't know how to restart in mid-flight, so

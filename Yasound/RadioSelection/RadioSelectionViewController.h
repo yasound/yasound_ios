@@ -10,12 +10,6 @@
 #import "QualitySwitchLabel.h"
 #import "TestflightViewController.h"
 
-typedef enum
-{
-    RSTSelection,
-    RSTTop
-} RadioSelectionType;
-
 
 @interface RadioSelectionViewController : TestflightViewController
 {
@@ -27,14 +21,13 @@ typedef enum
     IBOutlet UITableView* _tableView;  
     
     NSString* _currentStyle;
-    RadioSelectionType _type;
     
     NSMutableArray* _radios;
 }
 
+@property (nonatomic, retain) NSURL* url;
 
-//- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type title:(NSString*)title tabIcon:(NSString*)tabIcon;
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type;
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)url andTitle:(NSString*)title;
 
 - (IBAction)onStyleSelectorClicked:(id)sender;
 - (IBAction)onNowPlayingClicked:(id)sender;

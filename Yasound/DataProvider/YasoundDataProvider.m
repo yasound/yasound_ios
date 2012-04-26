@@ -217,10 +217,6 @@ static YasoundDataProvider* _main = nil;
   
   NSURL* url = [_communicator urlWithURL:picturePath absolute:NO addTrailingSlash:NO params:nil];
     
-    //LBDEBUG
-    //NSLog(@"urlForPicture '%@' -> '%@'", picturePath, [url absoluteString]);
-    
-    
   return url;
 }
 
@@ -895,78 +891,11 @@ static YasoundDataProvider* _main = nil;
 // radios lists
 //
 
-- (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
-{
-  [self radiosWithGenre:genre withTarget:target action:selector userData:nil];
-}
-
-- (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
-{
-  [self topRadiosWithGenre:genre withTarget:target action:selector userData:nil];
-}
-
-- (void)selectedRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
-{
-  [self selectedRadiosWithGenre:genre withTarget:target action:selector userData:nil];
-}
-
-- (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
-{
-  [self newRadiosWithGenre:genre withTarget:target action:selector userData:nil];
-}
-
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
 {
   [self friendsRadiosWithGenre:genre withTarget:target action:selector userData:nil];
 }
 
-- (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector
-{
-  [self favoriteRadiosWithGenre:genre withTarget:target action:selector userData:nil];
-}
-
-//
-- (void)radiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-  {
-    Auth* auth = self.apiKeyAuth;
-    NSMutableArray* params = [NSMutableArray array];
-    [params addObject:@"ready=true"];
-    if (genre)
-      [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-    [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-  }
-}
-- (void)topRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-  Auth* auth = self.apiKeyAuth;
-  NSMutableArray* params = [NSMutableArray array];
-  if (genre)
-    [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-  
-  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/top_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
-
-- (void)selectedRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-  Auth* auth = self.apiKeyAuth;
-  NSMutableArray* params = [NSMutableArray array];
-  if (genre)
-    [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-  
-  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/selected_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
-
-- (void)newRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-  Auth* auth = self.apiKeyAuth;
-  NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-created"];
-  [params addObject:@"ready=true"];
-  if (genre)
-    [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-  
-  [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
 
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
 {
@@ -978,18 +907,12 @@ static YasoundDataProvider* _main = nil;
   [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/friend_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
-- (void)favoriteRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
-{
-  Auth* auth = self.apiKeyAuth;
-  NSMutableArray* params = [NSMutableArray array];
-  if (genre)
-    [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
-  
-  [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/favorite_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
-}
+
 
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
 {
+    NSLog(@"YasoundDataProvider::radiosWithUrl '%@'", url);
+    
     Auth* auth = self.apiKeyAuth;
     NSMutableArray* params = [NSMutableArray array];
     if (genre)
@@ -1792,6 +1715,107 @@ static YasoundDataProvider* _main = nil;
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     [req startAsynchronous];
 }
+
+
+
+
+
+
+//................................................................................................................................
+//
+// DEPRECATED
+//
+
+
+- (void)radiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    [self radiosWithGenre_deprecated:genre withTarget:target action:selector userData:nil];
+}
+
+- (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    [self topRadiosWithGenre_deprecated:genre withTarget:target action:selector userData:nil];
+}
+
+- (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    [self selectedRadiosWithGenre_deprecated:genre withTarget:target action:selector userData:nil];
+}
+
+- (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    [self newRadiosWithGenre_deprecated:genre withTarget:target action:selector userData:nil];
+}
+
+
+- (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector
+{
+    [self favoriteRadiosWithGenre_deprecated:genre withTarget:target action:selector userData:nil];
+}
+
+//
+- (void)radiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
+{
+    {
+        Auth* auth = self.apiKeyAuth;
+        NSMutableArray* params = [NSMutableArray array];
+        [params addObject:@"ready=true"];
+        if (genre)
+            [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+        [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+    }
+}
+- (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
+{
+    Auth* auth = self.apiKeyAuth;
+    NSMutableArray* params = [NSMutableArray array];
+    if (genre)
+        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+    
+    [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/top_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+}
+
+- (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
+{
+    Auth* auth = self.apiKeyAuth;
+    NSMutableArray* params = [NSMutableArray array];
+    if (genre)
+        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+    
+    [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/selected_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+}
+
+- (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
+{
+    Auth* auth = self.apiKeyAuth;
+    NSMutableArray* params = [NSMutableArray arrayWithObject:@"order_by=-created"];
+    [params addObject:@"ready=true"];
+    if (genre)
+        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+    
+    [_communicator getObjectsWithClass:[Radio class] withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+}
+- (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
+{
+    Auth* auth = self.apiKeyAuth;
+    NSMutableArray* params = [NSMutableArray array];
+    if (genre)
+        [params addObject:[NSString stringWithFormat:@"genre=%@", genre]];
+    
+    [_communicator getObjectsWithClass:[Radio class] withURL:@"/api/v1/favorite_radio" absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
+}
+
+
+//
+// DEPRECATED
+//
+//................................................................................................................................
+
+
+
+
+
+
 
 
 

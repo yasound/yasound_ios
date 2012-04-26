@@ -12,7 +12,6 @@
 #import "YasoundSessionManager.h"
 #import "YasoundDataProvider.h"
 #import "RadioViewController.h"
-#import "CreateMyRadio.h"
 #import "PlaylistsViewController.h"
 #import "StatsViewController.h"
 #import "APNsNotifInfo.h"
@@ -396,31 +395,9 @@ void SignalHandler(int sig) {
 
 #pragma mark - MyRadio
 
-- (UIViewController*)myRadioSetupViewController
-{
-  [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"skipRadioCreationSendToSelection"];
-  [[NSUserDefaults standardUserDefaults] synchronize]; 
-  UIViewController* controller = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:NO radio:[YasoundDataProvider main].radio];
-  return controller;
-}
 
-- (void)goToMyRadioFromViewController:(UIViewController*)sourceController
-{
-  Radio* r = [YasoundDataProvider main].radio;
-  NSLog(@"go to my radio '%@' (%@)", r.name, r.ready);
-  
-  UIViewController* controller = nil;
-  if ([r.ready boolValue])
-  {
-    controller = [[RadioViewController alloc] initWithRadio:r];
-  }
-  else
-  {
-    controller = [self myRadioSetupViewController];
-  }
-  [sourceController.navigationController pushViewController:controller animated:YES];
-  [controller release];
-}
+
+
 
 - (void)goToMyRadioStatsFromViewController:(UIViewController*)sourceController
 {

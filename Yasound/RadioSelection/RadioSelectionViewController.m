@@ -18,23 +18,19 @@
 
 @implementation RadioSelectionViewController
 
+@synthesize url;
 
 #define TIMEPROFILE_CELL_BUILD @"TimeProfileCellBuild"
 
-//#define TEST_FAKE 0
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil type:(RadioSelectionType)type
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)url andTitle:(NSString*)title
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        _type = type;
-        
-//        UIImage* tabImage = [UIImage imageNamed:tabIcon];
-//        UITabBarItem* theItem = [[UITabBarItem alloc] initWithTitle:title image:tabImage tag:0];
-//        self.tabBarItem = theItem;
-//        [theItem release];      
+        self.title = title;
+        self.url = url;
         
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -66,51 +62,22 @@
 {
     [super viewDidLoad];
     
-    NSString* title = nil;
-    if (_type == RSTSelection)
-        title = NSLocalizedString(@"MenuView_radios_selection", nil);
-    else if (_type == RSTTop)
-        title = NSLocalizedString(@"MenuView_radios_top", nil);
-    
-    _topBarTitle.text = title;
+    _topBarTitle.text = self.title;
     
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuBackground" error:nil];    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     
-    //  _topBarTitle.text = NSLocalizedString(@"FavoritesView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
     [_qualitySwitchLabel loadView];
-    
-    // now playing button
-    //    UIButton* btn = [[UIButton alloc] initWithFrame:frame];
     
     
     NSString* str;
     
     _currentStyle = @"style_all";
     _categoryTitle.text = NSLocalizedString(_currentStyle, nil) ;
-
-#ifdef TEST_FAKE
-    _radios = [[NSMutableArray alloc] init];
-    [_radios retain];
-    for (int i = 0; i < 32; i++)
-    {
-        Radio* radio = [[Radio alloc] init];
-        radio.name = [NSString stringWithFormat:@"radio %d", i];
-        radio.genre = [NSString stringWithFormat:@"genre %d", i];
-        radio.picture = nil;
-        radio.likes = [NSNumber numberWithInteger:456];
-        radio.favorites = [NSNumber numberWithInteger:654];
-        
-        [_radios addObject:radio];
-    }
-    
-    [_tableView reloadData];
-#endif
-    
     
     [self updateRadios:nil];
 }
@@ -237,16 +204,13 @@
     if ([genre isEqualToString:@"style_all"])
         g= nil;
     
-    if (_type == RSTTop)
-        [[YasoundDataCache main] requestRadios:REQUEST_RADIOS_TOP withGenre:g target:self action:@selector(receiveRadios:withInfo:)];
-    else if (_type == RSTSelection)
-        [[YasoundDataCache main] requestRadios:REQUEST_RADIOS_SELECTION withGenre:g target:self action:@selector(receiveRadios:withInfo:)];
+    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:g target:self action:@selector(receiveRadios:info:)];
 }
 
 
 
 
-- (void)receiveRadios:(NSArray*)radios withInfo:(NSDictionary*)info
+- (void)receiveRadios:(NSArray*)radios info:(NSDictionary*)info
 {
 #ifdef TEST_FAKE
     return;

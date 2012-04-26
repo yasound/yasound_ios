@@ -10,12 +10,6 @@
 #import "Radio.h"
 #import "YasoundDataCacheImage.h"
 
-#define REQUEST_RADIOS_ALL @"radiosWithGenre"
-#define REQUEST_RADIOS_TOP @"topRadiosWithGenre"
-#define REQUEST_RADIOS_SELECTION @"selectedRadiosWithGenre"
-#define REQUEST_RADIOS_NEW @"newRadiosWithGenre"
-#define REQUEST_RADIOS_FRIENDS @"friendsRadiosWithGenre"
-#define REQUEST_RADIOS_FAVORITES @"favoriteRadiosWithGenre"
 
 
 
@@ -30,26 +24,16 @@
 
 
 
-//@interface YasoundDataCacheImage
-//
-//@property (nonatomic, retain) NSDate* timeout;
-//@property (nonatomic, retain) UIImage* image;
-//@property (nonatomic, retain) id target;
-//@property (nonatomic) SEL action;
-//
-//
-//@end
-
-
-
-
 @interface YasoundDataCache : NSObject
 {
     NSMutableDictionary* _cacheRadios;
     NSMutableDictionary* _cacheSongs;
     NSMutableDictionary* _cacheFriends;
-//    NSMutableDictionary* _cacheImages;
 }
+
+
+
+
 
 
 
@@ -74,7 +58,7 @@
 //
 // - (void)selector:(NSArray*)data withInfo:(NSDictionnary*)info
 //
-- (void)requestRadios:(NSString*)REQUEST withGenre:(NSString*)genre target:(id)target action:(SEL)selector;
+- (void)requestRadiosWithUrl:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)selector;
 
 
 //
@@ -91,6 +75,29 @@
 
 - (UIImage*)requestImage:(NSURL*)url target:(id)target action:(SEL)selector;
 - (void)releaseImageRequest:(NSURL*)url forTarget:(id)target;
+
+
+
+// return the most recent menu description, or the default menu description if no other one has been downloaded yet
+- (NSArray*)menu;
+
+// replace the current menu description in the user settings (does not overwrite the default menu description)
+- (void)setMenu:(NSString*)JSONdescription;
+
+
+
+
+#define MENU_ENTRY_ID_SELECTION @"radioSelection"
+#define MENU_ENTRY_ID_FAVORITES @"radioMyFavorites"
+
+// return the dictionary description of the current menu, from its given type (for instance, "
+- (NSDictionary*)menuEntry:(NSString*)entryId;
+
+
+#define MENU_ENTRY_PARAM_URL @"url"
+#define MENU_ENTRY_PARAM_GENRE_SELECTION @"genre_selection"
+
+- (id)entryParameter:(NSString*)param forEntry:(NSDictionary*)entry;
 
 
 @end

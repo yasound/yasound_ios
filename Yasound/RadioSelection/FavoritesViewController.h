@@ -19,6 +19,8 @@
     NSArray* _radios;
 }
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabIcon:(NSString*)tabIcon;
+@property (nonatomic, retain) NSURL* url;
+
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)aUrl andTitle:(NSString*)title;
 
 @end

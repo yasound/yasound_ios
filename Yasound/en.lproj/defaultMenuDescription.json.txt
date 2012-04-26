@@ -1,0 +1,34 @@
+[
+                  {
+                   "name": "My radio",
+                   "entries":[
+                              { "id":"myRadio", "name": "My radio", "image": "IconMyRadio", "type": "my_radio"}
+                              ]
+                   },
+                  {
+                   "name": "Radios",
+                   "entries":[
+                              { "id":"radioMyFriends", "name": "My friends", "image": "IconRadiosFriends", "type": "friends"},
+                              { "id":"radioMyFavorites", "name": "My favorites", "image": "IconRadiosFavorites", "type": "radio_list", "params": {"url":"/api/v1/favorite_radio", "genre_selection":false}},
+                              { "id":"radioSelection", "name": "Selection", "image": "IconRadiosSelection", "type": "radio_list", "params": {"url":"/api/v1/selected_radio"}},
+                              { "id":"radioTop", "name": "Top", "image": "IconLeaderboard", "type": "radio_list", "params": {"url":"/api/v1/top_radio"}},
+                              { "id":"radioSearch", "name": "Search", "image": "IconRadiosSearch", "type": "search_radio"}
+                              ]
+                   },
+                   {
+                   "name": "Me",
+                   "entries":[
+                              { "id":"meNotifications", "name": "My notifications", "image": "IconMeNotifs", "type": "notifications"},
+                              { "id":"meStats", "name": "My stats", "image": "IconMeStats", "type": "stats"},
+                              { "id":"meProgramming", "name": "Programming", "image": "IconMePlaylists", "type": "programming"},
+                              { "id":"meSettings", "name": "Settings", "image": "IconMeSettings", "type": "settings"}
+                              ]
+                   },
+                   {
+                   "name": "Miscellaneous",
+                   "entries":[
+                              { "id":"miscLegal", "name": "Terms of Use", "image": "IconMiscLegal", "type": "web_page", "params":{"url":"legal/eula.html"}},
+                              { "id":"miscLogout", "name": "Log out", "image": "IconMiscLogout", "type": "logout"}
+                              ]
+                   }
+                 ]

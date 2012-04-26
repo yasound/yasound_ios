@@ -36,7 +36,7 @@
 #import "ShareModalViewController.h"
 #import "ShareTwitterModalViewController.h"
 #import "YasoundSessionManager.h"
-
+#import "YasoundDataCache.h"
 
 
 //#define LOCAL 1 // use localhost as the server
@@ -423,8 +423,12 @@ static Song* _gNowPlayingSong = nil;
     
     // update favorite button
     [[ActivityModelessSpinner main] addRef];
-    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoriteUpdate:)];
     
+
+    
+    NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
+    NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
+    [[YasoundDataCache main] requestRadiosWithUrl:[NSURL URLWithString:url] withGenre:nil target:self action:@selector(onFavoriteUpdate:)];
     
 }
  
@@ -1763,10 +1767,13 @@ static Song* _gNowPlayingSong = nil;
         nbFavorites--;
     
     _favoritesLabel.text = [NSString stringWithFormat:@"%d", nbFavorites];
-
     
     // send online request
-    [[YasoundDataProvider main] favoriteRadiosWithGenre:nil withTarget:self action:@selector(onFavoritesRadioReceived:)];
+    NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
+    NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
+    [[YasoundDataCache main] requestRadiosWithUrl:[NSURL URLWithString:url] withGenre:nil target:self action:@selector(onFavoritesRadioReceived:)];
+    
+    
 }
 
 - (void)onFavoritesRadioReceived:(NSArray*)radios
@@ -1780,6 +1787,11 @@ static Song* _gNowPlayingSong = nil;
             [[ActivityModelessSpinner main] removeRef];
             [[YasoundDataProvider main] setRadio:self.radio asFavorite:NO];
             self.favoriteButton.selected = NO;
+
+            // and clear the cache for favorites
+            NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
+            NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
+            [[YasoundDataCache main] clearRadios:url];
 
             _favoritesButtonLocked = NO;
             return;

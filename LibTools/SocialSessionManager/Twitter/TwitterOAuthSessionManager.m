@@ -120,11 +120,6 @@
     // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
     //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
     
-    
-    
-    
-    
-    
     NSError* error;
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
     [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];

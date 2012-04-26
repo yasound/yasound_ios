@@ -441,7 +441,7 @@ static YasoundDataCacheImageManager* _main;
     [self.receivedData release];
     
     // inform the user
-    NSLog(@"Connection failed! Error - %@ %@",
+    NSLog(@"YasoundDataCacheImage Connection failed! Error - %@ %@",
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
     

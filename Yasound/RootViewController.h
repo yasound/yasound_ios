@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuViewController.h"
+#import "MenuDynamicViewController.h"
 #import "TestflightViewController.h"
 
 #define NOTIF_PUSH_RADIO @"NOTIF_PushRadio"
@@ -20,13 +20,24 @@
 
 #define NOTIF_PROGAMMING_SONG_ADDED @"NOTIF_SongAdded"
 
+#define NOTIF_GOTO_MYRADIO @"NOTIF_goto_myRadio"
+#define NOTIF_GOTO_CREATE_MYRADIO @"NOTIF_GOTO_CREATE_MYRADIO"
+
 
 @interface RootViewController : TestflightViewController
 {
     BOOL _firstTime;
     
-    MenuViewController* _menuView;
+    MenuDynamicViewController* _menuView;
     UIAlertView* _alertWifiInterrupted;
 }
 
+
 @end
+
+
+//LBDEBUG
+@interface NSString (NSStringDebug)
+- (NSString*) absoluteString;
+@end
+
