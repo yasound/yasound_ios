@@ -64,7 +64,6 @@
 //
 // - (void)selector:(NSArray*)data withInfo:(NSDictionnary*)info
 //
-//- (void)requestRadios:(NSString*)REQUEST withGenre:(NSString*)genre target:(id)target action:(SEL)selector;
 - (void)requestRadiosWithUrl:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)selector;
 
 
