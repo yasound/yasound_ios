@@ -1771,7 +1771,7 @@ static Song* _gNowPlayingSong = nil;
     // send online request
     NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
     NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
-    [[YasoundDataCache main] requestRadiosWithUrl:url withGenre:nil target:self action:@selector(onFavoritesRadioReceived:)];
+    [[YasoundDataCache main] requestRadiosWithUrl:[NSURL URLWithString:url] withGenre:nil target:self action:@selector(onFavoritesRadioReceived:)];
     
     
 }
@@ -1788,6 +1788,11 @@ static Song* _gNowPlayingSong = nil;
             [[YasoundDataProvider main] setRadio:self.radio asFavorite:NO];
             self.favoriteButton.selected = NO;
 
+            // and clear the cache for favorites
+            NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
+            NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
+            [[YasoundDataCache main] clearRadios:url];
+
             _favoritesButtonLocked = NO;
             return;
         }
@@ -1797,12 +1802,6 @@ static Song* _gNowPlayingSong = nil;
     [[YasoundDataProvider main] setRadio:self.radio asFavorite:YES];
     self.favoriteButton.selected = YES;
     _favoritesButtonLocked = NO;
-    
-    // and clear the cache for favorites
-    NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
-    NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
-    [[YasoundDataCache main] clearRadios:url];
-    
 }
 
 

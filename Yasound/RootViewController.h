@@ -37,7 +37,7 @@
 
 
 //LBDEBUG
-//@interface NSString (NSStringDebug)
-//- (NSString*) absoluteString;
-//@end
+@interface NSString (NSStringDebug)
+- (NSString*) absoluteString;
+@end
 
