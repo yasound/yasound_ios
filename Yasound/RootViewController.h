@@ -32,4 +32,12 @@
     UIAlertView* _alertWifiInterrupted;
 }
 
+
 @end
+
+
+//LBDEBUG
+//@interface NSString (NSStringDebug)
+//- (NSString*) absoluteString;
+//@end
+

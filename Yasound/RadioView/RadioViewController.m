@@ -428,7 +428,7 @@ static Song* _gNowPlayingSong = nil;
     
     NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
     NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
-    [[YasoundDataCache main] requestRadiosWithUrl:url withGenre:nil target:self action:@selector(onFavoriteUpdate:)];
+    [[YasoundDataCache main] requestRadiosWithUrl:[NSURL urlWithString:url] withGenre:nil target:self action:@selector(onFavoriteUpdate:)];
     
 }
  

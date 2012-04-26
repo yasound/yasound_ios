@@ -217,10 +217,6 @@ static YasoundDataProvider* _main = nil;
   
   NSURL* url = [_communicator urlWithURL:picturePath absolute:NO addTrailingSlash:NO params:nil];
     
-    //LBDEBUG
-    //NSLog(@"urlForPicture '%@' -> '%@'", picturePath, [url absoluteString]);
-    
-    
   return url;
 }
 

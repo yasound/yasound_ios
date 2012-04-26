@@ -26,6 +26,15 @@
 //#define FORCE_ROOTVIEW_RADIOS
 
 
+//LBDEBUG
+//@implementation NSString (NSStringDebug)
+//- (NSString*) absoluteString
+//{
+//    NSLog(@"UCU");
+//}
+//@end
+
+
 @implementation RootViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
