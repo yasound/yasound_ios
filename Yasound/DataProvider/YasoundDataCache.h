@@ -94,6 +94,16 @@
 
 
 
+#define MENU_ENTRY_ID_SELECTION @"radioSelection"
+
+// return the dictionary description of the current menu, from its given type (for instance, "
+- (NSDictionary*)menuEntry:(NSString*)entryId;
+
+
+#define MENU_ENTRY_PARAM_URL @"url"
+#define MENU_ENTRY_PARAM_GENRE_SELECTION @"genre_selection"
+
+- (id)entryParameter:(NSString*)param forEntry:(NSDictionary*)entry;
 
 
 @end

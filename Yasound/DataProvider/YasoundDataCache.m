@@ -721,6 +721,7 @@ static UIImage* gDummyImage = nil;
 
 
 
+
 // replace the current menu description in the user settings (does not overwrite the default menu description)
 - (void)setMenu:(NSString*)JSONdescription
 {
@@ -732,6 +733,41 @@ static UIImage* gDummyImage = nil;
 }
 
 
+// return the dictionary description of the current menu, from its given ID (for instance, "radioSelection")
+- (NSDictionary*)menuEntry:(NSString*)entryId
+{
+    NSArray* menu = [self menu];
+    for (NSDictionary* entry in menu)
+    {
+        NSString* curId = [entry objectForKey:@"id"];
+        if ([curId isEqualToString:entryId])
+            return entry;
+    }
+    
+    NSLog(@"YasoundDataCache::menuEntry Error : could not find any entry for id '%@'", entryId);
+    
+    return nil;
+}
+
+
+- (id)entryParameter:(NSString*)param forEntry:(NSDictionary*)entry
+{
+    NSDictionary* params = [entry objectForKey:@"params"];
+    if (params == nil)
+    {
+        NSLog(@"YasoundDataCache::entryParameter : no params, can not get param '%@'", param);
+        return nil;
+    }
+    
+    NSString* result = [params objectForKey:param];
+    if (result == nil)
+    {
+        NSLog(@"YasoundDataCache::entryParameter : param '%@' is nil", param);
+        return nil;
+    }
+    
+    return result;
+}
 
 
 

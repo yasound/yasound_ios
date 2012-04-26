@@ -28,7 +28,7 @@
 #import "NotificationCenterViewController.h"
 #import "YasoundNotifCenter.h"
 #import "MenuTableViewCell.h"
-
+#import "YasoundDataCache.h"
 
 
 @implementation MenuDynamicViewController
@@ -344,8 +344,9 @@
 
     if ([type isEqualToString:TYPE_RADIO_LIST])
     {
-        NSString* url = [self getRowParameter:@"url" forRow:row];
-        NSNumber* genre_selection = [self getRowParameter:@"genre_selection" forRow:row];
+        NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:row];
+         NSNumber* genre_selection = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_GENRE_SELECTION forEntry:row];
+
         BOOL displayGenreSelector = YES;
         if (genre_selection != nil)
             displayGenreSelector = [genre_selection boolValue];
@@ -455,25 +456,6 @@
                                              
                                              
                                              
-- (id)getRowParameter:(NSString*)param forRow:(NSDictionary*)row
-{
-    NSDictionary* params = [row objectForKey:@"params"];
-    if (params == nil)
-    {
-        NSLog(@"getRowParameter : no params, can not get param '%@'", param);
-        return nil;
-    }
-    
-    NSString* result = [params objectForKey:param];
-    if (result == nil)
-    {
-        NSLog(@"getRowParameter : param '%@' is nil", param);
-        return nil;
-    }
-    
-    return result;
-}
-
 
                                  
 

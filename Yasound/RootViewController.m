@@ -311,7 +311,12 @@
     
   if (sendToSelection)
   {
-      RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil type:RSTSelection];
+      NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_SELECTION];
+      NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
+      NSString* name = [entry objectForKey:@"name"];
+      assert(entry);
+      
+      RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withUrl:[NSURL URLWithString:url] andTitle:name];
     [self.navigationController pushViewController:view animated:NO];    
     [view release];
   }

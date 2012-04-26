@@ -2,33 +2,33 @@
                   {
                    "name": "Ma radio",
                    "entries":[
-                              { "name": "Ma radio", "image": "IconMyRadio", "type": "my_radio"}
+                              { "id":"myRadio", "name": "My radio", "image": "IconMyRadio", "type": "my_radio"}
                               ]
                    },
                   {
                    "name": "Radios",
                    "entries":[
-                              { "name": "Mes amis", "image": "IconRadiosFriends", "type": "friends"},
-                              { "name": "Mes favoris", "image": "IconRadiosFavorites", "type": "radio_list", "params": {"url":"/api/v1/favorite_radio", "genre_selection":false}},
-                              { "name": "Sélection", "image": "IconRadiosSelection", "type": "radio_list", "params": {"url":"/api/v1/selected_radio"}},
-                              { "name": "Top", "image": "IconLeaderboard", "type": "radio_list", "params": {"url":"/api/v1/top_radio"}},
-                              { "name": "Recherche", "image": "IconRadiosSearch", "type": "search_radio"}
+                              { "id":"radioMyFriends", "name": "My friends", "image": "IconRadiosFriends", "type": "friends"},
+                              { "id":"radioMyFavorites", "name": "My favorites", "image": "IconRadiosFavorites", "type": "radio_list", "params": {"url":"/api/v1/favorite_radio", "genre_selection":false}},
+                              { "id":"radioSelection", "name": "Selection", "image": "IconRadiosSelection", "type": "radio_list", "params": {"url":"/api/v1/selected_radio"}},
+                              { "id":"radioTop", "name": "Top", "image": "IconLeaderboard", "type": "radio_list", "params": {"url":"/api/v1/top_radio"}},
+                              { "id":"radioSearch", "name": "Search", "image": "IconRadiosSearch", "type": "search_radio"}
                               ]
                    },
                    {
                    "name": "Moi",
                    "entries":[
-                              { "name": "Mes notifications", "image": "IconMeNotifs", "type": "notifications"},
-                              { "name": "Mes statistiques", "image": "IconMeStats", "type": "stats"},
-                              { "name": "Ma programmation", "image": "IconMePlaylists", "type": "programming"},
-                              { "name": "Paramètres", "image": "IconMeSettings", "type": "settings"}
+                              { "id":"meNotifications", "name": "My notifications", "image": "IconMeNotifs", "type": "notifications"},
+                              { "id":"meStats", "name": "My stats", "image": "IconMeStats", "type": "stats"},
+                              { "id":"meProgramming", "name": "Programming", "image": "IconMePlaylists", "type": "programming"},
+                              { "id":"meSettings", "name": "Settings", "image": "IconMeSettings", "type": "settings"}
                               ]
                    },
                    {
                    "name": "Divers",
                    "entries":[
-                              { "name": "Conditions d'utilisation", "image": "IconMiscLegal", "type": "web_page", "params":{"url":"legal/eula.html"}},
-                              { "name": "Se déconnecter", "image": "IconMiscLogout", "type": "logout"}
+                              { "id":"miscLegal", "name": "Terms of Use", "image": "IconMiscLegal", "type": "web_page", "params":{"url":"legal/eula.html"}},
+                              { "id":"miscLogout", "name": "Log out", "image": "IconMiscLogout", "type": "logout"}
                               ]
                    }
 ]
