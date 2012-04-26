@@ -43,7 +43,7 @@
 #define TYPE_USER @"user"
 #define TYPE_USER_LIST @"user_list"
 #define TYPE_WEB_PAGE @"web_page"
-#define TYPE_RADIO_SEARCH @"radio_search"
+#define TYPE_RADIO_SEARCH @"search_radio"
 #define TYPE_FRIENDS @"friends"
 #define TYPE_NOTIFICATIONS @"notifications"
 #define TYPE_STATS @"stats"
