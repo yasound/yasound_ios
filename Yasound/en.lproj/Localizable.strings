@@ -80,7 +80,7 @@
 "LoginView_alert_pword_dont_match" = "Password fields don't match!";
 
 "SignupView_title" = "Sign up";
-"SignupView_label" = "Sign with an email address.";
+"SignupView_label" = "Sign with an valid email address.";
 "SignupView_username" = "Choose a username";
 "SignupView_submit_button" = "Submit";
 

@@ -55,16 +55,36 @@
     _titleItem.title = NSLocalizedString(@"SignupView_title", nil);
     _backItem.title = NSLocalizedString(@"Navigation_back", nil);
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    
+    
+    _container.backgroundColor = [UIColor clearColor];
+    
     _label.text =  NSLocalizedString(@"SignupView_label", nil);
     
     _username.placeholder = NSLocalizedString(@"SignupView_username", nil);
+    _posMin = _container.frame.origin.y;
+    _posRef = _username.frame.origin.y;
+    
+    
     _email.placeholder = NSLocalizedString(@"YasoundLoginView_email", nil);
     _pword.placeholder = NSLocalizedString(@"YasoundLoginView_password", nil);
+    _confirmPword.placeholder = NSLocalizedString(@"YasoundLoginView_passwordConfirm", nil);
     
     _submitLabel.text = NSLocalizedString(@"SignupView_submit_button", nil);
     
+    _username.delegate = self;
+    _email.delegate = self;
+    _pword.delegate = self;
+    _confirmPword.delegate = self;
     
-    [_username becomeFirstResponder];
+    UITapGestureRecognizer* gest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapGestureRecognized)];
+    gest.numberOfTapsRequired = 1;
+    gest.numberOfTouchesRequired = 1;
+    [self.view addGestureRecognizer:gest];
+    
+    
+//    [_username becomeFirstResponder];
     
     //_signupButton.titleLabel.text = NSLocalizedString(@"LoginView_signup_label", nil);    
 }
@@ -89,25 +109,43 @@
 
 
 
-
+- (void)onTapGestureRecognized
+{
+    [self.view endEditing:YES];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    _container.frame = CGRectMake(_container.frame.origin.x, _posMin, _container.frame.size.width, _container.frame.size.height);
+    [UIView commitAnimations];    
+}
 
 
 #pragma mark - TextField Delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == _email)
-    {
+    if (textField == _username)
+        [_email becomeFirstResponder];
+    
+    else if (textField == _email)
         [_pword becomeFirstResponder];
-    }
+    
+    else if (textField == _pword)
+        [_confirmPword becomeFirstResponder];
+    
     else
     {
         [textField resignFirstResponder];    
         
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.3];
+        _container.frame = CGRectMake(_container.frame.origin.x, _posMin, _container.frame.size.width, _container.frame.size.height);
+        [UIView commitAnimations];
+        
         // activate "submit" button
-        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
-        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+//        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+//        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
+//        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
 //        if ((email.length != 0) && (pword.length != 0))
 //            _submitButton.enabled = YES;
 //        else
@@ -117,6 +155,38 @@
     return YES;
 }
 
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    CGRect frame = _container.frame;
+    
+    if (textField == _username)
+        frame = CGRectMake(frame.origin.x, _posMin, frame.size.width, frame.size.height);
+    
+    else if (textField == _email)
+        frame = CGRectMake(frame.origin.x, _posMin - (_email.frame.origin.y - _posRef), frame.size.width, frame.size.height);
+
+    else if (textField == _pword)
+        frame = CGRectMake(frame.origin.x, _posMin - (_pword.frame.origin.y - _posRef), frame.size.width, frame.size.height);
+
+    else if (textField == _confirmPword)
+        frame = CGRectMake(frame.origin.x, _posMin - (_confirmPword.frame.origin.y - _posRef), frame.size.width, frame.size.height);
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    _container.frame = frame;
+    [UIView commitAnimations];
+}
+
+
+//- (void)textViewDidChangeSelection:(UITextView *)textView
+//{
+//    if (textView.selectedRange.location != NSNotFound) 
+//    {
+//        selectRange = textView.selectedRange;
+//    }
+//}
 
 
 

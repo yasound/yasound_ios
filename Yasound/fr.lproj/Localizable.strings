@@ -78,7 +78,7 @@
 "LoginView_alert_pword_dont_match" = "Les mots de passe ne correspondent pas!";
 
 "SignupView_title" = "Enregistrement";
-"SignupView_label" = "s'enregistrer avec son adresse email.";
+"SignupView_label" = "s'enregistrer avec une adresse email valide.";
 "SignupView_username" = "Choisir un nom d'utilisateur";
 "SignupView_submit_button" = "Soumettre";
 
