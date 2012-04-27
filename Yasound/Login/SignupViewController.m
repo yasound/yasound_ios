@@ -78,24 +78,34 @@
     _pword.delegate = self;
     _confirmPword.delegate = self;
     
+    
+    
     UITapGestureRecognizer* gest = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapGestureRecognized)];
+    gest.delegate = self; // we need this to exclude the other controls from the gesture catching system
     gest.numberOfTapsRequired = 1;
     gest.numberOfTouchesRequired = 1;
     [self.view addGestureRecognizer:gest];
     
     
-//    [_username becomeFirstResponder];
-    
-    //_signupButton.titleLabel.text = NSLocalizedString(@"LoginView_signup_label", nil);    
 }
 
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch 
+{
+    
+    NSLog(@"%@", touch.view.class);
+    
+    if ([touch.view isKindOfClass:[UIControl class]]) {
+        // we touched a button, slider, or other UIControl
+        return NO; // ignore the touch
+    }
+    return YES; // handle the touch
+}
 
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-//    _submitButton.enabled = NO;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -143,13 +153,13 @@
         [UIView commitAnimations];
         
         // activate "submit" button
-//        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
-//        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
-//        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
-//        if ((email.length != 0) && (pword.length != 0))
-//            _submitButton.enabled = YES;
-//        else
-//            _submitButton.enabled = NO;
+        //        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        //        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
+        //        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+        //        if ((email.length != 0) && (pword.length != 0))
+        //            _submitButton.enabled = YES;
+        //        else
+        //            _submitButton.enabled = NO;
         
     }
     return YES;
@@ -166,10 +176,10 @@
     
     else if (textField == _email)
         frame = CGRectMake(frame.origin.x, _posMin - (_email.frame.origin.y - _posRef), frame.size.width, frame.size.height);
-
+    
     else if (textField == _pword)
         frame = CGRectMake(frame.origin.x, _posMin - (_pword.frame.origin.y - _posRef), frame.size.width, frame.size.height);
-
+    
     else if (textField == _confirmPword)
         frame = CGRectMake(frame.origin.x, _posMin - (_confirmPword.frame.origin.y - _posRef), frame.size.width, frame.size.height);
     
@@ -180,13 +190,6 @@
 }
 
 
-//- (void)textViewDidChangeSelection:(UITextView *)textView
-//{
-//    if (textView.selectedRange.location != NSNotFound) 
-//    {
-//        selectRange = textView.selectedRange;
-//    }
-//}
 
 
 
@@ -205,18 +208,21 @@
         [av release];  
         return;    
     }
-    
-    // TAG ACTIVITY ALERT
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
-    
-    NSLog(@"Signup email %@   pword %@   username %@", email, pword, username);
-    
-    //signup
-    [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];
-
-//    // login request to server
-//    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
 }
+
+
+    
+//    // TAG ACTIVITY ALERT
+//    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+//    
+//    NSLog(@"Signup email %@   pword %@   username %@", email, pword, username);
+//    
+//    //signup
+//    [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];
+//    
+//    //    // login request to server
+//    //    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
+//}
 
 - (void) requestDidReturn:(User*)user info:(NSDictionary*)info
 {
@@ -237,7 +243,7 @@
     
     // get the app menu from the server, before you can proceed
     [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
- 
+    
 }
 
 
@@ -258,7 +264,7 @@
 
 - (void)enterTheAppAfterProperLogin
 {
-   // call root to launch the Radio
+    // call root to launch the Radio
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
 }
 
