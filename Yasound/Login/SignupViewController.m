@@ -200,29 +200,68 @@
     NSString* username = [_username.text stringByTrimmingCharactersInSet:space];
     NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
     NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+    NSString* pword2 = [_confirmPword.text stringByTrimmingCharactersInSet:space];
     
     if (![RegExp emailIsValid:email])
     {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_email_not_valid", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_email_not_valid", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
         [av release];  
         return;    
     }
+
+    if (![pword isEqualToString:pword2])
+    {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_pword_dont_match", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        return;    
+    }
+    
+    
+    NSString* message = [NSString stringWithFormat:NSLocalizedString(@"SignUp_alert_confirm", nil), email, username];
+                         
+    _confirmAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation_confirm", nil), nil];
+    [_confirmAlert show];
+    [_confirmAlert release];  
+    return;    
+
 }
+                         
+                         
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString* title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if (alertView == _confirmAlert)
+    {
+        if (![title isEqualToString:NSLocalizedString(@"Navigation_confirm", nil)])
+            return;
+
+        NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
+        
+        NSString* username = [_username.text stringByTrimmingCharactersInSet:space];
+        NSString* email = [_email.text stringByTrimmingCharactersInSet:space];
+        NSString* pword = [_pword.text stringByTrimmingCharactersInSet:space];
+        
+        
+        // TAG ACTIVITY ALERT
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+    
+        NSLog(@"Signup email %@   pword %@   username %@", email, pword, username);
+    
+        //signup
+        [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];
+        
+    }
+}
+
+                         
 
 
     
-//    // TAG ACTIVITY ALERT
-//    [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
-//    
-//    NSLog(@"Signup email %@   pword %@   username %@", email, pword, username);
-//    
-//    //signup
-//    [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];
-//    
-//    //    // login request to server
-//    //    [[YasoundDataProvider main] login:email password:pword target:self action:@selector(requestDidReturn:info:)];
-//}
 
 - (void) requestDidReturn:(User*)user info:(NSDictionary*)info
 {
@@ -232,7 +271,7 @@
     
     if (user == nil)
     {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"LoginView_alert_title", nil) message:NSLocalizedString(@"LoginView_alert_message_error", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
         [av release];  
         return;

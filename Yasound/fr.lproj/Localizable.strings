@@ -5,6 +5,7 @@
 "Navigation_next" = "Suivant";
 "Navigation_NowPlaying" = "A l'écoute";
 "Navigation_cancel" = "Annuler";
+"Navigation_confirm" = "Je confirme";
 "Navigation_OK" = "OK";
 
 "Connection" = "Connexion";
@@ -82,7 +83,7 @@
 "SignupView_username" = "Choisir un nom d'utilisateur";
 "SignupView_submit_button" = "Soumettre";
 
-
+"SignUp_alert_confirm" = "Vous êtes sur le point de créer un compte avec l'adresse email\n\n%@\n\npour l'utilisateur\n\n%@\n\nVous devriez recevoir ensuite un courrier de confirmation pour valider votre inscription.";
 
 
 //"HomeView_title" = "Yasound";

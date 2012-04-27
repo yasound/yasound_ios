@@ -29,6 +29,8 @@
     
     CGFloat _posMin;
     CGFloat _posRef;
+    
+    UIAlertView* _confirmAlert;
 }
 
 

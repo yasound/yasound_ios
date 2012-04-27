@@ -5,6 +5,7 @@
 "Navigation_next" = "Next";
 "Navigation_NowPlaying" = "Now playing";
 "Navigation_cancel" = "Cancel";
+"Navigation_confirm" = "I confirme";
 "Navigation_OK" = "OK";
 
 "Connection" = "Connection";
@@ -83,6 +84,8 @@
 "SignupView_label" = "Sign with an valid email address.";
 "SignupView_username" = "Choose a username";
 "SignupView_submit_button" = "Submit";
+
+"SignUp_alert_confirm" = "You are about to create an account using the email address\n\n%@\n\nfor the user\n\n%@\n\nYou should then receive a confirmation email to validate your account.";
 
 
 
