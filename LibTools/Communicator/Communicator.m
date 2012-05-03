@@ -955,6 +955,15 @@
     }
     // TODO: get locale of device in order to send appropriated headers
     [request addRequestHeader:@"Accept-Language" value:NSLocalizedString(@"ACCEPT_LANGUAGE", @"")];
+    
+    NSString* appId = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    NSString* appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    
+    NSMutableArray* params = [NSMutableArray array];
+    [params addObject:[NSString stringWithFormat:@"app_id=%@", appId]];
+    [params addObject:[NSString stringWithFormat:@"app_version=%@", appVersion]];
+    NSURL* url = [self URLWithURL:request.url andParams:params];
+    request.url = url;
 }
 
 - (ASIHTTPRequest*)getRequestForObjectsWithURL:(NSString*)path absolute:(BOOL)isAbsolute withUrlParams:(NSArray*)params withAuth:(Auth*)auth

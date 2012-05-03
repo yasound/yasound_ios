@@ -498,6 +498,8 @@
 		40CC5A5A153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
 		40CC5A5B153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
 		40CC5A5C153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
+		40D744A31551744500A30971 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
+		40D744A41551744600A30971 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		40DE99F115406B98001E63F4 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
 		40DE99F215406B98001E63F4 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
 		40DE99F315406B98001E63F4 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
@@ -6872,6 +6874,7 @@
 				BCE66A9B1548599A0094B4D0 /* MenuTableViewCell.m in Sources */,
 				BCE66AA21548599A0094B4D0 /* NotificationTableViewCell.m in Sources */,
 				BC9601BE154997B90003AC7E /* WebPageViewController.m in Sources */,
+				40D744A41551744600A30971 /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7051,6 +7054,7 @@
 				BCE66A9A1548599A0094B4D0 /* MenuTableViewCell.m in Sources */,
 				BCE66AA11548599A0094B4D0 /* NotificationTableViewCell.m in Sources */,
 				BC9601BD154997B90003AC7E /* WebPageViewController.m in Sources */,
+				40D744A31551744500A30971 /* SignupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
