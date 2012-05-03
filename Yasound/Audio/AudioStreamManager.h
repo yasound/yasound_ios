@@ -16,6 +16,11 @@
 #define NOTIF_AUDIOSTREAM_STOP @"NOTIF_AudioStream_stop"
 
 @interface AudioStreamManager : NSObject
+{
+    NSInteger _streamErrorCount;
+    NSTimer* _streamErrorTimer;
+    NSInteger _streamErrorTimerPeriod;
+}
 
 @property (retain) Radio* currentRadio;
 
@@ -24,6 +29,8 @@
 
 - (void)startRadio:(Radio*)radio;
 - (void)stopRadio;
+
+- (void)tryAndRestartOnError;
 
 //- (void)pauseRadio;
 - (void)playRadio;

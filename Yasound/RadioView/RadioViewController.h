@@ -70,7 +70,6 @@
     BOOL _waitingForPreviousEvents;
     
     NSInteger _serverErrorCount;
-    NSInteger _streamErrorCount;
   
   NSArray* _connectedUsers;
   OrientedTableView* _usersContainer;

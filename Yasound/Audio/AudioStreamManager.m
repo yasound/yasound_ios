@@ -35,11 +35,13 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 
 
+
 - (id)init
 {
     if (self = [super init])
     {
         self.currentRadio = nil;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
     }
     
     return self;
@@ -47,6 +49,18 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 
 - (void)startRadio:(Radio*)radio
+{
+    if ((_streamErrorTimer != nil) && [_streamErrorTimer isValid])
+    {
+        [_streamErrorTimer invalidate];
+        _streamErrorTimer = nil;
+    }
+    
+    [self _startRadio:radio];
+}
+
+
+- (void)_startRadio:(Radio*)radio
 {
 #if MUTE_RADIO
     return;
@@ -87,6 +101,18 @@ static AudioStreamer* _gAudioStreamer = nil;
 }
 
 - (void)stopRadio
+{
+    if ((_streamErrorTimer != nil) && [_streamErrorTimer isValid])
+    {
+        [_streamErrorTimer invalidate];
+        _streamErrorTimer = nil;
+    }
+    
+    [self _stopRadio];
+}
+
+
+- (void)_stopRadio
 {
 #if MUTE_RADIO
     return;
@@ -155,6 +181,61 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 
 
+
+
+
+
+
+- (void)tryAndRestartOnError
+{
+    _streamErrorCount++;
+    
+    // error is handled already
+    if (_streamErrorTimer != nil)
+        return;
+    
+    _streamErrorTimerPeriod = 1;
+}
+
+
+
+
+- (void)onAudioStreamNotif:(NSNotification*)notif
+{
+    NSLog(@"onAudioStreamNotif");
+    
+    if ((_streamErrorTimer != nil) && [_streamErrorTimer isValid])
+    {
+        NSLog(@"audio stream error is begin handled already");
+        
+        [_streamErrorTimer invalidate];
+        _streamErrorTimer = nil;
+        _streamErrorTimerPeriod = _streamErrorTimerPeriod * 3;
+        if (_streamErrorTimerPeriod > 60)
+            _streamErrorTimerPeriod = 60;
+        
+        NSLog(@"new period of error retreiving : %d", _streamErrorTimerPeriod);
+        
+    }
+    else
+    {
+        _streamErrorTimerPeriod = 1;
+    }
+
+    
+    _streamErrorCount++;
+    _streamErrorTimer = [NSTimer scheduledTimerWithTimeInterval:_streamErrorTimerPeriod target:self selector:@selector(onStreamErrorHandling:) userInfo:nil repeats:NO];
+}
+
+
+
+- (void)onStreamErrorHandling:(NSTimer*)timer
+{
+    [[AudioStreamManager main] _stopRadio];
+    [[AudioStreamManager main] _startRadio:self.currentRadio];
+    
+    _streamErrorTimer = nil;
+}
 
 
 
