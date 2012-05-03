@@ -1561,6 +1561,18 @@ static YasoundDataProvider* _main = nil;
   
   Auth* auth = self.apiKeyAuth;
   NSString* url = [NSString stringWithFormat:@"api/v1/edit_song/%@", song.id];
+    
+
+    //LBDEBUG
+    NSLog(@"edit url '%@'", url);
+    if ([url isEqualToString:@"api/v1/edit_song/0"])
+    {
+        NSLog(@"OK");
+        NSLog(@"song.id  0x%p", song.id);
+        NSLog(@"%d", [song.id integerValue]);
+    }
+    //////////////
+        
   [_communicator updateObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
