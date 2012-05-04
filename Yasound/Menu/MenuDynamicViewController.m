@@ -330,8 +330,12 @@
     
     if ([type isEqualToString:TYPE_RADIO])
     {
-        NSLog(@"TODO");
-        assert(0);
+        NSNumber* radio_id_nb = [row objectForKey:@"radio_id"];
+        assert(radio_id_nb != nil);
+        //NSInteger radio_id = [radio_id_nb integerValue];
+
+        [[YasoundDataProvider main] radioWithId:radio_id_nb target:self action:@selector(onGetRadio:info:)];
+        
         return;
     }
 
@@ -448,7 +452,14 @@
                                              
                                              
                                              
-                                             
+               
+
+- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)dico
+{
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
 
                                  
 
