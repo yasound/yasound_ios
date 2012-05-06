@@ -948,7 +948,7 @@
 {
     // the https certificate seems to be ok but keep next line commented...
     //    request.validatesSecureCertificate = FALSE;
-    
+     
     if (self.appCookie)
     {
         [request.requestCookies addObject:self.appCookie];
@@ -956,7 +956,13 @@
     // TODO: get locale of device in order to send appropriated headers
     [request addRequestHeader:@"Accept-Language" value:NSLocalizedString(@"ACCEPT_LANGUAGE", @"")];
     
+    // app info    
+#ifdef SIMULATE_TECHTOUR
+    NSString* appId = @"com.yasound.techtour";
+#else
     NSString* appId = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+#endif
+    
     NSString* appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     
     NSMutableArray* params = [NSMutableArray array];

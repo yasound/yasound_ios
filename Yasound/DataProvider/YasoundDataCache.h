@@ -96,6 +96,7 @@
 
 #define MENU_ENTRY_PARAM_URL @"url"
 #define MENU_ENTRY_PARAM_GENRE_SELECTION @"genre_selection"
+#define MENU_ENTRY_PARAM_RADIO_ID @"radio_id"
 
 - (id)entryParameter:(NSString*)param forEntry:(NSDictionary*)entry;
 

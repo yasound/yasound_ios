@@ -498,6 +498,406 @@
 		40CC5A5A153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
 		40CC5A5B153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
 		40CC5A5C153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
+		40D53B561554280F001EB0C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
+		40D53B571554280F001EB0C5 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
+		40D53B581554280F001EB0C5 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
+		40D53B591554280F001EB0C5 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
+		40D53B5A1554280F001EB0C5 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
+		40D53B5B1554280F001EB0C5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
+		40D53B5C1554280F001EB0C5 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
+		40D53B5D1554280F001EB0C5 /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
+		40D53B5E1554280F001EB0C5 /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
+		40D53B5F1554280F001EB0C5 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
+		40D53B601554280F001EB0C5 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
+		40D53B611554280F001EB0C5 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
+		40D53B621554280F001EB0C5 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
+		40D53B631554280F001EB0C5 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
+		40D53B641554280F001EB0C5 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
+		40D53B651554280F001EB0C5 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
+		40D53B661554280F001EB0C5 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
+		40D53B671554280F001EB0C5 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
+		40D53B681554280F001EB0C5 /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
+		40D53B691554280F001EB0C5 /* WebImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009010A14967AEE00C9E51A /* WebImageView.m */; };
+		40D53B6A1554280F001EB0C5 /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = 4009011B149A69F100C9E51A /* Auth.m */; };
+		40D53B6B1554280F001EB0C5 /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
+		40D53B6C1554280F001EB0C5 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
+		40D53B6D1554280F001EB0C5 /* Playlist.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F514A107DF00873381 /* Playlist.m */; };
+		40D53B6E1554280F001EB0C5 /* Radio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F714A107DF00873381 /* Radio.m */; };
+		40D53B6F1554280F001EB0C5 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FD14A107DF00873381 /* Track.m */; };
+		40D53B701554280F001EB0C5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988FF14A107DF00873381 /* User.m */; };
+		40D53B711554280F001EB0C5 /* WallEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890114A107DF00873381 /* WallEvent.m */; };
+		40D53B721554280F001EB0C5 /* WallMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BC49890314A107DF00873381 /* WallMessage.m */; };
+		40D53B731554280F001EB0C5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB49814A2322900CF922A /* SettingsViewController.m */; };
+		40D53B741554280F001EB0C5 /* PlaylistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB4A114A240B300CF922A /* PlaylistsViewController.m */; };
+		40D53B751554280F001EB0C5 /* KeywordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBAB4B014A35FE700CF922A /* KeywordsViewController.m */; };
+		40D53B761554280F001EB0C5 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964014AB7D6E00D54631 /* ASIAuthenticationDialog.m */; };
+		40D53B771554280F001EB0C5 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964314AB7D6E00D54631 /* ASIDataCompressor.m */; };
+		40D53B781554280F001EB0C5 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964514AB7D6E00D54631 /* ASIDataDecompressor.m */; };
+		40D53B791554280F001EB0C5 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964714AB7D6E00D54631 /* ASIDownloadCache.m */; };
+		40D53B7A1554280F001EB0C5 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964914AB7D6E00D54631 /* ASIFormDataRequest.m */; };
+		40D53B7B1554280F001EB0C5 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964B14AB7D6E00D54631 /* ASIHTTPRequest.m */; };
+		40D53B7C1554280F001EB0C5 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964F14AB7D6E00D54631 /* ASIInputStream.m */; };
+		40D53B7D1554280F001EB0C5 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965114AB7D6E00D54631 /* ASINetworkQueue.m */; };
+		40D53B7E1554280F001EB0C5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC965614AB7D6E00D54631 /* Reachability.m */; };
+		40D53B7F1554280F001EB0C5 /* EasyTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC968B14AB7D8900D54631 /* EasyTracker.m */; };
+		40D53B801554280F001EB0C5 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EA14AB7D9000D54631 /* NSObject+SBJson.m */; };
+		40D53B811554280F001EB0C5 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96ED14AB7D9000D54631 /* SBJsonParser.m */; };
+		40D53B821554280F001EB0C5 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96EF14AB7D9000D54631 /* SBJsonStreamParser.m */; };
+		40D53B831554280F001EB0C5 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F114AB7D9000D54631 /* SBJsonStreamParserAccumulator.m */; };
+		40D53B841554280F001EB0C5 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F314AB7D9000D54631 /* SBJsonStreamParserAdapter.m */; };
+		40D53B851554280F001EB0C5 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F514AB7D9000D54631 /* SBJsonStreamParserState.m */; };
+		40D53B861554280F001EB0C5 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F714AB7D9000D54631 /* SBJsonStreamWriter.m */; };
+		40D53B871554280F001EB0C5 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96F914AB7D9000D54631 /* SBJsonStreamWriterAccumulator.m */; };
+		40D53B881554280F001EB0C5 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FB14AB7D9000D54631 /* SBJsonStreamWriterState.m */; };
+		40D53B891554280F001EB0C5 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
+		40D53B8A1554280F001EB0C5 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
+		40D53B8B1554280F001EB0C5 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
+		40D53B8C1554280F001EB0C5 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970314AB7D9000D54631 /* NSObject+JsonProxy.m */; };
+		40D53B8D1554280F001EB0C5 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970514AB7D9000D54631 /* NSObject+PropertyDictionary.m */; };
+		40D53B8E1554280F001EB0C5 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
+		40D53B8F1554280F001EB0C5 /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
+		40D53B901554280F001EB0C5 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
+		40D53B911554280F001EB0C5 /* TwitterSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979B14AB7DD100D54631 /* TwitterSessionManager.m */; };
+		40D53B921554280F001EB0C5 /* TwitterAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979E14AB7DD100D54631 /* TwitterAccountsViewController.m */; };
+		40D53B931554280F001EB0C5 /* TwitteriOSSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97A114AB7DD100D54631 /* TwitteriOSSessionManager.m */; };
+		40D53B941554280F001EB0C5 /* TwitterOAuthSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97A314AB7DD100D54631 /* TwitterOAuthSessionManager.m */; };
+		40D53B951554280F001EB0C5 /* TwitterSigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97A514AB7DD100D54631 /* TwitterSigninViewController.m */; };
+		40D53B961554280F001EB0C5 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC97D614AB820500D54631 /* SFHFKeychainUtils.m */; };
+		40D53B971554280F001EB0C5 /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
+		40D53B981554280F001EB0C5 /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798E14AE74630011AADD /* ChartView.m */; };
+		40D53B991554280F001EB0C5 /* StatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA799314B1AE520011AADD /* StatsViewController.m */; };
+		40D53B9A1554280F001EB0C5 /* RegExp.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6314D114B4665200549EF6 /* RegExp.m */; };
+		40D53B9B1554280F001EB0C5 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
+		40D53B9C1554280F001EB0C5 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
+		40D53B9D1554280F001EB0C5 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
+		40D53B9E1554280F001EB0C5 /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
+		40D53B9F1554280F001EB0C5 /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
+		40D53BA01554280F001EB0C5 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
+		40D53BA11554280F001EB0C5 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
+		40D53BA21554280F001EB0C5 /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
+		40D53BA31554280F001EB0C5 /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
+		40D53BA41554280F001EB0C5 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
+		40D53BA51554280F001EB0C5 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
+		40D53BA61554280F001EB0C5 /* InteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304FD14C0248100F39374 /* InteractiveView.m */; };
+		40D53BA71554280F001EB0C5 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
+		40D53BA81554280F001EB0C5 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
+		40D53BA91554280F001EB0C5 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
+		40D53BAA1554280F001EB0C5 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
+		40D53BAB1554280F001EB0C5 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
+		40D53BAC1554280F001EB0C5 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
+		40D53BAD1554280F001EB0C5 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
+		40D53BAE1554280F001EB0C5 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
+		40D53BAF1554280F001EB0C5 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
+		40D53BB01554280F001EB0C5 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE514CF64B100DF0950 /* MGTwitterEngine.m */; };
+		40D53BB11554280F001EB0C5 /* MGTwitterHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE914CF64B100DF0950 /* MGTwitterHTTPURLConnection.m */; };
+		40D53BB21554280F001EB0C5 /* MGTwitterLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBEB14CF64B100DF0950 /* MGTwitterLibXMLParser.m */; };
+		40D53BB31554280F001EB0C5 /* MGTwitterMessagesLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBED14CF64B100DF0950 /* MGTwitterMessagesLibXMLParser.m */; };
+		40D53BB41554280F001EB0C5 /* MGTwitterMessagesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBEF14CF64B100DF0950 /* MGTwitterMessagesParser.m */; };
+		40D53BB51554280F001EB0C5 /* MGTwitterMiscLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBF114CF64B100DF0950 /* MGTwitterMiscLibXMLParser.m */; };
+		40D53BB61554280F001EB0C5 /* MGTwitterMiscParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBF314CF64B100DF0950 /* MGTwitterMiscParser.m */; };
+		40D53BB71554280F001EB0C5 /* MGTwitterStatusesLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBF714CF64B100DF0950 /* MGTwitterStatusesLibXMLParser.m */; };
+		40D53BB81554280F001EB0C5 /* MGTwitterStatusesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBF914CF64B100DF0950 /* MGTwitterStatusesParser.m */; };
+		40D53BB91554280F001EB0C5 /* MGTwitterUsersLibXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBFB14CF64B100DF0950 /* MGTwitterUsersLibXMLParser.m */; };
+		40D53BBA1554280F001EB0C5 /* MGTwitterUsersParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBFD14CF64B100DF0950 /* MGTwitterUsersParser.m */; };
+		40D53BBB1554280F001EB0C5 /* MGTwitterXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBFF14CF64B100DF0950 /* MGTwitterXMLParser.m */; };
+		40D53BBC1554280F001EB0C5 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0114CF64B100DF0950 /* NSData+Base64.m */; };
+		40D53BBD1554280F001EB0C5 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0314CF64B100DF0950 /* NSString+UUID.m */; };
+		40D53BBE1554280F001EB0C5 /* SA_OAuthTwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0614CF64B100DF0950 /* SA_OAuthTwitterController.m */; };
+		40D53BBF1554280F001EB0C5 /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0814CF64B100DF0950 /* SA_OAuthTwitterEngine.m */; };
+		40D53BC01554280F001EB0C5 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
+		40D53BC11554280F001EB0C5 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
+		40D53BC21554280F001EB0C5 /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
+		40D53BC31554280F001EB0C5 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
+		40D53BC41554280F001EB0C5 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
+		40D53BC51554280F001EB0C5 /* RadioListeningStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55714D85EF60000621C /* RadioListeningStat.m */; };
+		40D53BC61554280F001EB0C5 /* LeaderBoardEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA55D14DA980F0000621C /* LeaderBoardEntry.m */; };
+		40D53BC71554280F001EB0C5 /* OrientedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA58F14DC24C10000621C /* OrientedTableView.m */; };
+		40D53BC81554280F001EB0C5 /* UserViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40EAA59514DC2DFE0000621C /* UserViewCell.m */; };
+		40D53BC91554280F001EB0C5 /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
+		40D53BCA1554280F001EB0C5 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C614E1BC4E00BE852E /* NSString+MD5Addition.m */; };
+		40D53BCB1554280F001EB0C5 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D634C814E1BC4E00BE852E /* UIDevice+IdentifierAddition.m */; };
+		40D53BCC1554280F001EB0C5 /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = B19245D914E2DAF700B18EEF /* TSLibraryImport.m */; };
+		40D53BCD1554280F001EB0C5 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED562F14E41CE100C0A0F4 /* UIImage+Resize.m */; };
+		40D53BCE1554280F001EB0C5 /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED563514E41F7200C0A0F4 /* UIImage+Alpha.m */; };
+		40D53BCF1554280F001EB0C5 /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ED563714E41F7200C0A0F4 /* UIImage+RoundedCorner.m */; };
+		40D53BD01554280F001EB0C5 /* SongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B19BF5EC14E420DA00BF8FCF /* SongsViewController.m */; };
+		40D53BD11554280F001EB0C5 /* SongUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = B138AA6714E2BAFC0069E08A /* SongUploader.m */; };
+		40D53BD21554280F001EB0C5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F8868714E5B44300256383 /* MBProgressHUD.m */; };
+		40D53BD31554280F001EB0C5 /* AdaptiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */; };
+		40D53BD41554280F001EB0C5 /* LikeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40104FC414ED3CF900996326 /* LikeViewCell.m */; };
+		40D53BD51554280F001EB0C5 /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
+		40D53BD61554280F001EB0C5 /* YasoundSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 405ACE1A14F5551000DCB97A /* YasoundSong.m */; };
+		40D53BD71554280F001EB0C5 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
+		40D53BD81554280F001EB0C5 /* SongUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC10399114F7E4A0007C5496 /* SongUploadViewController.m */; };
+		40D53BD91554280F001EB0C5 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
+		40D53BDA1554280F001EB0C5 /* SongAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */; };
+		40D53BDB1554280F001EB0C5 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
+		40D53BDC1554280F001EB0C5 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
+		40D53BDD1554280F001EB0C5 /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
+		40D53BDE1554280F001EB0C5 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EA8E2150100750002697D /* SongCatalog.m */; };
+		40D53BDF1554280F001EB0C5 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
+		40D53BE01554280F001EB0C5 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
+		40D53BE11554280F001EB0C5 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
+		40D53BE21554280F001EB0C5 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
+		40D53BE31554280F001EB0C5 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
+		40D53BE41554280F001EB0C5 /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
+		40D53BE51554280F001EB0C5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41434150B00D700A5150B /* FMDatabase.m */; };
+		40D53BE61554280F001EB0C5 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41436150B00D700A5150B /* FMDatabaseAdditions.m */; };
+		40D53BE71554280F001EB0C5 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41438150B00D700A5150B /* FMDatabasePool.m */; };
+		40D53BE81554280F001EB0C5 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143A150B00D700A5150B /* FMDatabaseQueue.m */; };
+		40D53BE91554280F001EB0C5 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC4143D150B00D700A5150B /* FMResultSet.m */; };
+		40D53BEA1554280F001EB0C5 /* YasoundLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EE0A15233A6300290383 /* YasoundLoginViewController.m */; };
+		40D53BEB1554280F001EB0C5 /* UnderlinedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EF0C1523518900290383 /* UnderlinedButton.m */; };
+		40D53BEC1554280F001EB0C5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EF201524755E00290383 /* LoginViewController.m */; };
+		40D53BED1554280F001EB0C5 /* AccountFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D251525FE45006CBA19 /* AccountFacebookViewController.m */; };
+		40D53BEE1554280F001EB0C5 /* AccountTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D321525FE5E006CBA19 /* AccountTwitterViewController.m */; };
+		40D53BEF1554280F001EB0C5 /* AccountYasoundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD4D3F1525FE7A006CBA19 /* AccountYasoundViewController.m */; };
+		40D53BF01554280F001EB0C5 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7BF152D26130051A085 /* NotificationViewController.m */; };
+		40D53BF11554280F001EB0C5 /* NotificationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7CC152D308A0051A085 /* NotificationViewCell.m */; };
+		40D53BF21554280F001EB0C5 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7D4152D33C40051A085 /* NotificationManager.m */; };
+		40D53BF31554280F001EB0C5 /* APNsDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E788152D9DA80056B34B /* APNsDeviceToken.m */; };
+		40D53BF41554280F001EB0C5 /* APNsNotifInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78A152D9DA80056B34B /* APNsNotifInfo.m */; };
+		40D53BF51554280F001EB0C5 /* APNsPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78C152D9DA80056B34B /* APNsPreferences.m */; };
+		40D53BF61554280F001EB0C5 /* YasoundNotifCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A0152D9DCB0056B34B /* YasoundNotifCenter.m */; };
+		40D53BF71554280F001EB0C5 /* NotificationCenterTableViewcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A9152D9E6F0056B34B /* NotificationCenterTableViewcCell.m */; };
+		40D53BF81554280F001EB0C5 /* NotificationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7AB152D9E6F0056B34B /* NotificationCenterViewController.m */; };
+		40D53BF91554280F001EB0C5 /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
+		40D53BFA1554280F001EB0C5 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
+		40D53BFB1554280F001EB0C5 /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
+		40D53BFC1554280F001EB0C5 /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
+		40D53BFD1554280F001EB0C5 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
+		40D53BFE1554280F001EB0C5 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
+		40D53BFF1554280F001EB0C5 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
+		40D53C001554280F001EB0C5 /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */; };
+		40D53C011554280F001EB0C5 /* ProgrammingTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC69A7DE15454E5300F05B26 /* ProgrammingTitleCell.m */; };
+		40D53C021554280F001EB0C5 /* MenuDynamicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE66A811548599A0094B4D0 /* MenuDynamicViewController.m */; };
+		40D53C031554280F001EB0C5 /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE66A841548599A0094B4D0 /* MenuTableViewCell.m */; };
+		40D53C041554280F001EB0C5 /* NotificationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE66A861548599A0094B4D0 /* NotificationTableViewCell.m */; };
+		40D53C051554280F001EB0C5 /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9601B6154997B90003AC7E /* WebPageViewController.m */; };
+		40D53C061554280F001EB0C5 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
+		40D53C081554280F001EB0C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
+		40D53C091554280F001EB0C5 /* libOAuthConsumer_iPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBCD14CF649400DF0950 /* libOAuthConsumer_iPhone.a */; };
+		40D53C0A1554280F001EB0C5 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
+		40D53C0B1554280F001EB0C5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
+		40D53C0C1554280F001EB0C5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
+		40D53C0D1554280F001EB0C5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97D214AB81EA00D54631 /* Accounts.framework */; };
+		40D53C0E1554280F001EB0C5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CE14AB81BF00D54631 /* Security.framework */; };
+		40D53C0F1554280F001EB0C5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CF14AB81BF00D54631 /* Twitter.framework */; };
+		40D53C101554280F001EB0C5 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC97CC14AB818300D54631 /* libxml2.dylib */; };
+		40D53C111554280F001EB0C5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
+		40D53C121554280F001EB0C5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6ADD17149B9EDF00D00E5F /* MessageUI.framework */; };
+		40D53C131554280F001EB0C5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A57145F005B00A88910 /* MobileCoreServices.framework */; };
+		40D53C141554280F001EB0C5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A55145EFFD900A88910 /* libz.dylib */; };
+		40D53C151554280F001EB0C5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */; };
+		40D53C161554280F001EB0C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AEE1456FA3600B74F84 /* AudioToolbox.framework */; };
+		40D53C171554280F001EB0C5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */; };
+		40D53C181554280F001EB0C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AD1454DC0500EA374C /* UIKit.framework */; };
+		40D53C191554280F001EB0C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
+		40D53C1A1554280F001EB0C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
+		40D53C1B1554280F001EB0C5 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969B14AB7D8900D54631 /* libGoogleAnalytics.a */; };
+		40D53C1C1554280F001EB0C5 /* libGoogleAnalytics_NoThumb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC969C14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a */; };
+		40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBD214CF64B100DF0950 /* libOAuth.a */; };
+		40D53C1E1554280F001EB0C5 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
+		40D53C201554280F001EB0C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A9A3B61454DC0500EA374C /* InfoPlist.strings */; };
+		40D53C211554280F001EB0C5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
+		40D53C221554280F001EB0C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
+		40D53C231554280F001EB0C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
+		40D53C241554280F001EB0C5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
+		40D53C251554280F001EB0C5 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
+		40D53C261554280F001EB0C5 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
+		40D53C271554280F001EB0C5 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
+		40D53C281554280F001EB0C5 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
+		40D53C291554280F001EB0C5 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
+		40D53C2A1554280F001EB0C5 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083214926F22007E1307 /* Icon-72.png */; };
+		40D53C2B1554280F001EB0C5 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083314926F22007E1307 /* Icon-Small-50.png */; };
+		40D53C2C1554280F001EB0C5 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083414926F22007E1307 /* Icon-Small.png */; };
+		40D53C2D1554280F001EB0C5 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083514926F22007E1307 /* Icon-Small@2x.png */; };
+		40D53C2E1554280F001EB0C5 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B083614926F22007E1307 /* Icon@2x.png */; };
+		40D53C2F1554280F001EB0C5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B084114927B7D007E1307 /* Icon.png */; };
+		40D53C301554280F001EB0C5 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB49914A2322900CF922A /* SettingsViewController.xib */; };
+		40D53C311554280F001EB0C5 /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
+		40D53C321554280F001EB0C5 /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
+		40D53C331554280F001EB0C5 /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BA14A3920600CF922A /* iTunesConnect.png */; };
+		40D53C341554280F001EB0C5 /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4BE14A39B9800CF922A /* iTunesConnect@2x.png */; };
+		40D53C351554280F001EB0C5 /* Changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967314AB7D8900D54631 /* Changelog.txt */; };
+		40D53C361554280F001EB0C5 /* COPYING in Resources */ = {isa = PBXBuildFile; fileRef = BCDC967514AB7D8900D54631 /* COPYING */; };
+		40D53C371554280F001EB0C5 /* README in Resources */ = {isa = PBXBuildFile; fileRef = BCDC968C14AB7D8900D54631 /* README */; };
+		40D53C381554280F001EB0C5 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCDC969D14AB7D8900D54631 /* ReadMe.txt */; };
+		40D53C391554280F001EB0C5 /* TwitterAccountsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC979F14AB7DD100D54631 /* TwitterAccountsViewController.xib */; };
+		40D53C3A1554280F001EB0C5 /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
+		40D53C3B1554280F001EB0C5 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
+		40D53C3C1554280F001EB0C5 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
+		40D53C3D1554280F001EB0C5 /* EasyTracker.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC95229914B6F787001E1ACE /* EasyTracker.plist */; };
+		40D53C3E1554280F001EB0C5 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
+		40D53C3F1554280F001EB0C5 /* default.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BC178DB114C63E4A00B18420 /* default.bundle */; };
+		40D53C401554280F001EB0C5 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
+		40D53C411554280F001EB0C5 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
+		40D53C421554280F001EB0C5 /* bullets.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219A14C749D90013B2EF /* bullets.png */; };
+		40D53C431554280F001EB0C5 /* bullets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1219B14C749D90013B2EF /* bullets@2x.png */; };
+		40D53C441554280F001EB0C5 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD014CF64B100DF0950 /* jQueryInject.txt */; };
+		40D53C451554280F001EB0C5 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
+		40D53C461554280F001EB0C5 /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC0914CF64B100DF0950 /* twitter_load.png */; };
+		40D53C471554280F001EB0C5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43714DDC6A100D4C67F /* Default.png */; };
+		40D53C481554280F001EB0C5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
+		40D53C491554280F001EB0C5 /* CreateMyRadioBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6C914E40E3100D30554 /* CreateMyRadioBackground.png */; };
+		40D53C4A1554280F001EB0C5 /* CreateMyRadioBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC26E6CA14E40E3100D30554 /* CreateMyRadioBackground@2x.png */; };
+		40D53C4B1554280F001EB0C5 /* SongsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B19BF5ED14E420DA00BF8FCF /* SongsViewController.xib */; };
+		40D53C4C1554280F001EB0C5 /* CellRowFirst.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A0D14E6AC5400008AA3 /* CellRowFirst.png */; };
+		40D53C4D1554280F001EB0C5 /* CellRowFirst@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A0E14E6AC5400008AA3 /* CellRowFirst@2x.png */; };
+		40D53C4E1554280F001EB0C5 /* CellRowInter.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A0F14E6AC5400008AA3 /* CellRowInter.png */; };
+		40D53C4F1554280F001EB0C5 /* CellRowInter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A1014E6AC5400008AA3 /* CellRowInter@2x.png */; };
+		40D53C501554280F001EB0C5 /* CellRowLast.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A1114E6AC5400008AA3 /* CellRowLast.png */; };
+		40D53C511554280F001EB0C5 /* CellRowLast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A1214E6AC5400008AA3 /* CellRowLast@2x.png */; };
+		40D53C521554280F001EB0C5 /* CellRowSingle.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A1314E6AC5400008AA3 /* CellRowSingle.png */; };
+		40D53C531554280F001EB0C5 /* CellRowSingle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A1414E6AC5400008AA3 /* CellRowSingle@2x.png */; };
+		40D53C541554280F001EB0C5 /* StyleSelectionBar.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A1514E6AC5400008AA3 /* StyleSelectionBar.png */; };
+		40D53C551554280F001EB0C5 /* StyleSelectionBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A1614E6AC5400008AA3 /* StyleSelectionBar@2x.png */; };
+		40D53C561554280F001EB0C5 /* TableViewDisclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A1714E6AC5400008AA3 /* TableViewDisclosure.png */; };
+		40D53C571554280F001EB0C5 /* TableViewDisclosure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A1814E6AC5400008AA3 /* TableViewDisclosure@2x.png */; };
+		40D53C581554280F001EB0C5 /* TableViewDisclosureHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A1914E6AC5400008AA3 /* TableViewDisclosureHighlighted.png */; };
+		40D53C591554280F001EB0C5 /* TableViewDisclosureHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A1A14E6AC5400008AA3 /* TableViewDisclosureHighlighted@2x.png */; };
+		40D53C5A1554280F001EB0C5 /* TableViewBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A6514E6B08600008AA3 /* TableViewBackground.png */; };
+		40D53C5B1554280F001EB0C5 /* TableViewBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A6614E6B08600008AA3 /* TableViewBackground@2x.png */; };
+		40D53C5C1554280F001EB0C5 /* CellButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8314E6C7E900008AA3 /* CellButton.png */; };
+		40D53C5D1554280F001EB0C5 /* CellButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8414E6C7E900008AA3 /* CellButton@2x.png */; };
+		40D53C5E1554280F001EB0C5 /* CellButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8514E6C7E900008AA3 /* CellButtonHighlighted.png */; };
+		40D53C5F1554280F001EB0C5 /* CellButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8614E6C7E900008AA3 /* CellButtonHighlighted@2x.png */; };
+		40D53C601554280F001EB0C5 /* CellRadioDark_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8714E6C7E900008AA3 /* CellRadioDark_Mask.png */; };
+		40D53C611554280F001EB0C5 /* CellRadioDark_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8814E6C7E900008AA3 /* CellRadioDark_Mask@2x.png */; };
+		40D53C621554280F001EB0C5 /* CellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8914E6C7E900008AA3 /* CellRadioDark.png */; };
+		40D53C631554280F001EB0C5 /* CellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8A14E6C7E900008AA3 /* CellRadioDark@2x.png */; };
+		40D53C641554280F001EB0C5 /* CellRadioHighlighted_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8B14E6C7E900008AA3 /* CellRadioHighlighted_Mask.png */; };
+		40D53C651554280F001EB0C5 /* CellRadioHighlighted_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8C14E6C7E900008AA3 /* CellRadioHighlighted_Mask@2x.png */; };
+		40D53C661554280F001EB0C5 /* CellRadioHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8D14E6C7E900008AA3 /* CellRadioHighlighted.png */; };
+		40D53C671554280F001EB0C5 /* CellRadioHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8E14E6C7E900008AA3 /* CellRadioHighlighted@2x.png */; };
+		40D53C681554280F001EB0C5 /* CellRadioLight_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A8F14E6C7E900008AA3 /* CellRadioLight_Mask.png */; };
+		40D53C691554280F001EB0C5 /* CellRadioLight_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9014E6C7E900008AA3 /* CellRadioLight_Mask@2x.png */; };
+		40D53C6A1554280F001EB0C5 /* CellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9114E6C7E900008AA3 /* CellRadioLight.png */; };
+		40D53C6B1554280F001EB0C5 /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC9F4A9214E6C7E900008AA3 /* CellRadioLight@2x.png */; };
+		40D53C6C1554280F001EB0C5 /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD3C14E87757001AC34B /* avatarDummy.png */; };
+		40D53C6D1554280F001EB0C5 /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD3D14E87757001AC34B /* avatarDummy@2x.png */; };
+		40D53C6E1554280F001EB0C5 /* ChartBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD5114E8800F001AC34B /* ChartBackground.png */; };
+		40D53C6F1554280F001EB0C5 /* ChartBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD5214E8800F001AC34B /* ChartBackground@2x.png */; };
+		40D53C701554280F001EB0C5 /* iconSubscribers.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD5314E8800F001AC34B /* iconSubscribers.png */; };
+		40D53C711554280F001EB0C5 /* iconSubscribers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD5414E8800F001AC34B /* iconSubscribers@2x.png */; };
+		40D53C721554280F001EB0C5 /* pictoSubscribers.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD6514E88194001AC34B /* pictoSubscribers.png */; };
+		40D53C731554280F001EB0C5 /* pictoSubscribers@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCC6AD6614E88194001AC34B /* pictoSubscribers@2x.png */; };
+		40D53C741554280F001EB0C5 /* ListenerSelectedBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA78514E96AEB0055AB4A /* ListenerSelectedBackground.png */; };
+		40D53C751554280F001EB0C5 /* ListenerSelectedBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA78614E96AEB0055AB4A /* ListenerSelectedBackground@2x.png */; };
+		40D53C761554280F001EB0C5 /* UserCellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = 40104F4314EAC69B00996326 /* UserCellRadioDark.png */; };
+		40D53C771554280F001EB0C5 /* UserCellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40104F4414EAC69B00996326 /* UserCellRadioDark@2x.png */; };
+		40D53C781554280F001EB0C5 /* UserCellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = 40104F4514EAC69B00996326 /* UserCellRadioLight.png */; };
+		40D53C791554280F001EB0C5 /* UserCellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40104F4614EAC69B00996326 /* UserCellRadioLight@2x.png */; };
+		40D53C7A1554280F001EB0C5 /* WhiteCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC413D6714EBC2F9009EB307 /* WhiteCheckmark.png */; };
+		40D53C7B1554280F001EB0C5 /* WhiteCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */; };
+		40D53C7C1554280F001EB0C5 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B014EC2DC100056916 /* logo.png */; };
+		40D53C7D1554280F001EB0C5 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751B114EC2DC100056916 /* logo@2x.png */; };
+		40D53C7E1554280F001EB0C5 /* CellRowGoldFirst.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751EC14ED5E4200056916 /* CellRowGoldFirst.png */; };
+		40D53C7F1554280F001EB0C5 /* CellRowGoldFirst@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751ED14ED5E4200056916 /* CellRowGoldFirst@2x.png */; };
+		40D53C801554280F001EB0C5 /* CellRowGoldInter.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751EE14ED5E4200056916 /* CellRowGoldInter.png */; };
+		40D53C811554280F001EB0C5 /* CellRowGoldInter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751EF14ED5E4200056916 /* CellRowGoldInter@2x.png */; };
+		40D53C821554280F001EB0C5 /* CellRowGoldLast.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751F014ED5E4200056916 /* CellRowGoldLast.png */; };
+		40D53C831554280F001EB0C5 /* CellRowGoldLast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE751F114ED5E4200056916 /* CellRowGoldLast@2x.png */; };
+		40D53C841554280F001EB0C5 /* btnBuyDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524EF214EEC250001B4FC5 /* btnBuyDown.png */; };
+		40D53C851554280F001EB0C5 /* btnBuyDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524EF414EEC250001B4FC5 /* btnBuyDown@2x.png */; };
+		40D53C861554280F001EB0C5 /* btnBuyUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524EF614EEC250001B4FC5 /* btnBuyUp.png */; };
+		40D53C871554280F001EB0C5 /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524EF814EEC250001B4FC5 /* btnBuyUp@2x.png */; };
+		40D53C881554280F001EB0C5 /* btnBuyDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F0E14EEC25A001B4FC5 /* btnBuyDown.png */; };
+		40D53C891554280F001EB0C5 /* btnBuyDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1014EEC25A001B4FC5 /* btnBuyDown@2x.png */; };
+		40D53C8A1554280F001EB0C5 /* btnBuyUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1214EEC25A001B4FC5 /* btnBuyUp.png */; };
+		40D53C8B1554280F001EB0C5 /* btnBuyUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524F1414EEC25A001B4FC5 /* btnBuyUp@2x.png */; };
+		40D53C8C1554280F001EB0C5 /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC82067114F5620200FAE05E /* ProgrammingViewController.xib */; };
+		40D53C8D1554280F001EB0C5 /* CellPlainRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A114F67BE600FAE05E /* CellPlainRow.png */; };
+		40D53C8E1554280F001EB0C5 /* CellPlainRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8206A214F67BE600FAE05E /* CellPlainRow@2x.png */; };
+		40D53C8F1554280F001EB0C5 /* CellPlainSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72514F6B47800EB5370 /* CellPlainSongCardRow.png */; };
+		40D53C901554280F001EB0C5 /* CellPlainSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC84C72614F6B47800EB5370 /* CellPlainSongCardRow@2x.png */; };
+		40D53C911554280F001EB0C5 /* SongUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */; };
+		40D53C921554280F001EB0C5 /* SongAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */; };
+		40D53C931554280F001EB0C5 /* CellButtonDel.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19414FBF02E00B7F2B4 /* CellButtonDel.png */; };
+		40D53C941554280F001EB0C5 /* CellButtonDel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCAAE19514FBF02E00B7F2B4 /* CellButtonDel@2x.png */; };
+		40D53C951554280F001EB0C5 /* SongInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */; };
+		40D53C961554280F001EB0C5 /* ProgrammingArtistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */; };
+		40D53C971554280F001EB0C5 /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
+		40D53C981554280F001EB0C5 /* SongRatingBullet.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44081507A63100A03380 /* SongRatingBullet.png */; };
+		40D53C991554280F001EB0C5 /* SongRatingBullet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA44091507A63100A03380 /* SongRatingBullet@2x.png */; };
+		40D53C9A1554280F001EB0C5 /* SongRatingStar.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440A1507A63100A03380 /* SongRatingStar.png */; };
+		40D53C9B1554280F001EB0C5 /* SongRatingStar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFA440B1507A63100A03380 /* SongRatingStar@2x.png */; };
+		40D53C9C1554280F001EB0C5 /* GrayCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4B1518E57800B8B66F /* GrayCheckmark.png */; };
+		40D53C9D1554280F001EB0C5 /* GrayCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */; };
+		40D53C9E1554280F001EB0C5 /* YasoundLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE0B15233A6300290383 /* YasoundLoginViewController.xib */; };
+		40D53C9F1554280F001EB0C5 /* cellFacebookDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE2715233AB700290383 /* cellFacebookDisabled.png */; };
+		40D53CA01554280F001EB0C5 /* cellFacebookDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE2815233AB700290383 /* cellFacebookDisabled@2x.png */; };
+		40D53CA11554280F001EB0C5 /* cellFacebookDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE2915233AB700290383 /* cellFacebookDown.png */; };
+		40D53CA21554280F001EB0C5 /* cellFacebookDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE2A15233AB700290383 /* cellFacebookDown@2x.png */; };
+		40D53CA31554280F001EB0C5 /* cellFacebookUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE2B15233AB700290383 /* cellFacebookUp.png */; };
+		40D53CA41554280F001EB0C5 /* cellFacebookUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE2C15233AB700290383 /* cellFacebookUp@2x.png */; };
+		40D53CA51554280F001EB0C5 /* cellTwitterDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE2D15233AB700290383 /* cellTwitterDisabled.png */; };
+		40D53CA61554280F001EB0C5 /* cellTwitterDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE2E15233AB700290383 /* cellTwitterDisabled@2x.png */; };
+		40D53CA71554280F001EB0C5 /* cellTwitterDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE2F15233AB700290383 /* cellTwitterDown.png */; };
+		40D53CA81554280F001EB0C5 /* cellTwitterDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE3015233AB700290383 /* cellTwitterDown@2x.png */; };
+		40D53CA91554280F001EB0C5 /* cellTwitterUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE3115233AB700290383 /* cellTwitterUp.png */; };
+		40D53CAA1554280F001EB0C5 /* cellTwitterUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE3215233AB700290383 /* cellTwitterUp@2x.png */; };
+		40D53CAB1554280F001EB0C5 /* cellYasoundDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE3315233AB700290383 /* cellYasoundDisabled.png */; };
+		40D53CAC1554280F001EB0C5 /* cellYasoundDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE3415233AB700290383 /* cellYasoundDisabled@2x.png */; };
+		40D53CAD1554280F001EB0C5 /* cellYasoundDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE3515233AB700290383 /* cellYasoundDown.png */; };
+		40D53CAE1554280F001EB0C5 /* cellYasoundDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE3615233AB700290383 /* cellYasoundDown@2x.png */; };
+		40D53CAF1554280F001EB0C5 /* cellYasoundUp.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE3715233AB700290383 /* cellYasoundUp.png */; };
+		40D53CB01554280F001EB0C5 /* cellYasoundUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE3815233AB700290383 /* cellYasoundUp@2x.png */; };
+		40D53CB11554280F001EB0C5 /* LoginBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE3915233AB700290383 /* LoginBackground.png */; };
+		40D53CB21554280F001EB0C5 /* LoginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE3A15233AB700290383 /* LoginBackground@2x.png */; };
+		40D53CB31554280F001EB0C5 /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEB71523419100290383 /* barItemAdd.png */; };
+		40D53CB41554280F001EB0C5 /* barItemAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEB81523419100290383 /* barItemAdd@2x.png */; };
+		40D53CB51554280F001EB0C5 /* barItemBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEB91523419100290383 /* barItemBkg.png */; };
+		40D53CB61554280F001EB0C5 /* barItemBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEBA1523419100290383 /* barItemBkg@2x.png */; };
+		40D53CB71554280F001EB0C5 /* barItemBkgHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEBB1523419100290383 /* barItemBkgHighlighted.png */; };
+		40D53CB81554280F001EB0C5 /* barItemBkgHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEBC1523419100290383 /* barItemBkgHighlighted@2x.png */; };
+		40D53CB91554280F001EB0C5 /* barItemLargeBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEBD1523419100290383 /* barItemLargeBkg.png */; };
+		40D53CBA1554280F001EB0C5 /* barItemLargeBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEBE1523419100290383 /* barItemLargeBkg@2x.png */; };
+		40D53CBB1554280F001EB0C5 /* barItemLargeBkgHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEBF1523419100290383 /* barItemLargeBkgHighlighted.png */; };
+		40D53CBC1554280F001EB0C5 /* barItemLargeBkgHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEC01523419100290383 /* barItemLargeBkgHighlighted@2x.png */; };
+		40D53CBD1554280F001EB0C5 /* barItemMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEC11523419100290383 /* barItemMenu.png */; };
+		40D53CBE1554280F001EB0C5 /* barItemMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEC21523419100290383 /* barItemMenu@2x.png */; };
+		40D53CBF1554280F001EB0C5 /* barItemSynchronize.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEC31523419100290383 /* barItemSynchronize.png */; };
+		40D53CC01554280F001EB0C5 /* barItemSynchronize@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EEC41523419100290383 /* barItemSynchronize@2x.png */; };
+		40D53CC11554280F001EB0C5 /* barItemLargeBkgDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF131523740400290383 /* barItemLargeBkgDisabled.png */; };
+		40D53CC21554280F001EB0C5 /* barItemLargeBkgDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF141523740400290383 /* barItemLargeBkgDisabled@2x.png */; };
+		40D53CC31554280F001EB0C5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
+		40D53CC41554280F001EB0C5 /* AccountFacebookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */; };
+		40D53CC51554280F001EB0C5 /* AccountTwitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D331525FE5E006CBA19 /* AccountTwitterViewController.xib */; };
+		40D53CC61554280F001EB0C5 /* AccountYasoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D401525FE7A006CBA19 /* AccountYasoundViewController.xib */; };
+		40D53CC71554280F001EB0C5 /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4B15260D2F006CBA19 /* BigActionButton.png */; };
+		40D53CC81554280F001EB0C5 /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4C15260D2F006CBA19 /* BigActionButton@2x.png */; };
+		40D53CC91554280F001EB0C5 /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4D15260D2F006CBA19 /* BigActionButtonHighlighted.png */; };
+		40D53CCA1554280F001EB0C5 /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD4D4E15260D2F006CBA19 /* BigActionButtonHighlighted@2x.png */; };
+		40D53CCB1554280F001EB0C5 /* BigActionButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4CA79E152D20BF0051A085 /* BigActionButtonDisabled.png */; };
+		40D53CCC1554280F001EB0C5 /* BigActionButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC4CA79F152D20BF0051A085 /* BigActionButtonDisabled@2x.png */; };
+		40D53CCD1554280F001EB0C5 /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC4CA7C0152D26130051A085 /* NotificationViewController.xib */; };
+		40D53CCE1554280F001EB0C5 /* NotificationCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7AC152D9E6F0056B34B /* NotificationCenterViewController.xib */; };
+		40D53CCF1554280F001EB0C5 /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
+		40D53CD01554280F001EB0C5 /* BigActionGreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF67152DFCEC0070F982 /* BigActionGreenButton.png */; };
+		40D53CD11554280F001EB0C5 /* BigActionGreenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF68152DFCEC0070F982 /* BigActionGreenButton@2x.png */; };
+		40D53CD21554280F001EB0C5 /* BigActionGreenButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF69152DFCEC0070F982 /* BigActionGreenButtonHighlighted.png */; };
+		40D53CD31554280F001EB0C5 /* BigActionGreenButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF6A152DFCEC0070F982 /* BigActionGreenButtonHighlighted@2x.png */; };
+		40D53CD41554280F001EB0C5 /* BigActionRedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF6B152DFCEC0070F982 /* BigActionRedButton.png */; };
+		40D53CD51554280F001EB0C5 /* BigActionRedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF6C152DFCEC0070F982 /* BigActionRedButton@2x.png */; };
+		40D53CD61554280F001EB0C5 /* BigActionRedButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF6D152DFCEC0070F982 /* BigActionRedButtonHighlighted.png */; };
+		40D53CD71554280F001EB0C5 /* BigActionRedButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF6E152DFCEC0070F982 /* BigActionRedButtonHighlighted@2x.png */; };
+		40D53CD81554280F001EB0C5 /* ProfilePhotoMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7263AD15345AE1002386C3 /* ProfilePhotoMask.png */; };
+		40D53CD91554280F001EB0C5 /* ProfilePhotoMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7263AE15345AE1002386C3 /* ProfilePhotoMask@2x.png */; };
+		40D53CDA1554280F001EB0C5 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
+		40D53CDB1554280F001EB0C5 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
+		40D53CDC1554280F001EB0C5 /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BC481E0115404CD300990214 /* ShareBackground.png */; };
+		40D53CDD1554280F001EB0C5 /* ShareBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC481E0215404CD300990214 /* ShareBackground@2x.png */; };
+		40D53CDE1554280F001EB0C5 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
+		40D53CDF1554280F001EB0C5 /* barRedItemMediumBkg.png in Resources */ = {isa = PBXBuildFile; fileRef = BC69A7B415454C7A00F05B26 /* barRedItemMediumBkg.png */; };
+		40D53CE01554280F001EB0C5 /* barRedItemMediumBkg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC69A7B515454C7A00F05B26 /* barRedItemMediumBkg@2x.png */; };
+		40D53CE11554280F001EB0C5 /* barRedItemMediumBkgHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BC69A7B615454C7A00F05B26 /* barRedItemMediumBkgHighlighted.png */; };
+		40D53CE21554280F001EB0C5 /* barRedItemMediumBkgHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC69A7B715454C7A00F05B26 /* barRedItemMediumBkgHighlighted@2x.png */; };
+		40D53CE31554280F001EB0C5 /* MenuDynamicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE66A821548599A0094B4D0 /* MenuDynamicViewController.xib */; };
+		40D53CE41554280F001EB0C5 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3115494C410094B4D0 /* defaultMenuDescription.json.txt */; };
+		40D53CE51554280F001EB0C5 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3A15494C5D0094B4D0 /* defaultMenuDescription.json.txt */; };
+		40D53CE61554280F001EB0C5 /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
+		40D53CE71554280F001EB0C5 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC47AFD6154AD23200B0AA55 /* SignupViewController.xib */; };
 		40D744A31551744500A30971 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		40D744A41551744600A30971 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		40DE99F115406B98001E63F4 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
@@ -2816,6 +3216,20 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = OAuthLib;
 		};
+		40D53B521554280F001EB0C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = "facebook-ios-sdk";
+		};
+		40D53B541554280F001EB0C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = OAuthLib;
+		};
 		BC3FA65F14E93B660055AB4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */;
@@ -2964,6 +3378,8 @@
 		40CC5A4C153D6EF7006C052E /* RequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestConfig.m; sourceTree = "<group>"; };
 		40CC5A54153D9EEB006C052E /* ASIHTTPRequest+Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+Model.h"; sourceTree = "<group>"; };
 		40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+Model.m"; sourceTree = "<group>"; };
+		40D53CEB1554280F001EB0C5 /* YasoundD TechTour simu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD TechTour simu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40D53CED15542810001EB0C5 /* YasoundD copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "YasoundD copy-Info.plist"; path = "/Users/mat/work/dev/yasound/yasound_ios/YasoundD copy-Info.plist"; sourceTree = "<absolute>"; };
 		40DE99EF15406B98001E63F4 /* LoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingCell.h; sourceTree = "<group>"; };
 		40DE99F015406B98001E63F4 /* LoadingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingCell.m; sourceTree = "<group>"; };
 		40EAA55614D85EF60000621C /* RadioListeningStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioListeningStat.h; sourceTree = "<group>"; };
@@ -3566,6 +3982,36 @@
 				40B40A16152EFC630050D334 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */,
 				BC9BE82D1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40D53C071554280F001EB0C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40D53C081554280F001EB0C5 /* QuartzCore.framework in Frameworks */,
+				40D53C091554280F001EB0C5 /* libOAuthConsumer_iPhone.a in Frameworks */,
+				40D53C0A1554280F001EB0C5 /* libfacebook_ios_sdk.a in Frameworks */,
+				40D53C0B1554280F001EB0C5 /* SystemConfiguration.framework in Frameworks */,
+				40D53C0C1554280F001EB0C5 /* AVFoundation.framework in Frameworks */,
+				40D53C0D1554280F001EB0C5 /* Accounts.framework in Frameworks */,
+				40D53C0E1554280F001EB0C5 /* Security.framework in Frameworks */,
+				40D53C0F1554280F001EB0C5 /* Twitter.framework in Frameworks */,
+				40D53C101554280F001EB0C5 /* libxml2.dylib in Frameworks */,
+				40D53C111554280F001EB0C5 /* libsqlite3.dylib in Frameworks */,
+				40D53C121554280F001EB0C5 /* MessageUI.framework in Frameworks */,
+				40D53C131554280F001EB0C5 /* MobileCoreServices.framework in Frameworks */,
+				40D53C141554280F001EB0C5 /* libz.dylib in Frameworks */,
+				40D53C151554280F001EB0C5 /* CFNetwork.framework in Frameworks */,
+				40D53C161554280F001EB0C5 /* AudioToolbox.framework in Frameworks */,
+				40D53C171554280F001EB0C5 /* MediaPlayer.framework in Frameworks */,
+				40D53C181554280F001EB0C5 /* UIKit.framework in Frameworks */,
+				40D53C191554280F001EB0C5 /* Foundation.framework in Frameworks */,
+				40D53C1A1554280F001EB0C5 /* CoreGraphics.framework in Frameworks */,
+				40D53C1B1554280F001EB0C5 /* libGoogleAnalytics.a in Frameworks */,
+				40D53C1C1554280F001EB0C5 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
+				40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */,
+				40D53C1E1554280F001EB0C5 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4966,6 +5412,7 @@
 				BCFECF8F146840B300BA20D9 /* resources */,
 				E5280A5B146040E900A88910 /* xib */,
 				E5A9A3AA1454DC0500EA374C /* Products */,
+				40D53CED15542810001EB0C5 /* YasoundD copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -4979,6 +5426,7 @@
 				BC3FA77C14E93B660055AB4A /* YasoundD.app */,
 				BC56F5E5152486AF005D1B40 /* YasoundD DEV SERVER.app */,
 				40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */,
+				40D53CEB1554280F001EB0C5 /* YasoundD TechTour simu.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -5071,6 +5519,25 @@
 			name = "YasoundD LOCAL SERVER";
 			productName = Yasound;
 			productReference = 40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */;
+			productType = "com.apple.product-type.application";
+		};
+		40D53B501554280F001EB0C5 /* YasoundD TECHTOUR simulation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40D53CE81554280F001EB0C5 /* Build configuration list for PBXNativeTarget "YasoundD TECHTOUR simulation" */;
+			buildPhases = (
+				40D53B551554280F001EB0C5 /* Sources */,
+				40D53C071554280F001EB0C5 /* Frameworks */,
+				40D53C1F1554280F001EB0C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40D53B511554280F001EB0C5 /* PBXTargetDependency */,
+				40D53B531554280F001EB0C5 /* PBXTargetDependency */,
+			);
+			name = "YasoundD TECHTOUR simulation";
+			productName = Yasound;
+			productReference = 40D53CEB1554280F001EB0C5 /* YasoundD TechTour simu.app */;
 			productType = "com.apple.product-type.application";
 		};
 		BC3FA65D14E93B660055AB4A /* YasoundD MUTE */ = {
@@ -5226,6 +5693,7 @@
 				BC93CCC514CF3F7A007C723F /* Yasound App Store */,
 				BC3FA65D14E93B660055AB4A /* YasoundD MUTE */,
 				40B4094B152EFC630050D334 /* YasoundD LOCAL SERVER */,
+				40D53B501554280F001EB0C5 /* YasoundD TECHTOUR simulation */,
 			);
 		};
 /* End PBXProject section */
@@ -5451,6 +5919,213 @@
 				BCE66B3915494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B4215494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C5154997B90003AC7E /* WebPageViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		40D53C1F1554280F001EB0C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40D53C201554280F001EB0C5 /* InfoPlist.strings in Resources */,
+				40D53C211554280F001EB0C5 /* RadioSelectionViewController.xib in Resources */,
+				40D53C221554280F001EB0C5 /* Localizable.strings in Resources */,
+				40D53C231554280F001EB0C5 /* Localizable.strings in Resources */,
+				40D53C241554280F001EB0C5 /* MainWindow.xib in Resources */,
+				40D53C251554280F001EB0C5 /* RadioSearchViewController.xib in Resources */,
+				40D53C261554280F001EB0C5 /* ThemeSelectorViewController.xib in Resources */,
+				40D53C271554280F001EB0C5 /* StyleSelectorViewController.xib in Resources */,
+				40D53C281554280F001EB0C5 /* MyYasoundBackground.png in Resources */,
+				40D53C291554280F001EB0C5 /* MyYasoundBackground@2x.png in Resources */,
+				40D53C2A1554280F001EB0C5 /* Icon-72.png in Resources */,
+				40D53C2B1554280F001EB0C5 /* Icon-Small-50.png in Resources */,
+				40D53C2C1554280F001EB0C5 /* Icon-Small.png in Resources */,
+				40D53C2D1554280F001EB0C5 /* Icon-Small@2x.png in Resources */,
+				40D53C2E1554280F001EB0C5 /* Icon@2x.png in Resources */,
+				40D53C2F1554280F001EB0C5 /* Icon.png in Resources */,
+				40D53C301554280F001EB0C5 /* SettingsViewController.xib in Resources */,
+				40D53C311554280F001EB0C5 /* PlaylistsViewController.xib in Resources */,
+				40D53C321554280F001EB0C5 /* KeywordsViewController.xib in Resources */,
+				40D53C331554280F001EB0C5 /* iTunesConnect.png in Resources */,
+				40D53C341554280F001EB0C5 /* iTunesConnect@2x.png in Resources */,
+				40D53C351554280F001EB0C5 /* Changelog.txt in Resources */,
+				40D53C361554280F001EB0C5 /* COPYING in Resources */,
+				40D53C371554280F001EB0C5 /* README in Resources */,
+				40D53C381554280F001EB0C5 /* ReadMe.txt in Resources */,
+				40D53C391554280F001EB0C5 /* TwitterAccountsViewController.xib in Resources */,
+				40D53C3A1554280F001EB0C5 /* TwitterSigninViewController.xib in Resources */,
+				40D53C3B1554280F001EB0C5 /* StatsViewController.xib in Resources */,
+				40D53C3C1554280F001EB0C5 /* RootViewController.xib in Resources */,
+				40D53C3D1554280F001EB0C5 /* EasyTracker.plist in Resources */,
+				40D53C3E1554280F001EB0C5 /* CreateMyRadio.xib in Resources */,
+				40D53C3F1554280F001EB0C5 /* default.bundle in Resources */,
+				40D53C401554280F001EB0C5 /* FriendsViewController.xib in Resources */,
+				40D53C411554280F001EB0C5 /* FavoritesViewController.xib in Resources */,
+				40D53C421554280F001EB0C5 /* bullets.png in Resources */,
+				40D53C431554280F001EB0C5 /* bullets@2x.png in Resources */,
+				40D53C441554280F001EB0C5 /* jQueryInject.txt in Resources */,
+				40D53C451554280F001EB0C5 /* jQueryInjectLandscape.txt in Resources */,
+				40D53C461554280F001EB0C5 /* twitter_load.png in Resources */,
+				40D53C471554280F001EB0C5 /* Default.png in Resources */,
+				40D53C481554280F001EB0C5 /* Default@2x.png in Resources */,
+				40D53C491554280F001EB0C5 /* CreateMyRadioBackground.png in Resources */,
+				40D53C4A1554280F001EB0C5 /* CreateMyRadioBackground@2x.png in Resources */,
+				40D53C4B1554280F001EB0C5 /* SongsViewController.xib in Resources */,
+				40D53C4C1554280F001EB0C5 /* CellRowFirst.png in Resources */,
+				40D53C4D1554280F001EB0C5 /* CellRowFirst@2x.png in Resources */,
+				40D53C4E1554280F001EB0C5 /* CellRowInter.png in Resources */,
+				40D53C4F1554280F001EB0C5 /* CellRowInter@2x.png in Resources */,
+				40D53C501554280F001EB0C5 /* CellRowLast.png in Resources */,
+				40D53C511554280F001EB0C5 /* CellRowLast@2x.png in Resources */,
+				40D53C521554280F001EB0C5 /* CellRowSingle.png in Resources */,
+				40D53C531554280F001EB0C5 /* CellRowSingle@2x.png in Resources */,
+				40D53C541554280F001EB0C5 /* StyleSelectionBar.png in Resources */,
+				40D53C551554280F001EB0C5 /* StyleSelectionBar@2x.png in Resources */,
+				40D53C561554280F001EB0C5 /* TableViewDisclosure.png in Resources */,
+				40D53C571554280F001EB0C5 /* TableViewDisclosure@2x.png in Resources */,
+				40D53C581554280F001EB0C5 /* TableViewDisclosureHighlighted.png in Resources */,
+				40D53C591554280F001EB0C5 /* TableViewDisclosureHighlighted@2x.png in Resources */,
+				40D53C5A1554280F001EB0C5 /* TableViewBackground.png in Resources */,
+				40D53C5B1554280F001EB0C5 /* TableViewBackground@2x.png in Resources */,
+				40D53C5C1554280F001EB0C5 /* CellButton.png in Resources */,
+				40D53C5D1554280F001EB0C5 /* CellButton@2x.png in Resources */,
+				40D53C5E1554280F001EB0C5 /* CellButtonHighlighted.png in Resources */,
+				40D53C5F1554280F001EB0C5 /* CellButtonHighlighted@2x.png in Resources */,
+				40D53C601554280F001EB0C5 /* CellRadioDark_Mask.png in Resources */,
+				40D53C611554280F001EB0C5 /* CellRadioDark_Mask@2x.png in Resources */,
+				40D53C621554280F001EB0C5 /* CellRadioDark.png in Resources */,
+				40D53C631554280F001EB0C5 /* CellRadioDark@2x.png in Resources */,
+				40D53C641554280F001EB0C5 /* CellRadioHighlighted_Mask.png in Resources */,
+				40D53C651554280F001EB0C5 /* CellRadioHighlighted_Mask@2x.png in Resources */,
+				40D53C661554280F001EB0C5 /* CellRadioHighlighted.png in Resources */,
+				40D53C671554280F001EB0C5 /* CellRadioHighlighted@2x.png in Resources */,
+				40D53C681554280F001EB0C5 /* CellRadioLight_Mask.png in Resources */,
+				40D53C691554280F001EB0C5 /* CellRadioLight_Mask@2x.png in Resources */,
+				40D53C6A1554280F001EB0C5 /* CellRadioLight.png in Resources */,
+				40D53C6B1554280F001EB0C5 /* CellRadioLight@2x.png in Resources */,
+				40D53C6C1554280F001EB0C5 /* avatarDummy.png in Resources */,
+				40D53C6D1554280F001EB0C5 /* avatarDummy@2x.png in Resources */,
+				40D53C6E1554280F001EB0C5 /* ChartBackground.png in Resources */,
+				40D53C6F1554280F001EB0C5 /* ChartBackground@2x.png in Resources */,
+				40D53C701554280F001EB0C5 /* iconSubscribers.png in Resources */,
+				40D53C711554280F001EB0C5 /* iconSubscribers@2x.png in Resources */,
+				40D53C721554280F001EB0C5 /* pictoSubscribers.png in Resources */,
+				40D53C731554280F001EB0C5 /* pictoSubscribers@2x.png in Resources */,
+				40D53C741554280F001EB0C5 /* ListenerSelectedBackground.png in Resources */,
+				40D53C751554280F001EB0C5 /* ListenerSelectedBackground@2x.png in Resources */,
+				40D53C761554280F001EB0C5 /* UserCellRadioDark.png in Resources */,
+				40D53C771554280F001EB0C5 /* UserCellRadioDark@2x.png in Resources */,
+				40D53C781554280F001EB0C5 /* UserCellRadioLight.png in Resources */,
+				40D53C791554280F001EB0C5 /* UserCellRadioLight@2x.png in Resources */,
+				40D53C7A1554280F001EB0C5 /* WhiteCheckmark.png in Resources */,
+				40D53C7B1554280F001EB0C5 /* WhiteCheckmark@2x.png in Resources */,
+				40D53C7C1554280F001EB0C5 /* logo.png in Resources */,
+				40D53C7D1554280F001EB0C5 /* logo@2x.png in Resources */,
+				40D53C7E1554280F001EB0C5 /* CellRowGoldFirst.png in Resources */,
+				40D53C7F1554280F001EB0C5 /* CellRowGoldFirst@2x.png in Resources */,
+				40D53C801554280F001EB0C5 /* CellRowGoldInter.png in Resources */,
+				40D53C811554280F001EB0C5 /* CellRowGoldInter@2x.png in Resources */,
+				40D53C821554280F001EB0C5 /* CellRowGoldLast.png in Resources */,
+				40D53C831554280F001EB0C5 /* CellRowGoldLast@2x.png in Resources */,
+				40D53C841554280F001EB0C5 /* btnBuyDown.png in Resources */,
+				40D53C851554280F001EB0C5 /* btnBuyDown@2x.png in Resources */,
+				40D53C861554280F001EB0C5 /* btnBuyUp.png in Resources */,
+				40D53C871554280F001EB0C5 /* btnBuyUp@2x.png in Resources */,
+				40D53C881554280F001EB0C5 /* btnBuyDown.png in Resources */,
+				40D53C891554280F001EB0C5 /* btnBuyDown@2x.png in Resources */,
+				40D53C8A1554280F001EB0C5 /* btnBuyUp.png in Resources */,
+				40D53C8B1554280F001EB0C5 /* btnBuyUp@2x.png in Resources */,
+				40D53C8C1554280F001EB0C5 /* ProgrammingViewController.xib in Resources */,
+				40D53C8D1554280F001EB0C5 /* CellPlainRow.png in Resources */,
+				40D53C8E1554280F001EB0C5 /* CellPlainRow@2x.png in Resources */,
+				40D53C8F1554280F001EB0C5 /* CellPlainSongCardRow.png in Resources */,
+				40D53C901554280F001EB0C5 /* CellPlainSongCardRow@2x.png in Resources */,
+				40D53C911554280F001EB0C5 /* SongUploadViewController.xib in Resources */,
+				40D53C921554280F001EB0C5 /* SongAddViewController.xib in Resources */,
+				40D53C931554280F001EB0C5 /* CellButtonDel.png in Resources */,
+				40D53C941554280F001EB0C5 /* CellButtonDel@2x.png in Resources */,
+				40D53C951554280F001EB0C5 /* SongInfoViewController.xib in Resources */,
+				40D53C961554280F001EB0C5 /* ProgrammingArtistViewController.xib in Resources */,
+				40D53C971554280F001EB0C5 /* ProgrammingAlbumViewController.xib in Resources */,
+				40D53C981554280F001EB0C5 /* SongRatingBullet.png in Resources */,
+				40D53C991554280F001EB0C5 /* SongRatingBullet@2x.png in Resources */,
+				40D53C9A1554280F001EB0C5 /* SongRatingStar.png in Resources */,
+				40D53C9B1554280F001EB0C5 /* SongRatingStar@2x.png in Resources */,
+				40D53C9C1554280F001EB0C5 /* GrayCheckmark.png in Resources */,
+				40D53C9D1554280F001EB0C5 /* GrayCheckmark@2x.png in Resources */,
+				40D53C9E1554280F001EB0C5 /* YasoundLoginViewController.xib in Resources */,
+				40D53C9F1554280F001EB0C5 /* cellFacebookDisabled.png in Resources */,
+				40D53CA01554280F001EB0C5 /* cellFacebookDisabled@2x.png in Resources */,
+				40D53CA11554280F001EB0C5 /* cellFacebookDown.png in Resources */,
+				40D53CA21554280F001EB0C5 /* cellFacebookDown@2x.png in Resources */,
+				40D53CA31554280F001EB0C5 /* cellFacebookUp.png in Resources */,
+				40D53CA41554280F001EB0C5 /* cellFacebookUp@2x.png in Resources */,
+				40D53CA51554280F001EB0C5 /* cellTwitterDisabled.png in Resources */,
+				40D53CA61554280F001EB0C5 /* cellTwitterDisabled@2x.png in Resources */,
+				40D53CA71554280F001EB0C5 /* cellTwitterDown.png in Resources */,
+				40D53CA81554280F001EB0C5 /* cellTwitterDown@2x.png in Resources */,
+				40D53CA91554280F001EB0C5 /* cellTwitterUp.png in Resources */,
+				40D53CAA1554280F001EB0C5 /* cellTwitterUp@2x.png in Resources */,
+				40D53CAB1554280F001EB0C5 /* cellYasoundDisabled.png in Resources */,
+				40D53CAC1554280F001EB0C5 /* cellYasoundDisabled@2x.png in Resources */,
+				40D53CAD1554280F001EB0C5 /* cellYasoundDown.png in Resources */,
+				40D53CAE1554280F001EB0C5 /* cellYasoundDown@2x.png in Resources */,
+				40D53CAF1554280F001EB0C5 /* cellYasoundUp.png in Resources */,
+				40D53CB01554280F001EB0C5 /* cellYasoundUp@2x.png in Resources */,
+				40D53CB11554280F001EB0C5 /* LoginBackground.png in Resources */,
+				40D53CB21554280F001EB0C5 /* LoginBackground@2x.png in Resources */,
+				40D53CB31554280F001EB0C5 /* barItemAdd.png in Resources */,
+				40D53CB41554280F001EB0C5 /* barItemAdd@2x.png in Resources */,
+				40D53CB51554280F001EB0C5 /* barItemBkg.png in Resources */,
+				40D53CB61554280F001EB0C5 /* barItemBkg@2x.png in Resources */,
+				40D53CB71554280F001EB0C5 /* barItemBkgHighlighted.png in Resources */,
+				40D53CB81554280F001EB0C5 /* barItemBkgHighlighted@2x.png in Resources */,
+				40D53CB91554280F001EB0C5 /* barItemLargeBkg.png in Resources */,
+				40D53CBA1554280F001EB0C5 /* barItemLargeBkg@2x.png in Resources */,
+				40D53CBB1554280F001EB0C5 /* barItemLargeBkgHighlighted.png in Resources */,
+				40D53CBC1554280F001EB0C5 /* barItemLargeBkgHighlighted@2x.png in Resources */,
+				40D53CBD1554280F001EB0C5 /* barItemMenu.png in Resources */,
+				40D53CBE1554280F001EB0C5 /* barItemMenu@2x.png in Resources */,
+				40D53CBF1554280F001EB0C5 /* barItemSynchronize.png in Resources */,
+				40D53CC01554280F001EB0C5 /* barItemSynchronize@2x.png in Resources */,
+				40D53CC11554280F001EB0C5 /* barItemLargeBkgDisabled.png in Resources */,
+				40D53CC21554280F001EB0C5 /* barItemLargeBkgDisabled@2x.png in Resources */,
+				40D53CC31554280F001EB0C5 /* LoginViewController.xib in Resources */,
+				40D53CC41554280F001EB0C5 /* AccountFacebookViewController.xib in Resources */,
+				40D53CC51554280F001EB0C5 /* AccountTwitterViewController.xib in Resources */,
+				40D53CC61554280F001EB0C5 /* AccountYasoundViewController.xib in Resources */,
+				40D53CC71554280F001EB0C5 /* BigActionButton.png in Resources */,
+				40D53CC81554280F001EB0C5 /* BigActionButton@2x.png in Resources */,
+				40D53CC91554280F001EB0C5 /* BigActionButtonHighlighted.png in Resources */,
+				40D53CCA1554280F001EB0C5 /* BigActionButtonHighlighted@2x.png in Resources */,
+				40D53CCB1554280F001EB0C5 /* BigActionButtonDisabled.png in Resources */,
+				40D53CCC1554280F001EB0C5 /* BigActionButtonDisabled@2x.png in Resources */,
+				40D53CCD1554280F001EB0C5 /* NotificationViewController.xib in Resources */,
+				40D53CCE1554280F001EB0C5 /* NotificationCenterViewController.xib in Resources */,
+				40D53CCF1554280F001EB0C5 /* MessageWeViewController.xib in Resources */,
+				40D53CD01554280F001EB0C5 /* BigActionGreenButton.png in Resources */,
+				40D53CD11554280F001EB0C5 /* BigActionGreenButton@2x.png in Resources */,
+				40D53CD21554280F001EB0C5 /* BigActionGreenButtonHighlighted.png in Resources */,
+				40D53CD31554280F001EB0C5 /* BigActionGreenButtonHighlighted@2x.png in Resources */,
+				40D53CD41554280F001EB0C5 /* BigActionRedButton.png in Resources */,
+				40D53CD51554280F001EB0C5 /* BigActionRedButton@2x.png in Resources */,
+				40D53CD61554280F001EB0C5 /* BigActionRedButtonHighlighted.png in Resources */,
+				40D53CD71554280F001EB0C5 /* BigActionRedButtonHighlighted@2x.png in Resources */,
+				40D53CD81554280F001EB0C5 /* ProfilePhotoMask.png in Resources */,
+				40D53CD91554280F001EB0C5 /* ProfilePhotoMask@2x.png in Resources */,
+				40D53CDA1554280F001EB0C5 /* ProfileViewController.xib in Resources */,
+				40D53CDB1554280F001EB0C5 /* ShareModalViewController.xib in Resources */,
+				40D53CDC1554280F001EB0C5 /* ShareBackground.png in Resources */,
+				40D53CDD1554280F001EB0C5 /* ShareBackground@2x.png in Resources */,
+				40D53CDE1554280F001EB0C5 /* ShareTwitterModalViewController.xib in Resources */,
+				40D53CDF1554280F001EB0C5 /* barRedItemMediumBkg.png in Resources */,
+				40D53CE01554280F001EB0C5 /* barRedItemMediumBkg@2x.png in Resources */,
+				40D53CE11554280F001EB0C5 /* barRedItemMediumBkgHighlighted.png in Resources */,
+				40D53CE21554280F001EB0C5 /* barRedItemMediumBkgHighlighted@2x.png in Resources */,
+				40D53CE31554280F001EB0C5 /* MenuDynamicViewController.xib in Resources */,
+				40D53CE41554280F001EB0C5 /* defaultMenuDescription.json.txt in Resources */,
+				40D53CE51554280F001EB0C5 /* defaultMenuDescription.json.txt in Resources */,
+				40D53CE61554280F001EB0C5 /* WebPageViewController.xib in Resources */,
+				40D53CE71554280F001EB0C5 /* SignupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6878,6 +7553,190 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		40D53B551554280F001EB0C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40D53B561554280F001EB0C5 /* main.m in Sources */,
+				40D53B571554280F001EB0C5 /* AudioStreamer.m in Sources */,
+				40D53B581554280F001EB0C5 /* Tile.m in Sources */,
+				40D53B591554280F001EB0C5 /* YasoundAppDelegate.m in Sources */,
+				40D53B5A1554280F001EB0C5 /* ActivityAlertView.m in Sources */,
+				40D53B5B1554280F001EB0C5 /* RadioSelectionViewController.m in Sources */,
+				40D53B5C1554280F001EB0C5 /* RadioSelectionTableViewCell.m in Sources */,
+				40D53B5D1554280F001EB0C5 /* BundleFileManager.m in Sources */,
+				40D53B5E1554280F001EB0C5 /* BundleStylesheet.m in Sources */,
+				40D53B5F1554280F001EB0C5 /* RadioSearchViewController.m in Sources */,
+				40D53B601554280F001EB0C5 /* RadioViewController.m in Sources */,
+				40D53B611554280F001EB0C5 /* Theme.m in Sources */,
+				40D53B621554280F001EB0C5 /* RadioViewCell.m in Sources */,
+				40D53B631554280F001EB0C5 /* ThemeSelectorViewController.m in Sources */,
+				40D53B641554280F001EB0C5 /* StyleSelectorViewController.m in Sources */,
+				40D53B651554280F001EB0C5 /* Communicator.m in Sources */,
+				40D53B661554280F001EB0C5 /* Container.m in Sources */,
+				40D53B671554280F001EB0C5 /* Model.m in Sources */,
+				40D53B681554280F001EB0C5 /* YasoundDataProvider.m in Sources */,
+				40D53B691554280F001EB0C5 /* WebImageView.m in Sources */,
+				40D53B6A1554280F001EB0C5 /* Auth.m in Sources */,
+				40D53B6B1554280F001EB0C5 /* PlaylistMoulinor.m in Sources */,
+				40D53B6C1554280F001EB0C5 /* ApiKey.m in Sources */,
+				40D53B6D1554280F001EB0C5 /* Playlist.m in Sources */,
+				40D53B6E1554280F001EB0C5 /* Radio.m in Sources */,
+				40D53B6F1554280F001EB0C5 /* Track.m in Sources */,
+				40D53B701554280F001EB0C5 /* User.m in Sources */,
+				40D53B711554280F001EB0C5 /* WallEvent.m in Sources */,
+				40D53B721554280F001EB0C5 /* WallMessage.m in Sources */,
+				40D53B731554280F001EB0C5 /* SettingsViewController.m in Sources */,
+				40D53B741554280F001EB0C5 /* PlaylistsViewController.m in Sources */,
+				40D53B751554280F001EB0C5 /* KeywordsViewController.m in Sources */,
+				40D53B761554280F001EB0C5 /* ASIAuthenticationDialog.m in Sources */,
+				40D53B771554280F001EB0C5 /* ASIDataCompressor.m in Sources */,
+				40D53B781554280F001EB0C5 /* ASIDataDecompressor.m in Sources */,
+				40D53B791554280F001EB0C5 /* ASIDownloadCache.m in Sources */,
+				40D53B7A1554280F001EB0C5 /* ASIFormDataRequest.m in Sources */,
+				40D53B7B1554280F001EB0C5 /* ASIHTTPRequest.m in Sources */,
+				40D53B7C1554280F001EB0C5 /* ASIInputStream.m in Sources */,
+				40D53B7D1554280F001EB0C5 /* ASINetworkQueue.m in Sources */,
+				40D53B7E1554280F001EB0C5 /* Reachability.m in Sources */,
+				40D53B7F1554280F001EB0C5 /* EasyTracker.m in Sources */,
+				40D53B801554280F001EB0C5 /* NSObject+SBJson.m in Sources */,
+				40D53B811554280F001EB0C5 /* SBJsonParser.m in Sources */,
+				40D53B821554280F001EB0C5 /* SBJsonStreamParser.m in Sources */,
+				40D53B831554280F001EB0C5 /* SBJsonStreamParserAccumulator.m in Sources */,
+				40D53B841554280F001EB0C5 /* SBJsonStreamParserAdapter.m in Sources */,
+				40D53B851554280F001EB0C5 /* SBJsonStreamParserState.m in Sources */,
+				40D53B861554280F001EB0C5 /* SBJsonStreamWriter.m in Sources */,
+				40D53B871554280F001EB0C5 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				40D53B881554280F001EB0C5 /* SBJsonStreamWriterState.m in Sources */,
+				40D53B891554280F001EB0C5 /* SBJsonTokeniser.m in Sources */,
+				40D53B8A1554280F001EB0C5 /* SBJsonUTF8Stream.m in Sources */,
+				40D53B8B1554280F001EB0C5 /* SBJsonWriter.m in Sources */,
+				40D53B8C1554280F001EB0C5 /* NSObject+JsonProxy.m in Sources */,
+				40D53B8D1554280F001EB0C5 /* NSObject+PropertyDictionary.m in Sources */,
+				40D53B8E1554280F001EB0C5 /* NSData+CocoaDevUsersAdditions.m in Sources */,
+				40D53B8F1554280F001EB0C5 /* FacebookSessionManager.m in Sources */,
+				40D53B901554280F001EB0C5 /* SessionManager.m in Sources */,
+				40D53B911554280F001EB0C5 /* TwitterSessionManager.m in Sources */,
+				40D53B921554280F001EB0C5 /* TwitterAccountsViewController.m in Sources */,
+				40D53B931554280F001EB0C5 /* TwitteriOSSessionManager.m in Sources */,
+				40D53B941554280F001EB0C5 /* TwitterOAuthSessionManager.m in Sources */,
+				40D53B951554280F001EB0C5 /* TwitterSigninViewController.m in Sources */,
+				40D53B961554280F001EB0C5 /* SFHFKeychainUtils.m in Sources */,
+				40D53B971554280F001EB0C5 /* S7GraphView.m in Sources */,
+				40D53B981554280F001EB0C5 /* ChartView.m in Sources */,
+				40D53B991554280F001EB0C5 /* StatsViewController.m in Sources */,
+				40D53B9A1554280F001EB0C5 /* RegExp.m in Sources */,
+				40D53B9B1554280F001EB0C5 /* RootViewController.m in Sources */,
+				40D53B9C1554280F001EB0C5 /* YasoundSessionManager.m in Sources */,
+				40D53B9D1554280F001EB0C5 /* RadioUser.m in Sources */,
+				40D53B9E1554280F001EB0C5 /* NowPlayingView.m in Sources */,
+				40D53B9F1554280F001EB0C5 /* TrackInteractionView.m in Sources */,
+				40D53BA01554280F001EB0C5 /* SongUser.m in Sources */,
+				40D53BA11554280F001EB0C5 /* NextSong.m in Sources */,
+				40D53BA21554280F001EB0C5 /* QualitySwitchLabel.m in Sources */,
+				40D53BA31554280F001EB0C5 /* YasoundReachability.m in Sources */,
+				40D53BA41554280F001EB0C5 /* TracksView.m in Sources */,
+				40D53BA51554280F001EB0C5 /* Tutorial.m in Sources */,
+				40D53BA61554280F001EB0C5 /* InteractiveView.m in Sources */,
+				40D53BA71554280F001EB0C5 /* ActivityModelessSpinner.m in Sources */,
+				40D53BA81554280F001EB0C5 /* AudioStreamManager.m in Sources */,
+				40D53BA91554280F001EB0C5 /* BuyLinkManager.m in Sources */,
+				40D53BAA1554280F001EB0C5 /* CreateMyRadio.m in Sources */,
+				40D53BAB1554280F001EB0C5 /* FriendsViewController.m in Sources */,
+				40D53BAC1554280F001EB0C5 /* FavoritesViewController.m in Sources */,
+				40D53BAD1554280F001EB0C5 /* SongViewCell.m in Sources */,
+				40D53BAE1554280F001EB0C5 /* UserTableViewCell.m in Sources */,
+				40D53BAF1554280F001EB0C5 /* DateAdditions.m in Sources */,
+				40D53BB01554280F001EB0C5 /* MGTwitterEngine.m in Sources */,
+				40D53BB11554280F001EB0C5 /* MGTwitterHTTPURLConnection.m in Sources */,
+				40D53BB21554280F001EB0C5 /* MGTwitterLibXMLParser.m in Sources */,
+				40D53BB31554280F001EB0C5 /* MGTwitterMessagesLibXMLParser.m in Sources */,
+				40D53BB41554280F001EB0C5 /* MGTwitterMessagesParser.m in Sources */,
+				40D53BB51554280F001EB0C5 /* MGTwitterMiscLibXMLParser.m in Sources */,
+				40D53BB61554280F001EB0C5 /* MGTwitterMiscParser.m in Sources */,
+				40D53BB71554280F001EB0C5 /* MGTwitterStatusesLibXMLParser.m in Sources */,
+				40D53BB81554280F001EB0C5 /* MGTwitterStatusesParser.m in Sources */,
+				40D53BB91554280F001EB0C5 /* MGTwitterUsersLibXMLParser.m in Sources */,
+				40D53BBA1554280F001EB0C5 /* MGTwitterUsersParser.m in Sources */,
+				40D53BBB1554280F001EB0C5 /* MGTwitterXMLParser.m in Sources */,
+				40D53BBC1554280F001EB0C5 /* NSData+Base64.m in Sources */,
+				40D53BBD1554280F001EB0C5 /* NSString+UUID.m in Sources */,
+				40D53BBE1554280F001EB0C5 /* SA_OAuthTwitterController.m in Sources */,
+				40D53BBF1554280F001EB0C5 /* SA_OAuthTwitterEngine.m in Sources */,
+				40D53BC01554280F001EB0C5 /* DDMenuController.m in Sources */,
+				40D53BC11554280F001EB0C5 /* TestflightViewController.m in Sources */,
+				40D53BC21554280F001EB0C5 /* WallMessagePost.m in Sources */,
+				40D53BC31554280F001EB0C5 /* Song.m in Sources */,
+				40D53BC41554280F001EB0C5 /* ConnectionView.m in Sources */,
+				40D53BC51554280F001EB0C5 /* RadioListeningStat.m in Sources */,
+				40D53BC61554280F001EB0C5 /* LeaderBoardEntry.m in Sources */,
+				40D53BC71554280F001EB0C5 /* OrientedTableView.m in Sources */,
+				40D53BC81554280F001EB0C5 /* UserViewCell.m in Sources */,
+				40D53BC91554280F001EB0C5 /* ScrollingLabel.m in Sources */,
+				40D53BCA1554280F001EB0C5 /* NSString+MD5Addition.m in Sources */,
+				40D53BCB1554280F001EB0C5 /* UIDevice+IdentifierAddition.m in Sources */,
+				40D53BCC1554280F001EB0C5 /* TSLibraryImport.m in Sources */,
+				40D53BCD1554280F001EB0C5 /* UIImage+Resize.m in Sources */,
+				40D53BCE1554280F001EB0C5 /* UIImage+Alpha.m in Sources */,
+				40D53BCF1554280F001EB0C5 /* UIImage+RoundedCorner.m in Sources */,
+				40D53BD01554280F001EB0C5 /* SongsViewController.m in Sources */,
+				40D53BD11554280F001EB0C5 /* SongUploader.m in Sources */,
+				40D53BD21554280F001EB0C5 /* MBProgressHUD.m in Sources */,
+				40D53BD31554280F001EB0C5 /* AdaptiveLabel.m in Sources */,
+				40D53BD41554280F001EB0C5 /* LikeViewCell.m in Sources */,
+				40D53BD51554280F001EB0C5 /* YasoundDataCache.m in Sources */,
+				40D53BD61554280F001EB0C5 /* YasoundSong.m in Sources */,
+				40D53BD71554280F001EB0C5 /* ProgrammingViewController.m in Sources */,
+				40D53BD81554280F001EB0C5 /* SongUploadViewController.m in Sources */,
+				40D53BD91554280F001EB0C5 /* SongUploadManager.m in Sources */,
+				40D53BDA1554280F001EB0C5 /* SongAddViewController.m in Sources */,
+				40D53BDB1554280F001EB0C5 /* TimeProfile.m in Sources */,
+				40D53BDC1554280F001EB0C5 /* SongUploadCell.m in Sources */,
+				40D53BDD1554280F001EB0C5 /* SongInfoViewController.m in Sources */,
+				40D53BDE1554280F001EB0C5 /* SongCatalog.m in Sources */,
+				40D53BDF1554280F001EB0C5 /* ProgrammingArtistViewController.m in Sources */,
+				40D53BE01554280F001EB0C5 /* ProgrammingAlbumViewController.m in Sources */,
+				40D53BE11554280F001EB0C5 /* SongAddCell.m in Sources */,
+				40D53BE21554280F001EB0C5 /* LocalSongInfoViewController.m in Sources */,
+				40D53BE31554280F001EB0C5 /* SongLocal.m in Sources */,
+				40D53BE41554280F001EB0C5 /* YasoundDataCacheImage.m in Sources */,
+				40D53BE51554280F001EB0C5 /* FMDatabase.m in Sources */,
+				40D53BE61554280F001EB0C5 /* FMDatabaseAdditions.m in Sources */,
+				40D53BE71554280F001EB0C5 /* FMDatabasePool.m in Sources */,
+				40D53BE81554280F001EB0C5 /* FMDatabaseQueue.m in Sources */,
+				40D53BE91554280F001EB0C5 /* FMResultSet.m in Sources */,
+				40D53BEA1554280F001EB0C5 /* YasoundLoginViewController.m in Sources */,
+				40D53BEB1554280F001EB0C5 /* UnderlinedButton.m in Sources */,
+				40D53BEC1554280F001EB0C5 /* LoginViewController.m in Sources */,
+				40D53BED1554280F001EB0C5 /* AccountFacebookViewController.m in Sources */,
+				40D53BEE1554280F001EB0C5 /* AccountTwitterViewController.m in Sources */,
+				40D53BEF1554280F001EB0C5 /* AccountYasoundViewController.m in Sources */,
+				40D53BF01554280F001EB0C5 /* NotificationViewController.m in Sources */,
+				40D53BF11554280F001EB0C5 /* NotificationViewCell.m in Sources */,
+				40D53BF21554280F001EB0C5 /* NotificationManager.m in Sources */,
+				40D53BF31554280F001EB0C5 /* APNsDeviceToken.m in Sources */,
+				40D53BF41554280F001EB0C5 /* APNsNotifInfo.m in Sources */,
+				40D53BF51554280F001EB0C5 /* APNsPreferences.m in Sources */,
+				40D53BF61554280F001EB0C5 /* YasoundNotifCenter.m in Sources */,
+				40D53BF71554280F001EB0C5 /* NotificationCenterTableViewcCell.m in Sources */,
+				40D53BF81554280F001EB0C5 /* NotificationCenterViewController.m in Sources */,
+				40D53BF91554280F001EB0C5 /* MessageWeViewController.m in Sources */,
+				40D53BFA1554280F001EB0C5 /* ProfileViewController.m in Sources */,
+				40D53BFB1554280F001EB0C5 /* RequestConfig.m in Sources */,
+				40D53BFC1554280F001EB0C5 /* ASIHTTPRequest+Model.m in Sources */,
+				40D53BFD1554280F001EB0C5 /* ShareModalViewController.m in Sources */,
+				40D53BFE1554280F001EB0C5 /* LoadingCell.m in Sources */,
+				40D53BFF1554280F001EB0C5 /* MKBitlyHelper.m in Sources */,
+				40D53C001554280F001EB0C5 /* ShareTwitterModalViewController.m in Sources */,
+				40D53C011554280F001EB0C5 /* ProgrammingTitleCell.m in Sources */,
+				40D53C021554280F001EB0C5 /* MenuDynamicViewController.m in Sources */,
+				40D53C031554280F001EB0C5 /* MenuTableViewCell.m in Sources */,
+				40D53C041554280F001EB0C5 /* NotificationTableViewCell.m in Sources */,
+				40D53C051554280F001EB0C5 /* WebPageViewController.m in Sources */,
+				40D53C061554280F001EB0C5 /* SignupViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC3FA66214E93B660055AB4A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -7993,6 +8852,16 @@
 			name = OAuthLib;
 			targetProxy = 40B4094F152EFC630050D334 /* PBXContainerItemProxy */;
 		};
+		40D53B511554280F001EB0C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "facebook-ios-sdk";
+			targetProxy = 40D53B521554280F001EB0C5 /* PBXContainerItemProxy */;
+		};
+		40D53B531554280F001EB0C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OAuthLib;
+			targetProxy = 40D53B541554280F001EB0C5 /* PBXContainerItemProxy */;
+		};
 		BC3FA65E14E93B660055AB4A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "facebook-ios-sdk";
@@ -8206,6 +9075,56 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "YasoundD LOCAL SERVER";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		40D53CE91554280F001EB0C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"SIMULATE_TECHTOUR=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "YasoundD TechTour simu";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		40D53CEA1554280F001EB0C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_PASCAL_STRINGS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "SIMULATE_TECHTOUR=1";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
+				GCC_VERSION = "";
+				INFOPLIST_FILE = "Yasound/Yasound-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
+					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "YasoundD TechTour simu";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -8594,6 +9513,15 @@
 			buildConfigurations = (
 				40B40AE9152EFC630050D334 /* Debug */,
 				40B40AEA152EFC630050D334 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40D53CE81554280F001EB0C5 /* Build configuration list for PBXNativeTarget "YasoundD TECHTOUR simulation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40D53CE91554280F001EB0C5 /* Debug */,
+				40D53CEA1554280F001EB0C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
