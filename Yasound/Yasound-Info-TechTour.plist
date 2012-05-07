@@ -18,7 +18,7 @@
 		<string>Icon-Small@2x.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.yasound.yasound</string>
+	<string>com.yasound.techtour</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -35,7 +35,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.yasound.yasound</string>
+			<string>com.yasound.techtour</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb296167703762159</string>
