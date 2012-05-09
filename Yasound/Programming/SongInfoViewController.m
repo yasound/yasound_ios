@@ -20,12 +20,18 @@
 
 @synthesize song;
 
+#define NB_SECTIONS 1
 
-#define NB_ROWS 4
-#define ROW_COVER 0
-#define ROW_NBLIKES 1
-#define ROW_LAST_READ 2
-#define ROW_FREQUENCY 3
+#define SECTION_COVER 0
+
+#define SECTION_CONFIG 1
+#define ROW_CONFIG_ENABLE 0
+#define ROW_CONFIG_HIGHFREQ 1
+
+#define SECTION_REJECT 2
+
+#define SECTION_DELETE 3
+
 
 #define BORDER 8
 #define COVER_SIZE 96
@@ -100,21 +106,23 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     //    return gIndexMap.count;
-    return 1;
+    return NB_SECTIONS;
 }
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return NB_ROWS;
+    if (section == SECTION_CONFIG)
+        return 2;
+    return 1;
 }
 
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {    
-    if (indexPath.row == ROW_COVER)
+    if (indexPath.section == SECTION_COVER)
         return (COVER_SIZE + 2*BORDER);
     
     return 44;
@@ -123,7 +131,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if (indexPath.row == ROW_COVER)
+    if (indexPath.section == SECTION_COVER)
     {
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainSongCardRow.png"]];
         cell.backgroundView = view;
@@ -140,7 +148,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if (indexPath.row == ROW_COVER)
+    if (indexPath.section == SECTION_COVER)
     {
         static NSString* CellIdentifier = @"SongInfoCellCover";
         
@@ -173,17 +181,33 @@
             sheet = [[Theme theme] stylesheetForKey:@"SongView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _album = [sheet makeLabel];
             [cell addSubview:_album];
+
             
-            // enable/disable
-            sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            _enabledLabel = [sheet makeLabel];
-            [cell addSubview:_enabledLabel];
+            sheet = [[Theme theme] stylesheetForKey:@"SongView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            UILabel* label = [sheet makeLabel];
+            label.text = NSLocalizedString(@"SongView_nbLikes", nil);
+            [cell addSubview:label];
+
+            sheet = [[Theme theme] stylesheetForKey:@"SongView_nbLikes_value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            label = [sheet makeLabel];
+            label.text = [NSString stringWithFormat:@"%@", self.song.likes];
+            [cell addSubview:label];
+
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_switch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            _switchEnabled = [[UISwitch alloc] init];
-            _switchEnabled.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, _switchEnabled.frame.size.width, _switchEnabled.frame.size.height);
-            [cell addSubview:_switchEnabled];
             
+            
+            sheet = [[Theme theme] stylesheetForKey:@"SongView_lastRead" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            label = [sheet makeLabel];
+            label.text = NSLocalizedString(@"SongView_lastRead", nil);
+            [cell addSubview:label];
+            
+            sheet = [[Theme theme] stylesheetForKey:@"SongView_lastRead_value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            label = [sheet makeLabel];
+            if (self.song.last_play_time != nil)
+                label.text = [NSString stringWithFormat:@"%@", [self dateToString:self.song.last_play_time]];
+            else
+                label.text = @"-";
+            [cell addSubview:label];
         }
         
         else
@@ -192,14 +216,9 @@
           [_imageView setUrl:url];
         }
         
-        
         _name.text = song.name;
         _artist.text = song.artist;
         _album.text = song.album;
-        _enabledLabel.text = NSLocalizedString(@"SongView_enable_label", nil);
-
-        _switchEnabled.on = [self.song isSongEnabled];
-        [_switchEnabled addTarget:self action:@selector(onSwitchEnabled:)  forControlEvents:UIControlEventValueChanged];
 
         
         return cell;
@@ -217,7 +236,20 @@
     
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-        if (indexPath.row == ROW_FREQUENCY)
+        if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_ENABLE))
+        {
+            //sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            //_enabledLabel = [sheet makeLabel];
+            //[cell addSubview:_enabledLabel];
+            
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_switch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            _switchEnabled = [[UISwitch alloc] init];
+            _switchEnabled.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, _switchEnabled.frame.size.width, _switchEnabled.frame.size.height);
+            [cell addSubview:_switchEnabled];
+
+        }
+        
+        else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_HIGHFREQ))
         {
             NSString* frequencyStr = nil;
             
@@ -225,6 +257,7 @@
             _switchFrequency.frame = CGRectMake(cell.frame.size.width - _switchFrequency.frame.size.width - BORDER, (cell.frame.size.height - _switchFrequency.frame.size.height) / 2.f, _switchFrequency.frame.size.width, _switchFrequency.frame.size.height);
             [cell addSubview:_switchFrequency];
         }
+        
         
         cell.textLabel.backgroundColor = [UIColor clearColor];
         cell.textLabel.textColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
@@ -234,22 +267,12 @@
         cell.detailTextLabel.textColor = [UIColor whiteColor];
         cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:16];
     }
+
     
-    if (indexPath.row == ROW_NBLIKES)
-    {
-        cell.textLabel.text = NSLocalizedString(@"SongView_nbLikes", nil);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", self.song.likes];
-    }
-    else if (indexPath.row == ROW_LAST_READ)
-    {
-        cell.textLabel.text = NSLocalizedString(@"SongView_lastRead", nil);
-        
-        if (self.song.last_play_time != nil)
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [self dateToString:self.song.last_play_time]];
-        else
-            cell.detailTextLabel.text = @"-";
-    }
-    else if (indexPath.row == ROW_FREQUENCY)
+    //
+    // dupate
+    //
+    if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_HIGHFREQ))
     {
         cell.textLabel.text = NSLocalizedString(@"SongView_frequency", nil);
 

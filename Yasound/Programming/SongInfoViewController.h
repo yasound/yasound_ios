@@ -24,7 +24,7 @@
     UILabel* _name;
     UILabel* _artist;
     UILabel* _album;
-    UILabel* _enabledLabel;
+//    UILabel* _enabledLabel;
 
     UISwitch* _switchEnabled;
     UISwitch* _switchFrequency;
