@@ -17,6 +17,8 @@
     {
         _target = target;
         _action = action;
+        _targetDown = nil;
+        _actionDown = nil;
     }
     
     return self;
@@ -28,6 +30,12 @@
     _action = action;
 }
 
+- (void)addTargetOnTouchDown:(id)target action:(SEL)action
+{
+    _targetDown = target;
+    _actionDown = action;
+}
+
 
 
 
@@ -36,14 +44,16 @@
 
 
 
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
-//{
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event 
+{
 //    UITouch *aTouch = [touches anyObject];
 //    
 //    if (aTouch.tapCount == 2) 
-//    
-//}
-//
+    
+    if (_targetDown != nil)
+        [_targetDown performSelector:_actionDown];
+}
+
 
 
 

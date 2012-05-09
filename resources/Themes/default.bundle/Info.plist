@@ -321,6 +321,19 @@
 			<key>path</key>
 			<string>images/Header/NowPlaying</string>
 		</dict>
+		<key>NowPlayingBarMaskHighlighted</key>
+		<dict>
+			<key>x</key>
+			<integer>15</integer>
+			<key>y</key>
+			<integer>6</integer>
+			<key>name</key>
+			<string>TrackMaskHighlighted</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Header/NowPlaying</string>
+		</dict>
 		<key>NowPlayingBarImageDummy</key>
 		<dict>
 			<key>x</key>

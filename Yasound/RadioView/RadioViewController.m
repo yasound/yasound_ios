@@ -38,6 +38,8 @@
 #import "YasoundSessionManager.h"
 #import "YasoundDataCache.h"
 
+#import "SongInfoViewController.h"
+
 
 //#define LOCAL 1 // use localhost as the server
 
@@ -78,6 +80,8 @@ static Song* _gNowPlayingSong = nil;
         self.ownRadio = [[YasoundDataProvider main].user.id intValue] == [self.radio.creator.id intValue];
 
 //        _trackInteractionViewDisplayed = NO;
+
+        self.view.userInteractionEnabled = YES;
 
         _serverErrorCount = 0;
         _updatingPrevious = NO;
@@ -1131,6 +1135,12 @@ static Song* _gNowPlayingSong = nil;
     
     _playingNowView = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong];
     
+    InteractiveView* trackImageButton = [[InteractiveView alloc] initWithFrame:CGRectMake(15, 6, 50, 50) target:self action:@selector(onTrackImageClicked:)];
+    [trackImageButton addTargetOnTouchDown:self action:@selector(onTrackImageTouchDown:)];
+    [_playingNowView addSubview:trackImageButton];
+    [trackImageButton release];
+
+    
     [_playingNowView.trackInteractionView.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
 
     
@@ -1746,6 +1756,23 @@ static Song* _gNowPlayingSong = nil;
     }
 }
 
+
+- (IBAction)onTrackImageTouchDown:(id)sender
+{
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMaskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    [_playingNowView.trackImageMask setImage:[sheet image]];
+}
+
+
+- (IBAction)onTrackImageClicked:(id)sender
+{
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    [_playingNowView.trackImageMask setImage:[sheet image]];
+
+    SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:_gNowPlayingSong];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
 
 
 - (IBAction)onFavorite:(id)sender

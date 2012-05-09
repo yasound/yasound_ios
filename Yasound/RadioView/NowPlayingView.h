@@ -23,6 +23,9 @@
 @property (nonatomic, retain) TrackInteractionView* trackInteractionView;
 @property (nonatomic, retain) Song* song;
 
+@property (nonatomic, retain) UIImageView* trackImageMask;
+
+
 - (id)initWithSong:(Song*)song;
 
 - (void)setSongStatus:(SongStatus*)status;

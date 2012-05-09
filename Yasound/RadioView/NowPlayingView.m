@@ -23,6 +23,7 @@
 //@synthesize playPauseButton;
 @synthesize song = _song;
 @synthesize trackInteractionView;
+@synthesize trackImageMask;
 
 
 - (id)initWithSong:(Song*)song
@@ -31,6 +32,9 @@
     {
         _song = song;
       _userLikesSong = NO;
+        
+        self.userInteractionEnabled = YES;
+
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         
@@ -71,10 +75,10 @@
         
 //        // header now playing bar track image mask
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        imageView = [[UIImageView alloc] initWithImage:[sheet image]];
-        imageView.frame = sheet.frame;
-        [self addSubview:imageView];
-        
+        self.trackImageMask = [[UIImageView alloc] initWithImage:[sheet image]];
+        self.trackImageMask.frame = sheet.frame;
+        [self addSubview:self.trackImageMask];
+
         // header now playing bar info (artist - title)
         sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarInfo" error:nil];
         ScrollingLabel* title = [[ScrollingLabel alloc] initWithStyle:@"NowPlayingBarInfo"];
@@ -175,6 +179,14 @@
     return;
   
   _userLikesSong = ([songUser userMood] == eMoodLike);
+}
+
+
+
+
+- (void)onAvatarClicked:(id)sender
+{
+    
 }
 
 
