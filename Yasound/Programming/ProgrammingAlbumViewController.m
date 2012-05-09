@@ -234,7 +234,7 @@
     {
         Song* song = [self.catalog getSongAtRow:indexPath.row];
 
-        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
+        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

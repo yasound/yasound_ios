@@ -1769,7 +1769,7 @@ static Song* _gNowPlayingSong = nil;
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     [_playingNowView.trackImageMask setImage:[sheet image]];
 
-    SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:_gNowPlayingSong];
+    SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:_gNowPlayingSong showNowPlaying:NO];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

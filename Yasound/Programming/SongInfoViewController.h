@@ -18,6 +18,7 @@
     IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
+    IBOutlet UIToolbar* _toolbar;
 
     WebImageView* _imageView;
     UILabel* _name;
@@ -27,12 +28,14 @@
 
     UISwitch* _switchEnabled;
     UISwitch* _switchFrequency;
+    
+    BOOL _showNowPlaying;
 
 }
 
 @property (nonatomic, retain) Song* song;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong showNowPlaying:(BOOL)showNowPlaying;
 
 - (IBAction)onBack:(id)sender;
 

@@ -501,7 +501,7 @@
         NSArray* letterRepo = [[SongCatalog synchronizedCatalog].alphabeticRepo objectForKey:[[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section]];
         Song* song = [letterRepo objectAtIndex:indexPath.row];
         
-        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song];
+        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

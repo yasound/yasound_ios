@@ -33,12 +33,13 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong showNowPlaying:(BOOL)showNowPlaying
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
         self.song = aSong;
+        _showNowPlaying = showNowPlaying;
     }
     return self;
 }
@@ -50,6 +51,12 @@
     _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+    
+    
+    if (!_showNowPlaying)
+    {
+        [_toolbar setItems:[NSArray arrayWithObjects:_backBtn, nil]];
+    }
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 }
