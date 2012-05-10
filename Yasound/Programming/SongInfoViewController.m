@@ -12,7 +12,7 @@
 #import "Theme.h"
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
-
+#import "ActivityAlertView.h"
 
 
 @implementation SongInfoViewController
@@ -386,9 +386,73 @@
         return;
     
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-    
-    
+
+    _alertReject = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_reject_title", nil)
+                                                    message:NSLocalizedString(@"SongView_reject_message", nil) 
+                                                   delegate:self 
+                                          cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) 
+                                          otherButtonTitles:NSLocalizedString(@"SongView_reject_button_reject", nil), nil];
+    [_alertReject show];
+    [_alertReject release];
 }
+    
+
+
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"alertView didDismissWithButtonIndex %d", buttonIndex);
+    
+    if ((alertView == _alertReject) && (buttonIndex == 1))
+    {
+        //[ActivityAlertView showWithTitle:nil closeAfterTimeInterval:60];
+        
+        // ICI
+        
+        _alertUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_upload_title", nil)
+                                                  message:NSLocalizedString(@"SongView_upload_message", nil) 
+                                                 delegate:self 
+                                        cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) 
+                                        otherButtonTitles:NSLocalizedString(@"SongView_upload_button", nil), nil];
+        [_alertUpload show];
+        [_alertUpload release];
+    }
+    
+    if ((alertView == _alertUpload) && (buttonIndex == 1))
+    {
+        
+    }
+
+}    
+
+
+
+- (void)onRejectNotified:(NSDictionary*)info
+{
+    BOOL succeeded = NO;
+    
+    NSNumber* nb = [info objectForKey:@"succeeded"];
+    if (nb != nil)
+        succeeded = [nb boolValue];
+
+    [ActivityAlertView close];
+    
+    if (!succeeded)
+        return;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_reject_title", nil)
+                                                    message:NSLocalizedString(@"SongView_reject_message", nil) 
+                                                   delegate:self 
+                                          cancelButtonTitle:nil 
+                                          otherButtonTitles:NSLocalizedString(@"RateApp_button_rate", nil), NSLocalizedString(@"RateApp_button_later", nil), NSLocalizedString(@"RateApp_button_no", nil), nil];
+    alert.delegate = self;
+    [alert show];
+    [alert release];
+}
+
+
+
 
 
 

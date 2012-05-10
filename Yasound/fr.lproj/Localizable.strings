@@ -243,7 +243,18 @@
 "SongView_reject" = "Ça n'est pas la version que je veux";
 "SongView_delete" = "Supprimer le morceau de ma radio";
 
+"SongView_reject_title" = "Rejeter cette version";
+"SongView_reject_message" = "Si le morceau a été synchronisé avec la base serveur de Yasound, \
+il est possible que la version choisie automatiquement ne vous convienne pas.\n\
+Voulez-vous rejeter cette version de votre programmation?\n\
+Vous pourrez ensuite télécharger votre propre version.";
 
+"SongView_reject_button_reject" = "Je rejette";
+
+
+"SongView_upload_title" = "Votre version";
+"SongView_upload_message" = "Voulez-vous télécharger votre version du morceau?";
+"SongView_upload_button" = "Télécharger";
 
 "SongAddView_title" = "Ajouter un titre";
 "SongAddView_cant_add_title" = "Ajout impossible";

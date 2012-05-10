@@ -247,6 +247,19 @@
 "SongView_reject" = "That's not the version I want";
 "SongView_delete" = "Remove the song from my radio";
 
+"SongView_reject_title" = "Reject this version";
+"SongView_reject_message" = "If this song has been synchronized with the server base, \
+it may not be the version you expected.\n\
+Would you like to reject this version from your programming?\n\
+You will be able to upload your own version.";
+
+"SongView_reject_button_reject" = "I reject";
+
+"SongView_upload_title" = "Your version";
+"SongView_upload_message" = "Would you like to upload your version of this song?";
+"SongView_upload_button" = "Upload";
+
+
 "SongAddView_title" = "Add a song";
 "SongAddView_cant_add_title" = "Unable to add";
 "SongAddView_cant_add_message" = "This file is not available on this device, please get it from iCloud before uploading it.";
