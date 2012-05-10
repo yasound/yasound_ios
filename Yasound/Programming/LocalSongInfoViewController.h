@@ -17,6 +17,9 @@
     IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
+    
+    IBOutlet UITableViewCell* _cellDelete;
+    IBOutlet UILabel* _cellDeleteLabel;
 
     UIImageView* _imageView;
     UILabel* _name;

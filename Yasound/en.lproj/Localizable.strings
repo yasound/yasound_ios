@@ -247,6 +247,8 @@
 "SongView_reject" = "That's not the version I want";
 "SongView_delete" = "Remove the song from my radio";
 
+"SongView_delete_failed" = "Error deleting the song";
+
 "SongView_reject_title" = "Reject this version";
 "SongView_reject_message" = "If this song has been synchronized with the server base, \
 it may not be the version you expected.\n\

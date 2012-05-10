@@ -1678,7 +1678,7 @@
 		<key>SongView_nbLikes_value</key>
 		<dict>
 			<key>x</key>
-			<integer>158</integer>
+			<integer>210</integer>
 			<key>y</key>
 			<integer>72</integer>
 			<key>width</key>
@@ -1726,7 +1726,7 @@
 		<key>SongView_lastRead_value</key>
 		<dict>
 			<key>x</key>
-			<integer>158</integer>
+			<integer>210</integer>
 			<key>y</key>
 			<integer>88</integer>
 			<key>width</key>

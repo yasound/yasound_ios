@@ -323,7 +323,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 
 
 
-- (void)removeSynchronizedSong:(Song*)song atIndexPath:(NSIndexPath*)indexPath
+- (void)removeSynchronizedSong:(Song*)song
 {
 //    NSLog(@"%@", self.alphabeticRepo);
 //    NSLog(@"%@", self.alphaArtistsRepo);

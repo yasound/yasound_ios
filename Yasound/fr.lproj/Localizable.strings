@@ -243,6 +243,8 @@
 "SongView_reject" = "Ça n'est pas la version que je veux";
 "SongView_delete" = "Supprimer le morceau de ma radio";
 
+"SongView_delete_failed" = "Impossible de supprimer le morceau";
+
 "SongView_reject_title" = "Rejeter cette version";
 "SongView_reject_message" = "Si le morceau a été synchronisé avec la base serveur de Yasound, \
 il est possible que la version choisie automatiquement ne vous convienne pas.\n\

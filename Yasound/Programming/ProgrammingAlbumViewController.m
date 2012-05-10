@@ -215,7 +215,7 @@
     UITableViewCell* cell = [info objectForKey:@"userData"];
     NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
     
-    [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song atIndexPath:indexPath];
+    [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song];
     
     [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];        
 }

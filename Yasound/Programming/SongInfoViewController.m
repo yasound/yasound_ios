@@ -13,6 +13,7 @@
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
 #import "ActivityAlertView.h"
+#import "SongCatalog.h"
 
 
 @implementation SongInfoViewController
@@ -518,10 +519,6 @@
     [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
 }
 
-- (IBAction)onDeleteSong:(id)sender
-{
-    
-}
 
 - (void)onSwitchFrequency:(id)sender
 {
@@ -537,6 +534,44 @@
 {
     self.song = song;
     [_tableView reloadData];
+}
+
+
+
+
+
+- (IBAction)onDeleteSong:(id)sender
+{
+    NSLog(@"onDeleteSong");   
+
+    // request to server
+    [[YasoundDataProvider main] deleteSong:self.song target:self action:@selector(onSongDeleted:info:) userData:nil];
+}
+
+
+// server's callback
+- (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
+{
+    NSLog(@"onSongDeleted for Song %@", song.name);  
+    NSLog(@"info %@", info);
+    
+    BOOL success = NO;
+    NSNumber* nbsuccess = [info objectForKey:@"success"];
+    if (nbsuccess != nil)
+        success = [nbsuccess boolValue];
+    
+    NSLog(@"success %d", success);
+    
+    if (!success)
+    {
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_delete_failed", nil) closeAfterTimeInterval:2];
+        return;
+    }
+    
+    
+    [[SongCatalog synchronizedCatalog] removeSynchronizedSong:self.song];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
