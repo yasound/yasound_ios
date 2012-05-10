@@ -213,6 +213,9 @@ taskStatus stringToStatus(NSString* str);
                                                                                             // - data for key @"userData"
                                                                                             // - a NSNumber (boolean) for key @"success"
 
+- (void)rejectSong:(Song*)song target:(id)target action:(SEL)selector; // didRejectSong:(ASIHTTPRequest*)req succeeded:(NSNumber*)success
+
+
 // Get searched songs. Returns a NSArray of YasoundSong objects
 - (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector; // didReceiveSearchedSongs:(NSArray*)songs info:(NSDictionary*)info
 
