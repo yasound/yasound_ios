@@ -1621,6 +1621,24 @@ static YasoundDataProvider* _main = nil;
     }
 }
 
+
+- (void)rejectSong:(Song*)song target:(id)target action:(SEL)selector
+{
+    if (!song || !song.id)
+        return;
+    
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/reject_song/%@", song.id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
 - (void)searchSong:(NSString*)search count:(NSInteger)count offset:(NSInteger)offset target:(id)target action:(SEL)selector
 {
   Auth* auth = self.apiKeyAuth;
