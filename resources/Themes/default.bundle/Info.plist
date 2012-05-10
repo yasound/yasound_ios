@@ -1436,7 +1436,7 @@
 		<key>SongView_name</key>
 		<dict>
 			<key>x</key>
-			<integer>112</integer>
+			<integer>120</integer>
 			<key>y</key>
 			<integer>8</integer>
 			<key>width</key>
@@ -1606,7 +1606,7 @@
 		<key>SongView_artist</key>
 		<dict>
 			<key>x</key>
-			<integer>112</integer>
+			<integer>120</integer>
 			<key>y</key>
 			<integer>36</integer>
 			<key>width</key>
@@ -1630,7 +1630,7 @@
 		<key>SongView_album</key>
 		<dict>
 			<key>x</key>
-			<integer>112</integer>
+			<integer>120</integer>
 			<key>y</key>
 			<integer>50</integer>
 			<key>width</key>
@@ -1654,7 +1654,7 @@
 		<key>SongView_nbLikes</key>
 		<dict>
 			<key>x</key>
-			<integer>112</integer>
+			<integer>120</integer>
 			<key>y</key>
 			<integer>72</integer>
 			<key>width</key>
@@ -1678,11 +1678,11 @@
 		<key>SongView_nbLikes_value</key>
 		<dict>
 			<key>x</key>
-			<integer>252</integer>
+			<integer>158</integer>
 			<key>y</key>
 			<integer>72</integer>
 			<key>width</key>
-			<integer>60</integer>
+			<integer>80</integer>
 			<key>height</key>
 			<integer>16</integer>
 			<key>font</key>
@@ -1702,7 +1702,7 @@
 		<key>SongView_lastRead</key>
 		<dict>
 			<key>x</key>
-			<integer>112</integer>
+			<integer>120</integer>
 			<key>y</key>
 			<integer>88</integer>
 			<key>width</key>
@@ -1726,11 +1726,11 @@
 		<key>SongView_lastRead_value</key>
 		<dict>
 			<key>x</key>
-			<integer>252</integer>
+			<integer>158</integer>
 			<key>y</key>
 			<integer>88</integer>
 			<key>width</key>
-			<integer>60</integer>
+			<integer>80</integer>
 			<key>height</key>
 			<integer>16</integer>
 			<key>font</key>
@@ -1774,9 +1774,9 @@
 		<key>SongView_enable_switch</key>
 		<dict>
 			<key>x</key>
-			<integer>234</integer>
+			<integer>228</integer>
 			<key>y</key>
-			<integer>75</integer>
+			<integer>10</integer>
 			<key>width</key>
 			<integer>0</integer>
 			<key>height</key>

@@ -2056,6 +2056,22 @@
 		BC7C07881541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
 		BC7C07891541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
 		BC7C078A1541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
+		BC7C661E155BF82000F144BD /* CellSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661C155BF82000F144BD /* CellSongCardRow.png */; };
+		BC7C661F155BF82000F144BD /* CellSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661C155BF82000F144BD /* CellSongCardRow.png */; };
+		BC7C6620155BF82000F144BD /* CellSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661C155BF82000F144BD /* CellSongCardRow.png */; };
+		BC7C6621155BF82000F144BD /* CellSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661C155BF82000F144BD /* CellSongCardRow.png */; };
+		BC7C6622155BF82000F144BD /* CellSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661C155BF82000F144BD /* CellSongCardRow.png */; };
+		BC7C6623155BF82000F144BD /* CellSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661C155BF82000F144BD /* CellSongCardRow.png */; };
+		BC7C6624155BF82000F144BD /* CellSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661C155BF82000F144BD /* CellSongCardRow.png */; };
+		BC7C6625155BF82000F144BD /* CellSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661C155BF82000F144BD /* CellSongCardRow.png */; };
+		BC7C6626155BF82000F144BD /* CellSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661D155BF82000F144BD /* CellSongCardRow@2x.png */; };
+		BC7C6627155BF82000F144BD /* CellSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661D155BF82000F144BD /* CellSongCardRow@2x.png */; };
+		BC7C6628155BF82000F144BD /* CellSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661D155BF82000F144BD /* CellSongCardRow@2x.png */; };
+		BC7C6629155BF82000F144BD /* CellSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661D155BF82000F144BD /* CellSongCardRow@2x.png */; };
+		BC7C662A155BF82000F144BD /* CellSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661D155BF82000F144BD /* CellSongCardRow@2x.png */; };
+		BC7C662B155BF82000F144BD /* CellSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661D155BF82000F144BD /* CellSongCardRow@2x.png */; };
+		BC7C662C155BF82000F144BD /* CellSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661D155BF82000F144BD /* CellSongCardRow@2x.png */; };
+		BC7C662D155BF82000F144BD /* CellSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC7C661D155BF82000F144BD /* CellSongCardRow@2x.png */; };
 		BC82067214F5620200FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
 		BC82067314F5620200FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
 		BC82067414F5620200FAE05E /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82067014F5620200FAE05E /* ProgrammingViewController.m */; };
@@ -3380,7 +3396,6 @@
 		40CC5A54153D9EEB006C052E /* ASIHTTPRequest+Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+Model.h"; sourceTree = "<group>"; };
 		40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ASIHTTPRequest+Model.m"; sourceTree = "<group>"; };
 		40D53CEB1554280F001EB0C5 /* Yasound TechTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Yasound TechTour.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		40D53CED15542810001EB0C5 /* YasoundD copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "YasoundD copy-Info.plist"; path = "/Users/mat/work/dev/yasound/yasound_ios/YasoundD copy-Info.plist"; sourceTree = "<absolute>"; };
 		40DE99EF15406B98001E63F4 /* LoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingCell.h; sourceTree = "<group>"; };
 		40DE99F015406B98001E63F4 /* LoadingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingCell.m; sourceTree = "<group>"; };
 		40EAA55614D85EF60000621C /* RadioListeningStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioListeningStat.h; sourceTree = "<group>"; };
@@ -3603,6 +3618,8 @@
 		BC7C077A1541A915004FC760 /* ShareTwitterModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTwitterModalViewController.h; sourceTree = "<group>"; };
 		BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTwitterModalViewController.m; sourceTree = "<group>"; };
 		BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareTwitterModalViewController.xib; sourceTree = "<group>"; };
+		BC7C661C155BF82000F144BD /* CellSongCardRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellSongCardRow.png; sourceTree = "<group>"; };
+		BC7C661D155BF82000F144BD /* CellSongCardRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellSongCardRow@2x.png"; sourceTree = "<group>"; };
 		BC82066F14F5620200FAE05E /* ProgrammingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingViewController.h; path = Programming/ProgrammingViewController.h; sourceTree = "<group>"; };
 		BC82067014F5620200FAE05E /* ProgrammingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingViewController.m; path = Programming/ProgrammingViewController.m; sourceTree = "<group>"; };
 		BC82067114F5620200FAE05E /* ProgrammingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingViewController.xib; path = Programming/ProgrammingViewController.xib; sourceTree = "<group>"; };
@@ -4784,6 +4801,8 @@
 		BC9F4A0A14E6AC5400008AA3 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				BC7C661C155BF82000F144BD /* CellSongCardRow.png */,
+				BC7C661D155BF82000F144BD /* CellSongCardRow@2x.png */,
 				BC237D4B1518E57800B8B66F /* GrayCheckmark.png */,
 				BC237D4C1518E57800B8B66F /* GrayCheckmark@2x.png */,
 				BC413D6714EBC2F9009EB307 /* WhiteCheckmark.png */,
@@ -5414,7 +5433,6 @@
 				BCFECF8F146840B300BA20D9 /* resources */,
 				E5280A5B146040E900A88910 /* xib */,
 				E5A9A3AA1454DC0500EA374C /* Products */,
-				40D53CED15542810001EB0C5 /* YasoundD copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -5922,6 +5940,8 @@
 				BCE66B3915494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B4215494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C5154997B90003AC7E /* WebPageViewController.xib in Resources */,
+				BC7C6624155BF82000F144BD /* CellSongCardRow.png in Resources */,
+				BC7C662C155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6130,6 +6150,8 @@
 				40D53CE61554280F001EB0C5 /* WebPageViewController.xib in Resources */,
 				40D53CE71554280F001EB0C5 /* SignupViewController.xib in Resources */,
 				E546DB441556657B0005AB8D /* Yasound-Info-TechTour.plist in Resources */,
+				BC7C6625155BF82000F144BD /* CellSongCardRow.png in Resources */,
+				BC7C662D155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6332,6 +6354,8 @@
 				BCE66B3815494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B4115494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C4154997B90003AC7E /* WebPageViewController.xib in Resources */,
+				BC7C6623155BF82000F144BD /* CellSongCardRow.png in Resources */,
+				BC7C662B155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6539,6 +6563,8 @@
 				BCE66B3E15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C1154997B90003AC7E /* WebPageViewController.xib in Resources */,
 				BC47AFDE154AD23200B0AA55 /* SignupViewController.xib in Resources */,
+				BC7C6620155BF82000F144BD /* CellSongCardRow.png in Resources */,
+				BC7C6628155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6746,6 +6772,8 @@
 				BCE66B3D15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C0154997B90003AC7E /* WebPageViewController.xib in Resources */,
 				BC47AFDD154AD23200B0AA55 /* SignupViewController.xib in Resources */,
+				BC7C661F155BF82000F144BD /* CellSongCardRow.png in Resources */,
+				BC7C6627155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6953,6 +6981,8 @@
 				BCE66B4015494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C3154997B90003AC7E /* WebPageViewController.xib in Resources */,
 				BC47AFE0154AD23200B0AA55 /* SignupViewController.xib in Resources */,
+				BC7C6622155BF82000F144BD /* CellSongCardRow.png in Resources */,
+				BC7C662A155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7160,6 +7190,8 @@
 				BCE66B3C15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601BF154997B90003AC7E /* WebPageViewController.xib in Resources */,
 				BC47AFDC154AD23200B0AA55 /* SignupViewController.xib in Resources */,
+				BC7C661E155BF82000F144BD /* CellSongCardRow.png in Resources */,
+				BC7C6626155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7367,6 +7399,8 @@
 				BCE66B3F15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C2154997B90003AC7E /* WebPageViewController.xib in Resources */,
 				BC47AFDF154AD23200B0AA55 /* SignupViewController.xib in Resources */,
+				BC7C6621155BF82000F144BD /* CellSongCardRow.png in Resources */,
+				BC7C6629155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

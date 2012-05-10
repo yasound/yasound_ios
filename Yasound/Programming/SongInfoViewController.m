@@ -20,7 +20,7 @@
 
 @synthesize song;
 
-#define NB_SECTIONS 1
+#define NB_SECTIONS 2
 
 #define SECTION_COVER 0
 
@@ -133,15 +133,45 @@
 {
     if (indexPath.section == SECTION_COVER)
     {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainSongCardRow.png"]];
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellSongCardRow.png"]];
         cell.backgroundView = view;
         [view release];
         return;
     }
     
-    UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainRow.png"]];
-    cell.backgroundView = view;
-    [view release];
+    
+    NSInteger nbRows;
+    if (indexPath.section == SECTION_CONFIG)
+        nbRows =  2;
+    
+    else 
+        nbRows =  1;
+    
+    
+    if (nbRows == 1)
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else if (indexPath.row == 0)
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else if (indexPath.row == (nbRows -1))
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
+    else
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
+        cell.backgroundView = view;
+        [view release];
+    }
 }
 
 
@@ -160,12 +190,21 @@
         
             cell.selectionStyle  = UITableViewCellSelectionStyleNone;
       
-          NSURL* url = [[YasoundDataProvider main] urlForSongCover:self.song];
-          _imageView = [[WebImageView alloc] initWithImageAtURL:url];
+            if (self.song.cover)
+            {
+                NSURL* url = [[YasoundDataProvider main] urlForSongCover:self.song];
+                _imageView = [[WebImageView alloc] initWithImageAtURL:url];
+            }
+            else
+            {
+                // fake image
+                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                _imageView = [[WebImageView alloc] initWithImage:[sheet image]];
+            }
             
             CGFloat size = COVER_SIZE;
             CGFloat height = (COVER_SIZE + 2*BORDER);
-             _imageView.frame = CGRectMake(BORDER, (height - size) / 2.f, size, size);
+             _imageView.frame = CGRectMake(2*BORDER, (height - size) / 2.f, size, size);
             
             [cell addSubview:_imageView];
             
@@ -238,10 +277,6 @@
     
         if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_ENABLE))
         {
-            //sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            //_enabledLabel = [sheet makeLabel];
-            //[cell addSubview:_enabledLabel];
-            
             BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_switch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _switchEnabled = [[UISwitch alloc] init];
             _switchEnabled.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, _switchEnabled.frame.size.width, _switchEnabled.frame.size.height);
@@ -254,7 +289,7 @@
             NSString* frequencyStr = nil;
             
             _switchFrequency = [[UISwitch alloc] init];
-            _switchFrequency.frame = CGRectMake(cell.frame.size.width - _switchFrequency.frame.size.width - BORDER, (cell.frame.size.height - _switchFrequency.frame.size.height) / 2.f, _switchFrequency.frame.size.width, _switchFrequency.frame.size.height);
+            _switchFrequency.frame = CGRectMake(cell.frame.size.width - _switchFrequency.frame.size.width - 2*BORDER, (cell.frame.size.height - _switchFrequency.frame.size.height) / 2.f, _switchFrequency.frame.size.width, _switchFrequency.frame.size.height);
             [cell addSubview:_switchFrequency];
         }
         
@@ -270,9 +305,23 @@
 
     
     //
-    // dupate
+    // update
     //
-    if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_HIGHFREQ))
+    if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_ENABLE))
+    {
+        //sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        //_enabledLabel = [sheet makeLabel];
+        //[cell addSubview:_enabledLabel];
+
+        
+        cell.textLabel.text = NSLocalizedString(@"SongView_enable_label", nil);
+        
+        _switchEnabled.on = [self.song isSongEnabled];
+    
+        [_switchEnabled addTarget:self action:@selector(onSwitchEnabled:)  forControlEvents:UIControlEventValueChanged];
+    }
+
+    else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_HIGHFREQ))
     {
         cell.textLabel.text = NSLocalizedString(@"SongView_frequency", nil);
 
