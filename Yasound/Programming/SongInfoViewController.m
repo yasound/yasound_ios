@@ -20,7 +20,7 @@
 
 @synthesize song;
 
-#define NB_SECTIONS 2
+#define NB_SECTIONS 4
 
 #define SECTION_COVER 0
 
@@ -58,6 +58,7 @@
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
+    _cellDeleteLabel.text = NSLocalizedString(@"SongView_delete", nil);
     
     if (!_showNowPlaying)
     {
@@ -125,7 +126,18 @@
     if (indexPath.section == SECTION_COVER)
         return (COVER_SIZE + 2*BORDER);
     
-    return 44;
+    return 46;
+}
+
+
+- (CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0;
 }
 
 
@@ -134,6 +146,15 @@
     if (indexPath.section == SECTION_COVER)
     {
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellSongCardRow.png"]];
+        cell.backgroundView = view;
+        [view release];
+        return;
+    }
+
+    if (indexPath.section == SECTION_DELETE)
+    {
+        UIView* view = [[UIView alloc] init];
+        view.backgroundColor = [UIColor clearColor];
         cell.backgroundView = view;
         [view release];
         return;
@@ -263,6 +284,13 @@
         return cell;
         
     }
+    else if (indexPath.section == SECTION_DELETE)
+    {
+        return _cellDelete;
+    }
+
+    
+    
     
     
     static NSString* CellIdentifier = @"Cell";
@@ -295,12 +323,9 @@
         
         
         cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.textLabel.textColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];
+        cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
         
-        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-        cell.detailTextLabel.textColor = [UIColor whiteColor];
-        cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:16];
     }
 
     
@@ -337,7 +362,17 @@
         
         [_switchFrequency addTarget:self action:@selector(onSwitchFrequency:)  forControlEvents:UIControlEventValueChanged];
     }
+    
+    else if (indexPath.section == SECTION_REJECT)
+    {
+        cell.textLabel.text = NSLocalizedString(@"SongView_reject", nil);
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 
+    }
+
+    
 
     
     
@@ -347,6 +382,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section != SECTION_REJECT)
+        return;
+    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
     
 }
 
@@ -412,6 +452,11 @@
     [self.song enableSong:enabled];
     
     [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
+}
+
+- (IBAction)onDeleteSong:(id)sender
+{
+    
 }
 
 - (void)onSwitchFrequency:(id)sender

@@ -240,6 +240,10 @@
 "SongView_frequency_high" = "haute";
 "SongView_frequency_none" = "-";
 "SongView_enable_label" = "Activer le morceau";
+"SongView_reject" = "Ça n'est pas la version que je veux";
+"SongView_delete" = "Supprimer le morceau de ma radio";
+
+
 
 "SongAddView_title" = "Ajouter un titre";
 "SongAddView_cant_add_title" = "Ajout impossible";

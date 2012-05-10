@@ -244,6 +244,8 @@
 "SongView_frequency_high" = "high";
 "SongView_frequency_none" = "-";
 "SongView_enable_label" = "enable the song";
+"SongView_reject" = "That's not the version I want";
+"SongView_delete" = "Remove the song from my radio";
 
 "SongAddView_title" = "Add a song";
 "SongAddView_cant_add_title" = "Unable to add";
