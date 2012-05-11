@@ -7,6 +7,8 @@
 "Navigation_cancel" = "Annuler";
 "Navigation_confirm" = "Je confirme";
 "Navigation_OK" = "OK";
+"Navigation_Yes" = "Oui";
+"Navigation_No" = "Non";
 
 "Connection" = "Connexion";
 "Error_communication_server" = "problème de communication avec le serveur!";
@@ -247,6 +249,8 @@
 "SongView_delete_confirm_title" = "Programmation mise à jour";
 "SongView_delete_confirm_message" = "Le morceau a été supprimé de la programmation.";
 
+"SongView_reject_failed" = "Impossible d'executer la requête";
+
 "SongView_reject_title" = "Rejeter cette version";
 "SongView_reject_message" = "Si le morceau a été synchronisé avec la base serveur de Yasound, \
 il est possible que la version choisie automatiquement ne vous convienne pas.\n\
@@ -255,6 +259,8 @@ Vous pourrez ensuite télécharger votre propre version.";
 
 "SongView_reject_button_reject" = "Je rejette";
 
+"SongView_uploading_title" = "Programmation";
+"SongView_uploading_message" = "Votre morceau est en cours de téléchargement. Voulez-vous accéder au moniteur des téléchargements?";
 
 "SongView_upload_title" = "Votre version";
 "SongView_upload_message" = "Voulez-vous télécharger votre version du morceau?";

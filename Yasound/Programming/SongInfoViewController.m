@@ -14,6 +14,9 @@
 #import "RootViewController.h"
 #import "ActivityAlertView.h"
 #import "SongCatalog.h"
+#import "YasoundReachability.h"
+#import "SongUploadManager.h"
+#import "SongUploadViewController.h"
 
 
 @implementation SongInfoViewController
@@ -407,27 +410,102 @@
     
     if ((alertView == _alertReject) && (buttonIndex == 1))
     {
-        //[ActivityAlertView showWithTitle:nil closeAfterTimeInterval:60];
+        [ActivityAlertView showWithTitle:nil closeAfterTimeInterval:60];
         
-        // ICI
-        
-        _alertUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_upload_title", nil)
-                                                  message:NSLocalizedString(@"SongView_upload_message", nil) 
-                                                 delegate:self 
-                                        cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) 
-                                        otherButtonTitles:NSLocalizedString(@"SongView_upload_button", nil), nil];
-        [_alertUpload show];
-        [_alertUpload release];
+        [[YasoundDataProvider main] rejectSong:self.song target:self action:@selector(didRejectSong:succeeded:)];
+        return;
     }
     
     if ((alertView == _alertUpload) && (buttonIndex == 1))
     {
+        BOOL can = [[SongUploader main] canUploadSong:song];
+        if (!can)
+        {
+            [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_upload_failed", nil) closeAfterTimeInterval:2];
+            return;
+        }
         
+        [self requestUpload];
+        
+        return;
+    }
+    
+    
+    if ((alertView == _alertUploading) && (buttonIndex == 1))
+    {
+        SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
     }
 
 }    
 
 
+
+- (void)requestUpload
+{
+    BOOL isWifi = ([YasoundReachability main].networkStatus == ReachableViaWiFi);
+    
+    
+    BOOL startUploadNow = isWifi;
+    
+    // add an upload job to the queue
+    [[SongUploadManager main] addSong:song startUploadNow:startUploadNow];
+    
+    // and flag the current song as "uploading song"
+    song.uploading = YES;
+    
+    if (!isWifi && ![SongUploadManager main].notified3G)
+    {
+        [SongUploadManager main].notified3G = YES;
+        
+        UIAlertView* _wifiWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundUpload_add_WIFI_title", nil) message:NSLocalizedString(@"YasoundUpload_add_WIFI_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [_wifiWarning show];
+        [_wifiWarning release];  
+        return; 
+    }
+    else
+    {
+            _alertUploading = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_uploading_title", nil) message:NSLocalizedString(@"SongView_uploading_message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_No", nil) otherButtonTitles:NSLocalizedString(@"Navigation_Yes", nil),nil ];
+            [_alertUploading show];
+            [_alertUploading release];  
+        
+        
+        
+        // [ActivityAlertView showWithTitle:NSLocalizedString(@"", nil) closeAfterTimeInterval:1];
+    }
+    
+}
+
+
+
+         
+- (void)didRejectSong:(ASIHTTPRequest*)req succeeded:(NSNumber*)success
+{
+    BOOL succeeded = NO;
+    if (success != nil)
+        succeeded = [success boolValue];
+    
+    if (!succeeded)
+    {
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_reject_failed", nil) closeAfterTimeInterval:2];
+        return;
+    }
+    
+    [ActivityAlertView close];
+    
+     _alertUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_upload_title", nil)
+                                               message:NSLocalizedString(@"SongView_upload_message", nil) 
+                                              delegate:self 
+                                     cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) 
+                                     otherButtonTitles:NSLocalizedString(@"SongView_upload_button", nil), nil];
+     [_alertUpload show];
+     [_alertUpload release];
+ 
+}
+
+         
 
 - (void)onRejectNotified:(NSDictionary*)info
 {

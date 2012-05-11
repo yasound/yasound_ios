@@ -36,6 +36,7 @@
     
     UIAlertView* _alertReject;
     UIAlertView* _alertUpload;
+    UIAlertView* _alertUploading;
 
 }
 

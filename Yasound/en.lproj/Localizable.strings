@@ -7,6 +7,8 @@
 "Navigation_cancel" = "Cancel";
 "Navigation_confirm" = "I confirme";
 "Navigation_OK" = "OK";
+"Navigation_Yes" = "Yes";
+"Navigation_No" = "No";
 
 "Connection" = "Connection";
 "Error_communication_server" = "error communicating with server!";
@@ -258,6 +260,11 @@ Would you like to reject this version from your programming?\n\
 You will be able to upload your own version.";
 
 "SongView_reject_button_reject" = "I reject";
+
+"SongView_reject_failed" = "Unable to process the request";
+
+"SongView_uploading_title" = "Programming";
+"SongView_uploading_message" = "Your song is being uploaded. Would you like to open the upload monitor?";
 
 "SongView_upload_title" = "Your version";
 "SongView_upload_message" = "Would you like to upload your version of this song?";
