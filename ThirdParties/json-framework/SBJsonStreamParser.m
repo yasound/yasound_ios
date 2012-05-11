@@ -184,7 +184,7 @@
                 case sbjson_token_error:
                     
                     // LBDEBUG
-                    NSLog(@"sbjson_token_error after '%@'", (NSString*)token);
+                    //NSLog(@"sbjson_token_error after '%@'", (NSString*)token);
                     
                     self.state = [SBJsonStreamParserStateError sharedInstance];
                     self.error = tokeniser.error;

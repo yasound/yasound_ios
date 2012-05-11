@@ -543,6 +543,8 @@
 - (IBAction)onDeleteSong:(id)sender
 {
     NSLog(@"onDeleteSong");   
+    
+    [ActivityAlertView showWithTitle:nil];
 
     // request to server
     [[YasoundDataProvider main] deleteSong:self.song target:self action:@selector(onSongDeleted:info:) userData:nil];
@@ -570,6 +572,8 @@
     
     
     [[SongCatalog synchronizedCatalog] removeSynchronizedSong:self.song];
+    
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_delete_confirm_message", nil) closeAfterTimeInterval:2];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

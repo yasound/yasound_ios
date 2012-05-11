@@ -248,6 +248,8 @@
 "SongView_delete" = "Remove the song from my radio";
 
 "SongView_delete_failed" = "Error deleting the song";
+"SongView_delete_confirm_title" = "Programming updated";
+"SongView_delete_confirm_message" = "The song has been removed from your programming.";
 
 "SongView_reject_title" = "Reject this version";
 "SongView_reject_message" = "If this song has been synchronized with the server base, \

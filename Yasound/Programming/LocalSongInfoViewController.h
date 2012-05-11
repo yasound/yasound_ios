@@ -20,6 +20,7 @@
     
     IBOutlet UITableViewCell* _cellDelete;
     IBOutlet UILabel* _cellDeleteLabel;
+    IBOutlet UIToolbar* _toolbar;
 
     UIImageView* _imageView;
     UILabel* _name;

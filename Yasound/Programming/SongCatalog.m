@@ -406,11 +406,11 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     }
     
     NSMutableDictionary* artistRepo = [artistsRepo objectForKey:artistKey];
-    assert(artistRepo != nil);
+    NSLog(@"SongCatalog removeSynchronizedSong : may have error no dictionary for the artistKy '%@'", artistKey);
     if (artistRepo == nil)
         return;
     
-    // store the song in the right repository
+
     NSMutableArray* albumRepo = [artistRepo objectForKey:albumKey];
     
     for (NSInteger index = 0; index < albumRepo.count; index++)
@@ -428,6 +428,51 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
 }
 
+
+
+
+
+- (BOOL)doesContainSong:(Song*)song
+{
+    //
+    // process alphaeticRepo
+    //
+    NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
+    
+    if ((firstRelevantWord == nil) || (firstRelevantWord.length == 0))
+        firstRelevantWord = @"#";
+    
+    unichar c = [firstRelevantWord characterAtIndex:0];
+    
+    NSMutableArray* letterRepo = nil;
+    
+    if ([_numericSet characterIsMember:c]) 
+    {
+        letterRepo = [self.alphabeticRepo objectForKey:@"-"];
+    }
+    // first letter is [a .. z] || [A .. Z]
+    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
+    {
+        NSString* upperCaseChar = [[NSString stringWithCharacters:&c length:1] uppercaseString];
+        letterRepo = [self.alphabeticRepo objectForKey:upperCaseChar];
+    }
+    // other cases (foreign languages, ...)
+    else
+    {
+        letterRepo = [self.alphabeticRepo objectForKey:@"#"];
+    }
+    
+    for (NSInteger index = 0; index < letterRepo.count; index++)
+    {
+        Song* letterSong = [letterRepo objectAtIndex:index];
+        if ([letterSong.name isEqualToString:song.name])
+        {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
 
 
 

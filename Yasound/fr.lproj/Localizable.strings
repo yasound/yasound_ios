@@ -244,6 +244,8 @@
 "SongView_delete" = "Supprimer le morceau de ma radio";
 
 "SongView_delete_failed" = "Impossible de supprimer le morceau";
+"SongView_delete_confirm_title" = "Programmation mise à jour";
+"SongView_delete_confirm_message" = "Le morceau a été supprimé de la programmation.";
 
 "SongView_reject_title" = "Rejeter cette version";
 "SongView_reject_message" = "Si le morceau a été synchronisé avec la base serveur de Yasound, \

@@ -42,6 +42,8 @@
 
 + (NSString*)catalogKeyOfSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album;
 
+- (BOOL)doesContainSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album;
+
 - (void)buildSynchronizedWithSource:(NSDictionary*)synchronizedSource;
 - (void)buildAvailableComparingToSource:(NSDictionary*)synchronizedSource;
 
