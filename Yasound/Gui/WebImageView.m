@@ -65,7 +65,6 @@
     //LBDEBUG 
    // [UIImagePNGRepresentation(image) writeToFile:@"/Users/neywen/tmp/tmp.png" atomically:YES];
     
-    
     [self setImage:image];
     
     url = aUrl;    

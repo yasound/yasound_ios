@@ -156,9 +156,6 @@ static Song* _gNowPlayingSong = nil;
     _radioImage = [[WebImageView alloc] initWithImageFrame:sheet.frame];
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     
-    //LBDEBUG
-    NSLog(@"imageURL %@", [imageURL absoluteString]);
-    
     [_radioImage setUrl:imageURL];
     [_headerView addSubview:_radioImage];
     
@@ -1475,9 +1472,6 @@ static Song* _gNowPlayingSong = nil;
         {
             cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev indexPath:indexPath target:self action:@selector(onAvatarClickedInWall:)] autorelease];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            //LBDEBUG
-//            [cell.avatarMask addTarget:self 
-//                                action:@selector(onAvatarClickedInWall:)];
 
         }
         else

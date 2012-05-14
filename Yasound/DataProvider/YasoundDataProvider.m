@@ -1570,6 +1570,7 @@ static YasoundDataProvider* _main = nil;
         NSLog(@"OK");
         NSLog(@"song.id  0x%p", song.id);
         NSLog(@"%d", [song.id integerValue]);
+        assert(0);
     }
     //////////////
         

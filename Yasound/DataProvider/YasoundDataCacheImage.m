@@ -59,11 +59,7 @@ static YasoundDataCacheImageManager* _main;
 
 - (void)clearItem:(NSURL*)url
 {
-    //LBDEBUG
-    [self dump];
-    
     NSString* strurl = [url absoluteString];
-    
     
     // remove the object from the memory cache
     [self.memoryCacheImages removeObjectForKey:strurl];
@@ -90,11 +86,6 @@ static YasoundDataCacheImageManager* _main;
     [self.db commit];
     
     NSLog(@"YasoundDataCacheImage clearItem result %d for Url %@", res, strurl);
-
-    //LBDEBUG
-    [self dump];
-
-    
 }
 
 
@@ -376,10 +367,7 @@ static YasoundDataCacheImageManager* _main;
         self.targets = [[NSMutableArray alloc] init];
         self.isDownloading = NO;
         
-        //LBDEBUG
-        [[YasoundDataCacheImageManager main] dump];
-        NSLog(@"initWithUrl %@", aUrl);
-        
+        NSLog(@"YasoundDataCacheImage initWithUrl %@", aUrl);
         
         // try to import the image from the disk
         FMResultSet* s = [[YasoundDataCacheImageManager main].db executeQuery:@"SELECT * FROM imageRegister WHERE url=?", self.url];
