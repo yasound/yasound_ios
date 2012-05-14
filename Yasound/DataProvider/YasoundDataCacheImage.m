@@ -56,6 +56,49 @@ static YasoundDataCacheImageManager* _main;
 }
 
 
+
+- (void)clearItem:(NSURL*)url
+{
+    //LBDEBUG
+    [self dump];
+    
+    NSString* strurl = [url absoluteString];
+    
+    
+    // remove the object from the memory cache
+    [self.memoryCacheImages removeObjectForKey:strurl];
+
+    // remove the file
+    
+    FMResultSet* s = [db executeQuery:@"SELECT * FROM imageRegister WHERE url=?", strurl];
+    if ([s next]) 
+    {
+        NSString* filepath = [s stringForColumnIndex:1];
+        BOOL res = [[NSFileManager defaultManager] removeItemAtPath:filepath error:nil];
+        NSLog(@"YasoundDataCacheImage clearItem delete image %d", res);
+
+    }
+    else
+        NSLog(@"YasoundDataCacheImage clearItem error getting the image filepath");
+    
+
+    [self.db beginTransaction];
+    
+     // remove the entry from the DB
+    BOOL res = [self.db executeUpdate:@"DELETE FROM imageRegister WHERE url=?", strurl];
+
+    [self.db commit];
+    
+    NSLog(@"YasoundDataCacheImage clearItem result %d for Url %@", res, strurl);
+
+    //LBDEBUG
+    [self dump];
+
+    
+}
+
+
+
 - (void)resetDB
 {
     // empty fifo
@@ -168,15 +211,15 @@ static YasoundDataCacheImageManager* _main;
         NSDate* last_access = [s dateForColumnIndex:2];
         NSUInteger filesize = [s intForColumnIndex:3];
         
-        NSRange range = NSMakeRange(url.length - 8, 8);
+        NSRange range = NSMakeRange(url.length - 32, 32);
         NSMutableString* short_url = @"...";
         short_url = [short_url stringByAppendingString:[url substringWithRange:range]];
         
-        range = NSMakeRange(filepath.length - 8, 8);
+        range = NSMakeRange(filepath.length - 32, 32);
         NSMutableString* short_filepath = @"...";
         short_filepath = [short_filepath stringByAppendingString:[filepath substringWithRange:range]];
         
-        NSLog(@"%d. %@ - %@ - %@ - %d", counter, short_url, short_filepath, last_access, filesize);
+        NSLog(@"%d. %@ - %@ - %@ - %d", counter, url, short_filepath, last_access, filesize);
         counter++;
     }
     
@@ -332,6 +375,11 @@ static YasoundDataCacheImageManager* _main;
         self.url = aUrl;
         self.targets = [[NSMutableArray alloc] init];
         self.isDownloading = NO;
+        
+        //LBDEBUG
+        [[YasoundDataCacheImageManager main] dump];
+        NSLog(@"initWithUrl %@", aUrl);
+        
         
         // try to import the image from the disk
         FMResultSet* s = [[YasoundDataCacheImageManager main].db executeQuery:@"SELECT * FROM imageRegister WHERE url=?", self.url];

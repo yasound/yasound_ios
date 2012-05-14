@@ -29,6 +29,7 @@
 
 // be careful
 - (void)clear;
+- (void)clearItem:(NSURL*)url;
 
 @end
 

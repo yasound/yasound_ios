@@ -155,6 +155,10 @@ static Song* _gNowPlayingSong = nil;
     sheet = [[Theme theme] stylesheetForKey:@"HeaderAvatar" error:nil];
     _radioImage = [[WebImageView alloc] initWithImageFrame:sheet.frame];
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
+    
+    //LBDEBUG
+    NSLog(@"imageURL %@", [imageURL absoluteString]);
+    
     [_radioImage setUrl:imageURL];
     [_headerView addSubview:_radioImage];
     

@@ -824,6 +824,7 @@
             [[YasoundDataCache main] clearRadiosAll];
             [[YasoundDataCache main] clearCurrentSongs];
             [[YasoundDataCache main] clearFriends];
+            
             [[YasoundDataCacheImageManager main] clear];
 
             [ActivityAlertView showWithTitle:@"ok" closeAfterTimeInterval:1];
@@ -856,7 +857,9 @@
     NSLog(@"onRadioUpdated '%@', info %@", radio.name, info);
     
     if (_settingsImageChanged)
+    {
         [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:radio target:self action:@selector(onRadioImageUpdate:info:)];
+    }
     else
         [self onRadioImageUpdate:nil info:nil];
 
@@ -865,7 +868,7 @@
 - (void)onRadioImageUpdate:(NSString*)msg info:(NSDictionary*)info
 {
     NSLog(@"onRadioImageUpdate info %@", info);
-  
+    
   // be sure to get updated radio (with correct picture)
   [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPictureUpdate:withInfo:)];
 }
@@ -873,6 +876,11 @@
 - (void)receivedUserRadioAfterPictureUpdate:(Radio*)r withInfo:(NSDictionary*)info
 {
   [ActivityAlertView close];
+
+    // clean image cache
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:r.picture];
+    [[YasoundDataCacheImageManager main] clearItem:imageURL];
+
   
   if (_wizard)
   {
