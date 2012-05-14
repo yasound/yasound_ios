@@ -9234,7 +9234,7 @@
 		40D53CE91554280F001EB0C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sebastien Metrot";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastien Metrot (9HNDHDZ2PR)";
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9255,7 +9255,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
-				PROVISIONING_PROFILE = "1C3B216D-7898-41C1-AD00-70284EE91B90";
+				PROVISIONING_PROFILE = "42805030-9A5B-4EF3-BC59-D86F2F430121";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -9263,7 +9263,7 @@
 		40D53CEA1554280F001EB0C5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Sebastien Metrot";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastien Metrot (9HNDHDZ2PR)";
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9280,7 +9280,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "Yasound TechTour";
-				PROVISIONING_PROFILE = "1C3B216D-7898-41C1-AD00-70284EE91B90";
+				PROVISIONING_PROFILE = "42805030-9A5B-4EF3-BC59-D86F2F430121";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
