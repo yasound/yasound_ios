@@ -241,47 +241,85 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 //
 // build catalog from the device's local iTunes songs
 //
-
 - (void)buildAvailableComparingToSource:(NSDictionary*)synchronizedSource
 {
     
     //NSLog(@"%@", synchronizedSource);
     
-    MPMediaQuery* allAlbumsQuery = [MPMediaQuery albumsQuery];
-    NSArray* allAlbumsArray = [allAlbumsQuery collections];
+    MPMediaQuery* allSongsQuery = [MPMediaQuery songsQuery];
+    NSArray* songsArray = [allSongsQuery items];
     
     
-    // list all local albums
-    for (MPMediaItemCollection* collection in allAlbumsArray) 
+    // list all local songs from albums
+    for (MPMediaItem* item in songsArray)
     {
-        // list all local songs from albums
-        for (MPMediaItem* item in collection.items)
-        {
-            SongLocal* songLocal = [[SongLocal alloc] initWithMediaItem:item];
-            
-            Song* matchedSong = [synchronizedSource objectForKey:songLocal.catalogKey];
-            
-            
-            // don't include it if it's included in the matched songs already
-            if (matchedSong != nil)
-                continue;
-            
-            // before putting this song into the catalog,
-            // check if it's not uploading already.
-            Song* uploadingSong = [[SongUploadManager main] getUploadingSong:songLocal.name artist:songLocal.artist album:songLocal.album];
-            if (uploadingSong != nil)
-                [songLocal setUploading:YES];
-
-            // REMEMBER THAT HERE, songLocal is SongLocal* 
-            
-            [self sortAndCatalog:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
-            self.nbSongs++;
-
-        }
+        SongLocal* songLocal = [[SongLocal alloc] initWithMediaItem:item];
+        
+        Song* matchedSong = [synchronizedSource objectForKey:songLocal.catalogKey];
+        
+        
+        // don't include it if it's included in the matched songs already
+        if (matchedSong != nil)
+            continue;
+        
+        // before putting this song into the catalog,
+        // check if it's not uploading already.
+        Song* uploadingSong = [[SongUploadManager main] getUploadingSong:songLocal.name artist:songLocal.artist album:songLocal.album];
+        if (uploadingSong != nil)
+            [songLocal setUploading:YES];
+        
+        // REMEMBER THAT HERE, songLocal is SongLocal* 
+        
+        [self sortAndCatalog:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
+        self.nbSongs++;
+        
     }
     
     [self finalizeCatalog];
 }
+
+
+
+//- (void)buildAvailableComparingToSource:(NSDictionary*)synchronizedSource
+//{
+//    
+//    //NSLog(@"%@", synchronizedSource);
+//    
+//    MPMediaQuery* allAlbumsQuery = [MPMediaQuery albumsQuery];
+//    NSArray* allAlbumsArray = [allAlbumsQuery collections];
+//    
+//    
+//    // list all local albums
+//    for (MPMediaItemCollection* collection in allAlbumsArray) 
+//    {
+//        // list all local songs from albums
+//        for (MPMediaItem* item in collection.items)
+//        {
+//            SongLocal* songLocal = [[SongLocal alloc] initWithMediaItem:item];
+//            
+//            Song* matchedSong = [synchronizedSource objectForKey:songLocal.catalogKey];
+//            
+//            
+//            // don't include it if it's included in the matched songs already
+//            if (matchedSong != nil)
+//                continue;
+//            
+//            // before putting this song into the catalog,
+//            // check if it's not uploading already.
+//            Song* uploadingSong = [[SongUploadManager main] getUploadingSong:songLocal.name artist:songLocal.artist album:songLocal.album];
+//            if (uploadingSong != nil)
+//                [songLocal setUploading:YES];
+//
+//            // REMEMBER THAT HERE, songLocal is SongLocal* 
+//            
+//            [self sortAndCatalog:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
+//            self.nbSongs++;
+//
+//        }
+//    }
+//    
+//    [self finalizeCatalog];
+//}
 
 
 
@@ -493,7 +531,9 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     if ((firstRelevantWord == nil) || (firstRelevantWord.length == 0))
         firstRelevantWord = @"#";
     
-    
+
+//    //LBDEBUG 
+//    return;
     
     unichar c = [firstRelevantWord characterAtIndex:0];
     
@@ -579,6 +619,9 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 //
 - (void)finalizeCatalog
 {
+//    //LBDEBUG
+//    return;
+    
     // now, sort alphabetically each letter repository
     for (NSString* key in [self.alphabeticRepo allKeys])
     {
