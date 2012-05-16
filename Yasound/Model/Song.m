@@ -151,8 +151,11 @@
     // return cache
     if (_firstRelevantWord != nil)
         return _firstRelevantWord;
-        
-        
+    
+    
+    
+    
+    
     BOOL first = YES;
     CFStringRef string = self.name;
     CFLocaleRef locale = CFLocaleCopyCurrent();
@@ -166,7 +169,7 @@
     {
         CFRange tokenRange = CFStringTokenizerGetCurrentTokenRange(tokenizer);
         CFStringRef tokenValue = CFStringCreateWithSubstring(kCFAllocatorDefault, string, tokenRange);
-
+        
         if (first)
         {
             first = NO;
@@ -198,14 +201,14 @@
         {
             //CFRelease(tokenValue);
             [tokenValue autorelease];
-
+            
             CFRelease(tokenizer);
             CFRelease(locale);   
-
+            
             // store cache
             _firstRelevantWord = [NSString stringWithString:tokenValue];
             [_firstRelevantWord retain];
-
+            
             return tokenValue;
         }
     }
@@ -216,6 +219,78 @@
     return nil;
 }
 
+
+
+//- (NSString*)getFirstRelevantWord
+//{
+//    // return cache
+//    if (_firstRelevantWord != nil)
+//        return _firstRelevantWord;
+//        
+//        
+//    BOOL first = YES;
+//    CFStringRef string = self.name;
+//    CFLocaleRef locale = CFLocaleCopyCurrent();
+//    
+//    CFStringTokenizerRef tokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, string, CFRangeMake(0, CFStringGetLength(string)), kCFStringTokenizerUnitWord, locale);
+//    
+//    CFStringTokenizerTokenType tokenType = kCFStringTokenizerTokenNone;
+//    unsigned tokensFound = 0;
+//    
+//    while(kCFStringTokenizerTokenNone != (tokenType = CFStringTokenizerAdvanceToNextToken(tokenizer))) 
+//    {
+//        CFRange tokenRange = CFStringTokenizerGetCurrentTokenRange(tokenizer);
+//        CFStringRef tokenValue = CFStringCreateWithSubstring(kCFAllocatorDefault, string, tokenRange);
+//
+//        if (first)
+//        {
+//            first = NO;
+//            
+//            NSString* token = (NSString*)tokenValue;
+//            
+//            if ( ([token compare:@"the" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
+//                ([token compare:@"a" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
+//                ([token compare:@"le" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
+//                ([token compare:@"la" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
+//                ([token compare:@"l'" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
+//                ([token compare:@"l" options:NSCaseInsensitiveSearch] != NSOrderedSame)) 
+//            {
+//                [tokenValue autorelease];
+//                CFRelease(tokenizer);
+//                CFRelease(locale);   
+//                
+//                // store cache
+//                _firstRelevantWord = [NSString stringWithString:token];
+//                [_firstRelevantWord retain];
+//                
+//                return token;
+//            }
+//            
+//            CFRelease(tokenValue);
+//            ++tokensFound;
+//        }
+//        else
+//        {
+//            //CFRelease(tokenValue);
+//            [tokenValue autorelease];
+//
+//            CFRelease(tokenizer);
+//            CFRelease(locale);   
+//
+//            // store cache
+//            _firstRelevantWord = [NSString stringWithString:tokenValue];
+//            [_firstRelevantWord retain];
+//
+//            return tokenValue;
+//        }
+//    }
+//    
+//    // Clean up
+//    CFRelease(tokenizer);
+//    CFRelease(locale);   
+//    return nil;
+//}
+//
 
 - (NSComparisonResult)nameCompare:(Song*)second
 {
