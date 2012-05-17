@@ -285,7 +285,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 //
 
 
-- (void)insertAndSortAndEnableSong:(Song*)song;
+- (void)insertAndEnableSong:(Song*)song;
 {
     // be aware of empty artist names, and empty album names
     NSString* artistKey = song.artist;
@@ -303,10 +303,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     [song enableSong:YES];
     
-    [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
+    [self catalogWithoutSorting:song  usingArtistKey:artistKey andAlbumKey:albumKey];
     self.nbSongs++;    
-    
-    [self finalizeCatalog];
 }
 
 
@@ -314,7 +312,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 
 - (void)removeSynchronizedSong:(Song*)song
 {
-    
     //
     // process alphaeticRepo
     //
@@ -457,98 +454,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     return NO;
 }
-
-
-
-//
-// add a song to the catalog,
-// making an alphabetic sort
-//
-- (void)sortAndCatalog:(Song*)song  usingArtistKey:(NSString*)artistKey andAlbumKey:(NSString*)albumKey
-{
-
-    // get what u need to sort alphabetically
-    NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
-    
-    // just in case of
-    if ((firstRelevantWord == nil) || (firstRelevantWord.length == 0))
-        firstRelevantWord = @"#";
-    
-
-    unichar c = [firstRelevantWord characterAtIndex:0];
-    
-    // we spread the songs, in a dictionnary, and group them depending on their first letter
-    // => each table view section will be related to a letter
-    
-    // first letter is [0 .. 9]
-    if ([_numericSet characterIsMember:c]) 
-    {
-        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"-"];
-        [letterRepo addObject:song];
-    }
-    // first letter is [a .. z] || [A .. Z]
-    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
-    {
-        NSString* upperCaseChar = [[NSString stringWithCharacters:&c length:1] uppercaseString];
-        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:upperCaseChar];
-        [letterRepo addObject:song];
-    }
-    // other cases (foreign languages, ...)
-    else
-    {
-        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"#"];
-        [letterRepo addObject:song];
-    }
-    
-    
-    
-    
-    
-    // now the Artist / Album / Song catalog
-    
-    // TODO : comprendre pourquoi l'assert se déclenche chez seb
-    
-    c = [artistKey characterAtIndex:0];
-    NSMutableDictionary* artistsRepo = nil;
-    if ([_numericSet characterIsMember:c])
-    {
-        artistsRepo = [self.alphaArtistsRepo objectForKey:@"-"];
-    }
-    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
-    {
-        NSString* upperC = [[NSString stringWithCharacters:&c length:1] uppercaseString];
-        artistsRepo = [self.alphaArtistsRepo objectForKey:upperC];
-    }
-    else
-    {
-        artistsRepo = [self.alphaArtistsRepo objectForKey:@"#"];
-    }
-    
-    // store artist name, to be alphabetically sorted later
-    // => we use a dictionary here to optimize the insert operation (the inserted object must be unique)
-    // => when it'll be completed, the dictionnary will be turned into a array and we will sort it alphabetically
-
-    
-    NSMutableDictionary* artistRepo = [artistsRepo objectForKey:artistKey];
-    if (artistRepo == nil)
-    {
-        artistRepo = [[NSMutableDictionary alloc] init];
-        [artistsRepo setObject:artistRepo forKey:artistKey];
-    }
-    
-
-    
-    // store the song in the right repository
-    NSMutableArray* albumRepo = [artistRepo objectForKey:albumKey];
-    if (albumRepo == nil)
-    {
-        albumRepo = [[NSMutableArray alloc] init];
-        [artistRepo setObject:albumRepo forKey:albumKey];
-    }
-    
-    [albumRepo addObject:song];
-}
-
 
 
 

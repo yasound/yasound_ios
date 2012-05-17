@@ -619,6 +619,11 @@
 
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
+    [self.sortedSongs release];
+    [self.sortedArtists release];
+    self.sortedArtists = [[NSMutableDictionary alloc] init];
+    self.sortedSongs = [[NSMutableDictionary alloc] init];    
+    
     [_tableView reloadData];    
 }
 

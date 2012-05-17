@@ -72,7 +72,6 @@
 {
     [super viewDidLoad];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
 
 
@@ -530,7 +529,7 @@
         [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedOk", nil) closeAfterTimeInterval:2];
 
         // add the song to the catalog of synchronized catalog (we dont want to re-generate it entirely)
-        [[SongCatalog synchronizedCatalog] insertAndSortAndEnableSong:song];
+        [[SongCatalog synchronizedCatalog] insertAndEnableSong:song];
         
         // and let the views know about it
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:nil];

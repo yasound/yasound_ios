@@ -51,7 +51,7 @@
 - (void)buildSynchronizedWithSource:(NSDictionary*)synchronizedSource;
 - (void)buildAvailableComparingToSource:(NSDictionary*)synchronizedSource;
 
-- (void)insertAndSortAndEnableSong:(Song*)song;
+- (void)insertAndEnableSong:(Song*)song;
 - (void)removeSynchronizedSong:(Song*)song;
 
 

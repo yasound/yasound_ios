@@ -292,6 +292,7 @@
 
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
+    
     [_tableView reloadData];    
 }
 
