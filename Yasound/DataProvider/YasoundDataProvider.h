@@ -23,6 +23,7 @@
 #import "APNsDeviceToken.h"
 #import "APNsPreferences.h"
 #import "ASIHTTPRequest+Model.h"
+#import "UserNotification.h"
 
 typedef NSString* taskID;
 
@@ -229,6 +230,80 @@ taskStatus stringToStatus(NSString* str);
 // Menu description
 - (void)menuDescriptionWithTarget:(id)target action:(SEL)selector; // didReceiveMenu:(ASIHTTPRequest*)req
 - (void)menuDescriptionWithTarget:(id)target action:(SEL)selector userData:(id)data; // didReceiveMenu:(ASIHTTPRequest*)req
+
+
+// User Notifications
+- (void)userNotificationsWithTarget:(id)target action:(SEL)selector;
+- (void)userNotificationWithId:(NSString*)notifId target:(id)target action:(SEL)selector;
+- (void)updateUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
+- (void)deleteUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
+
+// *************************** EXAMPLE ***************************
+//- (void)testNotifications
+//{
+//    [self userNotificationsWithTarget:self action:@selector(receivedUserNotifications:success:)];
+//}
+//- (void)receivedUserNotifications:(ASIHTTPRequest*)req success:(BOOL)success
+//{
+//    if (!success)
+//    {
+//        NSLog(@"get user notifications FAILED");
+//        return;
+//    }
+//    NSArray* notifs = [req responseNSObjectsWithClass:[UserNotification class]];
+//    for (UserNotification* n in notifs) 
+//        NSLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
+//    NSInteger count = notifs.count;
+//    NSLog(@"%d notifications", count);
+//    if (count > 0)
+//    {
+//        UserNotification* n = (UserNotification*)[notifs objectAtIndex:0];
+//        [n setReadBool:YES];
+//        [self updateUserNotification:n target:self action:@selector(updatedUserNotification:success:)];
+//    }
+//}
+//
+//- (void)updatedUserNotification:(ASIHTTPRequest*)req success:(BOOL)success
+//{
+//    if (!success)
+//    {
+//        NSLog(@"update notification FAILED");
+//        return;
+//    }
+//    NSString* resp = [req responseString];
+//    NSLog(@"resp: %@", resp);
+//    UserNotification* n = (UserNotification*)[req responseNSObjectWithClass:[UserNotification class]];
+//    NSLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
+//    
+//    NSString* notifId = n._id;
+//    if (notifId)
+//        [self userNotificationWithId:notifId target:self action:@selector(receivedNotification:success:)];
+//}
+//
+//- (void)receivedNotification:(ASIHTTPRequest*)req success:(BOOL)success
+//{
+//    if (!success)
+//    {
+//        NSLog(@"get notification FAILED");
+//        return;
+//    }
+//    UserNotification* n = (UserNotification*)[req responseNSObjectWithClass:[UserNotification class]];
+//    NSLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
+//    
+//    if (n)
+//        [self deleteUserNotification:n target:self action:@selector(deletedNotification:success:)];
+//}
+//
+//- (void)deletedNotification:(ASIHTTPRequest*)req success:(BOOL)success
+//{
+//    if (!success)
+//    {
+//        NSLog(@"delete notification FAILED");
+//        return;
+//    }
+//    NSLog(@"delete notification OK");
+//}
+
 
 - (void)testV2;
 

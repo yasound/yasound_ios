@@ -19,6 +19,8 @@
 - (NSArray*)responseArray;
 - (Model*)responseObjectWithClass:(Class)ModelClass;
 - (Container*)responseObjectsWithClass:(Class)ModelClass;
+- (NSObject*)responseNSObjectWithClass:(Class)ModelClass;
+- (NSArray*)responseNSObjectsWithClass:(Class)ModelClass;
 
 - (id)userData;
 

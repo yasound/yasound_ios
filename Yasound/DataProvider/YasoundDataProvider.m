@@ -624,8 +624,9 @@ static YasoundDataProvider* _main = nil;
   if (target && selector)
   {
     [target performSelector:selector withObject:_user withObject:finalInfo];
-  }
+  }    
 }
+
 
 
 
@@ -1732,6 +1733,8 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+#pragma mark - Menu Descriptions
+
 - (void)menuDescriptionWithTarget:(id)target action:(SEL)selector
 {
     [self menuDescriptionWithTarget:target action:selector userData:nil];
@@ -1747,6 +1750,69 @@ static YasoundDataProvider* _main = nil;
     conf.callbackTarget = target;
     conf.callbackAction = selector;
     conf.userData = data;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
+#pragma mark - User Notifications
+
+- (void)userNotificationsWithTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/notifications";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+- (void)userNotificationWithId:(NSString*)notifId target:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/notification/%@", notifId];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+- (void)updateUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/update_notification/%@", notif._id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"PUT";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    
+    NSString* stringData = [notif JSONRepresentation];
+    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [req startAsynchronous];
+}
+
+- (void)deleteUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/delete_notification/%@", notif._id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"DELETE";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     [req startAsynchronous];

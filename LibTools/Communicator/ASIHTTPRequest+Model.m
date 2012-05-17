@@ -43,6 +43,27 @@
     return container;
 }
 
+- (NSObject*)responseNSObjectWithClass:(Class)ModelClass
+{
+    NSString* respString = self.responseString;
+    NSObject* obj = [[ModelClass alloc] init];
+    [obj loadPropertiesFromJsonString:respString];
+    return obj;
+}
+
+- (NSArray*)responseNSObjectsWithClass:(Class)ModelClass
+{
+    NSMutableArray* result = [NSMutableArray array];
+    NSArray* raw = [self responseArray];
+    for (NSDictionary* d in raw) 
+    {
+        NSObject* obj = [[ModelClass alloc] init];
+        [obj loadPropertiesFromDictionary:d];
+        [result addObject:obj];
+    }
+    return result;
+}
+
 - (id)userData
 {
     if (!self.userInfo)
