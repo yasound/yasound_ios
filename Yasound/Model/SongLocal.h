@@ -12,6 +12,7 @@
 
 @interface SongLocal : Song
 
+@property (nonatomic, retain) MPMediaItem* mediaItem;
 @property (nonatomic, retain) NSString* catalogKey;
 
 @property (nonatomic, retain) NSString* artistKey;

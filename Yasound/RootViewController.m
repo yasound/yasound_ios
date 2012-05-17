@@ -27,6 +27,28 @@
 
 
 //LBDEBUG
+@implementation NSDictionary (NSDictionaryDebug)
+- (BOOL)isEqualToString:(NSString*)str
+{
+        NSLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+        assert(0);
+}
+
+- (void)addObject:(id)object
+{
+    NSLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+    assert(0);
+}
+
+- (id)objectAtIndex:(NSInteger)index
+{
+    NSLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+    assert(0);
+}
+
+@end
+
+
 @implementation NSString (NSStringDebug)
 - (NSString*) absoluteString
 {
@@ -34,6 +56,17 @@
     assert(0);
 }
 @end
+
+
+
+
+
+
+
+
+
+
+
 
 
 @implementation RootViewController

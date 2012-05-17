@@ -22,6 +22,7 @@
 }
 
 @property (nonatomic, assign) SongCatalog* catalog;
+@property (nonatomic, retain) NSArray* sortedAlbums;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil usingCatalog:(SongCatalog*)catalog;
 

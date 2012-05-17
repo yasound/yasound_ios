@@ -16,6 +16,8 @@
 @implementation SongLocal
 
 @synthesize catalogKey;
+@synthesize mediaItem;
+
 @synthesize artistKey;
 @synthesize albumKey;
 
@@ -40,19 +42,15 @@
 {
     if (self = [super init])
     {
+        self.mediaItem = item;
+        
         self.name = [item valueForProperty:MPMediaItemPropertyTitle];
         
         self.artistKey = [item valueForProperty:MPMediaItemPropertyArtist];
         self.albumKey = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
-        
-        
-        self.genre = [item valueForProperty:MPMediaItemPropertyGenre]; 
-        self.playbackDuration = [[item valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
-        self.albumTrackNumber = [[item valueForProperty:MPMediaItemPropertyAlbumTrackNumber] integerValue];
-        self.albumTrackCount = [[item valueForProperty:MPMediaItemPropertyAlbumTrackCount] integerValue];
-        self.artwork = [item valueForProperty:MPMediaItemPropertyArtwork]; 
-        self.rating = [[item valueForProperty:MPMediaItemPropertyRating] integerValue];
-        
+
+        // don't read the other information now.
+        // do it the properties' getters, since we don't need those information in the catalog.
         
         if ((self.name == nil) || (self.name.length == 0))
             self.name = [NSString stringWithString:PM_FIELD_UNKNOWN];
@@ -82,6 +80,48 @@
     }
     return self;
 }
+
+
+
+// overloading getters
+
+- (NSString*)genre
+{
+    return [self.mediaItem valueForProperty:MPMediaItemPropertyGenre]; 
+}
+
+
+- (NSTimeInterval)playbackDuration
+{
+    return [[self.mediaItem valueForProperty:MPMediaItemPropertyPlaybackDuration] doubleValue];
+}
+
+
+- (NSUInteger)albumTrackNumber
+{
+    return [[self.mediaItem valueForProperty:MPMediaItemPropertyAlbumTrackNumber] integerValue];
+}
+
+
+- (NSUInteger)albumTrackCount
+{
+    return [[self.mediaItem valueForProperty:MPMediaItemPropertyAlbumTrackCount] integerValue];
+}
+
+
+- (MPMediaItemArtwork*)artwork
+{
+    return [self.mediaItem valueForProperty:MPMediaItemPropertyArtwork]; 
+}
+
+
+- (NSUInteger)rating
+{
+    return [[self.mediaItem valueForProperty:MPMediaItemPropertyRating] integerValue];
+}
+
+
+
 
 
 @end

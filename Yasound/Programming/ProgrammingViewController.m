@@ -25,7 +25,7 @@
 @implementation ProgrammingViewController
 
 @synthesize matchedSongs;
-
+@synthesize sortedItems;
 
 #define SEGMENT_INDEX_ALPHA 0
 #define SEGMENT_INDEX_ARTIST 1
@@ -47,6 +47,7 @@
         _nbPlaylists = 0;
         
         self.matchedSongs = [[NSMutableDictionary alloc] init];
+        self.sortedItems = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -279,7 +280,19 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [SongCatalog synchronizedCatalog].indexMap.count;
+    NSInteger nbSections = [SongCatalog synchronizedCatalog].indexMap.count;
+
+    //LBDEBUG
+//    if (self.sortedItems == nil)
+//    {
+//        self.sortedItems = [[NSMutableArray alloc] init];
+//        for (NSInteger i = 0; i < nbSections; i++)
+//        {
+//            [self.sortedItems addObject:nil];
+//        }
+//    }
+
+    return nbSections;
 }
 
 
@@ -336,7 +349,7 @@
     }
     else
     {
-        NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsOrder objectForKey:charIndex];
+        NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];
         NSInteger count = artistsForSection.count;
         return count;
     }
@@ -452,8 +465,25 @@
 
 - (UITableViewCell*)cellFolderForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-        NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
-        NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsOrder objectForKey:charIndex];
+    NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
+
+    NSMutableDictionary* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];
+
+    // get sorted list
+    NSArray* artists = [self.sortedItems objectForKey:charIndex];
+    if (artists == nil)
+    {
+        artists = [artistsForSection allKeys];
+
+        // sort the items array
+        artists = [artists sortedArrayUsingSelector:@selector(compare:)];
+        
+        // store the cache
+        [self.sortedItems setObject:artists forKey:charIndex];
+    }
+
+
+    
         static NSString* CellIdentifier = @"Cell";
         
         UITableViewCell* cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -467,10 +497,9 @@
         cell.detailTextLabel.backgroundColor = [UIColor clearColor];
         
         
-        NSString* artist = [artistsForSection objectAtIndex:indexPath.row];
+        NSString* artist = [artists objectAtIndex:indexPath.row];
         
-        NSDictionary* artistsRepo = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];
-        NSDictionary* artistRepo = [artistsRepo objectForKey:artist];
+        NSDictionary* artistRepo = [artistsForSection objectForKey:artist];
 
         NSInteger nbAlbums = artistRepo.count;
         
@@ -507,7 +536,10 @@
     }
     else
     {
-        [[SongCatalog synchronizedCatalog] selectArtistInSection:indexPath.section atRow:indexPath.row];
+        NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
+        NSString* artistKey = [[self.sortedItems objectForKey:charIndex] objectAtIndex:indexPath.row];
+        
+        [[SongCatalog synchronizedCatalog] selectArtist:artistKey withIndex:charIndex];
         
         ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil usingCatalog:[SongCatalog synchronizedCatalog]];
         [self.navigationController pushViewController:view animated:YES];

@@ -30,6 +30,7 @@
 
 @property (nonatomic, retain) NSMutableArray* searchedSongs;
 @property (nonatomic, retain) NSString* subtitle;
+@property (nonatomic, retain) NSMutableDictionary* sortedItems;
 
 //@property (nonatomic, retain) NSMutableArray* localSongs;
 //@property (nonatomic, retain) NSArray* remoteSongs;

@@ -12,6 +12,11 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "SongUploadManager.h"
 
+#import "TimeProfile.h"
+
+
+
+
 
 
 #define PM_FIELD_UNKNOWN @""
@@ -25,8 +30,6 @@
 @synthesize alphabeticRepo;
 @synthesize indexMap;
 @synthesize alphaArtistsRepo;
-@synthesize alphaArtistsOrder;
-@synthesize alphaArtistsPREORDER;
 
 @synthesize selectedArtist;
 @synthesize selectedAlbum;
@@ -122,8 +125,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         self.alphabeticRepo = [[NSMutableDictionary alloc] init];
         
         self.alphaArtistsRepo = [[NSMutableDictionary alloc] init];
-        self.alphaArtistsPREORDER = [[NSMutableDictionary alloc] init];
-        self.alphaArtistsOrder = [[NSMutableDictionary alloc] init];
         
         
         self.indexMap = [[NSMutableArray alloc] init];
@@ -136,12 +137,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 
             NSMutableDictionary* letterArtistRepo = [[NSMutableDictionary alloc] init];
             [self.alphaArtistsRepo setObject:letterArtistRepo forKey:indexKey];
-
-            NSMutableDictionary* letterArtistPREORDER = [[NSMutableDictionary alloc] init];
-            [self.alphaArtistsPREORDER setObject:letterArtistPREORDER forKey:indexKey];
-            
-            NSMutableArray* letterArtistOrder = [[NSMutableArray alloc] init];
-            [self.alphaArtistsOrder setObject:letterArtistOrder forKey:indexKey];
         }
 
     }
@@ -227,11 +222,12 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
             NSLog(@"empty album found!");
         }
         
-        [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
+//        [self sortAndCatalog:song  usingArtistKey:artistKey andAlbumKey:albumKey];
+        [self catalogWithoutSorting:song  usingArtistKey:artistKey andAlbumKey:albumKey];
         self.nbSongs++;    
     }
     
-    [self finalizeCatalog];
+//    [self finalizeCatalog];
 }
 
 
@@ -246,10 +242,14 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     //NSLog(@"%@", synchronizedSource);
     
+    [[TimeProfile main] begin:@"iTunesQuery"];
+    
     MPMediaQuery* allSongsQuery = [MPMediaQuery songsQuery];
     NSArray* songsArray = [allSongsQuery items];
-    
-    
+
+    [[TimeProfile main] end:@"iTunesQuery"];
+    [[TimeProfile main] logInterval:@"iTunesQuery" inMilliseconds:NO];
+
     // list all local songs from albums
     for (MPMediaItem* item in songsArray)
     {
@@ -270,12 +270,15 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         
         // REMEMBER THAT HERE, songLocal is SongLocal* 
         
-        [self sortAndCatalog:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
+//        [self sortAndCatalog:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
+        [self catalogWithoutSorting:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
+        
+        
         self.nbSongs++;
         
     }
     
-    [self finalizeCatalog];
+    //[self finalizeCatalog];
 }
 
 
@@ -363,11 +366,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 
 - (void)removeSynchronizedSong:(Song*)song
 {
-//    NSLog(@"%@", self.alphabeticRepo);
-//    NSLog(@"%@", self.alphaArtistsRepo);
-//    NSLog(@"%@", self.alphaArtistsPREORDER);
-//    NSLog(@"%@", self.alphaArtistsOrder);
-
     
     //
     // process alphaeticRepo
@@ -562,6 +560,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     
     
+    
+    
     // now the Artist / Album / Song catalog
     
     // TODO : comprendre pourquoi l'assert se déclenche chez seb
@@ -569,29 +569,43 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     //assert(artistKey.length != 0);
     
     c = [artistKey characterAtIndex:0];
-    NSMutableDictionary* artistsRepo = nil;
     NSMutableDictionary* artistsPREORDER = nil;
+    NSMutableDictionary* artistsRepo = nil;
     if ([_numericSet characterIsMember:c])
     {
         artistsRepo = [self.alphaArtistsRepo objectForKey:@"-"];
-        artistsPREORDER = [self.alphaArtistsPREORDER objectForKey:@"-"];
+//        artistsPREORDER = [self.alphaArtistsPREORDER objectForKey:@"-"];
+        NSArray* array = [artistsRepo allValues];
+//        [self.alphaArtistsOrder setObject:array forKey:@"-"];
     }
     else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
     {
         NSString* upperC = [[NSString stringWithCharacters:&c length:1] uppercaseString];
         artistsRepo = [self.alphaArtistsRepo objectForKey:upperC];
-        artistsPREORDER = [self.alphaArtistsPREORDER objectForKey:upperC];
+//        artistsPREORDER = [self.alphaArtistsPREORDER objectForKey:upperC];
+        
+        NSArray* array = [artistsRepo allValues];
+//        [self.alphaArtistsOrder setObject:array forKey:upperC];
+
     }
     else
     {
         artistsRepo = [self.alphaArtistsRepo objectForKey:@"#"];
-        artistsPREORDER = [self.alphaArtistsPREORDER objectForKey:@"#"];
+        
+        NSArray* array = [artistsRepo allValues];
+        
+//        [self.alphaArtistsOrder setObject:array forKey:@"#"];
+
+//        artistsPREORDER = [self.alphaArtistsPREORDER objectForKey:@"#"];
     }
     
     // store artist name, to be alphabetically sorted later
     // => we use a dictionary here to optimize the insert operation (the inserted object must be unique)
     // => when it'll be completed, the dictionnary will be turned into a array and we will sort it alphabetically
-    [artistsPREORDER setObject:artistKey forKey:artistKey];
+//    [artistsPREORDER setObject:artistKey forKey:artistKey];
+
+    
+
     
     NSMutableDictionary* artistRepo = [artistsRepo objectForKey:artistKey];
     if (artistRepo == nil)
@@ -599,6 +613,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         artistRepo = [[NSMutableDictionary alloc] init];
         [artistsRepo setObject:artistRepo forKey:artistKey];
     }
+    
+
     
     // store the song in the right repository
     NSMutableArray* albumRepo = [artistRepo objectForKey:albumKey];
@@ -620,42 +636,43 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 - (void)finalizeCatalog
 {
 //    //LBDEBUG
-//    return;
+    return;
     
-    // now, sort alphabetically each letter repository
-    for (NSString* key in [self.alphabeticRepo allKeys])
-    {
-        // don't sort the foreign languages
-        if ([key isEqualToString:@"#"])
-            continue;
-        
-        NSMutableArray* array = [self.alphabeticRepo objectForKey:key];
-        NSMutableArray* sortedArray = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(nameCompare:)]];
-        [self.alphabeticRepo setObject:sortedArray forKey:key];
-    }
-    
-    
-    // and sort the artist repository order
-    for (NSString* indexKey in self.indexMap)
-    {
-        NSDictionary* artistPREORDER = [self.alphaArtistsPREORDER objectForKey:indexKey];
-        NSArray* array = [artistPREORDER allValues];
-        
-        // alphabetic sort
-        array = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
-        
-        [self.alphaArtistsOrder setObject:array forKey:indexKey];
-    }
-    for (NSString* key in [self.alphaArtistsOrder allKeys])
-    {
-        // don't sort the foreign languages
-        if ([key isEqualToString:@"#"])
-            continue;
-        
-        NSMutableArray* array = [self.alphaArtistsOrder objectForKey:key];
-        NSMutableArray* sortedArray = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
-        [self.alphaArtistsOrder setObject:sortedArray forKey:key];
-    }
+//    // now, sort alphabetically each letter repository
+//    for (NSString* key in [self.alphabeticRepo allKeys])
+//    {
+//        // don't sort the foreign languages
+//        if ([key isEqualToString:@"#"])
+//            continue;
+//        
+//        NSMutableArray* array = [self.alphabeticRepo objectForKey:key];
+//        NSMutableArray* sortedArray = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(nameCompare:)]];
+//        
+//        [self.alphabeticRepo setObject:sortedArray forKey:key];
+//    }
+//    
+//    
+//    // and sort the artist repository order
+//    for (NSString* indexKey in self.indexMap)
+//    {
+//        NSDictionary* artistPREORDER = [self.alphaArtistsPREORDER objectForKey:indexKey];
+//        NSArray* array = [artistPREORDER allValues];
+//        
+//        // alphabetic sort
+//        array = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+//        
+//        [self.alphaArtistsOrder setObject:array forKey:indexKey];
+//    }
+//    for (NSString* key in [self.alphaArtistsOrder allKeys])
+//    {
+//        // don't sort the foreign languages
+//        if ([key isEqualToString:@"#"])
+//            continue;
+//        
+//        NSMutableArray* array = [self.alphaArtistsOrder objectForKey:key];
+//        NSMutableArray* sortedArray = [NSMutableArray arrayWithArray:[array sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+//        [self.alphaArtistsOrder setObject:sortedArray forKey:key];
+//    }
     
     //    NSLog(@"%@", self.alphabeticRepo);
     //    NSLog(@"%@", self.alphaArtistsRepo);
@@ -671,61 +688,184 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 
 
 
+//
+// add a song to the catalog,
+//
+- (void)catalogWithoutSorting:(Song*)song  usingArtistKey:(NSString*)artistKey andAlbumKey:(NSString*)albumKey
+{
+    
+    // get what u need to sort alphabetically
+    NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
+    
+    // just in case of
+    if ((firstRelevantWord == nil) || (firstRelevantWord.length == 0))
+        firstRelevantWord = @"#";
+    
+    
+    unichar c = [firstRelevantWord characterAtIndex:0];
+    
+    // we spread the songs, in a dictionnary, and group them depending on their first letter
+    // => each table view section will be related to a letter
+    
+    // first letter is [0 .. 9]
+    if ([_numericSet characterIsMember:c]) 
+    {
+        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"-"];
+        [letterRepo addObject:song];
+    }
+    // first letter is [a .. z] || [A .. Z]
+    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
+    {
+        NSString* upperCaseChar = [[NSString stringWithCharacters:&c length:1] uppercaseString];
+        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:upperCaseChar];
+        [letterRepo addObject:song];
+    }
+    // other cases (foreign languages, ...)
+    else
+    {
+        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"#"];
+        [letterRepo addObject:song];
+    }
+    
+    
+    
+    
+    
+    // now the Artist / Album / Song catalog
+    
+    c = [artistKey characterAtIndex:0];
+    NSMutableDictionary* artistsRepo = nil;
+
+    if ([_numericSet characterIsMember:c])
+    {
+        artistsRepo = [self.alphaArtistsRepo objectForKey:@"-"];
+    }
+    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
+    {
+        NSString* upperC = [[NSString stringWithCharacters:&c length:1] uppercaseString];
+        artistsRepo = [self.alphaArtistsRepo objectForKey:upperC];
+    }
+    else
+    {
+        artistsRepo = [self.alphaArtistsRepo objectForKey:@"#"];
+    }
+    
+    NSMutableDictionary* artistRepo = [artistsRepo objectForKey:artistKey];
+    if (artistRepo == nil)
+    {
+        artistRepo = [[NSMutableDictionary alloc] init];
+        [artistsRepo setObject:artistRepo forKey:artistKey];
+    }
+    
+    
+    // store the song in the right repository
+    NSMutableArray* albumRepo = [artistRepo objectForKey:albumKey];
+    if (albumRepo == nil)
+    {
+        albumRepo = [[NSMutableArray alloc] init];
+        [artistRepo setObject:albumRepo forKey:albumKey];
+    }
+    
+    [albumRepo addObject:song];
+}
+
+
+
+
+
+
+
+
+
 //...............................................................................................
 //
 // tools to handle items selection
 //
 
-
-- (BOOL)selectArtistInSection:(NSInteger)section atRow:(NSInteger)row
+- (BOOL)selectArtist:(NSString*)artistKey withIndex:(NSString*)charIndex
 {
     // first, reset album selection
     self.selectedAlbum = nil;
     self.selectedAlbumRepo = nil;
-    
-    if (section >= self.indexMap.count)
-        return NO;
-    
-    // now, select artist
-    NSString* charIndex = [self.indexMap objectAtIndex:section];
-    NSArray* artistsForSection = [self.alphaArtistsOrder objectForKey:charIndex];
-    
-    if (row >= artistsForSection.count)
-        return NO;
+    NSDictionary* artistsForSection = [self.alphaArtistsRepo objectForKey:charIndex];
 
-    NSString* artist = [artistsForSection objectAtIndex:row];
-    
-    self.selectedArtist = artist;
-    
+    self.selectedArtist = artistKey;
     NSLog(@"selected artist %@", self.selectedArtist);
     
-    NSDictionary* artistsRepo = [self.alphaArtistsRepo objectForKey:charIndex];
+    NSLog(@"%@", artistsForSection);
     
-    self.selectedArtistRepo = [artistsRepo objectForKey:artist];
-
+    self.selectedArtistRepo = [artistsForSection objectForKey:artistKey];
+    
     return YES;
+
 }
 
-
-- (BOOL)selectAlbumAtRow:(NSInteger)row
+- (BOOL)selectAlbum:(NSString*)albumKey
 {
     if (self.selectedArtistRepo == nil)
         return NO;
-        
-    NSArray* albums = [self.selectedArtistRepo allKeys];
     
-    if (row >= albums.count)
-        return NO;
-    
-    self.selectedAlbum = [albums objectAtIndex:row];
+    self.selectedAlbum = albumKey;
     
     NSLog(@"selected album %@", self.selectedAlbum);
-
     
     self.selectedAlbumRepo = [self.selectedArtistRepo objectForKey:self.selectedAlbum];
     
     return YES;
 }
+
+
+
+//- (BOOL)selectArtistInSection:(NSInteger)section atRow:(NSInteger)row
+//{
+//    // first, reset album selection
+//    self.selectedAlbum = nil;
+//    self.selectedAlbumRepo = nil;
+//    
+//    if (section >= self.indexMap.count)
+//        return NO;
+//    
+//    // now, select artist
+//    NSString* charIndex = [self.indexMap objectAtIndex:section];
+//    NSDictionary* artistsForSection = [self.alphaArtistsRepo objectForKey:charIndex];
+//    
+//    if (row >= artistsForSection.count)
+//        return NO;
+//
+//    NSString* artist = [artistsForSection objectAtIndex:row];
+//    
+//    self.selectedArtist = artist;
+//    
+//    NSLog(@"selected artist %@", self.selectedArtist);
+//    
+//    NSDictionary* artistsRepo = [self.alphaArtistsRepo objectForKey:charIndex];
+//    
+//    self.selectedArtistRepo = [artistsRepo objectForKey:artist];
+//
+//    return YES;
+//}
+
+
+
+//- (BOOL)selectAlbumAtRow:(NSInteger)row
+//{
+//    if (self.selectedArtistRepo == nil)
+//        return NO;
+//        
+//    NSArray* albums = [self.selectedArtistRepo allKeys];
+//    
+//    if (row >= albums.count)
+//        return NO;
+//    
+//    self.selectedAlbum = [albums objectAtIndex:row];
+//    
+//    NSLog(@"selected album %@", self.selectedAlbum);
+//
+//    
+//    self.selectedAlbumRepo = [self.selectedArtistRepo objectForKey:self.selectedAlbum];
+//    
+//    return YES;
+//}
 
 
 - (Song*)getSongAtRow:(NSInteger)row;

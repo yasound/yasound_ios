@@ -33,6 +33,7 @@
 
 @synthesize searchedSongs;
 @synthesize subtitle;
+@synthesize sortedItems;
 
 
 
@@ -49,6 +50,7 @@
     if (self) 
     {
         _selectedIndex = -1;
+        self.sortedItems = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -270,7 +272,7 @@
     }
     else
     {
-        NSArray* artistsForSection = [[SongCatalog availableCatalog].alphaArtistsOrder objectForKey:charIndex];
+        NSArray* artistsForSection = [[SongCatalog availableCatalog].alphaArtistsRepo objectForKey:charIndex];
         NSInteger count = artistsForSection.count;
         return count;
     }
@@ -364,9 +366,10 @@
 
         NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
         NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:charIndex];
+
         Song* song = [letterRepo objectAtIndex:indexPath.row];
-        
-        
+
+
         SongAddCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
         
         if (cell == nil) 
@@ -396,7 +399,7 @@
 
         
         NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
-        NSArray* artistsForSection = [[SongCatalog availableCatalog].alphaArtistsOrder objectForKey:charIndex];
+        NSArray* artistsForSection = [[SongCatalog availableCatalog].alphaArtistsRepo objectForKey:charIndex];
         
         NSString* artist = [artistsForSection objectAtIndex:indexPath.row];
         
@@ -444,8 +447,11 @@
     
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:[[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section]];
-        SongLocal* songLocal = (SongLocal*)[letterRepo objectAtIndex:indexPath.row];
+        NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
+        NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:charIndex];
+        
+        SongLocal* songLocal = [letterRepo objectAtIndex:indexPath.row];
+
 
         LocalSongInfoViewController* view = [[LocalSongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:songLocal];
         [self.navigationController pushViewController:view animated:YES];

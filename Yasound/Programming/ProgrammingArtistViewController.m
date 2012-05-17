@@ -28,7 +28,7 @@
 
 
 @synthesize catalog;
-
+@synthesize sortedAlbums;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil usingCatalog:(SongCatalog*)catalog
@@ -37,6 +37,9 @@
     if (self) 
     {
         self.catalog = catalog;
+        
+        NSArray* array = [self.catalog.selectedArtistRepo allKeys];
+         self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
     }
     return self;
 }
@@ -124,7 +127,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    NSInteger count = self.catalog.selectedArtistRepo.count;
+    NSInteger count = self.sortedAlbums.count;
     return count;
 }
 
@@ -156,16 +159,16 @@
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 
-    NSString* charIndex = [self.catalog.indexMap objectAtIndex:indexPath.section];
     
-    NSArray* albums = [self.catalog.selectedArtistRepo allKeys];
-    NSArray* albumRepos = [self.catalog.selectedArtistRepo allValues];
+//    NSArray* albums = [self.catalog.selectedArtistRepo allKeys];
     
     cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.text = [albums objectAtIndex:indexPath.row];
     
-    
-    NSArray* songs = [albumRepos objectAtIndex:indexPath.row];
+    NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
+    cell.textLabel.text = albumKey;
+
+     NSArray* songs = [self.catalog.selectedArtistRepo objectForKey:albumKey];
+
     NSInteger nbSongs = songs.count;
     
     if (nbSongs == 1)
@@ -193,7 +196,9 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
-    [self.catalog selectAlbumAtRow:indexPath.row];
+    
+    NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
+    [self.catalog selectAlbum:albumKey];
 
     ProgrammingAlbumViewController* view = [[ProgrammingAlbumViewController alloc] initWithNibName:@"ProgrammingAlbumViewController" bundle:nil usingCatalog:self.catalog];
     [self.navigationController pushViewController:view animated:YES];

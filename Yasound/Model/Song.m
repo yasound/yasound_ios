@@ -36,6 +36,9 @@
 {
     if (_nameWithoutArticle != nil)
         [_nameWithoutArticle release];
+    if (_firstRelevantWord != nil)
+        [_firstRelevantWord release];
+    
     [super dealloc];
 }
 
@@ -152,145 +155,81 @@
     if (_firstRelevantWord != nil)
         return _firstRelevantWord;
     
+    NSInteger firstRelevantIndex = 0;
     
+//    NSLog(@"getFirstRelevantWord of '%@'", self.name);
+//    if ([self.name isEqualToString:@"The Well"])
+//    {
+//        NSLog(@"ok");
+//    }
     
+    NSString* fourChars = nil;
     
+    if (self.name.length >= 4)
+        fourChars = [self.name substringToIndex:4];
     
-    BOOL first = YES;
-    CFStringRef string = self.name;
-    CFLocaleRef locale = CFLocaleCopyCurrent();
-    
-    CFStringTokenizerRef tokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, string, CFRangeMake(0, CFStringGetLength(string)), kCFStringTokenizerUnitWord, locale);
-    
-    CFStringTokenizerTokenType tokenType = kCFStringTokenizerTokenNone;
-    unsigned tokensFound = 0;
-    
-    while(kCFStringTokenizerTokenNone != (tokenType = CFStringTokenizerAdvanceToNextToken(tokenizer))) 
+    if ((fourChars != nil) && [fourChars compare:@"the " options:NSCaseInsensitiveSearch] == NSOrderedSame)
+        firstRelevantIndex = 4;
+    else
     {
-        CFRange tokenRange = CFStringTokenizerGetCurrentTokenRange(tokenizer);
-        CFStringRef tokenValue = CFStringCreateWithSubstring(kCFAllocatorDefault, string, tokenRange);
+        NSString* threeChars = nil;
         
-        if (first)
+        if (self.name.length >= 3)
+            threeChars = [self.name substringToIndex:3];
+        
+        if ( (threeChars != nil) 
+            && ( ([threeChars compare:@"le " options:NSCaseInsensitiveSearch] == NSOrderedSame)
+                || ([threeChars compare:@"la " options:NSCaseInsensitiveSearch] == NSOrderedSame)
+                )
+            )
         {
-            first = NO;
-            
-            NSString* token = (NSString*)tokenValue;
-            
-            if ( ([token compare:@"the" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
-                ([token compare:@"a" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
-                ([token compare:@"le" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
-                ([token compare:@"la" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
-                ([token compare:@"l'" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
-                ([token compare:@"l" options:NSCaseInsensitiveSearch] != NSOrderedSame)) 
-            {
-                [tokenValue autorelease];
-                CFRelease(tokenizer);
-                CFRelease(locale);   
-                
-                // store cache
-                _firstRelevantWord = [NSString stringWithString:token];
-                [_firstRelevantWord retain];
-                
-                return token;
-            }
-            
-            CFRelease(tokenValue);
-            ++tokensFound;
+            firstRelevantIndex = 3;
         }
         else
         {
-            //CFRelease(tokenValue);
-            [tokenValue autorelease];
+            NSString* twoChars = nil;
             
-            CFRelease(tokenizer);
-            CFRelease(locale);   
-            
-            // store cache
-            _firstRelevantWord = [NSString stringWithString:tokenValue];
-            [_firstRelevantWord retain];
-            
-            return tokenValue;
+            if (self.name.length >= 2)
+                twoChars = [self.name substringToIndex:2];
+            if ( (twoChars != nil) 
+                &&  ( ([twoChars compare:@"l'" options:NSCaseInsensitiveSearch] == NSOrderedSame)
+                     || ([twoChars compare:@"l " options:NSCaseInsensitiveSearch] == NSOrderedSame)
+                     || ([twoChars compare:@"a " options:NSCaseInsensitiveSearch] == NSOrderedSame)
+                     )
+                )
+            {
+                firstRelevantIndex = 2;
+            }
         }
     }
     
-    // Clean up
-    CFRelease(tokenizer);
-    CFRelease(locale);   
-    return nil;
+    
+    
+    // trim space
+    unichar c = [self.name characterAtIndex:firstRelevantIndex];
+    while (c == ' ')
+    {
+        firstRelevantIndex++;
+        c = [self.name characterAtIndex:firstRelevantIndex];
+    }
+
+    // find end of token
+    NSRange end = [self.name rangeOfString:@" " options:NSLiteralSearch range:NSMakeRange(firstRelevantIndex, self.name.length - firstRelevantIndex)];
+    if (end.location == NSNotFound)
+    {
+        end.location = self.name.length;
+        end.length = 0;
+    }
+        
+    
+    _firstRelevantWord = [self.name substringWithRange:NSMakeRange(firstRelevantIndex, end.location - firstRelevantIndex)];
+    [_firstRelevantWord retain];
+    
+    return _firstRelevantWord;
 }
 
 
 
-//- (NSString*)getFirstRelevantWord
-//{
-//    // return cache
-//    if (_firstRelevantWord != nil)
-//        return _firstRelevantWord;
-//        
-//        
-//    BOOL first = YES;
-//    CFStringRef string = self.name;
-//    CFLocaleRef locale = CFLocaleCopyCurrent();
-//    
-//    CFStringTokenizerRef tokenizer = CFStringTokenizerCreate(kCFAllocatorDefault, string, CFRangeMake(0, CFStringGetLength(string)), kCFStringTokenizerUnitWord, locale);
-//    
-//    CFStringTokenizerTokenType tokenType = kCFStringTokenizerTokenNone;
-//    unsigned tokensFound = 0;
-//    
-//    while(kCFStringTokenizerTokenNone != (tokenType = CFStringTokenizerAdvanceToNextToken(tokenizer))) 
-//    {
-//        CFRange tokenRange = CFStringTokenizerGetCurrentTokenRange(tokenizer);
-//        CFStringRef tokenValue = CFStringCreateWithSubstring(kCFAllocatorDefault, string, tokenRange);
-//
-//        if (first)
-//        {
-//            first = NO;
-//            
-//            NSString* token = (NSString*)tokenValue;
-//            
-//            if ( ([token compare:@"the" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
-//                ([token compare:@"a" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
-//                ([token compare:@"le" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
-//                ([token compare:@"la" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
-//                ([token compare:@"l'" options:NSCaseInsensitiveSearch] != NSOrderedSame) &&
-//                ([token compare:@"l" options:NSCaseInsensitiveSearch] != NSOrderedSame)) 
-//            {
-//                [tokenValue autorelease];
-//                CFRelease(tokenizer);
-//                CFRelease(locale);   
-//                
-//                // store cache
-//                _firstRelevantWord = [NSString stringWithString:token];
-//                [_firstRelevantWord retain];
-//                
-//                return token;
-//            }
-//            
-//            CFRelease(tokenValue);
-//            ++tokensFound;
-//        }
-//        else
-//        {
-//            //CFRelease(tokenValue);
-//            [tokenValue autorelease];
-//
-//            CFRelease(tokenizer);
-//            CFRelease(locale);   
-//
-//            // store cache
-//            _firstRelevantWord = [NSString stringWithString:tokenValue];
-//            [_firstRelevantWord retain];
-//
-//            return tokenValue;
-//        }
-//    }
-//    
-//    // Clean up
-//    CFRelease(tokenizer);
-//    CFRelease(locale);   
-//    return nil;
-//}
-//
 
 - (NSComparisonResult)nameCompare:(Song*)second
 {
