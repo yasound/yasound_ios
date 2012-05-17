@@ -60,8 +60,6 @@
 - (BOOL)selectAlbum:(NSString*)albumKey;
 
 
-//- (BOOL)selectArtistInSection:(NSInteger)section atRow:(NSInteger)row;
-//- (BOOL)selectAlbumAtRow:(NSInteger)row;
 - (Song*)getSongAtRow:(NSInteger)row;
 
 
