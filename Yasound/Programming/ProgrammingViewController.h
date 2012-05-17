@@ -31,7 +31,8 @@
 }
 
 @property (nonatomic, retain) NSMutableDictionary* matchedSongs;
-@property (nonatomic, retain) NSMutableDictionary* sortedItems;
+@property (nonatomic, retain) NSMutableDictionary* sortedSongs;
+@property (nonatomic, retain) NSMutableDictionary* sortedArtists;
 
 
 @end
