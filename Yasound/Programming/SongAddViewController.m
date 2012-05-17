@@ -399,14 +399,28 @@
 
         
         NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
-        NSArray* artistsForSection = [[SongCatalog availableCatalog].alphaArtistsRepo objectForKey:charIndex];
+        NSMutableDictionary* artistsForSection = [[SongCatalog availableCatalog].alphaArtistsRepo objectForKey:charIndex];
         
-        NSString* artist = [artistsForSection objectAtIndex:indexPath.row];
+        // get sorted list
+        NSArray* artists = [self.sortedItems objectForKey:charIndex];
+        if (artists == nil)
+        {
+            artists = [artistsForSection allKeys];
+            
+            // sort the items array
+            artists = [artists sortedArrayUsingSelector:@selector(compare:)];
+            
+            // store the cache
+            [self.sortedItems setObject:artists forKey:charIndex];
+        }
+
+        NSString* artist = [artists objectAtIndex:indexPath.row];
         
-        NSDictionary* artistsRepo = [[SongCatalog availableCatalog].alphaArtistsRepo objectForKey:charIndex];
-        NSDictionary* artistRepo = [artistsRepo objectForKey:artist];
+        NSDictionary* artistRepo = [artistsForSection objectForKey:artist];
         
-        NSInteger nbAlbums = artistRepo.count;
+        NSInteger nbAlbums = artistRepo
+        
+        .count;
         
         cell.textLabel.text = artist;
         
@@ -459,8 +473,11 @@
     }
     else
     {
-        [[SongCatalog availableCatalog] selectArtistInSection:indexPath.section atRow:indexPath.row];
+        NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
+        NSString* artistKey = [[self.sortedItems objectForKey:charIndex] objectAtIndex:indexPath.row];
         
+        [[SongCatalog availableCatalog] selectArtist:artistKey withIndex:charIndex];
+
         ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil usingCatalog:[SongCatalog availableCatalog]];
         [self.navigationController pushViewController:view animated:YES];
         [view release];

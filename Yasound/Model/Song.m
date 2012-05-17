@@ -200,6 +200,16 @@
             {
                 firstRelevantIndex = 2;
             }
+            else
+            {
+                unichar c = [self.name characterAtIndex:0];
+                
+                if (c == '\'')
+                {
+                    firstRelevantIndex = 1;
+                }
+            }
+            
         }
     }
     
