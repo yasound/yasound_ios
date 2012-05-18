@@ -12,7 +12,7 @@
 #import "YasoundSessionManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-
+#import "ActivityAlertView.h"
 
 
 @interface ShareModalViewController ()
@@ -135,12 +135,16 @@
     
     NSLog(@"Share on facebook.");
     [[YasoundSessionManager main] postMessageForFacebook:_textView.text title:title picture:self.pictureUrl link:fullLink target:self action:@selector(onPostMessageFinished:)];
+    
+    [ActivityAlertView showWithTitle:nil];
 }
 
 
 - (void)onPostMessageFinished:(NSNumber*)finished
 {
     BOOL done = [finished boolValue];
+
+    [ActivityAlertView close];
 
     NSLog(@"onPostMessageFinished received : finished %d", done);
 

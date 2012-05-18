@@ -16,6 +16,8 @@
 #import "TwitterOAuthSessionManager.h"
 //#import "BitlyConfig.h"
 #import "MKBitlyHelper.h"
+#import "ActivityAlertView.h"
+
 
 #define TWITTER_MAX_LENGTH 140
 
@@ -181,12 +183,17 @@
     
     NSLog(@"Share on twitter.");
     [[YasoundSessionManager main] postMessageForTwitter:_textView.text title:title picture:self.pictureUrl target:self action:@selector(onPostMessageFinished:)];
+    
+    [ActivityAlertView showWithTitle:nil];
+
 }
 
 
 - (void)onPostMessageFinished:(NSNumber*)finished
 {
     BOOL done = [finished boolValue];
+
+    [ActivityAlertView close];
 
     NSLog(@"onPostMessageFinished received : finished %d", done);
 
