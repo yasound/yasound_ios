@@ -132,7 +132,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)radioUserForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setMood:(UserMood)mood forRadio:(Radio*)radio;
 - (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite;
-- (void)radioHasBeenShared:(Radio*)radio;
+- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType;
 
 - (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector;

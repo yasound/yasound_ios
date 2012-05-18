@@ -12,12 +12,15 @@
 #import "SongViewCell.h"
 #import "TestflightViewController.h"
 #import "OrientedTableView.h"
+#import <MessageUI/MessageUI.h>
+
+
 
 @class Radio;
 @class AudioStreamer;
 @class WebImageView;
 
-@interface RadioViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate>
+@interface RadioViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate>
 {
 //    NSAutoreleasePool* _ap;
     

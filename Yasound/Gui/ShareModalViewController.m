@@ -23,17 +23,19 @@
 @implementation ShareModalViewController
 
 @synthesize song;
+@synthesize radio;
 @synthesize fullLink;
 @synthesize pictureUrl;
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(Song*)aSong target:(id)target action:(SEL)action
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forSong:(Song*)aSong onRadio:(Radio*)aRadio target:(id)target action:(SEL)action
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
         self.song = aSong;
+        self.radio = aRadio;
         
         _target = target;
         _action = action;
@@ -152,6 +154,8 @@
         [av release];  
         return;    
     }
+    
+    [[YasoundDataProvider main] radioHasBeenShared:self.radio with:@"facebook"];
     
     [_target performSelector:_action];
 }

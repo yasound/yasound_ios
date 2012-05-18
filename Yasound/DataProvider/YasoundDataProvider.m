@@ -1359,14 +1359,16 @@ static YasoundDataProvider* _main = nil;
   [_communicator postToURL:url absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];
 }
 
-- (void)radioHasBeenShared:(Radio*)radio
+- (void)radioHasBeenShared:(Radio*)radio with:(NSString*)shareType
 {
   if (!radio || !radio.id)
     return;
-  
-  NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/shared", radio.id];
-  Auth* auth = self.apiKeyAuth;
-  [_communicator postToURL:url absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];
+    
+    Auth* auth = self.apiKeyAuth;
+    NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/shared", radio.id];
+    NSString* data = [NSString stringWithFormat:@"{\"type\":\"%@\"}", shareType];
+    
+    [_communicator postToURL:url absolute:NO withStringData:data objectClass:nil notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
 

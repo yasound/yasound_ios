@@ -2055,7 +2055,7 @@ static Song* _gNowPlayingSong = nil;
 
         if ([buttonTitle isEqualToString:@"Facebook"])
         {
-            ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong target:self action:@selector(onShareModalReturned)];
+            ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:_gNowPlayingSong onRadio:self.radio target:self action:@selector(onShareModalReturned)];
             [self.navigationController presentModalViewController:view animated:YES];
             [view release];
         }
@@ -2068,17 +2068,7 @@ static Song* _gNowPlayingSong = nil;
         }
         else if ([buttonTitle isEqualToString:NSLocalizedString(@"ShareModalView_email_label", nil)])
         {
-            Radio* currentRadio = [AudioStreamManager main].currentRadio;
-            
-            NSString* message = NSLocalizedString(@"ShareModalView_share_message", nil);
-            NSString* fullMessage = [NSString stringWithFormat:message, _gNowPlayingSong.name, _gNowPlayingSong.artist, currentRadio.name];
-            NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
-            NSURL* fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link, currentRadio.uuid]];
-            
-            NSString* subject = NSLocalizedString(@"Yasound_share", nil);
-            NSString* url = [[NSString alloc] initWithFormat:@"mailto:?subject=%@&body=%@\n\n%@", subject, fullMessage, [fullLink absoluteString]];
-            NSString* escaped = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:escaped]];
+            [self shareWithMail];
         }
         
         return;
@@ -2091,6 +2081,61 @@ static Song* _gNowPlayingSong = nil;
 {
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }
+
+
+
+
+- (void)shareWithMail
+{
+    NSString* message = NSLocalizedString(@"ShareModalView_share_message", nil);
+    NSString* fullMessage = [NSString stringWithFormat:message, _gNowPlayingSong.name, _gNowPlayingSong.artist, self.radio.name];
+    NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
+    NSURL* fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link, self.radio.uuid]];
+    
+    NSString* body = [NSString stringWithFormat:"%@\n\n%@", fullMessage, [fullLink absoluteString]];
+
+	MFMailComposeViewController* mailViewController = [[MFMailComposeViewController alloc] init];
+	[mailViewController setSubject: NSLocalizedString(@"Yasound_share", nil)];
+    
+    [mailViewController setMessageBody:body isHTML:NO];
+    
+	mailViewController.mailComposeDelegate = self;
+	
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
+	if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
+		mailViewController.modalPresentationStyle = UIModalPresentationPageSheet;
+	}
+#endif
+	
+	[self presentModalViewController:mailViewController animated:YES];
+	[mailViewController release];
+
+}
+
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{	
+	[self dismissModalViewControllerAnimated:YES];
+	
+	NSString *mailError = nil;
+	
+	switch (result) 
+    {
+		case MFMailComposeResultSent: 
+        { 
+            [[YasoundDataProvider main] radioHasBeenShared:self.radio with:@"mail"];            
+            break;
+        }
+		case MFMailComposeResultFailed: mailError = @"Failed sending media, please try again...";
+			break;
+		default:
+			break;
+	}	
+}
+
+
+
+
 
 
 
