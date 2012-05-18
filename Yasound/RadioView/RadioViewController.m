@@ -2092,7 +2092,7 @@ static Song* _gNowPlayingSong = nil;
     NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
     NSURL* fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link, self.radio.uuid]];
     
-    NSString* body = [NSString stringWithFormat:"%@\n\n%@", fullMessage, [fullLink absoluteString]];
+    NSString* body = [NSString stringWithFormat:@"%@\n\n%@", fullMessage, [fullLink absoluteString]];
 
 	MFMailComposeViewController* mailViewController = [[MFMailComposeViewController alloc] init];
 	[mailViewController setSubject: NSLocalizedString(@"Yasound_share", nil)];
