@@ -2062,7 +2062,7 @@ static Song* _gNowPlayingSong = nil;
         else if ([buttonTitle isEqualToString:@"Twitter"])
 
         {
-            ShareTwitterModalViewController* view = [[ShareTwitterModalViewController alloc] initWithNibName:@"ShareTwitterModalViewController" bundle:nil forSong:_gNowPlayingSong target:self action:@selector(onShareModalReturned)];
+            ShareTwitterModalViewController* view = [[ShareTwitterModalViewController alloc] initWithNibName:@"ShareTwitterModalViewController" bundle:nil forSong:_gNowPlayingSong onRadio:self.radio target:self action:@selector(onShareModalReturned)];
             [self.navigationController presentModalViewController:view animated:YES];
             [view release];
         }
