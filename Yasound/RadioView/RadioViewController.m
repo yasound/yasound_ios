@@ -2123,7 +2123,7 @@ static Song* _gNowPlayingSong = nil;
     {
 		case MFMailComposeResultSent: 
         { 
-            [[YasoundDataProvider main] radioHasBeenShared:self.radio with:@"mail"];            
+            [[YasoundDataProvider main] radioHasBeenShared:self.radio with:@"email"];            
             break;
         }
 		case MFMailComposeResultFailed: mailError = @"Failed sending media, please try again...";

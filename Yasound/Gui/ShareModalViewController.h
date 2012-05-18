@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Song.h"
 #import "WebImageView.h"
+#import "Radio.h"
 
 @interface ShareModalViewController : UIViewController<UITextFieldDelegate>
 {
