@@ -252,12 +252,14 @@
 "SongView_reject_failed" = "Impossible d'executer la requête";
 
 "SongView_reject_title" = "Rejeter cette version";
-"SongView_reject_message" = "Si le morceau a été synchronisé avec la base serveur de Yasound, \
-il est possible que la version choisie automatiquement ne vous convienne pas.\n\
-Voulez-vous rejeter cette version de votre programmation?\n\
-Vous pourrez ensuite télécharger votre propre version.";
 
-"SongView_reject_button_reject" = "Je rejette";
+"SongView_reject_message_own_song_yes" = "Une autre version de ce morceau a été trouvée sur votre appareil.\nVous pouvez la télécharger sur le serveur pour qu'elle remplace la version automatiquement sélectionnée par Yasound.";
+
+"SongView_reject_message_own_song_no" = "Nous n'avons pas trouvé d'autres versions de ce morceau sur votre appareil. Vous pouvez néanmoins supprimer la version actuelle de votre programmation.";
+
+
+"SongView_reject_button_own_song_yes" = "Je télécharge";
+"SongView_reject_button_own_song_no" = "Je supprime";
 
 "SongView_uploading_title" = "Programmation";
 "SongView_uploading_message" = "Votre morceau est en cours de téléchargement. Voulez-vous accéder au moniteur des téléchargements?";

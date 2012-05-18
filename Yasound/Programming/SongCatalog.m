@@ -456,6 +456,31 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 }
 
 
+- (BOOL)doesDeviceContainSong:(Song*)song
+{
+    [[TimeProfile main] begin:@"doesDeviceContainSong"];
+    
+    MPMediaQuery* allSongsQuery = [MPMediaQuery songsQuery];
+    
+    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.name forProperty:MPMediaItemPropertyTitle comparisonType:MPMediaPredicateComparisonEqualTo]]; 
+    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.artist forProperty:MPMediaItemPropertyArtist comparisonType:MPMediaPredicateComparisonEqualTo]]; 
+    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.album forProperty:MPMediaItemPropertyAlbumTitle comparisonType:MPMediaPredicateComparisonEqualTo]]; 
+
+    NSArray* songsArray = [allSongsQuery items];
+    
+    [[TimeProfile main] end:@"doesDeviceContainSong"];
+    [[TimeProfile main] logInterval:@"doesDeviceContainSong" inMilliseconds:YES];
+
+
+
+    BOOL doesContain = (songsArray.count > 0);
+    
+    BOOL canUpload = [[SongUploader main] canUploadSong:song];
+    
+    return (doesContain && canUpload);
+}
+
+
 
 
 

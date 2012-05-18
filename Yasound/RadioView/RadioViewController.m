@@ -107,6 +107,7 @@ static Song* _gNowPlayingSong = nil;
         _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
 
         _wallEvents = [[NSMutableArray alloc] init];
+//        _wallEvents = nil;
         _waitingForPreviousEvents = NO;
         _connectedUsers = nil;
         _usersContainer = nil;
@@ -409,6 +410,8 @@ static Song* _gNowPlayingSong = nil;
     
     [[AudioStreamManager main] startRadio:self.radio];
     [[YasoundDataProvider main] enterRadioWall:self.radio];
+
+    
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
@@ -434,6 +437,14 @@ static Song* _gNowPlayingSong = nil;
     NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
     NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
     [[YasoundDataCache main] requestRadiosWithUrl:[NSURL URLWithString:url] withGenre:nil target:self action:@selector(onFavoriteUpdate:)];
+    
+    // launch timer here, but only the the wall has been filled already.
+    // otherwise, wait for it to be filled, and then, we will launch the update timer.
+    if (!_firstUpdateRequest && ((_timerUpdate == nil) || (![_timerUpdate isValid])))
+    {
+        // launch the update timer
+        _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onTimerUpdate:) userInfo:nil repeats:YES];
+    }
     
 }
  
@@ -487,6 +498,7 @@ static Song* _gNowPlayingSong = nil;
         [_timerUpdate invalidate];
         _timerUpdate = nil;
     }
+    
 
     [super viewWillDisappear: animated];
 }

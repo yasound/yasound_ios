@@ -50,6 +50,7 @@
     {
         self.song = aSong;
         _showNowPlaying = showNowPlaying;
+        _ownSong = NO;
     }
     return self;
 }
@@ -390,12 +391,27 @@
         return;
     
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-
-    _alertReject = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_reject_title", nil)
-                                                    message:NSLocalizedString(@"SongView_reject_message", nil) 
+    
+    // first, check if the user has the targeted song in his local catalog
+    _ownSong = [[SongCatalog availableCatalog]doesDeviceContainSong:self.song];
+    
+    if (_ownSong)
+    {
+        _alertReject = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_reject_title", nil)
+                                                    message:NSLocalizedString(@"SongView_reject_message_own_song_yes", nil) 
                                                    delegate:self 
                                           cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) 
-                                          otherButtonTitles:NSLocalizedString(@"SongView_reject_button_reject", nil), nil];
+                                          otherButtonTitles:NSLocalizedString(@"SongView_reject_button_own_song_yes", nil), nil];
+    }
+    else
+    {
+        _alertReject = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_reject_title", nil)
+                                                  message:NSLocalizedString(@"SongView_reject_message_own_song_no", nil) 
+                                                 delegate:self 
+                                        cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) 
+                                        otherButtonTitles:NSLocalizedString(@"SongView_reject_button_own_song_no", nil), nil];    
+    }
+    
     [_alertReject show];
     [_alertReject release];
 }
@@ -413,23 +429,9 @@
         [ActivityAlertView showWithTitle:nil closeAfterTimeInterval:60];
         
         [[YasoundDataProvider main] rejectSong:self.song target:self action:@selector(didRejectSong:succeeded:)];
-        return;
-    }
-    
-    if ((alertView == _alertUpload) && (buttonIndex == 1))
-    {
-        BOOL can = [[SongUploader main] canUploadSong:song];
-        if (!can)
-        {
-            [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_upload_failed", nil) closeAfterTimeInterval:2];
-            return;
-        }
-        
-        [self requestUpload];
         
         return;
     }
-    
     
     if ((alertView == _alertUploading) && (buttonIndex == 1))
     {
@@ -440,6 +442,35 @@
     }
 
 }    
+
+
+
+
+
+
+         
+- (void)didRejectSong:(ASIHTTPRequest*)req succeeded:(NSNumber*)success
+{
+    BOOL succeeded = NO;
+    if (success != nil)
+        succeeded = [success boolValue];
+    
+    if (!succeeded)
+    {
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_reject_failed", nil) closeAfterTimeInterval:2];
+        return;
+    }
+    
+    [ActivityAlertView close];
+    
+    if (!_ownSong)
+    {
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_delete_confirm_message", nil) closeAfterTimeInterval:2];
+        return;
+    }
+    
+    [self requestUpload];
+}
 
 
 
@@ -467,68 +498,38 @@
     }
     else
     {
-            _alertUploading = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_uploading_title", nil) message:NSLocalizedString(@"SongView_uploading_message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_No", nil) otherButtonTitles:NSLocalizedString(@"Navigation_Yes", nil),nil ];
-            [_alertUploading show];
-            [_alertUploading release];  
-        
-        
-        
-        // [ActivityAlertView showWithTitle:NSLocalizedString(@"", nil) closeAfterTimeInterval:1];
+        _alertUploading = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_uploading_title", nil) message:NSLocalizedString(@"SongView_uploading_message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_No", nil) otherButtonTitles:NSLocalizedString(@"Navigation_Yes", nil),nil ];
+        [_alertUploading show];
+        [_alertUploading release];  
     }
     
 }
 
 
-
-         
-- (void)didRejectSong:(ASIHTTPRequest*)req succeeded:(NSNumber*)success
-{
-    BOOL succeeded = NO;
-    if (success != nil)
-        succeeded = [success boolValue];
-    
-    if (!succeeded)
-    {
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_reject_failed", nil) closeAfterTimeInterval:2];
-        return;
-    }
-    
-    [ActivityAlertView close];
-    
-     _alertUpload = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_upload_title", nil)
-                                               message:NSLocalizedString(@"SongView_upload_message", nil) 
-                                              delegate:self 
-                                     cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) 
-                                     otherButtonTitles:NSLocalizedString(@"SongView_upload_button", nil), nil];
-     [_alertUpload show];
-     [_alertUpload release];
- 
-}
-
          
 
-- (void)onRejectNotified:(NSDictionary*)info
-{
-    BOOL succeeded = NO;
-    
-    NSNumber* nb = [info objectForKey:@"succeeded"];
-    if (nb != nil)
-        succeeded = [nb boolValue];
-
-    [ActivityAlertView close];
-    
-    if (!succeeded)
-        return;
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_reject_title", nil)
-                                                    message:NSLocalizedString(@"SongView_reject_message", nil) 
-                                                   delegate:self 
-                                          cancelButtonTitle:nil 
-                                          otherButtonTitles:NSLocalizedString(@"RateApp_button_rate", nil), NSLocalizedString(@"RateApp_button_later", nil), NSLocalizedString(@"RateApp_button_no", nil), nil];
-    alert.delegate = self;
-    [alert show];
-    [alert release];
-}
+//- (void)onRejectNotified:(NSDictionary*)info
+//{
+//    BOOL succeeded = NO;
+//    
+//    NSNumber* nb = [info objectForKey:@"succeeded"];
+//    if (nb != nil)
+//        succeeded = [nb boolValue];
+//
+//    [ActivityAlertView close];
+//    
+//    if (!succeeded)
+//        return;
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongView_reject_title", nil)
+//                                                    message:NSLocalizedString(@"SongView_reject_message", nil) 
+//                                                   delegate:self 
+//                                          cancelButtonTitle:nil 
+//                                          otherButtonTitles:NSLocalizedString(@"RateApp_button_rate", nil), NSLocalizedString(@"RateApp_button_later", nil), NSLocalizedString(@"RateApp_button_no", nil), nil];
+//    alert.delegate = self;
+//    [alert show];
+//    [alert release];
+//}
 
 
 

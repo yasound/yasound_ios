@@ -33,6 +33,7 @@
     UISwitch* _switchFrequency;
     
     BOOL _showNowPlaying;
+    BOOL _ownSong;
     
     UIAlertView* _alertReject;
     UIAlertView* _alertUpload;
