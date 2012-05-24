@@ -41,6 +41,8 @@
 
 #define INTERACTIVE_ZONE_SIZE 64
 
+#define ANIMATION_DURATION 0.1
+
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath target:(id)target action:(SEL)action
 {
@@ -133,13 +135,13 @@
         
         
         
-//        UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight)] autorelease];
-//        swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
-//        [self addGestureRecognizer:swipeRight];
-//        
-//        UISwipeGestureRecognizer* swipeLeft = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft)] autorelease];
-//        swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
-//        [self addGestureRecognizer:swipeLeft];
+        UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight)] autorelease];
+        swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+        [self addGestureRecognizer:swipeRight];
+        
+        UISwipeGestureRecognizer* swipeLeft = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft)] autorelease];
+        swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self addGestureRecognizer:swipeLeft];
 
         UIPanGestureRecognizer* pan = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)] autorelease];
         pan.maximumNumberOfTouches = 2;
@@ -285,7 +287,7 @@
     if (animated)
     {
         [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.16];
+        [UIView setAnimationDuration:ANIMATION_DURATION];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     }
     
@@ -313,7 +315,7 @@
     if (animated)
     {
         [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.16];
+        [UIView setAnimationDuration:ANIMATION_DURATION];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     }
     
