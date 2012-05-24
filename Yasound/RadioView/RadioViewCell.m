@@ -268,8 +268,37 @@
     [self bringSubviewToFront:self.cellView];
     self.cellEditView = view;
     
+    
+    // shadow top
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"CellModerShadowTop" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIView* shadowTop = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, sheet.frame.size.height)];
+    shadowTop.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+    [self.cellEditView addSubview:shadowTop];
+    [shadowTop release];
+
+    // shadow bottom
+    sheet = [[Theme theme] stylesheetForKey:@"CellModerShadowBottom" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIView* shadowBottom = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - sheet.frame.size.height, view.frame.size.width, sheet.frame.size.height)];
+    shadowBottom.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+    [self.cellEditView addSubview:shadowBottom];
+    [shadowBottom release];
+
+//    // shadow left on cellView
+//    sheet = [[Theme theme] stylesheetForKey:@"CellModerShadowLeft" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    UIView* shadowLeft = [[UIView alloc] initWithFrame:CGRectMake(self.cellView.frame.size.width, 0, sheet.frame.size.width, self.cellView.frame.size.height)];
+//    shadowLeft.backgroundColor = [UIColor clearColor];
+//    [self.cellView addSubview:shadowLeft];
+//    UIView* imageView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, shadowLeft.frame.size.width, shadowLeft.frame.size.height)];
+//    imageView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+//    [shadowTop addSubview:imageView];
+//    [shadowLeft release];
+//    [imageView release];
+    
+    
+    
+    
     // button spam
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"CellModerIconSpam" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"CellModerIconSpam" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIButton* button = [sheet makeButton];
     [button addTarget:self action:@selector(onModerSpam:) forControlEvents:UIControlEventTouchUpInside];
     button.frame = CGRectMake(self.cellEditView.frame.size.width - INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);

@@ -329,6 +329,45 @@
 			<key>path</key>
 			<string>images/Wall</string>
 		</dict>
+		<key>CellModerShadowTop</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>normal</key>
+			<string>viewModerShadowTop</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Wall</string>
+		</dict>
+		<key>CellModerShadowBottom</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>normal</key>
+			<string>viewModerShadowBottom</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Wall</string>
+		</dict>
+		<key>CellModerShadowLeft</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>normal</key>
+			<string>viewModerShadowLeft</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Wall</string>
+		</dict>
 		<key>NowPlayingBar</key>
 		<dict>
 			<key>x</key>
