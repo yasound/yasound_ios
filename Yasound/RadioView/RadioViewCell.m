@@ -143,10 +143,10 @@
         swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
         [self addGestureRecognizer:swipeLeft];
 
-//        UIPanGestureRecognizer* pan = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)] autorelease];
-//        pan.maximumNumberOfTouches = 2;
-//        pan.minimumNumberOfTouches = 1;
-//        [self addGestureRecognizer:pan];
+        UIPanGestureRecognizer* pan = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)] autorelease];
+        pan.maximumNumberOfTouches = 2;
+        pan.minimumNumberOfTouches = 1;
+        [self addGestureRecognizer:pan];
 
         
 
@@ -289,25 +289,14 @@ static const CGFloat kSpringRestingHeight = 4;
     
     CGRect cellFrameDst = CGRectMake(0 - _interactiveZoneSize, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
     
-    
-    [self bounceAnimationTo:-_interactiveZoneSize];
-
-
-    
-//    // move button and labels with animation
-//    if (animated)
-//    {
-//        [UIView beginAnimations:nil context:nil];
-//        [UIView setAnimationDuration:ANIMATION_DURATION];
-//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-//    }
-//    
-//    self.cellView.frame = cellFrameDst;
-//    
-//    if (animated)
-//    {
-//        [UIView commitAnimations];
-//    }
+    if (animated)
+    {
+        [self bounceAnimationTo:cellFrameDst];
+    }
+    else
+    {
+        self.cellView.frame = cellFrameDst;
+    }
 }
 
 
@@ -318,39 +307,33 @@ static const CGFloat kSpringRestingHeight = 4;
 //        return;
     _editMode = NO;
 
-    [self bounceAnimationTo:0];
-
-//    CGRect cellFrameDst = CGRectMake(0, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
-//    
-//    if (animated)
-//    {
-//        [UIView beginAnimations:nil context:nil];
-//        [UIView setAnimationDuration:ANIMATION_DURATION];
-//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-//    }
-//    
-//    self.cellView.frame = cellFrameDst;
-//    
-//    if (animated)
-//    {
-//        [UIView commitAnimations];
-//    }
+    CGRect cellFrameDst = CGRectMake(0, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
     
+    
+    if (animated)
+    {
+        [self bounceAnimationTo:cellFrameDst];
+    }
+    else
+    {
+        self.cellView.frame = cellFrameDst;
+    }
 }
 
 
-- (void) bounceAnimationTo:(CGFloat)destX
+//- (void) bounceAnimationTo:(CGFloat)destX
+- (void) bounceAnimationTo:(CGRect)destFrame
 {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:ANIMATION_DURATION];
     [UIView setAnimationCurve:UIViewAnimationCurveLinear];
-    self.cellView.transform =  CGAffineTransformMakeTranslation (destX,  self.cellView.frame.origin.y);
+    self.cellView.frame = destFrame;
     [UIView commitAnimations];
 
     CABasicAnimation *bounceAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
     bounceAnimation.duration = ANIMATION_DURATION;
     bounceAnimation.fromValue = [NSNumber numberWithInt:0];
-    bounceAnimation.toValue = [NSNumber numberWithInt:20];
+    bounceAnimation.toValue = [NSNumber numberWithInt:10];
     bounceAnimation.repeatCount = 2;
     bounceAnimation.autoreverses = YES;
     bounceAnimation.fillMode = kCAFillModeForwards;
