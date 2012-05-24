@@ -39,6 +39,9 @@
 
 #define MESSAGE_SPACING 4
 
+#define INTERACTIVE_ZONE_SIZE 64
+
+
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath target:(id)target action:(SEL)action
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
@@ -46,6 +49,8 @@
     {
         _editMode = NO;
         _ownRadio = ownRadio;
+        _interactiveZoneSize = (_ownRadio)? 3 * INTERACTIVE_ZONE_SIZE : 1 * INTERACTIVE_ZONE_SIZE;
+
         
         _myTarget = target;
         _myAction = action;
@@ -62,9 +67,6 @@
         
         
         sheet = [[Theme theme] stylesheetForKey:@"MessageCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        CGRect frame = CGRectMake(0, 0, 320, 60);
-//        UITableView* parentTable = (UITableView *)self.superview;
-//        CGRect cellFrame = [parentTable rectForRowAtIndexPath:indexPath];
         CGRect cellFrame = self.bounds;
 
         UIView* cellView = [[UIView alloc] initWithFrame:cellFrame];
@@ -200,24 +202,46 @@
     if ([gesture state] == UIGestureRecognizerStateBegan)
         self.cellViewX = self.cellView.frame.origin.x;
         
+    CGPoint translation = [gesture translationInView:self];
+
+    //NSLog(@"%.2f", translation.x);
+
     if ([gesture state] == UIGestureRecognizerStateBegan || [gesture state] == UIGestureRecognizerStateChanged) 
     {
-        CGPoint translation = [gesture translationInView:self];
-        
-        
         CGFloat newX = cellViewX + translation.x;
-        if (newX < -self.cellView.frame.size.width)
-            newX = -self.cellView.frame.size.width;
+        if (newX < -_interactiveZoneSize)
+            newX = -_interactiveZoneSize;
         else if (newX > 0)
             newX = 0;
         
         self.cellView.frame = CGRectMake(newX, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
     }
+
+    if ([gesture state] == UIGestureRecognizerStateCancelled)
+        [self deactivateEditModeAnimated:YES];
+        
+    else if ([gesture state] == UIGestureRecognizerStateEnded)
+    {
+
+        if (!_editMode)
+        {
+            if ((translation.x > -(INTERACTIVE_ZONE_SIZE)) && (translation.x < 0))
+                [self deactivateEditModeAnimated:YES];
+            else if (translation.x < -(INTERACTIVE_ZONE_SIZE))
+                    [self activateEditModeAnimated:YES];
+        }
+        else
+        {
+            if ((translation.x > 0) && (translation.x < INTERACTIVE_ZONE_SIZE))
+                [self activateEditModeAnimated:YES];
+            else if (translation.x > INTERACTIVE_ZONE_SIZE)
+                [self deactivateEditModeAnimated:YES];
+        }
+    }
+
 }
 
 
-#define BORDER 8
-#define INTERACTIVE_ZONE_SIZE 64
 
 
 - (void)onSwipeLeft
@@ -235,23 +259,14 @@
 
 - (void)activateEditModeAnimated:(BOOL)animated
 {
-    if (_editMode)
-        return;
+//    if (_editMode)
+//        return;
     
     _editMode = YES;
     
     CGRect frame;
     
-    CGFloat interactiveZoneSize = (_ownRadio)? 3 * INTERACTIVE_ZONE_SIZE : 1 * INTERACTIVE_ZONE_SIZE;
-    
-//    if (_ownRadio)
-//        frame = CGRectMake(self.bounds.size.width, 0, interactiveZoneSize, self.bounds.size.height);
-//    else
-//        frame = CGRectMake(self.bounds.size.width, 0, interactiveZoneSize, self.bounds.size.height);
-
-    frame = CGRectMake(self.bounds.size.width - interactiveZoneSize, 0, interactiveZoneSize, self.bounds.size.height);
-
-//    CGRect cellEditFrameDst = CGRectMake(frame.origin.x - interactiveZoneSize, frame.origin.y, frame.size.width, frame.size.height);
+    frame = CGRectMake(self.bounds.size.width - _interactiveZoneSize, 0, _interactiveZoneSize, self.bounds.size.height);
 
     
     UIView* view = [[UIView alloc] initWithFrame:frame];
@@ -261,7 +276,7 @@
     self.cellEditView = view;
     [view release];
     
-    CGRect cellFrameDst = CGRectMake(self.cellView.frame.origin.x - interactiveZoneSize, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
+    CGRect cellFrameDst = CGRectMake(0 - _interactiveZoneSize, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
 
     
     
@@ -275,7 +290,6 @@
     }
     
     self.cellView.frame = cellFrameDst;
-//    self.cellEditView.frame = cellEditFrameDst;
 
     if (animated)
     {
@@ -289,15 +303,13 @@
 
 - (void)deactivateEditModeAnimated:(BOOL)animated
 {
-    if (!_editMode)
-        return;
+//    if (!_editMode)
+//        return;
     _editMode = NO;
     
 
     CGRect cellFrameDst = CGRectMake(0, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
     
-//    CGRect cellEditFrameDst = CGRectMake(frame.origin.x - interactiveZoneSize, frame.origin.y, frame.size.width, frame.size.height);
-
     if (animated)
     {
         [UIView beginAnimations:nil context:nil];
@@ -306,7 +318,6 @@
     }
     
     self.cellView.frame = cellFrameDst;
-//    self.cellEditView.frame = cellEditFrameDst;
     
     if (animated)
     {

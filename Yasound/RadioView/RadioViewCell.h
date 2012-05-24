@@ -20,6 +20,8 @@
     
     BOOL _editMode;
     BOOL _ownRadio;
+    
+    CGFloat _interactiveZoneSize;
 }
 
 @property (nonatomic, retain) UIView* cellView;
