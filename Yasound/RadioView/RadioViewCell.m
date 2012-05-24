@@ -66,7 +66,8 @@
         
         assert([ev isTextHeightComputed] == YES);
         CGFloat height = [ev getTextHeight];
-        
+
+
         
         sheet = [[Theme theme] stylesheetForKey:@"MessageCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         CGRect cellFrame = self.bounds;
@@ -143,17 +144,25 @@
         swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
         [self addGestureRecognizer:swipeLeft];
 
-        UIPanGestureRecognizer* pan = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)] autorelease];
-        pan.maximumNumberOfTouches = 2;
-        pan.minimumNumberOfTouches = 1;
-        [self addGestureRecognizer:pan];
-
+//        UIPanGestureRecognizer* pan = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)] autorelease];
+//        pan.maximumNumberOfTouches = 2;
+//        pan.minimumNumberOfTouches = 1;
+//        pan.delegate = self;
+//        [self addGestureRecognizer:pan];
+//
         
 
     }
     return self;
 }
 
+
+
+
+//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+//{
+//    
+//}
 
 
 - (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
@@ -201,6 +210,8 @@
 {
     UIView *piece = [gesture view];
     
+    [self initEditView];
+    
     if ([gesture state] == UIGestureRecognizerStateBegan)
         self.cellViewX = self.cellView.frame.origin.x;
         
@@ -244,6 +255,23 @@
 }
 
 
+- (void)initEditView
+{
+    if (self.cellEditView != nil)
+        return;
+    
+    CGRect frame = CGRectMake(self.bounds.size.width - _interactiveZoneSize, 0, _interactiveZoneSize, self.bounds.size.height);
+
+    UIView* view = [[UIView alloc] initWithFrame:frame];
+    view.backgroundColor = [UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1];
+    [self addSubview:view];
+    [self bringSubviewToFront:self.cellView];
+    self.cellEditView = view;
+    [view release];
+}
+
+
+
 
 
 - (void)onSwipeLeft
@@ -251,6 +279,8 @@
     if (_editMode)
         return;
     
+    [self initEditView];
+
     [self activateEditModeAnimated:YES];
     
 }
@@ -259,7 +289,9 @@
 {
     if (!_editMode)
         return;
-    
+
+    [self initEditView];
+
     [self deactivateEditModeAnimated:YES];
 }
 
@@ -275,17 +307,8 @@ static const CGFloat kSpringRestingHeight = 4;
     
     _editMode = YES;
     
-    CGRect frame;
-    
-    frame = CGRectMake(self.bounds.size.width - _interactiveZoneSize, 0, _interactiveZoneSize, self.bounds.size.height);
     
     
-    UIView* view = [[UIView alloc] initWithFrame:frame];
-    view.backgroundColor = [UIColor grayColor];
-    [self addSubview:view];
-    [self bringSubviewToFront:self.cellView];
-    self.cellEditView = view;
-    [view release];
     
     CGRect cellFrameDst = CGRectMake(0 - _interactiveZoneSize, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
     
