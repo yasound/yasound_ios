@@ -1482,7 +1482,8 @@ static Song* _gNowPlayingSong = nil;
         RadioViewCell* cell = (RadioViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil)
         {
-            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev indexPath:indexPath target:self action:@selector(onAvatarClickedInWall:)] autorelease];
+//            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev indexPath:indexPath target:self action:@selector(onAvatarClickedInWall:)] autorelease];
+            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier ownRadio:self.ownRadio event:ev indexPath:indexPath target:self action:@selector(onAvatarClickedInWall:)] autorelease];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         }

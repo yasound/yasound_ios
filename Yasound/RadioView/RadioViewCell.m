@@ -15,7 +15,8 @@
 
 @implementation RadioViewCell
 
-//@synthesize background;
+@synthesize cellView;
+@synthesize cellViewX;
 @synthesize avatar;
 @synthesize avatarMask;
 @synthesize date;
@@ -23,6 +24,7 @@
 @synthesize message;
 @synthesize messageBackground;
 @synthesize separator;
+@synthesize cellEditView;
 
 - (NSString*) dateToString:(NSDate*)d
 {
@@ -37,19 +39,18 @@
 
 #define MESSAGE_SPACING 4
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath target:(id)target action:(SEL)action
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath target:(id)target action:(SEL)action
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
     {
+        _editMode = NO;
+        _ownRadio = ownRadio;
+        
         _myTarget = target;
         _myAction = action;
         
         BundleStylesheet* sheet = nil;
-//        self.background = self.contentView;
-//        UIView* view = self.background;
-        UIView* view = self.contentView;
-        
         
         sheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIFont* messageFont = [sheet makeFont];
@@ -60,20 +61,28 @@
         CGFloat height = [ev getTextHeight];
         
         
-//        view.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.12];
-        
         sheet = [[Theme theme] stylesheetForKey:@"MessageCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+//        CGRect frame = CGRectMake(0, 0, 320, 60);
+//        UITableView* parentTable = (UITableView *)self.superview;
+//        CGRect cellFrame = [parentTable rectForRowAtIndexPath:indexPath];
+        CGRect cellFrame = self.bounds;
+
+        UIView* cellView = [[UIView alloc] initWithFrame:cellFrame];
+        cellView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+        self.cellView = cellView;
+        self.cellView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        [self addSubview:self.cellView];
+        [cellView release];
         
         // avatar
         sheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.avatar = [[WebImageView alloc] initWithImageAtURL:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
         self.avatar.frame = sheet.frame;
-        [view addSubview:self.avatar];
+        [self.cellView addSubview:self.avatar];
         
         // set target from parent
         self.avatarMask = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onAvatarClicked:)];
-        [view addSubview:self.avatarMask];
+        [self.cellView addSubview:self.avatarMask];
         
         self.avatar.layer.masksToBounds = YES;
         self.avatar.layer.cornerRadius = 6;
@@ -82,13 +91,13 @@
         sheet = [[Theme theme] stylesheetForKey:@"CellDate" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.date = [sheet makeLabel];
         self.date.text = [self dateToString:ev.start_date];
-        [view addSubview:self.date];
+        [self.cellView addSubview:self.date];
         
         // user
         sheet = [[Theme theme] stylesheetForKey:@"CellUser" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.user = [sheet makeLabel];
         self.user.text = ev.user_name;
-        [view addSubview:self.user];
+        [self.cellView addSubview:self.user];
 
         // message background
         BundleStylesheet* messageSheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -100,7 +109,7 @@
         self.messageBackground.layer.borderColor = [UIColor colorWithRed:231.f/255.f green:231.f/255.f blue:231.f/255.f alpha:1].CGColor;
         self.messageBackground.layer.borderWidth = 1.0; 
         self.messageBackground.layer.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1].CGColor;
-        [view addSubview:self.messageBackground];
+        [self.cellView addSubview:self.messageBackground];
 
         
         // message
@@ -110,17 +119,37 @@
         
         [self.message setLineBreakMode:UILineBreakModeWordWrap];
         [self.message setNumberOfLines:0];        
-        [view addSubview:self.message];
+        [self.cellView addSubview:self.message];
         
         sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.separator = [[UIImageView alloc] initWithImage:[sheet image]];
         self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - sheet.frame.size.height, sheet.frame.size.width, sheet.frame.size.height);
-        [view addSubview:self.separator];
+        [self.cellView addSubview:self.separator];
+        
+        
+        
+        
+        
+        
+//        UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight)] autorelease];
+//        swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+//        [self addGestureRecognizer:swipeRight];
+//        
+//        UISwipeGestureRecognizer* swipeLeft = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft)] autorelease];
+//        swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+//        [self addGestureRecognizer:swipeLeft];
+
+        UIPanGestureRecognizer* pan = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onPan:)] autorelease];
+        pan.maximumNumberOfTouches = 2;
+        pan.minimumNumberOfTouches = 1;
+        [self addGestureRecognizer:pan];
+
         
 
     }
     return self;
 }
+
 
 
 - (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
@@ -132,7 +161,7 @@
     self.user.text = ev.user_name;
     self.message.text = ev.text;
     
-    self.messageBackground.frame = CGRectMake(self.messageBackground.frame.origin.x, self.messageBackground.frame.origin.y, self.messageBackground.frame.size.width, height + 2*MESSAGE_SPACING);
+    self.messageBackground.frame = CGRectMake(self.messageBackground.frame.origin.x, self.messageBackground.frame.origin.y, self.messageBackground.frame.size.width, height + 2 * MESSAGE_SPACING);
     
     self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, height);
     
@@ -150,6 +179,167 @@
     
     [_myTarget performSelector:_myAction withObject:self];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-(void)onPan:(UIPanGestureRecognizer *)gesture;
+{
+    UIView *piece = [gesture view];
+    
+    if ([gesture state] == UIGestureRecognizerStateBegan)
+        self.cellViewX = self.cellView.frame.origin.x;
+        
+    if ([gesture state] == UIGestureRecognizerStateBegan || [gesture state] == UIGestureRecognizerStateChanged) 
+    {
+        CGPoint translation = [gesture translationInView:self];
+        
+        
+        CGFloat newX = cellViewX + translation.x;
+        if (newX < -self.cellView.frame.size.width)
+            newX = -self.cellView.frame.size.width;
+        else if (newX > 0)
+            newX = 0;
+        
+        self.cellView.frame = CGRectMake(newX, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
+    }
+}
+
+
+#define BORDER 8
+#define INTERACTIVE_ZONE_SIZE 64
+
+
+- (void)onSwipeLeft
+{
+    [self activateEditModeAnimated:YES];
+    
+}
+
+- (void)onSwipeRight
+{
+    [self deactivateEditModeAnimated:YES];
+}
+
+
+
+- (void)activateEditModeAnimated:(BOOL)animated
+{
+    if (_editMode)
+        return;
+    
+    _editMode = YES;
+    
+    CGRect frame;
+    
+    CGFloat interactiveZoneSize = (_ownRadio)? 3 * INTERACTIVE_ZONE_SIZE : 1 * INTERACTIVE_ZONE_SIZE;
+    
+//    if (_ownRadio)
+//        frame = CGRectMake(self.bounds.size.width, 0, interactiveZoneSize, self.bounds.size.height);
+//    else
+//        frame = CGRectMake(self.bounds.size.width, 0, interactiveZoneSize, self.bounds.size.height);
+
+    frame = CGRectMake(self.bounds.size.width - interactiveZoneSize, 0, interactiveZoneSize, self.bounds.size.height);
+
+//    CGRect cellEditFrameDst = CGRectMake(frame.origin.x - interactiveZoneSize, frame.origin.y, frame.size.width, frame.size.height);
+
+    
+    UIView* view = [[UIView alloc] initWithFrame:frame];
+    view.backgroundColor = [UIColor grayColor];
+    [self addSubview:view];
+    [self bringSubviewToFront:self.cellView];
+    self.cellEditView = view;
+    [view release];
+    
+    CGRect cellFrameDst = CGRectMake(self.cellView.frame.origin.x - interactiveZoneSize, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
+
+    
+    
+    
+    // move button and labels with animation
+    if (animated)
+    {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.16];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    }
+    
+    self.cellView.frame = cellFrameDst;
+//    self.cellEditView.frame = cellEditFrameDst;
+
+    if (animated)
+    {
+        [UIView commitAnimations];
+    }
+}
+
+
+
+
+
+- (void)deactivateEditModeAnimated:(BOOL)animated
+{
+    if (!_editMode)
+        return;
+    _editMode = NO;
+    
+
+    CGRect cellFrameDst = CGRectMake(0, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
+    
+//    CGRect cellEditFrameDst = CGRectMake(frame.origin.x - interactiveZoneSize, frame.origin.y, frame.size.width, frame.size.height);
+
+    if (animated)
+    {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.16];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    }
+    
+    self.cellView.frame = cellFrameDst;
+//    self.cellEditView.frame = cellEditFrameDst;
+    
+    if (animated)
+    {
+        [UIView commitAnimations];
+    }
+    
+}
+
+
+- (void)onSwipeLeftStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+//    [self.buttonDelete removeFromSuperview];
+//    self.buttonDelete = nil;
+}
+
+
+
+- (void)onDeleteRequest:(id)sender
+{
+//    [gEditingSongs removeObjectForKey:self.song.name];
+//    
+//    if (_deletingTarget == nil)
+//        return;
+//    
+//    [_deletingTarget performSelector:_deletingAction withObject:self withObject:self.song];
+}
+
+
+
+
+
+
+
 
 
 
@@ -171,6 +361,9 @@
         [self.avatar releaseCache];
     }
 }
+
+
+
 
 
 @end

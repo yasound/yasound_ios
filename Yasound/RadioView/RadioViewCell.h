@@ -17,9 +17,14 @@
 {
     id _myTarget;
     SEL _myAction;
+    
+    BOOL _editMode;
+    BOOL _ownRadio;
 }
 
-//@property (nonatomic, retain) UIView* background;
+@property (nonatomic, retain) UIView* cellView;
+@property (nonatomic) CGFloat cellViewX;
+
 @property (nonatomic, retain) WebImageView* avatar;
 @property (nonatomic, retain) InteractiveView* avatarMask;
 @property (nonatomic, retain) UILabel* date;
@@ -28,9 +33,11 @@
 @property (nonatomic, retain) UILabel* message;
 @property (nonatomic, retain) UIImageView* separator;
 
+@property (nonatomic, retain) UIView* cellEditView;
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath target:(id)target action:(SEL)action;
+
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath target:(id)target action:(SEL)action;
 
 - (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
 
