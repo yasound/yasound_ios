@@ -284,6 +284,51 @@
 			<key>path</key>
 			<string>images/Header/Buttons</string>
 		</dict>
+		<key>CellModerIconSpam</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>normal</key>
+			<string>iconModerSpam</string>
+			<key>highlighted</key>
+			<string>iconModerSpamHighlighted</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Wall</string>
+		</dict>
+		<key>CellModerIconKick</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>normal</key>
+			<string>iconModerKick</string>
+			<key>highlighted</key>
+			<string>iconModerKickHighlighted</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Wall</string>
+		</dict>
+		<key>CellModerIconTrash</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>0</integer>
+			<key>normal</key>
+			<string>iconModerTrash</string>
+			<key>highlighted</key>
+			<string>iconModerTrashHilighted</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Wall</string>
+		</dict>
 		<key>NowPlayingBar</key>
 		<dict>
 			<key>x</key>

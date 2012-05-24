@@ -267,7 +267,34 @@
     [self addSubview:view];
     [self bringSubviewToFront:self.cellView];
     self.cellEditView = view;
+    
+    // button spam
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"CellModerIconSpam" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIButton* button = [sheet makeButton];
+    [button addTarget:self action:@selector(onModerSpam:) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(self.cellEditView.frame.size.width - INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
+    [self.cellEditView addSubview:button];
+    [button release];
+
+    // button kick
+    sheet = [[Theme theme] stylesheetForKey:@"CellModerIconKick" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    button = [sheet makeButton];
+    [button addTarget:self action:@selector(onModerKick:) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(self.cellEditView.frame.size.width - 2*INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
+    [self.cellEditView addSubview:button];
+    [button release];
+
+    // button trash
+    sheet = [[Theme theme] stylesheetForKey:@"CellModerIconTrash" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    button = [sheet makeButton];
+    [button addTarget:self action:@selector(onModerTrash:) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(self.cellEditView.frame.size.width - 3*INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
+    [self.cellEditView addSubview:button];
+    [button release];
+    
     [view release];
+    
+    
 }
 
 
@@ -383,6 +410,36 @@ static const CGFloat kSpringRestingHeight = 4;
 //    
 //    [_deletingTarget performSelector:_deletingAction withObject:self withObject:self.song];
 }
+
+
+
+
+
+
+
+- (void)onModerSpam:(id)sender
+{
+
+}
+
+
+- (void)onModerKick:(id)sender
+{
+    
+}
+
+
+- (void)onModerTrash:(id)sender
+{
+    
+}
+
+
+
+
+
+
+
 
 
 
