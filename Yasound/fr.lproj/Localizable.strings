@@ -420,6 +420,22 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "RadioView_loading_previous_events_message" = "chargement...";
 
+
+"RadioViewCell_moderation_trash_title" = "modération";
+"RadioViewCell_moderation_trash_message" = "Voulez-vous vraiment supprimer le message?";
+"RadioViewCell_moderation_trash_button" = "supprimer";
+
+"RadioViewCell_moderation_spam_title" = "modération";
+"RadioViewCell_moderation_spam_message" = "Voulez-vous signaler un abus auprès des modérateurs?";
+"RadioViewCell_moderation_spam_button" = "signaler";
+
+"RadioViewCell_moderation_kick_title" = "modération";
+"RadioViewCell_moderation_kick_message" = "Voulez-vous exclure temporairement cet auditeur de votre radio?";
+"RadioViewCell_moderation_kick_button" = "exclure";
+
+
+
+
 "ShareTrackOnFacebookAlertMessage" = "Voulez-vous poster le message suivant :\n \"%@\"";
 "ShareTrackOnFacebookAlertCancel" = "Non";
 "ShareTrackOnFacebookAlertShare" = "Publier";

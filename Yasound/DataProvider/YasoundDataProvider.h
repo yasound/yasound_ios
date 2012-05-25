@@ -169,7 +169,8 @@ taskStatus stringToStatus(NSString* str);
 
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
-- (void)deleteWallMessage:(NSNumber*)messageId;
+- (void)moderationDeleteWallMessage:(NSNumber*)messageId;
+- (void)moderationReportAbuse:(NSNumber*)messageId;
 
 
 - (void)addSongToUserRadio:(Song*)song;

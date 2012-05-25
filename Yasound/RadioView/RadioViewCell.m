@@ -491,6 +491,13 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (void)onModerSpam:(id)sender
 {
+    NSString* title = NSLocalizedString(@"RadioViewCell_moderation_spam_title", nil);
+    NSString* message = NSLocalizedString(@"RadioViewCell_moderation_spam_message", nil);
+    NSString* button = NSLocalizedString(@"RadioViewCell_moderation_spam_button", nil);
+    
+    _alertSpam = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:button, nil];
+    [_alertSpam show];
+    [_alertSpam release];  
 
 }
 
@@ -504,10 +511,10 @@ static const CGFloat kSpringRestingHeight = 4;
 - (void)onModerTrash:(id)sender
 {
     NSString* title = NSLocalizedString(@"RadioViewCell_moderation_trash_title", nil);
-    NSString* message = NSLocalizedString(@"RadioViewCell_moderation_trash_title", nil);
+    NSString* message = NSLocalizedString(@"RadioViewCell_moderation_trash_message", nil);
     NSString* button = NSLocalizedString(@"RadioViewCell_moderation_trash_button", nil);
     
-    _alertTrash = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:button, nil];
+    _alertTrash = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:button, nil];
     [_alertTrash show];
     [_alertTrash release];  
 }
@@ -520,12 +527,13 @@ static const CGFloat kSpringRestingHeight = 4;
 {
     if ((alertView == _alertTrash) && (buttonIndex == 1))
     {
-        [[YasoundDataProvider main] deleteWallMessage:self.wallEvent.id];
+        [[YasoundDataProvider main] moderationDeleteWallMessage:self.wallEvent.id];
         return;
     }
 
     if ((alertView == _alertSpam) && (buttonIndex == 1))
     {
+        [[YasoundDataProvider main] moderationReportAbuse:self.wallEvent.id];
         return;
     }
 

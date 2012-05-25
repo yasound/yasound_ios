@@ -1084,7 +1084,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)deleteWallMessage:(NSNumber*)messageId
+- (void)moderationDeleteWallMessage:(NSNumber*)messageId
 {
     if (!messageId)
         return;
@@ -1101,6 +1101,19 @@ static YasoundDataProvider* _main = nil;
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     [req startAsynchronous];
 }
+
+
+- (void)moderationReportAbuse:(NSNumber*)messageId;
+{
+    if (!messageId)
+        return;
+
+    Auth* auth = self.apiKeyAuth;
+    NSString* url = [NSString stringWithFormat:@"api/v1/report_message/%@", messageId];
+    
+    [_communicator postToURL:url absolute:NO withStringData:nil objectClass:nil notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
+}
+
 
 
 

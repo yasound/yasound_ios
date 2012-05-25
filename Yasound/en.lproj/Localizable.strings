@@ -429,6 +429,21 @@
 "RadioView_track_share_twitter" = "Share on Twitter";
 "RadioView_track_share_yasound" = "Send an email";
 
+
+"RadioViewCell_moderation_trash_title" = "moderation";
+"RadioViewCell_moderation_trash_message" = "Do you really want to delete the message?";
+"RadioViewCell_moderation_trash_button" = "delete";
+
+"RadioViewCell_moderation_spam_title" = "moderation";
+"RadioViewCell_moderation_spam_message" = "Would you like to report an abuse to the moderators?";
+"RadioViewCell_moderation_spam_button" = "report";
+
+"RadioViewCell_moderation_kick_title" = "moderation";
+"RadioViewCell_moderation_kick_message" = "Do you want to kick this user off your radio?";
+"RadioViewCell_moderation_kick_button" = "kick";
+
+
+
 "ShareTrackOnFacebookAlertMessage" = "About to post :\n \"%@\"";
 "ShareTrackOnFacebookAlertCancel" = "No";
 "ShareTrackOnFacebookAlertShare" = "Share";
