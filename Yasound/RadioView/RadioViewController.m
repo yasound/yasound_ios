@@ -114,6 +114,8 @@ static Song* _gNowPlayingSong = nil;
         _radioForSelectedUser = nil;
         
         _cellEditing = nil;
+        
+        _updateLock = [[NSLock alloc] init];
     }
     
     return self;
@@ -528,6 +530,7 @@ static Song* _gNowPlayingSong = nil;
 {
     [_messageFont release];
     [_wallEvents release];
+    [_updateLock release];
     
 //    if (_ap != nil)
 //        [_ap release];
@@ -581,18 +584,28 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onTimerUpdate:(NSTimer*)timer
 {    
+//    if (_ap != nil)
+//        [_ap release];
+//    
+//    _ap = [[NSAutoreleasePool alloc] init];
     
-    if (_wallEvents.count > 0)
+    if ([_updateLock tryLock])
     {
-        NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
-    }
-    else
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+        if (_wallEvents.count > 0)
+        {
+            NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
+            [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+        }
+        else
+            [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
     
-    [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
-    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
-    [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
+        [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
+        [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
+        [[YasoundDataProvider main] currentUsersForRadio:self.radio target:self action:@selector(receivedCurrentUsers:withInfo:)];
+
+        [_updateLock unlock];
+    }
+
 }
 
 - (void)updatePreviousWall
@@ -949,6 +962,8 @@ static Song* _gNowPlayingSong = nil;
     if ((_latestEvent != nil) && ([ev.start_date isEarlierThanOrEqualTo:_latestEvent.start_date]))
         return;
     
+    assert(ev != nil);
+    
   [_wallEvents insertObject:ev atIndex:0];
   [self insertSong];
 }
@@ -979,6 +994,8 @@ static Song* _gNowPlayingSong = nil;
     
     NSLog(@"receivedCurrentMessageEvent ADD %@ : date %@", ev.user_name, ev.start_date);
 
+    assert(ev != nil);
+    
     [_wallEvents insertObject:ev atIndex:0];
     [self insertMessage];
   [self playSound];
@@ -988,6 +1005,8 @@ static Song* _gNowPlayingSong = nil;
 {
   if ((_latestEvent != nil) && ([ev.start_date isEarlierThanOrEqualTo:_latestEvent.start_date]))
     return;
+    
+    assert(ev != nil);
   
   [_wallEvents insertObject:ev atIndex:0];
   [self insertLike];
@@ -1797,17 +1816,21 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onCellDelete:(RadioViewCell*)cell 
 {
-    [_wallEvents removeObject:cell.wallEvent];
-    
-    if (_cellEditing != nil)
+    [_updateLock lock];
     {
-        [_cellEditing deactivateEditModeAnimated:YES silent:YES];
-        _cellEditing = nil;
+        [_wallEvents removeObject:cell.wallEvent];
+        
+        if (_cellEditing != nil)
+        {
+            [_cellEditing deactivateEditModeAnimated:YES silent:YES];
+            _cellEditing = nil;
+        }
+        
+        NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
+        
+        [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
     }
-    
-    NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
-    
-    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+    [_updateLock unlock];
 }
 
 

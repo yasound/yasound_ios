@@ -82,6 +82,7 @@
     UIActionSheet* _queryShare;
     
     RadioViewCell* _cellEditing;
+    NSLock* _updateLock;
 }
 
 @property (nonatomic, retain) Radio* radio;
