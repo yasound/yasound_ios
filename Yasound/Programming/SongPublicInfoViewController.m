@@ -205,23 +205,23 @@
             _album = [sheet makeLabel];
             [cell addSubview:_album];
 
-
-            NSString* laststr = nil;
-            if (self.song.last_play_time != nil)
-                laststr = [NSString stringWithFormat:@"%@", [self dateToString:self.song.last_play_time]];
-            else
-                laststr = @"-";
-
-            sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_lastRead" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            UILabel* label = [sheet makeLabel];
-            label.text = [NSString stringWithFormat:@"%@ : %@", NSLocalizedString(@"SongView_lastRead", nil), laststr];
-            [cell addSubview:label];
-            
-            [cell addSubview:label];
+//
+//            NSString* laststr = nil;
+//            if (self.song.last_play_time != nil)
+//                laststr = [NSString stringWithFormat:@"%@", [self dateToString:self.song.last_play_time]];
+//            else
+//                laststr = @"-";
+//
+//            sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_lastRead" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            UILabel* label = [sheet makeLabel];
+//            label.text = [NSString stringWithFormat:@"%@ : %@", NSLocalizedString(@"SongView_lastRead", nil), laststr];
+//            [cell addSubview:label];
+//            
+//            [cell addSubview:label];
 
             
             sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            label = [sheet makeLabel];
+            UILabel* label = [sheet makeLabel];
             label.text = [NSString stringWithFormat:@"%@ : %@", NSLocalizedString(@"SongView_nbLikes", nil), self.song.likes];
             [cell addSubview:label];
 
