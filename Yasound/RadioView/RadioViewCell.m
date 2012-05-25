@@ -25,6 +25,8 @@
 @synthesize messageBackground;
 @synthesize separator;
 @synthesize cellEditView;
+@synthesize wallEvent;
+
 
 - (NSString*) dateToString:(NSDate*)d
 {
@@ -49,9 +51,10 @@
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
     {
-        _editMode = NO;
         _ownRadio = ownRadio;
         _interactiveZoneSize = (_ownRadio)? 3 * INTERACTIVE_ZONE_SIZE : 1 * INTERACTIVE_ZONE_SIZE;
+        
+        self.wallEvent = ev;
 
         
         _myTarget = target;
@@ -168,6 +171,9 @@
 - (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
 {
     assert([ev isTextHeightComputed] == YES);
+    
+    self.wallEvent = ev;
+
     CGFloat height = [ev getTextHeight];
     
     self.date.text = [self dateToString:ev.start_date];
@@ -180,7 +186,12 @@
     
     self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, self.separator.frame.size.width, self.separator.frame.size.height);
     
-  [self.avatar setUrl:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
+    [self.avatar setUrl:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
+    
+    if ([self.wallEvent editing])
+        [self activateEditModeAnimated:NO];
+    else
+        [self deactivateEditModeAnimated:NO];
     
 }
 
@@ -236,7 +247,7 @@
     else if ([gesture state] == UIGestureRecognizerStateEnded)
     {
 
-        if (!_editMode)
+        if (![self.wallEvent editing])
         {
             if ((translation.x > -(INTERACTIVE_ZONE_SIZE)) && (translation.x < 0))
                 [self deactivateEditModeAnimated:YES];
@@ -332,10 +343,9 @@
 
 - (void)onSwipeLeft
 {
-    if (_editMode)
+    if ([self.wallEvent editing])
         return;
     
-    [self initEditView];
 
     [self activateEditModeAnimated:YES];
     
@@ -343,10 +353,10 @@
 
 - (void)onSwipeRight
 {
-    if (!_editMode)
+    if (![self.wallEvent editing])
         return;
 
-    [self initEditView];
+    // [self initEditView];
 
     [self deactivateEditModeAnimated:YES];
 }
@@ -358,19 +368,20 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (void)activateEditModeAnimated:(BOOL)animated
 {
-    //    if (_editMode)
+    //    if ([self.wallEvent editing])
     //        return;
     
-    _editMode = YES;
+    [self.wallEvent setEditing:YES];
     
     
+    [self initEditView];
     
     
     CGRect cellFrameDst = CGRectMake(0 - _interactiveZoneSize, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
     
     if (animated)
     {
-        [self bounceAnimationTo:cellFrameDst];
+        [self bounceAnimationTo:cellFrameDst endAction:nil];
     }
     else
     {
@@ -382,30 +393,37 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (void)deactivateEditModeAnimated:(BOOL)animated
 {
-//    if (!_editMode)
+//    if (!self.wallEvent.editing)
 //        return;
-    _editMode = NO;
+    
+    [self.wallEvent setEditing:NO];
 
     CGRect cellFrameDst = CGRectMake(0, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
     
     
     if (animated)
     {
-        [self bounceAnimationTo:cellFrameDst];
+        [self bounceAnimationTo:cellFrameDst endAction:@selector(bounceAnimationDidEnd:finished:context:)];
     }
     else
     {
         self.cellView.frame = cellFrameDst;
+        [self bounceAnimationDidEnd:nil finished:nil context:NULL];
     }
 }
 
 
 //- (void) bounceAnimationTo:(CGFloat)destX
-- (void) bounceAnimationTo:(CGRect)destFrame
+- (void) bounceAnimationTo:(CGRect)destFrame endAction:(SEL)endAction
 {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:ANIMATION_DURATION];
     [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+    if (endAction != nil)
+    {
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:endAction];
+    }
     self.cellView.frame = destFrame;
     [UIView commitAnimations];
 
@@ -419,6 +437,16 @@ static const CGFloat kSpringRestingHeight = 4;
     bounceAnimation.removedOnCompletion = NO;
     bounceAnimation.additive = YES;
     [self.cellView.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
+}
+
+
+- (void)bounceAnimationDidEnd:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+    if (self.cellEditView != nil)
+    {
+        [self.cellEditView removeFromSuperview];
+        self.cellEditView = nil;
+    }
 }
 
 

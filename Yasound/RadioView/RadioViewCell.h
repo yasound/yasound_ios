@@ -18,11 +18,14 @@
     id _myTarget;
     SEL _myAction;
     
-    BOOL _editMode;
     BOOL _ownRadio;
     
     CGFloat _interactiveZoneSize;
 }
+
+
+@property (nonatomic, retain) WallEvent* wallEvent;
+
 
 @property (nonatomic, retain) UIView* cellView;
 @property (nonatomic) CGFloat cellViewX;

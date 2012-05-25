@@ -24,6 +24,8 @@ typedef enum
     NSMutableArray* _children;
     CGFloat _textHeight;
     BOOL _textHeightComputed;
+    
+    BOOL _editing;
 }
 
 @property (retain, nonatomic) NSString* type;
@@ -43,6 +45,7 @@ typedef enum
 @property (retain, nonatomic) NSString* song_album;
 @property (retain, nonatomic) NSString* song_cover_filename;
 
+
 - (NSString*)toString;
 
 - (WallEventType)wallEventType;
@@ -61,5 +64,9 @@ typedef enum
 - (BOOL)isTextHeightComputed;
 - (CGFloat)getTextHeight;
 - (CGFloat)computeTextHeightUsingFont:(UIFont*)font withConstraint:(CGFloat)width;
+
+
+- (BOOL)editing;
+- (void)setEditing:(BOOL)set;
 
 @end

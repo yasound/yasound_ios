@@ -27,6 +27,7 @@
 @synthesize song_artist;
 @synthesize song_cover_filename;
 
+
 #define WALL_EVENT_TYPE_MESSAGE @"M"
 #define WALL_EVENT_TYPE_SONG @"S"
 #define WALL_EVENT_TYPE_LIKE @"L"
@@ -37,6 +38,7 @@
     {
         _textHeight = 0;
         _textHeightComputed = NO;
+        _editing = NO;
     }
     return self;
 }
@@ -201,6 +203,21 @@
     
     return _textHeight;
 }
+
+
+
+- (BOOL)editing
+{
+    return _editing;
+}
+
+
+- (void)setEditing:(BOOL)set
+{
+    _editing = set;
+}
+
+
 
 
 
