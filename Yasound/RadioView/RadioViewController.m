@@ -114,6 +114,7 @@ static Song* _gNowPlayingSong = nil;
         _radioForSelectedUser = nil;
         
         _cellEditing = nil;
+        _cellDeleting = NO;
     }
     
     return self;
@@ -586,13 +587,16 @@ static Song* _gNowPlayingSong = nil;
 //    
 //    _ap = [[NSAutoreleasePool alloc] init];
     
-    if (_wallEvents.count > 0)
+    if (!_cellDeleting)
     {
-        NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+        if (_wallEvents.count > 0)
+        {
+            NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
+            [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+        }
+        else
+            [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
     }
-    else
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
     
     [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
@@ -864,6 +868,9 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)receivedCurrentWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
+    if (_cellDeleting)
+        return;
+    
     Meta* meta = [info valueForKey:@"meta"];
     NSError* err = [info valueForKey:@"error"];
     
@@ -1801,11 +1808,38 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onCellDelete:(RadioViewCell*)cell 
 {
-    [_wallEvents removeObject:cell.wallEvent];
-
-    _cellEditing = nil;
+    _cellDeleting = YES;
     
-    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:cell.indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+    //LBDEBUG
+    NSInteger nb = _wallEvents.count;
+    NSLog(@"count %d", nb);
+    
+    
+    //LBDEBUG
+    for (uint i = 0; i < _wallEvents.count; i++)
+    {
+        WallEvent* ev = [_wallEvents objectAtIndex:i];
+        NSLog(@"%d : compare %p to %p", i, cell.wallEvent, ev);
+    }
+    NSLog(@"--------------------");
+    
+    [_wallEvents removeObject:cell.wallEvent];
+    
+    //LBDEBUG
+    NSInteger nb2 = _wallEvents.count;
+    assert(nb2 < nb);
+
+    if (_cellEditing != nil)
+    {
+        [_cellEditing deactivateEditModeAnimated:YES silent:YES];
+        _cellEditing = nil;
+    }
+    
+    NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
+    
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+    
+    _cellDeleting = NO;
 }
 
 

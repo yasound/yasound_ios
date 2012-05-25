@@ -14,7 +14,7 @@
 #import "OrientedTableView.h"
 #import <MessageUI/MessageUI.h>
 #import "TouchedTableView.h"
-
+#import "RadioViewCell.h"
 
 
 @class Radio;
@@ -81,7 +81,8 @@
     
     UIActionSheet* _queryShare;
     
-    UITableViewCell* _cellEditing;
+    RadioViewCell* _cellEditing;
+    BOOL _cellDeleting;
 }
 
 @property (nonatomic, retain) Radio* radio;

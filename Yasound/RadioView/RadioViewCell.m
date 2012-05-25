@@ -194,10 +194,10 @@
     
     [self.avatar setUrl:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
     
-//    if ([self.wallEvent editing])
-//        [self activateEditModeAnimated:NO];
-//    else
-//        [self deactivateEditModeAnimated:NO];
+    if ([self.wallEvent editing])
+        [self activateEditModeAnimated:NO];
+    else
+        [self deactivateEditModeAnimated:NO silent:YES];
     
 }
 
