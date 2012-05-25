@@ -76,7 +76,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)resetUser;
 - (void)reloadUserWithUserData:(id)data withTarget:(id)target action:(SEL)selector;
 
-// Yasound
+
+// login and accounts
 - (void)signup:(NSString*)email password:(NSString*)pwd username:(NSString*)username target:(id)target action:(SEL)selector;
 - (void)login:(NSString*)email password:(NSString*)pwd target:(id)target action:(SEL)selector;
 
@@ -102,6 +103,8 @@ taskStatus stringToStatus(NSString* str);
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
 
 
+
+
 // .........................................................................................
 // deprecated methods
 //
@@ -119,6 +122,10 @@ taskStatus stringToStatus(NSString* str);
 - (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 //
 //..............................................................................................
+
+
+
+
 
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)friendsRadiosWithGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
@@ -142,21 +149,28 @@ taskStatus stringToStatus(NSString* str);
 - (void)setMood:(UserMood)mood forSong:(Song*)song;
 - (void)songUserForSong:(Song*)song target:(id)target action:(SEL)selector;
 
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
-- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector;
 
 - (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
+
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;
+- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
+- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector;
+
+
 - (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector userData:(id)userData;
+
 
 - (void)statusForSongId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 - (void)songWithId:(NSNumber*)songId target:(id)target action:(SEL)selector;
 
+
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)deleteWallMessage:(NSNumber*)messageId;
+
 
 - (void)addSongToUserRadio:(Song*)song;
 

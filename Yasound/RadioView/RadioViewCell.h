@@ -18,6 +18,10 @@
     BOOL _ownRadio;
     
     CGFloat _interactiveZoneSize;
+    
+    UIAlertView* _alertTrash;
+    UIAlertView* _alertSpam;
+    UIAlertView* _alertKick;
 }
 
 

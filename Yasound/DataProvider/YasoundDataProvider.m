@@ -1083,6 +1083,27 @@ static YasoundDataProvider* _main = nil;
   [_communicator postNewObject:msg withURL:relativeURL absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
+
+- (void)deleteWallMessage:(NSNumber*)messageId
+{
+    if (!messageId)
+        return;
+    
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/delete_message/%@", messageId];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"DELETE";
+//    conf.callbackTarget = self;
+//    conf.callbackAction = @selector(didDeleteSong:);
+//    conf.userData = dict;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
+
 - (void)enterRadioWall:(Radio*)radio
 {
   if (!_user || !radio || !radio.id)

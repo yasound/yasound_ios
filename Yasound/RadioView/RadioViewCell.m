@@ -503,7 +503,36 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (void)onModerTrash:(id)sender
 {
+    NSString* title = NSLocalizedString(@"RadioViewCell_moderation_trash_title", nil);
+    NSString* message = NSLocalizedString(@"RadioViewCell_moderation_trash_title", nil);
+    NSString* button = NSLocalizedString(@"RadioViewCell_moderation_trash_button", nil);
     
+    _alertTrash = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:button, nil];
+    [_alertTrash show];
+    [_alertTrash release];  
+}
+
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ((alertView == _alertTrash) && (buttonIndex == 1))
+    {
+        [[YasoundDataProvider main] deleteWallMessage:self.wallEvent.id];
+        return;
+    }
+
+    if ((alertView == _alertSpam) && (buttonIndex == 1))
+    {
+        return;
+    }
+
+    if ((alertView == _alertKick) && (buttonIndex == 1))
+    {
+        return;
+    }
 }
 
 
