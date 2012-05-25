@@ -257,10 +257,10 @@
 
 "SongView_reject_message_own_song_yes" = "Another version of this song has been found in your device.\nYou can upload it to replace the version that Yasound has automatically selected.";
 
-"SongView_reject_message_own_song_no" = "You could not find another version of this song in your device. You can still remove this version from your programming, though.";
+"SongView_reject_message_own_song_no" = "No other version of this song was found on this device. You can still remove this version from your programming, though.";
 
-"SongView_reject_button_own_song_yes" = "I upload";
-"SongView_reject_button_own_song_no" = "I remove";
+"SongView_reject_button_own_song_yes" = "Upload";
+"SongView_reject_button_own_song_no" = "Remove";
 
 "SongView_reject_failed" = "Unable to process the request";
 
