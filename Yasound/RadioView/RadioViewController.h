@@ -82,7 +82,6 @@
     UIActionSheet* _queryShare;
     
     RadioViewCell* _cellEditing;
-    BOOL _cellDeleting;
 }
 
 @property (nonatomic, retain) Radio* radio;
