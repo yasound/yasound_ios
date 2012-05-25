@@ -1541,6 +1541,30 @@
 				<string>bold</string>
 			</dict>
 		</dict>
+		<key>SongPublicView_name</key>
+		<dict>
+			<key>x</key>
+			<integer>8</integer>
+			<key>y</key>
+			<integer>332</integer>
+			<key>width</key>
+			<integer>304</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>15</integer>
+				<key>textColor</key>
+				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+		</dict>
 		<key>SongUpload_name</key>
 		<dict>
 			<key>x</key>
@@ -1711,6 +1735,30 @@
 				<string>bold</string>
 			</dict>
 		</dict>
+		<key>SongPublicView_artist</key>
+		<dict>
+			<key>x</key>
+			<integer>8</integer>
+			<key>y</key>
+			<integer>360</integer>
+			<key>width</key>
+			<integer>304</integer>
+			<key>height</key>
+			<integer>13</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>11</integer>
+				<key>textColor</key>
+				<string>rgb(196,196,196)</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+		</dict>
 		<key>SongView_album</key>
 		<dict>
 			<key>x</key>
@@ -1735,12 +1783,60 @@
 				<string>bold</string>
 			</dict>
 		</dict>
+		<key>SongPublicView_album</key>
+		<dict>
+			<key>x</key>
+			<integer>8</integer>
+			<key>y</key>
+			<integer>374</integer>
+			<key>width</key>
+			<integer>304</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>11</integer>
+				<key>textColor</key>
+				<string>rgb(196,196,196)</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+		</dict>
 		<key>SongView_nbLikes</key>
 		<dict>
 			<key>x</key>
 			<integer>120</integer>
 			<key>y</key>
 			<integer>72</integer>
+			<key>width</key>
+			<integer>130</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>left</string>
+				<key>size</key>
+				<integer>11</integer>
+				<key>textColor</key>
+				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<key>SongPublicView_nbLikes</key>
+		<dict>
+			<key>x</key>
+			<integer>8</integer>
+			<key>y</key>
+			<integer>396</integer>
 			<key>width</key>
 			<integer>130</integer>
 			<key>height</key>
@@ -1783,6 +1879,30 @@
 				<string>bold</string>
 			</dict>
 		</dict>
+		<key>SongPublicView_nbLikes_value</key>
+		<dict>
+			<key>x</key>
+			<integer>28</integer>
+			<key>y</key>
+			<integer>396</integer>
+			<key>width</key>
+			<integer>80</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>right</string>
+				<key>size</key>
+				<integer>11</integer>
+				<key>textColor</key>
+				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+		</dict>
 		<key>SongView_lastRead</key>
 		<dict>
 			<key>x</key>
@@ -1807,12 +1927,60 @@
 				<string>bold</string>
 			</dict>
 		</dict>
+		<key>SongPublicView_lastRead</key>
+		<dict>
+			<key>x</key>
+			<integer>162</integer>
+			<key>y</key>
+			<integer>396</integer>
+			<key>width</key>
+			<integer>156</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>right</string>
+				<key>size</key>
+				<integer>11</integer>
+				<key>textColor</key>
+				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+		</dict>
 		<key>SongView_lastRead_value</key>
 		<dict>
 			<key>x</key>
 			<integer>210</integer>
 			<key>y</key>
 			<integer>88</integer>
+			<key>width</key>
+			<integer>80</integer>
+			<key>height</key>
+			<integer>16</integer>
+			<key>font</key>
+			<dict>
+				<key>textAlignement</key>
+				<string>right</string>
+				<key>size</key>
+				<integer>11</integer>
+				<key>textColor</key>
+				<string>white</string>
+				<key>backgroundColor</key>
+				<string>clear</string>
+				<key>weight</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<key>SongPublicView_lastRead_value</key>
+		<dict>
+			<key>x</key>
+			<integer>230</integer>
+			<key>y</key>
+			<integer>396</integer>
 			<key>width</key>
 			<integer>80</integer>
 			<key>height</key>

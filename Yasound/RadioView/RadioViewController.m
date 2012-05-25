@@ -39,6 +39,7 @@
 #import "YasoundDataCache.h"
 
 #import "SongInfoViewController.h"
+#import "SongPublicInfoViewController.h"
 #import "SongCatalog.h"
 
 
@@ -1847,12 +1848,19 @@ static Song* _gNowPlayingSong = nil;
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     [_playingNowView.trackImageMask setImage:[sheet image]];
     
-    if (!self.ownRadio)
-        return;
-
-    SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:_gNowPlayingSong showNowPlaying:NO];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
+    if (self.ownRadio)
+    {
+        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:_gNowPlayingSong showNowPlaying:NO];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    else
+    {
+        SongPublicInfoViewController* view = [[SongPublicInfoViewController alloc] initWithNibName:@"SongPublicInfoViewController" bundle:nil song:_gNowPlayingSong showNowPlaying:NO];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    
 }
 
 

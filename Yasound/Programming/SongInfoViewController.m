@@ -218,7 +218,7 @@
       
             if (self.song.cover)
             {
-                NSURL* url = [[YasoundDataProvider main] urlForSongCover:self.song];
+                NSURL* url = [[YasoundDataProvider main] urlForPicture:self.song.cover];
                 _imageView = [[WebImageView alloc] initWithImageAtURL:url];
             }
             else

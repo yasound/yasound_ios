@@ -1474,6 +1474,38 @@
 		BC43690C156F8F820059BC22 /* TouchedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436906156F8F820059BC22 /* TouchedTableView.m */; };
 		BC43690D156F8F820059BC22 /* TouchedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436906156F8F820059BC22 /* TouchedTableView.m */; };
 		BC43690E156F8F820059BC22 /* TouchedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436906156F8F820059BC22 /* TouchedTableView.m */; };
+		BC436926156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */; };
+		BC436927156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */; };
+		BC436928156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */; };
+		BC436929156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */; };
+		BC43692A156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */; };
+		BC43692B156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */; };
+		BC43692C156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */; };
+		BC43692D156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */; };
+		BC43692E156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
+		BC43692F156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
+		BC436930156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
+		BC436931156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
+		BC436932156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
+		BC436933156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
+		BC436934156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
+		BC436935156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
+		BC436938156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436936156FED9F0059BC22 /* CellPublicSongCardRow.png */; };
+		BC436939156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436936156FED9F0059BC22 /* CellPublicSongCardRow.png */; };
+		BC43693A156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436936156FED9F0059BC22 /* CellPublicSongCardRow.png */; };
+		BC43693B156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436936156FED9F0059BC22 /* CellPublicSongCardRow.png */; };
+		BC43693C156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436936156FED9F0059BC22 /* CellPublicSongCardRow.png */; };
+		BC43693D156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436936156FED9F0059BC22 /* CellPublicSongCardRow.png */; };
+		BC43693E156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436936156FED9F0059BC22 /* CellPublicSongCardRow.png */; };
+		BC43693F156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436936156FED9F0059BC22 /* CellPublicSongCardRow.png */; };
+		BC436940156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436937156FED9F0059BC22 /* CellPublicSongCardRow@2x.png */; };
+		BC436941156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436937156FED9F0059BC22 /* CellPublicSongCardRow@2x.png */; };
+		BC436942156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436937156FED9F0059BC22 /* CellPublicSongCardRow@2x.png */; };
+		BC436943156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436937156FED9F0059BC22 /* CellPublicSongCardRow@2x.png */; };
+		BC436944156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436937156FED9F0059BC22 /* CellPublicSongCardRow@2x.png */; };
+		BC436945156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436937156FED9F0059BC22 /* CellPublicSongCardRow@2x.png */; };
+		BC436946156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436937156FED9F0059BC22 /* CellPublicSongCardRow@2x.png */; };
+		BC436947156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC436937156FED9F0059BC22 /* CellPublicSongCardRow@2x.png */; };
 		BC47AFD7154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		BC47AFD8154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		BC47AFD9154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
@@ -3567,6 +3599,11 @@
 		BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WhiteCheckmark@2x.png"; sourceTree = "<group>"; };
 		BC436905156F8F820059BC22 /* TouchedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchedTableView.h; path = Yasound/Gui/TouchedTableView.h; sourceTree = "<group>"; };
 		BC436906156F8F820059BC22 /* TouchedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TouchedTableView.m; path = Yasound/Gui/TouchedTableView.m; sourceTree = "<group>"; };
+		BC436923156FE36C0059BC22 /* SongPublicInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongPublicInfoViewController.h; path = Programming/SongPublicInfoViewController.h; sourceTree = "<group>"; };
+		BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongPublicInfoViewController.m; path = Programming/SongPublicInfoViewController.m; sourceTree = "<group>"; };
+		BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongPublicInfoViewController.xib; path = Programming/SongPublicInfoViewController.xib; sourceTree = "<group>"; };
+		BC436936156FED9F0059BC22 /* CellPublicSongCardRow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellPublicSongCardRow.png; sourceTree = "<group>"; };
+		BC436937156FED9F0059BC22 /* CellPublicSongCardRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellPublicSongCardRow@2x.png"; sourceTree = "<group>"; };
 		BC47AFD4154AD23200B0AA55 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = Login/SignupViewController.h; sourceTree = "<group>"; };
 		BC47AFD5154AD23200B0AA55 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = Login/SignupViewController.m; sourceTree = "<group>"; };
 		BC47AFD6154AD23200B0AA55 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = Login/SignupViewController.xib; sourceTree = "<group>"; };
@@ -4715,6 +4752,9 @@
 				BCD0CBCC14FE851800E75CEF /* SongInfoViewController.h */,
 				BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */,
 				BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */,
+				BC436923156FE36C0059BC22 /* SongPublicInfoViewController.h */,
+				BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */,
+				BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */,
 				BCB2B29014FBB1490000BFA3 /* SongAddViewController.h */,
 				BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */,
 				BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */,
@@ -4823,6 +4863,8 @@
 		BC9F4A0A14E6AC5400008AA3 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				BC436936156FED9F0059BC22 /* CellPublicSongCardRow.png */,
+				BC436937156FED9F0059BC22 /* CellPublicSongCardRow@2x.png */,
 				BC7C661C155BF82000F144BD /* CellSongCardRow.png */,
 				BC7C661D155BF82000F144BD /* CellSongCardRow@2x.png */,
 				BC237D4B1518E57800B8B66F /* GrayCheckmark.png */,
@@ -5966,6 +6008,9 @@
 				BC9601C5154997B90003AC7E /* WebPageViewController.xib in Resources */,
 				BC7C6624155BF82000F144BD /* CellSongCardRow.png in Resources */,
 				BC7C662C155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
+				BC436934156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
+				BC43693E156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
+				BC436946156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6176,6 +6221,9 @@
 				E546DB441556657B0005AB8D /* Yasound-Info-TechTour.plist in Resources */,
 				BC7C6625155BF82000F144BD /* CellSongCardRow.png in Resources */,
 				BC7C662D155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
+				BC436935156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
+				BC43693F156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
+				BC436947156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6380,6 +6428,9 @@
 				BC9601C4154997B90003AC7E /* WebPageViewController.xib in Resources */,
 				BC7C6623155BF82000F144BD /* CellSongCardRow.png in Resources */,
 				BC7C662B155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
+				BC436933156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
+				BC43693D156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
+				BC436945156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6589,6 +6640,9 @@
 				BC47AFDE154AD23200B0AA55 /* SignupViewController.xib in Resources */,
 				BC7C6620155BF82000F144BD /* CellSongCardRow.png in Resources */,
 				BC7C6628155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
+				BC436930156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
+				BC43693A156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
+				BC436942156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6798,6 +6852,9 @@
 				BC47AFDD154AD23200B0AA55 /* SignupViewController.xib in Resources */,
 				BC7C661F155BF82000F144BD /* CellSongCardRow.png in Resources */,
 				BC7C6627155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
+				BC43692F156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
+				BC436939156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
+				BC436941156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7007,6 +7064,9 @@
 				BC47AFE0154AD23200B0AA55 /* SignupViewController.xib in Resources */,
 				BC7C6622155BF82000F144BD /* CellSongCardRow.png in Resources */,
 				BC7C662A155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
+				BC436932156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
+				BC43693C156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
+				BC436944156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7216,6 +7276,9 @@
 				BC47AFDC154AD23200B0AA55 /* SignupViewController.xib in Resources */,
 				BC7C661E155BF82000F144BD /* CellSongCardRow.png in Resources */,
 				BC7C6626155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
+				BC43692E156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
+				BC436938156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
+				BC436940156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7425,6 +7488,9 @@
 				BC47AFDF154AD23200B0AA55 /* SignupViewController.xib in Resources */,
 				BC7C6621155BF82000F144BD /* CellSongCardRow.png in Resources */,
 				BC7C6629155BF82000F144BD /* CellSongCardRow@2x.png in Resources */,
+				BC436931156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
+				BC43693B156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
+				BC436943156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7614,6 +7680,7 @@
 				40D744A41551744600A30971 /* SignupViewController.m in Sources */,
 				407D9F1B1563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC43690D156F8F820059BC22 /* TouchedTableView.m in Sources */,
+				BC43692C156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7800,6 +7867,7 @@
 				40D53C061554280F001EB0C5 /* SignupViewController.m in Sources */,
 				407D9F1C1563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC43690E156F8F820059BC22 /* TouchedTableView.m in Sources */,
+				BC43692D156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7982,6 +8050,7 @@
 				40D744A31551744500A30971 /* SignupViewController.m in Sources */,
 				407D9F1A1563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC43690C156F8F820059BC22 /* TouchedTableView.m in Sources */,
+				BC43692B156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8168,6 +8237,7 @@
 				BC47AFD9154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F171563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC436909156F8F820059BC22 /* TouchedTableView.m in Sources */,
+				BC436928156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8354,6 +8424,7 @@
 				BC47AFD8154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F161563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC436908156F8F820059BC22 /* TouchedTableView.m in Sources */,
+				BC436927156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8541,6 +8612,7 @@
 				BC47AFDB154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F191563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC43690B156F8F820059BC22 /* TouchedTableView.m in Sources */,
+				BC43692A156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8727,6 +8799,7 @@
 				BC47AFD7154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F151563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC436907156F8F820059BC22 /* TouchedTableView.m in Sources */,
+				BC436926156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8914,6 +8987,7 @@
 				BC47AFDA154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F181563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC43690A156F8F820059BC22 /* TouchedTableView.m in Sources */,
+				BC436929156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
