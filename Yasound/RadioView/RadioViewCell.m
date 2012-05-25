@@ -539,7 +539,7 @@ static const CGFloat kSpringRestingHeight = 4;
         [self deactivateEditModeAnimated:YES];
         
         NSString* message = NSLocalizedString(@"RadioViewCell_moderation_spam_confirm", nil);
-        [[ActivityAlertView main] showWithTitle:message closeAfterTimeInterval:2];
+        [ActivityAlertView showWithTitle:message closeAfterTimeInterval:2];
 
         
         return;
