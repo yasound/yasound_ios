@@ -1466,6 +1466,14 @@
 		BC413D7014EBC2F9009EB307 /* WhiteCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */; };
 		BC413D7114EBC2F9009EB307 /* WhiteCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */; };
 		BC413D7214EBC2F9009EB307 /* WhiteCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */; };
+		BC436907156F8F820059BC22 /* TouchedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436906156F8F820059BC22 /* TouchedTableView.m */; };
+		BC436908156F8F820059BC22 /* TouchedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436906156F8F820059BC22 /* TouchedTableView.m */; };
+		BC436909156F8F820059BC22 /* TouchedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436906156F8F820059BC22 /* TouchedTableView.m */; };
+		BC43690A156F8F820059BC22 /* TouchedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436906156F8F820059BC22 /* TouchedTableView.m */; };
+		BC43690B156F8F820059BC22 /* TouchedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436906156F8F820059BC22 /* TouchedTableView.m */; };
+		BC43690C156F8F820059BC22 /* TouchedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436906156F8F820059BC22 /* TouchedTableView.m */; };
+		BC43690D156F8F820059BC22 /* TouchedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436906156F8F820059BC22 /* TouchedTableView.m */; };
+		BC43690E156F8F820059BC22 /* TouchedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC436906156F8F820059BC22 /* TouchedTableView.m */; };
 		BC47AFD7154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		BC47AFD8154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		BC47AFD9154AD23200B0AA55 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
@@ -3557,6 +3565,8 @@
 		BC40CC8314D010BD00DF0950 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BC413D6714EBC2F9009EB307 /* WhiteCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteCheckmark.png; sourceTree = "<group>"; };
 		BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WhiteCheckmark@2x.png"; sourceTree = "<group>"; };
+		BC436905156F8F820059BC22 /* TouchedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchedTableView.h; path = Yasound/Gui/TouchedTableView.h; sourceTree = "<group>"; };
+		BC436906156F8F820059BC22 /* TouchedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TouchedTableView.m; path = Yasound/Gui/TouchedTableView.m; sourceTree = "<group>"; };
 		BC47AFD4154AD23200B0AA55 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = Login/SignupViewController.h; sourceTree = "<group>"; };
 		BC47AFD5154AD23200B0AA55 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = Login/SignupViewController.m; sourceTree = "<group>"; };
 		BC47AFD6154AD23200B0AA55 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = Login/SignupViewController.xib; sourceTree = "<group>"; };
@@ -5437,6 +5447,8 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
+				BC436905156F8F820059BC22 /* TouchedTableView.h */,
+				BC436906156F8F820059BC22 /* TouchedTableView.m */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,
@@ -7601,6 +7613,7 @@
 				BC9601BE154997B90003AC7E /* WebPageViewController.m in Sources */,
 				40D744A41551744600A30971 /* SignupViewController.m in Sources */,
 				407D9F1B1563E89000BFCF1F /* UserNotification.m in Sources */,
+				BC43690D156F8F820059BC22 /* TouchedTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7786,6 +7799,7 @@
 				40D53C051554280F001EB0C5 /* WebPageViewController.m in Sources */,
 				40D53C061554280F001EB0C5 /* SignupViewController.m in Sources */,
 				407D9F1C1563E89000BFCF1F /* UserNotification.m in Sources */,
+				BC43690E156F8F820059BC22 /* TouchedTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7967,6 +7981,7 @@
 				BC9601BD154997B90003AC7E /* WebPageViewController.m in Sources */,
 				40D744A31551744500A30971 /* SignupViewController.m in Sources */,
 				407D9F1A1563E89000BFCF1F /* UserNotification.m in Sources */,
+				BC43690C156F8F820059BC22 /* TouchedTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8152,6 +8167,7 @@
 				BC9601BA154997B90003AC7E /* WebPageViewController.m in Sources */,
 				BC47AFD9154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F171563E89000BFCF1F /* UserNotification.m in Sources */,
+				BC436909156F8F820059BC22 /* TouchedTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8337,6 +8353,7 @@
 				BC9601B9154997B90003AC7E /* WebPageViewController.m in Sources */,
 				BC47AFD8154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F161563E89000BFCF1F /* UserNotification.m in Sources */,
+				BC436908156F8F820059BC22 /* TouchedTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8523,6 +8540,7 @@
 				BC9601BC154997B90003AC7E /* WebPageViewController.m in Sources */,
 				BC47AFDB154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F191563E89000BFCF1F /* UserNotification.m in Sources */,
+				BC43690B156F8F820059BC22 /* TouchedTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8708,6 +8726,7 @@
 				BC9601B8154997B90003AC7E /* WebPageViewController.m in Sources */,
 				BC47AFD7154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F151563E89000BFCF1F /* UserNotification.m in Sources */,
+				BC436907156F8F820059BC22 /* TouchedTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8894,6 +8913,7 @@
 				BC9601BB154997B90003AC7E /* WebPageViewController.m in Sources */,
 				BC47AFDA154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F181563E89000BFCF1F /* UserNotification.m in Sources */,
+				BC43690A156F8F820059BC22 /* TouchedTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,9 +15,6 @@
 
 @interface RadioViewCell : UITableViewCell
 {
-    id _myTarget;
-    SEL _myAction;
-    
     BOOL _ownRadio;
     
     CGFloat _interactiveZoneSize;
@@ -25,7 +22,6 @@
 
 
 @property (nonatomic, retain) WallEvent* wallEvent;
-
 
 @property (nonatomic, retain) UIView* cellView;
 @property (nonatomic) CGFloat cellViewX;
@@ -40,10 +36,19 @@
 
 @property (nonatomic, retain) UIView* cellEditView;
 
+@property (nonatomic, retain) id delegate;
+@property (nonatomic) SEL actionAvatarClick;
+@property (nonatomic) SEL actionEditing;
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath target:(id)target action:(SEL)action;
+
+
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
 
 - (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
+
+- (void)deactivateEditModeAnimated:(BOOL)animated;
+- (void)deactivateEditModeAnimated:(BOOL)animated silent:(BOOL)silent;
+
 
 @end

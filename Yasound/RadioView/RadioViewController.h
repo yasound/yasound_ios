@@ -13,6 +13,7 @@
 #import "TestflightViewController.h"
 #import "OrientedTableView.h"
 #import <MessageUI/MessageUI.h>
+#import "TouchedTableView.h"
 
 
 
@@ -37,7 +38,7 @@
     UIImageView* _listenersIcon;
     UILabel* _listenersLabel;
   
-    UITableView* _tableView;
+    TouchedTableView* _tableView;
     
     NowPlayingView* _playingNowView;
     
@@ -79,6 +80,8 @@
   Radio* _radioForSelectedUser;
     
     UIActionSheet* _queryShare;
+    
+    UITableViewCell* _cellEditing;
 }
 
 @property (nonatomic, retain) Radio* radio;

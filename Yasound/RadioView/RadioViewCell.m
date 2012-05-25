@@ -27,6 +27,11 @@
 @synthesize cellEditView;
 @synthesize wallEvent;
 
+@synthesize delegate;
+@synthesize actionAvatarClick;
+@synthesize actionEditing;
+
+
 
 - (NSString*) dateToString:(NSDate*)d
 {
@@ -46,7 +51,7 @@
 #define ANIMATION_DURATION 0.1
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath target:(id)target action:(SEL)action
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];
     if (self) 
@@ -55,10 +60,6 @@
         _interactiveZoneSize = (_ownRadio)? 3 * INTERACTIVE_ZONE_SIZE : 1 * INTERACTIVE_ZONE_SIZE;
         
         self.wallEvent = ev;
-
-        
-        _myTarget = target;
-        _myAction = action;
         
         BundleStylesheet* sheet = nil;
         
@@ -188,20 +189,20 @@
     
     [self.avatar setUrl:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
     
-    if ([self.wallEvent editing])
-        [self activateEditModeAnimated:NO];
-    else
-        [self deactivateEditModeAnimated:NO];
+//    if ([self.wallEvent editing])
+//        [self activateEditModeAnimated:NO];
+//    else
+//        [self deactivateEditModeAnimated:NO];
     
 }
 
 
 - (void)onAvatarClicked:(id)sender
 {
-    if (_myTarget == nil)
+    if (self.delegate == nil)
         return;
     
-    [_myTarget performSelector:_myAction withObject:self];
+    [self.delegate performSelector:self.actionAvatarClick withObject:self];
 }
 
 
@@ -372,6 +373,8 @@ static const CGFloat kSpringRestingHeight = 4;
     //        return;
     
     [self.wallEvent setEditing:YES];
+    if ((self.delegate != nil) && (self.actionEditing != nil))
+        [self.delegate performSelector:self.actionEditing withObject:self withObject:[NSNumber numberWithBool:YES]];
     
     
     [self initEditView];
@@ -393,11 +396,21 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (void)deactivateEditModeAnimated:(BOOL)animated
 {
-//    if (!self.wallEvent.editing)
-//        return;
+    [self deactivateEditModeAnimated:animated silent:NO];
+}
+
+
+
+- (void)deactivateEditModeAnimated:(BOOL)animated silent:(BOOL)silent
+{
+    //    if (!self.wallEvent.editing)
+    //        return;
     
     [self.wallEvent setEditing:NO];
-
+    
+    if (!silent && (self.delegate != nil) && (self.actionEditing != nil))
+        [self.delegate performSelector:self.actionEditing withObject:self withObject:[NSNumber numberWithBool:NO]];
+    
     CGRect cellFrameDst = CGRectMake(0, self.cellView.frame.origin.y, self.cellView.frame.size.width, self.cellView.frame.size.height);
     
     
@@ -411,6 +424,8 @@ static const CGFloat kSpringRestingHeight = 4;
         [self bounceAnimationDidEnd:nil finished:nil context:NULL];
     }
 }
+
+
 
 
 //- (void) bounceAnimationTo:(CGFloat)destX

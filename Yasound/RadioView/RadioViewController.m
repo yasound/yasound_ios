@@ -112,6 +112,8 @@ static Song* _gNowPlayingSong = nil;
         _connectedUsers = nil;
         _usersContainer = nil;
         _radioForSelectedUser = nil;
+        
+        _cellEditing = nil;
     }
     
     return self;
@@ -294,7 +296,10 @@ static Song* _gNowPlayingSong = nil;
     // table view
     //
     sheet = [[Theme theme] stylesheetForKey:@"TableView" error:nil];    
-    _tableView = [[UITableView alloc] initWithFrame:sheet.frame style:UITableViewStylePlain];
+    _tableView = [[TouchedTableView alloc] initWithFrame:sheet.frame style:UITableViewStylePlain];
+
+    _tableView.actionTouched = @selector(tableViewTouched:withEvent:);
+
 
     sheet = [[Theme theme] stylesheetForKey:@"WallBackground" error:nil];    
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
@@ -1483,7 +1488,10 @@ static Song* _gNowPlayingSong = nil;
         if (cell == nil)
         {
 //            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier event:ev indexPath:indexPath target:self action:@selector(onAvatarClickedInWall:)] autorelease];
-            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier ownRadio:self.ownRadio event:ev indexPath:indexPath target:self action:@selector(onAvatarClickedInWall:)] autorelease];
+            cell = [[[RadioViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier ownRadio:self.ownRadio event:ev indexPath:indexPath] autorelease];
+            cell.delegate = self;
+            cell.actionAvatarClick = @selector(onCellAvatarClick:);
+            cell.actionEditing = @selector(onCellEditing:editing:);
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         }
@@ -1745,7 +1753,7 @@ static Song* _gNowPlayingSong = nil;
     }
 }
 
-- (IBAction)onAvatarClickedInWall:(UITableViewCell*)cell
+- (void)onCellAvatarClick:(UITableViewCell*)cell
 {
 //    InteractiveView *btn = (InteractiveView *)sender;
 //    id parent = [btn superview];
@@ -1767,6 +1775,29 @@ static Song* _gNowPlayingSong = nil;
         [user release];
     }
 }
+
+
+- (void)onCellEditing:(UITableViewCell*)cell editing:(NSNumber*)nbEditing
+{
+    BOOL editing = [nbEditing boolValue];
+
+    if (editing)
+    {
+        // one editing cell at a time
+        if (_cellEditing != nil)
+        {
+            [_cellEditing deactivateEditModeAnimated:YES silent:YES];
+            _cellEditing = nil;
+        }
+
+        _cellEditing = cell;
+    }
+    else
+        _cellEditing = nil;
+    
+}
+
+
 
 
 - (IBAction)onTrackImageTouchDown:(id)sender
@@ -2165,51 +2196,34 @@ static Song* _gNowPlayingSong = nil;
 
 
 
+#pragma makr - Touches
+
+// one editing cell at a time
+
+- (void)tableViewTouched:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (_cellEditing != nil)
+    {
+        [_cellEditing deactivateEditModeAnimated:YES];
+        _cellEditing = nil;
+    }
+}
+
+
+// one editing cell at a time
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if (_cellEditing != nil)
+    {
+        [_cellEditing deactivateEditModeAnimated:YES];
+        _cellEditing = nil;
+    }    
+}
 
 
 
 
 
-//#pragma mark -
-//#pragma mark ScrollView Callbacks
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{	
-////    NSLog(@"SCROLLVIEW frame %.2f,%.2f  %.2f x %.2f", scrollView.frame.origin.x, scrollView.frame.origin.y, scrollView.frame.size.width, scrollView.frame.size.height);
-////    NSLog(@"SCROLLVIEW scrollView.contentOffset.y %.2f ", scrollView.contentOffset.y);
-////    NSLog(@"SCROLLVIEW scrollView.contentSize.height %.2f ", scrollView.contentSize.height);
-//
-//    
-//    if (!_updatingPrevious)
-//        return;
-//    
-//    CGFloat posY = scrollView.frame.origin.y + (scrollView.contentOffset.y * (-1)) + scrollView.contentSize.height;
-//    
-//    if (_updatingPreviousIndicator == nil)
-//    {
-//        _updatingPreviousIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//        [self.view addSubview:_updatingPreviousIndicator];
-//        [_updatingPreviousIndicator startAnimating];
-//        
-//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"UpdatingPreviousLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        _updatingPreviousLabel = [sheet makeLabel];
-//        _updatingPreviousLabel.text = NSLocalizedString(@"UpdatingPrevious_label", nil);
-//        [self.view addSubview:_updatingPreviousLabel];
-//    }
-//
-//    _updatingPreviousIndicator.frame = CGRectMake(60, posY+10, 22, 22);
-//    _updatingPreviousLabel.frame = CGRectMake(160, posY+10, 150, 22);
-//
-////	if (scrollView.isDragging)
-////    {
-////        if (scrollView.contentOffset.y > -DRAGGABLE_HEIGHT && scrollView.contentOffset.y < 0.0f) 
-////        {
-////            self.draggableTableView.frame = CGRectMake(0,  -DRAGGABLE_HEIGHT - scrollView.contentOffset.y, self.draggableTableView.frame.size.width, self.draggableTableView.frame.size.height);
-////        } 
-////        else if (scrollView.contentOffset.y < -DRAGGABLE_HEIGHT) 
-////        {
-////        }
-////	}
-//}
 
 
 
