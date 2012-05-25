@@ -27,10 +27,12 @@
 @synthesize separator;
 @synthesize cellEditView;
 @synthesize wallEvent;
+@synthesize indexPath;
 
 @synthesize delegate;
 @synthesize actionAvatarClick;
 @synthesize actionEditing;
+@synthesize actionDelete;
 
 
 
@@ -61,6 +63,7 @@
         _interactiveZoneSize = (_ownRadio)? 3 * INTERACTIVE_ZONE_SIZE : 1 * INTERACTIVE_ZONE_SIZE;
         
         self.wallEvent = ev;
+        self.indexPath = indexPath;
         
         BundleStylesheet* sheet = nil;
         
@@ -175,6 +178,7 @@
     assert([ev isTextHeightComputed] == YES);
     
     self.wallEvent = ev;
+    self.indexPath = indexPath;
 
     CGFloat height = [ev getTextHeight];
     
@@ -317,6 +321,9 @@
     button.frame = CGRectMake(self.cellEditView.frame.size.width - INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
     [self.cellEditView addSubview:button];
     [button release];
+    
+    self.avatarMask = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onAvatarClicked:)];
+
 
     // button kick
     sheet = [[Theme theme] stylesheetForKey:@"CellModerIconKick" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -528,7 +535,12 @@ static const CGFloat kSpringRestingHeight = 4;
 {
     if ((alertView == _alertTrash) && (buttonIndex == 1))
     {
+        // send delete request to server
         [[YasoundDataProvider main] moderationDeleteWallMessage:self.wallEvent.id];
+        
+        // delete locally 
+        if (self.actionDelete != nil)
+            [self.delegate performSelector:self.actionDelete withObject:self];
         return;
     }
 

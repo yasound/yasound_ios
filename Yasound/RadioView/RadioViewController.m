@@ -1492,6 +1492,7 @@ static Song* _gNowPlayingSong = nil;
             cell.delegate = self;
             cell.actionAvatarClick = @selector(onCellAvatarClick:);
             cell.actionEditing = @selector(onCellEditing:editing:);
+            cell.actionDelete = @selector(onCellDelete:);
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         }
@@ -1753,7 +1754,7 @@ static Song* _gNowPlayingSong = nil;
     }
 }
 
-- (void)onCellAvatarClick:(UITableViewCell*)cell
+- (void)onCellAvatarClick:(RadioViewCell*)cell
 {
 //    InteractiveView *btn = (InteractiveView *)sender;
 //    id parent = [btn superview];
@@ -1777,7 +1778,7 @@ static Song* _gNowPlayingSong = nil;
 }
 
 
-- (void)onCellEditing:(UITableViewCell*)cell editing:(NSNumber*)nbEditing
+- (void)onCellEditing:(RadioViewCell*)cell editing:(NSNumber*)nbEditing
 {
     BOOL editing = [nbEditing boolValue];
 
@@ -1797,6 +1798,15 @@ static Song* _gNowPlayingSong = nil;
     
 }
 
+
+- (void)onCellDelete:(RadioViewCell*)cell 
+{
+    [_wallEvents removeObject:cell.wallEvent];
+
+    _cellEditing = nil;
+    
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:cell.indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+}
 
 
 

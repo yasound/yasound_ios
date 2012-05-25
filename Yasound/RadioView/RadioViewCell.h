@@ -26,6 +26,7 @@
 
 
 @property (nonatomic, retain) WallEvent* wallEvent;
+@property (nonatomic, retain) NSIndexPath* indexPath;
 
 @property (nonatomic, retain) UIView* cellView;
 @property (nonatomic) CGFloat cellViewX;
@@ -43,6 +44,7 @@
 @property (nonatomic, retain) id delegate;
 @property (nonatomic) SEL actionAvatarClick;
 @property (nonatomic) SEL actionEditing;
+@property (nonatomic) SEL actionDelete;
 
 
 
