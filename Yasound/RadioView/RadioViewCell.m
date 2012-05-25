@@ -60,7 +60,7 @@
     if (self) 
     {
         _ownRadio = ownRadio;
-        _interactiveZoneSize = (_ownRadio)? 3 * INTERACTIVE_ZONE_SIZE : 1 * INTERACTIVE_ZONE_SIZE;
+        _interactiveZoneSize = (_ownRadio)? 2 * INTERACTIVE_ZONE_SIZE : 1 * INTERACTIVE_ZONE_SIZE;
         
         self.wallEvent = ev;
         self.indexPath = indexPath;
@@ -325,21 +325,24 @@
     self.avatarMask = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onAvatarClicked:)];
 
 
-    // button kick
-    sheet = [[Theme theme] stylesheetForKey:@"CellModerIconKick" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    button = [sheet makeButton];
-    [button addTarget:self action:@selector(onModerKick:) forControlEvents:UIControlEventTouchUpInside];
-    button.frame = CGRectMake(self.cellEditView.frame.size.width - 2*INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
-    [self.cellEditView addSubview:button];
-    [button release];
+//    // button kick
+//    sheet = [[Theme theme] stylesheetForKey:@"CellModerIconKick" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    button = [sheet makeButton];
+//    [button addTarget:self action:@selector(onModerKick:) forControlEvents:UIControlEventTouchUpInside];
+//    button.frame = CGRectMake(self.cellEditView.frame.size.width - 2*INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
+//    [self.cellEditView addSubview:button];
+//    [button release];
 
-    // button trash
-    sheet = [[Theme theme] stylesheetForKey:@"CellModerIconTrash" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    button = [sheet makeButton];
-    [button addTarget:self action:@selector(onModerTrash:) forControlEvents:UIControlEventTouchUpInside];
-    button.frame = CGRectMake(self.cellEditView.frame.size.width - 3*INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
-    [self.cellEditView addSubview:button];
-    [button release];
+    if (_ownRadio)
+    {
+        // button trash
+        sheet = [[Theme theme] stylesheetForKey:@"CellModerIconTrash" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        button = [sheet makeButton];
+        [button addTarget:self action:@selector(onModerTrash:) forControlEvents:UIControlEventTouchUpInside];
+        button.frame = CGRectMake(self.cellEditView.frame.size.width - 2*INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
+        [self.cellEditView addSubview:button];
+        [button release];
+    }
     
     [view release];
     
