@@ -428,6 +428,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "RadioViewCell_moderation_spam_title" = "modération";
 "RadioViewCell_moderation_spam_message" = "Voulez-vous signaler un abus auprès des modérateurs?";
 "RadioViewCell_moderation_spam_button" = "signaler";
+"RadioViewCell_moderation_spam_confirm" = "Abus signalé. Merci.";
 
 "RadioViewCell_moderation_kick_title" = "modération";
 "RadioViewCell_moderation_kick_message" = "Voulez-vous exclure temporairement cet auditeur de votre radio?";

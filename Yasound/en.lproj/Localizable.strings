@@ -437,6 +437,7 @@
 "RadioViewCell_moderation_spam_title" = "moderation";
 "RadioViewCell_moderation_spam_message" = "Would you like to report an abuse to the moderators?";
 "RadioViewCell_moderation_spam_button" = "report";
+"RadioViewCell_moderation_spam_confirm" = "Abuse reported. Thank you.";
 
 "RadioViewCell_moderation_kick_title" = "moderation";
 "RadioViewCell_moderation_kick_message" = "Do you want to kick this user off your radio?";

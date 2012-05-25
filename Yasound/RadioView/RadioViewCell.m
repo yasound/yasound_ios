@@ -12,6 +12,7 @@
 #import "YasoundDataProvider.h"
 
 #import <QuartzCore/QuartzCore.h>
+#import "ActivityAlertView.h"
 
 @implementation RadioViewCell
 
@@ -534,6 +535,13 @@ static const CGFloat kSpringRestingHeight = 4;
     if ((alertView == _alertSpam) && (buttonIndex == 1))
     {
         [[YasoundDataProvider main] moderationReportAbuse:self.wallEvent.id];
+        
+        [self deactivateEditModeAnimated:YES];
+        
+        NSString* message = NSLocalizedString(@"RadioViewCell_moderation_spam_confirm", nil);
+        [[ActivityAlertView main] showWithTitle:message closeAfterTimeInterval:2];
+
+        
         return;
     }
 
