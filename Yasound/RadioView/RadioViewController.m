@@ -1856,7 +1856,7 @@ static Song* _gNowPlayingSong = nil;
     }
     else
     {
-        SongPublicInfoViewController* view = [[SongPublicInfoViewController alloc] initWithNibName:@"SongPublicInfoViewController" bundle:nil song:_gNowPlayingSong showNowPlaying:NO];
+        SongPublicInfoViewController* view = [[SongPublicInfoViewController alloc] initWithNibName:@"SongPublicInfoViewController" bundle:nil song:_gNowPlayingSong onRadio:self.radio showNowPlaying:NO];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

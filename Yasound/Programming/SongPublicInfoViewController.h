@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Song.h"
+#import "Radio.h"
 #import "WebImageView.h"
 
 
@@ -29,11 +30,13 @@
     BOOL _ownSong;
     
     UILabel* _likesLabel;
+    UIActionSheet* _queryShare;
 }
 
 @property (nonatomic, retain) Song* song;
+@property (nonatomic, retain) Radio* radio;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong showNowPlaying:(BOOL)showNowPlaying;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong onRadio:(Radio*)aRadio showNowPlaying:(BOOL)showNowPlaying;
 
 - (IBAction)onBack:(id)sender;
 

@@ -157,7 +157,9 @@
 
 - (void)setSongStatus:(SongStatus*)status
 {
-  [self setNbLikes:[status.likes intValue]];
+    NSInteger nbLikes = [status.likes intValue];
+  [self setNbLikes:nbLikes];
+    self.song.likes = [NSNumber numberWithInteger:nbLikes];
 
 //    _dislikesLabel.text = [NSString stringWithFormat:@"%d", [status.dislikes intValue]];
 }

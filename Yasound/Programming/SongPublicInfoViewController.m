@@ -18,12 +18,18 @@
 #import "SongUploadManager.h"
 #import "SongUploadViewController.h"
 #import "TrackInteractionView.h"
+#import <MessageUI/MessageUI.h>
+#import "YasoundSessionManager.h"
+#import "ShareModalViewController.h"
+#import "ShareTwitterModalViewController.h"
+#import "YasoundAppDelegate.h"
 
 
 @implementation SongPublicInfoViewController
 
 
 @synthesize song;
+@synthesize radio;
 
 #define NB_SECTIONS 1
 
@@ -36,12 +42,13 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong showNowPlaying:(BOOL)showNowPlaying
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong onRadio:(Radio*)aRadio showNowPlaying:(BOOL)showNowPlaying
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
         self.song = aSong;
+        self.radio = aRadio;
         _showNowPlaying = showNowPlaying;
         _ownSong = NO;
     }
@@ -229,8 +236,9 @@
             [view setButtonLikeClickedTarget:self action:@selector(trackInteractionViewLikeButtonCliked)];
             [cell addSubview:view];
             
-            cell.userInteractionEnabled = YES;
+            [view.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
 
+            
             sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _likesLabel = [sheet makeLabel];
             _likesLabel.text = [NSString stringWithFormat:@"%@", self.song.likes];
@@ -266,6 +274,17 @@
     int nbLikes = [_likesLabel.text intValue];
     nbLikes++;
     _likesLabel.text = [NSString stringWithFormat:@"%d", nbLikes];
+    
+//    [[YasoundDataProvider main] statusForSongId:song.id target:self action:@selector(receivedCurrentSongStatus:withInfo:)];
+
+}
+
+
+- (void)receivedCurrentSongStatus:(SongStatus*)status withInfo:(NSDictionary*)info
+{
+    NSInteger nbLikes = [status.likes intValue];
+    _likesLabel.text = [NSString stringWithFormat:@"%d", nbLikes];
+    self.song.likes = [NSNumber numberWithInteger:nbLikes];
 }
 
 
@@ -324,6 +343,129 @@
     // call root to launch the Radio
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+- (void)onTrackShare:(id)sender
+{
+    _queryShare = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:nil];
+    
+    if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
+        [_queryShare addButtonWithTitle:@"Facebook"];
+    
+    if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
+        [_queryShare addButtonWithTitle:@"Twitter"];
+    
+    [_queryShare addButtonWithTitle:NSLocalizedString(@"ShareModalView_email_label", nil)];
+    
+    _queryShare.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [_queryShare showInView:self.view];
+    
+}
+
+
+#pragma mark - UIActionSheet Delegate
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+{
+    
+    // share query result
+    if (actionSheet == _queryShare)
+    {
+        NSString* buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+        
+        if ([buttonTitle isEqualToString:@"Facebook"])
+        {
+            ShareModalViewController* view = [[ShareModalViewController alloc] initWithNibName:@"ShareModalViewController" bundle:nil forSong:self.song onRadio:self.radio target:self action:@selector(onShareModalReturned)];
+            [self.navigationController presentModalViewController:view animated:YES];
+            [view release];
+        }
+        else if ([buttonTitle isEqualToString:@"Twitter"])
+            
+        {
+            ShareTwitterModalViewController* view = [[ShareTwitterModalViewController alloc] initWithNibName:@"ShareTwitterModalViewController" bundle:nil forSong:self.song onRadio:self.radio target:self action:@selector(onShareModalReturned)];
+            [self.navigationController presentModalViewController:view animated:YES];
+            [view release];
+        }
+        else if ([buttonTitle isEqualToString:NSLocalizedString(@"ShareModalView_email_label", nil)])
+        {
+            [self shareWithMail];
+        }
+        
+        return;
+    }
+}
+
+
+
+- (void)onShareModalReturned
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+
+
+
+- (void)shareWithMail
+{
+    NSString* message = NSLocalizedString(@"ShareModalView_share_message", nil);
+    NSString* fullMessage = [NSString stringWithFormat:message, self.song.name, self.song.artist, self.radio.name];
+    NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
+    NSURL* fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link, self.radio.uuid]];
+    
+    NSString* body = [NSString stringWithFormat:@"%@\n\n%@", fullMessage, [fullLink absoluteString]];
+    
+	MFMailComposeViewController* mailViewController = [[MFMailComposeViewController alloc] init];
+	[mailViewController setSubject: NSLocalizedString(@"Yasound_share", nil)];
+    
+    [mailViewController setMessageBody:body isHTML:NO];
+    
+	mailViewController.mailComposeDelegate = self;
+	
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
+	if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
+		mailViewController.modalPresentationStyle = UIModalPresentationPageSheet;
+	}
+#endif
+	
+	[self presentModalViewController:mailViewController animated:YES];
+	[mailViewController release];
+    
+}
+
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{	
+	[self dismissModalViewControllerAnimated:YES];
+	
+	NSString *mailError = nil;
+	
+	switch (result) 
+    {
+		case MFMailComposeResultSent: 
+        { 
+            [[YasoundDataProvider main] radioHasBeenShared:self.radio with:@"email"];            
+            break;
+        }
+		case MFMailComposeResultFailed: mailError = @"Failed sending media, please try again...";
+			break;
+		default:
+			break;
+	}	
+}
+
+
+
 
 
 
