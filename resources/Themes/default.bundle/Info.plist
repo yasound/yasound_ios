@@ -473,6 +473,28 @@
 			<key>y</key>
 			<integer>36</integer>
 		</dict>
+		<key>SongPublicView_nbLikes</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>name</key>
+				<string>HelveticaNeue-Bold</string>
+				<key>size</key>
+				<integer>13</integer>
+				<key>textColor</key>
+				<string>white</string>
+				<key>textAlignement</key>
+				<string>center</string>
+			</dict>
+			<key>height</key>
+			<integer>18</integer>
+			<key>width</key>
+			<integer>24</integer>
+			<key>x</key>
+			<integer>86</integer>
+			<key>y</key>
+			<integer>390</integer>
+		</dict>
 		<key>MessageBarBackground</key>
 		<dict>
 			<key>x</key>
@@ -929,7 +951,7 @@
 		<key>TrackInteractionButtonShare</key>
 		<dict>
 			<key>x</key>
-			<integer>198</integer>
+			<integer>124</integer>
 			<key>y</key>
 			<integer>32</integer>
 			<key>normal</key>
@@ -944,7 +966,7 @@
 		<key>TrackInteractionButtonLike</key>
 		<dict>
 			<key>x</key>
-			<integer>146</integer>
+			<integer>72</integer>
 			<key>y</key>
 			<integer>32</integer>
 			<key>normal</key>
@@ -972,7 +994,7 @@
 		<key>TrackInteractionButtonBuy</key>
 		<dict>
 			<key>x</key>
-			<integer>74</integer>
+			<integer>0</integer>
 			<key>y</key>
 			<integer>32</integer>
 		</dict>
@@ -1546,7 +1568,7 @@
 			<key>x</key>
 			<integer>8</integer>
 			<key>y</key>
-			<integer>332</integer>
+			<integer>330</integer>
 			<key>width</key>
 			<integer>304</integer>
 			<key>height</key>
@@ -1740,7 +1762,7 @@
 			<key>x</key>
 			<integer>8</integer>
 			<key>y</key>
-			<integer>360</integer>
+			<integer>352</integer>
 			<key>width</key>
 			<integer>304</integer>
 			<key>height</key>
@@ -1788,7 +1810,7 @@
 			<key>x</key>
 			<integer>8</integer>
 			<key>y</key>
-			<integer>374</integer>
+			<integer>364</integer>
 			<key>width</key>
 			<integer>304</integer>
 			<key>height</key>
@@ -1831,29 +1853,16 @@
 				<string>bold</string>
 			</dict>
 		</dict>
-		<key>SongPublicView_nbLikes</key>
+		<key>SongPublicView_trackInteractionView</key>
 		<dict>
 			<key>x</key>
 			<integer>8</integer>
 			<key>y</key>
-			<integer>396</integer>
+			<integer>356</integer>
 			<key>width</key>
-			<integer>130</integer>
+			<integer>200</integer>
 			<key>height</key>
-			<integer>16</integer>
-			<key>font</key>
-			<dict>
-				<key>textAlignement</key>
-				<string>left</string>
-				<key>size</key>
-				<integer>11</integer>
-				<key>textColor</key>
-				<string>white</string>
-				<key>backgroundColor</key>
-				<string>clear</string>
-				<key>weight</key>
-				<string>bold</string>
-			</dict>
+			<integer>60</integer>
 		</dict>
 		<key>SongView_nbLikes_value</key>
 		<dict>
@@ -1861,30 +1870,6 @@
 			<integer>210</integer>
 			<key>y</key>
 			<integer>72</integer>
-			<key>width</key>
-			<integer>80</integer>
-			<key>height</key>
-			<integer>16</integer>
-			<key>font</key>
-			<dict>
-				<key>textAlignement</key>
-				<string>right</string>
-				<key>size</key>
-				<integer>11</integer>
-				<key>textColor</key>
-				<string>white</string>
-				<key>backgroundColor</key>
-				<string>clear</string>
-				<key>weight</key>
-				<string>bold</string>
-			</dict>
-		</dict>
-		<key>SongPublicView_nbLikes_value</key>
-		<dict>
-			<key>x</key>
-			<integer>28</integer>
-			<key>y</key>
-			<integer>396</integer>
 			<key>width</key>
 			<integer>80</integer>
 			<key>height</key>
@@ -1957,30 +1942,6 @@
 			<integer>210</integer>
 			<key>y</key>
 			<integer>88</integer>
-			<key>width</key>
-			<integer>80</integer>
-			<key>height</key>
-			<integer>16</integer>
-			<key>font</key>
-			<dict>
-				<key>textAlignement</key>
-				<string>right</string>
-				<key>size</key>
-				<integer>11</integer>
-				<key>textColor</key>
-				<string>white</string>
-				<key>backgroundColor</key>
-				<string>clear</string>
-				<key>weight</key>
-				<string>bold</string>
-			</dict>
-		</dict>
-		<key>SongPublicView_lastRead_value</key>
-		<dict>
-			<key>x</key>
-			<integer>230</integer>
-			<key>y</key>
-			<integer>396</integer>
 			<key>width</key>
 			<integer>80</integer>
 			<key>height</key>

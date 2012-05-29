@@ -27,6 +27,8 @@
 
     BOOL _showNowPlaying;
     BOOL _ownSong;
+    
+    UILabel* _likesLabel;
 }
 
 @property (nonatomic, retain) Song* song;

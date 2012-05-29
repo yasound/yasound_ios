@@ -17,6 +17,7 @@
 #import "YasoundReachability.h"
 #import "SongUploadManager.h"
 #import "SongUploadViewController.h"
+#import "TrackInteractionView.h"
 
 
 @implementation SongPublicInfoViewController
@@ -115,7 +116,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {    
-    return 416;
+    return 432;
 }
 
 
@@ -220,12 +221,21 @@
 //            [cell addSubview:label];
 
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            UILabel* label = [sheet makeLabel];
-            label.text = [NSString stringWithFormat:@"%@ : %@", NSLocalizedString(@"SongView_nbLikes", nil), self.song.likes];
-            [cell addSubview:label];
-
+            // track interaction buttons
+            sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_trackInteractionView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            TrackInteractionView* view = [[TrackInteractionView alloc] initWithSong:self.song];
+            view.frame = sheet.frame;
+//            view.frame = CGRectMake(8, 350, 320, 60);
+            [view setButtonLikeClickedTarget:self action:@selector(trackInteractionViewLikeButtonCliked)];
+            [cell addSubview:view];
             
+            cell.userInteractionEnabled = YES;
+
+            sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            _likesLabel = [sheet makeLabel];
+            _likesLabel.text = [NSString stringWithFormat:@"%@", self.song.likes];
+            [cell addSubview:_likesLabel];
+                
             
             
         }
@@ -249,6 +259,15 @@
     
     return nil;
 }
+
+
+- (void)trackInteractionViewLikeButtonCliked
+{
+    int nbLikes = [_likesLabel.text intValue];
+    nbLikes++;
+    _likesLabel.text = [NSString stringWithFormat:@"%d", nbLikes];
+}
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

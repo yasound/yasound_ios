@@ -95,7 +95,7 @@
         
         // track interaction buttons
         self.trackInteractionView = [[TrackInteractionView alloc] initWithSong:song];
-        self.trackInteractionView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+        self.trackInteractionView.frame = CGRectMake(imageView.frame.size.width + 24, 0, self.frame.size.width, self.frame.size.height);
         [self.trackInteractionView setButtonLikeClickedTarget:self action:@selector(trackInteractionViewLikeButtonCliked)];
         [self addSubview:self.trackInteractionView];
         
