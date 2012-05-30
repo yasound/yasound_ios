@@ -881,6 +881,9 @@
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:r.picture];
     [[YasoundDataCacheImageManager main] clearItem:imageURL];
 
+    imageURL = [[YasoundDataProvider main] urlForPicture:r.creator.picture];
+    [[YasoundDataCacheImageManager main] clearItem:imageURL];
+
   
   if (_wizard)
   {
