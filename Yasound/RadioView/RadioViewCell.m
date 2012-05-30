@@ -20,6 +20,7 @@
 @synthesize cellViewX;
 @synthesize avatar;
 @synthesize avatarMask;
+@synthesize avatarInteractiveView;
 @synthesize date;
 @synthesize user;
 @synthesize message;
@@ -94,12 +95,21 @@
         [self.cellView addSubview:self.avatar];
         
         // set target from parent
-        self.avatarMask = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onAvatarClicked:)];
+        self.avatarInteractiveView = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onAvatarClicked:)];
+        [self.cellView addSubview:self.avatarInteractiveView];
+        
+        // draw circle mask
+        self.avatar.layer.masksToBounds = YES;
+        self.avatar.layer.cornerRadius = 17.5;
+
+        // avatar circled mask
+        sheet = [[Theme theme] stylesheetForKey:@"CellAvatarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.avatarMask = [[UIImageView alloc] initWithImage:[sheet image]];
+        self.avatarMask.frame = sheet.frame;
         [self.cellView addSubview:self.avatarMask];
         
-        self.avatar.layer.masksToBounds = YES;
-        self.avatar.layer.cornerRadius = 6;
-
+        
+        
         // date
         sheet = [[Theme theme] stylesheetForKey:@"CellDate" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.date = [sheet makeLabel];
@@ -167,6 +177,38 @@
 
 
 
+//- (UIImage *)imageByDrawingCircleOnImage:(UIImage *)image
+//{
+//	// begin a graphics context of sufficient size
+//	UIGraphicsBeginImageContext(image.size);
+//    
+//	// draw original image into the context
+//	[image drawAtPoint:CGPointZero];
+//    
+//	// get the context for CoreGraphics
+//	CGContextRef ctx = UIGraphicsGetCurrentContext();
+//    
+//	// set stroking color and draw circle
+//	[[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1] setStroke];
+//    CGContextSetLineWidth(ctx, 3.0);
+//    
+//	// make circle rect 1 px from border
+//	CGRect circleRect = CGRectMake(0, 0,  image.size.width, image.size.height);
+//    
+//	// draw circle
+//	CGContextStrokeEllipseInRect(ctx, circleRect);
+//    
+//	// make image out of bitmap context
+//	UIImage *retImage = UIGraphicsGetImageFromCurrentImageContext();
+//    
+//	// free the context
+//	UIGraphicsEndImageContext();
+//    
+//	return retImage;
+//}
+//
+
+
 //- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 //{
 //    
@@ -193,6 +235,9 @@
     self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, self.separator.frame.size.width, self.separator.frame.size.height);
     
     [self.avatar setUrl:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
+    
+//    // draw circle mask
+//    self.avatar.image = [self imageByDrawingCircleOnImage:self.avatar.image];
     
     if ([self.wallEvent editing])
         [self activateEditModeAnimated:NO];
@@ -322,7 +367,7 @@
     [self.cellEditView addSubview:button];
     [button release];
     
-    self.avatarMask = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onAvatarClicked:)];
+    self.avatarInteractiveView = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onAvatarClicked:)];
 
 
 //    // button kick

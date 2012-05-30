@@ -552,11 +552,28 @@
 			<key>x</key>
 			<integer>8</integer>
 			<key>y</key>
-			<integer>8</integer>
+			<integer>12</integer>
 			<key>width</key>
 			<integer>35</integer>
 			<key>height</key>
 			<integer>35</integer>
+		</dict>
+		<key>CellAvatarMask</key>
+		<dict>
+			<key>name</key>
+			<string>WallAvatarMask</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Wall</string>
+			<key>x</key>
+			<integer>7</integer>
+			<key>y</key>
+			<integer>11</integer>
+			<key>width</key>
+			<integer>37</integer>
+			<key>height</key>
+			<integer>37</integer>
 		</dict>
 		<key>CellDate</key>
 		<dict>

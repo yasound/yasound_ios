@@ -32,7 +32,8 @@
 @property (nonatomic) CGFloat cellViewX;
 
 @property (nonatomic, retain) WebImageView* avatar;
-@property (nonatomic, retain) InteractiveView* avatarMask;
+@property (nonatomic, retain) UIImageView* avatarMask;
+@property (nonatomic, retain) InteractiveView* avatarInteractiveView;
 @property (nonatomic, retain) UILabel* date;
 @property (nonatomic, retain) UILabel* user;
 @property (nonatomic, retain) UIView* messageBackground;

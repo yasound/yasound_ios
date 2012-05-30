@@ -15,7 +15,8 @@
 @interface UserViewCell : UITableViewCell
 {
   User* _user;
-  WebImageView* _avatarView;
+    WebImageView* _avatarView;
+    UIImageView* _avatarMask;
   UILabel* _nameLabel;
 }
 
