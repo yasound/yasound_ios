@@ -538,3 +538,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "ProfileView_section_own_radio" = "Sa radio";
 "ProfileView_section_current_radio" = "La radio qu'il écoute";
 "ProfileView_section_favorite_radios" = "Ses favoris";
+
+"ProfileMyRadioView_title" = "Ma radio";
+"ProfileMyRadioView_section_subscribers" = "Mes abonnés";
+"ProfileMyRadio_subscribers_button_label"= "Envoyer un message à mes abonnés";
+

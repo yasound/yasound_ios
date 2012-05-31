@@ -551,3 +551,9 @@
 "ProfileView_section_current_radio" = "The radio he is listening to";
 "ProfileView_section_favorite_radios" = "Favorites";
 
+
+"ProfileMyRadioView_title" = "My radio";
+"ProfileMyRadioView_section_subscribers" = "My subscribers";
+"ProfileMyRadio_subscribers_button_label"= "Send a message to my subscribers";
+
+

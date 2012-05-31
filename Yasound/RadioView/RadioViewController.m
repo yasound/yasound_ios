@@ -33,6 +33,7 @@
 #import "LoadingCell.h"
 
 #import "ProfileViewController.h"
+#import "ProfileMyRadioViewController.h"
 #import "ShareModalViewController.h"
 #import "ShareTwitterModalViewController.h"
 #import "YasoundSessionManager.h"
@@ -1763,10 +1764,18 @@ static Song* _gNowPlayingSong = nil;
 {
     if (self.radio.creator) 
     {
-        // Launch profile view
-        ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:self.radio.creator];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
+        if (self.ownRadio)
+        {
+            ProfileMyRadioViewController* view = [[ProfileMyRadioViewController alloc] initWithNibName:@"ProfileMyRadioViewController" bundle:nil radio:self.radio];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
+        else
+        {
+            ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:self.radio.creator];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
     }
 }
 

@@ -225,6 +225,8 @@ typedef enum
         }
         
         _name.text = self.radio.name;
+
+        assert(cell != nil);
         return cell;
         
     }
@@ -234,10 +236,16 @@ typedef enum
     {
         NSString *cellIdentifier = cellIdentifier1;
         UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (cell == nil)
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+
         
         cell.textLabel.text = NSLocalizedString(@"ProfileMyRadio_subscribers_button_label", nil);
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
+        assert(cell != nil);
         return cell;
     }
     else if (indexPath.section == eSectionSubscribers)
@@ -258,7 +266,12 @@ typedef enum
         else
             cell.user = [_subscribers objectAtIndex:indexPath.row];
 
+        assert(cell != nil);
         return cell;
+    }
+    else
+    {
+        assert(0);
     }
 }
 
