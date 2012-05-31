@@ -2851,6 +2851,22 @@
 		BCCA799814B1AE520011AADD /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BCCA799914B1AE520011AADD /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BCCA799A14B1AE520011AADD /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
+		BCCD800A1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */; };
+		BCCD800B1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */; };
+		BCCD800C1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */; };
+		BCCD800D1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */; };
+		BCCD800E1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */; };
+		BCCD800F1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */; };
+		BCCD80101577C36F008E469F /* ProfileMyRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */; };
+		BCCD80111577C36F008E469F /* ProfileMyRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */; };
+		BCCD80121577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */; };
+		BCCD80131577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */; };
+		BCCD80141577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */; };
+		BCCD80151577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */; };
+		BCCD80161577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */; };
+		BCCD80171577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */; };
+		BCCD80181577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */; };
+		BCCD80191577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */; };
 		BCD0CBCF14FE851900E75CEF /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
 		BCD0CBD014FE851900E75CEF /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
 		BCD0CBD114FE851900E75CEF /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
@@ -3857,6 +3873,9 @@
 		BCCA799214B1AE520011AADD /* StatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsViewController.h; path = MyYasound/StatsViewController.h; sourceTree = "<group>"; };
 		BCCA799314B1AE520011AADD /* StatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsViewController.m; path = MyYasound/StatsViewController.m; sourceTree = "<group>"; };
 		BCCA799414B1AE520011AADD /* StatsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatsViewController.xib; path = MyYasound/StatsViewController.xib; sourceTree = "<group>"; };
+		BCCD80071577C36F008E469F /* ProfileMyRadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileMyRadioViewController.h; sourceTree = "<group>"; };
+		BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileMyRadioViewController.m; sourceTree = "<group>"; };
+		BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileMyRadioViewController.xib; sourceTree = "<group>"; };
 		BCD0CBCC14FE851800E75CEF /* SongInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongInfoViewController.h; path = Programming/SongInfoViewController.h; sourceTree = "<group>"; };
 		BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongInfoViewController.m; path = Programming/SongInfoViewController.m; sourceTree = "<group>"; };
 		BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongInfoViewController.xib; path = Programming/SongInfoViewController.xib; sourceTree = "<group>"; };
@@ -4356,6 +4375,9 @@
 		B16CAEBC152D791600317510 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				BCCD80071577C36F008E469F /* ProfileMyRadioViewController.h */,
+				BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */,
+				BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */,
 				BC7263BD153479C1002386C3 /* ProfileViewController.h */,
 				BC7263BE153479C1002386C3 /* ProfileViewController.m */,
 				BC7263BF153479C1002386C3 /* ProfileViewController.xib */,
@@ -6011,6 +6033,7 @@
 				BC436934156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BC43693E156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436946156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
+				BCCD80181577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6224,6 +6247,7 @@
 				BC436935156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BC43693F156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436947156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
+				BCCD80191577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6431,6 +6455,7 @@
 				BC436933156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BC43693D156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436945156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
+				BCCD80171577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6643,6 +6668,7 @@
 				BC436930156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BC43693A156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436942156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
+				BCCD80141577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6855,6 +6881,7 @@
 				BC43692F156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BC436939156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436941156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
+				BCCD80131577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7067,6 +7094,7 @@
 				BC436932156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BC43693C156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436944156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
+				BCCD80161577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7279,6 +7307,7 @@
 				BC43692E156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BC436938156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436940156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
+				BCCD80121577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7491,6 +7520,7 @@
 				BC436931156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BC43693B156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436943156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
+				BCCD80151577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7681,6 +7711,7 @@
 				407D9F1B1563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC43690D156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC43692C156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
+				BCCD80101577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7868,6 +7899,7 @@
 				407D9F1C1563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC43690E156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC43692D156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
+				BCCD80111577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8051,6 +8083,7 @@
 				407D9F1A1563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC43690C156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC43692B156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
+				BCCD800F1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8238,6 +8271,7 @@
 				407D9F171563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC436909156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC436928156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
+				BCCD800C1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8425,6 +8459,7 @@
 				407D9F161563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC436908156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC436927156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
+				BCCD800B1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8613,6 +8648,7 @@
 				407D9F191563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC43690B156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC43692A156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
+				BCCD800E1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8800,6 +8836,7 @@
 				407D9F151563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC436907156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC436926156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
+				BCCD800A1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8988,6 +9025,7 @@
 				407D9F181563E89000BFCF1F /* UserNotification.m in Sources */,
 				BC43690A156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC436929156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
+				BCCD800D1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
