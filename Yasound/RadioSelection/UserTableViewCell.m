@@ -29,6 +29,7 @@
     
       self.user = u;
       
+      
       self.selectionStyle = UITableViewCellSelectionStyleNone;
     
       // cell background
@@ -44,7 +45,7 @@
       
       self.backgroundView = imageView;
     
-    // avatar
+      // avatar
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     self.userAvatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
     stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionAvatar" retainStylesheet:YES overwriteStylesheet:NO error:&error];
@@ -69,7 +70,7 @@
       
       // radio status
       self.radioStatus = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-      NSString* status;
+      NSString* status = nil;
       if (self.user.current_radio)
       {
         NSString* listeningTo = NSLocalizedString(@"UserTableViewCell_ListeningTo", nil);
@@ -80,6 +81,7 @@
         NSString* radioHeader = NSLocalizedString(@"UserTableViewCell_Radio", nil);
           status = [NSString stringWithFormat:@"%@ %@", radioHeader, self.user.own_radio.name];
       }
+      
       self.radioStatus.text = status;
       [self addSubview:self.radioStatus];
 
@@ -111,9 +113,9 @@
     BundleStylesheet* sheet = nil;
     
     if (rowIndex & 1)
-        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[BundleFileManager main] stylesheetForKey:@"UserSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
     else
-        sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[BundleFileManager main] stylesheetForKey:@"UserSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
     
     [self.backgroundView setImage:[sheet image]];
@@ -138,7 +140,7 @@
     self.userName.text = self.user.name;
     
     // radio status
-    NSString* status;
+    NSString* status = nil;
     if (self.user.current_radio)
     {
       NSString* listeningTo = NSLocalizedString(@"UserTableViewCell_ListeningTo", nil);

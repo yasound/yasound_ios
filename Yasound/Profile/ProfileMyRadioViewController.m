@@ -12,7 +12,7 @@
 #import "Theme.h"
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
-#import "UserViewCell.h"
+#import "UserTableViewCell.h"
 #import "RadioViewController.h"
 
 typedef enum 
@@ -49,7 +49,9 @@ typedef enum
     _titleLabel.title = NSLocalizedString(@"ProfileMyRadioView_title", nil);
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-    
+
+    _labelSendMessage.text = NSLocalizedString(@"ProfileMyRadio_subscribers_button_label", nil);
+
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
 }
@@ -85,7 +87,7 @@ typedef enum
     [_subscribers release];
     _subscribers = nil;
     
-    //[[YasoundDataProvider main] userWithId:self.user.id target:self action:@selector(onUserInfo:info:)];
+    [[YasoundDataProvider main] favoriteUsersForRadio:self.radio target:self action:@selector(onSubscribersReceived:withInfo:)];
     
     if ([AudioStreamManager main].currentRadio == nil)
         [_nowPlayingButton setEnabled:NO];
@@ -132,7 +134,11 @@ typedef enum
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {    
     if (section == eSectionSubscribers)
-        return nil;
+    {
+        UIView* view = [[UIView alloc] init];
+        view.backgroundColor = [UIColor clearColor];
+        return view;
+    }
 
     
     NSString* title = nil;
@@ -168,12 +174,12 @@ typedef enum
         [view release];
         return;
     }
-    else if (indexPath.section == eSectionSubscribersButton)
-    {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainRow.png"]];
-        cell.backgroundView = view;
-        [view release];
-    }
+//    else if (indexPath.section == eSectionSubscribersButton)
+//    {
+//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainRow.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
 }
 
 
@@ -231,40 +237,48 @@ typedef enum
         
     }
     
-    
     else if (indexPath.section == eSectionSubscribersButton)
     {
-        NSString *cellIdentifier = cellIdentifier1;
-        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if (cell == nil)
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-
-        
-        cell.textLabel.text = NSLocalizedString(@"ProfileMyRadio_subscribers_button_label", nil);
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
-        assert(cell != nil);
-        return cell;
+        return _cellSendMessage;
     }
+    
+//    else if (indexPath.section == eSectionSubscribersButton)
+//    {
+//        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier1];
+//        if (cell == nil)
+//            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier1] autorelease];
+//
+//        
+//        cell.textLabel.text = NSLocalizedString(@"ProfileMyRadio_subscribers_button_label", nil);
+//        cell.textLabel.textColor = [UIColor whiteColor];
+//        cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
+//        cell.textLabel.backgroundColor = [UIColor clearColor];
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//
+//        assert(cell != nil);
+//        return cell;
+//    }
     else if (indexPath.section == eSectionSubscribers)
     {
-        UserViewCell* cell;
+        UserTableViewCell* cell = (UserTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier2];
         
-        cell = (UserViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier2];
-        if (cell == nil)
-        {    
-            cell = [[UserViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier2];
-        }
-        
+        User* user = nil;
         if ((_subscribers == nil) || (_subscribers.count <= indexPath.row))
         {
             assert(0);
             NSLog(@"error with subscribers array.");
         }
         else
-            cell.user = [_subscribers objectAtIndex:indexPath.row];
+            user = [_subscribers objectAtIndex:indexPath.row];
+
+        if (cell == nil)
+        {    
+            cell = [[UserTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier2 rowIndex:indexPath.row user:user];
+        }
+        else
+            [cell updateWithUser:user rowIndex:indexPath.row];
+
+        
 
         assert(cell != nil);
         return cell;
@@ -298,15 +312,13 @@ typedef enum
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
 }
 
-////
-//
-//- (void)favoritesRadioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
-//{
-//    _favoriteRadios = radios;
-//    [_favoriteRadios retain];
-//    [_tableView reloadData];
-//}
-//
+- (void)onSubscribersReceived:(NSArray*)subscribers withInfo:(NSDictionary*)info
+{
+    _subscribers = subscribers;
+    [_subscribers retain];
+    [_tableView reloadData];
+}
+
 
 
 @end

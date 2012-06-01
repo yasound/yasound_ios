@@ -19,6 +19,9 @@
     IBOutlet UITableView* _tableView;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
     
+    IBOutlet UITableViewCell* _cellSendMessage;
+    IBOutlet UILabel* _labelSendMessage;
+    
     WebImageView* _imageView;
     NSArray* _subscribers;
     UILabel* _name;
