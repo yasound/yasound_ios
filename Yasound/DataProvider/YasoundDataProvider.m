@@ -1794,6 +1794,25 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - User Notifications
 
+- (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/broadcast_message/", radio.uuid];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+
+    [req addPostValue:message forKey:@"message"];
+
+    [req startAsynchronous];
+}
+
+
+
 - (void)userNotificationsWithTarget:(id)target action:(SEL)selector
 {
     RequestConfig* conf = [[RequestConfig alloc] init];

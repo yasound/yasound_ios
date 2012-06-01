@@ -88,6 +88,9 @@ typedef enum
     [_subscribers release];
     _subscribers = nil;
     
+    _imageViewSendMessage.highlighted = NO;
+
+    
     [[YasoundDataProvider main] favoriteUsersForRadio:self.radio target:self action:@selector(onSubscribersReceived:withInfo:)];
     
     if ([AudioStreamManager main].currentRadio == nil)
@@ -295,7 +298,9 @@ typedef enum
 {
     if (indexPath.section == eSectionSubscribersButton)
     {
-        MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:self.radio target:self action:@selector(onModalReturned)];
+        _imageViewSendMessage.highlighted = YES;
+        
+        MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:self.radio subscribers:_subscribers target:self action:@selector(onModalReturned)];
         [self.navigationController presentModalViewController:view animated:YES];
         [view release];
     }

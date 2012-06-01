@@ -20,6 +20,7 @@
     IBOutlet UIBarButtonItem* _nowPlayingButton;
     
     IBOutlet UITableViewCell* _cellSendMessage;
+    IBOutlet UIImageView* _imageViewSendMessage;
     IBOutlet UILabel* _labelSendMessage;
     
     WebImageView* _imageView;

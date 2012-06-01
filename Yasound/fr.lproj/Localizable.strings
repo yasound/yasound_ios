@@ -543,3 +543,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "ProfileMyRadioView_section_subscribers" = "Mes abonnés";
 "ProfileMyRadio_subscribers_button_label"= "Envoyer un message à mes abonnés";
 
+"MessageBroadcastModalView_send_button_label" = "Send";
+"MessageBroadcastModalView_title" = "Message";
+"MessageBroadcastModalView_from" = "From : %@";
+"MessageBroadcastModalView_to" = "To : %d subscribers";
+

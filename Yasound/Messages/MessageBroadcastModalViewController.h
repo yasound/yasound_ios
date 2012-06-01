@@ -29,10 +29,9 @@
 }
 
 @property (nonatomic, retain) Radio* radio;
-@property (nonatomic, retain) NSURL* pictureUrl;
-@property (nonatomic, retain) NSURL* fullLink;
+@property (nonatomic, assign) NSArray* subscribers;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)aRadio target:(id)target action:(SEL)action;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)aRadio subscribers:(NSArray*)subscribers target:(id)target action:(SEL)action;
 
 
 @end

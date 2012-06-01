@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-			<string key="NS.object.0">1181</string>
+			<string key="NS.object.0">1179</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBProxyObject</string>
@@ -265,6 +265,14 @@
 					<int key="connectionID">21</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_imageViewSendMessage</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="132235009"/>
+					</object>
+					<int key="connectionID">22</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onBack:</string>
 						<reference key="source" ref="993950192"/>
@@ -401,7 +409,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">21</int>
+			<int key="maxID">22</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -422,6 +430,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_backBtn">UIBarButtonItem</string>
 						<string key="_cellSendMessage">UITableViewCell</string>
+						<string key="_imageViewSendMessage">UIImageView</string>
 						<string key="_labelSendMessage">UILabel</string>
 						<string key="_nowPlayingButton">UIBarButtonItem</string>
 						<string key="_tableView">UITableView</string>
@@ -435,6 +444,10 @@
 						<object class="IBToOneOutletInfo" key="_cellSendMessage">
 							<string key="name">_cellSendMessage</string>
 							<string key="candidateClassName">UITableViewCell</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_imageViewSendMessage">
+							<string key="name">_imageViewSendMessage</string>
+							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_labelSendMessage">
 							<string key="name">_labelSendMessage</string>
@@ -469,6 +482,6 @@
 			<string key="CellButtonHighlighted.png">{320, 46}</string>
 			<string key="TableViewDisclosure.png">{28, 28}</string>
 		</dictionary>
-		<string key="IBCocoaTouchPluginVersion">1181</string>
+		<string key="IBCocoaTouchPluginVersion">1179</string>
 	</data>
 </archive>

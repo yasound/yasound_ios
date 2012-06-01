@@ -556,4 +556,7 @@
 "ProfileMyRadioView_section_subscribers" = "My subscribers";
 "ProfileMyRadio_subscribers_button_label"= "Send a message to my subscribers";
 
-
+"MessageBroadcastModalView_send_button_label" = "Envoyer";
+"MessageBroadcastModalView_title" = "Message";
+"MessageBroadcastModalView_from" = "De : %@";
+"MessageBroadcastModalView_to" = "A : %d abonnés";
