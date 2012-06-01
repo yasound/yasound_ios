@@ -2520,6 +2520,22 @@
 		BCAAE1A414FBF10500B7F2B4 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		BCAAE1A514FBF10500B7F2B4 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		BCAAE1A614FBF10500B7F2B4 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
+		BCB0769415790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */; };
+		BCB0769515790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */; };
+		BCB0769615790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */; };
+		BCB0769715790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */; };
+		BCB0769815790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */; };
+		BCB0769915790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */; };
+		BCB0769A15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */; };
+		BCB0769B15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */; };
+		BCB0769C15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */; };
+		BCB0769D15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */; };
+		BCB0769E15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */; };
+		BCB0769F15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */; };
+		BCB076A015790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */; };
+		BCB076A115790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */; };
+		BCB076A215790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */; };
+		BCB076A315790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */; };
 		BCB0EE0C15233A6300290383 /* YasoundLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EE0A15233A6300290383 /* YasoundLoginViewController.m */; };
 		BCB0EE0D15233A6300290383 /* YasoundLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EE0A15233A6300290383 /* YasoundLoginViewController.m */; };
 		BCB0EE0E15233A6300290383 /* YasoundLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB0EE0A15233A6300290383 /* YasoundLoginViewController.m */; };
@@ -3776,6 +3792,9 @@
 		BCAAE19514FBF02E00B7F2B4 /* CellButtonDel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellButtonDel@2x.png"; sourceTree = "<group>"; };
 		BCAAE1A014FBF10500B7F2B4 /* SongUploadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongUploadCell.h; path = Programming/SongUploadCell.h; sourceTree = "<group>"; };
 		BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongUploadCell.m; path = Programming/SongUploadCell.m; sourceTree = "<group>"; };
+		BCB0769115790EEB00F9347C /* MessageBroadcastModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBroadcastModalViewController.h; sourceTree = "<group>"; };
+		BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBroadcastModalViewController.m; sourceTree = "<group>"; };
+		BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageBroadcastModalViewController.xib; sourceTree = "<group>"; };
 		BCB0EE0915233A6300290383 /* YasoundLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YasoundLoginViewController.h; path = Login/YasoundLoginViewController.h; sourceTree = "<group>"; };
 		BCB0EE0A15233A6300290383 /* YasoundLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YasoundLoginViewController.m; path = Login/YasoundLoginViewController.m; sourceTree = "<group>"; };
 		BCB0EE0B15233A6300290383 /* YasoundLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YasoundLoginViewController.xib; path = Login/YasoundLoginViewController.xib; sourceTree = "<group>"; };
@@ -4940,6 +4959,16 @@
 			path = Yasound;
 			sourceTree = "<group>";
 		};
+		BCB0767D15790AB100F9347C /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				BCB0769115790EEB00F9347C /* MessageBroadcastModalViewController.h */,
+				BCB0769215790EEB00F9347C /* MessageBroadcastModalViewController.m */,
+				BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
 		BCB0EF12152351A900290383 /* UnderlinedButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -5568,6 +5597,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
+				BCB0767D15790AB100F9347C /* Messages */,
 				4028E7A7152D9E5B0056B34B /* Notifications */,
 				B16CAEBC152D791600317510 /* Profile */,
 				BC82066E14F561C900FAE05E /* Programming */,
@@ -6034,6 +6064,7 @@
 				BC43693E156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436946156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80181577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
+				BCB076A215790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6248,6 +6279,7 @@
 				BC43693F156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436947156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80191577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
+				BCB076A315790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6456,6 +6488,7 @@
 				BC43693D156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436945156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80171577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
+				BCB076A115790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6669,6 +6702,7 @@
 				BC43693A156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436942156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80141577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
+				BCB0769E15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6882,6 +6916,7 @@
 				BC436939156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436941156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80131577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
+				BCB0769D15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7095,6 +7130,7 @@
 				BC43693C156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436944156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80161577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
+				BCB076A015790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7308,6 +7344,7 @@
 				BC436938156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436940156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80121577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
+				BCB0769C15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7521,6 +7558,7 @@
 				BC43693B156FED9F0059BC22 /* CellPublicSongCardRow.png in Resources */,
 				BC436943156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80151577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
+				BCB0769F15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7712,6 +7750,7 @@
 				BC43690D156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC43692C156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD80101577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
+				BCB0769A15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7900,6 +7939,7 @@
 				BC43690E156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC43692D156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD80111577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
+				BCB0769B15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8084,6 +8124,7 @@
 				BC43690C156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC43692B156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800F1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
+				BCB0769915790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8272,6 +8313,7 @@
 				BC436909156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC436928156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800C1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
+				BCB0769615790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8460,6 +8502,7 @@
 				BC436908156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC436927156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800B1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
+				BCB0769515790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8649,6 +8692,7 @@
 				BC43690B156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC43692A156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800E1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
+				BCB0769815790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8837,6 +8881,7 @@
 				BC436907156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC436926156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800A1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
+				BCB0769415790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9026,6 +9071,7 @@
 				BC43690A156F8F820059BC22 /* TouchedTableView.m in Sources */,
 				BC436929156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800D1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
+				BCB0769715790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@
 #import "RootViewController.h"
 #import "UserTableViewCell.h"
 #import "RadioViewController.h"
+#import "MessageBroadcastModalViewController.h"
 
 typedef enum 
 {
@@ -294,8 +295,15 @@ typedef enum
 {
     if (indexPath.section == eSectionSubscribersButton)
     {
-        NSLog(@"TODO");
+        MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:self.radio target:self action:@selector(onModalReturned)];
+        [self.navigationController presentModalViewController:view animated:YES];
+        [view release];
     }
+}
+
+- (void)onModalReturned
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 
