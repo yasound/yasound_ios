@@ -117,37 +117,16 @@
     if (message.length == 0)
         return;
     
-    ICI
-    
-    NSLog(@"Share on facebook.");
-//    [[YasoundSessionManager main] postMessageForFacebook:_textView.text title:title picture:self.pictureUrl link:fullLink target:self action:@selector(onPostMessageFinished:)];
-    
     [ActivityAlertView showWithTitle:nil];
+
+    [[YasoundDataProvider main] broadcastMessage:message fromRadio:self.radio withTarget:self action:@selector(onPostMessageFinished)];
+    
 }
 
 
 - (void)onPostMessageFinished:(NSNumber*)finished
 {
-    BOOL done = [finished boolValue];
-
-    [ActivityAlertView close];
-
-    NSLog(@"onPostMessageFinished received : finished %d", done);
-
-    if (!done)
-    {
-        UIAlertView *av;
-        
-            av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"RadioView_track_share_error_title", nil) message:NSLocalizedString(@"RadioView_track_share_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        
-        [av show];
-        [av release];  
-        return;    
-    }
-    
-    [[YasoundDataProvider main] radioHasBeenShared:self.radio with:@"facebook"];
-    
-    [_target performSelector:_action];
+    [ActivityAlertView close];    
 }
 
 
