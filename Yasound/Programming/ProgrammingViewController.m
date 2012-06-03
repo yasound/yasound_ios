@@ -317,6 +317,9 @@
     if (nbRows == 0)
         return nil;
     
+    //LBDEBUG
+    assert([SongCatalog synchronizedCatalog].indexMap.count > section);
+    
     NSString* title = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:section];
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -341,6 +344,9 @@
 
 - (NSInteger)getNbRowsForTable:(UITableView*)tableView inSection:(NSInteger)section
 {
+    //LBDEBUG
+    assert([SongCatalog synchronizedCatalog].indexMap.count > section);
+
     NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:section];
     
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
@@ -415,6 +421,9 @@
 {
     static NSString* CellIdentifier = @"CellAlpha";
 
+    //LBDEBUG
+    assert([SongCatalog synchronizedCatalog].indexMap.count > indexPath.section);
+
     NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
     NSArray* songs = [self.sortedSongs objectForKey:charIndex];
     
@@ -430,6 +439,9 @@
         [self.sortedSongs setObject:songs forKey:charIndex];
 
     }
+
+    //LBDEBUG
+    assert(songs.count > indexPath.row);
 
     Song* song = [songs objectAtIndex:indexPath.row];
     
@@ -482,6 +494,9 @@
 
 - (UITableViewCell*)cellFolderForRowAtIndexPath:(NSIndexPath*)indexPath
 {
+    //LBDEBUG
+    assert([SongCatalog synchronizedCatalog].indexMap.count > indexPath.section);
+    
     NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
 
     NSMutableDictionary* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];
@@ -514,7 +529,10 @@
         cell.detailTextLabel.backgroundColor = [UIColor clearColor];
         
         
-        NSString* artist = [artists objectAtIndex:indexPath.row];
+    //LBDEBUG
+    assert(artists.count > indexPath.row);
+
+    NSString* artist = [artists objectAtIndex:indexPath.row];
         
         NSDictionary* artistRepo = [artistsForSection objectForKey:artist];
 
@@ -545,7 +563,15 @@
     if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
         
+        //LBDEBUG
+        assert([SongCatalog synchronizedCatalog].indexMap.count > indexPath.section);
+
         NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
+        
+        
+        //LBDEBUG
+        assert([self.sortedSongs objectForKey:charIndex].count > indexPath.row);
+
         Song* song = [[self.sortedSongs objectForKey:charIndex] objectAtIndex:indexPath.row];
         
         SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES];
@@ -554,7 +580,15 @@
     }
     else
     {
+        //LBDEBUG
+        assert([SongCatalog synchronizedCatalog].indexMap.count > indexPath.section);
+
         NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
+
+        
+        //LBDEBUG
+        assert([self.sortedArtists objectForKey:charIndex].count > indexPath.row);
+
         NSString* artistKey = [[self.sortedArtists objectForKey:charIndex] objectAtIndex:indexPath.row];
         
         [[SongCatalog synchronizedCatalog] selectArtist:artistKey withIndex:charIndex];
