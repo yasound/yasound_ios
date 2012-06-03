@@ -570,7 +570,10 @@
         
         
         //LBDEBUG
-        assert([self.sortedSongs objectForKey:charIndex].count > indexPath.row);
+        {
+            NSArray* array  =[self.sortedSongs objectForKey:charIndex];
+        assert(array.count > indexPath.row);
+        }
 
         Song* song = [[self.sortedSongs objectForKey:charIndex] objectAtIndex:indexPath.row];
         
@@ -587,8 +590,12 @@
 
         
         //LBDEBUG
-        assert([self.sortedArtists objectForKey:charIndex].count > indexPath.row);
+        {
+            NSArray* array  =[self.sortedArtists objectForKey:charIndex];
+            assert(array.count > indexPath.row);
+        }
 
+        
         NSString* artistKey = [[self.sortedArtists objectForKey:charIndex] objectAtIndex:indexPath.row];
         
         [[SongCatalog synchronizedCatalog] selectArtist:artistKey withIndex:charIndex];
