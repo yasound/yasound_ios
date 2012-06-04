@@ -18,7 +18,8 @@ typedef enum
   eAPNsNotif_RadioInFavorites,
   eAPNsNotif_RadioShared,
   eAPNsNotif_FriendCreatedRadio,
-  eAPNsNotif_YasoundMessage,
+    eAPNsNotif_YasoundMessage,
+    eAPNsNotif_UserMessage,
   eAPNsNotif_None
 } APNsNotifType;
 
