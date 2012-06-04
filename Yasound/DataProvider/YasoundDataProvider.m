@@ -1804,7 +1804,8 @@ static YasoundDataProvider* _main = nil;
     conf.callbackTarget = target;
     conf.callbackAction = selector;
 
-    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    ASIFormDataRequest* req =  [_communicator buildFormDataRequestWithConfig:conf];
+//    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
 
     [req addPostValue:message forKey:@"message"];
 

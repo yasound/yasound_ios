@@ -119,13 +119,14 @@
     
     [ActivityAlertView showWithTitle:nil];
 
-    [[YasoundDataProvider main] broadcastMessage:message fromRadio:self.radio withTarget:self action:@selector(onPostMessageFinished)];
+    [[YasoundDataProvider main] broadcastMessage:message fromRadio:self.radio withTarget:self action:@selector(onPostMessageFinished:withInfo:)];
     
 }
 
 
-- (void)onPostMessageFinished:(NSNumber*)finished
+- (void)onPostMessageFinished:(NSNumber*)finished withInfo:(NSDictionary*)infos
 {
+    NSLog(@"info %@", infos);
     [ActivityAlertView close];    
 }
 
