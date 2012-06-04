@@ -14,6 +14,9 @@
 @synthesize artist;
 @synthesize album;
 @synthesize cover;
+@synthesize name_client;
+@synthesize artist_client;
+@synthesize album_client;
 @synthesize song;
 @synthesize need_sync;
 @synthesize likes;
