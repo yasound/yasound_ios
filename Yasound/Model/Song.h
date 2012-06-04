@@ -27,6 +27,9 @@ typedef enum
 @property (retain, nonatomic) NSString* name;
 @property (retain, nonatomic) NSString* artist;
 @property (retain, nonatomic) NSString* album;
+@property (retain, nonatomic) NSString* name_client;
+@property (retain, nonatomic) NSString* artist_client;
+@property (retain, nonatomic) NSString* album_client;
 @property (retain, nonatomic) NSString* cover;
 @property (retain, nonatomic) NSNumber* song;
 @property (retain, nonatomic) NSNumber* need_sync;
