@@ -18,6 +18,7 @@
 #define APNS_NOTIF_FRIEND_CREATED_RADIO @"APNs_FCR"
 
 #define APNS_NOTIF_YASOUND_MESSAGE @"APNs_YAS"
+#define APNS_NOTIF_USER_MESSAGE @"APNs_USR"
 
 
 #define APS_ATTRIBUTE_NAME @"aps"
@@ -198,7 +199,10 @@
   
   if ([locKey isEqualToString:APNS_NOTIF_YASOUND_MESSAGE])
     return eAPNsNotif_YasoundMessage;
-  
+
+    if ([locKey isEqualToString:APNS_NOTIF_USER_MESSAGE])
+        return eAPNsNotif_UserMessage;
+
   return eAPNsNotif_None;
 }
 
