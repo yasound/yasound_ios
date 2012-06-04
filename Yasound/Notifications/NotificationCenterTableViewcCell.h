@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "APNsNotifInfo.h"
+#import "UserNotification.h"
 
 @interface NotificationCenterTableViewcCell : UITableViewCell
 {
-  APNsNotifInfo* _notifInfo;
+  UserNotification* _notification;
   
   UILabel* _notifTextLabel;
   UILabel* _notifDateLabel;
   UIImageView* _unreadImage;
 }
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier notifInfo:(APNsNotifInfo*)notifInfo;
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier notification:(UserNotification*)notif;
 
-- (void)updateWithNotifInfo:(APNsNotifInfo*)notifInfo;
+- (void)updateWithNotification:(UserNotification*)notif;
 
 @end

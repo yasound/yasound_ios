@@ -14,8 +14,6 @@
 #import "RadioViewController.h"
 #import "PlaylistsViewController.h"
 #import "StatsViewController.h"
-#import "APNsNotifInfo.h"
-#import "YasoundNotifCenter.h"
 #import "NotificationCenterViewController.h"
 
 
@@ -246,7 +244,7 @@ void SignalHandler(int sig) {
 
 - (void)handlePushNotification:(NSDictionary*)notifDesc
 {     
-  APNsNotifInfo* notifInfo = [[YasoundNotifCenter main] addNotifInfoWithDescription:notifDesc];
+  // APNsNotifInfo* notifInfo = [[YasoundNotifCenter main] addNotifInfoWithDescription:notifDesc];
 }
 
 - (void)sendAPNsTokenString

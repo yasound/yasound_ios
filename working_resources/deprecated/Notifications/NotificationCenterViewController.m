@@ -11,19 +11,13 @@
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "NotificationCenterTableViewcCell.h"
+#import "YasoundNotifCenter.h"
 #import "FriendsViewController.h"
 #import "RadioViewController.h"
 #import "MessageWeViewController.h"
 #import "ProfileViewController.h"
 
-
-
-
 @implementation NotificationCenterViewController
-
-
-@synthesize notifications;
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,8 +48,6 @@
   
     _topBarTitle.text = NSLocalizedString(@"NotificationCenterView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];
 }
 
 - (void)viewDidUnload
@@ -68,11 +60,14 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
+  
+  [[YasoundNotifCenter main] addTarget:self action:@selector(notificationAdded:) forEvent:eAPNsNotifAdded];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
   [super viewDidDisappear:animated];
+  [[YasoundNotifCenter main] removeTarget:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -82,30 +77,12 @@
 }
 
 
-
-- (void)onNotificationsReceived:(ASIHTTPRequest*)req success:(BOOL)success
-{   
-    if (!success)
-    {
-        NSLog(@"get user notifications FAILED");
-        return;
-    }
-    
-    self.notifications = [req responseNSObjectsWithClass:[UserNotification class]];
-    
-    if (self.notifications == nil)
-        NSLog(@"error receiving notifications");
-    NSLog(@"%d notifications received", self.notifications.count);
-    
-    [_tableView reloadData];
+- (void)notificationAdded:(APNsNotifInfo*)notif
+{
+//  [_tableView reloadData];
+  NSInteger row = [YasoundNotifCenter main].notifInfos.count - 1;
+  [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
 }
-
-//- (void)notificationAdded:(APNsNotifInfo*)notif
-//{
-////  [_tableView reloadData];
-////  NSInteger row = [YasoundNotifCenter main].notifInfos.count - 1;
-////  [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
-//}
 
 
 #pragma mark - TableView Source and Delegate
@@ -120,10 +97,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    if (self.notifications == nil)
-        return 0;
-    
-    return self.notifications.count;
+  NSInteger count = [YasoundNotifCenter main].notifInfos.count;
+  return count;
 }
 
 
@@ -134,19 +109,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
   static NSString *cellIdentifier = @"NotificationCenterTableViewCell";
-    
-    UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
   
-    NotificationCenterTableViewcCell* cell = (NotificationCenterTableViewcCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+  NotificationCenterTableViewcCell* cell = (NotificationCenterTableViewcCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
   
-    if (cell == nil)
-    {    
-        cell = [[NotificationCenterTableViewcCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier notification:notif];
-    }
-    else
-    {
-        [cell updateWithNotifiction:notif];
-    }
+  APNsNotifInfo* notifInfo = [[YasoundNotifCenter main].notifInfos objectAtIndex:indexPath.row];
+  if (cell == nil)
+  {    
+    cell = [[NotificationCenterTableViewcCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier notifInfo:notifInfo];
+  }
+  else
+  {
+    [cell updateWithNotifInfo:notifInfo];
+  }
   
   return cell;
 }
@@ -190,67 +164,49 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
-    
-    [notif setReadBool:YES];
-    
-    // consider it as being read 
-    NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
-    [cell updateWithNotification:notif];
-    [[YasoundDataProvider main] updateUserNotification:notif target:nil action:nil];
-
-
-    
-    
-    
-    if ([notif.type isEqualToString:APNS_NOTIF_FRIEND_ONLINE])
+  APNsNotifInfo* notifInfo = [[YasoundNotifCenter main].notifInfos objectAtIndex:indexPath.row];
+  APNsNotifType t = [notifInfo type];
+  NSNumber* radioID = [notifInfo radioID];
+  NSString* url = [notifInfo url];
+  
+  switch (t) 
+  {
+    case eAPNsNotif_FriendOnline:
     {
       NSLog(@"go to friend screen");
       User* user = [[User alloc] init];
-      user.id = notif.dest_user_id;
-        
+      user.id = [notifInfo userID];
       if (user.id != nil)
         [self goToFriendProfile: user];
       else
         [self goToFriendsViewController];
-    
-        return;
     }
-    
-
-    if ([notif.type isEqualToString:APNS_NOTIF_YASOUND_MESSAGE])
-    {
-        NSString* url = [notif.params objectForKey:@"url"];
-        assert(url != nil);
-        
-        NSLog(@"go to web page %@", url);
-        [self goToMessageWebView:url];
-        return;
-    }
-     
-    
-    if ([notif.type isEqualToString:APNS_NOTIF_USER_MESSAGE])
-    {
-        // nothing
-        return;
-    }
-
-    
-//    case eAPNsNotif_UserInRadio:
-//    case eAPNsNotif_FriendInRadio:
-//    case eAPNsNotif_MessagePosted:
-//    case eAPNsNotif_SongLiked:
-//    case eAPNsNotif_RadioInFavorites:
-//    case eAPNsNotif_RadioShared:
-//    case eAPNsNotif_FriendCreatedRadio:
-    
-    NSNumber* radioID = [notif.params objectForKey:@"radioID"];
-    assert(radioID != nil);
-    
+      break;
+      
+    case eAPNsNotif_UserInRadio:
+    case eAPNsNotif_FriendInRadio:
+    case eAPNsNotif_MessagePosted:
+    case eAPNsNotif_SongLiked:
+    case eAPNsNotif_RadioInFavorites:
+    case eAPNsNotif_RadioShared:
+    case eAPNsNotif_FriendCreatedRadio:
       NSLog(@"go to radio %@", radioID);
       [self goToRadio:radioID];
-
-    
+      break;
+      
+    case eAPNsNotif_YasoundMessage:
+      NSLog(@"go to web page %@", url);
+      [self goToMessageWebView:url];
+      break;
+      
+    default:
+      break;
+  }
+  
+  [notifInfo setRead:YES];
+  
+  NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
+  [cell updateWithNotifInfo:notifInfo];
 }
 
 
@@ -259,8 +215,8 @@
   if (editingStyle != UITableViewCellEditingStyleDelete)
     return;
   
-//  APNsNotifInfo* notifInfo = [[YasoundNotifCenter main].notifInfos objectAtIndex:indexPath.row];
-//  [[YasoundNotifCenter main] deleteNotifInfo:notifInfo];
+  APNsNotifInfo* notifInfo = [[YasoundNotifCenter main].notifInfos objectAtIndex:indexPath.row];
+  [[YasoundNotifCenter main] deleteNotifInfo:notifInfo];
   
   [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
 }

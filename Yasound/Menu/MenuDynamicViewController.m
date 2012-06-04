@@ -26,7 +26,6 @@
 #import "ProgrammingViewController.h"
 
 #import "NotificationCenterViewController.h"
-#import "YasoundNotifCenter.h"
 #import "MenuTableViewCell.h"
 #import "YasoundDataCache.h"
 
@@ -91,7 +90,6 @@
     
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
-    [[YasoundNotifCenter main] addTarget:self action:@selector(unreadNotifCountChanged) forEvent:eAPNsUnreadNotifCountChanged];
 }
 
 
@@ -121,7 +119,6 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
   
-  [[YasoundNotifCenter main] removeTarget:self];
 }
 
 
@@ -133,15 +130,15 @@
 }
 
 
-
-- (void)unreadNotifCountChanged
-{
-  if (!_notificationsCell)
-    return;
-  
-  NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
-  [_notificationsCell setUnreadCount:unread];
-}
+//ICI
+//- (void)unreadNotifCountChanged
+//{
+//  if (!_notificationsCell)
+//    return;
+//  
+//  NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
+//  [_notificationsCell setUnreadCount:unread];
+//}
 
 
 #pragma mark - TableView Source and Delegate
@@ -254,7 +251,9 @@
     
     if ([type isEqualToString:TYPE_NOTIFICATIONS])
     {
-        NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
+//        NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
+        //LBDEBUG
+        NSInteger unread = 0;
         if (!_notificationsCell)
             _notificationsCell = [[NotificationTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil unreadCount:unread];
 

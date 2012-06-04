@@ -56,24 +56,12 @@
 		4028E790152D9DA80056B34B /* APNsDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E788152D9DA80056B34B /* APNsDeviceToken.m */; };
 		4028E791152D9DA80056B34B /* APNsDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E788152D9DA80056B34B /* APNsDeviceToken.m */; };
 		4028E792152D9DA80056B34B /* APNsDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E788152D9DA80056B34B /* APNsDeviceToken.m */; };
-		4028E793152D9DA80056B34B /* APNsNotifInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78A152D9DA80056B34B /* APNsNotifInfo.m */; };
-		4028E794152D9DA80056B34B /* APNsNotifInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78A152D9DA80056B34B /* APNsNotifInfo.m */; };
-		4028E795152D9DA80056B34B /* APNsNotifInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78A152D9DA80056B34B /* APNsNotifInfo.m */; };
-		4028E796152D9DA80056B34B /* APNsNotifInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78A152D9DA80056B34B /* APNsNotifInfo.m */; };
-		4028E797152D9DA80056B34B /* APNsNotifInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78A152D9DA80056B34B /* APNsNotifInfo.m */; };
-		4028E798152D9DA80056B34B /* APNsNotifInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78A152D9DA80056B34B /* APNsNotifInfo.m */; };
 		4028E799152D9DA80056B34B /* APNsPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78C152D9DA80056B34B /* APNsPreferences.m */; };
 		4028E79A152D9DA80056B34B /* APNsPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78C152D9DA80056B34B /* APNsPreferences.m */; };
 		4028E79B152D9DA80056B34B /* APNsPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78C152D9DA80056B34B /* APNsPreferences.m */; };
 		4028E79C152D9DA80056B34B /* APNsPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78C152D9DA80056B34B /* APNsPreferences.m */; };
 		4028E79D152D9DA80056B34B /* APNsPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78C152D9DA80056B34B /* APNsPreferences.m */; };
 		4028E79E152D9DA80056B34B /* APNsPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78C152D9DA80056B34B /* APNsPreferences.m */; };
-		4028E7A1152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A0152D9DCB0056B34B /* YasoundNotifCenter.m */; };
-		4028E7A2152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A0152D9DCB0056B34B /* YasoundNotifCenter.m */; };
-		4028E7A3152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A0152D9DCB0056B34B /* YasoundNotifCenter.m */; };
-		4028E7A4152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A0152D9DCB0056B34B /* YasoundNotifCenter.m */; };
-		4028E7A5152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A0152D9DCB0056B34B /* YasoundNotifCenter.m */; };
-		4028E7A6152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A0152D9DCB0056B34B /* YasoundNotifCenter.m */; };
 		4028E7AD152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A9152D9E6F0056B34B /* NotificationCenterTableViewcCell.m */; };
 		4028E7AE152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A9152D9E6F0056B34B /* NotificationCenterTableViewcCell.m */; };
 		4028E7AF152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A9152D9E6F0056B34B /* NotificationCenterTableViewcCell.m */; };
@@ -280,9 +268,7 @@
 		40B409F6152EFC630050D334 /* NotificationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7CC152D308A0051A085 /* NotificationViewCell.m */; };
 		40B409F7152EFC630050D334 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7D4152D33C40051A085 /* NotificationManager.m */; };
 		40B409F9152EFC630050D334 /* APNsDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E788152D9DA80056B34B /* APNsDeviceToken.m */; };
-		40B409FA152EFC630050D334 /* APNsNotifInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78A152D9DA80056B34B /* APNsNotifInfo.m */; };
 		40B409FB152EFC630050D334 /* APNsPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78C152D9DA80056B34B /* APNsPreferences.m */; };
-		40B409FC152EFC630050D334 /* YasoundNotifCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A0152D9DCB0056B34B /* YasoundNotifCenter.m */; };
 		40B409FD152EFC630050D334 /* NotificationCenterTableViewcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A9152D9E6F0056B34B /* NotificationCenterTableViewcCell.m */; };
 		40B409FE152EFC630050D334 /* NotificationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7AB152D9E6F0056B34B /* NotificationCenterViewController.m */; };
 		40B409FF152EFC630050D334 /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
@@ -664,9 +650,7 @@
 		40D53BF11554280F001EB0C5 /* NotificationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7CC152D308A0051A085 /* NotificationViewCell.m */; };
 		40D53BF21554280F001EB0C5 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7D4152D33C40051A085 /* NotificationManager.m */; };
 		40D53BF31554280F001EB0C5 /* APNsDeviceToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E788152D9DA80056B34B /* APNsDeviceToken.m */; };
-		40D53BF41554280F001EB0C5 /* APNsNotifInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78A152D9DA80056B34B /* APNsNotifInfo.m */; };
 		40D53BF51554280F001EB0C5 /* APNsPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E78C152D9DA80056B34B /* APNsPreferences.m */; };
-		40D53BF61554280F001EB0C5 /* YasoundNotifCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A0152D9DCB0056B34B /* YasoundNotifCenter.m */; };
 		40D53BF71554280F001EB0C5 /* NotificationCenterTableViewcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A9152D9E6F0056B34B /* NotificationCenterTableViewcCell.m */; };
 		40D53BF81554280F001EB0C5 /* NotificationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7AB152D9E6F0056B34B /* NotificationCenterViewController.m */; };
 		40D53BF91554280F001EB0C5 /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
@@ -3450,12 +3434,8 @@
 		40274B7F1491048900F26008 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		4028E787152D9DA80056B34B /* APNsDeviceToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNsDeviceToken.h; sourceTree = "<group>"; };
 		4028E788152D9DA80056B34B /* APNsDeviceToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNsDeviceToken.m; sourceTree = "<group>"; };
-		4028E789152D9DA80056B34B /* APNsNotifInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNsNotifInfo.h; sourceTree = "<group>"; };
-		4028E78A152D9DA80056B34B /* APNsNotifInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNsNotifInfo.m; sourceTree = "<group>"; };
 		4028E78B152D9DA80056B34B /* APNsPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APNsPreferences.h; sourceTree = "<group>"; };
 		4028E78C152D9DA80056B34B /* APNsPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APNsPreferences.m; sourceTree = "<group>"; };
-		4028E79F152D9DCB0056B34B /* YasoundNotifCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundNotifCenter.h; sourceTree = "<group>"; };
-		4028E7A0152D9DCB0056B34B /* YasoundNotifCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundNotifCenter.m; sourceTree = "<group>"; };
 		4028E7A8152D9E6F0056B34B /* NotificationCenterTableViewcCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationCenterTableViewcCell.h; path = Notifications/NotificationCenterTableViewcCell.h; sourceTree = "<group>"; };
 		4028E7A9152D9E6F0056B34B /* NotificationCenterTableViewcCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationCenterTableViewcCell.m; path = Notifications/NotificationCenterTableViewcCell.m; sourceTree = "<group>"; };
 		4028E7AA152D9E6F0056B34B /* NotificationCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationCenterViewController.h; path = Notifications/NotificationCenterViewController.h; sourceTree = "<group>"; };
@@ -4361,8 +4341,6 @@
 		40AAEC4714921ACE0031B39D /* DataProvider */ = {
 			isa = PBXGroup;
 			children = (
-				4028E79F152D9DCB0056B34B /* YasoundNotifCenter.h */,
-				4028E7A0152D9DCB0056B34B /* YasoundNotifCenter.m */,
 				BCA2CCD1149A80270000637E /* PlaylistMoulinor.h */,
 				BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */,
 				40AAEC4914921AE70031B39D /* YasoundDataProvider.h */,
@@ -4461,8 +4439,6 @@
 			children = (
 				4028E787152D9DA80056B34B /* APNsDeviceToken.h */,
 				4028E788152D9DA80056B34B /* APNsDeviceToken.m */,
-				4028E789152D9DA80056B34B /* APNsNotifInfo.h */,
-				4028E78A152D9DA80056B34B /* APNsNotifInfo.m */,
 				4028E78B152D9DA80056B34B /* APNsPreferences.h */,
 				4028E78C152D9DA80056B34B /* APNsPreferences.m */,
 				BCA6554714BCA8590043B2DA /* Auth.h */,
@@ -7727,9 +7703,7 @@
 				40B409F6152EFC630050D334 /* NotificationViewCell.m in Sources */,
 				40B409F7152EFC630050D334 /* NotificationManager.m in Sources */,
 				40B409F9152EFC630050D334 /* APNsDeviceToken.m in Sources */,
-				40B409FA152EFC630050D334 /* APNsNotifInfo.m in Sources */,
 				40B409FB152EFC630050D334 /* APNsPreferences.m in Sources */,
-				40B409FC152EFC630050D334 /* YasoundNotifCenter.m in Sources */,
 				40B409FD152EFC630050D334 /* NotificationCenterTableViewcCell.m in Sources */,
 				40B409FE152EFC630050D334 /* NotificationCenterViewController.m in Sources */,
 				40B409FF152EFC630050D334 /* MessageWeViewController.m in Sources */,
@@ -7916,9 +7890,7 @@
 				40D53BF11554280F001EB0C5 /* NotificationViewCell.m in Sources */,
 				40D53BF21554280F001EB0C5 /* NotificationManager.m in Sources */,
 				40D53BF31554280F001EB0C5 /* APNsDeviceToken.m in Sources */,
-				40D53BF41554280F001EB0C5 /* APNsNotifInfo.m in Sources */,
 				40D53BF51554280F001EB0C5 /* APNsPreferences.m in Sources */,
-				40D53BF61554280F001EB0C5 /* YasoundNotifCenter.m in Sources */,
 				40D53BF71554280F001EB0C5 /* NotificationCenterTableViewcCell.m in Sources */,
 				40D53BF81554280F001EB0C5 /* NotificationCenterViewController.m in Sources */,
 				40D53BF91554280F001EB0C5 /* MessageWeViewController.m in Sources */,
@@ -8101,9 +8073,7 @@
 				BC4CA7D2152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7DA152D33C40051A085 /* NotificationManager.m in Sources */,
 				4028E792152D9DA80056B34B /* APNsDeviceToken.m in Sources */,
-				4028E798152D9DA80056B34B /* APNsNotifInfo.m in Sources */,
 				4028E79E152D9DA80056B34B /* APNsPreferences.m in Sources */,
-				4028E7A6152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7B2152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B8152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C7152DC1400056B34B /* MessageWeViewController.m in Sources */,
@@ -8290,9 +8260,7 @@
 				BC4CA7CF152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D7152D33C40051A085 /* NotificationManager.m in Sources */,
 				4028E78F152D9DA80056B34B /* APNsDeviceToken.m in Sources */,
-				4028E795152D9DA80056B34B /* APNsNotifInfo.m in Sources */,
 				4028E79B152D9DA80056B34B /* APNsPreferences.m in Sources */,
-				4028E7A3152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7AF152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B5152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C4152DC1400056B34B /* MessageWeViewController.m in Sources */,
@@ -8479,9 +8447,7 @@
 				BC4CA7CE152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D6152D33C40051A085 /* NotificationManager.m in Sources */,
 				4028E78E152D9DA80056B34B /* APNsDeviceToken.m in Sources */,
-				4028E794152D9DA80056B34B /* APNsNotifInfo.m in Sources */,
 				4028E79A152D9DA80056B34B /* APNsPreferences.m in Sources */,
-				4028E7A2152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7AE152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B4152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C3152DC1400056B34B /* MessageWeViewController.m in Sources */,
@@ -8669,9 +8635,7 @@
 				BC4CA7D1152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D9152D33C40051A085 /* NotificationManager.m in Sources */,
 				4028E791152D9DA80056B34B /* APNsDeviceToken.m in Sources */,
-				4028E797152D9DA80056B34B /* APNsNotifInfo.m in Sources */,
 				4028E79D152D9DA80056B34B /* APNsPreferences.m in Sources */,
-				4028E7A5152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7B1152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B7152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C6152DC1400056B34B /* MessageWeViewController.m in Sources */,
@@ -8858,9 +8822,7 @@
 				BC4CA7CD152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D5152D33C40051A085 /* NotificationManager.m in Sources */,
 				4028E78D152D9DA80056B34B /* APNsDeviceToken.m in Sources */,
-				4028E793152D9DA80056B34B /* APNsNotifInfo.m in Sources */,
 				4028E799152D9DA80056B34B /* APNsPreferences.m in Sources */,
-				4028E7A1152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7AD152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B3152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C2152DC1400056B34B /* MessageWeViewController.m in Sources */,
@@ -9048,9 +9010,7 @@
 				BC4CA7D0152D308A0051A085 /* NotificationViewCell.m in Sources */,
 				BC4CA7D8152D33C40051A085 /* NotificationManager.m in Sources */,
 				4028E790152D9DA80056B34B /* APNsDeviceToken.m in Sources */,
-				4028E796152D9DA80056B34B /* APNsNotifInfo.m in Sources */,
 				4028E79C152D9DA80056B34B /* APNsPreferences.m in Sources */,
-				4028E7A4152D9DCB0056B34B /* YasoundNotifCenter.m in Sources */,
 				4028E7B0152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B6152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C5152DC1400056B34B /* MessageWeViewController.m in Sources */,
