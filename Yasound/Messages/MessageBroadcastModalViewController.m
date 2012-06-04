@@ -108,9 +108,6 @@
 
 - (IBAction)onPublishButton:(id)sender
 {
-    if (_target == nil)
-        return;
-    
     NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
     NSString* message = [_textView.text stringByTrimmingCharactersInSet:space];
     
@@ -126,8 +123,14 @@
 
 - (void)onPostMessageFinished:(NSNumber*)finished withInfo:(NSDictionary*)infos
 {
-    NSLog(@"info %@", infos);
+    //NSLog(@"info %@", infos);
     [ActivityAlertView close];    
+    
+    if (_target == nil)
+        return;
+    
+    [_target performSelector:_action];
+    
 }
 
 
