@@ -1583,6 +1583,22 @@
 		BC4CA7D8152D33C40051A085 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7D4152D33C40051A085 /* NotificationManager.m */; };
 		BC4CA7D9152D33C40051A085 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7D4152D33C40051A085 /* NotificationManager.m */; };
 		BC4CA7DA152D33C40051A085 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4CA7D4152D33C40051A085 /* NotificationManager.m */; };
+		BC506A60157E081100DF8BED /* NotificationMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC506A5E157E081100DF8BED /* NotificationMessageViewController.m */; };
+		BC506A61157E081100DF8BED /* NotificationMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC506A5E157E081100DF8BED /* NotificationMessageViewController.m */; };
+		BC506A62157E081100DF8BED /* NotificationMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC506A5E157E081100DF8BED /* NotificationMessageViewController.m */; };
+		BC506A63157E081100DF8BED /* NotificationMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC506A5E157E081100DF8BED /* NotificationMessageViewController.m */; };
+		BC506A64157E081100DF8BED /* NotificationMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC506A5E157E081100DF8BED /* NotificationMessageViewController.m */; };
+		BC506A65157E081100DF8BED /* NotificationMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC506A5E157E081100DF8BED /* NotificationMessageViewController.m */; };
+		BC506A66157E081100DF8BED /* NotificationMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC506A5E157E081100DF8BED /* NotificationMessageViewController.m */; };
+		BC506A67157E081100DF8BED /* NotificationMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC506A5E157E081100DF8BED /* NotificationMessageViewController.m */; };
+		BC506A68157E081100DF8BED /* NotificationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC506A5F157E081100DF8BED /* NotificationMessageViewController.xib */; };
+		BC506A69157E081100DF8BED /* NotificationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC506A5F157E081100DF8BED /* NotificationMessageViewController.xib */; };
+		BC506A6A157E081100DF8BED /* NotificationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC506A5F157E081100DF8BED /* NotificationMessageViewController.xib */; };
+		BC506A6B157E081100DF8BED /* NotificationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC506A5F157E081100DF8BED /* NotificationMessageViewController.xib */; };
+		BC506A6C157E081100DF8BED /* NotificationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC506A5F157E081100DF8BED /* NotificationMessageViewController.xib */; };
+		BC506A6D157E081100DF8BED /* NotificationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC506A5F157E081100DF8BED /* NotificationMessageViewController.xib */; };
+		BC506A6E157E081100DF8BED /* NotificationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC506A5F157E081100DF8BED /* NotificationMessageViewController.xib */; };
+		BC506A6F157E081100DF8BED /* NotificationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC506A5F157E081100DF8BED /* NotificationMessageViewController.xib */; };
 		BC524EFA14EEC250001B4FC5 /* btnBuyDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524EF214EEC250001B4FC5 /* btnBuyDown.png */; };
 		BC524EFB14EEC250001B4FC5 /* btnBuyDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524EF214EEC250001B4FC5 /* btnBuyDown.png */; };
 		BC524EFC14EEC250001B4FC5 /* btnBuyDown.png in Resources */ = {isa = PBXBuildFile; fileRef = BC524EF214EEC250001B4FC5 /* btnBuyDown.png */; };
@@ -3647,6 +3663,9 @@
 		BC4CA7CC152D308A0051A085 /* NotificationViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationViewCell.m; path = Settings/NotificationViewCell.m; sourceTree = "<group>"; };
 		BC4CA7D3152D33C40051A085 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationManager.h; path = Settings/NotificationManager.h; sourceTree = "<group>"; };
 		BC4CA7D4152D33C40051A085 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationManager.m; path = Settings/NotificationManager.m; sourceTree = "<group>"; };
+		BC506A5D157E081100DF8BED /* NotificationMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationMessageViewController.h; path = Notifications/NotificationMessageViewController.h; sourceTree = "<group>"; };
+		BC506A5E157E081100DF8BED /* NotificationMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationMessageViewController.m; path = Notifications/NotificationMessageViewController.m; sourceTree = "<group>"; };
+		BC506A5F157E081100DF8BED /* NotificationMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotificationMessageViewController.xib; path = Notifications/NotificationMessageViewController.xib; sourceTree = "<group>"; };
 		BC524EF314EEC250001B4FC5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fr; path = fr.lproj/btnBuyDown.png; sourceTree = "<group>"; };
 		BC524EF514EEC250001B4FC5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fr; path = "fr.lproj/btnBuyDown@2x.png"; sourceTree = "<group>"; };
 		BC524EF714EEC250001B4FC5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fr; path = fr.lproj/btnBuyUp.png; sourceTree = "<group>"; };
@@ -4331,6 +4350,9 @@
 				4028E7AA152D9E6F0056B34B /* NotificationCenterViewController.h */,
 				4028E7AB152D9E6F0056B34B /* NotificationCenterViewController.m */,
 				4028E7AC152D9E6F0056B34B /* NotificationCenterViewController.xib */,
+				BC506A5D157E081100DF8BED /* NotificationMessageViewController.h */,
+				BC506A5E157E081100DF8BED /* NotificationMessageViewController.m */,
+				BC506A5F157E081100DF8BED /* NotificationMessageViewController.xib */,
 				4028E7BF152DC13F0056B34B /* MessageWeViewController.h */,
 				4028E7C0152DC13F0056B34B /* MessageWeViewController.m */,
 				4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */,
@@ -6041,6 +6063,7 @@
 				BC436946156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80181577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB076A215790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
+				BC506A6E157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6256,6 +6279,7 @@
 				BC436947156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80191577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB076A315790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
+				BC506A6F157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6465,6 +6489,7 @@
 				BC436945156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80171577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB076A115790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
+				BC506A6D157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6679,6 +6704,7 @@
 				BC436942156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80141577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB0769E15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
+				BC506A6A157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6893,6 +6919,7 @@
 				BC436941156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80131577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB0769D15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
+				BC506A69157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7107,6 +7134,7 @@
 				BC436944156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80161577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB076A015790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
+				BC506A6C157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7321,6 +7349,7 @@
 				BC436940156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80121577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB0769C15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
+				BC506A68157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7535,6 +7564,7 @@
 				BC436943156FED9F0059BC22 /* CellPublicSongCardRow@2x.png in Resources */,
 				BCCD80151577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB0769F15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
+				BC506A6B157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7725,6 +7755,7 @@
 				BC43692C156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD80101577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769A15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
+				BC506A66157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7912,6 +7943,7 @@
 				BC43692D156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD80111577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769B15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
+				BC506A67157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8095,6 +8127,7 @@
 				BC43692B156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800F1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769915790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
+				BC506A65157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8282,6 +8315,7 @@
 				BC436928156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800C1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769615790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
+				BC506A62157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8469,6 +8503,7 @@
 				BC436927156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800B1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769515790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
+				BC506A61157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8657,6 +8692,7 @@
 				BC43692A156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800E1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769815790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
+				BC506A64157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8844,6 +8880,7 @@
 				BC436926156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800A1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769415790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
+				BC506A60157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9032,6 +9069,7 @@
 				BC436929156FE36C0059BC22 /* SongPublicInfoViewController.m in Sources */,
 				BCCD800D1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769715790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
+				BC506A63157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

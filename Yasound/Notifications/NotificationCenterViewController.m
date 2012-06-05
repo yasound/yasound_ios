@@ -15,7 +15,7 @@
 #import "RadioViewController.h"
 #import "MessageWeViewController.h"
 #import "ProfileViewController.h"
-
+#import "NotificationMessageViewController.h"
 
 
 
@@ -145,7 +145,7 @@
     }
     else
     {
-        [cell updateWithNotifiction:notif];
+        [cell updateWithNotification:notif];
     }
   
   return cell;
@@ -190,7 +190,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
+    
+    
     UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
+    
+    NSLog(@"select notif %@", notif.type);
+    NSLog(@"params %@", notif.params);
     
     [notif setReadBool:YES];
     
@@ -231,7 +237,9 @@
     
     if ([notif.type isEqualToString:APNS_NOTIF_USER_MESSAGE])
     {
-        // nothing
+        NotificationMessageViewController* view = [[NotificationMessageViewController alloc] initWithNibName:@"NotificationMessageViewController" bundle:nil notification:notif];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
         return;
     }
 

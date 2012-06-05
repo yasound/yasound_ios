@@ -8,17 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-#define APNS_NOTIF_FRIEND_IN_RADIO @"APNs_FIR"
-#define APNS_NOTIF_USER_IN_RADIO @"APNs_UIR"
-#define APNS_NOTIF_FRIEND_ONLINE @"APNs_FOn"
-#define APNS_NOTIF_MESSAGE_POSTED @"APNs_Msg"
-#define APNS_NOTIF_SONG_LIKED @"APNs_Sng"
-#define APNS_NOTIF_RADIO_IN_FAVORITES @"APNs_RIF"
-#define APNS_NOTIF_RADIO_SHARED @"APNs_RSh"
-#define APNS_NOTIF_FRIEND_CREATED_RADIO @"APNs_FCR"
 
-#define APNS_NOTIF_YASOUND_MESSAGE @"APNs_YAS"
-#define APNS_NOTIF_USER_MESSAGE @"APNs_USR"
+
+
+#define APNS_NOTIF_FRIEND_IN_RADIO @"type_notif_friend_in_radio"
+#define APNS_NOTIF_USER_IN_RADIO @"type_notif_user_in_radio"
+#define APNS_NOTIF_FRIEND_ONLINE @"type_notif_friend_online"
+#define APNS_NOTIF_MESSAGE_POSTED @"type_notif_message_in_wall"
+#define APNS_NOTIF_SONG_LIKED @"type_notif_song_liked"
+#define APNS_NOTIF_RADIO_IN_FAVORITES @"type_notif_radio_in_favorites"
+#define APNS_NOTIF_RADIO_SHARED @"type_notif_radio_shared"
+#define APNS_NOTIF_FRIEND_CREATED_RADIO @"type_notif_friend_created_radio"
+
+#define APNS_NOTIF_YASOUND_MESSAGE @"type_notif_message_from_yasound"
+#define APNS_NOTIF_USER_MESSAGE @"type_notif_message_from_user"
 
 
 
