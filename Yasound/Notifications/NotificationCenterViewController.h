@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic, retain) NSMutableArray* notifications;
+@property (nonatomic, retain) NSMutableDictionary* notificationsDictionary;
 
 - (IBAction)onNowPlayingClicked:(id)sender;
 - (IBAction)onMenuBarItemClicked:(id)sender;
