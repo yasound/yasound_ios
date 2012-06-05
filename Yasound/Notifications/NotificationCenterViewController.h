@@ -15,7 +15,7 @@
   IBOutlet UITableView* _tableView;
 }
 
-@property (nonatomic, retain) NSArray* notifications;
+@property (nonatomic, retain) NSMutableArray* notifications;
 
 - (IBAction)onNowPlayingClicked:(id)sender;
 - (IBAction)onMenuBarItemClicked:(id)sender;

@@ -91,7 +91,7 @@
         return;
     }
     
-    self.notifications = [req responseNSObjectsWithClass:[UserNotification class]];
+    self.notifications = [NSMutableArray arrayWithArray:[req responseNSObjectsWithClass:[UserNotification class]]];
     
     if (self.notifications == nil)
         NSLog(@"error receiving notifications");
@@ -100,13 +100,7 @@
     [_tableView reloadData];
 }
 
-//- (void)notificationAdded:(APNsNotifInfo*)notif
-//{
-////  [_tableView reloadData];
-////  NSInteger row = [YasoundNotifCenter main].notifInfos.count - 1;
-////  [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
-//}
-
+    
 
 #pragma mark - TableView Source and Delegate
 
@@ -193,6 +187,7 @@
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
     
     
+    
     UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
     
     NSLog(@"select notif %@", notif.type);
@@ -203,7 +198,7 @@
     // consider it as being read 
     NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
     [cell updateWithNotification:notif];
-    [[YasoundDataProvider main] updateUserNotification:notif target:nil action:nil];
+    [[YasoundDataProvider main] updateUserNotification:notif target:self action:@selector(updatedUserNotification:success:)];
 
 
     
@@ -244,14 +239,6 @@
     }
 
     
-//    case eAPNsNotif_UserInRadio:
-//    case eAPNsNotif_FriendInRadio:
-//    case eAPNsNotif_MessagePosted:
-//    case eAPNsNotif_SongLiked:
-//    case eAPNsNotif_RadioInFavorites:
-//    case eAPNsNotif_RadioShared:
-//    case eAPNsNotif_FriendCreatedRadio:
-    
     NSNumber* radioID = [notif.params objectForKey:@"radioID"];
     assert(radioID != nil);
     
@@ -262,18 +249,42 @@
 }
 
 
+
+- (void)updatedUserNotification:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        NSLog(@"update notification FAILED");
+        return;
+    }
+}
+
+
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if (editingStyle != UITableViewCellEditingStyleDelete)
     return;
   
-//  APNsNotifInfo* notifInfo = [[YasoundNotifCenter main].notifInfos objectAtIndex:indexPath.row];
-//  [[YasoundNotifCenter main] deleteNotifInfo:notifInfo];
+    UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
+    [[YasoundDataProvider main] deleteUserNotification:notif target:self action:@selector(deletedNotification:success:)];
+
+    
+    [self.notifications removeObjectAtIndex:indexPath.row];
   
-  [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationMiddle];
 }
 
 
+
+- (void)deletedNotification:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        NSLog(@"delete notification FAILED");
+        return;
+    }
+}
 
 
 
