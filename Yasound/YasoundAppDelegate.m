@@ -244,7 +244,7 @@ void SignalHandler(int sig) {
 
 - (void)handlePushNotification:(NSDictionary*)notifDesc
 {     
-  // APNsNotifInfo* notifInfo = [[YasoundNotifCenter main] addNotifInfoWithDescription:notifDesc];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil]; 
 }
 
 - (void)sendAPNsTokenString

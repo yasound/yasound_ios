@@ -16,7 +16,7 @@
 #import "MessageWeViewController.h"
 #import "ProfileViewController.h"
 #import "NotificationMessageViewController.h"
-
+#import "RootViewController.h"
 
 
 @implementation NotificationCenterViewController
@@ -56,6 +56,14 @@
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
     [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iOsNotificationReceived:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
+}
+
+
+- (void)iOsNotificationReceived:(NSNotification*)notif
+{
+    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];    
 }
 
 - (void)viewDidUnload
@@ -199,8 +207,6 @@
     NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
     [cell updateWithNotification:notif];
     [[YasoundDataProvider main] updateUserNotification:notif target:self action:@selector(updatedUserNotification:success:)];
-
-
     
     
     
@@ -257,6 +263,8 @@
         NSLog(@"update notification FAILED");
         return;
     }
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil]; 
 }
 
 
@@ -284,6 +292,8 @@
         NSLog(@"delete notification FAILED");
         return;
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];     
 }
 
 
