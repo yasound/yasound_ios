@@ -25,6 +25,8 @@
 #define NOTIF_GOTO_MYRADIO @"NOTIF_goto_myRadio"
 #define NOTIF_GOTO_CREATE_MYRADIO @"NOTIF_GOTO_CREATE_MYRADIO"
 
+#define NOTIF_HANDLE_IOS_NOTIFICATION @"NOTIF_HANDLE_IOS_NOTIFICATION"
+
 
 @interface RootViewController : TestflightViewController
 {

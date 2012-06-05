@@ -35,22 +35,21 @@
   return s;
 }
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier notifInfo:(APNsNotifInfo*)notifInfo
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier notification:(UserNotification*)notif
 {
   if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
   {
-    _notifInfo = notifInfo;
+    _notification = notif;
     NSError* error;
     
     BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
    _notifTextLabel = [sheet makeLabel];
-    NSString* t = [_notifInfo text];
-    _notifTextLabel.text = t;
+      _notifTextLabel.text = _notification.text;
     _notifTextLabel.numberOfLines = 0;
     
     BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
     CGFloat fontSize = fontSheet.size;
-    if ([_notifInfo read])
+    if ([_notification isReadBool])
       _notifTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:fontSize];
     else
       _notifTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:fontSize];
@@ -58,15 +57,20 @@
     [self addSubview:_notifTextLabel];
     
     _notifDateLabel = [[[BundleFileManager main] stylesheetForKey:@"NotificationDate"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
-    NSString* s = [self dateToString:_notifInfo.date];
+    NSString* s = [self dateToString:_notification.date];
     _notifDateLabel.text = s;
     [self addSubview:_notifDateLabel];
-    
-    
-    _unreadImage = [[[Theme theme] stylesheetForKey:@"NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+
+      
+    if ([_notification isReadBool])
+    {
+        _unreadImage = [[[Theme theme] stylesheetForKey:@"NotifReadIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+    }
+      else
+      {
+          _unreadImage = [[[Theme theme] stylesheetForKey:@"NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+      }
     [self addSubview:_unreadImage];
-    if ([_notifInfo read])
-      _unreadImage.hidden = YES;
   }
   return self;
 }
@@ -81,26 +85,34 @@
 
 
 
-- (void)updateWithNotifInfo:(APNsNotifInfo*)notifInfo
+- (void)updateWithNotification:(UserNotification*)notif
 {
-  _notifInfo = notifInfo;
-  BOOL read = [_notifInfo read];
+    _notification = notif;
   
-  _notifTextLabel.text = [_notifInfo text];
+  _notifTextLabel.text = _notification.text;
   
   NSError* error;
   BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
   BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
   CGFloat fontSize = fontSheet.size;
-  if (read)
+
+   if ([_notification isReadBool])
     _notifTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:fontSize];
   else
     _notifTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:fontSize];
   
-  NSString* s = [self dateToString:_notifInfo.date];
+  NSString* s = [self dateToString:_notification.date];
   _notifDateLabel.text = s;
 
-  _unreadImage.hidden = read;
+    if ([_notification isReadBool])
+    {
+         sheet = [[Theme theme] stylesheetForKey:@"NotifReadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    }
+    else
+    {
+        sheet = [[Theme theme] stylesheetForKey:@"NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    }
+    [_unreadImage setImage:[sheet image]];
 }
 
 @end

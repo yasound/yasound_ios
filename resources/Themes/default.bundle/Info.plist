@@ -2025,6 +2025,19 @@
 			<key>y</key>
 			<integer>15</integer>
 		</dict>
+		<key>NotifReadIcon</key>
+		<dict>
+			<key>name</key>
+			<string>IconNotifRead</string>
+			<key>type</key>
+			<string>png</string>
+			<key>path</key>
+			<string>images/Icons</string>
+			<key>x</key>
+			<integer>10</integer>
+			<key>y</key>
+			<integer>15</integer>
+		</dict>
 		<key>UnreadNotifBadge1</key>
 		<dict>
 			<key>name</key>
@@ -2036,7 +2049,7 @@
 			<key>x</key>
 			<integer>223</integer>
 			<key>y</key>
-			<integer>10</integer>
+			<integer>11</integer>
 		</dict>
 		<key>UnreadNotifBadge2</key>
 		<dict>

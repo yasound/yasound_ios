@@ -11,19 +11,13 @@
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "NotificationCenterTableViewcCell.h"
+#import "YasoundNotifCenter.h"
 #import "FriendsViewController.h"
 #import "RadioViewController.h"
 #import "MessageWeViewController.h"
 #import "ProfileViewController.h"
-#import "NotificationMessageViewController.h"
-#import "RootViewController.h"
-
 
 @implementation NotificationCenterViewController
-
-
-@synthesize notifications;
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,16 +48,6 @@
   
     _topBarTitle.text = NSLocalizedString(@"NotificationCenterView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iOsNotificationReceived:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
-}
-
-
-- (void)iOsNotificationReceived:(NSNotification*)notif
-{
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];    
 }
 
 - (void)viewDidUnload
@@ -76,11 +60,14 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
+  
+  [[YasoundNotifCenter main] addTarget:self action:@selector(notificationAdded:) forEvent:eAPNsNotifAdded];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
   [super viewDidDisappear:animated];
+  [[YasoundNotifCenter main] removeTarget:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -90,25 +77,13 @@
 }
 
 
-
-- (void)onNotificationsReceived:(ASIHTTPRequest*)req success:(BOOL)success
-{   
-    if (!success)
-    {
-        NSLog(@"get user notifications FAILED");
-        return;
-    }
-    
-    self.notifications = [NSMutableArray arrayWithArray:[req responseNSObjectsWithClass:[UserNotification class]]];
-    
-    if (self.notifications == nil)
-        NSLog(@"error receiving notifications");
-    NSLog(@"%d notifications received", self.notifications.count);
-    
-    [_tableView reloadData];
+- (void)notificationAdded:(APNsNotifInfo*)notif
+{
+//  [_tableView reloadData];
+  NSInteger row = [YasoundNotifCenter main].notifInfos.count - 1;
+  [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:row inSection:0]] withRowAnimation:UITableViewRowAnimationLeft];
 }
 
-    
 
 #pragma mark - TableView Source and Delegate
 
@@ -122,10 +97,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    if (self.notifications == nil)
-        return 0;
-    
-    return self.notifications.count;
+  NSInteger count = [YasoundNotifCenter main].notifInfos.count;
+  return count;
 }
 
 
@@ -136,19 +109,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
   static NSString *cellIdentifier = @"NotificationCenterTableViewCell";
-    
-    UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
   
-    NotificationCenterTableViewcCell* cell = (NotificationCenterTableViewcCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+  NotificationCenterTableViewcCell* cell = (NotificationCenterTableViewcCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
   
-    if (cell == nil)
-    {    
-        cell = [[NotificationCenterTableViewcCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier notification:notif];
-    }
-    else
-    {
-        [cell updateWithNotification:notif];
-    }
+  APNsNotifInfo* notifInfo = [[YasoundNotifCenter main].notifInfos objectAtIndex:indexPath.row];
+  if (cell == nil)
+  {    
+    cell = [[NotificationCenterTableViewcCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier notifInfo:notifInfo];
+  }
+  else
+  {
+    [cell updateWithNotifInfo:notifInfo];
+  }
   
   return cell;
 }
@@ -192,81 +164,50 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
-    
-    
-    
-    UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
-    
-    NSLog(@"select notif %@", notif.type);
-    NSLog(@"params %@", notif.params);
-    
-    [notif setReadBool:YES];
-    
-    // consider it as being read 
-    NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
-    [cell updateWithNotification:notif];
-    [[YasoundDataProvider main] updateUserNotification:notif target:self action:@selector(updatedUserNotification:success:)];
-    
-    
-    
-    if ([notif.type isEqualToString:APNS_NOTIF_FRIEND_ONLINE])
+  APNsNotifInfo* notifInfo = [[YasoundNotifCenter main].notifInfos objectAtIndex:indexPath.row];
+  APNsNotifType t = [notifInfo type];
+  NSNumber* radioID = [notifInfo radioID];
+  NSString* url = [notifInfo url];
+  
+  switch (t) 
+  {
+    case eAPNsNotif_FriendOnline:
     {
       NSLog(@"go to friend screen");
       User* user = [[User alloc] init];
-      user.id = notif.dest_user_id;
-        
+      user.id = [notifInfo userID];
       if (user.id != nil)
         [self goToFriendProfile: user];
       else
         [self goToFriendsViewController];
-    
-        return;
     }
-    
-
-    if ([notif.type isEqualToString:APNS_NOTIF_YASOUND_MESSAGE])
-    {
-        NSString* url = [notif.params objectForKey:@"url"];
-        assert(url != nil);
-        
-        NSLog(@"go to web page %@", url);
-        [self goToMessageWebView:url];
-        return;
-    }
-     
-    
-    if ([notif.type isEqualToString:APNS_NOTIF_USER_MESSAGE])
-    {
-        NotificationMessageViewController* view = [[NotificationMessageViewController alloc] initWithNibName:@"NotificationMessageViewController" bundle:nil notification:notif];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-        return;
-    }
-
-    
-    NSNumber* radioID = [notif.params objectForKey:@"radioID"];
-    assert(radioID != nil);
-    
+      break;
+      
+    case eAPNsNotif_UserInRadio:
+    case eAPNsNotif_FriendInRadio:
+    case eAPNsNotif_MessagePosted:
+    case eAPNsNotif_SongLiked:
+    case eAPNsNotif_RadioInFavorites:
+    case eAPNsNotif_RadioShared:
+    case eAPNsNotif_FriendCreatedRadio:
       NSLog(@"go to radio %@", radioID);
       [self goToRadio:radioID];
-
-    
+      break;
+      
+    case eAPNsNotif_YasoundMessage:
+      NSLog(@"go to web page %@", url);
+      [self goToMessageWebView:url];
+      break;
+      
+    default:
+      break;
+  }
+  
+  [notifInfo setRead:YES];
+  
+  NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
+  [cell updateWithNotifInfo:notifInfo];
 }
-
-
-
-- (void)updatedUserNotification:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    if (!success)
-    {
-        NSLog(@"update notification FAILED");
-        return;
-    }
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil]; 
-}
-
 
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -274,27 +215,13 @@
   if (editingStyle != UITableViewCellEditingStyleDelete)
     return;
   
-    UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
-    [[YasoundDataProvider main] deleteUserNotification:notif target:self action:@selector(deletedNotification:success:)];
-
-    
-    [self.notifications removeObjectAtIndex:indexPath.row];
+  APNsNotifInfo* notifInfo = [[YasoundNotifCenter main].notifInfos objectAtIndex:indexPath.row];
+  [[YasoundNotifCenter main] deleteNotifInfo:notifInfo];
   
-    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationMiddle];
+  [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
 }
 
 
-
-- (void)deletedNotification:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    if (!success)
-    {
-        NSLog(@"delete notification FAILED");
-        return;
-    }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];     
-}
 
 
 

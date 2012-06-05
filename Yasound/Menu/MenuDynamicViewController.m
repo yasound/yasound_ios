@@ -26,7 +26,6 @@
 #import "ProgrammingViewController.h"
 
 #import "NotificationCenterViewController.h"
-#import "YasoundNotifCenter.h"
 #import "MenuTableViewCell.h"
 #import "YasoundDataCache.h"
 
@@ -59,6 +58,9 @@
     if (self) 
     {
         _notificationsCell = nil;
+        _unreadNotifications = 0;
+        
+        
         self.sections = sections;
     }
     return self;
@@ -90,15 +92,21 @@
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+    
+    
 
-    [[YasoundNotifCenter main] addTarget:self action:@selector(unreadNotifCountChanged) forEvent:eAPNsUnreadNotifCountChanged];
 }
+
+
+
 
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iOsNotificationReceived:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
 }
 
 
@@ -106,6 +114,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
   [super viewDidAppear:animated];
+    
+    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];
+
   
   if ([AudioStreamManager main].currentRadio == nil)
     [_nowPlayingButton setEnabled:NO];
@@ -121,7 +132,6 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
   
-  [[YasoundNotifCenter main] removeTarget:self];
 }
 
 
@@ -133,15 +143,42 @@
 }
 
 
-
-- (void)unreadNotifCountChanged
+- (void)iOsNotificationReceived:(NSNotification*)notif
 {
   if (!_notificationsCell)
     return;
-  
-  NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
-  [_notificationsCell setUnreadCount:unread];
+    
+    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];
+
+    [_notificationsCell setUnreadCount:_unreadNotifications];
 }
+
+
+
+- (void)onNotificationsReceived:(ASIHTTPRequest*)req success:(BOOL)success
+{   
+    if (!success)
+    {
+        NSLog(@"get user notifications FAILED");
+        return;
+    }
+    
+    NSArray* notifications = [NSMutableArray arrayWithArray:[req responseNSObjectsWithClass:[UserNotification class]]];
+    
+    if (notifications == nil)
+        NSLog(@"error receiving notifications");
+    
+    _unreadNotifications = 0;
+    
+    for (UserNotification* notif in notifications)
+        if (![notif isReadBool])
+            _unreadNotifications++;
+    
+    NSLog(@"unread notifications %d", _unreadNotifications);
+
+    
+}
+
 
 
 #pragma mark - TableView Source and Delegate
@@ -254,11 +291,10 @@
     
     if ([type isEqualToString:TYPE_NOTIFICATIONS])
     {
-        NSInteger unread = [[YasoundNotifCenter main] unreadNotifCount];
         if (!_notificationsCell)
-            _notificationsCell = [[NotificationTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil unreadCount:unread];
+            _notificationsCell = [[NotificationTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil unreadCount:_unreadNotifications];
 
-        [_notificationsCell setUnreadCount:unread];
+        [_notificationsCell setUnreadCount:_unreadNotifications];
 
         _notificationsCell.name.text = [row objectForKey:@"name"];
         

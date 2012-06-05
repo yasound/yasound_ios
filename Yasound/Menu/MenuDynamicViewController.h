@@ -15,7 +15,9 @@
     IBOutlet UITableView* _tableView;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
   
-  NotificationTableViewCell* _notificationsCell;
+    NotificationTableViewCell* _notificationsCell;
+    
+    NSInteger _unreadNotifications;
 }
 
 
