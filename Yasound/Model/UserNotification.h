@@ -33,6 +33,9 @@
 @property (retain, nonatomic) NSDate* date;
 @property (retain, nonatomic) NSNumber* dest_user_id;
 @property (retain, nonatomic) NSNumber* from_user_id;
+@property (retain, nonatomic) NSString* from_user_name;
+@property (retain, nonatomic) NSNumber* from_radio_id;
+@property (retain, nonatomic) NSString* from_radio_name;
 @property (retain, nonatomic) NSNumber* read;
 @property (retain, nonatomic) NSDictionary* params;
 

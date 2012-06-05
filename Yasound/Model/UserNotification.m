@@ -16,6 +16,9 @@
 @synthesize date;
 @synthesize dest_user_id;
 @synthesize from_user_id;
+@synthesize from_user_name;
+@synthesize from_radio_id;
+@synthesize from_radio_name;
 @synthesize read;
 @synthesize params;
 

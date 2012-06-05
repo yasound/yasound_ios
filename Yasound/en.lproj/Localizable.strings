@@ -540,7 +540,7 @@
 "APNs_FCR" = "%@ created his radio";
 
 "APNs_YAS" = "you have a message from Yasound";
-"APNs_USR" = "you have a message from a Yasound user";
+"APNs_USR" = "you have a message from %@";
 
 "NotificationCenterView_title" =  "My Notifications";
 "NotificationCenterView_edit" = "Edit";
