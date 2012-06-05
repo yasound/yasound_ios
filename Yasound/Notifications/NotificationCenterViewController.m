@@ -23,6 +23,8 @@
 
 
 @synthesize notifications;
+@synthesize notificationsDictionary;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -99,13 +101,43 @@
         return;
     }
     
-    self.notifications = [NSMutableArray arrayWithArray:[req responseNSObjectsWithClass:[UserNotification class]]];
+    NSArray* newNotifications = [req responseNSObjectsWithClass:[UserNotification class]];
     
-    if (self.notifications == nil)
+    if (newNotifications == nil)
         NSLog(@"error receiving notifications");
-    NSLog(@"%d notifications received", self.notifications.count);
+    NSLog(@"%d notifications received", newNotifications.count);
     
-    [_tableView reloadData];
+    if ((newNotifications == nil) || (self.notifications == nil))
+    {
+        // reload all
+        self.notifications = [NSMutableArray arrayWithArray:newNotifications];
+        self.notificationsDictionary = [NSMutableDictionary dictionary];
+        for (UserNotification* notif in self.notifications)
+        {
+            [self.notificationsDictionary setObject:notif forKey:notif._id];
+        }
+        
+        [_tableView reloadData];
+    }
+    
+    // insert new ones
+    else
+    {
+        for (NSInteger i = newNotifications.count -1; i >= 0; i--)
+        {
+            UserNotification* notif = [newNotifications objectAtIndex:i];
+            
+            UserNotification* retreived = [self.notificationsDictionary objectForKey:notif._id];
+            if (retreived != nil)
+                continue;
+            
+            // not inserted yet. do it now
+            [self.notifications insertObject:notif atIndex:0];
+            [self.notificationsDictionary setObject:notif forKey:notif._id];
+            [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationMiddle];
+        }
+    }
+    
 }
 
     
@@ -279,6 +311,7 @@
 
     
     [self.notifications removeObjectAtIndex:indexPath.row];
+    [self.notificationsDictionary removeObjectForKey:notif._id];
   
     [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationMiddle];
 }

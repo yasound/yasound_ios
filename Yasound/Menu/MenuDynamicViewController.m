@@ -150,7 +150,6 @@
     
     [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];
 
-    [_notificationsCell setUnreadCount:_unreadNotifications];
 }
 
 
@@ -176,6 +175,7 @@
     
     NSLog(@"unread notifications %d", _unreadNotifications);
 
+    [_notificationsCell setUnreadCount:_unreadNotifications];
     
 }
 
