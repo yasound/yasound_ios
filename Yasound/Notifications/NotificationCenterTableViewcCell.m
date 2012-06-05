@@ -60,12 +60,17 @@
     NSString* s = [self dateToString:_notification.date];
     _notifDateLabel.text = s;
     [self addSubview:_notifDateLabel];
-    
-    
-    _unreadImage = [[[Theme theme] stylesheetForKey:@"NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+
+      
+    if ([_notification isReadBool])
+    {
+        _unreadImage = [[[Theme theme] stylesheetForKey:@"NotifReadIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+    }
+      else
+      {
+          _unreadImage = [[[Theme theme] stylesheetForKey:@"NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+      }
     [self addSubview:_unreadImage];
-      if ([_notification isReadBool])
-      _unreadImage.hidden = YES;
   }
   return self;
 }
@@ -99,7 +104,15 @@
   NSString* s = [self dateToString:_notification.date];
   _notifDateLabel.text = s;
 
-  _unreadImage.hidden = [_notification isReadBool];
+    if ([_notification isReadBool])
+    {
+         sheet = [[Theme theme] stylesheetForKey:@"NotifReadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    }
+    else
+    {
+        sheet = [[Theme theme] stylesheetForKey:@"NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    }
+    [_unreadImage setImage:[sheet image]];
 }
 
 @end

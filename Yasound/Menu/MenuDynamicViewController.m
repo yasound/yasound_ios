@@ -94,7 +94,6 @@
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iOsNotificationReceived:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
 
 }
 
@@ -106,6 +105,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iOsNotificationReceived:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
 }
 
 
@@ -174,6 +175,7 @@
             _unreadNotifications++;
     
     NSLog(@"unread notifications %d", _unreadNotifications);
+
     
 }
 
