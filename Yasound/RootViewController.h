@@ -13,6 +13,9 @@
 
 
 #define NOTIF_PUSH_RADIO @"NOTIF_PushRadio"
+
+#define NOTIF_POP_AND_GOTO_UPLOADS @"NOTIF_POP_AND_GOTO_UPLOADS"
+
 #define NOTIF_CANCEL_WIZARD @"NOTIF_CancelWizard"
 #define NOTIF_LOGIN_SCREEN @"NOTIF_LoginScreen"
 #define NOTIF_WIZARD @"NOTIF_Wizard"

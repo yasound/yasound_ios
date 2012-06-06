@@ -1857,6 +1857,9 @@ static Song* _gNowPlayingSong = nil;
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     [_playingNowView.trackImageMask setImage:[sheet image]];
     
+    if (_gNowPlayingSong.isSongRemoved)
+        return;
+    
     if (self.ownRadio)
     {
         SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:_gNowPlayingSong showNowPlaying:NO];

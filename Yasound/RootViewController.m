@@ -22,6 +22,7 @@
 #import "NotificationCenterViewController.h"
 #import "CreateMyRadio.h"
 #import "YasoundDataCache.h"
+#import "SongUploadViewController.h"
 
 //#define FORCE_ROOTVIEW_RADIOS
 
@@ -106,6 +107,8 @@
 {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushRadio:) name:NOTIF_PUSH_RADIO object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPopAndGotoUploads:) name:NOTIF_POP_AND_GOTO_UPLOADS object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifCancelWizard:) name:NOTIF_CANCEL_WIZARD object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifLoginScreen:) name:NOTIF_LOGIN_SCREEN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifWizard:) name:NOTIF_WIZARD object:nil];
@@ -372,6 +375,18 @@
     // my radio
     [self launchRadio:nil];
 }
+
+- (void)onPopAndGotoUploads:(NSNotification*)notification
+{
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    SongUploadViewController* newView = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+    
+    [self.navigationController pushViewController:newView animated:YES];
+    [newView release];
+}
+
+
 
 - (void)onNotifCancelWizard:(NSNotification*)notification
 {  

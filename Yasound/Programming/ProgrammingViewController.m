@@ -201,7 +201,8 @@
         for (Song* song in songs)
         {
             // create a key for the dictionary 
-            NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
+            // LBDEBUG NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
+            NSString* key = [SongCatalog catalogKeyOfSong:song.name_client artist:song.artist_client album:song.album_client];
 
             // and store the song in the dictionnary, for later convenient use
             [self.matchedSongs setObject:song forKey:key];

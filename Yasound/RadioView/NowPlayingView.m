@@ -186,10 +186,10 @@
 
 
 
-- (void)onAvatarClicked:(id)sender
-{
-    
-}
+//- (void)onAvatarClicked:(id)sender
+//{
+//    
+//}
 
 
 

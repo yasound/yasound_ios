@@ -45,6 +45,7 @@
         self.mediaItem = item;
         
         self.name = [item valueForProperty:MPMediaItemPropertyTitle];
+        self.name_client = [item valueForProperty:MPMediaItemPropertyTitle];
         
         self.artistKey = [item valueForProperty:MPMediaItemPropertyArtist];
         self.albumKey = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
@@ -59,18 +60,26 @@
         {
             self.artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
             self.artist = [NSString stringWithString:PM_FIELD_UNKNOWN];
+            self.artist_client = [NSString stringWithString:PM_FIELD_UNKNOWN];
         }
         else
+        {
             self.artist = [NSString stringWithString:self.artistKey];
+            self.artist_client = [NSString stringWithString:self.artistKey];
+        }
         
         
         if ((self.albumKey == nil) || (self.albumKey.length == 0))
         {
             self.albumKey =  NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
             self.album = [NSString stringWithString:PM_FIELD_UNKNOWN];
+            self.album_client = [NSString stringWithString:PM_FIELD_UNKNOWN];
         }
         else
+        {
             self.album = [NSString stringWithString:self.albumKey];
+            self.album_client = [NSString stringWithString:self.albumKey];
+        }
         
         
         

@@ -433,11 +433,32 @@
         return;
     }
     
-    if ((alertView == _alertUploading) && (buttonIndex == 1))
-    {
-        SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
+    if (alertView == _alertUploading)
+    {    
+        if (buttonIndex == 1)
+        {
+            // call root to launch the Radio
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_POP_AND_GOTO_UPLOADS object:nil]; 
+
+            //LBDEBUG
+//            UINavigationController* navCont = self.navigationController;
+//
+//            UIViewController* currentView = self;
+//            [currentView retain];
+//
+//            SongUploadViewController* newView = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+//
+//            [navCont popViewControllerAnimated:YES];
+//            [navCont pushViewController:newView animated:YES];
+//
+//            [newView release];
+//            [currentView release];
+        }
+        else
+        {
+            [self.navigationController popViewControllerAnimated:YES];            
+        }
+        
         return;
     }
 
@@ -458,10 +479,13 @@
     if (!succeeded)
     {
         [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_reject_failed", nil) closeAfterTimeInterval:2];
+        [self.navigationController popViewControllerAnimated:YES];
         return;
     }
     
     [ActivityAlertView close];
+    
+    [self.song removeSong:YES];
     
     if (!_ownSong)
     {
@@ -649,6 +673,7 @@
         return;
     }
     
+    [self.song removeSong:YES];
     
     [[SongCatalog synchronizedCatalog] removeSynchronizedSong:self.song];
     
