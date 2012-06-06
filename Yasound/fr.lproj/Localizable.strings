@@ -534,6 +534,10 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "NotificationCenterView_title" =  "Mes Notifications";
 "NotificationCenterView_edit" = "Modifier";
 
+"NotificationMessageView_from" = "De";
+"NotificationMessageView_from_radio" = "radio";
+
+
 "YasoundMessage_title" = "Message de Yasound";
 
 "ProfileView_title" = "Profil";

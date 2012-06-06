@@ -44,6 +44,32 @@
 
 #pragma mark - View lifecycle
 
+
+
+- (NSString*) dateToString:(NSDate*)d
+{
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+    NSDate* now = [NSDate date];
+    NSDateComponents* todayComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:now];
+    NSDateComponents* refComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:d];
+    
+    if (todayComponents.year == refComponents.year && todayComponents.month == refComponents.month && todayComponents.day == refComponents.day)
+    {
+        // today: show time
+        [dateFormat setDateFormat:@"HH:mm"];
+    }
+    else
+    {
+        // not today: show date
+        [dateFormat setDateFormat:@"dd/MM, HH:mm"];
+    }
+    
+    NSString* s = [dateFormat stringFromDate:d];
+    [dateFormat release];
+    return s;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];  
@@ -55,7 +81,13 @@
     _topBarTitle.title = NSLocalizedString(@"NotificationCenterView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
-    _textView.text = self.notification.text;
+    _textView.text = [NSString stringWithFormat:@"%@: %@\n%@: %@\n%@\n\n%@",
+                      NSLocalizedString(@"NotificationMessageView_from", nil),
+                      self.notification.from_user_name,
+                      NSLocalizedString(@"NotificationMessageView_from_radio", nil),
+                      self.notification.from_radio_name,
+                       [self dateToString:self.notification.date],
+                      self.notification.text];
 
 }
 

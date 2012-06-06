@@ -545,6 +545,9 @@
 "NotificationCenterView_title" =  "My Notifications";
 "NotificationCenterView_edit" = "Edit";
 
+"NotificationMessageView_from" = "From";
+"NotificationMessageView_from_radio" = "radio";
+
 "YasoundMessage_title" = "Message from Yasound";
 
 "ProfileView_title" = "Profile";

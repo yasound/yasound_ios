@@ -45,9 +45,14 @@
     BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
    _notifTextLabel = [sheet makeLabel];
 
-      // ICI
-//      if (_notification.from_user_id
-    _notifTextLabel.text = _notification.text;
+      if (_notification.from_user_id != nil)
+      {
+          _notifTextLabel.text = [NSString stringWithFormat:@"%@:\n%@", _notification.from_user_name, _notification.text];
+      }
+      else
+      {
+          _notifTextLabel.text = _notification.text;
+      }
     _notifTextLabel.numberOfLines = 0;
       
       
@@ -94,7 +99,14 @@
 {
     _notification = notif;
   
-  _notifTextLabel.text = _notification.text;
+    if (_notification.from_user_id != nil)
+    {
+        _notifTextLabel.text = [NSString stringWithFormat:@"%@:\n%@", _notification.from_user_name, _notification.text];
+    }
+    else
+    {
+        _notifTextLabel.text = _notification.text;
+    }
   
   NSError* error;
   BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
