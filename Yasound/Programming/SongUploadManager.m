@@ -232,6 +232,10 @@ static SongUploadManager* _main;
     s.name = storedName;
     s.artist = storedArtist;
     s.album = storedAlbum;
+      s.name_client = storedName;
+      s.artist_client = storedArtist;
+      s.album_client = storedAlbum;
+      
     [s setUploading:YES];
     
     [songs addObject:s];

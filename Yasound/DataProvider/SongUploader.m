@@ -210,7 +210,7 @@ static SongUploader* _main = nil;
 
 - (BOOL)uploadSong:(Song*)song target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
 {
-    return [self uploadSong:song.name album:song.album artist:song.artist songId:song.id target:target action:selector progressDelegate:progressDelegate];
+    return [self uploadSong:song.name_client album:song.album_client artist:song.artist_client songId:song.id target:target action:selector progressDelegate:progressDelegate];
 }
 
 - (BOOL)canUploadSong:(Song*)song
