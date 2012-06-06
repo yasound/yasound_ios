@@ -528,7 +528,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "APNs_FCR" = "%@ a créé sa radio";
 
 "APNs_YAS" = "Yasound vous a envoyé un message";
-"APNs_USR" = "%@ vous a envoyé un message sur Yasound";
+"APNs_USR" = "%@ vous a envoyé un message";
 
 
 "NotificationCenterView_title" =  "Mes Notifications";
