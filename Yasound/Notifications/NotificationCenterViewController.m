@@ -275,13 +275,25 @@
         [view release];
         return;
     }
-
+    
+    if ([notif.type isEqualToString:APNS_NOTIF_USER_MESSAGE])
+    {
+    }
+    if (notif.from_radio_id != nil)
+    {
+        NSLog(@"go to radio %@", notif.from_radio_id);
+        [self goToRadio:notif.from_radio_id];
+        return;
+    }
+    
+    NSLog(@"%@", notif.params);
     
     NSNumber* radioID = [notif.params objectForKey:@"radioID"];
-    assert(radioID != nil);
-    
+    if (radioID != nil)
+    {
       NSLog(@"go to radio %@", radioID);
       [self goToRadio:radioID];
+    }
 
     
 }
