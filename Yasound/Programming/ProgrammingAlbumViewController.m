@@ -53,6 +53,7 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoved:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
     
 
@@ -216,7 +217,8 @@
     NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
     
     [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:self];
+
     [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];        
 }
 
@@ -295,6 +297,16 @@
     
     [_tableView reloadData];    
 }
+
+
+- (void)onNotifSongRemoved:(NSNotification*)notif
+{    
+    UIViewController* sender = notif.object;
+    
+    if (sender != self)
+        [_tableView reloadData];    
+}
+
 
 
 - (void)onNotificationUploadCanceled:(NSNotification*)notif

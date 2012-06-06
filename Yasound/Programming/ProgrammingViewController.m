@@ -72,6 +72,7 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoved:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
     
 
     _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
@@ -436,6 +437,7 @@
         songs = [songs sortedArrayUsingSelector:@selector(nameCompare:)];
         
         // store the cache
+        assert(songs != nil);
         [self.sortedSongs setObject:songs forKey:charIndex];
 
     }
@@ -486,7 +488,8 @@
     NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
 
     [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song];
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:self];
+
     [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];        
 }
 
@@ -511,6 +514,7 @@
         artists = [artists sortedArrayUsingSelector:@selector(compare:)];
         
         // store the cache
+        assert(artists != nil);
         [self.sortedArtists setObject:artists forKey:charIndex];
     }
 
@@ -667,6 +671,18 @@
     
     [_tableView reloadData];    
 }
+
+
+- (void)onNotifSongRemoved:(NSNotification*)notif
+{    
+    UIViewController* sender = notif.object;
+    
+    //LBDEBUG : ICI : release objects?
+    
+    if (sender != self)
+        [_tableView reloadData];    
+}
+
 
 
 @end

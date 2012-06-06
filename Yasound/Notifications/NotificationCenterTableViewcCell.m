@@ -44,8 +44,13 @@
     
     BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
    _notifTextLabel = [sheet makeLabel];
-      _notifTextLabel.text = _notification.text;
+
+      // ICI
+//      if (_notification.from_user_id
+    _notifTextLabel.text = _notification.text;
     _notifTextLabel.numberOfLines = 0;
+      
+      
     
     BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
     CGFloat fontSize = fontSheet.size;

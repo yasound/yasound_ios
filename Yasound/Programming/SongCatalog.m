@@ -213,14 +213,18 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         if ((artistKey == nil) || (artistKey.length == 0))
         {
             artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
-            NSLog(@"empty artist found!");
+            NSLog(@"buildSynchronizedWithSource: empty artist found!");
         }
         NSString* albumKey = song.album;
         if ((albumKey == nil) || (albumKey.length == 0))
         {
-            artistKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
-            NSLog(@"empty album found!");
+            albumKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+            NSLog(@"buildSynchronizedWithSource: empty album found!");
         }
+        
+        NSLog(@"%@", song.name);
+        NSLog(@"%@", song.artist);
+        NSLog(@"%@", song.album);
         
         [self catalogWithoutSorting:song  usingArtistKey:artistKey andAlbumKey:albumKey];
         self.nbSongs++;    
@@ -292,13 +296,13 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     if ((artistKey == nil) || (artistKey.length == 0))
     {
         artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
-        NSLog(@"empty artist found!");
+        NSLog(@"insertAndEnableSong: empty artist found!");
     }
     NSString* albumKey = song.album;
     if ((albumKey == nil) || (albumKey.length == 0))
     {
-        artistKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
-        NSLog(@"empty album found!");
+        albumKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+        NSLog(@"insertAndEnableSong: empty album found!");
     }
     
     [song enableSong:YES];
@@ -359,13 +363,13 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     if ((artistKey == nil) || (artistKey.length == 0))
     {
         artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
-        NSLog(@"empty artist found!");
+        NSLog(@"removeSynchronizedSong: empty artist found!");
     }
     NSString* albumKey = song.album;
     if ((albumKey == nil) || (albumKey.length == 0))
     {
-        artistKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
-        NSLog(@"empty album found!");
+        albumKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+        NSLog(@"removeSynchronizedSong: empty album found!");
     }
     
     

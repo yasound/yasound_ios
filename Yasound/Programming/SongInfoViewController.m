@@ -652,6 +652,8 @@
     
     [[SongCatalog synchronizedCatalog] removeSynchronizedSong:self.song];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
+    
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SongView_delete_confirm_message", nil) closeAfterTimeInterval:2];
     
     [self.navigationController popViewControllerAnimated:YES];
