@@ -537,6 +537,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "NotificationMessageView_from" = "De";
 "NotificationMessageView_from_radio" = "radio";
 
+"NotificationCenterView_alert_title" = "Notifications";
+"NotificationCenterView_alert_message" = "Voulez-vous vraiment vider supprimer toutes vos notifications?";
+
 
 "YasoundMessage_title" = "Message de Yasound";
 

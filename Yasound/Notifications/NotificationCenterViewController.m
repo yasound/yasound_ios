@@ -451,6 +451,28 @@
   [view release];
 }
 
+
+- (IBAction)onItemTrashClicked:(id)sender
+{
+    NSString* title = NSLocalizedString(@"NotificationCenterView_alert_title", nil);
+    NSString* message = NSLocalizedString(@"NotificationCenterView_alert_message", nil);
+    _alertTrash = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:@"OK", nil];
+    [_alertTrash show];
+    [_alertTrash release];  
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ((alertView == _alertTrash) && (buttonIndex == 1))
+    {
+        
+        return;
+    }
+}
+
+
 - (IBAction)onMenuBarItemClicked:(id)sender
 {
   [self.navigationController popViewControllerAnimated:YES];

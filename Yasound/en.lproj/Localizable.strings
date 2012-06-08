@@ -548,6 +548,10 @@
 "NotificationMessageView_from" = "From";
 "NotificationMessageView_from_radio" = "radio";
 
+"NotificationCenterView_alert_title" = "Notifications";
+"NotificationCenterView_alert_message" = "Do you really want to delete all your notifications?";
+
+
 "YasoundMessage_title" = "Message from Yasound";
 
 "ProfileView_title" = "Profile";

@@ -15,6 +15,7 @@
   IBOutlet UITableView* _tableView;
     
     BOOL _waitingForPreviousEvents;
+    UIAlertView* _alertTrash;
 }
 
 @property (nonatomic, retain) NSMutableArray* notifications;
