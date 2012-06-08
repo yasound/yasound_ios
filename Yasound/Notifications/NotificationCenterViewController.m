@@ -29,7 +29,7 @@
 
 
 #define WALL_WAITING_ROW_HEIGHT 44
-#define NOTIFICATIONS_LIMIT 5
+#define NOTIFICATIONS_LIMIT 25
 
 
 
@@ -437,7 +437,8 @@
         return;
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];     
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
+    [_tableView reloadData];
 }
 
 
