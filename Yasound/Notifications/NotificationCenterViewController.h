@@ -13,6 +13,8 @@
   IBOutlet UILabel* _topBarTitle;
   IBOutlet UIBarButtonItem* _nowPlayingButton;
   IBOutlet UITableView* _tableView;
+    
+    BOOL _waitingForPreviousEvents;
 }
 
 @property (nonatomic, retain) NSMutableArray* notifications;

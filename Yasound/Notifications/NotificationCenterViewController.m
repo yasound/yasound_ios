@@ -17,7 +17,7 @@
 #import "ProfileViewController.h"
 #import "NotificationMessageViewController.h"
 #import "RootViewController.h"
-
+#import "LoadingCell.h"
 
 @implementation NotificationCenterViewController
 
@@ -27,11 +27,18 @@
 
 
 
+
+#define WALL_WAITING_ROW_HEIGHT 44
+#define NOTIFICATIONS_LIMIT 5
+
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self) 
+    {
+        _waitingForPreviousEvents = NO;
     }
     return self;
 }
@@ -49,6 +56,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];  
+    
+    _waitingForPreviousEvents = NO;
+
   
   BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuBackground" error:nil];    
   self.view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
@@ -57,7 +67,7 @@
     _topBarTitle.text = NSLocalizedString(@"NotificationCenterView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)  limit:25 offset:0];
+    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)  limit:NOTIFICATIONS_LIMIT offset:0];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iOsNotificationReceived:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
 }
@@ -65,7 +75,12 @@
 
 - (void)iOsNotificationReceived:(NSNotification*)notif
 {
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)  limit:25 offset:0];    
+    // a new notification has been received, request everthing again. It's simpler, don't want to loose time with cell's comparaison 
+    NSInteger limit = 25;
+    if (self.notifications != nil)
+        limit = self.notifications.count;
+    
+    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)  limit:limit offset:0];    
 }
 
 - (void)viewDidUnload
@@ -95,6 +110,8 @@
 
 - (void)onNotificationsReceived:(ASIHTTPRequest*)req success:(BOOL)success
 {   
+    [self removeWaitingEventRow];
+
     if (!success)
     {
         NSLog(@"get user notifications FAILED");
@@ -141,6 +158,61 @@
     
 }
 
+
+- (void)onNotificationsAdded:(ASIHTTPRequest*)req success:(BOOL)success
+{   
+    [self removeWaitingEventRow];
+    
+    if (!success)
+    {
+        NSLog(@"get user notifications FAILED");
+        return;
+    }
+    
+    Container* container = [req responseObjectsWithClass:[UserNotification class]];
+    NSArray* newNotifications = container.objects;
+
+    if (newNotifications == nil)
+        return;
+    
+    // insert new ones
+    for (NSInteger i = 0; i < newNotifications.count; i++)
+    {
+        UserNotification* notif = [newNotifications objectAtIndex:i];
+        [self.notifications addObject:notif];
+        [self.notificationsDictionary setObject:notif forKey:notif._id];
+        [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.notifications.count-1 inSection:0]] withRowAnimation:UITableViewRowAnimationMiddle];
+    }
+    
+    
+}
+
+
+
+
+
+
+- (void)showWaitingEventRow
+{
+    if (_waitingForPreviousEvents)
+        return;
+    
+    _waitingForPreviousEvents = YES;
+    // #FIXME: todo...
+    [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.notifications.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)removeWaitingEventRow
+{
+    if (!_waitingForPreviousEvents)
+        return;
+    
+    _waitingForPreviousEvents = NO;
+    // #FIXME: todo...
+    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:self.notifications.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
     
 
 #pragma mark - TableView Source and Delegate
@@ -155,10 +227,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    if (self.notifications == nil)
-        return 0;
+    NSInteger nbRows = 0;
     
-    return self.notifications.count;
+    if (self.notifications == nil)
+        nbRows = 0;
+    else
+        nbRows = self.notifications.count;
+    
+    if (_waitingForPreviousEvents)
+        nbRows++;
+
+    return nbRows;
 }
 
 
@@ -169,6 +248,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
   static NSString *cellIdentifier = @"NotificationCenterTableViewCell";
+    
+    
+    // waiting cell
+    if (_waitingForPreviousEvents && indexPath.row == self.notifications.count)
+    {
+        static NSString* LoadingCellIdentifier = @"NotificationCenterWaitingCell";
+        
+        LoadingCell* cell = (LoadingCell*)[tableView dequeueReusableCellWithIdentifier:LoadingCellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[[LoadingCell alloc] initWithFrame:CGRectZero reuseIdentifier:LoadingCellIdentifier] autorelease];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;            
+        }
+        return cell;
+    }
+    
+
+    
+    
     
     UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
   
@@ -357,5 +455,47 @@
 {
   [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+
+
+
+
+- (void)askForPreviousEvents
+{
+    NSLog(@"ask for previous events");
+    if (_waitingForPreviousEvents)
+        return;
+    
+    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsAdded:success:)  limit:NOTIFICATIONS_LIMIT offset:self.notifications.count];
+    
+    [self showWaitingEventRow];
+}
+
+
+
+
+
+#pragma mark - UIScrollViewDelegate
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (!_waitingForPreviousEvents)
+    {
+        float offset = scrollView.contentOffset.y;
+        float contentHeight = scrollView.contentSize.height;
+        float viewHeight = scrollView.bounds.size.height;
+        
+        if ((offset > 0) && (offset + viewHeight > contentHeight + WALL_WAITING_ROW_HEIGHT))
+        {
+            [self askForPreviousEvents];
+        }
+    }
+}
+
+
+
+
 
 @end
