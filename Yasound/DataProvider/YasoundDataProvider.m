@@ -1792,7 +1792,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-#pragma mark - User Notifications
+#pragma mark - User Notifications   
 
 - (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
 {
@@ -1817,15 +1817,16 @@ static YasoundDataProvider* _main = nil;
 - (void)userNotificationsWithTarget:(id)target action:(SEL)selector limit:(NSInteger)limit offset:(NSInteger)offset
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/notifications/?limit=%d&offset=%d", limit, offset];
+    conf.url = @"api/v1/notifications/";
     conf.urlIsAbsolute = NO;
     conf.auth = self.apiKeyAuth;
     conf.method = @"GET";
     conf.callbackTarget = target;
     conf.callbackAction = selector;
+    conf.params = [NSArray arrayWithObjects:[NSString stringWithFormat:@"limit=%d", limit], [NSString stringWithFormat:@"offset=%d", offset], nil];
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
-    
+
     [req startAsynchronous];
 }
 
