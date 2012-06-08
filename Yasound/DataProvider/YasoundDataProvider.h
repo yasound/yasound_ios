@@ -254,7 +254,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)userNotificationWithId:(NSString*)notifId target:(id)target action:(SEL)selector;
 - (void)updateUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
 - (void)deleteUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
-
+- (void)deleteAllUserNotificationsWithTarget:(id)target action:(SEL)selector;
 // *************************** EXAMPLE ***************************
 //- (void)testNotifications
 //{

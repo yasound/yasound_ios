@@ -441,6 +441,20 @@
 }
 
 
+- (void)deletedAllNotifications:(ASIHTTPRequest*)req success:(BOOL)success  
+{
+    if (!success)
+    {
+        NSLog(@"delete all notifications FAILED");
+        return;
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];     
+}
+
+
+
+
 
 
 
@@ -467,7 +481,7 @@
 {
     if ((alertView == _alertTrash) && (buttonIndex == 1))
     {
-        
+        [[YasoundDataProvider main] deleteAllUserNotificationsWithTarget:self action:@selector(deletedAllNotifications:success:)];
         return;
     }
 }

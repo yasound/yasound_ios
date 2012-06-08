@@ -1880,6 +1880,21 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
+- (void)deleteAllUserNotificationsWithTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/delete_all_notifications/";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"DELETE";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
 
 
 
