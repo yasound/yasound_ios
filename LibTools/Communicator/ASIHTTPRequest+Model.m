@@ -38,6 +38,10 @@
 - (Container*)responseObjectsWithClass:(Class)ModelClass
 {
     NSString* respString = self.responseString;
+    
+    //LBDEBUG
+    NSLog(@"%@", respString);
+    
     Container* container = [[Container alloc] initWithObjectClass:ModelClass];
     [container loadPropertiesFromJsonString:respString];
     return container;

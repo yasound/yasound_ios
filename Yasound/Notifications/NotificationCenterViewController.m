@@ -57,7 +57,7 @@
     _topBarTitle.text = NSLocalizedString(@"NotificationCenterView_title", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];
+    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)  limit:25 offset:0];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iOsNotificationReceived:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
 }
@@ -65,7 +65,7 @@
 
 - (void)iOsNotificationReceived:(NSNotification*)notif
 {
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];    
+    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)  limit:25 offset:0];    
 }
 
 - (void)viewDidUnload
@@ -101,7 +101,8 @@
         return;
     }
     
-    NSArray* newNotifications = [req responseNSObjectsWithClass:[UserNotification class]];
+    Container* container = [req responseObjectsWithClass:[UserNotification class]];
+    NSArray* newNotifications = container.objects;
     
     if (newNotifications == nil)
         NSLog(@"error receiving notifications");

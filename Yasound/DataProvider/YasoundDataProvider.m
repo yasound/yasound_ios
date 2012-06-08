@@ -1814,10 +1814,10 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)userNotificationsWithTarget:(id)target action:(SEL)selector
+- (void)userNotificationsWithTarget:(id)target action:(SEL)selector limit:(NSInteger)limit offset:(NSInteger)offset
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = @"api/v1/notifications";
+    conf.url = [NSString stringWithFormat:@"api/v1/notifications/?limit=%d&offset=%d", limit, offset];
     conf.urlIsAbsolute = NO;
     conf.auth = self.apiKeyAuth;
     conf.method = @"GET";
@@ -1825,8 +1825,13 @@ static YasoundDataProvider* _main = nil;
     conf.callbackAction = selector;
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    
     [req startAsynchronous];
 }
+
+
+
+
 
 - (void)userNotificationWithId:(NSString*)notifId target:(id)target action:(SEL)selector
 {

@@ -115,7 +115,7 @@
 {
   [super viewDidAppear:animated];
     
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];
+    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:) limit:25 offset:0];
 
   
   if ([AudioStreamManager main].currentRadio == nil)
@@ -148,7 +148,7 @@
   if (!_notificationsCell)
     return;
     
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)];
+    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:) limit:25 offset:0];
 
 }
 
@@ -162,7 +162,8 @@
         return;
     }
     
-    NSArray* notifications = [NSMutableArray arrayWithArray:[req responseNSObjectsWithClass:[UserNotification class]]];
+    Container* container = [req responseObjectsWithClass:[UserNotification class]];
+    NSArray* notifications = container.objects;
     
     if (notifications == nil)
         NSLog(@"error receiving notifications");

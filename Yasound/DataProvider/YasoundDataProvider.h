@@ -250,7 +250,7 @@ taskStatus stringToStatus(NSString* str);
 // User Notifications
 - (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
 
-- (void)userNotificationsWithTarget:(id)target action:(SEL)selector;
+- (void)userNotificationsWithTarget:(id)target action:(SEL)selector limit:(NSInteger)limit offset:(NSInteger)offset;
 - (void)userNotificationWithId:(NSString*)notifId target:(id)target action:(SEL)selector;
 - (void)updateUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
 - (void)deleteUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
