@@ -417,11 +417,11 @@ static Song* _gNowPlayingSong = nil;
 {
     [super viewDidAppear:animated];
     
-    [[AudioStreamManager main] startRadio:self.radio];
-    [[YasoundDataProvider main] enterRadioWall:self.radio];
-
-    
-    
+    if (self.playPauseButton.selected)
+    {
+        [[AudioStreamManager main] startRadio:self.radio];
+        [[YasoundDataProvider main] enterRadioWall:self.radio];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_PLAY object:nil];
