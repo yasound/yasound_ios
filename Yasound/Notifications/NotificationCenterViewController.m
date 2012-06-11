@@ -449,7 +449,13 @@
         NSLog(@"delete all notifications FAILED");
         return;
     }
-    
+
+    NSLog(@"delete all notifications OK");
+
+    [self.notifications removeAllObjects];
+    [self.notificationsDictionary removeAllObjects];
+    [_tableView reloadData];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];     
 }
 
