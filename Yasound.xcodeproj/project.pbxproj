@@ -3240,13 +3240,8 @@
 		BCFECFFE1468439900BA20D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		E519073C1582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
-		E519073D1582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
-		E519073E1582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
 		E519073F1582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
 		E51907401582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
-		E51907411582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
-		E51907421582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
-		E51907431582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
 		E5280A56145EFFD900A88910 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A55145EFFD900A88910 /* libz.dylib */; };
 		E5280A58145F005B00A88910 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A57145F005B00A88910 /* MobileCoreServices.framework */; };
 		E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
@@ -3254,6 +3249,11 @@
 		E53A7AFD1456FA9900B74F84 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */; };
 		E53A7AFF1456FAB800B74F84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */; };
 		E546DB441556657B0005AB8D /* Yasound-Info-TechTour.plist in Resources */ = {isa = PBXBuildFile; fileRef = E546DB431556657B0005AB8D /* Yasound-Info-TechTour.plist */; };
+		E561068415874E7B00FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
+		E561068615874EC100FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
+		E561068715874EC100FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
+		E561068815874EC300FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
+		E561068915874EC400FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
 		E5A9A3AE1454DC0500EA374C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AD1454DC0500EA374C /* UIKit.framework */; };
 		E5A9A3B01454DC0500EA374C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
@@ -4104,7 +4104,7 @@
 				40B40A16152EFC630050D334 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */,
 				BC9BE82D1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
-				E51907421582250A0094C0DF /* Crashlytics.framework in Frameworks */,
+				E561068915874EC400FB8264 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4135,7 +4135,7 @@
 				40D53C1C1554280F001EB0C5 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */,
 				40D53C1E1554280F001EB0C5 /* libTestFlight.a in Frameworks */,
-				E51907431582250A0094C0DF /* Crashlytics.framework in Frameworks */,
+				E561068415874E7B00FB8264 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4166,7 +4166,7 @@
 				BC3FA6FC14E93B660055AB4A /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */,
 				BC9BE82C1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
-				E51907411582250A0094C0DF /* Crashlytics.framework in Frameworks */,
+				E561068815874EC300FB8264 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4197,7 +4197,7 @@
 				BC56F525152486AF005D1B40 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */,
 				BC9BE8291536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
-				E519073E1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
+				E561068715874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4228,7 +4228,7 @@
 				BCDC96DD14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1314CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				BC9BE8281536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
-				E519073D1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
+				E561068615874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5683,6 +5683,7 @@
 				40D53B551554280F001EB0C5 /* Sources */,
 				40D53C071554280F001EB0C5 /* Frameworks */,
 				40D53C1F1554280F001EB0C5 /* Resources */,
+				E561068515874E8100FB8264 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -5759,6 +5760,7 @@
 				BC93CCC614CF3F7A007C723F /* Sources */,
 				BC93CD3C14CF3F7A007C723F /* Frameworks */,
 				BC93CD5114CF3F7A007C723F /* Resources */,
+				E561068315874E4800FB8264 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -7605,6 +7607,32 @@
 			shellScript = "./Crashlytics.framework/run 10c9dc901cf76d05c62fc2f52d0c2642f888fc4f";
 		};
 		E519073A158224BC0094C0DF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 10c9dc901cf76d05c62fc2f52d0c2642f888fc4f";
+		};
+		E561068315874E4800FB8264 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 10c9dc901cf76d05c62fc2f52d0c2642f888fc4f";
+		};
+		E561068515874E8100FB8264 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
