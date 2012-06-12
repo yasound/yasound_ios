@@ -19,7 +19,6 @@
 {
     NSInteger _streamErrorCount;
     NSTimer* _streamErrorTimer;
-    NSInteger _streamErrorTimerPeriod;
 }
 
 @property (retain) Radio* currentRadio;

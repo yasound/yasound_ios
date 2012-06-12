@@ -176,8 +176,6 @@ extern NSString * const ASStatusChangedNotification;
 #endif
 }
 
-//LBDEBUG
-//@property (retain) NSDate* streamErrorLastTime;
 
 @property AudioStreamerErrorCode errorCode;
 @property (readonly) AudioStreamerState state;

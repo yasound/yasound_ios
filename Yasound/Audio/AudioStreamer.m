@@ -247,8 +247,6 @@ void ASReadStreamCallBack
 @synthesize state;
 @synthesize bitRate;
 @synthesize httpHeaders;
-//LBDEBUG
-//@synthesize streamErrorLastTime;
 
 static NSDate* gStreamErrorLastTime = nil;
 
@@ -264,8 +262,6 @@ static NSDate* gStreamErrorLastTime = nil;
 	{
 		url = [aURL retain];
     cookie = nil;
-        //LBDEBUG
-//        self.streamErrorLastTime = [NSDate date];
 	}
   
   notificationCenter = [[NSNotificationCenter defaultCenter] retain];
@@ -281,8 +277,6 @@ static NSDate* gStreamErrorLastTime = nil;
 	{
 		url = [aURL retain];
     cookie = [aCookie retain];
-        //LBDEBUG
-//        self.streamErrorLastTime = [NSDate date];
 
 	}
 
@@ -507,19 +501,11 @@ static NSDate* gStreamErrorLastTime = nil;
 
         //send notification instead of displaying an alert
 
-        //LBDEBUG
-//        postNotification NSNotification
-//    [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSPostNow];
-
-        //ICI
-//        [self performSelectorOnMainThread:@selector(mainThreadAudioStreamError) withObject:nil waitUntilDone:YES];
-
         NSDate* now = [NSDate date];
         NSTimeInterval interval = [now timeIntervalSinceDate:gStreamErrorLastTime];
-//        NSTimeInterval interval = [self.streamErrorLastTime timeIntervalSinceNow];
         
-        if (gStreamErrorLastTime != nil)
-            NSLog(@"interval %2.f", interval);
+//        if (gStreamErrorLastTime != nil)
+//            NSLog(@"interval %2.f", interval);
         
         if ((gStreamErrorLastTime == nil ) || (interval > STREAM_ERROR_TIMER_THRESHOLD))
         {
@@ -528,8 +514,6 @@ static NSDate* gStreamErrorLastTime = nil;
             
             gStreamErrorLastTime = [NSDate date];
             [gStreamErrorLastTime retain];
-            
-//            _audioStreamErrorLock = YES;
             
             dispatch_sync(dispatch_get_main_queue(),^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
@@ -540,10 +524,6 @@ static NSDate* gStreamErrorLastTime = nil;
 }
 
 
-//- (void)mainThreadAudioStreamError
-//{
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
-//}
 
 
 //
@@ -773,8 +753,6 @@ static NSDate* gStreamErrorLastTime = nil;
 			kCFBooleanTrue) == false)
 		{
       //send notification instead of displaying an alert
-            //LBDEBUG
-//      [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSPostNow];
 
             dispatch_async(dispatch_get_main_queue(),^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
@@ -824,8 +802,6 @@ static NSDate* gStreamErrorLastTime = nil;
 //								message:NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil)];
             
             //send notification instead of displaying an alert
-            //LBDEBUG
-//      [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSPostNow];
             
             dispatch_async(dispatch_get_main_queue(),^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
@@ -954,27 +930,12 @@ static NSDate* gStreamErrorLastTime = nil;
 			}
 			self.state = AS_BUFFERING;
 		}
-        
-        //LBDEBUG
-        if (!isRunning)
-        {
-            NSLog(@"meuh1");
-        }
-        
-        if ([self runLoopShouldExit])
-        {
-            NSLog(@"meuh2");
-        }
-        ////////////
-        
-        
 	} while (isRunning && ![self runLoopShouldExit]);
 	
 cleanup:
 
 	@synchronized(self)
 	{
-        //LBDEBUG
         BOOL requestSpawn = [self isStreamInterrupted];
         
 		//
@@ -1032,12 +993,8 @@ cleanup:
 		[internalThread release];
 		internalThread = nil;
 
-        //ICI
-        //LBDEBUG
         if (requestSpawn)
         {
-//            [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSPostNow];
-            //LBDEBUG
             dispatch_async(dispatch_get_main_queue(),^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
             });
