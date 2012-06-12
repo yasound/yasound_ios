@@ -270,6 +270,17 @@
 				<key>y</key>
 				<integer>7</integer>
 			</dict>
+			<key>RadioSelectionMask</key>
+			<dict>
+				<key>name</key>
+				<string>CellRadioUser_Mask</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>18</integer>
+				<key>y</key>
+				<integer>7</integer>
+			</dict>
 			<key>RadioSelectionSubtitle1</key>
 			<dict>
 				<key>font</key>

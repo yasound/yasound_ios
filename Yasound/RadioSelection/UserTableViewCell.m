@@ -8,6 +8,7 @@
 
 #import "UserTableViewCell.h"
 #import "BundleFileManager.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation UserTableViewCell
 
@@ -51,15 +52,22 @@
     stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionAvatar" retainStylesheet:YES overwriteStylesheet:NO error:&error];
     self.userAvatar.frame = stylesheet.frame;
     [self addSubview:self.userAvatar];
+      
+      // draw circle mask
+      self.userAvatar.layer.masksToBounds = YES;
+      self.userAvatar.layer.cornerRadius = 25;
+
     
-    // avatar mask
-    NSString* avatarMask;
-    if (rowIndex & 1)
-      avatarMask = @"RadioSelectionMaskWhite";
-    else
-      avatarMask = @"RadioSelectionMaskGray";
-    
-    stylesheet = [[BundleFileManager main] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:&error];
+//    // avatar mask
+//    NSString* avatarMask;
+//    if (rowIndex & 1)
+//      avatarMask = @"RadioSelectionMaskWhite";
+//    else
+//      avatarMask = @"RadioSelectionMaskGray";
+//    
+      
+      
+    stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionMask"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
     self.userAvatarMask = [stylesheet makeImage];
     [self addSubview:self.userAvatarMask];
     
@@ -87,10 +95,10 @@
 
 
     
-    _maskBackup = self.userAvatarMask.image;
-    [_maskBackup retain];
-    _maskSelected = [UIImage imageNamed:@"CellRadioHighlighted_Mask.png"];
-    [_maskSelected retain];
+//    _maskBackup = self.userAvatarMask.image;
+//    [_maskBackup retain];
+//    _maskSelected = [UIImage imageNamed:@"CellRadioHighlighted_Mask.png"];
+//    [_maskSelected retain];
     
 //    _bkgBackup = self.cellBackground.image;
 //    [_bkgBackup retain];
@@ -126,15 +134,15 @@
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     [self.userAvatar setUrl:imageURL];
     
-    // avatar mask
-    NSString* avatarMask;
-    if (rowIndex & 1)
-        avatarMask = @"RadioSelectionMaskWhite";
-    else
-        avatarMask = @"RadioSelectionMaskGray";
-    
-    sheet = [[BundleFileManager main] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    [self.userAvatarMask setImage:[sheet image]];
+//    // avatar mask
+//    NSString* avatarMask;
+//    if (rowIndex & 1)
+//        avatarMask = @"RadioSelectionMaskWhite";
+//    else
+//        avatarMask = @"RadioSelectionMaskGray";
+//    
+//    sheet = [[BundleFileManager main] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    [self.userAvatarMask setImage:[sheet image]];
 
     // name
     self.userName.text = self.user.name;
@@ -175,8 +183,8 @@
 
 - (void)dealloc
 {
-  [_maskBackup release];
-  [_maskSelected release];
+//  [_maskBackup release];
+//  [_maskSelected release];
   [_bkgBackup release];
   [_bkgSelected release];
   [super dealloc];
@@ -191,7 +199,7 @@
   if (selected)
   {
 //    self.cellBackground.image = _bkgSelected;
-    self.userAvatarMask.image = _maskSelected;
+//    self.userAvatarMask.image = _maskSelected;
    
     BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
     [sheet applyToLabel:self.userName class:@"selected"];
@@ -199,7 +207,7 @@
   else
   {
 //    self.cellBackground.image = _bkgBackup;
-    self.userAvatarMask.image = _maskBackup;
+//    self.userAvatarMask.image = _maskBackup;
 
     BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
     [sheet applyToLabel:self.userName class:nil];

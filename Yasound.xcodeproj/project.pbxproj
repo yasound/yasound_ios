@@ -1103,6 +1103,22 @@
 		BC33F43C14DDC6A100D4C67F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
 		BC33F43D14DDC6A100D4C67F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
 		BC33F43E14DDC6A100D4C67F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
+		BC385C741587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C721587AC9400DC2321 /* CellRadioUser_Mask.png */; };
+		BC385C751587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C721587AC9400DC2321 /* CellRadioUser_Mask.png */; };
+		BC385C761587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C721587AC9400DC2321 /* CellRadioUser_Mask.png */; };
+		BC385C771587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C721587AC9400DC2321 /* CellRadioUser_Mask.png */; };
+		BC385C781587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C721587AC9400DC2321 /* CellRadioUser_Mask.png */; };
+		BC385C791587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C721587AC9400DC2321 /* CellRadioUser_Mask.png */; };
+		BC385C7A1587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C721587AC9400DC2321 /* CellRadioUser_Mask.png */; };
+		BC385C7B1587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C721587AC9400DC2321 /* CellRadioUser_Mask.png */; };
+		BC385C7C1587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C731587AC9400DC2321 /* CellRadioUser_Mask@2x.png */; };
+		BC385C7D1587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C731587AC9400DC2321 /* CellRadioUser_Mask@2x.png */; };
+		BC385C7E1587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C731587AC9400DC2321 /* CellRadioUser_Mask@2x.png */; };
+		BC385C7F1587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C731587AC9400DC2321 /* CellRadioUser_Mask@2x.png */; };
+		BC385C801587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C731587AC9400DC2321 /* CellRadioUser_Mask@2x.png */; };
+		BC385C811587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C731587AC9400DC2321 /* CellRadioUser_Mask@2x.png */; };
+		BC385C821587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C731587AC9400DC2321 /* CellRadioUser_Mask@2x.png */; };
+		BC385C831587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC385C731587AC9400DC2321 /* CellRadioUser_Mask@2x.png */; };
 		BC3FA66314E93B660055AB4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		BC3FA66414E93B660055AB4A /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BC3FA66714E93B660055AB4A /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
@@ -3568,6 +3584,8 @@
 		BC28FF6E152DFCEC0070F982 /* BigActionRedButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigActionRedButtonHighlighted@2x.png"; sourceTree = "<group>"; };
 		BC33F43714DDC6A100D4C67F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BC33F43814DDC6A100D4C67F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BC385C721587AC9400DC2321 /* CellRadioUser_Mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CellRadioUser_Mask.png; path = RadioSelection/CellRadioUser_Mask.png; sourceTree = "<group>"; };
+		BC385C731587AC9400DC2321 /* CellRadioUser_Mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "CellRadioUser_Mask@2x.png"; path = "RadioSelection/CellRadioUser_Mask@2x.png"; sourceTree = "<group>"; };
 		BC3FA77C14E93B660055AB4A /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC3FA78514E96AEB0055AB4A /* ListenerSelectedBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ListenerSelectedBackground.png; sourceTree = "<group>"; };
 		BC3FA78614E96AEB0055AB4A /* ListenerSelectedBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ListenerSelectedBackground@2x.png"; sourceTree = "<group>"; };
@@ -4694,6 +4712,8 @@
 		BC5EE217147D427100A282A5 /* RadioSelection */ = {
 			isa = PBXGroup;
 			children = (
+				BC385C721587AC9400DC2321 /* CellRadioUser_Mask.png */,
+				BC385C731587AC9400DC2321 /* CellRadioUser_Mask@2x.png */,
 				BCC6AD3C14E87757001AC34B /* avatarDummy.png */,
 				BCC6AD3D14E87757001AC34B /* avatarDummy@2x.png */,
 				BC9F4A8314E6C7E900008AA3 /* CellButton.png */,
@@ -6086,6 +6106,8 @@
 				BCCD80181577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB076A215790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6E157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
+				BC385C7A1587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */,
+				BC385C821587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6302,6 +6324,8 @@
 				BCCD80191577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB076A315790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6F157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
+				BC385C7B1587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */,
+				BC385C831587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6512,6 +6536,8 @@
 				BCCD80171577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB076A115790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6D157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
+				BC385C791587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */,
+				BC385C811587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6727,6 +6753,8 @@
 				BCCD80141577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB0769E15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6A157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
+				BC385C761587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */,
+				BC385C7E1587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6942,6 +6970,8 @@
 				BCCD80131577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB0769D15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A69157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
+				BC385C751587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */,
+				BC385C7D1587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7157,6 +7187,8 @@
 				BCCD80161577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB076A015790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6C157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
+				BC385C781587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */,
+				BC385C801587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7372,6 +7404,8 @@
 				BCCD80121577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB0769C15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A68157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
+				BC385C741587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */,
+				BC385C7C1587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7587,6 +7621,8 @@
 				BCCD80151577C36F008E469F /* ProfileMyRadioViewController.xib in Resources */,
 				BCB0769F15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6B157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
+				BC385C771587AC9400DC2321 /* CellRadioUser_Mask.png in Resources */,
+				BC385C7F1587AC9400DC2321 /* CellRadioUser_Mask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

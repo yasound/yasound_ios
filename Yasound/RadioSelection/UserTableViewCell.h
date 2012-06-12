@@ -12,8 +12,8 @@
 
 @interface UserTableViewCell : UITableViewCell
 {
-  UIImage* _maskBackup;
-  UIImage* _maskSelected;
+//  UIImage* _maskBackup;
+//  UIImage* _maskSelected;
   UIImage* _bkgBackup;
   UIImage* _bkgSelected;
 
