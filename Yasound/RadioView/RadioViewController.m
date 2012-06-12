@@ -423,7 +423,7 @@ static Song* _gNowPlayingSong = nil;
         [[YasoundDataProvider main] enterRadioWall:self.radio];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_PLAY object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_STOP object:nil];
    
@@ -2230,7 +2230,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)onAudioStreamNotif:(NSNotification *)notification
 {
-    if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_ERROR])
+    if ([notification.name isEqualToString:NOTIF_DISPLAY_AUDIOSTREAM_ERROR])
     {
         [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
         NSLog(@"stream error notification");

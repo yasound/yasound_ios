@@ -10,7 +10,7 @@
 #import "AudioStreamer.h"
 #import "YasoundDataProvider.h"
 
-#define USE_FAKE_RADIO_URL 0
+//#define USE_FAKE_RADIO_URL 1
 
 @implementation AudioStreamManager
 
@@ -54,6 +54,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     {
         [_streamErrorTimer invalidate];
         _streamErrorTimer = nil;
+        _streamErrorTimerPeriod = 3;
     }
     
     [self _startRadio:radio];
@@ -84,7 +85,9 @@ static AudioStreamer* _gAudioStreamer = nil;
     [[NSUserDefaults standardUserDefaults] synchronize];        
 
 #if USE_FAKE_RADIO_URL || USE_YASOUND_LOCAL_SERVER
-    NSURL* radiourl = [NSURL URLWithString:@"http://api.yasound.com:8001/fakeid"];
+//    NSURL* radiourl = [NSURL URLWithString:@"http://api.yasound.com:8001/fakeid"];
+    //LBDEBUG
+    NSURL* radiourl = [NSURL URLWithString:@"http://localhost:8888/test.mp3"];
 #else
   NSString* url = radio.stream_url;
     NSURL* radiourl = [NSURL URLWithString:url];
@@ -186,45 +189,57 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 
 
-- (void)tryAndRestartOnError
-{
-    _streamErrorCount++;
-    
-    // error is handled already
-    if (_streamErrorTimer != nil)
-        return;
-    
-    _streamErrorTimerPeriod = 1;
-}
+//- (void)tryAndRestartOnError
+//{
+//    _streamErrorCount++;
+//    
+//    // error is handled already
+//    if (_streamErrorTimer != nil)
+//        return;
+//    
+//    _streamErrorTimerPeriod = 1;
+//}
 
 
 
+#define STREAM_ERROR_TIMER_PERIOD 5
 
 - (void)onAudioStreamNotif:(NSNotification*)notif
 {
-    NSLog(@"onAudioStreamNotif");
     
     if ((_streamErrorTimer != nil) && [_streamErrorTimer isValid])
-    {
-        NSLog(@"audio stream error is begin handled already");
-        
-        [_streamErrorTimer invalidate];
-        _streamErrorTimer = nil;
-        _streamErrorTimerPeriod = _streamErrorTimerPeriod * 3;
-        if (_streamErrorTimerPeriod > 60)
-            _streamErrorTimerPeriod = 60;
-        
-        NSLog(@"new period of error retreiving : %d", _streamErrorTimerPeriod);
-        
-    }
-    else
-    {
-        _streamErrorTimerPeriod = 1;
-    }
+        return;
+
+    NSLog(@"onAudioStreamNotif");
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
+
+    
+//    if ((_streamErrorTimer != nil) && [_streamErrorTimer isValid])
+//    {
+//        NSLog(@"audio stream error is begin handled already");
+//        
+//        [_streamErrorTimer invalidate];
+//        _streamErrorTimer = nil;
+//        _streamErrorTimerPeriod = _streamErrorTimerPeriod * 3;
+//        if (_streamErrorTimerPeriod > 60)
+//            _streamErrorTimerPeriod = 60;
+//        
+//        NSLog(@"new period of error retreiving : %d", _streamErrorTimerPeriod);
+//        
+//    }
 
     
     _streamErrorCount++;
-    _streamErrorTimer = [NSTimer scheduledTimerWithTimeInterval:_streamErrorTimerPeriod target:self selector:@selector(onStreamErrorHandling:) userInfo:nil repeats:NO];
+//    _streamErrorTimerPeriod = * 3;
+    _streamErrorTimerPeriod = 30;
+
+    _streamErrorTimer = [NSTimer scheduledTimerWithTimeInterval:STREAM_ERROR_TIMER_PERIOD target:self selector:@selector(onStreamErrorHandling:) userInfo:nil repeats:NO];
+    
+//    _streamErrorTimerPeriod = _streamErrorTimerPeriod * 3;
+//    if (_streamErrorTimerPeriod > 60)
+//        _streamErrorTimerPeriod = 60;
+
 }
 
 
@@ -233,6 +248,8 @@ static AudioStreamer* _gAudioStreamer = nil;
 {
     [[AudioStreamManager main] _stopRadio];
     [[AudioStreamManager main] _startRadio:self.currentRadio];
+    
+    
     
     _streamErrorTimer = nil;
 }

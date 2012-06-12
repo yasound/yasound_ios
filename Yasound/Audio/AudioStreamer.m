@@ -225,12 +225,32 @@ void ASReadStreamCallBack
 	[streamer handleReadFromStream:aStream eventType:eventType];
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @implementation AudioStreamer
 
 @synthesize errorCode;
 @synthesize state;
 @synthesize bitRate;
 @synthesize httpHeaders;
+//LBDEBUG
+//@synthesize streamErrorLastTime;
+
+static NSDate* gStreamErrorLastTime = nil;
 
 //
 // initWithURL
@@ -244,6 +264,8 @@ void ASReadStreamCallBack
 	{
 		url = [aURL retain];
     cookie = nil;
+        //LBDEBUG
+//        self.streamErrorLastTime = [NSDate date];
 	}
   
   notificationCenter = [[NSNotificationCenter defaultCenter] retain];
@@ -259,6 +281,9 @@ void ASReadStreamCallBack
 	{
 		url = [aURL retain];
     cookie = [aCookie retain];
+        //LBDEBUG
+//        self.streamErrorLastTime = [NSDate date];
+
 	}
 
   notificationCenter = [[NSNotificationCenter defaultCenter] retain];
@@ -440,6 +465,9 @@ void ASReadStreamCallBack
 // Parameters:
 //    anErrorCode - the error condition
 //
+
+#define STREAM_ERROR_TIMER_THRESHOLD 3
+
 - (void)failWithErrorCode:(AudioStreamerErrorCode)anErrorCode
 {
 	@synchronized(self)
@@ -478,9 +506,45 @@ void ASReadStreamCallBack
         //							message:NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil)];
 
         //send notification instead of displaying an alert
-    [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSNotificationNoCoalescing];
-	}
+
+        //LBDEBUG
+//        postNotification NSNotification
+//    [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSPostNow];
+
+        //ICI
+//        [self performSelectorOnMainThread:@selector(mainThreadAudioStreamError) withObject:nil waitUntilDone:YES];
+
+        NSDate* now = [NSDate date];
+        NSTimeInterval interval = [now timeIntervalSinceDate:gStreamErrorLastTime];
+//        NSTimeInterval interval = [self.streamErrorLastTime timeIntervalSinceNow];
+        
+        if (gStreamErrorLastTime != nil)
+            NSLog(@"interval %2.f", interval);
+        
+        if ((gStreamErrorLastTime == nil ) || (interval > STREAM_ERROR_TIMER_THRESHOLD))
+        {
+            if (gStreamErrorLastTime != nil)
+                [gStreamErrorLastTime release];
+            
+            gStreamErrorLastTime = [NSDate date];
+            [gStreamErrorLastTime retain];
+            
+//            _audioStreamErrorLock = YES;
+            
+            dispatch_sync(dispatch_get_main_queue(),^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
+            });
+        }
+
+    }
 }
+
+
+//- (void)mainThreadAudioStreamError
+//{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
+//}
+
 
 //
 // mainThreadStateNotification
@@ -709,7 +773,12 @@ void ASReadStreamCallBack
 			kCFBooleanTrue) == false)
 		{
       //send notification instead of displaying an alert
-      [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSNotificationNoCoalescing];
+            //LBDEBUG
+//      [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSPostNow];
+
+            dispatch_async(dispatch_get_main_queue(),^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
+            });
 
       return NO;
 		}
@@ -755,7 +824,13 @@ void ASReadStreamCallBack
 //								message:NSLocalizedStringFromTable(@"Unable to configure network read stream.", @"Errors", nil)];
             
             //send notification instead of displaying an alert
-      [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSNotificationNoCoalescing];
+            //LBDEBUG
+//      [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSPostNow];
+            
+            dispatch_async(dispatch_get_main_queue(),^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
+            });
+
 
 			return NO;
 		}
@@ -803,6 +878,7 @@ void ASReadStreamCallBack
 - (void)startInternal
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
 
 	@synchronized(self)
 	{
@@ -878,12 +954,29 @@ void ASReadStreamCallBack
 			}
 			self.state = AS_BUFFERING;
 		}
+        
+        //LBDEBUG
+        if (!isRunning)
+        {
+            NSLog(@"meuh1");
+        }
+        
+        if ([self runLoopShouldExit])
+        {
+            NSLog(@"meuh2");
+        }
+        ////////////
+        
+        
 	} while (isRunning && ![self runLoopShouldExit]);
 	
 cleanup:
 
 	@synchronized(self)
 	{
+        //LBDEBUG
+        BOOL requestSpawn = [self isStreamInterrupted];
+        
 		//
 		// Cleanup the read stream if it is still open
 		//
@@ -938,10 +1031,39 @@ cleanup:
 
 		[internalThread release];
 		internalThread = nil;
+
+        //ICI
+        //LBDEBUG
+        if (requestSpawn)
+        {
+//            [notificationQueue enqueueNotification: [NSNotification notificationWithName:NOTIF_AUDIOSTREAM_ERROR object:nil] postingStyle:NSPostNow];
+            //LBDEBUG
+            dispatch_async(dispatch_get_main_queue(),^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_ERROR object:nil];
+            });
+
+        }
+
+        
 	}
 
 	[pool release];
 }
+
+
+
+- (BOOL)isStreamInterrupted
+{
+    if (
+        (state == AS_STOPPED) &&
+        ((stopReason == AS_STOPPING_EOF) || (stopReason == AS_STOPPING_ERROR))
+        )
+        return YES;
+    
+    return NO;
+}
+
+
 
 //
 // start
@@ -950,6 +1072,8 @@ cleanup:
 //
 - (void)start
 {
+//    _audioStreamErrorLock = NO;
+
 	@synchronized (self)
 	{
 		if (state == AS_PAUSED)
