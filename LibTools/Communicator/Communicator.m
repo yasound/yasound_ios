@@ -489,7 +489,7 @@
     if (!u)
     {
         NSLog(@"post data: invalid url");
-        return;
+        return NULL;
     }
     
     NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
@@ -517,7 +517,7 @@
     if (!u)
     {
         NSLog(@"post data: invalid url");
-        return;
+        return NULL;
     }
     
     NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
@@ -546,7 +546,7 @@
     if (!u)
     {
         NSLog(@"post data: invalid url");
-        return;
+        return NULL;
     }
     
     NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
@@ -1043,7 +1043,7 @@
     if (!u)
     {
         NSLog(@"postRequestToURL: invalid url");
-        return;
+        return NULL;
     }
     
     NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
