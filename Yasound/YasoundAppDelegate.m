@@ -16,7 +16,7 @@
 #import "StatsViewController.h"
 #import "NotificationCenterViewController.h"
 
-
+#import <Crashlytics/Crashlytics.h>
 
 @implementation YasoundAppDelegate
 
@@ -77,6 +77,8 @@ void SignalHandler(int sig) {
 #endif    
     
 #endif
+  
+  [Crashlytics startWithAPIKey:@"10c9dc901cf76d05c62fc2f52d0c2642f888fc4f"];
   
   _APNsTokenString = nil;
 #ifdef USE_YASOUND_LOCAL_SERVER

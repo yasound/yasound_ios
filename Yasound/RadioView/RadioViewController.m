@@ -1697,7 +1697,7 @@ static Song* _gNowPlayingSong = nil;
     NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
     NSString* cleanText = [textField.text stringByTrimmingCharactersInSet:space];
     if (cleanText.length == 0)
-        return;
+        return FALSE;
     
     [self sendMessage:textField.text];
     textField.text = nil;

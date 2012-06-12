@@ -3239,6 +3239,9 @@
 		BCFECFFB1468439900BA20D9 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BCFECFFE1468439900BA20D9 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
 		BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
+		E519073C1582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
+		E519073F1582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
+		E51907401582250A0094C0DF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
 		E5280A56145EFFD900A88910 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A55145EFFD900A88910 /* libz.dylib */; };
 		E5280A58145F005B00A88910 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A57145F005B00A88910 /* MobileCoreServices.framework */; };
 		E5280A5A145F006C00A88910 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
@@ -3246,6 +3249,11 @@
 		E53A7AFD1456FA9900B74F84 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF61456FA6800B74F84 /* MediaPlayer.framework */; };
 		E53A7AFF1456FAB800B74F84 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AFE1456FAB800B74F84 /* CFNetwork.framework */; };
 		E546DB441556657B0005AB8D /* Yasound-Info-TechTour.plist in Resources */ = {isa = PBXBuildFile; fileRef = E546DB431556657B0005AB8D /* Yasound-Info-TechTour.plist */; };
+		E561068415874E7B00FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
+		E561068615874EC100FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
+		E561068715874EC100FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
+		E561068815874EC300FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
+		E561068915874EC400FB8264 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E519073B1582250A0094C0DF /* Crashlytics.framework */; };
 		E5A9A3AE1454DC0500EA374C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AD1454DC0500EA374C /* UIKit.framework */; };
 		E5A9A3B01454DC0500EA374C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3AF1454DC0500EA374C /* Foundation.framework */; };
 		E5A9A3B21454DC0500EA374C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5A9A3B11454DC0500EA374C /* CoreGraphics.framework */; };
@@ -4046,6 +4054,7 @@
 		BCFECFEC1468439900BA20D9 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
 		BCFECFF91468439900BA20D9 /* YasoundAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundAppDelegate.h; sourceTree = "<group>"; };
 		BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundAppDelegate.m; sourceTree = "<group>"; };
+		E519073B1582250A0094C0DF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		E5280A55145EFFD900A88910 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E5280A57145F005B00A88910 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E5280A59145F006C00A88910 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -4095,6 +4104,7 @@
 				40B40A16152EFC630050D334 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				40B40A17152EFC630050D334 /* libOAuth.a in Frameworks */,
 				BC9BE82D1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
+				E561068915874EC400FB8264 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4125,6 +4135,7 @@
 				40D53C1C1554280F001EB0C5 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				40D53C1D1554280F001EB0C5 /* libOAuth.a in Frameworks */,
 				40D53C1E1554280F001EB0C5 /* libTestFlight.a in Frameworks */,
+				E561068415874E7B00FB8264 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4155,6 +4166,7 @@
 				BC3FA6FC14E93B660055AB4A /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC3FA6FD14E93B660055AB4A /* libOAuth.a in Frameworks */,
 				BC9BE82C1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
+				E561068815874EC300FB8264 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4185,6 +4197,7 @@
 				BC56F525152486AF005D1B40 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC56F526152486AF005D1B40 /* libOAuth.a in Frameworks */,
 				BC9BE8291536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
+				E561068715874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4215,6 +4228,7 @@
 				BCDC96DD14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1314CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				BC9BE8281536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
+				E561068615874EC100FB8264 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4245,6 +4259,7 @@
 				BC93CD4E14CF3F7A007C723F /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1514CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				BC9BE82B1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
+				E51907401582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4275,6 +4290,7 @@
 				BCDC96DC14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1214CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				BC9BE8271536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
+				E519073C1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4305,6 +4321,7 @@
 				BCDC96DE14AB7D8900D54631 /* libGoogleAnalytics_NoThumb.a in Frameworks */,
 				BC40CC1414CF64B100DF0950 /* libOAuth.a in Frameworks */,
 				BC9BE82A1536C8B500B01AD2 /* libTestFlight.a in Frameworks */,
+				E519073F1582250A0094C0DF /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5569,6 +5586,7 @@
 		E5A9A3AC1454DC0500EA374C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E519073B1582250A0094C0DF /* Crashlytics.framework */,
 				BC40CC8314D010BD00DF0950 /* QuartzCore.framework */,
 				BCDC97D214AB81EA00D54631 /* Accounts.framework */,
 				BCDC97CE14AB81BF00D54631 /* Security.framework */,
@@ -5665,6 +5683,7 @@
 				40D53B551554280F001EB0C5 /* Sources */,
 				40D53C071554280F001EB0C5 /* Frameworks */,
 				40D53C1F1554280F001EB0C5 /* Resources */,
+				E561068515874E8100FB8264 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -5741,6 +5760,7 @@
 				BC93CCC614CF3F7A007C723F /* Sources */,
 				BC93CD3C14CF3F7A007C723F /* Frameworks */,
 				BC93CD5114CF3F7A007C723F /* Resources */,
+				E561068315874E4800FB8264 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -5760,6 +5780,7 @@
 				E5A9A3A51454DC0500EA374C /* Sources */,
 				E5A9A3A61454DC0500EA374C /* Frameworks */,
 				E5A9A3A71454DC0500EA374C /* Resources */,
+				E519073A158224BC0094C0DF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -5779,6 +5800,7 @@
 				E5F3B8541498B88D008DD607 /* Sources */,
 				E5F3B88F1498B88D008DD607 /* Frameworks */,
 				E5F3B8991498B88D008DD607 /* Resources */,
+				E5190739158223BF0094C0DF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -7570,6 +7592,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E5190739158223BF0094C0DF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 10c9dc901cf76d05c62fc2f52d0c2642f888fc4f";
+		};
+		E519073A158224BC0094C0DF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 10c9dc901cf76d05c62fc2f52d0c2642f888fc4f";
+		};
+		E561068315874E4800FB8264 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 10c9dc901cf76d05c62fc2f52d0c2642f888fc4f";
+		};
+		E561068515874E8100FB8264 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 10c9dc901cf76d05c62fc2f52d0c2642f888fc4f";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		40B40950152EFC630050D334 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -9269,6 +9346,10 @@
 		40B40AE9152EFC630050D334 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -9294,6 +9375,10 @@
 		40B40AEA152EFC630050D334 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "USE_YASOUND_LOCAL_SERVER=1";
@@ -9317,6 +9402,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastien Metrot (9HNDHDZ2PR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9346,6 +9435,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastien Metrot (9HNDHDZ2PR)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9370,6 +9463,10 @@
 		BC3FA77A14E93B660055AB4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -9394,6 +9491,10 @@
 		BC3FA77B14E93B660055AB4A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "MUTE_RADIO=1";
@@ -9415,6 +9516,10 @@
 		BC56F5E3152486AF005D1B40 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -9440,6 +9545,10 @@
 		BC56F5E4152486AF005D1B40 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "USE_DEV_SERVER=1";
@@ -9462,6 +9571,10 @@
 		BC71F633147FEC6F00DAE4BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9488,6 +9601,10 @@
 		BC71F634147FEC6F00DAE4BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
@@ -9513,6 +9630,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SAS Yasound";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -9543,6 +9664,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SAS Yasound";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -9649,6 +9774,10 @@
 		E5A9A3C51454DC0500EA374C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
@@ -9671,6 +9800,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
@@ -9693,6 +9826,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -9711,7 +9848,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "BDEC8AB1-FC21-460F-AA26-A5E8B57F52DC";
+				PROVISIONING_PROFILE = "E009665C-2989-4579-824C-86E72BB1F0EA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -9720,6 +9857,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SAS Yasound";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Yasound/Yasound-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -9738,7 +9879,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "BDEC8AB1-FC21-460F-AA26-A5E8B57F52DC";
+				PROVISIONING_PROFILE = "E009665C-2989-4579-824C-86E72BB1F0EA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
