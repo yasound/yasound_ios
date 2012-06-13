@@ -404,7 +404,7 @@
 
 
 "radioview_message" = "enter your message";
-"RadioView_status_message_audiostream_error" = "error : unable to read the audio stream";
+"RadioView_status_message_audiostream_error" = "waiting to restart...";
 
 "RadioView_favorite_alredy_added" = "already added to favorites!";
 "RadioView_favorite_added" = "added to favorites!";

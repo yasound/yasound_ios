@@ -396,7 +396,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 
 "radioview_message" = "entrez votre message ici";
-"RadioView_status_message_audiostream_error" = "erreur : impossible de lire le stream audio";
+"RadioView_status_message_audiostream_error" = "reconnexion en cours...";
 
 "RadioView_favorite_alredy_added" = "déjà ajouté aux favoris!";
 "RadioView_favorite_added" = "ajoutée aux favoris!";
