@@ -10,7 +10,7 @@
 #import "AudioStreamer.h"
 #import "YasoundDataProvider.h"
 
-//#define USE_FAKE_RADIO_URL 1
+#define USE_FAKE_RADIO_URL 1
 
 @implementation AudioStreamManager
 
@@ -109,11 +109,11 @@ static AudioStreamer* _gAudioStreamer = nil;
         _streamErrorTimer = nil;
     }
     
-    [self _stopRadio];
+    [self _stopRadioWithNotification:YES];
 }
 
 
-- (void)_stopRadio
+- (void)_stopRadioWithNotification:(BOOL)withNotif
 {
 #if MUTE_RADIO
     return;
@@ -125,7 +125,9 @@ static AudioStreamer* _gAudioStreamer = nil;
     [_gAudioStreamer release];
     _gAudioStreamer = nil;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_STOP object:nil];
+    if (withNotif)
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_STOP object:nil];
+
 }
 
 
@@ -213,7 +215,7 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 - (void)onStreamErrorHandling:(NSTimer*)timer
 {
-    [[AudioStreamManager main] _stopRadio];
+    [[AudioStreamManager main] _stopRadioWithNotification:NO];
     [[AudioStreamManager main] _startRadio:self.currentRadio];
     
     _streamErrorTimer = nil;

@@ -384,9 +384,7 @@
         [self goToRadio:notif.from_radio_id];
         return;
     }
-    
-    NSLog(@"%@", notif.params);
-    
+        
     NSNumber* radioID = [notif.params objectForKey:@"radioID"];
     if (radioID != nil)
     {
