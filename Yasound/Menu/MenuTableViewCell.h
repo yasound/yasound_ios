@@ -12,5 +12,6 @@
 
 @property (nonatomic, retain) UILabel* name;
 @property (nonatomic, retain) WebImageView* icon;
+@property (nonatomic) BOOL enabled;
 
 @end

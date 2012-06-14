@@ -288,6 +288,7 @@
     NSDictionary* row = [rows objectAtIndex:indexPath.row];
     
     NSString* type = [row objectForKey:@"type"];
+    NSString* cellId = [row objectForKey:@"id"];
     
     NSString* imageRef = nil;
     NSError* error = nil;
@@ -316,6 +317,8 @@
             else
                 [_notificationsCell.icon setUrl:[NSURL URLWithString:imageRef]];
         }
+        
+        _notificationsCell.enabled = ([YasoundSessionManager main].registered) ? YES : NO;
 
         return _notificationsCell;
         
@@ -344,6 +347,17 @@
             else
                 [cell.icon setUrl:[NSURL URLWithString:imageRef]];
         }
+        
+        if ([type isEqualToString:TYPE_MYRADIO] || 
+            [type isEqualToString:TYPE_FRIENDS] || 
+            [type isEqualToString:TYPE_NOTIFICATIONS] || 
+            [type isEqualToString:TYPE_STATS] || 
+            [type isEqualToString:TYPE_SETTINGS] || 
+            [type isEqualToString:TYPE_PROGRAMMING] ||
+            [cellId isEqualToString:@"radioMyFavorites"])
+        {
+            cell.enabled = ([YasoundSessionManager main].registered) ? YES : NO;        
+        }
 
         return cell;
     }
@@ -360,6 +374,14 @@
     
     NSString* name = [row objectForKey:@"name"];
     NSString* type = [row objectForKey:@"type"];
+    
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isKindOfClass:[MenuTableViewCell class]])
+    {
+        MenuTableViewCell* menuCell = cell;
+        if (!menuCell.enabled)
+            return;
+    }
 
     
     if ([type isEqualToString:TYPE_MYRADIO])
@@ -447,6 +469,11 @@
     
     if ([type isEqualToString:TYPE_NOTIFICATIONS])
     {
+        NotificationTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+        if (!cell.enabled)
+            return;
+            
+            
         NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
