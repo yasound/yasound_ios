@@ -2515,7 +2515,6 @@
 		BCA2CCD3149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BCA2CCD4149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
-		BCA6554914BCA8590043B2DA /* Auth.h in Sources */ = {isa = PBXBuildFile; fileRef = BCA6554714BCA8590043B2DA /* Auth.h */; };
 		BCA6554A14BCA8590043B2DA /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6554814BCA8590043B2DA /* Auth.m */; };
 		BCA83E6614C6D3D1000A8295 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
 		BCA83E6714C6D3D1000A8295 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
@@ -9037,7 +9036,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCA6554914BCA8590043B2DA /* Auth.h in Sources */,
 				BCA6554A14BCA8590043B2DA /* Auth.m in Sources */,
 				E5F3B8551498B88D008DD607 /* main.m in Sources */,
 				E5F3B8561498B88D008DD607 /* AudioStreamer.m in Sources */,
@@ -9724,7 +9722,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "D7BADA6E-DA07-4A21-A2A8-C66A3E939227";
+				PROVISIONING_PROFILE = "7E0D0DAD-40A6-4C86-8C2D-31887998484F";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
@@ -9756,7 +9754,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "D7BADA6E-DA07-4A21-A2A8-C66A3E939227";
+				PROVISIONING_PROFILE = "7E0D0DAD-40A6-4C86-8C2D-31887998484F";
 				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv6 armv7";
@@ -9920,7 +9918,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "E009665C-2989-4579-824C-86E72BB1F0EA";
+				PROVISIONING_PROFILE = "74893304-E263-44F7-A0F1-B2D7013948D2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -9951,7 +9949,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
-				PROVISIONING_PROFILE = "E009665C-2989-4579-824C-86E72BB1F0EA";
+				PROVISIONING_PROFILE = "74893304-E263-44F7-A0F1-B2D7013948D2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
