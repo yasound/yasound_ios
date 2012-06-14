@@ -24,7 +24,6 @@
 #import "YasoundDataCache.h"
 #import "SongUploadViewController.h"
 
-//#define FORCE_ROOTVIEW_RADIOS
 
 
 //LBDEBUG
@@ -74,6 +73,9 @@
 
 
 @synthesize user;
+@synthesize menuView;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,7 +83,6 @@
     if (self) 
     {
         _firstTime = YES;
-        _menuView = nil;
     }
     return self;
 }
@@ -96,8 +97,8 @@
 
 - (void)dealloc
 {
-    if (_menuView != nil)
-        [_menuView release];
+    if (self.menuView != nil)
+        [self.menuView release];
     [super dealloc];
 }
 
@@ -158,7 +159,15 @@
     {
         [[YasoundReachability main] removeTarget];
         
-        [self loginProcess];
+        // if the user has already signed in, launch the automatic login process
+        if ([YasoundSessionManager main].registered)
+        {
+            [self automaticLoginProcess];
+        }
+        
+        // go to the menu, either you are connected or not
+        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        [self.navigationController pushViewController:self.menuView animated:YES];
     }
 }
 
@@ -171,59 +180,41 @@
 }
 
 
-- (void)loginProcess
+- (void)automaticLoginProcess
 {
-    if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
-    {
-        // TODO? message?
-        return;
-    }
-    
-
     // import associated accounts
     [[YasoundSessionManager main] importUserData];
 
-    if ([YasoundSessionManager main].registered)
-    {
-//        // TAG ACTIVITY ALERT
-//        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
         
-        // show connection alert
-        [self.view addSubview:[ConnectionView start]];
-        
-        if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
-            [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
+    // show connection alert
+    [self.view addSubview:[ConnectionView start]];
 
-        else if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
+    if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
+        [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
+
+    else if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
+        [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
+
+    else if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_YASOUND])
+        [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
+    else
+    {
+        //for compatibility with previous exclusive system
+        if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+            [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
+        
+        else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
             [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
         
-        else if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_YASOUND])
+        else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_YASOUND])
             [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
         else
         {
-            //for compatibility with previous exclusive system
-            if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
-                [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
-            
-            else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
-                [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
-            
-            else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_YASOUND])
-                [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
-            else
-            {
-                assert(0);
-                NSLog(@"LOGIN ERROR. COULD NOT DO ANYTHING.");
-            }
+            assert(0);
+            NSLog(@"LOGIN ERROR. COULD NOT DO ANYTHING.");
         }
+    }
         
-    }
-    else
-    {
-        LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:NO];
-        [view release];
-    }
 }
 
 - (void)loginReturned:(User*)user info:(NSDictionary*)info
@@ -351,15 +342,14 @@
 
 - (void)goToNotificationCenter
 {
-  if (_menuView == nil)
+  if (self.menuView == nil)
   {
-    _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-    [_menuView retain];
-    [self.navigationController pushViewController:_menuView animated:NO];
+    self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+    [self.navigationController pushViewController:self.menuView animated:NO];
   }
   else
   {
-    [self.navigationController popToViewController:_menuView animated:NO];
+    [self.navigationController popToViewController:self.menuView animated:NO];
   }
   
   NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
@@ -393,15 +383,14 @@
   BOOL sendToSelection = [[[NSUserDefaults standardUserDefaults] objectForKey:@"skipRadioCreationSendToSelection"] boolValue];
   BOOL animatePushMenu = !sendToSelection;
 
-    if (_menuView == nil)
+    if (self.menuView == nil)
     {
-        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-        [_menuView retain];
-        [self.navigationController pushViewController:_menuView animated:animatePushMenu];
+        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        [self.navigationController pushViewController:self.menuView animated:animatePushMenu];
     }
     else
     {
-        [self.navigationController popToViewController:_menuView animated:animatePushMenu];
+        [self.navigationController popToViewController:self.menuView animated:animatePushMenu];
     }
     
   if (sendToSelection)
@@ -422,8 +411,8 @@
 - (void)onNotifLoginScreen:(NSNotification *)notification
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
-    [_menuView release];
-    _menuView = nil;
+    [self.menuView release];
+    self.menuView = nil;
 
     LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:NO];
@@ -433,15 +422,18 @@
 - (void)onNotifWizard:(NSNotification *)notification
 {
   BOOL willSendToSelection = [[[NSUserDefaults standardUserDefaults] objectForKey:@"skipRadioCreationSendToSelection"] boolValue];
-  if (willSendToSelection || !_menuView)
+  if (willSendToSelection || !self.menuView)
   {
     [self.navigationController popToRootViewControllerAnimated:NO];
-    [_menuView release];
-    _menuView = nil;
+      if (self.menuView != nil)
+      {
+          [self.menuView release];
+          self.menuView = nil;
+      }
   }
   else
   {
-    [self.navigationController popToViewController:_menuView animated:NO];
+    [self.navigationController popToViewController:self.menuView animated:NO];
   }
     
 //    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
@@ -453,22 +445,22 @@
 
 - (void)onNotifPopToMenu:(NSNotification *)notification
 {
-    [self.navigationController popToViewController:_menuView animated:YES];
+    [self.navigationController popToViewController:self.menuView animated:YES];
 }
 
 - (void)onNotifPushMenu:(NSNotification*)notification
 {
-  if (_menuView)
+  if (self.menuView)
   {
-    [self.navigationController popToViewController:_menuView animated:YES];
+    [self.navigationController popToViewController:self.menuView animated:YES];
     return;
   }
   
   [self.navigationController popToRootViewControllerAnimated:NO];
   
-  _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-  [_menuView retain];
-  [self.navigationController pushViewController:_menuView animated:YES];
+  self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+  [self.menuView retain];
+  [self.navigationController pushViewController:self.menuView animated:YES];
 }
 
 - (void)onNotifErrorCommunicationServer:(NSNotification *)notification
@@ -614,15 +606,14 @@
 {
     [ActivityAlertView close];
     
-    if (_menuView == nil)
+    if (self.menuView == nil)
     {
-        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-        [_menuView retain];
-        [self.navigationController pushViewController:_menuView animated:NO];
+        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        [self.navigationController pushViewController:self.menuView animated:NO];
     }
     else
     {
-        [self.navigationController popToViewController:_menuView animated:NO];
+        [self.navigationController popToViewController:self.menuView animated:NO];
     }
 
     if ([[YasoundDataProvider main].radio.id intValue] == [radio.id intValue])
@@ -631,9 +622,8 @@
     }
     else
     {
-        _menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-        [_menuView retain];
-        [self.navigationController pushViewController:_menuView animated:NO];
+        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        [self.navigationController pushViewController:self.menuView animated:NO];
     }
 }
 
@@ -693,6 +683,131 @@
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+- (void)loginProcess
+{
+    if (([YasoundReachability main].hasNetwork == YR_NO) || ([YasoundReachability main].isReachable == YR_NO))
+    {
+        // TODO? message?
+        return;
+    }
+    
+    
+    // import associated accounts
+    [[YasoundSessionManager main] importUserData];
+    
+    if ([YasoundSessionManager main].registered)
+    {
+        //        // TAG ACTIVITY ALERT
+        //        [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
+        
+        // show connection alert
+        [self.view addSubview:[ConnectionView start]];
+        
+        if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
+            [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
+        
+        else if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
+            [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
+        
+        else if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_YASOUND])
+            [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
+        else
+        {
+            //for compatibility with previous exclusive system
+            if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
+                [[YasoundSessionManager main] loginForFacebookWithTarget:self action:@selector(loginReturned:info:)];
+            
+            else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_TWITTER])
+                [[YasoundSessionManager main] loginForTwitterWithTarget:self action:@selector(loginReturned:info:)];
+            
+            else if ([[YasoundSessionManager main].loginType isEqualToString:LOGIN_TYPE_YASOUND])
+                [[YasoundSessionManager main] loginForYasoundWithTarget:self action:@selector(loginReturned:info:)];
+            else
+            {
+                assert(0);
+                NSLog(@"LOGIN ERROR. COULD NOT DO ANYTHING.");
+            }
+        }
+        
+    }
+    else
+    {
+        LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:NO];
+        [view release];
+    }
+}
+
+- (void)loginReturned:(User*)user info:(NSDictionary*)info
+{
+    // show connection alert
+    [ConnectionView stop];
+    
+    if (user != nil)
+    {
+        [[YasoundSessionManager main] reloadUserData:user];
+        
+        self.user = user;
+        
+        // login the other associated accounts as well
+        [[YasoundSessionManager main] associateAccountsAutomatic];
+        
+        // get the app menu from the server, before you can proceed
+        [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+        
+    }
+    else
+    {
+        NSString* message = nil;
+        if (info != nil)
+        {
+            //LBDEBUG
+            NSLog(@"DEBUG info %@", info);
+            
+            NSString* errorValue = [info objectForKey:@"error"];
+            if ([errorValue isEqualToString:@"Login"])
+                message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
+            else if ([errorValue isEqualToString:@"UserInfo"])
+                message = NSLocalizedString(@"YasoundSessionManager_userinfo_error", nil);
+            
+        }
+        
+        // show alert message for connection error
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];  
+        
+        // and logout properly
+        [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+    }
+}
+*/
 
 
 

@@ -36,11 +36,12 @@
 {
     BOOL _firstTime;
     
-    MenuDynamicViewController* _menuView;
     UIAlertView* _alertWifiInterrupted;
 }
 
 @property (nonatomic, retain) User* user;
+@property (nonatomic, retain) MenuDynamicViewController* menuView;
+
 
 
 @end

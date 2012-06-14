@@ -115,7 +115,9 @@
 {
   [super viewDidAppear:animated];
     
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:) limit:25 offset:0];
+    // authenticated session : get the current notifications count
+    if ([YasoundSessionManager main].registered)
+        [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:) limit:25 offset:0];
 
   
   if ([AudioStreamManager main].currentRadio == nil)
@@ -148,7 +150,8 @@
   if (!_notificationsCell)
     return;
     
-    [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:) limit:25 offset:0];
+    if ([YasoundSessionManager main].registered)
+        [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:) limit:25 offset:0];
 
 }
 

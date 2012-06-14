@@ -3669,8 +3669,8 @@
 		BC40CC8314D010BD00DF0950 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BC413D6714EBC2F9009EB307 /* WhiteCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteCheckmark.png; sourceTree = "<group>"; };
 		BC413D6814EBC2F9009EB307 /* WhiteCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WhiteCheckmark@2x.png"; sourceTree = "<group>"; };
-		BC436905156F8F820059BC22 /* TouchedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchedTableView.h; path = Yasound/Gui/TouchedTableView.h; sourceTree = "<group>"; };
-		BC436906156F8F820059BC22 /* TouchedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TouchedTableView.m; path = Yasound/Gui/TouchedTableView.m; sourceTree = "<group>"; };
+		BC436905156F8F820059BC22 /* TouchedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchedTableView.h; sourceTree = "<group>"; };
+		BC436906156F8F820059BC22 /* TouchedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchedTableView.m; sourceTree = "<group>"; };
 		BC436923156FE36C0059BC22 /* SongPublicInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongPublicInfoViewController.h; path = Programming/SongPublicInfoViewController.h; sourceTree = "<group>"; };
 		BC436924156FE36C0059BC22 /* SongPublicInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongPublicInfoViewController.m; path = Programming/SongPublicInfoViewController.m; sourceTree = "<group>"; };
 		BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongPublicInfoViewController.xib; path = Programming/SongPublicInfoViewController.xib; sourceTree = "<group>"; };
@@ -5549,6 +5549,8 @@
 		BCFECFE61468439900BA20D9 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
+				BC436905156F8F820059BC22 /* TouchedTableView.h */,
+				BC436906156F8F820059BC22 /* TouchedTableView.m */,
 				BCF3588314E07A87003594BF /* ScrollingLabel.h */,
 				BCF3588414E07A87003594BF /* ScrollingLabel.m */,
 				BCE7518714EC1DBF00056916 /* AdaptiveLabel.h */,
@@ -5595,8 +5597,6 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
-				BC436905156F8F820059BC22 /* TouchedTableView.h */,
-				BC436906156F8F820059BC22 /* TouchedTableView.m */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,
