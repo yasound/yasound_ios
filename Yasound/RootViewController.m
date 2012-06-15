@@ -118,6 +118,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorCommunicationServer:) name:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionChanged:) name:NOTIF_REACHABILITY_CHANGED object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadio:) name:NOTIF_GOTO_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadio:) name:NOTIF_GOTO_MYRADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateMyRadio:) name:NOTIF_GOTO_CREATE_MYRADIO object:nil];
     
@@ -283,8 +284,6 @@
 // that's what I call a significant method name
 - (void)enterTheAppAfterProperLogin
 {
-    
-    
     
 //    // go to the menu, either you are connected or not
 //    self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
@@ -616,7 +615,32 @@
 - (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
 {
     [ActivityAlertView close];
+
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
+
+//    if ([[YasoundDataProvider main].radio.id intValue] == [radio.id intValue])
+//    {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIO object:nil];
+//    }
+//    
+//    else
+//    {
+//        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+//        [self.navigationController pushViewController:self.menuView animated:NO];
+//    }
+}
+
+
+
+
+- (void)onNotifGotoRadio:(NSNotification*)notification
+{
+    Radio* r = notification.object;
+    assert(r != nil);
+
+    NSLog(@"onNotifGotoRadio '%@' (ready %@)", r.name, r.ready);
+
     if (self.menuView == nil)
     {
         self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
@@ -627,17 +651,10 @@
         [self.navigationController popToViewController:self.menuView animated:NO];
     }
 
-    if ([[YasoundDataProvider main].radio.id intValue] == [radio.id intValue])
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIO object:nil];
-    }
-    else
-    {
-        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-        [self.navigationController pushViewController:self.menuView animated:NO];
-    }
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:r];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];    
 }
-
 
 
 
