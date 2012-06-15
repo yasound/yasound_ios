@@ -624,9 +624,8 @@ static YasoundDataProvider* _main = nil;
   if (target && selector)
   {
     [target performSelector:selector withObject:_user withObject:finalInfo];
-  }    
+  }  
 }
-
 
 
 
@@ -1006,6 +1005,26 @@ static YasoundDataProvider* _main = nil;
   [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
+
+
+- (void)updateUser:(User*)user target:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/user/%@/", user.id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"PUT";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    
+    NSString* stringData = [user JSONRepresentation];
+    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
+    [req addRequestHeader:@"Content-Type" value:@"application/json"];
+    
+    [req startAsynchronous];
+}
 
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
 {

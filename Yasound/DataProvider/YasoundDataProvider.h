@@ -144,6 +144,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)updateRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
+- (void)updateUser:(User*)user target:(id)target action:(SEL)selector; // - (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
 
 - (void)setMood:(UserMood)mood forSong:(Song*)song;
