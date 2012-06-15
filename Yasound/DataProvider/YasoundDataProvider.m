@@ -161,7 +161,7 @@ static YasoundDataProvider* _main = nil;
     NSLog(@"use LOCAL SERVER '%@'", baseUrl);
 #else
       baseUrl = APPDELEGATE.serverURL;
-    NSLog(@"use PROD SERVER '%@'", baseUrl);
+    NSLog(@"use REMOTE SERVER '%@'", baseUrl);
 #endif
     _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];
     _communicator.appCookie = self.appCookie;

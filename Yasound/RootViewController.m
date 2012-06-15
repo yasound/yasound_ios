@@ -165,9 +165,10 @@
             [self automaticLoginProcess];
         }
         
-        // go to the menu, either you are connected or not
-        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-        [self.navigationController pushViewController:self.menuView animated:YES];
+        // get the app menu from the server, before you can proceed
+        [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+        
+        // didReceivedMenuDescription will proceed to the app entry
     }
 }
 
@@ -267,6 +268,8 @@
 - (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
 {
     NSString* menuDesc = req.responseString;
+    
+    NSLog(@"menuDesc : %@", menuDesc);
 
     // be sure to store it in the cache
     [[YasoundDataCache main] setMenu:menuDesc];
@@ -280,6 +283,14 @@
 // that's what I call a significant method name
 - (void)enterTheAppAfterProperLogin
 {
+    
+    
+    
+//    // go to the menu, either you are connected or not
+//    self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+//    [self.navigationController pushViewController:self.menuView animated:YES];
+
+    
     if (APPDELEGATE.mustGoToNotificationCenter)
     {
         [self goToNotificationCenter];
