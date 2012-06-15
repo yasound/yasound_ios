@@ -241,6 +241,9 @@
     
     NSDictionary* dicoSection = [self.sections objectAtIndex:indexPath.section];
     NSArray* rows = [dicoSection objectForKey:@"entries"];
+    NSDictionary* row = [rows objectAtIndex:indexPath.row];
+
+    NSString* type = [row objectForKey:@"type"];
 
     
     if (indexPath.row == 0)
@@ -271,12 +274,29 @@
     view.frame = sheet.frame;
     cell.backgroundView = view;
     [view release];
+    
+    BOOL enabled = YES;
+    
+    if ([type isEqualToString:TYPE_NOTIFICATIONS])
+    {
+        NotificationTableViewCell* notifCell = cell;
+        enabled = notifCell.enabled;
+    }
+    else
+    if ([cell isKindOfClass:[MenuTableViewCell class]])
+    {
+        MenuTableViewCell* menuCell = cell;
+        enabled = menuCell.enabled;
+    }
 
-    sheet = [[Theme theme] stylesheetForKey:selectedStyle retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIImageView* selectedView = [[UIImageView alloc] initWithImage:[sheet image]];
-    selectedView.frame = sheet.frame;
-    cell.selectedBackgroundView = selectedView;
-    [selectedView release];
+    if (enabled)
+    {
+        sheet = [[Theme theme] stylesheetForKey:selectedStyle retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImageView* selectedView = [[UIImageView alloc] initWithImage:[sheet image]];
+        selectedView.frame = sheet.frame;
+        cell.selectedBackgroundView = selectedView;
+        [selectedView release];
+    }
 }
 
 
@@ -327,12 +347,14 @@
     {
         static NSString* CellIdentifier = @"Cell";
 
+        // get the cell automatically from the dynamic description
         MenuTableViewCell* cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) 
             cell = [[[MenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];    
 
         cell.name.text = [row objectForKey:@"name"];
 
+        // with icon
         imageRef = [row objectForKey:@"image"];
         if ((imageRef == nil) || (imageRef.length == 0))
         {
@@ -348,6 +370,7 @@
                 [cell.icon setUrl:[NSURL URLWithString:imageRef]];
         }
         
+        // disable some cells if you're in anonymous session
         if ([type isEqualToString:TYPE_MYRADIO] || 
             [type isEqualToString:TYPE_FRIENDS] || 
             [type isEqualToString:TYPE_NOTIFICATIONS] || 
@@ -358,6 +381,18 @@
         {
             cell.enabled = ([YasoundSessionManager main].registered) ? YES : NO;        
         }
+        else
+            cell.enabled = YES;        
+        
+        // special case for the login/logout cell
+        if ([type isEqualToString:TYPE_LOGOUT])
+        {
+            if ([YasoundSessionManager main].registered) 
+                cell.name.text = NSLocalizedString(@"MenuView_session_logout", nil);
+            else
+                cell.name.text = NSLocalizedString(@"MenuView_session_login", nil);
+        }
+            
 
         return cell;
     }
@@ -507,6 +542,14 @@
     {
         [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
         
+        // we're in anonymous session. user wants to log in.
+        if (![YasoundSessionManager main].registered)
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
+            return;
+        }
+        
+        // we're in authenticated session. user wants to log out.
         UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_logout_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_logout_logout", nil), nil];
         
         popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;

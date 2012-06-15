@@ -425,7 +425,7 @@
     self.menuView = nil;
 
     LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:NO];
+    [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
 

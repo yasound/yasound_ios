@@ -311,6 +311,10 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "YasoundUpload_add_WIFI_message" = "Le morceau est ajouté dans la file des téléchargements. Le transfert démarrera dès qu'une connexion WIFI sera disponible";
 
 
+"MenuView_session_login" = "Se connecter";
+"MenuView_session_logout" = "Se déconnecter";
+
+
 "MenuView_section_myradio" = "Ma Radio";
 "MenuView_section_radios" = "Radios";
 "MenuView_section_me" = "Moi";

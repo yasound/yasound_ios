@@ -316,6 +316,8 @@
 "YasoundUpload_add_WIFI_title" = "3G network";
 "YasoundUpload_add_WIFI_message" = "The song is added to the pending uploads queue. File transfert will start as soon this device is connected to a WIFI network.";
 
+"MenuView_session_login" = "Log in";
+"MenuView_session_logout" = "Log out";
 
 "MenuView_section_myradio" = "My Radio";
 "MenuView_section_radios" = "Radios";
