@@ -2115,6 +2115,14 @@
 		BC7263CB153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
 		BC7263CC153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
 		BC7263CD153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
+		BC73262B158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
+		BC73262C158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
+		BC73262D158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
+		BC73262E158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
+		BC73262F158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
+		BC732630158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
+		BC732631158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
+		BC732632158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
 		BC7C07731541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
 		BC7C07741541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
 		BC7C07751541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
@@ -3745,6 +3753,8 @@
 		BC7263BD153479C1002386C3 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		BC7263BE153479C1002386C3 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		BC7263BF153479C1002386C3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		BC732629158F91C4000D6584 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
+		BC73262A158F91C4000D6584 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		BC7C07711541A82F004FC760 /* MKBitlyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBitlyHelper.h; sourceTree = "<group>"; };
 		BC7C07721541A82F004FC760 /* MKBitlyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBitlyHelper.m; sourceTree = "<group>"; };
 		BC7C077A1541A915004FC760 /* ShareTwitterModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTwitterModalViewController.h; sourceTree = "<group>"; };
@@ -5195,6 +5205,8 @@
 		BCD8C79F14B4B59F009EAF61 /* SessionManager */ = {
 			isa = PBXGroup;
 			children = (
+				BC732629158F91C4000D6584 /* UserSettings.h */,
+				BC73262A158F91C4000D6584 /* UserSettings.m */,
 				BCD8C7A014B4B59F009EAF61 /* YasoundSessionManager.h */,
 				BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */,
 			);
@@ -7905,6 +7917,7 @@
 				BCCD80101577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769A15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A66157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				BC732631158F91C4000D6584 /* UserSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8093,6 +8106,7 @@
 				BCCD80111577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769B15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A67157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				BC732632158F91C4000D6584 /* UserSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8277,6 +8291,7 @@
 				BCCD800F1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769915790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A65157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				BC732630158F91C4000D6584 /* UserSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8465,6 +8480,7 @@
 				BCCD800C1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769615790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A62157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				BC73262D158F91C4000D6584 /* UserSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8653,6 +8669,7 @@
 				BCCD800B1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769515790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A61157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				BC73262C158F91C4000D6584 /* UserSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8842,6 +8859,7 @@
 				BCCD800E1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769815790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A64157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				BC73262F158F91C4000D6584 /* UserSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9030,6 +9048,7 @@
 				BCCD800A1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769415790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A60157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				BC73262B158F91C4000D6584 /* UserSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9219,6 +9238,7 @@
 				BCCD800D1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769715790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A63157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				BC73262E158F91C4000D6584 /* UserSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
