@@ -118,6 +118,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorCommunicationServer:) name:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionChanged:) name:NOTIF_REACHABILITY_CHANGED object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMenu:) name:NOTIF_GOTO_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadio:) name:NOTIF_GOTO_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadio:) name:NOTIF_GOTO_MYRADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateMyRadio:) name:NOTIF_GOTO_CREATE_MYRADIO object:nil];
@@ -347,7 +348,7 @@
 - (void)logoutReturned
 {
     // once logout done, go back to the home screen
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MENU object:nil];
 }
 
 - (void)goToNotificationCenter
@@ -616,6 +617,11 @@
 {
     [ActivityAlertView close];
 
+    if (radio == nil)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MENU object:nil];
+        return;
+    }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
 
@@ -643,6 +649,7 @@
 
     if (self.menuView == nil)
     {
+        [self.navigationController popToRootViewControllerAnimated:NO];
         self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
         [self.navigationController pushViewController:self.menuView animated:NO];
     }
@@ -654,6 +661,24 @@
     RadioViewController* view = [[RadioViewController alloc] initWithRadio:r];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
+}
+
+
+- (void)onNotifGotoMenu:(NSNotification*)notification
+{
+    NSLog(@"onNotifGotoMenu");
+    
+    if (self.menuView == nil)
+    {
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        [self.navigationController pushViewController:self.menuView animated:YES];
+    }
+    else
+    {
+        [self.navigationController popToViewController:self.menuView animated:YES];
+    }
+    
 }
 
 
