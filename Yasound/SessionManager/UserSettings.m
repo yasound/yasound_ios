@@ -9,5 +9,20 @@
 
 #import "UserSettings.h"
 
+@implementation UserSettings
+
+static UserSettings* _main;
+
++ (UserSettings*)main
+{
+    if (_main)
+    {
+        _main = [[UserSettings alloc] init];
+    }
+    
+    return _main;
+}
+
+
 
 @end

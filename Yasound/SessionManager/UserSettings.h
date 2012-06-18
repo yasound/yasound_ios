@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserSettings : NS
+@interface UserSettings : NSObject
 
-@end
+
++ (UserSettings*)main;
+
 
 
 @end
