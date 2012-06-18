@@ -41,6 +41,8 @@
 //  _webView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
   
   _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+    
+    _webView.delegate = self;
   
   NSURL* url = [NSURL URLWithString:_url];
   NSURLRequest* urlReqest = [NSURLRequest requestWithURL:url];
