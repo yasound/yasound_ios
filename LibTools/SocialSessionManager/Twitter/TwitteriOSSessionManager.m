@@ -447,7 +447,7 @@
   
     //LBDEBUG
     assert (oauth_token != nil);
-    [[UserSettings main] setObject:oauth_token ForKey:USKEYtwitterOAuthToken]
+    [[UserSettings main] setObject:oauth_token forKey:USKEYtwitterOAuthToken];
 
     assert (oauth_token_secret != nil);
     [SFHFKeychainUtils storeUsername:oauth_token andPassword:oauth_token_secret  forServiceName:BundleName updateExisting:YES error:nil];
@@ -671,7 +671,7 @@
     else
     {
         // store token and secret
-        [[UserSettings main] setObject:token ForKey:USKEYtwitterOAuthToken]
+        [[UserSettings main] setObject:token ForKey:USKEYtwitterOAuthToken];
     }
     
     

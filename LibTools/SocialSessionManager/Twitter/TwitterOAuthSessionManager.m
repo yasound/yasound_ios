@@ -172,7 +172,7 @@
     [user setValue:userid forKey:DATA_FIELD_ID];
     [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
       
-      NSString* token = [[UserSettings main] objectForKey:USKEYtwitterOAuthToken]
+      NSString* token = [[UserSettings main] objectForKey:USKEYtwitterOAuthToken];
       
       NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
       NSString* tokenSecret = [SFHFKeychainUtils getPasswordForUsername:token andServiceName:BundleName error:nil];
@@ -279,7 +279,7 @@
   
   //LBDEBUG
   assert (oauth_token != nil);
-    [[UserSettings main] setObject:oauth_token forKey:USKEYtwitterOAuthToken]
+    [[UserSettings main] setObject:oauth_token forKey:USKEYtwitterOAuthToken];
     
 
     assert (oauth_token_secret != nil);

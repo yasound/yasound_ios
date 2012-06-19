@@ -39,7 +39,7 @@ static YasoundSessionManager* _main = nil;
     self = [super init];
     if (self)
     {
-        NSDictionary* dico = [[NSUserDefaults standardUserDefaults] objectForKey:@"YasoundSessionManager"];
+        NSDictionary* dico = [[UserSettings main] objectForKey:USKEYuserSessionDictionary];
         if (dico != nil)
             _dico = [[NSMutableDictionary alloc] initWithDictionary:dico];
         else
@@ -78,7 +78,8 @@ static YasoundSessionManager* _main = nil;
     int user_id_value = [user.id intValue];
     NSNumber* user_id = [NSNumber numberWithInt:user_id_value];
      
-    NSArray* array = [[NSUserDefaults standardUserDefaults] objectForKey:@"YasoundSessionManagerAccounts"];
+    NSArray* array = [[UserSettings main] objectForKey:USKEYuserSessionAccounts];
+                      
     for (int i = 0; i < array.count; i++)
     {
         NSNumber* userID = [array objectAtIndex:i];
@@ -88,31 +89,16 @@ static YasoundSessionManager* _main = nil;
     
     return NO;
 }
-//
-//- (BOOL)getAccount:(User*)user
-//{
-//    NSArray* array = [[NSUserDefaults standardUserDefaults] objectForKey:@"YasoundSessionManagerAccounts"];
-//    for (int i = 0; i < array.count; i++)
-//    {
-//        NSNumber* userID = [array objectAtIndex:i];
-//        if ([userID isEqualToNumber:user.id])
-//            return YES;
-//    }
-//    
-//    return NO;
-//}
 
 
 // register the user account LOCALLY, ON THE DEVICE
 - (void)addAccount:(User*)user
 {
-    NSArray* array = [[NSUserDefaults standardUserDefaults] objectForKey:@"YasoundSessionManagerAccounts"];
-    NSMutableArray* newArray = [NSMutableArray arrayWithArray:array];
+    NSMutableArray* newArray = [[UserSettings main] mutableArrayForKey:USKEYuserSessionAccounts];
     
     int userID = [user.id intValue];
     [newArray addObject:[NSNumber numberWithInt:userID]];
-    [[NSUserDefaults standardUserDefaults] setObject:newArray forKey:@"YasoundSessionManagerAccounts"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] setObject:newArray forKey:USKEYuserSessionAccounts];
 }
 
 
@@ -157,8 +143,7 @@ static YasoundSessionManager* _main = nil;
 {
     NSLog(@"save : %@", _dico);
     
-    [[NSUserDefaults standardUserDefaults] setObject:_dico forKey:@"YasoundSessionManager"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] setObject:_dico forKey:USKEYuserSessionDictionary];
 }
 
 
@@ -367,52 +352,11 @@ static YasoundSessionManager* _main = nil;
     _dico = nil;
     _dico = [[NSMutableDictionary alloc] init];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"YasoundSessionManager"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] removeObjectForKey:USKEYuserSessionDictionary];
     
     // callback
     [target performSelector:action];
 }
-
-
-//deprecated
-//
-//- (void)logoutWithTarget:(id)target action:(SEL)action
-//{
-//    // do it for all, this way you're sure :)
-//    if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
-//    {
-//        _target = target;
-//        _action = action;
-//        [FacebookSessionManager facebook].delegate = self;
-//        [[FacebookSessionManager facebook] logout];
-//    }
-//    
-//    else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
-//    {
-//        _target = target;
-//        _action = action;
-//        [TwitterSessionManager twitter].delegate = self;
-//        [[TwitterSessionManager twitter] logout];
-//    }
-//    
-//    else if ([self.loginType isEqualToString:LOGIN_TYPE_YASOUND])
-//    {
-//        NSString* email = [_dico objectForKey:@"email"];
-//        [SFHFKeychainUtils deleteItemForUsername:email andServiceName:@"YasoundSessionManager" error:nil];
-//    }
-//    
-//
-//    [_dico release];
-//    _dico = nil;
-//    _dico = [[NSMutableDictionary alloc] init];
-//    
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"YasoundSessionManager"];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-//
-//    // callback
-//    [target performSelector:action];
-//}
 
 
 
@@ -671,8 +615,7 @@ static YasoundSessionManager* _main = nil;
     {
         NSLog(@"facebook social associating request");
         
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];    
-        NSString* expirationDate = [YasoundSessionManager expirationDateToString:[defaults objectForKey:@"FBExpirationDateKey"]];
+        NSString* expirationDate = [YasoundSessionManager expirationDateToString:[[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey]];
         
         // request to yasound server
         [[YasoundDataProvider main] associateAccountFacebook:username type:LOGIN_TYPE_FACEBOOK uid:uid token:token expirationDate:expirationDate email:email target:self action:@selector(associatingSocialValidated:)];
@@ -700,9 +643,7 @@ static YasoundSessionManager* _main = nil;
 //      if (!n)
 //        n = name;
         
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];    
-        NSString* expirationDate = [YasoundSessionManager expirationDateToString:[defaults objectForKey:@"FBExpirationDateKey"]];
-
+        NSString* expirationDate = [YasoundSessionManager expirationDateToString:[[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey]];
         
         [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token expirationDate:expirationDate email:email target:self action:@selector(loginSocialValidated:info:)];
     }
@@ -981,7 +922,7 @@ static YasoundSessionManager* _main = nil;
         [twitter setObject:user.twitter_username forKey:@"twitter_screen_name"];
 
         NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
-        // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
+        // secret credentials are NOT saved in the User Settings, for security reason. Prefer KeyChain.
         [SFHFKeychainUtils storeUsername:user.twitter_username andPassword:data  forServiceName:BundleName updateExisting:YES error:nil];
 
         [_dico setObject:twitter forKey:@"twitter"];
@@ -1048,15 +989,13 @@ static YasoundSessionManager* _main = nil;
 
 - (void)importFacebookData:(NSString*)facebook_token facebook_expiration_date:(NSString*)facebook_expiration_date
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [[UserSettings main] setObject:facebook_token forKey:USKEYfacebookAccessTokenKey];
 
-    [defaults setObject:facebook_token forKey:@"FBAccessTokenKey"];
     NSDate* date = [YasoundSessionManager stringToExpirationDate:facebook_expiration_date];
     
-    [defaults setObject:date forKey:@"FBExpirationDateKey"];
-    [defaults synchronize];  
+    [[UserSettings main] setObject:date forKey:USKEYfacebookExpirationDateKey];
 
-    NSLog(@"importFacebookData  '%@' '%@'", [defaults objectForKey:@"FBAccessTokenKey"], [defaults objectForKey:@"FBExpirationDateKey"]);
+    NSLog(@"importFacebookData  '%@' '%@'", facebook_token, date);
 }
 
 
@@ -1076,7 +1015,7 @@ static YasoundSessionManager* _main = nil;
 
     NSError* error;
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
-    // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
+    // secret credentials are NOT saved in the User Settings, for security reason. Prefer KeyChain.
     [SFHFKeychainUtils storeUsername:twitter_username andPassword:twitter_data  forServiceName:BundleName updateExisting:YES error:&error];
     
     NSLog(@"importTwitterData '%@'", twitter_data);
@@ -1086,8 +1025,7 @@ static YasoundSessionManager* _main = nil;
 
 - (void)importYasoundData:(NSString*)yasound_email
 {
-    [[NSUserDefaults standardUserDefaults] setValue:yasound_email forKey:@"yasound_email"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] setObject:yasound_email forKey:USKEYyasoundEmail];
 
     NSLog(@"importYasoundData '%@'", yasound_email);
 }

@@ -21,8 +21,12 @@
 #define USKEYtwitterOAuthScreenname @"oauth_name"
 #define USKEYtwitterOAuthToken @"token"
 
+#define USKEYyasoundEmail @"yasound_email"
+
 
 #define USKEYuserId @"LastConnectedUserID"
+#define USKEYuserSessionDictionary @"YasoundSessionManager"
+#define USKEYuserSessionAccounts @"YasoundSessionManagerAccounts"
 #define USKEYskipRadioCreation @"skipRadioCreationSendToSelection"
 
 #define USKEYuploadLegalWarning @"legalUploadWarning"
