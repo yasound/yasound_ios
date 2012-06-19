@@ -352,7 +352,7 @@ static YasoundSessionManager* _main = nil;
     _dico = nil;
     _dico = [[NSMutableDictionary alloc] init];
     
-    [[UserSettings main] removeObjectForKey:USKEYuserSessionDictionary];
+    [[UserSettings main] clearSession];
     
     // callback
     [target performSelector:action];

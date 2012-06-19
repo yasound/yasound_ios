@@ -594,6 +594,7 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MENU object:nil];
     [_tableView reloadData];
+    
 }
 
 

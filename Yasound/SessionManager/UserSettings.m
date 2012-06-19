@@ -103,6 +103,39 @@ static UserSettings* _main;
 
 
 
+- (void)dump
+{
+    NSLog(@"UserSettings dump :");
+    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    NSLog(@"-------------------------------------------");                  
+}
+
+
+
+- (void)clearSession
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYnowPlaying];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYfacebookAccessTokenKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYfacebookExpirationDateKey];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYtwitterAccountId];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYtwitterOAuthUsername];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYtwitterOAuthUserId];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYtwitterOAuthScreenname];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYtwitterOAuthToken];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYyasoundEmail];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYuserId];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYuserSessionDictionary];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYuserSessionAccounts];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYuploadLegalWarning];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYuploadAddedWarning];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYuploadList];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYtutorials];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USKEYcacheMenuDescription];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self dump];
+}
+
 
 
 

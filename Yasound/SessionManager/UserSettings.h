@@ -57,5 +57,8 @@
 
 - (void)removeObjectForKey:(NSString*)key;
 
+- (void)dump;
+- (void)clearSession;
+
 
 @end
