@@ -27,6 +27,17 @@
 
 
 //LBDEBUG
+//
+//
+@implementation NSArray (NSArrayDebug)
+- (id)objectForKey:(NSString*)key
+{
+        NSLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+        assert(0);
+}
+@end
+//
+//
 //@implementation NSDictionary (NSDictionaryDebug)
 //- (BOOL)isEqualToString:(NSString*)str
 //{
@@ -49,13 +60,13 @@
 //@end
 
 
-@implementation NSString (NSStringDebug)
-- (NSString*) absoluteString
-{
-    NSLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
-    assert(0);
-}
-@end
+//@implementation NSString (NSStringDebug)
+//- (NSString*) absoluteString
+//{
+//    NSLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+//    assert(0);
+//}
+//@end
 
 
 

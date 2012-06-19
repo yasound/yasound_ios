@@ -231,7 +231,10 @@ static FacebookSessionManager* _facebook = nil;
     NSLog(@"fbDidLogin");
 
     [[UserSettings main] setObject:[_facebookConnect accessToken] forKey:USKEYfacebookAccessTokenKey];
-    [[UserSettings main] setObject:[_facebookConnect expirationDate] forKey:USKEYfacebookExpirationDateKey];
+    
+    NSDate* date = [_facebookConnect expirationDate];
+    NSLog(@"fb expiration date %@", date);
+    [[UserSettings main] setObject:date forKey:USKEYfacebookExpirationDateKey];
      
   [self.delegate sessionDidLogin:YES];
 }

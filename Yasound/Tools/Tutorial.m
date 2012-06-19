@@ -49,7 +49,7 @@ static Tutorial* _main = nil;
 - (void)show:(NSString*)key everyTime:(BOOL)everyTime
 {
     // get tutorials dictionary
-    NSMutableDictionary* tutorials = [[UserSettings main] mutableArrayWithKey:USKEYtutorials];
+    NSMutableDictionary* tutorials = [[UserSettings main] mutableDictionaryForKey:USKEYtutorials];
     if (tutorials == nil)
     {
         tutorials = [[NSMutableDictionary alloc] init];

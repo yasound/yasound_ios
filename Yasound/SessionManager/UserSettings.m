@@ -17,7 +17,7 @@ static UserSettings* _main;
 
 + (UserSettings*)main
 {
-    if (_main)
+    if (_main == nil)
     {
         _main = [[UserSettings alloc] init];
     }

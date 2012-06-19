@@ -50,6 +50,10 @@
 
 
 //LBDEBUG
+//@interface NSArray (NSArrayDebug)
+//- (id)objectForKey:(NSString*)key;
+//@end
+//
 //@interface NSDictionary (NSDictionaryDebug)
 //- (BOOL)isEqualToString:(NSString*)str;
 //@end

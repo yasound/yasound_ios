@@ -615,7 +615,8 @@ static YasoundSessionManager* _main = nil;
     {
         NSLog(@"facebook social associating request");
         
-        NSString* expirationDate = [YasoundSessionManager expirationDateToString:[[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey]];
+        NSDate* date = [[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey];
+        NSString* expirationDate = [YasoundSessionManager expirationDateToString:date];
         
         // request to yasound server
         [[YasoundDataProvider main] associateAccountFacebook:username type:LOGIN_TYPE_FACEBOOK uid:uid token:token expirationDate:expirationDate email:email target:self action:@selector(associatingSocialValidated:)];
@@ -643,7 +644,8 @@ static YasoundSessionManager* _main = nil;
 //      if (!n)
 //        n = name;
         
-        NSString* expirationDate = [YasoundSessionManager expirationDateToString:[[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey]];
+        NSDate* date = [[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey];
+        NSString* expirationDate = [YasoundSessionManager expirationDateToString:date];
         
         [[YasoundDataProvider main] loginFacebook:username type:@"facebook" uid:uid token:token expirationDate:expirationDate email:email target:self action:@selector(loginSocialValidated:info:)];
     }
@@ -1035,6 +1037,13 @@ static YasoundSessionManager* _main = nil;
 
 + (NSString*)expirationDateToString:(NSDate*)date
 {
+    assert(date != nil);
+    if (date == nil)
+    {
+        NSLog(@"expirationDateToString : date is nil!");
+        return;
+    }
+    
     NSLocale* enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
