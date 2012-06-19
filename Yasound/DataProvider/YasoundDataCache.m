@@ -635,8 +635,7 @@ static UIImage* gDummyImage = nil;
 // return the most recent menu description, or the default menu description if no other one has been downloaded yet
 - (NSArray*)menu
 {
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    NSArray* descr = [defaults objectForKey:@"menuDescription"];
+    NSArray* descr = [[UserSettings main] objectForKey:USKEYcacheMenuDescription];
 
     if (descr != nil)
         return descr;
@@ -647,8 +646,8 @@ static UIImage* gDummyImage = nil;
 
     NSString* descrStr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     descr = [descrStr JSONValue];
-    [defaults setObject:descr forKey:@"menuDescription"];
-    [defaults synchronize];
+    
+    [[UserSettings main] setObject:descr forKey:USKEYcacheMenuDescription];
 
     return descr;
 }
@@ -663,9 +662,7 @@ static UIImage* gDummyImage = nil;
     
     NSLog(@"YasoundDataCache::setMenu %@", descr);
 
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:descr forKey:@"menuDescription"];
-    [defaults synchronize];
+    [[UserSettings main] setObject:descr forKey:USKEYcacheMenuDescription];
 }
 
 

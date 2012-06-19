@@ -8,6 +8,7 @@
 
 #import "YasoundDataCacheImage.h"
 #import "FMDatabaseAdditions.h"
+#import "UserSettings.h"
 
 //........................................................................................
 //
@@ -139,8 +140,7 @@ static YasoundDataCacheImageManager* _main;
 
     
     // registered size accu
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:0] forKey:@"imageRegisterSize"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] setInteger:0 forKey:USKEYcacheImageRegisterSize];
     
 
     // set the cache directory
@@ -265,8 +265,7 @@ static YasoundDataCacheImageManager* _main;
 
     
     // things back to normal, we are below the limit.
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:currentRegisteredSize] forKey:@"imageRegisterSize"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] setInteger:currentRegisteredSize forKey:USKEYcacheImageRegisterSize];
 
     // extreme case : there were error in deleting the files, and the cache is still over the limit
     // dont have a choice, we have to delete the whole thing
@@ -517,25 +516,17 @@ static YasoundDataCacheImageManager* _main;
             [[YasoundDataCacheImageManager main].db executeUpdate:@"INSERT INTO imageRegister VALUES (?,?,?,?)", [self.url absoluteString], filePath, now, [NSNumber numberWithInt:self.receivedData.length]];
             
             // and update the cache size count
-            NSInteger imageRegisterSize = [[[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegisterSize"] integerValue];
+            BOOL error;
+            NSInteger imageRegisterSize = [[UserSettings main] integerForKey:USKEYcacheImageRegisterSize error:&error];
+            if (error)
+                imageRegisterSize = 0;
             imageRegisterSize += self.receivedData.length;
-            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:imageRegisterSize] forKey:@"imageRegisterSize"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [[UserSettings main] setInteger:imageRegisterSize forKey:USKEYcacheImageRegisterSize];
             
             
             // check if GC is necessary
             [[YasoundDataCacheImageManager main] startGC:imageRegisterSize];
-            
-            
-//            NSMutableDictionary* imageRegister = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"imageRegister"]];
-//            
-//            // the info is : the filepath for the url as the key
-//            [imageRegister setObject:filePath forKey:[self.url absoluteString]];
-//            [[NSUserDefaults standardUserDefaults] setObject:imageRegister forKey:@"imageRegister"];
-//            [[NSUserDefaults standardUserDefaults] synchronize];
-            
-            
-            
         }
         
     }

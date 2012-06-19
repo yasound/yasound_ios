@@ -34,6 +34,9 @@
 #define USKEYratingNever @"neverRate"
 #define USKEYratingLaunchCount @"launchCount"
 
+#define USKEYcacheMenuDescription @"menuDescription"
+#define USKEYcacheImageRegisterSize @"imageRegisterSize"
+
 
 + (UserSettings*)main;
 
