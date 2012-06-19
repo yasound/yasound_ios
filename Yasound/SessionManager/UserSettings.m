@@ -94,7 +94,7 @@ static UserSettings* _main;
 }
 
 
-- (void)removeObjectKey:(NSString*)key
+- (void)removeObjectForKey:(NSString*)key
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];

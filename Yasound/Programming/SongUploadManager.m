@@ -283,7 +283,7 @@ static SongUploadManager* _main;
 
 - (void)clearStoredUpdloads
 {
-    [[UserSettings main] removeObjectKey:USKEYuploadList];
+    [[UserSettings main] removeObjectForKey:USKEYuploadList];
 }
 
 

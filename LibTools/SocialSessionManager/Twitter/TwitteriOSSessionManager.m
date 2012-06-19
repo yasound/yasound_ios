@@ -13,16 +13,12 @@
 #import "TwitteriOSSessionManager.h"
 #import "Security/SFHFKeychainUtils.h"
 #import <Twitter/Twitter.h>
-
-//LBDEBUG ICI
-//#import "YasoundAppDelegate.h"
+#import "UserSettings.h"
 
 #ifdef USE_REVERSE_AUTH
 #import "TWSignedRequest.h"
 #endif
 
-
-#define ACCOUNT_IDENTIFIER @"twitterAccountIdentifier"
 
 
 #define TW_X_AUTH_MODE_KEY                  @"x_auth_mode"
@@ -64,7 +60,7 @@
   self.account = nil;
 
   // check if a twitter account has already been selected as default
-  NSString* identifier = [[NSUserDefaults standardUserDefaults] valueForKey:ACCOUNT_IDENTIFIER];
+    NSString* identifier = [[UserSettings main] objectForKey:USKEYtwitterAccountId];
   if (identifier != nil)
     self.account = [self.store accountWithIdentifier:identifier];
 
@@ -95,20 +91,19 @@
 
 - (void)invalidConnexion
 {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:ACCOUNT_IDENTIFIER];
-    
+    [[UserSettings main] removeObjectKey:USKEYtwitterAccountId];
+
     // also clean oauth credentials
-    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
-    NSString* token = [[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN];
+    NSString* username = [[UserSettings main] objectForKey:USKEYtwitterOAuthUsername];
+    NSString* token = [[UserSettings main] objectForKey:USKEYtwitterOAuthToken];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:DATA_FIELD_TOKEN];
+    [[UserSettings main] removeObjectForKey:USKEYtwitterOAuthUsername];
+    [[UserSettings main] removeObjectForKey:USKEYtwitterOAuthToken];
     
     
     NSError* error;
-    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
+    NSString* BundleName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
     [SFHFKeychainUtils deleteItemForUsername:username andServiceName:BundleName error:&error];
-    
     [SFHFKeychainUtils deleteItemForUsername:token andServiceName:BundleName error:nil];
 }
 
@@ -396,7 +391,7 @@
   //.................................................................................
   // get registered username 
   //
-  NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+    NSString* username = [[UserSettings main] objectForKey:USKEYtwitterOAuthUsername];
 
 
   //.................................................................................
@@ -482,7 +477,7 @@
        
        // store this new account identifier in order to load it automatically the next times
        NSString* identifier = self.account.identifier;
-       [[NSUserDefaults standardUserDefaults] setValue:identifier forKey:ACCOUNT_IDENTIFIER];
+         [[UserSettings main] setObject:identifier forKey:USKEYtwitterAccountId];
      }
 
      _granted = granted;
@@ -536,11 +531,12 @@
 
   // store this account identifier in order to load it automatically the next times
   NSString* identifier = self.account.identifier;
-  [[NSUserDefaults standardUserDefaults] setValue:identifier forKey:ACCOUNT_IDENTIFIER];
+    [[UserSettings main] setObject:identifier forKey:USKEYtwitterAccountId];
 
     
     // check if the oauth token and token secret are already there
-    NSString* token = [[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN];
+    NSString* token = [[UserSettings main] objectForKey:USKEYtwitterOAuthToken];
+
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
     NSString* tokenSecret = [SFHFKeychainUtils getPasswordForUsername:token andServiceName:BundleName error:nil];
     

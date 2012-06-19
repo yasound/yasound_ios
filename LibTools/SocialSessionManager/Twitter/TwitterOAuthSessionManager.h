@@ -13,9 +13,10 @@
 
 
 
-#define OAUTH_USERNAME @"oauth_username"
-#define OAUTH_USERID @"oauth_userid"
-#define OAUTH_SCREENNAME @"oauth_name"
+//LBDEBUG : clean
+//#define OAUTH_USERNAME @"oauth_username"
+//#define OAUTH_USERID @"oauth_userid"
+//#define OAUTH_SCREENNAME @"oauth_name"
 
 
 

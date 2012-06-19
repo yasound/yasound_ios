@@ -1070,10 +1070,9 @@ static YasoundSessionManager* _main = nil;
 
 - (void)importTwitterData:(NSString*)twitter_username screen_name:twitter_screen_name uid:(NSString*)twitter_uid withData:(NSString*)twitter_data
 {
-    [[NSUserDefaults standardUserDefaults] setValue:twitter_username forKey:OAUTH_USERNAME];
-    [[NSUserDefaults standardUserDefaults] setValue:twitter_screen_name forKey:OAUTH_SCREENNAME];
-    [[NSUserDefaults standardUserDefaults] setValue:twitter_uid forKey:OAUTH_USERID];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] setObject:twitter_username forKey:USKEYtwitterOAuthUsername];
+    [[UserSettings main] setObject:twitter_screen_name forKey:USKEYtwitterOAuthScreenname];
+    [[UserSettings main] setObject:twitter_uid forKey:USKEYtwitterOAuthUserId];
 
     NSError* error;
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];

@@ -15,6 +15,13 @@
 #define USKEYfacebookAccessTokenKey @"FBAccessTokenKey"
 #define USKEYfacebookExpirationDateKey @"FBExpirationDateKey"
 
+#define USKEYtwitterAccountId @"twitterAccountIdentifier"
+#define USKEYtwitterOAuthUsername @"oauth_username"
+#define USKEYtwitterOAuthUserId @"oauth_userid"
+#define USKEYtwitterOAuthScreenname @"oauth_name"
+#define USKEYtwitterOAuthToken @"token"
+
+
 #define USKEYuserId @"LastConnectedUserID"
 #define USKEYskipRadioCreation @"skipRadioCreationSendToSelection"
 
@@ -38,7 +45,7 @@
 - (void)setInteger:(NSInteger)value forKey:(NSString*)key;
 - (NSInteger)integerForKey:(NSString*)key error:(BOOL*)error;
 
-- (void)removeObjectKey:(NSString*)key;
+- (void)removeObjectForKey:(NSString*)key;
 
 
 @end

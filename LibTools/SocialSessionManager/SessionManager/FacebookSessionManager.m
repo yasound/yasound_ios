@@ -144,8 +144,8 @@ static FacebookSessionManager* _facebook = nil;
 {
     [_facebookConnect logout:self];
 
-    [[UserSettings main] removeObjectKey:USKEYfacebookAccessTokenKey];
-    [[UserSettings main] removeObjectKey:USKEYfacebookExpirationDateKey];
+    [[UserSettings main] removeObjectForKey:USKEYfacebookAccessTokenKey];
+    [[UserSettings main] removeObjectForKey:USKEYfacebookExpirationDateKey];
 }
 
 

@@ -9,8 +9,8 @@
 
 #import "TwitterOAuthSessionManager.h"
 #import "Security/SFHFKeychainUtils.h"
+#import "UserSettings.h"
 
-//LBDEBUG ICI
 #import "YasoundAppDelegate.h"
 
 
@@ -105,17 +105,13 @@
 - (void)invalidConnexion
 {
     // clean credentials
-    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
-    NSString* token = [[NSUserDefaults standardUserDefaults] valueForKey:DATA_FIELD_TOKEN];
+    NSString* username = [[UserSettings main] objectForKey:USKEYtwitterOAuthUsername];
+    NSString* token = [[UserSettings main] objectForKey:USKEYtwitterOAuthToken];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERNAME];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_SCREENNAME];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:OAUTH_USERID];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:DATA_FIELD_TOKEN];
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    
+    [[UserSettings main] removeObjectForKey:USKEYtwitterOAuthUsername];
+    [[UserSettings main] removeObjectForKey:USKEYtwitterOAuthScreenname];
+    [[UserSettings main] removeObjectForKey:USKEYtwitterOAuthUserId];
+    [[UserSettings main] removeObjectForKey:USKEYtwitterOAuthToken];
     
     // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
     //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
@@ -168,9 +164,10 @@
   
   if (requestType == SRequestInfoUser)
   {
-    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
-    NSString* userid = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERID];
-    NSString* userscreenname = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_SCREENNAME];
+      NSString* username = [[UserSettings main] objectForKey:USKEYtwitterOAuthUsername];
+      NSString* userid = [[UserSettings main] objectForKey:USKEYtwitterOAuthUserId];
+      NSString* userscreenname = [[UserSettings main] objectForKey:USKEYtwitterOAuthScreenname];
+
     
     NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
     [user setValue:userid forKey:DATA_FIELD_ID];
@@ -199,7 +196,7 @@
   
   if (requestType == SRequestInfoFriends)
   {
-    NSString* username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+      NSString* username = [[UserSettings main] objectForKey:USKEYtwitterOAuthUsername];
     _requestFriends = [_engine getRecentlyUpdatedFriendsFor:username startingAtPage:0];
     // get the response in userInfoReceived delegate, below
     return YES;
@@ -322,7 +319,7 @@
   NSString* userid = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
   
   // store it
-  [[NSUserDefaults standardUserDefaults] setValue:userid forKey:OAUTH_USERID];
+    [[UserSettings main] setObject:userid forKey:USKEYtwitterOAuthUserId];
   
   
   
@@ -352,7 +349,7 @@
   NSString* screenname = [data substringWithRange:NSMakeRange(range.location, end.location - range.location)];
   
   // store it
-  [[NSUserDefaults standardUserDefaults] setValue:screenname forKey:OAUTH_SCREENNAME];
+    [[UserSettings main] setObject:screenname forKey:USKEYtwitterOAuthScreenname];
   
 }
 
@@ -368,8 +365,7 @@
     return;
 
   // store the credentials for later access
-  [[NSUserDefaults standardUserDefaults] setValue:username forKey:OAUTH_USERNAME];
-  
+    [[UserSettings main] setObject:username forKey:USKEYtwitterOAuthUsername];
   
   
   NSError* error;
@@ -402,7 +398,7 @@
   // => get the username from the UserDefaults, instead
     NSString* __username = username;
     if (__username == nil)
-        __username = [[NSUserDefaults standardUserDefaults] valueForKey:OAUTH_USERNAME];
+        __username = [[UserSettings main] objectForKey:USKEYtwitterOAuthUsername];
 
   NSError* error;
   NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
