@@ -17,6 +17,7 @@
 #import "NotificationCenterViewController.h"
 
 #import <Crashlytics/Crashlytics.h>
+#import "UserSettings.h"
 
 @implementation YasoundAppDelegate
 
@@ -141,15 +142,18 @@ void SignalHandler(int sig) {
 
 - (void)rateApp 
 {
-    BOOL neverRate = [[NSUserDefaults standardUserDefaults] boolForKey:@"neverRate"];
-    
+    BOOL error;
+    BOOL neverRate = [[UserSettings main] boolForKey:USKEYratingNever error:&error];
+                       
     int launchCount = 0;
     if (neverRate != YES)
     {
-        launchCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"launchCount"];
+        launchCount = [[UserSettings main] integerForKey:USKEYratingLaunchCount error:&error];
+        if (error)
+            launchCount = 0;
         launchCount++;
-        [[NSUserDefaults standardUserDefaults] setInteger:launchCount forKey:@"launchCount"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [[UserSettings main] setInteger:launchCount forKey:USKEYratingLaunchCount];
     }
     else return;
     
@@ -172,7 +176,8 @@ void SignalHandler(int sig) {
 {
     if (buttonIndex == 0) 
     {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"neverRate"];
+        [[UserSettings main] setBool:YES forKey:USKEYratingNever];
+        
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"RateApp_url", nil)]];
     }
     
@@ -182,10 +187,8 @@ void SignalHandler(int sig) {
     
     else if (buttonIndex == 2) 
     {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"neverRate"];
+        [[UserSettings main] setBool:YES forKey:USKEYratingNever];
     }
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }    
 
 

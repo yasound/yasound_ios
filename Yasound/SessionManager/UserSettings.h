@@ -31,6 +31,9 @@
 
 #define USKEYtutorials @"Tutorials"
 
+#define USKEYratingNever @"neverRate"
+#define USKEYratingLaunchCount @"launchCount"
+
 
 + (UserSettings*)main;
 
