@@ -169,7 +169,6 @@
 
 
 
-#define SONG_UPLOADS_DEFAULTS_ENTRY_NAME @"SongUploads"
 
 
 
@@ -217,7 +216,7 @@ static SongUploadManager* _main;
 // get the list of song upload info stored in user defaults
 - (NSArray*)storedSongsToUpload
 {
-  NSMutableArray* storedUploads = [[NSUserDefaults standardUserDefaults] objectForKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
+    NSMutableArray* storedUploads = [[UserSettings main] mutableArrayForKey:USKEYuploadList];
   if (!storedUploads)
     return nil;
   
@@ -263,8 +262,7 @@ static SongUploadManager* _main;
       [newUploads addObject:songInfo];
     }
   }
-  [[NSUserDefaults standardUserDefaults] setObject:newUploads forKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
-  [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] setObject:newUploads forKey:USKEYuploadList];
 }
 
 - (void)importUploads
@@ -285,8 +283,7 @@ static SongUploadManager* _main;
 
 - (void)clearStoredUpdloads
 {
-  [[NSUserDefaults standardUserDefaults] removeObjectForKey:SONG_UPLOADS_DEFAULTS_ENTRY_NAME];
-  [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] removeObjectKey:USKEYuploadList];
 }
 
 

@@ -298,7 +298,7 @@
     }
     else
     {
-        NSNumber* radioId = [[UserSettings main] valueForKey:USKEYnowPlaying];
+        NSNumber* radioId = [[UserSettings main] objectForKey:USKEYnowPlaying];
         
         if (radioId == nil)
         {
@@ -335,7 +335,7 @@
         [[SongUploadManager main] clearStoredUpdloads];
     }
     
-    [[UserSettings main] setValue:self.user.id forKey:USKEYuserId];
+    [[UserSettings main] setObject:self.user.id forKey:USKEYuserId];
 }
 
 

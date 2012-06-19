@@ -11,16 +11,26 @@
 @interface UserSettings : NSObject
 
 #define USKEYnowPlaying @"NowPlaying"
+
 #define USKEYfacebookAccessTokenKey @"FBAccessTokenKey"
 #define USKEYfacebookExpirationDateKey @"FBExpirationDateKey"
+
 #define USKEYuserId @"LastConnectedUserID"
 #define USKEYskipRadioCreation @"skipRadioCreationSendToSelection"
+
+#define USKEYuploadLegalWarning @"legalUploadWarning"
+#define USKEYuploadAddedWarning @"addedUploadWarning"
+#define USKEYuploadList @"SongUploads"
+
+#define USKEYtutorials @"Tutorials"
 
 
 + (UserSettings*)main;
 
-- (void)setValue:(id)value forKey:(NSString*)key;
-- (id)valueForKey:(NSString*)key;
+- (void)setObject:(id)value forKey:(NSString*)key;
+- (id)objectForKey:(NSString*)key;
+- (NSMutableArray*)mutableArrayForKey:(NSString*)key;
+- (NSMutableDictionary*)mutableDictionaryForKey:(NSString*)key;
 
 - (void)setBool:(BOOL)value forKey:(NSString*)key;
 - (BOOL)boolForKey:(NSString*)key error:(BOOL*)error;

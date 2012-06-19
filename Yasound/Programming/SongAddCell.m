@@ -102,8 +102,9 @@
         return;
     }
 
-    NSNumber* warning = [[NSUserDefaults standardUserDefaults] objectForKey:@"legalUploadWarning"];
-    if ((warning == nil) || ([warning boolValue] == YES))
+    BOOL error;
+    BOOL warning = [[UserSettings main] boolForKey:USKEYuploadLegalWarning error:&error];                    
+    if (error || warning)
     {
         _legalUploadWarning = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SongUpload_warning_title", nil) message:NSLocalizedString(@"SongUpload_warning_message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:NSLocalizedString(@"Button_iAgree", nil),nil ];
         [_legalUploadWarning show];
@@ -123,8 +124,7 @@
 {
     if ((alertView == _legalUploadWarning) && (buttonIndex == 1))
     {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"legalUploadWarning"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[UserSettings main] setBool:NO forKey:USKEYuploadLegalWarning];
         [self requestUpload];
         return;
     }
@@ -132,8 +132,7 @@
     
     if ((alertView == _addedUploadWarning) && (buttonIndex == 1))
     {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"addedUploadWarning"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[UserSettings main] setBool:NO forKey:USKEYuploadAddedWarning];
         return;
     }
 }
@@ -163,8 +162,9 @@
     }
     else
     {
-        NSNumber* warning = [[NSUserDefaults standardUserDefaults] objectForKey:@"addedUploadWarning"];
-        if ((warning == nil) || ([warning boolValue] == YES))
+        BOOL error;
+        BOOL warning = [[UserSettings main] boolForKey:USKEYuploadAddedWarning error:&error];
+        if (error || warning)
         {
             _addedUploadWarning = [[UIAlertView alloc] initWithTitle:@"Yasound" message:NSLocalizedString(@"SongAddView_added", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_OK", nil) otherButtonTitles:NSLocalizedString(@"Button_dontShowAgain", nil),nil ];
             [_addedUploadWarning show];

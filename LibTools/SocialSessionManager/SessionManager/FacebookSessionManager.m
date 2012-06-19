@@ -109,8 +109,8 @@ static FacebookSessionManager* _facebook = nil;
     
  //   [_facebookConnect authorizeWithFBAppAuth:YES safariAuth:NO];
   
-    NSString* accessToken = [[UserSettings main] valueForKey:USKEYfacebookAccessTokenKey];
-    NSDate* expirationDate = [[UserSettings main] valueForKey:USKEYfacebookExpirationDateKey];
+    NSString* accessToken = [[UserSettings main] objectForKey:USKEYfacebookAccessTokenKey];
+    NSDate* expirationDate = [[UserSettings main] objectForKey:USKEYfacebookExpirationDateKey];
     
   if (accessToken && expirationDate) 
   {
@@ -230,8 +230,8 @@ static FacebookSessionManager* _facebook = nil;
 {
     NSLog(@"fbDidLogin");
 
-    [[UserSettings main] setValue:[_facebookConnect accessToken] forKey:USKEYfacebookAccessTokenKey];
-    [[UserSettings main] setValue:[_facebookConnect expirationDate] forKey:USKEYfacebookExpirationDateKey];
+    [[UserSettings main] setObject:[_facebookConnect accessToken] forKey:USKEYfacebookAccessTokenKey];
+    [[UserSettings main] setObject:[_facebookConnect expirationDate] forKey:USKEYfacebookExpirationDateKey];
      
   [self.delegate sessionDidLogin:YES];
 }
@@ -313,7 +313,7 @@ static FacebookSessionManager* _facebook = nil;
   {
     NSDictionary* dico = result;
 
-      NSString* accessToken = [[UserSettings main] valueForKey:USKEYfacebookAccessTokenKey];
+      NSString* accessToken = [[UserSettings main] objectForKey:USKEYfacebookAccessTokenKey];
     
     NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
       [user setValue:[dico valueForKey:@"id"] forKey:DATA_FIELD_ID];

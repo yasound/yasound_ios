@@ -7,7 +7,7 @@
 //
 
 #import "Tutorial.h"
-
+#import "UserSettings.h"
 
 @implementation Tutorial
 
@@ -49,12 +49,11 @@ static Tutorial* _main = nil;
 - (void)show:(NSString*)key everyTime:(BOOL)everyTime
 {
     // get tutorials dictionary
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary* tutorials = [NSMutableDictionary dictionaryWithDictionary:[defaults objectForKey:@"Tutorials"]];
+    NSMutableDictionary* tutorials = [[UserSettings main] mutableArrayWithKey:USKEYtutorials];
     if (tutorials == nil)
     {
         tutorials = [[NSMutableDictionary alloc] init];
-        [defaults setObject:tutorials forKey:@"Tutorials"];
+        [[UserSettings main] setObject:tutorials forKey:USKEYtutorials];
     }
     
     // get status flag for the requested tutorial
@@ -71,14 +70,12 @@ static Tutorial* _main = nil;
     // it's already been displayed!
     if (flag && !everyTime)
     {
-        [defaults synchronize];
         return;
     }
 
     // update the status flag to YES
     [tutorials setObject:[NSNumber numberWithBool:YES] forKey:key];
-    [defaults setObject:tutorials forKey:@"Tutorials"];
-    [defaults synchronize];
+    [[UserSettings main] setObject:tutorials forKey:USKEYtutorials];
 
     // and display the tutorial
     NSString* titleKey = [NSString stringWithFormat:@"%@_title", key];

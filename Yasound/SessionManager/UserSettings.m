@@ -27,16 +27,27 @@ static UserSettings* _main;
 
 
 
-- (void)setValue:(id)value forKey:(NSString*)key
+- (void)setObject:(id)value forKey:(NSString*)key
 {
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];        
 }
 
-- (id)valueForKey:(NSString*)key
+- (id)objectForKey:(NSString*)key
 {
     return [[NSUserDefaults standardUserDefaults] valueForKey:key];
 }
+
+- (NSMutableArray*)mutableArrayForKey:(NSString*)key
+{
+    return [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] valueForKey:key]];
+}
+
+- (NSMutableDictionary*)mutableDictionaryForKey:(NSString*)key
+{
+    return [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] valueForKey:key]];
+}
+
 
 
 - (void)setBool:(BOOL)value forKey:(NSString*)key
