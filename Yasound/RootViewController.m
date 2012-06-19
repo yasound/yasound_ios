@@ -335,8 +335,7 @@
         [[SongUploadManager main] clearStoredUpdloads];
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:self.user.id forKey:@"LastConnectedUserID"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] setValue:self.user.id forKey:USKEYuserId];
 }
 
 
@@ -393,8 +392,8 @@
 
 - (void)onNotifCancelWizard:(NSNotification*)notification
 {  
-  BOOL sendToSelection = [[[NSUserDefaults standardUserDefaults] objectForKey:@"skipRadioCreationSendToSelection"] boolValue];
-  BOOL animatePushMenu = !sendToSelection;
+    BOOL sendToSelection = [[UserSettings main] boolForKey:USKEYskipRadioCreation error:nil];
+    BOOL animatePushMenu = !sendToSelection;
 
     if (self.menuView == nil)
     {
@@ -434,7 +433,7 @@
 
 - (void)onNotifWizard:(NSNotification *)notification
 {
-  BOOL willSendToSelection = [[[NSUserDefaults standardUserDefaults] objectForKey:@"skipRadioCreationSendToSelection"] boolValue];
+    BOOL willSendToSelection = [[UserSettings main] boolForKey:USKEYskipRadioCreation error:nil];
   if (willSendToSelection || !self.menuView)
   {
     [self.navigationController popToRootViewControllerAnimated:NO];
@@ -706,8 +705,7 @@
 
 - (void*)onNotifGotoCreateMyRadio:(NSNotification *)notification
 {
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"skipRadioCreationSendToSelection"];
-    [[NSUserDefaults standardUserDefaults] synchronize]; 
+    [[UserSettings main] setBool:NO forKey:USKEYskipRadioCreation];
     
     CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:NO radio:[YasoundDataProvider main].radio];
     [(APPDELEGATE).navigationController pushViewController:view animated:YES];

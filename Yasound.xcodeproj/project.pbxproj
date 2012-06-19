@@ -123,7 +123,6 @@
 		40B4095B152EFC630050D334 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		40B4095C152EFC630050D334 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		40B4095D152EFC630050D334 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
-		40B4095E152EFC630050D334 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		40B4095F152EFC630050D334 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		40B40960152EFC630050D334 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40B40961152EFC630050D334 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
@@ -299,7 +298,6 @@
 		40B40A1D152EFC630050D334 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		40B40A1E152EFC630050D334 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
 		40B40A1F152EFC630050D334 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
-		40B40A20152EFC630050D334 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
 		40B40A21152EFC630050D334 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		40B40A22152EFC630050D334 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		40B40A23152EFC630050D334 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -504,7 +502,6 @@
 		40D53B601554280F001EB0C5 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		40D53B611554280F001EB0C5 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		40D53B621554280F001EB0C5 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
-		40D53B631554280F001EB0C5 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		40D53B641554280F001EB0C5 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		40D53B651554280F001EB0C5 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40D53B661554280F001EB0C5 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
@@ -694,7 +691,6 @@
 		40D53C231554280F001EB0C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		40D53C241554280F001EB0C5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
 		40D53C251554280F001EB0C5 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
-		40D53C261554280F001EB0C5 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
 		40D53C271554280F001EB0C5 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		40D53C281554280F001EB0C5 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		40D53C291554280F001EB0C5 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -1143,7 +1139,6 @@
 		BC3FA66F14E93B660055AB4A /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BC3FA67014E93B660055AB4A /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BC3FA67114E93B660055AB4A /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
-		BC3FA67214E93B660055AB4A /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		BC3FA67314E93B660055AB4A /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		BC3FA67414E93B660055AB4A /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		BC3FA67514E93B660055AB4A /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
@@ -1282,7 +1277,6 @@
 		BC3FA70314E93B660055AB4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC3FA70414E93B660055AB4A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
 		BC3FA70514E93B660055AB4A /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
-		BC3FA70614E93B660055AB4A /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
 		BC3FA70714E93B660055AB4A /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		BC3FA70814E93B660055AB4A /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BC3FA70914E93B660055AB4A /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -1678,7 +1672,6 @@
 		BC56F47D152486AF005D1B40 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BC56F47E152486AF005D1B40 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BC56F47F152486AF005D1B40 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
-		BC56F480152486AF005D1B40 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		BC56F481152486AF005D1B40 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		BC56F482152486AF005D1B40 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		BC56F483152486AF005D1B40 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
@@ -1843,7 +1836,6 @@
 		BC56F52C152486AF005D1B40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC56F52D152486AF005D1B40 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
 		BC56F52E152486AF005D1B40 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
-		BC56F52F152486AF005D1B40 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
 		BC56F530152486AF005D1B40 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		BC56F531152486AF005D1B40 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BC56F532152486AF005D1B40 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -2203,10 +2195,6 @@
 		BC8B084314927B7D007E1307 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC8B084114927B7D007E1307 /* Icon.png */; };
 		BC8E039314EE5B1600C79A4C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43714DDC6A100D4C67F /* Default.png */; };
 		BC8E039414EE5B1600C79A4C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC33F43814DDC6A100D4C67F /* Default@2x.png */; };
-		BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
-		BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
-		BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
-		BC93B4A9148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
 		BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
@@ -2226,7 +2214,6 @@
 		BC93CCD714CF3F7A007C723F /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BC93CCD814CF3F7A007C723F /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BC93CCD914CF3F7A007C723F /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
-		BC93CCDA14CF3F7A007C723F /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		BC93CCDB14CF3F7A007C723F /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		BC93CCDC14CF3F7A007C723F /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		BC93CCDD14CF3F7A007C723F /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
@@ -2325,7 +2312,6 @@
 		BC93CD5714CF3F7A007C723F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC93CD5814CF3F7A007C723F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
 		BC93CD7614CF3F7A007C723F /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
-		BC93CD7B14CF3F7A007C723F /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
 		BC93CD7C14CF3F7A007C723F /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		BC93CD7D14CF3F7A007C723F /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		BC93CD7E14CF3F7A007C723F /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -3304,7 +3290,6 @@
 		E5F3B86D1498B88D008DD607 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		E5F3B86E1498B88D008DD607 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		E5F3B8701498B88D008DD607 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
-		E5F3B8741498B88D008DD607 /* ThemeSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */; };
 		E5F3B8751498B88D008DD607 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		E5F3B8771498B88D008DD607 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		E5F3B8781498B88D008DD607 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
@@ -3326,7 +3311,6 @@
 		E5F3B89F1498B88D008DD607 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		E5F3B8A01498B88D008DD607 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
 		E5F3B8BE1498B88D008DD607 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
-		E5F3B8C31498B88D008DD607 /* ThemeSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */; };
 		E5F3B8C41498B88D008DD607 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		E5F3B8C51498B88D008DD607 /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46322148FD96300422448 /* MyYasoundBackground.png */; };
 		E5F3B8C61498B88D008DD607 /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE46323148FD96300422448 /* MyYasoundBackground@2x.png */; };
@@ -3768,9 +3752,6 @@
 		BC8B083514926F22007E1307 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		BC8B083614926F22007E1307 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		BC8B084114927B7D007E1307 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		BC93B4A3148E686C00A87157 /* ThemeSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeSelectorViewController.h; sourceTree = "<group>"; };
-		BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeSelectorViewController.m; sourceTree = "<group>"; };
-		BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThemeSelectorViewController.xib; sourceTree = "<group>"; };
 		BC93B4AA148E68DE00A87157 /* StyleSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleSelectorViewController.h; sourceTree = "<group>"; };
 		BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleSelectorViewController.m; sourceTree = "<group>"; };
 		BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StyleSelectorViewController.xib; sourceTree = "<group>"; };
@@ -5570,9 +5551,6 @@
 				BC93B4AA148E68DE00A87157 /* StyleSelectorViewController.h */,
 				BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */,
 				BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */,
-				BC93B4A3148E686C00A87157 /* ThemeSelectorViewController.h */,
-				BC93B4A4148E686C00A87157 /* ThemeSelectorViewController.m */,
-				BC93B4A5148E686C00A87157 /* ThemeSelectorViewController.xib */,
 				4009010914967AEE00C9E51A /* WebImageView.h */,
 				4009010A14967AEE00C9E51A /* WebImageView.m */,
 				BC481DDD153EFC9B00990214 /* ShareModalViewController.h */,
@@ -5925,7 +5903,6 @@
 				40B40A1D152EFC630050D334 /* Localizable.strings in Resources */,
 				40B40A1E152EFC630050D334 /* MainWindow.xib in Resources */,
 				40B40A1F152EFC630050D334 /* RadioSearchViewController.xib in Resources */,
-				40B40A20152EFC630050D334 /* ThemeSelectorViewController.xib in Resources */,
 				40B40A21152EFC630050D334 /* StyleSelectorViewController.xib in Resources */,
 				40B40A22152EFC630050D334 /* MyYasoundBackground.png in Resources */,
 				40B40A23152EFC630050D334 /* MyYasoundBackground@2x.png in Resources */,
@@ -6143,7 +6120,6 @@
 				40D53C231554280F001EB0C5 /* Localizable.strings in Resources */,
 				40D53C241554280F001EB0C5 /* MainWindow.xib in Resources */,
 				40D53C251554280F001EB0C5 /* RadioSearchViewController.xib in Resources */,
-				40D53C261554280F001EB0C5 /* ThemeSelectorViewController.xib in Resources */,
 				40D53C271554280F001EB0C5 /* StyleSelectorViewController.xib in Resources */,
 				40D53C281554280F001EB0C5 /* MyYasoundBackground.png in Resources */,
 				40D53C291554280F001EB0C5 /* MyYasoundBackground@2x.png in Resources */,
@@ -6363,7 +6339,6 @@
 				BC3FA70314E93B660055AB4A /* Localizable.strings in Resources */,
 				BC3FA70414E93B660055AB4A /* MainWindow.xib in Resources */,
 				BC3FA70514E93B660055AB4A /* RadioSearchViewController.xib in Resources */,
-				BC3FA70614E93B660055AB4A /* ThemeSelectorViewController.xib in Resources */,
 				BC3FA70714E93B660055AB4A /* StyleSelectorViewController.xib in Resources */,
 				BC3FA70814E93B660055AB4A /* MyYasoundBackground.png in Resources */,
 				BC3FA70914E93B660055AB4A /* MyYasoundBackground@2x.png in Resources */,
@@ -6577,7 +6552,6 @@
 				BC56F52C152486AF005D1B40 /* Localizable.strings in Resources */,
 				BC56F52D152486AF005D1B40 /* MainWindow.xib in Resources */,
 				BC56F52E152486AF005D1B40 /* RadioSearchViewController.xib in Resources */,
-				BC56F52F152486AF005D1B40 /* ThemeSelectorViewController.xib in Resources */,
 				BC56F530152486AF005D1B40 /* StyleSelectorViewController.xib in Resources */,
 				BC56F531152486AF005D1B40 /* MyYasoundBackground.png in Resources */,
 				BC56F532152486AF005D1B40 /* MyYasoundBackground@2x.png in Resources */,
@@ -6796,7 +6770,6 @@
 				BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */,
 				BC71F624147FEC6F00DAE4BD /* MainWindow.xib in Resources */,
 				BCF62DE5148394F0001B1908 /* RadioSearchViewController.xib in Resources */,
-				BC93B4A9148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */,
 				BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE46325148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46327148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
@@ -7017,7 +6990,6 @@
 				BC93CD5714CF3F7A007C723F /* Localizable.strings in Resources */,
 				BC93CD5814CF3F7A007C723F /* MainWindow.xib in Resources */,
 				BC93CD7614CF3F7A007C723F /* RadioSearchViewController.xib in Resources */,
-				BC93CD7B14CF3F7A007C723F /* ThemeSelectorViewController.xib in Resources */,
 				BC93CD7C14CF3F7A007C723F /* StyleSelectorViewController.xib in Resources */,
 				BC93CD7D14CF3F7A007C723F /* MyYasoundBackground.png in Resources */,
 				BC93CD7E14CF3F7A007C723F /* MyYasoundBackground@2x.png in Resources */,
@@ -7234,7 +7206,6 @@
 				BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */,
 				BC71F589147F9CD900DAE4BD /* MainWindow.xib in Resources */,
 				BCF62DE4148394F0001B1908 /* RadioSearchViewController.xib in Resources */,
-				BC93B4A8148E686C00A87157 /* ThemeSelectorViewController.xib in Resources */,
 				BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCE46324148FD96300422448 /* MyYasoundBackground.png in Resources */,
 				BCE46326148FD96300422448 /* MyYasoundBackground@2x.png in Resources */,
@@ -7453,7 +7424,6 @@
 				E5F3B89F1498B88D008DD607 /* Localizable.strings in Resources */,
 				E5F3B8A01498B88D008DD607 /* MainWindow.xib in Resources */,
 				E5F3B8BE1498B88D008DD607 /* RadioSearchViewController.xib in Resources */,
-				E5F3B8C31498B88D008DD607 /* ThemeSelectorViewController.xib in Resources */,
 				E5F3B8C41498B88D008DD607 /* StyleSelectorViewController.xib in Resources */,
 				E5F3B8C51498B88D008DD607 /* MyYasoundBackground.png in Resources */,
 				E5F3B8C61498B88D008DD607 /* MyYasoundBackground@2x.png in Resources */,
@@ -7737,7 +7707,6 @@
 				40B4095B152EFC630050D334 /* RadioViewController.m in Sources */,
 				40B4095C152EFC630050D334 /* Theme.m in Sources */,
 				40B4095D152EFC630050D334 /* RadioViewCell.m in Sources */,
-				40B4095E152EFC630050D334 /* ThemeSelectorViewController.m in Sources */,
 				40B4095F152EFC630050D334 /* StyleSelectorViewController.m in Sources */,
 				40B40960152EFC630050D334 /* Communicator.m in Sources */,
 				40B40961152EFC630050D334 /* Container.m in Sources */,
@@ -7925,7 +7894,6 @@
 				40D53B601554280F001EB0C5 /* RadioViewController.m in Sources */,
 				40D53B611554280F001EB0C5 /* Theme.m in Sources */,
 				40D53B621554280F001EB0C5 /* RadioViewCell.m in Sources */,
-				40D53B631554280F001EB0C5 /* ThemeSelectorViewController.m in Sources */,
 				40D53B641554280F001EB0C5 /* StyleSelectorViewController.m in Sources */,
 				40D53B651554280F001EB0C5 /* Communicator.m in Sources */,
 				40D53B661554280F001EB0C5 /* Container.m in Sources */,
@@ -8113,7 +8081,6 @@
 				BC3FA66F14E93B660055AB4A /* RadioViewController.m in Sources */,
 				BC3FA67014E93B660055AB4A /* Theme.m in Sources */,
 				BC3FA67114E93B660055AB4A /* RadioViewCell.m in Sources */,
-				BC3FA67214E93B660055AB4A /* ThemeSelectorViewController.m in Sources */,
 				BC3FA67314E93B660055AB4A /* StyleSelectorViewController.m in Sources */,
 				BC3FA67414E93B660055AB4A /* Communicator.m in Sources */,
 				BC3FA67514E93B660055AB4A /* Container.m in Sources */,
@@ -8297,7 +8264,6 @@
 				BC56F47D152486AF005D1B40 /* RadioViewController.m in Sources */,
 				BC56F47E152486AF005D1B40 /* Theme.m in Sources */,
 				BC56F47F152486AF005D1B40 /* RadioViewCell.m in Sources */,
-				BC56F480152486AF005D1B40 /* ThemeSelectorViewController.m in Sources */,
 				BC56F481152486AF005D1B40 /* StyleSelectorViewController.m in Sources */,
 				BC56F482152486AF005D1B40 /* Communicator.m in Sources */,
 				BC56F483152486AF005D1B40 /* Container.m in Sources */,
@@ -8485,7 +8451,6 @@
 				BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4514863646008F3738 /* Theme.m in Sources */,
 				BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */,
-				BC93B4A7148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
 				BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
 				40274BC41491287900F26008 /* Communicator.m in Sources */,
 				40274BC61491287D00F26008 /* Container.m in Sources */,
@@ -8675,7 +8640,6 @@
 				BC93CCD714CF3F7A007C723F /* RadioViewController.m in Sources */,
 				BC93CCD814CF3F7A007C723F /* Theme.m in Sources */,
 				BC93CCD914CF3F7A007C723F /* RadioViewCell.m in Sources */,
-				BC93CCDA14CF3F7A007C723F /* ThemeSelectorViewController.m in Sources */,
 				BC93CCDB14CF3F7A007C723F /* StyleSelectorViewController.m in Sources */,
 				BC93CCDC14CF3F7A007C723F /* Communicator.m in Sources */,
 				BC93CCDD14CF3F7A007C723F /* Container.m in Sources */,
@@ -8862,7 +8826,6 @@
 				BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4414863646008F3738 /* Theme.m in Sources */,
 				BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */,
-				BC93B4A6148E686C00A87157 /* ThemeSelectorViewController.m in Sources */,
 				BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
 				40274B801491048900F26008 /* Communicator.m in Sources */,
 				40274B811491048900F26008 /* Container.m in Sources */,
@@ -9052,7 +9015,6 @@
 				E5F3B86D1498B88D008DD607 /* RadioViewController.m in Sources */,
 				E5F3B86E1498B88D008DD607 /* Theme.m in Sources */,
 				E5F3B8701498B88D008DD607 /* RadioViewCell.m in Sources */,
-				E5F3B8741498B88D008DD607 /* ThemeSelectorViewController.m in Sources */,
 				E5F3B8751498B88D008DD607 /* StyleSelectorViewController.m in Sources */,
 				E5F3B8771498B88D008DD607 /* Communicator.m in Sources */,
 				E5F3B8781498B88D008DD607 /* Container.m in Sources */,

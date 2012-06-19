@@ -8,7 +8,6 @@
 
 #import "SettingsViewController.h"
 #import "StyleSelectorViewController.h"
-#import "ThemeSelectorViewController.h"
 #import "Theme.h"
 #import "KeywordsViewController.h"
 #import "PlaylistsViewController.h"
@@ -145,12 +144,7 @@
         [_settingsImageImage setUrl:imageURL];
     
     // theme 
-    NSString* themeId = [[NSUserDefaults standardUserDefaults] objectForKey:@"MyYasoundTheme"];
-    if (themeId == nil)
-    {
-        themeId = @"theme_default";
-        [[NSUserDefaults standardUserDefaults] setObject:themeId forKey:@"MyYasoundTheme"];
-    }
+    NSString* themeId = @"theme_default";
     
     Theme* theme = [[Theme alloc] initWithThemeId:themeId];
     _settingsThemeTitle.text = NSLocalizedString(themeId, nil);
@@ -507,12 +501,6 @@
     }
     
     
-//    if ((indexPath.section == SECTION_THEME) && (indexPath.row == ROW_THEME))
-//    {
-//        [self openThemeSelector];
-//        return;
-//    }
-    
     else if (indexPath.section == SECTION_ACCOUNTS)
     {
         if (indexPath.row == ROW_ACCOUNTS_FACEBOOK)
@@ -668,41 +656,6 @@
     [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
-
-
-#pragma mark - ThemeSelectorDelegate
-
-- (void)openThemeSelector
-{
-    ThemeSelectorViewController* view = [[ThemeSelectorViewController alloc] initWithNibName:@"ThemeSelectorViewController" bundle:nil];
-    view.delegate = self;
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-}
-
-- (void)themeSelected:(NSString*)themeId
-{
-    /*
-     [self.navigationController popViewControllerAnimated:YES];
-     
-     // set user defaults
-     [[NSUserDefaults standardUserDefaults] setObject:themeId forKey:@"MyYasoundTheme"];
-     
-     // set GUI cell for selected theme
-     Theme* theme = [[Theme alloc] initWithThemeId:themeId];
-     _settingsThemeTitle.text = NSLocalizedString(themeId, nil);
-     [_settingsThemeImage setImage:theme.icon];
-     [theme release];
-     
-     // set the global theme object
-     [Theme setTheme:themeId];
-     */
-}
-
-- (void)themeSelectionCanceled
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
 
