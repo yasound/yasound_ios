@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "QualitySwitchLabel.h"
 #import "TestflightViewController.h"
 
 
 @interface RadioSelectionViewController : TestflightViewController
 {
-    IBOutlet QualitySwitchLabel* _qualitySwitchLabel;
     IBOutlet UILabel* _topBarTitle;
     IBOutlet UILabel* _categoryTitle;
     IBOutlet UIBarButtonItem* _nowPlayingButton;

@@ -41,7 +41,6 @@
 - (void)dealloc
 {
   [_tableView release];
-  [_qualitySwitchLabel release];
   [_topBarTitle release];
   [_categoryTitle release];
   [_nowPlayingButton release];
@@ -70,9 +69,6 @@
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-    
-    [_qualitySwitchLabel loadView];
-    
     
     NSString* str;
     

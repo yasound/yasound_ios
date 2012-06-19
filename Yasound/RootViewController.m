@@ -298,7 +298,7 @@
     }
     else
     {
-        NSNumber* radioId = [[NSUserDefaults standardUserDefaults] objectForKey:@"NowPlaying"];
+        NSNumber* radioId = [[UserSettings main] valueForKey:USKEYnowPlaying];
         
         if (radioId == nil)
         {
@@ -311,9 +311,11 @@
         else
             [self launchRadio:radioId];
     }
+
+    BOOL error;
+    NSInteger lastUserID = [[UserSettings main] integerForKey:USKEYuserId error:&error];
     
-    NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
-    if (lastUserID && [lastUserID intValue] == [self.user.id intValue])
+    if (!error && (lastUserID == [self.user.id intValue]))
     {
         [[SongUploadManager main] importUploads];
         

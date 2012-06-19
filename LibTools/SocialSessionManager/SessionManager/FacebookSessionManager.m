@@ -7,8 +7,7 @@
 //
 
 #import "FacebookSessionManager.h"
-#include "YasoundSessionManager.h"
-
+#import "YasoundSessionManager.h"
 
 
 @implementation FacebookSessionManager
@@ -110,15 +109,14 @@ static FacebookSessionManager* _facebook = nil;
     
  //   [_facebookConnect authorizeWithFBAppAuth:YES safariAuth:NO];
   
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* accessToken = [[UserSettings main] valueForKey:USKEYfacebookAccessTokenKey];
+    NSDate* expirationDate = [[UserSettings main] valueForKey:USKEYfacebookExpirationDateKey];
     
-   // NSLog(@"DEBUG '%@'", [defaults objectForKey:@"FBExpirationDateKey"]);
-    
-  if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]) 
+  if (accessToken && expirationDate) 
   {
-    _facebookConnect.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
-    _facebookConnect.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
-//    NSLog(@"UserDefault FB token : expiration date %@", _facebookConnect.expirationDate);
+    _facebookConnect.accessToken = accessToken;
+    _facebookConnect.expirationDate = expirationDate;
+//    NSLog(@"FB token : expiration date %@", _facebookConnect.expirationDate);
   }
   
   if (![_facebookConnect isSessionValid]) 
@@ -146,12 +144,8 @@ static FacebookSessionManager* _facebook = nil;
 {
     [_facebookConnect logout:self];
 
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //    if ([defaults objectForKey:@"FBAccessTokenKey"]) 
-    //    {
-    [defaults removeObjectForKey:@"FBAccessTokenKey"];
-    [defaults removeObjectForKey:@"FBExpirationDateKey"];
-    [defaults synchronize];
+    [[UserSettings main] removeObjectKey:USKEYfacebookAccessTokenKey];
+    [[UserSettings main] removeObjectKey:USKEYfacebookExpirationDateKey];
 }
 
 
@@ -235,12 +229,10 @@ static FacebookSessionManager* _facebook = nil;
 - (void)fbDidLogin 
 {
     NSLog(@"fbDidLogin");
-    
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  [defaults setObject:[_facebookConnect accessToken] forKey:@"FBAccessTokenKey"];
-  [defaults setObject:[_facebookConnect expirationDate] forKey:@"FBExpirationDateKey"];
-  [defaults synchronize];  
-  
+
+    [[UserSettings main] setValue:[_facebookConnect accessToken] forKey:USKEYfacebookAccessTokenKey];
+    [[UserSettings main] setValue:[_facebookConnect expirationDate] forKey:USKEYfacebookExpirationDateKey];
+     
   [self.delegate sessionDidLogin:YES];
 }
 
@@ -320,12 +312,12 @@ static FacebookSessionManager* _facebook = nil;
   if (request == _requestMe)
   {
     NSDictionary* dico = result;
-      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
+      NSString* accessToken = [[UserSettings main] valueForKey:USKEYfacebookAccessTokenKey];
     
     NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
       [user setValue:[dico valueForKey:@"id"] forKey:DATA_FIELD_ID];
-      [user setValue:[defaults objectForKey:@"FBAccessTokenKey"] forKey:DATA_FIELD_TOKEN];
+      [user setValue:accessToken forKey:DATA_FIELD_TOKEN];
     [user setValue:@"facebook" forKey:DATA_FIELD_TYPE];
       
       NSString* username = [dico valueForKey:@"username"];

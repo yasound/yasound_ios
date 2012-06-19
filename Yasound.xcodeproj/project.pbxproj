@@ -186,7 +186,6 @@
 		40B4099C152EFC630050D334 /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		40B4099D152EFC630050D334 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		40B4099E152EFC630050D334 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
-		40B4099F152EFC630050D334 /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
 		40B409A0152EFC630050D334 /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		40B409A1152EFC630050D334 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		40B409A2152EFC630050D334 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
@@ -568,7 +567,6 @@
 		40D53B9F1554280F001EB0C5 /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		40D53BA01554280F001EB0C5 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		40D53BA11554280F001EB0C5 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
-		40D53BA21554280F001EB0C5 /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
 		40D53BA31554280F001EB0C5 /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		40D53BA41554280F001EB0C5 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		40D53BA51554280F001EB0C5 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
@@ -1075,9 +1073,6 @@
 		BC27F36E14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		BC27F36F14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		BC27F37014BDD87B00EF1C5F /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
-		BC27F37F14BE463600EF1C5F /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
-		BC27F38014BE463600EF1C5F /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
-		BC27F38114BE463600EF1C5F /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
 		BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
@@ -1211,7 +1206,6 @@
 		BC3FA6B214E93B660055AB4A /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		BC3FA6B314E93B660055AB4A /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		BC3FA6B414E93B660055AB4A /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
-		BC3FA6B514E93B660055AB4A /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
 		BC3FA6B614E93B660055AB4A /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC3FA6B714E93B660055AB4A /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BC3FA6B814E93B660055AB4A /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
@@ -1747,7 +1741,6 @@
 		BC56F4BE152486AF005D1B40 /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		BC56F4BF152486AF005D1B40 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		BC56F4C0152486AF005D1B40 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
-		BC56F4C1152486AF005D1B40 /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
 		BC56F4C2152486AF005D1B40 /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC56F4C3152486AF005D1B40 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BC56F4C4152486AF005D1B40 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
@@ -2295,7 +2288,6 @@
 		BC93CD2B14CF3F7A007C723F /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		BC93CD2C14CF3F7A007C723F /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		BC93CD2D14CF3F7A007C723F /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
-		BC93CD2E14CF3F7A007C723F /* QualitySwitchLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */; };
 		BC93CD2F14CF3F7A007C723F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC93CD3014CF3F7A007C723F /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BC93CD3114CF3F7A007C723F /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
@@ -3598,8 +3590,6 @@
 		BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingView.m; sourceTree = "<group>"; };
 		BC27F36C14BDD87B00EF1C5F /* TrackInteractionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInteractionView.h; sourceTree = "<group>"; };
 		BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInteractionView.m; sourceTree = "<group>"; };
-		BC27F37D14BE463600EF1C5F /* QualitySwitchLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QualitySwitchLabel.h; sourceTree = "<group>"; };
-		BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QualitySwitchLabel.m; sourceTree = "<group>"; };
 		BC27F39214BE598700EF1C5F /* YasoundReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundReachability.h; sourceTree = "<group>"; };
 		BC27F39314BE598700EF1C5F /* YasoundReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundReachability.m; sourceTree = "<group>"; };
 		BC28FF67152DFCEC0070F982 /* BigActionGreenButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigActionGreenButton.png; sourceTree = "<group>"; };
@@ -5569,8 +5559,6 @@
 				BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */,
 				BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */,
 				BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */,
-				BC27F37D14BE463600EF1C5F /* QualitySwitchLabel.h */,
-				BC27F37E14BE463600EF1C5F /* QualitySwitchLabel.m */,
 				BCD4C2C414695FCD000A236A /* ActivityAlertView.h */,
 				BCD4C2C514695FCD000A236A /* ActivityAlertView.m */,
 				BC03050214C02E9D00F39374 /* ActivityModelessSpinner.h */,
@@ -7812,7 +7800,6 @@
 				40B4099C152EFC630050D334 /* TrackInteractionView.m in Sources */,
 				40B4099D152EFC630050D334 /* SongUser.m in Sources */,
 				40B4099E152EFC630050D334 /* NextSong.m in Sources */,
-				40B4099F152EFC630050D334 /* QualitySwitchLabel.m in Sources */,
 				40B409A0152EFC630050D334 /* YasoundReachability.m in Sources */,
 				40B409A1152EFC630050D334 /* TracksView.m in Sources */,
 				40B409A2152EFC630050D334 /* Tutorial.m in Sources */,
@@ -8001,7 +7988,6 @@
 				40D53B9F1554280F001EB0C5 /* TrackInteractionView.m in Sources */,
 				40D53BA01554280F001EB0C5 /* SongUser.m in Sources */,
 				40D53BA11554280F001EB0C5 /* NextSong.m in Sources */,
-				40D53BA21554280F001EB0C5 /* QualitySwitchLabel.m in Sources */,
 				40D53BA31554280F001EB0C5 /* YasoundReachability.m in Sources */,
 				40D53BA41554280F001EB0C5 /* TracksView.m in Sources */,
 				40D53BA51554280F001EB0C5 /* Tutorial.m in Sources */,
@@ -8190,7 +8176,6 @@
 				BC3FA6B214E93B660055AB4A /* TrackInteractionView.m in Sources */,
 				BC3FA6B314E93B660055AB4A /* SongUser.m in Sources */,
 				BC3FA6B414E93B660055AB4A /* NextSong.m in Sources */,
-				BC3FA6B514E93B660055AB4A /* QualitySwitchLabel.m in Sources */,
 				BC3FA6B614E93B660055AB4A /* YasoundReachability.m in Sources */,
 				BC3FA6B714E93B660055AB4A /* TracksView.m in Sources */,
 				BC3FA6B814E93B660055AB4A /* Tutorial.m in Sources */,
@@ -8375,7 +8360,6 @@
 				BC56F4BE152486AF005D1B40 /* TrackInteractionView.m in Sources */,
 				BC56F4BF152486AF005D1B40 /* SongUser.m in Sources */,
 				BC56F4C0152486AF005D1B40 /* NextSong.m in Sources */,
-				BC56F4C1152486AF005D1B40 /* QualitySwitchLabel.m in Sources */,
 				BC56F4C2152486AF005D1B40 /* YasoundReachability.m in Sources */,
 				BC56F4C3152486AF005D1B40 /* TracksView.m in Sources */,
 				BC56F4C4152486AF005D1B40 /* Tutorial.m in Sources */,
@@ -8564,7 +8548,6 @@
 				BC27F36F14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78C14BDF40F00A163F9 /* SongUser.m in Sources */,
 				40F4C79214BEEF7000A163F9 /* NextSong.m in Sources */,
-				BC27F38014BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 				BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */,
 				BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */,
 				BC0304E914BF030200F39374 /* Tutorial.m in Sources */,
@@ -8754,7 +8737,6 @@
 				BC93CD2B14CF3F7A007C723F /* TrackInteractionView.m in Sources */,
 				BC93CD2C14CF3F7A007C723F /* SongUser.m in Sources */,
 				BC93CD2D14CF3F7A007C723F /* NextSong.m in Sources */,
-				BC93CD2E14CF3F7A007C723F /* QualitySwitchLabel.m in Sources */,
 				BC93CD2F14CF3F7A007C723F /* YasoundReachability.m in Sources */,
 				BC93CD3014CF3F7A007C723F /* TracksView.m in Sources */,
 				BC93CD3114CF3F7A007C723F /* Tutorial.m in Sources */,
@@ -8943,7 +8925,6 @@
 				BC27F36E14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78B14BDF40F00A163F9 /* SongUser.m in Sources */,
 				40F4C79114BEEF7000A163F9 /* NextSong.m in Sources */,
-				BC27F37F14BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 				BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */,
 				BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */,
 				BC0304E814BF030200F39374 /* Tutorial.m in Sources */,
@@ -9133,7 +9114,6 @@
 				BC27F37014BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78D14BDF40F00A163F9 /* SongUser.m in Sources */,
 				40F4C79314BEEF7000A163F9 /* NextSong.m in Sources */,
-				BC27F38114BE463600EF1C5F /* QualitySwitchLabel.m in Sources */,
 				BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */,
 				BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */,
 				BC0304EA14BF030200F39374 /* Tutorial.m in Sources */,

@@ -809,8 +809,6 @@
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
     
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-    //    
     if (_switchAllMyMusic.on)
     {
         [[PlaylistMoulinor main] buildDataWithSongs:_songs

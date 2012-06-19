@@ -24,6 +24,7 @@
 #import "APNsPreferences.h"
 #import "ASIHTTPRequest+Model.h"
 #import "UserNotification.h"
+#import "UserSettings.h"
 
 typedef NSString* taskID;
 

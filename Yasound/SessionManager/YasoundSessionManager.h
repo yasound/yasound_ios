@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "YasoundDataProvider.h"
+#import "UserSettings.h"
 
 
 #define LOGIN_TYPE_YASOUND @"yasound"

@@ -247,8 +247,10 @@
         [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
     }
     
-    NSNumber* lastUserID = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastConnectedUserID"];
-    if (lastUserID && [lastUserID intValue] == [self.user.id intValue])
+    BOOL error;
+    NSInteger lastUserID = [[UserSettings main] integerForKey:USKEYuserId error:&error];
+    
+    if (!error && (lastUserID == [self.user.id intValue]))
     {
         [[SongUploadManager main] importUploads];
         
@@ -267,8 +269,7 @@
         [[SongUploadManager main] clearStoredUpdloads];
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:user.id forKey:@"LastConnectedUserID"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] setInteger:[user.id intValue] forKey:USKEYuserId];
 }
 
 
@@ -343,8 +344,7 @@
     //    assert(radio);
     
     // account just being create, go to configuration screen
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"skipRadioCreationSendToSelection"];
-    [[NSUserDefaults standardUserDefaults] synchronize]; 
+    [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];
     
     CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:radio];
     [self.navigationController pushViewController:view animated:YES];

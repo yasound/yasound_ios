@@ -84,11 +84,6 @@ static NotificationManager* _main = nil;
 
 
 
-//- (void)save
-//{
-//    [[NSUserDefaults standardUserDefaults] setObject:self.notifications forKey:@"Notifications"];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-//}
 
 
 @end
