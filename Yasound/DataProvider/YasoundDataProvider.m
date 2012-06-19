@@ -238,6 +238,7 @@ static YasoundDataProvider* _main = nil;
   _user = nil;
   _radio = nil;
   _apiKey = nil;
+    _password = nil;
 }
 
 - (void)reloadUserWithUserData:(id)data withTarget:(id)target action:(SEL)selector
