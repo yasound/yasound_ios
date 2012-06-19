@@ -113,8 +113,7 @@
     [[UserSettings main] removeObjectForKey:USKEYtwitterOAuthUserId];
     [[UserSettings main] removeObjectForKey:USKEYtwitterOAuthToken];
     
-    // credentials are not stored in UserDefaults, for security reason. Go to KeyChain.
-    //[[NSUserDefaults standardUserDefaults]removeObjectForKey:@"authName"];
+    // credentials are not stored in UserSettings, for security reason. Go to KeyChain.
     
     NSError* error;
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
@@ -173,7 +172,7 @@
     [user setValue:userid forKey:DATA_FIELD_ID];
     [user setValue:@"twitter" forKey:DATA_FIELD_TYPE];
       
-      NSString* token = [[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN];
+      NSString* token = [[UserSettings main] objectForKey:USKEYtwitterOAuthToken]
       
       NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
       NSString* tokenSecret = [SFHFKeychainUtils getPasswordForUsername:token andServiceName:BundleName error:nil];
@@ -280,17 +279,15 @@
   
   //LBDEBUG
   assert (oauth_token != nil);
-  [[NSUserDefaults standardUserDefaults] setValue:oauth_token forKey:DATA_FIELD_TOKEN];
+    [[UserSettings main] setObject:oauth_token forKey:USKEYtwitterOAuthToken]
+    
 
     assert (oauth_token_secret != nil);
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
     [SFHFKeychainUtils storeUsername:oauth_token andPassword:oauth_token_secret  forServiceName:BundleName updateExisting:YES error:nil];
 
     
-  [[NSUserDefaults standardUserDefaults] synchronize];
-  
   //  NSLog(@"oauth_token %@", oauth_token);
-  
   //  NSLog(@"oauth_token_secret %@", oauth_token_secret);
   
   
@@ -370,7 +367,7 @@
   
   NSError* error;
   NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
-  // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
+  // secret credentials are NOT saved in the User Settings, for security reason. Prefer KeyChain.
   [SFHFKeychainUtils storeUsername:username andPassword:data  forServiceName:BundleName updateExisting:YES error:&error];
   
   // parse the credentials, to store the user info
@@ -395,7 +392,7 @@
     
   // username parameter is broken (<=> nil) with iOS 5.
   // this issue is known on Twitter-OAuth-iPhone github.
-  // => get the username from the UserDefaults, instead
+  // => get the username from the User Settings, instead
     NSString* __username = username;
     if (__username == nil)
         __username = [[UserSettings main] objectForKey:USKEYtwitterOAuthUsername];

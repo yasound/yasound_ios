@@ -19,6 +19,8 @@
 #import "TWSignedRequest.h"
 #endif
 
+#import "UserSettings.h"
+
 
 
 #define TW_X_AUTH_MODE_KEY                  @"x_auth_mode"
@@ -179,8 +181,7 @@
   
   NSError* jsonParsingError = nil;
   NSDictionary* info = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonParsingError];
-    //LBDEBUG
-  NSLog(@"%@", info);
+  //NSLog(@"%@", info);
   
   NSString* userid = [info valueForKey:@"id_str"];
   NSString* userscreenname = [info valueForKey:@"screen_name"];
@@ -188,7 +189,7 @@
   NSMutableDictionary* user = [[NSMutableDictionary alloc] init];
   [user setValue:userid forKey:DATA_FIELD_ID];
     
-    NSString* token = [[NSUserDefaults standardUserDefaults] objectForKey:DATA_FIELD_TOKEN];
+    NSString* token = [[UserSettings main] objectForKey:USKEYtwitterOAuthToken];
     
     NSString* BundleName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleName"];
     NSString* tokenSecret = [SFHFKeychainUtils getPasswordForUsername:token andServiceName:BundleName error:nil];
@@ -446,8 +447,7 @@
   
     //LBDEBUG
     assert (oauth_token != nil);
-    [[NSUserDefaults standardUserDefaults] setValue:oauth_token forKey:DATA_FIELD_TOKEN];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[UserSettings main] setObject:oauth_token ForKey:USKEYtwitterOAuthToken]
 
     assert (oauth_token_secret != nil);
     [SFHFKeychainUtils storeUsername:oauth_token andPassword:oauth_token_secret  forServiceName:BundleName updateExisting:YES error:nil];
@@ -671,8 +671,7 @@
     else
     {
         // store token and secret
-        [[NSUserDefaults standardUserDefaults] setValue:token forKey:DATA_FIELD_TOKEN];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[UserSettings main] setObject:token ForKey:USKEYtwitterOAuthToken]
     }
     
     
