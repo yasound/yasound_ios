@@ -131,7 +131,9 @@ typedef enum
     [_favoriteRadios release];
     _favoriteRadios = nil;
     
-    [[YasoundDataProvider main] userWithId:self.user.id target:self action:@selector(onUserInfo:info:)];
+    NSLog(@"%@", self.user.username);
+    
+    [[YasoundDataProvider main] userWithUsername:self.user.username target:self action:@selector(onUserInfo:info:)];
     
     if ([AudioStreamManager main].currentRadio == nil)
         [_nowPlayingButton setEnabled:NO];
@@ -389,8 +391,12 @@ typedef enum
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
 }
 
-- (void)onUserInfo:(User*)aUser info:(NSDictionary*)info
+- (void)onUserInfo:(ASIHTTPRequest*)req success:(BOOL)success
 {
+    ICI
+    
+    TODO : recupeer le user depuis le req.
+    
     self.user = aUser;
     [_tableView reloadData];
     [_favoriteRadios release];

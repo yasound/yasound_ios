@@ -180,7 +180,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)nextSongsForUserRadioWithTarget:(id)target action:(SEL)selector;
 
 - (void)userWithId:(NSNumber*)userId target:(id)target action:(SEL)selector;
-
+- (void)userWithUsername:(NSString*)username target:(id)target action:(SEL)selector;
 
 //
 //  NextSong editing

@@ -1247,6 +1247,29 @@ static YasoundDataProvider* _main = nil;
     [_communicator getObjectWithClass:[User class] andID:userId notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
+- (void)userWithUsername:(NSString*)username target:(id)target action:(SEL)selector
+{
+    if (!username)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/public_user/%@", username];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    conf.userData = nil;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
+
 - (void)moveNextSong:(NextSong*)nextSong toPosition:(int)position target:(id)target action:(SEL)selector
 {
   if (!nextSong || !nextSong.id)

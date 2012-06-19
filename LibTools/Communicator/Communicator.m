@@ -598,6 +598,11 @@
     }
     
     NSString* response = request.responseString;
+    
+    //LBDEBUG ICI
+    //NSLog(@"%@", response);
+    
+    
     if (!response)
     {
         [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];
