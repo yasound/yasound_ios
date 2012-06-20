@@ -1787,6 +1787,38 @@ static YasoundDataProvider* _main = nil;
   [_communicator postNewObject:prefs withURL:relativeURL absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth returnNewObject:NO withAuthForGET:nil];
 }
 
+- (void)facebookSharePreferencesWithTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/facebook_share_preferences";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+- (void)setFacebookSharePreferences:(FacebookSharePreferences*)prefs target:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/set_facebook_share_preferences";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    
+    NSString* stringData = [prefs JSONRepresentation];
+    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [req startAsynchronous];
+}
+
 
 #pragma mark - Menu Descriptions
 

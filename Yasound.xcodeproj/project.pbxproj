@@ -478,6 +478,14 @@
 		40B40AE5152EFC630050D334 /* BigActionRedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF6C152DFCEC0070F982 /* BigActionRedButton@2x.png */; };
 		40B40AE6152EFC630050D334 /* BigActionRedButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF6D152DFCEC0070F982 /* BigActionRedButtonHighlighted.png */; };
 		40B40AE7152EFC630050D334 /* BigActionRedButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC28FF6E152DFCEC0070F982 /* BigActionRedButtonHighlighted@2x.png */; };
+		40B96B821591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
+		40B96B831591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
+		40B96B841591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
+		40B96B851591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
+		40B96B861591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
+		40B96B871591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
+		40B96B881591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
+		40B96B891591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
 		40CC5A4D153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
 		40CC5A4E153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
 		40CC5A4F153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
@@ -3508,6 +3516,8 @@
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
 		40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD LOCAL SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		40B96B801591CAEE004D21D3 /* FacebookSharePreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookSharePreferences.h; sourceTree = "<group>"; };
+		40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookSharePreferences.m; sourceTree = "<group>"; };
 		40CC5A4B153D6EF7006C052E /* RequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestConfig.h; sourceTree = "<group>"; };
 		40CC5A4C153D6EF7006C052E /* RequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestConfig.m; sourceTree = "<group>"; };
 		40CC5A54153D9EEB006C052E /* ASIHTTPRequest+Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+Model.h"; sourceTree = "<group>"; };
@@ -4551,6 +4561,8 @@
 				405ACE1A14F5551000DCB97A /* YasoundSong.m */,
 				407D9F131563E89000BFCF1F /* UserNotification.h */,
 				407D9F141563E89000BFCF1F /* UserNotification.m */,
+				40B96B801591CAEE004D21D3 /* FacebookSharePreferences.h */,
+				40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -7904,6 +7916,7 @@
 				BCCD80101577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769A15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A66157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				40B96B881591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8092,6 +8105,7 @@
 				BCCD80111577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769B15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A67157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				40B96B891591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8276,6 +8290,7 @@
 				BCCD800F1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769915790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A65157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				40B96B871591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8464,6 +8479,7 @@
 				BCCD800C1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769615790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A62157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				40B96B841591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8652,6 +8668,7 @@
 				BCCD800B1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769515790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A61157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				40B96B831591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8841,6 +8858,7 @@
 				BCCD800E1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769815790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A64157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				40B96B861591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9029,6 +9047,7 @@
 				BCCD800A1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769415790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A60157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				40B96B821591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9217,6 +9236,7 @@
 				BCCD800D1577C36F008E469F /* ProfileMyRadioViewController.m in Sources */,
 				BCB0769715790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A63157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
+				40B96B851591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
