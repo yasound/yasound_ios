@@ -393,11 +393,13 @@ typedef enum
 
 - (void)onUserInfo:(ASIHTTPRequest*)req success:(BOOL)success
 {
-    ICI
+    int resCode = req.responseStatusCode;
+    NSDictionary* response = [req responseDict];
+    BOOL asuccess = resCode == 200 && response != nil;
     
-    TODO : recupeer le user depuis le req.
+    self.user = (User*)[req responseObjectWithClass:[User class]];
     
-    self.user = aUser;
+    
     [_tableView reloadData];
     [_favoriteRadios release];
     _favoriteRadios = nil;
