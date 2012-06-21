@@ -431,6 +431,9 @@
 "RadioView_track_share_twitter" = "Share on Twitter";
 "RadioView_track_share_yasound" = "Send an email";
 
+"RadioView_goToLogin_title" = "Post a message";
+"RadioView_goToLogin_message" = "You have to sign in to post a message.";
+
 
 "RadioViewCell_moderation_trash_title" = "moderation";
 "RadioViewCell_moderation_trash_message" = "Do you really want to delete the message?";
@@ -444,6 +447,7 @@
 "RadioViewCell_moderation_kick_title" = "moderation";
 "RadioViewCell_moderation_kick_message" = "Do you want to kick this user off your radio?";
 "RadioViewCell_moderation_kick_button" = "kick";
+
 
 
 

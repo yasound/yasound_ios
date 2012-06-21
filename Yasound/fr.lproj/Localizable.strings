@@ -411,6 +411,12 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "TracksView_no_tracks" = "aucun morceau programmé!";
 
+"RadioView_loading_previous_events_message" = "chargement...";
+
+"RadioView_goToLogin_title" = "Poster un message";
+"RadioView_goToLogin_message" = "Vous devez vous identifier pour pouvoir poster un message.";
+
+
 "RadioView_track_share_error_title" = "Partage";
 "RadioView_track_share_error" = "Impossible de poster le message.";
 "RadioView_track_share_facebook_error" = "Impossible de poster le message sur votre wall Facebook.";
@@ -422,7 +428,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "RadioView_track_share_twitter" = "Publier sur Twitter";
 "RadioView_track_share_yasound" = "Partager par mail";
 
-"RadioView_loading_previous_events_message" = "chargement...";
+
 
 
 "RadioViewCell_moderation_trash_title" = "modération";

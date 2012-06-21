@@ -53,7 +53,9 @@
 {
     [super viewDidLoad];
     
-    _titleLabel.text = NSLocalizedString(@"LoginView_title", nil);
+    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);    
+
+    _titleLabel.title = NSLocalizedString(@"LoginView_title", nil);
     
     _facebookLabel.text = NSLocalizedString(@"LoginView_facebook_label", nil);    
     _twitterLabel.text = NSLocalizedString(@"LoginView_twitter_label", nil);    
@@ -351,6 +353,15 @@
     [view release];    
 }
 
+
+
+
+#pragma mark - IBActions
+
+- (IBAction)onBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 @end

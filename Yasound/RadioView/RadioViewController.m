@@ -285,15 +285,15 @@ static Song* _gNowPlayingSong = nil;
     [_viewWall addSubview:messageBarView];   
     
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBar" error:nil];    
-    UITextField* messageBar = [[UITextField alloc] initWithFrame:sheet.frame];
-    messageBar.delegate = self;
-    [messageBar setBorderStyle:UITextBorderStyleRoundedRect];
-    [messageBar setPlaceholder:NSLocalizedString(@"radioview_message", nil)];
+    _messageBar = [[UITextField alloc] initWithFrame:sheet.frame];
+    _messageBar.delegate = self;
+    [_messageBar setBorderStyle:UITextBorderStyleRoundedRect];
+    [_messageBar setPlaceholder:NSLocalizedString(@"radioview_message", nil)];
 
     sheet = [[Theme theme] stylesheetForKey:@"RadioViewMessageBarFont" error:nil];
-    [messageBar setFont:[sheet makeFont]];
+    [_messageBar setFont:[sheet makeFont]];
 
-    [_viewWall addSubview:messageBar];
+    [_viewWall addSubview:_messageBar];
     
     //....................................................................................
     //
@@ -1357,9 +1357,9 @@ static Song* _gNowPlayingSong = nil;
   
   NSString* s = NSLocalizedString(@"GoTo_CurrentUser_Radio", nil);
   NSString* msg = [NSString stringWithFormat:s, _radioForSelectedUser.name];
-  UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:r.creator.name message:msg delegate:self cancelButtonTitle:NSLocalizedString(@"GoTo_CurrentUser_Radio_CancelButton_Title", nil) otherButtonTitles:NSLocalizedString(@"GoTo_CurrentUser_Radio_OkButton_Title", nil), nil];
-  [alertView show];
-  [alertView release];
+  _alertGoToRadio = [[UIAlertView alloc] initWithTitle:r.creator.name message:msg delegate:self cancelButtonTitle:NSLocalizedString(@"GoTo_CurrentUser_Radio_CancelButton_Title", nil) otherButtonTitles:NSLocalizedString(@"GoTo_CurrentUser_Radio_OkButton_Title", nil), nil];
+  [_alertGoToRadio show];
+  [_alertGoToRadio release];
   
   
 }
@@ -1368,20 +1368,32 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-  if (buttonIndex == 0)
-  {
-    // cancel
-    NSLog(@"don't go to radio");
-  }
-  else if (buttonIndex == 1)
-  {
-    NSLog(@"go to %@ - %@", _radioForSelectedUser.name, _radioForSelectedUser.id);
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:_radioForSelectedUser];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release]; 
+    if (alertView == _alertGoToRadio)
+    {
+        if (buttonIndex == 0)
+        {
+            // cancel
+            NSLog(@"don't go to radio");
+        }
+        else if (buttonIndex == 1)
+        {
+            NSLog(@"go to %@ - %@", _radioForSelectedUser.name, _radioForSelectedUser.id);
+            RadioViewController* view = [[RadioViewController alloc] initWithRadio:_radioForSelectedUser];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release]; 
+
+            _radioForSelectedUser = nil;
+        }
+    }
     
-    _radioForSelectedUser = nil;
-  }
+    else if (alertView == _alertGoToLogin)
+    {
+        if (buttonIndex == 1)
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
+            return;
+        }
+    }
 }
 
 
@@ -1597,7 +1609,6 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-#pragma mark - UITextView Delegate
 
 
 
@@ -1695,6 +1706,22 @@ static Song* _gNowPlayingSong = nil;
 //
 
 #pragma mark - TextField Delegate
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if (textField != _messageBar)
+        return NO;
+    
+    if ([YasoundSessionManager main].registered)
+        return YES;
+    
+    _alertGoToLogin = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"RadioView_goToLogin_title", nil) message:NSLocalizedString(@"RadioView_goToLogin_message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation_OK", nil),nil];
+    [_alertGoToLogin show];
+    [_alertGoToLogin release];
+    
+    return NO;
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
