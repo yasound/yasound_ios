@@ -43,6 +43,7 @@
 
 - (void)dealloc
 {
+    [_webview release];
     [super dealloc];
 }
 
