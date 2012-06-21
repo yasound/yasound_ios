@@ -444,6 +444,10 @@
     }
 
     //LBDEBUG
+#ifdef _DEBUG
+    NSLog(@"songs.count %d", songs.count);
+    NSLog(@"indexPath.row %d", indexPath.row);
+#endif
     assert(songs.count > indexPath.row);
 
     Song* song = [songs objectAtIndex:indexPath.row];
