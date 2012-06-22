@@ -634,30 +634,6 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-- (WallEvent*)fakeEventSong:(NSString*)name timeInterval:(NSInteger)timeInterval
-{
-    WallEvent* ev = [[WallEvent alloc] init];
-  [ev setWallEventType:eWallEventTypeSong];
-    ev.start_date = [NSDate date];
-    ev.start_date = [ev.start_date addTimeInterval:timeInterval];
-    ev.song_name = [NSString stringWithString:name];
-    ev.song_id = [NSNumber numberWithInt:1];
-    
-    return ev;
-}
-
-- (WallEvent*)fakeEventMessage:(NSString*)user text:(NSString*)text  timeInterval:(NSInteger)timeInterval
-{
-    WallEvent* ev = [[WallEvent alloc] init];
-  [ev setWallEventType:eWallEventTypeMessage];
-    ev.start_date = [NSDate date];
-    ev.start_date = [ev.start_date addTimeInterval:timeInterval];
-    ev.text = [NSString stringWithString:text];
-    ev.user_name = [NSString stringWithString:user];
-    ev.user_id = [NSNumber numberWithInt:1];
-    
-    return ev;
-}
 
 
 
