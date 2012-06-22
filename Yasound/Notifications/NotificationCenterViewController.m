@@ -345,7 +345,7 @@
     {
       NSLog(@"go to friend screen");
       User* user = [[User alloc] init];
-      user.id = notif.dest_user_id;
+      user.id = notif.from_user_id;
         
       if (user.id != nil)
         [self goToFriendProfile: user];

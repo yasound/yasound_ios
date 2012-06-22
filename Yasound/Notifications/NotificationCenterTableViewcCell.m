@@ -55,6 +55,10 @@
       }
     _notifTextLabel.numberOfLines = 0;
       
+      //LBDEBUG
+      NSLog(@"notif : %@", _notifTextLabel.text);
+
+      
       
     
     BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
@@ -107,6 +111,10 @@
     {
         _notifTextLabel.text = _notification.text;
     }
+    
+    
+    //LBDEBUG
+    NSLog(@"notif : %@", _notifTextLabel.text);
   
   NSError* error;
   BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
