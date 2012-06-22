@@ -25,6 +25,7 @@
 #import "ASIHTTPRequest+Model.h"
 #import "UserNotification.h"
 #import "UserSettings.h"
+#import "FacebookSharePreferences.h"
 
 typedef NSString* taskID;
 
@@ -243,6 +244,10 @@ taskStatus stringToStatus(NSString* str);
 // APNs (Apple Push Notification service) preferences
 - (void)apnsPreferencesWithTarget:(id)target action:(SEL)selector;
 - (void)setApnsPreferences:(APNsPreferences*)prefs target:(id)target action:(SEL)selector;
+
+// Facebook share preferences
+- (void)facebookSharePreferencesWithTarget:(id)target action:(SEL)selector; // didReceivePrefs:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)setFacebookSharePreferences:(FacebookSharePreferences*)prefs target:(id)target action:(SEL)selector; // didSetPrefs:(ASIHTTPRequest*)req success:(BOOL)success
 
 // Menu description
 - (void)menuDescriptionWithTarget:(id)target action:(SEL)selector; // didReceiveMenu:(ASIHTTPRequest*)req

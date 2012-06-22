@@ -54,6 +54,9 @@ NSString * const AS_AUDIO_STREAMER_FAILED_STRING = @"Audio playback failed";
 NSString * const AS_NETWORK_CONNECTION_FAILED_STRING = @"Network connection failed";
 NSString * const AS_AUDIO_BUFFER_TOO_SMALL_STRING = @"Audio packets are larger than kAQDefaultBufSize.";
 
+
+static AudioStreamer* gStreamer = nil;
+
 @interface AudioStreamer ()
 @property (readwrite) AudioStreamerState state;
 
@@ -191,8 +194,14 @@ void MyAudioQueueIsRunningCallback(void *inUserData, AudioQueueRef inAQ, AudioQu
 //
 void MyAudioSessionInterruptionListener(void *inClientData, UInt32 inInterruptionState)
 {
-	AudioStreamer* streamer = (AudioStreamer *)inClientData;
-	[streamer handleInterruptionChangeToState:inInterruptionState];
+    // the folowing code may crash.
+    // in order to avoid the crash, use a static pointer for the streaner.
+    // source : https://github.com/mattgallagher/AudioStreamer/issues/6
+    //
+    //	AudioStreamer* streamer = (AudioStreamer *)inClientData;
+    //	[streamer handleInterruptionChangeToState:inInterruptionState];
+    
+    [gStreamer handleInterruptionChangeToState:inInterruptionState];
 }
 #endif
 
@@ -884,6 +893,8 @@ static NSDate* gStreamErrorLastTime = nil;
 		UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
 		//AudioSessionSetProperty (kAudioSessionProperty_AudioCategory, sizeof (sessionCategory),	&sessionCategory);
 		AudioSessionSetActive(true);
+        
+        gStreamer = self;
 	#endif
 	
 		// initialize a mutex and condition so that we can block on buffers in use.
