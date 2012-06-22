@@ -252,7 +252,7 @@
 
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
-    [self.sortedAlbums release];
+    //[self.sortedAlbums release];
     self.sortedAlbums = nil;
     NSArray* array = [self.catalog.selectedArtistRepo allKeys];
     self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
