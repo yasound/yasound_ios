@@ -15,7 +15,8 @@
 
 @interface LoginViewController : TestflightViewController
 {
-    IBOutlet UILabel* _titleLabel;
+    IBOutlet UIBarButtonItem* _titleLabel;
+    IBOutlet UIBarButtonItem* _backBtn;
     
     //...............................................
     IBOutlet UIButton* _facebookButton;

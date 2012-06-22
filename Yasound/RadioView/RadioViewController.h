@@ -57,6 +57,8 @@
     UIView* _viewWall;
 //    TracksView* _viewTracks;
     BOOL _viewTracksDisplayed;
+    
+    UITextField* _messageBar;
 
     WallEvent* _lastWallEvent;
     WallEvent* _latestEvent;
@@ -83,6 +85,9 @@
     
     RadioViewCell* _cellEditing;
     NSLock* _updateLock;
+    
+    UIAlertView* _alertGoToRadio;
+    UIAlertView* _alertGoToLogin;
 }
 
 @property (nonatomic, retain) Radio* radio;
