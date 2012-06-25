@@ -325,33 +325,30 @@
 {
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
     
-    
-    
     UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
     
     NSLog(@"select notif %@", notif.type);
     NSLog(@"params %@", notif.params);
-    
-    [notif setReadBool:YES];
-    
-    // consider it as being read 
-    NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
-    [cell updateWithNotification:notif];
-    [[YasoundDataProvider main] updateUserNotification:notif target:self action:@selector(updatedUserNotification:success:)];
+
+    if (![notif isReadBool])
+    {
+        [notif setReadBool:YES];
+        
+        // consider it as being read 
+        NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
+        [cell updateWithNotification:notif];
+        [[YasoundDataProvider main] updateUserNotification:notif target:self action:@selector(updatedUserNotification:success:)];
+        
+        
+        
+        return;
+    }
     
     
     
     if ([notif.type isEqualToString:APNS_NOTIF_FRIEND_ONLINE])
     {
-      NSLog(@"go to friend screen");
-      User* user = [[User alloc] init];
-      user.id = notif.from_user_id;
-        
-      if (user.id != nil)
-        [self goToFriendProfile: user];
-      else
         [self goToFriendsViewController];
-    
         return;
     }
     
@@ -375,9 +372,6 @@
         return;
     }
     
-    if ([notif.type isEqualToString:APNS_NOTIF_USER_MESSAGE])
-    {
-    }
     if (notif.from_radio_id != nil)
     {
         NSLog(@"go to radio %@", notif.from_radio_id);
