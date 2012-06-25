@@ -61,7 +61,7 @@ static PlaylistMoulinor* _main = nil;
 {
     if ((target == nil) || (action == nil))
     {
-        NSLog(@"buidDataWithPlaylists  error : target|selector is nil!");
+        DLog(@"buidDataWithPlaylists  error : target|selector is nil!");
         assert(0);
         return NO;
     }
@@ -88,7 +88,7 @@ static PlaylistMoulinor* _main = nil;
 {
     if ((target == nil) || (action == nil))
     {
-        NSLog(@"buildDataWithSongs  error : target|selector is nil!");
+        DLog(@"buildDataWithSongs  error : target|selector is nil!");
         assert(0);
         return NO;
     }
@@ -168,8 +168,8 @@ static PlaylistMoulinor* _main = nil;
     // delay for compressing the data
     double timePassedForCompressing_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
     
-    NSLog(@"PlaylistMoulinor  uncompressed data : %d bytes    compressed data : %d bytes", [data length], [compressedData length]);
-    NSLog(@"PlaylistMoulinor  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
+    DLog(@"PlaylistMoulinor  uncompressed data : %d bytes    compressed data : %d bytes", [data length], [compressedData length]);
+    DLog(@"PlaylistMoulinor  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
 
     // send results
     [_target performSelectorOnMainThread:_action withObject:compressedData waitUntilDone:NO];
@@ -233,8 +233,8 @@ static PlaylistMoulinor* _main = nil;
     // delay for compressing the data
     double timePassedForCompressing_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
     
-    NSLog(@"PlaylistMoulinor songs  uncompressed data : %d bytes    compressed data : %d bytes", [data length], [compressedData length]);
-    NSLog(@"PlaylistMoulinor songs  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
+    DLog(@"PlaylistMoulinor songs  uncompressed data : %d bytes    compressed data : %d bytes", [data length], [compressedData length]);
+    DLog(@"PlaylistMoulinor songs  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
     
     // send results
     [_target performSelectorOnMainThread:_action withObject:compressedData waitUntilDone:NO];
@@ -367,7 +367,7 @@ static PlaylistMoulinor* _main = nil;
     if (album == nil)
         album = [NSString stringWithString:PM_FIELD_UNKNOWN];
     
-    //NSLog(@"%d : %@  |  %@  |  %@", index, artist, album, song);
+    //DLog(@"%d : %@  |  %@  |  %@", index, artist, album, song);
     
     // sort by artist
     NSMutableDictionary* dicoArtist = [dico objectForKey:artist];

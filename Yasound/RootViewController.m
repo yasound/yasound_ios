@@ -31,19 +31,19 @@
 //@implementation NSDictionary (NSDictionaryDebug)
 //- (BOOL)isEqualToString:(NSString*)str
 //{
-//        NSLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+//        DLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
 //        assert(0);
 //}
 //
 //- (void)addObject:(id)object
 //{
-//    NSLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+//    DLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
 //    assert(0);
 //}
 //
 //- (id)objectAtIndex:(NSInteger)index
 //{
-//    NSLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+//    DLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
 //    assert(0);
 //}
 //
@@ -53,7 +53,7 @@
 @implementation NSString (NSStringDebug)
 - (NSString*) absoluteString
 {
-    NSLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+    DLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
     assert(0);
 }
 @end
@@ -213,7 +213,7 @@
             else
             {
                 assert(0);
-                NSLog(@"LOGIN ERROR. COULD NOT DO ANYTHING.");
+                DLog(@"LOGIN ERROR. COULD NOT DO ANYTHING.");
             }
         }
         
@@ -250,7 +250,7 @@
         if (info != nil)
         {
             //LBDEBUG
-            NSLog(@"DEBUG info %@", info);
+            DLog(@"DEBUG info %@", info);
             
             NSString* errorValue = [info objectForKey:@"error"];
             if ([errorValue isEqualToString:@"Login"])
@@ -493,7 +493,7 @@
 //{
 //    
 //   else 
-//       NSLog(@"onNotifErrorConnectionBack ERROR unexpected STATUS CODE!");
+//       DLog(@"onNotifErrorConnectionBack ERROR unexpected STATUS CODE!");
 //    
 //    
 //    
@@ -520,7 +520,7 @@
 
     if ([YasoundReachability main].hasNetwork == YR_NO)
     {
-        NSLog(@"onNotifErrorConnectionChanged no network ");
+        DLog(@"onNotifErrorConnectionChanged no network ");
 
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundReachability_connection", nil) message:NSLocalizedString(@"YasoundReachability_connection_no", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
@@ -540,7 +540,7 @@
     // Wifi turns on
     else if (status == ReachableViaWiFi)
     {
-        NSLog(@"onNotifErrorConnectionChanged WIFI ");
+        DLog(@"onNotifErrorConnectionChanged WIFI ");
 
         // don't test if it's running. If may runs, but paused if the connection was lost, for instance
 //        if (![SongUploadManager main].isRunning)
@@ -552,7 +552,7 @@
     // 3G turns on (<=> or wifi turns off, then 3G turns on)
     else if (status == ReachableViaWWAN)
     {
-        NSLog(@"onNotifErrorConnectionChanged WWAN ");
+        DLog(@"onNotifErrorConnectionChanged WWAN ");
         
         if ([SongUploadManager main].isRunning)
         {
@@ -644,7 +644,7 @@
 - (void)onNotifGotoMyRadio:(NSNotification *)notification
 {
     Radio* r = [YasoundDataProvider main].radio;
-    NSLog(@"go to my radio '%@' (%@)", r.name, r.ready);
+    DLog(@"go to my radio '%@' (%@)", r.name, r.ready);
 
     if (![r.ready boolValue])
     {

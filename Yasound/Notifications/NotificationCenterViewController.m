@@ -114,7 +114,7 @@
 
     if (!success)
     {
-        NSLog(@"get user notifications FAILED");
+        DLog(@"get user notifications FAILED");
         return;
     }
     
@@ -122,8 +122,8 @@
     NSArray* newNotifications = container.objects;
     
     if (newNotifications == nil)
-        NSLog(@"error receiving notifications");
-    NSLog(@"%d notifications received", newNotifications.count);
+        DLog(@"error receiving notifications");
+    DLog(@"%d notifications received", newNotifications.count);
     
     if ((newNotifications == nil) || (self.notifications == nil))
     {
@@ -165,7 +165,7 @@
     
     if (!success)
     {
-        NSLog(@"get user notifications FAILED");
+        DLog(@"get user notifications FAILED");
         return;
     }
     
@@ -327,8 +327,8 @@
     
     UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
     
-    NSLog(@"select notif %@", notif.type);
-    NSLog(@"params %@", notif.params);
+    DLog(@"select notif %@", notif.type);
+    DLog(@"params %@", notif.params);
 
     if (![notif isReadBool])
     {
@@ -363,7 +363,7 @@
         NSString* url = [notif.params objectForKey:@"url"];
         assert(url != nil);
         
-        NSLog(@"go to web page %@", url);
+        DLog(@"go to web page %@", url);
         [self goToMessageWebView:url];
         return;
     }
@@ -387,7 +387,7 @@
     
     if (notif.from_radio_id != nil)
     {
-        NSLog(@"go to radio %@", notif.from_radio_id);
+        DLog(@"go to radio %@", notif.from_radio_id);
         [self goToRadio:notif.from_radio_id];
         return;
     }
@@ -395,7 +395,7 @@
     NSNumber* radioID = [notif.params objectForKey:@"radioID"];
     if (radioID != nil)
     {
-      NSLog(@"go to radio %@", radioID);
+      DLog(@"go to radio %@", radioID);
       [self goToRadio:radioID];
     }
 
@@ -408,7 +408,7 @@
 {
     if (!success)
     {
-        NSLog(@"update notification FAILED");
+        DLog(@"update notification FAILED");
         return;
     }
 
@@ -438,7 +438,7 @@
 {
     if (!success)
     {
-        NSLog(@"delete notification FAILED");
+        DLog(@"delete notification FAILED");
         return;
     }
     
@@ -451,11 +451,11 @@
 {
     if (!success)
     {
-        NSLog(@"delete all notifications FAILED");
+        DLog(@"delete all notifications FAILED");
         return;
     }
 
-    NSLog(@"delete all notifications OK");
+    DLog(@"delete all notifications OK");
 
     [self.notifications removeAllObjects];
     [self.notificationsDictionary removeAllObjects];
@@ -511,7 +511,7 @@
 
 - (void)askForPreviousEvents
 {
-    NSLog(@"ask for previous events");
+    DLog(@"ask for previous events");
     if (_waitingForPreviousEvents)
         return;
     

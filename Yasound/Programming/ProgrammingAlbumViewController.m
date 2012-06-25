@@ -192,7 +192,7 @@
 
 - (void)onSongDeleteRequested:(UITableViewCell*)cell song:(Song*)song
 {
-    NSLog(@"onSongDeleteRequested for Song %@", song.name);   
+    DLog(@"onSongDeleteRequested for Song %@", song.name);   
     
     // request to server
     [[YasoundDataProvider main] deleteSong:song target:self action:@selector(onSongDeleted:info:) userData:cell];
@@ -203,15 +203,15 @@
 // server's callback
 - (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
 {
-    NSLog(@"onSongDeleted for Song %@", song.name);  
-    NSLog(@"info %@", info);
+    DLog(@"onSongDeleted for Song %@", song.name);  
+    DLog(@"info %@", info);
     
     BOOL success = NO;
     NSNumber* nbsuccess = [info objectForKey:@"success"];
     if (nbsuccess != nil)
         success = [nbsuccess boolValue];
     
-    NSLog(@"success %d", success);
+    DLog(@"success %d", success);
     
     UITableViewCell* cell = [info objectForKey:@"userData"];
     NSIndexPath* indexPath = [_tableView indexPathForCell:cell];

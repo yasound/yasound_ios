@@ -23,7 +23,7 @@
         _themes = [resources objectForKey:@"themes"];
         if (_themes == nil)
         {
-            NSLog(@"could not find themes list in the info file");
+            DLog(@"could not find themes list in the info file");
             assert(0);
         }
         else

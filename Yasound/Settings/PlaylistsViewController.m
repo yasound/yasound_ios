@@ -840,7 +840,7 @@
 //    return;
 
     Radio* radio = [YasoundDataProvider main].radio;
-    NSLog(@"Playlists data package has been built.");
+    DLog(@"Playlists data package has been built.");
     
     
     if (radio == nil)
@@ -852,7 +852,7 @@
     }
     else
     {
-        NSLog(@"For radio %@", radio.name);
+        DLog(@"For radio %@", radio.name);
         [[YasoundDataProvider main] updatePlaylists:data forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
     }
 }
@@ -872,7 +872,7 @@
     }
     else
     {
-        NSLog(@"For radio %@", radio.name);
+        DLog(@"For radio %@", radio.name);
         [[YasoundDataProvider main] updatePlaylists:self.playlistsDataPackage forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
     }
 }
@@ -898,8 +898,8 @@
 {
   if (error)
   {
-      NSLog(@"update playlists error %d", error.code);
-      NSLog(@"%@", error);
+      DLog(@"update playlists error %d", error.code);
+      DLog(@"%@", error);
       
       [ActivityAlertView close];
       
@@ -911,7 +911,7 @@
       return;
   }
     
-    NSLog(@"playlists updated  task: %@", task_id);
+    DLog(@"playlists updated  task: %@", task_id);
     
     taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task_id repeats:YES];
     

@@ -667,7 +667,7 @@ static Song* _gNowPlayingSong = nil;
     int i = 0;
     for (WallEvent* w in _wallEvents)
     {
-      NSLog(@"(%d) -%@- %@", i, w.type, [w isOfType:eWallEventTypeMessage]  ? w.text : w.song_name);
+      DLog(@"(%d) -%@- %@", i, w.type, [w isOfType:eWallEventTypeMessage]  ? w.text : w.song_name);
         i++;
     }
 }
@@ -721,7 +721,7 @@ static Song* _gNowPlayingSong = nil;
         else
             _serverErrorCount++;
         
-        NSLog(@"receivedPreviousWallEvents ERROR!");
+        DLog(@"receivedPreviousWallEvents ERROR!");
         return;
     }
     
@@ -732,7 +732,7 @@ static Song* _gNowPlayingSong = nil;
         else
             _serverErrorCount++;
         
-        NSLog(@"receivedPreviousWallEvents : ERROR no meta data!");
+        DLog(@"receivedPreviousWallEvents : ERROR no meta data!");
         return;
     }
     
@@ -741,7 +741,7 @@ static Song* _gNowPlayingSong = nil;
     
     if (!events || events.count == 0)
     {
-        // NSLog(@"NO MORE EVENTS. end receivedPreviousWallEvents\n");
+        // DLog(@"NO MORE EVENTS. end receivedPreviousWallEvents\n");
         
         _updatingPrevious = NO;
         
@@ -758,7 +758,7 @@ static Song* _gNowPlayingSong = nil;
         return;
     }
     
-    NSLog(@"\nreceivedPreviousWallEvents %d events", events.count);
+    DLog(@"\nreceivedPreviousWallEvents %d events", events.count);
     
     for (WallEvent* ev in events)
     {
@@ -784,18 +784,18 @@ static Song* _gNowPlayingSong = nil;
     if (_wallEvents.count > 0)
         wev = [_wallEvents objectAtIndex:0];
     
-    NSLog(@"first event is %@ : %@", [ev wallEventTypeString], ev.start_date);
+    DLog(@"first event is %@ : %@", [ev wallEventTypeString], ev.start_date);
     
     if (wev != nil)
-        NSLog(@"first wallevent is %@ : %@", [wev wallEventTypeString], wev.start_date);
+        DLog(@"first wallevent is %@ : %@", [wev wallEventTypeString], wev.start_date);
 
     if ((wev != nil) && [wev.start_date isLaterThan:ev.start_date])
         _latestEvent = wev;
     else
         _latestEvent = ev;    
 
-    NSLog(@"_latestEvent is %@ : %@", [_latestEvent wallEventTypeString], _latestEvent.start_date);
-    NSLog(@"_lastWallEvent is %@ : %@", [_lastWallEvent wallEventTypeString], _lastWallEvent.start_date);
+    DLog(@"_latestEvent is %@ : %@", [_latestEvent wallEventTypeString], _latestEvent.start_date);
+    DLog(@"_lastWallEvent is %@ : %@", [_lastWallEvent wallEventTypeString], _lastWallEvent.start_date);
 
     // launch update timer
     if (_firstUpdateRequest)
@@ -819,7 +819,7 @@ static Song* _gNowPlayingSong = nil;
     }
     
     
-    NSLog(@"end receivedPreviousWAllEvents\n");
+    DLog(@"end receivedPreviousWAllEvents\n");
 }
 
 
@@ -885,7 +885,7 @@ static Song* _gNowPlayingSong = nil;
         else
             _serverErrorCount++;
         
-        NSLog(@"receivedCurrentWallEvents ERROR!");
+        DLog(@"receivedCurrentWallEvents ERROR!");
         return;
     }
     
@@ -896,7 +896,7 @@ static Song* _gNowPlayingSong = nil;
         else
             _serverErrorCount++;
         
-        NSLog(@"receivedCurrentWallEvents : ERROR no meta data!");
+        DLog(@"receivedCurrentWallEvents : ERROR no meta data!");
         return;
     }
     
@@ -905,12 +905,12 @@ static Song* _gNowPlayingSong = nil;
     
     if (!events || events.count == 0)
     {
-        //NSLog(@"NO MORE EVENTS. end receivedCurrentWallEvents\n");
+        //DLog(@"NO MORE EVENTS. end receivedCurrentWallEvents\n");
         return;
     }
     
     
-    NSLog(@"\nreceivedCurrentWallEvents %d events", events.count);
+    DLog(@"\nreceivedCurrentWallEvents %d events", events.count);
   
   for (int i = events.count - 1; i >= 0; i--)
     {
@@ -940,9 +940,9 @@ static Song* _gNowPlayingSong = nil;
         if (_wallEvents.count > 0)
             wev = [_wallEvents objectAtIndex:0];
         
-        NSLog(@"first event is %@ : %@", [ev wallEventTypeString], ev.start_date);
+        DLog(@"first event is %@ : %@", [ev wallEventTypeString], ev.start_date);
         if (wev != nil)
-            NSLog(@"first wallevent is %@ : %@", [wev wallEventTypeString], wev.start_date);
+            DLog(@"first wallevent is %@ : %@", [wev wallEventTypeString], wev.start_date);
         
         if ((wev != nil) && [wev.start_date isLaterThan:ev.start_date])
             _latestEvent = wev;
@@ -950,12 +950,12 @@ static Song* _gNowPlayingSong = nil;
             _latestEvent = ev;
         
         
-        NSLog(@"_latestEvent is %@ : %@", [_latestEvent wallEventTypeString], _latestEvent.start_date);
+        DLog(@"_latestEvent is %@ : %@", [_latestEvent wallEventTypeString], _latestEvent.start_date);
     }
     else
         return;
     
-    NSLog(@"end receivedCurrentWAllEvents\n");
+    DLog(@"end receivedCurrentWAllEvents\n");
 }
 
 
@@ -994,7 +994,7 @@ static Song* _gNowPlayingSong = nil;
     if ((_latestEvent != nil) && ([ev.start_date isEarlierThanOrEqualTo:_latestEvent.start_date]))
         return;
     
-    NSLog(@"receivedCurrentMessageEvent ADD %@ : date %@", ev.user_name, ev.start_date);
+    DLog(@"receivedCurrentMessageEvent ADD %@ : date %@", ev.user_name, ev.start_date);
 
     assert(ev != nil);
     
@@ -1054,14 +1054,14 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)userJoined:(User*)u
 {
-  NSLog(@"%@ joined", u.name);
+  DLog(@"%@ joined", u.name);
   [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", u.name]];
   
 }
 
 - (void)userLeft:(User*)u
 {
-  NSLog(@"%@ left", u.name);
+  DLog(@"%@ left", u.name);
   [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", u.name]];
 }
 
@@ -1352,7 +1352,7 @@ static Song* _gNowPlayingSong = nil;
     return;
   }
   
-  NSLog(@"radio '%@'   creator '%@'", r.name, r.creator.name);
+  DLog(@"radio '%@'   creator '%@'", r.name, r.creator.name);
   _radioForSelectedUser = r;
   
   NSString* s = NSLocalizedString(@"GoTo_CurrentUser_Radio", nil);
@@ -1371,11 +1371,11 @@ static Song* _gNowPlayingSong = nil;
   if (buttonIndex == 0)
   {
     // cancel
-    NSLog(@"don't go to radio");
+    DLog(@"don't go to radio");
   }
   else if (buttonIndex == 1)
   {
-    NSLog(@"go to %@ - %@", _radioForSelectedUser.name, _radioForSelectedUser.id);
+    DLog(@"go to %@ - %@", _radioForSelectedUser.name, _radioForSelectedUser.id);
     RadioViewController* view = [[RadioViewController alloc] initWithRadio:_radioForSelectedUser];
     [self.navigationController pushViewController:view animated:YES];
     [view release]; 
@@ -1561,7 +1561,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)askForPreviousEvents
 {
-    NSLog(@"ask for previous events");
+    DLog(@"ask for previous events");
     if (_waitingForPreviousEvents)
         return;
     
@@ -1718,7 +1718,7 @@ static Song* _gNowPlayingSong = nil;
     NSError* error = [info valueForKey:@"error"];
     if (error)
     {
-        NSLog(@"wall message can't be posted: %@", error.domain);
+        DLog(@"wall message can't be posted: %@", error.domain);
         return;
     }
 
@@ -1950,7 +1950,7 @@ static Song* _gNowPlayingSong = nil;
 //- (void)onSwipeLeft:(UISwipeGestureRecognizer *)recognizer 
 //{ 
 //    CGPoint point = [recognizer locationInView:[self view]];
-//    NSLog(@"Swipe left - start location: %f,%f", point.x, point.y);
+//    DLog(@"Swipe left - start location: %f,%f", point.x, point.y);
 //    
 //    if (_viewTracksDisplayed)
 //        return;
@@ -1958,7 +1958,7 @@ static Song* _gNowPlayingSong = nil;
 //    NSError* error;
 //	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go to TracksView" label:nil value:0 withError:&error]) 
 //    {
-//		        NSLog(@"GANTracker Error tracking foreground event: %@", error);
+//		        DLog(@"GANTracker Error tracking foreground event: %@", error);
 //	}
 //    
 //    [_viewTracks updateView];
@@ -1980,7 +1980,7 @@ static Song* _gNowPlayingSong = nil;
 //- (void)onSwipeRight:(UISwipeGestureRecognizer *)recognizer 
 //{ 
 //    CGPoint point = [recognizer locationInView:[self view]];
-//    NSLog(@"Swipe right - start location: %f,%f", point.x, point.y);
+//    DLog(@"Swipe right - start location: %f,%f", point.x, point.y);
 //
 //    if (!_viewTracksDisplayed)
 //        return;
@@ -1988,7 +1988,7 @@ static Song* _gNowPlayingSong = nil;
 //    NSError* error;
 //	if (![[GANTracker sharedTracker] trackEvent:@"swipe" action:@"Go back to RadioView" label:nil value:0 withError:&error]) 
 //    {
-//        NSLog(@"GANTracker Error tracking foreground event: %@", error);
+//        DLog(@"GANTracker Error tracking foreground event: %@", error);
 //	}
 //    
 //    CGRect frame = _viewWall.frame;
@@ -2233,7 +2233,7 @@ static Song* _gNowPlayingSong = nil;
     if ([notification.name isEqualToString:NOTIF_DISPLAY_AUDIOSTREAM_ERROR])
     {
         [self setStatusMessage:NSLocalizedString(@"RadioView_status_message_audiostream_error", nil)];
-        NSLog(@"stream error notification");
+        DLog(@"stream error notification");
         return;
     }
     else if ([notification.name isEqualToString:NOTIF_AUDIOSTREAM_PLAY])

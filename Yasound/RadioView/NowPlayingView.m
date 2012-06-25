@@ -52,7 +52,7 @@
         _webImageView = nil;
         
         
-      NSLog(@"now playing song cover '%@'", song.cover);
+      DLog(@"now playing song cover '%@'", song.cover);
       if (song.cover)
       {        
         NSURL* url = [[YasoundDataProvider main] urlForPicture:song.cover];

@@ -74,7 +74,7 @@
     tradeUrl =[NSString stringWithFormat:@"%@%@%@%@", TRADEDOUBLER_URL, trackViewUrl, [self getSeparator:trackViewUrl], TRADEDOUBLER_ID];
     
     [trackViewUrl release];
-    NSLog(@"tradeURL = %@", tradeUrl);
+    DLog(@"tradeURL = %@", tradeUrl);
   }
   return tradeUrl;
 }

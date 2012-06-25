@@ -160,10 +160,10 @@
     
     NSInteger firstRelevantIndex = 0;
     
-//    NSLog(@"getFirstRelevantWord of '%@'", self.name);
+//    DLog(@"getFirstRelevantWord of '%@'", self.name);
 //    if ([self.name isEqualToString:@"The Well"])
 //    {
-//        NSLog(@"ok");
+//        DLog(@"ok");
 //    }
     
     NSString* fourChars = nil;

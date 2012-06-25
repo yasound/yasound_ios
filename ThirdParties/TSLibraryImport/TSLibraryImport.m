@@ -197,7 +197,7 @@
 			unsigned char buf[bufferSize];
 			if (NULL == dst) {
 				fclose(src);
-                NSLog(@"Couldn't open destination file");
+                DLog(@"Couldn't open destination file");
 				@throw [NSException exceptionWithName:TSUnknownError reason:@"Couldn't open destination file" userInfo:nil];
 			}
             // Thanks to Rolf Nilsson/Roni Music for pointing out the bug here:
@@ -226,7 +226,7 @@
 	}
 	fclose(src);
     
-    NSLog(@"Didn't find mdat chunk");
+    DLog(@"Didn't find mdat chunk");
 	@throw [NSException exceptionWithName:TSUnknownError reason:@"Didn't find mdat chunk"  userInfo:nil];
 }
 

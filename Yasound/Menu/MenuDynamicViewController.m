@@ -158,7 +158,7 @@
 {   
     if (!success)
     {
-        NSLog(@"get user notifications FAILED");
+        DLog(@"get user notifications FAILED");
         return;
     }
     
@@ -166,7 +166,7 @@
     NSArray* notifications = container.objects;
     
     if (notifications == nil)
-        NSLog(@"error receiving notifications");
+        DLog(@"error receiving notifications");
     
     _unreadNotifications = 0;
     
@@ -174,7 +174,7 @@
         if (![notif isReadBool])
             _unreadNotifications++;
     
-    NSLog(@"unread notifications %d", _unreadNotifications);
+    DLog(@"unread notifications %d", _unreadNotifications);
 
     [_notificationsCell setUnreadCount:_unreadNotifications];
     
@@ -199,8 +199,8 @@
     
     if (rows == nil)
     {
-        NSLog(@"DynamicMenu parsing error");
-        NSLog(@"%@", self.sections);
+        DLog(@"DynamicMenu parsing error");
+        DLog(@"%@", self.sections);
         assert(0);
         return 0;
     }    
@@ -403,14 +403,14 @@
     
     if ([type isEqualToString:TYPE_USER])
     {
-        NSLog(@"TODO");
+        DLog(@"TODO");
         assert(0);
         return;
     }
     
     if ([type isEqualToString:TYPE_USER_LIST])
     {
-        NSLog(@"TODO");
+        DLog(@"TODO");
         assert(0);
         return;
     }

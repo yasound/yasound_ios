@@ -45,7 +45,7 @@ static YasoundSessionManager* _main = nil;
         else
             _dico = [[NSMutableDictionary alloc] init];
         
-        NSLog(@"import dico %@", _dico);
+        DLog(@"import dico %@", _dico);
         
         self.associatingFacebook = NO;
         self.associatingTwitter = NO;
@@ -155,7 +155,7 @@ static YasoundSessionManager* _main = nil;
 
 - (void)save
 {
-    NSLog(@"save : %@", _dico);
+    DLog(@"save : %@", _dico);
     
     [[NSUserDefaults standardUserDefaults] setObject:_dico forKey:@"YasoundSessionManager"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -217,7 +217,7 @@ static YasoundSessionManager* _main = nil;
 
 - (void) loginForYasoundRequestDidReturn:(User*)user info:(NSDictionary*)info
 {
-    NSLog(@"YasoundSessionManager login returned : %@ %@", user, info);
+    DLog(@"YasoundSessionManager login returned : %@ %@", user, info);
     
     if (user == nil)
     {
@@ -225,7 +225,7 @@ static YasoundSessionManager* _main = nil;
         return;
     }
     
-    NSLog(@"YasoundSessionManager yasound login successful!");
+    DLog(@"YasoundSessionManager yasound login successful!");
     
     // callback
     assert(_target);
@@ -252,11 +252,11 @@ static YasoundSessionManager* _main = nil;
 {
     if (_error)
     {
-        NSLog(@"loginSocialValidated returned but canceled because error");
+        DLog(@"loginSocialValidated returned but canceled because error");
         return;
     }
 
-    NSLog(@"loginSocialValidated returned : %@ %@", user, info);
+    DLog(@"loginSocialValidated returned : %@ %@", user, info);
     
     if (user == nil)
     {
@@ -438,7 +438,7 @@ static YasoundSessionManager* _main = nil;
     
     // local account manager is handle in the SocialSessionManager delegate
     
-    NSLog(@"registerForFacebook self.loginType %@", self.loginType);
+    DLog(@"registerForFacebook self.loginType %@", self.loginType);
     
     [self save];
 
@@ -449,7 +449,7 @@ static YasoundSessionManager* _main = nil;
     self.loginType = LOGIN_TYPE_TWITTER;
     self.registered = YES;
     
-    NSLog(@"registerForTwitter self.loginType %@", self.loginType);
+    DLog(@"registerForTwitter self.loginType %@", self.loginType);
     
     // local account manager is handle in the SocialSessionManager delegate
 
@@ -494,11 +494,11 @@ static YasoundSessionManager* _main = nil;
 
 - (void)sessionDidLogin:(BOOL)authorized
 {
-    NSLog(@"YasoundSessionManager::sessionDidLogin    authorized %d", authorized);
+    DLog(@"YasoundSessionManager::sessionDidLogin    authorized %d", authorized);
     
     if (self.associatingAutomatic)
     {
-        NSLog(@"associating automatic.");
+        DLog(@"associating automatic.");
         
         [self associateClean];
 
@@ -554,11 +554,11 @@ static YasoundSessionManager* _main = nil;
 
     if (requestType == SRequestInfoUser)
     {
-        NSLog(@"requestDidFailed : could not get user info.");
+        DLog(@"requestDidFailed : could not get user info.");
 
-        NSLog(@"%@", [error localizedDescription]);
-        NSLog(@"%@", [error description]);
-        NSLog(@"%@", errorMessage);
+        DLog(@"%@", [error localizedDescription]);
+        DLog(@"%@", [error description]);
+        DLog(@"%@", errorMessage);
 
         [self userInfoError];
         
@@ -571,11 +571,11 @@ static YasoundSessionManager* _main = nil;
 
     if (requestType == SRequestPostMessage)
     {
-        NSLog(@"requestDidFailed : could not post message.");
+        DLog(@"requestDidFailed : could not post message.");
         
-        NSLog(@"%@", [error localizedDescription]);
-        NSLog(@"%@", [error description]);
-        NSLog(@"%@", errorMessage);
+        DLog(@"%@", [error localizedDescription]);
+        DLog(@"%@", [error description]);
+        DLog(@"%@", errorMessage);
         
         if ((_postTarget != nil) && (_postAction != nil))
             [_postTarget performSelector:_postAction withObject:[NSNumber numberWithBool:NO]];
@@ -633,7 +633,7 @@ static YasoundSessionManager* _main = nil;
 {
     if ([data count] == 0)
     {
-        NSLog(@"requestDidLoad SRequestInfoUser error : no info.");
+        DLog(@"requestDidLoad SRequestInfoUser error : no info.");
         [self userInfoError];
         return;
     }
@@ -652,12 +652,12 @@ static YasoundSessionManager* _main = nil;
     if (email == nil)
         email = @"";
 
-    NSLog(@"ready to request social login to the server with : ");
-    NSLog(@"username '%@'", username);
-    NSLog(@"name '%@'", name);
-    NSLog(@"uid '%@'", uid);
-    NSLog(@"token '%@'", token);
-    NSLog(@"email '%@'", email);
+    DLog(@"ready to request social login to the server with : ");
+    DLog(@"username '%@'", username);
+    DLog(@"name '%@'", name);
+    DLog(@"uid '%@'", uid);
+    DLog(@"token '%@'", token);
+    DLog(@"email '%@'", email);
     
 //    // TAG ACTIVITY ALERT
 //    if (![ActivityAlertView isRunning])
@@ -669,7 +669,7 @@ static YasoundSessionManager* _main = nil;
     //
     if (self.associatingFacebook)
     {
-        NSLog(@"facebook social associating request");
+        DLog(@"facebook social associating request");
         
         NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];    
         NSString* expirationDate = [YasoundSessionManager expirationDateToString:[defaults objectForKey:@"FBExpirationDateKey"]];
@@ -681,7 +681,7 @@ static YasoundSessionManager* _main = nil;
     
     else if (self.associatingTwitter)
     {
-        NSLog(@"twitter social associating request");
+        DLog(@"twitter social associating request");
 
 
         NSString* tokenSecret = [dico valueForKey:DATA_FIELD_TOKEN_SECRET];
@@ -695,7 +695,7 @@ static YasoundSessionManager* _main = nil;
     //
     else if ([self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK])
     {
-        NSLog(@"facebook social login request");
+        DLog(@"facebook social login request");
 //      NSString* n = username;
 //      if (!n)
 //        n = name;
@@ -710,14 +710,14 @@ static YasoundSessionManager* _main = nil;
     
     else if ([self.loginType isEqualToString:LOGIN_TYPE_TWITTER])
     {
-        NSLog(@"twitter social login request");
+        DLog(@"twitter social login request");
         
         NSString* tokenSecret = [dico valueForKey:DATA_FIELD_TOKEN_SECRET];
 
         if (token == nil)
-            NSLog(@"error Twitter token is nil!");
+            DLog(@"error Twitter token is nil!");
         if (tokenSecret == nil)
-            NSLog(@"error Twitter tokenSecret is nil!");
+            DLog(@"error Twitter tokenSecret is nil!");
         
         assert(token != nil);
         
@@ -739,7 +739,7 @@ static YasoundSessionManager* _main = nil;
 
 - (void)requestPostMessageDidLoad:(NSArray*)data
 {
-    NSLog(@"the message has been post to your wall.");
+    DLog(@"the message has been post to your wall.");
     
     if ((_postTarget != nil) && (_postAction != nil))
         [_postTarget performSelector:_postAction withObject:[NSNumber numberWithBool:YES]];
@@ -786,13 +786,13 @@ static YasoundSessionManager* _main = nil;
     
     if (![self.loginType isEqualToString:LOGIN_TYPE_FACEBOOK]  && [self isAccountAssociated:LOGIN_TYPE_FACEBOOK])
     {
-        NSLog(@"\n Automatic associating account Facebook.");
+        DLog(@"\n Automatic associating account Facebook.");
         [self associateAccountFacebook:self action:@selector(associateAccountsAutomaticReturned:) automatic:YES];
     }
 
     if (![self.loginType isEqualToString:LOGIN_TYPE_TWITTER] && [self isAccountAssociated:LOGIN_TYPE_TWITTER])
     {
-        NSLog(@"\n Automatic associating account Twitter.");
+        DLog(@"\n Automatic associating account Twitter.");
         [self associateAccountTwitter:self action:@selector(associateAccountsAutomaticReturned:) automatic:YES];
     }
     
@@ -800,7 +800,7 @@ static YasoundSessionManager* _main = nil;
     // don't need to do anything for yasound
 //    if (![self.loginType isEqualToString:LOGIN_TYPE_YASOUND] && [self isAccountAssociated:LOGIN_TYPE_YASOUND])
 //    {
-//        NSLog(@"\n Automatic associating account Yasound.");
+//        DLog(@"\n Automatic associating account Yasound.");
 //        [self associateAccountYasound:[account objectForKey:@"email"] password:[account objectForKey:@"pword"] target:self action:@selector(associateAccountsAutomaticReturned:) automatic:YES];
 //    }
     
@@ -810,7 +810,7 @@ static YasoundSessionManager* _main = nil;
 
 - (void)associateAccountsAutomaticReturned:(NSDictionary*)info
 {
-    NSLog(@"associateAccountsAutomaticReturned : info %@.", info);
+    DLog(@"associateAccountsAutomaticReturned : info %@.", info);
 }
 
 
@@ -895,7 +895,7 @@ static YasoundSessionManager* _main = nil;
 
 - (void)dissociateRequestDidReturn:(NSDictionary*)info
 {
-    NSLog(@"dissociateRequestDidReturn :%@", info);
+    DLog(@"dissociateRequestDidReturn :%@", info);
     
     
     if (self.associatingFacebook)
@@ -910,7 +910,7 @@ static YasoundSessionManager* _main = nil;
     {
     }
     
-    NSLog(@"call reloadUserWithUserData");
+    DLog(@"call reloadUserWithUserData");
     // reload the current user to update the associated accounts info
     [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
 }
@@ -922,14 +922,14 @@ static YasoundSessionManager* _main = nil;
 
 - (void) associateYasoundRequestDidReturn:(NSDictionary*)info
 {
-    NSLog(@"associateYasoundRequestDidReturnd :%@", info);
+    DLog(@"associateYasoundRequestDidReturnd :%@", info);
     
     BOOL succeeded = NO;
     
     NSNumber* nb = [info objectForKey:@"succeeded"];
     succeeded = [nb boolValue];
     
-    NSLog(@"call reloadUserWithUserData");
+    DLog(@"call reloadUserWithUserData");
     // reload the current user to update the associated accounts info
     [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
 }
@@ -1036,7 +1036,7 @@ static YasoundSessionManager* _main = nil;
 
 - (void)reloadUserData:(User*)user
 {
-    NSLog(@"reloadUserData from user");
+    DLog(@"reloadUserData from user");
     [self importFacebookData:user.facebook_token facebook_expiration_date:user.facebook_expiration_date];
     [self importTwitterData:user.twitter_token token_secret:user.twitter_token_secret user_id:user.twitter_uid screen_name:user.twitter_username];
     [self importYasoundData:user.yasound_email];
@@ -1056,7 +1056,7 @@ static YasoundSessionManager* _main = nil;
     [defaults setObject:date forKey:@"FBExpirationDateKey"];
     [defaults synchronize];  
 
-    NSLog(@"importFacebookData  '%@' '%@'", [defaults objectForKey:@"FBAccessTokenKey"], [defaults objectForKey:@"FBExpirationDateKey"]);
+    DLog(@"importFacebookData  '%@' '%@'", [defaults objectForKey:@"FBAccessTokenKey"], [defaults objectForKey:@"FBExpirationDateKey"]);
 }
 
 
@@ -1080,7 +1080,7 @@ static YasoundSessionManager* _main = nil;
     // secret credentials are NOT saved in the UserDefaults, for security reason. Prefer KeyChain.
     [SFHFKeychainUtils storeUsername:twitter_username andPassword:twitter_data  forServiceName:BundleName updateExisting:YES error:&error];
     
-    NSLog(@"importTwitterData '%@'", twitter_data);
+    DLog(@"importTwitterData '%@'", twitter_data);
 }
 
 
@@ -1090,7 +1090,7 @@ static YasoundSessionManager* _main = nil;
     [[NSUserDefaults standardUserDefaults] setValue:yasound_email forKey:@"yasound_email"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
-    NSLog(@"importYasoundData '%@'", yasound_email);
+    DLog(@"importYasoundData '%@'", yasound_email);
 }
 
     
@@ -1137,7 +1137,7 @@ static YasoundSessionManager* _main = nil;
 
 - (void) associatingSocialValidated:(NSDictionary*)info
 {
-    NSLog(@"associatingSocialValidated returned : %@", info);
+    DLog(@"associatingSocialValidated returned : %@", info);
     
     BOOL succeeded = NO;
     
@@ -1158,7 +1158,7 @@ static YasoundSessionManager* _main = nil;
     
     [self associateClean];  
     
-    NSLog(@"call reloadUserWithUserData");
+    DLog(@"call reloadUserWithUserData");
     // reload the current user to update the associated accounts info
     [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];  
 }
@@ -1167,11 +1167,11 @@ static YasoundSessionManager* _main = nil;
          
  - (void) dissociatingSocialValidated:(NSDictionary*)info
 {
-    NSLog(@"dissociatingSocialValidated returned : %@", info);
+    DLog(@"dissociatingSocialValidated returned : %@", info);
     
     [self associateClean];
     
-    NSLog(@"call reloadUserWithUserData");
+    DLog(@"call reloadUserWithUserData");
     // reload the current user to update the associated accounts info
     [[YasoundDataProvider main] reloadUserWithUserData:info withTarget:self action:@selector(onUserReloaded:info:)];
 }

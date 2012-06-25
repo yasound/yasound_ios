@@ -59,9 +59,9 @@
   if (!_engine)
   {  
 #ifdef USE_DEV_SERVER
-      NSLog(@"TwitterOAuthSessionManager linked to DEV SERVER : id %@.", kOAuthConsumerKey);
+      DLog(@"TwitterOAuthSessionManager linked to DEV SERVER : id %@.", kOAuthConsumerKey);
 #else
-      NSLog(@"TwitterOAuthSessionManager linked to PRODUCTION SERVER : id %@.", kOAuthConsumerKey);
+      DLog(@"TwitterOAuthSessionManager linked to PRODUCTION SERVER : id %@.", kOAuthConsumerKey);
 #endif      
       
       
@@ -252,7 +252,7 @@
   NSRange begin = [data rangeOfString:@"oauth_token=" options:NSLiteralSearch range:range];
   if (begin.location == NSNotFound)
   {
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    DLog(@"TwitterOAuthSession Manager data parsing error!");
     return;
   }
   
@@ -260,7 +260,7 @@
   NSRange end = [data rangeOfString:@"&oauth_token_secret=" options:NSLiteralSearch range:range];
   if (end.location == NSNotFound)
   {
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    DLog(@"TwitterOAuthSession Manager data parsing error!");
     return;
   }
   
@@ -275,7 +275,7 @@
   end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
   if (end.location == NSNotFound)
   {
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    DLog(@"TwitterOAuthSession Manager data parsing error!");
     return;
   }
   
@@ -292,9 +292,9 @@
     
   [[NSUserDefaults standardUserDefaults] synchronize];
   
-  //  NSLog(@"oauth_token %@", oauth_token);
+  //  DLog(@"oauth_token %@", oauth_token);
   
-  //  NSLog(@"oauth_token_secret %@", oauth_token_secret);
+  //  DLog(@"oauth_token_secret %@", oauth_token_secret);
   
   
   //.....................................................................
@@ -305,7 +305,7 @@
   begin = [data rangeOfString:@"user_id=" options:NSLiteralSearch range:range];
   if (begin.location == NSNotFound)
   {
-    NSLog(@"TwitterOAuthSession warning : no userid has been parsed. May be normal.");
+    DLog(@"TwitterOAuthSession warning : no userid has been parsed. May be normal.");
     return;
   }
   
@@ -314,7 +314,7 @@
   if (end.location == NSNotFound)
   {
     assert(0);
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    DLog(@"TwitterOAuthSession Manager data parsing error!");
     return;
   }
   
@@ -337,7 +337,7 @@
   if (begin.location == NSNotFound)
   {
     assert(0);
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    DLog(@"TwitterOAuthSession Manager data parsing error!");
     return;
   }
   
@@ -362,7 +362,7 @@
 //implement these methods to store off the creds returned by Twitter
 - (void) storeCachedTwitterOAuthData: (NSString *)data forUsername: (NSString *) username
 {
-   NSLog(@"storeCachedTwitterOAuthData   data '%@'   username '%@'", data, username);
+   DLog(@"storeCachedTwitterOAuthData   data '%@'   username '%@'", data, username);
   
   if (!_isLoging)
     return;
@@ -412,8 +412,8 @@
     
     
   
-//  NSLog(@"username %@", __username);
-//  NSLog(@"data %@", data);
+//  DLog(@"username %@", __username);
+//  DLog(@"data %@", data);
   
   // warn the calling process that we have the credentials and that it can be considered itself as logged.
   if (_isLoging && (data != nil))
@@ -427,8 +427,8 @@
 
 - (void) twitterOAuthConnectionFailedWithData: (NSData *) data
 {
-    NSLog(@"twitterOAuthConnectionFailedWithData");
-    NSLog(@"data %@", data);
+    DLog(@"twitterOAuthConnectionFailedWithData");
+    DLog(@"data %@", data);
     
   [self.delegate sessionLoginFailed];
 }
@@ -438,7 +438,7 @@
 - (void)onTwitterCredentialsRetrieved:(NSString*)data
 {
     if (data == nil)
-        NSLog(@"onTwitterCredentialsRetrieved data nil!");
+        DLog(@"onTwitterCredentialsRetrieved data nil!");
     
     BOOL res = (data != nil);
     [self.delegate sessionDidLogin:res];
@@ -452,14 +452,14 @@
 
 - (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller authenticatedWithUsername: (NSString *) username
 {
-  NSLog(@"OAuthTwitterController::authenticatedWithUsername '%@'", username);
+  DLog(@"OAuthTwitterController::authenticatedWithUsername '%@'", username);
   _isLoging = NO;
   [self.delegate sessionDidLogin:YES];
 }
 
 - (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller
 {
-  NSLog(@"OAuthTwitterControllerFailed");
+  DLog(@"OAuthTwitterControllerFailed");
   _isLoging = NO;
   [self.delegate sessionLoginFailed];
 }
@@ -468,7 +468,7 @@
 {
   _isLoging = NO;
   [self.delegate sessionLoginCanceled];
-  NSLog(@"OAuthTwitterControllerCanceled");
+  DLog(@"OAuthTwitterControllerCanceled");
 }
 
 
@@ -479,8 +479,8 @@
 
 - (void)userInfoReceived:(NSArray*)userInfo forRequest:(NSString *)connectionIdentifier
 {
-  //    NSLog(@"\nuserInfoReceived\n---------------------\n");
-  //    NSLog(@"%@", userInfo);
+  //    DLog(@"\nuserInfoReceived\n---------------------\n");
+  //    DLog(@"%@", userInfo);
 
   bool isRequestFriends = [connectionIdentifier isEqualToString:_requestFriends];
   bool isRequestFollowers = [connectionIdentifier isEqualToString:_requestFollowers];
@@ -517,7 +517,7 @@
   {
     _requestPost = nil;
 
-    NSLog(@"statusesReceived");
+    DLog(@"statusesReceived");
     [self.delegate requestDidLoad:SRequestPostMessage data:nil];
   }
 }

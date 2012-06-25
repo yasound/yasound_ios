@@ -133,7 +133,7 @@
     
     NSString* title = NSLocalizedString(@"Yasound_share", nil);
     
-    NSLog(@"Share on facebook.");
+    DLog(@"Share on facebook.");
     [[YasoundSessionManager main] postMessageForFacebook:_textView.text title:title picture:self.pictureUrl link:fullLink target:self action:@selector(onPostMessageFinished:)];
     
     [ActivityAlertView showWithTitle:nil];
@@ -146,7 +146,7 @@
 
     [ActivityAlertView close];
 
-    NSLog(@"onPostMessageFinished received : finished %d", done);
+    DLog(@"onPostMessageFinished received : finished %d", done);
 
     if (!done)
     {

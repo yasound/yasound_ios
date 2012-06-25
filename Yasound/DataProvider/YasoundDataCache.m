@@ -164,7 +164,7 @@ static YasoundDataCache* _main = nil;
     
     if (radios == nil)
     {
-        NSLog(@"YasoundDataCache requestRadios : the server returned nil!");
+        DLog(@"YasoundDataCache requestRadios : the server returned nil!");
         [target performSelector:action withObject:nil withObject:info];
         return;
     }
@@ -206,7 +206,7 @@ static YasoundDataCache* _main = nil;
     [op release];
     
     // return results to pending client
-    //NSLog(@"YasoundDataCache requestRadios : return server's updated data");
+    //DLog(@"YasoundDataCache requestRadios : return server's updated data");
     [target performSelector:action withObject:radios withObject:info];
     
 }
@@ -237,7 +237,7 @@ static YasoundDataCache* _main = nil;
     
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
-    //NSLog(@"YasoundDataCache requestRadios : return local cached data");
+    //DLog(@"YasoundDataCache requestRadios : return local cached data");
     [target performSelector:selector withObject:data withObject:infoDico];
 }
 
@@ -250,7 +250,7 @@ static YasoundDataCache* _main = nil;
 //
 - (void)clearRadios:(NSString*)REQUEST
 {
-    NSLog(@"YasoundDataCache::clearRadios for ref '%@'", REQUEST);
+    DLog(@"YasoundDataCache::clearRadios for ref '%@'", REQUEST);
     [_cacheRadios removeObjectForKey:REQUEST];
 }
 
@@ -258,7 +258,7 @@ static YasoundDataCache* _main = nil;
 
 - (void)clearRadiosAll
 {
-    NSLog(@"YasoundDataCache::clearRadiosAll"); 
+    DLog(@"YasoundDataCache::clearRadiosAll"); 
     [_cacheRadios release];
     
     _cacheRadios = [[NSMutableDictionary alloc] init];
@@ -334,7 +334,7 @@ static YasoundDataCache* _main = nil;
     
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
-    //NSLog(@"YasoundDataCache requestCurrentSongForRadio : return local cached data"); // don't display it all the time, too much of it :)
+    //DLog(@"YasoundDataCache requestCurrentSongForRadio : return local cached data"); // don't display it all the time, too much of it :)
     [target performSelector:selector withObject:data withObject:infoDico];    
 }
 
@@ -353,7 +353,7 @@ static YasoundDataCache* _main = nil;
     // the radio may be empty
     if (song == nil)
     {
-        NSLog(@"YasoundDataCache requestCurrentSong : the server returned nil!");
+        DLog(@"YasoundDataCache requestCurrentSong : the server returned nil!");
         [target performSelector:action withObject:nil withObject:info];
         return;
     }
@@ -384,7 +384,7 @@ static YasoundDataCache* _main = nil;
     //    [_pendingRadios removeObjectAtIndex:0];
     
     // return results to pending client
-    //NSLog(@"YasoundDataCache requestRadios : return server's updated data");
+    //DLog(@"YasoundDataCache requestRadios : return server's updated data");
     [target performSelector:action withObject:song withObject:info];
     
     //    // process the next pending operation, if any
@@ -395,7 +395,7 @@ static YasoundDataCache* _main = nil;
 
 - (void)clearCurrentSongs
 {
-    NSLog(@"YasoundDataCache::clearCurrentSongs");
+    DLog(@"YasoundDataCache::clearCurrentSongs");
     [_cacheSongs release];
 
     _cacheSongs = [[NSMutableDictionary alloc] init];
@@ -466,7 +466,7 @@ static YasoundDataCache* _main = nil;
     
     // we got the cached data. Return to client, now.
     NSDictionary* infoDico = nil;
-    //NSLog(@"YasoundDataCache requestFriendsWithTarget : return local cached data");
+    //DLog(@"YasoundDataCache requestFriendsWithTarget : return local cached data");
     [target performSelector:selector withObject:data withObject:infoDico];    
 }
 
@@ -483,7 +483,7 @@ static YasoundDataCache* _main = nil;
 
     if (friends == nil)
     {
-        NSLog(@"YasoundDataCache requestFriendsWithTarget : the server returned nil!");
+        DLog(@"YasoundDataCache requestFriendsWithTarget : the server returned nil!");
         [target performSelector:action withObject:nil withObject:info];
         return;
     }
@@ -504,7 +504,7 @@ static YasoundDataCache* _main = nil;
     [op release];
     
     // return results to pending client
-    //NSLog(@"YasoundDataCache requestFriendsWithTarget : return server's updated data");
+    //DLog(@"YasoundDataCache requestFriendsWithTarget : return server's updated data");
     [target performSelector:action withObject:friends withObject:info];
 }
 
@@ -512,7 +512,7 @@ static YasoundDataCache* _main = nil;
 
 - (void)clearFriends
 {
-    NSLog(@"YasoundDataCache::clearFriends");
+    DLog(@"YasoundDataCache::clearFriends");
 
     [_cacheFriends release];
     _cacheFriends = [[NSMutableDictionary alloc] init];
@@ -661,7 +661,7 @@ static UIImage* gDummyImage = nil;
 {
     NSArray* descr = [JSONdescription JSONValue];
     
-    NSLog(@"YasoundDataCache::setMenu %@", descr);
+    DLog(@"YasoundDataCache::setMenu %@", descr);
 
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:descr forKey:@"menuDescription"];
@@ -680,7 +680,7 @@ static UIImage* gDummyImage = nil;
         
         for (NSDictionary* entry in entries)
         {
-            NSLog(@"%@", entry);
+            DLog(@"%@", entry);
             NSString* curId = [entry objectForKey:@"id"];
             
             if ([curId isEqualToString:entryId])
@@ -688,8 +688,8 @@ static UIImage* gDummyImage = nil;
         }
     }
     
-    NSLog(@"YasoundDataCache::menuEntry Error : could not find any entry for id '%@'", entryId);
-    NSLog(@"debug menu : %@", menu);
+    DLog(@"YasoundDataCache::menuEntry Error : could not find any entry for id '%@'", entryId);
+    DLog(@"debug menu : %@", menu);
     
     return nil;
 }
@@ -700,14 +700,14 @@ static UIImage* gDummyImage = nil;
     NSDictionary* params = [entry objectForKey:@"params"];
     if (params == nil)
     {
-        NSLog(@"YasoundDataCache::entryParameter : no params, can not get param '%@'", param);
+        DLog(@"YasoundDataCache::entryParameter : no params, can not get param '%@'", param);
         return nil;
     }
     
     NSString* result = [params objectForKey:param];
     if (result == nil)
     {
-        NSLog(@"YasoundDataCache::entryParameter : param '%@' is nil", param);
+        DLog(@"YasoundDataCache::entryParameter : param '%@' is nil", param);
         return nil;
     }
     

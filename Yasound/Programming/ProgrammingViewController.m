@@ -93,7 +93,7 @@
 
     [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
     
-    //NSLog(@"%d - %d", _nbReceivedData, _nbPlaylists);
+    //DLog(@"%d - %d", _nbReceivedData, _nbPlaylists);
     
     // PROFILE
     [[TimeProfile main] begin:TIMEPROFILE_DOWNLOAD];
@@ -125,7 +125,7 @@
         _nbPlaylists = playlists.count;
     
     
-    NSLog(@"received %d playlists", _nbPlaylists);
+    DLog(@"received %d playlists", _nbPlaylists);
     
     if (_nbPlaylists == 0)
     {
@@ -167,12 +167,12 @@
         [av show];
         [av release];  
 
-        NSLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
-        NSLog(@"%@", info);
+        DLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
+        DLog(@"%@", info);
     }
     
     
-    NSLog(@"received playlist nb %d : %d songs", _nbReceivedData, songs.count);
+    DLog(@"received playlist nb %d : %d songs", _nbReceivedData, songs.count);
     
 
 
@@ -220,7 +220,7 @@
     [[TimeProfile main] end:TIMEPROFILE_BUILD];
     [[TimeProfile main] logInterval:TIMEPROFILE_BUILD inMilliseconds:NO];
 
-    NSLog(@"%d matched songs", self.matchedSongs.count);
+    DLog(@"%d matched songs", self.matchedSongs.count);
     
     NSString* subtitle = nil;
     if (self.matchedSongs.count == 0)
@@ -445,8 +445,8 @@
 
     //LBDEBUG
 #ifdef _DEBUG
-    NSLog(@"songs.count %d", songs.count);
-    NSLog(@"indexPath.row %d", indexPath.row);
+    DLog(@"songs.count %d", songs.count);
+    DLog(@"indexPath.row %d", indexPath.row);
 #endif
     assert(songs.count > indexPath.row);
 
@@ -468,7 +468,7 @@
 
 - (void)onSongDeleteRequested:(UITableViewCell*)cell song:(Song*)song
 {
-    NSLog(@"onSongDeleteRequested for Song %@", song.name);   
+    DLog(@"onSongDeleteRequested for Song %@", song.name);   
     
     // request to server
     [[YasoundDataProvider main] deleteSong:song target:self action:@selector(onSongDeleted:info:) userData:cell];
@@ -479,15 +479,15 @@
 // server's callback
 - (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
 {
-    NSLog(@"onSongDeleted for Song %@", song.name);  
-    NSLog(@"info %@", info);
+    DLog(@"onSongDeleted for Song %@", song.name);  
+    DLog(@"info %@", info);
     
     BOOL success = NO;
     NSNumber* nbsuccess = [info objectForKey:@"success"];
     if (nbsuccess != nil)
         success = [nbsuccess boolValue];
     
-    NSLog(@"success %d", success);
+    DLog(@"success %d", success);
     
     UITableViewCell* cell = [info objectForKey:@"userData"];
     NSIndexPath* indexPath = [_tableView indexPathForCell:cell];

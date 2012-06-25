@@ -185,7 +185,7 @@
   NSError* jsonParsingError = nil;
   NSDictionary* info = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonParsingError];
     //LBDEBUG
-  NSLog(@"%@", info);
+  DLog(@"%@", info);
   
   NSString* userid = [info valueForKey:@"id_str"];
   NSString* userscreenname = [info valueForKey:@"screen_name"];
@@ -230,7 +230,7 @@
   
   NSError* jsonParsingError = nil;
   NSDictionary* info = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonParsingError];
-  NSLog(@"%@", info);
+  DLog(@"%@", info);
   
   NSMutableArray* data = [[NSMutableArray alloc] init];
   for (NSDictionary* user in info)
@@ -408,7 +408,7 @@
 
   if (data == nil)
   {
-      NSLog(@"no credentials recorded. can not create account.");
+      DLog(@"no credentials recorded. can not create account.");
       return;
   }
     
@@ -422,7 +422,7 @@
   NSRange begin = [data rangeOfString:@"oauth_token=" options:NSLiteralSearch range:range];
   if (begin.location == NSNotFound)
   {
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    DLog(@"TwitterOAuthSession Manager data parsing error!");
     return;
   }
   
@@ -430,7 +430,7 @@
   NSRange end = [data rangeOfString:@"&oauth_token_secret=" options:NSLiteralSearch range:range];
   if (end.location == NSNotFound)
   {
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    DLog(@"TwitterOAuthSession Manager data parsing error!");
     return;
   }
   
@@ -442,7 +442,7 @@
   end = [data rangeOfString:@"&" options:NSLiteralSearch range:range];
   if (end.location == NSNotFound)
   {
-    NSLog(@"TwitterOAuthSession Manager data parsing error!");
+    DLog(@"TwitterOAuthSession Manager data parsing error!");
     return;
   }
   
@@ -457,9 +457,9 @@
     assert (oauth_token_secret != nil);
     [SFHFKeychainUtils storeUsername:oauth_token andPassword:oauth_token_secret  forServiceName:BundleName updateExisting:YES error:nil];
     
-  //  NSLog(@"oauth_token %@", oauth_token);
+  //  DLog(@"oauth_token %@", oauth_token);
     
-  //  NSLog(@"oauth_token_secret %@", oauth_token_secret);
+  //  DLog(@"oauth_token_secret %@", oauth_token_secret);
   
   
   
@@ -530,8 +530,8 @@
 {
   self.account = account;
   
-  NSLog(@"selected accountDescription %@", account.accountDescription);
-  NSLog(@"selected username %@", account.username);
+  DLog(@"selected accountDescription %@", account.accountDescription);
+  DLog(@"selected username %@", account.username);
     
 
   // store this account identifier in order to load it automatically the next times
@@ -547,7 +547,7 @@
     // no. request reverse auth 
     if ((token == nil) || (tokenSecret == nil))
     {
-        NSLog(@"need to perform reverse auth.");
+        DLog(@"need to perform reverse auth.");
         [self performReverseAuth];
         return;
     }
@@ -627,9 +627,9 @@
 {
     NSHTTPURLResponse *urlResponse = (NSHTTPURLResponse *)response;
 
-    NSLog(@"reverse auth error!");
-    NSLog(@"[Step Two Request Error]: %@", [error localizedDescription]);
-    NSLog(@"[Step Two Request Error]: Response Code:%d \"%@\" ", [urlResponse statusCode], [NSHTTPURLResponse localizedStringForStatusCode:[urlResponse statusCode]]);
+    DLog(@"reverse auth error!");
+    DLog(@"[Step Two Request Error]: %@", [error localizedDescription]);
+    DLog(@"[Step Two Request Error]: Response Code:%d \"%@\" ", [urlResponse statusCode], [NSHTTPURLResponse localizedStringForStatusCode:[urlResponse statusCode]]);
     
     [self.delegate sessionDidLogin:NO];
 }
@@ -653,22 +653,22 @@
     if ([dict count] == RESPONSE_EXPECTED_SIZE) 
     {
         //[self showAlert:[NSString stringWithFormat:@"User: %@\nUser ID: %@", [dict objectForKey:TW_SCREEN_NAME], [dict objectForKey:TW_USER_ID]] title:@"Success!"];
-        // NSLog(@"The user's info for your server:\n%@", dict);
-        NSLog(@"reverse auth success!");
+        // DLog(@"The user's info for your server:\n%@", dict);
+        DLog(@"reverse auth success!");
 
     }
     else 
     {
         //[self showAlert:@"The response doesn't seem correct.  Please check the console." title:@"Hmm..."];
-        NSLog(@"reverse auth received answer but its size is not what we expected:");
-        NSLog(@"The user's info for your server:\n%@", dict);
+        DLog(@"reverse auth received answer but its size is not what we expected:");
+        DLog(@"The user's info for your server:\n%@", dict);
     }
     
     NSString* token = [dict objectForKey:@"oauth_token"];
     NSString* token_secret = [dict objectForKey:@"oauth_token_secret"];
     if (token == nil)
     {
-        NSLog(@"reverse auth error : dit not retrieved token!");
+        DLog(@"reverse auth error : dit not retrieved token!");
          [self.delegate sessionDidLogin:NO];
         return;
     }
@@ -682,7 +682,7 @@
     
     if (token_secret == nil)
     {
-        NSLog(@"reverse auth error : dit not retrieved token_secret!");
+        DLog(@"reverse auth error : dit not retrieved token_secret!");
         [self.delegate sessionDidLogin:NO];
         return;
     }

@@ -56,7 +56,7 @@
         // stylesheet
         _stylesheetDictionnary = [resources objectForKey:@"stylesheet"];
         if (_stylesheetDictionnary == nil)
-            NSLog(@"BundleFileManager Warning : could not find any stylesheet");
+            DLog(@"BundleFileManager Warning : could not find any stylesheet");
         
         _stylesheets = [[NSMutableDictionary alloc] init];
     
@@ -74,7 +74,7 @@
         // stylesheet
         _stylesheetDictionnary = [self objectForInfoDictionaryKey:@"stylesheet"];
         if (_stylesheetDictionnary == nil)
-            NSLog(@"BundleFileManager initWithPath Warning : could not find any stylesheet");
+            DLog(@"BundleFileManager initWithPath Warning : could not find any stylesheet");
         
         _stylesheets = [[NSMutableDictionary alloc] init];
     }
@@ -107,12 +107,12 @@ static BundleFileManager* _main = nil;
     // animsheet
     _main.animsheet = [resources objectForKey:@"animsheet"];
     if (_main.animsheet == nil)
-      NSLog(@"BundleFileManager Warning : could not find any animsheet");
+      DLog(@"BundleFileManager Warning : could not find any animsheet");
     
     //audiosheet
     _main.audiosheet = [resources objectForKey:@"audiosheet"];
     if (_main.audiosheet == nil)
-      NSLog(@"BundleFileManager Warning : could not find any audiosheet");
+      DLog(@"BundleFileManager Warning : could not find any audiosheet");
 #endif
   }
   
@@ -153,7 +153,7 @@ static BundleFileManager* _main = nil;
 //  
 //  if (path == nil)
 //  {
-//    NSLog(@"BundleFileManager error : pathForResource is nil for name '@'  type '%@'", name, ext);
+//    DLog(@"BundleFileManager error : pathForResource is nil for name '@'  type '%@'", name, ext);
 //    assert(0);
 //  }
 //  
@@ -167,7 +167,7 @@ static BundleFileManager* _main = nil;
 //  
 //  if (path == nil)
 //  {
-//    NSLog(@"BundleFileManager error : pathForResource is nil for name '%@'  type '%@' inDirectory '%@'", name, ext, subpath);
+//    DLog(@"BundleFileManager error : pathForResource is nil for name '%@'  type '%@' inDirectory '%@'", name, ext, subpath);
 //    assert(0);
 //  }
 //  
@@ -254,7 +254,7 @@ static BundleFileManager* _main = nil;
 //  UIImage* image = [UIImage imageWithContentsOfFile:imagePath];
 //  
 //  if (image == nil)
-//    NSLog(@"BundleFileManager::imageNamed error : could not find local file '%@'   from resource path '%@' ofType '%@'", imagePath, name, type);
+//    DLog(@"BundleFileManager::imageNamed error : could not find local file '%@'   from resource path '%@' ofType '%@'", imagePath, name, type);
 //  
 //  return image;
 //}
@@ -315,7 +315,7 @@ static BundleFileManager* _main = nil;
   NSDictionary* styleItem = [self.stylesheetDictionnary valueForKey:key];
   if (styleItem == nil)
   {
-    NSLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
+    DLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
     return nil;
   }
   
@@ -336,7 +336,7 @@ static BundleFileManager* _main = nil;
   NSDictionary* styleItem = [self.stylesheetDictionnary valueForKey:key];
   if (styleItem == nil)
   {
-    NSLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
+    DLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
     return nil;
   }
   
@@ -370,7 +370,7 @@ static BundleFileManager* _main = nil;
   NSArray* item = [self.animsheet valueForKey:key];
   if (item == nil)
   {
-    NSLog(@"BundleFileManager::animsheetForKey Error : could not find item for key '%@'", key);
+    DLog(@"BundleFileManager::animsheetForKey Error : could not find item for key '%@'", key);
     return nil;
   }
   
@@ -433,14 +433,14 @@ static BundleFileManager* _main = nil;
   // error handling
   if (objects == nil)
   {
-    NSLog(@"BundleFileManager::audiosheetForKey Error : could not find item for key '%@'", key);
+    DLog(@"BundleFileManager::audiosheetForKey Error : could not find item for key '%@'", key);
     assert(1);
     return nil;
   }
   
   if (index >= [objects count])
   {
-    NSLog(@"BundleFileManager::audiosheetForKey Error : given index [%d] is out of range [%d]", index, [objects count]);
+    DLog(@"BundleFileManager::audiosheetForKey Error : given index [%d] is out of range [%d]", index, [objects count]);
     assert(1);
     return nil;
   }
@@ -482,9 +482,9 @@ static BundleFileManager* _main = nil;
   if (anError != NULL) 
     *anError = [[[NSError alloc] initWithDomain:APP_DOMAINE code:NSURLErrorFileDoesNotExist userInfo:details] autorelease];
   
-  NSLog(@"ERROR :");
-  NSLog([details valueForKey:NSLocalizedDescriptionKey]);
-  NSLog(@"'%@'", [details valueForKey:NSFilePathErrorKey]);
+  DLog(@"ERROR :");
+  DLog([details valueForKey:NSLocalizedDescriptionKey]);
+  DLog(@"'%@'", [details valueForKey:NSFilePathErrorKey]);
   
   return nil;
 }

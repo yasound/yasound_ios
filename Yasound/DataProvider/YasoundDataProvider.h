@@ -270,14 +270,14 @@ taskStatus stringToStatus(NSString* str);
 //{
 //    if (!success)
 //    {
-//        NSLog(@"get user notifications FAILED");
+//        DLog(@"get user notifications FAILED");
 //        return;
 //    }
 //    NSArray* notifs = [req responseNSObjectsWithClass:[UserNotification class]];
 //    for (UserNotification* n in notifs) 
-//        NSLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
+//        DLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
 //    NSInteger count = notifs.count;
-//    NSLog(@"%d notifications", count);
+//    DLog(@"%d notifications", count);
 //    if (count > 0)
 //    {
 //        UserNotification* n = (UserNotification*)[notifs objectAtIndex:0];
@@ -290,13 +290,13 @@ taskStatus stringToStatus(NSString* str);
 //{
 //    if (!success)
 //    {
-//        NSLog(@"update notification FAILED");
+//        DLog(@"update notification FAILED");
 //        return;
 //    }
 //    NSString* resp = [req responseString];
-//    NSLog(@"resp: %@", resp);
+//    DLog(@"resp: %@", resp);
 //    UserNotification* n = (UserNotification*)[req responseNSObjectWithClass:[UserNotification class]];
-//    NSLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
+//    DLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
 //    
 //    NSString* notifId = n._id;
 //    if (notifId)
@@ -307,11 +307,11 @@ taskStatus stringToStatus(NSString* str);
 //{
 //    if (!success)
 //    {
-//        NSLog(@"get notification FAILED");
+//        DLog(@"get notification FAILED");
 //        return;
 //    }
 //    UserNotification* n = (UserNotification*)[req responseNSObjectWithClass:[UserNotification class]];
-//    NSLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
+//    DLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
 //    
 //    if (n)
 //        [self deleteUserNotification:n target:self action:@selector(deletedNotification:success:)];
@@ -321,10 +321,10 @@ taskStatus stringToStatus(NSString* str);
 //{
 //    if (!success)
 //    {
-//        NSLog(@"delete notification FAILED");
+//        DLog(@"delete notification FAILED");
 //        return;
 //    }
-//    NSLog(@"delete notification OK");
+//    DLog(@"delete notification OK");
 //}
 
 

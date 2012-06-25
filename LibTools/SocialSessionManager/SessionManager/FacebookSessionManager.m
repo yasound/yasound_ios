@@ -43,7 +43,7 @@ static FacebookSessionManager* _facebook = nil;
   {
     _facebook = [[FacebookSessionManager alloc] init];
       
-      NSLog(@"FacebookSessionManager init, using %@ , FB_App_Id %@", Yasound_Server_Definition, FB_App_Id);
+      DLog(@"FacebookSessionManager init, using %@ , FB_App_Id %@", Yasound_Server_Definition, FB_App_Id);
       
   }
   
@@ -112,13 +112,13 @@ static FacebookSessionManager* _facebook = nil;
   
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-   // NSLog(@"DEBUG '%@'", [defaults objectForKey:@"FBExpirationDateKey"]);
+   // DLog(@"DEBUG '%@'", [defaults objectForKey:@"FBExpirationDateKey"]);
     
   if ([defaults objectForKey:@"FBAccessTokenKey"] && [defaults objectForKey:@"FBExpirationDateKey"]) 
   {
     _facebookConnect.accessToken = [defaults objectForKey:@"FBAccessTokenKey"];
     _facebookConnect.expirationDate = [defaults objectForKey:@"FBExpirationDateKey"];
-//    NSLog(@"UserDefault FB token : expiration date %@", _facebookConnect.expirationDate);
+//    DLog(@"UserDefault FB token : expiration date %@", _facebookConnect.expirationDate);
   }
   
   if (![_facebookConnect isSessionValid]) 
@@ -127,7 +127,7 @@ static FacebookSessionManager* _facebook = nil;
   }
   else
   {
-//    NSLog(@"FB Session is still valid.");  
+//    DLog(@"FB Session is still valid.");  
     [self.delegate sessionDidLogin:YES];    
   }
 }
@@ -188,7 +188,7 @@ static FacebookSessionManager* _facebook = nil;
   if (!_facebookConnect)
     return NO;
 
-//  NSLog(@"POST MESSAGE : %@", message);
+//  DLog(@"POST MESSAGE : %@", message);
   
   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
   
@@ -234,7 +234,7 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)fbDidLogin 
 {
-    NSLog(@"fbDidLogin");
+    DLog(@"fbDidLogin");
     
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   [defaults setObject:[_facebookConnect accessToken] forKey:@"FBAccessTokenKey"];
@@ -246,14 +246,14 @@ static FacebookSessionManager* _facebook = nil;
 
 - (void)fbDidNotLogin:(BOOL)cancelled
 {
-    NSLog(@"fbDidNotLogin");
+    DLog(@"fbDidNotLogin");
 
     [self.delegate sessionLoginCanceled];  
 }
 
 - (void)fbDidLogout
 {
-    NSLog(@"fbDidLogout");
+    DLog(@"fbDidLogout");
 
     if (_logout)
     {
@@ -271,12 +271,12 @@ static FacebookSessionManager* _facebook = nil;
 
 //- (void)requestLoading:(FBRequest *)request
 //{
-//  NSLog(@"requestLoading");
+//  DLog(@"requestLoading");
 //}
 //
 //- (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response
 //{
-//  NSLog(@"didReceiveResponse");
+//  DLog(@"didReceiveResponse");
 //}
 
 
@@ -284,8 +284,8 @@ static FacebookSessionManager* _facebook = nil;
 {
   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
-  NSLog(@"didFailWithError : %@", [error localizedDescription]);
-  NSLog(@"Err details: %@", [error description]);
+  DLog(@"didFailWithError : %@", [error localizedDescription]);
+  DLog(@"Err details: %@", [error description]);
   
   SessionRequestType requestType;
   if (request == _requestMe)
@@ -315,7 +315,7 @@ static FacebookSessionManager* _facebook = nil;
 - (void)request:(FBRequest *)request didLoad:(id)result
 {
   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-  //NSLog(@"Parsed Response: %@", result);
+  //DLog(@"Parsed Response: %@", result);
   
   if (request == _requestMe)
   {
@@ -333,7 +333,7 @@ static FacebookSessionManager* _facebook = nil;
       [user setValue:[dico valueForKey:@"name"] forKey:DATA_FIELD_NAME];
       
       NSString* email = [dico valueForKey:@"email"];
-      NSLog(@"facebook email '%@'", email);
+      DLog(@"facebook email '%@'", email);
       [user setValue:email forKey:DATA_FIELD_EMAIL];
     
     NSArray* data = [NSArray arrayWithObjects:user, nil];

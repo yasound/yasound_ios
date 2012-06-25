@@ -177,7 +177,7 @@
     [[YasoundSessionManager main] reloadUserData:user];
     
     
-    NSLog(@"login returned : %@ %@", user, info);
+    DLog(@"login returned : %@ %@", user, info);
     
     
     if (user == nil)

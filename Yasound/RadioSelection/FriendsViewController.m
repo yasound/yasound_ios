@@ -135,7 +135,7 @@
     NSError* error = [info valueForKey:@"error"];
     if (error)
     {
-        NSLog(@"can't get friends: %@", error.domain);
+        DLog(@"can't get friends: %@", error.domain);
         return;
     }
     
@@ -448,7 +448,7 @@
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
 {
-  NSLog(@"action sheet button %d", buttonIndex);
+  DLog(@"action sheet button %d", buttonIndex);
   Radio* currentRadio = nil;
   Radio* ownRadio = nil;
   if (_selectedFriend.current_radio)

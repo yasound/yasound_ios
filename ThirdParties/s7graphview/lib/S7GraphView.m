@@ -412,7 +412,7 @@
 		if (_drawAxisX) {
 			
 			id valueToFormat = [xValues objectAtIndex:index];
-            //NSLog(@"debug %@", valueToFormat);
+            //DLog(@"debug %@", valueToFormat);
 			NSString *valueString;
 			
 			if (_xValuesFormatter) {

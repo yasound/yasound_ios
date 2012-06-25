@@ -270,7 +270,7 @@ typedef enum
         if ((_subscribers == nil) || (_subscribers.count <= indexPath.row))
         {
             assert(0);
-            NSLog(@"error with subscribers array.");
+            DLog(@"error with subscribers array.");
         }
         else
             user = [_subscribers objectAtIndex:indexPath.row];

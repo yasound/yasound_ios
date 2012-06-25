@@ -93,7 +93,7 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch 
 {
     
-    NSLog(@"%@", touch.view.class);
+    DLog(@"%@", touch.view.class);
     
     if ([touch.view isKindOfClass:[UIControl class]]) {
         // we touched a button, slider, or other UIControl
@@ -250,7 +250,7 @@
         // TAG ACTIVITY ALERT
         [ActivityAlertView showWithTitle:NSLocalizedString(@"LoginView_alert_title", nil)];        
     
-        NSLog(@"Signup email %@   pword %@   username %@", email, pword, username);
+        DLog(@"Signup email %@   pword %@   username %@", email, pword, username);
     
         //signup
         [[YasoundDataProvider main] signup:email password:pword username:username target:self action:@selector(requestDidReturn:info:)];
@@ -267,7 +267,7 @@
 {
     [ActivityAlertView close];
     
-    NSLog(@"login returned : %@ %@", user, info);
+    DLog(@"login returned : %@ %@", user, info);
     
     if (user == nil)
     {

@@ -158,10 +158,10 @@ static YasoundDataProvider* _main = nil;
     NSString* baseUrl;
 #if USE_YASOUND_LOCAL_SERVER
     baseUrl = LOCAL_URL;
-    NSLog(@"use LOCAL SERVER '%@'", baseUrl);
+    DLog(@"use LOCAL SERVER '%@'", baseUrl);
 #else
       baseUrl = APPDELEGATE.serverURL;
-    NSLog(@"use PROD SERVER '%@'", baseUrl);
+    DLog(@"use PROD SERVER '%@'", baseUrl);
 #endif
     _communicator = [[Communicator alloc] initWithBaseURL:baseUrl];
     _communicator.appCookie = self.appCookie;
@@ -340,7 +340,7 @@ static YasoundDataProvider* _main = nil;
   if (!radios || [radios count] == 0)
   {
       NSString* str = [NSString stringWithFormat:@"no radio for user '%@'", _user.username];
-      NSLog(@"%@", str);
+      DLog(@"%@", str);
       
     NSError* err = [NSError errorWithDomain:str code:1 userInfo:nil];
     [finalInfo setValue:err forKey:@"error"];
@@ -419,7 +419,7 @@ static YasoundDataProvider* _main = nil;
     error = [NSError errorWithDomain:@"can't create user" code:1 userInfo:nil];
   if (error)
   {
-    NSLog(@"signup error: %@", error.domain);    
+    DLog(@"signup error: %@", error.domain);    
     if (target && selector)
     {
       NSDictionary* finalInfo = [NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil];
@@ -444,7 +444,7 @@ static YasoundDataProvider* _main = nil;
   NSError* error = [info valueForKey:@"error"];
   if (error)
   {
-    NSLog(@"login error: %@", error.domain);    
+    DLog(@"login error: %@", error.domain);    
     [finalInfo setValue:error forKey:@"error"];
   }
   
@@ -654,7 +654,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)receiveYasoundAssociation:(NSString*)response info:(NSDictionary*)info
 {
-    NSLog(@"YasoundDataProvider receiveYasoundAssociation : info %@", info);
+    DLog(@"YasoundDataProvider receiveYasoundAssociation : info %@", info);
     
     NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
     
@@ -676,7 +676,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)receiveFacebookAssociation:(NSString*)response info:(NSDictionary*)info
 {
-    NSLog(@"YasoundDataProvider receiveFacebookAssociation : info %@  %@", info, response);
+    DLog(@"YasoundDataProvider receiveFacebookAssociation : info %@  %@", info, response);
     
     NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
     
@@ -698,7 +698,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)receiveTwitterAssociation:(NSString*)response info:(NSDictionary*)info
 {
-    NSLog(@"YasoundDataProvider receiveTwitterAssociation : info %@", info);
+    DLog(@"YasoundDataProvider receiveTwitterAssociation : info %@", info);
     
     NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
     
@@ -720,7 +720,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)receiveDissociation:(id)obj info:(NSDictionary*)info
 {
-    NSLog(@"YasoundDataProvider receiveDissociation : info %@", info);
+    DLog(@"YasoundDataProvider receiveDissociation : info %@", info);
     
     NSMutableDictionary* finalInfo = [[NSMutableDictionary alloc] initWithDictionary:info];
     
@@ -911,7 +911,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
 {
-    NSLog(@"YasoundDataProvider::radiosWithUrl '%@'", url);
+    DLog(@"YasoundDataProvider::radiosWithUrl '%@'", url);
     
     Auth* auth = self.apiKeyAuth;
     NSMutableArray* params = [NSMutableArray array];
@@ -997,9 +997,9 @@ static YasoundDataProvider* _main = nil;
 
 - (void)setPicture:(UIImage*)img forRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
-  NSLog(@"img %f, %f", img.size.width, img.size.height);
+  DLog(@"img %f, %f", img.size.width, img.size.height);
   UIImage* resizedImg = [self resizeImage:img];
-  NSLog(@"resized img %f, %f", resizedImg.size.width, resizedImg.size.height);
+  DLog(@"resized img %f, %f", resizedImg.size.width, resizedImg.size.height);
   Auth* auth = self.apiKeyAuth;
   NSString* url = [NSString stringWithFormat:@"api/v1/radio/%@/picture", radio.id];
   [_communicator postData:UIImagePNGRepresentation(resizedImg) withKey:@"picture" toURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
@@ -1620,12 +1620,12 @@ static YasoundDataProvider* _main = nil;
     
 
     //LBDEBUG
-    NSLog(@"edit url '%@'", url);
+    DLog(@"edit url '%@'", url);
     if ([url isEqualToString:@"api/v1/edit_song/0"])
     {
-        NSLog(@"OK");
-        NSLog(@"song.id  0x%p", song.id);
-        NSLog(@"%d", [song.id integerValue]);
+        DLog(@"OK");
+        DLog(@"song.id  0x%p", song.id);
+        DLog(@"%d", [song.id integerValue]);
         assert(0);
     }
     //////////////
@@ -2055,7 +2055,7 @@ static YasoundDataProvider* _main = nil;
 
 taskStatus stringToStatus(NSString* str)
 {
-  NSLog(@"Task status: %@", str);
+  DLog(@"Task status: %@", str);
   taskStatus status = eTaskStatusNone;
   if ([str isEqualToString:@"PENDING"])
     status = eTaskPending;
