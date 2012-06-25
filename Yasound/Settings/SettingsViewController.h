@@ -41,10 +41,6 @@
     IBOutlet WebImageView* _settingsImageImage;
     BOOL _settingsImageChanged;
     
-    IBOutlet UITableViewCell* _settingsThemeCell;
-    IBOutlet UILabel* _settingsThemeTitle;
-    IBOutlet UIImageView* _settingsThemeImage;
-    
     NSString* _keywords;
 
 }

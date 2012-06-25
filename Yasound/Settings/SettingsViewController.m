@@ -32,9 +32,6 @@
 #define SECTION_IMAGE 1
 #define ROW_IMAGE 0
 
-//#define SECTION_THEME 2
-//#define ROW_THEME 0
-
 #define SECTION_ACCOUNTS 2
 #define SECTION_ACCOUNTS_NB_ROWS 3
 #define ROW_ACCOUNTS_FACEBOOK 0
@@ -141,18 +138,7 @@
     // set radio image
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:_myRadio.picture];
     if (imageURL != nil)
-        [_settingsImageImage setUrl:imageURL];
-    
-    // theme 
-    NSString* themeId = @"theme_default";
-    
-    Theme* theme = [[Theme alloc] initWithThemeId:themeId];
-    _settingsThemeTitle.text = NSLocalizedString(themeId, nil);
-    [_settingsThemeImage setImage:theme.icon];
-    [theme release];
-    
-    [_settingsThemeImage.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
-    [_settingsThemeImage.layer setBorderWidth: 1];    
+        [_settingsImageImage setUrl:imageURL];    
     
 }
 
@@ -234,9 +220,6 @@
     if (section == SECTION_IMAGE)
         return 1;
 
-//    if (section == SECTION_THEME)
-//        return 1;
-
     if (section == SECTION_ACCOUNTS)
         return SECTION_ACCOUNTS_NB_ROWS;
 
@@ -278,9 +261,6 @@
     else if (section == SECTION_IMAGE)
         title = NSLocalizedString(@"SettingsView_section_image", nil);
     
-//    else if (section == SECTION_THEME)
-//        title = NSLocalizedString(@"SettingsView_section_theme", nil);
-
     else if (section == SECTION_ACCOUNTS)
         title = NSLocalizedString(@"SettingsView_section_accounts", nil);
 
@@ -321,9 +301,6 @@
     
     else if (indexPath.section == SECTION_IMAGE)
         nbRows =  1;
-    
-//    else if (indexPath.section == SECTION_THEME)
-//        nbRows =  1;
     
     else if (indexPath.section == SECTION_ACCOUNTS)
         nbRows =  SECTION_ACCOUNTS_NB_ROWS;
@@ -380,9 +357,6 @@
     if ((indexPath.section == SECTION_IMAGE) && (indexPath.row == ROW_IMAGE))
         return _settingsImageCell;
     
-//    if ((indexPath.section == SECTION_THEME) && (indexPath.row == ROW_THEME))
-//        return _settingsThemeCell;
-
     
     static NSString* CellIdentifier = @"Cell";
     
@@ -424,22 +398,16 @@
         {
             cell.textLabel.text = @"Facebook";  
             cell.detailTextLabel.text = @"";
-//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsFacebook" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            [cell.imageView setImage:[sheet image]];
         }
         else if (indexPath.row == ROW_ACCOUNTS_TWITTER)
         {
             cell.textLabel.text = @"Twitter";
             cell.detailTextLabel.text = @"";
-//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsTwitter" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            [cell.imageView setImage:[sheet image]];
         }
         else if (indexPath.row == ROW_ACCOUNTS_YASOUND)
         {
             cell.textLabel.text = @"Yasound";
             cell.detailTextLabel.text = @"";
-//            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"IconAccountsYasound" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            [cell.imageView setImage:[sheet image]];
         }
     }
     

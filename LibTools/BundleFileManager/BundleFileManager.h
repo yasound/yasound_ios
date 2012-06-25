@@ -46,7 +46,8 @@
 
 + (BundleFileManager*) main;
 
-- (id)initWithPath:(NSString *)path;
+- (id)initWithStylesheet:(NSDictionary*)stylesheet;
+- (id)initWithBundlePath:(NSString *)path;
 
 
 //- (void)staticOptimInit;

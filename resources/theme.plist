@@ -33,8 +33,6 @@
 			<string>btnMenuUp</string>
 			<key>highlighted</key>
 			<string>btnMenuDown</string>
-			<key>path</key>
-			<string>images/Header/Buttons</string>
 			<key>type</key>
 			<string>png</string>
 		</dict>
@@ -48,8 +46,6 @@
 			<string>Header</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header</string>
 		</dict>
 		<key>ProfileRadioPhoto</key>
 		<dict>
@@ -61,8 +57,6 @@
 			<string>Header</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header</string>
 		</dict>
 		<key>HeaderAvatar</key>
 		<dict>
@@ -85,8 +79,6 @@
 			<string>AvatarMask</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header</string>
 		</dict>
 		<key>HeaderTitle</key>
 		<dict>
@@ -122,8 +114,6 @@
 			<string>HeadSet</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header</string>
 		</dict>
 		<key>HeaderLikes</key>
 		<dict>
@@ -281,8 +271,6 @@
 			<string>btnPauseDown</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header/Buttons</string>
 		</dict>
 		<key>CellModerIconSpam</key>
 		<dict>
@@ -296,8 +284,6 @@
 			<string>iconModerSpamHighlighted</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Wall</string>
 		</dict>
 		<key>CellModerIconKick</key>
 		<dict>
@@ -311,8 +297,6 @@
 			<string>iconModerKickHighlighted</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Wall</string>
 		</dict>
 		<key>CellModerIconTrash</key>
 		<dict>
@@ -326,8 +310,6 @@
 			<string>iconModerTrashHilighted</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Wall</string>
 		</dict>
 		<key>CellModerShadowTop</key>
 		<dict>
@@ -339,8 +321,6 @@
 			<string>viewModerShadowTop</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Wall</string>
 		</dict>
 		<key>CellModerShadowBottom</key>
 		<dict>
@@ -352,8 +332,6 @@
 			<string>viewModerShadowBottom</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Wall</string>
 		</dict>
 		<key>CellModerShadowLeft</key>
 		<dict>
@@ -365,8 +343,6 @@
 			<string>viewModerShadowLeft</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Wall</string>
 		</dict>
 		<key>NowPlayingBar</key>
 		<dict>
@@ -378,8 +354,6 @@
 			<string>NowPlayingBar</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header/NowPlaying</string>
 		</dict>
 		<key>NowPlayingBarImage</key>
 		<dict>
@@ -402,8 +376,6 @@
 			<string>TrackMask</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header/NowPlaying</string>
 		</dict>
 		<key>NowPlayingBarMaskHighlighted</key>
 		<dict>
@@ -415,8 +387,6 @@
 			<string>TrackMaskHighlighted</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header/NowPlaying</string>
 		</dict>
 		<key>NowPlayingBarImageDummy</key>
 		<dict>
@@ -428,8 +398,6 @@
 			<string>TrackImageDummy</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header/NowPlaying</string>
 		</dict>
 		<key>NowPlayingBarInfo</key>
 		<dict>
@@ -505,8 +473,6 @@
 			<string>MessageBar</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/MessageBar</string>
 		</dict>
 		<key>RadioViewMessageBar</key>
 		<dict>
@@ -564,8 +530,6 @@
 			<string>WallAvatarMask</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Wall</string>
 			<key>x</key>
 			<integer>7</integer>
 			<key>y</key>
@@ -699,8 +663,6 @@
 			<string>MessageSeparator</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/</string>
 		</dict>
 		<key>SongCellBackground</key>
 		<dict>
@@ -712,8 +674,6 @@
 			<string>TrackBackground</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/</string>
 		</dict>
 		<key>SongCellDate</key>
 		<dict>
@@ -765,8 +725,6 @@
 			<string>TrackBackground</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/</string>
 		</dict>
 		<key>LikeCellPicto</key>
 		<dict>
@@ -778,8 +736,6 @@
 			<string>Like</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Wall</string>
 		</dict>
 		<key>MessageCellBackground</key>
 		<dict>
@@ -791,8 +747,6 @@
 			<string>MessageEventBackground</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Wall</string>
 		</dict>
 		<key>LikeCellMessage</key>
 		<dict>
@@ -846,8 +800,6 @@
 			<string>StatusBar</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/StatusBar</string>
 		</dict>
 		<key>StatusBarButtonOff</key>
 		<dict>
@@ -859,8 +811,6 @@
 			<string>StatusArrowUp</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/StatusBar</string>
 		</dict>
 		<key>StatusBarButtonOn</key>
 		<dict>
@@ -872,8 +822,6 @@
 			<string>StatusArrowDown</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/StatusBar</string>
 		</dict>
 		<key>StatusBarInteractiveView</key>
 		<dict>
@@ -960,8 +908,6 @@
 			<string>ExtraLayer</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images</string>
 			<key>alpha</key>
 			<real>0.65</real>
 		</dict>
@@ -977,8 +923,6 @@
 			<string>btnShareDown</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header/Buttons</string>
 		</dict>
 		<key>TrackInteractionButtonLike</key>
 		<dict>
@@ -992,8 +936,6 @@
 			<string>btnLikeDown</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header/Buttons</string>
 		</dict>
 		<key>TrackInteractionButtonAdd</key>
 		<dict>
@@ -1005,8 +947,6 @@
 			<string>btnAdd</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Header/Buttons</string>
 		</dict>
 		<key>TrackInteractionButtonBuy</key>
 		<dict>
@@ -1056,8 +996,6 @@
 			<string>WallBackground</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Wall</string>
 		</dict>
 		<key>MenuBackground</key>
 		<dict>
@@ -1069,8 +1007,6 @@
 			<string>MenuBackground</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Menu</string>
 		</dict>
 		<key>MenuSection</key>
 		<dict>
@@ -1082,8 +1018,6 @@
 			<string>MenuSection</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Menu</string>
 		</dict>
 		<key>MenuViewCell_icon</key>
 		<dict>
@@ -1128,8 +1062,6 @@
 			<string>StyleSelectionBar</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/TableView</string>
 		</dict>
 		<key>TableViewDisclosure</key>
 		<dict>
@@ -1143,8 +1075,6 @@
 			<string>TableViewDisclosureHighlighted</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/TableView</string>
 		</dict>
 		<key>MenuSectionTitle</key>
 		<dict>
@@ -1178,8 +1108,6 @@
 			<string>MenuRowFirst</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Menu</string>
 		</dict>
 		<key>MenuRowFirstSelected</key>
 		<dict>
@@ -1191,8 +1119,6 @@
 			<string>MenuRowFirstSelected</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Menu</string>
 		</dict>
 		<key>MenuRowInter</key>
 		<dict>
@@ -1204,8 +1130,6 @@
 			<string>MenuRowInter</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Menu</string>
 		</dict>
 		<key>MenuRowInterSelected</key>
 		<dict>
@@ -1217,8 +1141,6 @@
 			<string>MenuRowInterSelected</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Menu</string>
 		</dict>
 		<key>MenuRowLast</key>
 		<dict>
@@ -1230,8 +1152,6 @@
 			<string>MenuRowLast</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Menu</string>
 		</dict>
 		<key>MenuRowLastSelected</key>
 		<dict>
@@ -1243,8 +1163,6 @@
 			<string>MenuRowLastSelected</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Menu</string>
 		</dict>
 		<key>MenuRowSingle</key>
 		<dict>
@@ -1256,8 +1174,6 @@
 			<string>MenuRowSingle</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Menu</string>
 		</dict>
 		<key>MenuRowSingleSelected</key>
 		<dict>
@@ -1269,8 +1185,6 @@
 			<string>MenuRowSingleSelected</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Menu</string>
 		</dict>
 		<key>IconMyRadio</key>
 		<dict>
@@ -1278,8 +1192,6 @@
 			<string>IconMyRadio</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconLeaderboard</key>
 		<dict>
@@ -1287,8 +1199,6 @@
 			<string>IconLeaderboard</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconMePlaylists</key>
 		<dict>
@@ -1296,8 +1206,6 @@
 			<string>IconMePlaylists</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconMeSettings</key>
 		<dict>
@@ -1305,8 +1213,6 @@
 			<string>IconMeSettings</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconMeNotifications</key>
 		<dict>
@@ -1314,8 +1220,6 @@
 			<string>IconMeNotifications</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconMeStats</key>
 		<dict>
@@ -1323,8 +1227,6 @@
 			<string>IconMeStats</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconMeNotifs</key>
 		<dict>
@@ -1332,8 +1234,6 @@
 			<string>IconMeNotifs</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconAccountsFacebook</key>
 		<dict>
@@ -1341,8 +1241,6 @@
 			<string>IconAccountsFacebook</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconAccountsTwitter</key>
 		<dict>
@@ -1350,8 +1248,6 @@
 			<string>IconAccountsTwitter</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconAccountsYasound</key>
 		<dict>
@@ -1359,8 +1255,6 @@
 			<string>IconAccountsYasound</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconMiscLegal</key>
 		<dict>
@@ -1368,8 +1262,6 @@
 			<string>IconMiscLegal</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconMiscLogout</key>
 		<dict>
@@ -1377,8 +1269,6 @@
 			<string>IconMiscLogout</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconRadiosFavorites</key>
 		<dict>
@@ -1386,8 +1276,6 @@
 			<string>IconRadiosFavorites</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconRadiosFriends</key>
 		<dict>
@@ -1395,8 +1283,6 @@
 			<string>IconRadiosFriends</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconRadiosSearch</key>
 		<dict>
@@ -1404,8 +1290,6 @@
 			<string>IconRadiosSearch</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconRadiosSelection</key>
 		<dict>
@@ -1413,8 +1297,6 @@
 			<string>IconRadiosSelection</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconStatsListeners</key>
 		<dict>
@@ -1422,8 +1304,6 @@
 			<string>IconStatsListeners</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>IconStatsSubscribers</key>
 		<dict>
@@ -1431,8 +1311,6 @@
 			<string>IconStatsSubscribers</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 		</dict>
 		<key>StatsView_LeaderBoard_StickerMyRadio</key>
 		<dict>
@@ -1446,8 +1324,6 @@
 			<integer>20</integer>
 			<key>name</key>
 			<string>IconMyRadio</string>
-			<key>path</key>
-			<string>images/Icons</string>
 			<key>type</key>
 			<string>png</string>
 		</dict>
@@ -1529,8 +1405,6 @@
 			<integer>6</integer>
 			<key>name</key>
 			<string>StatsFavoritesIcon</string>
-			<key>path</key>
-			<string>images/Stats</string>
 			<key>type</key>
 			<string>png</string>
 		</dict>
@@ -1688,8 +1562,6 @@
 			<string>CellButtonAddDisabled</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Programming</string>
 		</dict>
 		<key>SongUpload_progressCompletedLabel</key>
 		<dict>
@@ -2018,8 +1890,6 @@
 			<string>IconNotifUnread</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 			<key>x</key>
 			<integer>10</integer>
 			<key>y</key>
@@ -2031,8 +1901,6 @@
 			<string>IconNotifRead</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 			<key>x</key>
 			<integer>10</integer>
 			<key>y</key>
@@ -2044,8 +1912,6 @@
 			<string>UnreadNotifBadge1</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 			<key>x</key>
 			<integer>223</integer>
 			<key>y</key>
@@ -2057,8 +1923,6 @@
 			<string>UnreadNotifBadge2</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 			<key>x</key>
 			<integer>222</integer>
 			<key>y</key>
@@ -2070,8 +1934,6 @@
 			<string>UnreadNotifBadge3</string>
 			<key>type</key>
 			<string>png</string>
-			<key>path</key>
-			<string>images/Icons</string>
 			<key>x</key>
 			<integer>220</integer>
 			<key>y</key>

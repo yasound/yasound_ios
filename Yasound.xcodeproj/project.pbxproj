@@ -166,7 +166,6 @@
 		40B4099D152EFC630050D334 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		40B4099E152EFC630050D334 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40B409A0152EFC630050D334 /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
-		40B409A1152EFC630050D334 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		40B409A2152EFC630050D334 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		40B409A3152EFC630050D334 /* InteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304FD14C0248100F39374 /* InteractiveView.m */; };
 		40B409A4152EFC630050D334 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
@@ -417,7 +416,6 @@
 		40D53BA01554280F001EB0C5 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		40D53BA11554280F001EB0C5 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40D53BA31554280F001EB0C5 /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
-		40D53BA41554280F001EB0C5 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		40D53BA51554280F001EB0C5 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		40D53BA61554280F001EB0C5 /* InteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304FD14C0248100F39374 /* InteractiveView.m */; };
 		40D53BA71554280F001EB0C5 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
@@ -803,7 +801,6 @@
 		BC3FA6B314E93B660055AB4A /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		BC3FA6B414E93B660055AB4A /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		BC3FA6B614E93B660055AB4A /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
-		BC3FA6B714E93B660055AB4A /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BC3FA6B814E93B660055AB4A /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		BC3FA6B914E93B660055AB4A /* InteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304FD14C0248100F39374 /* InteractiveView.m */; };
 		BC3FA6BA14E93B660055AB4A /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
@@ -1216,7 +1213,6 @@
 		BC56F4BF152486AF005D1B40 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		BC56F4C0152486AF005D1B40 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		BC56F4C2152486AF005D1B40 /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
-		BC56F4C3152486AF005D1B40 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BC56F4C4152486AF005D1B40 /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		BC56F4C5152486AF005D1B40 /* InteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304FD14C0248100F39374 /* InteractiveView.m */; };
 		BC56F4C6152486AF005D1B40 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
@@ -1543,7 +1539,6 @@
 		BC93CD2C14CF3F7A007C723F /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		BC93CD2D14CF3F7A007C723F /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		BC93CD2F14CF3F7A007C723F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
-		BC93CD3014CF3F7A007C723F /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BC93CD3114CF3F7A007C723F /* Tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304E714BF030200F39374 /* Tutorial.m */; };
 		BC93CD3214CF3F7A007C723F /* InteractiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0304FD14C0248100F39374 /* InteractiveView.m */; };
 		BC93CD3314CF3F7A007C723F /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
@@ -1691,9 +1686,6 @@
 		BCB0EF291524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
 		BCB0EF2A1524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
 		BCB0EF2B1524755F00290383 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
-		BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
-		BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
-		BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB178B314BEE90100A3EDE3 /* TracksView.m */; };
 		BCB2B29314FBB14A0000BFA3 /* SongAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */; };
 		BCB2B29414FBB14A0000BFA3 /* SongAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */; };
 		BCB2B29514FBB14A0000BFA3 /* SongAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */; };
@@ -5039,8 +5031,6 @@
 		BCB0EF1F1524755E00290383 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Login/LoginViewController.h; sourceTree = "<group>"; };
 		BCB0EF201524755E00290383 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Login/LoginViewController.m; sourceTree = "<group>"; };
 		BCB0EF211524755E00290383 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
-		BCB178B214BEE90100A3EDE3 /* TracksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TracksView.h; sourceTree = "<group>"; };
-		BCB178B314BEE90100A3EDE3 /* TracksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TracksView.m; sourceTree = "<group>"; };
 		BCB2B29014FBB1490000BFA3 /* SongAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongAddViewController.h; path = Programming/SongAddViewController.h; sourceTree = "<group>"; };
 		BCB2B29114FBB1490000BFA3 /* SongAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongAddViewController.m; path = Programming/SongAddViewController.m; sourceTree = "<group>"; };
 		BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongAddViewController.xib; path = Programming/SongAddViewController.xib; sourceTree = "<group>"; };
@@ -6331,8 +6321,6 @@
 		BCB5F28B1485416B00C28B3D /* RadioView */ = {
 			isa = PBXGroup;
 			children = (
-				BCB178B214BEE90100A3EDE3 /* TracksView.h */,
-				BCB178B314BEE90100A3EDE3 /* TracksView.m */,
 				BC27F36C14BDD87B00EF1C5F /* TrackInteractionView.h */,
 				BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */,
 				BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */,
@@ -10751,7 +10739,6 @@
 				40B4099D152EFC630050D334 /* SongUser.m in Sources */,
 				40B4099E152EFC630050D334 /* NextSong.m in Sources */,
 				40B409A0152EFC630050D334 /* YasoundReachability.m in Sources */,
-				40B409A1152EFC630050D334 /* TracksView.m in Sources */,
 				40B409A2152EFC630050D334 /* Tutorial.m in Sources */,
 				40B409A3152EFC630050D334 /* InteractiveView.m in Sources */,
 				40B409A4152EFC630050D334 /* ActivityModelessSpinner.m in Sources */,
@@ -10939,7 +10926,6 @@
 				40D53BA01554280F001EB0C5 /* SongUser.m in Sources */,
 				40D53BA11554280F001EB0C5 /* NextSong.m in Sources */,
 				40D53BA31554280F001EB0C5 /* YasoundReachability.m in Sources */,
-				40D53BA41554280F001EB0C5 /* TracksView.m in Sources */,
 				40D53BA51554280F001EB0C5 /* Tutorial.m in Sources */,
 				40D53BA61554280F001EB0C5 /* InteractiveView.m in Sources */,
 				40D53BA71554280F001EB0C5 /* ActivityModelessSpinner.m in Sources */,
@@ -11127,7 +11113,6 @@
 				BC3FA6B314E93B660055AB4A /* SongUser.m in Sources */,
 				BC3FA6B414E93B660055AB4A /* NextSong.m in Sources */,
 				BC3FA6B614E93B660055AB4A /* YasoundReachability.m in Sources */,
-				BC3FA6B714E93B660055AB4A /* TracksView.m in Sources */,
 				BC3FA6B814E93B660055AB4A /* Tutorial.m in Sources */,
 				BC3FA6B914E93B660055AB4A /* InteractiveView.m in Sources */,
 				BC3FA6BA14E93B660055AB4A /* ActivityModelessSpinner.m in Sources */,
@@ -11311,7 +11296,6 @@
 				BC56F4BF152486AF005D1B40 /* SongUser.m in Sources */,
 				BC56F4C0152486AF005D1B40 /* NextSong.m in Sources */,
 				BC56F4C2152486AF005D1B40 /* YasoundReachability.m in Sources */,
-				BC56F4C3152486AF005D1B40 /* TracksView.m in Sources */,
 				BC56F4C4152486AF005D1B40 /* Tutorial.m in Sources */,
 				BC56F4C5152486AF005D1B40 /* InteractiveView.m in Sources */,
 				BC56F4C6152486AF005D1B40 /* ActivityModelessSpinner.m in Sources */,
@@ -11499,7 +11483,6 @@
 				40F4C78C14BDF40F00A163F9 /* SongUser.m in Sources */,
 				40F4C79214BEEF7000A163F9 /* NextSong.m in Sources */,
 				BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */,
-				BCB178B514BEE90100A3EDE3 /* TracksView.m in Sources */,
 				BC0304E914BF030200F39374 /* Tutorial.m in Sources */,
 				BC0304FF14C0248100F39374 /* InteractiveView.m in Sources */,
 				BC03050514C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
@@ -11688,7 +11671,6 @@
 				BC93CD2C14CF3F7A007C723F /* SongUser.m in Sources */,
 				BC93CD2D14CF3F7A007C723F /* NextSong.m in Sources */,
 				BC93CD2F14CF3F7A007C723F /* YasoundReachability.m in Sources */,
-				BC93CD3014CF3F7A007C723F /* TracksView.m in Sources */,
 				BC93CD3114CF3F7A007C723F /* Tutorial.m in Sources */,
 				BC93CD3214CF3F7A007C723F /* InteractiveView.m in Sources */,
 				BC93CD3314CF3F7A007C723F /* ActivityModelessSpinner.m in Sources */,
@@ -11876,7 +11858,6 @@
 				40F4C78B14BDF40F00A163F9 /* SongUser.m in Sources */,
 				40F4C79114BEEF7000A163F9 /* NextSong.m in Sources */,
 				BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */,
-				BCB178B414BEE90100A3EDE3 /* TracksView.m in Sources */,
 				BC0304E814BF030200F39374 /* Tutorial.m in Sources */,
 				BC0304FE14C0248100F39374 /* InteractiveView.m in Sources */,
 				BC03050414C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
@@ -12065,7 +12046,6 @@
 				40F4C78D14BDF40F00A163F9 /* SongUser.m in Sources */,
 				40F4C79314BEEF7000A163F9 /* NextSong.m in Sources */,
 				BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */,
-				BCB178B614BEE90100A3EDE3 /* TracksView.m in Sources */,
 				BC0304EA14BF030200F39374 /* Tutorial.m in Sources */,
 				BC03050014C0248100F39374 /* InteractiveView.m in Sources */,
 				BC03050614C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,

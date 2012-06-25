@@ -66,7 +66,7 @@
 }
 
 
-- (id)initWithPath:(NSString *)path
+- (id)initWithBundlePath:(NSString *)path
 {
     self = [super initWithPath:path];
     if (self)
@@ -77,6 +77,26 @@
             NSLog(@"BundleFileManager initWithPath Warning : could not find any stylesheet");
         
         _stylesheets = [[NSMutableDictionary alloc] init];
+    }
+    
+    return self;
+}
+
+
+- (id)initWithStylesheet:(NSDictionary*)stylesheet
+{
+    self = [super init];
+    if (self)
+    {
+        self.stylesheetDictionnary = stylesheet;
+        if (self.stylesheetDictionnary == nil)
+        {
+            NSLog(@"BundleFileManager Warning : could not find any stylesheet");
+            assert(0);
+        }
+        
+        _stylesheets = [[NSMutableDictionary alloc] init];
+        
     }
     
     return self;
