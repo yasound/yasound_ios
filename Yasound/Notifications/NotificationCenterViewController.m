@@ -339,14 +339,19 @@
         [cell updateWithNotification:notif];
         [[YasoundDataProvider main] updateUserNotification:notif target:self action:@selector(updatedUserNotification:success:)];
         
-        
-        
         return;
     }
     
     
     
-    if ([notif.type isEqualToString:APNS_NOTIF_FRIEND_ONLINE])
+    if ([notif.type isEqualToString:APNS_NOTIF_FRIEND_ONLINE]
+        || [notif.type isEqualToString:APNS_NOTIF_SONG_LIKED]
+        || [notif.type isEqualToString:APNS_NOTIF_RADIO_IN_FAVORITES]
+        || [notif.type isEqualToString:APNS_NOTIF_RADIO_SHARED]
+        || [notif.type isEqualToString:APNS_NOTIF_FRIEND_CREATED_RADIO]
+        || [notif.type isEqualToString:APNS_NOTIF_USER_IN_RADIO]
+        || [notif.type isEqualToString:APNS_NOTIF_FRIEND_IN_RADIO]
+        )
     {
         [self goToFriendsViewController];
         return;
@@ -371,6 +376,14 @@
         [view release];
         return;
     }
+
+    
+    if ([notif.type isEqualToString:APNS_NOTIF_MESSAGE_POSTED])
+    {
+        [self goToRadio:[YasoundDataProvider main].radio.id];
+        return;
+    }
+    
     
     if (notif.from_radio_id != nil)
     {
