@@ -190,7 +190,7 @@ static Song* _gNowPlayingSong = nil;
     
     
     //favorites button
-    sheet = [[Theme theme] stylesheetForKey:@"Wall.Header. HeaderFavoriteButtonFrame" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Wall.Header.HeaderFavoriteButtonFrame" error:nil];
     CGRect frame = sheet.frame;
     self.favoriteButton = [[UIButton alloc] initWithFrame:sheet.frame];
     
@@ -255,7 +255,7 @@ static Song* _gNowPlayingSong = nil;
     //
     // view container and view childs
     //
-    sheet = [[Theme theme] stylesheetForKey:@"Wall/ViewContainer" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Wall.ViewContainer" error:nil];
     _viewContainer = [[UIView alloc] initWithFrame:sheet.frame];
     _viewContainer.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_viewContainer];
@@ -284,13 +284,13 @@ static Song* _gNowPlayingSong = nil;
     
     [_viewWall addSubview:messageBarView];   
     
-    sheet = [[Theme theme] stylesheetForKey:@""Wall.RadioViewMessageBar"" error:nil];    
+    sheet = [[Theme theme] stylesheetForKey:@"Wall.RadioViewMessageBar" error:nil];    
     _messageBar = [[UITextField alloc] initWithFrame:sheet.frame];
     _messageBar.delegate = self;
     [_messageBar setBorderStyle:UITextBorderStyleRoundedRect];
     [_messageBar setPlaceholder:NSLocalizedString(@"radioview_message", nil)];
 
-    sheet = [[Theme theme] stylesheetForKey:@"Wall."Wall.RadioViewMessageBar"Font" error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Wall.RadioViewMessageBarFont" error:nil];
     [_messageBar setFont:[sheet makeFont]];
 
     [_viewWall addSubview:_messageBar];
@@ -299,7 +299,7 @@ static Song* _gNowPlayingSong = nil;
     //
     // table view
     //
-    sheet = [[Theme theme] stylesheetForKey:@Wall.TableView error:nil];    
+    sheet = [[Theme theme] stylesheetForKey:@"Wall.TableView" error:nil];    
     _tableView = [[TouchedTableView alloc] initWithFrame:sheet.frame style:UITableViewStylePlain];
 
     _tableView.actionTouched = @selector(tableViewTouched:withEvent:);

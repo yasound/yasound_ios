@@ -363,6 +363,7 @@
         }
         else
         {
+            imageRef = [NSString stringWithFormat:@"Icons.%@", imageRef];
             sheet = [[Theme theme] stylesheetForKey:imageRef retainStylesheet:YES overwriteStylesheet:NO error:&error];
             
             if (error == nil)

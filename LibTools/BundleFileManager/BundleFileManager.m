@@ -331,13 +331,8 @@ static BundleFileManager* _main = nil;
   if (stylesheet != nil)
     return stylesheet;
   
-  // get stylesheet entry
-  NSDictionary* styleItem = [self.stylesheetDictionnary valueForKey:key];
-  if (styleItem == nil)
-  {
-    NSLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
-    return nil;
-  }
+    NSDictionary* styleItem = [self stylesheetItemFromKey:key];
+    
   
     stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem name:key bundle:self error:anError];
 
@@ -352,13 +347,7 @@ static BundleFileManager* _main = nil;
   if ((stylesheet != nil) && !overwriteStylesheet)
     return stylesheet;
   
-  // get stylesheet entry
-  NSDictionary* styleItem = [self.stylesheetDictionnary valueForKey:key];
-  if (styleItem == nil)
-  {
-    NSLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
-    return nil;
-  }
+    NSDictionary* styleItem = [self stylesheetItemFromKey:key];
   
   stylesheet = [[BundleStylesheet alloc] initWithSheet:styleItem name:key bundle:self error:anError];
   
@@ -367,7 +356,64 @@ static BundleFileManager* _main = nil;
   
   return stylesheet;
   
+}
 
+
+
+- (NSDictionary*)stylesheetItemFromKey:(NSString*)key
+{
+    // get stylesheet entry
+    NSDictionary* styleItem = nil;
+    NSRange range = NSMakeRange(0, key.length);
+    NSRange pos = [key rangeOfString:@"." options:NSLiteralSearch range:range];
+    if (pos.location == NSNotFound)
+    {
+        styleItem = [self.stylesheetDictionnary valueForKey:key];
+        
+        if (styleItem == nil)
+        {
+            NSLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
+            assert(0);
+            return nil;
+        }
+    }
+    else
+    {
+        //LBDEBUG
+        if ([key isEqualToString:@"Wall.Header.Header"])
+        {
+            NSLog(@"ok");
+        }
+        /////////////////////
+        
+        
+        NSString* sub;
+        styleItem = self.stylesheetDictionnary;
+        while (pos.location != NSNotFound)
+        {
+            sub = [key substringWithRange:NSMakeRange(range.location, pos.location - range.location)];
+            styleItem = [styleItem objectForKey:sub];
+            
+            if (styleItem == nil)
+            {
+                NSLog(@"stylesheetForKey error : could not find sub '%@', using key '%@'", sub, key);
+                assert(0);
+            }
+            
+            range = NSMakeRange(pos.location+1, key.length - (pos.location+1));
+            pos = [key rangeOfString:@"." options:NSLiteralSearch range:range];
+        }
+        sub = [key substringWithRange:range];
+        styleItem = [styleItem objectForKey:sub];
+        
+        if (styleItem == nil)
+        {
+            NSLog(@"stylesheetForKey error : could not find sub '%@', using key '%@'", sub, key);
+            assert(0);
+        }
+    }
+    
+    return styleItem;
 }
 
 
@@ -391,6 +437,7 @@ static BundleFileManager* _main = nil;
   if (item == nil)
   {
     NSLog(@"BundleFileManager::animsheetForKey Error : could not find item for key '%@'", key);
+      assert(0);
     return nil;
   }
   
@@ -454,14 +501,14 @@ static BundleFileManager* _main = nil;
   if (objects == nil)
   {
     NSLog(@"BundleFileManager::audiosheetForKey Error : could not find item for key '%@'", key);
-    assert(1);
+    assert(0);
     return nil;
   }
   
   if (index >= [objects count])
   {
     NSLog(@"BundleFileManager::audiosheetForKey Error : given index [%d] is out of range [%d]", index, [objects count]);
-    assert(1);
+    assert(0);
     return nil;
   }
   

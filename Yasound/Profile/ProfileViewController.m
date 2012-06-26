@@ -133,7 +133,7 @@ typedef enum
     
     NSLog(@"%@", self.user.username);
     
-    [[YasoundDataProvider main] userWithUsername:self.user.username target:self action:@selector(onUserInfo:info:)];
+    [[YasoundDataProvider main] userWithUsername:self.user.username target:self action:@selector(onUserInfo:success:)];
     
     if ([AudioStreamManager main].currentRadio == nil)
         [_nowPlayingButton setEnabled:NO];
