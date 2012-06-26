@@ -365,7 +365,6 @@ void SignalHandler(int sig) {
 
 
 
-
 - (NSString*)serverURL
 {
     if (_serverURL == nil)
