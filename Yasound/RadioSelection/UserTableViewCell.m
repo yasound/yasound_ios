@@ -7,7 +7,7 @@
 //
 
 #import "UserTableViewCell.h"
-#import "BundleFileManager.h"
+#import "Theme.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation UserTableViewCell
@@ -37,11 +37,11 @@
       UIImageView* imageView = nil;
       if (rowIndex & 1)
       {
-          imageView = [[[BundleFileManager main] stylesheetForKey:@"UserSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+          imageView = [[[Theme theme] stylesheetForKey:@"Users.UserSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
       }
       else
       {
-          imageView = [[[BundleFileManager main] stylesheetForKey:@"UserSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+          imageView = [[[Theme theme] stylesheetForKey:@"Users.UserSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
       }
       
       self.backgroundView = imageView;
@@ -49,7 +49,7 @@
       // avatar
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     self.userAvatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
-    stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionAvatar" retainStylesheet:YES overwriteStylesheet:NO error:&error];
+    stylesheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionAvatar" retainStylesheet:YES overwriteStylesheet:NO error:&error];
     self.userAvatar.frame = stylesheet.frame;
     [self addSubview:self.userAvatar];
       
@@ -67,17 +67,17 @@
 //    
       
       
-    stylesheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionMask"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
+    stylesheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionMask"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
     self.userAvatarMask = [stylesheet makeImage];
     [self addSubview:self.userAvatarMask];
     
     // name
-    self.userName = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
+    self.userName = [[[Theme theme] stylesheetForKey:@"Radios.RadioSelectionTitle"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
     self.userName.text = self.user.name;
     [self addSubview:self.userName];
       
       // radio status
-      self.radioStatus = [[[BundleFileManager main] stylesheetForKey:@"RadioSelectionSubtitle1"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
+      self.radioStatus = [[[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle1"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
       NSString* status = nil;
       if (self.user.current_radio)
       {
@@ -121,9 +121,9 @@
     BundleStylesheet* sheet = nil;
     
     if (rowIndex & 1)
-        sheet = [[BundleFileManager main] stylesheetForKey:@"UserSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Users.UserSelectionBackgroundLight"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
     else
-        sheet = [[BundleFileManager main] stylesheetForKey:@"UserSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Users.UserSelectionBackgroundDark"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
     
     [self.backgroundView setImage:[sheet image]];
@@ -141,7 +141,7 @@
 //    else
 //        avatarMask = @"RadioSelectionMaskGray";
 //    
-//    sheet = [[BundleFileManager main] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    sheet = [[Theme theme] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //    [self.userAvatarMask setImage:[sheet image]];
 
     // name
@@ -201,7 +201,7 @@
 //    self.cellBackground.image = _bkgSelected;
 //    self.userAvatarMask.image = _maskSelected;
    
-    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionTitle" error:nil];
     [sheet applyToLabel:self.userName class:@"selected"];
   }
   else
@@ -209,7 +209,7 @@
 //    self.cellBackground.image = _bkgBackup;
 //    self.userAvatarMask.image = _maskBackup;
 
-    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"RadioSelectionTitle" error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionTitle" error:nil];
     [sheet applyToLabel:self.userName class:nil];
   }
 }

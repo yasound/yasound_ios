@@ -379,13 +379,6 @@ static BundleFileManager* _main = nil;
     }
     else
     {
-        //LBDEBUG
-        if ([key isEqualToString:@"Wall.Header.Header"])
-        {
-            NSLog(@"ok");
-        }
-        /////////////////////
-        
         
         NSString* sub;
         styleItem = self.stylesheetDictionnary;

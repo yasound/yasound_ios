@@ -34,7 +34,7 @@
 
         
       NSError* error;
-      _unreadCountLabel = [[[BundleFileManager main] stylesheetForKey:@"UnreadNotifBadge"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
+      _unreadCountLabel = [[[Theme theme] stylesheetForKey:@"Notifications.UnreadNotifBadge"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
       [self setUnreadCount:count];
       [self.contentView addSubview:_unreadCountLabel];
     }

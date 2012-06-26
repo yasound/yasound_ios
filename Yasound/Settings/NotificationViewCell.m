@@ -7,7 +7,7 @@
 
 #import "NotificationViewCell.h"
 #import "NotificationManager.h"
-#import "BundleFileManager.h"
+#import "Theme.h"
 
 @implementation NotificationViewCell
 
@@ -23,7 +23,7 @@
     {
         self.notifIdentifier = identifier;
         
-        BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"NotificationViewCellLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NotificationViewCellLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.label = [sheet makeLabel];
         self.label.adjustsFontSizeToFitWidth = YES;
         self.label.minimumFontSize = 10;

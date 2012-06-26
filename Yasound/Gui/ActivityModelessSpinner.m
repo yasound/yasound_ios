@@ -6,7 +6,7 @@
 //
 
 #import "ActivityModelessSpinner.h"
-#import "BundleFileManager.h"
+#import "Theme.h"
 #import "YasoundAppDelegate.h"
 
 #import <QuartzCore/QuartzCore.h>
@@ -77,7 +77,7 @@ static ActivityModelessSpinner* _main = nil;
 {
     self.hidden = NO;
 
-    BundleStylesheet* sheet = [[BundleFileManager main] stylesheetForKey:@"ActivityModelessSpinner" error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"ActivityModelessSpinner" error:nil];
     CGRect initFrame = CGRectMake(sheet.frame.origin.x + sheet.frame.size.width, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
     
     _view = [[UIView alloc] initWithFrame:initFrame];
