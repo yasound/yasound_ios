@@ -23,7 +23,7 @@
     {
         self.notifIdentifier = identifier;
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NotificationViewCellLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Notifications.NotificationViewCellLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.label = [sheet makeLabel];
         self.label.adjustsFontSizeToFitWidth = YES;
         self.label.minimumFontSize = 10;

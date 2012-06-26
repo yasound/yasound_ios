@@ -173,9 +173,9 @@
     // avatar mask
     NSString* avatarMask;
     if (rowIndex & 1)
-        avatarMask = @"RadioSelectionMaskWhite";
+        avatarMask = @"Radios.RadioSelectionMaskWhite";
     else
-        avatarMask = @"RadioSelectionMaskGray";
+        avatarMask = @"Radios.RadioSelectionMaskGray";
     
     sheet = [[Theme theme] stylesheetForKey:avatarMask  retainStylesheet:YES overwriteStylesheet:NO error:nil];
     [self.radioAvatarMask setImage:[sheet image]];
