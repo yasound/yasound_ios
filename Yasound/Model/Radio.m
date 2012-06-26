@@ -24,6 +24,7 @@
 @synthesize ready;
 @synthesize nb_current_users;
 @synthesize stream_url;
+@synthesize web_url;
 
 - (NSArray*)tagsArray
 {
