@@ -83,8 +83,9 @@
 
     //
     self.pictureUrl = [[NSURL alloc] initWithString:[APPDELEGATE getServerUrlWith:@"fr/images/logo.png"]];
-    NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
-    self.fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link, currentRadio.uuid]];
+    
+    NSString* link = @"%@listen/%@";
+    self.fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link, currentRadio.web_url, currentRadio.uuid]];
     
     //
     //NSString* twitterFullMessage = [NSString stringWithFormat:@"#yasound %@ %@ ", [fullLink absoluteString], facebookFullMessage];

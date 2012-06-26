@@ -90,9 +90,9 @@
     // shorten url
     Radio* currentRadio = [AudioStreamManager main].currentRadio;
     
-    NSString* link = [APPDELEGATE getServerUrlWith:@"listen/%@"];
-    self.fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link, currentRadio.uuid]];
-
+    NSString* link = @"%@listen/%@";
+    self.fullLink = [[NSURL alloc] initWithString:[NSString stringWithFormat:link, currentRadio.web_url, currentRadio.uuid]];
+    
     MKBitlyHelper* bitlyHelper = [[MKBitlyHelper alloc] initWithLoginName:BITLY_LOGIN andAPIKey:BITLY_API_KEY];
     self.fullLink = [bitlyHelper shortenURL:[self.fullLink absoluteString]];
     
