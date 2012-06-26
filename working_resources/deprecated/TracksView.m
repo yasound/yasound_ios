@@ -155,7 +155,7 @@
 // cell selection
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSLog(@"didSelectRowAtIndexPath %d", indexPath.row);
+  DLog(@"didSelectRowAtIndexPath %d", indexPath.row);
 //  _selectedRow = indexPath;
 
 }
@@ -167,7 +167,7 @@
   {
       NextSong* song = [_data objectAtIndex:indexPath.row];
       
-    NSLog(@"deleting '%@'", song.song.name);
+    DLog(@"deleting '%@'", song.song.name);
 
     // update data
     [_data removeObjectAtIndex:indexPath.row];
@@ -193,7 +193,7 @@
 //- (void)onUpdateTrack:(NSTimer*)timer
 - (void)onUpdateTrack:(NSArray*)new_next_songs info:(NSDictionary*)info
 {
-    NSLog(@"onUpdateTrack");
+    DLog(@"onUpdateTrack");
 
     [self onNextSongsReceived:new_next_songs]; 
           
@@ -210,7 +210,7 @@
 {
     NSIndexPath* theIndexPath = timer.userInfo;
     
-    NSLog(@"onUpdateTrackAfterDelete %d", theIndexPath.row);
+    DLog(@"onUpdateTrackAfterDelete %d", theIndexPath.row);
 
     for (int row = theIndexPath.row; row < _data.count; row++)
     {

@@ -422,7 +422,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"alertView didDismissWithButtonIndex %d", buttonIndex);
+    DLog(@"alertView didDismissWithButtonIndex %d", buttonIndex);
     
     if ((alertView == _alertReject) && (buttonIndex == 1))
     {
@@ -645,7 +645,7 @@
 
 - (IBAction)onDeleteSong:(id)sender
 {
-    NSLog(@"onDeleteSong");   
+    DLog(@"onDeleteSong");   
     
     [ActivityAlertView showWithTitle:nil];
 
@@ -657,15 +657,15 @@
 // server's callback
 - (void)onSongDeleted:(Song*)song info:(NSDictionary*)info
 {
-    NSLog(@"onSongDeleted for Song %@", song.name);  
-    NSLog(@"info %@", info);
+    DLog(@"onSongDeleted for Song %@", song.name);  
+    DLog(@"info %@", info);
     
     BOOL success = NO;
     NSNumber* nbsuccess = [info objectForKey:@"success"];
     if (nbsuccess != nil)
         success = [nbsuccess boolValue];
     
-    NSLog(@"success %d", success);
+    DLog(@"success %d", success);
     
     if (!success)
     {

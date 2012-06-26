@@ -104,9 +104,9 @@ static TimeProfile* _main;
     assert(item.dateEnd != nil); // if fails here, means you did not call "end" for this item, yet
     
     if (!inMilliseconds)
-        NSLog(@"TimeProfile '%@' %.2fs", nameReference, [item interval]);
+        DLog(@"TimeProfile '%@' %.2fs", nameReference, [item interval]);
     else
-        NSLog(@"TimeProfile '%@' %.2fms", nameReference, [item interval] * 1000.f);
+        DLog(@"TimeProfile '%@' %.2fms", nameReference, [item interval] * 1000.f);
 
 }
 
@@ -128,9 +128,9 @@ static TimeProfile* _main;
     CGFloat result = accu / profiles.count;
     
     if (!inMilliseconds)
-        NSLog(@"TimeProfile AVERAGE '%@' %.2fs for %d mesures", nameReference, result, profiles.count);
+        DLog(@"TimeProfile AVERAGE '%@' %.2fs for %d mesures", nameReference, result, profiles.count);
     else
-        NSLog(@"TimeProfile AVERAGE '%@' %.2fms for %d mesures", nameReference, result * 1000.f, profiles.count);
+        DLog(@"TimeProfile AVERAGE '%@' %.2fms for %d mesures", nameReference, result * 1000.f, profiles.count);
     
 }
 

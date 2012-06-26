@@ -101,7 +101,7 @@
     NSError* error = [info valueForKey:@"error"];
     if (error)
     {
-        NSLog(@"can't get radios: %@", error.domain);
+        DLog(@"can't get radios: %@", error.domain);
         return;
     }
     

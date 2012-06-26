@@ -175,7 +175,7 @@
 //  }
 //  else
 //  {
-//    NSLog(@"Settings textField error.");
+//    DLog(@"Settings textField error.");
 //    assert(0);
 //  }
 }

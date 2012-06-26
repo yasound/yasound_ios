@@ -120,7 +120,7 @@
     
         
     
-    NSLog(@"SongAddViewController : %d songs added to the local array", count);
+    DLog(@"SongAddViewController : %d songs added to the local array", count);
     
     if (count == 0)
         self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_0", nil);
@@ -673,14 +673,14 @@
 
 //- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 //{
-//    NSLog(@"searchBarSearchButtonClicked %@", searchBar.text);
+//    DLog(@"searchBarSearchButtonClicked %@", searchBar.text);
 //    
 //    [self requestsSongSearch:searchBar.text];
 //}
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    NSLog(@"searchBarSearchButtonClicked %@", searchBar.text);
+    DLog(@"searchBarSearchButtonClicked %@", searchBar.text);
     
     [self requestsSongSearch:searchBar.text];
 }

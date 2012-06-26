@@ -213,18 +213,18 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         if ((artistKey == nil) || (artistKey.length == 0))
         {
             artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
-            NSLog(@"buildSynchronizedWithSource: empty artist found!");
+            DLog(@"buildSynchronizedWithSource: empty artist found!");
         }
         NSString* albumKey = song.album;
         if ((albumKey == nil) || (albumKey.length == 0))
         {
             albumKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
-            NSLog(@"buildSynchronizedWithSource: empty album found!");
+            DLog(@"buildSynchronizedWithSource: empty album found!");
         }
         
-        NSLog(@"%@", song.name);
-        NSLog(@"%@", song.artist);
-        NSLog(@"%@", song.album);
+        DLog(@"%@", song.name);
+        DLog(@"%@", song.artist);
+        DLog(@"%@", song.album);
         
         [self catalogWithoutSorting:song  usingArtistKey:artistKey andAlbumKey:albumKey];
         self.nbSongs++;    
@@ -241,7 +241,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 - (void)buildAvailableComparingToSource:(NSDictionary*)synchronizedSource
 {
     
-    //NSLog(@"%@", synchronizedSource);
+    //DLog(@"%@", synchronizedSource);
     
     [[TimeProfile main] begin:@"iTunesQuery"];
     
@@ -296,13 +296,13 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     if ((artistKey == nil) || (artistKey.length == 0))
     {
         artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
-        NSLog(@"insertAndEnableSong: empty artist found!");
+        DLog(@"insertAndEnableSong: empty artist found!");
     }
     NSString* albumKey = song.album;
     if ((albumKey == nil) || (albumKey.length == 0))
     {
         albumKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
-        NSLog(@"insertAndEnableSong: empty album found!");
+        DLog(@"insertAndEnableSong: empty album found!");
     }
     
     [song enableSong:YES];
@@ -363,13 +363,13 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     if ((artistKey == nil) || (artistKey.length == 0))
     {
         artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
-        NSLog(@"removeSynchronizedSong: empty artist found!");
+        DLog(@"removeSynchronizedSong: empty artist found!");
     }
     NSString* albumKey = song.album;
     if ((albumKey == nil) || (albumKey.length == 0))
     {
         albumKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
-        NSLog(@"removeSynchronizedSong: empty album found!");
+        DLog(@"removeSynchronizedSong: empty album found!");
     }
     
     
@@ -391,7 +391,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     }
     
     NSMutableDictionary* artistRepo = [artistsRepo objectForKey:artistKey];
-    NSLog(@"SongCatalog removeSynchronizedSong : may have error no dictionary for the artistKy '%@'", artistKey);
+    DLog(@"SongCatalog removeSynchronizedSong : may have error no dictionary for the artistKy '%@'", artistKey);
     if (artistRepo == nil)
         return;
     
@@ -465,7 +465,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     [[TimeProfile main] begin:@"doesDeviceContainSong"];
     
     //LBDEBUG
-    NSLog(@"doesDeviceContainSong song.name_client %@   song.artist_client '%@'   song.album_client '%@'", song.name_client, song.artist_client, song.album_client);
+    DLog(@"doesDeviceContainSong song.name_client %@   song.artist_client '%@'   song.album_client '%@'", song.name_client, song.artist_client, song.album_client);
     
     MPMediaQuery* allSongsQuery = [MPMediaQuery songsQuery];
     
@@ -480,7 +480,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 //        NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
 //        NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
 //        NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];  
-//        NSLog(@"catalog song.name %@   song.artist '%@'   song.album '%@'", song, artist, album);
+//        DLog(@"catalog song.name %@   song.artist '%@'   song.album '%@'", song, artist, album);
 //    }
 
     
@@ -605,9 +605,9 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     NSDictionary* artistsForSection = [self.alphaArtistsRepo objectForKey:charIndex];
 
     self.selectedArtist = artistKey;
-    NSLog(@"selected artist %@", self.selectedArtist);
+    DLog(@"selected artist %@", self.selectedArtist);
     
-    NSLog(@"%@", artistsForSection);
+    DLog(@"%@", artistsForSection);
     
     self.selectedArtistRepo = [artistsForSection objectForKey:artistKey];
     
@@ -622,7 +622,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     self.selectedAlbum = albumKey;
     
-    NSLog(@"selected album %@", self.selectedAlbum);
+    DLog(@"selected album %@", self.selectedAlbum);
     
     self.selectedAlbumRepo = [self.selectedArtistRepo objectForKey:self.selectedAlbum];
     

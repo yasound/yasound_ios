@@ -24,7 +24,7 @@
 
 -(id)initWithImageFrame:(CGRect)frame
 {
-  //NSLog(@"WebImage initWithImageFrame 0x%p", self);
+  //DLog(@"WebImage initWithImageFrame 0x%p", self);
   self = [super init];
   if (self)
   {
@@ -38,7 +38,7 @@
 
 -(id)initWithImageAtURL:(NSURL*)Url
 {
-  //NSLog(@"WebImage initWithImageAtURL 0x%p / %@", self, [Url absoluteURL]);
+  //DLog(@"WebImage initWithImageAtURL 0x%p / %@", self, [Url absoluteURL]);
   self = [super init];
   if (self)
   {

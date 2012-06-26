@@ -204,7 +204,7 @@ typedef enum
     return 0;
   
   NSInteger count = radios.count;
-  NSLog(@"RADIO COUNT %d", count);
+  DLog(@"RADIO COUNT %d", count);
   return count;
 }
 
@@ -338,7 +338,7 @@ typedef enum
     NSError* error = [info valueForKey:@"error"];
     if (error)
     {
-        NSLog(@"can't get radios: %@", error.domain);
+        DLog(@"can't get radios: %@", error.domain);
         return;
     }
     
@@ -364,7 +364,7 @@ typedef enum
   NSError* error = [info valueForKey:@"error"];
   if (error)
   {
-    NSLog(@"can't get radios: %@", error.domain);
+    DLog(@"can't get radios: %@", error.domain);
     return;
   }
   
@@ -391,7 +391,7 @@ typedef enum
   NSError* error = [info valueForKey:@"error"];
   if (error)
   {
-    NSLog(@"can't get radios: %@", error.domain);
+    DLog(@"can't get radios: %@", error.domain);
     return;
   }
   

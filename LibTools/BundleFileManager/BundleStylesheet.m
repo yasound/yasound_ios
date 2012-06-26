@@ -549,7 +549,7 @@ static NSMutableDictionary* gImageViews = nil;
             image = [UIImage imageNamed:tmppath];
             if (image == nil)
             {
-                NSLog(@"local image loading failed with tmppath '%@'  from name '%@' and type '%@'", tmppath, name, type);
+                DLog(@"local image loading failed with tmppath '%@'  from name '%@' and type '%@'", tmppath, name, type);
                 assert(0);
                 return [BundleFileManager errorHandling:@"image" forPath:name error:anError];
             }
@@ -603,7 +603,7 @@ static NSMutableDictionary* gImageViews = nil;
             
             if (image == nil)
             {
-                NSLog(@"image loading failed with tmppath '%@'    from name '%@' and type '%@' and path '%@'", tmppath, name, type, path);
+                DLog(@"image loading failed with tmppath '%@'    from name '%@' and type '%@' and path '%@'", tmppath, name, type, path);
                 assert(0);
                 return [BundleFileManager errorHandling:@"image" forPath:name error:anError];
             }
@@ -822,7 +822,7 @@ static NSMutableDictionary* gImageViews = nil;
         {
             font = [UIFont fontWithName:fontsheet.name size:fontsheet.size];
             if (font == nil)
-                NSLog(@"BundleStylesheet error : could not get the font '%@'", fontsheet.name);
+                DLog(@"BundleStylesheet error : could not get the font '%@'", fontsheet.name);
             else
                 [gFonts setObject:font forKey:fontName];
         }
@@ -918,7 +918,7 @@ static NSMutableDictionary* gImageViews = nil;
     {
       font = [UIFont fontWithName:fontsheet.name size:fontsheet.size];
       if (font == nil)
-        NSLog(@"BundleStylesheet error : could not get the font '%@'", fontsheet.name);
+        DLog(@"BundleStylesheet error : could not get the font '%@'", fontsheet.name);
       else
         [gFonts setObject:font forKey:fontName];
     }

@@ -279,7 +279,7 @@
         
     CGPoint translation = [gesture translationInView:self];
 
-    //NSLog(@"%.2f", translation.x);
+    //DLog(@"%.2f", translation.x);
 
     if ([gesture state] == UIGestureRecognizerStateBegan || [gesture state] == UIGestureRecognizerStateChanged) 
     {

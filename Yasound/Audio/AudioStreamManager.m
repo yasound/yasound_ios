@@ -88,7 +88,7 @@ static AudioStreamer* _gAudioStreamer = nil;
 #else
   NSString* url = radio.stream_url;
     NSURL* radiourl = [NSURL URLWithString:url];
-    NSLog(@"radio url: %@\n", url);
+    DLog(@"radio url: %@\n", url);
 #endif
     
     
@@ -199,7 +199,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     if ((_streamErrorTimer != nil) && [_streamErrorTimer isValid])
         return;
 
-    NSLog(@"onAudioStreamNotif");
+    DLog(@"onAudioStreamNotif");
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
 

@@ -130,7 +130,7 @@
 
 - (void)associateReturned:(User*)user info:(NSDictionary*)info
 {
-    NSLog(@"associateReturned :%@", info);
+    DLog(@"associateReturned :%@", info);
     
     // close the connection alert
     [ConnectionView stop];
@@ -181,7 +181,7 @@
 
 - (void)dissociateReturned:(User*)user info:(NSDictionary*)info
 {
-    NSLog(@"dissociateReturned :%@", info);
+    DLog(@"dissociateReturned :%@", info);
     
     // close the connection alert
     [ConnectionView stop];

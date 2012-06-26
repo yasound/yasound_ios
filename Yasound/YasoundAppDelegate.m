@@ -36,14 +36,14 @@
  My Apps Custom uncaught exception catcher, we do special stuff here, and TestFlight takes care of the rest
  **/
 void HandleExceptions(NSException *exception) {
-    NSLog(@"HandleExceptions");
+    DLog(@"HandleExceptions");
     // Save application data on crash
 }
 /*
  My Apps Custom signal catcher, we do special stuff here, and TestFlight takes care of the rest
  **/
 void SignalHandler(int sig) {
-    NSLog(@"SignalHandler");
+    DLog(@"SignalHandler");
     // Save application data on crash
 }
 #endif
@@ -116,7 +116,7 @@ void SignalHandler(int sig) {
     
     
   // Push Notifications:
-  NSLog(@"Ask for push notification\n");
+  DLog(@"Ask for push notification\n");
   [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
   
   _mustGoToNotificationCenter = NO;
@@ -198,13 +198,13 @@ void SignalHandler(int sig) {
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-  NSLog(@"applicationDidFinishLaunchingWithOptions dev token test");
+  DLog(@"applicationDidFinishLaunchingWithOptions dev token test");
   NSString* deviceTokenStr = [[[[deviceToken description]
                                 stringByReplacingOccurrencesOfString: @"<" withString: @""] 
                                stringByReplacingOccurrencesOfString: @">" withString: @""] 
                               stringByReplacingOccurrencesOfString: @" " withString: @""];
   
-  NSLog(@"Device Token: %@", deviceTokenStr);
+  DLog(@"Device Token: %@", deviceTokenStr);
   
   _APNsTokenString = deviceTokenStr;
   [_APNsTokenString retain];
@@ -213,12 +213,12 @@ void SignalHandler(int sig) {
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    NSLog(@"didFailToRegisterForRemoteNotificationsWithError:\n%@", [error localizedDescription]);
+    DLog(@"didFailToRegisterForRemoteNotificationsWithError:\n%@", [error localizedDescription]);
 }
 
 - (void)goToNotificationCenter
 {
-  NSLog(@"go to notification center");
+  DLog(@"go to notification center");
   NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
   [self.navigationController pushViewController:view animated:YES];
   [view release];
@@ -227,7 +227,7 @@ void SignalHandler(int sig) {
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-  NSLog(@"didReceiveRemoteNotification:\n");
+  DLog(@"didReceiveRemoteNotification:\n");
   [self handlePushNotification:userInfo];
   
   BOOL appInactive = [UIApplication sharedApplication].applicationState == UIApplicationStateInactive;
@@ -373,10 +373,10 @@ void SignalHandler(int sig) {
         NSDictionary* resources = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Resources"];
         self.serverURL = [resources objectForKey:@"serverURL"];
         
-        NSLog(@"Application Server URL : %@", _serverURL);
+        DLog(@"Application Server URL : %@", _serverURL);
     }
 
-    NSLog(@"Application Server URL : %@", _serverURL);
+    DLog(@"Application Server URL : %@", _serverURL);
     return _serverURL;    
 }
 

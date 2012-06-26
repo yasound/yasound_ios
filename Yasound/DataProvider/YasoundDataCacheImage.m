@@ -52,7 +52,7 @@ static YasoundDataCacheImageManager* _main;
 // be careful
 - (void)clear
 {
-    NSLog(@"YasoundDataCacheImageManager::clear : empty the cache and the DB");
+    DLog(@"YasoundDataCacheImageManager::clear : empty the cache and the DB");
     [self resetDB];
 }
 
@@ -72,11 +72,11 @@ static YasoundDataCacheImageManager* _main;
     {
         NSString* filepath = [s stringForColumnIndex:1];
         BOOL res = [[NSFileManager defaultManager] removeItemAtPath:filepath error:nil];
-        NSLog(@"YasoundDataCacheImage clearItem delete image %d", res);
+        DLog(@"YasoundDataCacheImage clearItem delete image %d", res);
 
     }
     else
-        NSLog(@"YasoundDataCacheImage clearItem error getting the image filepath");
+        DLog(@"YasoundDataCacheImage clearItem error getting the image filepath");
     
 
     [self.db beginTransaction];
@@ -86,7 +86,7 @@ static YasoundDataCacheImageManager* _main;
 
     [self.db commit];
     
-    NSLog(@"YasoundDataCacheImage clearItem result %d for Url %@", res, strurl);
+    DLog(@"YasoundDataCacheImage clearItem result %d for Url %@", res, strurl);
 }
 
 
@@ -101,7 +101,7 @@ static YasoundDataCacheImageManager* _main;
     BOOL res = [[NSFileManager defaultManager] removeItemAtPath:self.cacheDirectory error:&error];
     if (!res)
     {
-        NSLog(@"error deleting the cache directory! Error - %@", [error localizedDescription]);
+        DLog(@"error deleting the cache directory! Error - %@", [error localizedDescription]);
         assert(0);
     }
     
@@ -118,7 +118,7 @@ static YasoundDataCacheImageManager* _main;
     res = [[NSFileManager defaultManager] removeItemAtPath:dbPath error:&error];
     if (!res)
     {
-        NSLog(@"error deleting the DB file! Error - %@", [error localizedDescription]);
+        DLog(@"error deleting the DB file! Error - %@", [error localizedDescription]);
         assert(0);
     }
 
@@ -155,7 +155,7 @@ static YasoundDataCacheImageManager* _main;
     if (!res)
     {
         self.cacheDirectory = nil;
-        NSLog(@"error creating the cache directory! Error - %@", [error localizedDescription]);
+        DLog(@"error creating the cache directory! Error - %@", [error localizedDescription]);
     }
 
     
@@ -167,7 +167,7 @@ static YasoundDataCacheImageManager* _main;
     self.db = [FMDatabase databaseWithPath:dbPath];
     if (![self.db open]) 
     {
-        NSLog(@"YasoundDataCache error : could not open the db file.");
+        DLog(@"YasoundDataCache error : could not open the db file.");
         [self.db release];
     }      
     else 
@@ -175,7 +175,7 @@ static YasoundDataCacheImageManager* _main;
         BOOL res = [self.db tableExists:@"imageRegister"];
         if (!res)
         {
-            NSLog(@"YasoundDataCache create database imageRegister table");
+            DLog(@"YasoundDataCache create database imageRegister table");
             [self.db executeUpdate:@"CREATE TABLE imageRegister (url VARCHAR(255), filepath VARCHAR(255), last_access timestamp, filesize INTEGER)"];
         }
     }
@@ -189,9 +189,9 @@ static YasoundDataCacheImageManager* _main;
     if (count == 0)
         return;
     
-    NSLog(@"\n\n-------------------------------------------\nSQLITE imageRegister dump\n");
+    DLog(@"\n\n-------------------------------------------\nSQLITE imageRegister dump\n");
     
-    NSLog(@"%d elements in db", count);
+    DLog(@"%d elements in db", count);
     
     FMResultSet* s = [db executeQuery:@"SELECT * FROM imageRegister"];
     NSInteger counter = 0;
@@ -210,11 +210,11 @@ static YasoundDataCacheImageManager* _main;
         NSMutableString* short_filepath = @"...";
         short_filepath = [short_filepath stringByAppendingString:[filepath substringWithRange:range]];
         
-        NSLog(@"%d. %@ - %@ - %@ - %d", counter, url, short_filepath, last_access, filesize);
+        DLog(@"%d. %@ - %@ - %@ - %d", counter, url, short_filepath, last_access, filesize);
         counter++;
     }
     
-    NSLog(@"end.\n----------------------------------------------\n");
+    DLog(@"end.\n----------------------------------------------\n");
 }
 
 
@@ -224,7 +224,7 @@ static YasoundDataCacheImageManager* _main;
     if (currentRegisteredSize < _dbSizeMax)
         return;
     
-    NSLog(@"YasoundDataCacheImage start Garbage Collector : current size %d vs max size %d", currentRegisteredSize, _dbSizeMax);
+    DLog(@"YasoundDataCacheImage start Garbage Collector : current size %d vs max size %d", currentRegisteredSize, _dbSizeMax);
     
     // get all the registered images, ordered from the oldest one to the newer one
     FMResultSet* s = [db executeQuery:@"SELECT * FROM imageRegister ORDER BY last_access ASC"];
@@ -242,7 +242,7 @@ static YasoundDataCacheImageManager* _main;
         
         if (!res)
         {
-            NSLog(@"error deleting the file from the cache disk! Error - %@", [error localizedDescription]);
+            DLog(@"error deleting the file from the cache disk! Error - %@", [error localizedDescription]);
             continue;
         }
         
@@ -258,10 +258,10 @@ static YasoundDataCacheImageManager* _main;
         done = (currentRegisteredSize < _dbSizeMax);
         
         counter++;
-        NSLog(@"deleted file %@ for url %@", filepath, url);
+        DLog(@"deleted file %@ for url %@", filepath, url);
     }
     
-    NSLog(@"\ndeleted %d files", counter);
+    DLog(@"\ndeleted %d files", counter);
 
     
     // things back to normal, we are below the limit.
@@ -271,8 +271,8 @@ static YasoundDataCacheImageManager* _main;
     // dont have a choice, we have to delete the whole thing
     if (currentRegisteredSize > _dbSizeMax)
     {
-        NSLog(@"extreme case! we are still above the limit : %d vs %d", currentRegisteredSize, _dbSizeMax);
-        NSLog(@"reset the DB and cache!");
+        DLog(@"extreme case! we are still above the limit : %d vs %d", currentRegisteredSize, _dbSizeMax);
+        DLog(@"reset the DB and cache!");
         [self resetDB];
     }
 
@@ -366,7 +366,7 @@ static YasoundDataCacheImageManager* _main;
         self.targets = [[NSMutableArray alloc] init];
         self.isDownloading = NO;
         
-        NSLog(@"YasoundDataCacheImage initWithUrl %@", aUrl);
+        DLog(@"YasoundDataCacheImage initWithUrl %@", aUrl);
         
         // try to import the image from the disk
         FMResultSet* s = [[YasoundDataCacheImageManager main].db executeQuery:@"SELECT * FROM imageRegister WHERE url=?", self.url];
@@ -445,7 +445,7 @@ static YasoundDataCacheImageManager* _main;
     
     if (!connection) 
     {
-        NSLog(@"YasoundDataCache requestImageToServer : connection did fail!");
+        DLog(@"YasoundDataCache requestImageToServer : connection did fail!");
         self.isDownloading = NO;
         
         [[YasoundDataCacheImageManager main] loop];
@@ -476,7 +476,7 @@ static YasoundDataCacheImageManager* _main;
     [self.receivedData release];
     
     // inform the user
-    NSLog(@"YasoundDataCacheImage Connection failed! Error - %@ %@",
+    DLog(@"YasoundDataCacheImage Connection failed! Error - %@ %@",
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
     
@@ -486,7 +486,7 @@ static YasoundDataCacheImageManager* _main;
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSLog(@"connectionDidFinishLoading for image %@", self.url);
+    DLog(@"connectionDidFinishLoading for image %@", self.url);
 
     self.image = [[UIImage alloc] initWithData:self.receivedData];
     
@@ -505,7 +505,7 @@ static YasoundDataCacheImageManager* _main;
         // something went wront
         if (!res)
         {
-            NSLog(@"error writing the file '%@'! Error - %@", filePath, [error localizedDescription]);
+            DLog(@"error writing the file '%@'! Error - %@", filePath, [error localizedDescription]);
         }
         
         // everything's fine. write the info down to the image register

@@ -180,10 +180,10 @@
   if (!entries || entries.count == 0)
     return;
   
-  NSLog(@"%d entries in leaderboard", entries.count);
+  DLog(@"%d entries in leaderboard", entries.count);
   for (LeaderBoardEntry* entry in entries)
   {
-    NSLog(@"%@ - %@: %@ favorites %@", entry.leaderboard_rank, entry.name, entry.leaderboard_favorites, [entry isUserRadio] ? @"(user's radio)" : @"");
+    DLog(@"%@ - %@: %@ favorites %@", entry.leaderboard_rank, entry.name, entry.leaderboard_favorites, [entry isUserRadio] ? @"(user's radio)" : @"");
   }
   
   _leaderboard = entries;
@@ -451,7 +451,7 @@
 
     
     
-//    NSLog(@"cell nil : section %d  row %d", indexPath.section, indexPath.row);
+//    DLog(@"cell nil : section %d  row %d", indexPath.section, indexPath.row);
     
   return cell;
 }

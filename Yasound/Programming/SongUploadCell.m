@@ -253,7 +253,7 @@
 
 - (void)songUploadDidFinish:(Song*)song info:(NSDictionary*)info
 {
-    NSLog(@"songUploadDidFinish : info %@", info);
+    DLog(@"songUploadDidFinish : info %@", info);
 
     BOOL succeeded = NO;
     succeeded = [[info objectForKey:@"succeeded"] boolValue];

@@ -558,7 +558,7 @@
     // set radio title
     _myRadio.name = textField.text;
     
-    NSLog(@"Radio name has changed for '%@'", _myRadio.name);
+    DLog(@"Radio name has changed for '%@'", _myRadio.name);
 }
 
 
@@ -604,7 +604,7 @@
 
 - (void)didSelectStyle:(NSString*)style
 {
-    NSLog(@"didSelectStyle : %@", style);
+    DLog(@"didSelectStyle : %@", style);
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
     
     UITableViewCell* cell = [_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ROW_CONFIG_GENRE inSection:SECTION_CONFIG]];
@@ -768,14 +768,14 @@
     // empty the cache for radios (to let the change on name / genre appear)
     [[YasoundDataCache main] clearRadiosAll];
 
-    NSLog(@"send update request for radio '%@'", _myRadio.name);
+    DLog(@"send update request for radio '%@'", _myRadio.name);
     
     [[YasoundDataProvider main] updateRadio:_myRadio target:self action:@selector(onRadioUpdated:info:)];
 }
 
 - (void)onRadioUpdated:(Radio*)radio info:(NSDictionary*)info
 {
-    NSLog(@"onRadioUpdated '%@', info %@", radio.name, info);
+    DLog(@"onRadioUpdated '%@', info %@", radio.name, info);
     
     if (_settingsImageChanged)
     {
@@ -788,7 +788,7 @@
 
 - (void)onRadioImageUpdate:(NSString*)msg info:(NSDictionary*)info
 {
-    NSLog(@"onRadioImageUpdate info %@", info);
+    DLog(@"onRadioImageUpdate info %@", info);
     
   // be sure to get updated radio (with correct picture)
   [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPictureUpdate:withInfo:)];

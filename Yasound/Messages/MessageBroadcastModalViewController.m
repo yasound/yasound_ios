@@ -123,7 +123,7 @@
 
 - (void)onPostMessageFinished:(NSNumber*)finished withInfo:(NSDictionary*)infos
 {
-    //NSLog(@"info %@", infos);
+    //DLog(@"info %@", infos);
     [ActivityAlertView close];    
     
     if (_target == nil)

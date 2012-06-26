@@ -118,7 +118,7 @@
 //
 //- (void)bitlyURLShortener:(BitlyURLShortener *)shortener didFailForLongURL:(NSURL *)longURL statusCode:(NSInteger)statusCode statusText:(NSString *)statusText 
 //{
-//    NSLog(@"Shortening failed for link %@: status code: %d, status text: %@", [longURL absoluteString], statusCode, statusText);
+//    DLog(@"Shortening failed for link %@: status code: %d, status text: %@", [longURL absoluteString], statusCode, statusText);
 //    [self fillView];
 //}
 
@@ -181,7 +181,7 @@
     
     NSString* title = NSLocalizedString(@"Yasound_share", nil);
     
-    NSLog(@"Share on twitter.");
+    DLog(@"Share on twitter.");
     [[YasoundSessionManager main] postMessageForTwitter:_textView.text title:title picture:self.pictureUrl target:self action:@selector(onPostMessageFinished:)];
     
     [ActivityAlertView showWithTitle:nil];
@@ -195,7 +195,7 @@
 
     [ActivityAlertView close];
 
-    NSLog(@"onPostMessageFinished received : finished %d", done);
+    DLog(@"onPostMessageFinished received : finished %d", done);
 
     if (!done)
     {

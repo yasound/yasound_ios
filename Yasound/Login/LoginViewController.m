@@ -187,6 +187,8 @@
         NSString* message = nil;
         if (info != nil)
         {
+            DLog(@"socialLoginReturned with info %@", info);
+            
             NSString* errorValue = [info objectForKey:@"error"];
           if ([errorValue isEqualToString:@"Cancel"])
             message = nil;

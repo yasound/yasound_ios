@@ -22,12 +22,12 @@ static Theme* _theme = nil;
                 
         if (bundlePath == nil)
         {
-            NSLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);
+            DLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);
             assert(0);
             return nil;
         }
                 
-        NSLog(@"setTheme from bundle %@", bundlePath);
+        DLog(@"setTheme from bundle %@", bundlePath);
         
         NSDictionary* dictionary = [NSDictionary dictionaryWithContentsOfFile:bundlePath];
         NSDictionary* stylesheet = [dictionary objectForKey:@"stylesheet"];
@@ -36,6 +36,23 @@ static Theme* _theme = nil;
     }
     
     return _theme;
+}
+
+
+
+- (id)initWithBundleName:(NSString*)bundleName;
+{
+    NSString* bundlePath = [[NSBundle mainBundle] pathForResource:bundleName ofType:@"bundle"];
+    
+    if (bundlePath == nil)
+    {
+        DLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);
+        assert(0);
+        return nil;
+    }
+    
+    self = [super initWithPath:bundlePath];
+    return self;
 }
 
 
@@ -82,8 +99,6 @@ static Theme* _theme = nil;
 //    self = [super initWithPath:bundlePath];
 //    return self;
 //}
-
-
 
 
 

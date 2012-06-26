@@ -205,10 +205,10 @@
 - (NSError*)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute withAuth:(Auth*)auth
 {
     NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
-    NSLog(@"post data url '%@'", u.absoluteString);
+    DLog(@"post data url '%@'", u.absoluteString);
     if (!u)
     {
-        NSLog(@"post data: invalid url");
+        DLog(@"post data: invalid url");
     }
     
     ASIFormDataRequest* req = [[ASIFormDataRequest alloc] initWithURL:u];
@@ -217,7 +217,7 @@
     [self fillRequest:req];
     [req startSynchronous];
     NSString* response = req.responseString;
-    NSLog(@"post data response: %@", response);
+    DLog(@"post data response: %@", response);
     NSError* error = [NSError errorWithDomain:req.responseString code:req.responseStatusCode userInfo:nil];
     return error;
 }
@@ -485,10 +485,10 @@
 - (ASIFormDataRequest*)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
     NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
-    NSLog(@"post data url '%@'", u.absoluteString);
+    DLog(@"post data url '%@'", u.absoluteString);
     if (!u)
     {
-        NSLog(@"post data: invalid url");
+        DLog(@"post data: invalid url");
         return NULL;
     }
     
@@ -513,10 +513,10 @@
 - (ASIFormDataRequest*)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth withProgress:(id)progressDelegate
 {
     NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
-    NSLog(@"post data url '%@'", u.absoluteString);
+    DLog(@"post data url '%@'", u.absoluteString);
     if (!u)
     {
-        NSLog(@"post data: invalid url");
+        DLog(@"post data: invalid url");
         return NULL;
     }
     
@@ -542,10 +542,10 @@
 - (ASIFormDataRequest*)postData:(NSData*)data withKey:(NSString*)key toURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth withProgress:(id)progressDelegate withAdditionalJsonData:(NSString*)jsonData
 {
     NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
-    NSLog(@"post data url '%@'", u.absoluteString);
+    DLog(@"post data url '%@'", u.absoluteString);
     if (!u)
     {
-        NSLog(@"post data: invalid url");
+        DLog(@"post data: invalid url");
         return NULL;
     }
     
@@ -1044,10 +1044,10 @@
 - (ASIFormDataRequest*)buildPostRequestToURL:(NSString *)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary *)userData withAuth:(Auth *)auth
 {
     NSURL* u = [self urlWithURL:url absolute:absolute addTrailingSlash:YES params:nil];
-    NSLog(@"postRequestToURL '%@'", u.absoluteString);
+    DLog(@"postRequestToURL '%@'", u.absoluteString);
     if (!u)
     {
-        NSLog(@"postRequestToURL: invalid url");
+        DLog(@"postRequestToURL: invalid url");
         return NULL;
     }
     
@@ -1072,7 +1072,7 @@
 {
     NSURL* url = [self urlWithURL:path absolute:isAbsolute addTrailingSlash:YES params:nil];
     
-    NSLog(@"post url %@", url.absoluteString);
+    DLog(@"post url %@", url.absoluteString);
     
     ASIHTTPRequest* req = [ASIHTTPRequest requestWithURL:url];
     req.requestMethod = @"POST";

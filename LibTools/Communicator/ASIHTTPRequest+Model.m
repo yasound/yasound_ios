@@ -39,10 +39,6 @@
 {
     NSString* respString = self.responseString;
     
-    //LBDEBUG
-    NSLog(@"%@", respString);
-    NSLog(@"length %d", respString.length);
-    
     Container* container = [[Container alloc] initWithObjectClass:ModelClass];
     [container loadPropertiesFromJsonString:respString];
     return container;

@@ -107,14 +107,14 @@ static YasoundReachability* _main = nil;
 
 //- (void)internalChanged
 //{
-//    NSLog(@"internalChanged");
+//    DLog(@"internalChanged");
 //    
 //}
 //
 //
 //- (void)localWifiChanged
 //{
-//    NSLog(@"localWifiChanged");
+//    DLog(@"localWifiChanged");
 //    
 //}
 //
@@ -125,7 +125,7 @@ static YasoundReachability* _main = nil;
 {
 //    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
     
-    NSLog(@"reachabilityChanged");
+    DLog(@"reachabilityChanged");
     
     Reachability* r = [note object];
 
@@ -139,9 +139,9 @@ static YasoundReachability* _main = nil;
             _connectionIsBack = YES;
             
             if (_networkStatus == ReachableViaWiFi)
-                NSLog(@"_connectionIsBack in WIFI");
+                DLog(@"_connectionIsBack in WIFI");
             else
-                NSLog(@"_connectionIsBack in WWAN");
+                DLog(@"_connectionIsBack in WWAN");
 
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_REACHABILITY_CHANGED object:nil];
         } 
@@ -149,7 +149,7 @@ static YasoundReachability* _main = nil;
         {
             self.hasNetwork = YR_NO;
             
-            NSLog(@"no _connection");
+            DLog(@"no _connection");
             
             // network connection is back
             if (_target != nil)
@@ -169,14 +169,14 @@ static YasoundReachability* _main = nil;
     
         if (_networkStatus != NotReachable)
         {
-            NSLog(@"_host is reachable");
+            DLog(@"_host is reachable");
 
             self.isReachable = YR_YES;
             self.hasNetwork = YR_YES; 
         } 
         else
         {
-            NSLog(@"_host is not reachable");
+            DLog(@"_host is not reachable");
 
             if (_connectionIsBack)
             {

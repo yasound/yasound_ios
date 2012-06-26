@@ -114,7 +114,7 @@
 
     if (!success)
     {
-        NSLog(@"get user notifications FAILED");
+        DLog(@"get user notifications FAILED");
         return;
     }
     
@@ -122,8 +122,8 @@
     NSArray* newNotifications = container.objects;
     
     if (newNotifications == nil)
-        NSLog(@"error receiving notifications");
-    NSLog(@"%d notifications received", newNotifications.count);
+        DLog(@"error receiving notifications");
+    DLog(@"%d notifications received", newNotifications.count);
     
     if ((newNotifications == nil) || (self.notifications == nil))
     {
@@ -165,7 +165,7 @@
     
     if (!success)
     {
-        NSLog(@"get user notifications FAILED");
+        DLog(@"get user notifications FAILED");
         return;
     }
     
@@ -325,33 +325,35 @@
 {
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
     
-    
-    
     UserNotification* notif = [self.notifications objectAtIndex:indexPath.row];
     
-    NSLog(@"select notif %@", notif.type);
-    NSLog(@"params %@", notif.params);
-    
-    [notif setReadBool:YES];
-    
-    // consider it as being read 
-    NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
-    [cell updateWithNotification:notif];
-    [[YasoundDataProvider main] updateUserNotification:notif target:self action:@selector(updatedUserNotification:success:)];
-    
-    
-    
-    if ([notif.type isEqualToString:APNS_NOTIF_FRIEND_ONLINE])
+    DLog(@"select notif %@", notif.type);
+    DLog(@"params %@", notif.params);
+
+    if (![notif isReadBool])
     {
-      NSLog(@"go to friend screen");
-      User* user = [[User alloc] init];
-      user.id = notif.dest_user_id;
+        [notif setReadBool:YES];
         
-      if (user.id != nil)
-        [self goToFriendProfile: user];
-      else
-        [self goToFriendsViewController];
+        // consider it as being read 
+        NotificationCenterTableViewcCell* cell =  (NotificationCenterTableViewcCell*)[_tableView cellForRowAtIndexPath:indexPath];
+        [cell updateWithNotification:notif];
+        [[YasoundDataProvider main] updateUserNotification:notif target:self action:@selector(updatedUserNotification:success:)];
+        
+        return;
+    }
     
+    
+    
+    if ([notif.type isEqualToString:APNS_NOTIF_FRIEND_ONLINE]
+        || [notif.type isEqualToString:APNS_NOTIF_SONG_LIKED]
+        || [notif.type isEqualToString:APNS_NOTIF_RADIO_IN_FAVORITES]
+        || [notif.type isEqualToString:APNS_NOTIF_RADIO_SHARED]
+        || [notif.type isEqualToString:APNS_NOTIF_FRIEND_CREATED_RADIO]
+        || [notif.type isEqualToString:APNS_NOTIF_USER_IN_RADIO]
+        || [notif.type isEqualToString:APNS_NOTIF_FRIEND_IN_RADIO]
+        )
+    {
+        [self goToFriendsViewController];
         return;
     }
     
@@ -361,7 +363,7 @@
         NSString* url = [notif.params objectForKey:@"url"];
         assert(url != nil);
         
-        NSLog(@"go to web page %@", url);
+        DLog(@"go to web page %@", url);
         [self goToMessageWebView:url];
         return;
     }
@@ -374,13 +376,18 @@
         [view release];
         return;
     }
+
     
-    if ([notif.type isEqualToString:APNS_NOTIF_USER_MESSAGE])
+    if ([notif.type isEqualToString:APNS_NOTIF_MESSAGE_POSTED])
     {
+        [self goToRadio:[YasoundDataProvider main].radio.id];
+        return;
     }
+    
+    
     if (notif.from_radio_id != nil)
     {
-        NSLog(@"go to radio %@", notif.from_radio_id);
+        DLog(@"go to radio %@", notif.from_radio_id);
         [self goToRadio:notif.from_radio_id];
         return;
     }
@@ -388,7 +395,7 @@
     NSNumber* radioID = [notif.params objectForKey:@"radioID"];
     if (radioID != nil)
     {
-      NSLog(@"go to radio %@", radioID);
+      DLog(@"go to radio %@", radioID);
       [self goToRadio:radioID];
     }
 
@@ -401,7 +408,7 @@
 {
     if (!success)
     {
-        NSLog(@"update notification FAILED");
+        DLog(@"update notification FAILED");
         return;
     }
 
@@ -431,7 +438,7 @@
 {
     if (!success)
     {
-        NSLog(@"delete notification FAILED");
+        DLog(@"delete notification FAILED");
         return;
     }
     
@@ -444,11 +451,11 @@
 {
     if (!success)
     {
-        NSLog(@"delete all notifications FAILED");
+        DLog(@"delete all notifications FAILED");
         return;
     }
 
-    NSLog(@"delete all notifications OK");
+    DLog(@"delete all notifications OK");
 
     [self.notifications removeAllObjects];
     [self.notificationsDictionary removeAllObjects];
@@ -504,7 +511,7 @@
 
 - (void)askForPreviousEvents
 {
-    NSLog(@"ask for previous events");
+    DLog(@"ask for previous events");
     if (_waitingForPreviousEvents)
         return;
     

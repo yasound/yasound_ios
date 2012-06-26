@@ -49,7 +49,7 @@ static SongUploader* _main = nil;
   if (_tempSongFile) 
     [_tempSongFile release];
 
-    NSLog(@"SongUploader dealloc");
+    DLog(@"SongUploader dealloc");
     
     [super dealloc];
 }
@@ -123,7 +123,7 @@ static SongUploader* _main = nil;
   NSURL *assetURL = [item valueForProperty:MPMediaItemPropertyAssetURL];
   if (assetURL == nil) 
   {
-    NSLog(@"assertURL is nil for %@", item);
+    DLog(@"assertURL is nil for %@", item);
     return FALSE;
   }
   
@@ -144,7 +144,7 @@ static SongUploader* _main = nil;
   NSError *error;
   [fileMgr removeItemAtPath:fullPath error:&error];
   
-  //NSLog(@"SongUploader %@", fullPath);
+  //DLog(@"SongUploader %@", fullPath);
     
     if (_tempSongFile)
         [_tempSongFile release];
@@ -159,7 +159,7 @@ static SongUploader* _main = nil;
     if (import.status != AVAssetExportSessionStatusCompleted) 
     {
       // something went wrong with the import
-      NSLog(@"Error importing: %@", import.error);
+      DLog(@"Error importing: %@", import.error);
       [import release];
       import = nil;
         
