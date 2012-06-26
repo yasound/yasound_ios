@@ -306,14 +306,14 @@
   }
 #endif
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
     UIImage* image = [sheet image];
     CGFloat height = image.size.height;
     UIImageView* view = [[UIImageView alloc] initWithImage:image];
     view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
     
-    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* label = [sheet makeLabel];
     label.text = title;
     [view addSubview:label];

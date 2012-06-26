@@ -36,7 +36,7 @@
         self.userInteractionEnabled = YES;
 
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         
         CGRect frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
         self.frame = frame;
@@ -62,32 +62,32 @@
       else
       {
         // fake image
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.Wall.NowPlaying.NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         imageView = [[UIImageView alloc] initWithImage:[sheet image]];
       }
         
         
         
         // header now playing bar track image 
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.NowPlayingBarImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         imageView.frame = sheet.frame;
         [self addSubview:imageView];
         
 //        // header now playing bar track image mask
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.NowPlayingBarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.trackImageMask = [[UIImageView alloc] initWithImage:[sheet image]];
         self.trackImageMask.frame = sheet.frame;
         [self addSubview:self.trackImageMask];
 
         // header now playing bar info (artist - title)
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarInfo" error:nil];
-        ScrollingLabel* title = [[ScrollingLabel alloc] initWithStyle:@"NowPlayingBarInfo"];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.NowPlayingBarInfo" error:nil];
+        ScrollingLabel* title = [[ScrollingLabel alloc] initWithStyle:@"Wall.NowPlaying.NowPlayingBarInfo"];
         title.text = [NSString stringWithFormat:@"%@ - %@", song.artist, song.name];
         title.frame = sheet.frame;
         [self addSubview:title];
                                  
         
-//        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarInfo" error:nil];
+//        sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.NowPlayingBarInfo" error:nil];
 //        UILabel* label = [sheet makeLabel];
 //        label.text = [NSString stringWithFormat:@"%@ - %@", song.artist, song.name];
 //        [self addSubview:label];
@@ -100,7 +100,7 @@
         [self addSubview:self.trackInteractionView];
         
         // header now playing bar likes
-        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarLikes" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.NowPlayingBarLikes" error:nil];
         _likesLabel = [sheet makeLabel];
         [self setNbLikes:0];
 
@@ -117,7 +117,7 @@
         
         
 //        //play pause button
-//        sheet = [[Theme theme] stylesheetForKey:@"NowPlayingPlayPauseFrame" error:nil];
+//        sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.NowPlayingPlayPauseFrame" error:nil];
 //        frame = sheet.frame;
 //        self.playPauseButton = [[UIButton alloc] initWithFrame:sheet.frame];
 //        

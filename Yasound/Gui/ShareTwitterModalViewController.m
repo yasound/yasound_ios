@@ -76,12 +76,12 @@
     else
     {
         // fake image
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.Wall.NowPlaying.NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         [_image setImage:[sheet image]];
     }
 
     //mask
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"HeaderAvatarMask" error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Header.HeaderAvatarMask" error:nil];
     [_mask setImage:[sheet image]];
 
     [_textView becomeFirstResponder];

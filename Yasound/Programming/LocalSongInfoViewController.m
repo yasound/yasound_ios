@@ -173,15 +173,15 @@
         [cell addSubview:_imageView];
 
         // name, artist, album
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         _name = [sheet makeLabel];
         [cell addSubview:_name];
 
-        sheet = [[Theme theme] stylesheetForKey:@"SongView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         _artist = [sheet makeLabel];
         [cell addSubview:_artist];
 
-        sheet = [[Theme theme] stylesheetForKey:@"SongView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         _album = [sheet makeLabel];
         [cell addSubview:_album];
 

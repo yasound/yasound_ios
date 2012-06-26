@@ -174,7 +174,7 @@
 //            else
 //            {
 //                // fake image
-//                sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//                sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.Wall.NowPlaying.NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //                imageView = [[UIImageView alloc] initWithImage:[sheet image]];
 //            }
 //
@@ -190,7 +190,7 @@
             else
             {
                 // fake image
-                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.Wall.NowPlaying.NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
                 _imageView = [[WebImageView alloc] initWithImage:[sheet image]];
             }
             
@@ -201,15 +201,15 @@
             [cell addSubview:_imageView];
             
             // name, artist, album
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _name = [sheet makeLabel];
             [cell addSubview:_name];
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _artist = [sheet makeLabel];
             [cell addSubview:_artist];
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _album = [sheet makeLabel];
             [cell addSubview:_album];
 
@@ -220,7 +220,7 @@
 //            else
 //                laststr = @"-";
 //
-//            sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_lastRead" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_lastRead" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //            UILabel* label = [sheet makeLabel];
 //            label.text = [NSString stringWithFormat:@"%@ : %@", NSLocalizedString(@"SongView_lastRead", nil), laststr];
 //            [cell addSubview:label];
@@ -229,7 +229,7 @@
 
             
             // track interaction buttons
-            sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_trackInteractionView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_trackInteractionView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             TrackInteractionView* view = [[TrackInteractionView alloc] initWithSong:self.song];
             view.frame = sheet.frame;
 //            view.frame = CGRectMake(8, 350, 320, 60);
@@ -239,7 +239,7 @@
             [view.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
 
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongPublicView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _likesLabel = [sheet makeLabel];
             _likesLabel.text = [NSString stringWithFormat:@"%@", self.song.likes];
             [cell addSubview:_likesLabel];

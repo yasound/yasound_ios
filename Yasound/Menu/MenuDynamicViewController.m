@@ -82,13 +82,13 @@
     
     _tableView.backgroundColor =  [UIColor colorWithRed:0.35 green:0.35 blue:0.35 alpha:1];
 
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _tableView.sectionHeaderHeight = sheet.frame.size.height;
 
-    sheet = [[Theme theme] stylesheetForKey:@"MenuRowSingle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuRowSingle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     _tableView.rowHeight = sheet.frame.size.height;
     
-    sheet = [[Theme theme] stylesheetForKey:@"MenuBackground" error:nil];    
+    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuBackground" error:nil];    
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
@@ -220,12 +220,12 @@
     
     NSString* title = [dicoSection objectForKey:@"name"];
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 
     UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
     view.frame = CGRectMake(0, 0, tableView.bounds.size.width, 44);
     
-    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* label = [sheet makeLabel];
     label.text = title;
     [view addSubview:label];
@@ -248,25 +248,25 @@
     
     if (indexPath.row == 0)
     {
-        style = @"MenuRowFirst";
-        selectedStyle = @"MenuRowFirstSelected";
+        style = @"Menu.MenuRowFirst";
+        selectedStyle = @"Menu.MenuRowFirstSelected";
     }
     
     else if ( (indexPath.section == (self.sections.count -1)) && (indexPath.row == (rows.count -1)))
     {
-        style = @"MenuRowInter";        
-        selectedStyle = @"MenuRowFirstSelected";
+        style = @"Menu.MenuRowInter";        
+        selectedStyle = @"Menu.MenuRowFirstSelected";
     }
     
     else if (indexPath.row == (rows.count -1))
     {
-        style = @"MenuRowLast";    
-        selectedStyle = @"MenuRowFirstSelected";
+        style = @"Menu.MenuRowLast";    
+        selectedStyle = @"Menu.MenuRowFirstSelected";
     }
     else
     {
-        style = @"MenuRowInter";        
-        selectedStyle = @"MenuRowFirstSelected";
+        style = @"Menu.MenuRowInter";        
+        selectedStyle = @"Menu.MenuRowFirstSelected";
     }
 
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:style retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -330,6 +330,7 @@
         }
         else
         {
+            imageRef = [NSString stringWithFormat:@"Icons.%@", imageRef];
             sheet = [[Theme theme] stylesheetForKey:imageRef retainStylesheet:YES overwriteStylesheet:NO error:&error];
             
             if (error == nil)

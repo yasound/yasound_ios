@@ -22,9 +22,9 @@
     {
       _user = nil;
       
-        BundleStylesheet* imageSheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        BundleStylesheet* maskSheet = [[Theme theme] stylesheetForKey:@"CellAvatarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-      BundleStylesheet* nameSheet = [[Theme theme] stylesheetForKey:@"StatusBarUserName" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* imageSheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* maskSheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellAvatarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+      BundleStylesheet* nameSheet = [[Theme theme] stylesheetForKey:@"Wall.Status.StatusBarUserName" retainStylesheet:YES overwriteStylesheet:NO error:nil];
       
       CGRect nameRect = nameSheet.frame;
         CGRect imageRect = imageSheet.frame;

@@ -44,14 +44,14 @@
         [self addSubview:button];
     
         
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongUpload_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Uploads.SongUpload_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.label = [sheet makeLabel];
     self.label.text = [NSString stringWithFormat:@"%@ - %@", item.song.name, item.song.artist];
     [self addSubview:self.label];
         
         
         // status label
-        sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Uploads.SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.labelStatus = [sheet makeLabel];
         self.labelStatus.text = @"";
         [self addSubview:self.labelStatus];
@@ -61,12 +61,12 @@
 
         if (self.progressView == nil)
         {
-            sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"Uploads.SongUpload_progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
             self.progressView.frame = sheet.frame;
             [self addSubview:self.progressView];
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongUpload_progressLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"Uploads.SongUpload_progressLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             self.progressLabel = [sheet makeLabel];
             self.progressLabel.text = NSLocalizedString(@"SongUpload_progress_prepare", nil);
             [self addSubview:self.progressLabel];

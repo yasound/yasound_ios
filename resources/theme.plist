@@ -28,6 +28,81 @@
 		</dict>
 		<key>Wall</key>
 		<dict>
+			<key>Moderation</key>
+			<dict>
+				<key>CellModerIconSpam</key>
+				<dict>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>normal</key>
+					<string>iconModerSpam</string>
+					<key>highlighted</key>
+					<string>iconModerSpamHighlighted</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>CellModerIconKick</key>
+				<dict>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>normal</key>
+					<string>iconModerKick</string>
+					<key>highlighted</key>
+					<string>iconModerKickHighlighted</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>CellModerIconTrash</key>
+				<dict>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>normal</key>
+					<string>iconModerTrash</string>
+					<key>highlighted</key>
+					<string>iconModerTrashHilighted</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>CellModerShadowBottom</key>
+				<dict>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>normal</key>
+					<string>viewModerShadowBottom</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>CellModerShadowTop</key>
+				<dict>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>normal</key>
+					<string>viewModerShadowTop</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>CellModerShadowLeft</key>
+				<dict>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>normal</key>
+					<string>viewModerShadowLeft</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+			</dict>
 			<key>ViewContainer</key>
 			<dict>
 				<key>x</key>
@@ -99,28 +174,6 @@
 			</dict>
 			<key>Likes</key>
 			<dict>
-				<key>LikeCellDate</key>
-				<dict>
-					<key>font</key>
-					<dict>
-						<key>size</key>
-						<integer>11</integer>
-						<key>textColor</key>
-						<string>rgb(196,196,196)</string>
-						<key>textAlignement</key>
-						<string>right</string>
-						<key>name</key>
-						<string>Arial</string>
-					</dict>
-					<key>height</key>
-					<integer>12</integer>
-					<key>width</key>
-					<integer>70</integer>
-					<key>x</key>
-					<integer>240</integer>
-					<key>y</key>
-					<integer>7</integer>
-				</dict>
 				<key>LikeCellMessage</key>
 				<dict>
 					<key>font</key>
@@ -368,78 +421,6 @@
 				<dict>
 					<key>minHeight</key>
 					<integer>60</integer>
-				</dict>
-				<key>CellModerShadowLeft</key>
-				<dict>
-					<key>x</key>
-					<integer>0</integer>
-					<key>y</key>
-					<integer>0</integer>
-					<key>normal</key>
-					<string>viewModerShadowLeft</string>
-					<key>type</key>
-					<string>png</string>
-				</dict>
-				<key>CellModerShadowBottom</key>
-				<dict>
-					<key>x</key>
-					<integer>0</integer>
-					<key>y</key>
-					<integer>0</integer>
-					<key>normal</key>
-					<string>viewModerShadowBottom</string>
-					<key>type</key>
-					<string>png</string>
-				</dict>
-				<key>CellModerShadowTop</key>
-				<dict>
-					<key>x</key>
-					<integer>0</integer>
-					<key>y</key>
-					<integer>0</integer>
-					<key>normal</key>
-					<string>viewModerShadowTop</string>
-					<key>type</key>
-					<string>png</string>
-				</dict>
-				<key>CellModerIconTrash</key>
-				<dict>
-					<key>x</key>
-					<integer>0</integer>
-					<key>y</key>
-					<integer>0</integer>
-					<key>normal</key>
-					<string>iconModerTrash</string>
-					<key>highlighted</key>
-					<string>iconModerTrashHilighted</string>
-					<key>type</key>
-					<string>png</string>
-				</dict>
-				<key>CellModerIconKick</key>
-				<dict>
-					<key>x</key>
-					<integer>0</integer>
-					<key>y</key>
-					<integer>0</integer>
-					<key>normal</key>
-					<string>iconModerKick</string>
-					<key>highlighted</key>
-					<string>iconModerKickHighlighted</string>
-					<key>type</key>
-					<string>png</string>
-				</dict>
-				<key>CellModerIconSpam</key>
-				<dict>
-					<key>x</key>
-					<integer>0</integer>
-					<key>y</key>
-					<integer>0</integer>
-					<key>normal</key>
-					<string>iconModerSpam</string>
-					<key>highlighted</key>
-					<string>iconModerSpamHighlighted</string>
-					<key>type</key>
-					<string>png</string>
 				</dict>
 			</dict>
 			<key>NowPlaying</key>
@@ -963,17 +944,6 @@
 		</dict>
 		<key>Menu</key>
 		<dict>
-			<key>MenuRowSingleSelected</key>
-			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-				<key>name</key>
-				<string>MenuRowSingleSelected</string>
-				<key>type</key>
-				<string>png</string>
-			</dict>
 			<key>MenuRowSingle</key>
 			<dict>
 				<key>x</key>
@@ -985,17 +955,6 @@
 				<key>type</key>
 				<string>png</string>
 			</dict>
-			<key>MenuRowLastSelected</key>
-			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-				<key>name</key>
-				<string>MenuRowLastSelected</string>
-				<key>type</key>
-				<string>png</string>
-			</dict>
 			<key>MenuRowLast</key>
 			<dict>
 				<key>x</key>
@@ -1004,17 +963,6 @@
 				<integer>0</integer>
 				<key>name</key>
 				<string>MenuRowLast</string>
-				<key>type</key>
-				<string>png</string>
-			</dict>
-			<key>MenuRowInterSelected</key>
-			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-				<key>name</key>
-				<string>MenuRowInterSelected</string>
 				<key>type</key>
 				<string>png</string>
 			</dict>

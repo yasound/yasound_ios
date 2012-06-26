@@ -24,11 +24,11 @@
     {
         _enabled = YES;
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuViewCell_icon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuViewCell_icon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.icon = [[WebImageView alloc] initWithFrame:sheet.frame];
         [self addSubview:self.icon];
         
-        sheet = [[Theme theme] stylesheetForKey:@"MenuViewCell_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuViewCell_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.name = [sheet makeLabel];
         [self addSubview:self.name];
 
@@ -60,11 +60,11 @@
     _unreadCountLabel.text = [NSString stringWithFormat:@"%d", count];
   }
   
-  NSString* key = @"UnreadNotifBadge3";
+  NSString* key = @"Notifications.UnreadNotifBadge3";
   if (count < 10)
-    key = @"UnreadNotifBadge1";
+    key = @"Notifications.UnreadNotifBadge1";
   else if (count < 100)
-    key = @"UnreadNotifBadge2";
+    key = @"Notifications.UnreadNotifBadge2";
   
   if (_badgeBackground)
   {

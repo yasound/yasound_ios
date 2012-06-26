@@ -123,7 +123,7 @@
     if (section == 0) {
         return NSLocalizedString(@"SongsView_songs", nil);
     }
-    return @"Header";
+    return @"Wall.Header.Header";
 }
 
 

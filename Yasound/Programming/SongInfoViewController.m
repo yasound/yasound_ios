@@ -224,7 +224,7 @@
             else
             {
                 // fake image
-                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.Wall.NowPlaying.NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
                 _imageView = [[WebImageView alloc] initWithImage:[sheet image]];
             }
             
@@ -235,25 +235,25 @@
             [cell addSubview:_imageView];
             
             // name, artist, album
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _name = [sheet makeLabel];
             [cell addSubview:_name];
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_artist" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _artist = [sheet makeLabel];
             [cell addSubview:_artist];
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_album" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _album = [sheet makeLabel];
             [cell addSubview:_album];
 
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UILabel* label = [sheet makeLabel];
             label.text = NSLocalizedString(@"SongView_nbLikes", nil);
             [cell addSubview:label];
 
-            sheet = [[Theme theme] stylesheetForKey:@"SongView_nbLikes_value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_nbLikes_value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             label = [sheet makeLabel];
             label.text = [NSString stringWithFormat:@"%@", self.song.likes];
             [cell addSubview:label];
@@ -261,12 +261,12 @@
             
             
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongView_lastRead" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_lastRead" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             label = [sheet makeLabel];
             label.text = NSLocalizedString(@"SongView_lastRead", nil);
             [cell addSubview:label];
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongView_lastRead_value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_lastRead_value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             label = [sheet makeLabel];
             if (self.song.last_play_time != nil)
                 label.text = [NSString stringWithFormat:@"%@", [self dateToString:self.song.last_play_time]];
@@ -310,7 +310,7 @@
     
         if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_ENABLE))
         {
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_switch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_enable_switch" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             _switchEnabled = [[UISwitch alloc] init];
             _switchEnabled.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, _switchEnabled.frame.size.width, _switchEnabled.frame.size.height);
             [cell addSubview:_switchEnabled];
@@ -339,7 +339,7 @@
     //
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_ENABLE))
     {
-        //sheet = [[Theme theme] stylesheetForKey:@"SongView_enable_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        //sheet = [[Theme theme] stylesheetForKey:@"SongView.SongView_enable_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         //_enabledLabel = [sheet makeLabel];
         //[cell addSubview:_enabledLabel];
 

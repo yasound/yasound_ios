@@ -46,7 +46,7 @@
         
         UIButton* btn  = nil;
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonBuy" error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Tracks.TrackInteractionButtonBuy" error:nil];
         UIImage* image = [UIImage imageNamed:@"btnBuyUp.png"];
         UIImage* imageHighlighted = [UIImage imageNamed:@"btnBuyDown.png"];
         btn = [[UIButton alloc] initWithFrame:CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, image.size.width, image.size.height)];
@@ -55,7 +55,7 @@
         [btn addTarget:self action:@selector(onTrackBuy:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
 
-        sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonLike" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.Tracks.TrackInteractionButtonLike" error:nil];
         btn = [sheet makeButton];
         [btn addTarget:self action:@selector(onTrackLike:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
@@ -63,12 +63,12 @@
 
 
         
-//        sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonAdd" error:nil];
+//        sheet = [[Theme theme] stylesheetForKey:@"Wall.Tracks.TrackInteractionButtonAdd" error:nil];
 //        btn = [sheet makeButton];
 //        [btn addTarget:self action:@selector(onTrackAdd:) forControlEvents:UIControlEventTouchUpInside];
 //        [self addSubview:btn];
 
-        sheet = [[Theme theme] stylesheetForKey:@"TrackInteractionButtonShare" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.Tracks.TrackInteractionButtonShare" error:nil];
         self.shareButton = [sheet makeButton];
         // deprecated. the parent view controller is in charge of the event now.
         //[self.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];

@@ -226,7 +226,7 @@
     
     if ((indexPath.section == 0) && (indexPath.row == 0))
     {
-        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TableViewDisclosure.png"]];
+        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TableViews/TableViewDisclosure.png"]];
         cell.textLabel.text = NSLocalizedString(@"KeywordsView_add_label", nil);
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.backgroundColor = [UIColor clearColor];

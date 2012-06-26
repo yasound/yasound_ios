@@ -74,11 +74,11 @@
       
     if ([_notification isReadBool])
     {
-        _unreadImage = [[[Theme theme] stylesheetForKey:@"NotifReadIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+        _unreadImage = [[[Theme theme] stylesheetForKey:@"Notifications.NotifReadIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
     }
       else
       {
-          _unreadImage = [[[Theme theme] stylesheetForKey:@"NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
+          _unreadImage = [[[Theme theme] stylesheetForKey:@"Notifications.NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error] makeImage];
       }
     [self addSubview:_unreadImage];
   }
@@ -123,11 +123,11 @@
 
     if ([_notification isReadBool])
     {
-         sheet = [[Theme theme] stylesheetForKey:@"NotifReadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+         sheet = [[Theme theme] stylesheetForKey:@"Notifications.NotifReadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     }
     else
     {
-        sheet = [[Theme theme] stylesheetForKey:@"NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Notifications.NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     }
     [_unreadImage setImage:[sheet image]];
 }

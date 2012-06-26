@@ -68,7 +68,7 @@
         
         BundleStylesheet* sheet = nil;
         
-        sheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIFont* messageFont = [sheet makeFont];
         CGFloat messageWidth = sheet.frame.size.width;
 
@@ -78,7 +78,7 @@
 
 
         
-        sheet = [[Theme theme] stylesheetForKey:@"MessageCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.MessageCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         CGRect cellFrame = self.bounds;
 
         UIView* cellView = [[UIView alloc] initWithFrame:cellFrame];
@@ -89,7 +89,7 @@
         [cellView release];
         
         // avatar
-        sheet = [[Theme theme] stylesheetForKey:@"CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellAvatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.avatar = [[WebImageView alloc] initWithImageAtURL:[[YasoundDataProvider main] urlForPicture:ev.user_picture]];
         self.avatar.frame = sheet.frame;
         [self.cellView addSubview:self.avatar];
@@ -103,7 +103,7 @@
         self.avatar.layer.cornerRadius = 17.5;
 
         // avatar circled mask
-        sheet = [[Theme theme] stylesheetForKey:@"CellAvatarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellAvatarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.avatarMask = [[UIImageView alloc] initWithImage:[sheet image]];
         self.avatarMask.frame = sheet.frame;
         [self.cellView addSubview:self.avatarMask];
@@ -111,19 +111,19 @@
         
         
         // date
-        sheet = [[Theme theme] stylesheetForKey:@"CellDate" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellDate" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.date = [sheet makeLabel];
         self.date.text = [self dateToString:ev.start_date];
         [self.cellView addSubview:self.date];
         
         // user
-        sheet = [[Theme theme] stylesheetForKey:@"CellUser" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellUser" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.user = [sheet makeLabel];
         self.user.text = ev.user_name;
         [self.cellView addSubview:self.user];
 
         // message background
-        BundleStylesheet* messageSheet = [[Theme theme] stylesheetForKey:@"CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* messageSheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.messageBackground = [[UIView alloc] initWithFrame:messageSheet.frame];
         self.messageBackground.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, height + 2*MESSAGE_SPACING);
         
@@ -144,7 +144,7 @@
         [self.message setNumberOfLines:0];        
         [self.cellView addSubview:self.message];
         
-        sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.separator = [[UIImageView alloc] initWithImage:[sheet image]];
         self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - sheet.frame.size.height, sheet.frame.size.width, sheet.frame.size.height);
         [self.cellView addSubview:self.separator];
@@ -332,21 +332,21 @@
     
     
     // shadow top
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"CellModerShadowTop" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerShadowTop" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIView* shadowTop = [[UIView alloc] initWithFrame:CGRectMake(0, 0, view.frame.size.width, sheet.frame.size.height)];
     shadowTop.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     [self.cellEditView addSubview:shadowTop];
     [shadowTop release];
 
     // shadow bottom
-    sheet = [[Theme theme] stylesheetForKey:@"CellModerShadowBottom" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerShadowBottom" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIView* shadowBottom = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - sheet.frame.size.height, view.frame.size.width, sheet.frame.size.height)];
     shadowBottom.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     [self.cellEditView addSubview:shadowBottom];
     [shadowBottom release];
 
 //    // shadow left on cellView
-//    sheet = [[Theme theme] stylesheetForKey:@"CellModerShadowLeft" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerShadowLeft" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //    UIView* shadowLeft = [[UIView alloc] initWithFrame:CGRectMake(self.cellView.frame.size.width, 0, sheet.frame.size.width, self.cellView.frame.size.height)];
 //    shadowLeft.backgroundColor = [UIColor clearColor];
 //    [self.cellView addSubview:shadowLeft];
@@ -360,7 +360,7 @@
     
     
     // button spam
-    sheet = [[Theme theme] stylesheetForKey:@"CellModerIconSpam" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerIconSpam" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIButton* button = [sheet makeButton];
     [button addTarget:self action:@selector(onModerSpam:) forControlEvents:UIControlEventTouchUpInside];
     button.frame = CGRectMake(self.cellEditView.frame.size.width - INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
@@ -371,7 +371,7 @@
 
 
 //    // button kick
-//    sheet = [[Theme theme] stylesheetForKey:@"CellModerIconKick" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerIconKick" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //    button = [sheet makeButton];
 //    [button addTarget:self action:@selector(onModerKick:) forControlEvents:UIControlEventTouchUpInside];
 //    button.frame = CGRectMake(self.cellEditView.frame.size.width - 2*INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
@@ -381,7 +381,7 @@
     if (_ownRadio)
     {
         // button trash
-        sheet = [[Theme theme] stylesheetForKey:@"CellModerIconTrash" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.Moderation.CellModerIconTrash" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         button = [sheet makeButton];
         [button addTarget:self action:@selector(onModerTrash:) forControlEvents:UIControlEventTouchUpInside];
         button.frame = CGRectMake(self.cellEditView.frame.size.width - 2*INTERACTIVE_ZONE_SIZE + (INTERACTIVE_ZONE_SIZE/2.f - button.frame.size.width/2.f), self.cellEditView.frame.size.height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);

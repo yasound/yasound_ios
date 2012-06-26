@@ -324,12 +324,12 @@
     
     NSString* title = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:section];
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     
     UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
     view.frame = CGRectMake(0, 0, tableView.bounds.size.width, 44);
     
-    sheet = [[Theme theme] stylesheetForKey:@"MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* label = [sheet makeLabel];
     label.text = title;
     [view addSubview:label];

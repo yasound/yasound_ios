@@ -228,7 +228,7 @@
 "ProgramminView_nb_songs_n" = "%d songs";
 "ProgrammingView_subtitle_error" = "erreur";
 
-"ProgrammingTitleCell_buttonDelete_label" = "Remove";
+"Programming.ProgrammingTitleCell_buttonDelete_label" = "Remove";
 
 
 "SongView_title" = "Song";

@@ -32,7 +32,7 @@
         self.song = aSong;
         
         // button "add to upload list"
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"SongAdd_addButton" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.SongAdd_addButton" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.button = [sheet makeButton];
         [self.button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
@@ -41,12 +41,12 @@
             self.button.enabled = NO;
     
         
-    sheet = [[Theme theme] stylesheetForKey:@"SongAdd_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Programming.SongAdd_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.label = [sheet makeLabel];
     self.label.text = aSong.name;
     [self addSubview:self.label];
 
-        sheet = [[Theme theme] stylesheetForKey:@"SongAdd_detailedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Programming.SongAdd_detailedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.detailedLabel = [sheet makeLabel];
         self.detailedLabel.text = [NSString stringWithFormat:@"%@ - %@", aSong.album, aSong.artist];
         [self addSubview:self.detailedLabel];

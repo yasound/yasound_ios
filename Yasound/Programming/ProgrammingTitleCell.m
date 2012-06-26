@@ -40,12 +40,12 @@ static NSMutableDictionary* gEditingSongs = nil;
         _deletingAction = deletingAction;
 
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"ProgrammingTitleCell_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.ProgrammingTitleCell_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.label = [sheet makeLabel];
         [self addSubview:self.label];
 
 
-        sheet = [[Theme theme] stylesheetForKey:@"ProgrammingTitleCell_sublabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Programming.ProgrammingTitleCell_sublabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.sublabel = [sheet makeLabel];
         [self addSubview:self.sublabel];
 
@@ -146,9 +146,9 @@ static NSMutableDictionary* gEditingSongs = nil;
     [self addSubview:self.buttonDelete];
     
     // delete button label
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"ProgrammingTitleCell_buttonDelete_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.ProgrammingTitleCell_buttonDelete_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.buttonLabel = [sheet makeLabel];
-    self.buttonLabel.text = NSLocalizedString(@"ProgrammingTitleCell_buttonDelete_label", nil);
+    self.buttonLabel.text = NSLocalizedString(@"Programming.ProgrammingTitleCell_buttonDelete_label", nil);
     [self.buttonDelete addSubview:self.buttonLabel];
     
     // compute frames for animation

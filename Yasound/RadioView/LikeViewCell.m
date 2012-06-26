@@ -39,18 +39,18 @@
     BundleStylesheet* sheet = nil;    
     UIView* view = self.contentView;
       
-      sheet = [[Theme theme] stylesheetForKey:@"MessageCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+      sheet = [[Theme theme] stylesheetForKey:@"Wall.MessageCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
       view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
     
-    sheet = [[Theme theme] stylesheetForKey:@"LikeCellPicto" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Wall.Likes.LikeCellPicto" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     [view addSubview:[sheet makeImage]];
 
-    sheet = [[Theme theme] stylesheetForKey:@"LikeCellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Wall.Likes.LikeCellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.message = [sheet makeLabel];
     self.message.text = [NSString stringWithFormat:@"%@ %@", ev.user_name, NSLocalizedString(@"User_Likes_Song_Label", nil)];
     [view addSubview:self.message];
     
-    sheet = [[Theme theme] stylesheetForKey:@"CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIImageView* imageView = [[UIImageView alloc] initWithImage:[sheet image]];
     imageView.frame = CGRectMake(0, height - 2, sheet.frame.size.width, sheet.frame.size.height);
     [view addSubview:imageView];
