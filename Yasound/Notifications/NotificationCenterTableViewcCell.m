@@ -42,7 +42,7 @@
     _notification = notif;
     NSError* error;
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Notifications.NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
    _notifTextLabel = [sheet makeLabel];
 
       if (_notification.from_user_id != nil)
@@ -66,7 +66,7 @@
     
     [self addSubview:_notifTextLabel];
     
-    _notifDateLabel = [[[Theme theme] stylesheetForKey:@"NotificationDate"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
+    _notifDateLabel = [[[Theme theme] stylesheetForKey:@"Notifications.NotificationDate"  retainStylesheet:YES overwriteStylesheet:NO error:&error] makeLabel];
     NSString* s = [self dateToString:_notification.date];
     _notifDateLabel.text = s;
     [self addSubview:_notifDateLabel];
@@ -110,7 +110,7 @@
     
     
   NSError* error;
-  BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
+  BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Notifications.NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
   BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
   CGFloat fontSize = fontSheet.size;
 
