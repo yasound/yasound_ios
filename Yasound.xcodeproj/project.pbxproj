@@ -486,6 +486,14 @@
 		40B96B871591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
 		40B96B881591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
 		40B96B891591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */; };
+		40CBB1DA159C8E58005E898E /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
+		40CBB1DB159C8E58005E898E /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
+		40CBB1DC159C8E58005E898E /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
+		40CBB1DD159C8E58005E898E /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
+		40CBB1DE159C8E58005E898E /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
+		40CBB1DF159C8E58005E898E /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
+		40CBB1E0159C8E58005E898E /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
+		40CBB1E1159C8E58005E898E /* TwitterSharePreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */; };
 		40CC5A4D153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
 		40CC5A4E153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
 		40CC5A4F153D6EF7006C052E /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
@@ -3518,6 +3526,8 @@
 		40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD LOCAL SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40B96B801591CAEE004D21D3 /* FacebookSharePreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookSharePreferences.h; sourceTree = "<group>"; };
 		40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookSharePreferences.m; sourceTree = "<group>"; };
+		40CBB1D8159C8E58005E898E /* TwitterSharePreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterSharePreferences.h; sourceTree = "<group>"; };
+		40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterSharePreferences.m; sourceTree = "<group>"; };
 		40CC5A4B153D6EF7006C052E /* RequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestConfig.h; sourceTree = "<group>"; };
 		40CC5A4C153D6EF7006C052E /* RequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestConfig.m; sourceTree = "<group>"; };
 		40CC5A54153D9EEB006C052E /* ASIHTTPRequest+Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ASIHTTPRequest+Model.h"; sourceTree = "<group>"; };
@@ -4563,6 +4573,8 @@
 				407D9F141563E89000BFCF1F /* UserNotification.m */,
 				40B96B801591CAEE004D21D3 /* FacebookSharePreferences.h */,
 				40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */,
+				40CBB1D8159C8E58005E898E /* TwitterSharePreferences.h */,
+				40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -7917,6 +7929,7 @@
 				BCB0769A15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A66157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B881591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
+				40CBB1E0159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8106,6 +8119,7 @@
 				BCB0769B15790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A67157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B891591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
+				40CBB1E1159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8291,6 +8305,7 @@
 				BCB0769915790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A65157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B871591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
+				40CBB1DF159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8480,6 +8495,7 @@
 				BCB0769615790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A62157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B841591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
+				40CBB1DC159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8669,6 +8685,7 @@
 				BCB0769515790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A61157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B831591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
+				40CBB1DB159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8859,6 +8876,7 @@
 				BCB0769815790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A64157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B861591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
+				40CBB1DE159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9048,6 +9066,7 @@
 				BCB0769415790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A60157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B821591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
+				40CBB1DA159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9237,6 +9256,7 @@
 				BCB0769715790EEB00F9347C /* MessageBroadcastModalViewController.m in Sources */,
 				BC506A63157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B851591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
+				40CBB1DD159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
