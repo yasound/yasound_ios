@@ -106,6 +106,28 @@ static PlaylistMoulinor* _main = nil;
     return YES;
 }
 
+- (BOOL)buildArtistDataBinary:(BOOL)binary compressed:(BOOL)compressed target:(id)target action:(SEL)action
+{
+    if ((target == nil) || (action == nil))
+    {
+        DLog(@"buildDataWithArtists  error : target|selector is nil!");
+        assert(0);
+        return NO;
+    }
+    
+    _binary = binary;
+    _compressed = compressed;
+    _target = target;
+    _action = action;
+    
+    // use an asynchronous operation
+    NSInvocationOperation* operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(thProcessForArtists:) object:nil];
+    [_queue addOperation:operation];
+    [operation release];
+    
+    return YES;
+}
+
 
 
 
@@ -235,6 +257,67 @@ static PlaylistMoulinor* _main = nil;
     
     DLog(@"PlaylistMoulinor songs  uncompressed data : %d bytes    compressed data : %d bytes", [data length], [compressedData length]);
     DLog(@"PlaylistMoulinor songs  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
+    
+    // send results
+    [_target performSelectorOnMainThread:_action withObject:compressedData waitUntilDone:NO];
+}
+
+- (void)thProcessForArtists:(id)userInfo
+{
+    MPMediaQuery* query = [MPMediaQuery artistsQuery];
+    NSArray* artistCollections = [query collections];
+    
+    NSMutableData* data = [[NSMutableData alloc] init];
+    
+    // current time
+    NSDate* BEGIN = [NSDate date];
+    for (MPMediaItemCollection* collection in artistCollections)
+    {
+        NSString* artist = [[collection representativeItem] valueForProperty:MPMediaItemPropertyArtist];
+        int16_t itemCount = [[collection items] count];
+        if (_binary)
+        {
+            const char* str = (const char*) [PM_TAG_ARTIST UTF8String];
+            int16_t size = strlen(str);
+            [data appendBytes:str length:size];
+            
+            str = (const char*) [artist UTF8String];
+            size = strlen(str);
+            // write size
+            [data appendBytes:&size length:SIZEOF_INT16];
+            // write str
+            [data appendBytes:str length:size]; 
+            
+            [data appendBytes:&itemCount length:SIZEOF_INT16];
+        }
+        else
+        {
+            NSString* output = [NSString stringWithFormat:@"%@;\"%@\";%d\n", PM_TAG_ARTIST, artist, itemCount];
+            NSData* outputData = [output dataUsingEncoding:NSUTF8StringEncoding];
+            [data appendData:outputData];
+        }
+    }
+    
+    // delay for building the data
+    double timePassedForBuilding_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
+    BEGIN = [NSDate date];
+    
+    
+    if (!_compressed)
+    {
+        // send results
+        [_target performSelectorOnMainThread:_action withObject:data waitUntilDone:NO];
+        return;
+    }
+    
+    
+    NSData* compressedData = [data zlibDeflate];
+    
+    // delay for compressing the data
+    double timePassedForCompressing_ms = [BEGIN timeIntervalSinceNow] * -1000.0;
+    
+    DLog(@"PlaylistMoulinor artists  uncompressed data : %d bytes    compressed data : %d bytes", [data length], [compressedData length]);
+    DLog(@"PlaylistMoulinor artists  building data in : %.2f ms    compressing data in : %.2f ms", timePassedForBuilding_ms, timePassedForCompressing_ms);
     
     // send results
     [_target performSelectorOnMainThread:_action withObject:compressedData waitUntilDone:NO];

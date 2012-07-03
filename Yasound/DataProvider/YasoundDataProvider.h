@@ -201,6 +201,8 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
+- (void)similarRadiosWithArtistList:(NSData*)data target:(id)target action:(SEL)selector; // artist list is built with PlaylistMoulinor buildArtistDataBinary: compressed: target: action:
+
 - (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector;
 
 

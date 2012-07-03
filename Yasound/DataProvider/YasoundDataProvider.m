@@ -11,6 +11,11 @@
 #import "NSObject+SBJson.h"
 #import "YasoundAppDelegate.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "ASIFormDataRequest.h"
+
+// MatTest
+#import "PlaylistMoulinor.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 
@@ -363,6 +368,7 @@ static YasoundDataProvider* _main = nil;
   {
     [target performSelector:selector withObject:_radio withObject:finalInfo];
   }
+
 }
 
 
@@ -1475,6 +1481,21 @@ static YasoundDataProvider* _main = nil;
   NSDictionary* userData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"target", NSStringFromSelector(selector), @"selector", nil];
   [_communicator postData:data withKey:@"playlists_data" toURL:relativeUrl absolute:NO notifyTarget:self byCalling:@selector(receiveUpdatePlaylistsResponse:withInfo:) withUserData:userData withAuth:auth];
   
+}
+
+- (void)similarRadiosWithArtistList:(NSData*)data target:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/similar_radios_from_artist_list/"];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIFormDataRequest* req = [_communicator buildFormDataRequestWithConfig:conf];
+    [req addData:data forKey:@"artists_data"];
+    [req startAsynchronous];
 }
 
 - (void)receiveUpdatePlaylistsResponse:(NSString*)response withInfo:(NSDictionary*)info
