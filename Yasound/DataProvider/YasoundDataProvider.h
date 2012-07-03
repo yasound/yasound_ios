@@ -25,6 +25,7 @@
 #import "ASIHTTPRequest+Model.h"
 #import "UserNotification.h"
 #import "FacebookSharePreferences.h"
+#import "CityInfo.h"
 
 typedef NSString* taskID;
 
@@ -334,5 +335,11 @@ taskStatus stringToStatus(NSString* str);
 
 
 - (void)testV2;
+
+// - (void)didReceiveCitySuggestions:(ASIHTTPRequest*) success:(BOOL)
+//   {
+//      NSArray* cities = [req responseNSObjectsWithClass:[CityInfo class]];
+//   }
+- (void)citySuggestionsWithCityName:(NSString*)city target:(id)target action:(SEL)selector;
 
 @end

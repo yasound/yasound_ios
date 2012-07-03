@@ -44,6 +44,14 @@
 		40104FC714ED3CFA00996326 /* LikeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40104FC414ED3CF900996326 /* LikeViewCell.m */; };
 		40104FC814ED3CFA00996326 /* LikeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40104FC414ED3CF900996326 /* LikeViewCell.m */; };
 		40104FC914ED3CFA00996326 /* LikeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40104FC414ED3CF900996326 /* LikeViewCell.m */; };
+		4027241C15A353F3002A870D /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
+		4027241D15A353F3002A870D /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
+		4027241E15A353F3002A870D /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
+		4027241F15A353F3002A870D /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
+		4027242015A353F3002A870D /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
+		4027242115A353F3002A870D /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
+		4027242215A353F3002A870D /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
+		4027242315A353F3002A870D /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
 		40274B801491048900F26008 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7B1491048900F26008 /* Communicator.m */; };
 		40274B811491048900F26008 /* Container.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7D1491048900F26008 /* Container.m */; };
 		40274B821491048900F26008 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40274B7F1491048900F26008 /* Model.m */; };
@@ -3497,6 +3505,8 @@
 		40104F4614EAC69B00996326 /* UserCellRadioLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserCellRadioLight@2x.png"; sourceTree = "<group>"; };
 		40104FC314ED3CF900996326 /* LikeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeViewCell.h; sourceTree = "<group>"; };
 		40104FC414ED3CF900996326 /* LikeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeViewCell.m; sourceTree = "<group>"; };
+		4027241A15A353F3002A870D /* CityInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityInfo.h; sourceTree = "<group>"; };
+		4027241B15A353F3002A870D /* CityInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityInfo.m; sourceTree = "<group>"; };
 		40274B7A1491048900F26008 /* Communicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communicator.h; sourceTree = "<group>"; };
 		40274B7B1491048900F26008 /* Communicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communicator.m; sourceTree = "<group>"; };
 		40274B7C1491048900F26008 /* Container.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Container.h; sourceTree = "<group>"; };
@@ -4575,6 +4585,8 @@
 				40B96B811591CAEE004D21D3 /* FacebookSharePreferences.m */,
 				40CBB1D8159C8E58005E898E /* TwitterSharePreferences.h */,
 				40CBB1D9159C8E58005E898E /* TwitterSharePreferences.m */,
+				4027241A15A353F3002A870D /* CityInfo.h */,
+				4027241B15A353F3002A870D /* CityInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -7930,6 +7942,7 @@
 				BC506A66157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B881591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1E0159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
+				4027242215A353F3002A870D /* CityInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8120,6 +8133,7 @@
 				BC506A67157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B891591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1E1159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
+				4027242315A353F3002A870D /* CityInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8306,6 +8320,7 @@
 				BC506A65157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B871591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DF159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
+				4027242115A353F3002A870D /* CityInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8496,6 +8511,7 @@
 				BC506A62157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B841591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DC159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
+				4027241E15A353F3002A870D /* CityInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8686,6 +8702,7 @@
 				BC506A61157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B831591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DB159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
+				4027241D15A353F3002A870D /* CityInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8877,6 +8894,7 @@
 				BC506A64157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B861591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DE159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
+				4027242015A353F3002A870D /* CityInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9067,6 +9085,7 @@
 				BC506A60157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B821591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DA159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
+				4027241C15A353F3002A870D /* CityInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9257,6 +9276,7 @@
 				BC506A63157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				40B96B851591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				40CBB1DD159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
+				4027241F15A353F3002A870D /* CityInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

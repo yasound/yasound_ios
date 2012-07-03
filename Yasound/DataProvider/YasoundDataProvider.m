@@ -1993,7 +1993,23 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-
+- (void)citySuggestionsWithCityName:(NSString*)city target:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"http://nominatim.openstreetmap.org/search";
+    conf.urlIsAbsolute = YES;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    NSMutableArray* params = [NSMutableArray array];
+    [params addObject:@"format=json"];
+    [params addObject:[NSString stringWithFormat:@"q=%@", city]];
+    conf.params = params;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
 
 
 
