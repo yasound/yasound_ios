@@ -255,6 +255,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)menuDescriptionWithTarget:(id)target action:(SEL)selector userData:(id)data; // didReceiveMenu:(ASIHTTPRequest*)req
 
 
+- (void)connectedUsersWithTarget:(id)target action:(SEL)selector; // users connected to the app ordered by distance from the sender
+- (void)connectedUsersWithLimit:(int)limit skip:(int)skip target:(id)target action:(SEL)selector;
+
 // User Notifications
 - (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
 

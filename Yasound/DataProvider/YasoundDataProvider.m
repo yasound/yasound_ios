@@ -13,10 +13,6 @@
 #import "UIDevice+IdentifierAddition.h"
 #import "ASIFormDataRequest.h"
 
-// MatTest
-#import "PlaylistMoulinor.h"
-#import <MediaPlayer/MediaPlayer.h>
-
 #define LOCAL_URL @"http://127.0.0.1:8000"
 
 #define APP_KEY_COOKIE_NAME @"app_key"
@@ -370,7 +366,6 @@ static YasoundDataProvider* _main = nil;
   }
 
 }
-
 
 
 - (void)reloadUserRadio
@@ -1483,21 +1478,6 @@ static YasoundDataProvider* _main = nil;
   
 }
 
-- (void)similarRadiosWithArtistList:(NSData*)data target:(id)target action:(SEL)selector
-{
-    RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/similar_radios_from_artist_list/"];
-    conf.urlIsAbsolute = NO;
-    conf.auth = self.apiKeyAuth;
-    conf.method = @"POST";
-    conf.callbackTarget = target;
-    conf.callbackAction = selector;
-    
-    ASIFormDataRequest* req = [_communicator buildFormDataRequestWithConfig:conf];
-    [req addData:data forKey:@"artists_data"];
-    [req startAsynchronous];
-}
-
 - (void)receiveUpdatePlaylistsResponse:(NSString*)response withInfo:(NSDictionary*)info
 {
   NSDictionary* userData = [info valueForKey:@"userData"];
@@ -1552,6 +1532,52 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+- (void)similarRadiosWithArtistList:(NSData*)data target:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/similar_radios_from_artist_list/"];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIFormDataRequest* req = [_communicator buildFormDataRequestWithConfig:conf];
+    [req addData:data forKey:@"artists_data"];
+    [req startAsynchronous];
+}
+
+- (void)connectedUsersWithLimitNumber:(NSNumber*)limit skipNumber:(NSNumber*)skip target:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/connected_users/"];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    NSMutableArray* params = [NSMutableArray array];
+    if (limit)
+        [params addObject:[NSString stringWithFormat:@"limit=%@", limit]];
+    if (skip)
+        [params addObject:[NSString stringWithFormat:@"skip=%@", skip]];
+    if (params.count > 0)
+        conf.params = params;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+- (void)connectedUsersWithTarget:(id)target action:(SEL)selector
+{
+    [self connectedUsersWithLimitNumber:nil skipNumber:nil target:target action:selector];
+}
+
+- (void)connectedUsersWithLimit:(int)limit skip:(int)skip target:(id)target action:(SEL)selector
+{
+    [self connectedUsersWithLimitNumber:[NSNumber numberWithInt:limit] skipNumber:[NSNumber numberWithInt:skip] target:target action:selector];
+}
 
 
 // 
