@@ -10,6 +10,16 @@
 	<string>theme_default</string>
 	<key>stylesheet</key>
 	<dict>
+		<key>TopBar</key>
+		<dict>
+			<key>ItemMenu</key>
+			<dict>
+				<key>name</key>
+				<string>barItemMenu</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+		</dict>
 		<key>ActivityModelessSpinner</key>
 		<dict>
 			<key>y</key>

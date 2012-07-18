@@ -246,12 +246,19 @@
     [view release];
 }
 
-- (IBAction)menuBarItemClicked:(id)sender
+//- (IBAction)menuBarItemClicked:(id)sender
+//{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
+
+
+
+#pragma mark - TopBarDelegate
+
+- (void)topBarBackItemClicked
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-
 
 
 
