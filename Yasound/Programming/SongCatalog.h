@@ -26,7 +26,7 @@
 @property (nonatomic, retain) NSMutableDictionary* matchedSongs;
 
 @property (nonatomic, retain) NSMutableArray* indexMap; // "-", "A", "B", ...
-@property (nonatomic, retain) NSMutableDictionary* alphabeticRepo;  // "A" => {song1, song2, ...}, "B" ... }
+@property (nonatomic, retain) NSMutableDictionary* alphabeticRepo;  // "A" => [song1, song2, ...], "B" ... }
 @property (nonatomic, retain) NSMutableDictionary* alphaArtistsRepo; // "A" => {artist1 => {album1 => [song1, ...], ... }, ...}, ...
 
 

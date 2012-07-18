@@ -62,7 +62,7 @@
       else
       {
         // fake image
-        sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.Wall.NowPlaying.NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         imageView = [[UIImageView alloc] initWithImage:[sheet image]];
       }
         
