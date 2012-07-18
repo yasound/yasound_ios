@@ -91,7 +91,7 @@
         self.stylesheetDictionnary = stylesheet;
         if (self.stylesheetDictionnary == nil)
         {
-            NSLog(@"BundleFileManager Warning : could not find any stylesheet");
+            DLog(@"BundleFileManager Warning : could not find any stylesheet");
             assert(0);
         }
         
@@ -371,7 +371,7 @@ static BundleFileManager* _main = nil;
         
         if (styleItem == nil)
         {
-            NSLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
+            DLog(@"BundleFileManager::stylesheetForKey Error : could not find item for key '%@'", key);
             assert(0);
             return nil;
         }
@@ -388,7 +388,7 @@ static BundleFileManager* _main = nil;
             
             if (styleItem == nil)
             {
-                NSLog(@"stylesheetForKey error : could not find sub '%@', using key '%@'", sub, key);
+                DLog(@"stylesheetForKey error : could not find sub '%@', using key '%@'", sub, key);
                 assert(0);
             }
             
@@ -400,7 +400,7 @@ static BundleFileManager* _main = nil;
         
         if (styleItem == nil)
         {
-            NSLog(@"stylesheetForKey error : could not find sub '%@', using key '%@'", sub, key);
+            DLog(@"stylesheetForKey error : could not find sub '%@', using key '%@'", sub, key);
             assert(0);
         }
     }

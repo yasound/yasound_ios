@@ -70,7 +70,7 @@ static Theme* _theme = nil;
 //            
 //            if (bundlePath == nil)
 //            {
-//                NSLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);
+//                DLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);
 //                assert(0);
 //                return nil;
 //            }
@@ -91,7 +91,7 @@ static Theme* _theme = nil;
 //    
 //    if (bundlePath == nil)
 //    {
-//        NSLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);
+//        DLog(@"Theme BundleFileManager Error : could not find bundle %@!", bundlePath);
 //        assert(0);
 //        return nil;
 //    }

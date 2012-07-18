@@ -600,7 +600,7 @@
     NSString* response = request.responseString;
     
     //LBDEBUG ICI
-    //NSLog(@"%@", response);
+    //DLog(@"%@", response);
     
     
     if (!response)

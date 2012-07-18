@@ -62,7 +62,7 @@
     {
         // Set the new font size.
         font = [self.font fontWithSize:i];
-        // You can log the size you're trying: NSLog(@"Trying size: %u", i);
+        // You can log the size you're trying: DLog(@"Trying size: %u", i);
         
         /* This step is important: We make a constraint box 
          using only the fixed WIDTH of the UILabel. The height will
@@ -79,7 +79,7 @@
         if(labelSize.height <= self.frame.size.height)
             break;
     }
-    // You can see what size the function is using by outputting: NSLog(@"Best size is: %u", i);
+    // You can see what size the function is using by outputting: DLog(@"Best size is: %u", i);
 
     // Set the UILabel's font to the newly adjusted font.
     self.font = font;

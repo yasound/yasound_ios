@@ -131,7 +131,7 @@ typedef enum
     [_favoriteRadios release];
     _favoriteRadios = nil;
     
-    NSLog(@"%@", self.user.username);
+    DLog(@"%@", self.user.username);
     
     [[YasoundDataProvider main] userWithUsername:self.user.username target:self action:@selector(onUserInfo:success:)];
     

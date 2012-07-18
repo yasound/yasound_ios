@@ -1041,7 +1041,7 @@ static YasoundSessionManager* _main = nil;
     assert(date != nil);
     if (date == nil)
     {
-        NSLog(@"expirationDateToString : date is nil!");
+        DLog(@"expirationDateToString : date is nil!");
         return;
     }
     

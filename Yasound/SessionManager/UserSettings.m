@@ -105,9 +105,9 @@ static UserSettings* _main;
 
 - (void)dump
 {
-    NSLog(@"UserSettings dump :");
-    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
-    NSLog(@"-------------------------------------------");                  
+    DLog(@"UserSettings dump :");
+    DLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    DLog(@"-------------------------------------------");                  
 }
 
 

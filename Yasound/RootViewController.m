@@ -23,6 +23,7 @@
 #import "CreateMyRadio.h"
 #import "YasoundDataCache.h"
 #import "SongUploadViewController.h"
+#import "RadioSelectionViewController.h"
 
 
 
@@ -32,7 +33,7 @@
 @implementation NSArray (NSArrayDebug)
 - (id)objectForKey:(NSString*)key
 {
-        NSLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+        DLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
         assert(0);
 }
 @end
@@ -130,6 +131,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionChanged:) name:NOTIF_REACHABILITY_CHANGED object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMenu:) name:NOTIF_GOTO_MENU object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoSelection:) name:NOTIF_GOTO_SELECTION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadio:) name:NOTIF_GOTO_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadio:) name:NOTIF_GOTO_MYRADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateMyRadio:) name:NOTIF_GOTO_CREATE_MYRADIO object:nil];
@@ -282,19 +284,19 @@
 {
     NSString* menuDesc = req.responseString;
     
-    NSLog(@"menuDesc : %@", menuDesc);
+    DLog(@"menuDesc : %@", menuDesc);
 
     // be sure to store it in the cache
     [[YasoundDataCache main] setMenu:menuDesc];
     
     
-    [self enterTheAppAfterProperLogin];
+    [self enterTheApp];
 }
 
 
 
 // that's what I call a significant method name
-- (void)enterTheAppAfterProperLogin
+- (void)enterTheApp
 {
     
 //    // go to the menu, either you are connected or not
@@ -317,7 +319,8 @@
             if (myRadio && myRadio.ready)
                 [self launchRadio:myRadio];
             else
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_MENU object:nil];
+                // default screen is Selection
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
         }
         else
             [self launchRadio:radioId];
@@ -419,9 +422,9 @@
   if (sendToSelection)
   {
       NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_SELECTION];
+      assert(entry);
       NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
       NSString* name = [entry objectForKey:@"name"];
-      assert(entry);
       
       RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withUrl:[NSURL URLWithString:url] andTitle:name];
     [self.navigationController pushViewController:view animated:NO];    
@@ -631,7 +634,7 @@
 
     if (radio == nil)
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MENU object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
         return;
     }
     
@@ -657,7 +660,7 @@
     Radio* r = notification.object;
     assert(r != nil);
 
-    NSLog(@"onNotifGotoRadio '%@' (ready %@)", r.name, r.ready);
+    DLog(@"onNotifGotoRadio '%@' (ready %@)", r.name, r.ready);
 
     if (self.menuView == nil)
     {
@@ -678,7 +681,7 @@
 
 - (void)onNotifGotoMenu:(NSNotification*)notification
 {
-    NSLog(@"onNotifGotoMenu");
+    DLog(@"onNotifGotoMenu");
     
     if (self.menuView == nil)
     {
@@ -691,6 +694,32 @@
         [self.navigationController popToViewController:self.menuView animated:YES];
     }
     
+}
+
+
+- (void)onNotifGotoSelection:(NSNotification*)notification
+{
+    DLog(@"onNotifGotoSelection");
+    
+    if (self.menuView == nil)
+    {
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        [self.navigationController pushViewController:self.menuView animated:NO];
+    }
+    else
+    {
+        [self.navigationController popToViewController:self.menuView animated:NO];
+    }
+    
+    NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_SELECTION];
+    assert(entry);
+    NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
+    NSString* name = [entry objectForKey:@"name"];
+    
+    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withUrl:[NSURL URLWithString:url] andTitle:name];
+    [self.navigationController pushViewController:view animated:YES];    
+    [view release];
 }
 
 
@@ -815,7 +844,7 @@
             else
             {
                 assert(0);
-                NSLog(@"LOGIN ERROR. COULD NOT DO ANYTHING.");
+                DLog(@"LOGIN ERROR. COULD NOT DO ANYTHING.");
             }
         }
         
@@ -852,7 +881,7 @@
         if (info != nil)
         {
             //LBDEBUG
-            NSLog(@"DEBUG info %@", info);
+            DLog(@"DEBUG info %@", info);
             
             NSString* errorValue = [info objectForKey:@"error"];
             if ([errorValue isEqualToString:@"Login"])
