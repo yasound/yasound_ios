@@ -8,15 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
+#import "WheelSelector.h"
+#import "RadioListTableViewController.h"
 
 
-@interface RadioSelectionViewController : TestflightViewController
+@interface RadioSelectionViewController : TestflightViewController<RadioListDelegate>
 
 @property (nonatomic, retain) NSURL* url;
-@property (nonatomic, retain) UITableView* tableview;
+@property (nonatomic, retain) IBOutlet WheelSelector* wheelSelector;
+@property (nonatomic, retain) IBOutlet UIView* listContainer;
+@property (nonatomic, retain) UITableViewController* tableview;
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)url;
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 
 - (IBAction)onStyleSelectorClicked:(id)sender;
 - (IBAction)onNowPlayingClicked:(id)sender;

@@ -89,6 +89,7 @@
 
 #define MENU_ENTRY_ID_SELECTION @"radioSelection"
 #define MENU_ENTRY_ID_FAVORITES @"radioMyFavorites"
+#define MENU_ENTRY_ID_TOP @"radioTop"
 
 // return the dictionary description of the current menu, from its given type (for instance, "
 - (NSDictionary*)menuEntry:(NSString*)entryId;

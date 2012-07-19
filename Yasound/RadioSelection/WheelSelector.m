@@ -97,7 +97,7 @@
     [[self.superview layer] addSublayer:layer]; // to superview 'cause it must not scroll
     
     // starting position
-    [self stickToItem:WHEEL_ID_SELECTION];
+    [self stickToItem:WheelIdSelection];
 
 }
 

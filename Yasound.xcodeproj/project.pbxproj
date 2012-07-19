@@ -1364,6 +1364,22 @@
 		BC598E4115B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */; };
 		BC598E4215B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */; };
 		BC598E4315B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */; };
+		BC598E6F15B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
+		BC598E7015B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
+		BC598E7115B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
+		BC598E7215B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
+		BC598E7315B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
+		BC598E7415B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
+		BC598E7515B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
+		BC598E7615B8786C004D6DCB /* RadioListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */; };
+		BC598E7915B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
+		BC598E7A15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
+		BC598E7B15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
+		BC598E7C15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
+		BC598E7D15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
+		BC598E7E15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
+		BC598E7F15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
+		BC598E8015B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
 		BC5C900F14F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
 		BC5C901014F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
 		BC5C901114F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
@@ -1622,14 +1638,6 @@
 		BC9601C3154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
 		BC9601C4154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
 		BC9601C5154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
-		BC97E87415B804DB00C4FC36 /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97E87315B804DB00C4FC36 /* WheelSelector.m */; };
-		BC97E87515B804DB00C4FC36 /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97E87315B804DB00C4FC36 /* WheelSelector.m */; };
-		BC97E87615B804DB00C4FC36 /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97E87315B804DB00C4FC36 /* WheelSelector.m */; };
-		BC97E87715B804DB00C4FC36 /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97E87315B804DB00C4FC36 /* WheelSelector.m */; };
-		BC97E87815B804DB00C4FC36 /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97E87315B804DB00C4FC36 /* WheelSelector.m */; };
-		BC97E87915B804DB00C4FC36 /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97E87315B804DB00C4FC36 /* WheelSelector.m */; };
-		BC97E87A15B804DB00C4FC36 /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97E87315B804DB00C4FC36 /* WheelSelector.m */; };
-		BC97E87B15B804DB00C4FC36 /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC97E87315B804DB00C4FC36 /* WheelSelector.m */; };
 		BC9BE8271536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
 		BC9BE8281536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
 		BC9BE8291536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
@@ -5384,6 +5392,10 @@
 		BC56F5E5152486AF005D1B40 /* YasoundD DEV SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD DEV SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC598E3215B865F6004D6DCB /* wheelSelectorShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheelSelectorShadow.png; sourceTree = "<group>"; };
 		BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheelSelectorShadow@2x.png"; sourceTree = "<group>"; };
+		BC598E6D15B8786C004D6DCB /* RadioListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioListTableViewController.h; path = RadioSelection/RadioListTableViewController.h; sourceTree = "<group>"; };
+		BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioListTableViewController.m; path = RadioSelection/RadioListTableViewController.m; sourceTree = "<group>"; };
+		BC598E7715B8788D004D6DCB /* WheelSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheelSelector.h; path = RadioSelection/WheelSelector.h; sourceTree = "<group>"; };
+		BC598E7815B8788D004D6DCB /* WheelSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WheelSelector.m; path = RadioSelection/WheelSelector.m; sourceTree = "<group>"; };
 		BC5C900D14F2A4EB00C7D01E /* YasoundDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCache.h; sourceTree = "<group>"; };
 		BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCache.m; sourceTree = "<group>"; };
 		BC5EA8E1150100750002697D /* SongCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongCatalog.h; path = Programming/SongCatalog.h; sourceTree = "<group>"; };
@@ -5424,8 +5436,6 @@
 		BC9601B5154997B90003AC7E /* WebPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebPageViewController.h; path = Settings/WebPageViewController.h; sourceTree = "<group>"; };
 		BC9601B6154997B90003AC7E /* WebPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebPageViewController.m; path = Settings/WebPageViewController.m; sourceTree = "<group>"; };
 		BC9601B7154997B90003AC7E /* WebPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebPageViewController.xib; path = Settings/WebPageViewController.xib; sourceTree = "<group>"; };
-		BC97E87215B804DB00C4FC36 /* WheelSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheelSelector.h; path = Gui/WheelSelector.h; sourceTree = "<group>"; };
-		BC97E87315B804DB00C4FC36 /* WheelSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WheelSelector.m; path = Gui/WheelSelector.m; sourceTree = "<group>"; };
 		BC9BE8231536C8B500B01AD2 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		BC9BE8261536C8B500B01AD2 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		BC9F4143147E8A5F00D417EF /* BundleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleFileManager.h; sourceTree = "<group>"; };
@@ -6628,11 +6638,13 @@
 		BC5EE20E147D3EB300A282A5 /* RadioSelection */ = {
 			isa = PBXGroup;
 			children = (
+				BC598E7715B8788D004D6DCB /* WheelSelector.h */,
+				BC598E7815B8788D004D6DCB /* WheelSelector.m */,
 				BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */,
 				BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */,
 				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,
-				BC97E87215B804DB00C4FC36 /* WheelSelector.h */,
-				BC97E87315B804DB00C4FC36 /* WheelSelector.m */,
+				BC598E6D15B8786C004D6DCB /* RadioListTableViewController.h */,
+				BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */,
 			);
 			name = RadioSelection;
 			sourceTree = "<group>";
@@ -11837,7 +11849,8 @@
 				40B96B881591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BCD123D215B71A61001FF144 /* TopBar.m in Sources */,
 				BCD123DC15B71C18001FF144 /* TopBarNotifView.m in Sources */,
-				BC97E87A15B804DB00C4FC36 /* WheelSelector.m in Sources */,
+				BC598E7515B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
+				BC598E7F15B8788D004D6DCB /* WheelSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12027,7 +12040,8 @@
 				40B96B891591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BCD123D315B71A61001FF144 /* TopBar.m in Sources */,
 				BCD123DD15B71C18001FF144 /* TopBarNotifView.m in Sources */,
-				BC97E87B15B804DB00C4FC36 /* WheelSelector.m in Sources */,
+				BC598E7615B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
+				BC598E8015B8788D004D6DCB /* WheelSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12213,7 +12227,8 @@
 				40B96B871591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BCD123D115B71A61001FF144 /* TopBar.m in Sources */,
 				BCD123DB15B71C18001FF144 /* TopBarNotifView.m in Sources */,
-				BC97E87915B804DB00C4FC36 /* WheelSelector.m in Sources */,
+				BC598E7415B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
+				BC598E7E15B8788D004D6DCB /* WheelSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12403,7 +12418,8 @@
 				40B96B841591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BCD123CE15B71A61001FF144 /* TopBar.m in Sources */,
 				BCD123D815B71C18001FF144 /* TopBarNotifView.m in Sources */,
-				BC97E87615B804DB00C4FC36 /* WheelSelector.m in Sources */,
+				BC598E7115B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
+				BC598E7B15B8788D004D6DCB /* WheelSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12593,7 +12609,8 @@
 				40B96B831591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BCD123CD15B71A61001FF144 /* TopBar.m in Sources */,
 				BCD123D715B71C18001FF144 /* TopBarNotifView.m in Sources */,
-				BC97E87515B804DB00C4FC36 /* WheelSelector.m in Sources */,
+				BC598E7015B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
+				BC598E7A15B8788D004D6DCB /* WheelSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12784,7 +12801,8 @@
 				40B96B861591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BCD123D015B71A61001FF144 /* TopBar.m in Sources */,
 				BCD123DA15B71C18001FF144 /* TopBarNotifView.m in Sources */,
-				BC97E87815B804DB00C4FC36 /* WheelSelector.m in Sources */,
+				BC598E7315B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
+				BC598E7D15B8788D004D6DCB /* WheelSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12974,7 +12992,8 @@
 				40B96B821591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BCD123CC15B71A61001FF144 /* TopBar.m in Sources */,
 				BCD123D615B71C18001FF144 /* TopBarNotifView.m in Sources */,
-				BC97E87415B804DB00C4FC36 /* WheelSelector.m in Sources */,
+				BC598E6F15B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
+				BC598E7915B8788D004D6DCB /* WheelSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13165,7 +13184,8 @@
 				40B96B851591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
 				BCD123CF15B71A61001FF144 /* TopBar.m in Sources */,
 				BCD123D915B71C18001FF144 /* TopBarNotifView.m in Sources */,
-				BC97E87715B804DB00C4FC36 /* WheelSelector.m in Sources */,
+				BC598E7215B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
+				BC598E7C15B8788D004D6DCB /* WheelSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

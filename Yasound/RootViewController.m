@@ -421,12 +421,7 @@
     
   if (sendToSelection)
   {
-      NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_SELECTION];
-      assert(entry);
-      NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
-      NSString* name = [entry objectForKey:@"name"];
-      
-      RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withUrl:[NSURL URLWithString:url] andTitle:name];
+      RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:NO];    
     [view release];
   }
@@ -712,12 +707,9 @@
         [self.navigationController popToViewController:self.menuView animated:NO];
     }
     
-    NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_SELECTION];
-    assert(entry);
-    NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
-    NSString* name = [entry objectForKey:@"name"];
     
-    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withUrl:[NSURL URLWithString:url] andTitle:name];
+    
+    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:YES];    
     [view release];
 }
