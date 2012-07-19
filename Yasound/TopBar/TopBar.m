@@ -8,6 +8,8 @@
 
 #import "TopBar.h"
 #import "Theme.h"
+#import "TopBarNotifView.h"
+#import "AudioStreamManager.h"
 
 @implementation TopBar
 
@@ -22,18 +24,35 @@
     else 
         [self insertSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topBarBkg.png"]] autorelease] atIndex:0];
 
-    // add "back" bar item
+    // "back"  item
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIButton* btn = [sheet makeButton];
     [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* itemBack = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
-    
-    // add "HD" item
+    // "HD" item
     UIBarButtonItem* itemHD = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"barItemHdOff.png"]]];
     
+    //  "notif"  item
+    TopBarNotifView* notifView = [[TopBarNotifView alloc] init];
+    UIBarButtonItem* itemNotif = [[UIBarButtonItem alloc] initWithCustomView:notifView];
+    
+    // "now playing" item
+    sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemNowPlaying" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    btn = [sheet makeButton];
+    [btn addTarget:self action:@selector(onNowPlaying:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* itemNowPlaying = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    // init "now playing" button
+    if ([AudioStreamManager main].currentRadio == nil)
+        [btn setEnabled:NO];
 
-    [self setItems:[NSArray arrayWithObjects:itemBack, itemHD, nil]];
+
+    // flexible space
+    UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+
+    
+    [self setItems:[NSArray arrayWithObjects:itemBack, flexibleSpace, itemHD, flexibleSpace, itemNotif, flexibleSpace, itemNowPlaying, nil]];
 
 }
 
@@ -44,6 +63,10 @@
     [self.delegate topBarBackItemClicked];
 }
 
+- (void)onNowPlaying:(id)sender
+{
+    [self topBarNowPlayingClicked];
+}
 
 //- (id)initWithFrame:(CGRect)frame
 //{

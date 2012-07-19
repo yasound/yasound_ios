@@ -239,12 +239,12 @@
 }
 
 
-- (IBAction)onNowPlayingClicked:(id)sender
-{
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-}
+//- (IBAction)onNowPlayingClicked:(id)sender
+//{
+//    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
+//}
 
 //- (IBAction)menuBarItemClicked:(id)sender
 //{
@@ -260,6 +260,12 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)topBarNowPlayingClicked
+{
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
 
 
 

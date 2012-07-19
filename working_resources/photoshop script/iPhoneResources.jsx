@@ -52,7 +52,6 @@ function Process(filepath, dstPath)
     docExportOptions.quality = 100; 
     docExportOptions.PNG8 = false;
     
-    var newName = 'web-'+doc.name+'.jpg';
 
     doc.exportDocument(File(dstPath), ExportType.SAVEFORWEB, docExportOptions);
   
@@ -96,7 +95,7 @@ function browseFolder(folderPath)
             // process file
           if (file instanceof File)
           {
-                var filename = file.name.toLowerCase(); // Output file is lower case
+                var filename = file.name;
                 if (filename.indexOf(SRCSUFFIX) < 0)
                   continue;
                   

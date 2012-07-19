@@ -10,11 +10,12 @@
 
 @protocol TopBarDelegate <NSObject>
 - (void)topBarBackItemClicked;
+- (void)topBarNowPlayingClicked;
 @end
 
 
 @interface TopBar : UIToolbar
 
-@property IBOutlet id<TopBarDelegate> delegate;
+@property (nonatomic, retain) IBOutlet id<TopBarDelegate> delegate;
 
 @end
