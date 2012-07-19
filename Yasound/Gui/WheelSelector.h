@@ -24,5 +24,6 @@
 
 @property (nonatomic, retain) IBOutlet id<WheelSelectorDelegate> wheelDelegate;
 @property (nonatomic, retain) NSMutableArray* items;
+@property (nonatomic) BOOL needsToStick;
 
 @end

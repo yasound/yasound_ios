@@ -14,6 +14,7 @@
 
 @synthesize wheelDelegate;
 @synthesize items;
+@synthesize needsToStick;
 
 #define ITEM_TEXT 0
 #define ITEM_WIDTH 1
@@ -25,6 +26,8 @@
 //    self = [super initWithFrame:frame];
 //    if (self) 
 //    {
+    
+    self.needsToStick = NO;
     
     // compute selector's options
         self.items = [[NSMutableArray alloc] init];
@@ -73,8 +76,8 @@
     [self setShowsHorizontalScrollIndicator:NO];
     [self setShowsVerticalScrollIndicator:NO];
     self.delegate = self;
-//    self.decelerationRate = UIScrollViewDecelerationRateFast;
-    self.decelerationRate = UIScrollViewDecelerationRateNormal;
+    self.decelerationRate = UIScrollViewDecelerationRateFast;
+//    self.decelerationRate = UIScrollViewDecelerationRateNormal;
     
 //    // add selector visual indicator
 //    sheet = [[Theme theme] stylesheetForKey:@"WheelSelector.indicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -106,9 +109,31 @@
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    CGFloat currentPost = scrollView.contentOffset.x;
+    self.needsToStick = decelerate;
+    if (decelerate)
+        return;
+    
+    [self stick];
+}
+
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+//- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    if (!self.needsToStick)
+        return;
+    
+    self.needsToStick = NO;
+    [self stick];
+    
+}
+
+- (void)stick
+{
+    CGFloat currentPost = self.contentOffset.x + self.frame.size.width/2.f;
     
     // compute the index of the sticky item
     NSInteger stickyIndex = 0;
@@ -121,20 +146,35 @@
         stickyIndex++;
     }
     
+    NSLog(@"stickyIndex %d", stickyIndex);
+    
     CGFloat stickyPos = [[[self.items objectAtIndex:stickyIndex] objectAtIndex:ITEM_STICKY_POS] floatValue];
     
+    // translate the stickyPos, for the scrollview position reference
+    stickyPos -= self.frame.size.width/2.f;
+    
     // make the scrollview goes to the sticky position
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.33];
-    self.contentOffset = CGPointMake(stickyPos, self.contentOffset.y);
-    [UIView commitAnimations];
-    
-
-    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.33];
+//    self.contentOffset = CGPointMake(stickyPos, self.contentOffset.y);
+//    [UIView commitAnimations];
+    [self setContentOffset: CGPointMake(stickyPos, self.contentOffset.y) animated:YES];
 }
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+//    NSLog(@"%.2f", self.contentOffset.x);
+//    
+//    NSInteger i =0;
+//    for (NSArray* item in self.items)
+//    {
+//    CGFloat stickyPos = [[item objectAtIndex:ITEM_STICKY_POS] floatValue];
+//
+//    NSLog(@"sticky [%d] : %.2f", i, stickyPos);
+//        i++;
+//    }
+
 //    if (!_waitingForPreviousEvents)
 //    {
 //        float offset = scrollView.contentOffset.y;
