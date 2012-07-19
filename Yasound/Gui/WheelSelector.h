@@ -8,11 +8,14 @@
 
 #import "OrientedTableView.h"
 
-#define WHEEL_ID_FAVORITES 0
-#define WHEEL_ID_GENRE 1
-#define WHEEL_ID_SELECTION 2
-#define WHEEL_ID_FRIENDS 3
-#define WHEEL_ID_TOP 4
+enum WheelItemId
+{
+    WheelIdFavorites = 0,
+    WheelIdGenre,
+    WheelIdSelection,
+    WheelIdFriends,
+    WheelIdTop
+};
 
 @protocol WheelSelectorDelegate <NSObject>
 - (void)wheelSelectorDidSelect:(NSInteger)index;

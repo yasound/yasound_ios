@@ -15,35 +15,29 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "TimeProfile.h"
+#import "WheelSelector.h"
 
 @implementation RadioSelectionViewController
 
 @synthesize url;
+@synthesize tableview;
 
 #define TIMEPROFILE_CELL_BUILD @"TimeProfileCellBuild"
 
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)url andTitle:(NSString*)title
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)url
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.title = title;
         self.url = url;
-        
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
     }
     return self;
 }
 
 - (void)dealloc
 {
-  [_tableView release];
-  [_topBarTitle release];
-  [_categoryTitle release];
-  [_nowPlayingButton release];
   [super dealloc];
 }
 
@@ -61,29 +55,12 @@
 {
     [super viewDidLoad];
     
-    _topBarTitle.text = self.title;
-    
-    
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuBackground" error:nil];    
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-    _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-    
-    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-    
-    NSString* str;
-    
-    _currentStyle = @"style_all";
-    _categoryTitle.text = NSLocalizedString(_currentStyle, nil) ;
-    
     [self updateRadios:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    if ([AudioStreamManager main].currentRadio == nil)
-        [_nowPlayingButton setEnabled:NO];
 }
 
 
@@ -98,7 +75,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
 }
 
 
@@ -198,7 +174,7 @@
 {
     NSString* g = genre;
     if ([genre isEqualToString:@"style_all"])
-        g= nil;
+        g = nil;
     
     [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:g target:self action:@selector(receiveRadios:info:)];
 }
@@ -228,31 +204,6 @@
 
 
 
-#pragma mark - IBActions
-
-- (IBAction)onStyleSelectorClicked:(id)sender
-{
-    StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil currentStyle:_currentStyle target:self];
-    //  self.navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    [self.navigationController presentModalViewController:view animated:YES];
-}
-
-
-//- (IBAction)onNowPlayingClicked:(id)sender
-//{
-//    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
-//}
-
-//- (IBAction)menuBarItemClicked:(id)sender
-//{
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-
-
-
 #pragma mark - TopBarDelegate
 
 - (void)topBarBackItemClicked
@@ -267,24 +218,54 @@
     [view release];
 }
 
+#pragma mark - WheelSelectorDelegate
 
-
-#pragma mark - StyleSelectorDelegate
-
-- (void)didSelectStyle:(NSString*)style
+// item has been selected from the wheel selector
+- (void)wheelSelectorDidSelect:(NSInteger)index
 {
-    //  [self.navigationController dismissModalViewControllerAnimated:YES];
+    if (self.tableview != nil)
+        [self.tableview removeFromSuperview];
+    self.tableview = nil;
     
-    _currentStyle = style;
-    _categoryTitle.text = NSLocalizedString(_currentStyle, nil);
+    NSString* url = nil;
+
+    // request favorites radios
+    if (index == WheelIdFavorites)
+    {
+        NSString* g = nil;
+        
+        NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
+        assert(entry);
+        url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];        
+    }
+
+    // request selection radios
+    else if (index == WheelIdSelection)
+    {
+        NSString* g = nil;
+        
+        NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_SELECTION];
+        assert(entry);
+        url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];        
+    }
+
+    // request top radios
+    else if (index == WheelIdTop)
+    {
+        NSString* g = nil;
+        
+        NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
+        assert(entry);
+        url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];            
+    }
+
     
-    [self updateRadios:_currentStyle];
+    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:g target:self action:@selector(receiveRadios:info:)];
+        
 }
 
-- (void)closeSelectStyleController
-{
-    [self.navigationController dismissModalViewControllerAnimated:YES];
-}
+
+
 
 
 

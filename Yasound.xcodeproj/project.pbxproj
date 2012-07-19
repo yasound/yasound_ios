@@ -6605,14 +6605,9 @@
 			path = ThirdParties/DDMenuController;
 			sourceTree = "<group>";
 		};
-		BC5EE20E147D3EB300A282A5 /* Radio List */ = {
+		BC598E4415B87106004D6DCB /* Old RadioSelection */ = {
 			isa = PBXGroup;
 			children = (
-				BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */,
-				BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */,
-				BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */,
-				BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */,
-				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,
 				BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */,
 				BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */,
 				BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */,
@@ -6624,10 +6619,22 @@
 				BCA83E6C14C6D3EB000A8295 /* FavoritesViewController.h */,
 				BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */,
 				BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */,
+				BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */,
+				BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */,
+			);
+			name = "Old RadioSelection";
+			sourceTree = "<group>";
+		};
+		BC5EE20E147D3EB300A282A5 /* RadioSelection */ = {
+			isa = PBXGroup;
+			children = (
+				BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */,
+				BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */,
+				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,
 				BC97E87215B804DB00C4FC36 /* WheelSelector.h */,
 				BC97E87315B804DB00C4FC36 /* WheelSelector.m */,
 			);
-			name = "Radio List";
+			name = RadioSelection;
 			sourceTree = "<group>";
 		};
 		BC6314CF14B4665200549EF6 /* Tools */ = {
@@ -7908,7 +7915,8 @@
 				BCE4632E148FDEA000422448 /* Login */,
 				BCE66A7F1548599A0094B4D0 /* Menu */,
 				BC71F595147FC10500DAE4BD /* My Yasound */,
-				BC5EE20E147D3EB300A282A5 /* Radio List */,
+				BC598E4415B87106004D6DCB /* Old RadioSelection */,
+				BC5EE20E147D3EB300A282A5 /* RadioSelection */,
 				BCB41F4114863646008F3738 /* Theme */,
 				BCB5F28B1485416B00C28B3D /* RadioView */,
 				BCD8C79F14B4B59F009EAF61 /* SessionManager */,

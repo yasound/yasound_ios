@@ -166,6 +166,9 @@
     stickyPos -= self.frame.size.width/2.f;
 
     [self setContentOffset: CGPointMake(stickyPos, self.contentOffset.y) animated:YES];
+    
+    // send signal to delegate
+    [self.wheelDelegate wheelSelectorDidSelect:itemID];
 }
 
 

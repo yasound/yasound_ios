@@ -11,21 +11,12 @@
 
 
 @interface RadioSelectionViewController : TestflightViewController
-{
-    IBOutlet UILabel* _topBarTitle;
-    IBOutlet UILabel* _categoryTitle;
-    IBOutlet UIBarButtonItem* _nowPlayingButton;
-    
-    IBOutlet UITableView* _tableView;  
-    
-    NSString* _currentStyle;
-    
-    NSMutableArray* _radios;
-}
 
 @property (nonatomic, retain) NSURL* url;
+@property (nonatomic, retain) UITableView* tableview;
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)url andTitle:(NSString*)title;
+
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUrl:(NSURL*)url;
 
 - (IBAction)onStyleSelectorClicked:(id)sender;
 - (IBAction)onNowPlayingClicked:(id)sender;
