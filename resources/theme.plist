@@ -12,6 +12,13 @@
 	<dict>
 		<key>WheelSelector</key>
 		<dict>
+			<key>indicator</key>
+			<dict>
+				<key>name</key>
+				<string>wheelSelectorIndicator</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
 			<key>label</key>
 			<dict>
 				<key>height</key>

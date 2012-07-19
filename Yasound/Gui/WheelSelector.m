@@ -8,6 +8,7 @@
 
 #import "WheelSelector.h"
 #import "Theme.h"
+#include <QuartzCore/QuartzCore.h>
 
 @implementation WheelSelector
 
@@ -16,12 +17,16 @@
 
 #define ITEM_TEXT 0
 #define ITEM_WIDTH 1
+#define ITEM_STICKY_POS 2
+#define ITEM_STICKY_LIMIT 3
 
 - (void)awakeFromNib
 {
 //    self = [super initWithFrame:frame];
 //    if (self) 
 //    {
+    
+    // compute selector's options
         self.items = [[NSMutableArray alloc] init];
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"WheelSelector.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -33,27 +38,59 @@
         [self addItem:NSLocalizedString(@"WheelSelector_Friends", nil) withFont:font];
         [self addItem:NSLocalizedString(@"WheelSelector_Top", nil) withFont:font];
         
-        CGFloat x = 8;
+    CGFloat marginLeft = (self.frame.size.width /2.f) - ([[[self.items objectAtIndex:0] objectAtIndex:ITEM_WIDTH] floatValue] /2.f);
+    CGFloat marginRight = (self.frame.size.width /2.f) - ([[[self.items objectAtIndex:(self.items.count-1)] objectAtIndex:ITEM_WIDTH] floatValue]);
+
+    CGFloat x = marginLeft;
         CGFloat y = 8;
         CGFloat h = 32;
-        
-        for (NSArray* item in self.items)
+        CGFloat spacing = 48;
+        CGFloat width = 0;
+    
+        // add labels for the selector options, compute the contents size, and the sticky positions of the scrollview
+        for (NSMutableArray* item in self.items)
         {
             UILabel* label = [sheet makeLabel];
-            CGFloat width = [[item objectAtIndex:ITEM_WIDTH] floatValue];
+            width = [[item objectAtIndex:ITEM_WIDTH] floatValue];
+            
+            // set the "sticky" position for this item (<=> the center position)
+            [item addObject:[NSNumber numberWithFloat:(x + width /2.f)]];
+            
+            // set the "sticky" limit for this item (<=> where the influence of the next item begins)
+            [item addObject:[NSNumber numberWithFloat:(x + width + spacing/2.f)]];
+            
             label.text = [item objectAtIndex:ITEM_TEXT];
             CGRect frame = CGRectMake(x, y, width, h);
             label.frame = frame;
             
             [self addSubview:label];
-            self.contentSize = CGSizeMake(x + width, h);
             
             x += width;
-            x += 8;
+            x += spacing;
         }
-        
-//    }
-//    return self;
+
+    self.contentSize = CGSizeMake(x - width + marginRight, self.contentSize.height);
+    [self setShowsHorizontalScrollIndicator:NO];
+    [self setShowsVerticalScrollIndicator:NO];
+    self.delegate = self;
+//    self.decelerationRate = UIScrollViewDecelerationRateFast;
+    self.decelerationRate = UIScrollViewDecelerationRateNormal;
+    
+//    // add selector visual indicator
+//    sheet = [[Theme theme] stylesheetForKey:@"WheelSelector.indicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    UIImageView* indicator = [sheet makeImage];
+//    indicator.frame = CGRectMake(self.frame.size.width/2.f - indicator.frame.size.width/2.f, self.frame.size.height - indicator.frame.size.height, indicator.frame.size.width, indicator.frame.size.height);
+//    [self addSubview:indicator];
+
+    sheet = [[Theme theme] stylesheetForKey:@"WheelSelector.indicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImage* indicatorImage = [sheet image];
+    CGRect indicatorFrame = CGRectMake(self.frame.size.width/2.f - indicatorImage.size.width/2.f, self.frame.origin.y + self.frame.size.height - indicatorImage.size.height, indicatorImage.size.width, indicatorImage.size.height);
+    CALayer* indicatorLayer = [CALayer layer];
+    indicatorLayer.contents = (id)[indicatorImage CGImage];
+    indicatorLayer.frame = indicatorFrame;
+    
+    [[self.superview layer] addSublayer:indicatorLayer];
+    
 }
 
 
@@ -61,7 +98,7 @@
 {
     CGSize suggestedSize = [item sizeWithFont:font constrainedToSize:CGSizeMake(FLT_MAX, 32) lineBreakMode:UILineBreakModeClip];
 
-    [self.items addObject:[NSArray arrayWithObjects:item, [NSNumber numberWithFloat:suggestedSize.width], nil]];
+    [self.items addObject:[NSMutableArray arrayWithObjects:item, [NSNumber numberWithFloat:suggestedSize.width], nil]];
 }
 
 
@@ -69,6 +106,32 @@
 
 #pragma mark - UIScrollViewDelegate
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    CGFloat currentPost = scrollView.contentOffset.x;
+    
+    // compute the index of the sticky item
+    NSInteger stickyIndex = 0;
+    for (NSArray* item in self.items)
+    {
+        CGFloat stickyLimit = [[item objectAtIndex:ITEM_STICKY_LIMIT] floatValue];
+        if (currentPost < stickyLimit)
+            break;
+        
+        stickyIndex++;
+    }
+    
+    CGFloat stickyPos = [[[self.items objectAtIndex:stickyIndex] objectAtIndex:ITEM_STICKY_POS] floatValue];
+    
+    // make the scrollview goes to the sticky position
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.33];
+    self.contentOffset = CGPointMake(stickyPos, self.contentOffset.y);
+    [UIView commitAnimations];
+    
+
+    
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -88,13 +151,24 @@
 
 
 
-/*
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+//- (void)drawRect:(CGRect)rect
+//{
+//    // add selector visual indicator
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"WheelSelector.indicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+////        UIImageView* indicator = [sheet makeImage];
+//    UIImage* indicator = [sheet image];
+//        CGRect frame = CGRectMake(self.frame.size.width/2.f - indicator.size.width/2.f, self.frame.size.height - indicator.size.height, indicator.size.width, indicator.size.height);
+////        
+////        
+////        
+////        [self addSubview:indicator];
+//    
+//    
+//    [indicator drawInRect:frame];
+//}
+
 
 @end

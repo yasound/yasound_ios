@@ -574,3 +574,11 @@
 "MessageBroadcastModalView_title" = "Message";
 "MessageBroadcastModalView_from" = "De : %@";
 "MessageBroadcastModalView_to" = "A : %d abonnés";
+
+"WheelSelector_Favorites" = "Favorites";
+"WheelSelector_Genre" = "Genres";
+"WheelSelector_Selection" = "Selection";
+"WheelSelector_Friends" = "Friends";
+"WheelSelector_Top" = "Top";
+
+

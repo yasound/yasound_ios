@@ -567,3 +567,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MessageBroadcastModalView_from" = "From : %@";
 "MessageBroadcastModalView_to" = "To : %d subscribers";
 
+"WheelSelector_Favorites" = "Favoris";
+"WheelSelector_Genre" = "Genres";
+"WheelSelector_Selection" = "Selection";
+"WheelSelector_Friends" = "Amis";
+"WheelSelector_Top" = "Top";
+
