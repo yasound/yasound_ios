@@ -19,6 +19,13 @@
 				<key>type</key>
 				<string>png</string>
 			</dict>
+			<key>shadow</key>
+			<dict>
+				<key>name</key>
+				<string>wheelSelectorShadow</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
 			<key>label</key>
 			<dict>
 				<key>height</key>
@@ -31,6 +38,14 @@
 				<integer>0</integer>
 				<key>font</key>
 				<dict>
+					<key>shadowOffset</key>
+					<string>0, -1</string>
+					<key>shadowRadius</key>
+					<real>0.5</real>
+					<key>shadowColor</key>
+					<string>black</string>
+					<key>shadowOpacity</key>
+					<real>0.75</real>
 					<key>weight</key>
 					<string>bold</string>
 					<key>size</key>

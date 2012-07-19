@@ -156,11 +156,6 @@
 {
     [super viewDidAppear:animated];
     
-    //LBDEBUG
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
-    return;
-
-
     
     if (_firstTime)
     {
@@ -262,7 +257,7 @@
         if (info != nil)
         {
             //LBDEBUG
-            DLog(@"DEBUG info %@", info);
+            //DLog(@"DEBUG info %@", info);
             
             NSString* errorValue = [info objectForKey:@"error"];
             if ([errorValue isEqualToString:@"Login"])

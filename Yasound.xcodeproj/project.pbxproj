@@ -1348,6 +1348,22 @@
 		BC56F5B5152486AF005D1B40 /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
 		BC56F5BC152486AF005D1B40 /* YasoundLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EE0B15233A6300290383 /* YasoundLoginViewController.xib */; };
 		BC56F5E1152486AF005D1B40 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0EF211524755E00290383 /* LoginViewController.xib */; };
+		BC598E3415B865F6004D6DCB /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3215B865F6004D6DCB /* wheelSelectorShadow.png */; };
+		BC598E3515B865F6004D6DCB /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3215B865F6004D6DCB /* wheelSelectorShadow.png */; };
+		BC598E3615B865F6004D6DCB /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3215B865F6004D6DCB /* wheelSelectorShadow.png */; };
+		BC598E3715B865F6004D6DCB /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3215B865F6004D6DCB /* wheelSelectorShadow.png */; };
+		BC598E3815B865F6004D6DCB /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3215B865F6004D6DCB /* wheelSelectorShadow.png */; };
+		BC598E3915B865F6004D6DCB /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3215B865F6004D6DCB /* wheelSelectorShadow.png */; };
+		BC598E3A15B865F6004D6DCB /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3215B865F6004D6DCB /* wheelSelectorShadow.png */; };
+		BC598E3B15B865F6004D6DCB /* wheelSelectorShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3215B865F6004D6DCB /* wheelSelectorShadow.png */; };
+		BC598E3C15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */; };
+		BC598E3D15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */; };
+		BC598E3E15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */; };
+		BC598E3F15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */; };
+		BC598E4015B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */; };
+		BC598E4115B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */; };
+		BC598E4215B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */; };
+		BC598E4315B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */; };
 		BC5C900F14F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
 		BC5C901014F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
 		BC5C901114F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
@@ -5366,6 +5382,8 @@
 		BC524F1314EEC25A001B4FC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/btnBuyUp.png; sourceTree = "<group>"; };
 		BC524F1514EEC25A001B4FC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = "en.lproj/btnBuyUp@2x.png"; sourceTree = "<group>"; };
 		BC56F5E5152486AF005D1B40 /* YasoundD DEV SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD DEV SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC598E3215B865F6004D6DCB /* wheelSelectorShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheelSelectorShadow.png; sourceTree = "<group>"; };
+		BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wheelSelectorShadow@2x.png"; sourceTree = "<group>"; };
 		BC5C900D14F2A4EB00C7D01E /* YasoundDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCache.h; sourceTree = "<group>"; };
 		BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCache.m; sourceTree = "<group>"; };
 		BC5EA8E1150100750002697D /* SongCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongCatalog.h; path = Programming/SongCatalog.h; sourceTree = "<group>"; };
@@ -7425,6 +7443,8 @@
 		BCD1255D15B71FF2001FF144 /* WheelSelector */ = {
 			isa = PBXGroup;
 			children = (
+				BC598E3215B865F6004D6DCB /* wheelSelectorShadow.png */,
+				BC598E3315B865F6004D6DCB /* wheelSelectorShadow@2x.png */,
 				BCD1255E15B71FF2001FF144 /* wheelSelectorBackground.png */,
 				BCD1255F15B71FF3001FF144 /* wheelSelectorBackground@2x.png */,
 				BCD1256015B71FF3001FF144 /* wheelSelectorIndicator.png */,
@@ -8561,6 +8581,8 @@
 				BCD1309815B71FF4001FF144 /* wheelSelectorBackground@2x.png in Resources */,
 				BCD130A015B71FF4001FF144 /* wheelSelectorIndicator.png in Resources */,
 				BCD130A815B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
+				BC598E3A15B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
+				BC598E4215B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8989,6 +9011,8 @@
 				BCD1309915B71FF4001FF144 /* wheelSelectorBackground@2x.png in Resources */,
 				BCD130A115B71FF4001FF144 /* wheelSelectorIndicator.png in Resources */,
 				BCD130A915B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
+				BC598E3B15B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
+				BC598E4315B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9411,6 +9435,8 @@
 				BCD1309715B71FF4001FF144 /* wheelSelectorBackground@2x.png in Resources */,
 				BCD1309F15B71FF4001FF144 /* wheelSelectorIndicator.png in Resources */,
 				BCD130A715B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
+				BC598E3915B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
+				BC598E4115B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9838,6 +9864,8 @@
 				BCD1309415B71FF4001FF144 /* wheelSelectorBackground@2x.png in Resources */,
 				BCD1309C15B71FF4001FF144 /* wheelSelectorIndicator.png in Resources */,
 				BCD130A415B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
+				BC598E3615B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
+				BC598E3E15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10265,6 +10293,8 @@
 				BCD1309315B71FF4001FF144 /* wheelSelectorBackground@2x.png in Resources */,
 				BCD1309B15B71FF4001FF144 /* wheelSelectorIndicator.png in Resources */,
 				BCD130A315B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
+				BC598E3515B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
+				BC598E3D15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10692,6 +10722,8 @@
 				BCD1309615B71FF4001FF144 /* wheelSelectorBackground@2x.png in Resources */,
 				BCD1309E15B71FF4001FF144 /* wheelSelectorIndicator.png in Resources */,
 				BCD130A615B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
+				BC598E3815B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
+				BC598E4015B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11119,6 +11151,8 @@
 				BCD1309215B71FF4001FF144 /* wheelSelectorBackground@2x.png in Resources */,
 				BCD1309A15B71FF4001FF144 /* wheelSelectorIndicator.png in Resources */,
 				BCD130A215B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
+				BC598E3415B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
+				BC598E3C15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11546,6 +11580,8 @@
 				BCD1309515B71FF4001FF144 /* wheelSelectorBackground@2x.png in Resources */,
 				BCD1309D15B71FF4001FF144 /* wheelSelectorIndicator.png in Resources */,
 				BCD130A515B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
+				BC598E3715B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
+				BC598E3F15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

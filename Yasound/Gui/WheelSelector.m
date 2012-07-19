@@ -25,6 +25,8 @@
 {
     self.needsToStick = NO;
     
+    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wheelSelectorBackground.png"]];
+    
     // compute selector's options
         self.items = [[NSMutableArray alloc] init];
         
@@ -41,7 +43,7 @@
     CGFloat marginRight = (self.frame.size.width /2.f) - ([[[self.items objectAtIndex:(self.items.count-1)] objectAtIndex:ITEM_WIDTH] floatValue]);
 
     CGFloat x = marginLeft;
-        CGFloat y = 8;
+        CGFloat y = 0;
         CGFloat h = 32;
         CGFloat spacing = 48;
         CGFloat width = 0;
@@ -83,7 +85,20 @@
     indicatorLayer.contents = (id)[indicatorImage CGImage];
     indicatorLayer.frame = indicatorFrame;
     [[self.superview layer] addSublayer:indicatorLayer]; // to superview 'cause it must not scroll
+
+    // add visual layer for the selector's shadow
+    sheet = [[Theme theme] stylesheetForKey:@"WheelSelector.shadow" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImage* shadowImage = [sheet image];
+    CGRect frame = CGRectMake(0, self.frame.origin.y, shadowImage.size.width, shadowImage.size.height);
+    CALayer* layer = [CALayer layer];
+    layer.contents = (id)[shadowImage CGImage];
+    layer.frame = frame;
+     layer.opaque = NO;
+    [[self.superview layer] addSublayer:layer]; // to superview 'cause it must not scroll
     
+    // starting position
+    [self stickToItem:WHEEL_ID_SELECTION];
+
 }
 
 
@@ -105,7 +120,8 @@
     if (decelerate)
         return;
     
-    [self stick];
+    NSInteger stickyIndex = [self currentStickyIndex];
+    [self stickToItem:stickyIndex];    
 }
 
 
@@ -116,11 +132,12 @@
         return;
     
     self.needsToStick = NO;
-    [self stick];
-    
+
+    NSInteger stickyIndex = [self currentStickyIndex];
+    [self stickToItem:stickyIndex];    
 }
 
-- (void)stick
+- (NSInteger)currentStickyIndex
 {
     CGFloat currentPost = self.contentOffset.x + self.frame.size.width/2.f;
     
@@ -135,9 +152,15 @@
         stickyIndex++;
     }
     
-    NSLog(@"stickyIndex %d", stickyIndex);
+    // DLog(@"stickyIndex %d", stickyIndex);
     
-    CGFloat stickyPos = [[[self.items objectAtIndex:stickyIndex] objectAtIndex:ITEM_STICKY_POS] floatValue];
+    return stickyIndex;
+}
+
+
+- (void)stickToItem:(NSInteger)itemID
+{
+    CGFloat stickyPos = [[[self.items objectAtIndex:itemID] objectAtIndex:ITEM_STICKY_POS] floatValue];
     
     // translate the stickyPos, for the scrollview position reference
     stickyPos -= self.frame.size.width/2.f;
