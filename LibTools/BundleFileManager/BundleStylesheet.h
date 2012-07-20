@@ -68,7 +68,7 @@
 
 @property (nonatomic, retain) NSString* name;
 @property (nonatomic, retain, readonly) NSMutableDictionary* images;
-@property (nonatomic, readonly) CGRect frame;
+@property (nonatomic) CGRect frame;
 @property (nonatomic, readonly) UIColor* color;
 @property (nonatomic, retain) NSMutableDictionary* fontsheets; //  dictionnary of  BundleFontsheet*
 @property (nonatomic, retain, readonly) NSDictionary* customProperties;

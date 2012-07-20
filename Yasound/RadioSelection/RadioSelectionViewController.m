@@ -7,7 +7,6 @@
 //
 
 #import "RadioSelectionViewController.h"
-#import "RadioSelectionTableViewCell.h"
 #import "StyleSelectorViewController.h"
 #import "RadioViewController.h"
 #import "YasoundDataCache.h"
@@ -193,6 +192,7 @@
     
     RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:radios];
     newTableview.listDelegate = self;
+    newTableview.tableView.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
     [self.listContainer addSubview:newTableview.view];
     
     self.tableview = newTableview;

@@ -7,6 +7,7 @@
 //
 
 #import "RadioListTableViewController.h"
+#import "RadioListTableViewCell.h"
 
 @interface RadioListTableViewController ()
 
@@ -27,6 +28,9 @@
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
     }
     return self;
 }
@@ -67,21 +71,38 @@
     if (self.radios == nil)
         return 0;
     
-    return self.radios.count;
+    return self.radios.count / 2;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 156.f;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString* cellIdentifier = @"RadioListTableViewCell";
+    
+    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    NSInteger radioIndex = indexPath.row * 2;
+    
+    Radio* radio1 = [self.radios objectAtIndex:radioIndex];
+    Radio* radio2 = nil;
+    if (radioIndex+1 < self.radios.count)
+        radio2 = [self.radios objectAtIndex:radioIndex+1];
+    
+    NSArray* radiosForRow = [NSArray arrayWithObjects:radio1, radio2, nil];
+    
     if (cell == nil)
     {    
-        cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
+        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier radios:radiosForRow];
     }
-
-    Radio* radio = [self.radios objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = radio.name;
+    else
+    {
+        [cell updateWithRadios:radiosForRow];
+    }
     
     return cell;
 }

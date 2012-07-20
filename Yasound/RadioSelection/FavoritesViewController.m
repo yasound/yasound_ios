@@ -12,7 +12,7 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "YasoundDataCache.h"
-#import "RadioSelectionTableViewCell.h"
+#import "RadioListTableViewCell.h"
 #import "ActivityModelessSpinner.h"
 
 
@@ -142,19 +142,19 @@
     if (!_radios)
         return nil;
     
-    static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
+    static NSString *cellIdentifier = @"RadioListTableViewCell";
     
     if (!_radios)
         return nil;
     
-    RadioSelectionTableViewCell* cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     NSInteger rowIndex = indexPath.row;
     Radio* radio = [_radios objectAtIndex:rowIndex];
     
     if (cell == nil)
     {    
-        cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
+        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
     }
     else
         [cell updateWithRadio:radio rowIndex:rowIndex];
@@ -168,9 +168,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RadioSelectionTableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
+    RadioListTableViewCell* cell = [_tableView cellForRowAtIndexPath:indexPath];
     
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:cell.radio];
+    //LBDEBUG TODO
+
+    
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:nil];
     [self.navigationController pushViewController:view animated:YES];
     [view release]; 
 }

@@ -89,181 +89,137 @@
 		</dict>
 		<key>Radios</key>
 		<dict>
-			<key>RadioSelectionTitle</key>
+			<key>title</key>
 			<dict>
 				<key>height</key>
-				<integer>21</integer>
+				<integer>25</integer>
 				<key>x</key>
-				<integer>82</integer>
+				<integer>11</integer>
 				<key>y</key>
-				<integer>5</integer>
+				<integer>110</integer>
 				<key>width</key>
-				<integer>204</integer>
+				<integer>132</integer>
 				<key>font</key>
 				<dict>
 					<key>weight</key>
 					<string>bold</string>
 					<key>size</key>
-					<integer>16</integer>
+					<integer>12</integer>
 					<key>name</key>
 					<string>HelveticaNeue-Bold</string>
 					<key>textColor</key>
 					<string>white</string>
 				</dict>
 			</dict>
-			<key>RadioSelectionLikes</key>
+			<key>subscribers</key>
 			<dict>
 				<key>height</key>
 				<integer>13</integer>
 				<key>x</key>
-				<integer>250</integer>
-				<key>y</key>
-				<integer>6</integer>
-				<key>width</key>
-				<integer>48</integer>
-				<key>font</key>
-				<dict>
-					<key>textColor</key>
-					<string>white</string>
-					<key>size</key>
-					<integer>11</integer>
-					<key>textAlignement</key>
-					<string>right</string>
-					<key>backgroundColor</key>
-					<string>clear</string>
-					<key>name</key>
-					<string>HelveticaNeue</string>
-				</dict>
-			</dict>
-			<key>RadioSelectionSubtitle2</key>
-			<dict>
-				<key>height</key>
-				<integer>21</integer>
-				<key>x</key>
-				<integer>82</integer>
-				<key>y</key>
-				<integer>42</integer>
-				<key>width</key>
-				<integer>207</integer>
-				<key>font</key>
-				<dict>
-					<key>size</key>
-					<integer>10</integer>
-					<key>name</key>
-					<string>HelveticaNeue</string>
-					<key>textColor</key>
-					<string>white</string>
-				</dict>
-			</dict>
-			<key>RadioSelectionMaskWhite</key>
-			<dict>
-				<key>x</key>
-				<integer>18</integer>
-				<key>y</key>
-				<integer>7</integer>
-				<key>type</key>
-				<string>png</string>
-				<key>name</key>
-				<string>CellRadioLight_Mask</string>
-			</dict>
-			<key>RadioSelectionMask</key>
-			<dict>
-				<key>x</key>
-				<integer>18</integer>
-				<key>y</key>
-				<integer>7</integer>
-				<key>type</key>
-				<string>png</string>
-				<key>name</key>
-				<string>CellRadioUser_Mask</string>
-			</dict>
-			<key>RadioSelectionMaskGray</key>
-			<dict>
-				<key>x</key>
-				<integer>18</integer>
-				<key>y</key>
-				<integer>7</integer>
-				<key>type</key>
-				<string>png</string>
-				<key>name</key>
-				<string>CellRadioDark_Mask</string>
-			</dict>
-			<key>RadioSelectionBackgroundLight</key>
-			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-				<key>type</key>
-				<string>png</string>
-				<key>name</key>
-				<string>CellRadioLight</string>
-			</dict>
-			<key>RadioSelectionBackgroundDark</key>
-			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-				<key>type</key>
-				<string>png</string>
-				<key>name</key>
-				<string>CellRadioDark</string>
-			</dict>
-			<key>RadioSelectionSubtitle1</key>
-			<dict>
-				<key>height</key>
-				<integer>21</integer>
-				<key>x</key>
-				<integer>82</integer>
-				<key>y</key>
 				<integer>30</integer>
+				<key>y</key>
+				<integer>132</integer>
 				<key>width</key>
-				<integer>207</integer>
+				<integer>48</integer>
 				<key>font</key>
 				<dict>
-					<key>size</key>
-					<integer>10</integer>
-					<key>name</key>
-					<string>HelveticaNeue</string>
+					<key>weight</key>
+					<string>bold</string>
 					<key>textColor</key>
-					<string>white</string>
+					<string>rgb(168,168,168)</string>
+					<key>size</key>
+					<integer>13</integer>
+					<key>backgroundColor</key>
+					<string>clear</string>
 				</dict>
 			</dict>
-			<key>RadioSelectionListeners</key>
+			<key>subscribersIcon</key>
+			<dict>
+				<key>name</key>
+				<string>radioListSubscribersIcon</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>11</integer>
+				<key>y</key>
+				<integer>132</integer>
+			</dict>
+			<key>listenersIcon</key>
+			<dict>
+				<key>name</key>
+				<string>radioListListenersIcon</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>59</integer>
+				<key>y</key>
+				<integer>132</integer>
+			</dict>
+			<key>mask</key>
+			<dict>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+				<key>type</key>
+				<string>png</string>
+				<key>name</key>
+				<string>radioListMaskSize2</string>
+			</dict>
+			<key>userMask</key>
+			<dict>
+				<key>x</key>
+				<integer>12</integer>
+				<key>y</key>
+				<integer>13</integer>
+				<key>type</key>
+				<string>png</string>
+				<key>name</key>
+				<string>radioListUserMask</string>
+			</dict>
+			<key>listeners</key>
 			<dict>
 				<key>height</key>
-				<integer>13</integer>
+				<integer>18</integer>
 				<key>x</key>
-				<integer>250</integer>
+				<integer>78</integer>
 				<key>y</key>
-				<integer>19</integer>
+				<integer>129</integer>
 				<key>width</key>
 				<integer>48</integer>
 				<key>font</key>
 				<dict>
 					<key>textColor</key>
-					<string>white</string>
+					<string>rgb(168,168,168)</string>
+					<key>weight</key>
+					<string>bold</string>
 					<key>size</key>
-					<integer>11</integer>
-					<key>textAlignement</key>
-					<string>right</string>
+					<integer>13</integer>
 					<key>backgroundColor</key>
 					<string>clear</string>
-					<key>name</key>
-					<string>HelveticaNeue</string>
 				</dict>
 			</dict>
-			<key>RadioSelectionAvatar</key>
+			<key>image</key>
 			<dict>
 				<key>height</key>
-				<integer>50</integer>
+				<integer>148</integer>
 				<key>x</key>
-				<integer>18</integer>
+				<integer>4</integer>
 				<key>y</key>
-				<integer>7</integer>
+				<integer>4</integer>
 				<key>width</key>
-				<integer>50</integer>
+				<integer>148</integer>
+			</dict>
+			<key>userImage</key>
+			<dict>
+				<key>height</key>
+				<integer>33</integer>
+				<key>x</key>
+				<integer>14</integer>
+				<key>y</key>
+				<integer>15</integer>
+				<key>width</key>
+				<integer>33</integer>
 			</dict>
 		</dict>
 		<key>Users</key>

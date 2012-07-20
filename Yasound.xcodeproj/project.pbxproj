@@ -96,7 +96,6 @@
 		40B40954152EFC630050D334 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		40B40955152EFC630050D334 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		40B40956152EFC630050D334 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
-		40B40957152EFC630050D334 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		40B40958152EFC630050D334 /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		40B40959152EFC630050D334 /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
 		40B4095A152EFC630050D334 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
@@ -346,7 +345,6 @@
 		40D53B591554280F001EB0C5 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		40D53B5A1554280F001EB0C5 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		40D53B5B1554280F001EB0C5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
-		40D53B5C1554280F001EB0C5 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		40D53B5D1554280F001EB0C5 /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		40D53B5E1554280F001EB0C5 /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
 		40D53B5F1554280F001EB0C5 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
@@ -715,7 +713,6 @@
 		BC188BDE1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		BC188BDF1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		BC188BE01507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
-		BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36314BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
@@ -731,7 +728,6 @@
 		BC3FA66814E93B660055AB4A /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC3FA66914E93B660055AB4A /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BC3FA66A14E93B660055AB4A /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
-		BC3FA66B14E93B660055AB4A /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC3FA66C14E93B660055AB4A /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC3FA66D14E93B660055AB4A /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
 		BC3FA66E14E93B660055AB4A /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
@@ -1143,7 +1139,6 @@
 		BC56F476152486AF005D1B40 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC56F477152486AF005D1B40 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BC56F478152486AF005D1B40 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
-		BC56F479152486AF005D1B40 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC56F47A152486AF005D1B40 /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC56F47B152486AF005D1B40 /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
 		BC56F47C152486AF005D1B40 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
@@ -1380,6 +1375,94 @@
 		BC598E7E15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
 		BC598E7F15B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
 		BC598E8015B8788D004D6DCB /* WheelSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E7815B8788D004D6DCB /* WheelSelector.m */; };
+		BC598E8315B94A43004D6DCB /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
+		BC598E8415B94A43004D6DCB /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
+		BC598E8515B94A43004D6DCB /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
+		BC598E8615B94A43004D6DCB /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
+		BC598E8715B94A43004D6DCB /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
+		BC598E8815B94A43004D6DCB /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
+		BC598E8915B94A43004D6DCB /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
+		BC598E8A15B94A43004D6DCB /* RadioListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */; };
+		BC598E9415B988C3004D6DCB /* radioListListenersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8C15B988C3004D6DCB /* radioListListenersIcon.png */; };
+		BC598E9515B988C3004D6DCB /* radioListListenersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8C15B988C3004D6DCB /* radioListListenersIcon.png */; };
+		BC598E9615B988C3004D6DCB /* radioListListenersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8C15B988C3004D6DCB /* radioListListenersIcon.png */; };
+		BC598E9715B988C3004D6DCB /* radioListListenersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8C15B988C3004D6DCB /* radioListListenersIcon.png */; };
+		BC598E9815B988C3004D6DCB /* radioListListenersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8C15B988C3004D6DCB /* radioListListenersIcon.png */; };
+		BC598E9915B988C3004D6DCB /* radioListListenersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8C15B988C3004D6DCB /* radioListListenersIcon.png */; };
+		BC598E9A15B988C3004D6DCB /* radioListListenersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8C15B988C3004D6DCB /* radioListListenersIcon.png */; };
+		BC598E9B15B988C3004D6DCB /* radioListListenersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8C15B988C3004D6DCB /* radioListListenersIcon.png */; };
+		BC598E9C15B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8D15B988C3004D6DCB /* radioListListenersIcon@2x.png */; };
+		BC598E9D15B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8D15B988C3004D6DCB /* radioListListenersIcon@2x.png */; };
+		BC598E9E15B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8D15B988C3004D6DCB /* radioListListenersIcon@2x.png */; };
+		BC598E9F15B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8D15B988C3004D6DCB /* radioListListenersIcon@2x.png */; };
+		BC598EA015B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8D15B988C3004D6DCB /* radioListListenersIcon@2x.png */; };
+		BC598EA115B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8D15B988C3004D6DCB /* radioListListenersIcon@2x.png */; };
+		BC598EA215B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8D15B988C3004D6DCB /* radioListListenersIcon@2x.png */; };
+		BC598EA315B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8D15B988C3004D6DCB /* radioListListenersIcon@2x.png */; };
+		BC598EA415B988C3004D6DCB /* radioListMaskSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8E15B988C3004D6DCB /* radioListMaskSize2.png */; };
+		BC598EA515B988C3004D6DCB /* radioListMaskSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8E15B988C3004D6DCB /* radioListMaskSize2.png */; };
+		BC598EA615B988C3004D6DCB /* radioListMaskSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8E15B988C3004D6DCB /* radioListMaskSize2.png */; };
+		BC598EA715B988C3004D6DCB /* radioListMaskSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8E15B988C3004D6DCB /* radioListMaskSize2.png */; };
+		BC598EA815B988C3004D6DCB /* radioListMaskSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8E15B988C3004D6DCB /* radioListMaskSize2.png */; };
+		BC598EA915B988C3004D6DCB /* radioListMaskSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8E15B988C3004D6DCB /* radioListMaskSize2.png */; };
+		BC598EAA15B988C3004D6DCB /* radioListMaskSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8E15B988C3004D6DCB /* radioListMaskSize2.png */; };
+		BC598EAB15B988C3004D6DCB /* radioListMaskSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8E15B988C3004D6DCB /* radioListMaskSize2.png */; };
+		BC598EAC15B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8F15B988C3004D6DCB /* radioListMaskSize2@2x.png */; };
+		BC598EAD15B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8F15B988C3004D6DCB /* radioListMaskSize2@2x.png */; };
+		BC598EAE15B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8F15B988C3004D6DCB /* radioListMaskSize2@2x.png */; };
+		BC598EAF15B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8F15B988C3004D6DCB /* radioListMaskSize2@2x.png */; };
+		BC598EB015B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8F15B988C3004D6DCB /* radioListMaskSize2@2x.png */; };
+		BC598EB115B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8F15B988C3004D6DCB /* radioListMaskSize2@2x.png */; };
+		BC598EB215B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8F15B988C3004D6DCB /* radioListMaskSize2@2x.png */; };
+		BC598EB315B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E8F15B988C3004D6DCB /* radioListMaskSize2@2x.png */; };
+		BC598EB415B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9015B988C3004D6DCB /* radioListRowBkgSize2.png */; };
+		BC598EB515B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9015B988C3004D6DCB /* radioListRowBkgSize2.png */; };
+		BC598EB615B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9015B988C3004D6DCB /* radioListRowBkgSize2.png */; };
+		BC598EB715B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9015B988C3004D6DCB /* radioListRowBkgSize2.png */; };
+		BC598EB815B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9015B988C3004D6DCB /* radioListRowBkgSize2.png */; };
+		BC598EB915B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9015B988C3004D6DCB /* radioListRowBkgSize2.png */; };
+		BC598EBA15B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9015B988C3004D6DCB /* radioListRowBkgSize2.png */; };
+		BC598EBB15B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9015B988C3004D6DCB /* radioListRowBkgSize2.png */; };
+		BC598EBC15B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9115B988C3004D6DCB /* radioListRowBkgSize2@2x.png */; };
+		BC598EBD15B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9115B988C3004D6DCB /* radioListRowBkgSize2@2x.png */; };
+		BC598EBE15B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9115B988C3004D6DCB /* radioListRowBkgSize2@2x.png */; };
+		BC598EBF15B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9115B988C3004D6DCB /* radioListRowBkgSize2@2x.png */; };
+		BC598EC015B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9115B988C3004D6DCB /* radioListRowBkgSize2@2x.png */; };
+		BC598EC115B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9115B988C3004D6DCB /* radioListRowBkgSize2@2x.png */; };
+		BC598EC215B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9115B988C3004D6DCB /* radioListRowBkgSize2@2x.png */; };
+		BC598EC315B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9115B988C3004D6DCB /* radioListRowBkgSize2@2x.png */; };
+		BC598EC415B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9215B988C3004D6DCB /* radioListSubscribersIcon.png */; };
+		BC598EC515B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9215B988C3004D6DCB /* radioListSubscribersIcon.png */; };
+		BC598EC615B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9215B988C3004D6DCB /* radioListSubscribersIcon.png */; };
+		BC598EC715B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9215B988C3004D6DCB /* radioListSubscribersIcon.png */; };
+		BC598EC815B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9215B988C3004D6DCB /* radioListSubscribersIcon.png */; };
+		BC598EC915B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9215B988C3004D6DCB /* radioListSubscribersIcon.png */; };
+		BC598ECA15B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9215B988C3004D6DCB /* radioListSubscribersIcon.png */; };
+		BC598ECB15B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9215B988C3004D6DCB /* radioListSubscribersIcon.png */; };
+		BC598ECC15B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9315B988C3004D6DCB /* radioListSubscribersIcon@2x.png */; };
+		BC598ECD15B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9315B988C3004D6DCB /* radioListSubscribersIcon@2x.png */; };
+		BC598ECE15B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9315B988C3004D6DCB /* radioListSubscribersIcon@2x.png */; };
+		BC598ECF15B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9315B988C3004D6DCB /* radioListSubscribersIcon@2x.png */; };
+		BC598ED015B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9315B988C3004D6DCB /* radioListSubscribersIcon@2x.png */; };
+		BC598ED115B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9315B988C3004D6DCB /* radioListSubscribersIcon@2x.png */; };
+		BC598ED215B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9315B988C3004D6DCB /* radioListSubscribersIcon@2x.png */; };
+		BC598ED315B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598E9315B988C3004D6DCB /* radioListSubscribersIcon@2x.png */; };
+		BC598ED615B9A460004D6DCB /* radioListUserMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED415B9A460004D6DCB /* radioListUserMask.png */; };
+		BC598ED715B9A460004D6DCB /* radioListUserMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED415B9A460004D6DCB /* radioListUserMask.png */; };
+		BC598ED815B9A460004D6DCB /* radioListUserMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED415B9A460004D6DCB /* radioListUserMask.png */; };
+		BC598ED915B9A460004D6DCB /* radioListUserMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED415B9A460004D6DCB /* radioListUserMask.png */; };
+		BC598EDA15B9A460004D6DCB /* radioListUserMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED415B9A460004D6DCB /* radioListUserMask.png */; };
+		BC598EDB15B9A460004D6DCB /* radioListUserMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED415B9A460004D6DCB /* radioListUserMask.png */; };
+		BC598EDC15B9A460004D6DCB /* radioListUserMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED415B9A460004D6DCB /* radioListUserMask.png */; };
+		BC598EDD15B9A460004D6DCB /* radioListUserMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED415B9A460004D6DCB /* radioListUserMask.png */; };
+		BC598EDE15B9A460004D6DCB /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */; };
+		BC598EDF15B9A460004D6DCB /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */; };
+		BC598EE015B9A460004D6DCB /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */; };
+		BC598EE115B9A460004D6DCB /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */; };
+		BC598EE215B9A460004D6DCB /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */; };
+		BC598EE315B9A460004D6DCB /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */; };
+		BC598EE415B9A460004D6DCB /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */; };
+		BC598EE515B9A460004D6DCB /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */; };
 		BC5C900F14F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
 		BC5C901014F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
 		BC5C901114F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
@@ -1414,7 +1497,6 @@
 		BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BC71F5D2147FEC6F00DAE4BD /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
-		BC71F5D4147FEC6F00DAE4BD /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC71F5D5147FEC6F00DAE4BD /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC71F5D6147FEC6F00DAE4BD /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
 		BC71F5DA147FEC6F00DAE4BD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
@@ -1502,7 +1584,6 @@
 		BC93CCCE14CF3F7A007C723F /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		BC93CCCF14CF3F7A007C723F /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		BC93CCD014CF3F7A007C723F /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
-		BC93CCD214CF3F7A007C723F /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		BC93CCD314CF3F7A007C723F /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC93CCD414CF3F7A007C723F /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
 		BC93CCD614CF3F7A007C723F /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
@@ -3093,54 +3174,6 @@
 		BCD12A3F15B71FF3001FF144 /* CellButtonAddDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248215B71FF2001FF144 /* CellButtonAddDisabled@2x.png */; };
 		BCD12A4015B71FF3001FF144 /* CellButtonAddDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248215B71FF2001FF144 /* CellButtonAddDisabled@2x.png */; };
 		BCD12A4115B71FF3001FF144 /* CellButtonAddDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248215B71FF2001FF144 /* CellButtonAddDisabled@2x.png */; };
-		BCD12A4215B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248415B71FF2001FF144 /* radioListInfoBkgSize2.png */; };
-		BCD12A4315B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248415B71FF2001FF144 /* radioListInfoBkgSize2.png */; };
-		BCD12A4415B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248415B71FF2001FF144 /* radioListInfoBkgSize2.png */; };
-		BCD12A4515B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248415B71FF2001FF144 /* radioListInfoBkgSize2.png */; };
-		BCD12A4615B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248415B71FF2001FF144 /* radioListInfoBkgSize2.png */; };
-		BCD12A4715B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248415B71FF2001FF144 /* radioListInfoBkgSize2.png */; };
-		BCD12A4815B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248415B71FF2001FF144 /* radioListInfoBkgSize2.png */; };
-		BCD12A4915B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248415B71FF2001FF144 /* radioListInfoBkgSize2.png */; };
-		BCD12A4A15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248515B71FF2001FF144 /* radioListInfoBkgSize2@2x.png */; };
-		BCD12A4B15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248515B71FF2001FF144 /* radioListInfoBkgSize2@2x.png */; };
-		BCD12A4C15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248515B71FF2001FF144 /* radioListInfoBkgSize2@2x.png */; };
-		BCD12A4D15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248515B71FF2001FF144 /* radioListInfoBkgSize2@2x.png */; };
-		BCD12A4E15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248515B71FF2001FF144 /* radioListInfoBkgSize2@2x.png */; };
-		BCD12A4F15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248515B71FF2001FF144 /* radioListInfoBkgSize2@2x.png */; };
-		BCD12A5015B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248515B71FF2001FF144 /* radioListInfoBkgSize2@2x.png */; };
-		BCD12A5115B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248515B71FF2001FF144 /* radioListInfoBkgSize2@2x.png */; };
-		BCD12A5215B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248615B71FF2001FF144 /* radioListInfoBkgSize3.png */; };
-		BCD12A5315B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248615B71FF2001FF144 /* radioListInfoBkgSize3.png */; };
-		BCD12A5415B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248615B71FF2001FF144 /* radioListInfoBkgSize3.png */; };
-		BCD12A5515B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248615B71FF2001FF144 /* radioListInfoBkgSize3.png */; };
-		BCD12A5615B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248615B71FF2001FF144 /* radioListInfoBkgSize3.png */; };
-		BCD12A5715B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248615B71FF2001FF144 /* radioListInfoBkgSize3.png */; };
-		BCD12A5815B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248615B71FF2001FF144 /* radioListInfoBkgSize3.png */; };
-		BCD12A5915B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248615B71FF2001FF144 /* radioListInfoBkgSize3.png */; };
-		BCD12A5A15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248715B71FF2001FF144 /* radioListInfoBkgSize3@2x.png */; };
-		BCD12A5B15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248715B71FF2001FF144 /* radioListInfoBkgSize3@2x.png */; };
-		BCD12A5C15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248715B71FF2001FF144 /* radioListInfoBkgSize3@2x.png */; };
-		BCD12A5D15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248715B71FF2001FF144 /* radioListInfoBkgSize3@2x.png */; };
-		BCD12A5E15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248715B71FF2001FF144 /* radioListInfoBkgSize3@2x.png */; };
-		BCD12A5F15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248715B71FF2001FF144 /* radioListInfoBkgSize3@2x.png */; };
-		BCD12A6015B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248715B71FF2001FF144 /* radioListInfoBkgSize3@2x.png */; };
-		BCD12A6115B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248715B71FF2001FF144 /* radioListInfoBkgSize3@2x.png */; };
-		BCD12A6215B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248815B71FF2001FF144 /* radioListRowBkgSize2.png */; };
-		BCD12A6315B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248815B71FF2001FF144 /* radioListRowBkgSize2.png */; };
-		BCD12A6415B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248815B71FF2001FF144 /* radioListRowBkgSize2.png */; };
-		BCD12A6515B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248815B71FF2001FF144 /* radioListRowBkgSize2.png */; };
-		BCD12A6615B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248815B71FF2001FF144 /* radioListRowBkgSize2.png */; };
-		BCD12A6715B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248815B71FF2001FF144 /* radioListRowBkgSize2.png */; };
-		BCD12A6815B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248815B71FF2001FF144 /* radioListRowBkgSize2.png */; };
-		BCD12A6915B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248815B71FF2001FF144 /* radioListRowBkgSize2.png */; };
-		BCD12A6A15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248915B71FF2001FF144 /* radioListRowBkgSize2@2x.png */; };
-		BCD12A6B15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248915B71FF2001FF144 /* radioListRowBkgSize2@2x.png */; };
-		BCD12A6C15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248915B71FF2001FF144 /* radioListRowBkgSize2@2x.png */; };
-		BCD12A6D15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248915B71FF2001FF144 /* radioListRowBkgSize2@2x.png */; };
-		BCD12A6E15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248915B71FF2001FF144 /* radioListRowBkgSize2@2x.png */; };
-		BCD12A6F15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248915B71FF2001FF144 /* radioListRowBkgSize2@2x.png */; };
-		BCD12A7015B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248915B71FF2001FF144 /* radioListRowBkgSize2@2x.png */; };
-		BCD12A7115B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248915B71FF2001FF144 /* radioListRowBkgSize2@2x.png */; };
 		BCD12A7215B71FF3001FF144 /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248B15B71FF2001FF144 /* avatarDummy.png */; };
 		BCD12A7315B71FF3001FF144 /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248B15B71FF2001FF144 /* avatarDummy.png */; };
 		BCD12A7415B71FF3001FF144 /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD1248B15B71FF2001FF144 /* avatarDummy.png */; };
@@ -5011,7 +5044,6 @@
 		E5F3B85B1498B88D008DD607 /* YasoundAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFFA1468439900BA20D9 /* YasoundAppDelegate.m */; };
 		E5F3B85C1498B88D008DD607 /* ActivityAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD4C2C514695FCD000A236A /* ActivityAlertView.m */; };
 		E5F3B8661498B88D008DD607 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
-		E5F3B8681498B88D008DD607 /* RadioSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */; };
 		E5F3B8691498B88D008DD607 /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		E5F3B86A1498B88D008DD607 /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
 		E5F3B86C1498B88D008DD607 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
@@ -5277,8 +5309,6 @@
 		BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalSongInfoViewController.m; path = Programming/LocalSongInfoViewController.m; sourceTree = "<group>"; };
 		BC188BDA1507647900E38692 /* SongLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongLocal.h; sourceTree = "<group>"; };
 		BC188BDB1507647900E38692 /* SongLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLocal.m; sourceTree = "<group>"; };
-		BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionTableViewCell.h; path = RadioSelection/RadioSelectionTableViewCell.h; sourceTree = "<group>"; };
-		BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionTableViewCell.m; path = RadioSelection/RadioSelectionTableViewCell.m; sourceTree = "<group>"; };
 		BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingView.h; sourceTree = "<group>"; };
 		BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingView.m; sourceTree = "<group>"; };
 		BC27F36C14BDD87B00EF1C5F /* TrackInteractionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInteractionView.h; sourceTree = "<group>"; };
@@ -5396,6 +5426,18 @@
 		BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioListTableViewController.m; path = RadioSelection/RadioListTableViewController.m; sourceTree = "<group>"; };
 		BC598E7715B8788D004D6DCB /* WheelSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheelSelector.h; path = RadioSelection/WheelSelector.h; sourceTree = "<group>"; };
 		BC598E7815B8788D004D6DCB /* WheelSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WheelSelector.m; path = RadioSelection/WheelSelector.m; sourceTree = "<group>"; };
+		BC598E8115B94A43004D6DCB /* RadioListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioListTableViewCell.h; path = RadioSelection/RadioListTableViewCell.h; sourceTree = "<group>"; };
+		BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioListTableViewCell.m; path = RadioSelection/RadioListTableViewCell.m; sourceTree = "<group>"; };
+		BC598E8C15B988C3004D6DCB /* radioListListenersIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListListenersIcon.png; sourceTree = "<group>"; };
+		BC598E8D15B988C3004D6DCB /* radioListListenersIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListListenersIcon@2x.png"; sourceTree = "<group>"; };
+		BC598E8E15B988C3004D6DCB /* radioListMaskSize2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListMaskSize2.png; sourceTree = "<group>"; };
+		BC598E8F15B988C3004D6DCB /* radioListMaskSize2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListMaskSize2@2x.png"; sourceTree = "<group>"; };
+		BC598E9015B988C3004D6DCB /* radioListRowBkgSize2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListRowBkgSize2.png; sourceTree = "<group>"; };
+		BC598E9115B988C3004D6DCB /* radioListRowBkgSize2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListRowBkgSize2@2x.png"; sourceTree = "<group>"; };
+		BC598E9215B988C3004D6DCB /* radioListSubscribersIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListSubscribersIcon.png; sourceTree = "<group>"; };
+		BC598E9315B988C3004D6DCB /* radioListSubscribersIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListSubscribersIcon@2x.png"; sourceTree = "<group>"; };
+		BC598ED415B9A460004D6DCB /* radioListUserMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListUserMask.png; sourceTree = "<group>"; };
+		BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListUserMask@2x.png"; sourceTree = "<group>"; };
 		BC5C900D14F2A4EB00C7D01E /* YasoundDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCache.h; sourceTree = "<group>"; };
 		BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCache.m; sourceTree = "<group>"; };
 		BC5EA8E1150100750002697D /* SongCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongCatalog.h; path = Programming/SongCatalog.h; sourceTree = "<group>"; };
@@ -5676,12 +5718,6 @@
 		BCD1248015B71FF2001FF144 /* CellButtonAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellButtonAdd@2x.png"; sourceTree = "<group>"; };
 		BCD1248115B71FF2001FF144 /* CellButtonAddDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellButtonAddDisabled.png; sourceTree = "<group>"; };
 		BCD1248215B71FF2001FF144 /* CellButtonAddDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellButtonAddDisabled@2x.png"; sourceTree = "<group>"; };
-		BCD1248415B71FF2001FF144 /* radioListInfoBkgSize2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListInfoBkgSize2.png; sourceTree = "<group>"; };
-		BCD1248515B71FF2001FF144 /* radioListInfoBkgSize2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListInfoBkgSize2@2x.png"; sourceTree = "<group>"; };
-		BCD1248615B71FF2001FF144 /* radioListInfoBkgSize3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListInfoBkgSize3.png; sourceTree = "<group>"; };
-		BCD1248715B71FF2001FF144 /* radioListInfoBkgSize3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListInfoBkgSize3@2x.png"; sourceTree = "<group>"; };
-		BCD1248815B71FF2001FF144 /* radioListRowBkgSize2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListRowBkgSize2.png; sourceTree = "<group>"; };
-		BCD1248915B71FF2001FF144 /* radioListRowBkgSize2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListRowBkgSize2@2x.png"; sourceTree = "<group>"; };
 		BCD1248B15B71FF2001FF144 /* avatarDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatarDummy.png; sourceTree = "<group>"; };
 		BCD1248C15B71FF2001FF144 /* avatarDummy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatarDummy@2x.png"; sourceTree = "<group>"; };
 		BCD1248D15B71FF2001FF144 /* CellButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellButton.png; sourceTree = "<group>"; };
@@ -6629,11 +6665,27 @@
 				BCA83E6C14C6D3EB000A8295 /* FavoritesViewController.h */,
 				BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */,
 				BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */,
-				BC2755BB147E85FF00430491 /* RadioSelectionTableViewCell.h */,
-				BC2755BC147E85FF00430491 /* RadioSelectionTableViewCell.m */,
 			);
 			name = "Old RadioSelection";
 			sourceTree = "<group>";
+		};
+		BC598E8B15B988C3004D6DCB /* RadioList */ = {
+			isa = PBXGroup;
+			children = (
+				BC598ED415B9A460004D6DCB /* radioListUserMask.png */,
+				BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */,
+				BC598E8C15B988C3004D6DCB /* radioListListenersIcon.png */,
+				BC598E8D15B988C3004D6DCB /* radioListListenersIcon@2x.png */,
+				BC598E8E15B988C3004D6DCB /* radioListMaskSize2.png */,
+				BC598E8F15B988C3004D6DCB /* radioListMaskSize2@2x.png */,
+				BC598E9015B988C3004D6DCB /* radioListRowBkgSize2.png */,
+				BC598E9115B988C3004D6DCB /* radioListRowBkgSize2@2x.png */,
+				BC598E9215B988C3004D6DCB /* radioListSubscribersIcon.png */,
+				BC598E9315B988C3004D6DCB /* radioListSubscribersIcon@2x.png */,
+			);
+			name = RadioList;
+			path = resources/RadioList;
+			sourceTree = SOURCE_ROOT;
 		};
 		BC5EE20E147D3EB300A282A5 /* RadioSelection */ = {
 			isa = PBXGroup;
@@ -6645,6 +6697,8 @@
 				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,
 				BC598E6D15B8786C004D6DCB /* RadioListTableViewController.h */,
 				BC598E6E15B8786C004D6DCB /* RadioListTableViewController.m */,
+				BC598E8115B94A43004D6DCB /* RadioListTableViewCell.h */,
+				BC598E8215B94A43004D6DCB /* RadioListTableViewCell.m */,
 			);
 			name = RadioSelection;
 			sourceTree = "<group>";
@@ -7132,19 +7186,6 @@
 				BCD1248215B71FF2001FF144 /* CellButtonAddDisabled@2x.png */,
 			);
 			path = Programming;
-			sourceTree = "<group>";
-		};
-		BCD1248315B71FF2001FF144 /* RadioList */ = {
-			isa = PBXGroup;
-			children = (
-				BCD1248415B71FF2001FF144 /* radioListInfoBkgSize2.png */,
-				BCD1248515B71FF2001FF144 /* radioListInfoBkgSize2@2x.png */,
-				BCD1248615B71FF2001FF144 /* radioListInfoBkgSize3.png */,
-				BCD1248715B71FF2001FF144 /* radioListInfoBkgSize3@2x.png */,
-				BCD1248815B71FF2001FF144 /* radioListRowBkgSize2.png */,
-				BCD1248915B71FF2001FF144 /* radioListRowBkgSize2@2x.png */,
-			);
-			path = RadioList;
 			sourceTree = "<group>";
 		};
 		BCD1248A15B71FF2001FF144 /* RadioSelection */ = {
@@ -7782,7 +7823,7 @@
 				BCD1247815B71FF2001FF144 /* MyYasound */,
 				BCD1247B15B71FF2001FF144 /* Profile */,
 				BCD1247E15B71FF2001FF144 /* Programming */,
-				BCD1248315B71FF2001FF144 /* RadioList */,
+				BC598E8B15B988C3004D6DCB /* RadioList */,
 				BCD1248A15B71FF2001FF144 /* RadioSelection */,
 				BCD124A115B71FF2001FF144 /* RadioView */,
 				BCD124FA15B71FF2001FF144 /* SearchBar */,
@@ -8396,12 +8437,6 @@
 				BCD12A3015B71FF3001FF144 /* CellButtonAdd@2x.png in Resources */,
 				BCD12A3815B71FF3001FF144 /* CellButtonAddDisabled.png in Resources */,
 				BCD12A4015B71FF3001FF144 /* CellButtonAddDisabled@2x.png in Resources */,
-				BCD12A4815B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */,
-				BCD12A5015B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */,
-				BCD12A5815B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */,
-				BCD12A6015B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */,
-				BCD12A6815B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */,
-				BCD12A7015B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */,
 				BCD12A7815B71FF3001FF144 /* avatarDummy.png in Resources */,
 				BCD12A8015B71FF3001FF144 /* avatarDummy@2x.png in Resources */,
 				BCD12A8815B71FF3001FF144 /* CellButton.png in Resources */,
@@ -8603,6 +8638,16 @@
 				BCD130A815B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
 				BC598E3A15B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
 				BC598E4215B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
+				BC598E9A15B988C3004D6DCB /* radioListListenersIcon.png in Resources */,
+				BC598EA215B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */,
+				BC598EAA15B988C3004D6DCB /* radioListMaskSize2.png in Resources */,
+				BC598EB215B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */,
+				BC598EBA15B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */,
+				BC598EC215B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */,
+				BC598ECA15B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */,
+				BC598ED215B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */,
+				BC598EDC15B9A460004D6DCB /* radioListUserMask.png in Resources */,
+				BC598EE415B9A460004D6DCB /* radioListUserMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8826,12 +8871,6 @@
 				BCD12A3115B71FF3001FF144 /* CellButtonAdd@2x.png in Resources */,
 				BCD12A3915B71FF3001FF144 /* CellButtonAddDisabled.png in Resources */,
 				BCD12A4115B71FF3001FF144 /* CellButtonAddDisabled@2x.png in Resources */,
-				BCD12A4915B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */,
-				BCD12A5115B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */,
-				BCD12A5915B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */,
-				BCD12A6115B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */,
-				BCD12A6915B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */,
-				BCD12A7115B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */,
 				BCD12A7915B71FF3001FF144 /* avatarDummy.png in Resources */,
 				BCD12A8115B71FF3001FF144 /* avatarDummy@2x.png in Resources */,
 				BCD12A8915B71FF3001FF144 /* CellButton.png in Resources */,
@@ -9033,6 +9072,16 @@
 				BCD130A915B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
 				BC598E3B15B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
 				BC598E4315B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
+				BC598E9B15B988C3004D6DCB /* radioListListenersIcon.png in Resources */,
+				BC598EA315B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */,
+				BC598EAB15B988C3004D6DCB /* radioListMaskSize2.png in Resources */,
+				BC598EB315B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */,
+				BC598EBB15B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */,
+				BC598EC315B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */,
+				BC598ECB15B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */,
+				BC598ED315B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */,
+				BC598EDD15B9A460004D6DCB /* radioListUserMask.png in Resources */,
+				BC598EE515B9A460004D6DCB /* radioListUserMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9250,12 +9299,6 @@
 				BCD12A2F15B71FF3001FF144 /* CellButtonAdd@2x.png in Resources */,
 				BCD12A3715B71FF3001FF144 /* CellButtonAddDisabled.png in Resources */,
 				BCD12A3F15B71FF3001FF144 /* CellButtonAddDisabled@2x.png in Resources */,
-				BCD12A4715B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */,
-				BCD12A4F15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */,
-				BCD12A5715B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */,
-				BCD12A5F15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */,
-				BCD12A6715B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */,
-				BCD12A6F15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */,
 				BCD12A7715B71FF3001FF144 /* avatarDummy.png in Resources */,
 				BCD12A7F15B71FF3001FF144 /* avatarDummy@2x.png in Resources */,
 				BCD12A8715B71FF3001FF144 /* CellButton.png in Resources */,
@@ -9457,6 +9500,16 @@
 				BCD130A715B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
 				BC598E3915B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
 				BC598E4115B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
+				BC598E9915B988C3004D6DCB /* radioListListenersIcon.png in Resources */,
+				BC598EA115B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */,
+				BC598EA915B988C3004D6DCB /* radioListMaskSize2.png in Resources */,
+				BC598EB115B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */,
+				BC598EB915B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */,
+				BC598EC115B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */,
+				BC598EC915B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */,
+				BC598ED115B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */,
+				BC598EDB15B9A460004D6DCB /* radioListUserMask.png in Resources */,
+				BC598EE315B9A460004D6DCB /* radioListUserMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9679,12 +9732,6 @@
 				BCD12A2C15B71FF3001FF144 /* CellButtonAdd@2x.png in Resources */,
 				BCD12A3415B71FF3001FF144 /* CellButtonAddDisabled.png in Resources */,
 				BCD12A3C15B71FF3001FF144 /* CellButtonAddDisabled@2x.png in Resources */,
-				BCD12A4415B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */,
-				BCD12A4C15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */,
-				BCD12A5415B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */,
-				BCD12A5C15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */,
-				BCD12A6415B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */,
-				BCD12A6C15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */,
 				BCD12A7415B71FF3001FF144 /* avatarDummy.png in Resources */,
 				BCD12A7C15B71FF3001FF144 /* avatarDummy@2x.png in Resources */,
 				BCD12A8415B71FF3001FF144 /* CellButton.png in Resources */,
@@ -9886,6 +9933,16 @@
 				BCD130A415B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
 				BC598E3615B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
 				BC598E3E15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
+				BC598E9615B988C3004D6DCB /* radioListListenersIcon.png in Resources */,
+				BC598E9E15B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */,
+				BC598EA615B988C3004D6DCB /* radioListMaskSize2.png in Resources */,
+				BC598EAE15B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */,
+				BC598EB615B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */,
+				BC598EBE15B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */,
+				BC598EC615B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */,
+				BC598ECE15B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */,
+				BC598ED815B9A460004D6DCB /* radioListUserMask.png in Resources */,
+				BC598EE015B9A460004D6DCB /* radioListUserMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10108,12 +10165,6 @@
 				BCD12A2B15B71FF3001FF144 /* CellButtonAdd@2x.png in Resources */,
 				BCD12A3315B71FF3001FF144 /* CellButtonAddDisabled.png in Resources */,
 				BCD12A3B15B71FF3001FF144 /* CellButtonAddDisabled@2x.png in Resources */,
-				BCD12A4315B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */,
-				BCD12A4B15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */,
-				BCD12A5315B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */,
-				BCD12A5B15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */,
-				BCD12A6315B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */,
-				BCD12A6B15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */,
 				BCD12A7315B71FF3001FF144 /* avatarDummy.png in Resources */,
 				BCD12A7B15B71FF3001FF144 /* avatarDummy@2x.png in Resources */,
 				BCD12A8315B71FF3001FF144 /* CellButton.png in Resources */,
@@ -10315,6 +10366,16 @@
 				BCD130A315B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
 				BC598E3515B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
 				BC598E3D15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
+				BC598E9515B988C3004D6DCB /* radioListListenersIcon.png in Resources */,
+				BC598E9D15B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */,
+				BC598EA515B988C3004D6DCB /* radioListMaskSize2.png in Resources */,
+				BC598EAD15B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */,
+				BC598EB515B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */,
+				BC598EBD15B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */,
+				BC598EC515B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */,
+				BC598ECD15B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */,
+				BC598ED715B9A460004D6DCB /* radioListUserMask.png in Resources */,
+				BC598EDF15B9A460004D6DCB /* radioListUserMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10537,12 +10598,6 @@
 				BCD12A2E15B71FF3001FF144 /* CellButtonAdd@2x.png in Resources */,
 				BCD12A3615B71FF3001FF144 /* CellButtonAddDisabled.png in Resources */,
 				BCD12A3E15B71FF3001FF144 /* CellButtonAddDisabled@2x.png in Resources */,
-				BCD12A4615B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */,
-				BCD12A4E15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */,
-				BCD12A5615B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */,
-				BCD12A5E15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */,
-				BCD12A6615B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */,
-				BCD12A6E15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */,
 				BCD12A7615B71FF3001FF144 /* avatarDummy.png in Resources */,
 				BCD12A7E15B71FF3001FF144 /* avatarDummy@2x.png in Resources */,
 				BCD12A8615B71FF3001FF144 /* CellButton.png in Resources */,
@@ -10744,6 +10799,16 @@
 				BCD130A615B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
 				BC598E3815B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
 				BC598E4015B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
+				BC598E9815B988C3004D6DCB /* radioListListenersIcon.png in Resources */,
+				BC598EA015B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */,
+				BC598EA815B988C3004D6DCB /* radioListMaskSize2.png in Resources */,
+				BC598EB015B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */,
+				BC598EB815B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */,
+				BC598EC015B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */,
+				BC598EC815B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */,
+				BC598ED015B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */,
+				BC598EDA15B9A460004D6DCB /* radioListUserMask.png in Resources */,
+				BC598EE215B9A460004D6DCB /* radioListUserMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10966,12 +11031,6 @@
 				BCD12A2A15B71FF3001FF144 /* CellButtonAdd@2x.png in Resources */,
 				BCD12A3215B71FF3001FF144 /* CellButtonAddDisabled.png in Resources */,
 				BCD12A3A15B71FF3001FF144 /* CellButtonAddDisabled@2x.png in Resources */,
-				BCD12A4215B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */,
-				BCD12A4A15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */,
-				BCD12A5215B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */,
-				BCD12A5A15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */,
-				BCD12A6215B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */,
-				BCD12A6A15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */,
 				BCD12A7215B71FF3001FF144 /* avatarDummy.png in Resources */,
 				BCD12A7A15B71FF3001FF144 /* avatarDummy@2x.png in Resources */,
 				BCD12A8215B71FF3001FF144 /* CellButton.png in Resources */,
@@ -11173,6 +11232,16 @@
 				BCD130A215B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
 				BC598E3415B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
 				BC598E3C15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
+				BC598E9415B988C3004D6DCB /* radioListListenersIcon.png in Resources */,
+				BC598E9C15B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */,
+				BC598EA415B988C3004D6DCB /* radioListMaskSize2.png in Resources */,
+				BC598EAC15B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */,
+				BC598EB415B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */,
+				BC598EBC15B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */,
+				BC598EC415B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */,
+				BC598ECC15B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */,
+				BC598ED615B9A460004D6DCB /* radioListUserMask.png in Resources */,
+				BC598EDE15B9A460004D6DCB /* radioListUserMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11395,12 +11464,6 @@
 				BCD12A2D15B71FF3001FF144 /* CellButtonAdd@2x.png in Resources */,
 				BCD12A3515B71FF3001FF144 /* CellButtonAddDisabled.png in Resources */,
 				BCD12A3D15B71FF3001FF144 /* CellButtonAddDisabled@2x.png in Resources */,
-				BCD12A4515B71FF3001FF144 /* radioListInfoBkgSize2.png in Resources */,
-				BCD12A4D15B71FF3001FF144 /* radioListInfoBkgSize2@2x.png in Resources */,
-				BCD12A5515B71FF3001FF144 /* radioListInfoBkgSize3.png in Resources */,
-				BCD12A5D15B71FF3001FF144 /* radioListInfoBkgSize3@2x.png in Resources */,
-				BCD12A6515B71FF3001FF144 /* radioListRowBkgSize2.png in Resources */,
-				BCD12A6D15B71FF3001FF144 /* radioListRowBkgSize2@2x.png in Resources */,
 				BCD12A7515B71FF3001FF144 /* avatarDummy.png in Resources */,
 				BCD12A7D15B71FF3001FF144 /* avatarDummy@2x.png in Resources */,
 				BCD12A8515B71FF3001FF144 /* CellButton.png in Resources */,
@@ -11602,6 +11665,16 @@
 				BCD130A515B71FF4001FF144 /* wheelSelectorIndicator@2x.png in Resources */,
 				BC598E3715B865F6004D6DCB /* wheelSelectorShadow.png in Resources */,
 				BC598E3F15B865F6004D6DCB /* wheelSelectorShadow@2x.png in Resources */,
+				BC598E9715B988C3004D6DCB /* radioListListenersIcon.png in Resources */,
+				BC598E9F15B988C3004D6DCB /* radioListListenersIcon@2x.png in Resources */,
+				BC598EA715B988C3004D6DCB /* radioListMaskSize2.png in Resources */,
+				BC598EAF15B988C3004D6DCB /* radioListMaskSize2@2x.png in Resources */,
+				BC598EB715B988C3004D6DCB /* radioListRowBkgSize2.png in Resources */,
+				BC598EBF15B988C3004D6DCB /* radioListRowBkgSize2@2x.png in Resources */,
+				BC598EC715B988C3004D6DCB /* radioListSubscribersIcon.png in Resources */,
+				BC598ECF15B988C3004D6DCB /* radioListSubscribersIcon@2x.png in Resources */,
+				BC598ED915B9A460004D6DCB /* radioListUserMask.png in Resources */,
+				BC598EE115B9A460004D6DCB /* radioListUserMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11673,7 +11746,6 @@
 				40B40954152EFC630050D334 /* YasoundAppDelegate.m in Sources */,
 				40B40955152EFC630050D334 /* ActivityAlertView.m in Sources */,
 				40B40956152EFC630050D334 /* RadioSelectionViewController.m in Sources */,
-				40B40957152EFC630050D334 /* RadioSelectionTableViewCell.m in Sources */,
 				40B40958152EFC630050D334 /* BundleFileManager.m in Sources */,
 				40B40959152EFC630050D334 /* BundleStylesheet.m in Sources */,
 				40B4095A152EFC630050D334 /* RadioSearchViewController.m in Sources */,
@@ -11851,6 +11923,7 @@
 				BCD123DC15B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7515B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7F15B8788D004D6DCB /* WheelSelector.m in Sources */,
+				BC598E8915B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11864,7 +11937,6 @@
 				40D53B591554280F001EB0C5 /* YasoundAppDelegate.m in Sources */,
 				40D53B5A1554280F001EB0C5 /* ActivityAlertView.m in Sources */,
 				40D53B5B1554280F001EB0C5 /* RadioSelectionViewController.m in Sources */,
-				40D53B5C1554280F001EB0C5 /* RadioSelectionTableViewCell.m in Sources */,
 				40D53B5D1554280F001EB0C5 /* BundleFileManager.m in Sources */,
 				40D53B5E1554280F001EB0C5 /* BundleStylesheet.m in Sources */,
 				40D53B5F1554280F001EB0C5 /* RadioSearchViewController.m in Sources */,
@@ -12042,6 +12114,7 @@
 				BCD123DD15B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7615B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E8015B8788D004D6DCB /* WheelSelector.m in Sources */,
+				BC598E8A15B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12055,7 +12128,6 @@
 				BC3FA66814E93B660055AB4A /* YasoundAppDelegate.m in Sources */,
 				BC3FA66914E93B660055AB4A /* ActivityAlertView.m in Sources */,
 				BC3FA66A14E93B660055AB4A /* RadioSelectionViewController.m in Sources */,
-				BC3FA66B14E93B660055AB4A /* RadioSelectionTableViewCell.m in Sources */,
 				BC3FA66C14E93B660055AB4A /* BundleFileManager.m in Sources */,
 				BC3FA66D14E93B660055AB4A /* BundleStylesheet.m in Sources */,
 				BC3FA66E14E93B660055AB4A /* RadioSearchViewController.m in Sources */,
@@ -12229,6 +12301,7 @@
 				BCD123DB15B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7415B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7E15B8788D004D6DCB /* WheelSelector.m in Sources */,
+				BC598E8815B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12242,7 +12315,6 @@
 				BC56F476152486AF005D1B40 /* YasoundAppDelegate.m in Sources */,
 				BC56F477152486AF005D1B40 /* ActivityAlertView.m in Sources */,
 				BC56F478152486AF005D1B40 /* RadioSelectionViewController.m in Sources */,
-				BC56F479152486AF005D1B40 /* RadioSelectionTableViewCell.m in Sources */,
 				BC56F47A152486AF005D1B40 /* BundleFileManager.m in Sources */,
 				BC56F47B152486AF005D1B40 /* BundleStylesheet.m in Sources */,
 				BC56F47C152486AF005D1B40 /* RadioSearchViewController.m in Sources */,
@@ -12420,6 +12492,7 @@
 				BCD123D815B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7115B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7B15B8788D004D6DCB /* WheelSelector.m in Sources */,
+				BC598E8515B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12433,7 +12506,6 @@
 				BC71F5C6147FEC6F00DAE4BD /* YasoundAppDelegate.m in Sources */,
 				BC71F5C8147FEC6F00DAE4BD /* ActivityAlertView.m in Sources */,
 				BC71F5D2147FEC6F00DAE4BD /* RadioSelectionViewController.m in Sources */,
-				BC71F5D4147FEC6F00DAE4BD /* RadioSelectionTableViewCell.m in Sources */,
 				BC71F5D5147FEC6F00DAE4BD /* BundleFileManager.m in Sources */,
 				BC71F5D6147FEC6F00DAE4BD /* BundleStylesheet.m in Sources */,
 				BCF62DE3148394F0001B1908 /* RadioSearchViewController.m in Sources */,
@@ -12611,6 +12683,7 @@
 				BCD123D715B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7015B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7A15B8788D004D6DCB /* WheelSelector.m in Sources */,
+				BC598E8415B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12626,7 +12699,6 @@
 				BC93CCCE14CF3F7A007C723F /* YasoundAppDelegate.m in Sources */,
 				BC93CCCF14CF3F7A007C723F /* ActivityAlertView.m in Sources */,
 				BC93CCD014CF3F7A007C723F /* RadioSelectionViewController.m in Sources */,
-				BC93CCD214CF3F7A007C723F /* RadioSelectionTableViewCell.m in Sources */,
 				BC93CCD314CF3F7A007C723F /* BundleFileManager.m in Sources */,
 				BC93CCD414CF3F7A007C723F /* BundleStylesheet.m in Sources */,
 				BC93CCD614CF3F7A007C723F /* RadioSearchViewController.m in Sources */,
@@ -12803,6 +12875,7 @@
 				BCD123DA15B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7315B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7D15B8788D004D6DCB /* WheelSelector.m in Sources */,
+				BC598E8715B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12816,7 +12889,6 @@
 				BCFED0071468439900BA20D9 /* YasoundAppDelegate.m in Sources */,
 				BCD4C2C614695FCD000A236A /* ActivityAlertView.m in Sources */,
 				BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */,
-				BC2755BE147E85FF00430491 /* RadioSelectionTableViewCell.m in Sources */,
 				BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */,
 				BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */,
 				BCF62DE2148394F0001B1908 /* RadioSearchViewController.m in Sources */,
@@ -12994,6 +13066,7 @@
 				BCD123D615B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E6F15B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7915B8788D004D6DCB /* WheelSelector.m in Sources */,
+				BC598E8315B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13009,7 +13082,6 @@
 				E5F3B85B1498B88D008DD607 /* YasoundAppDelegate.m in Sources */,
 				E5F3B85C1498B88D008DD607 /* ActivityAlertView.m in Sources */,
 				E5F3B8661498B88D008DD607 /* RadioSelectionViewController.m in Sources */,
-				E5F3B8681498B88D008DD607 /* RadioSelectionTableViewCell.m in Sources */,
 				E5F3B8691498B88D008DD607 /* BundleFileManager.m in Sources */,
 				E5F3B86A1498B88D008DD607 /* BundleStylesheet.m in Sources */,
 				E5F3B86C1498B88D008DD607 /* RadioSearchViewController.m in Sources */,
@@ -13186,6 +13258,7 @@
 				BCD123D915B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7215B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7C15B8788D004D6DCB /* WheelSelector.m in Sources */,
+				BC598E8615B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

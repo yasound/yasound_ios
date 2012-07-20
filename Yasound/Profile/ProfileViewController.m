@@ -12,7 +12,7 @@
 #import "Theme.h"
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
-#import "RadioSelectionTableViewCell.h"
+#import "RadioListTableViewCell.h"
 #import "RadioViewController.h"
 
 typedef enum 
@@ -289,9 +289,9 @@ typedef enum
         
     }
     
-    static NSString *cellIdentifier1 = @"RadioSelectionTableViewCell_1";
-    static NSString *cellIdentifier2 = @"RadioSelectionTableViewCell_2";
-    static NSString *cellIdentifier3 = @"RadioSelectionTableViewCell_3";
+    static NSString *cellIdentifier1 = @"RadioListTableViewCell_1";
+    static NSString *cellIdentifier2 = @"RadioListTableViewCell_2";
+    static NSString *cellIdentifier3 = @"RadioListTableViewCell_3";
     
     
     NSString *cellIdentifier = cellIdentifier1;
@@ -333,12 +333,12 @@ typedef enum
         }
     }
     
-    RadioSelectionTableViewCell* cell;
+    RadioListTableViewCell* cell;
     
-    cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil)
     {    
-        cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
+        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
     }
     else
     {

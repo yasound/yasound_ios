@@ -7,7 +7,7 @@
 //
 
 #import "RadioSearchViewController.h"
-#import "RadioSelectionTableViewCell.h"
+#import "RadioListTableViewCell.h"
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
@@ -254,7 +254,7 @@ typedef enum
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    static NSString *cellIdentifier = @"RadioSelectionTableViewCell";
+    static NSString *cellIdentifier = @"RadioListTableViewCell";
   NSInteger rowIndex = indexPath.row;
   NSInteger sectionIndex = indexPath.section;
     
@@ -262,13 +262,13 @@ typedef enum
   if (!radios)
     return nil;
     
-    RadioSelectionTableViewCell* cell = (RadioSelectionTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
     Radio* radio = [radios objectAtIndex:rowIndex];
     
     if (cell == nil)
     {    
-        cell = [[RadioSelectionTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
+        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
     }
     else
         [cell updateWithRadio:radio rowIndex:rowIndex];
@@ -279,9 +279,11 @@ typedef enum
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RadioSelectionTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    RadioListTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
     
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:cell.radio];
+    //LBDEBUG TODO
+    
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:nil];
     [self.navigationController pushViewController:view animated:YES];
     [view release];  
 }
