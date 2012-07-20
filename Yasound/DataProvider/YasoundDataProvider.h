@@ -26,6 +26,7 @@
 #import "UserNotification.h"
 #import "UserSettings.h"
 #import "FacebookSharePreferences.h"
+#import "CityInfo.h"
 
 typedef NSString* taskID;
 
@@ -202,6 +203,8 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)updatePlaylists:(NSData*)data forRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
+- (void)similarRadiosWithArtistList:(NSData*)data target:(id)target action:(SEL)selector; // artist list is built with PlaylistMoulinor buildArtistDataBinary: compressed: target: action:
+
 - (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector;
 
 
@@ -253,6 +256,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)menuDescriptionWithTarget:(id)target action:(SEL)selector; // didReceiveMenu:(ASIHTTPRequest*)req
 - (void)menuDescriptionWithTarget:(id)target action:(SEL)selector userData:(id)data; // didReceiveMenu:(ASIHTTPRequest*)req
 
+
+- (void)connectedUsersWithTarget:(id)target action:(SEL)selector; // users connected to the app ordered by distance from the sender
+- (void)connectedUsersWithLimit:(int)limit skip:(int)skip target:(id)target action:(SEL)selector;
 
 // User Notifications
 - (void)broadcastMessage:(NSString*)message fromRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
@@ -330,5 +336,11 @@ taskStatus stringToStatus(NSString* str);
 
 
 - (void)testV2;
+
+// - (void)didReceiveCitySuggestions:(ASIHTTPRequest*) success:(BOOL)
+//   {
+//      NSArray* cities = [req responseNSObjectsWithClass:[CityInfo class]];
+//   }
+- (void)citySuggestionsWithCityName:(NSString*)city target:(id)target action:(SEL)selector;
 
 @end
