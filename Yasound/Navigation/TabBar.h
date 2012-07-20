@@ -8,13 +8,28 @@
 
 #import <UIKit/UIKit.h>
 
+enum TabIndex
+{
+    TabIndexSelection = 0,
+    TabIndexFavorites,
+    TabIndexMyRadios,
+    TabIndexGifts,
+    TabIndexProfil
+};
+
+
+
 @protocol TabBarDelegate <NSObject>
 - (void)tabBarBackDidSelect:(NSInteger)tabIndex;
+
 @end
 
 @interface TabBar : UIView
 
-@property (nonatomic, retain) IBOutlet id<TabBarDelegate> delegate;
+@property (nonatomic, retain) IBOutlet id<TabBarDelegate> tabBarDelegate;
 @property (nonatomic, retain) NSMutableArray* buttons;
+@property (nonatomic, retain) UIButton* selectedButton;
+
+- (void)setTabSelected:(NSInteger)tabIndex;
 
 @end

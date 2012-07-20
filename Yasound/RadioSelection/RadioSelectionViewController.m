@@ -21,6 +21,7 @@
 @synthesize wheelSelector;
 @synthesize listContainer;
 @synthesize tableview;
+@synthesize tabBar;
 
 #define TIMEPROFILE_CELL_BUILD @"TimeProfileCellBuild"
 
@@ -54,8 +55,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    [self updateRadios:nil];
+    [wheelSelector init];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -151,7 +151,9 @@
     {
         NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
         assert(entry);
-        url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];        
+        url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];     
+        
+        [tabBar setTabSelected:TabIndexFavorites];
     }
 
     // request selection radios
@@ -160,6 +162,8 @@
         NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_SELECTION];
         assert(entry);
         url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];        
+
+        [tabBar setTabSelected:TabIndexSelection];
     }
 
     // request top radios
@@ -168,6 +172,13 @@
         NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_TOP];
         assert(entry);
         url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];            
+
+        [tabBar setTabSelected:TabIndexSelection];
+    }
+    
+    else
+    {
+        [tabBar setTabSelected:TabIndexSelection];
     }
 
     self.url = [NSURL URLWithString:url];
@@ -207,6 +218,23 @@
 {
     NSLog(@"OK TODO");
 }
+
+
+#pragma mark - TabBarDelegate
+
+- (void)tabBarBackDidSelect:(NSInteger)tabIndex
+{
+    if (tabIndex == TabIndexSelection)
+    {
+        [wheelSelector stickToItem:WheelIdSelection];
+    }
+    else if (tabIndex == TabIndexFavorites)
+    {
+        [wheelSelector stickToItem:WheelIdFavorites];
+    }
+    
+}
+
 
 
 

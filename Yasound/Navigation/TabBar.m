@@ -11,11 +11,14 @@
 
 @implementation TabBar
 
-@synthesize delegate;
+@synthesize tabBarDelegate;
 @synthesize buttons;
+@synthesize selectedButton;
 
 - (void)awakeFromNib
 {
+    self.selectedButton = nil;
+    
     CGFloat x = 0;
     CGFloat y = 0;
     NSInteger tag = 0;
@@ -59,7 +62,7 @@
 {
     UIButton* btn = sender;
     
-    if (btn.selected)
+    if (self.selectedButton == btn)
         return;
     
     for (UIButton* button in self.buttons)
@@ -73,12 +76,30 @@
 {
     UIButton* btn = sender;
     
-    if (btn.selected)
+    if (self.selectedButton == btn)
+        return;
+
+    self.selectedButton = btn;
+
+    // call delegate
+    [self.tabBarDelegate tabBarBackDidSelect:btn.tag];
+}
+
+
+- (void)setTabSelected:(NSInteger)tabIndex
+{
+    UIButton* btn = [self.buttons objectAtIndex:tabIndex];
+    
+    if (self.selectedButton == btn)
         return;
     
-    // call delegate
-    [self.delegate tabBarBackDidSelect:btn.tag];
+    for (UIButton* button in self.buttons)
+        button.selected = NO;
+    
+    btn.selected = YES;
+    self.selectedButton = btn;
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

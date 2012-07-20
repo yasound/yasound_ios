@@ -11,7 +11,6 @@
 enum WheelItemId
 {
     WheelIdFavorites = 0,
-    WheelIdGenre,
     WheelIdSelection,
     WheelIdFriends,
     WheelIdTop
@@ -28,5 +27,9 @@ enum WheelItemId
 @property (nonatomic, retain) IBOutlet id<WheelSelectorDelegate> wheelDelegate;
 @property (nonatomic, retain) NSMutableArray* items;
 @property (nonatomic) BOOL needsToStick;
+
+- (void)init;
+- (void)stickToItem:(NSInteger)itemIndex;
+
 
 @end

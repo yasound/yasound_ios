@@ -34,7 +34,6 @@
         UIFont* font = [sheet makeFont];
         
         [self addItem:NSLocalizedString(@"WheelSelector_Favorites", nil) withFont:font];
-        [self addItem:NSLocalizedString(@"WheelSelector_Genre", nil) withFont:font];
         [self addItem:NSLocalizedString(@"WheelSelector_Selection", nil) withFont:font];
         [self addItem:NSLocalizedString(@"WheelSelector_Friends", nil) withFont:font];
         [self addItem:NSLocalizedString(@"WheelSelector_Top", nil) withFont:font];
@@ -94,11 +93,7 @@
     layer.contents = (id)[shadowImage CGImage];
     layer.frame = frame;
      layer.opaque = NO;
-    [[self.superview layer] addSublayer:layer]; // to superview 'cause it must not scroll
-    
-    // starting position
-    [self stickToItem:WheelIdSelection];
-
+    [[self.superview layer] addSublayer:layer]; // to superview 'cause it must not scroll    
 }
 
 
@@ -109,6 +104,12 @@
     [self.items addObject:[NSMutableArray arrayWithObjects:item, [NSNumber numberWithFloat:suggestedSize.width], nil]];
 }
 
+
+- (void)init
+{
+    // starting position
+    [self stickToItem:WheelIdSelection];
+}
 
 
 
@@ -158,9 +159,9 @@
 }
 
 
-- (void)stickToItem:(NSInteger)itemID
+- (void)stickToItem:(NSInteger)itemIndex
 {
-    CGFloat stickyPos = [[[self.items objectAtIndex:itemID] objectAtIndex:ITEM_STICKY_POS] floatValue];
+    CGFloat stickyPos = [[[self.items objectAtIndex:itemIndex] objectAtIndex:ITEM_STICKY_POS] floatValue];
     
     // translate the stickyPos, for the scrollview position reference
     stickyPos -= self.frame.size.width/2.f;
@@ -168,7 +169,7 @@
     [self setContentOffset: CGPointMake(stickyPos, self.contentOffset.y) animated:YES];
     
     // send signal to delegate
-    [self.wheelDelegate wheelSelectorDidSelect:itemID];
+    [self.wheelDelegate wheelSelectorDidSelect:itemIndex];
 }
 
 

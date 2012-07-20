@@ -455,7 +455,7 @@
         }
         else
         {
-            RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withUrl:[NSURL URLWithString:url]  andTitle:name];
+            RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil];
             [self.navigationController pushViewController:view animated:YES];
             [view release];
         }
