@@ -1479,6 +1479,30 @@
 		BC598EE315B9A460004D6DCB /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */; };
 		BC598EE415B9A460004D6DCB /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */; };
 		BC598EE515B9A460004D6DCB /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */; };
+		BC598EFF15B9AA98004D6DCB /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFC15B9AA98004D6DCB /* TopBar.m */; };
+		BC598F0015B9AA98004D6DCB /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFC15B9AA98004D6DCB /* TopBar.m */; };
+		BC598F0115B9AA98004D6DCB /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFC15B9AA98004D6DCB /* TopBar.m */; };
+		BC598F0215B9AA98004D6DCB /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFC15B9AA98004D6DCB /* TopBar.m */; };
+		BC598F0315B9AA98004D6DCB /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFC15B9AA98004D6DCB /* TopBar.m */; };
+		BC598F0415B9AA98004D6DCB /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFC15B9AA98004D6DCB /* TopBar.m */; };
+		BC598F0515B9AA98004D6DCB /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFC15B9AA98004D6DCB /* TopBar.m */; };
+		BC598F0615B9AA98004D6DCB /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFC15B9AA98004D6DCB /* TopBar.m */; };
+		BC598F0715B9AA98004D6DCB /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFE15B9AA98004D6DCB /* TopBarNotifView.m */; };
+		BC598F0815B9AA98004D6DCB /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFE15B9AA98004D6DCB /* TopBarNotifView.m */; };
+		BC598F0915B9AA98004D6DCB /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFE15B9AA98004D6DCB /* TopBarNotifView.m */; };
+		BC598F0A15B9AA98004D6DCB /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFE15B9AA98004D6DCB /* TopBarNotifView.m */; };
+		BC598F0B15B9AA98004D6DCB /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFE15B9AA98004D6DCB /* TopBarNotifView.m */; };
+		BC598F0C15B9AA98004D6DCB /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFE15B9AA98004D6DCB /* TopBarNotifView.m */; };
+		BC598F0D15B9AA98004D6DCB /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFE15B9AA98004D6DCB /* TopBarNotifView.m */; };
+		BC598F0E15B9AA98004D6DCB /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFE15B9AA98004D6DCB /* TopBarNotifView.m */; };
+		BC598F1115B9AAD2004D6DCB /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598F1015B9AAD2004D6DCB /* TabBar.m */; };
+		BC598F1215B9AAD2004D6DCB /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598F1015B9AAD2004D6DCB /* TabBar.m */; };
+		BC598F1315B9AAD2004D6DCB /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598F1015B9AAD2004D6DCB /* TabBar.m */; };
+		BC598F1415B9AAD2004D6DCB /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598F1015B9AAD2004D6DCB /* TabBar.m */; };
+		BC598F1515B9AAD2004D6DCB /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598F1015B9AAD2004D6DCB /* TabBar.m */; };
+		BC598F1615B9AAD2004D6DCB /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598F1015B9AAD2004D6DCB /* TabBar.m */; };
+		BC598F1715B9AAD2004D6DCB /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598F1015B9AAD2004D6DCB /* TabBar.m */; };
+		BC598F1815B9AAD2004D6DCB /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598F1015B9AAD2004D6DCB /* TabBar.m */; };
 		BC5C900F14F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
 		BC5C901014F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
 		BC5C901114F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
@@ -1926,22 +1950,6 @@
 		BCD0CBD614FE851900E75CEF /* SongInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */; };
 		BCD0CBD714FE851900E75CEF /* SongInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */; };
 		BCD0CBD814FE851900E75CEF /* SongInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */; };
-		BCD123CC15B71A61001FF144 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123CB15B71A61001FF144 /* TopBar.m */; };
-		BCD123CD15B71A61001FF144 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123CB15B71A61001FF144 /* TopBar.m */; };
-		BCD123CE15B71A61001FF144 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123CB15B71A61001FF144 /* TopBar.m */; };
-		BCD123CF15B71A61001FF144 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123CB15B71A61001FF144 /* TopBar.m */; };
-		BCD123D015B71A61001FF144 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123CB15B71A61001FF144 /* TopBar.m */; };
-		BCD123D115B71A61001FF144 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123CB15B71A61001FF144 /* TopBar.m */; };
-		BCD123D215B71A61001FF144 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123CB15B71A61001FF144 /* TopBar.m */; };
-		BCD123D315B71A61001FF144 /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123CB15B71A61001FF144 /* TopBar.m */; };
-		BCD123D615B71C18001FF144 /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123D515B71C18001FF144 /* TopBarNotifView.m */; };
-		BCD123D715B71C18001FF144 /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123D515B71C18001FF144 /* TopBarNotifView.m */; };
-		BCD123D815B71C18001FF144 /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123D515B71C18001FF144 /* TopBarNotifView.m */; };
-		BCD123D915B71C18001FF144 /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123D515B71C18001FF144 /* TopBarNotifView.m */; };
-		BCD123DA15B71C18001FF144 /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123D515B71C18001FF144 /* TopBarNotifView.m */; };
-		BCD123DB15B71C18001FF144 /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123D515B71C18001FF144 /* TopBarNotifView.m */; };
-		BCD123DC15B71C18001FF144 /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123D515B71C18001FF144 /* TopBarNotifView.m */; };
-		BCD123DD15B71C18001FF144 /* TopBarNotifView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD123D515B71C18001FF144 /* TopBarNotifView.m */; };
 		BCD1256215B71FF3001FF144 /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD123DF15B71FF2001FF144 /* barItemAdd.png */; };
 		BCD1256315B71FF3001FF144 /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD123DF15B71FF2001FF144 /* barItemAdd.png */; };
 		BCD1256415B71FF3001FF144 /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD123DF15B71FF2001FF144 /* barItemAdd.png */; };
@@ -5458,6 +5466,12 @@
 		BC598E9315B988C3004D6DCB /* radioListSubscribersIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListSubscribersIcon@2x.png"; sourceTree = "<group>"; };
 		BC598ED415B9A460004D6DCB /* radioListUserMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListUserMask.png; sourceTree = "<group>"; };
 		BC598ED515B9A460004D6DCB /* radioListUserMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListUserMask@2x.png"; sourceTree = "<group>"; };
+		BC598EFB15B9AA98004D6DCB /* TopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBar.h; sourceTree = "<group>"; };
+		BC598EFC15B9AA98004D6DCB /* TopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBar.m; sourceTree = "<group>"; };
+		BC598EFD15B9AA98004D6DCB /* TopBarNotifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarNotifView.h; sourceTree = "<group>"; };
+		BC598EFE15B9AA98004D6DCB /* TopBarNotifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarNotifView.m; sourceTree = "<group>"; };
+		BC598F0F15B9AAD2004D6DCB /* TabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBar.h; sourceTree = "<group>"; };
+		BC598F1015B9AAD2004D6DCB /* TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
 		BC5C900D14F2A4EB00C7D01E /* YasoundDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCache.h; sourceTree = "<group>"; };
 		BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCache.m; sourceTree = "<group>"; };
 		BC5EA8E1150100750002697D /* SongCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongCatalog.h; path = Programming/SongCatalog.h; sourceTree = "<group>"; };
@@ -5578,10 +5592,6 @@
 		BCD0CBCC14FE851800E75CEF /* SongInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongInfoViewController.h; path = Programming/SongInfoViewController.h; sourceTree = "<group>"; };
 		BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongInfoViewController.m; path = Programming/SongInfoViewController.m; sourceTree = "<group>"; };
 		BCD0CBCE14FE851900E75CEF /* SongInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongInfoViewController.xib; path = Programming/SongInfoViewController.xib; sourceTree = "<group>"; };
-		BCD123CA15B71A61001FF144 /* TopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBar.h; sourceTree = "<group>"; };
-		BCD123CB15B71A61001FF144 /* TopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBar.m; sourceTree = "<group>"; };
-		BCD123D415B71C18001FF144 /* TopBarNotifView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopBarNotifView.h; path = Yasound/TopBar/TopBarNotifView.h; sourceTree = "<group>"; };
-		BCD123D515B71C18001FF144 /* TopBarNotifView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopBarNotifView.m; path = Yasound/TopBar/TopBarNotifView.m; sourceTree = "<group>"; };
 		BCD123DF15B71FF2001FF144 /* barItemAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemAdd.png; sourceTree = "<group>"; };
 		BCD123E015B71FF2001FF144 /* barItemAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemAdd@2x.png"; sourceTree = "<group>"; };
 		BCD123E115B71FF2001FF144 /* barItemBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemBkg.png; sourceTree = "<group>"; };
@@ -6711,6 +6721,19 @@
 			path = resources/RadioList;
 			sourceTree = SOURCE_ROOT;
 		};
+		BC598EFA15B9AA98004D6DCB /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				BC598EFB15B9AA98004D6DCB /* TopBar.h */,
+				BC598EFC15B9AA98004D6DCB /* TopBar.m */,
+				BC598EFD15B9AA98004D6DCB /* TopBarNotifView.h */,
+				BC598EFE15B9AA98004D6DCB /* TopBarNotifView.m */,
+				BC598F0F15B9AAD2004D6DCB /* TabBar.h */,
+				BC598F1015B9AAD2004D6DCB /* TabBar.m */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		BC5EE20E147D3EB300A282A5 /* RadioSelection */ = {
 			isa = PBXGroup;
 			children = (
@@ -6998,15 +7021,6 @@
 				BCCA798914AE24D80011AADD /* S7Macros.h */,
 			);
 			name = s7graphview;
-			sourceTree = "<group>";
-		};
-		BCD123C915B71A60001FF144 /* TopBar */ = {
-			isa = PBXGroup;
-			children = (
-				BCD123CA15B71A61001FF144 /* TopBar.h */,
-				BCD123CB15B71A61001FF144 /* TopBar.m */,
-			);
-			path = TopBar;
 			sourceTree = "<group>";
 		};
 		BCD123DE15B71FF2001FF144 /* BarItems */ = {
@@ -7921,8 +7935,6 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
-				BCD123D415B71C18001FF144 /* TopBarNotifView.h */,
-				BCD123D515B71C18001FF144 /* TopBarNotifView.m */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,
@@ -7979,7 +7991,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
-				BCD123C915B71A60001FF144 /* TopBar */,
+				BC598EFA15B9AA98004D6DCB /* Navigation */,
 				BCB0767D15790AB100F9347C /* Messages */,
 				4028E7A7152D9E5B0056B34B /* Notifications */,
 				B16CAEBC152D791600317510 /* Profile */,
@@ -11943,13 +11955,14 @@
 				BC506A66157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				BC732631158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B881591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
-				BCD123D215B71A61001FF144 /* TopBar.m in Sources */,
-				BCD123DC15B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7515B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7F15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8915B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1E0159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242215A353F3002A870D /* CityInfo.m in Sources */,
+				BC598F0515B9AA98004D6DCB /* TopBar.m in Sources */,
+				BC598F0D15B9AA98004D6DCB /* TopBarNotifView.m in Sources */,
+				BC598F1715B9AAD2004D6DCB /* TabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12136,13 +12149,14 @@
 				BC506A67157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				BC732632158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B891591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
-				BCD123D315B71A61001FF144 /* TopBar.m in Sources */,
-				BCD123DD15B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7615B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E8015B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8A15B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1E1159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242315A353F3002A870D /* CityInfo.m in Sources */,
+				BC598F0615B9AA98004D6DCB /* TopBar.m in Sources */,
+				BC598F0E15B9AA98004D6DCB /* TopBarNotifView.m in Sources */,
+				BC598F1815B9AAD2004D6DCB /* TabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12325,13 +12339,14 @@
 				BC506A65157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				BC732630158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B871591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
-				BCD123D115B71A61001FF144 /* TopBar.m in Sources */,
-				BCD123DB15B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7415B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7E15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8815B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DF159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242115A353F3002A870D /* CityInfo.m in Sources */,
+				BC598F0415B9AA98004D6DCB /* TopBar.m in Sources */,
+				BC598F0C15B9AA98004D6DCB /* TopBarNotifView.m in Sources */,
+				BC598F1615B9AAD2004D6DCB /* TabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12518,13 +12533,14 @@
 				BC506A62157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				BC73262D158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B841591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
-				BCD123CE15B71A61001FF144 /* TopBar.m in Sources */,
-				BCD123D815B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7115B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7B15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8515B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DC159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241E15A353F3002A870D /* CityInfo.m in Sources */,
+				BC598F0115B9AA98004D6DCB /* TopBar.m in Sources */,
+				BC598F0915B9AA98004D6DCB /* TopBarNotifView.m in Sources */,
+				BC598F1315B9AAD2004D6DCB /* TabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12711,13 +12727,14 @@
 				BC506A61157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				BC73262C158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B831591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
-				BCD123CD15B71A61001FF144 /* TopBar.m in Sources */,
-				BCD123D715B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7015B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7A15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8415B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DB159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241D15A353F3002A870D /* CityInfo.m in Sources */,
+				BC598F0015B9AA98004D6DCB /* TopBar.m in Sources */,
+				BC598F0815B9AA98004D6DCB /* TopBarNotifView.m in Sources */,
+				BC598F1215B9AAD2004D6DCB /* TabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12905,13 +12922,14 @@
 				BC506A64157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				BC73262F158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B861591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
-				BCD123D015B71A61001FF144 /* TopBar.m in Sources */,
-				BCD123DA15B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7315B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7D15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8715B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DE159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027242015A353F3002A870D /* CityInfo.m in Sources */,
+				BC598F0315B9AA98004D6DCB /* TopBar.m in Sources */,
+				BC598F0B15B9AA98004D6DCB /* TopBarNotifView.m in Sources */,
+				BC598F1515B9AAD2004D6DCB /* TabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13098,13 +13116,14 @@
 				BC506A60157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				BC73262B158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B821591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
-				BCD123CC15B71A61001FF144 /* TopBar.m in Sources */,
-				BCD123D615B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E6F15B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7915B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8315B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DA159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241C15A353F3002A870D /* CityInfo.m in Sources */,
+				BC598EFF15B9AA98004D6DCB /* TopBar.m in Sources */,
+				BC598F0715B9AA98004D6DCB /* TopBarNotifView.m in Sources */,
+				BC598F1115B9AAD2004D6DCB /* TabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13292,13 +13311,14 @@
 				BC506A63157E081100DF8BED /* NotificationMessageViewController.m in Sources */,
 				BC73262E158F91C4000D6584 /* UserSettings.m in Sources */,
 				40B96B851591CAEE004D21D3 /* FacebookSharePreferences.m in Sources */,
-				BCD123CF15B71A61001FF144 /* TopBar.m in Sources */,
-				BCD123D915B71C18001FF144 /* TopBarNotifView.m in Sources */,
 				BC598E7215B8786C004D6DCB /* RadioListTableViewController.m in Sources */,
 				BC598E7C15B8788D004D6DCB /* WheelSelector.m in Sources */,
 				BC598E8615B94A43004D6DCB /* RadioListTableViewCell.m in Sources */,
 				40CBB1DD159C8E58005E898E /* TwitterSharePreferences.m in Sources */,
 				4027241F15A353F3002A870D /* CityInfo.m in Sources */,
+				BC598F0215B9AA98004D6DCB /* TopBar.m in Sources */,
+				BC598F0A15B9AA98004D6DCB /* TopBarNotifView.m in Sources */,
+				BC598F1415B9AAD2004D6DCB /* TabBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

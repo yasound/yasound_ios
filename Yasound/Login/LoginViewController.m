@@ -61,7 +61,7 @@
     _twitterLabel.text = NSLocalizedString(@"LoginView_twitter_label", nil);    
     _yasoundLabel.text = NSLocalizedString(@"LoginView_yasound_label", nil);    
     
-    [_signupButton setTitle:NSLocalizedString(@"LoginView_signup_label", nil) forState:UIControlStateNormal  textAlignement:UITextAlignmentRight];
+    [_signupButton setTitle:NSLocalizedString(@"LoginView_signup_label", nil) forState:UIControlStateNormal  textAlignment:UITextAlignmentRight];
 
     
 }

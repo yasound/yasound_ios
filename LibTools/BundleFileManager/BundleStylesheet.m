@@ -25,7 +25,7 @@
 @synthesize nameIsSet = _nameIsSet;
 @synthesize size = _size;
 @synthesize sizeIsSet = _sizeIsSet;
-@synthesize textAlignement = _textAlignement;
+@synthesize textAlignment = _textAlignment;
 @synthesize textAlignmentIsSet = _textAlignmentIsSet;
 @synthesize text = _text;
 @synthesize textColor = _textColor;
@@ -81,7 +81,7 @@
   if (([class isEqualToString:@"default"]) || (defaultFontsheet == nil))
   {
     _size = 12;
-    _textAlignement = UITextAlignmentLeft;
+    _textAlignment = UITextAlignmentLeft;
     _text = [NSString stringWithFormat:@""];
       [_text retain];
     _textColor = [UIColor blackColor];
@@ -92,7 +92,7 @@
   else
   {
     _size = defaultFontsheet.size;
-    _textAlignement = defaultFontsheet.textAlignement;
+    _textAlignment = defaultFontsheet.textAlignment;
     _textColor = defaultFontsheet.textColor;
     _backgroundColor = defaultFontsheet.backgroundColor;
     _weight = [NSString stringWithFormat:defaultFontsheet.weight];
@@ -143,10 +143,10 @@
     _weightIsSet = YES;
   }
   
-  NSString* alignement = [sheet valueForKey:@"textAlignement"];
+  NSString* alignement = [sheet valueForKey:@"textAlignment"];
   if (alignement != nil)
   {
-    _textAlignement = [BundleFontsheet alignementFromString:alignement];
+    _textAlignment = [BundleFontsheet alignementFromString:alignement];
     _textAlignmentIsSet = YES;
   }
     
@@ -857,7 +857,7 @@ static NSMutableDictionary* gImageViews = nil;
     label.backgroundColor = fontsheet.backgroundColor;
     label.textColor = fontsheet.textColor;
     label.text = fontsheet.text;
-    label.textAlignment = fontsheet.textAlignement;
+    label.textAlignment = fontsheet.textAlignment;
     
     // apply shadow, if requested
     if (fontsheet.shadowIsSet)
@@ -903,7 +903,7 @@ static NSMutableDictionary* gImageViews = nil;
     label.textColor = fontsheet.textColor;
   
   if (fontsheet.textAlignmentIsSet == YES)
-    label.textAlignment = fontsheet.textAlignement;
+    label.textAlignment = fontsheet.textAlignment;
   
   UIFont* font = nil;
   

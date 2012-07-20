@@ -10,6 +10,94 @@
 	<string>theme_default</string>
 	<key>stylesheet</key>
 	<dict>
+		<key>TabBar</key>
+		<dict>
+			<key>label</key>
+			<dict>
+				<key>height</key>
+				<integer>28</integer>
+				<key>width</key>
+				<integer>64</integer>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>28</integer>
+				<key>font</key>
+				<dict>
+					<key>textAlignment</key>
+					<string>center</string>
+					<key>shadowOffset</key>
+					<string>0, 1</string>
+					<key>shadowRadius</key>
+					<real>0.5</real>
+					<key>shadowColor</key>
+					<string>black</string>
+					<key>shadowOpacity</key>
+					<real>0.75</real>
+					<key>weight</key>
+					<string>bold</string>
+					<key>size</key>
+					<integer>9</integer>
+					<key>textColor</key>
+					<string>white</string>
+				</dict>
+			</dict>
+			<key>favorites</key>
+			<dict>
+				<key>normal</key>
+				<string>tabBarFavoritesOff</string>
+				<key>highlighted</key>
+				<string>tabBarFavoritesOn</string>
+				<key>selected</key>
+				<string>tabBarFavoritesOn</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>selection</key>
+			<dict>
+				<key>normal</key>
+				<string>tabBarSelectionOff</string>
+				<key>highlighted</key>
+				<string>tabBarSelectionOn</string>
+				<key>selected</key>
+				<string>tabBarSelectionOn</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>myRadios</key>
+			<dict>
+				<key>normal</key>
+				<string>tabBarMyRadiosOff</string>
+				<key>highlighted</key>
+				<string>tabBarMyRadiosOn</string>
+				<key>selected</key>
+				<string>tabBarMyRadiosOn</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>gifts</key>
+			<dict>
+				<key>normal</key>
+				<string>tabBarGiftsOff</string>
+				<key>highlighted</key>
+				<string>tabBarGiftsOn</string>
+				<key>selected</key>
+				<string>tabBarGiftsOn</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>profil</key>
+			<dict>
+				<key>normal</key>
+				<string>tabBarProfilOff</string>
+				<key>highlighted</key>
+				<string>tabBarProfilOn</string>
+				<key>selected</key>
+				<string>tabBarProfilOn</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+		</dict>
 		<key>WheelSelector</key>
 		<dict>
 			<key>indicator</key>
@@ -527,7 +615,7 @@
 					<integer>12</integer>
 					<key>textColor</key>
 					<string>black</string>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 				</dict>
 			</dict>
@@ -610,7 +698,7 @@
 				<dict>
 					<key>font</key>
 					<dict>
-						<key>textAlignement</key>
+						<key>textAlignment</key>
 						<string>right</string>
 						<key>name</key>
 						<string>Arial</string>
@@ -672,7 +760,7 @@
 						<integer>13</integer>
 						<key>textColor</key>
 						<string>white</string>
-						<key>textAlignement</key>
+						<key>textAlignment</key>
 						<string>center</string>
 					</dict>
 					<key>height</key>
@@ -794,7 +882,7 @@
 				<dict>
 					<key>font</key>
 					<dict>
-						<key>textAlignement</key>
+						<key>textAlignment</key>
 						<string>center</string>
 						<key>size</key>
 						<integer>9</integer>
@@ -992,7 +1080,7 @@
 						<string>Jenny&apos;s Radio</string>
 						<key>textColor</key>
 						<string>rgb(255,237,207)</string>
-						<key>textAlignement</key>
+						<key>textAlignment</key>
 						<string>right</string>
 					</dict>
 					<key>x</key>
@@ -1068,7 +1156,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>13</integer>
@@ -1092,7 +1180,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>16</integer>
@@ -1130,7 +1218,7 @@
 				<dict>
 					<key>weight</key>
 					<string>bold</string>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>center</string>
 					<key>size</key>
 					<integer>11</integer>
@@ -1468,7 +1556,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>right</string>
 					<key>size</key>
 					<integer>14</integer>
@@ -1492,7 +1580,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>14</integer>
@@ -1516,7 +1604,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>center</string>
 					<key>size</key>
 					<integer>15</integer>
@@ -1556,7 +1644,7 @@
 				<integer>44</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>center</string>
 					<key>size</key>
 					<integer>11</integer>
@@ -1581,7 +1669,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>13</integer>
@@ -1605,7 +1693,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>13</integer>
@@ -1632,7 +1720,7 @@
 			<dict>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>13</integer>
@@ -1665,7 +1753,7 @@
 					<integer>13</integer>
 					<key>textColor</key>
 					<string>white</string>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>center</string>
 				</dict>
 				<key>height</key>
@@ -1689,7 +1777,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>15</integer>
@@ -1713,7 +1801,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>15</integer>
@@ -1737,7 +1825,7 @@
 				<integer>13</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>11</integer>
@@ -1761,7 +1849,7 @@
 				<integer>13</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>11</integer>
@@ -1785,7 +1873,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>11</integer>
@@ -1809,7 +1897,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>11</integer>
@@ -1833,7 +1921,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>11</integer>
@@ -1857,7 +1945,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>right</string>
 					<key>size</key>
 					<integer>11</integer>
@@ -1881,7 +1969,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>right</string>
 					<key>size</key>
 					<integer>11</integer>
@@ -1916,7 +2004,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>left</string>
 					<key>size</key>
 					<integer>11</integer>
@@ -1940,7 +2028,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>right</string>
 					<key>size</key>
 					<integer>11</integer>
@@ -1975,7 +2063,7 @@
 				<integer>16</integer>
 				<key>font</key>
 				<dict>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>right</string>
 					<key>size</key>
 					<integer>11</integer>

@@ -210,7 +210,7 @@
 					<string>HelveticaNeue</string>
 					<key>size</key>
 					<integer>11</integer>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>right</string>
 					<key>textColor</key>
 					<string>white</string>
@@ -234,7 +234,7 @@
 					<string>HelveticaNeue</string>
 					<key>size</key>
 					<integer>11</integer>
-					<key>textAlignement</key>
+					<key>textAlignment</key>
 					<string>right</string>
 					<key>textColor</key>
 					<string>white</string>

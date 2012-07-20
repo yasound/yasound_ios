@@ -74,8 +74,8 @@
     
     _loginLabel.text = NSLocalizedString(@"YasoundLoginView_button_login", nil);
 
-    [_signupButton setTitle:NSLocalizedString(@"LoginView_signup_label", nil) forState:UIControlStateNormal textAlignement:UITextAlignmentLeft];
-    [_forgetButton setTitle:NSLocalizedString(@"YasoundLoginView_button_forgot", nil) forState:UIControlStateNormal textAlignement:UITextAlignmentLeft];
+    [_signupButton setTitle:NSLocalizedString(@"LoginView_signup_label", nil) forState:UIControlStateNormal textAlignment:UITextAlignmentLeft];
+    [_forgetButton setTitle:NSLocalizedString(@"YasoundLoginView_button_forgot", nil) forState:UIControlStateNormal textAlignment:UITextAlignmentLeft];
 
 //    _loginButton.enabled = NO;
     

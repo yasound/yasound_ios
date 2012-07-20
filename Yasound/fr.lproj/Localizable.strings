@@ -569,7 +569,13 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "WheelSelector_Favorites" = "Favoris";
 "WheelSelector_Genre" = "Genres";
-"WheelSelector_Selection" = "Selection";
+"WheelSelector_Selection" = "Sélection";
 "WheelSelector_Friends" = "Amis";
 "WheelSelector_Top" = "Top";
+
+"TabBar.selection" = "Sélection";
+"TabBar.favorites" = "Favoris";
+"TabBar.myRadios" = "Mes radios";
+"TabBar.gifts" = "Cadeaux";
+"TabBar.profil" = "Profil";
 

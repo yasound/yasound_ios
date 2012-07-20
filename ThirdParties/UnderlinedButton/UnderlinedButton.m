@@ -32,7 +32,7 @@
 }
 
 
-- (void)setTitle:(NSString *)title forState:(UIControlState)state textAlignement:(UITextAlignment)textAlignment
+- (void)setTitle:(NSString *)title forState:(UIControlState)state textAlignment:(UITextAlignment)textAlignment
 {
     _textAlignment = textAlignment;
     _suggestedSize = [title sizeWithFont:self.titleLabel.font constrainedToSize:CGSizeMake(self.frame.size.width, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];

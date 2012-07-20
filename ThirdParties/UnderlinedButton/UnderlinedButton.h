@@ -14,7 +14,7 @@
     UITextAlignment* _textAlignment;
 }
 
-- (void)setTitle:(NSString *)title forState:(UIControlState)state textAlignement:(UITextAlignment)textAlignment;
+- (void)setTitle:(NSString *)title forState:(UIControlState)state textAlignment:(UITextAlignment)textAlignment;
 
 
 @end

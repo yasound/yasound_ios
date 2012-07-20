@@ -24,7 +24,7 @@
 @property (nonatomic, readonly) NSInteger size;
 @property (nonatomic, readonly) BOOL sizeIsSet;
 
-@property (nonatomic, readonly) UITextAlignment textAlignement;
+@property (nonatomic, readonly) UITextAlignment textAlignment;
 @property (nonatomic, readonly) BOOL textAlignmentIsSet;
 
 @property (nonatomic, retain, readonly) NSString* text;

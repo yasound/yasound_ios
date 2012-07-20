@@ -582,3 +582,10 @@
 "WheelSelector_Top" = "Top";
 
 
+"TabBar.selection" = "Selection";
+"TabBar.favorites" = "Favorites";
+"TabBar.myRadios" = "My radios";
+"TabBar.gifts" = "Gifts";
+"TabBar.profil" = "Profil";
+
+
