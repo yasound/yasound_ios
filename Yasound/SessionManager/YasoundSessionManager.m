@@ -1042,7 +1042,7 @@ static YasoundSessionManager* _main = nil;
     if (date == nil)
     {
         DLog(@"expirationDateToString : date is nil!");
-        return;
+        return nil;
     }
     
     NSLocale* enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
