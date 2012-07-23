@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-enum TabIndex
+typedef enum TabIndex
 {
     TabIndexSelection = 0,
     TabIndexFavorites,
     TabIndexMyRadios,
     TabIndexGifts,
     TabIndexProfil
-};
+}TabIndex;
 
 
 
@@ -28,7 +28,8 @@ enum TabIndex
 
 @property (nonatomic, retain) IBOutlet id<TabBarDelegate> tabBarDelegate;
 @property (nonatomic, retain) NSMutableArray* buttons;
-@property (nonatomic, retain) UIButton* selectedButton;
+//@property (nonatomic, retain) UIButton* selectedButton;
+@property (nonatomic) TabIndex selectedIndex;
 
 - (void)setTabSelected:(NSInteger)tabIndex;
 

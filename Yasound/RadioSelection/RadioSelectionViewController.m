@@ -27,12 +27,13 @@
 
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withTabIndex:(TabIndex)tabIndex
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
         self.url = nil;
+        _tabIndex = tabIndex;
     }
     return self;
 }
@@ -55,7 +56,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [wheelSelector init];
+    listContainer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
+
+    if (_tabIndex == TabIndexSelection)
+        [wheelSelector initWithItem:WheelIdSelection];
+    else  if (_tabIndex == TabIndexFavorites)
+        [wheelSelector initWithItem:WheelIdFavorites];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -117,17 +124,26 @@
 
 #pragma mark - TopBarDelegate
 
-- (void)topBarBackItemClicked
+- (void)topBarBackItemClicked:(TopBarItemId)itemId
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (itemId == TopBarItemBack)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+    else if (itemId == TopBarItemNotif)
+    {
+        
+    }
+
+    else if (itemId == TopBarItemNowPlaying)
+    {
+        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
 }
 
-- (void)topBarNowPlayingClicked
-{
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-}
 
 
 

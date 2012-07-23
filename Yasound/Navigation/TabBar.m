@@ -8,16 +8,18 @@
 
 #import "TabBar.h"
 #import "Theme.h"
+#import "RootViewController.h"
 
 @implementation TabBar
 
 @synthesize tabBarDelegate;
 @synthesize buttons;
-@synthesize selectedButton;
+//@synthesize selectedButton;
+@synthesize selectedIndex;
 
 - (void)awakeFromNib
 {
-    self.selectedButton = nil;
+//    self.selectedButton = nil;
     
     CGFloat x = 0;
     CGFloat y = 0;
@@ -61,9 +63,11 @@
 - (void)onButtonPressed:(id)sender
 {
     UIButton* btn = sender;
-    
-    if (self.selectedButton == btn)
+
+    if (self.selectedIndex == btn.tag)
         return;
+//    if (self.selectedButton == btn)
+//        return;
     
     for (UIButton* button in self.buttons)
         button.selected = NO;
@@ -76,10 +80,47 @@
 {
     UIButton* btn = sender;
     
-    if (self.selectedButton == btn)
+    if (self.selectedIndex == btn.tag)
         return;
 
-    self.selectedButton = btn;
+//    self.selectedButton = btn;
+        
+    BOOL callDelegate = NO;
+    
+    if (btn.tag == TabIndexSelection)
+    {
+        if ((self.selectedIndex != TabIndexSelection) && (self.selectedIndex != TabIndexFavorites))
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+        }
+        else
+            callDelegate = YES;
+    }
+    else if (btn.tag == TabIndexFavorites)
+    {
+        if ((self.selectedIndex != TabIndexSelection) && (self.selectedIndex != TabIndexFavorites))
+        {
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_FAVORITES object:nil];
+        }
+        else
+            callDelegate = YES;
+    }
+    else if (btn.tag == TabIndexMyRadios)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIOS object:nil];
+    }
+    else if (btn.tag == TabIndexGifts)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_GIFTS object:nil];
+    }
+    else if (btn.tag == TabIndexProfil)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_PROFIL object:nil];
+    }
+
+    
+    self.selectedIndex = btn.tag;
+    
 
     // call delegate
     [self.tabBarDelegate tabBarBackDidSelect:btn.tag];
@@ -90,14 +131,17 @@
 {
     UIButton* btn = [self.buttons objectAtIndex:tabIndex];
     
-    if (self.selectedButton == btn)
+    if (self.selectedIndex == btn.tag)
         return;
+    //    if (self.selectedButton == btn)
+    //        return;
     
     for (UIButton* button in self.buttons)
         button.selected = NO;
     
     btn.selected = YES;
-    self.selectedButton = btn;
+//    self.selectedButton = btn;
+    self.selectedIndex = btn.tag;
 }
 
 

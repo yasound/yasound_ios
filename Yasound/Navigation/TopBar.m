@@ -8,7 +8,6 @@
 
 #import "TopBar.h"
 #import "Theme.h"
-#import "TopBarNotifView.h"
 #import "AudioStreamManager.h"
 
 @implementation TopBar
@@ -34,8 +33,10 @@
     UIBarButtonItem* itemHD = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"barItemHdOff.png"]]];
     
     //  "notif"  item
-    TopBarNotifView* notifView = [[TopBarNotifView alloc] init];
-    UIBarButtonItem* itemNotif = [[UIBarButtonItem alloc] initWithCustomView:notifView];
+    sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemNotif" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    btn = [sheet makeButton];
+    [btn addTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* itemNotif = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     // "now playing" item
     sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemNowPlaying" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -60,12 +61,18 @@
 
 - (void)onBack:(id)sender
 {
-    [self.delegate topBarBackItemClicked];
+    [self.delegate topBarBackItemClicked:TopBarItemBack];
 }
+
+- (void)onNotif:(id)sender
+{
+    [self.delegate topBarBackItemClicked:TopBarItemNotif];
+}
+
 
 - (void)onNowPlaying:(id)sender
 {
-    [self topBarNowPlayingClicked];
+    [self.delegate topBarBackItemClicked:TopBarItemNowPlaying];
 }
 
 //- (id)initWithFrame:(CGRect)frame

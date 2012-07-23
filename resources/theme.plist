@@ -154,6 +154,19 @@
 				<key>type</key>
 				<string>png</string>
 			</dict>
+			<key>ItemNotif</key>
+			<dict>
+				<key>normal</key>
+				<string>barItemNotifOff</string>
+				<key>selected</key>
+				<string>barItemNotifOn</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
 			<key>ItemNowPlaying</key>
 			<dict>
 				<key>normal</key>

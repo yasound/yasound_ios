@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum TopBarItemId
+{
+    TopBarItemBack = 0,
+    TopBarItemNotif,
+    TopBarItemNowPlaying
+} TopBarItemId;
+
 @protocol TopBarDelegate <NSObject>
-- (void)topBarBackItemClicked;
-- (void)topBarNowPlayingClicked;
+- (void)topBarBackItemClicked:(TopBarItemId)itemId;
 @end
 
 

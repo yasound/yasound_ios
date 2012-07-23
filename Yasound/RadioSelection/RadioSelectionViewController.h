@@ -11,17 +11,22 @@
 #import "WheelSelector.h"
 #import "RadioListTableViewController.h"
 #import "TabBar.h"
+#import "TopBar.h"
 
-@interface RadioSelectionViewController : TestflightViewController<RadioListDelegate, TabBarDelegate>
+@interface RadioSelectionViewController : TestflightViewController<TopBarDelegate, RadioListDelegate, TabBarDelegate>
+{
+    TabIndex _tabIndex;
+}
 
 @property (nonatomic, retain) NSURL* url;
+
 @property (nonatomic, retain) IBOutlet WheelSelector* wheelSelector;
 @property (nonatomic, retain) IBOutlet UIView* listContainer;
 @property (nonatomic, retain) UITableViewController* tableview;
 @property (nonatomic, retain) IBOutlet TabBar* tabBar;
 
 
-- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withTabIndex:(TabIndex)tabIndex;
 
 - (IBAction)onStyleSelectorClicked:(id)sender;
 - (IBAction)onNowPlayingClicked:(id)sender;

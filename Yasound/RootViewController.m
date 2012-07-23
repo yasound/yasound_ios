@@ -24,7 +24,10 @@
 #import "YasoundDataCache.h"
 #import "SongUploadViewController.h"
 #import "RadioSelectionViewController.h"
-
+#import "TabBar.h"
+#import "MyRadiosViewController.h"
+#import "GiftsViewController.h"
+#import "ProfilViewController.h"
 
 
 //LBDEBUG
@@ -132,6 +135,11 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMenu:) name:NOTIF_GOTO_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoSelection:) name:NOTIF_GOTO_SELECTION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoFavorites:) name:NOTIF_GOTO_FAVORITES object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadios:) name:NOTIF_GOTO_MYRADIOS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoGifts:) name:NOTIF_GOTO_GIFTS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoProfil:) name:NOTIF_GOTO_PROFIL object:nil];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadio:) name:NOTIF_GOTO_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadio:) name:NOTIF_GOTO_MYRADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateMyRadio:) name:NOTIF_GOTO_CREATE_MYRADIO object:nil];
@@ -650,6 +658,23 @@
 
 
 
+
+- (void)gotoMenuAnimated:(BOOL)animated
+{
+    if (self.menuView == nil)
+    {
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        [self.navigationController pushViewController:self.menuView animated:animated];
+    }
+    else
+    {
+        [self.navigationController popToViewController:self.menuView animated:animated];
+    }
+}
+
+
+
 - (void)onNotifGotoRadio:(NSNotification*)notification
 {
     Radio* r = notification.object;
@@ -657,16 +682,7 @@
 
     DLog(@"onNotifGotoRadio '%@' (ready %@)", r.name, r.ready);
 
-    if (self.menuView == nil)
-    {
-        [self.navigationController popToRootViewControllerAnimated:NO];
-        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-        [self.navigationController pushViewController:self.menuView animated:NO];
-    }
-    else
-    {
-        [self.navigationController popToViewController:self.menuView animated:NO];
-    }
+    [self gotoMenuAnimated:NO];
 
     RadioViewController* view = [[RadioViewController alloc] initWithRadio:r];
     [self.navigationController pushViewController:view animated:YES];
@@ -678,17 +694,7 @@
 {
     DLog(@"onNotifGotoMenu");
     
-    if (self.menuView == nil)
-    {
-        [self.navigationController popToRootViewControllerAnimated:NO];
-        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-        [self.navigationController pushViewController:self.menuView animated:YES];
-    }
-    else
-    {
-        [self.navigationController popToViewController:self.menuView animated:YES];
-    }
-    
+    [self gotoMenuAnimated:YES];
 }
 
 
@@ -696,23 +702,62 @@
 {
     DLog(@"onNotifGotoSelection");
     
-    if (self.menuView == nil)
-    {
-        [self.navigationController popToRootViewControllerAnimated:NO];
-        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-        [self.navigationController pushViewController:self.menuView animated:NO];
-    }
-    else
-    {
-        [self.navigationController popToViewController:self.menuView animated:NO];
-    }
+    [self gotoMenuAnimated:NO];
     
-    
-    
-    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil];
+    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withTabIndex:TabIndexSelection];
     [self.navigationController pushViewController:view animated:YES];    
     [view release];
 }
+
+- (void)onNotifGotoFavorites:(NSNotification*)notification
+{
+    DLog(@"onNotifGotoFavorites");
+    
+    [self gotoMenuAnimated:NO];
+    
+    RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withTabIndex:TabIndexFavorites];
+    [self.navigationController pushViewController:view animated:YES];    
+    [view release];
+}
+
+- (void)onNotifGotoMyRadios:(NSNotification*)notification
+{
+    DLog(@"onNotifGotoMyRadios");
+    
+    [self gotoMenuAnimated:NO];
+    
+    MyRadiosViewController* view = [[MyRadiosViewController alloc] initWithNibName:@"MyRadiosViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:YES];    
+    [view release];
+}
+
+- (void)onNotifGotoGifts:(NSNotification*)notification
+{
+    DLog(@"onNotifGotoGifts");
+    
+    [self gotoMenuAnimated:NO];
+    
+    GiftsViewController* view = [[GiftsViewController alloc] initWithNibName:@"GiftsViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:YES];    
+    [view release];
+}
+
+
+- (void)onNotifGotoProfil:(NSNotification*)notification
+{
+    DLog(@"onNotifGotoProfil");
+    
+    [self gotoMenuAnimated:NO];
+    
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:YES];    
+    [view release];
+}
+
+
+
+
+
 
 
 
