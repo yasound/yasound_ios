@@ -11,15 +11,20 @@
 {
     id _target;
     SEL _action;
+    id _userObject;
 
     id _targetDown;
     SEL _actionDown;
+    id _userObjectDown;
 }
 
 - (id)initWithFrame:(CGRect)frame target:(id)target action:(SEL)action;
+- (id)initWithFrame:(CGRect)frame target:(id)target action:(SEL)action withObject:(id)userObject;
 
-- (void)addTarget:(id)target action:(SEL)action;
-- (void)addTargetOnTouchDown:(id)target action:(SEL)action;
+- (void)setTarget:(id)target action:(SEL)action;
+- (void)setTarget:(id)target action:(SEL)action withObject:(id)userObject;
+- (void)setTargetOnTouchDown:(id)target action:(SEL)action;
+- (void)setTargetOnTouchDown:(id)target action:(SEL)action withObject:(id)userObject;
 
 
 

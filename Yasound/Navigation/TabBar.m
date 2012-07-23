@@ -19,7 +19,8 @@
 
 - (void)awakeFromNib
 {
-//    self.selectedButton = nil;
+    self.selectedIndex = -1;
+    //    self.selectedButton = nil;
     
     CGFloat x = 0;
     CGFloat y = 0;

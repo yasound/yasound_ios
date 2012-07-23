@@ -15,9 +15,10 @@
 
 
 @property (nonatomic, retain) NSMutableArray* radioObjects; //array of array [Radio*, UILabel*, UILabel*, UILabel*, WebImageView*, WebImageView*] 
+@property (nonatomic, retain) id target;
+@property (nonatomic) SEL action;
 
-
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios;
-- (void)updateWithRadios:(NSArray*)radios;
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios target:(id)target action:(SEL)action;
+- (void)updateWithRadios:(NSArray*)radios target:(id)target action:(SEL)action;
 
 @end

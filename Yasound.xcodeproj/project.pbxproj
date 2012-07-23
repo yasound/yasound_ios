@@ -786,6 +786,22 @@
 		BC355C0315BD4F9200305C56 /* ProfilViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BD515BD4F9200305C56 /* ProfilViewController.xib */; };
 		BC355C0415BD4F9200305C56 /* ProfilViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BD515BD4F9200305C56 /* ProfilViewController.xib */; };
 		BC355C0515BD4F9200305C56 /* ProfilViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BD515BD4F9200305C56 /* ProfilViewController.xib */; };
+		BC355C0815BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0615BD98E400305C56 /* radioListMaskHighlightedSize2.png */; };
+		BC355C0915BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0615BD98E400305C56 /* radioListMaskHighlightedSize2.png */; };
+		BC355C0A15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0615BD98E400305C56 /* radioListMaskHighlightedSize2.png */; };
+		BC355C0B15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0615BD98E400305C56 /* radioListMaskHighlightedSize2.png */; };
+		BC355C0C15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0615BD98E400305C56 /* radioListMaskHighlightedSize2.png */; };
+		BC355C0D15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0615BD98E400305C56 /* radioListMaskHighlightedSize2.png */; };
+		BC355C0E15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0615BD98E400305C56 /* radioListMaskHighlightedSize2.png */; };
+		BC355C0F15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0615BD98E400305C56 /* radioListMaskHighlightedSize2.png */; };
+		BC355C1015BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png */; };
+		BC355C1115BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png */; };
+		BC355C1215BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png */; };
+		BC355C1315BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png */; };
+		BC355C1415BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png */; };
+		BC355C1515BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png */; };
+		BC355C1615BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png */; };
+		BC355C1715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC355C0715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png */; };
 		BC3FA66314E93B660055AB4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
 		BC3FA66414E93B660055AB4A /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFE51468439900BA20D9 /* AudioStreamer.m */; };
 		BC3FA66714E93B660055AB4A /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFECFEC1468439900BA20D9 /* Tile.m */; };
@@ -5392,6 +5408,8 @@
 		BC355BD315BD4F9200305C56 /* ProfilViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilViewController.h; path = Yasound/Tabs/ProfilViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BD415BD4F9200305C56 /* ProfilViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfilViewController.m; path = Yasound/Tabs/ProfilViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BD515BD4F9200305C56 /* ProfilViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfilViewController.xib; path = Yasound/Tabs/ProfilViewController.xib; sourceTree = SOURCE_ROOT; };
+		BC355C0615BD98E400305C56 /* radioListMaskHighlightedSize2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListMaskHighlightedSize2.png; sourceTree = "<group>"; };
+		BC355C0715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListMaskHighlightedSize2@2x.png"; sourceTree = "<group>"; };
 		BC3FA77C14E93B660055AB4A /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "ThirdParties/facebook-ios-sdk/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "OAuthConsumer-iPhoneLib.xcodeproj"; path = "ThirdParties/Twitter-OAuth-iPhone/OAuthConsumeriPhoneLib/OAuthConsumer-iPhoneLib.xcodeproj"; sourceTree = "<group>"; };
@@ -6775,6 +6793,8 @@
 				BC598E8D15B988C3004D6DCB /* radioListListenersIcon@2x.png */,
 				BC598E8E15B988C3004D6DCB /* radioListMaskSize2.png */,
 				BC598E8F15B988C3004D6DCB /* radioListMaskSize2@2x.png */,
+				BC355C0615BD98E400305C56 /* radioListMaskHighlightedSize2.png */,
+				BC355C0715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png */,
 				BC598E9015B988C3004D6DCB /* radioListRowBkgSize2.png */,
 				BC598E9115B988C3004D6DCB /* radioListRowBkgSize2@2x.png */,
 				BC598E9215B988C3004D6DCB /* radioListSubscribersIcon.png */,
@@ -8749,6 +8769,8 @@
 				BC355BE415BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF415BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BC355C0415BD4F9200305C56 /* ProfilViewController.xib in Resources */,
+				BC355C0E15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */,
+				BC355C1615BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9186,6 +9208,8 @@
 				BC355BE515BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF515BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BC355C0515BD4F9200305C56 /* ProfilViewController.xib in Resources */,
+				BC355C0F15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */,
+				BC355C1715BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9617,6 +9641,8 @@
 				BC355BE315BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF315BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BC355C0315BD4F9200305C56 /* ProfilViewController.xib in Resources */,
+				BC355C0D15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */,
+				BC355C1515BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10053,6 +10079,8 @@
 				BC355BE015BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF015BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BC355C0015BD4F9200305C56 /* ProfilViewController.xib in Resources */,
+				BC355C0A15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */,
+				BC355C1215BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10489,6 +10517,8 @@
 				BC355BDF15BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BEF15BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BC355BFF15BD4F9200305C56 /* ProfilViewController.xib in Resources */,
+				BC355C0915BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */,
+				BC355C1115BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10925,6 +10955,8 @@
 				BC355BE215BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF215BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BC355C0215BD4F9200305C56 /* ProfilViewController.xib in Resources */,
+				BC355C0C15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */,
+				BC355C1415BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11361,6 +11393,8 @@
 				BC355BDE15BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BEE15BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BC355BFE15BD4F9200305C56 /* ProfilViewController.xib in Resources */,
+				BC355C0815BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */,
+				BC355C1015BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11797,6 +11831,8 @@
 				BC355BE115BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF115BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BC355C0115BD4F9200305C56 /* ProfilViewController.xib in Resources */,
+				BC355C0B15BD98E400305C56 /* radioListMaskHighlightedSize2.png in Resources */,
+				BC355C1315BD98E400305C56 /* radioListMaskHighlightedSize2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

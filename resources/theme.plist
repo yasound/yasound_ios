@@ -259,13 +259,24 @@
 			<key>mask</key>
 			<dict>
 				<key>x</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>y</key>
 				<integer>0</integer>
 				<key>type</key>
 				<string>png</string>
 				<key>name</key>
 				<string>radioListMaskSize2</string>
+			</dict>
+			<key>maskHighlighted</key>
+			<dict>
+				<key>x</key>
+				<integer>2</integer>
+				<key>y</key>
+				<integer>0</integer>
+				<key>type</key>
+				<string>png</string>
+				<key>name</key>
+				<string>radioListMaskHighlightedSize2</string>
 			</dict>
 			<key>userMask</key>
 			<dict>

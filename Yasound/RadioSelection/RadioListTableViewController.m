@@ -97,12 +97,14 @@
     
     if (cell == nil)
     {    
-        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier radios:radiosForRow];
+        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier radios:radiosForRow target:self action:@selector(onRadioClicked:)];
     }
     else
     {
-        [cell updateWithRadios:radiosForRow];
+        [cell updateWithRadios:radiosForRow target:self action:@selector(onRadioClicked:)];
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -148,10 +150,10 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)onRadioClicked:(Radio*)radio
 {
     // call delegate with selected radio
-    Radio* radio = [self.radios objectAtIndex:indexPath.row];
     [self.listDelegate radioListDidSelect:radio];
 }
 

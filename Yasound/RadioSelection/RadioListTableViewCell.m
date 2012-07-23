@@ -12,6 +12,7 @@
 #import "TimeProfile.h"
 
 #import <QuartzCore/QuartzCore.h>
+#import "InteractiveView.h"
 
 
 //@interface RadioListTableViewCell (internal_update)
@@ -22,36 +23,44 @@
 
 #define RADIO_OBJECT_RADIO 0
 #define RADIO_OBJECT_IMAGE 1
-#define RADIO_OBJECT_USER_IMAGE 2
-#define RADIO_OBJECT_TITLE 3
-#define RADIO_OBJECT_SUBSCRIBERS 4
-#define RADIO_OBJECT_LISTENERS 5
+#define RADIO_OBJECT_MASK 2
+#define RADIO_OBJECT_USER_IMAGE 3
+#define RADIO_OBJECT_TITLE 4
+#define RADIO_OBJECT_SUBSCRIBERS 5
+#define RADIO_OBJECT_LISTENERS 6
+#define RADIO_OBJECT_INTERACTIVE_VIEW 7
 
 
 
 @implementation RadioListTableViewCell
 
 @synthesize radioObjects;
+@synthesize target;
+@synthesize action;
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios target:(id)target action:(SEL)action
 {
     if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
     {
         BundleStylesheet* sheet;
         NSError* error;
           
+        self.target = target;
+        self.action = action;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.radioObjects = [[NSMutableArray alloc] init];
 
         CGFloat xOffset = 0;
+        
+        NSInteger radioIndex = 0;
 
         for (Radio* radio in radios)
         {
             
-            BundleStylesheet* sheetMask = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:&error];
-            sheetMask.frame = CGRectMake(sheetMask.frame.origin.x + xOffset, sheetMask.frame.origin.y, sheetMask.frame.size.width, sheetMask.frame.size.height);
-            UIView* container = [[UIView alloc] initWithFrame:sheetMask.frame];
+            BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:&error];
+            sheetContainer.frame = CGRectMake(sheetContainer.frame.origin.x + xOffset, sheetContainer.frame.origin.y, sheetContainer.frame.size.width, sheetContainer.frame.size.height);
+            UIView* container = [[UIView alloc] initWithFrame:sheetContainer.frame];
             [self addSubview:container];
             
             // radio image
@@ -113,8 +122,18 @@
             listeners.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
             [container addSubview:listeners];
             
+            // interactive view : catch the "press down" and "press up" actions
+            InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheetContainer.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:radioIndex]];
+            [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:radioIndex]];
+            [container addSubview:interactiveView];
+            
+            
             // store objects
-            NSMutableArray* objects = [NSMutableArray arrayWithObjects:radio, radioImage, userImage, title, subscribers, listeners, nil];
+            NSMutableArray* objects = [NSMutableArray arrayWithObjects:radio, radioImage, radioMask, userImage, title, subscribers, listeners, interactiveView, nil];
+            radioIndex++;
+            
+            
+            
             
             
             [self.radioObjects addObject:objects];
@@ -126,6 +145,9 @@
   }
   return self;
 }
+
+
+
 
 
 
@@ -149,13 +171,20 @@
 
 
 
-- (void)updateWithRadios:(NSArray*)radios
+- (void)updateWithRadios:(NSArray*)radios target:(id)target action:(SEL)action
 {
-    NSInteger index = 0;
+    NSInteger radioIndex = 0;
     for (Radio* radio in radios)
     {
-        NSMutableArray* objects = [self.radioObjects objectAtIndex:index];
+        NSMutableArray* objects = [self.radioObjects objectAtIndex:radioIndex];
         
+        // replace radio
+        [objects replaceObjectAtIndex:RADIO_OBJECT_RADIO withObject:radio];
+        
+        // may not be needed, since "objects" is a reference. Check and go back later...
+        //[self.radioObjects replaceObjectAtIndex:radioIndex withObject:objects];
+        
+        // and update infos and images
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
         WebImageView* view = [objects objectAtIndex:RADIO_OBJECT_IMAGE];
         [view setUrl:imageURL];
@@ -173,9 +202,11 @@
         label = [objects objectAtIndex:RADIO_OBJECT_LISTENERS];
         label.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
         
-        index++;
+        radioIndex++;
     }
 }
+
+
 
 
 
@@ -185,6 +216,34 @@
   [super dealloc];
 }
 
+
+
+- (void)onInteractivePressedDown:(NSNumber*)indexNb
+{
+    // set the "highlighted" image for the radio mask
+    NSInteger radioIndex = [indexNb integerValue];
+    NSArray* objects = [self.radioObjects objectAtIndex:radioIndex];
+    UIImageView* radioMask = [objects objectAtIndex:RADIO_OBJECT_MASK];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.maskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    [radioMask setImage:[sheet image]];
+}
+
+- (void)onInteractivePressedUp:(NSNumber*)indexNb
+{
+    // set back the "normal" image for the radio mask
+    NSInteger radioIndex = [indexNb integerValue];
+    NSArray* objects = [self.radioObjects objectAtIndex:radioIndex];
+    UIImageView* radioMask = [objects objectAtIndex:RADIO_OBJECT_MASK];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    [radioMask setImage:[sheet image]];
+    
+    Radio* radio = [objects objectAtIndex:RADIO_OBJECT_RADIO];
+
+    // and call external action to delegate the radio selection
+    [self.target performSelector:self.action withObject:radio];
+}
 
 
 

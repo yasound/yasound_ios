@@ -1148,7 +1148,7 @@ static Song* _gNowPlayingSong = nil;
     _playingNowView = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong];
     
     InteractiveView* trackImageButton = [[InteractiveView alloc] initWithFrame:CGRectMake(15, 6, 50, 50) target:self action:@selector(onTrackImageClicked:)];
-    [trackImageButton addTargetOnTouchDown:self action:@selector(onTrackImageTouchDown:)];
+    [trackImageButton setTargetOnTouchDown:self action:@selector(onTrackImageTouchDown:)];
     [_playingNowView addSubview:trackImageButton];
     [trackImageButton release];
 

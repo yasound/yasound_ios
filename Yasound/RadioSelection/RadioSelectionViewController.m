@@ -232,7 +232,9 @@
 
 - (void)radioListDidSelect:(Radio*)radio
 {
-    NSLog(@"OK TODO");
+    RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
 }
 
 
