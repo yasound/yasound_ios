@@ -8,13 +8,13 @@
 
 #import "OrientedTableView.h"
 
-enum WheelItemId
+typedef enum WheelItemId
 {
     WheelIdFavorites = 0,
     WheelIdSelection,
     WheelIdFriends,
     WheelIdTop
-};
+} WheelItemId;
 
 @protocol WheelSelectorDelegate <NSObject>
 - (void)wheelSelectorDidSelect:(NSInteger)index;

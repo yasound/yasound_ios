@@ -105,10 +105,10 @@
 }
 
 
-- (void)init
+- (void)initWithItem:(WheelItemId)itemId
 {
     // starting position
-    [self stickToItem:WheelIdSelection];
+    [self stickToItem:itemId];
 }
 
 
