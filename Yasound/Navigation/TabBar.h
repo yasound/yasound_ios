@@ -20,7 +20,7 @@ typedef enum TabIndex
 
 
 @protocol TabBarDelegate <NSObject>
-- (void)tabBarBackDidSelect:(NSInteger)tabIndex;
+- (void)tabBarDidSelect:(NSInteger)tabIndex;
 
 @end
 

@@ -240,7 +240,7 @@
 
 #pragma mark - TabBarDelegate
 
-- (void)tabBarBackDidSelect:(NSInteger)tabIndex
+- (void)tabBarDidSelect:(NSInteger)tabIndex
 {
     if (tabIndex == TabIndexSelection)
     {

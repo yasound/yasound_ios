@@ -124,7 +124,8 @@
     
 
     // call delegate
-    [self.tabBarDelegate tabBarBackDidSelect:btn.tag];
+    if ([self.tabBarDelegate respondsToSelector:@selector(tabBarDidSelect:)])
+        [self.tabBarDelegate tabBarDidSelect:btn.tag];
 }
 
 

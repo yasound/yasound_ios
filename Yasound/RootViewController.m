@@ -705,7 +705,7 @@
     [self gotoMenuAnimated:NO];
     
     RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withTabIndex:TabIndexSelection];
-    [self.navigationController pushViewController:view animated:YES];    
+    [self.navigationController pushViewController:view animated:NO];    
     [view release];
 }
 
@@ -716,7 +716,7 @@
     [self gotoMenuAnimated:NO];
     
     RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withTabIndex:TabIndexFavorites];
-    [self.navigationController pushViewController:view animated:YES];    
+    [self.navigationController pushViewController:view animated:NO];    
     [view release];
 }
 
@@ -727,7 +727,7 @@
     [self gotoMenuAnimated:NO];
     
     MyRadiosViewController* view = [[MyRadiosViewController alloc] initWithNibName:@"MyRadiosViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];    
+    [self.navigationController pushViewController:view animated:NO];    
     [view release];
 }
 
@@ -738,7 +738,7 @@
     [self gotoMenuAnimated:NO];
     
     GiftsViewController* view = [[GiftsViewController alloc] initWithNibName:@"GiftsViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];    
+    [self.navigationController pushViewController:view animated:NO];    
     [view release];
 }
 
@@ -750,7 +750,7 @@
     [self gotoMenuAnimated:NO];
     
     ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];    
+    [self.navigationController pushViewController:view animated:NO];    
     [view release];
 }
 
