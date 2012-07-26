@@ -10,6 +10,7 @@
 #import "TopBar.h"
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
+#import "YasoundDataProvider.h"
 
 @interface MyRadiosViewController ()
 
@@ -17,17 +18,26 @@
 
 @implementation MyRadiosViewController
 
+@synthesize tableview;
 @synthesize tabBar;
+@synthesize radios;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        // Custom initialization
+        [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(radiosReceived:info:)];
     }
     return self;
 }
+
+- (void)radiosReceived:(Radio*)radio info:(NSDictionary*)info
+{
+    self.radios = [NSArray arrayWithObject:radio];
+    [self.tab
+}
+
 
 - (void)viewDidLoad
 {
