@@ -13,6 +13,7 @@
 
 @interface MyRadiosViewController : UIViewController<TopBarDelegate, TabBarDelegate>
 
+@property (nonatomic, retain) NSArray* radios;
 @property (nonatomic, retain) IBOutlet TabBar* tabBar;
 
 @end

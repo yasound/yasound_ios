@@ -17,6 +17,7 @@
 
 @implementation MyRadiosViewController
 
+@synthesize radios;
 @synthesize tabBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,6 +34,9 @@
 {
     [super viewDidLoad];
     [self.tabBar setTabSelected:TabIndexMyRadios];
+    
+    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(radiosReceived:info:)];
+
 }
 
 - (void)viewDidUnload
@@ -47,6 +51,21 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+
+
+
+- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+{
+    //    assert(radio);
+    
+    // account just being create, go to configuration screen
+    [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];
+    
+    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:radio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];    
+}
 
 
 
