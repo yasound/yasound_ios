@@ -547,7 +547,7 @@
         // we're in anonymous session. user wants to log in.
         if (![YasoundSessionManager main].registered)
         {
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:nil];
             return;
         }
         

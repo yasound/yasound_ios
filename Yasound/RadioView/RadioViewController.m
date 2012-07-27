@@ -1366,7 +1366,7 @@ static Song* _gNowPlayingSong = nil;
     {
         if (buttonIndex == 1)
         {
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LOGIN_SCREEN object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:nil];
             return;
         }
     }

@@ -16,6 +16,7 @@
 #import "TimeProfile.h"
 #import "YasoundSessionManager.h"
 #import "BigMessageView.h"
+#import "RootViewController.h"
 
 @implementation RadioSelectionViewController
 
@@ -278,9 +279,10 @@
     [view release];
 }
 
+
 - (void)onLoginRequested:(id)sender
 {
-
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
 }
 
 
