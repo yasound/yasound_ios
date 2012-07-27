@@ -14,6 +14,8 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "TimeProfile.h"
+#import "YasoundSessionManager.h"
+#import "BigMessageView.h"
 
 @implementation RadioSelectionViewController
 
@@ -251,8 +253,35 @@
         [wheelSelector stickToItem:WheelIdFavorites];
     }
     
+    
+    else if ((tabIndex == TabIndexMyRadios) || (tabIndex == TabIndexGifts) || (tabIndex == TabIndexProfil))
+    {
+        // if the user is not connected, display an invitation message
+        if (![YasoundSessionManager main].registered)
+        {
+            [self inviteToLogin];
+        }
+    }
+    
 }
 
+
+- (void)inviteToLogin
+{
+    if (self.tableview != nil)
+        [self.tableview.tableView removeFromSuperview];
+    [self.tableview release];
+    self.tableview = nil;
+
+    BigMessageView* view = [[BigMessageView alloc] initWithFrame:self.listContainer.frame message:@"my message" actionTitle:@"my action" target:self action:@selector(onLoginRequested:)];
+    [self.listContainer addSubview:view];
+    [view release];
+}
+
+- (void)onLoginRequested:(id)sender
+{
+
+}
 
 
 

@@ -9,6 +9,7 @@
 #import "TabBar.h"
 #import "Theme.h"
 #import "RootViewController.h"
+#import "YasoundSessionManager.h"
 
 @implementation TabBar
 
@@ -88,6 +89,8 @@
         
     BOOL callDelegate = NO;
     
+    BOOL isConnected = [YasoundSessionManager main].registered;
+    
     if (btn.tag == TabIndexSelection)
     {
         if ((self.selectedIndex != TabIndexSelection) && (self.selectedIndex != TabIndexFavorites))
@@ -97,7 +100,7 @@
         else
             callDelegate = YES;
     }
-    else if (btn.tag == TabIndexFavorites)
+    else if (isConnected && (btn.tag == TabIndexFavorites))
     {
         if ((self.selectedIndex != TabIndexSelection) && (self.selectedIndex != TabIndexFavorites))
         {
@@ -106,15 +109,15 @@
         else
             callDelegate = YES;
     }
-    else if (btn.tag == TabIndexMyRadios)
+    else if (isConnected && (btn.tag == TabIndexMyRadios))
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIOS object:nil];
     }
-    else if (btn.tag == TabIndexGifts)
+    else if (isConnected && (btn.tag == TabIndexGifts))
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_GIFTS object:nil];
     }
-    else if (btn.tag == TabIndexProfil)
+    else if (isConnected && (btn.tag == TabIndexProfil))
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_PROFIL object:nil];
     }

@@ -10,6 +10,40 @@
 	<string>theme_default</string>
 	<key>stylesheet</key>
 	<dict>
+		<key>BigMessage</key>
+		<dict>
+			<key>message</key>
+			<dict>
+				<key>height</key>
+				<integer>0</integer>
+				<key>width</key>
+				<integer>0</integer>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+				<key>font</key>
+				<dict>
+					<key>weight</key>
+					<string>bold</string>
+					<key>textAlignment</key>
+					<string>center</string>
+					<key>size</key>
+					<integer>24</integer>
+					<key>textColor</key>
+					<string>rgb(113,113,113)</string>
+					<key>backgroundColor</key>
+					<string>clearColor</string>
+				</dict>
+			</dict>
+			<key>button</key>
+			<dict>
+				<key>name</key>
+				<string>bigMessageButtonCenter</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+		</dict>
 		<key>TabBar</key>
 		<dict>
 			<key>label</key>

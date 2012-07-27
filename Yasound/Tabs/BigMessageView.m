@@ -20,7 +20,7 @@
     self.target = target;
     self.action = action;
     
-    self.frame = frame;
+    self.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
     
     // build message label
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"BigMessage.message" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -30,6 +30,7 @@
     [self addSubview:label];
     
     CGSize suggestedSize = [message sizeWithFont:[sheet makeFont] constrainedToSize:CGSizeMake(labelWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+    label.frame = CGRectMake(self.frame.size.width / 2.f - labelWidth / 2.f, 0, labelWidth, suggestedSize.height + 16);
     
     // build action button
     UIButton* button = nil;
@@ -64,8 +65,22 @@
         [self addSubview:buttonRight];        
     }
     
+    CGFloat spacing = 16;
     
-    ICI
+    // contentHeight = message height + spacing + button height
+    CGFloat contentsHeight = label.frame.size.height + spacing + button.frame.size.height;
+    
+    // => y for the label
+    CGFloat labelY = self.frame.size.height / 2.f - contentsHeight / 2.f;
+    
+    // => y for the button
+    CGFloat buttonY = labelY + label.frame.size.height + spacing;
+    
+    // we can set the frames properly now
+    label.frame = CGRectMake(label.frame.origin.x, labelY, label.frame.size.width, label.frame.size.height);
+    button.frame = CGRectMake(button.frame.origin.x, buttonY, button.frame.size.width, button.frame.size.height);
+    buttonLeft.frame = CGRectMake(buttonLeft.frame.origin.x, buttonY, buttonLeft.frame.size.width, buttonLeft.frame.size.height);
+    buttonRight.frame = CGRectMake(buttonRight.frame.origin.x, buttonY, buttonRight.frame.size.width, buttonRight.frame.size.height);
     
     
     
