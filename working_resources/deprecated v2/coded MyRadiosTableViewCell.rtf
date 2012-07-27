@@ -1,0 +1,280 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1138\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red208\green0\blue3;\red16\green16\blue16;\red16\green23\blue227;
+\red33\green165\blue107;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab400
+\pard\tx400\pardeftab400\pardirnatural
+
+\f0\fs18 \cf2 \CocoaLigature0 //\cf3 \
+\cf2 //  MyRadiosTableViewCell.m\cf3 \
+\cf2 //  Yasound\cf3 \
+\cf2 //\cf3 \
+\cf2 //  Created by LOIC BERTHELOT on 24/11/11.\cf3 \
+\cf2 //  Copyright (c) 2011 Yasound. All rights reserved.\cf3 \
+\cf2 //\cf3 \
+\
+\cf4 #import \cf5 "MyRadiosTableViewCell.h"\cf4 \
+#import \cf5 "Theme.h"\cf4 \
+#import \cf5 "YasoundDataProvider.h"\cf4 \
+\cf3 \
+\
+\cf4 @implementation\cf3  MyRadiosTableViewCell\
+\
+\cf4 @synthesize\cf3  delegate;\
+\cf4 @synthesize\cf3  radio;\
+\
+\
+- (\cf4 id\cf3 )initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radio:(Radio*)radio target:(\cf4 id\cf3 )target;\
+\{\
+    \cf4 if\cf3  (\cf4 self\cf3  = [\cf4 super\cf3  initWithFrame:frame reuseIdentifier:cellIdentifier]) \
+    \{\
+        BundleStylesheet* sheet;\
+        \cf4 self\cf3 .delegate = target;\
+        \cf4 self\cf3 .radio = radio;\
+        \cf4 self\cf3 .selectionStyle = UITableViewCellSelectionStyleNone;\
+        \
+          \
+        \cf2 // radio image\cf3 \
+        sheet = [[Theme theme] stylesheetForKey:\cf5 @"MyRadios.image"\cf3  retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+        NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];\
+        \cf4 self\cf3 .image = [[WebImageView alloc] initWithImageAtURL:imageURL];\
+        \cf4 self\cf3 .image.frame = sheet.frame;\
+        [\cf4 self\cf3  addSubview:\cf4 self\cf3 .image];\
+\
+        \cf2 // radio mask\cf3 \
+        sheet = [[Theme theme] stylesheetForKey:\cf5 @"MyRadios.mask"\cf3  retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+        [\cf4 self\cf3  addSubview:[sheet makeImage]];\
+        \
+        \cf2 // title\cf3 \
+        sheet = [[Theme theme] stylesheetForKey:\cf5 @"MyRadios.title"\cf3   retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+        \cf4 self\cf3 .title = [sheet makeLabel];\
+        \cf4 self\cf3 .title.text = radio.name;\
+        [\cf4 self\cf3  addSubview:\cf4 self\cf3 .title];\
+\
+        \cf2 // subscribers icon\cf3 \
+        sheet = [[Theme theme] stylesheetForKey:\cf5 @"MyRadios.subscribersIcon"\cf3  retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+        UIImageView* icon = [sheet makeImage];\
+        [\cf4 self\cf3  addSubview:icon];\
+        \
+        \cf2 // subscribers label\cf3 \
+        sheet = [[Theme theme] stylesheetForKey:\cf5 @"MyRadios.subscribers"\cf3   retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+        \cf4 self\cf3 .subscribers = [sheet makeLabel];\
+        \cf4 self\cf3 .subscribers.text = [NSString stringWithFormat:\cf5 @"%d"\cf3 , [radio.favorites integerValue]];\
+        [\cf4 self\cf3  addSubview:\cf4 self\cf3 .subscribers];\
+        \
+\
+        \cf2 // listeners icon\cf3 \
+        sheet = [[Theme theme] stylesheetForKey:\cf5 @"MyRadios.listenersIcon"\cf3  retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+        [\cf4 self\cf3  addSubview:[sheet makeImage]];\
+\
+        \cf2 // listeners label\cf3 \
+        sheet = [[Theme theme] stylesheetForKey:\cf5 @"MyRadios.listeners"\cf3   retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+        \cf4 self\cf3 .listeners = [sheet makeLabel];\
+        \cf4 self\cf3 .listeners.text = [NSString stringWithFormat:\cf5 @"%d"\cf3 , [radio.nb_current_users integerValue]];\
+        [\cf4 self\cf3  addSubview:\cf4 self\cf3 .listeners];\
+        \
+        \cf2 // metric1 label\cf3 \
+        sheet = [[Theme theme] stylesheetForKey:\cf5 @"MyRadios.metric1.label"\cf3   retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+        \cf4 self\cf3 .metric1 = [sheet makeLabel];\
+        \cf4 self\cf3 .metric1.text = \cf5 @"12345"\cf3 ;\
+        [\cf4 self\cf3  addSubview:\cf4 self\cf3 .metric1];\
+\
+        \cf2 // metric1 sublabel\cf3 \
+        sheet = [[Theme theme] stylesheetForKey:\cf5 @"MyRadios.metric1.sublabel"\cf3   retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+        UILabel* label = [sheet makeLabel];\
+        label.text = \cf4 NSLocalizedString\cf3 (\cf5 @"MyRadios.metric1.sublabel"\cf3 , \cf4 nil\cf3 );\
+        [\cf4 self\cf3  addSubview:label];\
+\
+        \cf2 // metric2 label\cf3 \
+        sheet = [[Theme theme] stylesheetForKey:\cf5 @"MyRadios.metric2.label"\cf3   retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+        \cf4 self\cf3 .metric2 = [sheet makeLabel];\
+        \cf4 self\cf3 .metric2.text = \cf5 @"432"\cf3 ;\
+        [\cf4 self\cf3  addSubview:\cf4 self\cf3 .metric2];\
+        \
+        \cf2 // metric2 sublabel\cf3 \
+        sheet = [[Theme theme] stylesheetForKey:\cf5 @"MyRadios.metric2.sublabel"\cf3   retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+        label = [sheet makeLabel];\
+        label.text = \cf4 NSLocalizedString\cf3 (\cf5 @"MyRadios.metric2.sublabel"\cf3 , \cf4 nil\cf3 );\
+        [\cf4 self\cf3  addSubview:label];\
+\
+        \cf2 // stats button\cf3 \
+        \
+        \
+        \
+        \
+        [\cf4 self\cf3 .radioObjects addObject:objects];\
+        \
+        xOffset += (\cf4 self\cf3 .frame.size.width / \cf4 2.f\cf3 );\
+\
+            \
+  \}\
+  \cf4 return\cf3  \cf4 self\cf3 ;\
+\}\
+\
+\
+\
+\
+\
+\
+- (\cf4 void\cf3 )willMoveToSuperview:(UIView *)newSuperview \
+\{\
+    [\cf4 super\cf3  willMoveToSuperview:newSuperview];\
+    \cf4 if\cf3 (!newSuperview) \
+    \{\
+        \cf4 for\cf3  (NSArray* objects \cf4 in\cf3  \cf4 self\cf3 .radioObjects)\
+        \{\
+            WebImageView* view = [objects objectAtIndex:RADIO_OBJECT_IMAGE];\
+            \cf4 if\cf3  (view)\
+                [view releaseCache];\
+            view = [objects objectAtIndex:RADIO_OBJECT_USER_IMAGE];\
+            \cf4 if\cf3  (view)\
+                [view releaseCache];\
+        \}\
+    \}\
+\}\
+\
+\
+\
+\
+- (\cf4 void\cf3 )updateWithRadios:(NSArray*)radios target:(\cf4 id\cf3 )target action:(\cf4 SEL\cf3 )action\
+\{\
+    NSInteger radioIndex = \cf4 0\cf3 ;\
+    \cf4 for\cf3  (Radio* radio \cf4 in\cf3  radios)\
+    \{\
+        NSMutableArray* objects = [\cf4 self\cf3 .radioObjects objectAtIndex:radioIndex];\
+        \
+        \cf2 // replace radio\cf3 \
+        [objects replaceObjectAtIndex:RADIO_OBJECT_RADIO withObject:radio];\
+        \
+        \cf2 // may not be needed, since "objects" is a reference. Check and go back later...\cf3 \
+        \cf2 //[self.radioObjects replaceObjectAtIndex:radioIndex withObject:objects];\cf3 \
+        \
+        \cf2 // and update infos and images\cf3 \
+        NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];\
+        WebImageView* view = [objects objectAtIndex:RADIO_OBJECT_IMAGE];\
+        [view setUrl:imageURL];\
+\
+        imageURL = [[YasoundDataProvider main] urlForPicture:radio.creator.picture];\
+        view = [objects objectAtIndex:RADIO_OBJECT_USER_IMAGE];\
+        [view setUrl:imageURL];\
+\
+        UILabel* label = [objects objectAtIndex:RADIO_OBJECT_TITLE];\
+        label.text = radio.name;\
+\
+        label = [objects objectAtIndex:RADIO_OBJECT_SUBSCRIBERS];\
+        label.text = [NSString stringWithFormat:\cf5 @"%d"\cf3 , [radio.favorites integerValue]];\
+        \
+        label = [objects objectAtIndex:RADIO_OBJECT_LISTENERS];\
+        label.text = [NSString stringWithFormat:\cf5 @"%d"\cf3 , [radio.nb_current_users integerValue]];\
+        \
+        radioIndex++;\
+    \}\
+\}\
+\
+\
+\
+\
+\
+\
+- (\cf4 void\cf3 )dealloc\
+\{\
+  [\cf4 super\cf3  dealloc];\
+\}\
+\
+\
+\
+- (\cf4 void\cf3 )onInteractivePressedDown:(NSNumber*)indexNb\
+\{\
+    \cf2 // set the "highlighted" image for the radio mask\cf3 \
+    NSInteger radioIndex = [indexNb integerValue];\
+    NSArray* objects = [\cf4 self\cf3 .radioObjects objectAtIndex:radioIndex];\
+    UIImageView* radioMask = [objects objectAtIndex:RADIO_OBJECT_MASK];\
+    \
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:\cf5 @"Radios.maskHighlighted"\cf3  retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+    [radioMask setImage:[sheet image]];\
+\}\
+\
+- (\cf4 void\cf3 )onInteractivePressedUp:(NSNumber*)indexNb\
+\{\
+    \cf2 // set back the "normal" image for the radio mask\cf3 \
+    NSInteger radioIndex = [indexNb integerValue];\
+    NSArray* objects = [\cf4 self\cf3 .radioObjects objectAtIndex:radioIndex];\
+    UIImageView* radioMask = [objects objectAtIndex:RADIO_OBJECT_MASK];\
+    \
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:\cf5 @"Radios.mask"\cf3  retainStylesheet:\cf4 YES\cf3  overwriteStylesheet:\cf4 NO\cf3  error:\cf4 nil\cf3 ];\
+    [radioMask setImage:[sheet image]];\
+    \
+    Radio* radio = [objects objectAtIndex:RADIO_OBJECT_RADIO];\
+\
+    \cf2 // and call external action to delegate the radio selection\cf3 \
+    [\cf4 self\cf3 .target performSelector:\cf4 self\cf3 .action withObject:radio];\
+\}\
+\
+\
+\
+\
+\
+\cf2 //- (void)onUpdate:(NSTimer*)timer\cf3 \
+\cf2 //\{\cf3 \
+\cf2 //    [[YasoundDataCache main] requestCurrentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];\cf3 \
+\cf2 //\}\cf3 \
+\cf2 //- (void)receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info\cf3 \
+\cf2 //\{\cf3 \
+\cf2 //    if (!song)\cf3 \
+\cf2 //        return;\cf3 \
+\cf2 //    \cf3 \
+\cf2 //    self.radioSubtitle1.text = song.artist;\cf3 \
+\cf2 //    self.radioSubtitle2.text = song.name;\cf3 \
+\cf2 //\}\cf3 \
+\
+\
+\
+\cf2 //- (void)setSelected:(BOOL)selected animated:(BOOL)animated\cf3 \
+\cf2 //\{\cf3 \
+\cf2 //  [super setSelected:selected animated:animated];\cf3 \
+\cf2 //\cf3 \
+\cf2 //  if (selected)\cf3 \
+\cf2 //  \{\cf3 \
+\cf2 ////    self.cellBackground.image = _bkgSelected;\cf3 \
+\cf2 ////    self.radioAvatarMask.image = _maskSelected;\cf3 \
+\cf2 //   \cf3 \
+\cf2 ////    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionTitle" error:nil];\cf3 \
+\cf2 ////    [sheet applyToLabel:self.radioTitle class:@"selected"];\cf3 \
+\cf2 ////\cf3 \
+\cf2 ////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle1" error:nil];\cf3 \
+\cf2 ////    [sheet applyToLabel:self.radioSubtitle1 class:@"selected"];\cf3 \
+\cf2 ////\cf3 \
+\cf2 ////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle2" error:nil];\cf3 \
+\cf2 ////    [sheet applyToLabel:self.radioSubtitle2 class:@"selected"];\cf3 \
+\cf2 ////\cf3 \
+\cf2 ////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionLikes" error:nil];\cf3 \
+\cf2 ////    [sheet applyToLabel:self.radioLikes class:@"selected"];\cf3 \
+\cf2 ////\cf3 \
+\cf2 ////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionListeners" error:nil];\cf3 \
+\cf2 ////    [sheet applyToLabel:self.radioListeners class:@"selected"];\cf3 \
+\cf2 //  \}\cf3 \
+\cf2 //  else\cf3 \
+\cf2 //  \{\cf3 \
+\cf2 ////    self.cellBackground.image = _bkgBackup;\cf3 \
+\cf2 ////    self.radioAvatarMask.image = _maskBackup;\cf3 \
+\cf2 //\cf3 \
+\cf2 ////    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionTitle" error:nil];\cf3 \
+\cf2 ////    [sheet applyToLabel:self.radioTitle class:nil];\cf3 \
+\cf2 ////    \cf3 \
+\cf2 ////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle1" error:nil];\cf3 \
+\cf2 ////    [sheet applyToLabel:self.radioSubtitle1 class:nil];\cf3 \
+\cf2 ////    \cf3 \
+\cf2 ////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle2" error:nil];\cf3 \
+\cf2 ////    [sheet applyToLabel:self.radioSubtitle2 class:nil];\cf3 \
+\cf2 ////    \cf3 \
+\cf2 ////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionLikes" error:nil];\cf3 \
+\cf2 ////    [sheet applyToLabel:self.radioLikes class:nil];\cf3 \
+\cf2 ////    \cf3 \
+\cf2 ////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionListeners" error:nil];\cf3 \
+\cf2 ////    [sheet applyToLabel:self.radioListeners class:nil];\cf3 \
+\cf2 //  \}\cf3 \
+\cf2 //\}\cf3 \
+\
+\cf4 @end\cf3 \
+}
