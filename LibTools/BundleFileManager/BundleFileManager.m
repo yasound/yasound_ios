@@ -402,6 +402,7 @@ static BundleFileManager* _main = nil;
         {
             DLog(@"stylesheetForKey error : could not find sub '%@', using key '%@'", sub, key);
             assert(0);
+            return nil;
         }
     }
     

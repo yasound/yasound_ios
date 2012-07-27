@@ -33,13 +33,77 @@
 					<key>textColor</key>
 					<string>rgb(113,113,113)</string>
 					<key>backgroundColor</key>
-					<string>clearColor</string>
+					<string>clear</string>
 				</dict>
+			</dict>
+			<key>buttonLabel</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>weight</key>
+					<string>bold</string>
+					<key>textAlignment</key>
+					<string>center</string>
+					<key>size</key>
+					<integer>12</integer>
+					<key>textColor</key>
+					<string>rgb(113,113,113)</string>
+					<key>backgroundColor</key>
+					<string>clear</string>
+				</dict>
+				<key>font.selected</key>
+				<dict>
+					<key>weight</key>
+					<string>bold</string>
+					<key>textAlignment</key>
+					<string>center</string>
+					<key>size</key>
+					<integer>12</integer>
+					<key>textColor</key>
+					<string>white</string>
+					<key>backgroundColor</key>
+					<string>clear</string>
+				</dict>
+			</dict>
+			<key>buttonLeft</key>
+			<dict>
+				<key>name</key>
+				<string>bigMessageButtonLeft</string>
+				<key>type</key>
+				<string>png</string>
 			</dict>
 			<key>button</key>
 			<dict>
 				<key>name</key>
 				<string>bigMessageButtonCenter</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>buttonSelected</key>
+			<dict>
+				<key>name</key>
+				<string>bigMessageButtonCenterSelected</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>buttonLeftSelected</key>
+			<dict>
+				<key>name</key>
+				<string>bigMessageButtonLeftSelected</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>buttonRight</key>
+			<dict>
+				<key>name</key>
+				<string>bigMessageButtonRight</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>buttonRightSelected</key>
+			<dict>
+				<key>name</key>
+				<string>bigMessageButtonRightSelected</string>
 				<key>type</key>
 				<string>png</string>
 			</dict>
