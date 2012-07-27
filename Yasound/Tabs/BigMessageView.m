@@ -36,6 +36,8 @@
         UILabel* label = [sheet makeLabel];
         CGFloat labelWidth = self.frame.size.width -20;
         label.text = message;
+        label.numberOfLines = 0;
+        label.lineBreakMode = UILineBreakModeWordWrap;
         [self addSubview:label];
         
         CGSize suggestedSize = [message sizeWithFont:[sheet makeFont] constrainedToSize:CGSizeMake(labelWidth, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];

@@ -273,7 +273,7 @@
     [self.tableview release];
     self.tableview = nil;
 
-    BigMessageView* view = [[BigMessageView alloc] initWithFrame:self.listContainer.frame message:@"my message" actionTitle:@"my action" target:self action:@selector(onLoginRequested:)];
+    BigMessageView* view = [[BigMessageView alloc] initWithFrame:self.listContainer.frame message:NSLocalizedString(@"BigMessage.inviteLogin", nil) actionTitle:NSLocalizedString(@"BigMessage.inviteLogin.button", nil) target:self action:@selector(onLoginRequested:)];
     [self.listContainer addSubview:view];
     [view release];
 }

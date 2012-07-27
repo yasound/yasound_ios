@@ -579,3 +579,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "TabBar.gifts" = "Cadeaux";
 "TabBar.profil" = "Profil";
 
+"BigMessage.inviteLogin" = "Vous devez être connecté pour accéder à ces fonctions.";
+"BigMessage.inviteLogin.button" = "se connecter";
+
