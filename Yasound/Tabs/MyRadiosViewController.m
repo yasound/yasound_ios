@@ -18,20 +18,15 @@
 
 @implementation MyRadiosViewController
 
-<<<<<<< HEAD
 @synthesize radios;
-=======
 @synthesize tableview;
->>>>>>> 31c5e45820da1132c02cbc50976b2893bf8ec065
 @synthesize tabBar;
-@synthesize radios;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(radiosReceived:info:)];
     }
     return self;
 }
@@ -39,7 +34,7 @@
 - (void)radiosReceived:(Radio*)radio info:(NSDictionary*)info
 {
     self.radios = [NSArray arrayWithObject:radio];
-    [self.tab
+    [self.tableview reloadData];
 }
 
 
@@ -49,8 +44,8 @@
     [self.tabBar setTabSelected:TabIndexMyRadios];
     
     [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(radiosReceived:info:)];
-
 }
+
 
 - (void)viewDidUnload
 {
@@ -68,21 +63,6 @@
 
 
 
-- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
-{
-    //    assert(radio);
-    
-    // account just being create, go to configuration screen
-    [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];
-    
-    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:radio];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];    
-}
-
-
-
-
 
 
 #pragma mark - Table view data source
@@ -94,44 +74,41 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.radios == nil)
         return 0;
+    
+    return self.radios.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 156.f;
+    return 167.f;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* cellIdentifier = @"RadioListTableViewCell";
+    static NSString* cellIdentifier = @"MyRadioTableViewCell";
     return nil;
     
-//    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    
-//    NSInteger radioIndex = indexPath.row * 2;
-//    
-//    Radio* radio1 = [self.radios objectAtIndex:radioIndex];
-//    Radio* radio2 = nil;
-//    if (radioIndex+1 < self.radios.count)
-//        radio2 = [self.radios objectAtIndex:radioIndex+1];
-//    
-//    NSArray* radiosForRow = [NSArray arrayWithObjects:radio1, radio2, nil];
-//    
-//    if (cell == nil)
-//    {    
-//        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier radios:radiosForRow target:self action:@selector(onRadioClicked:)];
-//    }
-//    else
-//    {
-//        [cell updateWithRadios:radiosForRow target:self action:@selector(onRadioClicked:)];
-//    }
-//    
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    
-//    return cell;
+    MyRadiosTableViewCell* cell = (MyRadioTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+
+    Radio* radio = [self.radios objectAtIndex:indexPath.row];
+    
+    if (cell == nil)
+    {
+        cell = [[MyRadiosTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier radio:radio target:self action:@selector(onRadioClicked:)];
+    }
+    else
+    {
+        [cell updateWithRadios:radiosForRow target:self action:@selector(onRadioClicked:)];
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
 }
+
 
 /*
  // Override to support conditional editing of the table view.

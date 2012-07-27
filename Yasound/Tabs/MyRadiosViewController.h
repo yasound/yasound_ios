@@ -13,12 +13,8 @@
 
 @interface MyRadiosViewController : UIViewController<TopBarDelegate, TabBarDelegate>
 
-<<<<<<< HEAD
 @property (nonatomic, retain) NSArray* radios;
-=======
 @property (nonatomic, retain) IBOutlet UITableView* tableview;
->>>>>>> 31c5e45820da1132c02cbc50976b2893bf8ec065
 @property (nonatomic, retain) IBOutlet TabBar* tabBar;
-@property (nonatomic, retain) NSArray* radios;
 
 @end
