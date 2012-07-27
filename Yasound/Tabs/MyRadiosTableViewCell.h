@@ -15,18 +15,28 @@
 - (void)myRadioRequestedSettings:(Radio*)radio;
 @end
 
+
+
 @interface MyRadiosTableViewCell : UITableViewCell
 
 @property (nonatomic, retain) id<MyRadiosTableViewCellDelegate> delegate;
 @property (nonatomic, retain) Radio* radio;
-@property (nonatomic, retain) WebImageView* image;
-@property (nonatomic, retain) UILabel* title;
-@property (nonatomic, retain) UILabel* subscribers;
-@property (nonatomic, retain) UILabel* listeners;
-@property (nonatomic, retain) UILabel* metric1;
-@property (nonatomic, retain) UILabel* metric2;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radio:(Radio*)radio target:(id)target;
+@property (nonatomic, retain) IBOutlet WebImageView* image;
+@property (nonatomic, retain) IBOutlet UILabel* title;
+@property (nonatomic, retain) IBOutlet UILabel* subscribers;
+@property (nonatomic, retain) IBOutlet UILabel* listeners;
+@property (nonatomic, retain) IBOutlet UILabel* metric1;
+@property (nonatomic, retain) IBOutlet UILabel* metric2;
+@property (nonatomic, retain) IBOutlet UILabel* metric1sub;
+@property (nonatomic, retain) IBOutlet UILabel* metric2sub;
+
+
++ (NSString *)reuseIdentifier;
+- (id)initWithOwner:(id)owner target:(id)target radio:(Radio*)radio;
 - (void)updateWithRadio:(Radio*)radio;
+
+- (IBAction)onStatsClicked:(id)sender;
+- (IBAction)onSettingsClicked:(id)sender;
 
 @end

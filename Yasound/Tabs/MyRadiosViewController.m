@@ -11,6 +11,7 @@
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "YasoundDataProvider.h"
+#import "MyRadiosTableViewCell.h"
 
 @interface MyRadiosViewController ()
 
@@ -88,23 +89,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* cellIdentifier = @"MyRadioTableViewCell";
-    return nil;
-    
-    MyRadiosTableViewCell* cell = (MyRadioTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-
     Radio* radio = [self.radios objectAtIndex:indexPath.row];
     
-    if (cell == nil)
+    MyRadiosTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:[MyRadiosTableViewCell reuseIdentifier]];
+    if (cell == nil) 
     {
-        cell = [[MyRadiosTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier radio:radio target:self action:@selector(onRadioClicked:)];
+        cell = [[MyRadiosTableViewCell alloc] initWithOwner:self target:self radio:radio];
     }
     else
     {
-        [cell updateWithRadios:radiosForRow target:self action:@selector(onRadioClicked:)];
+        [cell updateWithRadio:radio];
     }
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
