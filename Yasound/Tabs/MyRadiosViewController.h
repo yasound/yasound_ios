@@ -11,7 +11,9 @@
 #import "TopBar.h"
 
 
-@interface MyRadiosViewController : UIViewController<TopBarDelegate, TabBarDelegate>
+@interface MyRadiosViewController : UIViewController<TopBarDelegate, TabBarDelegate, UITableViewDelegate>
+
+@property (nonatomic, retain) UINib* cellLoader;
 
 @property (nonatomic, retain) NSArray* radios;
 @property (nonatomic, retain) IBOutlet UITableView* tableview;

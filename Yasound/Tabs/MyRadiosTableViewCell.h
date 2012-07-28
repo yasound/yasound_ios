@@ -32,9 +32,9 @@
 @property (nonatomic, retain) IBOutlet UILabel* metric2sub;
 
 
-+ (NSString *)reuseIdentifier;
-- (id)initWithOwner:(id)owner target:(id)target radio:(Radio*)radio;
-- (void)updateWithRadio:(Radio*)radio;
+//+ (NSString *)reuseIdentifier;
+//- (id)initWithOwner:(id)owner target:(id)target radio:(Radio*)radio;
+- (void)updateWithRadio:(Radio*)radio target:(id)target;
 
 - (IBAction)onStatsClicked:(id)sender;
 - (IBAction)onSettingsClicked:(id)sender;

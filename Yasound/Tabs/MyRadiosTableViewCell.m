@@ -26,48 +26,71 @@
 
 
 
-+ (UINib*)nib
-{
-    // singleton implementation to get a UINib object
-    static dispatch_once_t pred = 0;
-    __strong static UINib* _sharedNibObject = nil;
-    dispatch_once(&pred, ^{
-        _sharedNibObject = [UINib nibWithNibName:NSStringFromClass([self class]) bundle:nil];
-    });
-    return _sharedNibObject;
-}
+//+ (UINib*)nib
+//{
+////    // singleton implementation to get a UINib object
+////    static dispatch_once_t pred = 0;
+////    __strong static UINib* _sharedNibObject = nil;
+////    dispatch_once(&pred, ^{
+////        _sharedNibObject = [UINib nibWithNibName:NSStringFromClass([self class]) bundle:nil];
+////    });
+////    return _sharedNibObject;
+//    
+//    static UINib *nib;
+//    static dispatch_once_t once;
+//    dispatch_once(&once, ^{
+//        nib = [UINib nibWithNibName:@"MyRadiosTableViewCell" bundle:nil];
+//    });
+//    return nib;
+//}
+//
+//- (NSString *)reuseIdentifier
+//{
+//    return [[self class] reuseIdentifier];
+//}
+//
+//+ (NSString *)reuseIdentifier
+//{
+//    // return any identifier you like, in this case the class name
+////    return NSStringFromClass([self class]);
+//    return (NSString *)@"MyRadiosTableViewCell";
+//}
 
-- (NSString *)reuseIdentifier
-{
-    return [[self class] reuseIdentifier];
-}
+//- (id)initWithOwner:(id)owner target:(id)target radio:(Radio*)radio;
+//{
+//    UINib* myNib = [[self class] nib];
+//    
+//    
+//    NSArray* myArray = [myNib instantiateWithOwner:owner options:nil];
+//    NSLog(@"%@", myArray);
+//    id object =  [myArray objectAtIndex:0];
+//    
+//
+//    [self updateWithRadio:radio];
+//    
+//    return object;
+//}
 
-+ (NSString *)reuseIdentifier
-{
-    // return any identifier you like, in this case the class name
-    return NSStringFromClass([self class]);
-}
 
-- (id)initWithOwner:(id)owner target:(id)target radio:(Radio*)radio;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    self =  [[[[self class] nib] instantiateWithOwner:owner options:nil] objectAtIndex:0];
-    
-    self.delegate = target;
-    
-    self.metric1sub.text = NSLocalizedString(@"MyRadios.metric1.sublabel", nil);
-    self.metric2sub.text = NSLocalizedString(@"MyRadios.metric2.sublabel", nil);
-
-    [self updateWithRadio:radio];
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
+    {
+        self.metric1sub.text = NSLocalizedString(@"MyRadios.metric1.sublabel", nil);
+        self.metric2sub.text = NSLocalizedString(@"MyRadios.metric2.sublabel", nil);
+        
+    }
     
     return self;
 }
 
 
 
-
-- (void)updateWithRadios:(NSArray*)radios target:(id)target action:(SEL)action
+- (void)updateWithRadio:(Radio*)radio target:(id)target;
 {
     self.radio = radio;
+    self.delegate = target;
+
     
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
     [self.image setUrl:imageURL];

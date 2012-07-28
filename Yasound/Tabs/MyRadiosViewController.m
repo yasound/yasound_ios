@@ -19,6 +19,9 @@
 
 @implementation MyRadiosViewController
 
+static NSString* CellIdentifier = @"MyRadiosTableViewCell";
+
+@synthesize cellLoader;
 @synthesize radios;
 @synthesize tableview;
 @synthesize tabBar;
@@ -28,25 +31,39 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+        self.cellLoader = [UINib nibWithNibName:CellIdentifier bundle:[NSBundle mainBundle]];
     }
     return self;
 }
 
-- (void)radiosReceived:(Radio*)radio info:(NSDictionary*)info
-{
-    self.radios = [NSArray arrayWithObject:radio];
-    [self.tableview reloadData];
-}
 
+
+- (void)dealloc
+{
+    [self.cellLoader release];
+    [super dealloc];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.tabBar setTabSelected:TabIndexMyRadios];
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(radiosReceived:info:)];
 }
 
+- (void)radiosReceived:(Radio*)radio info:(NSDictionary*)info
+{
+    if (radio == nil)
+        return;
+    
+    self.radios = [NSArray arrayWithObject:radio];
+    [self.tableview reloadData];
+}
 
 - (void)viewDidUnload
 {
@@ -91,15 +108,14 @@
 {
     Radio* radio = [self.radios objectAtIndex:indexPath.row];
     
-    MyRadiosTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:[MyRadiosTableViewCell reuseIdentifier]];
+    MyRadiosTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) 
     {
-        cell = [[MyRadiosTableViewCell alloc] initWithOwner:self target:self radio:radio];
+        NSArray *topLevelItems = [self.cellLoader instantiateWithOwner:self options:nil];
+        cell = [topLevelItems objectAtIndex:0];
     }
-    else
-    {
-        [cell updateWithRadio:radio];
-    }
+        
+    [cell updateWithRadio:radio target:self];
     
     return cell;
 }
