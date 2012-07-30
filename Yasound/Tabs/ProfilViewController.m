@@ -11,6 +11,13 @@
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
 
+
+#define SECTIONS_COUNT 4
+#define SECTION_PROFIL 0
+#define SECTION_MYRADIOS 1
+#define SECTION_FAVORITES 2
+#define SECTION_FRIENDS 3
+
 @interface ProfilViewController ()
 
 @end
@@ -59,48 +66,44 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return SECTIONS_COUNT;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 156.f;
+    if (indexPath.section == SECTION_PROFIL)
+        return 91.f;
+    return 104.f;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* cellIdentifier = @"RadioListTableViewCell";
+    if (indexPath.section == SECTION_PROFIL)
+        return self.cellProfil;
+    
+    static NSString* cellIdentifier = @"ProfilTableViewCell";
     return nil;
     
-    //    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    //    
-    //    NSInteger radioIndex = indexPath.row * 2;
-    //    
-    //    Radio* radio1 = [self.radios objectAtIndex:radioIndex];
-    //    Radio* radio2 = nil;
-    //    if (radioIndex+1 < self.radios.count)
-    //        radio2 = [self.radios objectAtIndex:radioIndex+1];
-    //    
-    //    NSArray* radiosForRow = [NSArray arrayWithObjects:radio1, radio2, nil];
-    //    
-    //    if (cell == nil)
-    //    {    
-    //        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier radios:radiosForRow target:self action:@selector(onRadioClicked:)];
-    //    }
-    //    else
-    //    {
-    //        [cell updateWithRadios:radiosForRow target:self action:@selector(onRadioClicked:)];
-    //    }
-    //    
-    //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //    
-    //    return cell;
+    ProfilTableViewCell* cell = (ProfilTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil)
+    {    
+        cell = [[ProfilTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier items:items target:self action:@selector(onItemClicked:)];
+    }
+    else
+    {
+        [cell updateWithItems:items];
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
 }
 
 /*
@@ -147,6 +150,19 @@
 
 
 
+
+
+
+- (IBAction)onButtonGrayClicked:(id)sender
+{
+
+}
+
+
+- (IBAction)onButtonBlueClicked:(id)sender
+{
+
+}
 
 
 
