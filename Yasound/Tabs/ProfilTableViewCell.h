@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "WebImageView.h"
 #import "YasoundDataProvider.h"
+#import "OrientedTableView.h"
 
 
 @interface ProfilTableViewCell : UITableViewCell
 
 
 @property (nonatomic, retain) NSArray* items;
+@property (nonatomic, retain) OrientedTableView* tableview;
+
 @property (nonatomic, retain) id target;
 @property (nonatomic) SEL action;
 

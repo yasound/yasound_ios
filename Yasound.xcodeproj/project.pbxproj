@@ -5974,7 +5974,6 @@
 		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
 		BC6314D014B4665200549EF6 /* RegExp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExp.h; sourceTree = "<group>"; };
 		BC6314D114B4665200549EF6 /* RegExp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExp.m; sourceTree = "<group>"; };
-		BC685ED115C5431300A53BCA /* tmp */ = {isa = PBXFileReference; lastKnownFileType = text; name = tmp; path = ../../../tmp/tmp; sourceTree = "<group>"; };
 		BC68606215C692CC00A53BCA /* profilBarBkg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profilBarBkg.png; sourceTree = "<group>"; };
 		BC68606315C692CC00A53BCA /* profilBarBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profilBarBkg@2x.png"; sourceTree = "<group>"; };
 		BC68606415C692CC00A53BCA /* profilBarMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profilBarMask.png; sourceTree = "<group>"; };
@@ -8560,7 +8559,6 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
-				BC685ED115C5431300A53BCA /* tmp */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,

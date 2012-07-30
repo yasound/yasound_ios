@@ -10,7 +10,7 @@
 #import "TopBar.h"
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
-
+#import "ProfilTableViewCell.h"
 
 #define SECTIONS_COUNT 4
 #define SECTION_PROFIL 0
@@ -23,6 +23,16 @@
 @end
 
 @implementation ProfilViewController
+
+@synthesize cellProfil;
+
+@synthesize userImage;
+@synthesize name;
+@synthesize bio;
+@synthesize hd;
+
+@synthesize buttonGrayLabel;
+@synthesize buttonBlueLabel;
 
 @synthesize tabBar;
 
@@ -88,7 +98,8 @@
         return self.cellProfil;
     
     static NSString* cellIdentifier = @"ProfilTableViewCell";
-    return nil;
+    
+    NSArray* items = [NSArray array];
     
     ProfilTableViewCell* cell = (ProfilTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     

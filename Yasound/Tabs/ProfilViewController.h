@@ -21,6 +21,9 @@
 @property (nonatomic, retain) IBOutlet UILabel* bio;
 @property (nonatomic, retain) IBOutlet UIImageView* hd;
 
+@property (nonatomic, retain) IBOutlet UILabel* buttonGrayLabel;
+@property (nonatomic, retain) IBOutlet UILabel* buttonBlueLabel;
+
 @property (nonatomic, retain) IBOutlet TabBar* tabBar;
 
 - (IBAction)onButtonGrayClicked:(id)sender;
