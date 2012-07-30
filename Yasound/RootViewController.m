@@ -189,9 +189,9 @@
         {
             [self automaticLoginProcess];
         }
-        
-        // get the app menu from the server, before you can proceed
-        [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+        else
+            // get the app menu from the server, before you can proceed
+            [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
         
         // didReceivedMenuDescription will proceed to the app entry
     }
