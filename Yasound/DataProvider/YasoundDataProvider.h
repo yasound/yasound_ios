@@ -343,4 +343,12 @@ taskStatus stringToStatus(NSString* str);
 //   }
 - (void)citySuggestionsWithCityName:(NSString*)city target:(id)target action:(SEL)selector;
 
+
+
+//
+// Server API v2
+//
+
+- (void)leaderboardForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
+
 @end

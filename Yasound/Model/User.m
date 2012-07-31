@@ -19,6 +19,7 @@
 @synthesize picture;
 @synthesize current_radio;
 @synthesize own_radio;
+@synthesize own_radios;
 
 @synthesize facebook_username;
 @synthesize facebook_uid;
@@ -39,6 +40,24 @@
 {
   NSString* desc = [NSString stringWithFormat:@"id: '%@' username: '%@', name: '%@'", self.id, self.username, self.name];
   return desc;
+}
+
+- (void)loadPropertiesFromDictionary:(NSDictionary*)dict
+{
+    [super loadPropertiesFromDictionary:dict];
+    
+    NSArray* radios_desc = [dict valueForKey:@"own_radios"];
+    if (!radios_desc)
+        return;
+    
+    NSMutableArray* radios = [NSMutableArray array];
+    for (NSDictionary* desc in radios_desc) 
+    {
+        Radio* r = [[Radio alloc] init];
+        [r loadPropertiesFromDictionary:desc];
+        [radios addObject:r];
+    }
+    self.own_radios = radios;
 }
 
 @end
@@ -77,3 +96,6 @@ UserMood stringToUsermood(NSString* str)
     
     return eMoodInvalid;
 }
+
+
+

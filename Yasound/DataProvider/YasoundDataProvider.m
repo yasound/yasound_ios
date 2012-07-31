@@ -365,8 +365,8 @@ static YasoundDataProvider* _main = nil;
   {
     [target performSelector:selector withObject:_radio withObject:finalInfo];
   }
-
 }
+
 
 
 - (void)reloadUserRadio
@@ -2030,6 +2030,23 @@ static YasoundDataProvider* _main = nil;
     [params addObject:@"format=json"];
     [params addObject:[NSString stringWithFormat:@"q=%@", city]];
     conf.params = params;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
+
+
+
+- (void)leaderboardForRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v2/radio/%@/leaderboard", radio.uuid];
+    conf.urlIsAbsolute = NO;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     [req startAsynchronous];
