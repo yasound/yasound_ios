@@ -11,6 +11,7 @@
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "ProfilTableViewCell.h"
+#import "YasoundDataProvider.h"
 
 #define SECTIONS_COUNT 4
 #define SECTION_PROFIL 0
@@ -26,6 +27,7 @@
 
 @synthesize cellProfil;
 
+@synthesize user;
 @synthesize userImage;
 @synthesize name;
 @synthesize bio;
@@ -41,7 +43,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        // Custom initialization
+        self.user = [YasoundDataProvider main].user;
     }
     return self;
 }
@@ -50,6 +52,10 @@
 {
     [super viewDidLoad];
     [self.tabBar setTabSelected:TabIndexProfil];
+    
+    self.name.text = self.user.name;
+    NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
+    [self.userImage setUrl:url];
 }
 
 - (void)viewDidUnload

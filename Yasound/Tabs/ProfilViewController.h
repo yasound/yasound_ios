@@ -10,11 +10,13 @@
 #import "TabBar.h"
 #import "TopBar.h"
 #import "WebImageView.h"
-
+#import "User.h"
 
 @interface ProfilViewController : UIViewController<TopBarDelegate, TabBarDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableViewCell* cellProfil;
+
+@property (nonatomic, retain) User* user;
 
 @property (nonatomic, retain) IBOutlet WebImageView* userImage;
 @property (nonatomic, retain) IBOutlet UILabel* name;
