@@ -12,6 +12,8 @@
 	<dict>
 		<key>Profil</key>
 		<dict>
+			<key>row</key>
+			<string></string>
 			<key>section</key>
 			<dict>
 				<key>name</key>
@@ -22,25 +24,33 @@
 			<key>sectionTitle</key>
 			<dict>
 				<key>height</key>
-				<integer>0</integer>
+				<integer>21</integer>
 				<key>width</key>
-				<integer>0</integer>
+				<integer>300</integer>
 				<key>x</key>
-				<integer>0</integer>
+				<integer>10</integer>
 				<key>y</key>
-				<integer>0</integer>
+				<integer>6</integer>
 				<key>font</key>
 				<dict>
 					<key>weight</key>
 					<string>bold</string>
 					<key>textAlignment</key>
-					<string>center</string>
+					<string>left</string>
 					<key>size</key>
-					<integer>24</integer>
+					<integer>19</integer>
 					<key>textColor</key>
-					<string>rgb(113,113,113)</string>
+					<string>white</string>
 					<key>backgroundColor</key>
 					<string>clear</string>
+					<key>shadowOffset</key>
+					<string>0, -1</string>
+					<key>shadowRadius</key>
+					<real>0.5</real>
+					<key>shadowColor</key>
+					<string>black</string>
+					<key>shadowOpacity</key>
+					<real>0.75</real>
 				</dict>
 			</dict>
 		</dict>
