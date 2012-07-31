@@ -582,3 +582,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "BigMessage.inviteLogin" = "Vous devez être connecté pour accéder à ces fonctions.";
 "BigMessage.inviteLogin.button" = "se connecter";
 
+"Profil.follow" = "Suivi";
+"Profil.message" = "Message";
+"Profil.section.myRadios" = "Mes radios";
+"Profil.section.favorites" = "Favoris";
+"Profil.section.friends" = "Mes amis";
+

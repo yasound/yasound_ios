@@ -12,6 +12,7 @@
 #import "AudioStreamManager.h"
 #import "ProfilTableViewCell.h"
 #import "YasoundDataProvider.h"
+#import "Theme.h"
 
 #define SECTIONS_COUNT 4
 #define SECTION_PROFIL 0
@@ -56,6 +57,9 @@
     self.name.text = self.user.name;
     NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     [self.userImage setUrl:url];
+    
+    self.buttonGrayLabel.text = NSLocalizedString(@"Profil.follow", nil);
+    self.buttonBlueLabel.text = NSLocalizedString(@"Profil.message", nil);
 }
 
 - (void)viewDidUnload
@@ -89,6 +93,38 @@
 {
     return 1;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == SECTION_PROFIL)
+        return 0;
+    
+    return 33;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == SECTION_PROFIL)
+        return nil;
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Profil.section" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* view = [sheet makeImage];
+    
+    sheet = [[Theme theme] stylesheetForKey:@"Menu.sectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    [view addSubview:label];
+
+
+    if (section == SECTION_MYRADIOS)
+        label.text = NSLocalizedString(@"Profil.section.myRadios", nil);
+    else if (section == SECTION_FAVORITES)
+        label.text = NSLocalizedString(@"Profil.section.favorites", nil);
+    else if (section == SECTION_FRIENDS)
+        label.text = NSLocalizedString(@"Profil.section.friends", nil);
+
+    return view;
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -592,3 +592,12 @@
 "BigMessage.inviteLogin" = "You must be loggued in to access those functions.";
 "BigMessage.inviteLogin.button" = "log in";
 
+"Profil.follow" = "Follow";
+"Profil.message" = "Message";
+"Profil.section.myRadios" = "My radios";
+"Profil.section.favorites" = "Favorites";
+"Profil.section.friends" = "My friends";
+
+
+
+
