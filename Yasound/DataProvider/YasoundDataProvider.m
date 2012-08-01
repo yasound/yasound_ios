@@ -888,6 +888,18 @@ static YasoundDataProvider* _main = nil;
     [_communicator getObjectsWithClass:[User class] withURL:@"/api/v1/friend" absolute:NO notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
+- (void)friendsForUser:(User*)user withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/user/%@/friends", user.username];
+    conf.urlIsAbsolute = NO;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
 
 //
 // radios lists
