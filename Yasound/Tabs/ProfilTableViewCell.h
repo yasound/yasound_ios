@@ -9,17 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "WebImageView.h"
 #import "YasoundDataProvider.h"
-#import "OrientedTableView.h"
 
 
 @interface ProfilTableViewCell : UITableViewCell
 
 
 @property (nonatomic, retain) NSArray* items;
-@property (nonatomic, retain) OrientedTableView* tableview;
+@property (nonatomic, retain) UIScrollView* scrollview;
+
 
 @property (nonatomic, retain) id target;
 @property (nonatomic) SEL action;
+
+@property (nonatomic) BOOL displayRadios;
+@property (nonatomic) BOOL displayUsers;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier items:(NSArray*)items target:(id)target action:(SEL)action;
 - (void)updateWithItems:(NSArray*)items;

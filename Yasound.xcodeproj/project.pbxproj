@@ -2012,6 +2012,22 @@
 		BC828AD914B49E9500763558 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC828ADA14B49E9500763558 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC828ADB14B49E9500763558 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
+		BC91A73815C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
+		BC91A73915C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
+		BC91A73A15C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
+		BC91A73B15C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
+		BC91A73C15C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
+		BC91A73D15C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
+		BC91A73E15C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
+		BC91A73F15C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
+		BC91A74015C9707F00B1200E /* ProfilCellRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */; };
+		BC91A74115C9707F00B1200E /* ProfilCellRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */; };
+		BC91A74215C9707F00B1200E /* ProfilCellRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */; };
+		BC91A74315C9707F00B1200E /* ProfilCellRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */; };
+		BC91A74415C9707F00B1200E /* ProfilCellRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */; };
+		BC91A74515C9707F00B1200E /* ProfilCellRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */; };
+		BC91A74615C9707F00B1200E /* ProfilCellRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */; };
+		BC91A74715C9707F00B1200E /* ProfilCellRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */; };
 		BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
 		BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
@@ -2253,6 +2269,22 @@
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
+		BCB7AE8115C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */; };
+		BCB7AE8215C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */; };
+		BCB7AE8315C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */; };
+		BCB7AE8415C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */; };
+		BCB7AE8515C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */; };
+		BCB7AE8615C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */; };
+		BCB7AE8715C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */; };
+		BCB7AE8815C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */; };
+		BCB7AE8915C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE8015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png */; };
+		BCB7AE8A15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE8015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png */; };
+		BCB7AE8B15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE8015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png */; };
+		BCB7AE8C15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE8015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png */; };
+		BCB7AE8D15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE8015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png */; };
+		BCB7AE8E15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE8015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png */; };
+		BCB7AE8F15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE8015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png */; };
+		BCB7AE9015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE8015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png */; };
 		BCBAB48A14A22E3400CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
 		BCBAB48B14A22E4400CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
 		BCBAB48C14A22E5000CF922A /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBAB48914A22E3400CF922A /* libsqlite3.dylib */; };
@@ -6030,6 +6062,9 @@
 		BC828AD314B49E9500763558 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BC828AD414B49E9500763558 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		BC828AD514B49E9500763558 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		BC91A73515C9707F00B1200E /* ProfilCellRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilCellRadio.h; path = Tabs/ProfilCellRadio.h; sourceTree = "<group>"; };
+		BC91A73615C9707F00B1200E /* ProfilCellRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfilCellRadio.m; path = Tabs/ProfilCellRadio.m; sourceTree = "<group>"; };
+		BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfilCellRadio.xib; path = Tabs/ProfilCellRadio.xib; sourceTree = "<group>"; };
 		BC93B4AA148E68DE00A87157 /* StyleSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleSelectorViewController.h; sourceTree = "<group>"; };
 		BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleSelectorViewController.m; sourceTree = "<group>"; };
 		BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StyleSelectorViewController.xib; sourceTree = "<group>"; };
@@ -6077,6 +6112,8 @@
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		BCB5F28C1485416B00C28B3D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
 		BCB5F28D1485416B00C28B3D /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
+		BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profilRadioMaskHighlighted.png; sourceTree = "<group>"; };
+		BCB7AE8015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profilRadioMaskHighlighted@2x.png"; sourceTree = "<group>"; };
 		BCBAB48914A22E3400CF922A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BCBAB49714A2322900CF922A /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Settings/SettingsViewController.h; sourceTree = "<group>"; };
 		BCBAB49814A2322900CF922A /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Settings/SettingsViewController.m; sourceTree = "<group>"; };
@@ -7102,6 +7139,9 @@
 				BC355BD315BD4F9200305C56 /* ProfilViewController.h */,
 				BC355BD415BD4F9200305C56 /* ProfilViewController.m */,
 				BC355BD515BD4F9200305C56 /* ProfilViewController.xib */,
+				BC91A73515C9707F00B1200E /* ProfilCellRadio.h */,
+				BC91A73615C9707F00B1200E /* ProfilCellRadio.m */,
+				BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -7325,6 +7365,8 @@
 		BC685F7715C6833D00A53BCA /* Profil */ = {
 			isa = PBXGroup;
 			children = (
+				BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */,
+				BCB7AE8015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png */,
 				BC68606215C692CC00A53BCA /* profilBarBkg.png */,
 				BC68606315C692CC00A53BCA /* profilBarBkg@2x.png */,
 				BC68606415C692CC00A53BCA /* profilBarMask.png */,
@@ -9363,6 +9405,9 @@
 				BC68615E15C692CC00A53BCA /* profilRowBkg@2x.png in Resources */,
 				BC68616615C692CC00A53BCA /* profilSection.png in Resources */,
 				BC68616E15C692CC00A53BCA /* profilSection@2x.png in Resources */,
+				BCB7AE8715C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */,
+				BCB7AE8F15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */,
+				BC91A74615C9707F00B1200E /* ProfilCellRadio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9851,6 +9896,9 @@
 				BC68615F15C692CC00A53BCA /* profilRowBkg@2x.png in Resources */,
 				BC68616715C692CC00A53BCA /* profilSection.png in Resources */,
 				BC68616F15C692CC00A53BCA /* profilSection@2x.png in Resources */,
+				BCB7AE8815C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */,
+				BCB7AE9015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */,
+				BC91A74715C9707F00B1200E /* ProfilCellRadio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10333,6 +10381,9 @@
 				BC68615D15C692CC00A53BCA /* profilRowBkg@2x.png in Resources */,
 				BC68616515C692CC00A53BCA /* profilSection.png in Resources */,
 				BC68616D15C692CC00A53BCA /* profilSection@2x.png in Resources */,
+				BCB7AE8615C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */,
+				BCB7AE8E15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */,
+				BC91A74515C9707F00B1200E /* ProfilCellRadio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10820,6 +10871,9 @@
 				BC68615A15C692CC00A53BCA /* profilRowBkg@2x.png in Resources */,
 				BC68616215C692CC00A53BCA /* profilSection.png in Resources */,
 				BC68616A15C692CC00A53BCA /* profilSection@2x.png in Resources */,
+				BCB7AE8315C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */,
+				BCB7AE8B15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */,
+				BC91A74215C9707F00B1200E /* ProfilCellRadio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11307,6 +11361,9 @@
 				BC68615915C692CC00A53BCA /* profilRowBkg@2x.png in Resources */,
 				BC68616115C692CC00A53BCA /* profilSection.png in Resources */,
 				BC68616915C692CC00A53BCA /* profilSection@2x.png in Resources */,
+				BCB7AE8215C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */,
+				BCB7AE8A15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */,
+				BC91A74115C9707F00B1200E /* ProfilCellRadio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11794,6 +11851,9 @@
 				BC68615C15C692CC00A53BCA /* profilRowBkg@2x.png in Resources */,
 				BC68616415C692CC00A53BCA /* profilSection.png in Resources */,
 				BC68616C15C692CC00A53BCA /* profilSection@2x.png in Resources */,
+				BCB7AE8515C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */,
+				BCB7AE8D15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */,
+				BC91A74415C9707F00B1200E /* ProfilCellRadio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12281,6 +12341,9 @@
 				BC68615815C692CC00A53BCA /* profilRowBkg@2x.png in Resources */,
 				BC68616015C692CC00A53BCA /* profilSection.png in Resources */,
 				BC68616815C692CC00A53BCA /* profilSection@2x.png in Resources */,
+				BCB7AE8115C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */,
+				BCB7AE8915C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */,
+				BC91A74015C9707F00B1200E /* ProfilCellRadio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12768,6 +12831,9 @@
 				BC68615B15C692CC00A53BCA /* profilRowBkg@2x.png in Resources */,
 				BC68616315C692CC00A53BCA /* profilSection.png in Resources */,
 				BC68616B15C692CC00A53BCA /* profilSection@2x.png in Resources */,
+				BCB7AE8415C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */,
+				BCB7AE8C15C930D200E59D3A /* profilRadioMaskHighlighted@2x.png in Resources */,
+				BC91A74315C9707F00B1200E /* ProfilCellRadio.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13025,6 +13091,7 @@
 				BCFD0C5315C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6615C2DB82004B6844 /* BigMessageView.m in Sources */,
 				BC68617815C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
+				BC91A73E15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13224,6 +13291,7 @@
 				BCFD0C5415C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6715C2DB82004B6844 /* BigMessageView.m in Sources */,
 				BC68617915C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
+				BC91A73F15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13419,6 +13487,7 @@
 				BCFD0C5215C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6515C2DB82004B6844 /* BigMessageView.m in Sources */,
 				BC68617715C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
+				BC91A73D15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13618,6 +13687,7 @@
 				BCFD0C4F15C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6215C2DB82004B6844 /* BigMessageView.m in Sources */,
 				BC68617415C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
+				BC91A73A15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13817,6 +13887,7 @@
 				BCFD0C4E15C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6115C2DB82004B6844 /* BigMessageView.m in Sources */,
 				BC68617315C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
+				BC91A73915C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14017,6 +14088,7 @@
 				BCFD0C5115C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6415C2DB82004B6844 /* BigMessageView.m in Sources */,
 				BC68617615C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
+				BC91A73C15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14216,6 +14288,7 @@
 				BCFD0C4D15C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6015C2DB82004B6844 /* BigMessageView.m in Sources */,
 				BC68617215C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
+				BC91A73815C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14416,6 +14489,7 @@
 				BCFD0C5015C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6315C2DB82004B6844 /* BigMessageView.m in Sources */,
 				BC68617515C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
+				BC91A73B15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

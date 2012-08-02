@@ -12,6 +12,7 @@
 #import "AudioStreamManager.h"
 #import "ProfilTableViewCell.h"
 #import "YasoundDataProvider.h"
+#import "YasoundDataCache.h"
 #import "Theme.h"
 
 #define SECTIONS_COUNT 4
@@ -26,9 +27,13 @@
 
 @implementation ProfilViewController
 
+@synthesize tableview;
 @synthesize cellProfil;
 
 @synthesize user;
+@synthesize favorites;
+@synthesize friends;
+
 @synthesize userImage;
 @synthesize name;
 @synthesize bio;
@@ -45,9 +50,28 @@
     if (self) 
     {
         self.user = [YasoundDataProvider main].user;
+        
+        [[YasoundDataProvider main] favoriteRadiosForUser:self.user withTarget:self action:@selector(favoritesRadioReceived:withInfo:)];
+        [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(friendsReceived:info:)];
+
     }
     return self;
 }
+
+- (void)favoritesRadioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
+{
+    self.favorites = radios;
+    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FAVORITES]] withRowAnimation:NO];
+}
+
+
+
+- (void)friendsReceived:(NSArray*)friends info:(NSDictionary*)info
+{
+    self.friends = friends;
+    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FRIENDS]] withRowAnimation:NO];
+}
+
 
 - (void)viewDidLoad
 {
@@ -155,14 +179,19 @@
     
     NSArray* items = nil;
     
-//    if (indexPath.section == SECTION_MYRADIOS)
-//        items = self.user.ra
+    if (indexPath.section == SECTION_MYRADIOS)
+        items = self.user.own_radios;
+    else if (indexPath.section == SECTION_FAVORITES)
+        items = self.favorites;
+    else if (indexPath.section == SECTION_FRIENDS)
+        items = self.friends;
+    
     
     ProfilTableViewCell* cell = (ProfilTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil)
     {    
-        cell = [[ProfilTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier items:items target:self action:@selector(onItemClicked:)];
+        cell = [[ProfilTableViewCell alloc] initWithFrame:CGRectMake(0,0, 320, 104) reuseIdentifier:cellIdentifier items:items target:self action:@selector(onItemClicked:)];
     }
     else
     {

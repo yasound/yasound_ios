@@ -12,8 +12,62 @@
 	<dict>
 		<key>Profil</key>
 		<dict>
-			<key>row</key>
-			<string></string>
+			<key>Radio</key>
+			<dict>
+				<key>title</key>
+				<dict>
+					<key>height</key>
+					<integer>15</integer>
+					<key>x</key>
+					<integer>4</integer>
+					<key>y</key>
+					<integer>70</integer>
+					<key>width</key>
+					<integer>80</integer>
+					<key>font</key>
+					<dict>
+						<key>weight</key>
+						<string>bold</string>
+						<key>size</key>
+						<integer>9</integer>
+						<key>textColor</key>
+						<string>white</string>
+					</dict>
+				</dict>
+				<key>mask</key>
+				<dict>
+					<key>x</key>
+					<integer>2</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>type</key>
+					<string>png</string>
+					<key>name</key>
+					<string>profilRadioMask</string>
+				</dict>
+				<key>maskHighlighted</key>
+				<dict>
+					<key>x</key>
+					<integer>2</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>type</key>
+					<string>png</string>
+					<key>name</key>
+					<string>profilRadioMaskHighlighted</string>
+				</dict>
+				<key>image</key>
+				<dict>
+					<key>height</key>
+					<integer>89</integer>
+					<key>x</key>
+					<integer>4</integer>
+					<key>y</key>
+					<integer>4</integer>
+					<key>width</key>
+					<integer>89</integer>
+				</dict>
+			</dict>
 			<key>section</key>
 			<dict>
 				<key>name</key>

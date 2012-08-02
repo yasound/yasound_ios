@@ -14,9 +14,16 @@
 
 @interface ProfilViewController : UIViewController<TopBarDelegate, TabBarDelegate>
 
-@property (nonatomic, retain) IBOutlet UITableViewCell* cellProfil;
+@property (nonatomic, retain) NSArray* favorites;
+@property (nonatomic, retain) NSArray* friends;
+
+@property (nonatomic, retain) IBOutlet UITableView* tableview;
+@property (nonatomic, retain) IBOutlet TabBar* tabBar;
+
 
 @property (nonatomic, retain) User* user;
+
+@property (nonatomic, retain) IBOutlet UITableViewCell* cellProfil;
 
 @property (nonatomic, retain) IBOutlet WebImageView* userImage;
 @property (nonatomic, retain) IBOutlet UILabel* name;
@@ -26,7 +33,6 @@
 @property (nonatomic, retain) IBOutlet UILabel* buttonGrayLabel;
 @property (nonatomic, retain) IBOutlet UILabel* buttonBlueLabel;
 
-@property (nonatomic, retain) IBOutlet TabBar* tabBar;
 
 - (IBAction)onButtonGrayClicked:(id)sender;
 - (IBAction)onButtonBlueClicked:(id)sender;

@@ -106,6 +106,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)radioWithId:(NSNumber*)radioId target:(id)target action:(SEL)selector;
 
 
+- (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
 
 
 // .........................................................................................
@@ -116,7 +117,6 @@ taskStatus stringToStatus(NSString* str);
 - (void)selectedRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)newRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
 - (void)favoriteRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector;
-- (void)favoriteRadiosForUser_deprecated:(User*)u withTarget:(id)target action:(SEL)selector;
 
 - (void)radiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
 - (void)topRadiosWithGenre_deprecated:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData;
