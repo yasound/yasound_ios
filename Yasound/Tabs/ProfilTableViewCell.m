@@ -19,12 +19,14 @@
 
 @implementation ProfilTableViewCell
 
-@synthesize scrollview;
+@synthesize container;
 @synthesize items;
 @synthesize target;
 @synthesize action;
 @synthesize displayRadios;
 @synthesize displayUsers;
+@synthesize timer;
+@synthesize translationX;
 
 static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 
@@ -33,14 +35,233 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 {
     if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
     {
+        self.frame = frame;
         self.target = target;
         self.action = action;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        _panGestureRunning = NO;
+        
         [self updateWithItems:items];
         
+        _pgr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+        [self addGestureRecognizer:_pgr];
+        _pgr.delegate = self;
+        [_pgr release];
+
+//        UITapGestureRecognizer* tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+//        [self addGestureRecognizer:tgr];
+//        //tgr.delegate = self;
+//        [tgr release];
+
+        _slgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeLeft:)];
+        [_slgr setDirection:UISwipeGestureRecognizerDirectionLeft];
+        _slgr.delegate = self;
+        [self addGestureRecognizer:_slgr];
+        [_slgr release];
+
+        _srgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight:)];
+        [_srgr setDirection:UISwipeGestureRecognizerDirectionRight];
+        _srgr.delegate = self;
+        [self addGestureRecognizer:_srgr];
+        [_srgr release];
+        
+        
+
+
   }
   return self;
+}
+
+
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer*)gestureRecognizer
+{
+    if ((gestureRecognizer == _slgr) || (gestureRecognizer == _srgr))
+    {
+        return !_panGestureRunning;
+    }
+    
+    if (gestureRecognizer == _pgr)
+    {
+        UIView *cell = [_pgr view];
+        CGPoint translation = [_pgr translationInView:[cell superview]];
+        
+        // Check for horizontal gesture
+        if (fabsf(translation.x) > fabsf(translation.y))
+        {
+            return YES;
+        }
+        
+        return NO;
+    }
+    
+    return YES;
+}
+
+
+- (void)handleTap:(UITapGestureRecognizer*)tgr
+{
+    self.translationX = 0;
+    
+    if ([self.timer isValid])
+        [self.timer invalidate];
+}
+
+#define SWIPE_TRANSLATION (120)
+#define SWIPE_TRANSLATION_DECELERATION 6.f
+
+- (void)handleSwipeLeft:(UISwipeGestureRecognizer*)sgr
+{
+    NSLog(@"swipe %d", sgr.direction );
+    
+    if ([self.timer isValid])
+        [self.timer invalidate];
+    
+    self.translationX = SWIPE_TRANSLATION;
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(onSwipeAnimateLeft:) userInfo:nil repeats:YES];
+}
+
+
+- (void)handleSwipeRight:(UISwipeGestureRecognizer*)sgr
+{
+    NSLog(@"swipe %d", sgr.direction );
+    
+    if ([self.timer isValid])
+        [self.timer invalidate];
+    
+    self.translationX = SWIPE_TRANSLATION;
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(onSwipeAnimateRight:) userInfo:nil repeats:YES];
+}
+
+- (void)onSwipeAnimateLeft:(NSTimer*)timer
+{
+    if ((self.translationX <= 0) ||  (self.container == nil))
+    {
+        self.translationX = 0;
+        [self.timer invalidate];
+        return;
+    }
+
+    [self translateByContainer:-self.translationX];
+        
+//    self.containerPosX = self.containerPosX - self.translationX;
+//    self.container.frame = CGRectMake(self.containerPosX, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
+//    self.translationX = self.translationX - (self.translationX/SWIPE_TRANSLATION_DECELERATION);
+}
+
+- (void)onSwipeAnimateRight:(NSTimer*)timer
+{
+    if ((self.translationX <= 0) ||  (self.container == nil))
+    {
+        self.translationX = 0;
+        [self.timer invalidate];
+        return;
+    }
+    
+    [self translateByContainer:self.translationX];
+//    self.containerPosX = self.containerPosX + self.translationX;
+//    self.container.frame = CGRectMake(self.containerPosX, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
+//    self.translationX = self.translationX - (self.translationX/SWIPE_TRANSLATION_DECELERATION);
+}
+
+
+
+
+-(void)handlePan:(UIPanGestureRecognizer *)pgr
+{
+    if (pgr.state == UIGestureRecognizerStateBegan)
+    {
+        _panGestureRunning = YES;
+        
+        if ([self.timer isValid])
+            [self.timer invalidate];
+        
+        _containerStartPosX = self.container.frame.origin.x;
+//        NSLog(@"self.container.frame %.2f %.2f   %.2f x %.2f", self.container.frame.origin.x, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
+    }
+    else
+        if (pgr.state == UIGestureRecognizerStateChanged)
+        {
+            CGPoint translation = [pgr translationInView:pgr.view];
+            
+            //NSLog(@"translation %.2f %.2f", translation.x, translation.y);
+            
+            //        CGRect newFrame = frontView.frame;
+            //        newFrame.origin.y = newFrame.origin.y + translation.y;
+            //        frontView.frame = newFrame;
+            
+            //        [pgr setTranslation:CGPointZero inView:pgr.view];
+            
+            if (self.container)
+            {
+                [self translateToContainer:_containerStartPosX + translation.x];
+//                CGFloat posX = self.containerPosX + translation.x;
+//                self.container.frame = CGRectMake(posX, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
+            }
+        }
+    
+        else if (pgr.state == UIGestureRecognizerStateEnded)
+        {
+            _panGestureRunning = NO;
+        }
+}
+
+
+
+
+- (void)translateToContainer:(CGFloat)posX
+{
+    self.containerPosX = posX;
+    
+//    NSLog(@"posX %.2f   posXMin %.2f", posX, _containerPosXMin);
+    
+    // crop position
+    if (self.containerPosX > _containerPosXMax)
+    {
+        self.containerPosX = _containerPosXMax;
+    }
+    else if (self.containerPosX < _containerPosXMin)
+    {
+        self.containerPosX = _containerPosXMin;
+    }
+    self.container.frame = CGRectMake(self.containerPosX, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
+}
+
+
+- (void)translateByContainer:(CGFloat)translationX
+{
+    BOOL stopAnim = NO;
+    
+    self.containerPosX = self.containerPosX + translationX;
+    if (self.containerPosX > _containerPosXMax)
+    {
+        // crop position
+        self.containerPosX = _containerPosXMax;
+        stopAnim = YES;
+    }
+    else if (self.containerPosX < _containerPosXMin)
+    {
+        // crop position
+        self.containerPosX = _containerPosXMin;
+        stopAnim = YES;
+    }
+        
+    self.container.frame = CGRectMake(self.containerPosX, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
+    
+    if (stopAnim)
+    {
+        self.translationX = 0;
+        if ([self.timer isValid])
+            [self.timer invalidate];
+    }
+    else
+    {
+        // iterate
+        self.translationX = self.translationX - (self.translationX/SWIPE_TRANSLATION_DECELERATION);
+    }
 }
 
 
@@ -49,7 +270,8 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 
 
 
-- (void)willMoveToSuperview:(UIView *)newSuperview 
+
+- (void)willMoveToSuperview:(UIView *)newSuperview
 {
     [super willMoveToSuperview:newSuperview];
     if(!newSuperview) 
@@ -89,15 +311,16 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
         }
     }
     
-    if (self.scrollview != nil)
+    if (self.container != nil)
     {
-        [self.scrollview removeFromSuperview];
-        self.scrollview = nil;
+        [self.container removeFromSuperview];
+        self.container = nil;
     }
     
     
-    self.scrollview = [[UIScrollView alloc] initWithFrame:self.frame];
-    [self addSubview:self.scrollview];
+    self.container = [[UIView alloc] initWithFrame:CGRectZero];
+    [self addSubview:self.container];
+    self.containerPosX = 0;
     
     if (self.displayRadios)
         [self updateRadios];
@@ -121,39 +344,49 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
     {
         BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Profil.Radio.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         sheetContainer.frame = CGRectMake(sheetContainer.frame.origin.x + xOffset, sheetContainer.frame.origin.y, sheetContainer.frame.size.width, sheetContainer.frame.size.height);
-        UIView* container = [[UIView alloc] initWithFrame:sheetContainer.frame];
-        [self addSubview:container];
+        UIView* itemContainer = [[UIView alloc] initWithFrame:sheetContainer.frame];
+        [self.container addSubview:itemContainer];
 
         // radio image
         sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.image" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
         WebImageView* radioImage = [[WebImageView alloc] initWithImageAtURL:imageURL];
         radioImage.frame = sheet.frame;
-        [container addSubview:radioImage];
+        [itemContainer addSubview:radioImage];
 
         // radio mask
         sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         sheet.frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
         UIImageView* radioMask = [sheet makeImage];
-        [container addSubview:radioMask];
+        [itemContainer addSubview:radioMask];
 
         // title
         sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.title"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UILabel* title = [sheet makeLabel];
         title.text = [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@ %@ %@ %@", radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name];
-        [container addSubview:title];
+        [itemContainer addSubview:title];
 
         // interactive view : catch the "press down" and "press up" actions
         [self.userObjects addObject:radioMask];
         
-        InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheetContainer.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:itemIndex]];
-        [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:itemIndex]];
-        [container addSubview:interactiveView];
+//        InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheetContainer.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:itemIndex]];
+//        [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:itemIndex]];
+//        [itemContainer addSubview:interactiveView];
 
 
         itemIndex++;
         xOffset += (sheetContainer.frame.size.width);
     }
+
+    self.container.frame = CGRectMake(0, 0, xOffset, self.frame.size.height);
+    
+    _containerPosXMin = - xOffset + self.frame.size.width;
+    _containerPosXMax = 0;
+
+    
+    //LBDEBUG
+//    NSLog(@"contentsSize %.2f, %.2f", self.scrollview.contentSize.width, self.scrollview.contentSize.height);
+//    NSLog(@"ok");
 
 }
 
@@ -387,6 +620,29 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 //    
 //    return nil;
 //}
+
+
+
+
+
+
+#pragma mark - UIScrollViewDelegate
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+//    if (!_waitingForPreviousEvents)
+//    {
+//        float offset = scrollView.contentOffset.y;
+//        float contentHeight = scrollView.contentSize.height;
+//        float viewHeight = scrollView.bounds.size.height;
+//        
+//        if ((offset > 0) && (offset + viewHeight > contentHeight + WALL_WAITING_ROW_HEIGHT))
+//        {
+//            [self askForPreviousEvents];
+//        }
+//    }
+}
 
 
 
