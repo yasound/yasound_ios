@@ -15,6 +15,8 @@
 
 
 @property (nonatomic, retain) NSArray* items;
+@property (nonatomic, retain) NSMutableArray* userObjects;
+
 @property (nonatomic, retain) UIScrollView* scrollview;
 
 

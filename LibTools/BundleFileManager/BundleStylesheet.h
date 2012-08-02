@@ -39,6 +39,9 @@
 @property (nonatomic, retain, readonly) NSString* weight;
 @property (nonatomic, readonly) BOOL weightIsSet;
 
+@property (nonatomic, readonly) NSInteger numberOfLines;
+@property (nonatomic, readonly) BOOL numberOfLinesIsSet;
+
 @property (nonatomic, readonly) CGSize shadowOffset;
 @property (nonatomic, readonly) NSInteger shadowRadius;
 @property (nonatomic, readonly) CGFloat shadowOpacity;

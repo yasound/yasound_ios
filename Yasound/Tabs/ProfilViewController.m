@@ -14,6 +14,7 @@
 #import "YasoundDataProvider.h"
 #import "YasoundDataCache.h"
 #import "Theme.h"
+#import "RootViewController.h"
 
 #define SECTIONS_COUNT 4
 #define SECTION_PROFIL 0
@@ -201,6 +202,11 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
+}
+
+- (void)onItemClicked:(Radio*)radio
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
 }
 
 /*

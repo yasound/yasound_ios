@@ -34,6 +34,9 @@
 @synthesize backgroundColorIsSet = _backgroundColorIsSet;
 @synthesize weight = _weight;
 @synthesize weightIsSet = _weightIsSet;
+@synthesize numberOfLines = _numberOfLines;
+@synthesize numberOfLinesIsSet = _numberOfLinesIsSet;
+
 
 @synthesize shadowOffset = _shadowOffset;
 @synthesize shadowRadius = _shadowRadius;
@@ -75,6 +78,7 @@
   _backgroundColorIsSet = NO;
   _weightIsSet = NO;
     _shadowIsSet = NO;
+    _numberOfLinesIsSet = NO;
 
 
   // default init
@@ -187,6 +191,14 @@
         }
 
     }
+    
+    NSNumber* numberOfLines = [sheet valueForKey:@"numberOfLines"];
+    if (numberOfLines != nil)
+    {
+        _numberOfLines = [numberOfLines integerValue];
+        _numberOfLinesIsSet = YES;
+    }
+
 
 
   return self;
@@ -469,6 +481,8 @@ static NSMutableDictionary* gImageViews = nil;
     return nil;
   
   // font parsing
+    
+
   
   // default font sheet
   BundleFontsheet* defaultFontsheet = nil;
@@ -870,6 +884,12 @@ static NSMutableDictionary* gImageViews = nil;
         label.layer.shadowColor = fontsheet.shadowColor.CGColor;
     }
     
+    if (fontsheet.numberOfLinesIsSet)
+    {
+        label.numberOfLines = fontsheet.numberOfLines;
+        label.lineBreakMode = UILineBreakModeWordWrap;
+    }
+    
 
     label.font = [self makeFont];
     
@@ -952,6 +972,11 @@ static NSMutableDictionary* gImageViews = nil;
         label.layer.shadowRadius = fontsheet.shadowRadius;
         label.layer.shadowOpacity = fontsheet.shadowOpacity;
         label.layer.shadowColor = fontsheet.shadowColor.CGColor;
+    }
+    
+    if (fontsheet.numberOfLinesIsSet)
+    {
+        label.numberOfLines = fontsheet.numberOfLines;
     }
   
   return YES;

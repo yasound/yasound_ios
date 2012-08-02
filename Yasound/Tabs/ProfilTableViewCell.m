@@ -113,6 +113,10 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
     CGFloat xOffset = 0;
     BundleStylesheet* sheet = nil;
     
+    if (self.userObjects)
+        [self.userObjects release];
+    self.userObjects = [[NSMutableArray alloc] init];
+    
     for (Radio* radio in self.items)
     {
         BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Profil.Radio.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -136,14 +140,14 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
         // title
         sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.title"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UILabel* title = [sheet makeLabel];
-        title.text = radio.name;
+        title.text = [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@ %@ %@ %@", radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name];
         [container addSubview:title];
 
         // interactive view : catch the "press down" and "press up" actions
-        NSArray* objects = [NSArray arrayWithObjects:[NSNumber numberWithInteger:itemIndex], radioMask, nil];
+        [self.userObjects addObject:radioMask];
         
-        InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheetContainer.frame target:self action:@selector(onInteractivePressedUp:) withObject:objects];
-        [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:objects];
+        InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheetContainer.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:itemIndex]];
+        [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:itemIndex]];
         [container addSubview:interactiveView];
 
 
@@ -154,22 +158,22 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 }
 
 
-- (void)onInteractivePressedDown:(NSArray*)objects
+- (void)onInteractivePressedDown:(NSNumber*)nbIndex
 {
     // set the "highlighted" image for the radio mask
-    NSInteger radioIndex = [[objects objectAtIndex:0] integerValue];
-    UIImageView* radioMask = [objects objectAtIndex:1];
+    NSInteger radioIndex = [nbIndex integerValue];
+    UIImageView* radioMask = [self.userObjects objectAtIndex:radioIndex];
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.maskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     [radioMask setImage:[sheet image]];
 }
 
 
-- (void)onInteractivePressedUp:(NSArray*)objects
+- (void)onInteractivePressedUp:(NSNumber*)nbIndex
 {
-    // set back the "normal" image for the radio mask
-    NSInteger radioIndex = [[objects objectAtIndex:0] integerValue];
-    UIImageView* radioMask = [objects objectAtIndex:1];
+    // set the "highlighted" image for the radio mask
+    NSInteger radioIndex = [nbIndex integerValue];
+    UIImageView* radioMask = [self.userObjects objectAtIndex:radioIndex];
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     [radioMask setImage:[sheet image]];
