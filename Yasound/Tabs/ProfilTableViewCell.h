@@ -16,6 +16,8 @@
     CGFloat _containerPosXMin;
     CGFloat _containerPosXMax;
     CGFloat _containerStartPosX;
+    CGFloat _containerLastTranslation;
+    CGFloat _containerDeltaTranslation;
     
     BOOL _panGestureRunning;
     

@@ -41,6 +41,7 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         _panGestureRunning = NO;
+        _containerLastTranslation = 0;
         
         [self updateWithItems:items];
         
@@ -54,17 +55,17 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 //        //tgr.delegate = self;
 //        [tgr release];
 
-        _slgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeLeft:)];
-        [_slgr setDirection:UISwipeGestureRecognizerDirectionLeft];
-        _slgr.delegate = self;
-        [self addGestureRecognizer:_slgr];
-        [_slgr release];
-
-        _srgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight:)];
-        [_srgr setDirection:UISwipeGestureRecognizerDirectionRight];
-        _srgr.delegate = self;
-        [self addGestureRecognizer:_srgr];
-        [_srgr release];
+//        _slgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeLeft:)];
+//        [_slgr setDirection:UISwipeGestureRecognizerDirectionLeft];
+//        _slgr.delegate = self;
+//        [self addGestureRecognizer:_slgr];
+//        [_slgr release];
+//
+//        _srgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight:)];
+//        [_srgr setDirection:UISwipeGestureRecognizerDirectionRight];
+//        _srgr.delegate = self;
+//        [self addGestureRecognizer:_srgr];
+//        [_srgr release];
         
         
 
@@ -108,33 +109,33 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
         [self.timer invalidate];
 }
 
-#define SWIPE_TRANSLATION (120)
+#define SWIPE_TRANSLATION_FACTOR 2.f
 #define SWIPE_TRANSLATION_DECELERATION 6.f
 
-- (void)handleSwipeLeft:(UISwipeGestureRecognizer*)sgr
-{
-    NSLog(@"swipe %d", sgr.direction );
-    
-    if ([self.timer isValid])
-        [self.timer invalidate];
-    
-    self.translationX = SWIPE_TRANSLATION;
-    
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(onSwipeAnimateLeft:) userInfo:nil repeats:YES];
-}
-
-
-- (void)handleSwipeRight:(UISwipeGestureRecognizer*)sgr
-{
-    NSLog(@"swipe %d", sgr.direction );
-    
-    if ([self.timer isValid])
-        [self.timer invalidate];
-    
-    self.translationX = SWIPE_TRANSLATION;
-    
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(onSwipeAnimateRight:) userInfo:nil repeats:YES];
-}
+//- (void)handleSwipeLeft:(UISwipeGestureRecognizer*)sgr
+//{
+//    NSLog(@"swipe %d", sgr.direction );
+//    
+//    if ([self.timer isValid])
+//        [self.timer invalidate];
+//    
+//    self.translationX = SWIPE_TRANSLATION;
+//    
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(onSwipeAnimateLeft:) userInfo:nil repeats:YES];
+//}
+//
+//
+//- (void)handleSwipeRight:(UISwipeGestureRecognizer*)sgr
+//{
+//    NSLog(@"swipe %d", sgr.direction );
+//    
+//    if ([self.timer isValid])
+//        [self.timer invalidate];
+//    
+//    self.translationX = SWIPE_TRANSLATION;
+//    
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(onSwipeAnimateRight:) userInfo:nil repeats:YES];
+//}
 
 - (void)onSwipeAnimateLeft:(NSTimer*)timer
 {
@@ -170,6 +171,8 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 
 
 
+#define PAN_DELTA_THRESHOLD_FOR_ANIMATE 10.f
+
 -(void)handlePan:(UIPanGestureRecognizer *)pgr
 {
     if (pgr.state == UIGestureRecognizerStateBegan)
@@ -201,11 +204,42 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 //                CGFloat posX = self.containerPosX + translation.x;
 //                self.container.frame = CGRectMake(posX, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
             }
+            
+            
+            _containerDeltaTranslation = translation.x - _containerLastTranslation;
+            _containerLastTranslation = translation.x;
         }
     
         else if (pgr.state == UIGestureRecognizerStateEnded)
         {
+//            CGPoint translation = [pgr translationInView:pgr.view];
+//            
+//            CGFloat delta = translation.x - _containerLastTranslation;
+
+            
+            NSLog(@"END TRANSLATION DELTA %.2f", _containerDeltaTranslation);
+
             _panGestureRunning = NO;
+            
+            if (fabs(_containerDeltaTranslation) >= PAN_DELTA_THRESHOLD_FOR_ANIMATE)
+            {
+                NSLog(@"ANIMATE");
+                //[self translateByContainer:_containerDeltaTranslation];
+                
+                self.translationX = fabs(_containerDeltaTranslation) * SWIPE_TRANSLATION_FACTOR;
+                
+                if (_containerDeltaTranslation < 0)
+                {
+                self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(onSwipeAnimateLeft:) userInfo:nil repeats:YES];
+                }
+                else
+                {
+                
+                self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(onSwipeAnimateRight:) userInfo:nil repeats:YES];
+                }
+
+
+            }
         }
 }
 
