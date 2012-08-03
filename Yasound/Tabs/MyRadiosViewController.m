@@ -53,15 +53,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(radiosReceived:info:)];
-}
-
-- (void)radiosReceived:(Radio*)radio info:(NSDictionary*)info
-{
-    if (radio == nil)
-        return;
-    
-    self.radios = [NSArray arrayWithObject:radio];
+    self.radios = [YasoundDataProvider main].user.own_radios;
     [self.tableview reloadData];
 }
 
