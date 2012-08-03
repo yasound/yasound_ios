@@ -190,10 +190,16 @@
             [self automaticLoginProcess];
         }
         else
+            
+        {
             // get the app menu from the server, before you can proceed
-            [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+            //[[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
         
-        // didReceivedMenuDescription will proceed to the app entry
+            // didReceivedMenuDescription will proceed to the app entry
+            
+            [self enterTheApp];
+
+        }
     }
 }
 
@@ -258,7 +264,9 @@
         [[YasoundSessionManager main] associateAccountsAutomatic];
         
         // get the app menu from the server, before you can proceed
-        [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+        //[[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+        [self enterTheApp];
+
     
     }
     else
@@ -288,20 +296,20 @@
 }
 
 
-
-// you receive the current menu description from the server
-- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
-{
-    NSString* menuDesc = req.responseString;
-    
-    DLog(@"menuDesc : %@", menuDesc);
-
-    // be sure to store it in the cache
-    [[YasoundDataCache main] setMenu:menuDesc];
-    
-    
-    [self enterTheApp];
-}
+//// you receive the current menu description from the server
+//- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
+//{
+//    NSString* menuDesc = req.responseString;
+//    
+//    DLog(@"menuDesc : %@", menuDesc);
+//
+//    // be sure to store it in the cache
+//    [[YasoundDataCache main] setMenu:menuDesc];
+//    
+//    
+//    [self enterTheApp];
+//
+//}
 
 
 

@@ -38,7 +38,7 @@
 #define USKEYratingNever @"neverRate"
 #define USKEYratingLaunchCount @"launchCount"
 
-#define USKEYcacheMenuDescription @"menuDescription"
+#define USKEYcacheMenuDescription @"menuDescriptionV2"
 #define USKEYcacheImageRegisterSize @"imageRegisterSize"
 
 

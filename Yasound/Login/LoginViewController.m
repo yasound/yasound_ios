@@ -174,11 +174,13 @@
         [[YasoundSessionManager main] associateAccountsAutomatic];
         
         
-        self.user = user; 
+        self.user = user;
         
-        // get the app menu from the server, before you can proceed
-        [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
+        
+//        // get the app menu from the server, before you can proceed
+//        [[YasoundDataProvider main] menuDescriptionWithTarget:self action:@selector(didReceiveMenuDescription:)];
 
+        [self enterTheAppAfterProperLogin];
 
 
     }
@@ -224,17 +226,17 @@
 
 
 
-// you receive the current menu description from the server
-- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
-{
-    NSString* menuDesc = req.responseString;
-    
-    // be sure to store it in the cache
-    [[YasoundDataCache main] setMenu:menuDesc];
-    
-    
-    [self enterTheAppAfterProperLogin];
-}
+//// you receive the current menu description from the server
+//- (void)didReceiveMenuDescription:(ASIHTTPRequest*)req
+//{
+//    NSString* menuDesc = req.responseString;
+//    
+//    // be sure to store it in the cache
+//    [[YasoundDataCache main] setMenu:menuDesc];
+//    
+//    
+//    [self enterTheAppAfterProperLogin];
+//}
 
 
 - (void)enterTheAppAfterProperLogin

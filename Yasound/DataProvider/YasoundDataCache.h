@@ -82,7 +82,7 @@
 - (NSArray*)menu;
 
 // replace the current menu description in the user settings (does not overwrite the default menu description)
-- (void)setMenu:(NSString*)JSONdescription;
+//- (void)setMenu:(NSString*)JSONdescription;
 
 
 

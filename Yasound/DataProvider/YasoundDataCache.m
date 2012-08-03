@@ -642,7 +642,7 @@ static UIImage* gDummyImage = nil;
     
     // no menu description yet, get the default one from the resources
     
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"defaultMenuDescription.json" ofType: @"txt"];
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"menu" ofType: @"json"];
 
     NSString* descrStr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     descr = [descrStr JSONValue];
@@ -656,14 +656,14 @@ static UIImage* gDummyImage = nil;
 
 
 // replace the current menu description in the user settings (does not overwrite the default menu description)
-- (void)setMenu:(NSString*)JSONdescription
-{
-    NSArray* descr = [JSONdescription JSONValue];
-    
-    DLog(@"YasoundDataCache::setMenu %@", descr);
-
-    [[UserSettings main] setObject:descr forKey:USKEYcacheMenuDescription];
-}
+//- (void)setMenu:(NSString*)JSONdescription
+//{
+//    NSArray* descr = [JSONdescription JSONValue];
+//    
+//    DLog(@"YasoundDataCache::setMenu %@", descr);
+//
+//    [[UserSettings main] setObject:descr forKey:USKEYcacheMenuDescription];
+//}
 
 
 // return the dictionary description of the current menu, from its given ID (for instance, "radioSelection")
