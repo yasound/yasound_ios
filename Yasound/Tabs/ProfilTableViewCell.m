@@ -240,6 +240,8 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
     
     if (items != nil)
     {
+        assert(items.count > 0);
+        
         id object = [items objectAtIndex:0];
         if ([object isKindOfClass:[Radio class]])
         {
@@ -333,34 +335,126 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 }
 
 
+
+
+- (void)updateUsers
+{
+    NSInteger itemIndex = 0;
+    CGFloat xOffset = 0;
+    BundleStylesheet* sheet = nil;
+    
+    if (self.userObjects)
+        [self.userObjects release];
+    self.userObjects = [[NSMutableArray alloc] init];
+    
+    for (User* user in self.items)
+    {
+        BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Profil.User.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        CGRect containerFrame = CGRectMake(sheetContainer.frame.origin.x + xOffset, sheetContainer.frame.origin.y, sheetContainer.frame.size.width, sheetContainer.frame.size.height);
+        UIView* itemContainer = [[UIView alloc] initWithFrame:containerFrame];
+        [self.container addSubview:itemContainer];
+        
+        // user image
+        sheet = [[Theme theme] stylesheetForKey:@"Profil.User.image" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:user.picture];
+        WebImageView* image = [[WebImageView alloc] initWithImageAtURL:imageURL];
+        image.frame = sheet.frame;
+        [itemContainer addSubview:image];
+        
+        // radio mask
+        sheet = [[Theme theme] stylesheetForKey:@"Profil.User.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        CGRect frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
+        UIImageView* mask = [sheet makeImage];
+        mask.frame = frame;
+        [itemContainer addSubview:mask];
+        
+        // title
+        sheet = [[Theme theme] stylesheetForKey:@"Profil.User.title"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UILabel* title = [sheet makeLabel];
+        title.text = user.name;
+        [itemContainer addSubview:title];
+        
+        // interactive view : catch the "press down" and "press up" actions
+        [self.userObjects addObject:mask];
+        
+        InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:CGRectMake(0, 0, containerFrame.size.width, containerFrame.size.height) target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:itemIndex]];
+        [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:itemIndex]];
+        [itemContainer addSubview:interactiveView];
+        
+        
+        itemIndex++;
+        
+        NSLog(@"xOffset %.2f    width %.2f    x %.2f",  xOffset, sheetContainer.frame.size.width, sheetContainer.frame.origin.x);
+        
+        xOffset += (sheetContainer.frame.size.width + sheetContainer.frame.origin.x);
+        
+        
+        
+    }
+    
+    self.container.frame = CGRectMake(0, 0, xOffset, self.frame.size.height);
+    
+    if (xOffset > self.frame.size.width)
+        _containerPosXMin = - xOffset + self.frame.size.width;
+    else
+        _containerPosXMin = 0;
+    
+    _containerPosXMax = 0;
+}
+
+
+
+
 - (void)onInteractivePressedDown:(NSNumber*)nbIndex
 {
+    if (self.userObjects.count == 0)
+        return;
+    
+    assert(self.userObjects.count > 0);
+
     // set the "highlighted" image for the radio mask
     NSInteger radioIndex = [nbIndex integerValue];
     UIImageView* radioMask = [self.userObjects objectAtIndex:radioIndex];
     
     _selectedIndex = radioIndex;
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.maskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = nil;
+    if (self.displayRadios)
+        sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.maskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    else
+        sheet = [[Theme theme] stylesheetForKey:@"Profil.User.maskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     [radioMask setImage:[sheet image]];
 }
 
 
 - (void)onInteractivePressedUp:(NSNumber*)nbIndex
 {
+    if (self.userObjects.count == 0)
+        return;
+    
     // it's been canceled
     if (_selectedIndex < 0)
         return;
     
     _selectedIndex = -1;
+    
+    assert(self.userObjects.count > 0);
 
     // set the "highlighted" image for the radio mask
     NSInteger radioIndex = [nbIndex integerValue];
     UIImageView* radioMask = [self.userObjects objectAtIndex:radioIndex];
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = nil;
+    if (self.displayRadios)
+        sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    else
+        sheet = [[Theme theme] stylesheetForKey:@"Profil.User.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+
     [radioMask setImage:[sheet image]];
     
+    
+    assert(self.items.count > 0);
+
     Radio* radio = [self.items objectAtIndex:radioIndex];
     
     // and call external action to delegate the radio selection
@@ -372,20 +466,21 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 {
     if (_selectedIndex < 0)
         return;
+    if (self.userObjects.count == 0)
+        return;
 
     UIImageView* radioMask = [self.userObjects objectAtIndex:_selectedIndex];
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = nil;
+    if (self.displayRadios)
+        sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    else
+        sheet = [[Theme theme] stylesheetForKey:@"Profil.User.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    
     [radioMask setImage:[sheet image]];
 }
 
 
-
-
-- (void)updateUsers
-{
-    
-}
 
 
 

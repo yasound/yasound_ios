@@ -204,9 +204,21 @@
     return cell;
 }
 
-- (void)onItemClicked:(Radio*)radio
+- (void)onItemClicked:(id)item
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
+    if ([item isKindOfClass:[Radio class]])
+    {
+        Radio* radio = item;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
+        return;
+    }
+
+    if ([item isKindOfClass:[User class]])
+    {
+        User* user = item;
+        //[[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_PROFIL object:user];
+        return;
+    }
 }
 
 /*

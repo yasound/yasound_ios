@@ -366,7 +366,7 @@ static YasoundDataCacheImageManager* _main;
         self.targets = [[NSMutableArray alloc] init];
         self.isDownloading = NO;
         
-        DLog(@"YasoundDataCacheImage initWithUrl %@", aUrl);
+        //DLog(@"YasoundDataCacheImage initWithUrl %@", aUrl);
         
         // try to import the image from the disk
         FMResultSet* s = [[YasoundDataCacheImageManager main].db executeQuery:@"SELECT * FROM imageRegister WHERE url=?", self.url];
