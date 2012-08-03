@@ -343,6 +343,8 @@
 				<string>tabBarGiftsOn</string>
 				<key>selected</key>
 				<string>tabBarGiftsOn</string>
+				<key>disabled</key>
+				<string>tabBarGiftsDisabled</string>
 				<key>type</key>
 				<string>png</string>
 			</dict>

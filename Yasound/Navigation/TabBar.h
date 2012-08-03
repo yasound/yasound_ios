@@ -28,6 +28,7 @@ typedef enum TabIndex
 
 @property (nonatomic, retain) IBOutlet id<TabBarDelegate> tabBarDelegate;
 @property (nonatomic, retain) NSMutableArray* buttons;
+@property (nonatomic, retain) NSMutableArray* labels;
 //@property (nonatomic, retain) UIButton* selectedButton;
 @property (nonatomic) TabIndex selectedIndex;
 

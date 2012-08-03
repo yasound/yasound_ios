@@ -29,6 +29,7 @@
     NSArray* tabs = [NSArray arrayWithObjects:@"TabBar.selection", @"TabBar.favorites", @"TabBar.myRadios", @"TabBar.gifts", @"TabBar.profil", nil];
     
     self.buttons = [[NSMutableArray alloc] init];
+    self.labels = [[NSMutableArray alloc] init];
     
     for (NSString* tab in tabs)
     {
@@ -48,6 +49,7 @@
         UILabel* label = [sheet makeLabel];
         label.frame = CGRectMake(x + label.frame.origin.x, label.frame.origin.y, label.frame.size.width, label.frame.size.height);
         label.text = NSLocalizedString(tab, nil);
+        [self.labels addObject:label];
         
         [self addSubview:label];
 
@@ -57,6 +59,9 @@
     }
 
     
+    // disabled "gifts" for now
+    [[self.buttons objectAtIndex:TabIndexGifts] setEnabled:NO];
+    [[self.labels objectAtIndex:TabIndexGifts] setEnabled:NO];
     
 }
 
