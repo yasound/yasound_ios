@@ -50,26 +50,6 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
         _pgr.delegate = self;
         [_pgr release];
 
-//        UITapGestureRecognizer* tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-//        [self addGestureRecognizer:tgr];
-//        //tgr.delegate = self;
-//        [tgr release];
-
-//        _slgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeLeft:)];
-//        [_slgr setDirection:UISwipeGestureRecognizerDirectionLeft];
-//        _slgr.delegate = self;
-//        [self addGestureRecognizer:_slgr];
-//        [_slgr release];
-//
-//        _srgr = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeRight:)];
-//        [_srgr setDirection:UISwipeGestureRecognizerDirectionRight];
-//        _srgr.delegate = self;
-//        [self addGestureRecognizer:_srgr];
-//        [_srgr release];
-        
-        
-
-
   }
   return self;
 }
@@ -112,30 +92,6 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 #define SWIPE_TRANSLATION_FACTOR 2.f
 #define SWIPE_TRANSLATION_DECELERATION 6.f
 
-//- (void)handleSwipeLeft:(UISwipeGestureRecognizer*)sgr
-//{
-//    NSLog(@"swipe %d", sgr.direction );
-//    
-//    if ([self.timer isValid])
-//        [self.timer invalidate];
-//    
-//    self.translationX = SWIPE_TRANSLATION;
-//    
-//    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(onSwipeAnimateLeft:) userInfo:nil repeats:YES];
-//}
-//
-//
-//- (void)handleSwipeRight:(UISwipeGestureRecognizer*)sgr
-//{
-//    NSLog(@"swipe %d", sgr.direction );
-//    
-//    if ([self.timer isValid])
-//        [self.timer invalidate];
-//    
-//    self.translationX = SWIPE_TRANSLATION;
-//    
-//    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(onSwipeAnimateRight:) userInfo:nil repeats:YES];
-//}
 
 - (void)onSwipeAnimateLeft:(NSTimer*)timer
 {
@@ -147,10 +103,6 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
     }
 
     [self translateByContainer:-self.translationX];
-        
-//    self.containerPosX = self.containerPosX - self.translationX;
-//    self.container.frame = CGRectMake(self.containerPosX, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
-//    self.translationX = self.translationX - (self.translationX/SWIPE_TRANSLATION_DECELERATION);
 }
 
 - (void)onSwipeAnimateRight:(NSTimer*)timer
@@ -163,9 +115,6 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
     }
     
     [self translateByContainer:self.translationX];
-//    self.containerPosX = self.containerPosX + self.translationX;
-//    self.container.frame = CGRectMake(self.containerPosX, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
-//    self.translationX = self.translationX - (self.translationX/SWIPE_TRANSLATION_DECELERATION);
 }
 
 
@@ -183,28 +132,16 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
             [self.timer invalidate];
         
         _containerStartPosX = self.container.frame.origin.x;
-//        NSLog(@"self.container.frame %.2f %.2f   %.2f x %.2f", self.container.frame.origin.x, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
     }
     else
         if (pgr.state == UIGestureRecognizerStateChanged)
         {
             CGPoint translation = [pgr translationInView:pgr.view];
             
-            //NSLog(@"translation %.2f %.2f", translation.x, translation.y);
-            
-            //        CGRect newFrame = frontView.frame;
-            //        newFrame.origin.y = newFrame.origin.y + translation.y;
-            //        frontView.frame = newFrame;
-            
-            //        [pgr setTranslation:CGPointZero inView:pgr.view];
-            
             if (self.container)
             {
                 [self translateToContainer:_containerStartPosX + translation.x];
-//                CGFloat posX = self.containerPosX + translation.x;
-//                self.container.frame = CGRectMake(posX, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
             }
-            
             
             _containerDeltaTranslation = translation.x - _containerLastTranslation;
             _containerLastTranslation = translation.x;
@@ -212,20 +149,10 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
     
         else if (pgr.state == UIGestureRecognizerStateEnded)
         {
-//            CGPoint translation = [pgr translationInView:pgr.view];
-//            
-//            CGFloat delta = translation.x - _containerLastTranslation;
-
-            
-            NSLog(@"END TRANSLATION DELTA %.2f", _containerDeltaTranslation);
-
             _panGestureRunning = NO;
             
             if (fabs(_containerDeltaTranslation) >= PAN_DELTA_THRESHOLD_FOR_ANIMATE)
             {
-                NSLog(@"ANIMATE");
-                //[self translateByContainer:_containerDeltaTranslation];
-                
                 self.translationX = fabs(_containerDeltaTranslation) * SWIPE_TRANSLATION_FACTOR;
                 
                 if (_containerDeltaTranslation < 0)
@@ -237,8 +164,6 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
                 
                 self.timer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(onSwipeAnimateRight:) userInfo:nil repeats:YES];
                 }
-
-
             }
         }
 }
@@ -249,8 +174,6 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 - (void)translateToContainer:(CGFloat)posX
 {
     self.containerPosX = posX;
-    
-//    NSLog(@"posX %.2f   posXMin %.2f", posX, _containerPosXMin);
     
     // crop position
     if (self.containerPosX > _containerPosXMax)
@@ -308,7 +231,7 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 - (void)willMoveToSuperview:(UIView *)newSuperview
 {
     [super willMoveToSuperview:newSuperview];
-    if(!newSuperview) 
+    if(!newSuperview)
     {
 //        for (NSArray* objects in self.radioObjects)
 //        {
@@ -397,7 +320,7 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
         // title
         sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.title"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UILabel* title = [sheet makeLabel];
-        title.text = [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@ %@ %@ %@", radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name, radio.name];
+        title.text = radio.name;
         [itemContainer addSubview:title];
 
         // interactive view : catch the "press down" and "press up" actions
@@ -414,13 +337,12 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 
     self.container.frame = CGRectMake(0, 0, xOffset, self.frame.size.height);
     
-    _containerPosXMin = - xOffset + self.frame.size.width;
+    if (xOffset > self.frame.size.width)
+        _containerPosXMin = - xOffset + self.frame.size.width;
+    else
+        _containerPosXMin = 0;
+        
     _containerPosXMax = 0;
-
-    
-    //LBDEBUG
-//    NSLog(@"contentsSize %.2f, %.2f", self.scrollview.contentSize.width, self.scrollview.contentSize.height);
-//    NSLog(@"ok");
 
 }
 
@@ -499,184 +421,6 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 //    [self.target performSelector:self.action withObject:radio];
 //}
 //
-
-
-
-
-//- (void)onUpdate:(NSTimer*)timer
-//{
-//    [[YasoundDataCache main] requestCurrentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
-//}
-//- (void)receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
-//{
-//    if (!song)
-//        return;
-//    
-//    self.radioSubtitle1.text = song.artist;
-//    self.radioSubtitle2.text = song.name;
-//}
-
-
-
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-//{
-//  [super setSelected:selected animated:animated];
-//
-//  if (selected)
-//  {
-//    self.cellBackground.image = _bkgSelected;
-//    self.radioAvatarMask.image = _maskSelected;
-//
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionTitle" error:nil];
-//    [sheet applyToLabel:self.radioTitle class:@"selected"];
-//
-//    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle1" error:nil];
-//    [sheet applyToLabel:self.radioSubtitle1 class:@"selected"];
-//
-//    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle2" error:nil];
-//    [sheet applyToLabel:self.radioSubtitle2 class:@"selected"];
-//
-//    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionLikes" error:nil];
-//    [sheet applyToLabel:self.radioLikes class:@"selected"];
-//
-//    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionListeners" error:nil];
-//    [sheet applyToLabel:self.radioListeners class:@"selected"];
-//  }
-//  else
-//  {
-//    self.cellBackground.image = _bkgBackup;
-//    self.radioAvatarMask.image = _maskBackup;
-//
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionTitle" error:nil];
-//    [sheet applyToLabel:self.radioTitle class:nil];
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle1" error:nil];
-//    [sheet applyToLabel:self.radioSubtitle1 class:nil];
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle2" error:nil];
-//    [sheet applyToLabel:self.radioSubtitle2 class:nil];
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionLikes" error:nil];
-//    [sheet applyToLabel:self.radioLikes class:nil];
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionListeners" error:nil];
-//    [sheet applyToLabel:self.radioListeners class:nil];
-//  }
-//}
-
-
-
-
-
-
-
-
-//
-//
-//#pragma mark - TableView Source and Delegate
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    if (self.items == nil)
-//        return 0;
-//    return [self.items count];
-//}
-//
-//
-//
-////- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-////{
-////    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-////    view.frame = CGRectMake(0, 0, 100, 100);
-////    cell.backgroundView = view;
-////    [view release];
-////}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
-//{
-//    return 100;
-//}
-
-
-
-
-
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-//    if (cell == nil)
-//    {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-//    }
-//    
-//    cell.textLabel.text = @"prout";
-//    cell.textLabel.frame = CGRectMake(0, 0, 100, 100);
-//    
-//    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0,0,100,100)];
-//    view.backgroundColor = [UIColor redColor];
-//    cell.backgroundView = view;
-//    cell.selectedBackgroundView = view;
-//    
-//    
-//    return cell;
-//    
-//    
-//    
-//    
-//    if (self.displayRadios)
-//    {
-//        Radio* radio = [self.items objectAtIndex:indexPath.row];
-//        
-//        ProfilCellRadio* cell = [tableView dequeueReusableCellWithIdentifier:ProfilCellRadioIdentifier];
-//        if (cell == nil)
-//        {
-//            NSArray* topLevelItems = [self.cellLoader instantiateWithOwner:self options:nil];
-//            cell = [topLevelItems objectAtIndex:0];
-//        }
-//        
-//        [cell updateWithRadio:radio];
-//        
-//        return cell;
-//    }
-//    
-//    return nil;
-//}
-//
-//
-//
-//- (NSIndexPath *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    
-//    return nil;
-//}
-
-
-
-
-
-
-#pragma mark - UIScrollViewDelegate
-
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-//    if (!_waitingForPreviousEvents)
-//    {
-//        float offset = scrollView.contentOffset.y;
-//        float contentHeight = scrollView.contentSize.height;
-//        float viewHeight = scrollView.bounds.size.height;
-//        
-//        if ((offset > 0) && (offset + viewHeight > contentHeight + WALL_WAITING_ROW_HEIGHT))
-//        {
-//            [self askForPreviousEvents];
-//        }
-//    }
-}
 
 
 
