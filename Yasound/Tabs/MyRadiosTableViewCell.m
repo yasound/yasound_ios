@@ -132,6 +132,10 @@
 
 
 
+- (IBAction)onRadioClicked:(id)sender
+{
+    [self.delegate myRadioRequestedPlay:self.radio];
+}
 
 
 - (IBAction)onStatsClicked:(id)sender

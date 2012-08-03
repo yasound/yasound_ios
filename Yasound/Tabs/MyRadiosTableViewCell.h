@@ -11,6 +11,7 @@
 #import "WebImageView.h"
 
 @protocol MyRadiosTableViewCellDelegate <NSObject>
+- (void)myRadioRequestedPlay:(Radio*)radio;
 - (void)myRadioRequestedStats:(Radio*)radio;
 - (void)myRadioRequestedSettings:(Radio*)radio;
 @end
@@ -36,6 +37,7 @@
 //- (id)initWithOwner:(id)owner target:(id)target radio:(Radio*)radio;
 - (void)updateWithRadio:(Radio*)radio target:(id)target;
 
+- (IBAction)onRadioClicked:(id)sender;
 - (IBAction)onStatsClicked:(id)sender;
 - (IBAction)onSettingsClicked:(id)sender;
 

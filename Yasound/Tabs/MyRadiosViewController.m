@@ -12,6 +12,7 @@
 #import "AudioStreamManager.h"
 #import "YasoundDataProvider.h"
 #import "MyRadiosTableViewCell.h"
+#import "RootViewController.h"
 
 @interface MyRadiosViewController ()
 
@@ -105,6 +106,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     {
         NSArray *topLevelItems = [self.cellLoader instantiateWithOwner:self options:nil];
         cell = [topLevelItems objectAtIndex:0];
+        cell.delegate = self;
     }
         
     [cell updateWithRadio:radio target:self];
@@ -160,6 +162,23 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 
 
+
+#pragma mark - MyRadiosTableViewCellDelegate
+
+- (void)myRadioRequestedPlay:(Radio*)radio
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
+}
+
+- (void)myRadioRequestedStats:(Radio*)radio
+{
+
+}
+
+- (void)myRadioRequestedSettings:(Radio*)radio
+{
+
+}
 
 
 
