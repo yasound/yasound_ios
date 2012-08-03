@@ -40,7 +40,6 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
         self.action = action;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        _panGestureRunning = NO;
         _containerLastTranslation = 0;
         
         [self updateWithItems:items];
@@ -58,11 +57,8 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer*)gestureRecognizer
 {
-    if ((gestureRecognizer == _slgr) || (gestureRecognizer == _srgr))
-    {
-        return !_panGestureRunning;
-    }
-    
+    [self cancelPress];
+        
     if (gestureRecognizer == _pgr)
     {
         UIView *cell = [_pgr view];
@@ -81,13 +77,7 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 }
 
 
-- (void)handleTap:(UITapGestureRecognizer*)tgr
-{
-    self.translationX = 0;
-    
-    if ([self.timer isValid])
-        [self.timer invalidate];
-}
+
 
 #define SWIPE_TRANSLATION_FACTOR 2.f
 #define SWIPE_TRANSLATION_DECELERATION 6.f
@@ -126,8 +116,6 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 {
     if (pgr.state == UIGestureRecognizerStateBegan)
     {
-        _panGestureRunning = YES;
-        
         if ([self.timer isValid])
             [self.timer invalidate];
         
@@ -149,8 +137,6 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
     
         else if (pgr.state == UIGestureRecognizerStateEnded)
         {
-            _panGestureRunning = NO;
-            
             if (fabs(_containerDeltaTranslation) >= PAN_DELTA_THRESHOLD_FOR_ANIMATE)
             {
                 self.translationX = fabs(_containerDeltaTranslation) * SWIPE_TRANSLATION_FACTOR;
@@ -326,9 +312,9 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
         // interactive view : catch the "press down" and "press up" actions
         [self.userObjects addObject:radioMask];
         
-//        InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheetContainer.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:itemIndex]];
-//        [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:itemIndex]];
-//        [itemContainer addSubview:interactiveView];
+        InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheetContainer.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:itemIndex]];
+        [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:itemIndex]];
+        [itemContainer addSubview:interactiveView];
 
 
         itemIndex++;
@@ -353,6 +339,8 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
     NSInteger radioIndex = [nbIndex integerValue];
     UIImageView* radioMask = [self.userObjects objectAtIndex:radioIndex];
     
+    _selectedIndex = radioIndex;
+    
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.maskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     [radioMask setImage:[sheet image]];
 }
@@ -360,6 +348,12 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 
 - (void)onInteractivePressedUp:(NSNumber*)nbIndex
 {
+    // it's been canceled
+    if (_selectedIndex < 0)
+        return;
+    
+    _selectedIndex = -1;
+
     // set the "highlighted" image for the radio mask
     NSInteger radioIndex = [nbIndex integerValue];
     UIImageView* radioMask = [self.userObjects objectAtIndex:radioIndex];
@@ -370,7 +364,19 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
     Radio* radio = [self.items objectAtIndex:radioIndex];
     
     // and call external action to delegate the radio selection
-    [self.target performSelector:self.action withObject:radio];
+   [self.target performSelector:self.action withObject:radio];
+}
+
+
+- (void)cancelPress
+{
+    if (_selectedIndex < 0)
+        return;
+
+    UIImageView* radioMask = [self.userObjects objectAtIndex:_selectedIndex];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    [radioMask setImage:[sheet image]];
 }
 
 
@@ -391,36 +397,6 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 //    [self.cellLoader release];
   [super dealloc];
 }
-
-
-
-//- (void)onInteractivePressedDown:(NSNumber*)indexNb
-//{
-//    // set the "highlighted" image for the radio mask
-//    NSInteger radioIndex = [indexNb integerValue];
-//    NSArray* objects = [self.radioObjects objectAtIndex:radioIndex];
-//    UIImageView* radioMask = [objects objectAtIndex:RADIO_OBJECT_MASK];
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.maskHighlighted" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    [radioMask setImage:[sheet image]];
-//}
-//
-//- (void)onInteractivePressedUp:(NSNumber*)indexNb
-//{
-//    // set back the "normal" image for the radio mask
-//    NSInteger radioIndex = [indexNb integerValue];
-//    NSArray* objects = [self.radioObjects objectAtIndex:radioIndex];
-//    UIImageView* radioMask = [objects objectAtIndex:RADIO_OBJECT_MASK];
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    [radioMask setImage:[sheet image]];
-//    
-//    Radio* radio = [objects objectAtIndex:RADIO_OBJECT_RADIO];
-//
-//    // and call external action to delegate the radio selection
-//    [self.target performSelector:self.action withObject:radio];
-//}
-//
 
 
 

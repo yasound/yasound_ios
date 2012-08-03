@@ -13,18 +13,15 @@
 
 @interface ProfilTableViewCell : UITableViewCell
 {
+    NSInteger _selectedIndex;
+    
     CGFloat _containerPosXMin;
     CGFloat _containerPosXMax;
     CGFloat _containerStartPosX;
     CGFloat _containerLastTranslation;
     CGFloat _containerDeltaTranslation;
     
-    BOOL _panGestureRunning;
-    
     UIPanGestureRecognizer* _pgr;
-    UITapGestureRecognizer* _tgr;
-    UISwipeGestureRecognizer* _slgr;
-    UISwipeGestureRecognizer* _srgr;
 }
 
 
