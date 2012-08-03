@@ -25,6 +25,8 @@
 @synthesize nb_current_users;
 @synthesize stream_url;
 @synthesize web_url;
+@synthesize overall_listening_time;
+@synthesize new_wall_messages_count;
 
 - (NSArray*)tagsArray
 {

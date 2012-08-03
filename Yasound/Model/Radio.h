@@ -26,6 +26,10 @@
 @property (retain, nonatomic) NSNumber* nb_current_users;
 @property (retain, nonatomic) NSString* stream_url;
 @property (retain, nonatomic) NSString* web_url;
+@property (retain, nonatomic) NSNumber* overall_listening_time; // in seconds
+@property (retain, nonatomic) NSNumber* new_wall_messages_count;
+
+
 
 - (NSArray*)tagsArray;
 - (void)setTagsWithArray:(NSArray*)tagArray;
