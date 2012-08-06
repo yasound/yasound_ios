@@ -110,6 +110,8 @@ taskStatus stringToStatus(NSString* str);
 
 - (void)favoriteRadiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
 
+- (void)radiosForUser:(User*)u withTarget:(id)target action:(SEL)selector;
+
 
 // .........................................................................................
 // deprecated methods
