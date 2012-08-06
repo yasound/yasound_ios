@@ -1555,84 +1555,28 @@
 		</dict>
 		<key>Menu</key>
 		<dict>
-			<key>MenuRowSingle</key>
+			<key>iconRadios</key>
 			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
 				<key>name</key>
-				<string>MenuRowSingle</string>
+				<string>IconRadiosSearch</string>
 				<key>type</key>
 				<string>png</string>
 			</dict>
-			<key>MenuRowLast</key>
+			<key>row</key>
 			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
 				<key>name</key>
-				<string>MenuRowLast</string>
+				<string>menuRow</string>
 				<key>type</key>
 				<string>png</string>
 			</dict>
-			<key>MenuRowInter</key>
+			<key>rowHighlighted</key>
 			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
 				<key>name</key>
-				<string>MenuRowInter</string>
+				<string>menuRowHighlighted</string>
 				<key>type</key>
 				<string>png</string>
 			</dict>
-			<key>MenuRowFirstSelected</key>
-			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-				<key>name</key>
-				<string>MenuRowFirstSelected</string>
-				<key>type</key>
-				<string>png</string>
-			</dict>
-			<key>MenuRowFirst</key>
-			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-				<key>name</key>
-				<string>MenuRowFirst</string>
-				<key>type</key>
-				<string>png</string>
-			</dict>
-			<key>MenuSectionTitle</key>
-			<dict>
-				<key>x</key>
-				<integer>10</integer>
-				<key>y</key>
-				<integer>4</integer>
-				<key>width</key>
-				<integer>290</integer>
-				<key>height</key>
-				<integer>16</integer>
-				<key>font</key>
-				<dict>
-					<key>size</key>
-					<integer>14</integer>
-					<key>weight</key>
-					<string>bold</string>
-					<key>textColor</key>
-					<string>white</string>
-					<key>backgroundColor</key>
-					<string>clear</string>
-				</dict>
-			</dict>
-			<key>MenuViewCell_name</key>
+			<key>rowTitle</key>
 			<dict>
 				<key>font</key>
 				<dict>
@@ -1654,7 +1598,7 @@
 				<key>height</key>
 				<integer>20</integer>
 			</dict>
-			<key>MenuViewCell_icon</key>
+			<key>rowIcon</key>
 			<dict>
 				<key>x</key>
 				<integer>8</integer>
@@ -1664,28 +1608,6 @@
 				<integer>36</integer>
 				<key>height</key>
 				<integer>36</integer>
-			</dict>
-			<key>MenuSection</key>
-			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-				<key>name</key>
-				<string>MenuSection</string>
-				<key>type</key>
-				<string>png</string>
-			</dict>
-			<key>MenuBackground</key>
-			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-				<key>name</key>
-				<string>MenuBackground</string>
-				<key>type</key>
-				<string>png</string>
 			</dict>
 		</dict>
 		<key>Icons</key>

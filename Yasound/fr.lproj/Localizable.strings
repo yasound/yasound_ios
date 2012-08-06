@@ -310,33 +310,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "YasoundUpload_add_WIFI_title" = "Connexion 3G";
 "YasoundUpload_add_WIFI_message" = "Le morceau est ajouté dans la file des téléchargements. Le transfert démarrera dès qu'une connexion WIFI sera disponible";
 
-
-"MenuView_session_login" = "Se connecter";
-"MenuView_session_logout" = "Se déconnecter";
-
-
-"MenuView_section_myradio" = "Ma Radio";
-"MenuView_section_radios" = "Radios";
-"MenuView_section_me" = "Moi";
-"MenuView_section_misc" = "Divers";
-
-
-
-"MenuView_myradio_myradio" = "Ma radio";
-"MenuView_myradio_nowplaying" = "A l'écoute";
-"MenuView_radios_favorites" = "Mes favoris";
-"MenuView_radios_friends" = "Mes amis";
-"MenuView_radios_selection" = "Sélection";
-"MenuView_radios_top" = "Top";
-"MenuView_radios_search" = "Recherche";
-"MenuView_me_notifs" = "Mes notifications";
-"MenuView_me_stats" = "Mes statistiques";
-"MenuView_me_playlists" = "Ma programmation";
-"MenuView_me_programming" = "Ma programmation";
-"MenuView_me_config" = "Paramètres";
-"MenuView_misc_legal" = "Conditions d'utilisation";
-"MenuView_misc_logout" = "Se déconnecter";
-
 "NotificationView_title" = "Me prévenir";
 
 "NotifFriendGoesOnline" = "Un ami passe en ligne";
@@ -587,4 +560,14 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Profil.section.myRadios" = "Mes radios";
 "Profil.section.favorites" = "Favoris";
 "Profil.section.friends" = "Mes amis";
+
+"Menu.radios" = "Radios";
+"Menu.login" = "Se connecter";
+"Menu.logout" = "Se déconnecter";
+"Menu.account" = "Mon compte";
+"Menu.notifs" = "Notifications";
+"Menu.facebook" = "Facebook";
+"Menu.twitter" = "Twitter";
+"Menu.yasound" = "Yasound";
+"Menu.legal" = "Conditions d'utilisation";
 

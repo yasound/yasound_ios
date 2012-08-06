@@ -168,30 +168,21 @@
     // request favorites radios
     if (index == WheelIdFavorites)
     {
-        NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
-        assert(entry);
-        url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];     
-        
+        url = URL_RADIOS_FAVORITES;
         [tabBar setTabSelected:TabIndexFavorites];
     }
 
     // request selection radios
     else if (index == WheelIdSelection)
     {
-        NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_SELECTION];
-        assert(entry);
-        url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];        
-
+        url = URL_RADIOS_SELECTION;
         [tabBar setTabSelected:TabIndexSelection];
     }
 
     // request top radios
     else if (index == WheelIdTop)
     {
-        NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_TOP];
-        assert(entry);
-        url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];            
-
+        url = URL_RADIOS_TOP;
         [tabBar setTabSelected:TabIndexSelection];
     }
     

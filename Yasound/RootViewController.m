@@ -317,11 +317,6 @@
 - (void)enterTheApp
 {
     
-//    // go to the menu, either you are connected or not
-//    self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-//    [self.navigationController pushViewController:self.menuView animated:YES];
-
-    
     if (APPDELEGATE.mustGoToNotificationCenter)
     {
         [self goToNotificationCenter];
@@ -388,7 +383,7 @@
 {
   if (self.menuView == nil)
   {
-    self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+    self.menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
     [self.navigationController pushViewController:self.menuView animated:NO];
   }
   else
@@ -429,7 +424,7 @@
 
     if (self.menuView == nil)
     {
-        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        self.menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
         [self.navigationController pushViewController:self.menuView animated:animatePushMenu];
     }
     else
@@ -487,7 +482,7 @@
   
   [self.navigationController popToRootViewControllerAnimated:NO];
   
-  self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+  self.menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
   [self.menuView retain];
   [self.navigationController pushViewController:self.menuView animated:YES];
 }
@@ -642,17 +637,6 @@
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
-
-//    if ([[YasoundDataProvider main].radio.id intValue] == [radio.id intValue])
-//    {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIO object:nil];
-//    }
-//    
-//    else
-//    {
-//        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
-//        [self.navigationController pushViewController:self.menuView animated:NO];
-//    }
 }
 
 
@@ -664,7 +648,7 @@
     if (self.menuView == nil)
     {
         [self.navigationController popToRootViewControllerAnimated:NO];
-        self.menuView = [[MenuDynamicViewController alloc] initWithNibName:@"MenuDynamicViewController" bundle:nil withSections:[[YasoundDataCache main] menu]];
+        self.menuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
         [self.navigationController pushViewController:self.menuView animated:animated];
     }
     else

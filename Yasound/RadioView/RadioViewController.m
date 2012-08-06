@@ -443,8 +443,7 @@ static Song* _gNowPlayingSong = nil;
     
 
     
-    NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
-    NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
+    NSString* url = URL_RADIOS_FAVORITES;
     [[YasoundDataCache main] requestRadiosWithUrl:[NSURL URLWithString:url] withGenre:nil target:self action:@selector(onFavoriteUpdate:)];
     
     // launch timer here, but only the the wall has been filled already.
@@ -1905,8 +1904,7 @@ static Song* _gNowPlayingSong = nil;
     _favoritesLabel.text = [NSString stringWithFormat:@"%d", nbFavorites];
     
     // send online request
-    NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
-    NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
+    NSString* url = URL_RADIOS_FAVORITES;
     [[YasoundDataCache main] requestRadiosWithUrl:[NSURL URLWithString:url] withGenre:nil target:self action:@selector(onFavoritesRadioReceived:)];
     
     
@@ -1925,8 +1923,7 @@ static Song* _gNowPlayingSong = nil;
             self.favoriteButton.selected = NO;
 
             // and clear the cache for favorites
-            NSDictionary* entry = [[YasoundDataCache main] menuEntry:MENU_ENTRY_ID_FAVORITES];
-            NSString* url = [[YasoundDataCache main] entryParameter:MENU_ENTRY_PARAM_URL forEntry:entry];
+            NSString* url = URL_RADIOS_FAVORITES;
             [[YasoundDataCache main] clearRadios:url];
 
             _favoritesButtonLocked = NO;

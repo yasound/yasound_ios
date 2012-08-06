@@ -632,25 +632,25 @@ static UIImage* gDummyImage = nil;
 // MENU
 //
 
-// return the most recent menu description, or the default menu description if no other one has been downloaded yet
-- (NSArray*)menu
-{
-    NSArray* descr = [[UserSettings main] objectForKey:USKEYcacheMenuDescription];
-
-    if (descr != nil)
-        return descr;
-    
-    // no menu description yet, get the default one from the resources
-    
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"menu" ofType: @"json"];
-
-    NSString* descrStr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    descr = [descrStr JSONValue];
-    
-    [[UserSettings main] setObject:descr forKey:USKEYcacheMenuDescription];
-
-    return descr;
-}
+//// return the most recent menu description, or the default menu description if no other one has been downloaded yet
+//- (NSArray*)menu
+//{
+//    NSArray* descr = [[UserSettings main] objectForKey:USKEYcacheMenuDescription];
+//
+//    if (descr != nil)
+//        return descr;
+//    
+//    // no menu description yet, get the default one from the resources
+//    
+//    NSString* path = [[NSBundle mainBundle] pathForResource:@"menu" ofType: @"json"];
+//
+//    NSString* descrStr = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+//    descr = [descrStr JSONValue];
+//    
+//    [[UserSettings main] setObject:descr forKey:USKEYcacheMenuDescription];
+//
+//    return descr;
+//}
 
 
 
@@ -667,49 +667,49 @@ static UIImage* gDummyImage = nil;
 
 
 // return the dictionary description of the current menu, from its given ID (for instance, "radioSelection")
-- (NSDictionary*)menuEntry:(NSString*)entryId
-{
-    NSArray* menu = [self menu];
-    
-    for (NSDictionary* section in menu)
-    {
-        NSArray* entries = [section objectForKey:@"entries"];
-        
-        for (NSDictionary* entry in entries)
-        {
-            DLog(@"%@", entry);
-            NSString* curId = [entry objectForKey:@"id"];
-            
-            if ([curId isEqualToString:entryId])
-                return entry;
-        }
-    }
-    
-    DLog(@"YasoundDataCache::menuEntry Error : could not find any entry for id '%@'", entryId);
-    DLog(@"debug menu : %@", menu);
-    
-    return nil;
-}
-
-
-- (id)entryParameter:(NSString*)param forEntry:(NSDictionary*)entry
-{
-    NSDictionary* params = [entry objectForKey:@"params"];
-    if (params == nil)
-    {
-        DLog(@"YasoundDataCache::entryParameter : no params, can not get param '%@'", param);
-        return nil;
-    }
-    
-    NSString* result = [params objectForKey:param];
-    if (result == nil)
-    {
-        DLog(@"YasoundDataCache::entryParameter : param '%@' is nil", param);
-        return nil;
-    }
-    
-    return result;
-}
+//- (NSDictionary*)menuEntry:(NSString*)entryId
+//{
+//    NSArray* menu = [self menu];
+//    
+//    for (NSDictionary* section in menu)
+//    {
+//        NSArray* entries = [section objectForKey:@"entries"];
+//        
+//        for (NSDictionary* entry in entries)
+//        {
+//            DLog(@"%@", entry);
+//            NSString* curId = [entry objectForKey:@"id"];
+//            
+//            if ([curId isEqualToString:entryId])
+//                return entry;
+//        }
+//    }
+//    
+//    DLog(@"YasoundDataCache::menuEntry Error : could not find any entry for id '%@'", entryId);
+//    DLog(@"debug menu : %@", menu);
+//    
+//    return nil;
+//}
+//
+//
+//- (id)entryParameter:(NSString*)param forEntry:(NSDictionary*)entry
+//{
+//    NSDictionary* params = [entry objectForKey:@"params"];
+//    if (params == nil)
+//    {
+//        DLog(@"YasoundDataCache::entryParameter : no params, can not get param '%@'", param);
+//        return nil;
+//    }
+//    
+//    NSString* result = [params objectForKey:param];
+//    if (result == nil)
+//    {
+//        DLog(@"YasoundDataCache::entryParameter : param '%@' is nil", param);
+//        return nil;
+//    }
+//    
+//    return result;
+//}
 
 
 

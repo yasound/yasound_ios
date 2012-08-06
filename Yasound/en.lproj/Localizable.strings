@@ -316,31 +316,6 @@
 "YasoundUpload_add_WIFI_title" = "3G network";
 "YasoundUpload_add_WIFI_message" = "The song is added to the pending uploads queue. File transfert will start as soon this device is connected to a WIFI network.";
 
-"MenuView_session_login" = "Log in";
-"MenuView_session_logout" = "Log out";
-
-"MenuView_section_myradio" = "My Radio";
-"MenuView_section_radios" = "Radios";
-"MenuView_section_me" = "Me";
-"MenuView_section_misc" = "Miscellaneous";
-
-
-
-"MenuView_myradio_myradio" = "My radio";
-"MenuView_myradio_nowplaying" = "On air";
-"MenuView_radios_favorites" = "My favorites";
-"MenuView_radios_friends" = "My friends";
-"MenuView_radios_selection" = "Selection";
-"MenuView_radios_top" = "Top";
-"MenuView_radios_search" = "Search";
-"MenuView_me_notifs" = "My notifications";
-"MenuView_me_stats" = "My stats";
-"MenuView_me_playlists" = "Programming";
-"MenuView_me_programming" = "Programming";
-"MenuView_me_config" = "Settings";
-"MenuView_misc_legal" = "Terms of Use";
-"MenuView_misc_logout" = "Log out";
-
 "NotificationView_title" = "Notify me";
 
 "NotifFriendGoesOnline" = "A friend goes online";
@@ -597,6 +572,16 @@
 "Profil.section.myRadios" = "My radios";
 "Profil.section.favorites" = "Favorites";
 "Profil.section.friends" = "My friends";
+
+"Menu.radios" = "Radios";
+"Menu.login" = "Login";
+"Menu.logout" = "Logout";
+"Menu.account" = "My account";
+"Menu.notifs" = "Notifications";
+"Menu.facebook" = "Facebook";
+"Menu.twitter" = "Twitter";
+"Menu.yasound" = "Yasound";
+"Menu.legal" = "Terms of use";
 
 
 

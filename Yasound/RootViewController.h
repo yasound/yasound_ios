@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuDynamicViewController.h"
+#import "MenuViewController.h"
 #import "TestflightViewController.h"
 #import "User.h"
 
@@ -50,7 +50,7 @@
 }
 
 @property (nonatomic, retain) User* user;
-@property (nonatomic, retain) MenuDynamicViewController* menuView;
+@property (nonatomic, retain) MenuViewController* menuView;
 
 
 

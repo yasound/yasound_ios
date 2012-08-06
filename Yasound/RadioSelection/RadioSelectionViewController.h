@@ -28,7 +28,5 @@
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withTabIndex:(TabIndex)tabIndex;
 
-- (IBAction)onStyleSelectorClicked:(id)sender;
-- (IBAction)onNowPlayingClicked:(id)sender;
 
 @end

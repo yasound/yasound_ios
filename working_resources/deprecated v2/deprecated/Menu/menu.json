@@ -1,0 +1,18 @@
+[
+ {"name": "Radios", "entries":
+
+    [{"image": "IconMyRadio", "type": "radio_list", "id": "radioSelection", "name": "Radios"},
+ 
+    {"image": "IconMiscLogout", "type": "logout", "id": "miscLogout", "name": "Log out"},
+ 
+      {"image": "IconMeSettings", "type": "settings", "id": "meSettings", "name": "Settings"},
+     
+     {"image": "IconMeNotifs", "type": "notifications", "id": "meNotifications", "name": "My notifications"},
+     
+     
+ 
+ {"name": "Me", "entries": , {"image": "IconMeStats", "type": "stats", "id": "meStats", "name": "My stats"}, {"image": "IconMePlaylists", "type": "programming", "id": "meProgramming", "name": "Programming"},]},
+
+     [{"params": {"url": "legal/eula.html"}, "image": "IconMiscLegal", "type": "web_page", "id": "miscLegal", "name": "Terms of Use"}, ]}
+
+ ]
