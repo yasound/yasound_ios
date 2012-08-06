@@ -12,27 +12,14 @@
 #import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import <QuartzCore/QuartzCore.h>
-//#import "RadioViewController.h"
-//#import "YasoundDataProvider.h"
-//#import "RadioSelectionViewController.h"
-//#import "RadioSearchViewController.h"
-//#import "FriendsViewController.h"
-//#import "FavoritesViewController.h"
-//#import "StatsViewController.h"
-//#import "PlaylistsViewController.h"
-//#import "SettingsViewController.h"
-//#import "WebPageViewController.h"
-//#import "AudioStreamManager.h"
-//#import "YasoundSessionManager.h"
-//#import "RootViewController.h"
-//#import "BundleStylesheet.h"
-//#import "Theme.h"
-//#import "YasoundAppDelegate.h"
-//#import "ProgrammingViewController.h"
-//
-//#import "NotificationCenterViewController.h"
-
-
+#import "RootViewController.h"
+#import "SettingsViewController.h"
+#import "NotificationViewController.h"
+#import "AccountFacebookViewController.h"
+#import "AccountTwitterViewController.h"
+#import "AccountYasoundViewController.h"
+#import "WebPageViewController.h"
+#import "YasoundDataCache.h"
 
 
 @implementation MenuViewController
@@ -220,7 +207,58 @@ enum MenuDescription
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    if (indexPath.row == ROW_RADIOS)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+    }
+    
+    else if (indexPath.row == ROW_LOGIN)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:nil];
+    }
+    
+    else if (indexPath.row == ROW_ACCOUNT)
+    {
+        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:NO radio:[YasoundDataProvider main].radio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    
+    else if (indexPath.row == ROW_NOTIFS)
+    {
+        NotificationViewController* view = [[NotificationViewController alloc] initWithNibName:@"NotificationViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    
+    else if (indexPath.row == ROW_FACEBOOK)
+    {
+        AccountFacebookViewController* view = [[AccountFacebookViewController alloc] initWithNibName:@"AccountFacebookViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    else if (indexPath.row == ROW_TWITTER)
+    {
+        AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    else if (indexPath.row == ROW_YASOUND)
+    {
+        AccountYasoundViewController* view = [[AccountYasoundViewController alloc] initWithNibName:@"AccountYasoundViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    
+    else if (indexPath.row == ROW_LEGAL)
+    {
+        NSURL* url = [NSURL URLWithString:URL_LEGAL];
+        NSString* title = NSLocalizedString(@"Menu.legal", nil);
+        
+        WebPageViewController* view = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil withUrl:url andTitle:title];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath_deprecated:(NSIndexPath *)indexPath

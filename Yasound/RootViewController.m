@@ -705,7 +705,13 @@
 {
     DLog(@"onNotifGotoSelection");
     
-    [self gotoMenuAnimated:NO];
+    BOOL clearNavigationController = YES;
+    NSNumber* nbClearNavigationController = notification.object;
+    if (nbClearNavigationController)
+        clearNavigationController = [nbClearNavigationController boolValue];
+
+    if (clearNavigationController)
+        [self gotoMenuAnimated:NO];
     
     RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withTabIndex:TabIndexSelection];
     [self.navigationController pushViewController:view animated:NO];    

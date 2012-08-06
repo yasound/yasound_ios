@@ -251,43 +251,43 @@
 
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSString* title = nil;
-    
-    if (section == SECTION_CONFIG)
-        title = NSLocalizedString(@"SettingsView_section_config", nil);
-    
-    else if (section == SECTION_IMAGE)
-        title = NSLocalizedString(@"SettingsView_section_image", nil);
-    
-    else if (section == SECTION_ACCOUNTS)
-        title = NSLocalizedString(@"SettingsView_section_accounts", nil);
-
-    else if (section == SECTION_NOTIFS)
-        title = NSLocalizedString(@"SettingsView_section_notifs", nil);
-
-#ifdef DEBUG
-    else if (section == SECTION_CACHE)
-        title = @"Cache";
-#endif
-
-    
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    
-    UIImage* image = [sheet image];
-    CGFloat height = image.size.height;
-    UIImageView* view = [[UIImageView alloc] initWithImage:image];
-    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
-    
-    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UILabel* label = [sheet makeLabel];
-    label.text = title;
-    [view addSubview:label];
-    
-    return view;
-}
-    
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    NSString* title = nil;
+//    
+//    if (section == SECTION_CONFIG)
+//        title = NSLocalizedString(@"SettingsView_section_config", nil);
+//    
+//    else if (section == SECTION_IMAGE)
+//        title = NSLocalizedString(@"SettingsView_section_image", nil);
+//    
+//    else if (section == SECTION_ACCOUNTS)
+//        title = NSLocalizedString(@"SettingsView_section_accounts", nil);
+//
+//    else if (section == SECTION_NOTIFS)
+//        title = NSLocalizedString(@"SettingsView_section_notifs", nil);
+//
+//#ifdef DEBUG
+//    else if (section == SECTION_CACHE)
+//        title = @"Cache";
+//#endif
+//
+//    
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    
+//    UIImage* image = [sheet image];
+//    CGFloat height = image.size.height;
+//    UIImageView* view = [[UIImageView alloc] initWithImage:image];
+//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
+//    
+//    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    UILabel* label = [sheet makeLabel];
+//    label.text = title;
+//    [view addSubview:label];
+//    
+//    return view;
+//}
+//    
 
 
 
