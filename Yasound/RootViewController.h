@@ -50,9 +50,10 @@
 }
 
 @property (nonatomic, retain) User* user;
-@property (nonatomic, retain) MenuViewController* menuView;
 
+//@property (nonatomic, retain) MenuViewController* menuView;
 
++ (BOOL)menuIsCurrentScreen;
 
 @end
 

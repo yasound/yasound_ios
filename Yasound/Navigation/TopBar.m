@@ -9,6 +9,7 @@
 #import "TopBar.h"
 #import "Theme.h"
 #import "AudioStreamManager.h"
+#import "RootViewController.h"
 
 @implementation TopBar
 
@@ -24,10 +25,21 @@
         [self insertSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topBarBkg.png"]] autorelease] atIndex:0];
 
     // "back"  item
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIButton* btn = [sheet makeButton];
-    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* itemBack = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    BundleStylesheet* sheet = nil;
+    UIButton* btn = nil;
+    UIBarButtonItem* itemBack = nil;
+    
+    if (![RootViewController menuIsCurrentScreen])
+    {
+        sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        btn = [sheet makeButton];
+        [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+        itemBack = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    }
+    else
+    {
+        itemBack = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];    
+    }
     
     // "HD" item
     UIBarButtonItem* itemHD = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"barItemHdOff.png"]]];
