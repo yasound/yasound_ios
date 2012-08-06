@@ -109,7 +109,7 @@
         return;
     }
     
-    Container* container = [req responseObjectsWithClass:[UserNotification class]];
+    Container* container = [req responseObjectsWithClass:[Radio class]];
     self.radios = container.objects;
     
     if (self.radios == nil)
