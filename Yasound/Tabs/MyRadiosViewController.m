@@ -49,7 +49,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 {
     [super viewDidLoad];
     [self.tabBar setTabSelected:TabIndexMyRadios];
-    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceived:)];
+    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceived:success:)];
 }
 
 
