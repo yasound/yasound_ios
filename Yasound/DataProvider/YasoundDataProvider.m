@@ -945,6 +945,22 @@ static YasoundDataProvider* _main = nil;
     [_communicator getObjectsWithClass:[Radio class] withURL:url absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
 }
 
+- (void)radiosForUser:(User*)u withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/user/%@/radios", u.username];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    conf.userData = nil;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
 //
 
 
