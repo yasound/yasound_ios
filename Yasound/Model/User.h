@@ -31,7 +31,6 @@ UserMood stringToUsermood(NSString* str);
 @property (retain, nonatomic) NSString* picture;
 @property (retain, nonatomic) Radio* current_radio;
 @property (retain, nonatomic) Radio* own_radio;
-@property (retain, nonatomic) NSArray* own_radios;
 
 @property (retain, nonatomic) NSString* facebook_username;
 @property (retain, nonatomic) NSString* facebook_uid;

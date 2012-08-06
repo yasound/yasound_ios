@@ -14,6 +14,7 @@
 
 @interface ProfilViewController : UIViewController<TopBarDelegate, TabBarDelegate>
 
+@property (nonatomic, retain) NSArray* radios;
 @property (nonatomic, retain) NSArray* favorites;
 @property (nonatomic, retain) NSArray* friends;
 

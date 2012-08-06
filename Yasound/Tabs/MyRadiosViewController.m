@@ -49,12 +49,25 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 {
     [super viewDidLoad];
     [self.tabBar setTabSelected:TabIndexMyRadios];
+    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceived:)];
+}
+
+
+- (void)radiosReceived:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        DLog(@"MyRadiosViewController::radiosReceived failed");
+        return;
+    }
     
+    Container* container = [req responseObjectsWithClass:[UserNotification class]];
+    self.radios = container.objects;
+    [self.tableview reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.radios = [YasoundDataProvider main].user.own_radios;
     [self.tableview reloadData];
 }
 

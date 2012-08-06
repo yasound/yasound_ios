@@ -32,6 +32,7 @@
 @synthesize cellProfil;
 
 @synthesize user;
+@synthesize radios;
 @synthesize favorites;
 @synthesize friends;
 
@@ -51,27 +52,14 @@
     if (self) 
     {
         self.user = [YasoundDataProvider main].user;
-        
-        [[YasoundDataProvider main] favoriteRadiosForUser:self.user withTarget:self action:@selector(favoritesRadioReceived:withInfo:)];
-        [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(friendsReceived:info:)];
-
     }
     return self;
 }
 
-- (void)favoritesRadioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
-{
-    self.favorites = radios;
-    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FAVORITES]] withRowAnimation:NO];
-}
 
 
 
-- (void)friendsReceived:(NSArray*)friends info:(NSDictionary*)info
-{
-    self.friends = friends;
-    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FRIENDS]] withRowAnimation:NO];
-}
+
 
 
 - (void)viewDidLoad
@@ -85,7 +73,15 @@
     
     self.buttonGrayLabel.text = NSLocalizedString(@"Profil.follow", nil);
     self.buttonBlueLabel.text = NSLocalizedString(@"Profil.message", nil);
+
+    [[YasoundDataProvider main] radiosForUser:self.user withTarge:self action:@selector(radiosReceived:)];
+    [[YasoundDataProvider main] favoriteRadiosForUser:self.user withTarget:self action:@selector(favoritesRadioReceived:withInfo:)];
+    [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(friendsReceived:info:)];
 }
+
+
+
+
 
 - (void)viewDidUnload
 {
@@ -97,6 +93,40 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+
+
+
+
+
+- (void)radiosReceived:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        DLog(@"MyRadiosViewController::radiosReceived failed");
+        return;
+    }
+    
+    Container* container = [req responseObjectsWithClass:[UserNotification class]];
+    self.radios = container.objects;
+    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_MYRADIOS]] withRowAnimation:NO];
+}
+
+
+- (void)favoritesRadioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
+{
+    self.favorites = radios;
+    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FAVORITES]] withRowAnimation:NO];
+}
+
+
+
+- (void)friendsReceived:(NSArray*)friends info:(NSDictionary*)info
+{
+    self.friends = friends;
+    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FRIENDS]] withRowAnimation:NO];
 }
 
 
@@ -181,7 +211,7 @@
     NSArray* items = nil;
     
     if (indexPath.section == SECTION_MYRADIOS)
-        items = self.user.own_radios;
+        items = self.radios;
     else if (indexPath.section == SECTION_FAVORITES)
         items = self.favorites;
     else if (indexPath.section == SECTION_FRIENDS)
