@@ -74,7 +74,7 @@
     self.buttonGrayLabel.text = NSLocalizedString(@"Profil.follow", nil);
     self.buttonBlueLabel.text = NSLocalizedString(@"Profil.message", nil);
 
-    [[YasoundDataProvider main] radiosForUser:self.user withTarge:self action:@selector(radiosReceived:)];
+    [[YasoundDataProvider main] radiosForUser:self.user withTarget:self action:@selector(radiosReceived:success:)];
     [[YasoundDataProvider main] favoriteRadiosForUser:self.user withTarget:self action:@selector(favoritesRadioReceived:withInfo:)];
     [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(friendsReceived:info:)];
 }
@@ -105,12 +105,19 @@
 {
     if (!success)
     {
-        DLog(@"MyRadiosViewController::radiosReceived failed");
+        DLog(@"ProfilViewController::radiosReceived failed");
         return;
     }
     
     Container* container = [req responseObjectsWithClass:[UserNotification class]];
     self.radios = container.objects;
+    
+    if (self.radios == nil)
+    {
+        DLog(@"ProfilViewController::radiosReceived error : radios is nil!");
+        assert(0);
+    }
+    
     [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_MYRADIOS]] withRowAnimation:NO];
 }
 
