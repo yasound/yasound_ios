@@ -13,8 +13,10 @@
 
 @implementation TabBar
 
+
 @synthesize tabBarDelegate;
 @synthesize buttons;
+@synthesize labels;
 //@synthesize selectedButton;
 @synthesize selectedIndex;
 
