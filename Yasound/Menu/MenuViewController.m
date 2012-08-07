@@ -20,7 +20,7 @@
 #import "AccountYasoundViewController.h"
 #import "WebPageViewController.h"
 #import "YasoundDataCache.h"
-
+#import "YasoundSessionManager.h"
 
 @implementation MenuViewController
 
@@ -72,6 +72,7 @@ enum MenuDescription
 - (void)viewWillAppear:(BOOL)animated
 {
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+    [_tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -132,7 +133,32 @@ enum MenuDescription
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+- (void)setCell:(UITableViewCell*)cell refText:(NSString*)refText icon:(NSString*)icon authenticated:(BOOL)authenticated
+{
+    cell.textLabel.textColor = [UIColor colorWithRed:195.f/255.f green:205.f/255.f blue:212.f/255.f alpha:1];
+    cell.textLabel.text = NSLocalizedString(refText, nil);
+    [cell.imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", icon]]];
+    
+    if ((authenticated && [YasoundSessionManager main].registered) || !authenticated)
+    {
+        //cell.textLabel.textColor = [UIColor colorWithRed:195.f/255.f green:205.f/255.f blue:212.f/255.f alpha:1];
+        cell.textLabel.alpha = 1;
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        cell.imageView.alpha = 1;
+    }
+    else
+    {
+        //cell.textLabel.textColor = [UIColor colorWithRed:164.f/255.f green:170.f/255.f blue:173.f/255.f alpha:1];
+        //[cell.imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@Disabled.png", icon]]];
+        cell.textLabel.alpha = 0.5;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.imageView.alpha = 0.5;
+    }
+
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CellIdentifier";
     
@@ -144,7 +170,6 @@ enum MenuDescription
   
 
     cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
-    cell.textLabel.textColor = [UIColor colorWithRed:195.f/255.f green:205.f/255.f blue:212.f/255.f alpha:1];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.textLabel.layer.shadowOffset = CGSizeMake(1, 1);
@@ -153,52 +178,28 @@ enum MenuDescription
     
 
     if (indexPath.row == ROW_RADIOS)
-    {
-        cell.textLabel.text = NSLocalizedString(@"Menu.radios", nil);
-        [cell.imageView setImage:[UIImage imageNamed:@"menuIconRadios.png"]];
-    }
+        [self setCell:cell refText:@"Menu.radios" icon:@"menuIconRadios" authenticated:NO];
 
     else if (indexPath.row == ROW_LOGIN)
-    {
-        cell.textLabel.text = NSLocalizedString(@"Menu.login", nil);
-        [cell.imageView setImage:[UIImage imageNamed:@"menuIconLogin.png"]];
-    }
+        [self setCell:cell refText:@"Menu.login" icon:@"menuIconLogin" authenticated:NO];
 
     else if (indexPath.row == ROW_ACCOUNT)
-    {
-        cell.textLabel.text = NSLocalizedString(@"Menu.account", nil);
-        [cell.imageView setImage:[UIImage imageNamed:@"menuIconAccount.png"]];
-    }
+        [self setCell:cell refText:@"Menu.account" icon:@"menuIconAccount" authenticated:YES];
 
     else if (indexPath.row == ROW_NOTIFS)
-    {
-        cell.textLabel.text = NSLocalizedString(@"Menu.notifs", nil);
-        [cell.imageView setImage:[UIImage imageNamed:@"menuIconNotifs.png"]];
-    }
+        [self setCell:cell refText:@"Menu.notifs" icon:@"menuIconNotifs" authenticated:YES];
 
     else if (indexPath.row == ROW_FACEBOOK)
-    {
-        cell.textLabel.text = NSLocalizedString(@"Menu.facebook", nil);
-        [cell.imageView setImage:[UIImage imageNamed:@"menuIconFacebook.png"]];
-    }
+        [self setCell:cell refText:@"Menu.facebook" icon:@"menuIconFacebook" authenticated:YES];
 
     else if (indexPath.row == ROW_TWITTER)
-    {
-        cell.textLabel.text = NSLocalizedString(@"Menu.twitter", nil);
-        [cell.imageView setImage:[UIImage imageNamed:@"menuIconTwitter.png"]];
-    }
+        [self setCell:cell refText:@"Menu.twitter" icon:@"menuIconTwitter" authenticated:YES];
 
     else if (indexPath.row == ROW_YASOUND)
-    {
-        cell.textLabel.text = NSLocalizedString(@"Menu.yasound", nil);
-        [cell.imageView setImage:[UIImage imageNamed:@"menuIconYasound.png"]];
-    }
+        [self setCell:cell refText:@"Menu.yasound" icon:@"menuIconYasound" authenticated:YES];
 
     else if (indexPath.row == ROW_LEGAL)
-    {
-        cell.textLabel.text = NSLocalizedString(@"Menu.legal", nil);
-        [cell.imageView setImage:[UIImage imageNamed:@"menuIconLegal.png"]];
-    }
+        [self setCell:cell refText:@"Menu.legal" icon:@"menuIconLegal" authenticated:NO];
 
     
     return cell;   
@@ -207,6 +208,16 @@ enum MenuDescription
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (![YasoundSessionManager main].registered &&
+        ((indexPath.row == ROW_ACCOUNT)
+        || (indexPath.row == ROW_NOTIFS)
+        || (indexPath.row == ROW_FACEBOOK)
+        || (indexPath.row == ROW_TWITTER)
+        || (indexPath.row == ROW_YASOUND)
+        ))
+        return;
+
+    
     if (indexPath.row == ROW_RADIOS)
     {
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
