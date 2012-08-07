@@ -96,6 +96,7 @@
 
 // create a label using the parsed font styles
 - (UILabel*)makeLabel;
+//- (UITextField*)makeTextfield;
 
 // apply a font style to a label.
 // 'class' is the font style class. For instance "default", or another class that could have been defined in the stylesheet : class 'selected' for the definition "font.selected"

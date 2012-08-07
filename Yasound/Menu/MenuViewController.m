@@ -13,7 +13,7 @@
 #import "AudioStreamManager.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RootViewController.h"
-#import "SettingsViewController.h"
+#import "MyAccountViewController.h"
 #import "NotificationViewController.h"
 #import "AccountFacebookViewController.h"
 #import "AccountTwitterViewController.h"
@@ -240,7 +240,7 @@ enum MenuDescription
     
     else if (indexPath.row == ROW_ACCOUNT)
     {
-        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:NO radio:[YasoundDataProvider main].radio];
+        MyAccountViewController* view = [[MyAccountViewController alloc] initWithNibName:@"MyAccountViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

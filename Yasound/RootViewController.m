@@ -337,7 +337,7 @@ static MenuViewController* gMenuView = nil;
         {
             Radio* myRadio = self.user.own_radio;
             if (myRadio && myRadio.ready)
-                [self launchRadio:myRadio];
+                [self launchRadio:myRadio.id];
             else
                 // default screen is Selection
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];

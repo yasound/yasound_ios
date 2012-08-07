@@ -583,6 +583,14 @@
 "Menu.yasound" = "Yasound";
 "Menu.legal" = "Terms of use";
 
+"MyAccount.username.label" = "Username";
+"MyAccount.username.placeholder" = "enter the username";
+
+"MyAccount.picture.label" =  "Picture";
+"MyAccount.age.label" = "Age";
+"MyAccount.sexe.label" = "Sexe";
+"MyAccount.city.label" = "City";
+"MyAccount.bio.label" = "Bio";
 
 
 

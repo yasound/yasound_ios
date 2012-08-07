@@ -571,3 +571,12 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Menu.yasound" = "Yasound";
 "Menu.legal" = "Conditions d'utilisation";
 
+"MyAccount.username.label" = "Nom";
+"MyAccount.username.placeholder" = "entrez le nom d'utilisateur";
+"MyAccount.picture.label" =  "Image";
+"MyAccount.age.label" = "Age";
+"MyAccount.sexe.label" = "Sexe";
+"MyAccount.city.label" = "Ville";
+"MyAccount.bio.label" = "Bio";
+
+

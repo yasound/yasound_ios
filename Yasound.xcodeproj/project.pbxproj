@@ -1302,6 +1302,46 @@
 		BC48C75915CFCA6B00624E76 /* menuRowHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C6AB15CFCA6B00624E76 /* menuRowHighlighted@2x.png */; };
 		BC48C75A15CFCA6B00624E76 /* menuRowHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C6AB15CFCA6B00624E76 /* menuRowHighlighted@2x.png */; };
 		BC48C75B15CFCA6B00624E76 /* menuRowHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C6AB15CFCA6B00624E76 /* menuRowHighlighted@2x.png */; };
+		BC48C77215D14C7600624E76 /* MyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C77015D14C7600624E76 /* MyAccountViewController.m */; };
+		BC48C77315D14C7600624E76 /* MyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C77015D14C7600624E76 /* MyAccountViewController.m */; };
+		BC48C77415D14C7600624E76 /* MyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C77015D14C7600624E76 /* MyAccountViewController.m */; };
+		BC48C77515D14C7600624E76 /* MyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C77015D14C7600624E76 /* MyAccountViewController.m */; };
+		BC48C77615D14C7600624E76 /* MyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C77015D14C7600624E76 /* MyAccountViewController.m */; };
+		BC48C77715D14C7600624E76 /* MyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C77015D14C7600624E76 /* MyAccountViewController.m */; };
+		BC48C77815D14C7600624E76 /* MyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C77015D14C7600624E76 /* MyAccountViewController.m */; };
+		BC48C77915D14C7600624E76 /* MyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C77015D14C7600624E76 /* MyAccountViewController.m */; };
+		BC48C77A15D14C7600624E76 /* MyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C77115D14C7600624E76 /* MyAccountViewController.xib */; };
+		BC48C77B15D14C7600624E76 /* MyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C77115D14C7600624E76 /* MyAccountViewController.xib */; };
+		BC48C77C15D14C7600624E76 /* MyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C77115D14C7600624E76 /* MyAccountViewController.xib */; };
+		BC48C77D15D14C7600624E76 /* MyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C77115D14C7600624E76 /* MyAccountViewController.xib */; };
+		BC48C77E15D14C7600624E76 /* MyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C77115D14C7600624E76 /* MyAccountViewController.xib */; };
+		BC48C77F15D14C7600624E76 /* MyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C77115D14C7600624E76 /* MyAccountViewController.xib */; };
+		BC48C78015D14C7600624E76 /* MyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C77115D14C7600624E76 /* MyAccountViewController.xib */; };
+		BC48C78115D14C7600624E76 /* MyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C77115D14C7600624E76 /* MyAccountViewController.xib */; };
+		BC48C78515D15A4300624E76 /* myAccountPictureMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78315D15A4300624E76 /* myAccountPictureMask.png */; };
+		BC48C78615D15A4300624E76 /* myAccountPictureMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78315D15A4300624E76 /* myAccountPictureMask.png */; };
+		BC48C78715D15A4300624E76 /* myAccountPictureMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78315D15A4300624E76 /* myAccountPictureMask.png */; };
+		BC48C78815D15A4300624E76 /* myAccountPictureMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78315D15A4300624E76 /* myAccountPictureMask.png */; };
+		BC48C78915D15A4300624E76 /* myAccountPictureMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78315D15A4300624E76 /* myAccountPictureMask.png */; };
+		BC48C78A15D15A4300624E76 /* myAccountPictureMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78315D15A4300624E76 /* myAccountPictureMask.png */; };
+		BC48C78B15D15A4300624E76 /* myAccountPictureMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78315D15A4300624E76 /* myAccountPictureMask.png */; };
+		BC48C78C15D15A4300624E76 /* myAccountPictureMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78315D15A4300624E76 /* myAccountPictureMask.png */; };
+		BC48C78D15D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78415D15A4300624E76 /* myAccountPictureMask@2x.png */; };
+		BC48C78E15D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78415D15A4300624E76 /* myAccountPictureMask@2x.png */; };
+		BC48C78F15D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78415D15A4300624E76 /* myAccountPictureMask@2x.png */; };
+		BC48C79015D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78415D15A4300624E76 /* myAccountPictureMask@2x.png */; };
+		BC48C79115D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78415D15A4300624E76 /* myAccountPictureMask@2x.png */; };
+		BC48C79215D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78415D15A4300624E76 /* myAccountPictureMask@2x.png */; };
+		BC48C79315D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78415D15A4300624E76 /* myAccountPictureMask@2x.png */; };
+		BC48C79415D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC48C78415D15A4300624E76 /* myAccountPictureMask@2x.png */; };
+		BC48C7BF15D16C1C00624E76 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7BE15D16C1C00624E76 /* DateViewController.m */; };
+		BC48C7C015D16C1C00624E76 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7BE15D16C1C00624E76 /* DateViewController.m */; };
+		BC48C7C115D16C1C00624E76 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7BE15D16C1C00624E76 /* DateViewController.m */; };
+		BC48C7C215D16C1C00624E76 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7BE15D16C1C00624E76 /* DateViewController.m */; };
+		BC48C7C315D16C1C00624E76 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7BE15D16C1C00624E76 /* DateViewController.m */; };
+		BC48C7C415D16C1C00624E76 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7BE15D16C1C00624E76 /* DateViewController.m */; };
+		BC48C7C515D16C1C00624E76 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7BE15D16C1C00624E76 /* DateViewController.m */; };
+		BC48C7C615D16C1C00624E76 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7BE15D16C1C00624E76 /* DateViewController.m */; };
 		BC49890414A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890514A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890614A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
@@ -6019,6 +6059,13 @@
 		BC48C6A915CFCA6B00624E76 /* menuRow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuRow@2x.png"; sourceTree = "<group>"; };
 		BC48C6AA15CFCA6B00624E76 /* menuRowHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuRowHighlighted.png; sourceTree = "<group>"; };
 		BC48C6AB15CFCA6B00624E76 /* menuRowHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuRowHighlighted@2x.png"; sourceTree = "<group>"; };
+		BC48C76F15D14C7600624E76 /* MyAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyAccountViewController.h; path = Settings/MyAccountViewController.h; sourceTree = "<group>"; };
+		BC48C77015D14C7600624E76 /* MyAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyAccountViewController.m; path = Settings/MyAccountViewController.m; sourceTree = "<group>"; };
+		BC48C77115D14C7600624E76 /* MyAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyAccountViewController.xib; path = Settings/MyAccountViewController.xib; sourceTree = "<group>"; };
+		BC48C78315D15A4300624E76 /* myAccountPictureMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myAccountPictureMask.png; sourceTree = "<group>"; };
+		BC48C78415D15A4300624E76 /* myAccountPictureMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myAccountPictureMask@2x.png"; sourceTree = "<group>"; };
+		BC48C7BD15D16C1C00624E76 /* DateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateViewController.h; sourceTree = "<group>"; };
+		BC48C7BE15D16C1C00624E76 /* DateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateViewController.m; sourceTree = "<group>"; };
 		BC4988F014A107DF00873381 /* ApiKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
 		BC4988F114A107DF00873381 /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
 		BC4988F414A107DF00873381 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
@@ -7354,6 +7401,25 @@
 			path = ThirdParties/DDMenuController;
 			sourceTree = "<group>";
 		};
+		BC48C78215D15A4300624E76 /* MyAccount */ = {
+			isa = PBXGroup;
+			children = (
+				BC48C78315D15A4300624E76 /* myAccountPictureMask.png */,
+				BC48C78415D15A4300624E76 /* myAccountPictureMask@2x.png */,
+			);
+			path = MyAccount;
+			sourceTree = "<group>";
+		};
+		BC48C7B215D16B5A00624E76 /* DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				BC48C7BD15D16C1C00624E76 /* DateViewController.h */,
+				BC48C7BE15D16C1C00624E76 /* DateViewController.m */,
+			);
+			name = DatePicker;
+			path = LibTools/DatePicker;
+			sourceTree = SOURCE_ROOT;
+		};
 		BC598E4415B87106004D6DCB /* Old RadioSelection */ = {
 			isa = PBXGroup;
 			children = (
@@ -7527,6 +7593,9 @@
 		BC82066E14F561C900FAE05E /* Programming */ = {
 			isa = PBXGroup;
 			children = (
+				B19BF5EB14E420DA00BF8FCF /* SongsViewController.h */,
+				B19BF5EC14E420DA00BF8FCF /* SongsViewController.m */,
+				B19BF5ED14E420DA00BF8FCF /* SongsViewController.xib */,
 				BC188BCD1507638100E38692 /* LocalSongInfoViewController.h */,
 				BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */,
 				BC5EA8E1150100750002697D /* SongCatalog.h */,
@@ -7589,6 +7658,7 @@
 		BCA2CCD6149A95460000637E /* LibTools */ = {
 			isa = PBXGroup;
 			children = (
+				BC48C7B215D16B5A00624E76 /* DatePicker */,
 				40ED562D14E41CE100C0A0F4 /* ImageResize */,
 				BCBE5C6A14D161890077FC62 /* TestflightViewController */,
 				BC01F5A814CEB01F00EF62A2 /* DateAdditions */,
@@ -7660,9 +7730,9 @@
 		BCBAB48D14A22FEC00CF922A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				B19BF5EB14E420DA00BF8FCF /* SongsViewController.h */,
-				B19BF5EC14E420DA00BF8FCF /* SongsViewController.m */,
-				B19BF5ED14E420DA00BF8FCF /* SongsViewController.xib */,
+				BC48C76F15D14C7600624E76 /* MyAccountViewController.h */,
+				BC48C77015D14C7600624E76 /* MyAccountViewController.m */,
+				BC48C77115D14C7600624E76 /* MyAccountViewController.xib */,
 				BCBAB49714A2322900CF922A /* SettingsViewController.h */,
 				BCBAB49814A2322900CF922A /* SettingsViewController.m */,
 				BCBAB49914A2322900CF922A /* SettingsViewController.xib */,
@@ -8601,6 +8671,7 @@
 				BCD1246215B71FF2001FF144 /* logo@2x.png */,
 				BCFD0C0215C2C01D004B6844 /* MyRadios */,
 				BCFD0B4D15C2BFF3004B6844 /* Menu */,
+				BC48C78215D15A4300624E76 /* MyAccount */,
 				BCD1247B15B71FF2001FF144 /* Profile */,
 				BCD1247E15B71FF2001FF144 /* Programming */,
 				BC598E8B15B988C3004D6DCB /* RadioList */,
@@ -9494,6 +9565,9 @@
 				BC48C74A15CFCA6B00624E76 /* menuRow@2x.png in Resources */,
 				BC48C75215CFCA6B00624E76 /* menuRowHighlighted.png in Resources */,
 				BC48C75A15CFCA6B00624E76 /* menuRowHighlighted@2x.png in Resources */,
+				BC48C78015D14C7600624E76 /* MyAccountViewController.xib in Resources */,
+				BC48C78B15D15A4300624E76 /* myAccountPictureMask.png in Resources */,
+				BC48C79315D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9995,6 +10069,9 @@
 				BC48C74B15CFCA6B00624E76 /* menuRow@2x.png in Resources */,
 				BC48C75315CFCA6B00624E76 /* menuRowHighlighted.png in Resources */,
 				BC48C75B15CFCA6B00624E76 /* menuRowHighlighted@2x.png in Resources */,
+				BC48C78115D14C7600624E76 /* MyAccountViewController.xib in Resources */,
+				BC48C78C15D15A4300624E76 /* myAccountPictureMask.png in Resources */,
+				BC48C79415D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10490,6 +10567,9 @@
 				BC48C74915CFCA6B00624E76 /* menuRow@2x.png in Resources */,
 				BC48C75115CFCA6B00624E76 /* menuRowHighlighted.png in Resources */,
 				BC48C75915CFCA6B00624E76 /* menuRowHighlighted@2x.png in Resources */,
+				BC48C77F15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
+				BC48C78A15D15A4300624E76 /* myAccountPictureMask.png in Resources */,
+				BC48C79215D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10990,6 +11070,9 @@
 				BC48C74615CFCA6B00624E76 /* menuRow@2x.png in Resources */,
 				BC48C74E15CFCA6B00624E76 /* menuRowHighlighted.png in Resources */,
 				BC48C75615CFCA6B00624E76 /* menuRowHighlighted@2x.png in Resources */,
+				BC48C77C15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
+				BC48C78715D15A4300624E76 /* myAccountPictureMask.png in Resources */,
+				BC48C78F15D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11490,6 +11573,9 @@
 				BC48C74515CFCA6B00624E76 /* menuRow@2x.png in Resources */,
 				BC48C74D15CFCA6B00624E76 /* menuRowHighlighted.png in Resources */,
 				BC48C75515CFCA6B00624E76 /* menuRowHighlighted@2x.png in Resources */,
+				BC48C77B15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
+				BC48C78615D15A4300624E76 /* myAccountPictureMask.png in Resources */,
+				BC48C78E15D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11990,6 +12076,9 @@
 				BC48C74815CFCA6B00624E76 /* menuRow@2x.png in Resources */,
 				BC48C75015CFCA6B00624E76 /* menuRowHighlighted.png in Resources */,
 				BC48C75815CFCA6B00624E76 /* menuRowHighlighted@2x.png in Resources */,
+				BC48C77E15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
+				BC48C78915D15A4300624E76 /* myAccountPictureMask.png in Resources */,
+				BC48C79115D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12490,6 +12579,9 @@
 				BC48C74415CFCA6B00624E76 /* menuRow@2x.png in Resources */,
 				BC48C74C15CFCA6B00624E76 /* menuRowHighlighted.png in Resources */,
 				BC48C75415CFCA6B00624E76 /* menuRowHighlighted@2x.png in Resources */,
+				BC48C77A15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
+				BC48C78515D15A4300624E76 /* myAccountPictureMask.png in Resources */,
+				BC48C78D15D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12990,6 +13082,9 @@
 				BC48C74715CFCA6B00624E76 /* menuRow@2x.png in Resources */,
 				BC48C74F15CFCA6B00624E76 /* menuRowHighlighted.png in Resources */,
 				BC48C75715CFCA6B00624E76 /* menuRowHighlighted@2x.png in Resources */,
+				BC48C77D15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
+				BC48C78815D15A4300624E76 /* myAccountPictureMask.png in Resources */,
+				BC48C79015D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13246,6 +13341,8 @@
 				BC68617815C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
 				BC91A73E15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 				BC48C66415CFA76F00624E76 /* MenuViewController.m in Sources */,
+				BC48C77815D14C7600624E76 /* MyAccountViewController.m in Sources */,
+				BC48C7C515D16C1C00624E76 /* DateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13444,6 +13541,8 @@
 				BC68617915C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
 				BC91A73F15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 				BC48C66515CFA76F00624E76 /* MenuViewController.m in Sources */,
+				BC48C77915D14C7600624E76 /* MyAccountViewController.m in Sources */,
+				BC48C7C615D16C1C00624E76 /* DateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13638,6 +13737,8 @@
 				BC68617715C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
 				BC91A73D15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 				BC48C66315CFA76F00624E76 /* MenuViewController.m in Sources */,
+				BC48C77715D14C7600624E76 /* MyAccountViewController.m in Sources */,
+				BC48C7C415D16C1C00624E76 /* DateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13836,6 +13937,8 @@
 				BC68617415C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
 				BC91A73A15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 				BC48C66015CFA76F00624E76 /* MenuViewController.m in Sources */,
+				BC48C77415D14C7600624E76 /* MyAccountViewController.m in Sources */,
+				BC48C7C115D16C1C00624E76 /* DateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14034,6 +14137,8 @@
 				BC68617315C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
 				BC91A73915C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 				BC48C65F15CFA76F00624E76 /* MenuViewController.m in Sources */,
+				BC48C77315D14C7600624E76 /* MyAccountViewController.m in Sources */,
+				BC48C7C015D16C1C00624E76 /* DateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14233,6 +14338,8 @@
 				BC68617615C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
 				BC91A73C15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 				BC48C66215CFA76F00624E76 /* MenuViewController.m in Sources */,
+				BC48C77615D14C7600624E76 /* MyAccountViewController.m in Sources */,
+				BC48C7C315D16C1C00624E76 /* DateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14431,6 +14538,8 @@
 				BC68617215C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
 				BC91A73815C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 				BC48C65E15CFA76F00624E76 /* MenuViewController.m in Sources */,
+				BC48C77215D14C7600624E76 /* MyAccountViewController.m in Sources */,
+				BC48C7BF15D16C1C00624E76 /* DateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14630,6 +14739,8 @@
 				BC68617515C699DC00A53BCA /* ProfilTableViewCell.m in Sources */,
 				BC91A73B15C9707F00B1200E /* ProfilCellRadio.m in Sources */,
 				BC48C66115CFA76F00624E76 /* MenuViewController.m in Sources */,
+				BC48C77515D14C7600624E76 /* MyAccountViewController.m in Sources */,
+				BC48C7C215D16C1C00624E76 /* DateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
