@@ -181,7 +181,12 @@ enum MenuDescription
         [self setCell:cell refText:@"Menu.radios" icon:@"menuIconRadios" authenticated:NO];
 
     else if (indexPath.row == ROW_LOGIN)
-        [self setCell:cell refText:@"Menu.login" icon:@"menuIconLogin" authenticated:NO];
+    {
+        if ([YasoundSessionManager main].registered)
+            [self setCell:cell refText:@"Menu.logout" icon:@"menuIconLogin" authenticated:NO];
+        else
+            [self setCell:cell refText:@"Menu.login" icon:@"menuIconLogin" authenticated:NO];
+    }
 
     else if (indexPath.row == ROW_ACCOUNT)
         [self setCell:cell refText:@"Menu.account" icon:@"menuIconAccount" authenticated:YES];
@@ -225,7 +230,12 @@ enum MenuDescription
     
     else if (indexPath.row == ROW_LOGIN)
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:nil];
+        if ([YasoundSessionManager main].registered)
+        {
+            [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+        }
+        else
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:nil];
     }
     
     else if (indexPath.row == ROW_ACCOUNT)
@@ -272,6 +282,13 @@ enum MenuDescription
     }
 }
 
+
+
+
+- (void)logoutReturned
+{
+    [_tableView reloadData];
+}
 
 
 
