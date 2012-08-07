@@ -24,17 +24,22 @@
     [self.delegate takeNewDate:date];
     [[self.delegate navController] popViewControllerAnimated:YES];
 }
+
 - (void)loadView
 {
     UIView *theView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = theView;
     [theView release];
     
+    UIToolbar* toolbar = [self setToolbar];
+    [self.view addSubview:toolbar];
+    
     UITableView *theTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, 67.0, 320.0, 480.0) style:UITableViewStyleGrouped];
     theTableView.delegate = self;
     theTableView.dataSource = self;
     [self.view addSubview:theTableView];
     self.dateTableView = theTableView;
+    theTableView.scrollEnabled = NO;
     [theTableView release];
     
     UIDatePicker *theDatePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0, 200.0, 320.0, 216.0)];
@@ -46,25 +51,36 @@
     
     
     
-    
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
-                                     initWithTitle:NSLocalizedString(@"Cancel", @"Cancel - for button to cancel changes")
-                                     style:UIBarButtonItemStylePlain
-                                     target:self
-                                     action:@selector(cancel)];
-    self.navigationItem.leftBarButtonItem = cancelButton;
-    [cancelButton release];
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:NSLocalizedString(@"Save", @"Save - for button to save changes")
-                                   style:UIBarButtonItemStylePlain
-                                   target:self
-                                   action:@selector(save)];
-    self.navigationItem.rightBarButtonItem = saveButton;
-    [saveButton release];
+
     
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
 }
+
+
+- (UIToolbar*)setToolbar
+{
+    UIToolbar* toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,320,44)];
+    toolbar.barStyle = UIBarStyleBlack;
+    
+        // set background
+        if ([toolbar respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)])
+            [toolbar setBackgroundImage:[UIImage imageNamed:@"topBarBkg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+        else
+            [toolbar insertSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topBarBkg.png"]] autorelease] atIndex:0];
+
+    UIBarButtonItem* itemBack = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+    UIBarButtonItem* itemSave = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
+    
+        // flexible space
+        UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        
+        [toolbar setItems:[NSArray arrayWithObjects:itemBack, flexibleSpace, itemSave, nil]];
+
+    return toolbar;
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -100,10 +116,23 @@
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:DateCellIdentifier] autorelease];
         cell.font = [UIFont systemFontOfSize:17.0];
         cell.textColor = [UIColor colorWithRed:0.243 green:0.306 blue:0.435 alpha:1.0];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
+    
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMMM dd, yyyy"];
+    
+    NSString* preferredLang = [[NSLocale preferredLanguages] objectAtIndex:0];
+    //NSLog(@"%@", preferredLang);
+    
+    if ([preferredLang isEqualToString:@"fr"])
+        [formatter setDateFormat:@"dd MMMM yyyy"];
+    else
+        [formatter setDateFormat:@"MMMM dd, yyyy"];
+    
+    [formatter setLocale:[NSLocale currentLocale]];
+    
     cell.text = [formatter stringFromDate:date];
     [formatter release];
     
@@ -114,4 +143,15 @@
 {
     return 1;
 }
+
+- (void)onCancel:(id)sender
+{
+
+}
+
+- (void)onSave:(id)sender
+{
+    
+}
+
 @end
