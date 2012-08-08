@@ -19,6 +19,7 @@
 #import "NotificationViewController.h"
 #import "YasoundDataCache.h"
 #import "YasoundDataCacheImage.h"
+#import "ProgrammingViewController.h"
 
 #define NB_SECTIONS 3
 
@@ -320,6 +321,7 @@
 
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
@@ -334,7 +336,7 @@
     else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = NSLocalizedString(@"SettingsView_row_keywords_label", nil);
+        cell.textLabel.text = NSLocalizedString(@"Settings.keywords.label", nil);
         cell.detailTextLabel.text = _keywords;
 
         cell.detailTextLabel.textColor = [UIColor colorWithRed:182.f/255.f green:212.f/255.f blue:1 alpha:1];
@@ -343,11 +345,8 @@
     else if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = NSLocalizedString(@"SettingsView_row_keywords_label", nil);
-        cell.detailTextLabel.text = _keywords;
-        
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:182.f/255.f green:212.f/255.f blue:1 alpha:1];
-        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+        cell.textLabel.text = NSLocalizedString(@"Settings.prog.label", nil);
+        cell.detailTextLabel.text = @"";
     }
     
     
@@ -385,37 +384,16 @@
         [self pickImageDialog];
         return;
     }
-    
-    
-    else if (indexPath.section == SECTION_ACCOUNTS)
+
+    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
     {
-        if (indexPath.row == ROW_ACCOUNTS_FACEBOOK)
-        {
-            AccountFacebookViewController* view = [[AccountFacebookViewController alloc] initWithNibName:@"AccountFacebookViewController" bundle:nil];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-        }
-        else if (indexPath.row == ROW_ACCOUNTS_TWITTER)
-        {
-            AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-        }
-        else if (indexPath.row == ROW_ACCOUNTS_YASOUND)
-        {
-            AccountYasoundViewController* view = [[AccountYasoundViewController alloc] initWithNibName:@"AccountYasoundViewController" bundle:nil];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-        }
-    }
-    
-    else if (indexPath.section == SECTION_NOTIFS)
-    {
-        NotificationViewController* view = [[NotificationViewController alloc] initWithNibName:@"NotificationViewController" bundle:nil];
+        
+        ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
+        return;
     }
-
+    
     
 }
 
@@ -571,33 +549,16 @@
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
+- (IBAction)onCancel:(id)sender
 {
-//    if (_wizard)
-//    {
-        // call root to launch the Radio
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CANCEL_WIZARD object:nil];
-        return;
-//    }
-    
-    // save or cancel
-//    if (!_wizard && _changed)
-//    {
-        _saveQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingsView_saveOrCancel_title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_saveOrCancel_save", nil), NSLocalizedString(@"SettingsView_saveOrCancel_dontsave", nil), nil];
-        
-        _saveQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-        [_saveQuery showInView:self.view];
-//    }
-//    else
-//    {
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
 - (IBAction)onSave:(id)sender
 {
     [self save];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -609,19 +570,7 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
 {
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:YES];
-    
-    if (actionSheet == _saveQuery)
-    {
-        if (buttonIndex == 0)
-            [self save];
-        else if (buttonIndex == 1)
-            [self.navigationController popViewControllerAnimated:YES];        
-        
-        [_saveQuery release];
-        _saveQuery = nil;
-        return;
-    }
-    
+
     
     if (actionSheet == _pickImageQuery)
     {
@@ -655,7 +604,7 @@
 - (void) save
 {
     //fake commnunication
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"SettingsView_submit_title", nil)];
+    [ActivityAlertView showWithTitle:NSLocalizedString(@"Settings.submit", nil)];
 
     // empty the cache for radios (to let the change on name / genre appear)
     [[YasoundDataCache main] clearRadiosAll];
@@ -698,15 +647,7 @@
     [[YasoundDataCacheImageManager main] clearItem:imageURL];
 
   
-//  if (_wizard)
-//  {
-    // call root to launch the Radio
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
-//  }
-//  else
-//  {
-//    [self.navigationController popViewControllerAnimated:YES];
-//  }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

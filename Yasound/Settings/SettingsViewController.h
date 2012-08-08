@@ -16,7 +16,6 @@
 {
     BOOL _changed;
     
-    UIActionSheet* _saveQuery;
     UIActionSheet* _pickImageQuery;
         
     IBOutlet UITableView* _tableView;  

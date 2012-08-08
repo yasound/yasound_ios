@@ -564,6 +564,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Settings.genre.label" = "Genre";
 "Settings.keywords.label" = "Mots Clés";
 "Settings.keywords.empty" = "pas de mot-clé";
+"Settings.prog.label" = "Programmation";
 
 "Settings.pickImage.cancel" = "Annuler";
 "Settings.pickImage.image" = "Prendre une photo";
