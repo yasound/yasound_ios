@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "LoginViewController.h"
-#import "RadioViewController.h"
+#import "WallViewController.h"
 #import "YasoundSessionManager.h"
 #import "ActivityAlertView.h"
 #import "YasoundDataProvider.h"
@@ -146,6 +146,7 @@ static MenuViewController* gMenuView = nil;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoGifts:) name:NOTIF_GOTO_GIFTS object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoProfil:) name:NOTIF_GOTO_PROFIL object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushRadio:) name:NOTIF_PUSH_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadio:) name:NOTIF_GOTO_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadio:) name:NOTIF_GOTO_MYRADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateMyRadio:) name:NOTIF_GOTO_CREATE_MYRADIO object:nil];
@@ -685,6 +686,18 @@ static MenuViewController* gMenuView = nil;
 
 
 
+- (void)onNotifPushRadio:(NSNotification*)notification
+{
+    Radio* r = notification.object;
+    assert(r != nil);
+
+    DLog(@"onNotifPushRadio '%@' (ready %@)", r.name, r.ready);
+
+    WallViewController* view = [[WallViewController alloc] initWithRadio:r];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
 - (void)onNotifGotoRadio:(NSNotification*)notification
 {
     Radio* r = notification.object;
@@ -694,7 +707,7 @@ static MenuViewController* gMenuView = nil;
 
     [self gotoMenuAnimated:NO];
 
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:r];
+    WallViewController* view = [[WallViewController alloc] initWithRadio:r];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
 }
@@ -782,7 +795,7 @@ static MenuViewController* gMenuView = nil;
         return;
     }
         
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:r];
+    WallViewController* view = [[WallViewController alloc] initWithRadio:r];
     [(APPDELEGATE).navigationController pushViewController:view animated:YES];
     [view release];
 }

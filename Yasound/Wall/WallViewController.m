@@ -42,6 +42,7 @@
 #import "SongInfoViewController.h"
 #import "SongPublicInfoViewController.h"
 #import "SongCatalog.h"
+#import "WallViewController+NowPlayingBar.h"
 
 
 //#define LOCAL 1 // use localhost as the server
@@ -76,6 +77,7 @@ static Song* _gNowPlayingSong = nil;
 
 
 @synthesize nowPlayingTrackImage;
+@synthesize nowPlayingMask;
 @synthesize nowPlayingButton;
 @synthesize nowPlayingLabel1;
 @synthesize nowPlayingLabel2;
@@ -847,53 +849,6 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-
-
-
-
-
-
-
-//.................................................................................................
-//
-// NOW PLAYING
-//
-
-
-#pragma mark - Now Playing
-
-- (void)setNowPlaying:(Song*)song
-{
-//    assert(song != nil);
-//    if (_gNowPlayingSong != nil)
-//        [_gNowPlayingSong release];
-//    
-//    _gNowPlayingSong = song;
-//    [_gNowPlayingSong retain];
-//    
-//    if (_playingNowView != nil)
-//    {
-//        [_playingNowView removeFromSuperview];
-//        [_playingNowView release];
-//    }
-//    
-//    _playingNowView = [[NowPlayingView alloc] initWithSong:_gNowPlayingSong];
-//    
-//    InteractiveView* trackImageButton = [[InteractiveView alloc] initWithFrame:CGRectMake(15, 6, 50, 50) target:self action:@selector(onTrackImageClicked:)];
-//    [trackImageButton setTargetOnTouchDown:self action:@selector(onTrackImageTouchDown:)];
-//    [_playingNowView addSubview:trackImageButton];
-//    [trackImageButton release];
-//    
-//    
-//    [_playingNowView.trackInteractionView.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.NowPlayingBar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    _playingNowView.frame = sheet.frame;
-//    
-//    [self.view addSubview:_playingNowView];
-//    [self.view bringSubviewToFront:self.playPauseButton];
-}
 
 
 

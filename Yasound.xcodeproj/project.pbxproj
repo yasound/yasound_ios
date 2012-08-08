@@ -93,9 +93,6 @@
 		407D9F1A1563E89000BFCF1F /* UserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 407D9F141563E89000BFCF1F /* UserNotification.m */; };
 		407D9F1B1563E89000BFCF1F /* UserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 407D9F141563E89000BFCF1F /* UserNotification.m */; };
 		407D9F1C1563E89000BFCF1F /* UserNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 407D9F141563E89000BFCF1F /* UserNotification.m */; };
-		40A98AE714C74C3F00999793 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
-		40A98AE814C74C3F00999793 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
-		40A98AE914C74C3F00999793 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
 		40AAEC4B14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40AAEC4C14921AE70031B39D /* YasoundDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */; };
 		40B40951152EFC630050D334 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A9A3B91454DC0500EA374C /* main.m */; };
@@ -106,8 +103,6 @@
 		40B40956152EFC630050D334 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		40B40958152EFC630050D334 /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		40B40959152EFC630050D334 /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		40B4095A152EFC630050D334 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
-		40B4095B152EFC630050D334 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		40B4095C152EFC630050D334 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		40B4095D152EFC630050D334 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		40B4095F152EFC630050D334 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
@@ -177,10 +172,7 @@
 		40B409A5152EFC630050D334 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		40B409A6152EFC630050D334 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		40B409A7152EFC630050D334 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
-		40B409A8152EFC630050D334 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
-		40B409A9152EFC630050D334 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
 		40B409AA152EFC630050D334 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
-		40B409AB152EFC630050D334 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
 		40B409AC152EFC630050D334 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		40B409AD152EFC630050D334 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE514CF64B100DF0950 /* MGTwitterEngine.m */; };
 		40B409AE152EFC630050D334 /* MGTwitterHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE914CF64B100DF0950 /* MGTwitterHTTPURLConnection.m */; };
@@ -281,7 +273,6 @@
 		40B40A1C152EFC630050D334 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		40B40A1D152EFC630050D334 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		40B40A1E152EFC630050D334 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
-		40B40A1F152EFC630050D334 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		40B40A21152EFC630050D334 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		40B40A2A152EFC630050D334 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB49914A2322900CF922A /* SettingsViewController.xib */; };
 		40B40A2B152EFC630050D334 /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
@@ -295,8 +286,6 @@
 		40B40A37152EFC630050D334 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		40B40A38152EFC630050D334 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		40B40A3A152EFC630050D334 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
-		40B40A3C152EFC630050D334 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
-		40B40A3D152EFC630050D334 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
 		40B40A40152EFC630050D334 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD014CF64B100DF0950 /* jQueryInject.txt */; };
 		40B40A41152EFC630050D334 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		40B40A42152EFC630050D334 /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC0914CF64B100DF0950 /* twitter_load.png */; };
@@ -361,8 +350,6 @@
 		40D53B5B1554280F001EB0C5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		40D53B5D1554280F001EB0C5 /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		40D53B5E1554280F001EB0C5 /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		40D53B5F1554280F001EB0C5 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
-		40D53B601554280F001EB0C5 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		40D53B611554280F001EB0C5 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		40D53B621554280F001EB0C5 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		40D53B641554280F001EB0C5 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
@@ -432,10 +419,7 @@
 		40D53BA81554280F001EB0C5 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		40D53BA91554280F001EB0C5 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		40D53BAA1554280F001EB0C5 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
-		40D53BAB1554280F001EB0C5 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
-		40D53BAC1554280F001EB0C5 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
 		40D53BAD1554280F001EB0C5 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
-		40D53BAE1554280F001EB0C5 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
 		40D53BAF1554280F001EB0C5 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		40D53BB01554280F001EB0C5 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE514CF64B100DF0950 /* MGTwitterEngine.m */; };
 		40D53BB11554280F001EB0C5 /* MGTwitterHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE914CF64B100DF0950 /* MGTwitterHTTPURLConnection.m */; };
@@ -547,7 +531,6 @@
 		40D53C221554280F001EB0C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		40D53C231554280F001EB0C5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		40D53C241554280F001EB0C5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
-		40D53C251554280F001EB0C5 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		40D53C271554280F001EB0C5 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		40D53C301554280F001EB0C5 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB49914A2322900CF922A /* SettingsViewController.xib */; };
 		40D53C311554280F001EB0C5 /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
@@ -561,8 +544,6 @@
 		40D53C3B1554280F001EB0C5 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		40D53C3C1554280F001EB0C5 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		40D53C3E1554280F001EB0C5 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
-		40D53C401554280F001EB0C5 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
-		40D53C411554280F001EB0C5 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
 		40D53C441554280F001EB0C5 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD014CF64B100DF0950 /* jQueryInject.txt */; };
 		40D53C451554280F001EB0C5 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		40D53C461554280F001EB0C5 /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC0914CF64B100DF0950 /* twitter_load.png */; };
@@ -889,6 +870,14 @@
 		BC2387BB15D2CA6800D1A4C4 /* nowPlayingShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC23875D15D2CA6800D1A4C4 /* nowPlayingShare@2x.png */; };
 		BC2387BC15D2CA6800D1A4C4 /* nowPlayingShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC23875D15D2CA6800D1A4C4 /* nowPlayingShare@2x.png */; };
 		BC2387BD15D2CA6800D1A4C4 /* nowPlayingShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC23875D15D2CA6800D1A4C4 /* nowPlayingShare@2x.png */; };
+		BC2387C015D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
+		BC2387C115D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
+		BC2387C215D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
+		BC2387C315D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
+		BC2387C415D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
+		BC2387C515D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
+		BC2387C615D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
+		BC2387C715D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */; };
 		BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36314BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
@@ -970,8 +959,6 @@
 		BC3FA66A14E93B660055AB4A /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC3FA66C14E93B660055AB4A /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC3FA66D14E93B660055AB4A /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		BC3FA66E14E93B660055AB4A /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
-		BC3FA66F14E93B660055AB4A /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BC3FA67014E93B660055AB4A /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BC3FA67114E93B660055AB4A /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC3FA67314E93B660055AB4A /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
@@ -1041,10 +1028,7 @@
 		BC3FA6BB14E93B660055AB4A /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		BC3FA6BC14E93B660055AB4A /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		BC3FA6BD14E93B660055AB4A /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
-		BC3FA6BE14E93B660055AB4A /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
-		BC3FA6BF14E93B660055AB4A /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
 		BC3FA6C014E93B660055AB4A /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
-		BC3FA6C114E93B660055AB4A /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
 		BC3FA6C214E93B660055AB4A /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC3FA6C314E93B660055AB4A /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE514CF64B100DF0950 /* MGTwitterEngine.m */; };
 		BC3FA6C414E93B660055AB4A /* MGTwitterHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE914CF64B100DF0950 /* MGTwitterHTTPURLConnection.m */; };
@@ -1108,7 +1092,6 @@
 		BC3FA70214E93B660055AB4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC3FA70314E93B660055AB4A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC3FA70414E93B660055AB4A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
-		BC3FA70514E93B660055AB4A /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		BC3FA70714E93B660055AB4A /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		BC3FA71214E93B660055AB4A /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB49914A2322900CF922A /* SettingsViewController.xib */; };
 		BC3FA71314E93B660055AB4A /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
@@ -1122,8 +1105,6 @@
 		BC3FA73514E93B660055AB4A /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BC3FA73814E93B660055AB4A /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC3FA73A14E93B660055AB4A /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
-		BC3FA73C14E93B660055AB4A /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
-		BC3FA73D14E93B660055AB4A /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
 		BC3FA74014E93B660055AB4A /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD014CF64B100DF0950 /* jQueryInject.txt */; };
 		BC3FA74114E93B660055AB4A /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		BC3FA74214E93B660055AB4A /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC0914CF64B100DF0950 /* twitter_load.png */; };
@@ -1723,8 +1704,6 @@
 		BC56F478152486AF005D1B40 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC56F47A152486AF005D1B40 /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC56F47B152486AF005D1B40 /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		BC56F47C152486AF005D1B40 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
-		BC56F47D152486AF005D1B40 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BC56F47E152486AF005D1B40 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BC56F47F152486AF005D1B40 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC56F481152486AF005D1B40 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
@@ -1794,10 +1773,7 @@
 		BC56F4C7152486AF005D1B40 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		BC56F4C8152486AF005D1B40 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		BC56F4C9152486AF005D1B40 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
-		BC56F4CA152486AF005D1B40 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
-		BC56F4CB152486AF005D1B40 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
 		BC56F4CC152486AF005D1B40 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
-		BC56F4CD152486AF005D1B40 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
 		BC56F4CE152486AF005D1B40 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC56F4CF152486AF005D1B40 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE514CF64B100DF0950 /* MGTwitterEngine.m */; };
 		BC56F4D0152486AF005D1B40 /* MGTwitterHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE914CF64B100DF0950 /* MGTwitterHTTPURLConnection.m */; };
@@ -1887,7 +1863,6 @@
 		BC56F52B152486AF005D1B40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC56F52C152486AF005D1B40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC56F52D152486AF005D1B40 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
-		BC56F52E152486AF005D1B40 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		BC56F530152486AF005D1B40 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		BC56F539152486AF005D1B40 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB49914A2322900CF922A /* SettingsViewController.xib */; };
 		BC56F53A152486AF005D1B40 /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
@@ -1901,8 +1876,6 @@
 		BC56F546152486AF005D1B40 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BC56F547152486AF005D1B40 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC56F549152486AF005D1B40 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
-		BC56F54B152486AF005D1B40 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
-		BC56F54C152486AF005D1B40 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
 		BC56F54F152486AF005D1B40 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD014CF64B100DF0950 /* jQueryInject.txt */; };
 		BC56F550152486AF005D1B40 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		BC56F551152486AF005D1B40 /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC0914CF64B100DF0950 /* twitter_load.png */; };
@@ -2510,8 +2483,6 @@
 		BC93CCD014CF3F7A007C723F /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC93CCD314CF3F7A007C723F /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		BC93CCD414CF3F7A007C723F /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		BC93CCD614CF3F7A007C723F /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
-		BC93CCD714CF3F7A007C723F /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BC93CCD814CF3F7A007C723F /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BC93CCD914CF3F7A007C723F /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC93CCDB14CF3F7A007C723F /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
@@ -2580,10 +2551,7 @@
 		BC93CD3414CF3F7A007C723F /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		BC93CD3514CF3F7A007C723F /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		BC93CD3614CF3F7A007C723F /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
-		BC93CD3714CF3F7A007C723F /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
-		BC93CD3814CF3F7A007C723F /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
 		BC93CD3914CF3F7A007C723F /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
-		BC93CD3A14CF3F7A007C723F /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A98AE614C74C3F00999793 /* UserTableViewCell.m */; };
 		BC93CD3B14CF3F7A007C723F /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC93CD3D14CF3F7A007C723F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
 		BC93CD3E14CF3F7A007C723F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
@@ -2608,7 +2576,6 @@
 		BC93CD5614CF3F7A007C723F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC93CD5714CF3F7A007C723F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC93CD5814CF3F7A007C723F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
-		BC93CD7614CF3F7A007C723F /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		BC93CD7C14CF3F7A007C723F /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 		BC93CD9114CF3F7A007C723F /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB49914A2322900CF922A /* SettingsViewController.xib */; };
 		BC93CD9214CF3F7A007C723F /* PlaylistsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4A214A240B300CF922A /* PlaylistsViewController.xib */; };
@@ -2622,8 +2589,6 @@
 		BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BC93CDD614CF3F7A007C723F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC93CDDB14CF3F7A007C723F /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
-		BC93CDDD14CF3F7A007C723F /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
-		BC93CDDE14CF3F7A007C723F /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
 		BC9522A414B70FE9001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A514B70FF2001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A614B70FF7001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
@@ -2655,18 +2620,6 @@
 		BCA2CCD5149A80270000637E /* PlaylistMoulinor.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */; };
 		BCA6554914BCA8590043B2DA /* Auth.h in Sources */ = {isa = PBXBuildFile; fileRef = BCA6554714BCA8590043B2DA /* Auth.h */; };
 		BCA6554A14BCA8590043B2DA /* Auth.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6554814BCA8590043B2DA /* Auth.m */; };
-		BCA83E6614C6D3D1000A8295 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
-		BCA83E6714C6D3D1000A8295 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
-		BCA83E6814C6D3D1000A8295 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */; };
-		BCA83E6914C6D3D1000A8295 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
-		BCA83E6A14C6D3D1000A8295 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
-		BCA83E6B14C6D3D1000A8295 /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */; };
-		BCA83E6F14C6D3EB000A8295 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
-		BCA83E7014C6D3EB000A8295 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
-		BCA83E7114C6D3EB000A8295 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */; };
-		BCA83E7214C6D3EB000A8295 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
-		BCA83E7314C6D3EB000A8295 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
-		BCA83E7414C6D3EB000A8295 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */; };
 		BCA83E7D14C7258F000A8295 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
 		BCA83E7E14C7258F000A8295 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
 		BCA83E7F14C7258F000A8295 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
@@ -2733,8 +2686,6 @@
 		BCB2B29C14FBB14A0000BFA3 /* SongAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */; };
 		BCB41F4414863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		BCB41F4514863646008F3738 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
-		BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
-		BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		BCB7AE8115C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */; };
 		BCB7AE8215C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */; };
 		BCB7AE8315C930D200E59D3A /* profilRadioMaskHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */; };
@@ -5693,10 +5644,6 @@
 		BCF3588614E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
 		BCF3588714E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
 		BCF3588814E07A87003594BF /* ScrollingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3588414E07A87003594BF /* ScrollingLabel.m */; };
-		BCF62DE2148394F0001B1908 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
-		BCF62DE3148394F0001B1908 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
-		BCF62DE4148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
-		BCF62DE5148394F0001B1908 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		BCFD0C0B15C2C01D004B6844 /* myRadiosMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD0C0315C2C01D004B6844 /* myRadiosMask.png */; };
 		BCFD0C0C15C2C01D004B6844 /* myRadiosMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD0C0315C2C01D004B6844 /* myRadiosMask.png */; };
 		BCFD0C0D15C2C01D004B6844 /* myRadiosMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCFD0C0315C2C01D004B6844 /* myRadiosMask.png */; };
@@ -5846,8 +5793,6 @@
 		E5F3B8661498B88D008DD607 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		E5F3B8691498B88D008DD607 /* BundleFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4144147E8A5F00D417EF /* BundleFileManager.m */; };
 		E5F3B86A1498B88D008DD607 /* BundleStylesheet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9F4146147E8A5F00D417EF /* BundleStylesheet.m */; };
-		E5F3B86C1498B88D008DD607 /* RadioSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */; };
-		E5F3B86D1498B88D008DD607 /* RadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB5F28D1485416B00C28B3D /* RadioViewController.m */; };
 		E5F3B86E1498B88D008DD607 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB41F4314863646008F3738 /* Theme.m */; };
 		E5F3B8701498B88D008DD607 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		E5F3B8751498B88D008DD607 /* StyleSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC93B4AB148E68DE00A87157 /* StyleSelectorViewController.m */; };
@@ -5870,7 +5815,6 @@
 		E5F3B89E1498B88D008DD607 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		E5F3B89F1498B88D008DD607 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		E5F3B8A01498B88D008DD607 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
-		E5F3B8BE1498B88D008DD607 /* RadioSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */; };
 		E5F3B8C41498B88D008DD607 /* StyleSelectorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -6038,8 +5982,6 @@
 		405ACE1A14F5551000DCB97A /* YasoundSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundSong.m; sourceTree = "<group>"; };
 		407D9F131563E89000BFCF1F /* UserNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNotification.h; sourceTree = "<group>"; };
 		407D9F141563E89000BFCF1F /* UserNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNotification.m; sourceTree = "<group>"; };
-		40A98AE514C74C3E00999793 /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserTableViewCell.h; path = RadioSelection/UserTableViewCell.h; sourceTree = "<group>"; };
-		40A98AE614C74C3F00999793 /* UserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserTableViewCell.m; path = RadioSelection/UserTableViewCell.m; sourceTree = "<group>"; };
 		40AAEC4914921AE70031B39D /* YasoundDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataProvider.h; sourceTree = "<group>"; };
 		40AAEC4A14921AE70031B39D /* YasoundDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataProvider.m; sourceTree = "<group>"; };
 		40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD LOCAL SERVER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -6140,6 +6082,8 @@
 		BC23875B15D2CA6800D1A4C4 /* nowPlayingPause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowPlayingPause@2x.png"; sourceTree = "<group>"; };
 		BC23875C15D2CA6800D1A4C4 /* nowPlayingShare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nowPlayingShare.png; sourceTree = "<group>"; };
 		BC23875D15D2CA6800D1A4C4 /* nowPlayingShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowPlayingShare@2x.png"; sourceTree = "<group>"; };
+		BC2387BE15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WallViewController+NowPlayingBar.h"; sourceTree = "<group>"; };
+		BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WallViewController+NowPlayingBar.m"; sourceTree = "<group>"; };
 		BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingView.h; sourceTree = "<group>"; };
 		BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingView.m; sourceTree = "<group>"; };
 		BC27F36C14BDD87B00EF1C5F /* TrackInteractionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInteractionView.h; sourceTree = "<group>"; };
@@ -6424,12 +6368,6 @@
 		BCA2CCD2149A80270000637E /* PlaylistMoulinor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistMoulinor.m; sourceTree = "<group>"; };
 		BCA6554714BCA8590043B2DA /* Auth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Auth.h; sourceTree = "<group>"; };
 		BCA6554814BCA8590043B2DA /* Auth.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Auth.m; sourceTree = "<group>"; };
-		BCA83E6314C6D3D1000A8295 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendsViewController.h; path = RadioSelection/FriendsViewController.h; sourceTree = "<group>"; };
-		BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendsViewController.m; path = RadioSelection/FriendsViewController.m; sourceTree = "<group>"; };
-		BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FriendsViewController.xib; path = RadioSelection/FriendsViewController.xib; sourceTree = "<group>"; };
-		BCA83E6C14C6D3EB000A8295 /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoritesViewController.h; path = RadioSelection/FavoritesViewController.h; sourceTree = "<group>"; };
-		BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoritesViewController.m; path = RadioSelection/FavoritesViewController.m; sourceTree = "<group>"; };
-		BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavoritesViewController.xib; path = RadioSelection/FavoritesViewController.xib; sourceTree = "<group>"; };
 		BCA83E7B14C7258F000A8295 /* SongViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongViewCell.h; sourceTree = "<group>"; };
 		BCA83E7C14C7258F000A8295 /* SongViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongViewCell.m; sourceTree = "<group>"; };
 		BCAAE18D14FBE17D00B7F2B4 /* TimeProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeProfile.h; sourceTree = "<group>"; };
@@ -6452,8 +6390,6 @@
 		BCB2B29214FBB14A0000BFA3 /* SongAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongAddViewController.xib; path = Programming/SongAddViewController.xib; sourceTree = "<group>"; };
 		BCB41F4214863646008F3738 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
 		BCB41F4314863646008F3738 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
-		BCB5F28C1485416B00C28B3D /* RadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewController.h; sourceTree = "<group>"; };
-		BCB5F28D1485416B00C28B3D /* RadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewController.m; sourceTree = "<group>"; };
 		BCB7AE7F15C930D200E59D3A /* profilRadioMaskHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profilRadioMaskHighlighted.png; sourceTree = "<group>"; };
 		BCB7AE8015C930D200E59D3A /* profilRadioMaskHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profilRadioMaskHighlighted@2x.png"; sourceTree = "<group>"; };
 		BCBAB48914A22E3400CF922A /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -6930,9 +6866,6 @@
 		BCE7518814EC1DBF00056916 /* AdaptiveLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdaptiveLabel.m; sourceTree = "<group>"; };
 		BCF3588314E07A87003594BF /* ScrollingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingLabel.h; sourceTree = "<group>"; };
 		BCF3588414E07A87003594BF /* ScrollingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingLabel.m; sourceTree = "<group>"; };
-		BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSearchViewController.h; path = RadioSelection/RadioSearchViewController.h; sourceTree = "<group>"; };
-		BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSearchViewController.m; path = RadioSelection/RadioSearchViewController.m; sourceTree = "<group>"; };
-		BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSearchViewController.xib; path = RadioSelection/RadioSearchViewController.xib; sourceTree = "<group>"; };
 		BCFD0C0315C2C01D004B6844 /* myRadiosMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosMask.png; sourceTree = "<group>"; };
 		BCFD0C0415C2C01D004B6844 /* myRadiosMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosMask@2x.png"; sourceTree = "<group>"; };
 		BCFD0C0515C2C01D004B6844 /* myRadiosSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosSeparator.png; sourceTree = "<group>"; };
@@ -7442,6 +7375,8 @@
 				BC23873E15D2C09900D1A4C4 /* WallPostCell.m */,
 				BC23873315D2BE6400D1A4C4 /* WallHeaderCell.h */,
 				BC23873415D2BE6400D1A4C4 /* WallHeaderCell.m */,
+				BC2387BE15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.h */,
+				BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */,
 				BC23871615D2B9D100D1A4C4 /* WallViewController.h */,
 				BC23871715D2B9D100D1A4C4 /* WallViewController.m */,
 				BC23871815D2B9D100D1A4C4 /* WallViewController.xib */,
@@ -7671,24 +7606,6 @@
 			name = GenderPicker;
 			path = LibTools/GenderPicker;
 			sourceTree = SOURCE_ROOT;
-		};
-		BC598E4415B87106004D6DCB /* Old RadioSelection */ = {
-			isa = PBXGroup;
-			children = (
-				BCF62DDF148394F0001B1908 /* RadioSearchViewController.h */,
-				BCF62DE0148394F0001B1908 /* RadioSearchViewController.m */,
-				BCF62DE1148394F0001B1908 /* RadioSearchViewController.xib */,
-				40A98AE514C74C3E00999793 /* UserTableViewCell.h */,
-				40A98AE614C74C3F00999793 /* UserTableViewCell.m */,
-				BCA83E6314C6D3D1000A8295 /* FriendsViewController.h */,
-				BCA83E6414C6D3D1000A8295 /* FriendsViewController.m */,
-				BCA83E6514C6D3D1000A8295 /* FriendsViewController.xib */,
-				BCA83E6C14C6D3EB000A8295 /* FavoritesViewController.h */,
-				BCA83E6D14C6D3EB000A8295 /* FavoritesViewController.m */,
-				BCA83E6E14C6D3EB000A8295 /* FavoritesViewController.xib */,
-			);
-			name = "Old RadioSelection";
-			sourceTree = "<group>";
 		};
 		BC598E8B15B988C3004D6DCB /* RadioList */ = {
 			isa = PBXGroup;
@@ -7969,8 +7886,6 @@
 				BCA83E7C14C7258F000A8295 /* SongViewCell.m */,
 				BC0DD8461487EAE900DCD550 /* RadioViewCell.h */,
 				BC0DD8471487EAE900DCD550 /* RadioViewCell.m */,
-				BCB5F28C1485416B00C28B3D /* RadioViewController.h */,
-				BCB5F28D1485416B00C28B3D /* RadioViewController.m */,
 				40EAA59414DC2DFE0000621C /* UserViewCell.h */,
 				40EAA59514DC2DFE0000621C /* UserViewCell.m */,
 				40104FC314ED3CF900996326 /* LikeViewCell.h */,
@@ -9065,7 +8980,6 @@
 				BCE4632E148FDEA000422448 /* Login */,
 				BCE66A7F1548599A0094B4D0 /* Menu */,
 				BC71F595147FC10500DAE4BD /* My Yasound */,
-				BC598E4415B87106004D6DCB /* Old RadioSelection */,
 				BC5EE20E147D3EB300A282A5 /* RadioSelection */,
 				BCB41F4114863646008F3738 /* Theme */,
 				BCB5F28B1485416B00C28B3D /* RadioView */,
@@ -9325,7 +9239,6 @@
 				40B40A1C152EFC630050D334 /* Localizable.strings in Resources */,
 				40B40A1D152EFC630050D334 /* Localizable.strings in Resources */,
 				40B40A1E152EFC630050D334 /* MainWindow.xib in Resources */,
-				40B40A1F152EFC630050D334 /* RadioSearchViewController.xib in Resources */,
 				40B40A21152EFC630050D334 /* StyleSelectorViewController.xib in Resources */,
 				40B40A2A152EFC630050D334 /* SettingsViewController.xib in Resources */,
 				40B40A2B152EFC630050D334 /* PlaylistsViewController.xib in Resources */,
@@ -9339,8 +9252,6 @@
 				40B40A37152EFC630050D334 /* StatsViewController.xib in Resources */,
 				40B40A38152EFC630050D334 /* RootViewController.xib in Resources */,
 				40B40A3A152EFC630050D334 /* CreateMyRadio.xib in Resources */,
-				40B40A3C152EFC630050D334 /* FriendsViewController.xib in Resources */,
-				40B40A3D152EFC630050D334 /* FavoritesViewController.xib in Resources */,
 				40B40A40152EFC630050D334 /* jQueryInject.txt in Resources */,
 				40B40A41152EFC630050D334 /* jQueryInjectLandscape.txt in Resources */,
 				40B40A42152EFC630050D334 /* twitter_load.png in Resources */,
@@ -9842,7 +9753,6 @@
 				40D53C221554280F001EB0C5 /* Localizable.strings in Resources */,
 				40D53C231554280F001EB0C5 /* Localizable.strings in Resources */,
 				40D53C241554280F001EB0C5 /* MainWindow.xib in Resources */,
-				40D53C251554280F001EB0C5 /* RadioSearchViewController.xib in Resources */,
 				40D53C271554280F001EB0C5 /* StyleSelectorViewController.xib in Resources */,
 				40D53C301554280F001EB0C5 /* SettingsViewController.xib in Resources */,
 				40D53C311554280F001EB0C5 /* PlaylistsViewController.xib in Resources */,
@@ -9856,8 +9766,6 @@
 				40D53C3B1554280F001EB0C5 /* StatsViewController.xib in Resources */,
 				40D53C3C1554280F001EB0C5 /* RootViewController.xib in Resources */,
 				40D53C3E1554280F001EB0C5 /* CreateMyRadio.xib in Resources */,
-				40D53C401554280F001EB0C5 /* FriendsViewController.xib in Resources */,
-				40D53C411554280F001EB0C5 /* FavoritesViewController.xib in Resources */,
 				40D53C441554280F001EB0C5 /* jQueryInject.txt in Resources */,
 				40D53C451554280F001EB0C5 /* jQueryInjectLandscape.txt in Resources */,
 				40D53C461554280F001EB0C5 /* twitter_load.png in Resources */,
@@ -10361,7 +10269,6 @@
 				BC3FA70214E93B660055AB4A /* Localizable.strings in Resources */,
 				BC3FA70314E93B660055AB4A /* Localizable.strings in Resources */,
 				BC3FA70414E93B660055AB4A /* MainWindow.xib in Resources */,
-				BC3FA70514E93B660055AB4A /* RadioSearchViewController.xib in Resources */,
 				BC3FA70714E93B660055AB4A /* StyleSelectorViewController.xib in Resources */,
 				BC3FA71214E93B660055AB4A /* SettingsViewController.xib in Resources */,
 				BC3FA71314E93B660055AB4A /* PlaylistsViewController.xib in Resources */,
@@ -10375,8 +10282,6 @@
 				BC3FA73514E93B660055AB4A /* StatsViewController.xib in Resources */,
 				BC3FA73814E93B660055AB4A /* RootViewController.xib in Resources */,
 				BC3FA73A14E93B660055AB4A /* CreateMyRadio.xib in Resources */,
-				BC3FA73C14E93B660055AB4A /* FriendsViewController.xib in Resources */,
-				BC3FA73D14E93B660055AB4A /* FavoritesViewController.xib in Resources */,
 				BC3FA74014E93B660055AB4A /* jQueryInject.txt in Resources */,
 				BC3FA74114E93B660055AB4A /* jQueryInjectLandscape.txt in Resources */,
 				BC3FA74214E93B660055AB4A /* twitter_load.png in Resources */,
@@ -10874,7 +10779,6 @@
 				BC56F52B152486AF005D1B40 /* Localizable.strings in Resources */,
 				BC56F52C152486AF005D1B40 /* Localizable.strings in Resources */,
 				BC56F52D152486AF005D1B40 /* MainWindow.xib in Resources */,
-				BC56F52E152486AF005D1B40 /* RadioSearchViewController.xib in Resources */,
 				BC56F530152486AF005D1B40 /* StyleSelectorViewController.xib in Resources */,
 				BC56F539152486AF005D1B40 /* SettingsViewController.xib in Resources */,
 				BC56F53A152486AF005D1B40 /* PlaylistsViewController.xib in Resources */,
@@ -10888,8 +10792,6 @@
 				BC56F546152486AF005D1B40 /* StatsViewController.xib in Resources */,
 				BC56F547152486AF005D1B40 /* RootViewController.xib in Resources */,
 				BC56F549152486AF005D1B40 /* CreateMyRadio.xib in Resources */,
-				BC56F54B152486AF005D1B40 /* FriendsViewController.xib in Resources */,
-				BC56F54C152486AF005D1B40 /* FavoritesViewController.xib in Resources */,
 				BC56F54F152486AF005D1B40 /* jQueryInject.txt in Resources */,
 				BC56F550152486AF005D1B40 /* jQueryInjectLandscape.txt in Resources */,
 				BC56F551152486AF005D1B40 /* twitter_load.png in Resources */,
@@ -11392,7 +11294,6 @@
 				BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */,
 				BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */,
 				BC71F624147FEC6F00DAE4BD /* MainWindow.xib in Resources */,
-				BCF62DE5148394F0001B1908 /* RadioSearchViewController.xib in Resources */,
 				BC93B4B0148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCBAB49E14A2322900CF922A /* SettingsViewController.xib in Resources */,
 				BCBAB4A714A240B300CF922A /* PlaylistsViewController.xib in Resources */,
@@ -11406,8 +11307,6 @@
 				BCCA799914B1AE520011AADD /* StatsViewController.xib in Resources */,
 				BC828ADA14B49E9500763558 /* RootViewController.xib in Resources */,
 				BC178DAE14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
-				BCA83E6A14C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
-				BCA83E7314C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
 				BC40CC0B14CF64B100DF0950 /* jQueryInject.txt in Resources */,
 				BC40CC0F14CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5714CF64B100DF0950 /* twitter_load.png in Resources */,
@@ -11910,7 +11809,6 @@
 				BC93CD5614CF3F7A007C723F /* Localizable.strings in Resources */,
 				BC93CD5714CF3F7A007C723F /* Localizable.strings in Resources */,
 				BC93CD5814CF3F7A007C723F /* MainWindow.xib in Resources */,
-				BC93CD7614CF3F7A007C723F /* RadioSearchViewController.xib in Resources */,
 				BC93CD7C14CF3F7A007C723F /* StyleSelectorViewController.xib in Resources */,
 				BC93CD9114CF3F7A007C723F /* SettingsViewController.xib in Resources */,
 				BC93CD9214CF3F7A007C723F /* PlaylistsViewController.xib in Resources */,
@@ -11924,8 +11822,6 @@
 				BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */,
 				BC93CDD614CF3F7A007C723F /* RootViewController.xib in Resources */,
 				BC93CDDB14CF3F7A007C723F /* CreateMyRadio.xib in Resources */,
-				BC93CDDD14CF3F7A007C723F /* FriendsViewController.xib in Resources */,
-				BC93CDDE14CF3F7A007C723F /* FavoritesViewController.xib in Resources */,
 				BC40CC0D14CF64B100DF0950 /* jQueryInject.txt in Resources */,
 				BC40CC1114CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5914CF64B100DF0950 /* twitter_load.png in Resources */,
@@ -12428,7 +12324,6 @@
 				BC71F583147F979700DAE4BD /* Localizable.strings in Resources */,
 				BC71F587147F97DB00DAE4BD /* Localizable.strings in Resources */,
 				BC71F589147F9CD900DAE4BD /* MainWindow.xib in Resources */,
-				BCF62DE4148394F0001B1908 /* RadioSearchViewController.xib in Resources */,
 				BC93B4AF148E68DE00A87157 /* StyleSelectorViewController.xib in Resources */,
 				BCBAB49D14A2322900CF922A /* SettingsViewController.xib in Resources */,
 				BCBAB4A614A240B300CF922A /* PlaylistsViewController.xib in Resources */,
@@ -12442,8 +12337,6 @@
 				BCCA799814B1AE520011AADD /* StatsViewController.xib in Resources */,
 				BC828AD914B49E9500763558 /* RootViewController.xib in Resources */,
 				BC178DAD14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
-				BCA83E6914C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
-				BCA83E7214C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
 				BC40CC0A14CF64B100DF0950 /* jQueryInject.txt in Resources */,
 				BC40CC0E14CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5614CF64B100DF0950 /* twitter_load.png in Resources */,
@@ -12946,7 +12839,6 @@
 				E5F3B89E1498B88D008DD607 /* Localizable.strings in Resources */,
 				E5F3B89F1498B88D008DD607 /* Localizable.strings in Resources */,
 				E5F3B8A01498B88D008DD607 /* MainWindow.xib in Resources */,
-				E5F3B8BE1498B88D008DD607 /* RadioSearchViewController.xib in Resources */,
 				E5F3B8C41498B88D008DD607 /* StyleSelectorViewController.xib in Resources */,
 				BCBAB49F14A2322900CF922A /* SettingsViewController.xib in Resources */,
 				BCBAB4A814A240B300CF922A /* PlaylistsViewController.xib in Resources */,
@@ -12960,8 +12852,6 @@
 				BCCA799A14B1AE520011AADD /* StatsViewController.xib in Resources */,
 				BC828ADB14B49E9500763558 /* RootViewController.xib in Resources */,
 				BC178DAF14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
-				BCA83E6B14C6D3D1000A8295 /* FriendsViewController.xib in Resources */,
-				BCA83E7414C6D3EB000A8295 /* FavoritesViewController.xib in Resources */,
 				BC40CC0C14CF64B100DF0950 /* jQueryInject.txt in Resources */,
 				BC40CC1014CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5814CF64B100DF0950 /* twitter_load.png in Resources */,
@@ -13525,8 +13415,6 @@
 				40B40956152EFC630050D334 /* RadioSelectionViewController.m in Sources */,
 				40B40958152EFC630050D334 /* BundleFileManager.m in Sources */,
 				40B40959152EFC630050D334 /* BundleStylesheet.m in Sources */,
-				40B4095A152EFC630050D334 /* RadioSearchViewController.m in Sources */,
-				40B4095B152EFC630050D334 /* RadioViewController.m in Sources */,
 				40B4095C152EFC630050D334 /* Theme.m in Sources */,
 				40B4095D152EFC630050D334 /* RadioViewCell.m in Sources */,
 				40B4095F152EFC630050D334 /* StyleSelectorViewController.m in Sources */,
@@ -13596,10 +13484,7 @@
 				40B409A5152EFC630050D334 /* AudioStreamManager.m in Sources */,
 				40B409A6152EFC630050D334 /* BuyLinkManager.m in Sources */,
 				40B409A7152EFC630050D334 /* CreateMyRadio.m in Sources */,
-				40B409A8152EFC630050D334 /* FriendsViewController.m in Sources */,
-				40B409A9152EFC630050D334 /* FavoritesViewController.m in Sources */,
 				40B409AA152EFC630050D334 /* SongViewCell.m in Sources */,
-				40B409AB152EFC630050D334 /* UserTableViewCell.m in Sources */,
 				40B409AC152EFC630050D334 /* DateAdditions.m in Sources */,
 				40B409AD152EFC630050D334 /* MGTwitterEngine.m in Sources */,
 				40B409AE152EFC630050D334 /* MGTwitterHTTPURLConnection.m in Sources */,
@@ -13716,6 +13601,7 @@
 				BC23873B15D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874515D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874F15D2C14500D1A4C4 /* StatusBar.m in Sources */,
+				BC2387C615D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13731,8 +13617,6 @@
 				40D53B5B1554280F001EB0C5 /* RadioSelectionViewController.m in Sources */,
 				40D53B5D1554280F001EB0C5 /* BundleFileManager.m in Sources */,
 				40D53B5E1554280F001EB0C5 /* BundleStylesheet.m in Sources */,
-				40D53B5F1554280F001EB0C5 /* RadioSearchViewController.m in Sources */,
-				40D53B601554280F001EB0C5 /* RadioViewController.m in Sources */,
 				40D53B611554280F001EB0C5 /* Theme.m in Sources */,
 				40D53B621554280F001EB0C5 /* RadioViewCell.m in Sources */,
 				40D53B641554280F001EB0C5 /* StyleSelectorViewController.m in Sources */,
@@ -13802,10 +13686,7 @@
 				40D53BA81554280F001EB0C5 /* AudioStreamManager.m in Sources */,
 				40D53BA91554280F001EB0C5 /* BuyLinkManager.m in Sources */,
 				40D53BAA1554280F001EB0C5 /* CreateMyRadio.m in Sources */,
-				40D53BAB1554280F001EB0C5 /* FriendsViewController.m in Sources */,
-				40D53BAC1554280F001EB0C5 /* FavoritesViewController.m in Sources */,
 				40D53BAD1554280F001EB0C5 /* SongViewCell.m in Sources */,
-				40D53BAE1554280F001EB0C5 /* UserTableViewCell.m in Sources */,
 				40D53BAF1554280F001EB0C5 /* DateAdditions.m in Sources */,
 				40D53BB01554280F001EB0C5 /* MGTwitterEngine.m in Sources */,
 				40D53BB11554280F001EB0C5 /* MGTwitterHTTPURLConnection.m in Sources */,
@@ -13922,6 +13803,7 @@
 				BC23873C15D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874615D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23875015D2C14500D1A4C4 /* StatusBar.m in Sources */,
+				BC2387C715D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13937,8 +13819,6 @@
 				BC3FA66A14E93B660055AB4A /* RadioSelectionViewController.m in Sources */,
 				BC3FA66C14E93B660055AB4A /* BundleFileManager.m in Sources */,
 				BC3FA66D14E93B660055AB4A /* BundleStylesheet.m in Sources */,
-				BC3FA66E14E93B660055AB4A /* RadioSearchViewController.m in Sources */,
-				BC3FA66F14E93B660055AB4A /* RadioViewController.m in Sources */,
 				BC3FA67014E93B660055AB4A /* Theme.m in Sources */,
 				BC3FA67114E93B660055AB4A /* RadioViewCell.m in Sources */,
 				BC3FA67314E93B660055AB4A /* StyleSelectorViewController.m in Sources */,
@@ -14008,10 +13888,7 @@
 				BC3FA6BB14E93B660055AB4A /* AudioStreamManager.m in Sources */,
 				BC3FA6BC14E93B660055AB4A /* BuyLinkManager.m in Sources */,
 				BC3FA6BD14E93B660055AB4A /* CreateMyRadio.m in Sources */,
-				BC3FA6BE14E93B660055AB4A /* FriendsViewController.m in Sources */,
-				BC3FA6BF14E93B660055AB4A /* FavoritesViewController.m in Sources */,
 				BC3FA6C014E93B660055AB4A /* SongViewCell.m in Sources */,
-				BC3FA6C114E93B660055AB4A /* UserTableViewCell.m in Sources */,
 				BC3FA6C214E93B660055AB4A /* DateAdditions.m in Sources */,
 				BC3FA6C314E93B660055AB4A /* MGTwitterEngine.m in Sources */,
 				BC3FA6C414E93B660055AB4A /* MGTwitterHTTPURLConnection.m in Sources */,
@@ -14124,6 +14001,7 @@
 				BC23873A15D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874415D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874E15D2C14500D1A4C4 /* StatusBar.m in Sources */,
+				BC2387C515D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14139,8 +14017,6 @@
 				BC56F478152486AF005D1B40 /* RadioSelectionViewController.m in Sources */,
 				BC56F47A152486AF005D1B40 /* BundleFileManager.m in Sources */,
 				BC56F47B152486AF005D1B40 /* BundleStylesheet.m in Sources */,
-				BC56F47C152486AF005D1B40 /* RadioSearchViewController.m in Sources */,
-				BC56F47D152486AF005D1B40 /* RadioViewController.m in Sources */,
 				BC56F47E152486AF005D1B40 /* Theme.m in Sources */,
 				BC56F47F152486AF005D1B40 /* RadioViewCell.m in Sources */,
 				BC56F481152486AF005D1B40 /* StyleSelectorViewController.m in Sources */,
@@ -14210,10 +14086,7 @@
 				BC56F4C7152486AF005D1B40 /* AudioStreamManager.m in Sources */,
 				BC56F4C8152486AF005D1B40 /* BuyLinkManager.m in Sources */,
 				BC56F4C9152486AF005D1B40 /* CreateMyRadio.m in Sources */,
-				BC56F4CA152486AF005D1B40 /* FriendsViewController.m in Sources */,
-				BC56F4CB152486AF005D1B40 /* FavoritesViewController.m in Sources */,
 				BC56F4CC152486AF005D1B40 /* SongViewCell.m in Sources */,
-				BC56F4CD152486AF005D1B40 /* UserTableViewCell.m in Sources */,
 				BC56F4CE152486AF005D1B40 /* DateAdditions.m in Sources */,
 				BC56F4CF152486AF005D1B40 /* MGTwitterEngine.m in Sources */,
 				BC56F4D0152486AF005D1B40 /* MGTwitterHTTPURLConnection.m in Sources */,
@@ -14330,6 +14203,7 @@
 				BC23873715D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874115D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874B15D2C14500D1A4C4 /* StatusBar.m in Sources */,
+				BC2387C215D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14345,8 +14219,6 @@
 				BC71F5D2147FEC6F00DAE4BD /* RadioSelectionViewController.m in Sources */,
 				BC71F5D5147FEC6F00DAE4BD /* BundleFileManager.m in Sources */,
 				BC71F5D6147FEC6F00DAE4BD /* BundleStylesheet.m in Sources */,
-				BCF62DE3148394F0001B1908 /* RadioSearchViewController.m in Sources */,
-				BCB5F2901485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4514863646008F3738 /* Theme.m in Sources */,
 				BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */,
 				BC93B4AE148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
@@ -14416,10 +14288,7 @@
 				BC03053014C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */,
 				BC178DAB14C5E99800B18420 /* CreateMyRadio.m in Sources */,
-				BCA83E6714C6D3D1000A8295 /* FriendsViewController.m in Sources */,
-				BCA83E7014C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 				BCA83E7E14C7258F000A8295 /* SongViewCell.m in Sources */,
-				40A98AE814C74C3F00999793 /* UserTableViewCell.m in Sources */,
 				BC01F5AC14CEB01F00EF62A2 /* DateAdditions.m in Sources */,
 				BC40CC1714CF64B100DF0950 /* MGTwitterEngine.m in Sources */,
 				BC40CC1B14CF64B100DF0950 /* MGTwitterHTTPURLConnection.m in Sources */,
@@ -14536,6 +14405,7 @@
 				BC23873615D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874015D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874A15D2C14500D1A4C4 /* StatusBar.m in Sources */,
+				BC2387C115D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14553,8 +14423,6 @@
 				BC93CCD014CF3F7A007C723F /* RadioSelectionViewController.m in Sources */,
 				BC93CCD314CF3F7A007C723F /* BundleFileManager.m in Sources */,
 				BC93CCD414CF3F7A007C723F /* BundleStylesheet.m in Sources */,
-				BC93CCD614CF3F7A007C723F /* RadioSearchViewController.m in Sources */,
-				BC93CCD714CF3F7A007C723F /* RadioViewController.m in Sources */,
 				BC93CCD814CF3F7A007C723F /* Theme.m in Sources */,
 				BC93CCD914CF3F7A007C723F /* RadioViewCell.m in Sources */,
 				BC93CCDB14CF3F7A007C723F /* StyleSelectorViewController.m in Sources */,
@@ -14623,10 +14491,7 @@
 				BC93CD3414CF3F7A007C723F /* AudioStreamManager.m in Sources */,
 				BC93CD3514CF3F7A007C723F /* BuyLinkManager.m in Sources */,
 				BC93CD3614CF3F7A007C723F /* CreateMyRadio.m in Sources */,
-				BC93CD3714CF3F7A007C723F /* FriendsViewController.m in Sources */,
-				BC93CD3814CF3F7A007C723F /* FavoritesViewController.m in Sources */,
 				BC93CD3914CF3F7A007C723F /* SongViewCell.m in Sources */,
-				BC93CD3A14CF3F7A007C723F /* UserTableViewCell.m in Sources */,
 				BC93CD3B14CF3F7A007C723F /* DateAdditions.m in Sources */,
 				BC40CC1914CF64B100DF0950 /* MGTwitterEngine.m in Sources */,
 				BC40CC1D14CF64B100DF0950 /* MGTwitterHTTPURLConnection.m in Sources */,
@@ -14743,6 +14608,7 @@
 				BC23873915D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874315D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874D15D2C14500D1A4C4 /* StatusBar.m in Sources */,
+				BC2387C415D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14758,8 +14624,6 @@
 				BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */,
 				BC9F4149147E8A5F00D417EF /* BundleFileManager.m in Sources */,
 				BC9F414A147E8A5F00D417EF /* BundleStylesheet.m in Sources */,
-				BCF62DE2148394F0001B1908 /* RadioSearchViewController.m in Sources */,
-				BCB5F28F1485416B00C28B3D /* RadioViewController.m in Sources */,
 				BCB41F4414863646008F3738 /* Theme.m in Sources */,
 				BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */,
 				BC93B4AD148E68DE00A87157 /* StyleSelectorViewController.m in Sources */,
@@ -14829,10 +14693,7 @@
 				BC03052F14C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */,
 				BC178DAA14C5E99800B18420 /* CreateMyRadio.m in Sources */,
-				BCA83E6614C6D3D1000A8295 /* FriendsViewController.m in Sources */,
-				BCA83E6F14C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 				BCA83E7D14C7258F000A8295 /* SongViewCell.m in Sources */,
-				40A98AE714C74C3F00999793 /* UserTableViewCell.m in Sources */,
 				BC01F5AB14CEB01F00EF62A2 /* DateAdditions.m in Sources */,
 				BC40CC1614CF64B100DF0950 /* MGTwitterEngine.m in Sources */,
 				BC40CC1A14CF64B100DF0950 /* MGTwitterHTTPURLConnection.m in Sources */,
@@ -14949,6 +14810,7 @@
 				BC23873515D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23873F15D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874915D2C14500D1A4C4 /* StatusBar.m in Sources */,
+				BC2387C015D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14966,8 +14828,6 @@
 				E5F3B8661498B88D008DD607 /* RadioSelectionViewController.m in Sources */,
 				E5F3B8691498B88D008DD607 /* BundleFileManager.m in Sources */,
 				E5F3B86A1498B88D008DD607 /* BundleStylesheet.m in Sources */,
-				E5F3B86C1498B88D008DD607 /* RadioSearchViewController.m in Sources */,
-				E5F3B86D1498B88D008DD607 /* RadioViewController.m in Sources */,
 				E5F3B86E1498B88D008DD607 /* Theme.m in Sources */,
 				E5F3B8701498B88D008DD607 /* RadioViewCell.m in Sources */,
 				E5F3B8751498B88D008DD607 /* StyleSelectorViewController.m in Sources */,
@@ -15036,10 +14896,7 @@
 				BC03053114C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */,
 				BC178DAC14C5E99800B18420 /* CreateMyRadio.m in Sources */,
-				BCA83E6814C6D3D1000A8295 /* FriendsViewController.m in Sources */,
-				BCA83E7114C6D3EB000A8295 /* FavoritesViewController.m in Sources */,
 				BCA83E7F14C7258F000A8295 /* SongViewCell.m in Sources */,
-				40A98AE914C74C3F00999793 /* UserTableViewCell.m in Sources */,
 				BC01F5AD14CEB01F00EF62A2 /* DateAdditions.m in Sources */,
 				BC40CC1814CF64B100DF0950 /* MGTwitterEngine.m in Sources */,
 				BC40CC1C14CF64B100DF0950 /* MGTwitterHTTPURLConnection.m in Sources */,
@@ -15156,6 +15013,7 @@
 				BC23873815D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874215D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874C15D2C14500D1A4C4 /* StatusBar.m in Sources */,
+				BC2387C315D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

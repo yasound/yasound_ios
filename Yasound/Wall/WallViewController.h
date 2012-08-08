@@ -96,6 +96,7 @@
 @property (nonatomic) BOOL ownRadio;
 
 @property (nonatomic, retain) IBOutlet WebImageView* nowPlayingTrackImage;
+@property (nonatomic, retain) IBOutlet UIImageView* nowPlayingMask;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingButton;
 @property (nonatomic, retain) IBOutlet UILabel* nowPlayingLabel1;
 @property (nonatomic, retain) IBOutlet UILabel* nowPlayingLabel2;
@@ -116,7 +117,6 @@
 - (id)initWithRadio:(Radio*)radio;
 - (void)initRadioView;
 
-- (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
 - (void)setStatusMessage:(NSString*)message;
 
 - (void)addMessage;

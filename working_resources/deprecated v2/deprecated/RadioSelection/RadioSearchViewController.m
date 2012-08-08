@@ -8,7 +8,7 @@
 
 #import "RadioSearchViewController.h"
 #import "RadioListTableViewCell.h"
-#import "RadioViewController.h"
+//#import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
@@ -279,13 +279,16 @@ typedef enum
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RadioListTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    //RadioListTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSInteger rowIndex = indexPath.row;
+    NSInteger sectionIndex = indexPath.section;
     
-    //LBDEBUG TODO
-    
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:nil];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];  
+    NSArray* radios = [self radiosForSection:sectionIndex];
+    if (!radios)
+        return nil;
+    Radio* radio = [radios objectAtIndex:rowIndex];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
 }
 
 
