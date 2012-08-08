@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopBar.h"
 
-@interface NotificationViewController : UIViewController
+@interface NotificationViewController : UIViewController<TopBarDelegate>
 {
-    IBOutlet UIBarButtonItem* _backItem;
-    IBOutlet UIBarButtonItem* _titleItem;
     IBOutlet UITableView* _tableView;
 }
 

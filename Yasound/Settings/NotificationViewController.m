@@ -60,9 +60,6 @@
 {
     [super viewDidLoad];
 
-    _titleItem.title = NSLocalizedString(@"NotificationView_title", nil);
-    _backItem.title = NSLocalizedString(@"Navigation_back", nil);
-    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
@@ -252,12 +249,32 @@
 
 
 
-- (IBAction)onBack:(id)sender
+
+#pragma mark - TopBarDelegate
+
+- (void)topBarBackItemClicked:(TopBarItemId)itemId
 {
-  APNsPreferences* prefs = [[NotificationManager main] APNsPreferences];
-  [[YasoundDataProvider main] setApnsPreferences:prefs target:nil action:nil];
-  
-    [self.navigationController popViewControllerAnimated:YES];
+    if (itemId == TopBarItemBack)
+    {
+        APNsPreferences* prefs = [[NotificationManager main] APNsPreferences];
+        [[YasoundDataProvider main] setApnsPreferences:prefs target:nil action:nil];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+    else if (itemId == TopBarItemNotif)
+    {
+        
+    }
+    
+//    else if (itemId == TopBarItemNowPlaying)
+//    {
+//        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release];
+//    }
 }
+
+
 
 @end
