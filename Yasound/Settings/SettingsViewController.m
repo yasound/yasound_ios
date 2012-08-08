@@ -20,8 +20,7 @@
 #import "YasoundDataCache.h"
 #import "YasoundDataCacheImage.h"
 
-#define NB_SECTIONS 4
-
+#define NB_SECTIONS 3
 
 
 #define SECTION_CONFIG 0
@@ -32,37 +31,23 @@
 #define SECTION_IMAGE 1
 #define ROW_IMAGE 0
 
-#define SECTION_ACCOUNTS 2
-#define SECTION_ACCOUNTS_NB_ROWS 3
-#define ROW_ACCOUNTS_FACEBOOK 0
-#define ROW_ACCOUNTS_TWITTER 1
-#define ROW_ACCOUNTS_YASOUND 2
+#define SECTION_PROG 2
+#define ROW_PROG 0
 
-#define SECTION_NOTIFS 3
-#define SECTION_NOTIFS_NB_ROWS 1
-#define ROW_NOTIFS 0
-
-#ifdef DEBUG
-#undef NB_SECTIONS
-#define NB_SECTIONS 5
-#define SECTION_CACHE 4
-#define SECTION_CACHE_NB_ROWS 1
-#define ROW_CACHE 0
-#endif
 
 
 
 
 @implementation SettingsViewController
 
+@synthesize radio;
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard radio:(Radio*)radio
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        _wizard = wizard;
-        _myRadio = radio;
+        self.radio = radio;
     }
     
     return self;
@@ -91,38 +76,11 @@
 {
     [super viewDidLoad];
     
-    _titleLabel.text = NSLocalizedString(@"SettingsView_title", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    
-    if (_wizard)
-    {
-
-//        NSMutableArray* items = [NSMutableArray arrayWithArray:_toolbar.items];
-//        [items removeObjectAtIndex:0]; // remove back button
-
-        NSMutableArray* items = [[NSMutableArray alloc] init];
-
-        
-        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_cancel", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
-
-        UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        
-        _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
-
-        //        [items addObject:_backBtn];
-        [items addObject:backBtn];
-        [items addObject:space];
-        [items addObject:_nextBtn];
-        
-        [_toolbar setItems:items animated:NO];
-//        [space release];
-    }
-
 
     _settingsTitleLabel.text = NSLocalizedString(@"SettingsView_row_title_label", nil);
     
     // set radio title
-    NSString* radioTitle = _myRadio.name;
+    NSString* radioTitle = self.radio.name;
     if ((radioTitle == nil) || (radioTitle.length == 0))
         radioTitle = [NSString stringWithFormat:@"%@'s Yasound", [[UIDevice currentDevice] name]];
     _settingsTitleTextField.text = radioTitle;
@@ -136,7 +94,7 @@
     _settingsImageChanged = NO;
     
     // set radio image
-    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:_myRadio.picture];
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     if (imageURL != nil)
         [_settingsImageImage setUrl:imageURL];    
     
@@ -149,7 +107,7 @@
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
     
     // update keywords
-    NSArray* keywords = [_myRadio tagsArray];
+    NSArray* keywords = [self.radio tagsArray];
 
     if (_keywords)
         [_keywords release];
@@ -220,16 +178,9 @@
     if (section == SECTION_IMAGE)
         return 1;
 
-    if (section == SECTION_ACCOUNTS)
-        return SECTION_ACCOUNTS_NB_ROWS;
+    if (section == SECTION_PROG)
+        return 1;
 
-    if (section == SECTION_NOTIFS)
-        return SECTION_NOTIFS_NB_ROWS;
-
-#ifdef DEBUG
-    if (section == SECTION_CACHE)
-        return SECTION_CACHE_NB_ROWS;
-#endif
 
     return 0;
 }
@@ -239,16 +190,16 @@
 
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 22;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 22;
-}
-
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return 22;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 22;
+//}
+//
 
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -293,51 +244,51 @@
 
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    NSInteger nbRows;
-    if (indexPath.section == SECTION_CONFIG)
-        nbRows =  3;
-    
-    else if (indexPath.section == SECTION_IMAGE)
-        nbRows =  1;
-    
-    else if (indexPath.section == SECTION_ACCOUNTS)
-        nbRows =  SECTION_ACCOUNTS_NB_ROWS;
-
-    else if (indexPath.section == SECTION_NOTIFS)
-        nbRows =  SECTION_NOTIFS_NB_ROWS;
-
-#ifdef DEBUG
-    else if (indexPath.section == SECTION_CACHE)
-        nbRows =  SECTION_CACHE_NB_ROWS;
-#endif
-    
-    if (nbRows == 1)
-    {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
-        cell.backgroundView = view;
-        [view release];
-    }
-    else if (indexPath.row == 0)
-    {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
-        cell.backgroundView = view;
-        [view release];
-    }
-    else if (indexPath.row == (nbRows -1))
-    {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
-        cell.backgroundView = view;
-        [view release];
-    }
-    else
-    {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
-        cell.backgroundView = view;
-        [view release];
-    }
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//    NSInteger nbRows;
+//    if (indexPath.section == SECTION_CONFIG)
+//        nbRows =  3;
+//    
+//    else if (indexPath.section == SECTION_IMAGE)
+//        nbRows =  1;
+//    
+//    else if (indexPath.section == SECTION_ACCOUNTS)
+//        nbRows =  SECTION_ACCOUNTS_NB_ROWS;
+//
+//    else if (indexPath.section == SECTION_NOTIFS)
+//        nbRows =  SECTION_NOTIFS_NB_ROWS;
+//
+//#ifdef DEBUG
+//    else if (indexPath.section == SECTION_CACHE)
+//        nbRows =  SECTION_CACHE_NB_ROWS;
+//#endif
+//    
+//    if (nbRows == 1)
+//    {
+//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
+//    else if (indexPath.row == 0)
+//    {
+//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
+//    else if (indexPath.row == (nbRows -1))
+//    {
+//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
+//    else
+//    {
+//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
+//}
 
 
 
@@ -374,7 +325,7 @@
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"SettingsView_row_genre_label", nil);
-        NSString* style = _myRadio.genre;
+        NSString* style = self.radio.genre;
         cell.detailTextLabel.text = NSLocalizedString(style, nil);
         
         cell.detailTextLabel.textColor = [UIColor colorWithRed:182.f/255.f green:212.f/255.f blue:1 alpha:1];
@@ -389,49 +340,16 @@
         cell.detailTextLabel.textColor = [UIColor colorWithRed:182.f/255.f green:212.f/255.f blue:1 alpha:1];
         cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     }
-    
-    else if (indexPath.section == SECTION_ACCOUNTS)
+    else if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-        if (indexPath.row == ROW_ACCOUNTS_FACEBOOK)
-        {
-            cell.textLabel.text = @"Facebook";  
-            cell.detailTextLabel.text = @"";
-        }
-        else if (indexPath.row == ROW_ACCOUNTS_TWITTER)
-        {
-            cell.textLabel.text = @"Twitter";
-            cell.detailTextLabel.text = @"";
-        }
-        else if (indexPath.row == ROW_ACCOUNTS_YASOUND)
-        {
-            cell.textLabel.text = @"Yasound";
-            cell.detailTextLabel.text = @"";
-        }
-    }
-    
-    else if (indexPath.section == SECTION_NOTIFS)
-    {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = NSLocalizedString(@"SettingsView_section_notifs", nil);
+        cell.textLabel.text = NSLocalizedString(@"SettingsView_row_keywords_label", nil);
+        cell.detailTextLabel.text = _keywords;
         
-        cell.detailTextLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:182.f/255.f green:212.f/255.f blue:1 alpha:1];
         cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-        cell.detailTextLabel.text = @"";
     }
-
-#ifdef DEBUG
-    else if (indexPath.section == SECTION_CACHE)
-    {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = @"Empty the cache";
-        
-        cell.detailTextLabel.textColor = [UIColor whiteColor];
-        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-        cell.detailTextLabel.text = @"";
-    }
-#endif
+    
     
     
     return cell;
@@ -452,7 +370,7 @@
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
     {
         _changed = YES;
-        KeywordsViewController* view = [[KeywordsViewController alloc] initWithNibName:@"KeywordsViewController" bundle:nil radio:_myRadio];
+        KeywordsViewController* view = [[KeywordsViewController alloc] initWithNibName:@"KeywordsViewController" bundle:nil radio:self.radio];
         
         [self.navigationController pushViewController:view animated:YES];
         [view release];
@@ -498,15 +416,6 @@
         [view release];
     }
 
-#ifdef DEBUG
-    else if (indexPath.section == SECTION_CACHE)
-    {
-        _cacheQuery = [[UIActionSheet alloc] initWithTitle:@"Empty the cache?" delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:@"Empty the cache", nil];
-        _cacheQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-        [_cacheQuery showInView:self.view];
-        [_cacheQuery release];
-    }
-#endif
     
 }
 
@@ -556,9 +465,9 @@
     _changed = YES;
     
     // set radio title
-    _myRadio.name = textField.text;
+    self.radio.name = textField.text;
     
-    DLog(@"Radio name has changed for '%@'", _myRadio.name);
+    DLog(@"Radio name has changed for '%@'", self.radio.name);
 }
 
 
@@ -595,7 +504,7 @@
 
 - (void)openStyleSelector
 {
-    StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil currentStyle:_myRadio.genre target:self];
+    StyleSelectorViewController* view = [[StyleSelectorViewController alloc] initWithNibName:@"StyleSelectorViewController" bundle:nil currentStyle:self.radio.genre target:self];
     //  self.navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     self.navigationController.modalPresentationStyle = UIModalPresentationCurrentContext;
     [self.navigationController presentModalViewController:view animated:YES];
@@ -611,7 +520,7 @@
     cell.detailTextLabel.text = NSLocalizedString(style, nil);
     
     // set radio genre
-    _myRadio.genre = style;
+    self.radio.genre = style;
     
     /*
      [self.navigationController dismissModalViewControllerAnimated:YES];
@@ -664,29 +573,29 @@
 
 - (IBAction)onBack:(id)sender
 {
-    if (_wizard)
-    {
+//    if (_wizard)
+//    {
         // call root to launch the Radio
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CANCEL_WIZARD object:nil];
         return;
-    }
+//    }
     
     // save or cancel
-    if (!_wizard && _changed)
-    {
+//    if (!_wizard && _changed)
+//    {
         _saveQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingsView_saveOrCancel_title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_saveOrCancel_save", nil), NSLocalizedString(@"SettingsView_saveOrCancel_dontsave", nil), nil];
         
         _saveQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [_saveQuery showInView:self.view];
-    }
-    else
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+//    }
+//    else
+//    {
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
 }
 
 
-- (IBAction)onNext:(id)sender
+- (IBAction)onSave:(id)sender
 {
     [self save];
 }
@@ -736,23 +645,6 @@
         return;
     }
     
-#ifdef DEBUG
-    if (actionSheet == _cacheQuery)
-    {
-        // be careful!
-        if (buttonIndex == 0)
-        {
-            [[YasoundDataCache main] clearRadiosAll];
-            [[YasoundDataCache main] clearCurrentSongs];
-            [[YasoundDataCache main] clearFriends];
-            
-            [[YasoundDataCacheImageManager main] clear];
-
-            [ActivityAlertView showWithTitle:@"ok" closeAfterTimeInterval:1];
-        }
-        return;
-    }
-#endif
 }
 
 
@@ -768,9 +660,9 @@
     // empty the cache for radios (to let the change on name / genre appear)
     [[YasoundDataCache main] clearRadiosAll];
 
-    DLog(@"send update request for radio '%@'", _myRadio.name);
+    DLog(@"send update request for radio '%@'", self.radio.name);
     
-    [[YasoundDataProvider main] updateRadio:_myRadio target:self action:@selector(onRadioUpdated:info:)];
+    [[YasoundDataProvider main] updateRadio:self.radio target:self action:@selector(onRadioUpdated:info:)];
 }
 
 - (void)onRadioUpdated:(Radio*)radio info:(NSDictionary*)info
@@ -806,15 +698,15 @@
     [[YasoundDataCacheImageManager main] clearItem:imageURL];
 
   
-  if (_wizard)
-  {
+//  if (_wizard)
+//  {
     // call root to launch the Radio
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
-  }
-  else
-  {
-    [self.navigationController popViewControllerAnimated:YES];
-  }
+//  }
+//  else
+//  {
+//    [self.navigationController popViewControllerAnimated:YES];
+//  }
 }
 
 

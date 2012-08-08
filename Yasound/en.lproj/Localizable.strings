@@ -144,35 +144,6 @@
 "CreateMyRadio_goButton_text" = "Create my radio!";
 "CreateMyRadio_skipButton_text" = "Later";
 
-"SettingsView_title" = "Settings";
-"SettingsView_section_config" = "Configuration";
-"SettingsView_section_image" = "Picture";
-"SettingsView_section_theme" = "Graphical Theme";
-"SettingsView_section_accounts" = "Comptes";
-"SettingsView_section_notifs" = "Notifications";
-
-"SettingsView_row_image_label" = "Picture";
-"SettingsView_row_title_label" = "Name";
-"SettingsView_row_genre_label" = "Genre";
-"SettingsView_row_keywords_label" = "Tags";
-"SettingsView_keywords_empty" = "no tags";
-
-"SettingsView_saveOrCancel_title" = "Save changes ?";
-"SettingsView_saveOrCancel_cancel" = "Cancel";
-"SettingsView_saveOrCancel_save" = "Save";
-"SettingsView_saveOrCancel_dontsave" = "Don't save";
-
-"SettingsView_pickImage_cancel" = "Cancel";
-"SettingsView_pickImage_image" = "Take a picture";
-"SettingsView_pickImage_camera" = "Choose existing";
-
-"SettingsView_logout_cancel" = "Cancel";
-"SettingsView_logout_logout" = "Disconnect";
-
-"SettingsView_submit_title" = "update your radio";
-
-
-
 
 
 "StatsView_title" = "Stats";
@@ -598,4 +569,47 @@
 "F" = "Female";
 
 "Bio.label" = "%.0f characters left";
+
+
+"Settings.image.label" = "Picture";
+"Settings.title.label" = "Name";
+"Settings.genre.label" = "Genre";
+"Settings.keywords.label" = "Tags";
+"Settings.keywords.empty" = "no tags";
+
+"Settings.pickImage.cancel" = "Cancel";
+"Settings.pickImage.image" = "Take a picture";
+"Settings.pickImage.camera" = "Choose existing";
+
+"Settings.submit" = "mise à jour de la radio";
+
+
+
+
+"SettingsView_title" = "Settings";
+"SettingsView_section_config" = "Configuration";
+"SettingsView_section_image" = "";
+"SettingsView_section_theme" = "Graphical Theme";
+"SettingsView_section_accounts" = "Comptes";
+"SettingsView_section_notifs" = "Notifications";
+
+"SettingsView_row_image_label" = "Picture";
+"SettingsView_row_title_label" = "Name";
+"SettingsView_row_genre_label" = "Genre";
+"SettingsView_row_keywords_label" = "Tags";
+"SettingsView_keywords_empty" = "no tags";
+
+"SettingsView_saveOrCancel_title" = "Save changes ?";
+"SettingsView_saveOrCancel_cancel" = "Cancel";
+"SettingsView_saveOrCancel_save" = "Save";
+"SettingsView_saveOrCancel_dontsave" = "Don't save";
+
+"SettingsView_pickImage_cancel" = "Cancel";
+"SettingsView_pickImage_image" = "Take a picture";
+"SettingsView_pickImage_camera" = "Choose existing";
+
+"SettingsView_logout_cancel" = "Cancel";
+"SettingsView_logout_logout" = "Disconnect";
+
+"SettingsView_submit_title" = "update your radio";
 

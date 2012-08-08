@@ -14,22 +14,11 @@
 
 @interface SettingsViewController : TestflightViewController
 {
-    BOOL _wizard;
     BOOL _changed;
-    Radio* _myRadio;
     
     UIActionSheet* _saveQuery;
     UIActionSheet* _pickImageQuery;
-    UIActionSheet* _cacheQuery;
-    
-    IBOutlet UIView* _container;
-    
-    IBOutlet UIToolbar* _toolbar;
-    IBOutlet UIBarButtonItem* _backBtn;
-    IBOutlet UILabel* _titleLabel;
-    UIBarButtonItem* _nextBtn;
-
-    
+        
     IBOutlet UITableView* _tableView;  
 
     IBOutlet UITableViewCell* _settingsTitleCell;
@@ -45,7 +34,13 @@
 
 }
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard radio:(Radio*)radio;
+
+@property (nonatomic, retain) Radio* radio;
+
+
+
+
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio;
 
 
 @end

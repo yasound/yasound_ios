@@ -10,6 +10,7 @@
 #import "TestflightViewController.h"
 #import "ChartView.h"
 #import "RadioListeningStat.h"
+#import "Radio.h"
 
 @interface StatsViewController : TestflightViewController
 {
@@ -39,6 +40,11 @@
   
   NSArray* _leaderboard;
 }
+
+@property (nonatomic, retain) Radio* radio;
+
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio;
+
 
 - (IBAction)onBack:(id)sender;
 

@@ -140,10 +140,12 @@
 
 - (IBAction)onStatsClicked:(id)sender
 {
+    [self.delegate myRadioRequestedStats:self.radio];
 }
 
 - (IBAction)onSettingsClicked:(id)sender
 {
+    [self.delegate myRadioRequestedSettings:self.radio];
 }
 
 

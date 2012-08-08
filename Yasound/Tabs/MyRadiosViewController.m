@@ -13,6 +13,8 @@
 #import "YasoundDataProvider.h"
 #import "MyRadiosTableViewCell.h"
 #import "RootViewController.h"
+#import "StatsViewController.h"
+#import "SettingsViewController.h"
 
 @interface MyRadiosViewController ()
 
@@ -185,12 +187,16 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (void)myRadioRequestedStats:(Radio*)radio
 {
-
+    StatsViewController* view = [[StatsViewController alloc] initWithNibName:@"StatsViewController" bundle:nil forRadio:radio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
 }
 
 - (void)myRadioRequestedSettings:(Radio*)radio
 {
-
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:radio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
 }
 
 

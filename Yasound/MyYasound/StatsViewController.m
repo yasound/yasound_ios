@@ -42,16 +42,21 @@
 @implementation StatsViewController
 
 
+@synthesize radio;
+
 //@synthesize weekGraphView;
 //@synthesize monthGraphView;
 
 
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
+        
+        self.radio = radio;
+        
 //        weekGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
 
         _monthGraphView = [[ChartView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) minimalDisplay:NO];
@@ -254,34 +259,34 @@
 
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    NSString* title = nil;
-    
-    if (section == 0)
-        return nil;
-    
-    if (section == SECTION_MONTHCHART)
-        title = NSLocalizedString(@"StatsView_monthselector_label", nil);
-    
-    else if (section == SECTION_LEADERBOARD)
-        title = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
-    
-    
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    
-    UIImage* image = [sheet image];
-    CGFloat height = image.size.height;
-    UIImageView* view = [[UIImageView alloc] initWithImage:image];
-    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
-    
-    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UILabel* label = [sheet makeLabel];
-    label.text = title;
-    [view addSubview:label];
-    
-    return view;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    NSString* title = nil;
+//    
+//    if (section == 0)
+//        return nil;
+//    
+//    if (section == SECTION_MONTHCHART)
+//        title = NSLocalizedString(@"StatsView_monthselector_label", nil);
+//    
+//    else if (section == SECTION_LEADERBOARD)
+//        title = NSLocalizedString(@"StatsView_leaderboardselector_label", nil);
+//    
+//    
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    
+//    UIImage* image = [sheet image];
+//    CGFloat height = image.size.height;
+//    UIImageView* view = [[UIImageView alloc] initWithImage:image];
+//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
+//    
+//    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    UILabel* label = [sheet makeLabel];
+//    label.text = title;
+//    [view addSubview:label];
+//    
+//    return view;
+//}
 
 
 

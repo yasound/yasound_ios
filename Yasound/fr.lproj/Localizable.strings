@@ -141,32 +141,6 @@
 "CreateMyRadio_goButton_text" = "Je crée ma radio";
 "CreateMyRadio_skipButton_text" = "Plus tard";
 
-"SettingsView_title" = "Paramètres";
-"SettingsView_section_config" = "Configuration";
-"SettingsView_section_image" = "Image";
-"SettingsView_section_theme" = "Thème Graphique";
-"SettingsView_section_accounts" = "Comptes";
-"SettingsView_section_notifs" = "Notifications";
-
-"SettingsView_row_image_label" = "Image";
-"SettingsView_row_title_label" = "Titre";
-"SettingsView_row_genre_label" = "Genre";
-"SettingsView_row_keywords_label" = "Mots Clés";
-"SettingsView_keywords_empty" = "pas de mot-clé";
-
-"SettingsView_saveOrCancel_title" = "Enregistrer les modifications?";
-"SettingsView_saveOrCancel_cancel" = "Annuler";
-"SettingsView_saveOrCancel_save" = "Enregistrer";
-"SettingsView_saveOrCancel_dontsave" = "Ne pas enregistrer";
-
-"SettingsView_pickImage_cancel" = "Annuler";
-"SettingsView_pickImage_image" = "Prendre une photo";
-"SettingsView_pickImage_camera" = "Choisir existante";
-
-"SettingsView_logout_cancel" = "Annuler";
-"SettingsView_logout_logout" = "Se déconnecter";
-
-"SettingsView_submit_title" = "mise à jour de la radio";
 
 
 
@@ -584,5 +558,18 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "F" = "Femme";
 
 "Bio.label" = "%.0f caractères restants";
+
+"Settings.image.label" = "Image";
+"Settings.title.label" = "Titre";
+"Settings.genre.label" = "Genre";
+"Settings.keywords.label" = "Mots Clés";
+"Settings.keywords.empty" = "pas de mot-clé";
+
+"Settings.pickImage.cancel" = "Annuler";
+"Settings.pickImage.image" = "Prendre une photo";
+"Settings.pickImage.camera" = "Choisir existante";
+
+"Settings.submit" = "mise à jour de la radio";
+
 
 
