@@ -324,7 +324,7 @@
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = NSLocalizedString(@"SettingsView_row_genre_label", nil);
+        cell.textLabel.text = NSLocalizedString(@"Settings.genre.label", nil);
         NSString* style = self.radio.genre;
         cell.detailTextLabel.text = NSLocalizedString(style, nil);
         
