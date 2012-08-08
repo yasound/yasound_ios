@@ -85,8 +85,14 @@ static Song* _gNowPlayingSong = nil;
 @synthesize nowPlayingLike;
 @synthesize nowPlayingBuy;
 
+
 @synthesize tableview;
 @synthesize cellWallHeader;
+@synthesize headerImage;
+@synthesize headerTitle;
+@synthesize headerSubscribers;
+@synthesize headerListeners;
+@synthesize headerButtonLabel;
 
 
 - (id)initWithRadio:(Radio*)radio

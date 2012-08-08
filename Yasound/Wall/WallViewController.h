@@ -104,9 +104,16 @@
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingLike;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingBuy;
 
-@property (nonatomic, retain) IBOutlet TouchedTableView* tableview;
-@property (nonatomic, retain) WallHeaderCell* cellWallHeader;
 
+
+@property (nonatomic, retain) IBOutlet TouchedTableView* tableview;
+@property (nonatomic, retain) IBOutlet WallHeaderCell* cellWallHeader;
+
+@property (nonatomic, retain) IBOutlet WebImageView* headerImage;
+@property (nonatomic, retain) IBOutlet UILabel* headerTitle;
+@property (nonatomic, retain) IBOutlet UILabel* headerSubscribers;
+@property (nonatomic, retain) IBOutlet UILabel* headerListeners;
+@property (nonatomic, retain) IBOutlet UILabel* headerButtonLabel;
 
 @property (atomic, retain) NSMutableArray* statusMessages;
 //@property (nonatomic, retain) UIButton* favoriteButton;
