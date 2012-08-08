@@ -49,8 +49,8 @@
       // avatar
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     self.userAvatar = [[WebImageView alloc] initWithImageAtURL:imageURL];
-    stylesheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionAvatar" retainStylesheet:YES overwriteStylesheet:NO error:&error];
-    self.userAvatar.frame = stylesheet.frame;
+//    stylesheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionAvatar" retainStylesheet:YES overwriteStylesheet:NO error:&error];
+//    self.userAvatar.frame = stylesheet.frame;
     [self addSubview:self.userAvatar];
       
       // draw circle mask

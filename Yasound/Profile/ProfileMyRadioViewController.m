@@ -135,37 +135,37 @@ typedef enum
 }
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{    
-    if (section == eSectionSubscribers)
-    {
-        UIView* view = [[UIView alloc] init];
-        view.backgroundColor = [UIColor clearColor];
-        return view;
-    }
-
-    
-    NSString* title = nil;
-    
-    if (section == eSectionSubscribersButton)
-    {
-        title = NSLocalizedString(@"ProfileMyRadioView_section_subscribers", nil);
-    }
-    
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    
-    UIImage* image = [sheet image];
-    CGFloat height = image.size.height;
-    UIImageView* view = [[UIImageView alloc] initWithImage:image];
-    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
-    
-    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UILabel* label = [sheet makeLabel];
-    label.text = title;
-    [view addSubview:label];
-    
-    return view;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{    
+//    if (section == eSectionSubscribers)
+//    {
+//        UIView* view = [[UIView alloc] init];
+//        view.backgroundColor = [UIColor clearColor];
+//        return view;
+//    }
+//
+//    
+//    NSString* title = nil;
+//    
+//    if (section == eSectionSubscribersButton)
+//    {
+//        title = NSLocalizedString(@"ProfileMyRadioView_section_subscribers", nil);
+//    }
+//    
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    
+//    UIImage* image = [sheet image];
+//    CGFloat height = image.size.height;
+//    UIImageView* view = [[UIImageView alloc] initWithImage:image];
+//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
+//    
+//    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    UILabel* label = [sheet makeLabel];
+//    label.text = title;
+//    [view addSubview:label];
+//    
+//    return view;
+//}
 
 
 
@@ -275,12 +275,13 @@ typedef enum
         else
             user = [_subscribers objectAtIndex:indexPath.row];
 
-        if (cell == nil)
-        {    
-            cell = [[UserTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier2 rowIndex:indexPath.row user:user];
-        }
-        else
-            [cell updateWithUser:user rowIndex:indexPath.row];
+        //LBDEBUG
+//        if (cell == nil)
+//        {    
+//            cell = [[UserTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier2 rowIndex:indexPath.row user:user];
+//        }
+//        else
+//            [cell updateWithUser:user rowIndex:indexPath.row];
 
         
 

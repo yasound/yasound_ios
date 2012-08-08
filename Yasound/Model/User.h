@@ -32,6 +32,24 @@ UserMood stringToUsermood(NSString* str);
 @property (retain, nonatomic) Radio* current_radio;
 @property (retain, nonatomic) Radio* own_radio;
 
+//String gender
+//Integer age
+//birthday
+//bio_text 190 chars
+//120 Message
+
+//string : "M" ou "F"
+//age : entier
+//birthday : date
+//city
+//latitude
+//longitude
+//owner : bool
+//is_friend : bool
+//bio_text : text
+
+
+
 @property (retain, nonatomic) NSString* facebook_username;
 @property (retain, nonatomic) NSString* facebook_uid;
 @property (retain, nonatomic) NSString* facebook_token;

@@ -10,6 +10,9 @@
 #import <objc/runtime.h>
 #import "NSObject+SBJson.h"
 
+#define YASOUND_DATE_FORMATER @"yyyy-MM-dd'T'HH:mm:ssZZZZ"
+
+
 static const char *getPropertyType(objc_property_t property);
 objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
 
@@ -50,7 +53,7 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
       {
         str = [[str componentsSeparatedByString:@"."] objectAtIndex:0];
         NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZ"];
+        [dateFormat setDateFormat:YASOUND_DATE_FORMATER];
         
         
         // 19 = length of 2012-04-19T15:46:24
@@ -96,7 +99,7 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
   NSDictionary* jsonDict = [json JSONValue];
     
     //LBDBUG
-    NSLog(@"%@", jsonDict);
+   // NSLog(@"%@", jsonDict);
     
   [self loadPropertiesFromDictionary:jsonDict];
 }

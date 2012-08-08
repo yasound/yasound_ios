@@ -150,8 +150,6 @@
 		40B40984152EFC630050D334 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
 		40B40985152EFC630050D334 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
 		40B40986152EFC630050D334 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
-		40B40987152EFC630050D334 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970314AB7D9000D54631 /* NSObject+JsonProxy.m */; };
-		40B40988152EFC630050D334 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970514AB7D9000D54631 /* NSObject+PropertyDictionary.m */; };
 		40B40989152EFC630050D334 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		40B4098A152EFC630050D334 /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
 		40B4098B152EFC630050D334 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
@@ -407,8 +405,6 @@
 		40D53B891554280F001EB0C5 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
 		40D53B8A1554280F001EB0C5 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
 		40D53B8B1554280F001EB0C5 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
-		40D53B8C1554280F001EB0C5 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970314AB7D9000D54631 /* NSObject+JsonProxy.m */; };
-		40D53B8D1554280F001EB0C5 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970514AB7D9000D54631 /* NSObject+PropertyDictionary.m */; };
 		40D53B8E1554280F001EB0C5 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		40D53B8F1554280F001EB0C5 /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
 		40D53B901554280F001EB0C5 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
@@ -725,6 +721,38 @@
 		BC188BDE1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		BC188BDF1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		BC188BE01507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
+		BC2386D515D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */; };
+		BC2386D615D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */; };
+		BC2386D715D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */; };
+		BC2386D815D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */; };
+		BC2386D915D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */; };
+		BC2386DA15D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */; };
+		BC2386DB15D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */; };
+		BC2386DC15D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */; };
+		BC2386DD15D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */; };
+		BC2386DE15D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */; };
+		BC2386DF15D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */; };
+		BC2386E015D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */; };
+		BC2386E115D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */; };
+		BC2386E215D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */; };
+		BC2386E315D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */; };
+		BC2386E415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */; };
+		BC2386F215D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
+		BC2386F315D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
+		BC2386F415D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
+		BC2386F515D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
+		BC2386F615D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
+		BC2386F715D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
+		BC2386F815D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
+		BC2386F915D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
+		BC2386FA15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
+		BC2386FB15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
+		BC2386FC15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
+		BC2386FD15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
+		BC2386FE15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
+		BC2386FF15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
+		BC23870015D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
+		BC23870115D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
 		BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36314BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
@@ -850,8 +878,6 @@
 		BC3FA69814E93B660055AB4A /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
 		BC3FA69914E93B660055AB4A /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
 		BC3FA69A14E93B660055AB4A /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
-		BC3FA69B14E93B660055AB4A /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970314AB7D9000D54631 /* NSObject+JsonProxy.m */; };
-		BC3FA69C14E93B660055AB4A /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970514AB7D9000D54631 /* NSObject+PropertyDictionary.m */; };
 		BC3FA69D14E93B660055AB4A /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		BC3FA69E14E93B660055AB4A /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
 		BC3FA69F14E93B660055AB4A /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
@@ -1342,6 +1368,22 @@
 		BC48C7C415D16C1C00624E76 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7BE15D16C1C00624E76 /* DateViewController.m */; };
 		BC48C7C515D16C1C00624E76 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7BE15D16C1C00624E76 /* DateViewController.m */; };
 		BC48C7C615D16C1C00624E76 /* DateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7BE15D16C1C00624E76 /* DateViewController.m */; };
+		BC48C7D415D2425400624E76 /* GenderPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7D215D2425400624E76 /* GenderPickerViewController.m */; };
+		BC48C7D515D2425400624E76 /* GenderPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7D215D2425400624E76 /* GenderPickerViewController.m */; };
+		BC48C7D615D2425400624E76 /* GenderPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7D215D2425400624E76 /* GenderPickerViewController.m */; };
+		BC48C7D715D2425400624E76 /* GenderPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7D215D2425400624E76 /* GenderPickerViewController.m */; };
+		BC48C7D815D2425400624E76 /* GenderPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7D215D2425400624E76 /* GenderPickerViewController.m */; };
+		BC48C7D915D2425400624E76 /* GenderPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7D215D2425400624E76 /* GenderPickerViewController.m */; };
+		BC48C7DA15D2425400624E76 /* GenderPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7D215D2425400624E76 /* GenderPickerViewController.m */; };
+		BC48C7DB15D2425400624E76 /* GenderPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C7D215D2425400624E76 /* GenderPickerViewController.m */; };
+		BC48C7DC15D2425400624E76 /* GenderPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C7D315D2425400624E76 /* GenderPickerViewController.xib */; };
+		BC48C7DD15D2425400624E76 /* GenderPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C7D315D2425400624E76 /* GenderPickerViewController.xib */; };
+		BC48C7DE15D2425400624E76 /* GenderPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C7D315D2425400624E76 /* GenderPickerViewController.xib */; };
+		BC48C7DF15D2425400624E76 /* GenderPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C7D315D2425400624E76 /* GenderPickerViewController.xib */; };
+		BC48C7E015D2425400624E76 /* GenderPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C7D315D2425400624E76 /* GenderPickerViewController.xib */; };
+		BC48C7E115D2425400624E76 /* GenderPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C7D315D2425400624E76 /* GenderPickerViewController.xib */; };
+		BC48C7E215D2425400624E76 /* GenderPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C7D315D2425400624E76 /* GenderPickerViewController.xib */; };
+		BC48C7E315D2425400624E76 /* GenderPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C7D315D2425400624E76 /* GenderPickerViewController.xib */; };
 		BC49890414A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890514A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
 		BC49890614A107DF00873381 /* ApiKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4988F114A107DF00873381 /* ApiKey.m */; };
@@ -1589,8 +1631,6 @@
 		BC56F4A6152486AF005D1B40 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
 		BC56F4A7152486AF005D1B40 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
 		BC56F4A8152486AF005D1B40 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
-		BC56F4A9152486AF005D1B40 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970314AB7D9000D54631 /* NSObject+JsonProxy.m */; };
-		BC56F4AA152486AF005D1B40 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970514AB7D9000D54631 /* NSObject+PropertyDictionary.m */; };
 		BC56F4AB152486AF005D1B40 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		BC56F4AC152486AF005D1B40 /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
 		BC56F4AD152486AF005D1B40 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
@@ -2377,8 +2417,6 @@
 		BC93CD0114CF3F7A007C723F /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FD14AB7D9000D54631 /* SBJsonTokeniser.m */; };
 		BC93CD0214CF3F7A007C723F /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */; };
 		BC93CD0314CF3F7A007C723F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
-		BC93CD0414CF3F7A007C723F /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970314AB7D9000D54631 /* NSObject+JsonProxy.m */; };
-		BC93CD0514CF3F7A007C723F /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970514AB7D9000D54631 /* NSObject+PropertyDictionary.m */; };
 		BC93CD0614CF3F7A007C723F /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		BC93CD1714CF3F7A007C723F /* FacebookSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979714AB7DD100D54631 /* FacebookSessionManager.m */; };
 		BC93CD1814CF3F7A007C723F /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC979914AB7DD100D54631 /* SessionManager.m */; };
@@ -5431,12 +5469,6 @@
 		BCDC972714AB7D9000D54631 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
 		BCDC972814AB7D9000D54631 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
 		BCDC972914AB7D9000D54631 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970114AB7D9000D54631 /* SBJsonWriter.m */; };
-		BCDC972A14AB7D9000D54631 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970314AB7D9000D54631 /* NSObject+JsonProxy.m */; };
-		BCDC972B14AB7D9000D54631 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970314AB7D9000D54631 /* NSObject+JsonProxy.m */; };
-		BCDC972C14AB7D9000D54631 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970314AB7D9000D54631 /* NSObject+JsonProxy.m */; };
-		BCDC972D14AB7D9000D54631 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970514AB7D9000D54631 /* NSObject+PropertyDictionary.m */; };
-		BCDC972E14AB7D9000D54631 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970514AB7D9000D54631 /* NSObject+PropertyDictionary.m */; };
-		BCDC972F14AB7D9000D54631 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC970514AB7D9000D54631 /* NSObject+PropertyDictionary.m */; };
 		BCDC973314AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		BCDC973414AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
 		BCDC973514AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */; };
@@ -5945,6 +5977,12 @@
 		BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalSongInfoViewController.m; path = Programming/LocalSongInfoViewController.m; sourceTree = "<group>"; };
 		BC188BDA1507647900E38692 /* SongLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongLocal.h; sourceTree = "<group>"; };
 		BC188BDB1507647900E38692 /* SongLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLocal.m; sourceTree = "<group>"; };
+		BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JsonProxy.m"; sourceTree = "<group>"; };
+		BC2386D315D24E1600D1A4C4 /* NSObject+PropertyDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertyDictionary.h"; sourceTree = "<group>"; };
+		BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertyDictionary.m"; sourceTree = "<group>"; };
+		BC2386EF15D2514D00D1A4C4 /* BioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BioViewController.h; path = Settings/BioViewController.h; sourceTree = "<group>"; };
+		BC2386F015D2514D00D1A4C4 /* BioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BioViewController.m; path = Settings/BioViewController.m; sourceTree = "<group>"; };
+		BC2386F115D2514D00D1A4C4 /* BioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BioViewController.xib; path = Settings/BioViewController.xib; sourceTree = "<group>"; };
 		BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingView.h; sourceTree = "<group>"; };
 		BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingView.m; sourceTree = "<group>"; };
 		BC27F36C14BDD87B00EF1C5F /* TrackInteractionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInteractionView.h; sourceTree = "<group>"; };
@@ -6066,6 +6104,9 @@
 		BC48C78415D15A4300624E76 /* myAccountPictureMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myAccountPictureMask@2x.png"; sourceTree = "<group>"; };
 		BC48C7BD15D16C1C00624E76 /* DateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateViewController.h; sourceTree = "<group>"; };
 		BC48C7BE15D16C1C00624E76 /* DateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateViewController.m; sourceTree = "<group>"; };
+		BC48C7D115D2425400624E76 /* GenderPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderPickerViewController.h; sourceTree = "<group>"; };
+		BC48C7D215D2425400624E76 /* GenderPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderPickerViewController.m; sourceTree = "<group>"; };
+		BC48C7D315D2425400624E76 /* GenderPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenderPickerViewController.xib; sourceTree = "<group>"; };
 		BC4988F014A107DF00873381 /* ApiKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiKey.h; sourceTree = "<group>"; };
 		BC4988F114A107DF00873381 /* ApiKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiKey.m; sourceTree = "<group>"; };
 		BC4988F414A107DF00873381 /* Playlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playlist.h; sourceTree = "<group>"; };
@@ -6694,9 +6735,6 @@
 		BCDC96FF14AB7D9000D54631 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		BCDC970014AB7D9000D54631 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		BCDC970114AB7D9000D54631 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		BCDC970314AB7D9000D54631 /* NSObject+JsonProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JsonProxy.m"; sourceTree = "<group>"; };
-		BCDC970414AB7D9000D54631 /* NSObject+PropertyDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertyDictionary.h"; sourceTree = "<group>"; };
-		BCDC970514AB7D9000D54631 /* NSObject+PropertyDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertyDictionary.m"; sourceTree = "<group>"; };
 		BCDC973114AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+CocoaDevUsersAdditions.h"; sourceTree = "<group>"; };
 		BCDC973214AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CocoaDevUsersAdditions.m"; sourceTree = "<group>"; };
 		BCDC979314AB7DD100D54631 /* libfacebook_ios_sdk.ub.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfacebook_ios_sdk.ub.a; sourceTree = "<group>"; };
@@ -7227,6 +7265,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BC2386D115D24E1600D1A4C4 /* JsonToObject */ = {
+			isa = PBXGroup;
+			children = (
+				BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */,
+				BC2386D315D24E1600D1A4C4 /* NSObject+PropertyDictionary.h */,
+				BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */,
+			);
+			name = JsonToObject;
+			path = LibTools/JsonToObject;
+			sourceTree = SOURCE_ROOT;
+		};
 		BC27F39114BE598700EF1C5F /* YasoundReachability */ = {
 			isa = PBXGroup;
 			children = (
@@ -7418,6 +7467,17 @@
 			);
 			name = DatePicker;
 			path = LibTools/DatePicker;
+			sourceTree = SOURCE_ROOT;
+		};
+		BC48C7D015D2425400624E76 /* GenderPicker */ = {
+			isa = PBXGroup;
+			children = (
+				BC48C7D115D2425400624E76 /* GenderPickerViewController.h */,
+				BC48C7D215D2425400624E76 /* GenderPickerViewController.m */,
+				BC48C7D315D2425400624E76 /* GenderPickerViewController.xib */,
+			);
+			name = GenderPicker;
+			path = LibTools/GenderPicker;
 			sourceTree = SOURCE_ROOT;
 		};
 		BC598E4415B87106004D6DCB /* Old RadioSelection */ = {
@@ -7658,6 +7718,8 @@
 		BCA2CCD6149A95460000637E /* LibTools */ = {
 			isa = PBXGroup;
 			children = (
+				BC2386D115D24E1600D1A4C4 /* JsonToObject */,
+				BC48C7D015D2425400624E76 /* GenderPicker */,
 				BC48C7B215D16B5A00624E76 /* DatePicker */,
 				40ED562D14E41CE100C0A0F4 /* ImageResize */,
 				BCBE5C6A14D161890077FC62 /* TestflightViewController */,
@@ -7733,6 +7795,9 @@
 				BC48C76F15D14C7600624E76 /* MyAccountViewController.h */,
 				BC48C77015D14C7600624E76 /* MyAccountViewController.m */,
 				BC48C77115D14C7600624E76 /* MyAccountViewController.xib */,
+				BC2386EF15D2514D00D1A4C4 /* BioViewController.h */,
+				BC2386F015D2514D00D1A4C4 /* BioViewController.m */,
+				BC2386F115D2514D00D1A4C4 /* BioViewController.xib */,
 				BCBAB49714A2322900CF922A /* SettingsViewController.h */,
 				BCBAB49814A2322900CF922A /* SettingsViewController.m */,
 				BCBAB49914A2322900CF922A /* SettingsViewController.xib */,
@@ -8326,7 +8391,6 @@
 				BCCA798614AE24C80011AADD /* s7graphview */,
 				BCDC973014AB7D9700D54631 /* NSData+CocoaDevUsersAdditions */,
 				BCDC96E814AB7D9000D54631 /* json-framework */,
-				BCDC970214AB7D9000D54631 /* JsonToObject */,
 				BCDC967214AB7D8900D54631 /* Google Analytics SDK */,
 				BCDC963D14AB7D6E00D54631 /* ASIHTTPRequest */,
 			);
@@ -8468,17 +8532,6 @@
 			);
 			name = "json-framework";
 			path = "ThirdParties/json-framework";
-			sourceTree = "<group>";
-		};
-		BCDC970214AB7D9000D54631 /* JsonToObject */ = {
-			isa = PBXGroup;
-			children = (
-				BCDC970314AB7D9000D54631 /* NSObject+JsonProxy.m */,
-				BCDC970414AB7D9000D54631 /* NSObject+PropertyDictionary.h */,
-				BCDC970514AB7D9000D54631 /* NSObject+PropertyDictionary.m */,
-			);
-			name = JsonToObject;
-			path = ThirdParties/JsonToObject;
 			sourceTree = "<group>";
 		};
 		BCDC973014AB7D9700D54631 /* NSData+CocoaDevUsersAdditions */ = {
@@ -9568,6 +9621,8 @@
 				BC48C78015D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C78B15D15A4300624E76 /* myAccountPictureMask.png in Resources */,
 				BC48C79315D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
+				BC48C7E215D2425400624E76 /* GenderPickerViewController.xib in Resources */,
+				BC23870015D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10072,6 +10127,8 @@
 				BC48C78115D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C78C15D15A4300624E76 /* myAccountPictureMask.png in Resources */,
 				BC48C79415D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
+				BC48C7E315D2425400624E76 /* GenderPickerViewController.xib in Resources */,
+				BC23870115D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10570,6 +10627,8 @@
 				BC48C77F15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C78A15D15A4300624E76 /* myAccountPictureMask.png in Resources */,
 				BC48C79215D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
+				BC48C7E115D2425400624E76 /* GenderPickerViewController.xib in Resources */,
+				BC2386FF15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11073,6 +11132,8 @@
 				BC48C77C15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C78715D15A4300624E76 /* myAccountPictureMask.png in Resources */,
 				BC48C78F15D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
+				BC48C7DE15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
+				BC2386FC15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11576,6 +11637,8 @@
 				BC48C77B15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C78615D15A4300624E76 /* myAccountPictureMask.png in Resources */,
 				BC48C78E15D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
+				BC48C7DD15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
+				BC2386FB15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12079,6 +12142,8 @@
 				BC48C77E15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C78915D15A4300624E76 /* myAccountPictureMask.png in Resources */,
 				BC48C79115D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
+				BC48C7E015D2425400624E76 /* GenderPickerViewController.xib in Resources */,
+				BC2386FE15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12582,6 +12647,8 @@
 				BC48C77A15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C78515D15A4300624E76 /* myAccountPictureMask.png in Resources */,
 				BC48C78D15D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
+				BC48C7DC15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
+				BC2386FA15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13085,6 +13152,8 @@
 				BC48C77D15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C78815D15A4300624E76 /* myAccountPictureMask.png in Resources */,
 				BC48C79015D15A4300624E76 /* myAccountPictureMask@2x.png in Resources */,
+				BC48C7DF15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
+				BC2386FD15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13202,8 +13271,6 @@
 				40B40984152EFC630050D334 /* SBJsonTokeniser.m in Sources */,
 				40B40985152EFC630050D334 /* SBJsonUTF8Stream.m in Sources */,
 				40B40986152EFC630050D334 /* SBJsonWriter.m in Sources */,
-				40B40987152EFC630050D334 /* NSObject+JsonProxy.m in Sources */,
-				40B40988152EFC630050D334 /* NSObject+PropertyDictionary.m in Sources */,
 				40B40989152EFC630050D334 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				40B4098A152EFC630050D334 /* FacebookSessionManager.m in Sources */,
 				40B4098B152EFC630050D334 /* SessionManager.m in Sources */,
@@ -13343,6 +13410,10 @@
 				BC48C66415CFA76F00624E76 /* MenuViewController.m in Sources */,
 				BC48C77815D14C7600624E76 /* MyAccountViewController.m in Sources */,
 				BC48C7C515D16C1C00624E76 /* DateViewController.m in Sources */,
+				BC48C7DA15D2425400624E76 /* GenderPickerViewController.m in Sources */,
+				BC2386DB15D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
+				BC2386E315D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
+				BC2386F815D2514D00D1A4C4 /* BioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13402,8 +13473,6 @@
 				40D53B891554280F001EB0C5 /* SBJsonTokeniser.m in Sources */,
 				40D53B8A1554280F001EB0C5 /* SBJsonUTF8Stream.m in Sources */,
 				40D53B8B1554280F001EB0C5 /* SBJsonWriter.m in Sources */,
-				40D53B8C1554280F001EB0C5 /* NSObject+JsonProxy.m in Sources */,
-				40D53B8D1554280F001EB0C5 /* NSObject+PropertyDictionary.m in Sources */,
 				40D53B8E1554280F001EB0C5 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				40D53B8F1554280F001EB0C5 /* FacebookSessionManager.m in Sources */,
 				40D53B901554280F001EB0C5 /* SessionManager.m in Sources */,
@@ -13543,6 +13612,10 @@
 				BC48C66515CFA76F00624E76 /* MenuViewController.m in Sources */,
 				BC48C77915D14C7600624E76 /* MyAccountViewController.m in Sources */,
 				BC48C7C615D16C1C00624E76 /* DateViewController.m in Sources */,
+				BC48C7DB15D2425400624E76 /* GenderPickerViewController.m in Sources */,
+				BC2386DC15D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
+				BC2386E415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
+				BC2386F915D2514D00D1A4C4 /* BioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13602,8 +13675,6 @@
 				BC3FA69814E93B660055AB4A /* SBJsonTokeniser.m in Sources */,
 				BC3FA69914E93B660055AB4A /* SBJsonUTF8Stream.m in Sources */,
 				BC3FA69A14E93B660055AB4A /* SBJsonWriter.m in Sources */,
-				BC3FA69B14E93B660055AB4A /* NSObject+JsonProxy.m in Sources */,
-				BC3FA69C14E93B660055AB4A /* NSObject+PropertyDictionary.m in Sources */,
 				BC3FA69D14E93B660055AB4A /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BC3FA69E14E93B660055AB4A /* FacebookSessionManager.m in Sources */,
 				BC3FA69F14E93B660055AB4A /* SessionManager.m in Sources */,
@@ -13739,6 +13810,10 @@
 				BC48C66315CFA76F00624E76 /* MenuViewController.m in Sources */,
 				BC48C77715D14C7600624E76 /* MyAccountViewController.m in Sources */,
 				BC48C7C415D16C1C00624E76 /* DateViewController.m in Sources */,
+				BC48C7D915D2425400624E76 /* GenderPickerViewController.m in Sources */,
+				BC2386DA15D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
+				BC2386E215D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
+				BC2386F715D2514D00D1A4C4 /* BioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13798,8 +13873,6 @@
 				BC56F4A6152486AF005D1B40 /* SBJsonTokeniser.m in Sources */,
 				BC56F4A7152486AF005D1B40 /* SBJsonUTF8Stream.m in Sources */,
 				BC56F4A8152486AF005D1B40 /* SBJsonWriter.m in Sources */,
-				BC56F4A9152486AF005D1B40 /* NSObject+JsonProxy.m in Sources */,
-				BC56F4AA152486AF005D1B40 /* NSObject+PropertyDictionary.m in Sources */,
 				BC56F4AB152486AF005D1B40 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BC56F4AC152486AF005D1B40 /* FacebookSessionManager.m in Sources */,
 				BC56F4AD152486AF005D1B40 /* SessionManager.m in Sources */,
@@ -13939,6 +14012,10 @@
 				BC48C66015CFA76F00624E76 /* MenuViewController.m in Sources */,
 				BC48C77415D14C7600624E76 /* MyAccountViewController.m in Sources */,
 				BC48C7C115D16C1C00624E76 /* DateViewController.m in Sources */,
+				BC48C7D615D2425400624E76 /* GenderPickerViewController.m in Sources */,
+				BC2386D715D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
+				BC2386DF15D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
+				BC2386F415D2514D00D1A4C4 /* BioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13998,8 +14075,6 @@
 				BCDC972214AB7D9000D54631 /* SBJsonTokeniser.m in Sources */,
 				BCDC972514AB7D9000D54631 /* SBJsonUTF8Stream.m in Sources */,
 				BCDC972814AB7D9000D54631 /* SBJsonWriter.m in Sources */,
-				BCDC972B14AB7D9000D54631 /* NSObject+JsonProxy.m in Sources */,
-				BCDC972E14AB7D9000D54631 /* NSObject+PropertyDictionary.m in Sources */,
 				BCDC973414AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BCDC97AE14AB7DD100D54631 /* FacebookSessionManager.m in Sources */,
 				BCDC97B114AB7DD100D54631 /* SessionManager.m in Sources */,
@@ -14139,6 +14214,10 @@
 				BC48C65F15CFA76F00624E76 /* MenuViewController.m in Sources */,
 				BC48C77315D14C7600624E76 /* MyAccountViewController.m in Sources */,
 				BC48C7C015D16C1C00624E76 /* DateViewController.m in Sources */,
+				BC48C7D515D2425400624E76 /* GenderPickerViewController.m in Sources */,
+				BC2386D615D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
+				BC2386DE15D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
+				BC2386F315D2514D00D1A4C4 /* BioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14199,8 +14278,6 @@
 				BC93CD0114CF3F7A007C723F /* SBJsonTokeniser.m in Sources */,
 				BC93CD0214CF3F7A007C723F /* SBJsonUTF8Stream.m in Sources */,
 				BC93CD0314CF3F7A007C723F /* SBJsonWriter.m in Sources */,
-				BC93CD0414CF3F7A007C723F /* NSObject+JsonProxy.m in Sources */,
-				BC93CD0514CF3F7A007C723F /* NSObject+PropertyDictionary.m in Sources */,
 				BC93CD0614CF3F7A007C723F /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BC93CD1714CF3F7A007C723F /* FacebookSessionManager.m in Sources */,
 				BC93CD1814CF3F7A007C723F /* SessionManager.m in Sources */,
@@ -14340,6 +14417,10 @@
 				BC48C66215CFA76F00624E76 /* MenuViewController.m in Sources */,
 				BC48C77615D14C7600624E76 /* MyAccountViewController.m in Sources */,
 				BC48C7C315D16C1C00624E76 /* DateViewController.m in Sources */,
+				BC48C7D815D2425400624E76 /* GenderPickerViewController.m in Sources */,
+				BC2386D915D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
+				BC2386E115D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
+				BC2386F615D2514D00D1A4C4 /* BioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14399,8 +14480,6 @@
 				BCDC972114AB7D9000D54631 /* SBJsonTokeniser.m in Sources */,
 				BCDC972414AB7D9000D54631 /* SBJsonUTF8Stream.m in Sources */,
 				BCDC972714AB7D9000D54631 /* SBJsonWriter.m in Sources */,
-				BCDC972A14AB7D9000D54631 /* NSObject+JsonProxy.m in Sources */,
-				BCDC972D14AB7D9000D54631 /* NSObject+PropertyDictionary.m in Sources */,
 				BCDC973314AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BCDC97AD14AB7DD100D54631 /* FacebookSessionManager.m in Sources */,
 				BCDC97B014AB7DD100D54631 /* SessionManager.m in Sources */,
@@ -14540,6 +14619,10 @@
 				BC48C65E15CFA76F00624E76 /* MenuViewController.m in Sources */,
 				BC48C77215D14C7600624E76 /* MyAccountViewController.m in Sources */,
 				BC48C7BF15D16C1C00624E76 /* DateViewController.m in Sources */,
+				BC48C7D415D2425400624E76 /* GenderPickerViewController.m in Sources */,
+				BC2386D515D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
+				BC2386DD15D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
+				BC2386F215D2514D00D1A4C4 /* BioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14600,8 +14683,6 @@
 				BCDC972314AB7D9000D54631 /* SBJsonTokeniser.m in Sources */,
 				BCDC972614AB7D9000D54631 /* SBJsonUTF8Stream.m in Sources */,
 				BCDC972914AB7D9000D54631 /* SBJsonWriter.m in Sources */,
-				BCDC972C14AB7D9000D54631 /* NSObject+JsonProxy.m in Sources */,
-				BCDC972F14AB7D9000D54631 /* NSObject+PropertyDictionary.m in Sources */,
 				BCDC973514AB7D9700D54631 /* NSData+CocoaDevUsersAdditions.m in Sources */,
 				BCDC97AF14AB7DD100D54631 /* FacebookSessionManager.m in Sources */,
 				BCDC97B214AB7DD100D54631 /* SessionManager.m in Sources */,
@@ -14741,6 +14822,10 @@
 				BC48C66115CFA76F00624E76 /* MenuViewController.m in Sources */,
 				BC48C77515D14C7600624E76 /* MyAccountViewController.m in Sources */,
 				BC48C7C215D16C1C00624E76 /* DateViewController.m in Sources */,
+				BC48C7D715D2425400624E76 /* GenderPickerViewController.m in Sources */,
+				BC2386D815D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
+				BC2386E015D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
+				BC2386F515D2514D00D1A4C4 /* BioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
