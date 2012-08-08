@@ -25,7 +25,7 @@
 @synthesize username;
 @synthesize userImage;
 @synthesize city;
-
+@synthesize age;
 
 
 enum MyAccountDescription
@@ -189,8 +189,9 @@ enum SectionBio
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
         sheet = [[Theme theme] stylesheetForKey:@"TableView.value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UILabel* value = [sheet makeLabel];
-        [cell addSubview:value];
+        self.age = [sheet makeLabel];
+        self.age.text = [self.user.age stringValue];
+        [cell addSubview:self.age];
     }
     
     else if ((indexPath.section == SECTION_PROFIL) && (indexPath.row == ROW_SEXE))
@@ -204,7 +205,10 @@ enum SectionBio
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
         cell.textLabel.text = NSLocalizedString(@"MyAccount.sexe.label", nil);
-        cell.detailTextLabel.text = NSLocalizedString(@"M", nil);
+        NSString* gender = self.user.gender;
+        if (!gender)
+            gender=  @"M";
+        cell.detailTextLabel.text = NSLocalizedString(gender, nil);
         
     }
 
@@ -226,7 +230,7 @@ enum SectionBio
         
         [cell addSubview:self.city];
         
-        self.city.text = @"";
+        self.city.text = self.user.city;
     }
     
     else if ((indexPath.section == SECTION_BIO) && (indexPath.row == ROW_BIO))
@@ -243,7 +247,7 @@ enum SectionBio
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
         
         cell.textLabel.text = NSLocalizedString(@"MyAccount.bio.label", nil);
-        cell.detailTextLabel.text = @"";
+        cell.detailTextLabel.text = self.user.bio_text;
     }
     
     
@@ -265,7 +269,7 @@ enum SectionBio
     {
         DateViewController *controller = [[DateViewController alloc] init];
         controller.delegate = self;
-        controller.date = [NSDate date];
+        controller.date = self.user.birthday;
         [self.navigationController pushViewController:controller animated:YES];
         [controller release];
     }
@@ -308,6 +312,7 @@ enum SectionBio
     _changed = YES;
 
     [textField resignFirstResponder];
+    self.user.city = textField.text;
     
     return YES;
 }
@@ -351,8 +356,13 @@ enum SectionBio
 - (void)takeNewDate:(NSDate *)newDate
 {
     _changed = YES;
-
-    //myObject.date = newDate;
+    self.user.birthday = newDate;
+    
+    NSDate* now = [NSDate date];
+    NSDateComponents* ageComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:newDate toDate:now options:0];
+    NSInteger age = [ageComponents year];
+    self.user.age = [NSNumber numberWithInt:age];
+    self.age.text = [self.user.age stringValue];
 }
 
 - (UINavigationController *)navController
@@ -422,6 +432,7 @@ enum SectionBio
 
     UITableViewCell* cell = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ROW_SEXE inSection:SECTION_PROFIL]];
     cell.detailTextLabel.text = NSLocalizedString(gender, nil);
+    self.user.gender = gender;
 }
 
 - (UINavigationController *)genderNavController
@@ -438,20 +449,13 @@ enum SectionBio
     _changed = YES;
     
     UITableViewCell* cell = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ROW_BIO inSection:SECTION_BIO]];
-    cell.detailTextLabel.text = NSLocalizedString(bio, nil);    
+    cell.detailTextLabel.text = NSLocalizedString(bio, nil); 
+    self.user.bio_text = bio;
 }
 
 
-
-//- (void)updateUser:(User*)user target:(id)target action:(SEL)selector; // - (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success
-//- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
-
-
 - (void)save
-{
-    // empty the cache for radios (to let the change on name / genre appear)
-    [[YasoundDataCache main] clearRadiosAll];
-    
+{    
     [[YasoundDataProvider main] updateUser:self.user target:self action:@selector(didUpdateUser:success:)];
 }
 
@@ -459,49 +463,27 @@ enum SectionBio
 {
     if (_imageChanged)
     {
-        [[YasoundDataProvider main] setPicture:self.userImage.image forUser:self.user target:self action:@selector(onRadioImageUpdate:info:)];
+        [[YasoundDataProvider main] setPicture:self.userImage.image forUser:self.user target:self action:@selector(onUserImageUpdate:info:)];
     }
     else
-        [self onRadioImageUpdate:nil info:nil];
+        [self onUserImageUpdate:nil info:nil];
     
 }
 
-
-// TODO  : cleaner les types et objets (radio => user)
-
-- (void)onRadioImageUpdate:(NSString*)msg info:(NSDictionary*)info
+- (void)onUserImageUpdate:(NSString*)msg info:(NSDictionary*)info
 {
-    DLog(@"onRadioImageUpdate info %@", info);
+    DLog(@"onUserImageUpdate info %@", info);
     
-    // be sure to get updated radio (with correct picture)
-    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPictureUpdate:withInfo:)];
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.user.picture];
+    [[YasoundDataCacheImageManager main] clearItem:imageURL];
+
+    // reload user
+    [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:self action:@selector(didReloadUser:info:)];
 }
 
-// TODO  : cleaner les types et objets (radio => user)
-
-- (void)receivedUserRadioAfterPictureUpdate:(Radio*)r withInfo:(NSDictionary*)info
+- (void)didReloadUser:(User*)u info:(id)info
 {
-//    [ActivityAlertView close];
-    
-    // clean image cache
-    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:r.picture];
-    [[YasoundDataCacheImageManager main] clearItem:imageURL];
-    
-    imageURL = [[YasoundDataProvider main] urlForPicture:r.creator.picture];
-    [[YasoundDataCacheImageManager main] clearItem:imageURL];
-    
-    
-//    if (_wizard)
-//    {
-//        // call root to launch the Radio
-//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
-//    }
-//    else
-//    {
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
-
-    [self.navigationController popViewControllerAnimated:YES];
+    self.user = u;
 }
 
 
