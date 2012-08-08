@@ -590,7 +590,7 @@
 "MyAccount.age.label" = "Age";
 "MyAccount.sexe.label" = "Sexe";
 "MyAccount.city.label" = "City";
-"MyAccount.city.placeholder" = "entrez your city";
+"MyAccount.city.placeholder" = "enter your city";
 "MyAccount.bio.label" = "Bio";
 
 
