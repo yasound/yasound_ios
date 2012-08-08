@@ -32,6 +32,11 @@ UserMood stringToUsermood(NSString* str);
 @property (retain, nonatomic) Radio* current_radio;
 @property (retain, nonatomic) Radio* own_radio;
 
+@property (retain, nonatomic) NSString* gender;
+@property (retain, nonatomic) NSNumber* age;
+@property (retain, nonatomic) NSDate* birthday;
+@property (retain, nonatomic) NSString* city;
+@property (retain, nonatomic) NSString* bio_text;
 //String gender
 //Integer age
 //birthday

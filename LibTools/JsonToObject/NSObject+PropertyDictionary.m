@@ -10,7 +10,8 @@
 #import <objc/runtime.h>
 #import "NSObject+SBJson.h"
 
-#define YASOUND_DATE_FORMATER @"yyyy-MM-dd'T'HH:mm:ssZZZZ"
+#define YASOUND_DATETIME_FORMATER @"yyyy-MM-dd'T'HH:mm:ssZZZZ"
+#define YASOUND_DATE_FORMATER @"yyyy-MM-dd"
 
 
 static const char *getPropertyType(objc_property_t property);
@@ -53,7 +54,7 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
       {
         str = [[str componentsSeparatedByString:@"."] objectAtIndex:0];
         NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:YASOUND_DATE_FORMATER];
+        [dateFormat setDateFormat:YASOUND_DATETIME_FORMATER];
         
         
         // 19 = length of 2012-04-19T15:46:24
@@ -74,6 +75,15 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
         
         val = [dateFormat dateFromString:str];
         [dateFormat release];
+          
+          if (!val) // try with pure date formatter (no time)
+          {
+              NSString* str = [dict valueForKey:propName];
+              NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+              [dateFormat setDateFormat:YASOUND_DATE_FORMATER];
+              val = [dateFormat dateFromString:str];
+              [dateFormat release];
+          }
       }
     }
     else

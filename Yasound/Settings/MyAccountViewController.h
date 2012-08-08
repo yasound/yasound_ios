@@ -27,6 +27,7 @@
 @property (nonatomic, retain) UITextField* username;
 @property (nonatomic, retain) WebImageView* userImage;
 @property (nonatomic, retain) UITextField* city;
+@property (nonatomic, retain) UILabel* age;
 
 
 @end
