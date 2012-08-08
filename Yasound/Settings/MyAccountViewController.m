@@ -11,6 +11,8 @@
 #import "AudioStreamManager.h"
 #import "Theme.h"
 #import "YasoundDataProvider.h"
+#import "YasoundDataCache.h"
+
 
 @interface MyAccountViewController ()
 
@@ -317,6 +319,9 @@ enum SectionBio
 
 - (void)topBarBackItemClicked:(TopBarItemId)itemId
 {
+    if (_changed || _imageChanged)
+        [self save];
+    
     if (itemId == TopBarItemBack)
     {
         [self.navigationController popViewControllerAnimated:YES];
@@ -433,6 +438,67 @@ enum SectionBio
 }
 
 
+
+//- (void)updateUser:(User*)user target:(id)target action:(SEL)selector; // - (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success
+//- (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector;
+
+
+- (void)save
+{
+    // empty the cache for radios (to let the change on name / genre appear)
+    [[YasoundDataCache main] clearRadiosAll];
+    
+    [[YasoundDataProvider main] updateUser:self.user target:self action:@selector(didUpdateUser:success:)];
+}
+
+- (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (_imageChanged)
+    {
+        [[YasoundDataProvider main] setPicture:self.userImage.image forUser:self.user target:self action:@selector(onRadioImageUpdate:info:)];
+    }
+    else
+        [self onRadioImageUpdate:nil info:nil];
+    
+}
+
+
+// TODO  : cleaner les types et objets (radio => user)
+
+- (void)onRadioImageUpdate:(NSString*)msg info:(NSDictionary*)info
+{
+    DLog(@"onRadioImageUpdate info %@", info);
+    
+    // be sure to get updated radio (with correct picture)
+    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPictureUpdate:withInfo:)];
+}
+
+// TODO  : cleaner les types et objets (radio => user)
+
+- (void)receivedUserRadioAfterPictureUpdate:(Radio*)r withInfo:(NSDictionary*)info
+{
+//    [ActivityAlertView close];
+    
+    // clean image cache
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:r.picture];
+    [[YasoundDataCacheImageManager main] clearItem:imageURL];
+    
+    imageURL = [[YasoundDataProvider main] urlForPicture:r.creator.picture];
+    [[YasoundDataCacheImageManager main] clearItem:imageURL];
+    
+    
+//    if (_wizard)
+//    {
+//        // call root to launch the Radio
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
+//    }
+//    else
+//    {
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 
