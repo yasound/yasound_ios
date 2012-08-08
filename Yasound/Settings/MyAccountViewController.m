@@ -21,6 +21,10 @@
 @implementation MyAccountViewController
 
 @synthesize tableview;
+@synthesize user;
+@synthesize username;
+@synthesize userImage;
+@synthesize city;
 
 
 
