@@ -14,6 +14,7 @@
 @implementation BioViewController
 
 @synthesize user;
+@synthesize delegate;
 
 
 
