@@ -254,25 +254,9 @@
 
 - (void)topBarBackItemClicked:(TopBarItemId)itemId
 {
-    if (itemId == TopBarItemBack)
-    {
-        APNsPreferences* prefs = [[NotificationManager main] APNsPreferences];
-        [[YasoundDataProvider main] setApnsPreferences:prefs target:nil action:nil];
-        
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    else if (itemId == TopBarItemNotif)
-    {
-        
-    }
-    
-//    else if (itemId == TopBarItemNowPlaying)
-//    {
-//        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//    }
+    APNsPreferences* prefs = [[NotificationManager main] APNsPreferences];
+    [[YasoundDataProvider main] setApnsPreferences:prefs target:nil action:nil];
+
 }
 
 

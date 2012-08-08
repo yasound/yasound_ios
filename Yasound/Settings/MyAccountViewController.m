@@ -7,7 +7,6 @@
 //
 
 #import "MyAccountViewController.h"
-#import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "Theme.h"
 #import "YasoundDataProvider.h"
@@ -331,22 +330,6 @@ enum SectionBio
     if (_changed || _imageChanged)
         [self save];
     
-    if (itemId == TopBarItemBack)
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    else if (itemId == TopBarItemNotif)
-    {
-        
-    }
-    
-    else if (itemId == TopBarItemNowPlaying)
-    {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
 }
 
 

@@ -8,7 +8,6 @@
 
 #import "ProfilViewController.h"
 #import "TopBar.h"
-#import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "ProfilTableViewCell.h"
 #import "YasoundDataProvider.h"
@@ -325,22 +324,6 @@
 
 - (void)topBarBackItemClicked:(TopBarItemId)itemId
 {
-    if (itemId == TopBarItemBack)
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    else if (itemId == TopBarItemNotif)
-    {
-        
-    }
-    
-    else if (itemId == TopBarItemNowPlaying)
-    {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
 }
 
 @end

@@ -307,7 +307,7 @@
 - (void)enterTheAppAfterProperLogin
 {
     // call root to launch the Radio
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LAUNCH_RADIO object:nil];
 }
 
 

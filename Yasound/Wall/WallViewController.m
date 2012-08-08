@@ -1977,22 +1977,6 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)topBarBackItemClicked:(TopBarItemId)itemId
 {
-    if (itemId == TopBarItemBack)
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    else if (itemId == TopBarItemNotif)
-    {
-        
-    }
-    
-//    else if (itemId == TopBarItemNowPlaying)
-//    {
-//        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
-//    }
 }
 
 

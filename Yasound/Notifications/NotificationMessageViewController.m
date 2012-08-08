@@ -10,8 +10,6 @@
 #import "Theme.h"
 #import "AudioStreamManager.h"
 #import "NotificationCenterTableViewcCell.h"
-#import "FriendsViewController.h"
-#import "RadioViewController.h"
 #import "MessageWeViewController.h"
 #import "ProfileViewController.h"
 

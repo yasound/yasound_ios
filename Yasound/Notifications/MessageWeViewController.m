@@ -7,7 +7,6 @@
 //
 
 #import "MessageWeViewController.h"
-#import "RadioViewController.h"
 #import "AudioStreamManager.h"
 
 @implementation MessageWeViewController
@@ -63,12 +62,6 @@
 }
 
 
-- (IBAction)onNowPlayingClicked:(id)sender
-{
-  RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-  [self.navigationController pushViewController:view animated:YES];
-  [view release];
-}
 
 - (IBAction)onMenuBarItemClicked:(id)sender
 {

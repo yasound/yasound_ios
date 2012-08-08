@@ -8,7 +8,6 @@
 
 #import "RadioSelectionViewController.h"
 #import "StyleSelectorViewController.h"
-#import "RadioViewController.h"
 #import "YasoundDataCache.h"
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
@@ -129,22 +128,6 @@
 
 - (void)topBarBackItemClicked:(TopBarItemId)itemId
 {
-    if (itemId == TopBarItemBack)
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    else if (itemId == TopBarItemNotif)
-    {
-        
-    }
-
-    else if (itemId == TopBarItemNowPlaying)
-    {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
 }
 
 
@@ -226,9 +209,7 @@
 
 - (void)radioListDidSelect:(Radio*)radio
 {
-    RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
 }
 
 

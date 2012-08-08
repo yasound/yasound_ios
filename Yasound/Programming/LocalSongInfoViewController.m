@@ -306,21 +306,6 @@
 
 
 
-#pragma mark - IBActions
-
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)nowPlayingClicked:(id)sender
-{
-    // call root to launch the Radio
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
-}
-
-
-
 
 
 

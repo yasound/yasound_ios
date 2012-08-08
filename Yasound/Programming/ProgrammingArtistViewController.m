@@ -223,17 +223,8 @@
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
-- (IBAction)nowPlayingClicked:(id)sender
-{
-    // call root to launch the Radio
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
-}
 - (IBAction)onSynchronize:(id)semder
 {
     SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];

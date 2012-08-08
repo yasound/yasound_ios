@@ -13,7 +13,6 @@
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
 #import "RadioListTableViewCell.h"
-#import "RadioViewController.h"
 
 typedef enum 
 {
@@ -371,25 +370,13 @@ typedef enum
     
     if (radio) 
     {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];  
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
     }
 }
 
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)nowPlayingClicked:(id)sender
-{
-    // call root to launch the Radio
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
-}
 
 - (void)onUserInfo:(ASIHTTPRequest*)req success:(BOOL)success
 {

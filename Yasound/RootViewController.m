@@ -129,7 +129,7 @@ static MenuViewController* gMenuView = nil;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushRadio:) name:NOTIF_PUSH_RADIO object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifLaunchRadio:) name:NOTIF_LAUNCH_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPopAndGotoUploads:) name:NOTIF_POP_AND_GOTO_UPLOADS object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifCancelWizard:) name:NOTIF_CANCEL_WIZARD object:nil];
@@ -407,7 +407,7 @@ static MenuViewController* gMenuView = nil;
 
 
 
-- (void)onNotifPushRadio:(NSNotification *)notification
+- (void)onNotifLaunchRadio:(NSNotification *)notification
 {
     // my radio
     [self launchRadio:nil];
