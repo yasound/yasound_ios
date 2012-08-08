@@ -39,6 +39,7 @@
 @synthesize birthday;
 @synthesize city;
 @synthesize bio_text;
+@synthesize url;
 
 
 - (NSString*)toString

@@ -37,6 +37,7 @@ UserMood stringToUsermood(NSString* str);
 @property (retain, nonatomic) NSDate* birthday;
 @property (retain, nonatomic) NSString* city;
 @property (retain, nonatomic) NSString* bio_text;
+@property (retain, nonatomic) NSString* url;
 //String gender
 //Integer age
 //birthday
