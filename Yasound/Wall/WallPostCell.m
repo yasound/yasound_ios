@@ -1,3 +1,47 @@
+//
+//  WallPostCell.m
+//  Yasound
+//
+//  Copyright (c) 2011 Yasound. All rights reserved.
+//
+//
+
+#import "WallPostCell.h"
+
+
+@implementation WallPostCell
+
+@synthesize fixed;
+@synthesize textfield;
+@synthesize button;
+@synthesize label;
+//@synthesize delegate;
+//
+
+
+- (void)awakeFromNib
+{
+    self.fixed = NO;
+    self.label.text = NSLocalizedString(@"Wall.postBar.label", nil);
+}
+
+
+
+//- (void)willMoveToSuperview:(UIView *)newSuperview
+//{
+//    [super willMoveToSuperview:newSuperview];
+//    if(!newSuperview)
+//    {
+//        [self.delegate postCellMoveToSuperview];
+//    }
+//}
+
+//- (void)willMoveToWindow:(UIWindow *)newWindow
+//{
+//    NSLog(@"ok");
+//}
+
+@end
 
 
 ////....................................................................................

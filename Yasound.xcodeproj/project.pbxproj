@@ -886,14 +886,6 @@
 		BC23881815D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
 		BC23881915D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
 		BC23881A15D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
-		BC23889B15D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23889A15D3A39600D1A4C4 /* WallViewController+PostBar.m */; };
-		BC23889C15D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23889A15D3A39600D1A4C4 /* WallViewController+PostBar.m */; };
-		BC23889D15D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23889A15D3A39600D1A4C4 /* WallViewController+PostBar.m */; };
-		BC23889E15D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23889A15D3A39600D1A4C4 /* WallViewController+PostBar.m */; };
-		BC23889F15D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23889A15D3A39600D1A4C4 /* WallViewController+PostBar.m */; };
-		BC2388A015D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23889A15D3A39600D1A4C4 /* WallViewController+PostBar.m */; };
-		BC2388A115D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23889A15D3A39600D1A4C4 /* WallViewController+PostBar.m */; };
-		BC2388A215D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23889A15D3A39600D1A4C4 /* WallViewController+PostBar.m */; };
 		BC238AD115D3EB9900D1A4C4 /* iconModerKick.png in Resources */ = {isa = PBXBuildFile; fileRef = BC238AAD15D3EB9900D1A4C4 /* iconModerKick.png */; };
 		BC238AD215D3EB9900D1A4C4 /* iconModerKick.png in Resources */ = {isa = PBXBuildFile; fileRef = BC238AAD15D3EB9900D1A4C4 /* iconModerKick.png */; };
 		BC238AD315D3EB9900D1A4C4 /* iconModerKick.png in Resources */ = {isa = PBXBuildFile; fileRef = BC238AAD15D3EB9900D1A4C4 /* iconModerKick.png */; };
@@ -5718,8 +5710,6 @@
 		BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WallViewController+NowPlayingBar.m"; sourceTree = "<group>"; };
 		BC23881115D399C400D1A4C4 /* WallViewController+StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WallViewController+StatusBar.h"; sourceTree = "<group>"; };
 		BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WallViewController+StatusBar.m"; sourceTree = "<group>"; };
-		BC23889915D3A39500D1A4C4 /* WallViewController+PostBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WallViewController+PostBar.h"; sourceTree = "<group>"; };
-		BC23889A15D3A39600D1A4C4 /* WallViewController+PostBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WallViewController+PostBar.m"; sourceTree = "<group>"; };
 		BC238AAD15D3EB9900D1A4C4 /* iconModerKick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconModerKick.png; sourceTree = "<group>"; };
 		BC238AAE15D3EB9900D1A4C4 /* iconModerKick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconModerKick@2x.png"; sourceTree = "<group>"; };
 		BC238AAF15D3EB9900D1A4C4 /* iconModerKickHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconModerKickHighlighted.png; sourceTree = "<group>"; };
@@ -6967,8 +6957,6 @@
 				BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */,
 				BC23881115D399C400D1A4C4 /* WallViewController+StatusBar.h */,
 				BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */,
-				BC23889915D3A39500D1A4C4 /* WallViewController+PostBar.h */,
-				BC23889A15D3A39600D1A4C4 /* WallViewController+PostBar.m */,
 				BC23871615D2B9D100D1A4C4 /* WallViewController.h */,
 				BC23871715D2B9D100D1A4C4 /* WallViewController.m */,
 				BC23871815D2B9D100D1A4C4 /* WallViewController.xib */,
@@ -12715,7 +12703,6 @@
 				BC23874F15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C615D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881915D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
-				BC2388A115D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12919,7 +12906,6 @@
 				BC23875015D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C715D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881A15D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
-				BC2388A215D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13119,7 +13105,6 @@
 				BC23874E15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C515D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881815D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
-				BC2388A015D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13323,7 +13308,6 @@
 				BC23874B15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C215D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881515D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
-				BC23889D15D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13527,7 +13511,6 @@
 				BC23874A15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C115D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881415D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
-				BC23889C15D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13732,7 +13715,6 @@
 				BC23874D15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C415D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881715D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
-				BC23889F15D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13936,7 +13918,6 @@
 				BC23874915D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C015D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881315D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
-				BC23889B15D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14141,7 +14122,6 @@
 				BC23874C15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C315D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881615D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
-				BC23889E15D3A39600D1A4C4 /* WallViewController+PostBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

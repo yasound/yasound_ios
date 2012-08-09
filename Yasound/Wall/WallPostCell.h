@@ -1,11 +1,30 @@
-////
-////  WallViewController.h
-////  Yasound
-////
-////  Copyright (c) 2011 Yasound. All rights reserved.
-////
 //
-//#import <UIKit/UIKit.h>
+//  WallPostCell.h
+//  Yasound
+//
+//  Copyright (c) 2011 Yasound. All rights reserved.
+//
+//
+
+#import <UIKit/UIKit.h>
+
+
+//@protocol WallPostCellDelegate <NSObject>
+//- (void)postCellMoveToSuperview;
+//@end
+
+@interface WallPostCell : UITableViewCell
+
+//@property (nonatomic, retain) id<WallPostCellDelegate> delegate;
+@property (nonatomic) BOOL fixed;
+@property (nonatomic, retain) IBOutlet UITextField* textfield;
+@property (nonatomic, retain) IBOutlet UIButton* button;
+@property (nonatomic, retain) IBOutlet UILabel* label;
+
+@end
+
+
+
 //#import "WallMessage.h"
 //#import "NowPlayingView.h"
 ////#import "TracksView.h"
