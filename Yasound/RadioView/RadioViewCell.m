@@ -24,7 +24,7 @@
 @synthesize date;
 @synthesize user;
 @synthesize message;
-@synthesize messageBackground;
+//@synthesize messageBackground;
 //@synthesize separator;
 @synthesize cellEditView;
 @synthesize wallEvent;
@@ -73,20 +73,31 @@
         CGFloat messageWidth = sheet.frame.size.width;
 
         
-        assert([ev isTextHeightComputed] == YES);
-        CGFloat height = [ev getTextHeight];
-
+        assert([ev isTextHeightComputed]);
+        assert([ev isCellHeightComputed]);
+        CGFloat COMPUTED_HEIGHT = [ev getTextHeight];
+        CGFloat CELL_HEIGHT = [ev getCelltHeight];
 
         
         sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         CGRect cellFrame = self.bounds;
 
         UIView* cellView = [[UIView alloc] initWithFrame:cellFrame];
-        cellView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+//        cellView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+        cellView.backgroundColor = [UIColor colorWithRed:242.f/255.f green:242.f/255.f blue:245.f/255.f alpha:1];
         self.cellView = cellView;
         self.cellView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [self addSubview:self.cellView];
         [cellView release];
+
+        
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.gradient = [sheet makeImage];
+        CGRect frame = CGRectMake(0, CELL_HEIGHT - self.gradient.frame.size.height, self.gradient.frame.size.width, self.gradient.frame.size.height);
+        self.gradient.frame = frame;
+        
+        [cellView addSubview:self.gradient];
+        
         
         // avatar
         sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.avatar" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -101,13 +112,12 @@
         // draw circle mask
         self.avatar.layer.masksToBounds = YES;
         self.avatar.layer.cornerRadius = 22;
-        self.
 
         // avatar circled mask
-//        sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.avatarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        self.avatarMask = [[UIImageView alloc] initWithImage:[sheet image]];
-//        self.avatarMask.frame = sheet.frame;
-//        [self.cellView addSubview:self.avatarMask];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.avatarMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.avatarMask = [[UIImageView alloc] initWithImage:[sheet image]];
+        self.avatarMask.frame = sheet.frame;
+        [self.cellView addSubview:self.avatarMask];
         
         
         
@@ -125,21 +135,21 @@
 
         // message background
         BundleStylesheet* messageSheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.message" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.messageBackground = [[UIView alloc] initWithFrame:messageSheet.frame];
-        self.messageBackground.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, height + 2*MESSAGE_SPACING);
-        
-        self.messageBackground.layer.masksToBounds = YES;
-        self.messageBackground.layer.cornerRadius = 4;
-        self.messageBackground.layer.borderColor = [UIColor colorWithRed:231.f/255.f green:231.f/255.f blue:231.f/255.f alpha:1].CGColor;
-        self.messageBackground.layer.borderWidth = 1.0; 
-        self.messageBackground.layer.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1].CGColor;
-        [self.cellView addSubview:self.messageBackground];
+//        self.messageBackground = [[UIView alloc] initWithFrame:messageSheet.frame];
+//        self.messageBackground.frame = CGRectMake(messageSheet.frame.origin.x, messageSheet.frame.origin.y, messageSheet.frame.size.width, COMPUTED_HEIGHT + 2*MESSAGE_SPACING);
+//        
+//        self.messageBackground.layer.masksToBounds = YES;
+//        self.messageBackground.layer.cornerRadius = 4;
+//        self.messageBackground.layer.borderColor = [UIColor colorWithRed:231.f/255.f green:231.f/255.f blue:231.f/255.f alpha:1].CGColor;
+//        self.messageBackground.layer.borderWidth = 1.0; 
+//        self.messageBackground.layer.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1].CGColor;
+//        [self.cellView addSubview:self.messageBackground];
 
         
         // message
         self.message = [messageSheet makeLabel];
         self.message.text = ev.text;
-        self.message.frame = CGRectMake(self.message.frame.origin.x + MESSAGE_SPACING, self.message.frame.origin.y + MESSAGE_SPACING, self.message.frame.size.width - 2*MESSAGE_SPACING, height);
+//        self.message.frame = CGRectMake(self.message.frame.origin.x + MESSAGE_SPACING, self.message.frame.origin.y + MESSAGE_SPACING, self.message.frame.size.width - 2*MESSAGE_SPACING, COMPUTED_HEIGHT);
         
         [self.message setLineBreakMode:UILineBreakModeWordWrap];
         [self.message setNumberOfLines:0];        
@@ -170,6 +180,7 @@
 //        [self addGestureRecognizer:pan];
 //
         
+        
 
     }
     return self;
@@ -188,7 +199,7 @@
 //    
 //	// get the context for CoreGraphics
 //	CGContextRef ctx = UIGraphicsGetCurrentContext();
-//    
+//
 //	// set stroking color and draw circle
 //	[[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1] setStroke];
 //    CGContextSetLineWidth(ctx, 3.0);
@@ -218,20 +229,25 @@
 
 - (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
 {
-    assert([ev isTextHeightComputed] == YES);
+    assert([ev isTextHeightComputed]);
+    assert([ev isCellHeightComputed]);
+    CGFloat COMPUTED_HEIGHT = [ev getTextHeight];
+    CGFloat CELL_HEIGHT = [ev getCelltHeight];
+    
+
     
     self.wallEvent = ev;
     self.indexPath = indexPath;
 
-    CGFloat height = [ev getTextHeight];
-    
+    self.gradient.frame = CGRectMake(0, CELL_HEIGHT - self.gradient.frame.size.height, self.gradient.frame.size.width, self.gradient.frame.size.height);
+
     self.date.text = [self dateToString:ev.start_date];
     self.user.text = ev.user_name;
     self.message.text = ev.text;
     
-    self.messageBackground.frame = CGRectMake(self.messageBackground.frame.origin.x, self.messageBackground.frame.origin.y, self.messageBackground.frame.size.width, height + 2 * MESSAGE_SPACING);
+//    self.messageBackground.frame = CGRectMake(self.messageBackground.frame.origin.x, self.messageBackground.frame.origin.y, self.messageBackground.frame.size.width, COMPUTED_HEIGHT + 2 * MESSAGE_SPACING);
     
-    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, height);
+    self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, COMPUTED_HEIGHT);
     
 //    self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - 2, self.separator.frame.size.width, self.separator.frame.size.height);
     

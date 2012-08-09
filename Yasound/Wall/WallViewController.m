@@ -1035,17 +1035,22 @@ static Song* _gNowPlayingSong = nil;
         
         if ((height + THE_REST_OF_THE_CELL_HEIGHT) < _cellMinHeight)
         {
+            [ev setCellHeight:_cellMinHeight];
             return _cellMinHeight;
         }
         
-        return (height + THE_REST_OF_THE_CELL_HEIGHT);
+        CGFloat cellHeight = height + THE_REST_OF_THE_CELL_HEIGHT;
+        [ev setCellHeight:cellHeight];
+        return cellHeight;
     }
     else if ([ev isOfType:eWallEventTypeSong])
     {
+        [ev setCellHeight:ROW_SONG_HEIGHT];
         return ROW_SONG_HEIGHT;
     }
     else if ([ev isOfType:eWallEventTypeLike])
     {
+        [ev setCellHeight:ROW_LIKE_HEIGHT];
         return ROW_LIKE_HEIGHT;
     }
     else
