@@ -17,6 +17,7 @@
 @implementation TopBar
 
 @synthesize delegate;
+@synthesize customItems;
 
 
 - (void)awakeFromNib
@@ -32,17 +33,19 @@
     UIButton* btn = nil;
     UIBarButtonItem* itemBack = nil;
     
-    if (![RootViewController menuIsCurrentScreen])
-    {
+//    items
+//    
+//    if (![RootViewController menuIsCurrentScreen])
+//    {
         sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         btn = [sheet makeButton];
         [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
         itemBack = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    }
-    else
-    {
-        itemBack = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];    
-    }
+//    }
+//    else
+//    {
+//        itemBack = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];    
+//    }
     
     // "HD" item
     UIBarButtonItem* itemHD = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"barItemHdOff.png"]]];
@@ -67,9 +70,21 @@
     // flexible space
     UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
+    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, itemHD, flexibleSpace, itemNotif, flexibleSpace, itemNowPlaying, nil];
     
-    [self setItems:[NSArray arrayWithObjects:itemBack, flexibleSpace, itemHD, flexibleSpace, itemNotif, flexibleSpace, itemNowPlaying, nil]];
+    [self setItems:self.customItems];
 
+}
+
+
+- (void)hideBackItem:(BOOL)hide
+{
+    if (hide)
+    {
+        UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [self.customItems replaceObjectAtIndex:0 withObject:flexibleSpace];
+        [self setItems:self.customItems];
+    }
 }
 
 

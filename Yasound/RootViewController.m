@@ -95,6 +95,11 @@ static MenuViewController* gMenuView = nil;
 
 + (BOOL)menuIsCurrentScreen
 {
+    UIViewController* tmp = APPDELEGATE.navigationController.topViewController;
+    NSLog(@"class %@", [tmp class]);
+    NSLog(@"compare %@   %@", tmp, gMenuView);
+    
+    
     return (APPDELEGATE.navigationController.topViewController == gMenuView);
 }
 
