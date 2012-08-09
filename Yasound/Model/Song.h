@@ -37,6 +37,7 @@ typedef enum
 @property (retain, nonatomic) NSDate* last_play_time;
 @property (retain, nonatomic) NSNumber* frequency;
 @property (retain, nonatomic) NSNumber* enabled;
+@property (retain, nonatomic) NSNumber* order;
 
 - (SongFrequencyType)frequencyType;
 - (void)setFrequencyType:(SongFrequencyType)f;
