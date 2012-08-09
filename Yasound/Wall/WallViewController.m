@@ -79,11 +79,8 @@ static Song* _gNowPlayingSong = nil;
 
 
 @synthesize radio;
-//@synthesize messages;
 @synthesize statusMessages;
 @synthesize ownRadio;
-//@synthesize favoriteButton;
-//@synthesize playPauseButton;
 
 
 
@@ -115,8 +112,6 @@ static Song* _gNowPlayingSong = nil;
         
         self.ownRadio = [[YasoundDataProvider main].user.id intValue] == [self.radio.creator.id intValue];
         
-        //        _trackInteractionViewDisplayed = NO;
-        
         self.view.userInteractionEnabled = YES;
         
         _serverErrorCount = 0;
@@ -126,7 +121,6 @@ static Song* _gNowPlayingSong = nil;
         _lastWallEvent = nil;
         _countMessageEvent = 0;
         _lastSongUpdateDate = nil;
-//        _favoritesButtonLocked = NO;
         
         self.statusMessages = [[NSMutableArray alloc] init];
         
@@ -142,7 +136,6 @@ static Song* _gNowPlayingSong = nil;
         _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
         
         _wallEvents = [[NSMutableArray alloc] init];
-        //        _wallEvents = nil;
         _waitingForPreviousEvents = NO;
 //        _connectedUsers = nil;
 //        _usersContainer = nil;
@@ -177,39 +170,14 @@ static Song* _gNowPlayingSong = nil;
     
     self.fixedCellPostBar.frame = CGRectMake(self.fixedCellPostBar.frame.origin.x, self.tableview.frame.origin.y, self.fixedCellPostBar.frame.size.width, self.fixedCellPostBar.frame.size.height);
 
-    
-//    self.cellPostBar.delegate = self;
-    
-//    // add topbar
-//    TopBar* topbar = [[TopBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-//    topbar.delegate = self;
-//    [self.view addSubview:topbar];
-//    [topbar release];
-//        
-//    // add now playing bar
-//    self.nowPlayingBar = [[TopBar alloc] initWithFrame:CGRectMake(0, 44, 320, 46)];
-//    self.nowPlayingBar.delegate = self;
-//    [self.view addSubview:self.nowPlayingBar];
-    
     // table view
-//    _tableView = [[TouchedTableView alloc] initWithFrame:CGRectMake(0, 90, 320, 390) style:UITableViewStylePlain];
     self.tableview.actionTouched = @selector(tableViewTouched:withEvent:);
-
-//    sheet = [[Theme theme] stylesheetForKey:@"Wall.WallBackground" error:nil];
-//    _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-//    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-//    _tableView.delegate = self;
-//    _tableView.dataSource = self;
 
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.minHeight" error:nil];
     self.tableview.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
     
     [self.cellWallHeader setHeaderRadio:self.radio];
 
-//    [self.view addSubview:self.tableview];
-    
-    
     // get the actual data from the server to update the GUI
     [self updatePreviousWall];
 }
@@ -225,7 +193,13 @@ static Song* _gNowPlayingSong = nil;
 //        [[AudioStreamManager main] startRadio:self.radio];
 //        [[YasoundDataProvider main] enterRadioWall:self.radio];
 //    }
-    
+
+    if (![AudioStreamManager main].isPaused)
+    {
+        [[AudioStreamManager main] startRadio:self.radio];
+        [[YasoundDataProvider main] enterRadioWall:self.radio];
+    }
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_PLAY object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_STOP object:nil];
@@ -1650,14 +1624,14 @@ static Song* _gNowPlayingSong = nil;
 - (void)playAudio
 {
 //    self.playPauseButton.selected = YES;
-//    [[AudioStreamManager main] startRadio:self.radio];
+    [[AudioStreamManager main] startRadio:self.radio];
 }
 
 - (void)pauseAudio
 {
 //    self.playPauseButton.selected = NO;
 //    
-//    [[AudioStreamManager main] stopRadio];
+    [[AudioStreamManager main] stopRadio];
 }
 
 

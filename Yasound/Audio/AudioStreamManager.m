@@ -15,6 +15,7 @@
 @implementation AudioStreamManager
 
 @synthesize currentRadio;
+@synthesize isPaused = _isPaused;
 
 
 
@@ -41,6 +42,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     if (self = [super init])
     {
         self.currentRadio = nil;
+        _isPaused = NO;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_ERROR object:nil];
     }
     
@@ -120,6 +122,8 @@ static AudioStreamer* _gAudioStreamer = nil;
     
     if (_gAudioStreamer == nil)
         return;
+
+    _isPaused = YES;
     [_gAudioStreamer stop];
     [_gAudioStreamer release];
     _gAudioStreamer = nil;
@@ -149,6 +153,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     if (_gAudioStreamer == nil)
         return;
 
+    _isPaused = NO;
     [_gAudioStreamer start];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_PLAY object:nil];
 }
@@ -160,7 +165,7 @@ static AudioStreamer* _gAudioStreamer = nil;
   
   
   if (_gAudioStreamer.state != AS_PLAYING)
-    [self playRadio];
+      [self playRadio];
   else
     [self stopRadio];
 }
