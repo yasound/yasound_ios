@@ -60,6 +60,16 @@
 
 #define WALL_WAITING_ROW_HEIGHT 44
 
+
+#define NB_SECTIONS 2
+
+#define SECTION_HEADER 0
+#define ROW_HEADER 0
+#define ROW_POST_BAR 1
+#define SECTION_EVENTS 1
+
+
+
 @implementation WallViewController
 
 
@@ -88,11 +98,13 @@ static Song* _gNowPlayingSong = nil;
 
 @synthesize tableview;
 @synthesize cellWallHeader;
-@synthesize headerImage;
-@synthesize headerTitle;
-@synthesize headerSubscribers;
-@synthesize headerListeners;
-@synthesize headerButtonLabel;
+
+
+@synthesize cellPostBar;
+@synthesize postBarTextfield;
+@synthesize postBarButton;
+@synthesize postBarButtonLabel;
+
 
 
 - (id)initWithRadio:(Radio*)radio
@@ -188,6 +200,8 @@ static Song* _gNowPlayingSong = nil;
 
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellMinHeight" error:nil];
     self.tableview.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
+    
+    [self.cellWallHeader setRadio:self.radio];
 
 //    [self.view addSubview:self.tableview];
     
@@ -293,7 +307,7 @@ static Song* _gNowPlayingSong = nil;
     
     _waitingForPreviousEvents = YES;
     // #FIXME: todo...
-    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:_wallEvents.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:_wallEvents.count inSection:SECTION_EVENTS]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)removeWaitingEventRow
@@ -303,7 +317,7 @@ static Song* _gNowPlayingSong = nil;
     
     _waitingForPreviousEvents = NO;
     // #FIXME: todo...
-    [self.tableview deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:_wallEvents.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableview deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:_wallEvents.count inSection:SECTION_EVENTS]] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 
@@ -872,7 +886,7 @@ static Song* _gNowPlayingSong = nil;
     [ev computeTextHeightUsingFont:_messageFont withConstraint:270];
     
     UITableViewRowAnimation anim = UITableViewRowAnimationNone;
-    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
 }
 
 
@@ -881,7 +895,7 @@ static Song* _gNowPlayingSong = nil;
     NSInteger index = _wallEvents.count - 1;
     
     UITableViewRowAnimation anim = UITableViewRowAnimationNone;
-    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
 }
 
 - (void)addLike
@@ -889,7 +903,7 @@ static Song* _gNowPlayingSong = nil;
     NSInteger index = _wallEvents.count - 1;
     
     UITableViewRowAnimation anim = UITableViewRowAnimationNone;
-    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
 }
 
 
@@ -903,7 +917,7 @@ static Song* _gNowPlayingSong = nil;
     [ev computeTextHeightUsingFont:_messageFont withConstraint:270];
     
     UITableViewRowAnimation anim = UITableViewRowAnimationTop;
-    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
 }
 
 
@@ -913,7 +927,7 @@ static Song* _gNowPlayingSong = nil;
     
     WallEvent* ev = [_wallEvents objectAtIndex:index];
     UITableViewRowAnimation anim = UITableViewRowAnimationTop;
-    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
 }
 
 - (void)insertLike
@@ -921,7 +935,7 @@ static Song* _gNowPlayingSong = nil;
     NSInteger index = 0;
     
     UITableViewRowAnimation anim = UITableViewRowAnimationTop;
-    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:anim];
+    [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
 }
 
 
@@ -972,7 +986,6 @@ static Song* _gNowPlayingSong = nil;
 
 
 
-
 - (NSIndexPath *)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
@@ -984,11 +997,14 @@ static Song* _gNowPlayingSong = nil;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return NB_SECTIONS;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == SECTION_HEADER)
+        return 2;
+    
     NSInteger nbRows = [_wallEvents count];
     if (_waitingForPreviousEvents)
         nbRows++;
@@ -999,6 +1015,13 @@ static Song* _gNowPlayingSong = nil;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
+    if ((indexPath.section == SECTION_HEADER) && (indexPath.row == ROW_HEADER))
+        return 166;
+
+    if ((indexPath.section == SECTION_HEADER) && (indexPath.row == ROW_POST_BAR))
+        return 51;
+    
+        
     if (_waitingForPreviousEvents && indexPath.row == _wallEvents.count)
         return WALL_WAITING_ROW_HEIGHT;
     
@@ -1040,7 +1063,14 @@ static Song* _gNowPlayingSong = nil;
 {
 //    if (tableView == _usersContainer)
 //        return [self usersContainerCellForRowAtIndexPath:indexPath];
-//    
+//
+    if ((indexPath.section == SECTION_HEADER) && (indexPath.row == ROW_HEADER))
+        return self.cellWallHeader;
+
+    if ((indexPath.section == SECTION_HEADER) && (indexPath.row == ROW_POST_BAR))
+        return self.cellPostBar;
+    
+    
     // waiting cell
     if (_waitingForPreviousEvents && indexPath.row == _wallEvents.count)
     {
@@ -1331,16 +1361,16 @@ static Song* _gNowPlayingSong = nil;
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
-{
-    // I need to check something...
-    YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
-    UINavigationController* appController = appDelegate.navigationController;
-    UINavigationController* thisController = self.navigationController;
-    
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
+//- (IBAction)onBack:(id)sender
+//{
+//    // I need to check something...
+//    YasoundAppDelegate* appDelegate = (YasoundAppDelegate*)[[UIApplication sharedApplication] delegate];
+//    UINavigationController* appController = appDelegate.navigationController;
+//    UINavigationController* thisController = self.navigationController;
+//    
+//    
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 
 - (IBAction)onAvatarClicked:(id)sender
 {

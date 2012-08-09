@@ -1,7 +1,18 @@
 
-
+#import "UIKit/UIKit.h"
+#import "WebImageView.h"
+#import "Radio.h"
 
 @interface WallHeaderCell : UITableViewCell
+
+@property (nonatomic, retain) IBOutlet WebImageView* headerImage;
+@property (nonatomic, retain) IBOutlet UILabel* headerTitle;
+@property (nonatomic, retain) IBOutlet UILabel* headerSubscribers;
+@property (nonatomic, retain) IBOutlet UILabel* headerListeners;
+@property (nonatomic, retain) IBOutlet UILabel* headerButtonLabel;
+
+- (void)setRadio:(Radio*)radio;
+- (IBAction)onFavoriteClicked:(id)sender;
 
 @end
 

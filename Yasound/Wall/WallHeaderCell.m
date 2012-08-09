@@ -1,4 +1,32 @@
+
+#import "WallHeaderCell.h"
+#import "YasoundDataProvider.h"
+
 @implementation WallHeaderCell
+
+@synthesize headerImage;
+@synthesize headerTitle;
+@synthesize headerSubscribers;
+@synthesize headerListeners;
+@synthesize headerButtonLabel;
+
+
+- (void)setRadio:(Radio*)radio
+{
+    NSURL* url = [[YasoundDataProvider main] urlForPicture:radio.picture];
+    [self.headerImage setUrl:url];
+    
+    self.headerTitle.text = radio.name;
+    self.headerSubscribers.text = [NSString stringWithFormat:@"%d", [radio.favorites integerValue]];
+    self.headerListeners.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
+    self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
+}
+
+
+- (IBAction)onFavoriteClicked:(id)sender
+{
+
+}
 
 @end
 
