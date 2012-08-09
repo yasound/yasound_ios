@@ -176,6 +176,8 @@
     self.tableview.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
     
     [self.cellWallHeader setHeaderRadio:self.radio];
+    
+    [self setPause:[AudioStreamManager main].isPaused];
 
     // get the actual data from the server to update the GUI
     [self updatePreviousWall];
@@ -187,11 +189,18 @@
 {
     [super viewDidAppear:animated];
     
-    if (![AudioStreamManager main].isPaused)
-    {
-        [[AudioStreamManager main] startRadio:self.radio];
-        [[YasoundDataProvider main] enterRadioWall:self.radio];
-    }
+//    if (![self.radio.id isEqualToNumber:[AudioStreamManager main].currentRadio.id])
+//    {
+        if (![AudioStreamManager main].isPaused)
+        {
+            [[AudioStreamManager main] startRadio:self.radio];
+        }
+        else
+            [AudioStreamManager main].currentRadio = self.radio;
+    
+    [[YasoundDataProvider main] enterRadioWall:self.radio];
+    
+//    }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_PLAY object:nil];
@@ -225,8 +234,15 @@
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [self resignFirstResponder];
     
+    [[YasoundDataProvider main] leaveRadioWall:self.radio];
+
     if (_serverErrorCount == 0)
-        [[YasoundDataProvider main] leaveRadioWall:self.radio];
+    {
+//        [[YasoundDataProvider main] leaveRadioWall:self.radio];
+        
+        if ([AudioStreamManager main].isPaused)
+            [[AudioStreamManager main] stopRadio];
+    }
     else
     {
         [[AudioStreamManager main] stopRadio];

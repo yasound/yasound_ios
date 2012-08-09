@@ -71,6 +71,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     if (_gAudioStreamer && [radio.id intValue]  == [self.currentRadio.id intValue])
         return;
     
+    _isPaused = NO;
     
     if (_gAudioStreamer != nil)
     {
@@ -100,6 +101,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radiourl andCookie:cookie];
     [_gAudioStreamer start];
 
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AUDIOSTREAM_PLAY object:nil];
 }
 
 - (void)stopRadio
@@ -165,12 +167,12 @@ static AudioStreamer* _gAudioStreamer = nil;
 
 - (void)togglePlayPauseRadio
 {
-  if (_gAudioStreamer == nil)
-    return;
 //  if (_gAudioStreamer == nil)
-//      [self startRadio:self.currentRadio];
+//    return;
+  if (_gAudioStreamer == nil)
+      [self startRadio:self.currentRadio];
        
-//  else
+  else
   
   if (_gAudioStreamer.state != AS_PLAYING)
       [self playRadio];
