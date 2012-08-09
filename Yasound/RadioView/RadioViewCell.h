@@ -38,7 +38,7 @@
 @property (nonatomic, retain) UILabel* user;
 @property (nonatomic, retain) UIView* messageBackground;
 @property (nonatomic, retain) UILabel* message;
-@property (nonatomic, retain) UIImageView* separator;
+//@property (nonatomic, retain) UIImageView* separator;
 
 @property (nonatomic, retain) UIView* cellEditView;
 

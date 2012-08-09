@@ -876,14 +876,59 @@
 					<string>png</string>
 				</dict>
 			</dict>
-			<key>Likes</key>
+			<key>cellLike</key>
 			<dict>
-				<key>LikeCellMessage</key>
+				<key>background</key>
+				<dict>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>name</key>
+					<string>wallCellLike</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>message</key>
 				<dict>
 					<key>font</key>
 					<dict>
 						<key>size</key>
 						<integer>11</integer>
+						<key>textColor</key>
+						<string>rgb(76,82,92)</string>
+						<key>weight</key>
+						<string>bold</string>
+					</dict>
+					<key>height</key>
+					<integer>30</integer>
+					<key>width</key>
+					<integer>200</integer>
+					<key>x</key>
+					<integer>65</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+				<key>picto</key>
+				<dict>
+					<key>x</key>
+					<integer>8</integer>
+					<key>y</key>
+					<integer>6</integer>
+					<key>name</key>
+					<string>wallIconLike</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+			</dict>
+			<key>cellMessage</key>
+			<dict>
+				<key>user</key>
+				<dict>
+					<key>font</key>
+					<dict>
+						<key>size</key>
+						<integer>12</integer>
 						<key>textColor</key>
 						<string>white</string>
 						<key>weight</key>
@@ -892,85 +937,147 @@
 					<key>height</key>
 					<integer>15</integer>
 					<key>width</key>
-					<integer>200</integer>
+					<integer>235</integer>
 					<key>x</key>
 					<integer>51</integer>
 					<key>y</key>
-					<integer>4</integer>
+					<integer>8</integer>
 				</dict>
-				<key>LikeCellPicto</key>
+				<key>date</key>
+				<dict>
+					<key>font</key>
+					<dict>
+						<key>textAlignment</key>
+						<string>right</string>
+						<key>name</key>
+						<string>Arial</string>
+						<key>size</key>
+						<integer>11</integer>
+						<key>textColor</key>
+						<string>rgb(196,196,196)</string>
+					</dict>
+					<key>height</key>
+					<integer>12</integer>
+					<key>width</key>
+					<integer>120</integer>
+					<key>x</key>
+					<integer>190</integer>
+					<key>y</key>
+					<integer>10</integer>
+				</dict>
+				<key>minHeight</key>
+				<dict>
+					<key>minHeight</key>
+					<integer>60</integer>
+				</dict>
+				<key>avatarMask</key>
+				<dict>
+					<key>name</key>
+					<string>WallAvatarMask</string>
+					<key>type</key>
+					<string>png</string>
+					<key>x</key>
+					<integer>7</integer>
+					<key>y</key>
+					<integer>11</integer>
+					<key>width</key>
+					<integer>37</integer>
+					<key>height</key>
+					<integer>37</integer>
+				</dict>
+				<key>avatar</key>
 				<dict>
 					<key>x</key>
-					<integer>30</integer>
+					<integer>8</integer>
 					<key>y</key>
-					<integer>2</integer>
+					<integer>12</integer>
+					<key>width</key>
+					<integer>44</integer>
+					<key>height</key>
+					<integer>44</integer>
+				</dict>
+				<key>message</key>
+				<dict>
+					<key>font</key>
+					<dict>
+						<key>name</key>
+						<string>Arial</string>
+						<key>size</key>
+						<integer>12</integer>
+						<key>textColor</key>
+						<string>rgb(32,32,32)</string>
+					</dict>
+					<key>height</key>
+					<integer>12</integer>
+					<key>width</key>
+					<integer>265</integer>
+					<key>x</key>
+					<integer>51</integer>
+					<key>y</key>
+					<integer>25</integer>
+				</dict>
+				<key>background</key>
+				<dict>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
 					<key>name</key>
-					<string>Like</string>
+					<string>wallCellMessage</string>
 					<key>type</key>
 					<string>png</string>
 				</dict>
 			</dict>
-			<key>MessageCellBackground</key>
+			<key>cellSong</key>
 			<dict>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>0</integer>
-				<key>name</key>
-				<string>MessageEventBackground</string>
-				<key>type</key>
-				<string>png</string>
-			</dict>
-			<key>Songs</key>
-			<dict>
-				<key>SongCellMessage</key>
-				<dict>
-					<key>font</key>
-					<dict>
-						<key>size</key>
-						<integer>11</integer>
-						<key>textColor</key>
-						<string>white</string>
-						<key>weight</key>
-						<string>bold</string>
-					</dict>
-					<key>height</key>
-					<integer>16</integer>
-					<key>width</key>
-					<integer>240</integer>
-					<key>x</key>
-					<integer>76</integer>
-					<key>y</key>
-					<integer>-1</integer>
-				</dict>
-				<key>SongCellDate</key>
+				<key>message</key>
 				<dict>
 					<key>font</key>
 					<dict>
 						<key>size</key>
 						<integer>13</integer>
 						<key>textColor</key>
-						<string>rgb(255,231,188)</string>
+						<string>rgb(143,150,156)</string>
 						<key>weight</key>
 						<string>bold</string>
 					</dict>
 					<key>height</key>
-					<integer>16</integer>
+					<integer>30</integer>
+					<key>width</key>
+					<integer>240</integer>
+					<key>x</key>
+					<integer>65</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+				<key>date</key>
+				<dict>
+					<key>font</key>
+					<dict>
+						<key>size</key>
+						<integer>13</integer>
+						<key>textColor</key>
+						<string>rgb(201,207,212)</string>
+						<key>weight</key>
+						<string>bold</string>
+					</dict>
+					<key>height</key>
+					<integer>30</integer>
 					<key>width</key>
 					<integer>100</integer>
 					<key>x</key>
-					<integer>18</integer>
+					<integer>8</integer>
 					<key>y</key>
-					<integer>-1</integer>
+					<integer>0</integer>
 				</dict>
-				<key>SongCellBackground</key>
+				<key>background</key>
 				<dict>
 					<key>x</key>
 					<integer>0</integer>
 					<key>y</key>
 					<integer>0</integer>
 					<key>name</key>
-					<string>TrackBackground</string>
+					<string>wallCellSong</string>
 					<key>type</key>
 					<string>png</string>
 				</dict>
@@ -1019,113 +1126,6 @@
 				<string>MessageBar</string>
 				<key>type</key>
 				<string>png</string>
-			</dict>
-			<key>Messages</key>
-			<dict>
-				<key>CellSeparator</key>
-				<dict>
-					<key>x</key>
-					<integer>0</integer>
-					<key>y</key>
-					<integer>10</integer>
-					<key>name</key>
-					<string>MessageSeparator</string>
-					<key>type</key>
-					<string>png</string>
-				</dict>
-				<key>CellMessage</key>
-				<dict>
-					<key>font</key>
-					<dict>
-						<key>name</key>
-						<string>Arial</string>
-						<key>size</key>
-						<integer>12</integer>
-						<key>textColor</key>
-						<string>rgb(32,32,32)</string>
-					</dict>
-					<key>height</key>
-					<integer>12</integer>
-					<key>width</key>
-					<integer>265</integer>
-					<key>x</key>
-					<integer>51</integer>
-					<key>y</key>
-					<integer>25</integer>
-				</dict>
-				<key>CellUser</key>
-				<dict>
-					<key>font</key>
-					<dict>
-						<key>size</key>
-						<integer>12</integer>
-						<key>textColor</key>
-						<string>white</string>
-						<key>weight</key>
-						<string>bold</string>
-					</dict>
-					<key>height</key>
-					<integer>15</integer>
-					<key>width</key>
-					<integer>235</integer>
-					<key>x</key>
-					<integer>51</integer>
-					<key>y</key>
-					<integer>8</integer>
-				</dict>
-				<key>CellDate</key>
-				<dict>
-					<key>font</key>
-					<dict>
-						<key>textAlignment</key>
-						<string>right</string>
-						<key>name</key>
-						<string>Arial</string>
-						<key>size</key>
-						<integer>11</integer>
-						<key>textColor</key>
-						<string>rgb(196,196,196)</string>
-					</dict>
-					<key>height</key>
-					<integer>12</integer>
-					<key>width</key>
-					<integer>120</integer>
-					<key>x</key>
-					<integer>190</integer>
-					<key>y</key>
-					<integer>10</integer>
-				</dict>
-				<key>CellAvatar</key>
-				<dict>
-					<key>x</key>
-					<integer>8</integer>
-					<key>y</key>
-					<integer>12</integer>
-					<key>width</key>
-					<integer>35</integer>
-					<key>height</key>
-					<integer>35</integer>
-				</dict>
-				<key>CellAvatarMask</key>
-				<dict>
-					<key>name</key>
-					<string>WallAvatarMask</string>
-					<key>type</key>
-					<string>png</string>
-					<key>x</key>
-					<integer>7</integer>
-					<key>y</key>
-					<integer>11</integer>
-					<key>width</key>
-					<integer>37</integer>
-					<key>height</key>
-					<integer>37</integer>
-				</dict>
-				<key>CellMinHeight</key>
-				<dict>
-					<key>minHeight</key>
-					<integer>60</integer>
-				</dict>
 			</dict>
 			<key>NowPlaying</key>
 			<dict>

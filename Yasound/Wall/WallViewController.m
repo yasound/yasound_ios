@@ -48,8 +48,8 @@
 //#define LOCAL 1 // use localhost as the server
 
 #define SERVER_DATA_REQUEST_TIMER 5.0f
-#define ROW_SONG_HEIGHT 15
-#define ROW_LIKE_HEIGHT 26
+#define ROW_SONG_HEIGHT 33
+#define ROW_LIKE_HEIGHT 33
 
 #define NB_MAX_EVENTMESSAGE 10
 
@@ -133,13 +133,13 @@ static Song* _gNowPlayingSong = nil;
         
         _statusBarButtonToggled = NO;
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.message" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         _messageFont = [sheet makeFont];
         [_messageFont retain];
         
         _messageWidth = sheet.frame.size.width;
         
-        sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellMinHeight" error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.minHeight" error:nil];
         _cellMinHeight = [[sheet.customProperties objectForKey:@"minHeight"] floatValue];
         
         _wallEvents = [[NSMutableArray alloc] init];
@@ -198,7 +198,7 @@ static Song* _gNowPlayingSong = nil;
 //    _tableView.delegate = self;
 //    _tableView.dataSource = self;
 
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellMinHeight" error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.minHeight" error:nil];
     self.tableview.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
     
     [self.cellWallHeader setRadio:self.radio];

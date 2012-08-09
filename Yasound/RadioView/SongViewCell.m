@@ -57,17 +57,17 @@
         
         UIView* view = self.contentView;
         
-        sheet = [[Theme theme] stylesheetForKey:@"Wall.Songs.SongCellBackground" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.cellSong.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIImageView* imageView = [[UIImageView alloc] initWithImage:[sheet image]];
         imageView.frame = sheet.frame;
         [view addSubview:imageView];
         
-        sheet = [[Theme theme] stylesheetForKey:@"Wall.Songs.SongCellDate" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.cellSong.date" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.date = [sheet makeLabel];
         self.date.text = [self dateToString:ev.start_date];
         [view addSubview:self.date];
 
-        sheet = [[Theme theme] stylesheetForKey:@"Wall.Songs.SongCellMessage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Wall.cellSong.message" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.message = [sheet makeLabel];
         self.message.text = [NSString stringWithFormat:@"%@ - %@", ev.song_artist, ev.song_name];
         [view addSubview:self.message];
