@@ -59,7 +59,8 @@
 #define WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE 20
 
 #define WALL_WAITING_ROW_HEIGHT 44
-
+#define HEADER_HEIGHT 166
+#define POST_BAR_HEIGHT 51
 
 #define NB_SECTIONS 2
 
@@ -101,9 +102,7 @@ static Song* _gNowPlayingSong = nil;
 
 
 @synthesize cellPostBar;
-@synthesize postBarTextfield;
-@synthesize postBarButton;
-@synthesize postBarButtonLabel;
+@synthesize fixedCellPostBar;
 
 
 
@@ -176,6 +175,11 @@ static Song* _gNowPlayingSong = nil;
     
     _waitingForPreviousEvents = NO;
     
+    self.fixedCellPostBar.frame = CGRectMake(self.fixedCellPostBar.frame.origin.x, self.tableview.frame.origin.y, self.fixedCellPostBar.frame.size.width, self.fixedCellPostBar.frame.size.height);
+
+    
+//    self.cellPostBar.delegate = self;
+    
 //    // add topbar
 //    TopBar* topbar = [[TopBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
 //    topbar.delegate = self;
@@ -201,7 +205,7 @@ static Song* _gNowPlayingSong = nil;
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.minHeight" error:nil];
     self.tableview.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
     
-    [self.cellWallHeader setRadio:self.radio];
+    [self.cellWallHeader setHeaderRadio:self.radio];
 
 //    [self.view addSubview:self.tableview];
     
@@ -1016,10 +1020,10 @@ static Song* _gNowPlayingSong = nil;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     if ((indexPath.section == SECTION_HEADER) && (indexPath.row == ROW_HEADER))
-        return 166;
+        return HEADER_HEIGHT;
 
     if ((indexPath.section == SECTION_HEADER) && (indexPath.row == ROW_POST_BAR))
-        return 51;
+        return POST_BAR_HEIGHT;
     
         
     if (_waitingForPreviousEvents && indexPath.row == _wallEvents.count)
@@ -1189,6 +1193,25 @@ static Song* _gNowPlayingSong = nil;
             [self askForPreviousEvents];
         }
     }
+
+    if (scrollView.contentOffset.y > HEADER_HEIGHT)
+    {
+        if (!self.fixedCellPostBar.fixed)
+        {
+            self.fixedCellPostBar.fixed = YES;
+            self.fixedCellPostBar.textfield.text = self.cellPostBar.textfield.text;
+            [self.view addSubview:self.fixedCellPostBar];
+        }
+    }
+    else
+    {
+        if (self.fixedCellPostBar.fixed)
+        {
+            self.fixedCellPostBar.fixed = NO;
+            self.cellPostBar.textfield.text = self.fixedCellPostBar.textfield.text;
+            [self.fixedCellPostBar removeFromSuperview];
+        }
+    }
 }
 
 
@@ -1293,8 +1316,8 @@ static Song* _gNowPlayingSong = nil;
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if (textField != _messageBar)
-        return NO;
+//    if (textField != _messageBar)
+//        return NO;
     
     if ([YasoundSessionManager main].registered)
         return YES;
@@ -1319,6 +1342,26 @@ static Song* _gNowPlayingSong = nil;
     [self sendMessage:textField.text];
     textField.text = nil;
     return FALSE;
+}
+
+
+- (IBAction)onPostBarButtonClicked:(id)sender
+{
+    NSString* msg;
+    if (sender == self.cellPostBar.button)
+        msg = self.cellPostBar.textfield.text;
+    else if (sender == self.fixedCellPostBar.button)
+        msg = self.fixedCellPostBar.textfield.text;
+    else
+    {
+        assert(0);
+    }
+    
+    [self sendMessage:msg];
+    self.cellPostBar.textfield.text = nil;
+    self.fixedCellPostBar.textfield.text = nil;
+    [self.cellPostBar.textfield endEditing:YES];
+    [self.fixedCellPostBar.textfield endEditing:YES];
 }
 
 
@@ -1518,33 +1561,6 @@ static Song* _gNowPlayingSong = nil;
 //    
 //    
 //}
-
-- (void)onFavoritesRadioReceived:(NSArray*)radios
-{
-//    NSInteger currentRadioId = [self.radio.id integerValue];
-//    
-//    for (Radio* radio in radios)
-//    {
-//        if ([radio.id integerValue] == currentRadioId)
-//        {
-//            [[ActivityModelessSpinner main] removeRef];
-//            [[YasoundDataProvider main] setRadio:self.radio asFavorite:NO];
-//            self.favoriteButton.selected = NO;
-//            
-//            // and clear the cache for favorites
-//            NSString* url = URL_RADIOS_FAVORITES;
-//            [[YasoundDataCache main] clearRadios:url];
-//            
-//            _favoritesButtonLocked = NO;
-//            return;
-//        }
-//    }
-//    
-//    [[ActivityModelessSpinner main] removeRef];
-//    [[YasoundDataProvider main] setRadio:self.radio asFavorite:YES];
-//    self.favoriteButton.selected = YES;
-//    _favoritesButtonLocked = NO;
-}
 
 
 
@@ -1823,6 +1839,13 @@ static Song* _gNowPlayingSong = nil;
 {
 }
 
+
+//#pragma mark - WallPostCellDelegate
+//- (void)postCellMoveToSuperview
+//{
+//    NSLog(@"prout");
+//}
+//
 
 
 

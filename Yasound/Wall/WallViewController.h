@@ -17,7 +17,7 @@
 #import "RadioViewCell.h"
 #import "TopBar.h"
 #import "WallHeaderCell.h"
-
+#import "WallPostCell.h"
 
 @class Radio;
 @class AudioStreamer;
@@ -60,7 +60,7 @@
     //    TracksView* _viewTracks;
     BOOL _viewTracksDisplayed;
     
-    UITextField* _messageBar;
+//    UITextField* _messageBar;
     
     WallEvent* _lastWallEvent;
     WallEvent* _latestEvent;
@@ -109,10 +109,8 @@
 @property (nonatomic, retain) IBOutlet TouchedTableView* tableview;
 @property (nonatomic, retain) IBOutlet WallHeaderCell* cellWallHeader;
 
-@property (nonatomic, retain) IBOutlet UITableViewCell* cellPostBar;
-@property (nonatomic, retain) IBOutlet UITextField* postBarTextfield;
-@property (nonatomic, retain) IBOutlet UIButton* postBarButton;
-@property (nonatomic, retain) IBOutlet UILabel* postBarButtonLabel;
+@property (nonatomic, retain) IBOutlet WallPostCell* fixedCellPostBar;
+@property (nonatomic, retain) IBOutlet WallPostCell* cellPostBar;
 
 
 @property (atomic, retain) NSMutableArray* statusMessages;
@@ -130,6 +128,9 @@
 - (void)addSong;
 - (void)insertMessage;
 - (void)insertSong;
+
+- (IBAction)onPostBarButtonClicked:(id)sender;
+
 
 
 
