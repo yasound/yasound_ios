@@ -2045,6 +2045,178 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+#pragma mark - shows
+
+- (void)showsForRadio:(Radio*)r withTarget:(id)target action:(SEL)selector
+{
+    [self showsForRadio:r withTarget:target action:selector limit:0 offset:0];
+}
+
+- (void)showsForRadio:(Radio*)r limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/shows/", r.uuid];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    if (limit != 0 && offset != 0)
+    {
+        NSMutableArray* params = [NSMutableArray array];
+        if (limit != 0)
+            [params addObject:[NSString stringWithFormat:@"limit=%d", limit]];
+        if (offset != 0)
+            [params addObject:[NSString stringWithFormat:@"offset=%d", offset]];
+        conf.params = params;
+    }
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+- (void)showWithId:(NSString*)showId withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/show/%@/", showId];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+- (void)updateShow:(Show*)show withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/show/%@", show._id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"PUT";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    
+    NSString* stringData = [show JSONRepresentation];
+    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [req startAsynchronous];
+}
+
+- (void)deleteShow:(Show*)show withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/show/%@", show._id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"DELETE";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+- (void)createShow:(Show*)show inRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/create_show", radio.id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    
+    // be sure show._id is null
+    show._id = nil;
+    
+    NSString* stringData = [show JSONRepresentation];
+    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [req startAsynchronous];
+}
+
+- (void)duplicateShow:(Show*)show withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/show/%@/duplicate", show._id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
+- (void)songsForShow:(Show*)show withTarget:(id)target action:(SEL)selector
+{
+    [self songsForShow:show limit:0 offset:0 withTarget:target action:selector];
+}
+
+- (void)songsForShow:(Show*)show limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/show/%@/songs/", show._id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    if (limit != 0 && offset != 0)
+    {
+        NSMutableArray* params = [NSMutableArray array];
+        if (limit != 0)
+            [params addObject:[NSString stringWithFormat:@"limit=%d", limit]];
+        if (offset != 0)
+            [params addObject:[NSString stringWithFormat:@"offset=%d", offset]];
+        conf.params = params;
+    }
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+- (void)addSong:(YasoundSong*)song inShow:(Show*)show withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/show/%@/add_song/%@/", show._id, song.id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+- (void)removeSong:(Song*)song fromShow:(Show*)show withTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/show/%@/remove_song/%@/", show._id, song.id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
+#pragma mark - city suggestions
 - (void)citySuggestionsWithCityName:(NSString*)city target:(id)target action:(SEL)selector
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
@@ -2062,6 +2234,8 @@ static YasoundDataProvider* _main = nil;
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     [req startAsynchronous];
 }
+
+
 
 
 

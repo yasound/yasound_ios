@@ -27,6 +27,7 @@
 #import "UserSettings.h"
 #import "FacebookSharePreferences.h"
 #import "CityInfo.h"
+#import "Show.h"
 
 typedef NSString* taskID;
 
@@ -272,72 +273,23 @@ taskStatus stringToStatus(NSString* str);
 - (void)updateUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
 - (void)deleteUserNotification:(UserNotification*)notif target:(id)target action:(SEL)selector;
 - (void)deleteAllUserNotificationsWithTarget:(id)target action:(SEL)selector;
-// *************************** EXAMPLE ***************************
-//- (void)testNotifications
-//{
-//    [self userNotificationsWithTarget:self action:@selector(receivedUserNotifications:success:)];
-//}
-//- (void)receivedUserNotifications:(ASIHTTPRequest*)req success:(BOOL)success
-//{
-//    if (!success)
-//    {
-//        DLog(@"get user notifications FAILED");
-//        return;
-//    }
-//    NSArray* notifs = [req responseNSObjectsWithClass:[UserNotification class]];
-//    for (UserNotification* n in notifs) 
-//        DLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
-//    NSInteger count = notifs.count;
-//    DLog(@"%d notifications", count);
-//    if (count > 0)
-//    {
-//        UserNotification* n = (UserNotification*)[notifs objectAtIndex:0];
-//        [n setReadBool:YES];
-//        [self updateUserNotification:n target:self action:@selector(updatedUserNotification:success:)];
-//    }
-//}
-//
-//- (void)updatedUserNotification:(ASIHTTPRequest*)req success:(BOOL)success
-//{
-//    if (!success)
-//    {
-//        DLog(@"update notification FAILED");
-//        return;
-//    }
-//    NSString* resp = [req responseString];
-//    DLog(@"resp: %@", resp);
-//    UserNotification* n = (UserNotification*)[req responseNSObjectWithClass:[UserNotification class]];
-//    DLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
-//    
-//    NSString* notifId = n._id;
-//    if (notifId)
-//        [self userNotificationWithId:notifId target:self action:@selector(receivedNotification:success:)];
-//}
-//
-//- (void)receivedNotification:(ASIHTTPRequest*)req success:(BOOL)success
-//{
-//    if (!success)
-//    {
-//        DLog(@"get notification FAILED");
-//        return;
-//    }
-//    UserNotification* n = (UserNotification*)[req responseNSObjectWithClass:[UserNotification class]];
-//    DLog(@"%@ - %@ - %@ - %@", n._id, n.text, n.date, n.read);
-//    
-//    if (n)
-//        [self deleteUserNotification:n target:self action:@selector(deletedNotification:success:)];
-//}
-//
-//- (void)deletedNotification:(ASIHTTPRequest*)req success:(BOOL)success
-//{
-//    if (!success)
-//    {
-//        DLog(@"delete notification FAILED");
-//        return;
-//    }
-//    DLog(@"delete notification OK");
-//}
 
+
+// Shows
+- (void)showsForRadio:(Radio*)r withTarget:(id)target action:(SEL)selector;
+- (void)showsForRadio:(Radio*)r limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector;
+
+- (void)showWithId:(NSString*)showId withTarget:(id)target action:(SEL)selector;
+- (void)updateShow:(Show*)show withTarget:(id)target action:(SEL)selector;
+- (void)deleteShow:(Show*)show withTarget:(id)target action:(SEL)selector;
+- (void)createShow:(Show*)show inRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
+- (void)duplicateShow:(Show*)show withTarget:(id)target action:(SEL)selector;
+
+// Show Songs
+- (void)songsForShow:(Show*)show withTarget:(id)target action:(SEL)selector;
+- (void)songsForShow:(Show*)show limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector;
+- (void)addSong:(YasoundSong*)song inShow:(Show*)show withTarget:(id)target action:(SEL)selector;   // takes YasoundSong as param !!
+- (void)removeSong:(Song*)song fromShow:(Show*)show withTarget:(id)target action:(SEL)selector;     // takes Song as param !!
 
 - (void)testV2;
 
