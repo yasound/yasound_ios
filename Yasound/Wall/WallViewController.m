@@ -205,7 +205,7 @@ static Song* _gNowPlayingSong = nil;
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.minHeight" error:nil];
     self.tableview.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
     
-    [self.cellWallHeader setRadio:self.radio];
+    [self.cellWallHeader setHeaderRadio:self.radio];
 
 //    [self.view addSubview:self.tableview];
     
@@ -1561,33 +1561,6 @@ static Song* _gNowPlayingSong = nil;
 //    
 //    
 //}
-
-- (void)onFavoritesRadioReceived:(NSArray*)radios
-{
-//    NSInteger currentRadioId = [self.radio.id integerValue];
-//    
-//    for (Radio* radio in radios)
-//    {
-//        if ([radio.id integerValue] == currentRadioId)
-//        {
-//            [[ActivityModelessSpinner main] removeRef];
-//            [[YasoundDataProvider main] setRadio:self.radio asFavorite:NO];
-//            self.favoriteButton.selected = NO;
-//            
-//            // and clear the cache for favorites
-//            NSString* url = URL_RADIOS_FAVORITES;
-//            [[YasoundDataCache main] clearRadios:url];
-//            
-//            _favoritesButtonLocked = NO;
-//            return;
-//        }
-//    }
-//    
-//    [[ActivityModelessSpinner main] removeRef];
-//    [[YasoundDataProvider main] setRadio:self.radio asFavorite:YES];
-//    self.favoriteButton.selected = YES;
-//    _favoritesButtonLocked = NO;
-}
 
 
 
