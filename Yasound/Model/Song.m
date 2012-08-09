@@ -23,6 +23,7 @@
 @synthesize last_play_time;
 @synthesize frequency;
 @synthesize enabled;
+@synthesize order;
 
 
 - (id)init
