@@ -23,8 +23,8 @@ static Song* _gNowPlayingSong = nil;
 {
     assert(song != nil);
     
-    if (_gNowPlayingSong && ([_gNowPlayingSong.id isEqualToNumber:song.id]))
-        return;
+//    if (_gNowPlayingSong && ([_gNowPlayingSong.id isEqualToNumber:song.id]))
+//        return;
     
     if (_gNowPlayingSong != nil)
         [_gNowPlayingSong release];

@@ -237,6 +237,12 @@
         [_timerUpdate invalidate];
         _timerUpdate = nil;
     }
+    
+    // LBDEBUG hum hum... anti-bug for now
+    NSInteger retainCount = [self retainCount];
+    NSLog(@"RETAIN COUNT %d", retainCount);
+    for (NSInteger i = 0; i < retainCount-3; i++)
+        [self release];
         
     [super viewWillDisappear: animated];
 }
@@ -259,6 +265,7 @@
 
 - (void)dealloc
 {
+    NSLog(@"Wall dealloc");
     [_messageFont release];
     [_wallEvents release];
     [_updateLock release];
