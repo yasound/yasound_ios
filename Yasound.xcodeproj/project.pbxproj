@@ -942,6 +942,14 @@
 		BC23880E15D313DB00D1A4C4 /* wallHeaderMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2387D015D313DA00D1A4C4 /* wallHeaderMask@2x.png */; };
 		BC23880F15D313DB00D1A4C4 /* wallHeaderMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2387D015D313DA00D1A4C4 /* wallHeaderMask@2x.png */; };
 		BC23881015D313DB00D1A4C4 /* wallHeaderMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC2387D015D313DA00D1A4C4 /* wallHeaderMask@2x.png */; };
+		BC23881315D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
+		BC23881415D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
+		BC23881515D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
+		BC23881615D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
+		BC23881715D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
+		BC23881815D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
+		BC23881915D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
+		BC23881A15D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
 		BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
 		BC27F36314BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
@@ -6156,6 +6164,8 @@
 		BC2387CE15D313DA00D1A4C4 /* wallHeaderIconSubscribers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wallHeaderIconSubscribers@2x.png"; sourceTree = "<group>"; };
 		BC2387CF15D313DA00D1A4C4 /* wallHeaderMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallHeaderMask.png; sourceTree = "<group>"; };
 		BC2387D015D313DA00D1A4C4 /* wallHeaderMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wallHeaderMask@2x.png"; sourceTree = "<group>"; };
+		BC23881115D399C400D1A4C4 /* WallViewController+StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WallViewController+StatusBar.h"; sourceTree = "<group>"; };
+		BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WallViewController+StatusBar.m"; sourceTree = "<group>"; };
 		BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingView.h; sourceTree = "<group>"; };
 		BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingView.m; sourceTree = "<group>"; };
 		BC27F36C14BDD87B00EF1C5F /* TrackInteractionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInteractionView.h; sourceTree = "<group>"; };
@@ -7449,6 +7459,8 @@
 				BC23873415D2BE6400D1A4C4 /* WallHeaderCell.m */,
 				BC2387BE15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.h */,
 				BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */,
+				BC23881115D399C400D1A4C4 /* WallViewController+StatusBar.h */,
+				BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */,
 				BC23871615D2B9D100D1A4C4 /* WallViewController.h */,
 				BC23871715D2B9D100D1A4C4 /* WallViewController.m */,
 				BC23871815D2B9D100D1A4C4 /* WallViewController.xib */,
@@ -13754,6 +13766,7 @@
 				BC23874515D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874F15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C615D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
+				BC23881915D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13956,6 +13969,7 @@
 				BC23874615D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23875015D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C715D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
+				BC23881A15D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14154,6 +14168,7 @@
 				BC23874415D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874E15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C515D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
+				BC23881815D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14356,6 +14371,7 @@
 				BC23874115D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874B15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C215D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
+				BC23881515D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14558,6 +14574,7 @@
 				BC23874015D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874A15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C115D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
+				BC23881415D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14761,6 +14778,7 @@
 				BC23874315D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874D15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C415D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
+				BC23881715D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14963,6 +14981,7 @@
 				BC23873F15D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874915D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C015D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
+				BC23881315D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15166,6 +15185,7 @@
 				BC23874215D2C09900D1A4C4 /* WallPostCell.m in Sources */,
 				BC23874C15D2C14500D1A4C4 /* StatusBar.m in Sources */,
 				BC2387C315D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
+				BC23881615D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

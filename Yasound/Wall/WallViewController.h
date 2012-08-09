@@ -79,9 +79,9 @@
     
     NSInteger _serverErrorCount;
     
-    NSArray* _connectedUsers;
-    OrientedTableView* _usersContainer;
-    Radio* _radioForSelectedUser;
+//    NSArray* _connectedUsers;
+//    OrientedTableView* _usersContainer;
+//    Radio* _radioForSelectedUser;
     
     UIActionSheet* _queryShare;
     
