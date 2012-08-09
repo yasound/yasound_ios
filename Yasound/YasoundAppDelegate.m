@@ -11,7 +11,6 @@
 #import "AudioStreamManager.h"
 #import "YasoundSessionManager.h"
 #import "YasoundDataProvider.h"
-#import "RadioViewController.h"
 #import "PlaylistsViewController.h"
 #import "StatsViewController.h"
 #import "NotificationCenterViewController.h"

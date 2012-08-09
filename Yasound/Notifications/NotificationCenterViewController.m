@@ -8,16 +8,14 @@
 
 #import "NotificationCenterViewController.h"
 #import "Theme.h"
-#import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "NotificationCenterTableViewcCell.h"
-#import "FriendsViewController.h"
-#import "RadioViewController.h"
 #import "MessageWeViewController.h"
 #import "ProfileViewController.h"
 #import "NotificationMessageViewController.h"
 #import "RootViewController.h"
 #import "LoadingCell.h"
+#import "YasoundDataProvider.h"
 
 @implementation NotificationCenterViewController
 
@@ -287,9 +285,12 @@
 
 - (void)goToFriendsViewController
 {
-  FriendsViewController* view = [[FriendsViewController alloc] initWithNibName:@"FriendsViewController" bundle:nil title:NSLocalizedString(@"selection_tab_friends", nil) tabIcon:@"tabIconFavorites.png"];
-  [self.navigationController pushViewController:view animated:YES];
-  [view release];
+    //LBDEBUG TODO : kess kon fait ici maintenant?
+    assert(0);
+    
+//  FriendsViewController* view = [[FriendsViewController alloc] initWithNibName:@"FriendsViewController" bundle:nil title:NSLocalizedString(@"selection_tab_friends", nil) tabIcon:@"tabIconFavorites.png"];
+//  [self.navigationController pushViewController:view animated:YES];
+//  [view release];
 }
 
 - (void)goToFriendProfile: (User*)user
@@ -315,10 +316,8 @@
 {
   if (!radio)
     return;
-  
-  RadioViewController* view = [[RadioViewController alloc] initWithRadio:radio];
-  [self.navigationController pushViewController:view animated:YES];
-  [view release]; 
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -467,15 +466,6 @@
 
 
 
-
-
-
-- (IBAction)onNowPlayingClicked:(id)sender
-{
-  RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-  [self.navigationController pushViewController:view animated:YES];
-  [view release];
-}
 
 
 - (IBAction)onItemTrashClicked:(id)sender

@@ -31,14 +31,15 @@
 @property (nonatomic, retain) UIView* cellView;
 @property (nonatomic) CGFloat cellViewX;
 
+@property (nonatomic, retain) UIImageView* gradient;
 @property (nonatomic, retain) WebImageView* avatar;
 @property (nonatomic, retain) UIImageView* avatarMask;
 @property (nonatomic, retain) InteractiveView* avatarInteractiveView;
 @property (nonatomic, retain) UILabel* date;
 @property (nonatomic, retain) UILabel* user;
-@property (nonatomic, retain) UIView* messageBackground;
+//@property (nonatomic, retain) UIView* messageBackground;
 @property (nonatomic, retain) UILabel* message;
-@property (nonatomic, retain) UIImageView* separator;
+//@property (nonatomic, retain) UIImageView* separator;
 
 @property (nonatomic, retain) UIView* cellEditView;
 

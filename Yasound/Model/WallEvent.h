@@ -24,6 +24,8 @@ typedef enum
     NSMutableArray* _children;
     CGFloat _textHeight;
     BOOL _textHeightComputed;
+    CGFloat _cellHeight;
+    BOOL _cellHeightComputed;
     
     BOOL _editing;
 }
@@ -64,6 +66,9 @@ typedef enum
 - (BOOL)isTextHeightComputed;
 - (CGFloat)getTextHeight;
 - (CGFloat)computeTextHeightUsingFont:(UIFont*)font withConstraint:(CGFloat)width;
+- (BOOL)isCellHeightComputed;
+- (CGFloat)getCelltHeight;
+- (void)setCellHeight:(CGFloat)height;
 
 
 - (BOOL)editing;

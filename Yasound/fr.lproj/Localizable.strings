@@ -572,5 +572,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "Settings.submit" = "mise à jour de la radio";
 
+"Wall.header.favorite.button.add" = "Ajouter aux favoris";
+"Wall.header.favorite.button.remove" = "Retirer des favoris";
+
 
 

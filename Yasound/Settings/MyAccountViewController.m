@@ -7,7 +7,6 @@
 //
 
 #import "MyAccountViewController.h"
-#import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "Theme.h"
 #import "YasoundDataProvider.h"
@@ -331,22 +330,6 @@ enum SectionBio
     if (_changed || _imageChanged)
         [self save];
     
-    if (itemId == TopBarItemBack)
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    else if (itemId == TopBarItemNotif)
-    {
-        
-    }
-    
-    else if (itemId == TopBarItemNowPlaying)
-    {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
 }
 
 
@@ -362,6 +345,7 @@ enum SectionBio
     NSDateComponents* ageComponents = [[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:newDate toDate:now options:0];
     NSInteger age = [ageComponents year];
     self.user.age = [NSNumber numberWithInt:age];
+
     self.age.text = [self.user.age stringValue];
 }
 
@@ -461,6 +445,10 @@ enum SectionBio
 
 - (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success
 {
+    // update the YasoundDataProvider's user
+    //LBDEBUG
+  //  [YasoundDataProvider main].user = self.user;
+    
     if (_imageChanged)
     {
         [[YasoundDataProvider main] setPicture:self.userImage.image forUser:self.user target:self action:@selector(onUserImageUpdate:info:)];

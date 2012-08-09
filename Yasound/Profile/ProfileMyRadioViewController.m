@@ -12,8 +12,6 @@
 #import "Theme.h"
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
-#import "UserTableViewCell.h"
-#import "RadioViewController.h"
 #import "MessageBroadcastModalViewController.h"
 
 typedef enum 
@@ -264,29 +262,23 @@ typedef enum
 //    }
     else if (indexPath.section == eSectionSubscribers)
     {
-        UserTableViewCell* cell = (UserTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier2];
+        //LBDEBUG TODO : remplacer UserTableViewCell par la nouvelle classe, si c'est nécessaire.
+        assert(0);
+        return nil;
         
-        User* user = nil;
-        if ((_subscribers == nil) || (_subscribers.count <= indexPath.row))
-        {
-            assert(0);
-            DLog(@"error with subscribers array.");
-        }
-        else
-            user = [_subscribers objectAtIndex:indexPath.row];
-
-        //LBDEBUG
-//        if (cell == nil)
-//        {    
-//            cell = [[UserTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier2 rowIndex:indexPath.row user:user];
+//        UserTableViewCell* cell = (UserTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier2];
+//        
+//        User* user = nil;
+//        if ((_subscribers == nil) || (_subscribers.count <= indexPath.row))
+//        {
+//            assert(0);
+//            DLog(@"error with subscribers array.");
 //        }
 //        else
-//            [cell updateWithUser:user rowIndex:indexPath.row];
-
-        
-
-        assert(cell != nil);
-        return cell;
+//            user = [_subscribers objectAtIndex:indexPath.row];
+//
+//        assert(cell != nil);
+//        return cell;
     }
     else
     {
@@ -315,16 +307,6 @@ typedef enum
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)nowPlayingClicked:(id)sender
-{
-    // call root to launch the Radio
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil]; 
-}
 
 - (void)onSubscribersReceived:(NSArray*)subscribers withInfo:(NSDictionary*)info
 {

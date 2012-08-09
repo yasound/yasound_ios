@@ -9,7 +9,6 @@
 #import "MenuViewController.h"
 #import "Theme.h"
 #import "TopBar.h"
-#import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RootViewController.h"
@@ -296,17 +295,6 @@ enum MenuDescription
 
 - (void)topBarBackItemClicked:(TopBarItemId)itemId
 {
-    if (itemId == TopBarItemNotif)
-    {
-        
-    }
-    
-    else if (itemId == TopBarItemNowPlaying)
-    {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
 }
 
 

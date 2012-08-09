@@ -39,6 +39,8 @@
         _textHeight = 0;
         _textHeightComputed = NO;
         _editing = NO;
+        _cellHeight = 0;
+        _cellHeightComputed = NO;
     }
     return self;
 }
@@ -203,6 +205,26 @@
     
     return _textHeight;
 }
+
+
+- (BOOL)isCellHeightComputed
+{
+    return _cellHeightComputed;
+}
+
+- (CGFloat)getCelltHeight
+{
+    return _cellHeight;
+}
+
+
+- (void)setCellHeight:(CGFloat)height
+{
+    _cellHeight = height;
+    _cellHeightComputed = YES;
+}
+
+
 
 
 

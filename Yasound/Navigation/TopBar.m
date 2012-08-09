@@ -10,6 +10,9 @@
 #import "Theme.h"
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
+#import "YasoundAppDelegate.h"
+
+
 
 @implementation TopBar
 
@@ -74,6 +77,8 @@
 - (void)onBack:(id)sender
 {
     [self.delegate topBarBackItemClicked:TopBarItemBack];
+
+    [APPDELEGATE.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)onNotif:(id)sender
@@ -85,6 +90,8 @@
 - (void)onNowPlaying:(id)sender
 {
     [self.delegate topBarBackItemClicked:TopBarItemNowPlaying];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:[AudioStreamManager main].currentRadio];
 }
 
 //- (id)initWithFrame:(CGRect)frame

@@ -186,9 +186,6 @@
         [av show];
         [av release];  
 
-        // go back to the login error
-//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
-
         return;
     }
 
@@ -230,7 +227,7 @@
 - (void)enterTheAppAfterProperLogin
 {
     // call root to launch the Radio
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_LAUNCH_RADIO object:nil];
 }
 
 

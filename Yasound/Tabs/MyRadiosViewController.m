@@ -8,7 +8,6 @@
 
 #import "MyRadiosViewController.h"
 #import "TopBar.h"
-#import "RadioViewController.h"
 #import "AudioStreamManager.h"
 #import "YasoundDataProvider.h"
 #import "MyRadiosTableViewCell.h"
@@ -182,7 +181,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (void)myRadioRequestedPlay:(Radio*)radio
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
 }
 
 - (void)myRadioRequestedStats:(Radio*)radio
@@ -208,22 +207,6 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (void)topBarBackItemClicked:(TopBarItemId)itemId
 {
-    if (itemId == TopBarItemBack)
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-    
-    else if (itemId == TopBarItemNotif)
-    {
-        
-    }
-    
-    else if (itemId == TopBarItemNowPlaying)
-    {
-        RadioViewController* view = [[RadioViewController alloc] initWithRadio:[AudioStreamManager main].currentRadio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
 }
 
 @end
