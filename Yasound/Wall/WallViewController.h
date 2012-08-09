@@ -79,9 +79,9 @@
     
     NSInteger _serverErrorCount;
     
-    NSArray* _connectedUsers;
-    OrientedTableView* _usersContainer;
-    Radio* _radioForSelectedUser;
+//    NSArray* _connectedUsers;
+//    OrientedTableView* _usersContainer;
+//    Radio* _radioForSelectedUser;
     
     UIActionSheet* _queryShare;
     
@@ -109,11 +109,11 @@
 @property (nonatomic, retain) IBOutlet TouchedTableView* tableview;
 @property (nonatomic, retain) IBOutlet WallHeaderCell* cellWallHeader;
 
-@property (nonatomic, retain) IBOutlet WebImageView* headerImage;
-@property (nonatomic, retain) IBOutlet UILabel* headerTitle;
-@property (nonatomic, retain) IBOutlet UILabel* headerSubscribers;
-@property (nonatomic, retain) IBOutlet UILabel* headerListeners;
-@property (nonatomic, retain) IBOutlet UILabel* headerButtonLabel;
+@property (nonatomic, retain) IBOutlet UITableViewCell* cellPostBar;
+@property (nonatomic, retain) IBOutlet UITextField* postBarTextfield;
+@property (nonatomic, retain) IBOutlet UIButton* postBarButton;
+@property (nonatomic, retain) IBOutlet UILabel* postBarButtonLabel;
+
 
 @property (atomic, retain) NSMutableArray* statusMessages;
 //@property (nonatomic, retain) UIButton* favoriteButton;

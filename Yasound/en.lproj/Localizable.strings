@@ -584,4 +584,7 @@
 
 "Settings.submit" = "update your radio";
 
+"Wall.header.favorite.button.add" = "Add to favorites";
+"Wall.header.favorite.button.remove" = "Remove from favorites";
+
 
