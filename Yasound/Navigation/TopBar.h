@@ -23,5 +23,8 @@ typedef enum TopBarItemId
 @interface TopBar : UIToolbar
 
 @property (nonatomic, retain) IBOutlet id<TopBarDelegate> delegate;
+@property (nonatomic, retain) NSMutableArray* customItems;
+
+- (void)hideBackItem:(BOOL)hide;
 
 @end

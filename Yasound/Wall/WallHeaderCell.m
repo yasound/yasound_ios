@@ -46,10 +46,7 @@
 {
     BOOL mustBeFavorite = !self.isFavorite;
     self.headerButton.enabled = NO;
-    
-    
-    [[YasoundDataProvider main] setRadio:self.radio asFavorite:mustBeFavorite];
-    
+
     if (mustBeFavorite)
     {
         self.headerIconFavorite.hidden = NO;
@@ -61,11 +58,14 @@
         self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
     }
     
-    
-    //LBDEBUG TODO : déplacer la requete suivante dans futur récepteur de la requete ci-dessus
+    [[YasoundDataProvider main] setRadio:self.radio asFavorite:mustBeFavorite target:self action:@selector(favoriteUpdated:success:)];
+}
+
+
+- (void)favoriteUpdated:(ASIHTTPRequest*)req success:(BOOL)success
+{
     NSString* str = URL_RADIOS_FAVORITES;
     [[YasoundDataCache main] requestRadiosWithUrl:[NSURL URLWithString:str] withGenre:nil target:self action:@selector(onFavoritesRadioReceived:)];
-    
 }
 
 

@@ -14,6 +14,8 @@
 
 
 - (void)setNowPlaying:(NSString*)title artist:(NSString*)artist image:(UIImage*)image nbLikes:(NSInteger)nbLikes nbDislikes:(NSInteger)nbDislikes;
+- (void)setPause:(BOOL)set;
+
 
 - (IBAction)onPlayPauseClicked:(id)sender;
 - (IBAction)onShareClicked:(id)sender;
