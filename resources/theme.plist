@@ -522,6 +522,19 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
+			<key>ItemSettings</key>
+			<dict>
+				<key>normal</key>
+				<string>commonBarItemSettings</string>
+				<key>disabled</key>
+				<string>commonBarItemSettingsDisabled</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
 			<key>ItemNowPlaying</key>
 			<dict>
 				<key>normal</key>

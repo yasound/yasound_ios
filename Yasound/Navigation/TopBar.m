@@ -11,7 +11,7 @@
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
 #import "YasoundAppDelegate.h"
-
+#import "SettingsViewController.h"
 
 
 @implementation TopBar
@@ -22,6 +22,8 @@
 
 - (void)awakeFromNib
 {
+    self.backgroundColor = [UIColor blackColor];
+    
     // set background
     if ([self respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)]) 
         [self setBackgroundImage:[UIImage imageNamed:@"topBarBkg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
@@ -87,6 +89,26 @@
     }
 }
 
+- (void)showSettingsItem:(BOOL)enabled
+{
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemSettings" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIButton* btn = [sheet makeButton];
+
+    if (enabled)
+    {
+        [btn addTarget:self action:@selector(onSettings:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        btn.enabled = NO;
+    }
+
+    UIBarButtonItem* itemSettings = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    [self.customItems replaceObjectAtIndex:6 withObject:itemSettings];
+    [self setItems:self.customItems];
+}
+
 
 
 - (void)onBack:(id)sender
@@ -96,9 +118,20 @@
     [APPDELEGATE.navigationController popViewControllerAnimated:YES];
 }
 
+
 - (void)onNotif:(id)sender
 {
     [self.delegate topBarBackItemClicked:TopBarItemNotif];
+}
+
+- (void)onSettings:(id)sender
+{
+    [self.delegate topBarBackItemClicked:TopBarItemSettings];
+    
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:[AudioStreamManager main].currentRadio];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
+    [view release];
+    
 }
 
 

@@ -165,6 +165,9 @@
 {
     [super viewDidLoad];
     
+    BOOL enableSettings = self.ownRadio;
+    [self.topBar showSettingsItem:enableSettings];
+    
     _waitingForPreviousEvents = NO;
     
     self.fixedCellPostBar.frame = CGRectMake(self.fixedCellPostBar.frame.origin.x, self.tableview.frame.origin.y, self.fixedCellPostBar.frame.size.width, self.fixedCellPostBar.frame.size.height);
