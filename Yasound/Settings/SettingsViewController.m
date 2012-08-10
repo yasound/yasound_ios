@@ -301,7 +301,18 @@
 //}
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section == SECTION_CONFIG)
+        return NSLocalizedString(@"Settings", nil);
+    else if(section == SECTION_IMAGE)
+        return NSLocalizedString(@"Picture", nil);
+    else
+        return NSLocalizedString(@"Programming", nil);
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_TITLE))
         return _settingsTitleCell;
@@ -319,9 +330,11 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
 
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor blackColor];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:88.f/255.f green:107.f/255.f blue:119.f/255.f alpha:1];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
@@ -329,9 +342,6 @@
         cell.textLabel.text = NSLocalizedString(@"Settings.genre.label", nil);
         NSString* style = self.radio.genre;
         cell.detailTextLabel.text = NSLocalizedString(style, nil);
-        
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:182.f/255.f green:212.f/255.f blue:1 alpha:1];
-        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     }
     else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))
     {
@@ -339,8 +349,6 @@
         cell.textLabel.text = NSLocalizedString(@"Settings.keywords.label", nil);
         cell.detailTextLabel.text = _keywords;
 
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:182.f/255.f green:212.f/255.f blue:1 alpha:1];
-        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     }
     else if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
     {
