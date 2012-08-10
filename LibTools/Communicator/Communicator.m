@@ -591,6 +591,8 @@
     Class objectClass = [userinfo valueForKey:@"objectClass"];
     NSDictionary* userData = [userinfo valueForKey:@"userData"];
     
+    DLog(@"%@", request.responseString);
+    
     if (!succeeded)
     {
         [self notifytarget:target byCalling:selector withUserData:userData withObject:nil andSuccess:NO];

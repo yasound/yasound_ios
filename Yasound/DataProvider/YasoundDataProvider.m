@@ -2135,8 +2135,13 @@ static YasoundDataProvider* _main = nil;
 
 - (void)createShow:(Show*)show inRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector
 {
+    [self createShow:show inRadio:radio withYasoundSongs:nil withTarget:target action:selector];
+}
+
+- (void)createShow:(Show*)show inRadio:(Radio*)radio withYasoundSongs:(NSArray*)yasoundSongs withTarget:(id)target action:(SEL)selector
+{
     RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/create_show", radio.id];
+    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/create_show", radio.uuid];
     conf.urlIsAbsolute = NO;
     conf.auth = self.apiKeyAuth;
     conf.method = @"POST";
@@ -2147,8 +2152,19 @@ static YasoundDataProvider* _main = nil;
     
     // be sure show._id is null
     show._id = nil;
+
+    NSMutableDictionary* data = [show proxyForJson];
+    if (yasoundSongs)
+    {
+        NSMutableArray* yasoundSongIds = [NSMutableArray array];
+        for (YasoundSong* y in yasoundSongs)
+        {
+            [yasoundSongIds addObject:y.id];
+        }
+        [data setValue:yasoundSongIds forKey:@"song_ids"];
+    }
     
-    NSString* stringData = [show JSONRepresentation];
+    NSString* stringData = [data JSONRepresentation];
     [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
     
     [req startAsynchronous];
