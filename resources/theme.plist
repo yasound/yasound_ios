@@ -10,6 +10,16 @@
 	<string>theme_default</string>
 	<key>stylesheet</key>
 	<dict>
+		<key>Common</key>
+		<dict>
+			<key>gradient</key>
+			<dict>
+				<key>name</key>
+				<string>commonGradient</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+		</dict>
 		<key>TableView</key>
 		<dict>
 			<key>label</key>
@@ -513,6 +523,8 @@
 			<dict>
 				<key>normal</key>
 				<string>barItemNotifOff</string>
+				<key>disabled</key>
+				<string>barItemNotifDisabled</string>
 				<key>selected</key>
 				<string>barItemNotifOn</string>
 				<key>type</key>
@@ -528,6 +540,17 @@
 				<string>commonBarItemSettings</string>
 				<key>disabled</key>
 				<string>commonBarItemSettingsDisabled</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
+			<key>ItemTrash</key>
+			<dict>
+				<key>normal</key>
+				<string>commonBarItemTrash</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>

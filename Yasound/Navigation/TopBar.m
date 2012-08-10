@@ -12,7 +12,8 @@
 #import "RootViewController.h"
 #import "YasoundAppDelegate.h"
 #import "SettingsViewController.h"
-
+#import "NotificationCenterViewController.h"
+#import "YasoundSessionManager.h"
 
 @implementation TopBar
 
@@ -55,7 +56,14 @@
     //  "notif"  item
     sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemNotif" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     btn = [sheet makeButton];
-    [btn addTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
+    if ([YasoundSessionManager main].registered)
+    {
+        [btn addTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        btn.enabled = NO;
+    }
     UIBarButtonItem* itemNotif = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     // "now playing" item
@@ -110,6 +118,20 @@
 }
 
 
+- (void)showTrashItem;
+{
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemTrash" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIButton* btn = [sheet makeButton];
+    
+    [btn addTarget:self action:@selector(onTrash:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    [self.customItems replaceObjectAtIndex:6 withObject:item];
+    [self setItems:self.customItems];
+}
+
+
+
 
 - (void)onBack:(id)sender
 {
@@ -122,6 +144,15 @@
 - (void)onNotif:(id)sender
 {
     [self.delegate topBarBackItemClicked:TopBarItemNotif];
+
+    NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
+- (void)onTrash:(id)sender
+{
+    [self.delegate topBarBackItemClicked:TopBarItemTrash];
 }
 
 - (void)onSettings:(id)sender
