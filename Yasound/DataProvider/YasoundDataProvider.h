@@ -284,8 +284,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)showWithId:(NSString*)showId withTarget:(id)target action:(SEL)selector;
 - (void)updateShow:(Show*)show withTarget:(id)target action:(SEL)selector;
 - (void)deleteShow:(Show*)show withTarget:(id)target action:(SEL)selector;
-- (void)createShow:(Show*)show inRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
 - (void)duplicateShow:(Show*)show withTarget:(id)target action:(SEL)selector;
+- (void)createShow:(Show*)show inRadio:(Radio*)radio withTarget:(id)target action:(SEL)selector;
+- (void)createShow:(Show*)show inRadio:(Radio*)radio withYasoundSongs:(NSArray*)yasoundSongs withTarget:(id)target action:(SEL)selector;
 
 // Show Songs
 - (void)songsForShow:(Show*)show withTarget:(id)target action:(SEL)selector;
