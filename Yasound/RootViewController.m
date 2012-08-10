@@ -20,7 +20,6 @@
 #import "YasoundAppDelegate.h"
 #import "SongUploadManager.h"
 #import "NotificationCenterViewController.h"
-#import "CreateMyRadio.h"
 #import "YasoundDataCache.h"
 #import "SongUploadViewController.h"
 #import "RadioSelectionViewController.h"
@@ -153,8 +152,6 @@ static MenuViewController* gMenuView = nil;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushRadio:) name:NOTIF_PUSH_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoRadio:) name:NOTIF_GOTO_RADIO object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadio:) name:NOTIF_GOTO_MYRADIO object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoCreateMyRadio:) name:NOTIF_GOTO_CREATE_MYRADIO object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushLogin:) name:NOTIF_PUSH_LOGIN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoLogin:) name:NOTIF_GOTO_LOGIN object:nil];
@@ -796,7 +793,9 @@ static MenuViewController* gMenuView = nil;
 
     if (![r.ready boolValue])
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_CREATE_MYRADIO object:nil];
+        //LBDEBUG  : VOIR QUAND CA ARRIVE ET ADAPTER
+        assert(0);
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_CREATE_MYRADIO object:nil];
         return;
     }
         
@@ -807,14 +806,6 @@ static MenuViewController* gMenuView = nil;
 
 
 
-- (void*)onNotifGotoCreateMyRadio:(NSNotification *)notification
-{
-    [[UserSettings main] setBool:NO forKey:USKEYskipRadioCreation];
-    
-    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:NO radio:[YasoundDataProvider main].radio];
-    [(APPDELEGATE).navigationController pushViewController:view animated:YES];
-    [view release];
-}
 
 
 

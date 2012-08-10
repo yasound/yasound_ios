@@ -179,7 +179,6 @@
 		40B409A4152EFC630050D334 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
 		40B409A5152EFC630050D334 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		40B409A6152EFC630050D334 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
-		40B409A7152EFC630050D334 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
 		40B409AA152EFC630050D334 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
 		40B409AC152EFC630050D334 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		40B409AD152EFC630050D334 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE514CF64B100DF0950 /* MGTwitterEngine.m */; };
@@ -293,7 +292,6 @@
 		40B40A34152EFC630050D334 /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		40B40A37152EFC630050D334 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		40B40A38152EFC630050D334 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
-		40B40A3A152EFC630050D334 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
 		40B40A40152EFC630050D334 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD014CF64B100DF0950 /* jQueryInject.txt */; };
 		40B40A41152EFC630050D334 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		40B40A42152EFC630050D334 /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC0914CF64B100DF0950 /* twitter_load.png */; };
@@ -426,7 +424,6 @@
 		40D53BA71554280F001EB0C5 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
 		40D53BA81554280F001EB0C5 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		40D53BA91554280F001EB0C5 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
-		40D53BAA1554280F001EB0C5 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
 		40D53BAD1554280F001EB0C5 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
 		40D53BAF1554280F001EB0C5 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		40D53BB01554280F001EB0C5 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE514CF64B100DF0950 /* MGTwitterEngine.m */; };
@@ -551,7 +548,6 @@
 		40D53C3A1554280F001EB0C5 /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		40D53C3B1554280F001EB0C5 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		40D53C3C1554280F001EB0C5 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
-		40D53C3E1554280F001EB0C5 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
 		40D53C441554280F001EB0C5 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD014CF64B100DF0950 /* jQueryInject.txt */; };
 		40D53C451554280F001EB0C5 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		40D53C461554280F001EB0C5 /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC0914CF64B100DF0950 /* twitter_load.png */; };
@@ -694,12 +690,6 @@
 		BC1039B314F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
 		BC1039B414F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
 		BC1039B514F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
-		BC178DAA14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
-		BC178DAB14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
-		BC178DAC14C5E99800B18420 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
-		BC178DAD14C5E99800B18420 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
-		BC178DAE14C5E99800B18420 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
-		BC178DAF14C5E99800B18420 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
 		BC188BD01507638100E38692 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
 		BC188BD11507638100E38692 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
 		BC188BD21507638100E38692 /* LocalSongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */; };
@@ -1865,7 +1855,6 @@
 		BC3FA6BB15D55FF700AB562B /* IconMiscLegal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA19E15D55FF600AB562B /* IconMiscLegal@2x.png */; };
 		BC3FA6BC14E93B660055AB4A /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
 		BC3FA6BC15D55FF700AB562B /* IconMiscLegal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA19E15D55FF600AB562B /* IconMiscLegal@2x.png */; };
-		BC3FA6BD14E93B660055AB4A /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
 		BC3FA6BD15D55FF700AB562B /* IconMiscLegal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA19E15D55FF600AB562B /* IconMiscLegal@2x.png */; };
 		BC3FA6BE15D55FF700AB562B /* IconMiscLegal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA19E15D55FF600AB562B /* IconMiscLegal@2x.png */; };
 		BC3FA6BF15D55FF700AB562B /* IconMiscLogout.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA19F15D55FF600AB562B /* IconMiscLogout.png */; };
@@ -2067,7 +2056,6 @@
 		BC3FA73814E93B660055AB4A /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC3FA73815D55FF700AB562B /* IconRadiosSelection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA1AE15D55FF700AB562B /* IconRadiosSelection@2x.png */; };
 		BC3FA73915D55FF700AB562B /* IconRadiosSelection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA1AE15D55FF700AB562B /* IconRadiosSelection@2x.png */; };
-		BC3FA73A14E93B660055AB4A /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
 		BC3FA73A15D55FF700AB562B /* IconRadiosSelection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA1AE15D55FF700AB562B /* IconRadiosSelection@2x.png */; };
 		BC3FA73B15D55FF700AB562B /* IconRadiosSelection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA1AE15D55FF700AB562B /* IconRadiosSelection@2x.png */; };
 		BC3FA73C15D55FF700AB562B /* IconRadiosSelection@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3FA1AE15D55FF700AB562B /* IconRadiosSelection@2x.png */; };
@@ -5068,7 +5056,6 @@
 		BC56F4C6152486AF005D1B40 /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
 		BC56F4C7152486AF005D1B40 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		BC56F4C8152486AF005D1B40 /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
-		BC56F4C9152486AF005D1B40 /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
 		BC56F4CC152486AF005D1B40 /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
 		BC56F4CE152486AF005D1B40 /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC56F4CF152486AF005D1B40 /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CBE514CF64B100DF0950 /* MGTwitterEngine.m */; };
@@ -5171,7 +5158,6 @@
 		BC56F543152486AF005D1B40 /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		BC56F546152486AF005D1B40 /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BC56F547152486AF005D1B40 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
-		BC56F549152486AF005D1B40 /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
 		BC56F54F152486AF005D1B40 /* jQueryInject.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD014CF64B100DF0950 /* jQueryInject.txt */; };
 		BC56F550152486AF005D1B40 /* jQueryInjectLandscape.txt in Resources */ = {isa = PBXBuildFile; fileRef = BC40CBD114CF64B100DF0950 /* jQueryInjectLandscape.txt */; };
 		BC56F551152486AF005D1B40 /* twitter_load.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40CC0914CF64B100DF0950 /* twitter_load.png */; };
@@ -5312,6 +5298,14 @@
 		BC732630158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
 		BC732631158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
 		BC732632158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
+		BC784E8815D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
+		BC784E8915D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
+		BC784E8A15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
+		BC784E8B15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
+		BC784E8C15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
+		BC784E8D15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
+		BC784E8E15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
+		BC784E8F15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
 		BC7C07731541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
 		BC7C07741541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
 		BC7C07751541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
@@ -5446,7 +5440,6 @@
 		BC93CD3314CF3F7A007C723F /* ActivityModelessSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */; };
 		BC93CD3414CF3F7A007C723F /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		BC93CD3514CF3F7A007C723F /* BuyLinkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B172043E14C54446007F3FB0 /* BuyLinkManager.m */; };
-		BC93CD3614CF3F7A007C723F /* CreateMyRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC178DA814C5E99800B18420 /* CreateMyRadio.m */; };
 		BC93CD3914CF3F7A007C723F /* SongViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA83E7C14C7258F000A8295 /* SongViewCell.m */; };
 		BC93CD3B14CF3F7A007C723F /* DateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BC01F5AA14CEB01F00EF62A2 /* DateAdditions.m */; };
 		BC93CD3D14CF3F7A007C723F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5280A59145F006C00A88910 /* SystemConfiguration.framework */; };
@@ -5484,7 +5477,6 @@
 		BC93CDB214CF3F7A007C723F /* TwitterSigninViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC97A614AB7DD100D54631 /* TwitterSigninViewController.xib */; };
 		BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCCA799414B1AE520011AADD /* StatsViewController.xib */; };
 		BC93CDD614CF3F7A007C723F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
-		BC93CDDB14CF3F7A007C723F /* CreateMyRadio.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC178DA914C5E99800B18420 /* CreateMyRadio.xib */; };
 		BC9522A414B70FE9001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A514B70FF2001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
 		BC9522A614B70FF7001E1ACE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53A7AF01456FA4000B74F84 /* AVFoundation.framework */; };
@@ -5837,6 +5829,102 @@
 		BCDF654015013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
 		BCDF654115013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
 		BCDF654215013EE5005FD75D /* ProgrammingAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */; };
+		BCE35BB415D5B207008C26AC /* barItemEmptyBlack64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA815D5B207008C26AC /* barItemEmptyBlack64.png */; };
+		BCE35BB515D5B207008C26AC /* barItemEmptyBlack64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA815D5B207008C26AC /* barItemEmptyBlack64.png */; };
+		BCE35BB615D5B207008C26AC /* barItemEmptyBlack64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA815D5B207008C26AC /* barItemEmptyBlack64.png */; };
+		BCE35BB715D5B207008C26AC /* barItemEmptyBlack64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA815D5B207008C26AC /* barItemEmptyBlack64.png */; };
+		BCE35BB815D5B207008C26AC /* barItemEmptyBlack64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA815D5B207008C26AC /* barItemEmptyBlack64.png */; };
+		BCE35BB915D5B207008C26AC /* barItemEmptyBlack64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA815D5B207008C26AC /* barItemEmptyBlack64.png */; };
+		BCE35BBA15D5B207008C26AC /* barItemEmptyBlack64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA815D5B207008C26AC /* barItemEmptyBlack64.png */; };
+		BCE35BBB15D5B207008C26AC /* barItemEmptyBlack64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA815D5B207008C26AC /* barItemEmptyBlack64.png */; };
+		BCE35BBC15D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA915D5B207008C26AC /* barItemEmptyBlack64@2x.png */; };
+		BCE35BBD15D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA915D5B207008C26AC /* barItemEmptyBlack64@2x.png */; };
+		BCE35BBE15D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA915D5B207008C26AC /* barItemEmptyBlack64@2x.png */; };
+		BCE35BBF15D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA915D5B207008C26AC /* barItemEmptyBlack64@2x.png */; };
+		BCE35BC015D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA915D5B207008C26AC /* barItemEmptyBlack64@2x.png */; };
+		BCE35BC115D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA915D5B207008C26AC /* barItemEmptyBlack64@2x.png */; };
+		BCE35BC215D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA915D5B207008C26AC /* barItemEmptyBlack64@2x.png */; };
+		BCE35BC315D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BA915D5B207008C26AC /* barItemEmptyBlack64@2x.png */; };
+		BCE35BC415D5B207008C26AC /* barItemEmptyBlack84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAA15D5B207008C26AC /* barItemEmptyBlack84.png */; };
+		BCE35BC515D5B207008C26AC /* barItemEmptyBlack84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAA15D5B207008C26AC /* barItemEmptyBlack84.png */; };
+		BCE35BC615D5B207008C26AC /* barItemEmptyBlack84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAA15D5B207008C26AC /* barItemEmptyBlack84.png */; };
+		BCE35BC715D5B207008C26AC /* barItemEmptyBlack84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAA15D5B207008C26AC /* barItemEmptyBlack84.png */; };
+		BCE35BC815D5B207008C26AC /* barItemEmptyBlack84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAA15D5B207008C26AC /* barItemEmptyBlack84.png */; };
+		BCE35BC915D5B207008C26AC /* barItemEmptyBlack84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAA15D5B207008C26AC /* barItemEmptyBlack84.png */; };
+		BCE35BCA15D5B207008C26AC /* barItemEmptyBlack84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAA15D5B207008C26AC /* barItemEmptyBlack84.png */; };
+		BCE35BCB15D5B207008C26AC /* barItemEmptyBlack84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAA15D5B207008C26AC /* barItemEmptyBlack84.png */; };
+		BCE35BCC15D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAB15D5B207008C26AC /* barItemEmptyBlack84@2x.png */; };
+		BCE35BCD15D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAB15D5B207008C26AC /* barItemEmptyBlack84@2x.png */; };
+		BCE35BCE15D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAB15D5B207008C26AC /* barItemEmptyBlack84@2x.png */; };
+		BCE35BCF15D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAB15D5B207008C26AC /* barItemEmptyBlack84@2x.png */; };
+		BCE35BD015D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAB15D5B207008C26AC /* barItemEmptyBlack84@2x.png */; };
+		BCE35BD115D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAB15D5B207008C26AC /* barItemEmptyBlack84@2x.png */; };
+		BCE35BD215D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAB15D5B207008C26AC /* barItemEmptyBlack84@2x.png */; };
+		BCE35BD315D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAB15D5B207008C26AC /* barItemEmptyBlack84@2x.png */; };
+		BCE35BD415D5B207008C26AC /* barItemEmptyBlack105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAC15D5B207008C26AC /* barItemEmptyBlack105.png */; };
+		BCE35BD515D5B207008C26AC /* barItemEmptyBlack105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAC15D5B207008C26AC /* barItemEmptyBlack105.png */; };
+		BCE35BD615D5B207008C26AC /* barItemEmptyBlack105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAC15D5B207008C26AC /* barItemEmptyBlack105.png */; };
+		BCE35BD715D5B207008C26AC /* barItemEmptyBlack105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAC15D5B207008C26AC /* barItemEmptyBlack105.png */; };
+		BCE35BD815D5B207008C26AC /* barItemEmptyBlack105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAC15D5B207008C26AC /* barItemEmptyBlack105.png */; };
+		BCE35BD915D5B207008C26AC /* barItemEmptyBlack105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAC15D5B207008C26AC /* barItemEmptyBlack105.png */; };
+		BCE35BDA15D5B207008C26AC /* barItemEmptyBlack105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAC15D5B207008C26AC /* barItemEmptyBlack105.png */; };
+		BCE35BDB15D5B207008C26AC /* barItemEmptyBlack105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAC15D5B207008C26AC /* barItemEmptyBlack105.png */; };
+		BCE35BDC15D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAD15D5B207008C26AC /* barItemEmptyBlack105@2x.png */; };
+		BCE35BDD15D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAD15D5B207008C26AC /* barItemEmptyBlack105@2x.png */; };
+		BCE35BDE15D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAD15D5B207008C26AC /* barItemEmptyBlack105@2x.png */; };
+		BCE35BDF15D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAD15D5B207008C26AC /* barItemEmptyBlack105@2x.png */; };
+		BCE35BE015D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAD15D5B207008C26AC /* barItemEmptyBlack105@2x.png */; };
+		BCE35BE115D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAD15D5B207008C26AC /* barItemEmptyBlack105@2x.png */; };
+		BCE35BE215D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAD15D5B207008C26AC /* barItemEmptyBlack105@2x.png */; };
+		BCE35BE315D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAD15D5B207008C26AC /* barItemEmptyBlack105@2x.png */; };
+		BCE35BE415D5B207008C26AC /* barItemEmptyBlue64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAE15D5B207008C26AC /* barItemEmptyBlue64.png */; };
+		BCE35BE515D5B207008C26AC /* barItemEmptyBlue64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAE15D5B207008C26AC /* barItemEmptyBlue64.png */; };
+		BCE35BE615D5B207008C26AC /* barItemEmptyBlue64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAE15D5B207008C26AC /* barItemEmptyBlue64.png */; };
+		BCE35BE715D5B207008C26AC /* barItemEmptyBlue64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAE15D5B207008C26AC /* barItemEmptyBlue64.png */; };
+		BCE35BE815D5B207008C26AC /* barItemEmptyBlue64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAE15D5B207008C26AC /* barItemEmptyBlue64.png */; };
+		BCE35BE915D5B207008C26AC /* barItemEmptyBlue64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAE15D5B207008C26AC /* barItemEmptyBlue64.png */; };
+		BCE35BEA15D5B207008C26AC /* barItemEmptyBlue64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAE15D5B207008C26AC /* barItemEmptyBlue64.png */; };
+		BCE35BEB15D5B207008C26AC /* barItemEmptyBlue64.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAE15D5B207008C26AC /* barItemEmptyBlue64.png */; };
+		BCE35BEC15D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAF15D5B207008C26AC /* barItemEmptyBlue64@2x.png */; };
+		BCE35BED15D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAF15D5B207008C26AC /* barItemEmptyBlue64@2x.png */; };
+		BCE35BEE15D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAF15D5B207008C26AC /* barItemEmptyBlue64@2x.png */; };
+		BCE35BEF15D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAF15D5B207008C26AC /* barItemEmptyBlue64@2x.png */; };
+		BCE35BF015D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAF15D5B207008C26AC /* barItemEmptyBlue64@2x.png */; };
+		BCE35BF115D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAF15D5B207008C26AC /* barItemEmptyBlue64@2x.png */; };
+		BCE35BF215D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAF15D5B207008C26AC /* barItemEmptyBlue64@2x.png */; };
+		BCE35BF315D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BAF15D5B207008C26AC /* barItemEmptyBlue64@2x.png */; };
+		BCE35BF415D5B207008C26AC /* barItemEmptyBlue84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB015D5B207008C26AC /* barItemEmptyBlue84.png */; };
+		BCE35BF515D5B207008C26AC /* barItemEmptyBlue84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB015D5B207008C26AC /* barItemEmptyBlue84.png */; };
+		BCE35BF615D5B207008C26AC /* barItemEmptyBlue84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB015D5B207008C26AC /* barItemEmptyBlue84.png */; };
+		BCE35BF715D5B207008C26AC /* barItemEmptyBlue84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB015D5B207008C26AC /* barItemEmptyBlue84.png */; };
+		BCE35BF815D5B207008C26AC /* barItemEmptyBlue84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB015D5B207008C26AC /* barItemEmptyBlue84.png */; };
+		BCE35BF915D5B207008C26AC /* barItemEmptyBlue84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB015D5B207008C26AC /* barItemEmptyBlue84.png */; };
+		BCE35BFA15D5B207008C26AC /* barItemEmptyBlue84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB015D5B207008C26AC /* barItemEmptyBlue84.png */; };
+		BCE35BFB15D5B207008C26AC /* barItemEmptyBlue84.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB015D5B207008C26AC /* barItemEmptyBlue84.png */; };
+		BCE35BFC15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB115D5B207008C26AC /* barItemEmptyBlue84@2x.png */; };
+		BCE35BFD15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB115D5B207008C26AC /* barItemEmptyBlue84@2x.png */; };
+		BCE35BFE15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB115D5B207008C26AC /* barItemEmptyBlue84@2x.png */; };
+		BCE35BFF15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB115D5B207008C26AC /* barItemEmptyBlue84@2x.png */; };
+		BCE35C0015D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB115D5B207008C26AC /* barItemEmptyBlue84@2x.png */; };
+		BCE35C0115D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB115D5B207008C26AC /* barItemEmptyBlue84@2x.png */; };
+		BCE35C0215D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB115D5B207008C26AC /* barItemEmptyBlue84@2x.png */; };
+		BCE35C0315D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB115D5B207008C26AC /* barItemEmptyBlue84@2x.png */; };
+		BCE35C0415D5B207008C26AC /* barItemEmptyBlue105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB215D5B207008C26AC /* barItemEmptyBlue105.png */; };
+		BCE35C0515D5B207008C26AC /* barItemEmptyBlue105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB215D5B207008C26AC /* barItemEmptyBlue105.png */; };
+		BCE35C0615D5B207008C26AC /* barItemEmptyBlue105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB215D5B207008C26AC /* barItemEmptyBlue105.png */; };
+		BCE35C0715D5B207008C26AC /* barItemEmptyBlue105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB215D5B207008C26AC /* barItemEmptyBlue105.png */; };
+		BCE35C0815D5B207008C26AC /* barItemEmptyBlue105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB215D5B207008C26AC /* barItemEmptyBlue105.png */; };
+		BCE35C0915D5B207008C26AC /* barItemEmptyBlue105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB215D5B207008C26AC /* barItemEmptyBlue105.png */; };
+		BCE35C0A15D5B207008C26AC /* barItemEmptyBlue105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB215D5B207008C26AC /* barItemEmptyBlue105.png */; };
+		BCE35C0B15D5B207008C26AC /* barItemEmptyBlue105.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB215D5B207008C26AC /* barItemEmptyBlue105.png */; };
+		BCE35C0C15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */; };
+		BCE35C0D15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */; };
+		BCE35C0E15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */; };
+		BCE35C0F15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */; };
+		BCE35C1015D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */; };
+		BCE35C1115D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */; };
+		BCE35C1215D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */; };
+		BCE35C1315D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */; };
 		BCE66B3315494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3115494C410094B4D0 /* defaultMenuDescription.json.txt */; };
 		BCE66B3415494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3115494C410094B4D0 /* defaultMenuDescription.json.txt */; };
 		BCE66B3515494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3115494C410094B4D0 /* defaultMenuDescription.json.txt */; };
@@ -6202,9 +6290,6 @@
 		BC10399214F7E4A0007C5496 /* SongUploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongUploadViewController.xib; path = Programming/SongUploadViewController.xib; sourceTree = "<group>"; };
 		BC1039AF14F7F8EA007C5496 /* SongUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongUploadManager.h; path = Programming/SongUploadManager.h; sourceTree = "<group>"; };
 		BC1039B014F7F8EA007C5496 /* SongUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongUploadManager.m; path = Programming/SongUploadManager.m; sourceTree = "<group>"; };
-		BC178DA714C5E99800B18420 /* CreateMyRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateMyRadio.h; path = Settings/CreateMyRadio.h; sourceTree = "<group>"; };
-		BC178DA814C5E99800B18420 /* CreateMyRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateMyRadio.m; path = Settings/CreateMyRadio.m; sourceTree = "<group>"; };
-		BC178DA914C5E99800B18420 /* CreateMyRadio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateMyRadio.xib; path = Settings/CreateMyRadio.xib; sourceTree = "<group>"; };
 		BC188BCD1507638100E38692 /* LocalSongInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalSongInfoViewController.h; path = Programming/LocalSongInfoViewController.h; sourceTree = "<group>"; };
 		BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalSongInfoViewController.m; path = Programming/LocalSongInfoViewController.m; sourceTree = "<group>"; };
 		BC188BDA1507647900E38692 /* SongLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongLocal.h; sourceTree = "<group>"; };
@@ -6853,6 +6938,8 @@
 		BC7263BF153479C1002386C3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		BC732629158F91C4000D6584 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
 		BC73262A158F91C4000D6584 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
+		BC784E8615D575A400C09FE0 /* TopBarSaveOrCancel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarSaveOrCancel.h; sourceTree = "<group>"; };
+		BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarSaveOrCancel.m; sourceTree = "<group>"; };
 		BC7C07711541A82F004FC760 /* MKBitlyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBitlyHelper.h; sourceTree = "<group>"; };
 		BC7C07721541A82F004FC760 /* MKBitlyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBitlyHelper.m; sourceTree = "<group>"; };
 		BC7C077A1541A915004FC760 /* ShareTwitterModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTwitterModalViewController.h; sourceTree = "<group>"; };
@@ -7041,6 +7128,18 @@
 		BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingArtistViewController.xib; path = Programming/ProgrammingArtistViewController.xib; sourceTree = "<group>"; };
 		BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingAlbumViewController.m; path = Programming/ProgrammingAlbumViewController.m; sourceTree = "<group>"; };
 		BCDF653815013EE5005FD75D /* ProgrammingAlbumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingAlbumViewController.xib; path = Programming/ProgrammingAlbumViewController.xib; sourceTree = "<group>"; };
+		BCE35BA815D5B207008C26AC /* barItemEmptyBlack64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemEmptyBlack64.png; sourceTree = "<group>"; };
+		BCE35BA915D5B207008C26AC /* barItemEmptyBlack64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemEmptyBlack64@2x.png"; sourceTree = "<group>"; };
+		BCE35BAA15D5B207008C26AC /* barItemEmptyBlack84.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemEmptyBlack84.png; sourceTree = "<group>"; };
+		BCE35BAB15D5B207008C26AC /* barItemEmptyBlack84@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemEmptyBlack84@2x.png"; sourceTree = "<group>"; };
+		BCE35BAC15D5B207008C26AC /* barItemEmptyBlack105.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemEmptyBlack105.png; sourceTree = "<group>"; };
+		BCE35BAD15D5B207008C26AC /* barItemEmptyBlack105@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemEmptyBlack105@2x.png"; sourceTree = "<group>"; };
+		BCE35BAE15D5B207008C26AC /* barItemEmptyBlue64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemEmptyBlue64.png; sourceTree = "<group>"; };
+		BCE35BAF15D5B207008C26AC /* barItemEmptyBlue64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemEmptyBlue64@2x.png"; sourceTree = "<group>"; };
+		BCE35BB015D5B207008C26AC /* barItemEmptyBlue84.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemEmptyBlue84.png; sourceTree = "<group>"; };
+		BCE35BB115D5B207008C26AC /* barItemEmptyBlue84@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemEmptyBlue84@2x.png"; sourceTree = "<group>"; };
+		BCE35BB215D5B207008C26AC /* barItemEmptyBlue105.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemEmptyBlue105.png; sourceTree = "<group>"; };
+		BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemEmptyBlue105@2x.png"; sourceTree = "<group>"; };
 		BCE66B3215494C410094B4D0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text; name = fr; path = fr.lproj/defaultMenuDescription.json.txt; sourceTree = "<group>"; };
 		BCE66B3B15494C5D0094B4D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/defaultMenuDescription.json.txt; sourceTree = "<group>"; };
 		BCE7518714EC1DBF00056916 /* AdaptiveLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdaptiveLabel.h; sourceTree = "<group>"; };
@@ -7606,6 +7705,18 @@
 				BC3FA12915D55FF600AB562B /* barItemBkg@2x.png */,
 				BC3FA12A15D55FF600AB562B /* barItemBkgHighlighted.png */,
 				BC3FA12B15D55FF600AB562B /* barItemBkgHighlighted@2x.png */,
+				BCE35BA815D5B207008C26AC /* barItemEmptyBlack64.png */,
+				BCE35BA915D5B207008C26AC /* barItemEmptyBlack64@2x.png */,
+				BCE35BAA15D5B207008C26AC /* barItemEmptyBlack84.png */,
+				BCE35BAB15D5B207008C26AC /* barItemEmptyBlack84@2x.png */,
+				BCE35BAC15D5B207008C26AC /* barItemEmptyBlack105.png */,
+				BCE35BAD15D5B207008C26AC /* barItemEmptyBlack105@2x.png */,
+				BCE35BAE15D5B207008C26AC /* barItemEmptyBlue64.png */,
+				BCE35BAF15D5B207008C26AC /* barItemEmptyBlue64@2x.png */,
+				BCE35BB015D5B207008C26AC /* barItemEmptyBlue84.png */,
+				BCE35BB115D5B207008C26AC /* barItemEmptyBlue84@2x.png */,
+				BCE35BB215D5B207008C26AC /* barItemEmptyBlue105.png */,
+				BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */,
 				BC3FA12C15D55FF600AB562B /* barItemHdOff.png */,
 				BC3FA12D15D55FF600AB562B /* barItemHdOff@2x.png */,
 				BC3FA12E15D55FF600AB562B /* barItemHdOn.png */,
@@ -8442,6 +8553,8 @@
 			children = (
 				BC598EFB15B9AA98004D6DCB /* TopBar.h */,
 				BC598EFC15B9AA98004D6DCB /* TopBar.m */,
+				BC784E8615D575A400C09FE0 /* TopBarSaveOrCancel.h */,
+				BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */,
 				BC598F0F15B9AAD2004D6DCB /* TabBar.h */,
 				BC598F1015B9AAD2004D6DCB /* TabBar.m */,
 			);
@@ -8684,9 +8797,6 @@
 				BC9601B5154997B90003AC7E /* WebPageViewController.h */,
 				BC9601B6154997B90003AC7E /* WebPageViewController.m */,
 				BC9601B7154997B90003AC7E /* WebPageViewController.xib */,
-				BC178DA714C5E99800B18420 /* CreateMyRadio.h */,
-				BC178DA814C5E99800B18420 /* CreateMyRadio.m */,
-				BC178DA914C5E99800B18420 /* CreateMyRadio.xib */,
 				BCFD4D241525FE45006CBA19 /* AccountFacebookViewController.h */,
 				BCFD4D251525FE45006CBA19 /* AccountFacebookViewController.m */,
 				BCFD4D261525FE45006CBA19 /* AccountFacebookViewController.xib */,
@@ -9467,7 +9577,6 @@
 				40B40A34152EFC630050D334 /* TwitterSigninViewController.xib in Resources */,
 				40B40A37152EFC630050D334 /* StatsViewController.xib in Resources */,
 				40B40A38152EFC630050D334 /* RootViewController.xib in Resources */,
-				40B40A3A152EFC630050D334 /* CreateMyRadio.xib in Resources */,
 				40B40A40152EFC630050D334 /* jQueryInject.txt in Resources */,
 				40B40A41152EFC630050D334 /* jQueryInjectLandscape.txt in Resources */,
 				40B40A42152EFC630050D334 /* twitter_load.png in Resources */,
@@ -9974,6 +10083,18 @@
 				BC3FB19515D55FF800AB562B /* wheelSelectorShadow@2x.png in Resources */,
 				BC3FB19F15D569F100AB562B /* loginBtnYasound.png in Resources */,
 				BC3FB1A715D569F100AB562B /* loginBtnYasound@2x.png in Resources */,
+				BCE35BBA15D5B207008C26AC /* barItemEmptyBlack64.png in Resources */,
+				BCE35BC215D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */,
+				BCE35BCA15D5B207008C26AC /* barItemEmptyBlack84.png in Resources */,
+				BCE35BD215D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */,
+				BCE35BDA15D5B207008C26AC /* barItemEmptyBlack105.png in Resources */,
+				BCE35BE215D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */,
+				BCE35BEA15D5B207008C26AC /* barItemEmptyBlue64.png in Resources */,
+				BCE35BF215D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */,
+				BCE35BFA15D5B207008C26AC /* barItemEmptyBlue84.png in Resources */,
+				BCE35C0215D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
+				BCE35C0A15D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
+				BCE35C1215D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9998,7 +10119,6 @@
 				40D53C3A1554280F001EB0C5 /* TwitterSigninViewController.xib in Resources */,
 				40D53C3B1554280F001EB0C5 /* StatsViewController.xib in Resources */,
 				40D53C3C1554280F001EB0C5 /* RootViewController.xib in Resources */,
-				40D53C3E1554280F001EB0C5 /* CreateMyRadio.xib in Resources */,
 				40D53C441554280F001EB0C5 /* jQueryInject.txt in Resources */,
 				40D53C451554280F001EB0C5 /* jQueryInjectLandscape.txt in Resources */,
 				40D53C461554280F001EB0C5 /* twitter_load.png in Resources */,
@@ -10507,6 +10627,18 @@
 				BC3FB19615D55FF800AB562B /* wheelSelectorShadow@2x.png in Resources */,
 				BC3FB1A015D569F100AB562B /* loginBtnYasound.png in Resources */,
 				BC3FB1A815D569F100AB562B /* loginBtnYasound@2x.png in Resources */,
+				BCE35BBB15D5B207008C26AC /* barItemEmptyBlack64.png in Resources */,
+				BCE35BC315D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */,
+				BCE35BCB15D5B207008C26AC /* barItemEmptyBlack84.png in Resources */,
+				BCE35BD315D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */,
+				BCE35BDB15D5B207008C26AC /* barItemEmptyBlack105.png in Resources */,
+				BCE35BE315D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */,
+				BCE35BEB15D5B207008C26AC /* barItemEmptyBlue64.png in Resources */,
+				BCE35BF315D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */,
+				BCE35BFB15D5B207008C26AC /* barItemEmptyBlue84.png in Resources */,
+				BCE35C0315D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
+				BCE35C0B15D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
+				BCE35C1315D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10531,7 +10663,6 @@
 				BC3FA73014E93B660055AB4A /* TwitterSigninViewController.xib in Resources */,
 				BC3FA73514E93B660055AB4A /* StatsViewController.xib in Resources */,
 				BC3FA73814E93B660055AB4A /* RootViewController.xib in Resources */,
-				BC3FA73A14E93B660055AB4A /* CreateMyRadio.xib in Resources */,
 				BC3FA74014E93B660055AB4A /* jQueryInject.txt in Resources */,
 				BC3FA74114E93B660055AB4A /* jQueryInjectLandscape.txt in Resources */,
 				BC3FA74214E93B660055AB4A /* twitter_load.png in Resources */,
@@ -11034,6 +11165,18 @@
 				BC3FB19415D55FF800AB562B /* wheelSelectorShadow@2x.png in Resources */,
 				BC3FB19E15D569F100AB562B /* loginBtnYasound.png in Resources */,
 				BC3FB1A615D569F100AB562B /* loginBtnYasound@2x.png in Resources */,
+				BCE35BB915D5B207008C26AC /* barItemEmptyBlack64.png in Resources */,
+				BCE35BC115D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */,
+				BCE35BC915D5B207008C26AC /* barItemEmptyBlack84.png in Resources */,
+				BCE35BD115D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */,
+				BCE35BD915D5B207008C26AC /* barItemEmptyBlack105.png in Resources */,
+				BCE35BE115D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */,
+				BCE35BE915D5B207008C26AC /* barItemEmptyBlue64.png in Resources */,
+				BCE35BF115D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */,
+				BCE35BF915D5B207008C26AC /* barItemEmptyBlue84.png in Resources */,
+				BCE35C0115D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
+				BCE35C0915D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
+				BCE35C1115D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11058,7 +11201,6 @@
 				BC56F543152486AF005D1B40 /* TwitterSigninViewController.xib in Resources */,
 				BC56F546152486AF005D1B40 /* StatsViewController.xib in Resources */,
 				BC56F547152486AF005D1B40 /* RootViewController.xib in Resources */,
-				BC56F549152486AF005D1B40 /* CreateMyRadio.xib in Resources */,
 				BC56F54F152486AF005D1B40 /* jQueryInject.txt in Resources */,
 				BC56F550152486AF005D1B40 /* jQueryInjectLandscape.txt in Resources */,
 				BC56F551152486AF005D1B40 /* twitter_load.png in Resources */,
@@ -11566,6 +11708,18 @@
 				BC3FB19115D55FF800AB562B /* wheelSelectorShadow@2x.png in Resources */,
 				BC3FB19B15D569F100AB562B /* loginBtnYasound.png in Resources */,
 				BC3FB1A315D569F100AB562B /* loginBtnYasound@2x.png in Resources */,
+				BCE35BB615D5B207008C26AC /* barItemEmptyBlack64.png in Resources */,
+				BCE35BBE15D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */,
+				BCE35BC615D5B207008C26AC /* barItemEmptyBlack84.png in Resources */,
+				BCE35BCE15D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */,
+				BCE35BD615D5B207008C26AC /* barItemEmptyBlack105.png in Resources */,
+				BCE35BDE15D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */,
+				BCE35BE615D5B207008C26AC /* barItemEmptyBlue64.png in Resources */,
+				BCE35BEE15D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */,
+				BCE35BF615D5B207008C26AC /* barItemEmptyBlue84.png in Resources */,
+				BCE35BFE15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
+				BCE35C0615D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
+				BCE35C0E15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11590,7 +11744,6 @@
 				BCDC97C614AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCCA799914B1AE520011AADD /* StatsViewController.xib in Resources */,
 				BC828ADA14B49E9500763558 /* RootViewController.xib in Resources */,
-				BC178DAE14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
 				BC40CC0B14CF64B100DF0950 /* jQueryInject.txt in Resources */,
 				BC40CC0F14CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5714CF64B100DF0950 /* twitter_load.png in Resources */,
@@ -12098,6 +12251,18 @@
 				BC3FB19015D55FF800AB562B /* wheelSelectorShadow@2x.png in Resources */,
 				BC3FB19A15D569F100AB562B /* loginBtnYasound.png in Resources */,
 				BC3FB1A215D569F100AB562B /* loginBtnYasound@2x.png in Resources */,
+				BCE35BB515D5B207008C26AC /* barItemEmptyBlack64.png in Resources */,
+				BCE35BBD15D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */,
+				BCE35BC515D5B207008C26AC /* barItemEmptyBlack84.png in Resources */,
+				BCE35BCD15D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */,
+				BCE35BD515D5B207008C26AC /* barItemEmptyBlack105.png in Resources */,
+				BCE35BDD15D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */,
+				BCE35BE515D5B207008C26AC /* barItemEmptyBlue64.png in Resources */,
+				BCE35BED15D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */,
+				BCE35BF515D5B207008C26AC /* barItemEmptyBlue84.png in Resources */,
+				BCE35BFD15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
+				BCE35C0515D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
+				BCE35C0D15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12122,7 +12287,6 @@
 				BC93CDB214CF3F7A007C723F /* TwitterSigninViewController.xib in Resources */,
 				BC93CDC114CF3F7A007C723F /* StatsViewController.xib in Resources */,
 				BC93CDD614CF3F7A007C723F /* RootViewController.xib in Resources */,
-				BC93CDDB14CF3F7A007C723F /* CreateMyRadio.xib in Resources */,
 				BC40CC0D14CF64B100DF0950 /* jQueryInject.txt in Resources */,
 				BC40CC1114CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5914CF64B100DF0950 /* twitter_load.png in Resources */,
@@ -12630,6 +12794,18 @@
 				BC3FB19315D55FF800AB562B /* wheelSelectorShadow@2x.png in Resources */,
 				BC3FB19D15D569F100AB562B /* loginBtnYasound.png in Resources */,
 				BC3FB1A515D569F100AB562B /* loginBtnYasound@2x.png in Resources */,
+				BCE35BB815D5B207008C26AC /* barItemEmptyBlack64.png in Resources */,
+				BCE35BC015D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */,
+				BCE35BC815D5B207008C26AC /* barItemEmptyBlack84.png in Resources */,
+				BCE35BD015D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */,
+				BCE35BD815D5B207008C26AC /* barItemEmptyBlack105.png in Resources */,
+				BCE35BE015D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */,
+				BCE35BE815D5B207008C26AC /* barItemEmptyBlue64.png in Resources */,
+				BCE35BF015D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */,
+				BCE35BF815D5B207008C26AC /* barItemEmptyBlue84.png in Resources */,
+				BCE35C0015D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
+				BCE35C0815D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
+				BCE35C1015D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12654,7 +12830,6 @@
 				BCDC97C514AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCCA799814B1AE520011AADD /* StatsViewController.xib in Resources */,
 				BC828AD914B49E9500763558 /* RootViewController.xib in Resources */,
-				BC178DAD14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
 				BC40CC0A14CF64B100DF0950 /* jQueryInject.txt in Resources */,
 				BC40CC0E14CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5614CF64B100DF0950 /* twitter_load.png in Resources */,
@@ -13162,6 +13337,18 @@
 				BC3FB18F15D55FF800AB562B /* wheelSelectorShadow@2x.png in Resources */,
 				BC3FB19915D569F100AB562B /* loginBtnYasound.png in Resources */,
 				BC3FB1A115D569F100AB562B /* loginBtnYasound@2x.png in Resources */,
+				BCE35BB415D5B207008C26AC /* barItemEmptyBlack64.png in Resources */,
+				BCE35BBC15D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */,
+				BCE35BC415D5B207008C26AC /* barItemEmptyBlack84.png in Resources */,
+				BCE35BCC15D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */,
+				BCE35BD415D5B207008C26AC /* barItemEmptyBlack105.png in Resources */,
+				BCE35BDC15D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */,
+				BCE35BE415D5B207008C26AC /* barItemEmptyBlue64.png in Resources */,
+				BCE35BEC15D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */,
+				BCE35BF415D5B207008C26AC /* barItemEmptyBlue84.png in Resources */,
+				BCE35BFC15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
+				BCE35C0415D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
+				BCE35C0C15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13186,7 +13373,6 @@
 				BCDC97C714AB7DD100D54631 /* TwitterSigninViewController.xib in Resources */,
 				BCCA799A14B1AE520011AADD /* StatsViewController.xib in Resources */,
 				BC828ADB14B49E9500763558 /* RootViewController.xib in Resources */,
-				BC178DAF14C5E99800B18420 /* CreateMyRadio.xib in Resources */,
 				BC40CC0C14CF64B100DF0950 /* jQueryInject.txt in Resources */,
 				BC40CC1014CF64B100DF0950 /* jQueryInjectLandscape.txt in Resources */,
 				BC40CC5814CF64B100DF0950 /* twitter_load.png in Resources */,
@@ -13694,6 +13880,18 @@
 				BC3FB19215D55FF800AB562B /* wheelSelectorShadow@2x.png in Resources */,
 				BC3FB19C15D569F100AB562B /* loginBtnYasound.png in Resources */,
 				BC3FB1A415D569F100AB562B /* loginBtnYasound@2x.png in Resources */,
+				BCE35BB715D5B207008C26AC /* barItemEmptyBlack64.png in Resources */,
+				BCE35BBF15D5B207008C26AC /* barItemEmptyBlack64@2x.png in Resources */,
+				BCE35BC715D5B207008C26AC /* barItemEmptyBlack84.png in Resources */,
+				BCE35BCF15D5B207008C26AC /* barItemEmptyBlack84@2x.png in Resources */,
+				BCE35BD715D5B207008C26AC /* barItemEmptyBlack105.png in Resources */,
+				BCE35BDF15D5B207008C26AC /* barItemEmptyBlack105@2x.png in Resources */,
+				BCE35BE715D5B207008C26AC /* barItemEmptyBlue64.png in Resources */,
+				BCE35BEF15D5B207008C26AC /* barItemEmptyBlue64@2x.png in Resources */,
+				BCE35BF715D5B207008C26AC /* barItemEmptyBlue84.png in Resources */,
+				BCE35BFF15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
+				BCE35C0715D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
+				BCE35C0F15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13835,7 +14033,6 @@
 				40B409A4152EFC630050D334 /* ActivityModelessSpinner.m in Sources */,
 				40B409A5152EFC630050D334 /* AudioStreamManager.m in Sources */,
 				40B409A6152EFC630050D334 /* BuyLinkManager.m in Sources */,
-				40B409A7152EFC630050D334 /* CreateMyRadio.m in Sources */,
 				40B409AA152EFC630050D334 /* SongViewCell.m in Sources */,
 				40B409AC152EFC630050D334 /* DateAdditions.m in Sources */,
 				40B409AD152EFC630050D334 /* MGTwitterEngine.m in Sources */,
@@ -13956,6 +14153,7 @@
 				BC2387C615D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881915D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956D15D4105300569FE0 /* Show.m in Sources */,
+				BC784E8E15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14039,7 +14237,6 @@
 				40D53BA71554280F001EB0C5 /* ActivityModelessSpinner.m in Sources */,
 				40D53BA81554280F001EB0C5 /* AudioStreamManager.m in Sources */,
 				40D53BA91554280F001EB0C5 /* BuyLinkManager.m in Sources */,
-				40D53BAA1554280F001EB0C5 /* CreateMyRadio.m in Sources */,
 				40D53BAD1554280F001EB0C5 /* SongViewCell.m in Sources */,
 				40D53BAF1554280F001EB0C5 /* DateAdditions.m in Sources */,
 				40D53BB01554280F001EB0C5 /* MGTwitterEngine.m in Sources */,
@@ -14160,6 +14357,7 @@
 				BC2387C715D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881A15D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956E15D4105300569FE0 /* Show.m in Sources */,
+				BC784E8F15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14243,7 +14441,6 @@
 				BC3FA6BA14E93B660055AB4A /* ActivityModelessSpinner.m in Sources */,
 				BC3FA6BB14E93B660055AB4A /* AudioStreamManager.m in Sources */,
 				BC3FA6BC14E93B660055AB4A /* BuyLinkManager.m in Sources */,
-				BC3FA6BD14E93B660055AB4A /* CreateMyRadio.m in Sources */,
 				BC3FA6C014E93B660055AB4A /* SongViewCell.m in Sources */,
 				BC3FA6C214E93B660055AB4A /* DateAdditions.m in Sources */,
 				BC3FA6C314E93B660055AB4A /* MGTwitterEngine.m in Sources */,
@@ -14360,6 +14557,7 @@
 				BC2387C515D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881815D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956C15D4105300569FE0 /* Show.m in Sources */,
+				BC784E8D15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14443,7 +14641,6 @@
 				BC56F4C6152486AF005D1B40 /* ActivityModelessSpinner.m in Sources */,
 				BC56F4C7152486AF005D1B40 /* AudioStreamManager.m in Sources */,
 				BC56F4C8152486AF005D1B40 /* BuyLinkManager.m in Sources */,
-				BC56F4C9152486AF005D1B40 /* CreateMyRadio.m in Sources */,
 				BC56F4CC152486AF005D1B40 /* SongViewCell.m in Sources */,
 				BC56F4CE152486AF005D1B40 /* DateAdditions.m in Sources */,
 				BC56F4CF152486AF005D1B40 /* MGTwitterEngine.m in Sources */,
@@ -14564,6 +14761,7 @@
 				BC2387C215D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881515D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956915D4105300569FE0 /* Show.m in Sources */,
+				BC784E8A15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14647,7 +14845,6 @@
 				BC03050514C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03053014C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172044014C54446007F3FB0 /* BuyLinkManager.m in Sources */,
-				BC178DAB14C5E99800B18420 /* CreateMyRadio.m in Sources */,
 				BCA83E7E14C7258F000A8295 /* SongViewCell.m in Sources */,
 				BC01F5AC14CEB01F00EF62A2 /* DateAdditions.m in Sources */,
 				BC40CC1714CF64B100DF0950 /* MGTwitterEngine.m in Sources */,
@@ -14768,6 +14965,7 @@
 				BC2387C115D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881415D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956815D4105300569FE0 /* Show.m in Sources */,
+				BC784E8915D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14852,7 +15050,6 @@
 				BC93CD3314CF3F7A007C723F /* ActivityModelessSpinner.m in Sources */,
 				BC93CD3414CF3F7A007C723F /* AudioStreamManager.m in Sources */,
 				BC93CD3514CF3F7A007C723F /* BuyLinkManager.m in Sources */,
-				BC93CD3614CF3F7A007C723F /* CreateMyRadio.m in Sources */,
 				BC93CD3914CF3F7A007C723F /* SongViewCell.m in Sources */,
 				BC93CD3B14CF3F7A007C723F /* DateAdditions.m in Sources */,
 				BC40CC1914CF64B100DF0950 /* MGTwitterEngine.m in Sources */,
@@ -14973,6 +15170,7 @@
 				BC2387C415D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881715D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956B15D4105300569FE0 /* Show.m in Sources */,
+				BC784E8C15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15056,7 +15254,6 @@
 				BC03050414C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03052F14C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172043F14C54446007F3FB0 /* BuyLinkManager.m in Sources */,
-				BC178DAA14C5E99800B18420 /* CreateMyRadio.m in Sources */,
 				BCA83E7D14C7258F000A8295 /* SongViewCell.m in Sources */,
 				BC01F5AB14CEB01F00EF62A2 /* DateAdditions.m in Sources */,
 				BC40CC1614CF64B100DF0950 /* MGTwitterEngine.m in Sources */,
@@ -15177,6 +15374,7 @@
 				BC2387C015D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881315D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956715D4105300569FE0 /* Show.m in Sources */,
+				BC784E8815D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15261,7 +15459,6 @@
 				BC03050614C02E9D00F39374 /* ActivityModelessSpinner.m in Sources */,
 				BC03053114C0724D00F39374 /* AudioStreamManager.m in Sources */,
 				B172044114C54446007F3FB0 /* BuyLinkManager.m in Sources */,
-				BC178DAC14C5E99800B18420 /* CreateMyRadio.m in Sources */,
 				BCA83E7F14C7258F000A8295 /* SongViewCell.m in Sources */,
 				BC01F5AD14CEB01F00EF62A2 /* DateAdditions.m in Sources */,
 				BC40CC1814CF64B100DF0950 /* MGTwitterEngine.m in Sources */,
@@ -15382,6 +15579,7 @@
 				BC2387C315D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m in Sources */,
 				BC23881615D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956A15D4105300569FE0 /* Show.m in Sources */,
+				BC784E8B15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

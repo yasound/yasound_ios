@@ -517,14 +517,86 @@
 		</dict>
 		<key>TopBar</key>
 		<dict>
-			<key>ItemMenu</key>
+			<key>itemEmptyLabel</key>
+			<dict>
+				<key>height</key>
+				<integer>24</integer>
+				<key>width</key>
+				<integer>52</integer>
+				<key>x</key>
+				<integer>6</integer>
+				<key>y</key>
+				<integer>4</integer>
+				<key>font</key>
+				<dict>
+					<key>textAlignment</key>
+					<string>center</string>
+					<key>shadowOffset</key>
+					<string>0, -1</string>
+					<key>shadowRadius</key>
+					<real>0.5</real>
+					<key>shadowColor</key>
+					<string>black</string>
+					<key>shadowOpacity</key>
+					<real>0.75</real>
+					<key>weight</key>
+					<string>bold</string>
+					<key>size</key>
+					<integer>11</integer>
+					<key>textColor</key>
+					<string>white</string>
+				</dict>
+			</dict>
+			<key>itemMenu</key>
 			<dict>
 				<key>name</key>
 				<string>barItemMenu</string>
 				<key>type</key>
 				<string>png</string>
 			</dict>
-			<key>ItemNotif</key>
+			<key>itemEmptyBlack1</key>
+			<dict>
+				<key>name</key>
+				<string>barItemEmptyBlack64</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>itemEmptyBlack2</key>
+			<dict>
+				<key>name</key>
+				<string>barItemEmptyBlack84</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>itemEmptyBlack3</key>
+			<dict>
+				<key>name</key>
+				<string>barItemEmptyBlack105</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>itemEmptyBlue1</key>
+			<dict>
+				<key>name</key>
+				<string>barItemEmptyBlue64</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>itemEmptyBlue2</key>
+			<dict>
+				<key>name</key>
+				<string>barItemEmptyBlue84</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>itemEmptyBlue3</key>
+			<dict>
+				<key>name</key>
+				<string>barItemEmptyBlue105</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>itemNotif</key>
 			<dict>
 				<key>normal</key>
 				<string>barItemNotifOff</string>
@@ -539,7 +611,7 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
-			<key>ItemSettings</key>
+			<key>itemSettings</key>
 			<dict>
 				<key>normal</key>
 				<string>commonBarItemSettings</string>
@@ -552,7 +624,7 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
-			<key>ItemTrash</key>
+			<key>itemTrash</key>
 			<dict>
 				<key>normal</key>
 				<string>commonBarItemTrash</string>
@@ -563,7 +635,7 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
-			<key>ItemNowPlaying</key>
+			<key>itemNowPlaying</key>
 			<dict>
 				<key>normal</key>
 				<string>barItemNowPlaying</string>

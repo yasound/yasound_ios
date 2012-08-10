@@ -10,9 +10,9 @@
 #import "TestflightViewController.h"
 #import "YasoundDataProvider.h"
 #import "WebImageView.h"
+#import "TopBarSaveOrCancel.h"
 
-
-@interface SettingsViewController : TestflightViewController
+@interface SettingsViewController : TestflightViewController<TopBarSaveOrCancelDelegate>
 {
     BOOL _changed;
     

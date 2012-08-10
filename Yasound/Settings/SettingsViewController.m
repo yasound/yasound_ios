@@ -653,6 +653,18 @@
 
 
 
+#pragma mark - TopBarSaveOrCancelDelegate
+
+- (void)topBarCancel
+{
+
+}
+
+- (void)topBarSave
+{
+    [self save];
+}
+
 
 
 @end

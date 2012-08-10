@@ -1,6 +1,9 @@
 /* No comment provided by engineer. */
 "ACCEPT_LANGUAGE" = "en,en-us";
 
+"Navigation.cancel" = "Cancel";
+"Navigation.save" = "Save";
+
 "Navigation_back" = "Back";
 "Navigation_next" = "Next";
 "Navigation_NowPlaying" = "Now playing";
@@ -137,13 +140,6 @@
 "FriendsView_title" = "My friends";
 
 "FavoritesView_title" =  "My Favorites";
-
-
-"CreateMyRadio_title" = "Welcome!";
-"CreateMyRadio_text" = "Welcome to Yasound. Yasound is an audio social network. Create your own web radio from your playlists and share it for free. Discover and comment in real time the radio programs of your community and your friends' music.";
-"CreateMyRadio_goButton_text" = "Create my radio!";
-"CreateMyRadio_skipButton_text" = "Later";
-
 
 
 "StatsView_title" = "Stats";

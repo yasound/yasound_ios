@@ -13,7 +13,6 @@
 #import "ActivityAlertView.h"
 #import "ConnectionView.h"
 #import "SongUploadManager.h"
-#import "CreateMyRadio.h"
 #import "RegExp.h"
 #import "SignupViewController.h"
 #import "YasoundDataCache.h"
@@ -279,10 +278,8 @@
     
     // account just being create, go to configuration screen
     [[UserSettings main] setBool:YES forKey:USKEYskipRadioCreation];
-    
-    CreateMyRadio* view = [[CreateMyRadio alloc] initWithNibName:@"CreateMyRadio" bundle:nil wizard:YES radio:radio];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];    
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
 }
 
 

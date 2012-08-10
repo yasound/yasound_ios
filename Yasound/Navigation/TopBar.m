@@ -40,7 +40,7 @@
 //    
 //    if (![RootViewController menuIsCurrentScreen])
 //    {
-        sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         btn = [sheet makeButton];
         [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
         itemBack = [[UIBarButtonItem alloc] initWithCustomView:btn];
@@ -54,7 +54,7 @@
     UIBarButtonItem* itemHD = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"barItemHdOff.png"]]];
     
     //  "notif"  item
-    sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemNotif" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemNotif" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     btn = [sheet makeButton];
     if ([YasoundSessionManager main].registered)
     {
@@ -67,7 +67,7 @@
     UIBarButtonItem* itemNotif = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     // "now playing" item
-    sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemNowPlaying" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemNowPlaying" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     btn = [sheet makeButton];
     [btn addTarget:self action:@selector(onNowPlaying:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* itemNowPlaying = [[UIBarButtonItem alloc] initWithCustomView:btn];
@@ -99,7 +99,7 @@
 
 - (void)showSettingsItem:(BOOL)enabled
 {
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemSettings" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemSettings" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIButton* btn = [sheet makeButton];
 
     if (enabled)
@@ -120,7 +120,7 @@
 
 - (void)showTrashItem;
 {
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemTrash" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemTrash" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIButton* btn = [sheet makeButton];
     
     [btn addTarget:self action:@selector(onTrash:) forControlEvents:UIControlEventTouchUpInside];
