@@ -11,6 +11,7 @@
 #import "ShareModalViewController.h"
 #import "ShareTwitterModalViewController.h"
 #import "AudioStreamManager.h"
+#import "BuyLinkManager.h"
 
 
 @implementation WallViewController (NowPlayingBar)
@@ -91,28 +92,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction)onShareClicked:(id)sender
 {
-    
-}
-
-
-- (IBAction)onLikeClicked:(id)sender
-{
-    
-}
-
-
-- (IBAction)onBuyClicked:(id)sender
-{
-    
-}
-
-
-
-
-
-- (void)onTrackShare:(id)sender
-{
-    _queryShare = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:nil];
+    _queryShare = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:nil];
     
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
         [_queryShare addButtonWithTitle:@"Facebook"];
@@ -120,12 +100,77 @@ static Song* _gNowPlayingSong = nil;
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
         [_queryShare addButtonWithTitle:@"Twitter"];
     
-    [_queryShare addButtonWithTitle:NSLocalizedString(@"ShareModalView_email_label", nil)];
+    [_queryShare addButtonWithTitle:NSLocalizedString(@"Share.email", nil)];
     
     _queryShare.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-    [_queryShare showInView:self.view];
+    [_queryShare showInView:self.view];    
+}
+
+
+
+- (IBAction)onLikeClicked:(id)sender
+{
+    [[YasoundDataProvider main] setMood:eMoodLike forSong:_gNowPlayingSong];
+    //[[ActivityModelessSpinner main] addRefForTimeInterval:SPINNER_DELAY];
+}
+
+
+//
+//- (void)onTrackAdd:(id)sender
+//{
+//    [[YasoundDataProvider main] addSongToUserRadio:_song];
+//    [[ActivityModelessSpinner main] addRefForTimeInterval:SPINNER_DELAY];
+//}
+
+- (NSString *)getUserCountry
+{
+    NSLocale *locale = [NSLocale currentLocale];
+    return [locale objectForKey: NSLocaleCountryCode];
+}
+
+
+
+
+- (IBAction)onBuyClicked:(id)sender
+{
+    BuyLinkManager *mgr = [[BuyLinkManager alloc] init];
+    NSString *link = [mgr generateLink:_gNowPlayingSong.artist
+                                 album:_gNowPlayingSong.album
+                                  song:_gNowPlayingSong.name];
+    
+    if (!link)
+    {
+        // let's retry without album
+        link = [mgr generateLink:_gNowPlayingSong.artist
+                           album:@""
+                            song:_gNowPlayingSong.name];
+    }
+    [mgr release];
+    
+    if (link)
+    {
+        NSURL *url = [[NSURL alloc] initWithString:link];
+        [[UIApplication sharedApplication] openURL:url];
+        [url release];
+    }
+    else
+    {
+        UIAlertView *av = nil;
+        av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UnableToFindSongOniTunes_Title", nil)
+                                        message:NSLocalizedString(@"UnableToFindSongOniTunes_Message", nil)
+                                       delegate:nil
+                              cancelButtonTitle:NSLocalizedString(@"UnableToFindSongOniTunes_OK", nil)
+                              otherButtonTitles:nil];
+        
+        [av show];
+        [av release];
+    }
+    
     
 }
+
+
+
 
 
 #pragma mark - UIActionSheet Delegate
