@@ -22,6 +22,13 @@
 		</dict>
 		<key>TableView</key>
 		<dict>
+			<key>cell</key>
+			<dict>
+				<key>name</key>
+				<string>commonTableViewCell</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
 			<key>label</key>
 			<dict>
 				<key>height</key>
@@ -503,8 +510,6 @@
 					<string>bold</string>
 					<key>size</key>
 					<integer>16</integer>
-					<key>name</key>
-					<string>HelveticaNeue-Bold</string>
 					<key>textColor</key>
 					<string>white</string>
 				</dict>
@@ -597,8 +602,6 @@
 					<string>bold</string>
 					<key>size</key>
 					<integer>12</integer>
-					<key>name</key>
-					<string>HelveticaNeue-Bold</string>
 					<key>textColor</key>
 					<string>white</string>
 				</dict>
@@ -1161,10 +1164,10 @@
 				<dict>
 					<key>font</key>
 					<dict>
-						<key>name</key>
-						<string>HelveticaNeue-Bold</string>
 						<key>size</key>
 						<integer>13</integer>
+						<key>weight</key>
+						<string>bold</string>
 						<key>textColor</key>
 						<string>white</string>
 						<key>textAlignment</key>
@@ -1183,12 +1186,12 @@
 				<dict>
 					<key>font</key>
 					<dict>
-						<key>name</key>
-						<string>HelveticaNeue-Bold</string>
 						<key>size</key>
 						<integer>13</integer>
 						<key>textColor</key>
 						<string>white</string>
+						<key>weight</key>
+						<string>bold</string>
 					</dict>
 					<key>height</key>
 					<integer>18</integer>
@@ -1395,10 +1398,10 @@
 				<dict>
 					<key>font</key>
 					<dict>
-						<key>name</key>
-						<string>HelveticaNeue-Bold</string>
 						<key>size</key>
 						<integer>13</integer>
+						<key>weight</key>
+						<string>normal</string>
 						<key>text</key>
 						<string>123456</string>
 						<key>textColor</key>
@@ -1477,10 +1480,10 @@
 				<dict>
 					<key>font</key>
 					<dict>
-						<key>name</key>
-						<string>HelveticaNeue-Bold</string>
 						<key>size</key>
 						<integer>18</integer>
+						<key>weight</key>
+						<string>bold</string>
 						<key>text</key>
 						<string>Jenny&apos;s Radio</string>
 						<key>textColor</key>
@@ -1501,8 +1504,8 @@
 				<dict>
 					<key>font</key>
 					<dict>
-						<key>name</key>
-						<string>HelveticaNeue-Bold</string>
+						<key>weight</key>
+						<string>bold</string>
 						<key>size</key>
 						<integer>13</integer>
 						<key>text</key>
@@ -2074,10 +2077,10 @@
 			<dict>
 				<key>font</key>
 				<dict>
-					<key>name</key>
-					<string>HelveticaNeue-Bold</string>
 					<key>size</key>
 					<integer>13</integer>
+					<key>weight</key>
+					<string>bold</string>
 					<key>textColor</key>
 					<string>white</string>
 					<key>textAlignment</key>
@@ -2405,14 +2408,12 @@
 		</dict>
 		<key>Notifications</key>
 		<dict>
-			<key>NotificationText</key>
+			<key>text</key>
 			<dict>
 				<key>y</key>
 				<integer>5</integer>
 				<key>font</key>
 				<dict>
-					<key>name</key>
-					<string>HelveticaNeue</string>
 					<key>size</key>
 					<integer>13</integer>
 					<key>textColor</key>
@@ -2425,14 +2426,12 @@
 				<key>width</key>
 				<integer>222</integer>
 			</dict>
-			<key>NotificationDate</key>
+			<key>date</key>
 			<dict>
 				<key>y</key>
 				<integer>5</integer>
 				<key>font</key>
 				<dict>
-					<key>name</key>
-					<string>HelveticaNeue</string>
 					<key>size</key>
 					<integer>13</integer>
 					<key>textColor</key>
@@ -2445,7 +2444,7 @@
 				<key>width</key>
 				<integer>40</integer>
 			</dict>
-			<key>NotificationViewCellLabel</key>
+			<key>label</key>
 			<dict>
 				<key>y</key>
 				<integer>8</integer>
@@ -2456,7 +2455,7 @@
 					<key>size</key>
 					<integer>15</integer>
 					<key>weight</key>
-					<string>bold</string>
+					<string>normal</string>
 				</dict>
 				<key>height</key>
 				<integer>21</integer>
@@ -2465,7 +2464,7 @@
 				<key>width</key>
 				<integer>200</integer>
 			</dict>
-			<key>UnreadNotifBadge</key>
+			<key>unreadBadge</key>
 			<dict>
 				<key>y</key>
 				<integer>12</integer>
@@ -2477,8 +2476,8 @@
 					<string>white</string>
 					<key>backgroundColor</key>
 					<string>clear</string>
-					<key>name</key>
-					<string>HelveticaNeue-Bold</string>
+					<key>weight</key>
+					<string>bold</string>
 				</dict>
 				<key>height</key>
 				<integer>20</integer>
@@ -2487,10 +2486,10 @@
 				<key>width</key>
 				<integer>60</integer>
 			</dict>
-			<key>UnreadNotifBadge3</key>
+			<key>unreadBadge3</key>
 			<dict>
 				<key>name</key>
-				<string>UnreadNotifBadge3</string>
+				<string>unreadBadge3</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>
@@ -2498,10 +2497,10 @@
 				<key>y</key>
 				<integer>11</integer>
 			</dict>
-			<key>UnreadNotifBadge2</key>
+			<key>unreadBadge2</key>
 			<dict>
 				<key>name</key>
-				<string>UnreadNotifBadge2</string>
+				<string>unreadBadge2</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>
@@ -2509,10 +2508,10 @@
 				<key>y</key>
 				<integer>11</integer>
 			</dict>
-			<key>UnreadNotifBadge1</key>
+			<key>unreadBadge1</key>
 			<dict>
 				<key>name</key>
-				<string>UnreadNotifBadge1</string>
+				<string>unreadBadge1</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>
@@ -2520,7 +2519,7 @@
 				<key>y</key>
 				<integer>11</integer>
 			</dict>
-			<key>NotifReadIcon</key>
+			<key>readIcon</key>
 			<dict>
 				<key>name</key>
 				<string>IconNotifRead</string>
@@ -2531,7 +2530,7 @@
 				<key>y</key>
 				<integer>15</integer>
 			</dict>
-			<key>NotifUnreadIcon</key>
+			<key>unreadIcon</key>
 			<dict>
 				<key>name</key>
 				<string>IconNotifUnread</string>
