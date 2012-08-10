@@ -41,7 +41,7 @@
   {
     _notification = notif;
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Notifications.NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Notifications.text"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
    _notifTextLabel = [sheet makeLabel];
 
       if (_notification.from_user_id != nil)
@@ -59,13 +59,19 @@
     BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
     CGFloat fontSize = fontSheet.size;
     if ([_notification isReadBool])
-      _notifTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:fontSize];
+    {
+        _notifTextLabel.alpha = 0.5;
+        _notifDateLabel.alpha = 0.5;
+    }
     else
-      _notifTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:fontSize];
+    {
+        _notifTextLabel.alpha = 1;
+        _notifDateLabel.alpha = 1;
+    }
     
     [self addSubview:_notifTextLabel];
     
-    _notifDateLabel = [[[Theme theme] stylesheetForKey:@"Notifications.NotificationDate"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeLabel];
+    _notifDateLabel = [[[Theme theme] stylesheetForKey:@"Notifications.date"  retainStylesheet:YES overwriteStylesheet:NO error:nil] makeLabel];
     NSString* s = [self dateToString:_notification.date];
     _notifDateLabel.text = s;
     [self addSubview:_notifDateLabel];
@@ -73,11 +79,11 @@
       
     if ([_notification isReadBool])
     {
-        _unreadImage = [[[Theme theme] stylesheetForKey:@"Notifications.NotifReadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+        _unreadImage = [[[Theme theme] stylesheetForKey:@"Notifications.readIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
     }
       else
       {
-          _unreadImage = [[[Theme theme] stylesheetForKey:@"Notifications.NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
+          _unreadImage = [[[Theme theme] stylesheetForKey:@"Notifications.unreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil] makeImage];
       }
     [self addSubview:_unreadImage];
   }
@@ -109,25 +115,31 @@
     
     
   NSError* error;
-  BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Notifications.NotificationText"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
+  BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Notifications.text"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
   BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
   CGFloat fontSize = fontSheet.size;
 
    if ([_notification isReadBool])
-    _notifTextLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:fontSize];
+   {
+       _notifTextLabel.alpha = 0.5;
+       _notifDateLabel.alpha = 0.5;
+   }
   else
-    _notifTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:fontSize];
+  {
+      _notifTextLabel.alpha = 1;
+      _notifDateLabel.alpha = 1;
+  }
   
   NSString* s = [self dateToString:_notification.date];
   _notifDateLabel.text = s;
 
     if ([_notification isReadBool])
     {
-         sheet = [[Theme theme] stylesheetForKey:@"Notifications.NotifReadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+         sheet = [[Theme theme] stylesheetForKey:@"Notifications.readIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     }
     else
     {
-        sheet = [[Theme theme] stylesheetForKey:@"Notifications.NotifUnreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Notifications.unreadIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     }
     [_unreadImage setImage:[sheet image]];
 }

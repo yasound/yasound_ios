@@ -332,7 +332,7 @@
 				<key>y</key>
 				<integer>5</integer>
 			</dict>
-			<key>UnreadNotifBadge</key>
+			<key>unreadBadge</key>
 			<dict>
 				<key>font</key>
 				<dict>
