@@ -59,9 +59,15 @@
     BundleFontsheet* fontSheet = [sheet.fontsheets objectForKey:@"default"];
     CGFloat fontSize = fontSheet.size;
     if ([_notification isReadBool])
-        _notifTextLabel.alpha = 0.75;
+    {
+        _notifTextLabel.alpha = 0.5;
+        _notifDateLabel.alpha = 0.5;
+    }
     else
+    {
         _notifTextLabel.alpha = 1;
+        _notifDateLabel.alpha = 1;
+    }
     
     [self addSubview:_notifTextLabel];
     
@@ -114,9 +120,15 @@
   CGFloat fontSize = fontSheet.size;
 
    if ([_notification isReadBool])
-       _notifTextLabel.alpha = 0.75;
+   {
+       _notifTextLabel.alpha = 0.5;
+       _notifDateLabel.alpha = 0.5;
+   }
   else
+  {
       _notifTextLabel.alpha = 1;
+      _notifDateLabel.alpha = 1;
+  }
   
   NSString* s = [self dateToString:_notification.date];
   _notifDateLabel.text = s;
