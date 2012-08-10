@@ -95,6 +95,8 @@
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic) BOOL ownRadio;
 
+@property (nonatomic, retain) IBOutlet TopBar* topBar;
+
 @property (nonatomic, retain) IBOutlet WebImageView* nowPlayingTrackImage;
 @property (nonatomic, retain) IBOutlet UIImageView* nowPlayingMask;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingButton;

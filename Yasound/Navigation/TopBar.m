@@ -11,16 +11,20 @@
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
 #import "YasoundAppDelegate.h"
-
-
+#import "SettingsViewController.h"
+#import "NotificationCenterViewController.h"
+#import "YasoundSessionManager.h"
 
 @implementation TopBar
 
 @synthesize delegate;
+@synthesize customItems;
 
 
 - (void)awakeFromNib
 {
+    self.backgroundColor = [UIColor blackColor];
+    
     // set background
     if ([self respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)]) 
         [self setBackgroundImage:[UIImage imageNamed:@"topBarBkg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
@@ -32,17 +36,19 @@
     UIButton* btn = nil;
     UIBarButtonItem* itemBack = nil;
     
-    if (![RootViewController menuIsCurrentScreen])
-    {
+//    items
+//    
+//    if (![RootViewController menuIsCurrentScreen])
+//    {
         sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         btn = [sheet makeButton];
         [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
         itemBack = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    }
-    else
-    {
-        itemBack = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];    
-    }
+//    }
+//    else
+//    {
+//        itemBack = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];    
+//    }
     
     // "HD" item
     UIBarButtonItem* itemHD = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"barItemHdOff.png"]]];
@@ -50,7 +56,14 @@
     //  "notif"  item
     sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemNotif" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     btn = [sheet makeButton];
-    [btn addTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
+    if ([YasoundSessionManager main].registered)
+    {
+        [btn addTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        btn.enabled = NO;
+    }
     UIBarButtonItem* itemNotif = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     // "now playing" item
@@ -67,10 +80,56 @@
     // flexible space
     UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
+    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, itemHD, flexibleSpace, itemNotif, flexibleSpace, itemNowPlaying, nil];
     
-    [self setItems:[NSArray arrayWithObjects:itemBack, flexibleSpace, itemHD, flexibleSpace, itemNotif, flexibleSpace, itemNowPlaying, nil]];
+    [self setItems:self.customItems];
 
 }
+
+
+- (void)hideBackItem:(BOOL)hide
+{
+    if (hide)
+    {
+        UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [self.customItems replaceObjectAtIndex:0 withObject:flexibleSpace];
+        [self setItems:self.customItems];
+    }
+}
+
+- (void)showSettingsItem:(BOOL)enabled
+{
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemSettings" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIButton* btn = [sheet makeButton];
+
+    if (enabled)
+    {
+        [btn addTarget:self action:@selector(onSettings:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        btn.enabled = NO;
+    }
+
+    UIBarButtonItem* itemSettings = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    [self.customItems replaceObjectAtIndex:6 withObject:itemSettings];
+    [self setItems:self.customItems];
+}
+
+
+- (void)showTrashItem;
+{
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.ItemTrash" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIButton* btn = [sheet makeButton];
+    
+    [btn addTarget:self action:@selector(onTrash:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    [self.customItems replaceObjectAtIndex:6 withObject:item];
+    [self setItems:self.customItems];
+}
+
 
 
 
@@ -81,9 +140,29 @@
     [APPDELEGATE.navigationController popViewControllerAnimated:YES];
 }
 
+
 - (void)onNotif:(id)sender
 {
     [self.delegate topBarBackItemClicked:TopBarItemNotif];
+
+    NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
+- (void)onTrash:(id)sender
+{
+    [self.delegate topBarBackItemClicked:TopBarItemTrash];
+}
+
+- (void)onSettings:(id)sender
+{
+    [self.delegate topBarBackItemClicked:TopBarItemSettings];
+    
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:[AudioStreamManager main].currentRadio];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
+    [view release];
+    
 }
 
 

@@ -7,21 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopBar.h"
 
 @interface NotificationCenterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
-  IBOutlet UILabel* _topBarTitle;
-  IBOutlet UIBarButtonItem* _nowPlayingButton;
   IBOutlet UITableView* _tableView;
     
     BOOL _waitingForPreviousEvents;
     UIAlertView* _alertTrash;
 }
 
+@property (nonatomic, retain) IBOutlet TopBar* topBar;
+
 @property (nonatomic, retain) NSMutableArray* notifications;
 @property (nonatomic, retain) NSMutableDictionary* notificationsDictionary;
 
-- (IBAction)onNowPlayingClicked:(id)sender;
-- (IBAction)onMenuBarItemClicked:(id)sender;
 
 @end

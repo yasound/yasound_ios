@@ -57,14 +57,11 @@
     
     _waitingForPreviousEvents = NO;
 
+    [self.topBar showTrashItem];
   
-  BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuBackground" error:nil];    
-  self.view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-  _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Common.gradient" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    _tableView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
   
-    _topBarTitle.text = NSLocalizedString(@"NotificationCenterView_title", nil);
-    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-
     [[YasoundDataProvider main] userNotificationsWithTarget:self action:@selector(onNotificationsReceived:success:)  limit:NOTIFICATIONS_LIMIT offset:0];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iOsNotificationReceived:) name:NOTIF_HANDLE_IOS_NOTIFICATION object:nil];
@@ -239,8 +236,19 @@
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 156.f;
+}
 
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Notifications.cell" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* view = [sheet makeImage];
+    cell.backgroundView = view;
+    [view autorelease];
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -468,14 +476,6 @@
 
 
 
-- (IBAction)onItemTrashClicked:(id)sender
-{
-    NSString* title = NSLocalizedString(@"NotificationCenterView_alert_title", nil);
-    NSString* message = NSLocalizedString(@"NotificationCenterView_alert_message", nil);
-    _alertTrash = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:@"OK", nil];
-    [_alertTrash show];
-    [_alertTrash release];  
-}
 
 #pragma mark - UIAlertViewDelegate
 
@@ -487,15 +487,6 @@
         return;
     }
 }
-
-
-- (IBAction)onMenuBarItemClicked:(id)sender
-{
-  [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-
 
 
 
@@ -533,6 +524,24 @@
 }
 
 
+
+
+
+
+
+#pragma mark - TopBarDelegate
+
+- (void)topBarBackItemClicked:(TopBarItemId)itemId
+{
+    if (itemId == TopBarItemTrash)
+    {
+        NSString* title = NSLocalizedString(@"NotificationCenterView_alert_title", nil);
+        NSString* message = NSLocalizedString(@"NotificationCenterView_alert_message", nil);
+        _alertTrash = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:@"OK", nil];
+        [_alertTrash show];
+        [_alertTrash release];    
+    }
+}
 
 
 

@@ -401,7 +401,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "ShareModalView_facebook_label" = "Facebook";
 "ShareModalView_twitter_label" = "Twitter";
-"ShareModalView_email_label" = "Envoyer un email";
 "ShareModalView_publish_button_label" = "Envoyer";
 "ShareModalView_email_button_label" = "Email";
 "ShareModalView_share_message" = "J'écoute %@, de %@ sur %@";
@@ -576,4 +575,5 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Wall.header.favorite.button.remove" = "Retirer des favoris";
 "Wall.postBar.label" = "Publier";
 
+"Share.email" = "Envoyer un email";
 

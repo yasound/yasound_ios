@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
+#import "TopBar.h"
 
 @interface MenuViewController : TestflightViewController
 {
     IBOutlet UITableView* _tableView;
 }
 
+@property (nonatomic, retain) IBOutlet TopBar* topBar;
 
 
 @end

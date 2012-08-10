@@ -22,7 +22,7 @@
 }
 
 @property (retain) Radio* currentRadio;
-
+@property (nonatomic, readonly) BOOL isPaused;
 
 + (AudioStreamManager*) main;
 
