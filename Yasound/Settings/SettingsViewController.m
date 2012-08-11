@@ -35,6 +35,7 @@
 
 #define SECTION_PROG 2
 #define ROW_PROG 0
+#define ROW_SHOWS 1
 
 
 
@@ -181,7 +182,7 @@
         return 1;
 
     if (section == SECTION_PROG)
-        return 1;
+        return 2;
 
 
     return 0;
@@ -358,6 +359,12 @@
         cell.textLabel.text = NSLocalizedString(@"Settings.prog.label", nil);
         cell.detailTextLabel.text = @"";
     }
+    else if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
+    {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = NSLocalizedString(@"Settings.shows.label", nil);
+        cell.detailTextLabel.text = @"";
+    }
     
     
     
@@ -399,9 +406,14 @@
     if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
     {
         
-//        ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil];
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
+        ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+        return;
+    }
+
+    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
+    {        
         SchedulingViewController* view = [[SchedulingViewController alloc] initWithNibName:@"SchedulingViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
         [view release];

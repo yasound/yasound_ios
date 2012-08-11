@@ -70,19 +70,14 @@
 
 #pragma mark - Table view data source
 
-#define SECTION_DEFAULT 0
-#define SECTION_SHOWS 1
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == SECTION_DEFAULT)
-        return 1;
-    
     return self.shows.count;
 }
 
@@ -114,36 +109,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* cellIdentifierDefault = @"cellDefault";
     static NSString* cellIdentifierShow = @"cellShow";
-    
-    if (indexPath.section == SECTION_DEFAULT)
-    {
-        UITableViewCell* cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifierDefault];
-
-        if (cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifierDefault];
-
-            cell.selectionStyle = UITableViewCellSelectionStyleGray;
-            cell.textLabel.textColor = [UIColor colorWithRed:166.f/255.f green:177.f/255.f blue:185.f/255.f alpha:1];
-            cell.textLabel.layer.shadowColor = [UIColor blackColor];
-            cell.textLabel.layer.shadowOffset = CGSizeMake(0, -1);
-            cell.textLabel.layer.shadowRadius = 0.5;
-            cell.textLabel.layer.shadowOpacity = 0.75;
-
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            UIImageView* di = [sheet makeImage];
-            [cell addSubview:di];
-            [di release];
-            
-        }
-        
-        cell.textLabel.text = NSLocalizedString(@"Scheduling.cellDefault.text", nil);
-        
-        return cell;
-    }
-
     
     UITableViewCell* cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifierShow];
     

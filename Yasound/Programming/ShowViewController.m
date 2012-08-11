@@ -260,8 +260,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
-//    
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
 //    NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
 //    [self.catalog selectAlbum:albumKey];
 //    

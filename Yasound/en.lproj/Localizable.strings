@@ -573,6 +573,7 @@
 "Settings.keywords.label" = "Tags";
 "Settings.keywords.empty" = "no tags";
 "Settings.prog.label" = "Programming";
+"Settings.shows.label" = "Shows";
 
 "Settings.pickImage.cancel" = "Cancel";
 "Settings.pickImage.image" = "Take a picture";
