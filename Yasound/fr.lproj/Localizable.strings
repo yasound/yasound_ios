@@ -3,6 +3,7 @@
 
 "Navigation.cancel" = "Annuler";
 "Navigation.save" = "Enregistrer";
+"Navigation.back" = "Retour";
 
 "Navigation_back" = "Retour";
 "Navigation_next" = "Suivant";
