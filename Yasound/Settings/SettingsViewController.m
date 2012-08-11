@@ -412,7 +412,7 @@
         return;
     }
 
-    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
+    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
     {        
         SchedulingViewController* view = [[SchedulingViewController alloc] initWithNibName:@"SchedulingViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
