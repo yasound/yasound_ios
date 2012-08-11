@@ -20,8 +20,68 @@
 				<string>png</string>
 			</dict>
 		</dict>
+		<key>Scheduling</key>
+		<dict>
+			<key>iconClock</key>
+			<dict>
+				<key>name</key>
+				<string>schedulingIconClock</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>247</integer>
+				<key>y</key>
+				<integer>9</integer>
+			</dict>
+		</dict>
 		<key>TableView</key>
 		<dict>
+			<key>bigButton</key>
+			<dict>
+				<key>button</key>
+				<dict>
+					<key>x</key>
+					<integer>14</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>name</key>
+					<string>commonBigButtonBlue</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>label</key>
+				<dict>
+					<key>height</key>
+					<integer>44</integer>
+					<key>width</key>
+					<integer>286</integer>
+					<key>x</key>
+					<integer>8</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>font</key>
+					<dict>
+						<key>weight</key>
+						<string>bold</string>
+						<key>textAlignment</key>
+						<string>center</string>
+						<key>size</key>
+						<integer>15</integer>
+						<key>textColor</key>
+						<string>white</string>
+						<key>shadowColor</key>
+						<string>black</string>
+						<key>shadowOffset</key>
+						<string>0, -1</string>
+						<key>shadowRadius</key>
+						<real>0.5</real>
+						<key>shadowOpacity</key>
+						<real>0.75</real>
+						<key>backgroundColor</key>
+						<string>clear</string>
+					</dict>
+				</dict>
+			</dict>
 			<key>cell</key>
 			<dict>
 				<key>name</key>
@@ -118,6 +178,17 @@
 				<integer>239</integer>
 				<key>y</key>
 				<integer>2</integer>
+			</dict>
+			<key>disclosureIndicator</key>
+			<dict>
+				<key>name</key>
+				<string>tableViewDisclosureIndicator</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>290</integer>
+				<key>y</key>
+				<integer>15</integer>
 			</dict>
 		</dict>
 		<key>Profil</key>
@@ -628,6 +699,17 @@
 			<dict>
 				<key>normal</key>
 				<string>commonBarItemTrash</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
+			<key>itemAdd</key>
+			<dict>
+				<key>normal</key>
+				<string>barItemAdd</string>
 				<key>type</key>
 				<string>png</string>
 				<key>x</key>

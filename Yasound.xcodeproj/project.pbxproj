@@ -5925,6 +5925,54 @@
 		BCE35C1115D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */; };
 		BCE35C1215D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */; };
 		BCE35C1315D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */; };
+		BCE35C1715D66855008C26AC /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
+		BCE35C1815D66855008C26AC /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
+		BCE35C1915D66855008C26AC /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
+		BCE35C1A15D66855008C26AC /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
+		BCE35C1B15D66855008C26AC /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
+		BCE35C1C15D66855008C26AC /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
+		BCE35C1D15D66855008C26AC /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
+		BCE35C1E15D66855008C26AC /* SchedulingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C1515D66855008C26AC /* SchedulingViewController.m */; };
+		BCE35C1F15D66855008C26AC /* SchedulingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C1615D66855008C26AC /* SchedulingViewController.xib */; };
+		BCE35C2015D66855008C26AC /* SchedulingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C1615D66855008C26AC /* SchedulingViewController.xib */; };
+		BCE35C2115D66855008C26AC /* SchedulingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C1615D66855008C26AC /* SchedulingViewController.xib */; };
+		BCE35C2215D66855008C26AC /* SchedulingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C1615D66855008C26AC /* SchedulingViewController.xib */; };
+		BCE35C2315D66855008C26AC /* SchedulingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C1615D66855008C26AC /* SchedulingViewController.xib */; };
+		BCE35C2415D66855008C26AC /* SchedulingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C1615D66855008C26AC /* SchedulingViewController.xib */; };
+		BCE35C2515D66855008C26AC /* SchedulingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C1615D66855008C26AC /* SchedulingViewController.xib */; };
+		BCE35C2615D66855008C26AC /* SchedulingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C1615D66855008C26AC /* SchedulingViewController.xib */; };
+		BCE35C2915D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2715D6A263008C26AC /* tableViewDisclosureIndicator.png */; };
+		BCE35C2A15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2715D6A263008C26AC /* tableViewDisclosureIndicator.png */; };
+		BCE35C2B15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2715D6A263008C26AC /* tableViewDisclosureIndicator.png */; };
+		BCE35C2C15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2715D6A263008C26AC /* tableViewDisclosureIndicator.png */; };
+		BCE35C2D15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2715D6A263008C26AC /* tableViewDisclosureIndicator.png */; };
+		BCE35C2E15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2715D6A263008C26AC /* tableViewDisclosureIndicator.png */; };
+		BCE35C2F15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2715D6A263008C26AC /* tableViewDisclosureIndicator.png */; };
+		BCE35C3015D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2715D6A263008C26AC /* tableViewDisclosureIndicator.png */; };
+		BCE35C3115D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png */; };
+		BCE35C3215D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png */; };
+		BCE35C3315D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png */; };
+		BCE35C3415D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png */; };
+		BCE35C3515D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png */; };
+		BCE35C3615D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png */; };
+		BCE35C3715D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png */; };
+		BCE35C3815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C2815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png */; };
+		BCE35C3C15D6BD58008C26AC /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C3A15D6BD57008C26AC /* ShowViewController.m */; };
+		BCE35C3D15D6BD58008C26AC /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C3A15D6BD57008C26AC /* ShowViewController.m */; };
+		BCE35C3E15D6BD58008C26AC /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C3A15D6BD57008C26AC /* ShowViewController.m */; };
+		BCE35C3F15D6BD58008C26AC /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C3A15D6BD57008C26AC /* ShowViewController.m */; };
+		BCE35C4015D6BD58008C26AC /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C3A15D6BD57008C26AC /* ShowViewController.m */; };
+		BCE35C4115D6BD58008C26AC /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C3A15D6BD57008C26AC /* ShowViewController.m */; };
+		BCE35C4215D6BD58008C26AC /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C3A15D6BD57008C26AC /* ShowViewController.m */; };
+		BCE35C4315D6BD58008C26AC /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35C3A15D6BD57008C26AC /* ShowViewController.m */; };
+		BCE35C4415D6BD58008C26AC /* ShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */; };
+		BCE35C4515D6BD58008C26AC /* ShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */; };
+		BCE35C4615D6BD58008C26AC /* ShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */; };
+		BCE35C4715D6BD58008C26AC /* ShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */; };
+		BCE35C4815D6BD58008C26AC /* ShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */; };
+		BCE35C4915D6BD58008C26AC /* ShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */; };
+		BCE35C4A15D6BD58008C26AC /* ShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */; };
+		BCE35C4B15D6BD58008C26AC /* ShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */; };
 		BCE66B3315494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3115494C410094B4D0 /* defaultMenuDescription.json.txt */; };
 		BCE66B3415494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3115494C410094B4D0 /* defaultMenuDescription.json.txt */; };
 		BCE66B3515494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3115494C410094B4D0 /* defaultMenuDescription.json.txt */; };
@@ -7140,6 +7188,14 @@
 		BCE35BB115D5B207008C26AC /* barItemEmptyBlue84@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemEmptyBlue84@2x.png"; sourceTree = "<group>"; };
 		BCE35BB215D5B207008C26AC /* barItemEmptyBlue105.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemEmptyBlue105.png; sourceTree = "<group>"; };
 		BCE35BB315D5B207008C26AC /* barItemEmptyBlue105@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemEmptyBlue105@2x.png"; sourceTree = "<group>"; };
+		BCE35C1415D66855008C26AC /* SchedulingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SchedulingViewController.h; path = Programming/SchedulingViewController.h; sourceTree = "<group>"; };
+		BCE35C1515D66855008C26AC /* SchedulingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SchedulingViewController.m; path = Programming/SchedulingViewController.m; sourceTree = "<group>"; };
+		BCE35C1615D66855008C26AC /* SchedulingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SchedulingViewController.xib; path = Programming/SchedulingViewController.xib; sourceTree = "<group>"; };
+		BCE35C2715D6A263008C26AC /* tableViewDisclosureIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableViewDisclosureIndicator.png; sourceTree = "<group>"; };
+		BCE35C2815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableViewDisclosureIndicator@2x.png"; sourceTree = "<group>"; };
+		BCE35C3915D6BD57008C26AC /* ShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShowViewController.h; path = Programming/ShowViewController.h; sourceTree = "<group>"; };
+		BCE35C3A15D6BD57008C26AC /* ShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShowViewController.m; path = Programming/ShowViewController.m; sourceTree = "<group>"; };
+		BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShowViewController.xib; path = Programming/ShowViewController.xib; sourceTree = "<group>"; };
 		BCE66B3215494C410094B4D0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text; name = fr; path = fr.lproj/defaultMenuDescription.json.txt; sourceTree = "<group>"; };
 		BCE66B3B15494C5D0094B4D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/defaultMenuDescription.json.txt; sourceTree = "<group>"; };
 		BCE7518714EC1DBF00056916 /* AdaptiveLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdaptiveLabel.h; sourceTree = "<group>"; };
@@ -8281,6 +8337,8 @@
 				BC3FA2CF15D55FF700AB562B /* StyleSelectionBar@2x.png */,
 				BC3FA2D015D55FF700AB562B /* TableViewBackground.png */,
 				BC3FA2D115D55FF700AB562B /* TableViewBackground@2x.png */,
+				BCE35C2715D6A263008C26AC /* tableViewDisclosureIndicator.png */,
+				BCE35C2815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png */,
 				BC3FA2D215D55FF700AB562B /* TableViewDisclosure.png */,
 				BC3FA2D315D55FF700AB562B /* TableViewDisclosure@2x.png */,
 				BC3FA2D415D55FF700AB562B /* TableViewDisclosureHighlighted.png */,
@@ -8642,6 +8700,12 @@
 		BC82066E14F561C900FAE05E /* Programming */ = {
 			isa = PBXGroup;
 			children = (
+				BCE35C1415D66855008C26AC /* SchedulingViewController.h */,
+				BCE35C1515D66855008C26AC /* SchedulingViewController.m */,
+				BCE35C1615D66855008C26AC /* SchedulingViewController.xib */,
+				BCE35C3915D6BD57008C26AC /* ShowViewController.h */,
+				BCE35C3A15D6BD57008C26AC /* ShowViewController.m */,
+				BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */,
 				B19BF5EB14E420DA00BF8FCF /* SongsViewController.h */,
 				B19BF5EC14E420DA00BF8FCF /* SongsViewController.m */,
 				B19BF5ED14E420DA00BF8FCF /* SongsViewController.xib */,
@@ -10095,6 +10159,10 @@
 				BCE35C0215D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
 				BCE35C0A15D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
 				BCE35C1215D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
+				BCE35C2515D66855008C26AC /* SchedulingViewController.xib in Resources */,
+				BCE35C2F15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */,
+				BCE35C3715D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */,
+				BCE35C4A15D6BD58008C26AC /* ShowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10639,6 +10707,10 @@
 				BCE35C0315D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
 				BCE35C0B15D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
 				BCE35C1315D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
+				BCE35C2615D66855008C26AC /* SchedulingViewController.xib in Resources */,
+				BCE35C3015D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */,
+				BCE35C3815D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */,
+				BCE35C4B15D6BD58008C26AC /* ShowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11177,6 +11249,10 @@
 				BCE35C0115D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
 				BCE35C0915D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
 				BCE35C1115D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
+				BCE35C2415D66855008C26AC /* SchedulingViewController.xib in Resources */,
+				BCE35C2E15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */,
+				BCE35C3615D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */,
+				BCE35C4915D6BD58008C26AC /* ShowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11720,6 +11796,10 @@
 				BCE35BFE15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
 				BCE35C0615D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
 				BCE35C0E15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
+				BCE35C2115D66855008C26AC /* SchedulingViewController.xib in Resources */,
+				BCE35C2B15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */,
+				BCE35C3315D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */,
+				BCE35C4615D6BD58008C26AC /* ShowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12263,6 +12343,10 @@
 				BCE35BFD15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
 				BCE35C0515D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
 				BCE35C0D15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
+				BCE35C2015D66855008C26AC /* SchedulingViewController.xib in Resources */,
+				BCE35C2A15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */,
+				BCE35C3215D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */,
+				BCE35C4515D6BD58008C26AC /* ShowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12806,6 +12890,10 @@
 				BCE35C0015D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
 				BCE35C0815D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
 				BCE35C1015D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
+				BCE35C2315D66855008C26AC /* SchedulingViewController.xib in Resources */,
+				BCE35C2D15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */,
+				BCE35C3515D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */,
+				BCE35C4815D6BD58008C26AC /* ShowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13349,6 +13437,10 @@
 				BCE35BFC15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
 				BCE35C0415D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
 				BCE35C0C15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
+				BCE35C1F15D66855008C26AC /* SchedulingViewController.xib in Resources */,
+				BCE35C2915D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */,
+				BCE35C3115D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */,
+				BCE35C4415D6BD58008C26AC /* ShowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13892,6 +13984,10 @@
 				BCE35BFF15D5B207008C26AC /* barItemEmptyBlue84@2x.png in Resources */,
 				BCE35C0715D5B207008C26AC /* barItemEmptyBlue105.png in Resources */,
 				BCE35C0F15D5B207008C26AC /* barItemEmptyBlue105@2x.png in Resources */,
+				BCE35C2215D66855008C26AC /* SchedulingViewController.xib in Resources */,
+				BCE35C2C15D6A263008C26AC /* tableViewDisclosureIndicator.png in Resources */,
+				BCE35C3415D6A263008C26AC /* tableViewDisclosureIndicator@2x.png in Resources */,
+				BCE35C4715D6BD58008C26AC /* ShowViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14154,6 +14250,8 @@
 				BC23881915D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956D15D4105300569FE0 /* Show.m in Sources */,
 				BC784E8E15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
+				BCE35C1D15D66855008C26AC /* SchedulingViewController.m in Sources */,
+				BCE35C4215D6BD58008C26AC /* ShowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14358,6 +14456,8 @@
 				BC23881A15D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956E15D4105300569FE0 /* Show.m in Sources */,
 				BC784E8F15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
+				BCE35C1E15D66855008C26AC /* SchedulingViewController.m in Sources */,
+				BCE35C4315D6BD58008C26AC /* ShowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14558,6 +14658,8 @@
 				BC23881815D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956C15D4105300569FE0 /* Show.m in Sources */,
 				BC784E8D15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
+				BCE35C1C15D66855008C26AC /* SchedulingViewController.m in Sources */,
+				BCE35C4115D6BD58008C26AC /* ShowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14762,6 +14864,8 @@
 				BC23881515D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956915D4105300569FE0 /* Show.m in Sources */,
 				BC784E8A15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
+				BCE35C1915D66855008C26AC /* SchedulingViewController.m in Sources */,
+				BCE35C3E15D6BD58008C26AC /* ShowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14966,6 +15070,8 @@
 				BC23881415D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956815D4105300569FE0 /* Show.m in Sources */,
 				BC784E8915D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
+				BCE35C1815D66855008C26AC /* SchedulingViewController.m in Sources */,
+				BCE35C3D15D6BD58008C26AC /* ShowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15171,6 +15277,8 @@
 				BC23881715D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956B15D4105300569FE0 /* Show.m in Sources */,
 				BC784E8C15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
+				BCE35C1B15D66855008C26AC /* SchedulingViewController.m in Sources */,
+				BCE35C4015D6BD58008C26AC /* ShowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15375,6 +15483,8 @@
 				BC23881315D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956715D4105300569FE0 /* Show.m in Sources */,
 				BC784E8815D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
+				BCE35C1715D66855008C26AC /* SchedulingViewController.m in Sources */,
+				BCE35C3C15D6BD58008C26AC /* ShowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15580,6 +15690,8 @@
 				BC23881615D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */,
 				405A956A15D4105300569FE0 /* Show.m in Sources */,
 				BC784E8B15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */,
+				BCE35C1A15D66855008C26AC /* SchedulingViewController.m in Sources */,
+				BCE35C3F15D6BD58008C26AC /* ShowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

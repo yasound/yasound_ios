@@ -20,6 +20,7 @@
 #import "YasoundDataCache.h"
 #import "YasoundDataCacheImage.h"
 #import "ProgrammingViewController.h"
+#import "SchedulingViewController.h"
 
 #define NB_SECTIONS 3
 
@@ -78,7 +79,7 @@
     [super viewDidLoad];
     
 
-    _settingsTitleLabel.text = NSLocalizedString(@"SettingsView_row_title_label", nil);
+    _settingsTitleLabel.text = NSLocalizedString(@"Settings.radio.title.label", nil);
     
     // set radio title
     NSString* radioTitle = self.radio.name;
@@ -89,7 +90,7 @@
     
 
     // image gui
-    _settingsImageLabel.text = NSLocalizedString(@"SettingsView_row_image_label", nil);
+    _settingsImageLabel.text = NSLocalizedString(@"Settings.radio.image.label", nil);
     [_settingsImageImage.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
     [_settingsImageImage.layer setBorderWidth: 1];    
     _settingsImageChanged = NO;
@@ -115,7 +116,7 @@
     
     if ((keywords == nil) || ([keywords count] == 0))
     {
-        _keywords = [NSString stringWithString:NSLocalizedString(@"SettingsView_keywords_empty", nil)];
+        _keywords = [NSString stringWithString:NSLocalizedString(@"Settings.keywords.empty", nil)];
     }
     else
     {
@@ -329,11 +330,12 @@
     {   
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
 
     cell.textLabel.textColor = [UIColor blackColor];
     cell.detailTextLabel.textColor = [UIColor colorWithRed:88.f/255.f green:107.f/255.f blue:119.f/255.f alpha:1];
     cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
@@ -366,6 +368,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
@@ -396,7 +399,10 @@
     if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
     {
         
-        ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil];
+//        ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil];
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release];
+        SchedulingViewController* view = [[SchedulingViewController alloc] initWithNibName:@"SchedulingViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
         return;
@@ -463,8 +469,8 @@
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        _pickImageQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_pickImage_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_pickImage_image", nil), 
-                                     NSLocalizedString(@"SettingsView_pickImage_camera", nil), nil];
+        _pickImageQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Settings.pickImage.cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Settings.pickImage.image", nil), 
+                                     NSLocalizedString(@"Settings.pickImage.camera", nil), nil];
         _pickImageQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [_pickImageQuery showInView:self.view];
     }

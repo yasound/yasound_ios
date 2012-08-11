@@ -2060,7 +2060,7 @@ static YasoundDataProvider* _main = nil;
 
 - (void)showsForRadio:(Radio*)r withTarget:(id)target action:(SEL)selector
 {
-    [self showsForRadio:r withTarget:target action:selector limit:0 offset:0];
+    [self showsForRadio:r limit:0 offset:0 withTarget:target action:selector];
 }
 
 - (void)showsForRadio:(Radio*)r limit:(NSInteger)limit offset:(NSInteger)offset withTarget:(id)target action:(SEL)selector

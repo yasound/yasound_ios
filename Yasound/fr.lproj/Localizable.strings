@@ -565,9 +565,21 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "Settings.submit" = "mise à jour de la radio";
 
+"Settings.radio.title.label" = "Titre";
+"Settings.radio.image.label" = "Image";
+
+
 "Wall.header.favorite.button.add" = "Ajouter aux favoris";
 "Wall.header.favorite.button.remove" = "Retirer des favoris";
 "Wall.postBar.label" = "Publier";
 
 "Share.email" = "Envoyer un email";
+
+"Scheduling.cellDefault.text" = "Main programming";
+
+"Show.everyday" = "Tous les jours";
+"Show.delete.label" = "Supprimer cette playlist";
+"Show.switch.label" = "Activer cette playlist";
+"Show.prog.label" = "Programmation";
+
 

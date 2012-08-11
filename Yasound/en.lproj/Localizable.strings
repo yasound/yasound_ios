@@ -580,8 +580,20 @@
 
 "Settings.submit" = "update your radio";
 
+"Settings.radio.title.label" = "Title";
+"Settings.radio.image.label" = "Picture";
+
 "Wall.header.favorite.button.add" = "Add to favorites";
 "Wall.header.favorite.button.remove" = "Remove from favorites";
 "Wall.postBar.label" = "Send";
+
+"Share.email" = "Send an email";
+
+"Scheduling.cellDefault.text" = "Main programming";
+
+"Show.everyday" = "Every day";
+"Show.delete.label" = "Delete this show";
+"Show.switch.label" = "Enable this schedule";
+"Show.prog.label" = "Programming";
 
 
