@@ -25,14 +25,13 @@
 @implementation ProgrammingRadioViewController
 
 @synthesize radio;
-//@synthesize matchedSongs;
 @synthesize sortedArtists;
 @synthesize sortedSongs;
 
 #define SEGMENT_INDEX_ALPHA 0
 #define SEGMENT_INDEX_ARTIST 1
 
-//#define TIMEPROFILE_DOWNLOAD @"Programming download synchronized"
+
 #define TIMEPROFILE_BUILD @"Programming build catalog"
 
 
@@ -44,22 +43,9 @@
     {
         self.radio = radio;
         
-//        _data = [[NSMutableArray alloc] init];
-//        [_data retain];
-//        
-//        _nbReceivedData = 0;
-//        _nbPlaylists = 0;
-        
-//        self.matchedSongs = [[NSMutableDictionary alloc] init];
         self.sortedArtists = [[NSMutableDictionary alloc] init];
         self.sortedSongs = [[NSMutableDictionary alloc] init];
 
-        //LBDEBUG
-        NSLog(@"catalog radio %@", [SongCatalog synchronizedCatalog].radio.name);
-        NSLog(@"requested radio %@", self.radio.name);
-        NSLog(@"catalog radio %@", [SongCatalog synchronizedCatalog].radio.id);
-        NSLog(@"requested radio %@", self.radio.id);
-        
         // anti-bug
         NSString* catalogId = [NSString stringWithFormat:@"%@", [SongCatalog synchronizedCatalog].radio.id];
         NSString* newId = [NSString stringWithFormat:@"%@", self.radio.id];
@@ -119,8 +105,6 @@
     [[TimeProfile main] begin:TIMEPROFILE_BUILD];
     
     [[SongCatalog synchronizedCatalog] downloadMatchedSongsForRadio:self.radio target:self action:@selector(matchedSongsDownloaded:success:)];
-//    Radio* radio = [YasoundDataProvider main].radio;
-//    [[YasoundDataProvider main] playlistsForRadio:radio target:self action:@selector(receivePlaylists:withInfo:)];
 }
 
 
@@ -220,16 +204,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     NSInteger nbSections = [SongCatalog synchronizedCatalog].indexMap.count;
-
-    //LBDEBUG
-//    if (self.sortedArtists == nil)
-//    {
-//        self.sortedArtists = [[NSMutableArray alloc] init];
-//        for (NSInteger i = 0; i < nbSections; i++)
-//        {
-//            [self.sortedArtists addObject:nil];
-//        }
-//    }
 
     return nbSections;
 }
@@ -576,13 +550,6 @@
     [view release];
 }
 
-
-//- (IBAction)onAdd:(id)sender
-//{
-//    ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil  forRadio:self.radio];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
-//}
 
 - (IBAction)onSegmentClicked:(id)sender
 {

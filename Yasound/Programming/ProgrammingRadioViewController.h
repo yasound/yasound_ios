@@ -24,15 +24,9 @@
     IBOutlet UISegmentedControl* _segment;
     
     IBOutlet UITableView* _tableView;
-
-    
-//    NSMutableArray* _data;
-//    NSInteger _nbReceivedData;
-//    NSInteger _nbPlaylists;
 }
 
 @property (nonatomic, retain) Radio* radio;
-//@property (nonatomic, retain) NSMutableDictionary* matchedSongs;
 @property (nonatomic, retain) NSMutableDictionary* sortedSongs;
 @property (nonatomic, retain) NSMutableDictionary* sortedArtists;
 
