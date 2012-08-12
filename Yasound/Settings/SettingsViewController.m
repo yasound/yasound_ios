@@ -405,8 +405,10 @@
 
     if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
     {
+        //LBDEBUG
+        NSLog(@"CALL PROG FOR RADIO :%@", self.radio.name);
         
-        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil];
+        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil  forRadio:self.radio];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
         return;

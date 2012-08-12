@@ -21,7 +21,7 @@
 #import "SongUploadManager.h"
 #import "NotificationCenterViewController.h"
 #import "YasoundDataCache.h"
-#import "SongUploadViewController.h"
+#import "ProgrammingUploadViewController.h"
 #import "RadioSelectionViewController.h"
 #import "TabBar.h"
 #import "MyRadiosViewController.h"
@@ -419,7 +419,7 @@ static MenuViewController* gMenuView = nil;
 {
     [self.navigationController popViewControllerAnimated:NO];
     
-    SongUploadViewController* newView = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+    ProgrammingUploadViewController* newView = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
     
     [self.navigationController pushViewController:newView animated:YES];
     [newView release];

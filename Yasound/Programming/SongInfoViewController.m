@@ -16,7 +16,7 @@
 #import "SongCatalog.h"
 #import "YasoundReachability.h"
 #import "SongUploadManager.h"
-#import "SongUploadViewController.h"
+#import "ProgrammingUploadViewController.h"
 
 
 @implementation SongInfoViewController
@@ -446,7 +446,7 @@
 //            UIViewController* currentView = self;
 //            [currentView retain];
 //
-//            SongUploadViewController* newView = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+//            ProgrammingUploadViewController* newView = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
 //
 //            [navCont popViewControllerAnimated:YES];
 //            [navCont pushViewController:newView animated:YES];

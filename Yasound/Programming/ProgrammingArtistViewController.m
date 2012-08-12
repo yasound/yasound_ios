@@ -11,7 +11,7 @@
 #import "Radio.h"
 #import "YasoundDataProvider.h"
 #import "SongInfoViewController.h"
-#import "SongUploadViewController.h"
+#import "ProgrammingUploadViewController.h"
 #import "ProgrammingLocalViewController.h"
 #import "TimeProfile.h"
 #import "BundleFileManager.h"
@@ -227,18 +227,18 @@
 
 - (IBAction)onSynchronize:(id)semder
 {
-    SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+    ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
 
 
-- (IBAction)onAdd:(id)sender
-{
-    ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil withMatchedSongs:[SongCatalog synchronizedCatalog].matchedSongs];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-}
+//- (IBAction)onAdd:(id)sender
+//{
+//    ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil withMatchedSongs:[SongCatalog synchronizedCatalog].matchedSongs];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
+//}
 
 
 - (void)onNotifSongAdded:(NSNotification*)notif

@@ -11,7 +11,7 @@
 #import "Radio.h"
 #import "YasoundDataProvider.h"
 #import "SongInfoViewController.h"
-#import "SongUploadViewController.h"
+#import "ProgrammingUploadViewController.h"
 #import "ProgrammingLocalViewController.h"
 #import "TimeProfile.h"
 #import "BundleFileManager.h"
@@ -24,32 +24,52 @@
 
 @implementation ProgrammingRadioViewController
 
-@synthesize matchedSongs;
+@synthesize radio;
+//@synthesize matchedSongs;
 @synthesize sortedArtists;
 @synthesize sortedSongs;
 
 #define SEGMENT_INDEX_ALPHA 0
 #define SEGMENT_INDEX_ARTIST 1
 
-#define TIMEPROFILE_DOWNLOAD @"Programming download synchronized"
+//#define TIMEPROFILE_DOWNLOAD @"Programming download synchronized"
 #define TIMEPROFILE_BUILD @"Programming build catalog"
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        _data = [[NSMutableArray alloc] init];
-        [_data retain];
+        self.radio = radio;
         
-        _nbReceivedData = 0;
-        _nbPlaylists = 0;
+//        _data = [[NSMutableArray alloc] init];
+//        [_data retain];
+//        
+//        _nbReceivedData = 0;
+//        _nbPlaylists = 0;
         
-        self.matchedSongs = [[NSMutableDictionary alloc] init];
+//        self.matchedSongs = [[NSMutableDictionary alloc] init];
         self.sortedArtists = [[NSMutableDictionary alloc] init];
         self.sortedSongs = [[NSMutableDictionary alloc] init];
+
+        //LBDEBUG
+        NSLog(@"catalog radio %@", [SongCatalog synchronizedCatalog].radio.name);
+        NSLog(@"requested radio %@", self.radio.name);
+        NSLog(@"catalog radio %@", [SongCatalog synchronizedCatalog].radio.id);
+        NSLog(@"requested radio %@", self.radio.id);
+        
+        // anti-bug
+        NSString* catalogId = [NSString stringWithFormat:@"%@", [SongCatalog synchronizedCatalog].radio.id];
+        NSString* newId = [NSString stringWithFormat:@"%@", self.radio.id];
+        
+        // clean catalog
+        if (([SongCatalog synchronizedCatalog].radio.id != nil) && ![catalogId isEqualToString:newId])
+        {
+            [SongCatalog releaseSynchronizedCatalog];
+            [SongCatalog releaseAvailableCatalog];
+        }
     }
     return self;
 }
@@ -96,10 +116,11 @@
     //DLog(@"%d - %d", _nbReceivedData, _nbPlaylists);
     
     // PROFILE
-    [[TimeProfile main] begin:TIMEPROFILE_DOWNLOAD];
+    [[TimeProfile main] begin:TIMEPROFILE_BUILD];
     
-    Radio* radio = [YasoundDataProvider main].radio;
-    [[YasoundDataProvider main] playlistsForRadio:radio target:self action:@selector(receivePlaylists:withInfo:)];
+    [[SongCatalog synchronizedCatalog] downloadMatchedSongsForRadio:self.radio target:self action:@selector(matchedSongsDownloaded:success:)];
+//    Radio* radio = [YasoundDataProvider main].radio;
+//    [[YasoundDataProvider main] playlistsForRadio:radio target:self action:@selector(receivePlaylists:withInfo:)];
 }
 
 
@@ -116,121 +137,35 @@
 }
 
 
-
-- (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
+- (void)matchedSongsDownloaded:(NSDictionary*)info success:(NSNumber*)success
 {
-    if (playlists == nil)
-        _nbPlaylists = 0;
-    else
-        _nbPlaylists = playlists.count;
+    NSInteger nbMatchedSongs = [[info objectForKey:@"nbMatchedSongs"] integerValue];
+    NSString* message = [info objectForKey:@"message"];
     
-    
-    DLog(@"received %d playlists", _nbPlaylists);
-    
-    if (_nbPlaylists == 0)
+    if (![success boolValue])
     {
-        [ActivityAlertView close];
-        
-        
-        // disable all functions
-        _addBtn.enabled = NO;
-        _segment.enabled = NO;
-        _synchroBtn.enabled = NO;
-        _subtitleLabel.text =  NSLocalizedString(@"ProgrammingView_subtitle_error", nil);
-        
-        
         // display an error dialog
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingView_error_title", nil) message:NSLocalizedString(@"ProgrammingView_error_no_playlist_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingView_error_title", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
-        [av release];  
+        [av release];
         return;
     }
     
-    
-    
-    for (Playlist* playlist in playlists) 
-    {
-        [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)]; 
-    }
-}
-
-
-- (void)matchedSongsReceveived:(NSArray*)songs info:(NSDictionary*)info
-{
-    NSNumber* succeededNb = [info objectForKey:@"succeeded"];
-    assert(succeededNb != nil);
-    BOOL succeeded = [succeededNb boolValue];
-    
-    if (!succeeded)
-    {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingView_error_title", nil) message:NSLocalizedString(@"ProgrammingView_error_message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];  
-
-        DLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
-        DLog(@"%@", info);
-    }
-    
-    
-    DLog(@"received playlist nb %d : %d songs", _nbReceivedData, songs.count);
-    
-
-
-    
-    _nbReceivedData++;
-    
-    if (succeeded && (songs != nil) && (songs.count != 0))
-        [_data addObject:songs];
-    
-    if (_nbReceivedData != _nbPlaylists)
-        return;
-    
-    //PROFILE
-    [[TimeProfile main] end:TIMEPROFILE_DOWNLOAD];
-    [[TimeProfile main] logInterval:TIMEPROFILE_DOWNLOAD inMilliseconds:NO];
-    
-    
-    // PROFILE
-    [[TimeProfile main] begin:TIMEPROFILE_BUILD];
-
-    // merge songs
-    for (NSInteger i = 0; i < _data.count; i++)
-    {
-        NSArray* songs = [_data objectAtIndex:i];
-        
-        for (Song* song in songs)
-        {
-            // create a key for the dictionary 
-            // LBDEBUG NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
-            NSString* key = [SongCatalog catalogKeyOfSong:song.name_client artist:song.artist_client album:song.album_client];
-
-            // and store the song in the dictionnary, for later convenient use
-            [self.matchedSongs setObject:song forKey:key];
-            
-        }
-    }
-    
-    
-    // build catalog
-    [[SongCatalog synchronizedCatalog] buildSynchronizedWithSource:self.matchedSongs];
-    [SongCatalog synchronizedCatalog].matchedSongs = self.matchedSongs;
-    
-
     // PROFILE
     [[TimeProfile main] end:TIMEPROFILE_BUILD];
     [[TimeProfile main] logInterval:TIMEPROFILE_BUILD inMilliseconds:NO];
 
-    DLog(@"%d matched songs", self.matchedSongs.count);
+    DLog(@"%d matched songs", nbMatchedSongs);
     
     NSString* subtitle = nil;
-    if (self.matchedSongs.count == 0)
+    if (nbMatchedSongs == 0)
         subtitle = NSLocalizedString(@"ProgrammingView_subtitled_count_0", nil);
-    else if (self.matchedSongs.count == 1)
+    else if (nbMatchedSongs == 1)
         subtitle = NSLocalizedString(@"ProgrammingView_subtitled_count_1", nil);
-    else if (self.matchedSongs.count > 1)
+    else if (nbMatchedSongs > 1)
         subtitle = NSLocalizedString(@"ProgrammingView_subtitled_count_n", nil);
     
-    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", self.matchedSongs.count]];
+    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbMatchedSongs]];
 
     _subtitleLabel.text = subtitle;
     
@@ -636,18 +571,18 @@
 
 - (IBAction)onSynchronize:(id)semder
 {
-    SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+    ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
 
 
-- (IBAction)onAdd:(id)sender
-{
-    ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil withMatchedSongs:self.matchedSongs];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-}
+//- (IBAction)onAdd:(id)sender
+//{
+//    ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil  forRadio:self.radio];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
+//}
 
 - (IBAction)onSegmentClicked:(id)sender
 {
@@ -720,7 +655,24 @@
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {
-    
+    if (itemIndex == WHEEL_ITEM_LOCAL)
+    {
+        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil forRadio:self.radio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    else if (itemIndex == WHEEL_ITEM_RADIO)
+    {
+//        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil  forRadio:self.radio];
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release];
+    }
+    else if (itemIndex == WHEEL_ITEM_UPLOADS)
+    {
+        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
 }
 
 

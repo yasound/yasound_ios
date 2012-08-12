@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WheelSelector.h"
+#import "Radio.h"
 
 @interface ProgrammingLocalViewController : UIViewController
 {
@@ -28,6 +30,9 @@
     
 }
 
+@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) WheelSelector* wheelSelector;
+
 @property (nonatomic, retain) NSMutableArray* searchedSongs;
 @property (nonatomic, retain) NSString* subtitle;
 @property (nonatomic, retain) NSMutableDictionary* sortedArtists;
@@ -40,6 +45,6 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withMatchedSongs:(NSDictionary*)matchedSongs;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio;
 
 @end

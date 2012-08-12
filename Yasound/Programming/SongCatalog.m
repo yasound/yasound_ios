@@ -13,7 +13,7 @@
 #import "SongUploadManager.h"
 
 #import "TimeProfile.h"
-
+#import "YasoundDataProvider.h"
 
 
 
@@ -24,6 +24,9 @@
 
 @implementation SongCatalog
 
+@synthesize radio;
+@synthesize target;
+@synthesize action;
 @synthesize matchedSongs;
 @synthesize nbSongs;
 
@@ -53,6 +56,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     if (_synchronizedCatalog == nil)
     {
         _synchronizedCatalog = [[SongCatalog alloc] init];
+
     }
     return _synchronizedCatalog;
 }
@@ -151,6 +155,14 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     [_numericSet release];
     [_lowerCaseSet release];
     [_upperCaseSet release];
+
+    if (_data)
+    {
+        [_data release];
+        _data = nil;
+    }
+
+    
     [super dealloc];
 }
 
@@ -192,6 +204,127 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 
 
 
+
+
+
+
+- (void)downloadMatchedSongsForRadio:(Radio*)radio target:(id)aTarget action:(SEL)anAction
+{
+    self.radio = radio;
+    self.target = aTarget;
+    self.action = anAction;
+    
+    // return cached data
+    if (self.matchedSongs != nil)
+    {
+        NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
+        [actionInfo setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"nbMatchedSongs"];
+        [actionInfo setObject:@""  forKey:@"message"];
+        
+        [self.target performSelector:self.action withObject:actionInfo withObject:[NSNumber numberWithBool:YES]];
+        return;
+    }
+    
+    self.matchedSongs = [[NSMutableDictionary alloc] init];
+
+    _data = [[NSMutableArray alloc] init];
+    [_data retain];
+    
+    _nbReceivedData = 0;
+    _nbPlaylists = 0;
+
+    [[YasoundDataProvider main] playlistsForRadio:radio target:self action:@selector(receivePlaylists:withInfo:)];
+}
+
+
+- (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
+{
+    if (playlists == nil)
+        _nbPlaylists = 0;
+    else
+        _nbPlaylists = playlists.count;
+    
+    
+    DLog(@"received %d playlists", _nbPlaylists);
+    
+    if (_nbPlaylists == 0)
+    {
+        NSMutableDictionary* info = [NSMutableDictionary dictionary];
+        [info setObject:[NSNumber numberWithInteger:0] forKey:@"nbMatchedSongs"];
+        [info setObject:NSLocalizedString(@"ProgrammingView_error_no_playlist_message", nil)  forKey:@"message"];
+        
+        [self.target performSelector:self.action withObject:info withObject:[NSNumber numberWithBool:NO]];
+        return;
+    }
+    
+    for (Playlist* playlist in playlists)
+    {
+        [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
+    }
+}
+
+
+- (void)matchedSongsReceveived:(NSArray*)songs info:(NSDictionary*)info
+{
+    NSNumber* succeededNb = [info objectForKey:@"succeeded"];
+    assert(succeededNb != nil);
+    BOOL succeeded = [succeededNb boolValue];
+    
+    if (!succeeded)
+    {
+        NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
+        [actionInfo setObject:[NSNumber numberWithInteger:0] forKey:@"nbMatchedSongs"];
+        [actionInfo setObject:NSLocalizedString(@"ProgrammingView_error_message", nil)  forKey:@"message"];
+        
+        [self.target performSelector:self.action withObject:actionInfo withObject:[NSNumber numberWithBool:NO]];
+        return;
+
+        DLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
+        DLog(@"%@", info);
+    }
+    
+    
+    DLog(@"received playlist nb %d : %d songs", _nbReceivedData, songs.count);
+    
+    _nbReceivedData++;
+    
+    if (succeeded && (songs != nil) && (songs.count != 0))
+        [_data addObject:songs];
+    
+    if (_nbReceivedData != _nbPlaylists)
+        return;
+    
+    // merge songs
+    for (NSInteger i = 0; i < _data.count; i++)
+    {
+        NSArray* songs = [_data objectAtIndex:i];
+        
+        for (Song* song in songs)
+        {
+            // create a key for the dictionary
+            // LBDEBUG NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
+            NSString* key = [SongCatalog catalogKeyOfSong:song.name_client artist:song.artist_client album:song.album_client];
+            
+            // and store the song in the dictionnary, for later convenient use
+            [self.matchedSongs setObject:song forKey:key];
+            
+        }
+    }
+    
+    // build catalog
+    [[SongCatalog synchronizedCatalog] buildSynchronizedWithSource:self.matchedSongs];
+    [SongCatalog synchronizedCatalog].matchedSongs = self.matchedSongs;
+    
+    
+    DLog(@"%d matched songs", self.matchedSongs.count);
+ 
+    NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
+    [actionInfo setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"nbMatchedSongs"];
+    [actionInfo setObject:@""  forKey:@"message"];
+    
+    [self.target performSelector:self.action withObject:actionInfo withObject:[NSNumber numberWithBool:YES]];
+
+}
 
 
 

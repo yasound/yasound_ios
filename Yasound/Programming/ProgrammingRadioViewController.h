@@ -8,7 +8,7 @@
 
 #import "TestflightViewController.h"
 #import "WheelSelector.h"
-
+#import "Radio.h"
 
 
 @interface ProgrammingRadioViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate>
@@ -26,14 +26,17 @@
     IBOutlet UITableView* _tableView;
 
     
-    NSMutableArray* _data;
-    NSInteger _nbReceivedData;
-    NSInteger _nbPlaylists;
+//    NSMutableArray* _data;
+//    NSInteger _nbReceivedData;
+//    NSInteger _nbPlaylists;
 }
 
-@property (nonatomic, retain) NSMutableDictionary* matchedSongs;
+@property (nonatomic, retain) Radio* radio;
+//@property (nonatomic, retain) NSMutableDictionary* matchedSongs;
 @property (nonatomic, retain) NSMutableDictionary* sortedSongs;
 @property (nonatomic, retain) NSMutableDictionary* sortedArtists;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio;
 
 
 @end

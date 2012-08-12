@@ -16,7 +16,7 @@
 #import "SongCatalog.h"
 #import "YasoundReachability.h"
 #import "SongUploadManager.h"
-#import "SongUploadViewController.h"
+#import "ProgrammingUploadViewController.h"
 #import "TrackInteractionView.h"
 #import <MessageUI/MessageUI.h>
 #import "YasoundSessionManager.h"

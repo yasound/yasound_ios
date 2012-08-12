@@ -13,7 +13,7 @@
 #import "SongUploadManager.h"
 #import "TimeProfile.h"
 #import "ActivityAlertView.h"
-#import "SongUploadViewController.h"
+#import "ProgrammingUploadViewController.h"
 #import "SongCatalog.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
@@ -22,6 +22,8 @@
 #import "RootViewController.h"
 #import "LocalSongInfoViewController.h"
 #import "SongAddCell.h"
+#import "ProgrammingRadioViewController.h"
+#import "ProgrammingUploadViewController.h"
 
 
 #define TIMEPROFILE_AVAILABLECATALOG_BUILD @"TimeProfileAvailableCatalogBuild"
@@ -30,7 +32,8 @@
 
 @implementation ProgrammingLocalViewController
 
-
+@synthesize radio;
+@synthesize wheelSelector;
 @synthesize searchedSongs;
 @synthesize subtitle;
 @synthesize sortedArtists;
@@ -45,12 +48,15 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withMatchedSongs:(NSDictionary*)matchedSongs
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
         _selectedIndex = -1;
+        
+        self.radio = radio;
+        
         self.sortedArtists = [[NSMutableDictionary alloc] init];
         self.sortedSongs = [[NSMutableDictionary alloc] init];
     }
@@ -559,7 +565,7 @@
 
 - (IBAction)onSynchronize:(id)semder
 {
-    SongUploadViewController* view = [[SongUploadViewController alloc] initWithNibName:@"SongUploadViewController" bundle:nil];
+    ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
@@ -691,6 +697,66 @@
 - (void)onNotificationUploadCanceled:(NSNotification*)notif
 {
     [_tableView reloadData];
+}
+
+
+
+
+
+
+
+#pragma mark - WheelSelectorDelegate
+
+
+#define WHEEL_NB_ITEMS 3
+#define WHEEL_ITEM_LOCAL 0
+#define WHEEL_ITEM_RADIO 1
+#define WHEEL_ITEM_UPLOADS 2
+//#define WHEEL_ITEM_SERVER 3
+
+- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
+{
+    return WHEEL_NB_ITEMS;
+}
+
+- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
+{
+    if (itemIndex == WHEEL_ITEM_LOCAL)
+        return NSLocalizedString(@"Programming.Catalog.local", nil);
+    if (itemIndex == WHEEL_ITEM_RADIO)
+        return NSLocalizedString(@"Programming.Catalog.radio", nil);
+    //    if (itemIndex == WHEEL_ITEM_SERVER)
+    //        return NSLocalizedString(@"Programming.Catalog.server", nil);
+    if (itemIndex == WHEEL_ITEM_UPLOADS)
+        return NSLocalizedString(@"Programming.Catalog.uploads", nil);
+    return nil;
+}
+
+- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
+{
+    return WHEEL_ITEM_RADIO;
+}
+
+- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
+{
+    if (itemIndex == WHEEL_ITEM_LOCAL)
+    {
+//        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil  forRadio:self.radio];
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release];
+    }
+    else if (itemIndex == WHEEL_ITEM_RADIO)
+    {
+        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil forRadio:self.radio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    else if (itemIndex == WHEEL_ITEM_UPLOADS)
+    {
+        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
 }
 
 

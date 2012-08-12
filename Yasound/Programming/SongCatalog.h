@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Song.h"
-
+#import "Radio.h"
 
 
 
@@ -18,10 +18,21 @@
     NSCharacterSet* _numericSet;
     NSCharacterSet* _lowerCaseSet;
     NSCharacterSet* _upperCaseSet;
+    
+    NSMutableArray* _data;
+    NSInteger _nbReceivedData;
+    NSInteger _nbPlaylists;
+    
 }
 
 
 @property (nonatomic) NSInteger nbSongs;
+
+@property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) id target;
+@property (nonatomic) SEL action; // - (void)matchedSongsDownloaded:(NSDictionary*)info success:(NSNumber* BOOL)success;
+                                    // info : (NSInteger)nbMatchedSongs infoMessage:(NSString*)infoMessage
+
 
 @property (nonatomic, retain) NSMutableDictionary* matchedSongs;
 
@@ -49,6 +60,7 @@
 - (BOOL)doesContainSong:(Song*)song;
 - (BOOL)doesDeviceContainSong:(Song*)song;
 
+- (void)downloadMatchedSongsForRadio:(Radio*)radio target:(id)target action:(SEL)action;
 - (void)buildSynchronizedWithSource:(NSDictionary*)synchronizedSource;
 - (void)buildAvailableComparingToSource:(NSDictionary*)synchronizedSource;
 
