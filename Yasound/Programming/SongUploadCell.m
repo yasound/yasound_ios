@@ -37,7 +37,7 @@
         
         
         // button "delete"
-        UIImage* image = [UIImage imageNamed:@"CellButtonDel.png"];
+        UIImage* image = [UIImage imageNamed:@"uploadDelete.png"];
         UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - image.size.width, 0, image.size.width, image.size.height)];
         [button setImage:image forState:UIControlStateNormal];
         [button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];

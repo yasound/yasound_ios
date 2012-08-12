@@ -176,12 +176,6 @@ typedef enum
         [view release];
         return;
     }
-//    else if (indexPath.section == eSectionSubscribersButton)
-//    {
-//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellPlainRow.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
 }
 
 
