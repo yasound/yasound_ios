@@ -584,4 +584,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Show.switch.label" = "Activer cette playlist";
 "Show.prog.label" = "Programmation";
 
+"Programming.Catalog.local" = "Ma musique";
+"Programming.Catalog.radio" = "Ma radio";
+"Programming.Catalog.server" = "Yasound's music";
+"Programming.Catalog.uploads" = "Téléchargements";
+
 

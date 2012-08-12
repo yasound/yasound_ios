@@ -1,5 +1,5 @@
 //
-//  SongAddViewController.h
+//  ProgrammingLocalViewController.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 27/02/12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SongAddViewController : UIViewController
+@interface ProgrammingLocalViewController : UIViewController
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;

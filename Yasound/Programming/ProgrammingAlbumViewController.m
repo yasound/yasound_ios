@@ -12,7 +12,7 @@
 #import "YasoundDataProvider.h"
 #import "SongInfoViewController.h"
 #import "SongUploadViewController.h"
-#import "SongAddViewController.h"
+#import "ProgrammingLocalViewController.h"
 #import "TimeProfile.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
@@ -274,7 +274,7 @@
 
 - (IBAction)onAdd:(id)sender
 {
-    SongAddViewController* view = [[SongAddViewController alloc] initWithNibName:@"SongAddViewController" bundle:nil withMatchedSongs:[SongCatalog synchronizedCatalog].matchedSongs];
+    ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil withMatchedSongs:[SongCatalog synchronizedCatalog].matchedSongs];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

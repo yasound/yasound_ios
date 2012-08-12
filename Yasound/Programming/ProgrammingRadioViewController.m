@@ -1,18 +1,18 @@
 //
-//  ProgrammingViewController.m
+//  ProgrammingRadioViewController.m
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 22/02/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "ProgrammingViewController.h"
+#import "ProgrammingRadioViewController.h"
 #import "ActivityAlertView.h"
 #import "Radio.h"
 #import "YasoundDataProvider.h"
 #import "SongInfoViewController.h"
 #import "SongUploadViewController.h"
-#import "SongAddViewController.h"
+#import "ProgrammingLocalViewController.h"
 #import "TimeProfile.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
@@ -22,7 +22,7 @@
 #import "AudioStreamManager.h"
 #import "ProgrammingTitleCell.h"
 
-@implementation ProgrammingViewController
+@implementation ProgrammingRadioViewController
 
 @synthesize matchedSongs;
 @synthesize sortedArtists;
@@ -644,7 +644,7 @@
 
 - (IBAction)onAdd:(id)sender
 {
-    SongAddViewController* view = [[SongAddViewController alloc] initWithNibName:@"SongAddViewController" bundle:nil withMatchedSongs:self.matchedSongs];
+    ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil withMatchedSongs:self.matchedSongs];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
@@ -676,6 +676,53 @@
     if (sender != self)
         [_tableView reloadData];    
 }
+
+
+
+
+
+
+
+
+
+
+#pragma mark - WheelSelectorDelegate
+
+
+#define WHEEL_NB_ITEMS 3
+#define WHEEL_ITEM_LOCAL 0
+#define WHEEL_ITEM_RADIO 1
+#define WHEEL_ITEM_UPLOADS 2
+//#define WHEEL_ITEM_SERVER 3
+
+- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
+{
+    return WHEEL_NB_ITEMS;
+}
+
+- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
+{
+    if (itemIndex == WHEEL_ITEM_LOCAL)
+        return NSLocalizedString(@"Programming.Catalog.local", nil);
+    if (itemIndex == WHEEL_ITEM_RADIO)
+        return NSLocalizedString(@"Programming.Catalog.radio", nil);
+//    if (itemIndex == WHEEL_ITEM_SERVER)
+//        return NSLocalizedString(@"Programming.Catalog.server", nil);
+    if (itemIndex == WHEEL_ITEM_UPLOADS)
+        return NSLocalizedString(@"Programming.Catalog.uploads", nil);
+    return nil;
+}
+
+- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
+{
+    return WHEEL_ITEM_RADIO;
+}
+
+- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
+{
+    
+}
+
 
 
 

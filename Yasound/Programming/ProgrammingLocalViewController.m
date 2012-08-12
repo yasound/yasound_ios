@@ -1,12 +1,12 @@
 //
-//  SongAddViewController.m
+//  ProgrammingLocalViewController.m
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 27/02/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "SongAddViewController.h"
+#import "ProgrammingLocalViewController.h"
 #import "Song.h"
 #import "SongLocal.h"
 #import "SongUploader.h"
@@ -28,7 +28,7 @@
 
 #define BORDER 8
 
-@implementation SongAddViewController
+@implementation ProgrammingLocalViewController
 
 
 @synthesize searchedSongs;
@@ -120,7 +120,7 @@
     
         
     
-    DLog(@"SongAddViewController : %d songs added to the local array", count);
+    DLog(@"ProgrammingLocalViewController : %d songs added to the local array", count);
     
     if (count == 0)
         self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_0", nil);

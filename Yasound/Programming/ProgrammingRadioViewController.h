@@ -1,5 +1,5 @@
 //
-//  ProgrammingViewController.h
+//  ProgrammingRadioViewController.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 22/02/12.
@@ -7,10 +7,11 @@
 //
 
 #import "TestflightViewController.h"
+#import "WheelSelector.h"
 
 
 
-@interface ProgrammingViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
+@interface ProgrammingRadioViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate>
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UIBarButtonItem* _addBtn;

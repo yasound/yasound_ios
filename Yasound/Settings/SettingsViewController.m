@@ -19,7 +19,7 @@
 #import "NotificationViewController.h"
 #import "YasoundDataCache.h"
 #import "YasoundDataCacheImage.h"
-#import "ProgrammingViewController.h"
+#import "ProgrammingRadioViewController.h"
 #import "SchedulingViewController.h"
 
 #define NB_SECTIONS 3
@@ -406,7 +406,7 @@
     if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
     {
         
-        ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil];
+        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
         return;
