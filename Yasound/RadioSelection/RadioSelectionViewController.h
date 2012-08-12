@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
 #import "WheelSelector.h"
+#import "WheelRadiosSelector.h"
 #import "RadioListTableViewController.h"
 #import "TabBar.h"
 #import "TopBar.h"

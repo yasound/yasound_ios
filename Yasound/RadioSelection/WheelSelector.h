@@ -8,16 +8,21 @@
 
 #import "OrientedTableView.h"
 
-typedef enum WheelItemId
-{
-    WheelIdFavorites = 0,
-    WheelIdSelection,
-    WheelIdFriends,
-    WheelIdTop
-} WheelItemId;
+//typedef enum WheelItemId
+//{
+//    WheelIdFavorites = 0,
+//    WheelIdSelection,
+//    WheelIdFriends,
+//    WheelIdTop
+//} WheelItemId;
+
+@class WheelSelector;
 
 @protocol WheelSelectorDelegate <NSObject>
-- (void)wheelSelectorDidSelect:(NSInteger)index;
+- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel;
+- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex;
+- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex;
+- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel;
 @end
 
 
@@ -26,10 +31,11 @@ typedef enum WheelItemId
 
 @property (nonatomic, retain) IBOutlet id<WheelSelectorDelegate> wheelDelegate;
 @property (nonatomic, retain) NSMutableArray* items;
+@property (nonatomic, retain) NSMutableDictionary* itemToIndex;
 @property (nonatomic) BOOL needsToStick;
 
-- (void)init;
-- (void)stickToItem:(NSInteger)itemIndex;
+
+- (void)stickToItem:(NSString*)itemId silent:(BOOL)silent;
 
 
 @end

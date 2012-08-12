@@ -7206,6 +7206,7 @@
 		BCE35C8915D713A6008C26AC /* barRedItemMediumBkg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barRedItemMediumBkg@2x.png"; sourceTree = "<group>"; };
 		BCE35C8A15D713A6008C26AC /* barRedItemMediumBkgHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barRedItemMediumBkgHighlighted.png; sourceTree = "<group>"; };
 		BCE35C8B15D713A6008C26AC /* barRedItemMediumBkgHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barRedItemMediumBkgHighlighted@2x.png"; sourceTree = "<group>"; };
+		BCE35E4E15D79DB9008C26AC /* WheelRadiosSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheelRadiosSelector.h; path = RadioSelection/WheelRadiosSelector.h; sourceTree = "<group>"; };
 		BCE66B3215494C410094B4D0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text; name = fr; path = fr.lproj/defaultMenuDescription.json.txt; sourceTree = "<group>"; };
 		BCE66B3B15494C5D0094B4D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text; name = en; path = en.lproj/defaultMenuDescription.json.txt; sourceTree = "<group>"; };
 		BCE7518714EC1DBF00056916 /* AdaptiveLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdaptiveLabel.h; sourceTree = "<group>"; };
@@ -8636,6 +8637,7 @@
 			children = (
 				BC598E7715B8788D004D6DCB /* WheelSelector.h */,
 				BC598E7815B8788D004D6DCB /* WheelSelector.m */,
+				BCE35E4E15D79DB9008C26AC /* WheelRadiosSelector.h */,
 				BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */,
 				BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */,
 				BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */,

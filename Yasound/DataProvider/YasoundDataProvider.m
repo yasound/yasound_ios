@@ -926,6 +926,7 @@ static YasoundDataProvider* _main = nil;
 - (void)radiosWithUrl:(NSString*)url withGenre:(NSString*)genre withTarget:(id)target action:(SEL)selector userData:(id)userData
 {
     DLog(@"YasoundDataProvider::radiosWithUrl '%@'", url);
+    //assert(url != nil);
     
     Auth* auth = self.apiKeyAuth;
     NSMutableArray* params = [NSMutableArray array];

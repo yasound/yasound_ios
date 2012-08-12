@@ -14,6 +14,7 @@
 
 @synthesize wheelDelegate;
 @synthesize items;
+@synthesize itemToIndex;
 @synthesize needsToStick;
 
 #define ITEM_TEXT 0
@@ -29,14 +30,29 @@
     
     // compute selector's options
         self.items = [[NSMutableArray alloc] init];
-        
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"WheelSelector.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.itemToIndex = [[NSMutableDictionary alloc] init];
+
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"WheelSelector.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIFont* font = [sheet makeFont];
+    
+    
+    NSInteger numberOfItems = 0;
+    // call delegate
+    if ([self.wheelDelegate respondsToSelector:@selector(numberOfItemsInWheelSelector:)])
+        numberOfItems = [self.wheelDelegate numberOfItemsInWheelSelector:self];
+    
+    for (NSInteger index = 0; index < numberOfItems; index++)
+    {
+        NSString* item = [NSString stringWithFormat:@"item %d", index];
         
-        [self addItem:NSLocalizedString(@"WheelSelector_Favorites", nil) withFont:font];
-        [self addItem:NSLocalizedString(@"WheelSelector_Selection", nil) withFont:font];
-        [self addItem:NSLocalizedString(@"WheelSelector_Friends", nil) withFont:font];
-        [self addItem:NSLocalizedString(@"WheelSelector_Top", nil) withFont:font];
+        // call delegate
+        if ([self.wheelDelegate respondsToSelector:@selector(wheelSelector:titleForItem:)])
+            item = [self.wheelDelegate wheelSelector:self titleForItem:index];
+        
+        [self addItem:item withFont:font];
+    }
+    
+    assert(self.items.count > 0);
         
     CGFloat marginLeft = (self.frame.size.width /2.f) - ([[[self.items objectAtIndex:0] objectAtIndex:ITEM_WIDTH] floatValue] /2.f);
     CGFloat marginRight = (self.frame.size.width /2.f) - ([[[self.items objectAtIndex:(self.items.count-1)] objectAtIndex:ITEM_WIDTH] floatValue]);
@@ -93,7 +109,15 @@
     layer.contents = (id)[shadowImage CGImage];
     layer.frame = frame;
      layer.opaque = NO;
-    [[self.superview layer] addSublayer:layer]; // to superview 'cause it must not scroll    
+    [[self.superview layer] addSublayer:layer]; // to superview 'cause it must not scroll
+    
+    // call delegate
+    NSInteger initIndex = 0;
+    if ([self.wheelDelegate respondsToSelector:@selector(initIndexForWheelSelector:)])
+    {
+        initIndex = [self.wheelDelegate initIndexForWheelSelector:self];
+        [self stickToItem:initIndex silent:NO];
+    }
 }
 
 
@@ -102,14 +126,10 @@
     CGSize suggestedSize = [item sizeWithFont:font constrainedToSize:CGSizeMake(FLT_MAX, 32) lineBreakMode:UILineBreakModeClip];
 
     [self.items addObject:[NSMutableArray arrayWithObjects:item, [NSNumber numberWithFloat:suggestedSize.width], nil]];
+    [self.itemToIndex setObject:[NSNumber numberWithInteger:self.items.count] forKey:item];
 }
 
 
-- (void)initWithItem:(WheelItemId)itemId
-{
-    // starting position
-    [self stickToItem:itemId];
-}
 
 
 
@@ -122,7 +142,7 @@
         return;
     
     NSInteger stickyIndex = [self currentStickyIndex];
-    [self stickToItem:stickyIndex];    
+    [self stickToItem:stickyIndex silent:NO];
 }
 
 
@@ -135,7 +155,7 @@
     self.needsToStick = NO;
 
     NSInteger stickyIndex = [self currentStickyIndex];
-    [self stickToItem:stickyIndex];    
+    [self stickToItem:stickyIndex silent:NO];
 }
 
 - (NSInteger)currentStickyIndex
@@ -159,8 +179,10 @@
 }
 
 
-- (void)stickToItem:(NSInteger)itemIndex
+- (void)stickToItem:(NSInteger)itemIndex silent:(BOOL)silent
 {
+    assert(self.items.count > 0);
+
     CGFloat stickyPos = [[[self.items objectAtIndex:itemIndex] objectAtIndex:ITEM_STICKY_POS] floatValue];
     
     // translate the stickyPos, for the scrollview position reference
@@ -168,8 +190,12 @@
 
     [self setContentOffset: CGPointMake(stickyPos, self.contentOffset.y) animated:YES];
     
+    if (silent)
+        return;
+    
     // send signal to delegate
-    [self.wheelDelegate wheelSelectorDidSelect:itemIndex];
+    if ([self.wheelDelegate respondsToSelector:@selector(wheelSelector:didSelectItemAtIndex:)])
+        [self.wheelDelegate wheelSelector:self didSelectItemAtIndex:itemIndex];
 }
 
 

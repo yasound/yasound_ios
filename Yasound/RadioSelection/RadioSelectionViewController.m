@@ -55,16 +55,13 @@
 
 #pragma mark - View lifecycle
 
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     listContainer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
-
-    if (_tabIndex == TabIndexSelection)
-        [wheelSelector initWithItem:WheelIdSelection];
-    else  if (_tabIndex == TabIndexFavorites)
-        [wheelSelector initWithItem:WheelIdFavorites];
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -137,8 +134,34 @@
 
 #pragma mark - WheelSelectorDelegate
 
-// item has been selected from the wheel selector
-- (void)wheelSelectorDidSelect:(NSInteger)index
+- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
+{
+    return WheelRadiosNbItems;
+}
+
+- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
+{
+    if (itemIndex == WheelIdFavorites)
+        return WheelIdFavoritesTitle;
+    if (itemIndex == WheelIdSelection)
+        return WheelIdSelectionTitle;
+    if (itemIndex == WheelIdFriends)
+        return WheelIdFriendsTitle;
+    if (itemIndex == WheelIdTop)
+        return WheelIdTopTitle;
+    return nil;
+}
+
+- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
+{
+    if (_tabIndex == TabIndexSelection)
+        return WheelIdSelection;
+    if (_tabIndex == TabIndexFavorites)
+        return WheelIdFavorites;
+    return 0;
+}
+
+- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {
     if (self.tableview != nil)
         [self.tableview.tableView removeFromSuperview];
@@ -149,21 +172,21 @@
     NSString* genre = nil;
 
     // request favorites radios
-    if (index == WheelIdFavorites)
+    if (itemIndex == WheelIdFavorites)
     {
         url = URL_RADIOS_FAVORITES;
         [tabBar setTabSelected:TabIndexFavorites];
     }
 
     // request selection radios
-    else if (index == WheelIdSelection)
+    else if (itemIndex == WheelIdSelection)
     {
         url = URL_RADIOS_SELECTION;
         [tabBar setTabSelected:TabIndexSelection];
     }
 
     // request top radios
-    else if (index == WheelIdTop)
+    else if (itemIndex == WheelIdTop)
     {
         url = URL_RADIOS_TOP;
         [tabBar setTabSelected:TabIndexSelection];
