@@ -8,9 +8,10 @@
 
 #import "TestflightViewController.h"
 #import "SongCatalog.h"
+#import "WheelSelector.h"
 
 
-@interface ProgrammingAlbumViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
+@interface ProgrammingAlbumViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate>
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UIBarButtonItem* _nowPlayingButton;
@@ -22,9 +23,10 @@
     IBOutlet UITableView* _tableView;
 }
 
+@property (nonatomic, retain) Radio* radio;
 @property (nonatomic, assign) SongCatalog* catalog;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil usingCatalog:(SongCatalog*)catalog;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio;
 
 
 

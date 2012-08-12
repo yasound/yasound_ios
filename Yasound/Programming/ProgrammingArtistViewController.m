@@ -21,21 +21,23 @@
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
 #import "SongLocal.h"
-
+#import "ProgrammingLocalViewController.h"
+#import "ProgrammingRadioViewController.h"
 
 @implementation ProgrammingArtistViewController
 
 
-
+@synthesize radio;
 @synthesize catalog;
 @synthesize sortedAlbums;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil usingCatalog:(SongCatalog*)catalog
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+        self.radio = radio;
         self.catalog = catalog;
         
         NSArray* array = [self.catalog.selectedArtistRepo allKeys];
@@ -197,7 +199,7 @@
     NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
     [self.catalog selectAlbum:albumKey];
 
-    ProgrammingAlbumViewController* view = [[ProgrammingAlbumViewController alloc] initWithNibName:@"ProgrammingAlbumViewController" bundle:nil usingCatalog:self.catalog];
+    ProgrammingAlbumViewController* view = [[ProgrammingAlbumViewController alloc] initWithNibName:@"ProgrammingAlbumViewController" bundle:nil usingCatalog:self.catalog forRadio:self.radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 
@@ -248,6 +250,62 @@
     [_tableView reloadData];    
 }
 
+
+
+
+#pragma mark - WheelSelectorDelegate
+
+
+#define WHEEL_NB_ITEMS 3
+#define WHEEL_ITEM_LOCAL 0
+#define WHEEL_ITEM_RADIO 1
+#define WHEEL_ITEM_UPLOADS 2
+//#define WHEEL_ITEM_SERVER 3
+
+- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
+{
+    return WHEEL_NB_ITEMS;
+}
+
+- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
+{
+    if (itemIndex == WHEEL_ITEM_LOCAL)
+        return NSLocalizedString(@"Programming.Catalog.local", nil);
+    if (itemIndex == WHEEL_ITEM_RADIO)
+        return NSLocalizedString(@"Programming.Catalog.radio", nil);
+    //    if (itemIndex == WHEEL_ITEM_SERVER)
+    //        return NSLocalizedString(@"Programming.Catalog.server", nil);
+    if (itemIndex == WHEEL_ITEM_UPLOADS)
+        return NSLocalizedString(@"Programming.Catalog.uploads", nil);
+    return nil;
+}
+
+- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
+{
+    return WHEEL_ITEM_RADIO;
+}
+
+- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
+{
+    if (itemIndex == WHEEL_ITEM_LOCAL)
+    {
+        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil forRadio:self.radio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    else if (itemIndex == WHEEL_ITEM_RADIO)
+    {
+        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil  forRadio:self.radio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    else if (itemIndex == WHEEL_ITEM_UPLOADS)
+    {
+        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+}
 
 
 

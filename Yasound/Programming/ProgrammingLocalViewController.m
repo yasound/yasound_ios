@@ -487,7 +487,7 @@
         
         [[SongCatalog availableCatalog] selectArtist:artistKey withIndex:charIndex];
 
-        ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil usingCatalog:[SongCatalog availableCatalog]];
+        ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil usingCatalog:[SongCatalog availableCatalog] forRadio:self.radio];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

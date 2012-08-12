@@ -265,7 +265,7 @@
 //    NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
 //    [self.catalog selectAlbum:albumKey];
 //    
-//    ProgrammingAlbumViewController* view = [[ProgrammingAlbumViewController alloc] initWithNibName:@"ProgrammingAlbumViewController" bundle:nil usingCatalog:self.catalog];
+//    ProgrammingAlbumViewController* view = [[ProgrammingAlbumViewController alloc] initWithNibName:@"ProgrammingAlbumViewController" bundle:nil usingCatalog:self.catalog forRadio:self.radio];
 //    [self.navigationController pushViewController:view animated:YES];
 //    [view release];
     
