@@ -71,8 +71,6 @@
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 }
 
 

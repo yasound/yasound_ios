@@ -13,10 +13,7 @@
 
 @interface ProgrammingRadioViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate>
 {
-    IBOutlet UIBarButtonItem* _backBtn;
-    IBOutlet UIBarButtonItem* _addBtn;
     IBOutlet UIBarButtonItem* _synchroBtn;
-    IBOutlet UIBarButtonItem* _nowPlayingButton;
     
     IBOutlet UILabel* _titleLabel;
     IBOutlet UILabel* _subtitleLabel;

@@ -46,9 +46,7 @@
     
     
     _titleLabel.text = NSLocalizedString(@"SongUpload_title", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    
-    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);    
 }
 
 - (void)viewDidUnload

@@ -89,6 +89,36 @@
 				<key>type</key>
 				<string>png</string>
 			</dict>
+			<key>Section</key>
+			<dict>
+				<key>label</key>
+				<dict>
+					<key>font</key>
+					<dict>
+						<key>size</key>
+						<integer>13</integer>
+						<key>textColor</key>
+						<string>rgb(143,150,156)</string>
+						<key>weight</key>
+						<string>bold</string>
+					</dict>
+					<key>height</key>
+					<integer>22</integer>
+					<key>width</key>
+					<integer>288</integer>
+					<key>x</key>
+					<integer>16</integer>
+					<key>y</key>
+					<integer>0</integer>
+				</dict>
+				<key>background</key>
+				<dict>
+					<key>name</key>
+					<string>commonTableViewSection</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+			</dict>
 			<key>label</key>
 			<dict>
 				<key>height</key>

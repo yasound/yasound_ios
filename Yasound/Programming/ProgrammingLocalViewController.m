@@ -90,8 +90,6 @@
     [_segment insertSegmentWithTitle:NSLocalizedString(@"SongAddView_segment_server", nil) atIndex:2 animated:NO];
     [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
 
-    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    
     
     _searchBar.placeholder = NSLocalizedString(@"SongAddView_searchServer", nil);
     
@@ -227,23 +225,17 @@
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (_selectedIndex == SEGMENT_INDEX_SERVER)
-        return nil;
-    
-
     NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
     
     if (nbRows == 0)
         return nil;
     
-    NSString* title = [[SongCatalog availableCatalog].indexMap objectAtIndex:section];
+    NSString* title = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:section];
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* view = [sheet makeImage];
     
-    UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
-    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, 44);
-    
-    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UILabel* label = [sheet makeLabel];
     label.text = title;
     [view addSubview:label];

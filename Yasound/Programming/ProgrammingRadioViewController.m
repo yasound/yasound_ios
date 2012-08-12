@@ -81,20 +81,18 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoved:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
     
 
-    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-    _subtitleLabel.text = NSLocalizedString(@"ProgrammingView_subtitle", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+//    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
+//    _subtitleLabel.text = NSLocalizedString(@"ProgrammingView_subtitle", nil);
+//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
     [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_titles", nil) forSegmentAtIndex:0];  
     [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_artists", nil) forSegmentAtIndex:1];  
     [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
     // waiting for the synchronization to be done
-    _tableView.hidden = YES;
+//    _tableView.hidden = YES;
     
 
     [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
@@ -113,10 +111,10 @@
 {
     [super viewDidAppear:animated];
     
-    if ([AudioStreamManager main].currentRadio == nil)
-        [_nowPlayingButton setEnabled:NO];
-    else
-        [_nowPlayingButton setEnabled:YES];
+//    if ([AudioStreamManager main].currentRadio == nil)
+//        [_nowPlayingButton setEnabled:NO];
+//    else
+//        [_nowPlayingButton setEnabled:YES];
 
 }
 
@@ -155,7 +153,7 @@
     
     
     // now that the synchronization is been done,
-    _tableView.hidden = NO;
+//    _tableView.hidden = NO;
     [_tableView reloadData];
 
     [ActivityAlertView close];
@@ -221,30 +219,31 @@
 
 
 
-//- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
-//
-//    if (nbRows == 0)
-//        return nil;
-//    
-//    //LBDEBUG
-//    assert([SongCatalog synchronizedCatalog].indexMap.count > section);
-//    
-//    NSString* title = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:section];
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    
-//    UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
-//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, 44);
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UILabel* label = [sheet makeLabel];
-//    label.text = title;
-//    [view addSubview:label];
-//    
-//    return view;
-//}
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
+
+    if (nbRows == 0)
+        return nil;
+
+    //LBDEBUG
+    assert([SongCatalog synchronizedCatalog].indexMap.count > section);
+
+    NSString* title = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:section];
+
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* view = [sheet makeImage];
+
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+
+    return view;
+}
+
+
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
