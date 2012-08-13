@@ -23,8 +23,9 @@
 //    IBOutlet UITableView* _tableView;
 }
 
+@property (nonatomic, retain) IBOutlet UIView* container;
+
 @property (nonatomic, retain) Radio* radio;
-@property (nonatomic, retain) UIView* container;
 @property (nonatomic, retain) UITableViewController* tableview;
 
 //@property (nonatomic, retain) NSMutableDictionary* sortedSongs;

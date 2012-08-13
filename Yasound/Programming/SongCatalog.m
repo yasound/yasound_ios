@@ -276,11 +276,12 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         [actionInfo setObject:[NSNumber numberWithInteger:0] forKey:@"nbMatchedSongs"];
         [actionInfo setObject:NSLocalizedString(@"ProgrammingView_error_message", nil)  forKey:@"message"];
         
+        DLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
+        DLog(@"%@", info);
+
         [self.target performSelector:self.action withObject:actionInfo withObject:[NSNumber numberWithBool:NO]];
         return;
 
-        DLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
-        DLog(@"%@", info);
     }
     
     

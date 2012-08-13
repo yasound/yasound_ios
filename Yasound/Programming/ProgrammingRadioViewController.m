@@ -53,6 +53,10 @@
     {
         self.radio = radio;
         
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+
+        
         self.sortedArtists = [[NSMutableDictionary alloc] init];
         self.sortedSongs = [[NSMutableDictionary alloc] init];
 
@@ -261,18 +265,18 @@
 
     NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:section];
     
-//    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
-//    {
-//        NSArray* letterRepo = [[SongCatalog synchronizedCatalog].alphabeticRepo objectForKey:charIndex];
-//        assert(letterRepo != nil);
-//        return letterRepo.count;
-//    }
-//    else
-//    {
-//        NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];
-//        NSInteger count = artistsForSection.count;
-//        return count;
-//    }
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    {
+        NSArray* letterRepo = [[SongCatalog synchronizedCatalog].alphabeticRepo objectForKey:charIndex];
+        assert(letterRepo != nil);
+        return letterRepo.count;
+    }
+    else
+    {
+        NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];
+        NSInteger count = artistsForSection.count;
+        return count;
+    }
 
 }
 
@@ -362,7 +366,7 @@
     Song* song = [songs objectAtIndex:indexPath.row];
     
     
-    ProgrammingTitleCell* cell = [self dequeueReusableCellWithIdentifier:CellIdentifier];
+    ProgrammingTitleCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) 
     {

@@ -64,6 +64,9 @@
         
         self.radio = radio;
         
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        
         self.sortedArtists = [[NSMutableDictionary alloc] init];
         self.sortedSongs = [[NSMutableDictionary alloc] init];
         

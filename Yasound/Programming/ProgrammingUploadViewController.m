@@ -31,14 +31,18 @@
     if (self)
     {
         self.radio = radio;
+        
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+
+        [self load];
     
     }
     return self;
 }
 
-- (void)viewDidLoad
+- (void)load
 {
-    [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationNeedGuiRefresh:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
     
