@@ -661,6 +661,22 @@
 		BC03052F14C0724D00F39374 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		BC03053014C0724D00F39374 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
 		BC03053114C0724D00F39374 /* AudioStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03052E14C0724D00F39374 /* AudioStreamManager.m */; };
+		BC071AB415D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
+		BC071AB515D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
+		BC071AB615D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
+		BC071AB715D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
+		BC071AB815D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
+		BC071AB915D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
+		BC071ABA15D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
+		BC071ABB15D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
+		BC071ABC15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */; };
+		BC071ABD15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */; };
+		BC071ABE15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */; };
+		BC071ABF15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */; };
+		BC071AC015D9070E001F38D7 /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */; };
+		BC071AC115D9070E001F38D7 /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */; };
+		BC071AC215D9070E001F38D7 /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */; };
+		BC071AC315D9070E001F38D7 /* ProgrammingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */; };
 		BC0DD8481487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC0DD8491487EAE900DCD550 /* RadioViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD8471487EAE900DCD550 /* RadioViewCell.m */; };
 		BC1039B114F7F8EA007C5496 /* SongUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1039B014F7F8EA007C5496 /* SongUploadManager.m */; };
@@ -2149,14 +2165,6 @@
 		BCE35E5A15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
 		BCE35E5B15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
 		BCE35E5C15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */; };
-		BCE35E5D15D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5115D7A7EE008C26AC /* ProgrammingLocalViewController.xib */; };
-		BCE35E5E15D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5115D7A7EE008C26AC /* ProgrammingLocalViewController.xib */; };
-		BCE35E5F15D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5115D7A7EE008C26AC /* ProgrammingLocalViewController.xib */; };
-		BCE35E6015D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5115D7A7EE008C26AC /* ProgrammingLocalViewController.xib */; };
-		BCE35E6115D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5115D7A7EE008C26AC /* ProgrammingLocalViewController.xib */; };
-		BCE35E6215D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5115D7A7EE008C26AC /* ProgrammingLocalViewController.xib */; };
-		BCE35E6315D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5115D7A7EE008C26AC /* ProgrammingLocalViewController.xib */; };
-		BCE35E6415D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5115D7A7EE008C26AC /* ProgrammingLocalViewController.xib */; };
 		BCE35E6515D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
 		BCE35E6615D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
 		BCE35E6715D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
@@ -2165,14 +2173,6 @@
 		BCE35E6A15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
 		BCE35E6B15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
 		BCE35E6C15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */; };
-		BCE35E6D15D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5415D7A7EF008C26AC /* ProgrammingRadioViewController.xib */; };
-		BCE35E6E15D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5415D7A7EF008C26AC /* ProgrammingRadioViewController.xib */; };
-		BCE35E6F15D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5415D7A7EF008C26AC /* ProgrammingRadioViewController.xib */; };
-		BCE35E7015D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5415D7A7EF008C26AC /* ProgrammingRadioViewController.xib */; };
-		BCE35E7115D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5415D7A7EF008C26AC /* ProgrammingRadioViewController.xib */; };
-		BCE35E7215D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5415D7A7EF008C26AC /* ProgrammingRadioViewController.xib */; };
-		BCE35E7315D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5415D7A7EF008C26AC /* ProgrammingRadioViewController.xib */; };
-		BCE35E7415D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E5415D7A7EF008C26AC /* ProgrammingRadioViewController.xib */; };
 		BCE35E7815D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */; };
 		BCE35E7915D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */; };
 		BCE35E7A15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */; };
@@ -2181,14 +2181,6 @@
 		BCE35E7D15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */; };
 		BCE35E7E15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */; };
 		BCE35E7F15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */; };
-		BCE35E8015D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E7715D7D5C8008C26AC /* ProgrammingUploadViewController.xib */; };
-		BCE35E8115D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E7715D7D5C8008C26AC /* ProgrammingUploadViewController.xib */; };
-		BCE35E8215D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E7715D7D5C8008C26AC /* ProgrammingUploadViewController.xib */; };
-		BCE35E8315D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E7715D7D5C8008C26AC /* ProgrammingUploadViewController.xib */; };
-		BCE35E8415D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E7715D7D5C8008C26AC /* ProgrammingUploadViewController.xib */; };
-		BCE35E8515D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E7715D7D5C8008C26AC /* ProgrammingUploadViewController.xib */; };
-		BCE35E8615D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E7715D7D5C8008C26AC /* ProgrammingUploadViewController.xib */; };
-		BCE35E8715D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E7715D7D5C8008C26AC /* ProgrammingUploadViewController.xib */; };
 		BCE3608015D7FD2F008C26AC /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E8915D7FD2E008C26AC /* barItemAdd.png */; };
 		BCE3608115D7FD2F008C26AC /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E8915D7FD2E008C26AC /* barItemAdd.png */; };
 		BCE3608215D7FD2F008C26AC /* barItemAdd.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35E8915D7FD2E008C26AC /* barItemAdd.png */; };
@@ -6307,6 +6299,9 @@
 		BC03050314C02E9D00F39374 /* ActivityModelessSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityModelessSpinner.m; sourceTree = "<group>"; };
 		BC03052D14C0724D00F39374 /* AudioStreamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamManager.h; sourceTree = "<group>"; };
 		BC03052E14C0724D00F39374 /* AudioStreamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamManager.m; sourceTree = "<group>"; };
+		BC071AB115D9070E001F38D7 /* ProgrammingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingViewController.h; path = Programming/ProgrammingViewController.h; sourceTree = "<group>"; };
+		BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingViewController.m; path = Programming/ProgrammingViewController.m; sourceTree = "<group>"; };
+		BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingViewController.xib; path = Programming/ProgrammingViewController.xib; sourceTree = "<group>"; };
 		BC0DD8461487EAE900DCD550 /* RadioViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioViewCell.h; sourceTree = "<group>"; };
 		BC0DD8471487EAE900DCD550 /* RadioViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioViewCell.m; sourceTree = "<group>"; };
 		BC1039AF14F7F8EA007C5496 /* SongUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongUploadManager.h; path = Programming/SongUploadManager.h; sourceTree = "<group>"; };
@@ -6694,13 +6689,10 @@
 		BCE35E4E15D79DB9008C26AC /* WheelRadiosSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheelRadiosSelector.h; path = RadioSelection/WheelRadiosSelector.h; sourceTree = "<group>"; };
 		BCE35E4F15D7A7EE008C26AC /* ProgrammingLocalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingLocalViewController.h; path = Programming/ProgrammingLocalViewController.h; sourceTree = "<group>"; };
 		BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingLocalViewController.m; path = Programming/ProgrammingLocalViewController.m; sourceTree = "<group>"; };
-		BCE35E5115D7A7EE008C26AC /* ProgrammingLocalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingLocalViewController.xib; path = Programming/ProgrammingLocalViewController.xib; sourceTree = "<group>"; };
 		BCE35E5215D7A7EE008C26AC /* ProgrammingRadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingRadioViewController.h; path = Programming/ProgrammingRadioViewController.h; sourceTree = "<group>"; };
 		BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingRadioViewController.m; path = Programming/ProgrammingRadioViewController.m; sourceTree = "<group>"; };
-		BCE35E5415D7A7EF008C26AC /* ProgrammingRadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingRadioViewController.xib; path = Programming/ProgrammingRadioViewController.xib; sourceTree = "<group>"; };
 		BCE35E7515D7D5C7008C26AC /* ProgrammingUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingUploadViewController.h; path = Programming/ProgrammingUploadViewController.h; sourceTree = "<group>"; };
 		BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingUploadViewController.m; path = Programming/ProgrammingUploadViewController.m; sourceTree = "<group>"; };
-		BCE35E7715D7D5C8008C26AC /* ProgrammingUploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingUploadViewController.xib; path = Programming/ProgrammingUploadViewController.xib; sourceTree = "<group>"; };
 		BCE35E8915D7FD2E008C26AC /* barItemAdd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemAdd.png; sourceTree = "<group>"; };
 		BCE35E8A15D7FD2E008C26AC /* barItemAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barItemAdd@2x.png"; sourceTree = "<group>"; };
 		BCE35E8B15D7FD2E008C26AC /* barItemBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = barItemBack.png; sourceTree = "<group>"; };
@@ -7989,15 +7981,15 @@
 				BCE35C3915D6BD57008C26AC /* ShowViewController.h */,
 				BCE35C3A15D6BD57008C26AC /* ShowViewController.m */,
 				BCE35C3B15D6BD58008C26AC /* ShowViewController.xib */,
+				BC071AB115D9070E001F38D7 /* ProgrammingViewController.h */,
+				BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */,
+				BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */,
 				BCE35E4F15D7A7EE008C26AC /* ProgrammingLocalViewController.h */,
 				BCE35E5015D7A7EE008C26AC /* ProgrammingLocalViewController.m */,
-				BCE35E5115D7A7EE008C26AC /* ProgrammingLocalViewController.xib */,
 				BCE35E5215D7A7EE008C26AC /* ProgrammingRadioViewController.h */,
 				BCE35E5315D7A7EF008C26AC /* ProgrammingRadioViewController.m */,
-				BCE35E5415D7A7EF008C26AC /* ProgrammingRadioViewController.xib */,
 				BCE35E7515D7D5C7008C26AC /* ProgrammingUploadViewController.h */,
 				BCE35E7615D7D5C7008C26AC /* ProgrammingUploadViewController.m */,
-				BCE35E7715D7D5C8008C26AC /* ProgrammingUploadViewController.xib */,
 				B19BF5EB14E420DA00BF8FCF /* SongsViewController.h */,
 				B19BF5EC14E420DA00BF8FCF /* SongsViewController.m */,
 				B19BF5ED14E420DA00BF8FCF /* SongsViewController.xib */,
@@ -9660,9 +9652,6 @@
 				BC23872715D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2515D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4A15D6BD58008C26AC /* ShowViewController.xib in Resources */,
-				BCE35E6315D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */,
-				BCE35E7315D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */,
-				BCE35E8615D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */,
 				BCE3608615D7FD2F008C26AC /* barItemAdd.png in Resources */,
 				BCE3608E15D7FD2F008C26AC /* barItemAdd@2x.png in Resources */,
 				BCE3609615D7FD2F008C26AC /* barItemBack.png in Resources */,
@@ -10133,6 +10122,7 @@
 				BCE36F2E15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3815D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F4015D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
+				BC071AC215D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10204,9 +10194,6 @@
 				BC23872815D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2615D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4B15D6BD58008C26AC /* ShowViewController.xib in Resources */,
-				BCE35E6415D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */,
-				BCE35E7415D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */,
-				BCE35E8715D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */,
 				BCE3608715D7FD2F008C26AC /* barItemAdd.png in Resources */,
 				BCE3608F15D7FD2F008C26AC /* barItemAdd@2x.png in Resources */,
 				BCE3609715D7FD2F008C26AC /* barItemBack.png in Resources */,
@@ -10677,6 +10664,7 @@
 				BCE36F2F15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3915D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F4115D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
+				BC071AC315D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10742,9 +10730,6 @@
 				BC23872615D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2415D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4915D6BD58008C26AC /* ShowViewController.xib in Resources */,
-				BCE35E6215D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */,
-				BCE35E7215D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */,
-				BCE35E8515D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */,
 				BCE3608515D7FD2F008C26AC /* barItemAdd.png in Resources */,
 				BCE3608D15D7FD2F008C26AC /* barItemAdd@2x.png in Resources */,
 				BCE3609515D7FD2F008C26AC /* barItemBack.png in Resources */,
@@ -11215,6 +11200,7 @@
 				BCE36F2D15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3715D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3F15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
+				BC071AC115D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11285,9 +11271,6 @@
 				BC23872315D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2115D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4615D6BD58008C26AC /* ShowViewController.xib in Resources */,
-				BCE35E5F15D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */,
-				BCE35E6F15D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */,
-				BCE35E8215D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */,
 				BCE3608215D7FD2F008C26AC /* barItemAdd.png in Resources */,
 				BCE3608A15D7FD2F008C26AC /* barItemAdd@2x.png in Resources */,
 				BCE3609215D7FD2F008C26AC /* barItemBack.png in Resources */,
@@ -11758,6 +11741,7 @@
 				BCE36F2A15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3415D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3C15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
+				BC071ABE15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11828,9 +11812,6 @@
 				BC23872215D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2015D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4515D6BD58008C26AC /* ShowViewController.xib in Resources */,
-				BCE35E5E15D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */,
-				BCE35E6E15D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */,
-				BCE35E8115D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */,
 				BCE3608115D7FD2F008C26AC /* barItemAdd.png in Resources */,
 				BCE3608915D7FD2F008C26AC /* barItemAdd@2x.png in Resources */,
 				BCE3609115D7FD2F008C26AC /* barItemBack.png in Resources */,
@@ -12301,6 +12282,7 @@
 				BCE36F2915D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3315D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3B15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
+				BC071ABD15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12371,9 +12353,6 @@
 				BC23872515D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2315D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4815D6BD58008C26AC /* ShowViewController.xib in Resources */,
-				BCE35E6115D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */,
-				BCE35E7115D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */,
-				BCE35E8415D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */,
 				BCE3608415D7FD2F008C26AC /* barItemAdd.png in Resources */,
 				BCE3608C15D7FD2F008C26AC /* barItemAdd@2x.png in Resources */,
 				BCE3609415D7FD2F008C26AC /* barItemBack.png in Resources */,
@@ -12844,6 +12823,7 @@
 				BCE36F2C15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3615D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3E15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
+				BC071AC015D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12914,9 +12894,6 @@
 				BC23872115D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C1F15D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4415D6BD58008C26AC /* ShowViewController.xib in Resources */,
-				BCE35E5D15D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */,
-				BCE35E6D15D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */,
-				BCE35E8015D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */,
 				BCE3608015D7FD2F008C26AC /* barItemAdd.png in Resources */,
 				BCE3608815D7FD2F008C26AC /* barItemAdd@2x.png in Resources */,
 				BCE3609015D7FD2F008C26AC /* barItemBack.png in Resources */,
@@ -13387,6 +13364,7 @@
 				BCE36F2815D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3215D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3A15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
+				BC071ABC15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13457,9 +13435,6 @@
 				BC23872415D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2215D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4715D6BD58008C26AC /* ShowViewController.xib in Resources */,
-				BCE35E6015D7A7EF008C26AC /* ProgrammingLocalViewController.xib in Resources */,
-				BCE35E7015D7A7EF008C26AC /* ProgrammingRadioViewController.xib in Resources */,
-				BCE35E8315D7D5C8008C26AC /* ProgrammingUploadViewController.xib in Resources */,
 				BCE3608315D7FD2F008C26AC /* barItemAdd.png in Resources */,
 				BCE3608B15D7FD2F008C26AC /* barItemAdd@2x.png in Resources */,
 				BCE3609315D7FD2F008C26AC /* barItemBack.png in Resources */,
@@ -13930,6 +13905,7 @@
 				BCE36F2B15D7FD31008C26AC /* wheelSelectorShadow@2x.png in Resources */,
 				BCE36F3515D80068008C26AC /* commonTableViewSection.png in Resources */,
 				BCE36F3D15D80068008C26AC /* commonTableViewSection@2x.png in Resources */,
+				BC071ABF15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14195,6 +14171,7 @@
 				BCE35E5B15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
 				BCE35E6B15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7E15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
+				BC071ABA15D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14402,6 +14379,7 @@
 				BCE35E5C15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
 				BCE35E6C15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7F15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
+				BC071ABB15D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14605,6 +14583,7 @@
 				BCE35E5A15D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
 				BCE35E6A15D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7D15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
+				BC071AB915D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14812,6 +14791,7 @@
 				BCE35E5715D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
 				BCE35E6715D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7A15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
+				BC071AB615D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15019,6 +14999,7 @@
 				BCE35E5615D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
 				BCE35E6615D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7915D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
+				BC071AB515D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15227,6 +15208,7 @@
 				BCE35E5915D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
 				BCE35E6915D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7C15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
+				BC071AB815D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15434,6 +15416,7 @@
 				BCE35E5515D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
 				BCE35E6515D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7815D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
+				BC071AB415D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15642,6 +15625,7 @@
 				BCE35E5815D7A7EF008C26AC /* ProgrammingLocalViewController.m in Sources */,
 				BCE35E6815D7A7EF008C26AC /* ProgrammingRadioViewController.m in Sources */,
 				BCE35E7B15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
+				BC071AB715D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

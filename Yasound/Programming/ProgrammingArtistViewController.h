@@ -8,25 +8,25 @@
 
 #import "TestflightViewController.h"
 #import "SongCatalog.h"
-#import "WheelSelector.h"
+//#import "WheelSelector.h"
 
-@interface ProgrammingArtistViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate>
+@interface ProgrammingArtistViewController : UITableViewController <UIActionSheetDelegate>
 {
-    IBOutlet UIBarButtonItem* _backBtn;
-    IBOutlet UIBarButtonItem* _nowPlayingButton;
+//    IBOutlet UIBarButtonItem* _backBtn;
+//    IBOutlet UIBarButtonItem* _nowPlayingButton;
 
-    IBOutlet UILabel* _titleLabel;
-    IBOutlet UILabel* _subtitleLabel;
-    IBOutlet UIToolbar* _toolbar;
-    
-    IBOutlet UITableView* _tableView;
+//    IBOutlet UILabel* _titleLabel;
+//    IBOutlet UILabel* _subtitleLabel;
+//    IBOutlet UIToolbar* _toolbar;
+//    
+//    IBOutlet UITableView* _tableView;
 }
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, assign) SongCatalog* catalog;
 @property (nonatomic, retain) NSArray* sortedAlbums;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio;
+- (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio;
 
 
 @end

@@ -27,6 +27,7 @@
 @synthesize radio;
 @synthesize sortedArtists;
 @synthesize sortedSongs;
+@synthesize selectedSegmentIndex;
 
 #define SEGMENT_INDEX_ALPHA 0
 #define SEGMENT_INDEX_ARTIST 1
@@ -36,10 +37,10 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio
+- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
+    self = [super initWithStyle:style];
+    if (self)
     {
         self.radio = radio;
         
@@ -65,7 +66,6 @@
 {
     [SongCatalog releaseSynchronizedCatalog];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [_tableView release];
     [super dealloc];
 }
 
@@ -86,9 +86,9 @@
 //    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
 //    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
-    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_titles", nil) forSegmentAtIndex:0];  
-    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_artists", nil) forSegmentAtIndex:1];  
-    [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
+//    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_titles", nil) forSegmentAtIndex:0];  
+//    [_segment setTitle:NSLocalizedString(@"ProgrammingView_segment_artists", nil) forSegmentAtIndex:1];  
+//    [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
     
     
     // waiting for the synchronization to be done
@@ -149,12 +149,12 @@
     
     subtitle = [subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbMatchedSongs]];
 
-    _subtitleLabel.text = subtitle;
+//    _subtitleLabel.text = subtitle;
     
     
     // now that the synchronization is been done,
 //    _tableView.hidden = NO;
-    [_tableView reloadData];
+    [self reloadData];
 
     [ActivityAlertView close];
 }
@@ -259,18 +259,18 @@
 
     NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:section];
     
-    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
-    {
-        NSArray* letterRepo = [[SongCatalog synchronizedCatalog].alphabeticRepo objectForKey:charIndex];
-        assert(letterRepo != nil);
-        return letterRepo.count;
-    }
-    else
-    {
-        NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];
-        NSInteger count = artistsForSection.count;
-        return count;
-    }
+//    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+//    {
+//        NSArray* letterRepo = [[SongCatalog synchronizedCatalog].alphabeticRepo objectForKey:charIndex];
+//        assert(letterRepo != nil);
+//        return letterRepo.count;
+//    }
+//    else
+//    {
+//        NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];
+//        NSInteger count = artistsForSection.count;
+//        return count;
+//    }
 
 }
 
@@ -317,7 +317,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
         return [self cellAlphaForRowAtIndexPath:indexPath];
     else
         return [self cellFolderForRowAtIndexPath:indexPath];
@@ -360,7 +360,7 @@
     Song* song = [songs objectAtIndex:indexPath.row];
     
     
-    ProgrammingTitleCell* cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ProgrammingTitleCell* cell = [self dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) 
     {
@@ -397,12 +397,12 @@
     DLog(@"success %d", success);
     
     UITableViewCell* cell = [info objectForKey:@"userData"];
-    NSIndexPath* indexPath = [_tableView indexPathForCell:cell];
+    NSIndexPath* indexPath = [self indexPathForCell:cell];
 
     [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:self];
 
-    [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];        
+    [self deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 
@@ -434,7 +434,7 @@
     
         static NSString* CellIdentifier = @"Cell";
         
-        UITableViewCell* cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        UITableViewCell* cell = [self dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) 
         {
@@ -476,7 +476,7 @@
     
     
     
-    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
         
         //LBDEBUG
@@ -535,111 +535,111 @@
 
 
 
-
-
-
-#pragma mark - IBActions
-
-
-- (IBAction)onSynchronize:(id)semder
-{
-    ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-}
-
-
-- (IBAction)onSegmentClicked:(id)sender
-{
-    [_tableView reloadData];
-}
-
-
-
-- (void)onNotifSongAdded:(NSNotification*)notif
-{
-    [self.sortedSongs release];
-    [self.sortedArtists release];
-    self.sortedArtists = [[NSMutableDictionary alloc] init];
-    self.sortedSongs = [[NSMutableDictionary alloc] init];    
-    
-    [_tableView reloadData];    
-}
-
-
-- (void)onNotifSongRemoved:(NSNotification*)notif
-{    
-    UIViewController* sender = notif.object;
-    
-    //LBDEBUG : ICI : release objects?
-    
-    if (sender != self)
-        [_tableView reloadData];    
-}
-
-
-
-
-
+//
+//
+//
+//#pragma mark - IBActions
+//
+//
+//- (IBAction)onSynchronize:(id)semder
+//{
+//    ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
+//}
+//
+//
+//- (IBAction)onSegmentClicked:(id)sender
+//{
+//    [self reloadData];
+//}
+//
+//
+//
+//- (void)onNotifSongAdded:(NSNotification*)notif
+//{
+//    [self.sortedSongs release];
+//    [self.sortedArtists release];
+//    self.sortedArtists = [[NSMutableDictionary alloc] init];
+//    self.sortedSongs = [[NSMutableDictionary alloc] init];    
+//    
+//    [self reloadData];
+//}
+//
+//
+//- (void)onNotifSongRemoved:(NSNotification*)notif
+//{    
+//    UIViewController* sender = notif.object;
+//    
+//    //LBDEBUG : ICI : release objects?
+//    
+//    if (sender != self)
+//        [self reloadData];    
+//}
+//
+//
 
 
 
 
 
-#pragma mark - WheelSelectorDelegate
 
-
-#define WHEEL_NB_ITEMS 3
-#define WHEEL_ITEM_LOCAL 0
-#define WHEEL_ITEM_RADIO 1
-#define WHEEL_ITEM_UPLOADS 2
-//#define WHEEL_ITEM_SERVER 3
-
-- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
-{
-    return WHEEL_NB_ITEMS;
-}
-
-- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
-{
-    if (itemIndex == WHEEL_ITEM_LOCAL)
-        return NSLocalizedString(@"Programming.Catalog.local", nil);
-    if (itemIndex == WHEEL_ITEM_RADIO)
-        return NSLocalizedString(@"Programming.Catalog.radio", nil);
-//    if (itemIndex == WHEEL_ITEM_SERVER)
-//        return NSLocalizedString(@"Programming.Catalog.server", nil);
-    if (itemIndex == WHEEL_ITEM_UPLOADS)
-        return NSLocalizedString(@"Programming.Catalog.uploads", nil);
-    return nil;
-}
-
-- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
-{
-    return WHEEL_ITEM_RADIO;
-}
-
-- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
-{
-    if (itemIndex == WHEEL_ITEM_LOCAL)
-    {
-        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil forRadio:self.radio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
-    else if (itemIndex == WHEEL_ITEM_RADIO)
-    {
-//        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil  forRadio:self.radio];
-//        [self.navigationController pushViewController:view animated:YES];
+//
+//
+//#pragma mark - WheelSelectorDelegate
+//
+//
+//#define WHEEL_NB_ITEMS 3
+//#define WHEEL_ITEM_LOCAL 0
+//#define WHEEL_ITEM_RADIO 1
+//#define WHEEL_ITEM_UPLOADS 2
+////#define WHEEL_ITEM_SERVER 3
+//
+//- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
+//{
+//    return WHEEL_NB_ITEMS;
+//}
+//
+//- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
+//{
+//    if (itemIndex == WHEEL_ITEM_LOCAL)
+//        return NSLocalizedString(@"Programming.Catalog.local", nil);
+//    if (itemIndex == WHEEL_ITEM_RADIO)
+//        return NSLocalizedString(@"Programming.Catalog.radio", nil);
+////    if (itemIndex == WHEEL_ITEM_SERVER)
+////        return NSLocalizedString(@"Programming.Catalog.server", nil);
+//    if (itemIndex == WHEEL_ITEM_UPLOADS)
+//        return NSLocalizedString(@"Programming.Catalog.uploads", nil);
+//    return nil;
+//}
+//
+//- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
+//{
+//    return WHEEL_ITEM_RADIO;
+//}
+//
+//- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
+//{
+//    if (itemIndex == WHEEL_ITEM_LOCAL)
+//    {
+//        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil forRadio:self.radio];
+//        [self.navigationController pushViewController:view animated:NO];
 //        [view release];
-    }
-    else if (itemIndex == WHEEL_ITEM_UPLOADS)
-    {
-        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
-}
-
+//    }
+//    else if (itemIndex == WHEEL_ITEM_RADIO)
+//    {
+////        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil  forRadio:self.radio];
+////        [self.navigationController pushViewController:view animated:NO];
+////        [view release];
+//    }
+//    else if (itemIndex == WHEEL_ITEM_UPLOADS)
+//    {
+//        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
+//        [self.navigationController pushViewController:view animated:NO];
+//        [view release];
+//    }
+//}
+//
 
 
 

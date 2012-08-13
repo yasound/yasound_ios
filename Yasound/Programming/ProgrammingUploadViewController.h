@@ -7,20 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WheelSelector.h"
+//#import "WheelSelector.h"
 #import "Radio.h"
 
-
-@interface ProgrammingUploadViewController : UIViewController
+@interface ProgrammingUploadViewController : UITableViewController
 {
-    IBOutlet UIBarButtonItem* _backBtn;
-    IBOutlet UILabel* _titleLabel;
-    IBOutlet UITableView* _tableView;
+//    IBOutlet UIBarButtonItem* _backBtn;
+//    IBOutlet UILabel* _titleLabel;
+//    IBOutlet UITableView* _tableView;
 }
 
 @property (nonatomic, retain) Radio* radio;
-@property (nonatomic, retain) WheelSelector* wheelSelector;
+//@property (nonatomic, retain) WheelSelector* wheelSelector;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio;
+- (id)initWithStyle:(UITableViewStyle)style  forRadio:(Radio*)radio;
 
 @end

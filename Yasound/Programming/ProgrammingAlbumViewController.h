@@ -11,22 +11,17 @@
 #import "WheelSelector.h"
 
 
-@interface ProgrammingAlbumViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate>
+@interface ProgrammingAlbumViewController : UITableViewController <UIActionSheetDelegate>
 {
-    IBOutlet UIBarButtonItem* _backBtn;
-    IBOutlet UIBarButtonItem* _nowPlayingButton;
-
-    IBOutlet UILabel* _titleLabel;
-    IBOutlet UILabel* _subtitleLabel;
-    IBOutlet UIToolbar* _toolbar;
-    
-    IBOutlet UITableView* _tableView;
+//    IBOutlet UILabel* _titleLabel;
+//    IBOutlet UILabel* _subtitleLabel;
+//    IBOutlet UIToolbar* _toolbar;
 }
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, assign) SongCatalog* catalog;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio;
+- (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio;
 
 
 

@@ -33,9 +33,10 @@
 @implementation ProgrammingLocalViewController
 
 @synthesize radio;
-@synthesize wheelSelector;
-@synthesize searchedSongs;
-@synthesize subtitle;
+@synthesize selectedSegmentIndex;
+//@synthesize wheelSelector;
+//@synthesize searchedSongs;
+//@synthesize subtitle;
 @synthesize sortedArtists;
 @synthesize sortedSongs;
 
@@ -48,10 +49,10 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forRadio:(Radio*)radio
+- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
+    self = [super initWithStyle:style];
+    if (self)
     {
         _selectedIndex = -1;
         
@@ -81,25 +82,25 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
 
 
-    _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
-    _subtitleLabel.text = NSLocalizedString(@"SongAddView_subtitle", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    
-    [_segment setTitle:NSLocalizedString(@"SongAddView_segment_titles", nil) forSegmentAtIndex:0];  
-    [_segment setTitle:NSLocalizedString(@"SongAddView_segment_artists", nil) forSegmentAtIndex:1];  
-    [_segment insertSegmentWithTitle:NSLocalizedString(@"SongAddView_segment_server", nil) atIndex:2 animated:NO];
-    [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
+//    _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
+//    _subtitleLabel.text = NSLocalizedString(@"SongAddView_subtitle", nil);
+//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+//    
+//    [_segment setTitle:NSLocalizedString(@"SongAddView_segment_titles", nil) forSegmentAtIndex:0];  
+//    [_segment setTitle:NSLocalizedString(@"SongAddView_segment_artists", nil) forSegmentAtIndex:1];  
+//    [_segment insertSegmentWithTitle:NSLocalizedString(@"SongAddView_segment_server", nil) atIndex:2 animated:NO];
+//    [_segment addTarget:self action:@selector(onSegmentClicked:) forControlEvents:UIControlEventValueChanged];
 
     
-    _searchBar.placeholder = NSLocalizedString(@"SongAddView_searchServer", nil);
-    
-    _searchView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    _searchView.frame = CGRectMake(0, 44, _searchView.frame.size.width, _searchView.frame.size.height);
-    
-    _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _searchController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
-    _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
+//    _searchBar.placeholder = NSLocalizedString(@"SongAddView_searchServer", nil);
+//    
+//    _searchView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+//    _searchView.frame = CGRectMake(0, 44, _searchView.frame.size.width, _searchView.frame.size.height);
+//    
+//    _searchController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    _searchController.searchResultsTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+//    _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+//    _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
     
     
     [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];        
@@ -126,16 +127,16 @@
     
     DLog(@"ProgrammingLocalViewController : %d songs added to the local array", count);
     
-    if (count == 0)
-        self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_0", nil);
-    else if (count == 1)
-        self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_1", nil);
-    else if (count > 1)
-        self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_n", nil);
-    
-    self.subtitle = [self.subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", count]];
-    
-    _subtitleLabel.text = self.subtitle;
+//    if (count == 0)
+//        self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_0", nil);
+//    else if (count == 1)
+//        self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_1", nil);
+//    else if (count > 1)
+//        self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_n", nil);
+//    
+//    self.subtitle = [self.subtitle stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", count]];
+//    
+//    _subtitleLabel.text = self.subtitle;
     
 
     
@@ -143,29 +144,29 @@
     
     
     
-    if (count == 0)
-    {
-        [_tableView removeFromSuperview];
-        NSString* str = NSLocalizedString(@"PlaylistsView_empty_message", nil);
-        _itunesConnectLabel.text = str;
-        
-        _itunesConnectView.frame = CGRectMake(_itunesConnectView.frame.origin.x, 44, _itunesConnectView.frame.size.width, _itunesConnectView.frame.size.height);
-        
-        [self.view addSubview:_itunesConnectView];
-        
-        // IB, sometimes, is, huh.....
-        [_itunesConnectView addSubview:_itunesConnectLabel];
-        
-        [self.view bringSubviewToFront:_navBar];
-        [self.view bringSubviewToFront:_titleLabel];
-        [self.view bringSubviewToFront:_subtitleLabel];
-        [self.view bringSubviewToFront:_toolbar];
-
-        return;
-        
-    }
+//    if (count == 0)
+//    {
+//        [_tableView removeFromSuperview];
+//        NSString* str = NSLocalizedString(@"PlaylistsView_empty_message", nil);
+//        _itunesConnectLabel.text = str;
+//        
+//        _itunesConnectView.frame = CGRectMake(_itunesConnectView.frame.origin.x, 44, _itunesConnectView.frame.size.width, _itunesConnectView.frame.size.height);
+//        
+//        [self.view addSubview:_itunesConnectView];
+//        
+//        // IB, sometimes, is, huh.....
+//        [_itunesConnectView addSubview:_itunesConnectLabel];
+//        
+//        [self.view bringSubviewToFront:_navBar];
+//        [self.view bringSubviewToFront:_titleLabel];
+//        [self.view bringSubviewToFront:_subtitleLabel];
+//        [self.view bringSubviewToFront:_toolbar];
+//
+//        return;
+//        
+//    }
     
-    [_tableView reloadData];
+    [self reloadData];
 
 }
 
@@ -244,15 +245,15 @@
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (_selectedIndex == SEGMENT_INDEX_SERVER)
-    {
-        if (self.searchedSongs == nil)
-            return 0;
-        
-        return self.searchedSongs.count;
-    }
+//    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+//    {
+//        if (self.searchedSongs == nil)
+//            return 0;
+//        
+//        return self.searchedSongs.count;
+//    }
     
     
     return [self getNbRowsForTable:tableView inSection:section];
@@ -263,7 +264,7 @@
 {
     NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:section];
     
-    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
         NSArray* letterRepo = [[SongCatalog availableCatalog].alphabeticRepo objectForKey:charIndex];
         assert(letterRepo != nil);
@@ -333,32 +334,32 @@
 {
 
     
-    if (_selectedIndex == SEGMENT_INDEX_SERVER)
-    {
-        static NSString* CellIdentifier = @"CellServer";
-        
-        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (cell == nil) 
-        {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-        }
-
-        cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-        
-        YasoundSong* song = [self.searchedSongs objectAtIndex:indexPath.row];
-     
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-        
-        cell.textLabel.text = song.name;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album_name, song.artist_name];     
-        
-        return cell;
-    }
-    
-    else if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+//    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+//    {
+//        static NSString* CellIdentifier = @"CellServer";
+//        
+//        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//        
+//        if (cell == nil) 
+//        {
+//            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+//        }
+//
+//        cell.textLabel.backgroundColor = [UIColor clearColor];
+//        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+//        
+//        YasoundSong* song = [self.searchedSongs objectAtIndex:indexPath.row];
+//     
+//        cell.textLabel.textColor = [UIColor whiteColor];
+//        cell.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+//        
+//        cell.textLabel.text = song.name;
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album_name, song.artist_name];     
+//        
+//        return cell;
+//    }
+// else
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
         static NSString* CellAddIdentifier = @"CellAdd";
 
@@ -456,22 +457,22 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
-    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_SERVER)
-    {
-        YasoundSong* song = [self.searchedSongs objectAtIndex:indexPath.row];
-        
-        [ActivityAlertView showWithTitle:nil];
-
-        [[YasoundDataProvider main] addSong:song target:self action:@selector(songAdded:info:)];
-
-
-        return;
-    }
+//    if (self.selectedSegmentIndex == SEGMENT_INDEX_SERVER)
+//    {
+//        YasoundSong* song = [self.searchedSongs objectAtIndex:indexPath.row];
+//        
+//        [ActivityAlertView showWithTitle:nil];
+//
+//        [[YasoundDataProvider main] addSong:song target:self action:@selector(songAdded:info:)];
+//
+//
+//        return;
+//    }
     
 
     
     
-    if (_segment.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
         NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
         SongLocal* songLocal = [[self.sortedSongs objectForKey:charIndex] objectAtIndex:indexPath.row];
@@ -497,158 +498,158 @@
 
 
 
-- (void)songAdded:(Song*)song info:(NSDictionary*)info
-{
-    [ActivityAlertView close];
-
-    if (song == nil)
-    {
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedError", nil) closeAfterTimeInterval:2];
-        return;
-    }
-    
-    NSDictionary* status = [info objectForKey:@"status"];
-    NSNumber* successNb = [status objectForKey:@"success"];
-    NSNumber* createdNb = [status objectForKey:@"created"];
-    BOOL success = YES;
-    BOOL created = YES;
-
-    if ((successNb != nil) && (createdNb != nil))
-    {
-        success = [successNb boolValue];
-        created = [createdNb boolValue];
-    }
-    
-    if (success && !created)
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedAlready", nil) closeAfterTimeInterval:2];
-    else
-    {
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedOk", nil) closeAfterTimeInterval:2];
-
-        // add the song to the catalog of synchronized catalog (we dont want to re-generate it entirely)
-        [[SongCatalog synchronizedCatalog] insertAndEnableSong:song];
-        
-        // and let the views know about it
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:nil];
-
-        
-        //  flag the current song as "uploading song"    
-        NSIndexPath* indexPath = [_searchController.searchResultsTableView indexPathForSelectedRow];
-        
-        // have a flag "synchronized" instead of using "uploading"
-        song.uploading = YES;
-        UITableViewCell* cell = [_searchController.searchResultsTableView cellForRowAtIndexPath:indexPath];
-        [cell setNeedsLayout];
-    }
-}
-
-
-
-
-
-#pragma mark - IBActions
-
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-- (IBAction)onSynchronize:(id)semder
-{
-    ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-}
-
-- (IBAction)onSegmentClicked:(id)sender
-{
-    NSInteger index = [_segment selectedSegmentIndex];
-    if ((index == SEGMENT_INDEX_ALPHA) || (index == SEGMENT_INDEX_ARTIST))
-    {
-        _subtitleLabel.text = self.subtitle;
-
-        if (_selectedIndex == SEGMENT_INDEX_SERVER)
-        {
-            [_searchView removeFromSuperview];
-            if ([SongCatalog availableCatalog].nbSongs == 0)
-            {
-                _itunesConnectView.frame = CGRectMake(_itunesConnectView.frame.origin.x, 44, _itunesConnectView.frame.size.width, _itunesConnectView.frame.size.height);
-
-                [self.view addSubview:_itunesConnectView];
-                
-                [self.view bringSubviewToFront:_navBar];
-                [self.view bringSubviewToFront:_titleLabel];
-                [self.view bringSubviewToFront:_subtitleLabel];
-                [self.view bringSubviewToFront:_toolbar];
-            }
-            else
-                [self.view addSubview:_tableView];
-
-        }
-        
-        _selectedIndex = index;
-
-        if ([SongCatalog availableCatalog].nbSongs != 0)
-            [_tableView reloadData];
-    }
-    
-    else if (index == SEGMENT_INDEX_SERVER)
-    {
-        _subtitleLabel.text = NSLocalizedString(@"SongAddView_addFromServer", nil);
-
-        if ([SongCatalog availableCatalog].nbSongs == 0)
-            [_itunesConnectView removeFromSuperview];
-        else
-            [_tableView removeFromSuperview];
-        
-        
-        [self.view addSubview:_searchView];
-        
-        _selectedIndex = index;
-        
-        [_searchController.searchResultsTableView reloadData];
-
-    }
-    
-}
-
-
-
-
-
-
-
-
-#pragma mark - Search Delegate
-
-//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+//- (void)songAdded:(Song*)song info:(NSDictionary*)info
 //{
+//    [ActivityAlertView close];
 //
+//    if (song == nil)
+//    {
+//        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedError", nil) closeAfterTimeInterval:2];
+//        return;
+//    }
+//    
+//    NSDictionary* status = [info objectForKey:@"status"];
+//    NSNumber* successNb = [status objectForKey:@"success"];
+//    NSNumber* createdNb = [status objectForKey:@"created"];
+//    BOOL success = YES;
+//    BOOL created = YES;
+//
+//    if ((successNb != nil) && (createdNb != nil))
+//    {
+//        success = [successNb boolValue];
+//        created = [createdNb boolValue];
+//    }
+//    
+//    if (success && !created)
+//        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedAlready", nil) closeAfterTimeInterval:2];
+//    else
+//    {
+//        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_addedOk", nil) closeAfterTimeInterval:2];
+//
+//        // add the song to the catalog of synchronized catalog (we dont want to re-generate it entirely)
+//        [[SongCatalog synchronizedCatalog] insertAndEnableSong:song];
+//        
+//        // and let the views know about it
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+//
+//        
+//        //  flag the current song as "uploading song"    
+//        NSIndexPath* indexPath = [_searchController.searchResultsTableView indexPathForSelectedRow];
+//        
+//        // have a flag "synchronized" instead of using "uploading"
+//        song.uploading = YES;
+//        UITableViewCell* cell = [_searchController.searchResultsTableView cellForRowAtIndexPath:indexPath];
+//        [cell setNeedsLayout];
+//    }
 //}
 //
-//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-//{
+
+
+
+
+//#pragma mark - IBActions
 //
+//- (IBAction)onBack:(id)sender
+//{
+//    [self.navigationController popViewControllerAnimated:YES];
 //}
+//
+//
+//- (IBAction)onSynchronize:(id)semder
+//{
+//    ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
+//}
+//
+//- (IBAction)onSegmentClicked:(id)sender
+//{
+//    NSInteger index = [_segment selectedSegmentIndex];
+//    if ((index == SEGMENT_INDEX_ALPHA) || (index == SEGMENT_INDEX_ARTIST))
+//    {
+//        _subtitleLabel.text = self.subtitle;
+//
+//        if (_selectedIndex == SEGMENT_INDEX_SERVER)
+//        {
+//            [_searchView removeFromSuperview];
+//            if ([SongCatalog availableCatalog].nbSongs == 0)
+//            {
+//                _itunesConnectView.frame = CGRectMake(_itunesConnectView.frame.origin.x, 44, _itunesConnectView.frame.size.width, _itunesConnectView.frame.size.height);
+//
+//                [self.view addSubview:_itunesConnectView];
+//                
+//                [self.view bringSubviewToFront:_navBar];
+//                [self.view bringSubviewToFront:_titleLabel];
+//                [self.view bringSubviewToFront:_subtitleLabel];
+//                [self.view bringSubviewToFront:_toolbar];
+//            }
+//            else
+//                [self.view addSubview:_tableView];
+//
+//        }
+//        
+//        _selectedIndex = index;
+//
+//        if ([SongCatalog availableCatalog].nbSongs != 0)
+//            [_tableView reloadData];
+//    }
+//    
+//    else if (index == SEGMENT_INDEX_SERVER)
+//    {
+//        _subtitleLabel.text = NSLocalizedString(@"SongAddView_addFromServer", nil);
+//
+//        if ([SongCatalog availableCatalog].nbSongs == 0)
+//            [_itunesConnectView removeFromSuperview];
+//        else
+//            [_tableView removeFromSuperview];
+//        
+//        
+//        [self.view addSubview:_searchView];
+//        
+//        _selectedIndex = index;
+//        
+//        [_searchController.searchResultsTableView reloadData];
+//
+//    }
+//    
+//}
+//
 
-- (void)requestsSongSearch:(NSString*)searchText
-{
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_requestServer", nil)];
-    
-  [[YasoundDataProvider main] searchSong:searchText count:20 offset:0 target:self action:@selector(didReceiveSongs:info:)]; 
-    
-}
 
-     
-- (void)didReceiveSongs:(NSArray*)songs info:(NSDictionary*)info
-{
-    self.searchedSongs = songs;
-    [_searchController.searchResultsTableView reloadData];
-    
-    [ActivityAlertView close];
-}
 
+
+
+
+
+//#pragma mark - Search Delegate
+//
+////- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+////{
+////
+////}
+////
+////- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+////{
+////
+////}
+//
+//- (void)requestsSongSearch:(NSString*)searchText
+//{
+//    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_requestServer", nil)];
+//    
+//  [[YasoundDataProvider main] searchSong:searchText count:20 offset:0 target:self action:@selector(didReceiveSongs:info:)]; 
+//    
+//}
+//
+//     
+//- (void)didReceiveSongs:(NSArray*)songs info:(NSDictionary*)info
+//{
+//    self.searchedSongs = songs;
+//    [_searchController.searchResultsTableView reloadData];
+//    
+//    [ActivityAlertView close];
+//}
+//
 
 //{
 //    if (_radios != nil)
@@ -675,81 +676,81 @@
 //    [self requestsSongSearch:searchBar.text];
 //}
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    DLog(@"searchBarSearchButtonClicked %@", searchBar.text);
-    
-    [self requestsSongSearch:searchBar.text];
-}
+//- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+//{
+//    DLog(@"searchBarSearchButtonClicked %@", searchBar.text);
+//    
+//    [self requestsSongSearch:searchBar.text];
+//}
 
 
 
 
 - (void)onNotificationUploadCanceled:(NSNotification*)notif
 {
-    [_tableView reloadData];
+    [self reloadData];
 }
 
 
 
 
 
-
-
-#pragma mark - WheelSelectorDelegate
-
-
-#define WHEEL_NB_ITEMS 3
-#define WHEEL_ITEM_LOCAL 0
-#define WHEEL_ITEM_RADIO 1
-#define WHEEL_ITEM_UPLOADS 2
-//#define WHEEL_ITEM_SERVER 3
-
-- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
-{
-    return WHEEL_NB_ITEMS;
-}
-
-- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
-{
-    if (itemIndex == WHEEL_ITEM_LOCAL)
-        return NSLocalizedString(@"Programming.Catalog.local", nil);
-    if (itemIndex == WHEEL_ITEM_RADIO)
-        return NSLocalizedString(@"Programming.Catalog.radio", nil);
-    //    if (itemIndex == WHEEL_ITEM_SERVER)
-    //        return NSLocalizedString(@"Programming.Catalog.server", nil);
-    if (itemIndex == WHEEL_ITEM_UPLOADS)
-        return NSLocalizedString(@"Programming.Catalog.uploads", nil);
-    return nil;
-}
-
-- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
-{
-    return WHEEL_ITEM_RADIO;
-}
-
-- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
-{
-    if (itemIndex == WHEEL_ITEM_LOCAL)
-    {
-//        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil  forRadio:self.radio];
-//        [self.navigationController pushViewController:view animated:YES];
+//
+//
+//#pragma mark - WheelSelectorDelegate
+//
+//
+//#define WHEEL_NB_ITEMS 3
+//#define WHEEL_ITEM_LOCAL 0
+//#define WHEEL_ITEM_RADIO 1
+//#define WHEEL_ITEM_UPLOADS 2
+////#define WHEEL_ITEM_SERVER 3
+//
+//- (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
+//{
+//    return WHEEL_NB_ITEMS;
+//}
+//
+//- (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
+//{
+//    if (itemIndex == WHEEL_ITEM_LOCAL)
+//        return NSLocalizedString(@"Programming.Catalog.local", nil);
+//    if (itemIndex == WHEEL_ITEM_RADIO)
+//        return NSLocalizedString(@"Programming.Catalog.radio", nil);
+//    //    if (itemIndex == WHEEL_ITEM_SERVER)
+//    //        return NSLocalizedString(@"Programming.Catalog.server", nil);
+//    if (itemIndex == WHEEL_ITEM_UPLOADS)
+//        return NSLocalizedString(@"Programming.Catalog.uploads", nil);
+//    return nil;
+//}
+//
+//- (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
+//{
+//    return WHEEL_ITEM_RADIO;
+//}
+//
+//- (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
+//{
+//    if (itemIndex == WHEEL_ITEM_LOCAL)
+//    {
+////        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil  forRadio:self.radio];
+////        [self.navigationController pushViewController:view animated:NO];
+////        [view release];
+//    }
+//    else if (itemIndex == WHEEL_ITEM_RADIO)
+//    {
+//        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil forRadio:self.radio];
+//        [self.navigationController pushViewController:view animated:NO];
 //        [view release];
-    }
-    else if (itemIndex == WHEEL_ITEM_RADIO)
-    {
-        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil forRadio:self.radio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
-    else if (itemIndex == WHEEL_ITEM_UPLOADS)
-    {
-        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-    }
-}
-
+//    }
+//    else if (itemIndex == WHEEL_ITEM_UPLOADS)
+//    {
+//        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
+//        [self.navigationController pushViewController:view animated:NO];
+//        [view release];
+//    }
+//}
+//
 
 @end
 

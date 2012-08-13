@@ -62,6 +62,12 @@
 {
     [super viewDidLoad];
     listContainer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
+    
+    NSString* urlstr = URL_RADIOS_SELECTION;
+    [tabBar setTabSelected:TabIndexSelection];
+    NSURL* url = [NSURL URLWithString:urlstr];
+    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:nil target:self action:@selector(receiveRadios:info:)];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
