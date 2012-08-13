@@ -49,7 +49,7 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
         // fix weird bug: sometimes, number values are seen as strings
         if (c == [NSNumber class] && [val isKindOfClass:[NSString class]] && ![val isKindOfClass:[NSNull class]])
         {
-            val = [NSNumber numberWithFloat:[val floatValue]];
+            val = [[NSNumber alloc] initWithFloat:[val floatValue]];
         }
             
     }
