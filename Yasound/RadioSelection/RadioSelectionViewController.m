@@ -260,11 +260,11 @@
 {
     if (tabIndex == TabIndexSelection)
     {
-        [wheelSelector stickToItem:WheelIdSelection];
+        [self.wheelSelector stickToItem:WheelIdSelection silent:NO];
     }
     else if (tabIndex == TabIndexFavorites)
     {
-        [wheelSelector stickToItem:WheelIdFavorites];
+        [self.wheelSelector stickToItem:WheelIdFavorites silent:NO];
     }
     
     

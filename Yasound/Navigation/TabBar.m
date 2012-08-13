@@ -102,7 +102,8 @@
     {
         if ((self.selectedIndex != TabIndexSelection) && (self.selectedIndex != TabIndexFavorites))
         {
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+            NSNumber* animated = [NSNumber numberWithBool:NO];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:animated];
         }
         else
             callDelegate = YES;
@@ -111,22 +112,26 @@
     {
         if ((self.selectedIndex != TabIndexSelection) && (self.selectedIndex != TabIndexFavorites))
         {
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_FAVORITES object:nil];
+            NSNumber* animated = [NSNumber numberWithBool:NO];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_FAVORITES object:animated];
         }
         else
             callDelegate = YES;
     }
     else if (isConnected && (btn.tag == TabIndexMyRadios))
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIOS object:nil];
+        NSNumber* animated = [NSNumber numberWithBool:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MYRADIOS object:animated];
     }
     else if (isConnected && (btn.tag == TabIndexGifts))
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_GIFTS object:nil];
+        NSNumber* animated = [NSNumber numberWithBool:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_GIFTS object:animated];
     }
     else if (isConnected && (btn.tag == TabIndexProfil))
     {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_PROFIL object:nil];
+        NSNumber* animated = [NSNumber numberWithBool:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_PROFIL object:animated];
     }
 
     
