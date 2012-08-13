@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#define MONDAY_STR @"MON"
+#define TUESDAY_STR @"TUE"
+#define WEDNESDAY_STR @"WED"
+#define THURSDAY_STR @"THU"
+#define FRIDAY_STR @"FRI"
+#define SATURDAY_STR @"SAT"
+#define SUNDAY_STR @"SUN"
+
 typedef enum
 {
     eMonday = 0,
@@ -16,22 +24,22 @@ typedef enum
     eThursday,
     eFriday,
     eSaturday,
-    eSunday,
-    eEveryDay
+    eSunday
 } DayType;
 
 @interface Show : NSObject
 
 @property (retain, nonatomic) NSString* _id;
 @property (retain, nonatomic) NSString* name;
-@property (retain, nonatomic) NSString* day;
+@property (retain, nonatomic) NSString* days; // list of days as strings separated by commas. ex: @"MON,FRI,SAT"
 @property (retain, nonatomic) NSDate* time;
 @property (retain, nonatomic) NSNumber* random_play;
+@property (retain, nonatomic) NSNumber* enabled; // on/off
 
 - (BOOL)isRandomBool;
 - (void)setRandomBool:(BOOL)random;
 
-- (DayType)dayType;
-- (void)setDayType:(DayType)t;
+- (BOOL)isEnabledBool;
+- (void)setEnabledBool:(BOOL)e;
 
 @end
