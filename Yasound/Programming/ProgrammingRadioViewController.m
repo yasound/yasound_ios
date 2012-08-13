@@ -40,7 +40,7 @@
 
 - (void)dealloc
 {
-    [SongCatalog releaseSynchronizedCatalog];
+//    [SongCatalog releaseSynchronizedCatalog];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }

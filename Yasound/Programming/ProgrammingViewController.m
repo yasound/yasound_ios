@@ -625,7 +625,7 @@
 {
     if (self.tableview != nil)
         [self.tableview.tableView removeFromSuperview];
-    [self.tableview release];
+//    [self.tableview release];
     self.tableview = nil;
 
     if (itemIndex == WHEEL_ITEM_LOCAL)

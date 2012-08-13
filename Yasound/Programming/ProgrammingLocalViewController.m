@@ -49,7 +49,7 @@
 
 - (void)dealloc
 {
-    [SongCatalog releaseAvailableCatalog];
+//    [SongCatalog releaseAvailableCatalog];
     [super dealloc];
 }
 
