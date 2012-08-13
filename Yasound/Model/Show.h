@@ -27,9 +27,13 @@ typedef enum
 @property (retain, nonatomic) NSString* day;
 @property (retain, nonatomic) NSDate* time;
 @property (retain, nonatomic) NSNumber* random_play;
+@property (retain, nonatomic) NSNumber* enabled;
 
 - (BOOL)isRandomBool;
 - (void)setRandomBool:(BOOL)random;
+
+- (BOOL)isEnabledBool;
+- (void)setEnabledBool:(BOOL)e;
 
 - (DayType)dayType;
 - (void)setDayType:(DayType)t;

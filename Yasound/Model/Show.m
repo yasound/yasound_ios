@@ -24,6 +24,7 @@
 @synthesize day;
 @synthesize time;
 @synthesize random_play;
+@synthesize enabled;
 
 - (BOOL)isRandomBool
 {
@@ -33,6 +34,16 @@
 - (void)setRandomBool:(BOOL)random
 {
     self.random_play = [NSNumber numberWithBool:random];
+}
+
+- (BOOL)isEnabledBool
+{
+    return [self.enabled boolValue];
+}
+
+- (void)setEnabledBool:(BOOL)e
+{
+    self.enabled = [NSNumber numberWithBool:e];
 }
 
 - (DayType)dayType
