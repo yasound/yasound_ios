@@ -45,6 +45,13 @@ objc_property_t* getPropertyList(Class objectClass, unsigned int* outCount);
     {
       // standard objects are immediate
       val = [dict valueForKey:propName];
+        
+        // fix weird bug: sometimes, number values are seen as strings
+        if (c == [NSNumber class] && [val isKindOfClass:[NSString class]] && ![val isKindOfClass:[NSNull class]])
+        {
+            val = [NSNumber numberWithFloat:[val floatValue]];
+        }
+            
     }
     else if (c == [NSDate class])
     {
