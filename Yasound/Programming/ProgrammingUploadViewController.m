@@ -254,7 +254,7 @@
 
 - (void)onNotificationNeedGuiRefresh:(NSNotification*)notif
 {
-    [self reloadData];
+    [self.tableView reloadData];
 }
 
 

@@ -47,6 +47,12 @@
 #define SEGMENT_INDEX_SERVER 2
 
 
+- (void)dealloc
+{
+    [SongCatalog releaseAvailableCatalog];
+    [super dealloc];
+}
+
 
 
 - (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio
@@ -60,24 +66,19 @@
         
         self.sortedArtists = [[NSMutableDictionary alloc] init];
         self.sortedSongs = [[NSMutableDictionary alloc] init];
+        
+        [self load];
     }
     return self;
 }
 
 
-- (void)dealloc
+
+
+
+
+- (void)load
 {
-    [SongCatalog releaseAvailableCatalog];
-    [super dealloc];
-}
-
-
-
-
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
 
@@ -107,6 +108,9 @@
     
     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(afterBreath:) userInfo:nil repeats:NO];
 }
+
+
+
 
 - (void)afterBreath:(NSTimer*)timer
 {
@@ -166,7 +170,7 @@
 //        
 //    }
     
-    [self reloadData];
+    [self.tableView reloadData];
 
 }
 
@@ -688,7 +692,7 @@
 
 - (void)onNotificationUploadCanceled:(NSNotification*)notif
 {
-    [self reloadData];
+    [self.tableView reloadData];
 }
 
 

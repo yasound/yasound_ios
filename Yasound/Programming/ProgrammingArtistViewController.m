@@ -247,7 +247,7 @@
     NSArray* array = [self.catalog.selectedArtistRepo allKeys];
     self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
     
-    [self reloadData];
+    [self.tableView reloadData];
 }
 
 

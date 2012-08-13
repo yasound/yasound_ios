@@ -33,17 +33,6 @@
 @synthesize radio;
 @synthesize catalog;
 
-- (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio
-{
-    self = [super initWithStyle:style];
-    if (self)
-    {
-        self.radio = radio;
-        self.catalog = catalog;
-    }
-    return self;
-}
-
 
 - (void)dealloc
 {
@@ -52,11 +41,24 @@
 }
 
 
-
-- (void)viewDidLoad
+- (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio
 {
-    [super viewDidLoad];
-    
+    self = [super initWithStyle:style];
+    if (self)
+    {
+        self.radio = radio;
+        self.catalog = catalog;
+        
+        [self load];
+    }
+    return self;
+}
+
+
+
+
+- (void)load
+{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoved:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
@@ -286,7 +288,7 @@
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
     
-    [self reloadData];
+    [self.tableView reloadData];
 }
 
 
@@ -295,14 +297,14 @@
     UIViewController* sender = notif.object;
     
     if (sender != self)
-        [self reloadData];
+        [self.tableView reloadData];
 }
 
 
 
 - (void)onNotificationUploadCanceled:(NSNotification*)notif
 {
-    [self reloadData];
+    [self.tableView reloadData];
 }
 
 

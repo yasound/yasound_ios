@@ -598,7 +598,7 @@
 "Show.switch.label" = "Enable this schedule";
 "Show.prog.label" = "Programming";
 
-"Programming.Catalog.local" = "My music";
+"Programming.Catalog.local" = "My iPhone";
 "Programming.Catalog.radio" = "My radio";
 "Programming.Catalog.server" = "Yasound's music";
 "Programming.Catalog.uploads" = "Uploads";

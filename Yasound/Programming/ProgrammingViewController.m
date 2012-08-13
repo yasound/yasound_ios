@@ -11,6 +11,7 @@
 #import "Radio.h"
 #import "YasoundDataProvider.h"
 #import "SongInfoViewController.h"
+#import "ProgrammingRadioViewController.h"
 #import "ProgrammingUploadViewController.h"
 #import "ProgrammingLocalViewController.h"
 #import "TimeProfile.h"
@@ -28,6 +29,7 @@
 //@synthesize sortedArtists;
 //@synthesize sortedSongs;
 @synthesize container;
+@synthesize tableview;
 
 #define SEGMENT_INDEX_ALPHA 0
 #define SEGMENT_INDEX_ARTIST 1
@@ -96,14 +98,14 @@
 //    _tableView.hidden = YES;
     
 
-    [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
+//    [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
     
     //DLog(@"%d - %d", _nbReceivedData, _nbPlaylists);
     
     // PROFILE
-    [[TimeProfile main] begin:TIMEPROFILE_BUILD];
-    
-    [[SongCatalog synchronizedCatalog] downloadMatchedSongsForRadio:self.radio target:self action:@selector(matchedSongsDownloaded:success:)];
+//    [[TimeProfile main] begin:TIMEPROFILE_BUILD];
+//    
+//    [[SongCatalog synchronizedCatalog] downloadMatchedSongsForRadio:self.radio target:self action:@selector(matchedSongsDownloaded:success:)];
 }
 
 
@@ -621,22 +623,33 @@
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {
+    if (self.tableview != nil)
+        [self.tableview.tableView removeFromSuperview];
+    [self.tableview release];
+    self.tableview = nil;
+
     if (itemIndex == WHEEL_ITEM_LOCAL)
     {
-        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil forRadio:self.radio];
-        [self.navigationController pushViewController:view animated:NO];
+        ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
+        [self.container addSubview:view.tableView];
+        
+        self.tableview = view;
         [view release];
     }
     else if (itemIndex == WHEEL_ITEM_RADIO)
     {
-//        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithNibName:@"ProgrammingRadioViewController" bundle:nil  forRadio:self.radio];
-//        [self.navigationController pushViewController:view animated:NO];
-//        [view release];
+        ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
+        [self.container addSubview:view.tableView];
+        
+        self.tableview = view;
+        [view release];
     }
     else if (itemIndex == WHEEL_ITEM_UPLOADS)
     {
-        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:NO];
+        ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
+        [self.container addSubview:view.tableView];
+        
+        self.tableview = view;
         [view release];
     }
 }

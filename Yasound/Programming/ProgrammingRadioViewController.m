@@ -37,6 +37,15 @@
 
 
 
+
+- (void)dealloc
+{
+    [SongCatalog releaseSynchronizedCatalog];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
+}
+
+
 - (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio
 {
     self = [super initWithStyle:style];
@@ -57,26 +66,19 @@
             [SongCatalog releaseSynchronizedCatalog];
             [SongCatalog releaseAvailableCatalog];
         }
+        
+        [self load];
     }
     return self;
 }
 
 
-- (void)dealloc
+
+
+
+
+- (void)load
 {
-    [SongCatalog releaseSynchronizedCatalog];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super dealloc];
-}
-
-
-
-
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoved:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
     
@@ -154,7 +156,7 @@
     
     // now that the synchronization is been done,
 //    _tableView.hidden = NO;
-    [self reloadData];
+    [self.tableView reloadData];
 
     [ActivityAlertView close];
 }
@@ -551,7 +553,7 @@
 //
 //- (IBAction)onSegmentClicked:(id)sender
 //{
-//    [self reloadData];
+//    [self.tableView reloadData];
 //}
 //
 //
@@ -563,7 +565,7 @@
 //    self.sortedArtists = [[NSMutableDictionary alloc] init];
 //    self.sortedSongs = [[NSMutableDictionary alloc] init];    
 //    
-//    [self reloadData];
+//    [self.tableView reloadData];
 //}
 //
 //
@@ -574,7 +576,7 @@
 //    //LBDEBUG : ICI : release objects?
 //    
 //    if (sender != self)
-//        [self reloadData];    
+//        [self.tableView reloadData];    
 //}
 //
 //
