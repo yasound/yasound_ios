@@ -20,6 +20,7 @@
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
 #import "SongLocal.h"
+#import "ProgrammingCell.h"
 //#import "ProgrammingLocalViewController.h"
 //#import "ProgrammingRadioViewController.h"
 
@@ -137,6 +138,12 @@
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 46;
+}
+
+
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -147,66 +154,128 @@
 
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
+//{
+//    static NSString* CellIdentifier = @"Cell";
+//    
+//    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    
+//    if (cell == nil) 
+//    {
+//        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+//    }
+//    
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    UIImageView* di = [sheet makeImage];
+//    cell.accessoryView = di;
+//    [di release];
+//
+//    
+//    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+//    
+//    sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
+//    cell.textLabel.textColor = [sheet fontTextColor];
+//    cell.textLabel.font = [sheet makeFont];
+//    
+//    
+//    sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
+//    cell.detailTextLabel.textColor = [sheet fontTextColor];
+//    cell.detailTextLabel.font = [sheet makeFont];
+//
+//    
+//    
+//    
+//    NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
+//    cell.textLabel.text = albumKey;
+//
+//     NSArray* songs = [self.catalog.selectedArtistRepo objectForKey:albumKey];
+//
+//    NSInteger nbSongs = songs.count;
+//    
+//    if (nbSongs == 1)
+//        cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_songs_1", nil);
+//    else
+//        cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_songs_n", nil);
+//    
+//    cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];    
+//
+//    id firstSong = [songs objectAtIndex:0];
+//    if ([firstSong isKindOfClass:[SongLocal class]])
+//    {
+//        SongLocal* songLocal = (SongLocal*)firstSong;
+//        
+//        NSInteger imageSize = 44;
+//        cell.imageView.image = [songLocal.artwork imageWithSize:CGSizeMake(imageSize,imageSize)];
+//    }
+//        
+//    
+//    return cell;
+//}
+//
+
+
+
+
+
+
+
+
+
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* CellIdentifier = @"Cell";
     
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) 
-    {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIImageView* di = [sheet makeImage];
-    cell.accessoryView = di;
-    [di release];
-
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    
-    sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
-    cell.textLabel.textColor = [sheet fontTextColor];
-    cell.textLabel.font = [sheet makeFont];
-    
-    
-    sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
-    cell.detailTextLabel.textColor = [sheet fontTextColor];
-    cell.detailTextLabel.font = [sheet makeFont];
-
-    
-    
+    ProgrammingCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
-    cell.textLabel.text = albumKey;
-
-     NSArray* songs = [self.catalog.selectedArtistRepo objectForKey:albumKey];
-
+    
+    NSArray* songs = [self.catalog.selectedArtistRepo objectForKey:albumKey];
+    
     NSInteger nbSongs = songs.count;
     
+    NSString* detailText;
     if (nbSongs == 1)
-        cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_songs_1", nil);
+        detailText = NSLocalizedString(@"ProgramminView_nb_songs_1", nil);
     else
-        cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_songs_n", nil);
+        detailText = NSLocalizedString(@"ProgramminView_nb_songs_n", nil);
     
-    cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];    
-
+    detailText = [detailText stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbSongs]];
+    
     id firstSong = [songs objectAtIndex:0];
+    UIImage* customImage = nil;
     if ([firstSong isKindOfClass:[SongLocal class]])
     {
         SongLocal* songLocal = (SongLocal*)firstSong;
         
-        NSInteger imageSize = 44;
-        cell.imageView.image = [songLocal.artwork imageWithSize:CGSizeMake(imageSize,imageSize)];
+        NSInteger imageSize = 30;
+        customImage = [songLocal.artwork imageWithSize:CGSizeMake(imageSize,imageSize)];
     }
-        
+    
+    // else customImage will be replaced by refSong's image
+
+    
+    if (cell == nil)
+    {
+        cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier text:albumKey detailText:detailText customImage:customImage refSong:firstSong] autorelease];
+    }
+    else
+        [cell updateWithText:albumKey detailText:detailText customImage:customImage refSong:firstSong];
+    
+    
+    
+    
+    
     
     return cell;
 }
+
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -21,7 +21,7 @@
 #import "ProgrammingArtistViewController.h"
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
-#import "ProgrammingTitleCell.h"
+#import "ProgrammingCell.h"
 
 @implementation ProgrammingViewController
 
@@ -363,11 +363,11 @@
 //    Song* song = [songs objectAtIndex:indexPath.row];
 //    
 //    
-//    ProgrammingTitleCell* cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    ProgrammingCell* cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 //    
 //    if (cell == nil) 
 //    {
-//        cell = [[[ProgrammingTitleCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:0 deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
+//        cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:0 deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
 //    }
 //    else
 //        [cell updateWithSong:song atRow:0];

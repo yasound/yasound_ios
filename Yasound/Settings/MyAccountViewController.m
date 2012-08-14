@@ -165,13 +165,13 @@ enum SectionBio
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
 
         
-        sheet = [[Theme theme] stylesheetForKey:@"TableView.image" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"MyAccount.image" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
         self.userImage = [[WebImageView alloc] initWithImageAtURL:url];
         self.userImage.frame = sheet.frame;
         [cell addSubview:self.userImage];
 
-        sheet = [[Theme theme] stylesheetForKey:@"TableView.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"MyAccount.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         UIImage* mask = [sheet makeImage];
         [cell addSubview:mask];
     }

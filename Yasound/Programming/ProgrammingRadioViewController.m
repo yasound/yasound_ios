@@ -19,7 +19,7 @@
 #import "SongCatalog.h"
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
-#import "ProgrammingTitleCell.h"
+#import "ProgrammingCell.h"
 
 @implementation ProgrammingRadioViewController
 
@@ -291,10 +291,10 @@
 
 
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{    
-//    return 44;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{    
+    return 46;
+}
 
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -381,11 +381,11 @@
     Song* song = [songs objectAtIndex:indexPath.row];
     
     
-    ProgrammingTitleCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ProgrammingCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) 
     {
-        cell = [[[ProgrammingTitleCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:0 deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
+        cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:0 deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
     }
     else
         [cell updateWithSong:song atRow:0];

@@ -1,5 +1,5 @@
 //
-//  ProgrammingTitleCell.h
+//  ProgrammingCell.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 23/04/12.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Song.h"
+#import "WebImageView.h"
 
 
-@interface ProgrammingTitleCell : UITableViewCell
+@interface ProgrammingCell : UITableViewCell
 {
     BOOL _editMode;
     
@@ -18,6 +19,7 @@
     SEL _deletingAction; // (void)onDeleteRequestedL:(UITableViewCell*)cell forSong:(Song*)song
 }
 
+@property (nonatomic, retain) WebImageView* image;
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* sublabel;
 @property (nonatomic, retain) UIButton* buttonDelete;
@@ -27,8 +29,14 @@
 @property (nonatomic) NSInteger row;
 
 
+// use title and subtitle from song
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withSong:(Song*)aSong atRow:(NSInteger)row deletingTarget:(id)deletingTarget deletingAction:(SEL)deletingAction;
 
+// use custom title and subtitle
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier text:(NSString*)text detailText:(NSString*)detailText customImage:(UIImage*)customImage refSong:(Song*)aSong;
+
 - (void)updateWithSong:(Song*)aSong atRow:(NSInteger)row;
+
+- (void)updateWithText:(NSString*)text detailText:(NSString*)detailText customImage:(UIImage*)customImage refSong:(Song*)refSong;
 
 @end

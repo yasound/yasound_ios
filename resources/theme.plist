@@ -10,6 +10,31 @@
 	<string>theme_default</string>
 	<key>stylesheet</key>
 	<dict>
+		<key>MyAccount</key>
+		<dict>
+			<key>mask</key>
+			<dict>
+				<key>name</key>
+				<string>myAccountPictureMask</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>239</integer>
+				<key>y</key>
+				<integer>2</integer>
+			</dict>
+			<key>image</key>
+			<dict>
+				<key>height</key>
+				<integer>34</integer>
+				<key>width</key>
+				<integer>34</integer>
+				<key>x</key>
+				<integer>242</integer>
+				<key>y</key>
+				<integer>5</integer>
+			</dict>
+		</dict>
 		<key>Common</key>
 		<dict>
 			<key>gradient</key>
@@ -36,6 +61,28 @@
 		</dict>
 		<key>TableView</key>
 		<dict>
+			<key>cellImage</key>
+			<dict>
+				<key>x</key>
+				<integer>7</integer>
+				<key>y</key>
+				<integer>8</integer>
+				<key>width</key>
+				<integer>30</integer>
+				<key>height</key>
+				<integer>30</integer>
+			</dict>
+			<key>cellImageMask</key>
+			<dict>
+				<key>name</key>
+				<string>tableviewCellImageMask</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
 			<key>bigButton</key>
 			<dict>
 				<key>button</key>
@@ -145,6 +192,14 @@
 			</dict>
 			<key>textLabel</key>
 			<dict>
+				<key>x</key>
+				<integer>48</integer>
+				<key>y</key>
+				<integer>8</integer>
+				<key>width</key>
+				<integer>264</integer>
+				<key>height</key>
+				<integer>15</integer>
 				<key>font</key>
 				<dict>
 					<key>weight</key>
@@ -161,6 +216,14 @@
 			</dict>
 			<key>detailTextLabel</key>
 			<dict>
+				<key>height</key>
+				<integer>15</integer>
+				<key>width</key>
+				<integer>264</integer>
+				<key>y</key>
+				<integer>24</integer>
+				<key>x</key>
+				<integer>48</integer>
 				<key>font</key>
 				<dict>
 					<key>weight</key>
@@ -218,28 +281,6 @@
 					<key>backgroundColor</key>
 					<string>clear</string>
 				</dict>
-			</dict>
-			<key>image</key>
-			<dict>
-				<key>height</key>
-				<integer>34</integer>
-				<key>width</key>
-				<integer>34</integer>
-				<key>x</key>
-				<integer>242</integer>
-				<key>y</key>
-				<integer>5</integer>
-			</dict>
-			<key>mask</key>
-			<dict>
-				<key>name</key>
-				<string>myAccountPictureMask</string>
-				<key>type</key>
-				<string>png</string>
-				<key>x</key>
-				<integer>239</integer>
-				<key>y</key>
-				<integer>2</integer>
 			</dict>
 			<key>disclosureIndicator</key>
 			<dict>
@@ -1853,27 +1894,7 @@
 					<string>bold</string>
 				</dict>
 			</dict>
-			<key>ProgrammingTitleCell_sublabel</key>
-			<dict>
-				<key>font</key>
-				<dict>
-					<key>size</key>
-					<integer>13</integer>
-					<key>text</key>
-					<string>lorem ipsum dolore imet lorem ipsum dolore imet lorem ipsum dolore</string>
-					<key>textColor</key>
-					<string>gray</string>
-				</dict>
-				<key>height</key>
-				<integer>15</integer>
-				<key>width</key>
-				<integer>280</integer>
-				<key>x</key>
-				<integer>8</integer>
-				<key>y</key>
-				<integer>24</integer>
-			</dict>
-			<key>ProgrammingTitleCell_buttonDelete_label</key>
+			<key>ProgrammingCell_buttonDelete_label</key>
 			<dict>
 				<key>font</key>
 				<dict>
@@ -1904,28 +1925,6 @@
 				<integer>6</integer>
 				<key>y</key>
 				<integer>6</integer>
-			</dict>
-			<key>ProgrammingTitleCell_label</key>
-			<dict>
-				<key>font</key>
-				<dict>
-					<key>weight</key>
-					<string>bold</string>
-					<key>size</key>
-					<integer>15</integer>
-					<key>text</key>
-					<string>lorem ipsum dolore imet lorem ipsum dolore imet lorem ipsum dolore</string>
-					<key>textColor</key>
-					<string>white</string>
-				</dict>
-				<key>height</key>
-				<integer>15</integer>
-				<key>width</key>
-				<integer>280</integer>
-				<key>x</key>
-				<integer>8</integer>
-				<key>y</key>
-				<integer>8</integer>
 			</dict>
 		</dict>
 		<key>Menu</key>

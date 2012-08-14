@@ -23,7 +23,7 @@
 #import "SongAddCell.h"
 #import "AudioStreamManager.h"
 #import "LocalSongInfoViewController.h"
-#import "ProgrammingTitleCell.h"
+#import "ProgrammingCell.h"
 #import "ProgrammingLocalViewController.h"
 #import "ProgrammingRadioViewController.h"
 
@@ -140,6 +140,10 @@
 
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 46;
+}
 
 
 
@@ -178,11 +182,11 @@
 
         Song* song = [self.catalog getSongAtRow:indexPath.row];
         
-        ProgrammingTitleCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        ProgrammingCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) 
         {
-            cell = [[[ProgrammingTitleCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:(indexPath.row+1) deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
+            cell = [[[ProgrammingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier withSong:song atRow:(indexPath.row+1) deletingTarget:self deletingAction:@selector(onSongDeleteRequested:song:)] autorelease];
         }
         else
             [cell updateWithSong:song atRow:(indexPath.row+1)];
