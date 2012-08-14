@@ -156,7 +156,6 @@
 
 "PlaylistsView_title" = "Programming";
 "PlaylistsView_howto" = "Select the playlists you would like to use as your radio content. None of the tracks will be uploaded. We will only send the listing to our servers where there will be analyzed everyday in order to play the integrity of the tracks you have selected.";
-"PlaylistsView_empty_message" = "Warning: there are currently no playlists\navailable on this device. \n You need to select at least one playlist to create your radio. Meanwhile, you can stream radios shared by your community.";
 "PlaylistsView_submit_title" = "updating playlists";
 "PlaylistsView_submit_error_creating_radio" = "Could not create the radio";
 "PlaylistsView_submit_error_radio" = "Could not get the radio";
@@ -602,5 +601,6 @@
 "Programming.Catalog.radio" = "My radio";
 "Programming.Catalog.server" = "Yasound's music";
 "Programming.Catalog.uploads" = "Uploads";
+"Programming.empty" = "Add some music to your device, by synchronizing it with iTunes.";
 
 

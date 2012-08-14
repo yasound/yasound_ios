@@ -1018,6 +1018,22 @@
 		BC40972C15DA837600F6E22A /* ProgrammingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40972615DA837600F6E22A /* ProgrammingCell.m */; };
 		BC40972D15DA837600F6E22A /* ProgrammingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40972615DA837600F6E22A /* ProgrammingCell.m */; };
 		BC40972E15DA837600F6E22A /* ProgrammingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40972615DA837600F6E22A /* ProgrammingCell.m */; };
+		BC40973115DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40972F15DA9CCD00F6E22A /* programmingEmptyCatalog.png */; };
+		BC40973215DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40972F15DA9CCD00F6E22A /* programmingEmptyCatalog.png */; };
+		BC40973315DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40972F15DA9CCD00F6E22A /* programmingEmptyCatalog.png */; };
+		BC40973415DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40972F15DA9CCD00F6E22A /* programmingEmptyCatalog.png */; };
+		BC40973515DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40972F15DA9CCD00F6E22A /* programmingEmptyCatalog.png */; };
+		BC40973615DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40972F15DA9CCD00F6E22A /* programmingEmptyCatalog.png */; };
+		BC40973715DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40972F15DA9CCD00F6E22A /* programmingEmptyCatalog.png */; };
+		BC40973815DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40972F15DA9CCD00F6E22A /* programmingEmptyCatalog.png */; };
+		BC40973915DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40973015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png */; };
+		BC40973A15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40973015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png */; };
+		BC40973B15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40973015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png */; };
+		BC40973C15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40973015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png */; };
+		BC40973D15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40973015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png */; };
+		BC40973E15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40973015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png */; };
+		BC40973F15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40973015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png */; };
+		BC40974015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC40973015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png */; };
 		BC40CBBF14CF63A300DF0950 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
 		BC40CBC014CF63A800DF0950 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
 		BC40CBC114CF63B200DF0950 /* libfacebook_ios_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBBC14CF635D00DF0950 /* libfacebook_ios_sdk.a */; };
@@ -6349,6 +6365,8 @@
 		BC40971415DA7FB000F6E22A /* tableviewCellImageMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableviewCellImageMask@2x.png"; sourceTree = "<group>"; };
 		BC40972515DA837500F6E22A /* ProgrammingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingCell.h; path = Programming/ProgrammingCell.h; sourceTree = "<group>"; };
 		BC40972615DA837600F6E22A /* ProgrammingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingCell.m; path = Programming/ProgrammingCell.m; sourceTree = "<group>"; };
+		BC40972F15DA9CCD00F6E22A /* programmingEmptyCatalog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = programmingEmptyCatalog.png; sourceTree = "<group>"; };
+		BC40973015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "programmingEmptyCatalog@2x.png"; sourceTree = "<group>"; };
 		BC40CBB414CF635D00DF0950 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "ThirdParties/facebook-ios-sdk/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		BC40CBC514CF649400DF0950 /* OAuthConsumer-iPhoneLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "OAuthConsumer-iPhoneLib.xcodeproj"; path = "ThirdParties/Twitter-OAuth-iPhone/OAuthConsumeriPhoneLib/OAuthConsumer-iPhoneLib.xcodeproj"; sourceTree = "<group>"; };
 		BC40CBD014CF64B100DF0950 /* jQueryInject.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jQueryInject.txt; sourceTree = "<group>"; };
@@ -8793,6 +8811,8 @@
 		BCE35FA315D7FD2F008C26AC /* Programming */ = {
 			isa = PBXGroup;
 			children = (
+				BC40972F15DA9CCD00F6E22A /* programmingEmptyCatalog.png */,
+				BC40973015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png */,
 				BCE35FA415D7FD2F008C26AC /* programmingIconAdd.png */,
 				BCE35FA515D7FD2F008C26AC /* programmingIconAdd@2x.png */,
 				BCE35FA615D7FD2F008C26AC /* programmingIconAddDisabled.png */,
@@ -10123,6 +10143,8 @@
 				BC071AC215D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 				BC40971B15DA7FB000F6E22A /* tableviewCellImageMask.png in Resources */,
 				BC40972315DA7FB000F6E22A /* tableviewCellImageMask@2x.png in Resources */,
+				BC40973715DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */,
+				BC40973F15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10665,6 +10687,8 @@
 				BC071AC315D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 				BC40971C15DA7FB000F6E22A /* tableviewCellImageMask.png in Resources */,
 				BC40972415DA7FB000F6E22A /* tableviewCellImageMask@2x.png in Resources */,
+				BC40973815DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */,
+				BC40974015DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11201,6 +11225,8 @@
 				BC071AC115D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 				BC40971A15DA7FB000F6E22A /* tableviewCellImageMask.png in Resources */,
 				BC40972215DA7FB000F6E22A /* tableviewCellImageMask@2x.png in Resources */,
+				BC40973615DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */,
+				BC40973E15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11742,6 +11768,8 @@
 				BC071ABE15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 				BC40971715DA7FB000F6E22A /* tableviewCellImageMask.png in Resources */,
 				BC40971F15DA7FB000F6E22A /* tableviewCellImageMask@2x.png in Resources */,
+				BC40973315DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */,
+				BC40973B15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12283,6 +12311,8 @@
 				BC071ABD15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 				BC40971615DA7FB000F6E22A /* tableviewCellImageMask.png in Resources */,
 				BC40971E15DA7FB000F6E22A /* tableviewCellImageMask@2x.png in Resources */,
+				BC40973215DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */,
+				BC40973A15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12824,6 +12854,8 @@
 				BC071AC015D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 				BC40971915DA7FB000F6E22A /* tableviewCellImageMask.png in Resources */,
 				BC40972115DA7FB000F6E22A /* tableviewCellImageMask@2x.png in Resources */,
+				BC40973515DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */,
+				BC40973D15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13365,6 +13397,8 @@
 				BC071ABC15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 				BC40971515DA7FB000F6E22A /* tableviewCellImageMask.png in Resources */,
 				BC40971D15DA7FB000F6E22A /* tableviewCellImageMask@2x.png in Resources */,
+				BC40973115DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */,
+				BC40973915DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13906,6 +13940,8 @@
 				BC071ABF15D9070E001F38D7 /* ProgrammingViewController.xib in Resources */,
 				BC40971815DA7FB000F6E22A /* tableviewCellImageMask.png in Resources */,
 				BC40972015DA7FB000F6E22A /* tableviewCellImageMask@2x.png in Resources */,
+				BC40973415DA9CCD00F6E22A /* programmingEmptyCatalog.png in Resources */,
+				BC40973C15DA9CCD00F6E22A /* programmingEmptyCatalog@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

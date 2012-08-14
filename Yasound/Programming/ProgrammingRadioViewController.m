@@ -111,8 +111,10 @@
     // waiting for the synchronization to be done
 //    _tableView.hidden = YES;
     
+    BOOL isCached = [SongCatalog synchronizedCatalog].cached;
 
-    [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
+    if (!isCached)
+        [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
     
     //DLog(@"%d - %d", _nbReceivedData, _nbPlaylists);
     

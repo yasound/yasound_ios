@@ -10,7 +10,7 @@
 #import "WheelSelector.h"
 #import "Radio.h"
 #import "ProgrammingViewController.h"
-
+#import "ProgrammingArtistViewController.h"
 
 @interface ProgrammingLocalViewController : UITableViewController
 {
@@ -45,6 +45,7 @@
 //
 //@property (nonatomic, assign) NSDictionary* matchedSongs;
 
+@property (nonatomic, retain) ProgrammingArtistViewController* artistVC;
 
 
 - (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio;

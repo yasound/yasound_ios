@@ -39,7 +39,7 @@
 //@synthesize subtitle;
 @synthesize sortedArtists;
 @synthesize sortedSongs;
-
+@synthesize artistVC;
 
 
 #define SEGMENT_INDEX_ALPHA 0
@@ -49,8 +49,18 @@
 
 - (void)dealloc
 {
-//    [SongCatalog releaseAvailableCatalog];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    if (self.artistVC)
+    {
+        [self.artistVC onBackClicked];
+        [self.artistVC.tableView removeFromSuperview];
+        [self.artistVC release];
+        self.artistVC = nil;
+    }
+    
     [super dealloc];
+    
 }
 
 
@@ -66,6 +76,8 @@
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
         
         self.sortedArtists = [[NSMutableDictionary alloc] init];
         self.sortedSongs = [[NSMutableDictionary alloc] init];
@@ -106,17 +118,20 @@
 //    _searchController.searchResultsTableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
 //    _searchController.searchResultsTableView.rowHeight = _tableView.rowHeight;
     
+    BOOL isCached = [SongCatalog availableCatalog].cached;
+
     
-    [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];        
+    if (!isCached)
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];        
     
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(afterBreath:) userInfo:nil repeats:NO];
-}
-
-
-
-
-- (void)afterBreath:(NSTimer*)timer
-{
+//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(afterBreath:) userInfo:nil repeats:NO];
+//}
+//
+//
+//
+//
+//- (void)afterBreath:(NSTimer*)timer
+//{
     // PROFILE
     [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
     
@@ -173,9 +188,24 @@
 //        
 //    }
     
+    if ([SongCatalog availableCatalog].nbSongs == 0)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
+        UIImageView* view = [sheet makeImage];
+        [self.tableView addSubview:view];
+        [view release];
+        
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];
+        
+    }
+    
     [self.tableView reloadData];
 
 }
+    
+    
 
 - (void)viewDidUnload
 {
@@ -306,6 +336,9 @@
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
 {    
     if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
+        return nil;
+    
+    if ([SongCatalog availableCatalog].nbSongs == 0)
         return nil;
     
 //    if (_selectedIndex == SEGMENT_INDEX_SERVER)
@@ -500,9 +533,20 @@
         
         [[SongCatalog availableCatalog] selectArtist:artistKey withIndex:charIndex];
 
-        ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongCatalog availableCatalog] forRadio:self.radio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
+        
+        self.artistVC = [[ProgrammingArtistViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongCatalog availableCatalog] forRadio:self.radio];
+        CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.artistVC.tableView.frame = frame;
+        [self.view addSubview:self.artistVC.tableView];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        
+        frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.artistVC.tableView.frame = frame;
+        
+        [UIView commitAnimations];
     }
     
 }
@@ -512,11 +556,57 @@
 - (void)setSegment:(NSInteger)index
 {
     self.selectedSegmentIndex = index;
+    
+    if (self.artistVC)
+    {
+        [self.artistVC onBackClicked];
+        [self.artistVC.tableView removeFromSuperview];
+        [self.artistVC release];
+        self.artistVC = nil;
+    }
+    
     [self.tableView reloadData];
 }
 
 
 
+
+- (BOOL)onBackClicked
+{
+    BOOL goBack = YES;
+    if (self.artistVC)
+    {
+        goBack = [self.artistVC onBackClicked];
+        
+        if (goBack)
+        {
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.33];
+            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+            [UIView setAnimationDelegate:self];
+            [UIView setAnimationDidStopSelector:@selector(removeAnimationDidStop:finished:context:)];
+            
+            CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+            self.artistVC.tableView.frame = frame;
+            
+            [UIView commitAnimations];
+            
+            return NO;
+        }
+    }
+    
+    return goBack;
+}
+
+
+
+
+- (void)removeAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+    [self.artistVC.tableView removeFromSuperview];
+    [self.artistVC release];
+    self.artistVC = nil;
+}
 
 
 

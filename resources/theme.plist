@@ -1833,6 +1833,13 @@
 		</dict>
 		<key>Programming</key>
 		<dict>
+			<key>empty</key>
+			<dict>
+				<key>name</key>
+				<string>programmingEmptyCatalog</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
 			<key>SongAdd_addButton</key>
 			<dict>
 				<key>x</key>

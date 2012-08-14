@@ -33,6 +33,7 @@
 @property (nonatomic) SEL action; // - (void)matchedSongsDownloaded:(NSDictionary*)info success:(NSNumber* BOOL)success;
                                     // info : (NSInteger)nbMatchedSongs infoMessage:(NSString*)infoMessage
 
+@property (nonatomic) BOOL cached;
 
 @property (nonatomic, retain) NSMutableDictionary* matchedSongs;
 

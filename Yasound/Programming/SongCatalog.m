@@ -24,6 +24,7 @@
 
 @implementation SongCatalog
 
+@synthesize cached;
 @synthesize radio;
 @synthesize target;
 @synthesize action;
@@ -123,6 +124,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         _lowerCaseSet = [[NSCharacterSet lowercaseLetterCharacterSet] retain];
         _upperCaseSet = [[NSCharacterSet uppercaseLetterCharacterSet] retain];
         
+        self.cached = NO;
         self.nbSongs = 0;
 
         
@@ -363,6 +365,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         [self catalogWithoutSorting:song  usingArtistKey:artistKey andAlbumKey:albumKey];
         self.nbSongs++;    
     }
+    
+    self.cached = YES;
 }
 
 
@@ -411,6 +415,9 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         self.nbSongs++;
         
     }
+    
+    self.cached = YES;
+
 }
 
 
