@@ -60,7 +60,7 @@
     self = [super initWithStyle:style];
     if (self)
     {
-        _selectedIndex = -1;
+        self.selectedSegmentIndex = SEGMENT_INDEX_ALPHA;
         
         self.radio = radio;
         
@@ -211,8 +211,8 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {        
-    if (_selectedIndex == SEGMENT_INDEX_SERVER)
-        return 1;
+//    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+//        return 1;
     
     return [SongCatalog availableCatalog].indexMap.count;
 }
@@ -220,8 +220,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (_selectedIndex == SEGMENT_INDEX_SERVER)
-        return 0;
+//    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+//        return 0;
     
     NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
     if (nbRows == 0)
@@ -305,8 +305,11 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
 {    
-    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
         return nil;
+    
+//    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+//        return nil;
     
 
     return [SongCatalog availableCatalog].indexMap;
@@ -315,10 +318,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
 {
-    if (_selectedIndex == SEGMENT_INDEX_SERVER)
-    {
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
         return 0;
-    }
+//    if (_selectedIndex == SEGMENT_INDEX_SERVER)
+//    {
+//        return 0;
+//    }
     
     
     return index;

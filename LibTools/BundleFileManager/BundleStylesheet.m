@@ -857,6 +857,19 @@ static NSMutableDictionary* gImageViews = nil;
 }
 
 
+- (UIColor*)fontTextColor
+{
+    BundleFontsheet* fontsheet = [self.fontsheets objectForKey:@"default"];
+    return fontsheet.textColor;
+    
+}
+
+- (UIColor*)fontBackgroundColor
+{
+    BundleFontsheet* fontsheet = [self.fontsheets objectForKey:@"default"];
+    return fontsheet.backgroundColor;
+}
+
 
 //....................................................................................
 //

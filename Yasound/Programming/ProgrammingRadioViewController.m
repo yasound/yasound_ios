@@ -39,6 +39,15 @@
 {
 //    [SongCatalog releaseSynchronizedCatalog];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    if (self.artistVC)
+    {
+        [self.artistVC onBackClicked];
+        [self.artistVC.tableView removeFromSuperview];
+        [self.artistVC release];
+        self.artistVC = nil;
+    }
+
     [super dealloc];
 }
 
@@ -49,9 +58,11 @@
     if (self)
     {
         self.radio = radio;
+        self.selectedSegmentIndex = SEGMENT_INDEX_ALPHA;
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
         
         self.sortedArtists = [[NSMutableDictionary alloc] init];
@@ -296,12 +307,18 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
 {
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
+        return nil;
+    
     return [SongCatalog synchronizedCatalog].indexMap;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
 {
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
+        return 0;
+    
     return index;
 }
 
@@ -444,8 +461,25 @@
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
         }
         
-        cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* di = [sheet makeImage];
+    cell.accessoryView = di;
+    [di release];
+    
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
+    cell.textLabel.textColor = [sheet fontTextColor];
+    cell.textLabel.font = [sheet makeFont];
+    
+    
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
+    cell.detailTextLabel.textColor = [sheet fontTextColor];
+    cell.detailTextLabel.font = [sheet makeFont];
         
         
     //LBDEBUG

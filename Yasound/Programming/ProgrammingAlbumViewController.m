@@ -48,6 +48,8 @@
     {
         self.radio = radio;
         self.catalog = catalog;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
         
         [self load];
     }

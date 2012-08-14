@@ -38,16 +38,30 @@ static NSMutableDictionary* gEditingSongs = nil;
         
         _deletingTarget = deletingTarget;
         _deletingAction = deletingAction;
+        
+        self.selectionStyle = UITableViewCellSelectionStyleGray;
+
+
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.textLabel.backgroundColor = [sheet fontBackgroundColor];
+        self.textLabel.textColor = [sheet fontTextColor];
+        self.textLabel.font = [sheet makeFont];
+        
+        
+        sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
+        self.detailTextLabel.textColor = [sheet fontTextColor];
+        self.detailTextLabel.font = [sheet makeFont];
 
         
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.ProgrammingTitleCell_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.label = [sheet makeLabel];
-        [self addSubview:self.label];
-
-
-        sheet = [[Theme theme] stylesheetForKey:@"Programming.ProgrammingTitleCell_sublabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.sublabel = [sheet makeLabel];
-        [self addSubview:self.sublabel];
+//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        self.label = [sheet makeLabel];
+//        [self addSubview:self.label];
+//
+//
+//        sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        self.sublabel = [sheet makeLabel];
+//        [self addSubview:self.sublabel];
 
         [self updateWithSong:aSong atRow:row];
         
@@ -77,29 +91,30 @@ static NSMutableDictionary* gEditingSongs = nil;
 }
 
 
+
 - (void)updateWithSong:(Song*)aSong atRow:(NSInteger)row
 {
     self.song = aSong;
     self.row = row;
     
     if (self.row == 0)
-        self.label.text = song.name;
+        self.textLabel.text = song.name;
     else
-        self.label.text = [NSString stringWithFormat:@"%d. %@", self.row, song.name];
-
-    self.sublabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
+        self.textLabel.text = [NSString stringWithFormat:@"%d. %@", self.row, song.name];
+    
+    self.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
     
     BOOL editing = ([gEditingSongs objectForKey:self.song.name] != nil);
-
+    
     if ([song isSongEnabled])
     {
         self.label.textColor = [UIColor whiteColor];
-        self.sublabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+//        self.detailTextLabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
     }
-    else 
+    else
     {
         self.label.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-        self.sublabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
+        self.detailTextLabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
     }
     
     if (editing && !_editMode)
@@ -112,6 +127,43 @@ static NSMutableDictionary* gEditingSongs = nil;
     }
 }
 
+
+
+//- (void)updateWithSong:(Song*)aSong atRow:(NSInteger)row
+//{
+//    self.song = aSong;
+//    self.row = row;
+//    
+//    if (self.row == 0)
+//        self.label.text = song.name;
+//    else
+//        self.label.text = [NSString stringWithFormat:@"%d. %@", self.row, song.name];
+//
+//    self.sublabel.text = [NSString stringWithFormat:@"%@ - %@", song.album, song.artist];
+//    
+//    BOOL editing = ([gEditingSongs objectForKey:self.song.name] != nil);
+//
+//    if ([song isSongEnabled])
+//    {
+//        self.label.textColor = [UIColor whiteColor];
+//        self.sublabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+//    }
+//    else 
+//    {
+//        self.label.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+//        self.sublabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
+//    }
+//    
+//    if (editing && !_editMode)
+//    {
+//        [self activateEditModeAnimated:NO];
+//    }
+//    else if (!editing && _editMode)
+//    {
+//        [self deactivateEditModeAnimated:NO];
+//    }
+//}
+//
 
 
 

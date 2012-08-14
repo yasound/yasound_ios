@@ -94,6 +94,10 @@
 // create a fond, using the parsed font style
 - (UIFont*)makeFont;
 
+// shortcut
+- (UIColor*)fontTextColor;
+- (UIColor*)fontBackgroundColor;
+
 // create a label using the parsed font styles
 - (UILabel*)makeLabel;
 //- (UITextField*)makeTextfield;

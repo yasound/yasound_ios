@@ -27,7 +27,7 @@
 //    IBOutlet UILabel* _itunesConnectLabel;
     
 //    IBOutlet UISearchBar* _searchBar;
-    NSInteger _selectedIndex;
+//    NSInteger _selectedIndex;
 //    IBOutlet UISearchDisplayController* _searchController;
     
 }

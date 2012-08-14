@@ -143,6 +143,38 @@
 					<string>clear</string>
 				</dict>
 			</dict>
+			<key>textLabel</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>weight</key>
+					<string>bold</string>
+					<key>textAlignment</key>
+					<string>left</string>
+					<key>size</key>
+					<integer>15</integer>
+					<key>textColor</key>
+					<string>rgb(252,252,252)</string>
+					<key>backgroundColor</key>
+					<string>clear</string>
+				</dict>
+			</dict>
+			<key>detailTextLabel</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>weight</key>
+					<string>bold</string>
+					<key>textAlignment</key>
+					<string>left</string>
+					<key>size</key>
+					<integer>11</integer>
+					<key>textColor</key>
+					<string>rgb(166,177,185)</string>
+					<key>backgroundColor</key>
+					<string>clear</string>
+				</dict>
+			</dict>
 			<key>textfield</key>
 			<dict>
 				<key>height</key>

@@ -41,6 +41,8 @@
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
         
         NSArray* array = [self.catalog.selectedArtistRepo allKeys];
          self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
@@ -156,14 +158,27 @@
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.detailTextLabel.backgroundColor = [UIColor clearColor];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* di = [sheet makeImage];
+    cell.accessoryView = di;
+    [di release];
 
     
-//    NSArray* albums = [self.catalog.selectedArtistRepo allKeys];
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
-    cell.textLabel.textColor = [UIColor whiteColor];
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
+    cell.textLabel.textColor = [sheet fontTextColor];
+    cell.textLabel.font = [sheet makeFont];
+    
+    
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
+    cell.detailTextLabel.textColor = [sheet fontTextColor];
+    cell.detailTextLabel.font = [sheet makeFont];
+
+    
+    
     
     NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
     cell.textLabel.text = albumKey;
