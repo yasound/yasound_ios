@@ -20,6 +20,7 @@
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
 #import "ProgrammingCell.h"
+#import "YasoundAppDelegate.h"
 
 @implementation ProgrammingRadioViewController
 
@@ -94,6 +95,7 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoved:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongUpdated:) name:NOTIF_PROGAMMING_SONG_UPDATED object:nil];
     
 
 //    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
@@ -532,7 +534,7 @@
         Song* song = [[self.sortedSongs objectForKey:charIndex] objectAtIndex:indexPath.row];
         
         SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES];
-        [self.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     else
@@ -655,28 +657,38 @@
 //
 //
 //
-//- (void)onNotifSongAdded:(NSNotification*)notif
-//{
-//    [self.sortedSongs release];
-//    [self.sortedArtists release];
-//    self.sortedArtists = [[NSMutableDictionary alloc] init];
-//    self.sortedSongs = [[NSMutableDictionary alloc] init];    
-//    
-//    [self.tableView reloadData];
-//}
-//
-//
-//- (void)onNotifSongRemoved:(NSNotification*)notif
-//{    
-//    UIViewController* sender = notif.object;
-//    
-//    //LBDEBUG : ICI : release objects?
-//    
-//    if (sender != self)
-//        [self.tableView reloadData];    
-//}
-//
-//
+
+- (void)onNotifSongAdded:(NSNotification*)notif
+{
+    [self.sortedSongs release];
+    [self.sortedArtists release];
+    self.sortedArtists = [[NSMutableDictionary alloc] init];
+    self.sortedSongs = [[NSMutableDictionary alloc] init];    
+    
+    [self.tableView reloadData];
+}
+
+
+- (void)onNotifSongRemoved:(NSNotification*)notif
+{    
+    UIViewController* sender = notif.object;
+    
+    //LBDEBUG : ICI : release objects?
+    
+    if (sender != self)
+        [self.tableView reloadData];    
+}
+
+
+- (void)onNotifSongUpdated:(NSNotification*)notif
+{
+    UIViewController* sender = notif.object;
+    
+    if (sender != self)
+        [self.tableView reloadData];
+}
+
+
 
 
 

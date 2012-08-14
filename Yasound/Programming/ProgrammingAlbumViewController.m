@@ -26,6 +26,7 @@
 #import "ProgrammingCell.h"
 #import "ProgrammingLocalViewController.h"
 #import "ProgrammingRadioViewController.h"
+#import "YasoundAppDelegate.h"
 
 
 @implementation ProgrammingAlbumViewController
@@ -64,6 +65,7 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoved:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongUpdated:) name:NOTIF_PROGAMMING_SONG_UPDATED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
     
 
@@ -248,7 +250,7 @@
         Song* song = [self.catalog getSongAtRow:indexPath.row];
 
         SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES];
-        [self.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     else if (self.catalog == [SongCatalog availableCatalog])
@@ -256,7 +258,7 @@
         SongLocal* songLocal = (SongLocal*)[self.catalog getSongAtRow:indexPath.row];
 
         LocalSongInfoViewController* view = [[LocalSongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:songLocal];
-        [self.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
 
@@ -301,6 +303,15 @@
 
 - (void)onNotifSongRemoved:(NSNotification*)notif
 {    
+    UIViewController* sender = notif.object;
+    
+    if (sender != self)
+        [self.tableView reloadData];
+}
+
+
+- (void)onNotifSongUpdated:(NSNotification*)notif
+{
     UIViewController* sender = notif.object;
     
     if (sender != self)

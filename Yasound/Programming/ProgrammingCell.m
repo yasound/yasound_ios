@@ -172,13 +172,15 @@ static NSMutableDictionary* gEditingSongs = nil;
 
     if ([song isSongEnabled])
     {
-        self.label.textColor = [UIColor whiteColor];
-        self.sublabel.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+        self.label.alpha = 1;
+        self.sublabel.alpha = 1;
+        self.image.alpha = 1;
     }
     else 
     {
-        self.label.textColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
-        self.sublabel.textColor = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1];
+        self.label.alpha = 0.5;
+        self.sublabel.alpha = 0.5;
+        self.image.alpha = 0.5;
     }
     
     if (editing && !_editMode)

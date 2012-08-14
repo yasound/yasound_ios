@@ -608,6 +608,9 @@
     
     [self.song enableSong:enabled];
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_UPDATED object:nil];
+
+    
     [[YasoundDataProvider main] updateSong:self.song target:self action:@selector(onSongUpdated:info:)];
 }
 
