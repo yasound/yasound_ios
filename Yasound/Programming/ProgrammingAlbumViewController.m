@@ -49,6 +49,7 @@
         self.radio = radio;
         self.catalog = catalog;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
         
         
         [self load];

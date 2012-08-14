@@ -63,6 +63,7 @@
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
 
         
         self.sortedArtists = [[NSMutableDictionary alloc] init];
@@ -554,14 +555,19 @@
         [[SongCatalog synchronizedCatalog] selectArtist:artistKey withIndex:charIndex];
         
         self.artistVC = [[ProgrammingArtistViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongCatalog synchronizedCatalog] forRadio:self.radio];
-        CGRect frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
         self.artistVC.tableView.frame = frame;
         [self.view addSubview:self.artistVC.tableView];
         
-//        [self.artistVC release];
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+
+        frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.artistVC.tableView.frame = frame;
         
-//        [self.navigationController pushViewController:view animated:YES];
-//        [view release];
+        [UIView commitAnimations];
+
     }
 
 }
@@ -593,14 +599,32 @@
         
         if (goBack)
         {
-            [self.artistVC.tableView removeFromSuperview];
-            [self.artistVC release];
-            self.artistVC = nil;
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.33];
+            [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+            [UIView setAnimationDelegate:self];
+            [UIView setAnimationDidStopSelector:@selector(removeAnimationDidStop:finished:context:)];
+            
+            CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+            self.artistVC.tableView.frame = frame;
+            
+            [UIView commitAnimations];
+
             return NO;
         }
     }
     
     return goBack;
+}
+
+
+
+
+- (void)removeAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+    [self.artistVC.tableView removeFromSuperview];
+    [self.artistVC release];
+    self.artistVC = nil;
 }
 
 

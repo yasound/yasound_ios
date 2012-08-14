@@ -42,6 +42,7 @@
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
 
         
         NSArray* array = [self.catalog.selectedArtistRepo allKeys];
@@ -215,12 +216,21 @@
     
     NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
     [self.catalog selectAlbum:albumKey];
-
+    
     self.albumVC = [[ProgrammingAlbumViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:self.catalog forRadio:self.radio];
-    CGRect frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+    CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
     self.albumVC.tableView.frame = frame;
-    [self.view addSubview:albumVC.tableView];
-//    [viewc release];
+    [self.view addSubview:self.albumVC.tableView];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.33];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+    self.albumVC.tableView.frame = frame;
+    [UIView commitAnimations];
+
+    
+    //    [viewc release];
 }
 
 
@@ -275,13 +285,27 @@
 {
     if (self.albumVC)
     {
-        [self.albumVC.tableView removeFromSuperview];
-        [self.albumVC release];
-        self.albumVC = nil;
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(removeAnimationDidStop:finished:context:)];
+        CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.albumVC.tableView.frame = frame;
+        [UIView commitAnimations];
+        
         return NO;
     }
     
     return YES;
+
+}
+
+- (void)removeAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+    [self.albumVC.tableView removeFromSuperview];
+    [self.albumVC release];
+    self.albumVC = nil;
 }
 
 
