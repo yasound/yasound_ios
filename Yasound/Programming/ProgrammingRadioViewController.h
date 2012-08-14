@@ -9,7 +9,7 @@
 #import "TestflightViewController.h"
 #import "Radio.h"
 #import "ProgrammingViewController.h"
-
+#import "ProgrammingArtistViewController.h"
 
 @interface ProgrammingRadioViewController : UITableViewController <UIActionSheetDelegate>
 {
@@ -27,7 +27,10 @@
 
 @property (nonatomic) NSInteger selectedSegmentIndex;
 
-- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio;
+@property (nonatomic, retain) ProgrammingArtistViewController* artistVC;
 
+- (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio;
+- (void)setSegment:(NSInteger)index;
+- (BOOL)onBackClicked;
 
 @end

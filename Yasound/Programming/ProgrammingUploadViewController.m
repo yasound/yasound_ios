@@ -268,15 +268,13 @@
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
+
+- (void)setSegment:(NSInteger)index
 {
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)onButtonClicked:(id)sender
-{
 
-}
+
 
 
 

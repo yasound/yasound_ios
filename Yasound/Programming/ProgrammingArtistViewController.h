@@ -8,7 +8,7 @@
 
 #import "TestflightViewController.h"
 #import "SongCatalog.h"
-//#import "WheelSelector.h"
+#import "ProgrammingAlbumViewController.h"
 
 @interface ProgrammingArtistViewController : UITableViewController <UIActionSheetDelegate>
 {
@@ -26,7 +26,11 @@
 @property (nonatomic, assign) SongCatalog* catalog;
 @property (nonatomic, retain) NSArray* sortedAlbums;
 
+@property (nonatomic, retain) ProgrammingAlbumViewController* albumVC;
+
+
 - (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio;
 
+- (BOOL)onBackClicked;
 
 @end

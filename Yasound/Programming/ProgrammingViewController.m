@@ -554,7 +554,9 @@
 
 - (IBAction)onSegmentClicked:(id)sender
 {
-//    [_tableView reloadData];
+    NSInteger index = _segment.selectedSegmentIndex;
+    
+    [self.tableview setSegment:index];
 }
 
 
@@ -624,34 +626,50 @@
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {
     if (self.tableview != nil)
+    {
         [self.tableview.tableView removeFromSuperview];
-//    [self.tableview release];
-    self.tableview = nil;
+        [self.tableview release];
+        self.tableview = nil;
+    }
 
     if (itemIndex == WHEEL_ITEM_LOCAL)
     {
         ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
-        [self.container addSubview:view.tableView];
-        
         self.tableview = view;
-        [view release];
     }
     else if (itemIndex == WHEEL_ITEM_RADIO)
     {
         ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
-        [self.container addSubview:view.tableView];
-        
         self.tableview = view;
-        [view release];
     }
     else if (itemIndex == WHEEL_ITEM_UPLOADS)
     {
         ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
-        [self.container addSubview:view.tableView];
-        
         self.tableview = view;
-        [view release];
     }
+    
+    self.tableview.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    CGRect frame = CGRectMake(0, 0, self.container.frame.size.width, self.container.frame.size.height);
+    self.tableview.tableView.frame = frame;
+    [self.container addSubview:self.tableview.tableView];
+    
+    //[view release];
+    
+}
+
+
+
+
+
+
+
+
+#pragma mark - TopBarDelegate
+
+- (BOOL)topBarBackClicked
+{
+    BOOL goBack = [self.tableview onBackClicked];
+    return goBack;
 }
 
 

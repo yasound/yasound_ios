@@ -9,9 +9,13 @@
 #import "TestflightViewController.h"
 #import "WheelSelector.h"
 #import "Radio.h"
+#import "TopBar.h"
+
+#define SEGMENT_INDEX_ALPHA 0
+#define SEGMENT_INDEX_ARTIST 1
 
 
-@interface ProgrammingViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate>
+@interface ProgrammingViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate, TopBarDelegate>
 {
 //    IBOutlet UIBarButtonItem* _synchroBtn;
     

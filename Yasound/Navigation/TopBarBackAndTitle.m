@@ -116,10 +116,13 @@
 
 - (void)onBack:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(topBarBack:)])
-        [self.delegate topBarBack];
+    BOOL goBack = YES;
+    
+    if ([self.delegate respondsToSelector:@selector(topBarBackClicked)])
+        goBack = [self.delegate topBarBackClicked];
 
-    [APPDELEGATE.navigationController popViewControllerAnimated:YES];
+    if (goBack)
+        [APPDELEGATE.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -9,7 +9,7 @@
 
 
 @protocol TopBarBackAndTitleDelegate <NSObject>
-- (void)topBarBack;
+- (BOOL)topBarBackClicked;
 - (NSString*)topBarTitle;
 - (UIView*)topBarTitleView;
 @end

@@ -175,7 +175,7 @@
 
         Song* song = [self.catalog getSongAtRow:indexPath.row];
         
-        ProgrammingTitleCell* cell = [self dequeueReusableCellWithIdentifier:CellIdentifier];
+        ProgrammingTitleCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) 
         {

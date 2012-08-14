@@ -21,5 +21,6 @@
 //@property (nonatomic, retain) WheelSelector* wheelSelector;
 
 - (id)initWithStyle:(UITableViewStyle)style  forRadio:(Radio*)radio;
+- (void)setSegment:(NSInteger)index;
 
 @end

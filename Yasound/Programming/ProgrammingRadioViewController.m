@@ -17,7 +17,6 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "SongCatalog.h"
-#import "ProgrammingArtistViewController.h"
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
 #import "ProgrammingTitleCell.h"
@@ -28,9 +27,7 @@
 @synthesize sortedArtists;
 @synthesize sortedSongs;
 @synthesize selectedSegmentIndex;
-
-#define SEGMENT_INDEX_ALPHA 0
-#define SEGMENT_INDEX_ARTIST 1
+@synthesize artistVC;
 
 
 #define TIMEPROFILE_BUILD @"Programming build catalog"
@@ -440,7 +437,7 @@
     
         static NSString* CellIdentifier = @"Cell";
         
-        UITableViewCell* cell = [self dequeueReusableCellWithIdentifier:CellIdentifier];
+        UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) 
         {
@@ -522,17 +519,55 @@
         
         [[SongCatalog synchronizedCatalog] selectArtist:artistKey withIndex:charIndex];
         
-        ProgrammingArtistViewController* view = [[ProgrammingArtistViewController alloc] initWithNibName:@"ProgrammingArtistViewController" bundle:nil usingCatalog:[SongCatalog synchronizedCatalog] forRadio:self.radio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
+        self.artistVC = [[ProgrammingArtistViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongCatalog synchronizedCatalog] forRadio:self.radio];
+        CGRect frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.artistVC.tableView.frame = frame;
+        [self.view addSubview:self.artistVC.tableView];
+        
+//        [self.artistVC release];
+        
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release];
     }
 
 }
 
 
 
+- (void)setSegment:(NSInteger)index
+{
+    self.selectedSegmentIndex = index;
+    
+    if (self.artistVC)
+    {
+        [self.artistVC onBackClicked];
+        [self.artistVC.tableView removeFromSuperview];
+        [self.artistVC release];
+        self.artistVC = nil;
+    }
+    
+    [self.tableView reloadData];
+}
 
 
+- (BOOL)onBackClicked
+{
+    BOOL goBack = YES;
+    if (self.artistVC)
+    {
+        goBack = [self.artistVC onBackClicked];
+        
+        if (goBack)
+        {
+            [self.artistVC.tableView removeFromSuperview];
+            [self.artistVC release];
+            self.artistVC = nil;
+            return NO;
+        }
+    }
+    
+    return goBack;
+}
 
 
 

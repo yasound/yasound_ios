@@ -17,12 +17,11 @@
 #import "BundleFileManager.h"
 #import "Theme.h"
 #import "SongCatalog.h"
-#import "ProgrammingAlbumViewController.h"
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
 #import "SongLocal.h"
-#import "ProgrammingLocalViewController.h"
-#import "ProgrammingRadioViewController.h"
+//#import "ProgrammingLocalViewController.h"
+//#import "ProgrammingRadioViewController.h"
 
 @implementation ProgrammingArtistViewController
 
@@ -30,7 +29,7 @@
 @synthesize radio;
 @synthesize catalog;
 @synthesize sortedAlbums;
-
+@synthesize albumVC;
 
 - (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio
 {
@@ -39,6 +38,9 @@
     {
         self.radio = radio;
         self.catalog = catalog;
+        
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
         
         NSArray* array = [self.catalog.selectedArtistRepo allKeys];
          self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
@@ -199,10 +201,11 @@
     NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
     [self.catalog selectAlbum:albumKey];
 
-    ProgrammingAlbumViewController* view = [[ProgrammingAlbumViewController alloc] initWithNibName:@"ProgrammingAlbumViewController" bundle:nil usingCatalog:self.catalog forRadio:self.radio];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-
+    self.albumVC = [[ProgrammingAlbumViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:self.catalog forRadio:self.radio];
+    CGRect frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+    self.albumVC.tableView.frame = frame;
+    [self.view addSubview:albumVC.tableView];
+//    [viewc release];
 }
 
 
@@ -218,19 +221,19 @@
 
 
 
-
-
-#pragma mark - IBActions
-
-
-
-- (IBAction)onSynchronize:(id)semder
-{
-    ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-}
-
+//
+//
+//#pragma mark - IBActions
+//
+//
+//
+//- (IBAction)onSynchronize:(id)semder
+//{
+//    ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
+//}
+//
 
 //- (IBAction)onAdd:(id)sender
 //{
@@ -249,6 +252,23 @@
     
     [self.tableView reloadData];
 }
+
+
+
+
+- (BOOL)onBackClicked
+{
+    if (self.albumVC)
+    {
+        [self.albumVC.tableView removeFromSuperview];
+        [self.albumVC release];
+        self.albumVC = nil;
+        return NO;
+    }
+    
+    return YES;
+}
+
 
 
 //
