@@ -252,7 +252,7 @@
 
 #pragma mark - TopBarDelegate
 
-- (void)topBarBackItemClicked:(TopBarItemId)itemId
+- (void)topBarItemClicked:(TopBarItemId)itemId
 {
     APNsPreferences* prefs = [[NotificationManager main] APNsPreferences];
     [[YasoundDataProvider main] setApnsPreferences:prefs target:nil action:nil];

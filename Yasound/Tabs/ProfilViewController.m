@@ -322,7 +322,7 @@
 
 #pragma mark - TopBarDelegate
 
-- (void)topBarBackItemClicked:(TopBarItemId)itemId
+- (void)topBarItemClicked:(TopBarItemId)itemId
 {
 }
 

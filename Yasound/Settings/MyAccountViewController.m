@@ -325,7 +325,7 @@ enum SectionBio
 
 #pragma mark - TopBarDelegate
 
-- (void)topBarBackItemClicked:(TopBarItemId)itemId
+- (void)topBarItemClicked:(TopBarItemId)itemId
 {
     if (_changed || _imageChanged)
         [self save];

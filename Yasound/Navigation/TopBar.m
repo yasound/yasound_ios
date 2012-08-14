@@ -148,8 +148,8 @@
 
 - (void)onBack:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(topBarBackItemClicked:)])
-        [self.delegate topBarBackItemClicked:TopBarItemBack];
+    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+        [self.delegate topBarItemClicked:TopBarItemBack];
 
     [APPDELEGATE.navigationController popViewControllerAnimated:YES];
 }
@@ -157,8 +157,8 @@
 
 - (void)onNotif:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(topBarBackItemClicked:)])
-        [self.delegate topBarBackItemClicked:TopBarItemNotif];
+    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+        [self.delegate topBarItemClicked:TopBarItemNotif];
 
     NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
     [APPDELEGATE.navigationController pushViewController:view animated:YES];
@@ -167,20 +167,20 @@
 
 - (void)onTrash:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(topBarBackItemClicked:)])
-        [self.delegate topBarBackItemClicked:TopBarItemTrash];
+    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+        [self.delegate topBarItemClicked:TopBarItemTrash];
 }
 
 - (void)onAdd:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(topBarBackItemClicked:)])
-        [self.delegate topBarBackItemClicked:TopBarItemAdd];
+    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+        [self.delegate topBarItemClicked:TopBarItemAdd];
 }
 
 - (void)onSettings:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(topBarBackItemClicked:)])
-        [self.delegate topBarBackItemClicked:TopBarItemSettings];
+    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+        [self.delegate topBarItemClicked:TopBarItemSettings];
     
     SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:[AudioStreamManager main].currentRadio];
     [APPDELEGATE.navigationController pushViewController:view animated:YES];
@@ -191,8 +191,8 @@
 
 - (void)onNowPlaying:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(topBarBackItemClicked:)])
-        [self.delegate topBarBackItemClicked:TopBarItemNowPlaying];
+    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+        [self.delegate topBarItemClicked:TopBarItemNowPlaying];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:[AudioStreamManager main].currentRadio];
 }

@@ -257,11 +257,11 @@
         _timerUpdate = nil;
     }
     
-    // LBDEBUG hum hum... anti-bug for now
-    NSInteger retainCount = [self retainCount];
-    NSLog(@"RETAIN COUNT %d", retainCount);
-    for (NSInteger i = 0; i < retainCount-3; i++)
-        [self release];
+//    // LBDEBUG hum hum... anti-bug for now
+//    NSInteger retainCount = [self retainCount];
+//    NSLog(@"RETAIN COUNT %d", retainCount);
+//    for (NSInteger i = 0; i < retainCount-4; i++)
+//        [self release];
         
     [super viewWillDisappear: animated];
 }
@@ -1673,8 +1673,16 @@
 
 #pragma mark - TopBarDelegate
 
-- (void)topBarBackItemClicked:(TopBarItemId)itemId
+- (void)topBarItemClicked:(TopBarItemId)itemId
 {
+    if (itemId == TopBarItemBack)
+    {
+        // LBDEBUG hum hum... anti-bug for now
+        NSInteger retainCount = [self retainCount];
+        NSLog(@"RETAIN COUNT %d", retainCount);
+        for (NSInteger i = 0; i < retainCount-2; i++)
+            [self release];
+    }
 }
 
 
