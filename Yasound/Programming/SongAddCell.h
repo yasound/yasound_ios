@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Song.h"
-
+#import "SongLocal.h"
 
 @interface SongAddCell : UITableViewCell
 {
@@ -17,14 +16,15 @@
     UIAlertView* _addedUploadWarning;
 }
 
-@property (nonatomic, assign) Song* song;
+@property (nonatomic, assign) SongLocal* song;
 
+@property (nonatomic, retain) UIImageView* image;
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* detailedLabel;
 @property (nonatomic, retain) UIButton* button;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(Song*)song;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(SongLocal*)song;
 
-- (void)update:(Song*)song;
+- (void)update:(SongLocal*)song;
 
 @end

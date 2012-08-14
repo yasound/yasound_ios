@@ -18,6 +18,7 @@
 @synthesize catalogKey;
 @synthesize mediaItem;
 
+@synthesize cover;
 @synthesize artistKey;
 @synthesize albumKey;
 
@@ -50,6 +51,9 @@
         self.artistKey = [item valueForProperty:MPMediaItemPropertyArtist];
         self.albumKey = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
 
+        
+        self.cover = [[self.mediaItem valueForProperty:MPMediaItemPropertyArtwork] imageWithSize:CGSizeMake(128,128)];
+        
         // don't read the other information now.
         // do it the properties' getters, since we don't need those information in the catalog.
         

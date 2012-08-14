@@ -508,8 +508,8 @@
     // add an upload job to the queue
     [[SongUploadManager main] addSong:song startUploadNow:startUploadNow];
     
-    // and flag the current song as "uploading song"
-    song.uploading = YES;
+//    // and flag the current song as "uploading song"
+//    song.uploading = YES;
     
     if (!isWifi && ![SongUploadManager main].notified3G)
     {

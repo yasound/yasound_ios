@@ -20,20 +20,20 @@
 {
     if (self = [super init])
     {
-        _uploading = NO;
+//        _uploading = NO;
     }
     return self;
 }
 
-- (BOOL)isUploading
-{
-    return _uploading;
-}
-
-- (void)setUploading:(BOOL)set
-{
-    _uploading = set;
-}
+//- (BOOL)isUploading
+//{
+//    return _uploading;
+//}
+//
+//- (void)setUploading:(BOOL)set
+//{
+//    _uploading = set;
+//}
 
 
 @end

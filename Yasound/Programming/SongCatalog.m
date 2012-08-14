@@ -397,9 +397,15 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         Song* matchedSong = [synchronizedSource objectForKey:songLocal.catalogKey];
         
         
-        // don't include it if it's included in the matched songs already
+//        // don't include it if it's included in the matched songs already
+//        if (matchedSong != nil)
+//            continue;
+        //
+        // we don't do that anymore. We include all the songs, but a visual mark is displayed if the song is
+        // in the radio's programming already
         if (matchedSong != nil)
-            continue;
+            [songLocal setIsProgrammed:YES];
+        
         
         // before putting this song into the catalog,
         // check if it's not uploading already.

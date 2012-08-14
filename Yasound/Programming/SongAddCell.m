@@ -21,40 +21,86 @@
 @synthesize label;
 @synthesize detailedLabel;
 @synthesize button;
+@synthesize image;
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(Song*)aSong
+//
+//- (void)willMoveToSuperview:(UIView *)newSuperview
+//{
+//    [super willMoveToSuperview:newSuperview];
+//    if(!newSuperview)
+//    {
+//        if (self.image)
+//            [self.image releaseCache];
+//    }
+//}
+//
+
+
+#define COVER_SIZE 30
+
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(SongLocal*)aSong
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
+    BOOL isSongLocal = [aSong isKindOfClass:[SongLocal class]];
+    assert(isSongLocal);
     
     if (self) 
     {
         self.song = aSong;
         
         // button "add to upload list"
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.SongAdd_addButton" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.add" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.button = [sheet makeButton];
         [self.button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
         
-        if ([song isUploading])
+        if ([song isProgrammed])
             self.button.enabled = NO;
-    
         
-    sheet = [[Theme theme] stylesheetForKey:@"Programming.SongAdd_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    self.label = [sheet makeLabel];
-    self.label.text = aSong.name;
-    [self addSubview:self.label];
+        
+        CGFloat offset = self.button.frame.origin.x + self.button.frame.size.width;
+        
+        sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        UIImage* coverImage = [self.song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
 
-        sheet = [[Theme theme] stylesheetForKey:@"Programming.SongAdd_detailedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImage* coverImage = self.song.cover;
+
+        self.image = [[UIImageView alloc] initWithImage:coverImage];
+        [self addSubview:self.image];
+        
+
+        
+        sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImageMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImageView* mask = [sheet makeImage];
+        mask.frame = [self rect:sheet.frame withOffset:offset];
+        [self addSubview:mask];
+        
+        
+        sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.label = [sheet makeLabel];
+        self.label.frame = [self rect:sheet.frame withOffset:offset];
+        self.label.text = aSong.name;
+        [self addSubview:self.label];
+        
+        
+        sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.detailedLabel = [sheet makeLabel];
+        self.detailedLabel.frame = [self rect:sheet.frame withOffset:offset];
         self.detailedLabel.text = [NSString stringWithFormat:@"%@ - %@", aSong.album, aSong.artist];
         [self addSubview:self.detailedLabel];
-    
     }
     return self;
 }
 
+                      
+- (CGRect)rect:(CGRect)frame withOffset:(CGFloat)offset
+{
+    CGRect newframe = CGRectMake(frame.origin.x + offset, frame.origin.y, frame.size.width, frame.size.height);
+    return newframe;
+}
 
 //
 //- (void)willMoveToSuperview:(UIView *)newSuperview 
@@ -67,15 +113,19 @@
 //}
 
 
-- (void)update:(Song*)aSong
+- (void)update:(SongLocal*)aSong
 {
     self.song = aSong;
     
-    if ([song isUploading])
+    if ([song isProgrammed])
         self.button.enabled = NO;
     else
         self.button.enabled = YES;
 
+//    NSURL* url = [[YasoundDataProvider main] urlForSongCover:self.song];
+    //    self.image.image = [self.song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
+    self.image.image = self.song.cover;
+    
     self.label.text = aSong.name;
     self.detailedLabel.text = [NSString stringWithFormat:@"%@ - %@", aSong.album, aSong.artist];
 }
@@ -147,9 +197,9 @@
    // add an upload job to the queue
     [[SongUploadManager main] addSong:song startUploadNow:startUploadNow];
     
-    // and flag the current song as "uploading song"
-    song.uploading = YES;
-    [self update:song];
+//    // and flag the current song as "uploading song"
+//    [song setProgrammed
+//    [self update:song];
     
     if (!isWifi && ![SongUploadManager main].notified3G)
     {

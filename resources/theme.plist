@@ -199,7 +199,7 @@
 				<key>width</key>
 				<integer>264</integer>
 				<key>height</key>
-				<integer>15</integer>
+				<integer>17</integer>
 				<key>font</key>
 				<dict>
 					<key>weight</key>
@@ -1840,98 +1840,29 @@
 				<key>type</key>
 				<string>png</string>
 			</dict>
-			<key>SongAdd_addButton</key>
+			<key>add</key>
+			<dict>
+				<key>x</key>
+				<integer>8</integer>
+				<key>y</key>
+				<integer>9</integer>
+				<key>normal</key>
+				<string>programmingIconAdd</string>
+				<key>disabled</key>
+				<string>programmingIconAddDisabled</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>del</key>
 			<dict>
 				<key>x</key>
 				<integer>0</integer>
 				<key>y</key>
 				<integer>0</integer>
 				<key>normal</key>
-				<string>CellButtonAdd</string>
-				<key>disabled</key>
-				<string>CellButtonAddDisabled</string>
+				<string>programmingIconDel</string>
 				<key>type</key>
 				<string>png</string>
-			</dict>
-			<key>SongAdd_detailedLabel</key>
-			<dict>
-				<key>x</key>
-				<integer>52</integer>
-				<key>y</key>
-				<integer>22</integer>
-				<key>width</key>
-				<integer>240</integer>
-				<key>height</key>
-				<integer>16</integer>
-				<key>font</key>
-				<dict>
-					<key>textAlignment</key>
-					<string>left</string>
-					<key>size</key>
-					<integer>13</integer>
-					<key>textColor</key>
-					<string>rgb(128,128,128)</string>
-					<key>backgroundColor</key>
-					<string>clear</string>
-					<key>weight</key>
-					<string>normal</string>
-				</dict>
-			</dict>
-			<key>SongAdd_label</key>
-			<dict>
-				<key>x</key>
-				<integer>52</integer>
-				<key>y</key>
-				<integer>6</integer>
-				<key>width</key>
-				<integer>240</integer>
-				<key>height</key>
-				<integer>16</integer>
-				<key>font</key>
-				<dict>
-					<key>textAlignment</key>
-					<string>left</string>
-					<key>size</key>
-					<integer>16</integer>
-					<key>textColor</key>
-					<string>white</string>
-					<key>backgroundColor</key>
-					<string>clear</string>
-					<key>weight</key>
-					<string>bold</string>
-				</dict>
-			</dict>
-			<key>ProgrammingCell_buttonDelete_label</key>
-			<dict>
-				<key>font</key>
-				<dict>
-					<key>weight</key>
-					<string>bold</string>
-					<key>textAlignment</key>
-					<string>center</string>
-					<key>size</key>
-					<integer>11</integer>
-					<key>text</key>
-					<string>Delete</string>
-					<key>textColor</key>
-					<string>white</string>
-					<key>shadowOffset</key>
-					<string>0, -1</string>
-					<key>shadowRadius</key>
-					<integer>1</integer>
-					<key>shadowColor</key>
-					<string>black</string>
-					<key>shadowOpacity</key>
-					<real>0.5</real>
-				</dict>
-				<key>height</key>
-				<integer>15</integer>
-				<key>width</key>
-				<integer>45</integer>
-				<key>x</key>
-				<integer>6</integer>
-				<key>y</key>
-				<integer>6</integer>
 			</dict>
 		</dict>
 		<key>Menu</key>

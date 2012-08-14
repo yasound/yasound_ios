@@ -10,7 +10,7 @@
 
 @interface YasoundSong : Model
 {
-    BOOL _uploading;
+//    BOOL _uploading;
 }
 
 @property (retain, nonatomic) NSString* name;
@@ -18,7 +18,7 @@
 @property (retain, nonatomic) NSString* album_name;
 @property (retain, nonatomic) NSString* cover;
 
-- (BOOL)isUploading;
-- (void)setUploading:(BOOL)set;
+//- (BOOL)isUploading;
+//- (void)setUploading:(BOOL)set;
 
 @end

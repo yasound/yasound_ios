@@ -30,7 +30,7 @@
 {
     if (self = [super init])
     {
-        _uploading = NO;
+        _isProgrammed = NO;
         _removed = NO;
     }
     return self;
@@ -263,14 +263,14 @@
     return [self.album compare:second.album];
 }
 
-- (BOOL)isUploading
+- (BOOL)isProgrammed
 {
-    return _uploading;
+    return _isProgrammed;
 }
 
-- (void)setUploading:(BOOL)set
+- (void)setIsProgrammed:(BOOL)set
 {
-    _uploading = set;
+    _isProgrammed = set;
 }
 
 
