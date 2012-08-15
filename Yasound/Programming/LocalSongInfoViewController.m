@@ -163,7 +163,15 @@
 
         cell.selectionStyle  = UITableViewCellSelectionStyleNone;
 
-        _imageView = [[UIImageView alloc] initWithImage:[self.song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)]];
+        
+        UIImage* coverImage = [self.song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
+        if (coverImage == nil)
+        {
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy256" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            coverImage = [sheet image];
+        }
+        
+        _imageView = [[UIImageView alloc] initWithImage:coverImage];
 
         CGFloat size = COVER_SIZE;
         CGFloat height = (COVER_SIZE + 2*BORDER);

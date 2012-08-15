@@ -255,6 +255,11 @@
         
         NSInteger imageSize = 30;
         customImage = [songLocal.artwork imageWithSize:CGSizeMake(imageSize,imageSize)];
+        if (customImage == nil)
+        {
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            customImage = [sheet image];
+        }
     }
     
     // else customImage will be replaced by refSong's image

@@ -1833,6 +1833,20 @@
 		</dict>
 		<key>Programming</key>
 		<dict>
+			<key>cellImageDummy30</key>
+			<dict>
+				<key>name</key>
+				<string>programmingDummyTrack30</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>cellImageDummy256</key>
+			<dict>
+				<key>name</key>
+				<string>programmingDummyTrack256</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
 			<key>empty</key>
 			<dict>
 				<key>name</key>

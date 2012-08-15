@@ -422,7 +422,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         
     }
     
-    self.cached = YES;
+    if (self.nbSongs > 0)
+        self.cached = YES;
 
 }
 

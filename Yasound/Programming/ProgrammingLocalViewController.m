@@ -24,6 +24,8 @@
 #import "SongAddCell.h"
 #import "ProgrammingRadioViewController.h"
 #import "ProgrammingUploadViewController.h"
+#import "YasoundAppDelegate.h"
+
 
 
 #define TIMEPROFILE_AVAILABLECATALOG_BUILD @"TimeProfileAvailableCatalogBuild"
@@ -122,26 +124,18 @@
 
     
     if (!isCached)
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];        
+    {
+        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];
+        [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
+
+        [[SongCatalog availableCatalog] buildAvailableComparingToSource:[SongCatalog synchronizedCatalog].matchedSongs];
     
-//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(afterBreath:) userInfo:nil repeats:NO];
-//}
-//
-//
-//
-//
-//- (void)afterBreath:(NSTimer*)timer
-//{
-    // PROFILE
-    [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
-    
-    [[SongCatalog availableCatalog] buildAvailableComparingToSource:[SongCatalog synchronizedCatalog].matchedSongs];
-    
-    
-    // PROFILE
-    [[TimeProfile main] end:TIMEPROFILE_AVAILABLECATALOG_BUILD];
-    // PROFILE
-    [[TimeProfile main] logInterval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
+        [ActivityAlertView close];
+        // PROFILE
+        [[TimeProfile main] end:TIMEPROFILE_AVAILABLECATALOG_BUILD];
+        // PROFILE
+        [[TimeProfile main] logInterval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
+    }
 
     NSInteger count = [SongCatalog availableCatalog].nbSongs;
     
@@ -162,7 +156,6 @@
     
 
     
-    [ActivityAlertView close];
     
     
     
@@ -514,16 +507,13 @@
 //        return;
 //    }
     
-
-    
-    
     if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
         NSString* charIndex = [[SongCatalog availableCatalog].indexMap objectAtIndex:indexPath.section];
         SongLocal* songLocal = [[self.sortedSongs objectForKey:charIndex] objectAtIndex:indexPath.row];
 
         LocalSongInfoViewController* view = [[LocalSongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:songLocal];
-        [self.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     else

@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSString* artistKey;
 @property (nonatomic, retain) NSString* albumKey;
 
-@property (nonatomic, retain) UIImage* cover;
+//@property (nonatomic, retain) UIImage* cover;
 
 
 @property (nonatomic, retain) NSString* genre;

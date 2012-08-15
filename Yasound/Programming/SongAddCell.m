@@ -51,6 +51,8 @@
     {
         self.song = aSong;
         
+        self.selectionStyle = UITableViewCellSelectionStyleGray;
+        
         // button "add to upload list"
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.add" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.button = [sheet makeButton];
@@ -64,12 +66,16 @@
         CGFloat offset = self.button.frame.origin.x + self.button.frame.size.width;
         
         sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//        UIImage* coverImage = [self.song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
-
-        UIImage* coverImage = self.song.cover;
-
+        UIImage* coverImage = [self.song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
         self.image = [[UIImageView alloc] initWithImage:coverImage];
+        self.image.frame = [self rect:sheet.frame withOffset:offset];
         [self addSubview:self.image];
+        
+        if (coverImage == nil)
+        {
+            sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            self.image.image = [sheet image];
+        }
         
 
         
@@ -122,9 +128,15 @@
     else
         self.button.enabled = YES;
 
-//    NSURL* url = [[YasoundDataProvider main] urlForSongCover:self.song];
-    //    self.image.image = [self.song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
-    self.image.image = self.song.cover;
+    UIImage* coverImage = [self.song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
+    self.image.image = coverImage;
+    
+    if (coverImage == nil)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        self.image.image = [sheet image];
+    }
+
     
     self.label.text = aSong.name;
     self.detailedLabel.text = [NSString stringWithFormat:@"%@ - %@", aSong.album, aSong.artist];
