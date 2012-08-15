@@ -33,6 +33,7 @@
 @property (nonatomic, retain) NSMutableArray* items;
 @property (nonatomic, retain) NSMutableDictionary* itemToIndex;
 @property (nonatomic) BOOL needsToStick;
+@property (nonatomic) BOOL tapRegistered;
 
 
 - (void)stickToItem:(NSString*)itemId silent:(BOOL)silent;

@@ -9,6 +9,7 @@
 #import "WheelSelector.h"
 #import "Theme.h"
 #include <QuartzCore/QuartzCore.h>
+#import "InteractiveView.h"
 
 @implementation WheelSelector
 
@@ -16,6 +17,7 @@
 @synthesize items;
 @synthesize itemToIndex;
 @synthesize needsToStick;
+@synthesize tapRegistered;
 
 #define ITEM_TEXT 0
 #define ITEM_WIDTH 1
@@ -25,6 +27,7 @@
 - (void)awakeFromNib
 {
     self.needsToStick = NO;
+    self.tapRegistered = NO;
     
     self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wheelSelectorBackground.png"]];
     
@@ -54,8 +57,12 @@
     
     assert(self.items.count > 0);
         
-    CGFloat marginLeft = (self.frame.size.width /2.f) - ([[[self.items objectAtIndex:0] objectAtIndex:ITEM_WIDTH] floatValue] /2.f);
-    CGFloat marginRight = (self.frame.size.width /2.f) - ([[[self.items objectAtIndex:(self.items.count-1)] objectAtIndex:ITEM_WIDTH] floatValue]);
+    CGFloat W2 = (self.frame.size.width /2.f);
+    CGFloat firstWidth = [[[self.items objectAtIndex:0] objectAtIndex:ITEM_WIDTH] floatValue];
+    CGFloat fw2 = (firstWidth /2.f);
+    CGFloat marginLeft = W2 - fw2;
+//    CGFloat marginRight = (self.frame.size.width /2.f) - ([[[self.items objectAtIndex:(self.items.count-1)] objectAtIndex:ITEM_WIDTH] floatValue]);
+    CGFloat marginRight = (self.frame.size.width /2.f);
 
     CGFloat x = marginLeft;
         CGFloat y = 0;
@@ -64,16 +71,23 @@
         CGFloat width = 0;
     
         // add labels for the selector options, and compute the sticky positions for all items
+        NSInteger index = 0;
         for (NSMutableArray* item in self.items)
         {
             UILabel* label = [sheet makeLabel];
+            
             width = [[item objectAtIndex:ITEM_WIDTH] floatValue];
             
             // set the "sticky" position for this item (<=> the center position)
-            [item addObject:[NSNumber numberWithFloat:(x + width /2.f)]];
+            CGFloat stickyPos = (x + width /2.f);
+            [item addObject:[NSNumber numberWithFloat:stickyPos]];
             
             // set the "sticky" limit for this item (<=> where the influence of the next item begins)
-            [item addObject:[NSNumber numberWithFloat:(x + width + spacing/2.f)]];
+            CGFloat stickyLimit = (x + width + spacing/2.f);
+            [item addObject:[NSNumber numberWithFloat:stickyLimit]];
+            
+             //LBDEBUG
+            //NSLog(@"Item %d : width %.2f,   pos %.2f   limit %.2f", index, width, stickyPos, stickyLimit);
             
             label.text = [item objectAtIndex:ITEM_TEXT];
             CGRect frame = CGRectMake(x, y, width, h);
@@ -81,8 +95,17 @@
             
             [self addSubview:label];
             
+            // create an interactive view to support "1 tap" gesture
+            CGFloat stickyHalfWidth = stickyLimit - stickyPos;
+            frame = CGRectMake(stickyPos-stickyHalfWidth, 0, stickyHalfWidth*2.f, self.frame.size.height);
+            InteractiveView* button = [[InteractiveView alloc] initWithFrame:frame target:self action:@selector(onInteractiveTouchUp:) withObject:[NSNumber numberWithInteger:index]];
+            [button setTargetOnTouchDown:self action:@selector(onInteractiveTouchDown:) withObject:[NSNumber numberWithInteger:index]];
+            [self addSubview:button];
+
+            
             x += width;
             x += spacing;
+            index++;
         }
 
     // compute the contents size and set scrollview's behavior
@@ -135,6 +158,11 @@
 
 #pragma mark - UIScrollViewDelegate
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    self.tapRegistered = NO;
+}
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     self.needsToStick = decelerate;
@@ -161,6 +189,9 @@
 - (NSInteger)currentStickyIndex
 {
     CGFloat currentPost = self.contentOffset.x + self.frame.size.width/2.f;
+    
+    //LBDEBUG
+    //NSLog(@"currentPost %.2f", currentPost);
     
     // compute the index of the sticky item
     NSInteger stickyIndex = 0;
@@ -196,6 +227,26 @@
     // send signal to delegate
     if ([self.wheelDelegate respondsToSelector:@selector(wheelSelector:didSelectItemAtIndex:)])
         [self.wheelDelegate wheelSelector:self didSelectItemAtIndex:itemIndex];
+}
+
+
+
+
+#pragma mark - InteractiveView selectors
+
+- (void)onInteractiveTouchDown:(NSNumber*)object
+{
+    self.tapRegistered = YES;
+}
+
+- (void)onInteractiveTouchUp:(NSNumber*)object
+{
+    if (!self.tapRegistered)
+        return;
+    
+    NSInteger index = [object integerValue];
+    NSLog(@"onInteractiveTouchUp  index %d", index);
+    [self stickToItem:index silent:NO];
 }
 
 
