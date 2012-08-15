@@ -137,7 +137,10 @@ enum MenuDescription
 {
     cell.textLabel.textColor = [UIColor colorWithRed:195.f/255.f green:205.f/255.f blue:212.f/255.f alpha:1];
     cell.textLabel.text = NSLocalizedString(refText, nil);
-    [cell.imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", icon]]];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:icon retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    [cell.imageView setImage:[sheet image]];
+//    [cell.imageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", icon]]];
     
     if ((authenticated && [YasoundSessionManager main].registered) || !authenticated)
     {
@@ -165,46 +168,48 @@ enum MenuDescription
   UITableViewCell *cell = nil;
   
     cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) 
-      cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];    
+    if (cell == nil)
+    {
+      cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
+        cell.textLabel.backgroundColor = [UIColor clearColor];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+//        cell.textLabel.layer.shadowOffset = CGSizeMake(1, 1);
+//        cell.textLabel.layer.shadowOpacity = 0.75;
+//        cell.textLabel.layer.shadowRadius = 0.5;
+    }
   
 
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.textLabel.layer.shadowOffset = CGSizeMake(1, 1);
-    cell.textLabel.layer.shadowOpacity = 0.75;
-    cell.textLabel.layer.shadowRadius = 0.5;
     
 
     if (indexPath.row == ROW_RADIOS)
-        [self setCell:cell refText:@"Menu.radios" icon:@"menuIconRadios" authenticated:NO];
+        [self setCell:cell refText:@"Menu.radios" icon:@"Menu.iconRadios" authenticated:NO];
 
     else if (indexPath.row == ROW_LOGIN)
     {
         if ([YasoundSessionManager main].registered)
-            [self setCell:cell refText:@"Menu.logout" icon:@"menuIconLogin" authenticated:NO];
+            [self setCell:cell refText:@"Menu.logout" icon:@"Menu.iconLogin" authenticated:NO];
         else
-            [self setCell:cell refText:@"Menu.login" icon:@"menuIconLogin" authenticated:NO];
+            [self setCell:cell refText:@"Menu.login" icon:@"Menu.iconLogin" authenticated:NO];
     }
 
     else if (indexPath.row == ROW_ACCOUNT)
-        [self setCell:cell refText:@"Menu.account" icon:@"menuIconAccount" authenticated:YES];
+        [self setCell:cell refText:@"Menu.account" icon:@"Menu.iconAccount" authenticated:YES];
 
     else if (indexPath.row == ROW_NOTIFS)
-        [self setCell:cell refText:@"Menu.notifs" icon:@"menuIconNotifs" authenticated:YES];
+        [self setCell:cell refText:@"Menu.notifs" icon:@"Menu.iconNotifs" authenticated:YES];
 
     else if (indexPath.row == ROW_FACEBOOK)
-        [self setCell:cell refText:@"Menu.facebook" icon:@"menuIconFacebook" authenticated:YES];
+        [self setCell:cell refText:@"Menu.facebook" icon:@"Menu.iconFacebook" authenticated:YES];
 
     else if (indexPath.row == ROW_TWITTER)
-        [self setCell:cell refText:@"Menu.twitter" icon:@"menuIconTwitter" authenticated:YES];
+        [self setCell:cell refText:@"Menu.twitter" icon:@"Menu.iconTwitter" authenticated:YES];
 
     else if (indexPath.row == ROW_YASOUND)
-        [self setCell:cell refText:@"Menu.yasound" icon:@"menuIconYasound" authenticated:YES];
+        [self setCell:cell refText:@"Menu.yasound" icon:@"Menu.iconYasound" authenticated:YES];
 
     else if (indexPath.row == ROW_LEGAL)
-        [self setCell:cell refText:@"Menu.legal" icon:@"menuIconLegal" authenticated:NO];
+        [self setCell:cell refText:@"Menu.legal" icon:@"Menu.iconLegal" authenticated:NO];
 
     
     return cell;   

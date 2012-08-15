@@ -1870,7 +1870,56 @@
 			<key>iconRadios</key>
 			<dict>
 				<key>name</key>
-				<string>IconRadiosSearch</string>
+				<string>menuIconRadios</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>iconLogin</key>
+			<dict>
+				<key>name</key>
+				<string>menuIconLogin</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>iconAccount</key>
+			<dict>
+				<key>name</key>
+				<string>menuIconAccount</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>iconNotifs</key>
+			<dict>
+				<key>name</key>
+				<string>menuIconNotifs</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>iconFacebook</key>
+			<dict>
+				<key>name</key>
+				<string>menuIconFacebook</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>iconTwitter</key>
+			<dict>
+				<key>name</key>
+				<string>menuIconTwitter</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>iconYasound</key>
+			<dict>
+				<key>name</key>
+				<string>menuIconYasound</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+			<key>iconLegal</key>
+			<dict>
+				<key>name</key>
+				<string>menuIconLegal</string>
 				<key>type</key>
 				<string>png</string>
 			</dict>
