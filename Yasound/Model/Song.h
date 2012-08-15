@@ -22,6 +22,9 @@ typedef enum
     NSString* _firstRelevantWord;
     BOOL _isProgrammed;
     BOOL _removed;
+    
+    BOOL _uploading;
+    
 }
 
 @property (retain, nonatomic) NSString* name;
@@ -50,6 +53,9 @@ typedef enum
 
 - (BOOL)isProgrammed;
 - (void)setIsProgrammed:(BOOL)set;
+
+- (BOOL)isUploading;
+- (void)setUploading:(BOOL)set;
 
 - (NSString*)getFirstRelevantWord;
 - (NSString*)getNameWithoutArticle;

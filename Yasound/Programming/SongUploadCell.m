@@ -12,14 +12,19 @@
 #import "SongCatalog.h"
 #import "RootViewController.h"
 #import "YasoundReachability.h"
+#import "SongLocal.h"
+
 
 @implementation SongUploadCell
 
 @synthesize item;
+@synthesize image;
 @synthesize label;
 @synthesize labelStatus;
 @synthesize progressView;
 @synthesize progressLabel;
+
+#define COVER_SIZE 30
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadItem*)item
 {
@@ -34,24 +39,47 @@
         self.progressLabel = nil;
         self.labelStatus = nil;
 
+
+        // track image
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        SongLocal* song = self.item.song;
+        
+        assert([song isKindOfClass:[SongLocal class]]);
+        
+        sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImage* coverImage = [song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
+        self.image = [[UIImageView alloc] initWithImage:coverImage];
+        self.image.frame = sheet.frame;
+        
+        [self addSubview:self.image];
+        
+        if (coverImage == nil)
+        {
+            sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            self.image.image = [sheet image];
+        }
+        
+        // track image mask
+        sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImageMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImageView* mask = [sheet makeImage];
+        [self addSubview:mask];
         
         
         // button "delete"
-        UIImage* image = [UIImage imageNamed:@"uploadDelete.png"];
-        UIButton* button = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - image.size.width, 0, image.size.width, image.size.height)];
-        [button setImage:image forState:UIControlStateNormal];
+        sheet = [[Theme theme] stylesheetForKey:@"Programming.del" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIButton* button = [sheet makeButton];
         [button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
     
         
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Uploads.SongUpload_name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet = [[Theme theme] stylesheetForKey:@"Uploads.name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.label = [sheet makeLabel];
     self.label.text = [NSString stringWithFormat:@"%@ - %@", item.song.name, item.song.artist];
     [self addSubview:self.label];
         
         
         // status label
-        sheet = [[Theme theme] stylesheetForKey:@"Uploads.SongUpload_progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"Uploads.progressCompletedLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.labelStatus = [sheet makeLabel];
         self.labelStatus.text = @"";
         [self addSubview:self.labelStatus];
@@ -61,12 +89,12 @@
 
         if (self.progressView == nil)
         {
-            sheet = [[Theme theme] stylesheetForKey:@"Uploads.SongUpload_progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"Uploads.progress" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
             self.progressView.frame = sheet.frame;
             [self addSubview:self.progressView];
             
-            sheet = [[Theme theme] stylesheetForKey:@"Uploads.SongUpload_progressLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"Uploads.progressLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             self.progressLabel = [sheet makeLabel];
             self.progressLabel.text = NSLocalizedString(@"SongUpload_progress_prepare", nil);
             [self addSubview:self.progressLabel];
@@ -141,8 +169,19 @@
     
     self.label.text = [NSString stringWithFormat:@"%@ - %@", mediaItem.song.name, mediaItem.song.artist];
     
+    SongLocal* song = self.item.song;
+    assert([song isKindOfClass:[SongLocal class]]);
     
-    if (self.item.status == SongUploadItemStatusUploading) 
+    UIImage* coverImage = [song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
+    if (coverImage == nil)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        coverImage = [sheet image];
+    }
+    self.image.image = coverImage;
+
+    
+    if (self.item.status == SongUploadItemStatusUploading)
     {
         self.progressView.progress = self.item.currentProgress;
         self.progressView.hidden = NO;

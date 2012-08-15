@@ -59,10 +59,6 @@
         [self.button addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
         
-        if ([song isProgrammed])
-            self.button.enabled = NO;
-        
-        
         CGFloat offset = self.button.frame.origin.x + self.button.frame.size.width;
         
         sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -97,6 +93,16 @@
         self.detailedLabel.frame = [self rect:sheet.frame withOffset:offset];
         self.detailedLabel.text = [NSString stringWithFormat:@"%@ - %@", aSong.album, aSong.artist];
         [self addSubview:self.detailedLabel];
+        
+        
+        if ([song isProgrammed] || [song isUploading])
+        {
+            self.button.enabled = NO;
+            self.image.alpha = 0.5;
+            self.label.alpha = 0.5;
+            self.detailedLabel.alpha = 0.5;
+        }
+
     }
     return self;
 }
@@ -123,10 +129,20 @@
 {
     self.song = aSong;
     
-    if ([song isProgrammed])
+    if ([song isProgrammed] || [song isUploading])
+    {
         self.button.enabled = NO;
+        self.image.alpha = 0.5;
+        self.label.alpha = 0.5;
+        self.detailedLabel.alpha = 0.5;
+    }
     else
+    {
         self.button.enabled = YES;
+        self.image.alpha = 1;
+        self.label.alpha = 1;
+        self.detailedLabel.alpha = 1;
+    }
 
     UIImage* coverImage = [self.song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
     self.image.image = coverImage;
@@ -207,7 +223,7 @@
     BOOL startUploadNow = isWifi;
     
    // add an upload job to the queue
-    [[SongUploadManager main] addSong:song startUploadNow:startUploadNow];
+    [[SongUploadManager main] addSong:self.song startUploadNow:startUploadNow];
     
 //    // and flag the current song as "uploading song"
 //    [song setProgrammed

@@ -634,16 +634,22 @@
 
     if (itemIndex == WHEEL_ITEM_LOCAL)
     {
+        _segment.enabled = YES;
+        
         ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;
     }
     else if (itemIndex == WHEEL_ITEM_RADIO)
     {
+        _segment.enabled = YES;
+        
         ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;
     }
     else if (itemIndex == WHEEL_ITEM_UPLOADS)
     {
+        _segment.enabled = NO;
+        
         ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;
     }

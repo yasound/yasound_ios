@@ -1835,6 +1835,10 @@
 		<dict>
 			<key>cellImageDummy30</key>
 			<dict>
+				<key>x</key>
+				<integer>7</integer>
+				<key>y</key>
+				<integer>8</integer>
 				<key>name</key>
 				<string>programmingDummyTrack30</string>
 				<key>type</key>
@@ -1870,9 +1874,9 @@
 			<key>del</key>
 			<dict>
 				<key>x</key>
-				<integer>0</integer>
+				<integer>280</integer>
 				<key>y</key>
-				<integer>0</integer>
+				<integer>7</integer>
 				<key>normal</key>
 				<string>programmingIconDel</string>
 				<key>type</key>
@@ -2240,10 +2244,10 @@
 		</dict>
 		<key>Uploads</key>
 		<dict>
-			<key>SongUpload_name</key>
+			<key>name</key>
 			<dict>
 				<key>x</key>
-				<integer>8</integer>
+				<integer>48</integer>
 				<key>y</key>
 				<integer>6</integer>
 				<key>width</key>
@@ -2257,17 +2261,17 @@
 					<key>size</key>
 					<integer>13</integer>
 					<key>textColor</key>
-					<string>white</string>
+					<string>rgb(166,177,185)</string>
 					<key>backgroundColor</key>
 					<string>clear</string>
 					<key>weight</key>
 					<string>bold</string>
 				</dict>
 			</dict>
-			<key>SongUpload_progressCompletedLabel</key>
+			<key>progressCompletedLabel</key>
 			<dict>
 				<key>x</key>
-				<integer>8</integer>
+				<integer>48</integer>
 				<key>y</key>
 				<integer>26</integer>
 				<key>width</key>
@@ -2281,17 +2285,17 @@
 					<key>size</key>
 					<integer>13</integer>
 					<key>textColor</key>
-					<string>rgb(200,200,200)</string>
+					<string>rgb(166,177,185)</string>
 					<key>backgroundColor</key>
 					<string>clear</string>
 					<key>weight</key>
 					<string>bold</string>
 				</dict>
 			</dict>
-			<key>SongUpload_progress</key>
+			<key>progress</key>
 			<dict>
 				<key>x</key>
-				<integer>8</integer>
+				<integer>48</integer>
 				<key>y</key>
 				<integer>26</integer>
 				<key>width</key>
@@ -2299,7 +2303,7 @@
 				<key>height</key>
 				<integer>16</integer>
 			</dict>
-			<key>SongUpload_progressLabel</key>
+			<key>progressLabel</key>
 			<dict>
 				<key>font</key>
 				<dict>
@@ -2308,14 +2312,14 @@
 					<key>size</key>
 					<integer>13</integer>
 					<key>textColor</key>
-					<string>rgb(200,200,200)</string>
+					<string>rgb(166,177,185)</string>
 					<key>backgroundColor</key>
 					<string>clear</string>
 					<key>weight</key>
 					<string>bold</string>
 				</dict>
 				<key>x</key>
-				<integer>116</integer>
+				<integer>156</integer>
 				<key>y</key>
 				<integer>23</integer>
 				<key>width</key>

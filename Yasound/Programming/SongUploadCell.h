@@ -13,6 +13,7 @@
 @interface SongUploadCell : UITableViewCell
 
 @property (nonatomic, assign) SongUploadItem* item;
+@property (nonatomic, retain) UIImageView* image;
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* labelStatus;
 

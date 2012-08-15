@@ -32,6 +32,8 @@
     {
         _isProgrammed = NO;
         _removed = NO;
+        _uploading = NO;
+        
     }
     return self;
 }
@@ -120,6 +122,17 @@
 - (void)removeSong:(BOOL)set
 {
     _removed = set;
+}
+
+
+- (BOOL)isUploading
+{
+    return _uploading;
+}
+
+- (void)setUploading:(BOOL)set
+{
+    _uploading = set;
 }
 
 

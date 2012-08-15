@@ -26,7 +26,7 @@
 @synthesize detailedInfo;
 //@synthesize uploader;
 
-- (id)initWithSong:(Song*)aSong
+- (id)initWithSong:(SongLocal*)aSong
 {
     if (self = [super init])
     {   
@@ -227,7 +227,7 @@ static SongUploadManager* _main;
     NSString* storedName = [songInfo valueForKey:@"name"];
     NSString* storedArtist = [songInfo valueForKey:@"artist"];
     NSString* storedAlbum = [songInfo valueForKey:@"album"];
-    Song* s = [[Song alloc] init];
+    SongLocal* s = [[SongLocal alloc] init];
     s.name = storedName;
     s.artist = storedArtist;
     s.album = storedAlbum;
@@ -254,7 +254,7 @@ static SongUploadManager* _main;
          || ((status == SongUploadItemStatusFailed) && (item.nbFails < NB_FAILS_MAX))
         )
     {
-      Song* song = item.song;
+      SongLocal* song = item.song;
       NSMutableDictionary* songInfo = [NSMutableDictionary dictionary];
       [songInfo setValue:song.name forKey:@"name"];
       [songInfo setValue:song.artist forKey:@"artist"];
@@ -274,7 +274,7 @@ static SongUploadManager* _main;
   
   if (storedSongs)
   {
-    for (Song* s  in storedSongs) 
+    for (SongLocal* s  in storedSongs) 
     {
         [self addSong:s startUploadNow:NO];
     }
@@ -304,7 +304,7 @@ static SongUploadManager* _main;
 
 
 
-- (void)addSong:(Song*)song startUploadNow:(BOOL)startUploadNow
+- (void)addSong:(SongLocal*)song startUploadNow:(BOOL)startUploadNow
 {
     SongUploadItem* item = [[SongUploadItem alloc] initWithSong:song];
     [_items addObject:item];
@@ -316,7 +316,7 @@ static SongUploadManager* _main;
 }
 
 
-- (Song*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album
+- (SongLocal*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album
 {
     for (SongUploadItem* item in self.items)
     {
