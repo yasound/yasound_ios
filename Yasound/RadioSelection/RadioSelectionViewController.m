@@ -19,6 +19,8 @@
 
 @implementation RadioSelectionViewController
 
+@synthesize nbFriends;
+@synthesize friendsRadios;
 @synthesize url;
 @synthesize wheelSelector;
 @synthesize listContainer;
@@ -176,6 +178,24 @@
     
     NSString* url = nil;
     NSString* genre = nil;
+    
+    
+    
+    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:nil];
+    newTableview.listDelegate = self;
+    newTableview.tableView.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
+    [self.listContainer addSubview:newTableview.view];
+    
+    self.tableview = newTableview;
+
+    
+    
+    
+    if (itemIndex == WheelIdFriends)
+    {
+        [[YasoundDataProvider main] friendsForUser:[YasoundDataProvider main].user withTarget:self action:@selector(friendsReceived:success:)];
+        return;
+    }
 
     // request favorites radios
     if (itemIndex == WheelIdFavorites)
@@ -204,20 +224,58 @@
     }
     
     
-    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:nil];
-    newTableview.listDelegate = self;
-    newTableview.tableView.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
-    [self.listContainer addSubview:newTableview.view];
-    
-    self.tableview = newTableview;
 
     self.url = [NSURL URLWithString:url];
-    
     [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:genre target:self action:@selector(receiveRadios:info:)];
         
 }
 
 
+- (void)friendsReceived:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        //LBDEBUG TODO : error screen
+        assert(0);
+        return;
+    }
+    
+    self.friendsRadios = nil;
+    self.friendsRadios = [[NSMutableArray alloc] init];
+    
+    Container* container = [req responseObjectsWithClass:[User class]];
+    NSArray* friends = container.objects;
+    self.nbFriends = friends.count;
+
+    for (User* friend in friends)
+    {
+        [[YasoundDataProvider main] radiosForUser:friend withTarget:self action:@selector(receivedFriendsRadios:success:)];
+    }
+}
+
+
+
+- (void)receivedFriendsRadios:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        DLog(@"RadioSelectionViewController::receivedFriendsRadios failed");
+        assert(0);
+        return;
+    }
+    
+    Container* container = [req responseObjectsWithClass:[Radio class]];
+    NSArray* radios = container.objects;
+    
+    [self.friendsRadios addObjectsFromArray:radios];
+    
+    self.nbFriends--;
+    
+    if (self.nbFriends == 0)
+        [self.tableview setRadios:self.friendsRadios];
+    
+    
+}
 
 
 

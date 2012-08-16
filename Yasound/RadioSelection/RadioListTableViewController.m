@@ -18,12 +18,17 @@
 
 @synthesize listDelegate;
 @synthesize radios = _radios;
+@synthesize delayTokens;
+@synthesize delay;
 
 - (id)initWithStyle:(UITableViewStyle)style radios:(NSArray*)radios
 {
     self = [super initWithStyle:style];
     if (self) 
     {
+        self.delayTokens = 2;
+        self.delay = 0.15;
+        
         self.radios = radios;
         
         self.tableView.delegate = self;
@@ -104,8 +109,15 @@
     NSArray* radiosForRow = [NSArray arrayWithObjects:radio1, radio2, nil];
     
     if (cell == nil)
-    {    
-        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier radios:radiosForRow target:self action:@selector(onRadioClicked:)];
+    {
+        CGFloat delay = 0;
+        if (self.delayTokens > 0)
+            delay = self.delay;
+        
+        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier radios:radiosForRow delay:delay target:self action:@selector(onRadioClicked:)];
+        
+        self.delayTokens--;
+        self.delay += 0.3;
     }
     else
     {
@@ -116,6 +128,12 @@
     
     return cell;
 }
+
+//- (void)cellFadeIn:(NSTimer*)timer
+//{
+//    RadioListTableViewCell* cell = timer.userInfo;
+//    cell
+//}
 
 /*
 // Override to support conditional editing of the table view.

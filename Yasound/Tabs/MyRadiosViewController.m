@@ -59,6 +59,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     if (!success)
     {
         DLog(@"MyRadiosViewController::radiosReceived failed");
+        assert(0);
         return;
     }
     

@@ -19,6 +19,9 @@
 
 @property (nonatomic, retain) id<RadioListDelegate> listDelegate;
 @property (nonatomic, retain) NSArray* radios;
+@property (nonatomic) NSInteger delayTokens;
+@property (nonatomic) CGFloat delay;
+
 
 - (id)initWithStyle:(UITableViewStyle)style radios:(NSArray*)radios;
 - (void)setRadios:(NSArray*)radios;

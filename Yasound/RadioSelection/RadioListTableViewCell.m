@@ -39,7 +39,7 @@
 @synthesize action;
 
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios target:(id)target action:(SEL)action
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios delay:(CGFloat)delay target:(id)target action:(SEL)action
 {
     if (self = [super initWithFrame:frame reuseIdentifier:cellIdentifier]) 
     {
@@ -139,6 +139,17 @@
             [self.radioObjects addObject:objects];
             
             xOffset += (self.frame.size.width / 2.f);
+        }
+        
+        if (delay)
+        {
+            self.alpha = 0;
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:delay];
+            self.alpha = 1;
+            [UIView commitAnimations];
+            
+            delay += 0.15;
         }
 
             

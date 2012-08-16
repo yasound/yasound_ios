@@ -21,6 +21,9 @@
 
 @property (nonatomic, retain) NSURL* url;
 
+@property (nonatomic) NSInteger nbFriends;
+@property (nonatomic, retain) NSMutableArray* friendsRadios;
+
 @property (nonatomic, retain) IBOutlet WheelSelector* wheelSelector;
 @property (nonatomic, retain) IBOutlet UIView* listContainer;
 @property (nonatomic, retain) UITableViewController* tableview;

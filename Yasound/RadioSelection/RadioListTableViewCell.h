@@ -18,7 +18,7 @@
 @property (nonatomic, retain) id target;
 @property (nonatomic) SEL action;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios target:(id)target action:(SEL)action;
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier radios:(NSArray*)radios delay:(CGFloat)delay target:(id)target action:(SEL)action;
 - (void)updateWithRadios:(NSArray*)radios target:(id)target action:(SEL)action;
 
 @end
