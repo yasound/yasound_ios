@@ -594,6 +594,8 @@
 				<string>tabBarFavoritesOn</string>
 				<key>selected</key>
 				<string>tabBarFavoritesOn</string>
+				<key>highlighted|selected</key>
+				<string>tabBarFavoritesOn</string>
 				<key>type</key>
 				<string>png</string>
 			</dict>
@@ -604,6 +606,8 @@
 				<key>highlighted</key>
 				<string>tabBarSelectionOn</string>
 				<key>selected</key>
+				<string>tabBarSelectionOn</string>
+				<key>highlighted|selected</key>
 				<string>tabBarSelectionOn</string>
 				<key>type</key>
 				<string>png</string>
@@ -616,6 +620,8 @@
 				<string>tabBarMyRadiosOn</string>
 				<key>selected</key>
 				<string>tabBarMyRadiosOn</string>
+				<key>highlighted|selected</key>
+				<string>tabBarMyRadiosOn</string>
 				<key>type</key>
 				<string>png</string>
 			</dict>
@@ -626,6 +632,8 @@
 				<key>highlighted</key>
 				<string>tabBarGiftsOn</string>
 				<key>selected</key>
+				<string>tabBarGiftsOn</string>
+				<key>highlighted|selected</key>
 				<string>tabBarGiftsOn</string>
 				<key>disabled</key>
 				<string>tabBarGiftsDisabled</string>
@@ -639,6 +647,8 @@
 				<key>highlighted</key>
 				<string>tabBarProfilOn</string>
 				<key>selected</key>
+				<string>tabBarProfilOn</string>
+				<key>highlighted|selected</key>
 				<string>tabBarProfilOn</string>
 				<key>type</key>
 				<string>png</string>

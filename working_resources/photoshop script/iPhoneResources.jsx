@@ -6,8 +6,8 @@
 app.bringToFront();
 
 
-//var SRCPATH = "/Users/neywen/devel/yasound/yasound_ios/resources";
-var SRCPATH = "/Users/ferdinand/work/yasound_ios/resources";
+var SRCPATH = "/Users/neywen/devel/yasound/yasound_ios/resources";
+//var SRCPATH = "/Users/ferdinand/work/yasound_ios/resources";
 var SRCEXT = "png";
 var SRCSUFFIX = "@2x.png";
 var DSTSUFFIX = ".png";
