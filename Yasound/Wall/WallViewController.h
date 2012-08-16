@@ -95,6 +95,8 @@
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic) BOOL ownRadio;
 
+@property (nonatomic, retain) NSMutableDictionary* requests;
+
 @property (nonatomic) BOOL keyboardShown;
 @property (nonatomic, retain) IBOutlet TopBar* topBar;
 

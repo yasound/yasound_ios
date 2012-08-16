@@ -166,9 +166,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 
 
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
-- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector;
+- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector;
+- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector;
+- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector;
 
 
 - (void)currentSongForRadio:(Radio*)radio target:(id)target action:(SEL)selector;

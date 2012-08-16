@@ -81,6 +81,7 @@
 @synthesize statusMessages;
 @synthesize ownRadio;
 
+@synthesize requests;
 @synthesize keyboardShown;
 
 @synthesize nowPlayingTrackImage;
@@ -111,6 +112,7 @@
         
         self.keyboardShown = NO;
         
+        self.requests = [[NSMutableDictionary alloc] init];
         self.ownRadio = [[YasoundDataProvider main].user.id intValue] == [self.radio.creator.id intValue];
         
         self.view.userInteractionEnabled = YES;
@@ -355,10 +357,14 @@
         if (_wallEvents.count > 0)
         {
             NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
-            [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+            ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+            [self.requests setObject:req forKey:req];
         }
         else
-            [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+        {
+            ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+            [self.requests setObject:req forKey:req];
+        }
         
         [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
         [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
@@ -373,7 +379,8 @@
 {
     _updatingPrevious = YES;
     
-    [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_FIRST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+    ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_FIRST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+    [self.requests setObject:req  forKey:req];
     
     [[YasoundDataProvider main] currentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
     [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receiveRadio:withInfo:)];
@@ -384,10 +391,14 @@
     if (_wallEvents.count > 0)
     {
         NSNumber* newestEventID = ((WallEvent*)[_wallEvents objectAtIndex:0]).id;
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+        ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio newerThanEventWithID:newestEventID target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+        [self.requests setObject:req  forKey:req];
     }
     else
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+    {
+        ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:25 target:self action:@selector(receivedCurrentWallEvents:withInfo:)];
+        [self.requests setObject:req  forKey:req];
+    }
 }
 
 
@@ -442,8 +453,13 @@
 // received previous wall events
 //
 
+//ICI
 - (void)receivedPreviousWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
+    //LBDEBUG
+    NSLog(@"%@", info);
+    ///////////////////
+    
     [self removeWaitingEventRow];
     
     Meta* meta = [info valueForKey:@"meta"];
@@ -546,7 +562,8 @@
     // ask for more previous messages
     if (_countMessageEvent < NB_MAX_EVENTMESSAGE)
     {
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_SECOND_PAGESIZE olderThanEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+        ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_FIRSTREQUEST_SECOND_PAGESIZE olderThanEventWithID:_lastWallEvent.id target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+        [self.requests setObject:req forKey:req];
     }
     else
     {
@@ -607,9 +624,13 @@
 //
 // received current wall events
 //
-
+//ICI
 - (void)receivedCurrentWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
+    //LBDEBUG
+    NSLog(@"%@", info);
+    ///////////////////
+
     Meta* meta = [info valueForKey:@"meta"];
     NSError* err = [info valueForKey:@"error"];
     
@@ -1169,10 +1190,14 @@
     if (_wallEvents.count > 0)
     {
         NSNumber* lastEventID = ((WallEvent*)[_wallEvents objectAtIndex:_wallEvents.count - 1]).id;
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE olderThanEventWithID:lastEventID target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+        ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE olderThanEventWithID:lastEventID target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+        [self.requests setObject:req forKey:req];
     }
     else
-        [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+    {
+        ASIHTTPRequest* req = [[YasoundDataProvider main] wallEventsForRadio:self.radio pageSize:WALL_PREVIOUS_EVENTS_REQUEST_PAGESIZE target:self action:@selector(receivedPreviousWallEvents:withInfo:)];
+        [self.requests setObject:req  forKey:req];
+    }
     
     [self showWaitingEventRow];
 }

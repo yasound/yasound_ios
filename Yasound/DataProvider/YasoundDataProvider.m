@@ -1079,10 +1079,10 @@ static YasoundDataProvider* _main = nil;
 }
 
 // get wall events
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector
+- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize target:(id)target action:(SEL)selector
 {
   if (radio == nil)
-    return;
+      return nil;
   Auth* auth = self.apiKeyAuth;
   NSNumber* radioID = radio.id;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
@@ -1090,17 +1090,19 @@ static YasoundDataProvider* _main = nil;
     NSMutableArray* params = [[NSMutableArray alloc] init];
     
   [params addObject:[NSString stringWithFormat:@"limit=%d", pageSize]];
-  [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  ASIHTTPRequest* req = [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
     
     [params release];
+    
+    return req;
 }
 
-- (void)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector
+- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio pageSize:(int)pageSize olderThanEventWithID:(NSNumber*)lastEventID target:(id)target action:(SEL)selector
 {
   if (!radio || !radio.id)
-    return;
+      return nil;
   if (!lastEventID)
-    return;
+      return nil;
   
   Auth* auth = self.apiKeyAuth;
   NSNumber* radioID = radio.id;
@@ -1108,26 +1110,31 @@ static YasoundDataProvider* _main = nil;
   NSMutableArray* params = [[NSMutableArray alloc] init];
   [params addObject:[NSString stringWithFormat:@"id__lt=%@", lastEventID]];
   [params addObject:[NSString stringWithFormat:@"limit=%d", pageSize]];
-  [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  ASIHTTPRequest* req = [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
     
     [params release];
+    
+    return req;
 }
 
-- (void)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector
+- (ASIHTTPRequest*)wallEventsForRadio:(Radio*)radio newerThanEventWithID:(NSNumber*)eventID target:(id)target action:(SEL)selector
 {
     if (!radio || !radio.id)
-        return;
+        return nil;
     if (!eventID)
-        return;
+        return nil;
     
     Auth* auth = self.apiKeyAuth;
     NSNumber* radioID = radio.id;
     NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/wall", radioID];
     NSMutableArray* params = [[NSMutableArray alloc] init];
     [params addObject:[NSString stringWithFormat:@"id__gt=%@", eventID]];
-    [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+    ASIHTTPRequest* req = [_communicator getObjectsWithClass:[WallEvent class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
     
-    [params release]; 
+    [params release];
+    
+    return req;
+
 }
 
 - (void)postWallMessage:(NSString*)message toRadio:(Radio*)radio target:(id)target action:(SEL)selector

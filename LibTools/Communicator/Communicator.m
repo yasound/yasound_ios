@@ -96,7 +96,6 @@
 
 
 
-
 #pragma mark - synchronous tools
 
 - (Container*)getObjectsWithRequest:(ASIHTTPRequest*)req andClass:(Class)objectClass
@@ -429,10 +428,11 @@
     [self getObjectsWithClass:objectClass withURL:url absolute:absolute withParams:nil notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
-- (void)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute withParams:(NSArray*)params notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
+- (ASIHTTPRequest*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute withParams:(NSArray*)params notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
     ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute withUrlParams:params withAuth:auth];
-    [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:userData];  
+    [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:userData];
+    return req;
 }
 
 - (void)getObjectWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
