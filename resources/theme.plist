@@ -1002,13 +1002,13 @@
 			<key>image</key>
 			<dict>
 				<key>height</key>
-				<integer>148</integer>
+				<integer>149</integer>
 				<key>x</key>
-				<integer>4</integer>
+				<integer>3</integer>
 				<key>y</key>
 				<integer>4</integer>
 				<key>width</key>
-				<integer>148</integer>
+				<integer>149</integer>
 			</dict>
 			<key>userImage</key>
 			<dict>

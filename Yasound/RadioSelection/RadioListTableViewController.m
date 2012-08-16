@@ -17,7 +17,7 @@
 @implementation RadioListTableViewController
 
 @synthesize listDelegate;
-@synthesize radios;
+@synthesize radios = _radios;
 
 - (id)initWithStyle:(UITableViewStyle)style radios:(NSArray*)radios
 {
@@ -33,6 +33,14 @@
         self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
     }
     return self;
+}
+
+- (void)setRadios:(NSArray*)radios
+{
+    _radios = radios;
+    [_radios retain];
+    
+    [self.tableView reloadData];
 }
 
 

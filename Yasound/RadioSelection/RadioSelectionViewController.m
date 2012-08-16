@@ -202,6 +202,14 @@
     {
         [tabBar setTabSelected:TabIndexSelection];
     }
+    
+    
+    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:nil];
+    newTableview.listDelegate = self;
+    newTableview.tableView.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
+    [self.listContainer addSubview:newTableview.view];
+    
+    self.tableview = newTableview;
 
     self.url = [NSURL URLWithString:url];
     
@@ -235,12 +243,14 @@
         return;
     }
     
-    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:radios];
-    newTableview.listDelegate = self;
-    newTableview.tableView.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
-    [self.listContainer addSubview:newTableview.view];
+    [self.tableview setRadios:radios];
     
-    self.tableview = newTableview;
+//    RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:radios];
+//    newTableview.listDelegate = self;
+//    newTableview.tableView.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
+//    [self.listContainer addSubview:newTableview.view];
+//    
+//    self.tableview = newTableview;
 }
 
 

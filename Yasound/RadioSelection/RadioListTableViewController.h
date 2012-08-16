@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSArray* radios;
 
 - (id)initWithStyle:(UITableViewStyle)style radios:(NSArray*)radios;
-
+- (void)setRadios:(NSArray*)radios;
 
 
 @end
