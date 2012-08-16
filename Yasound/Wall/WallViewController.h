@@ -95,6 +95,7 @@
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic) BOOL ownRadio;
 
+@property (nonatomic) BOOL keyboardShown;
 @property (nonatomic, retain) IBOutlet TopBar* topBar;
 
 @property (nonatomic, retain) IBOutlet WebImageView* nowPlayingTrackImage;

@@ -81,7 +81,7 @@
 @synthesize statusMessages;
 @synthesize ownRadio;
 
-
+@synthesize keyboardShown;
 
 @synthesize nowPlayingTrackImage;
 @synthesize nowPlayingMask;
@@ -108,6 +108,8 @@
     if (self)
     {
         self.radio = radio;
+        
+        self.keyboardShown = NO;
         
         self.ownRadio = [[YasoundDataProvider main].user.id intValue] == [self.radio.creator.id intValue];
         
@@ -204,6 +206,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_PLAY object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_STOP object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
     
     //Once the view has loaded then we can register to begin recieving controls and we can become the first responder
     // <=> background audio playing
@@ -1178,6 +1183,9 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    if (self.keyboardShown)
+        return;
+    
     if (!_waitingForPreviousEvents)
     {
         float offset = scrollView.contentOffset.y;
@@ -1192,26 +1200,33 @@
 
     if (scrollView.contentOffset.y > HEADER_HEIGHT)
     {
+        // fix the post-message-bar at the top of the tableview
         if (!self.fixedCellPostBar.fixed)
-        {
-            self.fixedCellPostBar.fixed = YES;
-            self.fixedCellPostBar.textfield.text = self.cellPostBar.textfield.text;
-            [self.view addSubview:self.fixedCellPostBar];
-        }
+            [self showFixedPostBar];
     }
     else
     {
+        // put the post-message-bar back at its original position
         if (self.fixedCellPostBar.fixed)
-        {
-            self.fixedCellPostBar.fixed = NO;
-            self.cellPostBar.textfield.text = self.fixedCellPostBar.textfield.text;
-            [self.fixedCellPostBar removeFromSuperview];
-        }
+            [self hideFixedPostBar];
     }
 }
 
 
+- (void)showFixedPostBar
+{
+    self.fixedCellPostBar.fixed = YES;
+    self.fixedCellPostBar.textfield.text = self.cellPostBar.textfield.text;
+    [self.view addSubview:self.fixedCellPostBar];
+}
 
+
+- (void)hideFixedPostBar
+{
+    self.fixedCellPostBar.fixed = NO;
+    self.cellPostBar.textfield.text = self.fixedCellPostBar.textfield.text;
+    [self.fixedCellPostBar removeFromSuperview];
+}
 
 
 
@@ -1653,6 +1668,9 @@
 
 - (void)tableViewTouched:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [self.cellPostBar.textfield endEditing:YES];
+    [self.fixedCellPostBar.textfield endEditing:YES];
+    
     if (_cellEditing != nil)
     {
         [_cellEditing deactivateEditModeAnimated:YES];
@@ -1701,8 +1719,55 @@
 
 
 
+- (void)keyboardWillShow:(NSNotification *)note
+{
+    self.keyboardShown = YES;
+
+    if (!self.fixedCellPostBar.fixed)
+    {
+        CGPoint scrollPoint = CGPointMake(0.0, self.cellPostBar.frame.size.height + 11);
+        [self.tableview setContentOffset:scrollPoint animated:YES];
+    }
+
+//    NSDictionary *info = [note userInfo];
+//    NSValue *beginPoint = [info objectForKey:UIKeyboardCenterBeginUserInfoKey];
+//    NSValue *endPoint = [info objectForKey:UIKeyboardCenterEndUserInfoKey];
+//    NSValue *keyBounds = [info objectForKey:UIKeyboardBoundsUserInfoKey];
+//    
+//    CGPoint pntBegin;
+//    CGPoint pntEnd;
+//    CGRect bndKey;
+//    [beginPoint getValue:&pntBegin];
+//    [endPoint getValue:&pntEnd];
+//    [keyBounds getValue:&bndKey];
+    
+//    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+//    
+//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+//    self.tableview.contentInset = contentInsets;
+//    self.tableview.scrollIndicatorInsets = contentInsets;
+    
+    // If active text field is hidden by keyboard, scroll it so it's visible
+    // Your application might not need or want this behavior.
+//    CGRect aRect = self.view.frame;
+//    aRect.size.height -= kbSize.height;
+//    if (!CGRectContainsPoint(aRect, self.cellPostBar.frame.origin) ) {
+//        CGPoint scrollPoint = CGPointMake(0.0, self.cellPostBar.frame.size.height + 11);
+//        [self.tableview setContentOffset:scrollPoint animated:YES];
+//    }
+    
+    //[self showFixedPostBar];
+}
 
 
+
+
+- (void)keyboardDidHide:(NSNotification *)note
+{
+    self.keyboardShown = NO;
+
+    [self scrollViewDidScroll:self.tableview];
+}
 
 
 

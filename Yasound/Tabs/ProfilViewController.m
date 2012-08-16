@@ -90,12 +90,14 @@
     profil = [NSString stringWithFormat:@"%@, %@, %@", age, sexe, city];
     self.profil.text = profil;
     
-    if ([self.user.id isEqualToNumber:[YasoundDataProvider main].user])
+    if ([self.user.id isEqualToNumber:[YasoundDataProvider main].user.id])
     {
         [self.buttonBlue setEnabled:NO];
         self.buttonBlue.hidden = YES;
         [self.buttonGray setEnabled:NO];
         self.buttonGray.hidden = YES;
+        self.buttonBlueLabel.hidden = YES;
+        self.buttonGrayLabel.hidden = YES;
     }
     
     self.buttonGrayLabel.text = NSLocalizedString(@"Profil.follow", nil);
