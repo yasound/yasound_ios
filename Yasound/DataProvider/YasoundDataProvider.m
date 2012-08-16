@@ -268,7 +268,8 @@ static YasoundDataProvider* _main = nil;
     {
         NSMutableDictionary* dict = [NSMutableDictionary dictionary];
         [dict setValue:clientData forKey:@"userData"];
-        [target performSelector:selector withObject:_user withObject:dict];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:_user withObject:dict];
     }
 }
 
@@ -311,7 +312,8 @@ static YasoundDataProvider* _main = nil;
   {
     NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no logged user" code:1 userInfo:nil] forKey:@"error"];
     if (target && selector)
-      [target performSelector:selector withObject:nil withObject:info];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:nil withObject:info];
     return;
   }
   
@@ -363,7 +365,8 @@ static YasoundDataProvider* _main = nil;
   
   if (target && selector)
   {
-    [target performSelector:selector withObject:_radio withObject:finalInfo];
+      if ([target respondsToSelector:selector])
+          [target performSelector:selector withObject:_radio withObject:finalInfo];
   }
 }
 
@@ -425,7 +428,8 @@ static YasoundDataProvider* _main = nil;
     if (target && selector)
     {
       NSDictionary* finalInfo = [NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil];
-      [target performSelector:selector withObject:nil withObject:finalInfo];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:nil withObject:finalInfo];
     }
   }
   NSDictionary* loginUserData = [NSDictionary dictionaryWithObjectsAndKeys:target, @"clientTarget", NSStringFromSelector(selector), @"clientSelector", nil];
@@ -463,7 +467,8 @@ static YasoundDataProvider* _main = nil;
   
   if (target && selector)
   {
-    [target performSelector:selector withObject:_user withObject:finalInfo];
+      if ([target respondsToSelector:selector])
+          [target performSelector:selector withObject:_user withObject:finalInfo];
   }
   
 }
@@ -511,7 +516,8 @@ static YasoundDataProvider* _main = nil;
         
         // return if error
         if ((target != nil) && (selector != nil))
-            [target performSelector:selector withObject:nil withObject:finalInfo];
+            if ([target respondsToSelector:selector])
+                [target performSelector:selector withObject:nil withObject:finalInfo];
         
         return;
     }
@@ -625,7 +631,8 @@ static YasoundDataProvider* _main = nil;
   
   if (target && selector)
   {
-    [target performSelector:selector withObject:_user withObject:finalInfo];
+      if ([target respondsToSelector:selector])
+          [target performSelector:selector withObject:_user withObject:finalInfo];
   }  
 }
 
@@ -672,7 +679,8 @@ static YasoundDataProvider* _main = nil;
     
     if (target && selector)
     {
-        [target performSelector:selector withObject:finalInfo];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:finalInfo];
     }
 }
 
@@ -694,7 +702,8 @@ static YasoundDataProvider* _main = nil;
     
     if (target && selector)
     {
-        [target performSelector:selector withObject:finalInfo];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:finalInfo];
     }
 }
 
@@ -716,7 +725,8 @@ static YasoundDataProvider* _main = nil;
     
     if (target && selector)
     {
-        [target performSelector:selector withObject:finalInfo];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:finalInfo];
     }
 }
 
@@ -735,7 +745,8 @@ static YasoundDataProvider* _main = nil;
     
     if (target && selector)
     {
-        [target performSelector:selector withObject:finalInfo];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:finalInfo];
     }
 }
 
@@ -827,7 +838,8 @@ static YasoundDataProvider* _main = nil;
   {
     NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no user" code:1 userInfo:nil] forKey:@"error"];
     if (target && selector)
-      [target performSelector:selector withObject:nil withObject:info];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:nil withObject:info];
     return;
   }
   
@@ -858,7 +870,8 @@ static YasoundDataProvider* _main = nil;
   
   if (target && selector)
   {
-    [target performSelector:selector withObject:r withObject:finalInfo];
+      if ([target respondsToSelector:selector])
+        [target performSelector:selector withObject:r withObject:finalInfo];
   }
 }
 
@@ -1326,7 +1339,8 @@ static YasoundDataProvider* _main = nil;
   if (error)
   {
     if (target && selector)
-      [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
     return;
   }
   
@@ -1355,7 +1369,8 @@ static YasoundDataProvider* _main = nil;
   if (error)
   {
     if (target && selector)
-      [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
     return;
   }
   
@@ -1390,7 +1405,8 @@ static YasoundDataProvider* _main = nil;
   if (error)
   {
     if (target && selector)
-      [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:nil withObject:[NSDictionary dictionaryWithObjectsAndKeys:error, @"error", nil]];
     return;
   }
   
@@ -1552,7 +1568,8 @@ static YasoundDataProvider* _main = nil;
   if (error)
   {
     if (target && selector)
-      [target performSelector:selector withObject:nil withObject:error];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:nil withObject:error];
     return;
   }
   
@@ -1561,12 +1578,14 @@ static YasoundDataProvider* _main = nil;
   {
     error = [NSError errorWithDomain:@"can't retrieve task ID from request response" code:1 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:response, @"response", nil]];
     if (target && selector)
-      [target performSelector:selector withObject:nil withObject:error];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:nil withObject:error];
     return;
   }
   
   if (target && selector)
-    [target performSelector:selector withObject:task_id withObject:nil];
+      if ([target respondsToSelector:selector])
+          [target performSelector:selector withObject:task_id withObject:nil];
 }
 
 - (void)taskStatus:(taskID)task_id target:(id)target action:(SEL)selector
@@ -1592,7 +1611,8 @@ static YasoundDataProvider* _main = nil;
   TaskInfo* taskInfo = [TaskInfo taskInfoWithString:response];
   
   if (target && selector)
-    [target performSelector:selector withObject:taskInfo withObject:error];
+      if ([target respondsToSelector:selector])
+          [target performSelector:selector withObject:taskInfo withObject:error];
 }
 
 
@@ -1785,7 +1805,8 @@ static YasoundDataProvider* _main = nil;
         NSMutableDictionary* info = [NSMutableDictionary dictionary];
         [info setValue:data forKey:@"userData"];
         [info setValue:[NSNumber numberWithBool:success] forKey:@"success"];
-        [target performSelector:action withObject:song withObject:info];
+        if ([target respondsToSelector:action])
+            [target performSelector:action withObject:song withObject:info];
     }
 }
 
@@ -1856,7 +1877,8 @@ static YasoundDataProvider* _main = nil;
       NSMutableDictionary* finalInfo = [NSMutableDictionary dictionary];
       [finalInfo setValue:[info valueForKey:@"error"] forKey:@"error"];
       [finalInfo setValue:status forKey:@"status"];
-      [target performSelector:selector withObject:nil withObject:finalInfo];
+        if ([target respondsToSelector:selector])
+            [target performSelector:selector withObject:nil withObject:finalInfo];
     }
     return;
   }
@@ -1879,7 +1901,8 @@ static YasoundDataProvider* _main = nil;
   {
     NSMutableDictionary* finalInfo = [NSMutableDictionary dictionaryWithDictionary:info];
     [finalInfo setValue:status forKey:@"status"];
-    [target performSelector:selector withObject:addedSong withObject:finalInfo];
+      if ([target respondsToSelector:selector])
+          [target performSelector:selector withObject:addedSong withObject:finalInfo];
   }
 }
 

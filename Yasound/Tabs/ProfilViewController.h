@@ -28,14 +28,18 @@
 
 @property (nonatomic, retain) IBOutlet WebImageView* userImage;
 @property (nonatomic, retain) IBOutlet UILabel* name;
-@property (nonatomic, retain) IBOutlet UILabel* bio;
+@property (nonatomic, retain) IBOutlet UILabel* profil;
 @property (nonatomic, retain) IBOutlet UIImageView* hd;
 
+@property (nonatomic, retain) IBOutlet UIButton* buttonGray;
 @property (nonatomic, retain) IBOutlet UILabel* buttonGrayLabel;
+@property (nonatomic, retain) IBOutlet UIButton* buttonBlue;
 @property (nonatomic, retain) IBOutlet UILabel* buttonBlueLabel;
 
 
 - (IBAction)onButtonGrayClicked:(id)sender;
 - (IBAction)onButtonBlueClicked:(id)sender;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user;
 
 @end

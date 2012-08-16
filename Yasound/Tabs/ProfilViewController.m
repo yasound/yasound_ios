@@ -37,20 +37,22 @@
 
 @synthesize userImage;
 @synthesize name;
-@synthesize bio;
+@synthesize profil;
 @synthesize hd;
 
+@synthesize buttonGray;
+@synthesize buttonBlue;
 @synthesize buttonGrayLabel;
 @synthesize buttonBlueLabel;
 
 @synthesize tabBar;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        self.user = [YasoundDataProvider main].user;
+        self.user = user;
     }
     return self;
 }
@@ -69,6 +71,32 @@
     self.name.text = self.user.name;
     NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     [self.userImage setUrl:url];
+    
+    NSString* profil;
+    NSString* age = nil;
+    if (age.length != 0)
+    {
+        age = NSLocalizedString(@"Profil.age", nil);
+        age = [NSString stringWithFormat:age, [self.user.age integerValue]];
+    }
+    
+    NSString* sexe = @"-";
+    if (self.user.gender.length > 0)
+        sexe = NSLocalizedString(self.user.gender, nil);
+    NSString* city = @"-";
+    if (self.user.city.length > 0)
+        city = self.user.city;
+
+    profil = [NSString stringWithFormat:@"%@, %@, %@", age, sexe, city];
+    self.profil.text = profil;
+    
+    if ([self.user.id isEqualToNumber:[YasoundDataProvider main].user])
+    {
+        [self.buttonBlue setEnabled:NO];
+        self.buttonBlue.hidden = YES;
+        [self.buttonGray setEnabled:NO];
+        self.buttonGray.hidden = YES;
+    }
     
     self.buttonGrayLabel.text = NSLocalizedString(@"Profil.follow", nil);
     self.buttonBlueLabel.text = NSLocalizedString(@"Profil.message", nil);

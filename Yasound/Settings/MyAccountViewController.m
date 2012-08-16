@@ -186,11 +186,20 @@ enum SectionBio
 
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
-        
+
+        cell.detailTextLabel.text = [self.user.age stringValue];
+        if (cell.detailTextLabel.text.length == 0)
+            cell.detailTextLabel.text = @"-";
+
         sheet = [[Theme theme] stylesheetForKey:@"TableView.value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        self.age = [sheet makeLabel];
-        self.age.text = [self.user.age stringValue];
-        [cell addSubview:self.age];
+        cell.detailTextLabel.textColor = [sheet fontTextColor];
+
+        //        sheet = [[Theme theme] stylesheetForKey:@"TableView.value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        self.age = [sheet makeLabel];
+//        self.age.text = [self.user.age stringValue];
+//        if (self.age.text.length == 0)
+//            self.age.text = @"-";
+//        [cell addSubview:self.age];
     }
     
     else if ((indexPath.section == SECTION_PROFIL) && (indexPath.row == ROW_SEXE))
@@ -208,6 +217,10 @@ enum SectionBio
         if (!gender)
             gender=  @"M";
         cell.detailTextLabel.text = NSLocalizedString(gender, nil);
+        
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.detailTextLabel.textColor = [sheet fontTextColor];
+
         
     }
 

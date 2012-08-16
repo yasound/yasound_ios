@@ -59,6 +59,7 @@
 						<string key="NSFrame">{{0, 409}, {320, 51}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -279,6 +280,7 @@
 								<string key="NSFrame">{{183, 54}, {82, 20}}</string>
 								<reference key="NSSuperview" ref="1002318523"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -301,7 +303,7 @@
 							<object class="IBUIImageView" id="549186278">
 								<reference key="NSNextResponder" ref="1002318523"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{270, 7}, {43, 26}}</string>
+								<string key="NSFrame">{{268, 7}, {46, 28}}</string>
 								<reference key="NSSuperview" ref="1002318523"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="887821539"/>
@@ -310,7 +312,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">profilItemHdOff.png</string>
+									<string key="NSResourceName">commonIconHDGrey.png</string>
 								</object>
 							</object>
 							<object class="IBUILabel" id="403837995">
@@ -403,14 +405,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">bio</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="960453880"/>
-					</object>
-					<int key="connectionID">26</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">name</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="42253789"/>
@@ -448,6 +442,30 @@
 						<reference key="destination" ref="906456810"/>
 					</object>
 					<int key="connectionID">36</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">profil</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="960453880"/>
+					</object>
+					<int key="connectionID">37</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">buttonBlue</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="658584793"/>
+					</object>
+					<int key="connectionID">38</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">buttonGray</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="887821539"/>
+					</object>
+					<int key="connectionID">39</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -647,7 +665,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">36</int>
+			<int key="maxID">39</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -669,23 +687,30 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="bio">UILabel</string>
+						<string key="buttonBlue">UIButton</string>
 						<string key="buttonBlueLabel">UILabel</string>
+						<string key="buttonGray">UIButton</string>
 						<string key="buttonGrayLabel">UILabel</string>
 						<string key="cellProfil">UITableViewCell</string>
 						<string key="hd">UIImageView</string>
 						<string key="name">UILabel</string>
+						<string key="profil">UILabel</string>
 						<string key="tabBar">TabBar</string>
+						<string key="tableview">UITableView</string>
 						<string key="userImage">WebImageView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="bio">
-							<string key="name">bio</string>
-							<string key="candidateClassName">UILabel</string>
+						<object class="IBToOneOutletInfo" key="buttonBlue">
+							<string key="name">buttonBlue</string>
+							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="buttonBlueLabel">
 							<string key="name">buttonBlueLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="buttonGray">
+							<string key="name">buttonGray</string>
+							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="buttonGrayLabel">
 							<string key="name">buttonGrayLabel</string>
@@ -703,9 +728,17 @@
 							<string key="name">name</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="profil">
+							<string key="name">profil</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="tabBar">
 							<string key="name">tabBar</string>
 							<string key="candidateClassName">TabBar</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tableview">
+							<string key="name">tableview</string>
+							<string key="candidateClassName">UITableView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="userImage">
 							<string key="name">userImage</string>
@@ -770,11 +803,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="commonIconHDGrey.png">{46, 28}</string>
 			<string key="profilBarBkg.png">{320, 91}</string>
 			<string key="profilBarMask.png">{73, 89}</string>
 			<string key="profilButtonBlueUp.png">{98, 30}</string>
 			<string key="profilButtonGrayUp.png">{70, 30}</string>
-			<string key="profilItemHdOff.png">{43, 26}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1498</string>
 	</data>

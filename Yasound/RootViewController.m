@@ -798,7 +798,7 @@ static MenuViewController* gMenuView = nil;
     
     [self gotoMenuAnimated:NO];
     
-    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil];
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:[YasoundDataProvider main].user];
     [self.navigationController pushViewController:view animated:animated];
     [view release];
 }

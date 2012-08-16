@@ -184,27 +184,23 @@
 
     // get the actual data from the server to update the GUI
     [self updatePreviousWall];
-}
-
-
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
-//    if (![self.radio.id isEqualToNumber:[AudioStreamManager main].currentRadio.id])
-//    {
-        if (![AudioStreamManager main].isPaused)
-        {
-            [[AudioStreamManager main] startRadio:self.radio];
-        }
-        else
-            [AudioStreamManager main].currentRadio = self.radio;
+    
+    
+    
+    //    if (![self.radio.id isEqualToNumber:[AudioStreamManager main].currentRadio.id])
+    //    {
+    if (![AudioStreamManager main].isPaused)
+    {
+        [[AudioStreamManager main] startRadio:self.radio];
+    }
+    else
+        [AudioStreamManager main].currentRadio = self.radio;
     
     [[YasoundDataProvider main] enterRadioWall:self.radio];
     
-//    }
-
+    //    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_PLAY object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_STOP object:nil];
@@ -215,6 +211,15 @@
     
     // check for tutorial
     [[Tutorial main] show:TUTORIAL_KEY_RADIOVIEW everyTime:NO];
+
+}
+
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
     
     
     // launch timer here, but only the the wall has been filled already.
@@ -270,7 +275,6 @@
 
 - (void)viewDidUnload
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -285,6 +289,7 @@
 - (void)dealloc
 {
     NSLog(@"Wall dealloc");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [_messageFont release];
     [_wallEvents release];
     [_updateLock release];

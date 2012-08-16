@@ -4293,38 +4293,6 @@
 		BCE3684D15D7FD30008C26AC /* profilButtonGrayUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F8F15D7FD2F008C26AC /* profilButtonGrayUp@2x.png */; };
 		BCE3684E15D7FD30008C26AC /* profilButtonGrayUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F8F15D7FD2F008C26AC /* profilButtonGrayUp@2x.png */; };
 		BCE3684F15D7FD30008C26AC /* profilButtonGrayUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F8F15D7FD2F008C26AC /* profilButtonGrayUp@2x.png */; };
-		BCE3685015D7FD30008C26AC /* profilItemHdOff.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9015D7FD2F008C26AC /* profilItemHdOff.png */; };
-		BCE3685115D7FD30008C26AC /* profilItemHdOff.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9015D7FD2F008C26AC /* profilItemHdOff.png */; };
-		BCE3685215D7FD30008C26AC /* profilItemHdOff.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9015D7FD2F008C26AC /* profilItemHdOff.png */; };
-		BCE3685315D7FD30008C26AC /* profilItemHdOff.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9015D7FD2F008C26AC /* profilItemHdOff.png */; };
-		BCE3685415D7FD30008C26AC /* profilItemHdOff.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9015D7FD2F008C26AC /* profilItemHdOff.png */; };
-		BCE3685515D7FD30008C26AC /* profilItemHdOff.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9015D7FD2F008C26AC /* profilItemHdOff.png */; };
-		BCE3685615D7FD30008C26AC /* profilItemHdOff.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9015D7FD2F008C26AC /* profilItemHdOff.png */; };
-		BCE3685715D7FD30008C26AC /* profilItemHdOff.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9015D7FD2F008C26AC /* profilItemHdOff.png */; };
-		BCE3685815D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9115D7FD2F008C26AC /* profilItemHdOff@2x.png */; };
-		BCE3685915D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9115D7FD2F008C26AC /* profilItemHdOff@2x.png */; };
-		BCE3685A15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9115D7FD2F008C26AC /* profilItemHdOff@2x.png */; };
-		BCE3685B15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9115D7FD2F008C26AC /* profilItemHdOff@2x.png */; };
-		BCE3685C15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9115D7FD2F008C26AC /* profilItemHdOff@2x.png */; };
-		BCE3685D15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9115D7FD2F008C26AC /* profilItemHdOff@2x.png */; };
-		BCE3685E15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9115D7FD2F008C26AC /* profilItemHdOff@2x.png */; };
-		BCE3685F15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9115D7FD2F008C26AC /* profilItemHdOff@2x.png */; };
-		BCE3686015D7FD30008C26AC /* profilItemHdOn.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9215D7FD2F008C26AC /* profilItemHdOn.png */; };
-		BCE3686115D7FD30008C26AC /* profilItemHdOn.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9215D7FD2F008C26AC /* profilItemHdOn.png */; };
-		BCE3686215D7FD30008C26AC /* profilItemHdOn.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9215D7FD2F008C26AC /* profilItemHdOn.png */; };
-		BCE3686315D7FD30008C26AC /* profilItemHdOn.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9215D7FD2F008C26AC /* profilItemHdOn.png */; };
-		BCE3686415D7FD30008C26AC /* profilItemHdOn.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9215D7FD2F008C26AC /* profilItemHdOn.png */; };
-		BCE3686515D7FD30008C26AC /* profilItemHdOn.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9215D7FD2F008C26AC /* profilItemHdOn.png */; };
-		BCE3686615D7FD30008C26AC /* profilItemHdOn.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9215D7FD2F008C26AC /* profilItemHdOn.png */; };
-		BCE3686715D7FD30008C26AC /* profilItemHdOn.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9215D7FD2F008C26AC /* profilItemHdOn.png */; };
-		BCE3686815D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9315D7FD2F008C26AC /* profilItemHdOn@2x.png */; };
-		BCE3686915D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9315D7FD2F008C26AC /* profilItemHdOn@2x.png */; };
-		BCE3686A15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9315D7FD2F008C26AC /* profilItemHdOn@2x.png */; };
-		BCE3686B15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9315D7FD2F008C26AC /* profilItemHdOn@2x.png */; };
-		BCE3686C15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9315D7FD2F008C26AC /* profilItemHdOn@2x.png */; };
-		BCE3686D15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9315D7FD2F008C26AC /* profilItemHdOn@2x.png */; };
-		BCE3686E15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9315D7FD2F008C26AC /* profilItemHdOn@2x.png */; };
-		BCE3686F15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9315D7FD2F008C26AC /* profilItemHdOn@2x.png */; };
 		BCE3687015D7FD30008C26AC /* profilRadioMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9415D7FD2F008C26AC /* profilRadioMask.png */; };
 		BCE3687115D7FD30008C26AC /* profilRadioMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9415D7FD2F008C26AC /* profilRadioMask.png */; };
 		BCE3687215D7FD30008C26AC /* profilRadioMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F9415D7FD2F008C26AC /* profilRadioMask.png */; };
@@ -7005,10 +6973,6 @@
 		BCE35F8D15D7FD2F008C26AC /* profilButtonGrayRightUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profilButtonGrayRightUp@2x.png"; sourceTree = "<group>"; };
 		BCE35F8E15D7FD2F008C26AC /* profilButtonGrayUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profilButtonGrayUp.png; sourceTree = "<group>"; };
 		BCE35F8F15D7FD2F008C26AC /* profilButtonGrayUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profilButtonGrayUp@2x.png"; sourceTree = "<group>"; };
-		BCE35F9015D7FD2F008C26AC /* profilItemHdOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profilItemHdOff.png; sourceTree = "<group>"; };
-		BCE35F9115D7FD2F008C26AC /* profilItemHdOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profilItemHdOff@2x.png"; sourceTree = "<group>"; };
-		BCE35F9215D7FD2F008C26AC /* profilItemHdOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profilItemHdOn.png; sourceTree = "<group>"; };
-		BCE35F9315D7FD2F008C26AC /* profilItemHdOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profilItemHdOn@2x.png"; sourceTree = "<group>"; };
 		BCE35F9415D7FD2F008C26AC /* profilRadioMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profilRadioMask.png; sourceTree = "<group>"; };
 		BCE35F9515D7FD2F008C26AC /* profilRadioMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profilRadioMask@2x.png"; sourceTree = "<group>"; };
 		BCE35F9615D7FD2F008C26AC /* profilRadioMaskHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profilRadioMaskHighlighted.png; sourceTree = "<group>"; };
@@ -8815,10 +8779,6 @@
 				BCE35F8D15D7FD2F008C26AC /* profilButtonGrayRightUp@2x.png */,
 				BCE35F8E15D7FD2F008C26AC /* profilButtonGrayUp.png */,
 				BCE35F8F15D7FD2F008C26AC /* profilButtonGrayUp@2x.png */,
-				BCE35F9015D7FD2F008C26AC /* profilItemHdOff.png */,
-				BCE35F9115D7FD2F008C26AC /* profilItemHdOff@2x.png */,
-				BCE35F9215D7FD2F008C26AC /* profilItemHdOn.png */,
-				BCE35F9315D7FD2F008C26AC /* profilItemHdOn@2x.png */,
 				BCE35F9415D7FD2F008C26AC /* profilRadioMask.png */,
 				BCE35F9515D7FD2F008C26AC /* profilRadioMask@2x.png */,
 				BCE35F9615D7FD2F008C26AC /* profilRadioMaskHighlighted.png */,
@@ -9952,10 +9912,6 @@
 				BCE3683E15D7FD30008C26AC /* profilButtonGrayRightUp@2x.png in Resources */,
 				BCE3684615D7FD30008C26AC /* profilButtonGrayUp.png in Resources */,
 				BCE3684E15D7FD30008C26AC /* profilButtonGrayUp@2x.png in Resources */,
-				BCE3685615D7FD30008C26AC /* profilItemHdOff.png in Resources */,
-				BCE3685E15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */,
-				BCE3686615D7FD30008C26AC /* profilItemHdOn.png in Resources */,
-				BCE3686E15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */,
 				BCE3687615D7FD30008C26AC /* profilRadioMask.png in Resources */,
 				BCE3687E15D7FD30008C26AC /* profilRadioMask@2x.png in Resources */,
 				BCE3688615D7FD30008C26AC /* profilRadioMaskHighlighted.png in Resources */,
@@ -10500,10 +10456,6 @@
 				BCE3683F15D7FD30008C26AC /* profilButtonGrayRightUp@2x.png in Resources */,
 				BCE3684715D7FD30008C26AC /* profilButtonGrayUp.png in Resources */,
 				BCE3684F15D7FD30008C26AC /* profilButtonGrayUp@2x.png in Resources */,
-				BCE3685715D7FD30008C26AC /* profilItemHdOff.png in Resources */,
-				BCE3685F15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */,
-				BCE3686715D7FD30008C26AC /* profilItemHdOn.png in Resources */,
-				BCE3686F15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */,
 				BCE3687715D7FD30008C26AC /* profilRadioMask.png in Resources */,
 				BCE3687F15D7FD30008C26AC /* profilRadioMask@2x.png in Resources */,
 				BCE3688715D7FD30008C26AC /* profilRadioMaskHighlighted.png in Resources */,
@@ -11042,10 +10994,6 @@
 				BCE3683D15D7FD30008C26AC /* profilButtonGrayRightUp@2x.png in Resources */,
 				BCE3684515D7FD30008C26AC /* profilButtonGrayUp.png in Resources */,
 				BCE3684D15D7FD30008C26AC /* profilButtonGrayUp@2x.png in Resources */,
-				BCE3685515D7FD30008C26AC /* profilItemHdOff.png in Resources */,
-				BCE3685D15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */,
-				BCE3686515D7FD30008C26AC /* profilItemHdOn.png in Resources */,
-				BCE3686D15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */,
 				BCE3687515D7FD30008C26AC /* profilRadioMask.png in Resources */,
 				BCE3687D15D7FD30008C26AC /* profilRadioMask@2x.png in Resources */,
 				BCE3688515D7FD30008C26AC /* profilRadioMaskHighlighted.png in Resources */,
@@ -11589,10 +11537,6 @@
 				BCE3683A15D7FD30008C26AC /* profilButtonGrayRightUp@2x.png in Resources */,
 				BCE3684215D7FD30008C26AC /* profilButtonGrayUp.png in Resources */,
 				BCE3684A15D7FD30008C26AC /* profilButtonGrayUp@2x.png in Resources */,
-				BCE3685215D7FD30008C26AC /* profilItemHdOff.png in Resources */,
-				BCE3685A15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */,
-				BCE3686215D7FD30008C26AC /* profilItemHdOn.png in Resources */,
-				BCE3686A15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */,
 				BCE3687215D7FD30008C26AC /* profilRadioMask.png in Resources */,
 				BCE3687A15D7FD30008C26AC /* profilRadioMask@2x.png in Resources */,
 				BCE3688215D7FD30008C26AC /* profilRadioMaskHighlighted.png in Resources */,
@@ -12136,10 +12080,6 @@
 				BCE3683915D7FD30008C26AC /* profilButtonGrayRightUp@2x.png in Resources */,
 				BCE3684115D7FD30008C26AC /* profilButtonGrayUp.png in Resources */,
 				BCE3684915D7FD30008C26AC /* profilButtonGrayUp@2x.png in Resources */,
-				BCE3685115D7FD30008C26AC /* profilItemHdOff.png in Resources */,
-				BCE3685915D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */,
-				BCE3686115D7FD30008C26AC /* profilItemHdOn.png in Resources */,
-				BCE3686915D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */,
 				BCE3687115D7FD30008C26AC /* profilRadioMask.png in Resources */,
 				BCE3687915D7FD30008C26AC /* profilRadioMask@2x.png in Resources */,
 				BCE3688115D7FD30008C26AC /* profilRadioMaskHighlighted.png in Resources */,
@@ -12683,10 +12623,6 @@
 				BCE3683C15D7FD30008C26AC /* profilButtonGrayRightUp@2x.png in Resources */,
 				BCE3684415D7FD30008C26AC /* profilButtonGrayUp.png in Resources */,
 				BCE3684C15D7FD30008C26AC /* profilButtonGrayUp@2x.png in Resources */,
-				BCE3685415D7FD30008C26AC /* profilItemHdOff.png in Resources */,
-				BCE3685C15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */,
-				BCE3686415D7FD30008C26AC /* profilItemHdOn.png in Resources */,
-				BCE3686C15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */,
 				BCE3687415D7FD30008C26AC /* profilRadioMask.png in Resources */,
 				BCE3687C15D7FD30008C26AC /* profilRadioMask@2x.png in Resources */,
 				BCE3688415D7FD30008C26AC /* profilRadioMaskHighlighted.png in Resources */,
@@ -13230,10 +13166,6 @@
 				BCE3683815D7FD30008C26AC /* profilButtonGrayRightUp@2x.png in Resources */,
 				BCE3684015D7FD30008C26AC /* profilButtonGrayUp.png in Resources */,
 				BCE3684815D7FD30008C26AC /* profilButtonGrayUp@2x.png in Resources */,
-				BCE3685015D7FD30008C26AC /* profilItemHdOff.png in Resources */,
-				BCE3685815D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */,
-				BCE3686015D7FD30008C26AC /* profilItemHdOn.png in Resources */,
-				BCE3686815D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */,
 				BCE3687015D7FD30008C26AC /* profilRadioMask.png in Resources */,
 				BCE3687815D7FD30008C26AC /* profilRadioMask@2x.png in Resources */,
 				BCE3688015D7FD30008C26AC /* profilRadioMaskHighlighted.png in Resources */,
@@ -13777,10 +13709,6 @@
 				BCE3683B15D7FD30008C26AC /* profilButtonGrayRightUp@2x.png in Resources */,
 				BCE3684315D7FD30008C26AC /* profilButtonGrayUp.png in Resources */,
 				BCE3684B15D7FD30008C26AC /* profilButtonGrayUp@2x.png in Resources */,
-				BCE3685315D7FD30008C26AC /* profilItemHdOff.png in Resources */,
-				BCE3685B15D7FD30008C26AC /* profilItemHdOff@2x.png in Resources */,
-				BCE3686315D7FD30008C26AC /* profilItemHdOn.png in Resources */,
-				BCE3686B15D7FD30008C26AC /* profilItemHdOn@2x.png in Resources */,
 				BCE3687315D7FD30008C26AC /* profilRadioMask.png in Resources */,
 				BCE3687B15D7FD30008C26AC /* profilRadioMask@2x.png in Resources */,
 				BCE3688315D7FD30008C26AC /* profilRadioMaskHighlighted.png in Resources */,
