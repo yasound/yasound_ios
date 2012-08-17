@@ -464,6 +464,12 @@
   DLog(@"OAuthTwitterControllerCanceled");
 }
 
+- (void)credentialFailed:(SA_OAuthTwitterController *) controller
+{
+    DLog(@"OAuthTwitterControllerFailed");
+    _isLoging = NO;
+    [self.delegate sessionLoginFailed];
+}
 
 
 
