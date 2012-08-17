@@ -8,16 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
+#import "MyUITextField.h"
 
 @interface YasoundLoginViewController : TestflightViewController
 {
-    IBOutlet UIBarButtonItem* _backItem;
-    IBOutlet UIBarButtonItem* _titleItem;
+//    IBOutlet UIBarButtonItem* _backItem;
+//    IBOutlet UIBarButtonItem* _titleItem;
     
     //...............................................
     IBOutlet UILabel* _label;
-    IBOutlet UITextField* _email;
-    IBOutlet UITextField* _pword;
+    IBOutlet MyUITextField* _email;
+    IBOutlet MyUITextField* _pword;
     
     IBOutlet UIButton* _loginButton;
     IBOutlet UILabel* _loginLabel;

@@ -1987,6 +1987,14 @@
 		BCBE5C8F14D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
 		BCBE5C9014D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
 		BCBE5C9114D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
+		BCBF982415DE2CAE00BC3D64 /* MyUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBF982315DE2CAE00BC3D64 /* MyUITextField.m */; };
+		BCBF982515DE2CAE00BC3D64 /* MyUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBF982315DE2CAE00BC3D64 /* MyUITextField.m */; };
+		BCBF982615DE2CAE00BC3D64 /* MyUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBF982315DE2CAE00BC3D64 /* MyUITextField.m */; };
+		BCBF982715DE2CAE00BC3D64 /* MyUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBF982315DE2CAE00BC3D64 /* MyUITextField.m */; };
+		BCBF982815DE2CAE00BC3D64 /* MyUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBF982315DE2CAE00BC3D64 /* MyUITextField.m */; };
+		BCBF982915DE2CAE00BC3D64 /* MyUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBF982315DE2CAE00BC3D64 /* MyUITextField.m */; };
+		BCBF982A15DE2CAE00BC3D64 /* MyUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBF982315DE2CAE00BC3D64 /* MyUITextField.m */; };
+		BCBF982B15DE2CAE00BC3D64 /* MyUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBF982315DE2CAE00BC3D64 /* MyUITextField.m */; };
 		BCC41419150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
 		BCC4141A150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
 		BCC4141B150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
@@ -6257,6 +6265,8 @@
 		BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestflightViewController.m; sourceTree = "<group>"; };
 		BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionView.h; sourceTree = "<group>"; };
 		BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionView.m; sourceTree = "<group>"; };
+		BCBF982215DE2CAE00BC3D64 /* MyUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUITextField.h; sourceTree = "<group>"; };
+		BCBF982315DE2CAE00BC3D64 /* MyUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUITextField.m; sourceTree = "<group>"; };
 		BCC41417150A9ED100A5150B /* YasoundDataCacheImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCacheImage.h; sourceTree = "<group>"; };
 		BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCacheImage.m; sourceTree = "<group>"; };
 		BCC41433150B00D700A5150B /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = ThirdParties/fmdb/src/FMDatabase.h; sourceTree = "<group>"; };
@@ -8843,6 +8853,8 @@
 				BC7C077A1541A915004FC760 /* ShareTwitterModalViewController.h */,
 				BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */,
 				BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */,
+				BCBF982215DE2CAE00BC3D64 /* MyUITextField.h */,
+				BCBF982315DE2CAE00BC3D64 /* MyUITextField.m */,
 			);
 			path = Gui;
 			sourceTree = "<group>";
@@ -13454,6 +13466,7 @@
 				BCE35E7E15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071ABA15D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972D15DA837600F6E22A /* ProgrammingCell.m in Sources */,
+				BCBF982A15DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13662,6 +13675,7 @@
 				BCE35E7F15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071ABB15D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972E15DA837600F6E22A /* ProgrammingCell.m in Sources */,
+				BCBF982B15DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13866,6 +13880,7 @@
 				BCE35E7D15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB915D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972C15DA837600F6E22A /* ProgrammingCell.m in Sources */,
+				BCBF982915DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14074,6 +14089,7 @@
 				BCE35E7A15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB615D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972915DA837600F6E22A /* ProgrammingCell.m in Sources */,
+				BCBF982615DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14282,6 +14298,7 @@
 				BCE35E7915D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB515D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972815DA837600F6E22A /* ProgrammingCell.m in Sources */,
+				BCBF982515DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14491,6 +14508,7 @@
 				BCE35E7C15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB815D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972B15DA837600F6E22A /* ProgrammingCell.m in Sources */,
+				BCBF982815DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14699,6 +14717,7 @@
 				BCE35E7815D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB415D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972715DA837600F6E22A /* ProgrammingCell.m in Sources */,
+				BCBF982415DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14908,6 +14927,7 @@
 				BCE35E7B15D7D5C8008C26AC /* ProgrammingUploadViewController.m in Sources */,
 				BC071AB715D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972A15DA837600F6E22A /* ProgrammingCell.m in Sources */,
+				BCBF982715DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

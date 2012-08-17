@@ -64,12 +64,17 @@
     
 //    _titleItem.text = NSLocalizedString(@"LoginView_title", nil);
     
-    _titleItem.title = NSLocalizedString(@"YasoundLoginView_title", nil);
-    _backItem.title = NSLocalizedString(@"Navigation_back", nil);
+//    _titleItem.title = NSLocalizedString(@"YasoundLoginView_title", nil);
+//    _backItem.title = NSLocalizedString(@"Navigation_back", nil);
 
     _label.text =  NSLocalizedString(@"YasoundLoginView_label", nil);
     _email.placeholder = NSLocalizedString(@"YasoundLoginView_email", nil);
     _pword.placeholder = NSLocalizedString(@"YasoundLoginView_password", nil);
+    
+    _email.marginLeft = 12;
+    _email.marginRight = 42;
+    _pword.marginLeft = 12;
+    _pword.marginRight = 42;
     
     _loginLabel.text = NSLocalizedString(@"YasoundLoginView_button_login", nil);
 
