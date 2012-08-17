@@ -471,6 +471,17 @@
 					<key>type</key>
 					<string>png</string>
 				</dict>
+				<key>friends</key>
+				<dict>
+					<key>x</key>
+					<string>116</string>
+					<key>y</key>
+					<string>40</string>
+					<key>name</key>
+					<string>bigMessageIconGeneric</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
 				<key>myRadios</key>
 				<dict>
 					<key>x</key>

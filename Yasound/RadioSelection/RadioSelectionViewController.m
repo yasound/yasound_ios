@@ -193,13 +193,22 @@
     
     if (itemIndex == WheelIdFriends)
     {
-        [[YasoundDataProvider main] friendsForUser:[YasoundDataProvider main].user withTarget:self action:@selector(friendsReceived:success:)];
+        if (![YasoundSessionManager main].registered)
+            [self inviteToLogin:@"friends"];
+        else
+            [[YasoundDataProvider main] friendsForUser:[YasoundDataProvider main].user withTarget:self action:@selector(friendsReceived:success:)];
         return;
     }
 
     // request favorites radios
     if (itemIndex == WheelIdFavorites)
     {
+        if (![YasoundSessionManager main].registered)
+        {
+            [self inviteToLogin:@"favorites"];
+            return;
+        }
+        
         url = URL_RADIOS_FAVORITES;
         [tabBar setTabSelected:TabIndexFavorites];
     }

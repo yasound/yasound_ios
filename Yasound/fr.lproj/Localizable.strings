@@ -526,11 +526,13 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "BigMessage.Messages.myRadios" = "Connectez-vous pour\nafficher vos radios.";
 "BigMessage.Messages.gifts" = "Connectez-vous pour\nafficher vos cadeaux.";
 "BigMessage.Messages.profil" = "Connectez-vous pour\nafficher votre profil.";
+"BigMessage.Messages.friends" = "Connectez-vous pour\nafficher vos amis.";
 
 "BigMessage.ButtonLabels.favorites" = "Se connecter";
 "BigMessage.ButtonLabels.myRadios" = "Se connecter";
 "BigMessage.ButtonLabels.gifts" = "Se connecter";
 "BigMessage.ButtonLabels.profil" = "Se connecter";
+"BigMessage.ButtonLabels.friends" = "Se connecter";
 
 
 "Profil.follow" = "Suivi";
