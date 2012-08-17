@@ -229,7 +229,7 @@ static YasoundDataCache* _main = nil;
 //
 - (void)requestRadiosWithUrl:(NSURL*)url withGenre:(NSString*)genre target:(id)target action:(SEL)selector;
 {
-    NSArray* data = [self cachedRadioForKey:url withGenre:genre];
+    NSArray* data = [self cachedRadioForKey:[url absoluteString] withGenre:genre];
     
     // there is no cached data yet for that request, OR it's expired
     // => request update from server
