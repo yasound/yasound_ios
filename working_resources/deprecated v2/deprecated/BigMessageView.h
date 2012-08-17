@@ -14,11 +14,12 @@
 
 @property (nonatomic, retain) id target;
 @property (nonatomic) SEL action;
-@property (nonatomic, retain) UILabel* message;
-@property (nonatomic, retain) UIButton* button;
+@property (nonatomic, retain) InteractiveView* button;
+@property (nonatomic, retain) UIImageView* buttonLeft;
+@property (nonatomic, retain) UIImageView* buttonRight;
 @property (nonatomic, retain) UILabel* buttonLabel;
 
 
-- (id)initWithFrame:(CGRect)frame messageId:(NSString*)messageId target:(id)target action:(SEL)action;
+- (id)initWithFrame:(CGRect)frame message:(NSString*)message actionTitle:(NSString*)actionTitle target:(id)target action:(SEL)action;
 
 @end

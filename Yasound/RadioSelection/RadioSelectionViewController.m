@@ -332,7 +332,10 @@
     }
     else if (tabIndex == TabIndexFavorites)
     {
-        [self.wheelSelector stickToItem:WheelIdFavorites silent:NO];
+        if (![YasoundSessionManager main].registered)
+            [self inviteToLogin:@"favorites"];
+        else
+            [self.wheelSelector stickToItem:WheelIdFavorites silent:NO];
     }
     
     
@@ -341,21 +344,21 @@
         // if the user is not connected, display an invitation message
         if (![YasoundSessionManager main].registered)
         {
-            [self inviteToLogin];
+            [self inviteToLogin:@"default"];
         }
     }
     
 }
 
 
-- (void)inviteToLogin
+- (void)inviteToLogin:(NSString*)messageId
 {
     if (self.tableview != nil)
         [self.tableview.tableView removeFromSuperview];
     [self.tableview release];
     self.tableview = nil;
 
-    BigMessageView* view = [[BigMessageView alloc] initWithFrame:self.listContainer.frame message:NSLocalizedString(@"BigMessage.inviteLogin", nil) actionTitle:NSLocalizedString(@"BigMessage.inviteLogin.button", nil) target:self action:@selector(onLoginRequested:)];
+    BigMessageView* view = [[BigMessageView alloc] initWithFrame:self.listContainer.frame messageId:messageId target:self action:@selector(onLoginRequested:)];
     [self.listContainer addSubview:view];
     [view release];
 }

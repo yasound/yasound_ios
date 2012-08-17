@@ -533,6 +533,8 @@
 
 "BigMessage.inviteLogin" = "You must be loggued in to access those functions.";
 "BigMessage.inviteLogin.button" = "log in";
+"BigMessage.Messages.favorites" = "Log in to show\nyour favorites.";
+"BigMessage.ButtonLabels.favorites" = "Log in";
 
 "Profil.follow" = "Follow";
 "Profil.message" = "Message";
