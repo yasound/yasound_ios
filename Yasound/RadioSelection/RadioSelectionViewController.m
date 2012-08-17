@@ -339,13 +339,17 @@
     }
     
     
-    else if ((tabIndex == TabIndexMyRadios) || (tabIndex == TabIndexGifts) || (tabIndex == TabIndexProfil))
+    else if ((tabIndex == TabIndexMyRadios) && ![YasoundSessionManager main].registered)
     {
-        // if the user is not connected, display an invitation message
-        if (![YasoundSessionManager main].registered)
-        {
-            [self inviteToLogin:@"default"];
-        }
+        [self inviteToLogin:@"myRadios"];
+    }
+    else if ((tabIndex == TabIndexGifts) && ![YasoundSessionManager main].registered)
+    {
+        [self inviteToLogin:@"gifts"];
+    }
+    else if ((tabIndex == TabIndexProfil) && ![YasoundSessionManager main].registered)
+    {
+        [self inviteToLogin:@"profil"];
     }
     
 }

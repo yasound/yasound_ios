@@ -533,8 +533,16 @@
 
 "BigMessage.inviteLogin" = "You must be loggued in to access those functions.";
 "BigMessage.inviteLogin.button" = "log in";
+
 "BigMessage.Messages.favorites" = "Log in to show\nyour favorites.";
+"BigMessage.Messages.myRadios" = "Log in to show\nyour radios.";
+"BigMessage.Messages.gifts" = "Log in to show\nyour gifts.";
+"BigMessage.Messages.profil" = "Log in to show\nyour profil.";
+
 "BigMessage.ButtonLabels.favorites" = "Log in";
+"BigMessage.ButtonLabels.myRadios" = "Log in";
+"BigMessage.ButtonLabels.gifts" = "Log in";
+"BigMessage.ButtonLabels.profil" = "Log in";
 
 "Profil.follow" = "Follow";
 "Profil.message" = "Message";

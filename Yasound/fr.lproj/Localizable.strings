@@ -521,8 +521,17 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "BigMessage.inviteLogin" = "Vous devez être connecté pour accéder à ces fonctions.";
 "BigMessage.inviteLogin.button" = "se connecter";
+
 "BigMessage.Messages.favorites" = "Connectez-vous pour\nafficher vos favoris.";
+"BigMessage.Messages.myRadios" = "Connectez-vous pour\nafficher vos radios.";
+"BigMessage.Messages.gifts" = "Connectez-vous pour\nafficher vos cadeaux.";
+"BigMessage.Messages.profil" = "Connectez-vous pour\nafficher votre profil.";
+
 "BigMessage.ButtonLabels.favorites" = "Se connecter";
+"BigMessage.ButtonLabels.myRadios" = "Se connecter";
+"BigMessage.ButtonLabels.gifts" = "Se connecter";
+"BigMessage.ButtonLabels.profil" = "Se connecter";
+
 
 "Profil.follow" = "Suivi";
 "Profil.message" = "Message";
