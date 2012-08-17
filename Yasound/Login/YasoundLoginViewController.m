@@ -23,7 +23,7 @@
 
 //@synthesize email;
 //@synthesize pword;
-
+@synthesize container;
 
 
 
@@ -45,6 +45,7 @@
 
 - (void) dealloc
 {
+    [self.container release];
     [super dealloc];
 }
 
@@ -83,7 +84,7 @@
 
 //    _loginButton.enabled = NO;
     
-    [_email becomeFirstResponder];
+//    [_email becomeFirstResponder];
     
     //_signupButton.titleLabel.text = NSLocalizedString(@"LoginView_signup_label", nil);    
 }
@@ -113,6 +114,26 @@
 
 #pragma mark - TextField Delegate
 
+
+- (void)textFieldDidBeginEditing:(UITextField*)textField
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.33];
+    self.container.frame = CGRectMake(0, -38, self.container.frame.size.width, self.container.frame.size.height);
+    [UIView commitAnimations];
+}
+
+//- (void)textFieldDidEndEditing:(UITextField *)textField
+//{
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:0.33];
+//    self.container.frame = CGRectMake(0, 44, self.container.frame.size.width, self.container.frame.size.height);
+//    [UIView commitAnimations];
+//}
+
+
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField == _email)
@@ -121,7 +142,13 @@
     }
     else
     {
-        [textField resignFirstResponder];    
+        [textField resignFirstResponder];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        self.container.frame = CGRectMake(0, 44, self.container.frame.size.width, self.container.frame.size.height);
+        [UIView commitAnimations];
+        
         
         // activate "submit" button
         NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];

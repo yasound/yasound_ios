@@ -27,6 +27,8 @@
     
 }
 
+
+@property (nonatomic, retain) IBOutlet UIView* container;
 //@property (nonatomic, retain) IBOutlet UITextField* email;
 //@property (nonatomic, retain) IBOutlet UITextField* pword;
 
