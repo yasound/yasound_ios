@@ -23,6 +23,7 @@
 
 
 @property (nonatomic, retain) User* user;
+@property (nonatomic, retain) NSNumber* userId;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell* cellProfil;
 
@@ -41,5 +42,6 @@
 - (IBAction)onButtonBlueClicked:(id)sender;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)numberId;
 
 @end

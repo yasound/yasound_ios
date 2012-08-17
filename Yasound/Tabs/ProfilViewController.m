@@ -31,6 +31,7 @@
 @synthesize cellProfil;
 
 @synthesize user;
+@synthesize userId;
 @synthesize radios;
 @synthesize favorites;
 @synthesize friends;
@@ -58,6 +59,18 @@
 }
 
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)userId
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        self.userId = userId;
+    }
+    return self;
+}
+
+
+
 
 
 
@@ -66,6 +79,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (self.user)
+    {
+        [self userReceived:self.user info:nil];
+        return;
+    }
+    
+    [[YasoundDataProvider main] userWithId:self.userId target:self action:@selector(userReceived:info:)];
+}
+
+
+- (void)userReceived:(User*)user info:(NSDictionary*)info
+{
+    self.user = user;
+
     [self.tabBar setTabSelected:TabIndexProfil];
     
     self.name.text = self.user.name;
@@ -80,14 +108,29 @@
         age = [NSString stringWithFormat:age, [self.user.age integerValue]];
     }
     
-    NSString* sexe = @"-";
+    NSString* sexe = nil;
     if (self.user.gender.length > 0)
         sexe = NSLocalizedString(self.user.gender, nil);
-    NSString* city = @"-";
+    NSString* city = nil;
     if (self.user.city.length > 0)
         city = self.user.city;
 
-    profil = [NSString stringWithFormat:@"%@, %@, %@", age, sexe, city];
+    profil = [NSString string];
+    if (age != nil)
+        profil = [profil stringByAppendingString:age];
+    
+    if ((sexe != nil) && (profil != nil))
+        profil = [profil stringByAppendingString:@", "];
+    
+    if (sexe != nil)
+        profil = [profil stringByAppendingString:sexe];
+
+    if ((city != nil) && (profil != nil))
+        profil = [profil stringByAppendingString:@", "];
+
+    if (city != nil)
+        profil = [profil stringByAppendingString:city];
+
     self.profil.text = profil;
     
     if ([self.user.id isEqualToNumber:[YasoundDataProvider main].user.id])
@@ -275,7 +318,7 @@
     if ([item isKindOfClass:[Radio class]])
     {
         Radio* radio = item;
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:radio];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
         return;
     }
 

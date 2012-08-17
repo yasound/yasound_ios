@@ -11,7 +11,7 @@
 #import "AudioStreamManager.h"
 #import "NotificationCenterTableViewcCell.h"
 #import "MessageWeViewController.h"
-#import "ProfileViewController.h"
+#import "ProfilViewController.h"
 #import "NotificationMessageViewController.h"
 #import "RootViewController.h"
 #import "LoadingCell.h"
@@ -303,7 +303,7 @@
 
 - (void)goToFriendProfile: (User*)user
 {
-  ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:user];
+  ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:user];
   [self.navigationController pushViewController:view animated:YES];
   [view release];
 }

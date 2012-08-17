@@ -32,7 +32,7 @@
 #import "LikeViewCell.h"
 #import "LoadingCell.h"
 
-#import "ProfileViewController.h"
+#import "ProfilViewController.h"
 #import "ProfileMyRadioViewController.h"
 #import "ShareModalViewController.h"
 #import "ShareTwitterModalViewController.h"
@@ -1493,7 +1493,7 @@
         }
         else
         {
-            ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:self.radio.creator];
+            ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:self.radio.creator];
             [self.navigationController pushViewController:view animated:YES];
             [view release];
         }
@@ -1511,15 +1511,10 @@
     WallEvent *event = [_wallEvents objectAtIndex:indexPath.row];
     if (event != nil && event.user_id != nil)
     {
-        // Build fake user object with given id
-        User *user = [[User alloc] init];
-        user.id = event.user_id;
-        
         // Launch profile view
-        ProfileViewController* view = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil user:user];
+        ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil withUserId:event.user_id];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
-        [user release];
     }
 }
 

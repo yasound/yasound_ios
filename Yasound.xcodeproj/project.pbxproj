@@ -485,7 +485,6 @@
 		40D53BF71554280F001EB0C5 /* NotificationCenterTableViewcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7A9152D9E6F0056B34B /* NotificationCenterTableViewcCell.m */; };
 		40D53BF81554280F001EB0C5 /* NotificationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7AB152D9E6F0056B34B /* NotificationCenterViewController.m */; };
 		40D53BF91554280F001EB0C5 /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
-		40D53BFA1554280F001EB0C5 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
 		40D53BFB1554280F001EB0C5 /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
 		40D53BFC1554280F001EB0C5 /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
 		40D53BFD1554280F001EB0C5 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
@@ -557,7 +556,6 @@
 		40D53CCD1554280F001EB0C5 /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC4CA7C0152D26130051A085 /* NotificationViewController.xib */; };
 		40D53CCE1554280F001EB0C5 /* NotificationCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7AC152D9E6F0056B34B /* NotificationCenterViewController.xib */; };
 		40D53CCF1554280F001EB0C5 /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
-		40D53CDA1554280F001EB0C5 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
 		40D53CDB1554280F001EB0C5 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
 		40D53CDE1554280F001EB0C5 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
 		40D53CE41554280F001EB0C5 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3115494C410094B4D0 /* defaultMenuDescription.json.txt */; };
@@ -1666,20 +1664,6 @@
 		BC71F622147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F581147F979700DAE4BD /* Localizable.strings */; };
 		BC71F623147FEC6F00DAE4BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC71F585147F97DA00DAE4BD /* Localizable.strings */; };
 		BC71F624147FEC6F00DAE4BD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC71F588147F9CD900DAE4BD /* MainWindow.xib */; };
-		BC7263C0153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
-		BC7263C1153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
-		BC7263C2153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
-		BC7263C3153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
-		BC7263C4153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
-		BC7263C5153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
-		BC7263C6153479C1002386C3 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7263BE153479C1002386C3 /* ProfileViewController.m */; };
-		BC7263C7153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
-		BC7263C8153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
-		BC7263C9153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
-		BC7263CA153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
-		BC7263CB153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
-		BC7263CC153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
-		BC7263CD153479C1002386C3 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7263BF153479C1002386C3 /* ProfileViewController.xib */; };
 		BC73262B158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
 		BC73262C158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
 		BC73262D158F91C4000D6584 /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = BC73262A158F91C4000D6584 /* UserSettings.m */; };
@@ -6145,9 +6129,6 @@
 		BC71F586147F97DA00DAE4BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BC71F588147F9CD900DAE4BD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		BC71F635147FEC6F00DAE4BD /* YasoundD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC7263BD153479C1002386C3 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		BC7263BE153479C1002386C3 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		BC7263BF153479C1002386C3 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		BC732629158F91C4000D6584 /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
 		BC73262A158F91C4000D6584 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		BC784E8615D575A400C09FE0 /* TopBarSaveOrCancel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarSaveOrCancel.h; sourceTree = "<group>"; };
@@ -7141,9 +7122,6 @@
 				BCCD80071577C36F008E469F /* ProfileMyRadioViewController.h */,
 				BCCD80081577C36F008E469F /* ProfileMyRadioViewController.m */,
 				BCCD80091577C36F008E469F /* ProfileMyRadioViewController.xib */,
-				BC7263BD153479C1002386C3 /* ProfileViewController.h */,
-				BC7263BE153479C1002386C3 /* ProfileViewController.m */,
-				BC7263BF153479C1002386C3 /* ProfileViewController.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -9164,7 +9142,6 @@
 				40B40ADC152EFC630050D334 /* NotificationViewController.xib in Resources */,
 				40B40ADE152EFC630050D334 /* NotificationCenterViewController.xib in Resources */,
 				40B40ADF152EFC630050D334 /* MessageWeViewController.xib in Resources */,
-				BC7263CD153479C1002386C3 /* ProfileViewController.xib in Resources */,
 				BC481DED153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 				BC7C078A1541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3915494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
@@ -9661,7 +9638,6 @@
 				40D53CCD1554280F001EB0C5 /* NotificationViewController.xib in Resources */,
 				40D53CCE1554280F001EB0C5 /* NotificationCenterViewController.xib in Resources */,
 				40D53CCF1554280F001EB0C5 /* MessageWeViewController.xib in Resources */,
-				40D53CDA1554280F001EB0C5 /* ProfileViewController.xib in Resources */,
 				40D53CDB1554280F001EB0C5 /* ShareModalViewController.xib in Resources */,
 				40D53CDE1554280F001EB0C5 /* ShareTwitterModalViewController.xib in Resources */,
 				40D53CE41554280F001EB0C5 /* defaultMenuDescription.json.txt in Resources */,
@@ -10156,7 +10132,6 @@
 				BCB0EF2B1524755F00290383 /* LoginViewController.xib in Resources */,
 				4028E7BE152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7CD152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC7263CC153479C1002386C3 /* ProfileViewController.xib in Resources */,
 				BC481DEC153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 				BC7C07891541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3815494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
@@ -10653,7 +10628,6 @@
 				BC4CA7C8152D26130051A085 /* NotificationViewController.xib in Resources */,
 				4028E7BB152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7CA152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC7263C9153479C1002386C3 /* ProfileViewController.xib in Resources */,
 				BC481DE9153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 				BC7C07861541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3515494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
@@ -11151,7 +11125,6 @@
 				BC4CA7C7152D26130051A085 /* NotificationViewController.xib in Resources */,
 				4028E7BA152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7C9152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC7263C8153479C1002386C3 /* ProfileViewController.xib in Resources */,
 				BC481DE8153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 				BC7C07851541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3415494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
@@ -11649,7 +11622,6 @@
 				BC4CA7CA152D26130051A085 /* NotificationViewController.xib in Resources */,
 				4028E7BD152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7CC152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC7263CB153479C1002386C3 /* ProfileViewController.xib in Resources */,
 				BC481DEB153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 				BC7C07881541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3715494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
@@ -12147,7 +12119,6 @@
 				BC4CA7C6152D26130051A085 /* NotificationViewController.xib in Resources */,
 				4028E7B9152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7C8152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC7263C7153479C1002386C3 /* ProfileViewController.xib in Resources */,
 				BC481DE7153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 				BC7C07841541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3315494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
@@ -12645,7 +12616,6 @@
 				BC4CA7C9152D26130051A085 /* NotificationViewController.xib in Resources */,
 				4028E7BC152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7CB152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC7263CA153479C1002386C3 /* ProfileViewController.xib in Resources */,
 				BC481DEA153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
 				BC7C07871541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3615494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
@@ -13306,7 +13276,6 @@
 				40B409FD152EFC630050D334 /* NotificationCenterTableViewcCell.m in Sources */,
 				40B409FE152EFC630050D334 /* NotificationCenterViewController.m in Sources */,
 				40B409FF152EFC630050D334 /* MessageWeViewController.m in Sources */,
-				BC7263C6153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A53153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5C153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE6153EFC9B00990214 /* ShareModalViewController.m in Sources */,
@@ -13513,7 +13482,6 @@
 				40D53BF71554280F001EB0C5 /* NotificationCenterTableViewcCell.m in Sources */,
 				40D53BF81554280F001EB0C5 /* NotificationCenterViewController.m in Sources */,
 				40D53BF91554280F001EB0C5 /* MessageWeViewController.m in Sources */,
-				40D53BFA1554280F001EB0C5 /* ProfileViewController.m in Sources */,
 				40D53BFB1554280F001EB0C5 /* RequestConfig.m in Sources */,
 				40D53BFC1554280F001EB0C5 /* ASIHTTPRequest+Model.m in Sources */,
 				40D53BFD1554280F001EB0C5 /* ShareModalViewController.m in Sources */,
@@ -13716,7 +13684,6 @@
 				4028E7B2152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B8152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C7152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				BC7263C5153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A52153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5B153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE5153EFC9B00990214 /* ShareModalViewController.m in Sources */,
@@ -13923,7 +13890,6 @@
 				4028E7AF152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B5152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C4152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				BC7263C2153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A4F153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A58153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE2153EFC9B00990214 /* ShareModalViewController.m in Sources */,
@@ -14130,7 +14096,6 @@
 				4028E7AE152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B4152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C3152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				BC7263C1153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A4E153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A57153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE1153EFC9B00990214 /* ShareModalViewController.m in Sources */,
@@ -14338,7 +14303,6 @@
 				4028E7B1152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B7152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C6152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				BC7263C4153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A51153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5A153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE4153EFC9B00990214 /* ShareModalViewController.m in Sources */,
@@ -14545,7 +14509,6 @@
 				4028E7AD152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B3152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C2152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				BC7263C0153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A4D153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A56153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE0153EFC9B00990214 /* ShareModalViewController.m in Sources */,
@@ -14753,7 +14716,6 @@
 				4028E7B0152D9E6F0056B34B /* NotificationCenterTableViewcCell.m in Sources */,
 				4028E7B6152D9E6F0056B34B /* NotificationCenterViewController.m in Sources */,
 				4028E7C5152DC1400056B34B /* MessageWeViewController.m in Sources */,
-				BC7263C3153479C1002386C3 /* ProfileViewController.m in Sources */,
 				40CC5A50153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A59153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
 				BC481DE3153EFC9B00990214 /* ShareModalViewController.m in Sources */,

@@ -239,10 +239,8 @@ static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 {
     self.items = items;
     
-    if (items != nil)
+    if ((items != nil) && (items.count > 0))
     {
-        assert(items.count > 0);
-        
         id object = [items objectAtIndex:0];
         if ([object isKindOfClass:[Radio class]])
         {
