@@ -51,14 +51,23 @@
     
     //    _titleItem.text = NSLocalizedString(@"LoginView_title", nil);
     
-    _titleItem.title = NSLocalizedString(@"SignupView_title", nil);
-    _backItem.title = NSLocalizedString(@"Navigation_back", nil);
+//    _titleItem.title = NSLocalizedString(@"SignupView_title", nil);
+//    _backItem.title = NSLocalizedString(@"Navigation_back", nil);
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
     
     
-    _container.backgroundColor = [UIColor clearColor];
-    
+//    _container.backgroundColor = [UIColor clearColor];
+
+    _username.marginLeft = 12;
+    _username.marginRight = 42;
+    _email.marginLeft = 12;
+    _email.marginRight = 42;
+    _pword.marginLeft = 12;
+    _pword.marginRight = 42;
+    _confirmPword.marginLeft = 12;
+    _confirmPword.marginRight = 42;
+        
     _label.text =  NSLocalizedString(@"SignupView_label", nil);
     
     _username.placeholder = NSLocalizedString(@"SignupView_username", nil);
@@ -326,13 +335,13 @@
 
 #pragma mark - IBActions
 
-
-
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:NO];
-}
-
+//
+//
+//- (IBAction)onBack:(id)sender
+//{
+//    [self.navigationController popViewControllerAnimated:NO];
+//}
+//
 
 
 

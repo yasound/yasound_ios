@@ -8,21 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
+#import "MyUITextField.h"
 
 
 @interface SignupViewController : TestflightViewController<UITextFieldDelegate>
 {
-    IBOutlet UIBarButtonItem* _backItem;
-    IBOutlet UIBarButtonItem* _titleItem;
+//    IBOutlet UIBarButtonItem* _backItem;
+//    IBOutlet UIBarButtonItem* _titleItem;
     
     //...............................................
     IBOutlet UIView* _container;
     
     IBOutlet UILabel* _label;
-    IBOutlet UITextField* _username;
-    IBOutlet UITextField* _email;
-    IBOutlet UITextField* _pword;
-    IBOutlet UITextField* _confirmPword;
+    IBOutlet MyUITextField* _username;
+    IBOutlet MyUITextField* _email;
+    IBOutlet MyUITextField* _pword;
+    IBOutlet MyUITextField* _confirmPword;
     
     IBOutlet UIButton* _submitButton;
     IBOutlet UILabel* _submitLabel;

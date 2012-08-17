@@ -119,7 +119,7 @@
 {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.33];
-    self.container.frame = CGRectMake(0, -38, self.container.frame.size.width, self.container.frame.size.height);
+    self.container.frame = CGRectMake(0, -20, self.container.frame.size.width, self.container.frame.size.height);
     [UIView commitAnimations];
 }
 
@@ -280,10 +280,10 @@
 
 
 
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:NO];
-}
+//- (IBAction)onBack:(id)sender
+//{
+//    [self.navigationController popViewControllerAnimated:NO];
+//}
 
 
 - (IBAction)onSignupClicked:(id)sender
