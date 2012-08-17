@@ -160,9 +160,7 @@ static YasoundDataCache* _main = nil;
     //NSLog(@"%@", info);
     /////////
     
-    NSDictionary* userData = [info objectForKey:@"userData"];
-    
-    YasoundDataCachePendingOp* op = [userData objectForKey:@"userData"]; 
+    YasoundDataCachePendingOp* op = [info objectForKey:@"userData"];
     assert(op != nil);
     
     id target = op.target;

@@ -434,11 +434,12 @@
 {
     ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute withUrlParams:params withAuth:auth];
     
-    
-    NSMutableDictionary* newUserData = [NSMutableDictionary dictionary];
-    if (userData)
-        [newUserData setObject:userData forKey:@"userData"];
-    [newUserData setObject:req forKey:@"request"];
+    NSMutableDictionary* newUserData = userData;
+    if (userData == nil)
+    {
+        newUserData = [NSMutableDictionary dictionary];
+        [newUserData setObject:req forKey:@"request"];
+    }
     
     //LBDEBUG ICI : clean
    // NSDictionary* dico = [NSDictionary dictionaryWithObject:req forKey:@"request"];
