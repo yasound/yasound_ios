@@ -814,8 +814,8 @@
 {
     if (!status)
         return;
-    if (_playingNowView)
-        [_playingNowView setSongStatus:status];
+//    if (_playingNowView)
+//        [_playingNowView setSongStatus:status];
 }
 
 - (void)receiveRadio:(Radio*)r withInfo:(NSDictionary*)info

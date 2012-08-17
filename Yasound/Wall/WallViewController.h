@@ -7,8 +7,6 @@
 
 #import <UIKit/UIKit.h>
 #import "WallMessage.h"
-#import "NowPlayingView.h"
-//#import "TracksView.h"
 #import "SongViewCell.h"
 #import "TestflightViewController.h"
 #import "OrientedTableView.h"
@@ -42,7 +40,6 @@
     
 //    TouchedTableView* _tableView;
     
-    NowPlayingView* _playingNowView;
     
     WebImageView* _radioImage;
     

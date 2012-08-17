@@ -17,7 +17,6 @@
 #import "YasoundReachability.h"
 #import "SongUploadManager.h"
 #import "ProgrammingUploadViewController.h"
-#import "TrackInteractionView.h"
 #import <MessageUI/MessageUI.h>
 #import "YasoundSessionManager.h"
 #import "ShareModalViewController.h"
@@ -229,14 +228,14 @@
 
             
             // track interaction buttons
-            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_trackInteractionView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            TrackInteractionView* view = [[TrackInteractionView alloc] initWithSong:self.song];
-            view.frame = sheet.frame;
-//            view.frame = CGRectMake(8, 350, 320, 60);
-            [view setButtonLikeClickedTarget:self action:@selector(trackInteractionViewLikeButtonCliked)];
-            [cell addSubview:view];
-            
-            [view.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
+//            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_trackInteractionView" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            TrackInteractionView* view = [[TrackInteractionView alloc] initWithSong:self.song];
+//            view.frame = sheet.frame;
+////            view.frame = CGRectMake(8, 350, 320, 60);
+//            [view setButtonLikeClickedTarget:self action:@selector(trackInteractionViewLikeButtonCliked)];
+//            [cell addSubview:view];
+//            
+//            [view.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
 
             
             sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
