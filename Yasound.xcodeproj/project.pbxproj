@@ -169,8 +169,6 @@
 		40B40998152EFC630050D334 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		40B40999152EFC630050D334 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
 		40B4099A152EFC630050D334 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
-		40B4099B152EFC630050D334 /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
-		40B4099C152EFC630050D334 /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		40B4099D152EFC630050D334 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		40B4099E152EFC630050D334 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40B409A0152EFC630050D334 /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
@@ -408,8 +406,6 @@
 		40D53B9B1554280F001EB0C5 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		40D53B9C1554280F001EB0C5 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
 		40D53B9D1554280F001EB0C5 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
-		40D53B9E1554280F001EB0C5 /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
-		40D53B9F1554280F001EB0C5 /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		40D53BA01554280F001EB0C5 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		40D53BA11554280F001EB0C5 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		40D53BA31554280F001EB0C5 /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
@@ -781,12 +777,6 @@
 		BC23881815D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
 		BC23881915D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
 		BC23881A15D399C500D1A4C4 /* WallViewController+StatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */; };
-		BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
-		BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
-		BC27F36314BDCAF800EF1C5F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
-		BC27F36E14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
-		BC27F36F14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
-		BC27F37014BDD87B00EF1C5F /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
@@ -904,8 +894,6 @@
 		BC3FA6AE14E93B660055AB4A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		BC3FA6AF14E93B660055AB4A /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
 		BC3FA6B014E93B660055AB4A /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
-		BC3FA6B114E93B660055AB4A /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
-		BC3FA6B214E93B660055AB4A /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		BC3FA6B314E93B660055AB4A /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		BC3FA6B414E93B660055AB4A /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		BC3FA6B614E93B660055AB4A /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
@@ -1463,8 +1451,6 @@
 		BC56F4BA152486AF005D1B40 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		BC56F4BB152486AF005D1B40 /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
 		BC56F4BC152486AF005D1B40 /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
-		BC56F4BD152486AF005D1B40 /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
-		BC56F4BE152486AF005D1B40 /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		BC56F4BF152486AF005D1B40 /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		BC56F4C0152486AF005D1B40 /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		BC56F4C2152486AF005D1B40 /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
@@ -1824,8 +1810,6 @@
 		BC93CD2714CF3F7A007C723F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		BC93CD2814CF3F7A007C723F /* YasoundSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */; };
 		BC93CD2914CF3F7A007C723F /* RadioUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C77314BB053100A163F9 /* RadioUser.m */; };
-		BC93CD2A14CF3F7A007C723F /* NowPlayingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */; };
-		BC93CD2B14CF3F7A007C723F /* TrackInteractionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */; };
 		BC93CD2C14CF3F7A007C723F /* SongUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C78A14BDF40F00A163F9 /* SongUser.m */; };
 		BC93CD2D14CF3F7A007C723F /* NextSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F4C79014BEEF6F00A163F9 /* NextSong.m */; };
 		BC93CD2F14CF3F7A007C723F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
@@ -2059,6 +2043,22 @@
 		BCBF98EA15DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98DC15DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png */; };
 		BCBF98EB15DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98DC15DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png */; };
 		BCBF98EC15DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98DC15DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png */; };
+		BCBF98EF15DEA41400BC3D64 /* nowPlayingMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98ED15DEA41400BC3D64 /* nowPlayingMask.png */; };
+		BCBF98F015DEA41400BC3D64 /* nowPlayingMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98ED15DEA41400BC3D64 /* nowPlayingMask.png */; };
+		BCBF98F115DEA41400BC3D64 /* nowPlayingMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98ED15DEA41400BC3D64 /* nowPlayingMask.png */; };
+		BCBF98F215DEA41400BC3D64 /* nowPlayingMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98ED15DEA41400BC3D64 /* nowPlayingMask.png */; };
+		BCBF98F315DEA41400BC3D64 /* nowPlayingMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98ED15DEA41400BC3D64 /* nowPlayingMask.png */; };
+		BCBF98F415DEA41400BC3D64 /* nowPlayingMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98ED15DEA41400BC3D64 /* nowPlayingMask.png */; };
+		BCBF98F515DEA41400BC3D64 /* nowPlayingMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98ED15DEA41400BC3D64 /* nowPlayingMask.png */; };
+		BCBF98F615DEA41400BC3D64 /* nowPlayingMask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98ED15DEA41400BC3D64 /* nowPlayingMask.png */; };
+		BCBF98F715DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98EE15DEA41400BC3D64 /* nowPlayingMask@2x.png */; };
+		BCBF98F815DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98EE15DEA41400BC3D64 /* nowPlayingMask@2x.png */; };
+		BCBF98F915DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98EE15DEA41400BC3D64 /* nowPlayingMask@2x.png */; };
+		BCBF98FA15DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98EE15DEA41400BC3D64 /* nowPlayingMask@2x.png */; };
+		BCBF98FB15DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98EE15DEA41400BC3D64 /* nowPlayingMask@2x.png */; };
+		BCBF98FC15DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98EE15DEA41400BC3D64 /* nowPlayingMask@2x.png */; };
+		BCBF98FD15DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98EE15DEA41400BC3D64 /* nowPlayingMask@2x.png */; };
+		BCBF98FE15DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCBF98EE15DEA41400BC3D64 /* nowPlayingMask@2x.png */; };
 		BCC41419150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
 		BCC4141A150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
 		BCC4141B150A9ED100A5150B /* YasoundDataCacheImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */; };
@@ -3629,22 +3629,6 @@
 		BCE366DD15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
 		BCE366DE15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
 		BCE366DF15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */; };
-		BCE366E015D7FD30008C26AC /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5F15D7FD2F008C26AC /* MyYasoundBackground.png */; };
-		BCE366E115D7FD30008C26AC /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5F15D7FD2F008C26AC /* MyYasoundBackground.png */; };
-		BCE366E215D7FD30008C26AC /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5F15D7FD2F008C26AC /* MyYasoundBackground.png */; };
-		BCE366E315D7FD30008C26AC /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5F15D7FD2F008C26AC /* MyYasoundBackground.png */; };
-		BCE366E415D7FD30008C26AC /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5F15D7FD2F008C26AC /* MyYasoundBackground.png */; };
-		BCE366E515D7FD30008C26AC /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5F15D7FD2F008C26AC /* MyYasoundBackground.png */; };
-		BCE366E615D7FD30008C26AC /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5F15D7FD2F008C26AC /* MyYasoundBackground.png */; };
-		BCE366E715D7FD30008C26AC /* MyYasoundBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F5F15D7FD2F008C26AC /* MyYasoundBackground.png */; };
-		BCE366E815D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6015D7FD2F008C26AC /* MyYasoundBackground@2x.png */; };
-		BCE366E915D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6015D7FD2F008C26AC /* MyYasoundBackground@2x.png */; };
-		BCE366EA15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6015D7FD2F008C26AC /* MyYasoundBackground@2x.png */; };
-		BCE366EB15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6015D7FD2F008C26AC /* MyYasoundBackground@2x.png */; };
-		BCE366EC15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6015D7FD2F008C26AC /* MyYasoundBackground@2x.png */; };
-		BCE366ED15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6015D7FD2F008C26AC /* MyYasoundBackground@2x.png */; };
-		BCE366EE15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6015D7FD2F008C26AC /* MyYasoundBackground@2x.png */; };
-		BCE366EF15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6015D7FD2F008C26AC /* MyYasoundBackground@2x.png */; };
 		BCE366F015D7FD30008C26AC /* notificationsIconBalloon.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6215D7FD2F008C26AC /* notificationsIconBalloon.png */; };
 		BCE366F115D7FD30008C26AC /* notificationsIconBalloon.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6215D7FD2F008C26AC /* notificationsIconBalloon.png */; };
 		BCE366F215D7FD30008C26AC /* notificationsIconBalloon.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35F6215D7FD2F008C26AC /* notificationsIconBalloon.png */; };
@@ -5993,10 +5977,6 @@
 		BC2387BF15D2CF6400D1A4C4 /* WallViewController+NowPlayingBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WallViewController+NowPlayingBar.m"; sourceTree = "<group>"; };
 		BC23881115D399C400D1A4C4 /* WallViewController+StatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WallViewController+StatusBar.h"; sourceTree = "<group>"; };
 		BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WallViewController+StatusBar.m"; sourceTree = "<group>"; };
-		BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowPlayingView.h; sourceTree = "<group>"; };
-		BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowPlayingView.m; sourceTree = "<group>"; };
-		BC27F36C14BDD87B00EF1C5F /* TrackInteractionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackInteractionView.h; sourceTree = "<group>"; };
-		BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackInteractionView.m; sourceTree = "<group>"; };
 		BC27F39214BE598700EF1C5F /* YasoundReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundReachability.h; sourceTree = "<group>"; };
 		BC27F39314BE598700EF1C5F /* YasoundReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundReachability.m; sourceTree = "<group>"; };
 		BC355BCD15BD4F9100305C56 /* GiftsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftsViewController.h; path = Yasound/Tabs/GiftsViewController.h; sourceTree = SOURCE_ROOT; };
@@ -6243,6 +6223,8 @@
 		BCBF98CA15DE817B00BC3D64 /* bigMessageIconFavorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigMessageIconFavorites@2x.png"; sourceTree = "<group>"; };
 		BCBF98DB15DE8EDA00BC3D64 /* bigMessageIconGeneric.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigMessageIconGeneric.png; sourceTree = "<group>"; };
 		BCBF98DC15DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigMessageIconGeneric@2x.png"; sourceTree = "<group>"; };
+		BCBF98ED15DEA41400BC3D64 /* nowPlayingMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nowPlayingMask.png; sourceTree = "<group>"; };
+		BCBF98EE15DEA41400BC3D64 /* nowPlayingMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nowPlayingMask@2x.png"; sourceTree = "<group>"; };
 		BCC41417150A9ED100A5150B /* YasoundDataCacheImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCacheImage.h; sourceTree = "<group>"; };
 		BCC41418150A9ED100A5150B /* YasoundDataCacheImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCacheImage.m; sourceTree = "<group>"; };
 		BCC41433150B00D700A5150B /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = ThirdParties/fmdb/src/FMDatabase.h; sourceTree = "<group>"; };
@@ -6539,8 +6521,6 @@
 		BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosSettings@2x.png"; sourceTree = "<group>"; };
 		BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosStats.png; sourceTree = "<group>"; };
 		BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosStats@2x.png"; sourceTree = "<group>"; };
-		BCE35F5F15D7FD2F008C26AC /* MyYasoundBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyYasoundBackground.png; sourceTree = "<group>"; };
-		BCE35F6015D7FD2F008C26AC /* MyYasoundBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyYasoundBackground@2x.png"; sourceTree = "<group>"; };
 		BCE35F6215D7FD2F008C26AC /* notificationsIconBalloon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationsIconBalloon.png; sourceTree = "<group>"; };
 		BCE35F6315D7FD2F008C26AC /* notificationsIconBalloon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notificationsIconBalloon@2x.png"; sourceTree = "<group>"; };
 		BCE35F6415D7FD2F008C26AC /* notificationsIconHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationsIconHeart.png; sourceTree = "<group>"; };
@@ -7718,10 +7698,6 @@
 		BCB5F28B1485416B00C28B3D /* RadioView */ = {
 			isa = PBXGroup;
 			children = (
-				BC27F36C14BDD87B00EF1C5F /* TrackInteractionView.h */,
-				BC27F36D14BDD87B00EF1C5F /* TrackInteractionView.m */,
-				BC27F35F14BDCAF800EF1C5F /* NowPlayingView.h */,
-				BC27F36014BDCAF800EF1C5F /* NowPlayingView.m */,
 				BC0304FC14C0248100F39374 /* InteractiveView.h */,
 				BC0304FD14C0248100F39374 /* InteractiveView.m */,
 				BCA83E7B14C7258F000A8295 /* SongViewCell.h */,
@@ -8276,15 +8252,6 @@
 			path = MyRadios;
 			sourceTree = "<group>";
 		};
-		BCE35F5E15D7FD2F008C26AC /* MyYasound */ = {
-			isa = PBXGroup;
-			children = (
-				BCE35F5F15D7FD2F008C26AC /* MyYasoundBackground.png */,
-				BCE35F6015D7FD2F008C26AC /* MyYasoundBackground@2x.png */,
-			);
-			path = MyYasound;
-			sourceTree = "<group>";
-		};
 		BCE35F6115D7FD2F008C26AC /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -8305,6 +8272,8 @@
 		BCE35F6C15D7FD2F008C26AC /* NowPlayingBar */ = {
 			isa = PBXGroup;
 			children = (
+				BCBF98ED15DEA41400BC3D64 /* nowPlayingMask.png */,
+				BCBF98EE15DEA41400BC3D64 /* nowPlayingMask@2x.png */,
 				BCE35F6D15D7FD2F008C26AC /* nowPlayingBkg.png */,
 				BCE35F6E15D7FD2F008C26AC /* nowPlayingBkg@2x.png */,
 				BCE35F6F15D7FD2F008C26AC /* nowPlayingBuy.png */,
@@ -8745,7 +8714,6 @@
 				BCE35F3915D7FD2E008C26AC /* Menu */,
 				BCE35F5015D7FD2E008C26AC /* MyAccount */,
 				BCE35F5315D7FD2E008C26AC /* MyRadios */,
-				BCE35F5E15D7FD2F008C26AC /* MyYasound */,
 				BCE35F6115D7FD2F008C26AC /* Notifications */,
 				BCE35F6C15D7FD2F008C26AC /* NowPlayingBar */,
 				BCE35F7B15D7FD2F008C26AC /* Profil */,
@@ -9374,8 +9342,6 @@
 				BCE366CE15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
 				BCE366D615D7FD30008C26AC /* myRadiosStats.png in Resources */,
 				BCE366DE15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
-				BCE366E615D7FD30008C26AC /* MyYasoundBackground.png in Resources */,
-				BCE366EE15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */,
 				BCE366F615D7FD30008C26AC /* notificationsIconBalloon.png in Resources */,
 				BCE366FE15D7FD30008C26AC /* notificationsIconBalloon@2x.png in Resources */,
 				BCE3670615D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -9646,6 +9612,8 @@
 				BCBF98D915DE817B00BC3D64 /* bigMessageIconFavorites@2x.png in Resources */,
 				BCBF98E315DE8EDA00BC3D64 /* bigMessageIconGeneric.png in Resources */,
 				BCBF98EB15DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png in Resources */,
+				BCBF98F515DEA41400BC3D64 /* nowPlayingMask.png in Resources */,
+				BCBF98FD15DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9873,8 +9841,6 @@
 				BCE366CF15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
 				BCE366D715D7FD30008C26AC /* myRadiosStats.png in Resources */,
 				BCE366DF15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
-				BCE366E715D7FD30008C26AC /* MyYasoundBackground.png in Resources */,
-				BCE366EF15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */,
 				BCE366F715D7FD30008C26AC /* notificationsIconBalloon.png in Resources */,
 				BCE366FF15D7FD30008C26AC /* notificationsIconBalloon@2x.png in Resources */,
 				BCE3670715D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -10145,6 +10111,8 @@
 				BCBF98DA15DE817B00BC3D64 /* bigMessageIconFavorites@2x.png in Resources */,
 				BCBF98E415DE8EDA00BC3D64 /* bigMessageIconGeneric.png in Resources */,
 				BCBF98EC15DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png in Resources */,
+				BCBF98F615DEA41400BC3D64 /* nowPlayingMask.png in Resources */,
+				BCBF98FE15DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10366,8 +10334,6 @@
 				BCE366CD15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
 				BCE366D515D7FD30008C26AC /* myRadiosStats.png in Resources */,
 				BCE366DD15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
-				BCE366E515D7FD30008C26AC /* MyYasoundBackground.png in Resources */,
-				BCE366ED15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */,
 				BCE366F515D7FD30008C26AC /* notificationsIconBalloon.png in Resources */,
 				BCE366FD15D7FD30008C26AC /* notificationsIconBalloon@2x.png in Resources */,
 				BCE3670515D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -10638,6 +10604,8 @@
 				BCBF98D815DE817B00BC3D64 /* bigMessageIconFavorites@2x.png in Resources */,
 				BCBF98E215DE8EDA00BC3D64 /* bigMessageIconGeneric.png in Resources */,
 				BCBF98EA15DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png in Resources */,
+				BCBF98F415DEA41400BC3D64 /* nowPlayingMask.png in Resources */,
+				BCBF98FC15DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10864,8 +10832,6 @@
 				BCE366CA15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
 				BCE366D215D7FD30008C26AC /* myRadiosStats.png in Resources */,
 				BCE366DA15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
-				BCE366E215D7FD30008C26AC /* MyYasoundBackground.png in Resources */,
-				BCE366EA15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */,
 				BCE366F215D7FD30008C26AC /* notificationsIconBalloon.png in Resources */,
 				BCE366FA15D7FD30008C26AC /* notificationsIconBalloon@2x.png in Resources */,
 				BCE3670215D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -11136,6 +11102,8 @@
 				BCBF98D515DE817B00BC3D64 /* bigMessageIconFavorites@2x.png in Resources */,
 				BCBF98DF15DE8EDA00BC3D64 /* bigMessageIconGeneric.png in Resources */,
 				BCBF98E715DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png in Resources */,
+				BCBF98F115DEA41400BC3D64 /* nowPlayingMask.png in Resources */,
+				BCBF98F915DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11362,8 +11330,6 @@
 				BCE366C915D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
 				BCE366D115D7FD30008C26AC /* myRadiosStats.png in Resources */,
 				BCE366D915D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
-				BCE366E115D7FD30008C26AC /* MyYasoundBackground.png in Resources */,
-				BCE366E915D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */,
 				BCE366F115D7FD30008C26AC /* notificationsIconBalloon.png in Resources */,
 				BCE366F915D7FD30008C26AC /* notificationsIconBalloon@2x.png in Resources */,
 				BCE3670115D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -11634,6 +11600,8 @@
 				BCBF98D415DE817B00BC3D64 /* bigMessageIconFavorites@2x.png in Resources */,
 				BCBF98DE15DE8EDA00BC3D64 /* bigMessageIconGeneric.png in Resources */,
 				BCBF98E615DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png in Resources */,
+				BCBF98F015DEA41400BC3D64 /* nowPlayingMask.png in Resources */,
+				BCBF98F815DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11860,8 +11828,6 @@
 				BCE366CC15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
 				BCE366D415D7FD30008C26AC /* myRadiosStats.png in Resources */,
 				BCE366DC15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
-				BCE366E415D7FD30008C26AC /* MyYasoundBackground.png in Resources */,
-				BCE366EC15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */,
 				BCE366F415D7FD30008C26AC /* notificationsIconBalloon.png in Resources */,
 				BCE366FC15D7FD30008C26AC /* notificationsIconBalloon@2x.png in Resources */,
 				BCE3670415D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -12132,6 +12098,8 @@
 				BCBF98D715DE817B00BC3D64 /* bigMessageIconFavorites@2x.png in Resources */,
 				BCBF98E115DE8EDA00BC3D64 /* bigMessageIconGeneric.png in Resources */,
 				BCBF98E915DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png in Resources */,
+				BCBF98F315DEA41400BC3D64 /* nowPlayingMask.png in Resources */,
+				BCBF98FB15DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12358,8 +12326,6 @@
 				BCE366C815D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
 				BCE366D015D7FD30008C26AC /* myRadiosStats.png in Resources */,
 				BCE366D815D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
-				BCE366E015D7FD30008C26AC /* MyYasoundBackground.png in Resources */,
-				BCE366E815D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */,
 				BCE366F015D7FD30008C26AC /* notificationsIconBalloon.png in Resources */,
 				BCE366F815D7FD30008C26AC /* notificationsIconBalloon@2x.png in Resources */,
 				BCE3670015D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -12630,6 +12596,8 @@
 				BCBF98D315DE817B00BC3D64 /* bigMessageIconFavorites@2x.png in Resources */,
 				BCBF98DD15DE8EDA00BC3D64 /* bigMessageIconGeneric.png in Resources */,
 				BCBF98E515DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png in Resources */,
+				BCBF98EF15DEA41400BC3D64 /* nowPlayingMask.png in Resources */,
+				BCBF98F715DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12856,8 +12824,6 @@
 				BCE366CB15D7FD30008C26AC /* myRadiosSettings@2x.png in Resources */,
 				BCE366D315D7FD30008C26AC /* myRadiosStats.png in Resources */,
 				BCE366DB15D7FD30008C26AC /* myRadiosStats@2x.png in Resources */,
-				BCE366E315D7FD30008C26AC /* MyYasoundBackground.png in Resources */,
-				BCE366EB15D7FD30008C26AC /* MyYasoundBackground@2x.png in Resources */,
 				BCE366F315D7FD30008C26AC /* notificationsIconBalloon.png in Resources */,
 				BCE366FB15D7FD30008C26AC /* notificationsIconBalloon@2x.png in Resources */,
 				BCE3670315D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -13128,6 +13094,8 @@
 				BCBF98D615DE817B00BC3D64 /* bigMessageIconFavorites@2x.png in Resources */,
 				BCBF98E015DE8EDA00BC3D64 /* bigMessageIconGeneric.png in Resources */,
 				BCBF98E815DE8EDA00BC3D64 /* bigMessageIconGeneric@2x.png in Resources */,
+				BCBF98F215DEA41400BC3D64 /* nowPlayingMask.png in Resources */,
+				BCBF98FA15DEA41400BC3D64 /* nowPlayingMask@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13259,8 +13227,6 @@
 				40B40998152EFC630050D334 /* RootViewController.m in Sources */,
 				40B40999152EFC630050D334 /* YasoundSessionManager.m in Sources */,
 				40B4099A152EFC630050D334 /* RadioUser.m in Sources */,
-				40B4099B152EFC630050D334 /* NowPlayingView.m in Sources */,
-				40B4099C152EFC630050D334 /* TrackInteractionView.m in Sources */,
 				40B4099D152EFC630050D334 /* SongUser.m in Sources */,
 				40B4099E152EFC630050D334 /* NextSong.m in Sources */,
 				40B409A0152EFC630050D334 /* YasoundReachability.m in Sources */,
@@ -13468,8 +13434,6 @@
 				40D53B9B1554280F001EB0C5 /* RootViewController.m in Sources */,
 				40D53B9C1554280F001EB0C5 /* YasoundSessionManager.m in Sources */,
 				40D53B9D1554280F001EB0C5 /* RadioUser.m in Sources */,
-				40D53B9E1554280F001EB0C5 /* NowPlayingView.m in Sources */,
-				40D53B9F1554280F001EB0C5 /* TrackInteractionView.m in Sources */,
 				40D53BA01554280F001EB0C5 /* SongUser.m in Sources */,
 				40D53BA11554280F001EB0C5 /* NextSong.m in Sources */,
 				40D53BA31554280F001EB0C5 /* YasoundReachability.m in Sources */,
@@ -13677,8 +13641,6 @@
 				BC3FA6AE14E93B660055AB4A /* RootViewController.m in Sources */,
 				BC3FA6AF14E93B660055AB4A /* YasoundSessionManager.m in Sources */,
 				BC3FA6B014E93B660055AB4A /* RadioUser.m in Sources */,
-				BC3FA6B114E93B660055AB4A /* NowPlayingView.m in Sources */,
-				BC3FA6B214E93B660055AB4A /* TrackInteractionView.m in Sources */,
 				BC3FA6B314E93B660055AB4A /* SongUser.m in Sources */,
 				BC3FA6B414E93B660055AB4A /* NextSong.m in Sources */,
 				BC3FA6B614E93B660055AB4A /* YasoundReachability.m in Sources */,
@@ -13882,8 +13844,6 @@
 				BC56F4BA152486AF005D1B40 /* RootViewController.m in Sources */,
 				BC56F4BB152486AF005D1B40 /* YasoundSessionManager.m in Sources */,
 				BC56F4BC152486AF005D1B40 /* RadioUser.m in Sources */,
-				BC56F4BD152486AF005D1B40 /* NowPlayingView.m in Sources */,
-				BC56F4BE152486AF005D1B40 /* TrackInteractionView.m in Sources */,
 				BC56F4BF152486AF005D1B40 /* SongUser.m in Sources */,
 				BC56F4C0152486AF005D1B40 /* NextSong.m in Sources */,
 				BC56F4C2152486AF005D1B40 /* YasoundReachability.m in Sources */,
@@ -14091,8 +14051,6 @@
 				BC828AD714B49E9500763558 /* RootViewController.m in Sources */,
 				BCD8C7A314B4B59F009EAF61 /* YasoundSessionManager.m in Sources */,
 				40F4C77514BB053100A163F9 /* RadioUser.m in Sources */,
-				BC27F36214BDCAF800EF1C5F /* NowPlayingView.m in Sources */,
-				BC27F36F14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78C14BDF40F00A163F9 /* SongUser.m in Sources */,
 				40F4C79214BEEF7000A163F9 /* NextSong.m in Sources */,
 				BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */,
@@ -14301,8 +14259,6 @@
 				BC93CD2714CF3F7A007C723F /* RootViewController.m in Sources */,
 				BC93CD2814CF3F7A007C723F /* YasoundSessionManager.m in Sources */,
 				BC93CD2914CF3F7A007C723F /* RadioUser.m in Sources */,
-				BC93CD2A14CF3F7A007C723F /* NowPlayingView.m in Sources */,
-				BC93CD2B14CF3F7A007C723F /* TrackInteractionView.m in Sources */,
 				BC93CD2C14CF3F7A007C723F /* SongUser.m in Sources */,
 				BC93CD2D14CF3F7A007C723F /* NextSong.m in Sources */,
 				BC93CD2F14CF3F7A007C723F /* YasoundReachability.m in Sources */,
@@ -14510,8 +14466,6 @@
 				BC828AD614B49E9500763558 /* RootViewController.m in Sources */,
 				BCD8C7A214B4B59F009EAF61 /* YasoundSessionManager.m in Sources */,
 				40F4C77414BB053100A163F9 /* RadioUser.m in Sources */,
-				BC27F36114BDCAF800EF1C5F /* NowPlayingView.m in Sources */,
-				BC27F36E14BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78B14BDF40F00A163F9 /* SongUser.m in Sources */,
 				40F4C79114BEEF7000A163F9 /* NextSong.m in Sources */,
 				BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */,
@@ -14720,8 +14674,6 @@
 				BC828AD814B49E9500763558 /* RootViewController.m in Sources */,
 				BCD8C7A414B4B59F009EAF61 /* YasoundSessionManager.m in Sources */,
 				40F4C77614BB053100A163F9 /* RadioUser.m in Sources */,
-				BC27F36314BDCAF800EF1C5F /* NowPlayingView.m in Sources */,
-				BC27F37014BDD87B00EF1C5F /* TrackInteractionView.m in Sources */,
 				40F4C78D14BDF40F00A163F9 /* SongUser.m in Sources */,
 				40F4C79314BEEF7000A163F9 /* NextSong.m in Sources */,
 				BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */,
