@@ -55,6 +55,11 @@
 #define ANIMATION_DURATION 0.1
 
 
+- (void)dealloc
+{
+    [super dealloc];
+}
+
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
 {
     self = [super initWithFrame:frame reuseIdentifier:CellIdentifier];

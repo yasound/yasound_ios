@@ -111,8 +111,8 @@
         self.radio = radio;
         
         self.keyboardShown = NO;
+        _stopWall = NO;
         
-        self.requests = [[NSMutableDictionary alloc] init];
         self.ownRadio = [[YasoundDataProvider main].user.id intValue] == [self.radio.creator.id intValue];
         
         self.view.userInteractionEnabled = YES;
@@ -227,7 +227,8 @@
 {
     [super viewDidAppear:animated];
     
-    
+    self.requests = [[NSMutableDictionary alloc] init];
+
     
     // launch timer here, but only the the wall has been filled already.
     // otherwise, wait for it to be filled, and then, we will launch the update timer.
@@ -268,6 +269,15 @@
         [_timerUpdate invalidate];
         _timerUpdate = nil;
     }
+    
+    // clean running requests
+    //LBDEBUG ICI
+    for (ASIHTTPRequest* req in self.requests)
+    {
+       // [req clearDelegatesAndCancel];
+        [req release];
+    }
+    self.requests = nil;
     
 //    // LBDEBUG hum hum... anti-bug for now
 //    NSInteger retainCount = [self retainCount];
@@ -347,6 +357,11 @@
 
 - (void)onTimerUpdate:(NSTimer*)timer
 {
+    if (_stopWall)
+    {
+        [timer invalidate];
+        return;
+    }
     //    if (_ap != nil)
     //        [_ap release];
     //
@@ -457,8 +472,13 @@
 - (void)receivedPreviousWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
     //LBDEBUG
-    NSLog(@"%@", info);
+    //NSLog(@"%@", info);
     ///////////////////
+    
+    NSDictionary* userData = [info objectForKey:@"userData"];
+    ASIHTTPRequest* req = [userData objectForKey:@"request"];
+    assert(req);
+    [self.requests removeObjectForKey:req];
     
     [self removeWaitingEventRow];
     
@@ -628,8 +648,13 @@
 - (void)receivedCurrentWallEvents:(NSArray*)events withInfo:(NSDictionary*)info
 {
     //LBDEBUG
-    NSLog(@"%@", info);
+    //NSLog(@"%@", info);
     ///////////////////
+    NSDictionary* userData = [info objectForKey:@"userData"];
+    ASIHTTPRequest* req = [userData objectForKey:@"request"];
+    assert(req);
+    [self.requests removeObjectForKey:req];
+
 
     Meta* meta = [info valueForKey:@"meta"];
     NSError* err = [info valueForKey:@"error"];
@@ -1725,11 +1750,18 @@
 {
     if (itemId == TopBarItemBack)
     {
-        // LBDEBUG hum hum... anti-bug for now
-        NSInteger retainCount = [self retainCount];
-        NSLog(@"RETAIN COUNT %d", retainCount);
-        for (NSInteger i = 0; i < retainCount-2; i++)
-            [self release];
+        _stopWall = YES;
+        self.topBar.delegate = nil;
+        self.tableview.delegate = nil;
+        self.tableview.dataSource = nil;
+
+        NSLog(@"RETAIN COUNT %d", [self retainCount]);
+
+//        // LBDEBUG hum hum... anti-bug for now
+//        NSInteger retainCount = [self retainCount];
+//        NSLog(@"RETAIN COUNT %d", retainCount);
+//        for (NSInteger i = 0; i < retainCount-3; i++)
+//            [self autorelease];
     }
 }
 

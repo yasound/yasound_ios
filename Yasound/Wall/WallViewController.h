@@ -90,10 +90,14 @@
     
     UIAlertView* _alertGoToRadio;
     UIAlertView* _alertGoToLogin;
+    
+    BOOL _stopWall;
 }
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic) BOOL ownRadio;
+
+
 
 @property (nonatomic, retain) NSMutableDictionary* requests;
 

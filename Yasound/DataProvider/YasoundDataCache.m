@@ -156,7 +156,13 @@ static YasoundDataCache* _main = nil;
 //
 - (void)radioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
 {
-    YasoundDataCachePendingOp* op = [info objectForKey:@"userData"]; 
+    //LBDEBUG
+    //NSLog(@"%@", info);
+    /////////
+    
+    NSDictionary* userData = [info objectForKey:@"userData"];
+    
+    YasoundDataCachePendingOp* op = [userData objectForKey:@"userData"]; 
     assert(op != nil);
     
     id target = op.target;

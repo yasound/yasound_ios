@@ -50,8 +50,10 @@
     if (!target)
         return;
     
-    if (action)
+    if (action && [target respondsToSelector:action])
+    {
         [target performSelector:action withObject:obj1 withObject:obj2];
+    }
     
     //LBDEBUG heuuuu c'est un peu chaud chaud de faire ça non? à voir avec mat...
     [target release];
@@ -431,7 +433,23 @@
 - (ASIHTTPRequest*)getObjectsWithClass:(Class)objectClass withURL:(NSString*)url absolute:(BOOL)absolute withParams:(NSArray*)params notifyTarget:(id)target byCalling:(SEL)selector withUserData:(NSDictionary*)userData withAuth:(Auth*)auth
 {
     ASIHTTPRequest* req = [self getRequestForObjectsWithURL:url absolute:absolute withUrlParams:params withAuth:auth];
-    [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:userData];
+    
+    
+    NSMutableDictionary* newUserData = [NSMutableDictionary dictionary];
+    if (userData)
+        [newUserData setObject:userData forKey:@"userData"];
+    [newUserData setObject:req forKey:@"request"];
+    
+    //LBDEBUG ICI : clean
+   // NSDictionary* dico = [NSDictionary dictionaryWithObject:req forKey:@"request"];
+    
+//    if (userData)
+//        [newUserData setValuesForKeysWithDictionary:userData];
+//    NSMutableDictionary* newUserData = [[NSMutableDictionary alloc] initWithDictionary:userData];
+//    [newUserData setObject:req forKey:@"request"];
+//    NSDictionary* fuckingFinalUserData = [NSDictionary dictionaryWithDictionary:newUserData];
+    //LBDEBUG
+    [self getObjectsWithRequest:req class:objectClass notifyTarget:target byCalling:selector withUserData:newUserData];
     return req;
 }
 

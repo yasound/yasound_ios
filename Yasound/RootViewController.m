@@ -39,6 +39,20 @@
         assert(0);
 }
 @end
+
+@implementation NSDictionary (NSDictionaryDebug)
+- (id)target
+{
+    NSLog(@"meuh");
+    assert(0);
+}
+
+
+
+
+@end
+
+
 //
 //
 //@implementation NSDictionary (NSDictionaryDebug)
