@@ -148,9 +148,8 @@
 
     [[YasoundDataProvider main] radiosForUser:self.user withTarget:self action:@selector(radiosReceived:success:)];
     [[YasoundDataProvider main] favoriteRadiosForUser:self.user withTarget:self action:@selector(favoritesRadioReceived:withInfo:)];
-    [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(friendsReceived:info:)];
+    [[YasoundDataProvider main] friendsForUser:self.user withTarget:self action:@selector(friendsReceived:success:)];
 }
-
 
 
 
@@ -202,9 +201,10 @@
 
 
 
-- (void)friendsReceived:(NSArray*)friends info:(NSDictionary*)info
+- (void)friendsReceived:(ASIHTTPRequest*)req success:(BOOL)success
 {
-    self.friends = friends;
+    Container* container = [req responseObjectsWithClass:[User class]];
+    self.friends = container.objects;
     [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FRIENDS]] withRowAnimation:NO];
 }
 
@@ -379,7 +379,7 @@
 
 - (IBAction)onButtonGrayClicked:(id)sender
 {
-
+    
 }
 
 
