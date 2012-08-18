@@ -535,7 +535,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "BigMessage.ButtonLabels.friends" = "Se connecter";
 
 
-"Profil.follow" = "Suivi";
+"Profil.follow" = "Suivre";
+"Profil.unfollow" = "Ne plus suivre";
 "Profil.message" = "Message";
 "Profil.section.myRadios" = "Mes radios";
 "Profil.section.favorites" = "Favoris";

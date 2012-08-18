@@ -255,15 +255,19 @@
     Container* container = [req responseObjectsWithClass:[User class]];
     NSArray* friends = container.objects;
     self.nbFriends = friends.count;
+    
+    DLog(@"received %d friends", self.nbFriends);
 
     for (User* friend in friends)
     {
+        DLog(@"my friend : %@", friend.username);
+        
         [[YasoundDataProvider main] radiosForUser:friend withTarget:self action:@selector(receivedFriendsRadios:success:)];
     }
 }
 
 
-
+// LBDEBUG TODO : FIX BUG
 - (void)receivedFriendsRadios:(ASIHTTPRequest*)req success:(BOOL)success
 {
     if (!success)

@@ -24,6 +24,7 @@
 
 @property (nonatomic, retain) User* user;
 @property (nonatomic, retain) NSNumber* userId;
+@property (nonatomic) BOOL followed;
 
 @property (nonatomic, retain) IBOutlet UITableViewCell* cellProfil;
 

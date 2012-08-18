@@ -547,6 +547,7 @@
 "BigMessage.ButtonLabels.friends" = "Log in";
 
 "Profil.follow" = "Follow";
+"Profil.unfollow" = "Unfollow";
 "Profil.message" = "Message";
 "Profil.section.myRadios" = "My radios";
 "Profil.section.favorites" = "Favorites";

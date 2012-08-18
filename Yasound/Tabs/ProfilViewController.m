@@ -14,6 +14,8 @@
 #import "YasoundDataCache.h"
 #import "Theme.h"
 #import "RootViewController.h"
+#import "YasoundSessionManager.h"
+
 
 #define SECTIONS_COUNT 4
 #define SECTION_PROFIL 0
@@ -45,6 +47,7 @@
 @synthesize buttonBlue;
 @synthesize buttonGrayLabel;
 @synthesize buttonBlueLabel;
+@synthesize followed;
 
 @synthesize tabBar;
 
@@ -133,24 +136,69 @@
 
     self.profil.text = profil;
     
-    if ([self.user.id isEqualToNumber:[YasoundDataProvider main].user.id])
-    {
-        [self.buttonBlue setEnabled:NO];
-        self.buttonBlue.hidden = YES;
-        [self.buttonGray setEnabled:NO];
-        self.buttonGray.hidden = YES;
-        self.buttonBlueLabel.hidden = YES;
-        self.buttonGrayLabel.hidden = YES;
-    }
-    
     self.buttonGrayLabel.text = NSLocalizedString(@"Profil.follow", nil);
     self.buttonBlueLabel.text = NSLocalizedString(@"Profil.message", nil);
 
+    // not registered
+    if (![YasoundSessionManager main].registered)
+    {
+        [self enableFollow:NO];
+        [self enableSendMessage:NO];    
+    }
+    // registered, and it's me
+    else if ([self.user.id isEqualToNumber:[YasoundDataProvider main].user.id])
+    {
+        [self enableFollow:NO];
+        [self enableSendMessage:NO];
+        [[YasoundDataProvider main] friendsForUser:self.user withTarget:self action:@selector(friendsReceived:success:)];
+    }
+    // someone else
+    else
+    {
+        [self enableFollow:NO];
+        [[YasoundDataProvider main] friendsForUser:self.user withTarget:self action:@selector(friendsReceived:success:)];
+        
+        // is he one of my friends? (<=> I need to know to enable and set the follow/unfollow button properly)
+        [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
+
+    }
+    
+
+
     [[YasoundDataProvider main] radiosForUser:self.user withTarget:self action:@selector(radiosReceived:success:)];
     [[YasoundDataProvider main] favoriteRadiosForUser:self.user withTarget:self action:@selector(favoritesRadioReceived:withInfo:)];
-    [[YasoundDataProvider main] friendsForUser:self.user withTarget:self action:@selector(friendsReceived:success:)];
 }
 
+
+- (void)enableFollow:(BOOL)enable
+{
+    [self.buttonGray setEnabled:enable];
+    CGFloat alpha = 1;
+    if (!enable)
+        alpha = 0.5;
+    self.buttonGray.alpha = alpha;
+    self.buttonGrayLabel.alpha = alpha;
+}
+
+- (void)enableSendMessage:(BOOL)enable
+{
+    [self.buttonBlue setEnabled:enable];
+    CGFloat alpha = 1;
+    if (!enable)
+        alpha = 0.5;
+    self.buttonBlue.alpha = alpha;
+    self.buttonBlueLabel.alpha = alpha;
+}
+
+- (void)setFollowButtonToFollow
+{
+    self.buttonGrayLabel.text = NSLocalizedString(@"Profil.follow", nil);
+}
+
+- (void)setFollowButtonToUnfollow
+{
+    self.buttonGrayLabel.text = NSLocalizedString(@"Profil.unfollow", nil);
+}
 
 
 
@@ -200,6 +248,31 @@
 }
 
 
+
+- (void)myFriendsReceived:(NSArray*)myFriends success:(BOOL)success
+{
+    DLog(@"%d friends", myFriends.count);
+    
+    for (User* user in myFriends)
+    {
+        DLog(@"my friend : %@", user.username);
+        
+        if ([user.id isEqualToNumber:self.user.id])
+        {
+            // it's one of my friend.
+            // follow button becomes unfollow
+            self.followed = YES;
+            [self enableFollow:YES];
+            [self setFollowButtonToUnfollow];
+            return;
+        }
+    }
+    
+    // follow
+    self.followed = NO;
+    [self enableFollow:YES];
+    [self setFollowButtonToFollow];
+}
 
 - (void)friendsReceived:(ASIHTTPRequest*)req success:(BOOL)success
 {
@@ -379,7 +452,45 @@
 
 - (IBAction)onButtonGrayClicked:(id)sender
 {
+    if (self.followed)
+    {
+        self.followed = NO;
+        [[YasoundDataProvider main] unfollowUser:self.user target:self action:@selector(onFollowAcknowledge:success:)];
+        [self setFollowButtonToFollow];
+    }
+    else
+    {
+        self.followed = YES;
+        [[YasoundDataProvider main] followUser:self.user target:self action:@selector(onFollowAcknowledge:success:)];
+        [self setFollowButtonToUnfollow];
+    }
     
+    [[YasoundDataCache main] clearFriends];
+    
+    // refresh 
+    [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
+}
+
+
+- (void)onFollowAcknowledge:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    DLog(@"onFollowAcknowledge %d", success);
+    
+    // rollback
+    if (!success)
+    {
+        if (self.followed)
+        {
+            self.followed = NO;
+            [self setFollowButtonToFollow];
+        }
+        else
+        {
+            self.followed = YES;
+            [self setFollowButtonToUnfollow];
+        }
+    }
+        
 }
 
 

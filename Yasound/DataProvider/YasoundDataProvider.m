@@ -1473,6 +1473,48 @@ static YasoundDataProvider* _main = nil;
   [_communicator postToURL:url absolute:NO notifyTarget:nil byCalling:nil withUserData:nil withAuth:auth];
 }
 
+
+- (void)followUser:(User*)user target:(id)target action:(SEL)selector
+{
+    if (!user)
+        return;
+    
+    NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/friends/%@", self.user.username, user.username];
+    
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = url;
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+- (void)unfollowUser:(User*)user target:(id)target action:(SEL)selector
+{
+    if (!user)
+        return;
+    
+    NSString* url = [NSString stringWithFormat:@"api/v1/user/%@/friends/%@", self.user.username, user.username];
+    
+    DLog(@"unfollow url : %@", url);
+    
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = url;
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"DELETE";
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
 - (void)setRadio:(Radio*)radio asFavorite:(BOOL)favorite
 {
     [self setRadio:radio asFavorite:favorite target:nil action:nil];
