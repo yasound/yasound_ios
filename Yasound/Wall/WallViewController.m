@@ -1716,10 +1716,16 @@
     [self.cellPostBar.textfield endEditing:YES];
     [self.fixedCellPostBar.textfield endEditing:YES];
     
+    UITouch *touch = [touches anyObject];
+	CGPoint touchCoordinates = [touch locationInView:_cellEditing];
+    
     if (_cellEditing != nil)
     {
-        [_cellEditing deactivateEditModeAnimated:YES];
-        _cellEditing = nil;
+        if (![_cellEditing touch:touchCoordinates])
+        {
+            [_cellEditing deactivateEditModeAnimated:YES];
+            _cellEditing = nil;
+        }
     }
 }
 

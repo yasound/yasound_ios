@@ -41,19 +41,24 @@
 @property (nonatomic, retain) UILabel* message;
 //@property (nonatomic, retain) UIImageView* separator;
 
-@property (nonatomic, retain) UIView* cellEditView;
+//@property (nonatomic, retain) UIView* cellEditView;
 
 @property (nonatomic, retain) id delegate;
 @property (nonatomic) SEL actionAvatarClick;
 @property (nonatomic) SEL actionEditing;
 @property (nonatomic) SEL actionDelete;
 
+@property (nonatomic, retain) UIButton* buttonSpam;
+@property (nonatomic, retain) UIButton* buttonTrash;
+@property (nonatomic) CGFloat offset;
 
 
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)CellIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
 
 - (void)update:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
+
+- (BOOL)touch:(CGPoint)touchCoordinates;
 
 - (void)deactivateEditModeAnimated:(BOOL)animated;
 - (void)deactivateEditModeAnimated:(BOOL)animated silent:(BOOL)silent;
