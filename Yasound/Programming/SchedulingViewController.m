@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    [self.topBar showAddItem];
+    [self.topBar showAddItemWithTarget:self action:@selector(onAdd:)];
     
     [[YasoundDataProvider main] showsForRadio:self.radio withTarget:self action:@selector(showsReceived:success:)];
 }
@@ -206,14 +206,11 @@
 
 #pragma mark - TopBarDelegate
 
-- (void)topBarItemClicked:(TopBarItemId)itemId
+- (void)onAdd:(id)sender
 {
-    if (itemId == TopBarItemAdd)
-    {
         ShowViewController* view = [[ShowViewController alloc] initWithNibName:@"ShowViewController" bundle:nil];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
-    }
 }
 
 

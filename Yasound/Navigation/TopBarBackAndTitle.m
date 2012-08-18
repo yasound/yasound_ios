@@ -126,12 +126,12 @@
 }
 
 
-- (void)showAddItem
+- (void)showAddItemWithTarget:(id)target action:(SEL)action
 {
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemAdd" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIButton* btn = [sheet makeButton];
     
-    [btn addTarget:self action:@selector(onAdd:) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     if (self.customItems.count < 3)

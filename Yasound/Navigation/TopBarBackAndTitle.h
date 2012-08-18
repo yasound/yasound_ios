@@ -20,6 +20,6 @@
 @property (nonatomic, retain) IBOutlet id<TopBarBackAndTitleDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray* customItems;
 
-- (void)showAddItem;
+- (void)showAddItemWithTarget:(id)target action:(SEL)action;
 
 @end

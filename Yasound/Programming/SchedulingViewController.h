@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Radio.h"
-#import "TopBar.h"
+#import "TopBarBackAndTitle.h"
 
-@interface SchedulingViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,TopBarDelegate>
+@interface SchedulingViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,TopBarBackAndTitleDelegate>
 
-@property (nonatomic, retain) IBOutlet TopBar* topBar;
+@property (nonatomic, retain) IBOutlet TopBarBackAndTitle* topBar;
 @property (nonatomic, retain) IBOutlet UITableView* tableview;
 
 @property (nonatomic, retain) Radio* radio;
