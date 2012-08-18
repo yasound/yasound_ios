@@ -618,6 +618,11 @@ static const CGFloat kSpringRestingHeight = 4;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self deactivateEditModeAnimated:YES];
+    if (self.buttonSpam)
+        self.buttonSpam.selected = NO;
+    if (self.buttonTrash)
+        self.buttonTrash.selected = NO;
+
 
     if ((alertView == _alertTrash) && (buttonIndex == 1))
     {
@@ -663,6 +668,7 @@ static const CGFloat kSpringRestingHeight = 4;
     BOOL spam = CGRectContainsPoint(self.buttonSpam.frame, realPoint);
     if (spam)
     {
+        self.buttonSpam.selected = YES;
         [self onModerSpam:nil];
         return YES;
     }
@@ -673,6 +679,7 @@ static const CGFloat kSpringRestingHeight = 4;
     BOOL trash = CGRectContainsPoint(self.buttonTrash.frame, realPoint);
     if (trash)
     {
+        self.buttonTrash.selected = YES;
         [self onModerTrash:nil];
         return YES;
     }

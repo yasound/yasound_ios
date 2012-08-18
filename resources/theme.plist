@@ -1107,7 +1107,7 @@
 					<integer>0</integer>
 					<key>normal</key>
 					<string>iconModerSpam</string>
-					<key>highlighted</key>
+					<key>selected</key>
 					<string>iconModerSpamHighlighted</string>
 					<key>type</key>
 					<string>png</string>
@@ -1120,7 +1120,7 @@
 					<integer>0</integer>
 					<key>normal</key>
 					<string>iconModerKick</string>
-					<key>highlighted</key>
+					<key>selected</key>
 					<string>iconModerKickHighlighted</string>
 					<key>type</key>
 					<string>png</string>
@@ -1133,7 +1133,7 @@
 					<integer>0</integer>
 					<key>normal</key>
 					<string>iconModerTrash</string>
-					<key>highlighted</key>
+					<key>selected</key>
 					<string>iconModerTrashHilighted</string>
 					<key>type</key>
 					<string>png</string>
