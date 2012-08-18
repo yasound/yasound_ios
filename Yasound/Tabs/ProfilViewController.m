@@ -452,6 +452,8 @@
 
 - (IBAction)onButtonGrayClicked:(id)sender
 {
+    self.buttonGray.enabled = NO;
+    
     if (self.followed)
     {
         self.followed = NO;
@@ -465,10 +467,6 @@
         [self setFollowButtonToUnfollow];
     }
     
-    [[YasoundDataCache main] clearFriends];
-    
-    // refresh 
-    [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
 }
 
 
@@ -490,6 +488,12 @@
             [self setFollowButtonToUnfollow];
         }
     }
+    
+    [[YasoundDataCache main] clearFriends];
+    
+    // refresh
+    [[YasoundDataCache main] requestFriendsWithTarget:self action:@selector(myFriendsReceived:success:)];
+    
         
 }
 
