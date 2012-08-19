@@ -420,6 +420,9 @@ enum SectionBio
 
 - (void)pickImageDialog
 {
+    [self.username resignFirstResponder];
+    [self.city resignFirstResponder];
+    
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
@@ -499,6 +502,57 @@ enum SectionBio
 }
 
 
+
+
+
+
+
+
+#pragma mark - ActionSheet Delegate
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.tableview deselectRowAtIndexPath:[self.tableview indexPathForSelectedRow] animated:YES];
+    
+    
+    if (actionSheet == _pickImageQuery)
+    {
+        UIImagePickerControllerSourceType sourceType;
+        
+        if (buttonIndex == 0)
+            sourceType = UIImagePickerControllerSourceTypeCamera;
+        else if (buttonIndex == 1)
+            sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        else
+            return;
+        
+        [_pickImageQuery release];
+        _pickImageQuery = nil;
+        
+        UIImagePickerController* picker =  [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.sourceType = sourceType;
+        [self presentModalViewController:picker animated:YES];
+        
+        return;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - save
+
+
 - (void)save
 {
     [ActivityAlertView showWithTitle:nil];
@@ -541,6 +595,15 @@ enum SectionBio
     if (self.itemId != TopBarItemNone)
         [self.topbar runItem:self.itemId];
 }
+
+
+
+
+
+
+
+
+
 
 
 
