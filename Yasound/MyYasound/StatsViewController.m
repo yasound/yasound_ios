@@ -64,7 +64,6 @@
         _monthGraphView.plotColor = RGB(200,200,200);
         _monthGraphView.fillColor = RGBA(196,246,254,96);
       
-      _listenersLabel = nil;
       _leaderboard = nil;
     }
     
@@ -134,11 +133,10 @@
 {
   if (!r)
     return;
-  if (_listenersLabel)
-  {
+    
+    UITableViewCell* cell = [_tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ROW_STATS_LISTENERS inSection:SECTION_STATS]];
     NSNumber* listeners = r.nb_current_users;
-    _listenersLabel.text = [NSString stringWithFormat:@"%@", listeners];
-  }
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", listeners];
 }
 
 
@@ -293,9 +291,17 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+    if ((indexPath.section == SECTION_STATS) && (indexPath.row == ROW_STATS_LISTENERS))
+    {
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"statsBtnListeners.png"]];
+        cell.backgroundView = view;
+        [view release];
+        return;        
+    }
+    
     if ((indexPath.section == SECTION_MONTHCHART) && (indexPath.row == ROW_MONTHCHART_CHART))
     {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ChartBackground.png"]];
+        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"statsChartBackground.png"]];
         cell.backgroundView = view;
         [view release];
         return;
@@ -374,17 +380,15 @@
 
         if (cell == nil) 
         {
-          cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+            [cell.imageView setImage:[UIImage imageNamed:@"statsIconHeadphones.png"]];
         }
 
         NSNumber* listeners = [YasoundDataProvider main].radio.nb_current_users;
         cell.textLabel.text = NSLocalizedString(@"StatsView_listeners_label", nil);
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", listeners];
+        cell.detailTextLabel.textColor = [UIColor colorWithRed:162.f/255.f green:162.f/255.f blue:162.f/255.f alpha:1];
 
-      _listenersLabel = cell.detailTextLabel;
-      _listenersLabel.text = [NSString stringWithFormat:@"%@", listeners];
-      _listenersLabel.textColor = [UIColor colorWithRed:1 green:174.f/255.f blue:0 alpha:1];
-
-        [cell.imageView setImage:[UIImage imageNamed:@"iconSubscribers.png"]];
       
     }
   
@@ -451,7 +455,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.backgroundColor = [UIColor clearColor];
-    cell.detailTextLabel.textColor = [UIColor colorWithRed:160.f/255.f green:182.f/255.f blue:222.f/255.f alpha:1];
+//    cell.detailTextLabel.textColor = [UIColor colorWithRed:160.f/255.f green:182.f/255.f blue:222.f/255.f alpha:1];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 
     

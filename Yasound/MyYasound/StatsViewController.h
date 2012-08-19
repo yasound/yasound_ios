@@ -36,7 +36,7 @@
   
   ChartView* _monthGraphView;
   
-  UILabel* _listenersLabel;
+//  UILabel* _listenersLabel;
   
   NSArray* _leaderboard;
 }

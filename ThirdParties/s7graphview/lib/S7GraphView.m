@@ -115,8 +115,8 @@
         [self initializeComponent];
     
         self.plotColor = RGB(5, 141, 191); 
-        self.fillColor = RGBA(5, 141, 191, 48); 
-        self.spotColor = RGB(5, 141, 191); 
+        self.fillColor = RGB(255,0,255);
+        self.spotColor = RGB(5, 141, 191);
         self.spotBorderColor = RGB(5, 141, 191); 
     }
 	
@@ -445,7 +445,7 @@
 		
         //LBDEBUG
 		CGColorRef plotColor = self.plotColor.CGColor;
-		CGColorRef fillColor = self.fillColor.CGColor;
+		CGColorRef fillColor = [UIColor clearColor].CGColor;
 		CGColorRef spotColor = self.spotColor.CGColor;
 		CGColorRef spotBorderColor = self.spotBorderColor.CGColor;
 		

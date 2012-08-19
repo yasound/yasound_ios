@@ -42,7 +42,7 @@
         [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
         [dateFormatter setDateStyle:NSDateFormatterShortStyle];
         
-        NSString* format = [NSString stringWithString:@"MM-dd"];
+        NSString* format = [NSString stringWithString:@"MM/dd"];
         [dateFormatter setDateFormat:format];
         
         self.xValuesFormatter = dateFormatter;
@@ -56,8 +56,10 @@
         
 //        self.plotColor = RGB(5, 141, 191); 
 //        self.fillColor = RGB(5, 141, 191); 
-        self.spotColor = RGBA(255,255,255,128);
-        self.spotBorderColor = RGBA(164,164,164,128);
+        self.spotColor = RGB(47,174,247);
+        self.spotBorderColor = RGB(21,130,192);
+//        self.fillColor = [UIColor clearColor];
+
 //        self.backgroundColor = [UIColor redColor];
         
         self.drawAxisX = YES;
@@ -65,8 +67,8 @@
         self.drawGridX = NO;
         self.drawGridY = YES;
         
-        self.xValuesColor = RGB(255, 255, 255);
-        self.yValuesColor = RGB(173, 237, 255);
+        self.xValuesColor = RGB(128,128,128);
+        self.yValuesColor = RGB(128,128,128);
 
         
         self.gridXColor = RGB(64, 64, 64);
