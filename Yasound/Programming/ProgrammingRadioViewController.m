@@ -145,6 +145,8 @@
     
     if (![success boolValue])
     {
+        [ActivityAlertView close];
+
         // display an error dialog
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingView_error_title", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
