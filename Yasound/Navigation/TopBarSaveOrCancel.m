@@ -83,19 +83,25 @@
 
 - (void)onCancel:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(topBarCancel:)])
-        [self.delegate topBarCancel];
+    BOOL run = YES;
+    
+    if ([self.delegate respondsToSelector:@selector(topBarCancel)])
+        run = [self.delegate topBarCancel];
 
-    [APPDELEGATE.navigationController popViewControllerAnimated:YES];
+    if (run)
+        [APPDELEGATE.navigationController popViewControllerAnimated:YES];
 }
 
 
 - (void)onSave:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(topBarSave:)])
-        [self.delegate topBarSave];
+    BOOL run = YES;
     
-    [APPDELEGATE.navigationController popViewControllerAnimated:YES];
+    if ([self.delegate respondsToSelector:@selector(topBarSave)])
+        run = [self.delegate topBarSave];
+    
+    if (run)
+        [APPDELEGATE.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -113,38 +113,7 @@
     NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     [self.userImage setUrl:url];
     
-    NSString* profil;
-    NSString* age = nil;
-    if (self.user.age != nil)
-    {
-        age = NSLocalizedString(@"Profil.age", nil);
-        age = [NSString stringWithFormat:age, [self.user.age integerValue]];
-    }
-    
-    NSString* sexe = nil;
-    if (self.user.gender.length > 0)
-        sexe = NSLocalizedString(self.user.gender, nil);
-    NSString* city = nil;
-    if (self.user.city.length > 0)
-        city = self.user.city;
-
-    profil = [NSString string];
-    if (age != nil)
-        profil = [profil stringByAppendingString:age];
-    
-    if ((sexe != nil) && (profil != nil))
-        profil = [profil stringByAppendingString:@", "];
-    
-    if (sexe != nil)
-        profil = [profil stringByAppendingString:sexe];
-
-    if ((city != nil) && (profil != nil))
-        profil = [profil stringByAppendingString:@", "];
-
-    if (city != nil)
-        profil = [profil stringByAppendingString:city];
-
-    self.profil.text = profil;
+    self.profil.text = [self.user formatedProfil];
     
     self.buttonGrayLabel.text = NSLocalizedString(@"Profil.follow", nil);
     self.buttonBlueLabel.text = NSLocalizedString(@"Profil.message", nil);

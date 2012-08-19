@@ -73,4 +73,6 @@ UserMood stringToUsermood(NSString* str);
 
 - (NSString*)toString;
 
+- (NSString*)formatedProfil;
+
 @end

@@ -337,6 +337,7 @@ enum SectionBio
     else if ((indexPath.section == SECTION_BIO) && (indexPath.row == ROW_BIO))
     {
         BioViewController* view = [[BioViewController alloc] initWithNibName:@"BioViewController" bundle:nil forUser:self.user target:self];
+        view.delegate = self;
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

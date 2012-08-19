@@ -48,13 +48,51 @@
   return desc;
 }
 
+
+- (NSString*)formatedProfil
+{
+    NSString* profil = [NSString stringWithString:@""];
+    NSString* age = nil;
+    if (self.age != nil)
+    {
+        age = NSLocalizedString(@"Profil.age", nil);
+        age = [NSString stringWithFormat:age, [self.age integerValue]];
+    }
+    
+    NSString* sexe = nil;
+    if (self.gender.length > 0)
+        sexe = NSLocalizedString(self.gender, nil);
+    NSString* city = nil;
+    if (self.city.length > 0)
+        city = self.city;
+    
+    profil = [NSString string];
+    if (age != nil)
+        profil = [profil stringByAppendingString:age];
+    
+    if ((sexe != nil) && (profil != nil))
+        profil = [profil stringByAppendingString:@", "];
+    
+    if (sexe != nil)
+        profil = [profil stringByAppendingString:sexe];
+    
+    if ((city != nil) && (profil != nil))
+        profil = [profil stringByAppendingString:@", "];
+    
+    if (city != nil)
+        profil = [profil stringByAppendingString:city];
+
+    return profil;
+}
+
+
 @end
 
 
 
 NSString* usermoodToString(UserMood mood)
 {
-    switch (mood) 
+    switch (mood)
     {
         case eMoodLike:
             return @"L";
@@ -84,6 +122,5 @@ UserMood stringToUsermood(NSString* str)
     
     return eMoodInvalid;
 }
-
 
 

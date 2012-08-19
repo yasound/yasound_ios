@@ -7,7 +7,7 @@
 //
 
 #import "BioViewController.h"
-
+#import "YasoundDataProvider.h"
 
 
 
@@ -15,7 +15,7 @@
 
 @synthesize user;
 @synthesize delegate;
-
+@synthesize topbar;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user target:(id)target
@@ -25,6 +25,7 @@
     {
         self.user = user;
         self.delegate = target;
+        _changed = NO;
         
     }
     return self;
@@ -41,6 +42,16 @@
 //    _buttonSave.title = NSLocalizedString(@"MessageBroadcastModalView_send_button_label", nil);
 //    _itemTitle.title = NSLocalizedString(@"MessageBroadcastModalView_title", nil);
 
+    
+    
+    NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
+    [_image setUrl:url];
+    
+    _label1.text = self.user.name;
+    _label2.text = [self.user formatedProfil];
+    
+    _textView.text = self.user.bio_text;
+    
     [self setLabel];
 //    _label2.text = NSLocalizedString(@"MessageBroadcastModalView_to", nil);
 //    _label2.text = [NSString stringWithFormat:_label2.text, self.subscribers.count];
@@ -68,19 +79,31 @@
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
+#pragma mark - TopBarDelegate
+
+- (BOOL)topBarSave
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (_changed)
+    {
+        [self save];
+        return NO;
+    }
+    
+    return YES;
 }
 
+- (BOOL)topBarCancel
+{
+    return YES;
+}
 
-- (IBAction)onSave:(id)sender
+- (void)save
 {
     NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
     NSString* message = [_textView.text stringByTrimmingCharactersInSet:space];
     
-    if (message.length == 0)
-        return;
+//    if (message.length == 0)
+//        return;
 
     [self.delegate bioDidReturn:message];
 
@@ -91,9 +114,9 @@
 
 - (void)setLabel
 {
-    _label1.text = NSLocalizedString(@"Bio.label", nil);
+    _labelWarning.text = NSLocalizedString(@"Bio.label", nil);
     CGFloat num = (BIO_LENGTH_MAX - _textView.text.length);
-    _label1.text = [NSString stringWithFormat:_label1.text, num];
+    _labelWarning.text = [NSString stringWithFormat:_labelWarning.text, num];
 }
 
 
@@ -102,6 +125,8 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
+    _changed = YES;
+    
     CGFloat num = (BIO_LENGTH_MAX - _textView.text.length);
     if (num < 0)
     {

@@ -9,8 +9,8 @@
 
 
 @protocol TopBarSaveOrCancelDelegate <NSObject>
-- (void)topBarSave;
-- (void)topBarCancel;
+- (BOOL)topBarSave;
+- (BOOL)topBarCancel;
 @end
 
 

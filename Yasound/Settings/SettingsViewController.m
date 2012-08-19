@@ -688,9 +688,10 @@
 
 }
 
-- (void)topBarSave
+- (BOOL)topBarSave
 {
     [self save];
+    return YES;
 }
 
 
