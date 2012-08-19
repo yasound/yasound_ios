@@ -527,7 +527,7 @@
         self.artistVC = [[ProgrammingArtistViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongCatalog availableCatalog] forRadio:self.radio];
         CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
         self.artistVC.tableView.frame = frame;
-        [self.view addSubview:self.artistVC.tableView];
+        [self.view.superview addSubview:self.artistVC.tableView];
         
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.33];

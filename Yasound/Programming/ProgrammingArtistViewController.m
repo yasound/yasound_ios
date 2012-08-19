@@ -294,7 +294,7 @@
     self.albumVC = [[ProgrammingAlbumViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:self.catalog forRadio:self.radio];
     CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
     self.albumVC.tableView.frame = frame;
-    [self.view addSubview:self.albumVC.tableView];
+    [self.view.superview addSubview:self.albumVC.tableView];
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.33];
