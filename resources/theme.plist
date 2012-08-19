@@ -2771,11 +2771,11 @@
 				<key>font</key>
 				<dict>
 					<key>textColor</key>
-					<string>white</string>
+					<string>black</string>
 					<key>size</key>
 					<integer>15</integer>
 					<key>weight</key>
-					<string>normal</string>
+					<string>bold</string>
 				</dict>
 				<key>height</key>
 				<integer>21</integer>

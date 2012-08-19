@@ -259,7 +259,10 @@
     APNsPreferences* prefs = [[NotificationManager main] APNsPreferences];
     [[YasoundDataProvider main] setApnsPreferences:prefs target:self action:@selector(onAcknowledge:obj:)];
 
-    return NO;
+    //LBEBUG : bug selector is not called!
+//    return NO;
+    
+    return YES;
 }
 
 - (void)onAcknowledge:(id)obj1 obj2:(id)obj2

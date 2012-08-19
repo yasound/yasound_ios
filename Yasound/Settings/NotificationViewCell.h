@@ -10,7 +10,7 @@
 
 @interface NotificationViewCell : UITableViewCell
 
-@property (nonatomic, retain) UILabel* label;
+//@property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UISwitch* notifSwitch;
 @property (nonatomic, retain) NSString* notifIdentifier;
 
