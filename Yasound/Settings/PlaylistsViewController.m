@@ -760,7 +760,7 @@
     // save or cancel
     if (!_wizard && _changed)
     {
-        UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"SettingsView_saveOrCancel_title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_saveOrCancel_save", nil), nil];
+        UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Settings.saveOrCancel.title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Settings.saveOrCancel.cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Settings.saveOrCancel.save", nil), nil];
         
         popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [popupQuery showInView:self.view];

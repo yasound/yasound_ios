@@ -339,7 +339,7 @@
 
 - (void)onTrackShare:(id)sender
 {
-    _queryShare = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:nil];
+    _queryShare = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:NSLocalizedString(@"Settings.saveOrCancel.cancel", nil) destructiveButtonTitle:nil otherButtonTitles:nil];
     
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
         [_queryShare addButtonWithTitle:@"Facebook"];

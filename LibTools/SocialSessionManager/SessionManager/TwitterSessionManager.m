@@ -172,7 +172,7 @@ static TwitterSessionManager* _twitter = nil;
 
 - (void)inviteFriends:(UIView*)parentView
 {
-    UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Twitter_AppRequest_AlertTitle", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_saveOrCancel_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Twitter_AppRequest_Title", nil), nil];
+    UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Twitter_AppRequest_AlertTitle", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Settings.saveOrCancel.cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Twitter_AppRequest_Title", nil), nil];
     popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     [popupQuery showInView:parentView];
     [popupQuery release];

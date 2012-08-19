@@ -210,16 +210,16 @@
 //    NSString* title = nil;
 //    
 //    if (section == SECTION_CONFIG)
-//        title = NSLocalizedString(@"SettingsView_section_config", nil);
+//        title = NSLocalizedString(@"Settings.section.config", nil);
 //    
 //    else if (section == SECTION_IMAGE)
-//        title = NSLocalizedString(@"SettingsView_section_image", nil);
+//        title = NSLocalizedString(@"Settings.section.image", nil);
 //    
 //    else if (section == SECTION_ACCOUNTS)
-//        title = NSLocalizedString(@"SettingsView_section_accounts", nil);
+//        title = NSLocalizedString(@"Settings.section.accounts", nil);
 //
 //    else if (section == SECTION_NOTIFS)
-//        title = NSLocalizedString(@"SettingsView_section_notifs", nil);
+//        title = NSLocalizedString(@"Settings.section.notifs", nil);
 //
 //#ifdef DEBUG
 //    else if (section == SECTION_CACHE)
@@ -438,7 +438,7 @@
 //    
 //    if ((keywords == nil) || ([keywords count] == 0))
 //    {
-//        _keywords = [NSString stringWithString:NSLocalizedString(@"SettingsView_keywords_empty", nil)];
+//        _keywords = [NSString stringWithString:NSLocalizedString(@"Settings.keywords.empty", nil)];
 //    }
 //    else
 //    {

@@ -423,8 +423,8 @@ enum SectionBio
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        _pickImageQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"SettingsView_pickImage_cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"SettingsView_pickImage_image", nil),
-                           NSLocalizedString(@"SettingsView_pickImage_camera", nil), nil];
+        _pickImageQuery = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Settings.pickImage.cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Settings.pickImage.image", nil),
+                           NSLocalizedString(@"Settings.pickImage.camera", nil), nil];
         _pickImageQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [_pickImageQuery showInView:self.view];
     }
