@@ -1,6 +1,7 @@
 /* No comment provided by engineer. */
 "ACCEPT_LANGUAGE" = "fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3";
 
+"Navigation.ok" = "Ok";
 "Navigation.cancel" = "Annuler";
 "Navigation.save" = "Enregistrer";
 "Navigation.back" = "Retour";
@@ -13,6 +14,9 @@
 "Navigation_OK" = "OK";
 "Navigation_Yes" = "Oui";
 "Navigation_No" = "Non";
+
+"Error.generic.title" = "Oups...";
+"Error.generic.message" = "Impossible d'obtenir l'information.";
 
 "Connection" = "Connexion";
 "Error_communication_server" = "problème de communication avec le serveur!";
@@ -541,6 +545,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Profil.section.myRadios" = "Mes radios";
 "Profil.section.favorites" = "Favoris";
 "Profil.section.friends" = "Mes amis";
+
 
 "Menu.radios" = "Radios";
 "Menu.login" = "Se connecter";

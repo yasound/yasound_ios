@@ -122,6 +122,34 @@ enum SectionBio
 
 
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger nbRows = [tableView numberOfRowsInSection:indexPath.section];
+    
+    if (nbRows == 1)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowSingle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
+    }
+    else if (indexPath.row == 0)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowFirst" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
+    }
+    else if (indexPath.row == (nbRows -1))
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowLast" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
+    }
+    else
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowInter" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
+    }
+}
+
+
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -146,6 +174,8 @@ enum SectionBio
         
         [sheet applyToLabel:self.username class:@"default"];
 
+        //LBDEBUG
+        //NSLog(@"%.2f  x %.2f", cell.frame.size.width, cell.frame.size.height);
         
         [cell addSubview:self.username];
         

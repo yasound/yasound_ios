@@ -294,14 +294,15 @@
 //}
 
 
-
-
+//
+//
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 //{
-//    if (tableView == _settingsTableView)
-//        [self willDisplayCellInSettingsTableView:cell forRowAtIndexPath:indexPath];
+//    UIView* view = [[UIView alloc] init];
+//    view.backgroundColor = [UIColor redColor];
+//    cell.backgroundView = view;
 //}
-
+//
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

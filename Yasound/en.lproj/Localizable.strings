@@ -1,6 +1,7 @@
 /* No comment provided by engineer. */
 "ACCEPT_LANGUAGE" = "en,en-us";
 
+"Navigation.ok" = "Ok";
 "Navigation.cancel" = "Cancel";
 "Navigation.save" = "Save";
 "Navigation.back" = "Back";
@@ -13,6 +14,10 @@
 "Navigation_OK" = "OK";
 "Navigation_Yes" = "Yes";
 "Navigation_No" = "No";
+
+"Error.generic.title" = "Oops...";
+"Error.generic.message" = "Unable to get information.";
+
 
 "Connection" = "Connection";
 "Error_communication_server" = "error communicating with server!";

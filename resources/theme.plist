@@ -61,6 +61,37 @@
 		</dict>
 		<key>TableView</key>
 		<dict>
+			<key>willDisplayCell</key>
+			<dict>
+				<key>rowSingle</key>
+				<dict>
+					<key>name</key>
+					<string>CellRowSingle</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>rowFirst</key>
+				<dict>
+					<key>name</key>
+					<string>CellRowFirst</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>rowInter</key>
+				<dict>
+					<key>name</key>
+					<string>CellRowInter</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>rowLast</key>
+				<dict>
+					<key>name</key>
+					<string>CellRowLast</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+			</dict>
 			<key>cellImage</key>
 			<dict>
 				<key>x</key>

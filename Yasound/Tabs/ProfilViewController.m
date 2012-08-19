@@ -95,7 +95,17 @@
 
 - (void)userReceived:(User*)user info:(NSDictionary*)info
 {
+    DLog(@"userReceived from id '%@' : %p", self.userId, user);
+    DLog(@"info : %@", info);
     self.user = user;
+    
+    if (self.user == nil)
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error.generic.title", nil) message:NSLocalizedString(@"Error.generic.message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        return;
+    }
 
     [self.tabBar setTabSelected:TabIndexProfil];
     
@@ -513,5 +523,19 @@
 - (void)topBarItemClicked:(TopBarItemId)itemId
 {
 }
+
+
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
+
 
 @end
