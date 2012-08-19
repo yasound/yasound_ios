@@ -251,7 +251,7 @@ enum SectionBio
         cell.textLabel.text = NSLocalizedString(@"MyAccount.sexe.label", nil);
         NSString* gender = self.user.gender;
         if (!gender)
-            gender=  @"M";
+            gender=  @"-";
         cell.detailTextLabel.text = NSLocalizedString(gender, nil);
         
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -355,6 +355,17 @@ enum SectionBio
 
 #pragma mark - TextField Delegate
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (textField == self.city)
+    {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        self.tableview.contentOffset = CGPointMake(0, 88);
+        [UIView commitAnimations];
+    }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     _changed = YES;
@@ -368,6 +379,11 @@ enum SectionBio
     else if (textField == self.city)
     {
         self.user.city = textField.text;
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        self.tableview.contentOffset = CGPointMake(0, 0);
+        [UIView commitAnimations];        
     }
     
     return YES;

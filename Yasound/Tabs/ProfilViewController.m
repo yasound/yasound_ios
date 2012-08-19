@@ -115,7 +115,7 @@
     
     NSString* profil;
     NSString* age = nil;
-    if (age.length != 0)
+    if (self.user.age != nil)
     {
         age = NSLocalizedString(@"Profil.age", nil);
         age = [NSString stringWithFormat:age, [self.user.age integerValue]];

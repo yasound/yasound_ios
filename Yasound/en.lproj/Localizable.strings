@@ -557,6 +557,7 @@
 "Profil.section.myRadios" = "My radios";
 "Profil.section.favorites" = "Favorites";
 "Profil.section.friends" = "My friends";
+"Profil.age" = "%d years";
 
 "Menu.radios" = "Radios";
 "Menu.login" = "Login";

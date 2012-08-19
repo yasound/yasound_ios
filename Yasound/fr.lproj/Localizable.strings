@@ -545,6 +545,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Profil.section.myRadios" = "Mes radios";
 "Profil.section.favorites" = "Favoris";
 "Profil.section.friends" = "Mes amis";
+"Profil.age" = "%d ans";
 
 
 "Menu.radios" = "Radios";
