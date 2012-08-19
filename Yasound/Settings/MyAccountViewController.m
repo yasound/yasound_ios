@@ -222,8 +222,9 @@ enum SectionBio
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
 
-        cell.detailTextLabel.text = [self.user.age stringValue];
-        if (cell.detailTextLabel.text.length == 0)
+        NSString* age = [self.user.age stringValue];
+        cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"MyAccount.age.value", nil), [self.user.age integerValue]];
+        if (age.length == 0)
             cell.detailTextLabel.text = @"-";
 
         sheet = [[Theme theme] stylesheetForKey:@"TableView.value" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -407,7 +408,9 @@ enum SectionBio
     NSInteger age = [ageComponents year];
     self.user.age = [NSNumber numberWithInt:age];
 
-    self.age.text = [self.user.age stringValue];
+    UITableViewCell* cell = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ROW_AGE inSection:SECTION_PROFIL]];
+
+    cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"MyAccount.age.value", nil), age];
 }
 
 - (UINavigationController *)navController

@@ -1764,6 +1764,8 @@
 //        for (NSInteger i = 0; i < retainCount-3; i++)
 //            [self autorelease];
     }
+    
+    return YES;
 }
 
 

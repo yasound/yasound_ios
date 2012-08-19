@@ -577,6 +577,7 @@
 "MyAccount.city.label" = "City";
 "MyAccount.city.placeholder" = "enter your city";
 "MyAccount.bio.label" = "Bio";
+"MyAccount.age.value" = "%d years";
 
 
 "M" = "Male";
