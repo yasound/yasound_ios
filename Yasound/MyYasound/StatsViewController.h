@@ -38,10 +38,10 @@
   
 //  UILabel* _listenersLabel;
   
-  NSArray* _leaderboard;
 }
 
 @property (nonatomic, retain) Radio* radio;
+@property (nonatomic, retain) NSArray* leaderboard;
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio;
 

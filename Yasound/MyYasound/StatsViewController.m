@@ -41,7 +41,7 @@
 
 @implementation StatsViewController
 
-
+@synthesize leaderboard;
 @synthesize radio;
 
 //@synthesize weekGraphView;
@@ -64,7 +64,7 @@
         _monthGraphView.plotColor = RGB(200,200,200);
         _monthGraphView.fillColor = RGBA(196,246,254,96);
       
-      _leaderboard = nil;
+//      _leaderboard = nil;
     }
     
     return self;
@@ -96,8 +96,8 @@
 {
     [super viewDidLoad];
 
-    _titleLabel.text = NSLocalizedString(@"StatsView_title", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+//    _titleLabel.text = NSLocalizedString(@"StatsView_title", nil);
+//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     
 //    _btnNextWeek.enabled = NO;
 //    _btnNextMonth.enabled = NO;
@@ -189,7 +189,7 @@
     DLog(@"%@ - %@: %@ favorites %@", entry.leaderboard_rank, entry.name, entry.leaderboard_favorites, [entry isUserRadio] ? @"(user's radio)" : @"");
   }
   
-  _leaderboard = entries;
+  self.leaderboard = entries;
   [_tableView reloadData];
 }
 
@@ -252,9 +252,9 @@
     return 1;
   else if (section == SECTION_LEADERBOARD)
   {
-    if (!_leaderboard)
+    if (!self.leaderboard)
         return 0;
-    return _leaderboard.count;
+    return self.leaderboard.count;
   }
   return 0;
 }
@@ -335,56 +335,68 @@
     }
     
     
-    NSInteger nbRows;
-    if (indexPath.section == SECTION_STATS)
-    {
-        nbRows = 1;
-    }
-    else if (indexPath.section == SECTION_LEADERBOARD) 
-    {
-        nbRows = [_leaderboard count];
-    }
+    NSInteger nbRows = [self.leaderboard count];
     
-    
-    LeaderBoardEntry* entry = [_leaderboard objectAtIndex:indexPath.row];
+    LeaderBoardEntry* entry = [self.leaderboard objectAtIndex:indexPath.row];
     BOOL isUserRadio = [entry isUserRadio];
 
     if (nbRows == 1)
     {
-        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
-        cell.backgroundView = view;
-        [view release];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowSingle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
     }
     else if (indexPath.row == 0)
     {
-        UIImageView* view = nil;
-        if (isUserRadio)
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldFirst.png"]];
-        else
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
-        cell.backgroundView = view;
-        [view release];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowFirst" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
     }
     else if (indexPath.row == (nbRows -1))
     {
-        UIImageView* view = nil;
-        if (isUserRadio)
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldLast.png"]];
-        else
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
-        cell.backgroundView = view;
-        [view release];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowLast" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
     }
     else
     {
-        UIImageView* view = nil;
-        if (isUserRadio)
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldInter.png"]];
-        else
-            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
-        cell.backgroundView = view;
-        [view release];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowInter" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
     }
+
+//    if (nbRows == 1)
+//    {
+//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
+//    else if (indexPath.row == 0)
+//    {
+//        UIImageView* view = nil;
+//        if (isUserRadio)
+//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldFirst.png"]];
+//        else
+//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
+//    else if (indexPath.row == (nbRows -1))
+//    {
+//        UIImageView* view = nil;
+//        if (isUserRadio)
+//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldLast.png"]];
+//        else
+//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
+//    else
+//    {
+//        UIImageView* view = nil;
+//        if (isUserRadio)
+//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowGoldInter.png"]];
+//        else
+//            view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
+//        cell.backgroundView = view;
+//        [view release];
+//    }
     
 }
 
@@ -408,6 +420,7 @@
         if (cell == nil) 
         {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+            cell.textLabel.textColor = [UIColor whiteColor];
             [cell.imageView setImage:[UIImage imageNamed:@"statsIconHeadphones.png"]];
         }
 
@@ -451,37 +464,38 @@
         if (cell == nil) 
         {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+            cell.textLabel.textColor = [UIColor blackColor];
         }
         
 
         
-        LeaderBoardEntry* entry = [_leaderboard objectAtIndex:indexPath.row];
+        LeaderBoardEntry* entry = [self.leaderboard objectAtIndex:indexPath.row];
 
         BundleStylesheet* sheet = nil;
         
         
         // radio rank + name
-        sheet = [[Theme theme] stylesheetForKey:@"Stats.StatsView_LeaderBoard_Name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UILabel* label = [[sheet makeLabel] autorelease];
-        label.text = [NSString stringWithFormat:@"%@ - %@",  entry.leaderboard_rank, entry.name];
-        [cell.contentView addSubview:label];
+//        sheet = [[Theme theme] stylesheetForKey:@"Stats.StatsView_LeaderBoard_Name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        UILabel* label = [[sheet makeLabel] autorelease];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@",  entry.leaderboard_rank, entry.name];
+        //[cell.contentView addSubview:label];
 
         // favorites
-        sheet = [[Theme theme] stylesheetForKey:@"Stats.StatsView_LeaderBoard_Favorites" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        label = [[sheet makeLabel] autorelease];
-        label.text = [NSString stringWithFormat:@"%@", entry.leaderboard_favorites];
-        [cell.contentView addSubview:label];
+//        sheet = [[Theme theme] stylesheetForKey:@"Stats.StatsView_LeaderBoard_Favorites" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        label = [[sheet makeLabel] autorelease];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", entry.leaderboard_favorites];
+//        [cell.contentView addSubview:label];
 
         // favorites icon
-        sheet = [[Theme theme] stylesheetForKey:@"Stats.StatsView_LeaderBoard_FavoritesIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UIImageView* imageView = [[sheet makeImage] autorelease];
-        [cell.contentView addSubview:imageView];
+        sheet = [[Theme theme] stylesheetForKey:@"Stats.iconFavorites" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.accessoryView = [sheet makeImage];
+//        UIImageView* imageView = [[sheet makeImage] autorelease];
+//        [cell.contentView addSubview:imageView];
         
     }
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 //    cell.detailTextLabel.textColor = [UIColor colorWithRed:160.f/255.f green:182.f/255.f blue:222.f/255.f alpha:1];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 
