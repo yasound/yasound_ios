@@ -175,6 +175,25 @@
     [self refreshView];
 
     [ActivityAlertView close];
+    
+    if (_songs.count == 0)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
+        UIImageView* view = [sheet makeImage];
+        [_tableView addSubview:view];
+        [view release];
+        
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];
+        return;
+    }
+    
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.create", nil) message:NSLocalizedString(@"MyRadios.create.howto", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+    
+    
 }
 
                                                                                       
@@ -191,7 +210,7 @@
 {
     [_checkmarkImage release];
     [_checkmarkDisabledImage release];
-    [_howto release];
+//    [_howto release];
     if (_songsViewController) {
         [_songsViewController release];
     }
@@ -262,15 +281,15 @@
 //        
 //    }
     
-    _howto = NSLocalizedString(@"PlaylistsView_howto", nil);
-    [_howto retain];
-    
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"PlaylistsView.PlaylistsView_Howto" error:nil];
-    UIFont* font = [sheet makeFont];
-    
-    // dynamic size of howto text
-    CGSize suggestedSize = [_howto sizeWithFont:font constrainedToSize:CGSizeMake(sheet.frame.size.width, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-    _cellHowtoHeight = suggestedSize.height;
+//    _howto = NSLocalizedString(@"PlaylistsView_howto", nil);
+////    [_howto retain];
+//    
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"PlaylistsView.PlaylistsView_Howto" error:nil];
+//    UIFont* font = [sheet makeFont];
+//    
+//    // dynamic size of howto text
+//    CGSize suggestedSize = [_howto sizeWithFont:font constrainedToSize:CGSizeMake(sheet.frame.size.width, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
+//    _cellHowtoHeight = suggestedSize.height;
     
     
     
@@ -375,7 +394,7 @@
         return nbRows;
     }
     
-    return 2;
+    return 1;
 }
 
 
@@ -384,38 +403,35 @@
     return 22;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    if (section == 0)
-        return 0;
-    
-    return 22;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    if (section == 0)
+//        return 0;
+//    
+//    return 22;
+//}
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) 
-        return _cellHowtoHeight;
-    
-    return 44;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.section == 0) 
+//        return _cellHowtoHeight;
+//    
+//    return 44;
+//}
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    UIView* view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor clearColor];
-    return view;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+//    UIView* view = [[UIView alloc] init];
+//    view.backgroundColor = [UIColor clearColor];
+//    return view;
+//}
 
 
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (section == 0)
-        return nil;
-    
     NSString* title = nil;
 
     if (section == 0)
@@ -475,14 +491,14 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    if ((indexPath.section == 0) && (indexPath.row == 0))
-    {
-        UIView* view = [[UIView alloc] initWithFrame:cell.frame];
-        view.backgroundColor = [UIColor clearColor];
-        cell.backgroundView = view;
-        [view release];
-        return;
-    }
+//    if ((indexPath.section == 0) && (indexPath.row == 0))
+//    {
+//        UIView* view = [[UIView alloc] initWithFrame:cell.frame];
+//        view.backgroundColor = [UIColor clearColor];
+//        cell.backgroundView = view;
+//        [view release];
+//        return;
+//    }
     
     NSInteger nbRows;
     if (indexPath.section == 1)
@@ -490,7 +506,7 @@
         nbRows = [_localPlaylistsDesc count];
     }
     
-    if ((nbRows == 1) || ((indexPath.section == 0) && (indexPath.row == 1)))
+    if ((nbRows == 1) || ((indexPath.section == 0) && (indexPath.row == 0)))
     {
         UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
         cell.backgroundView = view;
@@ -519,41 +535,41 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+//    if ((indexPath.section == 0) && (indexPath.row == 0))
+//    {
+//        static NSString* CellIdentifier = @"CellHowto";
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//        
+//        if (cell == nil) 
+//        {
+//            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+//        }
+//        else
+//        {
+//            for (id child in cell.subviews)
+//            {
+//                if ([child isKindOfClass:[UILabel class]])
+//                    [child removeFromSuperview];
+//            }
+//        }
+//        
+//        
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//
+//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"PlaylistsView.PlaylistsView_Howto" error:nil];
+//
+//        UILabel* label = [sheet makeLabel];
+//        label.text = _howto;
+//        label.numberOfLines = 0;
+//        label.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, sheet.frame.size.width, _cellHowtoHeight);
+//        [cell addSubview:label];
+//
+//        return cell;
+//    }
+    
+    
+    
     if ((indexPath.section == 0) && (indexPath.row == 0))
-    {
-        static NSString* CellIdentifier = @"CellHowto";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (cell == nil) 
-        {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        }
-        else
-        {
-            for (id child in cell.subviews)
-            {
-                if ([child isKindOfClass:[UILabel class]])
-                    [child removeFromSuperview];
-            }
-        }
-        
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"PlaylistsView.PlaylistsView_Howto" error:nil];
-
-        UILabel* label = [sheet makeLabel];
-        label.text = _howto;
-        label.numberOfLines = 0;
-        label.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, sheet.frame.size.width, _cellHowtoHeight);
-        [cell addSubview:label];
-
-        return cell;
-    }
-    
-    
-    
-    if ((indexPath.section == 0) && (indexPath.row == 1))
     {
         static NSString* CellIdentifier = @"CellSelect";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];

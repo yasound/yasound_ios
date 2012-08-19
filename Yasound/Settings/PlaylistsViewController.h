@@ -32,8 +32,8 @@ typedef enum {
 //    UIBarButtonItem* _nextBtn;
     
     IBOutlet UITableView* _tableView;  
-    CGFloat _cellHowtoHeight;
-    NSString* _howto; 
+//    CGFloat _cellHowtoHeight;
+//    NSString* _howto; 
 
     IBOutlet UIView* _itunesConnectView;
     IBOutlet UILabel* _itunesConnectLabel;
