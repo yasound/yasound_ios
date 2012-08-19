@@ -101,8 +101,8 @@
     self.listeners.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
 
     // metrics
-    self.metric1.text = @"12345";
-    self.metric2.text = @"432";
+    self.metric1.text = [self.radio.overall_listening_time stringValue];
+    self.metric2.text = [self.radio.new_wall_messages_count stringValue];
 }
 
 
