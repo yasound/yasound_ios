@@ -35,11 +35,12 @@
 
 
 @property (nonatomic, retain) Radio* radio;
-
+@property (nonatomic) BOOL createMode;
 
 
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio;
+- (id) createWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil;
 
 
 @end

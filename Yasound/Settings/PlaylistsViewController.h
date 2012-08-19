@@ -9,24 +9,27 @@
 #import <UIKit/UIKit.h>
 #import "TestflightViewController.h"
 #import "SongsViewController.h"
+#import "TopBarSaveOrCancel.h"
+
+
 typedef enum {
     eDisplayModeNormal = 0,
     eDisplayModeEdit = 1,
 } DisplayMode;
 
 
-@interface PlaylistsViewController : TestflightViewController
+@interface PlaylistsViewController : TestflightViewController<TopBarSaveOrCancelDelegate>
 {
-    BOOL _wizard;
+//    BOOL _wizard;
     BOOL _changed;
-    BOOL _forceEnableNextBtn;
+//    BOOL _forceEnableNextBtn;
     
     IBOutlet UIView* _container;
 
-    IBOutlet UIToolbar* _toolbar;
-    IBOutlet UIBarButtonItem* _backBtn;
-    IBOutlet UILabel* _titleLabel;
-    UIBarButtonItem* _nextBtn;
+//    IBOutlet UIToolbar* _toolbar;
+//    IBOutlet UIBarButtonItem* _backBtn;
+//    IBOutlet UILabel* _titleLabel;
+//    UIBarButtonItem* _nextBtn;
     
     IBOutlet UITableView* _tableView;  
     CGFloat _cellHowtoHeight;
@@ -54,6 +57,7 @@ typedef enum {
     
     UISwitch* _switchAllMyMusic;
 }
+@property (nonatomic, retain) IBOutlet TopBarSaveOrCancel* topbar;
 
 @property (nonatomic) NSInteger nbPlaylistsForChecking;
 @property (nonatomic) NSInteger nbParsedPlaylistsForChecking;

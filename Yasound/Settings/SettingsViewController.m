@@ -51,10 +51,24 @@
     if (self)
     {
         self.radio = radio;
+        self.createMode = NO;
     }
     
     return self;
 }
+
+- (id) createWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        self.radio = nil;
+        self.createMode = YES;
+    }
+    
+    return self;
+}
+
 
 
 
@@ -83,7 +97,9 @@
     _settingsTitleLabel.text = NSLocalizedString(@"Settings.radio.title.label", nil);
     
     // set radio title
-    NSString* radioTitle = self.radio.name;
+    NSString* radioTitle = nil;
+    if (self.radio)
+        radioTitle = self.radio.name;
     if ((radioTitle == nil) || (radioTitle.length == 0))
         radioTitle = [NSString stringWithFormat:@"%@'s Yasound", [[UIDevice currentDevice] name]];
     _settingsTitleTextField.text = radioTitle;
@@ -97,7 +113,9 @@
     _settingsImageChanged = NO;
     
     // set radio image
-    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
+    NSURL* imageURL = nil;
+    if (self.radio)
+        [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     if (imageURL != nil)
         [_settingsImageImage setUrl:imageURL];    
     
@@ -110,7 +128,9 @@
     [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
     
     // update keywords
-    NSArray* keywords = [self.radio tagsArray];
+    NSArray* keywords = nil;
+    if (self.radio)
+        [self.radio tagsArray];
 
     if (_keywords)
         [_keywords release];
@@ -344,7 +364,9 @@
     {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"Settings.genre.label", nil);
-        NSString* style = self.radio.genre;
+        NSString* style = nil;
+        if (self.radio)
+            style = self.radio.genre;
         cell.detailTextLabel.text = NSLocalizedString(style, nil);
     }
     else if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_KEYWORDS))

@@ -5,6 +5,7 @@
 "Navigation.cancel" = "Annuler";
 "Navigation.save" = "Enregistrer";
 "Navigation.back" = "Retour";
+"Navigation.create" = "Créer";
 
 "Navigation_back" = "Retour";
 "Navigation_next" = "Suivant";
@@ -611,4 +612,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "Stats.section.month" = "Audience des 30 derniers jours";
 "Stats.section.leaderboard" = "Classement";
+
+"MyRadios.create" = "Créer une radio";
 

@@ -11,11 +11,13 @@
 @protocol TopBarSaveOrCancelDelegate <NSObject>
 - (BOOL)topBarSave;
 - (BOOL)topBarCancel;
+- (NSString*)titleForActionButton;
 @end
 
 
 @interface TopBarSaveOrCancel : UIToolbar
 
 @property (nonatomic, retain) IBOutlet id<TopBarSaveOrCancelDelegate> delegate;
+@property (nonatomic, retain) UIBarButtonItem* actionButton;
 
 @end

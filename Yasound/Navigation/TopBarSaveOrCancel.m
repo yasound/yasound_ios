@@ -13,6 +13,7 @@
 @implementation TopBarSaveOrCancel
 
 @synthesize delegate;
+@synthesize actionButton;
 
 
 - (void)awakeFromNib
@@ -27,6 +28,8 @@
 
     NSString* strCancel = NSLocalizedString(@"Navigation.cancel", nil);
     NSString* strSave = NSLocalizedString(@"Navigation.save", nil);
+    if ([self.delegate respondsToSelector:@selector(titleForActionButton)])
+        strSave = [self.delegate titleForActionButton];
     
     BundleStylesheet* sheetLabel = [[Theme theme] stylesheetForKey:@"TopBar.itemEmptyLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 
@@ -74,9 +77,9 @@
     [btn addSubview:label];
 
     [btn addTarget:self action:@selector(onSave:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* itemSave = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.actionButton = [[UIBarButtonItem alloc] initWithCustomView:btn];
 
-    [self setItems:[NSArray arrayWithObjects:itemCancel, flexibleSpace, itemSave, nil]];
+    [self setItems:[NSArray arrayWithObjects:itemCancel, flexibleSpace, self.actionButton, nil]];
 }
 
 

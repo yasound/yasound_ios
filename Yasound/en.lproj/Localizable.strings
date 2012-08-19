@@ -5,6 +5,7 @@
 "Navigation.cancel" = "Cancel";
 "Navigation.save" = "Save";
 "Navigation.back" = "Back";
+"Navigation.create" = "Create";
 
 "Navigation_back" = "Back";
 "Navigation_next" = "Next";
@@ -624,4 +625,9 @@
 
 "Stats.section.month" = "Last 30 days audience";
 "Stats.section.leaderboard" = "Leaderboard";
+
+"MyRadios.create" = "Create a radio";
+
+
+
 

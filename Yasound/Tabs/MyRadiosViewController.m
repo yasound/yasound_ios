@@ -14,6 +14,8 @@
 #import "RootViewController.h"
 #import "StatsViewController.h"
 #import "SettingsViewController.h"
+#import "Theme.h"
+#import "PlaylistsViewController.h"
 
 @interface MyRadiosViewController ()
 
@@ -95,38 +97,85 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.radios == nil)
+    if ((section == 0) && (self.radios == nil))
         return 0;
     
-    return self.radios.count;
+    if (section == 0)
+        return self.radios.count;
+    
+    return 1;
+}
+
+#define ROW_CREATE_HEIGHT 88
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, ROW_CREATE_HEIGHT)];
+    view.backgroundColor = [UIColor clearColor];
+    cell.backgroundView = view;
+    [view release];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 167.f;
+    if (indexPath.section == 0)
+        return 167.f;
+    
+    return ROW_CREATE_HEIGHT;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Radio* radio = [self.radios objectAtIndex:indexPath.row];
+    static NSString* CellCreateIdentifier = @"CellCreateRadio";
     
-    MyRadiosTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) 
+    if (indexPath.section == 0)
     {
-        NSArray *topLevelItems = [self.cellLoader instantiateWithOwner:self options:nil];
-        cell = [topLevelItems objectAtIndex:0];
-        cell.delegate = self;
-    }
+        Radio* radio = [self.radios objectAtIndex:indexPath.row];
         
-    [cell updateWithRadio:radio target:self];
+        MyRadiosTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) 
+        {
+            NSArray *topLevelItems = [self.cellLoader instantiateWithOwner:self options:nil];
+            cell = [topLevelItems objectAtIndex:0];
+            cell.delegate = self;
+        }
+            
+        [cell updateWithRadio:radio target:self];
+        
+        return cell;
+    }
     
-    return cell;
+    if (indexPath.section == 1)
+    {
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellCreateIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellCreateIdentifier];
+            
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButton.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            UIButton* button = [sheet makeButton];
+            CGFloat height = ROW_CREATE_HEIGHT;
+            CGRect rect = CGRectMake(cell.frame.size.width/2.f - button.frame.size.width/2.f, height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
+            button.frame = rect;
+            [button addTarget:self action:@selector(onCreateButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+            [cell addSubview:button];
+            
+            sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButton.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            UILabel* label = [sheet makeLabel];
+            label.text = NSLocalizedString(@"MyRadios.create", nil);
+            [button addSubview:label];
+        }
+        
+        return cell;
+    }
+    
+    return nil;
 }
 
 
@@ -209,5 +258,20 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 //- (BOOL)topBarItemClicked:(TopBarItemId)itemId
 //{
 //}
+
+
+
+- (void)onCreateButtonClicked:(id)sender
+{
+//    SettingsViewController* view = [[SettingsViewController alloc] createWithNibName:@"SettingsViewController" bundle:nil];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
+    
+    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
+
 
 @end

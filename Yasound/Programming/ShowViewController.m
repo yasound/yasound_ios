@@ -169,7 +169,7 @@
 //{
 //    if ((indexPath.section == 1) && (indexPath.row == 0))
 //    {
-//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.bigButton.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButton.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //        UIImageView* view = [sheet makeImage];
 //        cell.backgroundView = view;
 //        [view release];
@@ -241,11 +241,11 @@
         {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifierDelete] autorelease];
             
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.bigButton.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButton.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UIButton* btn = [sheet makeButton];
             [cell addSubview:btn];
             
-            sheet = [[Theme theme] stylesheetForKey:@"TableView.bigButton.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButton.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UILabel* label = [sheet makeLabel];
             label.text = NSLocalizedString(@"Show.delete.label", nil);
             [btn addSubview:label];

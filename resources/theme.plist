@@ -136,7 +136,7 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
-			<key>bigButton</key>
+			<key>BigButton</key>
 			<dict>
 				<key>button</key>
 				<dict>

@@ -27,25 +27,25 @@
 
 @implementation PlaylistsViewController
 
-
+@synthesize topbar;
 @synthesize nbMatchedSongs;
 @synthesize nbPlaylistsForChecking;
 @synthesize nbParsedPlaylistsForChecking;
 @synthesize playlistsDataPackage;
 
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
       
         _displayMode = eDisplayModeNormal;
-        _wizard = wizard;
+//        _wizard = wizard;
         _songsViewController = nil;
         _changed = NO;
-        if (_wizard)
-            _changed = YES;
+//        if (_wizard)
+//            _changed = YES;
         
         _checkmarkImage = [UIImage imageNamed:@"WhiteCheckmark.png"];
         [_checkmarkImage retain];
@@ -132,18 +132,18 @@
         if (mediaPlaylist) 
             [_localPlaylistsDesc addObject:dico];
 
-        if (_wizard) 
-        {
+//        if (_wizard) 
+//        {
             if (mediaPlaylist)
                 [_selectedPlaylists addObject:dico];
-        }
-        else 
-        {
-            if ([enabled boolValue] == FALSE)
-                [_unselectedPlaylists addObject:dico];
-            else
-                [_selectedPlaylists addObject:dico];
-        }
+//        }
+//        else 
+//        {
+//            if ([enabled boolValue] == FALSE)
+//                [_unselectedPlaylists addObject:dico];
+//            else
+//                [_selectedPlaylists addObject:dico];
+//        }
     }
 }
 
@@ -208,57 +208,59 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.topbar.actionButton.enabled = NO;
+
+//    _titleLabel.text = NSLocalizedString(@"PlaylistsView_title", nil);
+//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+
+//    _forceEnableNextBtn = NO;
     
-    _titleLabel.text = NSLocalizedString(@"PlaylistsView_title", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-
-    _forceEnableNextBtn = NO;
-    
-#if TARGET_IPHONE_SIMULATOR
-    _forceEnableNextBtn = YES;
-#endif
+//#if TARGET_IPHONE_SIMULATOR
+//    _forceEnableNextBtn = YES;
+//#endif
 
     
-    // next button in toolbar
-    if (_wizard)
-    {
-        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_cancel", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
-
-        _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
-
-        UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-
-
-        NSMutableArray* items = [[NSMutableArray alloc] init];
-        
-        [items addObject:backBtn];
-        [items addObject:space];
-        [items addObject:_nextBtn];
-        
-        [_toolbar setItems:items animated:NO];
-        
-        _nextBtn.enabled = NO;
-
-        
-    } 
-    else 
-    {
-        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
-  
-      // For the moment we disable playlist editing until we have a better solution.
-//        UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onEdit:)];
-        
-        UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        
-        NSMutableArray* items = [[NSMutableArray alloc] init];
-        
-        [items addObject:backBtn];
-        [items addObject:space];
-//        [items addObject:edit];
-        
-        [_toolbar setItems:items animated:NO];
-        
-    }
+//    // next button in toolbar
+//    if (_wizard)
+//    {
+//        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_cancel", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
+//
+//        _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
+//
+//        UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+//
+//
+//        NSMutableArray* items = [[NSMutableArray alloc] init];
+//        
+//        [items addObject:backBtn];
+//        [items addObject:space];
+//        [items addObject:_nextBtn];
+//        
+//        [_toolbar setItems:items animated:NO];
+//        
+//        _nextBtn.enabled = NO;
+//
+//        
+//    } 
+//    else 
+//    {
+//        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
+//  
+//      // For the moment we disable playlist editing until we have a better solution.
+////        UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onEdit:)];
+//        
+//        UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+//        
+//        NSMutableArray* items = [[NSMutableArray alloc] init];
+//        
+//        [items addObject:backBtn];
+//        [items addObject:space];
+////        [items addObject:edit];
+//        
+//        [_toolbar setItems:items animated:NO];
+//        
+//    }
     
     _howto = NSLocalizedString(@"PlaylistsView_howto", nil);
     [_howto retain];
@@ -290,10 +292,10 @@
     [[TimeProfile main] logInterval:@"Playlists_catalogPlaylists" inMilliseconds:NO];
 
     
-    if (([_playlists count] != 0) || _forceEnableNextBtn)
-        _nextBtn.enabled = YES;
-    else
-        _nextBtn.enabled = NO;
+//    if (([_playlists count] != 0) || _forceEnableNextBtn)
+//        _nextBtn.enabled = YES;
+//    else
+//        _nextBtn.enabled = NO;
     
     
     [self.view addSubview:_tableView];
@@ -342,10 +344,10 @@
         [_tableView reloadData];
     }
     
-    if (([_selectedPlaylists count] == 0) && (_songs.count == 0))
-        [_nextBtn setEnabled:NO];
-    else 
-        [_nextBtn setEnabled:YES];    
+//    if (([_selectedPlaylists count] == 0) && (_songs.count == 0))
+//        [_nextBtn setEnabled:NO];
+//    else 
+//        [_nextBtn setEnabled:YES];    
 }
 
 
@@ -411,32 +413,63 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    NSString* title = nil;
-    
     if (section == 0)
         return nil;
     
+    NSString* title = nil;
+
+    if (section == 0)
+        return nil;
+
     if (section == 1)
         title = NSLocalizedString(@"PlaylistsView_table_header_local_playlists", nil);
-    
+
     else if (section == 2)
         title = NSLocalizedString(@"PlaylistsView_table_header_other_playlists", nil);
 
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 26)];
+    view.backgroundColor = [UIColor clearColor];
     
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    
-    UIImage* image = [sheet image];
-    CGFloat height = image.size.height;
-    UIImageView* view = [[UIImageView alloc] initWithImage:image];
-    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
-    
-    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.viewForHeader" retainStylesheet:YES overwriteStylesheet:YES error:nil];
     UILabel* label = [sheet makeLabel];
     label.text = title;
     [view addSubview:label];
     
     return view;
 }
+
+
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    ICI
+//    
+//    NSString* title = nil;
+//    
+//    if (section == 0)
+//        return nil;
+//    
+//    if (section == 1)
+//        title = NSLocalizedString(@"PlaylistsView_table_header_local_playlists", nil);
+//    
+//    else if (section == 2)
+//        title = NSLocalizedString(@"PlaylistsView_table_header_other_playlists", nil);
+//
+//    
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    
+//    UIImage* image = [sheet image];
+//    CGFloat height = image.size.height;
+//    UIImageView* view = [[UIImageView alloc] initWithImage:image];
+//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
+//    
+//    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    UILabel* label = [sheet makeLabel];
+//    label.text = title;
+//    [view addSubview:label];
+//    
+//    return view;
+//}
 
 
 
@@ -536,8 +569,8 @@
 
             
             cell.textLabel.backgroundColor = [UIColor clearColor];
-            cell.textLabel.textColor = [UIColor whiteColor];
-            cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
+            cell.textLabel.textColor = [UIColor blackColor];
+            cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
             
             cell.detailTextLabel.backgroundColor = [UIColor clearColor];
             cell.detailTextLabel.textColor = [UIColor grayColor];
@@ -604,9 +637,9 @@
     if (_switchAllMyMusic.on)
         cell.textLabel.textColor = [UIColor grayColor];
     else
-        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.textColor = [UIColor blackColor];
     
-    cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:15];
     
     NSDictionary* selectedItem = [source objectAtIndex:indexPath.row];
     MPMediaPlaylist* mediaPlaylist = [selectedItem objectForKey:@"mediaPlaylist"];
@@ -718,10 +751,10 @@
         [self checkmark:cell with:NO];
     }
     
-    if (([_selectedPlaylists count] == 0) && (_songs.count == 0))
-        [_nextBtn setEnabled:NO];
-    else 
-        [_nextBtn setEnabled:YES];
+//    if (([_selectedPlaylists count] == 0) && (_songs.count == 0))
+//        [_nextBtn setEnabled:NO];
+//    else 
+//        [_nextBtn setEnabled:YES];
 }
 
 
@@ -750,15 +783,16 @@
 
 - (IBAction)onBack:(id)sender
 {
-    if (_wizard)
-    {
-        // call root to launch the Radio
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CANCEL_WIZARD object:nil];
-        return;
-    }
+//    if (_wizard)
+//    {
+//        // call root to launch the Radio
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CANCEL_WIZARD object:nil];
+//        return;
+//    }
     
     // save or cancel
-    if (!_wizard && _changed)
+//    if (!_wizard && _changed)
+    if (_changed)
     {
         UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Settings.saveOrCancel.title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Settings.saveOrCancel.cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Settings.saveOrCancel.save", nil), nil];
         
@@ -1041,15 +1075,25 @@
 - (void)getOut
 {
   
-  if (_wizard)
-  {
+//  if (_wizard)
+//  {
     SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
-  }
-  else
-    [self.navigationController popViewControllerAnimated:YES];
+//  }
+//  else
+//    [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+
+#pragma mark - TopBarSaveOrCancel
+
+- (NSString*)titleForActionButton
+{
+    return NSLocalizedString(@"Navigation.create", nil);
+}
+
 
 
 @end
