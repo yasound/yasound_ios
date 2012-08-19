@@ -200,12 +200,39 @@
 
 #pragma mark - TableView Source and Delegate
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == SECTION_STATS)
+        return nil;
+
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 26)];
+    view.backgroundColor = [UIColor clearColor];
+    
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.viewForHeader" retainStylesheet:YES overwriteStylesheet:YES error:nil];
+    UILabel* label = [sheet makeLabel];
+    
+    if (section == SECTION_MONTHCHART)
+        label.text = NSLocalizedString(@"Stats.section.month", nil);
+    
+    else if (section == SECTION_LEADERBOARD)
+        label.text = NSLocalizedString(@"Stats.section.leaderboard", nil);
+    
+    [view addSubview:label];
+    
+    return view;
+}
 
 //- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section 
 //{
-//    if (tableView == _settingsTableView)
-//        return [self titleInSettingsTableViewForHeaderInSection:section];
+//    if (section == SECTION_STATS)
+//        return nil;
 //    
+//    if (section == SECTION_MONTHCHART)
+//        return NSLocalizedString(@"Stats.section.month", nil);
+//    
+//    if (section == SECTION_LEADERBOARD)
+//        return NSLocalizedString(@"Stats.section.leaderboard", nil);
+//        
 //    return nil;
 //}
 
@@ -245,13 +272,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 22;
+    return 26;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 22;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 22;
+//}
 
 
 

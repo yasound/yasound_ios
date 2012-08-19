@@ -152,7 +152,6 @@
 "StatsView_listeners_label" = "listeners";
 "StatsView_likes_label" = "subscribers";
 "StatsView_weekselector_label" = "current week";
-"StatsView_monthselector_label" = "current month";
 "StatsView_leaderboardselector_label" = "Ranking";
 
 "KeywordsView_title" = "Tags list";
@@ -623,4 +622,6 @@
 "Programming.Catalog.uploads" = "Uploads";
 "Programming.empty" = "Add some music to your device, by synchronizing it with iTunes.";
 
+"Stats.section.month" = "Last 30 days audience";
+"Stats.section.leaderboard" = "Leaderboard";
 

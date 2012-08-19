@@ -148,7 +148,6 @@
 "StatsView_listeners_label" = "Nombre d'auditeurs";
 "StatsView_likes_label" = "Nombre d'abonnés";
 "StatsView_weekselector_label" = "semaine courante";
-"StatsView_monthselector_label" = "Audience des 30 derniers jours";
 "StatsView_leaderboardselector_label" = "Classement";
 
 "KeywordsView_title" = "Liste des mots-clés";
@@ -610,4 +609,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Programming.Catalog.uploads" = "Téléchargements";
 "Programming.empty" = "Ajoutez de la musique sur votre appareil en le synchronisant avec iTunes.";
 
+"Stats.section.month" = "Audience des 30 derniers jours";
+"Stats.section.leaderboard" = "Classement";
 

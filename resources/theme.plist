@@ -61,6 +61,28 @@
 		</dict>
 		<key>TableView</key>
 		<dict>
+			<key>viewForHeader</key>
+			<dict>
+				<key>font</key>
+				<dict>
+					<key>size</key>
+					<integer>15</integer>
+					<key>textColor</key>
+					<string>rgb(166,166,166)</string>
+					<key>backgroundColor</key>
+					<string>clear</string>
+					<key>weight</key>
+					<string>bold</string>
+				</dict>
+				<key>height</key>
+				<integer>22</integer>
+				<key>width</key>
+				<integer>288</integer>
+				<key>x</key>
+				<integer>16</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
 			<key>willDisplayCell</key>
 			<dict>
 				<key>rowSingle</key>
