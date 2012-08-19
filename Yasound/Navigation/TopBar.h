@@ -15,11 +15,12 @@ typedef enum TopBarItemId
     TopBarItemSettings,
     TopBarItemTrash,
     TopBarItemAdd,
-    TopBarItemNowPlaying
+    TopBarItemNowPlaying,
+    TopBarItemNone
 } TopBarItemId;
 
 @protocol TopBarDelegate <NSObject>
-- (void)topBarItemClicked:(TopBarItemId)itemId;
+- (BOOL)topBarItemClicked:(TopBarItemId)itemId;
 @end
 
 
@@ -32,5 +33,7 @@ typedef enum TopBarItemId
 - (void)showSettingsItem:(BOOL)enabled;
 - (void)showTrashItem;
 - (void)showAddItem;
+
+- (void)runItem:(TopBarItemId)itemId;
 
 @end

@@ -153,8 +153,8 @@
 
 #pragma mark - TopBarDelegate
 
-- (void)topBarItemClicked:(TopBarItemId)itemId
-{
-}
+//- (BOOL)topBarItemClicked:(TopBarItemId)itemId
+//{
+//}
 
 @end

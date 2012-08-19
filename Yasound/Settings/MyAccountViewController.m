@@ -11,7 +11,7 @@
 #import "Theme.h"
 #import "YasoundDataProvider.h"
 #import "YasoundDataCache.h"
-
+#import "ActivityAlertView.h"
 
 @interface MyAccountViewController ()
 
@@ -25,6 +25,8 @@
 @synthesize userImage;
 @synthesize city;
 @synthesize age;
+
+@synthesize itemId;
 
 
 enum MyAccountDescription
@@ -67,6 +69,8 @@ enum SectionBio
         self.user = [YasoundDataProvider main].user;
         _imageChanged = NO;
         _changed = NO;
+        
+        self.itemId = TopBarItemNone;
     }
     return self;
 }
@@ -83,6 +87,7 @@ enum SectionBio
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -354,7 +359,15 @@ enum SectionBio
     _changed = YES;
 
     [textField resignFirstResponder];
-    self.user.city = textField.text;
+    
+    if (textField == self.username)
+    {
+        self.user.name = self.username.text;
+    }
+    else if (textField == self.city)
+    {
+        self.user.city = textField.text;
+    }
     
     return YES;
 }
@@ -368,11 +381,16 @@ enum SectionBio
 
 #pragma mark - TopBarDelegate
 
-- (void)topBarItemClicked:(TopBarItemId)itemId
+- (BOOL)topBarItemClicked:(TopBarItemId)itemId
 {
     if (_changed || _imageChanged)
+    {
+        self.itemId = itemId;
         [self save];
-    
+        return NO;
+    }
+   
+    return YES;
 }
 
 
@@ -482,7 +500,9 @@ enum SectionBio
 
 
 - (void)save
-{    
+{
+    [ActivityAlertView showWithTitle:nil];
+
     [[YasoundDataProvider main] updateUser:self.user target:self action:@selector(didUpdateUser:success:)];
 }
 
@@ -515,6 +535,11 @@ enum SectionBio
 - (void)didReloadUser:(User*)u info:(id)info
 {
     self.user = u;
+    
+    [ActivityAlertView close];
+    
+    if (self.itemId != TopBarItemNone)
+        [self.topbar runItem:self.itemId];
 }
 
 

@@ -252,13 +252,21 @@
 
 #pragma mark - TopBarDelegate
 
-- (void)topBarItemClicked:(TopBarItemId)itemId
+- (BOOL)topBarItemClicked:(TopBarItemId)itemId
 {
+    self.itemId = itemId;
+    
     APNsPreferences* prefs = [[NotificationManager main] APNsPreferences];
-    [[YasoundDataProvider main] setApnsPreferences:prefs target:nil action:nil];
+    [[YasoundDataProvider main] setApnsPreferences:prefs target:self action:@selector(onAcknowledge:obj:)];
 
+    return NO;
 }
 
+- (void)onAcknowledge:(id)obj1 obj2:(id)obj2
+{
+    DLog(@"ok");
+    [self.topbar runItem:self.itemId];
+}
 
 
 @end

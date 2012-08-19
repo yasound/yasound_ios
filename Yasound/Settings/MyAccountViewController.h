@@ -21,6 +21,8 @@
     UIActionSheet* _pickImageQuery;
 }
 
+@property (nonatomic, retain) IBOutlet TopBar* topbar;
+
 
 @property (nonatomic, retain) User* user;
 @property (nonatomic, retain) IBOutlet UITableView* tableview;
@@ -28,6 +30,8 @@
 @property (nonatomic, retain) WebImageView* userImage;
 @property (nonatomic, retain) UITextField* city;
 @property (nonatomic, retain) UILabel* age;
+
+@property (nonatomic) TopBarItemId itemId;
 
 
 @end

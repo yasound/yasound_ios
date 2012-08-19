@@ -1747,14 +1747,14 @@
 
 #pragma mark - TopBarDelegate
 
-- (void)topBarItemClicked:(TopBarItemId)itemId
+- (BOOL)topBarItemClicked:(TopBarItemId)itemId
 {
     if (itemId == TopBarItemBack)
     {
         _stopWall = YES;
         self.topBar.delegate = nil;
         self.tableview.delegate = nil;
-        self.tableview.dataSource = nil;
+//        self.tableview.dataSource = nil;
 
         NSLog(@"RETAIN COUNT %d", [self retainCount]);
 

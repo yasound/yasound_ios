@@ -531,7 +531,7 @@
 
 #pragma mark - TopBarDelegate
 
-- (void)topBarItemClicked:(TopBarItemId)itemId
+- (BOOL)topBarItemClicked:(TopBarItemId)itemId
 {
     if (itemId == TopBarItemTrash)
     {
@@ -541,6 +541,8 @@
         [_alertTrash show];
         [_alertTrash release];    
     }
+    
+    return YES;
 }
 
 

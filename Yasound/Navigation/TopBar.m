@@ -148,54 +148,118 @@
 
 - (void)onBack:(id)sender
 {
+    BOOL run = YES;
+    
     if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
-        [self.delegate topBarItemClicked:TopBarItemBack];
+        run = [self.delegate topBarItemClicked:TopBarItemBack];
 
-    [APPDELEGATE.navigationController popViewControllerAnimated:YES];
+    if (run)
+        [self runItem:TopBarItemBack];
 }
 
 
 - (void)onNotif:(id)sender
 {
+    BOOL run = YES;
+    
     if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
-        [self.delegate topBarItemClicked:TopBarItemNotif];
+        run = [self.delegate topBarItemClicked:TopBarItemNotif];
 
-    NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
-    [APPDELEGATE.navigationController pushViewController:view animated:YES];
-    [view release];
+    if (run)
+        [self runItem:TopBarItemNotif];
 }
 
 - (void)onTrash:(id)sender
 {
+    BOOL run = YES;
+    
     if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
-        [self.delegate topBarItemClicked:TopBarItemTrash];
+        run = [self.delegate topBarItemClicked:TopBarItemTrash];
+
+    if (run)
+        [self runItem:TopBarItemTrash];
 }
 
 - (void)onAdd:(id)sender
 {
+    BOOL run = YES;
+    
     if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
-        [self.delegate topBarItemClicked:TopBarItemAdd];
+        run = [self.delegate topBarItemClicked:TopBarItemAdd];
+
+    if (run)
+        [self runItem:TopBarItemAdd];
 }
 
 - (void)onSettings:(id)sender
 {
+    BOOL run = YES;
+    
     if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
-        [self.delegate topBarItemClicked:TopBarItemSettings];
+        run = [self.delegate topBarItemClicked:TopBarItemSettings];
     
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:[AudioStreamManager main].currentRadio];
-    [APPDELEGATE.navigationController pushViewController:view animated:YES];
-    [view release];
-    
+    if (run)
+        [self runItem:TopBarItemSettings];
 }
 
 
 - (void)onNowPlaying:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
-        [self.delegate topBarItemClicked:TopBarItemNowPlaying];
+    BOOL run = YES;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:[AudioStreamManager main].currentRadio];
+    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+        run = [self.delegate topBarItemClicked:TopBarItemNowPlaying];
+    
+    if (run)
+        [self runItem:TopBarItemNowPlaying];
 }
+
+
+
+
+
+
+
+
+
+
+
+- (void)runItem:(TopBarItemId)itemId
+{
+    if (itemId == TopBarItemBack)
+        [APPDELEGATE.navigationController popViewControllerAnimated:YES];
+
+    else if (itemId == TopBarItemNotif)
+    {
+        NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+        
+    else if (itemId == TopBarItemSettings)
+    {
+        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:[AudioStreamManager main].currentRadio];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    
+    else if (itemId == TopBarItemTrash)
+    {
+        // nothing
+    }
+    
+    else if (itemId == TopBarItemAdd)
+    {
+        // nothing
+    }
+
+    else if (itemId == TopBarItemNowPlaying)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:[AudioStreamManager main].currentRadio];    
+    }
+
+}
+
 
 //- (id)initWithFrame:(CGRect)frame
 //{

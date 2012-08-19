@@ -14,6 +14,8 @@
     IBOutlet UITableView* _tableView;
 }
 
+@property (nonatomic, retain) IBOutlet TopBar* topbar;
+@property (nonatomic) TopBarItemId itemId;
 
 
 
