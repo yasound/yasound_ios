@@ -8,6 +8,7 @@
 
 #import "RadioListTableViewController.h"
 #import "RadioListTableViewCell.h"
+#import "UserListTableViewCell.h"
 
 @interface RadioListTableViewController ()
 
@@ -18,6 +19,8 @@
 
 @synthesize listDelegate;
 @synthesize radios = _radios;
+@synthesize friends = _friends;
+@synthesize friendsMode;
 @synthesize delayTokens;
 @synthesize delay;
 
@@ -30,6 +33,7 @@
         self.delay = 0.15;
         
         self.radios = radios;
+        self.friendsMode = NO;
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -45,6 +49,15 @@
     _radios = radios;
     [_radios retain];
     
+    [self.tableView reloadData];
+}
+
+- (void)setFriends:(NSArray*)friends
+{
+    _friends = friends;
+    [_friends retain];
+    
+    self.friendsMode = YES;
     [self.tableView reloadData];
 }
 
@@ -81,10 +94,23 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (self.friendsMode)
+    {
+        if (self.friends == nil)
+            return 0;
+        NSInteger nbRows = self.friends.count / 2;
+        if ((self.friends.count % 2) != 0)
+            nbRows++;
+        return nbRows;
+    }
+    
     if (self.radios == nil)
         return 0;
     
-    return self.radios.count / 2;
+    NSInteger nbRows = self.radios.count / 2;
+    if ((self.radios.count % 2) != 0)
+        nbRows++;
+    return nbRows;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,9 +121,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* cellIdentifier = @"RadioListTableViewCell";
+    if (self.friendsMode)
+        return [self userCellForRowAtIndexPath:indexPath tableView:tableView];
     
-    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    return [self radioCellForRowAtIndexPath:indexPath tableView:tableView];
+}
+
+
+- (UITableViewCell*)radioCellForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView
+{
+    static NSString* cellRadioIdentifier = @"RadioListTableViewCell";
+
+    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellRadioIdentifier];
     
     NSInteger radioIndex = indexPath.row * 2;
     
@@ -114,7 +149,7 @@
         if (self.delayTokens > 0)
             delay = self.delay;
         
-        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier radios:radiosForRow delay:delay target:self action:@selector(onRadioClicked:)];
+        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellRadioIdentifier radios:radiosForRow delay:delay target:self action:@selector(onRadioClicked:)];
         
         self.delayTokens--;
         self.delay += 0.3;
@@ -128,6 +163,49 @@
     
     return cell;
 }
+
+
+
+
+- (UITableViewCell*)userCellForRowAtIndexPath:(NSIndexPath *)indexPath tableView:(UITableView*)tableView
+{
+    static NSString* cellUserIdentifier = @"UserListTableViewCell";
+    
+    UserListTableViewCell* cell = (UserListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellUserIdentifier];
+    
+    NSInteger userIndex = indexPath.row * 2;
+    
+    User* user1 = [self.friends objectAtIndex:userIndex];
+    User* user2 = nil;
+    if (userIndex+1 < self.friends.count)
+        user2 = [self.friends objectAtIndex:userIndex+1];
+    
+    NSArray* usersForRow = [NSArray arrayWithObjects:user1, user2, nil];
+    
+    if (cell == nil)
+    {
+        CGFloat delay = 0;
+        if (self.delayTokens > 0)
+            delay = self.delay;
+        
+        cell = [[UserListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellUserIdentifier users:usersForRow delay:delay target:self action:@selector(onUserClicked:)];
+        
+        self.delayTokens--;
+        self.delay += 0.3;
+    }
+    else
+    {
+        [cell updateWithUsers:usersForRow target:self action:@selector(onUserClicked:)];
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
+}
+
+
+
+
 
 //- (void)cellFadeIn:(NSTimer*)timer
 //{
@@ -181,6 +259,12 @@
 {
     // call delegate with selected radio
     [self.listDelegate radioListDidSelect:radio];
+}
+
+- (void)onUserClicked:(User*)user
+{
+    // call delegate with selected radio
+    [self.listDelegate friendListDidSelect:user];
 }
 
 @end

@@ -12,6 +12,7 @@
 
 @protocol RadioListDelegate <NSObject>
 - (void)radioListDidSelect:(Radio*)radio;
+- (void)friendListDidSelect:(User*)aFriend;
 @end
 
 
@@ -19,12 +20,15 @@
 
 @property (nonatomic, retain) id<RadioListDelegate> listDelegate;
 @property (nonatomic, retain) NSArray* radios;
+@property (nonatomic, retain) NSArray* friends;
+@property (nonatomic) BOOL friendsMode;
 @property (nonatomic) NSInteger delayTokens;
 @property (nonatomic) CGFloat delay;
 
 
 - (id)initWithStyle:(UITableViewStyle)style radios:(NSArray*)radios;
 - (void)setRadios:(NSArray*)radios;
+- (void)setFriends:(NSArray*)friends;
 
 
 @end

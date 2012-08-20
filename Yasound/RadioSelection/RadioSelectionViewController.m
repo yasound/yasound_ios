@@ -19,8 +19,9 @@
 
 @implementation RadioSelectionViewController
 
-@synthesize nbFriends;
-@synthesize friendsRadios;
+//@synthesize nbFriends;
+//@synthesize friendsRadios;
+@synthesize friends;
 @synthesize url;
 @synthesize wheelSelector;
 @synthesize listContainer;
@@ -251,46 +252,49 @@
         return;
     }
     
-    self.friendsRadios = nil;
-    self.friendsRadios = [[NSMutableArray alloc] init];
+//    self.friendsRadios = nil;
+//    self.friendsRadios = [[NSMutableArray alloc] init];
     
     Container* container = [req responseObjectsWithClass:[User class]];
-    NSArray* friends = container.objects;
-    self.nbFriends = friends.count;
+    self.friends = container.objects;
+//    self.nbFriends = friends.count;
     
-    DLog(@"received %d friends", self.nbFriends);
+    DLog(@"received %d friends", self.friends.count);
+    
+    [self.tableview setFriends:self.friends];
 
-    for (User* friend in friends)
-    {
-        DLog(@"my friend : %@", friend.username);
-        
-        [[YasoundDataProvider main] radiosForUser:friend withTarget:self action:@selector(receivedFriendsRadios:success:)];
-    }
+
+//    for (User* friend in friends)
+//    {
+//        DLog(@"my friend : %@", friend.username);
+//        
+//        [[YasoundDataProvider main] radiosForUser:friend withTarget:self action:@selector(receivedFriendsRadios:success:)];
+//    }
 }
 
 
 // LBDEBUG TODO : FIX BUG
-- (void)receivedFriendsRadios:(ASIHTTPRequest*)req success:(BOOL)success
-{
-    if (!success)
-    {
-        DLog(@"RadioSelectionViewController::receivedFriendsRadios failed");
-        assert(0);
-        return;
-    }
-    
-    Container* container = [req responseObjectsWithClass:[Radio class]];
-    NSArray* radios = container.objects;
-    
-    [self.friendsRadios addObjectsFromArray:radios];
-    
-    self.nbFriends--;
-    
-    if (self.nbFriends == 0)
-        [self.tableview setRadios:self.friendsRadios];
-    
-    
-}
+//- (void)receivedFriendsRadios:(ASIHTTPRequest*)req success:(BOOL)success
+//{
+//    if (!success)
+//    {
+//        DLog(@"RadioSelectionViewController::receivedFriendsRadios failed");
+//        assert(0);
+//        return;
+//    }
+//    
+//    Container* container = [req responseObjectsWithClass:[Radio class]];
+//    NSArray* radios = container.objects;
+//    
+//    [self.friendsRadios addObjectsFromArray:radios];
+//    
+//    self.nbFriends--;
+//    
+//    if (self.nbFriends == 0)
+//        [self.tableview setRadios:self.friendsRadios];
+//    
+//    
+//}
 
 
 
