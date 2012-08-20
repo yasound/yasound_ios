@@ -149,14 +149,14 @@
 
 - (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
 {
-    if (itemIndex == WheelIdFavorites)
-        return WheelIdFavoritesTitle;
     if (itemIndex == WheelIdSelection)
         return WheelIdSelectionTitle;
-    if (itemIndex == WheelIdFriends)
-        return WheelIdFriendsTitle;
     if (itemIndex == WheelIdTop)
         return WheelIdTopTitle;
+    if (itemIndex == WheelIdFavorites)
+        return WheelIdFavoritesTitle;
+    if (itemIndex == WheelIdFriends)
+        return WheelIdFriendsTitle;
     return nil;
 }
 
@@ -193,6 +193,8 @@
     
     if (itemIndex == WheelIdFriends)
     {
+        [tabBar setTabSelected:TabIndexSelection];
+
         if (![YasoundSessionManager main].registered)
             [self inviteToLogin:@"friends"];
         else

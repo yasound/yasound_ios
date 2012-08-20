@@ -9,10 +9,10 @@
 
 typedef enum WheelRadiosItemId
 {
-    WheelIdFavorites = 0,
-    WheelIdSelection,
-    WheelIdFriends,
+    WheelIdSelection = 0,
     WheelIdTop,
+    WheelIdFavorites,
+    WheelIdFriends,
     WheelRadiosNbItems
 } WheelItemId;
 
