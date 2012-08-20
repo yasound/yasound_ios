@@ -50,12 +50,12 @@
     [super viewDidLoad];
     
     // GUI
-    _buttonCancel.title = NSLocalizedString(@"Navigation_cancel", nil);
-    _buttonSend.title = NSLocalizedString(@"ShareModalView_publish_button_label", nil);
-    _itemTitle.title = NSLocalizedString(@"ShareModalView_facebook_label", nil);
+//    _buttonCancel.title = NSLocalizedString(@"Navigation_cancel", nil);
+//    _buttonSend.title = NSLocalizedString(@"ShareModalView_publish_button_label", nil);
+//    _itemTitle.title = NSLocalizedString(@"ShareModalView_facebook_label", nil);
 
-    _songTitle.text = self.song.name;
-    _songArtist.text = self.song.artist;
+    _label1.text = self.song.name;
+    _label2.text = self.song.artist;
     
     // track image
     if (self.song.cover)
@@ -114,21 +114,28 @@
 
 
 
-#pragma mark - IBActions
+#pragma mark - TopBarSaveOrCancelDelegate
 
-- (IBAction)onBack:(id)sender
+//- (IBAction)onBack:(id)sender
+//{
+//    if (_target == nil)
+//        return;
+//    
+//    [_target performSelector:_action];
+//}
+
+- (BOOL)topBarCancel
 {
     if (_target == nil)
-        return;
-    
+        return NO;
     [_target performSelector:_action];
+    return NO;
 }
 
-
-- (IBAction)onPublishButton:(id)sender
+- (BOOL)topBarSave
 {
     if (_target == nil)
-        return;
+        return NO;
     
     NSString* title = NSLocalizedString(@"Yasound_share", nil);
     
@@ -136,7 +143,14 @@
     [[YasoundSessionManager main] postMessageForFacebook:_textView.text title:title picture:self.pictureUrl link:fullLink target:self action:@selector(onPostMessageFinished:)];
     
     [ActivityAlertView showWithTitle:nil];
+    return NO;
 }
+
+- (NSString*)titleForActionButton
+{
+    return NSLocalizedString(@"Share.Facebook.button", nil);
+}
+
 
 
 - (void)onPostMessageFinished:(NSNumber*)finished

@@ -12,6 +12,7 @@
 - (BOOL)topBarSave;
 - (BOOL)topBarCancel;
 - (NSString*)titleForActionButton;
+- (UIColor*)tintForActionButton;
 @end
 
 

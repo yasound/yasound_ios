@@ -13,16 +13,14 @@
 
 @interface ShareModalViewController : UIViewController<UITextFieldDelegate>
 {
-    IBOutlet UIBarButtonItem* _itemTitle;
-    IBOutlet UIBarButtonItem* _buttonCancel;
-    IBOutlet UIBarButtonItem* _buttonSend;
     IBOutlet WebImageView* _image;
     IBOutlet UIImageView* _mask;
-    
-    IBOutlet UILabel* _songTitle;
-    IBOutlet UILabel* _songArtist;
-    
     IBOutlet UITextView* _textView;
+    
+    IBOutlet UILabel* _label1;
+    IBOutlet UILabel* _label2;
+    IBOutlet UILabel* _labelWarning;
+    
     
     id _target;
     SEL _action;

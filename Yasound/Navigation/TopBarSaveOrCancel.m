@@ -31,6 +31,9 @@
     if ([self.delegate respondsToSelector:@selector(titleForActionButton)])
         strSave = [self.delegate titleForActionButton];
     
+    
+
+    
     BundleStylesheet* sheetLabel = [[Theme theme] stylesheetForKey:@"TopBar.itemEmptyLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 
     CGSize suggestedSizeCancel = [strCancel sizeWithFont:[sheetLabel makeFont] constrainedToSize:CGSizeMake(FLT_MAX, FLT_MAX) lineBreakMode:UILineBreakModeClip];
@@ -78,6 +81,13 @@
 
     [btn addTarget:self action:@selector(onSave:) forControlEvents:UIControlEventTouchUpInside];
     self.actionButton = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    if ([self.delegate respondsToSelector:@selector(tintForActionButton)])
+    {
+        UIColor* color = [self.delegate tintForActionButton];
+        self.actionButton.tintColor = color;
+    }
+
 
     [self setItems:[NSArray arrayWithObjects:itemCancel, flexibleSpace, self.actionButton, nil]];
 }

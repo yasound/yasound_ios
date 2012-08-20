@@ -487,10 +487,8 @@
 		40D53BF91554280F001EB0C5 /* MessageWeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4028E7C0152DC13F0056B34B /* MessageWeViewController.m */; };
 		40D53BFB1554280F001EB0C5 /* RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A4C153D6EF7006C052E /* RequestConfig.m */; };
 		40D53BFC1554280F001EB0C5 /* ASIHTTPRequest+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 40CC5A55153D9EEB006C052E /* ASIHTTPRequest+Model.m */; };
-		40D53BFD1554280F001EB0C5 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
 		40D53BFE1554280F001EB0C5 /* LoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 40DE99F015406B98001E63F4 /* LoadingCell.m */; };
 		40D53BFF1554280F001EB0C5 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
-		40D53C001554280F001EB0C5 /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */; };
 		40D53C051554280F001EB0C5 /* WebPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9601B6154997B90003AC7E /* WebPageViewController.m */; };
 		40D53C061554280F001EB0C5 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC47AFD5154AD23200B0AA55 /* SignupViewController.m */; };
 		40D53C081554280F001EB0C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
@@ -556,8 +554,6 @@
 		40D53CCD1554280F001EB0C5 /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC4CA7C0152D26130051A085 /* NotificationViewController.xib */; };
 		40D53CCE1554280F001EB0C5 /* NotificationCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7AC152D9E6F0056B34B /* NotificationCenterViewController.xib */; };
 		40D53CCF1554280F001EB0C5 /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
-		40D53CDB1554280F001EB0C5 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
-		40D53CDE1554280F001EB0C5 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
 		40D53CE41554280F001EB0C5 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3115494C410094B4D0 /* defaultMenuDescription.json.txt */; };
 		40D53CE51554280F001EB0C5 /* defaultMenuDescription.json.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCE66B3A15494C5D0094B4D0 /* defaultMenuDescription.json.txt */; };
 		40D53CE61554280F001EB0C5 /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
@@ -734,6 +730,70 @@
 		BC03C37915E143FB0017388D /* statsChartBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C36B15E143FB0017388D /* statsChartBackground@2x.png */; };
 		BC03C37A15E143FB0017388D /* statsChartBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C36B15E143FB0017388D /* statsChartBackground@2x.png */; };
 		BC03C37B15E143FB0017388D /* statsChartBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C36B15E143FB0017388D /* statsChartBackground@2x.png */; };
+		BC03C38215E226470017388D /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C37E15E226470017388D /* BioViewController.m */; };
+		BC03C38315E226470017388D /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C37E15E226470017388D /* BioViewController.m */; };
+		BC03C38415E226470017388D /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C37E15E226470017388D /* BioViewController.m */; };
+		BC03C38515E226470017388D /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C37E15E226470017388D /* BioViewController.m */; };
+		BC03C38615E226470017388D /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C37E15E226470017388D /* BioViewController.m */; };
+		BC03C38715E226470017388D /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C37E15E226470017388D /* BioViewController.m */; };
+		BC03C38815E226470017388D /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C37E15E226470017388D /* BioViewController.m */; };
+		BC03C38915E226470017388D /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C37E15E226470017388D /* BioViewController.m */; };
+		BC03C39B15E2274C0017388D /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C39A15E2274C0017388D /* BioViewController.xib */; };
+		BC03C39C15E2274C0017388D /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C39A15E2274C0017388D /* BioViewController.xib */; };
+		BC03C39D15E2274C0017388D /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C39A15E2274C0017388D /* BioViewController.xib */; };
+		BC03C39E15E2274C0017388D /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C39A15E2274C0017388D /* BioViewController.xib */; };
+		BC03C39F15E2274C0017388D /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C39A15E2274C0017388D /* BioViewController.xib */; };
+		BC03C3A015E2274C0017388D /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C39A15E2274C0017388D /* BioViewController.xib */; };
+		BC03C3A115E2274C0017388D /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C39A15E2274C0017388D /* BioViewController.xib */; };
+		BC03C3A215E2274C0017388D /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C39A15E2274C0017388D /* BioViewController.xib */; };
+		BC03C3A915E227B00017388D /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A415E227AF0017388D /* ShareModalViewController.m */; };
+		BC03C3AA15E227B00017388D /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A415E227AF0017388D /* ShareModalViewController.m */; };
+		BC03C3AB15E227B00017388D /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A415E227AF0017388D /* ShareModalViewController.m */; };
+		BC03C3AC15E227B00017388D /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A415E227AF0017388D /* ShareModalViewController.m */; };
+		BC03C3AD15E227B00017388D /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A415E227AF0017388D /* ShareModalViewController.m */; };
+		BC03C3AE15E227B00017388D /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A415E227AF0017388D /* ShareModalViewController.m */; };
+		BC03C3AF15E227B00017388D /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A415E227AF0017388D /* ShareModalViewController.m */; };
+		BC03C3B015E227B00017388D /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A415E227AF0017388D /* ShareModalViewController.m */; };
+		BC03C3B115E227B00017388D /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A515E227AF0017388D /* ShareModalViewController.xib */; };
+		BC03C3B215E227B00017388D /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A515E227AF0017388D /* ShareModalViewController.xib */; };
+		BC03C3B315E227B00017388D /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A515E227AF0017388D /* ShareModalViewController.xib */; };
+		BC03C3B415E227B00017388D /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A515E227AF0017388D /* ShareModalViewController.xib */; };
+		BC03C3B515E227B00017388D /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A515E227AF0017388D /* ShareModalViewController.xib */; };
+		BC03C3B615E227B00017388D /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A515E227AF0017388D /* ShareModalViewController.xib */; };
+		BC03C3B715E227B00017388D /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A515E227AF0017388D /* ShareModalViewController.xib */; };
+		BC03C3B815E227B00017388D /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A515E227AF0017388D /* ShareModalViewController.xib */; };
+		BC03C3B915E227B00017388D /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A715E227AF0017388D /* ShareTwitterModalViewController.m */; };
+		BC03C3BA15E227B00017388D /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A715E227AF0017388D /* ShareTwitterModalViewController.m */; };
+		BC03C3BB15E227B00017388D /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A715E227AF0017388D /* ShareTwitterModalViewController.m */; };
+		BC03C3BC15E227B00017388D /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A715E227AF0017388D /* ShareTwitterModalViewController.m */; };
+		BC03C3BD15E227B00017388D /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A715E227AF0017388D /* ShareTwitterModalViewController.m */; };
+		BC03C3BE15E227B00017388D /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A715E227AF0017388D /* ShareTwitterModalViewController.m */; };
+		BC03C3BF15E227B00017388D /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A715E227AF0017388D /* ShareTwitterModalViewController.m */; };
+		BC03C3C015E227B00017388D /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC03C3A715E227AF0017388D /* ShareTwitterModalViewController.m */; };
+		BC03C3C115E227B00017388D /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
+		BC03C3C215E227B00017388D /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
+		BC03C3C315E227B00017388D /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
+		BC03C3C415E227B00017388D /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
+		BC03C3C515E227B00017388D /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
+		BC03C3C615E227B00017388D /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
+		BC03C3C715E227B00017388D /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
+		BC03C3C815E227B00017388D /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */; };
+		BC03C3CB15E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
+		BC03C3CC15E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
+		BC03C3CD15E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
+		BC03C3CE15E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
+		BC03C3CF15E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
+		BC03C3D015E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
+		BC03C3D115E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
+		BC03C3D215E2285D0017388D /* shareShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3C915E2285D0017388D /* shareShadow.png */; };
+		BC03C3D315E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
+		BC03C3D415E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
+		BC03C3D515E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
+		BC03C3D615E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
+		BC03C3D715E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
+		BC03C3D815E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
+		BC03C3D915E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
+		BC03C3DA15E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
 		BC071AB415D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
 		BC071AB515D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
 		BC071AB615D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
@@ -783,22 +843,6 @@
 		BC2386E215D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */; };
 		BC2386E315D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */; };
 		BC2386E415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */; };
-		BC2386F215D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
-		BC2386F315D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
-		BC2386F415D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
-		BC2386F515D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
-		BC2386F615D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
-		BC2386F715D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
-		BC2386F815D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
-		BC2386F915D2514D00D1A4C4 /* BioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386F015D2514D00D1A4C4 /* BioViewController.m */; };
-		BC2386FA15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
-		BC2386FB15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
-		BC2386FC15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
-		BC2386FD15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
-		BC2386FE15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
-		BC2386FF15D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
-		BC23870015D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
-		BC23870115D2514D00D1A4C4 /* BioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2386F115D2514D00D1A4C4 /* BioViewController.xib */; };
 		BC23871915D2B9D100D1A4C4 /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23871715D2B9D100D1A4C4 /* WallViewController.m */; };
 		BC23871A15D2B9D100D1A4C4 /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23871715D2B9D100D1A4C4 /* WallViewController.m */; };
 		BC23871B15D2B9D100D1A4C4 /* WallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC23871715D2B9D100D1A4C4 /* WallViewController.m */; };
@@ -1294,20 +1338,6 @@
 		BC47AFDE154AD23200B0AA55 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC47AFD6154AD23200B0AA55 /* SignupViewController.xib */; };
 		BC47AFDF154AD23200B0AA55 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC47AFD6154AD23200B0AA55 /* SignupViewController.xib */; };
 		BC47AFE0154AD23200B0AA55 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC47AFD6154AD23200B0AA55 /* SignupViewController.xib */; };
-		BC481DE0153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
-		BC481DE1153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
-		BC481DE2153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
-		BC481DE3153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
-		BC481DE4153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
-		BC481DE5153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
-		BC481DE6153EFC9B00990214 /* ShareModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC481DDE153EFC9B00990214 /* ShareModalViewController.m */; };
-		BC481DE7153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
-		BC481DE8153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
-		BC481DE9153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
-		BC481DEA153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
-		BC481DEB153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
-		BC481DEC153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
-		BC481DED153EFC9B00990214 /* ShareModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */; };
 		BC48C65E15CFA76F00624E76 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C65C15CFA76F00624E76 /* MenuViewController.m */; };
 		BC48C65F15CFA76F00624E76 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C65C15CFA76F00624E76 /* MenuViewController.m */; };
 		BC48C66015CFA76F00624E76 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC48C65C15CFA76F00624E76 /* MenuViewController.m */; };
@@ -1767,20 +1797,6 @@
 		BC7C07771541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
 		BC7C07781541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
 		BC7C07791541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
-		BC7C077D1541A915004FC760 /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */; };
-		BC7C077E1541A915004FC760 /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */; };
-		BC7C077F1541A915004FC760 /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */; };
-		BC7C07801541A915004FC760 /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */; };
-		BC7C07811541A915004FC760 /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */; };
-		BC7C07821541A915004FC760 /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */; };
-		BC7C07831541A915004FC760 /* ShareTwitterModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */; };
-		BC7C07841541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
-		BC7C07851541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
-		BC7C07861541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
-		BC7C07871541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
-		BC7C07881541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
-		BC7C07891541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
-		BC7C078A1541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */; };
 		BC828AD614B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		BC828AD714B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
 		BC828AD814B49E9500763558 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC828AD414B49E9500763558 /* RootViewController.m */; };
@@ -5893,6 +5909,17 @@
 		BC03C33915E1418F0017388D /* statsIconStarBlue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statsIconStarBlue@2x.png"; sourceTree = "<group>"; };
 		BC03C36A15E143FB0017388D /* statsChartBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statsChartBackground.png; sourceTree = "<group>"; };
 		BC03C36B15E143FB0017388D /* statsChartBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statsChartBackground@2x.png"; sourceTree = "<group>"; };
+		BC03C37D15E226470017388D /* BioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BioViewController.h; sourceTree = "<group>"; };
+		BC03C37E15E226470017388D /* BioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BioViewController.m; sourceTree = "<group>"; };
+		BC03C39A15E2274C0017388D /* BioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BioViewController.xib; sourceTree = "<group>"; };
+		BC03C3A315E227AF0017388D /* ShareModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareModalViewController.h; sourceTree = "<group>"; };
+		BC03C3A415E227AF0017388D /* ShareModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareModalViewController.m; sourceTree = "<group>"; };
+		BC03C3A515E227AF0017388D /* ShareModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareModalViewController.xib; sourceTree = "<group>"; };
+		BC03C3A615E227AF0017388D /* ShareTwitterModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTwitterModalViewController.h; sourceTree = "<group>"; };
+		BC03C3A715E227AF0017388D /* ShareTwitterModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTwitterModalViewController.m; sourceTree = "<group>"; };
+		BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareTwitterModalViewController.xib; sourceTree = "<group>"; };
+		BC03C3C915E2285D0017388D /* shareShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareShadow.png; sourceTree = "<group>"; };
+		BC03C3CA15E2285D0017388D /* shareShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareShadow@2x.png"; sourceTree = "<group>"; };
 		BC071AB115D9070E001F38D7 /* ProgrammingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingViewController.h; path = Programming/ProgrammingViewController.h; sourceTree = "<group>"; };
 		BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingViewController.m; path = Programming/ProgrammingViewController.m; sourceTree = "<group>"; };
 		BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingViewController.xib; path = Programming/ProgrammingViewController.xib; sourceTree = "<group>"; };
@@ -5907,9 +5934,6 @@
 		BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JsonProxy.m"; sourceTree = "<group>"; };
 		BC2386D315D24E1600D1A4C4 /* NSObject+PropertyDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertyDictionary.h"; sourceTree = "<group>"; };
 		BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertyDictionary.m"; sourceTree = "<group>"; };
-		BC2386EF15D2514D00D1A4C4 /* BioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BioViewController.h; path = Settings/BioViewController.h; sourceTree = "<group>"; };
-		BC2386F015D2514D00D1A4C4 /* BioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BioViewController.m; path = Settings/BioViewController.m; sourceTree = "<group>"; };
-		BC2386F115D2514D00D1A4C4 /* BioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BioViewController.xib; path = Settings/BioViewController.xib; sourceTree = "<group>"; };
 		BC23871615D2B9D100D1A4C4 /* WallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WallViewController.h; sourceTree = "<group>"; };
 		BC23871715D2B9D100D1A4C4 /* WallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WallViewController.m; sourceTree = "<group>"; };
 		BC23871815D2B9D100D1A4C4 /* WallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WallViewController.xib; sourceTree = "<group>"; };
@@ -6017,9 +6041,6 @@
 		BC47AFD4154AD23200B0AA55 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignupViewController.h; path = Login/SignupViewController.h; sourceTree = "<group>"; };
 		BC47AFD5154AD23200B0AA55 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignupViewController.m; path = Login/SignupViewController.m; sourceTree = "<group>"; };
 		BC47AFD6154AD23200B0AA55 /* SignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignupViewController.xib; path = Login/SignupViewController.xib; sourceTree = "<group>"; };
-		BC481DDD153EFC9B00990214 /* ShareModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareModalViewController.h; sourceTree = "<group>"; };
-		BC481DDE153EFC9B00990214 /* ShareModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareModalViewController.m; sourceTree = "<group>"; };
-		BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareModalViewController.xib; sourceTree = "<group>"; };
 		BC48C65B15CFA76F00624E76 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		BC48C65C15CFA76F00624E76 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		BC48C65D15CFA76F00624E76 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
@@ -6097,9 +6118,6 @@
 		BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarSaveOrCancel.m; sourceTree = "<group>"; };
 		BC7C07711541A82F004FC760 /* MKBitlyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBitlyHelper.h; sourceTree = "<group>"; };
 		BC7C07721541A82F004FC760 /* MKBitlyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBitlyHelper.m; sourceTree = "<group>"; };
-		BC7C077A1541A915004FC760 /* ShareTwitterModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareTwitterModalViewController.h; sourceTree = "<group>"; };
-		BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTwitterModalViewController.m; sourceTree = "<group>"; };
-		BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareTwitterModalViewController.xib; sourceTree = "<group>"; };
 		BC828AD314B49E9500763558 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BC828AD414B49E9500763558 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		BC828AD514B49E9500763558 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
@@ -7149,6 +7167,22 @@
 			path = Stats;
 			sourceTree = "<group>";
 		};
+		BC03C37C15E226450017388D /* TextEditors */ = {
+			isa = PBXGroup;
+			children = (
+				BC03C3A315E227AF0017388D /* ShareModalViewController.h */,
+				BC03C3A415E227AF0017388D /* ShareModalViewController.m */,
+				BC03C3A515E227AF0017388D /* ShareModalViewController.xib */,
+				BC03C3A615E227AF0017388D /* ShareTwitterModalViewController.h */,
+				BC03C3A715E227AF0017388D /* ShareTwitterModalViewController.m */,
+				BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */,
+				BC03C37D15E226470017388D /* BioViewController.h */,
+				BC03C37E15E226470017388D /* BioViewController.m */,
+				BC03C39A15E2274C0017388D /* BioViewController.xib */,
+			);
+			path = TextEditors;
+			sourceTree = "<group>";
+		};
 		BC0DD8381487C73E00DCD550 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -7669,9 +7703,6 @@
 				BC48C76F15D14C7600624E76 /* MyAccountViewController.h */,
 				BC48C77015D14C7600624E76 /* MyAccountViewController.m */,
 				BC48C77115D14C7600624E76 /* MyAccountViewController.xib */,
-				BC2386EF15D2514D00D1A4C4 /* BioViewController.h */,
-				BC2386F015D2514D00D1A4C4 /* BioViewController.m */,
-				BC2386F115D2514D00D1A4C4 /* BioViewController.xib */,
 				BCBAB49714A2322900CF922A /* SettingsViewController.h */,
 				BCBAB49814A2322900CF922A /* SettingsViewController.m */,
 				BCBAB49914A2322900CF922A /* SettingsViewController.xib */,
@@ -8398,6 +8429,8 @@
 		BCE35FE315D7FD2F008C26AC /* Share */ = {
 			isa = PBXGroup;
 			children = (
+				BC03C3C915E2285D0017388D /* shareShadow.png */,
+				BC03C3CA15E2285D0017388D /* shareShadow@2x.png */,
 				BCE35FE415D7FD2F008C26AC /* ShareBackground.png */,
 				BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */,
 			);
@@ -8694,12 +8727,6 @@
 				BC93B4AC148E68DE00A87157 /* StyleSelectorViewController.xib */,
 				4009010914967AEE00C9E51A /* WebImageView.h */,
 				4009010A14967AEE00C9E51A /* WebImageView.m */,
-				BC481DDD153EFC9B00990214 /* ShareModalViewController.h */,
-				BC481DDE153EFC9B00990214 /* ShareModalViewController.m */,
-				BC481DDF153EFC9B00990214 /* ShareModalViewController.xib */,
-				BC7C077A1541A915004FC760 /* ShareTwitterModalViewController.h */,
-				BC7C077B1541A915004FC760 /* ShareTwitterModalViewController.m */,
-				BC7C077C1541A915004FC760 /* ShareTwitterModalViewController.xib */,
 				BCBF982215DE2CAE00BC3D64 /* MyUITextField.h */,
 				BCBF982315DE2CAE00BC3D64 /* MyUITextField.m */,
 			);
@@ -8774,6 +8801,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
+				BC03C37C15E226450017388D /* TextEditors */,
 				BC23871515D2B9D100D1A4C4 /* Wall */,
 				BC355BA615BD426000305C56 /* Tabs */,
 				BC598EFA15B9AA98004D6DCB /* Navigation */,
@@ -9083,8 +9111,6 @@
 				40B40ADC152EFC630050D334 /* NotificationViewController.xib in Resources */,
 				40B40ADE152EFC630050D334 /* NotificationCenterViewController.xib in Resources */,
 				40B40ADF152EFC630050D334 /* MessageWeViewController.xib in Resources */,
-				BC481DED153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
-				BC7C078A1541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3915494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B4215494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C5154997B90003AC7E /* WebPageViewController.xib in Resources */,
@@ -9100,7 +9126,6 @@
 				BC48C66C15CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C78015D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7E215D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC23870015D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 				BC23872715D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2515D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4A15D6BD58008C26AC /* ShowViewController.xib in Resources */,
@@ -9526,6 +9551,11 @@
 				BC03C36815E1418F0017388D /* statsIconStarBlue@2x.png in Resources */,
 				BC03C37215E143FB0017388D /* statsChartBackground.png in Resources */,
 				BC03C37A15E143FB0017388D /* statsChartBackground@2x.png in Resources */,
+				BC03C3A115E2274C0017388D /* BioViewController.xib in Resources */,
+				BC03C3B715E227B00017388D /* ShareModalViewController.xib in Resources */,
+				BC03C3C715E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
+				BC03C3D115E2285D0017388D /* shareShadow.png in Resources */,
+				BC03C3D915E2285D0017388D /* shareShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9573,8 +9603,6 @@
 				40D53CCD1554280F001EB0C5 /* NotificationViewController.xib in Resources */,
 				40D53CCE1554280F001EB0C5 /* NotificationCenterViewController.xib in Resources */,
 				40D53CCF1554280F001EB0C5 /* MessageWeViewController.xib in Resources */,
-				40D53CDB1554280F001EB0C5 /* ShareModalViewController.xib in Resources */,
-				40D53CDE1554280F001EB0C5 /* ShareTwitterModalViewController.xib in Resources */,
 				40D53CE41554280F001EB0C5 /* defaultMenuDescription.json.txt in Resources */,
 				40D53CE51554280F001EB0C5 /* defaultMenuDescription.json.txt in Resources */,
 				40D53CE61554280F001EB0C5 /* WebPageViewController.xib in Resources */,
@@ -9592,7 +9620,6 @@
 				BC48C66D15CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C78115D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7E315D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC23870115D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 				BC23872815D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2615D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4B15D6BD58008C26AC /* ShowViewController.xib in Resources */,
@@ -10018,6 +10045,11 @@
 				BC03C36915E1418F0017388D /* statsIconStarBlue@2x.png in Resources */,
 				BC03C37315E143FB0017388D /* statsChartBackground.png in Resources */,
 				BC03C37B15E143FB0017388D /* statsChartBackground@2x.png in Resources */,
+				BC03C3A215E2274C0017388D /* BioViewController.xib in Resources */,
+				BC03C3B815E227B00017388D /* ShareModalViewController.xib in Resources */,
+				BC03C3C815E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
+				BC03C3D215E2285D0017388D /* shareShadow.png in Resources */,
+				BC03C3DA15E2285D0017388D /* shareShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10061,8 +10093,6 @@
 				BCB0EF2B1524755F00290383 /* LoginViewController.xib in Resources */,
 				4028E7BE152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7CD152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC481DEC153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
-				BC7C07891541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3815494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B4115494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C4154997B90003AC7E /* WebPageViewController.xib in Resources */,
@@ -10078,7 +10108,6 @@
 				BC48C66B15CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77F15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7E115D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC2386FF15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 				BC23872615D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2415D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4915D6BD58008C26AC /* ShowViewController.xib in Resources */,
@@ -10504,6 +10533,11 @@
 				BC03C36715E1418F0017388D /* statsIconStarBlue@2x.png in Resources */,
 				BC03C37115E143FB0017388D /* statsChartBackground.png in Resources */,
 				BC03C37915E143FB0017388D /* statsChartBackground@2x.png in Resources */,
+				BC03C3A015E2274C0017388D /* BioViewController.xib in Resources */,
+				BC03C3B615E227B00017388D /* ShareModalViewController.xib in Resources */,
+				BC03C3C615E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
+				BC03C3D015E2285D0017388D /* shareShadow.png in Resources */,
+				BC03C3D815E2285D0017388D /* shareShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10551,8 +10585,6 @@
 				BC4CA7C8152D26130051A085 /* NotificationViewController.xib in Resources */,
 				4028E7BB152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7CA152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC481DE9153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
-				BC7C07861541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3515494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B3E15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C1154997B90003AC7E /* WebPageViewController.xib in Resources */,
@@ -10569,7 +10601,6 @@
 				BC48C66815CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77C15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7DE15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC2386FC15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 				BC23872315D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2115D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4615D6BD58008C26AC /* ShowViewController.xib in Resources */,
@@ -10995,6 +11026,11 @@
 				BC03C36415E1418F0017388D /* statsIconStarBlue@2x.png in Resources */,
 				BC03C36E15E143FB0017388D /* statsChartBackground.png in Resources */,
 				BC03C37615E143FB0017388D /* statsChartBackground@2x.png in Resources */,
+				BC03C39D15E2274C0017388D /* BioViewController.xib in Resources */,
+				BC03C3B315E227B00017388D /* ShareModalViewController.xib in Resources */,
+				BC03C3C315E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
+				BC03C3CD15E2285D0017388D /* shareShadow.png in Resources */,
+				BC03C3D515E2285D0017388D /* shareShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11042,8 +11078,6 @@
 				BC4CA7C7152D26130051A085 /* NotificationViewController.xib in Resources */,
 				4028E7BA152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7C9152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC481DE8153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
-				BC7C07851541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3415494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B3D15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C0154997B90003AC7E /* WebPageViewController.xib in Resources */,
@@ -11060,7 +11094,6 @@
 				BC48C66715CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77B15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7DD15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC2386FB15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 				BC23872215D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2015D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4515D6BD58008C26AC /* ShowViewController.xib in Resources */,
@@ -11486,6 +11519,11 @@
 				BC03C36315E1418F0017388D /* statsIconStarBlue@2x.png in Resources */,
 				BC03C36D15E143FB0017388D /* statsChartBackground.png in Resources */,
 				BC03C37515E143FB0017388D /* statsChartBackground@2x.png in Resources */,
+				BC03C39C15E2274C0017388D /* BioViewController.xib in Resources */,
+				BC03C3B215E227B00017388D /* ShareModalViewController.xib in Resources */,
+				BC03C3C215E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
+				BC03C3CC15E2285D0017388D /* shareShadow.png in Resources */,
+				BC03C3D415E2285D0017388D /* shareShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11533,8 +11571,6 @@
 				BC4CA7CA152D26130051A085 /* NotificationViewController.xib in Resources */,
 				4028E7BD152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7CC152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC481DEB153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
-				BC7C07881541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3715494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B4015494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C3154997B90003AC7E /* WebPageViewController.xib in Resources */,
@@ -11551,7 +11587,6 @@
 				BC48C66A15CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77E15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7E015D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC2386FE15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 				BC23872515D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2315D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4815D6BD58008C26AC /* ShowViewController.xib in Resources */,
@@ -11977,6 +12012,11 @@
 				BC03C36615E1418F0017388D /* statsIconStarBlue@2x.png in Resources */,
 				BC03C37015E143FB0017388D /* statsChartBackground.png in Resources */,
 				BC03C37815E143FB0017388D /* statsChartBackground@2x.png in Resources */,
+				BC03C39F15E2274C0017388D /* BioViewController.xib in Resources */,
+				BC03C3B515E227B00017388D /* ShareModalViewController.xib in Resources */,
+				BC03C3C515E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
+				BC03C3CF15E2285D0017388D /* shareShadow.png in Resources */,
+				BC03C3D715E2285D0017388D /* shareShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12024,8 +12064,6 @@
 				BC4CA7C6152D26130051A085 /* NotificationViewController.xib in Resources */,
 				4028E7B9152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7C8152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC481DE7153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
-				BC7C07841541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3315494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B3C15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601BF154997B90003AC7E /* WebPageViewController.xib in Resources */,
@@ -12042,7 +12080,6 @@
 				BC48C66615CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77A15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7DC15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC2386FA15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 				BC23872115D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C1F15D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4415D6BD58008C26AC /* ShowViewController.xib in Resources */,
@@ -12468,6 +12505,11 @@
 				BC03C36215E1418F0017388D /* statsIconStarBlue@2x.png in Resources */,
 				BC03C36C15E143FB0017388D /* statsChartBackground.png in Resources */,
 				BC03C37415E143FB0017388D /* statsChartBackground@2x.png in Resources */,
+				BC03C39B15E2274C0017388D /* BioViewController.xib in Resources */,
+				BC03C3B115E227B00017388D /* ShareModalViewController.xib in Resources */,
+				BC03C3C115E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
+				BC03C3CB15E2285D0017388D /* shareShadow.png in Resources */,
+				BC03C3D315E2285D0017388D /* shareShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12515,8 +12557,6 @@
 				BC4CA7C9152D26130051A085 /* NotificationViewController.xib in Resources */,
 				4028E7BC152D9E6F0056B34B /* NotificationCenterViewController.xib in Resources */,
 				4028E7CB152DC1400056B34B /* MessageWeViewController.xib in Resources */,
-				BC481DEA153EFC9B00990214 /* ShareModalViewController.xib in Resources */,
-				BC7C07871541A915004FC760 /* ShareTwitterModalViewController.xib in Resources */,
 				BCE66B3615494C410094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BCE66B3F15494C5D0094B4D0 /* defaultMenuDescription.json.txt in Resources */,
 				BC9601C2154997B90003AC7E /* WebPageViewController.xib in Resources */,
@@ -12533,7 +12573,6 @@
 				BC48C66915CFA76F00624E76 /* MenuViewController.xib in Resources */,
 				BC48C77D15D14C7600624E76 /* MyAccountViewController.xib in Resources */,
 				BC48C7DF15D2425400624E76 /* GenderPickerViewController.xib in Resources */,
-				BC2386FD15D2514D00D1A4C4 /* BioViewController.xib in Resources */,
 				BC23872415D2B9D100D1A4C4 /* WallViewController.xib in Resources */,
 				BCE35C2215D66855008C26AC /* SchedulingViewController.xib in Resources */,
 				BCE35C4715D6BD58008C26AC /* ShowViewController.xib in Resources */,
@@ -12959,6 +12998,11 @@
 				BC03C36515E1418F0017388D /* statsIconStarBlue@2x.png in Resources */,
 				BC03C36F15E143FB0017388D /* statsChartBackground.png in Resources */,
 				BC03C37715E143FB0017388D /* statsChartBackground@2x.png in Resources */,
+				BC03C39E15E2274C0017388D /* BioViewController.xib in Resources */,
+				BC03C3B415E227B00017388D /* ShareModalViewController.xib in Resources */,
+				BC03C3C415E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
+				BC03C3CE15E2285D0017388D /* shareShadow.png in Resources */,
+				BC03C3D615E2285D0017388D /* shareShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13171,10 +13215,8 @@
 				40B409FF152EFC630050D334 /* MessageWeViewController.m in Sources */,
 				40CC5A53153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5C153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC481DE6153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 				40DE99F715406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07791541A82F004FC760 /* MKBitlyHelper.m in Sources */,
-				BC7C07831541A915004FC760 /* ShareTwitterModalViewController.m in Sources */,
 				BC9601BE154997B90003AC7E /* WebPageViewController.m in Sources */,
 				40D744A41551744600A30971 /* SignupViewController.m in Sources */,
 				407D9F1B1563E89000BFCF1F /* UserNotification.m in Sources */,
@@ -13205,7 +13247,6 @@
 				BC48C7DA15D2425400624E76 /* GenderPickerViewController.m in Sources */,
 				BC2386DB15D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
 				BC2386E315D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
-				BC2386F815D2514D00D1A4C4 /* BioViewController.m in Sources */,
 				BC23871F15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873B15D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874515D2C09900D1A4C4 /* WallPostCell.m in Sources */,
@@ -13223,6 +13264,9 @@
 				BC071ABA15D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972D15DA837600F6E22A /* ProgrammingCell.m in Sources */,
 				BCBF982A15DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
+				BC03C38815E226470017388D /* BioViewController.m in Sources */,
+				BC03C3AF15E227B00017388D /* ShareModalViewController.m in Sources */,
+				BC03C3BF15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13377,10 +13421,8 @@
 				40D53BF91554280F001EB0C5 /* MessageWeViewController.m in Sources */,
 				40D53BFB1554280F001EB0C5 /* RequestConfig.m in Sources */,
 				40D53BFC1554280F001EB0C5 /* ASIHTTPRequest+Model.m in Sources */,
-				40D53BFD1554280F001EB0C5 /* ShareModalViewController.m in Sources */,
 				40D53BFE1554280F001EB0C5 /* LoadingCell.m in Sources */,
 				40D53BFF1554280F001EB0C5 /* MKBitlyHelper.m in Sources */,
-				40D53C001554280F001EB0C5 /* ShareTwitterModalViewController.m in Sources */,
 				40D53C051554280F001EB0C5 /* WebPageViewController.m in Sources */,
 				40D53C061554280F001EB0C5 /* SignupViewController.m in Sources */,
 				407D9F1C1563E89000BFCF1F /* UserNotification.m in Sources */,
@@ -13411,7 +13453,6 @@
 				BC48C7DB15D2425400624E76 /* GenderPickerViewController.m in Sources */,
 				BC2386DC15D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
 				BC2386E415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
-				BC2386F915D2514D00D1A4C4 /* BioViewController.m in Sources */,
 				BC23872015D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873C15D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874615D2C09900D1A4C4 /* WallPostCell.m in Sources */,
@@ -13429,6 +13470,9 @@
 				BC071ABB15D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972E15DA837600F6E22A /* ProgrammingCell.m in Sources */,
 				BCBF982B15DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
+				BC03C38915E226470017388D /* BioViewController.m in Sources */,
+				BC03C3B015E227B00017388D /* ShareModalViewController.m in Sources */,
+				BC03C3C015E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13579,10 +13623,8 @@
 				4028E7C7152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				40CC5A52153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5B153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC481DE5153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 				40DE99F615406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07781541A82F004FC760 /* MKBitlyHelper.m in Sources */,
-				BC7C07821541A915004FC760 /* ShareTwitterModalViewController.m in Sources */,
 				BC9601BD154997B90003AC7E /* WebPageViewController.m in Sources */,
 				40D744A31551744500A30971 /* SignupViewController.m in Sources */,
 				407D9F1A1563E89000BFCF1F /* UserNotification.m in Sources */,
@@ -13613,7 +13655,6 @@
 				BC48C7D915D2425400624E76 /* GenderPickerViewController.m in Sources */,
 				BC2386DA15D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
 				BC2386E215D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
-				BC2386F715D2514D00D1A4C4 /* BioViewController.m in Sources */,
 				BC23871E15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873A15D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874415D2C09900D1A4C4 /* WallPostCell.m in Sources */,
@@ -13631,6 +13672,9 @@
 				BC071AB915D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972C15DA837600F6E22A /* ProgrammingCell.m in Sources */,
 				BCBF982915DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
+				BC03C38715E226470017388D /* BioViewController.m in Sources */,
+				BC03C3AE15E227B00017388D /* ShareModalViewController.m in Sources */,
+				BC03C3BE15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13785,10 +13829,8 @@
 				4028E7C4152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				40CC5A4F153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A58153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC481DE2153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 				40DE99F315406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07751541A82F004FC760 /* MKBitlyHelper.m in Sources */,
-				BC7C077F1541A915004FC760 /* ShareTwitterModalViewController.m in Sources */,
 				BC9601BA154997B90003AC7E /* WebPageViewController.m in Sources */,
 				BC47AFD9154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F171563E89000BFCF1F /* UserNotification.m in Sources */,
@@ -13819,7 +13861,6 @@
 				BC48C7D615D2425400624E76 /* GenderPickerViewController.m in Sources */,
 				BC2386D715D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
 				BC2386DF15D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
-				BC2386F415D2514D00D1A4C4 /* BioViewController.m in Sources */,
 				BC23871B15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873715D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874115D2C09900D1A4C4 /* WallPostCell.m in Sources */,
@@ -13837,6 +13878,9 @@
 				BC071AB615D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972915DA837600F6E22A /* ProgrammingCell.m in Sources */,
 				BCBF982615DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
+				BC03C38415E226470017388D /* BioViewController.m in Sources */,
+				BC03C3AB15E227B00017388D /* ShareModalViewController.m in Sources */,
+				BC03C3BB15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13991,10 +14035,8 @@
 				4028E7C3152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				40CC5A4E153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A57153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC481DE1153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 				40DE99F215406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07741541A82F004FC760 /* MKBitlyHelper.m in Sources */,
-				BC7C077E1541A915004FC760 /* ShareTwitterModalViewController.m in Sources */,
 				BC9601B9154997B90003AC7E /* WebPageViewController.m in Sources */,
 				BC47AFD8154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F161563E89000BFCF1F /* UserNotification.m in Sources */,
@@ -14025,7 +14067,6 @@
 				BC48C7D515D2425400624E76 /* GenderPickerViewController.m in Sources */,
 				BC2386D615D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
 				BC2386DE15D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
-				BC2386F315D2514D00D1A4C4 /* BioViewController.m in Sources */,
 				BC23871A15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873615D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874015D2C09900D1A4C4 /* WallPostCell.m in Sources */,
@@ -14043,6 +14084,9 @@
 				BC071AB515D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972815DA837600F6E22A /* ProgrammingCell.m in Sources */,
 				BCBF982515DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
+				BC03C38315E226470017388D /* BioViewController.m in Sources */,
+				BC03C3AA15E227B00017388D /* ShareModalViewController.m in Sources */,
+				BC03C3BA15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14198,10 +14242,8 @@
 				4028E7C6152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				40CC5A51153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A5A153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC481DE4153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 				40DE99F515406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07771541A82F004FC760 /* MKBitlyHelper.m in Sources */,
-				BC7C07811541A915004FC760 /* ShareTwitterModalViewController.m in Sources */,
 				BC9601BC154997B90003AC7E /* WebPageViewController.m in Sources */,
 				BC47AFDB154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F191563E89000BFCF1F /* UserNotification.m in Sources */,
@@ -14232,7 +14274,6 @@
 				BC48C7D815D2425400624E76 /* GenderPickerViewController.m in Sources */,
 				BC2386D915D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
 				BC2386E115D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
-				BC2386F615D2514D00D1A4C4 /* BioViewController.m in Sources */,
 				BC23871D15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873915D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874315D2C09900D1A4C4 /* WallPostCell.m in Sources */,
@@ -14250,6 +14291,9 @@
 				BC071AB815D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972B15DA837600F6E22A /* ProgrammingCell.m in Sources */,
 				BCBF982815DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
+				BC03C38615E226470017388D /* BioViewController.m in Sources */,
+				BC03C3AD15E227B00017388D /* ShareModalViewController.m in Sources */,
+				BC03C3BD15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14404,10 +14448,8 @@
 				4028E7C2152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				40CC5A4D153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A56153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC481DE0153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 				40DE99F115406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07731541A82F004FC760 /* MKBitlyHelper.m in Sources */,
-				BC7C077D1541A915004FC760 /* ShareTwitterModalViewController.m in Sources */,
 				BC9601B8154997B90003AC7E /* WebPageViewController.m in Sources */,
 				BC47AFD7154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F151563E89000BFCF1F /* UserNotification.m in Sources */,
@@ -14438,7 +14480,6 @@
 				BC48C7D415D2425400624E76 /* GenderPickerViewController.m in Sources */,
 				BC2386D515D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
 				BC2386DD15D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
-				BC2386F215D2514D00D1A4C4 /* BioViewController.m in Sources */,
 				BC23871915D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873515D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23873F15D2C09900D1A4C4 /* WallPostCell.m in Sources */,
@@ -14456,6 +14497,9 @@
 				BC071AB415D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972715DA837600F6E22A /* ProgrammingCell.m in Sources */,
 				BCBF982415DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
+				BC03C38215E226470017388D /* BioViewController.m in Sources */,
+				BC03C3A915E227B00017388D /* ShareModalViewController.m in Sources */,
+				BC03C3B915E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14611,10 +14655,8 @@
 				4028E7C5152DC1400056B34B /* MessageWeViewController.m in Sources */,
 				40CC5A50153D6EF7006C052E /* RequestConfig.m in Sources */,
 				40CC5A59153D9EEB006C052E /* ASIHTTPRequest+Model.m in Sources */,
-				BC481DE3153EFC9B00990214 /* ShareModalViewController.m in Sources */,
 				40DE99F415406B98001E63F4 /* LoadingCell.m in Sources */,
 				BC7C07761541A82F004FC760 /* MKBitlyHelper.m in Sources */,
-				BC7C07801541A915004FC760 /* ShareTwitterModalViewController.m in Sources */,
 				BC9601BB154997B90003AC7E /* WebPageViewController.m in Sources */,
 				BC47AFDA154AD23200B0AA55 /* SignupViewController.m in Sources */,
 				407D9F181563E89000BFCF1F /* UserNotification.m in Sources */,
@@ -14645,7 +14687,6 @@
 				BC48C7D715D2425400624E76 /* GenderPickerViewController.m in Sources */,
 				BC2386D815D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */,
 				BC2386E015D24E1600D1A4C4 /* NSObject+PropertyDictionary.m in Sources */,
-				BC2386F515D2514D00D1A4C4 /* BioViewController.m in Sources */,
 				BC23871C15D2B9D100D1A4C4 /* WallViewController.m in Sources */,
 				BC23873815D2BE6400D1A4C4 /* WallHeaderCell.m in Sources */,
 				BC23874215D2C09900D1A4C4 /* WallPostCell.m in Sources */,
@@ -14663,6 +14704,9 @@
 				BC071AB715D9070E001F38D7 /* ProgrammingViewController.m in Sources */,
 				BC40972A15DA837600F6E22A /* ProgrammingCell.m in Sources */,
 				BCBF982715DE2CAE00BC3D64 /* MyUITextField.m in Sources */,
+				BC03C38515E226470017388D /* BioViewController.m in Sources */,
+				BC03C3AC15E227B00017388D /* ShareModalViewController.m in Sources */,
+				BC03C3BC15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

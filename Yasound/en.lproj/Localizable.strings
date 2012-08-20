@@ -629,5 +629,9 @@
 "MyRadios.create.howto" = "Select the playlists you would like to use as your radio content. None of the tracks will be uploaded. We will only send the listing to our servers where there will be analyzed everyday in order to play the integrity of the tracks you have selected.";
 
 
+"Share.Facebook.button" = "Publish";
+"Share.Twitter.button" = "Twitt";
+
+
 
 
