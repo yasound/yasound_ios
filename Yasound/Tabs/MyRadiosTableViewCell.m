@@ -99,9 +99,13 @@
         UISwipeGestureRecognizer* swipeLeft = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft)] autorelease];
         swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
         [self.container addGestureRecognizer:swipeLeft];
+    
+    //LBDEBUG TODO TEMPORARLY CODE
+    self.buttonDelete.enabled = NO;
+
 }
 //    }
-//    
+//
 //    return self;
 //}
 

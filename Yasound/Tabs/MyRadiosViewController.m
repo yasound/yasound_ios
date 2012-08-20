@@ -196,6 +196,8 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
         if (cell == nil)
         {
             cell = [[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellCreateIdentifier];
+
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButton.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UIButton* button = [sheet makeButton];
@@ -204,6 +206,9 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
             button.frame = rect;
             [button addTarget:self action:@selector(onCreateButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:button];
+            
+            //LBDEBUG TODO TEMPORARLY CODE
+            button.enabled = NO;
             
             sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButton.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UILabel* label = [sheet makeLabel];
