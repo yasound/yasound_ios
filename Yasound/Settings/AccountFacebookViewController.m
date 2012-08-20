@@ -31,10 +31,6 @@
 {
     [super viewDidLoad];
 
-    _titleItem.title = @"Facebook";
-    _backItem.title = NSLocalizedString(@"Navigation_back", nil);    
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    
     _usernameLabel.text = NSLocalizedString(@"AccountsView_username_label", nil);
     
     [self update];
@@ -63,8 +59,8 @@
 {
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
     {
-        _usernameLabel.textColor = [UIColor whiteColor];
-        _usernameValue.textColor = [UIColor whiteColor];
+        _usernameLabel.textColor = [UIColor blackColor];
+        _usernameValue.textColor = [UIColor colorWithRed:88.f/255.f green:107.f/255.f blue:119.f/255.f alpha:1];
         
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
         
@@ -82,8 +78,8 @@
     }
     else
     {
-        _usernameLabel.textColor = [UIColor grayColor];
-        _usernameValue.textColor = [UIColor grayColor];
+        _usernameLabel.textColor = [UIColor blackColor];
+        _usernameValue.textColor = [UIColor colorWithRed:88.f/255.f green:107.f/255.f blue:119.f/255.f alpha:1];
         
         _loginLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
         
@@ -101,11 +97,6 @@
 
 
 #pragma mark - IBActions
-
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
 - (IBAction)onButtonClicked:(id)sender

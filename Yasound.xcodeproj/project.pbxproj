@@ -794,6 +794,38 @@
 		BC03C3D815E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
 		BC03C3D915E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
 		BC03C3DA15E2285D0017388D /* shareShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3CA15E2285D0017388D /* shareShadow@2x.png */; };
+		BC03C3DF15E241480017388D /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
+		BC03C3E015E241480017388D /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
+		BC03C3E115E241480017388D /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
+		BC03C3E215E241480017388D /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
+		BC03C3E315E241480017388D /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
+		BC03C3E415E241480017388D /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
+		BC03C3E515E241480017388D /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
+		BC03C3E615E241480017388D /* commonBigButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */; };
+		BC03C3E715E241480017388D /* commonBigButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */; };
+		BC03C3E815E241480017388D /* commonBigButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */; };
+		BC03C3E915E241480017388D /* commonBigButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */; };
+		BC03C3EA15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */; };
+		BC03C3EB15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */; };
+		BC03C3EC15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */; };
+		BC03C3ED15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */; };
+		BC03C3EE15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */; };
+		BC03C3EF15E241480017388D /* commonBigButtonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DD15E241480017388D /* commonBigButtonRed.png */; };
+		BC03C3F015E241480017388D /* commonBigButtonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DD15E241480017388D /* commonBigButtonRed.png */; };
+		BC03C3F115E241480017388D /* commonBigButtonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DD15E241480017388D /* commonBigButtonRed.png */; };
+		BC03C3F215E241480017388D /* commonBigButtonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DD15E241480017388D /* commonBigButtonRed.png */; };
+		BC03C3F315E241480017388D /* commonBigButtonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DD15E241480017388D /* commonBigButtonRed.png */; };
+		BC03C3F415E241480017388D /* commonBigButtonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DD15E241480017388D /* commonBigButtonRed.png */; };
+		BC03C3F515E241480017388D /* commonBigButtonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DD15E241480017388D /* commonBigButtonRed.png */; };
+		BC03C3F615E241480017388D /* commonBigButtonRed.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DD15E241480017388D /* commonBigButtonRed.png */; };
+		BC03C3F715E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
+		BC03C3F815E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
+		BC03C3F915E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
+		BC03C3FA15E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
+		BC03C3FB15E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
+		BC03C3FC15E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
+		BC03C3FD15E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
+		BC03C3FE15E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
 		BC071AB415D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
 		BC071AB515D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
 		BC071AB615D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
@@ -4445,134 +4477,6 @@
 		BCE36A2D15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
 		BCE36A2E15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
 		BCE36A2F15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */; };
-		BCE36A3015D7FD30008C26AC /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD315D7FD2F008C26AC /* BigActionButton.png */; };
-		BCE36A3115D7FD30008C26AC /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD315D7FD2F008C26AC /* BigActionButton.png */; };
-		BCE36A3215D7FD30008C26AC /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD315D7FD2F008C26AC /* BigActionButton.png */; };
-		BCE36A3315D7FD30008C26AC /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD315D7FD2F008C26AC /* BigActionButton.png */; };
-		BCE36A3415D7FD30008C26AC /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD315D7FD2F008C26AC /* BigActionButton.png */; };
-		BCE36A3515D7FD30008C26AC /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD315D7FD2F008C26AC /* BigActionButton.png */; };
-		BCE36A3615D7FD30008C26AC /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD315D7FD2F008C26AC /* BigActionButton.png */; };
-		BCE36A3715D7FD30008C26AC /* BigActionButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD315D7FD2F008C26AC /* BigActionButton.png */; };
-		BCE36A3815D7FD30008C26AC /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD415D7FD2F008C26AC /* BigActionButton@2x.png */; };
-		BCE36A3915D7FD30008C26AC /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD415D7FD2F008C26AC /* BigActionButton@2x.png */; };
-		BCE36A3A15D7FD30008C26AC /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD415D7FD2F008C26AC /* BigActionButton@2x.png */; };
-		BCE36A3B15D7FD30008C26AC /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD415D7FD2F008C26AC /* BigActionButton@2x.png */; };
-		BCE36A3C15D7FD30008C26AC /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD415D7FD2F008C26AC /* BigActionButton@2x.png */; };
-		BCE36A3D15D7FD30008C26AC /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD415D7FD2F008C26AC /* BigActionButton@2x.png */; };
-		BCE36A3E15D7FD30008C26AC /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD415D7FD2F008C26AC /* BigActionButton@2x.png */; };
-		BCE36A3F15D7FD30008C26AC /* BigActionButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD415D7FD2F008C26AC /* BigActionButton@2x.png */; };
-		BCE36A4015D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD515D7FD2F008C26AC /* BigActionButtonDisabled.png */; };
-		BCE36A4115D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD515D7FD2F008C26AC /* BigActionButtonDisabled.png */; };
-		BCE36A4215D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD515D7FD2F008C26AC /* BigActionButtonDisabled.png */; };
-		BCE36A4315D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD515D7FD2F008C26AC /* BigActionButtonDisabled.png */; };
-		BCE36A4415D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD515D7FD2F008C26AC /* BigActionButtonDisabled.png */; };
-		BCE36A4515D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD515D7FD2F008C26AC /* BigActionButtonDisabled.png */; };
-		BCE36A4615D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD515D7FD2F008C26AC /* BigActionButtonDisabled.png */; };
-		BCE36A4715D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD515D7FD2F008C26AC /* BigActionButtonDisabled.png */; };
-		BCE36A4815D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD615D7FD2F008C26AC /* BigActionButtonDisabled@2x.png */; };
-		BCE36A4915D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD615D7FD2F008C26AC /* BigActionButtonDisabled@2x.png */; };
-		BCE36A4A15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD615D7FD2F008C26AC /* BigActionButtonDisabled@2x.png */; };
-		BCE36A4B15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD615D7FD2F008C26AC /* BigActionButtonDisabled@2x.png */; };
-		BCE36A4C15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD615D7FD2F008C26AC /* BigActionButtonDisabled@2x.png */; };
-		BCE36A4D15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD615D7FD2F008C26AC /* BigActionButtonDisabled@2x.png */; };
-		BCE36A4E15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD615D7FD2F008C26AC /* BigActionButtonDisabled@2x.png */; };
-		BCE36A4F15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD615D7FD2F008C26AC /* BigActionButtonDisabled@2x.png */; };
-		BCE36A5015D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD715D7FD2F008C26AC /* BigActionButtonHighlighted.png */; };
-		BCE36A5115D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD715D7FD2F008C26AC /* BigActionButtonHighlighted.png */; };
-		BCE36A5215D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD715D7FD2F008C26AC /* BigActionButtonHighlighted.png */; };
-		BCE36A5315D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD715D7FD2F008C26AC /* BigActionButtonHighlighted.png */; };
-		BCE36A5415D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD715D7FD2F008C26AC /* BigActionButtonHighlighted.png */; };
-		BCE36A5515D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD715D7FD2F008C26AC /* BigActionButtonHighlighted.png */; };
-		BCE36A5615D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD715D7FD2F008C26AC /* BigActionButtonHighlighted.png */; };
-		BCE36A5715D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD715D7FD2F008C26AC /* BigActionButtonHighlighted.png */; };
-		BCE36A5815D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD815D7FD2F008C26AC /* BigActionButtonHighlighted@2x.png */; };
-		BCE36A5915D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD815D7FD2F008C26AC /* BigActionButtonHighlighted@2x.png */; };
-		BCE36A5A15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD815D7FD2F008C26AC /* BigActionButtonHighlighted@2x.png */; };
-		BCE36A5B15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD815D7FD2F008C26AC /* BigActionButtonHighlighted@2x.png */; };
-		BCE36A5C15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD815D7FD2F008C26AC /* BigActionButtonHighlighted@2x.png */; };
-		BCE36A5D15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD815D7FD2F008C26AC /* BigActionButtonHighlighted@2x.png */; };
-		BCE36A5E15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD815D7FD2F008C26AC /* BigActionButtonHighlighted@2x.png */; };
-		BCE36A5F15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD815D7FD2F008C26AC /* BigActionButtonHighlighted@2x.png */; };
-		BCE36A6015D7FD30008C26AC /* BigActionGreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD915D7FD2F008C26AC /* BigActionGreenButton.png */; };
-		BCE36A6115D7FD30008C26AC /* BigActionGreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD915D7FD2F008C26AC /* BigActionGreenButton.png */; };
-		BCE36A6215D7FD30008C26AC /* BigActionGreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD915D7FD2F008C26AC /* BigActionGreenButton.png */; };
-		BCE36A6315D7FD30008C26AC /* BigActionGreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD915D7FD2F008C26AC /* BigActionGreenButton.png */; };
-		BCE36A6415D7FD30008C26AC /* BigActionGreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD915D7FD2F008C26AC /* BigActionGreenButton.png */; };
-		BCE36A6515D7FD30008C26AC /* BigActionGreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD915D7FD2F008C26AC /* BigActionGreenButton.png */; };
-		BCE36A6615D7FD30008C26AC /* BigActionGreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD915D7FD2F008C26AC /* BigActionGreenButton.png */; };
-		BCE36A6715D7FD30008C26AC /* BigActionGreenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FD915D7FD2F008C26AC /* BigActionGreenButton.png */; };
-		BCE36A6815D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDA15D7FD2F008C26AC /* BigActionGreenButton@2x.png */; };
-		BCE36A6915D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDA15D7FD2F008C26AC /* BigActionGreenButton@2x.png */; };
-		BCE36A6A15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDA15D7FD2F008C26AC /* BigActionGreenButton@2x.png */; };
-		BCE36A6B15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDA15D7FD2F008C26AC /* BigActionGreenButton@2x.png */; };
-		BCE36A6C15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDA15D7FD2F008C26AC /* BigActionGreenButton@2x.png */; };
-		BCE36A6D15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDA15D7FD2F008C26AC /* BigActionGreenButton@2x.png */; };
-		BCE36A6E15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDA15D7FD2F008C26AC /* BigActionGreenButton@2x.png */; };
-		BCE36A6F15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDA15D7FD2F008C26AC /* BigActionGreenButton@2x.png */; };
-		BCE36A7015D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDB15D7FD2F008C26AC /* BigActionGreenButtonHighlighted.png */; };
-		BCE36A7115D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDB15D7FD2F008C26AC /* BigActionGreenButtonHighlighted.png */; };
-		BCE36A7215D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDB15D7FD2F008C26AC /* BigActionGreenButtonHighlighted.png */; };
-		BCE36A7315D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDB15D7FD2F008C26AC /* BigActionGreenButtonHighlighted.png */; };
-		BCE36A7415D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDB15D7FD2F008C26AC /* BigActionGreenButtonHighlighted.png */; };
-		BCE36A7515D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDB15D7FD2F008C26AC /* BigActionGreenButtonHighlighted.png */; };
-		BCE36A7615D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDB15D7FD2F008C26AC /* BigActionGreenButtonHighlighted.png */; };
-		BCE36A7715D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDB15D7FD2F008C26AC /* BigActionGreenButtonHighlighted.png */; };
-		BCE36A7815D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDC15D7FD2F008C26AC /* BigActionGreenButtonHighlighted@2x.png */; };
-		BCE36A7915D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDC15D7FD2F008C26AC /* BigActionGreenButtonHighlighted@2x.png */; };
-		BCE36A7A15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDC15D7FD2F008C26AC /* BigActionGreenButtonHighlighted@2x.png */; };
-		BCE36A7B15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDC15D7FD2F008C26AC /* BigActionGreenButtonHighlighted@2x.png */; };
-		BCE36A7C15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDC15D7FD2F008C26AC /* BigActionGreenButtonHighlighted@2x.png */; };
-		BCE36A7D15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDC15D7FD2F008C26AC /* BigActionGreenButtonHighlighted@2x.png */; };
-		BCE36A7E15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDC15D7FD2F008C26AC /* BigActionGreenButtonHighlighted@2x.png */; };
-		BCE36A7F15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDC15D7FD2F008C26AC /* BigActionGreenButtonHighlighted@2x.png */; };
-		BCE36A8015D7FD30008C26AC /* BigActionRedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDD15D7FD2F008C26AC /* BigActionRedButton.png */; };
-		BCE36A8115D7FD30008C26AC /* BigActionRedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDD15D7FD2F008C26AC /* BigActionRedButton.png */; };
-		BCE36A8215D7FD30008C26AC /* BigActionRedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDD15D7FD2F008C26AC /* BigActionRedButton.png */; };
-		BCE36A8315D7FD30008C26AC /* BigActionRedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDD15D7FD2F008C26AC /* BigActionRedButton.png */; };
-		BCE36A8415D7FD30008C26AC /* BigActionRedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDD15D7FD2F008C26AC /* BigActionRedButton.png */; };
-		BCE36A8515D7FD30008C26AC /* BigActionRedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDD15D7FD2F008C26AC /* BigActionRedButton.png */; };
-		BCE36A8615D7FD30008C26AC /* BigActionRedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDD15D7FD2F008C26AC /* BigActionRedButton.png */; };
-		BCE36A8715D7FD30008C26AC /* BigActionRedButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDD15D7FD2F008C26AC /* BigActionRedButton.png */; };
-		BCE36A8815D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDE15D7FD2F008C26AC /* BigActionRedButton@2x.png */; };
-		BCE36A8915D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDE15D7FD2F008C26AC /* BigActionRedButton@2x.png */; };
-		BCE36A8A15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDE15D7FD2F008C26AC /* BigActionRedButton@2x.png */; };
-		BCE36A8B15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDE15D7FD2F008C26AC /* BigActionRedButton@2x.png */; };
-		BCE36A8C15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDE15D7FD2F008C26AC /* BigActionRedButton@2x.png */; };
-		BCE36A8D15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDE15D7FD2F008C26AC /* BigActionRedButton@2x.png */; };
-		BCE36A8E15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDE15D7FD2F008C26AC /* BigActionRedButton@2x.png */; };
-		BCE36A8F15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDE15D7FD2F008C26AC /* BigActionRedButton@2x.png */; };
-		BCE36A9015D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDF15D7FD2F008C26AC /* BigActionRedButtonHighlighted.png */; };
-		BCE36A9115D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDF15D7FD2F008C26AC /* BigActionRedButtonHighlighted.png */; };
-		BCE36A9215D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDF15D7FD2F008C26AC /* BigActionRedButtonHighlighted.png */; };
-		BCE36A9315D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDF15D7FD2F008C26AC /* BigActionRedButtonHighlighted.png */; };
-		BCE36A9415D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDF15D7FD2F008C26AC /* BigActionRedButtonHighlighted.png */; };
-		BCE36A9515D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDF15D7FD2F008C26AC /* BigActionRedButtonHighlighted.png */; };
-		BCE36A9615D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDF15D7FD2F008C26AC /* BigActionRedButtonHighlighted.png */; };
-		BCE36A9715D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FDF15D7FD2F008C26AC /* BigActionRedButtonHighlighted.png */; };
-		BCE36A9815D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE015D7FD2F008C26AC /* BigActionRedButtonHighlighted@2x.png */; };
-		BCE36A9915D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE015D7FD2F008C26AC /* BigActionRedButtonHighlighted@2x.png */; };
-		BCE36A9A15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE015D7FD2F008C26AC /* BigActionRedButtonHighlighted@2x.png */; };
-		BCE36A9B15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE015D7FD2F008C26AC /* BigActionRedButtonHighlighted@2x.png */; };
-		BCE36A9C15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE015D7FD2F008C26AC /* BigActionRedButtonHighlighted@2x.png */; };
-		BCE36A9D15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE015D7FD2F008C26AC /* BigActionRedButtonHighlighted@2x.png */; };
-		BCE36A9E15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE015D7FD2F008C26AC /* BigActionRedButtonHighlighted@2x.png */; };
-		BCE36A9F15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE015D7FD2F008C26AC /* BigActionRedButtonHighlighted@2x.png */; };
-		BCE36AA015D7FD30008C26AC /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE115D7FD2F008C26AC /* iTunesConnect.png */; };
-		BCE36AA115D7FD30008C26AC /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE115D7FD2F008C26AC /* iTunesConnect.png */; };
-		BCE36AA215D7FD30008C26AC /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE115D7FD2F008C26AC /* iTunesConnect.png */; };
-		BCE36AA315D7FD30008C26AC /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE115D7FD2F008C26AC /* iTunesConnect.png */; };
-		BCE36AA415D7FD30008C26AC /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE115D7FD2F008C26AC /* iTunesConnect.png */; };
-		BCE36AA515D7FD30008C26AC /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE115D7FD2F008C26AC /* iTunesConnect.png */; };
-		BCE36AA615D7FD30008C26AC /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE115D7FD2F008C26AC /* iTunesConnect.png */; };
-		BCE36AA715D7FD30008C26AC /* iTunesConnect.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE115D7FD2F008C26AC /* iTunesConnect.png */; };
-		BCE36AA815D7FD30008C26AC /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE215D7FD2F008C26AC /* iTunesConnect@2x.png */; };
-		BCE36AA915D7FD30008C26AC /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE215D7FD2F008C26AC /* iTunesConnect@2x.png */; };
-		BCE36AAA15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE215D7FD2F008C26AC /* iTunesConnect@2x.png */; };
-		BCE36AAB15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE215D7FD2F008C26AC /* iTunesConnect@2x.png */; };
-		BCE36AAC15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE215D7FD2F008C26AC /* iTunesConnect@2x.png */; };
-		BCE36AAD15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE215D7FD2F008C26AC /* iTunesConnect@2x.png */; };
-		BCE36AAE15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE215D7FD2F008C26AC /* iTunesConnect@2x.png */; };
-		BCE36AAF15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE215D7FD2F008C26AC /* iTunesConnect@2x.png */; };
 		BCE36AB015D7FD30008C26AC /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
 		BCE36AB115D7FD30008C26AC /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
 		BCE36AB215D7FD30008C26AC /* ShareBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FE415D7FD2F008C26AC /* ShareBackground.png */; };
@@ -5920,6 +5824,10 @@
 		BC03C3A815E227B00017388D /* ShareTwitterModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareTwitterModalViewController.xib; sourceTree = "<group>"; };
 		BC03C3C915E2285D0017388D /* shareShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareShadow.png; sourceTree = "<group>"; };
 		BC03C3CA15E2285D0017388D /* shareShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareShadow@2x.png"; sourceTree = "<group>"; };
+		BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonBigButtonDisabled.png; sourceTree = "<group>"; };
+		BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonBigButtonDisabled@2x.png"; sourceTree = "<group>"; };
+		BC03C3DD15E241480017388D /* commonBigButtonRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonBigButtonRed.png; sourceTree = "<group>"; };
+		BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonBigButtonRed@2x.png"; sourceTree = "<group>"; };
 		BC071AB115D9070E001F38D7 /* ProgrammingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingViewController.h; path = Programming/ProgrammingViewController.h; sourceTree = "<group>"; };
 		BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingViewController.m; path = Programming/ProgrammingViewController.m; sourceTree = "<group>"; };
 		BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingViewController.xib; path = Programming/ProgrammingViewController.xib; sourceTree = "<group>"; };
@@ -6574,22 +6482,6 @@
 		BCE35FCE15D7FD2F008C26AC /* schedulingIconClock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedulingIconClock@2x.png"; sourceTree = "<group>"; };
 		BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchBarBackground.png; sourceTree = "<group>"; };
 		BCE35FD115D7FD2F008C26AC /* searchBarBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarBackground@2x.png"; sourceTree = "<group>"; };
-		BCE35FD315D7FD2F008C26AC /* BigActionButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigActionButton.png; sourceTree = "<group>"; };
-		BCE35FD415D7FD2F008C26AC /* BigActionButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigActionButton@2x.png"; sourceTree = "<group>"; };
-		BCE35FD515D7FD2F008C26AC /* BigActionButtonDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigActionButtonDisabled.png; sourceTree = "<group>"; };
-		BCE35FD615D7FD2F008C26AC /* BigActionButtonDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigActionButtonDisabled@2x.png"; sourceTree = "<group>"; };
-		BCE35FD715D7FD2F008C26AC /* BigActionButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigActionButtonHighlighted.png; sourceTree = "<group>"; };
-		BCE35FD815D7FD2F008C26AC /* BigActionButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigActionButtonHighlighted@2x.png"; sourceTree = "<group>"; };
-		BCE35FD915D7FD2F008C26AC /* BigActionGreenButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigActionGreenButton.png; sourceTree = "<group>"; };
-		BCE35FDA15D7FD2F008C26AC /* BigActionGreenButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigActionGreenButton@2x.png"; sourceTree = "<group>"; };
-		BCE35FDB15D7FD2F008C26AC /* BigActionGreenButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigActionGreenButtonHighlighted.png; sourceTree = "<group>"; };
-		BCE35FDC15D7FD2F008C26AC /* BigActionGreenButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigActionGreenButtonHighlighted@2x.png"; sourceTree = "<group>"; };
-		BCE35FDD15D7FD2F008C26AC /* BigActionRedButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigActionRedButton.png; sourceTree = "<group>"; };
-		BCE35FDE15D7FD2F008C26AC /* BigActionRedButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigActionRedButton@2x.png"; sourceTree = "<group>"; };
-		BCE35FDF15D7FD2F008C26AC /* BigActionRedButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BigActionRedButtonHighlighted.png; sourceTree = "<group>"; };
-		BCE35FE015D7FD2F008C26AC /* BigActionRedButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BigActionRedButtonHighlighted@2x.png"; sourceTree = "<group>"; };
-		BCE35FE115D7FD2F008C26AC /* iTunesConnect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesConnect.png; sourceTree = "<group>"; };
-		BCE35FE215D7FD2F008C26AC /* iTunesConnect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesConnect@2x.png"; sourceTree = "<group>"; };
 		BCE35FE415D7FD2F008C26AC /* ShareBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareBackground.png; sourceTree = "<group>"; };
 		BCE35FE515D7FD2F008C26AC /* ShareBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareBackground@2x.png"; sourceTree = "<group>"; };
 		BCE35FE715D7FD2F008C26AC /* notificationsIconHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationsIconHeart.png; sourceTree = "<group>"; };
@@ -8099,6 +7991,10 @@
 				BCE35ED415D7FD2E008C26AC /* commonBarItemTrash@2x.png */,
 				BCE35ED515D7FD2E008C26AC /* commonBigButtonBlue.png */,
 				BCE35ED615D7FD2E008C26AC /* commonBigButtonBlue@2x.png */,
+				BC03C3DB15E241470017388D /* commonBigButtonDisabled.png */,
+				BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */,
+				BC03C3DD15E241480017388D /* commonBigButtonRed.png */,
+				BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */,
 				BCE35ED715D7FD2E008C26AC /* commonBtnNowPlaying.png */,
 				BCE35ED815D7FD2E008C26AC /* commonBtnNowPlaying@2x.png */,
 				BCE35ED915D7FD2E008C26AC /* commonGradient.png */,
@@ -8403,29 +8299,6 @@
 			path = SearchBar;
 			sourceTree = "<group>";
 		};
-		BCE35FD215D7FD2F008C26AC /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				BCE35FD315D7FD2F008C26AC /* BigActionButton.png */,
-				BCE35FD415D7FD2F008C26AC /* BigActionButton@2x.png */,
-				BCE35FD515D7FD2F008C26AC /* BigActionButtonDisabled.png */,
-				BCE35FD615D7FD2F008C26AC /* BigActionButtonDisabled@2x.png */,
-				BCE35FD715D7FD2F008C26AC /* BigActionButtonHighlighted.png */,
-				BCE35FD815D7FD2F008C26AC /* BigActionButtonHighlighted@2x.png */,
-				BCE35FD915D7FD2F008C26AC /* BigActionGreenButton.png */,
-				BCE35FDA15D7FD2F008C26AC /* BigActionGreenButton@2x.png */,
-				BCE35FDB15D7FD2F008C26AC /* BigActionGreenButtonHighlighted.png */,
-				BCE35FDC15D7FD2F008C26AC /* BigActionGreenButtonHighlighted@2x.png */,
-				BCE35FDD15D7FD2F008C26AC /* BigActionRedButton.png */,
-				BCE35FDE15D7FD2F008C26AC /* BigActionRedButton@2x.png */,
-				BCE35FDF15D7FD2F008C26AC /* BigActionRedButtonHighlighted.png */,
-				BCE35FE015D7FD2F008C26AC /* BigActionRedButtonHighlighted@2x.png */,
-				BCE35FE115D7FD2F008C26AC /* iTunesConnect.png */,
-				BCE35FE215D7FD2F008C26AC /* iTunesConnect@2x.png */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		BCE35FE315D7FD2F008C26AC /* Share */ = {
 			isa = PBXGroup;
 			children = (
@@ -8677,7 +8550,6 @@
 				BCE35FCC15D7FD2F008C26AC /* Scheduling */,
 				BCE35FCF15D7FD2F008C26AC /* SearchBar */,
 				BC03C33315E1418F0017388D /* Stats */,
-				BCE35FD215D7FD2F008C26AC /* Settings */,
 				BCE35FE315D7FD2F008C26AC /* Share */,
 				BCE35FE615D7FD2F008C26AC /* SignIn */,
 				BCE3600515D7FD2F008C26AC /* TabBar */,
@@ -9377,22 +9249,6 @@
 				BCE36A1E15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2615D7FD30008C26AC /* searchBarBackground.png in Resources */,
 				BCE36A2E15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36A3615D7FD30008C26AC /* BigActionButton.png in Resources */,
-				BCE36A3E15D7FD30008C26AC /* BigActionButton@2x.png in Resources */,
-				BCE36A4615D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */,
-				BCE36A4E15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */,
-				BCE36A5615D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */,
-				BCE36A5E15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */,
-				BCE36A6615D7FD30008C26AC /* BigActionGreenButton.png in Resources */,
-				BCE36A6E15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */,
-				BCE36A7615D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */,
-				BCE36A7E15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */,
-				BCE36A8615D7FD30008C26AC /* BigActionRedButton.png in Resources */,
-				BCE36A8E15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */,
-				BCE36A9615D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */,
-				BCE36A9E15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */,
-				BCE36AA615D7FD30008C26AC /* iTunesConnect.png in Resources */,
-				BCE36AAE15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */,
 				BCE36AB615D7FD30008C26AC /* ShareBackground.png in Resources */,
 				BCE36ABE15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC615D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -9556,6 +9412,10 @@
 				BC03C3C715E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
 				BC03C3D115E2285D0017388D /* shareShadow.png in Resources */,
 				BC03C3D915E2285D0017388D /* shareShadow@2x.png in Resources */,
+				BC03C3E515E241480017388D /* commonBigButtonDisabled.png in Resources */,
+				BC03C3ED15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
+				BC03C3F515E241480017388D /* commonBigButtonRed.png in Resources */,
+				BC03C3FD15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9871,22 +9731,6 @@
 				BCE36A1F15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2715D7FD30008C26AC /* searchBarBackground.png in Resources */,
 				BCE36A2F15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36A3715D7FD30008C26AC /* BigActionButton.png in Resources */,
-				BCE36A3F15D7FD30008C26AC /* BigActionButton@2x.png in Resources */,
-				BCE36A4715D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */,
-				BCE36A4F15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */,
-				BCE36A5715D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */,
-				BCE36A5F15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */,
-				BCE36A6715D7FD30008C26AC /* BigActionGreenButton.png in Resources */,
-				BCE36A6F15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */,
-				BCE36A7715D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */,
-				BCE36A7F15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */,
-				BCE36A8715D7FD30008C26AC /* BigActionRedButton.png in Resources */,
-				BCE36A8F15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */,
-				BCE36A9715D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */,
-				BCE36A9F15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */,
-				BCE36AA715D7FD30008C26AC /* iTunesConnect.png in Resources */,
-				BCE36AAF15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */,
 				BCE36AB715D7FD30008C26AC /* ShareBackground.png in Resources */,
 				BCE36ABF15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC715D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -10050,6 +9894,10 @@
 				BC03C3C815E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
 				BC03C3D215E2285D0017388D /* shareShadow.png in Resources */,
 				BC03C3DA15E2285D0017388D /* shareShadow@2x.png in Resources */,
+				BC03C3E615E241480017388D /* commonBigButtonDisabled.png in Resources */,
+				BC03C3EE15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
+				BC03C3F615E241480017388D /* commonBigButtonRed.png in Resources */,
+				BC03C3FE15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10359,22 +10207,6 @@
 				BCE36A1D15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2515D7FD30008C26AC /* searchBarBackground.png in Resources */,
 				BCE36A2D15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36A3515D7FD30008C26AC /* BigActionButton.png in Resources */,
-				BCE36A3D15D7FD30008C26AC /* BigActionButton@2x.png in Resources */,
-				BCE36A4515D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */,
-				BCE36A4D15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */,
-				BCE36A5515D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */,
-				BCE36A5D15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */,
-				BCE36A6515D7FD30008C26AC /* BigActionGreenButton.png in Resources */,
-				BCE36A6D15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */,
-				BCE36A7515D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */,
-				BCE36A7D15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */,
-				BCE36A8515D7FD30008C26AC /* BigActionRedButton.png in Resources */,
-				BCE36A8D15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */,
-				BCE36A9515D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */,
-				BCE36A9D15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */,
-				BCE36AA515D7FD30008C26AC /* iTunesConnect.png in Resources */,
-				BCE36AAD15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */,
 				BCE36AB515D7FD30008C26AC /* ShareBackground.png in Resources */,
 				BCE36ABD15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC515D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -10538,6 +10370,10 @@
 				BC03C3C615E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
 				BC03C3D015E2285D0017388D /* shareShadow.png in Resources */,
 				BC03C3D815E2285D0017388D /* shareShadow@2x.png in Resources */,
+				BC03C3E415E241480017388D /* commonBigButtonDisabled.png in Resources */,
+				BC03C3EC15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
+				BC03C3F415E241480017388D /* commonBigButtonRed.png in Resources */,
+				BC03C3FC15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10852,22 +10688,6 @@
 				BCE36A1A15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2215D7FD30008C26AC /* searchBarBackground.png in Resources */,
 				BCE36A2A15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36A3215D7FD30008C26AC /* BigActionButton.png in Resources */,
-				BCE36A3A15D7FD30008C26AC /* BigActionButton@2x.png in Resources */,
-				BCE36A4215D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */,
-				BCE36A4A15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */,
-				BCE36A5215D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */,
-				BCE36A5A15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */,
-				BCE36A6215D7FD30008C26AC /* BigActionGreenButton.png in Resources */,
-				BCE36A6A15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */,
-				BCE36A7215D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */,
-				BCE36A7A15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */,
-				BCE36A8215D7FD30008C26AC /* BigActionRedButton.png in Resources */,
-				BCE36A8A15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */,
-				BCE36A9215D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */,
-				BCE36A9A15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */,
-				BCE36AA215D7FD30008C26AC /* iTunesConnect.png in Resources */,
-				BCE36AAA15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */,
 				BCE36AB215D7FD30008C26AC /* ShareBackground.png in Resources */,
 				BCE36ABA15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC215D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -11031,6 +10851,10 @@
 				BC03C3C315E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
 				BC03C3CD15E2285D0017388D /* shareShadow.png in Resources */,
 				BC03C3D515E2285D0017388D /* shareShadow@2x.png in Resources */,
+				BC03C3E115E241480017388D /* commonBigButtonDisabled.png in Resources */,
+				BC03C3E915E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
+				BC03C3F115E241480017388D /* commonBigButtonRed.png in Resources */,
+				BC03C3F915E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11345,22 +11169,6 @@
 				BCE36A1915D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2115D7FD30008C26AC /* searchBarBackground.png in Resources */,
 				BCE36A2915D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36A3115D7FD30008C26AC /* BigActionButton.png in Resources */,
-				BCE36A3915D7FD30008C26AC /* BigActionButton@2x.png in Resources */,
-				BCE36A4115D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */,
-				BCE36A4915D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */,
-				BCE36A5115D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */,
-				BCE36A5915D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */,
-				BCE36A6115D7FD30008C26AC /* BigActionGreenButton.png in Resources */,
-				BCE36A6915D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */,
-				BCE36A7115D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */,
-				BCE36A7915D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */,
-				BCE36A8115D7FD30008C26AC /* BigActionRedButton.png in Resources */,
-				BCE36A8915D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */,
-				BCE36A9115D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */,
-				BCE36A9915D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */,
-				BCE36AA115D7FD30008C26AC /* iTunesConnect.png in Resources */,
-				BCE36AA915D7FD30008C26AC /* iTunesConnect@2x.png in Resources */,
 				BCE36AB115D7FD30008C26AC /* ShareBackground.png in Resources */,
 				BCE36AB915D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC115D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -11524,6 +11332,10 @@
 				BC03C3C215E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
 				BC03C3CC15E2285D0017388D /* shareShadow.png in Resources */,
 				BC03C3D415E2285D0017388D /* shareShadow@2x.png in Resources */,
+				BC03C3E015E241480017388D /* commonBigButtonDisabled.png in Resources */,
+				BC03C3E815E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
+				BC03C3F015E241480017388D /* commonBigButtonRed.png in Resources */,
+				BC03C3F815E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11838,22 +11650,6 @@
 				BCE36A1C15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2415D7FD30008C26AC /* searchBarBackground.png in Resources */,
 				BCE36A2C15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36A3415D7FD30008C26AC /* BigActionButton.png in Resources */,
-				BCE36A3C15D7FD30008C26AC /* BigActionButton@2x.png in Resources */,
-				BCE36A4415D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */,
-				BCE36A4C15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */,
-				BCE36A5415D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */,
-				BCE36A5C15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */,
-				BCE36A6415D7FD30008C26AC /* BigActionGreenButton.png in Resources */,
-				BCE36A6C15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */,
-				BCE36A7415D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */,
-				BCE36A7C15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */,
-				BCE36A8415D7FD30008C26AC /* BigActionRedButton.png in Resources */,
-				BCE36A8C15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */,
-				BCE36A9415D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */,
-				BCE36A9C15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */,
-				BCE36AA415D7FD30008C26AC /* iTunesConnect.png in Resources */,
-				BCE36AAC15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */,
 				BCE36AB415D7FD30008C26AC /* ShareBackground.png in Resources */,
 				BCE36ABC15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC415D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -12017,6 +11813,10 @@
 				BC03C3C515E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
 				BC03C3CF15E2285D0017388D /* shareShadow.png in Resources */,
 				BC03C3D715E2285D0017388D /* shareShadow@2x.png in Resources */,
+				BC03C3E315E241480017388D /* commonBigButtonDisabled.png in Resources */,
+				BC03C3EB15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
+				BC03C3F315E241480017388D /* commonBigButtonRed.png in Resources */,
+				BC03C3FB15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12331,22 +12131,6 @@
 				BCE36A1815D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2015D7FD30008C26AC /* searchBarBackground.png in Resources */,
 				BCE36A2815D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36A3015D7FD30008C26AC /* BigActionButton.png in Resources */,
-				BCE36A3815D7FD30008C26AC /* BigActionButton@2x.png in Resources */,
-				BCE36A4015D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */,
-				BCE36A4815D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */,
-				BCE36A5015D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */,
-				BCE36A5815D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */,
-				BCE36A6015D7FD30008C26AC /* BigActionGreenButton.png in Resources */,
-				BCE36A6815D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */,
-				BCE36A7015D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */,
-				BCE36A7815D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */,
-				BCE36A8015D7FD30008C26AC /* BigActionRedButton.png in Resources */,
-				BCE36A8815D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */,
-				BCE36A9015D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */,
-				BCE36A9815D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */,
-				BCE36AA015D7FD30008C26AC /* iTunesConnect.png in Resources */,
-				BCE36AA815D7FD30008C26AC /* iTunesConnect@2x.png in Resources */,
 				BCE36AB015D7FD30008C26AC /* ShareBackground.png in Resources */,
 				BCE36AB815D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC015D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -12510,6 +12294,10 @@
 				BC03C3C115E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
 				BC03C3CB15E2285D0017388D /* shareShadow.png in Resources */,
 				BC03C3D315E2285D0017388D /* shareShadow@2x.png in Resources */,
+				BC03C3DF15E241480017388D /* commonBigButtonDisabled.png in Resources */,
+				BC03C3E715E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
+				BC03C3EF15E241480017388D /* commonBigButtonRed.png in Resources */,
+				BC03C3F715E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12824,22 +12612,6 @@
 				BCE36A1B15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2315D7FD30008C26AC /* searchBarBackground.png in Resources */,
 				BCE36A2B15D7FD30008C26AC /* searchBarBackground@2x.png in Resources */,
-				BCE36A3315D7FD30008C26AC /* BigActionButton.png in Resources */,
-				BCE36A3B15D7FD30008C26AC /* BigActionButton@2x.png in Resources */,
-				BCE36A4315D7FD30008C26AC /* BigActionButtonDisabled.png in Resources */,
-				BCE36A4B15D7FD30008C26AC /* BigActionButtonDisabled@2x.png in Resources */,
-				BCE36A5315D7FD30008C26AC /* BigActionButtonHighlighted.png in Resources */,
-				BCE36A5B15D7FD30008C26AC /* BigActionButtonHighlighted@2x.png in Resources */,
-				BCE36A6315D7FD30008C26AC /* BigActionGreenButton.png in Resources */,
-				BCE36A6B15D7FD30008C26AC /* BigActionGreenButton@2x.png in Resources */,
-				BCE36A7315D7FD30008C26AC /* BigActionGreenButtonHighlighted.png in Resources */,
-				BCE36A7B15D7FD30008C26AC /* BigActionGreenButtonHighlighted@2x.png in Resources */,
-				BCE36A8315D7FD30008C26AC /* BigActionRedButton.png in Resources */,
-				BCE36A8B15D7FD30008C26AC /* BigActionRedButton@2x.png in Resources */,
-				BCE36A9315D7FD30008C26AC /* BigActionRedButtonHighlighted.png in Resources */,
-				BCE36A9B15D7FD30008C26AC /* BigActionRedButtonHighlighted@2x.png in Resources */,
-				BCE36AA315D7FD30008C26AC /* iTunesConnect.png in Resources */,
-				BCE36AAB15D7FD30008C26AC /* iTunesConnect@2x.png in Resources */,
 				BCE36AB315D7FD30008C26AC /* ShareBackground.png in Resources */,
 				BCE36ABB15D7FD30008C26AC /* ShareBackground@2x.png in Resources */,
 				BCE36AC315D7FD30008C26AC /* notificationsIconHeart.png in Resources */,
@@ -13003,6 +12775,10 @@
 				BC03C3C415E227B00017388D /* ShareTwitterModalViewController.xib in Resources */,
 				BC03C3CE15E2285D0017388D /* shareShadow.png in Resources */,
 				BC03C3D615E2285D0017388D /* shareShadow@2x.png in Resources */,
+				BC03C3E215E241480017388D /* commonBigButtonDisabled.png in Resources */,
+				BC03C3EA15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
+				BC03C3F215E241480017388D /* commonBigButtonRed.png in Resources */,
+				BC03C3FA15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

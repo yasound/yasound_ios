@@ -10,9 +10,6 @@
 
 @interface AccountFacebookViewController : UIViewController
 {
-    IBOutlet UIBarButtonItem* _backItem;
-    IBOutlet UIBarButtonItem* _titleItem;
-    
     IBOutlet UILabel* _usernameLabel;
     IBOutlet UILabel* _usernameValue;
 
@@ -23,7 +20,6 @@
     
 }
 
-- (IBAction)onBack:(id)sender;
 - (IBAction)onButtonClicked:(id)sender;
 
 
