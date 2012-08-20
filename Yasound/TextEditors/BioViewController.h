@@ -20,9 +20,6 @@
 
 @interface BioViewController : UIViewController<UITextFieldDelegate>
 {
-//    IBOutlet UIBarButtonItem* _itemTitle;
-//    IBOutlet UIBarButtonItem* _buttonCancel;
-//    IBOutlet UIBarButtonItem* _buttonSave;
     IBOutlet WebImageView* _image;
     IBOutlet UIImageView* _mask;
     

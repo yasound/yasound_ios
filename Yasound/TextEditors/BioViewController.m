@@ -37,12 +37,6 @@
 {
     [super viewDidLoad];
     
-    // GUI
-//    _buttonCancel.title = NSLocalizedString(@"Navigation_cancel", nil);
-//    _buttonSave.title = NSLocalizedString(@"MessageBroadcastModalView_send_button_label", nil);
-//    _itemTitle.title = NSLocalizedString(@"MessageBroadcastModalView_title", nil);
-
-    
     
     NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     [_image setUrl:url];
@@ -53,8 +47,6 @@
     _textView.text = self.user.bio_text;
     
     [self setLabel];
-//    _label2.text = NSLocalizedString(@"MessageBroadcastModalView_to", nil);
-//    _label2.text = [NSString stringWithFormat:_label2.text, self.subscribers.count];
     _textView.delegate = self;
     
     [_textView becomeFirstResponder];

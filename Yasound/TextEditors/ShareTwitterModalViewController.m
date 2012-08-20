@@ -19,7 +19,7 @@
 #import "ActivityAlertView.h"
 
 
-#define TWITTER_MAX_LENGTH 140
+#define TWITTER_MAX_LENGTH 140.f
 
 #define BITLY_LOGIN @"yasound"
 #define BITLY_API_KEY @"R_5fd1c02c9266ba849d69ac0a91709c70"
@@ -59,13 +59,8 @@
 {
     [super viewDidLoad];
     
-    // GUI
-    _buttonCancel.title = NSLocalizedString(@"Navigation_cancel", nil);
-    _buttonSend.title = NSLocalizedString(@"ShareModalView_publish_button_label", nil);
-    _itemTitle.title = NSLocalizedString(@"ShareModalView_twitter_label", nil);
-
-    _songTitle.text = self.song.name;
-    _songArtist.text = self.song.artist;
+    _label1.text = self.song.name;
+    _label2.text = self.song.artist;
     
     // track image
     if (self.song.cover)
@@ -80,9 +75,9 @@
         [_image setImage:[sheet image]];
     }
 
-    //mask
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Header.HeaderAvatarMask" error:nil];
-    [_mask setImage:[sheet image]];
+//    //mask
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Header.HeaderAvatarMask" error:nil];
+//    [_mask setImage:[sheet image]];
 
     [_textView becomeFirstResponder];
     
@@ -161,21 +156,21 @@
 
 
 
-#pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
+#pragma mark - TopBarSaveOrCancelDelegate
+
+- (BOOL)topBarCancel
 {
     if (_target == nil)
-        return;
-    
+        return NO;
     [_target performSelector:_action];
+    return NO;
 }
 
-
-- (IBAction)onPublishButton:(id)sender
+- (BOOL)topBarSave
 {
     if (_target == nil)
-        return;
+        return NO;
     
     NSString* title = NSLocalizedString(@"Yasound_share", nil);
     
@@ -183,8 +178,26 @@
     [[YasoundSessionManager main] postMessageForTwitter:_textView.text title:title picture:self.pictureUrl target:self action:@selector(onPostMessageFinished:)];
     
     [ActivityAlertView showWithTitle:nil];
-
+    return NO;
 }
+
+
+- (NSString*)titleForActionButton
+{
+    return NSLocalizedString(@"Share.Twitter.button", nil);
+}
+
+- (UIColor*)tintForActionButton
+{
+//    return [UIColor colorWithRed:127.f/255.f green:229.f/255.f blue:252.f/255.f alpha:1];
+    return [UIColor colorWithRed:95.f/255.f green:192.f/255.f blue:222.f/255.f alpha:1];
+}
+
+
+
+
+
+
 
 
 - (void)onPostMessageFinished:(NSNumber*)finished
@@ -217,15 +230,15 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    NSInteger length = _textView.text.length;
-    
-    NSString* text = NSLocalizedString(@"ShareModalView_char_count", nil);
-    _statusLabel1.text = [NSString stringWithFormat:text, length];
-    
-    if (length > TWITTER_MAX_LENGTH)
-        _statusLabel2.text = NSLocalizedString(@"ShareModalView_twitter_constraint", nil);
-    else
-        _statusLabel2.text = @"";
+    CGFloat num = (TWITTER_MAX_LENGTH - _textView.text.length);
+    if (num < 0)
+    {
+        num = 0;
+        _textView.text = [_textView.text substringToIndex:TWITTER_MAX_LENGTH];
+    }
+
+    _labelWarning.text = NSLocalizedString(@"Bio.label", nil);
+    _labelWarning.text = [NSString stringWithFormat:_labelWarning.text, num];
 }
 
 

@@ -49,13 +49,9 @@
 {
     [super viewDidLoad];
     
-    // GUI
-//    _buttonCancel.title = NSLocalizedString(@"Navigation_cancel", nil);
-//    _buttonSend.title = NSLocalizedString(@"ShareModalView_publish_button_label", nil);
-//    _itemTitle.title = NSLocalizedString(@"ShareModalView_facebook_label", nil);
-
     _label1.text = self.song.name;
     _label2.text = self.song.artist;
+    _labelWarning.hidden = YES;
     
     // track image
     if (self.song.cover)
@@ -115,14 +111,6 @@
 
 
 #pragma mark - TopBarSaveOrCancelDelegate
-
-//- (IBAction)onBack:(id)sender
-//{
-//    if (_target == nil)
-//        return;
-//    
-//    [_target performSelector:_action];
-//}
 
 - (BOOL)topBarCancel
 {
