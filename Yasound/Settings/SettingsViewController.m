@@ -57,19 +57,19 @@
     return self;
 }
 
-- (id) createWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self)
-    {
-        self.radio = nil;
-        self.createMode = YES;
-    }
-    
-    return self;
-}
-
-
+//- (id) createWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self)
+//    {
+//        self.radio = nil;
+//        self.createMode = YES;
+//    }
+//    
+//    return self;
+//}
+//
+//
 
 
 
