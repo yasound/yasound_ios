@@ -570,13 +570,7 @@ static UIImage* gDummyImage = nil;
         else
             imageNeedsUpdate = YES;
 
-//        if (gDummyImage == nil)
-//            gDummyImage = [UIImage imageNamed:@"avatarDummy.png"];
-//        
-//        // meanwhile, give the target the dummy image
-//        image = gDummyImage;
-        
-        image  = [UIImage imageNamed:@"avatarDummy.png"];
+        image  = [UIImage imageNamed:@"commonAvatarDummy.png"];
     }
     
     // it's downloaded already, give it to the target

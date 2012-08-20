@@ -842,6 +842,22 @@
 		BC03C40E15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
 		BC03C40F15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
 		BC03C41015E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
+		BC03C41315E2BDA00017388D /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
+		BC03C41415E2BDA00017388D /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
+		BC03C41515E2BDA00017388D /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
+		BC03C41615E2BDA00017388D /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
+		BC03C41715E2BDA00017388D /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
+		BC03C41815E2BDA00017388D /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
+		BC03C41915E2BDA00017388D /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
+		BC03C41A15E2BDA00017388D /* commonAvatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */; };
+		BC03C41B15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */; };
+		BC03C41C15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */; };
+		BC03C41D15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */; };
+		BC03C41E15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */; };
+		BC03C41F15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */; };
+		BC03C42015E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */; };
+		BC03C42115E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */; };
+		BC03C42215E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */; };
 		BC071AB415D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
 		BC071AB515D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
 		BC071AB615D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
@@ -4301,166 +4317,6 @@
 		BCE3696D15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB615D7FD2F008C26AC /* radioListUserMask@2x.png */; };
 		BCE3696E15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB615D7FD2F008C26AC /* radioListUserMask@2x.png */; };
 		BCE3696F15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB615D7FD2F008C26AC /* radioListUserMask@2x.png */; };
-		BCE3697015D7FD30008C26AC /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB815D7FD2F008C26AC /* avatarDummy.png */; };
-		BCE3697115D7FD30008C26AC /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB815D7FD2F008C26AC /* avatarDummy.png */; };
-		BCE3697215D7FD30008C26AC /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB815D7FD2F008C26AC /* avatarDummy.png */; };
-		BCE3697315D7FD30008C26AC /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB815D7FD2F008C26AC /* avatarDummy.png */; };
-		BCE3697415D7FD30008C26AC /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB815D7FD2F008C26AC /* avatarDummy.png */; };
-		BCE3697515D7FD30008C26AC /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB815D7FD2F008C26AC /* avatarDummy.png */; };
-		BCE3697615D7FD30008C26AC /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB815D7FD2F008C26AC /* avatarDummy.png */; };
-		BCE3697715D7FD30008C26AC /* avatarDummy.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB815D7FD2F008C26AC /* avatarDummy.png */; };
-		BCE3697815D7FD30008C26AC /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB915D7FD2F008C26AC /* avatarDummy@2x.png */; };
-		BCE3697915D7FD30008C26AC /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB915D7FD2F008C26AC /* avatarDummy@2x.png */; };
-		BCE3697A15D7FD30008C26AC /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB915D7FD2F008C26AC /* avatarDummy@2x.png */; };
-		BCE3697B15D7FD30008C26AC /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB915D7FD2F008C26AC /* avatarDummy@2x.png */; };
-		BCE3697C15D7FD30008C26AC /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB915D7FD2F008C26AC /* avatarDummy@2x.png */; };
-		BCE3697D15D7FD30008C26AC /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB915D7FD2F008C26AC /* avatarDummy@2x.png */; };
-		BCE3697E15D7FD30008C26AC /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB915D7FD2F008C26AC /* avatarDummy@2x.png */; };
-		BCE3697F15D7FD30008C26AC /* avatarDummy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FB915D7FD2F008C26AC /* avatarDummy@2x.png */; };
-		BCE3698015D7FD30008C26AC /* CellButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBA15D7FD2F008C26AC /* CellButton.png */; };
-		BCE3698115D7FD30008C26AC /* CellButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBA15D7FD2F008C26AC /* CellButton.png */; };
-		BCE3698215D7FD30008C26AC /* CellButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBA15D7FD2F008C26AC /* CellButton.png */; };
-		BCE3698315D7FD30008C26AC /* CellButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBA15D7FD2F008C26AC /* CellButton.png */; };
-		BCE3698415D7FD30008C26AC /* CellButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBA15D7FD2F008C26AC /* CellButton.png */; };
-		BCE3698515D7FD30008C26AC /* CellButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBA15D7FD2F008C26AC /* CellButton.png */; };
-		BCE3698615D7FD30008C26AC /* CellButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBA15D7FD2F008C26AC /* CellButton.png */; };
-		BCE3698715D7FD30008C26AC /* CellButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBA15D7FD2F008C26AC /* CellButton.png */; };
-		BCE3698815D7FD30008C26AC /* CellButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBB15D7FD2F008C26AC /* CellButton@2x.png */; };
-		BCE3698915D7FD30008C26AC /* CellButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBB15D7FD2F008C26AC /* CellButton@2x.png */; };
-		BCE3698A15D7FD30008C26AC /* CellButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBB15D7FD2F008C26AC /* CellButton@2x.png */; };
-		BCE3698B15D7FD30008C26AC /* CellButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBB15D7FD2F008C26AC /* CellButton@2x.png */; };
-		BCE3698C15D7FD30008C26AC /* CellButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBB15D7FD2F008C26AC /* CellButton@2x.png */; };
-		BCE3698D15D7FD30008C26AC /* CellButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBB15D7FD2F008C26AC /* CellButton@2x.png */; };
-		BCE3698E15D7FD30008C26AC /* CellButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBB15D7FD2F008C26AC /* CellButton@2x.png */; };
-		BCE3698F15D7FD30008C26AC /* CellButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBB15D7FD2F008C26AC /* CellButton@2x.png */; };
-		BCE3699015D7FD30008C26AC /* CellButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBC15D7FD2F008C26AC /* CellButtonHighlighted.png */; };
-		BCE3699115D7FD30008C26AC /* CellButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBC15D7FD2F008C26AC /* CellButtonHighlighted.png */; };
-		BCE3699215D7FD30008C26AC /* CellButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBC15D7FD2F008C26AC /* CellButtonHighlighted.png */; };
-		BCE3699315D7FD30008C26AC /* CellButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBC15D7FD2F008C26AC /* CellButtonHighlighted.png */; };
-		BCE3699415D7FD30008C26AC /* CellButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBC15D7FD2F008C26AC /* CellButtonHighlighted.png */; };
-		BCE3699515D7FD30008C26AC /* CellButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBC15D7FD2F008C26AC /* CellButtonHighlighted.png */; };
-		BCE3699615D7FD30008C26AC /* CellButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBC15D7FD2F008C26AC /* CellButtonHighlighted.png */; };
-		BCE3699715D7FD30008C26AC /* CellButtonHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBC15D7FD2F008C26AC /* CellButtonHighlighted.png */; };
-		BCE3699815D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBD15D7FD2F008C26AC /* CellButtonHighlighted@2x.png */; };
-		BCE3699915D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBD15D7FD2F008C26AC /* CellButtonHighlighted@2x.png */; };
-		BCE3699A15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBD15D7FD2F008C26AC /* CellButtonHighlighted@2x.png */; };
-		BCE3699B15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBD15D7FD2F008C26AC /* CellButtonHighlighted@2x.png */; };
-		BCE3699C15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBD15D7FD2F008C26AC /* CellButtonHighlighted@2x.png */; };
-		BCE3699D15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBD15D7FD2F008C26AC /* CellButtonHighlighted@2x.png */; };
-		BCE3699E15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBD15D7FD2F008C26AC /* CellButtonHighlighted@2x.png */; };
-		BCE3699F15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBD15D7FD2F008C26AC /* CellButtonHighlighted@2x.png */; };
-		BCE369A015D7FD30008C26AC /* CellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBE15D7FD2F008C26AC /* CellRadioDark.png */; };
-		BCE369A115D7FD30008C26AC /* CellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBE15D7FD2F008C26AC /* CellRadioDark.png */; };
-		BCE369A215D7FD30008C26AC /* CellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBE15D7FD2F008C26AC /* CellRadioDark.png */; };
-		BCE369A315D7FD30008C26AC /* CellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBE15D7FD2F008C26AC /* CellRadioDark.png */; };
-		BCE369A415D7FD30008C26AC /* CellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBE15D7FD2F008C26AC /* CellRadioDark.png */; };
-		BCE369A515D7FD30008C26AC /* CellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBE15D7FD2F008C26AC /* CellRadioDark.png */; };
-		BCE369A615D7FD30008C26AC /* CellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBE15D7FD2F008C26AC /* CellRadioDark.png */; };
-		BCE369A715D7FD30008C26AC /* CellRadioDark.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBE15D7FD2F008C26AC /* CellRadioDark.png */; };
-		BCE369A815D7FD30008C26AC /* CellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBF15D7FD2F008C26AC /* CellRadioDark@2x.png */; };
-		BCE369A915D7FD30008C26AC /* CellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBF15D7FD2F008C26AC /* CellRadioDark@2x.png */; };
-		BCE369AA15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBF15D7FD2F008C26AC /* CellRadioDark@2x.png */; };
-		BCE369AB15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBF15D7FD2F008C26AC /* CellRadioDark@2x.png */; };
-		BCE369AC15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBF15D7FD2F008C26AC /* CellRadioDark@2x.png */; };
-		BCE369AD15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBF15D7FD2F008C26AC /* CellRadioDark@2x.png */; };
-		BCE369AE15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBF15D7FD2F008C26AC /* CellRadioDark@2x.png */; };
-		BCE369AF15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FBF15D7FD2F008C26AC /* CellRadioDark@2x.png */; };
-		BCE369B015D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC015D7FD2F008C26AC /* CellRadioDark_Mask.png */; };
-		BCE369B115D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC015D7FD2F008C26AC /* CellRadioDark_Mask.png */; };
-		BCE369B215D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC015D7FD2F008C26AC /* CellRadioDark_Mask.png */; };
-		BCE369B315D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC015D7FD2F008C26AC /* CellRadioDark_Mask.png */; };
-		BCE369B415D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC015D7FD2F008C26AC /* CellRadioDark_Mask.png */; };
-		BCE369B515D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC015D7FD2F008C26AC /* CellRadioDark_Mask.png */; };
-		BCE369B615D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC015D7FD2F008C26AC /* CellRadioDark_Mask.png */; };
-		BCE369B715D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC015D7FD2F008C26AC /* CellRadioDark_Mask.png */; };
-		BCE369B815D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC115D7FD2F008C26AC /* CellRadioDark_Mask@2x.png */; };
-		BCE369B915D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC115D7FD2F008C26AC /* CellRadioDark_Mask@2x.png */; };
-		BCE369BA15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC115D7FD2F008C26AC /* CellRadioDark_Mask@2x.png */; };
-		BCE369BB15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC115D7FD2F008C26AC /* CellRadioDark_Mask@2x.png */; };
-		BCE369BC15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC115D7FD2F008C26AC /* CellRadioDark_Mask@2x.png */; };
-		BCE369BD15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC115D7FD2F008C26AC /* CellRadioDark_Mask@2x.png */; };
-		BCE369BE15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC115D7FD2F008C26AC /* CellRadioDark_Mask@2x.png */; };
-		BCE369BF15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC115D7FD2F008C26AC /* CellRadioDark_Mask@2x.png */; };
-		BCE369C015D7FD30008C26AC /* CellRadioHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC215D7FD2F008C26AC /* CellRadioHighlighted.png */; };
-		BCE369C115D7FD30008C26AC /* CellRadioHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC215D7FD2F008C26AC /* CellRadioHighlighted.png */; };
-		BCE369C215D7FD30008C26AC /* CellRadioHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC215D7FD2F008C26AC /* CellRadioHighlighted.png */; };
-		BCE369C315D7FD30008C26AC /* CellRadioHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC215D7FD2F008C26AC /* CellRadioHighlighted.png */; };
-		BCE369C415D7FD30008C26AC /* CellRadioHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC215D7FD2F008C26AC /* CellRadioHighlighted.png */; };
-		BCE369C515D7FD30008C26AC /* CellRadioHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC215D7FD2F008C26AC /* CellRadioHighlighted.png */; };
-		BCE369C615D7FD30008C26AC /* CellRadioHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC215D7FD2F008C26AC /* CellRadioHighlighted.png */; };
-		BCE369C715D7FD30008C26AC /* CellRadioHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC215D7FD2F008C26AC /* CellRadioHighlighted.png */; };
-		BCE369C815D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC315D7FD2F008C26AC /* CellRadioHighlighted@2x.png */; };
-		BCE369C915D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC315D7FD2F008C26AC /* CellRadioHighlighted@2x.png */; };
-		BCE369CA15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC315D7FD2F008C26AC /* CellRadioHighlighted@2x.png */; };
-		BCE369CB15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC315D7FD2F008C26AC /* CellRadioHighlighted@2x.png */; };
-		BCE369CC15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC315D7FD2F008C26AC /* CellRadioHighlighted@2x.png */; };
-		BCE369CD15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC315D7FD2F008C26AC /* CellRadioHighlighted@2x.png */; };
-		BCE369CE15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC315D7FD2F008C26AC /* CellRadioHighlighted@2x.png */; };
-		BCE369CF15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC315D7FD2F008C26AC /* CellRadioHighlighted@2x.png */; };
-		BCE369D015D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC415D7FD2F008C26AC /* CellRadioHighlighted_Mask.png */; };
-		BCE369D115D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC415D7FD2F008C26AC /* CellRadioHighlighted_Mask.png */; };
-		BCE369D215D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC415D7FD2F008C26AC /* CellRadioHighlighted_Mask.png */; };
-		BCE369D315D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC415D7FD2F008C26AC /* CellRadioHighlighted_Mask.png */; };
-		BCE369D415D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC415D7FD2F008C26AC /* CellRadioHighlighted_Mask.png */; };
-		BCE369D515D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC415D7FD2F008C26AC /* CellRadioHighlighted_Mask.png */; };
-		BCE369D615D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC415D7FD2F008C26AC /* CellRadioHighlighted_Mask.png */; };
-		BCE369D715D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC415D7FD2F008C26AC /* CellRadioHighlighted_Mask.png */; };
-		BCE369D815D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC515D7FD2F008C26AC /* CellRadioHighlighted_Mask@2x.png */; };
-		BCE369D915D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC515D7FD2F008C26AC /* CellRadioHighlighted_Mask@2x.png */; };
-		BCE369DA15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC515D7FD2F008C26AC /* CellRadioHighlighted_Mask@2x.png */; };
-		BCE369DB15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC515D7FD2F008C26AC /* CellRadioHighlighted_Mask@2x.png */; };
-		BCE369DC15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC515D7FD2F008C26AC /* CellRadioHighlighted_Mask@2x.png */; };
-		BCE369DD15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC515D7FD2F008C26AC /* CellRadioHighlighted_Mask@2x.png */; };
-		BCE369DE15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC515D7FD2F008C26AC /* CellRadioHighlighted_Mask@2x.png */; };
-		BCE369DF15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC515D7FD2F008C26AC /* CellRadioHighlighted_Mask@2x.png */; };
-		BCE369E015D7FD30008C26AC /* CellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC615D7FD2F008C26AC /* CellRadioLight.png */; };
-		BCE369E115D7FD30008C26AC /* CellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC615D7FD2F008C26AC /* CellRadioLight.png */; };
-		BCE369E215D7FD30008C26AC /* CellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC615D7FD2F008C26AC /* CellRadioLight.png */; };
-		BCE369E315D7FD30008C26AC /* CellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC615D7FD2F008C26AC /* CellRadioLight.png */; };
-		BCE369E415D7FD30008C26AC /* CellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC615D7FD2F008C26AC /* CellRadioLight.png */; };
-		BCE369E515D7FD30008C26AC /* CellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC615D7FD2F008C26AC /* CellRadioLight.png */; };
-		BCE369E615D7FD30008C26AC /* CellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC615D7FD2F008C26AC /* CellRadioLight.png */; };
-		BCE369E715D7FD30008C26AC /* CellRadioLight.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC615D7FD2F008C26AC /* CellRadioLight.png */; };
-		BCE369E815D7FD30008C26AC /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC715D7FD2F008C26AC /* CellRadioLight@2x.png */; };
-		BCE369E915D7FD30008C26AC /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC715D7FD2F008C26AC /* CellRadioLight@2x.png */; };
-		BCE369EA15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC715D7FD2F008C26AC /* CellRadioLight@2x.png */; };
-		BCE369EB15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC715D7FD2F008C26AC /* CellRadioLight@2x.png */; };
-		BCE369EC15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC715D7FD2F008C26AC /* CellRadioLight@2x.png */; };
-		BCE369ED15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC715D7FD2F008C26AC /* CellRadioLight@2x.png */; };
-		BCE369EE15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC715D7FD2F008C26AC /* CellRadioLight@2x.png */; };
-		BCE369EF15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC715D7FD2F008C26AC /* CellRadioLight@2x.png */; };
-		BCE369F015D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC815D7FD2F008C26AC /* CellRadioLight_Mask.png */; };
-		BCE369F115D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC815D7FD2F008C26AC /* CellRadioLight_Mask.png */; };
-		BCE369F215D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC815D7FD2F008C26AC /* CellRadioLight_Mask.png */; };
-		BCE369F315D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC815D7FD2F008C26AC /* CellRadioLight_Mask.png */; };
-		BCE369F415D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC815D7FD2F008C26AC /* CellRadioLight_Mask.png */; };
-		BCE369F515D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC815D7FD2F008C26AC /* CellRadioLight_Mask.png */; };
-		BCE369F615D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC815D7FD2F008C26AC /* CellRadioLight_Mask.png */; };
-		BCE369F715D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC815D7FD2F008C26AC /* CellRadioLight_Mask.png */; };
-		BCE369F815D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC915D7FD2F008C26AC /* CellRadioLight_Mask@2x.png */; };
-		BCE369F915D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC915D7FD2F008C26AC /* CellRadioLight_Mask@2x.png */; };
-		BCE369FA15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC915D7FD2F008C26AC /* CellRadioLight_Mask@2x.png */; };
-		BCE369FB15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC915D7FD2F008C26AC /* CellRadioLight_Mask@2x.png */; };
-		BCE369FC15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC915D7FD2F008C26AC /* CellRadioLight_Mask@2x.png */; };
-		BCE369FD15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC915D7FD2F008C26AC /* CellRadioLight_Mask@2x.png */; };
-		BCE369FE15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC915D7FD2F008C26AC /* CellRadioLight_Mask@2x.png */; };
-		BCE369FF15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FC915D7FD2F008C26AC /* CellRadioLight_Mask@2x.png */; };
-		BCE36A0015D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCA15D7FD2F008C26AC /* CellRadioUser_Mask.png */; };
-		BCE36A0115D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCA15D7FD2F008C26AC /* CellRadioUser_Mask.png */; };
-		BCE36A0215D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCA15D7FD2F008C26AC /* CellRadioUser_Mask.png */; };
-		BCE36A0315D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCA15D7FD2F008C26AC /* CellRadioUser_Mask.png */; };
-		BCE36A0415D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCA15D7FD2F008C26AC /* CellRadioUser_Mask.png */; };
-		BCE36A0515D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCA15D7FD2F008C26AC /* CellRadioUser_Mask.png */; };
-		BCE36A0615D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCA15D7FD2F008C26AC /* CellRadioUser_Mask.png */; };
-		BCE36A0715D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCA15D7FD2F008C26AC /* CellRadioUser_Mask.png */; };
-		BCE36A0815D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCB15D7FD2F008C26AC /* CellRadioUser_Mask@2x.png */; };
-		BCE36A0915D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCB15D7FD2F008C26AC /* CellRadioUser_Mask@2x.png */; };
-		BCE36A0A15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCB15D7FD2F008C26AC /* CellRadioUser_Mask@2x.png */; };
-		BCE36A0B15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCB15D7FD2F008C26AC /* CellRadioUser_Mask@2x.png */; };
-		BCE36A0C15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCB15D7FD2F008C26AC /* CellRadioUser_Mask@2x.png */; };
-		BCE36A0D15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCB15D7FD2F008C26AC /* CellRadioUser_Mask@2x.png */; };
-		BCE36A0E15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCB15D7FD2F008C26AC /* CellRadioUser_Mask@2x.png */; };
-		BCE36A0F15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCB15D7FD2F008C26AC /* CellRadioUser_Mask@2x.png */; };
 		BCE36A1015D7FD30008C26AC /* schedulingIconClock.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCD15D7FD2F008C26AC /* schedulingIconClock.png */; };
 		BCE36A1115D7FD30008C26AC /* schedulingIconClock.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCD15D7FD2F008C26AC /* schedulingIconClock.png */; };
 		BCE36A1215D7FD30008C26AC /* schedulingIconClock.png in Resources */ = {isa = PBXBuildFile; fileRef = BCE35FCD15D7FD2F008C26AC /* schedulingIconClock.png */; };
@@ -5846,6 +5702,8 @@
 		BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonBigButtonRed@2x.png"; sourceTree = "<group>"; };
 		BC03C3FF15E27DB00017388D /* myRadiosDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosDelete.png; sourceTree = "<group>"; };
 		BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosDelete@2x.png"; sourceTree = "<group>"; };
+		BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonAvatarDummy.png; sourceTree = "<group>"; };
+		BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonAvatarDummy@2x.png"; sourceTree = "<group>"; };
 		BC071AB115D9070E001F38D7 /* ProgrammingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingViewController.h; path = Programming/ProgrammingViewController.h; sourceTree = "<group>"; };
 		BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingViewController.m; path = Programming/ProgrammingViewController.m; sourceTree = "<group>"; };
 		BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingViewController.xib; path = Programming/ProgrammingViewController.xib; sourceTree = "<group>"; };
@@ -6476,26 +6334,6 @@
 		BCE35FB415D7FD2F008C26AC /* radioListSubscribersIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListSubscribersIcon@2x.png"; sourceTree = "<group>"; };
 		BCE35FB515D7FD2F008C26AC /* radioListUserMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioListUserMask.png; sourceTree = "<group>"; };
 		BCE35FB615D7FD2F008C26AC /* radioListUserMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radioListUserMask@2x.png"; sourceTree = "<group>"; };
-		BCE35FB815D7FD2F008C26AC /* avatarDummy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatarDummy.png; sourceTree = "<group>"; };
-		BCE35FB915D7FD2F008C26AC /* avatarDummy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatarDummy@2x.png"; sourceTree = "<group>"; };
-		BCE35FBA15D7FD2F008C26AC /* CellButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellButton.png; sourceTree = "<group>"; };
-		BCE35FBB15D7FD2F008C26AC /* CellButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellButton@2x.png"; sourceTree = "<group>"; };
-		BCE35FBC15D7FD2F008C26AC /* CellButtonHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellButtonHighlighted.png; sourceTree = "<group>"; };
-		BCE35FBD15D7FD2F008C26AC /* CellButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellButtonHighlighted@2x.png"; sourceTree = "<group>"; };
-		BCE35FBE15D7FD2F008C26AC /* CellRadioDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRadioDark.png; sourceTree = "<group>"; };
-		BCE35FBF15D7FD2F008C26AC /* CellRadioDark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRadioDark@2x.png"; sourceTree = "<group>"; };
-		BCE35FC015D7FD2F008C26AC /* CellRadioDark_Mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRadioDark_Mask.png; sourceTree = "<group>"; };
-		BCE35FC115D7FD2F008C26AC /* CellRadioDark_Mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRadioDark_Mask@2x.png"; sourceTree = "<group>"; };
-		BCE35FC215D7FD2F008C26AC /* CellRadioHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRadioHighlighted.png; sourceTree = "<group>"; };
-		BCE35FC315D7FD2F008C26AC /* CellRadioHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRadioHighlighted@2x.png"; sourceTree = "<group>"; };
-		BCE35FC415D7FD2F008C26AC /* CellRadioHighlighted_Mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRadioHighlighted_Mask.png; sourceTree = "<group>"; };
-		BCE35FC515D7FD2F008C26AC /* CellRadioHighlighted_Mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRadioHighlighted_Mask@2x.png"; sourceTree = "<group>"; };
-		BCE35FC615D7FD2F008C26AC /* CellRadioLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRadioLight.png; sourceTree = "<group>"; };
-		BCE35FC715D7FD2F008C26AC /* CellRadioLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRadioLight@2x.png"; sourceTree = "<group>"; };
-		BCE35FC815D7FD2F008C26AC /* CellRadioLight_Mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRadioLight_Mask.png; sourceTree = "<group>"; };
-		BCE35FC915D7FD2F008C26AC /* CellRadioLight_Mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRadioLight_Mask@2x.png"; sourceTree = "<group>"; };
-		BCE35FCA15D7FD2F008C26AC /* CellRadioUser_Mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRadioUser_Mask.png; sourceTree = "<group>"; };
-		BCE35FCB15D7FD2F008C26AC /* CellRadioUser_Mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CellRadioUser_Mask@2x.png"; sourceTree = "<group>"; };
 		BCE35FCD15D7FD2F008C26AC /* schedulingIconClock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schedulingIconClock.png; sourceTree = "<group>"; };
 		BCE35FCE15D7FD2F008C26AC /* schedulingIconClock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "schedulingIconClock@2x.png"; sourceTree = "<group>"; };
 		BCE35FD015D7FD2F008C26AC /* searchBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchBarBackground.png; sourceTree = "<group>"; };
@@ -7997,6 +7835,8 @@
 		BCE35ECE15D7FD2E008C26AC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */,
+				BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */,
 				BCBF98A415DE7D5200BC3D64 /* commonBigButtonGray.png */,
 				BCBF98A515DE7D5200BC3D64 /* commonBigButtonGray@2x.png */,
 				BCBF98A615DE7D5200BC3D64 /* commonNoisedBackground.png */,
@@ -8274,33 +8114,6 @@
 			path = RadioList;
 			sourceTree = "<group>";
 		};
-		BCE35FB715D7FD2F008C26AC /* RadioSelection */ = {
-			isa = PBXGroup;
-			children = (
-				BCE35FB815D7FD2F008C26AC /* avatarDummy.png */,
-				BCE35FB915D7FD2F008C26AC /* avatarDummy@2x.png */,
-				BCE35FBA15D7FD2F008C26AC /* CellButton.png */,
-				BCE35FBB15D7FD2F008C26AC /* CellButton@2x.png */,
-				BCE35FBC15D7FD2F008C26AC /* CellButtonHighlighted.png */,
-				BCE35FBD15D7FD2F008C26AC /* CellButtonHighlighted@2x.png */,
-				BCE35FBE15D7FD2F008C26AC /* CellRadioDark.png */,
-				BCE35FBF15D7FD2F008C26AC /* CellRadioDark@2x.png */,
-				BCE35FC015D7FD2F008C26AC /* CellRadioDark_Mask.png */,
-				BCE35FC115D7FD2F008C26AC /* CellRadioDark_Mask@2x.png */,
-				BCE35FC215D7FD2F008C26AC /* CellRadioHighlighted.png */,
-				BCE35FC315D7FD2F008C26AC /* CellRadioHighlighted@2x.png */,
-				BCE35FC415D7FD2F008C26AC /* CellRadioHighlighted_Mask.png */,
-				BCE35FC515D7FD2F008C26AC /* CellRadioHighlighted_Mask@2x.png */,
-				BCE35FC615D7FD2F008C26AC /* CellRadioLight.png */,
-				BCE35FC715D7FD2F008C26AC /* CellRadioLight@2x.png */,
-				BCE35FC815D7FD2F008C26AC /* CellRadioLight_Mask.png */,
-				BCE35FC915D7FD2F008C26AC /* CellRadioLight_Mask@2x.png */,
-				BCE35FCA15D7FD2F008C26AC /* CellRadioUser_Mask.png */,
-				BCE35FCB15D7FD2F008C26AC /* CellRadioUser_Mask@2x.png */,
-			);
-			path = RadioSelection;
-			sourceTree = "<group>";
-		};
 		BCE35FCC15D7FD2F008C26AC /* Scheduling */ = {
 			isa = PBXGroup;
 			children = (
@@ -8566,7 +8379,6 @@
 				BCE35FA015D7FD2F008C26AC /* Profile */,
 				BCE35FA315D7FD2F008C26AC /* Programming */,
 				BCE35FAA15D7FD2F008C26AC /* RadioList */,
-				BCE35FB715D7FD2F008C26AC /* RadioSelection */,
 				BCE35FCC15D7FD2F008C26AC /* Scheduling */,
 				BCE35FCF15D7FD2F008C26AC /* SearchBar */,
 				BC03C33315E1418F0017388D /* Stats */,
@@ -9245,26 +9057,6 @@
 				BCE3695E15D7FD30008C26AC /* radioListSubscribersIcon@2x.png in Resources */,
 				BCE3696615D7FD30008C26AC /* radioListUserMask.png in Resources */,
 				BCE3696E15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
-				BCE3697615D7FD30008C26AC /* avatarDummy.png in Resources */,
-				BCE3697E15D7FD30008C26AC /* avatarDummy@2x.png in Resources */,
-				BCE3698615D7FD30008C26AC /* CellButton.png in Resources */,
-				BCE3698E15D7FD30008C26AC /* CellButton@2x.png in Resources */,
-				BCE3699615D7FD30008C26AC /* CellButtonHighlighted.png in Resources */,
-				BCE3699E15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */,
-				BCE369A615D7FD30008C26AC /* CellRadioDark.png in Resources */,
-				BCE369AE15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */,
-				BCE369B615D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */,
-				BCE369BE15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */,
-				BCE369C615D7FD30008C26AC /* CellRadioHighlighted.png in Resources */,
-				BCE369CE15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */,
-				BCE369D615D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */,
-				BCE369DE15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */,
-				BCE369E615D7FD30008C26AC /* CellRadioLight.png in Resources */,
-				BCE369EE15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */,
-				BCE369F615D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */,
-				BCE369FE15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */,
-				BCE36A0615D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */,
-				BCE36A0E15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */,
 				BCE36A1615D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1E15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2615D7FD30008C26AC /* searchBarBackground.png in Resources */,
@@ -9438,6 +9230,8 @@
 				BC03C3FD15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 				BC03C40715E27DB00017388D /* myRadiosDelete.png in Resources */,
 				BC03C40F15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
+				BC03C41915E2BDA00017388D /* commonAvatarDummy.png in Resources */,
+				BC03C42115E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9729,26 +9523,6 @@
 				BCE3695F15D7FD30008C26AC /* radioListSubscribersIcon@2x.png in Resources */,
 				BCE3696715D7FD30008C26AC /* radioListUserMask.png in Resources */,
 				BCE3696F15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
-				BCE3697715D7FD30008C26AC /* avatarDummy.png in Resources */,
-				BCE3697F15D7FD30008C26AC /* avatarDummy@2x.png in Resources */,
-				BCE3698715D7FD30008C26AC /* CellButton.png in Resources */,
-				BCE3698F15D7FD30008C26AC /* CellButton@2x.png in Resources */,
-				BCE3699715D7FD30008C26AC /* CellButtonHighlighted.png in Resources */,
-				BCE3699F15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */,
-				BCE369A715D7FD30008C26AC /* CellRadioDark.png in Resources */,
-				BCE369AF15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */,
-				BCE369B715D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */,
-				BCE369BF15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */,
-				BCE369C715D7FD30008C26AC /* CellRadioHighlighted.png in Resources */,
-				BCE369CF15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */,
-				BCE369D715D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */,
-				BCE369DF15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */,
-				BCE369E715D7FD30008C26AC /* CellRadioLight.png in Resources */,
-				BCE369EF15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */,
-				BCE369F715D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */,
-				BCE369FF15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */,
-				BCE36A0715D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */,
-				BCE36A0F15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */,
 				BCE36A1715D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1F15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2715D7FD30008C26AC /* searchBarBackground.png in Resources */,
@@ -9922,6 +9696,8 @@
 				BC03C3FE15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 				BC03C40815E27DB00017388D /* myRadiosDelete.png in Resources */,
 				BC03C41015E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
+				BC03C41A15E2BDA00017388D /* commonAvatarDummy.png in Resources */,
+				BC03C42215E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10207,26 +9983,6 @@
 				BCE3695D15D7FD30008C26AC /* radioListSubscribersIcon@2x.png in Resources */,
 				BCE3696515D7FD30008C26AC /* radioListUserMask.png in Resources */,
 				BCE3696D15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
-				BCE3697515D7FD30008C26AC /* avatarDummy.png in Resources */,
-				BCE3697D15D7FD30008C26AC /* avatarDummy@2x.png in Resources */,
-				BCE3698515D7FD30008C26AC /* CellButton.png in Resources */,
-				BCE3698D15D7FD30008C26AC /* CellButton@2x.png in Resources */,
-				BCE3699515D7FD30008C26AC /* CellButtonHighlighted.png in Resources */,
-				BCE3699D15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */,
-				BCE369A515D7FD30008C26AC /* CellRadioDark.png in Resources */,
-				BCE369AD15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */,
-				BCE369B515D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */,
-				BCE369BD15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */,
-				BCE369C515D7FD30008C26AC /* CellRadioHighlighted.png in Resources */,
-				BCE369CD15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */,
-				BCE369D515D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */,
-				BCE369DD15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */,
-				BCE369E515D7FD30008C26AC /* CellRadioLight.png in Resources */,
-				BCE369ED15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */,
-				BCE369F515D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */,
-				BCE369FD15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */,
-				BCE36A0515D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */,
-				BCE36A0D15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */,
 				BCE36A1515D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1D15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2515D7FD30008C26AC /* searchBarBackground.png in Resources */,
@@ -10400,6 +10156,8 @@
 				BC03C3FC15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 				BC03C40615E27DB00017388D /* myRadiosDelete.png in Resources */,
 				BC03C40E15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
+				BC03C41815E2BDA00017388D /* commonAvatarDummy.png in Resources */,
+				BC03C42015E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10690,26 +10448,6 @@
 				BCE3695A15D7FD30008C26AC /* radioListSubscribersIcon@2x.png in Resources */,
 				BCE3696215D7FD30008C26AC /* radioListUserMask.png in Resources */,
 				BCE3696A15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
-				BCE3697215D7FD30008C26AC /* avatarDummy.png in Resources */,
-				BCE3697A15D7FD30008C26AC /* avatarDummy@2x.png in Resources */,
-				BCE3698215D7FD30008C26AC /* CellButton.png in Resources */,
-				BCE3698A15D7FD30008C26AC /* CellButton@2x.png in Resources */,
-				BCE3699215D7FD30008C26AC /* CellButtonHighlighted.png in Resources */,
-				BCE3699A15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */,
-				BCE369A215D7FD30008C26AC /* CellRadioDark.png in Resources */,
-				BCE369AA15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */,
-				BCE369B215D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */,
-				BCE369BA15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */,
-				BCE369C215D7FD30008C26AC /* CellRadioHighlighted.png in Resources */,
-				BCE369CA15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */,
-				BCE369D215D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */,
-				BCE369DA15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */,
-				BCE369E215D7FD30008C26AC /* CellRadioLight.png in Resources */,
-				BCE369EA15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */,
-				BCE369F215D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */,
-				BCE369FA15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */,
-				BCE36A0215D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */,
-				BCE36A0A15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */,
 				BCE36A1215D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1A15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2215D7FD30008C26AC /* searchBarBackground.png in Resources */,
@@ -10883,6 +10621,8 @@
 				BC03C3F915E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 				BC03C40315E27DB00017388D /* myRadiosDelete.png in Resources */,
 				BC03C40B15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
+				BC03C41515E2BDA00017388D /* commonAvatarDummy.png in Resources */,
+				BC03C41D15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11173,26 +10913,6 @@
 				BCE3695915D7FD30008C26AC /* radioListSubscribersIcon@2x.png in Resources */,
 				BCE3696115D7FD30008C26AC /* radioListUserMask.png in Resources */,
 				BCE3696915D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
-				BCE3697115D7FD30008C26AC /* avatarDummy.png in Resources */,
-				BCE3697915D7FD30008C26AC /* avatarDummy@2x.png in Resources */,
-				BCE3698115D7FD30008C26AC /* CellButton.png in Resources */,
-				BCE3698915D7FD30008C26AC /* CellButton@2x.png in Resources */,
-				BCE3699115D7FD30008C26AC /* CellButtonHighlighted.png in Resources */,
-				BCE3699915D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */,
-				BCE369A115D7FD30008C26AC /* CellRadioDark.png in Resources */,
-				BCE369A915D7FD30008C26AC /* CellRadioDark@2x.png in Resources */,
-				BCE369B115D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */,
-				BCE369B915D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */,
-				BCE369C115D7FD30008C26AC /* CellRadioHighlighted.png in Resources */,
-				BCE369C915D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */,
-				BCE369D115D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */,
-				BCE369D915D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */,
-				BCE369E115D7FD30008C26AC /* CellRadioLight.png in Resources */,
-				BCE369E915D7FD30008C26AC /* CellRadioLight@2x.png in Resources */,
-				BCE369F115D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */,
-				BCE369F915D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */,
-				BCE36A0115D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */,
-				BCE36A0915D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */,
 				BCE36A1115D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1915D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2115D7FD30008C26AC /* searchBarBackground.png in Resources */,
@@ -11366,6 +11086,8 @@
 				BC03C3F815E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 				BC03C40215E27DB00017388D /* myRadiosDelete.png in Resources */,
 				BC03C40A15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
+				BC03C41415E2BDA00017388D /* commonAvatarDummy.png in Resources */,
+				BC03C41C15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11656,26 +11378,6 @@
 				BCE3695C15D7FD30008C26AC /* radioListSubscribersIcon@2x.png in Resources */,
 				BCE3696415D7FD30008C26AC /* radioListUserMask.png in Resources */,
 				BCE3696C15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
-				BCE3697415D7FD30008C26AC /* avatarDummy.png in Resources */,
-				BCE3697C15D7FD30008C26AC /* avatarDummy@2x.png in Resources */,
-				BCE3698415D7FD30008C26AC /* CellButton.png in Resources */,
-				BCE3698C15D7FD30008C26AC /* CellButton@2x.png in Resources */,
-				BCE3699415D7FD30008C26AC /* CellButtonHighlighted.png in Resources */,
-				BCE3699C15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */,
-				BCE369A415D7FD30008C26AC /* CellRadioDark.png in Resources */,
-				BCE369AC15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */,
-				BCE369B415D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */,
-				BCE369BC15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */,
-				BCE369C415D7FD30008C26AC /* CellRadioHighlighted.png in Resources */,
-				BCE369CC15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */,
-				BCE369D415D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */,
-				BCE369DC15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */,
-				BCE369E415D7FD30008C26AC /* CellRadioLight.png in Resources */,
-				BCE369EC15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */,
-				BCE369F415D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */,
-				BCE369FC15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */,
-				BCE36A0415D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */,
-				BCE36A0C15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */,
 				BCE36A1415D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1C15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2415D7FD30008C26AC /* searchBarBackground.png in Resources */,
@@ -11849,6 +11551,8 @@
 				BC03C3FB15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 				BC03C40515E27DB00017388D /* myRadiosDelete.png in Resources */,
 				BC03C40D15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
+				BC03C41715E2BDA00017388D /* commonAvatarDummy.png in Resources */,
+				BC03C41F15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12139,26 +11843,6 @@
 				BCE3695815D7FD30008C26AC /* radioListSubscribersIcon@2x.png in Resources */,
 				BCE3696015D7FD30008C26AC /* radioListUserMask.png in Resources */,
 				BCE3696815D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
-				BCE3697015D7FD30008C26AC /* avatarDummy.png in Resources */,
-				BCE3697815D7FD30008C26AC /* avatarDummy@2x.png in Resources */,
-				BCE3698015D7FD30008C26AC /* CellButton.png in Resources */,
-				BCE3698815D7FD30008C26AC /* CellButton@2x.png in Resources */,
-				BCE3699015D7FD30008C26AC /* CellButtonHighlighted.png in Resources */,
-				BCE3699815D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */,
-				BCE369A015D7FD30008C26AC /* CellRadioDark.png in Resources */,
-				BCE369A815D7FD30008C26AC /* CellRadioDark@2x.png in Resources */,
-				BCE369B015D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */,
-				BCE369B815D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */,
-				BCE369C015D7FD30008C26AC /* CellRadioHighlighted.png in Resources */,
-				BCE369C815D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */,
-				BCE369D015D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */,
-				BCE369D815D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */,
-				BCE369E015D7FD30008C26AC /* CellRadioLight.png in Resources */,
-				BCE369E815D7FD30008C26AC /* CellRadioLight@2x.png in Resources */,
-				BCE369F015D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */,
-				BCE369F815D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */,
-				BCE36A0015D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */,
-				BCE36A0815D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */,
 				BCE36A1015D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1815D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2015D7FD30008C26AC /* searchBarBackground.png in Resources */,
@@ -12332,6 +12016,8 @@
 				BC03C3F715E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 				BC03C40115E27DB00017388D /* myRadiosDelete.png in Resources */,
 				BC03C40915E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
+				BC03C41315E2BDA00017388D /* commonAvatarDummy.png in Resources */,
+				BC03C41B15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12622,26 +12308,6 @@
 				BCE3695B15D7FD30008C26AC /* radioListSubscribersIcon@2x.png in Resources */,
 				BCE3696315D7FD30008C26AC /* radioListUserMask.png in Resources */,
 				BCE3696B15D7FD30008C26AC /* radioListUserMask@2x.png in Resources */,
-				BCE3697315D7FD30008C26AC /* avatarDummy.png in Resources */,
-				BCE3697B15D7FD30008C26AC /* avatarDummy@2x.png in Resources */,
-				BCE3698315D7FD30008C26AC /* CellButton.png in Resources */,
-				BCE3698B15D7FD30008C26AC /* CellButton@2x.png in Resources */,
-				BCE3699315D7FD30008C26AC /* CellButtonHighlighted.png in Resources */,
-				BCE3699B15D7FD30008C26AC /* CellButtonHighlighted@2x.png in Resources */,
-				BCE369A315D7FD30008C26AC /* CellRadioDark.png in Resources */,
-				BCE369AB15D7FD30008C26AC /* CellRadioDark@2x.png in Resources */,
-				BCE369B315D7FD30008C26AC /* CellRadioDark_Mask.png in Resources */,
-				BCE369BB15D7FD30008C26AC /* CellRadioDark_Mask@2x.png in Resources */,
-				BCE369C315D7FD30008C26AC /* CellRadioHighlighted.png in Resources */,
-				BCE369CB15D7FD30008C26AC /* CellRadioHighlighted@2x.png in Resources */,
-				BCE369D315D7FD30008C26AC /* CellRadioHighlighted_Mask.png in Resources */,
-				BCE369DB15D7FD30008C26AC /* CellRadioHighlighted_Mask@2x.png in Resources */,
-				BCE369E315D7FD30008C26AC /* CellRadioLight.png in Resources */,
-				BCE369EB15D7FD30008C26AC /* CellRadioLight@2x.png in Resources */,
-				BCE369F315D7FD30008C26AC /* CellRadioLight_Mask.png in Resources */,
-				BCE369FB15D7FD30008C26AC /* CellRadioLight_Mask@2x.png in Resources */,
-				BCE36A0315D7FD30008C26AC /* CellRadioUser_Mask.png in Resources */,
-				BCE36A0B15D7FD30008C26AC /* CellRadioUser_Mask@2x.png in Resources */,
 				BCE36A1315D7FD30008C26AC /* schedulingIconClock.png in Resources */,
 				BCE36A1B15D7FD30008C26AC /* schedulingIconClock@2x.png in Resources */,
 				BCE36A2315D7FD30008C26AC /* searchBarBackground.png in Resources */,
@@ -12815,6 +12481,8 @@
 				BC03C3FA15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
 				BC03C40415E27DB00017388D /* myRadiosDelete.png in Resources */,
 				BC03C40C15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
+				BC03C41615E2BDA00017388D /* commonAvatarDummy.png in Resources */,
+				BC03C41E15E2BDA00017388D /* commonAvatarDummy@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
