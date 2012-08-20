@@ -1512,7 +1512,7 @@
     if (event != nil && event.user_id != nil)
     {
         // Launch profile view
-        ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil withUserId:event.user_id];
+        ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil withUserId:event.user_id andModelUsername:event.user_username];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

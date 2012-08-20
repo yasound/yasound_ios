@@ -18,6 +18,7 @@
 @synthesize radio_id;
 
 @synthesize user_id;
+@synthesize user_username;
 @synthesize user_name;
 @synthesize user_picture;
 

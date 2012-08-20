@@ -34,6 +34,7 @@
 
 @synthesize user;
 @synthesize userId;
+@synthesize modelUsername;
 @synthesize radios;
 @synthesize favorites;
 @synthesize friends;
@@ -57,17 +58,21 @@
     if (self) 
     {
         self.user = user;
+        self.userId = nil;
+        self.modelUsername = nil;
     }
     return self;
 }
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)userId
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)userId andModelUsername:(NSString*)modelUsername;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
+        self.user = nil;
         self.userId = userId;
+        self.modelUsername = modelUsername;
     }
     return self;
 }
@@ -89,8 +94,32 @@
         return;
     }
     
-    [[YasoundDataProvider main] userWithId:self.userId target:self action:@selector(userReceived:info:)];
+    if ([YasoundSessionManager main].registered)
+        [[YasoundDataProvider main] userWithId:self.userId target:self action:@selector(userReceived:info:)];
+    else
+        [[YasoundDataProvider main] userWithUsername:self.modelUsername target:self action:@selector(publicUserReceived:success:)];
+        
 }
+
+
+- (void)publicUserReceived:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        DLog(@"ProfilViewController::publicUserReceived error : userWithUsername failed using '%@'", self.user.username);
+
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error.generic.title", nil) message:NSLocalizedString(@"Error.generic.message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+    
+    self.user = [req responseObjectWithClass:[User class]];
+    
+    [self update];
+
+}
+
 
 
 - (void)userReceived:(User*)user info:(NSDictionary*)info
@@ -101,12 +130,20 @@
     
     if (self.user == nil)
     {
+        DLog(@"ProfilViewController::userReceived error : userWithId failed using '%@'",  self.userId);
+
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error.generic.title", nil) message:NSLocalizedString(@"Error.generic.message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
         [alert show];
         [alert release];
         return;
     }
+    
+    [self update];
+}
 
+
+- (void)update
+{
     [self.tabBar setTabSelected:TabIndexProfil];
     
     self.name.text = self.user.name;
@@ -307,7 +344,11 @@
         label.text = NSLocalizedString(@"Profil.section.favorites", nil);
     else if (section == SECTION_FRIENDS)
         label.text = NSLocalizedString(@"Profil.section.friends", nil);
-
+    
+    if ((section == SECTION_FAVORITES) || (section == SECTION_FRIENDS))
+        if (![YasoundSessionManager main].registered)
+            view.alpha = 0.5;
+    
     return view;
 }
 

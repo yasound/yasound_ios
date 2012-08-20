@@ -38,6 +38,7 @@ typedef enum
 @property (retain, nonatomic) NSNumber* radio_id;
 
 @property (retain, nonatomic) NSNumber* user_id;
+@property (retain, nonatomic) NSString* user_username;
 @property (retain, nonatomic) NSString* user_name;
 @property (retain, nonatomic) NSString* user_picture;
 
