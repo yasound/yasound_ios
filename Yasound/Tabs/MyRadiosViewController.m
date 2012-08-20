@@ -44,6 +44,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.cellLoader release];
     [super dealloc];
 }
@@ -52,6 +53,9 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 {
     [super viewDidLoad];
     [self.tabBar setTabSelected:TabIndexMyRadios];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifMyRadioDeleted:) name:NOTIF_MYRADIO_DELETED object:nil];
+    
     [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceived:success:)];
 }
 
@@ -88,8 +92,10 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 }
 
 
-
-
+- (void)onNotifMyRadioDeleted:(NSNotification*)notification
+{
+    [self.tableview reloadData];
+}
 
 
 

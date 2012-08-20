@@ -283,7 +283,7 @@
 										<string key="NSFrame">{{244, 123}, {64, 32}}</string>
 										<reference key="NSSuperview" ref="825813424"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="730828995"/>
+										<reference key="NSNextKeyView" ref="103964486"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -298,6 +298,31 @@
 										<object class="NSCustomResource" key="IBUINormalImage">
 											<string key="NSClassName">NSImage</string>
 											<string key="NSResourceName">myRadiosSettings.png</string>
+										</object>
+										<reference key="IBUIFontDescription" ref="245563043"/>
+										<reference key="IBUIFont" ref="525065160"/>
+									</object>
+									<object class="IBUIButton" id="103964486">
+										<reference key="NSNextResponder" ref="825813424"/>
+										<int key="NSvFlags">292</int>
+										<string key="NSFrame">{{322, 123}, {64, 32}}</string>
+										<reference key="NSSuperview" ref="825813424"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="730828995"/>
+										<string key="NSReuseIdentifierKey">_NS:9</string>
+										<bool key="IBUIOpaque">NO</bool>
+										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+										<int key="IBUIContentHorizontalAlignment">0</int>
+										<int key="IBUIContentVerticalAlignment">0</int>
+										<reference key="IBUIHighlightedTitleColor" ref="215268153"/>
+										<object class="NSColor" key="IBUINormalTitleColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+										</object>
+										<reference key="IBUINormalTitleShadowColor" ref="530596544"/>
+										<object class="NSCustomResource" key="IBUINormalImage">
+											<string key="NSClassName">NSImage</string>
+											<string key="NSResourceName">myRadiosDelete.png</string>
 										</object>
 										<reference key="IBUIFontDescription" ref="245563043"/>
 										<reference key="IBUIFont" ref="525065160"/>
@@ -389,7 +414,7 @@
 										<reference key="IBUIFont" ref="53968519"/>
 									</object>
 								</array>
-								<string key="NSFrame">{{-2, 0}, {322, 167}}</string>
+								<string key="NSFrame">{{-2, 0}, {386, 167}}</string>
 								<reference key="NSSuperview" ref="337932388"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="625521244"/>
@@ -528,6 +553,14 @@
 					<int key="connectionID">60</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">buttonDelete</string>
+						<reference key="source" ref="730221513"/>
+						<reference key="destination" ref="103964486"/>
+					</object>
+					<int key="connectionID">65</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onStatsClicked:</string>
 						<reference key="source" ref="637691060"/>
@@ -553,6 +586,15 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">55</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">onDeleteClicked:</string>
+						<reference key="source" ref="103964486"/>
+						<reference key="destination" ref="730221513"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">64</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -600,6 +642,7 @@
 							<reference ref="246162567"/>
 							<reference ref="625521244"/>
 							<reference ref="806499035"/>
+							<reference ref="103964486"/>
 						</array>
 						<reference key="parent" ref="730221513"/>
 						<string key="objectName">container</string>
@@ -688,6 +731,12 @@
 						<reference key="parent" ref="730221513"/>
 						<string key="objectName">separator</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">61</int>
+						<reference key="object" ref="103964486"/>
+						<reference key="parent" ref="825813424"/>
+						<string key="objectName">Delete</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -711,6 +760,7 @@
 				<real value="1" key="53.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="58.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="61.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="9.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -719,7 +769,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">60</int>
+			<int key="maxID">65</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -727,11 +777,16 @@
 					<string key="className">MyRadiosTableViewCell</string>
 					<string key="superclassName">UITableViewCell</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="onDeleteClicked:">id</string>
 						<string key="onRadioClicked:">id</string>
 						<string key="onSettingsClicked:">id</string>
 						<string key="onStatsClicked:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="onDeleteClicked:">
+							<string key="name">onDeleteClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="onRadioClicked:">
 							<string key="name">onRadioClicked:</string>
 							<string key="candidateClassName">id</string>
@@ -746,6 +801,7 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="buttonDelete">UIButton</string>
 						<string key="buttonSettings">UIButton</string>
 						<string key="container">UIView</string>
 						<string key="image">WebImageView</string>
@@ -758,6 +814,10 @@
 						<string key="title">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="buttonDelete">
+							<string key="name">buttonDelete</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="buttonSettings">
 							<string key="name">buttonSettings</string>
 							<string key="candidateClassName">UIButton</string>
@@ -819,6 +879,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="myRadiosDelete.png">{64, 32}</string>
 			<string key="myRadiosMask.png">{157, 156}</string>
 			<string key="myRadiosMaskHighlighted.png">{157, 156}</string>
 			<string key="myRadiosSeparator.png">{320, 2}</string>

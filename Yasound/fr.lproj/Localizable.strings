@@ -6,6 +6,7 @@
 "Navigation.save" = "Enregistrer";
 "Navigation.back" = "Retour";
 "Navigation.create" = "Créer";
+"Navigation.delete" = "Supprimer";
 
 "Navigation_back" = "Retour";
 "Navigation_next" = "Suivant";
@@ -613,6 +614,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "MyRadios.create" = "Créer une radio";
 "MyRadios.create.howto" = "Sélectionnez les playlists qui fourniront le contenu de votre radio. Aucun titre ne sera téléchargé. Seule la liste des titres sera envoyée vers nos serveurs et analysée quotidiennement afin d'améliorer la programmation de votre radio.";
+"MyRadios.metric1.sublabel" = "minutes de musique écoutées";
+"MyRadios.metric2.sublabel" = "nouveaux messages";
+
 
 "Share.Facebook.button" = "Publier";
 "Share.Twitter.button" = "Twitter";
@@ -624,4 +628,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Playlists.create.failed.title" = "Oups...";
 "Playlists.create.failed.message" = "La création de la radio a échoué.";
 
+"MyRadios.delete.title" = "Suppression";
+"MyRadios.delete.message" = "Etes-vous sûr de vouloir supprimer votre radio?\nCela ne concerne que votre radio sur les serveurs de Yasound, et ne modifie rien sur votre appareil.";
+"MyRadios.delete.error.message" = "La suppression de la radio a échoué.";
 

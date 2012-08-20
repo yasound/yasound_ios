@@ -37,7 +37,7 @@
 @property (nonatomic, retain) IBOutlet UILabel* metric2sub;
 
 @property (nonatomic, retain) IBOutlet UIButton* buttonSettings;
-@property (nonatomic, retain) UIButton* buttonDelete;
+@property (nonatomic, retain) IBOutlet UIButton* buttonDelete;
 
 //+ (NSString *)reuseIdentifier;
 //- (id)initWithOwner:(id)owner target:(id)target radio:(Radio*)radio;
@@ -49,5 +49,6 @@
 - (IBAction)onRadioClicked:(id)sender;
 - (IBAction)onStatsClicked:(id)sender;
 - (IBAction)onSettingsClicked:(id)sender;
+- (IBAction)onDeleteClicked:(id)sender;
 
 @end

@@ -10,6 +10,11 @@
 #import "YasoundDataProvider.h"
 #import "Theme.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ActivityAlertView.h"
+#import "RootViewController.h"
+
+
+
 
 @implementation MyRadiosTableViewCell
 
@@ -176,19 +181,19 @@
 
 
 
-- (void)initEditView
-{
-    BundleStylesheet* sheet;
-    
-    // button delete
-    sheet = [[Theme theme] stylesheetForKey:@"MyRadios.delete" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    self.buttonDelete = [sheet makeButton];
-    self.buttonDelete.frame = CGRectMake(self.frame.size.width, self.buttonSettings.frame.origin.y, self.buttonDelete.frame.size.width, self.buttonDelete.frame.size.height);
-    [self.container addSubview:self.buttonDelete];
-
-    [self.buttonDelete addTarget:self action:@selector(onButtonDeleteClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-}
+//- (void)initEditView
+//{
+//    BundleStylesheet* sheet;
+//    
+//    // button delete
+//    sheet = [[Theme theme] stylesheetForKey:@"MyRadios.delete" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//    self.buttonDelete = [sheet makeButton];
+//    self.buttonDelete.frame = CGRectMake(self.frame.size.width, self.buttonSettings.frame.origin.y, self.buttonDelete.frame.size.width, self.buttonDelete.frame.size.height);
+//    [self.container addSubview:self.buttonDelete];
+//
+//    [self.buttonDelete addTarget:self action:@selector(onButtonDeleteClicked:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//}
 
 
 
@@ -212,7 +217,7 @@ static const CGFloat kSpringRestingHeight = 4;
     //    if ([self.wallEvent editing])
     //        return;
     
-    [self initEditView];
+//    [self initEditView];
     
     self.offset = 80;
     
@@ -220,7 +225,7 @@ static const CGFloat kSpringRestingHeight = 4;
     
     if (animated)
     {
-        [self bounceAnimationTo:cellFrameDst endAction:nil];
+        [self bounceAnimationTo:cellFrameDst endAction:@selector(bounceAnimationDidEnd:finished:context:)];
     }
     else
     {
@@ -247,7 +252,7 @@ static const CGFloat kSpringRestingHeight = 4;
     
     if (animated)
     {
-        [self bounceAnimationTo:cellFrameDst endAction:@selector(bounceAnimationDidEnd:finished:context:)];
+        [self bounceAnimationTo:cellFrameDst endAction:nil];
     }
     else
     {
@@ -291,6 +296,7 @@ static const CGFloat kSpringRestingHeight = 4;
 
 - (void)bounceAnimationDidEnd:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
+    [self.buttonDelete addTarget:self action:@selector(onDeleteClicked:) forControlEvents:UIControlEventTouchUpInside];
     //    if (self.cellEditView != nil)
     //    {
     //        [self.cellEditView removeFromSuperview];
@@ -307,14 +313,41 @@ static const CGFloat kSpringRestingHeight = 4;
 
 
 
-- (void)onButtonDeleteClicked:(id)sender
+- (IBAction)onDeleteClicked:(id)sender
 {
-    //    [gEditingSongs removeObjectForKey:self.song.name];
-    //
-    //    if (_deletingTarget == nil)
-    //        return;
-    //
-    //    [_deletingTarget performSelector:_deletingAction withObject:self withObject:self.song];
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.delete.title", nil) message:NSLocalizedString(@"MyRadios.delete.message", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.delete", nil), nil];
+    [alert show];
+    [alert release];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        [self deactivateEditModeAnimated:YES];
+        return;
+    }
+    
+    [ActivityAlertView showWithTitle:nil];
+    
+    [[YasoundDataProvider main] deleteRadio:self.radio target:self action:@selector(onRadioDeleted:success:)];
+}
+
+
+
+
+- (void)onRadioDeleted:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.delete.title", nil) message:NSLocalizedString(@"MyRadios.delete.error.message", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        return;
+    }
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_MYRADIO_DELETED object:nil];
 }
 
 
