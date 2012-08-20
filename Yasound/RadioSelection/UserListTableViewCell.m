@@ -44,13 +44,10 @@
         self.objects = [[NSMutableArray alloc] init];
 
         CGFloat xOffset = 0;
-//        NSInteger userIndex = 0;
+        NSInteger userIndex = 0;
         
-//        for (User* user in users)
-        for (NSInteger myIndex = 0; myIndex < users.count; myIndex++)
+        for (User* user in users)
         {
-            
-            User* user = [users objectAtIndex:myIndex];
             
 //            BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //            sheetContainer.frame = CGRectMake(sheetContainer.frame.origin.x + xOffset, sheetContainer.frame.origin.y, sheetContainer.frame.size.width, sheetContainer.frame.size.height);
@@ -83,30 +80,8 @@
             name.frame = CGRectMake(name.frame.origin.x + xOffset, name.frame.origin.y, name.frame.size.width, name.frame.size.height);
             name.text = user.name;
             [container addSubview:name];
-
             
-            // interactive view : catch the "press down" and "press up" actions
-            InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:CGRectMake(0 + xOffset,0,100,100) target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:myIndex]];
-            [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:myIndex]];
-            [self addSubview:interactiveView];
-            
-            if (myIndex & 1)
-                interactiveView.backgroundColor = [UIColor redColor];
-            else
-            interactiveView.backgroundColor = [UIColor blueColor];
-            
-
-//            if (!(myIndex & 1))
-//            {
-//            UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//            button.frame  = CGRectMake(0, 0, 100, 100);
-//            [self addSubview:button];
-//            }
-//            else{
-//            UIButton* button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//            button2.frame  = CGRectMake(200, 0, 100, 100);
-//            [self addSubview:button2];
-//            }
+            InteractiveView* interactiveView = nil;
             
             // store objects
             NSMutableArray* objects = [NSMutableArray arrayWithObjects:user, userImage, userMask, name, interactiveView, nil];
@@ -115,8 +90,22 @@
             [self.objects addObject:objects];
             
             xOffset += (self.frame.size.width / 2.f);
-//            userIndex++;
+            
         }
+
+       sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+
+            // interactive view : catch the "press down" and "press up" actions
+            InteractiveView* interactiveView0 = [[InteractiveView alloc] initWithFrame:CGRectMake(sheet.frame.origin.x,sheet.frame.origin.y,sheet.frame.size.width,sheet.frame.size.height) target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:0]];
+            [interactiveView0 setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:0]];
+            [self addSubview:interactiveView0];
+
+        InteractiveView* interactiveView1 = [[InteractiveView alloc] initWithFrame:CGRectMake(sheet.frame.origin.x + 160,sheet.frame.origin.y,sheet.frame.size.width,sheet.frame.size.height) target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:1]];
+        [interactiveView1 setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:1]];
+        [self addSubview:interactiveView1];
+        
+            
+//            userIndex++;
         
 //        if (delay)
 //        {
