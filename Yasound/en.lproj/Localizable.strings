@@ -635,5 +635,7 @@
 "Account.twitter" = "Twitter account";
 "Account.yasound" = "Yasound account";
 
+"Playlists.create.failed.title" = "Oops...";
+"Playlists.create.failed.message" = "The radio could not have been created.";
 
 

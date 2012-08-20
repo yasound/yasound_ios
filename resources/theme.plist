@@ -10,6 +10,16 @@
 	<string>theme_default</string>
 	<key>stylesheet</key>
 	<dict>
+		<key>MyRadios</key>
+		<dict>
+			<key>delete</key>
+			<dict>
+				<key>name</key>
+				<string>myRadiosDelete</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
+		</dict>
 		<key>MyAccount</key>
 		<dict>
 			<key>mask</key>

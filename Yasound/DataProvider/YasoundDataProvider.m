@@ -975,6 +975,26 @@ static YasoundDataProvider* _main = nil;
     [req startAsynchronous];
 }
 
+
+
+- (void)createRadioWithTarget:(id)target action:(SEL)selector
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"/api/v1/my_radios/";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    
+    conf.callbackTarget = target;
+    conf.callbackAction = selector;
+    conf.userData = nil;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
+
 //
 
 

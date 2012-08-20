@@ -27,6 +27,7 @@
 
 @implementation PlaylistsViewController
 
+@synthesize radio;
 @synthesize topbar;
 @synthesize nbMatchedSongs;
 @synthesize nbPlaylistsForChecking;
@@ -357,10 +358,16 @@
         [_tableView removeFromSuperview];
         _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
         [_container addSubview:_itunesConnectView];
-    } 
+        
+        self.topbar.actionButton.enabled = NO;
+
+    }
     else 
     {
         [_tableView reloadData];
+        
+        self.topbar.actionButton.enabled = YES;
+
     }
     
 //    if (([_selectedPlaylists count] == 0) && (_songs.count == 0))
@@ -855,6 +862,29 @@
 
 - (void) save
 {
+    [ActivityAlertView showWithTitle:nil];
+    
+    [[YasoundDataProvider main] createRadioWithTarget:self action:@selector(onRadioCreated:success:)];
+}
+
+
+- (void)onRadioCreated:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        [ActivityAlertView close];
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Playlists.create.failed.title", nil) message:NSLocalizedString(@"Playlists.create.failed.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+  
+        return;
+    }
+    
+    [ActivityAlertView close];
+    
+    self.radio = [req responseObjectWithClass:[Radio class]];
+
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
     
@@ -886,43 +916,32 @@
 //    [ActivityAlertView close];
 //    return;
 
-    Radio* radio = [YasoundDataProvider main].radio;
     DLog(@"Playlists data package has been built.");
     
     
-    if (radio == nil)
-    {
-        self.playlistsDataPackage = data;
-        
-        [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(onGetRadio:info:)];
-        return;
-    }
-    else
-    {
-        DLog(@"For radio %@", radio.name);
-        [[YasoundDataProvider main] updatePlaylists:data forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
-    }
+        DLog(@"For radio %@", self.radio.name);
+        [[YasoundDataProvider main] updatePlaylists:data forRadio:self.radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
 }
     
 
 
-- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
-{
-    if (radio == nil)
-    {
-        [ActivityAlertView close];
-
-        _alertSubmitError = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:NSLocalizedString(@"PlaylistsView_submit_error_radio", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [_alertSubmitError show];
-        [_alertSubmitError release];  
-        return;
-    }
-    else
-    {
-        DLog(@"For radio %@", radio.name);
-        [[YasoundDataProvider main] updatePlaylists:self.playlistsDataPackage forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
-    }
-}
+//- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
+//{
+//    if (radio == nil)
+//    {
+//        [ActivityAlertView close];
+//
+//        _alertSubmitError = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:NSLocalizedString(@"PlaylistsView_submit_error_radio", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [_alertSubmitError show];
+//        [_alertSubmitError release];  
+//        return;
+//    }
+//    else
+//    {
+//        DLog(@"For radio %@", radio.name);
+//        [[YasoundDataProvider main] updatePlaylists:self.playlistsDataPackage forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
+//    }
+//}
 
 
 #pragma mark - UIAlertViewDelegate
@@ -1012,11 +1031,14 @@
 - (void)finalize
 {
     // be sure to get updated radio (with correct 'ready' flag)
-    [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
+   // [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
+    [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedUserRadioAfterPlaylistsUpdate:withInfo:)];
 }
 
 - (void)receivedUserRadioAfterPlaylistsUpdate:(Radio*)r withInfo:(NSDictionary*)info
 {
+    self.radio = r;
+    
     // now, ask for registered playlists, we want to check how many songs have been synchrpnized
     [[YasoundDataProvider main] playlistsForRadio:r target:self action:@selector(receivePlaylistsForChecking:withInfo:)];
 }
@@ -1093,7 +1115,7 @@
   
 //  if (_wizard)
 //  {
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:self.radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
 //  }

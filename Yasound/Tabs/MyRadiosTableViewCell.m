@@ -8,12 +8,15 @@
 
 #import "MyRadiosTableViewCell.h"
 #import "YasoundDataProvider.h"
-
+#import "Theme.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation MyRadiosTableViewCell
 
 @synthesize delegate;
 @synthesize radio;
+@synthesize offset;
+@synthesize container;
 
 @synthesize image;
 @synthesize title;
@@ -23,6 +26,8 @@
 @synthesize metric2;
 @synthesize metric1sub;
 @synthesize metric2sub;
+@synthesize buttonSettings;
+@synthesize buttonDelete;
 
 
 
@@ -72,17 +77,28 @@
 //}
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+//- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)reuseIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath
+//{
+//    if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier])
+//    {
+- (void)awakeFromNib
 {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
-    {
         self.metric1sub.text = NSLocalizedString(@"MyRadios.metric1.sublabel", nil);
         self.metric2sub.text = NSLocalizedString(@"MyRadios.metric2.sublabel", nil);
+     
         
-    }
-    
-    return self;
+        UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight)] autorelease];
+        swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.container addGestureRecognizer:swipeRight];
+        
+        UISwipeGestureRecognizer* swipeLeft = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft)] autorelease];
+        swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+        [self.container addGestureRecognizer:swipeLeft];
 }
+//    }
+//    
+//    return self;
+//}
 
 
 
@@ -147,6 +163,161 @@
 {
     [self.delegate myRadioRequestedSettings:self.radio];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+- (void)initEditView
+{
+    BundleStylesheet* sheet;
+    
+    // button delete
+    sheet = [[Theme theme] stylesheetForKey:@"MyRadios.delete" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.buttonDelete = [sheet makeButton];
+    self.buttonDelete.frame = CGRectMake(self.frame.size.width, self.buttonSettings.frame.origin.y, self.buttonDelete.frame.size.width, self.buttonDelete.frame.size.height);
+    [self.container addSubview:self.buttonDelete];
+
+    [self.buttonDelete addTarget:self action:@selector(onButtonDeleteClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+
+
+
+- (void)onSwipeLeft
+{
+    [self activateEditModeAnimated:YES];
+    
+}
+
+- (void)onSwipeRight
+{
+    [self deactivateEditModeAnimated:YES];
+}
+
+
+static const CGFloat kSpringRestingHeight = 4;
+
+- (void)activateEditModeAnimated:(BOOL)animated
+{
+    //    if ([self.wallEvent editing])
+    //        return;
+    
+    [self initEditView];
+    
+    self.offset = 80;
+    
+    CGRect cellFrameDst = CGRectMake(0 - offset, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
+    
+    if (animated)
+    {
+        [self bounceAnimationTo:cellFrameDst endAction:nil];
+    }
+    else
+    {
+        self.container.frame = cellFrameDst;
+    }
+}
+
+
+
+- (void)deactivateEditModeAnimated:(BOOL)animated
+{
+    [self deactivateEditModeAnimated:animated silent:NO];
+}
+
+
+
+- (void)deactivateEditModeAnimated:(BOOL)animated silent:(BOOL)silent
+{
+    //    if (!self.wallEvent.editing)
+    //        return;
+    
+    CGRect cellFrameDst = CGRectMake(0, self.container.frame.origin.y, self.container.frame.size.width, self.container.frame.size.height);
+    
+    
+    if (animated)
+    {
+        [self bounceAnimationTo:cellFrameDst endAction:@selector(bounceAnimationDidEnd:finished:context:)];
+    }
+    else
+    {
+        self.container.frame = cellFrameDst;
+        [self bounceAnimationDidEnd:nil finished:nil context:NULL];
+    }
+    
+    self.buttonDelete = nil;
+}
+
+
+#define ANIMATION_DURATION 0.1
+
+//- (void) bounceAnimationTo:(CGFloat)destX
+- (void) bounceAnimationTo:(CGRect)destFrame endAction:(SEL)endAction
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:ANIMATION_DURATION];
+    [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+    if (endAction != nil)
+    {
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:endAction];
+    }
+    self.container.frame = destFrame;
+    //self.cellEditView.frame = CGRectMake(destFrame.origin.x + destFrame.size.width, self.cellEditView.frame.origin.y, self.cellEditView.frame.size.width, self.cellEditView.frame.size.height);
+    [UIView commitAnimations];
+    
+    CABasicAnimation *bounceAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
+    bounceAnimation.duration = ANIMATION_DURATION;
+    bounceAnimation.fromValue = [NSNumber numberWithInt:0];
+    bounceAnimation.toValue = [NSNumber numberWithInt:10];
+    bounceAnimation.repeatCount = 2;
+    bounceAnimation.autoreverses = YES;
+    bounceAnimation.fillMode = kCAFillModeForwards;
+    bounceAnimation.removedOnCompletion = NO;
+    bounceAnimation.additive = YES;
+    [self.container.layer addAnimation:bounceAnimation forKey:@"bounceAnimation"];
+}
+
+
+- (void)bounceAnimationDidEnd:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+    //    if (self.cellEditView != nil)
+    //    {
+    //        [self.cellEditView removeFromSuperview];
+    //        self.cellEditView = nil;
+    //    }
+}
+
+
+- (void)onSwipeLeftStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+    //    [self.buttonDelete removeFromSuperview];
+    //    self.buttonDelete = nil;
+}
+
+
+
+- (void)onButtonDeleteClicked:(id)sender
+{
+    //    [gEditingSongs removeObjectForKey:self.song.name];
+    //
+    //    if (_deletingTarget == nil)
+    //        return;
+    //
+    //    [_deletingTarget performSelector:_deletingAction withObject:self withObject:self.song];
+}
+
+
 
 
 

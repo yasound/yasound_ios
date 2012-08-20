@@ -621,4 +621,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Account.twitter" = "Compte Twitter";
 "Account.yasound" = "Compte Yasound";
 
+"Playlists.create.failed.title" = "Oups...";
+"Playlists.create.failed.message" = "La création de la radio a échoué.";
+
 

@@ -826,6 +826,22 @@
 		BC03C3FC15E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
 		BC03C3FD15E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
 		BC03C3FE15E241480017388D /* commonBigButtonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */; };
+		BC03C40115E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
+		BC03C40215E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
+		BC03C40315E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
+		BC03C40415E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
+		BC03C40515E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
+		BC03C40615E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
+		BC03C40715E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
+		BC03C40815E27DB00017388D /* myRadiosDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C3FF15E27DB00017388D /* myRadiosDelete.png */; };
+		BC03C40915E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
+		BC03C40A15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
+		BC03C40B15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
+		BC03C40C15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
+		BC03C40D15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
+		BC03C40E15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
+		BC03C40F15E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
+		BC03C41015E27DB00017388D /* myRadiosDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */; };
 		BC071AB415D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
 		BC071AB515D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
 		BC071AB615D9070E001F38D7 /* ProgrammingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */; };
@@ -5828,6 +5844,8 @@
 		BC03C3DC15E241480017388D /* commonBigButtonDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonBigButtonDisabled@2x.png"; sourceTree = "<group>"; };
 		BC03C3DD15E241480017388D /* commonBigButtonRed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonBigButtonRed.png; sourceTree = "<group>"; };
 		BC03C3DE15E241480017388D /* commonBigButtonRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonBigButtonRed@2x.png"; sourceTree = "<group>"; };
+		BC03C3FF15E27DB00017388D /* myRadiosDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myRadiosDelete.png; sourceTree = "<group>"; };
+		BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myRadiosDelete@2x.png"; sourceTree = "<group>"; };
 		BC071AB115D9070E001F38D7 /* ProgrammingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingViewController.h; path = Programming/ProgrammingViewController.h; sourceTree = "<group>"; };
 		BC071AB215D9070E001F38D7 /* ProgrammingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingViewController.m; path = Programming/ProgrammingViewController.m; sourceTree = "<group>"; };
 		BC071AB315D9070E001F38D7 /* ProgrammingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProgrammingViewController.xib; path = Programming/ProgrammingViewController.xib; sourceTree = "<group>"; };
@@ -8122,6 +8140,8 @@
 				BCE35F5915D7FD2F008C26AC /* myRadiosSeparator@2x.png */,
 				BCE35F5A15D7FD2F008C26AC /* myRadiosSettings.png */,
 				BCE35F5B15D7FD2F008C26AC /* myRadiosSettings@2x.png */,
+				BC03C3FF15E27DB00017388D /* myRadiosDelete.png */,
+				BC03C40015E27DB00017388D /* myRadiosDelete@2x.png */,
 				BCE35F5C15D7FD2F008C26AC /* myRadiosStats.png */,
 				BCE35F5D15D7FD2F008C26AC /* myRadiosStats@2x.png */,
 			);
@@ -9416,6 +9436,8 @@
 				BC03C3ED15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F515E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3FD15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
+				BC03C40715E27DB00017388D /* myRadiosDelete.png in Resources */,
+				BC03C40F15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9898,6 +9920,8 @@
 				BC03C3EE15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F615E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3FE15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
+				BC03C40815E27DB00017388D /* myRadiosDelete.png in Resources */,
+				BC03C41015E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10374,6 +10398,8 @@
 				BC03C3EC15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F415E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3FC15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
+				BC03C40615E27DB00017388D /* myRadiosDelete.png in Resources */,
+				BC03C40E15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10855,6 +10881,8 @@
 				BC03C3E915E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F115E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3F915E241480017388D /* commonBigButtonRed@2x.png in Resources */,
+				BC03C40315E27DB00017388D /* myRadiosDelete.png in Resources */,
+				BC03C40B15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11336,6 +11364,8 @@
 				BC03C3E815E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F015E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3F815E241480017388D /* commonBigButtonRed@2x.png in Resources */,
+				BC03C40215E27DB00017388D /* myRadiosDelete.png in Resources */,
+				BC03C40A15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11817,6 +11847,8 @@
 				BC03C3EB15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F315E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3FB15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
+				BC03C40515E27DB00017388D /* myRadiosDelete.png in Resources */,
+				BC03C40D15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12298,6 +12330,8 @@
 				BC03C3E715E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3EF15E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3F715E241480017388D /* commonBigButtonRed@2x.png in Resources */,
+				BC03C40115E27DB00017388D /* myRadiosDelete.png in Resources */,
+				BC03C40915E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12779,6 +12813,8 @@
 				BC03C3EA15E241480017388D /* commonBigButtonDisabled@2x.png in Resources */,
 				BC03C3F215E241480017388D /* commonBigButtonRed.png in Resources */,
 				BC03C3FA15E241480017388D /* commonBigButtonRed@2x.png in Resources */,
+				BC03C40415E27DB00017388D /* myRadiosDelete.png in Resources */,
+				BC03C40C15E27DB00017388D /* myRadiosDelete@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
