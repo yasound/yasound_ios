@@ -44,6 +44,8 @@
 
 - (IBAction)onFavoriteClicked:(id)sender
 {
+    [[YasoundDataCache main] clearRadios:URL_RADIOS_FAVORITES];
+    
     BOOL mustBeFavorite = !self.isFavorite;
     self.headerButton.enabled = NO;
 
