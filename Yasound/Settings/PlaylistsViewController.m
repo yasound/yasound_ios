@@ -884,6 +884,10 @@
     [ActivityAlertView close];
     
     self.radio = [req responseObjectWithClass:[Radio class]];
+    
+    //LBDEBUG
+    DLog(@"radio created : %p", self.radio);
+    DLog(@"radio name : %@", self.radio.name);
 
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:@"..."];
@@ -1037,6 +1041,7 @@
 
 - (void)receivedUserRadioAfterPlaylistsUpdate:(Radio*)r withInfo:(NSDictionary*)info
 {
+    assert(r != nil);
     self.radio = r;
     
     // now, ask for registered playlists, we want to check how many songs have been synchrpnized

@@ -996,7 +996,7 @@ static YasoundDataProvider* _main = nil;
 - (void)deleteRadio:(Radio*)radio target:(id)target action:(SEL)selector
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
-    conf.url = [NSString stringWithFormat:@"/api/v1/radio/%@/", radio.uuid];
+    conf.url = [NSString stringWithFormat:@"/api/v1/my_radios/%@/", radio.uuid];
     conf.urlIsAbsolute = NO;
     conf.auth = self.apiKeyAuth;
     conf.method = @"DELETE";
