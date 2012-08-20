@@ -16,6 +16,7 @@
 #import "YasoundSessionManager.h"
 #import "BigMessageView.h"
 #import "RootViewController.h"
+#import "ProfilViewController.h"
 
 @implementation RadioSelectionViewController
 
@@ -338,6 +339,13 @@
 - (void)radioListDidSelect:(Radio*)radio
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
+}
+
+- (void)friendListDidSelect:(User*)user
+{
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:user];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
 }
 
 

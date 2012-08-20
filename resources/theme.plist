@@ -1119,27 +1119,71 @@
 		</dict>
 		<key>Users</key>
 		<dict>
-			<key>UserSelectionBackgroundLight</key>
+			<key>container</key>
 			<dict>
-				<key>name</key>
-				<string>UserCellRadioLight</string>
-				<key>type</key>
-				<string>png</string>
 				<key>x</key>
 				<integer>0</integer>
 				<key>y</key>
 				<integer>0</integer>
+				<key>width</key>
+				<integer>320</integer>
+				<key>height</key>
+				<integer>156</integer>
 			</dict>
-			<key>UserSelectionBackgroundDark</key>
+			<key>name</key>
 			<dict>
-				<key>name</key>
-				<string>UserCellRadioDark</string>
+				<key>height</key>
+				<integer>25</integer>
+				<key>x</key>
+				<integer>2</integer>
+				<key>y</key>
+				<integer>132</integer>
+				<key>width</key>
+				<integer>156</integer>
+				<key>font</key>
+				<dict>
+					<key>weight</key>
+					<string>bold</string>
+					<key>textAlignment</key>
+					<string>center</string>
+					<key>size</key>
+					<integer>13</integer>
+					<key>textColor</key>
+					<string>rgb(51,51,51)</string>
+				</dict>
+			</dict>
+			<key>mask</key>
+			<dict>
+				<key>x</key>
+				<integer>2</integer>
+				<key>y</key>
+				<integer>8</integer>
 				<key>type</key>
 				<string>png</string>
+				<key>name</key>
+				<string>radioListFriendMask</string>
+			</dict>
+			<key>maskHighlighted</key>
+			<dict>
 				<key>x</key>
-				<integer>0</integer>
+				<integer>2</integer>
 				<key>y</key>
-				<integer>0</integer>
+				<integer>8</integer>
+				<key>type</key>
+				<string>png</string>
+				<key>name</key>
+				<string>radioListFriendMaskHighlighted</string>
+			</dict>
+			<key>image</key>
+			<dict>
+				<key>height</key>
+				<integer>117</integer>
+				<key>x</key>
+				<integer>20</integer>
+				<key>y</key>
+				<integer>14</integer>
+				<key>width</key>
+				<integer>117</integer>
 			</dict>
 		</dict>
 		<key>TableViews</key>

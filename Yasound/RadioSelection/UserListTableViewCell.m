@@ -19,8 +19,8 @@
 #define OBJECT_USER 0
 #define OBJECT_IMAGE 1
 #define OBJECT_MASK 2
-#define OBJECT_NAME 4
-#define OBJECT_INTERACTIVE_VIEW 5
+#define OBJECT_NAME 3
+#define OBJECT_INTERACTIVE_VIEW 4
 
 
 
@@ -30,7 +30,7 @@
 @synthesize target;
 @synthesize action;
 
-#define USER_IMAGE_SIZE 118.f
+#define USER_IMAGE_SIZE 117.f
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier users:(NSArray*)users delay:(CGFloat)delay target:(id)target action:(SEL)action
 {
@@ -44,14 +44,17 @@
         self.objects = [[NSMutableArray alloc] init];
 
         CGFloat xOffset = 0;
+//        NSInteger userIndex = 0;
         
-        NSInteger userIndex = 0;
-
-        for (User* user in users)
+//        for (User* user in users)
+        for (NSInteger myIndex = 0; myIndex < users.count; myIndex++)
         {
             
-            BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            sheetContainer.frame = CGRectMake(sheetContainer.frame.origin.x + xOffset, sheetContainer.frame.origin.y, sheetContainer.frame.size.width, sheetContainer.frame.size.height);
+            User* user = [users objectAtIndex:myIndex];
+            
+//            BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            sheetContainer.frame = CGRectMake(sheetContainer.frame.origin.x + xOffset, sheetContainer.frame.origin.y, sheetContainer.frame.size.width, sheetContainer.frame.size.height);
+            BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Users.container" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UIView* container = [[UIView alloc] initWithFrame:sheetContainer.frame];
             [self addSubview:container];
             
@@ -59,7 +62,7 @@
             sheet = [[Theme theme] stylesheetForKey:@"Users.image" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:user.picture];
             WebImageView* userImage = [[WebImageView alloc] initWithImageAtURL:imageURL];
-            userImage.frame = sheet.frame;
+            userImage.frame = CGRectMake(sheet.frame.origin.x + xOffset, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
             [container addSubview:userImage];
 
             // draw circle mask
@@ -68,44 +71,73 @@
 
             // user mask
             sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            sheet.frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
             UIImageView* userMask = [sheet makeImage];
+            CGRect maskRect = CGRectMake(sheet.frame.origin.x + xOffset, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
+            userMask.frame = maskRect;
             [container addSubview:userMask];
             
             
             // name
             sheet = [[Theme theme] stylesheetForKey:@"Users.name"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UILabel* name = [sheet makeLabel];
+            name.frame = CGRectMake(name.frame.origin.x + xOffset, name.frame.origin.y, name.frame.size.width, name.frame.size.height);
             name.text = user.name;
             [container addSubview:name];
 
             
             // interactive view : catch the "press down" and "press up" actions
-            InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheetContainer.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:userIndex]];
-            [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:userIndex]];
-            [container addSubview:interactiveView];
+            InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:CGRectMake(0 + xOffset,0,100,100) target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:myIndex]];
+            [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:myIndex]];
+            [self addSubview:interactiveView];
             
+            if (myIndex & 1)
+                interactiveView.backgroundColor = [UIColor redColor];
+            else
+            interactiveView.backgroundColor = [UIColor blueColor];
+            
+
+//            if (!(myIndex & 1))
+//            {
+//            UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//            button.frame  = CGRectMake(0, 0, 100, 100);
+//            [self addSubview:button];
+//            }
+//            else{
+//            UIButton* button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//            button2.frame  = CGRectMake(200, 0, 100, 100);
+//            [self addSubview:button2];
+//            }
             
             // store objects
             NSMutableArray* objects = [NSMutableArray arrayWithObjects:user, userImage, userMask, name, interactiveView, nil];
-            userIndex++;
             
             
             [self.objects addObject:objects];
             
             xOffset += (self.frame.size.width / 2.f);
+//            userIndex++;
         }
         
-        if (delay)
-        {
-            self.alpha = 0;
-            [UIView beginAnimations:nil context:NULL];
-            [UIView setAnimationDuration:delay];
-            self.alpha = 1;
-            [UIView commitAnimations];
-            
-            delay += 0.15;
-        }
+//        if (delay)
+//        {
+//            self.alpha = 0;
+//            [UIView beginAnimations:nil context:NULL];
+//            [UIView setAnimationDuration:delay];
+//            self.alpha = 1;
+//            [UIView commitAnimations];
+//            
+//            delay += 0.15;
+//        }
+        
+        
+//        UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        button.frame  = CGRectMake(0, 0, 100, 100);
+//        [self addSubview:button];
+//
+//        UIButton* button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//        button2.frame  = CGRectMake(200, 0, 100, 100);
+//        [self addSubview:button2];
+
 
             
   }
@@ -198,69 +230,5 @@
     [self.target performSelector:self.action withObject:user];
 }
 
-
-
-
-
-//- (void)onUpdate:(NSTimer*)timer
-//{
-//    [[YasoundDataCache main] requestCurrentSongForRadio:self.radio target:self action:@selector(receivedCurrentSong:withInfo:)];
-//}
-//- (void)receivedCurrentSong:(Song*)song withInfo:(NSDictionary*)info
-//{
-//    if (!song)
-//        return;
-//    
-//    self.radioSubtitle1.text = song.artist;
-//    self.radioSubtitle2.text = song.name;
-//}
-
-
-
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-//{
-//  [super setSelected:selected animated:animated];
-//
-//  if (selected)
-//  {
-////    self.cellBackground.image = _bkgSelected;
-////    self.radioAvatarMask.image = _maskSelected;
-//   
-////    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionTitle" error:nil];
-////    [sheet applyToLabel:self.radioTitle class:@"selected"];
-////
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle1" error:nil];
-////    [sheet applyToLabel:self.radioSubtitle1 class:@"selected"];
-////
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle2" error:nil];
-////    [sheet applyToLabel:self.radioSubtitle2 class:@"selected"];
-////
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionLikes" error:nil];
-////    [sheet applyToLabel:self.radioLikes class:@"selected"];
-////
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionListeners" error:nil];
-////    [sheet applyToLabel:self.radioListeners class:@"selected"];
-//  }
-//  else
-//  {
-////    self.cellBackground.image = _bkgBackup;
-////    self.radioAvatarMask.image = _maskBackup;
-//
-////    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionTitle" error:nil];
-////    [sheet applyToLabel:self.radioTitle class:nil];
-////    
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle1" error:nil];
-////    [sheet applyToLabel:self.radioSubtitle1 class:nil];
-////    
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionSubtitle2" error:nil];
-////    [sheet applyToLabel:self.radioSubtitle2 class:nil];
-////    
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionLikes" error:nil];
-////    [sheet applyToLabel:self.radioLikes class:nil];
-////    
-////    sheet = [[Theme theme] stylesheetForKey:@"Radios.RadioSelectionListeners" error:nil];
-////    [sheet applyToLabel:self.radioListeners class:nil];
-//  }
-//}
 
 @end
