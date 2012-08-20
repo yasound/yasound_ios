@@ -31,10 +31,6 @@
 {
     [super viewDidLoad];
     
-    _titleItem.title = @"Twitter";
-    _backItem.title = NSLocalizedString(@"Navigation_back", nil);    
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    
     _usernameLabel.text = NSLocalizedString(@"AccountsView_username_label", nil);
     
     [self update];
@@ -63,8 +59,8 @@
 {
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_TWITTER])
     {
-        _usernameLabel.textColor = [UIColor whiteColor];
-        _usernameValue.textColor = [UIColor whiteColor];
+//        _usernameLabel.textColor = [UIColor whiteColor];
+//        _usernameValue.textColor = [UIColor whiteColor];
 
         _logoutLabel.text = NSLocalizedString(@"AccountsView_logout_label", nil);
         
@@ -81,8 +77,8 @@
     }
     else
     {
-        _usernameLabel.textColor = [UIColor grayColor];
-        _usernameValue.textColor = [UIColor grayColor];
+//        _usernameLabel.textColor = [UIColor grayColor];
+//        _usernameValue.textColor = [UIColor grayColor];
 
         _loginLabel.text = NSLocalizedString(@"AccountsView_login_label", nil);    
         
@@ -220,6 +216,13 @@
 }
 
 
+
+#pragma mark - TopBarBackAndTitleDelegate
+
+- (NSString*)topBarTitle
+{
+    return NSLocalizedString(@"Account.twitter", nil);
+}
 
 
 

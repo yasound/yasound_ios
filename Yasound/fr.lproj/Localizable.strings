@@ -617,4 +617,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Share.Facebook.button" = "Publier";
 "Share.Twitter.button" = "Twitter";
 
+"Account.facebook" = "Compte Facebook";
+"Account.twitter" = "Compte Twitter";
+"Account.yasound" = "Compte Yasound";
+
 

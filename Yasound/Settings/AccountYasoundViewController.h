@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopBarBackAndTitle.h"
 
 @interface AccountYasoundViewController : UIViewController
 {
-    IBOutlet UIBarButtonItem* _backItem;
-    IBOutlet UIBarButtonItem* _titleItem;
-    
+    IBOutlet TopBarBackAndTitle* _topbar;
     IBOutlet UITextField* _email;
     IBOutlet UITextField* _pword;
     IBOutlet UITextField* _pwordConfirm;
@@ -24,7 +23,8 @@
     
 }
 
-- (IBAction)onBack:(id)sender;
+
+
 - (IBAction)onButtonClicked:(id)sender;
 
 

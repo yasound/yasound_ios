@@ -43,6 +43,7 @@
     
     
     UIBarButtonItem* itemTitle = nil;
+    
     if ([self.delegate respondsToSelector:@selector(topBarTitle)])
     {
         NSString* title = [self.delegate topBarTitle];

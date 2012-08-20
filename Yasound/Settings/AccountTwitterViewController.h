@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopBarBackAndTitle.h"
 
 @interface AccountTwitterViewController : UIViewController
 {
-    IBOutlet UIBarButtonItem* _backItem;
-    IBOutlet UIBarButtonItem* _titleItem;
-    
+    IBOutlet TopBarBackAndTitle* _topbar;
     IBOutlet UILabel* _usernameLabel;
     IBOutlet UILabel* _usernameValue;
 
@@ -23,7 +22,6 @@
 
 }
 
-- (IBAction)onBack:(id)sender;
 - (IBAction)onButtonClicked:(id)sender;
 
 

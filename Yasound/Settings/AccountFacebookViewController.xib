@@ -38,20 +38,20 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIToolbar" id="681818827">
+					<object class="IBUIToolbar" id="975845284">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">266</int>
 						<string key="NSFrameSize">{320, 44}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="144685553"/>
+						<reference key="NSNextKeyView" ref="879061706"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<array class="NSMutableArray" key="IBUIItems"/>
 					</object>
-					<object class="IBUIImageView" id="144685553">
+					<object class="IBUIImageView" id="879061706">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 44}, {320, 422}}</string>
@@ -105,7 +105,7 @@
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
-						<object class="NSCustomResource" key="IBUIDisabledImage" id="870616301">
+						<object class="NSCustomResource" key="IBUIDisabledImage" id="87612752">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">commonBigButtonDisabled.png</string>
 						</object>
@@ -173,7 +173,7 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="199464119"/>
-						<reference key="IBUIDisabledImage" ref="870616301"/>
+						<reference key="IBUIDisabledImage" ref="87612752"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">commonBigButtonBlue.png</string>
@@ -260,7 +260,7 @@
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="681818827"/>
+				<reference key="NSNextKeyView" ref="975845284"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -331,6 +331,14 @@
 					<int key="connectionID">26</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_topbar</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="975845284"/>
+					</object>
+					<int key="connectionID">36</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onButtonClicked:</string>
 						<reference key="source" ref="103467651"/>
@@ -347,6 +355,14 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">24</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="975845284"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">37</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -367,8 +383,8 @@
 							<reference ref="784426888"/>
 							<reference ref="802551725"/>
 							<reference ref="436270078"/>
-							<reference ref="681818827"/>
-							<reference ref="144685553"/>
+							<reference ref="975845284"/>
+							<reference ref="879061706"/>
 							<reference ref="370607841"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -421,13 +437,13 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">33</int>
-						<reference key="object" ref="681818827"/>
+						<reference key="object" ref="975845284"/>
 						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">35</int>
-						<reference key="object" ref="144685553"/>
+						<reference key="object" ref="879061706"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -455,7 +471,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">35</int>
+			<int key="maxID">37</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -478,6 +494,7 @@
 						<string key="_loginLabel">UILabel</string>
 						<string key="_logoutButton">UIButton</string>
 						<string key="_logoutLabel">UILabel</string>
+						<string key="_topbar">TopBarBackAndTitle</string>
 						<string key="_usernameLabel">UILabel</string>
 						<string key="_usernameValue">UILabel</string>
 					</dictionary>
@@ -497,6 +514,10 @@
 						<object class="IBToOneOutletInfo" key="_logoutLabel">
 							<string key="name">_logoutLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="_topbar">
+							<string key="name">_topbar</string>
+							<string key="candidateClassName">TopBarBackAndTitle</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="_usernameLabel">
 							<string key="name">_usernameLabel</string>

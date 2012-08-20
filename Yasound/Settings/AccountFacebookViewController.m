@@ -216,6 +216,13 @@
 
 
 
+#pragma mark - TopBarBackAndTitleDelegate
+
+- (NSString*)topBarTitle
+{
+    return NSLocalizedString(@"Account.facebook", nil);
+}
+
 
 
 

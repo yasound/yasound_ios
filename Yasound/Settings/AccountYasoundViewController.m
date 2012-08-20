@@ -34,10 +34,6 @@
 {
     [super viewDidLoad];
     
-    _titleItem.title = @"Yasound";
-    _backItem.title = NSLocalizedString(@"Navigation_back", nil);    
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
-    
     _email.placeholder = NSLocalizedString(@"YasoundLoginView_email", nil);
     _pword.placeholder = NSLocalizedString(@"YasoundLoginView_password", nil);
     _pwordConfirm.placeholder = NSLocalizedString(@"YasoundLoginView_passwordConfirm", nil);
@@ -162,10 +158,6 @@
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
 - (IBAction)onButtonClicked:(id)sender
@@ -301,6 +293,15 @@
     
 }
 
+
+
+
+#pragma mark - TopBarBackAndTitleDelegate
+
+- (NSString*)topBarTitle
+{
+    return NSLocalizedString(@"Account.yasound", nil);
+}
 
 
 

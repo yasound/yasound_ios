@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TopBarBackAndTitle.h"
 
-@interface AccountFacebookViewController : UIViewController
+@interface AccountFacebookViewController : UIViewController<TopBarBackAndTitleDelegate>
 {
+    IBOutlet TopBarBackAndTitle* _topbar;
     IBOutlet UILabel* _usernameLabel;
     IBOutlet UILabel* _usernameValue;
 
