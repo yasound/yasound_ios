@@ -71,8 +71,8 @@
     }
 
     //mask
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Header.HeaderAvatarMask" error:nil];
-    [_mask setImage:[sheet image]];
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Header.HeaderAvatarMask" error:nil];
+//    [_mask setImage:[sheet image]];
 
 
     // format messages
