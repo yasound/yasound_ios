@@ -16,6 +16,8 @@
 @property (nonatomic, retain) UINib* cellLoader;
 
 @property (nonatomic, retain) NSArray* radios;
+@property (nonatomic, retain) NSMutableDictionary* editing;
+
 @property (nonatomic, retain) IBOutlet UITableView* tableview;
 @property (nonatomic, retain) IBOutlet TabBar* tabBar;
 

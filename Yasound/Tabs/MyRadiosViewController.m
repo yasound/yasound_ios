@@ -16,6 +16,7 @@
 #import "SettingsViewController.h"
 #import "Theme.h"
 #import "PlaylistsViewController.h"
+#import "ActivityAlertView.h"
 
 @interface MyRadiosViewController ()
 
@@ -29,6 +30,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 @synthesize radios;
 @synthesize tableview;
 @synthesize tabBar;
+@synthesize editing;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +38,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     if (self) 
     {
         self.cellLoader = [UINib nibWithNibName:CellIdentifier bundle:[NSBundle mainBundle]];
+        self.editing = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -55,6 +58,8 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     [self.tabBar setTabSelected:TabIndexMyRadios];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifMyRadioDeleted:) name:NOTIF_MYRADIO_DELETED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifMyRadioEdited:) name:NOTIF_MYRADIO_EDIT object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifMyRadioUnedited:) name:NOTIF_MYRADIO_UNEDIT object:nil];
     
     [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceived:success:)];
 }
@@ -62,6 +67,8 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (void)radiosReceived:(ASIHTTPRequest*)req success:(BOOL)success
 {
+    [ActivityAlertView close];
+    
     if (!success)
     {
         DLog(@"MyRadiosViewController::radiosReceived failed");
@@ -69,8 +76,16 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
         return;
     }
     
+    [self.editing removeAllObjects];
+    
     Container* container = [req responseObjectsWithClass:[Radio class]];
     self.radios = container.objects;
+    
+    for (Radio* radio in self.radios)
+    {
+        [self.editing setObject:[NSNumber numberWithBool:NO] forKey:radio.id];
+    }
+    
     [self.tableview reloadData];
 }
 
@@ -94,7 +109,20 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (void)onNotifMyRadioDeleted:(NSNotification*)notification
 {
-    [self.tableview reloadData];
+    // refresh data
+    [[YasoundDataProvider main] radiosForUser:[YasoundDataProvider main].user withTarget:self action:@selector(radiosReceived:success:)];
+}
+
+- (void)onNotifMyRadioEdited:(NSNotification*)notification
+{
+    Radio* radio = notification.object;
+    [self.editing setObject:[NSNumber numberWithBool:YES] forKey:radio.id];
+}
+
+- (void)onNotifMyRadioUnedited:(NSNotification*)notification
+{
+    Radio* radio = notification.object;
+    [self.editing setObject:[NSNumber numberWithBool:NO] forKey:radio.id];
 }
 
 
@@ -151,8 +179,13 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
             cell = [topLevelItems objectAtIndex:0];
             cell.delegate = self;
         }
+ 
+        NSNumber* nb = [self.editing objectForKey:radio.id];
+        assert(nb);
+        BOOL editing = [nb boolValue];
+
             
-        [cell updateWithRadio:radio target:self];
+        [cell updateWithRadio:radio target:self editing:editing];
         
         return cell;
     }

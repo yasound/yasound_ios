@@ -44,7 +44,7 @@
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)reuseIdentifier ownRadio:(BOOL)ownRadio event:(WallEvent*)ev indexPath:(NSIndexPath*)indexPath;
 
-- (void)updateWithRadio:(Radio*)radio target:(id)target;
+- (void)updateWithRadio:(Radio*)radio target:(id)target editing:(BOOL)editing;
 
 - (IBAction)onRadioClicked:(id)sender;
 - (IBAction)onStatsClicked:(id)sender;

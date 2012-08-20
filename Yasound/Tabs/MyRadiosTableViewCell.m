@@ -107,7 +107,7 @@
 
 
 
-- (void)updateWithRadio:(Radio*)radio target:(id)target;
+- (void)updateWithRadio:(Radio*)radio target:(id)target editing:(BOOL)editing
 {
     self.radio = radio;
     self.delegate = target;
@@ -124,6 +124,11 @@
     // metrics
     self.metric1.text = [self.radio.overall_listening_time stringValue];
     self.metric2.text = [self.radio.new_wall_messages_count stringValue];
+    
+    if (editing)
+        [self activateEditModeAnimated:NO];
+    else
+        [self deactivateEditModeAnimated:NO];
 }
 
 
@@ -200,12 +205,16 @@
 
 - (void)onSwipeLeft
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_MYRADIO_EDIT object:self.radio];
+
     [self activateEditModeAnimated:YES];
     
 }
 
 - (void)onSwipeRight
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_MYRADIO_UNEDIT object:self.radio];
+
     [self deactivateEditModeAnimated:YES];
 }
 
@@ -341,6 +350,8 @@ static const CGFloat kSpringRestingHeight = 4;
 {
     if (!success)
     {
+        [ActivityAlertView close];
+        
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.delete.title", nil) message:NSLocalizedString(@"MyRadios.delete.error.message", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.ok", nil) otherButtonTitles:nil];
         [alert show];
         [alert release];

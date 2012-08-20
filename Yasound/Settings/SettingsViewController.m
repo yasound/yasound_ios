@@ -705,9 +705,9 @@
 
 #pragma mark - TopBarSaveOrCancelDelegate
 
-- (void)topBarCancel
+- (BOOL)topBarCancel
 {
-
+    return YES;
 }
 
 - (BOOL)topBarSave

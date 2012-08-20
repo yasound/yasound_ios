@@ -804,36 +804,36 @@
 
 #pragma mark - IBActions
 
-- (IBAction)onBack:(id)sender
-{
-//    if (_wizard)
+//- (IBAction)onBack:(id)sender
+//{
+////    if (_wizard)
+////    {
+////        // call root to launch the Radio
+////        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CANCEL_WIZARD object:nil];
+////        return;
+////    }
+//    
+//    // save or cancel
+////    if (!_wizard && _changed)
+//    if (_changed)
 //    {
-//        // call root to launch the Radio
-//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CANCEL_WIZARD object:nil];
-//        return;
+//        UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Settings.saveOrCancel.title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Settings.saveOrCancel.cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Settings.saveOrCancel.save", nil), nil];
+//        
+//        popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+//        [popupQuery showInView:self.view];
+//        [popupQuery release];
 //    }
-    
-    // save or cancel
-//    if (!_wizard && _changed)
-    if (_changed)
-    {
-        UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Settings.saveOrCancel.title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Settings.saveOrCancel.cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Settings.saveOrCancel.save", nil), nil];
-        
-        popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-        [popupQuery showInView:self.view];
-        [popupQuery release];
-    }
-    else
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-}
+//    else
+//    {
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }
+//}
 
 
-- (IBAction)onNext:(id)sender
-{
-    [self save];
-}
+//- (IBAction)onNext:(id)sender
+//{
+//    [self save];
+//}
 
 - (IBAction)onEdit:(id)sender
 {
@@ -1131,6 +1131,18 @@
 {
     return NSLocalizedString(@"Navigation.create", nil);
 }
+
+
+- (BOOL)topBarSave
+{
+    [self save];
+    return NO;
+}
+
+//- (BOOL)topBarCancel
+//{
+//
+//}
 
 
 
