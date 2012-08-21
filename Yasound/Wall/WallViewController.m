@@ -1773,7 +1773,7 @@
     {
         DLog(@"settings item clicked for radio : %@", [self.radio toString]);
 
-        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:self.radio];
+        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:self.radio createMode:NO];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];        
     }

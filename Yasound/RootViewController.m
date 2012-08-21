@@ -484,8 +484,6 @@ static MenuViewController* gMenuView = nil;
     [self.navigationController popToViewController:gMenuView animated:NO];
   }
     
-//    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil wizard:YES radio:[YasoundDataProvider main].radio];
-    
     PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
     [self.navigationController pushViewController:view animated:YES];
     [view release];

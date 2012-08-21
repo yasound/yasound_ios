@@ -44,15 +44,17 @@
 @implementation SettingsViewController
 
 @synthesize radio;
+@synthesize radioBackup;
+@synthesize createMode;
 
-- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio createMode:(BOOL)createMode
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
         self.radio = radio;
         self.radioBackup = radio;
-        self.createMode = NO;
+        self.createMode = createMode;
     }
     
     return self;
@@ -560,17 +562,17 @@
 
 #pragma mark - IBActions
 
-- (IBAction)onCancel:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-- (IBAction)onSave:(id)sender
-{
-    [self save];
-}
-
+//- (IBAction)onCancel:(id)sender
+//{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
+//
+//
+//- (IBAction)onSave:(id)sender
+//{
+//    [self save];
+//}
+//
 
 
 
@@ -682,6 +684,13 @@
     [[YasoundDataCacheImageManager main] clearItem:imageURL];
 
   
+    // if the settings have been called through a "radio creation" process, go directly to the new radio's wall.
+    if (self.createMode)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:self.radio];
+        return;
+    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -284,7 +284,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
 - (void)myRadioRequestedSettings:(Radio*)radio
 {
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:radio];
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:radio createMode:NO];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

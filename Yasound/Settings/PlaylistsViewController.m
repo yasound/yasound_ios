@@ -1097,7 +1097,7 @@
   
 //  if (_wizard)
 //  {
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:self.radio];
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:self.radio createMode:YES];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
 //  }
