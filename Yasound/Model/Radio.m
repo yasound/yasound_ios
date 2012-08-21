@@ -16,7 +16,7 @@
 @synthesize genre;
 @synthesize theme;
 @synthesize uuid;
-@synthesize playlists;
+//@synthesize playlists;
 @synthesize likes;
 @synthesize favorites;
 @synthesize picture;
@@ -59,7 +59,7 @@
 
 -(NSString*)toString
 {
-    NSString* desc = [NSString stringWithFormat:@"id: '%@', name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', uuid: '%@' playlist count: '%d'", self.id, self.name, self.creator.username, self.description, self.genre, self.theme, self.uuid, [self.playlists count]];
+    NSString* desc = [NSString stringWithFormat:@"id: '%@', name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', uuid: '%@'", self.id, self.name, self.creator.username, self.description, self.genre, self.theme, self.uuid];
     return desc;
 }
 

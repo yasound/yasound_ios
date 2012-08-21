@@ -17,7 +17,7 @@
 @property (retain, nonatomic) NSString* genre;
 @property (retain, nonatomic) NSString* theme;
 @property (retain, nonatomic) NSString* uuid;
-@property (retain, nonatomic) NSArray* playlists;
+//@property (retain, nonatomic) NSArray* playlists;
 @property (retain, nonatomic) NSNumber* likes;
 @property (retain, nonatomic) NSNumber* favorites;
 @property (retain, nonatomic) NSString* picture;

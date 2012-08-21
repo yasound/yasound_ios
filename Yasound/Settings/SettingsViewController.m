@@ -623,6 +623,9 @@
 
     DLog(@"send update request for radio '%@'", self.radio.name);
     
+    DLog(@"settings clicked for radio : %@", [self.radio toString]);
+
+    
     [[YasoundDataProvider main] updateRadio:self.radio target:self action:@selector(onRadioUpdated:info:)];
 }
 
