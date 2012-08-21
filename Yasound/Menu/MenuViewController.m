@@ -20,6 +20,7 @@
 #import "WebPageViewController.h"
 #import "YasoundDataCache.h"
 #import "YasoundSessionManager.h"
+#import "ActivityAlertView.h"
 
 @implementation MenuViewController
 
@@ -39,6 +40,10 @@ enum MenuDescription
 };
 
 
+- (void)dealloc
+{
+    [super dealloc];
+}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -237,6 +242,7 @@ enum MenuDescription
     {
         if ([YasoundSessionManager main].registered)
         {
+            [ActivityAlertView showWithTitle:nil closeAfterTimeInterval:2];
             [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
         }
         else
@@ -293,6 +299,7 @@ enum MenuDescription
 - (void)logoutReturned
 {
     [_tableView reloadData];
+    [ActivityAlertView close];
 }
 
 

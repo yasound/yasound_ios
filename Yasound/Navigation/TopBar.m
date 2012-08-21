@@ -20,16 +20,32 @@
 @synthesize customItems;
 
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
+}
+
+
 - (void)awakeFromNib
 {
     self.backgroundColor = [UIColor blackColor];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogout:) name:NOTIF_DID_LOGOUT object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogin:) name:NOTIF_DID_LOGIN object:nil];
     
     // set background
     if ([self respondsToSelector:@selector(setBackgroundImage:forToolbarPosition:barMetrics:)]) 
         [self setBackgroundImage:[UIImage imageNamed:@"topBarBkg.png"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     else 
         [self insertSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topBarBkg.png"]] autorelease] atIndex:0];
+    
+    [self update];
+}
 
+
+- (void)update
+{
     // "back"  item
     BundleStylesheet* sheet = nil;
     UIButton* btn = nil;
@@ -257,6 +273,16 @@
 
 }
 
+
+- (void)onNotifDidLogout:(NSNotification*)notif
+{
+    [self update];
+}
+
+- (void)onNotifDidLogin:(NSNotification*)notif
+{
+    [self update];
+}
 
 //- (id)initWithFrame:(CGRect)frame
 //{

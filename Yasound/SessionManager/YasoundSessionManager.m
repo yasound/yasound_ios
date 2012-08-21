@@ -11,6 +11,7 @@
 #import "FacebookSessionManager.h"
 #import "TwitterSessionManager.h"
 //#import "ActivityAlertView.h"
+#import "RootViewController.h"
 
 @implementation YasoundSessionManager
 
@@ -354,6 +355,8 @@ static YasoundSessionManager* _main = nil;
     
     [[UserSettings main] clearSession];
     [[YasoundDataProvider main] resetUser];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DID_LOGOUT object:nil];
 
     // callback
     [target performSelector:action];
@@ -371,8 +374,11 @@ static YasoundSessionManager* _main = nil;
     
     // store pword with security
     [SFHFKeychainUtils storeUsername:email andPassword:pword  forServiceName:@"YasoundSessionManager" updateExisting:YES error:nil];
-
+    
     [self save];
+
+    // warn the object that may need to know you are now login (topbar for instance)
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DID_LOGIN object:nil];
 }
 
 
@@ -387,6 +393,8 @@ static YasoundSessionManager* _main = nil;
     
     [self save];
 
+    // warn the object that may need to know you are now login (topbar for instance)
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DID_LOGIN object:nil];
 }
 
 - (void)registerForTwitter
@@ -400,6 +408,8 @@ static YasoundSessionManager* _main = nil;
 
     [self save];
 
+    // warn the object that may need to know you are now login (topbar for instance)
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DID_LOGIN object:nil];
 }
 
 

@@ -169,6 +169,7 @@ static MenuViewController* gMenuView = nil;
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushLogin:) name:NOTIF_PUSH_LOGIN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoLogin:) name:NOTIF_GOTO_LOGIN object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogout:) name:NOTIF_DID_LOGOUT object:nil];
 
 
     
@@ -696,6 +697,14 @@ static MenuViewController* gMenuView = nil;
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
+
+
+//- (void)onNotifDidLogout:(NSNotification*)notif
+//{
+//    [self.navigationController popToRootViewControllerAnimated:NO];
+//    gMenuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+//    [self.navigationController pushViewController:gMenuView animated:NO];
+//}
 
 
 
