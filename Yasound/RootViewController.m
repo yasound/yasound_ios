@@ -103,18 +103,18 @@
 @synthesize user;
 //@synthesize menuView;
 
-static MenuViewController* gMenuView = nil;
+//static MenuViewController* gMenuView = nil;
 
 
-+ (BOOL)menuIsCurrentScreen
-{
-    UIViewController* tmp = APPDELEGATE.navigationController.topViewController;
-    NSLog(@"class %@", [tmp class]);
-    NSLog(@"compare %@   %@", tmp, gMenuView);
-    
-    
-    return (APPDELEGATE.navigationController.topViewController == gMenuView);
-}
+//+ (BOOL)menuIsCurrentScreen
+//{
+//    UIViewController* tmp = APPDELEGATE.navigationController.topViewController;
+//    NSLog(@"class %@", [tmp class]);
+//    NSLog(@"compare %@   %@", tmp, gMenuView);
+//    
+//    
+//    return (APPDELEGATE.navigationController.topViewController == gMenuView);
+//}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -137,8 +137,8 @@ static MenuViewController* gMenuView = nil;
 
 - (void)dealloc
 {
-    if (gMenuView != nil)
-        [gMenuView release];
+//    if (gMenuView != nil)
+//        [gMenuView release];
     [super dealloc];
 }
 
@@ -178,6 +178,10 @@ static MenuViewController* gMenuView = nil;
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
   [[AVAudioSession sharedInstance] setActive: YES error: nil];  
   [[AVAudioSession sharedInstance] setDelegate: self];
+
+    // put the menu above the root viewController
+     MenuViewController* menu = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    [self.view addSubview:menu.view];
 }
 
 - (void)viewDidUnload

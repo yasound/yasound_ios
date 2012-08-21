@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "UnderlinedButton.h"
 #import "User.h"
 
 
 
-@interface LoginViewController : TestflightViewController
+@interface LoginViewController : YaViewController
 {
     IBOutlet UIBarButtonItem* _titleLabel;
     IBOutlet UIBarButtonItem* _backBtn;

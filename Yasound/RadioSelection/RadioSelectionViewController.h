@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "WheelSelector.h"
 #import "WheelRadiosSelector.h"
 #import "RadioListTableViewController.h"
 #import "TabBar.h"
 #import "TopBar.h"
 
-@interface RadioSelectionViewController : TestflightViewController<TopBarDelegate, RadioListDelegate, TabBarDelegate>
+@interface RadioSelectionViewController : YaViewController<TopBarDelegate, RadioListDelegate, TabBarDelegate>
 {
     TabIndex _tabIndex;
 }

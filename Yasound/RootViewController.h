@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MenuViewController.h"
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "User.h"
 
 
@@ -50,7 +50,7 @@
 #define NOTIF_HANDLE_IOS_NOTIFICATION @"NOTIF_HANDLE_IOS_NOTIFICATION"
 
 
-@interface RootViewController : TestflightViewController
+@interface RootViewController : YaViewController
 {
     BOOL _firstTime;
     
@@ -61,7 +61,7 @@
 
 //@property (nonatomic, retain) MenuViewController* menuView;
 
-+ (BOOL)menuIsCurrentScreen;
+//+ (BOOL)menuIsCurrentScreen;
 
 @end
 

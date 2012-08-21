@@ -1,5 +1,5 @@
 //
-//  TestflightViewController.h
+//  YaViewController.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 26/01/12.
@@ -12,10 +12,13 @@
 
 #import <UIKit/UIKit.h>
 #import "EasyTracker.h"
+#import "ECSlidingViewController.h"
 
-@interface TestflightViewController : TrackedUIViewController
 
-@property (nonatomic, retain) NSString* didLoadCheckpoint;
+@interface YaViewController : TrackedUIViewController
+
+//@property (nonatomic, retain) NSString* didLoadCheckpoint;
 @property (nonatomic, retain) NSString* didAppearCheckpoint;
+@property (nonatomic, assign) ECSlidingViewController* slideController;
 
 @end

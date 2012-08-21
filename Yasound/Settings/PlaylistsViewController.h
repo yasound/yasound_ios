@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "SongsViewController.h"
 #import "TopBarSaveOrCancel.h"
 #import "Radio.h"
@@ -18,7 +18,7 @@ typedef enum {
 } DisplayMode;
 
 
-@interface PlaylistsViewController : TestflightViewController<TopBarSaveOrCancelDelegate>
+@interface PlaylistsViewController : YaViewController<TopBarSaveOrCancelDelegate>
 {
 //    BOOL _wizard;
     BOOL _changed;

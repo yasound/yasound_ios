@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "ChartView.h"
 #import "RadioListeningStat.h"
 #import "Radio.h"
 
-@interface StatsViewController : TestflightViewController
+@interface StatsViewController : YaViewController
 {
     IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UILabel* _titleLabel;

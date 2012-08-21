@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "MyUITextField.h"
 
 
-@interface SignupViewController : TestflightViewController<UITextFieldDelegate>
+@interface SignupViewController : YaViewController<UITextFieldDelegate>
 {
 //    IBOutlet UIBarButtonItem* _backItem;
 //    IBOutlet UIBarButtonItem* _titleItem;

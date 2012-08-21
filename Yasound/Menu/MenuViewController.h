@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "TopBar.h"
 
-@interface MenuViewController : TestflightViewController
+@interface MenuViewController : YaViewController
 {
     IBOutlet UITableView* _tableView;
 }

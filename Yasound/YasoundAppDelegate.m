@@ -97,18 +97,22 @@ void SignalHandler(int sig) {
     [EasyTracker launchWithOptions:launchOptions
                     withParameters:trackerParameters
                          withError:nil];
-    
-    navigationController = [[UINavigationController alloc] init];
+
+    self.slideController = [[ECSlidingViewController alloc] init];
+//    navigationController = [[UINavigationController alloc] init];
 //    [navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-    navigationController.navigationBarHidden = YES;
+//    navigationController.navigationBarHidden = YES;
 
   [self.window makeKeyAndVisible];
 
   // add it as the window's root widget
-  self.window.rootViewController = navigationController;
+//    self.window.rootViewController = navigationController;
+    self.window.rootViewController = self.slideController;
     
     rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
-    [self.navigationController pushViewController:rootViewController animated:NO];
+    
+//    [self.navigationController pushViewController:rootViewController animated:NO];
+    self.slideController.underLeftViewController = rootViewController;
     
     
     

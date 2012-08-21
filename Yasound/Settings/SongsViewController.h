@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "Playlist.h"
 #import "Song.h"
 #import "MBProgressHUD.h"
 
-@interface SongsViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
+@interface SongsViewController : YaViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 {
     NSInteger _playlistId;
     IBOutlet UITableView* _tableView;  

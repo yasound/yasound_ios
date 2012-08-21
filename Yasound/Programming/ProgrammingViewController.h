@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "WheelSelector.h"
 #import "Radio.h"
 #import "TopBar.h"
@@ -15,7 +15,7 @@
 #define SEGMENT_INDEX_ARTIST 1
 
 
-@interface ProgrammingViewController : TestflightViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate, TopBarDelegate>
+@interface ProgrammingViewController : YaViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate, TopBarDelegate>
 {
 //    IBOutlet UIBarButtonItem* _synchroBtn;
     

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "MyUITextField.h"
 
-@interface YasoundLoginViewController : TestflightViewController
+@interface YasoundLoginViewController : YaViewController
 {
 //    IBOutlet UIBarButtonItem* _backItem;
 //    IBOutlet UIBarButtonItem* _titleItem;

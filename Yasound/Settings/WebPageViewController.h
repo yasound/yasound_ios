@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 
 
-@interface WebPageViewController : TestflightViewController
+@interface WebPageViewController : YaViewController
 {
     IBOutlet UIToolbar* _toolbar;
     IBOutlet UIBarButtonItem* _backBtn;
