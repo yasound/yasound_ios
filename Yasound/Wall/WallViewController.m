@@ -43,6 +43,8 @@
 #import "SongPublicInfoViewController.h"
 #import "SongCatalog.h"
 #import "WallViewController+NowPlayingBar.h"
+#import "SettingsViewController.h"
+
 
 
 //#define LOCAL 1 // use localhost as the server
@@ -182,7 +184,7 @@
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.minHeight" error:nil];
     self.tableview.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
     
-    [self.cellWallHeader setHeaderRadio:self.radio];
+//    [self.cellWallHeader setHeaderRadio:self.radio];
     
     [self setPause:[AudioStreamManager main].isPaused];
 
@@ -228,8 +230,10 @@
     [super viewDidAppear:animated];
     
     self.requests = [[NSMutableDictionary alloc] init];
-
     
+    [self.cellWallHeader setHeaderRadio:self.radio];
+
+
     // launch timer here, but only the the wall has been filled already.
     // otherwise, wait for it to be filled, and then, we will launch the update timer.
     if (!_firstUpdateRequest && ((_timerUpdate == nil) || (![_timerUpdate isValid])))
@@ -1763,6 +1767,15 @@
 //        NSLog(@"RETAIN COUNT %d", retainCount);
 //        for (NSInteger i = 0; i < retainCount-3; i++)
 //            [self autorelease];
+    }
+    
+    else if (itemId == TopBarItemSettings)
+    {
+        DLog(@"settings item clicked for radio : %@", [self.radio toString]);
+
+        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:self.radio];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        [view release];        
     }
     
     return YES;

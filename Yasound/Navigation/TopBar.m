@@ -11,7 +11,6 @@
 #import "AudioStreamManager.h"
 #import "RootViewController.h"
 #import "YasoundAppDelegate.h"
-#import "SettingsViewController.h"
 #import "NotificationCenterViewController.h"
 #import "YasoundSessionManager.h"
 
@@ -238,9 +237,7 @@
         
     else if (itemId == TopBarItemSettings)
     {
-        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:[AudioStreamManager main].currentRadio];
-        [APPDELEGATE.navigationController pushViewController:view animated:YES];
-        [view release];
+        // nothing
     }
     
     else if (itemId == TopBarItemTrash)

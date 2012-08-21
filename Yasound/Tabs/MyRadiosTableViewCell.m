@@ -100,9 +100,6 @@
         swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
         [self.container addGestureRecognizer:swipeLeft];
     
-    //LBDEBUG TODO TEMPORARLY CODE
-    self.buttonDelete.enabled = NO;
-
 }
 //    }
 //
@@ -175,6 +172,8 @@
 
 - (IBAction)onSettingsClicked:(id)sender
 {
+    DLog(@"settings clicked for radio : %@", [self.radio toString]);
+    
     [self.delegate myRadioRequestedSettings:self.radio];
 }
 
@@ -344,6 +343,8 @@ static const CGFloat kSpringRestingHeight = 4;
     
     [ActivityAlertView showWithTitle:nil];
     
+    DLog(@"deleteRadio forRadio '%@' name '%@'", self.radio.id, self.radio.name);
+    
     [[YasoundDataProvider main] deleteRadio:self.radio target:self action:@selector(onRadioDeleted:success:)];
 }
 
@@ -361,6 +362,8 @@ static const CGFloat kSpringRestingHeight = 4;
         [alert release];
         return;
     }
+    
+    DLog(@"onRadioDelete. server response : %@", req.responseString);
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_MYRADIO_DELETED object:nil];
 }

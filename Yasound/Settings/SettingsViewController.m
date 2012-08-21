@@ -51,6 +51,7 @@
     if (self)
     {
         self.radio = radio;
+        self.radioBackup = radio;
         self.createMode = NO;
     }
     
@@ -96,6 +97,21 @@
 
     _settingsTitleLabel.text = NSLocalizedString(@"Settings.radio.title.label", nil);
     
+    _settingsTitleTextField.delegate = self;
+    
+
+    // image gui
+    _settingsImageLabel.text = NSLocalizedString(@"Settings.radio.image.label", nil);
+    _settingsImageChanged = NO;
+    
+    [self update];
+    
+}
+
+
+
+- (void)update
+{
     // set radio title
     NSString* radioTitle = nil;
     if (self.radio)
@@ -103,35 +119,25 @@
     if ((radioTitle == nil) || (radioTitle.length == 0))
         radioTitle = [NSString stringWithFormat:@"%@'s Yasound", [[UIDevice currentDevice] name]];
     _settingsTitleTextField.text = radioTitle;
-    _settingsTitleTextField.delegate = self;
     
 
-    // image gui
-    _settingsImageLabel.text = NSLocalizedString(@"Settings.radio.image.label", nil);
-    [_settingsImageImage.layer setBorderColor: [[UIColor lightGrayColor] CGColor]];
-    [_settingsImageImage.layer setBorderWidth: 1];    
-    _settingsImageChanged = NO;
+    
     
     // set radio image
     NSURL* imageURL = nil;
     if (self.radio)
-        [[YasoundDataProvider main] urlForPicture:self.radio.picture];
+        imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     if (imageURL != nil)
-        [_settingsImageImage setUrl:imageURL];    
+        [_settingsImageImage setUrl:imageURL];
     
-}
-
-
-- (void) viewWillAppear:(BOOL)animated
-{
-    // update GUI
-    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+    
+    
     
     // update keywords
     NSArray* keywords = nil;
     if (self.radio)
-        [self.radio tagsArray];
-
+        keywords = [self.radio tagsArray];
+    
     if (_keywords)
         [_keywords release];
     
@@ -150,8 +156,16 @@
     }
     
     [_keywords retain];
-    [_tableView reloadData];
+
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    // update GUI
+    [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
     
+    [self update];
+    [_tableView reloadData];
     
     if ([ActivityAlertView isRunning])
         [ActivityAlertView close];
@@ -210,138 +224,81 @@
 
 
 
-
-
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    return 22;
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return 22;
-//}
-//
-
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    NSString* title = nil;
-//    
-//    if (section == SECTION_CONFIG)
-//        title = NSLocalizedString(@"Settings.section.config", nil);
-//    
-//    else if (section == SECTION_IMAGE)
-//        title = NSLocalizedString(@"Settings.section.image", nil);
-//    
-//    else if (section == SECTION_ACCOUNTS)
-//        title = NSLocalizedString(@"Settings.section.accounts", nil);
-//
-//    else if (section == SECTION_NOTIFS)
-//        title = NSLocalizedString(@"Settings.section.notifs", nil);
-//
-//#ifdef DEBUG
-//    else if (section == SECTION_CACHE)
-//        title = @"Cache";
-//#endif
-//
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    
-//    UIImage* image = [sheet image];
-//    CGFloat height = image.size.height;
-//    UIImageView* view = [[UIImageView alloc] initWithImage:image];
-//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UILabel* label = [sheet makeLabel];
-//    label.text = title;
-//    [view addSubview:label];
-//    
-//    return view;
-//}
-//    
-
-
-
-
-
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//    NSInteger nbRows;
-//    if (indexPath.section == SECTION_CONFIG)
-//        nbRows =  3;
-//    
-//    else if (indexPath.section == SECTION_IMAGE)
-//        nbRows =  1;
-//    
-//    else if (indexPath.section == SECTION_ACCOUNTS)
-//        nbRows =  SECTION_ACCOUNTS_NB_ROWS;
-//
-//    else if (indexPath.section == SECTION_NOTIFS)
-//        nbRows =  SECTION_NOTIFS_NB_ROWS;
-//
-//#ifdef DEBUG
-//    else if (indexPath.section == SECTION_CACHE)
-//        nbRows =  SECTION_CACHE_NB_ROWS;
-//#endif
-//    
-//    if (nbRows == 1)
-//    {
-//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowSingle.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else if (indexPath.row == 0)
-//    {
-//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowFirst.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else if (indexPath.row == (nbRows -1))
-//    {
-//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowLast.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//    else
-//    {
-//        UIImageView* view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CellRowInter.png"]];
-//        cell.backgroundView = view;
-//        [view release];
-//    }
-//}
-
-
-//
-//
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
-//{
-//    UIView* view = [[UIView alloc] init];
-//    view.backgroundColor = [UIColor redColor];
-//    cell.backgroundView = view;
-//}
-//
-
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if(section == SECTION_CONFIG)
-        return NSLocalizedString(@"Settings", nil);
-    else if(section == SECTION_IMAGE)
-        return NSLocalizedString(@"Picture", nil);
-    else
-        return NSLocalizedString(@"Programming", nil);
+    return 22;
 }
+
+
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString* title = nil;
+    
+    if(section == SECTION_CONFIG)
+        title = NSLocalizedString(@"Settings.section.settings", nil);
+    else if(section == SECTION_IMAGE)
+        title = NSLocalizedString(@"Settings.section.picture", nil);
+    else
+        title = NSLocalizedString(@"Settings.section.programming", nil);
+    
+    UIView* view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 26)];
+    view.backgroundColor = [UIColor clearColor];
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.viewForHeader" retainStylesheet:YES overwriteStylesheet:YES error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
+    return view;
+}
+
+
+
+
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSInteger nbRows = [tableView numberOfRowsInSection:indexPath.section];
+    
+    if (nbRows == 1)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowSingle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
+    }
+    else if (indexPath.row == 0)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowFirst" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
+    }
+    else if (indexPath.row == (nbRows -1))
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowLast" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
+    }
+    else
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.willDisplayCell.rowInter" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        cell.backgroundView = [sheet makeImage];
+    }
+}
+
+
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_TITLE))
+    {
         return _settingsTitleCell;
+    }
     
     if ((indexPath.section == SECTION_IMAGE) && (indexPath.row == ROW_IMAGE))
+    {
         return _settingsImageCell;
+    }
     
     
     static NSString* CellIdentifier = @"Cell";
@@ -387,6 +344,10 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = NSLocalizedString(@"Settings.shows.label", nil);
         cell.detailTextLabel.text = @"";
+        
+//        //LBDEBUG
+//        cell.textLabel.alpha = 0.5
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     
@@ -608,7 +569,6 @@
 - (IBAction)onSave:(id)sender
 {
     [self save];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -653,6 +613,8 @@
 
 - (void) save
 {
+    self.radio.name = _settingsTitleTextField.text;
+    
     //fake commnunication
     [ActivityAlertView showWithTitle:NSLocalizedString(@"Settings.submit", nil)];
 
@@ -667,6 +629,26 @@
 - (void)onRadioUpdated:(Radio*)radio info:(NSDictionary*)info
 {
     DLog(@"onRadioUpdated '%@', info %@", radio.name, info);
+    
+    NSNumber* nb = [info objectForKey:@"succeeded"];
+    BOOL success = [nb boolValue];
+    
+    if (!success)
+    {
+        [ActivityAlertView close];
+        DLog(@"radio update failed.");
+        
+        // backup
+        self.radio = self.radioBackup;
+        [self update];
+        [_tableView reloadData];
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Settings.update.failed.title", nil) message:NSLocalizedString(@"Settings.update.failed.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        
+        return;
+    }
     
     if (_settingsImageChanged)
     {
@@ -703,6 +685,14 @@
 
 
 
+
+
+
+
+
+
+
+
 #pragma mark - TopBarSaveOrCancelDelegate
 
 - (BOOL)topBarCancel
@@ -713,7 +703,7 @@
 - (BOOL)topBarSave
 {
     [self save];
-    return YES;
+    return NO;
 }
 
 

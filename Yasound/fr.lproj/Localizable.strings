@@ -572,6 +572,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "Bio.label" = "%.0f caractères restants";
 
+"Settings.section.settings" = "Paramètres";
+"Settings.section.picture" = "Image";
+"Settings.section.programming" = "Programmation";
 "Settings.image.label" = "Image";
 "Settings.title.label" = "Titre";
 "Settings.genre.label" = "Genre";
@@ -588,6 +591,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "Settings.radio.title.label" = "Titre";
 "Settings.radio.image.label" = "Image";
+
+"Settings.update.failed.title" = "Oups...";
+"Settings.update.failed.message" = "La radio n'a pas pu être mise à jour.";
 
 
 "Wall.header.favorite.button.add" = "Ajouter aux favoris";

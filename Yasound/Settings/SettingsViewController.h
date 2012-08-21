@@ -33,6 +33,7 @@
 
 }
 
+@property (nonatomic, retain) Radio* radioBackup;
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic) BOOL createMode;

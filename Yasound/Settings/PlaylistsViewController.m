@@ -410,29 +410,6 @@
     return 22;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    if (section == 0)
-//        return 0;
-//    
-//    return 22;
-//}
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.section == 0) 
-//        return _cellHowtoHeight;
-//    
-//    return 44;
-//}
-
-
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-//{
-//    UIView* view = [[UIView alloc] init];
-//    view.backgroundColor = [UIColor clearColor];
-//    return view;
-//}
 
 
 
@@ -1120,7 +1097,7 @@
   
 //  if (_wizard)
 //  {
-    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil radio:self.radio];
+    SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:self.radio];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
 //  }

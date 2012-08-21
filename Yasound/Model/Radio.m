@@ -59,7 +59,7 @@
 
 -(NSString*)toString
 {
-    NSString* desc = [NSString stringWithFormat:@"name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', uuid: '%@' playlist count: '%d", self.name, self.creator.username, self.description, self.genre, self.theme, self.uuid, [self.playlists count]];
+    NSString* desc = [NSString stringWithFormat:@"id: '%@', name: '%@', creator: '%@', description: '%@', genre: '%@', theme: '%@', uuid: '%@' playlist count: '%d'", self.id, self.name, self.creator.username, self.description, self.genre, self.theme, self.uuid, [self.playlists count]];
     return desc;
 }
 
