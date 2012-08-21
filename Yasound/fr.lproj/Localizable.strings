@@ -581,7 +581,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Settings.keywords.label" = "Mots Clés";
 "Settings.keywords.empty" = "pas de mot-clé";
 "Settings.prog.label" = "Programmation";
-"Settings.shows.label" = "Playlists";
+"Settings.shows.label" = "Emissions";
 
 "Settings.pickImage.cancel" = "Annuler";
 "Settings.pickImage.image" = "Prendre une photo";

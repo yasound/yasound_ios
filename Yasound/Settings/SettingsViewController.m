@@ -347,9 +347,9 @@
         cell.textLabel.text = NSLocalizedString(@"Settings.shows.label", nil);
         cell.detailTextLabel.text = @"";
         
-//        //LBDEBUG
-//        cell.textLabel.alpha = 0.5
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        //LBDEBUG TEMPORARLY CODE
+        cell.textLabel.alpha = 0.5;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     
@@ -362,6 +362,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    //LBDEBUG TEMPORARLY CODE
+    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
+    {
+        return;
+    }
+
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
     {
