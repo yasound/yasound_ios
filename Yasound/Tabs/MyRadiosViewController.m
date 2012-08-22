@@ -199,7 +199,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButton.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButtonBlue.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UIButton* button = [sheet makeButton];
             CGFloat height = ROW_CREATE_HEIGHT;
             CGRect rect = CGRectMake(cell.frame.size.width/2.f - button.frame.size.width/2.f, height/2.f - button.frame.size.height/2.f, button.frame.size.width, button.frame.size.height);
@@ -207,7 +207,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
             [button addTarget:self action:@selector(onCreateButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:button];
             
-            sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButton.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButtonBlue.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UILabel* label = [sheet makeLabel];
             label.text = NSLocalizedString(@"MyRadios.create", nil);
             [button addSubview:label];

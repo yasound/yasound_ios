@@ -146,7 +146,7 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
-			<key>BigButton</key>
+			<key>BigButtonBlue</key>
 			<dict>
 				<key>button</key>
 				<dict>
@@ -156,6 +156,52 @@
 					<integer>0</integer>
 					<key>name</key>
 					<string>commonBigButtonBlue</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>label</key>
+				<dict>
+					<key>height</key>
+					<integer>44</integer>
+					<key>width</key>
+					<integer>286</integer>
+					<key>x</key>
+					<integer>8</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>font</key>
+					<dict>
+						<key>weight</key>
+						<string>bold</string>
+						<key>textAlignment</key>
+						<string>center</string>
+						<key>size</key>
+						<integer>15</integer>
+						<key>textColor</key>
+						<string>white</string>
+						<key>shadowColor</key>
+						<string>black</string>
+						<key>shadowOffset</key>
+						<string>0, -1</string>
+						<key>shadowRadius</key>
+						<real>0.5</real>
+						<key>shadowOpacity</key>
+						<real>0.75</real>
+						<key>backgroundColor</key>
+						<string>clear</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>BigButtonRed</key>
+			<dict>
+				<key>button</key>
+				<dict>
+					<key>x</key>
+					<integer>14</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>name</key>
+					<string>commonBigButtonRed</string>
 					<key>type</key>
 					<string>png</string>
 				</dict>

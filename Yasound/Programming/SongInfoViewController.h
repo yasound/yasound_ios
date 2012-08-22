@@ -20,9 +20,9 @@
     IBOutlet UIBarButtonItem* _nowPlayingButton;
     IBOutlet UIToolbar* _toolbar;
     
-    IBOutlet UITableViewCell* _cellDelete;
-    IBOutlet UILabel* _cellDeleteLabel;
-
+//    IBOutlet UITableViewCell* _cellDelete;
+//    IBOutlet UILabel* _cellDeleteLabel;
+//
     WebImageView* _imageView;
     UILabel* _name;
     UILabel* _artist;

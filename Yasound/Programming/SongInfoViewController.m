@@ -63,7 +63,7 @@
     _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
     _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
-    _cellDeleteLabel.text = NSLocalizedString(@"SongView_delete", nil);
+//    _cellDeleteLabel.text = NSLocalizedString(@"SongView_delete", nil);
     
     if (!_showNowPlaying)
     {
@@ -277,7 +277,7 @@
         
         else
         {
-          NSURL* url = [[YasoundDataProvider main] urlForSongCover:self.song];
+            NSURL* url = [[YasoundDataProvider main] urlForPicture:self.song.cover];
           [_imageView setUrl:url];
         }
         
@@ -291,7 +291,28 @@
     }
     else if (indexPath.section == SECTION_DELETE)
     {
-        return _cellDelete;
+        static NSString* CellDeleteIdentifier = @"SongInfoCellDelete";
+        
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellDeleteIdentifier];
+        
+        if (cell == nil)
+        {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellDeleteIdentifier] autorelease];
+            
+            cell.selectionStyle  = UITableViewCellSelectionStyleNone;
+        
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButtonRed.button" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            UIButton* button = [sheet makeButton];
+            [button addTarget:self action:@selector(onDeleteSong:) forControlEvents:UIControlEventTouchUpInside];
+            [cell addSubview:button];
+            
+            sheet = [[Theme theme] stylesheetForKey:@"TableView.BigButtonRed.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            UILabel* label = [sheet makeLabel];
+            label.text = NSLocalizedString(@"SongView_delete", nil);
+            [button addSubview:label];
+        }
+            
+        return cell;
     }
 
     
@@ -328,7 +349,7 @@
         
         
         cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.textColor = [UIColor blackColor];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
         
     }
