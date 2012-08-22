@@ -105,7 +105,7 @@
     self.view.bounds = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width+20, self.view.bounds.size.height);
 //    self.view.frame = CGRectMake(self.view.frame.origin.x + 20, self.view.frame.origin.y, self.view.frame.size.width+20, self.view.frame.size.height);
     
-    [self.topbar showMenuItem];
+//    [self.topbar showMenuItem];
      
     NSString* urlstr = URL_RADIOS_SELECTION;
     [tabBar setTabSelected:TabIndexSelection];
@@ -117,6 +117,8 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    [self.topbar showMenuItem];    
 }
 
 

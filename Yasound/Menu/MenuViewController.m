@@ -243,6 +243,16 @@ enum MenuDescription
         return;
 
     
+    if ((indexPath.row == ROW_LOGIN) && ([YasoundSessionManager main].registered))
+        {
+            [ActivityAlertView showWithTitle:nil closeAfterTimeInterval:2];
+            [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
+            
+            // :)
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onLogoutTick:) userInfo:nil repeats:NO];
+            return;
+        }
+
 //    if (indexPath.row == ROW_RADIOS)
 //    {
 //        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
@@ -260,14 +270,8 @@ enum MenuDescription
     
     NSIndexPath* indexPath = timer.userInfo;
     
-    if (indexPath.row == ROW_LOGIN)
+    if ((indexPath.row == ROW_LOGIN) && !([YasoundSessionManager main].registered))
     {
-        if ([YasoundSessionManager main].registered)
-        {
-            [ActivityAlertView showWithTitle:nil closeAfterTimeInterval:2];
-            [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
-        }
-        else
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:nil];
     }
     
@@ -323,6 +327,12 @@ enum MenuDescription
 {
     [_tableView reloadData];
     [ActivityAlertView close];
+}
+
+- (void)onLogoutTick:(NSTimer*)timer
+{
+    if ([APPDELEGATE.slideController underLeftShowing])
+        [APPDELEGATE.slideController resetTopView];
 }
 
 
