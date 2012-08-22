@@ -398,6 +398,9 @@
 
 - (void)radioListDidSelect:(Radio*)radio
 {
+    if (self.locked)
+        return;
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
 }
 
@@ -413,6 +416,9 @@
 
 - (void)tabBarDidSelect:(NSInteger)tabIndex
 {
+    if (self.locked)
+        return;
+    
     if (tabIndex == TabIndexSelection)
     {
         [self.wheelSelector stickToItem:WheelIdSelection silent:NO];
