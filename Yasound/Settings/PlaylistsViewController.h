@@ -45,7 +45,6 @@ typedef enum {
     NSMutableArray* _unselectedPlaylists;  // NSMutableArray of Dictionary
     NSMutableArray* _localPlaylistsDesc;
     
-    NSTimer* taskTimer;
     DisplayMode _displayMode;
     SongsViewController *_songsViewController;
     
@@ -66,6 +65,8 @@ typedef enum {
 @property (nonatomic) NSInteger nbParsedPlaylistsForChecking;
 @property (nonatomic) NSInteger nbMatchedSongs;
 @property (nonatomic, retain) NSData* playlistsDataPackage;
+@property (nonatomic, retain) NSTimer* taskTimer;
+
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;
 - (void) refreshView;

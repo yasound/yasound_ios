@@ -173,7 +173,7 @@
 //            else
 //            {
 //                // fake image
-//                sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.Wall.NowPlaying.NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//                sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy256" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //                imageView = [[UIImageView alloc] initWithImage:[sheet image]];
 //            }
 //
@@ -189,7 +189,7 @@
             else
             {
                 // fake image
-                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.NowPlaying.Wall.NowPlaying.NowPlayingBarImageDummy" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy256" retainStylesheet:YES overwriteStylesheet:NO error:nil];
                 _imageView = [[WebImageView alloc] initWithImage:[sheet image]];
             }
             

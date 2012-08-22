@@ -33,6 +33,7 @@
 @synthesize nbPlaylistsForChecking;
 @synthesize nbParsedPlaylistsForChecking;
 @synthesize playlistsDataPackage;
+@synthesize taskTimer;
 
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil
@@ -960,7 +961,7 @@
     
     DLog(@"playlists updated  task: %@", task_id);
     
-    taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task_id repeats:YES];
+    self.taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(checkPlaylistTask:) userInfo:task_id repeats:YES];
     
 }
 
@@ -980,8 +981,8 @@
 {
     if (taskInfo.status == eTaskSuccess)
     {
-        if ([taskTimer isValid])
-            [taskTimer invalidate];
+        if ([self.taskTimer isValid])
+            [self.taskTimer invalidate];
         [self finalize];
     }
     else if (taskInfo.status == eTaskFailure)
