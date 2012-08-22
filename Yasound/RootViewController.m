@@ -35,7 +35,7 @@
 @implementation NSArray (NSArrayDebug)
 - (id)objectForKey:(NSString*)key
 {
-        DLog(@"SHOULD NOT HAPPEN : your NSURL* object is in fact a NSString* object!");
+        DLog(@"SHOULD NOT HAPPEN : your NSDictionary* object is in fact a NSArray* object!");
         assert(0);
 }
 @end

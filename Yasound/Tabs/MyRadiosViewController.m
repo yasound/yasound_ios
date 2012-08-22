@@ -211,6 +211,9 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
             UILabel* label = [sheet makeLabel];
             label.text = NSLocalizedString(@"MyRadios.create", nil);
             [button addSubview:label];
+            
+            // handle create permission
+            button.enabled = [[YasoundDataProvider main].user permission:PERM_CREATERADIO];
         }
         
         return cell;

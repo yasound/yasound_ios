@@ -41,6 +41,8 @@
 @synthesize bio_text;
 @synthesize url;
 
+@synthesize permissions;
+
 
 - (NSString*)toString
 {
@@ -86,6 +88,30 @@
 }
 
 
+- (BOOL)permission:(NSString*)permId
+{
+    //DLog(@"permission :%@", self.permissions);
+    
+    if ((self.permissions == nil) || (self.permissions.count == 0))
+    {
+        DLog(@"error : no permissions!");
+        return NO;
+    }
+    
+    NSDictionary* perms = [self.permissions objectAtIndex:0];
+    
+    NSNumber* nb = [perms objectForKey:permId];
+    if (nb == nil)
+    {
+        DLog(@"User::permission could not find any permission '%@'", permId);
+        return NO;
+    }
+    
+    return [nb boolValue];
+}
+
+
+
 @end
 
 
@@ -122,5 +148,22 @@ UserMood stringToUsermood(NSString* str)
     
     return eMoodInvalid;
 }
+
+
+
+
+
+//- (void)loadPropertiesFromDictionary:(NSDictionary*)dict
+//{
+//    [super loadPropertiesFromDictionary:dict];
+//    
+//    // custom load for property 'time'
+//    NSString* timeStr = [dict valueForKey:@"time"];
+//    NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
+//    [timeFormat setDateFormat:@"HH:mm"];
+//    NSDate* t = [timeFormat dateFromString:timeStr];
+//    self.time = t;
+//    NSLog(@"time: %@", self.time);
+//}
 
 

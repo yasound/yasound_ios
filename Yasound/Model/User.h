@@ -18,6 +18,20 @@ typedef enum
     eMoodInvalid = 3,
 } UserMood;
 
+
+#define PERM_CREATERADIO @"create_radio"
+#define PERM_HD @"hd"
+#define PERM_PRIVATEMESSAGE @"private_message"
+
+typedef enum
+{
+    ePermCreateRadio = 0,
+    ePermHd,
+    ePermPrivateMessage
+} UserPermission;
+
+
+
 NSString* usermoodToString(UserMood mood);
 UserMood stringToUsermood(NSString* str);
 
@@ -38,6 +52,7 @@ UserMood stringToUsermood(NSString* str);
 @property (retain, nonatomic) NSString* city;
 @property (retain, nonatomic) NSString* bio_text;
 @property (retain, nonatomic) NSString* url;
+
 //String gender
 //Integer age
 //birthday
@@ -70,9 +85,13 @@ UserMood stringToUsermood(NSString* str);
 
 @property (retain, nonatomic) NSString* yasound_email;
 
+@property (retain, nonatomic) NSArray* permissions;
+
 
 - (NSString*)toString;
 
 - (NSString*)formatedProfil;
+
+- (BOOL)permission:(NSString*)permId;
 
 @end
