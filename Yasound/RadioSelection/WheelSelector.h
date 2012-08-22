@@ -29,6 +29,7 @@
 
 @interface WheelSelector : UIScrollView
 
+@property (nonatomic) BOOL locked;
 @property (nonatomic, retain) IBOutlet id<WheelSelectorDelegate> wheelDelegate;
 @property (nonatomic, retain) NSMutableArray* items;
 @property (nonatomic, retain) NSMutableDictionary* itemToIndex;

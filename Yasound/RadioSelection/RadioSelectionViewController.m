@@ -26,6 +26,7 @@
 
 //@synthesize nbFriends;
 //@synthesize friendsRadios;
+@synthesize locked;
 @synthesize friends;
 @synthesize url;
 @synthesize wheelSelector;
@@ -42,6 +43,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+        self.locked = NO;
         self.url = nil;
         _tabIndex = tabIndex;
         
@@ -73,15 +75,18 @@
 
 - (void)onSlidingOut:(NSNotification*)notif
 {
-
-//    [self.view setUserInteractionEnabled:NO];
+    self.locked = YES;
     [self.view addGestureRecognizer:APPDELEGATE.slideController.panGesture];
+    self.wheelSelector.locked = YES;
 }
 
 
 - (void)onSlidingIn:(NSNotification*)notif
 {
-    [self.view setUserInteractionEnabled:YES];
+    self.locked = NO;
+//    [self.view setUserInteractionEnabled:YES];
+    [self.view removeGestureRecognizer:APPDELEGATE.slideController.panGesture];
+    self.wheelSelector.locked = NO;
 }
 
 
@@ -224,6 +229,7 @@
         return WheelIdFavorites;
     return 0;
 }
+
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
 {

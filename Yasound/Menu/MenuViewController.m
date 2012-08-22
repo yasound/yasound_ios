@@ -249,7 +249,17 @@ enum MenuDescription
 //    }
 //    
 //    else
-        
+    
+    [APPDELEGATE.slideController resetTopView];
+
+    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(onTimerTick:) userInfo:indexPath repeats:NO];
+}
+
+- (void)onTimerTick:(NSTimer*)timer
+{
+    
+    NSIndexPath* indexPath = timer.userInfo;
+    
     if (indexPath.row == ROW_LOGIN)
     {
         if ([YasoundSessionManager main].registered)
@@ -264,33 +274,33 @@ enum MenuDescription
     else if (indexPath.row == ROW_ACCOUNT)
     {
         MyAccountViewController* view = [[MyAccountViewController alloc] initWithNibName:@"MyAccountViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
     else if (indexPath.row == ROW_NOTIFS)
     {
         NotificationViewController* view = [[NotificationViewController alloc] initWithNibName:@"NotificationViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
     else if (indexPath.row == ROW_FACEBOOK)
     {
         AccountFacebookViewController* view = [[AccountFacebookViewController alloc] initWithNibName:@"AccountFacebookViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     else if (indexPath.row == ROW_TWITTER)
     {
         AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     else if (indexPath.row == ROW_YASOUND)
     {
         AccountYasoundViewController* view = [[AccountYasoundViewController alloc] initWithNibName:@"AccountYasoundViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
@@ -300,9 +310,10 @@ enum MenuDescription
         NSString* title = NSLocalizedString(@"Menu.legal", nil);
         
         WebPageViewController* view = [[WebPageViewController alloc] initWithNibName:@"WebPageViewController" bundle:nil withUrl:url andTitle:title];
-        [self.navigationController pushViewController:view animated:YES];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
+    
 }
 
 

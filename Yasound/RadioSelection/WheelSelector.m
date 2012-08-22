@@ -13,6 +13,7 @@
 
 @implementation WheelSelector
 
+@synthesize locked;
 @synthesize wheelDelegate;
 @synthesize items;
 @synthesize itemToIndex;
@@ -28,6 +29,7 @@
 {
     self.needsToStick = NO;
     self.tapRegistered = NO;
+    self.locked = NO;
     
     self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"wheelSelectorBackground.png"]];
     
@@ -249,6 +251,11 @@
     [self stickToItem:index silent:NO];
 }
 
+
+- (void)setLocked:(BOOL)set
+{
+    [self setScrollEnabled:!set];
+}
 
 //- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 //{

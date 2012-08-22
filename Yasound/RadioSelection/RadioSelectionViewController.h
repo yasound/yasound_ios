@@ -20,6 +20,8 @@
     TabIndex _tabIndex;
 }
 
+@property (nonatomic) BOOL locked;
+
 @property (nonatomic, retain) NSURL* url;
 @property (nonatomic, retain) IBOutlet TopBar* topbar;
 
