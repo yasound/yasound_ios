@@ -55,7 +55,7 @@
 //    
 //    if (![RootViewController menuIsCurrentScreen])
 //    {
-        sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemBack" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         btn = [sheet makeButton];
         [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
         itemBack = [[UIBarButtonItem alloc] initWithCustomView:btn];
@@ -269,7 +269,12 @@
 - (void)runItem:(TopBarItemId)itemId
 {
     if (itemId == TopBarItemMenu)
-        [APPDELEGATE.slideController anchorTopViewTo:ECRight];
+    {
+        if ([APPDELEGATE.slideController underLeftShowing])
+            [APPDELEGATE.slideController resetTopView];
+        else
+            [  APPDELEGATE.slideController anchorTopViewTo:ECRight];
+    }
     
     else if (itemId == TopBarItemBack)
         [APPDELEGATE.navigationController popViewControllerAnimated:YES];

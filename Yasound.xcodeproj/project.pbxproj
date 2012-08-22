@@ -195,7 +195,6 @@
 		40B409BA152EFC630050D334 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0314CF64B100DF0950 /* NSString+UUID.m */; };
 		40B409BB152EFC630050D334 /* SA_OAuthTwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0614CF64B100DF0950 /* SA_OAuthTwitterController.m */; };
 		40B409BC152EFC630050D334 /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0814CF64B100DF0950 /* SA_OAuthTwitterEngine.m */; };
-		40B409BE152EFC630050D334 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
 		40B409C0152EFC630050D334 /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
 		40B409C1152EFC630050D334 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
 		40B409C2152EFC630050D334 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
@@ -431,7 +430,6 @@
 		40D53BBD1554280F001EB0C5 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0314CF64B100DF0950 /* NSString+UUID.m */; };
 		40D53BBE1554280F001EB0C5 /* SA_OAuthTwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0614CF64B100DF0950 /* SA_OAuthTwitterController.m */; };
 		40D53BBF1554280F001EB0C5 /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0814CF64B100DF0950 /* SA_OAuthTwitterEngine.m */; };
-		40D53BC01554280F001EB0C5 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
 		40D53BC21554280F001EB0C5 /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
 		40D53BC31554280F001EB0C5 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
 		40D53BC41554280F001EB0C5 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
@@ -1144,7 +1142,6 @@
 		BC3FA6D014E93B660055AB4A /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0314CF64B100DF0950 /* NSString+UUID.m */; };
 		BC3FA6D114E93B660055AB4A /* SA_OAuthTwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0614CF64B100DF0950 /* SA_OAuthTwitterController.m */; };
 		BC3FA6D214E93B660055AB4A /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0814CF64B100DF0950 /* SA_OAuthTwitterEngine.m */; };
-		BC3FA6D414E93B660055AB4A /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
 		BC3FA6D614E93B660055AB4A /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
 		BC3FA6D714E93B660055AB4A /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
 		BC3FA6D814E93B660055AB4A /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
@@ -1397,10 +1394,6 @@
 		BC40CC6914CF64F100DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBCD14CF649400DF0950 /* libOAuthConsumer_iPhone.a */; };
 		BC40CC6A14CF64F500DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBCD14CF649400DF0950 /* libOAuthConsumer_iPhone.a */; };
 		BC40CC6B14CF64F800DF0950 /* libOAuthConsumer_iPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CBCD14CF649400DF0950 /* libOAuthConsumer_iPhone.a */; };
-		BC40CC7F14D0093F00DF0950 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
-		BC40CC8014D0093F00DF0950 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
-		BC40CC8114D0093F00DF0950 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
-		BC40CC8214D0093F00DF0950 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
 		BC40CC8414D010BD00DF0950 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
 		BC40CC8514D010DD00DF0950 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
 		BC40CC8614D010E500DF0950 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC40CC8314D010BD00DF0950 /* QuartzCore.framework */; };
@@ -1686,7 +1679,6 @@
 		BC56F4DC152486AF005D1B40 /* NSString+UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0314CF64B100DF0950 /* NSString+UUID.m */; };
 		BC56F4DD152486AF005D1B40 /* SA_OAuthTwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0614CF64B100DF0950 /* SA_OAuthTwitterController.m */; };
 		BC56F4DE152486AF005D1B40 /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0814CF64B100DF0950 /* SA_OAuthTwitterEngine.m */; };
-		BC56F4E0152486AF005D1B40 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
 		BC56F4E2152486AF005D1B40 /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
 		BC56F4E3152486AF005D1B40 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
 		BC56F4E4152486AF005D1B40 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
@@ -1951,6 +1943,22 @@
 		BC89C34D15E5256D00E0BEE3 /* ProgrammingObjectParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C34715E5256D00E0BEE3 /* ProgrammingObjectParameters.m */; };
 		BC89C34E15E5256D00E0BEE3 /* ProgrammingObjectParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C34715E5256D00E0BEE3 /* ProgrammingObjectParameters.m */; };
 		BC89C34F15E5256D00E0BEE3 /* ProgrammingObjectParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C34715E5256D00E0BEE3 /* ProgrammingObjectParameters.m */; };
+		BC89C36E15E587E300E0BEE3 /* commonViewShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */; };
+		BC89C36F15E587E300E0BEE3 /* commonViewShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */; };
+		BC89C37015E587E300E0BEE3 /* commonViewShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */; };
+		BC89C37115E587E300E0BEE3 /* commonViewShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */; };
+		BC89C37215E587E300E0BEE3 /* commonViewShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */; };
+		BC89C37315E587E300E0BEE3 /* commonViewShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */; };
+		BC89C37415E587E300E0BEE3 /* commonViewShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */; };
+		BC89C37515E587E300E0BEE3 /* commonViewShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */; };
+		BC89C37615E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */; };
+		BC89C37715E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */; };
+		BC89C37815E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */; };
+		BC89C37915E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */; };
+		BC89C37A15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */; };
+		BC89C37B15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */; };
+		BC89C37C15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */; };
+		BC89C37D15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */; };
 		BC91A73815C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
 		BC91A73915C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
 		BC91A73A15C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
@@ -5924,8 +5932,6 @@
 		BC40CC0714CF64B100DF0950 /* SA_OAuthTwitterEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SA_OAuthTwitterEngine.h; sourceTree = "<group>"; };
 		BC40CC0814CF64B100DF0950 /* SA_OAuthTwitterEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SA_OAuthTwitterEngine.m; sourceTree = "<group>"; };
 		BC40CC0914CF64B100DF0950 /* twitter_load.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter_load.png; sourceTree = "<group>"; };
-		BC40CC7D14D0093F00DF0950 /* DDMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuController.h; sourceTree = "<group>"; };
-		BC40CC7E14D0093F00DF0950 /* DDMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuController.m; sourceTree = "<group>"; };
 		BC40CC8314D010BD00DF0950 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BC436905156F8F820059BC22 /* TouchedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchedTableView.h; sourceTree = "<group>"; };
 		BC436906156F8F820059BC22 /* TouchedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchedTableView.m; sourceTree = "<group>"; };
@@ -6024,6 +6030,8 @@
 		BC89C33D15E4FCF100E0BEE3 /* ObjectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectButton.m; sourceTree = "<group>"; };
 		BC89C34615E5256C00E0BEE3 /* ProgrammingObjectParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgrammingObjectParameters.h; path = Programming/ProgrammingObjectParameters.h; sourceTree = "<group>"; };
 		BC89C34715E5256D00E0BEE3 /* ProgrammingObjectParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingObjectParameters.m; path = Programming/ProgrammingObjectParameters.m; sourceTree = "<group>"; };
+		BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonViewShadow.png; sourceTree = "<group>"; };
+		BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonViewShadow@2x.png"; sourceTree = "<group>"; };
 		BC91A73515C9707F00B1200E /* ProfilCellRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilCellRadio.h; path = Tabs/ProfilCellRadio.h; sourceTree = "<group>"; };
 		BC91A73615C9707F00B1200E /* ProfilCellRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfilCellRadio.m; path = Tabs/ProfilCellRadio.m; sourceTree = "<group>"; };
 		BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfilCellRadio.xib; path = Tabs/ProfilCellRadio.xib; sourceTree = "<group>"; };
@@ -7304,16 +7312,6 @@
 			path = SAOAuthTwitterEngine;
 			sourceTree = "<group>";
 		};
-		BC40CC7C14D0093F00DF0950 /* DDMenuController */ = {
-			isa = PBXGroup;
-			children = (
-				BC40CC7D14D0093F00DF0950 /* DDMenuController.h */,
-				BC40CC7E14D0093F00DF0950 /* DDMenuController.m */,
-			);
-			name = DDMenuController;
-			path = ThirdParties/DDMenuController;
-			sourceTree = "<group>";
-		};
 		BC48C7B215D16B5A00624E76 /* DatePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -7695,7 +7693,6 @@
 				B1F8868514E5B44300256383 /* MBProgressHUD */,
 				B1BBEE9914E2DA9500E7E0EA /* TSLibraryImport */,
 				B1D634C414E1BC4E00BE852E /* UIDevice-with-UniqueIdentifier-for-iOS-5 */,
-				BC40CC7C14D0093F00DF0950 /* DDMenuController */,
 				BC40CBC414CF648500DF0950 /* Twitter-OAuth-iPhone */,
 				BC40CBB314CF633600DF0950 /* facebook-ios-sdk */,
 				BCCA798614AE24C80011AADD /* s7graphview */,
@@ -7978,6 +7975,8 @@
 		BCE35ECE15D7FD2E008C26AC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */,
+				BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */,
 				BC03C41115E2BD9F0017388D /* commonAvatarDummy.png */,
 				BC03C41215E2BD9F0017388D /* commonAvatarDummy@2x.png */,
 				BCBF98A415DE7D5200BC3D64 /* commonBigButtonGray.png */,
@@ -9390,6 +9389,8 @@
 				BC89C32815E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 				BC89C33215E4FB0E00E0BEE3 /* cellImageEmtpy.png in Resources */,
 				BC89C33A15E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
+				BC89C37415E587E300E0BEE3 /* commonViewShadow.png in Resources */,
+				BC89C37C15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9863,6 +9864,8 @@
 				BC89C32915E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 				BC89C33315E4FB0E00E0BEE3 /* cellImageEmtpy.png in Resources */,
 				BC89C33B15E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
+				BC89C37515E587E300E0BEE3 /* commonViewShadow.png in Resources */,
+				BC89C37D15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10330,6 +10333,8 @@
 				BC89C32715E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 				BC89C33115E4FB0E00E0BEE3 /* cellImageEmtpy.png in Resources */,
 				BC89C33915E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
+				BC89C37315E587E300E0BEE3 /* commonViewShadow.png in Resources */,
+				BC89C37B15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10802,6 +10807,8 @@
 				BC89C32415E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 				BC89C32E15E4FB0E00E0BEE3 /* cellImageEmtpy.png in Resources */,
 				BC89C33615E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
+				BC89C37015E587E300E0BEE3 /* commonViewShadow.png in Resources */,
+				BC89C37815E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11274,6 +11281,8 @@
 				BC89C32315E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 				BC89C32D15E4FB0E00E0BEE3 /* cellImageEmtpy.png in Resources */,
 				BC89C33515E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
+				BC89C36F15E587E300E0BEE3 /* commonViewShadow.png in Resources */,
+				BC89C37715E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11746,6 +11755,8 @@
 				BC89C32615E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 				BC89C33015E4FB0E00E0BEE3 /* cellImageEmtpy.png in Resources */,
 				BC89C33815E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
+				BC89C37215E587E300E0BEE3 /* commonViewShadow.png in Resources */,
+				BC89C37A15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12218,6 +12229,8 @@
 				BC89C32215E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 				BC89C32C15E4FB0E00E0BEE3 /* cellImageEmtpy.png in Resources */,
 				BC89C33415E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
+				BC89C36E15E587E300E0BEE3 /* commonViewShadow.png in Resources */,
+				BC89C37615E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12690,6 +12703,8 @@
 				BC89C32515E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 				BC89C32F15E4FB0E00E0BEE3 /* cellImageEmtpy.png in Resources */,
 				BC89C33715E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
+				BC89C37115E587E300E0BEE3 /* commonViewShadow.png in Resources */,
+				BC89C37915E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12847,7 +12862,6 @@
 				40B409BA152EFC630050D334 /* NSString+UUID.m in Sources */,
 				40B409BB152EFC630050D334 /* SA_OAuthTwitterController.m in Sources */,
 				40B409BC152EFC630050D334 /* SA_OAuthTwitterEngine.m in Sources */,
-				40B409BE152EFC630050D334 /* DDMenuController.m in Sources */,
 				40B409C0152EFC630050D334 /* WallMessagePost.m in Sources */,
 				40B409C1152EFC630050D334 /* Song.m in Sources */,
 				40B409C2152EFC630050D334 /* ConnectionView.m in Sources */,
@@ -13059,7 +13073,6 @@
 				40D53BBD1554280F001EB0C5 /* NSString+UUID.m in Sources */,
 				40D53BBE1554280F001EB0C5 /* SA_OAuthTwitterController.m in Sources */,
 				40D53BBF1554280F001EB0C5 /* SA_OAuthTwitterEngine.m in Sources */,
-				40D53BC01554280F001EB0C5 /* DDMenuController.m in Sources */,
 				40D53BC21554280F001EB0C5 /* WallMessagePost.m in Sources */,
 				40D53BC31554280F001EB0C5 /* Song.m in Sources */,
 				40D53BC41554280F001EB0C5 /* ConnectionView.m in Sources */,
@@ -13271,7 +13284,6 @@
 				BC3FA6D014E93B660055AB4A /* NSString+UUID.m in Sources */,
 				BC3FA6D114E93B660055AB4A /* SA_OAuthTwitterController.m in Sources */,
 				BC3FA6D214E93B660055AB4A /* SA_OAuthTwitterEngine.m in Sources */,
-				BC3FA6D414E93B660055AB4A /* DDMenuController.m in Sources */,
 				BC3FA6D614E93B660055AB4A /* WallMessagePost.m in Sources */,
 				BC3FA6D714E93B660055AB4A /* Song.m in Sources */,
 				BC3FA6D814E93B660055AB4A /* ConnectionView.m in Sources */,
@@ -13479,7 +13491,6 @@
 				BC56F4DC152486AF005D1B40 /* NSString+UUID.m in Sources */,
 				BC56F4DD152486AF005D1B40 /* SA_OAuthTwitterController.m in Sources */,
 				BC56F4DE152486AF005D1B40 /* SA_OAuthTwitterEngine.m in Sources */,
-				BC56F4E0152486AF005D1B40 /* DDMenuController.m in Sources */,
 				BC56F4E2152486AF005D1B40 /* WallMessagePost.m in Sources */,
 				BC56F4E3152486AF005D1B40 /* Song.m in Sources */,
 				BC56F4E4152486AF005D1B40 /* ConnectionView.m in Sources */,
@@ -13691,7 +13702,6 @@
 				BC40CC4B14CF64B100DF0950 /* NSString+UUID.m in Sources */,
 				BC40CC4F14CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5314CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
-				BC40CC8014D0093F00DF0950 /* DDMenuController.m in Sources */,
 				400B8A9614D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB214D31540003FD81E /* Song.m in Sources */,
 				BCBE5C8F14D1A2F30077FC62 /* ConnectionView.m in Sources */,
@@ -13904,7 +13914,6 @@
 				BC40CC4D14CF64B100DF0950 /* NSString+UUID.m in Sources */,
 				BC40CC5114CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5514CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
-				BC40CC8214D0093F00DF0950 /* DDMenuController.m in Sources */,
 				400B8A9814D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB414D31540003FD81E /* Song.m in Sources */,
 				BCBE5C9114D1A2F30077FC62 /* ConnectionView.m in Sources */,
@@ -14116,7 +14125,6 @@
 				BC40CC4A14CF64B100DF0950 /* NSString+UUID.m in Sources */,
 				BC40CC4E14CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5214CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
-				BC40CC7F14D0093F00DF0950 /* DDMenuController.m in Sources */,
 				400B8A9514D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB114D31540003FD81E /* Song.m in Sources */,
 				BCBE5C8E14D1A2F30077FC62 /* ConnectionView.m in Sources */,
@@ -14329,7 +14337,6 @@
 				BC40CC4C14CF64B100DF0950 /* NSString+UUID.m in Sources */,
 				BC40CC5014CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5414CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
-				BC40CC8114D0093F00DF0950 /* DDMenuController.m in Sources */,
 				400B8A9714D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB314D31540003FD81E /* Song.m in Sources */,
 				BCBE5C9014D1A2F30077FC62 /* ConnectionView.m in Sources */,

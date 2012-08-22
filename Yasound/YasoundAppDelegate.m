@@ -24,7 +24,7 @@
 @synthesize window;
 @synthesize navigationController;
 @synthesize rootViewController;
-@synthesize menuViewController;
+//@synthesize menuViewController;
 @synthesize APNsTokenString = _APNsTokenString;
 @synthesize serverURL = _serverURL;
 
@@ -116,8 +116,8 @@ void SignalHandler(int sig) {
     self.slideController.topViewController = self.navigationController;
     [self.navigationController pushViewController:self.rootViewController animated:NO];
     
-    self.menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-    self.slideController.underLeftViewController = menuViewController;
+//    self.menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+//    self.slideController.underLeftViewController = menuViewController;
     
     
     

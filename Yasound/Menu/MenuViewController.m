@@ -21,6 +21,10 @@
 #import "YasoundDataCache.h"
 #import "YasoundSessionManager.h"
 #import "ActivityAlertView.h"
+#import "YasoundAppDelegate.h"
+
+
+
 
 @implementation MenuViewController
 
@@ -51,6 +55,10 @@ enum MenuDescription
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
+        [APPDELEGATE.slideController setAnchorRightRevealAmount:264.0f];
+        APPDELEGATE.slideController.underLeftWidthLayout = ECFullWidth;
+        
+        [self.view addGestureRecognizer:APPDELEGATE.slideController.panGesture];
     }
     return self;
 }

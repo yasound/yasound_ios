@@ -47,6 +47,17 @@
 		</dict>
 		<key>Common</key>
 		<dict>
+			<key>viewShadow</key>
+			<dict>
+				<key>name</key>
+				<string>commonViewShadow</string>
+				<key>type</key>
+				<string>png</string>
+				<key>x</key>
+				<integer>-20</integer>
+				<key>y</key>
+				<integer>0</integer>
+			</dict>
 			<key>gradient</key>
 			<dict>
 				<key>name</key>

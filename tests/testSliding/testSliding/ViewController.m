@@ -44,7 +44,11 @@
 
 - (IBAction)onClick:(id)sender
 {
-    [APPDELEGATE.slidingController anchorTopViewTo:ECRight];
+    if ([APPDELEGATE.slidingController underLeftShowing])
+        [APPDELEGATE.slidingController resetTopView];
+    else
+        [  APPDELEGATE.slidingController anchorTopViewTo:ECRight];
+    
 }
 
 

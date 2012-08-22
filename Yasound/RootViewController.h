@@ -10,7 +10,7 @@
 //#import "MenuViewController.h"
 #import "YaViewController.h"
 #import "User.h"
-
+#import "RadioSelectionViewController.h"
 
 #define NOTIF_LAUNCH_RADIO @"NOTIF_LAUNCH_RADIO"
 
@@ -60,6 +60,7 @@
 @property (nonatomic, retain) User* user;
 
 //@property (nonatomic, retain) MenuViewController* menuView;
+@property (nonatomic, retain) RadioSelectionViewController* radioSelectionViewController;
 
 //+ (BOOL)menuIsCurrentScreen;
 

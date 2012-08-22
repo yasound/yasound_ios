@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+//#import <QuartzCore/QuartzCore.h>
 #import "YaViewController.h"
 #import "WheelSelector.h"
 #import "WheelRadiosSelector.h"
@@ -20,6 +21,7 @@
 }
 
 @property (nonatomic, retain) NSURL* url;
+@property (nonatomic, retain) IBOutlet TopBar* topbar;
 
 //@property (nonatomic) NSInteger nbFriends;
 //@property (nonatomic, retain) NSMutableArray* friendsRadios;

@@ -101,6 +101,7 @@
 
 
 @synthesize user;
+@synthesize radioSelectionViewController;
 //@synthesize menuView;
 
 //static MenuViewController* gMenuView = nil;
@@ -674,7 +675,18 @@
 //    }
 //}
 
-
+- (void)gotoRadioSelectionAnimated:(BOOL)animated
+{
+    if (self.radioSelectionViewController != nil)
+    {
+        [self.navigationController popToViewController:self.radioSelectionViewController animated:animated];
+        return;
+    }
+    
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    self.radioSelectionViewController = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withTabIndex:TabIndexSelection];
+    [self.navigationController pushViewController:self.radioSelectionViewController animated:animated];
+}
 
 - (void)onNotifGotoLogin:(NSNotification *)notification
 {
@@ -723,6 +735,7 @@
     DLog(@"onNotifGotoRadio '%@' (ready %@)", r.name, r.ready);
 
 //    [self gotoMenuAnimated:NO];
+    [self gotoRadioSelectionAnimated:NO];
 
     WallViewController* view = [[WallViewController alloc] initWithRadio:r];
     [self.navigationController pushViewController:view animated:YES];
