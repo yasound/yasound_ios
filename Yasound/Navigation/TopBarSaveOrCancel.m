@@ -125,5 +125,14 @@
 }
 
 
+- (void)hideCancelButton
+{
+    NSMutableArray* items = [NSMutableArray arrayWithArray:self.items];
+    [items removeObjectAtIndex:0];
+    [self setItems:items];
+
+}
+
+
 
 @end

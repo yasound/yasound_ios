@@ -1,5 +1,5 @@
 //
-//  PlaylistsViewController.h
+//  CreateRadioViewController.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 21/12/11.
@@ -18,7 +18,7 @@ typedef enum {
 } DisplayMode;
 
 
-@interface PlaylistsViewController : TestflightViewController<TopBarSaveOrCancelDelegate>
+@interface CreateRadioViewController : TestflightViewController<TopBarSaveOrCancelDelegate>
 {
     BOOL _changed;
     
@@ -62,8 +62,6 @@ typedef enum {
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil wizard:(BOOL)wizard;
 - (void) refreshView;
-- (IBAction)onBack:(id)sender;
-- (IBAction)onNext:(id)sender;
 - (IBAction)onEdit:(id)sender;
 
 @end

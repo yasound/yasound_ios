@@ -46,6 +46,7 @@
 @synthesize radio;
 @synthesize radioBackup;
 @synthesize createMode;
+@synthesize topbar;
 
 - (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil forRadio:(Radio*)radio createMode:(BOOL)createMode
 {
@@ -96,6 +97,8 @@
 {
     [super viewDidLoad];
     
+    if (self.createMode)
+        [self.topbar hideCancelButton];
 
     _settingsTitleLabel.text = NSLocalizedString(@"Settings.radio.title.label", nil);
     

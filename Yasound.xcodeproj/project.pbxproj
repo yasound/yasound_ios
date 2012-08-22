@@ -1907,6 +1907,22 @@
 		BC828AD914B49E9500763558 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC828ADA14B49E9500763558 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
 		BC828ADB14B49E9500763558 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC828AD514B49E9500763558 /* RootViewController.xib */; };
+		BC89C31A15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C31815E4E7C600E0BEE3 /* CreateRadioViewController.m */; };
+		BC89C31B15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C31815E4E7C600E0BEE3 /* CreateRadioViewController.m */; };
+		BC89C31C15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C31815E4E7C600E0BEE3 /* CreateRadioViewController.m */; };
+		BC89C31D15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C31815E4E7C600E0BEE3 /* CreateRadioViewController.m */; };
+		BC89C31E15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C31815E4E7C600E0BEE3 /* CreateRadioViewController.m */; };
+		BC89C31F15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C31815E4E7C600E0BEE3 /* CreateRadioViewController.m */; };
+		BC89C32015E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C31815E4E7C600E0BEE3 /* CreateRadioViewController.m */; };
+		BC89C32115E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C31815E4E7C600E0BEE3 /* CreateRadioViewController.m */; };
+		BC89C32215E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C31915E4E7C600E0BEE3 /* CreateRadioViewController.xib */; };
+		BC89C32315E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C31915E4E7C600E0BEE3 /* CreateRadioViewController.xib */; };
+		BC89C32415E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C31915E4E7C600E0BEE3 /* CreateRadioViewController.xib */; };
+		BC89C32515E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C31915E4E7C600E0BEE3 /* CreateRadioViewController.xib */; };
+		BC89C32615E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C31915E4E7C600E0BEE3 /* CreateRadioViewController.xib */; };
+		BC89C32715E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C31915E4E7C600E0BEE3 /* CreateRadioViewController.xib */; };
+		BC89C32815E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C31915E4E7C600E0BEE3 /* CreateRadioViewController.xib */; };
+		BC89C32915E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C31915E4E7C600E0BEE3 /* CreateRadioViewController.xib */; };
 		BC91A73815C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
 		BC91A73915C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
 		BC91A73A15C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
@@ -5951,6 +5967,9 @@
 		BC828AD314B49E9500763558 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BC828AD414B49E9500763558 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		BC828AD514B49E9500763558 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		BC89C31715E4E7C600E0BEE3 /* CreateRadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateRadioViewController.h; path = Settings/CreateRadioViewController.h; sourceTree = "<group>"; };
+		BC89C31815E4E7C600E0BEE3 /* CreateRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateRadioViewController.m; path = Settings/CreateRadioViewController.m; sourceTree = "<group>"; };
+		BC89C31915E4E7C600E0BEE3 /* CreateRadioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateRadioViewController.xib; path = Settings/CreateRadioViewController.xib; sourceTree = "<group>"; };
 		BC91A73515C9707F00B1200E /* ProfilCellRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilCellRadio.h; path = Tabs/ProfilCellRadio.h; sourceTree = "<group>"; };
 		BC91A73615C9707F00B1200E /* ProfilCellRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfilCellRadio.m; path = Tabs/ProfilCellRadio.m; sourceTree = "<group>"; };
 		BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfilCellRadio.xib; path = Tabs/ProfilCellRadio.xib; sourceTree = "<group>"; };
@@ -7499,6 +7518,9 @@
 				BC48C76F15D14C7600624E76 /* MyAccountViewController.h */,
 				BC48C77015D14C7600624E76 /* MyAccountViewController.m */,
 				BC48C77115D14C7600624E76 /* MyAccountViewController.xib */,
+				BC89C31715E4E7C600E0BEE3 /* CreateRadioViewController.h */,
+				BC89C31815E4E7C600E0BEE3 /* CreateRadioViewController.m */,
+				BC89C31915E4E7C600E0BEE3 /* CreateRadioViewController.xib */,
 				BCBAB49714A2322900CF922A /* SettingsViewController.h */,
 				BCBAB49814A2322900CF922A /* SettingsViewController.m */,
 				BCBAB49914A2322900CF922A /* SettingsViewController.xib */,
@@ -9288,6 +9310,7 @@
 				BC03C43315E2C1960017388D /* radioListFriendMask@2x.png in Resources */,
 				BC03C45915E2CD6D0017388D /* radioListFriendMaskHighlighted.png in Resources */,
 				BC03C46115E2CD6D0017388D /* radioListFriendMaskHighlighted@2x.png in Resources */,
+				BC89C32815E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9758,6 +9781,7 @@
 				BC03C43415E2C1960017388D /* radioListFriendMask@2x.png in Resources */,
 				BC03C45A15E2CD6D0017388D /* radioListFriendMaskHighlighted.png in Resources */,
 				BC03C46215E2CD6D0017388D /* radioListFriendMaskHighlighted@2x.png in Resources */,
+				BC89C32915E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10222,6 +10246,7 @@
 				BC03C43215E2C1960017388D /* radioListFriendMask@2x.png in Resources */,
 				BC03C45815E2CD6D0017388D /* radioListFriendMaskHighlighted.png in Resources */,
 				BC03C46015E2CD6D0017388D /* radioListFriendMaskHighlighted@2x.png in Resources */,
+				BC89C32715E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10691,6 +10716,7 @@
 				BC03C42F15E2C1960017388D /* radioListFriendMask@2x.png in Resources */,
 				BC03C45515E2CD6D0017388D /* radioListFriendMaskHighlighted.png in Resources */,
 				BC03C45D15E2CD6D0017388D /* radioListFriendMaskHighlighted@2x.png in Resources */,
+				BC89C32415E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11160,6 +11186,7 @@
 				BC03C42E15E2C1960017388D /* radioListFriendMask@2x.png in Resources */,
 				BC03C45415E2CD6D0017388D /* radioListFriendMaskHighlighted.png in Resources */,
 				BC03C45C15E2CD6D0017388D /* radioListFriendMaskHighlighted@2x.png in Resources */,
+				BC89C32315E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11629,6 +11656,7 @@
 				BC03C43115E2C1960017388D /* radioListFriendMask@2x.png in Resources */,
 				BC03C45715E2CD6D0017388D /* radioListFriendMaskHighlighted.png in Resources */,
 				BC03C45F15E2CD6D0017388D /* radioListFriendMaskHighlighted@2x.png in Resources */,
+				BC89C32615E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12098,6 +12126,7 @@
 				BC03C42D15E2C1960017388D /* radioListFriendMask@2x.png in Resources */,
 				BC03C45315E2CD6D0017388D /* radioListFriendMaskHighlighted.png in Resources */,
 				BC03C45B15E2CD6D0017388D /* radioListFriendMaskHighlighted@2x.png in Resources */,
+				BC89C32215E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12567,6 +12596,7 @@
 				BC03C43015E2C1960017388D /* radioListFriendMask@2x.png in Resources */,
 				BC03C45615E2CD6D0017388D /* radioListFriendMaskHighlighted.png in Resources */,
 				BC03C45E15E2CD6D0017388D /* radioListFriendMaskHighlighted@2x.png in Resources */,
+				BC89C32515E4E7C600E0BEE3 /* CreateRadioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12832,6 +12862,7 @@
 				BC03C3AF15E227B00017388D /* ShareModalViewController.m in Sources */,
 				BC03C3BF15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 				BC03C43D15E2C6650017388D /* UserListTableViewCell.m in Sources */,
+				BC89C32015E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13039,6 +13070,7 @@
 				BC03C3B015E227B00017388D /* ShareModalViewController.m in Sources */,
 				BC03C3C015E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 				BC03C43E15E2C6650017388D /* UserListTableViewCell.m in Sources */,
+				BC89C32115E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13242,6 +13274,7 @@
 				BC03C3AE15E227B00017388D /* ShareModalViewController.m in Sources */,
 				BC03C3BE15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 				BC03C43C15E2C6650017388D /* UserListTableViewCell.m in Sources */,
+				BC89C31F15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13449,6 +13482,7 @@
 				BC03C3AB15E227B00017388D /* ShareModalViewController.m in Sources */,
 				BC03C3BB15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 				BC03C43915E2C6650017388D /* UserListTableViewCell.m in Sources */,
+				BC89C31C15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13656,6 +13690,7 @@
 				BC03C3AA15E227B00017388D /* ShareModalViewController.m in Sources */,
 				BC03C3BA15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 				BC03C43815E2C6650017388D /* UserListTableViewCell.m in Sources */,
+				BC89C31B15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13864,6 +13899,7 @@
 				BC03C3AD15E227B00017388D /* ShareModalViewController.m in Sources */,
 				BC03C3BD15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 				BC03C43B15E2C6650017388D /* UserListTableViewCell.m in Sources */,
+				BC89C31E15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14071,6 +14107,7 @@
 				BC03C3A915E227B00017388D /* ShareModalViewController.m in Sources */,
 				BC03C3B915E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 				BC03C43715E2C6650017388D /* UserListTableViewCell.m in Sources */,
+				BC89C31A15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14279,6 +14316,7 @@
 				BC03C3AC15E227B00017388D /* ShareModalViewController.m in Sources */,
 				BC03C3BC15E227B00017388D /* ShareTwitterModalViewController.m in Sources */,
 				BC03C43A15E2C6650017388D /* UserListTableViewCell.m in Sources */,
+				BC89C31D15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

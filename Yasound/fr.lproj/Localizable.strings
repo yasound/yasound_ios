@@ -168,8 +168,8 @@
 "PlaylistsView_matchedSongsTitle_zero" = "Attention";
 "PlaylistsView_matchedSongsMessage_zero" = "Aucun morceau n'a pu être automatiquement synchronisé avec le serveur. Votre radio ne contient pas de musique mais vous pourrez télécharger manuellement vos morceaux sur le serveur, dans la zone de Programmation de votre radio.";
 "PlaylistsView_matchedSongsTitle_ok" = "Synchronisation";
-"PlaylistsView_matchedSongsMessage_ok_1" = "1 morceau a été synchronisé avec votre radio. Vous pourrez utiliser la fonction Programmation du menu pour télécharger manuellement d'autres morceaux.";
-"PlaylistsView_matchedSongsMessage_ok_n" = "%d morceaux ont été automatiquement synchronisés avec votre radio. Vous pourrez gérer le contenu de votre radio avec la fonction Programmation du menu, et télécharger manuellement d'autres morceaux.";
+"PlaylistsView_matchedSongsMessage_ok_1" = "1 morceau a été synchronisé avec votre radio. Vous pourrez utiliser la fonction Programmation pour télécharger manuellement d'autres morceaux.";
+"PlaylistsView_matchedSongsMessage_ok_n" = "%d morceaux ont été automatiquement synchronisés avec votre radio. Vous pourrez gérer le contenu de votre radio avec la fonction Programmation, et télécharger manuellement d'autres morceaux.";
 "PlaylistsView_allMusic" = "Toute ma musique";
 "PlaylistsView_allMusic_detail" = "%d morceaux";
 

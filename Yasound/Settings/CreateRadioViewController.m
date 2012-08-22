@@ -1,12 +1,12 @@
 //
-//  PlaylistsViewController.m
+//  CreateRadioViewController.m
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 21/12/11.
 //  Copyright (c) 2011 Yasound. All rights reserved.
 //
 
-#import "PlaylistsViewController.h"
+#import "CreateRadioViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "ActivityAlertView.h"
 #import "PlaylistMoulinor.h"
@@ -25,7 +25,7 @@
 
 
 
-@implementation PlaylistsViewController
+@implementation CreateRadioViewController
 
 @synthesize radio;
 @synthesize topbar;
@@ -95,9 +95,6 @@
     // init playlists
     //
     
-    [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
-    
-    [[TimeProfile main] begin:@"Playlists_catalogPlaylists"];
     
     MPMediaQuery *playlistsquery = [MPMediaQuery playlistsQuery];
     _playlistsDesc = [[NSMutableArray alloc] init];
@@ -105,21 +102,8 @@
     _playlists = [playlistsquery collections];
     [_playlists retain];
     
-    [[TimeProfile main] end:@"Playlists_catalogPlaylists"];
-    [[TimeProfile main] logInterval:@"Playlists_catalogPlaylists" inMilliseconds:NO];
-    
     
     [self.view addSubview:_tableView];
-    
-    
-    [[TimeProfile main] begin:@"Playlists_download"];
-    
-    
-    Radio* radio = [YasoundDataProvider main].radio;
-    [[YasoundDataProvider main] playlistsForRadio:radio
-                                           target:self
-                                           action:@selector(receivePlaylists:withInfo:)
-     ];
     
     _selectedPlaylists = [[NSMutableArray alloc] init];
     [_selectedPlaylists retain];
@@ -129,6 +113,43 @@
     
     _localPlaylistsDesc = [[NSMutableArray alloc] init];
     [_localPlaylistsDesc retain];
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+//    [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
+    
+    // build global songs catalog
+    MPMediaQuery* query = [MPMediaQuery songsQuery];
+    _songs = [query items];
+    [_songs retain];
+    
+    [self buildPlaylistData:_playlists];
+
+    
+    // refresh
+    [self refreshView];
+    
+//    [ActivityAlertView close];
+    
+    if (_songs.count == 0)
+    {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
+        UIImageView* view = [sheet makeImage];
+        [_tableView addSubview:view];
+        [view release];
+        
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];
+        return;
+    }
+    
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.create", nil) message:NSLocalizedString(@"MyRadios.create.howto", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+
 }
 
 - (void)viewDidUnload
@@ -167,31 +188,8 @@
     return NULL;
 }
 
-- (void)buildPlaylistData:(NSArray *)localPlaylists withRemotePlaylists:(NSArray *)remotePlaylists
+- (void)buildPlaylistData:(NSArray *)localPlaylists
 {
-    for (Playlist* playlist in remotePlaylists) 
-    {
-        NSNumber* playlistId = [NSNumber numberWithInteger:[playlist.id integerValue]];
-        NSString* name = playlist.name;
-        NSString* source = playlist.source;
-        NSNumber* count = playlist.song_count;
-        NSNumber* matched = playlist.matched_song_count;
-        NSNumber* unmatched = playlist.unmatched_song_count;
-        NSNumber* enabled = playlist.enabled;
-        NSNumber* neverSynchronized = [NSNumber numberWithBool:FALSE];
-        
-        NSMutableDictionary* dico = [[NSMutableDictionary alloc] init];
-        [dico setObject:playlistId forKey:@"playlistId"];
-        [dico setObject:name forKey:@"name"];
-        [dico setObject:source forKey:@"source"];
-        [dico setObject:count forKey:@"count"];
-        [dico setObject:matched forKey:@"matched"];
-        [dico setObject:unmatched forKey:@"unmatched"];
-        [dico setObject:neverSynchronized forKey:@"neverSynchronized"];
-        [dico setObject:enabled forKey:@"enabled"];
-        [_playlistsDesc addObject:dico];
-    }
-    
     NSString *source = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     for (MPMediaPlaylist *playlist in localPlaylists) {
         NSString* name = [playlist valueForProperty: MPMediaPlaylistPropertyName];
@@ -231,54 +229,10 @@
     }
 }
 
-- (void)receivePlaylists:(NSArray*)playlists withInfo:(NSDictionary*)info
-{
-    [[TimeProfile main] end:@"Playlists_download"];
-    [[TimeProfile main] logInterval:@"Playlists_download" inMilliseconds:NO];
-    
-    [[TimeProfile main] begin:@"Playlists_buildPlaylists"];
 
-    // build playlist
-    [self buildPlaylistData:_playlists withRemotePlaylists:playlists];
 
-     [[TimeProfile main] end:@"Playlists_buildPlaylists"];
-     [[TimeProfile main] logInterval:@"Playlists_buildPlaylists" inMilliseconds:NO];
 
-     [[TimeProfile main] begin:@"Playlists_catalogSongs"];
 
-    // build global songs catalog
-    MPMediaQuery* query = [MPMediaQuery songsQuery];
-    _songs = [query items];
-    [_songs retain];
-     
-     [[TimeProfile main] end:@"Playlists_catalogSongs"];
-     [[TimeProfile main] logInterval:@"Playlists_catalogSongs" inMilliseconds:NO];
-
-    
-    // refresh
-    [self refreshView];
-
-    [ActivityAlertView close];
-    
-    if (_songs.count == 0)
-    {
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
-        UIImageView* view = [sheet makeImage];
-        [_tableView addSubview:view];
-        [view release];
-        
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];
-        return;
-    }
-    
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyRadios.create", nil) message:NSLocalizedString(@"MyRadios.create.howto", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-    [alert release];
-    
-    
-}
 
                                                                                       
 

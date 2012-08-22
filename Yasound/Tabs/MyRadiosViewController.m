@@ -15,7 +15,7 @@
 #import "StatsViewController.h"
 #import "SettingsViewController.h"
 #import "Theme.h"
-#import "PlaylistsViewController.h"
+#import "CreateRadioViewController.h"
 #import "ActivityAlertView.h"
 
 @interface MyRadiosViewController ()
@@ -308,7 +308,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 //    [self.navigationController pushViewController:view animated:YES];
 //    [view release];
     
-    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil];
+    CreateRadioViewController* view = [[CreateRadioViewController alloc] initWithNibName:@"CreateRadioViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

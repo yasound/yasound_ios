@@ -172,8 +172,8 @@
 "PlaylistsView_matchedSongsTitle_zero" = "Warning";
 "PlaylistsView_matchedSongsMessage_zero" = "No song has been automatically synchronized with the server. Your radio doesn't play right now but you can upload your songs choosing the Programming function.";
 "PlaylistsView_matchedSongsTitle_ok" = "Synchronization";
-"PlaylistsView_matchedSongsMessage_ok_1" = "1 song has been synchronized with your radio. You can use the Programming function from the menu to upload other songs.";
-"PlaylistsView_matchedSongsMessage_ok_n" = "%d songs have been synchronized with your radio. You can update your radio's contents choosing the Programming function from the menu, and upload other songs.";
+"PlaylistsView_matchedSongsMessage_ok_1" = "1 song has been synchronized with your radio. You can use the Programming function to upload other songs.";
+"PlaylistsView_matchedSongsMessage_ok_n" = "%d songs have been synchronized with your radio. You can update your radio's contents choosing the Programming function, and upload other songs.";
 "PlaylistsView_allMusic" = "All my music";
 "PlaylistsView_allMusic_detail" = "%d songs";
 

@@ -21,4 +21,6 @@
 @property (nonatomic, retain) IBOutlet id<TopBarSaveOrCancelDelegate> delegate;
 @property (nonatomic, retain) UIBarButtonItem* actionButton;
 
+- (void)hideCancelButton;
+
 @end

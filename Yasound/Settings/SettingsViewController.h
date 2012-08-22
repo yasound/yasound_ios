@@ -34,7 +34,7 @@
 }
 
 @property (nonatomic, retain) Radio* radioBackup;
-
+@property (nonatomic, retain) IBOutlet TopBarSaveOrCancel* topbar;
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic) BOOL createMode;
 
