@@ -32,7 +32,7 @@
 
 enum MenuDescription
 {
-    ROW_RADIOS,
+//    ROW_RADIOS,
     ROW_LOGIN,
     ROW_ACCOUNT,
     ROW_NOTIFS,
@@ -195,10 +195,12 @@ enum MenuDescription
 
     
 
-    if (indexPath.row == ROW_RADIOS)
-        [self setCell:cell refText:@"Menu.radios" icon:@"Menu.iconRadios" authenticated:NO];
-
-    else if (indexPath.row == ROW_LOGIN)
+//    if (indexPath.row == ROW_RADIOS)
+//        [self setCell:cell refText:@"Menu.radios" icon:@"Menu.iconRadios" authenticated:NO];
+//
+//    else
+        
+    if (indexPath.row == ROW_LOGIN)
     {
         if ([YasoundSessionManager main].registered)
             [self setCell:cell refText:@"Menu.logout" icon:@"Menu.iconLogin" authenticated:NO];
@@ -241,12 +243,14 @@ enum MenuDescription
         return;
 
     
-    if (indexPath.row == ROW_RADIOS)
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
-    }
-    
-    else if (indexPath.row == ROW_LOGIN)
+//    if (indexPath.row == ROW_RADIOS)
+//    {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+//    }
+//    
+//    else
+        
+    if (indexPath.row == ROW_LOGIN)
     {
         if ([YasoundSessionManager main].registered)
         {
