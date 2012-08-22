@@ -7,8 +7,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class BundleFileManager;
 
+@class BundleFileManager;
+@class ObjectButton;
 
 
 
@@ -90,6 +91,7 @@
 // create a button, and assign the appropriate images to the button states
 // can be multi-states, if the parsed stylesheet is appropriate
 - (UIButton*)makeButton;
+- (ObjectButton*)makeObjectButton;
 
 // create a fond, using the parsed font style
 - (UIFont*)makeFont;

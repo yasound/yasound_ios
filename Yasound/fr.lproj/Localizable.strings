@@ -197,7 +197,7 @@
 "ProgramminView_nb_songs_n" = "%d morceaux";
 "ProgrammingView_subtitle_error" = "erreur";
 
-"Programming.ProgrammingCell_buttonDelete_label" = "Supprimer";
+"Programming.del" = "Supprimer";
 
 "SongView_title" = "Song";
 "SongView_name" = "titre";
@@ -614,6 +614,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Programming.Catalog.server" = "Yasound's music";
 "Programming.Catalog.uploads" = "Téléchargements";
 "Programming.empty" = "Ajoutez de la musique sur votre appareil en le synchronisant avec iTunes.";
+"Programming.delete.artist" = "Voulez-vous vraiment supprimer tous les morceaux de cet artiste?";
+"Programming.delete.artist.error.title" = "Oups...";
+"Programming.delete.artist.error" = "L'artiste n'a pas pu être supprimé de la radio.";
 
 "Stats.section.month" = "Audience des 30 derniers jours";
 "Stats.section.leaderboard" = "Classement";

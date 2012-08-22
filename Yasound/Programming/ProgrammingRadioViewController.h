@@ -10,6 +10,7 @@
 #import "Radio.h"
 #import "ProgrammingViewController.h"
 #import "ProgrammingArtistViewController.h"
+#import "ObjectButton.h"
 
 @interface ProgrammingRadioViewController : UITableViewController <UIActionSheetDelegate>
 {
@@ -19,11 +20,17 @@
 //    IBOutlet UILabel* _subtitleLabel;
 //    IBOutlet UIToolbar* _toolbar;
 //    IBOutlet UISegmentedControl* _segment;
+    ObjectAlertView* _alertDeleteArtist;
 }
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, retain) NSMutableDictionary* sortedSongs;
 @property (nonatomic, retain) NSMutableDictionary* sortedArtists;
+
+@property (nonatomic, retain) NSMutableDictionary* artistToIndexPath;
+@property (nonatomic, retain) NSString* deleteArtistNameFromClient;
+@property (nonatomic) BOOL deleteRunning;
+ 
 
 @property (nonatomic) NSInteger selectedSegmentIndex;
 

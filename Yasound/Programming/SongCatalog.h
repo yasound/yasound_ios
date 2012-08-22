@@ -35,6 +35,12 @@
 
 @property (nonatomic) BOOL cached;
 
+
+@property (nonatomic, retain) NSMutableDictionary* artistRegister;
+@property (nonatomic, retain) NSMutableDictionary* albumRegister;
+
+
+
 @property (nonatomic, retain) NSMutableDictionary* matchedSongs;
 
 @property (nonatomic, retain) NSMutableArray* indexMap; // "-", "A", "B", ...
@@ -56,7 +62,7 @@
 + (void)releaseAvailableCatalog;
 
 
-+ (NSString*)catalogKeyOfSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album;
+- (NSString*)catalogKeyOfSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album;
 
 - (BOOL)doesContainSong:(Song*)song;
 - (BOOL)doesDeviceContainSong:(Song*)song;
@@ -68,6 +74,8 @@
 - (void)insertAndEnableSong:(Song*)song;
 - (void)removeSynchronizedSong:(Song*)song;
 
+- (void)removeSynchronizedArtist:(NSString*)artistNameFromClient;
+- (void)removeSynchronizedAlbum:(NSString*)albumNameFromClient;
 
 
 - (BOOL)selectArtist:(NSString*)artistKey withIndex:(NSString*)charIndex;

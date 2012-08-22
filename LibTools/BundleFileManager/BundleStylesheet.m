@@ -7,7 +7,7 @@
 
 #import "BundleStylesheet.h"
 #import "BundleFileManager.h"
-
+#import "ObjectButton.h"
 #import <QuartzCore/QuartzCore.h>
 
 //..................................................................................
@@ -811,6 +811,43 @@ static NSMutableDictionary* gImageViews = nil;
     }
   
   return button;
+}
+
+
+- (ObjectButton*)makeObjectButton
+{
+    ObjectButton* button = [[ObjectButton alloc] initWithFrame:self.frame];
+    
+    NSArray* allKeys = [self.images allKeys];
+    for (NSString* key in allKeys)
+    {
+        if ([key isEqualToString:@"normal"])
+            [button setImage:[self.images valueForKey:key] forState:UIControlStateNormal];
+        
+        else if ([key isEqualToString:@"highlighted"])
+            [button setImage:[self.images valueForKey:key] forState:UIControlStateHighlighted];
+        
+        else if ([key isEqualToString:@"disabled"])
+            [button setImage:[self.images valueForKey:key] forState:UIControlStateDisabled];
+        
+        else if ([key isEqualToString:@"selected"])
+            [button setImage:[self.images valueForKey:key] forState:UIControlStateSelected];
+        
+        else if ([key isEqualToString:@"selected|highlighted"])
+            [button setImage:[self.images valueForKey:key] forState:(UIControlStateSelected|UIControlStateHighlighted)];
+        
+        else if ([key isEqualToString:@"selected|disabled"])
+            [button setImage:[self.images valueForKey:key] forState:(UIControlStateSelected|UIControlStateDisabled)];
+    }
+    
+    NSNumber* alphaNb = [self.customProperties objectForKey:@"alpha"];
+    if (alphaNb != nil)
+    {
+        CGFloat alpha = [alphaNb floatValue];
+        button.alpha = alpha;
+    }
+    
+    return button;
 }
 
 

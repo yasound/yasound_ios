@@ -250,9 +250,9 @@ static NSMutableDictionary* gEditingSongs = nil;
     [self addSubview:self.buttonDelete];
     
     // delete button label
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.ProgrammingCell_buttonDelete_label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.del" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.buttonLabel = [sheet makeLabel];
-    self.buttonLabel.text = NSLocalizedString(@"Programming.ProgrammingCell_buttonDelete_label", nil);
+    self.buttonLabel.text = NSLocalizedString(@"Programming.del", nil);
     [self.buttonDelete addSubview:self.buttonLabel];
     
     // compute frames for animation

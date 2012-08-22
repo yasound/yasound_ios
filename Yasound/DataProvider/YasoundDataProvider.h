@@ -246,6 +246,10 @@ taskStatus stringToStatus(NSString* str);
                                                                                             // - data for key @"userData"
                                                                                             // - a NSNumber (boolean) for key @"success"
 
+- (void)deleteAllSongsFromRadio:(Radio*)radio target:(id)target action:(SEL)action;
+- (void)deleteArtist:(NSString*)artist fromRadio:(Radio*)radio target:(id)target action:(SEL)action;
+- (void)deleteAlbum:(NSString*)album fromRadio:(Radio*)radio target:(id)target action:(SEL)action;
+
 - (void)rejectSong:(Song*)song target:(id)target action:(SEL)selector; // didRejectSong:(ASIHTTPRequest*)req succeeded:(NSNumber*)success
 
 

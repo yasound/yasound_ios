@@ -93,6 +93,13 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
+			<key>cellImageEmpty</key>
+			<dict>
+				<key>name</key>
+				<string>cellImageEmtpy</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
 			<key>willDisplayCell</key>
 			<dict>
 				<key>rowSingle</key>

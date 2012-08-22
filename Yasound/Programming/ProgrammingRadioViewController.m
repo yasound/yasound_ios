@@ -21,6 +21,7 @@
 #import "AudioStreamManager.h"
 #import "ProgrammingCell.h"
 #import "YasoundAppDelegate.h"
+#import "ObjectButton.h"
 
 @implementation ProgrammingRadioViewController
 
@@ -29,6 +30,9 @@
 @synthesize sortedSongs;
 @synthesize selectedSegmentIndex;
 @synthesize artistVC;
+@synthesize artistToIndexPath;
+@synthesize deleteArtistNameFromClient;
+@synthesize deleteRunning;
 
 
 #define TIMEPROFILE_BUILD @"Programming build catalog"
@@ -60,6 +64,7 @@
     {
         self.radio = radio;
         self.selectedSegmentIndex = SEGMENT_INDEX_ALPHA;
+        self.deleteRunning = NO;
         
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
@@ -69,6 +74,7 @@
         
         self.sortedArtists = [[NSMutableDictionary alloc] init];
         self.sortedSongs = [[NSMutableDictionary alloc] init];
+        self.artistToIndexPath = [[NSMutableDictionary alloc] init];
 
         // anti-bug
         NSString* catalogId = [NSString stringWithFormat:@"%@", [SongCatalog synchronizedCatalog].radio.id];
@@ -457,6 +463,14 @@
         [self.sortedArtists setObject:artists forKey:charIndex];
     }
 
+    
+    //LBDEBUG
+    assert(artists.count > indexPath.row);
+    
+    NSString* artist = [artists objectAtIndex:indexPath.row];
+    
+    NSDictionary* artistRepo = [artistsForSection objectForKey:artist];
+
 
     
         static NSString* CellIdentifier = @"Cell";
@@ -466,39 +480,56 @@
         if (cell == nil) 
         {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+
+            cell.selectionStyle = UITableViewCellSelectionStyleGray;
+
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            UIImageView* di = [sheet makeImage];
+            cell.accessoryView = di;
+            [di release];
+
+            //LBDEBUG TODO : pour plus tard
+//            sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImageEmpty" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            cell.imageView.image = [sheet image];
+//
+//            // del button
+//            sheet = [[Theme theme] stylesheetForKey:@"Programming.del" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            sheet.frame = CGRectMake(8, 8, sheet.frame.size.width, sheet.frame.size.height);
+//            ObjectButton* button = [sheet makeObjectButton];
+//            
+//            // assign artist repository to delete button
+//            NSString* artistNameFromClient = [[SongCatalog synchronizedCatalog].artistRegister objectForKey:artist];
+//            assert(artistNameFromClient != nil);
+//            button.userObject = artistNameFromClient;
+//            
+//            // to handle the succeded return of the deletion request
+//            [self.artistToIndexPath setObject:indexPath forKey:artistNameFromClient];
+//            
+//            
+//            [button addTarget:self action:@selector(onArtistDeleteClicked:) forControlEvents:UIControlEventTouchUpInside];
+//            [cell addSubview:button];
+            
+        
+            sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
+            cell.textLabel.textColor = [sheet fontTextColor];
+            cell.textLabel.font = [sheet makeFont];
+            
+            
+            sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
+            cell.detailTextLabel.textColor = [sheet fontTextColor];
+            cell.detailTextLabel.font = [sheet makeFont];
         }
         
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.disclosureIndicator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIImageView* di = [sheet makeImage];
-    cell.accessoryView = di;
-    [di release];
     
     
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    
-    sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
-    cell.textLabel.textColor = [sheet fontTextColor];
-    cell.textLabel.font = [sheet makeFont];
-    
-    
-    sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    cell.detailTextLabel.backgroundColor = [sheet fontBackgroundColor];
-    cell.detailTextLabel.textColor = [sheet fontTextColor];
-    cell.detailTextLabel.font = [sheet makeFont];
         
         
-    //LBDEBUG
-    assert(artists.count > indexPath.row);
-
-    NSString* artist = [artists objectAtIndex:indexPath.row];
-        
-        NSDictionary* artistRepo = [artistsForSection objectForKey:artist];
 
         NSInteger nbAlbums = artistRepo.count;
         
-        cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.text = artist;
 
         if (nbAlbums == 1)
@@ -577,6 +608,78 @@
     }
 
 }
+
+- (void)onArtistDeleteClicked:(id)sender
+{
+    // one in a time
+    if (self.deleteRunning)
+        return;
+    
+    ObjectButton* button = sender;
+    
+    _alertDeleteArtist = [[ObjectAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.radio", nil) message:NSLocalizedString(@"Programming.delete.artist", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:NSLocalizedString(@"Navigation.delete", nil),nil];
+
+    _alertDeleteArtist.userObject = button.userObject;
+    [_alertDeleteArtist show];
+    [_alertDeleteArtist release];
+}
+
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //LBDEBUG TODO : pour plus tard
+//    if ((alertView == _alertDeleteArtist) && (buttonIndex == 1))
+//    {
+//        [ActivityAlertView showWithTitle:nil];
+//        NSString* artistNameFromClient = _alertDeleteArtist.userObject;
+//        
+//        self.deleteArtistNameFromClient = artistNameFromClient;
+//        self.deleteRunning = YES;
+//
+//        DLog(@"ProgrammingRadioViewController request delete artist '%@'", artistNameFromClient);
+//        
+//        // delete artist request
+//        [[YasoundDataProvider main] deleteArtist:artistNameFromClient fromRadio:self.radio target:self action:@selector(onArtistDeleted:success:)];
+//        return;
+//    }
+}
+
+
+- (void)onArtistDeleted:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    [ActivityAlertView close];
+    self.deleteRunning = NO;
+
+
+    if (!success)
+    {
+        DLog(@"ProgrammingRadioViewController::onArtistDeleted failed!");
+
+        UIAlertView* av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.delete.artist.error.title", nil) message:NSLocalizedString(@"Programming.delete.artist.error", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"Navigation.cancel", nil) otherButtonTitles:nil];
+        [av show];
+        [av release];
+        
+        self.deleteArtistNameFromClient = nil;
+
+        return;
+    }
+    
+    // refresh catalog
+    [[SongCatalog synchronizedCatalog] deleteArtist:self.deleteArtistNameFromClient];
+    
+    NSIndexPath* indexPath = [self.artistToIndexPath objectForKey:self.deleteArtistNameFromClient];
+    
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+    
+    self.deleteArtistNameFromClient = nil;
+
+    
+}
+
+
 
 
 

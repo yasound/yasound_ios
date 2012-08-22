@@ -24,6 +24,9 @@
 
 @implementation SongCatalog
 
+@synthesize artistRegister;
+@synthesize albumRegister;
+
 @synthesize cached;
 @synthesize radio;
 @synthesize target;
@@ -92,19 +95,49 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 
 
 
-
-+ (NSString*)catalogKeyOfSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album
+- (NSString*)catalogKeyOfArtist:(NSString*)artist
 {
     NSString* artistKey = artist;
-    NSString* albumKey = album;
-    
     if (artistKey == nil)
         artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
+    return artistKey;
+}
 
+- (NSString*)catalogKeyOfAlbum:(NSString*)album
+{
+    NSString* albumKey = album;
     if (albumKey == nil)
-        albumKey =  NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+        albumKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+    return albumKey;
+}
+
+
+
+- (NSString*)catalogKeyOfSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album
+{
+    NSString* artistKey = [self catalogKeyOfArtist:artist];
+    NSString* albumKey = [self catalogKeyOfAlbum:album];
     
-    return [NSString stringWithFormat:@"%@|%@|%@", name, artistKey, albumKey];
+    // build catalog key
+    NSString* catalogKey = [NSString stringWithFormat:@"%@|%@|%@", name, artistKey, albumKey];
+    
+    // register artist->artistKey and album->albumKey
+    // we need those to request artist and album deletion from programming
+    artistKey = artist;
+    albumKey = album;
+    
+    if (artistKey == nil)
+        artistKey = @"";
+    
+    if (albumKey == nil)
+        albumKey =  @"";
+    
+    [self.artistRegister setObject:artist forKey:artistKey];
+    [self.albumRegister setObject:album forKey:artistKey];
+    
+
+    // return catalog key
+    return catalogKey;
 }
 
 
@@ -163,6 +196,28 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         [_data release];
         _data = nil;
     }
+    
+    if (self.radio)
+        [self.radio release];
+    if (self.artistRegister)
+        [self.artistRegister release];
+    if (self.albumRegister)
+        [self.albumRegister release];
+    if (self.matchedSongs)
+        [self.matchedSongs release];
+    if (self.indexMap)
+        [self.indexMap release];
+    if (self.alphabeticRepo)
+        [self.alphabeticRepo release];
+    if (self.selectedArtist)
+        [self.selectedArtist release];
+    if (self.selectedAlbum)
+        [self.selectedAlbum release];
+    if (self.selectedArtistRepo)
+        [self.selectedArtistRepo release];
+    if (self.selectedAlbumRepo)
+        [self.selectedAlbumRepo release];
+    
 
     
     [super dealloc];
@@ -227,7 +282,11 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         return;
     }
     
+    // otherwise , create cache and build data
     self.matchedSongs = [[NSMutableDictionary alloc] init];
+    
+    self.artistRegister = [[NSMutableDictionary alloc] init];
+    self.albumRegister = [[NSMutableDictionary alloc] init];
 
     _data = [[NSMutableArray alloc] init];
     [_data retain];
@@ -306,7 +365,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         {
             // create a key for the dictionary
             // LBDEBUG NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
-            NSString* key = [SongCatalog catalogKeyOfSong:song.name_client artist:song.artist_client album:song.album_client];
+            NSString* key = [self catalogKeyOfSong:song.name_client artist:song.artist_client album:song.album_client];
+            
             
             // and store the song in the dictionnary, for later convenient use
             [self.matchedSongs setObject:song forKey:key];
@@ -606,6 +666,123 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     return NO;
 }
+
+
+
+
+
+- (void)removeSynchronizedArtist:(NSString*)artistNameFromClient
+{
+    // TODO
+//    NSString* artistKey = [self catalogKeyOfArtist:artistNameFromClient];
+//    
+//    //
+//    // process artistsRepo
+//    //
+//    
+//    NSString* artistKey = song.artist;
+//    if ((artistKey == nil) || (artistKey.length == 0))
+//    {
+//        artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
+//        DLog(@"removeSynchronizedSong: empty artist found!");
+//    }
+//    NSString* albumKey = song.album;
+//    if ((albumKey == nil) || (albumKey.length == 0))
+//    {
+//        albumKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
+//        DLog(@"removeSynchronizedSong: empty album found!");
+//    }
+//    
+//    
+//    
+//    c = [artistKey characterAtIndex:0];
+//    NSMutableDictionary* artistsRepo = nil;
+//    if ([_numericSet characterIsMember:c])
+//    {
+//        artistsRepo = [self.alphaArtistsRepo objectForKey:@"-"];
+//    }
+//    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
+//    {
+//        NSString* upperC = [[NSString stringWithCharacters:&c length:1] uppercaseString];
+//        artistsRepo = [self.alphaArtistsRepo objectForKey:upperC];
+//    }
+//    else
+//    {
+//        artistsRepo = [self.alphaArtistsRepo objectForKey:@"#"];
+//    }
+//    
+//    NSMutableDictionary* artistRepo = [artistsRepo objectForKey:artistKey];
+//    DLog(@"SongCatalog removeSynchronizedSong : may have error no dictionary for the artistKy '%@'", artistKey);
+//    if (artistRepo == nil)
+//        return;
+//    
+//    
+//    NSMutableArray* albumRepo = [artistRepo objectForKey:albumKey];
+//    
+//    for (NSInteger index = 0; index < albumRepo.count; index++)
+//    {
+//        Song* albumSong = [albumRepo objectAtIndex:index];
+//        if ([albumSong.name isEqualToString:song.name])
+//        {
+//            [albumRepo removeObjectAtIndex:index];
+//            break;
+//        }
+//    }
+//
+//    
+//    
+//    //
+//    // process alphaeticRepo
+//    //
+//    NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
+//    
+//    if ((firstRelevantWord == nil) || (firstRelevantWord.length == 0))
+//        firstRelevantWord = @"#";
+//    
+//    unichar c = [firstRelevantWord characterAtIndex:0];
+//    
+//    NSMutableArray* letterRepo = nil;
+//    
+//    if ([_numericSet characterIsMember:c])
+//    {
+//        letterRepo = [self.alphabeticRepo objectForKey:@"-"];
+//    }
+//    // first letter is [a .. z] || [A .. Z]
+//    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
+//    {
+//        NSString* upperCaseChar = [[NSString stringWithCharacters:&c length:1] uppercaseString];
+//        letterRepo = [self.alphabeticRepo objectForKey:upperCaseChar];
+//    }
+//    // other cases (foreign languages, ...)
+//    else
+//    {
+//        letterRepo = [self.alphabeticRepo objectForKey:@"#"];
+//    }
+//    
+//    for (NSInteger index = 0; index < letterRepo.count; index++)
+//    {
+//        Song* letterSong = [letterRepo objectAtIndex:index];
+//        if ([letterSong.name isEqualToString:song.name])
+//        {
+//            [letterRepo removeObjectAtIndex:index];
+//            break;
+//        }
+//    }
+    
+}
+
+- (void)removeSynchronizedAlbum:(NSString*)albumNameFromClient
+{
+  // TODO
+}
+
+
+
+
+
+
+
+
 
 
 - (BOOL)doesDeviceContainSong:(Song*)song

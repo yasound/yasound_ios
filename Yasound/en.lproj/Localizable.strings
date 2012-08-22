@@ -200,7 +200,7 @@
 "ProgramminView_nb_songs_n" = "%d songs";
 "ProgrammingView_subtitle_error" = "erreur";
 
-"Programming.ProgrammingCell_buttonDelete_label" = "Remove";
+"Programming.del" = "Remove";
 
 
 "SongView_title" = "Song";
@@ -628,6 +628,9 @@
 "Programming.Catalog.server" = "Yasound's music";
 "Programming.Catalog.uploads" = "Uploads";
 "Programming.empty" = "Add some music to your device, by synchronizing it with iTunes.";
+"Programming.delete.artist" = "Do you really want to delete all the songs from this artist?";
+"Programming.delete.artist.error.title" = "Oops...";
+"Programming.delete.artist.error" = "The artist could not have been deleted";
 
 "Stats.section.month" = "Last 30 days audience";
 "Stats.section.leaderboard" = "Leaderboard";

@@ -12,6 +12,7 @@
 #import "YasoundAppDelegate.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "ASIFormDataRequest.h"
+#import "ProgrammingObjectParameters.h"
 
 #define LOCAL_URL @"http://127.0.0.1:8000"
 
@@ -307,7 +308,7 @@ static YasoundDataProvider* _main = nil;
 
 
 - (void)userRadioWithTarget:(id)target action:(SEL)selector andData:(NSDictionary*)userData
-{  
+{
   if (!_user)
   {
     NSDictionary* info = [NSDictionary dictionaryWithObject:[NSError errorWithDomain:@"no logged user" code:1 userInfo:nil] forKey:@"error"];
@@ -1837,14 +1838,14 @@ static YasoundDataProvider* _main = nil;
     
 
     //LBDEBUG
-    DLog(@"edit url '%@'", url);
-    if ([url isEqualToString:@"api/v1/edit_song/0"])
-    {
-        DLog(@"OK");
-        DLog(@"song.id  0x%p", song.id);
-        DLog(@"%d", [song.id integerValue]);
-        assert(0);
-    }
+//    DLog(@"edit url '%@'", url);
+//    if ([url isEqualToString:@"api/v1/edit_song/0"])
+//    {
+//        DLog(@"OK");
+//        DLog(@"song.id  0x%p", song.id);
+//        DLog(@"%d", [song.id integerValue]);
+//        assert(0);
+//    }
     //////////////
         
   [_communicator updateObject:song withURL:url absolute:NO notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
@@ -1895,6 +1896,93 @@ static YasoundDataProvider* _main = nil;
             [target performSelector:action withObject:song withObject:info];
     }
 }
+
+
+- (void)deleteAllSongsFromRadio:(Radio*)radio target:(id)target action:(SEL)action
+{
+    if (!radio)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/programming/", radio.id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"DELETE";
+    
+    conf.callbackTarget = target;
+    conf.callbackAction = action;
+    conf.userData = nil;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
+- (void)deleteArtist:(NSString*)artist fromRadio:(Radio*)radio target:(id)target action:(SEL)action
+{
+    if (!artist || !radio)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/programming/artists/", radio.id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    
+    conf.callbackTarget = target;
+    conf.callbackAction = action;
+    conf.userData = nil;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+
+    ProgrammingObjectParameters* params = [[ProgrammingObjectParameters alloc] init];
+    params.action = @"delete";
+    params.name = artist;
+    
+    NSString* stringData = [params JSONRepresentation];
+    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [req startAsynchronous];
+}
+
+
+- (void)deleteAlbum:(NSString*)album fromRadio:(Radio*)radio target:(id)target action:(SEL)action
+{
+    if (!album || !radio)
+        return;
+    
+    Auth* auth = self.apiKeyAuth;
+    
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/radio/%@/programming/albums/", radio.id];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    
+    conf.callbackTarget = target;
+    conf.callbackAction = action;
+    conf.userData = nil;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    
+    ProgrammingObjectParameters* params = [[ProgrammingObjectParameters alloc] init];
+    params.action = @"delete";
+    params.name = album;
+    
+    NSString* stringData = [params JSONRepresentation];
+    [req appendPostData:[stringData dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [req startAsynchronous];
+}
+
+
+
+
+
 
 
 - (void)rejectSong:(Song*)song target:(id)target action:(SEL)selector
