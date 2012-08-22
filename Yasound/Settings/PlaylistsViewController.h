@@ -20,20 +20,11 @@ typedef enum {
 
 @interface PlaylistsViewController : TestflightViewController<TopBarSaveOrCancelDelegate>
 {
-//    BOOL _wizard;
     BOOL _changed;
-//    BOOL _forceEnableNextBtn;
     
     IBOutlet UIView* _container;
 
-//    IBOutlet UIToolbar* _toolbar;
-//    IBOutlet UIBarButtonItem* _backBtn;
-//    IBOutlet UILabel* _titleLabel;
-//    UIBarButtonItem* _nextBtn;
-    
-    IBOutlet UITableView* _tableView;  
-//    CGFloat _cellHowtoHeight;
-//    NSString* _howto; 
+    IBOutlet UITableView* _tableView;
 
     IBOutlet UIView* _itunesConnectView;
     IBOutlet UILabel* _itunesConnectLabel;

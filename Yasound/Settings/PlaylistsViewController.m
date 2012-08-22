@@ -43,11 +43,8 @@
     {
       
         _displayMode = eDisplayModeNormal;
-//        _wizard = wizard;
         _songsViewController = nil;
         _changed = NO;
-//        if (_wizard)
-//            _changed = YES;
         
         _checkmarkImage = [UIImage imageNamed:@"WhiteCheckmark.png"];
         [_checkmarkImage retain];
@@ -57,6 +54,98 @@
     
     return self;
 }
+
+
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+
+- (void)dealloc
+{
+    [_checkmarkImage release];
+    [_checkmarkDisabledImage release];
+    if (_songsViewController) {
+        [_songsViewController release];
+    }
+    [_localPlaylistsDesc release];
+    [_playlists release];
+    [_playlistsDesc release];
+    [_selectedPlaylists release];
+    [_unselectedPlaylists release];
+    [super dealloc];
+}
+
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.topbar.actionButton.enabled = NO;
+    
+    
+    //......................................................................................
+    // init playlists
+    //
+    
+    [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
+    
+    [[TimeProfile main] begin:@"Playlists_catalogPlaylists"];
+    
+    MPMediaQuery *playlistsquery = [MPMediaQuery playlistsQuery];
+    _playlistsDesc = [[NSMutableArray alloc] init];
+    [_playlistsDesc retain];
+    _playlists = [playlistsquery collections];
+    [_playlists retain];
+    
+    [[TimeProfile main] end:@"Playlists_catalogPlaylists"];
+    [[TimeProfile main] logInterval:@"Playlists_catalogPlaylists" inMilliseconds:NO];
+    
+    
+    [self.view addSubview:_tableView];
+    
+    
+    [[TimeProfile main] begin:@"Playlists_download"];
+    
+    Radio* radio = [YasoundDataProvider main].radio;
+    [[YasoundDataProvider main] playlistsForRadio:radio
+                                           target:self
+                                           action:@selector(receivePlaylists:withInfo:)
+     ];
+    
+    _selectedPlaylists = [[NSMutableArray alloc] init];
+    [_selectedPlaylists retain];
+    
+    _unselectedPlaylists = [[NSMutableArray alloc] init];
+    [_unselectedPlaylists retain];
+    
+    _localPlaylistsDesc = [[NSMutableArray alloc] init];
+    [_localPlaylistsDesc retain];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -134,18 +223,8 @@
         if (mediaPlaylist) 
             [_localPlaylistsDesc addObject:dico];
 
-//        if (_wizard) 
-//        {
             if (mediaPlaylist)
                 [_selectedPlaylists addObject:dico];
-//        }
-//        else 
-//        {
-//            if ([enabled boolValue] == FALSE)
-//                [_unselectedPlaylists addObject:dico];
-//            else
-//                [_selectedPlaylists addObject:dico];
-//        }
     }
 }
 
@@ -199,157 +278,8 @@
 }
 
                                                                                       
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
 
-- (void)dealloc
-{
-    [_checkmarkImage release];
-    [_checkmarkDisabledImage release];
-//    [_howto release];
-    if (_songsViewController) {
-        [_songsViewController release];
-    }
-    [_localPlaylistsDesc release];
-    [_playlists release];
-    [_playlistsDesc release];
-    [_selectedPlaylists release];
-    [_unselectedPlaylists release];
-    [super dealloc];
-}
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    self.topbar.actionButton.enabled = NO;
-
-//    _titleLabel.text = NSLocalizedString(@"PlaylistsView_title", nil);
-//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-
-//    _forceEnableNextBtn = NO;
-    
-//#if TARGET_IPHONE_SIMULATOR
-//    _forceEnableNextBtn = YES;
-//#endif
-
-    
-//    // next button in toolbar
-//    if (_wizard)
-//    {
-//        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_cancel", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
-//
-//        _nextBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_next", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onNext:)];
-//
-//        UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-//
-//
-//        NSMutableArray* items = [[NSMutableArray alloc] init];
-//        
-//        [items addObject:backBtn];
-//        [items addObject:space];
-//        [items addObject:_nextBtn];
-//        
-//        [_toolbar setItems:items animated:NO];
-//        
-//        _nextBtn.enabled = NO;
-//
-//        
-//    } 
-//    else 
-//    {
-//        UIBarButtonItem* backBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Navigation_back", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
-//  
-//      // For the moment we disable playlist editing until we have a better solution.
-////        UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStyleBordered target:self action:@selector(onEdit:)];
-//        
-//        UIBarButtonItem* space=  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-//        
-//        NSMutableArray* items = [[NSMutableArray alloc] init];
-//        
-//        [items addObject:backBtn];
-//        [items addObject:space];
-////        [items addObject:edit];
-//        
-//        [_toolbar setItems:items animated:NO];
-//        
-//    }
-    
-//    _howto = NSLocalizedString(@"PlaylistsView_howto", nil);
-////    [_howto retain];
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"PlaylistsView.PlaylistsView_Howto" error:nil];
-//    UIFont* font = [sheet makeFont];
-//    
-//    // dynamic size of howto text
-//    CGSize suggestedSize = [_howto sizeWithFont:font constrainedToSize:CGSizeMake(sheet.frame.size.width, FLT_MAX) lineBreakMode:UILineBreakModeWordWrap];
-//    _cellHowtoHeight = suggestedSize.height;
-    
-    
-    
-    //......................................................................................
-    // init playlists
-    //
-
-    [ActivityAlertView showWithTitle: NSLocalizedString(@"PlaylistsViewController_FetchingPlaylists", nil)];
-    
-    [[TimeProfile main] begin:@"Playlists_catalogPlaylists"];
-
-    MPMediaQuery *playlistsquery = [MPMediaQuery playlistsQuery];
-    _playlistsDesc = [[NSMutableArray alloc] init];
-    [_playlistsDesc retain];
-    _playlists = [playlistsquery collections];
-    [_playlists retain];
-    
-    [[TimeProfile main] end:@"Playlists_catalogPlaylists"];
-    [[TimeProfile main] logInterval:@"Playlists_catalogPlaylists" inMilliseconds:NO];
-
-    
-//    if (([_playlists count] != 0) || _forceEnableNextBtn)
-//        _nextBtn.enabled = YES;
-//    else
-//        _nextBtn.enabled = NO;
-    
-    
-    [self.view addSubview:_tableView];
-    
-    
-    [[TimeProfile main] begin:@"Playlists_download"];
-    
-    Radio* radio = [YasoundDataProvider main].radio;
-    [[YasoundDataProvider main] playlistsForRadio:radio 
-                                           target:self 
-                                           action:@selector(receivePlaylists:withInfo:)
-     ];
-    
-    _selectedPlaylists = [[NSMutableArray alloc] init];
-    [_selectedPlaylists retain];
-    
-    _unselectedPlaylists = [[NSMutableArray alloc] init];
-    [_unselectedPlaylists retain];
-    
-    _localPlaylistsDesc = [[NSMutableArray alloc] init];
-    [_localPlaylistsDesc retain];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 
 -(void)refreshView
@@ -370,11 +300,6 @@
         self.topbar.actionButton.enabled = YES;
 
     }
-    
-//    if (([_selectedPlaylists count] == 0) && (_songs.count == 0))
-//        [_nextBtn setEnabled:NO];
-//    else 
-//        [_nextBtn setEnabled:YES];    
 }
 
 
@@ -441,50 +366,9 @@
 
 
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    ICI
-//    
-//    NSString* title = nil;
-//    
-//    if (section == 0)
-//        return nil;
-//    
-//    if (section == 1)
-//        title = NSLocalizedString(@"PlaylistsView_table_header_local_playlists", nil);
-//    
-//    else if (section == 2)
-//        title = NSLocalizedString(@"PlaylistsView_table_header_other_playlists", nil);
-//
-//    
-//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    
-//    UIImage* image = [sheet image];
-//    CGFloat height = image.size.height;
-//    UIImageView* view = [[UIImageView alloc] initWithImage:image];
-//    view.frame = CGRectMake(0, 0, tableView.bounds.size.width, height);
-//    
-//    sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//    UILabel* label = [sheet makeLabel];
-//    label.text = title;
-//    [view addSubview:label];
-//    
-//    return view;
-//}
 
-
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if ((indexPath.section == 0) && (indexPath.row == 0))
-//    {
-//        UIView* view = [[UIView alloc] initWithFrame:cell.frame];
-//        view.backgroundColor = [UIColor clearColor];
-//        cell.backgroundView = view;
-//        [view release];
-//        return;
-//    }
-    
     NSInteger nbRows;
     if (indexPath.section == 1)
     {
@@ -520,40 +404,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-//    if ((indexPath.section == 0) && (indexPath.row == 0))
-//    {
-//        static NSString* CellIdentifier = @"CellHowto";
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//        
-//        if (cell == nil) 
-//        {
-//            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-//        }
-//        else
-//        {
-//            for (id child in cell.subviews)
-//            {
-//                if ([child isKindOfClass:[UILabel class]])
-//                    [child removeFromSuperview];
-//            }
-//        }
-//        
-//        
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//
-//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"PlaylistsView.PlaylistsView_Howto" error:nil];
-//
-//        UILabel* label = [sheet makeLabel];
-//        label.text = _howto;
-//        label.numberOfLines = 0;
-//        label.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, sheet.frame.size.width, _cellHowtoHeight);
-//        [cell addSubview:label];
-//
-//        return cell;
-//    }
-    
-    
-    
     if ((indexPath.section == 0) && (indexPath.row == 0))
     {
         static NSString* CellIdentifier = @"CellSelect";
@@ -671,14 +521,7 @@
     } else {
         cell.detailTextLabel.text = [NSString stringWithFormat:NSLocalizedString(@"PlaylistsView_cell_detail",nil), [[dico objectForKey:@"count"] integerValue]];
     }
-//    if (neverSynchronized) {
-//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (never synchronized)",
-//                                     cell.detailTextLabel.text];
-//    } else {
-//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (synchronized)",
-//                                     cell.detailTextLabel.text];
-//    }
-    
+
     cell.detailTextLabel.textColor = [UIColor grayColor];
     cell.detailTextLabel.backgroundColor = [UIColor clearColor];
 
@@ -752,10 +595,6 @@
         [self checkmark:cell with:NO];
     }
     
-//    if (([_selectedPlaylists count] == 0) && (_songs.count == 0))
-//        [_nextBtn setEnabled:NO];
-//    else 
-//        [_nextBtn setEnabled:YES];
 }
 
 
@@ -782,36 +621,6 @@
 
 #pragma mark - IBActions
 
-//- (IBAction)onBack:(id)sender
-//{
-////    if (_wizard)
-////    {
-////        // call root to launch the Radio
-////        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_CANCEL_WIZARD object:nil];
-////        return;
-////    }
-//    
-//    // save or cancel
-////    if (!_wizard && _changed)
-//    if (_changed)
-//    {
-//        UIActionSheet* popupQuery = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Settings.saveOrCancel.title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Settings.saveOrCancel.cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Settings.saveOrCancel.save", nil), nil];
-//        
-//        popupQuery.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
-//        [popupQuery showInView:self.view];
-//        [popupQuery release];
-//    }
-//    else
-//    {
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
-//}
-
-
-//- (IBAction)onNext:(id)sender
-//{
-//    [self save];
-//}
 
 - (IBAction)onEdit:(id)sender
 {
@@ -906,24 +715,6 @@
 }
     
 
-
-//- (void)onGetRadio:(Radio*)radio info:(NSDictionary*)info
-//{
-//    if (radio == nil)
-//    {
-//        [ActivityAlertView close];
-//
-//        _alertSubmitError = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"PlaylistsView_submit_title", nil) message:NSLocalizedString(@"PlaylistsView_submit_error_radio", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [_alertSubmitError show];
-//        [_alertSubmitError release];  
-//        return;
-//    }
-//    else
-//    {
-//        DLog(@"For radio %@", radio.name);
-//        [[YasoundDataProvider main] updatePlaylists:self.playlistsDataPackage forRadio:radio target:self action:@selector(receiveUpdatePLaylistsResponse:error:)];
-//    }
-//}
 
 
 #pragma mark - UIAlertViewDelegate
@@ -1037,7 +828,6 @@
     for (Playlist* playlist in playlists) 
     {
         [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)]; 
-        // didReceiveMatchedSongs:(NSArray*)matched_songs info:
     }
 }
     
@@ -1095,15 +885,9 @@
 
 - (void)getOut
 {
-  
-//  if (_wizard)
-//  {
     SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:self.radio createMode:YES];
     [self.navigationController pushViewController:view animated:YES];
     [view release];    
-//  }
-//  else
-//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -1122,10 +906,6 @@
     return NO;
 }
 
-//- (BOOL)topBarCancel
-//{
-//
-//}
 
 
 
