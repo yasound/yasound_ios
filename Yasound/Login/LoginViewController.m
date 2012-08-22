@@ -280,7 +280,7 @@
 
 - (void)logoutReturned
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MENU object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MENU object:nil];
 }
 
 

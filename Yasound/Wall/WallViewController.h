@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "WallMessage.h"
 #import "SongViewCell.h"
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "OrientedTableView.h"
 #import <MessageUI/MessageUI.h>
 #import "TouchedTableView.h"
@@ -21,7 +21,7 @@
 @class AudioStreamer;
 @class WebImageView;
 
-@interface WallViewController : TestflightViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate,TopBarDelegate>
+@interface WallViewController : YaViewController<UITextInputDelegate, NSXMLParserDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIActionSheetDelegate, UIScrollViewDelegate, MFMailComposeViewControllerDelegate,TopBarDelegate>
 {
     //    NSAutoreleasePool* _ap;
     

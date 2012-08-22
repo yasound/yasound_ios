@@ -103,18 +103,18 @@
 @synthesize user;
 //@synthesize menuView;
 
-static MenuViewController* gMenuView = nil;
+//static MenuViewController* gMenuView = nil;
 
 
-+ (BOOL)menuIsCurrentScreen
-{
-    UIViewController* tmp = APPDELEGATE.navigationController.topViewController;
-    NSLog(@"class %@", [tmp class]);
-    NSLog(@"compare %@   %@", tmp, gMenuView);
-    
-    
-    return (APPDELEGATE.navigationController.topViewController == gMenuView);
-}
+//+ (BOOL)menuIsCurrentScreen
+//{
+//    UIViewController* tmp = APPDELEGATE.navigationController.topViewController;
+//    NSLog(@"class %@", [tmp class]);
+//    NSLog(@"compare %@   %@", tmp, gMenuView);
+//    
+//    
+//    return (APPDELEGATE.navigationController.topViewController == gMenuView);
+//}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -137,8 +137,8 @@ static MenuViewController* gMenuView = nil;
 
 - (void)dealloc
 {
-    if (gMenuView != nil)
-        [gMenuView release];
+//    if (gMenuView != nil)
+//        [gMenuView release];
     [super dealloc];
 }
 
@@ -150,14 +150,14 @@ static MenuViewController* gMenuView = nil;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifLaunchRadio:) name:NOTIF_LAUNCH_RADIO object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPopAndGotoUploads:) name:NOTIF_POP_AND_GOTO_UPLOADS object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifCancelWizard:) name:NOTIF_CANCEL_WIZARD object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifWizard:) name:NOTIF_WIZARD object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPopToMenu:) name:NOTIF_POP_TO_MENU object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushMenu:) name:NOTIF_PUSH_MENU object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifCancelWizard:) name:NOTIF_CANCEL_WIZARD object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifWizard:) name:NOTIF_WIZARD object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPopToMenu:) name:NOTIF_POP_TO_MENU object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushMenu:) name:NOTIF_PUSH_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorCommunicationServer:) name:NOTIF_ERROR_COMMUNICATION_SERVER object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifErrorConnectionChanged:) name:NOTIF_REACHABILITY_CHANGED object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMenu:) name:NOTIF_GOTO_MENU object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMenu:) name:NOTIF_GOTO_MENU object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoSelection:) name:NOTIF_GOTO_SELECTION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoFavorites:) name:NOTIF_GOTO_FAVORITES object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoMyRadios:) name:NOTIF_GOTO_MYRADIOS object:nil];
@@ -178,6 +178,10 @@ static MenuViewController* gMenuView = nil;
   [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
   [[AVAudioSession sharedInstance] setActive: YES error: nil];  
   [[AVAudioSession sharedInstance] setDelegate: self];
+
+//    // put the menu above the root viewController
+//     MenuViewController* menu = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+//    [self.view addSubview:menu.view];
 }
 
 - (void)viewDidUnload
@@ -401,24 +405,14 @@ static MenuViewController* gMenuView = nil;
 - (void)logoutReturned
 {
     // once logout done, go back to the home screen
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MENU object:nil];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_MENU object:nil];
 }
 
 - (void)goToNotificationCenter
 {
-  if (gMenuView == nil)
-  {
-    gMenuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-    [self.navigationController pushViewController:gMenuView animated:NO];
-  }
-  else
-  {
-    [self.navigationController popToViewController:gMenuView animated:NO];
-  }
-  
-  NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
-  [self.navigationController pushViewController:view animated:YES];
-  [view release];
+    NotificationCenterViewController* view = [[NotificationCenterViewController alloc] initWithNibName:@"NotificationCenterViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
 }
 
 
@@ -442,73 +436,73 @@ static MenuViewController* gMenuView = nil;
 
 
 
-- (void)onNotifCancelWizard:(NSNotification*)notification
-{  
-    BOOL sendToSelection = [[UserSettings main] boolForKey:USKEYskipRadioCreation error:nil];
-    BOOL animatePushMenu = !sendToSelection;
+//- (void)onNotifCancelWizard:(NSNotification*)notification
+//{  
+//    BOOL sendToSelection = [[UserSettings main] boolForKey:USKEYskipRadioCreation error:nil];
+//    BOOL animatePushMenu = !sendToSelection;
+//
+//    if (gMenuView == nil)
+//    {
+//        gMenuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+//        [self.navigationController pushViewController:gMenuView animated:animatePushMenu];
+//    }
+//    else
+//    {
+//        [self.navigationController popToViewController:gMenuView animated:animatePushMenu];
+//    }
+//    
+//  if (sendToSelection)
+//  {
+//      RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil];
+//    [self.navigationController pushViewController:view animated:NO];    
+//    [view release];
+//  }
+//}
+//
 
-    if (gMenuView == nil)
-    {
-        gMenuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-        [self.navigationController pushViewController:gMenuView animated:animatePushMenu];
-    }
-    else
-    {
-        [self.navigationController popToViewController:gMenuView animated:animatePushMenu];
-    }
-    
-  if (sendToSelection)
-  {
-      RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:NO];    
-    [view release];
-  }
-}
 
 
+//- (void)onNotifWizard:(NSNotification *)notification
+//{
+//    BOOL willSendToSelection = [[UserSettings main] boolForKey:USKEYskipRadioCreation error:nil];
+//  if (willSendToSelection || !gMenuView)
+//  {
+//    [self.navigationController popToRootViewControllerAnimated:NO];
+//      if (gMenuView != nil)
+//      {
+//          [gMenuView release];
+//          gMenuView = nil;
+//      }
+//  }
+//  else
+//  {
+//    [self.navigationController popToViewController:gMenuView animated:NO];
+//  }
+//    
+//    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
+//    [self.navigationController pushViewController:view animated:YES];
+//    [view release];
+//}
 
+//- (void)onNotifPopToMenu:(NSNotification *)notification
+//{
+//    [self.navigationController popToViewController:gMenuView animated:YES];
+//}
 
-- (void)onNotifWizard:(NSNotification *)notification
-{
-    BOOL willSendToSelection = [[UserSettings main] boolForKey:USKEYskipRadioCreation error:nil];
-  if (willSendToSelection || !gMenuView)
-  {
-    [self.navigationController popToRootViewControllerAnimated:NO];
-      if (gMenuView != nil)
-      {
-          [gMenuView release];
-          gMenuView = nil;
-      }
-  }
-  else
-  {
-    [self.navigationController popToViewController:gMenuView animated:NO];
-  }
-    
-    PlaylistsViewController* view = [[PlaylistsViewController alloc] initWithNibName:@"PlaylistsViewController" bundle:nil wizard:YES];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-}
-
-- (void)onNotifPopToMenu:(NSNotification *)notification
-{
-    [self.navigationController popToViewController:gMenuView animated:YES];
-}
-
-- (void)onNotifPushMenu:(NSNotification*)notification
-{
-  if (gMenuView)
-  {
-    [self.navigationController popToViewController:gMenuView animated:YES];
-    return;
-  }
-  
-  [self.navigationController popToRootViewControllerAnimated:NO];
-  
-  gMenuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-  [gMenuView retain];
-  [self.navigationController pushViewController:gMenuView animated:YES];
-}
+//- (void)onNotifPushMenu:(NSNotification*)notification
+//{
+//  if (gMenuView)
+//  {
+//    [self.navigationController popToViewController:gMenuView animated:YES];
+//    return;
+//  }
+//  
+//  [self.navigationController popToRootViewControllerAnimated:NO];
+//  
+//  gMenuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+//  [gMenuView retain];
+//  [self.navigationController pushViewController:gMenuView animated:YES];
+//}
 
 - (void)onNotifErrorCommunicationServer:(NSNotification *)notification
 {
@@ -666,25 +660,25 @@ static MenuViewController* gMenuView = nil;
 
 
 
-- (void)gotoMenuAnimated:(BOOL)animated
-{
-    if (gMenuView == nil)
-    {
-        [self.navigationController popToRootViewControllerAnimated:NO];
-        gMenuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-        [self.navigationController pushViewController:gMenuView animated:animated];
-    }
-    else
-    {
-        [self.navigationController popToViewController:gMenuView animated:animated];
-    }
-}
+//- (void)gotoMenuAnimated:(BOOL)animated
+//{
+//    if (gMenuView == nil)
+//    {
+//        [self.navigationController popToRootViewControllerAnimated:NO];
+//        gMenuView = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+//        [self.navigationController pushViewController:gMenuView animated:animated];
+//    }
+//    else
+//    {
+//        [self.navigationController popToViewController:gMenuView animated:animated];
+//    }
+//}
 
 
 
 - (void)onNotifGotoLogin:(NSNotification *)notification
 {
-    [self gotoMenuAnimated:NO];
+//    [self gotoMenuAnimated:NO];
     
     LoginViewController* view = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:YES];
@@ -728,7 +722,7 @@ static MenuViewController* gMenuView = nil;
 
     DLog(@"onNotifGotoRadio '%@' (ready %@)", r.name, r.ready);
 
-    [self gotoMenuAnimated:NO];
+//    [self gotoMenuAnimated:NO];
 
     WallViewController* view = [[WallViewController alloc] initWithRadio:r];
     [self.navigationController pushViewController:view animated:YES];
@@ -736,12 +730,12 @@ static MenuViewController* gMenuView = nil;
 }
 
 
-- (void)onNotifGotoMenu:(NSNotification*)notification
-{
-    DLog(@"onNotifGotoMenu");
-    
-    [self gotoMenuAnimated:YES];
-}
+//- (void)onNotifGotoMenu:(NSNotification*)notification
+//{
+//    DLog(@"onNotifGotoMenu");
+//    
+//    [self gotoMenuAnimated:YES];
+//}
 
 - (void)onNotifGotoSelection:(NSNotification*)notification
 {
@@ -752,7 +746,7 @@ static MenuViewController* gMenuView = nil;
     if (nbAnimated)
         animated = [nbAnimated boolValue];
 
-    [self gotoMenuAnimated:NO];
+//    [self gotoMenuAnimated:NO];
     
     RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withTabIndex:TabIndexSelection];
     [self.navigationController pushViewController:view animated:animated];
@@ -768,7 +762,7 @@ static MenuViewController* gMenuView = nil;
     if (nbAnimated)
         animated = [nbAnimated boolValue];
     
-    [self gotoMenuAnimated:NO];
+//    [self gotoMenuAnimated:NO];
     
     RadioSelectionViewController* view = [[RadioSelectionViewController alloc] initWithNibName:@"RadioSelectionViewController" bundle:nil withTabIndex:TabIndexFavorites];
     [self.navigationController pushViewController:view animated:animated];
@@ -784,7 +778,7 @@ static MenuViewController* gMenuView = nil;
     if (nbAnimated)
         animated = [nbAnimated boolValue];
     
-    [self gotoMenuAnimated:NO];
+//    [self gotoMenuAnimated:NO];
     
     MyRadiosViewController* view = [[MyRadiosViewController alloc] initWithNibName:@"MyRadiosViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:animated];
@@ -800,7 +794,7 @@ static MenuViewController* gMenuView = nil;
     if (nbAnimated)
         animated = [nbAnimated boolValue];
     
-    [self gotoMenuAnimated:NO];
+//    [self gotoMenuAnimated:NO];
     
     GiftsViewController* view = [[GiftsViewController alloc] initWithNibName:@"GiftsViewController" bundle:nil];
     [self.navigationController pushViewController:view animated:animated];
@@ -817,7 +811,7 @@ static MenuViewController* gMenuView = nil;
     if (nbAnimated)
         animated = [nbAnimated boolValue];
     
-    [self gotoMenuAnimated:NO];
+//    [self gotoMenuAnimated:NO];
     
     ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:[YasoundDataProvider main].user];
     [self.navigationController pushViewController:view animated:animated];

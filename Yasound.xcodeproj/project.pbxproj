@@ -196,7 +196,6 @@
 		40B409BB152EFC630050D334 /* SA_OAuthTwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0614CF64B100DF0950 /* SA_OAuthTwitterController.m */; };
 		40B409BC152EFC630050D334 /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0814CF64B100DF0950 /* SA_OAuthTwitterEngine.m */; };
 		40B409BE152EFC630050D334 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
-		40B409BF152EFC630050D334 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
 		40B409C0152EFC630050D334 /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
 		40B409C1152EFC630050D334 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
 		40B409C2152EFC630050D334 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
@@ -433,7 +432,6 @@
 		40D53BBE1554280F001EB0C5 /* SA_OAuthTwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0614CF64B100DF0950 /* SA_OAuthTwitterController.m */; };
 		40D53BBF1554280F001EB0C5 /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0814CF64B100DF0950 /* SA_OAuthTwitterEngine.m */; };
 		40D53BC01554280F001EB0C5 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
-		40D53BC11554280F001EB0C5 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
 		40D53BC21554280F001EB0C5 /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
 		40D53BC31554280F001EB0C5 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
 		40D53BC41554280F001EB0C5 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
@@ -1147,7 +1145,6 @@
 		BC3FA6D114E93B660055AB4A /* SA_OAuthTwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0614CF64B100DF0950 /* SA_OAuthTwitterController.m */; };
 		BC3FA6D214E93B660055AB4A /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0814CF64B100DF0950 /* SA_OAuthTwitterEngine.m */; };
 		BC3FA6D414E93B660055AB4A /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
-		BC3FA6D514E93B660055AB4A /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
 		BC3FA6D614E93B660055AB4A /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
 		BC3FA6D714E93B660055AB4A /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
 		BC3FA6D814E93B660055AB4A /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
@@ -1690,7 +1687,6 @@
 		BC56F4DD152486AF005D1B40 /* SA_OAuthTwitterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0614CF64B100DF0950 /* SA_OAuthTwitterController.m */; };
 		BC56F4DE152486AF005D1B40 /* SA_OAuthTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC0814CF64B100DF0950 /* SA_OAuthTwitterEngine.m */; };
 		BC56F4E0152486AF005D1B40 /* DDMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC40CC7E14D0093F00DF0950 /* DDMenuController.m */; };
-		BC56F4E1152486AF005D1B40 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
 		BC56F4E2152486AF005D1B40 /* WallMessagePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8A9414D2ED0C003FD81E /* WallMessagePost.m */; };
 		BC56F4E3152486AF005D1B40 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 400B8AB014D31540003FD81E /* Song.m */; };
 		BC56F4E4152486AF005D1B40 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
@@ -2104,6 +2100,30 @@
 		BC9601C3154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
 		BC9601C4154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
 		BC9601C5154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
+		BC9B7E3D15E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
+		BC9B7E3E15E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
+		BC9B7E3F15E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
+		BC9B7E4015E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
+		BC9B7E4115E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
+		BC9B7E4215E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
+		BC9B7E4315E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
+		BC9B7E4415E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
+		BC9B7E4515E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3C15E42B000083CF6C /* UIImage+ImageWithUIView.m */; };
+		BC9B7E4615E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3C15E42B000083CF6C /* UIImage+ImageWithUIView.m */; };
+		BC9B7E4715E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3C15E42B000083CF6C /* UIImage+ImageWithUIView.m */; };
+		BC9B7E4815E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3C15E42B000083CF6C /* UIImage+ImageWithUIView.m */; };
+		BC9B7E4915E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3C15E42B000083CF6C /* UIImage+ImageWithUIView.m */; };
+		BC9B7E4A15E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3C15E42B000083CF6C /* UIImage+ImageWithUIView.m */; };
+		BC9B7E4B15E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3C15E42B000083CF6C /* UIImage+ImageWithUIView.m */; };
+		BC9B7E4C15E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3C15E42B000083CF6C /* UIImage+ImageWithUIView.m */; };
+		BC9B7E5015E42EB60083CF6C /* YaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E4F15E42EB60083CF6C /* YaViewController.m */; };
+		BC9B7E5115E42EB60083CF6C /* YaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E4F15E42EB60083CF6C /* YaViewController.m */; };
+		BC9B7E5215E42EB60083CF6C /* YaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E4F15E42EB60083CF6C /* YaViewController.m */; };
+		BC9B7E5315E42EB60083CF6C /* YaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E4F15E42EB60083CF6C /* YaViewController.m */; };
+		BC9B7E5415E42EB60083CF6C /* YaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E4F15E42EB60083CF6C /* YaViewController.m */; };
+		BC9B7E5515E42EB60083CF6C /* YaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E4F15E42EB60083CF6C /* YaViewController.m */; };
+		BC9B7E5615E42EB60083CF6C /* YaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E4F15E42EB60083CF6C /* YaViewController.m */; };
+		BC9B7E5715E42EB60083CF6C /* YaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E4F15E42EB60083CF6C /* YaViewController.m */; };
 		BC9BE8271536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
 		BC9BE8281536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
 		BC9BE8291536C8B500B01AD2 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC9BE8231536C8B500B01AD2 /* libTestFlight.a */; };
@@ -2195,10 +2215,6 @@
 		BCBAB4B514A35FE700CF922A /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
 		BCBAB4B614A35FE700CF922A /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
 		BCBAB4B714A35FE700CF922A /* KeywordsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */; };
-		BCBE5C6D14D1618A0077FC62 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
-		BCBE5C6E14D1618A0077FC62 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
-		BCBE5C6F14D1618A0077FC62 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
-		BCBE5C7014D1618A0077FC62 /* TestflightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */; };
 		BCBE5C8E14D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
 		BCBE5C8F14D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
 		BCBE5C9014D1A2F30077FC62 /* ConnectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */; };
@@ -6018,6 +6034,12 @@
 		BC9601B5154997B90003AC7E /* WebPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebPageViewController.h; path = Settings/WebPageViewController.h; sourceTree = "<group>"; };
 		BC9601B6154997B90003AC7E /* WebPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebPageViewController.m; path = Settings/WebPageViewController.m; sourceTree = "<group>"; };
 		BC9601B7154997B90003AC7E /* WebPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebPageViewController.xib; path = Settings/WebPageViewController.xib; sourceTree = "<group>"; };
+		BC9B7E3915E42B000083CF6C /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
+		BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
+		BC9B7E3B15E42B000083CF6C /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
+		BC9B7E3C15E42B000083CF6C /* UIImage+ImageWithUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithUIView.m"; sourceTree = "<group>"; };
+		BC9B7E4E15E42EB60083CF6C /* YaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YaViewController.h; sourceTree = "<group>"; };
+		BC9B7E4F15E42EB60083CF6C /* YaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YaViewController.m; sourceTree = "<group>"; };
 		BC9BE8231536C8B500B01AD2 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		BC9BE8261536C8B500B01AD2 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		BC9F4143147E8A5F00D417EF /* BundleFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BundleFileManager.h; sourceTree = "<group>"; };
@@ -6057,8 +6079,6 @@
 		BCBAB4AF14A35FE700CF922A /* KeywordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeywordsViewController.h; path = Settings/KeywordsViewController.h; sourceTree = "<group>"; };
 		BCBAB4B014A35FE700CF922A /* KeywordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeywordsViewController.m; path = Settings/KeywordsViewController.m; sourceTree = "<group>"; };
 		BCBAB4B114A35FE700CF922A /* KeywordsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KeywordsViewController.xib; path = Settings/KeywordsViewController.xib; sourceTree = "<group>"; };
-		BCBE5C6B14D1618A0077FC62 /* TestflightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestflightViewController.h; sourceTree = "<group>"; };
-		BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestflightViewController.m; sourceTree = "<group>"; };
 		BCBE5C8C14D1A2F30077FC62 /* ConnectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionView.h; sourceTree = "<group>"; };
 		BCBE5C8D14D1A2F30077FC62 /* ConnectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionView.m; sourceTree = "<group>"; };
 		BCBF982215DE2CAE00BC3D64 /* MyUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUITextField.h; sourceTree = "<group>"; };
@@ -7462,6 +7482,28 @@
 			name = Programming;
 			sourceTree = "<group>";
 		};
+		BC9B7E3815E42B000083CF6C /* ECSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC9B7E3915E42B000083CF6C /* ECSlidingViewController.h */,
+				BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */,
+				BC9B7E3B15E42B000083CF6C /* UIImage+ImageWithUIView.h */,
+				BC9B7E3C15E42B000083CF6C /* UIImage+ImageWithUIView.m */,
+			);
+			name = ECSlidingViewController;
+			path = ThirdParties/ECSlidingViewController;
+			sourceTree = "<group>";
+		};
+		BC9B7E4D15E42EB60083CF6C /* YaViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BC9B7E4E15E42EB60083CF6C /* YaViewController.h */,
+				BC9B7E4F15E42EB60083CF6C /* YaViewController.m */,
+			);
+			name = YaViewController;
+			path = LibTools/YaViewController;
+			sourceTree = SOURCE_ROOT;
+		};
 		BC9BE8221536C8B500B01AD2 /* TestFlightSDK1.0 */ = {
 			isa = PBXGroup;
 			children = (
@@ -7487,11 +7529,11 @@
 		BCA2CCD6149A95460000637E /* LibTools */ = {
 			isa = PBXGroup;
 			children = (
+				BC9B7E4D15E42EB60083CF6C /* YaViewController */,
 				BC2386D115D24E1600D1A4C4 /* JsonToObject */,
 				BC48C7D015D2425400624E76 /* GenderPicker */,
 				BC48C7B215D16B5A00624E76 /* DatePicker */,
 				40ED562D14E41CE100C0A0F4 /* ImageResize */,
-				BCBE5C6A14D161890077FC62 /* TestflightViewController */,
 				BC01F5A814CEB01F00EF62A2 /* DateAdditions */,
 				B172043C14C54446007F3FB0 /* BuyLink */,
 				BC27F39114BE598700EF1C5F /* YasoundReachability */,
@@ -7593,16 +7635,6 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
-		BCBE5C6A14D161890077FC62 /* TestflightViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BCBE5C6B14D1618A0077FC62 /* TestflightViewController.h */,
-				BCBE5C6C14D1618A0077FC62 /* TestflightViewController.m */,
-			);
-			name = TestflightViewController;
-			path = LibTools/TestflightViewController;
-			sourceTree = SOURCE_ROOT;
-		};
 		BCBF98C815DE817B00BC3D64 /* BigMessage */ = {
 			isa = PBXGroup;
 			children = (
@@ -7655,6 +7687,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				BC9B7E3815E42B000083CF6C /* ECSlidingViewController */,
 				BC7C07701541A82F004FC760 /* MKBitlyHelper */,
 				BC9BE8221536C8B500B01AD2 /* TestFlightSDK1.0 */,
 				BCB0EF12152351A900290383 /* UnderlinedButton */,
@@ -12815,7 +12848,6 @@
 				40B409BB152EFC630050D334 /* SA_OAuthTwitterController.m in Sources */,
 				40B409BC152EFC630050D334 /* SA_OAuthTwitterEngine.m in Sources */,
 				40B409BE152EFC630050D334 /* DDMenuController.m in Sources */,
-				40B409BF152EFC630050D334 /* TestflightViewController.m in Sources */,
 				40B409C0152EFC630050D334 /* WallMessagePost.m in Sources */,
 				40B409C1152EFC630050D334 /* Song.m in Sources */,
 				40B409C2152EFC630050D334 /* ConnectionView.m in Sources */,
@@ -12925,6 +12957,9 @@
 				BC89C32015E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 				BC89C34415E4FCF100E0BEE3 /* ObjectButton.m in Sources */,
 				BC89C34E15E5256D00E0BEE3 /* ProgrammingObjectParameters.m in Sources */,
+				BC9B7E4315E42B000083CF6C /* ECSlidingViewController.m in Sources */,
+				BC9B7E4B15E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
+				BC9B7E5615E42EB60083CF6C /* YaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13025,7 +13060,6 @@
 				40D53BBE1554280F001EB0C5 /* SA_OAuthTwitterController.m in Sources */,
 				40D53BBF1554280F001EB0C5 /* SA_OAuthTwitterEngine.m in Sources */,
 				40D53BC01554280F001EB0C5 /* DDMenuController.m in Sources */,
-				40D53BC11554280F001EB0C5 /* TestflightViewController.m in Sources */,
 				40D53BC21554280F001EB0C5 /* WallMessagePost.m in Sources */,
 				40D53BC31554280F001EB0C5 /* Song.m in Sources */,
 				40D53BC41554280F001EB0C5 /* ConnectionView.m in Sources */,
@@ -13135,6 +13169,9 @@
 				BC89C32115E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 				BC89C34515E4FCF100E0BEE3 /* ObjectButton.m in Sources */,
 				BC89C34F15E5256D00E0BEE3 /* ProgrammingObjectParameters.m in Sources */,
+				BC9B7E4415E42B000083CF6C /* ECSlidingViewController.m in Sources */,
+				BC9B7E4C15E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
+				BC9B7E5715E42EB60083CF6C /* YaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13235,7 +13272,6 @@
 				BC3FA6D114E93B660055AB4A /* SA_OAuthTwitterController.m in Sources */,
 				BC3FA6D214E93B660055AB4A /* SA_OAuthTwitterEngine.m in Sources */,
 				BC3FA6D414E93B660055AB4A /* DDMenuController.m in Sources */,
-				BC3FA6D514E93B660055AB4A /* TestflightViewController.m in Sources */,
 				BC3FA6D614E93B660055AB4A /* WallMessagePost.m in Sources */,
 				BC3FA6D714E93B660055AB4A /* Song.m in Sources */,
 				BC3FA6D814E93B660055AB4A /* ConnectionView.m in Sources */,
@@ -13341,6 +13377,9 @@
 				BC89C31F15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 				BC89C34315E4FCF100E0BEE3 /* ObjectButton.m in Sources */,
 				BC89C34D15E5256D00E0BEE3 /* ProgrammingObjectParameters.m in Sources */,
+				BC9B7E4215E42B000083CF6C /* ECSlidingViewController.m in Sources */,
+				BC9B7E4A15E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
+				BC9B7E5515E42EB60083CF6C /* YaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13441,7 +13480,6 @@
 				BC56F4DD152486AF005D1B40 /* SA_OAuthTwitterController.m in Sources */,
 				BC56F4DE152486AF005D1B40 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC56F4E0152486AF005D1B40 /* DDMenuController.m in Sources */,
-				BC56F4E1152486AF005D1B40 /* TestflightViewController.m in Sources */,
 				BC56F4E2152486AF005D1B40 /* WallMessagePost.m in Sources */,
 				BC56F4E3152486AF005D1B40 /* Song.m in Sources */,
 				BC56F4E4152486AF005D1B40 /* ConnectionView.m in Sources */,
@@ -13551,6 +13589,9 @@
 				BC89C31C15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 				BC89C34015E4FCF100E0BEE3 /* ObjectButton.m in Sources */,
 				BC89C34A15E5256D00E0BEE3 /* ProgrammingObjectParameters.m in Sources */,
+				BC9B7E3F15E42B000083CF6C /* ECSlidingViewController.m in Sources */,
+				BC9B7E4715E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
+				BC9B7E5215E42EB60083CF6C /* YaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13651,7 +13692,6 @@
 				BC40CC4F14CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5314CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC8014D0093F00DF0950 /* DDMenuController.m in Sources */,
-				BCBE5C6E14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9614D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB214D31540003FD81E /* Song.m in Sources */,
 				BCBE5C8F14D1A2F30077FC62 /* ConnectionView.m in Sources */,
@@ -13761,6 +13801,9 @@
 				BC89C31B15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 				BC89C33F15E4FCF100E0BEE3 /* ObjectButton.m in Sources */,
 				BC89C34915E5256D00E0BEE3 /* ProgrammingObjectParameters.m in Sources */,
+				BC9B7E3E15E42B000083CF6C /* ECSlidingViewController.m in Sources */,
+				BC9B7E4615E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
+				BC9B7E5115E42EB60083CF6C /* YaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13862,7 +13905,6 @@
 				BC40CC5114CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5514CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC8214D0093F00DF0950 /* DDMenuController.m in Sources */,
-				BCBE5C7014D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9814D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB414D31540003FD81E /* Song.m in Sources */,
 				BCBE5C9114D1A2F30077FC62 /* ConnectionView.m in Sources */,
@@ -13972,6 +14014,9 @@
 				BC89C31E15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 				BC89C34215E4FCF100E0BEE3 /* ObjectButton.m in Sources */,
 				BC89C34C15E5256D00E0BEE3 /* ProgrammingObjectParameters.m in Sources */,
+				BC9B7E4115E42B000083CF6C /* ECSlidingViewController.m in Sources */,
+				BC9B7E4915E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
+				BC9B7E5415E42EB60083CF6C /* YaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14072,7 +14117,6 @@
 				BC40CC4E14CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5214CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC7F14D0093F00DF0950 /* DDMenuController.m in Sources */,
-				BCBE5C6D14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9514D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB114D31540003FD81E /* Song.m in Sources */,
 				BCBE5C8E14D1A2F30077FC62 /* ConnectionView.m in Sources */,
@@ -14182,6 +14226,9 @@
 				BC89C31A15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 				BC89C33E15E4FCF100E0BEE3 /* ObjectButton.m in Sources */,
 				BC89C34815E5256D00E0BEE3 /* ProgrammingObjectParameters.m in Sources */,
+				BC9B7E3D15E42B000083CF6C /* ECSlidingViewController.m in Sources */,
+				BC9B7E4515E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
+				BC9B7E5015E42EB60083CF6C /* YaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14283,7 +14330,6 @@
 				BC40CC5014CF64B100DF0950 /* SA_OAuthTwitterController.m in Sources */,
 				BC40CC5414CF64B100DF0950 /* SA_OAuthTwitterEngine.m in Sources */,
 				BC40CC8114D0093F00DF0950 /* DDMenuController.m in Sources */,
-				BCBE5C6F14D1618A0077FC62 /* TestflightViewController.m in Sources */,
 				400B8A9714D2ED0C003FD81E /* WallMessagePost.m in Sources */,
 				400B8AB314D31540003FD81E /* Song.m in Sources */,
 				BCBE5C9014D1A2F30077FC62 /* ConnectionView.m in Sources */,
@@ -14393,6 +14439,9 @@
 				BC89C31D15E4E7C600E0BEE3 /* CreateRadioViewController.m in Sources */,
 				BC89C34115E4FCF100E0BEE3 /* ObjectButton.m in Sources */,
 				BC89C34B15E5256D00E0BEE3 /* ProgrammingObjectParameters.m in Sources */,
+				BC9B7E4015E42B000083CF6C /* ECSlidingViewController.m in Sources */,
+				BC9B7E4815E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
+				BC9B7E5315E42EB60083CF6C /* YaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

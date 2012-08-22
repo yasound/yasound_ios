@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "Radio.h"
 #import "ProgrammingViewController.h"
 #import "ProgrammingArtistViewController.h"

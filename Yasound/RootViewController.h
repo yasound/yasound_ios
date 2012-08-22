@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuViewController.h"
-#import "TestflightViewController.h"
+//#import "MenuViewController.h"
+#import "YaViewController.h"
 #import "User.h"
 
 
@@ -16,10 +16,10 @@
 
 #define NOTIF_POP_AND_GOTO_UPLOADS @"NOTIF_POP_AND_GOTO_UPLOADS"
 
-#define NOTIF_CANCEL_WIZARD @"NOTIF_CancelWizard"
-#define NOTIF_WIZARD @"NOTIF_Wizard"
-#define NOTIF_POP_TO_MENU @"NOTIF_PopToMenu"
-#define NOTIF_PUSH_MENU @"NOTIF_PushMenu"
+//#define NOTIF_CANCEL_WIZARD @"NOTIF_CancelWizard"
+//#define NOTIF_WIZARD @"NOTIF_Wizard"
+//#define NOTIF_POP_TO_MENU @"NOTIF_PopToMenu"
+//#define NOTIF_PUSH_MENU @"NOTIF_PushMenu"
 #define NOTIF_ERROR_COMMUNICATION_SERVER @"NOTIF_ErrorCommunicationServer"
 
 #define NOTIF_PROGAMMING_SONG_ADDED @"NOTIF_SongAdded"
@@ -32,7 +32,7 @@
 #define NOTIF_DID_LOGOUT @"NOTIF_DID_LOGOUT"
 
 
-#define NOTIF_GOTO_MENU @"NOTIF_GOTO_MENU"
+//#define NOTIF_GOTO_MENU @"NOTIF_GOTO_MENU"
 #define NOTIF_GOTO_SELECTION @"NOTIF_GOTO_SELECTION"
 #define NOTIF_GOTO_FAVORITES @"NOTIF_GOTO_FAVORITES"
 #define NOTIF_GOTO_MYRADIOS @"NOTIF_GOTO_MYRADIOS"
@@ -50,7 +50,7 @@
 #define NOTIF_HANDLE_IOS_NOTIFICATION @"NOTIF_HANDLE_IOS_NOTIFICATION"
 
 
-@interface RootViewController : TestflightViewController
+@interface RootViewController : YaViewController
 {
     BOOL _firstTime;
     
@@ -61,7 +61,7 @@
 
 //@property (nonatomic, retain) MenuViewController* menuView;
 
-+ (BOOL)menuIsCurrentScreen;
+//+ (BOOL)menuIsCurrentScreen;
 
 @end
 

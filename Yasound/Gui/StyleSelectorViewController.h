@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 
 @protocol StyleSelectorDelegate <NSObject>
 @required
@@ -18,7 +18,7 @@
 @end
 
 
-@interface StyleSelectorViewController : TestflightViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface StyleSelectorViewController : YaViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 {
   IBOutlet UIPickerView* stylePickerView;
   NSString* _startStyle;

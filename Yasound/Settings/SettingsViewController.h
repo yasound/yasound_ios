@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 #import "YasoundDataProvider.h"
 #import "WebImageView.h"
 #import "TopBarSaveOrCancel.h"
 
-@interface SettingsViewController : TestflightViewController<TopBarSaveOrCancelDelegate>
+@interface SettingsViewController : YaViewController<TopBarSaveOrCancelDelegate>
 {
     BOOL _changed;
     

@@ -24,6 +24,7 @@
 @synthesize window;
 @synthesize navigationController;
 @synthesize rootViewController;
+@synthesize menuViewController;
 @synthesize APNsTokenString = _APNsTokenString;
 @synthesize serverURL = _serverURL;
 
@@ -97,18 +98,26 @@ void SignalHandler(int sig) {
     [EasyTracker launchWithOptions:launchOptions
                     withParameters:trackerParameters
                          withError:nil];
-    
-    navigationController = [[UINavigationController alloc] init];
-//    [navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
-    navigationController.navigationBarHidden = YES;
+
+    self.slideController = [[ECSlidingViewController alloc] init];
 
   [self.window makeKeyAndVisible];
 
   // add it as the window's root widget
-  self.window.rootViewController = navigationController;
+//    self.window.rootViewController = navigationController;
+    self.window.rootViewController = self.slideController;
     
-    rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
-    [self.navigationController pushViewController:rootViewController animated:NO];
+
+    self.navigationController = [[UINavigationController alloc] init];
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
+    self.navigationController.navigationBarHidden = YES;
+
+    self.rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
+    self.slideController.topViewController = self.navigationController;
+    [self.navigationController pushViewController:self.rootViewController animated:NO];
+    
+    self.menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    self.slideController.underLeftViewController = menuViewController;
     
     
     

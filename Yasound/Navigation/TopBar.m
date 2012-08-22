@@ -145,6 +145,7 @@
     [self setItems:self.customItems];
 }
 
+
 - (void)showAddItem
 {
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemAdd" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -159,6 +160,32 @@
 
 
 
+- (void)showMenuItem
+{
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemMenu" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIButton* btn = [sheet makeButton];
+    
+    [btn addTarget:self action:@selector(onMenu:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    
+    [self.customItems replaceObjectAtIndex:0 withObject:item];
+    [self setItems:self.customItems];
+}
+
+
+
+
+
+- (void)onMenu:(id)sender
+{
+    BOOL run = YES;
+    
+    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+        run = [self.delegate topBarItemClicked:TopBarItemMenu];
+    
+    if (run)
+        [self runItem:TopBarItemMenu];
+}
 
 
 - (void)onBack:(id)sender
@@ -241,7 +268,10 @@
 
 - (void)runItem:(TopBarItemId)itemId
 {
-    if (itemId == TopBarItemBack)
+    if (itemId == TopBarItemMenu)
+        [APPDELEGATE.slideController anchorTopViewTo:ECRight];
+    
+    else if (itemId == TopBarItemBack)
         [APPDELEGATE.navigationController popViewControllerAnimated:YES];
 
     else if (itemId == TopBarItemNotif)

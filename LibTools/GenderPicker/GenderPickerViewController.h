@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TestflightViewController.h"
+#import "YaViewController.h"
 
 @protocol GenderPickerDelegate <NSObject>
 @required
@@ -18,7 +18,7 @@
 @end
 
 
-@interface GenderPickerViewController : TestflightViewController<UIPickerViewDataSource, UIPickerViewDelegate>
+@interface GenderPickerViewController : YaViewController<UIPickerViewDataSource, UIPickerViewDelegate>
 {
   IBOutlet UIPickerView* _pickerView;
   NSString* _startItem;
