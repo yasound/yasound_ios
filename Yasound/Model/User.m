@@ -98,9 +98,7 @@
         return NO;
     }
     
-    NSDictionary* perms = [self.permissions objectAtIndex:0];
-    
-    NSNumber* nb = [perms objectForKey:permId];
+    NSNumber* nb = [self.permissions objectForKey:permId];
     if (nb == nil)
     {
         DLog(@"User::permission could not find any permission '%@'", permId);

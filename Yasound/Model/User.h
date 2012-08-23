@@ -85,7 +85,7 @@ UserMood stringToUsermood(NSString* str);
 
 @property (retain, nonatomic) NSString* yasound_email;
 
-@property (retain, nonatomic) NSArray* permissions;
+@property (retain, nonatomic) NSDictionary* permissions;
 
 
 - (NSString*)toString;

@@ -1959,6 +1959,22 @@
 		BC89C37B15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */; };
 		BC89C37C15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */; };
 		BC89C37D15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */; };
+		BC89C38115E6399D00E0BEE3 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C37F15E6399C00E0BEE3 /* PurchaseViewController.m */; };
+		BC89C38215E6399D00E0BEE3 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C37F15E6399C00E0BEE3 /* PurchaseViewController.m */; };
+		BC89C38315E6399D00E0BEE3 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C37F15E6399C00E0BEE3 /* PurchaseViewController.m */; };
+		BC89C38415E6399D00E0BEE3 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C37F15E6399C00E0BEE3 /* PurchaseViewController.m */; };
+		BC89C38515E6399D00E0BEE3 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C37F15E6399C00E0BEE3 /* PurchaseViewController.m */; };
+		BC89C38615E6399D00E0BEE3 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C37F15E6399C00E0BEE3 /* PurchaseViewController.m */; };
+		BC89C38715E6399D00E0BEE3 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C37F15E6399C00E0BEE3 /* PurchaseViewController.m */; };
+		BC89C38815E6399D00E0BEE3 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC89C37F15E6399C00E0BEE3 /* PurchaseViewController.m */; };
+		BC89C38915E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C38015E6399C00E0BEE3 /* PurchaseViewController.xib */; };
+		BC89C38A15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C38015E6399C00E0BEE3 /* PurchaseViewController.xib */; };
+		BC89C38B15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C38015E6399C00E0BEE3 /* PurchaseViewController.xib */; };
+		BC89C38C15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C38015E6399C00E0BEE3 /* PurchaseViewController.xib */; };
+		BC89C38D15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C38015E6399C00E0BEE3 /* PurchaseViewController.xib */; };
+		BC89C38E15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C38015E6399C00E0BEE3 /* PurchaseViewController.xib */; };
+		BC89C38F15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C38015E6399C00E0BEE3 /* PurchaseViewController.xib */; };
+		BC89C39015E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC89C38015E6399C00E0BEE3 /* PurchaseViewController.xib */; };
 		BC91A73815C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
 		BC91A73915C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
 		BC91A73A15C9707F00B1200E /* ProfilCellRadio.m in Sources */ = {isa = PBXBuildFile; fileRef = BC91A73615C9707F00B1200E /* ProfilCellRadio.m */; };
@@ -6032,6 +6048,9 @@
 		BC89C34715E5256D00E0BEE3 /* ProgrammingObjectParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgrammingObjectParameters.m; path = Programming/ProgrammingObjectParameters.m; sourceTree = "<group>"; };
 		BC89C36C15E587E300E0BEE3 /* commonViewShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonViewShadow.png; sourceTree = "<group>"; };
 		BC89C36D15E587E300E0BEE3 /* commonViewShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonViewShadow@2x.png"; sourceTree = "<group>"; };
+		BC89C37E15E6399C00E0BEE3 /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = Yasound/Products/PurchaseViewController.h; sourceTree = "<group>"; };
+		BC89C37F15E6399C00E0BEE3 /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = Yasound/Products/PurchaseViewController.m; sourceTree = "<group>"; };
+		BC89C38015E6399C00E0BEE3 /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseViewController.xib; path = Yasound/Products/PurchaseViewController.xib; sourceTree = "<group>"; };
 		BC91A73515C9707F00B1200E /* ProfilCellRadio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfilCellRadio.h; path = Tabs/ProfilCellRadio.h; sourceTree = "<group>"; };
 		BC91A73615C9707F00B1200E /* ProfilCellRadio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfilCellRadio.m; path = Tabs/ProfilCellRadio.m; sourceTree = "<group>"; };
 		BC91A73715C9707F00B1200E /* ProfilCellRadio.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfilCellRadio.xib; path = Tabs/ProfilCellRadio.xib; sourceTree = "<group>"; };
@@ -8599,6 +8618,9 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
+				BC89C37E15E6399C00E0BEE3 /* PurchaseViewController.h */,
+				BC89C37F15E6399C00E0BEE3 /* PurchaseViewController.m */,
+				BC89C38015E6399C00E0BEE3 /* PurchaseViewController.xib */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,
@@ -9391,6 +9413,7 @@
 				BC89C33A15E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
 				BC89C37415E587E300E0BEE3 /* commonViewShadow.png in Resources */,
 				BC89C37C15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
+				BC89C38F15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -9866,6 +9889,7 @@
 				BC89C33B15E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
 				BC89C37515E587E300E0BEE3 /* commonViewShadow.png in Resources */,
 				BC89C37D15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
+				BC89C39015E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10335,6 +10359,7 @@
 				BC89C33915E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
 				BC89C37315E587E300E0BEE3 /* commonViewShadow.png in Resources */,
 				BC89C37B15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
+				BC89C38E15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10809,6 +10834,7 @@
 				BC89C33615E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
 				BC89C37015E587E300E0BEE3 /* commonViewShadow.png in Resources */,
 				BC89C37815E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
+				BC89C38B15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11283,6 +11309,7 @@
 				BC89C33515E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
 				BC89C36F15E587E300E0BEE3 /* commonViewShadow.png in Resources */,
 				BC89C37715E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
+				BC89C38A15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11757,6 +11784,7 @@
 				BC89C33815E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
 				BC89C37215E587E300E0BEE3 /* commonViewShadow.png in Resources */,
 				BC89C37A15E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
+				BC89C38D15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12231,6 +12259,7 @@
 				BC89C33415E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
 				BC89C36E15E587E300E0BEE3 /* commonViewShadow.png in Resources */,
 				BC89C37615E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
+				BC89C38915E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12705,6 +12734,7 @@
 				BC89C33715E4FB0E00E0BEE3 /* cellImageEmtpy@2x.png in Resources */,
 				BC89C37115E587E300E0BEE3 /* commonViewShadow.png in Resources */,
 				BC89C37915E587E300E0BEE3 /* commonViewShadow@2x.png in Resources */,
+				BC89C38C15E6399D00E0BEE3 /* PurchaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12974,6 +13004,7 @@
 				BC9B7E4315E42B000083CF6C /* ECSlidingViewController.m in Sources */,
 				BC9B7E4B15E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
 				BC9B7E5615E42EB60083CF6C /* YaViewController.m in Sources */,
+				BC89C38715E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13185,6 +13216,7 @@
 				BC9B7E4415E42B000083CF6C /* ECSlidingViewController.m in Sources */,
 				BC9B7E4C15E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
 				BC9B7E5715E42EB60083CF6C /* YaViewController.m in Sources */,
+				BC89C38815E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13392,6 +13424,7 @@
 				BC9B7E4215E42B000083CF6C /* ECSlidingViewController.m in Sources */,
 				BC9B7E4A15E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
 				BC9B7E5515E42EB60083CF6C /* YaViewController.m in Sources */,
+				BC89C38615E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13603,6 +13636,7 @@
 				BC9B7E3F15E42B000083CF6C /* ECSlidingViewController.m in Sources */,
 				BC9B7E4715E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
 				BC9B7E5215E42EB60083CF6C /* YaViewController.m in Sources */,
+				BC89C38315E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13814,6 +13848,7 @@
 				BC9B7E3E15E42B000083CF6C /* ECSlidingViewController.m in Sources */,
 				BC9B7E4615E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
 				BC9B7E5115E42EB60083CF6C /* YaViewController.m in Sources */,
+				BC89C38215E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14026,6 +14061,7 @@
 				BC9B7E4115E42B000083CF6C /* ECSlidingViewController.m in Sources */,
 				BC9B7E4915E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
 				BC9B7E5415E42EB60083CF6C /* YaViewController.m in Sources */,
+				BC89C38515E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14237,6 +14273,7 @@
 				BC9B7E3D15E42B000083CF6C /* ECSlidingViewController.m in Sources */,
 				BC9B7E4515E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
 				BC9B7E5015E42EB60083CF6C /* YaViewController.m in Sources */,
+				BC89C38115E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14449,6 +14486,7 @@
 				BC9B7E4015E42B000083CF6C /* ECSlidingViewController.m in Sources */,
 				BC9B7E4815E42B000083CF6C /* UIImage+ImageWithUIView.m in Sources */,
 				BC9B7E5315E42EB60083CF6C /* YaViewController.m in Sources */,
+				BC89C38415E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
