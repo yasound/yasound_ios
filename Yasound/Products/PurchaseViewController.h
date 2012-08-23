@@ -7,7 +7,10 @@
 //
 
 #import "YaViewController.h"
+#import <StoreKit/StoreKit.h>
+#import <StoreKit/SKPaymentTransaction.h>
 
-@interface PurchaseViewController : YaViewController
+
+@interface PurchaseViewController : YaViewController<SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
 @end
