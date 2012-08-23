@@ -20,6 +20,8 @@
 @property (nonatomic, retain) UIProgressView* progressView;
 @property (nonatomic, retain) UILabel* progressLabel;
 
+@property (nonatomic) BOOL isSongLocal;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier mediaItem:(SongUploadItem*)item;
 
 - (void)update:(SongUploadItem*)mediaItem;

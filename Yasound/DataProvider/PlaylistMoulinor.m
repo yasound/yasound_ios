@@ -450,7 +450,7 @@ static PlaylistMoulinor* _main = nil;
     if (album == nil)
         album = [NSString stringWithString:PM_FIELD_UNKNOWN];
     
-    //DLog(@"%d : %@  |  %@  |  %@", index, artist, album, song);
+    DLog(@"playlist sortItem to synchronize : %d : %@  |  %@  |  %@", index, artist, album, song);
     
     // sort by artist
     NSMutableDictionary* dicoArtist = [dico objectForKey:artist];
@@ -592,7 +592,11 @@ static PlaylistMoulinor* _main = nil;
         // write size
         [data appendBytes:&size length:SIZEOF_INT16];
         // write str
-        [data appendBytes:str length:size];    
+        [data appendBytes:str length:size];
+        
+        
+        //LBDEBUG
+        //DLog(@"album to synchronize : '%@'  '%ls'", album, (const char*) [album UTF8String]);
         
 
         

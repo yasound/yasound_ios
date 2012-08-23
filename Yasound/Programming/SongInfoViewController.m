@@ -43,14 +43,17 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong showNowPlaying:(BOOL)showNowPlaying
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil song:(Song*)aSong showNowPlaying:(BOOL)showNowPlaying forRadio:(Radio*)radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
         self.song = aSong;
+        self.radio = radio;
         _showNowPlaying = showNowPlaying;
         _ownSong = NO;
+        
+        DLog(@"open SongInfo : %@", [self.song toString]);
     }
     return self;
 }
@@ -459,7 +462,7 @@
         if (buttonIndex == 1)
         {
             // call root to launch the Radio
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_POP_AND_GOTO_UPLOADS object:nil]; 
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_POP_AND_GOTO_UPLOADS object:self.radio];
 
             //LBDEBUG
 //            UINavigationController* navCont = self.navigationController;

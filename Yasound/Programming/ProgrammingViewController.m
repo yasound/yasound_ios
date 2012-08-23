@@ -496,7 +496,7 @@
 //
 //        Song* song = [[self.sortedSongs objectForKey:charIndex] objectAtIndex:indexPath.row];
 //        
-//        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES];
+//        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES forRadio:self.radio];
 //        [self.navigationController pushViewController:view animated:YES];
 //        [view release];
 //    }
@@ -594,33 +594,28 @@
 #pragma mark - WheelSelectorDelegate
 
 
-#define WHEEL_NB_ITEMS 3
-#define WHEEL_ITEM_LOCAL 0
-#define WHEEL_ITEM_RADIO 1
-#define WHEEL_ITEM_UPLOADS 2
-//#define WHEEL_ITEM_SERVER 3
 
 - (NSInteger)numberOfItemsInWheelSelector:(WheelSelector*)wheel
 {
-    return WHEEL_NB_ITEMS;
+    return PROGRAMMING_WHEEL_NB_ITEMS;
 }
 
 - (NSString*)wheelSelector:(WheelSelector*)wheel titleForItem:(NSInteger)itemIndex
 {
-    if (itemIndex == WHEEL_ITEM_LOCAL)
+    if (itemIndex == PROGRAMMING_WHEEL_ITEM_LOCAL)
         return NSLocalizedString(@"Programming.Catalog.local", nil);
-    if (itemIndex == WHEEL_ITEM_RADIO)
+    if (itemIndex == PROGRAMMING_WHEEL_ITEM_RADIO)
         return NSLocalizedString(@"Programming.Catalog.radio", nil);
-//    if (itemIndex == WHEEL_ITEM_SERVER)
+//    if (itemIndex == PROGRAMMING_WHEEL_ITEM_SERVER)
 //        return NSLocalizedString(@"Programming.Catalog.server", nil);
-    if (itemIndex == WHEEL_ITEM_UPLOADS)
+    if (itemIndex == PROGRAMMING_WHEEL_ITEM_UPLOADS)
         return NSLocalizedString(@"Programming.Catalog.uploads", nil);
     return nil;
 }
 
 - (NSInteger)initIndexForWheelSelector:(WheelSelector*)wheel
 {
-    return WHEEL_ITEM_RADIO;
+    return PROGRAMMING_WHEEL_ITEM_RADIO;
 }
 
 - (void)wheelSelector:(WheelSelector*)wheel didSelectItemAtIndex:(NSInteger)itemIndex
@@ -632,21 +627,21 @@
         self.tableview = nil;
     }
 
-    if (itemIndex == WHEEL_ITEM_LOCAL)
+    if (itemIndex == PROGRAMMING_WHEEL_ITEM_LOCAL)
     {
         _segment.enabled = YES;
         
         ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;
     }
-    else if (itemIndex == WHEEL_ITEM_RADIO)
+    else if (itemIndex == PROGRAMMING_WHEEL_ITEM_RADIO)
     {
         _segment.enabled = YES;
         
         ProgrammingRadioViewController* view = [[ProgrammingRadioViewController alloc] initWithStyle:UITableViewStylePlain forRadio:self.radio];
         self.tableview = view;
     }
-    else if (itemIndex == WHEEL_ITEM_UPLOADS)
+    else if (itemIndex == PROGRAMMING_WHEEL_ITEM_UPLOADS)
     {
         _segment.enabled = NO;
         

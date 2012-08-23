@@ -14,6 +14,11 @@
 #define SEGMENT_INDEX_ALPHA 0
 #define SEGMENT_INDEX_ARTIST 1
 
+#define PROGRAMMING_WHEEL_NB_ITEMS 3
+#define PROGRAMMING_WHEEL_ITEM_LOCAL 0
+#define PROGRAMMING_WHEEL_ITEM_RADIO 1
+#define PROGRAMMING_WHEEL_ITEM_UPLOADS 2
+//#define WHEEL_ITEM_SERVER 3
 
 @interface ProgrammingViewController : YaViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate, TopBarDelegate>
 {
@@ -28,6 +33,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIView* container;
+@property (nonatomic, retain) IBOutlet WheelSelector* wheelSelector;
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, retain) UITableViewController* tableview;

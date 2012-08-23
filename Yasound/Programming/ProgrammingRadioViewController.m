@@ -568,7 +568,7 @@
 
         Song* song = [[self.sortedSongs objectForKey:charIndex] objectAtIndex:indexPath.row];
         
-        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES];
+        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES forRadio:self.radio];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }

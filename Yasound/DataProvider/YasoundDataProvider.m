@@ -1998,6 +1998,8 @@ static YasoundDataProvider* _main = nil;
     conf.callbackTarget = target;
     conf.callbackAction = selector;
     
+    //DLog(@"rejectSong '%@'", conf.url);
+    
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
     [req startAsynchronous];
 }

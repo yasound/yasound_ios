@@ -13,7 +13,7 @@
 #import "RootViewController.h"
 #import "YasoundReachability.h"
 #import "SongLocal.h"
-
+#import "WebImageView.h"
 
 @implementation SongUploadCell
 
@@ -44,20 +44,32 @@
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         SongLocal* song = self.item.song;
         
-        assert([song isKindOfClass:[SongLocal class]]);
+        self.isSongLocal = [song isKindOfClass:[SongLocal class]];
+        
+//        assert([song isKindOfClass:[SongLocal class]]);
         
         sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UIImage* coverImage = [song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
-        self.image = [[UIImageView alloc] initWithImage:coverImage];
         self.image.frame = sheet.frame;
         
+        if (self.isSongLocal)
+        {
+            UIImage* coverImage = [song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
+            self.image = [[UIImageView alloc] initWithImage:coverImage];
+
+            if (coverImage == nil)
+            {
+                sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                self.image.image = [sheet image];
+            }
+        }
+        else
+        {
+            NSURL* url = [[YasoundDataProvider main] urlForPicture:song.cover];
+            self.image = [[WebImageView alloc] initWithImageAtURL:url];
+        }
+
         [self addSubview:self.image];
         
-        if (coverImage == nil)
-        {
-            sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            self.image.image = [sheet image];
-        }
         
         // track image mask
         sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImageMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -170,15 +182,28 @@
     self.label.text = [NSString stringWithFormat:@"%@ - %@", mediaItem.song.name, mediaItem.song.artist];
     
     SongLocal* song = self.item.song;
-    assert([song isKindOfClass:[SongLocal class]]);
+//    §([song isKindOfClass:[SongLocal class]]);
     
-    UIImage* coverImage = [song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
-    if (coverImage == nil)
+    self.isSongLocal = [song isKindOfClass:[SongLocal class]];
+    
+    if (self.isSongLocal)
     {
-        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        coverImage = [sheet image];
+        UIImage* coverImage = [song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
+        
+        if (coverImage == nil)
+        {
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            self.image.image = [sheet image];
+        }
+        else
+            self.image.image = coverImage;
+
     }
-    self.image.image = coverImage;
+    else
+    {
+        NSURL* url = [[YasoundDataProvider main] urlForPicture:song.cover];
+        self.image = [[WebImageView alloc] initWithImageAtURL:url];
+    }
 
     
     if (self.item.status == SongUploadItemStatusUploading)

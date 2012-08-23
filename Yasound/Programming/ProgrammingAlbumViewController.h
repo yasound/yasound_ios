@@ -12,11 +12,6 @@
 
 
 @interface ProgrammingAlbumViewController : UITableViewController <UIActionSheetDelegate>
-{
-//    IBOutlet UILabel* _titleLabel;
-//    IBOutlet UILabel* _subtitleLabel;
-//    IBOutlet UIToolbar* _toolbar;
-}
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, assign) SongCatalog* catalog;

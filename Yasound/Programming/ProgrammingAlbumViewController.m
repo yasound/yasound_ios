@@ -249,7 +249,7 @@
     {
         Song* song = [self.catalog getSongAtRow:indexPath.row];
 
-        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES];
+        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES forRadio:self.radio];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
@@ -276,21 +276,6 @@
 
 
 #pragma mark - IBActions
-
-- (IBAction)onSynchronize:(id)semder
-{
-    ProgrammingUploadViewController* view = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
-    [self.navigationController pushViewController:view animated:YES];
-    [view release];
-}
-
-
-//- (IBAction)onAdd:(id)sender
-//{
-//    ProgrammingLocalViewController* view = [[ProgrammingLocalViewController alloc] initWithNibName:@"ProgrammingLocalViewController" bundle:nil  withMatchedSongs:[SongCatalog synchronizedCatalog].matchedSongs];
-//    [self.navigationController pushViewController:view animated:YES];
-//    [view release];
-//}
 
 
 

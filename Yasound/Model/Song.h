@@ -64,6 +64,8 @@ typedef enum
 - (NSComparisonResult)artistCompare:(Song*)second;
 - (NSComparisonResult)albumCompare:(Song*)second;
 
+- (NSString*)toString;
+
 @end
 
 

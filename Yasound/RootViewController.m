@@ -21,7 +21,7 @@
 #import "SongUploadManager.h"
 #import "NotificationCenterViewController.h"
 #import "YasoundDataCache.h"
-#import "ProgrammingUploadViewController.h"
+#import "ProgrammingViewController.h"
 #import "RadioSelectionViewController.h"
 #import "TabBar.h"
 #import "MyRadiosViewController.h"
@@ -427,12 +427,15 @@
 
 - (void)onPopAndGotoUploads:(NSNotification*)notification
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    [self gotoRadioSelectionAnimated:NO];
     
-    ProgrammingUploadViewController* newView = [[ProgrammingUploadViewController alloc] initWithNibName:@"ProgrammingUploadViewController" bundle:nil];
+    Radio* radio = notification.object;
     
-    [self.navigationController pushViewController:newView animated:YES];
-    [newView release];
+    ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:radio];
+    [self.navigationController pushViewController:view animated:YES];
+    
+    [view.wheelSelector stickToItem:PROGRAMMING_WHEEL_ITEM_UPLOADS silent:NO];
+    [view release];
 }
 
 

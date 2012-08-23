@@ -794,19 +794,19 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     MPMediaQuery* allSongsQuery = [MPMediaQuery songsQuery];
     
-//    //LBDEBUG
-//    NSArray* items = [allSongsQuery items];
-//    
-//    if (items.count == 0)
-//        return NO;
-//    
-//    for (MPMediaItem* item in items)
-//    {
-//        NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
-//        NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
-//        NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];  
-//        DLog(@"catalog song.name %@   song.artist '%@'   song.album '%@'", song, artist, album);
-//    }
+    //LBDEBUG
+    NSArray* items = [allSongsQuery items];
+    
+    if (items.count == 0)
+        return NO;
+    
+    for (MPMediaItem* item in items)
+    {
+        NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
+        NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
+        NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];  
+        DLog(@"catalog local.name %@   local.artist '%@'   local.album '%@'", song, artist, album);
+    }
 
     
     [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.artist_client forProperty:MPMediaItemPropertyArtist comparisonType:MPMediaPredicateComparisonEqualTo]]; 

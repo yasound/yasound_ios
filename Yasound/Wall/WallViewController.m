@@ -1110,10 +1110,13 @@
     }
     else
     {
+        [ev setCellHeight:0];
         assert(0);
+        return 0;
     }
     
-    
+
+    return 0;
 }
 
 
@@ -1148,6 +1151,13 @@
     
     WallEvent* ev = [_wallEvents objectAtIndex:indexPath.row];
     
+    //LBDEBUG : try anti-bug
+    if (!ev.isCellHeightComputed)
+    {
+        [tableView heightForRowAtIndexPath:indexPath];
+        assert(ev.isCellHeightComputed);
+    }
+
     if ([ev isOfType:eWallEventTypeMessage])
     {
         static NSString* CellIdentifier = @"RadioViewMessageCell";

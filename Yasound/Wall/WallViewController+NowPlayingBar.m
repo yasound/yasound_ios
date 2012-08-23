@@ -69,7 +69,7 @@ static Song* _gNowPlayingSong = nil;
 //    
 //    if (self.ownRadio)
 //    {
-//        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:_gNowPlayingSong showNowPlaying:NO];
+//        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:_gNowPlayingSong showNowPlaying:NO forRadio:self.radio];
 //        [self.navigationController pushViewController:view animated:YES];
 //        [view release];
 //    }

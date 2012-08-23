@@ -288,6 +288,12 @@
 
 
 
+- (NSString*)toString
+{
+    NSString* str = [NSString stringWithFormat:@"name '%@', artist '%@', album '%@',      name_client '%@', artist_client '%@', album_client '%@'", self.name , self.artist, self.album,      self.name_client, self.artist_client, self.album_client];
+    
+    return str;
+}
 
 
 
