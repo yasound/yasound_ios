@@ -14,6 +14,10 @@
 
 @implementation PurchaseViewController
 
+@synthesize productIdentifierList;
+@synthesize productDetailsList;
+@synthesize tableview;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -26,8 +30,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    productDetailsList    = [[NSMutableArray alloc] init];
+    productIdentifierList = [[NSMutableArray alloc] init];
+    
+    [productIdentifierList addObject:@"yaHD1m"];
+    [productIdentifierList addObject:@"yaHD1y"];
+    [productIdentifierList addObject:@"yaHD1ysp"];
+    
+    SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithArray:productIdentifierList]];
+    
+    request.delegate = self;
+    [request start];
 }
+
+
 
 - (void)viewDidUnload
 {
@@ -40,5 +57,58 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+
+
+
+
+-(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
+{
+    [self.productDetailsList addObjectsFromArray: response.products];
+    [self.tableview reloadData];
+}
+
+-(void)requestDidFinish:(SKRequest *)request
+{
+    [request release];
+}
+
+-(void)request:(SKRequest *)request didFailWithError:(NSError *)error
+{
+    NSLog(@"Failed to connect with error: %@", [error localizedDescription]);
+}
+
+
+
+
+
+
+#pragma mark - TableViewDelegate
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+    return [self.productDetailsList count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *GenericTableIdentifier = @"GenericTableIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: GenericTableIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier: GenericTableIdentifier] autorelease];
+    }
+    
+    NSUInteger row = [indexPath row];
+    SKProduct *thisProduct = [productDetailsList objectAtIndex:row];
+    [cell.textLabel setText:[NSString stringWithFormat:@"%@ - %@", thisProduct.localizedTitle, thisProduct.price]];
+    
+    return cell;
+}
+
+
+
 
 @end

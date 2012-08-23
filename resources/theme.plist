@@ -1016,6 +1016,17 @@
 				<key>y</key>
 				<integer>0</integer>
 			</dict>
+			<key>itemHd</key>
+			<dict>
+				<key>normal</key>
+				<string>commonIconHDGrey</string>
+				<key>disabled</key>
+				<string>commonIconHDGreyDisabled</string>
+				<key>selected</key>
+				<string>commonIconHDBlue</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
 			<key>itemNowPlaying</key>
 			<dict>
 				<key>normal</key>

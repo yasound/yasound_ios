@@ -77,7 +77,6 @@ enum MenuDescription
 {
     [super viewDidLoad];
     
-    [self.topBar hideBackItem:YES];
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menuBkg.png"]];
 }
 

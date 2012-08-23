@@ -12,6 +12,7 @@ typedef enum TopBarItemId
 {
     TopBarItemMenu = 0,
     TopBarItemBack,
+    TopBarItemHd,
     TopBarItemNotif,
     TopBarItemSettings,
     TopBarItemTrash,
@@ -29,6 +30,10 @@ typedef enum TopBarItemId
 
 @property (nonatomic, retain) IBOutlet id<TopBarDelegate> delegate;
 @property (nonatomic, retain) NSMutableArray* customItems;
+
+@property (nonatomic, assign) UIButton* itemHdButton;
+@property (nonatomic, retain) UIBarButtonItem* itemHd;
+
 
 - (void)hideBackItem:(BOOL)hide;
 - (void)showSettingsItem:(BOOL)enabled;

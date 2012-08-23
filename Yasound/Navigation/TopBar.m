@@ -13,11 +13,15 @@
 #import "YasoundAppDelegate.h"
 #import "NotificationCenterViewController.h"
 #import "YasoundSessionManager.h"
+#import "PurchaseViewController.h"
+
+
 
 @implementation TopBar
 
 @synthesize delegate;
 @synthesize customItems;
+@synthesize itemHdButton;
 
 
 - (void)dealloc
@@ -66,7 +70,18 @@
 //    }
     
     // "HD" item
-    UIBarButtonItem* itemHD = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"barItemHdOff.png"]]];
+//    NSString* itemHdKey;
+//    if ([Ya])
+//        itemHdKey = @"TopBar.itemHdOn";
+//    else
+//        itemHdKey = @"TopBar.itemHdOff";
+//
+    sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemHd" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    self.itemHdButton = [sheet makeButton];
+    [self updateHd];
+    self.itemHd = [[UIBarButtonItem alloc] initWithCustomView:self.itemHdButton];
+
+    
     
     //  "notif"  item
     sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemNotif" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -95,11 +110,44 @@
     // flexible space
     UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
-    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, itemHD, flexibleSpace, itemNotif, flexibleSpace, itemNowPlaying, nil];
+    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, self.itemHd, flexibleSpace, itemNotif, flexibleSpace, itemNowPlaying, nil];
     
     [self setItems:self.customItems];
 
 }
+
+
+- (void)updateHd
+{
+    if (![YasoundSessionManager main].registered)
+    {
+        self.itemHd.enabled = NO;
+        self.itemHdButton.selected = NO;
+        self.itemHdButton.enabled = NO;
+        
+        [self.itemHdButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        self.itemHd.enabled = YES;
+        self.itemHdButton.enabled = YES;
+        [self.itemHdButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if ([[YasoundDataProvider main].user permission:PERM_HD])
+            self.itemHdButton.selected = YES;
+        else
+            self.itemHdButton.selected = NO;
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 - (void)hideBackItem:(BOOL)hide
@@ -176,6 +224,7 @@
 
 
 
+
 - (void)onMenu:(id)sender
 {
     BOOL run = YES;
@@ -199,6 +248,18 @@
         [self runItem:TopBarItemBack];
 }
 
+
+
+- (void)onHd:(id)sender
+{
+    BOOL run = YES;
+    
+    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+        run = [self.delegate topBarItemClicked:TopBarItemHd];
+    
+    if (run)
+        [self runItem:TopBarItemHd];
+}
 
 - (void)onNotif:(id)sender
 {
@@ -278,6 +339,13 @@
     
     else if (itemId == TopBarItemBack)
         [APPDELEGATE.navigationController popViewControllerAnimated:YES];
+
+    else if (itemId == TopBarItemHd)
+    {
+        PurchaseViewController* view = [[PurchaseViewController alloc] initWithNibName:@"PurchaseViewController" bundle:nil];
+        [APPDELEGATE.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
 
     else if (itemId == TopBarItemNotif)
     {

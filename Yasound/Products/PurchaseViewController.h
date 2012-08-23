@@ -13,4 +13,8 @@
 
 @interface PurchaseViewController : YaViewController<SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
+@property(nonatomic, retain) NSMutableArray* productIdentifierList;
+@property(nonatomic, retain) NSMutableArray* productDetailsList;
+@property(nonatomic, retain) IBOutlet UITableView* tableview;
+
 @end
