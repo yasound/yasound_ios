@@ -12,7 +12,7 @@
 
 @implementation KeywordsViewController
 
-
+@synthesize topbar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil radio:(Radio*)radio
 {
@@ -65,8 +65,7 @@
 {
   [super viewDidLoad];
     
-    _titleLabel.text = NSLocalizedString(@"KeywordsView_title", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);    
+    [self.topbar showEditItemWithTarget:self action:@selector(onEdit:)];
 }
 
 
@@ -228,14 +227,14 @@
     {
         cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"TableViews/TableViewDisclosure.png"]];
         cell.textLabel.text = NSLocalizedString(@"KeywordsView_add_label", nil);
-        cell.textLabel.textColor = [UIColor whiteColor];
+//        cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.backgroundColor = [UIColor clearColor];
 
     }
     else
     {
         cell.textLabel.text = [_keywords objectAtIndex:indexPath.row];
-        cell.textLabel.textColor = [UIColor whiteColor];
+//        cell.textLabel.textColor = [UIColor whiteColor];
         cell.textLabel.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -296,14 +295,6 @@
 
 
 #pragma mark - IBActions
-
-- (void)onBack:(id)sender
-{
-    // set the radio tags
-    [_myRadio setTagsWithArray:_keywords];
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)onEdit:(id)sender
 {

@@ -10,17 +10,17 @@
 #import <UIKit/UIKit.h>
 #import "YasoundDataProvider.h"
 #import "YaViewController.h"
-
+#import "TopBarBackAndTitle.h"
 
 
 @interface KeywordsViewController : YaViewController
 {
     Radio* _myRadio;
     
-    IBOutlet UIBarButtonItem* _backBtn;
+//    IBOutlet UIBarButtonItem* _backBtn;
     IBOutlet UIBarButtonItem* _editBtn;
-    IBOutlet UIToolbar* _toolbar;
-    IBOutlet UILabel* _titleLabel;
+//    IBOutlet UIToolbar* _toolbar;
+//    IBOutlet UILabel* _titleLabel;
     
     IBOutlet UITableView* _tableView;
     
@@ -33,6 +33,8 @@
     NSMutableArray* _keywords;
     BOOL _firstRowIsNotValidated;
 }
+
+@property (nonatomic, retain) IBOutlet TopBarBackAndTitle* topbar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil radio:(Radio*)radio;
 

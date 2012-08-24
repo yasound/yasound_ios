@@ -145,6 +145,20 @@
 
 
 
+- (void)showEditItemWithTarget:(id)target action:(SEL)action
+{
+    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:target action:action];
+    
+    if (self.customItems.count < 3)
+        [self.customItems addObject:item];
+    else
+        [self.customItems replaceObjectAtIndex:2 withObject:item];
+    
+    [self setItems:self.customItems];
+}
+
+
+
 
 
 

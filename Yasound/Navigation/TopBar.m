@@ -252,6 +252,7 @@
 
 - (void)onHd:(id)sender
 {
+    return;
     BOOL run = YES;
     
     if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])

@@ -21,5 +21,6 @@
 @property (nonatomic, retain) NSMutableArray* customItems;
 
 - (void)showAddItemWithTarget:(id)target action:(SEL)action;
+- (void)showEditItemWithTarget:(id)target action:(SEL)action;
 
 @end
