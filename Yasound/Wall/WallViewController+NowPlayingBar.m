@@ -34,7 +34,7 @@ static Song* _gNowPlayingSong = nil;
     [_gNowPlayingSong retain];
     
 
-    NSURL* url = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
+    NSURL* url = [[YasoundDataProvider main] urlForPicture:song.cover];
     [self.nowPlayingTrackImage setUrl:url];
     
     self.nowPlayingLabel1.text = song.artist;
