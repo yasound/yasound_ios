@@ -16733,7 +16733,7 @@
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
-				INFOPLIST_FILE = "YasoundD copy-Info.plist";
+				INFOPLIST_FILE = "Yasound/Yasoundtest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -16760,7 +16760,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				GCC_VERSION = "";
-				INFOPLIST_FILE = "YasoundD copy-Info.plist";
+				INFOPLIST_FILE = "Yasound/Yasoundtest-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
