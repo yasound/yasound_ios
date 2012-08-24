@@ -18,7 +18,7 @@
 //    IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
 //    IBOutlet UIBarButtonItem* _nowPlayingButton;
-    IBOutlet UIToolbar* _toolbar;
+//    IBOutlet UIToolbar* _toolbar;
     
 //    IBOutlet UITableViewCell* _cellDelete;
 //    IBOutlet UILabel* _cellDeleteLabel;

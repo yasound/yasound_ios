@@ -1798,7 +1798,11 @@ static YasoundDataProvider* _main = nil;
 - (ASIFormDataRequest*)uploadSong:(NSData*)song forRadioId:(Radio*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
 {
     if ((song == nil) || (radio_id == nil))
+    {
+        DLog(@"MEUH!");
+        assert(0);
         return nil;
+    }
     
     //LBDEBUG
     if (![radio_id isKindOfClass:[NSNumber class]])

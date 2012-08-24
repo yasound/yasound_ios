@@ -19,3 +19,9 @@
 #else
 #define DLog( s, ... ) 
 #endif
+
+#ifdef DEBUG
+#define DevLog( s, ... ) NSLog( @"%@", [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define DevLog( s, ... )
+#endif

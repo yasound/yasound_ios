@@ -833,6 +833,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 //
 - (void)catalogWithoutSorting:(Song*)song  usingArtistKey:(NSString*)artistKey andAlbumKey:(NSString*)albumKey
 {
+    //LBDEBUG
+    DevLog(@"catalogWithoutSorting   name '%@'  name_client '%@'         artistKey '%@', artistKey_client '%@'       albumKey '%@', albumKey_client '%@'", song.name, song.name_client, artistKey, song.artist_client, albumKey, song.album_client);
     
     // get what u need to sort alphabetically
     NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles

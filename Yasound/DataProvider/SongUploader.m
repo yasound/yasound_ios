@@ -58,28 +58,43 @@ static SongUploader* _main = nil;
 
 -(MPMediaItem *)findSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist
 {
-  MPMediaPropertyPredicate *artistPredicate = [MPMediaPropertyPredicate predicateWithValue:artist forProperty: MPMediaItemPropertyArtist];
-  MPMediaPropertyPredicate *albumPredicate = [MPMediaPropertyPredicate predicateWithValue:album forProperty: MPMediaItemPropertyAlbumTitle];
+    MPMediaPropertyPredicate *artistPredicate = nil;
+    if ((artist != nil) && (artist.length > 0))
+         artistPredicate = [MPMediaPropertyPredicate predicateWithValue:artist forProperty: MPMediaItemPropertyArtist];
+    MPMediaPropertyPredicate *albumPredicate = nil;
+    if ((album != nil) && (album.length > 0))
+         albumPredicate = [MPMediaPropertyPredicate predicateWithValue:album forProperty: MPMediaItemPropertyAlbumTitle];
   MPMediaPropertyPredicate *titlePredicate = [MPMediaPropertyPredicate predicateWithValue:title forProperty: MPMediaItemPropertyTitle];
     
   MPMediaQuery *query = [[MPMediaQuery alloc] init];
-  [query addFilterPredicate:artistPredicate];
-  [query addFilterPredicate:albumPredicate];
+    
+    if (artistPredicate)
+        [query addFilterPredicate:artistPredicate];
+    if (albumPredicate)
+        [query addFilterPredicate:albumPredicate];
   [query addFilterPredicate:titlePredicate];
   
   for (MPMediaItem* item in query.items) 
   {
     NSString* aTitle = [item valueForProperty:MPMediaItemPropertyTitle];
-    NSString* aArtist = [item valueForProperty:MPMediaItemPropertyArtist];
-    NSString* aAlbum = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
 
-      if ([title isEqualToString:aTitle] &&
-        [artist isEqualToString:aArtist] &&
-        [album isEqualToString:aAlbum]) {
-      
-      [query release];
-      return item;
-    }
+      BOOL res = [title isEqualToString:aTitle];
+      if (artistPredicate)
+      {
+          NSString* aArtist = [item valueForProperty:MPMediaItemPropertyArtist];
+          res &= [artist isEqualToString:aArtist];
+      }
+      if (albumPredicate)
+      {
+          NSString* aAlbum = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
+          res &= [album isEqualToString:aAlbum];
+      }
+
+      if (res)
+      {
+          [query release];
+          return item;
+      }
   }
     
   [query release];

@@ -59,6 +59,8 @@
             if (coverImage == nil)
             {
                 sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                self.image = [[UIImageView alloc] initWithImage:[sheet image]];
+
                 self.image.image = [sheet image];
             }
         }

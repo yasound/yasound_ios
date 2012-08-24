@@ -33,6 +33,8 @@
 //
 //
 @implementation NSArray (NSArrayDebug)
+
+
 - (id)objectForKey:(NSString*)key
 {
         DLog(@"SHOULD NOT HAPPEN : your NSDictionary* object is in fact a NSArray* object!");
@@ -358,6 +360,7 @@
         
         if (radioId == nil)
         {
+            //LBDEBUG TODO ICI : own_radio pas bon
             Radio* myRadio = self.user.own_radio;
             if (myRadio && myRadio.ready)
                 [self launchRadio:myRadio.id];
