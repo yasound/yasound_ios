@@ -289,9 +289,19 @@
 {
     if (([_playlistsDesc count] == 0) && (_songs.count == 0))
     {
-        [_tableView removeFromSuperview];
-        _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
-        [_container addSubview:_itunesConnectView];
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
+        UIImageView* view = [sheet makeImage];
+        [_tableView addSubview:view];
+        [view release];
+        
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];
+        return;
+
+        //        [_tableView removeFromSuperview];
+//        _itunesConnectLabel.text = NSLocalizedString(@"PlaylistsView_empty_message", nil);
+//        [_container addSubview:_itunesConnectView];
         
         self.topbar.actionButton.enabled = NO;
 

@@ -22,12 +22,12 @@ typedef enum {
 {
     BOOL _changed;
     
-    IBOutlet UIView* _container;
+//    IBOutlet UIView* _container;
 
     IBOutlet UITableView* _tableView;
 
-    IBOutlet UIView* _itunesConnectView;
-    IBOutlet UILabel* _itunesConnectLabel;
+//    IBOutlet UIView* _itunesConnectView;
+//    IBOutlet UILabel* _itunesConnectLabel;
 
     NSArray* _playlists;                   // NSArray of MPMediaPlaylist*
     NSArray* _songs;                       // NSArray of MPMediaItem*

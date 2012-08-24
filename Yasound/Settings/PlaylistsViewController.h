@@ -26,9 +26,6 @@ typedef enum {
 
     IBOutlet UITableView* _tableView;
 
-    IBOutlet UIView* _itunesConnectView;
-    IBOutlet UILabel* _itunesConnectLabel;
-
     NSArray* _playlists;                   // NSArray of MPMediaPlaylist*
     NSArray* _songs;                       // NSArray of MPMediaItem*
     NSMutableArray* _playlistsDesc;        // NSArray of NSDictionary {name, count}
