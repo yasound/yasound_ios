@@ -13,7 +13,6 @@
 @synthesize description;
 @synthesize enabled;
 @synthesize duration;
-@synthesize subscription_id;
 @synthesize name;
 
 - (BOOL)isEnabled

@@ -13,7 +13,6 @@
 @property (retain, nonatomic) NSString* description;
 @property (retain, nonatomic) NSNumber* enabled;
 @property (retain, nonatomic) NSNumber* duration;
-@property (retain, nonatomic) NSNumber* subscription_id;
 @property (retain, nonatomic) NSString* name;
 
 - (BOOL)isEnabled;
