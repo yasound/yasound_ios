@@ -26,10 +26,24 @@
 @synthesize detailedInfo;
 //@synthesize uploader;
 
-- (id)initWithSong:(SongLocal*)aSong
+- (id)initWithSong:(SongUploading*)aSong
 {
     if (self = [super init])
-    {   
+    {
+        if (![aSong isKindOfClass:[SongUploading class]])
+        {
+            DLog(@"MEUH!");
+            assert(0);
+            return nil;
+        }
+        
+        if (aSong.radio_id == nil)
+        {
+            DLog(@"MEUH!");
+            assert(0);
+            return nil;
+        }
+            
         self.song = aSong;
         self.status = SongUploadItemStatusPending;
         self.nbFails = 0;
@@ -43,7 +57,7 @@
     self.status = SongUploadItemStatusUploading;
     
     _uploader = [[SongUploader alloc] init];
-    BOOL res = [_uploader uploadSong:self.song forRadioId:self.song.radio_id target:self action:@selector(uploadDidFinished:) progressDelegate:self];
+    BOOL res = [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
     if (!res)
     {
         self.status = SongUploadItemStatusFailed;
@@ -72,7 +86,7 @@
     }
 
     
-    [self.song setUploading:NO];
+//    [self.song setUploading:NO];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDCANCEL object:self];
 }
@@ -82,7 +96,7 @@
     if (self.status != SongUploadItemStatusUploading)
         return;
     
-    [self.song setUploading:NO];
+//    [self.song setUploading:NO];
     self.status = SongUploadItemStatusPending;
 
     if (_uploader)
@@ -138,7 +152,7 @@
     }
     
     if (self.delegate != nil)
-        [self.delegate songUploadDidFinish:song info:info];
+        [self.delegate songUploadDidFinish:self.song info:info];
     
     // send notif to ask the manager to continue with the upload list
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_UPLOAD_DIDFINISH object:self];
@@ -214,6 +228,7 @@ static SongUploadManager* _main;
 
 
 // get the list of song upload info stored in user defaults
+// NSArray of SongUploading*
 - (NSArray*)storedSongsToUpload
 {
     NSMutableArray* storedUploads = [[UserSettings main] mutableArrayForKey:USKEYuploadList];
@@ -228,19 +243,27 @@ static SongUploadManager* _main;
       NSNumber* storedRadioId = [songInfo valueForKey:@"radio_id"];
     NSString* storedArtist = [songInfo valueForKey:@"artist"];
     NSString* storedAlbum = [songInfo valueForKey:@"album"];
-
-      SongLocal* s = [[SongLocal alloc] init];
-    s.name = storedName;
-      s.radio_id = storedRadioId;
-    s.artist = storedArtist;
-    s.album = storedAlbum;
-      s.name_client = storedName;
-      s.artist_client = storedArtist;
-      s.album_client = storedAlbum;
       
-    [s setUploading:YES];
+      if (storedRadioId == nil)
+      {
+          DLog(@"MEUH!");
+          continue; // should mean that the upload had been registered with client v1, and we now work with client v2
+                    // => abort the upload, sorry.
+      }
+
+      SongUploading* songUploading = [SongUploading new];
+      songUploading.songLocal = [[SongLocal alloc] init];
+      songUploading.radio_id = storedRadioId;
+    songUploading.songLocal.name = storedName;
+    songUploading.songLocal.artist = storedArtist;
+    songUploading.songLocal.album = storedAlbum;
+      songUploading.songLocal.name_client = storedName;
+      songUploading.songLocal.artist_client = storedArtist;
+      songUploading.songLocal.album_client = storedAlbum;
+      
+//    [songUploading.songLocal setUploading:YES];
     
-    [songs addObject:s];
+    [songs addObject:songUploading];
   }
   return songs;
 }
@@ -257,12 +280,13 @@ static SongUploadManager* _main;
          || ((status == SongUploadItemStatusFailed) && (item.nbFails < NB_FAILS_MAX))
         )
     {
-      SongLocal* song = item.song;
+        SongUploading* song = item.song;
+        
       NSMutableDictionary* songInfo = [NSMutableDictionary dictionary];
-      [songInfo setValue:song.name forKey:@"name"];
+      [songInfo setValue:song.songLocal.name forKey:@"name"];
         [songInfo setValue:song.radio_id forKey:@"radio_id"];
-      [songInfo setValue:song.artist forKey:@"artist"];
-      [songInfo setValue:song.album forKey:@"album"];
+      [songInfo setValue:song.songLocal.artist forKey:@"artist"];
+      [songInfo setValue:song.songLocal.album forKey:@"album"];
       [newUploads addObject:songInfo];
     }
   }
@@ -278,7 +302,7 @@ static SongUploadManager* _main;
   
   if (storedSongs)
   {
-    for (SongLocal* s  in storedSongs) 
+    for (SongUploading* s  in storedSongs)
     {
         [self addSong:s startUploadNow:NO];
     }
@@ -308,7 +332,7 @@ static SongUploadManager* _main;
 
 
 
-- (void)addSong:(SongLocal*)song startUploadNow:(BOOL)startUploadNow
+- (void)addSong:(SongUploading*)song startUploadNow:(BOOL)startUploadNow
 {
     SongUploadItem* item = [[SongUploadItem alloc] initWithSong:song];
     [_items addObject:item];
@@ -320,19 +344,22 @@ static SongUploadManager* _main;
 }
 
 
-- (SongLocal*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album
+- (SongUploading*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album forRadio:(Radio*)radio
 {
     for (SongUploadItem* item in self.items)
     {
-        NSString* verif = item.song.name;
+        if (![item.song.radio_id isEqualToNumber:radio.id])
+            continue;
+        
+        NSString* verif = item.song.songLocal.name;
         if (![verif isEqualToString:name])
             continue;
         
-        verif = item.song.album;
+        verif = item.song.songLocal.album;
         if (![verif isEqualToString:album])
             continue;
 
-        verif = item.song.artist;
+        verif = item.song.songLocal.artist;
         if (![verif isEqualToString:artist])
             continue;
         

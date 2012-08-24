@@ -18,6 +18,7 @@
 @implementation SongAddCell
 
 @synthesize song;
+@synthesize radio;
 @synthesize label;
 @synthesize detailedLabel;
 @synthesize button;
@@ -40,7 +41,7 @@
 #define COVER_SIZE 30
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(SongLocal*)aSong
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier song:(SongLocal*)aSong forRadio:(Radio*)radio
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
@@ -50,6 +51,7 @@
     if (self) 
     {
         self.song = aSong;
+        self.radio = radio;
         
         self.selectionStyle = UITableViewCellSelectionStyleGray;
         
@@ -95,7 +97,7 @@
         [self addSubview:self.detailedLabel];
         
         
-        if ([song isProgrammed] || [song isUploading])
+        if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
         {
             self.button.enabled = NO;
             self.image.alpha = 0.5;
@@ -129,7 +131,7 @@
 {
     self.song = aSong;
     
-    if ([song isProgrammed] || [song isUploading])
+    if ([song isProgrammed] || ([[SongUploadManager main] getUploadingSong:song.name artist:song.artist album:song.album forRadio:self.radio] != nil))
     {
         self.button.enabled = NO;
         self.image.alpha = 0.5;
@@ -222,8 +224,12 @@
         
     BOOL startUploadNow = isWifi;
     
+    SongUploading* songUploading = [SongUploading new];
+    songUploading.songLocal = self.song;
+    songUploading.radio_id = self.radio.id;
+    
    // add an upload job to the queue
-    [[SongUploadManager main] addSong:self.song startUploadNow:startUploadNow];
+    [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
     
 //    // and flag the current song as "uploading song"
 //    [song setProgrammed

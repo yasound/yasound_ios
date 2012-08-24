@@ -32,7 +32,7 @@
     {
         _isProgrammed = NO;
         _removed = NO;
-        _uploading = NO;
+//        _uploading = NO;
         
     }
     return self;
@@ -125,16 +125,16 @@
 }
 
 
-- (BOOL)isUploading
-{
-    return _uploading;
-}
-
-- (void)setUploading:(BOOL)set
-{
-    _uploading = set;
-}
-
+//- (BOOL)isUploading
+//{
+//    return _uploading;
+//}
+//
+//- (void)setUploading:(BOOL)set
+//{
+//    _uploading = set;
+//}
+//
 
 
 - (NSString*)getNameWithoutArticle

@@ -12,7 +12,7 @@
 #import "SongCatalog.h"
 #import "RootViewController.h"
 #import "YasoundReachability.h"
-#import "SongLocal.h"
+#import "SongUploading.h"
 #import "WebImageView.h"
 
 @implementation SongUploadCell
@@ -42,9 +42,9 @@
 
         // track image
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        SongLocal* song = self.item.song;
+        SongUploading* songup = self.item.song;
         
-        self.isSongLocal = [song isKindOfClass:[SongLocal class]];
+        self.isSongLocal = [songup.songLocal isKindOfClass:[SongLocal class]];
         
 //        assert([song isKindOfClass:[SongLocal class]]);
         
@@ -53,7 +53,7 @@
         
         if (self.isSongLocal)
         {
-            UIImage* coverImage = [song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
+            UIImage* coverImage = [songup.songLocal.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
             self.image = [[UIImageView alloc] initWithImage:coverImage];
 
             if (coverImage == nil)
@@ -66,7 +66,7 @@
         }
         else
         {
-            NSURL* url = [[YasoundDataProvider main] urlForPicture:song.cover];
+            NSURL* url = [[YasoundDataProvider main] urlForPicture:songup.songLocal.cover];
             self.image = [[WebImageView alloc] initWithImageAtURL:url];
         }
 
@@ -88,7 +88,7 @@
         
     sheet = [[Theme theme] stylesheetForKey:@"Uploads.name" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.label = [sheet makeLabel];
-    self.label.text = [NSString stringWithFormat:@"%@ - %@", item.song.name, item.song.artist];
+    self.label.text = [NSString stringWithFormat:@"%@ - %@", songup.songLocal.name, songup.songLocal.artist];
     [self addSubview:self.label];
         
         
@@ -181,16 +181,16 @@
     self.item = mediaItem;
     self.item.delegate = self;
     
-    self.label.text = [NSString stringWithFormat:@"%@ - %@", mediaItem.song.name, mediaItem.song.artist];
+    self.label.text = [NSString stringWithFormat:@"%@ - %@", mediaItem.song.songLocal.name, mediaItem.song.songLocal.artist];
     
-    SongLocal* song = self.item.song;
+    SongUploading* songup = self.item.song;
 //    §([song isKindOfClass:[SongLocal class]]);
     
-    self.isSongLocal = [song isKindOfClass:[SongLocal class]];
+    self.isSongLocal = [songup.songLocal isKindOfClass:[SongLocal class]];
     
     if (self.isSongLocal)
     {
-        UIImage* coverImage = [song.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
+        UIImage* coverImage = [songup.songLocal.artwork imageWithSize:CGSizeMake(COVER_SIZE, COVER_SIZE)];
         
         if (coverImage == nil)
         {
@@ -203,7 +203,7 @@
     }
     else
     {
-        NSURL* url = [[YasoundDataProvider main] urlForPicture:song.cover];
+        NSURL* url = [[YasoundDataProvider main] urlForPicture:songup.songLocal.cover];
         self.image = [[WebImageView alloc] initWithImageAtURL:url];
     }
 
@@ -272,18 +272,18 @@
 
 #pragma mark - SongUploadItemDelegate
 
-- (void)songUploadDidStart:(Song*)song
+- (void)songUploadDidStart:(SongUploading*)song
 {
     [self update:self.item];
 }
 
 
-- (void)songUploadDidInterrupt:(Song*)song
+- (void)songUploadDidInterrupt:(SongUploading*)song
 {
     [self update:self.item];
 }
 
-- (void)songUploadProgress:(Song*)song progress:(CGFloat)progress  bytes:(NSUInteger)bytes
+- (void)songUploadProgress:(SongUploading*)song progress:(CGFloat)progress  bytes:(NSUInteger)bytes
 {
     self.progressView.progress = progress;
     self.progressLabel.text = [SongUploadCell sizeToStr:bytes];
@@ -317,7 +317,7 @@
 }
 
 
-- (void)songUploadDidFinish:(Song*)song info:(NSDictionary*)info
+- (void)songUploadDidFinish:(SongUploading*)song info:(NSDictionary*)info
 {
     DLog(@"songUploadDidFinish : info %@", info);
 
@@ -330,7 +330,7 @@
 
     
     // add the song to the catalog of synchronized catalog (we dont want to re-generate it entirely)
-    [[SongCatalog synchronizedCatalog] insertAndEnableSong:song];
+    [[SongCatalog synchronizedCatalog] insertAndEnableSong:song.songLocal];
     
     // and let the views know about it
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:nil];

@@ -466,12 +466,13 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         if (matchedSong != nil)
             [songLocal setIsProgrammed:YES];
         
-        
-        // before putting this song into the catalog,
-        // check if it's not uploading already.
-        Song* uploadingSong = [[SongUploadManager main] getUploadingSong:songLocal.name artist:songLocal.artist album:songLocal.album];
-        if (uploadingSong != nil)
-            [songLocal setUploading:YES];
+
+        //LBDEBUG TODO : CLEANING
+//        // before putting this song into the catalog,
+//        // check if it's not uploading already.
+//        Song* uploadingSong = [[SongUploadManager main] getUploadingSong:songLocal.name artist:songLocal.artist album:songLocal.album];
+//        if (uploadingSong != nil)
+//            [songLocal setUploading:YES];
         
         // REMEMBER THAT HERE, songLocal is SongLocal* 
         

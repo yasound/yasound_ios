@@ -15,7 +15,6 @@
 #import "SongCatalog.h"
 #import "ASIFormDataRequest.h"
 
-
 @implementation SongUploader
 
 static SongUploader* _main = nil;
@@ -223,9 +222,16 @@ static SongUploader* _main = nil;
 
 
 
-- (BOOL)uploadSong:(Song*)song forRadioId:(NSNumber*)radio_id target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
+- (BOOL)uploadSong:(SongUploading*)song target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
 {
-    return [self uploadSong:song.name_client forRadioId:radio_id album:song.album_client artist:song.artist_client songId:song.id target:target action:selector progressDelegate:progressDelegate];
+    if (![song isKindOfClass:[SongUploading class]])
+    {
+        DLog(@"MEUH!");
+        assert(0);
+        return NO;
+    }
+    
+    return [self uploadSong:song.songLocal.name_client forRadioId:song.radio_id album:song.songLocal.album_client artist:song.songLocal.artist_client songId:song.songLocal.id target:target action:selector progressDelegate:progressDelegate];
 }
 
 - (BOOL)canUploadSong:(Song*)song

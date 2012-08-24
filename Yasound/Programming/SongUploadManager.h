@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SongLocal.h"
+#import "SongUploading.h"
 #import "SongUploader.h"
 
 /*
@@ -61,10 +61,10 @@
 @protocol SongUploadItemDelegate <NSObject>
 @required
 
-- (void)songUploadDidStart:(SongLocal*)song;
-- (void)songUploadDidInterrupt:(SongLocal*)song;
-- (void)songUploadProgress:(SongLocal*)song progress:(CGFloat)progress bytes:(NSUInteger)bytes;
-- (void)songUploadDidFinish:(SongLocal*)song info:(NSDictionary*)info;
+- (void)songUploadDidStart:(SongUploading*)song;
+- (void)songUploadDidInterrupt:(SongUploading*)song;
+- (void)songUploadProgress:(SongUploading*)song progress:(CGFloat)progress bytes:(NSUInteger)bytes;
+- (void)songUploadDidFinish:(SongUploading*)song info:(NSDictionary*)info;
 
 @end
 
@@ -83,7 +83,7 @@ typedef enum SongUploadItemStatus
     SongUploader* _uploader;
 }
 
-@property (nonatomic, retain) SongLocal* song;
+@property (nonatomic, retain) SongUploading* song;
 @property (nonatomic) CGFloat currentProgress;
 @property (nonatomic) NSUInteger currentSize;
 @property (nonatomic) SongUploadItemStatus status;
@@ -93,7 +93,7 @@ typedef enum SongUploadItemStatus
 //@property (nonatomic, retain) SongUploader* uploader;
 
 
-- (id)initWithSong:(SongLocal*)aSong;
+- (id)initWithSong:(SongUploading*)aSong;
 - (void)startUpload;
 - (void)cancelUpload; // interrupt and remove
 
@@ -115,14 +115,14 @@ typedef enum SongUploadItemStatus
 
 + (SongUploadManager*)main;
 
-- (void)addSong:(SongLocal*)song startUploadNow:(BOOL)startUploadNow;
+- (void)addSong:(SongUploading*)song startUploadNow:(BOOL)startUploadNow;
 - (void)importUploads;
 - (void)clearStoredUpdloads;
 
 - (void)interruptUploads;
 - (void)resumeUploads;
 
-- (SongLocal*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album;
+- (SongUploading*)getUploadingSong:(NSString*)name artist:(NSString*)artist album:(NSString*)album forRadio:(Radio*)radio;
 
 
 @end

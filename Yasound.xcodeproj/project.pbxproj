@@ -3139,6 +3139,15 @@
 		BCC754A115E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC7549A15E69F9B00CF7F7C /* PurchaseTableViewCell.m */; };
 		BCC754A215E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC7549A15E69F9B00CF7F7C /* PurchaseTableViewCell.m */; };
 		BCC754A315E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC7549A15E69F9B00CF7F7C /* PurchaseTableViewCell.m */; };
+		BCC754A615E7839D00CF7F7C /* SongUploading.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC754A515E7839D00CF7F7C /* SongUploading.m */; };
+		BCC754A715E7839D00CF7F7C /* SongUploading.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC754A515E7839D00CF7F7C /* SongUploading.m */; };
+		BCC754A815E7839D00CF7F7C /* SongUploading.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC754A515E7839D00CF7F7C /* SongUploading.m */; };
+		BCC754A915E7839D00CF7F7C /* SongUploading.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC754A515E7839D00CF7F7C /* SongUploading.m */; };
+		BCC754AA15E7839D00CF7F7C /* SongUploading.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC754A515E7839D00CF7F7C /* SongUploading.m */; };
+		BCC754AB15E7839D00CF7F7C /* SongUploading.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC754A515E7839D00CF7F7C /* SongUploading.m */; };
+		BCC754AC15E7839D00CF7F7C /* SongUploading.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC754A515E7839D00CF7F7C /* SongUploading.m */; };
+		BCC754AD15E7839D00CF7F7C /* SongUploading.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC754A515E7839D00CF7F7C /* SongUploading.m */; };
+		BCC754AE15E7839D00CF7F7C /* SongUploading.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC754A515E7839D00CF7F7C /* SongUploading.m */; };
 		BCCA798A14AE24D80011AADD /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
 		BCCA798B14AE24D80011AADD /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
 		BCCA798C14AE24D80011AADD /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCA798814AE24D80011AADD /* S7GraphView.m */; };
@@ -6937,6 +6946,8 @@
 		BCC7547415E69E6400CF7F7C /* productIconDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "productIconDefault@2x.png"; sourceTree = "<group>"; };
 		BCC7549915E69F9B00CF7F7C /* PurchaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseTableViewCell.h; path = Products/PurchaseTableViewCell.h; sourceTree = "<group>"; };
 		BCC7549A15E69F9B00CF7F7C /* PurchaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseTableViewCell.m; path = Products/PurchaseTableViewCell.m; sourceTree = "<group>"; };
+		BCC754A415E7839D00CF7F7C /* SongUploading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongUploading.h; sourceTree = "<group>"; };
+		BCC754A515E7839D00CF7F7C /* SongUploading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongUploading.m; sourceTree = "<group>"; };
 		BCCA798714AE24D80011AADD /* S7GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = S7GraphView.h; path = ThirdParties/s7graphview/lib/S7GraphView.h; sourceTree = "<group>"; };
 		BCCA798814AE24D80011AADD /* S7GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = S7GraphView.m; path = ThirdParties/s7graphview/lib/S7GraphView.m; sourceTree = "<group>"; };
 		BCCA798914AE24D80011AADD /* S7Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = S7Macros.h; path = ThirdParties/s7graphview/lib/S7Macros.h; sourceTree = "<group>"; };
@@ -7961,6 +7972,8 @@
 				400B8AB014D31540003FD81E /* Song.m */,
 				BC188BDA1507647900E38692 /* SongLocal.h */,
 				BC188BDB1507647900E38692 /* SongLocal.m */,
+				BCC754A415E7839D00CF7F7C /* SongUploading.h */,
+				BCC754A515E7839D00CF7F7C /* SongUploading.m */,
 				40EAA55614D85EF60000621C /* RadioListeningStat.h */,
 				40EAA55714D85EF60000621C /* RadioListeningStat.m */,
 				40EAA55C14DA980F0000621C /* LeaderBoardEntry.h */,
@@ -14430,6 +14443,7 @@
 				BC89C38715E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 				BCC7546E15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC754A215E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
+				BCC754AD15E7839D00CF7F7C /* SongUploading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14644,6 +14658,7 @@
 				BC89C38815E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 				BCC7546F15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC754A315E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
+				BCC754AE15E7839D00CF7F7C /* SongUploading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14854,6 +14869,7 @@
 				BC89C38615E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 				BCC7546D15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC754A115E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
+				BCC754AC15E7839D00CF7F7C /* SongUploading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15068,6 +15084,7 @@
 				BC89C38315E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 				BCC7546A15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC7549E15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
+				BCC754A915E7839D00CF7F7C /* SongUploading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15282,6 +15299,7 @@
 				BC89C38215E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 				BCC7546815E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC7549C15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
+				BCC754A715E7839D00CF7F7C /* SongUploading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15497,6 +15515,7 @@
 				BC89C38515E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 				BCC7546C15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC754A015E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
+				BCC754AB15E7839D00CF7F7C /* SongUploading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15711,6 +15730,7 @@
 				BCC7525B15E689EF00CF7F7C /* PurchaseViewController.m in Sources */,
 				BCC7546915E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC7549D15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
+				BCC754A815E7839D00CF7F7C /* SongUploading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15925,6 +15945,7 @@
 				BC89C38115E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 				BCC7546715E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC7549B15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
+				BCC754A615E7839D00CF7F7C /* SongUploading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16140,6 +16161,7 @@
 				BC89C38415E6399D00E0BEE3 /* PurchaseViewController.m in Sources */,
 				BCC7546B15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC7549F15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
+				BCC754AA15E7839D00CF7F7C /* SongUploading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,7 +18,7 @@
 @synthesize catalogKey;
 @synthesize mediaItem;
 
-@synthesize radio_id;
+//@synthesize radio_id;
 //@synthesize cover;
 @synthesize artistKey;
 @synthesize albumKey;
