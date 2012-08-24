@@ -58,9 +58,9 @@
 {
     [super viewDidLoad];
 
-    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+//    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
+//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
     if (!_showNowPlaying)
     {
@@ -92,10 +92,6 @@
 {
     [super viewDidAppear:animated];
     
-    if ([AudioStreamManager main].currentRadio == nil)
-        [_nowPlayingButton setEnabled:NO];
-    else
-        [_nowPlayingButton setEnabled:YES];
     
 }
 

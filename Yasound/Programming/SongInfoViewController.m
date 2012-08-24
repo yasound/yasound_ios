@@ -62,9 +62,9 @@
 {
     [super viewDidLoad];
 
-    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+//    _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
+//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
 //    _cellDeleteLabel.text = NSLocalizedString(@"SongView_delete", nil);
     
@@ -98,11 +98,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    if ([AudioStreamManager main].currentRadio == nil)
-        [_nowPlayingButton setEnabled:NO];
-    else
-        [_nowPlayingButton setEnabled:YES];
     
 }
 

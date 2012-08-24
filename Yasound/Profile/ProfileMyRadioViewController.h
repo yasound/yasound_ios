@@ -14,10 +14,10 @@
 
 @interface ProfileMyRadioViewController : UIViewController
 {
-    IBOutlet UIBarButtonItem* _backBtn;
-    IBOutlet UIBarButtonItem* _titleLabel;
+//    IBOutlet UIBarButtonItem* _backBtn;
+//    IBOutlet UIBarButtonItem* _titleLabel;
     IBOutlet UITableView* _tableView;
-    IBOutlet UIBarButtonItem* _nowPlayingButton;
+//    IBOutlet UIBarButtonItem* _nowPlayingButton;
     
     IBOutlet UITableViewCell* _cellSendMessage;
     IBOutlet UIImageView* _imageViewSendMessage;
@@ -32,6 +32,6 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil radio:(Radio*)myRadio;
 
-- (IBAction)onBack:(id)sender;
+//- (IBAction)onBack:(id)sender;
 
 @end

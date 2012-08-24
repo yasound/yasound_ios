@@ -194,8 +194,6 @@
     
     
     
-    //    if (![self.radio.id isEqualToNumber:[AudioStreamManager main].currentRadio.id])
-    //    {
     if (![AudioStreamManager main].isPaused)
     {
         [[AudioStreamManager main] startRadio:self.radio];
@@ -205,7 +203,6 @@
     
     [[YasoundDataProvider main] enterRadioWall:self.radio];
     
-    //    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioStreamNotif:) name:NOTIF_AUDIOSTREAM_PLAY object:nil];

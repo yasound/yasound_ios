@@ -55,9 +55,9 @@
 {
     [super viewDidLoad];
 
-    _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+//    _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
+//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 }
@@ -85,10 +85,6 @@
 {
     [super viewDidAppear:animated];
     
-    if ([AudioStreamManager main].currentRadio == nil)
-        [_nowPlayingButton setEnabled:NO];
-    else
-        [_nowPlayingButton setEnabled:YES];
     
 }
 

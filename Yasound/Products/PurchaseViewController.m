@@ -7,6 +7,7 @@
 //
 
 #import "PurchaseViewController.h"
+#import "Theme.h"
 
 @interface PurchaseViewController ()
 
@@ -18,13 +19,25 @@
 @synthesize productDetailsList;
 @synthesize tableview;
 
+
+static NSString* CellIdentifier = @"PurchaseTableViewCell";
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
+        self.cellLoader = [UINib nibWithNibName:CellIdentifier bundle:[NSBundle mainBundle]];
     }
     return self;
+}
+
+
+-(void)dealloc
+{
+    [self.cellLoader release];
+    [super dealloc];
 }
 
 - (void)viewDidLoad
@@ -86,25 +99,54 @@
 
 #pragma mark - TableViewDelegate
 
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.productDetailsList count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *GenericTableIdentifier = @"GenericTableIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: GenericTableIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier: GenericTableIdentifier] autorelease];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.cell" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* view = [sheet makeImage];
+    cell.backgroundView = view;
+    [view autorelease];
+}
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SKProduct* product = [self.productDetailsList objectAtIndex:indexPath.row];
+
+    PurchaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        NSArray *topLevelItems = [self.cellLoader instantiateWithOwner:self options:nil];
+        cell = [topLevelItems objectAtIndex:0];
     }
     
-    NSUInteger row = [indexPath row];
-    SKProduct *thisProduct = [productDetailsList objectAtIndex:row];
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@ - %@", thisProduct.localizedTitle, thisProduct.price]];
+    [cell updateWForProduct:product];
+
     
+    
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: GenericTableIdentifier];
+//
+//    if (cell == nil)
+//    {
+//        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier: GenericTableIdentifier] autorelease];
+//    }
+//    
+//    if (indexPath.row == 1)
+//        cell.imageView.image = [UIImage imageNamed:@"productIconBest.png"];
+//    else
+//        cell.imageView.image = [UIImage imageNamed:@"productIconDefault.png"];
+//    
+//    NSUInteger row = [indexPath row];
+//    SKProduct *thisProduct = [productDetailsList objectAtIndex:row];
+//    [cell.textLabel setText:[NSString stringWithFormat:@"%@ - %@", thisProduct.localizedTitle, thisProduct.price]];
+//    
     return cell;
 }
 

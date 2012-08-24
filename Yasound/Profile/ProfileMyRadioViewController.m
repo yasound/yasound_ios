@@ -45,9 +45,9 @@ typedef enum
 {
     [super viewDidLoad];
     
-    _titleLabel.title = NSLocalizedString(@"ProfileMyRadioView_title", nil);
-    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
+//    _titleLabel.title = NSLocalizedString(@"ProfileMyRadioView_title", nil);
+//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
+//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
 
     _labelSendMessage.text = NSLocalizedString(@"ProfileMyRadio_subscribers_button_label", nil);
 
@@ -91,10 +91,6 @@ typedef enum
     
     [[YasoundDataProvider main] favoriteUsersForRadio:self.radio target:self action:@selector(onSubscribersReceived:withInfo:)];
     
-    if ([AudioStreamManager main].currentRadio == nil)
-        [_nowPlayingButton setEnabled:NO];
-    else
-        [_nowPlayingButton setEnabled:YES];
 }
 
 

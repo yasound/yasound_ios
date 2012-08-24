@@ -14,10 +14,10 @@
 
 @interface SongInfoViewController : UIViewController
 {
-    IBOutlet UIBarButtonItem* _backBtn;
-    IBOutlet UILabel* _titleLabel;
+//    IBOutlet UIBarButtonItem* _backBtn;
+//    IBOutlet UILabel* _titleLabel;
     IBOutlet UITableView* _tableView;
-    IBOutlet UIBarButtonItem* _nowPlayingButton;
+//    IBOutlet UIBarButtonItem* _nowPlayingButton;
     IBOutlet UIToolbar* _toolbar;
     
 //    IBOutlet UITableViewCell* _cellDelete;
