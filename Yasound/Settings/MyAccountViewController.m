@@ -601,6 +601,7 @@ enum SectionBio
     
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     [[YasoundDataCacheImageManager main] clearItem:imageURL];
+    
 
     // reload user
     [[YasoundDataProvider main] reloadUserWithUserData:nil withTarget:self action:@selector(didReloadUser:info:)];

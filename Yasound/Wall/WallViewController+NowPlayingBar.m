@@ -12,7 +12,7 @@
 #import "ShareTwitterModalViewController.h"
 #import "AudioStreamManager.h"
 #import "BuyLinkManager.h"
-
+#import "YasoundAppDelegate.h"
 
 @implementation WallViewController (NowPlayingBar)
 
@@ -92,7 +92,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (IBAction)onShareClicked:(id)sender
 {
-    _queryShare = [[UIActionSheet alloc] initWithTitle:@"Share" delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:nil];
+    _queryShare = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Share.title", nil) delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     
     if ([[YasoundSessionManager main] isAccountAssociated:LOGIN_TYPE_FACEBOOK])
         [_queryShare addButtonWithTitle:@"Facebook"];
@@ -101,6 +101,10 @@ static Song* _gNowPlayingSong = nil;
         [_queryShare addButtonWithTitle:@"Twitter"];
     
     [_queryShare addButtonWithTitle:NSLocalizedString(@"Share.email", nil)];
+    
+    [_queryShare addButtonWithTitle:NSLocalizedString(@"Cancel", nil)];
+    _queryShare.cancelButtonIndex = _queryShare.numberOfButtons-1;
+    
     
     _queryShare.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
     [_queryShare showInView:self.view];    
@@ -196,7 +200,7 @@ static Song* _gNowPlayingSong = nil;
             [self.navigationController presentModalViewController:view animated:YES];
             [view release];
         }
-        else if ([buttonTitle isEqualToString:NSLocalizedString(@"ShareModalView_email_label", nil)])
+        else if ([buttonTitle isEqualToString:NSLocalizedString(@"Share.email", nil)])
         {
             [self shareWithMail];
         }
@@ -236,7 +240,7 @@ static Song* _gNowPlayingSong = nil;
 	}
 #endif
 	
-	[self presentModalViewController:mailViewController animated:YES];
+	[APPDELEGATE.navigationController presentModalViewController:mailViewController animated:YES];
 	[mailViewController release];
     
 }
@@ -244,7 +248,7 @@ static Song* _gNowPlayingSong = nil;
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
-	[self dismissModalViewControllerAnimated:YES];
+	[APPDELEGATE.navigationController dismissModalViewControllerAnimated:YES];
 	
 	NSString *mailError = nil;
 	

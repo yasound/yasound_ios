@@ -560,7 +560,9 @@
     if (![image isKindOfClass:[UIImage class]])
         return;
     
-    [_settingsImageImage setImage:image];
+
+    
+    _settingsImageImage.image = image;
     
     // wait for "save" action to upload the image to the server
     _settingsImageChanged = YES;
@@ -665,8 +667,13 @@
         return;
     }
     
+    
+    //LBDEBUG : TODO :l voir le bug de changement de photo
     if (_settingsImageChanged)
     {
+        NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
+        DLog(@"receivedUserRadioAfterPictureUpdate BEFORE pictureUrl %@", imageURL);
+        
         [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:radio target:self action:@selector(onRadioImageUpdate:info:)];
     }
     else
@@ -685,13 +692,20 @@
 - (void)receivedUserRadioAfterPictureUpdate:(Radio*)r withInfo:(NSDictionary*)info
 {
   [ActivityAlertView close];
+    
+    self.radio = r;
 
+    
     // clean image cache
-    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:r.picture];
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
+    DLog(@"receivedUserRadioAfterPictureUpdate AFTER pictureUrl %@", imageURL);
+
     [[YasoundDataCacheImageManager main] clearItem:imageURL];
 
-    imageURL = [[YasoundDataProvider main] urlForPicture:r.creator.picture];
-    [[YasoundDataCacheImageManager main] clearItem:imageURL];
+//    imageURL = [[YasoundDataProvider main] urlForPicture:r.creator.picture];
+//    [[YasoundDataCacheImageManager main] clearItem:imageURL];
+    
+    
 
   
     // if the settings have been called through a "radio creation" process, go directly to the new radio's wall.

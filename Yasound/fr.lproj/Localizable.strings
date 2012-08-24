@@ -600,6 +600,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Wall.header.favorite.button.remove" = "Retirer des favoris";
 "Wall.postBar.label" = "Publier";
 
+"Share.title" = "Partager";
 "Share.email" = "Envoyer un email";
 
 "Scheduling.cellDefault.text" = "Main programming";

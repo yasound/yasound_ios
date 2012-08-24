@@ -614,6 +614,7 @@
 "Wall.header.favorite.button.remove" = "Remove from favorites";
 "Wall.postBar.label" = "Send";
 
+"Share.title" = "Share";
 "Share.email" = "Send an email";
 
 "Scheduling.cellDefault.text" = "Main programming";
