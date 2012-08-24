@@ -765,6 +765,7 @@
 {
     [self.sortedSongs release];
     [self.sortedArtists release];
+    
     self.sortedArtists = [[NSMutableDictionary alloc] init];
     self.sortedSongs = [[NSMutableDictionary alloc] init];    
     

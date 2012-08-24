@@ -98,7 +98,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 - (NSString*)catalogKeyOfArtist:(NSString*)artist
 {
     NSString* artistKey = artist;
-    if (artistKey == nil)
+    if ((artistKey == nil) || (artistKey.length == 0))
         artistKey = NSLocalizedString(@"ProgrammingView_unknownArtist", nil);
     return artistKey;
 }
@@ -106,7 +106,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 - (NSString*)catalogKeyOfAlbum:(NSString*)album
 {
     NSString* albumKey = album;
-    if (albumKey == nil)
+    if ((albumKey == nil) || (albumKey.length == 0))
         albumKey = NSLocalizedString(@"ProgrammingView_unknownAlbum", nil);
     return albumKey;
 }
@@ -320,6 +320,8 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     
     for (Playlist* playlist in playlists)
     {
+        DLog(@"playlist %@ :", playlist.name);
+
         [[YasoundDataProvider main] matchedSongsForPlaylist:playlist target:self action:@selector(matchedSongsReceveived:info:)];
     }
 }
@@ -346,7 +348,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     }
     
     
-    DLog(@"received playlist nb %d : %d songs", _nbReceivedData, songs.count);
+    DLog(@"received playlist : nb %d : %d songs",  _nbReceivedData, songs.count);
     
     _nbReceivedData++;
     
@@ -363,6 +365,14 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         
         for (Song* song in songs)
         {
+            DevLog(@"received song '%@ - %@  - %@'", song.name, song.artist, song.album);
+            
+            
+            //LBDEBUG
+            NSRange range = [song.name rangeOfString:@"apocalypse"];
+            if (range.location != NSNotFound)
+                DLog(@"MEUH!");
+            
             // create a key for the dictionary
             // LBDEBUG NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
             NSString* key = [self catalogKeyOfSong:song.name_client artist:song.artist_client album:song.album_client];
@@ -456,6 +466,12 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         
         Song* matchedSong = [synchronizedSource objectForKey:songLocal.catalogKey];
         
+        //DLog(@"%@", synchronizedSource);
+        //LBDEBUG
+        NSRange range = [songLocal.catalogKey rangeOfString:@"apocalypse"];
+        if (range.location != NSNotFound)
+            NSLog(@"MEUH!");
+            
         
 //        // don't include it if it's included in the matched songs already
 //        if (matchedSong != nil)

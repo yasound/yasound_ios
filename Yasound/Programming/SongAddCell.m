@@ -231,6 +231,9 @@
    // add an upload job to the queue
     [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
     
+    // refresh gui
+    [self update:self.song];
+    
 //    // and flag the current song as "uploading song"
 //    [song setProgrammed
 //    [self update:song];

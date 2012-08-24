@@ -60,8 +60,7 @@
             {
                 sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy30" retainStylesheet:YES overwriteStylesheet:NO error:nil];
                 self.image = [[UIImageView alloc] initWithImage:[sheet image]];
-
-                self.image.image = [sheet image];
+                self.image.frame = sheet.frame;
             }
         }
         else
@@ -333,7 +332,7 @@
     [[SongCatalog synchronizedCatalog] insertAndEnableSong:song.songLocal];
     
     // and let the views know about it
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_ADDED object:song.songLocal];
 }
 
 

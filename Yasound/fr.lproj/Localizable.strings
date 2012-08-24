@@ -189,7 +189,7 @@
 "ProgrammingView_error_no_playlist_message" = "une erreur est survenue : aucune playlist n'a été détectée.";
 "ProgrammingView_segment_titles" = "Titres";
 "ProgrammingView_segment_artists" = "Artistes";
-"ProgrammingView_unknownArtist" = "#Artiste inconnu";
+"ProgrammingView_unknownArtist" = "Artiste inconnu";
 "ProgrammingView_unknownAlbum" = "Album inconnu";
 "ProgramminView_nb_albums_1" = "1 album";
 "ProgramminView_nb_albums_n" = "%d albums";
