@@ -671,9 +671,9 @@
 - (void) didBuildDataWithPlaylist:(NSData*)data
 {
     //LBDEBUG email playlist file
-      [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
-    [ActivityAlertView close];
-    return;
+//      [[PlaylistMoulinor main] emailData:data to:@"neywen@neywen.net" mimetype:@"application/octet-stream" filename:@"yasound_playlist.bin" controller:self];
+//    [ActivityAlertView close];
+//    return;
 
     DLog(@"Playlists data package has been built.");
     
