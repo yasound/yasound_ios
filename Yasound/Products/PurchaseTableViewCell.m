@@ -49,7 +49,14 @@
 
     self.title.text = product.localizedTitle;
     self.subtitle.text = product.localizedDescription;
-    self.price.text = product.price;
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [numberFormatter setLocale:product.priceLocale];
+    NSString *formattedString = [numberFormatter stringFromNumber:product.price];
+    
+    self.price.text = formattedString;
 }
 
 

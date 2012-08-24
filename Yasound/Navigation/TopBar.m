@@ -252,10 +252,6 @@
 
 - (void)onHd:(id)sender
 {
-    //LBDEBUG
-    return;
-    
-    
     BOOL run = YES;
     
     if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])

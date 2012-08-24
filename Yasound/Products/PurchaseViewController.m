@@ -127,7 +127,7 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
         cell = [topLevelItems objectAtIndex:0];
     }
     
-    [cell updateWForProduct:product];
+    [cell updateForProduct:product];
 
     
     

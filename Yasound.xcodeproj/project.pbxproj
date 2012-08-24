@@ -2125,6 +2125,15 @@
 		BC9601C4154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
 		BC9601C5154997B90003AC7E /* WebPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC9601B7154997B90003AC7E /* WebPageViewController.xib */; };
 		BC974B3115E7C93700CC62A2 /* YasoundtestD-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3015E7C93700CC62A2 /* YasoundtestD-Info.plist */; };
+		BC974B3315E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
+		BC974B3415E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
+		BC974B3515E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
+		BC974B3615E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
+		BC974B3715E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
+		BC974B3815E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
+		BC974B3915E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
+		BC974B3A15E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
+		BC974B3B15E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
 		BC9B7E3D15E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
 		BC9B7E3E15E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
 		BC9B7E3F15E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
@@ -6864,6 +6873,7 @@
 		BC9601B6154997B90003AC7E /* WebPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebPageViewController.m; path = Settings/WebPageViewController.m; sourceTree = "<group>"; };
 		BC9601B7154997B90003AC7E /* WebPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebPageViewController.xib; path = Settings/WebPageViewController.xib; sourceTree = "<group>"; };
 		BC974B3015E7C93700CC62A2 /* YasoundtestD-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YasoundtestD-Info.plist"; sourceTree = "<group>"; };
+		BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseTableViewCell.xib; path = Products/PurchaseTableViewCell.xib; sourceTree = "<group>"; };
 		BC9B7E3915E42B000083CF6C /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
 		BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
 		BC9B7E3B15E42B000083CF6C /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
@@ -6936,7 +6946,7 @@
 		BCC4143C150B00D700A5150B /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = ThirdParties/fmdb/src/FMResultSet.h; sourceTree = "<group>"; };
 		BCC4143D150B00D700A5150B /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = ThirdParties/fmdb/src/FMResultSet.m; sourceTree = "<group>"; };
 		BCC7518015E686C400CF7F7C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		BCC7544E15E689EF00CF7F7C /* YasoundD copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "YasoundD copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCC7544E15E689EF00CF7F7C /* YasoundtestD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YasoundtestD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC7545115E69A0100CF7F7C /* commonIconHDGreyDisabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commonIconHDGreyDisabled.png; sourceTree = "<group>"; };
 		BCC7545215E69A0100CF7F7C /* commonIconHDGreyDisabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commonIconHDGreyDisabled@2x.png"; sourceTree = "<group>"; };
 		BCC7546515E69BBF00CF7F7C /* MenuTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTopBar.h; sourceTree = "<group>"; };
@@ -8546,6 +8556,7 @@
 			children = (
 				BCC7549915E69F9B00CF7F7C /* PurchaseTableViewCell.h */,
 				BCC7549A15E69F9B00CF7F7C /* PurchaseTableViewCell.m */,
+				BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */,
 				BC89C37E15E6399C00E0BEE3 /* PurchaseViewController.h */,
 				BC89C37F15E6399C00E0BEE3 /* PurchaseViewController.m */,
 				BC89C38015E6399C00E0BEE3 /* PurchaseViewController.xib */,
@@ -9528,7 +9539,7 @@
 				BC56F5E5152486AF005D1B40 /* YasoundD DEV SERVER.app */,
 				40B40AEB152EFC630050D334 /* YasoundD LOCAL SERVER.app */,
 				40D53CEB1554280F001EB0C5 /* Yasound TechTour.app */,
-				BCC7544E15E689EF00CF7F7C /* YasoundD copy.app */,
+				BCC7544E15E689EF00CF7F7C /* YasoundtestD.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -9745,7 +9756,7 @@
 			);
 			name = YasoundtestD;
 			productName = Yasound;
-			productReference = BCC7544E15E689EF00CF7F7C /* YasoundD copy.app */;
+			productReference = BCC7544E15E689EF00CF7F7C /* YasoundtestD.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E5A9A3A81454DC0500EA374C /* Yasound */ = {
@@ -10328,6 +10339,7 @@
 				BCC7548515E69E6400CF7F7C /* productIconBest@2x.png in Resources */,
 				BCC7548E15E69E6400CF7F7C /* productIconDefault.png in Resources */,
 				BCC7549715E69E6400CF7F7C /* productIconDefault@2x.png in Resources */,
+				BC974B3A15E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10810,6 +10822,7 @@
 				BCC7548615E69E6400CF7F7C /* productIconBest@2x.png in Resources */,
 				BCC7548F15E69E6400CF7F7C /* productIconDefault.png in Resources */,
 				BCC7549815E69E6400CF7F7C /* productIconDefault@2x.png in Resources */,
+				BC974B3B15E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11286,6 +11299,7 @@
 				BCC7548415E69E6400CF7F7C /* productIconBest@2x.png in Resources */,
 				BCC7548D15E69E6400CF7F7C /* productIconDefault.png in Resources */,
 				BCC7549615E69E6400CF7F7C /* productIconDefault@2x.png in Resources */,
+				BC974B3915E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11767,6 +11781,7 @@
 				BCC7548115E69E6400CF7F7C /* productIconBest@2x.png in Resources */,
 				BCC7548A15E69E6400CF7F7C /* productIconDefault.png in Resources */,
 				BCC7549315E69E6400CF7F7C /* productIconDefault@2x.png in Resources */,
+				BC974B3615E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12248,6 +12263,7 @@
 				BCC7547F15E69E6400CF7F7C /* productIconBest@2x.png in Resources */,
 				BCC7548815E69E6400CF7F7C /* productIconDefault.png in Resources */,
 				BCC7549115E69E6400CF7F7C /* productIconDefault@2x.png in Resources */,
+				BC974B3415E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12729,6 +12745,7 @@
 				BCC7548315E69E6400CF7F7C /* productIconBest@2x.png in Resources */,
 				BCC7548C15E69E6400CF7F7C /* productIconDefault.png in Resources */,
 				BCC7549515E69E6400CF7F7C /* productIconDefault@2x.png in Resources */,
+				BC974B3815E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13211,6 +13228,7 @@
 				BCC7548915E69E6400CF7F7C /* productIconDefault.png in Resources */,
 				BCC7549215E69E6400CF7F7C /* productIconDefault@2x.png in Resources */,
 				BC974B3115E7C93700CC62A2 /* YasoundtestD-Info.plist in Resources */,
+				BC974B3515E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13692,6 +13710,7 @@
 				BCC7547E15E69E6400CF7F7C /* productIconBest@2x.png in Resources */,
 				BCC7548715E69E6400CF7F7C /* productIconDefault.png in Resources */,
 				BCC7549015E69E6400CF7F7C /* productIconDefault@2x.png in Resources */,
+				BC974B3315E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14173,6 +14192,7 @@
 				BCC7548215E69E6400CF7F7C /* productIconBest@2x.png in Resources */,
 				BCC7548B15E69E6400CF7F7C /* productIconDefault.png in Resources */,
 				BCC7549415E69E6400CF7F7C /* productIconDefault@2x.png in Resources */,
+				BC974B3715E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16744,7 +16764,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "YasoundD copy";
+				PRODUCT_NAME = YasoundtestD;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -16771,7 +16791,7 @@
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "YasoundD copy";
+				PRODUCT_NAME = YasoundtestD;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
