@@ -43,7 +43,7 @@
     self.status = SongUploadItemStatusUploading;
     
     _uploader = [[SongUploader alloc] init];
-    BOOL res = [_uploader uploadSong:self.song target:self action:@selector(uploadDidFinished:) progressDelegate:self];
+    BOOL res = [_uploader uploadSong:self.song forRadioId:self.song.radio_id target:self action:@selector(uploadDidFinished:) progressDelegate:self];
     if (!res)
     {
         self.status = SongUploadItemStatusFailed;
@@ -225,10 +225,13 @@ static SongUploadManager* _main;
   for (NSDictionary* songInfo in storedUploads) 
   {
     NSString* storedName = [songInfo valueForKey:@"name"];
+      NSNumber* storedRadioId = [songInfo valueForKey:@"radio_id"];
     NSString* storedArtist = [songInfo valueForKey:@"artist"];
     NSString* storedAlbum = [songInfo valueForKey:@"album"];
-    SongLocal* s = [[SongLocal alloc] init];
+
+      SongLocal* s = [[SongLocal alloc] init];
     s.name = storedName;
+      s.radio_id = storedRadioId;
     s.artist = storedArtist;
     s.album = storedAlbum;
       s.name_client = storedName;
@@ -257,6 +260,7 @@ static SongUploadManager* _main;
       SongLocal* song = item.song;
       NSMutableDictionary* songInfo = [NSMutableDictionary dictionary];
       [songInfo setValue:song.name forKey:@"name"];
+        [songInfo setValue:song.radio_id forKey:@"radio_id"];
       [songInfo setValue:song.artist forKey:@"artist"];
       [songInfo setValue:song.album forKey:@"album"];
       [newUploads addObject:songInfo];

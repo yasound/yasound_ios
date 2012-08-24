@@ -534,7 +534,7 @@
             [_songsViewController release];
 
         NSNumber *playlistId = [playlistDico objectForKey:@"playlistId"];
-        _songsViewController = [[SongsViewController alloc] initWithNibName:@"SongsViewController" bundle:nil playlistId:[playlistId integerValue]];    
+        _songsViewController = [[SongsViewController alloc] initWithNibName:@"SongsViewController" bundle:nil playlistId:[playlistId integerValue] forRadio:self.radio];
         [self.navigationController pushViewController:_songsViewController animated:TRUE];
         return;
     }

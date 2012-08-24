@@ -13,10 +13,15 @@
 
 @implementation SongsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil playlistId:(NSInteger)playlistId
+@synthesize radio;
+
+- (id) initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil playlistId:(NSInteger)playlistId forRadio:radio
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
+        self.radio = radio;
+        
         // Custom initialization
         _playlistId = playlistId;
     }
@@ -106,7 +111,7 @@
 
     [_hud show:YES];
     
-    [[SongUploader main] uploadSong:song.name 
+    [[SongUploader main] uploadSong:song.name forRadioId:self.radio.id
                               album:song.album 
                              artist:song.artist
                              songId:song.id

@@ -68,10 +68,10 @@
     
 //    _cellDeleteLabel.text = NSLocalizedString(@"SongView_delete", nil);
     
-    if (!_showNowPlaying)
-    {
-        [_toolbar setItems:[NSArray arrayWithObjects:_backBtn, nil]];
-    }
+//    if (!_showNowPlaying)
+//    {
+//        [_toolbar setItems:[NSArray arrayWithObjects:_backBtn, nil]];
+//    }
     
     _tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 }

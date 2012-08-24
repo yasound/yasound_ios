@@ -110,7 +110,7 @@ static SongUploader* _main = nil;
 
 #pragma mark - public functions
 
-- (BOOL)uploadSong:(NSString*)title album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
+- (BOOL)uploadSong:(NSString*)title forRadioId:(NSNumber*)radio_id album:(NSString*)album artist:(NSString *)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
 {
   MPMediaItem *item = [self findSong:title album:album artist:artist];
   if (!item) 
@@ -180,7 +180,7 @@ static SongUploader* _main = nil;
         // LBDEBUG : is this data properly released? just make sure...
         
     NSData *data = [NSData dataWithContentsOfFile: fullPath];
-    _request = [[YasoundDataProvider main] uploadSong:data 
+    _request = [[YasoundDataProvider main] uploadSong:data  forRadioId:radio_id
                                      title:title
                                      album:album
                                     artist:artist 
@@ -208,9 +208,9 @@ static SongUploader* _main = nil;
 
 
 
-- (BOOL)uploadSong:(Song*)song target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
+- (BOOL)uploadSong:(Song*)song forRadioId:(NSNumber*)radio_id target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
 {
-    return [self uploadSong:song.name_client album:song.album_client artist:song.artist_client songId:song.id target:target action:selector progressDelegate:progressDelegate];
+    return [self uploadSong:song.name_client forRadioId:radio_id album:song.album_client artist:song.artist_client songId:song.id target:target action:selector progressDelegate:progressDelegate];
 }
 
 - (BOOL)canUploadSong:(Song*)song

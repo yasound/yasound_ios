@@ -12,6 +12,9 @@
 
 @interface SongLocal : Song
 
+// radio id which the song is uploaded to
+@property (nonatomic, retain) NSNumber* radio_id;
+
 @property (nonatomic, retain) MPMediaItem* mediaItem;
 @property (nonatomic, retain) NSString* catalogKey;
 

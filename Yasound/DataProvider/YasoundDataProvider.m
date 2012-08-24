@@ -1795,21 +1795,25 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (ASIFormDataRequest*)uploadSong:(NSData*)song 
-             title:(NSString*)title
-             album:(NSString*)album
-             artist:(NSString*)artist
-            songId:(NSNumber*)songId 
-            target:(id)target 
-            action:(SEL)selector 
-  progressDelegate:(id)progressDelegate
+- (ASIFormDataRequest*)uploadSong:(NSData*)song forRadioId:(Radio*)radio_id title:(NSString*)title album:(NSString*)album artist:(NSString*)artist songId:(NSNumber*)songId target:(id)target action:(SEL)selector progressDelegate:(id)progressDelegate
 {
+    if ((song == nil) || (radio_id == nil))
+        return nil;
+    
+    //LBDEBUG
+    if (![radio_id isKindOfClass:[NSNumber class]])
+    {
+        DLog(@"MEUH!");
+        assert(0);
+        return nil;
+    }
+    
   Auth* auth = self.apiKeyAuth;
   NSString* url = [NSString stringWithFormat:@"api/v1/upload_song/%@/", songId];
     
   
   NSMutableDictionary* jsonObject = [NSMutableDictionary dictionary];
-    [jsonObject setObject:self.radio.id forKey:@"radio_id"];
+    [jsonObject setObject:radio_id forKey:@"radio_id"];
     [jsonObject setObject:title forKey:@"title"];
   [jsonObject setObject:album forKey:@"album"];
   [jsonObject setObject:artist forKey:@"artist"];   

@@ -62,10 +62,10 @@
 //    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
 //    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
     
-    if (!_showNowPlaying)
-    {
-        [_toolbar setItems:[NSArray arrayWithObjects:_backBtn, nil]];
-    }
+//    if (!_showNowPlaying)
+//    {
+//        [_toolbar setItems:[NSArray arrayWithObjects:_backBtn, nil]];
+//    }
     
 }
 
