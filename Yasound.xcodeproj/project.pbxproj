@@ -2134,6 +2134,15 @@
 		BC974B3915E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
 		BC974B3A15E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
 		BC974B3B15E7CCF000CC62A2 /* PurchaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */; };
+		BC974B3E15E7E5EE00CC62A2 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = BC974B3D15E7E5EE00CC62A2 /* Subscription.m */; };
+		BC974B3F15E7E5EE00CC62A2 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = BC974B3D15E7E5EE00CC62A2 /* Subscription.m */; };
+		BC974B4015E7E5EE00CC62A2 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = BC974B3D15E7E5EE00CC62A2 /* Subscription.m */; };
+		BC974B4115E7E5EE00CC62A2 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = BC974B3D15E7E5EE00CC62A2 /* Subscription.m */; };
+		BC974B4215E7E5EE00CC62A2 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = BC974B3D15E7E5EE00CC62A2 /* Subscription.m */; };
+		BC974B4315E7E5EE00CC62A2 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = BC974B3D15E7E5EE00CC62A2 /* Subscription.m */; };
+		BC974B4415E7E5EE00CC62A2 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = BC974B3D15E7E5EE00CC62A2 /* Subscription.m */; };
+		BC974B4515E7E5EE00CC62A2 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = BC974B3D15E7E5EE00CC62A2 /* Subscription.m */; };
+		BC974B4615E7E5EE00CC62A2 /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = BC974B3D15E7E5EE00CC62A2 /* Subscription.m */; };
 		BC9B7E3D15E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
 		BC9B7E3E15E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
 		BC9B7E3F15E42B000083CF6C /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */; };
@@ -6874,6 +6883,8 @@
 		BC9601B7154997B90003AC7E /* WebPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebPageViewController.xib; path = Settings/WebPageViewController.xib; sourceTree = "<group>"; };
 		BC974B3015E7C93700CC62A2 /* YasoundtestD-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "YasoundtestD-Info.plist"; sourceTree = "<group>"; };
 		BC974B3215E7CCF000CC62A2 /* PurchaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseTableViewCell.xib; path = Products/PurchaseTableViewCell.xib; sourceTree = "<group>"; };
+		BC974B3C15E7E5EE00CC62A2 /* Subscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscription.h; sourceTree = "<group>"; };
+		BC974B3D15E7E5EE00CC62A2 /* Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscription.m; sourceTree = "<group>"; };
 		BC9B7E3915E42B000083CF6C /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
 		BC9B7E3A15E42B000083CF6C /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
 		BC9B7E3B15E42B000083CF6C /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
@@ -7951,6 +7962,8 @@
 		BC0DD8381487C73E00DCD550 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BC974B3C15E7E5EE00CC62A2 /* Subscription.h */,
+				BC974B3D15E7E5EE00CC62A2 /* Subscription.m */,
 				4028E787152D9DA80056B34B /* APNsDeviceToken.h */,
 				4028E788152D9DA80056B34B /* APNsDeviceToken.m */,
 				4028E78B152D9DA80056B34B /* APNsPreferences.h */,
@@ -14466,6 +14479,7 @@
 				BCC7546E15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC754A215E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754AD15E7839D00CF7F7C /* SongUploading.m in Sources */,
+				BC974B4515E7E5EE00CC62A2 /* Subscription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14681,6 +14695,7 @@
 				BCC7546F15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC754A315E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754AE15E7839D00CF7F7C /* SongUploading.m in Sources */,
+				BC974B4615E7E5EE00CC62A2 /* Subscription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14892,6 +14907,7 @@
 				BCC7546D15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC754A115E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754AC15E7839D00CF7F7C /* SongUploading.m in Sources */,
+				BC974B4415E7E5EE00CC62A2 /* Subscription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15107,6 +15123,7 @@
 				BCC7546A15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC7549E15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754A915E7839D00CF7F7C /* SongUploading.m in Sources */,
+				BC974B4115E7E5EE00CC62A2 /* Subscription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15322,6 +15339,7 @@
 				BCC7546815E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC7549C15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754A715E7839D00CF7F7C /* SongUploading.m in Sources */,
+				BC974B3F15E7E5EE00CC62A2 /* Subscription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15538,6 +15556,7 @@
 				BCC7546C15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC754A015E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754AB15E7839D00CF7F7C /* SongUploading.m in Sources */,
+				BC974B4315E7E5EE00CC62A2 /* Subscription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15753,6 +15772,7 @@
 				BCC7546915E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC7549D15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754A815E7839D00CF7F7C /* SongUploading.m in Sources */,
+				BC974B4015E7E5EE00CC62A2 /* Subscription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15968,6 +15988,7 @@
 				BCC7546715E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC7549B15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754A615E7839D00CF7F7C /* SongUploading.m in Sources */,
+				BC974B3E15E7E5EE00CC62A2 /* Subscription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16184,6 +16205,7 @@
 				BCC7546B15E69BBF00CF7F7C /* MenuTopBar.m in Sources */,
 				BCC7549F15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754AA15E7839D00CF7F7C /* SongUploading.m in Sources */,
+				BC974B4215E7E5EE00CC62A2 /* Subscription.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

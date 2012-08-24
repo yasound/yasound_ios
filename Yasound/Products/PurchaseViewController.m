@@ -9,6 +9,8 @@
 #import "PurchaseViewController.h"
 #import "Theme.h"
 #import "ActivityAlertView.h"
+#import "YasoundDataProvider.h"
+#import "Subscription.h"
 
 @interface PurchaseViewController ()
 
@@ -16,6 +18,7 @@
 
 @implementation PurchaseViewController
 
+@synthesize subscriptions;
 @synthesize productIdentifierList;
 @synthesize productDetailsList;
 @synthesize tableview;
@@ -47,18 +50,12 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 {
     [super viewDidLoad];
 
-    productDetailsList    = [[NSMutableArray alloc] init];
-    productIdentifierList = [[NSMutableArray alloc] init];
-    
-    [productIdentifierList addObject:@"com.yasound.yasoundtest.inappHD1m"];
-    [productIdentifierList addObject:@"com.yasound.yasoundtest.inappHD1y"];
-    [productIdentifierList addObject:@"com.yasound.yasoundtest.inappHD1ysp"];
+    self.productDetailsList    = [[NSMutableArray alloc] init];
+    self.productIdentifierList = [[NSMutableArray alloc] init];
     
     [ActivityAlertView showWithTitle:nil];
-    
-    SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithArray:productIdentifierList]];
-    request.delegate = self;
-    [request start];
+
+    [[YasoundDataProvider main] subscriptionsWithTarget:self action:@selector(onSubscriptionsReceived:succes:)];
 }
 
 
@@ -77,6 +74,52 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
 
 
+- (void)onSubscriptionsReceived:(ASIHTTPRequest*)req success:(BOOL)success
+{
+
+    if (!success)
+    {
+        [ActivityAlertView close];
+        
+        DLog(@"onSubscriptionsReceived : failed!");
+
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.subscriptions.error.title", nil) message:NSLocalizedString(@"Purchase.subscriptions.error.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        
+        return;
+    }
+    
+    Container* container = [req responseObjectsWithClass:[Subscription class]];
+    self.subscriptions = container.objects;
+    
+    if ((self.subscriptions == nil) || (self.subscriptions.count == 0))
+    {
+        [ActivityAlertView close];
+        DLog(@"onSubscriptionsReceived : failed!");
+
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.subscriptions.error.title", nil) message:NSLocalizedString(@"Purchase.subscriptions.error.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+
+        return;
+    }
+
+    // fill the product identifiers list
+    for (Subscription* sub in self.subscriptions)
+    {
+        [self.productIdentifierList addObject:sub.sku];
+    }
+    
+    DLog(@"onSubscriptionsReceived : product ids : %@", self.productIdentifierList);
+    
+    
+    SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithArray:productIdentifierList]];
+    request.delegate = self;
+    [request start];
+
+}
 
 
 

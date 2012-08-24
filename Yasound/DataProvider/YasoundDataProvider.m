@@ -2451,6 +2451,47 @@ static YasoundDataProvider* _main = nil;
 }
 
 
+
+
+
+#pragma mark - in-app purchase
+
+- (void)subscriptionsWithTarget:(id)target action:(SEL)action
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/premium/subscriptions/";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = action;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
+- (void)subscriptionComplete:(NSString*)productId target:(id)target action:(SEL)action
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = [NSString stringWithFormat:@"api/v1/premium/subscriptions/%@", productId];
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"POST";
+    conf.callbackTarget = target;
+    conf.callbackAction = action;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
+
+
+
+
+
+
 #pragma mark - city suggestions
 - (void)citySuggestionsWithCityName:(NSString*)city target:(id)target action:(SEL)selector
 {

@@ -16,8 +16,10 @@
 
 @property (nonatomic, retain) UINib* cellLoader;
 
+@property(nonatomic, retain) NSArray* subscriptions;
 @property(nonatomic, retain) NSMutableArray* productIdentifierList;
 @property(nonatomic, retain) NSMutableArray* productDetailsList;
+
 @property(nonatomic, retain) IBOutlet UITableView* tableview;
 @property (nonatomic, retain) IBOutlet PurchaseTableViewCell* cellPurchase;
 

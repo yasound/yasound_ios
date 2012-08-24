@@ -295,6 +295,11 @@ taskStatus stringToStatus(NSString* str);
 - (void)addSong:(YasoundSong*)song inShow:(Show*)show withTarget:(id)target action:(SEL)selector;   // takes YasoundSong as param !!
 - (void)removeSong:(Song*)song fromShow:(Show*)show withTarget:(id)target action:(SEL)selector;     // takes Song as param !!
 
+// in-app purchase
+- (void)subscriptionsWithTarget:(id)target action:(SEL)action;
+- (void)subscriptionComplete:(NSString*)productId target:(id)target action:(SEL)action;
+
+
 - (void)testV2;
 
 // - (void)didReceiveCitySuggestions:(ASIHTTPRequest*) success:(BOOL)
