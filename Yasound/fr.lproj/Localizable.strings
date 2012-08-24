@@ -641,3 +641,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MyRadios.delete.message" = "Etes-vous sûr de vouloir supprimer votre radio?\nCela ne concerne que votre radio sur les serveurs de Yasound, et ne modifie rien sur votre appareil.";
 "MyRadios.delete.error.message" = "La suppression de la radio a échoué.";
 
+"Purchase.transaction.error.title" = "Oups...;
+"Purchase.transaction.error.message" = "Une erreur est survenue pendant la transaction. Merci de réessayer.;
+

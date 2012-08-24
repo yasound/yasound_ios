@@ -35,7 +35,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.yasound.yasound</string>
+			<string>com.yasound.yasoundtest</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb296167703762159</string>

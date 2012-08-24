@@ -8,6 +8,7 @@
 
 #import "PurchaseViewController.h"
 #import "Theme.h"
+#import "ActivityAlertView.h"
 
 @interface PurchaseViewController ()
 
@@ -29,6 +30,8 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     if (self)
     {
         self.cellLoader = [UINib nibWithNibName:CellIdentifier bundle:[NSBundle mainBundle]];
+        
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     }
     return self;
 }
@@ -47,12 +50,13 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     productDetailsList    = [[NSMutableArray alloc] init];
     productIdentifierList = [[NSMutableArray alloc] init];
     
-    [productIdentifierList addObject:@"yaHD1m"];
-    [productIdentifierList addObject:@"yaHD1y"];
-    [productIdentifierList addObject:@"yaHD1ysp"];
+    [productIdentifierList addObject:@"com.yasound.yasoundtest.inappHD1m"];
+    [productIdentifierList addObject:@"com.yasound.yasoundtest.inappHD1y"];
+    [productIdentifierList addObject:@"com.yasound.yasoundtest.inappHD1ysp"];
+    
+    [ActivityAlertView showWithTitle:nil];
     
     SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithArray:productIdentifierList]];
-    
     request.delegate = self;
     [request start];
 }
@@ -78,6 +82,7 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
 -(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
+    [ActivityAlertView close];
     [self.productDetailsList addObjectsFromArray: response.products];
     [self.tableview reloadData];
 }
@@ -150,6 +155,83 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     return cell;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
+    
+    NSString* productId = [self.productIdentifierList objectAtIndex:indexPath.row];
+    
+    SKPayment* payment = [SKPayment paymentWithProductIdentifier:productId];
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+    [SKPaymentQueue canMakePayments];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions
+{
+    for (SKPaymentTransaction *transaction in transactions)
+    {
+        switch (transaction.transactionState)
+        {
+            case SKPaymentTransactionStatePurchased:
+                [self completeTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateFailed:
+                [self failedTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateRestored:
+                [self restoreTransaction:transaction];
+            default:
+                break;
+        }
+    }
+}
+
+- (void) completeTransaction: (SKPaymentTransaction *)transaction
+{
+    DLog(@"complete Transaction = %@", transaction.description);
+    
+    //[self recordTransaction: transaction];
+    //[self provideContent: transaction.payment.productIdentifier];
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+    
+    
+}
+
+- (void) restoreTransaction: (SKPaymentTransaction *)transaction
+{
+    DLog(@"restore Transaction = %@", transaction.description);
+
+    //[self recordTransaction: transaction];
+    //[self provideContent: transaction.originalTransaction.payment.productIdentifier];
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
+
+- (void) failedTransaction: (SKPaymentTransaction *)transaction
+{
+    DLog(@"failed Transaction = %@", transaction.description);
+
+    if (transaction.error != SKErrorPaymentCancelled)
+    {
+        UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.transaction.error.title", nil)
+                                                                 message:NSLocalizedString(@"Purchase.transaction.error.message", nil)
+                                                                delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [successesAlert show];
+        [successesAlert release];
+    }
+    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+}
 
 
 

@@ -654,4 +654,7 @@
 "MyRadios.delete.message" = "Are you sure you want to delete your radio?\nIt only implies your radio on the Yasound servers, and do not deal with your device.";
 "MyRadios.delete.error.message" = "The radio could not have been deleted.";
 
+"Purchase.transaction.error.title" = "In-App-Purchase Error;
+"Purchase.transaction.error.message" = "There was an error purchasing this item please try again.;
+
 
