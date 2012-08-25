@@ -647,4 +647,5 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 
 "Purchase.subscriptions.error.title" = "Oups...";
 "Purchase.subscriptions.error.message" = "Erreur de communication avec les servers de Yasound. Merci de réessayer ultèrieurement.";
+"Purchase.subscriptions.error.apple.message" = "Erreur de communication avec les servers de Yasound. Merci de réessayer ultèrieurement.";
 

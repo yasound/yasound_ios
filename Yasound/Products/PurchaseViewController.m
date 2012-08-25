@@ -55,7 +55,7 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     
     [ActivityAlertView showWithTitle:nil];
 
-    [[YasoundDataProvider main] subscriptionsWithTarget:self action:@selector(onSubscriptionsReceived:succes:)];
+    [[YasoundDataProvider main] subscriptionsWithTarget:self action:@selector(onSubscriptionsReceived:success:)];
 }
 
 
@@ -90,6 +90,9 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
         
         return;
     }
+    
+    //LBDEBUG
+    //DLog(@"%@", req.responseString);
     
     Container* container = [req responseObjectsWithClass:[Subscription class]];
     self.subscriptions = container.objects;
@@ -127,6 +130,20 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 {
     [ActivityAlertView close];
     [self.productDetailsList addObjectsFromArray: response.products];
+    
+    if ((self.productDetailsList == nil) || (self.productDetailsList.count == 0))
+    {
+        [ActivityAlertView close];
+        DLog(@"productsRequest didReceiveResponse : failed!");
+        DLog(@"using the identifiers : %@", self.productIdentifierList);
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.subscriptions.error.title", nil) message:NSLocalizedString(@"Purchase.subscriptions.error.apple.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        
+        return;
+    }
+    
     [self.tableview reloadData];
 }
 
