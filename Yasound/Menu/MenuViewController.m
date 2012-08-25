@@ -33,13 +33,13 @@
 enum MenuDescription
 {
     ROW_RADIOS,
-    ROW_LOGIN,
     ROW_ACCOUNT,
     ROW_NOTIFS,
     ROW_FACEBOOK,
     ROW_TWITTER,
     ROW_YASOUND,
     ROW_LEGAL,
+    ROW_LOGIN,
     NB_ROWS
 };
 
