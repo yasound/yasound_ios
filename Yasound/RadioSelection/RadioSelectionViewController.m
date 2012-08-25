@@ -94,6 +94,10 @@
     {
         [self.view removeGestureRecognizer:[APPDELEGATE.slideController panGesture]];
     }
+    
+    if (APPDELEGATE.menuViewController.programmedCommand != nil)
+        [APPDELEGATE.menuViewController runProgrammedCommand];
+
 
     self.wheelSelector.locked = NO;
 }
@@ -161,8 +165,11 @@
         }
     }
 
-    if (APPDELEGATE.menuViewController.programmedCommand != nil)
-        [APPDELEGATE.menuViewController runProgrammedCommand];
+    if (SYSTEM_VERSION_LESS_THAN(@"5.0"))
+    {
+        if (APPDELEGATE.menuViewController.programmedCommand != nil)
+            [APPDELEGATE.menuViewController runProgrammedCommand];
+    }
 
 }
 

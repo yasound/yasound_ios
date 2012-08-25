@@ -216,7 +216,6 @@
     if (![YasoundSessionManager main].registered)
     {
         self.itemNotifs.enabled = NO;
-        self.itemNotifsButton.selected = NO;
         self.itemNotifsButton.enabled = NO;
         
         [self.itemNotifsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
@@ -226,11 +225,6 @@
         self.itemNotifs.enabled = YES;
         self.itemNotifsButton.enabled = YES;
         [self.itemNotifsButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
-        
-        if ([[YasoundDataProvider main].user permission:PERM_HD])
-            self.itemNotifsButton.selected = YES;
-        else
-            self.itemNotifsButton.selected = NO;
     }
 }
 
@@ -245,22 +239,22 @@
     
     if (!enabled)
     {
-        self.itemNotifs.enabled = NO;
-        self.itemNotifsButton.selected = NO;
-        self.itemNotifsButton.enabled = NO;
+        self.itemSettings.enabled = NO;
+        self.itemSettingsButton.selected = NO;
+        self.itemSettingsButton.enabled = NO;
         
-        [self.itemNotifsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+        [self.itemSettingsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
     }
     else
     {
-        self.itemNotifs.enabled = YES;
-        self.itemNotifsButton.enabled = YES;
-        [self.itemNotifsButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
+        self.itemSettings.enabled = YES;
+        self.itemSettingsButton.enabled = YES;
+        [self.itemSettingsButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
         
         if ([[YasoundDataProvider main].user permission:PERM_HD])
-            self.itemNotifsButton.selected = YES;
+            self.itemSettingsButton.selected = YES;
         else
-            self.itemNotifsButton.selected = NO;
+            self.itemSettingsButton.selected = NO;
     }
 }
 
