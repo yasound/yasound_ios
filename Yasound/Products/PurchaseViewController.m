@@ -11,6 +11,9 @@
 #import "ActivityAlertView.h"
 #import "YasoundDataProvider.h"
 #import "Subscription.h"
+#import "TopBar.h"
+
+
 
 @interface PurchaseViewController ()
 
@@ -292,6 +295,36 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     }
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - TopBarDelegate
+
+- (BOOL)topBarItemClicked:(TopBarItemId)itemId
+{
+    if (itemId == TopBarItemHd)
+    {
+        return NO;
+    }
+    
+    
+    return YES;
+}
+
 
 
 

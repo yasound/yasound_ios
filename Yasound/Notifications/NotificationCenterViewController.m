@@ -539,8 +539,16 @@
         NSString* message = NSLocalizedString(@"NotificationCenterView_alert_message", nil);
         _alertTrash = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Navigation_cancel", nil) otherButtonTitles:@"OK", nil];
         [_alertTrash show];
-        [_alertTrash release];    
+        [_alertTrash release];
+        
+        return YES;
     }
+    
+    else if (itemId == TopBarItemNotif)
+    {
+        return NO;
+    }
+        
     
     return YES;
 }
