@@ -14,6 +14,7 @@
 #import "RadioListTableViewController.h"
 #import "TabBar.h"
 #import "TopBar.h"
+#import "MenuViewController.h"
 
 @interface RadioSelectionViewController : YaViewController<TopBarDelegate, RadioListDelegate, TabBarDelegate>
 {
@@ -33,6 +34,8 @@
 @property (nonatomic, retain) IBOutlet UIView* listContainer;
 @property (nonatomic, retain) UITableViewController* tableview;
 @property (nonatomic, retain) IBOutlet TabBar* tabBar;
+
+@property (nonatomic, retain) MenuViewController* menu;
 
 
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withTabIndex:(TabIndex)tabIndex;

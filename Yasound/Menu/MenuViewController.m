@@ -22,7 +22,7 @@
 #import "YasoundSessionManager.h"
 #import "ActivityAlertView.h"
 #import "YasoundAppDelegate.h"
-
+#import "Version.h"
 
 
 
@@ -32,7 +32,7 @@
 
 enum MenuDescription
 {
-//    ROW_RADIOS,
+    ROW_RADIOS,
     ROW_LOGIN,
     ROW_ACCOUNT,
     ROW_NOTIFS,
@@ -56,9 +56,12 @@ enum MenuDescription
     if (self) 
     {
         [APPDELEGATE.slideController setAnchorRightRevealAmount:264.0f];
-        APPDELEGATE.slideController.underLeftWidthLayout = ECFullWidth;
+        [APPDELEGATE.slideController setUnderLeftWidthLayout:ECFullWidth];
         
-        [self.view addGestureRecognizer:APPDELEGATE.slideController.panGesture];
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+        {
+            [self.view addGestureRecognizer:[APPDELEGATE.slideController panGesture]];
+        }
     }
     return self;
 }
@@ -122,12 +125,21 @@ enum MenuDescription
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return NB_ROWS;
+    NSInteger nb = NB_ROWS;
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+        nb--;
+    
+    return nb;
 }
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger row = indexPath.row;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+        row++;
+
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.row" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIImageView* view = [sheet makeImage];
     cell.backgroundView = view;
@@ -177,7 +189,11 @@ enum MenuDescription
 {
     static NSString *CellIdentifier = @"CellIdentifier";
     
-  UITableViewCell *cell = nil;
+    NSInteger row = indexPath.row;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+        row++;
+
+    UITableViewCell *cell = nil;
   
     cell = [_tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
@@ -194,12 +210,12 @@ enum MenuDescription
 
     
 
-//    if (indexPath.row == ROW_RADIOS)
-//        [self setCell:cell refText:@"Menu.radios" icon:@"Menu.iconRadios" authenticated:NO];
-//
-//    else
+    if (row == ROW_RADIOS)
+        [self setCell:cell refText:@"Menu.radios" icon:@"Menu.iconRadios" authenticated:NO];
+
+    else
         
-    if (indexPath.row == ROW_LOGIN)
+    if (row == ROW_LOGIN)
     {
         if ([YasoundSessionManager main].registered)
             [self setCell:cell refText:@"Menu.logout" icon:@"Menu.iconLogin" authenticated:NO];
@@ -207,22 +223,22 @@ enum MenuDescription
             [self setCell:cell refText:@"Menu.login" icon:@"Menu.iconLogin" authenticated:NO];
     }
 
-    else if (indexPath.row == ROW_ACCOUNT)
+    else if (row == ROW_ACCOUNT)
         [self setCell:cell refText:@"Menu.account" icon:@"Menu.iconAccount" authenticated:YES];
 
-    else if (indexPath.row == ROW_NOTIFS)
+    else if (row == ROW_NOTIFS)
         [self setCell:cell refText:@"Menu.notifs" icon:@"Menu.iconNotifs" authenticated:YES];
 
-    else if (indexPath.row == ROW_FACEBOOK)
+    else if (row == ROW_FACEBOOK)
         [self setCell:cell refText:@"Menu.facebook" icon:@"Menu.iconFacebook" authenticated:YES];
 
-    else if (indexPath.row == ROW_TWITTER)
+    else if (row == ROW_TWITTER)
         [self setCell:cell refText:@"Menu.twitter" icon:@"Menu.iconTwitter" authenticated:YES];
 
-    else if (indexPath.row == ROW_YASOUND)
+    else if (row == ROW_YASOUND)
         [self setCell:cell refText:@"Menu.yasound" icon:@"Menu.iconYasound" authenticated:YES];
 
-    else if (indexPath.row == ROW_LEGAL)
+    else if (row == ROW_LEGAL)
         [self setCell:cell refText:@"Menu.legal" icon:@"Menu.iconLegal" authenticated:NO];
 
     
@@ -232,17 +248,22 @@ enum MenuDescription
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger row = indexPath.row;
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+        row++;
+
+
     if (![YasoundSessionManager main].registered &&
-        ((indexPath.row == ROW_ACCOUNT)
-        || (indexPath.row == ROW_NOTIFS)
-        || (indexPath.row == ROW_FACEBOOK)
-        || (indexPath.row == ROW_TWITTER)
-        || (indexPath.row == ROW_YASOUND)
+        ((row == ROW_ACCOUNT)
+        || (row == ROW_NOTIFS)
+        || (row == ROW_FACEBOOK)
+        || (row == ROW_TWITTER)
+        || (row == ROW_YASOUND)
         ))
         return;
 
     
-    if ((indexPath.row == ROW_LOGIN) && ([YasoundSessionManager main].registered))
+    if ((row == ROW_LOGIN) && ([YasoundSessionManager main].registered))
         {
             [ActivityAlertView showWithTitle:nil closeAfterTimeInterval:2];
             [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
@@ -252,62 +273,72 @@ enum MenuDescription
             return;
         }
 
-//    if (indexPath.row == ROW_RADIOS)
+//    else if (row == ROW_RADIOS)
 //    {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_SELECTION object:nil];
+//        [APPDELEGATE.slideController resetTopView];
 //    }
-//    
-//    else
     
-    [APPDELEGATE.slideController resetTopView];
-
-    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(onTimerTick:) userInfo:indexPath repeats:NO];
+    else
+    {
+        self.programmedCommand = indexPath;
+        [APPDELEGATE.slideController resetTopView];
+    }
+    
 }
 
-- (void)onTimerTick:(NSTimer*)timer
+- (void)runProgrammedCommand
 {
+    if (self.programmedCommand == nil)
+        return;
+
+    NSInteger row = self.programmedCommand.row;
     
-    NSIndexPath* indexPath = timer.userInfo;
+    self.programmedCommand = nil;
     
-    if ((indexPath.row == ROW_LOGIN) && !([YasoundSessionManager main].registered))
+
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+        row++;
+
+    
+    if ((row == ROW_LOGIN) && !([YasoundSessionManager main].registered))
     {
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_LOGIN object:nil];
     }
     
-    else if (indexPath.row == ROW_ACCOUNT)
+    else if (row == ROW_ACCOUNT)
     {
         MyAccountViewController* view = [[MyAccountViewController alloc] initWithNibName:@"MyAccountViewController" bundle:nil];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
-    else if (indexPath.row == ROW_NOTIFS)
+    else if (row == ROW_NOTIFS)
     {
         NotificationViewController* view = [[NotificationViewController alloc] initWithNibName:@"NotificationViewController" bundle:nil];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
-    else if (indexPath.row == ROW_FACEBOOK)
+    else if (row == ROW_FACEBOOK)
     {
         AccountFacebookViewController* view = [[AccountFacebookViewController alloc] initWithNibName:@"AccountFacebookViewController" bundle:nil];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
-    else if (indexPath.row == ROW_TWITTER)
+    else if (row == ROW_TWITTER)
     {
         AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
-    else if (indexPath.row == ROW_YASOUND)
+    else if (row == ROW_YASOUND)
     {
         AccountYasoundViewController* view = [[AccountYasoundViewController alloc] initWithNibName:@"AccountYasoundViewController" bundle:nil];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
     
-    else if (indexPath.row == ROW_LEGAL)
+    else if (row == ROW_LEGAL)
     {
         NSURL* url = [NSURL URLWithString:URL_LEGAL];
         NSString* title = NSLocalizedString(@"Menu.legal", nil);

@@ -18,9 +18,8 @@
 #import "RootViewController.h"
 #import "ProfilViewController.h"
 #import "YasoundAppDelegate.h"
-#import "MenuViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "Version.h"
 
 @implementation RadioSelectionViewController
 
@@ -33,6 +32,7 @@
 @synthesize listContainer;
 @synthesize tableview;
 @synthesize tabBar;
+@synthesize menu;
 
 #define TIMEPROFILE_CELL_BUILD @"TimeProfileCellBuild"
 
@@ -76,7 +76,12 @@
 - (void)onSlidingOut:(NSNotification*)notif
 {
     self.locked = YES;
-    [self.view addGestureRecognizer:APPDELEGATE.slideController.panGesture];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+    {
+        [self.view addGestureRecognizer:[APPDELEGATE.slideController panGesture]];
+    }
+    
     self.wheelSelector.locked = YES;
 }
 
@@ -85,7 +90,11 @@
 {
     self.locked = NO;
 //    [self.view setUserInteractionEnabled:YES];
-    [self.view removeGestureRecognizer:APPDELEGATE.slideController.panGesture];
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+    {
+        [self.view removeGestureRecognizer:[APPDELEGATE.slideController panGesture]];
+    }
+
     self.wheelSelector.locked = NO;
 }
 
@@ -143,14 +152,17 @@
 //    self.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.view.bounds].CGPath;
 ////    [self.view setClipsToBounds:NO];
 
-    if (![APPDELEGATE.slideController.underLeftViewController isKindOfClass:[MenuViewController class]])
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
     {
-        MenuViewController* menu = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-        APPDELEGATE.slideController.underLeftViewController  = menu;
+        if (![[APPDELEGATE.slideController underLeftViewController] isKindOfClass:[MenuViewController class]])
+        {
+    //        self.menu = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+            [APPDELEGATE.slideController setUnderLeftViewController:APPDELEGATE.menuViewController];
+        }
     }
-    
-    
-    
+
+    if (APPDELEGATE.menuViewController.programmedCommand != nil)
+        [APPDELEGATE.menuViewController runProgrammedCommand];
 
 }
 

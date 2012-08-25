@@ -16,6 +16,9 @@
 }
 
 @property (nonatomic, retain) IBOutlet TopBar* topBar;
+@property (nonatomic, retain) NSIndexPath* programmedCommand;
+
+- (void)runProgrammedCommand;
 
 
 @end

@@ -17,6 +17,9 @@
 
 #import <Crashlytics/Crashlytics.h>
 #import "UserSettings.h"
+#import "FakeSlidingController.h"
+#import "Version.h"
+
 
 @implementation YasoundAppDelegate
 
@@ -24,7 +27,7 @@
 @synthesize window;
 @synthesize navigationController;
 @synthesize rootViewController;
-//@synthesize menuViewController;
+@synthesize menuViewController;
 @synthesize APNsTokenString = _APNsTokenString;
 @synthesize serverURL = _serverURL;
 
@@ -98,23 +101,49 @@ void SignalHandler(int sig) {
     [EasyTracker launchWithOptions:launchOptions
                     withParameters:trackerParameters
                          withError:nil];
+    
+    DLog(@"SYSTEM VERSION '%@'", [[UIDevice currentDevice] systemVersion]);
+    
+    
+    // iOS  < 5 : can't use a real slide controller, make it point to a common navigationController, overriding the expected methods
+    if (SYSTEM_VERSION_LESS_THAN(@"5.0"))
+    {
+        self.slideController = [[FakeSlidingController alloc] init];
+        self.navigationController = self.slideController;
+        
+    }
+    
+    // iOS >= 5 : use the special slide controller
+    else
+    {
+        self.slideController = [[ECSlidingViewController alloc] init];
+        self.navigationController = [[UINavigationController alloc] init];
+    }
 
-    self.slideController = [[ECSlidingViewController alloc] init];
-
-  [self.window makeKeyAndVisible];
-
-  // add it as the window's root widget
-//    self.window.rootViewController = navigationController;
+    
+    [self.window makeKeyAndVisible];
     self.window.rootViewController = self.slideController;
     
-
-    self.navigationController = [[UINavigationController alloc] init];
+    
+    self.menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    
     [self.navigationController.navigationBar setBarStyle:UIBarStyleBlackOpaque];
     self.navigationController.navigationBarHidden = YES;
 
     self.rootViewController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
-    self.slideController.topViewController = self.navigationController;
-    [self.navigationController pushViewController:self.rootViewController animated:NO];
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
+    {
+        [self.slideController setTopViewController:self.navigationController];
+        [self.navigationController pushViewController:self.rootViewController animated:NO];
+    }
+    else
+    {
+        [self.slideController pushViewController:self.rootViewController animated:NO];
+        [self.slideController pushViewController:self.menuViewController animated:NO];
+        
+    }
+    
     
 //    self.menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
 //    self.slideController.underLeftViewController = menuViewController;

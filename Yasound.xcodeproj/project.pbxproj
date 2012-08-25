@@ -1882,6 +1882,15 @@
 		BC784E8D15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
 		BC784E8E15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
 		BC784E8F15D575A400C09FE0 /* TopBarSaveOrCancel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */; };
+		BC79F35515E856400048E3F7 /* FakeSlidingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC79F35415E856400048E3F7 /* FakeSlidingController.m */; };
+		BC79F35615E856400048E3F7 /* FakeSlidingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC79F35415E856400048E3F7 /* FakeSlidingController.m */; };
+		BC79F35715E856400048E3F7 /* FakeSlidingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC79F35415E856400048E3F7 /* FakeSlidingController.m */; };
+		BC79F35815E856400048E3F7 /* FakeSlidingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC79F35415E856400048E3F7 /* FakeSlidingController.m */; };
+		BC79F35915E856400048E3F7 /* FakeSlidingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC79F35415E856400048E3F7 /* FakeSlidingController.m */; };
+		BC79F35A15E856400048E3F7 /* FakeSlidingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC79F35415E856400048E3F7 /* FakeSlidingController.m */; };
+		BC79F35B15E856400048E3F7 /* FakeSlidingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC79F35415E856400048E3F7 /* FakeSlidingController.m */; };
+		BC79F35C15E856400048E3F7 /* FakeSlidingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC79F35415E856400048E3F7 /* FakeSlidingController.m */; };
+		BC79F35D15E856400048E3F7 /* FakeSlidingController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC79F35415E856400048E3F7 /* FakeSlidingController.m */; };
 		BC7C07731541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
 		BC7C07741541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
 		BC7C07751541A82F004FC760 /* MKBitlyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7C07721541A82F004FC760 /* MKBitlyHelper.m */; };
@@ -6852,6 +6861,9 @@
 		BC73262A158F91C4000D6584 /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		BC784E8615D575A400C09FE0 /* TopBarSaveOrCancel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBarSaveOrCancel.h; sourceTree = "<group>"; };
 		BC784E8715D575A400C09FE0 /* TopBarSaveOrCancel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBarSaveOrCancel.m; sourceTree = "<group>"; };
+		BC79F35315E856400048E3F7 /* FakeSlidingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeSlidingController.h; sourceTree = "<group>"; };
+		BC79F35415E856400048E3F7 /* FakeSlidingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeSlidingController.m; sourceTree = "<group>"; };
+		BC79F35F15E85B950048E3F7 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
 		BC7C07711541A82F004FC760 /* MKBitlyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBitlyHelper.h; sourceTree = "<group>"; };
 		BC7C07721541A82F004FC760 /* MKBitlyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBitlyHelper.m; sourceTree = "<group>"; };
 		BC828AD314B49E9500763558 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -6994,7 +7006,6 @@
 		BCD818671504F74700B818D1 /* SongAddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongAddCell.m; path = Programming/SongAddCell.m; sourceTree = "<group>"; };
 		BCD8C7A014B4B59F009EAF61 /* YasoundSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundSessionManager.h; sourceTree = "<group>"; };
 		BCD8C7A114B4B59F009EAF61 /* YasoundSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundSessionManager.m; sourceTree = "<group>"; };
-		BCDC963C14AB7D5A00D54631 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
 		BCDC963F14AB7D6E00D54631 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		BCDC964014AB7D6E00D54631 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		BCDC964114AB7D6E00D54631 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -8321,6 +8332,25 @@
 			name = "My Yasound";
 			sourceTree = "<group>";
 		};
+		BC79F35215E856400048E3F7 /* FakeSlidingController */ = {
+			isa = PBXGroup;
+			children = (
+				BC79F35315E856400048E3F7 /* FakeSlidingController.h */,
+				BC79F35415E856400048E3F7 /* FakeSlidingController.m */,
+			);
+			name = FakeSlidingController;
+			path = LibTools/FakeSlidingController;
+			sourceTree = SOURCE_ROOT;
+		};
+		BC79F35E15E85B950048E3F7 /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				BC79F35F15E85B950048E3F7 /* Version.h */,
+			);
+			name = Version;
+			path = LibTools/Version;
+			sourceTree = SOURCE_ROOT;
+		};
 		BC7C07701541A82F004FC760 /* MKBitlyHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -8430,6 +8460,8 @@
 		BCA2CCD6149A95460000637E /* LibTools */ = {
 			isa = PBXGroup;
 			children = (
+				BC79F35E15E85B950048E3F7 /* Version */,
+				BC79F35215E856400048E3F7 /* FakeSlidingController */,
 				BC9B7E4D15E42EB60083CF6C /* YaViewController */,
 				BC2386D115D24E1600D1A4C4 /* JsonToObject */,
 				BC48C7D015D2425400624E76 /* GenderPicker */,
@@ -8440,7 +8472,6 @@
 				BC27F39114BE598700EF1C5F /* YasoundReachability */,
 				BCDC97D414AB820500D54631 /* Security */,
 				BCDC979114AB7DD100D54631 /* SocialSessionManager */,
-				BCDC963B14AB7D5A00D54631 /* Version */,
 				BC9F413E147E8A5F00D417EF /* BundleFileManager */,
 				40274B791491048900F26008 /* Communicator */,
 			);
@@ -8630,15 +8661,6 @@
 			);
 			name = "Third Parties";
 			sourceTree = "<group>";
-		};
-		BCDC963B14AB7D5A00D54631 /* Version */ = {
-			isa = PBXGroup;
-			children = (
-				BCDC963C14AB7D5A00D54631 /* Version.h */,
-			);
-			name = Version;
-			path = LibTools/Version;
-			sourceTree = SOURCE_ROOT;
 		};
 		BCDC963D14AB7D6E00D54631 /* ASIHTTPRequest */ = {
 			isa = PBXGroup;
@@ -14480,6 +14502,7 @@
 				BCC754A215E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754AD15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4515E7E5EE00CC62A2 /* Subscription.m in Sources */,
+				BC79F35C15E856400048E3F7 /* FakeSlidingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14696,6 +14719,7 @@
 				BCC754A315E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754AE15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4615E7E5EE00CC62A2 /* Subscription.m in Sources */,
+				BC79F35D15E856400048E3F7 /* FakeSlidingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14908,6 +14932,7 @@
 				BCC754A115E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754AC15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4415E7E5EE00CC62A2 /* Subscription.m in Sources */,
+				BC79F35B15E856400048E3F7 /* FakeSlidingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15124,6 +15149,7 @@
 				BCC7549E15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754A915E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4115E7E5EE00CC62A2 /* Subscription.m in Sources */,
+				BC79F35815E856400048E3F7 /* FakeSlidingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15340,6 +15366,7 @@
 				BCC7549C15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754A715E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B3F15E7E5EE00CC62A2 /* Subscription.m in Sources */,
+				BC79F35615E856400048E3F7 /* FakeSlidingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15557,6 +15584,7 @@
 				BCC754A015E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754AB15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4315E7E5EE00CC62A2 /* Subscription.m in Sources */,
+				BC79F35A15E856400048E3F7 /* FakeSlidingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15773,6 +15801,7 @@
 				BCC7549D15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754A815E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4015E7E5EE00CC62A2 /* Subscription.m in Sources */,
+				BC79F35715E856400048E3F7 /* FakeSlidingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15989,6 +16018,7 @@
 				BCC7549B15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754A615E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B3E15E7E5EE00CC62A2 /* Subscription.m in Sources */,
+				BC79F35515E856400048E3F7 /* FakeSlidingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16206,6 +16236,7 @@
 				BCC7549F15E69F9B00CF7F7C /* PurchaseTableViewCell.m in Sources */,
 				BCC754AA15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4215E7E5EE00CC62A2 /* Subscription.m in Sources */,
+				BC79F35915E856400048E3F7 /* FakeSlidingController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16432,7 +16463,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -16458,7 +16488,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -16490,7 +16519,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -16519,7 +16547,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -16549,7 +16576,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = YasoundD;
@@ -16574,7 +16600,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = YasoundD;
@@ -16602,7 +16627,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -16628,7 +16652,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -16658,7 +16681,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -16685,7 +16707,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -16717,7 +16738,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
@@ -16749,7 +16769,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
@@ -16782,7 +16801,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -16809,7 +16827,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
@@ -16913,7 +16930,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
@@ -16939,7 +16955,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
@@ -16970,7 +16985,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;
@@ -17001,7 +17015,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/ThirdParties/Twitter-OAuth-iPhone/Twitter+OAuth/Libraries & Headers\"",
-					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK0.8.2\"",
 					"\"$(SRCROOT)/ThirdParties/TestFlightSDK/TestFlightSDK1.0\"",
 				);
 				PRODUCT_NAME = Yasound;

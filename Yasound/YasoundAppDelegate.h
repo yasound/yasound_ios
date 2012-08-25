@@ -9,7 +9,7 @@
 #import "TestFlight.h"
 #endif
 #import "ECSlidingViewController.h"
-//#import "MenuViewController.h"
+#import "MenuViewController.h"
 
 #define APPDELEGATE ((YasoundAppDelegate*)[UIApplication sharedApplication].delegate)
 
@@ -28,10 +28,14 @@
 @property (nonatomic, retain)  IBOutlet UIWindow *window;
 
 @property (nonatomic, retain)  UINavigationController *navigationController;
-@property (nonatomic, retain) ECSlidingViewController* slideController;
+
+
+// slideController is ECSlidingViewController* with iOS >= 5
+// slideController is FakeSlidingController with iOS < 5
+@property (nonatomic, retain) id slideController;
 
 @property (nonatomic, retain) RootViewController* rootViewController;
-//@property (nonatomic, retain) MenuViewController* menuViewController;
+@property (nonatomic, retain) MenuViewController* menuViewController;
 
 @property (nonatomic, retain) NSString* serverURL;
 
