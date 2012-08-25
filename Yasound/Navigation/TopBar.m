@@ -14,8 +14,8 @@
 #import "NotificationCenterViewController.h"
 #import "YasoundSessionManager.h"
 #import "PurchaseViewController.h"
-
-
+#import "AudioStreamManager.h"
+#import "YasoundDataProvider.h"
 
 @implementation TopBar
 
@@ -50,51 +50,34 @@
 
 - (void)update
 {
-    // "back"  item
     BundleStylesheet* sheet = nil;
     UIButton* btn = nil;
     UIBarButtonItem* itemBack = nil;
     
-//    items
-//    
-//    if (![RootViewController menuIsCurrentScreen])
-//    {
-        sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemBack" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        btn = [sheet makeButton];
-        [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
-        itemBack = [[UIBarButtonItem alloc] initWithCustomView:btn];
-//    }
-//    else
-//    {
-//        itemBack = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];    
-//    }
-    
-    // "HD" item
-//    NSString* itemHdKey;
-//    if ([Ya])
-//        itemHdKey = @"TopBar.itemHdOn";
-//    else
-//        itemHdKey = @"TopBar.itemHdOff";
-//
+    // back
+    sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemBack" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    btn = [sheet makeButton];
+    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
+    itemBack = [[UIBarButtonItem alloc] initWithCustomView:btn];
+
+    // hd
     sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemHd" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.itemHdButton = [sheet makeButton];
     [self updateHd];
     self.itemHd = [[UIBarButtonItem alloc] initWithCustomView:self.itemHdButton];
 
-    
-    
     //  "notif"  item
     sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemNotif" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    btn = [sheet makeButton];
+    self.itemNotifsButton = [sheet makeButton];
     if ([YasoundSessionManager main].registered)
     {
-        [btn addTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
+        [self.itemNotifsButton addTarget:self action:@selector(onNotif:) forControlEvents:UIControlEventTouchUpInside];
     }
     else
     {
-        btn.enabled = NO;
+        self.itemNotifsButton.enabled = NO;
     }
-    UIBarButtonItem* itemNotif = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.itemNotifs = [[UIBarButtonItem alloc] initWithCustomView:self.itemNotifsButton];
     
     // "now playing" item
     sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemNowPlaying" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -110,37 +93,11 @@
     // flexible space
     UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
 
-    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, self.itemHd, flexibleSpace, itemNotif, flexibleSpace, itemNowPlaying, nil];
+    self.customItems = [NSMutableArray arrayWithObjects:itemBack, flexibleSpace, self.itemHd, flexibleSpace, self.itemNotifs, flexibleSpace, itemNowPlaying, nil];
     
     [self setItems:self.customItems];
 
 }
-
-
-- (void)updateHd
-{
-    if (![YasoundSessionManager main].registered)
-    {
-        self.itemHd.enabled = NO;
-        self.itemHdButton.selected = NO;
-        self.itemHdButton.enabled = NO;
-        
-        [self.itemHdButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-    }
-    else
-    {
-        self.itemHd.enabled = YES;
-        self.itemHdButton.enabled = YES;
-        [self.itemHdButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
-        
-        if ([[YasoundDataProvider main].user permission:PERM_HD])
-            self.itemHdButton.selected = YES;
-        else
-            self.itemHdButton.selected = NO;
-    }
-}
-
-
 
 
 
@@ -163,20 +120,20 @@
 - (void)showSettingsItem:(BOOL)enabled
 {
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemSettings" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIButton* btn = [sheet makeButton];
+    self.itemSettingsButton = [sheet makeButton];
 
     if (enabled)
     {
-        [btn addTarget:self action:@selector(onSettings:) forControlEvents:UIControlEventTouchUpInside];
+        [self.itemSettingsButton addTarget:self action:@selector(onSettings:) forControlEvents:UIControlEventTouchUpInside];
     }
     else
     {
-        btn.enabled = NO;
+        self.itemSettingsButton.enabled = NO;
     }
 
-    UIBarButtonItem* itemSettings = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    self.itemSettings = [[UIBarButtonItem alloc] initWithCustomView:self.itemSettingsButton];
     
-    [self.customItems replaceObjectAtIndex:6 withObject:itemSettings];
+    [self.customItems replaceObjectAtIndex:6 withObject:self.itemSettings];
     [self setItems:self.customItems];
 }
 
@@ -219,6 +176,109 @@
     [self.customItems replaceObjectAtIndex:0 withObject:item];
     [self setItems:self.customItems];
 }
+
+
+
+
+
+
+
+
+
+
+
+- (void)updateHd
+{
+    if (![YasoundSessionManager main].registered)
+    {
+        self.itemHd.enabled = NO;
+        self.itemHdButton.selected = NO;
+        self.itemHdButton.enabled = NO;
+        
+        [self.itemHdButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        self.itemHd.enabled = YES;
+        self.itemHdButton.enabled = YES;
+        [self.itemHdButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if ([[YasoundDataProvider main].user permission:PERM_HD])
+            self.itemHdButton.selected = YES;
+        else
+            self.itemHdButton.selected = NO;
+    }
+}
+
+
+- (void)updateNotifs
+{
+    if (![YasoundSessionManager main].registered)
+    {
+        self.itemNotifs.enabled = NO;
+        self.itemNotifsButton.selected = NO;
+        self.itemNotifsButton.enabled = NO;
+        
+        [self.itemNotifsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        self.itemNotifs.enabled = YES;
+        self.itemNotifsButton.enabled = YES;
+        [self.itemNotifsButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if ([[YasoundDataProvider main].user permission:PERM_HD])
+            self.itemNotifsButton.selected = YES;
+        else
+            self.itemNotifsButton.selected = NO;
+    }
+}
+
+
+
+- (void)updateSettings
+{
+    BOOL enabled = [YasoundSessionManager main].registered;
+    if (enabled)
+        enabled &= ([[YasoundDataProvider main].user.id intValue] == [[AudioStreamManager main].currentRadio.creator.id intValue]);
+    
+    
+    if (!enabled)
+    {
+        self.itemNotifs.enabled = NO;
+        self.itemNotifsButton.selected = NO;
+        self.itemNotifsButton.enabled = NO;
+        
+        [self.itemNotifsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        self.itemNotifs.enabled = YES;
+        self.itemNotifsButton.enabled = YES;
+        [self.itemNotifsButton addTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if ([[YasoundDataProvider main].user permission:PERM_HD])
+            self.itemNotifsButton.selected = YES;
+        else
+            self.itemNotifsButton.selected = NO;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -379,12 +439,16 @@
 
 - (void)onNotifDidLogout:(NSNotification*)notif
 {
-    [self update];
+    [self updateHd];
+    [self updateNotifs];
+    [self updateSettings];
 }
 
 - (void)onNotifDidLogin:(NSNotification*)notif
 {
-    [self update];
+    [self updateHd];
+    [self updateNotifs];
+    [self updateSettings];
 }
 
 //- (id)initWithFrame:(CGRect)frame

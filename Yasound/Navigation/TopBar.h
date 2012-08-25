@@ -34,6 +34,12 @@ typedef enum TopBarItemId
 @property (nonatomic, assign) UIButton* itemHdButton;
 @property (nonatomic, retain) UIBarButtonItem* itemHd;
 
+@property (nonatomic, assign) UIButton* itemNotifsButton;
+@property (nonatomic, retain) UIBarButtonItem* itemNotifs;
+
+@property (nonatomic, assign) UIButton* itemSettingsButton;
+@property (nonatomic, retain) UIBarButtonItem* itemSettings;
+
 
 - (void)hideBackItem:(BOOL)hide;
 - (void)showSettingsItem:(BOOL)enabled;
