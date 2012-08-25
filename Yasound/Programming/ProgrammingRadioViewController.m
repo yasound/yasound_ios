@@ -426,7 +426,7 @@
     DLog(@"success %d", success);
     
     UITableViewCell* cell = [info objectForKey:@"userData"];
-    NSIndexPath* indexPath = [self indexPathForCell:cell];
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
 
     [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:self];
