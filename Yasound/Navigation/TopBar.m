@@ -151,17 +151,6 @@
 }
 
 
-- (void)showAddItem
-{
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemAdd" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIButton* btn = [sheet makeButton];
-    
-    [btn addTarget:self action:@selector(onAdd:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    
-    [self.customItems replaceObjectAtIndex:6 withObject:item];
-    [self setItems:self.customItems];
-}
 
 
 
@@ -337,16 +326,16 @@
         [self runItem:TopBarItemTrash];
 }
 
-- (void)onAdd:(id)sender
-{
-    BOOL run = YES;
-    
-    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
-        run = [self.delegate topBarItemClicked:TopBarItemAdd];
-
-    if (run)
-        [self runItem:TopBarItemAdd];
-}
+//- (void)onAdd:(id)sender
+//{
+//    BOOL run = YES;
+//    
+//    if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])
+//        run = [self.delegate topBarItemClicked:TopBarItemAdd];
+//
+//    if (run)
+//        [self runItem:TopBarItemAdd];
+//}
 
 - (void)onSettings:(id)sender
 {

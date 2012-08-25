@@ -45,7 +45,6 @@ typedef enum TopBarItemId
 - (void)showSettingsItem:(BOOL)enabled;
 - (void)showTrashItem;
 - (void)showMenuItem;
-- (void)showAddItem;
 
 - (void)runItem:(TopBarItemId)itemId;
 
