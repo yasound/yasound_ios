@@ -184,6 +184,9 @@
 
 - (void)updateWithRadios:(NSArray*)radios target:(id)target action:(SEL)action
 {
+    if ((self.radioObjects == nil) || (self.radioObjects.count == 0))
+        return;
+    
     NSInteger radioIndex = 0;
     for (Radio* radio in radios)
     {
