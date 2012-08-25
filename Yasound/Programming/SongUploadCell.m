@@ -170,7 +170,8 @@
     [super willMoveToSuperview:newSuperview];
     if(!newSuperview) 
     {
-        self.item.delegate = nil;
+        if (self.item != nil)
+            self.item.delegate = nil;
     }
 }
 
