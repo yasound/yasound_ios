@@ -2,12 +2,17 @@
 #import "WallHeaderCell.h"
 #import "YasoundDataProvider.h"
 #import "YasoundDataCache.h"
+#import "InteractiveView.h"
+#import "ProfilViewController.h"
+#import "YasoundAppDelegate.h"
+
 
 @implementation WallHeaderCell
 
 @synthesize radio;
 @synthesize isFavorite;
 @synthesize headerImage;
+@synthesize headerImageHighlight;
 @synthesize headerIconFavorite;
 @synthesize headerTitle;
 @synthesize headerSubscribers;
@@ -18,6 +23,7 @@
 
 - (void)awakeFromNib
 {
+    self.headerImageHighlight.hidden = YES;
 }
 
 - (void)setHeaderRadio:(Radio*)radio
@@ -27,6 +33,10 @@
 
     NSURL* url = [[YasoundDataProvider main] urlForPicture:radio.picture];
     [self.headerImage setUrl:url];
+    
+    InteractiveView* intView = [[InteractiveView alloc] initWithFrame:self.headerImage.frame target:self action:@selector(onHeaderImageClicked)];
+    [intView setTargetOnTouchDown:self action:@selector(onHeaderImagePressed)];
+    [self addSubview:intView];
     
     self.headerTitle.text = radio.name;
     self.headerSubscribers.text = [NSString stringWithFormat:@"%d", [radio.favorites integerValue]];
@@ -99,6 +109,23 @@
     self.headerButton.enabled = YES;
     self.headerIconFavorite.hidden = YES;    
     self.headerButtonLabel.text = NSLocalizedString(@"Wall.header.favorite.button.add", nil);
+}
+
+
+- (void)onHeaderImagePressed
+{
+    self.headerImageHighlight.hidden = NO;
+    [self setNeedsDisplay];
+}
+
+- (void)onHeaderImageClicked
+{
+    self.headerImageHighlight.hidden = YES;
+    [self setNeedsDisplay];
+    
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:self.radio.creator];
+    [APPDELEGATE.navigationController pushViewController:view animated:YES];
+    [view release];    
 }
 
 @end

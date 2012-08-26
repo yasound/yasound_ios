@@ -9,6 +9,7 @@
 @property (nonatomic) BOOL isFavorite;
 
 @property (nonatomic, retain) IBOutlet WebImageView* headerImage;
+@property (nonatomic, retain) IBOutlet UIView* headerImageHighlight;
 @property (nonatomic, retain) IBOutlet UIImageView* headerIconFavorite;
 @property (nonatomic, retain) IBOutlet UILabel* headerTitle;
 @property (nonatomic, retain) IBOutlet UILabel* headerSubscribers;
