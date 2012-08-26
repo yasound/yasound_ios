@@ -647,17 +647,17 @@
 
 
 
-#pragma mark - ActionSheet Delegate
-
-
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
-{
-    if (buttonIndex == 0)
-        [self save];
-    else
-        [self.navigationController popViewControllerAnimated:YES];        
-}
-
+//#pragma mark - ActionSheet Delegate
+//
+//
+//-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex 
+//{
+//    if (buttonIndex == 0)
+//        [self save];
+//    else
+//        [self.navigationController popViewControllerAnimated:YES];        
+//}
+//
 
 
 - (void) save

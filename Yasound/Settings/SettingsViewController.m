@@ -22,7 +22,7 @@
 #import "ProgrammingViewController.h"
 #import "SchedulingViewController.h"
 
-#define NB_SECTIONS 3
+#define NB_SECTIONS 2
 
 
 #define SECTION_CONFIG 0
@@ -33,9 +33,9 @@
 #define SECTION_IMAGE 1
 #define ROW_IMAGE 0
 
-#define SECTION_PROG 2
-#define ROW_PROG 0
-#define ROW_SHOWS 1
+//#define SECTION_PROG 2
+//#define ROW_PROG 0
+//#define ROW_SHOWS 1
 
 
 
@@ -220,8 +220,8 @@
     if (section == SECTION_IMAGE)
         return 1;
 
-    if (section == SECTION_PROG)
-        return 2;
+//    if (section == SECTION_PROG)
+//        return 2;
 
 
     return 0;
@@ -338,22 +338,22 @@
         cell.detailTextLabel.text = _keywords;
 
     }
-    else if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
-    {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = NSLocalizedString(@"Settings.prog.label", nil);
-        cell.detailTextLabel.text = @"";
-    }
-    else if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
-    {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = NSLocalizedString(@"Settings.shows.label", nil);
-        cell.detailTextLabel.text = @"";
-        
-//        //LBDEBUG TEMPORARLY CODE
-        cell.textLabel.alpha = 0.5;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
+//    else if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
+//    {
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        cell.textLabel.text = NSLocalizedString(@"Settings.prog.label", nil);
+//        cell.detailTextLabel.text = @"";
+//    }
+//    else if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
+//    {
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        cell.textLabel.text = NSLocalizedString(@"Settings.shows.label", nil);
+//        cell.detailTextLabel.text = @"";
+//        
+////        //LBDEBUG TEMPORARLY CODE
+//        cell.textLabel.alpha = 0.5;
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    }
     
     
     
@@ -366,11 +366,11 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
-    //LBDEBUG TEMPORARLY CODE
-    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
-    {
-        return;
-    }
+//    //LBDEBUG TEMPORARLY CODE
+//    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
+//    {
+//        return;
+//    }
 
     
     if ((indexPath.section == SECTION_CONFIG) && (indexPath.row == ROW_CONFIG_GENRE))
@@ -399,24 +399,24 @@
         return;
     }
 
-    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
-    {
-        //LBDEBUG
-        NSLog(@"CALL PROG FOR RADIO :%@", self.radio.name);
-        
-        ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:self.radio];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-        return;
-    }
+//    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_PROG))
+//    {
+//        //LBDEBUG
+//        NSLog(@"CALL PROG FOR RADIO :%@", self.radio.name);
+//        
+//        ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:self.radio];
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release];
+//        return;
+//    }
 
-    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
-    {        
-        SchedulingViewController* view = [[SchedulingViewController alloc] initWithNibName:@"SchedulingViewController" bundle:nil];
-        [self.navigationController pushViewController:view animated:YES];
-        [view release];
-        return;
-    }
+//    if ((indexPath.section == SECTION_PROG) && (indexPath.row == ROW_SHOWS))
+//    {        
+//        SchedulingViewController* view = [[SchedulingViewController alloc] initWithNibName:@"SchedulingViewController" bundle:nil];
+//        [self.navigationController pushViewController:view animated:YES];
+//        [view release];
+//        return;
+//    }
     
     
 }

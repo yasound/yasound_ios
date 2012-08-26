@@ -663,3 +663,10 @@
 "Purchase.transaction.current.message" = "You have already bought this option.";
 "Purchase.transaction.record.error.title" = "Oops...";
 "Purchase.transaction.record.error.message" = "The transaction could not have been confirmed with the Yasound's servers.";
+
+"Radio.sheet.title" = "My radio";
+"Radio.sheet.button.programming" = "Programming";
+"Radio.sheet.button.broadcast" = "Message to subscribers";
+"Radio.sheet.button.settings" = "Settings";
+
+

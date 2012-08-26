@@ -44,7 +44,8 @@
 #import "SongCatalog.h"
 #import "WallViewController+NowPlayingBar.h"
 #import "SettingsViewController.h"
-
+#import "ProgrammingViewController.h"
+#import "MessageBroadcastModalViewController.h"
 
 
 //#define LOCAL 1 // use localhost as the server
@@ -1780,12 +1781,70 @@
     {
         DLog(@"settings item clicked for radio : %@", [self.radio toString]);
 
-        SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:self.radio createMode:NO];
-        [APPDELEGATE.navigationController pushViewController:view animated:YES];
-        [view release];        
+         _sheetTools = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Radio.sheet.title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Radio.sheet.button.programming", nil), NSLocalizedString(@"Radio.sheet.button.broadcast", nil), NSLocalizedString(@"Radio.sheet.button.settings", nil), nil];
+        _sheetTools.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [_sheetTools showInView:self.view];
     }
     
     return YES;
+}
+
+
+
+
+
+
+
+
+
+#pragma mark - ActionSheet Delegate
+
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet == _sheetTools)
+    {
+        if (buttonIndex == 0)
+        {
+            ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:self.radio];
+            [self.navigationController pushViewController:view animated:YES];
+            [view release];        
+        }
+        else if (buttonIndex == 1)
+        {
+            [ActivityAlertView showWithTitle:nil];
+            [[YasoundDataProvider main] favoriteUsersForRadio:self.radio target:self action:@selector(onSubscribersReceived:withInfo:)];
+        }
+        else if (buttonIndex == 2)
+        {
+            SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:self.radio createMode:NO];
+            [APPDELEGATE.navigationController pushViewController:view animated:YES];
+            [view release];
+        }
+
+    
+    if (buttonIndex == 0)
+        [self save];
+    else
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+- (void)onSubscribersReceived:(NSArray*)subscribers withInfo:(NSDictionary*)info
+{
+    [ActivityAlertView close];
+    
+    MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:self.radio subscribers:subscribers target:self action:@selector(onModalReturned)];
+    [self.navigationController presentModalViewController:view animated:YES];
+    [view release];
+}
+
+
+
+- (void)onModalReturned
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
 }
 
 

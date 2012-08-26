@@ -88,6 +88,8 @@
     UIAlertView* _alertGoToRadio;
     UIAlertView* _alertGoToLogin;
     
+    UIActionSheet* _sheetTools;
+    
     BOOL _stopWall;
 }
 
