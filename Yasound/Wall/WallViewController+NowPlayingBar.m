@@ -179,13 +179,9 @@ static Song* _gNowPlayingSong = nil;
 
 #pragma mark - UIActionSheet Delegate
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+-(void)shareActionSheetClickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
-    // share query result
-    if (actionSheet == _queryShare)
-    {
-        NSString* buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+        NSString* buttonTitle = [_queryShare buttonTitleAtIndex:buttonIndex];
         
         if ([buttonTitle isEqualToString:@"Facebook"])
         {
@@ -205,8 +201,6 @@ static Song* _gNowPlayingSong = nil;
             [self shareWithMail];
         }
         
-        return;
-    }
 }
 
 

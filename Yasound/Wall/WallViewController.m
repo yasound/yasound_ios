@@ -240,6 +240,8 @@
         _timerUpdate = [NSTimer scheduledTimerWithTimeInterval:SERVER_DATA_REQUEST_TIMER target:self selector:@selector(onTimerUpdate:) userInfo:nil repeats:YES];
     }
     
+    
+    
 }
 
 
@@ -1784,6 +1786,7 @@
          _sheetTools = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Radio.sheet.title", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Radio.sheet.button.programming", nil), NSLocalizedString(@"Radio.sheet.button.broadcast", nil), NSLocalizedString(@"Radio.sheet.button.settings", nil), nil];
         _sheetTools.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [_sheetTools showInView:self.view];
+        [_sheetTools release];
     }
     
     return YES;
@@ -1800,33 +1803,35 @@
 #pragma mark - ActionSheet Delegate
 
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (actionSheet == _sheetTools)
+    if (actionSheet == _queryShare)
+        [self shareActionSheetClickedButtonAtIndex:buttonIndex];
+
+    else if (actionSheet == _sheetTools)
     {
         if (buttonIndex == 0)
         {
             ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:self.radio];
             [self.navigationController pushViewController:view animated:YES];
-            [view release];        
+            [view release];
+            return;
         }
         else if (buttonIndex == 1)
         {
             [ActivityAlertView showWithTitle:nil];
             [[YasoundDataProvider main] favoriteUsersForRadio:self.radio target:self action:@selector(onSubscribersReceived:withInfo:)];
+            return;
         }
         else if (buttonIndex == 2)
         {
             SettingsViewController* view = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil forRadio:self.radio createMode:NO];
             [APPDELEGATE.navigationController pushViewController:view animated:YES];
             [view release];
+            return;
         }
 
     
-    if (buttonIndex == 0)
-        [self save];
-    else
-        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

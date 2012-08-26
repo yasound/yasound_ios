@@ -21,4 +21,7 @@
 - (IBAction)onShareClicked:(id)sender;
 - (IBAction)onLikeClicked:(id)sender;
 - (IBAction)onBuyClicked:(id)sender;
+
+-(void)shareActionSheetClickedButtonAtIndex:(NSInteger)buttonIndex;
+
 @end
