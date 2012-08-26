@@ -46,6 +46,6 @@
 - (IBAction)onButtonBlueClicked:(id)sender;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user showTabs:(BOOL)showTabs;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)numberId showTabs:(BOOL)showTabs;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)userId andModelUsername:(NSString*)modelUsername showTabs:(BOOL)showTabs;
 
 @end

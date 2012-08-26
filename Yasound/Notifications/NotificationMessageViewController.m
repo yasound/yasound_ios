@@ -70,17 +70,11 @@
 {
     [super viewDidLoad];  
   
-  BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuBackground" error:nil];    
-  self.view.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
-  _textView.backgroundColor = [UIColor colorWithPatternImage:[sheet image]];
   
-    _topBarTitle.title = NSLocalizedString(@"NotificationCenterView_title", nil);
-    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-    
     _textView.text = [NSString stringWithFormat:@"%@: %@\n%@: %@\n%@\n\n%@",
-                      NSLocalizedString(@"NotificationMessageView_from", nil),
+                      NSLocalizedString(@"NotificationMessage.from", nil),
                       self.notification.from_user_name,
-                      NSLocalizedString(@"NotificationMessageView_from_radio", nil),
+                      NSLocalizedString(@"NotificationMessage.from.radio", nil),
                       self.notification.from_radio_name,
                        [self dateToString:self.notification.date],
                       self.notification.text];

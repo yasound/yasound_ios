@@ -10,8 +10,6 @@
 
 @interface NotificationMessageViewController : UIViewController
 {
-  IBOutlet UIBarButtonItem* _topBarTitle;
-  IBOutlet UIBarButtonItem* _nowPlayingButton;
   IBOutlet UITextView* _textView;
 }
 

@@ -291,22 +291,26 @@
 }
 
 
-- (void)goToFriendsViewController
+//- (void)goToFriendsViewController
+//{
+//    //LBDEBUG TODO : kess kon fait ici maintenant?
+//    assert(0);
+//    
+////  FriendsViewController* view = [[FriendsViewController alloc] initWithNibName:@"FriendsViewController" bundle:nil title:NSLocalizedString(@"selection_tab_friends", nil) tabIcon:@"tabIconFavorites.png"];
+////  [self.navigationController pushViewController:view animated:YES];
+////  [view release];
+//}
+//
+- (void)goToUserProfile:(NSNumber*)user_id
 {
-    //LBDEBUG TODO : kess kon fait ici maintenant?
-    assert(0);
+    if (user_id == nil)
+        return;
     
-//  FriendsViewController* view = [[FriendsViewController alloc] initWithNibName:@"FriendsViewController" bundle:nil title:NSLocalizedString(@"selection_tab_friends", nil) tabIcon:@"tabIconFavorites.png"];
-//  [self.navigationController pushViewController:view animated:YES];
-//  [view release];
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil withUserId:user_id andModelUsername:nil showTabs:NO];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
 }
 
-- (void)goToFriendProfile: (User*)user
-{
-  ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:user showTabs:NO];
-  [self.navigationController pushViewController:view animated:YES];
-  [view release];
-}
 
 - (void)goToRadio:(NSNumber*)radioID
 {
@@ -360,7 +364,8 @@
         || [notif.type isEqualToString:APNS_NOTIF_FRIEND_IN_RADIO]
         )
     {
-        [self goToFriendsViewController];
+//        DLog(@"%@", notif);
+        [self goToUserProfile:[notif.params objectForKey:@"user_id"]];
         return;
     }
     

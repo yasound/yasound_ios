@@ -487,8 +487,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "NotificationCenterView_title" =  "Mes Notifications";
 "NotificationCenterView_edit" = "Modifier";
 
-"NotificationMessageView_from" = "De";
-"NotificationMessageView_from_radio" = "radio";
+"NotificationMessage.from" = "De";
+"NotificationMessage.from.radio" = "radio";
 
 "NotificationCenterView_alert_title" = "Notifications";
 "NotificationCenterView_alert_message" = "Voulez-vous vraiment supprimer toutes vos notifications?";

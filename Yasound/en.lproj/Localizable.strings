@@ -498,8 +498,8 @@
 "NotificationCenterView_title" =  "My Notifications";
 "NotificationCenterView_edit" = "Edit";
 
-"NotificationMessageView_from" = "From";
-"NotificationMessageView_from_radio" = "radio";
+"NotificationMessage.from" = "From";
+"NotificationMessage.from.radio" = "radio";
 
 "NotificationCenterView_alert_title" = "Notifications";
 "NotificationCenterView_alert_message" = "Do you really want to delete all your notifications?";
