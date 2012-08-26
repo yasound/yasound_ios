@@ -517,10 +517,6 @@
 "ProfileMyRadioView_section_subscribers" = "My subscribers";
 "ProfileMyRadio_subscribers_button_label"= "Send a message to my subscribers";
 
-"MessageBroadcastModalView_send_button_label" = "Envoyer";
-"MessageBroadcastModalView_title" = "Message";
-"MessageBroadcastModalView_from" = "De : %@";
-"MessageBroadcastModalView_to" = "A : %d abonnés";
 
 "WheelSelector_Favorites" = "Favorites";
 "WheelSelector_Genre" = "Genres";
@@ -668,5 +664,10 @@
 "Radio.sheet.button.programming" = "Programming";
 "Radio.sheet.button.broadcast" = "Message to subscribers";
 "Radio.sheet.button.settings" = "Settings";
+
+"MessageBroadcast.action.button.label" = "Envoyer";
+"MessageBroadcast.title" = "Message";
+"MessageBroadcast.from" = "De : %@";
+"MessageBroadcast.to" = "A : %d abonnés";
 
 

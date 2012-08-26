@@ -505,10 +505,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "ProfileMyRadioView_section_subscribers" = "Mes abonnés";
 "ProfileMyRadio_subscribers_button_label"= "Envoyer un message à mes abonnés";
 
-"MessageBroadcastModalView_send_button_label" = "Send";
-"MessageBroadcastModalView_title" = "Message";
-"MessageBroadcastModalView_from" = "From : %@";
-"MessageBroadcastModalView_to" = "To : %d subscribers";
 
 "WheelSelector_Favorites" = "Favoris";
 "WheelSelector_Genre" = "Genres";
@@ -656,4 +652,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Radio.sheet.button.programming" = "Programmation";
 "Radio.sheet.button.broadcast" = "Message aux abonnés";
 "Radio.sheet.button.settings" = "Paramètres";
+
+"MessageBroadcast.action.button.label" = "Send";
+"MessageBroadcast.title" = "Message";
+"MessageBroadcast.from" = "From : %@";
+"MessageBroadcast.to" = "To : %d subscribers";
 

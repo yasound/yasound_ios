@@ -34,6 +34,29 @@
     {
         self.radio = aRadio;
         self.subscribers = subscribers;
+
+        //LBDEBUG
+//        DLog(@"%@", subscribers);
+//        NSMutableArray* subs = [[NSMutableArray alloc] init];
+//        for (User* sub in subscribers)
+//        {
+//            DLog(@"%@", sub.name);
+//            
+//            if (  [sub.name isEqualToString:@"meeloo"]
+//                ||[sub.name isEqualToString:@"jbl2024"]
+//                ||[sub.name isEqualToString:@"matthieu.campion"]
+//                ||[sub.name isEqualToString:@"neywen"]
+//                ||[sub.name isEqualToString:@"Jérôme Blondon"]
+//                ||[sub.name isEqualToString:@"Twity 94"])
+//            {
+//                [subs addObject:sub];
+//            }
+//                
+//            
+//        }
+//
+//        self.subscribers = subs;
+        
         
         _target = target;
         _action = action;
@@ -47,14 +70,9 @@
 {
     [super viewDidLoad];
     
-    // GUI
-    _buttonCancel.title = NSLocalizedString(@"Navigation_cancel", nil);
-    _buttonSend.title = NSLocalizedString(@"MessageBroadcastModalView_send_button_label", nil);
-    _itemTitle.title = NSLocalizedString(@"MessageBroadcastModalView_title", nil);
-
-    _label1.text = NSLocalizedString(@"MessageBroadcastModalView_from", nil);
+    _label1.text = NSLocalizedString(@"MessageBroadcast.from", nil);
     _label1.text = [NSString stringWithFormat:_label1.text, self.radio.name];
-    _label2.text = NSLocalizedString(@"MessageBroadcastModalView_to", nil);
+    _label2.text = NSLocalizedString(@"MessageBroadcast.to", nil);
     _label2.text = [NSString stringWithFormat:_label2.text, self.subscribers.count];
     
     // track image
@@ -70,9 +88,9 @@
         [_image setImage:[sheet image]];
     }
 
-    //mask
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Header.HeaderAvatarMask" error:nil];
-    [_mask setImage:[sheet image]];
+//    //mask
+//    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.Header.HeaderAvatarMask" error:nil];
+//    [_mask setImage:[sheet image]];
 
 
     [_textView becomeFirstResponder];
@@ -95,47 +113,56 @@
 
 
 
-#pragma mark - IBActions
-
-- (IBAction)onBack:(id)sender
-{
-    if (_target == nil)
-        return;
-    
-    [_target performSelector:_action];
-}
 
 
-- (IBAction)onPublishButton:(id)sender
+
+
+#pragma mark - TopBarSaveOrCancelDelegate
+
+
+- (BOOL)topBarSave
 {
     NSCharacterSet* space = [NSCharacterSet characterSetWithCharactersInString:@" "];
     NSString* message = [_textView.text stringByTrimmingCharactersInSet:space];
     
     if (message.length == 0)
-        return;
+        return NO;
     
     [ActivityAlertView showWithTitle:nil];
-
+    
     [[YasoundDataProvider main] broadcastMessage:message fromRadio:self.radio withTarget:self action:@selector(onPostMessageFinished:withInfo:)];
     
+    return NO;
 }
+
+
+
 
 
 - (void)onPostMessageFinished:(NSNumber*)finished withInfo:(NSDictionary*)infos
 {
     //DLog(@"info %@", infos);
-    [ActivityAlertView close];    
+    [ActivityAlertView close];
     
     if (_target == nil)
         return;
     
     [_target performSelector:_action];
-    
 }
 
 
+- (BOOL)topBarCancel
+{
+    [_target performSelector:_action];
+    return NO;
+}
 
+- (NSString*)titleForActionButton
+{
+    return NSLocalizedString(@"MessageBroadcast.action.button.label", nil);
+}
 
+//- (UIColor*)tintForActionButton;
 
 
 

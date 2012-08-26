@@ -10,19 +10,17 @@
 #import "Song.h"
 #import "WebImageView.h"
 #import "Radio.h"
+#import "TopBarSaveOrCancel.h"
 
-@interface MessageBroadcastModalViewController : UIViewController<UITextFieldDelegate>
+@interface MessageBroadcastModalViewController : YaViewController<UITextFieldDelegate, TopBarSaveOrCancelDelegate>
 {
-    IBOutlet UIBarButtonItem* _itemTitle;
-    IBOutlet UIBarButtonItem* _buttonCancel;
-    IBOutlet UIBarButtonItem* _buttonSend;
     IBOutlet WebImageView* _image;
     IBOutlet UIImageView* _mask;
+    IBOutlet UITextView* _textView;
     
     IBOutlet UILabel* _label1;
     IBOutlet UILabel* _label2;
     
-    IBOutlet UITextView* _textView;
     
     id _target;
     SEL _action;
