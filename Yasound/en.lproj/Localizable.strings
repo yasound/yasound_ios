@@ -657,7 +657,9 @@
 
 "Purchase.transaction.error.title" = "In-App-Purchase Error";
 "Purchase.transaction.error.message" = "There was an error purchasing this item please try again.";
-"Purchase.subscriptions.error.title" = "Oups...";
+"Purchase.subscriptions.error.title" = "Oops...";
 "Purchase.subscriptions.error.message" = "There was an error communicating with the Yasound's servers. Please try again later.";
 "Purchase.subscriptions.error.apple.message" = "There was an error communicating with the Apple's servers. Please try again later.";
-
+"Purchase.transaction.current.message" = "You have already bought this option.";
+"Purchase.transaction.record.error.title" = "Oops...";
+"Purchase.transaction.record.error.message" = "The transaction could not have been confirmed with the Yasound's servers.";

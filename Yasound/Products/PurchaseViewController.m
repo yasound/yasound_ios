@@ -217,15 +217,29 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 }
 
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
     Subscription* sub = [self.subscriptions objectAtIndex:indexPath.row];
+    SKProduct* product = [self.productDetailsList objectAtIndex:indexPath.row];
+    NSString* productId = [self.productIdentifierList objectAtIndex:indexPath.row];
+
     if (!sub.isEnabled)
         return;
+    
+    if ([sub isCurrent])
+    {
+        UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:product.description                                       
+                                                                 message:NSLocalizedString(@"Purchase.transaction.current.message", nil)
+                                                                delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [successesAlert show];
+        [successesAlert release];
+        return;
+    }
 
-    NSString* productId = [self.productIdentifierList objectAtIndex:indexPath.row];
+    [ActivityAlertView showWithTitle:nil];
     
     SKPayment* payment = [SKPayment paymentWithProductIdentifier:productId];
     [[SKPaymentQueue defaultQueue] addPayment:payment];
@@ -265,33 +279,34 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
 - (void) completeTransaction: (SKPaymentTransaction *)transaction
 {
-    DLog(@"complete Transaction = %@", transaction.description);
+    NSString* sku = transaction.payment.productIdentifier;
+
+    DLog(@"complete Transaction : %@   for productIdentifier : %@", transaction.description, sku);
     
-    //[self recordTransaction: transaction];
-    //[self provideContent: transaction.payment.productIdentifier];
+    [[YasoundDataProvider main] subscriptionComplete:sku withReceipt:transaction.transactionReceipt target:self action:@selector(onTransactionRecorded:success:)];
+    
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     
     
 }
+
 
 - (void) restoreTransaction: (SKPaymentTransaction *)transaction
 {
     DLog(@"restore Transaction = %@", transaction.description);
 
-    //[self recordTransaction: transaction];
-    //[self provideContent: transaction.originalTransaction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
 
 - (void) failedTransaction: (SKPaymentTransaction *)transaction
 {
-    DLog(@"failed Transaction = %@", transaction.description);
+    DLog(@"failed Transaction  '%@'   error '%@' ", transaction.description, transaction.error);
 
-    if (transaction.error != SKErrorPaymentCancelled)
+    if (transaction.error.code != SKErrorPaymentCancelled)
     {
         UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.transaction.error.title", nil)
                                                                  message:NSLocalizedString(@"Purchase.transaction.error.message", nil)
-                                                                delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                                                                delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [successesAlert show];
         [successesAlert release];
     }
@@ -302,7 +317,28 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
 
 
+- (void)onTransactionRecorded:(ASIHTTPRequest*)req success:(BOOL)success
+{
 
+    if (!success)
+    {
+        DLog(@"onTransactionRecorded FAILED!");
+        UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.transaction.record.error.title", nil)
+                                                                 message:NSLocalizedString(@"Purchase.transaction.record.error.message", nil)
+                                                                delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [successesAlert show];
+        [successesAlert release];
+        return;
+    }
+    
+    // refresh data and gui
+    self.productDetailsList    = [[NSMutableArray alloc] init];
+    self.productIdentifierList = [[NSMutableArray alloc] init];
+    self.subscriptions = nil;
+    
+    [[YasoundDataProvider main] subscriptionsWithTarget:self action:@selector(onSubscriptionsReceived:success:)];
+    
+}
 
 
 

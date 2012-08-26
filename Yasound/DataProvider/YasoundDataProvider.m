@@ -2471,7 +2471,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)subscriptionComplete:(NSString*)productId target:(id)target action:(SEL)action
+- (void)subscriptionComplete:(NSString*)productId withReceipt:(NSData*)appleReceipt target:(id)target action:(SEL)action
 {
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/premium/subscriptions/%@", productId];
@@ -2482,6 +2482,12 @@ static YasoundDataProvider* _main = nil;
     conf.callbackAction = action;
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    
+    NSMutableArray* params = [NSMutableArray array];
+    [params addObject:@"format=json"];
+    [params addObject:[NSString stringWithFormat:@"receipt=%@", appleReceipt]];
+    conf.params = params;
+    
     [req startAsynchronous];
 }
 
