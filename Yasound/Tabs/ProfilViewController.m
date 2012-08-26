@@ -98,6 +98,9 @@
         [[YasoundDataProvider main] userWithId:self.userId target:self action:@selector(userReceived:info:)];
     else
         [[YasoundDataProvider main] userWithUsername:self.modelUsername target:self action:@selector(publicUserReceived:success:)];
+    
+    // temporarly deactivated "message" function
+    self.buttonBlue.hidden = YES;
         
 }
 
