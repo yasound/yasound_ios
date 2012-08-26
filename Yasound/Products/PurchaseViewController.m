@@ -115,7 +115,17 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     // fill the product identifiers list
     for (Subscription* sub in self.subscriptions)
     {
-        [self.productIdentifierList addObject:sub.sku];
+        NSString* sku = sub.sku;
+        
+        //LBDEBUG
+        if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1m"])
+            sku = @"com.yasound.yasound.inappHD1m";
+        else if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1y"])
+            sku = @"com.yasound.yasound.inappHD1y";
+        else if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1ysp"])
+            sku = @"com.yasound.yasound.inappHD1ysp";
+        
+        [self.productIdentifierList addObject:sku];
     }
     
     DLog(@"onSubscriptionsReceived : product ids : %@", self.productIdentifierList);
@@ -186,6 +196,7 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Subscription* sub = [self.subscriptions objectAtIndex:indexPath.row];
     SKProduct* product = [self.productDetailsList objectAtIndex:indexPath.row];
 
     PurchaseTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -195,26 +206,13 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
         cell = [topLevelItems objectAtIndex:0];
     }
     
-    [cell updateForProduct:product];
+    [cell updateForProduct:product withSubscription:sub];
+    
+    if (sub.isEnabled)
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    else
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-    
-    
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: GenericTableIdentifier];
-//
-//    if (cell == nil)
-//    {
-//        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier: GenericTableIdentifier] autorelease];
-//    }
-//    
-//    if (indexPath.row == 1)
-//        cell.imageView.image = [UIImage imageNamed:@"productIconBest.png"];
-//    else
-//        cell.imageView.image = [UIImage imageNamed:@"productIconDefault.png"];
-//    
-//    NSUInteger row = [indexPath row];
-//    SKProduct *thisProduct = [productDetailsList objectAtIndex:row];
-//    [cell.textLabel setText:[NSString stringWithFormat:@"%@ - %@", thisProduct.localizedTitle, thisProduct.price]];
-//    
     return cell;
 }
 
@@ -223,6 +221,10 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
+    Subscription* sub = [self.subscriptions objectAtIndex:indexPath.row];
+    if (!sub.isEnabled)
+        return;
+
     NSString* productId = [self.productIdentifierList objectAtIndex:indexPath.row];
     
     SKPayment* payment = [SKPayment paymentWithProductIdentifier:productId];

@@ -15,9 +15,9 @@
 
 
 
-#define PRODUCTID_YAHD1M @"yaHD1m"
-#define PRODUCTID_YAHD1Y @"yaHD1y"
-#define PRODUCTID_YAHD1YS @"yaHD1ysp"
+//#define PRODUCTID_YAHD1M @"yasound.com"
+//#define PRODUCTID_YAHD1Y @"yaHD1y"
+//#define PRODUCTID_YAHD1YS @"yaHD1ysp"
 
 @implementation PurchaseTableViewCell
 
@@ -40,9 +40,14 @@
 //@property(nonatomic, readonly) NSString *productIdentifier __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 
 
-- (void)updateForProduct:(SKProduct*)product
+- (void)updateForProduct:(SKProduct*)product withSubscription:(Subscription*)sub
 {
-    if ([product.productIdentifier isEqualToString:PRODUCTID_YAHD1Y])
+    
+    self.subscription = sub;
+    
+    if ([self.subscription isCurrent])
+        self.image.image = [UIImage imageNamed:@"productIconCurrent.png"];
+    else if ([self.subscription isHighlighted])
         self.image.image = [UIImage imageNamed:@"productIconBest.png"];
     else
         self.image.image = [UIImage imageNamed:@"productIconDefault.png"];
@@ -57,6 +62,15 @@
     NSString *formattedString = [numberFormatter stringFromNumber:product.price];
     
     self.price.text = formattedString;
+    
+    CGFloat alpha = 1;
+    if (![self.subscription isEnabled])
+        alpha = 0.5;
+    self.image.alpha = alpha;
+    self.title.alpha = alpha;
+    self.subtitle.alpha = alpha;
+    self.price.alpha = alpha;
+    
 }
 
 

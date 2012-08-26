@@ -10,16 +10,25 @@
 @implementation Subscription
 
 @synthesize sku;
-@synthesize description;
-@synthesize enabled;
 @synthesize duration;
-@synthesize name;
+@synthesize current;
+@synthesize enabled;
+@synthesize highlighted;
 
 - (BOOL)isEnabled
 {
     return [self.enabled boolValue];
 }
 
+- (BOOL)isCurrent
+{
+    return [self.current boolValue];
+}
+
+- (BOOL)isHighlighted
+{
+    return [self.highlighted boolValue];
+}
 
 @end
 

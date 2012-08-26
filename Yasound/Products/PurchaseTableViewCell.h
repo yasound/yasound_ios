@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <StoreKit/StoreKit.h>
-
+#import "Subscription.h"
 
 
 @interface PurchaseTableViewCell : UITableViewCell
@@ -19,7 +19,9 @@
 @property (nonatomic, retain) IBOutlet UILabel* subtitle;
 @property (nonatomic, retain) IBOutlet UILabel* price;
 
+@property (nonatomic, retain) Subscription* subscription;
 
-- (void)updateForProduct:(SKProduct*)product;
+
+- (void)updateForProduct:(SKProduct*)product withSubscription:(Subscription*)sub;
 
 @end
