@@ -78,15 +78,15 @@
 
 
 
-- (void)willMoveToSuperview:(UIView *)newSuperview
-{
-    [super willMoveToSuperview:newSuperview];
-    if(!newSuperview)
-    {
-        if (self.image)
-            [self.image releaseCache];
-    }
-}
+//- (void)willMoveToSuperview:(UIView *)newSuperview
+//{
+//    [super willMoveToSuperview:newSuperview];
+//    if(!newSuperview)
+//    {
+//        if (self.image)
+//            [self.image releaseCache];
+//    }
+//}
 
 
 

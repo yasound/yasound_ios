@@ -294,6 +294,8 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 - (void) restoreTransaction: (SKPaymentTransaction *)transaction
 {
     DLog(@"restore Transaction = %@", transaction.description);
+    
+    [ActivityAlertView close];
 
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
@@ -301,6 +303,8 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 - (void) failedTransaction: (SKPaymentTransaction *)transaction
 {
     DLog(@"failed Transaction  '%@'   error '%@' ", transaction.description, transaction.error);
+
+    [ActivityAlertView close];
 
     if (transaction.error.code != SKErrorPaymentCancelled)
     {
