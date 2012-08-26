@@ -2486,6 +2486,7 @@ static YasoundDataProvider* _main = nil;
     NSMutableArray* params = [NSMutableArray array];
     [params addObject:@"format=json"];
     [params addObject:[NSString stringWithFormat:@"receipt=%@", appleReceipt]];
+    [params addObject:[NSString stringWithFormat:@"username=%@", self.user.username]];
     conf.params = params;
     
     [req startAsynchronous];
