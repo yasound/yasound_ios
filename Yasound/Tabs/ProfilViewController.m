@@ -52,7 +52,7 @@
 
 @synthesize tabBar;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user showTabs:(BOOL)showTabs
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
@@ -60,12 +60,13 @@
         self.user = user;
         self.userId = nil;
         self.modelUsername = nil;
+        self.showTabs = showTabs;
     }
     return self;
 }
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)userId andModelUsername:(NSString*)modelUsername;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)userId andModelUsername:(NSString*)modelUsername showTabs:(BOOL)showTabs
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
@@ -73,6 +74,7 @@
         self.user = nil;
         self.userId = userId;
         self.modelUsername = modelUsername;
+        self.showTabs = showTabs;
     }
     return self;
 }
@@ -88,6 +90,19 @@
 {
     [super viewDidLoad];
     
+    // temporarly deactivated "message" function
+    self.buttonBlue.hidden = YES;
+    self.buttonBlueLabel.hidden = YES;
+    
+    // update layout
+    if (!self.showTabs)
+    {
+        CGRect frame = self.tabBar.frame;
+        [self.tabBar removeFromSuperview];
+        self.tableview.frame = CGRectMake(self.tableview.frame.origin.x, self.tableview.frame.origin.y, self.tableview.frame.size.width, self.tableview.frame.size.height + frame.size.height);
+    }
+
+    
     if (self.user)
     {
         [self userReceived:self.user info:nil];
@@ -99,8 +114,6 @@
     else
         [[YasoundDataProvider main] userWithUsername:self.modelUsername target:self action:@selector(publicUserReceived:success:)];
     
-    // temporarly deactivated "message" function
-    self.buttonBlue.hidden = YES;
         
 }
 

@@ -427,7 +427,7 @@
 
 - (void)friendListDidSelect:(User*)user
 {
-    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:user];
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:user showTabs:NO];
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }

@@ -26,6 +26,8 @@
 @property (nonatomic, retain) NSNumber* userId;
 @property (nonatomic, retain) NSString* modelUsername;
 @property (nonatomic) BOOL followed;
+@property (nonatomic) BOOL showTabs;
+
 
 @property (nonatomic, retain) IBOutlet UITableViewCell* cellProfil;
 
@@ -43,7 +45,7 @@
 - (IBAction)onButtonGrayClicked:(id)sender;
 - (IBAction)onButtonBlueClicked:(id)sender;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)numberId;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forUser:(User*)user showTabs:(BOOL)showTabs;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withUserId:(NSNumber*)numberId showTabs:(BOOL)showTabs;
 
 @end

@@ -1504,7 +1504,7 @@
         }
         else
         {
-            ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:self.radio.creator];
+            ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:self.radio.creator showTabs:NO];
             [self.navigationController pushViewController:view animated:YES];
             [view release];
         }
@@ -1523,7 +1523,7 @@
     if (event != nil && event.user_id != nil)
     {
         // Launch profile view
-        ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil withUserId:event.user_id andModelUsername:event.user_username];
+        ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil withUserId:event.user_id andModelUsername:event.user_username showTabs:NO];
         [self.navigationController pushViewController:view animated:YES];
         [view release];
     }

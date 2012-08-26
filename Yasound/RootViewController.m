@@ -832,7 +832,7 @@
     
 //    [self gotoMenuAnimated:NO];
     
-    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:[YasoundDataProvider main].user];
+    ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:[YasoundDataProvider main].user showTabs:YES];
     [self.navigationController pushViewController:view animated:animated];
     [view release];
 }
