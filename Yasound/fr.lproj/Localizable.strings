@@ -647,6 +647,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Purchase.transaction.current.message" = "Vous avez déjà acheté cette option.";
 "Purchase.transaction.record.error.title" = "Oups...";
 "Purchase.transaction.record.error.message" = "La transaction n'a pas pu être confirmée avec les serveurs de Yasound.";
+"Purchase.transaction.completed.title" = "Confirmation";
+"Purchase.transaction.completed.message" = "Votre achat a bien été engistré par les serveurs de Yasound.";
 
 "Radio.sheet.title" = "Ma radio";
 "Radio.sheet.button.programming" = "Programmation";

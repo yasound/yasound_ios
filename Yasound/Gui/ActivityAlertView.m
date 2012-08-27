@@ -50,6 +50,13 @@ static ActivityAlertView* _alertView = nil;
     {
         [NSTimer scheduledTimerWithTimeInterval:timeInterval target:_alertView selector:@selector(onStaticClose:) userInfo:nil repeats:NO];
     }
+    
+    // timeout
+    else
+    {
+        [NSTimer scheduledTimerWithTimeInterval:1*60 target:_alertView selector:@selector(onTimeout:) userInfo:nil repeats:NO];
+    }
+    
 }
 
 + (void)showWithTitle:(NSString *)title message:(NSString*)message
@@ -137,6 +144,14 @@ static ActivityAlertView* _alertView = nil;
 {
     [ActivityAlertView close];
 }
+
+- (void)onTimeout:(NSTimer*)timer
+{
+    DLog(@"ActivityAlertView::onTimeout!");
+    [ActivityAlertView close];
+}
+
+
 
 - (void) dealloc
 {

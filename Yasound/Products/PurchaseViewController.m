@@ -12,7 +12,7 @@
 #import "YasoundDataProvider.h"
 #import "Subscription.h"
 #import "TopBar.h"
-
+#import "PlaylistMoulinor.h"
 
 
 @interface PurchaseViewController ()
@@ -117,13 +117,13 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     {
         NSString* sku = sub.sku;
         
-        //LBDEBUG
-        if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1m"])
-            sku = @"com.yasound.yasound.inappHD1m";
-        else if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1y"])
-            sku = @"com.yasound.yasound.inappHD1y";
-        else if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1ysp"])
-            sku = @"com.yasound.yasound.inappHD1ysp";
+//        //LBDEBUG
+//        if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1m"])
+//            sku = @"com.yasound.yasound.inappHD1m";
+//        else if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1y"])
+//            sku = @"com.yasound.yasound.inappHD1y";
+//        else if ([sku isEqualToString:@"com.yasound.yasoundtest.inappHD1ysp"])
+//            sku = @"com.yasound.yasound.inappHD1ysp";
         
         [self.productIdentifierList addObject:sku];
     }
@@ -283,7 +283,11 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
     DLog(@"complete Transaction : %@   for productIdentifier : %@", transaction.description, sku);
     
-    [[YasoundDataProvider main] subscriptionComplete:sku withReceipt:transaction.transactionReceipt target:self action:@selector(onTransactionRecorded:success:)];
+    //LBDEBUG
+//    [[PlaylistMoulinor main] emailData:transaction.transactionReceipt to:@"jerome@yasound.com" mimetype:@"application/octet-stream" filename:@"yasound_inapp_apple_receipt.bin" controller:self];
+    
+    [[YasoundDataProvider main] subscriptionComplete:sku withReceipt:transaction.transactionReceipt target:self action:@selector(onTransactionRecorded:info:)];
+        
     
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
     
@@ -321,8 +325,17 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
 
 
-- (void)onTransactionRecorded:(ASIHTTPRequest*)req success:(BOOL)success
+//- (void)onTransactionRecorded:(ASIHTTPRequest*)req success:(BOOL)success
+- (void)onTransactionRecorded:(NSString*)obj1 info:(NSDictionary*)info
 {
+    DLog(@"onTransactionRecorded obj1 class : '%@'!", [obj1 class]);
+    DLog(@"onTransactionRecorded info : '%@'!", info);
+    
+    BOOL success = NO;
+    NSNumber* succeeded = [info objectForKey:@"succeeded"];
+    if (succeeded)
+        success = [succeeded boolValue];
+    
 
     if (!success)
     {
@@ -334,6 +347,15 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
         [successesAlert release];
         return;
     }
+
+    DLog(@"onTransactionRecorded success!");
+
+    UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.transaction.completed.title", nil)
+                                                             message:NSLocalizedString(@"Purchase.transaction.completed.message", nil)
+                                                            delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [successesAlert show];
+    [successesAlert release];
+    
     
     // refresh data and gui
     self.productDetailsList    = [[NSMutableArray alloc] init];
