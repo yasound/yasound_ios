@@ -10,6 +10,7 @@
 #import <StoreKit/StoreKit.h>
 #import <StoreKit/SKPaymentTransaction.h>
 #import "PurchaseTableViewCell.h"
+#import "WebImageView.h"
 
 
 @interface PurchaseViewController : YaViewController<SKProductsRequestDelegate, SKPaymentTransactionObserver>
@@ -21,7 +22,13 @@
 @property(nonatomic, retain) NSMutableArray* productDetailsList;
 
 @property(nonatomic, retain) IBOutlet UITableView* tableview;
-@property (nonatomic, retain) IBOutlet PurchaseTableViewCell* cellPurchase;
+//@property (nonatomic, retain) IBOutlet PurchaseTableViewCell* cellPurchase;
+
+@property (nonatomic, retain) IBOutlet UITableViewCell* cellProfil;
+@property (nonatomic, retain) IBOutlet WebImageView* cellProfilImage;
+@property (nonatomic, retain) IBOutlet UIImageView* cellProfilHdImage;
+@property (nonatomic, retain) IBOutlet UILabel* cellProfilLabel;
+
 
 
 @end

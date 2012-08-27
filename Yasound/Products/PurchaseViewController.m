@@ -27,6 +27,12 @@
 @synthesize productDetailsList;
 @synthesize tableview;
 
+@synthesize cellProfil;
+@synthesize cellProfilImage;
+@synthesize cellProfilHdImage;
+@synthesize cellProfilLabel;
+
+
 
 static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
@@ -178,8 +184,16 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
 #pragma mark - TableViewDelegate
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == 0)
+        return 1;
+    
     return [self.productDetailsList count];
 }
 
@@ -187,6 +201,9 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0)
+        return;
+    
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.cell" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIImageView* view = [sheet makeImage];
     cell.backgroundView = view;
@@ -197,6 +214,10 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ((indexPath.section == 0) && (indexPath.row == 0))
+        return self.cellProfil;
+    
+    
     Subscription* sub = [self.subscriptions objectAtIndex:indexPath.row];
     SKProduct* product = [self.productDetailsList objectAtIndex:indexPath.row];
 
