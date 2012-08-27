@@ -57,87 +57,8 @@
 
         for (Radio* radio in radios)
         {
-            
-            BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:&error];
-            sheetContainer.frame = CGRectMake(sheetContainer.frame.origin.x + xOffset, sheetContainer.frame.origin.y, sheetContainer.frame.size.width, sheetContainer.frame.size.height);
-            UIView* container = [[UIView alloc] initWithFrame:sheetContainer.frame];
-            [self addSubview:container];
-            
-            // radio image
-            sheet = [[Theme theme] stylesheetForKey:@"Radios.image" retainStylesheet:YES overwriteStylesheet:NO error:&error];
-            NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
-            WebImageView* radioImage = [[WebImageView alloc] initWithImageAtURL:imageURL];
-            radioImage.frame = sheet.frame;
-            [container addSubview:radioImage];
-
-            // radio mask
-            sheet = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:&error];
-            sheet.frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
-            UIImageView* radioMask = [sheet makeImage];
-            [container addSubview:radioMask];
-            
-            // user picture
-            sheet = [[Theme theme] stylesheetForKey:@"Radios.userImage" retainStylesheet:YES overwriteStylesheet:NO error:&error];
-            imageURL = [[YasoundDataProvider main] urlForPicture:radio.creator.picture];
-            WebImageView* userImage = [[WebImageView alloc] initWithImageAtURL:imageURL];
-            userImage.frame = sheet.frame;
-            [container addSubview:userImage];
-            
-            // draw circle mask
-            userImage.layer.masksToBounds = YES;
-            userImage.layer.cornerRadius = 16.5;
-            
-            // avatar circled mask
-            sheet = [[Theme theme] stylesheetForKey:@"Radios.userMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            UIImageView* userMask = [sheet makeImage];
-            [container addSubview:userMask];
-
-            
-            // title
-            sheet = [[Theme theme] stylesheetForKey:@"Radios.title"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
-            UILabel* title = [sheet makeLabel];
-            title.text = radio.name;
-            [container addSubview:title];
-
-            // subscribers icon
-            sheet = [[Theme theme] stylesheetForKey:@"Radios.subscribersIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error];
-            UIImageView* icon = [sheet makeImage];
-            [container addSubview:icon];
-            
-            // subscribers label
-            sheet = [[Theme theme] stylesheetForKey:@"Radios.subscribers"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
-            UILabel* subscribers = [sheet makeLabel];
-            subscribers.text = [NSString stringWithFormat:@"%d", [radio.favorites integerValue]];
-            [container addSubview:subscribers];
-            
-
-            // listeners icon
-            sheet = [[Theme theme] stylesheetForKey:@"Radios.listenersIcon" retainStylesheet:YES overwriteStylesheet:NO error:&error];
-            icon = [sheet makeImage];
-            [container addSubview:icon];
-
-            // listeners label
-            sheet = [[Theme theme] stylesheetForKey:@"Radios.listeners"  retainStylesheet:YES overwriteStylesheet:NO error:&error];
-            UILabel* listeners = [sheet makeLabel];
-            listeners.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
-            [container addSubview:listeners];
-            
-            // interactive view : catch the "press down" and "press up" actions
-            InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheetContainer.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:radioIndex]];
-            [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:radioIndex]];
-            [container addSubview:interactiveView];
-            
-            
-            // store objects
-            NSMutableArray* objects = [NSMutableArray arrayWithObjects:radio, radioImage, radioMask, userImage, title, subscribers, listeners, interactiveView, nil];
+            [self addRadioGui:radio radioIndex:radioIndex xOffset:xOffset];
             radioIndex++;
-            
-            
-            
-            
-            
-            [self.radioObjects addObject:objects];
-            
             xOffset += (self.frame.size.width / 2.f);
         }
         
@@ -161,11 +82,91 @@
 
 
 
+- (void)addRadioGui:(Radio*)radio radioIndex:(NSInteger)radioIndex xOffset:(CGFloat)xOffset
+{
+    BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheetContainer.frame = CGRectMake(sheetContainer.frame.origin.x + xOffset, sheetContainer.frame.origin.y, sheetContainer.frame.size.width, sheetContainer.frame.size.height);
+    UIView* container = [[UIView alloc] initWithFrame:sheetContainer.frame];
+    [self addSubview:container];
+    
+    // radio image
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Radios.image" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
+    WebImageView* radioImage = [[WebImageView alloc] initWithImageAtURL:imageURL];
+    radioImage.frame = sheet.frame;
+    [container addSubview:radioImage];
+    
+    // radio mask
+    sheet = [[Theme theme] stylesheetForKey:@"Radios.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    sheet.frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
+    UIImageView* radioMask = [sheet makeImage];
+    [container addSubview:radioMask];
+    
+    // user picture
+    sheet = [[Theme theme] stylesheetForKey:@"Radios.userImage" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    imageURL = [[YasoundDataProvider main] urlForPicture:radio.creator.picture];
+    WebImageView* userImage = [[WebImageView alloc] initWithImageAtURL:imageURL];
+    userImage.frame = sheet.frame;
+    [container addSubview:userImage];
+    
+    // draw circle mask
+    userImage.layer.masksToBounds = YES;
+    userImage.layer.cornerRadius = 16.5;
+    
+    // avatar circled mask
+    sheet = [[Theme theme] stylesheetForKey:@"Radios.userMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* userMask = [sheet makeImage];
+    [container addSubview:userMask];
+    
+    
+    // title
+    sheet = [[Theme theme] stylesheetForKey:@"Radios.title"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* title = [sheet makeLabel];
+    title.text = radio.name;
+    [container addSubview:title];
+    
+    // subscribers icon
+    sheet = [[Theme theme] stylesheetForKey:@"Radios.subscribersIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* icon = [sheet makeImage];
+    [container addSubview:icon];
+    
+    // subscribers label
+    sheet = [[Theme theme] stylesheetForKey:@"Radios.subscribers"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* subscribers = [sheet makeLabel];
+    subscribers.text = [NSString stringWithFormat:@"%d", [radio.favorites integerValue]];
+    [container addSubview:subscribers];
+    
+    
+    // listeners icon
+    sheet = [[Theme theme] stylesheetForKey:@"Radios.listenersIcon" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    icon = [sheet makeImage];
+    [container addSubview:icon];
+    
+    // listeners label
+    sheet = [[Theme theme] stylesheetForKey:@"Radios.listeners"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* listeners = [sheet makeLabel];
+    listeners.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
+    [container addSubview:listeners];
+    
+    // interactive view : catch the "press down" and "press up" actions
+    InteractiveView* interactiveView = [[InteractiveView alloc] initWithFrame:sheetContainer.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:radioIndex]];
+    [interactiveView setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:radioIndex]];
+    [container addSubview:interactiveView];
+    
+    
+    // store objects
+    NSMutableArray* objects = [NSMutableArray arrayWithObjects:radio, radioImage, radioMask, userImage, title, subscribers, listeners, interactiveView, nil];
+    
+    [self.radioObjects addObject:objects];
+}
 
-- (void)willMoveToSuperview:(UIView *)newSuperview 
+
+
+
+- (void)willMoveToSuperview:(UIView *)newSuperview
 {
     [super willMoveToSuperview:newSuperview];
-    if(!newSuperview) 
+    if(!newSuperview)
     {
         for (NSArray* objects in self.radioObjects)
         {
@@ -188,8 +189,18 @@
         return;
     
     NSInteger radioIndex = 0;
+    CGFloat xOffset = 0;
+    
     for (Radio* radio in radios)
     {
+        if (self.radioObjects.count <= radioIndex)
+        {
+            [self addRadioGui:radio radioIndex:radioIndex xOffset:xOffset];
+            radioIndex++;
+            xOffset += (self.frame.size.width / 2.f);
+            continue;
+        }
+        
         NSMutableArray* objects = [self.radioObjects objectAtIndex:radioIndex];
         
         // replace radio
@@ -217,6 +228,8 @@
         label.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
         
         radioIndex++;
+        xOffset += (self.frame.size.width / 2.f);
+        
     }
 }
 
