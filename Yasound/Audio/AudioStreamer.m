@@ -29,6 +29,14 @@
 #define BitRateEstimationMaxPackets 5000
 #define BitRateEstimationMinPackets 50
 
+
+#ifdef USE_DEV_SERVER
+#define ASLog( s, ... )
+#else
+#define ASDLogLog( s, ... ) DLog( @"%@", [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#endif
+
+
 NSString * const ASStatusChangedNotification = @"ASStatusChangedNotification";
 
 NSString * const AS_NO_ERROR_STRING = @"No error.";
@@ -486,14 +494,14 @@ static NSDate* gStreamErrorLastTime = nil;
 		if (err)
 		{
 			char *errChars = (char *)&err;
-			DLog(@"audiostreamer err: %@ - %c%c%c%c %d\n",
+			ASLog(@"audiostreamer err: %@ - %c%c%c%c %d\n",
 				[AudioStreamer stringForErrorCode:anErrorCode],
 				errChars[3], errChars[2], errChars[1], errChars[0],
 				(int)err);
 		}
 		else
 		{
-			DLog(@"audiostreamer no err: %@", [AudioStreamer stringForErrorCode:anErrorCode]);
+			ASLog(@"audiostreamer no err: %@", [AudioStreamer stringForErrorCode:anErrorCode]);
 		}
 
 		if (state == AS_PLAYING ||
@@ -514,7 +522,7 @@ static NSDate* gStreamErrorLastTime = nil;
         NSTimeInterval interval = [now timeIntervalSinceDate:gStreamErrorLastTime];
         
 //        if (gStreamErrorLastTime != nil)
-//            DLog(@"interval %2.f", interval);
+//            ASLog(@"interval %2.f", interval);
         
         if ((gStreamErrorLastTime == nil ) || (interval > STREAM_ERROR_TIMER_THRESHOLD))
         {
@@ -872,7 +880,7 @@ static NSDate* gStreamErrorLastTime = nil;
 			if (state != AS_STOPPING &&
 				state != AS_STOPPED)
 			{
-				DLog(@"### Not starting audio thread. State code is: %u", state);
+				ASLog(@"### Not starting audio thread. State code is: %u", state);
 			}
 			self.state = AS_INITIALIZED;
 			[pool release];
@@ -1696,7 +1704,7 @@ cleanup:
 	ioFlags:(UInt32 *)ioFlags
 {
   const char* c = (char*)&inPropertyID;
-  DLog(@"handlePropertyChangeForFileStream: %c%c%c%c", c[3], c[2], c[1], c[0]);
+  ASLog(@"handlePropertyChangeForFileStream: %c%c%c%c", c[3], c[2], c[1], c[0]);
 	@synchronized(self)
 	{
 		if ([self isFinishing])
@@ -1740,18 +1748,18 @@ cleanup:
 		{
       {
         AudioStreamBasicDescription desc;
-        DLog(@"!!!!!!!!!!!!!! New Stream format !!!!!!!!!!!!!!!!!!!");
+        ASLog(@"!!!!!!!!!!!!!! New Stream format !!!!!!!!!!!!!!!!!!!");
         UInt32 asbdSize = sizeof(desc);
         
         // get the stream format.
         err = AudioFileStreamGetProperty(inAudioFileStream, kAudioFileStreamProperty_DataFormat, &asbdSize, &desc);
         if (err)
         {
-          DLog(@"Error getting new stream format...");
+          ASLog(@"Error getting new stream format...");
           return;
         }
 
-        DLog(@"---------------->>>>>>>> New Sample Rate: %f", desc.mSampleRate);
+        ASLog(@"---------------->>>>>>>> New Sample Rate: %f", desc.mSampleRate);
       }
       
 			if (asbd.mSampleRate == 0)
@@ -1806,7 +1814,7 @@ cleanup:
 		}
 		else
 		{
-//			DLog(@"Property is %c%c%c%c",
+//			ASLog(@"Property is %c%c%c%c",
 //				((char *)&inPropertyID)[3],
 //				((char *)&inPropertyID)[2],
 //				((char *)&inPropertyID)[1],
@@ -2033,7 +2041,7 @@ cleanup:
 //  Enable this logging to measure how many buffers are queued at any time.
 //
 #if LOG_QUEUED_BUFFERS
-	DLog(@"Queued buffers: %ld", buffersUsed);
+	ASLog(@"Queued buffers: %ld", buffersUsed);
 #endif
 	
 	pthread_cond_signal(&queueBufferReadyCondition);
@@ -2085,7 +2093,7 @@ cleanup:
 			}
 			else
 			{
-				DLog(@"AudioQueue changed state in unexpected way.");
+				ASLog(@"AudioQueue changed state in unexpected way.");
 			}
 		}
 	}

@@ -297,7 +297,7 @@ taskStatus stringToStatus(NSString* str);
 
 // in-app purchase
 - (void)subscriptionsWithTarget:(id)target action:(SEL)action;
-- (void)subscriptionComplete:(NSString*)productId withReceipt:(NSData*)appleReceipt target:(id)target action:(SEL)action;
+- (void)subscriptionComplete:(NSString*)productId withBase64Receipt:(NSString*)appleReceipt target:(id)target action:(SEL)action;
 
 
 - (void)testV2;

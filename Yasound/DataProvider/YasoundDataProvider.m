@@ -2471,7 +2471,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)subscriptionComplete:(NSString*)productId withReceipt:(NSData*)appleReceipt target:(id)target action:(SEL)action
+- (void)subscriptionComplete:(NSString*)productId withBase64Receipt:(NSString*)appleReceipt target:(id)target action:(SEL)action
 {
     
     NSString* url = [NSString stringWithFormat:@"api/v1/premium/subscriptions/%@", productId];

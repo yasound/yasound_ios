@@ -13,6 +13,7 @@
 #import "Subscription.h"
 #import "TopBar.h"
 #import "PlaylistMoulinor.h"
+#import "Base64.h"
 
 
 @interface PurchaseViewController ()
@@ -282,11 +283,15 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     NSString* sku = transaction.payment.productIdentifier;
 
     DLog(@"complete Transaction : %@   for productIdentifier : %@", transaction.description, sku);
+
+    NSString* encodedReceipt = [Base64 encodeBase64WithData:transaction.transactionReceipt];
+
     
     //LBDEBUG
-    [[PlaylistMoulinor main] emailData:transaction.transactionReceipt to:@"jerome@yasound.com" mimetype:@"application/octet-stream" filename:@"yasound_inapp_apple_receipt.bin" controller:self];
+    NSData* emailData = [encodedReceipt dataUsingEncoding:NSASCIIStringEncoding];
+    [[PlaylistMoulinor main] emailData:emailData to:@"jerome@yasound.com" mimetype:@"application/octet-stream" filename:@"yasound_inapp_apple_receipt.bin" controller:self];
     
-    [[YasoundDataProvider main] subscriptionComplete:sku withReceipt:transaction.transactionReceipt target:self action:@selector(onTransactionRecorded:info:)];
+    [[YasoundDataProvider main] subscriptionComplete:sku withBase64Receipt:encodedReceipt target:self action:@selector(onTransactionRecorded:info:)];
         
     
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
