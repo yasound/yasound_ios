@@ -11,9 +11,14 @@
 #import "ActivityAlertView.h"
 #import "YasoundDataProvider.h"
 #import "Subscription.h"
+#import "Service.h"
 #import "TopBar.h"
 #import "PlaylistMoulinor.h"
 #import "Base64.h"
+
+
+
+#define SERVICE_HD @"HD"
 
 
 @interface PurchaseViewController ()
@@ -29,7 +34,7 @@
 
 @synthesize cellProfil;
 @synthesize cellProfilImage;
-@synthesize cellProfilHdImage;
+//@synthesize cellProfilHdImage;
 @synthesize cellProfilLabel;
 
 
@@ -67,16 +72,13 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     // init profil cell
     NSURL* url = [[YasoundDataProvider main] urlForPicture:[YasoundDataProvider main].user.picture];
     [self.cellProfilImage setUrl:url];
-        
-    // get list of acquired sevices
-    [[YasoundDataProvider main] servicesWithTarget:self action:@selector(onSubscriptionsReceived:success:)];
-    
     
     [ActivityAlertView showWithTitle:nil];
 
-    [[YasoundDataProvider main] subscriptionsWithTarget:self action:@selector(onSubscriptionsReceived:success:)];
+    // get list of acquired sevices
+    [[YasoundDataProvider main] servicesWithTarget:self action:@selector(onServicesReceived:success:)];
 }
-
+    
 
 
 - (void)viewDidUnload
@@ -89,6 +91,76 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
+
+
+
+
+
+
+
+
+- (NSString*) dateToString:(NSDate*)d
+{
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSString* s = [dateFormat stringFromDate:d];
+    [dateFormat release];
+    return s;
+}
+
+
+
+
+
+- (void)onServicesReceived:(ASIHTTPRequest*)req success:(BOOL)success
+{
+    if (!success)
+    {
+        [ActivityAlertView close];
+        
+        DLog(@"onServicesReceived : failed!");
+        
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Purchase.subscriptions.error.title", nil) message:NSLocalizedString(@"Purchase.subscriptions.error.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        
+        return;
+    }
+    
+    
+    Container* container = [req responseObjectsWithClass:[Service class]];
+    self.services = container.objects;
+    
+    if ((self.services != nil) || (self.services.count == 0))
+    {
+        [ActivityAlertView close];
+        self.cellProfilLabel.text = @"";
+        DLog(@"no services registered yet");
+    }
+    else
+    {
+        NSString* str = @"";
+        
+        // fill the product identifiers list
+        for (Service* sv in self.services)
+        {
+            DLog(@"%@", [sv toString]);
+            
+            NSString* date = [self dateToString:sv.expiration_date];
+            NSString* tmp = NSLocalizedString(@"Purchase.service", nil);
+            
+            str = [str stringByAppendingFormat:tmp, sv.service, date];
+        }
+        
+        self.cellProfilLabel.text = str;
+
+    }
+
+    // now gets the list of subscriptions
+    [[YasoundDataProvider main] subscriptionsWithTarget:self action:@selector(onSubscriptionsReceived:success:)];
 }
 
 
@@ -396,8 +468,9 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     self.productDetailsList    = [[NSMutableArray alloc] init];
     self.productIdentifierList = [[NSMutableArray alloc] init];
     self.subscriptions = nil;
+    self.services = nil;
     
-    [[YasoundDataProvider main] subscriptionsWithTarget:self action:@selector(onSubscriptionsReceived:success:)];
+    [[YasoundDataProvider main] servicesWithTarget:self action:@selector(onServicesReceived:success:)];
     
 }
 

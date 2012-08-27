@@ -17,6 +17,7 @@
 
 @property (nonatomic, retain) UINib* cellLoader;
 
+@property(nonatomic, retain) NSArray* services;
 @property(nonatomic, retain) NSArray* subscriptions;
 @property(nonatomic, retain) NSMutableArray* productIdentifierList;
 @property(nonatomic, retain) NSMutableArray* productDetailsList;
@@ -26,7 +27,7 @@
 
 @property (nonatomic, retain) IBOutlet UITableViewCell* cellProfil;
 @property (nonatomic, retain) IBOutlet WebImageView* cellProfilImage;
-@property (nonatomic, retain) IBOutlet UIImageView* cellProfilHdImage;
+//@property (nonatomic, retain) IBOutlet UIImageView* cellProfilHdImage;
 @property (nonatomic, retain) IBOutlet UILabel* cellProfilLabel;
 
 

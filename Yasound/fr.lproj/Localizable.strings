@@ -650,6 +650,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Purchase.transaction.completed.title" = "Confirmation";
 "Purchase.transaction.completed.message" = "Votre achat a bien été engistré par les serveurs de Yasound.";
 
+"Purchase.service" = "service %@ expire le %@";
+
 "Radio.sheet.title" = "Ma radio";
 "Radio.sheet.button.programming" = "Programmation";
 "Radio.sheet.button.broadcast" = "Message aux abonnés";

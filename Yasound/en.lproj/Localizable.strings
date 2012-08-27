@@ -662,6 +662,8 @@
 "Purchase.transaction.completed.title" = "Confirmation";
 "Purchase.transaction.completed.message" = "Your in-purchase has been properly validated by the Yasound's servers.";
 
+"Purchase.service" = "service %@ expires on %@";
+
 "Radio.sheet.title" = "My radio";
 "Radio.sheet.button.programming" = "Programming";
 "Radio.sheet.button.broadcast" = "Message to subscribers";
