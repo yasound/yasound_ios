@@ -163,6 +163,9 @@
         [self.message setNumberOfLines:0];        
         [self.cellView addSubview:self.message];
         
+        self.message.frame = CGRectMake(self.message.frame.origin.x, self.message.frame.origin.y, self.message.frame.size.width, COMPUTED_HEIGHT);
+        
+        
 //        sheet = [[Theme theme] stylesheetForKey:@"Wall.Messages.CellSeparator" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //        self.separator = [[UIImageView alloc] initWithImage:[sheet image]];
 //        self.separator.frame = CGRectMake(0, height + THE_REST_OF_THE_CELL_HEIGHT - sheet.frame.size.height, sheet.frame.size.width, sheet.frame.size.height);
