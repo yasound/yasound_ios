@@ -130,13 +130,13 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
         return;
     }
     
+    //DLog(@"%@", req.responseString);
     
     Container* container = [req responseObjectsWithClass:[Service class]];
     self.services = container.objects;
     
-    if ((self.services != nil) || (self.services.count == 0))
+    if ((self.services == nil) || (self.services.count == 0))
     {
-        [ActivityAlertView close];
         self.cellProfilLabel.text = @"";
         DLog(@"no services registered yet");
     }
@@ -279,10 +279,19 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ((indexPath.section == 0) && (indexPath.row == 0))
+        return 92.f;
+    
+    return 46.f;
+}
+
+
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
+    if ((indexPath.section == 0) && (indexPath.row == 0))
         return;
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.cell" retainStylesheet:YES overwriteStylesheet:NO error:nil];

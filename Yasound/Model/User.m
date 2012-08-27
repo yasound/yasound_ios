@@ -150,18 +150,3 @@ UserMood stringToUsermood(NSString* str)
 
 
 
-
-//- (void)loadPropertiesFromDictionary:(NSDictionary*)dict
-//{
-//    [super loadPropertiesFromDictionary:dict];
-//    
-//    // custom load for property 'time'
-//    NSString* timeStr = [dict valueForKey:@"time"];
-//    NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
-//    [timeFormat setDateFormat:@"HH:mm"];
-//    NSDate* t = [timeFormat dateFromString:timeStr];
-//    self.time = t;
-//    NSLog(@"time: %@", self.time);
-//}
-
-

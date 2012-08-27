@@ -13,6 +13,7 @@
 @synthesize running;
 
 static ActivityAlertView* _alertView = nil;
+static NSTimer* _timeoutTimer = nil;
 
 + (ActivityAlertView*)current
 {
@@ -54,7 +55,10 @@ static ActivityAlertView* _alertView = nil;
     // timeout
     else
     {
-        [NSTimer scheduledTimerWithTimeInterval:1*60 target:_alertView selector:@selector(onTimeout:) userInfo:nil repeats:NO];
+        if ((_timeoutTimer != nil) && ([_timeoutTimer isValid]))
+            [_timeoutTimer invalidate];
+        
+        _timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:1*60 target:_alertView selector:@selector(onTimeout:) userInfo:nil repeats:NO];
     }
     
 }
@@ -102,6 +106,10 @@ static ActivityAlertView* _alertView = nil;
 {
     if (_alertView == nil)
         return;
+    
+    if ((_timeoutTimer != nil) && ([_timeoutTimer isValid]))
+        [_timeoutTimer invalidate];
+    
     [_alertView close];
     _alertView.running = NO;
     

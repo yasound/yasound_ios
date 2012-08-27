@@ -2467,6 +2467,10 @@ static YasoundDataProvider* _main = nil;
     conf.callbackAction = action;
     
     ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    
+    //LBDEBUG
+    //DLog(@"servicesWithTarget url '%@'", req.url);
+    
     [req startAsynchronous];
 }
 

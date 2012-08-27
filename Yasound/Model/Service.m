@@ -31,19 +31,19 @@
 }
 
 
-- (void)loadPropertiesFromDictionary:(NSDictionary*)dict
-{
-    [super loadPropertiesFromDictionary:dict];
-    
-    // custom load for property 'time'
-    NSString* timeStr = [dict valueForKey:@"expiration_date"];
-    NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
-    [timeFormat setDateFormat:@"yyyy-MM-ddTHH:mm:ss"];
-    NSDate* t = [timeFormat dateFromString:timeStr];
-    self.expiration_date = t;
-    //NSLog(@"time: %@", self.time);
-}
-
+//- (void)loadPropertiesFromDictionary:(NSDictionary*)dict
+//{
+//    [super loadPropertiesFromDictionary:dict];
+//    
+//    // custom load for property 'time'
+//    NSString* timeStr = [dict valueForKey:@"expiration_date"];
+//    NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
+//    [timeFormat setDateFormat:@"yyyy-MM-ddTHH:mm:ss"];
+//    NSDate* t = [timeFormat dateFromString:timeStr];
+//    self.expiration_date = t;
+//    //NSLog(@"time: %@", self.time);
+//}
+//
 
 @end
 
