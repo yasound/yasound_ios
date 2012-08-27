@@ -457,7 +457,6 @@
   [self.delegate sessionDidLogin:YES];
 }
 
-credentialFailed
 
 - (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller
 {
@@ -471,6 +470,13 @@ credentialFailed
   _isLoging = NO;
   [self.delegate sessionLoginCanceled];
   DLog(@"OAuthTwitterControllerCanceled");
+}
+
+- (void)credentialFailed:(SA_OAuthTwitterController *) controller
+{
+    DLog(@"credentialFailed");
+    _isLoging = NO;
+    [self.delegate sessionLoginFailed];
 }
 
 
