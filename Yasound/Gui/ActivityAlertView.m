@@ -56,7 +56,10 @@ static NSTimer* _timeoutTimer = nil;
     else
     {
         if ((_timeoutTimer != nil) && ([_timeoutTimer isValid]))
+        {
             [_timeoutTimer invalidate];
+            _timeoutTimer = nil;
+        }
         
         _timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:1*60 target:_alertView selector:@selector(onTimeout:) userInfo:nil repeats:NO];
     }
@@ -108,7 +111,10 @@ static NSTimer* _timeoutTimer = nil;
         return;
     
     if ((_timeoutTimer != nil) && ([_timeoutTimer isValid]))
+    {
         [_timeoutTimer invalidate];
+        _timeoutTimer = nil;
+    }
     
     [_alertView close];
     _alertView.running = NO;
