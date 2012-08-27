@@ -457,6 +457,8 @@
   [self.delegate sessionDidLogin:YES];
 }
 
+credentialFailed
+
 - (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller
 {
   DLog(@"OAuthTwitterControllerFailed");
