@@ -11,14 +11,12 @@
 
 @property (retain, nonatomic) NSString* sku;
 @property (retain, nonatomic) NSNumber* duration;
-@property (retain, nonatomic) NSNumber* current;
 @property (retain, nonatomic) NSNumber* enabled;
 @property (retain, nonatomic) NSNumber* highlighted;
 
 
 
 - (BOOL)isEnabled;
-- (BOOL)isCurrent;
 - (BOOL)isHighlighted;
 - (NSString*)toString;
 

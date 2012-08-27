@@ -230,15 +230,15 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     if (!sub.isEnabled)
         return;
     
-    if ([sub isCurrent])
-    {
-        UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:product.description                                       
-                                                                 message:NSLocalizedString(@"Purchase.transaction.current.message", nil)
-                                                                delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [successesAlert show];
-        [successesAlert release];
-        return;
-    }
+//    if ([sub isCurrent])
+//    {
+//        UIAlertView *successesAlert = [[UIAlertView alloc] initWithTitle:product.description                                       
+//                                                                 message:NSLocalizedString(@"Purchase.transaction.current.message", nil)
+//                                                                delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+//        [successesAlert show];
+//        [successesAlert release];
+//        return;
+//    }
 
     [ActivityAlertView showWithTitle:nil];
     
@@ -288,8 +288,8 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
 
     
     //LBDEBUG
-    NSData* emailData = [encodedReceipt dataUsingEncoding:NSASCIIStringEncoding];
-    [[PlaylistMoulinor main] emailData:emailData to:@"jerome@yasound.com" mimetype:@"application/octet-stream" filename:@"yasound_inapp_apple_receipt.bin" controller:self];
+//    NSData* emailData = [encodedReceipt dataUsingEncoding:NSASCIIStringEncoding];
+//    [[PlaylistMoulinor main] emailData:emailData to:@"jerome@yasound.com" mimetype:@"application/octet-stream" filename:@"yasound_inapp_apple_receipt.bin" controller:self];
     
     [[YasoundDataProvider main] subscriptionComplete:sku withBase64Receipt:encodedReceipt target:self action:@selector(onTransactionRecorded:info:)];
         

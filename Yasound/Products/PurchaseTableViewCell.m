@@ -45,9 +45,7 @@
     
     self.subscription = sub;
     
-    if ([self.subscription isCurrent])
-        self.image.image = [UIImage imageNamed:@"productIconCurrent.png"];
-    else if ([self.subscription isHighlighted])
+    if ([self.subscription isHighlighted])
         self.image.image = [UIImage imageNamed:@"productIconBest.png"];
     else
         self.image.image = [UIImage imageNamed:@"productIconDefault.png"];

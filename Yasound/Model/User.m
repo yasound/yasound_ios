@@ -46,7 +46,7 @@
 
 - (NSString*)toString
 {
-  NSString* desc = [NSString stringWithFormat:@"id: '%@' username: '%@', name: '%@'", self.id, self.username, self.name];
+  NSString* desc = [NSString stringWithFormat:@"id: '%@' username: '%@', name: '%@'    permissions:%@", self.id, self.username, self.name, self.permissions];
   return desc;
 }
 
@@ -90,7 +90,7 @@
 
 - (BOOL)permission:(NSString*)permId
 {
-    //DLog(@"permission :%@", self.permissions);
+    DLog(@"permission user dump :%@", [self toString]);
     
     if ((self.permissions == nil) || (self.permissions.count == 0))
     {
