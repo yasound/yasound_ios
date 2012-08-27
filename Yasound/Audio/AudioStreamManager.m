@@ -19,6 +19,14 @@
 
 
 
+#ifdef USE_DEV_SERVER
+#define ASLog( s, ... )
+#else
+#define ASLog( s, ... ) DLog( @"%@", [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#endif
+
+
+
 static AudioStreamManager* _main = nil;
 
 static AudioStreamer* _gAudioStreamer = nil;
@@ -68,6 +76,10 @@ static AudioStreamer* _gAudioStreamer = nil;
     return;
 #endif
     
+#ifdef USE_DEV_SERVER
+    return;
+#endif
+    
     if (_gAudioStreamer && [radio.id intValue]  == [self.currentRadio.id intValue])
         return;
     
@@ -91,7 +103,7 @@ static AudioStreamer* _gAudioStreamer = nil;
 #else
   NSString* url = radio.stream_url;
     NSURL* radiourl = [NSURL URLWithString:url];
-    DLog(@"radio url: %@\n", url);
+    ASLog(@"radio url: %@\n", url);
 #endif
     
     
@@ -214,7 +226,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     if ((_streamErrorTimer != nil) && [_streamErrorTimer isValid])
         return;
 
-    DLog(@"onAudioStreamNotif");
+    ASLog(@"onAudioStreamNotif");
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_DISPLAY_AUDIOSTREAM_ERROR object:nil];
 

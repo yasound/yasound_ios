@@ -33,7 +33,7 @@
 #ifdef USE_DEV_SERVER
 #define ASLog( s, ... )
 #else
-#define ASDLogLog( s, ... ) DLog( @"%@", [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#define ASLog( s, ... ) DLog( @"%@", [NSString stringWithFormat:(s), ##__VA_ARGS__] )
 #endif
 
 
