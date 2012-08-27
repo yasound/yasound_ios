@@ -20,6 +20,7 @@
 - (BOOL)isEnabled;
 - (BOOL)isCurrent;
 - (BOOL)isHighlighted;
+- (NSString*)toString;
 
 @end
 

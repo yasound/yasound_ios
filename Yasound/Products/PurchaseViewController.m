@@ -94,8 +94,6 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
         return;
     }
     
-    //LBDEBUG
-    //DLog(@"%@", req.responseString);
     
     Container* container = [req responseObjectsWithClass:[Subscription class]];
     self.subscriptions = container.objects;
@@ -115,6 +113,8 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     // fill the product identifiers list
     for (Subscription* sub in self.subscriptions)
     {
+        DLog(@"%@", [sub toString]);
+        
         NSString* sku = sub.sku;
         
 //        //LBDEBUG
@@ -284,7 +284,7 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     DLog(@"complete Transaction : %@   for productIdentifier : %@", transaction.description, sku);
     
     //LBDEBUG
-//    [[PlaylistMoulinor main] emailData:transaction.transactionReceipt to:@"jerome@yasound.com" mimetype:@"application/octet-stream" filename:@"yasound_inapp_apple_receipt.bin" controller:self];
+    [[PlaylistMoulinor main] emailData:transaction.transactionReceipt to:@"jerome@yasound.com" mimetype:@"application/octet-stream" filename:@"yasound_inapp_apple_receipt.bin" controller:self];
     
     [[YasoundDataProvider main] subscriptionComplete:sku withReceipt:transaction.transactionReceipt target:self action:@selector(onTransactionRecorded:info:)];
         

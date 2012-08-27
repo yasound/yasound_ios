@@ -927,6 +927,15 @@
 		BC188BDE1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		BC188BDF1507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
 		BC188BE01507647900E38692 /* SongLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = BC188BDB1507647900E38692 /* SongLocal.m */; };
+		BC209EE815EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
+		BC209EE915EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
+		BC209EEA15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
+		BC209EEB15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
+		BC209EEC15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
+		BC209EED15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
+		BC209EEE15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
+		BC209EEF15EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
+		BC209EF015EBABFF00A0E7DB /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BC209EE715EBABFF00A0E7DB /* Base64.m */; };
 		BC2386D515D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */; };
 		BC2386D615D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */; };
 		BC2386D715D24E1600D1A4C4 /* NSObject+JsonProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */; };
@@ -6696,6 +6705,8 @@
 		BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalSongInfoViewController.m; path = Programming/LocalSongInfoViewController.m; sourceTree = "<group>"; };
 		BC188BDA1507647900E38692 /* SongLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongLocal.h; sourceTree = "<group>"; };
 		BC188BDB1507647900E38692 /* SongLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLocal.m; sourceTree = "<group>"; };
+		BC209EE615EBABFF00A0E7DB /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		BC209EE715EBABFF00A0E7DB /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		BC2386D215D24E1600D1A4C4 /* NSObject+JsonProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JsonProxy.m"; sourceTree = "<group>"; };
 		BC2386D315D24E1600D1A4C4 /* NSObject+PropertyDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+PropertyDictionary.h"; sourceTree = "<group>"; };
 		BC2386D415D24E1600D1A4C4 /* NSObject+PropertyDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+PropertyDictionary.m"; sourceTree = "<group>"; };
@@ -8049,6 +8060,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BC209EE515EBABFF00A0E7DB /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				BC209EE615EBABFF00A0E7DB /* Base64.h */,
+				BC209EE715EBABFF00A0E7DB /* Base64.m */,
+			);
+			name = Base64;
+			path = ThirdParties/Base64;
+			sourceTree = "<group>";
+		};
 		BC2386D115D24E1600D1A4C4 /* JsonToObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -8665,6 +8686,7 @@
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
 			isa = PBXGroup;
 			children = (
+				BC209EE515EBABFF00A0E7DB /* Base64 */,
 				BC9B7E3815E42B000083CF6C /* ECSlidingViewController */,
 				BC7C07701541A82F004FC760 /* MKBitlyHelper */,
 				BC9BE8221536C8B500B01AD2 /* TestFlightSDK1.0 */,
@@ -14543,6 +14565,7 @@
 				BCC754AD15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4515E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35C15E856400048E3F7 /* FakeSlidingController.m in Sources */,
+				BC209EEF15EBABFF00A0E7DB /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14760,6 +14783,7 @@
 				BCC754AE15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4615E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35D15E856400048E3F7 /* FakeSlidingController.m in Sources */,
+				BC209EF015EBABFF00A0E7DB /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14973,6 +14997,7 @@
 				BCC754AC15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4415E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35B15E856400048E3F7 /* FakeSlidingController.m in Sources */,
+				BC209EEE15EBABFF00A0E7DB /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15190,6 +15215,7 @@
 				BCC754A915E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4115E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35815E856400048E3F7 /* FakeSlidingController.m in Sources */,
+				BC209EEB15EBABFF00A0E7DB /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15407,6 +15433,7 @@
 				BCC754A715E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B3F15E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35615E856400048E3F7 /* FakeSlidingController.m in Sources */,
+				BC209EE915EBABFF00A0E7DB /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15625,6 +15652,7 @@
 				BCC754AB15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4315E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35A15E856400048E3F7 /* FakeSlidingController.m in Sources */,
+				BC209EED15EBABFF00A0E7DB /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15842,6 +15870,7 @@
 				BCC754A815E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4015E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35715E856400048E3F7 /* FakeSlidingController.m in Sources */,
+				BC209EEA15EBABFF00A0E7DB /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16059,6 +16088,7 @@
 				BCC754A615E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B3E15E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35515E856400048E3F7 /* FakeSlidingController.m in Sources */,
+				BC209EE815EBABFF00A0E7DB /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16277,6 +16307,7 @@
 				BCC754AA15E7839D00CF7F7C /* SongUploading.m in Sources */,
 				BC974B4215E7E5EE00CC62A2 /* Subscription.m in Sources */,
 				BC79F35915E856400048E3F7 /* FakeSlidingController.m in Sources */,
+				BC209EEC15EBABFF00A0E7DB /* Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
