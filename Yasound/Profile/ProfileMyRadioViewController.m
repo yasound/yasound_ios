@@ -91,7 +91,7 @@ typedef enum
     _imageViewSendMessage.highlighted = NO;
 
     
-    [[YasoundDataProvider main] favoriteUsersForRadio:self.radio target:self action:@selector(onSubscribersReceived:withInfo:)];
+    [[YasoundDataProvider main] favoriteUsersForRadio:self.radio target:self action:@selector(onSubscribersReceived:withInfo:) withUserData:nil];
     
 }
 

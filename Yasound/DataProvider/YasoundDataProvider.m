@@ -1246,7 +1246,7 @@ static YasoundDataProvider* _main = nil;
 }
 
 
-- (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector
+- (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector withUserData:(id)userData;
 {
   if (!radio || !radio.id)
     return;
@@ -1254,7 +1254,7 @@ static YasoundDataProvider* _main = nil;
   NSNumber* radioID = radio.id;
   NSString* relativeUrl = [NSString stringWithFormat:@"api/v1/radio/%@/favorite_user", radioID];
   NSArray* params = [NSArray arrayWithObject:@"limit=0"];
-  [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:nil withAuth:auth];
+  [_communicator getObjectsWithClass:[User class] withURL:relativeUrl absolute:NO withParams:params notifyTarget:target byCalling:selector withUserData:userData withAuth:auth];
 }
 
 

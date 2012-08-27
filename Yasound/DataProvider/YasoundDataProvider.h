@@ -165,7 +165,7 @@ taskStatus stringToStatus(NSString* str);
 - (void)unfollowUser:(User*)user target:(id)target action:(SEL)selector;
 
 
-- (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
+- (void)favoriteUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector withUserData:(id)userData;
 - (void)likersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 - (void)currentUsersForRadio:(Radio*)radio target:(id)target action:(SEL)selector;
 

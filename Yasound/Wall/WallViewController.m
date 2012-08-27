@@ -1819,7 +1819,7 @@
         else if (buttonIndex == 1)
         {
             [ActivityAlertView showWithTitle:nil];
-            [[YasoundDataProvider main] favoriteUsersForRadio:self.radio target:self action:@selector(onSubscribersReceived:withInfo:)];
+            [[YasoundDataProvider main] favoriteUsersForRadio:self.radio target:self action:@selector(onSubscribersReceived:withInfo:) withUserData:nil];
             return;
         }
         else if (buttonIndex == 2)

@@ -14,12 +14,17 @@
 @protocol MyRadiosTableViewCellDelegate <NSObject>
 - (void)myRadioRequestedPlay:(Radio*)radio;
 - (void)myRadioRequestedStats:(Radio*)radio;
+- (void)myRadioRequestedProgramming:(Radio*)radio;
+- (void)myRadioRequestedBroadcast:(Radio*)radio;
 - (void)myRadioRequestedSettings:(Radio*)radio;
 @end
 
 
 
 @interface MyRadiosTableViewCell : UITableViewCell
+{
+    UIActionSheet* _sheetTools;
+}
 
 @property (nonatomic, retain) id<MyRadiosTableViewCellDelegate> delegate;
 @property (nonatomic, retain) Radio* radio;

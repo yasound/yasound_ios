@@ -174,8 +174,43 @@
 {
     DLog(@"settings clicked for radio : %@", [self.radio toString]);
     
-    [self.delegate myRadioRequestedSettings:self.radio];
+
+    _sheetTools = [[UIActionSheet alloc] initWithTitle:self.radio.name delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Radio.sheet.button.programming", nil), NSLocalizedString(@"Radio.sheet.button.broadcast", nil), NSLocalizedString(@"Radio.sheet.button.settings", nil), nil];
+    _sheetTools.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+    [_sheetTools showInView:self.superview];
+    [_sheetTools release];
 }
+
+
+
+
+
+#pragma mark - ActionSheet Delegate
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet == _sheetTools)
+    {
+        if (buttonIndex == 0)
+        {
+            [self.delegate myRadioRequestedProgramming:self.radio];
+            return;
+        }
+        else if (buttonIndex == 1)
+        {
+            [self.delegate myRadioRequestedBroadcast:self.radio];
+            return;
+        }
+        else if (buttonIndex == 2)
+        {
+            [self.delegate myRadioRequestedSettings:self.radio];
+            return;
+        }
+    }
+}
+
+    
 
 
 

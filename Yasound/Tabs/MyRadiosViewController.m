@@ -17,6 +17,11 @@
 #import "Theme.h"
 #import "CreateRadioViewController.h"
 #import "ActivityAlertView.h"
+#import "ProgrammingViewController.h"
+#import "MessageBroadcastModalViewController.h"
+
+
+
 
 @interface MyRadiosViewController ()
 
@@ -31,6 +36,7 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
 @synthesize tableview;
 @synthesize tabBar;
 @synthesize editing;
+@synthesize radioToBroadcast;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -291,6 +297,44 @@ static NSString* CellIdentifier = @"MyRadiosTableViewCell";
     [self.navigationController pushViewController:view animated:YES];
     [view release];
 }
+
+
+- (void)myRadioRequestedBroadcast:(Radio*)radio
+{
+    [ActivityAlertView showWithTitle:nil];
+    self.radioToBroadcast = radio;
+    [[YasoundDataProvider main] favoriteUsersForRadio:radio target:self action:@selector(onSubscribersReceived:withInfo:) withUserData:radio];
+}
+
+
+
+
+- (void)onSubscribersReceived:(NSArray*)subscribers withInfo:(NSDictionary*)info
+{
+    [ActivityAlertView close];
+    
+    Radio* radio = self.radioToBroadcast;
+    self.radioToBroadcast = nil;
+    
+    MessageBroadcastModalViewController* view = [[MessageBroadcastModalViewController alloc] initWithNibName:@"MessageBroadcastModalViewController" bundle:nil forRadio:radio subscribers:subscribers target:self action:@selector(onModalReturned)];
+    [self.navigationController presentModalViewController:view animated:YES];
+    [view release];
+}
+
+- (void)onModalReturned
+{
+    [self.navigationController dismissModalViewControllerAnimated:YES];
+}
+
+
+
+- (void)myRadioRequestedProgramming:(Radio*)radio
+{
+    ProgrammingViewController* view = [[ProgrammingViewController alloc] initWithNibName:@"ProgrammingViewController" bundle:nil  forRadio:radio];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
+
 
 
 

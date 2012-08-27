@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "TabBar.h"
 #import "TopBar.h"
-
+#import "Radio.h"
 
 @interface MyRadiosViewController : UIViewController<TopBarDelegate, TabBarDelegate, UITableViewDelegate>
+{
+    UIActionSheet* _sheetTools;
+}
+
+@property (nonatomic, retain) Radio* radioToBroadcast;
 
 @property (nonatomic, retain) UINib* cellLoader;
 
