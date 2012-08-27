@@ -141,8 +141,12 @@ void SignalHandler(int sig) {
     {
         [self.slideController pushViewController:self.rootViewController animated:NO];
         [self.slideController pushViewController:self.menuViewController animated:NO];
-        
     }
+    
+    
+    
+    [self.rootViewController start];
+    
     
     
 //    self.menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];

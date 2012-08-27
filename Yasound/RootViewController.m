@@ -197,8 +197,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    
+}
+
+
+- (void)start
+{
     if (_firstTime)
     {
         _firstTime = NO;

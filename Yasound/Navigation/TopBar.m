@@ -295,6 +295,9 @@
 
 - (void)onHd:(id)sender
 {
+    //LBDEBUG TEMPORARLY
+    return;
+    
     BOOL run = YES;
     
     if ([self.delegate respondsToSelector:@selector(topBarItemClicked:)])

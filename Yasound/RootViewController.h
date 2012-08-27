@@ -64,6 +64,8 @@
 
 //+ (BOOL)menuIsCurrentScreen;
 
+- (void)start;
+
 @end
 
 
