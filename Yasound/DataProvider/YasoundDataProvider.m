@@ -2456,6 +2456,21 @@ static YasoundDataProvider* _main = nil;
 
 #pragma mark - in-app purchase
 
+- (void)servicesWithTarget:(id)target action:(SEL)action
+{
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/premium/services/";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = action;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
+}
+
+
 - (void)subscriptionsWithTarget:(id)target action:(SEL)action
 {
     RequestConfig* conf = [[RequestConfig alloc] init];

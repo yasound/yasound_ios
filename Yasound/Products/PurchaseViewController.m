@@ -63,6 +63,15 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     self.productDetailsList    = [[NSMutableArray alloc] init];
     self.productIdentifierList = [[NSMutableArray alloc] init];
     
+    
+    // init profil cell
+    NSURL* url = [[YasoundDataProvider main] urlForPicture:[YasoundDataProvider main].user.picture];
+    [self.cellProfilImage setUrl:url];
+        
+    // get list of acquired sevices
+    [[YasoundDataProvider main] servicesWithTarget:self action:@selector(onSubscriptionsReceived:success:)];
+    
+    
     [ActivityAlertView showWithTitle:nil];
 
     [[YasoundDataProvider main] subscriptionsWithTarget:self action:@selector(onSubscriptionsReceived:success:)];
