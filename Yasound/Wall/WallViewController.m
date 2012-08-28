@@ -838,14 +838,14 @@
 
 - (void)userJoined:(User*)u
 {
-    DLog(@"%@ joined", u.name);
+    DLog(@"userJoined %@", u.name);
     [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se connecter", u.name]];
     
 }
 
 - (void)userLeft:(User*)u
 {
-    DLog(@"%@ left", u.name);
+    DLog(@"userLeft %@", u.name);
     [self setStatusMessage:[NSString stringWithFormat:@"%@ vient de se déconnecter", u.name]];
 }
 

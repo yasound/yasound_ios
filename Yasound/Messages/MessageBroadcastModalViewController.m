@@ -36,11 +36,11 @@
         self.subscribers = subscribers;
 
         //LBDEBUG
-//        DLog(@"%@", subscribers);
+//        DLog(@"MessageBroadcastModalViewController subscribers : %@", subscribers);
 //        NSMutableArray* subs = [[NSMutableArray alloc] init];
 //        for (User* sub in subscribers)
 //        {
-//            DLog(@"%@", sub.name);
+//            DLog(@"sub.name %@", sub.name);
 //            
 //            if (  [sub.name isEqualToString:@"meeloo"]
 //                ||[sub.name isEqualToString:@"jbl2024"]

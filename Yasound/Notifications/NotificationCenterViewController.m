@@ -364,7 +364,6 @@
         || [notif.type isEqualToString:APNS_NOTIF_FRIEND_IN_RADIO]
         )
     {
-//        DLog(@"%@", notif);
         [self goToUserProfile:[notif.params objectForKey:@"user_id"]];
         return;
     }

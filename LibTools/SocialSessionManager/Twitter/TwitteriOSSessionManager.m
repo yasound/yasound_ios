@@ -181,7 +181,7 @@
   
   NSError* jsonParsingError = nil;
   NSDictionary* info = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonParsingError];
-  DLog(@"%@", info);
+//  DLog(@"TwitterIOSSessionManager onUserInfoReceived info %@", info);
   
   NSString* userid = [info valueForKey:@"id_str"];
   NSString* userscreenname = [info valueForKey:@"screen_name"];
@@ -226,7 +226,7 @@
   
   NSError* jsonParsingError = nil;
   NSDictionary* info = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonParsingError];
-  DLog(@"%@", info);
+//  DLog(@"TwitterIOSSessionManager onUserListReceived info %@", info);
   
   NSMutableArray* data = [[NSMutableArray alloc] init];
   for (NSDictionary* user in info)

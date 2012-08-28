@@ -610,7 +610,7 @@
     Class objectClass = [userinfo valueForKey:@"objectClass"];
     NSDictionary* userData = [userinfo valueForKey:@"userData"];
     
-    DLog(@"%@", request.responseString);
+    //DLog(@"handleGetAllResponse %@", request.responseString);
     
     if (!succeeded)
     {
@@ -619,10 +619,6 @@
     }
     
     NSString* response = request.responseString;
-    
-    //LBDEBUG ICI
-    //DLog(@"%@", response);
-    
     
     if (!response)
     {

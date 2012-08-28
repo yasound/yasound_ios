@@ -184,10 +184,10 @@
     return;
   
   DLog(@"%d entries in leaderboard", entries.count);
-  for (LeaderBoardEntry* entry in entries)
-  {
-    DLog(@"%@ - %@: %@ favorites %@", entry.leaderboard_rank, entry.name, entry.leaderboard_favorites, [entry isUserRadio] ? @"(user's radio)" : @"");
-  }
+//  for (LeaderBoardEntry* entry in entries)
+//  {
+//    DLog(@"LeaderBoardEntry %@ - %@: %@ favorites %@", entry.leaderboard_rank, entry.name, entry.leaderboard_favorites, [entry isUserRadio] ? @"(user's radio)" : @"");
+//  }
   
   self.leaderboard = entries;
   [_tableView reloadData];

@@ -511,9 +511,9 @@ static YasoundSessionManager* _main = nil;
     {
         DLog(@"requestDidFailed : could not get user info.");
 
-        DLog(@"%@", [error localizedDescription]);
-        DLog(@"%@", [error description]);
-        DLog(@"%@", errorMessage);
+        DLog(@"YasoundSessionManager requestDidFailed %@", [error localizedDescription]);
+        DLog(@"YasoundSessionManager requestDidFailed %@", [error description]);
+        DLog(@"YasoundSessionManager requestDidFailed %@", errorMessage);
 
         [self userInfoError];
         
@@ -528,9 +528,9 @@ static YasoundSessionManager* _main = nil;
     {
         DLog(@"requestDidFailed : could not post message.");
         
-        DLog(@"%@", [error localizedDescription]);
-        DLog(@"%@", [error description]);
-        DLog(@"%@", errorMessage);
+        DLog(@"YasoundSessionManager requestDidFailed %@", [error localizedDescription]);
+        DLog(@"YasoundSessionManager requestDidFailed %@", [error description]);
+        DLog(@"YasoundSessionManager requestDidFailed %@", errorMessage);
         
         if ((_postTarget != nil) && (_postAction != nil))
             [_postTarget performSelector:_postAction withObject:[NSNumber numberWithBool:NO]];

@@ -340,7 +340,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         [actionInfo setObject:NSLocalizedString(@"ProgrammingView_error_message", nil)  forKey:@"message"];
         
         DLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
-        DLog(@"%@", info);
+        DLog(@"info %@", info);
 
         [self.target performSelector:self.action withObject:actionInfo withObject:[NSNumber numberWithBool:NO]];
         return;
@@ -428,9 +428,9 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
             DLog(@"buildSynchronizedWithSource: empty album found!");
         }
         
-        DLog(@"%@", song.name);
-        DLog(@"%@", song.artist);
-        DLog(@"%@", song.album);
+//        DLog(@"song.name %@", song.name);
+//        DLog(@"song.artist %@", song.artist);
+//        DLog(@"song.album %@", song.album);
         
         [self catalogWithoutSorting:song  usingArtistKey:artistKey andAlbumKey:albumKey];
         self.nbSongs++;    
@@ -448,9 +448,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
 //
 - (void)buildAvailableComparingToSource:(NSDictionary*)synchronizedSource
 {
-    
-    //DLog(@"%@", synchronizedSource);
-    
     [[TimeProfile main] begin:@"iTunesQuery"];
     
     MPMediaQuery* allSongsQuery = [MPMediaQuery songsQuery];
@@ -465,13 +462,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
         SongLocal* songLocal = [[SongLocal alloc] initWithMediaItem:item];
         
         Song* matchedSong = [synchronizedSource objectForKey:songLocal.catalogKey];
-        
-        //DLog(@"%@", synchronizedSource);
-        //LBDEBUG
-        NSRange range = [songLocal.catalogKey rangeOfString:@"apocalypse"];
-        if (range.location != NSNotFound)
-            NSLog(@"MEUH!");
-            
         
 //        // don't include it if it's included in the matched songs already
 //        if (matchedSong != nil)
@@ -951,7 +941,7 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
     self.selectedArtist = artistKey;
     DLog(@"selected artist %@", self.selectedArtist);
     
-    DLog(@"%@", artistsForSection);
+    //DLog(@"artistForSection %@", artistsForSection);
     
     self.selectedArtistRepo = [artistsForSection objectForKey:artistKey];
     

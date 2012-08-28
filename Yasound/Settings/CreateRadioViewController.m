@@ -706,7 +706,7 @@
   if (error)
   {
       DLog(@"update playlists error %d", error.code);
-      DLog(@"%@", error);
+      DLog(@"error %@", error);
       
       [ActivityAlertView close];
       

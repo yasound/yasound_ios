@@ -100,9 +100,6 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch 
 {
-    
-    DLog(@"%@", touch.view.class);
-    
     if ([touch.view isKindOfClass:[UIControl class]]) {
         // we touched a button, slider, or other UIControl
         return NO; // ignore the touch

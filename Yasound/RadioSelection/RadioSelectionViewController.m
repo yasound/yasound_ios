@@ -120,10 +120,10 @@
     
 //    [self.topbar showMenuItem];
      
-    NSString* urlstr = URL_RADIOS_SELECTION;
+//    NSString* urlstr = URL_RADIOS_SELECTION;
     [tabBar setTabSelected:TabIndexSelection];
-    NSURL* url = [NSURL URLWithString:urlstr];
-    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:nil target:self action:@selector(receiveRadios:info:)];
+//    NSURL* url = [NSURL URLWithString:urlstr];
+//    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:nil target:self action:@selector(receiveRadios:info:)];
 
 }
 
@@ -401,6 +401,8 @@
         DLog(@"can't get radios: %@", error.domain);
         return;
     }
+    
+    
     
     [self.tableview setRadios:radios];
     

@@ -130,7 +130,7 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
         return;
     }
     
-    //DLog(@"%@", req.responseString);
+    //DLog(@"Purchase onServicesReceived %@", req.responseString);
     
     Container* container = [req responseObjectsWithClass:[Service class]];
     self.services = container.objects;
@@ -147,7 +147,7 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
         // fill the product identifiers list
         for (Service* sv in self.services)
         {
-            DLog(@"%@", [sv toString]);
+            DLog(@"sv %@", [sv toString]);
             
             NSString* date = [self dateToString:sv.expiration_date];
             NSString* tmp = NSLocalizedString(@"Purchase.service", nil);
@@ -201,7 +201,7 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     // fill the product identifiers list
     for (Subscription* sub in self.subscriptions)
     {
-        DLog(@"%@", [sub toString]);
+        DLog(@"sub %@", [sub toString]);
         
         NSString* sku = sub.sku;
         

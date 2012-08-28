@@ -479,7 +479,7 @@
 - (void)userInfoReceived:(NSArray*)userInfo forRequest:(NSString *)connectionIdentifier
 {
   //    DLog(@"\nuserInfoReceived\n---------------------\n");
-  //    DLog(@"%@", userInfo);
+  //    DLog(@"TwitterOAuthSessionManager userInfoReceived %@", userInfo);
 
   bool isRequestFriends = [connectionIdentifier isEqualToString:_requestFriends];
   bool isRequestFollowers = [connectionIdentifier isEqualToString:_requestFollowers];
