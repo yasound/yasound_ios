@@ -1153,7 +1153,7 @@
     //LBDEBUG : try anti-bug
     if (!ev.isCellHeightComputed)
     {
-        [tableView heightForRowAtIndexPath:indexPath];
+        [self tableView:tableView heightForRowAtIndexPath:indexPath];
         assert(ev.isCellHeightComputed);
     }
 
