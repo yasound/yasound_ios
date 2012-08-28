@@ -236,7 +236,9 @@ static NSString* const kGGTwitterLoadingBackgroundImage = @"twitter_load.png";
         
         if ([_delegate respondsToSelector: @selector(OAuthTwitterController:authenticatedWithUsername:)])
             [_delegate OAuthTwitterController: self authenticatedWithUsername: _engine.username];
-        
+
+        //[_engine requestAccessToken];
+
         [self performSelector: @selector(dismissModalViewControllerAnimated:) withObject: (id) kCFBooleanTrue afterDelay: 1.0];
     }
 

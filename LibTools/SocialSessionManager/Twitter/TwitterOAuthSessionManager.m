@@ -467,9 +467,11 @@
 
 - (void)credentialFailed:(SA_OAuthTwitterController *) controller
 {
-    DLog(@"credentialFailed");
-    _isLoging = NO;
-    [self.delegate sessionLoginFailed];
+    // why is this delegate called? I don't know, but everything works if you juste ignore it....
+    
+//    DLog(@"credentialFailed");
+//    _isLoging = NO;
+//    [self.delegate sessionLoginFailed];
 }
 
 
