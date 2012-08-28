@@ -2113,6 +2113,13 @@
 				<key>type</key>
 				<string>png</string>
 			</dict>
+			<key>iconClearCache</key>
+			<dict>
+				<key>name</key>
+				<string>menuIconLogin</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
 			<key>iconAccount</key>
 			<dict>
 				<key>name</key>

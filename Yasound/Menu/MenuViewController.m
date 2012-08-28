@@ -119,18 +119,37 @@ enum MenuDescription
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#ifdef DEBUG
+    return 2;
+#endif
+    
     return 1;
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == 1)
+        return 1;
+    
     NSInteger nb = NB_ROWS;
     
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
         nb--;
     
     return nb;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 22;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView* view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
 }
 
 
@@ -208,6 +227,11 @@ enum MenuDescription
     }
   
 
+    if (indexPath.section == 1)
+    {
+        [self setCell:cell refText:@"Menu.clearCache" icon:@"Menu.iconClearCache" authenticated:NO];
+        return cell;
+    }
     
 
     if (row == ROW_RADIOS)
@@ -252,6 +276,12 @@ enum MenuDescription
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
         row++;
 
+    if (indexPath.section == 1)
+    {
+        [_tableView deselectRowAtIndexPath:[_tableView indexPathForSelectedRow] animated:NO];
+        [[YasoundDataCache main] clearRadiosAll];
+        return;
+    }
 
     if (![YasoundSessionManager main].registered &&
         ((row == ROW_ACCOUNT)

@@ -564,6 +564,7 @@
 "Menu.twitter" = "Twitter";
 "Menu.yasound" = "Yasound";
 "Menu.legal" = "Terms of use";
+"Menu.clearCache" = "Clear the cache";
 
 "MyAccount.username.label" = "Username";
 "MyAccount.username.placeholder" = "enter the username";
