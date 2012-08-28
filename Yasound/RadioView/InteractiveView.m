@@ -90,9 +90,15 @@
         return;
     
     if (_userObjectDown == nil)
-        [_targetDown performSelector:_actionDown];
+    {
+        if ([_targetDown respondsToSelector:_actionDown])
+            [_targetDown performSelector:_actionDown];
+    }
     else
-        [_targetDown performSelector:_actionDown withObject:_userObjectDown];
+    {
+        if ([_targetDown respondsToSelector:_actionDown])
+            [_targetDown performSelector:_actionDown withObject:_userObjectDown];
+    }
 }
 
 
