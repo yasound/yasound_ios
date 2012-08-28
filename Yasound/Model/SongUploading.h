@@ -16,7 +16,7 @@
 
 +(SongUploading*)new;
 
-- (NSString*)artist;
+//- (NSString*)artist;
 
 @end
 

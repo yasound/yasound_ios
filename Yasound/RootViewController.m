@@ -32,27 +32,23 @@
 //LBDEBUG
 //
 //
-@implementation NSArray (NSArrayDebug)
+//@implementation NSArray (NSArrayDebug)
+//
+//
+//- (id)objectForKey:(NSString*)key
+//{
+//        DLog(@"SHOULD NOT HAPPEN : your NSDictionary* object is in fact a NSArray* object!");
+//        assert(0);
+//}
+//@end
 
-
-- (id)objectForKey:(NSString*)key
-{
-        DLog(@"SHOULD NOT HAPPEN : your NSDictionary* object is in fact a NSArray* object!");
-        assert(0);
-}
-@end
-
-@implementation NSDictionary (NSDictionaryDebug)
-- (id)target
-{
-    NSLog(@"meuh");
-    assert(0);
-}
-
-
-
-
-@end
+//@implementation NSDictionary (NSDictionaryDebug)
+//- (id)target
+//{
+//    NSLog(@"meuh");
+//    assert(0);
+//}
+//@end
 
 
 //

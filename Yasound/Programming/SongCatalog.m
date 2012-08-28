@@ -368,11 +368,6 @@ static SongCatalog* _availableCatalog;    // for the device's local iTunes songs
             DevLog(@"received song '%@ - %@  - %@'", song.name, song.artist, song.album);
             
             
-            //LBDEBUG
-            NSRange range = [song.name rangeOfString:@"apocalypse"];
-            if (range.location != NSNotFound)
-                DLog(@"MEUH!");
-            
             // create a key for the dictionary
             // LBDEBUG NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
             NSString* key = [self catalogKeyOfSong:song.name_client artist:song.artist_client album:song.album_client];

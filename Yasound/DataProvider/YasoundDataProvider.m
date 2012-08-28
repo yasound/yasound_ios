@@ -1799,7 +1799,6 @@ static YasoundDataProvider* _main = nil;
 {
     if ((song == nil) || (radio_id == nil))
     {
-        DLog(@"MEUH!");
         assert(0);
         return nil;
     }
@@ -1807,7 +1806,6 @@ static YasoundDataProvider* _main = nil;
     //LBDEBUG
     if (![radio_id isKindOfClass:[NSNumber class]])
     {
-        DLog(@"MEUH!");
         assert(0);
         return nil;
     }

@@ -226,7 +226,6 @@ static SongUploader* _main = nil;
 {
     if (![song isKindOfClass:[SongUploading class]])
     {
-        DLog(@"MEUH!");
         assert(0);
         return NO;
     }

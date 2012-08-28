@@ -22,11 +22,10 @@
     return obj;
 }
 
-- (NSString*)artist
-{
-    DLog(@"MEUH!");
-    assert(0);
-}
+//- (NSString*)artist
+//{
+//    assert(0);
+//}
 
 
 @end

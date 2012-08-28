@@ -32,14 +32,12 @@
     {
         if (![aSong isKindOfClass:[SongUploading class]])
         {
-            DLog(@"MEUH!");
             assert(0);
             return nil;
         }
         
         if (aSong.radio_id == nil)
         {
-            DLog(@"MEUH!");
             assert(0);
             return nil;
         }
@@ -246,7 +244,6 @@ static SongUploadManager* _main;
       
       if (storedRadioId == nil)
       {
-          DLog(@"MEUH!");
           continue; // should mean that the upload had been registered with client v1, and we now work with client v2
                     // => abort the upload, sorry.
       }
