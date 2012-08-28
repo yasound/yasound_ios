@@ -444,25 +444,31 @@ Ugly. I apologize for its inelegance. Bleah.
 	NSData				*data = [request HTTPBody];
 	char				*raw = data ? (char *) [data bytes] : "";
 	
-  
-  {
-    BOOL    response = YES;
-    NSURL 	*requestURL = [request URL];
     
-    NSDictionary *dictionary = [request allHTTPHeaderFields];
-    for (id key in dictionary) {
-      NSLog(@"HTTPHeaderFields - key: %@, value: %@", [key description], [[dictionary objectForKey:key] description]);
+    {
+        BOOL    response = YES;
+        NSURL 	*requestURL = [request URL];
+        static BOOL done = NO;
+        
+        NSDictionary *dictionary = [request allHTTPHeaderFields];
+        for (id key in dictionary)
+        {
+            NSLog(@"HTTPHeaderFields - key: %@, value: %@", [key description], [[dictionary objectForKey:key] description]);
+        }
+        
+        NSLog(@"%@", [requestURL description]);
+        if ([[requestURL host] isEqualToString:@"yasound.com"])
+        {
+            if (done == NO)
+            {
+                [self requestAccessToken: [requestURL absoluteString]];
+            }
+            done = YES;
+            return NO;
+        }
+        
     }
     
-    NSLog(@"%@", [requestURL description]);
-    if ([[requestURL host] isEqualToString:@"yasound.com"])
-    {
-      [self requestAccessToken: [requestURL absoluteString]];
-      return NO;
-    }	
-    
-  }
-  
 	if (raw && strstr(raw, "cancel=")) {
 		[self denied];
 		return NO;
@@ -470,5 +476,38 @@ Ugly. I apologize for its inelegance. Bleah.
 	if (navigationType != UIWebViewNavigationTypeOther) _webView.alpha = 0.1;
 	return YES;
 }
+
+
+
+//- (BOOL) webView: (UIWebView *) webView shouldStartLoadWithRequest: (NSURLRequest *) request navigationType: (UIWebViewNavigationType) navigationType {
+//	NSData				*data = [request HTTPBody];
+//	char				*raw = data ? (char *) [data bytes] : "";
+//	
+//  
+//  {
+//    BOOL    response = YES;
+//    NSURL 	*requestURL = [request URL];
+//    
+//    NSDictionary *dictionary = [request allHTTPHeaderFields];
+//    for (id key in dictionary) {
+//      NSLog(@"HTTPHeaderFields - key: %@, value: %@", [key description], [[dictionary objectForKey:key] description]);
+//    }
+//    
+//    NSLog(@"%@", [requestURL description]);
+//    if ([[requestURL host] isEqualToString:@"yasound.com"])
+//    {
+//      [self requestAccessToken: [requestURL absoluteString]];
+//      return NO;
+//    }	
+//    
+//  }
+//  
+//	if (raw && strstr(raw, "cancel=")) {
+//		[self denied];
+//		return NO;
+//	}
+//	if (navigationType != UIWebViewNavigationTypeOther) _webView.alpha = 0.1;
+//	return YES;
+//}
 
 @end

@@ -46,10 +46,10 @@
                                                      error:&error];
 	
     //LBDEBUG ICI
-    NSString* dump = [[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding];
-    NSLog(@"\n");
-    NSLog(@"fetchDataWithRequest responseData : %@", dump);
-    NSLog(@"\n");
+//    NSString* dump = [[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding];
+//    NSLog(@"\n");
+//    NSLog(@"fetchDataWithRequest responseData : %@", dump);
+//    NSLog(@"\n");
     
     
     if (response == nil || responseData == nil || error != nil) {

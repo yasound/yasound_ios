@@ -198,6 +198,8 @@
           else if ([errorValue isEqualToString:@"UserInfo"])
             message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
             
+            [self enableButtons:YES];
+            
         }
         else
         {

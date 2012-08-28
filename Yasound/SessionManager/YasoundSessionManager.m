@@ -239,6 +239,7 @@ static YasoundSessionManager* _main = nil;
     if (_error)
     {
         DLog(@"loginSocialValidated returned but canceled because error");
+        [self loginError];
         return;
     }
 

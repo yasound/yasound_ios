@@ -447,6 +447,7 @@
 {
   DLog(@"OAuthTwitterController::authenticatedWithUsername '%@'", username);
   _isLoging = NO;
+    
   [self.delegate sessionDidLogin:YES];
 }
 
