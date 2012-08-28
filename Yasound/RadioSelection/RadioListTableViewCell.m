@@ -29,6 +29,7 @@
 #define RADIO_OBJECT_SUBSCRIBERS 5
 #define RADIO_OBJECT_LISTENERS 6
 #define RADIO_OBJECT_INTERACTIVE_VIEW 7
+#define RADIO_OBJECT_CONTAINER 8
 
 
 
@@ -155,7 +156,7 @@
     
     
     // store objects
-    NSMutableArray* objects = [NSMutableArray arrayWithObjects:radio, radioImage, radioMask, userImage, title, subscribers, listeners, interactiveView, nil];
+    NSMutableArray* objects = [NSMutableArray arrayWithObjects:radio, radioImage, radioMask, userImage, title, subscribers, listeners, interactiveView, container, nil];
     
     [self.radioObjects addObject:objects];
 }
@@ -193,6 +194,7 @@
     
     for (Radio* radio in radios)
     {
+        // there's only one radio on this row. we need another one
         if (self.radioObjects.count <= radioIndex)
         {
             [self addRadioGui:radio radioIndex:radioIndex xOffset:xOffset];
@@ -230,6 +232,21 @@
         radioIndex++;
         xOffset += (self.frame.size.width / 2.f);
         
+    }
+    
+    // we had two radios in this row, but we only need one for this update
+    if (self.radioObjects.count > radios.count)
+    {
+        NSMutableArray* objects = [self.radioObjects objectAtIndex:1];
+        
+        UIView* container = [objects objectAtIndex:RADIO_OBJECT_CONTAINER];
+        [container removeFromSuperview];
+        [container release];
+        
+//        Radio* radio = [objects objectAtIndex:RADIO_OBJECT_RADIO];
+//        [radio release];
+        
+        [self.radioObjects removeObjectAtIndex:1];
     }
 }
 

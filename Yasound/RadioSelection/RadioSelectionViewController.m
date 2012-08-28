@@ -320,6 +320,9 @@
     
 
     self.url = [NSURL URLWithString:url];
+    
+    //LBDEBUG
+    //DLog(@"RadioSelection url '%@'", self.url);
     [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:genre target:self action:@selector(receiveRadios:info:)];
         
 }
@@ -401,6 +404,14 @@
         DLog(@"can't get radios: %@", error.domain);
         return;
     }
+    
+    //LBDEBUG
+//    DLog(@"received %d radios", radios.count);
+//    for (Radio* r in radios)
+//    {
+//        DLog(@"radio '%@'", r.name);
+//    }
+//    DLog(@"end of list.");
     
     
     
