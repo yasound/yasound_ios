@@ -106,12 +106,6 @@
   return self;
 }
 
-- (int)cancelRequestsForTarget:(id)target
-{
-    //#TODO
-    return 0;
-}
-
 + (TaskInfo*)taskInfoWithStatus:(taskStatus)s progress:(float)p message:(NSString*)m
 {
   TaskInfo* info = [[[TaskInfo alloc] initWithStatus:s progress:p message:m] autorelease];
@@ -191,6 +185,12 @@ static YasoundDataProvider* _main = nil;
   }
   
   return self;
+}
+
+- (int)cancelRequestsForTarget:(id)target
+{
+    int count = [_communicator cancelRequestsForTarget:target];
+    return count;
 }
 
 - (Auth*)apiKeyAuth

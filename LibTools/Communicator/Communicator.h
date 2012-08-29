@@ -19,6 +19,8 @@
 {
     NSString* _baseURL;
     NSHTTPCookie* appCookie;
+    
+    NSMutableDictionary* requests;
 }
 
 @property (retain) NSHTTPCookie* appCookie;
@@ -26,6 +28,10 @@
 - (id)initWithBaseURL:(NSString*)base;
 
 -(NSURL*)urlWithURL:(NSString*)path absolute:(BOOL)absolute addTrailingSlash:(BOOL)slash params:(NSArray*)params;
+
+- (int)cancelRequestsForTarget:(id)target;
+- (void)addRequest:(ASIHTTPRequest*)req forTarget:(id)target;
+- (void)removeRequest:(ASIHTTPRequest*)req forTarget:(id)target;
 
 #pragma mark - synchronous requests
 - (Container*)getObjectsWithClass:(Class)objectClass withAuth:(Auth*)auth;
