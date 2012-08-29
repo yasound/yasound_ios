@@ -88,6 +88,11 @@ static NSString* CellIdentifier = @"PurchaseTableViewCell";
     // e.g. self.myOutlet = nil;
 }
 
+//- (void)viewWillDisappear:(BOOL)animated
+//{
+//    
+//}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);

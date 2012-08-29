@@ -384,7 +384,9 @@
     }
     
     else if (itemId == TopBarItemBack)
+    {
         [APPDELEGATE.navigationController popViewControllerAnimated:YES];
+    }
 
     else if (itemId == TopBarItemHd)
     {
