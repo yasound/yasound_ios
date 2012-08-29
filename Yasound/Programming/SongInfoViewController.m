@@ -17,7 +17,7 @@
 #import "YasoundReachability.h"
 #import "SongUploadManager.h"
 #import "ProgrammingUploadViewController.h"
-
+#import "SongUploading.h"
 
 @implementation SongInfoViewController
 
@@ -525,7 +525,18 @@
     BOOL startUploadNow = isWifi;
     
     // add an upload job to the queue
-    [[SongUploadManager main] addSong:song startUploadNow:startUploadNow];
+    //MEUH
+    SongUploading* uploadingSong = [SongUploading new];
+    uploadingSong.songLocal = [[SongLocal alloc] init];
+    uploadingSong.radio_id = self.radio.id;
+    uploadingSong.songLocal.name = self.song.name;
+    uploadingSong.songLocal.artist = self.song.artist;
+    uploadingSong.songLocal.album = self.song.album;
+    uploadingSong.songLocal.name_client = self.song.name_client;
+    uploadingSong.songLocal.artist_client = self.song.artist_client;
+    uploadingSong.songLocal.album_client = self.song.album_client;
+
+    [[SongUploadManager main] addSong:uploadingSong startUploadNow:startUploadNow];
     
 //    // and flag the current song as "uploading song"
 //    song.uploading = YES;

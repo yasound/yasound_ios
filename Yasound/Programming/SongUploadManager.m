@@ -33,13 +33,13 @@
         if (![aSong isKindOfClass:[SongUploading class]])
         {
             assert(0);
-            return nil;
+            return self;
         }
         
         if (aSong.radio_id == nil)
         {
             assert(0);
-            return nil;
+            return self;
         }
             
         self.song = aSong;
@@ -301,6 +301,7 @@ static SongUploadManager* _main;
   {
     for (SongUploading* s  in storedSongs)
     {
+        //MEUH        
         [self addSong:s startUploadNow:NO];
     }
   }
