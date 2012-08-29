@@ -250,6 +250,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear: animated];
+
     [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
     [self resignFirstResponder];
     
@@ -288,7 +290,6 @@
 //    for (NSInteger i = 0; i < retainCount-4; i++)
 //        [self release];
         
-    [super viewWillDisappear: animated];
 }
 
 
@@ -362,7 +363,8 @@
 {
     if (_stopWall)
     {
-        [timer invalidate];
+        [_timerUpdate invalidate];
+        _timerUpdate = nil;
         return;
     }
     //    if (_ap != nil)
