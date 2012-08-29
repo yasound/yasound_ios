@@ -25,7 +25,7 @@
 #import "TSLibraryImport.h"
 #import <AVFoundation/AVFoundation.h>
 
-#define TS_TIME_PROFILE 1
+#define TS_TIME_PROFILE 0
 
 #ifdef TS_TIME_PROFILE
 #import "TimeProfile.h"
