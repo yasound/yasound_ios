@@ -77,6 +77,8 @@ taskStatus stringToStatus(NSString* str);
 
 + (YasoundDataProvider*) main;
 
+- (int)cancelRequestsForTarget:(id)target;
+
 - (void)resetUser;
 - (void)reloadUserWithUserData:(id)data withTarget:(id)target action:(SEL)selector;
 

@@ -106,6 +106,12 @@
   return self;
 }
 
+- (int)cancelRequestsForTarget:(id)target
+{
+    //#TODO
+    return 0;
+}
+
 + (TaskInfo*)taskInfoWithStatus:(taskStatus)s progress:(float)p message:(NSString*)m
 {
   TaskInfo* info = [[[TaskInfo alloc] initWithStatus:s progress:p message:m] autorelease];
