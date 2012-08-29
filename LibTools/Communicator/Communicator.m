@@ -95,7 +95,35 @@
     return url;
 }
 
+- (int)cancelRequestsForTarget:(id)target
+{
+    NSArray* targetRequests = [requests objectForKey:target];
+    int count = [targetRequests count];
+    for (ASIHTTPRequest* req in targetRequests)
+    {
+        [req cancel];
+    }
+    [requests removeObjectForKey:target];
+    return count;
+}
 
+- (void)addRequest:(ASIHTTPRequest*)req forTarget:(id)target
+{
+    NSMutableArray* targetRequests = [requests objectForKey:target];
+    if (!targetRequests)
+    {
+        targetRequests = [NSMutableArray array];
+    }
+    [targetRequests addObject:req];
+    [requests setObject:targetRequests forKey:target];
+}
+
+- (void)removeRequest:(ASIHTTPRequest*)req forTarget:(id)target
+{
+    NSMutableArray* targetRequests = [requests objectForKey:target];
+    [targetRequests removeObject:req];
+    [requests setObject:targetRequests forKey:target];
+}
 
 
 #pragma mark - synchronous tools
@@ -309,6 +337,11 @@
     req.userInfo = userinfo;
     
     req.delegate = self;
+    
+    // store request
+    if (target)
+        [self addRequest:req forTarget:target];
+    
     [req startAsynchronous];
 }
 
@@ -325,8 +358,12 @@
     [userinfo setValue:userData forKey:@"userData"];
     
     req.userInfo = userinfo;
-    
     req.delegate = self;
+    
+    // store request
+    if (target)
+        [self addRequest:req forTarget:target];
+    
     [req startAsynchronous];
 }
 
@@ -345,8 +382,12 @@
     [userinfo setValue:getAuth forKey:@"authForGET"];
     
     req.userInfo = userinfo;
-    
     req.delegate = self;
+    
+    // store request
+    if (target)
+        [self addRequest:req forTarget:target];
+    
     [req startAsynchronous];
 }
 
@@ -363,8 +404,12 @@
     [userinfo setValue:userData forKey:@"userData"];
     
     req.userInfo = userinfo;
-    
     req.delegate = self;
+    
+    // store request
+    if (target)
+        [self addRequest:req forTarget:target];
+    
     [req startAsynchronous];
 }
 
@@ -382,8 +427,12 @@
     [userinfo setValue:userData forKey:@"userData"];
     
     req.userInfo = userinfo;
-    
     req.delegate = self;
+    
+    // store request
+    if (target)
+        [self addRequest:req forTarget:target];
+    
     [req startAsynchronous];
 }
 
@@ -498,6 +547,11 @@
     req.userInfo = userInfo;
     [self applyAuth:auth toRequest:req];
     [self fillRequest:req];
+    
+    // store request
+    if (target)
+        [self addRequest:req forTarget:target];
+    
     [req startAsynchronous];
 }
 
@@ -523,6 +577,11 @@
     req.delegate = self;
     [self applyAuth:auth toRequest:req];
     [self fillRequest:req];
+    
+    // store request
+    if (target)
+        [self addRequest:req forTarget:target];
+    
     [req startAsynchronous];
     
     return req;
@@ -553,6 +612,11 @@
     [self applyAuth:auth toRequest:req];
     [self fillRequest:req];
     [req setUploadProgressDelegate:progressDelegate];
+    
+    // store request
+    if (target)
+        [self addRequest:req forTarget:target];
+    
     [req startAsynchronous];
     
     return req;
@@ -583,6 +647,11 @@
     [self applyAuth:auth toRequest:req];
     [self fillRequest:req];
     [req setUploadProgressDelegate:progressDelegate];
+    
+    // store request
+    if (target)
+        [self addRequest:req forTarget:target];
+    
     [req startAsynchronous]; 
     
     return req;
@@ -781,6 +850,15 @@
 {
     NSDictionary* userinfo = request.userInfo;
     NSString* method  = [userinfo valueForKey:@"method"];
+    id target = [userinfo valueForKey:@"target"];
+    if (target)
+    {
+        NSArray* targetRequests = [requests objectForKey:target];
+        if (![targetRequests containsObject:request]) // request has been invalidated
+            return;
+        else
+            [self removeRequest:request forTarget:target];
+    }
     
     if ([method isEqualToString:@"GET_ALL"])
     {
@@ -847,6 +925,10 @@
     [self applyAuth:config.auth toRequest:req];
     [self fillRequest:req];
     
+    // store request
+    if (config.callbackTarget)
+        [self addRequest:req forTarget:config.callbackTarget];
+    
     return req;
 }
 
@@ -860,6 +942,10 @@
     req.userInfo = [NSDictionary dictionaryWithObject:config forKey:REQUEST_CONFIG_USER_INFO_KEY];
     [self applyAuth:config.auth toRequest:req];
     [self fillRequest:req];
+    
+    // store request
+    if (config.callbackTarget)
+        [self addRequest:req forTarget:config.callbackTarget];
     
     return req;
 }
@@ -883,7 +969,14 @@
     RequestConfig* config = (RequestConfig*)[req.userInfo valueForKey:REQUEST_CONFIG_USER_INFO_KEY];
     BOOL success = !failed;
     if (config.callbackTarget && config.callbackAction)
-        [config.callbackTarget performSelector:config.callbackAction withObject:req withObject:[NSNumber numberWithBool:success]];
+    {
+        NSArray* targetRequests = [requests objectForKey:config.callbackTarget];
+        if ([targetRequests containsObject:req]) // call callback function only if it is stored in requests dictionary
+        {
+            [self removeRequest:req forTarget:config.callbackTarget];
+            [config.callbackTarget performSelector:config.callbackAction withObject:req withObject:[NSNumber numberWithBool:success]];
+        }
+    }
     
     return YES;
 }
@@ -1080,6 +1173,10 @@
     [self applyAuth:auth toRequest:req];
     [self fillRequest:req];
     //    [req startAsynchronous]; // let the parent do that
+    
+    // store request
+    if (target)
+        [self addRequest:req forTarget:target];
     
     return req;
 }
