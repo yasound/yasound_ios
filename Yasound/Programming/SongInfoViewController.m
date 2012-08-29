@@ -525,7 +525,6 @@
     BOOL startUploadNow = isWifi;
     
     // add an upload job to the queue
-    //MEUH
     SongUploading* uploadingSong = [SongUploading new];
     uploadingSong.songLocal = [[SongLocal alloc] init];
     uploadingSong.radio_id = self.radio.id;
@@ -537,9 +536,6 @@
     uploadingSong.songLocal.album_client = self.song.album_client;
 
     [[SongUploadManager main] addSong:uploadingSong startUploadNow:startUploadNow];
-    
-//    // and flag the current song as "uploading song"
-//    song.uploading = YES;
     
     if (!isWifi && ![SongUploadManager main].notified3G)
     {

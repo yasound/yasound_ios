@@ -229,7 +229,6 @@
     songUploading.radio_id = self.radio.id;
     
    // add an upload job to the queue
-    //MEUH
     [[SongUploadManager main] addSong:songUploading startUploadNow:startUploadNow];
     
     // refresh gui

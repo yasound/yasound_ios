@@ -301,7 +301,6 @@ static SongUploadManager* _main;
   {
     for (SongUploading* s  in storedSongs)
     {
-        //MEUH        
         [self addSong:s startUploadNow:NO];
     }
   }
