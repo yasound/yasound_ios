@@ -182,36 +182,22 @@ static FacebookSessionManager* _facebook = nil;
   if (!_facebookConnect)
     return NO;
 
-//  DLog(@"POST MESSAGE : %@", message);
-  
   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
   
   NSMutableDictionary* params = [[NSMutableDictionary alloc] init];
-  
-  if (pictureUrl == nil)
+  [params setObject:@"status" forKey:@"type"];
+  if (title)
   {
-    [params setObject:@"status" forKey:@"type"];
-    if (title)
       [params setObject:title forKey:@"name"];
-    [params setObject:message forKey:@"message"];
   }
-  else
-  {
-    [params setObject:@"status" forKey:@"type"];
-    if (title)
-      [params setObject:title forKey:@"name"];
-    [params setObject:[pictureUrl absoluteString] forKey:@"picture"];
-    [params setObject:message forKey:@"description"];
-  }
+  [params setObject:message forKey:@"message"];
 
   if (link)
   {
-      [params setObject:[link absoluteString] forKey:@"link"];
+    [params setObject:[link absoluteString] forKey:@"link"];
   }
     
-  _requestFeed = [_facebookConnect requestWithGraphPath:@"me/feed" andParams:params andHttpMethod:@"POST"  andDelegate:self];  
-  // get feedback in didLoad delegate
-  
+  _requestFeed = [_facebookConnect requestWithGraphPath:@"me/links" andParams:params andHttpMethod:@"POST"  andDelegate:self];  
   return YES;
 }
 
