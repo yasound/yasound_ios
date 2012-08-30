@@ -17,6 +17,8 @@
 - (void)setPause:(BOOL)set;
 
 
+- (IBAction)onTrackImageClicked:(id)sender;
+
 - (IBAction)onPlayPauseClicked:(id)sender;
 - (IBAction)onShareClicked:(id)sender;
 - (IBAction)onLikeClicked:(id)sender;
