@@ -185,7 +185,7 @@
             else
             {
                 // fake image
-                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy256" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+                BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.cellImageDummy320" retainStylesheet:YES overwriteStylesheet:NO error:nil];
                 _imageView = [[WebImageView alloc] initWithImage:[sheet image]];
             }
             
@@ -234,10 +234,10 @@
 //            [view.shareButton addTarget:self action:@selector(onTrackShare:) forControlEvents:UIControlEventTouchUpInside];
 
             
-            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            _likesLabel = [sheet makeLabel];
-            _likesLabel.text = [NSString stringWithFormat:@"%@", self.song.likes];
-            [cell addSubview:_likesLabel];
+//            sheet = [[Theme theme] stylesheetForKey:@"SongView.SongPublicView_nbLikes" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+//            _likesLabel = [sheet makeLabel];
+//            _likesLabel.text = [NSString stringWithFormat:@"%@", self.song.likes];
+//            [cell addSubview:_likesLabel];
                 
             
             

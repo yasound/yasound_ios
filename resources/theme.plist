@@ -2065,6 +2065,13 @@
 				<key>type</key>
 				<string>png</string>
 			</dict>
+			<key>cellImageDummy320</key>
+			<dict>
+				<key>name</key>
+				<string>programmingDummyTrack320</string>
+				<key>type</key>
+				<string>png</string>
+			</dict>
 			<key>empty</key>
 			<dict>
 				<key>name</key>

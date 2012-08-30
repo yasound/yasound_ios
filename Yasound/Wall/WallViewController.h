@@ -104,7 +104,7 @@
 @property (nonatomic, retain) IBOutlet TopBar* topBar;
 
 @property (nonatomic, retain) IBOutlet WebImageView* nowPlayingTrackImage;
-@property (nonatomic, retain) IBOutlet UIImageView* nowPlayingMask;
+@property (nonatomic, retain) IBOutlet UIButton* nowPlayingMask;
 @property (nonatomic, retain) IBOutlet UIButton* nowPlayingButton;
 @property (nonatomic, retain) IBOutlet UILabel* nowPlayingLabel1;
 @property (nonatomic, retain) IBOutlet UILabel* nowPlayingLabel2;
