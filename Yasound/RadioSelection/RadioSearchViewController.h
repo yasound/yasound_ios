@@ -22,5 +22,9 @@
   BOOL _viewVisible;
 }
 
+@property (nonatomic) NSInteger delayTokens;
+@property (nonatomic) CGFloat delay;
+
+
 
 @end

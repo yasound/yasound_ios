@@ -47,6 +47,10 @@
 						<int key="IBUIContentMode">3</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBBarStyle">1</int>
+						<object class="NSColor" key="IBTintColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC45MjU0OTAxOTYxIDAuOTI1NDkwMTk2MSAwLjkyOTQxMTc2NDcAA</bytes>
+						</object>
 						<object class="IBUITextInputTraits" key="IBTextInputTraits">
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
@@ -196,27 +200,13 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">52</int>
+			<int key="maxID">53</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">RadioSearchViewController</string>
 					<string key="superclassName">YaViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="menuBarItemClicked:">id</string>
-						<string key="nowPlayingClicked:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="menuBarItemClicked:">
-							<string key="name">menuBarItemClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="nowPlayingClicked:">
-							<string key="name">nowPlayingClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="_nowPlayingButton">UIBarButtonItem</string>
 						<string key="_searchController">UISearchDisplayController</string>

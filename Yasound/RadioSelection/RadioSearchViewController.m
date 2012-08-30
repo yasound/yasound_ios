@@ -12,6 +12,7 @@
 #import "AudioStreamManager.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
+#import "RootViewController.h"
 
 #define ROW_HEIGHT 66.0
 
@@ -27,6 +28,10 @@ typedef enum
 @implementation RadioSearchViewController
 
 
+@synthesize delayTokens;
+@synthesize delay;
+
+
 - (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil title:(NSString*)title tabItem:(UITabBarSystemItem)tabItem
 {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,7 +39,11 @@ typedef enum
   {
 //    UITabBarItem* theItem = [[UITabBarItem alloc] initWithTabBarSystemItem:tabItem tag:0];
 //    self.tabBarItem = theItem;
-//    [theItem release];   
+//    [theItem release];
+      
+      self.delayTokens = 2;
+      self.delay = 0.15;
+
     
   }
   
@@ -73,6 +82,7 @@ typedef enum
   _radiosByCreator = nil;
   _radiosBySong = nil;
   
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
 //  _backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"TableViewBackground.png"]];
 //  [_backgroundColor retain];
 //  
@@ -203,10 +213,18 @@ typedef enum
   if (!radios)
     return 0;
   
-  NSInteger count = radios.count;
-  DLog(@"RADIO COUNT %d", count);
-  return count;
+    NSInteger nbRows = radios.count / 2;
+    if ((radios.count % 2) != 0)
+        nbRows++;
+    return nbRows;
 }
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 156.f;
+}
+
 
 - (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -230,17 +248,15 @@ typedef enum
     default:
       break;
   }
-  
-  BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSection" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-  
-  UIImageView* view = [[UIImageView alloc] initWithImage:[sheet image]];
-  view.frame = CGRectMake(0, 0, tableView.bounds.size.width, 44);
-  
-  sheet = [[Theme theme] stylesheetForKey:@"Menu.MenuSectionTitle" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-  UILabel* label = [sheet makeLabel];
-  label.text = title;
-  [view addSubview:label];
-  
+    
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* view = [sheet makeImage];
+    
+    sheet = [[Theme theme] stylesheetForKey:@"TableView.Section.label" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* label = [sheet makeLabel];
+    label.text = title;
+    [view addSubview:label];
+    
   return view;
 }
 
@@ -254,41 +270,64 @@ typedef enum
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    static NSString *cellIdentifier = @"RadioListTableViewCell";
-  NSInteger rowIndex = indexPath.row;
-  NSInteger sectionIndex = indexPath.section;
-    
-  NSArray* radios = [self radiosForSection:sectionIndex];
-  if (!radios)
-    return nil;
-    
-    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString* cellRadioIdentifier = @"RadioListTableViewCell";
 
-    Radio* radio = [radios objectAtIndex:rowIndex];
+    NSArray* radios = [self radiosForSection:indexPath.section];
+    
+    RadioListTableViewCell* cell = (RadioListTableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellRadioIdentifier];
+    
+    NSInteger radioIndex = indexPath.row * 2;
+    
+    Radio* radio1 = [radios objectAtIndex:radioIndex];
+    Radio* radio2 = nil;
+    if (radioIndex+1 < radios.count)
+        radio2 = [radios objectAtIndex:radioIndex+1];
+    
+    NSArray* radiosForRow = [NSArray arrayWithObjects:radio1, radio2, nil];
     
     if (cell == nil)
-    {    
-        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier rowIndex:rowIndex radio:radio];
+    {
+        CGFloat delay = 0;
+        if (self.delayTokens > 0)
+            delay = self.delay;
+        
+        cell = [[RadioListTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellRadioIdentifier radios:radiosForRow delay:delay target:self action:@selector(onRadioClicked:)];
+        
+        self.delayTokens--;
+        self.delay += 0.3;
     }
     else
-        [cell updateWithRadio:radio rowIndex:rowIndex];
-  
+    {
+        [cell updateWithRadios:radiosForRow target:self action:@selector(onRadioClicked:)];
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     return cell;
+
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //RadioListTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSInteger rowIndex = indexPath.row;
-    NSInteger sectionIndex = indexPath.section;
-    
-    NSArray* radios = [self radiosForSection:sectionIndex];
-    if (!radios)
-        return;
-    Radio* radio = [radios objectAtIndex:rowIndex];
-
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    //RadioListTableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+//    NSInteger rowIndex = indexPath.row;
+//    NSInteger sectionIndex = indexPath.section;
+//    
+//    NSArray* radios = [self radiosForSection:sectionIndex];
+//    if (!radios)
+//        return;
+//    Radio* radio = [radios objectAtIndex:rowIndex];
+//
 //    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
+//    
+////    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
+//}
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)onRadioClicked:(Radio*)radio
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_RADIO object:radio];
 }
 
 
