@@ -239,6 +239,8 @@
         return WheelIdFavoritesTitle;
     if (itemIndex == WheelIdFriends)
         return WheelIdFriendsTitle;
+    if (itemIndex == WheelIdSearch)
+        return WheelIdSearchTitle;
     return nil;
 }
 
@@ -256,13 +258,32 @@
 {
     if (self.tableview != nil)
         [self.tableview.tableView removeFromSuperview];
-    [self.tableview release];
-    self.tableview = nil;
+    
+    if (self.searchview != nil)
+    {
+        [self.searchview.view removeFromSuperview];
+        [self.searchview release];
+        self.searchview = nil;
+    }
+    else
+    {
+        [self.tableview release];
+        self.tableview = nil;
+    }
+    
     
     NSString* url = nil;
     NSString* genre = nil;
     
     
+    if (itemIndex == WheelIdSearch)
+    {
+        self.searchview = [[RadioSearchViewController alloc] initWithNibName:@"RadioSearchViewController" bundle:nil];
+        //viewC.view.frame = CGRectMake(0, 0, self.listContainer.frame.size.width, self.listContainer.frame.size.height);
+        [self.listContainer addSubview:self.searchview.view];
+//        [self.searchview release];
+        return;
+    }
     
     RadioListTableViewController* newTableview = [[RadioListTableViewController alloc] initWithStyle:UITableViewStylePlain radios:nil];
     newTableview.listDelegate = self;

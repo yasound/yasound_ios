@@ -523,6 +523,7 @@
 "WheelSelector_Selection" = "Selection";
 "WheelSelector_Friends" = "Friends";
 "WheelSelector_Top" = "Top";
+"WheelSelector_Search" = "Search";
 
 
 "TabBar.selection" = "Selection";

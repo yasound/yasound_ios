@@ -511,6 +511,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "WheelSelector_Selection" = "Sélection";
 "WheelSelector_Friends" = "Amis";
 "WheelSelector_Top" = "Top";
+"WheelSelector_Search" = "Recherche";
 
 "TabBar.selection" = "Sélection";
 "TabBar.favorites" = "Favoris";

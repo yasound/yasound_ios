@@ -15,6 +15,7 @@
 #import "TabBar.h"
 #import "TopBar.h"
 #import "MenuViewController.h"
+#import "RadioSearchViewController.h"
 
 @interface RadioSelectionViewController : YaViewController<TopBarDelegate, RadioListDelegate, TabBarDelegate>
 {
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) IBOutlet WheelSelector* wheelSelector;
 @property (nonatomic, retain) IBOutlet UIView* listContainer;
 @property (nonatomic, retain) UITableViewController* tableview;
+@property (nonatomic, retain) RadioSearchViewController* searchview;
 @property (nonatomic, retain) IBOutlet TabBar* tabBar;
 
 @property (nonatomic, retain) MenuViewController* menu;
