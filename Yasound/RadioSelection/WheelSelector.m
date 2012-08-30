@@ -19,6 +19,7 @@
 @synthesize itemToIndex;
 @synthesize needsToStick;
 @synthesize tapRegistered;
+@synthesize currentIndex;
 
 #define ITEM_TEXT 0
 #define ITEM_WIDTH 1
@@ -222,6 +223,8 @@
     stickyPos -= self.frame.size.width/2.f;
 
     [self setContentOffset: CGPointMake(stickyPos, self.contentOffset.y) animated:YES];
+    
+    self.currentIndex = itemIndex;
     
     if (silent)
         return;

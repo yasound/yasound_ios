@@ -124,6 +124,15 @@
     [tabBar setTabSelected:TabIndexSelection];
 //    NSURL* url = [NSURL URLWithString:urlstr];
 //    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:nil target:self action:@selector(receiveRadios:info:)];
+    
+    UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight)] autorelease];
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeRight];
+    
+    UISwipeGestureRecognizer* swipeLeft = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeLeft)] autorelease];
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeLeft];
+
 
 }
 
@@ -521,6 +530,27 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PUSH_LOGIN object:nil];
 }
 
+
+
+
+
+- (void)onSwipeLeft
+{
+    NSInteger currentIndex = self.wheelSelector.currentIndex;
+    if (currentIndex == self.wheelSelector.items.count - 1)
+        return;
+    currentIndex++;
+    [self.wheelSelector stickToItem:currentIndex silent:NO];
+}
+
+- (void)onSwipeRight
+{
+    NSInteger currentIndex = self.wheelSelector.currentIndex;
+    if (currentIndex == 0)
+        return;
+    currentIndex--;
+    [self.wheelSelector stickToItem:currentIndex silent:NO];
+}
 
 
 

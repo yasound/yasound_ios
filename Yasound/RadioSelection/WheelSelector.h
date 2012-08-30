@@ -35,6 +35,7 @@
 @property (nonatomic, retain) NSMutableDictionary* itemToIndex;
 @property (nonatomic) BOOL needsToStick;
 @property (nonatomic) BOOL tapRegistered;
+@property (nonatomic) NSInteger currentIndex;
 
 
 - (void)stickToItem:(NSString*)itemId silent:(BOOL)silent;
