@@ -13,6 +13,8 @@
 #import "AudioStreamManager.h"
 #import "BuyLinkManager.h"
 #import "YasoundAppDelegate.h"
+#import "SongInfoViewController.h"
+#import "SongPublicInfoViewController.h"
 
 @implementation WallViewController (NowPlayingBar)
 
@@ -48,6 +50,26 @@ static Song* _gNowPlayingSong = nil;
         [self.nowPlayingButton setImage:[UIImage imageNamed:@"nowPlayingPlay.png"] forState:UIControlStateNormal];
     else
         [self.nowPlayingButton setImage:[UIImage imageNamed:@"nowPlayingPause.png"] forState:UIControlStateNormal];
+}
+
+
+- (IBAction)onTrackImageClicked:(id)sender
+{
+    if (_gNowPlayingSong.isSongRemoved)
+        return;
+
+    if (self.ownRadio)
+    {
+        SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:_gNowPlayingSong showNowPlaying:NO forRadio:self.radio];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }
+    else
+    {
+        SongPublicInfoViewController* view = [[SongPublicInfoViewController alloc] initWithNibName:@"SongPublicInfoViewController" bundle:nil song:_gNowPlayingSong onRadio:self.radio showNowPlaying:NO];
+        [self.navigationController pushViewController:view animated:YES];
+        [view release];
+    }    
 }
 
 
