@@ -20,6 +20,7 @@
 }
 
 @property (nonatomic, retain) WebImageView* image;
+@property (nonatomic, retain) UIImageView* mask;
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) UILabel* sublabel;
 @property (nonatomic, retain) UIButton* buttonDelete;

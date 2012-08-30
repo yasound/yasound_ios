@@ -46,7 +46,6 @@
 						<string key="NSReuseIdentifierKey">_NS:814</string>
 						<int key="IBUIContentMode">3</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<int key="IBBarStyle">1</int>
 						<object class="NSColor" key="IBTintColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC45MjU0OTAxOTYxIDAuOTI1NDkwMTk2MSAwLjkyOTQxMTc2NDcAA</bytes>
@@ -54,6 +53,10 @@
 						<object class="IBUITextInputTraits" key="IBTextInputTraits">
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
+						<array key="IBScopeButtonTitles">
+							<string>Title</string>
+							<string>Title</string>
+						</array>
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 319}</string>

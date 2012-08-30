@@ -66,8 +66,8 @@ static NSMutableDictionary* gEditingSongs = nil;
         [self addSubview:self.image];
         
         sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImageMask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-        UIImageView* mask = [sheet makeImage];
-        [self addSubview:mask];
+        self.mask = [sheet makeImage];
+        [self addSubview:self.mask];
 
         
         sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
@@ -228,7 +228,7 @@ static NSMutableDictionary* gEditingSongs = nil;
 
 - (void)onSwipeRight
 {
-    [self activateEditModeAnimated:YES];
+    [self deactivateEditModeAnimated:YES];
 }
 
 - (void)activateEditModeAnimated:(BOOL)animated
@@ -242,7 +242,7 @@ static NSMutableDictionary* gEditingSongs = nil;
     // create delete button
     UIImage* image = [UIImage imageNamed:@"barRedItemMediumBkg.png"];
     CGFloat size = image.size.width;
-    self.buttonDelete = [[UIButton alloc] initWithFrame:CGRectMake(-size, self.frame.size.height /2.f - image.size.height /2.f, size, image.size.height)];
+    self.buttonDelete = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width, self.frame.size.height /2.f - image.size.height /2.f, size, image.size.height)];
     [self.buttonDelete setImage:image forState:UIControlStateNormal];
     [self.buttonDelete setImage:[UIImage imageNamed:@"barRedItemMediumBkgHighlighted.png"] forState:UIControlStateHighlighted];
     [self.buttonDelete setImage:[UIImage imageNamed:@"barItemMediumBkgDisabled.png"] forState:UIControlStateDisabled];
@@ -250,28 +250,32 @@ static NSMutableDictionary* gEditingSongs = nil;
     [self addSubview:self.buttonDelete];
     
     // delete button label
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.del" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemEmptyLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     self.buttonLabel = [sheet makeLabel];
+    self.buttonLabel.frame = CGRectMake(0, 0, self.buttonDelete.frame.size.width, self.buttonDelete.frame.size.height);
     self.buttonLabel.text = NSLocalizedString(@"Programming.del", nil);
     [self.buttonDelete addSubview:self.buttonLabel];
     
     // compute frames for animation
     CGRect frameLabel = self.label.frame;
-    frameLabel = CGRectMake(frameLabel.origin.x + size + BORDER, frameLabel.origin.y, frameLabel.size.width - size - BORDER, frameLabel.size.height);
+    frameLabel = CGRectMake(frameLabel.origin.x - size + 2*BORDER, frameLabel.origin.y, frameLabel.size.width - size - BORDER, frameLabel.size.height);
     CGRect frameSublabel = self.sublabel.frame;
-    frameSublabel = CGRectMake(frameSublabel.origin.x + size + BORDER, frameSublabel.origin.y, frameSublabel.size.width - size - BORDER, frameSublabel.size.height);
+    frameSublabel = CGRectMake(frameSublabel.origin.x - size + 2*BORDER, frameSublabel.origin.y, frameSublabel.size.width - size - BORDER, frameSublabel.size.height);
     CGRect frameButton = self.buttonDelete.frame;
-    frameButton = CGRectMake(BORDER, frameButton.origin.y, frameButton.size.width, frameButton.size.height);
+    frameButton = CGRectMake(self.frame.size.width - size - 2*BORDER, frameButton.origin.y, frameButton.size.width, frameButton.size.height);
     
     // move button and labels with animation
     if (animated)
     {
         [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.3];
+        [UIView setAnimationDuration:0.2];
     }
     self.label.frame = frameLabel;
     self.sublabel.frame = frameSublabel;
     self.buttonDelete.frame = frameButton;
+//    self.imageView.frame = CGRectMake(-self.imageView.frame.size.width, self.imageView.frame.origin.y, self.imageView.frame.size.width, self.imageView.frame.size.height);
+    self.image.alpha = 0;
+    self.mask.alpha = 0;
     if (animated)
     {
         [UIView commitAnimations];
@@ -282,7 +286,7 @@ static NSMutableDictionary* gEditingSongs = nil;
 
 - (void)onSwipeLeft
 {
-    [self deactivateEditModeAnimated:YES];
+    [self activateEditModeAnimated:YES];
 
 }
 
@@ -300,23 +304,25 @@ static NSMutableDictionary* gEditingSongs = nil;
     
     // compute frames for animation
     CGRect frameLabel = self.label.frame;
-    frameLabel = CGRectMake(frameLabel.origin.x - size - BORDER, frameLabel.origin.y, frameLabel.size.width + size + BORDER, frameLabel.size.height);
+    frameLabel = CGRectMake(frameLabel.origin.x + size - 2*BORDER, frameLabel.origin.y, frameLabel.size.width + size + BORDER, frameLabel.size.height);
     CGRect frameSublabel = self.sublabel.frame;
-    frameSublabel = CGRectMake(frameSublabel.origin.x - size - BORDER, frameSublabel.origin.y, frameSublabel.size.width + size + BORDER, frameSublabel.size.height);
+    frameSublabel = CGRectMake(frameSublabel.origin.x +size - 2*BORDER, frameSublabel.origin.y, frameSublabel.size.width + size + BORDER, frameSublabel.size.height);
     CGRect frameButton = self.buttonDelete.frame;
-    frameButton = CGRectMake(-size, frameButton.origin.y, frameButton.size.width, frameButton.size.height);
+    frameButton = CGRectMake(self.frame.size.width, frameButton.origin.y, frameButton.size.width, frameButton.size.height);
     
     // move button and labels with animation
     if (animated)
     {
         [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.3];
+        [UIView setAnimationDuration:0.2];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(onSwipeLeftStop)];
     }
     self.label.frame = frameLabel;
     self.sublabel.frame = frameSublabel;
     self.buttonDelete.frame = frameButton;
+    self.image.alpha = 1;
+    self.mask.alpha = 1;
     if (animated)
     {
         [UIView commitAnimations];
