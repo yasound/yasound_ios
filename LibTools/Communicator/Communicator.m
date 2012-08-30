@@ -66,6 +66,7 @@
     {
         _baseURL = base;
         [ASIHTTPRequest setDefaultTimeOutSeconds:30];
+        requests = [[NSMutableDictionary alloc] init];
     }
     
     return self;
@@ -97,13 +98,14 @@
 
 - (int)cancelRequestsForTarget:(id)target
 {
-    NSArray* targetRequests = [requests objectForKey:target];
+    NSString* key = [NSString stringWithFormat:@"%p", target];
+    NSArray* targetRequests = [requests valueForKey:key];
     int count = [targetRequests count];
     for (ASIHTTPRequest* req in targetRequests)
     {
         [req cancel];
     }
-    [requests removeObjectForKey:target];
+    [requests removeObjectForKey:key];
     return count;
 }
 
@@ -115,14 +117,24 @@
         targetRequests = [NSMutableArray array];
     }
     [targetRequests addObject:req];
-    [requests setObject:targetRequests forKey:target];
+    NSString* key = [NSString stringWithFormat:@"%p", target];
+    [requests setValue:targetRequests forKey:key];
 }
 
 - (void)removeRequest:(ASIHTTPRequest*)req forTarget:(id)target
 {
-    NSMutableArray* targetRequests = [requests objectForKey:target];
+    NSString* key = [NSString stringWithFormat:@"%p", target];
+    NSMutableArray* targetRequests = [requests valueForKey:key];
     [targetRequests removeObject:req];
-    [requests setObject:targetRequests forKey:target];
+    [requests setValue:targetRequests forKey:key];
+}
+
+- (BOOL)isTarget:(id)target connectedToRequest:(ASIHTTPRequest*)req
+{
+    NSString* key = [NSString stringWithFormat:@"%p", target];
+    NSMutableArray* targetRequests = [requests valueForKey:key];
+    BOOL res = [targetRequests containsObject:req];
+    return res;
 }
 
 
@@ -853,8 +865,7 @@
     id target = [userinfo valueForKey:@"target"];
     if (target)
     {
-        NSArray* targetRequests = [requests objectForKey:target];
-        if (![targetRequests containsObject:request]) // request has been invalidated
+        if (![self isTarget:target connectedToRequest:request]) // request has been invalidated
             return;
         else
             [self removeRequest:request forTarget:target];
@@ -970,8 +981,7 @@
     BOOL success = !failed;
     if (config.callbackTarget && config.callbackAction)
     {
-        NSArray* targetRequests = [requests objectForKey:config.callbackTarget];
-        if ([targetRequests containsObject:req]) // call callback function only if it is stored in requests dictionary
+        if ([self isTarget:config.callbackTarget connectedToRequest:req]) // call callback function only if it is stored in requests dictionary
         {
             [self removeRequest:req forTarget:config.callbackTarget];
             [config.callbackTarget performSelector:config.callbackAction withObject:req withObject:[NSNumber numberWithBool:success]];
