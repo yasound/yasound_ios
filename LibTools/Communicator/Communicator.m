@@ -111,13 +111,13 @@
 
 - (void)addRequest:(ASIHTTPRequest*)req forTarget:(id)target
 {
-    NSMutableArray* targetRequests = [requests objectForKey:target];
+    NSString* key = [NSString stringWithFormat:@"%p", target];
+    NSMutableArray* targetRequests = [requests valueForKey:key];
     if (!targetRequests)
     {
         targetRequests = [NSMutableArray array];
     }
     [targetRequests addObject:req];
-    NSString* key = [NSString stringWithFormat:@"%p", target];
     [requests setValue:targetRequests forKey:key];
 }
 
