@@ -32,7 +32,7 @@
 #import "LoadingCell.h"
 
 #import "ProfilViewController.h"
-#import "ProfileMyRadioViewController.h"
+//#import "ProfileMyRadioViewController.h"
 #import "ShareModalViewController.h"
 #import "ShareTwitterModalViewController.h"
 #import "YasoundSessionManager.h"
@@ -1497,24 +1497,24 @@
 //    [self.navigationController popViewControllerAnimated:YES];
 //}
 
-- (IBAction)onAvatarClicked:(id)sender
-{
-    if (self.radio.creator)
-    {
-        if (self.ownRadio)
-        {
-            ProfileMyRadioViewController* view = [[ProfileMyRadioViewController alloc] initWithNibName:@"ProfileMyRadioViewController" bundle:nil radio:self.radio];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-        }
-        else
-        {
-            ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:self.radio.creator showTabs:NO];
-            [self.navigationController pushViewController:view animated:YES];
-            [view release];
-        }
-    }
-}
+//- (IBAction)onAvatarClicked:(id)sender
+//{
+//    if (self.radio.creator)
+//    {
+//        if (self.ownRadio)
+//        {
+//            ProfileMyRadioViewController* view = [[ProfileMyRadioViewController alloc] initWithNibName:@"ProfileMyRadioViewController" bundle:nil radio:self.radio];
+//            [self.navigationController pushViewController:view animated:YES];
+//            [view release];
+//        }
+//        else
+//        {
+//            ProfilViewController* view = [[ProfilViewController alloc] initWithNibName:@"ProfilViewController" bundle:nil forUser:self.radio.creator showTabs:NO];
+//            [self.navigationController pushViewController:view animated:YES];
+//            [view release];
+//        }
+//    }
+//}
 
 - (void)onCellAvatarClick:(RadioViewCell*)cell
 {
