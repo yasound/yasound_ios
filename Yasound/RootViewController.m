@@ -309,17 +309,23 @@
             //DLog(@"DEBUG info %@", info);
             
             NSString* errorValue = [info objectForKey:@"error"];
-            if ([errorValue isEqualToString:@"Login"])
-                message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
-            else if ([errorValue isEqualToString:@"UserInfo"])
-                    message = NSLocalizedString(@"YasoundSessionManager_userinfo_error", nil);
+            if (errorValue)
+            {
+                if ([errorValue isEqualToString:@"Login"])
+                    message = NSLocalizedString(@"YasoundSessionManager_login_error", nil);
+                else if ([errorValue isEqualToString:@"UserInfo"])
+                        message = NSLocalizedString(@"YasoundSessionManager_userinfo_error", nil);
+            }
                 
         }
         
         // show alert message for connection error
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [av show];
-        [av release];  
+        if (message != nil)
+        {
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [av show];
+            [av release];
+        }
         
         // and logout properly
         [[YasoundSessionManager main] logoutWithTarget:self action:@selector(logoutReturned)];
