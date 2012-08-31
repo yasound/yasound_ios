@@ -639,10 +639,6 @@
     
     DLog(@"settings clicked for radio : %@", [self.radio toString]);
 
-    //LBDEBUG
-    DLog(@"radio '%@' created. Go to the Wall now.", self.radio.name);
-    DLog(@"");
-
     
     [[YasoundDataProvider main] updateRadio:self.radio target:self action:@selector(onRadioUpdated:info:)];
 }
@@ -701,11 +697,6 @@
     
     self.radio = r;
 
-    //LBDEBUG
-    DLog(@"radio '%@' created. Go to the Wall now.", self.radio.name);
-    DLog(@"");
-
-    
     // clean image cache
     NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
     DLog(@"receivedUserRadioAfterPictureUpdate AFTER pictureUrl %@", imageURL);
@@ -721,7 +712,6 @@
     // if the settings have been called through a "radio creation" process, go directly to the new radio's wall.
     if (self.createMode)
     {
-        //LBDEBUG
         DLog(@"radio '%@' created. Go to the Wall now.", self.radio.name);
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:self.radio];
         return;
