@@ -221,9 +221,15 @@
 
 - (void)updateSettings
 {
-    BOOL enabled = [YasoundSessionManager main].registered;
-    if (enabled)
-        enabled &= ([[YasoundDataProvider main].user.id intValue] == [[AudioStreamManager main].currentRadio.creator.id intValue]);
+    BOOL enabled = NO;
+    
+    if ([YasoundSessionManager main].registered)
+    {
+        if ([AudioStreamManager main].currentRadio != nil)
+        {
+            enabled = ([[YasoundDataProvider main].user.id intValue] == [[AudioStreamManager main].currentRadio.creator.id intValue]);
+        }
+    }
     
     
     if (!enabled)
