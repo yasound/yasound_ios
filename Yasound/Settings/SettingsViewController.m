@@ -639,6 +639,10 @@
     
     DLog(@"settings clicked for radio : %@", [self.radio toString]);
 
+    //LBDEBUG
+    DLog(@"radio '%@' created. Go to the Wall now.", self.radio.name);
+    DLog(@"");
+
     
     [[YasoundDataProvider main] updateRadio:self.radio target:self action:@selector(onRadioUpdated:info:)];
 }
@@ -667,6 +671,8 @@
         return;
     }
     
+    self.radio = radio;
+    
     
     //LBDEBUG : TODO :l voir le bug de changement de photo
     if (_settingsImageChanged)
@@ -674,7 +680,7 @@
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:self.radio.picture];
         DLog(@"receivedUserRadioAfterPictureUpdate BEFORE pictureUrl %@", imageURL);
         
-        [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:radio target:self action:@selector(onRadioImageUpdate:info:)];
+        [[YasoundDataProvider main] setPicture:_settingsImageImage.image forRadio:self.radio target:self action:@selector(onRadioImageUpdate:info:)];
     }
     else
         [self onRadioImageUpdate:nil info:nil];
@@ -686,7 +692,7 @@
     DLog(@"onRadioImageUpdate info %@", info);
     
   // be sure to get updated radio (with correct picture)
-  [[YasoundDataProvider main] userRadioWithTarget:self action:@selector(receivedUserRadioAfterPictureUpdate:withInfo:)];
+  [[YasoundDataProvider main] radioWithId:self.radio.id target:self action:@selector(receivedUserRadioAfterPictureUpdate:withInfo:)];
 }
 
 - (void)receivedUserRadioAfterPictureUpdate:(Radio*)r withInfo:(NSDictionary*)info
@@ -694,6 +700,10 @@
   [ActivityAlertView close];
     
     self.radio = r;
+
+    //LBDEBUG
+    DLog(@"radio '%@' created. Go to the Wall now.", self.radio.name);
+    DLog(@"");
 
     
     // clean image cache
@@ -711,6 +721,8 @@
     // if the settings have been called through a "radio creation" process, go directly to the new radio's wall.
     if (self.createMode)
     {
+        //LBDEBUG
+        DLog(@"radio '%@' created. Go to the Wall now.", self.radio.name);
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_GOTO_RADIO object:self.radio];
         return;
     }
