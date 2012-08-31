@@ -216,7 +216,8 @@
 
 - (void)update
 {
-    [self.tabBar setTabSelected:TabIndexProfil];
+    if (self.showTabs)
+        [self.tabBar setTabSelected:TabIndexProfil];
     
     self.name.text = self.user.name;
     NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
@@ -341,8 +342,6 @@
     }
     
     self.viewMyRadios.items = self.radios;
-    
-//    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_MYRADIOS]] withRowAnimation:NO];
 }
 
 
@@ -351,7 +350,6 @@
     self.favorites = radios;
     
     self.viewFavorites.items = self.favorites;
-//    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FAVORITES]] withRowAnimation:NO];
 }
 
 
@@ -387,7 +385,6 @@
     self.friends = container.objects;
     
     self.viewFriends.items = self.friends;
-//    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FRIENDS]] withRowAnimation:NO];
 }
 
 
