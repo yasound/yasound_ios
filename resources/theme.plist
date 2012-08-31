@@ -513,25 +513,14 @@
 					<key>name</key>
 					<string>profilUserMask</string>
 				</dict>
-				<key>maskHighlighted</key>
-				<dict>
-					<key>x</key>
-					<integer>5</integer>
-					<key>y</key>
-					<integer>5</integer>
-					<key>type</key>
-					<string>png</string>
-					<key>name</key>
-					<string>profilUserMaskHighlighted</string>
-				</dict>
 				<key>image</key>
 				<dict>
 					<key>height</key>
 					<integer>67</integer>
 					<key>x</key>
-					<integer>2</integer>
+					<integer>6</integer>
 					<key>y</key>
-					<integer>2</integer>
+					<integer>6</integer>
 					<key>width</key>
 					<integer>67</integer>
 				</dict>

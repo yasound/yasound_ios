@@ -8,6 +8,9 @@
 
 #import "ProfilScrollviewRow.h"
 #import "ProfilCellRadio.h"
+#import "ProfilCellUser.h"
+
+
 
 @implementation ProfilScrollviewRow
 
@@ -48,14 +51,41 @@
             [child removeFromSuperview];
             [child release];
         }
+
+        if ([child isKindOfClass:[ProfilCellUser class]]) {
+            [child removeFromSuperview];
+            [child release];
+        }
     }
+    
+    
+    if ((items == nil) || (items.count == 0))
+        return;
+    
+    id item = [items objectAtIndex:0];
+    
+    if ([item isKindOfClass:[Radio class]]) {
+        
+        [self setRadios:items];
+        return;
+    }
+
+    else if ([item isKindOfClass:[User class]]) {
+        
+        [self setUsers:items];
+        return;
+    }
+}
+
+    
+- (void)setRadios:(NSArray*)items {
     
     CGFloat posX = 0;
     CGFloat delay = 0.1;
-    
+
     for (Radio* radio in _items) {
         
-        ProfilCellRadio* cell = [[ProfilCellRadio alloc] initWithRadio:radio target:self action:@selector(onRadioClicked:)];
+        ProfilCellRadio* cell = [[ProfilCellRadio alloc] initWithRadio:radio];
         cell.frame = CGRectMake(posX, 0, cell.frame.size.width, cell.frame.size.height);
         cell.alpha = 0;
         [self.scrollview addSubview:cell];
@@ -74,18 +104,37 @@
     }
     
     self.scrollview.contentSize = CGSizeMake(posX, self.scrollview.contentSize.height);
-
-
 }
 
-//- (void)onCellShow:(ProfilCellRadio*)cell
-//{
-//    
-//}
 
 
-- (void)onRadioClicked:(Radio*)radio {
+- (void)setUsers:(NSArray*)items {
     
+    CGFloat posX = 0;
+    CGFloat delay = 0.1;
+    
+    for (User* user in _items) {
+        
+        ProfilCellUser* cell = [[ProfilCellUser alloc] initWithUser:user];
+        cell.frame = CGRectMake(posX, 0, cell.frame.size.width, cell.frame.size.height);
+        cell.alpha = 0;
+        [self.scrollview addSubview:cell];
+        
+        posX += cell.frame.size.width;
+        posX += 24;
+        
+        // animation to delay the display
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDelay:delay];
+        [UIView setAnimationDuration:0.3];
+        cell.alpha = 1;
+        [UIView commitAnimations];
+        
+        delay += 0.1;
+    }
+    
+    self.scrollview.contentSize = CGSizeMake(posX, self.scrollview.contentSize.height);
 }
+
 
 @end

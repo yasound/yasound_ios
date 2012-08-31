@@ -117,16 +117,21 @@
     
     posY += self.viewMyRadios.frame.size.height;
     
-    self.viewFavorites.frame = CGRectMake(0, posY, self.viewFavorites.frame.size.width, self.viewFavorites.frame.size.height);
-    [self.scrollview addSubview:self.viewFavorites];
+    if ([YasoundSessionManager main].registered) {
+        
+        self.viewFavorites.frame = CGRectMake(0, posY, self.viewFavorites.frame.size.width, self.viewFavorites.frame.size.height);
+        [self.scrollview addSubview:self.viewFavorites];
+
+        posY += self.viewMyRadios.frame.size.height;    
+
+        self.viewFriends.frame = CGRectMake(0, posY, self.viewFriends.frame.size.width, self.viewFriends.frame.size.height);
+        [self.scrollview addSubview:self.viewFriends];
+
+        posY += self.viewFriends.frame.size.height;
+    }
     
-    posY += self.viewMyRadios.frame.size.height;    
     
-    self.viewFriends.frame = CGRectMake(0, posY, self.viewFriends.frame.size.width, self.viewFriends.frame.size.height);
-    [self.scrollview addSubview:self.viewFriends];
-    
-    
-    self.scrollview.contentSize = CGSizeMake(self.scrollview.contentSize.width, posY + self.viewFriends.frame.size.height);
+    self.scrollview.contentSize = CGSizeMake(self.scrollview.contentSize.width, posY);
     
     
     // define sections
@@ -135,13 +140,6 @@
     self.viewFriends.title.text = NSLocalizedString(@"Profil.section.friends", nil);
     
     
-}
-
-
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     
     if (self.user)
     {
@@ -153,6 +151,26 @@
         [[YasoundDataProvider main] userWithId:self.userId target:self action:@selector(userReceived:info:)];
     else
         [[YasoundDataProvider main] userWithUsername:self.modelUsername target:self action:@selector(publicUserReceived:success:)];
+
+    
+}
+
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+//    if (self.user)
+//    {
+//        [self userReceived:self.user info:nil];
+//        return;
+//    }
+//    
+//    if ([YasoundSessionManager main].registered)
+//        [[YasoundDataProvider main] userWithId:self.userId target:self action:@selector(userReceived:info:)];
+//    else
+//        [[YasoundDataProvider main] userWithUsername:self.modelUsername target:self action:@selector(publicUserReceived:success:)];
 }
 
 
@@ -332,7 +350,7 @@
 {
     self.favorites = radios;
     
-//    self.viewFavorites.items = self.favorites;
+    self.viewFavorites.items = self.favorites;
 //    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FAVORITES]] withRowAnimation:NO];
 }
 
@@ -368,7 +386,7 @@
     Container* container = [req responseObjectsWithClass:[User class]];
     self.friends = container.objects;
     
-//    self.viewFriends.items = self.friends;
+    self.viewFriends.items = self.friends;
 //    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FRIENDS]] withRowAnimation:NO];
 }
 

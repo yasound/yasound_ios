@@ -14,12 +14,10 @@
 
 @interface ProfilCellRadio : UIView
 
-@property (nonatomic, assign) id target;
-@property (nonatomic) SEL action;
 @property (nonatomic, assign) Radio* radio;
 
 
-- (id)initWithRadio:(Radio*)radio target:(id)target  action:(SEL)action;
+- (id)initWithRadio:(Radio*)radio;
 
 
 
