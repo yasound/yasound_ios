@@ -91,6 +91,7 @@
 @synthesize nowPlayingButton;
 @synthesize nowPlayingLabel1;
 @synthesize nowPlayingLabel2;
+@synthesize nowPlayingInteractiveView;
 @synthesize nowPlayingShare;
 @synthesize nowPlayingLike;
 @synthesize nowPlayingBuy;
@@ -180,6 +181,8 @@
 
     // table view
     self.tableview.actionTouched = @selector(tableViewTouched:withEvent:);
+    
+    
 
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Wall.cellMessage.minHeight" error:nil];
     self.tableview.rowHeight = [[sheet.customProperties objectForKey:@"minHeight"] integerValue];
@@ -191,7 +194,9 @@
     // get the actual data from the server to update the GUI
     [self updatePreviousWall];
     
-    
+    // we want the song info to be displayed when a touch occurs on the labels, the same way the track image is clicked
+    [self.nowPlayingInteractiveView setTarget:self action:@selector(onTrackImageClicked:)];
+
     
     
     if (![AudioStreamManager main].isPaused)

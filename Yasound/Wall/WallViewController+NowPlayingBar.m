@@ -41,6 +41,7 @@ static Song* _gNowPlayingSong = nil;
     
     self.nowPlayingLabel1.text = song.artist;
     self.nowPlayingLabel2.text = song.name;
+
     
 }
 
