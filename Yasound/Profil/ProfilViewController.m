@@ -9,7 +9,6 @@
 #import "ProfilViewController.h"
 #import "TopBar.h"
 #import "AudioStreamManager.h"
-#import "ProfilTableViewCell.h"
 #import "YasoundDataProvider.h"
 #import "YasoundDataCache.h"
 #import "Theme.h"
@@ -130,7 +129,10 @@
     self.scrollview.contentSize = CGSizeMake(self.scrollview.contentSize.width, posY + self.viewFriends.frame.size.height);
     
     
-    
+    // define sections
+    self.viewMyRadios.title.text = NSLocalizedString(@"Profil.section.myRadios", nil);
+    self.viewFavorites.title.text = NSLocalizedString(@"Profil.section.favorites", nil);
+    self.viewFriends.title.text = NSLocalizedString(@"Profil.section.friends", nil);
     
     
 }
@@ -201,6 +203,19 @@
     self.name.text = self.user.name;
     NSURL* url = [[YasoundDataProvider main] urlForPicture:self.user.picture];
     [self.userImage setUrl:url];
+    
+    if ((self.user.bio_text == nil) || (self.user.bio_text.length == 0))
+    {
+        NSString* text = NSLocalizedString(@"Profil.bio.empty", nil);
+        text = [NSString stringWithFormat:text, self.user.name];
+        self.bio.text = text;
+        self.bio.alpha = 0.3;
+    }
+    else
+    {
+        self.bio.text = self.user.bio_text;
+        self.bio.alpha = 0.75;
+    }
     
     self.profil.text = [self.user formatedProfil];
     
@@ -307,6 +322,8 @@
         assert(0);
     }
     
+    self.viewMyRadios.items = self.radios;
+    
 //    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_MYRADIOS]] withRowAnimation:NO];
 }
 
@@ -314,6 +331,8 @@
 - (void)favoritesRadioReceived:(NSArray*)radios withInfo:(NSDictionary*)info
 {
     self.favorites = radios;
+    
+//    self.viewFavorites.items = self.favorites;
 //    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FAVORITES]] withRowAnimation:NO];
 }
 
@@ -348,6 +367,8 @@
 {
     Container* container = [req responseObjectsWithClass:[User class]];
     self.friends = container.objects;
+    
+//    self.viewFriends.items = self.friends;
 //    [self.tableview reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:SECTION_FRIENDS]] withRowAnimation:NO];
 }
 

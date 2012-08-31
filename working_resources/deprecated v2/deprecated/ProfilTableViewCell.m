@@ -28,7 +28,6 @@
 @synthesize timer;
 @synthesize translationX;
 
-static NSString* ProfilCellRadioIdentifier = @"ProfilCellRadio";
 
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString*)cellIdentifier items:(NSArray*)items target:(id)target action:(SEL)action;

@@ -555,6 +555,7 @@
 "Profil.section.favorites" = "Favorites";
 "Profil.section.friends" = "My friends";
 "Profil.age" = "%d years";
+"Profil.bio.empty" = "%@ did not write his bio yet.";
 
 "Menu.radios" = "Radios";
 "Menu.login" = "Login";

@@ -1,71 +1,67 @@
 //
-//  ProfilCellRadio.m
+//  ProfilCellRadio
 //  Yasound
 //
-//  Created by LOIC BERTHELOT on 24/11/11.
-//  Copyright (c) 2011 Yasound. All rights reserved.
+//  Created by LOIC BERTHELOT on 23/07/12.
+//  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
 #import "ProfilCellRadio.h"
+#import "Theme.h"
 #import "YasoundDataProvider.h"
+
+
 
 
 @implementation ProfilCellRadio
 
-@synthesize image;
-@synthesize title;
+@synthesize target;
+@synthesize action;
+@synthesize radio;
 
 
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
-    {
+- (id)initWithRadio:(Radio*)radio target:(id)target  action:(SEL)action {
+    
+    if (self = [super init]) {
+        self.radio = radio;
+        self.target = target;
+        self.action = action;
         
+        [self loadView];
     }
     
     return self;
 }
 
 
-
-- (void)updateWithRadio:(Radio*)radio;
-{
-    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
-    [self.image setUrl:imageURL];
+- (void)loadView {
     
-    // info
-    self.title.text = radio.name;
+    // radio image
+    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.image" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
+    WebImageView* radioImage = [[WebImageView alloc] initWithImageAtURL:imageURL];
+    radioImage.frame = [sheet frame];
+    [self addSubview:radioImage];
+
+    // radio mask
+    sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UIImageView* radioMask = [sheet makeImage];
+    [self addSubview:radioMask];
+    
+    self.frame = CGRectMake(0, 0, sheet.frame.size.width, sheet.frame.size.height);
+
+    // title
+    sheet = [[Theme theme] stylesheetForKey:@"Profil.Radio.title"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    UILabel* title = [sheet makeLabel];
+    title.text = self.radio.name;
+    [self addSubview:title];
 }
 
 
+- (IBAction)onClicked:(id)sender {
+    
 
-
-
-
-- (void)willMoveToSuperview:(UIView *)newSuperview 
-{
-    [super willMoveToSuperview:newSuperview];
-    if(!newSuperview) 
-    {
-        if (self.image)
-            [self.image releaseCache];
-    }
 }
-
-
-
-
-
-- (void)dealloc
-{
-  [super dealloc];
-}
-
-
-
-
-
 
 
 @end

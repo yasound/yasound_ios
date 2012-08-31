@@ -428,11 +428,11 @@
 				<key>title</key>
 				<dict>
 					<key>height</key>
-					<integer>32</integer>
+					<integer>26</integer>
 					<key>x</key>
-					<integer>8</integer>
+					<integer>12</integer>
 					<key>y</key>
-					<integer>60</integer>
+					<integer>70</integer>
 					<key>width</key>
 					<integer>80</integer>
 					<key>font</key>
@@ -442,11 +442,13 @@
 						<key>weight</key>
 						<string>bold</string>
 						<key>numberOfLines</key>
-						<integer>2</integer>
+						<integer>0</integer>
 						<key>size</key>
 						<integer>9</integer>
 						<key>textColor</key>
 						<string>white</string>
+						<key>backgroundColor</key>
+						<string>clear</string>
 					</dict>
 				</dict>
 				<key>mask</key>
@@ -459,28 +461,19 @@
 					<string>png</string>
 					<key>name</key>
 					<string>profilRadioMask</string>
-				</dict>
-				<key>maskHighlighted</key>
-				<dict>
-					<key>x</key>
-					<integer>5</integer>
-					<key>y</key>
-					<integer>5</integer>
-					<key>type</key>
-					<string>png</string>
-					<key>name</key>
+					<key>highlighted</key>
 					<string>profilRadioMaskHighlighted</string>
 				</dict>
 				<key>image</key>
 				<dict>
 					<key>height</key>
-					<integer>92</integer>
+					<integer>91</integer>
 					<key>x</key>
-					<integer>0</integer>
+					<integer>6</integer>
 					<key>y</key>
-					<integer>0</integer>
+					<integer>6</integer>
 					<key>width</key>
-					<integer>92</integer>
+					<integer>91</integer>
 				</dict>
 			</dict>
 			<key>User</key>

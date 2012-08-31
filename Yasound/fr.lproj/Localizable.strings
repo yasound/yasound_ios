@@ -542,6 +542,7 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Profil.section.favorites" = "Favoris";
 "Profil.section.friends" = "Mes amis";
 "Profil.age" = "%d ans";
+"Profil.bio.empty" = "%@ n'a pas encore rempli sa bio.";
 
 
 "Menu.radios" = "Radios";

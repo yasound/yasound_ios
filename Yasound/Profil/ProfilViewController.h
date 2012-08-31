@@ -32,6 +32,8 @@
 
 
 @property (nonatomic, retain) IBOutlet UIView* viewProfil;
+@property (nonatomic, retain) IBOutlet UILabel* bio;
+
 @property (nonatomic, retain) IBOutlet ProfilScrollviewRow* viewMyRadios;
 @property (nonatomic, retain) IBOutlet ProfilScrollviewRow* viewFavorites;
 @property (nonatomic, retain) IBOutlet ProfilScrollviewRow* viewFriends;

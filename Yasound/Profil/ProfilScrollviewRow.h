@@ -13,6 +13,10 @@
 @property (nonatomic, retain) IBOutlet UIScrollView* scrollview;
 @property (nonatomic, retain) IBOutlet UILabel* title;
 
+@property (nonatomic, retain) NSArray* items;
+
+@property (nonatomic, retain) UIActivityIndicatorView* indicator;
+
 
 
 @end

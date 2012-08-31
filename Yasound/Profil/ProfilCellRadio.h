@@ -2,22 +2,25 @@
 //  ProfilCellRadio.h
 //  Yasound
 //
-//  Created by LOIC BERTHELOT on 2012/08/01
-//  Copyright (c) 2011 Yasound. All rights reserved.
+//  Created by LOIC BERTHELOT on 23/07/12.
+//  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "Radio.h"
 #import "WebImageView.h"
+#import "Radio.h"
 
 
-@interface ProfilCellRadio : UITableViewCell
 
-@property (nonatomic, retain) IBOutlet WebImageView* image;
-@property (nonatomic, retain) IBOutlet UILabel* title;
+@interface ProfilCellRadio : UIView
+
+@property (nonatomic, assign) id target;
+@property (nonatomic) SEL action;
+@property (nonatomic, assign) Radio* radio;
 
 
-- (void)updateWithRadio:(Radio*)radio;
+- (id)initWithRadio:(Radio*)radio target:(id)target  action:(SEL)action;
+
 
 
 @end
