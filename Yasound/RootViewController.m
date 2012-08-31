@@ -729,7 +729,11 @@
 - (void)onNotifPushRadio:(NSNotification*)notification
 {
     Radio* r = notification.object;
-    assert(r != nil);
+    if (r == nil)
+    {
+        DLog(@"ERROR radio is nil in RootViewController:onNotifPushRadio");
+        return;
+    }
 
     DLog(@"onNotifPushRadio '%@' (ready %@)", r.name, r.ready);
 
