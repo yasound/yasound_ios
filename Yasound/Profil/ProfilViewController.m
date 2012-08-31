@@ -108,10 +108,10 @@
     
     // build scrollview
     CGFloat posY = 0;
-    self.viewProfil.frame = CGRectMake(0, posY, self.scrollview.frame.size.width, self.scrollview.frame.size.height);
+    self.viewProfil.frame = CGRectMake(0, posY, self.viewProfil.frame.size.width, self.viewProfil.frame.size.height);
     [self.scrollview addSubview:self.viewProfil];
     
-    posY += self.scrollview.frame.size.height;
+    posY += self.viewProfil.frame.size.height;
     
     self.viewMyRadios.frame = CGRectMake(0, posY, self.viewMyRadios.frame.size.width, self.viewMyRadios.frame.size.height);
     [self.scrollview addSubview:self.viewMyRadios];
@@ -127,6 +127,7 @@
     [self.scrollview addSubview:self.viewFriends];
     
     
+    self.scrollview.contentSize = CGSizeMake(self.scrollview.contentSize.width, posY + self.viewFriends.frame.size.height);
     
     
     
