@@ -9,6 +9,7 @@
 #import "TopBarBackAndTitle.h"
 #import "Theme.h"
 #import "YasoundAppDelegate.h"
+#import "CustomSizedButtonView.h"
 
 @implementation TopBarBackAndTitle
 
@@ -25,19 +26,13 @@
     else 
         [self insertSubview:[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"topBarBkg.png"]] autorelease] atIndex:0];
 
-    NSString* strBack = NSLocalizedString(@"Navigation.back", nil);
-    
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemBack" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIButton* btn = [sheet makeButton];
-    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem* itemBack = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    // back button
+    CustomSizedButtonView* customView = [[CustomSizedButtonView alloc] initWithThemeRef:@"back" title:NSLocalizedString(@"Navigation.back", nil)];
+    customView.target = self;
+    customView.action = @selector(onBack:);
+    UIBarButtonItem* itemBack = [[UIBarButtonItem alloc] initWithCustomView:customView];
     
 
-    BundleStylesheet* sheetLabel = [[Theme theme] stylesheetForKey:@"TopBar.itemBackLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UILabel* backLabel = [sheetLabel makeLabel];
-    backLabel.text = strBack;
-    [btn addSubview:backLabel];
-    
     // flexible space
     UIBarButtonItem* flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     

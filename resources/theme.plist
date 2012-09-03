@@ -10,6 +10,86 @@
 	<string>theme_default</string>
 	<key>stylesheet</key>
 	<dict>
+		<key>CustomSizedButtonView</key>
+		<dict>
+			<key>back</key>
+			<dict>
+				<key>left</key>
+				<dict>
+					<key>name</key>
+					<string>customSizedBack-left</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>leftHighlighted</key>
+				<dict>
+					<key>name</key>
+					<string>customSizedBack-leftHighlighted</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>right</key>
+				<dict>
+					<key>name</key>
+					<string>customSizedBack-right</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>rightHighlighted</key>
+				<dict>
+					<key>name</key>
+					<string>customSizedBack-rightHighlighted</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>center</key>
+				<dict>
+					<key>name</key>
+					<string>customSizedBack-center</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>centerHighlighted</key>
+				<dict>
+					<key>name</key>
+					<string>customSizedBack-centerHighlighted</string>
+					<key>type</key>
+					<string>png</string>
+				</dict>
+				<key>title</key>
+				<dict>
+					<key>height</key>
+					<integer>0</integer>
+					<key>width</key>
+					<integer>0</integer>
+					<key>x</key>
+					<integer>0</integer>
+					<key>y</key>
+					<integer>0</integer>
+					<key>font</key>
+					<dict>
+						<key>textAlignment</key>
+						<string>center</string>
+						<key>weight</key>
+						<string>bold</string>
+						<key>size</key>
+						<integer>11</integer>
+						<key>textColor</key>
+						<string>white</string>
+						<key>backgroundColor</key>
+						<string>clear</string>
+						<key>shadowOffset</key>
+						<string>0, -1</string>
+						<key>shadowColor</key>
+						<string>black</string>
+						<key>shadowOpacity</key>
+						<string>0.5</string>
+						<key>shadowRadius</key>
+						<string>0.5</string>
+					</dict>
+				</dict>
+			</dict>
+		</dict>
 		<key>MyRadios</key>
 		<dict>
 			<key>delete</key>

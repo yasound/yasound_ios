@@ -16,6 +16,7 @@
 #import "PurchaseViewController.h"
 #import "AudioStreamManager.h"
 #import "YasoundDataProvider.h"
+#import "CustomSizedButtonView.h"
 
 @implementation TopBar
 
@@ -52,13 +53,13 @@
 {
     BundleStylesheet* sheet = nil;
     UIButton* btn = nil;
-    UIBarButtonItem* itemBack = nil;
     
-    // back
-    sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemBack" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    btn = [sheet makeButton];
-    [btn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];
-    itemBack = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    // back button
+    CustomSizedButtonView* customView = [[CustomSizedButtonView alloc] initWithThemeRef:@"back" title:NSLocalizedString(@"Navigation.back", nil)];
+    customView.target = self;
+    customView.action = @selector(onBack:);
+    UIBarButtonItem* itemBack = [[UIBarButtonItem alloc] initWithCustomView:customView];
+    
 
     // hd
     sheet = [[Theme theme] stylesheetForKey:@"TopBar.itemHd" retainStylesheet:YES overwriteStylesheet:NO error:nil];
