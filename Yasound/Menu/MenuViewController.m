@@ -221,9 +221,6 @@ enum MenuDescription
         cell.textLabel.font = [UIFont boldSystemFontOfSize:14];
         cell.textLabel.backgroundColor = [UIColor clearColor];
         cell.accessoryType = UITableViewCellAccessoryNone;
-//        cell.textLabel.layer.shadowOffset = CGSizeMake(1, 1);
-//        cell.textLabel.layer.shadowOpacity = 0.75;
-//        cell.textLabel.layer.shadowRadius = 0.5;
     }
   
 

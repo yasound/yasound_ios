@@ -47,7 +47,6 @@
         self.url = nil;
         _tabIndex = tabIndex;
         
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingOut:) name:ECSlidingViewUnderLeftWillAppear object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSlidingIn:) name:ECSlidingViewTopDidReset object:nil];
     }
@@ -108,22 +107,7 @@
     [super viewDidLoad];
     listContainer.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"radioListRowBkgSize2.png"]];
     
-    self.view.layer.masksToBounds = NO;
-
-    BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Common.viewShadow" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-    UIImageView* shadow = [sheet makeImage];
-    [self.view addSubview:shadow];
-
-    
-    self.view.bounds = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width+20, self.view.bounds.size.height);
-//    self.view.frame = CGRectMake(self.view.frame.origin.x + 20, self.view.frame.origin.y, self.view.frame.size.width+20, self.view.frame.size.height);
-    
-//    [self.topbar showMenuItem];
-     
-//    NSString* urlstr = URL_RADIOS_SELECTION;
     [tabBar setTabSelected:TabIndexSelection];
-//    NSURL* url = [NSURL URLWithString:urlstr];
-//    [[YasoundDataCache main] requestRadiosWithUrl:self.url withGenre:nil target:self action:@selector(receiveRadios:info:)];
 
     //LBDEBUG TEMPORARLY
     UISwipeGestureRecognizer* swipeRight = [[[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeRight)] autorelease];
@@ -156,21 +140,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-//    self.view.layer.masksToBounds = NO;
-//    
-//    self.view.layer.shadowOpacity = 0.75f;
-//
-//    self.view.layer.shadowRadius = 10.0f;
-//    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
-//    self.view.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.view.bounds].CGPath;
-////    [self.view setClipsToBounds:NO];
+
 
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.0"))
     {
         if (![[APPDELEGATE.slideController underLeftViewController] isKindOfClass:[MenuViewController class]])
         {
-    //        self.menu = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
             [APPDELEGATE.slideController setUnderLeftViewController:APPDELEGATE.menuViewController];
         }
     }
