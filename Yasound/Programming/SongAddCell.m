@@ -85,14 +85,14 @@
         
         sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.label = [sheet makeLabel];
-        self.label.frame = [self rect:sheet.frame withOffset:offset];
+        self.label.frame = [self updateToRect:sheet.frame withOffset:offset withInset:(offset + 16)];
         self.label.text = aSong.name;
         [self addSubview:self.label];
         
         
         sheet = [[Theme theme] stylesheetForKey:@"TableView.detailTextLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
         self.detailedLabel = [sheet makeLabel];
-        self.detailedLabel.frame = [self rect:sheet.frame withOffset:offset];
+        self.detailedLabel.frame = [self updateToRect:sheet.frame withOffset:offset withInset:(offset + 16)];
         self.detailedLabel.text = [NSString stringWithFormat:@"%@ - %@", aSong.album, aSong.artist];
         [self addSubview:self.detailedLabel];
         
@@ -110,9 +110,15 @@
 }
 
                       
-- (CGRect)rect:(CGRect)frame withOffset:(CGFloat)offset
+- (CGRect)rect:(CGRect)frame withOffset:(CGFloat)offset 
 {
     CGRect newframe = CGRectMake(frame.origin.x + offset, frame.origin.y, frame.size.width, frame.size.height);
+    return newframe;
+}
+
+- (CGRect)updateToRect:(CGRect)frame withOffset:(CGFloat)offset withInset:(CGFloat)inset
+{
+    CGRect newframe = CGRectMake(frame.origin.x + offset, frame.origin.y, frame.size.width - inset, frame.size.height);
     return newframe;
 }
 
