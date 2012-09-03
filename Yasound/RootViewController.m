@@ -380,7 +380,7 @@
     BOOL error;
     NSInteger lastUserID = [[UserSettings main] integerForKey:USKEYuserId error:&error];
     
-    if (!error && (lastUserID == [self.user.id intValue]))
+    if (self.user && !error && (lastUserID == [self.user.id intValue]))
     {
         [[SongUploadManager main] importUploads];
         
@@ -400,7 +400,8 @@
         [[SongUploadManager main] clearStoredUpdloads];
     }
     
-    [[UserSettings main] setObject:self.user.id forKey:USKEYuserId];
+    if (self.user)
+        [[UserSettings main] setObject:self.user.id forKey:USKEYuserId];
 }
 
 
