@@ -1097,6 +1097,12 @@ static YasoundDataProvider* _main = nil;
 
 - (void)updateUser:(User*)user target:(id)target action:(SEL)selector
 {
+    if (user == nil)
+    {
+        DLog(@"YasoundDataProvider:updateUser user is nil!");
+        return;
+    }
+    
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/user/%@/", user.id];
     conf.urlIsAbsolute = NO;
