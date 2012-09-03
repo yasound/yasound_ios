@@ -108,8 +108,7 @@ static AudioStreamer* _gAudioStreamer = nil;
     
     
     
-  User* u = [YasoundDataProvider main].user;
-  NSString* cookie = [NSString stringWithFormat:@"username=%@; api_key=%@", u.username, u.api_key];
+  NSString* cookie = [NSString stringWithFormat:@"username=%@; api_key=%@", [YasoundDataProvider username], [YasoundDataProvider user_apikey]];
     _gAudioStreamer = [[AudioStreamer alloc] initWithURL:radiourl andCookie:cookie];
     [_gAudioStreamer start];
 

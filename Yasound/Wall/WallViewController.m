@@ -116,7 +116,9 @@
         self.keyboardShown = NO;
         _stopWall = NO;
         
-        self.ownRadio = [[YasoundDataProvider main].user.id intValue] == [self.radio.creator.id intValue];
+        self.ownRadio = NO;
+        if ([YasoundSessionManager main].registered)
+            self.ownRadio = [[YasoundDataProvider user_id] isEqualToNumber:self.radio.creator.id];
         
         self.view.userInteractionEnabled = YES;
         

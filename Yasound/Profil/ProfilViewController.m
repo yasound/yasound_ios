@@ -248,7 +248,7 @@
         [self enableSendMessage:NO];    
     }
     // registered, and it's me
-    else if ([self.user.id isEqualToNumber:[YasoundDataProvider main].user.id])
+    else if ([self.user.id isEqualToNumber:[YasoundDataProvider user_id]])
     {
         [self enableFollow:NO];
         [self enableSendMessage:NO];

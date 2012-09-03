@@ -77,6 +77,14 @@ taskStatus stringToStatus(NSString* str);
 
 + (YasoundDataProvider*) main;
 
++ (NSNumber*) user_id;
++ (NSString*) username;
++ (NSString*) user_apikey;
+
+
+
+
+
 - (int)cancelRequestsForTarget:(id)target;
 
 - (void)resetUser;

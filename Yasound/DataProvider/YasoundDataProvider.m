@@ -152,6 +152,42 @@ static YasoundDataProvider* _main = nil;
 }
 
 
++ (NSNumber*) user_id {
+    
+    if ([YasoundDataProvider main].user == nil)
+        return nil;
+    return [YasoundDataProvider main].user.id;
+}
+
+
++ (NSString*) username {
+    
+    if ([YasoundDataProvider main].user == nil)
+        return nil;
+    return [YasoundDataProvider main].user.username;
+}
+
+
++ (NSString*) user_apikey {
+    
+    if ([YasoundDataProvider main].user == nil)
+        return nil;
+    return [YasoundDataProvider main].user.api_key;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 - (id)init
 {
   self = [super init];
