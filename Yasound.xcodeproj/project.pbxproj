@@ -220,7 +220,6 @@
 		40B409DC152EFC630050D334 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		40B409DD152EFC630050D334 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		40B409DE152EFC630050D334 /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		40B409DF152EFC630050D334 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EA8E2150100750002697D /* SongCatalog.m */; };
 		40B409E0152EFC630050D334 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
 		40B409E1152EFC630050D334 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
 		40B409E2152EFC630050D334 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
@@ -455,7 +454,6 @@
 		40D53BDB1554280F001EB0C5 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		40D53BDC1554280F001EB0C5 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		40D53BDD1554280F001EB0C5 /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		40D53BDE1554280F001EB0C5 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EA8E2150100750002697D /* SongCatalog.m */; };
 		40D53BDF1554280F001EB0C5 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
 		40D53BE01554280F001EB0C5 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
 		40D53BE11554280F001EB0C5 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
@@ -1805,7 +1803,6 @@
 		BC56F4FE152486AF005D1B40 /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		BC56F4FF152486AF005D1B40 /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		BC56F500152486AF005D1B40 /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		BC56F501152486AF005D1B40 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EA8E2150100750002697D /* SongCatalog.m */; };
 		BC56F502152486AF005D1B40 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
 		BC56F503152486AF005D1B40 /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
 		BC56F504152486AF005D1B40 /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
@@ -1921,11 +1918,6 @@
 		BC5C901114F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
 		BC5C901214F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
 		BC5C901314F2A4EB00C7D01E /* YasoundDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */; };
-		BC5EA8E3150100750002697D /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EA8E2150100750002697D /* SongCatalog.m */; };
-		BC5EA8E4150100750002697D /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EA8E2150100750002697D /* SongCatalog.m */; };
-		BC5EA8E5150100750002697D /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EA8E2150100750002697D /* SongCatalog.m */; };
-		BC5EA8E6150100750002697D /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EA8E2150100750002697D /* SongCatalog.m */; };
-		BC5EA8E7150100750002697D /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EA8E2150100750002697D /* SongCatalog.m */; };
 		BC5EE241147D739600A282A5 /* RadioSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */; };
 		BC5EE242147D739600A282A5 /* RadioSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */; };
 		BC6314D214B4665200549EF6 /* RegExp.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6314D114B4665200549EF6 /* RegExp.m */; };
@@ -2618,7 +2610,6 @@
 		BCC7520115E689EF00CF7F7C /* TimeProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE18E14FBE17D00B7F2B4 /* TimeProfile.m */; };
 		BCC7520215E689EF00CF7F7C /* SongUploadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAAE1A114FBF10500B7F2B4 /* SongUploadCell.m */; };
 		BCC7520315E689EF00CF7F7C /* SongInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD0CBCD14FE851800E75CEF /* SongInfoViewController.m */; };
-		BCC7520415E689EF00CF7F7C /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5EA8E2150100750002697D /* SongCatalog.m */; };
 		BCC7520515E689EF00CF7F7C /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */; };
 		BCC7520615E689EF00CF7F7C /* ProgrammingAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDF653715013EE5005FD75D /* ProgrammingAlbumViewController.m */; };
 		BCC7520715E689EF00CF7F7C /* SongAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD818671504F74700B818D1 /* SongAddCell.m */; };
@@ -3497,6 +3488,51 @@
 		BCDABC0615F74411002E8708 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDABBC015F74411002E8708 /* Icon@2x.png */; };
 		BCDABC0715F74411002E8708 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDABBC015F74411002E8708 /* Icon@2x.png */; };
 		BCDABC0815F74411002E8708 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCDABBC015F74411002E8708 /* Icon@2x.png */; };
+		BCDABC1D15F74FDE002E8708 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1615F74FDE002E8708 /* DataBase.m */; };
+		BCDABC1E15F74FDE002E8708 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1615F74FDE002E8708 /* DataBase.m */; };
+		BCDABC1F15F74FDE002E8708 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1615F74FDE002E8708 /* DataBase.m */; };
+		BCDABC2015F74FDE002E8708 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1615F74FDE002E8708 /* DataBase.m */; };
+		BCDABC2115F74FDE002E8708 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1615F74FDE002E8708 /* DataBase.m */; };
+		BCDABC2215F74FDE002E8708 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1615F74FDE002E8708 /* DataBase.m */; };
+		BCDABC2315F74FDE002E8708 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1615F74FDE002E8708 /* DataBase.m */; };
+		BCDABC2415F74FDE002E8708 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1615F74FDE002E8708 /* DataBase.m */; };
+		BCDABC2515F74FDE002E8708 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1615F74FDE002E8708 /* DataBase.m */; };
+		BCDABC2615F74FDE002E8708 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1815F74FDE002E8708 /* SongCatalog.m */; };
+		BCDABC2715F74FDE002E8708 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1815F74FDE002E8708 /* SongCatalog.m */; };
+		BCDABC2815F74FDE002E8708 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1815F74FDE002E8708 /* SongCatalog.m */; };
+		BCDABC2915F74FDE002E8708 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1815F74FDE002E8708 /* SongCatalog.m */; };
+		BCDABC2A15F74FDE002E8708 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1815F74FDE002E8708 /* SongCatalog.m */; };
+		BCDABC2B15F74FDE002E8708 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1815F74FDE002E8708 /* SongCatalog.m */; };
+		BCDABC2C15F74FDE002E8708 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1815F74FDE002E8708 /* SongCatalog.m */; };
+		BCDABC2D15F74FDE002E8708 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1815F74FDE002E8708 /* SongCatalog.m */; };
+		BCDABC2E15F74FDE002E8708 /* SongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1815F74FDE002E8708 /* SongCatalog.m */; };
+		BCDABC2F15F74FDE002E8708 /* SongLocalCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1A15F74FDE002E8708 /* SongLocalCatalog.m */; };
+		BCDABC3015F74FDE002E8708 /* SongLocalCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1A15F74FDE002E8708 /* SongLocalCatalog.m */; };
+		BCDABC3115F74FDE002E8708 /* SongLocalCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1A15F74FDE002E8708 /* SongLocalCatalog.m */; };
+		BCDABC3215F74FDE002E8708 /* SongLocalCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1A15F74FDE002E8708 /* SongLocalCatalog.m */; };
+		BCDABC3315F74FDE002E8708 /* SongLocalCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1A15F74FDE002E8708 /* SongLocalCatalog.m */; };
+		BCDABC3415F74FDE002E8708 /* SongLocalCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1A15F74FDE002E8708 /* SongLocalCatalog.m */; };
+		BCDABC3515F74FDE002E8708 /* SongLocalCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1A15F74FDE002E8708 /* SongLocalCatalog.m */; };
+		BCDABC3615F74FDE002E8708 /* SongLocalCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1A15F74FDE002E8708 /* SongLocalCatalog.m */; };
+		BCDABC3715F74FDE002E8708 /* SongLocalCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1A15F74FDE002E8708 /* SongLocalCatalog.m */; };
+		BCDABC3815F74FDE002E8708 /* SongRadioCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1C15F74FDE002E8708 /* SongRadioCatalog.m */; };
+		BCDABC3915F74FDE002E8708 /* SongRadioCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1C15F74FDE002E8708 /* SongRadioCatalog.m */; };
+		BCDABC3A15F74FDE002E8708 /* SongRadioCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1C15F74FDE002E8708 /* SongRadioCatalog.m */; };
+		BCDABC3B15F74FDE002E8708 /* SongRadioCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1C15F74FDE002E8708 /* SongRadioCatalog.m */; };
+		BCDABC3C15F74FDE002E8708 /* SongRadioCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1C15F74FDE002E8708 /* SongRadioCatalog.m */; };
+		BCDABC3D15F74FDE002E8708 /* SongRadioCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1C15F74FDE002E8708 /* SongRadioCatalog.m */; };
+		BCDABC3E15F74FDE002E8708 /* SongRadioCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1C15F74FDE002E8708 /* SongRadioCatalog.m */; };
+		BCDABC3F15F74FDE002E8708 /* SongRadioCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1C15F74FDE002E8708 /* SongRadioCatalog.m */; };
+		BCDABC4015F74FDE002E8708 /* SongRadioCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC1C15F74FDE002E8708 /* SongRadioCatalog.m */; };
+		BCDABC4315F757FC002E8708 /* OldSongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC4215F757FB002E8708 /* OldSongCatalog.m */; };
+		BCDABC4415F757FC002E8708 /* OldSongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC4215F757FB002E8708 /* OldSongCatalog.m */; };
+		BCDABC4515F757FC002E8708 /* OldSongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC4215F757FB002E8708 /* OldSongCatalog.m */; };
+		BCDABC4615F757FC002E8708 /* OldSongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC4215F757FB002E8708 /* OldSongCatalog.m */; };
+		BCDABC4715F757FC002E8708 /* OldSongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC4215F757FB002E8708 /* OldSongCatalog.m */; };
+		BCDABC4815F757FC002E8708 /* OldSongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC4215F757FB002E8708 /* OldSongCatalog.m */; };
+		BCDABC4915F757FC002E8708 /* OldSongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC4215F757FB002E8708 /* OldSongCatalog.m */; };
+		BCDABC4A15F757FC002E8708 /* OldSongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC4215F757FB002E8708 /* OldSongCatalog.m */; };
+		BCDABC4B15F757FC002E8708 /* OldSongCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDABC4215F757FB002E8708 /* OldSongCatalog.m */; };
 		BCDC965714AB7D6E00D54631 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964014AB7D6E00D54631 /* ASIAuthenticationDialog.m */; };
 		BCDC965814AB7D6E00D54631 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964014AB7D6E00D54631 /* ASIAuthenticationDialog.m */; };
 		BCDC965914AB7D6E00D54631 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC964014AB7D6E00D54631 /* ASIAuthenticationDialog.m */; };
@@ -6877,8 +6913,6 @@
 		BC598F1015B9AAD2004D6DCB /* TabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBar.m; sourceTree = "<group>"; };
 		BC5C900D14F2A4EB00C7D01E /* YasoundDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundDataCache.h; sourceTree = "<group>"; };
 		BC5C900E14F2A4EB00C7D01E /* YasoundDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundDataCache.m; sourceTree = "<group>"; };
-		BC5EA8E1150100750002697D /* SongCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongCatalog.h; path = Programming/SongCatalog.h; sourceTree = "<group>"; };
-		BC5EA8E2150100750002697D /* SongCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongCatalog.m; path = Programming/SongCatalog.m; sourceTree = "<group>"; };
 		BC5EE23B147D739600A282A5 /* RadioSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadioSelectionViewController.h; path = RadioSelection/RadioSelectionViewController.h; sourceTree = "<group>"; };
 		BC5EE23C147D739600A282A5 /* RadioSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadioSelectionViewController.m; path = RadioSelection/RadioSelectionViewController.m; sourceTree = "<group>"; };
 		BC5EE23D147D739600A282A5 /* RadioSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RadioSelectionViewController.xib; path = RadioSelection/RadioSelectionViewController.xib; sourceTree = "<group>"; };
@@ -7059,6 +7093,16 @@
 		BCDABBBE15F74411002E8708 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		BCDABBBF15F74411002E8708 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		BCDABBC015F74411002E8708 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		BCDABC1515F74FDE002E8708 /* DataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
+		BCDABC1615F74FDE002E8708 /* DataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
+		BCDABC1715F74FDE002E8708 /* SongCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongCatalog.h; sourceTree = "<group>"; };
+		BCDABC1815F74FDE002E8708 /* SongCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongCatalog.m; sourceTree = "<group>"; };
+		BCDABC1915F74FDE002E8708 /* SongLocalCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongLocalCatalog.h; sourceTree = "<group>"; };
+		BCDABC1A15F74FDE002E8708 /* SongLocalCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongLocalCatalog.m; sourceTree = "<group>"; };
+		BCDABC1B15F74FDE002E8708 /* SongRadioCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongRadioCatalog.h; sourceTree = "<group>"; };
+		BCDABC1C15F74FDE002E8708 /* SongRadioCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongRadioCatalog.m; sourceTree = "<group>"; };
+		BCDABC4115F757FA002E8708 /* OldSongCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldSongCatalog.h; sourceTree = "<group>"; };
+		BCDABC4215F757FB002E8708 /* OldSongCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldSongCatalog.m; sourceTree = "<group>"; };
 		BCDC963F14AB7D6E00D54631 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		BCDC964014AB7D6E00D54631 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		BCDC964114AB7D6E00D54631 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -8429,8 +8473,6 @@
 				BC188BCE1507638100E38692 /* LocalSongInfoViewController.m */,
 				BC40972515DA837500F6E22A /* ProgrammingCell.h */,
 				BC40972615DA837600F6E22A /* ProgrammingCell.m */,
-				BC5EA8E1150100750002697D /* SongCatalog.h */,
-				BC5EA8E2150100750002697D /* SongCatalog.m */,
 				BCDF652015013CF1005FD75D /* ProgrammingArtistViewController.h */,
 				BCDF652115013CF1005FD75D /* ProgrammingArtistViewController.m */,
 				BCDF652215013CF1005FD75D /* ProgrammingArtistViewController.xib */,
@@ -8710,6 +8752,23 @@
 				BCDABB1015F4FD88002E8708 /* customSizedBack-rightHighlighted@2x.png */,
 			);
 			path = CustomSizedButtonView;
+			sourceTree = "<group>";
+		};
+		BCDABC1415F74FDD002E8708 /* SongCatalog */ = {
+			isa = PBXGroup;
+			children = (
+				BCDABC4115F757FA002E8708 /* OldSongCatalog.h */,
+				BCDABC4215F757FB002E8708 /* OldSongCatalog.m */,
+				BCDABC1515F74FDE002E8708 /* DataBase.h */,
+				BCDABC1615F74FDE002E8708 /* DataBase.m */,
+				BCDABC1715F74FDE002E8708 /* SongCatalog.h */,
+				BCDABC1815F74FDE002E8708 /* SongCatalog.m */,
+				BCDABC1915F74FDE002E8708 /* SongLocalCatalog.h */,
+				BCDABC1A15F74FDE002E8708 /* SongLocalCatalog.m */,
+				BCDABC1B15F74FDE002E8708 /* SongRadioCatalog.h */,
+				BCDABC1C15F74FDE002E8708 /* SongRadioCatalog.m */,
+			);
+			path = SongCatalog;
 			sourceTree = "<group>";
 		};
 		BCDC963A14AB7D3500D54631 /* Third Parties */ = {
@@ -9601,7 +9660,6 @@
 		E5A9A39E1454DC0500EA374C = {
 			isa = PBXGroup;
 			children = (
-				BCC7518015E686C400CF7F7C /* StoreKit.framework */,
 				E5A9A3AC1454DC0500EA374C /* Frameworks */,
 				BCDC963A14AB7D3500D54631 /* Third Parties */,
 				BCA2CCD6149A95460000637E /* LibTools */,
@@ -9632,6 +9690,7 @@
 		E5A9A3AC1454DC0500EA374C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCC7518015E686C400CF7F7C /* StoreKit.framework */,
 				E519073B1582250A0094C0DF /* Crashlytics.framework */,
 				BC40CC8314D010BD00DF0950 /* QuartzCore.framework */,
 				BCDC97D214AB81EA00D54631 /* Accounts.framework */,
@@ -9659,6 +9718,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
+				BCDABC1415F74FDD002E8708 /* SongCatalog */,
 				BCC7517F15E668BB00CF7F7C /* Products */,
 				BC03C37C15E226450017388D /* TextEditors */,
 				BC23871515D2B9D100D1A4C4 /* Wall */,
@@ -14433,7 +14493,6 @@
 				40B409DC152EFC630050D334 /* TimeProfile.m in Sources */,
 				40B409DD152EFC630050D334 /* SongUploadCell.m in Sources */,
 				40B409DE152EFC630050D334 /* SongInfoViewController.m in Sources */,
-				40B409DF152EFC630050D334 /* SongCatalog.m in Sources */,
 				40B409E0152EFC630050D334 /* ProgrammingArtistViewController.m in Sources */,
 				40B409E1152EFC630050D334 /* ProgrammingAlbumViewController.m in Sources */,
 				40B409E2152EFC630050D334 /* SongAddCell.m in Sources */,
@@ -14531,6 +14590,11 @@
 				BC384A9E15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354BC15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC615F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				BCDABC2415F74FDE002E8708 /* DataBase.m in Sources */,
+				BCDABC2D15F74FDE002E8708 /* SongCatalog.m in Sources */,
+				BCDABC3615F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
+				BCDABC3F15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BCDABC4A15F757FC002E8708 /* OldSongCatalog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14655,7 +14719,6 @@
 				40D53BDB1554280F001EB0C5 /* TimeProfile.m in Sources */,
 				40D53BDC1554280F001EB0C5 /* SongUploadCell.m in Sources */,
 				40D53BDD1554280F001EB0C5 /* SongInfoViewController.m in Sources */,
-				40D53BDE1554280F001EB0C5 /* SongCatalog.m in Sources */,
 				40D53BDF1554280F001EB0C5 /* ProgrammingArtistViewController.m in Sources */,
 				40D53BE01554280F001EB0C5 /* ProgrammingAlbumViewController.m in Sources */,
 				40D53BE11554280F001EB0C5 /* SongAddCell.m in Sources */,
@@ -14753,6 +14816,11 @@
 				BC384A9F15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354BD15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC715F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				BCDABC2515F74FDE002E8708 /* DataBase.m in Sources */,
+				BCDABC2E15F74FDE002E8708 /* SongCatalog.m in Sources */,
+				BCDABC3715F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
+				BCDABC4015F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BCDABC4B15F757FC002E8708 /* OldSongCatalog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14877,7 +14945,6 @@
 				BCAAE19314FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A614FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD314FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BC5EA8E7150100750002697D /* SongCatalog.m in Sources */,
 				BCDF653115013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
 				BCDF653D15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD8186C1504F74700B818D1 /* SongAddCell.m in Sources */,
@@ -14971,6 +15038,11 @@
 				BC384A9D15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354BB15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC515F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				BCDABC2315F74FDE002E8708 /* DataBase.m in Sources */,
+				BCDABC2C15F74FDE002E8708 /* SongCatalog.m in Sources */,
+				BCDABC3515F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
+				BCDABC3E15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BCDABC4915F757FC002E8708 /* OldSongCatalog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15095,7 +15167,6 @@
 				BC56F4FE152486AF005D1B40 /* TimeProfile.m in Sources */,
 				BC56F4FF152486AF005D1B40 /* SongUploadCell.m in Sources */,
 				BC56F500152486AF005D1B40 /* SongInfoViewController.m in Sources */,
-				BC56F501152486AF005D1B40 /* SongCatalog.m in Sources */,
 				BC56F502152486AF005D1B40 /* ProgrammingArtistViewController.m in Sources */,
 				BC56F503152486AF005D1B40 /* ProgrammingAlbumViewController.m in Sources */,
 				BC56F504152486AF005D1B40 /* SongAddCell.m in Sources */,
@@ -15193,6 +15264,11 @@
 				BC384A9A15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354B815F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC215F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				BCDABC2015F74FDE002E8708 /* DataBase.m in Sources */,
+				BCDABC2915F74FDE002E8708 /* SongCatalog.m in Sources */,
+				BCDABC3215F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
+				BCDABC3B15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BCDABC4615F757FC002E8708 /* OldSongCatalog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15317,7 +15393,6 @@
 				BCAAE19014FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A314FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD014FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BC5EA8E4150100750002697D /* SongCatalog.m in Sources */,
 				BCDF652E15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
 				BCDF653A15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD818691504F74700B818D1 /* SongAddCell.m in Sources */,
@@ -15415,6 +15490,11 @@
 				BC384A9815F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354B615F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC015F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				BCDABC1E15F74FDE002E8708 /* DataBase.m in Sources */,
+				BCDABC2715F74FDE002E8708 /* SongCatalog.m in Sources */,
+				BCDABC3015F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
+				BCDABC3915F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BCDABC4415F757FC002E8708 /* OldSongCatalog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15540,7 +15620,6 @@
 				BCAAE19214FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A514FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD214FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BC5EA8E6150100750002697D /* SongCatalog.m in Sources */,
 				BCDF653015013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
 				BCDF653C15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD8186B1504F74700B818D1 /* SongAddCell.m in Sources */,
@@ -15638,6 +15717,11 @@
 				BC384A9C15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354BA15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC415F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				BCDABC2215F74FDE002E8708 /* DataBase.m in Sources */,
+				BCDABC2B15F74FDE002E8708 /* SongCatalog.m in Sources */,
+				BCDABC3415F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
+				BCDABC3D15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BCDABC4815F757FC002E8708 /* OldSongCatalog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15762,7 +15846,6 @@
 				BCC7520115E689EF00CF7F7C /* TimeProfile.m in Sources */,
 				BCC7520215E689EF00CF7F7C /* SongUploadCell.m in Sources */,
 				BCC7520315E689EF00CF7F7C /* SongInfoViewController.m in Sources */,
-				BCC7520415E689EF00CF7F7C /* SongCatalog.m in Sources */,
 				BCC7520515E689EF00CF7F7C /* ProgrammingArtistViewController.m in Sources */,
 				BCC7520615E689EF00CF7F7C /* ProgrammingAlbumViewController.m in Sources */,
 				BCC7520715E689EF00CF7F7C /* SongAddCell.m in Sources */,
@@ -15860,6 +15943,11 @@
 				BC384A9915F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354B715F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC115F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				BCDABC1F15F74FDE002E8708 /* DataBase.m in Sources */,
+				BCDABC2815F74FDE002E8708 /* SongCatalog.m in Sources */,
+				BCDABC3115F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
+				BCDABC3A15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BCDABC4515F757FC002E8708 /* OldSongCatalog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15984,7 +16072,6 @@
 				BCAAE18F14FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A214FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBCF14FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BC5EA8E3150100750002697D /* SongCatalog.m in Sources */,
 				BCDF652D15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
 				BCDF653915013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD818681504F74700B818D1 /* SongAddCell.m in Sources */,
@@ -16082,6 +16169,11 @@
 				BC384A9715F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354B515F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABABF15F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				BCDABC1D15F74FDE002E8708 /* DataBase.m in Sources */,
+				BCDABC2615F74FDE002E8708 /* SongCatalog.m in Sources */,
+				BCDABC2F15F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
+				BCDABC3815F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BCDABC4315F757FC002E8708 /* OldSongCatalog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16207,7 +16299,6 @@
 				BCAAE19114FBE17D00B7F2B4 /* TimeProfile.m in Sources */,
 				BCAAE1A414FBF10500B7F2B4 /* SongUploadCell.m in Sources */,
 				BCD0CBD114FE851900E75CEF /* SongInfoViewController.m in Sources */,
-				BC5EA8E5150100750002697D /* SongCatalog.m in Sources */,
 				BCDF652F15013CF1005FD75D /* ProgrammingArtistViewController.m in Sources */,
 				BCDF653B15013EE5005FD75D /* ProgrammingAlbumViewController.m in Sources */,
 				BCD8186A1504F74700B818D1 /* SongAddCell.m in Sources */,
@@ -16305,6 +16396,11 @@
 				BC384A9B15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354B915F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC315F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				BCDABC2115F74FDE002E8708 /* DataBase.m in Sources */,
+				BCDABC2A15F74FDE002E8708 /* SongCatalog.m in Sources */,
+				BCDABC3315F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
+				BCDABC3C15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BCDABC4715F757FC002E8708 /* OldSongCatalog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

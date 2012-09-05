@@ -8,7 +8,7 @@
 
 #import "YaViewController.h"
 #import "SongCatalog.h"
-#import "WheelSelector.h"
+#import "Radio.h"
 
 
 @interface ProgrammingAlbumViewController : UITableViewController <UIActionSheetDelegate>

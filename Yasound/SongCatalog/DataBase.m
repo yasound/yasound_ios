@@ -7,7 +7,7 @@
 //
 
 #import "DB.h"
-#import "Settings.h"
+//#import "Settings.h"
 
 @implementation DB
 
