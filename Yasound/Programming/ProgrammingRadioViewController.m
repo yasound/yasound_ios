@@ -575,7 +575,7 @@
 
 //        Song* song = [[self.sortedSongs objectForKey:charIndex] objectAtIndex:indexPath.row];
         
-        NSArray* songs = [[SongRadioCatalog main].songsForLetter:charIndex];
+        NSArray* songs = [[SongRadioCatalog main] songsForLetter:charIndex];
         Song* song = [songs objectAtIndex:indexPath.row];
         
         SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES forRadio:self.radio];

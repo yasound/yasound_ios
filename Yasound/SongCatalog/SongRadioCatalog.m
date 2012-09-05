@@ -7,6 +7,7 @@
 //
 
 #import "SongRadioCatalog.h"
+#import "YasoundDataProvider.h"
 
 @implementation SongRadioCatalog
 
@@ -52,19 +53,19 @@ static SongRadioCatalog* _main = nil;
     // return cached data
     if (self.isInCache)
     {
-        NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
-        [actionInfo setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"nbMatchedSongs"];
-        [actionInfo setObject:@""  forKey:@"message"];
+//        NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
+//        [actionInfo setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"nbMatchedSongs"];
+//        [actionInfo setObject:@""  forKey:@"message"];
         
-        [self.target performSelector:self.action withObject:actionInfo withObject:[NSNumber numberWithBool:YES]];
+        [self.target performSelector:self.action withObject:self.songs success:YES];
         return;
     }
     
-    // otherwise , create cache and build data
-    self.matchedSongs = [[NSMutableDictionary alloc] init];
-    
-    self.artistRegister = [[NSMutableDictionary alloc] init];
-    self.albumRegister = [[NSMutableDictionary alloc] init];
+//    // otherwise , create cache and build data
+//    self.matchedSongs = [[NSMutableDictionary alloc] init];
+//    
+//    self.artistRegister = [[NSMutableDictionary alloc] init];
+//    self.albumRegister = [[NSMutableDictionary alloc] init];
     
     _data = [[NSMutableArray alloc] init];
     [_data retain];
@@ -90,11 +91,11 @@ static SongRadioCatalog* _main = nil;
             
             if (_nbPlaylists == 0)
             {
-                NSMutableDictionary* info = [NSMutableDictionary dictionary];
-                [info setObject:[NSNumber numberWithInteger:0] forKey:@"nbMatchedSongs"];
-                [info setObject:NSLocalizedString(@"ProgrammingView_error_no_playlist_message", nil)  forKey:@"message"];
+//                NSMutableDictionary* info = [NSMutableDictionary dictionary];
+//                [info setObject:[NSNumber numberWithInteger:0] forKey:@"nbMatchedSongs"];
+//                [info setObject:NSLocalizedString(@"ProgrammingView_error_no_playlist_message", nil)  forKey:@"message"];
                 
-                [self.target performSelector:self.action withObject:info withObject:[NSNumber numberWithBool:NO]];
+                [self.target performSelector:self.action withObject:nil success:NO];
                 return;
             }
     
@@ -115,14 +116,14 @@ static SongRadioCatalog* _main = nil;
     
     if (!succeeded)
     {
-        NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
-        [actionInfo setObject:[NSNumber numberWithInteger:0] forKey:@"nbMatchedSongs"];
-        [actionInfo setObject:NSLocalizedString(@"ProgrammingView_error_message", nil)  forKey:@"message"];
+//        NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
+//        [actionInfo setObject:[NSNumber numberWithInteger:0] forKey:@"nbMatchedSongs"];
+//        [actionInfo setObject:NSLocalizedString(@"ProgrammingView_error_message", nil)  forKey:@"message"];
         
         DLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
         DLog(@"info %@", info);
         
-        [self.target performSelector:self.action withObject:actionInfo withObject:[NSNumber numberWithBool:NO]];
+        [self.target performSelector:self.action withObject:nil success:NO];
         return;
         
     }
@@ -154,7 +155,8 @@ static SongRadioCatalog* _main = nil;
             
             
             // and store the song in the dictionnary, for later convenient use
-            [self.matchedSongs setObject:song forKey:key];
+            //[self.matchedSongs setObject:song forKey:key];
+            [self addSong:song forKey:key];
             
         }
     }

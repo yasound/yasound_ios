@@ -104,7 +104,7 @@
         [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];
         [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
 
-        [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].cacheSongs];
+        [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].songs];
     
         [ActivityAlertView close];
         // PROFILE

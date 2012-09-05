@@ -10,6 +10,11 @@
 #import "Radio.h"
 
 @interface SongRadioCatalog : SongCatalog
+{
+    NSMutableArray* _data;
+    NSInteger _nbReceivedData;
+    NSInteger _nbPlaylists;
+}
 
 
 @property (nonatomic, retain) Radio* radio;
