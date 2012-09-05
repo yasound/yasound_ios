@@ -128,7 +128,7 @@
     // PROFILE
     [[TimeProfile main] begin:TIMEPROFILE_BUILD];
     
-    [[SongRadioCatalog main] initForRadio:self.radio target:self action:@selector(matchedSongsDownloaded:success:)];
+    [[SongRadioCatalog main] initForRadio:self.radio target:self action:@selector(radioProgrammingBuilt:info:)];
 }
 
 
@@ -141,8 +141,12 @@
 }
 
 
-- (void)matchedSongsDownloaded:(NSArray*)songs success:(BOOL)success
+- (void)radioProgrammingBuilt:(NSDictionary*)info
 {
+    BOOL success = [[info objectForKey:@"success"] boolValue];
+    NSString* error = [info objectForKey:@"error"];
+    NSInteger count = [[info objectForKey:@"count"] integerValue];
+    
     if (!success)
     {
         [ActivityAlertView close];
@@ -158,7 +162,7 @@
     [[TimeProfile main] end:TIMEPROFILE_BUILD];
     [[TimeProfile main] logInterval:TIMEPROFILE_BUILD inMilliseconds:NO];
 
-    DLog(@"%d matched songs", songs.count);
+    DLog(@"%d matched songs", count);
     
 //    NSString* subtitle = nil;
 //    if (songs.count == 0)

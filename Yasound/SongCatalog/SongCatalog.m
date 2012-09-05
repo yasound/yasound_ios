@@ -7,6 +7,8 @@
 //
 
 #import "SongCatalog.h"
+#import "TimeProfile.h"
+
 
 @implementation SongCatalog
 
@@ -20,6 +22,10 @@
 @synthesize songs;
 @synthesize songsForLetter;
 @synthesize artistsForLetter;
+
+@synthesize selectedArtist;
+@synthesize selectedAlbum;
+
 
 
 //typedef enum {
@@ -47,16 +53,21 @@
 
 typedef enum {
     
-    eCatalogKey = 0,
+    eCatalogSongKey = 0,
     eCatalogName,
     eCatalogNameLetter,
-    eCatalogArtist,
+    eCatalogArtistKey,
     eCatalogArtistLetter,
-    eCatalogAlbum,
+    eCatalogAlbumKey,
     eCatalogSong
 } CatalogTable;
 
 
+
++ (NSString*)catalogKeyOfSong:(NSString*)name artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey
+{
+    return [NSString stringWithFormat:@"%@|%@|%@", name, artistKey, albumKey];
+}
 
 
 
@@ -85,8 +96,8 @@ typedef enum {
     while ([s next])
     {
         NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
-        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtist]];
-        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbum]];
+        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
+        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
         
         NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
     }
@@ -98,8 +109,8 @@ typedef enum {
     while ([s next])
     {
         NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
-        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtist]];
-        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbum]];
+        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
+        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
         
         NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
     }
@@ -220,7 +231,7 @@ typedef enum {
 
 - (void)createTable:(NSString*)table {
     
-    BOOL res = [self.db executeUpdate:@"CREATE TABLE ? (catalogKey TEXT, name VARCHAR(255), nameLetter CHAR, artist VARCHAR(255), artistLetter CHAR, album VARCHAR(255), song BLOB)", table];
+    BOOL res = [self.db executeUpdate:@"CREATE TABLE ? (songKey TEXT, name VARCHAR(255), nameLetter CHAR, artistKey VARCHAR(255), artistLetter CHAR, albumKey VARCHAR(255), song BLOB)", table];
     if (!res)
     NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
     else
@@ -254,7 +265,7 @@ typedef enum {
     FMResultSet* s = [self.db executeQuery:@"SELECT song FROM ?", table];
     while ([s next])
     {
-        NSString* catalogKey = [s stringForColumnIndex:eCatalogKey];
+        NSString* catalogKey = [s stringForColumnIndex:eCatalogSongKey];
         Song* song = [s objectForColumnIndex:eCatalogSong];
         [self.songs setObject:song forKey:catalogKey];
     }
@@ -299,7 +310,7 @@ typedef enum {
     FMResultSet* s = [self.db executeQuery:@"SELECT artist FROM ? WHERE artistLetter=?", table, charIndex];
     while ([s next])
     {
-        NSString* artist = [s stringForColumnIndex:eCatalogArtist];
+        NSString* artist = [s stringForColumnIndex:eCatalogArtistKey];
         [results addObject:artist];
     }
     
@@ -323,7 +334,7 @@ typedef enum {
 //
 
 
-- (void)addSong:(Song*)song forKey:(NSString*)key forTable:(NSString*)table {
+- (void)addSong:(Song*)song forTable:(NSString*)table songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
     
     // first letter of song's name
     NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
@@ -352,7 +363,7 @@ typedef enum {
     
 
     [self.db beginTransaction];
-    [self.db executeUpdate:@"INSERT INTO ? VALUES (?,?,?,?,?,?,?)", table, key, song.name, nameLetter, song.artist, artistLetter, song.album, song];
+    [self.db executeUpdate:@"INSERT INTO ? VALUES (?,?,?,?,?,?,?)", table, songKey, song.name, nameLetter, song.artist, artistLetter, song.album, song];
     [self.db commit];
 }
 
@@ -412,7 +423,7 @@ typedef enum {
 //    {
 //        letterRepo = [self.alphabeticRepo objectForKey:@"#"];
 //    }
-//    
+//
 //    for (NSInteger index = 0; index < letterRepo.count; index++)
 //    {
 //        Song* letterSong = [letterRepo objectAtIndex:index];
@@ -646,132 +657,92 @@ typedef enum {
 
 
 
-- (BOOL)doesDeviceContainSong:(Song*)song
-{
-    [[TimeProfile main] begin:@"doesDeviceContainSong"];
-    
-    //LBDEBUG
-    DLog(@"doesDeviceContainSong song.name_client %@   song.artist_client '%@'   song.album_client '%@'", song.name_client, song.artist_client, song.album_client);
-    
-    MPMediaQuery* allSongsQuery = [MPMediaQuery songsQuery];
-    
-    //LBDEBUG
-    NSArray* items = [allSongsQuery items];
-    
-    if (items.count == 0)
-        return NO;
-    
-    for (MPMediaItem* item in items)
-    {
-        NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
-        NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
-        NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
-        DLog(@"catalog local.name %@   local.artist '%@'   local.album '%@'", song, artist, album);
-    }
-    
-    
-    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.artist_client forProperty:MPMediaItemPropertyArtist comparisonType:MPMediaPredicateComparisonEqualTo]];
-    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.album_client forProperty:MPMediaItemPropertyAlbumTitle comparisonType:MPMediaPredicateComparisonEqualTo]];
-    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.name_client forProperty:MPMediaItemPropertyTitle comparisonType:MPMediaPredicateComparisonEqualTo]];
-    
-    NSArray* songsArray = [allSongsQuery items];
-    
-    [[TimeProfile main] end:@"doesDeviceContainSong"];
-    [[TimeProfile main] logInterval:@"doesDeviceContainSong" inMilliseconds:YES];
-    
-    
-    BOOL doesContain = (songsArray.count > 0);
-    
-    return doesContain;
-}
-
-
-
 
 
 //
-// add a song to the catalog,
+////
+//// add a song to the catalog,
+////
+//- (void)catalogWithoutSorting:(Song*)song  usingArtistKey:(NSString*)artistKey andAlbumKey:(NSString*)albumKey
+//{
+//    //LBDEBUG
+//    DevLog(@"catalogWithoutSorting   name '%@'  name_client '%@'         artistKey '%@', artistKey_client '%@'       albumKey '%@', albumKey_client '%@'", song.name, song.name_client, artistKey, song.artist_client, albumKey, song.album_client);
+//    
+//    // get what u need to sort alphabetically
+//    NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
+//    
+//    // just in case of
+//    if ((firstRelevantWord == nil) || (firstRelevantWord.length == 0))
+//        firstRelevantWord = @"#";
+//    
+//    
+//    unichar c = [firstRelevantWord characterAtIndex:0];
+//    
+//    // we spread the songs, in a dictionnary, and group them depending on their first letter
+//    // => each table view section will be related to a letter
+//    
+//    // first letter is [0 .. 9]
+//    if ([_numericSet characterIsMember:c])
+//    {
+//        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"-"];
+//        [letterRepo addObject:song];
+//    }
+//    // first letter is [a .. z] || [A .. Z]
+//    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
+//    {
+//        NSString* upperCaseChar = [[NSString stringWithCharacters:&c length:1] uppercaseString];
+//        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:upperCaseChar];
+//        [letterRepo addObject:song];
+//    }
+//    // other cases (foreign languages, ...)
+//    else
+//    {
+//        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"#"];
+//        [letterRepo addObject:song];
+//    }
+//    
+//    
+//    
+//    
+//    
+//    // now the Artist / Album / Song catalog
+//    
+//    c = [artistKey characterAtIndex:0];
+//    NSMutableDictionary* artistsRepo = nil;
+//    
+//    if ([_numericSet characterIsMember:c])
+//    {
+//        artistsRepo = [self.alphaArtistsRepo objectForKey:@"-"];
+//    }
+//    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
+//    {
+//        NSString* upperC = [[NSString stringWithCharacters:&c length:1] uppercaseString];
+//        artistsRepo = [self.alphaArtistsRepo objectForKey:upperC];
+//    }
+//    else
+//    {
+//        artistsRepo = [self.alphaArtistsRepo objectForKey:@"#"];
+//    }
+//    
+//    NSMutableDictionary* artistRepo = [artistsRepo objectForKey:artistKey];
+//    if (artistRepo == nil)
+//    {
+//        artistRepo = [[NSMutableDictionary alloc] init];
+//        [artistsRepo setObject:artistRepo forKey:artistKey];
+//    }
+//    
+//    
+//    // store the song in the right repository
+//    NSMutableArray* albumRepo = [artistRepo objectForKey:albumKey];
+//    if (albumRepo == nil)
+//    {
+//        albumRepo = [[NSMutableArray alloc] init];
+//        [artistRepo setObject:albumRepo forKey:albumKey];
+//    }
+//    
+//    [albumRepo addObject:song];
+//}
 //
-- (void)catalogWithoutSorting:(Song*)song  usingArtistKey:(NSString*)artistKey andAlbumKey:(NSString*)albumKey
-{
-    //LBDEBUG
-    DevLog(@"catalogWithoutSorting   name '%@'  name_client '%@'         artistKey '%@', artistKey_client '%@'       albumKey '%@', albumKey_client '%@'", song.name, song.name_client, artistKey, song.artist_client, albumKey, song.album_client);
-    
-    // get what u need to sort alphabetically
-    NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
-    
-    // just in case of
-    if ((firstRelevantWord == nil) || (firstRelevantWord.length == 0))
-        firstRelevantWord = @"#";
-    
-    
-    unichar c = [firstRelevantWord characterAtIndex:0];
-    
-    // we spread the songs, in a dictionnary, and group them depending on their first letter
-    // => each table view section will be related to a letter
-    
-    // first letter is [0 .. 9]
-    if ([_numericSet characterIsMember:c])
-    {
-        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"-"];
-        [letterRepo addObject:song];
-    }
-    // first letter is [a .. z] || [A .. Z]
-    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
-    {
-        NSString* upperCaseChar = [[NSString stringWithCharacters:&c length:1] uppercaseString];
-        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:upperCaseChar];
-        [letterRepo addObject:song];
-    }
-    // other cases (foreign languages, ...)
-    else
-    {
-        NSMutableArray* letterRepo = [self.alphabeticRepo objectForKey:@"#"];
-        [letterRepo addObject:song];
-    }
-    
-    
-    
-    
-    
-    // now the Artist / Album / Song catalog
-    
-    c = [artistKey characterAtIndex:0];
-    NSMutableDictionary* artistsRepo = nil;
-    
-    if ([_numericSet characterIsMember:c])
-    {
-        artistsRepo = [self.alphaArtistsRepo objectForKey:@"-"];
-    }
-    else if ([_lowerCaseSet characterIsMember:c] || [_upperCaseSet characterIsMember:c])
-    {
-        NSString* upperC = [[NSString stringWithCharacters:&c length:1] uppercaseString];
-        artistsRepo = [self.alphaArtistsRepo objectForKey:upperC];
-    }
-    else
-    {
-        artistsRepo = [self.alphaArtistsRepo objectForKey:@"#"];
-    }
-    
-    NSMutableDictionary* artistRepo = [artistsRepo objectForKey:artistKey];
-    if (artistRepo == nil)
-    {
-        artistRepo = [[NSMutableDictionary alloc] init];
-        [artistsRepo setObject:artistRepo forKey:artistKey];
-    }
-    
-    
-    // store the song in the right repository
-    NSMutableArray* albumRepo = [artistRepo objectForKey:albumKey];
-    if (albumRepo == nil)
-    {
-        albumRepo = [[NSMutableArray alloc] init];
-        [artistRepo setObject:albumRepo forKey:albumKey];
-    }
-    
-    [albumRepo addObject:song];
-}
-
 
 
 
@@ -785,19 +756,24 @@ typedef enum {
 // tools to handle items selection
 //
 
-- (BOOL)selectArtist:(NSString*)artistKey withIndex:(NSString*)charIndex
+//- (BOOL)selectArtist:(NSString*)artistKey withIndex:(NSString*)charIndex
+- (BOOL)selectArtist:(NSString*)artistKey
 {
     // first, reset album selection
     self.selectedAlbum = nil;
-    self.selectedAlbumRepo = nil;
-    NSDictionary* artistsForSection = [self.alphaArtistsRepo objectForKey:charIndex];
+//    self.selectedAlbumRepo = nil;
+//    NSDictionary* artistsForSection = [self.alphaArtistsRepo objectForKey:charIndex];
     
+//    self.selectedArtist = artistKey;
+//    DLog(@"selected artist %@", self.selectedArtist);
+//    
+//    //DLog(@"artistForSection %@", artistsForSection);
+//
+//    self.selectedArtistRepo = [artistsForSection objectForKey:artistKey];
+    
+    DLog(@"selected artist '%@'", artistKey);
+
     self.selectedArtist = artistKey;
-    DLog(@"selected artist %@", self.selectedArtist);
-    
-    //DLog(@"artistForSection %@", artistsForSection);
-    
-    self.selectedArtistRepo = [artistsForSection objectForKey:artistKey];
     
     return YES;
     
@@ -805,14 +781,12 @@ typedef enum {
 
 - (BOOL)selectAlbum:(NSString*)albumKey
 {
-    if (self.selectedArtistRepo == nil)
+    if (self.selectedArtist == nil)
         return NO;
     
     self.selectedAlbum = albumKey;
     
     DLog(@"selected album %@", self.selectedAlbum);
-    
-    self.selectedAlbumRepo = [self.selectedArtistRepo objectForKey:self.selectedAlbum];
     
     return YES;
 }
@@ -821,13 +795,14 @@ typedef enum {
 
 - (Song*)getSongAtRow:(NSInteger)row;
 {
-    if (self.selectedAlbumRepo == nil)
-        return nil;
-    
-    if (row >= self.selectedAlbumRepo.count)
-        return nil;
-    
-    return [self.selectedAlbumRepo objectAtIndex:row];
+//    if (self.selectedAlbumRepo == nil)
+//        return nil;
+//    
+//    if (row >= self.selectedAlbumRepo.count)
+//        return nil;
+//    
+//    return [self.selectedAlbumRepo objectAtIndex:row];
+    return nil;
 }
 
 

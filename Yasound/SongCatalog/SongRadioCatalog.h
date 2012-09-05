@@ -21,7 +21,7 @@
 @property (nonatomic, assign) id target;
 @property (nonatomic) SEL action;
 
-
+@property (nonatomic, retain) NSMutableDictionary* matchedSongs;
 
 
 + (SongRadioCatalog*)main;
@@ -31,6 +31,7 @@
 
 - (NSArray*)songsForLetter:(NSString*)charIndex;
 - (NSDictionary*)songsAll;
+- (void)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
 
 
 @end

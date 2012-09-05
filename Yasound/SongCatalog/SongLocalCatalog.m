@@ -87,6 +87,51 @@ static SongLocalCatalog* _main = nil;
 }
 
 
+
+
+
+
+- (BOOL)doesDeviceContainSong:(Song*)song
+{
+    [[TimeProfile main] begin:@"doesDeviceContainSong"];
+    
+    //LBDEBUG
+    DLog(@"doesDeviceContainSong song.name_client %@   song.artist_client '%@'   song.album_client '%@'", song.name_client, song.artist_client, song.album_client);
+    
+    MPMediaQuery* allSongsQuery = [MPMediaQuery songsQuery];
+    
+    //LBDEBUG
+    NSArray* items = [allSongsQuery items];
+    
+    if (items.count == 0)
+        return NO;
+    
+    for (MPMediaItem* item in items)
+    {
+        NSString* song = [item valueForProperty:MPMediaItemPropertyTitle];
+        NSString* artist = [item valueForProperty:MPMediaItemPropertyArtist];
+        NSString* album  = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
+        DLog(@"catalog local.name %@   local.artist '%@'   local.album '%@'", song, artist, album);
+    }
+    
+    
+    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.artist_client forProperty:MPMediaItemPropertyArtist comparisonType:MPMediaPredicateComparisonEqualTo]];
+    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.album_client forProperty:MPMediaItemPropertyAlbumTitle comparisonType:MPMediaPredicateComparisonEqualTo]];
+    [allSongsQuery addFilterPredicate:[MPMediaPropertyPredicate predicateWithValue:song.name_client forProperty:MPMediaItemPropertyTitle comparisonType:MPMediaPredicateComparisonEqualTo]];
+    
+    NSArray* songsArray = [allSongsQuery items];
+    
+    [[TimeProfile main] end:@"doesDeviceContainSong"];
+    [[TimeProfile main] logInterval:@"doesDeviceContainSong" inMilliseconds:YES];
+    
+    
+    BOOL doesContain = (songsArray.count > 0);
+    
+    return doesContain;
+}
+
+
+
 - (NSArray*)songsForLetter:(NSString*)charIndex {
     
     return [self songsForLetter:charIndex fromTable:LOCALCATALOG_TABLE];
@@ -97,6 +142,11 @@ static SongLocalCatalog* _main = nil;
     return [self songsAllFromTable:LOCALCATALOG_TABLE];
 }
 
+
+- (void)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
+    
+    [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
+}
 
 
 

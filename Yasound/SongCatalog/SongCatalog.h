@@ -37,10 +37,17 @@
 @property (nonatomic, retain) NSMutableDictionary* songsForLetter;
 @property (nonatomic, retain) NSMutableDictionary* artistsForLetter;
 
+@property (nonatomic, retain) NSString* selectedArtist;
+@property (nonatomic, retain) NSString* selectedAlbum;
+
+
++ (NSString*)catalogKeyOfSong:(NSString*)name artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
++ (NSString*)shortString:(NSString*)source;
+
 
 - (NSArray*)songsForLetter:(NSString*)charIndex fromTable:(NSString*)table;
 - (NSDictionary*)songsAllFromTable:(NSString*)table;
-- (void)addSong:(Song*)song forKey:(NSString*)key;
+- (void)addSong:(Song*)song forTable:(NSString*)table songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
 
 
 

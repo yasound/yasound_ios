@@ -18,6 +18,7 @@
 - (void)initFromMatchedSongs:(NSDictionary*)songs;
 - (NSArray*)songsForLetter:(NSString*)charIndex;
 - (NSDictionary*)songsAll;
+- (void)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
 
 
 @end

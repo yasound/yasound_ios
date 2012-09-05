@@ -15,8 +15,7 @@
 @synthesize radio;
 @synthesize target;
 @synthesize action;
-
-
+@synthesize matchedSongs;
 
 static SongRadioCatalog* _main = nil;
 
@@ -57,7 +56,7 @@ static SongRadioCatalog* _main = nil;
 //        [actionInfo setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"nbMatchedSongs"];
 //        [actionInfo setObject:@""  forKey:@"message"];
         
-        [self.target performSelector:self.action withObject:self.songs success:YES];
+        [self.target performSelector:[NSNumber numberWithBool:YES]];
         return;
     }
     
@@ -72,6 +71,8 @@ static SongRadioCatalog* _main = nil;
     
     _nbReceivedData = 0;
     _nbPlaylists = 0;
+    
+    self.matchedSongs = [NSMutableDictionary dictionary];
     
     [[YasoundDataProvider main] playlistsForRadio:radio target:self action:@selector(receivePlaylists:withInfo:)];
 }
@@ -95,7 +96,7 @@ static SongRadioCatalog* _main = nil;
 //                [info setObject:[NSNumber numberWithInteger:0] forKey:@"nbMatchedSongs"];
 //                [info setObject:NSLocalizedString(@"ProgrammingView_error_no_playlist_message", nil)  forKey:@"message"];
                 
-                [self.target performSelector:self.action withObject:nil success:NO];
+                [self.target performSelector:[NSNumber numberWithBool:NO]];
                 return;
             }
     
@@ -123,7 +124,7 @@ static SongRadioCatalog* _main = nil;
         DLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
         DLog(@"info %@", info);
         
-        [self.target performSelector:self.action withObject:nil success:NO];
+        [self.target performSelector:[NSNumber numberWithBool:NO]];
         return;
         
     }
@@ -151,28 +152,25 @@ static SongRadioCatalog* _main = nil;
             
             // create a key for the dictionary
             // LBDEBUG NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
-            NSString* key = [self catalogKeyOfSong:song.name_client artist:song.artist_client album:song.album_client];
+            NSString* localKey = [SongCatalog catalogKeyOfSong:song.name_client artist:song.artist_client album:song.album_client];
             
             
             // and store the song in the dictionnary, for later convenient use
-            //[self.matchedSongs setObject:song forKey:key];
-            [self addSong:song forKey:key];
-            
+            [self.matchedSongs setObject:song forKey:localKey];
         }
     }
     
     // build catalog
-    [[SongCatalog synchronizedCatalog] buildSynchronizedWithSource:self.matchedSongs];
-    [SongCatalog synchronizedCatalog].matchedSongs = self.matchedSongs;
+    [[SongRadioCatalog main] build];
     
     
     DLog(@"%d matched songs", self.matchedSongs.count);
     
-    NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
-    [actionInfo setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"nbMatchedSongs"];
-    [actionInfo setObject:@""  forKey:@"message"];
+//    NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
+//    [actionInfo setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"nbMatchedSongs"];
+//    [actionInfo setObject:@""  forKey:@"message"];
     
-    [self.target performSelector:self.action withObject:actionInfo withObject:[NSNumber numberWithBool:YES]];
+    [self.target performSelector:[NSNumber numberWithBool:YES]];
     
 }
 
@@ -185,9 +183,9 @@ static SongRadioCatalog* _main = nil;
 // build catalog from the server's synchronized songs
 //
 
-- (void)buildSynchronizedWithSource:(NSDictionary*)source
+- (void)build
 {
-    NSArray* songs = [source allValues];
+    NSArray* songs = [self.matchedSongs allValues];
     
     for (Song* song in songs)
     {
@@ -205,12 +203,17 @@ static SongRadioCatalog* _main = nil;
             DLog(@"buildSynchronizedWithSource: empty album found!");
         }
         
+        NSString* songKey = [SongCatalog catalogKeyOfSong:song.name artistKey:artistKey albumKey:albumKey];
+        
+
+        
         //        DLog(@"song.name %@", song.name);
         //        DLog(@"song.artist %@", song.artist);
         //        DLog(@"song.album %@", song.album);
-        
-        [self catalogWithoutSorting:song  usingArtistKey:artistKey andAlbumKey:albumKey];
-        self.nbSongs++;    
+
+        [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
+//        [self catalogWithoutSorting:song  usingArtistKey:artistKey andAlbumKey:albumKey];
+//        self.nbSongs++;
     }
     
     self.isInCache = YES;
@@ -230,7 +233,13 @@ static SongRadioCatalog* _main = nil;
 
 - (NSDictionary*)songsAll {
     
-    return [self songsAll fromTable:RADIOCATALOG_TABLE];
+    return [self songsAllFromTable:RADIOCATALOG_TABLE];
+}
+
+
+ - (void)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
+    
+    [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
 }
 
 
