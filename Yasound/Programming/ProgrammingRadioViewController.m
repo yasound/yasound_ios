@@ -128,7 +128,7 @@
     // PROFILE
     [[TimeProfile main] begin:TIMEPROFILE_BUILD];
     
-    [[SongRadioCatalog main] initForRadio:self.radio target:self action:@selector(radioProgrammingBuilt:info:)];
+    [[SongRadioCatalog main] initForRadio:self.radio target:self action:@selector(radioProgrammingBuilt:)];
 }
 
 
@@ -152,7 +152,7 @@
         [ActivityAlertView close];
 
         // display an error dialog
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingRadio.error.title", nil) message:NSLocalizedString(@"ProgrammingRadio.error.message", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingRadio.error.title", nil) message:error delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
         [av release];
         return;
@@ -163,6 +163,8 @@
     [[TimeProfile main] logInterval:TIMEPROFILE_BUILD inMilliseconds:NO];
 
     DLog(@"%d matched songs", count);
+    
+    //[[SongRadioCatalog main] dump];
     
 //    NSString* subtitle = nil;
 //    if (songs.count == 0)

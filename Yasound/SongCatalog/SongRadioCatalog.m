@@ -42,6 +42,24 @@ static SongRadioCatalog* _main = nil;
 
 
 
+- (void)dump
+{
+    NSLog(@"\nDB radioCatalog dump:");
+    
+    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", RADIOCATALOG_TABLE]];
+    while ([s next])
+    {
+        NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
+        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
+        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
+        
+        NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
+    }
+    
+    NSLog(@"----------------------------------\n");
+}
+
+
 
 - (void)initForRadio:(Radio*)radio target:(id)aTarget action:(SEL)anAction {
     
@@ -52,11 +70,11 @@ static SongRadioCatalog* _main = nil;
     // return cached data
     if (self.isInCache)
     {
-//        NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
-//        [actionInfo setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"nbMatchedSongs"];
-//        [actionInfo setObject:@""  forKey:@"message"];
-        
-        [self.target performSelector:[NSNumber numberWithBool:YES]];
+        NSMutableDictionary* info = [NSMutableDictionary dictionary];
+        [info setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"count"];
+        [info setObject:@""  forKey:@"error"];
+        [info setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
+        [self.target performSelector:self.action withObject:info];
         return;
     }
     
@@ -92,11 +110,12 @@ static SongRadioCatalog* _main = nil;
             
             if (_nbPlaylists == 0)
             {
-//                NSMutableDictionary* info = [NSMutableDictionary dictionary];
-//                [info setObject:[NSNumber numberWithInteger:0] forKey:@"nbMatchedSongs"];
-//                [info setObject:NSLocalizedString(@"ProgrammingView_error_no_playlist_message", nil)  forKey:@"message"];
-                
-                [self.target performSelector:[NSNumber numberWithBool:NO]];
+                NSMutableDictionary* info = [NSMutableDictionary dictionary];
+                [info setObject:[NSNumber numberWithInteger:0] forKey:@"count"];
+                [info setObject:NSLocalizedString(@"ProgrammingView_error_no_playlist_message", nil)  forKey:@"error"];
+                [info setObject:[NSNumber numberWithBool:NO]  forKey:@"success"];
+                [self.target performSelector:self.action withObject:info];
+
                 return;
             }
     
@@ -117,14 +136,15 @@ static SongRadioCatalog* _main = nil;
     
     if (!succeeded)
     {
-//        NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
-//        [actionInfo setObject:[NSNumber numberWithInteger:0] forKey:@"nbMatchedSongs"];
-//        [actionInfo setObject:NSLocalizedString(@"ProgrammingView_error_message", nil)  forKey:@"message"];
+        NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
+        [actionInfo setObject:[NSNumber numberWithInteger:0] forKey:@"count"];
+        [actionInfo setObject:NSLocalizedString(@"ProgrammingView_error_message", nil)  forKey:@"error"];
+        [actionInfo setObject:[NSNumber numberWithBool:NO]  forKey:@"success"];
         
         DLog(@"matchedSongsReceveived : REQUEST FAILED for playlist nb %d", _nbReceivedData);
         DLog(@"info %@", info);
         
-        [self.target performSelector:[NSNumber numberWithBool:NO]];
+        [self.target performSelector:self.action withObject:actionInfo];
         return;
         
     }
@@ -152,7 +172,7 @@ static SongRadioCatalog* _main = nil;
             
             // create a key for the dictionary
             // LBDEBUG NSString* key = [SongCatalog catalogKeyOfSong:song.name artist:song.artist album:song.album];
-            NSString* localKey = [SongCatalog catalogKeyOfSong:song.name_client artist:song.artist_client album:song.album_client];
+            NSString* localKey = [SongCatalog catalogKeyOfSong:song.name_client artistKey:song.artist_client albumKey:song.album_client];
             
             
             // and store the song in the dictionnary, for later convenient use
@@ -166,11 +186,12 @@ static SongRadioCatalog* _main = nil;
     
     DLog(@"%d matched songs", self.matchedSongs.count);
     
-//    NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
-//    [actionInfo setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"nbMatchedSongs"];
-//    [actionInfo setObject:@""  forKey:@"message"];
-    
-    [self.target performSelector:[NSNumber numberWithBool:YES]];
+    NSMutableDictionary* actionInfo = [NSMutableDictionary dictionary];
+    [actionInfo setObject:[NSNumber numberWithInteger:self.matchedSongs.count] forKey:@"count"];
+    [actionInfo setObject:@""  forKey:@"error"];
+    [actionInfo setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
+
+    [self.target performSelector:self.action withObject:actionInfo];
     
 }
 
@@ -237,9 +258,9 @@ static SongRadioCatalog* _main = nil;
 }
 
 
- - (void)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
+ - (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
     
-    [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
+    return [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
 }
 
 

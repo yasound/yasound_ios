@@ -15,10 +15,12 @@
 + (SongLocalCatalog*)main;
 + (void)releaseCatalog;
 
+- (void)dump;
+
 - (void)initFromMatchedSongs:(NSDictionary*)songs;
 - (NSArray*)songsForLetter:(NSString*)charIndex;
 - (NSDictionary*)songsAll;
-- (void)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
+- (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
 
 
 @end

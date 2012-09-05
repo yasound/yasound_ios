@@ -24,6 +24,18 @@
 }
 
 
+typedef enum {
+    
+    eCatalogSongKey = 0,
+    eCatalogName,
+    eCatalogNameLetter,
+    eCatalogArtistKey,
+    eCatalogArtistLetter,
+    eCatalogAlbumKey,
+    eCatalogSong
+} CatalogTable;
+
+
 
 @property (nonatomic, retain) FMDatabase* db;
 @property (nonatomic, retain) NSString* dbPath;
@@ -47,7 +59,7 @@
 
 - (NSArray*)songsForLetter:(NSString*)charIndex fromTable:(NSString*)table;
 - (NSDictionary*)songsAllFromTable:(NSString*)table;
-- (void)addSong:(Song*)song forTable:(NSString*)table songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
+- (BOOL)addSong:(Song*)song forTable:(NSString*)table songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
 
 
 

@@ -51,16 +51,6 @@
 //} LocalCatalogTable;
 
 
-typedef enum {
-    
-    eCatalogSongKey = 0,
-    eCatalogName,
-    eCatalogNameLetter,
-    eCatalogArtistKey,
-    eCatalogArtistLetter,
-    eCatalogAlbumKey,
-    eCatalogSong
-} CatalogTable;
 
 
 
@@ -88,35 +78,6 @@ typedef enum {
 
 
 
-- (void)dump
-{
-    NSLog(@"\nDB radioCatalog dump:");
-    
-    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", RADIOCATALOG_TABLE]];
-    while ([s next])
-    {
-        NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
-        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
-        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
-        
-        NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
-    }
-    
-    NSLog(@"----------------------------------\n");
-    
-    
-    s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", LOCALCATALOG_TABLE]];
-    while ([s next])
-    {
-        NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
-        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
-        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
-        
-        NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
-    }
-    
-    NSLog(@"----------------------------------\n");
-}
 
 
 
@@ -161,6 +122,12 @@ typedef enum {
     self.dbPath = [paths objectAtIndex:0];
     self.dbPath = [self.dbPath stringByAppendingPathComponent:@"songCatalog.sqlite"];
     
+    // delete current DB file
+    if ([[NSFileManager defaultManager] fileExistsAtPath:self.dbPath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:self.dbPath error:nil];
+    }
+        
+    
     self.db = [FMDatabase databaseWithPath:self.dbPath];
     if (![self.db open])
     {
@@ -180,6 +147,11 @@ typedef enum {
 }
 
 
+- (void)dealloc {
+    
+    [self.db close];
+    [super dealloc];
+}
 
 
 
@@ -231,12 +203,12 @@ typedef enum {
 
 - (void)createTable:(NSString*)table {
     
-    BOOL res = [self.db executeUpdate:@"CREATE TABLE ? (songKey TEXT, name VARCHAR(255), nameLetter CHAR, artistKey VARCHAR(255), artistLetter CHAR, albumKey VARCHAR(255), song BLOB)", table];
+    BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255), song BLOB)", table]];
     if (!res)
     NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
     else
     {
-        res = [self.db executeUpdate:@"CREATE INDEX catalogKeyIndex ON ? (catalogKey)", table];
+        res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE INDEX catalogKeyIndex ON %@ (songKey)", table]];
         if (!res)
             NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
     }
@@ -262,7 +234,7 @@ typedef enum {
     
     self.songs = [NSMutableDictionary dictionary];
     
-    FMResultSet* s = [self.db executeQuery:@"SELECT song FROM ?", table];
+    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT song FROM %@", table]];
     while ([s next])
     {
         NSString* catalogKey = [s stringForColumnIndex:eCatalogSongKey];
@@ -284,7 +256,7 @@ typedef enum {
     
     NSMutableArray* results = [NSMutableArray array];
     
-    FMResultSet* s = [self.db executeQuery:@"SELECT song FROM ? WHERE nameLetter=?", table, charIndex];
+    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT song FROM %@ WHERE nameLetter=?", table], charIndex];
     while ([s next])
     {
         Song* song = [s objectForColumnIndex:eCatalogSong];
@@ -307,7 +279,7 @@ typedef enum {
     
     NSMutableArray* results = [NSMutableArray array];
     
-    FMResultSet* s = [self.db executeQuery:@"SELECT artist FROM ? WHERE artistLetter=?", table, charIndex];
+    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT artist FROM %@ WHERE artistLetter=?", table], charIndex];
     while ([s next])
     {
         NSString* artist = [s stringForColumnIndex:eCatalogArtistKey];
@@ -334,7 +306,7 @@ typedef enum {
 //
 
 
-- (void)addSong:(Song*)song forTable:(NSString*)table songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
+- (BOOL)addSong:(Song*)song forTable:(NSString*)table songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
     
     // first letter of song's name
     NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
@@ -361,10 +333,19 @@ typedef enum {
         artistLetter = '#';
     
     
+    NSString* nameChar = [NSString stringWithFormat:@"%C", nameLetter];
+    NSString* artistChar = [NSString stringWithFormat:@"%C", artistLetter];
 
     [self.db beginTransaction];
-    [self.db executeUpdate:@"INSERT INTO ? VALUES (?,?,?,?,?,?,?)", table, songKey, song.name, nameLetter, song.artist, artistLetter, song.album, song];
+//    BOOL res = [self.db executeUpdate:@"INSERT INTO ? VALUES (?,?,?,?,?,?,?)", table, songKey, song.name, nameLetter, song.artist, artistLetter, song.album, song];
+//    BOOL res = [self.db executeUpdate:@"INSERT INTO ? VALUES (?,?,?,?,?,?,?)", table, songKey, song.name, nameChar, song.artist, artistChar, song.album, song];
+    BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@ VALUES (?,?,?,?,?,?,?)", table], songKey, song.name, nameChar, song.artist, artistChar, song.album, song];
     [self.db commit];
+    
+    if (!res)
+        DLog(@"addSong, %d:%@", [self.db lastErrorCode], [self.db lastErrorMessage]);
+    
+    return res;
 }
 
 

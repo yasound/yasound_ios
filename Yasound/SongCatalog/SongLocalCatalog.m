@@ -36,6 +36,26 @@ static SongLocalCatalog* _main = nil;
 }
 
 
+
+- (void)dump
+{
+    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", LOCALCATALOG_TABLE]];
+    while ([s next])
+    {
+        NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
+        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
+        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
+        
+        NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
+    }
+    
+    NSLog(@"----------------------------------\n");
+}
+
+
+
+
+
 - (void)initFromMatchedSongs:(NSDictionary*)songs {
     
     [[TimeProfile main] begin:@"iTunesQuery"];
@@ -143,9 +163,9 @@ static SongLocalCatalog* _main = nil;
 }
 
 
-- (void)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
+- (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
     
-    [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
+    return [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
 }
 
 

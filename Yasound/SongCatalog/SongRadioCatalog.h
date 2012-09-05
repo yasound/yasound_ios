@@ -27,11 +27,13 @@
 + (SongRadioCatalog*)main;
 + (void)releaseCatalog;
 
+- (void)dump;
+
 - (void)initForRadio:(Radio*)radio target:(id)aTarget action:(SEL)anAction;
 
 - (NSArray*)songsForLetter:(NSString*)charIndex;
 - (NSDictionary*)songsAll;
-- (void)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
+- (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
 
 
 @end
