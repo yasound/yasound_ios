@@ -35,7 +35,7 @@
 @synthesize nbSongs;
 
 @synthesize alphabeticRepo;
-@synthesize indexMap;
+//@synthesize indexMap;
 @synthesize alphaArtistsRepo;
 
 @synthesize selectedArtist;
@@ -166,17 +166,17 @@
         self.alphaArtistsRepo = [[NSMutableDictionary alloc] init];
         
         
-        self.indexMap = [[NSMutableArray alloc] init];
-        [self initIndexMap];
-        
-        for (NSString* indexKey in self.indexMap)
-        {
-            NSMutableArray* letterRepo = [[NSMutableArray alloc] init];
-            [self.alphabeticRepo setObject:letterRepo forKey:indexKey];
-
-            NSMutableDictionary* letterArtistRepo = [[NSMutableDictionary alloc] init];
-            [self.alphaArtistsRepo setObject:letterArtistRepo forKey:indexKey];
-        }
+//        self.indexMap = [[NSMutableArray alloc] init];
+//        [self initIndexMap];
+//        
+//        for (NSString* indexKey in self.indexMap)
+//        {
+//            NSMutableArray* letterRepo = [[NSMutableArray alloc] init];
+//            [self.alphabeticRepo setObject:letterRepo forKey:indexKey];
+//
+//            NSMutableDictionary* letterArtistRepo = [[NSMutableDictionary alloc] init];
+//            [self.alphaArtistsRepo setObject:letterArtistRepo forKey:indexKey];
+//        }
 
     }
     return self;

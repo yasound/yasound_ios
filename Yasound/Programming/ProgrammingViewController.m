@@ -17,7 +17,8 @@
 #import "TimeProfile.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "SongCatalog.h"
+#import "SongRadioCatalog.h"
+#import "SongLocalCatalog.h"
 #import "ProgrammingArtistViewController.h"
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
@@ -50,14 +51,14 @@
 //        self.sortedSongs = [[NSMutableDictionary alloc] init];
 
         // anti-bug
-        NSString* catalogId = [NSString stringWithFormat:@"%@", [SongCatalog synchronizedCatalog].radio.id];
+        NSString* catalogId = [NSString stringWithFormat:@"%@", [SongRadioCatalog main].radio.id];
         NSString* newId = [NSString stringWithFormat:@"%@", self.radio.id];
         
         // clean catalog
-        if (([SongCatalog synchronizedCatalog].radio.id != nil) && ![catalogId isEqualToString:newId])
+        if (([SongRadioCatalog main].radio.id != nil) && ![catalogId isEqualToString:newId])
         {
-            [SongCatalog releaseSynchronizedCatalog];
-            [SongCatalog releaseAvailableCatalog];
+            [SongRadioCatalog releaseCatalog];
+            [SongLocalCatalog releaseCatalog];
         }
     }
     return self;

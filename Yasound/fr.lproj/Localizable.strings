@@ -618,6 +618,9 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "Programming.delete.artist.error.title" = "Oups...";
 "Programming.delete.artist.error" = "L'artiste n'a pas pu être supprimé de la radio.";
 
+"Programming.Radio.error.title" = "Oups...";
+"Programming.Radio.error.message" = "La programmation de la radio n'a pas pu être téléchargée.";
+
 "Stats.section.month" = "Audience des 30 derniers jours";
 "Stats.section.leaderboard" = "Classement";
 

@@ -632,6 +632,9 @@
 "Programming.delete.artist.error.title" = "Oops...";
 "Programming.delete.artist.error" = "The artist could not have been deleted";
 
+"Programming.Radio.error.title" = "Oops...";
+"Programming.Radio.error.message" = "The radio's programming could not have been properly downloaded.";
+
 "Stats.section.month" = "Last 30 days audience";
 "Stats.section.leaderboard" = "Leaderboard";
 

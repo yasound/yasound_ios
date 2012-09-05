@@ -7,19 +7,284 @@
 //
 
 #import "SongCatalog.h"
+#import "Song.h"
 
 @implementation SongCatalog
 
+@synthesize db;
+@synthesize dbPath;
+
 @synthesize isInCache;
+@synthesize indexMap;
+
+// cache
+@synthesize cacheSongs;
+@synthesize cacheSongsForLetter;
+@synthesize cacheArtistsForLetter;
+
+
+typedef enum {
+   
+    eRadioCatalogKey = 0,
+    eRadioCatalogName,
+    eRadioCatalogNameLetter,
+    eRadioCatalogArtist,
+    eRadioCatalogArtistLetter,
+    eRadioCatalogAlbum,
+    eRadioCatalogSong
+} RadioCatalogTable;
+
+typedef enum {
+    
+    eLocalCatalogKey = 0,
+    eLocalCatalogName,
+    eLocalCatalogNameLetter,
+    eLocalCatalogArtist,
+    eLocalCatalogArtistLetter,
+    eLocalCatalogAlbum,
+    eLocalCatalogSong
+} LocalCatalogTable;
+
+
+
+
+
+
++ (NSString*)shortString:(NSString*)source
+{
+    if (source.length < (23))
+        return source;
+    
+    NSString* begin = [source substringToIndex:7];
+    NSString* end = [source substringFromIndex:(source.length - 16)];
+    
+    NSString* shortstring = [NSString stringWithFormat:@"%@[...]%@", begin, end];
+    return shortstring;
+}
+
+
+
+
+
+
+- (void)dump
+{
+    NSLog(@"\nDB radioCatalog dump:");
+    
+    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", RADIOCATALOG_TABLE]];
+    while ([s next])
+    {
+        NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eRadioCatalogName]];
+        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eRadioCatalogArtist]];
+        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eRadioCatalogAlbum]];
+        
+        NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
+    }
+    
+    NSLog(@"----------------------------------\n");
+    
+    
+    s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", LOCALCATALOG_TABLE]];
+    while ([s next])
+    {
+        NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eLocalCatalogName]];
+        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eLocalCatalogArtist]];
+        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eLocalCatalogAlbum]];
+        
+        NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
+    }
+    
+    NSLog(@"----------------------------------\n");
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 - (id)init {
     
     if (self = [super init]) {
         self.isInCache = NO;
+        
+        [self initDB];
+        
+        self.indexMap = [NSMutableArray array];
+        [self initIndexMap];
+        
+        self.songsForLetter = [NSMutableDictionary dictionary];
+        self.artistsForLetter = [NSMutableDictionary dictionary];
+
     }
-    return self;    
+    return self;
 }
+
+
+
+- (void)initDB
+{
+    // create the DB file
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    self.dbPath = [paths objectAtIndex:0];
+    self.dbPath = [self.dbPath stringByAppendingPathComponent:@"songCatalog.sqlite"];
+    
+    self.db = [FMDatabase databaseWithPath:self.dbPath];
+    if (![self.db open])
+    {
+        NSLog(@"error : could not open the db file.");
+        [self.db release];
+    }
+    else
+    {
+        //
+        NSLog(@"database create radioCatalog table");
+        BOOL res = [self.db executeUpdate:@"CREATE TABLE ? (catalogKey TEXT, name VARCHAR(255), nameLetter CHAR, artist VARCHAR(255), artistLetter CHAR, album VARCHAR(255), song BLOB)", RADIOCATALOG_TABLE];
+        if (!res)
+            NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
+        else
+        {
+            res = [self.db executeUpdate:@"CREATE INDEX catalogKeyIndex ON ? (catalogKey)", RADIOCATALOG_TABLE];
+            if (!res)
+                NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
+        }
+
+        
+        //
+        NSLog(@"database create localCatalog table");
+        res = [self.db executeUpdate:@"CREATE TABLE ? (catalogKey TEXT, name VARCHAR(255), nameLetter CHAR, artist VARCHAR(255), artistLetter CHAR, album VARCHAR(255), song BLOB)", LOCALCATALOG_TABLE];
+        if (!res)
+            NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
+        else
+        {
+            res = [self.db executeUpdate:@"CREATE INDEX catalogKeyIndex ON ? (catalogKey)", LOCALCATALOG_TABLE];
+            if (!res)
+                NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+- (void)initIndexMap
+{
+    [self.indexMap addObject:@"-"];
+    [self.indexMap addObject:@"A"];
+    [self.indexMap addObject:@"B"];
+    [self.indexMap addObject:@"C"];
+    [self.indexMap addObject:@"D"];
+    [self.indexMap addObject:@"E"];
+    [self.indexMap addObject:@"F"];
+    [self.indexMap addObject:@"G"];
+    [self.indexMap addObject:@"H"];
+    [self.indexMap addObject:@"I"];
+    [self.indexMap addObject:@"J"];
+    [self.indexMap addObject:@"K"];
+    [self.indexMap addObject:@"L"];
+    [self.indexMap addObject:@"M"];
+    [self.indexMap addObject:@"N"];
+    [self.indexMap addObject:@"O"];
+    [self.indexMap addObject:@"P"];
+    [self.indexMap addObject:@"Q"];
+    [self.indexMap addObject:@"R"];
+    [self.indexMap addObject:@"S"];
+    [self.indexMap addObject:@"T"];
+    [self.indexMap addObject:@"U"];
+    [self.indexMap addObject:@"V"];
+    [self.indexMap addObject:@"W"];
+    [self.indexMap addObject:@"X"];
+    [self.indexMap addObject:@"Y"];
+    [self.indexMap addObject:@"Z"];
+    [self.indexMap addObject:@"#"];
+}
+
+
+
+
+- (NSDictionary*)songsAllFromTable:(NSString*)table
+{
+    // get cache
+    if (self.songs != nil)
+        return self.songs;
+    
+    self.songs = [NSMutableDictionary array];
+    
+    FMResultSet* s = [self.db executeQuery:@"SELECT song FROM ?", table];
+    while ([s next])
+    {
+        NSString* catalogKey = [s stringForColumnIndex:eRadioCatalogKey];
+        Song* song = [s objectForColumnIndex:eRadioCatalogSong];
+        [self.songs setObject:song forKey:catalogKey];
+    }
+    
+    return self.songs;
+}
+
+
+
+- (NSArray*)songsForLetter:(NSString*)charIndex fromTable:(NSString*)table
+{
+    // get cache
+    NSArray results = [self.songsForLetter objectForKey:charIndex];
+    if (results != nil)
+        return results;
+    
+    results = [NSMutableArray array];
+    
+    FMResultSet* s = [self.db executeQuery:@"SELECT song FROM ? WHERE nameLetter=?", table, charIndex];
+    while ([s next])
+    {
+        Song* song = [s stringForColumnIndex:eRadioCatalogSong];
+        [results addObject:song];
+    }
+    
+    // set cache
+    [self.songsForLetter setObject:results forKey:charIndex];
+    
+    return results;
+}
+
+
+- (NSArray*)artistsForLetter:(NSString*)charIndex fromTable:(NSString*)table
+{
+    // get cache
+    NSArray results = [self.artistsForLetter objectForKey:charIndex];
+    if (results != nil)
+        return results;
+    
+    results = [NSMutableArray array];
+    
+    FMResultSet* s = [self.db executeQuery:@"SELECT artist FROM ? WHERE artistLetter=?", table, charIndex];
+    while ([s next])
+    {
+        NSString* artist = [s stringForColumnIndex:eRadioCatalogArtist];
+        [results addObject:song];
+    }
+    
+    // set cache
+    [self.artistsForLetter setObject:results forKey:charIndex];
+    
+    return results;
+}
+
+
+
+
+
+
+
+
 
 
 

@@ -8,6 +8,8 @@
 
 #import "SongLocalCatalog.h"
 #import "TimeProfile.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "SongLocal.h"
 
 @implementation SongLocalCatalog
 
@@ -34,7 +36,7 @@ static SongLocalCatalog* _main = nil;
 }
 
 
-- (void)initFromMatchedSongs:(NSArray*)songs {
+- (void)initFromMatchedSongs:(NSDictionary*)songs {
     
     [[TimeProfile main] begin:@"iTunesQuery"];
     
@@ -44,12 +46,14 @@ static SongLocalCatalog* _main = nil;
     [[TimeProfile main] end:@"iTunesQuery"];
     [[TimeProfile main] logInterval:@"iTunesQuery" inMilliseconds:NO];
     
+    NSInteger nbSongs = 0;
+    
     // list all local songs from albums
     for (MPMediaItem* item in songsArray)
     {
         SongLocal* songLocal = [[SongLocal alloc] initWithMediaItem:item];
         
-        Song* matchedSong = [synchronizedSource objectForKey:songLocal.catalogKey];
+        Song* matchedSong = [songs objectForKey:songLocal.catalogKey];
         
         //        // don't include it if it's included in the matched songs already
         //        if (matchedSong != nil)
@@ -73,13 +77,24 @@ static SongLocalCatalog* _main = nil;
         [self catalogWithoutSorting:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
         
         
-        self.nbSongs++;
+        nbSongs++;
         
     }
     
-    if (self.nbSongs > 0)
-        self.cached = YES;
+    if (nbSongs > 0)
+        self.isInCache = YES;
     
+}
+
+
+- (NSArray*)songsForLetter:(NSString*)charIndex {
+    
+    return [self songsForLetter:charIndex fromTable:LOCALCATALOG_TABLE];
+}
+
+- (NSDictionary*)songsAll {
+    
+    return [self songsAllFromTable:LOCALCATALOG_TABLE];
 }
 
 

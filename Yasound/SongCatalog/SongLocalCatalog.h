@@ -15,7 +15,9 @@
 + (SongLocalCatalog*)main;
 + (void)releaseCatalog;
 
-- (void)initFromMatchedSongs:(NSArray*)songs;
+- (void)initFromMatchedSongs:(NSDictionary*)songs;
+- (NSArray*)songsForLetter:(NSString*)charIndex;
+- (NSDictionary*)songsAll;
 
 
 @end

@@ -46,8 +46,8 @@
         self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
 
         
-        NSArray* array = [self.catalog.selectedArtistRepo allKeys];
-         self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
+//        NSArray* array = [self.catalog.selectedArtistRepo allKeys];
+//         self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
     }
     return self;
 }
@@ -231,7 +231,9 @@
     
     NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
     
-    NSArray* songs = [self.catalog.selectedArtistRepo objectForKey:albumKey];
+    //LBDEBUG
+//    NSArray* songs = [self.catalog.selectedArtistRepo objectForKey:albumKey];
+    NSArray* songs = nil;
     
     NSInteger nbSongs = songs.count;
     
@@ -342,7 +344,9 @@
 {
     //[self.sortedAlbums release];
     self.sortedAlbums = nil;
-    NSArray* array = [self.catalog.selectedArtistRepo allKeys];
+    //LBDEBUG
+//    NSArray* array = [self.catalog.selectedArtistRepo allKeys];
+    NSArray* array = nil;
     self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
     
     [self.tableView reloadData];

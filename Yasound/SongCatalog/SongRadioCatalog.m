@@ -211,10 +211,25 @@ static SongRadioCatalog* _main = nil;
         self.nbSongs++;    
     }
     
-    self.cached = YES;
+    self.isInCache = YES;
 }
 
 
+
+
+
+
+
+
+- (NSArray*)songsForLetter:(NSString*)charIndex {
+    
+    return [self songsForLetter:charIndex fromTable:RADIOCATALOG_TABLE];
+}
+
+- (NSDictionary*)songsAll {
+    
+    return [self songsAll fromTable:RADIOCATALOG_TABLE];
+}
 
 
 

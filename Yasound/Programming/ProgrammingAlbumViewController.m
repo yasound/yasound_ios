@@ -131,7 +131,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return self.catalog.selectedAlbumRepo.count;
+    
+    //LBDEBUG
+//    return self.catalog.selectedAlbumRepo.count;
+    return 0;
 }
 
 

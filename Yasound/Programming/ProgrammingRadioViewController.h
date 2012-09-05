@@ -24,12 +24,14 @@
 }
 
 @property (nonatomic, retain) Radio* radio;
-@property (nonatomic, retain) NSMutableDictionary* sortedSongs;
-@property (nonatomic, retain) NSMutableDictionary* sortedArtists;
 
-@property (nonatomic, retain) NSMutableDictionary* artistToIndexPath;
-@property (nonatomic, retain) NSString* deleteArtistNameFromClient;
-@property (nonatomic) BOOL deleteRunning;
+
+//@property (nonatomic, retain) NSMutableDictionary* sortedSongs;
+//@property (nonatomic, retain) NSMutableDictionary* sortedArtists;
+
+//@property (nonatomic, retain) NSMutableDictionary* artistToIndexPath;
+//@property (nonatomic, retain) NSString* deleteArtistNameFromClient;
+//@property (nonatomic) BOOL deleteRunning;
  
 
 @property (nonatomic) NSInteger selectedSegmentIndex;
