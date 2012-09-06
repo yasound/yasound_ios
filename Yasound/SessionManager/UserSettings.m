@@ -97,7 +97,7 @@ static UserSettings* _main;
     }
 
     //LBDEBUG
-    if ([nb isKindOfClass:[NSNumber class]])
+    if (![nb isKindOfClass:[NSNumber class]])
     {
         DLog(@"UserSettings integerForKey error : NSNumber* nb is class : %@", [nb class]);
         assert(0);
