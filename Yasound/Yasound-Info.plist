@@ -41,6 +41,14 @@
 				<string>fb296167703762159</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.yasound.yasound</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>yasound</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>2.0.22</string>

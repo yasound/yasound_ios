@@ -39,12 +39,7 @@
     [self.tabBar setTabSelected:TabIndexGifts];
     
     // ask for gifts
-    //#TODO: send request to get gifts
     [[YasoundDataProvider main] giftsWithTarget:self action:@selector(onGiftsReceived:success:)];
-    
-    NSString *stringURL = @"music:";
-    NSURL *url = [NSURL URLWithString:stringURL];
-    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (void)viewDidUnload
@@ -84,7 +79,7 @@
 {
     if (section == SECTION_GIFTS)
         if (!self.gifts)
-            return 5; //#TODO: 5 for test purpose, valid value is 0
+            return 0;
         return [self.gifts count];
     
     return 0;

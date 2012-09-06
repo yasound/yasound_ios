@@ -19,6 +19,7 @@
 #import "UserSettings.h"
 #import "FakeSlidingController.h"
 #import "Version.h"
+#import "YasoundAppURLHandler.h"
 
 
 @implementation YasoundAppDelegate
@@ -388,12 +389,25 @@ void SignalHandler(int sig) {
 // Pre 4.2 support
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url 
 {
+    if ([url.scheme isEqualToString:@"yasound"])
+    {
+        BOOL res = [[YasoundAppURLHandler main] handleOpenURL:url];
+        if (res)
+            return YES;
+    }
     return [[FacebookSessionManager facebook] handleOpenURL:url]; 
 }
 
 // For 4.2+ support
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation 
 {
+    if ([url.scheme isEqualToString:@"yasound"])
+    {
+        BOOL res = [[YasoundAppURLHandler main] handleOpenURL:url];
+        if (res)
+            return YES;
+    }
+    
     return [[FacebookSessionManager facebook]  handleOpenURL:url]; 
 }
 

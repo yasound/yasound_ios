@@ -80,6 +80,15 @@
 		4028E7CB152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
 		4028E7CC152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
 		4028E7CD152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
+		4029469815F8A33600F73830 /* YasoundAppURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029469715F8A33600F73830 /* YasoundAppURLHandler.m */; };
+		4029469915F8A33600F73830 /* YasoundAppURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029469715F8A33600F73830 /* YasoundAppURLHandler.m */; };
+		4029469A15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029469715F8A33600F73830 /* YasoundAppURLHandler.m */; };
+		4029469B15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029469715F8A33600F73830 /* YasoundAppURLHandler.m */; };
+		4029469C15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029469715F8A33600F73830 /* YasoundAppURLHandler.m */; };
+		4029469D15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029469715F8A33600F73830 /* YasoundAppURLHandler.m */; };
+		4029469E15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029469715F8A33600F73830 /* YasoundAppURLHandler.m */; };
+		4029469F15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029469715F8A33600F73830 /* YasoundAppURLHandler.m */; };
+		402946A015F8A33600F73830 /* YasoundAppURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4029469715F8A33600F73830 /* YasoundAppURLHandler.m */; };
 		40560D2515F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
 		40560D2615F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
 		40560D2715F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
@@ -6594,6 +6603,8 @@
 		4028E7BF152DC13F0056B34B /* MessageWeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageWeViewController.h; path = Notifications/MessageWeViewController.h; sourceTree = "<group>"; };
 		4028E7C0152DC13F0056B34B /* MessageWeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageWeViewController.m; path = Notifications/MessageWeViewController.m; sourceTree = "<group>"; };
 		4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageWeViewController.xib; path = Notifications/MessageWeViewController.xib; sourceTree = "<group>"; };
+		4029469615F8A33600F73830 /* YasoundAppURLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YasoundAppURLHandler.h; path = AppURL/YasoundAppURLHandler.h; sourceTree = "<group>"; };
+		4029469715F8A33600F73830 /* YasoundAppURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YasoundAppURLHandler.m; path = AppURL/YasoundAppURLHandler.m; sourceTree = "<group>"; };
 		40560D2315F7BDF1006900D5 /* Gift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gift.h; sourceTree = "<group>"; };
 		40560D2415F7BDF1006900D5 /* Gift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gift.m; sourceTree = "<group>"; };
 		405A956515D4105300569FE0 /* Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Show.h; sourceTree = "<group>"; };
@@ -7870,6 +7881,15 @@
 				4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */,
 			);
 			name = Notifications;
+			sourceTree = "<group>";
+		};
+		4029469515F8A2FC00F73830 /* AppURL */ = {
+			isa = PBXGroup;
+			children = (
+				4029469615F8A33600F73830 /* YasoundAppURLHandler.h */,
+				4029469715F8A33600F73830 /* YasoundAppURLHandler.m */,
+			);
+			name = AppURL;
 			sourceTree = "<group>";
 		};
 		40AAEC4714921ACE0031B39D /* DataProvider */ = {
@@ -9672,6 +9692,7 @@
 		E5A9A3B31454DC0500EA374C /* Yasound */ = {
 			isa = PBXGroup;
 			children = (
+				4029469515F8A2FC00F73830 /* AppURL */,
 				BCC7517F15E668BB00CF7F7C /* Products */,
 				BC03C37C15E226450017388D /* TextEditors */,
 				BC23871515D2B9D100D1A4C4 /* Wall */,
@@ -14545,6 +14566,7 @@
 				BCA354BC15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC615F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
 				40560D2C15F7BDF1006900D5 /* Gift.m in Sources */,
+				4029469F15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14768,6 +14790,7 @@
 				BCA354BD15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC715F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
 				40560D2D15F7BDF1006900D5 /* Gift.m in Sources */,
+				402946A015F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14987,6 +15010,7 @@
 				BCA354BB15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC515F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
 				40560D2B15F7BDF1006900D5 /* Gift.m in Sources */,
+				4029469E15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15210,6 +15234,7 @@
 				BCA354B815F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC215F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
 				40560D2815F7BDF1006900D5 /* Gift.m in Sources */,
+				4029469B15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15433,6 +15458,7 @@
 				BCA354B615F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC015F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
 				40560D2615F7BDF1006900D5 /* Gift.m in Sources */,
+				4029469915F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15657,6 +15683,7 @@
 				BCA354BA15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC415F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
 				40560D2A15F7BDF1006900D5 /* Gift.m in Sources */,
+				4029469D15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15880,6 +15907,7 @@
 				BCA354B715F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC115F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
 				40560D2715F7BDF1006900D5 /* Gift.m in Sources */,
+				4029469A15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16103,6 +16131,7 @@
 				BCA354B515F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABABF15F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
 				40560D2515F7BDF1006900D5 /* Gift.m in Sources */,
+				4029469815F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16327,6 +16356,7 @@
 				BCA354B915F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC315F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
 				40560D2915F7BDF1006900D5 /* Gift.m in Sources */,
+				4029469C15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
