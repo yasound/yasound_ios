@@ -31,8 +31,10 @@
 
 - (void)initForRadio:(Radio*)radio target:(id)aTarget action:(SEL)anAction;
 
-- (NSArray*)songsForLetter:(NSString*)charIndex;
 - (NSDictionary*)songsAll;
+- (NSArray*)songsForLetter:(NSString*)charIndex;
+- (NSArray*)artistsForLetter:(NSString*)charIndex;
+- (NSArray*)albumsForArtist:(NSString*)artist;
 - (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
 
 

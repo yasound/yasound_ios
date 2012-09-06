@@ -24,6 +24,7 @@
 @synthesize frequency;
 @synthesize enabled;
 @synthesize order;
+@synthesize genre;
 
 
 - (id)init

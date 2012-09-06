@@ -157,6 +157,19 @@ static SongLocalCatalog* _main = nil;
     return [self songsForLetter:charIndex fromTable:LOCALCATALOG_TABLE];
 }
 
+
+- (NSArray*)artistsForLetter:(NSString*)charIndex {
+    
+    return [self artistsForLetter:charIndex fromTable:LOCALCATALOG_TABLE];
+}
+
+
+- (NSArray*)albumsForArtist:(NSString*)artist {
+    
+    return [self albumsForArtist:artist fromTable:LOCALCATALOG_TABLE];
+}
+
+
 - (NSDictionary*)songsAll {
     
     return [self songsAllFromTable:LOCALCATALOG_TABLE];

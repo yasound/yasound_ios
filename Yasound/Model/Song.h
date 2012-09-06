@@ -42,6 +42,9 @@ typedef enum
 @property (retain, nonatomic) NSNumber* enabled;
 @property (retain, nonatomic) NSNumber* order;
 
+// temporarly empty
+@property (retain, nonatomic) NSString* genre;
+
 - (SongFrequencyType)frequencyType;
 - (void)setFrequencyType:(SongFrequencyType)f;
 

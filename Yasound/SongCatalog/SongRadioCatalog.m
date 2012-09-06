@@ -56,7 +56,7 @@ static SongRadioCatalog* _main = nil;
         NSString* artistLetter = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistLetter]];
         NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
         
-        NSLog(@"songKey (%@)    name(%@) nameLetter (%@)     artist(%@) nameLetter (%@)      album(%@)", songKey, name, nameLetter, artist, artistLetter, album);
+        NSLog(@"songKey (%@)    name(%@) nameLetter (%@)     artistKey(%@) artistLetter (%@)      albumKey(%@)", songKey, name, nameLetter, artist, artistLetter, album);
     }
     
     NSLog(@"----------------------------------\n");
@@ -258,6 +258,19 @@ static SongRadioCatalog* _main = nil;
     
     return [self songsForLetter:charIndex fromTable:RADIOCATALOG_TABLE];
 }
+
+
+- (NSArray*)artistsForLetter:(NSString*)charIndex {
+
+    return [self artistsForLetter:charIndex fromTable:RADIOCATALOG_TABLE];
+}
+
+
+- (NSArray*)albumsForArtist:(NSString*)artist {
+
+    return [self albumsForArtist:artist fromTable:RADIOCATALOG_TABLE];
+}
+
 
 - (NSDictionary*)songsAll {
     
