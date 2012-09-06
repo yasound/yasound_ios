@@ -29,6 +29,12 @@ static UserSettings* _main;
 
 - (void)setObject:(id)value forKey:(NSString*)key
 {
+    if (value == nil)
+    {
+        DLog(@"setObject ERROR : value is nil for Key '%@'", key);
+        return;
+    }
+    
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];        
 }
