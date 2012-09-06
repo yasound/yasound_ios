@@ -2575,7 +2575,11 @@ static YasoundDataProvider* _main = nil;
 
 
 
-
+#pragma mark - gifts
+- (void)giftsWithTarget:(id)target action:(SEL)action
+{
+    //#TODO: send request to get gifts
+}
 
 
 

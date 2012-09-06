@@ -310,6 +310,9 @@ taskStatus stringToStatus(NSString* str);
 - (void)subscriptionComplete:(NSString*)productId withBase64Receipt:(NSString*)appleReceipt target:(id)target action:(SEL)action;
 - (void)servicesWithTarget:(id)target action:(SEL)action;
 
+// gifts
+- (void)giftsWithTarget:(id)target action:(SEL)action;
+
 
 - (void)testV2;
 

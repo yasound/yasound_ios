@@ -80,6 +80,15 @@
 		4028E7CB152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
 		4028E7CC152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
 		4028E7CD152DC1400056B34B /* MessageWeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */; };
+		40560D2515F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
+		40560D2615F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
+		40560D2715F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
+		40560D2815F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
+		40560D2915F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
+		40560D2A15F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
+		40560D2B15F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
+		40560D2C15F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
+		40560D2D15F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
 		405A956715D4105300569FE0 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 405A956615D4105300569FE0 /* Show.m */; };
 		405A956815D4105300569FE0 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 405A956615D4105300569FE0 /* Show.m */; };
 		405A956915D4105300569FE0 /* Show.m in Sources */ = {isa = PBXBuildFile; fileRef = 405A956615D4105300569FE0 /* Show.m */; };
@@ -6585,6 +6594,8 @@
 		4028E7BF152DC13F0056B34B /* MessageWeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageWeViewController.h; path = Notifications/MessageWeViewController.h; sourceTree = "<group>"; };
 		4028E7C0152DC13F0056B34B /* MessageWeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageWeViewController.m; path = Notifications/MessageWeViewController.m; sourceTree = "<group>"; };
 		4028E7C1152DC13F0056B34B /* MessageWeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageWeViewController.xib; path = Notifications/MessageWeViewController.xib; sourceTree = "<group>"; };
+		40560D2315F7BDF1006900D5 /* Gift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gift.h; sourceTree = "<group>"; };
+		40560D2415F7BDF1006900D5 /* Gift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gift.m; sourceTree = "<group>"; };
 		405A956515D4105300569FE0 /* Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Show.h; sourceTree = "<group>"; };
 		405A956615D4105300569FE0 /* Show.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Show.m; sourceTree = "<group>"; };
 		405ACE1914F5551000DCB97A /* YasoundSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundSong.h; sourceTree = "<group>"; };
@@ -8042,6 +8053,8 @@
 				4027241B15A353F3002A870D /* CityInfo.m */,
 				405A956515D4105300569FE0 /* Show.h */,
 				405A956615D4105300569FE0 /* Show.m */,
+				40560D2315F7BDF1006900D5 /* Gift.h */,
+				40560D2415F7BDF1006900D5 /* Gift.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -14531,6 +14544,7 @@
 				BC384A9E15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354BC15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC615F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				40560D2C15F7BDF1006900D5 /* Gift.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14753,6 +14767,7 @@
 				BC384A9F15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354BD15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC715F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				40560D2D15F7BDF1006900D5 /* Gift.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14971,6 +14986,7 @@
 				BC384A9D15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354BB15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC515F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				40560D2B15F7BDF1006900D5 /* Gift.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15193,6 +15209,7 @@
 				BC384A9A15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354B815F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC215F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				40560D2815F7BDF1006900D5 /* Gift.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15415,6 +15432,7 @@
 				BC384A9815F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354B615F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC015F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				40560D2615F7BDF1006900D5 /* Gift.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15638,6 +15656,7 @@
 				BC384A9C15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354BA15F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC415F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				40560D2A15F7BDF1006900D5 /* Gift.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15860,6 +15879,7 @@
 				BC384A9915F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354B715F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC115F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				40560D2715F7BDF1006900D5 /* Gift.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16082,6 +16102,7 @@
 				BC384A9715F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354B515F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABABF15F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				40560D2515F7BDF1006900D5 /* Gift.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16305,6 +16326,7 @@
 				BC384A9B15F0D4F70086A9A1 /* ProfilCellRadio.m in Sources */,
 				BCA354B915F0F39000ADCF26 /* ProfilCellUser.m in Sources */,
 				BCDABAC315F4EFBC002E8708 /* CustomSizedButtonView.m in Sources */,
+				40560D2915F7BDF1006900D5 /* Gift.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

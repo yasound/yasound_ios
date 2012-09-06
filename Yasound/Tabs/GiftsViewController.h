@@ -14,5 +14,7 @@
 @interface GiftsViewController : UIViewController<TopBarDelegate, TabBarDelegate>
 
 @property (nonatomic, retain) IBOutlet TabBar* tabBar;
+@property (nonatomic, retain) IBOutlet UITableView* tableView;
+@property(nonatomic, retain) NSArray* gifts;
 
 @end
