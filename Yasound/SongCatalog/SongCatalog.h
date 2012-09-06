@@ -31,13 +31,13 @@ typedef enum {
     eCatalogNameLetter,
     eCatalogArtistKey,
     eCatalogArtistLetter,
-    eCatalogAlbumKey,
-    eCatalogSong
+    eCatalogAlbumKey
 } CatalogTable;
 
 
 
 @property (nonatomic, retain) FMDatabase* db;
+@property (nonatomic, retain) NSMutableDictionary* songsDb;
 @property (nonatomic, retain) NSString* dbPath;
 
 @property (nonatomic) BOOL isInCache;

@@ -13,6 +13,7 @@
 @implementation SongCatalog
 
 @synthesize db;
+@synthesize songsDb;
 @synthesize dbPath;
 
 @synthesize isInCache;
@@ -144,6 +145,8 @@
         NSLog(@"database create localCatalog table");
         [self createTable:LOCALCATALOG_TABLE];
     }
+    
+    self.songsDb = [NSMutableDictionary dictionary];
 }
 
 
@@ -203,7 +206,7 @@
 
 - (void)createTable:(NSString*)table {
     
-    BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255), song BLOB)", table]];
+    BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255))", table]];
     if (!res)
     NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
     else
@@ -228,27 +231,32 @@
 
 - (NSDictionary*)songsAllFromTable:(NSString*)table
 {
-    // get cache
-    if (self.songs != nil)
-        return self.songs;
+    return self.songsDb;
     
-    self.songs = [NSMutableDictionary dictionary];
-    
-    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT song FROM %@", table]];
-    while ([s next])
-    {
-        NSString* catalogKey = [s stringForColumnIndex:eCatalogSongKey];
-        Song* song = [s objectForColumnIndex:eCatalogSong];
-        [self.songs setObject:song forKey:catalogKey];
-    }
-    
-    return self.songs;
+//    // get cache
+//    if (self.songs != nil)
+//        return self.songs;
+//    
+//    self.songs = [NSMutableDictionary dictionary];
+//    
+//    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT song FROM %@", table]];
+//    while ([s next])
+//    {
+//        NSString* catalogKey = [s stringForColumnIndex:eCatalogSongKey];
+////        Song* song = [s objectForColumnIndex:eCatalogSong];
+//        Song* song = [self.songsDb objectForKey:catalogKey];
+//        [self.songs setObject:song forKey:catalogKey];
+//    }
+//    
+//    return self.songs;
 }
 
 
 
 - (NSArray*)songsForLetter:(NSString*)charIndex fromTable:(NSString*)table
 {
+    charIndex = [charIndex uppercaseString];
+    
     // get cache
     NSArray* cache = [self.songsForLetter objectForKey:charIndex];
     if (cache != nil)
@@ -256,10 +264,21 @@
     
     NSMutableArray* results = [NSMutableArray array];
     
-    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT song FROM %@ WHERE nameLetter=?", table], charIndex];
+//    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE nameLetter=?", table], charIndex];
+    FMResultSet* s = [self.db executeQuery:@"SELECT * FROM radioCatalog WHERE nameLetter=?", charIndex];
+
+//#ifdef DEBUG
+//    DLog(@"songsForLetter FMDB executeQuery '%@'", s.query);
+//#endif
+    
     while ([s next])
     {
-        Song* song = [s objectForColumnIndex:eCatalogSong];
+//        Song* song = [s objectForColumnIndex:eCatalogSong];
+//        NSString* name = [s stringForColumnIndex:eCatalogName];
+        NSString* songKey = [s stringForColumnIndex:eCatalogSongKey];
+        assert(songKey);
+        Song* song = [self.songsDb objectForKey:songKey];
+        assert(song);
         [results addObject:song];
     }
     
@@ -308,9 +327,14 @@
 
 - (BOOL)addSong:(Song*)song forTable:(NSString*)table songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
     
+    assert(song);
+    assert(songKey);
+    assert(artistKey);
+    assert(albumKey);
+    
     // first letter of song's name
     NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
-    firstRelevantWord = [firstRelevantWord lowercaseString];
+    firstRelevantWord = [firstRelevantWord uppercaseString];
 
     if ((firstRelevantWord == nil) || (firstRelevantWord.length == 0))
         firstRelevantWord = @"#";
@@ -325,7 +349,8 @@
 
     
     // first letter of artist's name
-    unichar artistLetter = [song.artist characterAtIndex:0];
+    firstRelevantWord = [song.artist uppercaseString];
+    unichar artistLetter = [firstRelevantWord characterAtIndex:0];
     
     if ([_numericSet characterIsMember:artistLetter])
         artistLetter = '-';
@@ -339,11 +364,14 @@
     [self.db beginTransaction];
 //    BOOL res = [self.db executeUpdate:@"INSERT INTO ? VALUES (?,?,?,?,?,?,?)", table, songKey, song.name, nameLetter, song.artist, artistLetter, song.album, song];
 //    BOOL res = [self.db executeUpdate:@"INSERT INTO ? VALUES (?,?,?,?,?,?,?)", table, songKey, song.name, nameChar, song.artist, artistChar, song.album, song];
-    BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@ VALUES (?,?,?,?,?,?,?)", table], songKey, song.name, nameChar, song.artist, artistChar, song.album, song];
+    BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@ VALUES (?,?,?,?,?,?)", table], songKey, song.name, nameChar, song.artist, artistChar, song.album];
     [self.db commit];
     
     if (!res)
         DLog(@"addSong, %d:%@", [self.db lastErrorCode], [self.db lastErrorMessage]);
+    else
+        [self.songsDb setObject:song forKey:songKey];
+    
     
     return res;
 }
