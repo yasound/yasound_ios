@@ -565,6 +565,8 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MyAccount.city.placeholder" = "entrez votre ville";
 "MyAccount.bio.label" = "Bio";
 "MyAccount.age.value" = "%d ans";
+"MyAccount.error.save.title" = "Oups...";
+"MyAccount.error.save.message" = "Problème dans la mise à jour du compte.";
 
 "M" = "Homme";
 "F" = "Femme";

@@ -577,7 +577,13 @@ enum SectionBio
 {
     [ActivityAlertView showWithTitle:nil];
 
-    [[YasoundDataProvider main] updateUser:self.user target:self action:@selector(didUpdateUser:success:)];
+    BOOL res = [[YasoundDataProvider main] updateUser:self.user target:self action:@selector(didUpdateUser:success:)];
+    if (!res)
+    {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"MyAccount.error.save.title", nil) message:NSLocalizedString(@"MyAccount.error.save.message", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];
+    }
 }
 
 - (void)didUpdateUser:(ASIHTTPRequest*)req success:(BOOL)success

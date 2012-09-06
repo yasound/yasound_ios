@@ -1131,13 +1131,22 @@ static YasoundDataProvider* _main = nil;
 
 
 
-- (void)updateUser:(User*)user target:(id)target action:(SEL)selector
+- (BOOL)updateUser:(User*)user target:(id)target action:(SEL)selector
 {
     if (user == nil)
     {
         DLog(@"YasoundDataProvider:updateUser user is nil!");
-        return;
+        return NO;
     }
+    
+    //LBDEBUG
+    if (![user.id isKindOfClass:[NSNumber class]])
+    {
+        [self updateUserIsNotNumber:user];
+        assert(0);
+        return NO;
+    }
+    
     
     RequestConfig* conf = [[RequestConfig alloc] init];
     conf.url = [NSString stringWithFormat:@"api/v1/user/%@/", user.id];
@@ -1154,7 +1163,38 @@ static YasoundDataProvider* _main = nil;
     [req addRequestHeader:@"Content-Type" value:@"application/json"];
     
     [req startAsynchronous];
+    return YES;
 }
+
+
+- (void)updateUserIsNotNumber:(User*)user {
+    
+    DLog(@"ERROR updateUserIsNotNumber");
+
+    if ([user.id isKindOfClass:[NSString class]])
+        [self updateUserIsString:user];
+    else if ([user.id isKindOfClass:[NSDate class]])
+        [self updateUserIsDate:user];
+    else
+        [self updateUserIsSomethingElse:user];
+}
+
+- (void)updateUserIsString:(User*)user {
+    DLog(@"ERROR updateUserIsString");
+    DLog(@"%@", user.name);
+}
+- (void)updateUserIsDate:(User*)user {
+    DLog(@"ERROR updateUserIsDate");
+    DLog(@"%@", user.name);
+}
+- (void)updateUserIsSomethingElse:(User*)user {
+    DLog(@"ERROR updateUserIsSomethingElse");
+    DLog(@"%@", [user.id class]);
+    DLog(@"%@", user.name);
+}
+
+//////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
 
 - (void)setPicture:(UIImage*)img forUser:(User*)user target:(id)target action:(SEL)selector
 {

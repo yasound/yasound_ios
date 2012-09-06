@@ -579,6 +579,8 @@
 "MyAccount.bio.label" = "Bio";
 "MyAccount.age.value" = "%d years";
 
+"MyAccount.error.save.title" = "Oops...";
+"MyAccount.error.save.message" = "Problem updating the account.";
 
 "M" = "Male";
 "F" = "Female";

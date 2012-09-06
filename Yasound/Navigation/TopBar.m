@@ -49,6 +49,7 @@
 }
 
 
+
 - (void)update
 {
     BundleStylesheet* sheet = nil;
@@ -208,7 +209,8 @@
         self.itemNotifs.enabled = NO;
         self.itemNotifsButton.enabled = NO;
         
-        [self.itemNotifsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+//        [self.itemNotifsButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
+        [self.itemNotifsButton removeTarget:self action:@selector(onHd:) forControlEvents:UIControlEventTouchUpInside];
     }
     else
     {

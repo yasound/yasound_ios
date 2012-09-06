@@ -267,6 +267,7 @@ static YasoundSessionManager* _main = nil;
     // callback
     assert(_target);
     [_target performSelector:_action withObject:user withObject:info];
+    _target = nil;
 }
 
 
@@ -286,7 +287,9 @@ static YasoundSessionManager* _main = nil;
     
 //    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
 //    [av show];
-//    [av release];  
+//    [av release];
+    _target = nil;
+
 }
 
 - (void)loginCanceled
@@ -298,7 +301,9 @@ static YasoundSessionManager* _main = nil;
   
   //    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"YasoundSessionManager_login_title", nil) message:NSLocalizedString(@"YasoundSessionManager_login_error", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
   //    [av show];
-  //    [av release];  
+  //    [av release];
+    _target = nil;
+
 }
 
 - (void)userInfoError

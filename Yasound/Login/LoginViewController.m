@@ -66,6 +66,30 @@
 }
 
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    
+    [super viewDidDisappear:animated];
+//    [self release];
+//    [self release];
+//    [self release];
+}
+
+
+//LBDEBUB
+//- (void)retain
+//{
+//    [super retain];
+//    NSLog(@"retainCount %d", self.retainCount);
+//}
+//
+//- (void)release
+//{
+//    [super release];
+//    NSLog(@"retainCount %d", self.retainCount);
+//}
+
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
