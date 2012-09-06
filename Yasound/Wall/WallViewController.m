@@ -71,7 +71,7 @@
 #define ROW_POST_BAR 1
 #define SECTION_EVENTS 1
 
-
+#define MESSAGE_WIDTH 248
 
 @implementation WallViewController
 
@@ -947,7 +947,7 @@
     NSInteger index = _wallEvents.count - 1;
     
     WallEvent* ev = [_wallEvents objectAtIndex:index];
-    [ev computeTextHeightUsingFont:_messageFont withConstraint:270];
+    [ev computeTextHeightUsingFont:_messageFont withConstraint:MESSAGE_WIDTH];
     
     UITableViewRowAnimation anim = UITableViewRowAnimationNone;
     [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
@@ -978,7 +978,7 @@
     NSInteger index = 0;
     
     WallEvent* ev = [_wallEvents objectAtIndex:index];
-    [ev computeTextHeightUsingFont:_messageFont withConstraint:270];
+    [ev computeTextHeightUsingFont:_messageFont withConstraint:MESSAGE_WIDTH];
     
     UITableViewRowAnimation anim = UITableViewRowAnimationTop;
     [self.tableview insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:index inSection:SECTION_EVENTS]] withRowAnimation:anim];
