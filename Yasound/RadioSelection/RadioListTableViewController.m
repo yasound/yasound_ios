@@ -115,6 +115,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.friendsMode)
+    {
+        return 164.f;
+    }
+    
     return 156.f;
 }
 

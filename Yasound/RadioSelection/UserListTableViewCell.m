@@ -21,6 +21,7 @@
 #define OBJECT_MASK 2
 #define OBJECT_NAME 3
 #define OBJECT_INTERACTIVE_VIEW 4
+#define OBJECT_CONTAINER 5
 
 
 
@@ -43,24 +44,64 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.objects = [[NSMutableArray alloc] init];
 
+        
         CGFloat xOffset = 0;
-        NSInteger userIndex = 0;
+        NSInteger itemIndex = 0;
         
         for (User* user in users)
         {
+            [self addItemGui:user itemIndex:itemIndex xOffset:xOffset];
+            itemIndex++;
+            xOffset += (self.frame.size.width / 2.f);
+        }
+        
+        if (delay)
+        {
+            self.alpha = 0;
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:delay];
+            self.alpha = 1;
+            [UIView commitAnimations];
+            
+            delay += 0.15;
+        }
+
+    }
+    return self;
+}
+
+        
+        
+        
+- (void)addItemGui:(User*)user itemIndex:(NSInteger)itemIndex xOffset:(CGFloat)xOffset
+{
             
 //            BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 //            sheetContainer.frame = CGRectMake(sheetContainer.frame.origin.x + xOffset, sheetContainer.frame.origin.y, sheetContainer.frame.size.width, sheetContainer.frame.size.height);
-            BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Users.container" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-            UIView* container = [[UIView alloc] initWithFrame:sheetContainer.frame];
+            BundleStylesheet* sheetContainer = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+    CGRect frame = CGRectMake(xOffset, 0, sheetContainer.frame.size.width, sheetContainer.frame.size.height + 32);
+            UIView* container = [[UIView alloc] initWithFrame:frame];
+    
+    
             [self addSubview:container];
+
+    //LBDEBUG
+//    NSLog(@"\n\naddItemGui index %d   xOffset %.2f", itemIndex, xOffset);
+//     frame = container.frame;
+//    NSLog(@"container %.2f, %.2f  (%.2fx%.2f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
             
             // user image
-            sheet = [[Theme theme] stylesheetForKey:@"Users.image" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+            BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Users.image" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:user.picture];
             WebImageView* userImage = [[WebImageView alloc] initWithImageAtURL:imageURL];
-            userImage.frame = CGRectMake(sheet.frame.origin.x + xOffset, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
+            userImage.frame = CGRectMake(sheet.frame.origin.x, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
             [container addSubview:userImage];
+    
+    
+    //LBDEBUG
+//     frame = userImage.frame;
+//    NSLog(@"userImage %.2f, %.2f  (%.2fx%.2f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+
 
             // draw circle mask
             userImage.layer.masksToBounds = YES;
@@ -69,69 +110,62 @@
             // user mask
             sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UIImageView* userMask = [sheet makeImage];
-            CGRect maskRect = CGRectMake(sheet.frame.origin.x + xOffset, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
-            userMask.frame = maskRect;
-            [container addSubview:userMask];
-            
+//            CGRect maskRect = CGRectMake(sheet.frame.origin.x + xOffset, sheet.frame.origin.y, sheet.frame.size.width, sheet.frame.size.height);
+//            userMask.frame = maskRect;
+
+    [container addSubview:userMask];
+
+    
+    //LBDEBUG
+//    frame = userMask.frame;
+//    NSLog(@"userMask %.2f, %.2f  (%.2fx%.2f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+
             
             // name
             sheet = [[Theme theme] stylesheetForKey:@"Users.name"  retainStylesheet:YES overwriteStylesheet:NO error:nil];
             UILabel* name = [sheet makeLabel];
-            name.frame = CGRectMake(name.frame.origin.x + xOffset, name.frame.origin.y, name.frame.size.width, name.frame.size.height);
+//            name.frame = CGRectMake(name.frame.origin.x + xOffset, name.frame.origin.y, name.frame.size.width, name.frame.size.height);
             name.text = user.name;
             [container addSubview:name];
             
-            InteractiveView* interactiveView = nil;
-            
-            // store objects
-            NSMutableArray* objects = [NSMutableArray arrayWithObjects:user, userImage, userMask, name, interactiveView, nil];
-            
-            
-            [self.objects addObject:objects];
-            
-            xOffset += (self.frame.size.width / 2.f);
-            
-        }
-
+    //LBDEBUG
+//    frame = name.frame;
+//    NSLog(@"label %.2f, %.2f  (%.2fx%.2f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    
+    
+//            InteractiveView* interactiveView = nil;
        sheet = [[Theme theme] stylesheetForKey:@"Users.mask" retainStylesheet:YES overwriteStylesheet:NO error:nil];
 
             // interactive view : catch the "press down" and "press up" actions
-            InteractiveView* interactiveView0 = [[InteractiveView alloc] initWithFrame:CGRectMake(sheet.frame.origin.x,sheet.frame.origin.y,sheet.frame.size.width,sheet.frame.size.height) target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:0]];
-            [interactiveView0 setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:0]];
-            [self addSubview:interactiveView0];
+    InteractiveView* interactiveView0 = [[InteractiveView alloc] initWithFrame:sheet.frame target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:itemIndex]];
+//    CGRect frame = CGRectMake(sheet.frame.origin.x + xOffset,sheet.frame.origin.y,sheet.frame.size.width, sheet.frame.size.height);
+//    interactiveView0.frame = frame;
 
-        InteractiveView* interactiveView1 = [[InteractiveView alloc] initWithFrame:CGRectMake(sheet.frame.origin.x + 160,sheet.frame.origin.y,sheet.frame.size.width,sheet.frame.size.height) target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:1]];
-        [interactiveView1 setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:1]];
-        [self addSubview:interactiveView1];
-        
-            
-//            userIndex++;
-        
-//        if (delay)
-//        {
-//            self.alpha = 0;
-//            [UIView beginAnimations:nil context:NULL];
-//            [UIView setAnimationDuration:delay];
-//            self.alpha = 1;
-//            [UIView commitAnimations];
-//            
-//            delay += 0.15;
-//        }
-        
-        
-//        UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//        button.frame  = CGRectMake(0, 0, 100, 100);
-//        [self addSubview:button];
-//
-//        UIButton* button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-//        button2.frame  = CGRectMake(200, 0, 100, 100);
-//        [self addSubview:button2];
+            [interactiveView0 setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:itemIndex]];
+            [container addSubview:interactiveView0];
 
+//        InteractiveView* interactiveView1 = [[InteractiveView alloc] initWithFrame:CGRectMake(sheet.frame.origin.x + 160,sheet.frame.origin.y,sheet.frame.size.width,sheet.frame.size.height) target:self action:@selector(onInteractivePressedUp:) withObject:[NSNumber numberWithInteger:1]];
+//        [interactiveView1 setTargetOnTouchDown:self action:@selector(onInteractivePressedDown:) withObject:[NSNumber numberWithInteger:1]];
+//        [self addSubview:interactiveView1];
+
+    
+//    //LBDEBUG
+//    frame = interactiveView0.frame;
+//    NSLog(@"interactive %.2f, %.2f  (%.2fx%.2f)", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
 
             
-  }
-  return self;
-}
+            // store objects
+            NSMutableArray* objects = [NSMutableArray arrayWithObjects:user, userImage, userMask, name, interactiveView0,container, nil];
+            
+    assert(objects.count == 6);
+            
+            [self.objects addObject:objects];
+            
+//            xOffset += (self.frame.size.width / 2.f);
+            
+        }
+
+
 
 
 
@@ -155,19 +189,130 @@
 
 
 
+
+
+
+
+//- (void)updateWithRadios:(NSArray*)radios target:(id)target action:(SEL)action
+//{
+//    if ((self.radioObjects == nil) || (self.radioObjects.count == 0))
+//        return;
+//    
+//    NSInteger radioIndex = 0;
+//    CGFloat xOffset = 0;
+//    
+//    for (Radio* radio in radios)
+//    {
+//        // there's only one radio on this row. we need another one
+//        if (self.radioObjects.count <= radioIndex)
+//        {
+//            [self addRadioGui:radio radioIndex:radioIndex xOffset:xOffset];
+//            radioIndex++;
+//            xOffset += (self.frame.size.width / 2.f);
+//            continue;
+//        }
+//        
+//        NSMutableArray* objects = [self.radioObjects objectAtIndex:radioIndex];
+//        
+//        // replace radio
+//        [objects replaceObjectAtIndex:RADIO_OBJECT_RADIO withObject:radio];
+//        
+//        // may not be needed, since "objects" is a reference. Check and go back later...
+//        //[self.radioObjects replaceObjectAtIndex:radioIndex withObject:objects];
+//        
+//        // and update infos and images
+//        NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:radio.picture];
+//        WebImageView* view = [objects objectAtIndex:RADIO_OBJECT_IMAGE];
+//        [view setUrl:imageURL];
+//        
+//        imageURL = [[YasoundDataProvider main] urlForPicture:radio.creator.picture];
+//        view = [objects objectAtIndex:RADIO_OBJECT_USER_IMAGE];
+//        [view setUrl:imageURL];
+//        
+//        UILabel* label = [objects objectAtIndex:RADIO_OBJECT_TITLE];
+//        label.text = radio.name;
+//        
+//        label = [objects objectAtIndex:RADIO_OBJECT_SUBSCRIBERS];
+//        label.text = [NSString stringWithFormat:@"%d", [radio.favorites integerValue]];
+//        
+//        label = [objects objectAtIndex:RADIO_OBJECT_LISTENERS];
+//        label.text = [NSString stringWithFormat:@"%d", [radio.nb_current_users integerValue]];
+//        
+//        radioIndex++;
+//        xOffset += (self.frame.size.width / 2.f);
+//        
+//    }
+//    
+//    // we had two radios in this row, but we only need one for this update
+//    if (self.radioObjects.count > radios.count)
+//    {
+//        NSMutableArray* objects = [self.radioObjects objectAtIndex:1];
+//        
+//        UIView* container = [objects objectAtIndex:RADIO_OBJECT_CONTAINER];
+//        [container removeFromSuperview];
+//        [container release];
+//        
+//        //        Radio* radio = [objects objectAtIndex:RADIO_OBJECT_RADIO];
+//        //        [radio release];
+//        
+//        [self.radioObjects removeObjectAtIndex:1];
+//    }
+//}
+
+
+
+
 - (void)updateWithUsers:(NSArray*)users target:(id)target action:(SEL)action
 {
-    NSInteger userIndex = 0;
+    if ((self.objects == nil) || (self.objects.count == 0))
+        return;
+    
+//    NSInteger userIndex = 0;
+//    for (User* user in users)
+//    {
+//        NSMutableArray* objects = [self.objects objectAtIndex:userIndex];
+//        
+//        // replace radio
+//        [objects replaceObjectAtIndex:OBJECT_USER withObject:user];
+//        
+//        // may not be needed, since "objects" is a reference. Check and go back later...
+//        //[self.radioObjects replaceObjectAtIndex:radioIndex withObject:objects];
+//        
+//        // and update infos and images
+//        NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:user.picture];
+//        WebImageView* view = [objects objectAtIndex:OBJECT_IMAGE];
+//        [view setUrl:imageURL];
+//
+//        UILabel* label = [objects objectAtIndex:OBJECT_NAME];
+//        label.text = user.name;
+//
+//        userIndex++;
+//    }
+    
+    NSInteger itemIndex = 0;
+    CGFloat xOffset = 0;
+
     for (User* user in users)
     {
-        NSMutableArray* objects = [self.objects objectAtIndex:userIndex];
+        NSLog(@"update User %p : %@", user, user.name);
         
+        // there's only one item on this row. we need another one
+        if (self.objects.count <= itemIndex)
+        {
+            [self addItemGui:user itemIndex:itemIndex xOffset:xOffset];
+            itemIndex++;
+            xOffset += (self.frame.size.width / 2.f);
+            continue;
+        }
+
+        NSMutableArray* objects = [self.objects objectAtIndex:itemIndex];
+
         // replace radio
         [objects replaceObjectAtIndex:OBJECT_USER withObject:user];
-        
+
         // may not be needed, since "objects" is a reference. Check and go back later...
         //[self.radioObjects replaceObjectAtIndex:radioIndex withObject:objects];
-        
+
         // and update infos and images
         NSURL* imageURL = [[YasoundDataProvider main] urlForPicture:user.picture];
         WebImageView* view = [objects objectAtIndex:OBJECT_IMAGE];
@@ -175,9 +320,29 @@
 
         UILabel* label = [objects objectAtIndex:OBJECT_NAME];
         label.text = user.name;
+        NSLog(@"%@  %@",label.text, user.name);
 
-        userIndex++;
+
+        itemIndex++;
+        xOffset += (self.frame.size.width / 2.f);
+
     }
+
+    // we had two radios in this row, but we only need one for this update
+    if (self.objects.count > users.count)
+    {
+        NSMutableArray* objects = [self.objects objectAtIndex:1];
+
+        UIView* container = [objects objectAtIndex:OBJECT_CONTAINER];
+        [container removeFromSuperview];
+        [container release];
+        
+        //        Radio* radio = [objects objectAtIndex:RADIO_OBJECT_RADIO];
+        //        [radio release];
+        
+        [self.objects removeObjectAtIndex:1];
+    }
+    
 }
 
 
