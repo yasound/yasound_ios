@@ -679,4 +679,5 @@
 "MessageBroadcast.from" = "De : %@";
 "MessageBroadcast.to" = "A : %d abonnés";
 
-
+"GiftDone" = "done";
+"GiftDisabled" = "not available";

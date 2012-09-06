@@ -667,3 +667,6 @@ enregistrements dont vous possédez l'intégralité des droits. \nEn cas d'inter
 "MessageBroadcast.from" = "From : %@";
 "MessageBroadcast.to" = "To : %d subscribers";
 
+"GiftDone" = "reçu";
+"GiftDisabled" = "indisponible";
+
