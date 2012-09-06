@@ -240,9 +240,9 @@ static SongRadioCatalog* _main = nil;
 //        self.nbSongs++;
     }
     
-#ifdef DEBUG
-    [self dump];    
-#endif
+//#ifdef DEBUG
+//    [self dump];    
+//#endif
     
     self.isInCache = YES;
 }

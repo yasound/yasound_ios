@@ -264,8 +264,8 @@
     
     NSMutableArray* results = [NSMutableArray array];
     
-//    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE nameLetter=?", table], charIndex];
-    FMResultSet* s = [self.db executeQuery:@"SELECT * FROM radioCatalog WHERE nameLetter=?", charIndex];
+    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE nameLetter=? ORDER BY name", table], charIndex];
+   // FMResultSet* s = [self.db executeQuery:@"SELECT * FROM radioCatalog WHERE nameLetter=? ORDER BY name", charIndex];
 
 //#ifdef DEBUG
 //    DLog(@"songsForLetter FMDB executeQuery '%@'", s.query);
