@@ -98,6 +98,24 @@
 		402946AA15F8E9A900F73830 /* GiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946A315F8E9A900F73830 /* GiftCell.m */; };
 		402946AB15F8E9A900F73830 /* GiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946A315F8E9A900F73830 /* GiftCell.m */; };
 		402946AC15F8E9A900F73830 /* GiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946A315F8E9A900F73830 /* GiftCell.m */; };
+		402946B015F910D900F73830 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946AE15F910D900F73830 /* GiftsViewController.m */; };
+		402946B115F910D900F73830 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946AE15F910D900F73830 /* GiftsViewController.m */; };
+		402946B215F910D900F73830 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946AE15F910D900F73830 /* GiftsViewController.m */; };
+		402946B315F910D900F73830 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946AE15F910D900F73830 /* GiftsViewController.m */; };
+		402946B415F910D900F73830 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946AE15F910D900F73830 /* GiftsViewController.m */; };
+		402946B515F910D900F73830 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946AE15F910D900F73830 /* GiftsViewController.m */; };
+		402946B615F910D900F73830 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946AE15F910D900F73830 /* GiftsViewController.m */; };
+		402946B715F910D900F73830 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946AE15F910D900F73830 /* GiftsViewController.m */; };
+		402946B815F910D900F73830 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 402946AE15F910D900F73830 /* GiftsViewController.m */; };
+		402946B915F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
+		402946BA15F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
+		402946BB15F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
+		402946BC15F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
+		402946BD15F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
+		402946BE15F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
+		402946BF15F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
+		402946C015F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
+		402946C115F910D900F73830 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402946AF15F910D900F73830 /* GiftsViewController.xib */; };
 		40560D2515F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
 		40560D2615F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
 		40560D2715F7BDF1006900D5 /* Gift.m in Sources */ = {isa = PBXBuildFile; fileRef = 40560D2415F7BDF1006900D5 /* Gift.m */; };
@@ -1038,22 +1056,6 @@
 		BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
-		BC355BD615BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
-		BC355BD715BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
-		BC355BD815BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
-		BC355BD915BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
-		BC355BDA15BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
-		BC355BDB15BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
-		BC355BDC15BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
-		BC355BDD15BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
-		BC355BDE15BD4F9200305C56 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */; };
-		BC355BDF15BD4F9200305C56 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */; };
-		BC355BE015BD4F9200305C56 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */; };
-		BC355BE115BD4F9200305C56 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */; };
-		BC355BE215BD4F9200305C56 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */; };
-		BC355BE315BD4F9200305C56 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */; };
-		BC355BE415BD4F9200305C56 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */; };
-		BC355BE515BD4F9200305C56 /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */; };
 		BC355BE615BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
 		BC355BE715BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
 		BC355BE815BD4F9200305C56 /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
@@ -2691,7 +2693,6 @@
 		BCC7523015E689EF00CF7F7C /* CityInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4027241B15A353F3002A870D /* CityInfo.m */; };
 		BCC7523115E689EF00CF7F7C /* TopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598EFC15B9AA98004D6DCB /* TopBar.m */; };
 		BCC7523215E689EF00CF7F7C /* TabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BC598F1015B9AAD2004D6DCB /* TabBar.m */; };
-		BCC7523315E689EF00CF7F7C /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
 		BCC7523415E689EF00CF7F7C /* MyRadiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */; };
 		BCC7523615E689EF00CF7F7C /* MyRadiosTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD0C4C15C2C118004B6844 /* MyRadiosTableViewCell.m */; };
 		BCC7523715E689EF00CF7F7C /* BigMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFD0C5F15C2DB82004B6844 /* BigMessageView.m */; };
@@ -2801,7 +2802,6 @@
 		BCC752A315E689EF00CF7F7C /* SongPublicInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC436925156FE36C0059BC22 /* SongPublicInfoViewController.xib */; };
 		BCC752A515E689EF00CF7F7C /* MessageBroadcastModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCB0769315790EEB00F9347C /* MessageBroadcastModalViewController.xib */; };
 		BCC752A615E689EF00CF7F7C /* NotificationMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC506A5F157E081100DF8BED /* NotificationMessageViewController.xib */; };
-		BCC752A715E689EF00CF7F7C /* GiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */; };
 		BCC752A815E689EF00CF7F7C /* MyRadiosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC355BD215BD4F9200305C56 /* MyRadiosViewController.xib */; };
 		BCC752AA15E689EF00CF7F7C /* MyRadiosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCFD0C5515C2CA95004B6844 /* MyRadiosTableViewCell.xib */; };
 		BCC752AC15E689EF00CF7F7C /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC48C65D15CFA76F00624E76 /* MenuViewController.xib */; };
@@ -6616,6 +6616,9 @@
 		4029469715F8A33600F73830 /* YasoundAppURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YasoundAppURLHandler.m; path = AppURL/YasoundAppURLHandler.m; sourceTree = "<group>"; };
 		402946A215F8E9A900F73830 /* GiftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftCell.h; path = Gifts/GiftCell.h; sourceTree = "<group>"; };
 		402946A315F8E9A900F73830 /* GiftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GiftCell.m; path = Gifts/GiftCell.m; sourceTree = "<group>"; };
+		402946AD15F910D900F73830 /* GiftsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftsViewController.h; path = Gifts/GiftsViewController.h; sourceTree = "<group>"; };
+		402946AE15F910D900F73830 /* GiftsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GiftsViewController.m; path = Gifts/GiftsViewController.m; sourceTree = "<group>"; };
+		402946AF15F910D900F73830 /* GiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GiftsViewController.xib; path = Gifts/GiftsViewController.xib; sourceTree = "<group>"; };
 		40560D2315F7BDF1006900D5 /* Gift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gift.h; sourceTree = "<group>"; };
 		40560D2415F7BDF1006900D5 /* Gift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gift.m; sourceTree = "<group>"; };
 		405A956515D4105300569FE0 /* Show.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Show.h; sourceTree = "<group>"; };
@@ -6749,9 +6752,6 @@
 		BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WallViewController+StatusBar.m"; sourceTree = "<group>"; };
 		BC27F39214BE598700EF1C5F /* YasoundReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundReachability.h; sourceTree = "<group>"; };
 		BC27F39314BE598700EF1C5F /* YasoundReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundReachability.m; sourceTree = "<group>"; };
-		BC355BCD15BD4F9100305C56 /* GiftsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftsViewController.h; path = Yasound/Tabs/GiftsViewController.h; sourceTree = SOURCE_ROOT; };
-		BC355BCE15BD4F9100305C56 /* GiftsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GiftsViewController.m; path = Yasound/Tabs/GiftsViewController.m; sourceTree = SOURCE_ROOT; };
-		BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GiftsViewController.xib; path = Yasound/Tabs/GiftsViewController.xib; sourceTree = SOURCE_ROOT; };
 		BC355BD015BD4F9200305C56 /* MyRadiosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyRadiosViewController.h; path = Yasound/Tabs/MyRadiosViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BD115BD4F9200305C56 /* MyRadiosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyRadiosViewController.m; path = Yasound/Tabs/MyRadiosViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BD215BD4F9200305C56 /* MyRadiosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyRadiosViewController.xib; path = Yasound/Tabs/MyRadiosViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -7906,9 +7906,9 @@
 		402946A115F8E97900F73830 /* Gifts */ = {
 			isa = PBXGroup;
 			children = (
-				BC355BCD15BD4F9100305C56 /* GiftsViewController.h */,
-				BC355BCE15BD4F9100305C56 /* GiftsViewController.m */,
-				BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */,
+				402946AD15F910D900F73830 /* GiftsViewController.h */,
+				402946AE15F910D900F73830 /* GiftsViewController.m */,
+				402946AF15F910D900F73830 /* GiftsViewController.xib */,
 				402946A215F8E9A900F73830 /* GiftCell.h */,
 				402946A315F8E9A900F73830 /* GiftCell.m */,
 			);
@@ -10052,7 +10052,6 @@
 				BC436934156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BCB076A215790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6E157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
-				BC355BE415BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF415BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BCFD0C5C15C2CA95004B6844 /* MyRadiosTableViewCell.xib in Resources */,
 				BC48C66C15CFA76F00624E76 /* MenuViewController.xib in Resources */,
@@ -10477,6 +10476,7 @@
 				BCDABBF515F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFE15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0715F74411002E8708 /* Icon@2x.png in Resources */,
+				402946C015F910D900F73830 /* GiftsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -10532,7 +10532,6 @@
 				BC436935156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BCB076A315790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6F157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
-				BC355BE515BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF515BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BCFD0C5D15C2CA95004B6844 /* MyRadiosTableViewCell.xib in Resources */,
 				BC48C66D15CFA76F00624E76 /* MenuViewController.xib in Resources */,
@@ -10957,6 +10956,7 @@
 				BCDABBF615F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFF15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0815F74411002E8708 /* Icon@2x.png in Resources */,
+				402946C115F910D900F73830 /* GiftsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11006,7 +11006,6 @@
 				BC436933156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BCB076A115790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6D157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
-				BC355BE315BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF315BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BCFD0C5B15C2CA95004B6844 /* MyRadiosTableViewCell.xib in Resources */,
 				BC48C66B15CFA76F00624E76 /* MenuViewController.xib in Resources */,
@@ -11431,6 +11430,7 @@
 				BCDABBF415F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFD15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0615F74411002E8708 /* Icon@2x.png in Resources */,
+				402946BF15F910D900F73830 /* GiftsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11485,7 +11485,6 @@
 				BC436930156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BCB0769E15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6A157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
-				BC355BE015BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF015BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BCFD0C5815C2CA95004B6844 /* MyRadiosTableViewCell.xib in Resources */,
 				BC48C66815CFA76F00624E76 /* MenuViewController.xib in Resources */,
@@ -11910,6 +11909,7 @@
 				BCDABBF115F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFA15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0315F74411002E8708 /* Icon@2x.png in Resources */,
+				402946BC15F910D900F73830 /* GiftsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11964,7 +11964,6 @@
 				BC43692F156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BCB0769D15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A69157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
-				BC355BDF15BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BEF15BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BCFD0C5715C2CA95004B6844 /* MyRadiosTableViewCell.xib in Resources */,
 				BC48C66715CFA76F00624E76 /* MenuViewController.xib in Resources */,
@@ -12389,6 +12388,7 @@
 				BCDABBEF15F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBF815F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0115F74411002E8708 /* Icon@2x.png in Resources */,
+				402946BA15F910D900F73830 /* GiftsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12443,7 +12443,6 @@
 				BC436932156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BCB076A015790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6C157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
-				BC355BE215BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF215BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BCFD0C5A15C2CA95004B6844 /* MyRadiosTableViewCell.xib in Resources */,
 				BC48C66A15CFA76F00624E76 /* MenuViewController.xib in Resources */,
@@ -12868,6 +12867,7 @@
 				BCDABBF315F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFC15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0515F74411002E8708 /* Icon@2x.png in Resources */,
+				402946BE15F910D900F73830 /* GiftsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12922,7 +12922,6 @@
 				BCC752A315E689EF00CF7F7C /* SongPublicInfoViewController.xib in Resources */,
 				BCC752A515E689EF00CF7F7C /* MessageBroadcastModalViewController.xib in Resources */,
 				BCC752A615E689EF00CF7F7C /* NotificationMessageViewController.xib in Resources */,
-				BCC752A715E689EF00CF7F7C /* GiftsViewController.xib in Resources */,
 				BCC752A815E689EF00CF7F7C /* MyRadiosViewController.xib in Resources */,
 				BCC752AA15E689EF00CF7F7C /* MyRadiosTableViewCell.xib in Resources */,
 				BCC752AC15E689EF00CF7F7C /* MenuViewController.xib in Resources */,
@@ -13348,6 +13347,7 @@
 				BCDABBF015F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBF915F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0215F74411002E8708 /* Icon@2x.png in Resources */,
+				402946BB15F910D900F73830 /* GiftsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13402,7 +13402,6 @@
 				BC43692E156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BCB0769C15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A68157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
-				BC355BDE15BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BEE15BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BCFD0C5615C2CA95004B6844 /* MyRadiosTableViewCell.xib in Resources */,
 				BC48C66615CFA76F00624E76 /* MenuViewController.xib in Resources */,
@@ -13827,6 +13826,7 @@
 				BCDABBEE15F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBF715F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0015F74411002E8708 /* Icon@2x.png in Resources */,
+				402946B915F910D900F73830 /* GiftsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13881,7 +13881,6 @@
 				BC436931156FE36C0059BC22 /* SongPublicInfoViewController.xib in Resources */,
 				BCB0769F15790EEB00F9347C /* MessageBroadcastModalViewController.xib in Resources */,
 				BC506A6B157E081100DF8BED /* NotificationMessageViewController.xib in Resources */,
-				BC355BE115BD4F9200305C56 /* GiftsViewController.xib in Resources */,
 				BC355BF115BD4F9200305C56 /* MyRadiosViewController.xib in Resources */,
 				BCFD0C5915C2CA95004B6844 /* MyRadiosTableViewCell.xib in Resources */,
 				BC48C66915CFA76F00624E76 /* MenuViewController.xib in Resources */,
@@ -14306,6 +14305,7 @@
 				BCDABBF215F74411002E8708 /* Icon-Small@2x.png in Resources */,
 				BCDABBFB15F74411002E8708 /* Icon.png in Resources */,
 				BCDABC0415F74411002E8708 /* Icon@2x.png in Resources */,
+				402946BD15F910D900F73830 /* GiftsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14534,7 +14534,6 @@
 				4027242215A353F3002A870D /* CityInfo.m in Sources */,
 				BC598F0515B9AA98004D6DCB /* TopBar.m in Sources */,
 				BC598F1715B9AAD2004D6DCB /* TabBar.m in Sources */,
-				BC355BDC15BD4F9200305C56 /* GiftsViewController.m in Sources */,
 				BC355BEC15BD4F9200305C56 /* MyRadiosViewController.m in Sources */,
 				BCFD0C5315C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6615C2DB82004B6844 /* BigMessageView.m in Sources */,
@@ -14589,6 +14588,7 @@
 				40560D2C15F7BDF1006900D5 /* Gift.m in Sources */,
 				4029469F15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946AB15F8E9A900F73830 /* GiftCell.m in Sources */,
+				402946B715F910D900F73830 /* GiftsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14759,7 +14759,6 @@
 				4027242315A353F3002A870D /* CityInfo.m in Sources */,
 				BC598F0615B9AA98004D6DCB /* TopBar.m in Sources */,
 				BC598F1815B9AAD2004D6DCB /* TabBar.m in Sources */,
-				BC355BDD15BD4F9200305C56 /* GiftsViewController.m in Sources */,
 				BC355BED15BD4F9200305C56 /* MyRadiosViewController.m in Sources */,
 				BCFD0C5415C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6715C2DB82004B6844 /* BigMessageView.m in Sources */,
@@ -14814,6 +14813,7 @@
 				40560D2D15F7BDF1006900D5 /* Gift.m in Sources */,
 				402946A015F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946AC15F8E9A900F73830 /* GiftCell.m in Sources */,
+				402946B815F910D900F73830 /* GiftsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14980,7 +14980,6 @@
 				4027242115A353F3002A870D /* CityInfo.m in Sources */,
 				BC598F0415B9AA98004D6DCB /* TopBar.m in Sources */,
 				BC598F1615B9AAD2004D6DCB /* TabBar.m in Sources */,
-				BC355BDB15BD4F9200305C56 /* GiftsViewController.m in Sources */,
 				BC355BEB15BD4F9200305C56 /* MyRadiosViewController.m in Sources */,
 				BCFD0C5215C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6515C2DB82004B6844 /* BigMessageView.m in Sources */,
@@ -15035,6 +15034,7 @@
 				40560D2B15F7BDF1006900D5 /* Gift.m in Sources */,
 				4029469E15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946AA15F8E9A900F73830 /* GiftCell.m in Sources */,
+				402946B615F910D900F73830 /* GiftsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15205,7 +15205,6 @@
 				4027241E15A353F3002A870D /* CityInfo.m in Sources */,
 				BC598F0115B9AA98004D6DCB /* TopBar.m in Sources */,
 				BC598F1315B9AAD2004D6DCB /* TabBar.m in Sources */,
-				BC355BD815BD4F9200305C56 /* GiftsViewController.m in Sources */,
 				BC355BE815BD4F9200305C56 /* MyRadiosViewController.m in Sources */,
 				BCFD0C4F15C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6215C2DB82004B6844 /* BigMessageView.m in Sources */,
@@ -15260,6 +15259,7 @@
 				40560D2815F7BDF1006900D5 /* Gift.m in Sources */,
 				4029469B15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A715F8E9A900F73830 /* GiftCell.m in Sources */,
+				402946B315F910D900F73830 /* GiftsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15430,7 +15430,6 @@
 				4027241D15A353F3002A870D /* CityInfo.m in Sources */,
 				BC598F0015B9AA98004D6DCB /* TopBar.m in Sources */,
 				BC598F1215B9AAD2004D6DCB /* TabBar.m in Sources */,
-				BC355BD715BD4F9200305C56 /* GiftsViewController.m in Sources */,
 				BC355BE715BD4F9200305C56 /* MyRadiosViewController.m in Sources */,
 				BCFD0C4E15C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6115C2DB82004B6844 /* BigMessageView.m in Sources */,
@@ -15485,6 +15484,7 @@
 				40560D2615F7BDF1006900D5 /* Gift.m in Sources */,
 				4029469915F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A515F8E9A900F73830 /* GiftCell.m in Sources */,
+				402946B115F910D900F73830 /* GiftsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15656,7 +15656,6 @@
 				4027242015A353F3002A870D /* CityInfo.m in Sources */,
 				BC598F0315B9AA98004D6DCB /* TopBar.m in Sources */,
 				BC598F1515B9AAD2004D6DCB /* TabBar.m in Sources */,
-				BC355BDA15BD4F9200305C56 /* GiftsViewController.m in Sources */,
 				BC355BEA15BD4F9200305C56 /* MyRadiosViewController.m in Sources */,
 				BCFD0C5115C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6415C2DB82004B6844 /* BigMessageView.m in Sources */,
@@ -15711,6 +15710,7 @@
 				40560D2A15F7BDF1006900D5 /* Gift.m in Sources */,
 				4029469D15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A915F8E9A900F73830 /* GiftCell.m in Sources */,
+				402946B515F910D900F73830 /* GiftsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15881,7 +15881,6 @@
 				BCC7523015E689EF00CF7F7C /* CityInfo.m in Sources */,
 				BCC7523115E689EF00CF7F7C /* TopBar.m in Sources */,
 				BCC7523215E689EF00CF7F7C /* TabBar.m in Sources */,
-				BCC7523315E689EF00CF7F7C /* GiftsViewController.m in Sources */,
 				BCC7523415E689EF00CF7F7C /* MyRadiosViewController.m in Sources */,
 				BCC7523615E689EF00CF7F7C /* MyRadiosTableViewCell.m in Sources */,
 				BCC7523715E689EF00CF7F7C /* BigMessageView.m in Sources */,
@@ -15936,6 +15935,7 @@
 				40560D2715F7BDF1006900D5 /* Gift.m in Sources */,
 				4029469A15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A615F8E9A900F73830 /* GiftCell.m in Sources */,
+				402946B215F910D900F73830 /* GiftsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16106,7 +16106,6 @@
 				4027241C15A353F3002A870D /* CityInfo.m in Sources */,
 				BC598EFF15B9AA98004D6DCB /* TopBar.m in Sources */,
 				BC598F1115B9AAD2004D6DCB /* TabBar.m in Sources */,
-				BC355BD615BD4F9200305C56 /* GiftsViewController.m in Sources */,
 				BC355BE615BD4F9200305C56 /* MyRadiosViewController.m in Sources */,
 				BCFD0C4D15C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6015C2DB82004B6844 /* BigMessageView.m in Sources */,
@@ -16161,6 +16160,7 @@
 				40560D2515F7BDF1006900D5 /* Gift.m in Sources */,
 				4029469815F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A415F8E9A900F73830 /* GiftCell.m in Sources */,
+				402946B015F910D900F73830 /* GiftsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16332,7 +16332,6 @@
 				4027241F15A353F3002A870D /* CityInfo.m in Sources */,
 				BC598F0215B9AA98004D6DCB /* TopBar.m in Sources */,
 				BC598F1415B9AAD2004D6DCB /* TabBar.m in Sources */,
-				BC355BD915BD4F9200305C56 /* GiftsViewController.m in Sources */,
 				BC355BE915BD4F9200305C56 /* MyRadiosViewController.m in Sources */,
 				BCFD0C5015C2C118004B6844 /* MyRadiosTableViewCell.m in Sources */,
 				BCFD0C6315C2DB82004B6844 /* BigMessageView.m in Sources */,
@@ -16387,6 +16386,7 @@
 				40560D2915F7BDF1006900D5 /* Gift.m in Sources */,
 				4029469C15F8A33600F73830 /* YasoundAppURLHandler.m in Sources */,
 				402946A815F8E9A900F73830 /* GiftCell.m in Sources */,
+				402946B415F910D900F73830 /* GiftsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
