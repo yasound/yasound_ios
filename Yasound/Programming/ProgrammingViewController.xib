@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1280</int>
-		<string key="IBDocument.SystemVersion">12A269</string>
+		<string key="IBDocument.SystemVersion">12B19</string>
 		<string key="IBDocument.InterfaceBuilderVersion">2549</string>
 		<string key="IBDocument.AppKitVersion">1187</string>
 		<string key="IBDocument.HIToolboxVersion">624.00</string>
@@ -370,14 +370,6 @@ AAgACAAIAAEAAQABAAE</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">_toolbar</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="996548257"/>
-					</object>
-					<int key="connectionID">68</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">container</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="380658076"/>
@@ -391,6 +383,14 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<reference key="destination" ref="452687139"/>
 					</object>
 					<int key="connectionID">71</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">topbar</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="891618492"/>
+					</object>
+					<int key="connectionID">72</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -585,7 +585,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">71</int>
+			<int key="maxID">72</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -607,8 +607,8 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<string key="_segment">UISegmentedControl</string>
 						<string key="_subtitleLabel">UILabel</string>
 						<string key="_titleLabel">UILabel</string>
-						<string key="_toolbar">UIToolbar</string>
 						<string key="container">UIView</string>
+						<string key="topbar">TopBarBackAndTitle</string>
 						<string key="wheelSelector">WheelSelector</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -624,13 +624,13 @@ AAgACAAIAAEAAQABAAE</bytes>
 							<string key="name">_titleLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="_toolbar">
-							<string key="name">_toolbar</string>
-							<string key="candidateClassName">UIToolbar</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="container">
 							<string key="name">container</string>
 							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="topbar">
+							<string key="name">topbar</string>
+							<string key="candidateClassName">TopBarBackAndTitle</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="wheelSelector">
 							<string key="name">wheelSelector</string>

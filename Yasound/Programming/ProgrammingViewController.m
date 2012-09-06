@@ -31,6 +31,7 @@
 //@synthesize sortedSongs;
 @synthesize container;
 @synthesize tableview;
+@synthesize topbar;
 
 #define SEGMENT_INDEX_ALPHA 0
 #define SEGMENT_INDEX_ARTIST 1
@@ -107,6 +108,10 @@
 //    [[TimeProfile main] begin:TIMEPROFILE_BUILD];
 //    
 //    [[SongCatalog synchronizedCatalog] downloadMatchedSongsForRadio:self.radio target:self action:@selector(matchedSongsDownloaded:success:)];
+    
+#ifdef DEBUG
+    [self.topbar showEditItemWithTarget:self action:@selector(onDebugItem:)];
+#endif
 }
 
 
@@ -661,13 +666,24 @@
 
 
 
-#pragma mark - TopBarDelegate
+#pragma mark - TopBarBackAndTitleDelegate
 
 - (BOOL)topBarBackClicked
 {
     BOOL goBack = [self.tableview onBackClicked];
     return goBack;
 }
+
+
+
+#ifdef DEBUG
+
+- (void)onDebugItem:(id)sender {
+
+    [self.tableview.tableView reloadData];
+}
+
+#endif
 
 
 

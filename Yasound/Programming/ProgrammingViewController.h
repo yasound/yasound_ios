@@ -9,7 +9,7 @@
 #import "YaViewController.h"
 #import "WheelSelector.h"
 #import "Radio.h"
-#import "TopBar.h"
+#import "TopBarBackAndTitle.h"
 
 #define SEGMENT_INDEX_ALPHA 0
 #define SEGMENT_INDEX_ARTIST 1
@@ -20,13 +20,13 @@
 #define PROGRAMMING_WHEEL_ITEM_UPLOADS 2
 //#define WHEEL_ITEM_SERVER 3
 
-@interface ProgrammingViewController : YaViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate, TopBarDelegate>
+@interface ProgrammingViewController : YaViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, WheelSelectorDelegate, TopBarBackAndTitleDelegate>
 {
 //    IBOutlet UIBarButtonItem* _synchroBtn;
     
     IBOutlet UILabel* _titleLabel;
     IBOutlet UILabel* _subtitleLabel;
-    IBOutlet UIToolbar* _toolbar;
+//    IBOutlet UIToolbar* _toolbar;
     IBOutlet UISegmentedControl* _segment;
     
 //    IBOutlet UITableView* _tableView;
@@ -34,6 +34,7 @@
 
 @property (nonatomic, retain) IBOutlet UIView* container;
 @property (nonatomic, retain) IBOutlet WheelSelector* wheelSelector;
+@property (nonatomic, retain) IBOutlet TopBarBackAndTitle* topbar;
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, retain) UITableViewController* tableview;

@@ -659,6 +659,10 @@
     va_list args;
     va_start(args, sql);
     
+#ifdef DEBUG
+    DLog(@"FMDB executeQuery '%@'", sql);
+#endif
+    
     id result = [self executeQuery:sql withArgumentsInArray:nil orDictionary:nil orVAList:args];
     
     va_end(args);

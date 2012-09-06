@@ -152,7 +152,7 @@
         [ActivityAlertView close];
 
         // display an error dialog
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingRadio.error.title", nil) message:error delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Radio.error.title", nil) message:error delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [av show];
         [av release];
         return;
@@ -270,6 +270,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (![SongRadioCatalog main].isInCache)
+        return 0;
+
     NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
     if (nbRows == 0)
         return 0;
@@ -308,7 +311,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    return [self getNbRowsForTable:tableView inSection:section];
+    if (![SongRadioCatalog main].isInCache)
+        return 0;
+    
+    NSInteger nb = [self getNbRowsForTable:tableView inSection:section];
+    return nb;
 }
 
 

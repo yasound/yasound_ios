@@ -49,11 +49,14 @@ static SongRadioCatalog* _main = nil;
     FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", RADIOCATALOG_TABLE]];
     while ([s next])
     {
+        NSString* songKey = [SongCatalog shortString:[s stringForColumnIndex:eCatalogSongKey]];
         NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
+        NSString* nameLetter = [SongCatalog shortString:[s stringForColumnIndex:eCatalogNameLetter]];
         NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
+        NSString* artistLetter = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistLetter]];
         NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
         
-        NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
+        NSLog(@"songKey (%@)    name(%@) nameLetter (%@)     artist(%@) nameLetter (%@)      album(%@)", songKey, name, nameLetter, artist, artistLetter, album);
     }
     
     NSLog(@"----------------------------------\n");
@@ -236,6 +239,10 @@ static SongRadioCatalog* _main = nil;
 //        [self catalogWithoutSorting:song  usingArtistKey:artistKey andAlbumKey:albumKey];
 //        self.nbSongs++;
     }
+    
+#ifdef DEBUG
+    [self dump];    
+#endif
     
     self.isInCache = YES;
 }
