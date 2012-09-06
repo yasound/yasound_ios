@@ -11,6 +11,7 @@
 #import "AudioStreamManager.h"
 #import "Gift.h"
 #import "YasoundDataProvider.h"
+#import "GiftCell.h"
 
 #define SECTION_COUNT 1
 #define SECTION_GIFTS 0
@@ -27,8 +28,9 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
+        //
     }
     return self;
 }
@@ -37,6 +39,8 @@
 {
     [super viewDidLoad];
     [self.tabBar setTabSelected:TabIndexGifts];
+    
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
     
     // ask for gifts
     [[YasoundDataProvider main] giftsWithTarget:self action:@selector(onGiftsReceived:success:)];
@@ -87,28 +91,37 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.f;
+    return 60.f;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Gift* gift = [self.gifts objectAtIndex:indexPath.row];
     static NSString* cellIdentifier = @"GiftTableViewCell";
     
     if (indexPath.section == SECTION_GIFTS)
     {
-        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        GiftCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (cell == nil)
         {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
+            cell = [[[GiftCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
         }
-        cell.textLabel.text = [NSString stringWithFormat:@"Gift %d", indexPath.row];
+        cell.gift = gift;
         return cell;
     }
     
     return nil;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Gift* gift = [self.gifts objectAtIndex:indexPath.row];
+    if (![gift canBeWon])
+        return;
+    [gift doAction];
+}
 
 
 #pragma mark - TopBarDelegate

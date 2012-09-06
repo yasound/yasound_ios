@@ -10,4 +10,22 @@
 
 @interface Gift : Model
 
+@property (retain, nonatomic) NSString* name;
+@property (retain, nonatomic) NSString* description;
+@property (retain, nonatomic) NSString* action_url_ios;
+@property (retain, nonatomic) NSString* picture_url;
+@property (retain, nonatomic) NSNumber* enabled;
+@property (retain, nonatomic) NSDate* last_achievement_date;
+@property (retain, nonatomic) NSNumber* count;
+@property (retain, nonatomic) NSNumber* max;
+
+- (BOOL)canBeWon;
+- (BOOL)hasBeenWon;
+- (BOOL)hasBeenFullyWon;
+
+- (NSString*)countProgress;
+- (NSString*)formattedDate;
+
+- (void)doAction;
+
 @end

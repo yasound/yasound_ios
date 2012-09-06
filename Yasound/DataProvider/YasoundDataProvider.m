@@ -2578,7 +2578,16 @@ static YasoundDataProvider* _main = nil;
 #pragma mark - gifts
 - (void)giftsWithTarget:(id)target action:(SEL)action
 {
-    //#TODO: send request to get gifts
+    RequestConfig* conf = [[RequestConfig alloc] init];
+    conf.url = @"api/v1/premium/gifts/";
+    conf.urlIsAbsolute = NO;
+    conf.auth = self.apiKeyAuth;
+    conf.method = @"GET";
+    conf.callbackTarget = target;
+    conf.callbackAction = action;
+    
+    ASIHTTPRequest* req = [_communicator buildRequestWithConfig:conf];
+    [req startAsynchronous];
 }
 
 

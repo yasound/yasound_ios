@@ -62,8 +62,9 @@
 
     
     // disabled "gifts" for now
-    [[self.buttons objectAtIndex:TabIndexGifts] setEnabled:NO];
-    [[self.labels objectAtIndex:TabIndexGifts] setEnabled:NO];
+    //#FIXME: MatDebug enable gifts for now
+//    [[self.buttons objectAtIndex:TabIndexGifts] setEnabled:NO];
+//    [[self.labels objectAtIndex:TabIndexGifts] setEnabled:NO];
     
 }
 
