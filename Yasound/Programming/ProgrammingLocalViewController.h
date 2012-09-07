@@ -15,8 +15,8 @@
 @interface ProgrammingLocalViewController : UITableViewController
 
 @property (nonatomic, retain) Radio* radio;
-@property (nonatomic, retain) NSMutableDictionary* sortedArtists;
-@property (nonatomic, retain) NSMutableDictionary* sortedSongs;
+//@property (nonatomic, retain) NSMutableDictionary* sortedArtists;
+//@property (nonatomic, retain) NSMutableDictionary* sortedSongs;
 @property (nonatomic) NSInteger selectedSegmentIndex;
 
 @property (nonatomic, retain) ProgrammingArtistViewController* artistVC;

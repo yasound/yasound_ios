@@ -256,9 +256,6 @@
         NSArray* artistsForLetter = [[SongRadioCatalog main] artistsForLetter:charIndex];
         assert(artistsForLetter != nil);
         
-        //LBDEBUG
-        DLog(@"artist for letter '%@' count : %d", charIndex, artistsForLetter.count);
-        
         return artistsForLetter.count;
         
 //        NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];

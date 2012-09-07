@@ -14,8 +14,8 @@
 #import "TimeProfile.h"
 #import "ActivityAlertView.h"
 #import "ProgrammingUploadViewController.h"
-#import "SongLocalCatalog.h"
 #import "SongRadioCatalog.h"
+#import "SongLocalCatalog.h"
 
 #import "BundleFileManager.h"
 #import "Theme.h"
@@ -38,8 +38,8 @@
 
 @synthesize radio;
 @synthesize selectedSegmentIndex;
-@synthesize sortedArtists;
-@synthesize sortedSongs;
+//@synthesize sortedArtists;
+//@synthesize sortedSongs;
 @synthesize artistVC;
 
 
@@ -80,8 +80,8 @@
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"commonGradient.png"]];
         
-        self.sortedArtists = [[NSMutableDictionary alloc] init];
-        self.sortedSongs = [[NSMutableDictionary alloc] init];
+//        self.sortedArtists = [[NSMutableDictionary alloc] init];
+//        self.sortedSongs = [[NSMutableDictionary alloc] init];
         
         [self load];
     }
@@ -89,50 +89,6 @@
 }
 
 
-
-
-
-
-- (void)load
-{
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
-
-
-    if (![SongLocalCatalog main].isInCache)
-    {
-        [ActivityAlertView showWithTitle:NSLocalizedString(@"SongAddView_alert", nil)];
-        [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
-
-        [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].songs];
-    
-        [ActivityAlertView close];
-        // PROFILE
-        [[TimeProfile main] end:TIMEPROFILE_AVAILABLECATALOG_BUILD];
-        // PROFILE
-        [[TimeProfile main] logInterval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
-    }
-
-//    DLog(@"ProgrammingLocalViewController : %d songs added to the local array", count);
-//    
-//    if ([SongCatalog availableCatalog].nbSongs == 0)
-//    {
-//        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:YES error:nil];
-//        UIImageView* view = [sheet makeImage];
-//        [self.tableView addSubview:view];
-//        [view release];
-//        
-//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [av show];
-//        [av release];
-//        
-//    }
-    
-    [self.tableView reloadData];
-
-}
-    
-    
 
 - (void)viewDidUnload
 {
@@ -146,6 +102,71 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+
+
+
+- (void)load
+{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
+
+    if (![SongLocalCatalog main].isInCache)
+        [ActivityAlertView showWithTitle: NSLocalizedString(@"SongAddView_alert", nil)];
+    
+    //DLog(@"%d - %d", _nbReceivedData, _nbPlaylists);
+    
+    // PROFILE
+    [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
+    
+    [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].songs  target:self action:@selector(localProgrammingBuilt:)];
+}
+
+
+
+
+- (void)localProgrammingBuilt:(NSDictionary*)info {
+    
+    BOOL success = [[info objectForKey:@"success"] boolValue];
+    NSString* error = [info objectForKey:@"error"];
+    NSInteger count = [[info objectForKey:@"count"] integerValue];
+    
+    if (!success) {
+        
+        [ActivityAlertView close];
+        
+        // display an error dialog
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Radio.error.title", nil) message:error delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];
+        return;
+    }
+
+    // PROFILE
+    [[TimeProfile main] end:TIMEPROFILE_AVAILABLECATALOG_BUILD];
+    [[TimeProfile main] logInterval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
+    
+    DLog(@"%d available songs", count);
+    
+    [ActivityAlertView close];
+
+    if (count == 0) {
+        BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:NO error:nil];
+        UIImageView* emptyView = [sheet makeImage];
+        [self.view addSubview:emptyView];
+        
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Catalog.local", nil) message:NSLocalizedString(@"Programming.empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];
+        return;        
+    }
+    
+    [self.tableView reloadData];
+    
+
+}
+    
+    
 
 
 

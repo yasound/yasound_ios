@@ -11,13 +11,16 @@
 
 @interface SongLocalCatalog : SongCatalog
 
+@property (nonatomic, assign) id target;
+@property (nonatomic) SEL action;
+
 
 + (SongLocalCatalog*)main;
 + (void)releaseCatalog;
 
 - (void)dump;
 
-- (void)initFromMatchedSongs:(NSDictionary*)songs;
+- (void)initFromMatchedSongs:(NSDictionary*)songs target:(id)aTarget action:(SEL)anAction;
 - (NSArray*)songsForLetter:(NSString*)charIndex;
 - (NSArray*)artistsForLetter:(NSString*)charIndex;
 - (NSArray*)albumsForArtist:(NSString*)artist;

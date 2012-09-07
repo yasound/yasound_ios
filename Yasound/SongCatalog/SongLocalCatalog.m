@@ -56,7 +56,22 @@ static SongLocalCatalog* _main = nil;
 
 
 
-- (void)initFromMatchedSongs:(NSDictionary*)songs {
+- (void)initFromMatchedSongs:(NSDictionary*)songs target:(id)aTarget action:(SEL)anAction {
+    
+    self.target = aTarget;
+    self.action = anAction;
+    
+    // return cached data
+    if (self.isInCache)
+    {
+        NSMutableDictionary* info = [NSMutableDictionary dictionary];
+        [info setObject:[NSNumber numberWithInteger:self.songsDb.count] forKey:@"count"];
+        [info setObject:@""  forKey:@"error"];
+        [info setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
+        [self.target performSelector:self.action withObject:info];
+        return;
+    }
+    
     
     [[TimeProfile main] begin:@"iTunesQuery"];
     
@@ -94,15 +109,23 @@ static SongLocalCatalog* _main = nil;
         
         // REMEMBER THAT HERE, songLocal is SongLocal*
         
-        [self catalogWithoutSorting:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
-        
-        
+//        [self catalogWithoutSorting:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
+
+        BOOL res = [self addSong:songLocal forTable:RADIOCATALOG_TABLE songKey:songLocal.catalogKey artistKey:songLocal.artistKey albumKey:songLocal.albumKey];
         nbSongs++;
-        
     }
+        
     
-    if (nbSongs > 0)
+//    if (nbSongs > 0)
         self.isInCache = YES;
+    
+    NSMutableDictionary* info = [NSMutableDictionary dictionary];
+    [info setObject:[NSNumber numberWithInteger:nbSongs] forKey:@"count"];
+    [info setObject:@""  forKey:@"error"];
+    [info setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
+    [self.target performSelector:self.action withObject:info];
+    return;
+    
     
 }
 
