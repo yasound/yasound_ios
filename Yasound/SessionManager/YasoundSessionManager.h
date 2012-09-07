@@ -63,7 +63,7 @@
 - (void)registerForFacebook; // login info are handle by SocialSessionManager
 - (void)registerForTwitter; // login info are handle by SocialSessionManager
 
-- (void)reloadUserData:(User*)user;
+- (void)writeUserIdentity:(User*)user;
 - (void)importUserData;
 
 
