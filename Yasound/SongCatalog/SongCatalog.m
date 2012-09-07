@@ -172,7 +172,7 @@
             NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
         else
         {
-            res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE INDEX radioCatalogKeyIndex ON %@ (songKey)", LOCALCATALOG_TABLE]];
+            res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE INDEX localCatalogKeyIndex ON %@ (songKey)", LOCALCATALOG_TABLE]];
             if (!res)
                 NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
         }
@@ -462,7 +462,8 @@
 
     
     // first letter of artist's name
-    firstRelevantWord = [song.artist uppercaseString];
+    firstRelevantWord = [artistKey uppercaseString];
+    assert(firstRelevantWord.length > 0);
     unichar artistLetter = [firstRelevantWord characterAtIndex:0];
     
     if ([_numericSet characterIsMember:artistLetter])

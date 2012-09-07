@@ -72,6 +72,15 @@ static SongLocalCatalog* _main = nil;
         return;
     }
     
+    [NSThread detachNewThreadSelector:@selector(threadMatchedSongs:) toTarget:self withObject:songs];
+}
+
+
+- (void)threadMatchedSongs:(NSDictionary*)songs {
+    
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+	
     
     [[TimeProfile main] begin:@"iTunesQuery"];
     
@@ -123,10 +132,9 @@ static SongLocalCatalog* _main = nil;
     [info setObject:[NSNumber numberWithInteger:nbSongs] forKey:@"count"];
     [info setObject:@""  forKey:@"error"];
     [info setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
-    [self.target performSelector:self.action withObject:info];
-    return;
+    [self.target performSelectorOnMainThread:self.action withObject:info waitUntilDone:false];
     
-    
+    [pool release];
 }
 
 

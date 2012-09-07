@@ -91,22 +91,33 @@ static TimeProfile* _main;
     item.dateEnd = [NSDate date];
 }
 
+- (CGFloat)interval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds {
 
-- (void)logInterval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds
-{
     assert(nameReference != nil);
-
+    
     NSMutableArray* profiles = [self.items objectForKey:nameReference];
     assert(profiles != nil);
     assert(profiles.count >0);
-
+    
     TimeProfileItem* item = [profiles objectAtIndex:(profiles.count -1)];
     assert(item.dateEnd != nil); // if fails here, means you did not call "end" for this item, yet
     
     if (!inMilliseconds)
-        DLog(@"TimeProfile '%@' %.2fs", nameReference, [item interval]);
+        return [item interval];
     else
-        DLog(@"TimeProfile '%@' %.2fms", nameReference, [item interval] * 1000.f);
+        return [item interval] * 1000.f;
+}
+
+
+
+- (void)logInterval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds
+{
+    CGFloat value = [self interval:nameReference inMilliseconds:inMilliseconds];
+
+    if (!inMilliseconds)
+        DLog(@"TimeProfile '%@' %.2fs", nameReference, value);
+    else
+        DLog(@"TimeProfile '%@' %.2fms", nameReference, value);
 
 }
 

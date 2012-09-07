@@ -127,13 +127,13 @@
 
 - (void)localProgrammingBuilt:(NSDictionary*)info {
     
+    [ActivityAlertView close];
+
     BOOL success = [[info objectForKey:@"success"] boolValue];
     NSString* error = [info objectForKey:@"error"];
     NSInteger count = [[info objectForKey:@"count"] integerValue];
     
     if (!success) {
-        
-        [ActivityAlertView close];
         
         // display an error dialog
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Radio.error.title", nil) message:error delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -148,7 +148,16 @@
     
     DLog(@"%d available songs", count);
     
-    [ActivityAlertView close];
+    //LBDEBUG TIMEPROFILE ALERTVIEW
+    {
+        CGFloat interval = [[TimeProfile main] interval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"local" message:[NSString stringWithFormat:@"%.2fs for %d songs", interval, count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];
+        return;
+
+    }
+    /////////
 
     if (count == 0) {
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:NO error:nil];
