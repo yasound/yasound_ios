@@ -144,10 +144,11 @@
 {
     NSInteger nbMatchedSongs = [[info objectForKey:@"nbMatchedSongs"] integerValue];
     NSString* message = [info objectForKey:@"message"];
-    
+
+    [ActivityAlertView close];
+
     if (![success boolValue])
     {
-        [ActivityAlertView close];
 
         // display an error dialog
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ProgrammingView_error_title", nil) message:message delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -161,6 +162,19 @@
     [[TimeProfile main] logInterval:TIMEPROFILE_BUILD inMilliseconds:NO];
 
     DLog(@"%d matched songs", nbMatchedSongs);
+    
+    
+    
+//    //LBDEBUG TIMEPROFILE ALERTVIEW
+//    {
+//        CGFloat interval = [[TimeProfile main] interval:TIMEPROFILE_BUILD inMilliseconds:NO];
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"local" message:[NSString stringWithFormat:@"%.2fs for %d songs", interval, nbMatchedSongs] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [av show];
+//        [av release];
+//        return;
+//        
+//    }
+//    /////////
     
     NSString* subtitle = nil;
     if (nbMatchedSongs == 0)
@@ -179,7 +193,6 @@
 //    _tableView.hidden = NO;
     [self.tableView reloadData];
 
-    [ActivityAlertView close];
 }
 
 

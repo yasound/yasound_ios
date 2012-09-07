@@ -31,6 +31,7 @@
 - (void)begin:(NSString*)nameReference;
 - (void)end:(NSString*)nameReference;
 
+- (CGFloat)interval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds;
 - (void)logInterval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds;
 - (void)logAverageInterval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds;
 

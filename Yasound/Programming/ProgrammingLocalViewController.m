@@ -143,6 +143,19 @@
     
     DLog(@"ProgrammingLocalViewController : %d songs added to the local array", count);
     
+    
+//    //LBDEBUG TIMEPROFILE ALERTVIEW
+//    {
+//        CGFloat interval = [[TimeProfile main] interval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"local" message:[NSString stringWithFormat:@"%.2fs for %d songs", interval, count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [av show];
+//        [av release];
+//        return;
+//        
+//    }
+//    /////////
+    
+    
 //    if (count == 0)
 //        self.subtitle = NSLocalizedString(@"SongAddView_subtitled_count_0", nil);
 //    else if (count == 1)
