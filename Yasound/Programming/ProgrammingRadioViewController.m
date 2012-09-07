@@ -147,9 +147,10 @@
     NSString* error = [info objectForKey:@"error"];
     NSInteger count = [[info objectForKey:@"count"] integerValue];
     
+    [ActivityAlertView close];
+
     if (!success)
     {
-        [ActivityAlertView close];
 
         // display an error dialog
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Programming.Radio.error.title", nil) message:error delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -194,7 +195,6 @@
 //    _tableView.hidden = NO;
     [self.tableView reloadData];
 
-    [ActivityAlertView close];
 }
 
 
