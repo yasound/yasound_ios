@@ -24,8 +24,10 @@
 @synthesize songsForLetter;
 @synthesize artistsForLetter;
 @synthesize albumsForArtist;
+@synthesize songsForArtistAlbum;
 
 @synthesize selectedArtist;
+@synthesize selectedArtistIndexChar;
 @synthesize selectedAlbum;
 
 
@@ -368,7 +370,7 @@
     
     NSMutableArray* results = [NSMutableArray array];
     
-    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT albumKey FROM %@ WHERE artistKey=? ORDER BY albumKey", table], artist];
+    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT DISTINCT albumKey FROM %@ WHERE artistKey=? ORDER BY albumKey", table], artist];
     while ([s next])
     {
         //        NSString* artist = [s stringForColumnIndex:eCatalogArtistKey];
@@ -386,6 +388,44 @@
 
 }
 
+
+- (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist fromTable:(NSString*)table {
+    
+    // get cache
+    NSMutableDictionary* cache1 = [self.songsForArtistAlbum objectForKey:artist];
+    if (cache1 != nil) {
+        NSArray* cache2 = [cache1 objectForKey:album];
+        if (cache2 == nil)
+            return cache2;
+    }
+        
+    NSMutableArray* results = [NSMutableArray array];
+    
+    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE albumKey=? AND artistKey=? ORDER BY name", table], album, artist];
+    while ([s next])
+    {
+        //        NSString* artist = [s stringForColumnIndex:eCatalogArtistKey];
+        //LBDEBUG
+        //        NSString* test = [s stringForColumnIndex:0];
+        NSString* songKey = [s stringForColumnIndex:0];
+        assert(songKey);
+        
+        Song* song = [self.songsDb objectForKey:songKey];
+        assert(song);
+        [results addObject:song];
+    }
+    
+    // set cache
+    if (cache1 == nil)
+    {
+        cache1 = [NSMutableDictionary dictionary];
+        [self.songsForArtistAlbum setObject:cache1 forKey:artist];
+    }
+    [cache1 setObject:results forKey:album];
+
+    return results;
+    
+}
 
 
 
@@ -838,8 +878,8 @@
 // tools to handle items selection
 //
 
-//- (BOOL)selectArtist:(NSString*)artistKey withIndex:(NSString*)charIndex
-- (BOOL)selectArtist:(NSString*)artistKey
+- (BOOL)selectArtist:(NSString*)artistKey withCharIndex:(NSString*)charIndex
+//- (BOOL)selectArtist:(NSString*)artistKey
 {
     // first, reset album selection
     self.selectedAlbum = nil;

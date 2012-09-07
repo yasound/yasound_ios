@@ -24,7 +24,7 @@
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, assign) SongCatalog* catalog;
-@property (nonatomic, retain) NSArray* sortedAlbums;
+//@property (nonatomic, retain) NSArray* sortedAlbums;
 
 @property (nonatomic, retain) ProgrammingAlbumViewController* albumVC;
 

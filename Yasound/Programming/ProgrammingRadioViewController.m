@@ -602,36 +602,39 @@
     }
     else
     {
-//        //LBDEBUG
-//        assert([SongCatalog synchronizedCatalog].indexMap.count > indexPath.section);
-//
+        //LBDEBUG
+        assert([SongRadioCatalog main].indexMap.count > indexPath.section);
+
 //        NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
 //
 //        
-//        //LBDEBUG
-//        {
-//            NSArray* array  =[self.sortedArtists objectForKey:charIndex];
-//            assert(array.count > indexPath.row);
-//        }
+////        //LBDEBUG
+////        {
+////            NSArray* array  =[self.sortedArtists objectForKey:charIndex];
+////            assert(array.count > indexPath.row);
+////        }
 //
-//        
 //        NSString* artistKey = [[self.sortedArtists objectForKey:charIndex] objectAtIndex:indexPath.row];
-//        
-//        [[SongCatalog synchronizedCatalog] selectArtist:artistKey withIndex:charIndex];
-//        
-//        self.artistVC = [[ProgrammingArtistViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongCatalog synchronizedCatalog] forRadio:self.radio];
-//        CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
-//        self.artistVC.tableView.frame = frame;
-//        [self.view.superview addSubview:self.artistVC.tableView];
-//        
-//        [UIView beginAnimations:nil context:NULL];
-//        [UIView setAnimationDuration:0.33];
-//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-//
-//        frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
-//        self.artistVC.tableView.frame = frame;
-//        
-//        [UIView commitAnimations];
+
+        NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
+        NSArray* artists = [[SongRadioCatalog main] artistsForLetter:charIndex];
+        NSString* artist = [artists objectAtIndex:indexPath.row];
+
+        [[SongRadioCatalog main] selectArtist:artist withCharIndex:charIndex];
+        
+        self.artistVC = [[ProgrammingArtistViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongRadioCatalog main] forRadio:self.radio];
+        CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.artistVC.tableView.frame = frame;
+        [self.view.superview addSubview:self.artistVC.tableView];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+
+        frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.artistVC.tableView.frame = frame;
+        
+        [UIView commitAnimations];
 
     }
 

@@ -169,6 +169,10 @@ static SongLocalCatalog* _main = nil;
     return [self albumsForArtist:artist fromTable:LOCALCATALOG_TABLE];
 }
 
+- (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist {
+    
+    return [self songsForAlbum:album fromArtist:artist fromTable:RADIOCATALOG_TABLE];
+}
 
 - (NSDictionary*)songsAll {
     

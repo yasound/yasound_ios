@@ -29,7 +29,7 @@
 
 @synthesize radio;
 @synthesize catalog;
-@synthesize sortedAlbums;
+//@synthesize sortedAlbums;
 @synthesize albumVC;
 
 - (id)initWithStyle:(UITableViewStyle)style  usingCatalog:(SongCatalog*)catalog forRadio:(Radio*)radio
@@ -129,7 +129,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    NSInteger count = self.sortedAlbums.count;
+    NSArray* albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
+    NSInteger count = albums.count;
     return count;
 }
 
@@ -218,23 +219,20 @@
 
 
 
-
-
-
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* CellIdentifier = @"Cell";
     
     ProgrammingCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
+    NSArray* albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
+
+    NSString* albumKey = [albums objectAtIndex:indexPath.row];
     
     //LBDEBUG
 //    NSArray* songs = [self.catalog.selectedArtistRepo objectForKey:albumKey];
-    NSArray* songs = nil;
-    
+    NSArray* songs = [self.catalog songsForAlbum:albumKey fromArtist:self.catalog.selectedArtist];
+                                                                      
     NSInteger nbSongs = songs.count;
     
     NSString* detailText;
@@ -286,7 +284,9 @@
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
     
-    NSString* albumKey = [self.sortedAlbums objectAtIndex:indexPath.row];
+    NSArray* albums = [self.catalog albumsForArtist:self.catalog.selectedArtist];
+    NSString* albumKey = [albums objectAtIndex:indexPath.row];
+
     [self.catalog selectAlbum:albumKey];
     
     self.albumVC = [[ProgrammingAlbumViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:self.catalog forRadio:self.radio];
@@ -342,14 +342,14 @@
 
 - (void)onNotifSongAdded:(NSNotification*)notif
 {
-    //[self.sortedAlbums release];
-    self.sortedAlbums = nil;
-    //LBDEBUG
-//    NSArray* array = [self.catalog.selectedArtistRepo allKeys];
-    NSArray* array = nil;
-    self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
-    
-    [self.tableView reloadData];
+//    //[self.sortedAlbums release];
+//    self.sortedAlbums = nil;
+//    //LBDEBUG
+////    NSArray* array = [self.catalog.selectedArtistRepo allKeys];
+//    NSArray* array = nil;
+//    self.sortedAlbums = [array sortedArrayUsingSelector:@selector(compare:)];
+//    
+//    [self.tableView reloadData];
 }
 
 

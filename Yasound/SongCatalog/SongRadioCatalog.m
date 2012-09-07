@@ -271,6 +271,12 @@ static SongRadioCatalog* _main = nil;
     return [self albumsForArtist:artist fromTable:RADIOCATALOG_TABLE];
 }
 
+- (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist {
+    
+    return [self songsForAlbum:album fromArtist:artist fromTable:RADIOCATALOG_TABLE];
+}
+
+
 
 - (NSDictionary*)songsAll {
     

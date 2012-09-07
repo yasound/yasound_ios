@@ -50,8 +50,10 @@ typedef enum {
 @property (nonatomic, retain) NSMutableDictionary* songsForLetter;
 @property (nonatomic, retain) NSMutableDictionary* artistsForLetter;
 @property (nonatomic, retain) NSMutableDictionary* albumsForArtist;
+@property (nonatomic, retain) NSMutableDictionary* songsForArtistAlbum;
 
 @property (nonatomic, retain) NSString* selectedArtist;
+@property (nonatomic, retain) NSString* selectedArtistIndexChar;
 @property (nonatomic, retain) NSString* selectedAlbum;
 
 
@@ -62,10 +64,13 @@ typedef enum {
 - (NSArray*)songsForLetter:(NSString*)charIndex fromTable:(NSString*)table;
 - (NSArray*)artistsForLetter:(NSString*)charIndex fromTable:(NSString*)table;
 - (NSArray*)albumsForArtist:(NSString*)artist fromTable:(NSString*)table;
+- (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist fromTable:(NSString*)table;
 
 - (NSDictionary*)songsAllFromTable:(NSString*)table;
 - (BOOL)addSong:(Song*)song forTable:(NSString*)table songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
 
+- (BOOL)selectArtist:(NSString*)artistKey withCharIndex:(NSString*)charIndex;
+- (BOOL)selectAlbum:(NSString*)albumKey;
 
 
 @end

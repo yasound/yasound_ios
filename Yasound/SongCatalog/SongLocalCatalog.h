@@ -21,6 +21,7 @@
 - (NSArray*)songsForLetter:(NSString*)charIndex;
 - (NSArray*)artistsForLetter:(NSString*)charIndex;
 - (NSArray*)albumsForArtist:(NSString*)artist;
+- (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist;
 
     - (NSDictionary*)songsAll;
 - (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
