@@ -191,7 +191,7 @@
     
     if (user != nil)
     {
-        [[YasoundSessionManager main] reloadUserData:user];
+        [[YasoundSessionManager main] writeUserIdentity:user];
         
         // login the other associated accounts as well
         [[YasoundSessionManager main] associateAccountsAutomatic];

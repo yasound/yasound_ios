@@ -27,6 +27,8 @@
 #import "MyRadiosViewController.h"
 #import "GiftsViewController.h"
 #import "ProfilViewController.h"
+#import "AccountTwitterViewController.h"
+#import "AccountFacebookViewController.h"
 
 
 //LBDEBUG
@@ -169,6 +171,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifPushLogin:) name:NOTIF_PUSH_LOGIN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoLogin:) name:NOTIF_GOTO_LOGIN object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifDidLogout:) name:NOTIF_DID_LOGOUT object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoTwitterAssociation:) name:NOTIF_GOTO_TWITTER_ASSOCIATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifGotoFacebookAssociation:) name:NOTIF_GOTO_FACEBOOK_ASSOCIATION object:nil];
 
 
     
@@ -298,7 +303,7 @@
 
     if (user != nil)
     {
-        [[YasoundSessionManager main] reloadUserData:user];
+        [[YasoundSessionManager main] writeUserIdentity:user];
         
         self.user = user;
         
@@ -885,7 +890,19 @@
 }
 
 
+- (void)onNotifGotoTwitterAssociation:(NSNotification *)notification
+{
+    AccountTwitterViewController* view = [[AccountTwitterViewController alloc] initWithNibName:@"AccountTwitterViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
 
+- (void)onNotifGotoFacebookAssociation:(NSNotification *)notification
+{
+    AccountFacebookViewController* view = [[AccountFacebookViewController alloc] initWithNibName:@"AccountFacebookViewController" bundle:nil];
+    [self.navigationController pushViewController:view animated:YES];
+    [view release];
+}
 
 
 
@@ -999,7 +1016,7 @@
     
     if (user != nil)
     {
-        [[YasoundSessionManager main] reloadUserData:user];
+        [[YasoundSessionManager main] writeUserIdentity:user];
         
         self.user = user;
         

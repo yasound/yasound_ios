@@ -17,6 +17,8 @@
 - (BOOL)gotoFavorites;
 - (BOOL)gotoMyRadios;
 - (BOOL)gotoLogin;
+- (BOOL)gotoTwitterAssociation;
+- (BOOL)gotoFacebookAssociation;
 
 - (void)postNotification:(NSString*)notifName;
 
@@ -82,6 +84,18 @@ static YasoundAppURLHandler* _main = nil;
         if (res)
             return YES;
     }
+    else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"twitter_association"]) // '/' + 'twitter_association'
+    {
+        BOOL res = [self gotoTwitterAssociation];
+        if (res)
+            return YES;
+    }
+    else if (componentCount == 2 && [[components objectAtIndex:1] isEqualToString:@"facebook_association"]) // '/' + 'facebook_association'
+    {
+        BOOL res = [self gotoFacebookAssociation];
+        if (res)
+            return YES;
+    }
     
     
     DLog(@"cannot handle yasound navigation url %@", url);
@@ -115,6 +129,22 @@ static YasoundAppURLHandler* _main = nil;
     if ([YasoundSessionManager main].registered)
         return NO;
     [self postNotification:NOTIF_GOTO_LOGIN];
+    return YES;
+}
+
+- (BOOL)gotoTwitterAssociation
+{
+    if (![YasoundSessionManager main].registered)
+        return [self gotoLogin];
+    [self postNotification:NOTIF_GOTO_TWITTER_ASSOCIATION];
+    return YES;
+}
+
+- (BOOL)gotoFacebookAssociation
+{
+    if (![YasoundSessionManager main].registered)
+        return [self gotoLogin];
+    [self postNotification:NOTIF_GOTO_FACEBOOK_ASSOCIATION];
     return YES;
 }
 

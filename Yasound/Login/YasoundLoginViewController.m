@@ -205,7 +205,7 @@
     // close the connection alert
     [ConnectionView stop];
 
-    [[YasoundSessionManager main] reloadUserData:user];
+    [[YasoundSessionManager main] writeUserIdentity:user];
     
     
     DLog(@"login returned : %@ %@", user, info);
