@@ -460,6 +460,9 @@
     UITableViewCell* cell = [info objectForKey:@"userData"];
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
 
+    //LBDEBUG
+    assert(0);
+    
     [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:self];
 

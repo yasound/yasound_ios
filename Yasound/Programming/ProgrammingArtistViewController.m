@@ -16,7 +16,8 @@
 #import "TimeProfile.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "SongCatalog.h"
+#import "SongRadioCatalog.h"
+#import "SongLocalCatalog.h"
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
 #import "SongLocal.h"
@@ -68,17 +69,6 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongAdded:) name:NOTIF_PROGAMMING_SONG_ADDED object:nil];
-    
-
-//    if (self.catalog == [SongCatalog synchronizedCatalog])
-//        _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-//    else if (self.catalog == [SongCatalog availableCatalog])
-//        _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
-//
-//    _subtitleLabel.text = self.catalog.selectedArtist;
-//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-
 }
 
 

@@ -16,7 +16,8 @@
 #import "TimeProfile.h"
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "SongCatalog.h"
+#import "SongRadioCatalog.h"
+#import "SongLocalCatalog.h"
 #import "SongUploader.h"
 #import "SongUploadManager.h"
 #import "RootViewController.h"
@@ -67,23 +68,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongRemoved:) name:NOTIF_PROGAMMING_SONG_REMOVED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotifSongUpdated:) name:NOTIF_PROGAMMING_SONG_UPDATED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotificationUploadCanceled:) name:NOTIF_SONG_GUI_NEED_REFRESH object:nil];
-    
-
-//    if (self.catalog == [SongCatalog synchronizedCatalog])
-//        _titleLabel.text = NSLocalizedString(@"ProgrammingView_title", nil);
-//    else if (self.catalog == [SongCatalog availableCatalog])
-//        _titleLabel.text = NSLocalizedString(@"SongAddView_title", nil);
-//        
-//    _subtitleLabel.text = self.catalog.selectedAlbum;
-//    _backBtn.title = NSLocalizedString(@"Navigation_back", nil);
-//    _nowPlayingButton.title = NSLocalizedString(@"Navigation_NowPlaying", nil);
-
-    
-    if (self.catalog == [SongCatalog synchronizedCatalog])
-    {
-//        _addBtn TODO ADD BUTTON
-        
-    }
 }
 
 
@@ -131,10 +115,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-    
-    //LBDEBUG
-//    return self.catalog.selectedAlbumRepo.count;
-    return 0;
+    NSArray* songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
+    return songs.count;
 }
 
 
@@ -158,12 +140,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
+    NSArray* songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
+    Song* song = [songs objectAtIndex:indexPath.row];
+
     
-    if (self.catalog == [SongCatalog availableCatalog])
+    if (self.catalog == [SongLocalCatalog main])
     {
         static NSString* CellAddIdentifier = @"CellAdd";
-
-        Song* song = [self.catalog getSongAtRow:indexPath.row];
         
         SongAddCell* cell = [tableView dequeueReusableCellWithIdentifier:CellAddIdentifier];
         
@@ -181,8 +164,6 @@
     {
         static NSString* CellIdentifier = @"CellAlbumSong";
 
-        Song* song = [self.catalog getSongAtRow:indexPath.row];
-        
         ProgrammingCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) 
@@ -227,6 +208,9 @@
     
     UITableViewCell* cell = [info objectForKey:@"userData"];
     NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+
+    //LBDEBUG
+    assert(0);
     
     [[SongCatalog synchronizedCatalog] removeSynchronizedSong:song];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PROGAMMING_SONG_REMOVED object:self];
@@ -244,17 +228,18 @@
 {
     [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
     
-    if (self.catalog == [SongCatalog synchronizedCatalog])
+    NSArray* songs = [self.catalog songsForAlbum:self.catalog.selectedAlbum fromArtist:self.catalog.selectedArtist];
+    Song* song = [songs objectAtIndex:indexPath.row];
+    
+    if (self.catalog == [SongRadioCatalog main])
     {
-        Song* song = [self.catalog getSongAtRow:indexPath.row];
-
         SongInfoViewController* view = [[SongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:song showNowPlaying:YES forRadio:self.radio];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
-    else if (self.catalog == [SongCatalog availableCatalog])
+    else if (self.catalog == [SongLocalCatalog main])
     {
-        SongLocal* songLocal = (SongLocal*)[self.catalog getSongAtRow:indexPath.row];
+        SongLocal* songLocal = song;
 
         LocalSongInfoViewController* view = [[LocalSongInfoViewController alloc] initWithNibName:@"SongInfoViewController" bundle:nil song:songLocal];
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
