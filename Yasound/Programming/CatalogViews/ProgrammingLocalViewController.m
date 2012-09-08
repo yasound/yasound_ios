@@ -208,7 +208,10 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{        
+{
+    if ((self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS) || (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES))
+        return 1;
+    
     return [SongLocalCatalog main].indexMap.count;
 }
 
@@ -236,7 +239,14 @@
     //LBDEBUG
     assert([SongLocalCatalog main].indexMap.count > section);
     
-    NSString* title = [[SongLocalCatalog main].indexMap objectAtIndex:section];
+    NSString* title = nil;
+    if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS)
+        title = NSLocalizedString(@"Programming.segment.playlists", nil);
+    else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES)
+        title = NSLocalizedString(@"Programming.segment.genres", nil);
+    else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_TITLES)
+        title = [[SongLocalCatalog main].indexMap objectAtIndex:section];
+
     
     BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"TableView.Section.background" retainStylesheet:YES overwriteStylesheet:NO error:nil];
     UIImageView* view = [sheet makeImage];

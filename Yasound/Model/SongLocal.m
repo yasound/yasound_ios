@@ -47,6 +47,8 @@
         
         self.artistKey = [item valueForProperty:MPMediaItemPropertyArtist];
         self.albumKey = [item valueForProperty:MPMediaItemPropertyAlbumTitle];
+        
+        self.genre = [self.mediaItem valueForProperty:MPMediaItemPropertyGenre]; 
 
         
 //        self.cover = [[self.mediaItem valueForProperty:MPMediaItemPropertyArtwork] imageWithSize:CGSizeMake(128,128)];
@@ -82,6 +84,12 @@
             self.album_client = [NSString stringWithString:self.albumKey];
         }
         
+        if ((self.genre == nil) || (self.genre.length == 0))
+        {
+            self.genre =  NSLocalizedString(@"ProgrammingView_unknownGenre", nil);
+        }
+        
+        
         
         
         
@@ -95,10 +103,10 @@
 
 // overloading getters
 
-- (NSString*)genre
-{
-    return [self.mediaItem valueForProperty:MPMediaItemPropertyGenre]; 
-}
+//- (NSString*)genre
+//{
+//    return [self.mediaItem valueForProperty:MPMediaItemPropertyGenre];
+//}
 
 
 - (NSTimeInterval)playbackDuration

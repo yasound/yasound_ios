@@ -51,8 +51,9 @@ static SongLocalCatalog* _main = nil;
         NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
         NSString* artistLetter = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistLetter]];
         NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
+        NSString* genre = [SongCatalog shortString:[s stringForColumnIndex:eCatalogGenre]];
         
-        NSLog(@"songKey (%@)    name(%@) nameLetter (%@)     artistKey(%@) artistLetter (%@)      albumKey(%@)", songKey, name, nameLetter, artist, artistLetter, album);
+        NSLog(@"songKey (%@)    name(%@) nameLetter (%@)     artistKey(%@) artistLetter (%@)      albumKey(%@)     genre(%@)", songKey, name, nameLetter, artist, artistLetter, album, genre);
     }
 
     
