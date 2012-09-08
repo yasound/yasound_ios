@@ -11,7 +11,8 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "SongLocal.h"
 #import "DataBase.h"
-
+//LBDEBUG TEMPORARLY
+//#import "PlaylistMoulinor.h"
 
 @implementation SongLocalCatalog
 
@@ -41,15 +42,54 @@ static SongLocalCatalog* _main = nil;
 
 - (void)dump
 {
-    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", LOCALCATALOG_TABLE]];
+//    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", LOCALCATALOG_TABLE]];
+//    while ([s next])
+//    {
+//        NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
+//        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
+//        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
+//        
+//        NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
+//    }
+
+    {
+        FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT name FROM sqlite_master WHERE type = \"table\""];
+        while ([s next])
+        {
+            NSString* name = [SongCatalog shortString:[s stringForColumnIndex:0]];
+            NSLog(@"table %@", name);
+        }
+    }
+    
+    {
+    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT * FROM radioCatalog"];
     while ([s next])
     {
+        NSString* songKey = [SongCatalog shortString:[s stringForColumnIndex:eCatalogSongKey]];
         NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
+        NSString* nameLetter = [SongCatalog shortString:[s stringForColumnIndex:eCatalogNameLetter]];
         NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
+        NSString* artistLetter = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistLetter]];
         NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
         
-        NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
+        NSLog(@"songKey (%@)    name(%@) nameLetter (%@)     artistKey(%@) artistLetter (%@)      albumKey(%@)", songKey, name, nameLetter, artist, artistLetter, album);
     }
+    }
+
+    
+    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT * FROM localCatalog"];
+    while ([s next])
+    {
+        NSString* songKey = [SongCatalog shortString:[s stringForColumnIndex:eCatalogSongKey]];
+        NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
+        NSString* nameLetter = [SongCatalog shortString:[s stringForColumnIndex:eCatalogNameLetter]];
+        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
+        NSString* artistLetter = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistLetter]];
+        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
+        
+        NSLog(@"songKey (%@)    name(%@) nameLetter (%@)     artistKey(%@) artistLetter (%@)      albumKey(%@)", songKey, name, nameLetter, artist, artistLetter, album);
+    }
+
     
     NSLog(@"----------------------------------\n");
 }
@@ -118,11 +158,14 @@ static SongLocalCatalog* _main = nil;
         
         // REMEMBER THAT HERE, songLocal is SongLocal*
         
-        BOOL res = [self addSong:songLocal forTable:RADIOCATALOG_TABLE songKey:songLocal.catalogKey artistKey:songLocal.artistKey albumKey:songLocal.albumKey];
+        BOOL res = [self addSong:songLocal forTable:LOCALCATALOG_TABLE songKey:songLocal.catalogKey artistKey:songLocal.artistKey albumKey:songLocal.albumKey];
         nbSongs++;
     }
     
     [self commit];
+    
+    [self dump];
+
         
     
 //    if (nbSongs > 0)
@@ -197,7 +240,7 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist {
     
-    return [self songsForAlbum:album fromArtist:artist fromTable:RADIOCATALOG_TABLE];
+    return [self songsForAlbum:album fromArtist:artist fromTable:LOCALCATALOG_TABLE];
 }
 
 - (NSDictionary*)songsAll {
@@ -208,7 +251,7 @@ static SongLocalCatalog* _main = nil;
 
 - (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
     
-    return [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
+    return [self addSong:song forTable:LOCALCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
 }
 
 

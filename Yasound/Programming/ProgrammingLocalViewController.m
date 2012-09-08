@@ -28,6 +28,9 @@
 #import "ProgrammingUploadViewController.h"
 #import "YasoundAppDelegate.h"
 
+//LBDEBUG TEMPORARLY
+#import "DataBase.h"
+#import "PlaylistMoulinor.h"
 
 
 #define TIMEPROFILE_AVAILABLECATALOG_BUILD @"TimeProfileAvailableCatalogBuild"
@@ -120,6 +123,7 @@
     [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
     
     [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].songs  target:self action:@selector(localProgrammingBuilt:)];
+    
 }
 
 

@@ -368,8 +368,16 @@
     
     NSString* artistChar = [NSString stringWithFormat:@"%C", artistLetter];
 
+//    NSLog(@"songKey '%@'", songKey);
+//    NSLog(@"name '%@'", song.name);
+//    NSLog(@"nameChar '%@'", nameChar);
+//    NSLog(@"artist '%@'", song.artist);
+//    NSLog(@"artistChar '%@'", artistChar);
+//    NSLog(@"album '%@'", song.album);
+//    NSLog(@"genre '%@'", song.genre);
     
     BOOL res = [[DataBase main].db executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@ VALUES (?,?,?,?,?,?,?)", table], songKey, song.name, nameChar, song.artist, artistChar, song.album, song.genre];
+    
     
 
     if (!res)

@@ -23,6 +23,7 @@
 #import "RootViewController.h"
 #import "AudioStreamManager.h"
 #import "ProgrammingCell.h"
+#import "DataBase.h"
 
 @implementation ProgrammingViewController
 
@@ -60,6 +61,7 @@
         {
             [SongRadioCatalog releaseCatalog];
             [SongLocalCatalog releaseCatalog];
+            [DataBase releaseDataBase];
         }
     }
     return self;

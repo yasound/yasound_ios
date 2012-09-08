@@ -24,6 +24,7 @@
 #import "ObjectButton.h"
 #import "SongRadioCatalog.h"
 #import "SongLocalCatalog.h"
+#import "DataBase.h"
 
 @implementation ProgrammingRadioViewController
 
@@ -87,6 +88,7 @@
         {
             [SongRadioCatalog releaseCatalog];
             [SongLocalCatalog releaseCatalog];
+            [DataBase releaseDatabase];
         }
         
         [self load];
