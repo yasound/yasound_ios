@@ -231,15 +231,7 @@ static SongRadioCatalog* _main = nil;
         
         NSString* songKey = [SongCatalog catalogKeyOfSong:song.name artistKey:artistKey albumKey:albumKey];
         
-
-        
-        //        DLog(@"song.name %@", song.name);
-        //        DLog(@"song.artist %@", song.artist);
-        //        DLog(@"song.album %@", song.album);
-
         [self addSong:song forTable:RADIOCATALOG_TABLE songKey:songKey artistKey:artistKey albumKey:albumKey];
-//        [self catalogWithoutSorting:song  usingArtistKey:artistKey andAlbumKey:albumKey];
-//        self.nbSongs++;
     }
     
     [self commit];

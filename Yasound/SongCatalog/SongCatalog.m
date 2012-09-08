@@ -452,14 +452,11 @@
 
 - (BOOL)addSong:(Song*)song forTable:(NSString*)table songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey {
     
-    [[TimeProfile main] begin:@"addSong"];
-
     assert(song);
     assert(songKey);
     assert(artistKey);
     assert(albumKey);
 
-    [[TimeProfile main] begin:@"addSong_1"];
 
     // first letter of song's name
     NSString* firstRelevantWord = [song getFirstRelevantWord]; // first title's word, excluding the articles
@@ -477,9 +474,6 @@
         
     NSString* nameChar = [NSString stringWithFormat:@"%C", nameLetter];
 
-    [[TimeProfile main] end:@"addSong_1"];
-    [[TimeProfile main] begin:@"addSong_2"];
-
     
     // first letter of artist's name
     firstRelevantWord = [artistKey uppercaseString];
@@ -493,19 +487,9 @@
     
     NSString* artistChar = [NSString stringWithFormat:@"%C", artistLetter];
 
-    [[TimeProfile main] end:@"addSong_2"];
-    [[TimeProfile main] begin:@"addSong_3"];
-
     
-    
-
-//    [self.db beginTransaction];
-//    BOOL res = [self.db executeUpdate:@"INSERT INTO ? VALUES (?,?,?,?,?,?,?)", table, songKey, song.name, nameLetter, song.artist, artistLetter, song.album, song];
-//    BOOL res = [self.db executeUpdate:@"INSERT INTO ? VALUES (?,?,?,?,?,?,?)", table, songKey, song.name, nameChar, song.artist, artistChar, song.album, song];
     BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@ VALUES (?,?,?,?,?,?,?)", table], songKey, song.name, nameChar, song.artist, artistChar, song.album, song.genre];
-//    [self.db commit];
     
-    [[TimeProfile main] end:@"addSong_3"];
 
     if (!res)
         DLog(@"addSong, %d:%@", [self.db lastErrorCode], [self.db lastErrorMessage]);
@@ -513,10 +497,6 @@
         [self.songsDb setObject:song forKey:songKey];
     
 
-    
-    [[TimeProfile main] end:@"addSong"];
-
-    
     return res;
 }
 

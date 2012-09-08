@@ -92,6 +92,8 @@ static SongLocalCatalog* _main = nil;
     
     NSInteger nbSongs = 0;
     
+    [self beginTransaction];
+    
     // list all local songs from albums
     for (MPMediaItem* item in songsArray)
     {
@@ -109,20 +111,13 @@ static SongLocalCatalog* _main = nil;
             [songLocal setIsProgrammed:YES];
         
         
-        //LBDEBUG TODO : CLEANING
-        //        // before putting this song into the catalog,
-        //        // check if it's not uploading already.
-        //        Song* uploadingSong = [[SongUploadManager main] getUploadingSong:songLocal.name artist:songLocal.artist album:songLocal.album];
-        //        if (uploadingSong != nil)
-        //            [songLocal setUploading:YES];
-        
         // REMEMBER THAT HERE, songLocal is SongLocal*
         
-//        [self catalogWithoutSorting:songLocal usingArtistKey:songLocal.artistKey andAlbumKey:songLocal.albumKey];
-
         BOOL res = [self addSong:songLocal forTable:RADIOCATALOG_TABLE songKey:songLocal.catalogKey artistKey:songLocal.artistKey albumKey:songLocal.albumKey];
         nbSongs++;
     }
+    
+    [self commit];
         
     
 //    if (nbSongs > 0)
@@ -146,14 +141,9 @@ static SongLocalCatalog* _main = nil;
 {
     [[TimeProfile main] begin:@"doesDeviceContainSong"];
     
-    //LBDEBUG
-    DLog(@"doesDeviceContainSong song.name_client %@   song.artist_client '%@'   song.album_client '%@'", song.name_client, song.artist_client, song.album_client);
-    
     MPMediaQuery* allSongsQuery = [MPMediaQuery songsQuery];
     
-    //LBDEBUG
     NSArray* items = [allSongsQuery items];
-    
     if (items.count == 0)
         return NO;
     

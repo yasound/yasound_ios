@@ -165,10 +165,6 @@
 
     DLog(@"%d matched songs", count);
     
-    [[TimeProfile main] logAverageInterval:@"addSong" inMilliseconds:YES];
-    [[TimeProfile main] logAverageInterval:@"addSong_1" inMilliseconds:YES];
-    [[TimeProfile main] logAverageInterval:@"addSong_2" inMilliseconds:YES];
-    [[TimeProfile main] logAverageInterval:@"addSong_3" inMilliseconds:YES];
 
 //    //LBDEBUG TIMEPROFILE ALERTVIEW
 //    {
