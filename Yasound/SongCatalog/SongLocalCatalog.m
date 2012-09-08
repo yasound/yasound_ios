@@ -128,7 +128,7 @@ static SongLocalCatalog* _main = nil;
 
     // list all playlists
     MPMediaQuery* playlistQuery = [MPMediaQuery playlistsQuery];
-    NSArray* playlists = [allSongsQuery collections];
+    NSArray* playlists = [playlistQuery collections];
     
     // for each playlist
     for (MPMediaPlaylist* playlist in playlists) {

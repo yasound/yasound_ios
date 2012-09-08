@@ -489,9 +489,9 @@
 - (BOOL)onBackClicked
 {
     BOOL goBack = YES;
-    if (self.artistVC)
+    if (self.collectionVC)
     {
-        goBack = [self.artistVC onBackClicked];
+        goBack = [self.collectionVC onBackClicked];
         
         if (goBack)
         {
@@ -502,7 +502,7 @@
             [UIView setAnimationDidStopSelector:@selector(removeAnimationDidStop:finished:context:)];
             
             CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
-            self.artistVC.tableView.frame = frame;
+            self.collectionVC.tableView.frame = frame;
             
             [UIView commitAnimations];
             
