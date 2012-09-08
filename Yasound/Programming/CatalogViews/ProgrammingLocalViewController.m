@@ -168,16 +168,17 @@
     DLog(@"%d available songs", count);
     
 
-//    //LBDEBUG TIMEPROFILE ALERTVIEW
-//    {
-//        CGFloat interval = [[TimeProfile main] interval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
-//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"local" message:[NSString stringWithFormat:@"%.2fs for %d songs", interval, count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [av show];
-//        [av release];
-//        return;
-//
-//    }
-//    /////////
+    //YATEST
+    //LBDEBUG TIMEPROFILE ALERTVIEW
+    {
+        CGFloat interval = [[TimeProfile main] interval:TIMEPROFILE_AVAILABLECATALOG_BUILD inMilliseconds:NO];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"local" message:[NSString stringWithFormat:@"%.2fs for %d songs", interval, count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [av show];
+        [av release];
+        return;
+
+    }
+    /////////
 
     if (count == 0) {
         BundleStylesheet* sheet = [[Theme theme] stylesheetForKey:@"Programming.empty" retainStylesheet:YES overwriteStylesheet:NO error:nil];
