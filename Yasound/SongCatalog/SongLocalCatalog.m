@@ -42,41 +42,6 @@ static SongLocalCatalog* _main = nil;
 
 - (void)dump
 {
-//    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", LOCALCATALOG_TABLE]];
-//    while ([s next])
-//    {
-//        NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
-//        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
-//        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
-//        
-//        NSLog(@"name(%@)  artist(%@)   album(%@)", name, artist, album);
-//    }
-
-    {
-        FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT name FROM sqlite_master WHERE type = \"table\""];
-        while ([s next])
-        {
-            NSString* name = [SongCatalog shortString:[s stringForColumnIndex:0]];
-            NSLog(@"table %@", name);
-        }
-    }
-    
-    {
-    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT * FROM radioCatalog"];
-    while ([s next])
-    {
-        NSString* songKey = [SongCatalog shortString:[s stringForColumnIndex:eCatalogSongKey]];
-        NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
-        NSString* nameLetter = [SongCatalog shortString:[s stringForColumnIndex:eCatalogNameLetter]];
-        NSString* artist = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistKey]];
-        NSString* artistLetter = [SongCatalog shortString:[s stringForColumnIndex:eCatalogArtistLetter]];
-        NSString* album = [SongCatalog shortString:[s stringForColumnIndex:eCatalogAlbumKey]];
-        
-        NSLog(@"songKey (%@)    name(%@) nameLetter (%@)     artistKey(%@) artistLetter (%@)      albumKey(%@)", songKey, name, nameLetter, artist, artistLetter, album);
-    }
-    }
-
-    
     FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT * FROM localCatalog"];
     while ([s next])
     {
@@ -114,9 +79,7 @@ static SongLocalCatalog* _main = nil;
         return;
     }
 
-    // can't => fmdb not happy
-//    [NSThread detachNewThreadSelector:@selector(threadMatchedSongs:) toTarget:self withObject:songs];
-    
+    //[NSThread detachNewThreadSelector:@selector(threadMatchedSongs:) toTarget:self withObject:songs];
     [self threadMatchedSongs:songs];
 }
 
@@ -164,9 +127,6 @@ static SongLocalCatalog* _main = nil;
     
     [self commit];
     
-    [self dump];
-
-        
     
 //    if (nbSongs > 0)
         self.isInCache = YES;

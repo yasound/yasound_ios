@@ -179,7 +179,6 @@
 //    }
 //    /////////
 
-    //[[SongRadioCatalog main] dump];
     
 //    NSString* subtitle = nil;
 //    if (songs.count == 0)

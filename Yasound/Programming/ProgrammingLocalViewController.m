@@ -117,13 +117,22 @@
     if (![SongLocalCatalog main].isInCache)
         [ActivityAlertView showWithTitle: NSLocalizedString(@"SongAddView_alert", nil)];
     
+    
     //DLog(@"%d - %d", _nbReceivedData, _nbPlaylists);
     
     // PROFILE
     [[TimeProfile main] begin:TIMEPROFILE_AVAILABLECATALOG_BUILD];
     
-    [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].songs  target:self action:@selector(localProgrammingBuilt:)];
+//    [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].songs  target:self action:@selector(localProgrammingBuilt:)];
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(afterBreathing:) userInfo:nil repeats:NO];
     
+    
+}
+
+
+- (void)afterBreathing:(NSTimer*)timer {
+    
+    [[SongLocalCatalog main] initFromMatchedSongs:[SongRadioCatalog main].songs  target:self action:@selector(localProgrammingBuilt:)];
 }
 
 
@@ -175,8 +184,6 @@
         return;        
     }
     
-    [[SongLocalCatalog main] dump];
-    
     [self.tableView reloadData];
     
 
@@ -202,6 +209,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (![SongLocalCatalog main].isInCache)
+        return 0;
+    
     NSInteger nbRows = [self getNbRowsForTable:tableView inSection:section];
     if (nbRows == 0)
         return 0;
@@ -236,6 +246,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (![SongLocalCatalog main].isInCache)
+        return 0;
+    
     NSInteger nb = [self getNbRowsForTable:tableView inSection:section];
     return nb;
 }

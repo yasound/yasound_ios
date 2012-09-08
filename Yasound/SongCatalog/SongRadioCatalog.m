@@ -240,10 +240,6 @@ static SongRadioCatalog* _main = nil;
     [self commit];
 
     
-//#ifdef DEBUG
-//    [self dump];    
-//#endif
-    
     self.isInCache = YES;
 }
 
