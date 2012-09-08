@@ -281,13 +281,13 @@
     }
     
     else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS) {
-        NSArray* playlists = [[SongLocalCatalog main] playlists];
+        NSArray* playlists = [[SongLocalCatalog main] playlistsAll];
         assert(playlists != nil);
         return playlists.count;
     }
     
     else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES) {
-        NSArray* genres = [[SongLocalCatalog main] genres];
+        NSArray* genres = [[SongLocalCatalog main] genresAll];
         assert(genres != nil);
         return genres.count;
     }
@@ -395,7 +395,7 @@
         
         if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES) {
             
-            NSArray* collections = [[SongLocalCatalog main] genres];
+            NSArray* collections = [[SongLocalCatalog main] genresAll];
             NSString* collection = [collections objectAtIndex:indexPath.row];
             NSInteger nbItems = [[SongLocalCatalog main] artistsForGenre:collection].count;
             
@@ -410,7 +410,7 @@
         }
         else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS) {
             
-            NSArray* collections = [[SongLocalCatalog main] playlists];
+            NSArray* collections = [[SongLocalCatalog main] playlistsAll];
             NSString* collection = [collections objectAtIndex:indexPath.row];
             NSInteger nbItems = [[SongLocalCatalog main] artistsForPlaylist:collection].count;
             

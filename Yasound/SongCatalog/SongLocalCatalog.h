@@ -15,6 +15,13 @@
 @property (nonatomic) SEL action;
 
 
+// cache
+@property (nonatomic, retain) NSArray* genres;
+@property (nonatomic, retain) NSArray* playlists;
+@property (nonatomic, retain) NSMutableDictionary* artistsForGenre;
+@property (nonatomic, retain) NSMutableDictionary* artistsForPlaylist;
+
+
 + (SongLocalCatalog*)main;
 + (void)releaseCatalog;
 
@@ -26,9 +33,9 @@
 - (NSArray*)albumsForArtist:(NSString*)artist;
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist;
 
-- (NSArray*)genres;
+- (NSArray*)genresAll;
 - (NSArray*)artistsForGenre:(NSString*)genre;
-- (NSArray*)playlists;
+- (NSArray*)playlistsAll;
 - (NSArray*)artistsForPlaylist:(NSString*)playlist;
 
 

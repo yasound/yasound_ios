@@ -17,6 +17,12 @@
 @implementation SongLocalCatalog
 
 
+@synthesize genres;
+@synthesize playlists;
+@synthesize artistsForGenre;
+@synthesize artistsForPlaylist;
+
+
 static SongLocalCatalog* _main = nil;
 
 
@@ -24,6 +30,9 @@ static SongLocalCatalog* _main = nil;
     
     if (_main == nil) {
         _main = [[SongLocalCatalog alloc] init];
+        
+        _main.artistsForGenre = [NSMutableDictionary dictionary];
+        _main.artistsForPlaylist = [NSMutableDictionary dictionary];
     }
     return _main;
 }
@@ -267,7 +276,10 @@ static SongLocalCatalog* _main = nil;
 
 
 
-- (NSArray*)genres {
+- (NSArray*)genresAll {
+    
+    if (self.genres != nil)
+        return self.genres;
     
     NSMutableArray* results = [NSMutableArray array];
     
@@ -281,7 +293,7 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-//    [self.songsForLetter setObject:results forKey:charIndex];
+    self.genres = results;
     
     return results;    
 }
@@ -290,7 +302,12 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)artistsForGenre:(NSString*)genre {
     
-    NSMutableArray* results = [NSMutableArray array];
+    NSMutableArray* results = [self.artistsForGenre objectForKey:genre];
+    
+    if (results != nil)
+        return results;
+    
+    results = [NSMutableArray array];
     
     FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT artistKey FROM localCatalog WHERE genre=? ORDER BY artistKey", genre];
     
@@ -302,34 +319,31 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-    //    [self.songsForLetter setObject:results forKey:charIndex];
+    [self.artistsForGenre setObject:results forKey:genre];
     
     return results;
 }
 
 
-- (NSArray*)playlists {
+- (NSArray*)playlistsAll {
+    
+    if (self.playlists != nil)
+        return self.playlists;
     
     NSMutableArray* results = [NSMutableArray array];
     
     FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT playlist FROM playlistCatalog ORDER BY playlist"];
     
-    //#ifdef DEBUG
-    //    DLog(@"songsForLetter FMDB executeQuery '%@'", s.query);
-    //#endif
-    
     while ([s next])
     {
-        //        Song* song = [s objectForColumnIndex:eCatalogSong];
-        //        NSString* name = [s stringForColumnIndex:eCatalogName];
         NSString* playlist = [s stringForColumnIndex:0];
         assert(playlist);
         [results addObject:playlist];
     }
     
     // set cache
-    //    [self.songsForLetter setObject:results forKey:charIndex];
-    
+    self.playlists = results;
+
     return results;
     
 }
@@ -337,7 +351,12 @@ static SongLocalCatalog* _main = nil;
 
 - (NSArray*)artistsForPlaylist:(NSString*)playlist {
 
-    NSMutableArray* results = [NSMutableArray array];
+    NSMutableArray* results = [self.artistsForGenre objectForKey:playlist];
+    
+    if (results != nil)
+        return results;
+    
+    results = [NSMutableArray array];
     
     FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT localCatalog.songKey, localCatalog.artistKey FROM localCatalog, playlistCatalog WHERE localCatalog.songKey = playlist.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.artistKey", playlist];
     
@@ -349,7 +368,7 @@ static SongLocalCatalog* _main = nil;
     }
     
     // set cache
-    //    [self.songsForLetter setObject:results forKey:charIndex];
+    [self.artistsForGenre setObject:results forKey:playlist];
     
     return results;
 
