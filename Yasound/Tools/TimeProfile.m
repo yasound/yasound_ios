@@ -112,17 +112,29 @@ static TimeProfile* _main;
 
 - (void)logInterval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds
 {
+    DLog(@"%@", [self dumpInterval:nameReference inMilliseconds:inMilliseconds]);
+}
+
+
+- (NSString*)dumpInterval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds
+{
     CGFloat value = [self interval:nameReference inMilliseconds:inMilliseconds];
-
+    
     if (!inMilliseconds)
-        DLog(@"TimeProfile '%@' %.2fs", nameReference, value);
+        return [NSString stringWithFormat:@"TimeProfile '%@' %.2fs", nameReference, value];
     else
-        DLog(@"TimeProfile '%@' %.2fms", nameReference, value);
-
+        return [NSString stringWithFormat:@"TimeProfile '%@' %.2fms", nameReference, value];
 }
 
 
 - (void)logAverageInterval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds
+{
+    DLog(@"%@", [self dumpAverageInterval:nameReference inMilliseconds:inMilliseconds]);
+}
+         
+
+         
+- (NSString*)dumpAverageInterval:(NSString*)nameReference inMilliseconds:(BOOL)inMilliseconds
 {
     assert(nameReference != nil);
     
@@ -139,10 +151,9 @@ static TimeProfile* _main;
     CGFloat result = accu / profiles.count;
     
     if (!inMilliseconds)
-        DLog(@"TimeProfile AVERAGE '%@' %.2fs for %d mesures", nameReference, result, profiles.count);
+        return [NSString stringWithFormat:@"TimeProfile AVERAGE '%@' %.2fs for %d mesures", nameReference, result, profiles.count];
     else
-        DLog(@"TimeProfile AVERAGE '%@' %.2fms for %d mesures", nameReference, result * 1000.f, profiles.count);
-    
+        return [NSString stringWithFormat:@"TimeProfile AVERAGE '%@' %.2fms for %d mesures", nameReference, result * 1000.f, profiles.count];
 }
 
 

@@ -211,6 +211,8 @@ static SongRadioCatalog* _main = nil;
 {
     NSArray* songs = [self.matchedSongs allValues];
     
+    [self beginTransaction];
+    
     for (Song* song in songs)
     {
         // be aware of empty artist names, and empty album names
@@ -239,6 +241,9 @@ static SongRadioCatalog* _main = nil;
 //        [self catalogWithoutSorting:song  usingArtistKey:artistKey andAlbumKey:albumKey];
 //        self.nbSongs++;
     }
+    
+    [self commit];
+
     
 //#ifdef DEBUG
 //    [self dump];    

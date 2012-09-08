@@ -67,7 +67,11 @@ typedef enum {
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist fromTable:(NSString*)table;
 
 - (NSDictionary*)songsAllFromTable:(NSString*)table;
+
+
+- (void)beginTransaction;
 - (BOOL)addSong:(Song*)song forTable:(NSString*)table songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
+- (void)commit;
 
 - (BOOL)selectArtist:(NSString*)artistKey withCharIndex:(NSString*)charIndex;
 - (BOOL)selectAlbum:(NSString*)albumKey;
