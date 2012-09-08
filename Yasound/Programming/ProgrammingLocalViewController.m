@@ -318,16 +318,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     NSString* charIndex = [[SongLocalCatalog main].indexMap objectAtIndex:indexPath.section];
-    NSArray* songs = [[SongLocalCatalog main] songsForLetter:charIndex];
-    assert(songs.count > indexPath.row);
-    
-    Song* song = [songs objectAtIndex:indexPath.row];
 
     
     if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
         static NSString* CellAddIdentifier = @"CellAdd";
 
+        NSArray* songs = [[SongLocalCatalog main] songsForLetter:charIndex];
+        assert(songs.count > indexPath.row);
         SongLocal* song = [songs objectAtIndex:indexPath.row];
         assert([song isKindOfClass:[SongLocal class]]);
 
@@ -377,9 +375,9 @@
             cell.detailTextLabel.font = [sheet makeFont];
         }
         
-        NSArray* artists = [[SongRadioCatalog main] artistsForLetter:charIndex];
+        NSArray* artists = [[SongLocalCatalog main] artistsForLetter:charIndex];
         NSString* artist = [artists objectAtIndex:indexPath.row];
-        NSInteger nbAlbums = [[SongRadioCatalog main] albumsForArtist:artist].count;
+        NSInteger nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist].count;
         
         cell.textLabel.text = artist;
         
@@ -405,9 +403,9 @@
     
     if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
+        NSString* charIndex = [[SongLocalCatalog main].indexMap objectAtIndex:indexPath.section];
         
-        NSArray* songs = [[SongRadioCatalog main] songsForLetter:charIndex];
+        NSArray* songs = [[SongLocalCatalog main] songsForLetter:charIndex];
         SongLocal* songLocal = [songs objectAtIndex:indexPath.row];
         
 
@@ -417,8 +415,8 @@
     }
     else
     {
-        NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
-        NSArray* artists = [[SongRadioCatalog main] artistsForLetter:charIndex];
+        NSString* charIndex = [[SongLocalCatalog main].indexMap objectAtIndex:indexPath.section];
+        NSArray* artists = [[SongLocalCatalog main] artistsForLetter:charIndex];
         NSString* artist = [artists objectAtIndex:indexPath.row];
         
         [[SongLocalCatalog main] selectArtist:artist withCharIndex:charIndex];
