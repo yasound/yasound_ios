@@ -250,36 +250,16 @@
 {
     NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:section];
     
-    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
-    {
-//        NSArray* letterRepo = [[SongRadioCatalog main].alphabeticRepo objectForKey:charIndex];
-//        assert(letterRepo != nil);
-//        return letterRepo.count;
-        
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA) {
         NSArray* songsForLetter = [[SongRadioCatalog main] songsForLetter:charIndex];
         assert(songsForLetter != nil);
         return songsForLetter.count;
-        
-//        return [[SongRadioCatalog main] countSongsForLetter:charIndex];
     }
-    else
-    {
-        
+    else {
         NSArray* artistsForLetter = [[SongRadioCatalog main] artistsForLetter:charIndex];
         assert(artistsForLetter != nil);
-        
         return artistsForLetter.count;
-        
-//        NSArray* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];
-//        NSInteger count = artistsForSection.count;
-//        return count;
-        
-//        NSArray* artistsForLetter = [[SongRadioCatalog main] artistsForLetter:charIndex];
-//        assert(artistsForLetter != nil);
-//        return artistsForLetter.count;
-        
     }
-    
 }
 
 
@@ -356,17 +336,17 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
 {
-//    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
-//        return nil;
-//    
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
+        return nil;
+    
     return [SongRadioCatalog main].indexMap;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
 {
-//    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
-//        return 0;
+    if (self.selectedSegmentIndex == SEGMENT_INDEX_ARTIST)
+        return 0;
     
     return index;
 }
@@ -405,26 +385,6 @@
     NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
     NSArray* songs = [[SongRadioCatalog main] songsForLetter:charIndex];
     
-    // LBDEBUG TODO : sort the songs?
-    
-//    if (songs == nil)
-//    {
-//        songs = [[SongCatalog synchronizedCatalog].alphabeticRepo objectForKey:charIndex];
-//        
-//        // sort the items array
-//        songs = [songs sortedArrayUsingSelector:@selector(nameCompare:)];
-//        
-//        // store the cache
-//        assert(songs != nil);
-//        [self.sortedSongs setObject:songs forKey:charIndex];
-//
-//    }
-
-    //LBDEBUG
-#ifdef _DEBUG
-    DLog(@"songs.count %d", songs.count);
-    DLog(@"indexPath.row %d", indexPath.row);
-#endif
     assert(songs.count > indexPath.row);
 
     Song* song = [songs objectAtIndex:indexPath.row];
@@ -486,38 +446,14 @@
 
     assert([SongRadioCatalog main].indexMap.count > indexPath.section);
     
-//    NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
-//
-//    NSMutableDictionary* artistsForSection = [[SongCatalog synchronizedCatalog].alphaArtistsRepo objectForKey:charIndex];
-//
-//    // get sorted list
-//    NSArray* artists = [self.sortedArtists objectForKey:charIndex];
-//    if (artists == nil)
-//    {
-//        artists = [artistsForSection allKeys];
-//
-//        // sort the items array
-//        artists = [artists sortedArrayUsingSelector:@selector(compare:)];
-//        
-//        // store the cache
-//        assert(artists != nil);
-//        [self.sortedArtists setObject:artists forKey:charIndex];
-//    }
-
     NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
     NSArray* artists = [[SongRadioCatalog main] artistsForLetter:charIndex];
 
-//    //LBDEBUG
-//    assert(artists.count > indexPath.row);
-    
     NSString* artist = [artists objectAtIndex:indexPath.row];
     
     NSInteger nbAlbums = [[SongRadioCatalog main] albumsForArtist:artist].count;
 
     
-//    NSDictionary* artistRepo = [artistsForSection objectForKey:artist];
-    
-        
         UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellArtistIdentifier];
         
         if (cell == nil) 
@@ -532,28 +468,6 @@
             cell.accessoryView = di;
             [di release];
 
-            //LBDEBUG TODO : pour plus tard
-//            sheet = [[Theme theme] stylesheetForKey:@"TableView.cellImageEmpty" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            cell.imageView.image = [sheet image];
-//
-//            // del button
-//            sheet = [[Theme theme] stylesheetForKey:@"Programming.del" retainStylesheet:YES overwriteStylesheet:NO error:nil];
-//            sheet.frame = CGRectMake(8, 8, sheet.frame.size.width, sheet.frame.size.height);
-//            ObjectButton* button = [sheet makeObjectButton];
-//            
-//            // assign artist repository to delete button
-//            NSString* artistNameFromClient = [[SongCatalog synchronizedCatalog].artistRegister objectForKey:artist];
-//            assert(artistNameFromClient != nil);
-//            button.userObject = artistNameFromClient;
-//            
-//            // to handle the succeded return of the deletion request
-//            [self.artistToIndexPath setObject:indexPath forKey:artistNameFromClient];
-//            
-//            
-//            [button addTarget:self action:@selector(onArtistDeleteClicked:) forControlEvents:UIControlEventTouchUpInside];
-//            [cell addSubview:button];
-            
-        
             sheet = [[Theme theme] stylesheetForKey:@"TableView.textLabel" retainStylesheet:YES overwriteStylesheet:NO error:nil];
             cell.textLabel.backgroundColor = [sheet fontBackgroundColor];
             cell.textLabel.textColor = [sheet fontTextColor];
@@ -590,20 +504,7 @@
     
     if (self.selectedSegmentIndex == SEGMENT_INDEX_ALPHA)
     {
-        
-        //LBDEBUG
-        assert([SongRadioCatalog main].indexMap.count > indexPath.section);
-
         NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
-        
-        
-        //LBDEBUG
-//        {
-//            NSArray* array  =[self.sortedSongs objectForKey:charIndex];
-//        assert(array.count > indexPath.row);
-//        }
-
-//        Song* song = [[self.sortedSongs objectForKey:charIndex] objectAtIndex:indexPath.row];
         
         NSArray* songs = [[SongRadioCatalog main] songsForLetter:charIndex];
         Song* song = [songs objectAtIndex:indexPath.row];
@@ -614,20 +515,6 @@
     }
     else
     {
-        //LBDEBUG
-        assert([SongRadioCatalog main].indexMap.count > indexPath.section);
-
-//        NSString* charIndex = [[SongCatalog synchronizedCatalog].indexMap objectAtIndex:indexPath.section];
-//
-//        
-////        //LBDEBUG
-////        {
-////            NSArray* array  =[self.sortedArtists objectForKey:charIndex];
-////            assert(array.count > indexPath.row);
-////        }
-//
-//        NSString* artistKey = [[self.sortedArtists objectForKey:charIndex] objectAtIndex:indexPath.row];
-
         NSString* charIndex = [[SongRadioCatalog main].indexMap objectAtIndex:indexPath.section];
         NSArray* artists = [[SongRadioCatalog main] artistsForLetter:charIndex];
         NSString* artist = [artists objectAtIndex:indexPath.row];

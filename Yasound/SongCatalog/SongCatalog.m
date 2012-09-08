@@ -8,13 +8,13 @@
 
 #import "SongCatalog.h"
 #import "TimeProfile.h"
-
+#import "DataBase.h"
 
 @implementation SongCatalog
 
-@synthesize db;
+//@synthesize db;
 @synthesize songsDb;
-@synthesize dbPath;
+//@synthesize dbPath;
 
 @synthesize isInCache;
 @synthesize indexMap;
@@ -29,32 +29,6 @@
 @synthesize selectedArtist;
 @synthesize selectedArtistIndexChar;
 @synthesize selectedAlbum;
-
-
-
-//typedef enum {
-//   
-//    eRadioCatalogKey = 0,
-//    eRadioCatalogName,
-//    eRadioCatalogNameLetter,
-//    eRadioCatalogArtist,
-//    eRadioCatalogArtistLetter,
-//    eRadioCatalogAlbum,
-//    eRadioCatalogSong
-//} RadioCatalogTable;
-//
-//typedef enum {
-//    
-//    eLocalCatalogKey = 0,
-//    eLocalCatalogName,
-//    eLocalCatalogNameLetter,
-//    eLocalCatalogArtist,
-//    eLocalCatalogArtistLetter,
-//    eLocalCatalogAlbum,
-//    eLocalCatalogSong
-//} LocalCatalogTable;
-
-
 
 
 
@@ -100,7 +74,9 @@
     if (self = [super init]) {
         self.isInCache = NO;
         
-        [self initDB];
+//        [self initDB];
+        self.songsDb = [NSMutableDictionary dictionary];
+
         
         self.indexMap = [NSMutableArray array];
         [self initIndexMap];
@@ -120,81 +96,9 @@
 
 
 
-- (void)initDB
-{
-    // create the DB file
-    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    self.dbPath = [paths objectAtIndex:0];
-    self.dbPath = [self.dbPath stringByAppendingPathComponent:@"songCatalog.sqlite"];
-    
-    // delete current DB file
-    if ([[NSFileManager defaultManager] fileExistsAtPath:self.dbPath]) {
-        [[NSFileManager defaultManager] removeItemAtPath:self.dbPath error:nil];
-    }
-        
-    
-    self.db = [FMDatabase databaseWithPath:self.dbPath];
-    if (![self.db open])
-    {
-        NSLog(@"error : could not open the db file.");
-        [self.db release];
-    }
-    else
-    {
-        // radioCatalog
-        BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255), genre VARCHAR(255))", RADIOCATALOG_TABLE]];
-        if (!res)
-            NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
-        else
-        {
-            res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE INDEX radioCatalogKeyIndex ON %@ (songKey)", RADIOCATALOG_TABLE]];
-            if (!res)
-                NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
-        }
-
-        
-//        // radioArtistCatalog
-//        res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255), genre VARCHAR(255))", LOCALCATALOG_TABLE]];
-//        if (!res)
-//            NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
-//        else
-//        {
-//            res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE INDEX radioCatalogKeyIndex ON %@ (songKey)", LOCALCATALOG_TABLE]];
-//            if (!res)
-//                NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
-//        }
-        
-        
-        
-        
-        res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255), genre VARCHAR(255))", LOCALCATALOG_TABLE]];
-        if (!res)
-            NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
-        else
-        {
-            res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE INDEX localCatalogKeyIndex ON %@ (songKey)", LOCALCATALOG_TABLE]];
-            if (!res)
-                NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
-        }
-
-        
-        
-//        //
-//        NSLog(@"database create radioCatalog table");
-//        [self createTable:RADIOCATALOG_TABLE];
-//        
-//        //
-//        NSLog(@"database create localCatalog table");
-//        [self createTable:LOCALCATALOG_TABLE];
-    }
-    
-    self.songsDb = [NSMutableDictionary dictionary];
-}
-
-
 - (void)dealloc {
     
-    [self.db close];
+//    [self.db close];
     [super dealloc];
 }
 
@@ -236,28 +140,6 @@
 
 
 
-
-
-
-
-
-//...................................................................
-//
-// creaters
-//
-
-//- (void)createTable:(NSString*)table {
-//    
-//    BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255), genre VARCHAR(255))", table]];
-//    if (!res)
-//    NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
-//    else
-//    {
-//        res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE INDEX catalogKeyIndex ON %@ (songKey)", table]];
-//        if (!res)
-//            NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
-//    }
-//}
 
 
 
@@ -306,8 +188,7 @@
     
     NSMutableArray* results = [NSMutableArray array];
     
-    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE nameLetter=? ORDER BY name", table], charIndex];
-   // FMResultSet* s = [self.db executeQuery:@"SELECT * FROM radioCatalog WHERE nameLetter=? ORDER BY name", charIndex];
+    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE nameLetter=? ORDER BY name", table], charIndex];
 
 //#ifdef DEBUG
 //    DLog(@"songsForLetter FMDB executeQuery '%@'", s.query);
@@ -342,7 +223,7 @@
     
     NSMutableArray* results = [NSMutableArray array];
     
-    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT DISTINCT artistKey FROM %@ WHERE artistLetter=? GROUP BY artistKey ORDER BY artistKey", table], charIndex];
+    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT DISTINCT artistKey FROM %@ WHERE artistLetter=? GROUP BY artistKey ORDER BY artistKey", table], charIndex];
     while ([s next])
     {
 //        NSString* artist = [s stringForColumnIndex:eCatalogArtistKey];
@@ -370,7 +251,7 @@
     
     NSMutableArray* results = [NSMutableArray array];
     
-    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT DISTINCT albumKey FROM %@ WHERE artistKey=? ORDER BY albumKey", table], artist];
+    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT DISTINCT albumKey FROM %@ WHERE artistKey=? ORDER BY albumKey", table], artist];
     while ([s next])
     {
         //        NSString* artist = [s stringForColumnIndex:eCatalogArtistKey];
@@ -401,7 +282,7 @@
         
     NSMutableArray* results = [NSMutableArray array];
     
-    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE albumKey=? AND artistKey=? ORDER BY name", table], album, artist];
+    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT songKey FROM %@ WHERE albumKey=? AND artistKey=? ORDER BY name", table], album, artist];
     while ([s next])
     {
         //        NSString* artist = [s stringForColumnIndex:eCatalogArtistKey];
@@ -440,12 +321,12 @@
 
 - (void)beginTransaction {
 
-    [self.db beginTransaction];
+    [[DataBase main].db beginTransaction];
 }
 
 - (void)commit {
     
-    [self.db commit];
+    [[DataBase main].db commit];
 }
 
 
@@ -488,11 +369,11 @@
     NSString* artistChar = [NSString stringWithFormat:@"%C", artistLetter];
 
     
-    BOOL res = [self.db executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@ VALUES (?,?,?,?,?,?,?)", table], songKey, song.name, nameChar, song.artist, artistChar, song.album, song.genre];
+    BOOL res = [[DataBase main].db executeUpdate:[NSString stringWithFormat:@"INSERT INTO %@ VALUES (?,?,?,?,?,?,?)", table], songKey, song.name, nameChar, song.artist, artistChar, song.album, song.genre];
     
 
     if (!res)
-        DLog(@"addSong, %d:%@", [self.db lastErrorCode], [self.db lastErrorMessage]);
+        DLog(@"addSong, %d:%@", [[DataBase main].db lastErrorCode], [[DataBase main].db lastErrorMessage]);
     else
         [self.songsDb setObject:song forKey:songKey];
     

@@ -1009,6 +1009,15 @@
 		BC27F39414BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39514BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
 		BC27F39614BE598700EF1C5F /* YasoundReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BC27F39314BE598700EF1C5F /* YasoundReachability.m */; };
+		BC31F12815FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
+		BC31F12915FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
+		BC31F12A15FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
+		BC31F12B15FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
+		BC31F12C15FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
+		BC31F12D15FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
+		BC31F12E15FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
+		BC31F12F15FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
+		BC31F13015FB87AB00A8E486 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F12715FB87AB00A8E486 /* DataBase.m */; };
 		BC355BD615BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
 		BC355BD715BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
 		BC355BD815BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
@@ -6734,6 +6743,8 @@
 		BC23881215D399C400D1A4C4 /* WallViewController+StatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WallViewController+StatusBar.m"; sourceTree = "<group>"; };
 		BC27F39214BE598700EF1C5F /* YasoundReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YasoundReachability.h; sourceTree = "<group>"; };
 		BC27F39314BE598700EF1C5F /* YasoundReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YasoundReachability.m; sourceTree = "<group>"; };
+		BC31F12615FB87AA00A8E486 /* DataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
+		BC31F12715FB87AB00A8E486 /* DataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
 		BC355BCD15BD4F9100305C56 /* GiftsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftsViewController.h; path = Yasound/Tabs/GiftsViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BCE15BD4F9100305C56 /* GiftsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GiftsViewController.m; path = Yasound/Tabs/GiftsViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GiftsViewController.xib; path = Yasound/Tabs/GiftsViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -8735,6 +8746,8 @@
 		BCDABC1415F74FDD002E8708 /* SongCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				BC31F12615FB87AA00A8E486 /* DataBase.h */,
+				BC31F12715FB87AB00A8E486 /* DataBase.m */,
 				BCDABC1715F74FDE002E8708 /* SongCatalog.h */,
 				BCDABC1815F74FDE002E8708 /* SongCatalog.m */,
 				BCDABC1915F74FDE002E8708 /* SongLocalCatalog.h */,
@@ -14567,6 +14580,7 @@
 				BCDABC2D15F74FDE002E8708 /* SongCatalog.m in Sources */,
 				BCDABC3615F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3F15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BC31F12F15FB87AB00A8E486 /* DataBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14791,6 +14805,7 @@
 				BCDABC2E15F74FDE002E8708 /* SongCatalog.m in Sources */,
 				BCDABC3715F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC4015F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BC31F13015FB87AB00A8E486 /* DataBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15011,6 +15026,7 @@
 				BCDABC2C15F74FDE002E8708 /* SongCatalog.m in Sources */,
 				BCDABC3515F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3E15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BC31F12E15FB87AB00A8E486 /* DataBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15235,6 +15251,7 @@
 				BCDABC2915F74FDE002E8708 /* SongCatalog.m in Sources */,
 				BCDABC3215F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3B15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BC31F12B15FB87AB00A8E486 /* DataBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15459,6 +15476,7 @@
 				BCDABC2715F74FDE002E8708 /* SongCatalog.m in Sources */,
 				BCDABC3015F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3915F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BC31F12915FB87AB00A8E486 /* DataBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15684,6 +15702,7 @@
 				BCDABC2B15F74FDE002E8708 /* SongCatalog.m in Sources */,
 				BCDABC3415F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3D15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BC31F12D15FB87AB00A8E486 /* DataBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15908,6 +15927,7 @@
 				BCDABC2815F74FDE002E8708 /* SongCatalog.m in Sources */,
 				BCDABC3115F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3A15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BC31F12A15FB87AB00A8E486 /* DataBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16132,6 +16152,7 @@
 				BCDABC2615F74FDE002E8708 /* SongCatalog.m in Sources */,
 				BCDABC2F15F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3815F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BC31F12815FB87AB00A8E486 /* DataBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16357,6 +16378,7 @@
 				BCDABC2A15F74FDE002E8708 /* SongCatalog.m in Sources */,
 				BCDABC3315F74FDE002E8708 /* SongLocalCatalog.m in Sources */,
 				BCDABC3C15F74FDE002E8708 /* SongRadioCatalog.m in Sources */,
+				BC31F12C15FB87AB00A8E486 /* DataBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

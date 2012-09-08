@@ -12,8 +12,6 @@
 
 
 
-#define RADIOCATALOG_TABLE @"radioCatalog"
-#define LOCALCATALOG_TABLE @"localCatalog"
 
 
 @interface SongCatalog : NSObject
@@ -37,9 +35,9 @@ typedef enum {
 
 
 
-@property (nonatomic, retain) FMDatabase* db;
+//@property (nonatomic, retain) FMDatabase* db;
 @property (nonatomic, retain) NSMutableDictionary* songsDb;
-@property (nonatomic, retain) NSString* dbPath;
+//@property (nonatomic, retain) NSString* dbPath;
 
 @property (nonatomic) BOOL isInCache;
 

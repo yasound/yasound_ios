@@ -10,6 +10,8 @@
 #import "TimeProfile.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "SongLocal.h"
+#import "DataBase.h"
+
 
 @implementation SongLocalCatalog
 
@@ -39,7 +41,7 @@ static SongLocalCatalog* _main = nil;
 
 - (void)dump
 {
-    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", LOCALCATALOG_TABLE]];
+    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", LOCALCATALOG_TABLE]];
     while ([s next])
     {
         NSString* name = [SongCatalog shortString:[s stringForColumnIndex:eCatalogName]];
@@ -71,8 +73,11 @@ static SongLocalCatalog* _main = nil;
         [self.target performSelector:self.action withObject:info];
         return;
     }
+
+    // can't => fmdb not happy
+//    [NSThread detachNewThreadSelector:@selector(threadMatchedSongs:) toTarget:self withObject:songs];
     
-    [NSThread detachNewThreadSelector:@selector(threadMatchedSongs:) toTarget:self withObject:songs];
+    [self threadMatchedSongs:songs];
 }
 
 
@@ -124,7 +129,7 @@ static SongLocalCatalog* _main = nil;
         self.isInCache = YES;
     
     NSMutableDictionary* info = [NSMutableDictionary dictionary];
-    [info setObject:[NSNumber numberWithInteger:nbSongs] forKey:@"count"];
+    [info setObject:[NSNumber numberWithInteger:self.songsDb.count] forKey:@"count"];
     [info setObject:@""  forKey:@"error"];
     [info setObject:[NSNumber numberWithBool:YES]  forKey:@"success"];
     [self.target performSelectorOnMainThread:self.action withObject:info waitUntilDone:false];

@@ -8,6 +8,9 @@
 
 #import "SongRadioCatalog.h"
 #import "YasoundDataProvider.h"
+#import "DataBase.h"
+
+
 
 @implementation SongRadioCatalog
 
@@ -46,7 +49,7 @@ static SongRadioCatalog* _main = nil;
 {
     NSLog(@"\nDB radioCatalog dump:");
     
-    FMResultSet* s = [self.db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", RADIOCATALOG_TABLE]];
+    FMResultSet* s = [[DataBase main].db executeQuery:[NSString stringWithFormat:@"SELECT * FROM %@", RADIOCATALOG_TABLE]];
     while ([s next])
     {
         NSString* songKey = [SongCatalog shortString:[s stringForColumnIndex:eCatalogSongKey]];

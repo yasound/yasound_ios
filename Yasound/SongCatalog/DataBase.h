@@ -1,6 +1,6 @@
 //
-//  DB.h
-//  astrosurf
+//  DataBase.h
+//  yasound
 //
 //  Created by LOIC BERTHELOT on 13/04/12.
 //  Copyright (c) 2012 loïc berthelot. All rights reserved.
@@ -9,41 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
 
+#define RADIOCATALOG_TABLE @"radioCatalog"
+#define LOCALCATALOG_TABLE @"localCatalog"
 
-@interface DB : NSObject
+@interface DataBase : NSObject
 
 @property (nonatomic, retain) FMDatabase* db;
-@property (nonatomic, retain) NSString* cacheDirectory;
-
-+ (DB*)main;
-
-// return local filepath for cached image from the original url
-- (NSString*)getImage:(NSString*)url;
-
-// store a local copy of image with its original url, and return the local filepath
-- (NSString*)setImage:(NSData*)imageData forUrl:(NSString*)url;
-
-// register the use of this image with the given post
-- (void)registerImage:(NSString*)url forPost:(NSString*)postKey fromAuthor:(NSString*)author;
-- (BOOL)isImageRegistered:(NSString*)url forPost:(NSString*)postKey fromAuthor:(NSString*)author;
-
-// return array of registered images for the given postKey
-- (NSArray*)registeredImages:(NSString*)postKey;
-- (NSArray*)registeredPostKeys:(NSString*)url;
-- (NSArray*)registeredImagesFromAuthor:(NSString*)author;
+@property (nonatomic, retain) NSString* dbPath;
 
 
-- (void)setMessageForPostKey:(NSString*)postKey replyNum:(NSString*)replyNum author:(NSString*)author emoticon:(NSString*)emoticon pubDate:(NSDate*)pubDate text:(NSString*)text subject:(NSString*)subject  forumKey:(NSString*)forumKey topic:(NSString*)topic;
-- (NSDictionary*)messageForPostKey:(NSString*)postKey andReplyNum:(NSString*)replyNum;
++ (DataBase*)main;
++ (void)releaseDataBase;
 
-
-//- (void)setUser:(NSString*)name withProfileUrl:(NSString*)profileUrl;
-//- (NSString*)getProfileUrlForUser:(NSString*)name;
-
-
-
-- (void)clearForPost:(NSString*)postKey;
-
-- (void)clearCache;
 
 @end
