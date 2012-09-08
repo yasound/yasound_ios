@@ -450,28 +450,45 @@
         [APPDELEGATE.navigationController pushViewController:view animated:YES];
         [view release];
     }
-    else
+    else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES)
     {
-//        NSString* charIndex = [[SongLocalCatalog main].indexMap objectAtIndex:indexPath.section];
-//        NSArray* artists = [[SongLocalCatalog main] artistsForLetter:charIndex];
-//        NSString* artist = [artists objectAtIndex:indexPath.row];
-//        
-//        [[SongLocalCatalog main] selectArtist:artist withCharIndex:charIndex];
-//
-//        
-//        self.artistVC = [[ProgrammingArtistViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongLocalCatalog main] forRadio:self.radio];
-//        CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
-//        self.artistVC.tableView.frame = frame;
-//        [self.view.superview addSubview:self.artistVC.tableView];
-//        
-//        [UIView beginAnimations:nil context:NULL];
-//        [UIView setAnimationDuration:0.33];
-//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-//        
-//        frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
-//        self.artistVC.tableView.frame = frame;
-//        
-//        [UIView commitAnimations];
+        NSArray* collections = [[SongLocalCatalog main] genresAll];
+        NSString* collection = [collections objectAtIndex:indexPath.row];
+        NSArray* artists = [[SongLocalCatalog main] artistsForGenre:collection];
+
+        self.collectionVC = [[ProgrammingCollectionViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongLocalCatalog main] withArtists:artists forRadio:self.radio];
+        CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.collectionVC.tableView.frame = frame;
+        [self.view.superview addSubview:self.collectionVC.tableView];
+
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+
+        frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.collectionVC.tableView.frame = frame;
+        
+        [UIView commitAnimations];
+    }
+    else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS)
+    {
+        NSArray* collections = [[SongLocalCatalog main] playlistsAll];
+        NSString* collection = [collections objectAtIndex:indexPath.row];
+        NSArray* artists = [[SongLocalCatalog main] artistsForPlaylist:collection];
+        
+        self.collectionVC = [[ProgrammingCollectionViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongLocalCatalog main] withArtists:artists forRadio:self.radio];
+        CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.collectionVC.tableView.frame = frame;
+        [self.view.superview addSubview:self.collectionVC.tableView];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.33];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        
+        frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+        self.collectionVC.tableView.frame = frame;
+        
+        [UIView commitAnimations];
     }
     
 }

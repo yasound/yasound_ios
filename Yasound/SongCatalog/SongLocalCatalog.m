@@ -358,11 +358,11 @@ static SongLocalCatalog* _main = nil;
     
     results = [NSMutableArray array];
     
-    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT localCatalog.songKey, localCatalog.artistKey FROM localCatalog, playlistCatalog WHERE localCatalog.songKey = playlist.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.artistKey", playlist];
+    FMResultSet* s = [[DataBase main].db executeQuery:@"SELECT DISTINCT localCatalog.artistKey FROM localCatalog JOIN playlistCatalog WHERE localCatalog.songKey = playlistCatalog.songKey  AND playlistCatalog.playlist = ? ORDER BY localCatalog.artistKey", playlist];
     
     while ([s next])
     {
-        NSString* artist = [s stringForColumnIndex:1];
+        NSString* artist = [s stringForColumnIndex:0];
         assert(artist);
         [results addObject:artist];
     }

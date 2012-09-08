@@ -11,6 +11,7 @@
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import "UIDevice+IdentifierAddition.h"
+#import "YasoundAppDelegate.h"
 
 #define SIZEOF_INT16 2
 
@@ -805,7 +806,7 @@ static PlaylistMoulinor* _main = nil;
     [picker addAttachmentData:data mimeType:mimetype fileName:filename];
     
     // Show email view	
-    [controller.navigationController presentModalViewController:picker animated:YES];
+    [APPDELEGATE.navigationController presentModalViewController:picker animated:YES];
     
     // Release picker
     [picker release];
