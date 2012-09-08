@@ -189,8 +189,6 @@
 "ProgrammingView_error_no_playlist_message" = "une erreur est survenue : aucune playlist n'a été détectée.";
 "ProgrammingView_unknownArtist" = "Artiste inconnu";
 "ProgrammingView_unknownAlbum" = "Album inconnu";
-"ProgramminView_nb_albums_1" = "1 album";
-"ProgramminView_nb_albums_n" = "%d albums";
 "ProgramminView_nb_songs_1" = "1 morceau";
 "ProgramminView_nb_songs_n" = "%d morceaux";
 "ProgrammingView_subtitle_error" = "erreur";
@@ -201,6 +199,10 @@
 "Programming.segment.artists" = "Artistes";
 "Programming.segment.genres" = "Genres";
 "Programming.segment.playlists" = "Playlists";
+"Programmin.nbAlbums.1" = "1 album";
+"Programmin.nbAlbums.n" = "%d albums";
+"Programmin.nbArtists.1" = "1 artiste";
+"Programmin.nbArtists.n" = "%d artistes";
 
 
 "SongView_title" = "Song";

@@ -26,8 +26,16 @@
 - (NSArray*)albumsForArtist:(NSString*)artist;
 - (NSArray*)songsForAlbum:(NSString*)album fromArtist:(NSString*)artist;
 
-    - (NSDictionary*)songsAll;
+- (NSArray*)genres;
+- (NSArray*)artistsForGenre:(NSString*)genre;
+- (NSArray*)playlists;
+- (NSArray*)artistsForPlaylist:(NSString*)playlist;
+
+
+- (NSDictionary*)songsAll;
+
 - (BOOL)addSong:(Song*)song songKey:(NSString*)songKey artistKey:(NSString*)artistKey albumKey:(NSString*)albumKey;
+- (BOOL)addSong:(Song*)song forPlaylist:(NSString*)playlist;
 
 
 @end

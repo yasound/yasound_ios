@@ -1,12 +1,12 @@
 //
-//  ProgrammingAlbumViewController.m
+//  ProgrammingCollectionViewController.m
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 22/02/12.
 //  Copyright (c) 2012 Yasound. All rights reserved.
 //
 
-#import "ProgrammingAlbumViewController.h"
+#import "ProgrammingCollectionViewController.h"
 #import "ActivityAlertView.h"
 #import "Radio.h"
 #import "YasoundDataProvider.h"
@@ -30,7 +30,7 @@
 #import "YasoundAppDelegate.h"
 
 
-@implementation ProgrammingAlbumViewController
+@implementation ProgrammingCollectionViewController
 
 @synthesize radio;
 @synthesize catalog;

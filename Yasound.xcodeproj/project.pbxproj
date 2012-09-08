@@ -1046,15 +1046,6 @@
 		BC31F18B15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
 		BC31F18C15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
 		BC31F18D15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */; };
-		BC31F18E15FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
-		BC31F18F15FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
-		BC31F19015FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
-		BC31F19115FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
-		BC31F19215FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
-		BC31F19315FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
-		BC31F19415FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
-		BC31F19515FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
-		BC31F19615FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */; };
 		BC31F19715FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
 		BC31F19815FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
 		BC31F19915FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
@@ -1064,15 +1055,6 @@
 		BC31F19D15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
 		BC31F19E15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
 		BC31F19F15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */; };
-		BC31F1A015FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
-		BC31F1A115FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
-		BC31F1A215FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
-		BC31F1A315FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
-		BC31F1A415FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
-		BC31F1A515FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
-		BC31F1A615FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
-		BC31F1A715FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
-		BC31F1A815FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */; };
 		BC31F1A915FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
 		BC31F1AA15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
 		BC31F1AB15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
@@ -1082,6 +1064,15 @@
 		BC31F1AF15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
 		BC31F1B015FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
 		BC31F1B115FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */; };
+		BC31F1B415FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
+		BC31F1B515FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
+		BC31F1B615FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
+		BC31F1B715FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
+		BC31F1B815FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
+		BC31F1B915FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
+		BC31F1BA15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
+		BC31F1BB15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
+		BC31F1BC15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */; };
 		BC355BD615BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
 		BC355BD715BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
 		BC355BD815BD4F9200305C56 /* GiftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC355BCE15BD4F9100305C56 /* GiftsViewController.m */; };
@@ -6769,14 +6760,12 @@
 		BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingAlbumViewController.m; sourceTree = "<group>"; };
 		BC31F17215FBB72300A8E486 /* ProgrammingArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingArtistViewController.h; sourceTree = "<group>"; };
 		BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingArtistViewController.m; sourceTree = "<group>"; };
-		BC31F17415FBB72300A8E486 /* ProgrammingGenreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingGenreViewController.h; sourceTree = "<group>"; };
-		BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingGenreViewController.m; sourceTree = "<group>"; };
 		BC31F17615FBB72300A8E486 /* ProgrammingLocalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingLocalViewController.h; sourceTree = "<group>"; };
 		BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingLocalViewController.m; sourceTree = "<group>"; };
-		BC31F17815FBB72300A8E486 /* ProgrammingPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingPlaylistViewController.h; sourceTree = "<group>"; };
-		BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingPlaylistViewController.m; sourceTree = "<group>"; };
 		BC31F17A15FBB72300A8E486 /* ProgrammingRadioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingRadioViewController.h; sourceTree = "<group>"; };
 		BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingRadioViewController.m; sourceTree = "<group>"; };
+		BC31F1B215FBBE6F00A8E486 /* ProgrammingCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgrammingCollectionViewController.h; sourceTree = "<group>"; };
+		BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgrammingCollectionViewController.m; sourceTree = "<group>"; };
 		BC355BCD15BD4F9100305C56 /* GiftsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GiftsViewController.h; path = Yasound/Tabs/GiftsViewController.h; sourceTree = SOURCE_ROOT; };
 		BC355BCE15BD4F9100305C56 /* GiftsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GiftsViewController.m; path = Yasound/Tabs/GiftsViewController.m; sourceTree = SOURCE_ROOT; };
 		BC355BCF15BD4F9100305C56 /* GiftsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GiftsViewController.xib; path = Yasound/Tabs/GiftsViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -8155,16 +8144,14 @@
 		BC31F16F15FBB72300A8E486 /* CatalogViews */ = {
 			isa = PBXGroup;
 			children = (
+				BC31F1B215FBBE6F00A8E486 /* ProgrammingCollectionViewController.h */,
+				BC31F1B315FBBE6F00A8E486 /* ProgrammingCollectionViewController.m */,
 				BC31F17015FBB72300A8E486 /* ProgrammingAlbumViewController.h */,
 				BC31F17115FBB72300A8E486 /* ProgrammingAlbumViewController.m */,
 				BC31F17215FBB72300A8E486 /* ProgrammingArtistViewController.h */,
 				BC31F17315FBB72300A8E486 /* ProgrammingArtistViewController.m */,
-				BC31F17415FBB72300A8E486 /* ProgrammingGenreViewController.h */,
-				BC31F17515FBB72300A8E486 /* ProgrammingGenreViewController.m */,
 				BC31F17615FBB72300A8E486 /* ProgrammingLocalViewController.h */,
 				BC31F17715FBB72300A8E486 /* ProgrammingLocalViewController.m */,
-				BC31F17815FBB72300A8E486 /* ProgrammingPlaylistViewController.h */,
-				BC31F17915FBB72300A8E486 /* ProgrammingPlaylistViewController.m */,
 				BC31F17A15FBB72300A8E486 /* ProgrammingRadioViewController.h */,
 				BC31F17B15FBB72300A8E486 /* ProgrammingRadioViewController.m */,
 			);
@@ -14614,10 +14601,9 @@
 				BC31F12F15FB87AB00A8E486 /* DataBase.m in Sources */,
 				BC31F18315FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
 				BC31F18C15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
-				BC31F19515FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
 				BC31F19E15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
-				BC31F1A715FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
 				BC31F1B015FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
+				BC31F1BB15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14841,10 +14827,9 @@
 				BC31F13015FB87AB00A8E486 /* DataBase.m in Sources */,
 				BC31F18415FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
 				BC31F18D15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
-				BC31F19615FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
 				BC31F19F15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
-				BC31F1A815FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
 				BC31F1B115FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
+				BC31F1BC15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15064,10 +15049,9 @@
 				BC31F12E15FB87AB00A8E486 /* DataBase.m in Sources */,
 				BC31F18215FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
 				BC31F18B15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
-				BC31F19415FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
 				BC31F19D15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
-				BC31F1A615FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
 				BC31F1AF15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
+				BC31F1BA15FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15291,10 +15275,9 @@
 				BC31F12B15FB87AB00A8E486 /* DataBase.m in Sources */,
 				BC31F17F15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
 				BC31F18815FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
-				BC31F19115FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
 				BC31F19A15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
-				BC31F1A315FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
 				BC31F1AC15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
+				BC31F1B715FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15518,10 +15501,9 @@
 				BC31F12915FB87AB00A8E486 /* DataBase.m in Sources */,
 				BC31F17D15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
 				BC31F18615FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
-				BC31F18F15FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
 				BC31F19815FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
-				BC31F1A115FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
 				BC31F1AA15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
+				BC31F1B515FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15746,10 +15728,9 @@
 				BC31F12D15FB87AB00A8E486 /* DataBase.m in Sources */,
 				BC31F18115FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
 				BC31F18A15FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
-				BC31F19315FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
 				BC31F19C15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
-				BC31F1A515FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
 				BC31F1AE15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
+				BC31F1B915FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15973,10 +15954,9 @@
 				BC31F12A15FB87AB00A8E486 /* DataBase.m in Sources */,
 				BC31F17E15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
 				BC31F18715FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
-				BC31F19015FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
 				BC31F19915FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
-				BC31F1A215FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
 				BC31F1AB15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
+				BC31F1B615FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16200,10 +16180,9 @@
 				BC31F12815FB87AB00A8E486 /* DataBase.m in Sources */,
 				BC31F17C15FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
 				BC31F18515FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
-				BC31F18E15FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
 				BC31F19715FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
-				BC31F1A015FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
 				BC31F1A915FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
+				BC31F1B415FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -16428,10 +16407,9 @@
 				BC31F12C15FB87AB00A8E486 /* DataBase.m in Sources */,
 				BC31F18015FBB72300A8E486 /* ProgrammingAlbumViewController.m in Sources */,
 				BC31F18915FBB72300A8E486 /* ProgrammingArtistViewController.m in Sources */,
-				BC31F19215FBB72300A8E486 /* ProgrammingGenreViewController.m in Sources */,
 				BC31F19B15FBB72300A8E486 /* ProgrammingLocalViewController.m in Sources */,
-				BC31F1A415FBB72300A8E486 /* ProgrammingPlaylistViewController.m in Sources */,
 				BC31F1AD15FBB72300A8E486 /* ProgrammingRadioViewController.m in Sources */,
+				BC31F1B815FBBE6F00A8E486 /* ProgrammingCollectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

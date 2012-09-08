@@ -74,6 +74,7 @@ static DataBase* _main = nil;
                     NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
             }
             
+            // localCatalog
             res = [self.db executeUpdate:[NSString stringWithFormat:@"CREATE TABLE %@ (songKey TEXT, name VARCHAR(255), nameLetter VARCHAR(1), artistKey VARCHAR(255), artistLetter VARCHAR(1), albumKey VARCHAR(255), genre VARCHAR(255))", LOCALCATALOG_TABLE]];
             if (!res)
                 NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
@@ -83,6 +84,11 @@ static DataBase* _main = nil;
                 if (!res)
                     NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
             }
+            
+            // playlistCatalog
+            res = [self.db executeUpdate:@"CREATE TABLE playlistCatalog (songKey TEXT, playlist VARCHAR(255))"];
+            if (!res)
+                NSLog(@"fmdb error %@ - %d", [self.db lastErrorMessage], [self.db lastErrorCode]);
         }
     }
     

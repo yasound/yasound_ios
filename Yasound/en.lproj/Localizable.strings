@@ -192,8 +192,6 @@
 "ProgrammingView_error_no_playlist_message" = "An error happened: no playlist has been downloaded.";
 "ProgrammingView_unknownArtist" = "#Unknown artist";
 "ProgrammingView_unknownAlbum" = "Unknown album";
-"ProgramminView_nb_albums_1" = "1 album";
-"ProgramminView_nb_albums_n" = "%d albums";
 "ProgramminView_nb_songs_1" = "1 song";
 "ProgramminView_nb_songs_n" = "%d songs";
 "ProgrammingView_subtitle_error" = "erreur";
@@ -204,6 +202,10 @@
 "Programming.segment.artists" = "Artists";
 "Programming.segment.genres" = "Genres";
 "Programming.segment.playlists" = "Playlists";
+"Programmin.nbAlbums.1" = "1 album";
+"Programmin.nbAlbums.n" = "%d albums";
+"Programmin.nbArtists.1" = "1 artist";
+"Programmin.nbArtists.n" = "%d artists";
 
 
 

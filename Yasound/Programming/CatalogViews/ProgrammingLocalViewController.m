@@ -20,7 +20,6 @@
 
 #import "BundleFileManager.h"
 #import "Theme.h"
-#import "ProgrammingArtistViewController.h"
 #import "YasoundDataProvider.h"
 #import "RootViewController.h"
 #import "LocalSongInfoViewController.h"
@@ -44,7 +43,8 @@
 @synthesize selectedSegmentIndex;
 //@synthesize sortedArtists;
 //@synthesize sortedSongs;
-@synthesize artistVC;
+@synthesize collectionVC;
+//@synthesize genreVC;
 
 
 
@@ -53,13 +53,21 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    if (self.artistVC)
+    if (self.collectionVC)
     {
-        [self.artistVC onBackClicked];
-        [self.artistVC.tableView removeFromSuperview];
-        [self.artistVC release];
-        self.artistVC = nil;
+        [self.collectionVC onBackClicked];
+        [self.collectionVC.tableView removeFromSuperview];
+        [self.collectionVC release];
+        self.collectionVC = nil;
     }
+
+//    if (self.playlistVC)
+//    {
+//        [self.playlistVC onBackClicked];
+//        [self.playlistVC.tableView removeFromSuperview];
+//        [self.playlistVC release];
+//        self.playlistVC = nil;
+//    }
     
     [super dealloc];
     
@@ -254,17 +262,24 @@
 
 - (NSInteger)getNbRowsForTable:(UITableView*)tableView inSection:(NSInteger)section
 {
-    NSString* charIndex = [[SongLocalCatalog main].indexMap objectAtIndex:section];
     
     if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_TITLES) {
+        NSString* charIndex = [[SongLocalCatalog main].indexMap objectAtIndex:section];
         NSArray* songsForLetter = [[SongLocalCatalog main] songsForLetter:charIndex];
         assert(songsForLetter != nil);
         return songsForLetter.count;
     }
-    else {
-        NSArray* artistsForLetter = [[SongLocalCatalog main] artistsForLetter:charIndex];
-        assert(artistsForLetter != nil);
-        return artistsForLetter.count;
+    
+    else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS) {
+        NSArray* playlists = [[SongLocalCatalog main] playlists];
+        assert(playlists != nil);
+        return playlists.count;
+    }
+    
+    else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES) {
+        NSArray* genres = [[SongLocalCatalog main] genres];
+        assert(genres != nil);
+        return genres.count;
     }
 }
 
@@ -282,7 +297,7 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView 
 {    
-    if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES)
+    if ((self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES) || (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS))
         return nil;
     
     if ([SongLocalCatalog main].songsDb == 0)
@@ -294,7 +309,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index 
 {
-    if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES)
+    if ((self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES) || (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS))
         return 0;
     
     return index;
@@ -338,9 +353,9 @@
 
         return cell;
     }
-    else
+    else if ((self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES) || (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS))
     {
-        static NSString* CellIdentifier = @"CellArtist";
+        static NSString* CellIdentifier = @"CellGenre";
         
         UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
@@ -348,11 +363,6 @@
         {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 
-//            cell.textLabel.backgroundColor = [UIColor clearColor];
-//            cell.detailTextLabel.backgroundColor = [UIColor clearColor];
-//            cell.textLabel.textColor = [UIColor whiteColor];
-//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
             cell.selectionStyle = UITableViewCellSelectionStyleGray;
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -373,18 +383,37 @@
             cell.detailTextLabel.font = [sheet makeFont];
         }
         
-        NSArray* artists = [[SongLocalCatalog main] artistsForLetter:charIndex];
-        NSString* artist = [artists objectAtIndex:indexPath.row];
-        NSInteger nbAlbums = [[SongLocalCatalog main] albumsForArtist:artist].count;
-        
-        cell.textLabel.text = artist;
-        
-        if (nbAlbums == 1)
-            cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_albums_1", nil);
-        else
-            cell.detailTextLabel.text = NSLocalizedString(@"ProgramminView_nb_albums_n", nil);
-        
-        cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbAlbums]];
+        if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_GENRES) {
+            
+            NSArray* collections = [[SongLocalCatalog main] genres];
+            NSString* collection = [collections objectAtIndex:indexPath.row];
+            NSInteger nbItems = [[SongLocalCatalog main] artistsForGenre:collection].count;
+            
+            cell.textLabel.text = collection;
+            
+            if (nbItems == 1)
+                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+            else
+                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+            
+            cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
+        }
+        else if (self.selectedSegmentIndex == LOCALSEGMENT_INDEX_PLAYLISTS) {
+            
+            NSArray* collections = [[SongLocalCatalog main] playlists];
+            NSString* collection = [collections objectAtIndex:indexPath.row];
+            NSInteger nbItems = [[SongLocalCatalog main] artistsForPlaylist:collection].count;
+            
+            cell.textLabel.text = collection;
+            
+            if (nbItems == 1)
+                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.1", nil);
+            else
+                cell.detailTextLabel.text = NSLocalizedString(@"Programmin.nbArtists.n", nil);
+            
+            cell.detailTextLabel.text = [cell.detailTextLabel.text stringByReplacingOccurrencesOfString:@"%d" withString:[NSString stringWithFormat:@"%d", nbItems]];
+        }
+
         
         return cell;
     }
@@ -413,26 +442,26 @@
     }
     else
     {
-        NSString* charIndex = [[SongLocalCatalog main].indexMap objectAtIndex:indexPath.section];
-        NSArray* artists = [[SongLocalCatalog main] artistsForLetter:charIndex];
-        NSString* artist = [artists objectAtIndex:indexPath.row];
-        
-        [[SongLocalCatalog main] selectArtist:artist withCharIndex:charIndex];
-
-        
-        self.artistVC = [[ProgrammingArtistViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongLocalCatalog main] forRadio:self.radio];
-        CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
-        self.artistVC.tableView.frame = frame;
-        [self.view.superview addSubview:self.artistVC.tableView];
-        
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.33];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        
-        frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
-        self.artistVC.tableView.frame = frame;
-        
-        [UIView commitAnimations];
+//        NSString* charIndex = [[SongLocalCatalog main].indexMap objectAtIndex:indexPath.section];
+//        NSArray* artists = [[SongLocalCatalog main] artistsForLetter:charIndex];
+//        NSString* artist = [artists objectAtIndex:indexPath.row];
+//        
+//        [[SongLocalCatalog main] selectArtist:artist withCharIndex:charIndex];
+//
+//        
+//        self.artistVC = [[ProgrammingArtistViewController alloc] initWithStyle:UITableViewStylePlain usingCatalog:[SongLocalCatalog main] forRadio:self.radio];
+//        CGRect frame = CGRectMake(self.view.frame.size.width,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+//        self.artistVC.tableView.frame = frame;
+//        [self.view.superview addSubview:self.artistVC.tableView];
+//        
+//        [UIView beginAnimations:nil context:NULL];
+//        [UIView setAnimationDuration:0.33];
+//        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//        
+//        frame = CGRectMake(0,0, self.tableView.frame.size.width, self.tableView.frame.size.height);
+//        self.artistVC.tableView.frame = frame;
+//        
+//        [UIView commitAnimations];
     }
     
 }
@@ -443,12 +472,12 @@
 {
     self.selectedSegmentIndex = index;
     
-    if (self.artistVC)
+    if (self.collectionVC)
     {
-        [self.artistVC onBackClicked];
-        [self.artistVC.tableView removeFromSuperview];
-        [self.artistVC release];
-        self.artistVC = nil;
+        [self.collectionVC onBackClicked];
+        [self.collectionVC.tableView removeFromSuperview];
+        [self.collectionVC release];
+        self.collectionVC = nil;
     }
     
     [self.tableView reloadData];
@@ -489,9 +518,9 @@
 
 - (void)removeAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
-    [self.artistVC.tableView removeFromSuperview];
-    [self.artistVC release];
-    self.artistVC = nil;
+    [self.collectionVC.tableView removeFromSuperview];
+    [self.collectionVC release];
+    self.collectionVC = nil;
 }
 
 

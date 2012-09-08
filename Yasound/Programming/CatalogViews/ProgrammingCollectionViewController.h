@@ -1,5 +1,5 @@
 //
-//  ProgrammingAlbumViewController.h
+//  ProgrammingCollectionViewController.h
 //  Yasound
 //
 //  Created by LOIC BERTHELOT on 22/02/12.
@@ -11,7 +11,7 @@
 #import "Radio.h"
 
 
-@interface ProgrammingAlbumViewController : UITableViewController <UIActionSheetDelegate>
+@interface ProgrammingCollectionViewController : UITableViewController <UIActionSheetDelegate>
 
 @property (nonatomic, retain) Radio* radio;
 @property (nonatomic, assign) SongCatalog* catalog;

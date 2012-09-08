@@ -10,7 +10,8 @@
 #import "WheelSelector.h"
 #import "Radio.h"
 #import "ProgrammingViewController.h"
-#import "ProgrammingArtistViewController.h"
+#import "ProgrammingCollectionViewController.h"
+//#import "ProgrammingGenreViewController.h"
 
 @interface ProgrammingLocalViewController : UITableViewController
 
@@ -19,7 +20,8 @@
 //@property (nonatomic, retain) NSMutableDictionary* sortedSongs;
 @property (nonatomic) NSInteger selectedSegmentIndex;
 
-@property (nonatomic, retain) ProgrammingArtistViewController* artistVC;
+@property (nonatomic, retain) ProgrammingCollectionViewController* collectionVC;
+//@property (nonatomic, retain) ProgrammingGenreViewController* genreVC;
 
 
 - (id)initWithStyle:(UITableViewStyle)style forRadio:(Radio*)radio;
